@@ -4,6 +4,10 @@ import Button from '@/components/Button.astro';
 import Picture from '@/components/Picture.astro';
 import { MODULES_AFFICHES, LIBELLE_STATUT, ancreModule } from '@/data/modules';
 import { CTA } from '@/data/site.mjs';
+import { IMAGES } from '@/data/images.mjs';
+
+// Archive non importée par M3-S : ne jamais réclamer un asset retiré du manifeste public.
+const hasPublishedImage = (id: string): id is keyof typeof IMAGES => Object.hasOwn(IMAGES, id);
 
 
 /**
@@ -36,7 +40,7 @@ import { CTA } from '@/data/site.mjs';
         </div>
         <div class="bande-image motif-diagonal" style={`--rang:${i}`}>
           <div class="bande-ecran">
-            {m.image && <Picture id={m.image} sizes="(min-width: 48rem) 500px, 100vw" />}
+            {m.image && hasPublishedImage(m.image) && <Picture id={m.image} sizes="(min-width: 48rem) 500px, 100vw" />}
           </div>
         </div>
       </article>

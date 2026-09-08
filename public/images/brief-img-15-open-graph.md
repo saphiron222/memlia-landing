@@ -1,17 +1,17 @@
 # Brief img-15-open-graph
 
-Statut : placeholder M3 ; visuel final à produire par M4.
+Statut : montage typographique M3-S livré ; fond définitif éventuel par M4.
 Source : docs/design/2026-09-08-design-navattic-memlia.md (M2).
 Pour les blocs communs, ne produire que le numéro du nom de ce fichier.
-IMG-14 : décor CSS/SVG ; IMG-15 : OG historique conservé jusqu’au montage M4.
+IMG-14 : décor CSS/SVG ; IMG-15 : `scripts/og.mjs` monte le nouveau positionnement. Les conventions M2 ci-dessous restent historiques pour les anciennes séries ; le registre M3-S fait foi.
 
 **IMG-15 · Open Graph (remplace `assets/og-memlia.png`)**
-- Sujet : le cadre de démo IMG-01 (module suivi social) posé en perspective légère sur le fond IMG-02, lockup rendu en SVG par-dessus au montage (pas dans la génération).
-- Cadrage : 1 200 × 630, capture décalée à droite, tiers gauche libre pour le lockup.
+- Sujet M3-S : lockup Memlia existant et titre « Automatisation IA pour cabinets comptables » montés par code sur fond crème. Aucun catalogue ni capture produit. Le montage typographique M3-S remplace l’ancienne promesse conseil ; M4 peut y intégrer le fond IMG-02 sans changer le texte.
+- Cadrage : 1 200 × 630, lockup en haut à gauche, titre sur deux lignes, espace libre généreux.
 - Palette : crème, vert, encre.
 - Dimensions : 1 200 × 630 px, PNG (exigence des réseaux) + WebP.
-- Sans texte généré ; seul le lockup SVG est ajouté au montage.
-- `alt` (balise `og:image:alt`) : « Memlia, compléments Excel pour cabinets d'expertise comptable ».
+- Sans texte généré ; logo et titre sont composés par code.
+- `alt` (balise `og:image:alt`) : « Memlia, automatisation IA pour cabinets d'expertise comptable ».
 
 
 ### Conventions de brief — exploitables tel quel avec la CLI Higgsfield

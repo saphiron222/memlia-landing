@@ -1,6 +1,16 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
-## Hermes — 2026-09-08 — M3 Astro (état courant)
+## Hermes — 2026-09-09 — M3-S automatisation IA (état courant)
+
+- Carte `t_e64c75cd`, base M3-R `76f174d0661896ac75b76d329e03c51019ef1a75`, branche isolée `wt/t_e64c75cd`. Aucun push/main/production.
+- Catalogue retiré de toutes les surfaces publiques. Hero, CTA, parcours quotidien/usages/intégration, FAQ, garanties, JSON-LD, llms.txt, OG alignés sur M1-R. Excel n’est plus la catégorie. Charte et garde-fous M3-R conservés.
+- Preview : https://3a35d3fd.memlia.pages.dev ; noindex vérifié, 8 routes comparées au build hors bloc Pages Analytics compté.
+- Recette : 24/24 Playwright en local et distant, 12/12 Python, 2 mutations rejetées puis restauration. 42 captures aux 7 largeurs ; passe écran effectuée. Lighthouse local mobile et desktop 100 sur les 4 axes, LCP 1654/369 ms, CLS/TBT nuls. Pas de mesure terrain.
+- Sept nouveaux briefs IMG-16 à 22 et 34 placeholders ; registre `docs/design/2026-09-09-m3-s-briefs.md`. 48 fichiers images actifs déployés, anciens essais exclus de dist mais conservés en source. OG généré par `scripts/og.mjs`, plus d’ancienne promesse conseil.
+- Rapport : `docs/qa/2026-09-09-m3-s.md`. Revue croisée Claude demandée ; M4/M5 attendent son verdict et doivent reprendre ce candidat, pas main ni les anciens briefs modules.
+- Pièges : test Python ajouté non découvert par l’ancien script npm (désormais unittest discover) ; Modules.astro archivé mais encore typé par Astro, image gardée par appartenance au registre. Browser Harness indisponible, remplacement réel par Playwright/Chromium. Ancien catalogue et grille restent du code mort signalé, non supprimé.
+
+## Hermes — 2026-09-08 — M3 Astro (historique)
 
 - Migration Astro dans le worktree `t_83ada3bb` : quatre pages, charte Memlia/Navattic,
   copy M1, sept périmètres explicites, FAQ 11 réponses et quatre nœuds JSON-LD,

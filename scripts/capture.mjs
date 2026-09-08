@@ -6,8 +6,9 @@ mkdirSync('.qa/screens', { recursive: true });
 const browser = await chromium.launch({ channel: 'chromium' });
 const reports = [];
 try {
-  for (const width of [320, 375, 768, 1024, 1440, 1920]) {
-    const page = await browser.newPage({ viewport: { width, height: 900 } });
+  for (const width of [320, 375, 768, 1024, 1366, 1440, 1920]) {
+    const height = width === 320 ? 740 : width === 375 ? 812 : width === 768 ? 1024 : width <= 1366 ? 768 : 900;
+    const page = await browser.newPage({ viewport: { width, height } });
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
@@ -24,7 +25,7 @@ try {
     await page.waitForTimeout(2100);
     await page.screenshot({ path: `.qa/screens/${width}-hero.png` });
     await page.screenshot({ path: `.qa/screens/${width}-full.png`, fullPage: true });
-    for (const id of ['modules', 'methode', 'questions']) {
+    for (const id of ['usages', 'methode', 'integration', 'questions']) {
       await page.locator(`#${id}`).scrollIntoViewIfNeeded();
       await page.waitForTimeout(700);
       await page.screenshot({ path: `.qa/screens/${width}-${id}.png` });

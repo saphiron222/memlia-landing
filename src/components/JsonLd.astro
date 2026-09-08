@@ -1,12 +1,11 @@
 ---
 import { SITE, OG_IMAGE } from '@/data/site.mjs';
 import { FAQ } from '@/data/faq';
-import { MODULES_AFFICHES } from '@/data/modules';
-import { GARANTIES } from '@/data/garanties';
+
 
 /**
  * Données structurées de l'accueil — quatre nœuds conservés (Organization, WebSite,
- * SoftwareApplication, FAQPage). Ne décrivent que des faits : ni avis, ni note, ni chiffre
+ * Service, FAQPage). Ne décrivent que des faits : ni avis, ni note, ni chiffre
  * client (ligne rouge « aucune preuve inventée »). Le texte FAQ est celui de l'accordéon.
  */
 interface Props {
@@ -27,7 +26,7 @@ const graph = {
       email: SITE.email,
       slogan: SITE.tagline,
       description:
-        "Memlia transforme une règle métier d'un cabinet d'expertise comptable en complément Excel : codé sur la structure couverte par la recette, éprouvé sur un jeu fictif, livré avec des points de validation humaine.",
+        "Memlia est un service d'automatisation IA pour cabinets d'expertise comptable : un processus cadré, une automatisation éprouvée sur jeux fictifs et des décisions sensibles validées par le cabinet.",
       contactPoint: {
         '@type': 'ContactPoint',
         email: SITE.email,
@@ -45,29 +44,23 @@ const graph = {
       publisher: { '@id': `${u}#organization` },
     },
     {
-      '@type': 'SoftwareApplication',
-      '@id': `${u}#software`,
-      name: 'Memlia — compléments Excel pour cabinets d’expertise comptable',
-      applicationCategory: 'BusinessApplication',
-      applicationSubCategory: 'Complément Microsoft Excel',
-      operatingSystem: 'Windows, Microsoft Excel',
-      inLanguage: SITE.langue,
+      '@type': 'Service',
+      '@id': `${u}#service`,
+      name: 'Memlia : automatisation IA du cabinet',
+      serviceType: "Automatisation IA pour cabinets d'expertise comptable",
+      areaServed: 'FR',
       url: u,
       image: OG_IMAGE.url,
       description,
-      publisher: { '@id': `${u}#organization` },
+      provider: { '@id': `${u}#organization` },
       audience: { '@type': 'Audience', audienceType: "Cabinets d'expertise comptable" },
-      featureList: [
-        ...MODULES_AFFICHES.filter(m => m.statut === 'disponible').map((m) => `${m.nom} : ${m.titre}`),
-        ...GARANTIES.map((g) => g.libelle),
-      ],
     },
     {
       '@type': 'FAQPage',
       '@id': `${u}#faq`,
       inLanguage: SITE.langue,
       isPartOf: { '@id': `${u}#website` },
-      about: { '@id': `${u}#software` },
+      about: { '@id': `${u}#service` },
       mainEntity: FAQ.map((q) => ({
         '@type': 'Question',
         name: q.question,

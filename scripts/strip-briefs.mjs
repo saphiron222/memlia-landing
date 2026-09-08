@@ -11,6 +11,7 @@
 import { readdirSync, rmSync, existsSync, copyFileSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { IMAGES, FORMATS } from '../src/data/images.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DOSSIER_IMAGES = join(RACINE, 'dist', 'images');
@@ -31,3 +32,13 @@ for (const nom of briefs) {
 }
 
 console.log(`[strip-briefs] ${briefs.length} brief(s) retiré(s) de dist/images/.`);
+
+// Les essais et images de l’ancien catalogue restent en source, jamais dans la preview.
+const expected = new Set(Object.entries(IMAGES).flatMap(([id, image]) =>
+  image.largeurs.flatMap(width => FORMATS.map(format => `${id}-${width}.${format}`))
+));
+const excluded = readdirSync(DOSSIER_IMAGES).filter(name => !expected.has(name));
+for (const name of excluded) rmSync(join(DOSSIER_IMAGES, name), { recursive: true });
+const missing = [...expected].filter(name => !existsSync(join(DOSSIER_IMAGES, name)));
+console.log(`[strip-briefs] ${excluded.length} ancien(s) asset(s) exclu(s), ${expected.size} attendu(s), ${missing.length} manquant(s).`);
+if (missing.length) throw new Error(`Images manquantes : ${missing.join(', ')}`);

@@ -10,7 +10,7 @@ import { CTA } from '@/data/site.mjs';
  * pour tenir le contraste quel que soit le visuel livré.
  */
 const cadrage = [
-  'La règle : un contrôle, un classeur, le résultat attendu.',
+  'Le processus : une tâche, ses outils, le résultat attendu.',
   'Le périmètre : sources, exceptions, cas de refus.',
   'Le devis : à la complexité, jamais au nombre de postes.',
 ];
@@ -23,12 +23,11 @@ const cadrage = [
   </div>
   <div class="appel-int coins rv">
     <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-    <span class="eyebrow">Première étape</span>
-    <h2 id="appel-titre" class="appel-h2">Quelle règle vérifiez-vous encore à la main dans Excel ?</h2>
+    <h2 id="appel-titre" class="appel-h2">Quelle tâche prend encore trop de temps ?</h2>
     <p class="texte-2 appel-texte">
-      Décrivez la règle et la structure du fichier sans transmettre de donnée client réelle.
-      L’échange produit un premier cadrage : périmètre automatisable, décisions qui restent humaines,
-      limites techniques et facteurs de complexité du devis.
+      Décrivez votre processus sans transmettre de fichier ni de donnée client réelle.
+      Le premier échange sert à identifier les limites, les validations et les inconnues techniques.
+      Aucun engagement de déploiement.
     </p>
     <ul class="appel-cadrage">
       {cadrage.map((c) => (
@@ -37,7 +36,7 @@ const cadrage = [
     </ul>
     <div class="appel-boutons">
       <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
-      <Button href={CTA.humain.href} variante="contour">{CTA.humain.libelle}</Button>
+
     </div>
   </div>
 </section>

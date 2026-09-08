@@ -12,69 +12,69 @@ export interface QuestionReponse {
 export const FAQ: readonly QuestionReponse[] = [
   {
     id: 'abonnement',
-    question: 'Memlia est-il un logiciel par abonnement ?',
+    question: 'Memlia est-il un logiciel à paramétrer seul ?',
     reponse:
-      'Memlia est d’abord un service : nous transformons une règle de votre cabinet en complément Excel livré et éprouvé. Le devis porte sur la complexité du périmètre, pas sur un nombre de sièges.',
+      'Non. Memlia est un service d’automatisation IA pour cabinets d’expertise comptable. Nous observons un processus, écrivons ses règles et ses limites, construisons l’automatisation puis la faisons valider par le cabinet.',
   },
   {
     id: 'quitter-excel',
-    question: 'Devons-nous quitter Excel ou migrer nos classeurs ?',
+    question: 'Faut-il remplacer nos logiciels ou nos fichiers ?',
     reponse:
-      'Non. Le principe est de greffer l’automatisation aux fichiers que le cabinet utilise déjà. Si leur structure doit évoluer, ce point est cadré avant développement.',
+      'Pas par principe. Nous cherchons d’abord à intégrer l’automatisation à l’environnement existant. Si une évolution d’outil ou de structure est nécessaire, elle est identifiée avant le développement.',
   },
   {
     id: 'ia-decide',
-    question: 'L’IA décide-t-elle à la place du gestionnaire ou de l’expert-comptable ?',
+    question: 'L’IA peut-elle agir sans validation ?',
     reponse:
-      'Non. Elle prépare, calcule ou signale. Les actions sensibles restent proposées à un humain, qui valide, modifie ou refuse.',
+      'Uniquement pour la mécanique explicitement autorisée dans le périmètre accepté. Les décisions sensibles restent proposées à la personne désignée, qui peut valider, modifier ou refuser. Aucun envoi externe sans validation humaine : mail, déclaration ou facture.',
   },
   {
     id: 'fichier-ambigu',
-    question: 'Que se passe-t-il si le fichier est incomplet ou ambigu ?',
+    question: 'Que se passe-t-il si une information manque ou si le cas est ambigu ?',
     reponse:
-      'Le complément s’arrête sur le cas non couvert et l’explique. Il ne complète pas silencieusement une donnée métier.',
+      'L’automatisation bloque l’écriture concernée et signale le cas. Elle ne complète pas silencieusement une information métier et n’étend pas seule la règle : c’est le principe fail-closed.',
   },
   {
     id: 'surveillance',
     question: 'Est-ce un outil de surveillance des équipes ?',
     reponse:
-      'Non. Les vues de supervision reposent sur des agrégats de production. Memlia ne classe pas les salariés et ne publie pas d’indicateurs nominatifs de performance.',
+      'Non. Les éventuelles vues de pilotage portent sur l’avancement du processus et des agrégats utiles, jamais nominatifs. Memlia ne note pas les salariés et ne publie aucun classement individuel.',
   },
   {
     id: 'donnees-reelles',
-    question: 'Utilisez-vous des données réelles pour construire ou démontrer le module ?',
+    question: 'Utilisez-vous des données client réelles pour développer ou démontrer ?',
     reponse:
-      'Non. Les jeux de développement, de test et de démonstration sont fictifs. En exploitation, les flux, accès, traitements et éventuels hébergements sont documentés module par module avant installation ; aucune réponse générique ne doit masquer cette revue.',
+      'Non. Les développements, tests et démonstrations utilisent des jeux fictifs. En exploitation, les données, accès, flux, hébergements éventuels, durées de conservation et responsabilités RGPD sont documentés pour chaque automatisation avant installation, dans le respect du secret professionnel. Ce cadrage ne constitue pas une certification de conformité.',
   },
   {
     id: 'sujets',
-    question: 'Quels sujets pouvez-vous automatiser ?',
+    question: 'Quels processus pouvez-vous automatiser ?',
     reponse:
-      'La priorité est la production sociale : suivi, supervision et contrôles avant DSN. D’autres périmètres sont étudiés selon leur état de disponibilité et la règle à formaliser.',
+      'Nous étudions les tâches répétitives qui reposent sur des entrées identifiables, des règles explicables, des exceptions listables et un résultat vérifiable. La faisabilité dépend des outils, des accès et du niveau de jugement requis. Les exemples d’usages sont non contractuels.',
   },
   {
     id: 'prix',
     question: 'Comment le prix est-il calculé ?',
     reponse:
-      'Selon le nombre de sources, la variété des fichiers, les exceptions métier, les contrôles et les surfaces de validation. Deux cabinets avec le même nombre de collaborateurs peuvent donc avoir des devis différents.',
+      'Le devis dépend des sources, des intégrations, des règles, des exceptions, des validations et de la valeur du processus couvert. Il n’est jamais multiplié par le nombre de sièges. Maintenance, support et évolutions sont cadrés dans la proposition commerciale.',
   },
   {
     id: 'compatibilite',
-    question: 'Quelles versions d’Excel et quels environnements sont compatibles ?',
+    question: 'Memlia fonctionne-t-il uniquement dans Excel ?',
     reponse:
-      'La réponse dépend du module : Office.js ou COM/.NET, version d’Office, poste Windows et structure du classeur. Le devis liste l’environnement couvert ; aucune compatibilité universelle n’est promise.',
+      'Non. Excel peut faire partie du processus, comme un logiciel métier, un export, une messagerie ou un dossier partagé. Le choix dépend de la tâche et des intégrations techniquement accessibles. Les versions et environnements couverts sont définis avant de développer.',
   },
   {
     id: 'evolution',
-    question: 'Que se passe-t-il si notre fichier ou notre règle évolue ?',
+    question: 'Que se passe-t-il si notre processus ou nos outils évoluent ?',
     reponse:
-      'La maintenance, le support et les adaptations hors périmètre initial sont définis dans la proposition commerciale. Une modification de structure ou de règle déclenche une analyse d’impact et, si nécessaire, une nouvelle recette.',
+      'La maintenance, le support et les évolutions sont définis dans la proposition commerciale. Tout changement susceptible d’affecter la règle, la source ou le résultat déclenche une analyse d’impact et, si nécessaire, une nouvelle recette.',
   },
   {
     id: 'recette',
     question: 'Comment se déroule la recette ?',
     reponse:
-      'Le cabinet vérifie les cas attendus, les exceptions et les refus sur un jeu fictif représentatif. La livraison ne vaut que pour le périmètre, les fichiers et l’environnement explicitement acceptés.',
+      'Vos référents vérifient les cas attendus, les exceptions et les refus sur des jeux fictifs représentatifs. La livraison vaut pour le périmètre et l’environnement explicitement acceptés, pas pour des intégrations non testées.',
   },
 ] as const;
 

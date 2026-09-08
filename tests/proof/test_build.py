@@ -71,19 +71,19 @@ class BuildProof(unittest.TestCase):
         self.assertGreaterEqual(len(seen), 40)
 
     def test_placeholders_and_briefs(self):
-        self.assertEqual(len(list((ROOT / 'public/images').glob('brief-*.md'))), 11)
+        self.assertEqual(len(list((ROOT / 'public/images').glob('brief-img-1[6-9]-*.md'))) + len(list((ROOT / 'public/images').glob('brief-img-2[0-2]-*.md'))), 7)
         self.assertEqual(len(list((DIST / 'images').glob('brief-*.md'))), 0)
-        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 22)
-        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 22)
+        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 24)
+        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 24)
 
-    def test_seven_modules_and_statuses(self):
+    def test_five_generic_examples_no_product_statuses(self):
         html = (DIST / 'index.html').read_text()
-        ids = re.findall(r'id="module-([^"]+)"', html)
-        self.assertEqual(set(ids), {'suivi-social', 'supervision-sociale', 'bulletins-dsn', 'synthese-salaires', 'flux-compta', 'conseil-fiscal', 'memlia-desk'})
-        self.assertEqual(len(ids), 7)
-        self.assertIn('En pilote', html)
-        self.assertIn('Sur étude', html)
-        self.assertIn('Périmètre distinct', html)
+        ids = re.findall(r'data-usage="([^"]+)"', html)
+        self.assertEqual(set(ids), {'collect', 'check', 'compare', 'follow', 'decide'})
+        self.assertEqual(len(ids), 5)
+        self.assertNotIn('id="module-', html)
+        for status in ['En pilote', 'Sur étude', 'Périmètre distinct']:
+            self.assertNotIn(status, html)
 
     def test_llms_anchors(self):
         ids = {attrs['id'] for _, attrs in Document(DIST / 'index.html').tags if 'id' in attrs}
@@ -96,9 +96,10 @@ class BuildProof(unittest.TestCase):
         scripts = re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html)
         self.assertEqual(len(scripts), 1)
         graph = json.loads(scripts[0])['@graph']
-        self.assertEqual([node['@type'] for node in graph], ['Organization', 'WebSite', 'SoftwareApplication', 'FAQPage'])
-        software = next(node for node in graph if node['@type'] == 'SoftwareApplication')
-        self.assertNotIn('bulletins', json.dumps(software.get('featureList', [])))
+        self.assertEqual([node['@type'] for node in graph], ['Organization', 'WebSite', 'Service', 'FAQPage'])
+        service = next(node for node in graph if node['@type'] == 'Service')
+        self.assertNotIn('featureList', service)
+        self.assertNotIn('offers', service)
         self.assertEqual(len(graph[-1]['mainEntity']), 11)
         self.assertNotIn('aggregateRating', scripts[0])
 

@@ -1,0 +1,29 @@
+---
+import Picture from '@/components/Picture.astro';
+---
+<section id="integration" class="integration" aria-labelledby="integration-title">
+  <div class="integration-copy rv">
+    <h2 id="integration-title">Vos outils restent le point de départ.</h2>
+    <p class="texte-2">Pas de nouvelle plateforme imposée pour automatiser une tâche. L’intégration dépend de ce que permettent les outils et les accès du cabinet.</p>
+    <p class="texte-2">Logiciel métier, export, messagerie, dossier partagé ou classeur Excel : nous étudions le bon point d’entrée, sans promettre de compatibilité universelle.</p>
+    <ul class="integration-rules">
+      <li><strong>Conserver ce qui fonctionne.</strong> Ne pas remplacer un outil uniquement pour introduire l’automatisation.</li>
+      <li><strong>Relier le nécessaire.</strong> Définir les sources, droits et traitements avant de développer.</li>
+      <li><strong>Prévoir l’évolution.</strong> Analyser les changements de règle ou d’outil avant toute adaptation.</li>
+    </ul>
+  </div>
+  <div class="integration-image rv">
+    <Picture id="img-18-outils-existants" sizes="(min-width: 64rem) 570px, 100vw" />
+  </div>
+</section>
+<style>
+  .integration { padding: 0 var(--marge-page) 64px; display: grid; grid-template-columns: 1fr; gap: 40px; }
+  .integration-copy { display: grid; gap: 24px; }
+  .integration-rules { display: grid; gap: 20px; color: var(--texte-2); }
+  strong { font-weight: 600; color: var(--texte-fort); }
+  .integration-image { align-self: center; }
+  .integration-image :global(img) { border-radius: var(--r-carte); }
+  @media (min-width: 64rem) {
+    .integration { padding: 0 var(--marge-page-lg) 96px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; }
+  }
+</style>

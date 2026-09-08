@@ -1,29 +1,31 @@
 # Memlia
 
-> Memlia code la règle. Votre cabinet garde la décision. Un service d'automatisation Excel sur mesure pour cabinets d'expertise comptable : règle bornée, jeu fictif, recette et validation humaine.
+> L’IA automatise le travail répétitif. Votre cabinet garde la décision. Memlia est un service d'automatisation IA pour cabinets d'expertise comptable : un processus cadré, une automatisation éprouvée et une recette humaine.
 
-Memlia s'adresse aux cabinets d'expertise comptable français. Principe directeur : **l'IA prépare, l'humain décide.** Aucun envoi externe (e-mail, déclaration) sans validation humaine. Le devis dépend de la complexité du périmètre, jamais du nombre de sièges.
+Memlia s'adresse aux cabinets d'expertise comptable français qui veulent libérer du temps pris par des tâches répétitives. Principe directeur : **l'IA prépare, l'humain décide.** Aucun envoi externe (mail, déclaration, facture) sans validation humaine. Le devis dépend de la complexité et de la valeur du processus couvert, jamais du nombre de sièges.
 
-**Proposition vs saisie** : ce que le module génère lui appartient et se régénère ; ce que le cabinet saisit ne se touche jamais. Si une donnée ou une structure sort du périmètre couvert, le complément refuse le cas et l'explique. Les vues de supervision sont agrégées, jamais des classements individuels.
+**proposition vs saisie** : ce que Memlia génère se régénère ; ce que le cabinet saisit ne se touche jamais. Une information manquante ou ambiguë bloque l'écriture concernée et appelle une revue humaine (fail-closed). Les éventuelles vues de pilotage sont agrégées, jamais des classements individuels.
 
 ## Ce que fait Memlia
 
-- [Modules et statuts](https://memlia.fr/#modules) : suivi de production sociale disponible ; supervision sociale en pilote ; contrôle des bulletins avant DSN, synthèse salaires, flux comptables et conseil fiscal sur étude. memlia-desk est un périmètre distinct pour la finance et la banque.
-- [Méthode](https://memlia.fr/#methode) : montrer la règle, fixer ses limites, coder et éprouver, valider la recette.
-- [Preuves de méthode](https://memlia.fr/#preuves) : cas limites, refus attendus et jeux fictifs. Aucun témoignage ni résultat client publié.
+- [Exemples de tâches](https://memlia.fr/#usages) : collecter, contrôler, rapprocher, suivre et préparer une décision. Exemples génériques et non contractuels, pas des fonctions prêtes à installer.
+- [Méthode](https://memlia.fr/#methode) : observer, cadrer, construire et éprouver, faire la recette et livrer. Maintenance, support et évolutions définis dans la proposition commerciale.
+- [Intégration à l'existant](https://memlia.fr/#integration) : logiciels métier, exports, messageries, dossiers partagés ou classeurs Excel selon la tâche et les accès. Aucune compatibilité universelle promise ; Excel est un exemple possible, pas la catégorie du service.
+- [Contrôle humain](https://memlia.fr/#preuves) : cas limites, refus attendus et jeux fictifs. Aucun témoignage ni résultat client publié.
+- [Garanties](https://memlia.fr/#garanties) : validation humaine, traitements documentés, agrégats non nominatifs et refus en cas de doute.
 - [Questions fréquentes](https://memlia.fr/#questions) : service, compatibilité, confidentialité, contrôle humain, maintenance, recette et prix.
 
 ## Pages
 
-- [Accueil Memlia](https://memlia.fr/) : présentation du produit et demande de démonstration.
+- [Accueil Memlia](https://memlia.fr/) : identifier une tâche à automatiser pour son cabinet.
 
 ## Principes (lignes rouges)
 
 - **Human-in-the-loop** : l'IA prépare, l'humain valide ; aucun envoi externe sans validation humaine.
 - **Anti-surveillance** : métriques en agrégats par rôle, jamais nominatives, aucun scoring individuel.
-- **Confidentialité** : données fictives pour construire, tester et démontrer. En exploitation, les flux, accès, traitements et hébergements sont documentés module par module avant installation ; aucune garantie générique ne remplace cette revue.
+- **Confidentialité** : jeux fictifs pour développer, tester et démontrer. En exploitation, données, accès, flux, hébergements, conservation et responsabilités RGPD sont documentés pour chaque automatisation avant installation, dans le respect du secret professionnel. Ce cadrage n'est pas une certification de conformité.
 
 ## Optional
 
-- [Faire évaluer ma règle](https://cal.com/kevin-svg/decouvrir-memlia) : cadrer une règle et la structure d'un fichier, sans transmettre de donnée client réelle.
+- [Identifier une tâche à automatiser](https://cal.com/kevin-svg/decouvrir-memlia) : décrire le processus, les outils et le résultat attendu, sans transmettre de fichier ni de donnée client réelle. Aucun engagement de déploiement.
 - [Contact](mailto:contact@memlia.fr) : échanger avec l'équipe.

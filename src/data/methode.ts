@@ -11,34 +11,34 @@ export interface Etape {
 }
 
 export const METHODE = {
-  titre: 'Nous faisons le travail. Vous gardez les décisions.',
+  titre: 'Nous construisons. Votre cabinet valide.',
   etapes: [
     {
       numero: 1,
-      titre: 'Montrez la règle.',
+      titre: 'Observer le processus.',
       texte:
-        'Nous partons d’un contrôle, d’un classeur et du résultat attendu — pas d’une démonstration générique.',
-      image: 'img-07-enveloppes-pieces',
+        'Vous décrivez la tâche, ses entrées, ses outils et les moments où une personne tranche, sans transmettre de donnée client réelle.',
+      image: 'img-19-observer-processus',
     },
     {
       numero: 2,
-      titre: 'Fixons les limites.',
+      titre: 'Cadrer les limites.',
       texte: 'Sources, exceptions, validations et cas de refus deviennent un contrat testable.',
-      image: 'img-09-tampon-dateur',
+      image: 'img-20-cadrer-limites',
     },
     {
       numero: 3,
-      titre: 'Nous codons et éprouvons.',
+      titre: 'Construire et éprouver.',
       texte:
-        'Le complément est développé sur la structure de vos fichiers, avec un jeu de données fictif.',
-      image: 'img-08-calculatrice-bulletin',
+        'Nous développons l’automatisation et la testons sur des jeux fictifs représentatifs du périmètre convenu.',
+      image: 'img-21-eprouver-processus',
     },
     {
       numero: 4,
-      titre: 'Vous validez la recette.',
+      titre: 'Faire la recette et livrer.',
       texte:
-        'Nous livrons quand le comportement attendu et les refus sont visibles. Le devis dépend de cette complexité, jamais du nombre d’utilisateurs.',
-      image: 'img-11-chemise-recette',
+        'Vos référents vérifient les cas attendus et les refus. Livraison, support et évolutions sont définis pour ce périmètre. Le devis dépend de la complexité, jamais des sièges.',
+      image: 'img-22-recette-cabinet',
     },
   ] satisfies readonly Etape[],
 } as const;

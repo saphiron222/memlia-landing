@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "playwright test",
-    "test:proof": "python3 tests/proof/test_build.py",
+    "test:proof": "python3 -m unittest discover -s tests/proof -v",
     "qa:screens": "node scripts/capture.mjs",
     "placeholders": "node scripts/placeholders.mjs",
     "lighthouse": "node scripts/lighthouse.mjs"

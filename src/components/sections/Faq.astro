@@ -15,13 +15,11 @@ import { CTA } from '@/data/site.mjs';
 <section id="questions" class="faq" aria-labelledby="faq-titre">
   <span id="faq" class="sr-only" aria-hidden="true"></span>
   <div class="faq-rail rv">
-    <span class="eyebrow">Questions fréquentes</span>
-    <h2 id="faq-titre">Les réponses que nous donnons avant tout devis.</h2>
+    <h2 id="faq-titre">Ce que nous cadrons avant tout devis.</h2>
     <p class="texte-2 faq-intro">
-      Chaque engagement de la grille renvoie ici. Ce sont les réponses que vous obtiendrez en
-      rendez-vous, sans version commerciale.
+      Faisabilité, données, contrôle humain : les réponses qui délimitent le travail avant de le confier à l’IA.
     </p>
-    <Button href={CTA.humain.href} variante="contour" class="faq-humain">{CTA.humain.libelle}</Button>
+    <Button href={CTA.principal.href} variante="contour" class="faq-humain">{CTA.principal.libelle}</Button>
   </div>
 
   <div class="faq-liste rv-groupe" data-faq>

@@ -1,14 +1,13 @@
 ---
 import Lockup from './Lockup.astro';
 import Button from './Button.astro';
-import Chip from './Chip.astro';
+
 import Picto from './Picto.astro';
 import { CTA } from '@/data/site.mjs';
-import { MODULES_AFFICHES, ancreModule } from '@/data/modules';
+
 
 /**
- * Navigation collante (spec §4.4). Avec un seul module affiché, « Le module » est un lien
- * simple ; à partir de deux, un panneau déroulant (motif disclosure, sans piège de focus).
+ * Navigation M3-S : ancres narratives directes et disclosure mobile sans piège de focus.
  */
 interface Props {
   blogActif: boolean;
@@ -16,11 +15,13 @@ interface Props {
   base?: string;
 }
 const { blogActif, base = '' } = Astro.props;
-const plusieursModules = MODULES_AFFICHES.length > 1;
-const moduleUnique = MODULES_AFFICHES[0];
+
 
 const entrees = [
+  { libelle: 'Usages', href: `${base}#usages` },
   { libelle: 'Méthode', href: `${base}#methode` },
+  { libelle: 'Intégration', href: `${base}#integration` },
+  { libelle: 'Garanties', href: `${base}#garanties` },
   { libelle: 'Questions', href: `${base}#questions` },
   ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
 ];
@@ -32,34 +33,7 @@ const entrees = [
 
     <nav class="nav-centre" aria-label="Navigation principale">
       <ul class="nav-liste">
-        {plusieursModules ? (
-          <li class="nav-item nav-modules">
-            <button
-              type="button"
-              class="nav-entree nav-declencheur"
-              aria-expanded="false"
-              aria-controls="panneau-modules"
-              data-nav-declencheur
-            >
-              Modules
-              <Picto nom="chevron" taille={14} class="nav-chevron" />
-            </button>
-            <div class="nav-panneau" id="panneau-modules" data-nav-panneau hidden>
-              {MODULES_AFFICHES.map((m) => (
-                <a class="nav-panneau-entree" href={`${base}${ancreModule(m)}`}>
-                  <Chip variante="pleine" picto="panneau" libelle={m.nom} tuile={m.tuile} encreTuile={m.encreTuile} />
-                  <span class="nav-panneau-texte">{m.titre}</span>
-                </a>
-              ))}
-            </div>
-          </li>
-        ) : (
-          moduleUnique && (
-            <li class="nav-item">
-              <a class="nav-entree" href={`${base}${ancreModule(moduleUnique)}`}>Le module</a>
-            </li>
-          )
-        )}
+
         {entrees.map((e) => (
           <li class="nav-item">
             <a class="nav-entree" href={e.href}>{e.libelle}</a>
@@ -69,13 +43,11 @@ const entrees = [
     </nav>
 
     <div class="nav-droite">
-      <Button href={CTA.humain.href} variante="contour" class="nav-humain">{CTA.humain.libelle}</Button>
+
       <Button href={CTA.principal.href} variante="principal" picto="fleche" class="nav-principal">
         {CTA.principal.libelle}
       </Button>
-      <Button href={CTA.principal.href} variante="contour" class="nav-principal-mobile">
-        {CTA.principal.libelle}
-      </Button>
+
       <button
         type="button"
         class="nav-burger"
@@ -93,18 +65,12 @@ const entrees = [
   <div class="nav-mobile" id="menu-mobile" data-menu-mobile hidden>
     <nav aria-label="Navigation mobile" class="conteneur">
       <ul class="nav-mobile-liste">
-        {MODULES_AFFICHES.map((m) => (
-          <li>
-            <a class="nav-mobile-lien" href={`${base}${ancreModule(m)}`}>
-              <Chip variante="pleine" picto="panneau" libelle={m.nom} tuile={m.tuile} encreTuile={m.encreTuile} />
-            </a>
-          </li>
-        ))}
+
         {entrees.map((e) => (
           <li><a class="nav-mobile-lien" href={e.href}>{e.libelle}</a></li>
         ))}
         <li class="nav-mobile-cta">
-          <Button href={CTA.humain.href} variante="contour">{CTA.humain.libelle}</Button>
+
           <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
         </li>
       </ul>
@@ -114,7 +80,7 @@ const entrees = [
 
 <noscript>
   <nav class="conteneur nav-sans-js" aria-label="Navigation sans JavaScript">
-    <a href={`${base}#modules`}>Modules</a>
+
     {entrees.map(e => <a href={e.href}>{e.libelle}</a>)}
   </nav>
 </noscript>
@@ -157,7 +123,7 @@ const entrees = [
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 6px 12px;
+    padding: 6px 8px;
     border-radius: var(--r-bouton);
     border: 0;
     background: transparent;
@@ -337,44 +303,5 @@ const entrees = [
     window.matchMedia('(min-width: 64rem)').addEventListener('change', (e) => e.matches && fermer());
   }
 
-  // Panneau « Modules » (disclosure) : survol différé, clavier, Échap, focus sortant.
-  const declencheur = document.querySelector<HTMLButtonElement>('[data-nav-declencheur]');
-  const panneau = document.querySelector<HTMLElement>('[data-nav-panneau]');
-  if (declencheur && panneau) {
-    const item = declencheur.parentElement!;
-    const nb = panneau.querySelectorAll('a').length;
-    panneau.style.setProperty('--nb-modules', String(nb));
-    let minuterie = 0;
-    const ouvrir = () => {
-      window.clearTimeout(minuterie);
-      declencheur.setAttribute('aria-expanded', 'true');
-      panneau.hidden = false;
-      requestAnimationFrame(() => panneau.classList.add('ouvert'));
-    };
-    const fermer = () => {
-      window.clearTimeout(minuterie);
-      declencheur.setAttribute('aria-expanded', 'false');
-      panneau.classList.remove('ouvert');
-      panneau.hidden = true;
-    };
-    declencheur.addEventListener('click', () =>
-      declencheur.getAttribute('aria-expanded') === 'true' ? fermer() : ouvrir()
-    );
-    if (window.matchMedia('(hover: hover)').matches) {
-      item.addEventListener('mouseenter', () => (minuterie = window.setTimeout(ouvrir, 200)));
-      item.addEventListener('mouseleave', () => (minuterie = window.setTimeout(fermer, 300)));
-    }
-    item.addEventListener('focusout', (e) => {
-      if (!item.contains(e.relatedTarget as Node)) fermer();
-    });
-    panneau.addEventListener('click', e => {
-      if ((e.target as HTMLElement).closest('a')) fermer();
-    });
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !panneau.hidden) {
-        fermer();
-        declencheur.focus();
-      }
-    });
-  }
+
 </script>

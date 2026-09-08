@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-for (const width of [320, 375, 768, 1024, 1440, 1920]) {
+for (const width of [320, 375, 768, 1024, 1366, 1440, 1920]) {
   test(`accueil sans débordement à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
@@ -32,11 +32,13 @@ test('menu mobile au clavier et ancre FAQ', async ({ page }) => {
   await expect(page.locator('#faq-recette')).not.toHaveAttribute('open', '');
 });
 
-test('les sept périmètres validés sont visibles sans promesse de livraison', async ({ page }) => {
+test('cinq usages illustratifs, aucun catalogue public', async ({ page }) => {
   await page.goto('/');
-  for (const id of ['suivi-social', 'supervision-sociale', 'bulletins-dsn', 'synthese-salaires', 'flux-compta', 'conseil-fiscal', 'memlia-desk']) {
-    await expect(page.locator(`#module-${id}`)).toHaveCount(1);
+  for (const id of ['collect', 'check', 'compare', 'follow', 'decide']) {
+    await expect(page.locator(`[data-usage="${id}"]`)).toHaveCount(1);
   }
+  await expect(page.locator('[id^="module-"]')).toHaveCount(0);
+  await expect(page.locator('#usages')).toContainText('Exemples non contractuels');
 });
 
 test('FAQ DOM et JSON-LD identiques, ancres locales complètes', async ({ page }) => {
@@ -76,18 +78,18 @@ test('reduced-motion garde les étapes lisibles', async ({ page }) => {
   for (const step of await page.locator('[data-etape]').all()) await expect(step).toHaveCSS('opacity', '1');
 });
 
-test('menu desktop : sept liens, Échap et fermeture au clic', async ({ page }) => {
+test('menu desktop : ancres narratives directes et CTA unique', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
-  const trigger = page.locator('[data-nav-declencheur]');
-  await trigger.press('Enter');
-  await expect(page.locator('#panneau-modules a')).toHaveCount(7);
-  await page.keyboard.press('Escape');
-  await expect(trigger).toBeFocused();
-  await expect(page.locator('#panneau-modules')).toBeHidden();
-  await trigger.click();
-  await page.locator('#panneau-modules a').first().click();
-  await expect(page.locator('#panneau-modules')).toBeHidden();
+  const links = page.locator('.nav-centre a');
+  await expect(links).toHaveText(['Usages', 'Méthode', 'Intégration', 'Garanties', 'Questions']);
+  for (const id of ['usages', 'methode', 'integration', 'garanties', 'questions']) {
+    const link = page.locator(`.nav-centre a[href="#${id}"]`);
+    await link.focus();
+    await link.press('Enter');
+    await expect(page).toHaveURL(new RegExp(`#${id}$`));
+  }
+  await expect(page.locator('.nav-principal')).toHaveText('Identifier une tâche à automatiser');
 });
 
 test('méthode mobile : chaque étape garde son image et son texte dans le flux', async ({ page }) => {

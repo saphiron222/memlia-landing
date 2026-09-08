@@ -1,51 +1,40 @@
 ---
 import Button from '@/components/Button.astro';
-import Picto from '@/components/Picto.astro';
+
 import Picture from '@/components/Picture.astro';
 import { CTA } from '@/data/site.mjs';
 
 /**
- * S2 — Hero (spec §4.6, §5.1 ; copy validée section 1). Une seule h1 sur la page.
- * Avec un seul module affiché, pas de sélecteur : le cadre de démo montre IMG-01.
+ * Hero M3-S : une seule clientèle et un processus à automatiser. Visuel conceptuel M4.
  */
-const reassurance = [
-  'Prix à la complexité, jamais au siège',
-  'Aucune action sensible sans validation humaine',
-  'Pas de donnée client réelle dans les jeux de développement ou de démonstration',
-];
+
 ---
 
 <section class="hero" aria-labelledby="hero-titre">
   <div class="hero-texte">
     <span class="pastille hero-eyebrow">
-      Automatisation Excel pour cabinets d’expertise comptable
+      Automatisation IA pour cabinets d’expertise comptable
     </span>
     <h1 id="hero-titre" class="hero-h1">
-      Vos règles métier, codées dans les fichiers <em>Excel</em> que vos équipes utilisent déjà.
+      Automatisez les tâches qui ralentissent votre cabinet.
     </h1>
     <p class="hero-sub">
-      Vous nous montrez une règle de paie, de supervision ou de contrôle. Nous codons le périmètre
-      convenu, l’éprouvons sur un jeu fictif et vous soumettons les résultats : proposition visible,
-      validation humaine, refus explicite des cas ambigus.
+      Memlia automatise vos processus répétitifs pour libérer du temps, dans vos outils existants. Votre cabinet garde la décision.
     </p>
     <div class="hero-boutons">
       <Button href={CTA.principal.href} variante="principal" picto="fleche" class="hero-btn">
         {CTA.principal.libelle}
       </Button>
-      <Button href={CTA.humain.href} variante="contour" class="hero-btn">{CTA.humain.libelle}</Button>
+
     </div>
-    <ul class="hero-confiance" aria-label="Engagements">
-      {reassurance.map((r) => (
-        <li><Picto nom="coche" taille={14} /><span>{r}</span></li>
-      ))}
-    </ul>
+
   </div>
 
   <div class="hero-cadre" data-cadre>
     <div class="hero-verre">
       <div class="hero-ecran">
         <Picture
-          id="img-01-panneau-suivi-social"
+          id="img-16-flux-automatisation"
           sizes="(min-width: 80rem) 1520px, (min-width: 64rem) 1456px, 100vw"
           loading="eager"
           fetchpriority="high"
@@ -70,7 +59,8 @@ const reassurance = [
     margin: 0 auto;
   }
   .hero-h1 {
-    max-width: 896px;
+    max-width: 1050px;
+    font-size: clamp(2.25rem, 1rem + 3.6vw, 3.75rem);
   }
   .hero-sub {
     max-width: 672px;
@@ -131,14 +121,13 @@ const reassurance = [
   }
   @media (min-width: 64rem) {
     .hero {
-      padding: 96px var(--marge-page-lg) 0;
+      padding: 64px var(--marge-page-lg) 0;
     }
     .hero-texte {
       min-height: 270px;
     }
     .hero-cadre {
-      margin: 96px 0 0;
-      min-height: 600px;
+      margin: 48px 0 0;
     }
     .hero-verre {
       padding: 16px;

@@ -6,7 +6,7 @@ import { ancreFaq } from './faq';
  * `picto` : identifiant d'un tracé SVG maison (src/components/Picto.astro).
  */
 export interface Garantie {
-  picto: 'main' | 'fictif' | 'bouclier' | 'excel' | 'stop' | 'agregat';
+  picto: 'main' | 'fictif' | 'bouclier' | 'regle' | 'stop' | 'agregat';
   libelle: string;
   href: string;
 }
@@ -14,8 +14,8 @@ export interface Garantie {
 export const GARANTIES: readonly Garantie[] = [
   { picto: 'main', libelle: 'L’IA prépare, l’humain décide', href: ancreFaq('ia-decide') },
   { picto: 'fictif', libelle: 'Aucune donnée client dans les démos', href: ancreFaq('donnees-reelles') },
-  { picto: 'bouclier', libelle: 'RGPD et secret professionnel', href: ancreFaq('donnees-reelles') },
-  { picto: 'excel', libelle: 'Vos classeurs, un périmètre cadré', href: ancreFaq('quitter-excel') },
+  { picto: 'bouclier', libelle: 'RGPD : traitements documentés', href: ancreFaq('donnees-reelles') },
+  { picto: 'regle', libelle: 'Outils et accès cadrés', href: ancreFaq('quitter-excel') },
   { picto: 'stop', libelle: 'Refuse d’écrire plutôt que d’écrire faux', href: ancreFaq('fichier-ambigu') },
   { picto: 'agregat', libelle: 'Agrégats, jamais nominatif', href: ancreFaq('surveillance') },
 ] as const;

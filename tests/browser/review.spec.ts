@@ -34,3 +34,28 @@ test('promesse tablette conserve des colonnes lisibles', async ({ page }) => {
   const box = await page.locator('.promesse-point').first().boundingBox();
   expect(box!.width).toBeGreaterThan(300);
 });
+
+for (const width of [1024, 1366]) {
+  test(`navigation et CTA sur une ligne à ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 768 });
+    await page.goto('/');
+    await page.evaluate(() => document.fonts.ready);
+    for (const selector of ['.nav-centre a', '.nav-principal', '.hero-btn']) {
+      const lines = await page.locator(selector).evaluateAll(elements => elements.map(el => {
+        const range = document.createRange();
+        const text = [...el.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent?.trim());
+        if (!text) throw new Error('Texte à mesurer absent');
+        range.selectNodeContents(text);
+        return new Set([...range.getClientRects()].map(rect => Math.round(rect.y))).size;
+      }));
+      expect(lines.length).toBeGreaterThan(0);
+      expect(lines.every(count => count === 1)).toBe(true);
+    }
+    const lines = await page.locator('h1').evaluate(el => {
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      return new Set([...range.getClientRects()].map(rect => Math.round(rect.y))).size;
+    });
+    expect(lines).toBeLessThanOrEqual(2);
+  });
+}

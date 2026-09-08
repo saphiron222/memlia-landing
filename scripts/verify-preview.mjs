@@ -35,4 +35,4 @@ try {
 mkdirSync('.qa', { recursive: true });
 writeFileSync('.qa/preview-http.json', JSON.stringify({ base, reports }, null, 2));
 console.log(JSON.stringify({ base, reports }, null, 2));
-if (reports.some(r => r.status !== r.expectedStatus || !r.equivalent || r.injectedBlocks > 1)) process.exitCode = 1;
+if (reports.some(r => r.status !== r.expectedStatus || !r.equivalent || r.injectedBlocks > 1 || (r.expectedStatus === 200 && !r.robots?.includes('noindex')))) process.exitCode = 1;

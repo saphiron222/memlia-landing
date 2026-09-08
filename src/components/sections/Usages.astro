@@ -1,0 +1,42 @@
+---
+import Picture from '@/components/Picture.astro';
+const examples = [
+  { id: 'collect', title: 'Collecter et préparer', text: 'Rassembler les informations des sources convenues et vérifier les éléments attendus avant le traitement.' },
+  { id: 'check', title: 'Contrôler et signaler', text: 'Appliquer les règles du cabinet, isoler les écarts et orienter les cas à revoir.' },
+  { id: 'compare', title: 'Rapprocher et synthétiser', text: 'Comparer les sources et préparer une synthèse dont chaque information reste identifiable.' },
+  { id: 'follow', title: 'Suivre un processus', text: 'Repérer ce qui bloque et préparer les rappels utiles. Leur envoi reste soumis à validation humaine.' },
+  { id: 'decide', title: 'Préparer une décision', text: 'Réunir les données, hypothèses et pièces pour que le professionnel puisse valider, modifier ou refuser.' },
+];
+---
+<section id="usages" class="uses" aria-labelledby="uses-title">
+  <div class="uses-heading rv">
+    <h2 id="uses-title">Commencez par la tâche qui revient.</h2>
+    <p class="texte-2 lecture">Un bon premier sujet est fréquent, repose sur des règles explicables et produit un résultat vérifiable.</p>
+  </div>
+  <figure class="uses-scenario rv">
+    <Picture id="img-17-scenario-validation" sizes="(min-width: 64rem) 800px, 100vw" />
+    <figcaption>Exemple de parcours : une information arrive, les contrôles prévus s’exécutent, une exception est signalée, le référent valide.</figcaption>
+  </figure>
+  <dl class="uses-list">
+    {examples.map(example => (
+      <div data-usage={example.id} class="rv">
+        <dt>{example.title}</dt><dd>{example.text}</dd>
+      </div>
+    ))}
+  </dl>
+  <p class="uses-note texte-2">Exemples non contractuels, à étudier selon vos sources, règles, exceptions et accès. Ils ne décrivent pas des fonctions prêtes à installer.</p>
+</section>
+<style>
+  .uses { padding: 96px var(--marge-page) 0; }
+  .uses-heading { display: grid; gap: 16px; max-width: 780px; }
+  .uses-scenario { margin: 40px 0; display: grid; gap: 16px; max-width: 800px; }
+  .uses-scenario :global(img) { border-radius: var(--r-carte); }
+  figcaption { max-width: 65ch; color: var(--texte-2); font-size: var(--t-sm); }
+  .uses-list { display: grid; gap: 32px; margin: 0; }
+  .uses-list div { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  dt { font-family: var(--police-display); font-size: var(--t-2xl); color: var(--texte-fort); font-weight: 600; }
+  dd { margin: 0; max-width: 65ch; color: var(--texte-2); }
+  .uses-note { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--ligne); max-width: 80ch; font-size: var(--t-sm); }
+  @media (min-width: 48rem) { .uses-list div { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 32px; } }
+  @media (min-width: 64rem) { .uses { padding: 128px var(--marge-page-lg) 0; } }
+</style>

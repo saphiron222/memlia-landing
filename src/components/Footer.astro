@@ -1,8 +1,6 @@
 ---
 import Lockup from './Lockup.astro';
-import Chip from './Chip.astro';
-import { SITE } from '@/data/site.mjs';
-import { MODULES_AFFICHES, ancreModule } from '@/data/modules';
+import { SITE, CTA } from '@/data/site.mjs';
 
 /** Pied de page (spec §4.14) : 4 colonnes, ligne © en --texte-2, emblème « M » en filigrane. */
 interface Props {
@@ -27,7 +25,7 @@ const colonnes = [
     liens: [
       ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
       { libelle: 'Questions fréquentes', href: `${base}#questions` },
-      { libelle: 'Faire évaluer ma règle', href: `${base}#evaluer` },
+      { libelle: CTA.principal.libelle, href: CTA.principal.href },
     ],
   },
   {
@@ -50,15 +48,11 @@ const colonnes = [
 
     <div class="pied-colonnes">
       <div class="pied-col">
-        <h2 class="pied-titre">{MODULES_AFFICHES.length > 1 ? 'Modules' : 'Le module'}</h2>
+        <h2 class="pied-titre">Automatisation IA</h2>
         <ul class="pied-liste">
-          {MODULES_AFFICHES.map((m) => (
-            <li>
-              <a class="pied-lien pied-lien-chip" href={`${base}${ancreModule(m)}`}>
-                <Chip variante="pleine" picto="panneau" libelle={m.nom} tuile={m.tuile} encreTuile={m.encreTuile} />
-              </a>
-            </li>
-          ))}
+          <li><a class="pied-lien" href={`${base}#usages`}>Exemples de tâches</a></li>
+          <li><a class="pied-lien" href={`${base}#integration`}>Vos outils existants</a></li>
+          <li><a class="pied-lien" href={`${base}#garanties`}>Nos engagements</a></li>
         </ul>
       </div>
       {colonnes.map((c) => (

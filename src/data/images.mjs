@@ -9,17 +9,17 @@
  * Fichiers attendus : public/images/<id>-<largeur>.{avif,webp}. Le brief d'origine vit
  * à côté : public/images/brief-<id>.md (retiré du `dist` au build).
  *
- * Les captures produit (IMG-01, 04) ne sont jamais générées : elles viennent du banc
- * Windows sur le jeu fictif. Tant qu'elles n'existent pas, le placeholder tient la place
- * exacte (mêmes dimensions) pour que la mise en page et le CLS soient déjà les bons.
+ * Registre M3-S : docs/design/2026-09-09-m3-s-briefs.md. Les anciens visuels produit
+ * sont exclus de dist. Les illustrations conceptuelles M4 sont tenues par des
+ * placeholders explicites ; aucune capture produit n'est simulée.
  */
 export const IMAGES = {
-  'img-01-panneau-suivi-social': {
-    brief: 'IMG-01',
+  'img-16-flux-automatisation': {
+    brief: 'IMG-16',
     largeurs: [768, 1024, 1440, 1888, 3024],
     ratio: [3024, 1610],
-    alt: 'Panneau Memlia ouvert à droite d’un classeur Excel de suivi social, avec des lignes proposées à valider',
-    generee: false,
+    alt: 'Illustration conceptuelle d’un processus de cabinet : entrées, traitement borné, exceptions et validation humaine',
+    generee: true,
   },
   'img-02-fond-hero': {
     brief: 'IMG-02',
@@ -35,39 +35,46 @@ export const IMAGES = {
     alt: 'Sceau Memlia en relief sur papier',
     generee: true,
   },
-  'img-04-onglet-suivi-social': {
-    brief: 'IMG-04',
+  'img-17-scenario-validation': {
+    brief: 'IMG-17',
     largeurs: [500, 1000],
     ratio: [2000, 1440],
-    alt: 'Onglet de suivi social généré par Memlia dans Excel, avec le panneau de validation',
-    generee: false,
-  },
-  'img-07-enveloppes-pieces': {
-    brief: 'IMG-07',
-    largeurs: [570, 1140],
-    ratio: [4, 3],
-    alt: 'Enveloppes kraft et pochette de pièces comptables',
+    alt: 'Illustration conceptuelle d’informations rassemblées, avec un cas isolé pour revue humaine',
     generee: true,
   },
-  'img-08-calculatrice-bulletin': {
-    brief: 'IMG-08',
+  'img-18-outils-existants': {
+    brief: 'IMG-18',
     largeurs: [570, 1140],
     ratio: [4, 3],
-    alt: 'Calculatrice de bureau et bulletin de paie plié, vierge',
+    alt: 'Illustration d’outils et de documents reliés autour d’un même processus de travail',
     generee: true,
   },
-  'img-09-tampon-dateur': {
-    brief: 'IMG-09',
+  'img-19-observer-processus': {
+    brief: 'IMG-19',
     largeurs: [570, 1140],
     ratio: [4, 3],
-    alt: 'Tampon dateur et trombone sur une feuille quadrillée vierge',
+    alt: 'Documents vierges et carnet ouvert pour décrire un processus',
     generee: true,
   },
-  'img-11-chemise-recette': {
-    brief: 'IMG-11',
+  'img-20-cadrer-limites': {
+    brief: 'IMG-20',
     largeurs: [570, 1140],
     ratio: [4, 3],
-    alt: 'Deux tasses et une chemise cartonnée ouverte sur une table',
+    alt: 'Pièces de papier regroupées avec une exception séparée du traitement courant',
+    generee: true,
+  },
+  'img-21-eprouver-processus': {
+    brief: 'IMG-21',
+    largeurs: [570, 1140],
+    ratio: [4, 3],
+    alt: 'Série de pièces fictives préparées pour éprouver une règle et ses exceptions',
+    generee: true,
+  },
+  'img-22-recette-cabinet': {
+    brief: 'IMG-22',
+    largeurs: [570, 1140],
+    ratio: [4, 3],
+    alt: 'Dossier de recette ouvert et stylo posé au point de validation humaine',
     generee: true,
   },
   'img-13-embleme-methode': {
