@@ -1,0 +1,36 @@
+import { test, expect } from '@playwright/test';
+
+for (const [width, height] of [[320,740],[375,812],[1024,768],[1366,768]]) {
+  test(`première vue utile ${width}x${height}`, async ({ page }) => {
+    await page.setViewportSize({width,height});
+    await page.emulateMedia({reducedMotion:'reduce'});
+    await page.goto('/');
+    await page.evaluate(() => document.fonts.ready);
+    const box = await page.locator('.hero-boutons').boundingBox();
+    expect(box!.y + box!.height).toBeLessThan(height - 16);
+    expect(await page.locator('.hero').evaluate(el => parseFloat(getComputedStyle(el).paddingTop))).toBeLessThanOrEqual(96);
+  });
+}
+
+test('menu mobile ferme avant que le focus passe derrière', async ({ page }) => {
+  await page.setViewportSize({width:375,height:812});
+  await page.goto('/');
+  await page.locator('[data-burger]').click();
+  await page.locator('#menu-mobile a').last().focus();
+  await page.keyboard.press('Tab');
+  await expect(page.locator('#menu-mobile')).toBeHidden();
+  await expect(page.locator('body')).not.toHaveCSS('overflow','hidden');
+});
+
+test('garanties cohérentes avec les limites et les données', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.garantie-lien').filter({hasText:'RGPD'})).toHaveAttribute('href','#faq-donnees-reelles');
+  await expect(page.locator('.garanties-grille')).not.toContainText('Zéro macro, zéro migration');
+});
+
+test('promesse tablette conserve des colonnes lisibles', async ({ page }) => {
+  await page.setViewportSize({width:768,height:1024});
+  await page.goto('/');
+  const box = await page.locator('.promesse-point').first().boundingBox();
+  expect(box!.width).toBeGreaterThan(300);
+});

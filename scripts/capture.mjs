@@ -13,10 +13,13 @@ try {
     page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
     await page.goto(base);
     await page.evaluate(() => document.fonts.ready);
-    for (const section of await page.locator('main section').all()) {
-      await section.scrollIntoViewIfNeeded();
-      await page.waitForTimeout(700);
+    // Parcourir chaque viewport : sauter au centre des grandes sections omet des .rv.
+    for (let top = 0; top < await page.evaluate(() => document.documentElement.scrollHeight); top += 450) {
+      await page.evaluate(top => window.scrollTo({ top, behavior: 'instant' }), top);
+      await page.waitForTimeout(100);
     }
+    await page.waitForTimeout(1100);
+    if (await page.locator('.rv:not(.in)').count()) throw new Error('Révélations incomplètes avant capture');
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     await page.waitForTimeout(2100);
     await page.screenshot({ path: `.qa/screens/${width}-hero.png` });

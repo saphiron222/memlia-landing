@@ -24,8 +24,8 @@ const proofs = [
       sont refusés explicitement. Dans le périmètre testé, les zones de saisie du cabinet sont séparées
       des zones générées par Memlia.
     </p>
-    <p class="texte-2 lecture">Le module propose. Le cabinet saisit ou valide. Ce que le module génère
-      lui appartient et se régénère ; ce que le cabinet saisit ne se touche jamais.</p>
+    <p class="texte-2 lecture">Le module propose. Le cabinet saisit ou valide. Dans le périmètre accepté
+      en recette, les zones générées sont régénérables et les zones de saisie du cabinet sont préservées.</p>
   </div>
 
   <div class="coins">
@@ -103,6 +103,7 @@ const proofs = [
     .reperes {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+    .repere:last-child { grid-column: 1 / -1; }
   }
   @media (min-width: 64rem) {
     .preuves {
@@ -115,6 +116,7 @@ const proofs = [
     .reperes {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+    .repere:last-child { grid-column: auto; }
     .repere {
       padding: 48px 32px 56px;
     }

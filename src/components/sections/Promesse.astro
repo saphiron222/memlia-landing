@@ -84,13 +84,16 @@ const points = [
   }
   @media (min-width: 48rem) {
     .promesse-grille {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+    .promesse-point:last-child { grid-column: 1 / -1; }
     .promesse-point {
       padding: 48px 32px 64px;
     }
   }
   @media (min-width: 64rem) {
+    .promesse-grille { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .promesse-point:last-child { grid-column: auto; }
     .promesse {
       padding-top: 128px;
     }

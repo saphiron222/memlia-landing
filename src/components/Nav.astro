@@ -324,6 +324,10 @@ const entrees = [
     menu.addEventListener('click', (e) => {
       if ((e.target as HTMLElement).closest('a')) fermer();
     });
+    // Disclosure non modale : ne jamais laisser le focus derrière le panneau.
+    document.addEventListener('focusin', (e) => {
+      if (!menu.hidden && e.target !== burger && !menu.contains(e.target as Node)) fermer();
+    });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !menu.hidden) {
         fermer();
