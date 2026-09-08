@@ -1,0 +1,128 @@
+---
+import Button from '@/components/Button.astro';
+import Picto from '@/components/Picto.astro';
+import Picture from '@/components/Picture.astro';
+import { CTA } from '@/data/site.mjs';
+
+/**
+ * S8 — Appel final (spec §4.13 ; copy validée section 7). Un seul bouton principal,
+ * le CTA humain en secondaire. Fond IMG-02 décoratif, texte au-dessus d'un voile crème
+ * pour tenir le contraste quel que soit le visuel livré.
+ */
+const cadrage = [
+  'La règle : un contrôle, un classeur, le résultat attendu.',
+  'Le périmètre : sources, exceptions, cas de refus.',
+  'Le devis : à la complexité, jamais au nombre de postes.',
+];
+---
+
+<section id="evaluer" class="appel" aria-labelledby="appel-titre">
+  <span id="demo" aria-hidden="true"></span>
+  <div class="appel-fond" aria-hidden="true">
+    <Picture id="img-02-fond-hero" sizes="(min-width: 90rem) 1360px, 100vw" decorative />
+  </div>
+  <div class="appel-int coins rv">
+    <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+    <span class="eyebrow">Première étape</span>
+    <h2 id="appel-titre" class="appel-h2">Quelle règle vérifiez-vous encore à la main dans Excel ?</h2>
+    <p class="texte-2 appel-texte">
+      Décrivez la règle et la structure du fichier sans transmettre de donnée client réelle.
+      L’échange produit un premier cadrage : périmètre automatisable, décisions qui restent humaines,
+      limites techniques et facteurs de complexité du devis.
+    </p>
+    <ul class="appel-cadrage">
+      {cadrage.map((c) => (
+        <li><Picto nom="coche" taille={14} /><span>{c}</span></li>
+      ))}
+    </ul>
+    <div class="appel-boutons">
+      <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
+      <Button href={CTA.humain.href} variante="contour">{CTA.humain.libelle}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .appel {
+    position: relative;
+    padding: 128px var(--marge-page) 96px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .appel-fond {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.55;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+  }
+  .appel-fond :global(picture),
+  .appel-fond :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .appel-int {
+    display: grid;
+    gap: 16px;
+    justify-items: center;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px;
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-carte);
+    background: rgba(255, 254, 251, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--ombre-xs);
+  }
+  .appel-h2 {
+    font-size: var(--t-4xl);
+    max-width: 22ch;
+  }
+  .appel-texte {
+    max-width: 52ch;
+  }
+  .appel-cadrage {
+    display: grid;
+    gap: 8px;
+    margin-top: 4px;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+    text-align: left;
+  }
+  .appel-cadrage li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5em;
+  }
+  .appel-cadrage svg {
+    flex: 0 0 auto;
+    margin-top: 0.3em;
+    color: var(--accent-appui);
+  }
+  .appel-boutons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  @media (max-width: 24.99rem) {
+    .appel-boutons {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+  }
+  @media (min-width: 64rem) {
+    .appel {
+      padding: 176px var(--marge-page-lg) 144px;
+    }
+    .appel-int {
+      padding: 64px 72px;
+    }
+  }
+</style>

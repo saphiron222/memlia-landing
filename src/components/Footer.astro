@@ -1,0 +1,199 @@
+---
+import Lockup from './Lockup.astro';
+import Chip from './Chip.astro';
+import { SITE } from '@/data/site.mjs';
+import { MODULES_AFFICHES, ancreModule } from '@/data/modules';
+
+/** Pied de page (spec §4.14) : 4 colonnes, ligne © en --texte-2, emblème « M » en filigrane. */
+interface Props {
+  blogActif: boolean;
+  base?: string;
+}
+const { blogActif, base = '' } = Astro.props;
+const annee = new Date().getFullYear();
+
+const colonnes = [
+  {
+    titre: 'Méthode',
+    liens: [
+      { libelle: 'Proposition vs saisie', href: `${base}#preuves` },
+      { libelle: 'Nous faisons le travail', href: `${base}#methode` },
+      { libelle: 'Sécurité et RGPD', href: `${base}#faq-donnees-reelles` },
+      { libelle: 'Anti-surveillance', href: `${base}#faq-surveillance` },
+    ],
+  },
+  {
+    titre: 'Ressources',
+    liens: [
+      ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
+      { libelle: 'Questions fréquentes', href: `${base}#questions` },
+      { libelle: 'Faire évaluer ma règle', href: `${base}#evaluer` },
+    ],
+  },
+  {
+    titre: 'Cabinet',
+    liens: [
+      { libelle: 'Contact', href: `mailto:${SITE.email}` },
+      { libelle: 'Mentions légales', href: '/mentions-legales' },
+      { libelle: 'Confidentialité', href: '/politique-de-confidentialite' },
+    ],
+  },
+];
+---
+
+<footer class="pied">
+  <div class="conteneur pied-int">
+    <svg class="pied-embleme" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+      <rect x="0" y="0" width="100" height="100" rx="23" />
+      <text x="50" y="72" text-anchor="middle" font-size="64" font-family="Fraunces, Georgia, serif" font-weight="600">M</text>
+    </svg>
+
+    <div class="pied-colonnes">
+      <div class="pied-col">
+        <h2 class="pied-titre">{MODULES_AFFICHES.length > 1 ? 'Modules' : 'Le module'}</h2>
+        <ul class="pied-liste">
+          {MODULES_AFFICHES.map((m) => (
+            <li>
+              <a class="pied-lien pied-lien-chip" href={`${base}${ancreModule(m)}`}>
+                <Chip variante="pleine" picto="panneau" libelle={m.nom} tuile={m.tuile} encreTuile={m.encreTuile} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {colonnes.map((c) => (
+        <div class="pied-col">
+          <h2 class="pied-titre">{c.titre}</h2>
+          <ul class="pied-liste">
+            {c.liens.map((l) => (
+              <li><a class="pied-lien" href={l.href}>{l.libelle}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="pied-bas">
+      <div class="pied-marque">
+        <Lockup taille="pied" />
+        <p class="pied-tagline">{SITE.tagline}</p>
+      </div>
+      <div class="pied-legal">
+        <span>© {annee} Memlia</span>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-de-confidentialite">Confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .pied {
+    position: relative;
+    padding: 96px 0 56px;
+    background: var(--surface-feuille);
+    border-top: 1px solid var(--ligne-douce);
+    overflow: hidden;
+  }
+  .pied-int {
+    position: relative;
+  }
+  .pied-embleme {
+    display: none;
+  }
+  .pied-colonnes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 32px;
+    position: relative;
+  }
+  .pied-titre {
+    font-family: var(--police-corps), 'Hanken Fallback';
+    font-size: var(--t-sm);
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--texte-fort);
+  }
+  .pied-liste {
+    display: grid;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .pied-lien {
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+    transition: color var(--duree-1);
+  }
+  .pied-lien-chip {
+    display: inline-flex;
+  }
+  .pied-bas {
+    position: relative;
+    display: grid;
+    gap: 24px;
+    padding-top: 96px;
+  }
+  .pied-marque {
+    display: grid;
+    gap: 10px;
+  }
+  .pied-tagline {
+    font-family: var(--police-display), 'Fraunces Fallback';
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--t-lg);
+    color: var(--texte);
+    max-width: 32ch;
+  }
+  .pied-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    font-size: var(--t-xs);
+    color: var(--texte-2);
+  }
+  .pied-legal a {
+    color: var(--texte-2);
+  }
+  @media (hover: hover) {
+    .pied-lien:hover,
+    .pied-legal a:hover {
+      color: var(--texte-fort);
+    }
+  }
+  @media (min-width: 48rem) {
+    .pied-bas {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+  }
+  @media (min-width: 64rem) {
+    .pied {
+      padding: 144px 0 56px;
+    }
+    .pied-colonnes {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 48px 32px;
+    }
+    .pied-bas {
+      padding-top: 128px;
+    }
+    .pied-legal {
+      gap: 32px;
+    }
+    .pied-embleme {
+      display: block;
+      position: absolute;
+      left: 48%;
+      top: -40px;
+      width: 640px;
+      height: 640px;
+      transform: translateX(-50%);
+      fill: var(--surface-hover);
+      pointer-events: none;
+    }
+    .pied-embleme text {
+      fill: var(--surface-feuille);
+    }
+  }
+</style>

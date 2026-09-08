@@ -1,0 +1,138 @@
+---
+import Legal from '@/layouts/Legal.astro';
+import { SITE } from '@/data/site.mjs';
+
+/** Politique de confidentialité (noindex, hors sitemap — voir PAGES_NOINDEX). */
+---
+
+<Legal
+  titre="Politique de confidentialité — Memlia"
+  description="Politique de confidentialité du site memlia.fr : données traitées, finalités, cookies, droits RGPD."
+  chemin="/politique-de-confidentialite"
+  h1="Politique de confidentialité"
+  miseAJour="8 septembre 2026"
+>
+  <h2>1. Introduction</h2>
+  <p>
+    Memlia (« Memlia », « nous ») attache de l’importance à la protection de votre vie privée. La présente
+    politique explique quelles informations sont traitées lorsque vous consultez le site
+    <strong>memlia.fr</strong> (le « Site ») et comment elles sont utilisées. En utilisant le Site, vous
+    reconnaissez avoir pris connaissance de cette politique.
+  </p>
+
+  <h2>2. Champ d’application</h2>
+  <p>
+    Cette politique couvre uniquement le Site memlia.fr, qui est un site de présentation. Elle ne régit pas
+    l’utilisation des compléments Memlia : lorsqu’un cabinet devient client, les flux, accès, traitements et
+    éventuels hébergements sont documentés module par module et font l’objet d’un contrat et d’une politique
+    distincts.
+  </p>
+
+  <h2>3. Définitions</h2>
+  <ul>
+    <li>
+      <strong>Données personnelles</strong> : toute information permettant d’identifier, directement ou
+      indirectement, une personne physique.
+    </li>
+    <li><strong>Visiteur</strong> : toute personne consultant le Site.</li>
+  </ul>
+
+  <h2>4. Informations que nous collectons</h2>
+  <p>Le Site ne comporte aucun formulaire d’inscription et ne crée aucun compte.</p>
+  <ul>
+    <li>
+      <strong>Informations que vous fournissez :</strong> si vous nous écrivez à {SITE.email}, nous recevons
+      votre adresse e-mail, votre nom (si vous le communiquez) et le contenu de votre message.
+    </li>
+    <li>
+      <strong>Prise de rendez-vous :</strong> les boutons de rendez-vous renvoient vers le service tiers
+      Cal.com, qui traite les informations que vous y saisissez selon sa propre politique de confidentialité.
+    </li>
+    <li>
+      <strong>Données techniques :</strong> comme tout site web, des journaux serveur standard (adresse IP, type
+      de navigateur, date et heure) peuvent être traités à des fins strictes de fonctionnement et de sécurité,
+      sans profilage ni publicité.
+    </li>
+  </ul>
+
+  <h2>5. Finalités d’utilisation</h2>
+  <p>
+    Les informations servent à répondre à vos demandes, organiser les rendez-vous et assurer le bon
+    fonctionnement et la sécurité du Site. Les mesures Cloudflare Web Analytics servent à comprendre
+    la fréquentation et les performances des pages, sans établir de classement nominatif des visiteurs.
+  </p>
+
+  <h2>6. Base légale</h2>
+  <p>
+    Conformément au Règlement général sur la protection des données (RGPD), les traitements reposent sur votre
+    démarche volontaire lorsque vous nous contactez et sur notre intérêt légitime à vous répondre ainsi qu’à
+    garantir la sécurité du Site.
+  </p>
+
+  <h2>7. Cookies et traceurs</h2>
+  <p>
+    Le code du Site n’ajoute aucun traceur publicitaire. L’hébergement ajoute Cloudflare Web Analytics,
+    qui transmet des mesures de navigation et de performance à Cloudflare. Les liens de rendez-vous
+    ouvrent Cal.com, un service tiers soumis à sa propre politique de confidentialité.
+  </p>
+
+  <h2>8. Partage des informations</h2>
+  <p>
+    Nous ne vendons ni ne louons vos informations, et nous ne les partageons avec aucun tiers à des fins
+    commerciales. Seuls des prestataires techniques (par exemple l’hébergeur du Site ou le service de prise de
+    rendez-vous) peuvent traiter les données strictement nécessaires à son fonctionnement, dans le respect de la
+    réglementation applicable.
+  </p>
+
+  <h2>9. Conservation des données</h2>
+  <p>
+    Les messages reçus par e-mail sont conservés le temps nécessaire au traitement de votre demande. Les journaux
+    techniques sont conservés pour une durée limitée à des fins de sécurité, puis supprimés.
+  </p>
+
+  <h2>10. Sécurité</h2>
+  <p>
+    Le Site est servi via une connexion chiffrée (HTTPS). Nous mettons en œuvre des mesures raisonnables pour
+    protéger les informations traitées ; toutefois, aucune transmission sur Internet ne peut être garantie
+    totalement sûre.
+  </p>
+
+  <h2>11. Vos droits</h2>
+  <p>
+    Conformément au RGPD, vous disposez d’un droit d’accès, de rectification, d’effacement, d’opposition et de
+    limitation concernant vos données personnelles. Pour exercer ces droits, écrivez-nous à
+    <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Vous pouvez également introduire une réclamation auprès de
+    la <a href="https://www.cnil.fr" rel="noopener">CNIL</a>.
+  </p>
+
+  <h2>12. Transferts hors Union européenne</h2>
+  <p>
+    Selon l’hébergeur retenu, certaines données techniques peuvent être traitées en dehors de l’Union européenne.
+    Le cas échéant, des garanties appropriées (telles que les clauses contractuelles types de la Commission
+    européenne) sont mises en place.
+  </p>
+
+  <h2>13. Liens vers des sites tiers</h2>
+  <p>
+    Le Site peut contenir des liens vers des sites externes. Nous ne sommes pas responsables de leurs pratiques
+    en matière de confidentialité et vous invitons à consulter leurs propres politiques.
+  </p>
+
+  <h2>14. Mineurs</h2>
+  <p>
+    Le Site s’adresse à des professionnels et n’est pas destiné aux personnes de moins de 16 ans. Nous ne
+    collectons pas sciemment de données relatives à des mineurs.
+  </p>
+
+  <h2>15. Modifications de cette politique</h2>
+  <p>
+    Cette politique peut être mise à jour pour refléter une évolution du Site ou de la réglementation. La date
+    de dernière mise à jour figure en haut de cette page.
+  </p>
+
+  <h2>16. Contact</h2>
+  <p>
+    Pour toute question relative à cette politique ou à vos données personnelles :
+    <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+  </p>
+</Legal>

@@ -1,0 +1,130 @@
+/*
+ * Jetons Memlia — spec docs/design/2026-09-08-design-navattic-memlia.md, section 2.
+ * Trois couches : primitives → alias sémantiques (seuls noms autorisés dans les
+ * composants) → composants. Contrastes calculés sur crème #fffefb (WCAG 2.x).
+ */
+:root {
+  /* ---- Primitives : surfaces ---- */
+  --creme: #fffefb;
+  --papier: #fcfbf7;
+  --blanc: #ffffff;
+
+  /* ---- Primitives : encre et voiles (dérivés de #231f20) ---- */
+  --encre: #231f20;
+  --encre-88: rgba(35, 31, 32, 0.88);
+  --encre-68: rgba(35, 31, 32, 0.68); /* texte secondaire — 5,45:1 */
+  --encre-42: rgba(35, 31, 32, 0.42); /* décoratif uniquement — 2,57:1 */
+  --encre-18: rgba(35, 31, 32, 0.18);
+  --encre-12: rgba(35, 31, 32, 0.12);
+  --encre-07: rgba(35, 31, 32, 0.07);
+  --encre-04: rgba(35, 31, 32, 0.04);
+
+  /* ---- Primitives : vert Memlia ---- */
+  --vert: #27b657; /* accent — 2,63:1 : jamais en texte, focus ni icône sur crème */
+  --vert-appui: #1c8a41; /* bordure du bouton principal, icônes ≥ 24 px */
+  --vert-texte: #176f37; /* texte vert — 6,2:1 */
+  --vert-doux: #b9f8cf;
+  --vert-voile: #eafaef;
+
+  /* ---- Primitives : signal (jamais décoratif) ---- */
+  --ocre: #926500;
+  --ocre-voile: #fbf3df;
+  --rouge: #a4322a;
+
+  /* ---- Alias sémantiques ---- */
+  --surface-page: var(--papier);
+  --surface-feuille: var(--creme);
+  --surface-hover: var(--encre-04);
+  --ligne-douce: var(--encre-07);
+  --ligne: var(--encre-12);
+  --ligne-forte: var(--encre-18);
+  --texte-fort: var(--encre);
+  --texte: var(--encre-88);
+  --texte-2: var(--encre-68);
+  --picto-repos: var(--encre-42);
+  --accent: var(--vert);
+  --accent-appui: var(--vert-appui);
+  --accent-voile: var(--vert-voile);
+  --accent-texte: var(--vert-texte);
+  --focus: var(--vert-texte);
+  --bouton-sombre: var(--encre);
+  --bouton-sombre-bord: #141112;
+  --bouton-sombre-hover: #37322f;
+  --bouton-principal-hover: #34c264;
+
+  /* ---- Typographie ---- */
+  --police-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --police-corps: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --police-chiffres: var(--police-display);
+
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --t-lg: 1.125rem;
+  --t-xl: 1.25rem;
+  --t-2xl: 1.5rem;
+  --t-3xl: clamp(1.625rem, 1.2rem + 1.2vw, 2rem);
+  --t-4xl: clamp(2rem, 1.5rem + 1.4vw, 2.5rem);
+  --t-5xl: clamp(2rem, 1.2rem + 2.4vw, 3rem);
+  --t-7xl: clamp(2.25rem, 1rem + 4.2vw, 4.25rem);
+  --t-chiffre: clamp(2.75rem, 2.4rem + 1vw, 3rem);
+
+  /* ---- Rayons ---- */
+  --r-chip: 7px;
+  --r-bouton: 8px;
+  --r-pastille: 10px;
+  --r-ecran: 11px;
+  --r-boite: 12px;
+  --r-carte: 16px;
+  --r-cadre: 24px;
+  --r-ecran-coin: 32px;
+  --r-ornement: 6px;
+
+  /* ---- Ombres (teinte encre) ---- */
+  --ombre-xs: 0 2px 2px rgba(35, 31, 32, 0.02), 0 5px 5px rgba(35, 31, 32, 0.02);
+  --ombre-contour: 0 2px 3px rgba(35, 31, 32, 0.03), 0 2px 2px -1px rgba(35, 31, 32, 0.03);
+  --ombre-plein: 0 1px 1px rgba(35, 31, 32, 0.1), 0 2px 3px rgba(35, 31, 32, 0.08),
+    1px 4px 8px rgba(35, 31, 32, 0.12), inset 0 -3px 2px rgba(0, 0, 0, 0.2),
+    inset 0 2px 0.4px rgba(255, 255, 255, 0.14);
+  --ombre-plein-actif: inset 0 3px 1px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.2);
+  --ombre-contour-actif: inset 0 2px 1px rgba(35, 31, 32, 0.05);
+  --ombre-chip: 0 2px 8px rgba(39, 182, 87, 0.3), inset 0 2.5px 1px rgba(255, 255, 255, 0.2);
+  --ombre-chip-clair: 0 2px 7px rgba(35, 31, 32, 0.05);
+  --ombre-ornement: 0 3px 5px rgba(35, 31, 32, 0.05), 0 1px 2px rgba(35, 31, 32, 0.05),
+    0 0.5px 0.5px rgba(35, 31, 32, 0.07);
+  --ombre-panneau: 0 10px 15px -3px rgba(35, 31, 32, 0.1), 0 4px 6px -4px rgba(35, 31, 32, 0.1);
+
+  /* ---- Motion ---- */
+  --duree-1: 150ms;
+  --duree-2: 200ms;
+  --duree-3: 250ms;
+  --duree-4: 300ms;
+  --duree-entree: 500ms;
+  --duree-etiquette: 700ms;
+  --duree-revelation: 1750ms;
+  --courbe-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --courbe-sortie: cubic-bezier(0, 0, 0.2, 1);
+  --courbe-douce: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --courbe-etiquette: cubic-bezier(0.76, 0, 0.24, 1);
+  --courbe-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---- Grille ---- */
+  --conteneur-lg: 1360px;
+  --conteneur-sm: 672px;
+  --marge-page: 16px;
+  --marge-page-lg: 32px;
+  --pas-points: 9px;
+  --pas-grille: 72px;
+  --decalage-grille: 32px;
+  --pas-diagonal: 4px;
+
+  /* ---- Composants ---- */
+  --bouton-h: 32px;
+  --bouton-h-lien: 28px;
+  --bouton-px: 12px;
+  --bouton-gap: 6px;
+  --chip-icone: 20px;
+  --ornement: 20px;
+  --ornement-sm: 10px;
+  --nav-h: 56px;
+}

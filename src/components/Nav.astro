@@ -1,0 +1,376 @@
+---
+import Lockup from './Lockup.astro';
+import Button from './Button.astro';
+import Chip from './Chip.astro';
+import Picto from './Picto.astro';
+import { CTA } from '@/data/site.mjs';
+import { MODULES_AFFICHES, ancreModule } from '@/data/modules';
+
+/**
+ * Navigation collante (spec §4.4). Avec un seul module affiché, « Le module » est un lien
+ * simple ; à partir de deux, un panneau déroulant (motif disclosure, sans piège de focus).
+ */
+interface Props {
+  blogActif: boolean;
+  /** Préfixe des ancres : vide sur l'accueil, « / » depuis une autre page. */
+  base?: string;
+}
+const { blogActif, base = '' } = Astro.props;
+const plusieursModules = MODULES_AFFICHES.length > 1;
+const moduleUnique = MODULES_AFFICHES[0];
+
+const entrees = [
+  { libelle: 'Méthode', href: `${base}#methode` },
+  { libelle: 'Questions', href: `${base}#questions` },
+  ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
+];
+---
+
+<header class="nav-barre">
+  <div class="conteneur nav">
+    <Lockup href="/" />
+
+    <nav class="nav-centre" aria-label="Navigation principale">
+      <ul class="nav-liste">
+        {plusieursModules ? (
+          <li class="nav-item nav-modules">
+            <button
+              type="button"
+              class="nav-entree nav-declencheur"
+              aria-expanded="false"
+              aria-controls="panneau-modules"
+              data-nav-declencheur
+            >
+              Modules
+              <Picto nom="chevron" taille={14} class="nav-chevron" />
+            </button>
+            <div class="nav-panneau" id="panneau-modules" data-nav-panneau hidden>
+              {MODULES_AFFICHES.map((m) => (
+                <a class="nav-panneau-entree" href={`${base}${ancreModule(m)}`}>
+                  <Chip variante="pleine" picto="panneau" libelle={m.nom} tuile={m.tuile} encreTuile={m.encreTuile} />
+                  <span class="nav-panneau-texte">{m.titre}</span>
+                </a>
+              ))}
+            </div>
+          </li>
+        ) : (
+          moduleUnique && (
+            <li class="nav-item">
+              <a class="nav-entree" href={`${base}${ancreModule(moduleUnique)}`}>Le module</a>
+            </li>
+          )
+        )}
+        {entrees.map((e) => (
+          <li class="nav-item">
+            <a class="nav-entree" href={e.href}>{e.libelle}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="nav-droite">
+      <Button href={CTA.humain.href} variante="contour" class="nav-humain">{CTA.humain.libelle}</Button>
+      <Button href={CTA.principal.href} variante="principal" picto="fleche" class="nav-principal">
+        {CTA.principal.libelle}
+      </Button>
+      <Button href={CTA.principal.href} variante="contour" class="nav-principal-mobile">
+        {CTA.principal.libelle}
+      </Button>
+      <button
+        type="button"
+        class="nav-burger"
+        aria-expanded="false"
+        aria-controls="menu-mobile"
+        aria-label="Ouvrir le menu"
+        data-burger
+      >
+        <Picto nom="menu" taille={16} class="burger-ouvrir" />
+        <Picto nom="fermer" taille={16} class="burger-fermer" />
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-mobile" id="menu-mobile" data-menu-mobile hidden>
+    <nav aria-label="Navigation mobile" class="conteneur">
+      <ul class="nav-mobile-liste">
+        {MODULES_AFFICHES.map((m) => (
+          <li>
+            <a class="nav-mobile-lien" href={`${base}${ancreModule(m)}`}>
+              <Chip variante="pleine" picto="panneau" libelle={m.nom} tuile={m.tuile} encreTuile={m.encreTuile} />
+            </a>
+          </li>
+        ))}
+        {entrees.map((e) => (
+          <li><a class="nav-mobile-lien" href={e.href}>{e.libelle}</a></li>
+        ))}
+        <li class="nav-mobile-cta">
+          <Button href={CTA.humain.href} variante="contour">{CTA.humain.libelle}</Button>
+          <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<noscript>
+  <nav class="conteneur nav-sans-js" aria-label="Navigation sans JavaScript">
+    <a href={`${base}#modules`}>Modules</a>
+    {entrees.map(e => <a href={e.href}>{e.libelle}</a>)}
+  </nav>
+</noscript>
+
+<style>
+  .nav-sans-js { display: flex; flex-wrap: wrap; gap: 16px; padding-block: 12px; }
+  @media (max-width: 23rem) {
+    .nav { gap: 8px; }
+    .nav-droite { gap: 8px; }
+    .nav-principal-mobile { font-size: 12px; padding-inline: 8px; }
+  }
+  .nav-barre {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 254, 251, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--ligne-douce);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: var(--nav-h);
+  }
+  .nav-centre {
+    display: none;
+  }
+  .nav-liste {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .nav-item {
+    position: relative;
+  }
+  .nav-entree {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: var(--r-bouton);
+    border: 0;
+    background: transparent;
+    font-size: var(--t-sm);
+    font-weight: 500;
+    color: var(--texte);
+    cursor: pointer;
+    transition: color var(--duree-1) ease-out, background-color var(--duree-1) ease-out;
+  }
+  .nav-declencheur {
+    padding-right: 10px;
+  }
+  .nav-chevron {
+    transition: transform var(--duree-2) var(--courbe-standard);
+  }
+  .nav-declencheur[aria-expanded='true'] .nav-chevron {
+    transform: rotate(180deg);
+  }
+  .nav-declencheur[aria-expanded='true'],
+  .nav-entree:focus-visible {
+    color: var(--texte-fort);
+    background: var(--surface-hover);
+  }
+  .nav-panneau {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0;
+    width: 560px;
+    max-width: calc(100vw - 32px);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    padding: 16px;
+    border-radius: var(--r-boite);
+    border: 1px solid var(--ligne);
+    background: var(--surface-feuille);
+    box-shadow: var(--ombre-panneau);
+    transition: opacity var(--duree-1) var(--courbe-sortie), transform var(--duree-1) var(--courbe-sortie);
+  }
+  .nav-panneau[hidden] {
+    display: none;
+  }
+  .nav-panneau.ouvert {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  .nav-panneau-entree {
+    display: grid;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: var(--r-bouton);
+  }
+  .nav-panneau-texte {
+    font-size: 0.8125rem;
+    color: var(--texte-2);
+  }
+  .nav-droite {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .nav-humain,
+  .nav-principal {
+    display: none;
+  }
+  .nav-burger {
+    display: inline-grid;
+    place-items: center;
+    padding: 6px;
+    border-radius: var(--r-bouton);
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color var(--duree-1), border-color var(--duree-1);
+  }
+  .nav-burger .burger-fermer,
+  .nav-burger[aria-expanded='true'] .burger-ouvrir {
+    display: none;
+  }
+  .nav-burger[aria-expanded='true'] .burger-fermer {
+    display: block;
+  }
+  .nav-mobile {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    background: var(--surface-feuille);
+    border-top: 1px solid var(--ligne);
+    padding: 12px 0 32px;
+  }
+  .nav-mobile[hidden] {
+    display: none;
+  }
+  .nav-mobile-liste {
+    display: grid;
+  }
+  .nav-mobile-lien {
+    display: block;
+    padding: 12px 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--texte-fort);
+    border-bottom: 1px solid var(--ligne-douce);
+  }
+  .nav-mobile-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px 8px 0;
+  }
+  @media (hover: hover) {
+    .nav-entree:hover {
+      color: var(--texte-fort);
+      background: var(--surface-hover);
+    }
+    .nav-panneau-entree:hover {
+      background: var(--surface-hover);
+    }
+    .nav-burger:hover {
+      background: var(--surface-hover);
+      border-color: var(--ligne);
+    }
+  }
+  @media (min-width: 64rem) {
+    .nav-centre {
+      display: block;
+    }
+    .nav-humain,
+    .nav-principal {
+      display: inline-flex;
+    }
+    .nav-principal-mobile,
+    .nav-burger,
+    .nav-mobile {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Burger + menu mobile : aria-expanded, Échap pour fermer, fermeture au clic sur un lien.
+  const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
+  const menu = document.querySelector<HTMLElement>('[data-menu-mobile]');
+  if (burger && menu) {
+    const fermer = () => {
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Ouvrir le menu');
+      menu.hidden = true;
+      document.body.style.overflow = '';
+    };
+    burger.addEventListener('click', () => {
+      const ouvert = burger.getAttribute('aria-expanded') === 'true';
+      if (ouvert) return fermer();
+      burger.setAttribute('aria-expanded', 'true');
+      burger.setAttribute('aria-label', 'Fermer le menu');
+      menu.hidden = false;
+      document.body.style.overflow = 'hidden';
+    });
+    menu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) fermer();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) {
+        fermer();
+        burger.focus();
+      }
+    });
+    window.matchMedia('(min-width: 64rem)').addEventListener('change', (e) => e.matches && fermer());
+  }
+
+  // Panneau « Modules » (disclosure) : survol différé, clavier, Échap, focus sortant.
+  const declencheur = document.querySelector<HTMLButtonElement>('[data-nav-declencheur]');
+  const panneau = document.querySelector<HTMLElement>('[data-nav-panneau]');
+  if (declencheur && panneau) {
+    const item = declencheur.parentElement!;
+    const nb = panneau.querySelectorAll('a').length;
+    panneau.style.setProperty('--nb-modules', String(nb));
+    let minuterie = 0;
+    const ouvrir = () => {
+      window.clearTimeout(minuterie);
+      declencheur.setAttribute('aria-expanded', 'true');
+      panneau.hidden = false;
+      requestAnimationFrame(() => panneau.classList.add('ouvert'));
+    };
+    const fermer = () => {
+      window.clearTimeout(minuterie);
+      declencheur.setAttribute('aria-expanded', 'false');
+      panneau.classList.remove('ouvert');
+      panneau.hidden = true;
+    };
+    declencheur.addEventListener('click', () =>
+      declencheur.getAttribute('aria-expanded') === 'true' ? fermer() : ouvrir()
+    );
+    if (window.matchMedia('(hover: hover)').matches) {
+      item.addEventListener('mouseenter', () => (minuterie = window.setTimeout(ouvrir, 200)));
+      item.addEventListener('mouseleave', () => (minuterie = window.setTimeout(fermer, 300)));
+    }
+    item.addEventListener('focusout', (e) => {
+      if (!item.contains(e.relatedTarget as Node)) fermer();
+    });
+    panneau.addEventListener('click', e => {
+      if ((e.target as HTMLElement).closest('a')) fermer();
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panneau.hidden) {
+        fermer();
+        declencheur.focus();
+      }
+    });
+  }
+</script>

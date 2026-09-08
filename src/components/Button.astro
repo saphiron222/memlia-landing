@@ -1,0 +1,31 @@
+---
+import Picto from './Picto.astro';
+import type { NomPicto } from './Picto.astro';
+
+/**
+ * Bouton (spec §4.1). Rend un lien si `href` est fourni, un `<button>` sinon.
+ * Un seul bouton principal par écran ; les liens sortants (Cal.com) portent rel noopener.
+ */
+interface Props {
+  href?: string;
+  variante?: 'principal' | 'sombre' | 'contour' | 'fantome' | 'lien';
+  picto?: NomPicto;
+  type?: 'button' | 'submit';
+  class?: string;
+  [key: string]: unknown;
+}
+const { href, variante = 'contour', picto, type = 'button', class: className, ...reste } = Astro.props;
+const externe = typeof href === 'string' && /^https?:\/\//.test(href);
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  href={href}
+  type={href ? undefined : type}
+  rel={externe ? 'noopener' : undefined}
+  class:list={['btn', `btn-${variante}`, { 'icone-droite': !!picto }, className]}
+  {...reste}
+>
+  <slot />
+  {picto && <Picto nom={picto} taille={variante === 'lien' ? 14 : 16} />}
+</Tag>

@@ -1,0 +1,72 @@
+---
+import Base from './Base.astro';
+
+/** Pages légales (spec 7 bis) : noindex, colonne 672 px, sans motif ni ornement. */
+interface Props {
+  titre: string;
+  description: string;
+  chemin: string;
+  h1: string;
+  miseAJour: string;
+}
+const { titre, description, chemin, h1, miseAJour } = Astro.props;
+---
+
+<Base titre={titre} description={description} chemin={chemin} noindex base="/">
+  <div class="feuille legal-feuille">
+    <article class="legal conteneur">
+      <a class="btn btn-lien legal-retour" href="/">← Retour à l’accueil</a>
+      <h1 class="legal-h1">{h1}</h1>
+      <p class="legal-maj texte-2">Dernière mise à jour : {miseAJour}</p>
+      <div class="legal-corps">
+        <slot />
+      </div>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .legal-feuille {
+    background: var(--surface-feuille);
+  }
+  .legal {
+    max-width: 672px;
+    padding-top: clamp(36px, 6vw, 72px);
+    padding-bottom: clamp(48px, 8vw, 96px);
+  }
+  .legal-retour {
+    margin-bottom: 24px;
+  }
+  .legal-h1 {
+    font-size: var(--t-5xl);
+    margin-bottom: 0.25em;
+  }
+  .legal-maj {
+    font-size: var(--t-sm);
+    margin-bottom: 2.4em;
+  }
+  .legal-corps :global(h2) {
+    font-size: var(--t-2xl);
+    margin: 2em 0 0.5em;
+  }
+  .legal-corps :global(p) {
+    margin: 0 0 1em;
+    color: var(--texte);
+  }
+  .legal-corps :global(ul) {
+    margin: 0 0 1em;
+    padding-left: 1.2em;
+    list-style: disc;
+  }
+  .legal-corps :global(li) {
+    margin: 0.35em 0;
+  }
+  .legal-corps :global(a) {
+    color: var(--accent-texte);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .legal-corps :global(strong) {
+    font-weight: 600;
+  }
+</style>

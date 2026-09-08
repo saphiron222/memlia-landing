@@ -1,0 +1,64 @@
+---
+import Legal from '@/layouts/Legal.astro';
+import { SITE } from '@/data/site.mjs';
+
+/** Mentions légales (noindex, hors sitemap — voir PAGES_NOINDEX dans src/data/site.mjs). */
+---
+
+<Legal
+  titre="Mentions légales — Memlia"
+  description="Mentions légales du site memlia.fr."
+  chemin="/mentions-legales"
+  h1="Mentions légales"
+  miseAJour="8 septembre 2026"
+>
+  <h2>1. Éditeur du site</h2>
+  <p>
+    Le site <strong>memlia.fr</strong> est édité par Memlia. Pour toute question, vous pouvez nous écrire à
+    l’adresse <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+  </p>
+
+  <h2>2. Objet du site</h2>
+  <p>
+    Le site memlia.fr présente Memlia, un service qui transforme les règles métier d’un cabinet d’expertise
+    comptable en compléments Excel. Il a une vocation informative et ne constitue pas une offre contractuelle :
+    seul le devis accepté engage sur un périmètre, des fichiers et un environnement.
+  </p>
+
+  <h2>3. Propriété intellectuelle</h2>
+  <p>
+    L’ensemble des éléments du site (textes, visuels, mise en page et charte graphique) ainsi que le nom et le
+    logo « Memlia » sont protégés au titre du droit d’auteur et du droit des marques. Toute reproduction,
+    représentation, adaptation ou réutilisation, totale ou partielle, sans autorisation écrite préalable, est
+    interdite et susceptible de constituer une contrefaçon.
+  </p>
+
+  <h2>4. Liens hypertextes</h2>
+  <p>
+    Le site peut contenir des liens vers des sites tiers. Memlia n’exerce aucun contrôle sur ces sites et décline
+    toute responsabilité quant à leur contenu ou à leurs pratiques. La création d’un lien pointant vers memlia.fr
+    est soumise à un accord préalable.
+  </p>
+
+  <h2>5. Limitation de responsabilité</h2>
+  <p>
+    Les informations diffusées sur le site sont fournies à titre indicatif et peuvent être modifiées à tout
+    moment. Memlia s’efforce d’en assurer l’exactitude et la mise à jour, sans pouvoir être tenu responsable
+    d’éventuelles erreurs, omissions ou indisponibilités du site.
+  </p>
+
+  <h2>6. Données personnelles et cookies</h2>
+  <p>
+    Le traitement des données personnelles et l’usage des cookies sont décrits dans notre
+    <a href="/politique-de-confidentialite">Politique de confidentialité</a>.
+  </p>
+
+  <h2>7. Droit applicable</h2>
+  <p>
+    Le site et les présentes mentions légales sont régis par le droit français. À défaut de résolution amiable,
+    tout litige relève de la compétence des tribunaux français.
+  </p>
+
+  <h2>8. Contact</h2>
+  <p>Pour toute question concernant le site : <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+</Legal>

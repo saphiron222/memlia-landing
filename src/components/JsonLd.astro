@@ -1,0 +1,81 @@
+---
+import { SITE, OG_IMAGE } from '@/data/site.mjs';
+import { FAQ } from '@/data/faq';
+import { MODULES_AFFICHES } from '@/data/modules';
+import { GARANTIES } from '@/data/garanties';
+
+/**
+ * Données structurées de l'accueil — quatre nœuds conservés (Organization, WebSite,
+ * SoftwareApplication, FAQPage). Ne décrivent que des faits : ni avis, ni note, ni chiffre
+ * client (ligne rouge « aucune preuve inventée »). Le texte FAQ est celui de l'accordéon.
+ */
+interface Props {
+  description: string;
+}
+const { description } = Astro.props;
+const u = `${SITE.url}/`;
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${u}#organization`,
+      name: SITE.nom,
+      url: u,
+      logo: `${SITE.url}/apple-touch-icon.png`,
+      email: SITE.email,
+      slogan: SITE.tagline,
+      description:
+        "Memlia transforme une règle métier d'un cabinet d'expertise comptable en complément Excel : codé sur la structure couverte par la recette, éprouvé sur un jeu fictif, livré avec des points de validation humaine.",
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: SITE.email,
+        contactType: 'customer support',
+        areaServed: 'FR',
+        availableLanguage: 'French',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${u}#website`,
+      url: u,
+      name: SITE.nom,
+      inLanguage: SITE.langue,
+      publisher: { '@id': `${u}#organization` },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': `${u}#software`,
+      name: 'Memlia — compléments Excel pour cabinets d’expertise comptable',
+      applicationCategory: 'BusinessApplication',
+      applicationSubCategory: 'Complément Microsoft Excel',
+      operatingSystem: 'Windows, Microsoft Excel',
+      inLanguage: SITE.langue,
+      url: u,
+      image: OG_IMAGE.url,
+      description,
+      publisher: { '@id': `${u}#organization` },
+      audience: { '@type': 'Audience', audienceType: "Cabinets d'expertise comptable" },
+      featureList: [
+        ...MODULES_AFFICHES.filter(m => m.statut === 'disponible').map((m) => `${m.nom} : ${m.titre}`),
+        ...GARANTIES.map((g) => g.libelle),
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${u}#faq`,
+      inLanguage: SITE.langue,
+      isPartOf: { '@id': `${u}#website` },
+      about: { '@id': `${u}#software` },
+      mainEntity: FAQ.map((q) => ({
+        '@type': 'Question',
+        name: q.question,
+        acceptedAnswer: { '@type': 'Answer', text: q.reponse },
+      })),
+    },
+  ],
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />

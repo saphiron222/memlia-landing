@@ -1,0 +1,26 @@
+---
+import Picto from './Picto.astro';
+import type { NomPicto } from './Picto.astro';
+
+/**
+ * Pastille-étiquette (spec §4.2). Pleine : teinte de tuile du module, icône encre sur
+ * la tuile verte et crème sur les autres (contrastes §2.1). Claire : dégradé crème.
+ */
+interface Props {
+  variante?: 'pleine' | 'claire';
+  picto: NomPicto;
+  libelle: string;
+  tuile?: string;
+  encreTuile?: 'encre' | 'creme';
+  class?: string;
+}
+const { variante = 'claire', picto, libelle, tuile, encreTuile = 'encre', class: className } = Astro.props;
+const style = tuile
+  ? `--tuile:${tuile};--encre-tuile:${encreTuile === 'creme' ? 'var(--creme)' : 'var(--texte-fort)'}`
+  : undefined;
+---
+
+<span class:list={['chip', `chip-${variante}`, className]} style={style}>
+  <span class="chip-icone"><Picto nom={picto} taille={12} /></span>
+  <span class="chip-libelle">{libelle}</span>
+</span>

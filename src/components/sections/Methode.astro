@@ -1,0 +1,215 @@
+---
+import Chip from '@/components/Chip.astro';
+import Picture from '@/components/Picture.astro';
+import { METHODE } from '@/data/methode';
+import type { IMAGES } from '@/data/images.mjs';
+import type { NomPicto } from '@/components/Picto.astro';
+
+/**
+ * S5 — Parcours défilant (spec §4.8) porté par la copy validée « Méthode » (section 5) :
+ * titre collant, panneau visuel collant à gauche (≥ 1024) ou en tête (mobile), étapes à droite.
+ * Sans JS : tout est visible, la première image s'affiche.
+ */
+type IdImage = keyof typeof IMAGES;
+const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
+---
+
+<section id="methode" class="parcours" aria-labelledby="methode-titre">
+  <div class="parcours-titre-collant">
+    <h2 id="methode-titre" class="parcours-h2">{METHODE.titre}</h2>
+  </div>
+
+  <div class="parcours-corps" data-parcours>
+    <div class="parcours-visuel motif-diagonal" aria-hidden="true">
+      <div class="parcours-images">
+        {METHODE.etapes.map((e, i) => (
+          <div class:list={['parcours-image', { active: i === 0 }]} data-image={i}>
+            <Picture id={e.image as IdImage} sizes="(min-width: 64rem) 50vw, 100vw" decorative />
+          </div>
+        ))}
+      </div>
+      <span class="parcours-filet" data-filet></span>
+    </div>
+
+    <ol class="parcours-etapes">
+      {METHODE.etapes.map((e, i) => (
+        <li class:list={['etape', { active: i === 0 }]} data-etape={i}>
+          <div class="step-image motif-diagonal" aria-hidden="true">
+            <Picture id={e.image as IdImage} sizes="(min-width: 42rem) 640px, calc(100vw - 64px)" decorative />
+          </div>
+          <Chip variante="claire" picto={pictos[i] ?? 'coche'} libelle={`Étape ${e.numero}`} />
+          <h3 class="etape-h3">{e.titre}</h3>
+          <p class="texte-2">{e.texte}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .parcours {
+    padding: 96px 0 128px;
+  }
+  .parcours-titre-collant {
+    position: relative;
+    top: 0;
+    z-index: 3;
+    padding: 24px var(--marge-page);
+    background: linear-gradient(var(--surface-feuille) 80%, transparent);
+    text-align: center;
+  }
+  .parcours-h2 {
+    font-size: var(--t-2xl);
+    max-width: 30ch;
+    margin: 0 auto;
+  }
+  .parcours-corps {
+    display: grid;
+    gap: 24px;
+  }
+  .parcours-visuel {
+    display: none;
+    position: sticky;
+    top: calc(var(--nav-h) + 80px);
+    z-index: 2;
+    border-top: 1px solid var(--ligne-douce);
+    border-bottom: 1px solid var(--ligne-douce);
+    background-color: var(--surface-feuille);
+    padding: 16px;
+  }
+  .parcours-images {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    max-height: 40vh;
+    margin: 0 auto;
+  }
+  .parcours-image {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transition: opacity var(--duree-4) var(--courbe-standard);
+  }
+  .parcours-image.active {
+    opacity: 1;
+  }
+  .parcours-image :global(picture) { max-height: 100%; display: flex; justify-content: center; }
+  .parcours-image :global(img) {
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: var(--r-carte);
+    border: 1px solid var(--ligne-douce);
+  }
+  .parcours-filet {
+    display: none;
+  }
+  .parcours-etapes {
+    display: grid;
+    gap: 64px;
+    padding: 24px var(--marge-page) 0;
+  }
+  .etape {
+    display: grid;
+    gap: 12px;
+    max-width: 100%;
+    transition: opacity var(--duree-4) var(--courbe-standard);
+  }
+  .etape-h3 {
+    font-size: var(--t-2xl);
+    margin-top: 10px;
+  }
+  .step-image { padding: 16px; border: 1px solid var(--ligne-douce); border-radius: var(--r-carte); }
+  @media (min-width: 64rem) {
+    .step-image { display: none; }
+    .etape { max-width: 448px; }
+    .parcours {
+      padding: 160px 0 208px;
+    }
+    .parcours-titre-collant {
+      position: sticky;
+      top: 15vh;
+      height: 15vh;
+      padding: 0 var(--marge-page-lg);
+      background: linear-gradient(var(--surface-feuille) 80%, transparent);
+    }
+    .parcours-corps {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 160px;
+      padding: 0 var(--marge-page-lg);
+      align-items: start;
+    }
+    .parcours-visuel {
+      display: block;
+      top: 30vh;
+      height: 50vh;
+      border: 1px solid var(--ligne-douce);
+      border-radius: var(--r-carte);
+      padding: 32px;
+    }
+    .parcours-images {
+      height: 100%;
+      max-height: none;
+      aspect-ratio: auto;
+    }
+    .parcours-filet {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -1px;
+      width: 1px;
+      height: 100%;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform var(--duree-4) linear;
+    }
+    .parcours-etapes {
+      gap: 160px;
+      padding: 48px 8px 48px 0;
+      margin: 12.5vh 0 14vh;
+    }
+    :global(html.js) .etape {
+      opacity: 1;
+    }
+    :global(html.js) .etape.active {
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html.js) .etape {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // Étape active = celle dont le centre est le plus proche du centre du viewport ;
+  // l'image et le filet de progression suivent. Repli sans JS : première image visible.
+  const racine = document.querySelector<HTMLElement>('[data-parcours]');
+  if (racine) {
+    const etapes = Array.from(racine.querySelectorAll<HTMLElement>('[data-etape]'));
+    const images = Array.from(racine.querySelectorAll<HTMLElement>('[data-image]'));
+    const filet = racine.querySelector<HTMLElement>('[data-filet]');
+    let active = 0;
+    const activer = (i: number) => {
+      if (i === active) return;
+      active = i;
+      etapes.forEach((e, k) => e.classList.toggle('active', k === i));
+      images.forEach((img, k) => img.classList.toggle('active', k === i));
+      if (filet) filet.style.transform = `scaleY(${(i + 1) / etapes.length})`;
+    };
+    if (filet) filet.style.transform = `scaleY(${1 / etapes.length})`;
+    const obs = new IntersectionObserver(
+      (entrees) => {
+        for (const e of entrees) {
+          if (e.isIntersecting) activer(Number((e.target as HTMLElement).dataset.etape));
+        }
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+    etapes.forEach((e) => obs.observe(e));
+  }
+</script>

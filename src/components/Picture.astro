@@ -1,0 +1,47 @@
+---
+import { IMAGES, FORMATS, PLACEHOLDERS, cheminImage, hauteurPour } from '@/data/images.mjs';
+
+/**
+ * Image responsive AVIF → WebP construite depuis le manifeste (spec §6 : une seule liste
+ * de largeurs par emplacement). `width`/`height` explicites pour un CLS nul.
+ */
+type IdImage = keyof typeof IMAGES;
+
+interface Props {
+  id: IdImage;
+  /** Attribut `sizes` calé sur la colonne (50vw en bande, 100vw en hero…). */
+  sizes: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  /** Surcharge de l'alt du manifeste (rare : variantes). */
+  alt?: string;
+  class?: string;
+  decorative?: boolean;
+}
+const { id, sizes, loading = 'lazy', fetchpriority, alt, class: className, decorative = false, ...rest } = Astro.props;
+const image = IMAGES[id];
+if (!image) throw new Error(`Picture : image inconnue « ${id} » (voir src/data/images.mjs)`);
+
+const largeurs = [...image.largeurs].sort((a, b) => a - b);
+const plusGrande = largeurs[largeurs.length - 1]!;
+const srcset = (format: string) => largeurs.map((l) => `${cheminImage(id, l, format)} ${l}w`).join(', ');
+const texteAlt = decorative ? '' : `${PLACEHOLDERS.has(id) ? 'Emplacement du visuel à produire : ' : ''}${alt ?? image.alt}`;
+---
+
+<picture class={className} {...rest}>
+  {FORMATS.filter((f) => f !== 'webp').map((format) => (
+    <source type={`image/${format}`} srcset={srcset(format)} sizes={sizes} />
+  ))}
+  <img
+    src={cheminImage(id, plusGrande, 'webp')}
+    srcset={srcset('webp')}
+    sizes={sizes}
+    width={plusGrande}
+    height={hauteurPour(image, plusGrande)}
+    alt={texteAlt}
+    loading={loading}
+    decoding={loading === 'eager' ? 'sync' : 'async'}
+    fetchpriority={fetchpriority}
+    aria-hidden={decorative ? 'true' : undefined}
+  />
+</picture>

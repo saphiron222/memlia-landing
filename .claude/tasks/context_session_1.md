@@ -1,5 +1,27 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-08 — M3 Astro (état courant)
+
+- Migration Astro dans le worktree `t_83ada3bb` : quatre pages, charte Memlia/Navattic,
+  copy M1, sept périmètres explicites, FAQ 11 réponses et quatre nœuds JSON-LD,
+  collection blog Zod prête mais vide, 44 placeholders et 11 briefs.
+- Preview vérifiée : https://f5c68d50.memlia.pages.dev ; alias https://preview-astro-m3.memlia.pages.dev.
+- `npm run check` : 0 erreur/0 warning, 1 hint ; build 4 pages ; Playwright 14/14 local
+  et distant ; oracle Python 8/8, mutation d’ID module rouge puis restauration verte.
+- Lighthouse local mobile/desktop : 100/100/100/100 ; distant mobile : 99/100/96/69.
+  Écart SEO = noindex de sécurité injecté sur preview ; bonnes pratiques = beacon Cloudflare CORS.
+  Ne jamais retirer noindex pour verdir une preview. Huit routes relues, dont vraie 404,
+  HTML identique au build hors un bloc analytics par page normale (hashes bruts conservés).
+- Passe écran : six largeurs capturées, hero desktop/mobile et méthode examinés ; correctifs
+  propagation des attributs Astro/Picto, burger exclusif, méthode mobile dans le flux,
+  ancres FAQ/demo et erreur de fragment `%`. Revue design complète confiée à M3-R.
+- Source et preuves : `docs/qa/2026-09-08-m3.md`, `.qa/`, `.lighthouse/`.
+- Suite : M3-R `t_9faece2d` reprend le commit M3 avant M4 images et M5 blog ; pas de fusion
+  ni push ni production. Configuration Cloudflare prod encore héritée : ne la modifier
+  qu’à l’intégration autorisée (build `npm run build`, sortie `dist`).
+- Historique ci-dessous conservé, notamment la mention de domaine non résolu : ancien état,
+  ne pas le prendre comme diagnostic actuel. Projet Cloudflare réel = `memlia`.
+
 **Started:** 2026-07-03 · **Mode:** `/loop` dynamic (self-paced) · **Model:** Opus 4.8
 **Task:** Audit crawlability, indexation, page intent, titles, internal links, structured
 data, source citations, answer-first content. Rank gaps by impact, fix the highest-leverage,

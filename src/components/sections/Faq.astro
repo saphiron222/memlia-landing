@@ -1,0 +1,140 @@
+---
+import Button from '@/components/Button.astro';
+import Picto from '@/components/Picto.astro';
+import { FAQ } from '@/data/faq';
+import { CTA } from '@/data/site.mjs';
+
+/**
+ * S7 — Questions fréquentes (spec §4.11 ; copy validée section 6). Rail collant à gauche
+ * (eyebrow, titre, CTA humain), accordéon natif `<details>` à droite : les réponses restent
+ * dans le DOM (extraites par les moteurs et le JSON-LD FAQPage, généré du même tableau).
+ * Chaque question porte l'ancre `faq-<id>` visée par la grille de garanties et les repères.
+ */
+---
+
+<section id="questions" class="faq" aria-labelledby="faq-titre">
+  <span id="faq" class="sr-only" aria-hidden="true"></span>
+  <div class="faq-rail rv">
+    <span class="eyebrow">Questions fréquentes</span>
+    <h2 id="faq-titre">Les réponses que nous donnons avant tout devis.</h2>
+    <p class="texte-2 faq-intro">
+      Chaque engagement de la grille renvoie ici. Ce sont les réponses que vous obtiendrez en
+      rendez-vous, sans version commerciale.
+    </p>
+    <Button href={CTA.humain.href} variante="contour" class="faq-humain">{CTA.humain.libelle}</Button>
+  </div>
+
+  <div class="faq-liste rv-groupe" data-faq>
+    {FAQ.map((q) => (
+      <details class="faq-item rv" id={`faq-${q.id}`} open>
+        <summary class="faq-q">
+          <span class="faq-question">{q.question}</span>
+          <Picto nom="chevron" taille={16} class="faq-chevron" />
+        </summary>
+        <p class="faq-r texte-2">{q.reponse}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  .faq {
+    display: grid;
+    gap: 32px;
+    padding: 96px var(--marge-page) 0;
+  }
+  .faq-rail {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    max-width: 448px;
+  }
+  .faq-intro {
+    max-width: 40ch;
+  }
+  .faq-humain {
+    justify-self: start;
+    margin-top: 8px;
+  }
+  .faq-liste {
+    border-top: 1px solid var(--ligne);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--ligne-douce);
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  .faq-q {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 4px;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--police-display), 'Fraunces Fallback';
+    font-weight: 600;
+    font-size: var(--t-xl);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--texte-fort);
+    text-wrap: pretty;
+    transition: color var(--duree-1) var(--courbe-standard);
+  }
+  .faq-q::-webkit-details-marker {
+    display: none;
+  }
+  .faq-q:focus-visible {
+    outline-offset: -2px;
+  }
+  .faq-chevron {
+    flex: 0 0 auto;
+    margin-top: 0.35em;
+    color: var(--picto-repos);
+    transition: transform var(--duree-2) var(--courbe-standard), color var(--duree-1);
+  }
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+    color: var(--accent-texte);
+  }
+  .faq-r {
+    max-width: 62ch;
+    padding: 0 4px 24px;
+  }
+  @media (hover: hover) {
+    .faq-q:hover .faq-chevron {
+      color: var(--accent-texte);
+    }
+  }
+  @media (min-width: 64rem) {
+    .faq {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 96px;
+      padding: 128px var(--marge-page-lg) 0;
+    }
+    .faq-rail {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+    .faq-q {
+      padding: 24px 8px;
+    }
+    .faq-r {
+      padding: 0 8px 28px;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLDetailsElement>('[data-faq] details').forEach(item => { item.open = false; });
+  // Une ancre vers une question (grille de garanties, repères, pied) ouvre l'accordéon
+  // avant de défiler ; sans JS, la question ciblée est visible mais repliée.
+  const ouvrirCible = () => {
+    let id: string;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    if (!id) return;
+    const cible = document.getElementById(id);
+    if (cible instanceof HTMLDetailsElement && !cible.open) cible.open = true;
+  };
+  ouvrirCible();
+  window.addEventListener('hashchange', ouvrirCible);
+</script>

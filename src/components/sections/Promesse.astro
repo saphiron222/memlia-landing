@@ -1,0 +1,105 @@
+---
+/**
+ * Promesse (copy validée, section 2) — oppose Memlia aux migrations et aux plateformes
+ * génériques. Trois colonnes à filets, dans le gabarit « bande » de la spec.
+ */
+const points = [
+  {
+    titre: 'Votre classeur reste le point de travail.',
+    texte: 'Le complément s’y greffe dans les limites de structure et de version validées en recette.',
+  },
+  {
+    titre: 'Les exceptions remontent, elles ne disparaissent pas.',
+    texte: 'Ce qui est certain est préparé ; ce qui est ambigu est signalé.',
+  },
+  {
+    titre: 'La décision reste au cabinet.',
+    texte: 'L’IA prépare. Le professionnel valide, modifie ou refuse.',
+  },
+];
+---
+
+<section id="promesse" class="promesse" aria-labelledby="promesse-titre">
+  <div class="promesse-tete rv">
+    <span class="eyebrow">Complément Excel pour expert-comptable</span>
+    <h2 id="promesse-titre">Ne remplacez pas Excel. Rendez votre règle exécutable.</h2>
+    <p class="promesse-intro texte-2">
+      Votre cabinet a déjà ses classeurs, ses contrôles et ses façons de travailler. Memlia automatise
+      cette matière en place, au lieu de vous imposer un nouveau logiciel à paramétrer.
+    </p>
+  </div>
+  <div class="coins">
+    <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+  <ul class="promesse-grille rv-groupe">
+    {points.map((p) => (
+      <li class="promesse-point rv">
+
+        <h3 class="promesse-h3">{p.titre}</h3>
+        <p class="texte-2">{p.texte}</p>
+      </li>
+    ))}
+  </ul>
+  </div>
+</section>
+
+<style>
+  .promesse {
+    padding-top: 96px;
+  }
+  .promesse-tete {
+    display: grid;
+    gap: 12px;
+    max-width: 720px;
+    padding: 0 var(--marge-page) 40px;
+  }
+  .promesse-intro {
+    max-width: 62ch;
+  }
+  .promesse-grille {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--ligne-douce);
+    border-top: 1px solid var(--ligne);
+    border-bottom: 1px solid var(--ligne);
+  }
+  .promesse-point {
+    position: relative;
+    background: var(--surface-feuille);
+    padding: 40px 24px 48px;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+  }
+  .promesse-num {
+    font-family: var(--police-display), 'Fraunces Fallback';
+    font-variant-numeric: tabular-nums;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--accent-texte);
+  }
+  .promesse-h3 {
+    font-size: var(--t-2xl);
+    max-width: 22ch;
+  }
+  @media (min-width: 48rem) {
+    .promesse-grille {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .promesse-point {
+      padding: 48px 32px 64px;
+    }
+  }
+  @media (min-width: 64rem) {
+    .promesse {
+      padding-top: 128px;
+    }
+    .promesse-tete {
+      padding-left: var(--marge-page-lg);
+      padding-right: var(--marge-page-lg);
+    }
+    .promesse-point {
+      padding: 64px 48px;
+    }
+  }
+</style>

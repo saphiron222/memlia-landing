@@ -1,0 +1,246 @@
+---
+import Button from '@/components/Button.astro';
+import Picto from '@/components/Picto.astro';
+import Picture from '@/components/Picture.astro';
+import { CTA } from '@/data/site.mjs';
+
+/**
+ * S2 — Hero (spec §4.6, §5.1 ; copy validée section 1). Une seule h1 sur la page.
+ * Avec un seul module affiché, pas de sélecteur : le cadre de démo montre IMG-01.
+ */
+const reassurance = [
+  'Prix à la complexité, jamais au siège',
+  'Aucune action sensible sans validation humaine',
+  'Pas de donnée client réelle dans les jeux de développement ou de démonstration',
+];
+---
+
+<section class="hero" aria-labelledby="hero-titre">
+  <div class="hero-texte">
+    <span class="pastille hero-eyebrow">
+      <span class="point" aria-hidden="true"></span>
+      Automatisation Excel pour cabinets d’expertise comptable
+    </span>
+    <h1 id="hero-titre" class="hero-h1">
+      Vos règles métier, codées dans les fichiers <em>Excel</em> que vos équipes utilisent déjà.
+    </h1>
+    <p class="hero-sub">
+      Vous nous montrez une règle de paie, de supervision ou de contrôle. Nous codons le périmètre
+      convenu, l’éprouvons sur un jeu fictif et vous soumettons les résultats : proposition visible,
+      validation humaine, refus explicite des cas ambigus.
+    </p>
+    <div class="hero-boutons">
+      <Button href={CTA.principal.href} variante="principal" picto="fleche" class="hero-btn">
+        {CTA.principal.libelle}
+      </Button>
+      <Button href={CTA.humain.href} variante="contour" class="hero-btn">{CTA.humain.libelle}</Button>
+    </div>
+    <ul class="hero-confiance" aria-label="Engagements">
+      {reassurance.map((r) => (
+        <li><Picto nom="coche" taille={14} /><span>{r}</span></li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="hero-cadre" data-cadre>
+    <div class="hero-verre">
+      <div class="hero-ecran">
+        <Picture
+          id="img-01-panneau-suivi-social"
+          sizes="(min-width: 80rem) 1520px, (min-width: 64rem) 1456px, 100vw"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 96px var(--marge-page) 0;
+    isolation: isolate;
+  }
+  .hero-texte {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    margin: 0 auto;
+  }
+  .hero-h1 {
+    max-width: 896px;
+  }
+  .hero-sub {
+    max-width: 672px;
+    color: var(--texte-2);
+    font-size: var(--t-base);
+  }
+  .hero-boutons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .hero-confiance {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 18px;
+    margin-top: 8px;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+  }
+  .hero-confiance li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+  }
+  .hero-confiance svg {
+    color: var(--accent-appui);
+    flex: 0 0 auto;
+  }
+  /* Cadre de démo : capture statique pleine largeur sous 1024, calque verre au-dessus. */
+  .hero-cadre {
+    margin-top: 48px;
+    max-width: calc(100vw - 32px);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% + 256px);
+  }
+  .hero-ecran {
+    border-radius: var(--r-ecran);
+    border: 1px solid var(--ligne);
+    overflow: hidden;
+    background: var(--blanc);
+    aspect-ratio: 3024 / 1610;
+  }
+  .hero-ecran img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 24.99rem) {
+    .hero-boutons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  @media (min-width: 64rem) {
+    .hero {
+      padding: 192px var(--marge-page-lg) 0;
+    }
+    .hero-texte {
+      min-height: 270px;
+    }
+    .hero-cadre {
+      margin: 96px 0 0;
+      min-height: 600px;
+    }
+    .hero-verre {
+      padding: 16px;
+      border-radius: var(--r-cadre);
+      background: rgba(252, 251, 247, 0.2);
+      border: 1px solid rgba(35, 31, 32, 0.096);
+    }
+  }
+  @media (min-width: 80rem) {
+    .hero-cadre {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  /* Entrées au chargement (§5.1) — hero seulement, flou autorisé ici. */
+  @keyframes hero-entree {
+    from {
+      opacity: 0;
+      transform: translateY(15px) scale(0.98);
+      filter: blur(7px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
+  }
+  @keyframes hero-etiquette {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.8);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
+  }
+  @keyframes hero-bouton {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(3px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
+  }
+  @keyframes hero-verre {
+    from {
+      opacity: 0;
+      transform: scale(0.99);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes hero-ecran {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+      filter: blur(6px) grayscale(1);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: blur(0) grayscale(0);
+    }
+  }
+  :global(html.js) .hero-h1 {
+    animation: hero-entree var(--duree-entree) var(--courbe-sortie) both;
+  }
+  :global(html.js) .hero-sub {
+    animation: hero-entree var(--duree-entree) var(--courbe-sortie) 100ms both;
+  }
+  :global(html.js) .hero-eyebrow {
+    animation: hero-etiquette var(--duree-etiquette) var(--courbe-etiquette) 200ms both;
+  }
+  :global(html.js) .hero-boutons > :nth-child(1) {
+    animation: hero-bouton var(--duree-entree) var(--courbe-sortie) 100ms both;
+  }
+  :global(html.js) .hero-boutons > :nth-child(2) {
+    animation: hero-bouton var(--duree-entree) var(--courbe-sortie) 200ms both;
+  }
+  :global(html.js) .hero-confiance {
+    animation: hero-bouton var(--duree-entree) var(--courbe-sortie) 300ms both;
+  }
+  :global(html.js) .hero-verre {
+    animation: hero-verre var(--duree-etiquette) var(--courbe-sortie) 200ms both;
+  }
+  :global(html.js) .hero-ecran {
+    animation: hero-ecran var(--duree-revelation) var(--courbe-douce) 200ms both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html.js) .hero :is(.hero-h1, .hero-sub, .hero-eyebrow, .hero-boutons > *, .hero-confiance, .hero-verre, .hero-ecran) {
+      animation: none;
+    }
+  }
+</style>

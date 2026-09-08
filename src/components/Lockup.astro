@@ -1,0 +1,65 @@
+---
+/**
+ * Lockup Memlia : tuile « M » collée à « emlia » (ce dépôt fait foi pour le lockup).
+ * Logotype : la lettre crème sur la tuile verte est exemptée de la règle de contraste.
+ */
+interface Props {
+  href?: string;
+  taille?: 'nav' | 'pied' | 'titre';
+  class?: string;
+}
+const { href, taille = 'nav', class: className = '' } = Astro.props;
+const Tag = href ? 'a' : 'span';
+---
+
+<Tag
+  href={href}
+  class:list={['lockup', `lockup-${taille}`, className]}
+  aria-label={href ? 'M emlia, accueil' : undefined}
+>
+  <span class="lockup-m" aria-hidden="true">M</span>
+  <span class="lockup-nom" aria-hidden={href ? 'true' : undefined}>emlia</span>
+  {!href && <span class="sr-only">Memlia</span>}
+</Tag>
+
+<style>
+  .lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.02em;
+    font-family: var(--police-display), 'Fraunces Fallback';
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--texte-fort);
+  }
+  .lockup-nav {
+    font-size: 1.45rem;
+  }
+  .lockup-pied {
+    font-size: 1.6rem;
+  }
+  .lockup-titre {
+    font-size: 1em;
+  }
+  .lockup-m {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.45em;
+    height: 1.45em;
+    font-size: 0.8em;
+    border-radius: 0.34em;
+    background: var(--accent);
+    color: var(--creme);
+    letter-spacing: 0;
+    line-height: 1;
+    flex: 0 0 auto;
+    transform: translateY(0.02em);
+  }
+  @media (min-width: 64rem) {
+    .lockup-nav {
+      font-size: 1.55rem;
+    }
+  }
+</style>
