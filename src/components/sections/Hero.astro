@@ -1,14 +1,11 @@
 ---
 import Button from '@/components/Button.astro';
 
-import transcriptSource from '../../../public/media/r7/animatique.vtt?raw';
 import { CTA } from '@/data/site.mjs';
 
 /**
  * Hero M4-R3 : média R7 approuvé, conservé octet pour octet.
  */
-const transcript = transcriptSource
-  .split(/\r?\n\r?\n/).slice(1).map(cue => cue.split(/\r?\n/).slice(1).join(' ').trim()).filter(Boolean);
 
 ---
 
@@ -36,20 +33,14 @@ const transcript = transcriptSource
     <div class="hero-verre">
       <div class="hero-ecran">
         <video controls playsinline preload="metadata" width="1920" height="1080"
-          aria-label="Découvrir l’automatisation Memlia en 45 secondes" aria-describedby="hero-media-help"
+          aria-label="Découvrir l’automatisation Memlia en 45 secondes"
           poster="/media/r7/hero-poster-1200.webp" src="/media/r7/animatique-hero-45s.mp4">
           <track kind="subtitles" srclang="fr" label="Français" src="/media/r7/animatique.vtt" default />
-          <p>Votre navigateur ne peut pas lire cette vidéo. <a href="/media/r7/animatique-hero-45s.mp4">Télécharger la vidéo</a> ou lire la transcription ci-dessous.</p>
+          <p>Votre navigateur ne peut pas lire cette vidéo. <a href="/media/r7/animatique-hero-45s.mp4">Télécharger la vidéo</a>.</p>
         </video>
       </div>
     </div>
-    <p id="hero-media-help" class="hero-media-help">45 secondes pour comprendre. Activez le plein écran pour lire les détails. Sous-titres français disponibles.</p>
-    <details class="hero-transcript">
-      <summary>Lire la transcription de la vidéo</summary>
-      {transcript.map(text => <p>{text}</p>)}
-      <p>À l’écran : une entrée est traitée selon une règle définie. Une exception arrête le traitement concerné et est isolée pour revue. Le cabinet vérifie, modifie, valide ou refuse ; les saisies restent préservées. Les exemples illustrent le fonctionnement, sans donnée client réelle.</p>
-      <a href="/media/r7/animatique-hero-45s.mp4" download>Télécharger la vidéo (MP4)</a>
-    </details>
+
   </div>
 </section>
 
@@ -125,11 +116,7 @@ const transcript = transcriptSource
     aspect-ratio: 16 / 9;
   }
   .hero-ecran:focus-within { outline: 3px solid var(--accent-texte); outline-offset: 4px; }
-  .hero-media-help, .hero-transcript { max-width: 75ch; margin: 16px auto 0; color: var(--texte-2); font-size: var(--t-sm); }
-  .hero-transcript summary { cursor: pointer; padding: 12px 0; color: var(--texte-fort); }
-  .hero-transcript p { margin: 8px 0; }
-  .hero-transcript a { text-decoration: underline; }
-  .hero-transcript summary:focus-visible { outline: 3px solid var(--accent-texte); outline-offset: 3px; }
+
 
   @media (max-width: 24.99rem) {
     .hero-boutons {

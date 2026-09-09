@@ -1,12 +1,12 @@
-"""Recalcul indépendant : copie approuvée → public → dist ; VTT → transcription HTML."""
+"""Recalcul indépendant : copie approuvée → public → dist ; chronologie VTT."""
 import hashlib
 import json
 import re
 import unittest
-from html import unescape
+
 from pathlib import Path
 from test_build import DIST
-from test_positioning import Text
+
 
 ROOT = DIST.parent
 MANIFEST = ROOT / 'docs/qa/m4-r3/media-manifest.json'
@@ -26,11 +26,11 @@ class MediaChainProof(unittest.TestCase):
                     built = DIST / Path(entry['target']).relative_to('public')
                     self.assertEqual(hashlib.sha256(built.read_bytes()).hexdigest(), entry['sha256'])
 
-    def test_vtt_timing_and_transcription_are_complete(self):
+    def test_vtt_timing_and_captions_are_complete(self):
         vtt = (DIST / 'media/r7/animatique.vtt').read_text()
         blocks = vtt.strip().split('\n\n')[1:]
         self.assertEqual(len(blocks), 20)
-        text = unescape(' '.join(Text((DIST / 'index.html').read_text()).parts))
+
         previous_end = 0
         for block in blocks:
             timing, *lines = block.splitlines()
@@ -43,15 +43,9 @@ class MediaChainProof(unittest.TestCase):
             self.assertGreater(end, start)
             self.assertLessEqual(end, 45)
             previous_end = end
-            self.assertIn(' '.join(lines), text)
+            self.assertTrue(' '.join(lines).strip())
 
-    def test_fictional_arithmetic_and_method_coverage(self):
+    def test_method_coverage_without_added_captions(self):
         html = (DIST / 'index.html').read_text()
-        text = unescape(' '.join(Text(html).parts))
-        counts = re.search(r'Sur (\d+) éléments fictifs analysés, (\d+) propositions.*?et un cas reste à vérifier', text)
-        if counts is None:
-            self.fail('Bilan fictif introuvable dans le HTML rendu')
-        total, proposed = map(int, counts.groups())
-        self.assertEqual(total, proposed + 1)
         self.assertEqual(sorted(re.findall(r'data-proof="(0[4-7]-[a-z]+)"', html)), ['04-observer', '05-cadrer', '06-eprouver', '07-livrer'])
-        self.assertEqual(html.count('Illustration de fonctionnement sur données fictives, pas une capture produit.'), 9)
+        self.assertNotIn('Illustration de fonctionnement sur données fictives, pas une capture produit.', html)

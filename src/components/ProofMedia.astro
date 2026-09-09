@@ -7,26 +7,9 @@ if (!proof) throw new Error(`Preuve inconnue : ${id}`);
 const source = `/proofs/${id}.webp`;
 ---
 <figure class="functional-proof" data-proof={id}>
-  <a class="proof-zoom" href={source} target="_blank" rel="noopener" aria-label={`Agrandir : ${proof.title} (nouvel onglet)`}>
-    <img src={source} alt={proof.alt} width="1600" height="900" loading="lazy" decoding="async" />
-  </a>
-  <figcaption>
-    <p class="proof-context">Illustration de fonctionnement sur données fictives, pas une capture produit.</p>
-    <details>
-      <summary>Lire le détail — {proof.title}</summary>
-      <p>{proof.detail}</p>
-      <a href={source} target="_blank" rel="noopener">Agrandir l’illustration (nouvel onglet)</a>
-    </details>
-  </figcaption>
+  <img src={source} alt={proof.alt} width="1600" height="900" loading="lazy" decoding="async" />
 </figure>
 <style>
-  .functional-proof { margin: 32px 0; min-width: 0; }
-  .proof-zoom { display: block; border: 1px solid var(--ligne); border-radius: 12px; background: #fffefb; overflow: hidden; }
+  .functional-proof { margin: 32px 0; min-width: 0; border: 1px solid var(--ligne); border-radius: 12px; background: #fffefb; overflow: hidden; }
   img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
-  figcaption { padding: 16px 0 0; color: var(--texte-2); font-size: var(--t-sm); line-height: 1.6; }
-  .proof-context { margin-bottom: 8px; }
-  summary { cursor: pointer; color: var(--texte-fort); padding: 8px 0; }
-  details p { max-width: 75ch; margin: 8px 0 12px; }
-  details a { text-decoration: underline; text-underline-offset: 3px; }
-  .proof-zoom:focus-visible, summary:focus-visible { outline: 3px solid var(--accent-texte); outline-offset: 4px; }
 </style>

@@ -30,8 +30,18 @@ class IntegratedMediaProof(unittest.TestCase):
         self.assertTrue(vtt.startswith('WEBVTT\n'))
         self.assertEqual(vtt.count(' --> '), 20)
         html = (DIST / 'index.html').read_text()
-        self.assertIn('Lire la transcription', html)
-        self.assertIn('Vos saisies restent préservées.', html)
+        self.assertNotIn('aria-describedby', video)
+        for removed in ['Lire la transcription', 'Lire le détail —', 'Illustration de fonctionnement sur données fictives, pas une capture produit.', 'hero-media-help', 'hero-transcript', 'Agrandir l’illustration', 'transcription ci-dessous']:
+            self.assertNotIn(removed, html)
+
+    def test_proof_figures_contain_only_static_images(self):
+        html = (DIST / 'index.html').read_text()
+        figures = re.findall(r'<figure\b[^>]*data-proof="[^"]+"[^>]*>(.*?)</figure>', html, re.S)
+        self.assertEqual(len(figures), 9)
+        for figure in figures:
+            self.assertRegex(figure.strip(), r'^<img\b[^>]+>$')
+            self.assertNotRegex(figure, r'\s(?:tabindex|role|on\w+)\s*=')
+        self.assertNotRegex(html, r'<dialog\b|role="dialog"|proof-zoom')
 
     def test_nine_functional_proofs_replace_all_legacy_images(self):
         doc = Document(DIST / 'index.html')

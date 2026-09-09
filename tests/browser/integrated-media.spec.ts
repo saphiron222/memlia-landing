@@ -22,42 +22,73 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.paused)).toBe(true);
     await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.textTracks[0]?.cues?.length)).toBe(20);
     expect(await video.evaluate((v: HTMLVideoElement) => v.textTracks[0].mode)).toBe('showing');
-    const transcript = page.locator('.hero-transcript');
-    await transcript.locator('summary').press('Enter');
-    await expect(transcript).toHaveAttribute('open', '');
-    await expect(transcript).toContainText('Vos saisies restent préservées.');
-    await transcript.locator('summary').press('Enter');
+    await expect(page.locator('.hero-transcript, .hero-media-help')).toHaveCount(0);
+    await expect(page.getByText(/Lire la transcription|Lire le détail —|Illustration de fonctionnement sur données fictives, pas une capture produit\./)).toHaveCount(0);
     await expect(page.locator('[data-proof]')).toHaveCount(9);
+    const url = page.url();
+    const pages = page.context().pages().length;
     for (const proof of await page.locator('[data-proof]').all()) {
       await proof.scrollIntoViewIfNeeded();
       await expect.poll(() => proof.locator('img').evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth === 1600)).toBe(true);
-      await proof.locator('summary').press('Enter');
-      await expect(proof.locator('details p')).toBeVisible();
-      await expect(proof.locator('.proof-zoom')).toHaveAttribute('href', /\/proofs\/\d{2}-[a-z]+\.webp/);
-      await proof.locator('summary').press('Enter');
+      await expect(proof.locator(':scope > *')).toHaveCount(1);
+      await expect(proof.locator('a, button, details, summary, figcaption, [tabindex], [role]')).toHaveCount(0);
+      expect(await proof.innerText()).toBe('');
+      const image = proof.locator('img');
+      expect(await image.evaluate(i => {
+        const ancestors: Element[] = [];
+        for (let node: Element | null = i; node; node = node.parentElement) ancestors.push(node);
+        return ancestors.filter(n => n.matches('a, button, [tabindex], [role], [onclick], [onkeydown]') || (n as HTMLElement).onclick || (n as HTMLElement).onkeydown).length;
+      })).toBe(0);
+      await expect(image).not.toHaveCSS('cursor', /pointer|zoom/);
+      await image.focus();
+      await expect(image).not.toBeFocused();
+      await image.click();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Space');
+      expect(page.url()).toBe(url);
+      expect(page.context().pages()).toHaveLength(pages);
+      await expect(page.locator('dialog, [role="dialog"], [aria-modal="true"]')).toHaveCount(0);
     }
+    // Parcours Tab réel : le lecteur reste atteignable, aucune preuve ne prend le focus.
+    await page.goto('/');
+    let firstFocus: string | undefined;
+    let cycleCompleted = false;
+    let reachedVideo = false;
+    for (let index = 0; index < 100; index++) {
+      await page.keyboard.press('Tab');
+      const state = await page.evaluate(() => ({ key: document.activeElement?.outerHTML ?? '', proof: !!document.activeElement?.closest('[data-proof]'), video: document.activeElement?.tagName === 'VIDEO' }));
+      expect(state.proof).toBe(false);
+      reachedVideo ||= state.video;
+      if (firstFocus === undefined) firstFocus = state.key;
+      else if (state.key === firstFocus) { cycleCompleted = true; break; }
+    }
+    expect(reachedVideo).toBe(true);
+    expect(cycleCompleted).toBe(true);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     expect(errors).toEqual([]);
   });
 }
 
-test('vidéo en échec : transcription et téléchargement restent accessibles', async ({ page }) => {
+test('vidéo en échec : contrôles et VTT conservés sans microtexte de remplacement', async ({ page }) => {
   await page.route('**/animatique-hero-45s.mp4', route => route.abort());
   await page.goto('/');
-  await page.locator('.hero-transcript summary').press('Enter');
-  await expect(page.locator('.hero-transcript')).toContainText('Copier. Vérifier. Relancer.');
-  await expect(page.getByRole('link', { name: 'Télécharger la vidéo (MP4)' })).toBeVisible();
+  await expect.poll(() => page.locator('video').evaluate((v: HTMLVideoElement) => v.error?.code)).toBeGreaterThan(0);
+  await expect(page.locator('video')).toHaveAttribute('controls', '');
+  await expect(page.locator('video track')).toHaveAttribute('src', '/media/r7/animatique.vtt');
+  await expect(page.locator('.hero-transcript, .hero-media-help')).toHaveCount(0);
 });
 
-test('preuves et transcription utilisables sans JavaScript', async ({ browser }) => {
+test('preuves statiques et lecteur natif présents sans JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
   await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
-  await page.locator('.hero-transcript summary').press('Enter');
-  await expect(page.locator('.hero-transcript')).toContainText('Vous décidez.');
+  await expect(page.locator('video')).toHaveAttribute('controls', '');
+  await expect(page.locator('[data-proof]')).toHaveCount(9);
   for (const proof of await page.locator('[data-proof]').all()) {
-    await proof.locator('summary').press('Enter');
-    await expect(proof.locator('details p')).toBeVisible();
+    await proof.scrollIntoViewIfNeeded();
+    await expect(proof.locator('img')).toBeVisible();
+    await expect(proof.locator(':scope > *')).toHaveCount(1);
+    await expect(proof.locator('a, button, details, figcaption, [tabindex], [role]')).toHaveCount(0);
   }
   await context.close();
 });
