@@ -23,6 +23,11 @@ for (const name of proofs) {
 }
 for (const name of ['animatique-hero-45s.mp4', 'animatique.vtt', 'hero-poster.webp']) copy(join(sourceVideo, name), `public/media/r7/${name}`);
 copy(join(sourceVideo, 'script.md'), 'docs/design/m4-r3/r7-script-source.md');
+// Poster de diffusion au cadre maximal ; l'original approuvé reste intact et tracé.
+const posterSource = 'public/media/r7/hero-poster.webp';
+const posterTarget = 'public/media/r7/hero-poster-1200.webp';
+await sharp(posterSource).resize(1200).webp({ quality: 90 }).toFile(posterTarget);
+entries.push({ source: posterSource, target: posterTarget, derivative: true, bytes: statSync(posterTarget).size, sha256: hash(posterTarget) });
 // Les couvertures du blog deviennent elles aussi fonctionnelles, sans photographie de papeterie.
 for (const [source, id] of [['06-eprouver', 'img-23-controle-bulletins-paie'], ['09-garanties', 'img-24-suivi-production-sociale']]) {
   for (const width of [768, 1200, 1600]) for (const format of ['avif', 'webp']) {

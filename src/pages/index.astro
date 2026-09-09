@@ -23,6 +23,7 @@ const description =
 
 <Base titre={titre} description={description} chemin="/">
   <JsonLd slot="head" description={description} />
+  <link slot="head" rel="preload" as="image" href="/media/r7/hero-poster-1200.webp" fetchpriority="high" />
 
   <div class="feuille">
     <Hero />

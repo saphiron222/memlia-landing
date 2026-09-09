@@ -15,6 +15,9 @@ try {
     const screen = `${output}/hero-${width}.png`;
     await page.screenshot({ path: screen });
     report.screens.push(screen);
+    const mediaScreen = `${output}/hero-player-${width}.png`;
+    await page.locator('.hero-cadre').screenshot({ path: mediaScreen });
+    report.screens.push(mediaScreen);
     for (const proof of await page.locator('[data-proof]').all()) {
       await proof.scrollIntoViewIfNeeded();
       await proof.locator('img').evaluate(i => i.decode());
@@ -38,6 +41,13 @@ try {
       const path = `${output}/${route.replaceAll('/', '-')}-${width}.png`;
       await page.screenshot({ path });
       report.screens.push(path);
+      for (const figure of await page.locator('.article-couverture').all()) {
+        await figure.scrollIntoViewIfNeeded();
+        await figure.locator('img').evaluate(i => i.decode());
+        const mediaPath = `${output}/${route.replaceAll('/', '-')}-media-${width}.png`;
+        await figure.screenshot({ path: mediaPath });
+        report.screens.push(mediaPath);
+      }
     }
     await page.close();
   }

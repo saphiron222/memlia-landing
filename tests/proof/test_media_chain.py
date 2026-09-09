@@ -15,7 +15,7 @@ MANIFEST = ROOT / 'docs/qa/m4-r3/media-manifest.json'
 class MediaChainProof(unittest.TestCase):
     def test_all_media_match_sealed_manifest(self):
         entries = json.loads(MANIFEST.read_text())['entries']
-        self.assertEqual(len(entries), 25)
+        self.assertEqual(len(entries), 26)
         self.assertEqual(sum(not e.get('derivative', False) for e in entries), 13)
         for entry in entries:
             with self.subTest(target=entry['target']):

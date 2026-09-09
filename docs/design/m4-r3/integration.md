@@ -35,7 +35,9 @@ Les étapes de méthode restent toutes dans le flux, y compris sans JavaScript, 
 
 Le MP4 R7 fait 2 937 013 octets : aucun réencodage supplémentaire n’est nécessaire ni souhaitable. SHA-256 attendu : `649d2d767f086cb22c870b88ab71797fe09b6d73f228e2e3b89406b062fa2700`.
 
-`media-manifest.json` décrit 13 copies exactes (9 preuves, 3 médias, 1 script) et 12 dérivés blog. Les tests relisent les fichiers dans `public` puis `dist`, vérifient les 20 cues, leurs frontières temporelles, leur présence dans la transcription et le bilan fictif 48 = 47 + 1.
+`media-manifest.json` décrit 13 copies exactes (9 preuves, 3 médias, 1 script), 12 dérivés blog et 1 dérivé de diffusion du poster. Les tests relisent les fichiers dans `public` puis `dist`, vérifient les 20 cues, leurs frontières temporelles, leur présence dans la transcription et le bilan fictif 48 = 47 + 1.
+
+Le poster de diffusion `hero-poster-1200.webp` (1200×675, qualité 90) pèse 24 482 octets, contre 136 132 pour l’original conservé. Il est préchargé avec priorité haute. Aucun changement de contenu, aucun recadrage ni réencodage vidéo. Cette correction répond à trois mesures mobiles distantes à 94 avant optimisation ; après correction : 98. L’original approuvé reste disponible et son hash est vérifié.
 
 La allowlist du post-build ne publie plus que les 12 dérivés blog sous `/images/`. Les 78 anciens assets et les 20 briefs sont exclus et comptés. Les originaux fonctionnels vivent sous `/proofs/` ; la vidéo sous `/media/r7/`.
 

@@ -181,3 +181,13 @@ cache-lagged on a stale negative response — self-heals, not a config issue.) *
 No repo gap is fixable by editing; the only red check is a user-gated Cloudflare DNS change. A 2nd pass brings
 zero autonomous progress → no ScheduleWakeup. Re-run `python3 scratchpad/markup_audit.py` + the `dig` TXT checks
 after Kevin adds the two records to confirm green.
+
+## Hermes — 2026-09-09 — M4-R3, candidat intégré
+
+- Carte `t_f16e5a39`, branche `wt/t_f16e5a39` : base blog `cd71227`, positionnement M3 conservé, neuf preuves M4-R1 et vidéo R7 intégrées. Premier commit `a6eaebf`, correction poster et recette dans le commit suivant.
+- Preview finale : https://bbade7ba.memlia.pages.dev ; branche Cloudflare `preview-m4-r3`. Aucun push, merge main ni production.
+- Trois passes : check sans erreur, build 7 pages, Python25, Playwright44, images23 ; copie SHA13 + dérivés13, médias HTTP25 ; écran réel Chromium 320–1920, vidéo45s et sous-titres20, transcription/plein écran pour les microtextes mobile.
+- Lighthouse candidat indexable : mobile et desktop 100/100/100/100. Preview : 98/100/96/69 et 100/100/96/69 ; SEO69 dû au `X-Robots-Tag: noindex, nofollow` obligatoire, bonnes pratiques96 dû au beacon Cloudflare injecté (CORS). Ne pas retirer le noindex pour fabriquer un vert.
+- Pièges : le poster natif 1920 pesait trop pour le LCP distant ; dérivé1200/qualité90 et preload high, original conservé. VTT importé `?raw` pour le build Astro. Les figures SVG des articles ne contiennent pas d’img ; le harnais vise `.article-couverture`.
+- Rapport/manifeste : `docs/qa/m4-r3/recette.md`, `media-manifest.json`, `remote-media.json`. Captures et lecture : `.qa/m4-r3-delivery/`.
+- À revoir : enfant croisé précréé `t_69fbf26b`, puis Kevin pour l’ensemble du site et les textes juridiques. Annotations R5 historiques du poster R7 approuvé conservées ; pas de QA Safari/iOS ni audition humaine revendiquée.

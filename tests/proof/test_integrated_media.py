@@ -19,7 +19,7 @@ class IntegratedMediaProof(unittest.TestCase):
         self.assertNotIn('autoplay', video)
         self.assertEqual(video['preload'], 'metadata')
         self.assertTrue(video['aria-label'])
-        self.assertEqual(video['poster'], '/media/r7/hero-poster.webp')
+        self.assertEqual(video['poster'], '/media/r7/hero-poster-1200.webp')
         self.assertEqual(video['src'], '/media/r7/animatique-hero-45s.mp4')
         self.assertEqual(hashlib.sha256((DIST / video['src'].lstrip('/')).read_bytes()).hexdigest(), '649d2d767f086cb22c870b88ab71797fe09b6d73f228e2e3b89406b062fa2700')
         tracks = doc.select('track')
@@ -47,3 +47,11 @@ class IntegratedMediaProof(unittest.TestCase):
 
     def test_tagline_is_preserved_exactly(self):
         self.assertIn('L’IA automatise le travail répétitif. Votre cabinet garde la décision.', (DIST / 'index.html').read_text())
+
+    def test_hero_poster_is_prioritized_before_video_metadata(self):
+        links = Document(DIST / 'index.html').select('link')
+        poster = [l for l in links if l.get('href') == '/media/r7/hero-poster-1200.webp']
+        self.assertEqual(len(poster), 1)
+        self.assertEqual(poster[0].get('rel'), 'preload')
+        self.assertEqual(poster[0].get('as'), 'image')
+        self.assertEqual(poster[0].get('fetchpriority'), 'high')
