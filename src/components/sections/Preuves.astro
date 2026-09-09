@@ -1,16 +1,15 @@
 ---
-import Picto from '@/components/Picto.astro';
 import ProofMedia from '@/components/ProofMedia.astro';
 const proofs = [
-  { title: 'Preuve de méthode', text: 'Règle écrite, cas limites, refus attendus et recette avant livraison.', href: '#methode' },
-  { title: 'Preuve de contrôle', text: 'Proposition visible, validation humaine et refus des sorties sensibles non prévues au contrat.', href: '#faq-ia-decide' },
-  { title: 'Preuve de confidentialité', text: 'Jeux fictifs pour construire, démontrer et tester.', href: '#faq-donnees-reelles' },
+  { title: 'Preuve de méthode', text: 'Règle écrite, cas limites, refus attendus et recette avant livraison.' },
+  { title: 'Preuve de contrôle', text: 'Proposition visible, validation humaine et refus des sorties sensibles non prévues au contrat.' },
+  { title: 'Preuve de confidentialité', text: 'Jeux fictifs pour construire, démontrer et tester.' },
 ];
 
 /**
  * S6 — « Proposition vs saisie » + repères vérifiables (spec §4.10 / S6 b), à la place
  * des témoignages : aucune preuve sociale sans autorisation distincte. Le motif directeur
- * du produit est dit tel quel ; chaque repère renvoie à la preuve correspondante sur la page.
+ * du produit est dit tel quel ; les repères restent des textes sans microliens.
  */
 ---
 
@@ -34,10 +33,7 @@ const proofs = [
       <li class="repere rv">
         <h3 class="proof-title">{r.title}</h3>
         <p class="repere-libelle">{r.text}</p>
-        <a class="btn btn-lien repere-lien" href={r.href}>
-          Lire le détail
-          <Picto nom="fleche" taille={14} />
-        </a>
+
       </li>
     ))}
   </ul>
@@ -97,10 +93,7 @@ const proofs = [
     color: var(--texte);
     max-width: 34ch;
   }
-  .repere-lien {
-    justify-self: start;
-    margin-top: 6px;
-  }
+
   @media (min-width: 40rem) {
     .reperes {
       grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -25,7 +25,12 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.textTracks[0]?.cues?.length)).toBe(20);
     expect(await video.evaluate((v: HTMLVideoElement) => v.textTracks[0].mode)).toBe('showing');
     await expect(page.locator('.hero-transcript, .hero-media-help')).toHaveCount(0);
-    await expect(page.getByText(/Lire la transcription|Lire le détail —|Illustration de fonctionnement sur données fictives, pas une capture produit\./)).toHaveCount(0);
+    await expect(page.locator('body')).not.toContainText(/Lire la transcription|Lire le détail|Illustration de fonctionnement sur données fictives, pas une capture produit\./);
+    await expect(page.locator('.repere-lien')).toHaveCount(0);
+    for (const target of ['#methode', '#faq-ia-decide', '#faq-donnees-reelles']) {
+      await expect(page.locator(target)).toHaveCount(1);
+      await expect(page.locator(target)).not.toBeEmpty();
+    }
     await expect(page.locator('[data-proof]')).toHaveCount(9);
     const url = page.url();
     const pages = page.context().pages().length;

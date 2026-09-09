@@ -31,8 +31,10 @@ class IntegratedMediaProof(unittest.TestCase):
         self.assertEqual(vtt.count(' --> '), 20)
         html = (DIST / 'index.html').read_text()
         self.assertNotIn('aria-describedby', video)
-        for removed in ['Lire la transcription', 'Lire le détail —', 'Illustration de fonctionnement sur données fictives, pas une capture produit.', 'hero-media-help', 'hero-transcript', 'Agrandir l’illustration', 'transcription ci-dessous']:
+        for removed in ['Lire la transcription', 'Lire le détail', 'repere-lien', 'Illustration de fonctionnement sur données fictives, pas une capture produit.', 'hero-media-help', 'hero-transcript', 'Agrandir l’illustration', 'transcription ci-dessous']:
             self.assertNotIn(removed, html)
+        for target in ['methode', 'faq-ia-decide', 'faq-donnees-reelles']:
+            self.assertEqual(html.count(f'id="{target}"'), 1)
 
     def test_proof_figures_contain_only_static_images(self):
         html = (DIST / 'index.html').read_text()

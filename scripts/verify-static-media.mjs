@@ -18,6 +18,9 @@ try {
     await page.waitForFunction(() => document.querySelector('video').readyState >= 1);
     const cdp = await page.context().newCDPSession(page);
     const measurement = { width, proofs: [], dom: await page.locator('.hero-cadre').innerHTML() };
+    measurement.removedTextMatches = (await page.locator('body').innerText()).match(/Lire la transcription|Lire le détail|Illustration de fonctionnement sur données fictives, pas une capture produit\./g) ?? [];
+    assert.deepEqual(measurement.removedTextMatches, []);
+    assert.equal(await page.locator('.repere-lien').count(), 0);
     const capture = async (name, locator) => {
       const path = `${output}/${name}-${width}.png`;
       if (locator) await locator.screenshot({ path });
@@ -26,6 +29,7 @@ try {
     };
     await capture('hero');
     await capture('player', page.locator('.hero-cadre'));
+    await capture('reperes', page.locator('.reperes'));
     const figures = await page.locator('[data-proof]').all();
     assert.equal(figures.length, 9);
     for (const figure of figures) {
