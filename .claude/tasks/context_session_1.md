@@ -1,5 +1,13 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-10 — harmonisation du bento
+
+- Carte `t_0a859fbf`, base `a1f817d`, produit `b9d800a9e4df437a7e6557bc712d92d5c732d731`, branche `site/harmonisation-bento`. Preview exacte https://57e995b9.memlia.pages.dev, branche Cloudflare `preview-harmonisation-bento`, noindex et environnement Preview relus. Aucun push/main/production ; six identités production inchangées.
+- Seul fichier produit : Usages.astro. Cinq cartes feuille sur page, cinq Picto24/trait1,5 gris repos dans conteneurs48/rayon10 uniformes. Aucun mint, gradient, color-mix ou état actif par carte. Textes, ordre, structure1+2×2, méthode en quinconce et médias inchangés ; hauteur du bento réduite par les icônes plus petites.
+- Check0erreur/0warning/1hint hérité ; build7/Python34/images23 ; Playwright76local+76distant, sept poisons rejetés puis restaurationSHA et suite complète. Recalcul9PNG/21actifs ; HTTP12noindex/25médias identiques. Six largeurs320/375/768/1024/1440/1920 sans overflow ;36captures plus2comparaisons, inspection pleinepage1440/crops1440/375. DOM horsbento identique après exclusions comptées ; seul Usages change dans src/public.
+- Contraste texte16,16/5,61 ; pictos décoratifs2,56:1 volontairement jeton de repos des garanties, pas de revendication3:1. Lighthouse local100partout ; distant mobile90/89, desktop68/99, a11y100/BP96/SEO69. LCPmobile2540/2827ms dépasse2500 ; réserve explicite, hors correctionbento, pas de faux vert. Témoin ancien desktop99 ; causalité réseau non démontrée.
+- Rapport `docs/qa/harmonisation-bento/recette.md`, preuves `.qa/harmonisation/`, archive `.qa/harmonisation-bento-preuves.zip`. Suite : revue croisée Claude puis Kevin. Aucun élargissement du périmètre ni nettoyage du code mort hérité. Lecture courte déléguée sans synthèse exploitable, non créditée comme revue.
+
 ## Hermes — 2026-09-09 — capacités et méthode en quinconce
 
 - Carte `t_7c202a39`, base exacte `76214ba`, produit `fef42bf4f90eda2448911703ffbf536cda528932`, branche `site/redesign-capacites-methode`. Preview seule https://be1eb235.memlia.pages.dev, branche Cloudflare `preview-redesign-capacites-methode`, environnement Preview relu. Aucun push/main/production.
