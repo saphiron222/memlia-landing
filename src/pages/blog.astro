@@ -1,0 +1,160 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Picture from '@/components/Picture.astro';
+import Picto from '@/components/Picto.astro';
+import { SITE } from '@/data/site.mjs';
+import { BLOG, compterMots } from '@/data/blog.mjs';
+import { IMAGES } from '@/data/images.mjs';
+import { AUTEURS } from '@/data/auteurs';
+
+/**
+ * Route /blog : liste des articles publiés (du plus récent au plus ancien), ligne
+ * éditoriale, fiche auteur ancrée (#auteur-kevin, cible du `rel=author` des articles).
+ * Fichier `blog.astro` (pas `blog/index.astro`) : avec `build.format: 'file'`, l'URL
+ * canonique sans slash est servie sans redirection.
+ */
+const articles = (await getCollection('blog', ({ data }) => !data.brouillon)).sort(
+  (a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime()
+);
+const formatDate = (d: Date) => d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+const minutes = (corps: string | undefined) => Math.max(1, Math.ceil(compterMots(corps ?? '') / BLOG.motsParMinute));
+const u = `${SITE.url}/`;
+const url = `${SITE.url}${BLOG.chemin}`;
+const auteurs = Object.values(AUTEURS);
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Blog',
+      '@id': `${url}#blog`,
+      url,
+      name: BLOG.titre,
+      description: BLOG.description,
+      inLanguage: SITE.langue,
+      isPartOf: { '@id': `${u}#website` },
+      publisher: { '@id': `${u}#organization` },
+      blogPost: articles.map((a) => ({ '@id': `${SITE.url}${BLOG.chemin}/${a.id}#article` })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: u },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: url },
+      ],
+    },
+    ...auteurs.map((a) => ({
+      '@type': 'Person',
+      '@id': `${url}${a.ancre}`,
+      name: a.nom,
+      jobTitle: a.role,
+      description: a.bio,
+      url: `${url}${a.ancre}`,
+      worksFor: { '@id': `${u}#organization` },
+    })),
+    { '@type': 'Organization', '@id': `${u}#organization`, name: SITE.nom, url: u, logo: `${SITE.url}/apple-touch-icon.png`, email: SITE.email },
+    { '@type': 'WebSite', '@id': `${u}#website`, url: u, name: SITE.nom, inLanguage: SITE.langue, publisher: { '@id': `${u}#organization` } },
+  ],
+};
+---
+
+<Base titre={BLOG.titre} description={BLOG.description} chemin={BLOG.chemin} base="/">
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+
+  <div class="feuille blog-feuille">
+    <section class="conteneur blog-tete" aria-labelledby="blog-titre">
+      <nav class="ariane" aria-label="Fil d’Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li aria-current="page">Blog</li>
+        </ol>
+      </nav>
+      <span class="eyebrow">Blog</span>
+      <h1 id="blog-titre">Ce qui se vérifie, ce qui s’automatise, ce qui se décide.</h1>
+      <p class="texte-2 lecture blog-intro">
+        Des méthodes concrètes pour les pôles social et comptable des cabinets d’expertise comptable :
+        paie, DSN, classeurs de suivi, contrôles avant envoi. Chaque article cite ses sources et distingue
+        la mécanique qu’une automatisation peut prendre en charge de la décision qui reste au cabinet.
+      </p>
+      <a class="btn btn-lien blog-rss" href={BLOG.fluxRss} type="application/rss+xml">Flux RSS <Picto nom="fleche" taille={14} /></a>
+    </section>
+
+    <section class="conteneur" aria-labelledby="articles-titre">
+      <h2 id="articles-titre" class="sr-only">Articles</h2>
+      <ul class="blog-liste rv-groupe" data-articles={articles.length}>
+        {articles.map((a) => (
+          <li class="blog-carte rv" data-article={a.id}>
+            <a href={`${BLOG.chemin}/${a.id}`} class="carte-image" aria-hidden="true" tabindex="-1">
+              <Picture id={a.data.image as keyof typeof IMAGES} sizes="(min-width: 64rem) 560px, (min-width: 48rem) 50vw, 100vw" />
+            </a>
+            <div class="carte-texte">
+              <p class="carte-meta texte-2">
+                <time datetime={iso(a.data.datePublication)}>{formatDate(a.data.datePublication)}</time>
+                <span aria-hidden="true">·</span>
+                <span>{minutes(a.body)} min de lecture</span>
+              </p>
+              <h3 class="carte-titre"><a href={`${BLOG.chemin}/${a.id}`}>{a.data.titre}</a></h3>
+              <p class="texte-2 carte-resume">{a.data.resume}</p>
+              <span class="btn btn-lien carte-lire" aria-hidden="true">Lire l’article <Picto nom="fleche" taille={14} /></span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="conteneur blog-auteurs" aria-labelledby="auteurs-titre">
+      <h2 id="auteurs-titre">Qui écrit ici</h2>
+      {auteurs.map((a) => (
+        <article class="auteur-fiche" id={a.ancre.slice(1)}>
+          <span class="auteur-initiale" aria-hidden="true">{a.nom.charAt(0)}</span>
+          <div>
+            <h3 class="auteur-nom">{a.nom} <span class="texte-2 auteur-role">· {a.role}</span></h3>
+            <p class="texte-2">{a.bio}</p>
+            <p class="auteur-contact"><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+          </div>
+        </article>
+      ))}
+    </section>
+  </div>
+</Base>
+
+<style>
+  .blog-feuille { background: var(--surface-feuille); padding-bottom: clamp(48px, 8vw, 96px); }
+  .blog-tete { display: grid; gap: 16px; padding-top: clamp(28px, 5vw, 56px); padding-bottom: 40px; max-width: 880px; margin-inline: 0; }
+  .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; font-size: var(--t-sm); color: var(--texte-2); margin-bottom: 12px; }
+  .ariane li + li::before { content: '›'; margin-right: 6px; color: var(--picto-repos); }
+  .ariane a { color: var(--texte-2); text-decoration: underline; text-underline-offset: 2px; }
+  .ariane [aria-current] { color: var(--texte); }
+  .blog-tete h1 { font-size: var(--t-5xl); max-width: 20ch; }
+  .blog-intro { max-width: 62ch; }
+  .blog-rss { justify-self: start; }
+  .blog-liste { display: grid; gap: 32px; border-top: 1px solid var(--ligne); padding-top: 32px; }
+  .blog-carte { display: grid; gap: 16px; }
+  .carte-image { display: block; border-radius: var(--r-carte); overflow: hidden; border: 1px solid var(--ligne-douce); }
+  .carte-texte { display: grid; gap: 8px; align-content: start; }
+  .carte-meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: var(--t-sm); }
+  .carte-titre { font-size: var(--t-2xl); line-height: 1.15; }
+  .carte-titre a { transition: color var(--duree-1); }
+  .carte-resume { max-width: 58ch; }
+  .carte-lire { justify-self: start; margin-top: 4px; }
+  .blog-auteurs { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--ligne-douce); display: grid; gap: 16px; }
+  .blog-auteurs h2 { font-size: var(--t-2xl); }
+  .auteur-fiche { display: flex; gap: 16px; align-items: flex-start; max-width: 720px; scroll-margin-top: calc(var(--nav-h) + 24px); }
+  .auteur-initiale {
+    display: grid; place-items: center; flex: 0 0 auto; width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent); color: var(--creme); font-family: var(--police-display), 'Fraunces Fallback'; font-weight: 600; font-size: 1.4rem;
+  }
+  .auteur-nom { font-size: var(--t-lg); font-family: var(--police-corps), 'Hanken Fallback'; font-weight: 600; margin-bottom: 4px; }
+  .auteur-role { font-weight: 400; }
+  .auteur-contact { margin-top: 8px; font-size: var(--t-sm); }
+  .auteur-contact a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
+  @media (hover: hover) {
+    .carte-titre a:hover { color: var(--accent-texte); }
+  }
+  @media (min-width: 48rem) {
+    .blog-carte { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+  }
+</style>

@@ -1,24 +1,31 @@
 import { chromium } from '@playwright/test';
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 
 const base = process.env.QA_URL;
 if (!base) throw new Error('QA_URL requis : URL exacte de la preview à vérifier.');
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+// Les articles publiés sont lus dans dist : toute route construite est relue, aucune n'est oubliée.
+const articles = readdirSync('dist/blog').filter(name => name.endsWith('.html')).map(name => name.replace(/\.html$/, ''));
+if (articles.length < 2) throw new Error(`Blog débranché : ${articles.length} article(s) dans dist/blog.`);
+const routes = [
+  ['/', 'index.html', 200],
+  ['/mentions-legales', 'mentions-legales.html', 200],
+  ['/politique-de-confidentialite', 'politique-de-confidentialite.html', 200],
+  ['/m3-page-inexistante', '404.html', 404],
+  ['/blog', 'blog.html', 200],
+  ...articles.map(slug => [`/blog/${slug}`, `blog/${slug}.html`, 200]),
+  ['/blog/rss.xml', 'blog/rss.xml', 200],
+  ['/sitemap.xml', 'sitemap.xml', 200],
+  ['/sitemap-0.xml', 'sitemap-0.xml', 200],
+  ['/robots.txt', 'robots.txt', 200],
+  ['/llms.txt', 'llms.txt', 200],
+];
 const browser = await chromium.launch({ channel: 'chromium' });
 const reports = [];
 try {
   const page = await browser.newPage();
-  for (const [route, file, status] of [
-    ['/', 'index.html', 200],
-    ['/mentions-legales', 'mentions-legales.html', 200],
-    ['/politique-de-confidentialite', 'politique-de-confidentialite.html', 200],
-    ['/m3-page-inexistante', '404.html', 404],
-    ['/sitemap.xml', 'sitemap.xml', 200],
-    ['/sitemap-0.xml', 'sitemap-0.xml', 200],
-    ['/robots.txt', 'robots.txt', 200],
-    ['/llms.txt', 'llms.txt', 200],
-  ]) {
+  for (const [route, file, status] of routes) {
     const response = await page.goto(base + route);
     if (!response) throw new Error(`Pas de réponse pour ${route}`);
     const remote = await response.text();

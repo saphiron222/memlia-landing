@@ -11,11 +11,14 @@ import { CTA } from '@/data/site.mjs';
  */
 interface Props {
   blogActif: boolean;
+  /** Chemin canonique de la page courante (fourni par Base, indépendant de la forme d'URL du build). */
+  chemin: string;
   /** Préfixe des ancres : vide sur l'accueil, « / » depuis une autre page. */
   base?: string;
 }
-const { blogActif, base = '' } = Astro.props;
-
+const { blogActif, chemin, base = '' } = Astro.props;
+/** `page` sur /blog, `true` (section) sur un article ; rien ailleurs. */
+const surBlog: 'page' | 'true' | undefined = chemin === '/blog' ? 'page' : chemin.startsWith('/blog/') ? 'true' : undefined;
 
 const entrees = [
   { libelle: 'Usages', href: `${base}#usages` },
@@ -23,7 +26,7 @@ const entrees = [
   { libelle: 'Intégration', href: `${base}#integration` },
   { libelle: 'Garanties', href: `${base}#garanties` },
   { libelle: 'Questions', href: `${base}#questions` },
-  ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
+  ...(blogActif ? [{ libelle: 'Blog', href: '/blog', courant: surBlog }] : []),
 ];
 ---
 
@@ -36,7 +39,7 @@ const entrees = [
 
         {entrees.map((e) => (
           <li class="nav-item">
-            <a class="nav-entree" href={e.href}>{e.libelle}</a>
+            <a class="nav-entree" href={e.href} aria-current={'courant' in e ? e.courant : undefined}>{e.libelle}</a>
           </li>
         ))}
       </ul>
@@ -67,7 +70,7 @@ const entrees = [
       <ul class="nav-mobile-liste">
 
         {entrees.map((e) => (
-          <li><a class="nav-mobile-lien" href={e.href}>{e.libelle}</a></li>
+          <li><a class="nav-mobile-lien" href={e.href} aria-current={'courant' in e ? e.courant : undefined}>{e.libelle}</a></li>
         ))}
         <li class="nav-mobile-cta">
 
@@ -141,6 +144,10 @@ const entrees = [
   }
   .nav-declencheur[aria-expanded='true'] .nav-chevron {
     transform: rotate(180deg);
+  }
+  .nav-entree[aria-current] {
+    color: var(--texte-fort);
+    background: var(--surface-hover);
   }
   .nav-declencheur[aria-expanded='true'],
   .nav-entree:focus-visible {

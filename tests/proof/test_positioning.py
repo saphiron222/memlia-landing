@@ -95,8 +95,12 @@ class PositioningProof(unittest.TestCase):
 
     def test_no_catalogue_in_any_public_surface(self):
         checked, files, violations = public_surface_violations(DIST)
-        required = {'index.html', '404.html', 'mentions-legales.html', 'politique-de-confidentialite.html', 'llms.txt'}
-        self.assertTrue(required <= {p.relative_to(DIST).as_posix() for p in checked})
+        required = {'index.html', '404.html', 'mentions-legales.html', 'politique-de-confidentialite.html', 'llms.txt',
+                    'blog.html', 'blog/rss.xml'}
+        # Les articles publiés sont des surfaces texte comme les autres : aucun n'échappe au contrat.
+        articles = {p.relative_to(DIST).as_posix() for p in (DIST / 'blog').glob('*.html')}
+        self.assertGreaterEqual(len(articles), 2)
+        self.assertTrue((required | articles) <= {p.relative_to(DIST).as_posix() for p in checked})
         print(f'Positionnement : {len(checked)} surfaces texte / {len(files)} fichiers ; '
               f'{len(files) - len(checked)} contenus binaires/CSS hors analyse lexicale, noms contrôlés.')
         self.assertEqual(violations, {})

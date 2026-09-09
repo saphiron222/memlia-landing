@@ -1,0 +1,94 @@
+---
+import { SITE, OG_IMAGE } from '@/data/site.mjs';
+import { BLOG } from '@/data/blog.mjs';
+import { IMAGES, cheminImage, hauteurPour } from '@/data/images.mjs';
+import type { Auteur } from '@/data/auteurs';
+
+/**
+ * Données structurées d'un article : BlogPosting, fil d'Ariane, auteur (Person) et
+ * éditeur (Organization, même `@id` que l'accueil). Ne décrit que des faits présents
+ * sur la page : pas de note, pas d'avis, pas de chiffre client.
+ */
+interface Props {
+  chemin: string;
+  titre: string;
+  description: string;
+  datePublication: Date;
+  dateMiseAJour: Date;
+  auteur: Auteur;
+  image: keyof typeof IMAGES;
+  motsCles: string[];
+  sujets: string[];
+  nombreMots: number;
+}
+const { chemin, titre, description, datePublication, dateMiseAJour, auteur, image, motsCles, sujets, nombreMots } = Astro.props;
+const u = `${SITE.url}/`;
+const url = `${SITE.url}${chemin}`;
+/** Datetime ISO 8601 complet (UTC), aligné sur les balises Open Graph et le lastmod du sitemap. */
+const iso = (d: Date) => d.toISOString();
+const visuel = IMAGES[image];
+const largeur = Math.max(...visuel.largeurs);
+const personne = `${SITE.url}${BLOG.chemin}${auteur.ancre}`;
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      '@id': `${url}#article`,
+      headline: titre,
+      description,
+      url,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      datePublished: iso(datePublication),
+      dateModified: iso(dateMiseAJour),
+      inLanguage: SITE.langue,
+      isPartOf: { '@id': `${u}#website` },
+      author: { '@id': personne },
+      publisher: { '@id': `${u}#organization` },
+      image: {
+        '@type': 'ImageObject',
+        url: `${SITE.url}${cheminImage(image, largeur, 'webp')}`,
+        width: largeur,
+        height: hauteurPour(visuel, largeur),
+        caption: visuel.alt,
+      },
+      thumbnailUrl: OG_IMAGE.url,
+      articleSection: sujets,
+      keywords: motsCles,
+      wordCount: nombreMots,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: u },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}${BLOG.chemin}` },
+        { '@type': 'ListItem', position: 3, name: titre, item: url },
+      ],
+    },
+    {
+      '@type': 'Person',
+      '@id': personne,
+      name: auteur.nom,
+      jobTitle: auteur.role,
+      description: auteur.bio,
+      url: personne,
+      worksFor: { '@id': `${u}#organization` },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${u}#organization`,
+      name: SITE.nom,
+      url: u,
+      logo: `${SITE.url}/apple-touch-icon.png`,
+      email: SITE.email,
+    },
+    // Même `@id` que sur l'accueil : chaque page est un graphe isolé pour les moteurs,
+    // la référence `isPartOf` doit donc être résolue localement.
+    { '@type': 'WebSite', '@id': `${u}#website`, url: u, name: SITE.nom, inLanguage: SITE.langue, publisher: { '@id': `${u}#organization` } },
+  ],
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />

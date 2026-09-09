@@ -84,6 +84,21 @@ export const IMAGES = {
     alt: 'Deux feuilles superposées, la proposition en vert sur la saisie',
     generee: true,
   },
+  /* Couvertures du blog (16:9) : liste à 50 vw, article à 720 px, écrans 2x. */
+  'img-23-controle-bulletins-paie': {
+    brief: 'IMG-23',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: 'Bulletins de paie vierges empilés à côté d’une liste de contrôle cochée, avant une transmission',
+    generee: true,
+  },
+  'img-24-suivi-production-sociale': {
+    brief: 'IMG-24',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: 'Tableau de suivi mensuel vierge, une colonne d’avancement et un cas signalé mis à part',
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */

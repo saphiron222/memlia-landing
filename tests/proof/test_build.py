@@ -10,6 +10,10 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / 'dist'
+SITE = 'https://memlia.fr'
+PAGES_FIXES = ['404', 'blog', 'index', 'mentions-legales', 'politique-de-confidentialite']
+# Le blog est actif dès qu'un article est publié ; en dessous de ce plancher, la section a été débranchée.
+ARTICLES_MIN = 2
 
 
 class Document(HTMLParser):
@@ -25,11 +29,21 @@ class Document(HTMLParser):
         return [attrs for name, attrs in self.tags if name == tag]
 
 
+def jsonld(path):
+    scripts = re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', path.read_text())
+    return [json.loads(s) for s in scripts]
+
+
+def articles():
+    return sorted((DIST / 'blog').glob('*.html'))
+
+
 class BuildProof(unittest.TestCase):
-    def test_four_pages_one_h1_french(self):
+    def test_pages_one_h1_french(self):
         pages = sorted(DIST.glob('*.html'))
-        self.assertEqual([p.stem for p in pages], ['404', 'index', 'mentions-legales', 'politique-de-confidentialite'])
-        for page in pages:
+        self.assertEqual([p.stem for p in pages], PAGES_FIXES)
+        self.assertGreaterEqual(len(articles()), ARTICLES_MIN)
+        for page in pages + articles():
             doc = Document(page)
             self.assertEqual(len(doc.select('h1')), 1, page.name)
             self.assertEqual(doc.select('html')[0]['lang'], 'fr')
@@ -40,41 +54,49 @@ class BuildProof(unittest.TestCase):
             robots = next(m['content'] for m in doc.select('meta') if m.get('name') == 'robots')
             self.assertIn('noindex', robots)
             canonical = next(m['href'] for m in doc.select('link') if m.get('rel') == 'canonical')
-            self.assertEqual(canonical, f'https://memlia.fr/{slug}')
+            self.assertEqual(canonical, f'{SITE}/{slug}')
 
     def test_sitemap_complete_no_legal(self):
         index = ET.parse(DIST / 'sitemap.xml')
         ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
         links = [el.text for el in index.findall('.//s:loc', ns)]
         self.assertGreater(len(links), 0)
-        pages = []
+        pages = {}
         for link in links:
             self.assertIsInstance(link, str)
             if link is None: self.fail('URL sitemap vide')
             subtree = ET.parse(DIST / urlsplit(link).path.lstrip('/'))
-            pages.extend(el.text for el in subtree.findall('.//s:loc', ns))
-        self.assertEqual(pages, ['https://memlia.fr/'])
+            for url in subtree.findall('.//s:url', ns):
+                pages[url.find('s:loc', ns).text] = url.find('s:lastmod', ns).text
+        attendues = {f'{SITE}/', f'{SITE}/blog'} | {f'{SITE}/blog/{a.stem}' for a in articles()}
+        self.assertEqual(set(pages), attendues)
+        self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
+        # lastmod d'un article = dateModified de son schéma (une seule source : le frontmatter).
+        for article in articles():
+            posting = next(n for g in jsonld(article) for n in g['@graph'] if n['@type'] == 'BlogPosting')
+            self.assertEqual(pages[f'{SITE}/blog/{article.stem}'][:10], posting['dateModified'][:10])
         self.assertIn('Sitemap: https://memlia.fr/sitemap.xml', (DIST / 'robots.txt').read_text())
 
     def test_asset_and_srcset_targets(self):
         seen = set()
-        for page in DIST.glob('*.html'):
+        for page in DIST.rglob('*.html'):
             for tag, attrs in Document(page).tags:
                 targets = []
                 if tag in ['img', 'script', 'source'] and attrs.get('src'): targets.append(attrs['src'])
                 if attrs.get('srcset'): targets.extend(part.strip().split()[0] for part in attrs['srcset'].split(','))
-                if tag == 'link' and attrs.get('rel') in ['icon', 'preload', 'apple-touch-icon']: targets.append(attrs['href'])
+                if tag == 'link' and attrs.get('rel') in ['icon', 'preload', 'apple-touch-icon', 'alternate']: targets.append(attrs['href'])
                 for target in targets:
                     if target.startswith('/'):
-                        self.assertTrue((DIST / target.lstrip('/')).is_file(), target)
+                        self.assertTrue((DIST / target.lstrip('/')).is_file(), f'{page.name}: {target}')
                         seen.add(target)
-        self.assertGreaterEqual(len(seen), 40)
+        self.assertGreaterEqual(len(seen), 52)
 
     def test_placeholders_and_briefs(self):
-        self.assertEqual(len(list((ROOT / 'public/images').glob('brief-img-1[6-9]-*.md'))) + len(list((ROOT / 'public/images').glob('brief-img-2[0-2]-*.md'))), 7)
+        briefs = ROOT / 'public/images'
+        self.assertEqual(len(list(briefs.glob('brief-img-1[6-9]-*.md'))) + len(list(briefs.glob('brief-img-2[0-4]-*.md'))), 9)
         self.assertEqual(len(list((DIST / 'images').glob('brief-*.md'))), 0)
-        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 24)
-        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 24)
+        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 30)
+        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 30)
 
     def test_five_generic_examples_no_product_statuses(self):
         html = (DIST / 'index.html').read_text()
@@ -87,9 +109,13 @@ class BuildProof(unittest.TestCase):
 
     def test_llms_anchors(self):
         ids = {attrs['id'] for _, attrs in Document(DIST / 'index.html').tags if 'id' in attrs}
-        anchors = re.findall(r'https://memlia.fr/#([a-z0-9-]+)', (DIST / 'llms.txt').read_text())
+        llms = (DIST / 'llms.txt').read_text()
+        anchors = re.findall(r'https://memlia.fr/#([a-z0-9-]+)', llms)
         self.assertGreaterEqual(len(anchors), 4)
         self.assertEqual(set(anchors) - ids, set())
+        # Chaque article publié est déclaré dans llms.txt, et rien d'autre ne l'est.
+        declares = set(re.findall(r'https://memlia.fr/blog/([a-z0-9-]+)\)', llms))
+        self.assertEqual(declares, {a.stem for a in articles()})
 
     def test_structured_data_no_unreleased_features(self):
         html = (DIST / 'index.html').read_text()
@@ -102,6 +128,88 @@ class BuildProof(unittest.TestCase):
         self.assertNotIn('offers', service)
         self.assertEqual(len(graph[-1]['mainEntity']), 11)
         self.assertNotIn('aggregateRating', scripts[0])
+
+    def test_blog_index_lists_every_article(self):
+        doc = Document(DIST / 'blog.html')
+        listed = re.findall(r'data-article="([^"]+)"', (DIST / 'blog.html').read_text())
+        self.assertEqual(sorted(listed), [a.stem for a in articles()])
+        canonical = next(m['href'] for m in doc.select('link') if m.get('rel') == 'canonical')
+        self.assertEqual(canonical, f'{SITE}/blog')
+        robots = next(m['content'] for m in doc.select('meta') if m.get('name') == 'robots')
+        self.assertNotIn('noindex', robots)
+        rss = [l for l in doc.select('link') if l.get('rel') == 'alternate']
+        self.assertEqual([l['href'] for l in rss], ['/blog/rss.xml'])
+        self.assertTrue(any(attrs.get('id') == 'auteur-kevin' for _, attrs in doc.tags))
+        (graph,) = jsonld(DIST / 'blog.html')
+        types = [n['@type'] for n in graph['@graph']]
+        self.assertEqual(types, ['Blog', 'BreadcrumbList', 'Person', 'Organization', 'WebSite'])
+        blog = graph['@graph'][0]
+        self.assertEqual(sorted(p['@id'] for p in blog['blogPost']), [f'{SITE}/blog/{a.stem}#article' for a in articles()])
+        # Du plus récent au plus ancien, dans la liste HTML comme dans le graphe (égalité des dates tolérée).
+        dates = {a.stem: next(n for g in jsonld(a) for n in g['@graph'] if n['@type'] == 'BlogPosting')['datePublished'] for a in articles()}
+        self.assertEqual([dates[s] for s in listed], sorted((dates[s] for s in listed), reverse=True))
+        self.assertEqual([p['@id'] for p in blog['blogPost']], [f'{SITE}/blog/{s}#article' for s in listed])
+
+    def test_blog_articles_schema_and_head(self):
+        for article in articles():
+            with self.subTest(article=article.name):
+                doc = Document(article)
+                url = f'{SITE}/blog/{article.stem}'
+                canonical = next(m['href'] for m in doc.select('link') if m.get('rel') == 'canonical')
+                self.assertEqual(canonical, url)
+                metas = {m.get('property') or m.get('name'): m['content'] for m in doc.select('meta') if m.get('content')}
+                self.assertEqual(metas['og:type'], 'article')
+                self.assertEqual(metas['og:url'], url)
+                self.assertNotIn('noindex', metas['robots'])
+                self.assertRegex(metas['article:published_time'], r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$')
+                self.assertTrue(metas['article:author'].startswith(f'{SITE}/blog#auteur-'))
+                self.assertLessEqual(len(metas['description']), 160)
+                titre = re.search(r'<title>(.*?)</title>', article.read_text()).group(1)
+                self.assertLessEqual(len(titre), 70, titre)
+                self.assertLessEqual(len(metas['og:title']), 70, metas['og:title'])
+                (graph,) = jsonld(article)
+                nodes = {n['@type']: n for n in graph['@graph']}
+                self.assertEqual(set(nodes), {'BlogPosting', 'BreadcrumbList', 'Person', 'Organization', 'WebSite'})
+                self.assertEqual(nodes['WebSite']['@id'], f'{SITE}/#website')
+                posting = nodes['BlogPosting']
+                self.assertEqual(posting['@id'], f'{url}#article')
+                self.assertEqual(posting['mainEntityOfPage']['@id'], url)
+                self.assertEqual(posting['datePublished'], metas['article:published_time'])
+                self.assertGreaterEqual(posting['dateModified'], posting['datePublished'])
+                self.assertEqual(posting['author']['@id'], nodes['Person']['@id'])
+                self.assertEqual(nodes['Person']['name'], 'Kevin Sauvaget')
+                self.assertEqual(posting['publisher']['@id'], f'{SITE}/#organization')
+                image = posting['image']['url']
+                self.assertTrue(image.startswith(f'{SITE}/images/'))
+                self.assertTrue((DIST / image[len(SITE) + 1:]).is_file(), image)
+                self.assertGreaterEqual(posting['image']['width'], 1200)
+                self.assertGreaterEqual(posting['wordCount'], 1500)
+                # Le compte de mots déclaré correspond au corps réellement rendu (±10 %).
+                body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)<section class="article-sources', article.read_text(), re.S).group(1)
+                mots = len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
+                self.assertLess(abs(mots - posting['wordCount']) / mots, 0.10, (mots, posting['wordCount']))
+                crumbs = nodes['BreadcrumbList']['itemListElement']
+                self.assertEqual([c['item'] for c in crumbs], [f'{SITE}/', f'{SITE}/blog', url])
+                self.assertNotIn('aggregateRating', article.read_text())
+                self.assertIn('Sources consultées', article.read_text())
+                self.assertGreaterEqual(article.read_text().count('rel="noopener"'), 3)
+
+    def test_rss_feed_matches_articles(self):
+        feed = ET.parse(DIST / 'blog' / 'rss.xml').getroot()
+        channel = feed.find('channel')
+        self.assertEqual(channel.find('link').text, f'{SITE}/blog')
+        self.assertEqual(channel.find('language').text, 'fr-fr')
+        self.assertEqual(channel.find('{http://www.w3.org/2005/Atom}link').get('href'), f'{SITE}/blog/rss.xml')
+        items = channel.findall('item')
+        self.assertEqual(sorted(i.find('link').text for i in items), [f'{SITE}/blog/{a.stem}' for a in articles()])
+        # Même ordre que la liste HTML (du plus récent au plus ancien).
+        listed = re.findall(r'data-article="([^"]+)"', (DIST / 'blog.html').read_text())
+        self.assertEqual([i.find('link').text for i in items], [f'{SITE}/blog/{s}' for s in listed])
+        for item in items:
+            self.assertTrue(item.find('title').text)
+            self.assertTrue(item.find('description').text)
+            self.assertTrue(item.find('pubDate').text)
+            self.assertEqual(item.find('{http://purl.org/dc/elements/1.1/}creator').text, 'Kevin Sauvaget')
 
 
 if __name__ == '__main__':

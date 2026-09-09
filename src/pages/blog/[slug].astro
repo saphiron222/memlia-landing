@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from 'astro:content';
+import Article from '@/layouts/Article.astro';
+
+/**
+ * Route /blog/<slug> : un fichier par article publié (brouillon: false). Les brouillons
+ * ne produisent aucune page. « À lire ensuite » : les autres articles, du plus récent
+ * au plus ancien, deux au plus.
+ */
+export async function getStaticPaths() {
+  const publies = (await getCollection('blog', ({ data }) => !data.brouillon)).sort(
+    (a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime()
+  );
+  return publies.map((entree) => ({
+    params: { slug: entree.id },
+    props: { entree, suivants: publies.filter((e) => e.id !== entree.id).slice(0, 2) },
+  }));
+}
+
+const { entree, suivants } = Astro.props;
+const { Content } = await render(entree);
+---
+
+<Article entree={entree} suivants={suivants}>
+  <Content />
+</Article>
