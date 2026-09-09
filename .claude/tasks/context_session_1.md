@@ -1,5 +1,14 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-09 — M3-S-F1, correctifs après revue
+
+- Carte `t_81c6b3c2`, même candidat/branche que M3-S. La revue a invalidé l’affirmation historique « toutes les surfaces » : mentions légales, confidentialité et 404 conservaient le vocabulaire Excel/modules ; trois textes corrigés sans toucher au code mort.
+- Oracle récursif sur toutes les surfaces texte du dist et attributs publics ; singulier générique permis uniquement par exception fermée. `npm run build` exécute désormais les oracles Python et refuse les régressions lexicales. Python 3 requis au build.
+- 15/15 Python, 27/27 Playwright locaux et 27/27 distants, check 0 erreur/0 warning/1 hint hérité, build 4 pages. Ancien contenu rouge sur les trois pages, trois mutations de fichier imbriqué rejetées, restauration verte.
+- Nouvelle preview : https://1dd069c7.memlia.pages.dev ; 8 routes relues/équivalentes, noindex header sur 7 réponses 200 et meta sur la 404. 9 captures, 6 distantes relues à 375/1440, aucun chevauchement constaté sur les corrections.
+- Rapport `docs/qa/2026-09-09-m3-s-f1.md`, preuves `.qa/m3-s-f1-preuves.zip`. Revue Claude déjà reliée via l’enfant `t_e64c75cd` : terminer F1 libère cette revue, pas M4/M5. Aucun push/main/production.
+- Pièges : Astro refuse une seconde preview dans le même worktree (serveur existant 4341 réutilisé) ; lien légal « ← Retour à l’accueil » nécessite de ne pas exiger le libellé exact sans flèche. Images/Lighthouse hors correctif, pas de nouvelle mesure créditée.
+
 ## Hermes — 2026-09-09 — M3-S automatisation IA (état courant)
 
 - Carte `t_e64c75cd`, base M3-R `76f174d0661896ac75b76d329e03c51019ef1a75`, branche isolée `wt/t_e64c75cd`. Aucun push/main/production.

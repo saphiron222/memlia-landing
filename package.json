@@ -6,7 +6,7 @@
   "description": "Site memlia.fr — Astro, Cloudflare Pages",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/strip-briefs.mjs",
+    "build": "astro build && node scripts/strip-briefs.mjs && npm run test:proof",
     "preview": "astro preview",
     "check": "astro check",
     "test": "playwright test",
