@@ -1,10 +1,10 @@
 # M4-R5 — recette du candidat latéral
 
-## Verdict : arbitrage requis sur la lisibilité interne
+## Verdict : phase acceptée après arbitrage marketing
 
-La recomposition et la preview fonctionnent. **Ne pas clore l'acceptation de la carte** : le critère « texte interne aux preuves lisible » n'est pas satisfait exhaustivement, particulièrement sur mobile. La géométrie verte ne suffit pas. Les sources1600×900 sont conservées sans crop ; leurs microtextes sont physiquement trop petits à607px, puis286px surmobile320. Augmenter la résolution ne les agrandirait pas.
+La recomposition et la preview fonctionnent. L'arbitrage marketing inscrit sur `t_b3d5e4fe` le 09/09/2026 à 10:09 accepte la **lecture globale** des preuves avec l'explication DOM adjacente. Il demande de finaliser le candidat `c2dae8a`, sans recomposer les sources ni ajouter de zoom ou d'interaction. Cette acceptation de périmètre ne certifie pas la lecture exhaustive des microtextes : les sources1600×900 intégrales restent physiquement trop petites à607px, puis286px surmobile320.
 
-Décision attendue de Kevin : accepter la lecture globale du schéma avec zoom navigateur natif, ou autoriser une recomposition des sources en variantes adaptées aux petites surfaces (sans réintroduire de clic, légende ou catalogue). Aucun arbitrage pris silencieusement.
+Reprise225 sans modification produit : check/build, Python26, images23, Playwright local64 et menu3moteurs45 rejoués ; rapports JSON relus avec zéro échec/ignoré/flaky, HTML4337 identique au dist. Cinquante nouvelles captures distantes aux cinq largeurs, mesures45images :607px/50% à1280,647px/50% à1440, zéro overflow. Deux détails desktop/mobile relus à l'écran, limite des microtextes confirmée. HTTP200/noindex recontrôlé par Chromium (urllib reçoit403). Logs et mesures dans `.qa/m4-r5/resume-225/`. Les suites distantes complètes du tableau ci-dessous restent celles de la passe initiale, pas un nouveau rejeu225.
 
 ## Candidat et périmètre
 
@@ -63,9 +63,9 @@ Rouge avant tout changement produit : **9/9 images1212px =94,6875% du viewport12
 
 ## Limites et suite
 
-- **Arbitrage réel, pas simple demande de revue** : accepter la lecture globale ou autoriser une recomposition des sources. Pas de fausse certification de lisibilité/WCAG.
+- **Limite acceptée par l'arbitrage marketing** : lecture globale, pas lecture exhaustive des microtextes ni certification WCAG. Sources et absence d'interaction conservées.
 - Pas d'iPhone physique, VoiceOver ni nouveau Lighthouse dans cette carte. Les suites rejouent lecture clavier, durée45s/cues20 ; pas de nouvelle lecture continue45s ni correction du seek revendiquées.
-- Après arbitrage : `t_89a7f08e` reprend le HEAD pour le seek seulement, puis revueClaude `t_69fbf26b`. Aucun travail concurrent sur le worktree.
+- Phase R5 terminée : `t_89a7f08e` reprend le candidat pour le seek seulement, puis revueClaude `t_69fbf26b`. Aucun accord de production ; le seek reste non résolu par cette carte.
 - `.claude/tasks/context_session_1.md` et `docs/qa/m4-r4/revue-t_c5104f9c.md` préexistants préservés. Contexte complété séparément, non embarqué au commit produit.
 - Code mort antérieur conservé ; anciens styles `.integration-image` devenus sans usage après le déplacement sont signalés, pas nettoyés hors périmètre.
 
