@@ -1,5 +1,13 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-09 — nettoyage des annotations des neuf preuves
+
+- Carte `t_3fa941a1`, branche `site/nettoyage-annotations-preuves`, produit `4d8b8d8`. Preview uniquement : https://fb1e3ae7.memlia.pages.dev, branche Cloudflare `preview-nettoyage-annotations-preuves`, type Preview relu ; aucun push/main/production.
+- 36 libellés des quatre coins + `Brouillon partagé` retirés. HTML/CSS d'origine non versionnés rapatriés, polices locales, reflow neuf compositions, neuf PNG/WEBP et douze couvertures dérivées de 06/09 régénérés. Texte central exact, gardes-fous, versions, alt et layout intacts ; HTML identique à7ec1d409 après1blocAnalytics compté.
+- Check0erreur/0warning/1hint hérité, build7pages/Python32/images23, Playwright64local+64preview. Recalcul9PNG/21actifs identiques,40poisons rejetés/restaurés ;200nœudstexte contrôlés. HTTP12équivalents/noindex,25médiasSHA ;45relevésDOMidentiques sur5largeurs,50captures locales+50distantes,inspection individuelle9images.
+- Total9WebP317480octets(+7,54%),1600×900. Rapport `docs/qa/annotations-preuves/recette.md`, preuves `.qa/annotations/`, planche `avant-apres.jpg`. Revue Claude précréée `t_512011a3` puis Kevin ; aucune validation humaine revendiquée.
+- Pièges : curseur01 masquait2boutons, corrigé/oracle rouge-vert ; capture planche défilante divergeait de1niveaucouleur, origine fixe puis octets identiques. Le build vérifie8sources+9PNG scellés sans exigerChromium ; recette complète `npm run test:proof-render`. Ne pas lancer l'importR7 historique, ne pas se fier au message `preview-m4-r4` du préparateur : branche Wrangler explicite ci-dessus. Microtextes mobile nonzoomables conservés selon arbitrage antérieur.
+
 ## Hermes — 2026-09-09 — M4-R4, correction globale des repères
 
 - Candidat courant `d291abe`, https://b2bf0d1e.memlia.pages.dev (`preview-m4-r4`). Trois liens résiduels `Lire le détail` supprimés ; périmètre antérieur trop étroit explicitement corrigé. Test global sans suffixe : rouge Python1/PW1, puis Python26/images23/Playwright44local+44distant. H1/CTA/blog/médias/R8 intacts ; comparaison DOM des deux previews identique hors3liens exclus,3cibles conservées.
