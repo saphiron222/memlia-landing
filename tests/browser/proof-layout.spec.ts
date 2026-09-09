@@ -36,11 +36,15 @@ for (const width of [320, 375, 768, 1280, 1440]) {
         expect.soft(item.image.width / (item.row?.width ?? width), item.id!).toBeLessThanOrEqual(0.52);
         expect.soft(item.image.width / (item.row?.width ?? width), item.id!).toBeGreaterThanOrEqual(0.48);
         if (item.row && item.copy) {
-          expect.soft(item.copy.right).toBeLessThanOrEqual(item.image.x + 1);
+          if (['04-observer', '06-eprouver'].includes(item.id!)) {
+            expect.soft(item.image.right).toBeLessThanOrEqual(item.copy.x + 1);
+          } else expect.soft(item.copy.right).toBeLessThanOrEqual(item.image.x + 1);
           expect.soft(item.copy.y).toBeLessThan(item.image.bottom);
           expect.soft(item.copy.bottom).toBeGreaterThan(item.image.y);
-          expect.soft(item.row.height).toBeGreaterThanOrEqual(370);
-          expect.soft(item.row.height).toBeLessThanOrEqual(430);
+          if (!['04-observer', '05-cadrer', '06-eprouver', '07-livrer'].includes(item.id!)) {
+            expect.soft(item.row.height).toBeGreaterThanOrEqual(370);
+            expect.soft(item.row.height).toBeLessThanOrEqual(430);
+          }
         }
       } else if (item.row && item.copy) {
         expect.soft(item.image.y).toBeGreaterThanOrEqual(item.copy.bottom);

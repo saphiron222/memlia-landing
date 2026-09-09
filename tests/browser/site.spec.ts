@@ -38,7 +38,7 @@ test('cinq usages illustratifs, aucun catalogue public', async ({ page }) => {
     await expect(page.locator(`[data-usage="${id}"]`)).toHaveCount(1);
   }
   await expect(page.locator('[id^="module-"]')).toHaveCount(0);
-  await expect(page.locator('#usages')).toContainText('Exemples non contractuels');
+  await expect(page.locator('#usages')).not.toContainText('Exemples non contractuels');
 });
 
 test('FAQ DOM et JSON-LD identiques, ancres locales complètes', async ({ page }) => {
