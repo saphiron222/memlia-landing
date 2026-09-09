@@ -1,5 +1,14 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-09 — capacités et méthode en quinconce
+
+- Carte `t_7c202a39`, base exacte `76214ba`, produit `fef42bf4f90eda2448911703ffbf536cda528932`, branche `site/redesign-capacites-methode`. Preview seule https://be1eb235.memlia.pages.dev, branche Cloudflare `preview-redesign-capacites-methode`, environnement Preview relu. Aucun push/main/production.
+- Usages : bento cinq blocs, principal pleine largeur puis2×2 ; suppression des paragraphes scénario et non-contractuel. Titres/corps inchangés. Méthode : quatre splits50/50, images gauche/droite/gauche/droite à1024+, texte puisimage en mobile ; libellés Étape1–4 conservés sans chips. Les neuf images nettoyées, alt, R8 et tout le reste restent intacts.
+- Vérifié : check0/1hint hérité, build7/Python32/images23, Playwright70local+70preview sur serveur frais,4poisons rejetés/restaurés, recalcul9PNG/21actifs ; HTTP12noindex,25médias SHA identiques auparent.24géométries identiques,40captures et inspection375/1440. Aucun overflow aux320/375/768/1024/1440/1920.
+- Lighthouse local100partout ; preview mobile94 puis98,desktop99,accessibilité100,BP96,SEO69. Premier LCPmobile2699ms, répétition2329ms ; CORSbeacon/noindex documentés, pas de faux vert. Rapport `docs/qa/redesign-capacites-methode/recette.md`, archive `.qa/redesign-capacites-methode-preuves.zip`.
+- Pièges : capture d'élément long incruste headerfixed au milieu ; remplacée par pleinepage depuisorigine puis découpeDOM. Ancien vérificateur média tente `index.html#flux` commebinaire ; nouvelle sonde de recette compare25publics auparent, rendu indépendant séparé. Styles/observer morts hérités signalés, nonnettoyés. Microtextes centraux des images gardés selonbrief.
+- Suite : revue croiséeClaude sur cette carte, puis validationKevin ; aucune production sansnouveaugo. Deux sous-revues courtes sans verdict exploitable, noncréditées. Proposition coffre sur originefixe enrichie, pas de modification directe du skill.
+
 ## Hermes — 2026-09-09 — nettoyage des annotations des neuf preuves
 
 - Carte `t_3fa941a1`, branche `site/nettoyage-annotations-preuves`, produit `4d8b8d8`. Preview uniquement : https://fb1e3ae7.memlia.pages.dev, branche Cloudflare `preview-nettoyage-annotations-preuves`, type Preview relu ; aucun push/main/production.

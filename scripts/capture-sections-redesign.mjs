@@ -21,17 +21,7 @@ try {
     const newUses = [...document.querySelectorAll('[data-usage]')].map(el => [text(el.querySelector('h3')), text(el.querySelector('.use-copy p'))]);
     const method = root => [...root.querySelectorAll('#methode .step-copy')].map(text);
     const oldMethod = method(old), newMethod = method(document);
-    // Le retrait est fermé : exactement les deux sections et les ressources CSS compilées.
-    // Tous les autres attributs/textes restent comparés, sauf les marqueurs de portée Astro.
-    const outside = root => {
-      const clone = root.documentElement.cloneNode(true);
-      clone.querySelectorAll('#usages, #methode, style, link[rel="stylesheet"]').forEach(el => el.remove());
-      for (const el of [clone, ...clone.querySelectorAll('*')]) {
-        for (const a of [...el.attributes]) if (a.name.startsWith('data-astro-cid-')) el.removeAttribute(a.name);
-      }
-      return clone.outerHTML;
-    };
-    return { removed, oldUses, newUses, oldMethod, newMethod, outsideIdentical: outside(old) === outside(document) };
+    return { removed, oldUses, newUses, oldMethod, newMethod };
   }, baseline);
   assert.deepEqual(copy.oldUses, copy.newUses);
   assert.deepEqual(copy.oldMethod, copy.newMethod);
@@ -39,13 +29,22 @@ try {
   const outsideStatic = await page.evaluate(before => {
     const normalize = html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      doc.querySelectorAll('#usages, #methode, style, link[rel="stylesheet"]').forEach(el => el.remove());
-      for (const el of doc.querySelectorAll('*')) for (const a of [...el.attributes]) if (a.name.startsWith('data-astro-cid-')) el.removeAttribute(a.name);
-      return doc.documentElement.outerHTML;
+      const sections = doc.querySelectorAll('#usages, #methode');
+      const styles = doc.querySelectorAll('style, link[rel="stylesheet"]');
+      const exclusions = { sections: sections.length, styles: styles.length, scopeAttributes: 0 };
+      [...sections, ...styles].forEach(el => el.remove());
+      for (const el of doc.querySelectorAll('*')) for (const a of [...el.attributes]) if (a.name.startsWith('data-astro-cid-')) {
+        el.removeAttribute(a.name);
+        exclusions.scopeAttributes++;
+      }
+      return { html: doc.documentElement.outerHTML, exclusions };
     };
-    return normalize(before.old) === normalize(before.current);
+    const old = normalize(before.old), current = normalize(before.current);
+    return { identical: old.html === current.html, old: old.exclusions, current: current.exclusions };
   }, { old: baseline, current: readFileSync('dist/index.html', 'utf8') });
-  assert.equal(outsideStatic, true, 'Modification hors des deux sections');
+  assert.equal(outsideStatic.identical, true, 'Modification hors des deux sections');
+  assert.equal(outsideStatic.old.sections, 2);
+  assert.deepEqual(outsideStatic.old, outsideStatic.current);
   writeFileSync(`${out}/copy.json`, JSON.stringify({ ...copy, outsideStatic }, null, 2));
   for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await page.setViewportSize({ width, height: 900 });
