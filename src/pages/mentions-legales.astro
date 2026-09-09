@@ -10,13 +10,20 @@ import { SITE } from '@/data/site.mjs';
   description="Mentions légales du site memlia.fr."
   chemin="/mentions-legales"
   h1="Mentions légales"
-  miseAJour="8 septembre 2026"
+  miseAJour="9 septembre 2026"
 >
   <h2>1. Éditeur du site</h2>
   <p>
-    Le site <strong>memlia.fr</strong> est édité par Memlia. Pour toute question, vous pouvez nous écrire à
-    l’adresse <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+    Le site <strong>memlia.fr</strong> est édité par <strong>MEMLIA</strong>, société par actions simplifiée
+    unipersonnelle (SASU) au capital social de 1 €.
   </p>
+  <ul>
+    <li>Siège social : Bureau 326, 59 rue de Ponthieu, 75008 Paris, France.</li>
+    <li>SIREN : 108 621 541 — SIRET : 10862154100011.</li>
+    <li>Immatriculation : RCS Paris 108 621 541.</li>
+    <li>Directeur de la publication : Kevin KITANGA, président de MEMLIA.</li>
+    <li>Contact : <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</li>
+  </ul>
 
   <h2>2. Objet du site</h2>
   <p>
@@ -61,4 +68,15 @@ import { SITE } from '@/data/site.mjs';
 
   <h2>8. Contact</h2>
   <p>Pour toute question concernant le site : <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+
+  <h2>9. Hébergement</h2>
+  <p>
+    Le site est hébergé par <strong>Cloudflare, Inc.</strong> via le service Cloudflare Pages,
+    101 Townsend St., San Francisco, CA 94107, États-Unis.
+  </p>
+  <p>
+    Téléphone : <a href="tel:+18889935273">+1 888 993 5273</a>.
+    Site : <a href="https://www.cloudflare.com/">www.cloudflare.com</a>.
+    <a href="https://www.cloudflare.com/terms/">Coordonnées et conditions du service Cloudflare</a>.
+  </p>
 </Legal>
