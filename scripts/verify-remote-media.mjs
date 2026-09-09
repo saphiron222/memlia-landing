@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 const base = process.env.QA_URL;
 if (!base?.startsWith('https://')) throw new Error('QA_URL HTTPS obligatoire');
-const manifest = JSON.parse(readFileSync('docs/qa/m4-r3/media-manifest.json', 'utf8'));
+const manifest = JSON.parse(readFileSync('docs/qa/m4-r4/media-manifest.json', 'utf8'));
 const entries = manifest.entries.filter(entry => entry.target.startsWith('public/'));
 const excluded = manifest.entries.length - entries.length;
 const report = [];
@@ -22,5 +22,5 @@ for (const entry of entries) {
 }
 if (entries.length !== 25 || excluded !== 1) throw new Error('Périmètre incomplet');
 const result = { base, checked: report.length, excluded, exclusion: 'script Markdown documentaire, non public', report };
-writeFileSync('docs/qa/m4-r3/remote-media.json', JSON.stringify(result, null, 2) + '\n');
+writeFileSync('docs/qa/m4-r4/remote-media.json', JSON.stringify(result, null, 2) + '\n');
 console.log(JSON.stringify(result, null, 2));

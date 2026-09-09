@@ -2,7 +2,7 @@
 import { readFileSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
-const manifest = JSON.parse(readFileSync('docs/qa/m4-r3/media-manifest.json', 'utf8'));
+const manifest = JSON.parse(readFileSync('docs/qa/m4-r4/media-manifest.json', 'utf8'));
 const images = manifest.entries.filter(e => /\.(webp|avif)$/.test(e.target));
 if (images.length !== 23) throw new Error(`23 images attendues, ${images.length} reçues`);
 const hashes = new Set();

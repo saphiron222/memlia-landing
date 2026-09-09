@@ -6,4 +6,4 @@ rmSync(target, { recursive: true, force: true });
 mkdirSync(target, { recursive: true });
 cpSync('dist', target, { recursive: true });
 writeFileSync(`${target}/_headers`, '/*\n  X-Robots-Tag: noindex, nofollow\n');
-console.log(`Preview noindex prête dans ${target}. Déployer seulement sur la branche preview-m4-r3, jamais main.`);
+console.log(`Preview noindex prête dans ${target}. Déployer seulement sur la branche preview-m4-r4, jamais main.`);

@@ -1,13 +1,15 @@
 import { test, expect } from '@playwright/test';
 
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
-  test(`preuves et lecteur R7 utilisables à ${width}px`, async ({ page }) => {
+  test(`preuves et lecteur R8 utilisables à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('/');
     const video = page.locator('video');
+    await expect(video).toHaveAttribute('src', '/media/r8/animatique-hero-45s.mp4');
+    await expect(video).toHaveAttribute('poster', '/media/r8/hero-poster-1200.webp');
     await expect(video).toHaveAttribute('controls', '');
     await expect(video).not.toHaveAttribute('autoplay', '');
     await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.readyState)).toBeGreaterThanOrEqual(1);
@@ -74,7 +76,7 @@ test('vidéo en échec : contrôles et VTT conservés sans microtexte de remplac
   await page.goto('/');
   await expect.poll(() => page.locator('video').evaluate((v: HTMLVideoElement) => v.error?.code)).toBeGreaterThan(0);
   await expect(page.locator('video')).toHaveAttribute('controls', '');
-  await expect(page.locator('video track')).toHaveAttribute('src', '/media/r7/animatique.vtt');
+  await expect(page.locator('video track')).toHaveAttribute('src', '/media/r8/animatique.vtt');
   await expect(page.locator('.hero-transcript, .hero-media-help')).toHaveCount(0);
 });
 

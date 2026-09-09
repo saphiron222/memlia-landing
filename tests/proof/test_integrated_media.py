@@ -9,7 +9,7 @@ PROOFS = ['01-flux', '02-repetition', '03-controle', '04-observer', '05-cadrer',
 
 
 class IntegratedMediaProof(unittest.TestCase):
-    def test_hero_has_accessible_r7_player(self):
+    def test_hero_has_accessible_r8_player(self):
         doc = Document(DIST / 'index.html')
         videos = doc.select('video')
         self.assertEqual(len(videos), 1)
@@ -19,9 +19,9 @@ class IntegratedMediaProof(unittest.TestCase):
         self.assertNotIn('autoplay', video)
         self.assertEqual(video['preload'], 'metadata')
         self.assertTrue(video['aria-label'])
-        self.assertEqual(video['poster'], '/media/r7/hero-poster-1200.webp')
-        self.assertEqual(video['src'], '/media/r7/animatique-hero-45s.mp4')
-        self.assertEqual(hashlib.sha256((DIST / video['src'].lstrip('/')).read_bytes()).hexdigest(), '649d2d767f086cb22c870b88ab71797fe09b6d73f228e2e3b89406b062fa2700')
+        self.assertEqual(video['poster'], '/media/r8/hero-poster-1200.webp')
+        self.assertEqual(video['src'], '/media/r8/animatique-hero-45s.mp4')
+        self.assertEqual(hashlib.sha256((DIST / video['src'].lstrip('/')).read_bytes()).hexdigest(), '164f6090f7d7a820d544d6679e5f68257fb4f929fe35079b5ce9a22ef86585e4')
         tracks = doc.select('track')
         self.assertEqual(len(tracks), 1)
         self.assertEqual(tracks[0]['kind'], 'subtitles')
@@ -60,7 +60,7 @@ class IntegratedMediaProof(unittest.TestCase):
 
     def test_hero_poster_is_prioritized_before_video_metadata(self):
         links = Document(DIST / 'index.html').select('link')
-        poster = [l for l in links if l.get('href') == '/media/r7/hero-poster-1200.webp']
+        poster = [l for l in links if l.get('href') == '/media/r8/hero-poster-1200.webp']
         self.assertEqual(len(poster), 1)
         self.assertEqual(poster[0].get('rel'), 'preload')
         self.assertEqual(poster[0].get('as'), 'image')
