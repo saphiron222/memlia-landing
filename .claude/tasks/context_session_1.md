@@ -1,5 +1,13 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-09 — M4-R4, attente vidéo R8
+
+- Carte `t_6900a385`, correctif commité `93254d4` sur `wt/t_f16e5a39`. Neuf preuves strictement statiques, alt conservés ; plus de légende, détails, liens d’agrandissement, transcription ni aide sous le hero. H1/CTA/tagline/blog/médias inchangés.
+- Preview **intermédiaire** créée avant le nouveau retour Kevin : https://da46bff3.memlia.pages.dev, branche `preview-m4-r4`. Ne pas la qualifier de finale : R7 contient le cartouche incrusté rejeté. Parent R8 `t_421d6828` ajouté par l’opérateur ; attendre sa livraison puis remplacer MP4/poster, versionner les chemins et mettre à jour tests/manifeste/preload.
+- Mesures actuelles : rouge préalable Python3échecs/26 et Playwright320rouge ; check0erreur, build7pages/Python26/images23 ; Playwright44local et44distant, parcours Tab complet renforcé rejoué. CDP36figures/72cibles sans écouteur,48captures locales et48distantes,12routes noindex identiques,25médias distants hashés. Lighthouse local100/100/100/100 sur mobile/desktop. Pas de nouvelle lecture45s ni Lighthouse distant crédités.
+- Rapport et reprise détaillée : `docs/qa/m4-r4/recette-intermediaire.md`, `.qa/m4-r4/`. Le script `verify-remote-media.mjs` écrit dans le rapport historique R3 : copier le résultat R4 puis restaurer l’historique, déjà fait ici avec diff nul. Les champs `title/detail` de proofs.ts sont désormais non utilisés, laissés en place hors nettoyage.
+- Suite : dépendance automatique R8, intégration et trois passes finales puis clôture pour libérer l’enfant revue Claude `t_69fbf26b`. Aucun push/main/production ; microtextes à l’intérieur des images non zoomables selon demande, contrôles vidéo natifs gardés.
+
 ## Hermes — 2026-09-09 — M3-S-F1, correctifs après revue
 
 - Carte `t_81c6b3c2`, même candidat/branche que M3-S. La revue a invalidé l’affirmation historique « toutes les surfaces » : mentions légales, confidentialité et 404 conservaient le vocabulaire Excel/modules ; trois textes corrigés sans toucher au code mort.
