@@ -2,6 +2,8 @@
 
 ## Hermes — 2026-09-09 — M4-R4, R8 intégrée
 
+- **Blocage administratif de fin** : deux refus du juge `kanban_complete`, motif R8 contraire au corps initial R7, malgré rappel du commentaire opérateur06:15 et parentR8. Ne pas restaurer R7 ; demander opérateur actualisation du goal et clôture de phase. F1 `t_89a7f08e` reste donc en todo derrière cette carte. Livrables locaux vérifiés, upload via completion non confirmé.
+
 - Carte `t_6900a385` : nettoyage `93254d4`, intégration média `19a6c03`. Preview actuelle https://7e55394e.memlia.pages.dev (`preview-m4-r4`), R8 sans cartouche supérieur droit. Sources R7, preuves, blog, H1/CTA/tagline inchangés. Ne pas relancer l'import historique R3 pour le candidat courant ; `scripts/import-r8-media.mjs` produit le manifeste R4.
 - Check0erreur/1hint, build7pages/Python26/images23, Playwright44local+44distant. CDP36figures/72cibles sans écouteur sur4largeurs ;48captures par environnement. HTTP12équivalents/noindex,25médiasSHA ;1350framesR8 sans cartouche avec témoinR7 positif, AAC/PCM/VTT identiques, poster vraie frame418. Lecture45s locale/distance,20cues ; distant1350frames/0perdue.
 - Lighthouse local99/100/100/100 mobile,100partout desktop ; preview98/100/96/69 et100/100/96/69. SEO69=noindex requis, BP96=beaconCloudflare CORS ; ne pas les masquer.

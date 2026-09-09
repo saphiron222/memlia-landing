@@ -7,6 +7,7 @@
 - Preview : https://7e55394e.memlia.pages.dev ; alias https://preview-m4-r4.memlia.pages.dev.
 - Déploiement autorisé sur `preview-m4-r4` seulement. Aucun push, merge main ou production.
 - **Phase de nettoyage et intégration terminée ; validation finale non acquise.** Un défaut supplémentaire de seek à froid est confié à `t_89a7f08e`, placé avant la revue Claude existante `t_69fbf26b`.
+- **Statut Kanban : clôture refusée deux fois par le juge**, qui applique encore le corps initial « conserver R7 » et ignore la consigne ultérieure du fil imposant R8. Intervention opérateur nécessaire pour actualiser le goal ; ne pas restaurer R7. L'enfant F1 reste en attente de cette clôture. Les fichiers de captures/archive existent localement, mais leur téléversement par `kanban_complete` n'est pas confirmé puisque la transition a été refusée.
 
 ## Périmètre
 
