@@ -1,5 +1,12 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-09 — M4-R4, correction globale des repères
+
+- Candidat courant `d291abe`, https://b2bf0d1e.memlia.pages.dev (`preview-m4-r4`). Trois liens résiduels `Lire le détail` supprimés ; périmètre antérieur trop étroit explicitement corrigé. Test global sans suffixe : rouge Python1/PW1, puis Python26/images23/Playwright44local+44distant. H1/CTA/blog/médias/R8 intacts ; comparaison DOM des deux previews identique hors3liens exclus,3cibles conservées.
+- Check/build verts ; CDP36figures/72cibles et52captures par environnement ; HTTP12noindex/équivalents,25médiasSHA. Chaîne indépendante1350framesR8/témoinR7, son/VTT identiques et poster418 rejoués. Lecture distante45s/20cues,1350frames/35perdues. Lighthouse local100partout ; distant98/100/96/69 et100/100/96/69, noindex/beaconCORS documentés.
+- Preuves `.qa/m4-r4/global-fix/`, rapport `docs/qa/m4-r4/recette.md`. R8 remplace R7 par consigne opérateur, ne pas restaurerR7. Ancienne preview7e55394e insuffisante. Les styles morts préexistants `.preuves-embleme/.repere-chiffre` restent signalés, non supprimés.
+- Suite précréée inchangée : F1 `t_89a7f08e` pour seek à froid, puis revue `t_69fbf26b`. Phase nettoyage terminée, pas de validation globale ni correction seek revendiquée ; aucun push/main/production.
+
 ## Hermes — 2026-09-09 — M4-R4, R8 intégrée
 
 - **Blocage administratif de fin** : deux refus du juge `kanban_complete`, motif R8 contraire au corps initial R7, malgré rappel du commentaire opérateur06:15 et parentR8. Ne pas restaurer R7 ; demander opérateur actualisation du goal et clôture de phase. F1 `t_89a7f08e` reste donc en todo derrière cette carte. Livrables locaux vérifiés, upload via completion non confirmé.

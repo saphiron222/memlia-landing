@@ -1,10 +1,36 @@
 # M4-R4 — images statiques et vidéo R8
 
+## Correction globale après QA opérateur — 09/09, 07:26
+
+- **Candidat courant : https://b2bf0d1e.memlia.pages.dev**, commit `d291abe`, alias `preview-m4-r4`. Remplace la preview `7e55394e` ci-dessous. Aucun push/main/production.
+- Les trois ancres `Lire le détail` des repères étaient réellement présentes. L'exclusion de périmètre du rapport précédent était erronée. Elles sont maintenant supprimées, avec leur import/icône, href et style dédiés ; titres, descriptions et contenus cibles restent intacts.
+- Cause du faux vert : Python/Playwright ne cherchaient que `Lire le détail —` avec suffixe. Les deux assertions portent désormais sur `Lire le détail` dans toute la page, sans suffixe ; CDP contrôle aussi le texte global. Rouge préalable : Python 1 échec sur 5, Playwright 320px 1 échec, tous deux sur les liens résiduels réels.
+- R8 reste obligatoire selon le commentaire opérateur du fil et le parent `t_421d6828`, qui remplacent le corps initial R7. Aucun média n'a changé dans cette reprise. La clôture de cette phase libère F1 ; elle ne vaut pas validation finale du site.
+
+| Vérification rejouée sur ce correctif | Résultat |
+|---|---|
+| Astro check / build | 65 fichiers, 0 erreur/0 warning, 1 hint hérité ; 7 pages |
+| Python / images | 26/26 ; 23 images |
+| Playwright local / distant | 44/44 chacun, sans skip ni flaky |
+| Texte DOM global / cibles | 0 microtexte interdit aux six largeurs ; 3 cibles non vides conservées |
+| Comparaison indépendante des deux previews | Corps textuel identique après exclusion explicite des 3 seuls anciens liens ; 3 contenus cibles strictement identiques |
+| Figures / CDP | 36 figures et 72 cibles sans écouteur à 320/375/768/1440, local et distant ; aucun overflow |
+| Captures statiques | 52 locales + 52 distantes, dont les repères aux quatre largeurs |
+| HTTP / médias | 12 routes équivalentes au dist et noindex ; 25 médias SHA identiques, 1 document exclu ; 26 cibles locales rehashées |
+| Chaîne R8 indépendante | 1350 frames sans cartouche, témoin R7 positif sur 1350 ; AAC/PCM/VTT identiques, poster frame418, 26 historiques inchangés |
+| Lecture distante | Fin45s, son non muet/volume1, 20 cues, 1113066 octets audio décodés ; 1350 frames dont 35 perdues |
+| Lighthouse local mobile / desktop | 100/100/100/100 chacun |
+| Lighthouse distant mobile / desktop | 98/100/96/69 et 100/100/96/69 ; sorties1 assumées |
+
+Le SEO69 vient du header noindex obligatoire ; BP96 du beacon Cloudflare CORS, détails relus dans les rapports JSON. Pas de certification lecteur d'écran/Safari. Repères locaux375/1440, distants320, lecteur distant1440 et illustration distante375 ouverts et examinés : aucune légende extérieure, microliens absents, pas de coupure du texte des repères. Les microtextes internes aux images restent petits conformément au périmètre statique.
+
+Preuves actuelles : `.qa/m4-r4/global-fix/` (témoins rouges, comparaison de copy, résultats Playwright, HTTP, captures et lecture). `remote-media.json` pointe sur la nouvelle URL. Les preuves négatives de seek et les archives historiques restent intactes. **Seek à froid non corrigé ni requalifié** : suite spécialisée `t_89a7f08e`, puis revue `t_69fbf26b` ; aucune approbation globale revendiquée.
+
 ## Candidat livré à la suite de recette
 
 - Carte `t_6900a385`, branche `wt/t_f16e5a39`, worktree `/Users/kevinkitanga/dev/interne/memlia-landing/.worktrees/t_f16e5a39`.
 - Nettoyage HTML/CSS : `93254d4` ; intégration R8 : `19a6c03`.
-- Preview : https://7e55394e.memlia.pages.dev ; alias https://preview-m4-r4.memlia.pages.dev.
+- Preview historique avant correction globale : https://7e55394e.memlia.pages.dev ; alias désormais remplacé par le candidat courant ci-dessus.
 - Déploiement autorisé sur `preview-m4-r4` seulement. Aucun push, merge main ou production.
 - **Phase de nettoyage et intégration terminée ; validation finale non acquise.** Un défaut supplémentaire de seek à froid est confié à `t_89a7f08e`, placé avant la revue Claude existante `t_69fbf26b`.
 - **Statut Kanban : clôture refusée deux fois par le juge**, qui applique encore le corps initial « conserver R7 » et ignore la consigne ultérieure du fil imposant R8. Intervention opérateur nécessaire pour actualiser le goal ; ne pas restaurer R7. L'enfant F1 reste en attente de cette clôture. Les fichiers de captures/archive existent localement, mais leur téléversement par `kanban_complete` n'est pas confirmé puisque la transition a été refusée.
@@ -15,7 +41,7 @@ Neuf figures contiennent uniquement une image informative responsive avec alt. A
 
 R8 remplace R7 conformément au dernier retour Kevin : MP4, VTT et poster original copiés sans modification, chemins versionnés `/media/r8/`. Seul le poster de diffusion est dérivé à1200px/qualité90, comme R3. Son poids est24176octets. L'original est la vraie frame418. Les sources R7 et les rapports R3 ne sont pas écrasés.
 
-H1/CTA/tagline/copy principale/blog/preuves inchangés. Les trois liens « Lire le détail » historiques des repères de méthode ne sont pas les microliens ajoutés sous les médias, et restent hors suppression. Les champs `title/detail` inutilisés de proofs.ts sont signalés, pas supprimés.
+H1/CTA/tagline/copy principale/blog/preuves inchangés. L'ancienne exclusion des trois liens « Lire le détail » des repères était erronée ; corrigée au commit `d291abe` ci-dessus. Les champs `title/detail` inutilisés de proofs.ts sont signalés, pas supprimés.
 
 ## Trois passes réellement rejouées
 
