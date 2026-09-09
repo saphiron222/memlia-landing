@@ -21,7 +21,7 @@ try {
       return { excluded, text: clean(body.textContent),
         links: [...document.querySelectorAll('a')].map(a => [clean(a.textContent), a.getAttribute('href')]),
         headings: [...document.querySelectorAll('h1,h2,h3')].map(h => [h.tagName,clean(h.textContent)]),
-        sections: [...document.querySelectorAll('main > section')].map(s => [s.id,s.className]),
+        sections: [...document.querySelectorAll('main .feuille > section')].map(s => [s.id,s.className]),
         images: [...document.querySelectorAll('img')].map(i => [i.getAttribute('src'),i.alt]),
         video: [...document.querySelector('video').attributes].map(a => [a.name,a.value]).filter(a => !a[0].startsWith('data-astro')),
         tracks: [...document.querySelectorAll('video source,video track')].map(e => [...e.attributes].map(a => [a.name,a.value])),
@@ -31,12 +31,15 @@ try {
   const previous = await read(report.reference);
   const current = await read(base);
   writeFileSync(`${out}/semantic.json`, JSON.stringify({ previous, current }, null, 2));
+  assert.equal(previous.sections.length, 10, 'Périmètre des sections parent');
+  assert.equal(current.sections.length, 10, 'Périmètre des sections candidat');
+  assert.equal(current.images.length, 9, 'Périmètre des preuves');
   for (const key of Object.keys(previous).filter(k => k !== 'excluded')) {
     assert.deepEqual(current[key], previous[key], key);
     report.comparisons.push(key);
   }
   report.excludedScriptStyle = { previous: previous.excluded, current: current.excluded };
-  const mediaPaths = [...current.images.map(i => i[0]), ...current.tracks.flatMap(t => t.filter(a => a[0] === 'src').map(a => a[1])), current.video.find(a => a[0] === 'poster')[1]];
+  const mediaPaths = [...current.images.map(i => i[0]), ...current.tracks.flatMap(t => t.filter(a => a[0] === 'src').map(a => a[1])), ...current.video.filter(a => ['src', 'poster'].includes(a[0])).map(a => a[1])];
   for (const path of [...new Set(mediaPaths)]) {
     const response = await page.request.get(base + path);
     assert.equal(response.status(), 200);
