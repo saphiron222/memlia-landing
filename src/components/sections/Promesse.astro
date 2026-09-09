@@ -1,5 +1,5 @@
 ---
-import ProofMedia from '@/components/ProofMedia.astro';
+import ProofRow from '@/components/ProofRow.astro';
 /**
  * Promesse (copy validée, section 2) — oppose Memlia aux migrations et aux plateformes
  * génériques. Trois colonnes à filets, dans le gabarit « bande » de la spec.
@@ -21,6 +21,7 @@ const points = [
 ---
 
 <section id="promesse" class="promesse" aria-labelledby="promesse-titre">
+  <div class="promesse-media"><ProofRow id="01-flux">
   <div class="promesse-tete rv">
     <h2 id="promesse-titre">Un processus automatisé. Pas un outil à configurer seul.</h2>
     <p class="promesse-intro texte-2">
@@ -28,6 +29,7 @@ const points = [
       puis livrons l’automatisation dans l’environnement convenu.
     </p>
   </div>
+  </ProofRow></div>
   <div class="coins">
     <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
   <ul class="promesse-grille rv-groupe">
@@ -40,7 +42,7 @@ const points = [
     ))}
   </ul>
   </div>
-<div class="promesse-media"><ProofMedia id="01-flux" /></div>
+
 </section>
 
 <style>
@@ -53,7 +55,7 @@ const points = [
     display: grid;
     gap: 12px;
     max-width: 720px;
-    padding: 0 var(--marge-page) 40px;
+    padding: 0;
   }
   .promesse-intro {
     max-width: 62ch;
@@ -101,8 +103,7 @@ const points = [
       padding-top: 128px;
     }
     .promesse-tete {
-      padding-left: var(--marge-page-lg);
-      padding-right: var(--marge-page-lg);
+      padding: 0;
     }
     .promesse-point {
       padding: 64px 48px;

@@ -1,19 +1,21 @@
 ---
-import ProofMedia from '@/components/ProofMedia.astro';
+import ProofRow from '@/components/ProofRow.astro';
 /** Le problème quotidien, sans métrique client ni témoignage inventé. */
 ---
 <section class="daily" aria-labelledby="daily-title">
+  <ProofRow id="02-repetition">
   <div class="daily-intro rv">
     <h2 id="daily-title">La même tâche. Encore.</h2>
     <p class="texte-2 lecture">Copier, trier, vérifier. Vos équipes connaissent la règle, mais doivent la rejouer à la main. Leur temps est pris par la mécanique plutôt que par les dossiers qui demandent du jugement.</p>
   </div>
+  </ProofRow>
   <dl class="daily-list rv">
     <div><dt>Répéter</dt><dd>Les mêmes contrôles et manipulations à chaque cycle.</dd></div>
     <div><dt>Reconstituer</dt><dd>L’information dispersée entre logiciels, fichiers et messages.</dd></div>
     <div><dt>Sécuriser</dt><dd>Les cas particuliers à repérer parmi les traitements courants.</dd></div>
   </dl>
   <p class="daily-note texte-2">Un processus cadré. Un devis à la complexité, jamais par siège. Des démonstrations sur jeux fictifs.</p>
-  <ProofMedia id="02-repetition" />
+
 </section>
 <style>
   .daily { padding: 96px var(--marge-page) 0; }

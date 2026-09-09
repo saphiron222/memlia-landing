@@ -1,6 +1,6 @@
 ---
 import Chip from '@/components/Chip.astro';
-import ProofMedia from '@/components/ProofMedia.astro';
+import ProofRow from '@/components/ProofRow.astro';
 import type { ProofId } from '@/data/proofs';
 import { METHODE } from '@/data/methode';
 
@@ -24,11 +24,13 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
     <ol class="parcours-etapes">
       {METHODE.etapes.map((e, i) => (
         <li class:list={['etape', { active: i === 0 }]} data-etape={i}>
-
+          <ProofRow id={e.image as ProofId}>
+          <div class="step-copy">
           <Chip variante="claire" picto={pictos[i] ?? 'coche'} libelle={`Étape ${e.numero}`} />
           <h3 class="etape-h3">{e.titre}</h3>
           <p class="texte-2">{e.texte}</p>
-          <div class="step-image"><ProofMedia id={e.image as ProofId} /></div>
+          </div>
+          </ProofRow>
         </li>
       ))}
     </ol>
@@ -97,7 +99,7 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
   }
   .parcours-etapes {
     display: grid;
-    gap: 64px;
+    gap: 0;
     padding: 24px var(--marge-page) 0;
   }
   .etape {
@@ -110,7 +112,7 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
     font-size: var(--t-2xl);
     margin-top: 10px;
   }
-  .step-image { min-width: 0; }
+  .step-copy { display: grid; gap: 12px; }
   @media (min-width: 64rem) {
     .etape { max-width: 100%; }
     .parcours {
@@ -155,7 +157,7 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
       transition: transform var(--duree-4) linear;
     }
     .parcours-etapes {
-      gap: 64px;
+      gap: 0;
       padding: 48px 0;
       margin: 0;
     }

@@ -1,5 +1,5 @@
 ---
-import ProofMedia from '@/components/ProofMedia.astro';
+import ProofRow from '@/components/ProofRow.astro';
 const proofs = [
   { title: 'Preuve de méthode', text: 'Règle écrite, cas limites, refus attendus et recette avant livraison.' },
   { title: 'Preuve de contrôle', text: 'Proposition visible, validation humaine et refus des sorties sensibles non prévues au contrat.' },
@@ -14,6 +14,7 @@ const proofs = [
 ---
 
 <section id="preuves" class="preuves" aria-labelledby="preuves-titre">
+  <div class="preuves-media"><ProofRow id="03-controle">
   <div class="preuves-tete rv">
 
     <span class="eyebrow">proposition vs saisie</span>
@@ -25,6 +26,7 @@ const proofs = [
     <p class="texte-2 lecture">Memlia propose. Le cabinet saisit ou valide. Ce que Memlia génère se régénère ;
       ce que le cabinet saisit ne se touche jamais. Aucun envoi externe sans validation humaine.</p>
   </div>
+  </ProofRow></div>
 
   <div class="coins">
     <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
@@ -38,7 +40,7 @@ const proofs = [
     ))}
   </ul>
   </div>
-  <div class="preuves-media"><ProofMedia id="03-controle" /></div>
+
 </section>
 
 <style>
@@ -52,7 +54,7 @@ const proofs = [
     display: grid;
     gap: 12px;
     max-width: 720px;
-    padding: 0 var(--marge-page) 40px;
+    padding: 0;
   }
   .preuves-embleme {
     width: 72px;
@@ -105,8 +107,7 @@ const proofs = [
       padding-top: 128px;
     }
     .preuves-tete {
-      padding-left: var(--marge-page-lg);
-      padding-right: var(--marge-page-lg);
+      padding: 0;
     }
     .reperes {
       grid-template-columns: repeat(3, minmax(0, 1fr));

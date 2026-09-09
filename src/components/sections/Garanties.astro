@@ -1,6 +1,6 @@
 ---
 import Picto from '@/components/Picto.astro';
-import ProofMedia from '@/components/ProofMedia.astro';
+import ProofRow from '@/components/ProofRow.astro';
 import { GARANTIES } from '@/data/garanties';
 
 /**
@@ -10,6 +10,7 @@ import { GARANTIES } from '@/data/garanties';
 ---
 
 <section id="garanties" class="garanties" aria-labelledby="garanties-titre">
+  <div class="garanties-media"><ProofRow id="09-garanties">
   <div class="garanties-tete">
     <div class="garanties-phrase">
       <h2 id="garanties-titre" class="garanties-h2">Des limites écrites avant de développer.</h2>
@@ -19,8 +20,7 @@ import { GARANTIES } from '@/data/garanties';
 
   </div>
 
-  <div class="coins">
-    <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+  <div class="garanties-proof-list">
   <ul class="garanties-grille rv" data-garanties>
     {GARANTIES.map((g) => (
       <li class="garantie">
@@ -33,7 +33,7 @@ import { GARANTIES } from '@/data/garanties';
     ))}
   </ul>
   </div>
-  <div class="garanties-media"><ProofMedia id="09-garanties" /></div>
+  </ProofRow></div>
 </section>
 
 <style>
@@ -46,7 +46,7 @@ import { GARANTIES } from '@/data/garanties';
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 64px var(--marge-page) 24px;
+    padding: 0 0 24px;
   }
   .garanties-phrase {
     display: flex;
@@ -186,26 +186,25 @@ import { GARANTIES } from '@/data/garanties';
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      padding: 40px var(--marge-page) 40px;
+      padding: 0 0 24px;
     }
     .garanties-phrase {
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      align-items: start;
       gap: 16px;
       flex: 1;
     }
     .garanties-sep {
-      display: block;
+      display: none;
       margin: 0 24px;
     }
   }
   @media (min-width: 64rem) {
     .garanties-tete {
-      padding-left: var(--marge-page-lg);
-      padding-right: var(--marge-page-lg);
+      padding: 0 0 24px;
     }
     .garanties-grille {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 </style>

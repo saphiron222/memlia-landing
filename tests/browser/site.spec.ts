@@ -103,7 +103,7 @@ test('méthode mobile : chaque étape garde son image et son texte dans le flux'
       return document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2) === el;
     });
     expect(visible).toBe(true);
-    await expect(step.locator('.step-image')).toBeVisible();
+    await expect(step.locator('.functional-proof img')).toBeVisible();
   }
 });
 
