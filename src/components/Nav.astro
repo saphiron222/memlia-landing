@@ -7,7 +7,7 @@ import { CTA } from '@/data/site.mjs';
 
 
 /**
- * Navigation M3-S : ancres narratives directes et disclosure mobile sans piège de focus.
+ * Navigation M3-S : ancres narratives directes et panneau mobile refermable par Échap.
  */
 interface Props {
   blogActif: boolean;
@@ -64,7 +64,8 @@ const entrees = [
       </button>
     </div>
   </div>
-
+</header>
+  <!-- Frère du header : son backdrop-filter ne doit pas contenir le fixed (WebKit). -->
   <div class="nav-mobile" id="menu-mobile" data-menu-mobile hidden>
     <nav aria-label="Navigation mobile" class="conteneur">
       <ul class="nav-mobile-liste">
@@ -79,7 +80,6 @@ const entrees = [
       </ul>
     </nav>
   </div>
-</header>
 
 <noscript>
   <nav class="conteneur nav-sans-js" aria-label="Navigation sans JavaScript">
@@ -201,6 +201,8 @@ const entrees = [
   .nav-burger {
     display: inline-grid;
     place-items: center;
+    min-width: 44px;
+    min-height: 44px;
     padding: 6px;
     border-radius: var(--r-bouton);
     border: 1px solid transparent;
@@ -217,14 +219,17 @@ const entrees = [
   }
   .nav-mobile {
     position: fixed;
-    top: var(--nav-h);
+    z-index: 49;
+    top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 1px);
     left: 0;
     right: 0;
-    bottom: 0;
+    height: calc(100vh - var(--nav-h) - env(safe-area-inset-top, 0px) - 1px);
+    height: calc(100dvh - var(--nav-h) - env(safe-area-inset-top, 0px) - 1px);
     overflow-y: auto;
-    background: var(--surface-feuille);
+    overscroll-behavior-y: contain;
+    background: #fffefb;
     border-top: 1px solid var(--ligne);
-    padding: 12px 0 32px;
+    padding: 12px env(safe-area-inset-right, 0px) max(32px, env(safe-area-inset-bottom, 0px)) env(safe-area-inset-left, 0px);
   }
   .nav-mobile[hidden] {
     display: none;
@@ -234,6 +239,7 @@ const entrees = [
   }
   .nav-mobile-lien {
     display: block;
+    min-height: 44px;
     padding: 12px 8px;
     font-size: 1rem;
     font-weight: 500;
@@ -245,6 +251,31 @@ const entrees = [
     flex-wrap: wrap;
     gap: 12px;
     padding: 20px 8px 0;
+  }
+  .nav-mobile-cta :global(.btn) {
+    min-height: 44px;
+    font-size: 1rem;
+    white-space: normal;
+  }
+  @media (max-width: 63.999rem) {
+    .nav-barre {
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+    .nav-barre[data-mobile-open] {
+      position: fixed;
+      left: 0;
+      right: 0;
+      background: #fffefb;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+  :global(body[data-mobile-menu-open]) {
+    position: fixed;
+    top: var(--mobile-menu-scroll-top);
+    left: 0;
+    right: 0;
+    overflow: hidden;
   }
   @media (hover: hover) {
     .nav-entree:hover {
@@ -276,38 +307,77 @@ const entrees = [
 </style>
 
 <script>
-  // Burger + menu mobile : aria-expanded, Échap pour fermer, fermeture au clic sur un lien.
+  // Fond inerte et scroll conservé ; la navigation mobile reste quittable par X / Échap.
   const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
   const menu = document.querySelector<HTMLElement>('[data-menu-mobile]');
-  if (burger && menu) {
-    const fermer = () => {
+  const header = document.querySelector<HTMLElement>('.nav-barre');
+  if (burger && menu && header) {
+    const desktop = window.matchMedia('(min-width: 64rem)');
+    let scrollPosition = { x: 0, y: 0 };
+    let previousScrollTop = '';
+    let inertElements: { element: HTMLElement; inert: boolean }[] = [];
+    const closeMenu = (restoreFocus = true) => {
+      if (menu.hidden) return;
+      menu.hidden = true;
       burger.setAttribute('aria-expanded', 'false');
       burger.setAttribute('aria-label', 'Ouvrir le menu');
-      menu.hidden = true;
-      document.body.style.overflow = '';
+      header.removeAttribute('data-mobile-open');
+      document.body.removeAttribute('data-mobile-menu-open');
+      if (previousScrollTop) document.body.style.setProperty('--mobile-menu-scroll-top', previousScrollTop);
+      else document.body.style.removeProperty('--mobile-menu-scroll-top');
+      inertElements.forEach(({ element, inert }) => { element.inert = inert; });
+      inertElements = [];
+      window.scrollTo({ left: scrollPosition.x, top: scrollPosition.y, behavior: 'instant' });
+      if (restoreFocus) burger.focus({ preventScroll: true });
     };
     burger.addEventListener('click', () => {
-      const ouvert = burger.getAttribute('aria-expanded') === 'true';
-      if (ouvert) return fermer();
+      if (!menu.hidden) return closeMenu();
+      if (desktop.matches) return;
+      scrollPosition = { x: window.scrollX, y: window.scrollY };
+      previousScrollTop = document.body.style.getPropertyValue('--mobile-menu-scroll-top');
+      document.body.style.setProperty('--mobile-menu-scroll-top', `${-scrollPosition.y}px`);
+      document.body.setAttribute('data-mobile-menu-open', '');
+      header.setAttribute('data-mobile-open', '');
+      const background = [...document.body.children].filter((element): element is HTMLElement =>
+        element instanceof HTMLElement && element !== header && element !== menu &&
+        !['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(element.tagName));
+      inertElements = [...background, ...header.querySelectorAll<HTMLElement>('a')]
+        .map(element => ({ element, inert: element.inert }));
+      inertElements.forEach(({ element }) => { element.inert = true; });
+      menu.hidden = false;
+      menu.scrollTop = 0;
       burger.setAttribute('aria-expanded', 'true');
       burger.setAttribute('aria-label', 'Fermer le menu');
-      menu.hidden = false;
-      document.body.style.overflow = 'hidden';
+      burger.focus({ preventScroll: true });
     });
     menu.addEventListener('click', (e) => {
-      if ((e.target as HTMLElement).closest('a')) fermer();
+      // Restaurer le fond avant l'action native du lien (ancre ou changement de page).
+      if ((e.target as Element).closest('a')) closeMenu();
     });
-    // Disclosure non modale : ne jamais laisser le focus derrière le panneau.
     document.addEventListener('focusin', (e) => {
-      if (!menu.hidden && e.target !== burger && !menu.contains(e.target as Node)) fermer();
+      if (!menu.hidden && e.target !== burger && !menu.contains(e.target as Node)) burger.focus({ preventScroll: true });
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !menu.hidden) {
-        fermer();
-        burger.focus();
+      if (menu.hidden) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeMenu();
+      } else if (e.key === 'Tab') {
+        // Safari peut exclure les liens du Tab natif : parcourir toute la boucle explicitement.
+        const controls = [burger, ...menu.querySelectorAll<HTMLAnchorElement>('a[href]')];
+        const index = controls.indexOf(document.activeElement as HTMLButtonElement | HTMLAnchorElement);
+        const next = (index + (e.shiftKey ? -1 : 1) + controls.length) % controls.length;
+        e.preventDefault();
+        controls[next].focus();
       }
     });
-    window.matchMedia('(min-width: 64rem)').addEventListener('change', (e) => e.matches && fermer());
+    desktop.addEventListener('change', (e) => {
+      if (!e.matches || menu.hidden) return;
+      closeMenu(false);
+      header.querySelector<HTMLAnchorElement>('.nav-centre a')?.focus({ preventScroll: true });
+    });
+    // Ne pas conserver le verrou si la page est restaurée depuis le bfcache.
+    window.addEventListener('pagehide', () => closeMenu(false));
   }
 
 
