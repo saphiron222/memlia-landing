@@ -1,5 +1,13 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-09 — M4-R4, R8 intégrée
+
+- Carte `t_6900a385` : nettoyage `93254d4`, intégration média `19a6c03`. Preview actuelle https://7e55394e.memlia.pages.dev (`preview-m4-r4`), R8 sans cartouche supérieur droit. Sources R7, preuves, blog, H1/CTA/tagline inchangés. Ne pas relancer l'import historique R3 pour le candidat courant ; `scripts/import-r8-media.mjs` produit le manifeste R4.
+- Check0erreur/1hint, build7pages/Python26/images23, Playwright44local+44distant. CDP36figures/72cibles sans écouteur sur4largeurs ;48captures par environnement. HTTP12équivalents/noindex,25médiasSHA ;1350framesR8 sans cartouche avec témoinR7 positif, AAC/PCM/VTT identiques, poster vraie frame418. Lecture45s locale/distance,20cues ; distant1350frames/0perdue.
+- Lighthouse local99/100/100/100 mobile,100partout desktop ; preview98/100/96/69 et100/100/96/69. SEO69=noindex requis, BP96=beaconCloudflare CORS ; ne pas les masquer.
+- **Réserve nouvelle** : réponse200 àRange surR8 et témoinR7. Seek àfroid vers41s revient0 (buffer18.906), malgré `seeked`. Correctif enfant `t_89a7f08e` (Claude) créé, puis revue `t_69fbf26b` dépend deF1. Ne pas approuver globalement cette preview ni confondre lecture complète et seek. Sonde rouge `.qa/m4-r4/verify-remote-seeks.mjs` et logs gardés.
+- Rapport `docs/qa/m4-r4/recette.md`, manifeste et `r8-independent.json` ; archive `.qa/m4-r4-preuves-r8.zip`. Images volontairement non zoomables, microtextes internes petits surmobile ; autres annotations vidéo hautgauche hors périmètre. Pas de Safari/iOS/lecteur d'écran/nouvelle audition humaine. Aucun push/main/production.
+
 ## Hermes — 2026-09-09 — M4-R4, attente vidéo R8
 
 - Carte `t_6900a385`, correctif commité `93254d4` sur `wt/t_f16e5a39`. Neuf preuves strictement statiques, alt conservés ; plus de légende, détails, liens d’agrandissement, transcription ni aide sous le hero. H1/CTA/tagline/blog/médias inchangés.
