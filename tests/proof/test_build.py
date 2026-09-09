@@ -82,21 +82,25 @@ class BuildProof(unittest.TestCase):
         for page in DIST.rglob('*.html'):
             for tag, attrs in Document(page).tags:
                 targets = []
-                if tag in ['img', 'script', 'source'] and attrs.get('src'): targets.append(attrs['src'])
+                if tag in ['img', 'script', 'source', 'video', 'track'] and attrs.get('src'): targets.append(attrs['src'])
+                if tag == 'video' and attrs.get('poster'): targets.append(attrs['poster'])
                 if attrs.get('srcset'): targets.extend(part.strip().split()[0] for part in attrs['srcset'].split(','))
                 if tag == 'link' and attrs.get('rel') in ['icon', 'preload', 'apple-touch-icon', 'alternate']: targets.append(attrs['href'])
                 for target in targets:
                     if target.startswith('/'):
                         self.assertTrue((DIST / target.lstrip('/')).is_file(), f'{page.name}: {target}')
                         seen.add(target)
-        self.assertGreaterEqual(len(seen), 52)
+        # M4-R3 : 9 preuves originales + 3 médias R7 + 12 dérivés blog, hors polices/JS/icônes.
+        self.assertTrue({f'/proofs/{name}.webp' for name in ['01-flux', '02-repetition', '03-controle', '04-observer', '05-cadrer', '06-eprouver', '07-livrer', '08-integration', '09-garanties']} <= seen)
+        self.assertGreaterEqual(len(seen), 24)
 
     def test_placeholders_and_briefs(self):
         briefs = ROOT / 'public/images'
         self.assertEqual(len(list(briefs.glob('brief-img-1[6-9]-*.md'))) + len(list(briefs.glob('brief-img-2[0-4]-*.md'))), 9)
         self.assertEqual(len(list((DIST / 'images').glob('brief-*.md'))), 0)
-        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 30)
-        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 30)
+        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 6)
+        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 6)
+        self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
 
     def test_five_generic_examples_no_product_statuses(self):
         html = (DIST / 'index.html').read_text()

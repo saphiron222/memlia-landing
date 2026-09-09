@@ -89,14 +89,14 @@ export const IMAGES = {
     brief: 'IMG-23',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: 'Bulletins de paie vierges empilés à côté d’une liste de contrôle cochée, avant une transmission',
+    alt: 'Illustration sur données fictives : quatre cas de test confrontés à leurs résultats attendus, dont deux refus.',
     generee: true,
   },
   'img-24-suivi-production-sociale': {
     brief: 'IMG-24',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: 'Tableau de suivi mensuel vierge, une colonne d’avancement et un cas signalé mis à part',
+    alt: 'Illustration sur données fictives : volumes agrégés sans détail individuel et validation humaine requise.',
     generee: true,
   },
 };
@@ -105,7 +105,8 @@ export const IMAGES = {
 export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
-export const PLACEHOLDERS = new Set(Object.keys(IMAGES));
+export const PUBLISHED_IMAGE_IDS = ['img-23-controle-bulletins-paie', 'img-24-suivi-production-sociale'];
+export const PLACEHOLDERS = new Set(Object.keys(IMAGES).filter(id => !PUBLISHED_IMAGE_IDS.includes(id)));
 
 export const cheminImage = (id, largeur, format) => `/images/${id}-${largeur}.${format}`;
 

@@ -1,6 +1,6 @@
 ---
 import Picto from '@/components/Picto.astro';
-import Picture from '@/components/Picture.astro';
+import ProofMedia from '@/components/ProofMedia.astro';
 const proofs = [
   { title: 'Preuve de méthode', text: 'Règle écrite, cas limites, refus attendus et recette avant livraison.', href: '#methode' },
   { title: 'Preuve de contrôle', text: 'Proposition visible, validation humaine et refus des sorties sensibles non prévues au contrat.', href: '#faq-ia-decide' },
@@ -16,7 +16,7 @@ const proofs = [
 
 <section id="preuves" class="preuves" aria-labelledby="preuves-titre">
   <div class="preuves-tete rv">
-    <Picture id="img-13-embleme-methode" sizes="72px" class="preuves-embleme" />
+
     <span class="eyebrow">proposition vs saisie</span>
     <h2 id="preuves-titre">Automatiser la mécanique. Pas le jugement.</h2>
     <p class="texte-2 lecture preuves-intro">
@@ -42,9 +42,12 @@ const proofs = [
     ))}
   </ul>
   </div>
+  <div class="preuves-media"><ProofMedia id="03-controle" /></div>
 </section>
 
 <style>
+  .preuves-media { padding: 0 var(--marge-page); }
+  @media (min-width: 64rem) { .preuves-media { padding: 0 var(--marge-page-lg); } }
   .proof-title { font-size: var(--t-2xl); }
   .preuves {
     padding-top: 96px;

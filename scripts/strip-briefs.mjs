@@ -11,7 +11,7 @@
 import { readdirSync, rmSync, existsSync, copyFileSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { IMAGES, FORMATS } from '../src/data/images.mjs';
+import { IMAGES, FORMATS, PUBLISHED_IMAGE_IDS } from '../src/data/images.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DOSSIER_IMAGES = join(RACINE, 'dist', 'images');
@@ -34,7 +34,7 @@ for (const nom of briefs) {
 console.log(`[strip-briefs] ${briefs.length} brief(s) retiré(s) de dist/images/.`);
 
 // Les essais et images de l’ancien catalogue restent en source, jamais dans la preview.
-const expected = new Set(Object.entries(IMAGES).flatMap(([id, image]) =>
+const expected = new Set(Object.entries(IMAGES).filter(([id]) => PUBLISHED_IMAGE_IDS.includes(id)).flatMap(([id, image]) =>
   image.largeurs.flatMap(width => FORMATS.map(format => `${id}-${width}.${format}`))
 ));
 const excluded = readdirSync(DOSSIER_IMAGES).filter(name => !expected.has(name));

@@ -1,5 +1,5 @@
 ---
-import Picture from '@/components/Picture.astro';
+
 const examples = [
   { id: 'collect', title: 'Collecter et préparer', text: 'Rassembler les informations des sources convenues et vérifier les éléments attendus avant le traitement.' },
   { id: 'check', title: 'Contrôler et signaler', text: 'Appliquer les règles du cabinet, isoler les écarts et orienter les cas à revoir.' },
@@ -13,10 +13,7 @@ const examples = [
     <h2 id="uses-title">Commencez par la tâche qui revient.</h2>
     <p class="texte-2 lecture">Un bon premier sujet est fréquent, repose sur des règles explicables et produit un résultat vérifiable.</p>
   </div>
-  <figure class="uses-scenario rv">
-    <Picture id="img-17-scenario-validation" sizes="(min-width: 64rem) 800px, 100vw" />
-    <figcaption>Exemple de parcours : une information arrive, les contrôles prévus s’exécutent, une exception est signalée, le référent valide.</figcaption>
-  </figure>
+  <p class="uses-scenario texte-2">Exemple de parcours : une information arrive, les contrôles prévus s’exécutent, une exception est signalée, le référent valide.</p>
   <dl class="uses-list">
     {examples.map(example => (
       <div data-usage={example.id} class="rv">

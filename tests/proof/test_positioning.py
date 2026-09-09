@@ -7,7 +7,7 @@ import re
 import unittest
 
 DIST = Path(__file__).resolve().parents[2] / 'dist'
-TEXT_SUFFIXES = {'.html', '.htm', '.txt', '.md', '.xml', '.json', '.svg', '.js', '.mjs', '.webmanifest'}
+TEXT_SUFFIXES = {'.html', '.htm', '.txt', '.md', '.xml', '.json', '.svg', '.js', '.mjs', '.webmanifest', '.vtt'}
 CATALOGUE = re.compile(r'module-|suivi.social|supervision.sociale|bulletins.dsn|synth.se.salaires|flux.compta|conseil.fiscal|memlia.desk|Office\.js|COM/\.NET|SoftwareApplication|En pilote|Sur étude|Périmètre distinct', re.I)
 PRODUCT_WORDS = re.compile(r'\bmodules?\b|\bcompléments?\s+(?:Excel|Memlia)\b', re.I)
 # Exception fermée : une définition technique isolée, jamais un nom/CTA de produit.

@@ -1,4 +1,5 @@
 ---
+import ProofMedia from '@/components/ProofMedia.astro';
 /**
  * Promesse (copy validée, section 2) — oppose Memlia aux migrations et aux plateformes
  * génériques. Trois colonnes à filets, dans le gabarit « bande » de la spec.
@@ -39,9 +40,12 @@ const points = [
     ))}
   </ul>
   </div>
+<div class="promesse-media"><ProofMedia id="01-flux" /></div>
 </section>
 
 <style>
+  .promesse-media { padding: 0 var(--marge-page); }
+  @media (min-width: 64rem) { .promesse-media { padding: 0 var(--marge-page-lg); } }
   .promesse {
     padding-top: 96px;
   }

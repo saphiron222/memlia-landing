@@ -1,6 +1,6 @@
 ---
 import Picto from '@/components/Picto.astro';
-import Picture from '@/components/Picture.astro';
+import ProofMedia from '@/components/ProofMedia.astro';
 import { GARANTIES } from '@/data/garanties';
 
 /**
@@ -16,7 +16,7 @@ import { GARANTIES } from '@/data/garanties';
       <a class="btn btn-lien" href="#questions">Lire les réponses <Picto nom="fleche" taille={14} /></a>
     </div>
     <span class="garanties-sep" aria-hidden="true"></span>
-    <Picture id="img-03-embleme-registre" sizes="80px" class="garanties-embleme" />
+
   </div>
 
   <div class="coins">
@@ -33,9 +33,12 @@ import { GARANTIES } from '@/data/garanties';
     ))}
   </ul>
   </div>
+  <div class="garanties-media"><ProofMedia id="09-garanties" /></div>
 </section>
 
 <style>
+  .garanties-media { padding: 0 var(--marge-page); }
+  @media (min-width: 64rem) { .garanties-media { padding: 0 var(--marge-page-lg); } }
   .garanties {
     margin-top: 32px;
   }

@@ -1,7 +1,7 @@
 ---
 import Button from '@/components/Button.astro';
 import Picto from '@/components/Picto.astro';
-import Picture from '@/components/Picture.astro';
+
 import { CTA } from '@/data/site.mjs';
 
 /**
@@ -18,9 +18,7 @@ const cadrage = [
 
 <section id="evaluer" class="appel" aria-labelledby="appel-titre">
   <span id="demo" aria-hidden="true"></span>
-  <div class="appel-fond" aria-hidden="true">
-    <Picture id="img-02-fond-hero" sizes="(min-width: 90rem) 1360px, 100vw" decorative />
-  </div>
+
   <div class="appel-int coins rv">
     <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
     <h2 id="appel-titre" class="appel-h2">Quelle tâche prend encore trop de temps ?</h2>

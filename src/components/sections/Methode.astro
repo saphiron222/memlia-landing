@@ -1,8 +1,9 @@
 ---
 import Chip from '@/components/Chip.astro';
-import Picture from '@/components/Picture.astro';
+import ProofMedia from '@/components/ProofMedia.astro';
+import type { ProofId } from '@/data/proofs';
 import { METHODE } from '@/data/methode';
-import type { IMAGES } from '@/data/images.mjs';
+
 import type { NomPicto } from '@/components/Picto.astro';
 
 /**
@@ -10,7 +11,7 @@ import type { NomPicto } from '@/components/Picto.astro';
  * titre collant, panneau visuel collant à gauche (≥ 1024) ou en tête (mobile), étapes à droite.
  * Sans JS : tout est visible, la première image s'affiche.
  */
-type IdImage = keyof typeof IMAGES;
+
 const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
 ---
 
@@ -20,26 +21,14 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
   </div>
 
   <div class="parcours-corps" data-parcours>
-    <div class="parcours-visuel motif-diagonal" aria-hidden="true">
-      <div class="parcours-images">
-        {METHODE.etapes.map((e, i) => (
-          <div class:list={['parcours-image', { active: i === 0 }]} data-image={i}>
-            <Picture id={e.image as IdImage} sizes="(min-width: 64rem) 50vw, 100vw" decorative />
-          </div>
-        ))}
-      </div>
-      <span class="parcours-filet" data-filet></span>
-    </div>
-
     <ol class="parcours-etapes">
       {METHODE.etapes.map((e, i) => (
         <li class:list={['etape', { active: i === 0 }]} data-etape={i}>
-          <div class="step-image motif-diagonal" aria-hidden="true">
-            <Picture id={e.image as IdImage} sizes="(min-width: 42rem) 640px, calc(100vw - 64px)" decorative />
-          </div>
+
           <Chip variante="claire" picto={pictos[i] ?? 'coche'} libelle={`Étape ${e.numero}`} />
           <h3 class="etape-h3">{e.titre}</h3>
           <p class="texte-2">{e.texte}</p>
+          <div class="step-image"><ProofMedia id={e.image as ProofId} /></div>
         </li>
       ))}
     </ol>
@@ -121,23 +110,22 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
     font-size: var(--t-2xl);
     margin-top: 10px;
   }
-  .step-image { padding: 16px; border: 1px solid var(--ligne-douce); border-radius: var(--r-carte); }
+  .step-image { min-width: 0; }
   @media (min-width: 64rem) {
-    .step-image { display: none; }
-    .etape { max-width: 448px; }
+    .etape { max-width: 100%; }
     .parcours {
       padding: 160px 0 208px;
     }
     .parcours-titre-collant {
-      position: sticky;
-      top: 15vh;
-      height: 15vh;
+      position: relative;
+      top: 0;
+      height: auto;
       padding: 0 var(--marge-page-lg);
       background: linear-gradient(var(--surface-feuille) 80%, transparent);
     }
     .parcours-corps {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 160px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 48px;
       padding: 0 var(--marge-page-lg);
       align-items: start;
     }
@@ -167,9 +155,9 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
       transition: transform var(--duree-4) linear;
     }
     .parcours-etapes {
-      gap: 160px;
-      padding: 48px 8px 48px 0;
-      margin: 12.5vh 0 14vh;
+      gap: 64px;
+      padding: 48px 0;
+      margin: 0;
     }
     :global(html.js) .etape {
       opacity: 1;

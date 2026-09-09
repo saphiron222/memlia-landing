@@ -1,5 +1,5 @@
 ---
-import Picture from '@/components/Picture.astro';
+import ProofMedia from '@/components/ProofMedia.astro';
 ---
 <section id="integration" class="integration" aria-labelledby="integration-title">
   <div class="integration-copy rv">
@@ -13,7 +13,7 @@ import Picture from '@/components/Picture.astro';
     </ul>
   </div>
   <div class="integration-image rv">
-    <Picture id="img-18-outils-existants" sizes="(min-width: 64rem) 570px, 100vw" />
+    <ProofMedia id="08-integration" />
   </div>
 </section>
 <style>
@@ -24,6 +24,7 @@ import Picture from '@/components/Picture.astro';
   .integration-image { align-self: center; }
   .integration-image :global(img) { border-radius: var(--r-carte); }
   @media (min-width: 64rem) {
-    .integration { padding: 0 var(--marge-page-lg) 96px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; }
+    .integration { padding: 0 var(--marge-page-lg) 96px; gap: 32px; }
+    .integration-copy { max-width: 75ch; }
   }
 </style>
