@@ -1,0 +1,169 @@
+{
+  "checked_at": "2026-09-12T16:33:37.355003+00:00",
+  "deployment_id": "9dd0fea0-a5d8-43c5-8804-b924d12e3cdf",
+  "branch": "preview-r7-export",
+  "source": "03035c4",
+  "bases": [
+    "https://9dd0fea0.memlia.pages.dev",
+    "https://preview-r7-export.memlia.pages.dev"
+  ],
+  "r7": [
+    {
+      "base": "https://9dd0fea0.memlia.pages.dev",
+      "path": "/media/r7/animatique-hero-45s.mp4",
+      "status": 404,
+      "bytes": 32738
+    },
+    {
+      "base": "https://9dd0fea0.memlia.pages.dev",
+      "path": "/media/r7/animatique.vtt",
+      "status": 404,
+      "bytes": 32738
+    },
+    {
+      "base": "https://9dd0fea0.memlia.pages.dev",
+      "path": "/media/r7/hero-poster-1200.webp",
+      "status": 404,
+      "bytes": 32738
+    },
+    {
+      "base": "https://9dd0fea0.memlia.pages.dev",
+      "path": "/media/r7/hero-poster.webp",
+      "status": 404,
+      "bytes": 32738
+    },
+    {
+      "base": "https://preview-r7-export.memlia.pages.dev",
+      "path": "/media/r7/animatique-hero-45s.mp4",
+      "status": 404,
+      "bytes": 32738
+    },
+    {
+      "base": "https://preview-r7-export.memlia.pages.dev",
+      "path": "/media/r7/animatique.vtt",
+      "status": 404,
+      "bytes": 32738
+    },
+    {
+      "base": "https://preview-r7-export.memlia.pages.dev",
+      "path": "/media/r7/hero-poster-1200.webp",
+      "status": 404,
+      "bytes": 32738
+    },
+    {
+      "base": "https://preview-r7-export.memlia.pages.dev",
+      "path": "/media/r7/hero-poster.webp",
+      "status": 404,
+      "bytes": 32738
+    }
+  ],
+  "r8": [
+    {
+      "path": "/media/r8/animatique-hero-45s.mp4",
+      "status": 200,
+      "bytes": 2925093,
+      "sha256": "164f6090f7d7a820d544d6679e5f68257fb4f929fe35079b5ce9a22ef86585e4",
+      "matches_dist": true
+    },
+    {
+      "path": "/media/r8/animatique.vtt",
+      "status": 200,
+      "bytes": 1343,
+      "sha256": "9526c00b857eed59ded3c58aa8e27ef3191aa4e8ddf11883a4a55fca12ecc3a9",
+      "matches_dist": true
+    },
+    {
+      "path": "/media/r8/hero-poster-1200.webp",
+      "status": 200,
+      "bytes": 24176,
+      "sha256": "ea70ca8acfcef091a5f9879dcc9023002a777cfa8c2b73f83c4cb89bb31eda7e",
+      "matches_dist": true
+    },
+    {
+      "path": "/media/r8/hero-poster.webp",
+      "status": 200,
+      "bytes": 131454,
+      "sha256": "c549233d274e7ec926f2e2de296436a0c510ddeeeda1ec1ecbfe06de21a9d1f1",
+      "matches_dist": true
+    }
+  ],
+  "homepage": [
+    {
+      "base": "https://9dd0fea0.memlia.pages.dev",
+      "status": 200,
+      "x_robots_tag": "noindex",
+      "video_count": 1,
+      "r8_video_referenced": true,
+      "r7_reference": false
+    },
+    {
+      "base": "https://preview-r7-export.memlia.pages.dev",
+      "status": 200,
+      "x_robots_tag": "noindex",
+      "video_count": 1,
+      "r8_video_referenced": true,
+      "r7_reference": false
+    }
+  ],
+  "exported_surfaces": {
+    "checked": 11,
+    "r7_references": 0,
+    "items": [
+      {
+        "path": "404.html",
+        "status": 200,
+        "r7_reference": false
+      },
+      {
+        "path": "blog/controler-les-bulletins-de-paie-avant-la-dsn.html",
+        "status": 200,
+        "r7_reference": false
+      },
+      {
+        "path": "blog/rss.xml",
+        "status": 200,
+        "r7_reference": false
+      },
+      {
+        "path": "blog/suivre-la-production-sociale-dans-excel.html",
+        "status": 200,
+        "r7_reference": false
+      },
+      {
+        "path": "blog.html",
+        "status": 200,
+        "r7_reference": false
+      },
+      {
+        "path": "index.html",
+        "status": 200,
+        "r7_reference": false
+      },
+      {
+        "path": "mentions-legales.html",
+        "status": 200,
+        "r7_reference": false
+      },
+      {
+        "path": "politique-de-confidentialite.html",
+        "status": 200,
+        "r7_reference": false
+      },
+      {
+        "path": "sitemap-0.xml",
+        "status": 200,
+        "r7_reference": false
+      },
+      {
+        "path": "sitemap-index.xml",
+        "status": 200,
+        "r7_reference": false
+      },
+      {
+        "path": "sitemap.xml",
+        "status": 200,
+        "r7_reference": false
+      }
+    ]
+  }
+}

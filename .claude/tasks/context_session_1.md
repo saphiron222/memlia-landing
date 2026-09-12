@@ -1,5 +1,12 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-12 — retrait R7 de l’export public, t_9712f072
+
+- Commit `03035c4` : `scripts/strip-briefs.mjs` retire récursivement `dist/media/r7/` après la copie Astro, compte quatre assets exclus et refuse de continuer si le dossier subsiste. Les quatre sources R7 du dépôt et les manifestes historiques restent inchangés ; R8 n’est ni réencodée ni modifiée.
+- TDD : build rouge 1/35 avec quatre chemins R7, puis build vert 37/37 Python + images23 +7pages. Poison explicite `media/r7` dans `dist/index.html` rejeté, restauration par copie puis8/8. Check81fichiers/0erreur/0warning/1hint ; Playwright local76/76 sur le serveur exact4322 ; recalcul9PNG/21actifs.
+- Preview noindex uniquement : https://9dd0fea0.memlia.pages.dev, alias https://preview-r7-export.memlia.pages.dev, déploiement `9dd0fea0-a5d8-43c5-8804-b924d12e3cdf`, branche `preview-r7-export`, source `03035c4`. Quatre chemins R7 × deux URL =8/8 HTTP404 ; R8 4/4 HTTP200 et SHA identiques ; 11 surfaces exportées sans référence R7 ; un seul lecteur DOM R8. Playwright média distant8/8, captures375/1440 inspectées, aucun débordement.
+- Rapport `docs/qa/r7-export/recette.md`, preuve `preview-http.json`. La première commande Playwright locale a touché un serveur concurrent périmé4321 et rendu61/76 : exclue, non créditée. Aucune production, fusion main ou poussée GitHub.
+
 
 ## Hermes — 2026-09-12 — revue sémantique/visibilité IA, t_4f574adf
 
