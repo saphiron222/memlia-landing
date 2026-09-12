@@ -36,6 +36,15 @@ test('R8 démarre muette en boucle puis repart à zéro avec le son', async ({ p
     padding: '0px',
     backdropFilter: 'none',
   });
+  const soundButtonStyle = await soundButton.evaluate(element => {
+    const style = getComputedStyle(element);
+    return {
+      boxShadow: style.boxShadow,
+      backdropFilter: style.backdropFilter,
+    };
+  });
+  expect(soundButtonStyle.boxShadow).not.toBe('none');
+  expect(soundButtonStyle.backdropFilter).toContain('blur(');
   await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0.1);
   expect(await video.evaluate((element: HTMLVideoElement) => ({
     muted: element.muted,
