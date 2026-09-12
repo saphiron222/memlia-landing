@@ -3,6 +3,13 @@ import { readFileSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
 const manifest = JSON.parse(readFileSync('docs/qa/m4-r4/media-manifest.json', 'utf8'));
+// Le build Cloudflare ne lance pas de navigateur : il exige les sources et PNG scellés
+// par le dernier rendu contrôlé. Le recalcul complet se joue avec test:proof-render.
+if (manifest.proofRender?.sources.length !== 8 || manifest.proofRender?.pngs.length !== 9) throw new Error('Rendu des neuf sources non scellé');
+for (const entry of [...manifest.proofRender.sources, ...manifest.proofRender.pngs]) {
+  const actual = createHash('sha256').update(readFileSync(entry.path)).digest('hex');
+  if (actual !== entry.sha256) throw new Error(`Source/PNG modifié sans nouveau rendu : ${entry.path}`);
+}
 const images = manifest.entries.filter(e => /\.(webp|avif)$/.test(e.target));
 if (images.length !== 23) throw new Error(`23 images attendues, ${images.length} reçues`);
 const hashes = new Set();

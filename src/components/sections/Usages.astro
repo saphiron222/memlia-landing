@@ -1,5 +1,8 @@
 ---
 
+import Picto, { type NomPicto } from '@/components/Picto.astro';
+const pictos: NomPicto[] = ['feuilles', 'bouclier', 'limites', 'flux', 'main'];
+
 const examples = [
   { id: 'collect', title: 'Collecter et préparer', text: 'Rassembler les informations des sources convenues et vérifier les éléments attendus avant le traitement.' },
   { id: 'check', title: 'Contrôler et signaler', text: 'Appliquer les règles du cabinet, isoler les écarts et orienter les cas à revoir.' },
@@ -9,31 +12,37 @@ const examples = [
 ];
 ---
 <section id="usages" class="uses" aria-labelledby="uses-title">
-  <div class="uses-heading rv">
+  <div class="uses-heading">
     <h2 id="uses-title">Commencez par la tâche qui revient.</h2>
     <p class="texte-2 lecture">Un bon premier sujet est fréquent, repose sur des règles explicables et produit un résultat vérifiable.</p>
   </div>
-  <p class="uses-scenario texte-2">Exemple de parcours : une information arrive, les contrôles prévus s’exécutent, une exception est signalée, le référent valide.</p>
-  <dl class="uses-list">
-    {examples.map(example => (
-      <div data-usage={example.id} class="rv">
-        <dt>{example.title}</dt><dd>{example.text}</dd>
-      </div>
+  <div class="uses-grid">
+    {examples.map((example, i) => (
+      <article data-usage={example.id} class="use-card" aria-labelledby={`use-${example.id}`}>
+        <div class="use-mark" aria-hidden="true"><Picto nom={pictos[i]} taille={24} /></div>
+        <div class="use-copy">
+          <h3 id={`use-${example.id}`}>{example.title}</h3>
+          <p>{example.text}</p>
+        </div>
+      </article>
     ))}
-  </dl>
-  <p class="uses-note texte-2">Exemples non contractuels, à étudier selon vos sources, règles, exceptions et accès. Ils ne décrivent pas des fonctions prêtes à installer.</p>
+  </div>
 </section>
 <style>
-  .uses { padding: 96px var(--marge-page) 0; }
+  .uses { padding: 96px var(--marge-page) 0; background: var(--surface-page); }
   .uses-heading { display: grid; gap: 16px; max-width: 780px; }
-  .uses-scenario { margin: 40px 0; display: grid; gap: 16px; max-width: 800px; }
-  .uses-scenario :global(img) { border-radius: var(--r-carte); }
-  figcaption { max-width: 65ch; color: var(--texte-2); font-size: var(--t-sm); }
-  .uses-list { display: grid; gap: 32px; margin: 0; }
-  .uses-list div { display: grid; grid-template-columns: 1fr; gap: 10px; }
-  dt { font-family: var(--police-display); font-size: var(--t-2xl); color: var(--texte-fort); font-weight: 600; }
-  dd { margin: 0; max-width: 65ch; color: var(--texte-2); }
-  .uses-note { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--ligne); max-width: 80ch; font-size: var(--t-sm); }
-  @media (min-width: 48rem) { .uses-list div { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 32px; } }
+  .uses-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 40px; }
+  .use-card { min-width: 0; padding: 28px; border-radius: var(--r-carte); background: var(--surface-feuille); }
+  .use-mark { display: grid; place-items: center; width: 48px; height: 48px; color: var(--picto-repos); border-radius: var(--r-pastille); background: var(--surface-page); }
+  .use-copy { display: grid; gap: 16px; margin-top: 20px; }
+  h3 { font-size: var(--t-3xl); line-height: 1.2; text-wrap: pretty; color: var(--texte-fort); }
+  .use-copy p { margin: 0; max-width: 52ch; color: var(--texte-2); }
+  @media (min-width: 48rem) {
+    .uses-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .use-card { padding: 40px; }
+    .use-card:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 32px; }
+    .use-card:first-child .use-copy { margin-top: 0; }
+    .use-card:first-child h3 { font-size: var(--t-4xl); }
+  }
   @media (min-width: 64rem) { .uses { padding: 128px var(--marge-page-lg) 0; } }
 </style>

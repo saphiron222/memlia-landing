@@ -1,0 +1,93 @@
+[
+  {
+    "id": "flux",
+    "removed": [
+      "Un processus cadré, de l’entrée à la décision",
+      "01 / 09",
+      "L’automatisation prépare.",
+      "L’exception reste visible ; le cabinet décide."
+    ],
+    "centralText": "Information entrante 09:42 ↳ Export du cycle 48 lignes · jeu fictif Reçu ↳ Consigne du cabinet Version validée Règles du cabinet v.04 01 Lire les données attendues Format et période conformes ✓ 02 Appliquer la règle écrite Sans modifier la source ✓ 03 Isoler les cas douteux 1 exception détectée ! Décision En attente Exception isolée Ligne 18 · champ requis absent La règle exige une valeur. Le traitement reste bloqué jusqu’à la vérification. Vérifier Valider après vérification ↖ Vérification humaine"
+  },
+  {
+    "id": "repetition",
+    "removed": [
+      "Une tâche répétitive, sans gestes rejoués",
+      "02 / 09",
+      "La mécanique est regroupée.",
+      "Le résultat est proposé, jamais imposé."
+    ],
+    "centralText": "Avant · gestes manuels 01 Ouvrir quatre sources Fichier, export, message, consigne 02 Copier et rapprocher Répété à chaque cycle 03 Repérer les écarts Selon la règle du cabinet 04 Préparer le résultat Puis relire ligne par ligne 4 gestes → 1 préparation Proposition prête à être revue Jeu fictif 47 propositions Après · préparation proposée Les éléments conformes sont regroupés. 48 éléments analysés · un cas reste à vérifier. ✓ Propositions conformes à la règle 47 éléments à relire Proposés ! Cas hors règle Aucune décision automatique À vérifier"
+  },
+  {
+    "id": "controle",
+    "removed": [
+      "Le doute arrête le traitement",
+      "03 / 09",
+      "Fail-closed par défaut.",
+      "Si la règle ne suffit pas, rien ne part."
+    ],
+    "centralText": "Revue requise Bloqué 1 · Proposition 2 · Vérifier 3 · Valider Valeur attendue Champ B-14 renseigné Règle cabinet · version 04 Valeur reçue Champ B-14 vide Fichier fictif · ligne 18 ⌁ Pourquoi c’est bloqué La règle ne permet pas de trancher ce cas. Aucun export n’est produit avant décision. Renvoyer au cadrage Décider et documenter ↖ Décision humaine"
+  },
+  {
+    "id": "observer",
+    "removed": [
+      "Méthode · 01 Observer",
+      "04 / 09",
+      "Livrable visible :",
+      "une carte du processus, pas une promesse vague."
+    ],
+    "centralText": "01 Voir le travail tel qu’il se fait. Le geste réel, ses sources et ses exceptions — avant d’imaginer l’automatisation. Observation du processus Session 01 09:08 Source reçue Fichier .xlsx fictif 09:11 Rapprochement manuel 2 sources consultées 09:18 Point de jugement Champ requis absent 09:23 Résultat transmis Après contrôle À conserver : le jugement humain"
+  },
+  {
+    "id": "cadrer",
+    "removed": [
+      "Méthode · 02 Cadrer",
+      "05 / 09",
+      "Livrable visible :",
+      "une règle testable et ses limites.",
+      "Brouillon partagé"
+    ],
+    "centralText": "Règle à coder Condition Action prévue Limite Format attendu Lire et rapprocher Dans le cadre Donnée absente Isoler le cas Blocage Règle ambiguë Demander une décision Blocage ✓ Les limites sont écrites avant le développement. 02 Écrire ce que l’automatisation peut faire. Conditions, actions prévues et cas qui doivent rester bloqués."
+  },
+  {
+    "id": "eprouver",
+    "removed": [
+      "Méthode · 03 Éprouver",
+      "06 / 09",
+      "Livrable visible :",
+      "des cas d’essai et des résultats reproductibles."
+    ],
+    "centralText": "03 Faire échouer avant de livrer. Cas courants, données manquantes et formats inattendus, uniquement sur fichiers fictifs. Jeu d’essai fictif 4 / 4 cas Cas Attendu Résultat Cycle courant Préparer Conforme Champ absent Bloquer Bloqué Format inattendu Bloquer Bloqué Exception connue Proposer Proposé DONNÉES FICTIVES"
+  },
+  {
+    "id": "livrer",
+    "removed": [
+      "Méthode · 04 Livrer & recetter",
+      "07 / 09",
+      "Livrable visible :",
+      "un résultat recetté, pas un siège logiciel."
+    ],
+    "centralText": "Recette du cabinet Version 1.0 Périmètre convenu Préparation du cycle Prêt à vérifier ✓ Règles relues Version approuvée pour la recette ✓ Cas fictifs rejoués Résultats attendus retrouvés ✓ Mode de contrôle expliqué Validation humaine conservée 4 Décision du cabinet Accepter ou demander une correction 04 Mettre le résultat entre les mains du cabinet. Une recette guidée, des limites connues et une décision explicite avant usage."
+  },
+  {
+    "id": "integration",
+    "removed": [
+      "Partir des outils existants",
+      "08 / 09",
+      "Le point d’entrée est choisi.",
+      "Les outils ne sont pas remplacés pour introduire l’automatisation."
+    ],
+    "centralText": "▤ Document Source ou consigne ▦ Tableur Selon format et accès ✉ Messagerie Entrée ou notification ◇ Logiciel métier Selon les accès disponibles Flux défini avec le cabinet Relier seulement le nécessaire. Lire → Préparer → Faire valider Aucune compatibilité universelle promise"
+  },
+  {
+    "id": "garanties",
+    "removed": [
+      "Des garanties visibles dans le mécanisme",
+      "09 / 09",
+      "La confiance n’est pas décorative.",
+      "Chaque garantie correspond à un comportement vérifiable."
+    ],
+    "centralText": "Vue agrégée Non nominatif 4 groupes fictifs Volumes agrégés fictifs ∅ Détail nominatif Non collecté ◇ Jeu de données utilisé pour éprouver Fictif ∅ Aucune donnée client réelle Les démonstrations et essais utilisent des jeux fictifs. Jeu fictif ◎ Agrégats non nominatifs Pas de surveillance individuelle des salariés. Sans détail ✓ Validation humaine Une proposition ne devient résultat qu’après décision. Action requise"
+  }
+]

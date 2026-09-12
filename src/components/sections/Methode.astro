@@ -1,18 +1,9 @@
 ---
-import Chip from '@/components/Chip.astro';
-import ProofRow from '@/components/ProofRow.astro';
+import ProofMedia from '@/components/ProofMedia.astro';
 import type { ProofId } from '@/data/proofs';
 import { METHODE } from '@/data/methode';
 
-import type { NomPicto } from '@/components/Picto.astro';
-
-/**
- * S5 — Parcours défilant (spec §4.8) porté par la copy validée « Méthode » (section 5) :
- * titre collant, panneau visuel collant à gauche (≥ 1024) ou en tête (mobile), étapes à droite.
- * Sans JS : tout est visible, la première image s'affiche.
- */
-
-const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
+// Le DOM garde le texte avant l'image ; seule la grille desktop alterne leur position.
 ---
 
 <section id="methode" class="parcours" aria-labelledby="methode-titre">
@@ -23,14 +14,15 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
   <div class="parcours-corps" data-parcours>
     <ol class="parcours-etapes">
       {METHODE.etapes.map((e, i) => (
-        <li class:list={['etape', { active: i === 0 }]} data-etape={i}>
-          <ProofRow id={e.image as ProofId}>
-          <div class="step-copy">
-          <Chip variante="claire" picto={pictos[i] ?? 'coche'} libelle={`Étape ${e.numero}`} />
+        <li class="etape" data-etape={i}>
+          <div class="method-row" data-proof-row>
+          <div class="step-copy" data-proof-copy>
+          <p class="step-number">Étape {e.numero}</p>
           <h3 class="etape-h3">{e.titre}</h3>
           <p class="texte-2">{e.texte}</p>
           </div>
-          </ProofRow>
+          <ProofMedia id={e.image as ProofId} />
+          </div>
         </li>
       ))}
     </ol>
@@ -99,7 +91,7 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
   }
   .parcours-etapes {
     display: grid;
-    gap: 0;
+    gap: 56px;
     padding: 24px var(--marge-page) 0;
   }
   .etape {
@@ -109,10 +101,20 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
     transition: opacity var(--duree-4) var(--courbe-standard);
   }
   .etape-h3 {
-    font-size: var(--t-2xl);
-    margin-top: 10px;
+    font-size: var(--t-3xl);
+    margin: 0;
   }
-  .step-copy { display: grid; gap: 12px; }
+  .method-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: center; }
+  .step-copy { display: grid; gap: 16px; min-width: 0; }
+  .step-copy p { margin: 0; }
+  .step-number { color: var(--accent-texte); font-weight: 600; }
+
+  @media (min-width: 64rem) {
+    .method-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
+    .step-copy { padding: 32px 48px 32px 0; }
+    .etape:nth-child(odd) .step-copy { grid-column: 2; grid-row: 1; padding: 32px 0 32px 48px; }
+    .etape:nth-child(odd) :global(.functional-proof) { grid-column: 1; grid-row: 1; }
+  }
   @media (min-width: 64rem) {
     .etape { max-width: 100%; }
     .parcours {
@@ -157,7 +159,7 @@ const pictos: NomPicto[] = ['regle', 'limites', 'code', 'recette'];
       transition: transform var(--duree-4) linear;
     }
     .parcours-etapes {
-      gap: 0;
+      gap: 80px;
       padding: 48px 0;
       margin: 0;
     }

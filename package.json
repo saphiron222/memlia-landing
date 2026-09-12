@@ -11,6 +11,8 @@
     "check": "astro check",
     "test": "playwright test",
     "test:images": "node scripts/verify-m4-images.mjs",
+    "test:proof-render": "node scripts/render-proof-images.mjs --check",
+    "render:proofs": "node scripts/render-proof-images.mjs",
     "test:proof": "python3 -m unittest discover -s tests/proof -v",
     "qa:screens": "node scripts/capture.mjs",
     "placeholders": "node scripts/placeholders.mjs",
