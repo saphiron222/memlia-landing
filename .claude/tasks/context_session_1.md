@@ -1,5 +1,13 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-12 — bouton sonore seul, reprise après revue, t_96481743
+
+- Revue marketing appliquée au commit `571d34b` : le bouton seul porte désormais directement un fond vert translucide, un `backdrop-filter: blur(8px)`, une ombre douce et un halo discret. L’overlay reste transparent, sans bordure, ombre, flou, padding, carte ou annotation ; aucun comportement vidéo ni média n’a changé.
+- TDD : assertion de styles calculés rouge sur `box-shadow: none`, puis test ciblé 11/11. Build : 7 pages, Python 37/37, images 23, preview 3/3 ; check 0 erreur/0 warning/1 hint hérité ; Playwright complet 79/79 sur la preview finale. Deux essais locaux non crédités : serveur statique sans clean URLs, puis toolbar Astro dev injectée.
+- Preview finale uniquement : https://37e55bfb.memlia.pages.dev, alias https://preview-site-video-button.memlia.pages.dev, déploiement `37e55bfb-c468-4e25-88c4-978d9723d14c`, source `571d34b`, environnement Preview. Header et meta `noindex, nofollow` relus sur les deux hôtes ; production toujours sur `f20096f`.
+- Sonde distante : annotation 0 et enfant overlay 1 aux six largeurs ; overlay sans carte, bouton avec ombre + `blur(8px)`, cible minimale 158,06×44 px, aucun overflow à 320/375/768/1024/1440/1920. Captures 375/1440 relues dans `.qa/site-video-button/` : halo/ombre visibles, pas de panneau additionnel.
+- R8 : quatre SHA locaux inchangés et 8/8 concordances sur URL immuable + alias ; R7 : 8/8 réponses 404. Aucun push, fusion main ou déploiement production. Suite : nouvelle revue croisée marketing.
+
 ## Hermes — 2026-09-12 — bouton sonore seul, t_96481743
 
 - Parent R8 approuvé repris jusqu’à `631ddb6`, puis correction limitée au hero et à ses tests : suppression du conteneur `.hero-video-invitation` et de l’annotation ; bouton `Activer le son` directement centré dans l’overlay. Aucun comportement vidéo ni média modifié.
