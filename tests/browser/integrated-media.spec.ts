@@ -94,7 +94,11 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     const video = player.locator('video');
     await expect(video).toHaveAttribute('poster', '/media/r8/hero-poster-1200.webp');
     await expect(video).not.toHaveAttribute('autoplay', '');
-    await expect(player.getByRole('button', { name: 'Activer le son' })).toBeVisible();
+    const soundButton = player.getByRole('button', { name: 'Activer le son' });
+    await expect(soundButton).toBeVisible();
+    const soundButtonBox = await soundButton.boundingBox();
+    expect(soundButtonBox?.height).toBeGreaterThanOrEqual(44);
+    expect(soundButtonBox?.width).toBeGreaterThanOrEqual(44);
     expect(await video.evaluate((element: HTMLVideoElement) => ({
       paused: element.paused,
       time: element.currentTime,
