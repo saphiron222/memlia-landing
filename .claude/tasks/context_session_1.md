@@ -1,5 +1,13 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-12 — bouton sonore seul, t_96481743
+
+- Parent R8 approuvé repris jusqu’à `631ddb6`, puis correction limitée au hero et à ses tests : suppression du conteneur `.hero-video-invitation` et de l’annotation ; bouton `Activer le son` directement centré dans l’overlay. Aucun comportement vidéo ni média modifié.
+- TDD : oracle DOM/Python rouge avant correction ; cible tactile mobile rouge à 43,59 px puis portée à 44 px. Build : 7 pages, Python 37/37, images 23, preview 3/3 ; check 0 erreur/0 warning/1 hint hérité ; Playwright ciblé 11/11 local et suite 79/79 sur la preview finale.
+- Preview uniquement : https://7fd97733.memlia.pages.dev, alias https://preview-site-video-button.memlia.pages.dev, branche Cloudflare `preview-site-video-button`, source `53a3dd4`, environnement Preview. Header et meta `noindex, nofollow` relus sur les deux hôtes ; production restée sur `f20096f`.
+- R8 : 4/4 SHA identiques au parent et aux deux hôtes ; R7 : 8/8 réponses 404. Largeurs 320/375/768/1024/1440/1920 sans overflow ; captures finales 375/1440 relues dans `.qa/site-video-button/` : bouton seul, focus visible, aucun panneau ou débordement.
+- Aucun push, fusion main ou déploiement production. Suite : revue croisée marketing du candidat local.
+
 ## Hermes — 2026-09-12 — lecteur R8 dirigé, t_dd5e7251
 
 - Parent R7 repris par cherry-pick jusqu’à `083e18f` : export `dist` sans R7 et préparation preview séparée `.qa/preview-dist`, protégée `noindex, nofollow` dans header et meta. Aucun contournement du mécanisme approuvé.
