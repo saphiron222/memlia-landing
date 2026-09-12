@@ -1,5 +1,14 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-12 — lecteur R8 dirigé, t_dd5e7251
+
+- Parent R7 repris par cherry-pick jusqu’à `083e18f` : export `dist` sans R7 et préparation preview séparée `.qa/preview-dist`, protégée `noindex, nofollow` dans header et meta. Aucun contournement du mécanisme approuvé.
+- Lecteur hero R8 sans contrôles natifs : autoplay muet + boucle en régime normal ; overlay Memlia `Activer le son`, reprise à zéro avec son et loop coupée ; clic/Entrée/Espace pause-reprise, focus visible et libellés ARIA synchronisés. Reduced-motion reste à l’arrêt sur poster ; refus autoplay/erreur média/fallback sans JS sont actionnables.
+- TDD : 11/11 rouges avant implémentation, puis 11/11 ciblés locaux et distants. Suites : check0/0/1hint hérité, build7/Python37/images23/preview3, Playwright79/79 sur dist frais. R8 quatre SHA identiques public/dist/deux hôtes ; R7 8/8 en 404.
+- Preview uniquement : https://cbf3f3a6.memlia.pages.dev, alias https://preview-site-video.memlia.pages.dev, deux hôtes header+meta noindex,nofollow. Aucune production, fusion main ou poussée.
+- Écran : 320/375/768/1024/1440/1920 sans overflow ; captures 375/1440 relues après animation dans `.qa/site-video/`. Le script générique `qa:screens` cale sur des `.rv` hors écran hérités ; sonde hero ciblée utilisée sans élargir le périmètre. Rapport : `docs/qa/site-video/recette.md`.
+- Suite : revue croisée marketing sur le candidat local. Ne pas rendre l’autoplay statique dans le HTML : son activation JS après lecture de reduced-motion évite un départ anticipé ; le no-JS reste explicitement arrêté avec téléchargement.
+
 ## Hermes — 2026-09-12 — retrait R7 de l’export public, t_9712f072
 
 - Reprise après revue : commit `c8f3f35` durcit `scripts/prepare-preview.mjs`. La copie `.qa/preview-dist` reçoit header et meta `noindex, nofollow` sur les 7 HTML ; le script refuse de viser `dist` et refuse toute meta absente/dupliquée avant copie. Tests Node rouge (export absent), puis 3/3 verts, intégrés au build ; `dist` reste sans `_headers` et ses metas restent inchangées.
