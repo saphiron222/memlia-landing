@@ -40,15 +40,12 @@ import { CTA } from '@/data/site.mjs';
           <p>Votre navigateur ne peut pas lire cette vidéo. <a href="/media/r8/animatique-hero-45s.mp4">Télécharger la vidéo</a>.</p>
         </video>
         <div class="hero-video-overlay" data-video-overlay>
-          <div class="hero-video-invitation">
-            <button class="hero-video-sound" type="button" data-video-sound>
-              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
-                <path d="M5 9v6h4l5 4V5L9 9H5Zm12.5-.5a5 5 0 0 1 0 7" />
-              </svg>
-              <span>Activer le son</span>
-            </button>
-            <p>La vidéo redémarrera depuis le début.</p>
-          </div>
+          <button class="hero-video-sound" type="button" data-video-sound>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+              <path d="M5 9v6h4l5 4V5L9 9H5Zm12.5-.5a5 5 0 0 1 0 7" />
+            </svg>
+            <span>Activer le son</span>
+          </button>
         </div>
         <div class="hero-video-status" data-video-status role="status" aria-live="polite" hidden>
           <span data-video-status-message></span>
@@ -149,34 +146,12 @@ import { CTA } from '@/data/site.mjs';
     inset: 0;
     display: grid;
     place-items: center;
-    padding: 20px;
+    padding: 0;
     pointer-events: none;
   }
   .hero-video-overlay[hidden],
   .hero-video-status[hidden] {
     display: none;
-  }
-  .hero-video-invitation {
-    display: grid;
-    justify-items: center;
-    gap: 10px;
-    max-width: 340px;
-    padding: 18px 20px 16px;
-    border: 1px solid rgba(35, 31, 32, 0.14);
-    border-radius: 18px;
-    background: rgba(255, 254, 251, 0.94);
-    box-shadow: 0 14px 36px rgba(35, 31, 32, 0.16);
-    color: var(--encre);
-    text-align: center;
-    pointer-events: auto;
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-  }
-  .hero-video-invitation p {
-    margin: 0;
-    color: var(--texte-2);
-    font-size: var(--t-sm);
-    line-height: 1.4;
   }
   .hero-video-sound {
     display: inline-flex;
@@ -192,6 +167,7 @@ import { CTA } from '@/data/site.mjs';
     font: inherit;
     font-weight: 700;
     cursor: pointer;
+    pointer-events: auto;
   }
   .hero-video-sound:hover {
     background: var(--accent-appui);
@@ -239,19 +215,9 @@ import { CTA } from '@/data/site.mjs';
       flex-direction: column;
       align-items: stretch;
     }
-    .hero-video-overlay {
-      padding: 12px;
-    }
-    .hero-video-invitation {
-      gap: 6px;
-      padding: 12px 14px 10px;
-    }
     .hero-video-sound {
       min-height: 42px;
       padding: 8px 14px;
-    }
-    .hero-video-invitation p {
-      font-size: 0.75rem;
     }
   }
   @media (min-width: 64rem) {

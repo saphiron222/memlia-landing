@@ -15,7 +15,27 @@ test('R8 démarre muette en boucle puis repart à zéro avec le son', async ({ p
   await expect(video).toHaveAttribute('autoplay', '');
   await expect(video).not.toHaveAttribute('controls', '');
   await expect(soundButton).toBeVisible();
-  await expect(player.getByText('La vidéo redémarrera depuis le début.')).toBeVisible();
+  const overlay = player.locator('[data-video-overlay]');
+  await expect(overlay.locator(':scope > [data-video-sound]')).toHaveCount(1);
+  await expect(overlay.locator(':scope > *')).toHaveCount(1);
+  await expect(player.locator('.hero-video-invitation')).toHaveCount(0);
+  await expect(player).not.toContainText('La vidéo redémarrera depuis le début.');
+  expect(await overlay.evaluate(element => {
+    const style = getComputedStyle(element);
+    return {
+      backgroundColor: style.backgroundColor,
+      borderStyle: style.borderStyle,
+      boxShadow: style.boxShadow,
+      padding: style.padding,
+      backdropFilter: style.backdropFilter,
+    };
+  })).toEqual({
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    borderStyle: 'none',
+    boxShadow: 'none',
+    padding: '0px',
+    backdropFilter: 'none',
+  });
   await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0.1);
   expect(await video.evaluate((element: HTMLVideoElement) => ({
     muted: element.muted,

@@ -59,7 +59,9 @@ class IntegratedMediaProof(unittest.TestCase):
         sound_buttons = [attrs for tag, attrs in doc.tags if tag == 'button' and 'data-video-sound' in attrs]
         self.assertEqual(len(sound_buttons), 1)
         self.assertRegex(html, r'<button\b[^>]*data-video-sound[^>]*>[\s\S]*?<span[^>]*>Activer le son</span>[\s\S]*?</button>')
-        self.assertIn('La vidéo redémarrera depuis le début.', html)
+        self.assertRegex(html, r'<div\b[^>]*data-video-overlay[^>]*>\s*<button\b[^>]*data-video-sound[^>]*>[\s\S]*?</button>\s*</div>')
+        self.assertNotIn('La vidéo redémarrera depuis le début.', html)
+        self.assertNotIn('hero-video-invitation', html)
         self.assertIn('Votre navigateur ne peut pas lancer le lecteur interactif.', html)
         statuses = [attrs for tag, attrs in doc.tags if tag == 'div' and 'data-video-status' in attrs and attrs.get('role') == 'status']
         self.assertEqual(len(statuses), 1)
