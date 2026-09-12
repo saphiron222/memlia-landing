@@ -9,6 +9,27 @@ PROOFS = ['01-flux', '02-repetition', '03-controle', '04-observer', '05-cadrer',
 
 
 class IntegratedMediaProof(unittest.TestCase):
+    def test_r7_is_not_exported(self):
+        dist_r7 = DIST / 'media/r7'
+        self.assertEqual(sorted(p.relative_to(DIST).as_posix() for p in dist_r7.rglob('*') if p.is_file()), [])
+
+    def test_r7_is_not_referenced_by_any_exported_surface(self):
+        references = []
+        for path in DIST.rglob('*'):
+            if path.is_file() and path.suffix in {'.html', '.css', '.js', '.json', '.xml'}:
+                if 'media/r7/' in path.read_text(errors='replace').lower():
+                    references.append(path.relative_to(DIST).as_posix())
+        self.assertEqual(references, [])
+
+    def test_r8_is_the_only_exported_video_generation(self):
+        self.assertEqual(
+            sorted(p.name for p in (DIST / 'media/r8').iterdir() if p.is_file()),
+            ['animatique-hero-45s.mp4', 'animatique.vtt', 'hero-poster-1200.webp', 'hero-poster.webp'],
+        )
+        videos = [video for path in DIST.rglob('*.html') for video in Document(path).select('video')]
+        self.assertEqual(len(videos), 1)
+        self.assertEqual(videos[0]['src'], '/media/r8/animatique-hero-45s.mp4')
+
     def test_hero_has_accessible_r8_player(self):
         doc = Document(DIST / 'index.html')
         videos = doc.select('video')
