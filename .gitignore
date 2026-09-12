@@ -21,3 +21,10 @@ __pycache__/
 public/assets/_*
 *_probe.*
 *_final.*
+
+# Graphify
+.hermes/skills/graphify/
+graphify-out/cache/
+.worktrees/
+graphify-out/
+.hermes-claude-output.txt

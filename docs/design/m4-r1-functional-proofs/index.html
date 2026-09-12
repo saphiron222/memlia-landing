@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M4-R1 — Preuves fonctionnelles Memlia</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="frame hero-flow" id="flux" aria-label="Flux d’automatisation avec validation humaine">
+      <header class="frame-head">
+        <span class="kicker">Un processus cadré, de l’entrée à la décision</span>
+        <span class="frame-no">01 / 09</span>
+      </header>
+      <div class="flow-canvas hatch">
+        <article class="window source-window">
+          <div class="window-bar"><span class="dot"></span><span>Information entrante</span><time>09:42</time></div>
+          <div class="message-line"><span class="file-icon">↳</span><div><b>Export du cycle</b><small>48 lignes · jeu fictif</small></div><span class="ok">Reçu</span></div>
+          <div class="message-line faded"><span class="file-icon">↳</span><div><b>Consigne du cabinet</b><small>Version validée</small></div></div>
+        </article>
+        <div class="connector c1"><span></span></div>
+        <article class="window rules-window">
+          <div class="window-bar"><span class="dot green"></span><span>Règles du cabinet</span><small>v.04</small></div>
+          <div class="rule active"><i>01</i><div><b>Lire les données attendues</b><small>Format et période conformes</small></div><span>✓</span></div>
+          <div class="rule active"><i>02</i><div><b>Appliquer la règle écrite</b><small>Sans modifier la source</small></div><span>✓</span></div>
+          <div class="rule warning"><i>03</i><div><b>Isoler les cas douteux</b><small>1 exception détectée</small></div><span>!</span></div>
+        </article>
+        <div class="connector c2"><span></span></div>
+        <article class="window decision-window">
+          <div class="window-bar"><span class="dot amber"></span><span>Décision</span><span class="status-block">En attente</span></div>
+          <div class="exception-card">
+            <span class="eyebrow">Exception isolée</span>
+            <b>Ligne 18 · champ requis absent</b>
+            <p>La règle exige une valeur. Le traitement reste bloqué jusqu’à la vérification.</p>
+          </div>
+          <div class="actions"><button class="ghost">Vérifier</button><button disabled>Valider après vérification</button></div>
+          <div class="cursor">↖<span>Vérification humaine</span></div>
+        </article>
+      </div>
+      <footer class="proof-caption"><b>L’automatisation prépare.</b><span>L’exception reste visible ; le cabinet décide.</span></footer>
+    </section>
+
+    <section class="frame repeat-proof" id="repetition" aria-label="Étapes répétitives regroupées en préparation automatique">
+      <header class="frame-head"><span class="kicker">Une tâche répétitive, sans gestes rejoués</span><span class="frame-no">02 / 09</span></header>
+      <div class="repeat-grid">
+        <div class="manual-side">
+          <span class="side-label">Avant · gestes manuels</span>
+          <ol class="manual-list">
+            <li><span>01</span><b>Ouvrir quatre sources</b><small>Fichier, export, message, consigne</small></li>
+            <li><span>02</span><b>Copier et rapprocher</b><small>Répété à chaque cycle</small></li>
+            <li><span>03</span><b>Repérer les écarts</b><small>Selon la règle du cabinet</small></li>
+            <li><span>04</span><b>Préparer le résultat</b><small>Puis relire ligne par ligne</small></li>
+          </ol>
+        </div>
+        <div class="compression" aria-hidden="true"><span>4 gestes</span><i>→</i><b>1 préparation</b></div>
+        <article class="window result-window">
+          <div class="window-bar"><span class="dot green"></span><span>Proposition prête à être revue</span><time>Jeu fictif</time></div>
+          <div class="result-summary"><span class="ring">47<small>propositions</small></span><div><span class="eyebrow">Après · préparation proposée</span><h3>Les éléments conformes sont regroupés.</h3><p>48 éléments analysés · un cas reste à vérifier.</p></div></div>
+          <div class="result-row"><span class="check">✓</span><div><b>Propositions conformes à la règle</b><small>47 éléments à relire</small></div><span class="ok">Proposés</span></div>
+          <div class="result-row alert"><span class="bang">!</span><div><b>Cas hors règle</b><small>Aucune décision automatique</small></div><span class="status-block">À vérifier</span></div>
+        </article>
+      </div>
+      <footer class="proof-caption"><b>La mécanique est regroupée.</b><span>Le résultat est proposé, jamais imposé.</span></footer>
+    </section>
+
+    <section class="frame review-proof" id="controle" aria-label="Panneau de contrôle humain avec blocage fail-closed">
+      <header class="frame-head"><span class="kicker">Le doute arrête le traitement</span><span class="frame-no">03 / 09</span></header>
+      <div class="review-stage hatch">
+        <article class="window review-window">
+          <div class="window-bar"><span class="dot amber"></span><span>Revue requise</span><span class="status-block">Bloqué</span></div>
+          <nav class="review-steps" aria-label="États de revue"><span class="done">1 · Proposition</span><span class="active">2 · Vérifier</span><span>3 · Valider</span></nav>
+          <div class="review-body">
+            <div class="comparison">
+              <div><span class="eyebrow">Valeur attendue</span><strong>Champ B-14 renseigné</strong><small>Règle cabinet · version 04</small></div>
+              <div class="different"><span class="eyebrow">Valeur reçue</span><strong>Champ B-14 vide</strong><small>Fichier fictif · ligne 18</small></div>
+            </div>
+            <aside class="why-panel"><span class="lock">⌁</span><div><b>Pourquoi c’est bloqué</b><p>La règle ne permet pas de trancher ce cas. Aucun export n’est produit avant décision.</p></div></aside>
+          </div>
+          <div class="review-footer"><button class="ghost">Renvoyer au cadrage</button><button>Décider et documenter</button></div>
+          <div class="cursor cursor-review">↖<span>Décision humaine</span></div>
+        </article>
+      </div>
+      <footer class="proof-caption"><b>Fail-closed par défaut.</b><span>Si la règle ne suffit pas, rien ne part.</span></footer>
+    </section>
+
+    <section class="frame method-proof observe" id="observer" aria-label="Étape Observer de la méthode Memlia">
+      <header class="frame-head"><span class="kicker">Méthode · 01 Observer</span><span class="frame-no">04 / 09</span></header>
+      <div class="method-layout">
+        <div class="method-copy"><span class="method-number">01</span><h2>Voir le travail tel qu’il se fait.</h2><p>Le geste réel, ses sources et ses exceptions — avant d’imaginer l’automatisation.</p></div>
+        <article class="window observation-window">
+          <div class="window-bar"><span class="dot"></span><span>Observation du processus</span><small>Session 01</small></div>
+          <div class="timeline">
+            <div><time>09:08</time><span class="event">Source reçue</span><small>Fichier .xlsx fictif</small></div>
+            <div><time>09:11</time><span class="event">Rapprochement manuel</span><small>2 sources consultées</small></div>
+            <div class="marked"><time>09:18</time><span class="event">Point de jugement</span><small>Champ requis absent</small></div>
+            <div><time>09:23</time><span class="event">Résultat transmis</span><small>Après contrôle</small></div>
+          </div>
+          <span class="floating-note">À conserver : le jugement humain</span>
+        </article>
+      </div>
+      <footer class="proof-caption"><b>Livrable visible :</b><span>une carte du processus, pas une promesse vague.</span></footer>
+    </section>
+
+    <section class="frame method-proof scope" id="cadrer" aria-label="Étape Cadrer de la méthode Memlia">
+      <header class="frame-head"><span class="kicker">Méthode · 02 Cadrer</span><span class="frame-no">05 / 09</span></header>
+      <div class="method-layout reverse">
+        <article class="window scope-window">
+          <div class="window-bar"><span class="dot green"></span><span>Règle à coder</span><small>Brouillon partagé</small></div>
+          <div class="scope-table">
+            <div class="head"><span>Condition</span><span>Action prévue</span><span>Limite</span></div>
+            <div><span>Format attendu</span><span>Lire et rapprocher</span><span class="ok">Dans le cadre</span></div>
+            <div><span>Donnée absente</span><span>Isoler le cas</span><span class="status-block">Blocage</span></div>
+            <div><span>Règle ambiguë</span><span>Demander une décision</span><span class="status-block">Blocage</span></div>
+          </div>
+          <div class="scope-note"><span>✓</span><b>Les limites sont écrites avant le développement.</b></div>
+        </article>
+        <div class="method-copy"><span class="method-number">02</span><h2>Écrire ce que l’automatisation peut faire.</h2><p>Conditions, actions prévues et cas qui doivent rester bloqués.</p></div>
+      </div>
+      <footer class="proof-caption"><b>Livrable visible :</b><span>une règle testable et ses limites.</span></footer>
+    </section>
+
+    <section class="frame method-proof test" id="eprouver" aria-label="Étape Éprouver sur fichiers fictifs de la méthode Memlia">
+      <header class="frame-head"><span class="kicker">Méthode · 03 Éprouver</span><span class="frame-no">06 / 09</span></header>
+      <div class="method-layout">
+        <div class="method-copy"><span class="method-number">03</span><h2>Faire échouer avant de livrer.</h2><p>Cas courants, données manquantes et formats inattendus, uniquement sur fichiers fictifs.</p></div>
+        <article class="window test-window">
+          <div class="window-bar"><span class="dot green"></span><span>Jeu d’essai fictif</span><span class="ok">4 / 4 cas</span></div>
+          <div class="test-grid">
+            <div class="head"><span>Cas</span><span>Attendu</span><span>Résultat</span></div>
+            <div><span>Cycle courant</span><span>Préparer</span><span class="pass">Conforme</span></div>
+            <div><span>Champ absent</span><span>Bloquer</span><span class="pass">Bloqué</span></div>
+            <div><span>Format inattendu</span><span>Bloquer</span><span class="pass">Bloqué</span></div>
+            <div><span>Exception connue</span><span>Proposer</span><span class="pass">Proposé</span></div>
+          </div>
+          <div class="test-progress"><span style="width:100%"></span></div>
+          <small class="fictive-stamp">DONNÉES FICTIVES</small>
+        </article>
+      </div>
+      <footer class="proof-caption"><b>Livrable visible :</b><span>des cas d’essai et des résultats reproductibles.</span></footer>
+    </section>
+
+    <section class="frame method-proof delivery" id="livrer" aria-label="Étape Livrer et recetter de la méthode Memlia">
+      <header class="frame-head"><span class="kicker">Méthode · 04 Livrer & recetter</span><span class="frame-no">07 / 09</span></header>
+      <div class="method-layout reverse">
+        <article class="window delivery-window">
+          <div class="window-bar"><span class="dot green"></span><span>Recette du cabinet</span><small>Version 1.0</small></div>
+          <div class="delivery-head"><div><span class="eyebrow">Périmètre convenu</span><h3>Préparation du cycle</h3></div><span class="seal">Prêt<br>à vérifier</span></div>
+          <ul class="checklist">
+            <li><span>✓</span><div><b>Règles relues</b><small>Version approuvée pour la recette</small></div></li>
+            <li><span>✓</span><div><b>Cas fictifs rejoués</b><small>Résultats attendus retrouvés</small></div></li>
+            <li><span>✓</span><div><b>Mode de contrôle expliqué</b><small>Validation humaine conservée</small></div></li>
+            <li class="pending"><span>4</span><div><b>Décision du cabinet</b><small>Accepter ou demander une correction</small></div></li>
+          </ul>
+        </article>
+        <div class="method-copy"><span class="method-number">04</span><h2>Mettre le résultat entre les mains du cabinet.</h2><p>Une recette guidée, des limites connues et une décision explicite avant usage.</p></div>
+      </div>
+      <footer class="proof-caption"><b>Livrable visible :</b><span>un résultat recetté, pas un siège logiciel.</span></footer>
+    </section>
+
+    <section class="frame integration-proof" id="integration" aria-label="Intégration aux outils existants du cabinet">
+      <header class="frame-head"><span class="kicker">Partir des outils existants</span><span class="frame-no">08 / 09</span></header>
+      <div class="integration-stage hatch">
+        <div class="tool tool-doc"><span class="tool-icon">▤</span><b>Document</b><small>Source ou consigne</small></div>
+        <div class="tool tool-sheet"><span class="tool-icon grid-icon">▦</span><b>Tableur</b><small>Selon format et accès</small></div>
+        <div class="tool tool-mail"><span class="tool-icon">✉</span><b>Messagerie</b><small>Entrée ou notification</small></div>
+        <div class="tool tool-business"><span class="tool-icon">◇</span><b>Logiciel métier</b><small>Selon les accès disponibles</small></div>
+        <article class="integration-core">
+          <span class="eyebrow">Flux défini avec le cabinet</span>
+          <h2>Relier seulement le nécessaire.</h2>
+          <div class="core-steps"><span>Lire</span><i>→</i><span>Préparer</span><i>→</i><span>Faire valider</span></div>
+          <small>Aucune compatibilité universelle promise</small>
+        </article>
+        <svg class="paths" viewBox="0 0 1200 620" aria-hidden="true"><path d="M165 145 C350 145 350 245 505 270"/><path d="M1035 145 C850 145 850 245 695 270"/><path d="M165 490 C350 490 350 390 505 350"/><path d="M1035 490 C850 490 850 390 695 350"/></svg>
+      </div>
+      <footer class="proof-caption"><b>Le point d’entrée est choisi.</b><span>Les outils ne sont pas remplacés pour introduire l’automatisation.</span></footer>
+    </section>
+
+    <section class="frame guarantees-proof" id="garanties" aria-label="Garanties de confidentialité et validation humaine">
+      <header class="frame-head"><span class="kicker">Des garanties visibles dans le mécanisme</span><span class="frame-no">09 / 09</span></header>
+      <div class="guarantee-layout">
+        <article class="window aggregate-window">
+          <div class="window-bar"><span class="dot green"></span><span>Vue agrégée</span><span class="ok">Non nominatif</span></div>
+          <div class="aggregate-grid">
+            <div class="big-stat"><strong>4</strong><span>groupes fictifs</span><small>Volumes agrégés fictifs</small></div>
+            <div class="bars" aria-label="Quatre groupes agrégés"><span data-label="A"></span><span data-label="B"></span><span data-label="C"></span><span data-label="D"></span></div>
+          </div>
+          <div class="privacy-row"><span class="masked" aria-hidden="true">∅</span><span>Détail nominatif</span><b>Non collecté</b></div>
+          <div class="privacy-row"><span class="shield">◇</span><span>Jeu de données utilisé pour éprouver</span><b>Fictif</b></div>
+        </article>
+        <div class="guarantee-stack">
+          <div class="guarantee-card"><span class="g-icon">∅</span><div><b>Aucune donnée client réelle</b><small>Les démonstrations et essais utilisent des jeux fictifs.</small></div><span class="ok">Jeu fictif</span></div>
+          <div class="guarantee-card"><span class="g-icon">◎</span><div><b>Agrégats non nominatifs</b><small>Pas de surveillance individuelle des salariés.</small></div><span class="ok">Sans détail</span></div>
+          <div class="guarantee-card decisive"><span class="g-icon">✓</span><div><b>Validation humaine</b><small>Une proposition ne devient résultat qu’après décision.</small></div><span class="status-block">Action requise</span></div>
+        </div>
+      </div>
+      <footer class="proof-caption"><b>La confiance n’est pas décorative.</b><span>Chaque garantie correspond à un comportement vérifiable.</span></footer>
+    </section>
+  </main>
+</body>
+</html>

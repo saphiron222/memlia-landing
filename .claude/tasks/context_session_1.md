@@ -1,5 +1,54 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-12 — revue sémantique/visibilité IA, t_4f574adf
+
+- Deux propositions 40/50 relues contre les réponses DataForSEO sauvegardées du run marketing : frontmatters conformes 2/2, matrice nationale 16/16, intentions et probabilités 16/16 exactes, volumes nationaux 2 à 10/mois + 14 `null`, Bretagne 6/6 `null`, KD 16/16 `null`.
+- Coût recalculé : détail $0.39696, écart à $0.344 = +$0.05296. Le lot national rejoué à $0.09 explique à lui seul le franchissement du plafond : sans lui, $0.30696. Huit SERP et cinq exécutions ChatGPT facturées sont tracées ; le constat éditorial reste 0/3 prompts finaux, n=1 chacun.
+- Les 14 liens publics répondent HTTP 200 ; Google, CNIL et net-entreprises ont été relus sur leurs affirmations. Une double comptabilisation de la Bretagne dans le tableau de traçabilité a été corrigée : lot final hors Bretagne $0.11784, ce qui réconcilie tableau + SERP/ChatGPT à $0.39696. Aucun client réel, promesse hors produit, nouvel appel DataForSEO, fichier public du site, publication ou push.
+
+## Hermes — 2026-09-12 — reprise de revue inventaire SEO, t_2a29be13
+
+- Notes 00/01/02 relues intégralement ; SHA recalculés identiques à la revue précédente (3/3), frontmatters conformes (3/3). Les cinq corrections du commentaire730 restent nécessaires ; détail actualisé au commentaire740. Sources officielles GSC/Liens/Bing/IndexNow reconsultées par curl ; aucune nouvelle mesure du site créditée.
+- Mur de routage : `request_changes` réassigne l'implémenteur historique `claude` sans override (code installé lu), contrairement à la reprise GPT. Escalade opérateur pour transférer la même carte en correction vers `marketing`, avec revue `dev`, sans doublon et sans libérer les quatre enfants todo.
+- Aucun livrable SEO ni code produit modifié ; aucun test TS/Python/build/écran recertifié pour cette revue documentaire, aucun commit/push/publication. Suite : corriger ensemble 00/01/02 puis nouvelle revue ; ne pas reprendre les conclusions non prouvées.
+
+## Hermes — 2026-09-10 — revue inventaire SEO, t_2a29be13
+
+- Trois propositions 00/01/02 relues intégralement, frontmatters 3/3 conformes ; corrections requises consignées dans le commentaire Kanban 730. TXT Google présent ≠ propriété GSC vérifiée ; collecte dès ajout selon Google, pas dès vérification. 404 Bing/IndexNow ≠ absence de configuration.
+- HTTP frais via curl : accueil200, Cal.com6liens/formulaire0/beaconprésent ; sitemap200, BingSiteAuth/IndexNow404. Deux résolveurs confirment TXT Google/MXvide. Documents officiels Google/Bing/IndexNow consultés ; les conclusions globales et la correspondance hypothèse/instrument restent à corriger.
+- Aucun livrable SEO ni code produit modifié ; aucun test TS/Python/build/écran crédité pour cette revue documentaire, aucun push/déploiement. Aval non libéré ; reprendre les cinq demandes du commentaire730 avant approbation.
+
+## Hermes — 2026-09-10 — M8, revue documentaire finale (round 3)
+
+- `t_4f92e99e` : corrections P1/P2 vérifiées ; la recette distingue la release réelle de la consolidation et qualifie correctement les trois rapports et les preuves comme locaux/non versionnés. Rapport `docs/qa/m8/recette-finale-publication.md`, SHA-256 `adcdfe5ca826b6c0194ee8286bbeadd22f18ce8f5b728db8bafb8269abc10b8d`.
+- Contrôles frais : check72 fichiers/0erreur/0warning/1hint ; Python28/28 ; images23/9 ; candidat ancêtre de main3d0867d, diff produit vide. Tableau16/16 SHA+tailles conformes ; ZIP final64entrées/CRC intact, inventaire63/63 identique au disque ; ZIP historique175entrées intact. Aucun rapport Markdown dans le ZIP final.
+- JSON de production relus et empreintes vérifiées : PW64/menu45, équivalence58/58, SEO6pages/8assets/0erreur, console12/12, captures18+18/R8 ended45s. Build/PW/écran NON rejoués dans cette revue strictement documentaire. HTTP frais apex200/www301 avec query exacte. Aucun fichier produit ni rapport modifié par le reviewer ; aucun commit/push/déploiement.
+- Suite : clôture documentaire libérant M8 précréée, sans refaire la release. Sauvegarder hors machine le ZIP final AVEC les trois rapports ; aucun push sans go. Les sections www bloqué ci-dessous sont historiques, pas l'état courant.
+
+## Hermes — 2026-09-09 — M8, redirection www hors `_redirects`
+
+- Kevin a choisi configurer www et ajouté le CNAME. Résolveurs publics1.1.1.1/8.8.8.8 positifs ; résolution système encore ENOTFOUND lors de cette reprise. HTTPS forcé sur les IP proxy fonctionne, mais `/` et `/blog?source=www-test` répondent200 sans redirection.
+- Ne pas écrire `https://www.memlia.fr/*` dans `_redirects` : docs officielles + parseur Wrangler4.101.0 le rejettent réellement (0valide/1invalide, « Only relative URLs are allowed »). Sonde locale `.qa/m8-www/probe/` jamais publiée. Un `/*` relatif créerait une boucle apex.
+- Voie correcte : règle Cloudflare Bulk Redirects301, source `www.memlia.fr/`, cible `https://memlia.fr/`, préserver query/suffixe et activer subpath, sans inclure d'autres sous-domaines. Runbook `docs/qa/m8/recette-www.md`. OAuth actuel sans droit de règles annoncé, navigateur-harness indisponible ; activation humaine requise, pas un nouveau deploy.
+- Oracle `node scripts/verify-www-redirect.mjs` :8cas HTTP réels, DNS normal/TLS/301/Location exacte/un saut/canonical/indexabilité ; rouge0/8ENOTFOUND, aucune clôture. Préserver cet échec et rejouer après règle/propagation.
+- Aucun changement produit/copy/design/Worker/preview/production/push. Check0/1hint,build7/Python28/images23 et chaîne apex58/58 relancés ; écranhero375/1440 relu. Résultat navigateur final dans le rapport de cette reprise. Réserves héritées inchangées.
+
+## Hermes — 2026-09-09 — M8, production vérifiée / www à arbitrer
+
+- Kevin a déployé `030591b5-bbc7-48b4-be1a-9d66c025e7a9` ; Wrangler relu Production/main/source17f7658. Apex https://memlia.fr sert le commit exact `17f7658da65038763ade695c96cf40b43e5fb3cf`, identique au worktree final. Aucune fusion/déploiement/push supplémentaire par cette reprise.
+- Mesures fraîches : check0/1hint, build7pages/Python28/images23, Playwright final64/64 et menu45/45 trois moteurs. Premier PW63/64 : ERR_NETWORK_CHANGED à320 avant assertion, cas isolé puis suite complète verts, logs conservés. R8 lue45s/20cues/1350frames dont17perdues, son décodé ; hero375/1440, légal375, menu3moteurs et ligne50/50 relus à l'écran.
+- Chaîne apex exhaustive :12routes +46autres fichiers =58/58dist ;25médias du manifeste inclus,1document interne exclu du manifeste. HTML transformé par Cloudflare email protection :12liens/6textes réellement décodés,7scripts et6blocs analytics comptés ; comparaison exacte ensuite. Emails restaurés au navigateur4pages. Deux CTA Cal.com ouverts HTTP200 sans réservation/envoi. Indexabilité apex correcte, légales noindex intentionnel, pages.dev noindex attendu.
+- Seul arbitrage externe restant : `www.memlia.fr` NXDOMAIN système/1.1.1.1/8.8.8.8/deuxNS autoritaires ; absent des domaines du projet Pages. Demander configuration HTTPS+redirection permanente conservant chemin/query ou acceptation explicite sanswww. Pas de clôture/libération enfantsSEO avant arbitrage. Ne pas redéployer pour un DNS absent.
+- Recette `docs/qa/m8/recette-production.md`, preuves `.qa/m8/`. Réserves téléphone/TVA acceptées, seekfroid et lectureglobale maintenus ; annotations résiduelles R8 connues, aucun changement média/copy/design. Fichiers préexistants conservés, rapport/contexte non commités.
+
+## Hermes — 2026-09-09 18:23 WAT — M8, publication bloquée
+
+- M7-R1 `done` et go humain explicite relus : candidat `17f7658da65038763ade695c96cf40b43e5fb3cf`, réserve juridique acceptée. Aucun changement de copy/design autorisé.
+- Pendant M8, le parent marketing a avancé `main` par fast-forward. SHA exact, reflog et absence de diff produit vérifiés dans cette reprise ; ne pas refaire la fusion. Ses check/build/Python28/images23 sont attribués au handoff, non rejoués ici.
+- Déploiement interdit par `approvals.deny`, mur confirmé par l'opérateur. Aucun contournement ni publication par M8. Commande humaine : `cd /Users/kevinkitanga/dev/interne/memlia-landing && npx wrangler pages deploy dist --project-name memlia --branch main --commit-dirty=true`.
+- Mesure HTTP de cette reprise : apex HTTPS 200, `www.memlia.fr` non résolu (curl6). Cela ne prouve pas la publication du candidat ; contrôle complet du HTML/médias/navigation/CTA et indexabilité à reprendre après URL de déploiement ou « fait ».
+- Carte `t_852aa1a1` bloquée ; aucune clôture de release. Travaux préexistants conservés. Rapport parent : `.worktrees/t_f16e5a39/docs/qa/m7/t_69fbf26b-publication.md`.
+
 ## Hermes — 2026-09-09 — M4-R4, correction globale des repères
 
 - Candidat courant `d291abe`, https://b2bf0d1e.memlia.pages.dev (`preview-m4-r4`). Trois liens résiduels `Lire le détail` supprimés ; périmètre antérieur trop étroit explicitement corrigé. Test global sans suffixe : rouge Python1/PW1, puis Python26/images23/Playwright44local+44distant. H1/CTA/blog/médias/R8 intacts ; comparaison DOM des deux previews identique hors3liens exclus,3cibles conservées.
@@ -216,3 +265,25 @@ after Kevin adds the two records to confirm green.
 - Pièges : le poster natif 1920 pesait trop pour le LCP distant ; dérivé1200/qualité90 et preload high, original conservé. VTT importé `?raw` pour le build Astro. Les figures SVG des articles ne contiennent pas d’img ; le harnais vise `.article-couverture`.
 - Rapport/manifeste : `docs/qa/m4-r3/recette.md`, `media-manifest.json`, `remote-media.json`. Captures et lecture : `.qa/m4-r3-delivery/`.
 - À revoir : enfant croisé précréé `t_69fbf26b`, puis Kevin pour l’ensemble du site et les textes juridiques. Annotations R5 historiques du poster R7 approuvé conservées ; pas de QA Safari/iOS ni audition humaine revendiquée.
+
+## Recette finale de publication M8 — 2026-09-09 (documentation QA seule)
+
+- **Nouveau rapport qui fait foi : `docs/qa/m8/recette-finale-publication.md`.** Verdict **VALIDÉ**,
+  conditionné aux trois verts : audit HTTP/SEO `t_95915808`, audit interface/parcours `t_f6c811c5`,
+  équivalence externe 58/58.
+- `docs/qa/m8/recette-production.md` : bandeau d'obsolescence + section 5 réécrite. Elle affirmait
+  encore NXDOMAIN sur `www` ; l'historique est conservé et daté, non effacé.
+- Faits revérifiés dans le dépôt avant écriture : `HEAD=3d0867d`, candidat `17f7658` ancêtre, diff
+  produit **vide**, `main` **22 commits en avance sur `origin/main`** (aucun push), déploiement
+  `030591b5-…` / `https://030591b5.memlia.pages.dev`.
+- Chiffres relus dans les artefacts, pas recopiés : check 0/0/1 hint · build 7 pages · Python 28/28 ·
+  images 23 · Playwright 64/64 · menu 45/45 (3 moteurs) · oracle www **8/8** `forcedDns:false` ·
+  independent **12/12 routes + 46/46 fichiers**, 0 exclusion · audit SEO 6 pages/8 assets/4 URL
+  sitemap/0 erreur · console 12/12 pages, 0 erreur, 2 `ERR_ABORTED` non affectants · écran 18+18
+  captures, R8 45 s `ended`, 1350 frames/9 perdues.
+- Réserves non bloquantes consignées (juridique acceptée, Légifrance 403, seek à froid, annotations
+  R8, lecture globale, règle Cloudflare non relue à la source, protection email CF, couverture non
+  revendiquée) + **`.qa/` est gitignoré** : seuls les rapports `docs/qa/m8/` sont durables.
+- Rien d'autre touché : aucun fichier produit, aucune copy/design, aucun commit, aucun push, aucun
+  déploiement, aucune écriture Cloudflare/DNS.
+- Restent deux gestes humains : `git push origin main` et libération des deux enfants SEO précréés.
