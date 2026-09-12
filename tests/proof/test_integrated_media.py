@@ -35,9 +35,11 @@ class IntegratedMediaProof(unittest.TestCase):
         videos = doc.select('video')
         self.assertEqual(len(videos), 1)
         video = videos[0]
-        for attr in ['controls', 'playsinline']:
+        for attr in ['playsinline', 'muted', 'loop']:
             self.assertIn(attr, video)
-        self.assertNotIn('autoplay', video)
+        self.assertNotIn('controls', video)
+        self.assertIn('data-video', video)
+        self.assertEqual(video.get('tabindex'), '0')
         self.assertEqual(video['preload'], 'metadata')
         self.assertTrue(video['aria-label'])
         self.assertEqual(video['poster'], '/media/r8/hero-poster-1200.webp')
@@ -52,6 +54,15 @@ class IntegratedMediaProof(unittest.TestCase):
         self.assertEqual(vtt.count(' --> '), 20)
         html = (DIST / 'index.html').read_text()
         self.assertNotIn('aria-describedby', video)
+        players = [attrs for _, attrs in doc.tags if 'data-video-player' in attrs]
+        self.assertEqual(len(players), 1)
+        sound_buttons = [attrs for tag, attrs in doc.tags if tag == 'button' and 'data-video-sound' in attrs]
+        self.assertEqual(len(sound_buttons), 1)
+        self.assertRegex(html, r'<button\b[^>]*data-video-sound[^>]*>[\s\S]*?<span[^>]*>Activer le son</span>[\s\S]*?</button>')
+        self.assertIn('La vidéo redémarrera depuis le début.', html)
+        self.assertIn('Votre navigateur ne peut pas lancer le lecteur interactif.', html)
+        statuses = [attrs for tag, attrs in doc.tags if tag == 'div' and 'data-video-status' in attrs and attrs.get('role') == 'status']
+        self.assertEqual(len(statuses), 1)
         for removed in ['Lire la transcription', 'Lire le détail', 'repere-lien', 'Illustration de fonctionnement sur données fictives, pas une capture produit.', 'hero-media-help', 'hero-transcript', 'Agrandir l’illustration', 'transcription ci-dessous']:
             self.assertNotIn(removed, html)
         for target in ['methode', 'faq-ia-decide', 'faq-donnees-reelles']:

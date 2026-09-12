@@ -31,13 +31,35 @@ import { CTA } from '@/data/site.mjs';
 
   <div class="hero-cadre" data-cadre>
     <div class="hero-verre">
-      <div class="hero-ecran">
-        <video controls playsinline preload="metadata" width="1920" height="1080"
-          aria-label="Découvrir l’automatisation Memlia en 45 secondes"
+      <div class="hero-ecran" data-video-player>
+        <video muted loop playsinline preload="metadata" width="1920" height="1080"
+          tabindex="0" data-video aria-label="Reprendre la vidéo"
+          disablepictureinpicture disableRemotePlayback controlslist="nodownload nofullscreen noremoteplayback"
           poster="/media/r8/hero-poster-1200.webp" src="/media/r8/animatique-hero-45s.mp4">
           <track kind="subtitles" srclang="fr" label="Français" src="/media/r8/animatique.vtt" default />
           <p>Votre navigateur ne peut pas lire cette vidéo. <a href="/media/r8/animatique-hero-45s.mp4">Télécharger la vidéo</a>.</p>
         </video>
+        <div class="hero-video-overlay" data-video-overlay>
+          <div class="hero-video-invitation">
+            <button class="hero-video-sound" type="button" data-video-sound>
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+                <path d="M5 9v6h4l5 4V5L9 9H5Zm12.5-.5a5 5 0 0 1 0 7" />
+              </svg>
+              <span>Activer le son</span>
+            </button>
+            <p>La vidéo redémarrera depuis le début.</p>
+          </div>
+        </div>
+        <div class="hero-video-status" data-video-status role="status" aria-live="polite" hidden>
+          <span data-video-status-message></span>
+          <a href="/media/r8/animatique-hero-45s.mp4" data-video-download hidden>Télécharger la vidéo</a>
+        </div>
+        <noscript>
+          <p class="hero-video-noscript">
+            Votre navigateur ne peut pas lancer le lecteur interactif.
+            <a href="/media/r8/animatique-hero-45s.mp4">Télécharger la vidéo</a>.
+          </p>
+        </noscript>
       </div>
     </div>
 
@@ -102,6 +124,7 @@ import { CTA } from '@/data/site.mjs';
     width: calc(100% + 256px);
   }
   .hero-ecran {
+    position: relative;
     border-radius: var(--r-ecran);
     border: 1px solid var(--ligne);
     overflow: hidden;
@@ -114,14 +137,121 @@ import { CTA } from '@/data/site.mjs';
     height: auto;
     display: block;
     aspect-ratio: 16 / 9;
+    object-fit: cover;
+    cursor: pointer;
   }
-  .hero-ecran:focus-within { outline: 3px solid var(--accent-texte); outline-offset: 4px; }
+  .hero-ecran video:focus-visible {
+    outline: 3px solid var(--accent-texte);
+    outline-offset: -5px;
+  }
+  .hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    pointer-events: none;
+  }
+  .hero-video-overlay[hidden],
+  .hero-video-status[hidden] {
+    display: none;
+  }
+  .hero-video-invitation {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    max-width: 340px;
+    padding: 18px 20px 16px;
+    border: 1px solid rgba(35, 31, 32, 0.14);
+    border-radius: 18px;
+    background: rgba(255, 254, 251, 0.94);
+    box-shadow: 0 14px 36px rgba(35, 31, 32, 0.16);
+    color: var(--encre);
+    text-align: center;
+    pointer-events: auto;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .hero-video-invitation p {
+    margin: 0;
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+    line-height: 1.4;
+  }
+  .hero-video-sound {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 46px;
+    padding: 10px 18px;
+    border: 1px solid var(--accent-texte);
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--encre);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .hero-video-sound:hover {
+    background: var(--accent-appui);
+    color: var(--blanc);
+  }
+  .hero-video-sound:focus-visible {
+    outline: 3px solid var(--blanc);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--accent-texte);
+  }
+  .hero-video-sound svg {
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .hero-video-status,
+  .hero-video-noscript {
+    position: absolute;
+    z-index: 2;
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    width: fit-content;
+    max-width: calc(100% - 32px);
+    margin: 0 auto;
+    padding: 10px 14px;
+    border: 1px solid rgba(35, 31, 32, 0.14);
+    border-radius: 12px;
+    background: rgba(255, 254, 251, 0.96);
+    color: var(--encre);
+    font-size: var(--t-sm);
+    text-align: center;
+  }
+  .hero-video-status a,
+  .hero-video-noscript a {
+    color: var(--accent-texte);
+    font-weight: 700;
+  }
 
 
   @media (max-width: 24.99rem) {
     .hero-boutons {
       flex-direction: column;
       align-items: stretch;
+    }
+    .hero-video-overlay {
+      padding: 12px;
+    }
+    .hero-video-invitation {
+      gap: 6px;
+      padding: 12px 14px 10px;
+    }
+    .hero-video-sound {
+      min-height: 42px;
+      padding: 8px 14px;
+    }
+    .hero-video-invitation p {
+      font-size: 0.75rem;
     }
   }
   @media (min-width: 64rem) {
@@ -237,3 +367,106 @@ import { CTA } from '@/data/site.mjs';
     }
   }
 </style>
+
+<script>
+  const pauseLabel = 'Mettre la vidéo en pause';
+  const playLabel = 'Reprendre la vidéo';
+
+  for (const player of document.querySelectorAll<HTMLElement>('[data-video-player]')) {
+    const video = player.querySelector<HTMLVideoElement>('[data-video]');
+    const overlay = player.querySelector<HTMLElement>('[data-video-overlay]');
+    const soundButton = player.querySelector<HTMLButtonElement>('[data-video-sound]');
+    const status = player.querySelector<HTMLElement>('[data-video-status]');
+    const statusMessage = player.querySelector<HTMLElement>('[data-video-status-message]');
+    const downloadLink = player.querySelector<HTMLAnchorElement>('[data-video-download]');
+    if (!video || !overlay || !soundButton || !status || !statusMessage || !downloadLink) continue;
+
+    let mediaFailed = false;
+
+    const setStatus = (message = '', offerDownload = false) => {
+      statusMessage.textContent = message;
+      downloadLink.hidden = !offerDownload;
+      status.hidden = message.length === 0;
+    };
+
+    const syncPlaybackLabel = () => {
+      if (mediaFailed) {
+        video.setAttribute('aria-label', 'Vidéo indisponible');
+        return;
+      }
+      video.setAttribute('aria-label', video.paused ? playLabel : pauseLabel);
+    };
+
+    const startPlayback = async (autoplayAttempt = false) => {
+      try {
+        await video.play();
+        setStatus();
+        syncPlaybackLabel();
+        return true;
+      } catch {
+        video.pause();
+        syncPlaybackLabel();
+        if (mediaFailed) return false;
+        if (autoplayAttempt) {
+          setStatus('La lecture automatique n’a pas démarré. Activez le son pour lancer la vidéo.');
+        } else {
+          setStatus('La vidéo ne peut pas démarrer. ', true);
+        }
+        return false;
+      }
+    };
+
+    const showMediaError = () => {
+      mediaFailed = true;
+      video.pause();
+      overlay.hidden = true;
+      setStatus('La vidéo ne peut pas être lue. ', true);
+      syncPlaybackLabel();
+    };
+
+    video.controls = false;
+    video.removeAttribute('controls');
+    video.muted = true;
+    video.defaultMuted = true;
+    video.loop = true;
+    video.addEventListener('error', showMediaError);
+    if (video.error) showMediaError();
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
+      video.autoplay = false;
+      video.removeAttribute('autoplay');
+      video.pause();
+      video.currentTime = 0;
+      syncPlaybackLabel();
+    } else {
+      video.autoplay = true;
+      video.setAttribute('autoplay', '');
+      void startPlayback(true);
+    }
+
+    soundButton.addEventListener('click', async () => {
+      video.currentTime = 0;
+      video.loop = false;
+      video.removeAttribute('loop');
+      video.muted = false;
+      video.defaultMuted = false;
+      if (await startPlayback()) overlay.hidden = true;
+    });
+
+    video.addEventListener('click', () => {
+      if (mediaFailed) return;
+      if (video.paused) void startPlayback();
+      else video.pause();
+    });
+
+    video.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      video.click();
+    });
+
+    video.addEventListener('play', syncPlaybackLabel);
+    video.addEventListener('pause', syncPlaybackLabel);
+  }
+</script>

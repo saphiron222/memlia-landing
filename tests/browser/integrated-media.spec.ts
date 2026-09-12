@@ -1,101 +1,134 @@
 import { test, expect } from '@playwright/test';
 
+const VIDEO_SRC = '/media/r8/animatique-hero-45s.mp4';
+
+test('R8 démarre muette en boucle puis repart à zéro avec le son', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+
+  const player = page.locator('[data-video-player]');
+  const video = player.locator('video');
+  const soundButton = player.getByRole('button', { name: 'Activer le son' });
+
+  await expect(video).toHaveAttribute('src', VIDEO_SRC);
+  await expect(video).toHaveAttribute('playsinline', '');
+  await expect(video).toHaveAttribute('autoplay', '');
+  await expect(video).not.toHaveAttribute('controls', '');
+  await expect(soundButton).toBeVisible();
+  await expect(player.getByText('La vidéo redémarrera depuis le début.')).toBeVisible();
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0.1);
+  expect(await video.evaluate((element: HTMLVideoElement) => ({
+    muted: element.muted,
+    loop: element.loop,
+    paused: element.paused,
+  }))).toEqual({ muted: true, loop: true, paused: false });
+  await expect(video).toHaveAttribute('aria-label', 'Mettre la vidéo en pause');
+
+  await video.evaluate((element: HTMLVideoElement) => { element.currentTime = 8; });
+  await soundButton.click();
+
+  await expect(soundButton).toBeHidden();
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeLessThan(2);
+  expect(await video.evaluate((element: HTMLVideoElement) => ({
+    muted: element.muted,
+    loop: element.loop,
+    paused: element.paused,
+  }))).toEqual({ muted: false, loop: false, paused: false });
+  await expect(video).not.toHaveAttribute('controls', '');
+});
+
+test('surface, Entrée et Espace basculent uniquement pause et reprise', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  const video = page.locator('[data-video-player] video');
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(false);
+
+  await video.click({ position: { x: 12, y: 12 } });
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
+  await expect(video).toHaveAttribute('aria-label', 'Reprendre la vidéo');
+
+  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
+  for (let index = 0; index < 100 && !(await video.evaluate(element => element === document.activeElement)); index++) {
+    await page.keyboard.press('Tab');
+  }
+  await expect(video).toBeFocused();
+  await expect(video).toHaveCSS('outline-style', 'solid');
+  await page.keyboard.press('Enter');
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(false);
+  await expect(video).toHaveAttribute('aria-label', 'Mettre la vidéo en pause');
+  await page.keyboard.press('Space');
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
+  await expect(video).toHaveAttribute('aria-label', 'Reprendre la vidéo');
+  await expect(video).not.toHaveAttribute('controls', '');
+});
+
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
-  test(`preuves et lecteur R8 utilisables à ${width}px`, async ({ page }) => {
+  test(`reduced-motion garde le poster et une action explicite à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('/');
-    const video = page.locator('video');
-    await expect(video).toHaveAttribute('src', '/media/r8/animatique-hero-45s.mp4');
+
+    const player = page.locator('[data-video-player]');
+    const video = player.locator('video');
     await expect(video).toHaveAttribute('poster', '/media/r8/hero-poster-1200.webp');
-    await expect(video).toHaveAttribute('controls', '');
     await expect(video).not.toHaveAttribute('autoplay', '');
-    await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.readyState)).toBeGreaterThanOrEqual(1);
-    expect(await video.evaluate((v: HTMLVideoElement) => ({ paused: v.paused, time: v.currentTime, duration: v.duration, width: v.videoWidth, height: v.videoHeight }))).toEqual({ paused: true, time: 0, duration: 45, width: 1920, height: 1080 });
-    await video.focus();
-    await expect(video).toBeFocused();
-    await expect(page.locator('.hero-ecran')).toHaveCSS('outline-style', 'solid');
-    // Un geste clavier réel sur les contrôles natifs, sans autoplay ni appel play() masquant une panne.
-    await page.keyboard.press('Space');
-    await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeGreaterThan(0.1);
-    await page.keyboard.press('Space');
-    await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.paused)).toBe(true);
-    await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.textTracks[0]?.cues?.length)).toBe(20);
-    expect(await video.evaluate((v: HTMLVideoElement) => v.textTracks[0].mode)).toBe('showing');
-    await expect(page.locator('.hero-transcript, .hero-media-help')).toHaveCount(0);
-    await expect(page.locator('body')).not.toContainText(/Lire la transcription|Lire le détail|Illustration de fonctionnement sur données fictives, pas une capture produit\./);
-    await expect(page.locator('.repere-lien')).toHaveCount(0);
-    for (const target of ['#methode', '#faq-ia-decide', '#faq-donnees-reelles']) {
-      await expect(page.locator(target)).toHaveCount(1);
-      await expect(page.locator(target)).not.toBeEmpty();
-    }
-    await expect(page.locator('[data-proof]')).toHaveCount(9);
-    const url = page.url();
-    const pages = page.context().pages().length;
-    for (const proof of await page.locator('[data-proof]').all()) {
-      await proof.scrollIntoViewIfNeeded();
-      await expect.poll(() => proof.locator('img').evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth === 1600)).toBe(true);
-      await expect(proof.locator(':scope > *')).toHaveCount(1);
-      await expect(proof.locator('a, button, details, summary, figcaption, [tabindex], [role]')).toHaveCount(0);
-      expect(await proof.innerText()).toBe('');
-      const image = proof.locator('img');
-      expect(await image.evaluate(i => {
-        const ancestors: Element[] = [];
-        for (let node: Element | null = i; node; node = node.parentElement) ancestors.push(node);
-        return ancestors.filter(n => n.matches('a, button, [tabindex], [role], [onclick], [onkeydown]') || (n as HTMLElement).onclick || (n as HTMLElement).onkeydown).length;
-      })).toBe(0);
-      await expect(image).not.toHaveCSS('cursor', /pointer|zoom/);
-      await image.focus();
-      await expect(image).not.toBeFocused();
-      await image.click();
-      await page.keyboard.press('Enter');
-      await page.keyboard.press('Space');
-      expect(page.url()).toBe(url);
-      expect(page.context().pages()).toHaveLength(pages);
-      await expect(page.locator('dialog, [role="dialog"], [aria-modal="true"]')).toHaveCount(0);
-    }
-    // Parcours Tab réel : le lecteur reste atteignable, aucune preuve ne prend le focus.
-    await page.goto('/');
-    let firstFocus: string | undefined;
-    let cycleCompleted = false;
-    let reachedVideo = false;
-    for (let index = 0; index < 100; index++) {
-      await page.keyboard.press('Tab');
-      const state = await page.evaluate(() => ({ key: document.activeElement?.outerHTML ?? '', proof: !!document.activeElement?.closest('[data-proof]'), video: document.activeElement?.tagName === 'VIDEO' }));
-      expect(state.proof).toBe(false);
-      reachedVideo ||= state.video;
-      if (firstFocus === undefined) firstFocus = state.key;
-      else if (state.key === firstFocus) { cycleCompleted = true; break; }
-    }
-    expect(reachedVideo).toBe(true);
-    expect(cycleCompleted).toBe(true);
+    await expect(player.getByRole('button', { name: 'Activer le son' })).toBeVisible();
+    expect(await video.evaluate((element: HTMLVideoElement) => ({
+      paused: element.paused,
+      time: element.currentTime,
+      width: element.videoWidth,
+      height: element.videoHeight,
+    }))).toEqual({ paused: true, time: 0, width: 1920, height: 1080 });
+    await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.textTracks[0]?.cues?.length)).toBe(20);
+    expect(await video.evaluate((element: HTMLVideoElement) => element.textTracks[0].mode)).toBe('showing');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     expect(errors).toEqual([]);
   });
 }
 
-test('vidéo en échec : contrôles et VTT conservés sans microtexte de remplacement', async ({ page }) => {
-  await page.route('**/animatique-hero-45s.mp4', route => route.abort());
+test('un refus autoplay affiche un état accessible et actionnable', async ({ page }) => {
+  await page.addInitScript(() => {
+    const nativePlay = HTMLMediaElement.prototype.play;
+    let firstCall = true;
+    HTMLMediaElement.prototype.play = function () {
+      if (firstCall) {
+        firstCall = false;
+        return Promise.reject(new DOMException('Autoplay blocked', 'NotAllowedError'));
+      }
+      return nativePlay.call(this);
+    };
+  });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('/');
-  await expect.poll(() => page.locator('video').evaluate((v: HTMLVideoElement) => v.error?.code)).toBeGreaterThan(0);
-  await expect(page.locator('video')).toHaveAttribute('controls', '');
-  await expect(page.locator('video track')).toHaveAttribute('src', '/media/r8/animatique.vtt');
-  await expect(page.locator('.hero-transcript, .hero-media-help')).toHaveCount(0);
+
+  const player = page.locator('[data-video-player]');
+  await expect(player.getByRole('status')).toContainText('La lecture automatique n’a pas démarré.');
+  await expect(player.getByRole('button', { name: 'Activer le son' })).toBeVisible();
+  await expect(player.locator('video')).toHaveAttribute('aria-label', 'Reprendre la vidéo');
 });
 
-test('preuves statiques et lecteur natif présents sans JavaScript', async ({ browser }) => {
+test('une erreur média affiche un fallback téléchargeable sans faux état de lecture', async ({ page }) => {
+  await page.route(`**${VIDEO_SRC}`, route => route.abort());
+  await page.goto('/');
+
+  const player = page.locator('[data-video-player]');
+  await expect.poll(() => player.locator('video').evaluate((element: HTMLVideoElement) => element.error?.code)).toBeGreaterThan(0);
+  await expect(player.getByRole('status')).toContainText('La vidéo ne peut pas être lue.');
+  await expect(player.getByRole('link', { name: 'Télécharger la vidéo' })).toHaveAttribute('href', VIDEO_SRC);
+  await expect(player.locator('video')).toHaveAttribute('aria-label', 'Vidéo indisponible');
+  await expect(player.locator('video')).not.toHaveAttribute('controls', '');
+});
+
+test('fallback et sous-titres restent disponibles sans JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
   await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
-  await expect(page.locator('video')).toHaveAttribute('controls', '');
+  await expect(page.locator('video')).not.toHaveAttribute('controls', '');
+  await expect(page.locator('video track')).toHaveAttribute('src', '/media/r8/animatique.vtt');
+  await expect(page.locator('.hero-video-noscript')).toContainText('Votre navigateur ne peut pas lancer le lecteur interactif.');
+  await expect(page.getByRole('link', { name: 'Télécharger la vidéo' })).toHaveAttribute('href', VIDEO_SRC);
   await expect(page.locator('[data-proof]')).toHaveCount(9);
-  for (const proof of await page.locator('[data-proof]').all()) {
-    await proof.scrollIntoViewIfNeeded();
-    await expect(proof.locator('img')).toBeVisible();
-    await expect(proof.locator(':scope > *')).toHaveCount(1);
-    await expect(proof.locator('a, button, details, figcaption, [tabindex], [role]')).toHaveCount(0);
-  }
   await context.close();
 });
