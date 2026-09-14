@@ -1,6 +1,5 @@
 /** Oracle HTTP réel de l’indexabilité de la production memlia.fr. */
 import assert from 'node:assert/strict';
-import { randomUUID } from 'node:crypto';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
@@ -18,10 +17,8 @@ function parseDirectives(value) {
   return new Set((value ?? '').split(',').map((directive) => directive.trim().toLowerCase()).filter(Boolean));
 }
 
-export function buildProbeUrl(url, nonce = `${Date.now()}-${randomUUID()}`) {
-  const probe = new URL(url);
-  probe.searchParams.set('__memlia_indexability', nonce);
-  return probe.href;
+export function buildProbeUrl(url) {
+  return new URL(url).href;
 }
 
 function analyzeMetaRobots(html, expectedDirective) {
@@ -44,8 +41,8 @@ export function analyzeHomeResponse({ status, xRobotsTag, html }) {
   return { metaRobots: content, xRobotsTag };
 }
 
-async function fetchFresh(url, fetchImpl, nonce) {
-  const probeUrl = buildProbeUrl(url, nonce);
+async function fetchFresh(url, fetchImpl) {
+  const probeUrl = buildProbeUrl(url);
   const response = await fetchImpl(probeUrl, {
     redirect: 'manual',
     headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' },
@@ -99,32 +96,32 @@ export function analyzeRobots(body) {
   return { defaultAllowsRoot, sitemapDeclared };
 }
 
-export async function verifyProductionIndexability({ fetchImpl = fetch, nonce = `${Date.now()}-${randomUUID()}` } = {}) {
-  const report = { measuredAt: new Date().toISOString(), nonce, origin: PRODUCTION_ORIGIN, checks: {} };
+export async function verifyProductionIndexability({ fetchImpl = fetch } = {}) {
+  const report = { measuredAt: new Date().toISOString(), origin: PRODUCTION_ORIGIN, checks: {} };
 
-  const home = await fetchFresh(`${PRODUCTION_ORIGIN}/`, fetchImpl, nonce);
+  const home = await fetchFresh(`${PRODUCTION_ORIGIN}/`, fetchImpl);
   report.checks.home = { ...home, body: undefined };
   report.checks.home.analysis = analyzeHomeResponse({ ...home, html: home.body });
 
   const legalPages = [];
   for (const path of PAGES_NOINDEX.filter((entry) => entry !== '/404')) {
-    const response = await fetchFresh(`${PRODUCTION_ORIGIN}${path}`, fetchImpl, nonce);
+    const response = await fetchFresh(`${PRODUCTION_ORIGIN}${path}`, fetchImpl);
     assert.equal(response.status, 200, `${path} doit répondre HTTP 200 (reçu : ${response.status}).`);
     const { content } = analyzeMetaRobots(response.body, 'noindex');
     legalPages.push({ ...response, body: undefined, metaRobots: content });
   }
   report.checks.legalPages = legalPages;
 
-  const robots = await fetchFresh(`${PRODUCTION_ORIGIN}/robots.txt`, fetchImpl, nonce);
+  const robots = await fetchFresh(`${PRODUCTION_ORIGIN}/robots.txt`, fetchImpl);
   assert.equal(robots.status, 200, `robots.txt doit répondre HTTP 200 (reçu : ${robots.status}).`);
   report.checks.robots = { ...robots, body: undefined, analysis: analyzeRobots(robots.body) };
 
-  const sitemapIndex = await fetchFresh(`${PRODUCTION_ORIGIN}/sitemap.xml`, fetchImpl, nonce);
+  const sitemapIndex = await fetchFresh(`${PRODUCTION_ORIGIN}/sitemap.xml`, fetchImpl);
   assert.equal(sitemapIndex.status, 200, `sitemap.xml doit répondre HTTP 200 (reçu : ${sitemapIndex.status}).`);
   const indexLocations = sitemapLocations(sitemapIndex.body);
   const sitemapPages = [];
   for (const location of indexLocations) {
-    const sitemap = await fetchFresh(location, fetchImpl, nonce);
+    const sitemap = await fetchFresh(location, fetchImpl);
     assert.equal(sitemap.status, 200, `${location} doit répondre HTTP 200 (reçu : ${sitemap.status}).`);
     sitemapPages.push(...sitemapLocations(sitemap.body));
   }

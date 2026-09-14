@@ -34,11 +34,8 @@ test('accepte uniquement un accueil 200 avec index et follow explicites', () => 
   );
 });
 
-test('contourne le cache avec une query unique sans changer le chemin sondé', () => {
-  const url = new URL(buildProbeUrl('https://memlia.fr/', 'temoin-123'));
-  assert.equal(url.origin, 'https://memlia.fr');
-  assert.equal(url.pathname, '/');
-  assert.equal(url.searchParams.get('__memlia_indexability'), 'temoin-123');
+test('sonde exactement l’URL canonique sans query qui changerait la ressource', () => {
+  assert.equal(buildProbeUrl('https://memlia.fr/'), 'https://memlia.fr/');
 });
 
 test('lit le groupe User-agent étoile sans hériter des groupes suivants', () => {
