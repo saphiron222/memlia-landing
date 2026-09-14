@@ -1,5 +1,13 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-14 — indexabilité production, t_4ec9cc36
+
+- Garde-fou ajouté : oracle Node `scripts/verify-production-indexability.mjs`, 6 tests ciblés intégrés au build via `test:scripts`, et cron Hermes déterministe quotidien `d1eed2415e77` à 08:00. Le témoin `X-Robots-Tag: noindex` sort bien en code 1 ; la meta accueil, les légales, robots.txt et le sitemap sont contrôlés contre `PAGES_NOINDEX` avec une query unique.
+- Diagnostic Cloudflare : aucun Worker route ; projet Pages `memlia`, production `main`, previews toutes branches. Cloudflare documente et applique automatiquement `X-Robots-Tag: noindex` aux previews ; `prepare-preview.mjs` renforce les branches `preview-*` en `noindex, nofollow`. Aucun `_headers` n’existe dans l’historique Git.
+- L’apex oscille encore : il a été mesuré indexable (`DYNAMIC`, sans `age` ni `X-Robots-Tag`) après le déploiement production `c566bfe2`, puis de nouveau `X-Robots-Tag: noindex`, `age: 261`, `s-maxage=604800`; les queries neuves répondent alors 404. Les endpoints API Transform/Page/Cache Rules et purge renvoient 403 avec l’OAuth Wrangler actuel ; la règle de zone exacte reste donc non relue et non modifiée. Ne pas déclarer l’incident clos.
+- Vérifications de cette reprise : build 7 pages, Python 37/37, images 23, scripts 9/9, check 0 erreur/0 warning/1 hint. Playwright sur serveur frais : 73/79 ; six échecs hérités sur les cues VTT en reduced-motion depuis le retrait de `default`, hors changement indexabilité. Capture production 1440 relue, page rendue et meta `index, follow` au moment de la capture.
+- Suite : obtenir un jeton Cloudflare avec lecture/écriture Rulesets + Cache Purge, citer puis corriger la règle qui pose `s-maxage=604800`/`X-Robots-Tag` sur l’apex, purger et rejouer l’oracle jusqu’à deux lectures fraîches stables ; traiter séparément les six tests reduced-motion.
+
 ## Hermes — 2026-09-12 — bouton sonore seul, reprise après revue, t_96481743
 
 - Revue marketing appliquée au commit `571d34b` : le bouton seul porte désormais directement un fond vert translucide, un `backdrop-filter: blur(8px)`, une ombre douce et un halo discret. L’overlay reste transparent, sans bordure, ombre, flou, padding, carte ou annotation ; aucun comportement vidéo ni média n’a changé.

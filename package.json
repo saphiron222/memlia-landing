@@ -6,7 +6,7 @@
   "description": "Site memlia.fr — Astro, Cloudflare Pages",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/strip-briefs.mjs && npm run test:proof && npm run test:images && npm run test:preview-export",
+    "build": "astro build && node scripts/strip-briefs.mjs && npm run test:proof && npm run test:images && npm run test:scripts",
     "preview": "astro preview",
     "preview:prepare": "node scripts/prepare-preview.mjs",
     "check": "astro check",
@@ -16,6 +16,8 @@
     "render:proofs": "node scripts/render-proof-images.mjs",
     "test:proof": "python3 -m unittest discover -s tests/proof -v",
     "test:preview-export": "node --test tests/scripts/prepare-preview.test.mjs",
+    "test:scripts": "node --test tests/scripts/*.test.mjs",
+    "test:indexability": "node scripts/verify-production-indexability.mjs",
     "qa:screens": "node scripts/capture.mjs",
     "placeholders": "node scripts/placeholders.mjs",
     "lighthouse": "node scripts/lighthouse.mjs"
