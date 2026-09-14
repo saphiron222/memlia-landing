@@ -1,5 +1,12 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-14 — RESSOURCES-9, modèle N/A
+
+- Le GO G1 R2 et le propriétaire amont écartent explicitement le modèle pilote : aucun classeur, notice, générateur, oracle, route, asset ou lien de téléchargement n’a été créé.
+- Rapport durable : `docs/qa/hub-ressources/modele-na-t_e7c84a8c.md`. Rejeu frais du validateur amont : 51/51 contrôles, 0 échec, 74 skills, 0 candidat ; inventaire Git : 0 artefact modèle/classeur suivi.
+- G2–G6, jeux valides/vides/incomplets/invalides, arrondis, compatibilité Excel, écran et hashes fichier/notice restent N/A, pas « verts ». Réouverture seulement sur une décision distincte avec preuves nouvelles et reviewer métier.
+- Aucun code site, contenu public, preview, déploiement, publication, push ou cron. Suite : QA dev et marketing aval vérifient le N/A et l’absence d’artefact.
+
 ## Hermes — 2026-09-12 — bouton sonore seul, reprise après revue, t_96481743
 
 - Revue marketing appliquée au commit `571d34b` : le bouton seul porte désormais directement un fond vert translucide, un `backdrop-filter: blur(8px)`, une ombre douce et un halo discret. L’overlay reste transparent, sans bordure, ombre, flou, padding, carte ou annotation ; aucun comportement vidéo ni média n’a changé.
