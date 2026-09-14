@@ -114,8 +114,11 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       width: element.videoWidth,
       height: element.videoHeight,
     }))).toEqual({ paused: true, time: 0, width: 1920, height: 1080 });
+    const track = video.locator('track');
+    await expect(track).not.toHaveAttribute('default', '');
+    expect(await video.evaluate((element: HTMLVideoElement) => element.textTracks[0].mode)).toBe('disabled');
+    await video.evaluate((element: HTMLVideoElement) => { element.textTracks[0].mode = 'hidden'; });
     await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.textTracks[0]?.cues?.length)).toBe(20);
-    expect(await video.evaluate((element: HTMLVideoElement) => element.textTracks[0].mode)).toBe('showing');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     expect(errors).toEqual([]);
   });

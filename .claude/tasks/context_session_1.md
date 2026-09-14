@@ -1,5 +1,13 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-14 — santé production, t_cde15777
+
+- Diagnostic reproduit : l’apex servait une réponse âgée de 98 244 s avec `X-Robots-Tag: noindex`, `s-maxage=604800` et `<track default>` ; les deux derniers déploiements Production 153298f4 et b32f5bb3 répondaient 404, tandis que 393e365e servait encore l’ancien HTML. Une query fraîche sur l’apex tombait elle aussi en 404 : le cache masquait donc un origin Production invalide.
+- `dist` a été reconstruit depuis `6b202a7`, sans `_headers`, avec meta `index, follow, max-image-preview:large` et `<track>` sans `default`, puis redéployé explicitement sur `main`. Déploiement : `c566bfe2-65b0-4d41-ac5b-c4f0ad52bcbb`, https://c566bfe2.memlia.pages.dev.
+- Readback final apex et query : HTTP 200, aucun `X-Robots-Tag`, `cache-control: public, max-age=0, must-revalidate`, aucun `age`, `<track>` sans `default`. La liste Wrangler rattache le déploiement Production à la source `6b202a7`.
+- Régression de test corrigée : le scénario reduced-motion vérifie désormais le mode initial `disabled`, puis passe le track en `hidden` pour prouver les 20 cues sans les afficher. Check 82 fichiers/0 erreur/1 hint hérité, build 7 pages/Python 37/37/images 23/preview 3/3, Playwright local 79/79. Production : 11 scénarios vidéo, 10 verts au premier passage et un timeout réseau au chargement ; le cas isolé a repassé 1/1. Capture 1440 relue : hero et lecteur rendus, aucun sous-titre visible ni défaut évident.
+- Aucun changement de contenu, design, média ou configuration de cache. Aucun push Git. Retour arrière Cloudflare disponible vers le déploiement antérieur, mais il restaurerait précisément l’ancien HTML avec sous-titres par défaut et n’est pas recommandé.
+
 ## Hermes — 2026-09-12 — bouton sonore seul, reprise après revue, t_96481743
 
 - Revue marketing appliquée au commit `571d34b` : le bouton seul porte désormais directement un fond vert translucide, un `backdrop-filter: blur(8px)`, une ombre douce et un halo discret. L’overlay reste transparent, sans bordure, ombre, flou, padding, carte ou annotation ; aucun comportement vidéo ni média n’a changé.
