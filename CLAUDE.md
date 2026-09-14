@@ -37,7 +37,7 @@ rédigé, en WebP/AVIF ; les captures produit viennent du banc Windows, sur le j
 ## Règles non négociables
 
 - **Rien n'est publié sans Kevin.** Tu travailles sur une branche `site/<sujet>`, tu déploies une
-  **prévisualisation** (`npx wrangler pages deploy dist --project-name memlia-landing --branch preview-<sujet>`)
+  **prévisualisation** (`npx wrangler pages deploy dist --project-name memlia --branch preview-<sujet>`)
   et tu donnes l'URL. La production (`--branch main`) et `git push` sont **interdits** : Kevin s'en charge.
 - **Le SEO acquis ne régresse pas** : `title`, `description`, canonical, Open Graph, JSON-LD (Organization,
   WebSite, SoftwareApplication, FAQPage), `robots.txt`, sitemap, `llms.txt`, pages légales en `noindex`,

@@ -23,6 +23,6 @@ Cloudflare Pages, `wrangler` connecté). Le site final vit dans le même dépôt
 
 ## Livraison
 - Branche `site/<sujet>` dans un worktree, commits `type(portée): …`, **jamais `git push`** (Kevin pousse).
-- Prévisualisation : `npx wrangler pages deploy dist --project-name memlia-landing --branch preview-<sujet>` puis l'URL sur Telegram
+- Prévisualisation : `npx wrangler pages deploy dist --project-name memlia --branch preview-<sujet>` puis l'URL sur Telegram
   (profil marketing). Production **uniquement** sur le « go » de Kevin (branche `main`, interdite par politique aux workers).
 - Fin de carte : `kanban_request_review` (revue croisée) avec résumé, URL de preview, planchers Lighthouse, ce qui reste.
