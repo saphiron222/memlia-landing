@@ -16,10 +16,10 @@ Règle : une passe intermédiaire est `OBSOLETE` si une branche retenue contient
 | `t_33fa3464` | `wt/t_33fa3464` | OBSOLETE | Autre passe BLOG-SYS-4R4, incluse dans la lignée finale. |
 | `t_d7e10de5` | `wt/t_d7e10de5` | OBSOLETE | Passe BLOG-SYS-4R5 incluse dans la lignée finale. |
 | `t_09f22417` | `wt/t_09f22417` | OBSOLETE | Passe BLOG-SYS-4R6 incluse dans la lignée finale. |
-| `t_f442e1b3` | `wt/t_f442e1b3` | OBSOLETE | Ancêtre direct de `site/blog-rewrite-existing`, retenue pour intégrer la mécanique complète. |
+| `t_f442e1b3` | `wt/t_f442e1b3` | OBSOLETE | Ancêtre direct de `site/blog-rewrite-existing` ; son pipeline attend les preuves scellées du candidat désormais périmé et ne s’intègre pas isolément aux articles publiés. |
 | `t_69390c85` | `site/blog-seo-system` | OBSOLETE | Première version du pipeline, remplacée par les durcissements de la lignée finale. |
 | `t_470b4262` | `wt/t_470b4262` | OBSOLETE | Intégration intermédiaire des articles, incluse dans `site/blog-rewrite-existing`. |
-| `t_105b15dd` | `site/blog-rewrite-existing` | INTEGRER | Dernière lignée mécanique blog et previews. La fusion conserve les articles publiés de `main` ; elle ne rétablit ni `brouillon: true`, ni l’ancien auteur. |
+| `t_105b15dd` | `site/blog-rewrite-existing` | OBSOLETE | Fusion annulée : son audit scellé sur les brouillons du 13 septembre refuse les articles publiés et revérifiés le 15 septembre (118 erreurs, empreintes et frontmatter divergents). La mécanique doit être recalculée sur le contenu courant, pas fusionnée avec des preuves périmées. |
 | `t_6306ed21` | détachée `92ec835` | OBSOLETE | Même tête que la lignée retenue ; aucune contribution distincte. |
 | `t_1505b3b9` | détachée `3dc0ba8` | OBSOLETE | Revue technique historique ; son socle produit est déjà repris dans les lignées retenues. |
 | `t_584e6438` | détachée `2d78b8b` | OBSOLETE | Passe BLOG-SYS-5 déjà incluse dans la lignée finale. |
@@ -36,7 +36,7 @@ Règle : une passe intermédiaire est `OBSOLETE` si une branche retenue contient
 | `t_4ec9cc36` | `wt/t_4ec9cc36` | INTEGRER | Sonde d’indexabilité exacte et test absents de `main`. |
 | `t_f5098486` | `wt/t_f5098486` | OBSOLETE | Spécification design historique supplantée par le site Astro et ses documents courants. |
 
-Ordre de fusion retenu : `t_6f653b66` → `t_105b15dd` → `t_e7c84a8c` → `t_6dbc334d` → `t_4ec9cc36`.
+Ordre de fusion retenu : `t_6f653b66` → `t_e7c84a8c` → `t_6dbc334d` → `t_4ec9cc36`.
 
 ## memlia-desk — 9 branches
 
@@ -57,6 +57,6 @@ Ordre de fusion retenu : `t_a4615754` → `t_54183ce5` → `t_14c633b9` → `t_0
 ## Totaux
 
 - 36 branches triées.
-- 12 verdicts `INTEGRER`.
-- 24 verdicts `OBSOLETE`.
+- 11 verdicts `INTEGRER`.
+- 25 verdicts `OBSOLETE`.
 - 0 verdict `A DECIDER`.
