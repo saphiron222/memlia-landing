@@ -1,0 +1,114 @@
+Outils de contrôle et paramétrage
+Outils d’auto-contrôle Dsn-Val et brique de contrôle
+Outils d’auto-contrôle Dsn-Val et brique de contrôle
+ Publié le 11 septembre 2020 - Modifié le 23 juillet 2026
+ DSN
+
+Avant de transmettre votre DSN, nous vous proposons des outils de contrôles vous permettant de vérifier certains éléments avant la transmission de votre fichier. N’hésitez pas ! Testez vos fichiers !
+
+L’outil de contrôle DSN VAL
+Brique de contrôle DSN
+En bref
+
+L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.
+
+Les Pré-requis à l’installation de Dsn-Val sont les suivants (version de production) :
+
+Windows Server 2003 et 2008, Windows XP, Vista, 7 et 8 (32 et 64 bits), Windows 10
+Linux (32 et 64 bits),
+Configuration minimum Java 1.7 (Java 1.7 et 1.8 supportés), 32 bits ou 64 bits.
+
+Dsn-Val et JAVA doivent être dans la même architecture, soit 32 bits ou 64 bits.
+A noter qu’à compter de janvier 2021, seule les versions 64 seront supportées. Les pré-requis à l’installation de Dsn-Val seront alors les suivants :
+
+Windows (toutes versions) 64 bits,
+Linux 64 bits,
+Configuration Java : Versions de référence OpenJdk 8 et 11 (64 bits)
+
+Dsn-Val et JAVA doivent être dans la même architecture 64 bits
+
+Une documentation est à disposition à partir de l’interface de l’outil.
+
+A noter !
+Pour un fonctionnement optimal de Dsn-Val, il est fortement recommandé de maintenir le paramètre « Nombre maximal d’anomalies » à 200.
+
+Consultez la notice d’installation de l’outil     Consultez le guide utilisateur de Dsn-Val
+ 
+
+Outil Dsn-Val 2026 (en production)
+
+Version 2026.1.0.16 du 23 juillet 2026 portant sur les contrôles du cahier technique de la DSN 2026.1 du 6 janvier 2025 avec prise en compte du JMN n°1.
+
+Dsn-Val en automatique sur votre poste (programme exécutable .exe) :
+
+Dsn-Val pour Windows (189 Mo)
+
+Téléchargement de l’ensemble des fichiers (dossiers .zip – 100 Mo) :
+
+Dsn-Val pour Windows 64 bits
+Dsn-Val pour Linux 64 bits
+
+Détail de la version 2026.1.0.16 du 23 juillet 2026 :
+
+Mise à jour des tables de nomenclatures de juillet 2026
+
+ 
+
+Outil Dsn-Val 2027 (en éditeur fin septembre)
+
+Version 2027.1.0.2 du 1er juillet 2026 portant sur les contrôles du cahier technique de la DSN 2027.1 du 24 décembre 2025 avec prise en compte du JMN n°1.
+
+Dsn-Val en automatique sur votre poste (programme exécutable .exe) :
+
+Dsn-Val pour Windows (189 Mo)
+
+Téléchargement de l’ensemble des fichiers (dossiers .zip – 100 Mo) :
+
+Dsn-Val pour Windows 64 bits
+Dsn-Val pour Linux 64 bits
+
+Détail de la version 2027.1.0.2 du 1er juillet 2026 :
+
+Mise à jour des tables de nomenclatures de juin 2026
+
+A noter la présence résiduelle de deux anomalies non bloquantes qui seront corrigées dans la prochaine version :
+
+Une adhésion Prévoyance avec personnel couvert (bloc 15) peut ne pas être référencée, à tort, dans un bloc 70.
+La rubrique 11.024 « Demande de sortie de la DSN » est acceptée à tort pour un type autre de DSN que « sans individu ».
+
+A noter qu’une évolution du socle technique du Dsn-val est en cours d’étude, ce qui pourrait en cas de changement de ce socle, imposer un téléchargement et une réinstallation complète du Dsn-val (les mises à jour automatiques ne fonctionneront pas).
+
+ 
+
+Norme DSN (NEODeS) et documentation technique
+
+Découvrir
+
+Les tables de nomenclatures DSN
+
+Découvrir
+
+Besoin d'aide ?
+Posez-nous vos questions !
+
+Rechercher
+
+Calendrier déclaratif
+
+15 . 09
+
+Date d’exigibilité de la DSN pour le mois principal déclaré d’août
+
+05 . 10
+
+Date d’exigibilité de la DSN pour le mois principal déclaré de septembre
+
+12 . 10
+
+Date d’exigibilité de la déclaration PASRAU pour le mois principal déclaré de septembre
+Voir le calendrier
+
+Guides et FAQ
+
+Notice d'installation de l'outil d'auto contrôle DSN VAL
+Guide d'utilisation de la DSN

@@ -40,6 +40,35 @@ const blog = defineCollection({
       brouillon: z.boolean().default(true),
       /** Image d'en-tête : identifiant du manifeste src/data/images.mjs (srcset et alt maîtrisés). */
       image: z.enum(IDS_IMAGES),
+      /** Contrat enrichi des candidats créés par le pipeline éditorial. Les articles historiques restent inchangés. */
+      pipelineVersion: z.literal(1).optional(),
+      primaryQuery: z.string().min(3).optional(),
+      secondaryQueries: z.array(z.string().min(3)).default([]),
+      intent: z.enum(['comprendre', 'executer', 'diagnostiquer', 'comparer-approches', 'evaluer-service', 'reduire-risque', 'decider']).optional(),
+      fanOut: z.array(z.string().min(3)).default([]),
+      cluster: z.enum(['production-comptable', 'portefeuille-echeances', 'paie-social', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-formation', 'excel-outils-existants', 'numerique-it-data', 'methode-decision-humaine']).optional(),
+      rolePrincipal: z.enum(['direction-associes', 'chefs-mission-portefeuille', 'collaborateurs-comptables', 'assistants-comptables', 'paie-responsables-sociaux', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-recrutement-formation', 'numerique-it-data', 'profils-formation', 'autre-role-documente']).optional(),
+      rolesSecondaires: z.array(z.enum(['direction-associes', 'chefs-mission-portefeuille', 'collaborateurs-comptables', 'assistants-comptables', 'paie-responsables-sociaux', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-recrutement-formation', 'numerique-it-data', 'profils-formation', 'autre-role-documente'])).default([]),
+      tache: z.string().min(10).optional(),
+      preuveRole: z.object({
+        niveau: z.enum(['observe', 'indirect', 'hypothese', 'absent']),
+        source: z.string().min(3),
+        date: z.coerce.date(),
+      }).optional(),
+      funnel: z.enum(['TOFU', 'MOFU', 'BOFU']).optional(),
+      contentType: z.enum(['searchable', 'shareable', 'experimental']).optional(),
+      format: z.enum(['how-to-guide', 'faq-knowledge', 'tutorial', 'pillar-page', 'thought-leadership', 'listicle-checklist', 'case-study', 'data-research', 'resource-template']).optional(),
+      rankability: z.enum(['forte', 'plausible', 'faible', 'bloquante']).optional(),
+      businessRelevance: z.enum(['directe', 'adjacente', 'faible', 'hors-perimetre']).optional(),
+      proofStatus: z.enum(['requise', 'a-produire', 'verifiee', 'non-applicable']).optional(),
+      proofRequired: z.string().min(10).optional(),
+      reviewRule: z.string().min(10).optional(),
+      reviewer: z.string().min(2).optional(),
+      sourcesVerifieesLe: z.coerce.date().optional(),
+      cta: z.object({ label: z.string().min(2), destination: z.string().min(1), outcome: z.string().min(5) }).optional(),
+      imageOg: z.string().regex(/^\/images\/[a-z0-9-]+\.(?:avif|webp)$/).optional(),
+      imageAlt: z.string().min(10).max(125).optional(),
+      statutEditorial: z.enum(['a-preparer', 'a-valider', 'bloque', 'pret-preview', 'go-production', 'publie', 'publie-non-atteste', 'a-maintenir', 'archive']).optional(),
       /** Sources citées, listées en fin d'article et vérifiables : éditeur, titre, URL, consultation. */
       sources: z
         .array(
@@ -50,7 +79,18 @@ const blog = defineCollection({
             consulte: z.coerce.date(),
           })
         )
-        .min(3),
+        .default([]),
+    })
+    .superRefine((data, context) => {
+      if (!data.brouillon && data.sources.length < 3) {
+        context.addIssue({ code: 'custom', message: 'Un article publié exige au moins trois sources.', path: ['sources'] });
+      }
+      if (!data.pipelineVersion) return;
+      const required = ['primaryQuery', 'intent', 'cluster', 'rolePrincipal', 'tache', 'preuveRole', 'funnel', 'contentType', 'format', 'rankability', 'businessRelevance', 'proofStatus', 'proofRequired', 'reviewRule', 'reviewer', 'sourcesVerifieesLe', 'cta', 'imageOg', 'imageAlt', 'statutEditorial'] as const;
+      for (const field of required) {
+        if (data[field] === undefined) context.addIssue({ code: 'custom', message: `${field} est requis pour pipelineVersion: 1.`, path: [field] });
+      }
+      if (data.fanOut.length === 0) context.addIssue({ code: 'custom', message: 'fanOut exige au moins une sous-intention pour pipelineVersion: 1.', path: ['fanOut'] });
     })
     .refine((d) => !d.dateMiseAJour || d.dateMiseAJour >= d.datePublication, {
       message: 'dateMiseAJour ne peut pas précéder datePublication',

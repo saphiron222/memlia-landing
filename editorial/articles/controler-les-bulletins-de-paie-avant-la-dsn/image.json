@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "0a341080fd998fa54364ab0dfd47440a0f6eb8e724242abd6a3dfa8761694a85",
-  "manifestSha256": "ecefb651ad49f8b563833d6e1a7e1512b89770c4f16e05e45390f7eb86d193b4",
+  "articleSha256": "03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
   "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
@@ -63,5 +63,12 @@
   "directionArt": 18,
   "semanticRelevance": 23,
   "p0": [],
-  "kevinApproved": true
+  "kevinApproved": true,
+  "adoption": {
+    "originalPath": "preuves/inherited/image.json",
+    "originalSha256": "fda9ded60ac7c73c12625ee7242ee5bd3aee774e1e3e0920655df7fad32b8f0e",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
 }

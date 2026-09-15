@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "articleSha256": "03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
+  "kind": "source-classification",
+  "status": "PASS",
+  "checkedAt": "2026-09-13",
+  "observations": [
+    "Le domaine final et l’éditeur déclaré ont été relus séparément à partir de la copie scellée du 13 septembre 2026."
+  ],
+  "sourceId": "net-entreprises-dsn-val",
+  "sourceUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+  "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+  "publisher": "Net-entreprises",
+  "level": "tier-1",
+  "provenance": "primary",
+  "official": true,
+  "upstreamUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+  "classifiedBy": "marketing",
+  "reviewedBy": "dev",
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/sources/net-entreprises-dsn-val.classification.json",
+    "originalSha256": "714af4dbd423a1a578a5a6cf48b2809deb134cf161ba7b7cb0240801f97331b3",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

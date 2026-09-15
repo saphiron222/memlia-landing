@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "articleSha256": "03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
+  "kind": "source-classification",
+  "status": "PASS",
+  "checkedAt": "2026-09-13",
+  "observations": [
+    "Le domaine final et l’éditeur déclaré ont été relus séparément à partir de la copie scellée du 13 septembre 2026."
+  ],
+  "sourceId": "service-public-dsn",
+  "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+  "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+  "publisher": "Service Public Entreprendre",
+  "level": "tier-1",
+  "provenance": "primary",
+  "official": true,
+  "upstreamUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+  "classifiedBy": "marketing",
+  "reviewedBy": "dev",
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/sources/service-public-dsn.classification.json",
+    "originalSha256": "05d1d12e0d65720ed865d69119a8ba968945d4181d2043c8b7299ffc2e81f9b7",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

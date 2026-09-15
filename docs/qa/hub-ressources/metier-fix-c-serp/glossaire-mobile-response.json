@@ -1,0 +1,40 @@
+{
+  "version": "0.1.20260902",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "12.8163 sec.",
+  "cost": 0.002,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09141650-1656-0139-0000-350c1c5e68ec",
+      "status_code": 40101,
+      "status_message": "Internal SE Server Error.",
+      "time": "12.6634 sec.",
+      "cost": 0.002,
+      "result_count": 0,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "data": {
+        "api": "serp",
+        "function": "live",
+        "se": "google",
+        "se_type": "organic",
+        "keyword": "glossaire cabinet comptable",
+        "location_code": 2250,
+        "language_code": "fr",
+        "device": "mobile",
+        "depth": 10,
+        "os": "android"
+      },
+      "result": null
+    }
+  ]
+}

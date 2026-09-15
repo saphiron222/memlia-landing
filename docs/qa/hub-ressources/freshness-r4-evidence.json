@@ -1,0 +1,188 @@
+{
+  "generatedAt": "2026-09-15T10:53:27.357498+00:00",
+  "task": "t_54774b16",
+  "base": "939464c90ecee928bfd9d7f7be26ea028758cf8b",
+  "verdict": "PASS_MECHANICAL_LOCAL_BUSINESS_REVIEW_PENDING",
+  "blog": {
+    "articles": 2,
+    "legacyPreserved": 0,
+    "pipeline": 2,
+    "blocked": 0
+  },
+  "python": {
+    "passed": 56,
+    "failed": 0
+  },
+  "nodeAll": {
+    "tests": 127,
+    "pass": 127,
+    "fail": 0
+  },
+  "playwright": {
+    "startTime": "2026-09-15T10:43:57.980Z",
+    "duration": 93921.45499999999,
+    "expected": 98,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "counts": {
+    "units": 41,
+    "claims": 49,
+    "citations": 57,
+    "sources": 15
+  },
+  "resourceAudit": {
+    "expectedBusinessReviewErrors": 59,
+    "bySurface": {
+      "T": 35,
+      "H": 24
+    },
+    "unexpectedErrors": [],
+    "topLevelErrors": [],
+    "buildOutputErrors": 0
+  },
+  "articles": [
+    {
+      "path": "src/content/blog/controler-les-bulletins-de-paie-avant-la-dsn.md",
+      "sha256": "03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92",
+      "bytes": 21503
+    },
+    {
+      "path": "src/content/blog/suivre-la-production-sociale-dans-excel.md",
+      "sha256": "56a5f5a1e19cd327558d8c024b3570643bc2f233cfce02d117c0ca250430103b",
+      "bytes": 18944
+    }
+  ],
+  "manifests": [
+    {
+      "path": "editorial/resources/hub/manifest.json",
+      "sha256": "7e5e4bcee0a6e091d26eec045edd67d7825176d75809037d28d8b52ec0dc699c",
+      "candidateHash": "c9fc69239cbc1a72855f955a0b1efe564d23d3d6cc345ff937638886a8c7a4e2",
+      "auditHash": "a084db10f6c4fad182b61bb4e74c5745695de88f4b5d96268a95c21fbc055f05",
+      "buildReceiptSha256": "57ba0b8f35dc42f2dda8fc99dfcadb9aadd123f0d6fc255cf0f10309d712d8cf"
+    },
+    {
+      "path": "editorial/resources/glossaire/manifest.json",
+      "sha256": "4397259b3fe0f206a5ea19a2c3ebbbe081dfb7bce62f84fe3b79882dfbf7924e",
+      "candidateHash": "0ed9db531ee3225000374536b2d6f6338cad5870dec7d5d2fddc07776ec8bde8",
+      "auditHash": "c71adf8305a85646073b32bff47f61ecf9c4bed471ce081d5cd05ffb058fdd39",
+      "buildReceiptSha256": "57ba0b8f35dc42f2dda8fc99dfcadb9aadd123f0d6fc255cf0f10309d712d8cf"
+    }
+  ],
+  "registerSha256": "6bb9a7f26c3086463e350f2598813fe3320ab4968db0cb67fa27fe9e1832e5cb",
+  "evidenceFiles": [
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/audit-final.log",
+      "sha256": "6d8c5c8f3d7684adb070417bd608d01ae90aa3dc26a65af03ffda4955f38d9a3",
+      "bytes": 24
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/blog-audit-final.log",
+      "sha256": "08f4c03eeb9889da0c702cdb9ecfab754a5c954e1e409ab43ea30be497b6fed5",
+      "bytes": 3894
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/blog-audit.json",
+      "sha256": "6c54b30270da52f64bdf22ed10e4799f60ff60e1d24d416507f97048b0343d45",
+      "bytes": 1039
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/build-final.log",
+      "sha256": "36a485356f2e6cca19d9744423f286289724d4bd5e1a76ae15b7946ce7271f62",
+      "bytes": 54057
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/check-final.log",
+      "sha256": "e9f0c2db9f184c0c190e50fe10ea170b20691ec846ce9f19ebbcead8f828fa6d",
+      "bytes": 631
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/node-all.log",
+      "sha256": "9ae86f8566f5f5b59a6bcda430c611c44fa4f21a451fd722aded66fa3e8c8150",
+      "bytes": 28841
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/parse5-final.log",
+      "sha256": "a652eeab9433e27e1fde861ba4b93bd7a60f19e145dfa2308c915d0aa780fce6",
+      "bytes": 114
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/playwright.log",
+      "sha256": "a2368ec81f2c01c09979ce227c36e7be48e3e0d1196f090682571b0c07490eab",
+      "bytes": 10545
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/published-mutations-final.log",
+      "sha256": "9812f82dd5705d0b06dc4121aa58921784cf3279810334507b411cbade050444",
+      "bytes": 3201
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/resource-audit.json",
+      "sha256": "2b90071ab2aa0bc65e1b74e893238036cdb3066ff370e97d8613798c7e2bc9ed",
+      "bytes": 8466
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/resource-qa-final.log",
+      "sha256": "f13a945a952890b57774af7850ed0ac0af0503bcde20f549718984d1fb656660",
+      "bytes": 8619
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/screens.json",
+      "sha256": "566c0ad880924213a4fb79c3a623833d9c04686af7c7f5f496700a77833dd561",
+      "bytes": 790
+    },
+    {
+      "path": "docs/qa/hub-ressources/freshness-r4-evidence/seal-final.log",
+      "sha256": "645b2d29791e74cb323d64c94ade414aeed605f803ae2dbede7a3370bbc71f6c",
+      "bytes": 43157
+    }
+  ],
+  "screens": [
+    {
+      "path": ".qa/freshness-r4/screens/blog-1440.png",
+      "sha256": "6e17d2a30f76fd76deed0a4d7f5e095cb51c648ef84b36fb837b8c98c8b3fbd7",
+      "bytes": 659760
+    },
+    {
+      "path": ".qa/freshness-r4/screens/blog-375.png",
+      "sha256": "123c4bf3ed5794526a0848282e3a4f4d840779186832256c7c67bd817dca9afa",
+      "bytes": 317649
+    },
+    {
+      "path": ".qa/freshness-r4/screens/glossaire-1440-overview.png",
+      "sha256": "45acdbcd5fdda55090e602e76cbc41a84488a4ad87896ad5411cd5904948a563",
+      "bytes": 2012154
+    },
+    {
+      "path": ".qa/freshness-r4/screens/glossaire-1440-top.png",
+      "sha256": "b2fcc152bda929997e708584b606fa31f8b24e2b7291c0a8e57a8d9a2a2747a4",
+      "bytes": 270418
+    },
+    {
+      "path": ".qa/freshness-r4/screens/glossaire-1440.png",
+      "sha256": "bcd7532a28da688a81984b076fe4cfbaad5f2859b4c36859a7df21593be64b92",
+      "bytes": 3316246
+    },
+    {
+      "path": ".qa/freshness-r4/screens/glossaire-375.png",
+      "sha256": "3871f0d9c23a54eb9b8f9bf24bf0d626d0c6820e779daa092db61ea9ff9716e9",
+      "bytes": 2250309
+    },
+    {
+      "path": ".qa/freshness-r4/screens/ressources-1440.png",
+      "sha256": "9b8968420f04fba5f6c9fe62794b4cbd8fc1b53c22aab50cfaca29e9c2f67e6e",
+      "bytes": 603220
+    },
+    {
+      "path": ".qa/freshness-r4/screens/ressources-375.png",
+      "sha256": "c0cc8b704c0e0dcbb69e7ec01f439eae2525cdb0cdcb1d064590ed4964a991fc",
+      "bytes": 418496
+    }
+  ],
+  "limitations": [
+    "No new source fetch or fresh fact-check",
+    "Published source review date is asserted by 939464c, not independently attested",
+    "No publication authorization; business review PENDING"
+  ]
+}

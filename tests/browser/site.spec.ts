@@ -82,7 +82,7 @@ test('menu desktop : ancres narratives directes et CTA unique', async ({ page })
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   const links = page.locator('.nav-centre a');
-  await expect(links).toHaveText(['Usages', 'Méthode', 'Intégration', 'Garanties', 'Questions', 'Blog']);
+  await expect(links).toHaveText(['Usages', 'Méthode', 'Intégration', 'Garanties', 'Questions', 'Ressources']);
   for (const id of ['usages', 'methode', 'integration', 'garanties', 'questions']) {
     const link = page.locator(`.nav-centre a[href="#${id}"]`);
     await link.focus();

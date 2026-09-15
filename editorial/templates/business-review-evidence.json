@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "reviewerType": "ai-agent",
+  "reviewerProfile": "metier",
+  "reviewerId": "t_00000000",
+  "reviewerRole": "reviewer-metier-memlia",
+  "distinctFrom": ["author", "editorialReviewer", "sourceClassifier"],
+  "reviewedCandidateHash": "__REVIEWED_CANDIDATE_SHA256__",
+  "status": "FAIL",
+  "claimSourceVerdicts": [
+    {
+      "claimId": "__A_RENSEIGNER__",
+      "sourceId": "__A_RENSEIGNER__",
+      "citationIds": ["__A_RENSEIGNER__"],
+      "verdict": "ND",
+      "sourceContentSha256": "__A_RENSEIGNER__",
+      "checkedAt": "__DATE__",
+      "reasoning": "Revue IA non exécutée : le gate reste fermé."
+    }
+  ]
+}

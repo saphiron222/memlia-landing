@@ -12,10 +12,32 @@ function listHtmlFiles(directory) {
     .map(entry => join(entry.parentPath, entry.name));
 }
 
-export function preparePreview({ source = 'dist', target = '.qa/preview-dist' } = {}) {
+export function preparePreview({
+  source = 'dist',
+  target = '.qa/preview-dist',
+  candidateSlug = process.env.BLOG_PREVIEW_SLUG,
+  gateReport = candidateSlug ? `.qa/blog/${candidateSlug}/gate-preview.json` : undefined,
+  candidateSlugs = candidateSlug ? [candidateSlug] : [],
+  gateReports = candidateSlug ? { [candidateSlug]: gateReport } : {},
+} = {}) {
   const sourcePath = resolve(source);
   const targetPath = resolve(target);
   if (sourcePath === targetPath) throw new Error('La cible preview doit être distincte du dist de production.');
+  const uniqueCandidateSlugs = [...new Set(candidateSlugs)];
+  if (uniqueCandidateSlugs.some((slug) => typeof slug !== 'string' || !slug)) {
+    throw new Error('Chaque candidat preview doit avoir un slug non vide.');
+  }
+  for (const slug of uniqueCandidateSlugs) {
+    let gate;
+    try {
+      gate = JSON.parse(readFileSync(resolve(gateReports[slug]), 'utf8'));
+    } catch {
+      throw new Error(`Un rapport de gate PASS est requis pour le candidat ${slug}.`);
+    }
+    if (gate.slug !== slug || gate.pass !== true || gate.auditMode === 'published-preservation' || gate.publicationAuthorized === false) {
+      throw new Error(`Un rapport de gate PASS correspondant à ${slug} est requis.`);
+    }
+  }
   if (!existsSync(join(sourcePath, 'index.html'))) {
     throw new Error('Construire et vérifier dist avant de préparer une preview.');
   }

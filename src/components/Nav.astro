@@ -16,9 +16,13 @@ interface Props {
   /** Préfixe des ancres : vide sur l'accueil, « / » depuis une autre page. */
   base?: string;
 }
-const { blogActif, chemin, base = '' } = Astro.props;
-/** `page` sur /blog, `true` (section) sur un article ; rien ailleurs. */
-const surBlog: 'page' | 'true' | undefined = chemin === '/blog' ? 'page' : chemin.startsWith('/blog/') ? 'true' : undefined;
+const { chemin, base = '' } = Astro.props;
+/** Le Hub reste la section courante depuis les contenus qu’il réunit. */
+const surRessources: 'page' | 'true' | undefined = chemin === '/ressources'
+  ? 'page'
+  : ['/blog', '/glossaire', '/guides', '/modeles'].some((route) => chemin === route || chemin.startsWith(`${route}/`))
+    ? 'true'
+    : undefined;
 
 const entrees = [
   { libelle: 'Usages', href: `${base}#usages` },
@@ -26,7 +30,11 @@ const entrees = [
   { libelle: 'Intégration', href: `${base}#integration` },
   { libelle: 'Garanties', href: `${base}#garanties` },
   { libelle: 'Questions', href: `${base}#questions` },
-  ...(blogActif ? [{ libelle: 'Blog', href: '/blog', courant: surBlog }] : []),
+  { libelle: 'Ressources', href: '/ressources', courant: surRessources },
+];
+const ressourcesMobile = [
+  { libelle: 'Articles', href: '/blog' },
+  { libelle: 'Glossaire', href: '/glossaire' },
 ];
 ---
 
@@ -47,6 +55,8 @@ const entrees = [
 
     <div class="nav-droite">
 
+      <a class="nav-ressources-mobile" href="/ressources" aria-current={surRessources}>Ressources</a>
+
       <Button href={CTA.principal.href} variante="principal" picto="fleche" class="nav-principal">
         {CTA.principal.libelle}
       </Button>
@@ -56,11 +66,12 @@ const entrees = [
         class="nav-burger"
         aria-expanded="false"
         aria-controls="menu-mobile"
-        aria-label="Ouvrir le menu"
+        aria-label="Ouvrir le menu principal"
         data-burger
       >
         <Picto nom="menu" taille={16} class="burger-ouvrir" />
         <Picto nom="fermer" taille={16} class="burger-fermer" />
+        <span>Menu</span>
       </button>
     </div>
   </div>
@@ -72,6 +83,9 @@ const entrees = [
 
         {entrees.map((e) => (
           <li><a class="nav-mobile-lien" href={e.href} aria-current={'courant' in e ? e.courant : undefined}>{e.libelle}</a></li>
+        ))}
+        {ressourcesMobile.map((e) => (
+          <li><a class="nav-mobile-lien nav-mobile-sous-lien" href={e.href}>{e.libelle}</a></li>
         ))}
         <li class="nav-mobile-cta">
 
@@ -85,6 +99,7 @@ const entrees = [
   <nav class="conteneur nav-sans-js" aria-label="Navigation sans JavaScript">
 
     {entrees.map(e => <a href={e.href}>{e.libelle}</a>)}
+    {ressourcesMobile.map(e => <a href={e.href}>{e.libelle}</a>)}
   </nav>
 </noscript>
 
@@ -192,17 +207,28 @@ const entrees = [
   .nav-droite {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
+  }
+  .nav-ressources-mobile {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding-inline: 6px;
+    color: var(--texte-fort);
+    font-size: var(--t-sm);
+    font-weight: 600;
   }
   .nav-humain,
   .nav-principal {
     display: none;
   }
   .nav-burger {
-    display: inline-grid;
-    place-items: center;
-    min-width: 44px;
-    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 48px;
+    min-height: 48px;
     padding: 6px;
     border-radius: var(--r-bouton);
     border: 1px solid transparent;
@@ -245,6 +271,10 @@ const entrees = [
     font-weight: 500;
     color: var(--texte-fort);
     border-bottom: 1px solid var(--ligne-douce);
+  }
+  .nav-mobile-sous-lien {
+    padding-left: 24px;
+    color: var(--texte-2);
   }
   .nav-mobile-cta {
     display: flex;
@@ -299,6 +329,7 @@ const entrees = [
       display: inline-flex;
     }
     .nav-principal-mobile,
+    .nav-ressources-mobile,
     .nav-burger,
     .nav-mobile {
       display: none;
@@ -320,7 +351,7 @@ const entrees = [
       if (menu.hidden) return;
       menu.hidden = true;
       burger.setAttribute('aria-expanded', 'false');
-      burger.setAttribute('aria-label', 'Ouvrir le menu');
+      burger.setAttribute('aria-label', 'Ouvrir le menu principal');
       header.removeAttribute('data-mobile-open');
       document.body.removeAttribute('data-mobile-menu-open');
       if (previousScrollTop) document.body.style.setProperty('--mobile-menu-scroll-top', previousScrollTop);
@@ -347,7 +378,7 @@ const entrees = [
       menu.hidden = false;
       menu.scrollTop = 0;
       burger.setAttribute('aria-expanded', 'true');
-      burger.setAttribute('aria-label', 'Fermer le menu');
+      burger.setAttribute('aria-label', 'Fermer le menu principal');
       burger.focus({ preventScroll: true });
     });
     menu.addEventListener('click', (e) => {

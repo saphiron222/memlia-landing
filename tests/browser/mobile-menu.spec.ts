@@ -59,19 +59,19 @@ for (const width of [320, 375, 390, 430]) {
       await expect(burger.locator('.burger-fermer')).toBeHidden();
       await burger.click();
       await expect(burger).toHaveAttribute('aria-expanded', 'true');
-      await expect(burger).toHaveAttribute('aria-label', 'Fermer le menu');
+      await expect(burger).toHaveAttribute('aria-label', 'Fermer le menu principal');
       await expect(burger.locator('.burger-fermer')).toBeVisible();
       await expect(burger.locator('.burger-ouvrir')).toBeHidden();
       const { geometry, png } = await expectCovered(page);
       await testInfo.attach('menu-ouvert', { body: png, contentType: 'image/png' });
       await expect(page.locator('#main')).toHaveAttribute('inert', '');
       const links = page.locator('#menu-mobile a');
-      await expect(page.locator('.nav-mobile-lien')).toHaveText(['Usages', 'Méthode', 'Intégration', 'Garanties', 'Questions', 'Blog']);
-      await expect(links).toHaveCount(7);
+      await expect(page.locator('.nav-mobile-lien')).toHaveText(['Usages', 'Méthode', 'Intégration', 'Garanties', 'Questions', 'Ressources', 'Articles', 'Glossaire']);
+      await expect(links).toHaveCount(9);
       const states = [];
       for (const link of await links.all()) {
         // En hauteur normale, aucun scroll nécessaire ; en paysage chaque lien doit rester atteignable.
-        if (height === 360) await link.scrollIntoViewIfNeeded();
+        if (height === 360) await link.evaluate(element => element.scrollIntoView({ block: 'center' }));
         states.push(await expectReachable(link));
       }
       for (let i = 1; i < states.length; i++) {
@@ -170,7 +170,7 @@ test('menu : CTA, changement de viewport ouvert et retour mobile', async ({ page
   await expectCovered(page);
 });
 
-test('menu : navigation Blog et états du fond préexistants conservés', async ({ page }) => {
+test('menu : navigation Ressources et états du fond préexistants conservés', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   await page.evaluate(() => {
@@ -187,7 +187,7 @@ test('menu : navigation Blog et états du fond préexistants conservés', async 
   await expect(page.locator('#menu-mobile')).toBeHidden();
   await page.locator('[data-burger]').click();
   await expectCovered(page);
-  await expect(page.locator('#menu-mobile [aria-current="page"]')).toHaveText('Blog');
+  await expect(page.locator('#menu-mobile [aria-current="true"]')).toHaveText('Ressources');
   await page.locator('#menu-mobile a[href="/#usages"]').click();
   await expect(page).toHaveURL(/\/#usages$/);
   await expect(page.locator('#main')).not.toHaveAttribute('inert');

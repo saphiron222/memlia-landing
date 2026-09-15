@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 /** Le blog partage le contrat de positionnement des autres pages : aucun vocabulaire catalogue. */
 const CATALOGUE = /\bmodules?\b|compléments?\s+(Excel|Memlia)|Office\.js|En pilote|Sur étude|Périmètre distinct/i;
+const PREVIEW_SLUGS = new Set((process.env.BLOG_PREVIEW_SLUGS ?? '').split(',').filter(Boolean));
 
 const textesPublics = (page: import('@playwright/test').Page) =>
   page.evaluate(() => [
@@ -21,9 +22,11 @@ test('liste du blog : articles, auteur, flux et navigation courante', async ({ p
   expect(await cartes.count()).toBeGreaterThanOrEqual(2);
   expect(await page.locator('.blog-liste').getAttribute('data-articles')).toBe(String(await cartes.count()));
   await expect(page.locator('#auteur-kevin')).toContainText('Kevin Kitanga');
-  await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveAttribute('href', '/blog/rss.xml');
+  const rssLink = page.locator('link[rel="alternate"][type="application/rss+xml"]');
+  if (PREVIEW_SLUGS.size) await expect(rssLink).toHaveCount(0);
+  else await expect(rssLink).toHaveAttribute('href', '/blog/rss.xml');
   await page.setViewportSize({ width: 1440, height: 900 });
-  await expect(page.locator('.nav-centre a[aria-current="page"]')).toHaveText('Blog');
+  await expect(page.locator('.nav-centre a[aria-current="true"]')).toHaveText('Ressources');
   for (const text of await textesPublics(page)) expect(text).not.toMatch(CATALOGUE);
   expect(errors).toEqual([]);
 });
@@ -35,7 +38,11 @@ test('flux RSS servi en XML et cohérent avec la liste', async ({ page, request 
   expect(rss.status()).toBe(200);
   expect(rss.headers()['content-type']).toMatch(/xml/);
   const xml = await rss.text();
-  for (const slug of slugs) expect(xml).toContain(`https://memlia.fr/blog/${slug}`);
+  for (const slug of slugs) {
+    const articleUrl = `https://memlia.fr/blog/${slug}`;
+    if (slug && PREVIEW_SLUGS.has(slug)) expect(xml).not.toContain(articleUrl);
+    else expect(xml).toContain(articleUrl);
+  }
   expect(xml).not.toMatch(CATALOGUE);
 });
 
@@ -67,7 +74,7 @@ test('article : en-tête, fil d’Ariane, schéma, sources et retour à la liste
     return { types, headline: posting.headline, url: posting.url, canonical, broken, h1 };
   });
   expect(report.types).toEqual(['BlogPosting', 'BreadcrumbList', 'Person', 'Organization', 'WebSite']);
-  await expect(page.locator('.nav-centre a[aria-current="true"]')).toHaveText('Blog');
+  await expect(page.locator('.nav-centre a[aria-current="true"]')).toHaveText('Ressources');
   expect(report.headline).toBe(report.h1);
   expect(report.canonical).toBe(report.url);
   expect(report.broken).toEqual([]);

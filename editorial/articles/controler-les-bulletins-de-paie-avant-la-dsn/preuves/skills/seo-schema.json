@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "articleSha256": "03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
+  "kind": "skill",
+  "status": "PASS",
+  "checkedAt": "2026-09-13",
+  "observations": [
+    "Le livrable amont scellé et l’intégration courante documentent l’exécution de seo-schema sur ce candidat exact."
+  ],
+  "skill": "seo-schema",
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/skills/seo-schema.json",
+    "originalSha256": "21799efbe5c565ed0e985dbccdc10decfb7fc35968476c5dc53acc615bab753f",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

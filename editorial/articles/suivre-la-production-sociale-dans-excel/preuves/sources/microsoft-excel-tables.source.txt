@@ -1,0 +1,62 @@
+Overview of Excel tables
+Applies To
+Get help with Copilot
+Can I export an Excel table to a SharePoint site?
+How do I rename a table in Excel for the web?
+Give me an overview of Excel tables.
+
+To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table (previously known as an Excel list).
+
+Note
+
+Excel tables should not be confused with the data tables that are part of a suite of what-if analysis commands. For more information about data tables, see Calculate multiple results with a data table.
+
+Learn about the elements of an Excel table
+
+A table can include the following elements:
+
+Header row By default, a table has a header row. Every table column has filtering enabled in the header row so that you can filter or sort your table data quickly. For more information, see Filter data or Sort data.
+
+You can turn off the header row in a table. For more information, see Turn Excel table headers on or off.
+Banded rows Alternate shading or banding in rows helps to better distinguish the data.
+
+Calculated columns By entering a formula in one cell in a table column, you can create a calculated column in which that formula is instantly applied to all other cells in that table column. For more information, see Use calculated columns in an Excel table.
+
+Total row Once you add a total row to a table, Excel gives you an AutoSum drop-down list to select from functions such as SUM, AVERAGE, and so on. When you select one of these options, the table will automatically convert them to a SUBTOTAL function, which will ignore rows that have been hidden with a filter by default. If you want to include hidden rows in your calculations, you can change the SUBTOTAL function arguments.
+For more information, also see Total the data in an Excel table.
+
+Sizing handle A sizing handle in the lower-right corner of the table allows you to drag the table to the size that you want.
+
+For other ways to resize a table, see Resize a table by adding rows and columns.
+Create a table
+
+You can create as many tables as you want in a spreadsheet.
+
+To quickly create a table in Excel, do the following:
+
+Select the cell or the range in the data.
+Select Home > Format as Table.
+Pick a table style.
+In the Format as Table dialog box, select the checkbox next to My table as headers if you want the first row of the range to be the header row, and then click OK.
+
+Also watch a video on creating a table in Excel.
+
+Working efficiently with your table data
+
+Excel has some features that enable you to work efficiently with your table data:
+
+Using structured references Instead of using cell references, such as A1 and R1C1, you can use structured references that reference table names in a formula. For more information, see Using structured references with Excel tables.
+Ensuring data integrity  You can use the built-in data validation feature in Excel. For example, you may choose to allow only numbers or dates in a column of a table. For more information on how to ensure data integrity, see Apply data validation to cells.
+Export an Excel table to a SharePoint site
+
+If you have authoring access to a SharePoint site, you can use it to export an Excel table to a SharePoint list. This way other people can view, edit, and update the table data in the SharePoint list. You can create a one-way connection to the SharePoint list so that you can refresh the table data on the worksheet to incorporate changes that are made to the data in the SharePoint list. For more information, see Export an Excel table to SharePoint.
+
+Need more help?
+
+You can always ask an expert in the Excel Tech Community or get support in Communities.
+
+See Also
+
+Format an Excel table
+
+Excel table compatibility issues

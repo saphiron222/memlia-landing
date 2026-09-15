@@ -23,7 +23,9 @@ const colonnes = [
   {
     titre: 'Ressources',
     liens: [
-      ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
+      { libelle: 'Toutes les ressources', href: '/ressources' },
+      ...(blogActif ? [{ libelle: 'Articles', href: '/blog' }] : []),
+      { libelle: 'Glossaire', href: '/glossaire' },
       { libelle: 'Questions fréquentes', href: `${base}#questions` },
       { libelle: CTA.principal.libelle, href: CTA.principal.href },
     ],

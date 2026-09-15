@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "slug": "suivre-la-production-sociale-dans-excel",
+  "action": "revision",
+  "editorialStatus": "pret-preview",
+  "title": "Suivre la production sociale dans Excel : modèle, règles et limites",
+  "tabTitle": "Tableau de suivi de production sociale Excel | Memlia",
+  "summary": "Construisez le suivi sur l’unité dossier × période × étape : une table de saisie contrôlée, des calculs régénérables et une vue agrégée. Les exceptions portent sur les dossiers, jamais sur un classement individuel.",
+  "description": "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel.",
+  "publicationDate": "2026-09-09",
+  "updatedAt": "2026-09-13",
+  "topics": [
+    "production-sociale",
+    "excel",
+    "cabinet",
+    "methode"
+  ],
+  "keywords": [
+    "tableau suivi production sociale Excel cabinet",
+    "suivi portefeuille social",
+    "classeur pôle social",
+    "états de production",
+    "pilotage anti-surveillance"
+  ],
+  "primaryQuery": "tableau suivi production sociale Excel cabinet",
+  "secondaryQueries": [
+    "suivi portefeuille social",
+    "classeur pôle social",
+    "états de production",
+    "pilotage anti-surveillance"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "colonnes du tableau social",
+    "états et transitions",
+    "séparation Saisie Calcul Vue",
+    "exceptions avant échéance",
+    "gouvernance anti-surveillance",
+    "automatisation du classeur"
+  ],
+  "role": {
+    "primary": "paie-responsables-sociaux",
+    "secondary": [
+      "direction-associes"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-09-13"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": null,
+    "role": "paie-responsables-sociaux",
+    "status": "PENDING",
+    "evidence": "preuves/business-review-deferral.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "excel-outils-existants",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Structurer un classeur de suivi existant pour identifier l’étape et les exceptions de chaque dossier sans classement individuel.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Les affirmations Excel et CNIL sont rattachées aux sources primaires consultées le 13 septembre 2026 ; une revue métier indépendante reste requise avant publication.",
+  "sourcesVerifiedAt": "2026-09-13",
+  "sources": [
+    {
+      "id": "cnil-employee-monitoring",
+      "publisher": "CNIL",
+      "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
+      "url": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+      "checkedAt": "2026-09-13",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+      "classificationReason": "CNIL publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/cnil-employee-monitoring.classification.json",
+      "verificationEvidence": "preuves/sources/cnil-employee-monitoring.json"
+    },
+    {
+      "id": "microsoft-excel-tables",
+      "publisher": "Microsoft Support",
+      "title": "Overview of Excel tables",
+      "url": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
+      "checkedAt": "2026-09-13",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
+      "classificationReason": "Microsoft Support publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/microsoft-excel-tables.classification.json",
+      "verificationEvidence": "preuves/sources/microsoft-excel-tables.json"
+    },
+    {
+      "id": "microsoft-protect-sheet",
+      "publisher": "Microsoft Support",
+      "title": "Protect a worksheet",
+      "url": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
+      "checkedAt": "2026-09-13",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
+      "classificationReason": "Microsoft Support publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/microsoft-protect-sheet.classification.json",
+      "verificationEvidence": "preuves/sources/microsoft-protect-sheet.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "marketing",
+  "reviewRule": "Revue éditoriale marketing avant preview ; revue métier paie/sociale indépendante obligatoire avant toute décision de publication.",
+  "cta": {
+    "label": "Identifier une tâche à automatiser",
+    "destination": "https://cal.com/kevin-svg/decouvrir-memlia",
+    "outcome": "Memlia peut définir avec le cabinet les règles, exceptions et tests à automatiser dans le classeur existant ; le cabinet valide le résultat."
+  },
+  "image": {
+    "heroId": "img-24-suivi-production-sociale",
+    "alt": "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision.",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-09-13"
+    },
+    "gsc": {
+      "status": "ND",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-09-13"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/#methode",
+      "/#garanties"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+    ],
+    "decision": "DIFFERENTIATE_AND_LINK",
+    "resolutions": [
+      "Les tâches et requêtes primaires restent distinctes.",
+      "Le lien croisé explicite matérialise leur complémentarité."
+    ],
+    "evidence": "preuves/cannibalization.json"
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": false
+  }
+}

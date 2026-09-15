@@ -1,0 +1,3084 @@
+{
+  "$comment": "CANDIDAT V3 : 41 unités R2 couvertes, résumés H atomisés. Contenu non attesté, aucune revue IA indépendante accordée. SERP ND sans crédit SEO.",
+  "schemaVersion": "resource-manifest-v1",
+  "contractRevision": 3,
+  "templateState": "candidate",
+  "executable": true,
+  "formatAdapter": "H",
+  "resourceType": "hub",
+  "editorialFormat": "landing-navigationnelle",
+  "policyBaseline": {
+    "pipelineTask": "t_8931b129",
+    "pipelineCommit": "c2efa557476bc5d8eab3b6995fd116007a4f4c7c",
+    "architectureTask": "t_f7f13852",
+    "publicProjection": "src/pages/ressources.astro",
+    "resourceTypeRule": "resourceType est distinct du format éditorial existant",
+    "decisions": "/glossaire reste un index unique de 23 ancres ; aucun guide ou modèle.",
+    "qualityThreshold": 90,
+    "maxP0": 0,
+    "maxP1": 0,
+    "hashAlgorithm": "sha256"
+  },
+  "taxonomy": {
+    "canonicalRoles": [
+      "direction-associes",
+      "chefs-mission-portefeuille",
+      "collaborateurs-comptables",
+      "assistants-comptables",
+      "paie-responsables-sociaux",
+      "juridique-fiscal",
+      "audit-cac",
+      "administratif-secretariat",
+      "facturation-recouvrement",
+      "rh-recrutement-formation",
+      "numerique-it-data",
+      "profils-formation"
+    ],
+    "resourceDiscoveryRoles": [
+      "direction-associes",
+      "chefs-mission-portefeuille",
+      "collaborateurs-comptables",
+      "assistants-comptables",
+      "paie-responsables-sociaux",
+      "juridique-fiscal",
+      "audit-cac",
+      "administratif-secretariat",
+      "facturation-recouvrement",
+      "rh-recrutement-formation",
+      "numerique-it-data",
+      "profils-formation"
+    ],
+    "blogRoleEnum": [
+      "direction-associes",
+      "chefs-mission-portefeuille",
+      "collaborateurs-comptables",
+      "assistants-comptables",
+      "paie-responsables-sociaux",
+      "juridique-fiscal",
+      "audit-cac",
+      "administratif-secretariat",
+      "facturation-recouvrement",
+      "rh-recrutement-formation",
+      "numerique-it-data",
+      "profils-formation",
+      "autre-role-documente"
+    ],
+    "otherRoleDocumented": {
+      "allowedInHistoricalBlog": true,
+      "allowedAsResourceDiscoveryRole": false,
+      "requiresDistinctEvidence": true,
+      "adaptationRule": "Un article autre-role-documente exige une primaryRole parmi les 12 familles avant exposition dans le Hub."
+    },
+    "intent": [
+      "comprendre",
+      "executer",
+      "diagnostiquer",
+      "comparer-approches",
+      "evaluer-service",
+      "reduire-risque",
+      "decider"
+    ],
+    "funnel": [
+      "TOFU",
+      "MOFU",
+      "BOFU"
+    ]
+  },
+  "candidate": {
+    "id": "hub-ressources-local",
+    "slug": "ressources",
+    "canonicalPath": "/ressources",
+    "sourceMode": "new-url",
+    "action": "create",
+    "title": "Ressources pour les tâches du cabinet",
+    "summary": "Des ressources pour comprendre, vérifier et cadrer les tâches d’un cabinet, sans céder la décision humaine.",
+    "primaryRole": "direction-associes",
+    "secondaryRoles": [
+      "paie-responsables-sociaux"
+    ],
+    "task": "Trouver une ressource utile par tâche, rôle ou format.",
+    "intent": "comprendre",
+    "funnel": "TOFU",
+    "cluster": "hub-ressources",
+    "primaryQuery": "ressources cabinet expertise comptable",
+    "secondaryQueries": [
+      "ressources tâches cabinet"
+    ],
+    "fanOut": [
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/glossaire#dsn",
+      "/glossaire#dsn-val",
+      "/glossaire#compte-rendu-metier-dsn",
+      "/glossaire#annule-et-remplace-dsn",
+      "/glossaire#controle-avant-dsn",
+      "/glossaire#production-sociale",
+      "/glossaire#donnee-personnelle",
+      "/glossaire#minimisation-des-donnees",
+      "/glossaire#anonymisation",
+      "/glossaire#pseudonymisation",
+      "/glossaire#agregat-non-nominatif",
+      "/glossaire#lettrage-comptable",
+      "/glossaire#rapprochement-bancaire",
+      "/glossaire#revision-comptable",
+      "/glossaire#piece-justificative",
+      "/glossaire#recouvrement-amiable",
+      "/glossaire#regle-de-cabinet",
+      "/glossaire#cas-de-refus",
+      "/glossaire#controle-de-coherence",
+      "/glossaire#schema-de-donnees",
+      "/glossaire#tracabilite",
+      "/glossaire#validation-humaine",
+      "/glossaire#fail-closed"
+    ],
+    "owner": "Memlia",
+    "author": "Memlia",
+    "editorialReviewer": "Équipe éditoriale Memlia",
+    "maintenanceRule": "Rejouer le scellement et l’audit après toute modification de source ou de build."
+  },
+  "formatContract": {
+    "requiredInputs": [
+      "src/pages/ressources.astro",
+      "src/data/resources.ts",
+      "dist/ressources.html"
+    ],
+    "requiredOutputs": [
+      "dist/ressources.html",
+      "inventaire SSR sans JavaScript"
+    ],
+    "navigationIntent": "Découverte par tâche, rôle et format sans URL de filtre indexable.",
+    "imagePolicy": "Aucun visuel informatif ajouté au Hub.",
+    "indexSubstance": {
+      "minimum": 5,
+      "excludedResourceTypes": [
+        "hub"
+      ],
+      "unitRule": "Deux articles historiques et vingt-trois ancres de glossaire, sans auto-compter le Hub.",
+      "computedCount": 25,
+      "eligibleUnitRefs": [
+        "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+        "/blog/suivre-la-production-sociale-dans-excel",
+        "/glossaire#dsn",
+        "/glossaire#dsn-val",
+        "/glossaire#compte-rendu-metier-dsn",
+        "/glossaire#annule-et-remplace-dsn",
+        "/glossaire#controle-avant-dsn",
+        "/glossaire#production-sociale",
+        "/glossaire#donnee-personnelle",
+        "/glossaire#minimisation-des-donnees",
+        "/glossaire#anonymisation",
+        "/glossaire#pseudonymisation",
+        "/glossaire#agregat-non-nominatif",
+        "/glossaire#lettrage-comptable",
+        "/glossaire#rapprochement-bancaire",
+        "/glossaire#revision-comptable",
+        "/glossaire#piece-justificative",
+        "/glossaire#recouvrement-amiable",
+        "/glossaire#regle-de-cabinet",
+        "/glossaire#cas-de-refus",
+        "/glossaire#controle-de-coherence",
+        "/glossaire#schema-de-donnees",
+        "/glossaire#tracabilite",
+        "/glossaire#validation-humaine",
+        "/glossaire#fail-closed"
+      ],
+      "result": "PASS",
+      "transitionTests": [
+        "absence de manifeste",
+        "hash de build divergent",
+        "unité rendue absente"
+      ],
+      "noJsInventoryRef": "tests/browser/resources.spec.ts"
+    }
+  },
+  "research": {
+    "serp": {
+      "requiredDecision": false,
+      "status": "RUN",
+      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "scope": "France/fr ; Hub desktop indisponible, 40101 après deux essais. Opportunité SEO non établie, pas un gate métier.",
+      "inputRefs": [
+        "docs/qa/hub-ressources/metier-fix-c-serp/checksums-retry.sha256"
+      ],
+      "outputRefs": [
+        "docs/qa/hub-ressources/metier-fix-c-serp/checksums-retry.sha256"
+      ],
+      "gateResult": "ND"
+    },
+    "gsc": {
+      "candidateUrlHistoryStatus": "ND",
+      "historyReason": "Nouvelle URL sans historique GSC exploitable.",
+      "requiredForDecision": false,
+      "status": "N/A",
+      "propertyQueryEvidenceStatus": "N/A",
+      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "inputRefs": [
+        "docs/qa/hub-ressources/qad-fix.md"
+      ],
+      "outputRefs": [
+        "docs/qa/hub-ressources/qad-fix.md"
+      ],
+      "arbitration": {
+        "decision": "Le manque GSC reste ND et ne rapporte aucun point.",
+        "decidedBy": "QAD t_7a6dbdf8",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "evidenceRef": "docs/qa/hub-ressources/qad-fix.md"
+      },
+      "gatePolicy": "Si GSC est requis, ND impose FAIL. Un historique URL structurellement ND reste visible, ne rapporte aucun point et exige arbitrage explicite; A conserve research.gsc RUN/PASS."
+    }
+  },
+  "claimsEvidence": {
+    "recordContracts": {
+      "contentUnit": {
+        "required": [
+          "id",
+          "text",
+          "sha256",
+          "claimIds"
+        ]
+      },
+      "claim": {
+        "required": [
+          "id",
+          "unitId",
+          "text",
+          "sha256",
+          "type",
+          "sourceIds",
+          "citationIds",
+          "checkedAt",
+          "status"
+        ]
+      },
+      "citation": {
+        "required": [
+          "id",
+          "claimIds",
+          "sourceId",
+          "text",
+          "sha256",
+          "sourceContentSha256",
+          "finalUrl",
+          "checkedAt",
+          "title",
+          "locator",
+          "verdict"
+        ]
+      },
+      "source": {
+        "required": [
+          "id",
+          "publisher",
+          "title",
+          "requestedUrl",
+          "finalUrl",
+          "checkedAt",
+          "level",
+          "provenance",
+          "official",
+          "upstreamUrl",
+          "snapshotPath",
+          "contentSha256",
+          "verificationEvidenceRef",
+          "classificationEvidenceRef",
+          "claimIds"
+        ]
+      }
+    },
+    "renderedUnitInventory": [
+      {
+        "id": "unit-h-description",
+        "text": "Des ressources pour comprendre, vérifier et cadrer les tâches d’un cabinet, sans céder la décision humaine.",
+        "sha256": "d6a1d95e30fa8d1ec6851c763ec941a73268d6b7ce994b379d2862ba20b43094",
+        "claimIds": [
+          "claim-h-description"
+        ]
+      },
+      {
+        "id": "unit-h-dsn-deadline-summary",
+        "text": "Méthode Memlia : une liste de contrôles écrite, rejouée chaque mois ; le cabinet décide. Pour une DSN mensuelle, l’annule et remplace se ferme la veille de l’échéance à minuit. Pour un signalement d’événement, l’annule et remplace peut être envoyé dès que nécessaire, sans date limite d’envoi. DSN-Val teste le fichier avant dépôt selon le cahier technique et le JMN associés. Les comptes rendus métier transmettent les retours des organismes après réception de la déclaration.",
+        "sha256": "008b478e0cbc981ec0545d6b7f9b27e2ec1f350278428c34e2a7c49924ca9795",
+        "claimIds": [
+          "claim-h-dsn-deadline-summary-1",
+          "claim-h-dsn-deadline-summary-2",
+          "claim-h-dsn-deadline-summary-3",
+          "claim-h-dsn-deadline-summary-4",
+          "claim-h-dsn-deadline-summary-5"
+        ]
+      },
+      {
+        "id": "unit-h-social-monitoring-summary",
+        "text": "Doctrine Memlia : suivre les dossiers et les étapes, jamais classer les personnes. Sauf exception légale, un dispositif de contrôle de l’activité du personnel doit être justifié et proportionné. Il doit être porté à la connaissance des personnes concernées avant sa mise en place. Dans les entreprises privées de 50 salariés et plus, l’employeur doit consulter le CSE sur ce dispositif.",
+        "sha256": "89e74ab7b8e4b469a6236d67542e27acd40c487bef072b35785bbb474dabac00",
+        "claimIds": [
+          "claim-h-social-monitoring-summary-1",
+          "claim-h-social-monitoring-summary-2",
+          "claim-h-social-monitoring-summary-3",
+          "claim-h-social-monitoring-summary-4"
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim-h-description",
+        "unitId": "unit-h-description",
+        "text": "Des ressources pour comprendre, vérifier et cadrer les tâches d’un cabinet, sans céder la décision humaine.",
+        "sha256": "d6a1d95e30fa8d1ec6851c763ec941a73268d6b7ce994b379d2862ba20b43094",
+        "type": "positionnement",
+        "sourceIds": [
+          "source-hub-memlia"
+        ],
+        "citationIds": [
+          "citation-h-description-1"
+        ],
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Promesse éditoriale du Hub ; elle décrit la posture des ressources.",
+          "regime": "Positionnement éditorial Memlia, sans portée réglementaire autonome.",
+          "validAsOf": "2026-09-14",
+          "exceptions": "Les résumés réglementaires rendus par le Hub possèdent leurs propres claims et preuves.",
+          "sourceIds": [
+            "source-hub-memlia"
+          ]
+        }
+      },
+      {
+        "id": "claim-h-dsn-deadline-summary-1",
+        "unitId": "unit-h-dsn-deadline-summary",
+        "text": "Méthode Memlia : une liste de contrôles écrite, rejouée chaque mois ; le cabinet décide.",
+        "sha256": "96c8754fe6582c03aaa7ca7776f8ddc9c28dd446ae2041c75d40aded99c3338a",
+        "type": "methode-memlia",
+        "sourceIds": [
+          "source-summaries-memlia"
+        ],
+        "citationIds": [
+          "citation-claim-h-dsn-deadline-summary-1-1"
+        ],
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Méthode ou doctrine propre au service Memlia décrit.",
+          "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
+          "validAsOf": "2026-09-14",
+          "exceptions": "Les règles DSN et CNIL sont séparées dans les autres sous-claims.",
+          "sourceIds": [
+            "source-summaries-memlia"
+          ]
+        }
+      },
+      {
+        "id": "claim-h-dsn-deadline-summary-2",
+        "unitId": "unit-h-dsn-deadline-summary",
+        "text": "Pour une DSN mensuelle, l’annule et remplace se ferme la veille de l’échéance à minuit.",
+        "sha256": "ae1eeb00c1e03bcf129a25d91dfc1306f9f9ff51ca48cd68862786c5e2e5e5e1",
+        "type": "dsn",
+        "sourceIds": [
+          "source-net-annule"
+        ],
+        "citationIds": [
+          "citation-claim-h-dsn-deadline-summary-2-1"
+        ],
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "DSN mensuelle dans la fenêtre propre à l’échéance de l’entreprise.",
+          "regime": "DSN mensuelle annule-et-remplace, distincte des signalements d’événement.",
+          "validAsOf": "2026-09-14",
+          "exceptions": "Les signalements d’événement suivent une autre fenêtre, explicitée près du claim dans le glossaire.",
+          "sourceIds": [
+            "source-net-annule"
+          ]
+        }
+      },
+      {
+        "id": "claim-h-dsn-deadline-summary-3",
+        "unitId": "unit-h-dsn-deadline-summary",
+        "text": "Pour un signalement d’événement, l’annule et remplace peut être envoyé dès que nécessaire, sans date limite d’envoi.",
+        "sha256": "9b8dacb7b2e0488305cbee67479ed2f152a5410edfd85a1754c9b57effc7dff3",
+        "type": "dsn",
+        "sourceIds": [
+          "source-net-annule"
+        ],
+        "citationIds": [
+          "citation-claim-h-dsn-deadline-summary-3-1"
+        ],
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Signalements d’événement en DSN.",
+          "regime": "Annule-et-remplace de signalement, et non DSN mensuelle.",
+          "validAsOf": "2026-09-14",
+          "exceptions": "Ne pas appliquer cette absence de limite à la DSN mensuelle.",
+          "sourceIds": [
+            "source-net-annule"
+          ]
+        }
+      },
+      {
+        "id": "claim-h-dsn-deadline-summary-4",
+        "unitId": "unit-h-dsn-deadline-summary",
+        "text": "DSN-Val teste le fichier avant dépôt selon le cahier technique et le JMN associés.",
+        "sha256": "893a982f60530bdb5d96bfdfbcf3cede8fba654581c5a629f061bedca31be569",
+        "type": "dsn",
+        "sourceIds": [
+          "source-net-dsn-val"
+        ],
+        "citationIds": [
+          "citation-claim-h-dsn-deadline-summary-4-1"
+        ],
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Fichiers DSN contrôlés avant dépôt, selon le cahier technique et le JMN applicables.",
+          "regime": "Contrôle de norme DSN selon le cahier technique et le JMN applicables au fichier.",
+          "validAsOf": "2026-09-14",
+          "exceptions": "Un contrôle de norme ne prouve pas l’exactitude métier des variables de paie.",
+          "sourceIds": [
+            "source-net-dsn-val"
+          ]
+        }
+      },
+      {
+        "id": "claim-h-dsn-deadline-summary-5",
+        "unitId": "unit-h-dsn-deadline-summary",
+        "text": "Les comptes rendus métier transmettent les retours des organismes après réception de la déclaration.",
+        "sha256": "7ad100e49bc080dca44b5b3857d73f4f9ec120da237812e0ed2eab56ce975450",
+        "type": "dsn",
+        "sourceIds": [
+          "source-net-crm"
+        ],
+        "citationIds": [
+          "citation-claim-h-dsn-deadline-summary-5-1"
+        ],
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Déclarations reçues et analysées par les organismes destinataires.",
+          "regime": "Comptes rendus métier émis par les organismes destinataires d’une DSN.",
+          "validAsOf": "2026-09-14",
+          "exceptions": "Les CRM diffèrent selon l’organisme ; leur silence ne garantit pas la justesse générale.",
+          "sourceIds": [
+            "source-net-crm"
+          ]
+        }
+      },
+      {
+        "id": "claim-h-social-monitoring-summary-1",
+        "unitId": "unit-h-social-monitoring-summary",
+        "text": "Doctrine Memlia : suivre les dossiers et les étapes, jamais classer les personnes.",
+        "sha256": "ab453868e6361a48c72a33384766d5e1339c29bb56a597a6728384c0bd2f5b88",
+        "type": "methode-memlia",
+        "sourceIds": [
+          "source-summaries-memlia"
+        ],
+        "citationIds": [
+          "citation-claim-h-social-monitoring-summary-1-1"
+        ],
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Méthode ou doctrine propre au service Memlia décrit.",
+          "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
+          "validAsOf": "2026-09-14",
+          "exceptions": "Les règles DSN et CNIL sont séparées dans les autres sous-claims.",
+          "sourceIds": [
+            "source-summaries-memlia"
+          ]
+        }
+      },
+      {
+        "id": "claim-h-social-monitoring-summary-2",
+        "unitId": "unit-h-social-monitoring-summary",
+        "text": "Sauf exception légale, un dispositif de contrôle de l’activité du personnel doit être justifié et proportionné.",
+        "sha256": "defe30c11e00c37a27e54f2ddb1e9389b96be6c5134e2f8c17c5b6c77044681d",
+        "type": "legal-reglementaire",
+        "sourceIds": [
+          "source-cnil-controle-activite"
+        ],
+        "citationIds": [
+          "citation-claim-h-social-monitoring-summary-2-1"
+        ],
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Dispositif qui permet le contrôle de l’activité du personnel ; consultation CSE formulée ici pour les entreprises privées de 50 salariés et plus.",
+          "regime": "Contrôle de l’activité du personnel et consultation du CSE dans le secteur privé.",
+          "validAsOf": "2026-09-14",
+          "exceptions": "La qualification dépend du dispositif ; les exceptions légales et les autres instances du secteur public ne sont pas généralisées au Hub.",
+          "sourceIds": [
+            "source-cnil-controle-activite"
+          ]
+        }
+      },
+      {
+        "id": "claim-h-social-monitoring-summary-3",
+        "unitId": "unit-h-social-monitoring-summary",
+        "text": "Il doit être porté à la connaissance des personnes concernées avant sa mise en place.",
+        "sha256": "9ff98301e35a4f20cf7ebb8b3595808d483904eb33ac5e7c49fa46646cff9705",
+        "type": "legal-reglementaire",
+        "sourceIds": [
+          "source-cnil-controle-activite"
+        ],
+        "citationIds": [
+          "citation-claim-h-social-monitoring-summary-3-1"
+        ],
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Dispositif qui permet le contrôle de l’activité du personnel ; consultation CSE formulée ici pour les entreprises privées de 50 salariés et plus.",
+          "regime": "Contrôle de l’activité du personnel et consultation du CSE dans le secteur privé.",
+          "validAsOf": "2026-09-14",
+          "exceptions": "La qualification dépend du dispositif ; les exceptions légales et les autres instances du secteur public ne sont pas généralisées au Hub.",
+          "sourceIds": [
+            "source-cnil-controle-activite"
+          ]
+        }
+      },
+      {
+        "id": "claim-h-social-monitoring-summary-4",
+        "unitId": "unit-h-social-monitoring-summary",
+        "text": "Dans les entreprises privées de 50 salariés et plus, l’employeur doit consulter le CSE sur ce dispositif.",
+        "sha256": "0f631f4fb309329bcf35aa4f90d878ec70d2c6b98c42659d32733389a26d4d36",
+        "type": "legal-reglementaire",
+        "sourceIds": [
+          "source-cnil-controle-activite"
+        ],
+        "citationIds": [
+          "citation-claim-h-social-monitoring-summary-4-1"
+        ],
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Dispositif qui permet le contrôle de l’activité du personnel ; consultation CSE formulée ici pour les entreprises privées de 50 salariés et plus.",
+          "regime": "Contrôle de l’activité du personnel et consultation du CSE dans le secteur privé.",
+          "validAsOf": "2026-09-14",
+          "exceptions": "La qualification dépend du dispositif ; les exceptions légales et les autres instances du secteur public ne sont pas généralisées au Hub.",
+          "sourceIds": [
+            "source-cnil-controle-activite"
+          ]
+        }
+      }
+    ],
+    "citations": [
+      {
+        "id": "citation-h-description-1",
+        "claimIds": [
+          "claim-h-description"
+        ],
+        "sourceId": "source-hub-memlia",
+        "text": "Des ressources pour comprendre, vérifier et cadrer les tâches d’un cabinet, sans céder la décision humaine.",
+        "sha256": "d6a1d95e30fa8d1ec6851c763ec941a73268d6b7ce994b379d2862ba20b43094",
+        "sourceContentSha256": "403ec36bf1469f3b87ce93c8f50b66fff53b9633c5e26c8f0eb639a0efaf86fe",
+        "finalUrl": "file://src/pages/ressources.astro",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "title": "Positionnement éditorial du Hub Ressources",
+        "locator": "description",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-claim-h-dsn-deadline-summary-1-1",
+        "claimIds": [
+          "claim-h-dsn-deadline-summary-1"
+        ],
+        "sourceId": "source-summaries-memlia",
+        "text": "Méthode Memlia : une liste de contrôles écrite, rejouée chaque mois ; le cabinet décide.",
+        "sha256": "96c8754fe6582c03aaa7ca7776f8ddc9c28dd446ae2041c75d40aded99c3338a",
+        "sourceContentSha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4",
+        "finalUrl": "file://src/data/resource-summaries.json",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "title": "Doctrine des résumés du Hub",
+        "locator": "Doctrine Memlia",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-claim-h-dsn-deadline-summary-2-1",
+        "claimIds": [
+          "claim-h-dsn-deadline-summary-2"
+        ],
+        "sourceId": "source-net-annule",
+        "text": "L'échéance de dépôt des DSN \"annule et remplace\" est située la veille du jour de l'échéance à minuit.",
+        "sha256": "cb8b0286442d47c072d4ab0d0ed21972fef5e7fb7564d154a7c13bc48ee27c96",
+        "sourceContentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+        "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "title": "Annule et remplace DSN mensuelle et signalements",
+        "locator": "source-net-annule",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-claim-h-dsn-deadline-summary-3-1",
+        "claimIds": [
+          "claim-h-dsn-deadline-summary-3"
+        ],
+        "sourceId": "source-net-annule",
+        "text": "Si la déclaration « annule et remplace » concerne un signalement d'événement, il n’y a pas de date limite à son envoi (envoi de la déclaration « annule et remplace » dès que nécessaire).",
+        "sha256": "e0027e0c00a4b832265a4f0e30591157482f67b42337f1e3ff9449c4b747343a",
+        "sourceContentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+        "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "title": "Annule et remplace DSN mensuelle et signalements",
+        "locator": "source-net-annule",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-claim-h-dsn-deadline-summary-4-1",
+        "claimIds": [
+          "claim-h-dsn-deadline-summary-4"
+        ],
+        "sourceId": "source-net-dsn-val",
+        "text": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
+        "sha256": "08abfcd2ebdbd0882d3eca5eee568fa87f56ace903771057a10db239c1516a6e",
+        "sourceContentSha256": "9834a215c9c9e3958c928cfaae86403dcde770e4bc810ea01fd804bbca32db34",
+        "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
+        "locator": "source-net-dsn-val",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-claim-h-dsn-deadline-summary-5-1",
+        "claimIds": [
+          "claim-h-dsn-deadline-summary-5"
+        ],
+        "sourceId": "source-net-crm",
+        "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.",
+        "sha256": "316a86f81d7fe9ac870a7745a94d71f78ee0f4d85ad19deccc5fa5f684aa781c",
+        "sourceContentSha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15",
+        "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "title": "Les Comptes Rendus Métiers DSN",
+        "locator": "source-net-crm",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-claim-h-social-monitoring-summary-1-1",
+        "claimIds": [
+          "claim-h-social-monitoring-summary-1"
+        ],
+        "sourceId": "source-summaries-memlia",
+        "text": "Doctrine Memlia : suivre les dossiers et les étapes, jamais classer les personnes.",
+        "sha256": "ab453868e6361a48c72a33384766d5e1339c29bb56a597a6728384c0bd2f5b88",
+        "sourceContentSha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4",
+        "finalUrl": "file://src/data/resource-summaries.json",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "title": "Doctrine des résumés du Hub",
+        "locator": "Doctrine Memlia",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-claim-h-social-monitoring-summary-2-1",
+        "claimIds": [
+          "claim-h-social-monitoring-summary-2"
+        ],
+        "sourceId": "source-cnil-controle-activite",
+        "text": "Sauf exception (par exemple, lorsqu’un dispositif de contrôle est imposé par la loi), un dispositif de contrôle de l’activité du personnel doit cumulativement : satisfaire aux tests de justification et de proportionnalité ; être soumis aux instances représentatives du personnel selon les règles en vigueur ; être porté à la connaissance des salariés/agents.",
+        "sha256": "a9a2b545ea4c286af1f5534d1b4b95a83bfc146318262dbef07a81ce4de8fe2d",
+        "sourceContentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+        "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
+        "locator": "source-cnil-controle-activite",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-claim-h-social-monitoring-summary-3-1",
+        "claimIds": [
+          "claim-h-social-monitoring-summary-3"
+        ],
+        "sourceId": "source-cnil-controle-activite",
+        "text": "Le dispositif doit être porté à la connaissance des personnes concernées, préalablement à sa mise en place, pour satisfaire aux obligations de loyauté et d’information qui incombent à l'employeur.",
+        "sha256": "2954f109a90128ec4a65adf33cbcb1e0e4d6aaa38569cd74b29c0d395e93d220",
+        "sourceContentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+        "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
+        "locator": "source-cnil-controle-activite",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-claim-h-social-monitoring-summary-4-1",
+        "claimIds": [
+          "claim-h-social-monitoring-summary-4"
+        ],
+        "sourceId": "source-cnil-controle-activite",
+        "text": "Dans le cadre du dialogue social, l'employeur doit consulter : le conseil social et économique (CSE) dans les entreprises privées de 50 salariés et plus, les établissements publics à caractère industriel et commercial et les établissements publics à caractère administratif lorsqu'ils emploient du personnel dans les conditions du droit privé ; le comité social d’administration, territorial ou d’établissement (CSA, CST et CSE) ou leurs formations spécialisées dans les organismes publics.",
+        "sha256": "124dbedfd03b6f4971a7108f6c86eed159f84fc6efb9fb412e8fa5fdc75e8a21",
+        "sourceContentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+        "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
+        "locator": "source-cnil-controle-activite",
+        "verdict": "soutient"
+      }
+    ],
+    "sources": [
+      {
+        "id": "source-hub-memlia",
+        "publisher": "Memlia",
+        "title": "Positionnement éditorial du Hub Ressources",
+        "requestedUrl": "file://src/pages/ressources.astro",
+        "finalUrl": "file://src/pages/ressources.astro",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "level": "original-method",
+        "provenance": "primary",
+        "official": false,
+        "upstreamUrl": "file://src/pages/ressources.astro",
+        "snapshotPath": "src/pages/ressources.astro",
+        "contentSha256": "403ec36bf1469f3b87ce93c8f50b66fff53b9633c5e26c8f0eb639a0efaf86fe",
+        "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
+        "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
+        "claimIds": [
+          "claim-h-description"
+        ]
+      },
+      {
+        "id": "source-summaries-memlia",
+        "publisher": "Memlia",
+        "title": "Doctrine des résumés du Hub",
+        "requestedUrl": "file://src/data/resource-summaries.json",
+        "finalUrl": "file://src/data/resource-summaries.json",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "level": "original-method",
+        "provenance": "primary",
+        "official": false,
+        "upstreamUrl": "file://src/data/resource-summaries.json",
+        "snapshotPath": "src/data/resource-summaries.json",
+        "contentSha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4",
+        "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
+        "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
+        "claimIds": [
+          "claim-h-dsn-deadline-summary-1",
+          "claim-h-social-monitoring-summary-1"
+        ]
+      },
+      {
+        "id": "source-net-annule",
+        "publisher": "Net-entreprises (GIP-MDS)",
+        "title": "Annule et remplace DSN mensuelle et signalements",
+        "requestedUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
+        "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "level": "tier-1",
+        "provenance": "primary",
+        "official": true,
+        "upstreamUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
+        "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-annule.txt",
+        "contentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+        "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
+        "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
+        "claimIds": [
+          "claim-h-dsn-deadline-summary-2",
+          "claim-h-dsn-deadline-summary-3"
+        ]
+      },
+      {
+        "id": "source-net-dsn-val",
+        "publisher": "Net-entreprises (GIP-MDS)",
+        "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
+        "requestedUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+        "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "level": "tier-1",
+        "provenance": "primary",
+        "official": true,
+        "upstreamUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+        "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-dsn-val.txt",
+        "contentSha256": "9834a215c9c9e3958c928cfaae86403dcde770e4bc810ea01fd804bbca32db34",
+        "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
+        "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
+        "claimIds": [
+          "claim-h-dsn-deadline-summary-4"
+        ]
+      },
+      {
+        "id": "source-net-crm",
+        "publisher": "Net-entreprises (GIP-MDS)",
+        "title": "Les Comptes Rendus Métiers DSN",
+        "requestedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+        "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "level": "tier-1",
+        "provenance": "primary",
+        "official": true,
+        "upstreamUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+        "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-crm.txt",
+        "contentSha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15",
+        "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
+        "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
+        "claimIds": [
+          "claim-h-dsn-deadline-summary-5"
+        ]
+      },
+      {
+        "id": "source-cnil-controle-activite",
+        "publisher": "CNIL",
+        "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
+        "requestedUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+        "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "level": "tier-1",
+        "provenance": "primary",
+        "official": true,
+        "upstreamUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+        "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/cnil-controle-activite.txt",
+        "contentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+        "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
+        "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
+        "claimIds": [
+          "claim-h-social-monitoring-summary-2",
+          "claim-h-social-monitoring-summary-3",
+          "claim-h-social-monitoring-summary-4"
+        ]
+      }
+    ],
+    "requiredRelations": [
+      "chaque unité rendue est inventoriée",
+      "unité.claimIds = claims filtrés par unitId",
+      "claim.sourceIds = sources dont claimIds contient le claim",
+      "claim.citationIds = citations dont claimIds contient le claim",
+      "citation localisée dans copie source hashée",
+      "source↔ouverture et classification distinctes"
+    ],
+    "sourcePolicy": {
+      "acceptedTiers": [
+        "tier-1",
+        "tier-2",
+        "tier-3",
+        "original-method"
+      ],
+      "rejected": [
+        "tier-4",
+        "tier-5",
+        "echo-only"
+      ],
+      "sensitiveRequires": "primaire officielle tier-1 à tier-3, fraîcheur du jour UTC et verdict unitaire soutient"
+    },
+    "sensitiveMatter": {
+      "detected": true,
+      "signals": [
+        "dsn",
+        "legal-reglementaire"
+      ],
+      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "businessReview": {
+        "required": true,
+        "reviewerId": null,
+        "reviewerType": null,
+        "reviewerProfile": null,
+        "reviewerRole": null,
+        "distinctFrom": [
+          "author",
+          "editorialReviewer",
+          "sourceClassifier"
+        ],
+        "reviewedCandidateHash": null,
+        "status": "PENDING",
+        "claimSourceVerdicts": [],
+        "evidenceRef": null,
+        "evidenceSha256": null
+      }
+    }
+  },
+  "assets": {
+    "decision": "aucun-visuel-informatif",
+    "assetRefs": [
+      "src/pages/ressources.astro"
+    ],
+    "image": {
+      "required": false,
+      "engine": "image_generate",
+      "promptEvidenceRef": "fixture://prompt",
+      "generationEvidenceRef": "fixture://generation",
+      "generationId": "fixture-generation",
+      "masterSha256": "8810c61dc998e2ef39791e76b6377bcb78d6b99809e08aeff51ba98216529ece",
+      "visualReviewEvidenceRef": "fixture://visual-review",
+      "alt": "Illustration fictive d’une ressource contrôlée",
+      "ogSha256": "8810c61dc998e2ef39791e76b6377bcb78d6b99809e08aeff51ba98216529ece",
+      "derivativeRefs": [
+        "fixture://derivative"
+      ],
+      "kevinApproved": true
+    },
+    "uiCapture": {
+      "present": false,
+      "allowedProvenance": "banc-windows-jeu-fictif",
+      "datasetId": "fixture-dataset",
+      "captureEvidenceRef": "fixture://ui-capture",
+      "sha256": "feab57a2d271b214c45c8fb820d78dd6234df4095085681e9fb730551ae383d7"
+    },
+    "policy": "Illustration générée uniquement par image_generate; UI uniquement du banc fictif réel."
+  },
+  "links": {
+    "outgoing": [
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/glossaire#dsn",
+      "/glossaire#dsn-val",
+      "/glossaire#compte-rendu-metier-dsn",
+      "/glossaire#annule-et-remplace-dsn",
+      "/glossaire#controle-avant-dsn",
+      "/glossaire#production-sociale",
+      "/glossaire#donnee-personnelle",
+      "/glossaire#minimisation-des-donnees",
+      "/glossaire#anonymisation",
+      "/glossaire#pseudonymisation",
+      "/glossaire#agregat-non-nominatif",
+      "/glossaire#lettrage-comptable",
+      "/glossaire#rapprochement-bancaire",
+      "/glossaire#revision-comptable",
+      "/glossaire#piece-justificative",
+      "/glossaire#recouvrement-amiable",
+      "/glossaire#regle-de-cabinet",
+      "/glossaire#cas-de-refus",
+      "/glossaire#controle-de-coherence",
+      "/glossaire#schema-de-donnees",
+      "/glossaire#tracabilite",
+      "/glossaire#validation-humaine",
+      "/glossaire#fail-closed"
+    ],
+    "incoming": [
+      "/",
+      "/blog",
+      "/glossaire"
+    ],
+    "corpusInventoryRef": "src/data/resources.ts",
+    "cannibalization": {
+      "risk": "controlled",
+      "comparedCanonicalPaths": [
+        "/blog",
+        "/glossaire",
+        "/ressources"
+      ],
+      "decision": "distinct",
+      "evidenceRef": "docs/qa/glossaire/recette.md"
+    },
+    "filterPolicy": {
+      "javascriptFallbackTestRef": "tests/browser/resources.spec.ts",
+      "queryVariantsNoindexFollow": true,
+      "canonicalUnfiltered": true,
+      "excludedFromSitemap": true
+    }
+  },
+  "skills": {
+    "registryContract": {
+      "sourceOfTruth": "editorial/resources/hub/skills.json",
+      "historicalTemplatePath": "editorial/templates/skills.json",
+      "historicalTemplateSha256": "b766669a4626e2e94d88830d7b5144606091663cbc34ca1e59f222ebc4bccedc",
+      "candidateRegistryPath": "editorial/resources/hub/skills.json",
+      "candidateRegistrySha256": "63ef54814c12b7b364d1633b09e25b00ea6451526b08e5375693a51a0e1c2457",
+      "manifestProjectionSha256": "4953a4cf9382fd1e889270d84190288bb733591888ea73d8b469dfc7fc4bc134",
+      "comparison": "JSON canonique exact",
+      "result": "PASS",
+      "rule": "31 Blog + 24 SEO + 19 noyau, sans omission ni doublon."
+    },
+    "blog": [
+      {
+        "skill": "blog-strategy",
+        "stage": "strategie",
+        "applicabilityRule": "Tous; héritage seulement si périmètre et empreinte couvrent le candidat.",
+        "requiredInputs": [
+          "manifeste, portefeuille, objectif"
+        ],
+        "requiredOutputs": [
+          "fiche objectif, rôle, différenciation"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-brand",
+        "stage": "strategie",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "positionnement Memlia, candidat"
+        ],
+        "requiredOutputs": [
+          "contrôle termes, promesses et non-périmètre"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-persona",
+        "stage": "recherche",
+        "applicabilityRule": "Tous; aucune persona inventée.",
+        "requiredInputs": [
+          "rôle, preuve de rôle"
+        ],
+        "requiredOutputs": [
+          "rôle, niveau de preuve, source, date"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-discourse",
+        "stage": "recherche",
+        "applicabilityRule": "RUN si signal praticien requis; sinon N/A borné.",
+        "requiredInputs": [
+          "question, corpus autorisé"
+        ],
+        "requiredOutputs": [
+          "verbatims autorisés ou justification N/A"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-google",
+        "stage": "recherche-mesure",
+        "applicabilityRule": "RUN si donnée Google requise; accès absent = RUN/FAIL et ND.",
+        "requiredInputs": [
+          "URL/requête, propriété, période"
+        ],
+        "requiredOutputs": [
+          "export daté ou diagnostic FAIL/ND"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": "candidat-v3-t_54774b16",
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Décision FIX-C : aucune nouvelle recherche. GSC absent et SERP fournisseur 40101 restent ND, sans point SEO attribué."
+      },
+      {
+        "skill": "blog-calendar",
+        "stage": "portefeuille",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "candidat, capacité, dépendances"
+        ],
+        "requiredOutputs": [
+          "entrée de portefeuille, owner, état"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-cluster",
+        "stage": "architecture",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "corpus publié et prévu"
+        ],
+        "requiredOutputs": [
+          "cluster, intention, relations"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-taxonomy",
+        "stage": "architecture",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "métadonnées candidat"
+        ],
+        "requiredOutputs": [
+          "enums et absence d’archive mince"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-brief",
+        "stage": "brief",
+        "applicabilityRule": "Tous; H utilise un brief navigationnel.",
+        "requiredInputs": [
+          "recherche et arbitrages"
+        ],
+        "requiredOutputs": [
+          "brief validé et hashé"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "npm run build:site",
+        "checkedAt": "2026-09-15T10:40:59.153Z",
+        "version": "candidat-v3-t_54774b16",
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-outline",
+        "stage": "plan",
+        "applicabilityRule": "Tous; T/H ont une structure proportionnée, pas une exemption.",
+        "requiredInputs": [
+          "brief"
+        ],
+        "requiredOutputs": [
+          "Hn, sections, réponse directe"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "npm run build:site",
+        "checkedAt": "2026-09-15T10:40:59.153Z",
+        "version": "candidat-v3-t_54774b16",
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-notebooklm",
+        "stage": "recherche",
+        "applicabilityRule": "RUN seulement si notebook autorisé; sinon N/A prouvant l’absence d’usage.",
+        "requiredInputs": [
+          "corpus autorisé"
+        ],
+        "requiredOutputs": [
+          "références ou justification N/A"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-write",
+        "stage": "redaction",
+        "applicabilityRule": "RUN pour création; N/A pour révision/consolidation.",
+        "requiredInputs": [
+          "brief validé"
+        ],
+        "requiredOutputs": [
+          "source complète du candidat"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-rewrite",
+        "stage": "redaction",
+        "applicabilityRule": "RUN pour révision/consolidation; N/A pour création.",
+        "requiredInputs": [
+          "audit et source existante"
+        ],
+        "requiredOutputs": [
+          "diff justifié"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-factcheck",
+        "stage": "verification",
+        "applicabilityRule": "RUN pour claim porteur; matière sensible toujours RUN.",
+        "requiredInputs": [
+          "unités, claims, copies sources"
+        ],
+        "requiredOutputs": [
+          "résultats claim-source, citations, limites"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "npm run build:site",
+        "checkedAt": "2026-09-15T10:40:59.153Z",
+        "version": "candidat-v3-t_54774b16",
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-style",
+        "stage": "edition",
+        "applicabilityRule": "RUN si profil validé; sinon N/A et revue de voix distincte.",
+        "requiredInputs": [
+          "profil, texte"
+        ],
+        "requiredOutputs": [
+          "écarts et corrections"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-chart",
+        "stage": "media",
+        "applicabilityRule": "RUN si donnée à représenter; sinon N/A motivé.",
+        "requiredInputs": [
+          "données, méthode"
+        ],
+        "requiredOutputs": [
+          "calculs, graphique, provenance"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-image",
+        "stage": "media",
+        "applicabilityRule": "Tous pour auditer le besoin; A conserve t_584e6438.",
+        "requiredInputs": [
+          "sujet, DA, assets"
+        ],
+        "requiredOutputs": [
+          "décision; si image, provenance et revue"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "npm run build:site",
+        "checkedAt": "2026-09-15T10:40:59.153Z",
+        "version": "candidat-v3-t_54774b16",
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-schema",
+        "stage": "technique",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "contenu visible, surface"
+        ],
+        "requiredOutputs": [
+          "JSON-LD cohérent"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-seo-check",
+        "stage": "audit",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "HTML rendu"
+        ],
+        "requiredOutputs": [
+          "défauts on-page"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-geo",
+        "stage": "audit",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "HTML, entités, sources"
+        ],
+        "requiredOutputs": [
+          "citabilité, attribution, limites"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-analyze",
+        "stage": "score",
+        "applicabilityRule": "Tous; grille Memlia prioritaire.",
+        "requiredInputs": [
+          "HTML et preuves"
+        ],
+        "requiredOutputs": [
+          "grille structurée recalculable"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-audit",
+        "stage": "audit-corpus",
+        "applicabilityRule": "RUN si décision corpus; sinon N/A avec delta contrôlé.",
+        "requiredInputs": [
+          "corpus"
+        ],
+        "requiredOutputs": [
+          "arbitrages corpus"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-cannibalization",
+        "stage": "audit-corpus",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "corpus, intention, requête"
+        ],
+        "requiredOutputs": [
+          "collisions, arbitrages hashés"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-decay",
+        "stage": "maintenance",
+        "applicabilityRule": "RUN après baseline; nouvelle URL garde historique ND explicite.",
+        "requiredInputs": [
+          "séries comparables"
+        ],
+        "requiredOutputs": [
+          "diagnostic ou baseline"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-flow",
+        "stage": "recherche-conversion",
+        "applicabilityRule": "Tous, étapes pertinentes.",
+        "requiredInputs": [
+          "candidat, recherche, offre"
+        ],
+        "requiredOutputs": [
+          "Find/Optimize/Win"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-repurpose",
+        "stage": "distribution",
+        "applicabilityRule": "RUN seulement après mandat; sinon N/A.",
+        "requiredInputs": [
+          "candidat approuvé"
+        ],
+        "requiredOutputs": [
+          "propositions séparées"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-audio",
+        "stage": "media",
+        "applicabilityRule": "RUN si audio validé; sinon N/A.",
+        "requiredInputs": [
+          "script validé"
+        ],
+        "requiredOutputs": [
+          "audio contrôlé ou justification"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-multilingual",
+        "stage": "international",
+        "applicabilityRule": "RUN si langues autorisées; sinon N/A.",
+        "requiredInputs": [
+          "langues, routes"
+        ],
+        "requiredOutputs": [
+          "plan de parité"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-translate",
+        "stage": "international",
+        "applicabilityRule": "RUN si traduction autorisée; sinon N/A.",
+        "requiredInputs": [
+          "texte source"
+        ],
+        "requiredOutputs": [
+          "traduction relue"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-localize",
+        "stage": "international",
+        "applicabilityRule": "RUN si variante culturelle réelle; sinon N/A.",
+        "requiredInputs": [
+          "locale, traduction"
+        ],
+        "requiredOutputs": [
+          "adaptation relue"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "blog-locale-audit",
+        "stage": "audit-international",
+        "applicabilityRule": "RUN si variantes publiables; sinon N/A.",
+        "requiredInputs": [
+          "corpus multilingue"
+        ],
+        "requiredOutputs": [
+          "parité, hreflang"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      }
+    ],
+    "seo": [
+      {
+        "skill": "seo-plan",
+        "stage": "strategie",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "candidat, objectif, offre"
+        ],
+        "requiredOutputs": [
+          "alignement business"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-google",
+        "stage": "recherche-mesure",
+        "applicabilityRule": "RUN si donnée Google requise; accès absent = RUN/FAIL et ND.",
+        "requiredInputs": [
+          "URL/requête, propriété, période"
+        ],
+        "requiredOutputs": [
+          "export ou diagnostic FAIL/ND"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": "candidat-v3-t_54774b16",
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Décision FIX-C : aucune nouvelle recherche. GSC absent et SERP fournisseur 40101 restent ND, sans point SEO attribué."
+      },
+      {
+        "skill": "seo-content-brief",
+        "stage": "brief",
+        "applicabilityRule": "Tous; H est navigationnel.",
+        "requiredInputs": [
+          "SERP, tâche, corpus"
+        ],
+        "requiredOutputs": [
+          "contrat d’information"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-cluster",
+        "stage": "architecture",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "requêtes, intentions, corpus"
+        ],
+        "requiredOutputs": [
+          "overlap, cluster, limites"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-sxo",
+        "stage": "recherche",
+        "applicabilityRule": "Tous; H exige une preuve navigationnelle.",
+        "requiredInputs": [
+          "SERP/parcours/tâche"
+        ],
+        "requiredOutputs": [
+          "format utile, intention"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": "candidat-v3-t_54774b16",
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Décision FIX-C : aucune nouvelle recherche. GSC absent et SERP fournisseur 40101 restent ND, sans point SEO attribué."
+      },
+      {
+        "skill": "seo-page",
+        "stage": "audit",
+        "applicabilityRule": "Tous; T ancré est audité dans son conteneur.",
+        "requiredInputs": [
+          "URL ou conteneur rendu"
+        ],
+        "requiredOutputs": [
+          "audit de surface"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "npm run build:site",
+        "checkedAt": "2026-09-15T10:40:59.153Z",
+        "version": "candidat-v3-t_54774b16",
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-content",
+        "stage": "audit",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "texte rendu"
+        ],
+        "requiredOutputs": [
+          "Who/How/Why, E-E-A-T"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-technical",
+        "stage": "technique",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "build, HTTP, routes"
+        ],
+        "requiredOutputs": [
+          "crawl, mobile, accessibilité, performance"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-schema",
+        "stage": "technique",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "visible, JSON-LD"
+        ],
+        "requiredOutputs": [
+          "validation type/contenu"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-images",
+        "stage": "media-technique",
+        "applicabilityRule": "Tous, y compris absence d’image justifiée.",
+        "requiredInputs": [
+          "assets, décision image"
+        ],
+        "requiredOutputs": [
+          "alt/formats/OG ou absence prouvée"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "npm run build:site",
+        "checkedAt": "2026-09-15T10:40:59.153Z",
+        "version": "candidat-v3-t_54774b16",
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-sitemap",
+        "stage": "technique",
+        "applicabilityRule": "Tous; T ancré contrôle l’index.",
+        "requiredInputs": [
+          "routes, état"
+        ],
+        "requiredOutputs": [
+          "inclusion/exclusion"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "npm run build:site",
+        "checkedAt": "2026-09-15T10:40:59.153Z",
+        "version": "candidat-v3-t_54774b16",
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-geo",
+        "stage": "audit",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "rendu, sources"
+        ],
+        "requiredOutputs": [
+          "lisibilité, surfaces séparées"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-flow",
+        "stage": "recherche-conversion",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "candidat, recherche"
+        ],
+        "requiredOutputs": [
+          "Find/Optimize/Win"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-audit",
+        "stage": "audit-corpus",
+        "applicabilityRule": "RUN au lancement/delta; sinon N/A si page suffit.",
+        "requiredInputs": [
+          "corpus, build"
+        ],
+        "requiredOutputs": [
+          "rapport ou justification"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-drift",
+        "stage": "maintenance",
+        "applicabilityRule": "RUN après baseline; sinon baseline initiale.",
+        "requiredInputs": [
+          "snapshots"
+        ],
+        "requiredOutputs": [
+          "diff ou baseline"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-backlinks",
+        "stage": "autorite",
+        "applicabilityRule": "RUN si autorité décide l’arbitrage; sinon N/A.",
+        "requiredInputs": [
+          "export"
+        ],
+        "requiredOutputs": [
+          "domaines, limites"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-competitor-pages",
+        "stage": "format",
+        "applicabilityRule": "RUN seulement si comparaison autorisée; sinon N/A.",
+        "requiredInputs": [
+          "essais, GO"
+        ],
+        "requiredOutputs": [
+          "matrice symétrique"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-local",
+        "stage": "local",
+        "applicabilityRule": "RUN si intention locale prouvée; sinon N/A national.",
+        "requiredInputs": [
+          "SERP locale"
+        ],
+        "requiredOutputs": [
+          "diagnostic"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-maps",
+        "stage": "local",
+        "applicabilityRule": "RUN si Map Pack/GBP requis; sinon N/A.",
+        "requiredInputs": [
+          "observation locale"
+        ],
+        "requiredOutputs": [
+          "diagnostic Map Pack"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-hreflang",
+        "stage": "international",
+        "applicabilityRule": "RUN si variantes publiables; sinon N/A.",
+        "requiredInputs": [
+          "routes linguistiques"
+        ],
+        "requiredOutputs": [
+          "alternates réciproques"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-ecommerce",
+        "stage": "commerce",
+        "applicabilityRule": "N/A pilote: service B2B, pas transaction e-commerce.",
+        "requiredInputs": [
+          "modèle économique"
+        ],
+        "requiredOutputs": [
+          "justification"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-programmatic",
+        "stage": "architecture",
+        "applicabilityRule": "RUN seulement après autorisation pSEO; sinon N/A.",
+        "requiredInputs": [
+          "dataset, GO"
+        ],
+        "requiredOutputs": [
+          "unicité, anti-thin, lots"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-dataforseo",
+        "stage": "recherche",
+        "applicabilityRule": "RUN seulement après nouveau GO budget; sinon N/A.",
+        "requiredInputs": [
+          "accord, coût"
+        ],
+        "requiredOutputs": [
+          "réponse brute, coût"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "seo-image-gen",
+        "stage": "media",
+        "applicabilityRule": "N/A sous charte; seul image_generate est autorisé.",
+        "requiredInputs": [
+          "politique image"
+        ],
+        "requiredOutputs": [
+          "justification N/A"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      }
+    ],
+    "marketingDesignCore": [
+      {
+        "skill": "content-strategy",
+        "stage": "strategie",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "recherche, portefeuille"
+        ],
+        "requiredOutputs": [
+          "choix de portefeuille"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "site-architecture",
+        "stage": "architecture",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "routes, inventaire"
+        ],
+        "requiredOutputs": [
+          "URL, canonical, maillage"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "customer-research",
+        "stage": "recherche",
+        "applicabilityRule": "Tous; héritage borné.",
+        "requiredInputs": [
+          "rôle, corpus"
+        ],
+        "requiredOutputs": [
+          "observation/hypothèse"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "competitor-profiling",
+        "stage": "recherche",
+        "applicabilityRule": "RUN pour nouveau format/intent; sinon héritage hashé.",
+        "requiredInputs": [
+          "pages"
+        ],
+        "requiredOutputs": [
+          "faits, limites"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "product-marketing",
+        "stage": "strategie",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "offre"
+        ],
+        "requiredOutputs": [
+          "positionnement, non-périmètre"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "brand",
+        "stage": "edition-design",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "charte"
+        ],
+        "requiredOutputs": [
+          "contrôle marque"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "copywriting",
+        "stage": "redaction",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "brief"
+        ],
+        "requiredOutputs": [
+          "copy contextuelle"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "copy-editing",
+        "stage": "edition",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "texte"
+        ],
+        "requiredOutputs": [
+          "clarté, voix, preuve, risque"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "marketing-psychology",
+        "stage": "conversion",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "freins"
+        ],
+        "requiredOutputs": [
+          "choix éthiques"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "cro",
+        "stage": "ux",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "parcours"
+        ],
+        "requiredOutputs": [
+          "CTA, frictions"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "offers",
+        "stage": "conversion",
+        "applicabilityRule": "RUN si offre change; sinon N/A avec CTA canonique.",
+        "requiredInputs": [
+          "offre"
+        ],
+        "requiredOutputs": [
+          "périmètre, conditions"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "ai-seo",
+        "stage": "audit",
+        "applicabilityRule": "Tous; sources primaires gouvernent.",
+        "requiredInputs": [
+          "rendu"
+        ],
+        "requiredOutputs": [
+          "utilisabilité sans promesse"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "analytics",
+        "stage": "mesure",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "questions"
+        ],
+        "requiredOutputs": [
+          "événements agrégés sans PII"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "free-tools",
+        "stage": "format",
+        "applicabilityRule": "N/A pour H/A/T/G/M sans calculateur.",
+        "requiredInputs": [
+          "besoin"
+        ],
+        "requiredOutputs": [
+          "oracle ou justification"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "lead-magnets",
+        "stage": "format",
+        "applicabilityRule": "RUN pour M/téléchargement; sinon N/A.",
+        "requiredInputs": [
+          "objet"
+        ],
+        "requiredOutputs": [
+          "accès ouvert, usage"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "frontend-design",
+        "stage": "design",
+        "applicabilityRule": "Tous; héritage si hashé.",
+        "requiredInputs": [
+          "rendu"
+        ],
+        "requiredOutputs": [
+          "revue d’intégration"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "design-system",
+        "stage": "design",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "tokens, composants"
+        ],
+        "requiredOutputs": [
+          "cohérence"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "memlia-blog-strategie",
+        "stage": "gouvernance",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "candidat"
+        ],
+        "requiredOutputs": [
+          "conformité système"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      },
+      {
+        "skill": "memlia-site-design",
+        "stage": "design",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "pleine page"
+        ],
+        "requiredOutputs": [
+          "cohérence desktop/mobile"
+        ],
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "toolOrCommand": null,
+        "checkedAt": null,
+        "version": null,
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ],
+        "naReason": "Contrôle non rejoué sur ce candidat exact ; le gate reste fermé."
+      }
+    ],
+    "conditionalExtensions": [
+      {
+        "skill": "social",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/social"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "emails",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/emails"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "cold-email",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/cold-email"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "prospecting",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/prospecting"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "launch",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/launch"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "video",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/video"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "memlia-video-remotion",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/memlia-video-remotion"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "image",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/image"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "ab-testing",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/ab-testing"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "attribution",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/attribution"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "hermes-agent",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/hermes-agent"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      }
+    ],
+    "contradictions": []
+  },
+  "gates": [
+    {
+      "id": "G0",
+      "name": "autorisation",
+      "requiredInputs": [
+        "GO G0",
+        "pipeline VERT exact"
+      ],
+      "requiredOutputs": [
+        "prérequis scellés"
+      ],
+      "blockers": [
+        "GO absent",
+        "commit divergent"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-15T10:40:59.153Z",
+      "evidenceRefs": [
+        "docs/qa/hub-ressources/freshness-r4-exec.md"
+      ]
+    },
+    {
+      "id": "G1",
+      "name": "demande-role-format",
+      "requiredInputs": [
+        "rôle/tâche",
+        "SERP",
+        "GSC séparé",
+        "coût",
+        "corpus"
+      ],
+      "requiredOutputs": [
+        "brief et arbitrages"
+      ],
+      "blockers": [
+        "ND requis",
+        "collision",
+        "persona inventée"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-15T10:40:59.153Z",
+      "evidenceRefs": [
+        "docs/qa/hub-ressources/freshness-r4-exec.md"
+      ]
+    },
+    {
+      "id": "G2",
+      "name": "vérité",
+      "requiredInputs": [
+        "unités/claims/citations/sources",
+        "copies",
+        "revue sensible"
+      ],
+      "requiredOutputs": [
+        "registre et verdicts"
+      ],
+      "blockers": [
+        "claim omis",
+        "source non soutenante/T4-T5",
+        "sensible sans primaire/reviewer"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-15T10:40:59.153Z",
+      "evidenceRefs": [
+        "docs/qa/hub-ressources/freshness-r4-exec.md"
+      ]
+    },
+    {
+      "id": "G3",
+      "name": "rendu",
+      "requiredInputs": [
+        "sources",
+        "assets",
+        "routes",
+        "tests format"
+      ],
+      "requiredOutputs": [
+        "HTML/schema/liens/objet testés"
+      ],
+      "blockers": [
+        "fausse UI",
+        "fichier cassé",
+        "orphan",
+        "preview indexable"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-15T10:40:59.153Z",
+      "evidenceRefs": [
+        "docs/qa/hub-ressources/freshness-r4-exec.md"
+      ]
+    },
+    {
+      "id": "G4",
+      "name": "revue",
+      "requiredInputs": [
+        "rendu",
+        "grille",
+        "revue indépendante"
+      ],
+      "requiredOutputs": [
+        "score recalculé, défauts"
+      ],
+      "blockers": [
+        "score <90",
+        "P0/P1",
+        "auto-attestation"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-15T10:40:59.153Z",
+      "evidenceRefs": [
+        "docs/qa/hub-ressources/freshness-r4-exec.md"
+      ]
+    },
+    {
+      "id": "G5",
+      "name": "candidat exact",
+      "requiredInputs": [
+        "hashes",
+        "preview HTML+HTTP",
+        "audit",
+        "GO Kevin"
+      ],
+      "requiredOutputs": [
+        "candidat scellé"
+      ],
+      "blockers": [
+        "hash divergent",
+        "GO vague/ancien",
+        "preview non protégée"
+      ],
+      "status": "PENDING",
+      "result": "PENDING",
+      "checkedAt": null,
+      "evidenceRefs": []
+    },
+    {
+      "id": "G6",
+      "name": "release",
+      "requiredInputs": [
+        "préflight",
+        "autorisation",
+        "rollback"
+      ],
+      "requiredOutputs": [
+        "lecture distante, baseline"
+      ],
+      "blockers": [
+        "mismatch",
+        "noindex production",
+        "GO absent"
+      ],
+      "status": "PENDING",
+      "result": "PENDING",
+      "checkedAt": null,
+      "evidenceRefs": []
+    }
+  ],
+  "quality": {
+    "severityContractVersion": 1,
+    "migrationRule": "Le pipeline Blog historique contrôle P0. La couche multi-format ajoute P1 sans modifier ce contrôle; P1 absent ou null sur un candidat exécutable bloque et n’équivaut jamais à [].",
+    "rubric": [
+      {
+        "id": "intent-satisfaction",
+        "weight": 20,
+        "result": "PASS",
+        "earned": 20,
+        "observations": [
+          "Contrôle déterministe du candidat v3 rejoué avec npm run build:site."
+        ],
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ]
+      },
+      {
+        "id": "serp-format-rankability",
+        "weight": 15,
+        "result": "ND",
+        "earned": 0,
+        "observations": [
+          "SERP fournisseur ND : aucun point SEO brut attribué ; score normalisé sur les 85 points mesurables."
+        ],
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ]
+      },
+      {
+        "id": "eeat-sources",
+        "weight": 20,
+        "result": "PASS",
+        "earned": 20,
+        "observations": [
+          "Contrôle déterministe du candidat v3 rejoué avec npm run build:site."
+        ],
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ]
+      },
+      {
+        "id": "information-gain-proof",
+        "weight": 20,
+        "result": "PASS",
+        "earned": 20,
+        "observations": [
+          "Contrôle déterministe du candidat v3 rejoué avec npm run build:site."
+        ],
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ]
+      },
+      {
+        "id": "technical-onpage-seo",
+        "weight": 10,
+        "result": "PASS",
+        "earned": 10,
+        "observations": [
+          "Contrôle déterministe du candidat v3 rejoué avec npm run build:site."
+        ],
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ]
+      },
+      {
+        "id": "ai-citability",
+        "weight": 10,
+        "result": "PASS",
+        "earned": 10,
+        "observations": [
+          "Contrôle déterministe du candidat v3 rejoué avec npm run build:site."
+        ],
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ]
+      },
+      {
+        "id": "contextual-conversion",
+        "weight": 5,
+        "result": "PASS",
+        "earned": 5,
+        "observations": [
+          "Contrôle déterministe du candidat v3 rejoué avec npm run build:site."
+        ],
+        "evidenceRefs": [
+          "docs/qa/hub-ressources/freshness-r4-exec.md"
+        ]
+      }
+    ],
+    "recalculatedScore": 100,
+    "minimum": 90,
+    "p0": [],
+    "p1": [],
+    "blocking": false,
+    "rule": "earned=weight si PASS sinon 0; somme sans redistribution ND; final score>=90, p0=[] et p1=[]."
+  },
+  "integrity": {
+    "entryContract": {
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "ordering": "path ASC Unicode, slash POSIX, chemins relatifs à la racine du candidat",
+      "serialization": "UTF-8 JSON canonique, clés triées, sans espaces"
+    },
+    "sourceBundle": {
+      "entries": [
+        {
+          "path": "docs/qa/hub-ressources/metier-fix-a-sources/cnil-controle-activite.txt",
+          "bytes": 1602,
+          "sha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3"
+        },
+        {
+          "path": "docs/qa/hub-ressources/metier-fix-a-sources/net-annule.txt",
+          "bytes": 895,
+          "sha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9"
+        },
+        {
+          "path": "docs/qa/hub-ressources/metier-fix-a-sources/net-crm.txt",
+          "bytes": 874,
+          "sha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15"
+        },
+        {
+          "path": "docs/qa/hub-ressources/metier-fix-a-sources/net-dsn-val.txt",
+          "bytes": 505,
+          "sha256": "9834a215c9c9e3958c928cfaae86403dcde770e4bc810ea01fd804bbca32db34"
+        },
+        {
+          "path": "src/data/resource-summaries.json",
+          "bytes": 1086,
+          "sha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4"
+        },
+        {
+          "path": "src/pages/ressources.astro",
+          "bytes": 15317,
+          "sha256": "403ec36bf1469f3b87ce93c8f50b66fff53b9633c5e26c8f0eb639a0efaf86fe"
+        }
+      ],
+      "digest": "e63bdba6d4d667c059d3bc83827f0e97b5b4d62098bf1637589ed4bcc2bec7f7"
+    },
+    "assetBundle": {
+      "entries": [
+        {
+          "path": "src/pages/ressources.astro",
+          "bytes": 15317,
+          "sha256": "403ec36bf1469f3b87ce93c8f50b66fff53b9633c5e26c8f0eb639a0efaf86fe"
+        }
+      ],
+      "digest": "62730565e747db359ef83dd42a3c8f145e1ae1605d40d66dc0bc3725043b6d2d"
+    },
+    "configBundle": {
+      "entries": [
+        {
+          "path": "editorial/resources/hub/skills.json",
+          "bytes": 1552,
+          "sha256": "63ef54814c12b7b364d1633b09e25b00ea6451526b08e5375693a51a0e1c2457"
+        },
+        {
+          "path": "scripts/lib/resource-metier-evidence.mjs",
+          "bytes": 17542,
+          "sha256": "3799774a921c0b299b93b065ea238246836068f6e7a9d04f1ebd75752c67df29"
+        },
+        {
+          "path": "scripts/lib/resource-metier-v3.mjs",
+          "bytes": 7352,
+          "sha256": "0e7064a6647e5a0116fa699961eae0d421b3ba136421952017e57b2572ab8322"
+        },
+        {
+          "path": "src/data/resources.ts",
+          "bytes": 4213,
+          "sha256": "3c3af3bcf59d0b94d0f5d9b0929bf220129af8bed396f745717d02391a17c5a5"
+        }
+      ],
+      "digest": "aa7914062971462c34dd4d65410aa2509812ffb98cb8864f29477a6305e07b19"
+    },
+    "buildOutput": {
+      "entries": [
+        {
+          "path": "dist/ressources.html",
+          "bytes": 54880,
+          "sha256": "e139854d1ce084c3d87aa30984d901935394f6fe4326f767e726cab693a9218f"
+        }
+      ],
+      "digest": "33a29264abc242e1f175cc722c9a6a13eca37e499a170df83fc2c13945ed551e"
+    },
+    "candidateHash": {
+      "value": "c9fc69239cbc1a72855f955a0b1efe564d23d3d6cc345ff937638886a8c7a4e2",
+      "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
+    },
+    "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
+  },
+  "build": {
+    "pipelineCommit": "5c33c9ba18807cc70c6535e4edbbf3327bdd7d9a",
+    "commands": [
+      "npx astro build",
+      "node scripts/strip-briefs.mjs",
+      "npm run build:site"
+    ],
+    "startedAt": "2026-09-15T10:40:56.432Z",
+    "endedAt": "2026-09-15T10:41:52.083Z",
+    "result": "PASS",
+    "sourceBundleDigest": "e63bdba6d4d667c059d3bc83827f0e97b5b4d62098bf1637589ed4bcc2bec7f7",
+    "assetBundleDigest": "62730565e747db359ef83dd42a3c8f145e1ae1605d40d66dc0bc3725043b6d2d",
+    "configBundleDigest": "aa7914062971462c34dd4d65410aa2509812ffb98cb8864f29477a6305e07b19",
+    "outputDigest": "33a29264abc242e1f175cc722c9a6a13eca37e499a170df83fc2c13945ed551e",
+    "reportRefs": [
+      "docs/qa/hub-ressources/freshness-r4-exec.md"
+    ],
+    "receiptRef": "docs/qa/hub-ressources/metier-fix-c-build-receipt.json",
+    "receiptSha256": "57ba0b8f35dc42f2dda8fc99dfcadb9aadd123f0d6fc255cf0f10309d712d8cf"
+  },
+  "preview": {
+    "branch": null,
+    "deploymentId": null,
+    "requestedUrl": null,
+    "finalUrl": null,
+    "candidateHash": null,
+    "buildOutputDigest": null,
+    "htmlNoindexNofollow": null,
+    "httpXRobotsNoindexNofollow": null,
+    "excludedFromSitemap": null,
+    "excludedFromFeeds": null,
+    "routeChecks": [],
+    "captureRefs": [],
+    "reportRef": null
+  },
+  "audit": {
+    "candidateHash": "c9fc69239cbc1a72855f955a0b1efe564d23d3d6cc345ff937638886a8c7a4e2",
+    "buildOutputDigest": "33a29264abc242e1f175cc722c9a6a13eca37e499a170df83fc2c13945ed551e",
+    "gateReportRefs": [
+      "fixture://audit/gates"
+    ],
+    "testReportRefs": [
+      "fixture://audit/tests"
+    ],
+    "reviewEvidenceRef": "fixture://audit/review",
+    "score": 100,
+    "p0": [],
+    "p1": [],
+    "result": "PASS",
+    "auditHash": "a084db10f6c4fad182b61bb4e74c5745695de88f4b5d96268a95c21fbc055f05"
+  },
+  "approval": {
+    "state": "pending",
+    "approvedBy": null,
+    "channel": null,
+    "exactMessage": null,
+    "receivedAt": null,
+    "candidateHash": null,
+    "auditHash": null,
+    "previewFinalUrl": null,
+    "durableEvidenceRef": null,
+    "scope": null,
+    "rule": "Seul GO Kevin relié à candidateHash, auditHash et previewFinalUrl exacts; tout changement invalide."
+  },
+  "release": {
+    "authorized": false,
+    "preflightCandidateHash": null,
+    "deploymentId": null,
+    "productionUrl": null,
+    "remoteDigest": null,
+    "rollbackRef": null,
+    "result": "PENDING"
+  },
+  "negativeWitnessesRef": "negative-witnesses-v1.json",
+  "contradictions": [],
+  "limitations": [
+    "Candidat v3 non publié ; preview, approbation et release restent futures.",
+    "Contenu paie/social explicitement non attesté. Revue IA indépendante PENDING : aucun AI_REVIEW_PASS n’est revendiqué.",
+    "SERP ND : opportunité SEO non établie et aucun point SEO brut attribué.",
+    "Aucune donnée client réelle, aucune surveillance nominative, aucune publication ou cron."
+  ]
+}

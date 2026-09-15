@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "articleSha256": "03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
+  "kind": "business-review-deferral",
+  "status": "PASS",
+  "checkedAt": "2026-09-13",
+  "observations": [
+    "La revue métier paie et sociale reste explicitement obligatoire avant toute publication en production."
+  ],
+  "approvedBy": "kevin",
+  "decision": "defer-until-publication",
+  "publicationBlocked": true,
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/business-review-deferral.json",
+    "originalSha256": "db6e765758ebde85b07926c77949fbc1c009a28205cc0ce9dea0667474397216",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

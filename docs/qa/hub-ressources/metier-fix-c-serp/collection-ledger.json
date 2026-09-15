@@ -1,0 +1,262 @@
+{
+  "checkedAt": "2026-09-14T16:52:50.566189+00:00",
+  "collectionStatus": "FAIL",
+  "authorizedTasks": 4,
+  "executedTasks": 4,
+  "pass": 2,
+  "fail": 2,
+  "totalCostUSD": "0.008",
+  "retryPerformed": false,
+  "candidateV3Produced": false,
+  "scope": "France/fr, depth 10, two queries × desktop/mobile; no volume or other research",
+  "gateRule": "Envelope AND per-task status 20000, parameters exact, at least 5 organic results; partial results cannot close H/T gate",
+  "rows": [
+    {
+      "name": "hub-desktop",
+      "taskId": "09141650-1656-0139-0000-2d66d463a4a4",
+      "receiptAt": "2026-09-14T16:50:36.101004+00:00",
+      "sessionId": "20260914_174844_215c0e",
+      "tool": "mcp__dataforseo__api_request",
+      "request": {
+        "keyword": "ressources cabinet comptable automatisation",
+        "location_code": 2250,
+        "language_code": "fr",
+        "device": "desktop",
+        "depth": 10
+      },
+      "envelopeStatus": 20000,
+      "taskStatus": 40101,
+      "taskMessage": "Internal SE Server Error.",
+      "envelopeTasksError": 0,
+      "parametersMatch": true,
+      "resultParametersMatch": false,
+      "organicCount": 0,
+      "uniqueOrganicUrls": 0,
+      "collectionPass": false,
+      "costUSD": 0.002,
+      "envelopeCostUSD": 0.002,
+      "resultDatetimes": [],
+      "features": [],
+      "organic": [],
+      "requestSha256": "0970e10093219d52fc351090437f10f72ca596ca25126353d8afa1318a77b88f",
+      "responseSha256": "b08b048423bb73335337193d552b03f38424c46776e5b2b08dc52c250d53313f",
+      "toolReceiptSha256": "98347511c0ca3d566e831ffadff62444f350268407988d6d0f1ef07430b03296"
+    },
+    {
+      "name": "hub-mobile",
+      "taskId": "09141650-1656-0139-0000-6eca11d8254b",
+      "receiptAt": "2026-09-14T16:50:47.399037+00:00",
+      "sessionId": "20260914_174844_215c0e",
+      "tool": "mcp__dataforseo__api_request",
+      "request": {
+        "keyword": "ressources cabinet comptable automatisation",
+        "location_code": 2250,
+        "language_code": "fr",
+        "device": "mobile",
+        "depth": 10
+      },
+      "envelopeStatus": 20000,
+      "taskStatus": 20000,
+      "taskMessage": "Ok.",
+      "envelopeTasksError": 0,
+      "parametersMatch": true,
+      "resultParametersMatch": true,
+      "organicCount": 9,
+      "uniqueOrganicUrls": 9,
+      "collectionPass": true,
+      "costUSD": 0.002,
+      "envelopeCostUSD": 0.002,
+      "resultDatetimes": [
+        "2026-09-14 16:50:47 +00:00"
+      ],
+      "features": [
+        "ai_overview",
+        "organic",
+        "people_also_ask"
+      ],
+      "organic": [
+        {
+          "rank_group": 1,
+          "url": "https://www.chaintrust.io/blog/la-tech-dans-la-compta/cabinet-comptable-automatisation-des-processus-metier/",
+          "title": "Le cabinet comptable 2.0 : vers l'automatisation des processus métier",
+          "description": "Parmi tous les cabinets d'expertise comptable qui existent en France, près de 8 cabinets sur 10 envisagent d'automatiser leur processus de saisie comptable dans ..."
+        },
+        {
+          "rank_group": 2,
+          "url": "https://www.getyooz.com/fr/automatisation-comptabilite",
+          "title": "Automatisation de la comptabilité : tout comprendre",
+          "description": "L'automatisation de la comptabilité devient essentielle, incitant les experts-comptables à revoir en priorité leurs processus pour rester compétitifs."
+        },
+        {
+          "rank_group": 3,
+          "url": "https://www.agiris.fr/articles/automatisation-comptable-une-chance-pour-le-cabinet-bien-%C3%A9quip%C3%A9",
+          "title": "Automatisation comptable : une chance pour le cabinet bien équipé",
+          "description": "Les gains induits par l'automatisation pour le client du cabinet comptable · Simplification de la communication entre le cabinet et l'entreprise, ..."
+        },
+        {
+          "rank_group": 4,
+          "url": "https://www.everial.com/partage-expertises/automatisation-de-la-comptabilite-tout-comprendre/",
+          "title": "Automatisation de la comptabilité : tout comprendre",
+          "description": "9 mars 2026 — L'automatisation comptable renforce la conformité et la sécurité des cabinets comptables. Elle aide à respecter les normes réglementaires et ..."
+        },
+        {
+          "rank_group": 5,
+          "url": "https://www.queoval-expert.com/actualites/automatisation-cabinet-comptable-guide-complet-2026",
+          "title": "Automatisation cabinet comptable : le guide complet 2026",
+          "description": "9 janv. 2026 — Automatisation cabinet comptable : définition, outils, avantages et cas concrets. Découvrez comment optimiser vos processus en 2026."
+        },
+        {
+          "rank_group": 6,
+          "url": "https://bonjouria.fr/application-metier-ia/automatisation-ia-expert-comptable/",
+          "title": "Automatisation IA spécifique Cabinet Expert-Comptable",
+          "description": "Des applications IA et une intégration IA pour votre cabinet d'Expert-Comptable pour automatiser les tâches administratives."
+        },
+        {
+          "rank_group": 7,
+          "url": "https://fr.linkedin.com/pulse/lexpertise-comptable-%C3%A0-l%C3%A8re-de-lautomatisation-valentin-tonti-bernard-qyode",
+          "title": "L'expertise-comptable à l'ère de l'automatisation",
+          "description": "L'automatisation de la saisie comptable, l'intégration de l'intelligence artificielle dans les outils métier, et la généralisation imminente de ..."
+        },
+        {
+          "rank_group": 8,
+          "url": "https://myu.fr/cabinet-comptable/ressources/articles/ia-automatisation-strategie-cabinet-comptable/",
+          "title": "IA et automatisation : stratégie cabinet comptable",
+          "description": "Découvrez avec MyUnisoft comment intégrer l'IA dans votre cabinet pour gagner du temps, améliorer vos services et créer plus de valeur."
+        },
+        {
+          "rank_group": 9,
+          "url": "https://www.bridgeapi.io/actualites/meilleurs-logiciels-expert-comptable",
+          "title": "Top 16 des Meilleurs Logiciels pour Expert-Comptable (2022)",
+          "description": "Les meilleurs logiciels experts-comptables pour automatiser vos processus comptables · Macompta.fr · Tempolia · Cegid · Pennylane · Sage · IPaidThat."
+        }
+      ],
+      "requestSha256": "75338ba14c1a11cf76694ea73f7933c87b38c00e5cd358946d7cfecf0cd3e577",
+      "responseSha256": "cc30f8aa594290b57e1b7123159ea1b0860b3ff2f3a9ce046e43a206a7cf8926",
+      "toolReceiptSha256": "e5d050f8144b910e0275fab68195430e0ecbcbfab543297199ae8036b5cfd674"
+    },
+    {
+      "name": "glossaire-desktop",
+      "taskId": "09141650-1656-0139-0000-6e007ee34467",
+      "receiptAt": "2026-09-14T16:50:49.818843+00:00",
+      "sessionId": "20260914_174844_215c0e",
+      "tool": "mcp__dataforseo__api_request",
+      "request": {
+        "keyword": "glossaire cabinet comptable",
+        "location_code": 2250,
+        "language_code": "fr",
+        "device": "desktop",
+        "depth": 10
+      },
+      "envelopeStatus": 20000,
+      "taskStatus": 20000,
+      "taskMessage": "Ok.",
+      "envelopeTasksError": 0,
+      "parametersMatch": true,
+      "resultParametersMatch": true,
+      "organicCount": 9,
+      "uniqueOrganicUrls": 9,
+      "collectionPass": true,
+      "costUSD": 0.002,
+      "envelopeCostUSD": 0.002,
+      "resultDatetimes": [
+        "2026-09-14 16:50:49 +00:00"
+      ],
+      "features": [
+        "ai_overview",
+        "organic",
+        "people_also_ask",
+        "related_searches"
+      ],
+      "organic": [
+        {
+          "rank_group": 1,
+          "url": "https://www.pennylane.com/fr/fiches-pratiques/comptabilite/glossaire-du-vocabulaire-comptable-termes-et-definitions-essentiels",
+          "title": "Glossaire du vocabulaire comptable | Termes et définitions",
+          "description": "5 mars 2025 — Découvrez les termes clés de la comptabilité : le bilan, le compte de résultat, le chiffre d'affaires, etc. Un glossaire pour maîtriser les ..."
+        },
+        {
+          "rank_group": 2,
+          "url": "https://www.capeos.fr/lexique-comptable/",
+          "title": "Lexique comptable - Cabinet expertise comptable Rennes",
+          "description": "Le lexique comptable · Bilan · Compte de résultat · Fonds de roulement · Les immobilisations · Résultat d'exploitation · Résultat exceptionnel · Capitaux ..."
+        },
+        {
+          "rank_group": 3,
+          "url": "https://www.capsurlaperformance.fr/ics-basedoc/dl.php?file=427%7C427%7Cglossaire_20250911.pdf",
+          "title": "GLOSSAIRE DES TERMES ET EXPRESSIONS UTILISÉS",
+          "description": "11 sept. 2025 — Structure (ou Structure d'exercice professionnel) • Entité exerçant l'activité d'expertise comptable : expert-comptable exerçant à titre."
+        },
+        {
+          "rank_group": 4,
+          "url": "https://blog.tiime.fr/vocabulaire-comptable",
+          "title": "Le lexique de poche du vocabulaire comptable, par Tiime",
+          "description": "23 oct. 2025 — Le lexique de poche du vocabulaire comptable, par Tiime ... - Actif / Passif : l'actif représente ce que l'entreprise possède (immobilisations, ..."
+        },
+        {
+          "rank_group": 5,
+          "url": "https://supexpertise.fr/petit-lexique-de-la-comptabilite-a-lusage-des-non-inities/",
+          "title": "Petit lexique de la comptabilité à l'usage des non-initiés",
+          "description": "Bilan. Pour Monsieur Toulemonde, le bilan rapporte à une situation donnée, à une forme de conclusion. · Budget · Charge · Compte · Disponibilités · KBIS."
+        },
+        {
+          "rank_group": 6,
+          "url": "https://www.nexco-expertise.com/lexique-comptable",
+          "title": "Lexique comptable : glossaire des termes et definitions",
+          "description": "21 juin 2026 — Glossaire comptable : bilan, compte de resultat, debit, credit, plan comptable, TVA, amortissements. Toutes les definitions comptables."
+        },
+        {
+          "rank_group": 7,
+          "url": "https://actiononline.fr/wp-content/uploads/2017/06/Glossaire.pdf",
+          "title": "Lexique comptable et financier - Action On Line",
+          "description": "Définition comptable : La comptabilité est le système financier permettant de savoir ce que l'entreprise possède et ce qu'elle doit : c'est le bilan de l' ..."
+        },
+        {
+          "rank_group": 8,
+          "url": "https://www.sage.com/fr-fr/blog/17-termes-comptables-a-maitriser/",
+          "title": "17 termes comptables à maîtriser| Sage Advice France",
+          "description": "29 sept. 2023 — 1. L'actif · 2. Le passif · 3. Les fonds propres · 4. La valeur nette · 5. Le financement externe · 6. Les revenus · 7. Les dépenses · 8. Le bilan."
+        },
+        {
+          "rank_group": 9,
+          "url": "https://www.comptalents.fr/tops/lexique-comptable",
+          "title": "Lexique Comptable Essentiel",
+          "description": "25 oct. 2023 — Découvrez les termes clés de la comptabilité décryptés pour tous. Un lexique comptable pour maîtriser la comptabilité d'entreprise avec"
+        }
+      ],
+      "requestSha256": "8092600e4fb9484e98198d06b29a97953ef49049f742b660f5468dc0d444ff34",
+      "responseSha256": "df23ab5c4ef36f116747b31755084ea4905a2d5601db0e17f3de8f9c23744b76",
+      "toolReceiptSha256": "ee1c14d13233e0231d9afea7605cd9bcfdc583759187e4e33c0855f0a077931c"
+    },
+    {
+      "name": "glossaire-mobile",
+      "taskId": "09141650-1656-0139-0000-350c1c5e68ec",
+      "receiptAt": "2026-09-14T16:51:02.888197+00:00",
+      "sessionId": "20260914_174844_215c0e",
+      "tool": "mcp__dataforseo__api_request",
+      "request": {
+        "keyword": "glossaire cabinet comptable",
+        "location_code": 2250,
+        "language_code": "fr",
+        "device": "mobile",
+        "depth": 10
+      },
+      "envelopeStatus": 20000,
+      "taskStatus": 40101,
+      "taskMessage": "Internal SE Server Error.",
+      "envelopeTasksError": 0,
+      "parametersMatch": true,
+      "resultParametersMatch": false,
+      "organicCount": 0,
+      "uniqueOrganicUrls": 0,
+      "collectionPass": false,
+      "costUSD": 0.002,
+      "envelopeCostUSD": 0.002,
+      "resultDatetimes": [],
+      "features": [],
+      "organic": [],
+      "requestSha256": "eb92b8e5d156884836c07a745be21bef9a7b16c4a6dd8f9fdffc498e7edec735",
+      "responseSha256": "dac742d62d8c93143450a4465688b34e12555798c495b1e11a1fd7efcde16264",
+      "toolReceiptSha256": "946aa5da149458f83aadc30a7dc8b41fb41e064d0feeaf71a36de74d3159af33"
+    }
+  ]
+}
