@@ -1,0 +1,33 @@
+{
+  "collected_at": "2026-09-15T09:05:01Z",
+  "locale": "fr-FR",
+  "method": {
+    "engines": ["web_search (public web search interface)"],
+    "queries": [
+      "automatisation cabinet expertise comptable logiciel IA France Inqom Dext Pennylane MyUnisoft Silae",
+      "automatisation Excel cabinet expertise comptable France",
+      "suivi production sociale cabinet expertise comptable logiciel",
+      "contrôle bulletins avant DSN logiciel cabinet paie"
+    ],
+    "ranking_scope": "Résultats de moteur public uniquement; aucun top 10 Google établi.",
+    "volumes": "ND"
+  },
+  "retrieval_note": "Les appels web_search/web_extract ont été tentés le 2026-09-15 mais le backend public configuré a répondu 403 (clé Firecrawl absente). Les URLs officielles ci-dessous sont des pistes publiques à vérifier manuellement; elles ne constituent pas un classement ni une preuve de SERP.",
+  "competitors": [
+    {"name":"Inqom","url":"https://www.inqom.com/","page_type":"site éditeur / plateforme comptable","factual_message_to_verify":"Automatisation et pilotage de la production comptable, avec positionnement IA.","differentiation_factuelle":"Plateforme métier comptable; ne pas inférer une intégration Excel ou un contrôle paie sans preuve dédiée.","memlia_opportunity":"Rendre explicite le résultat livré dans les fichiers Excel du cabinet, avec proposition IA puis validation humaine."},
+    {"name":"Dext","url":"https://www.dext.com/fr","page_type":"site produit / capture et traitement de pièces","factual_message_to_verify":"Automatisation de la collecte, extraction et traitement des documents comptables.","differentiation_factuelle":"Point d’entrée documentaire et comptable; périmètre à distinguer de l’automatisation de règles dans les classeurs existants.","memlia_opportunity":"Occuper le cas d’usage postérieur: contrôles et préparation dans les fichiers de travail, sans remplacer l’outil source."},
+    {"name":"Pennylane","url":"https://www.pennylane.com/fr","page_type":"site éditeur / plateforme de gestion financière et comptable","factual_message_to_verify":"Plateforme unifiée pour entreprises et cabinets, couvrant comptabilité et pilotage.","differentiation_factuelle":"Approche plateforme; vérifier séparément les fonctions Excel, paie et production sociale.","memlia_opportunity":"Positionner Memlia comme complément ciblé, déployé sur les processus propres au cabinet plutôt qu’un catalogue généraliste."},
+    {"name":"MyUnisoft","url":"https://www.myunisoft.fr/","page_type":"site éditeur / suite cabinet","factual_message_to_verify":"Suite logicielle destinée aux cabinets d’expertise comptable et à la production/pilotage.","differentiation_factuelle":"Concurrent de suite métier; les capacités précises de suivi social et d’automatisation Excel restent à sourcer.","memlia_opportunity":"Parler de complexité de la règle et du fichier réel, pas du nombre de sièges; complément possible aux suites en place."},
+    {"name":"Silae","url":"https://www.silae.fr/","page_type":"site éditeur / paie et gestion sociale","factual_message_to_verify":"Écosystème logiciel centré sur la paie et la gestion sociale.","differentiation_factuelle":"Alternative de cœur paie; ne pas présenter Silae comme concurrent direct de l’automatisation Excel sans preuve.","memlia_opportunity":"Se différencier sur le contrôle amont/aval des données et bulletins dans les outils de travail du cabinet, l’humain restant décideur."}
+  ],
+  "references_distinct": [
+    {"name":"Rillet","url":"https://www.rillet.com/","reason":"Référence de messaging produit autour de l’automatisation comptable; pas concurrent français établi."},
+    {"name":"Navattic","url":"https://www.navattic.com/","reason":"Référence de démonstration interactive et de présentation; pas concurrent métier."}
+  ],
+  "search_intents": [
+    {"query":"automatisation cabinet expertise comptable","intent":"commerciale: trouver un logiciel ou prestataire pour réduire les tâches répétitives du cabinet","content_implication":"clarifier tâches, livrable, intégration à l’existant et validation humaine"},
+    {"query":"automatisation Excel cabinet expertise comptable","intent":"solution: automatiser des classeurs sans abandonner Excel","content_implication":"montrer un avant/après sur fichier fictif; préciser Office.js/COM selon environnement, sans promesse non livrée"},
+    {"query":"suivi production sociale cabinet expertise comptable","intent":"pilotage opérationnel: suivre portefeuille, échéances, charge et écarts du pôle social","content_implication":"employer portefeuille, pôle social, collaborateur, agrégats; distinguer suivi de production et surveillance nominative"},
+    {"query":"contrôle bulletins avant DSN","intent":"problème métier: détecter divergences et anomalies avant transmission","content_implication":"décrire contrôle, écart et décision humaine; sourcer toute affirmation réglementaire"}
+  ]
+}

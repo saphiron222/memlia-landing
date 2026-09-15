@@ -1,0 +1,26 @@
+{
+  "verdict": "PASS",
+  "date": "2026-09-15T09:35:25.779600+00:00",
+  "documents": 12,
+  "required_fields_per_page": 21,
+  "all_graph": {
+    "pages": 14,
+    "edges": 66,
+    "max_clicks": 2,
+    "orphans": 0
+  },
+  "now_graph": {
+    "pages": 13,
+    "edges": 60,
+    "max_clicks": 2,
+    "orphans": 0
+  },
+  "new_pages": 5,
+  "competitors_directly_read": 5,
+  "responsive_measurements": 12,
+  "lighthouse_runs": 4,
+  "mutants": [
+    "orphan_graph_rejected"
+  ],
+  "scope": "documentation validation; not implementation acceptance"
+}

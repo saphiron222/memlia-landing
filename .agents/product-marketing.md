@@ -1,190 +1,52 @@
-# Product Marketing Context
+# Contexte marketing Memlia
 
-**Document version:** v1
-**Last updated:** 2026-09-08
+Document version : v1
+Last updated : 2026-09-15
 
-## Product Overview
+## Produit et modèle économique
+Memlia automatise le travail répétitif des cabinets d’expertise comptable dans leurs outils existants. C’est un service : observer une tâche, définir ses règles et ses limites, construire une automatisation, éprouver ses résultats et ses refus, puis remettre un périmètre à la recette du cabinet. L’IA prépare, l’humain décide.
 
-**One-liner:** Memlia automatise avec l'IA les tâches répétitives des cabinets d'expertise comptable, dans un périmètre adapté à leurs processus et à leurs outils.
+Le résultat et les critères d’acceptation sont définis au devis ; prix à la complexité, jamais au siège. Maintenance, support et évolutions sont définis au contrat, sans délai ni disponibilité universels promis. Excel est une intégration structurante (compléments Office.js ou COM/.NET suivant le cas), pas la catégorie commerciale ni une promesse de compatibilité générale. Les logiciels métier et exports restent en place lorsque les formats et accès le permettent.
 
-**What it does:** Memlia observe une tâche réelle du cabinet, formalise ses entrées, ses règles, ses exceptions et ses validations, puis livre l'automatisation correspondante. L'IA prépare ou exécute la mécanique autorisée ; les décisions sensibles restent visibles et validées par un professionnel. L'automatisation peut s'intégrer aux logiciels, exports, messageries, dossiers partagés ou classeurs Excel déjà utilisés.
+## Audience et personas
+- Expert-comptable / dirigeant : identifier une tâche qui mérite un investissement, connaître le périmètre, les limites, la recette et le prix.
+- Responsable de production sociale : rendre les étapes et les exceptions visibles sans classer les collaborateurs ; contrôler avant la transmission.
+- Gestionnaire / collaborateur : moins de ressaisies et de rapprochements ; comprendre ce qui est proposé et conserver ses saisies.
+- Référent outils / sécurité : savoir quels fichiers, accès, droits, traces et conditions de maintenance sont requis.
 
-**Product category:** Service d'automatisation IA pour cabinets d'expertise comptable.
+JTBD : préparer des informations répétitives ; rendre les écarts vérifiables ; suivre l’avancement agrégé des dossiers ; garder le jugement humain. France, proximité commerciale bretonne. Aucun besoin de pages-villes pour trouver des clients de cabinets plutôt que des cabinets clients.
 
-**Product type:** Service B2B sur mesure avec logiciel livré et adapté au périmètre convenu ; ce n'est ni un SaaS générique en libre-service ni un catalogue public de modules.
+## Problèmes, objections et dynamique de changement
+| Objection | Réponse autorisée |
+|---|---|
+| Nous avons déjà un logiciel | Nous partons de la tâche entre les outils ; les accès et formats sont vérifiés avant de s’engager. |
+| Une IA peut se tromper | Cas limites et données absentes font partie des essais ; la proposition n’est pas la décision. |
+| Cela va changer notre organisation | Un périmètre limité est cadré avant développement et soumis à recette. Aucune migration évitée garantie avant examen. |
+| Combien cela coûte ? | La complexité des règles, formats, exceptions et contraintes détermine le devis ; ni tarif fictif ni pack de sièges. |
+| Qui voit quoi ? | Accès et traitements à documenter par mission ; démonstrations fictives, vues de pilotage agrégées. Pas de certification ou localisation d’hébergement inventée. |
 
-**Business model:** Devis selon la complexité, les intégrations, les exceptions, les validations et la valeur du processus couvert ; jamais selon le nombre de sièges. Maintenance, support et évolutions sont cadrés dans la proposition commerciale.
+Push : travail répétitif et exceptions dispersées. Pull : un résultat vérifiable dans l’existant. Habitude : classeurs et procédures connus. Anxiété : perte de contrôle, données, maintenance. Anti-personas : salarié cherchant une vérification individuelle de sa paie ; acheteur d’un moteur de paie ou d’une plateforme comptable complète ; demande de surveillance nominative.
 
-## Target Audience
+## Alternatives et différence
+Inqom, Dext, Pennylane, MyUnisoft et Silae sont des alternatives de budget/processus et parfois des outils sources, pas cinq concurrents directs prouvés. Leurs sites officiels ont été lus le 15/09/2026 (docs/strategy/site-v2/COMPETITOR-ANALYSIS.md). Aucune prétention d’exclusivité sur le « contrôle humain » : Dext et Inqom le mettent également en avant. Notre différence à démontrer est le service circonscrit, ses règles, ses exceptions et sa recette ; ne pas dénigrer leurs intégrations.
 
-**Target companies:** Cabinets d'expertise comptable, en priorité en Bretagne puis en France. Le besoin prime sur la taille : processus fréquent, règles explicables, exceptions listables et résultat vérifiable.
+## Vocabulaire et voix
+Français professionnel, concret, calme ; vouvoiement public. Tâche, cabinet, dossier, bulletin, DSN, règle, proposition, écart, recette, validation humaine. Définir « recette » et « fail-closed » lors de leur première apparition. Éviter plateforme tout-en-un, autonome, zéro erreur, conformité garantie, révolution, gains chiffrés sans mesure. Aucun faux verbatim client : les formulations sont des synthèses, sauf source autorisée explicite.
 
-**Decision-makers:** Experts-comptables, dirigeants de cabinet, responsables de production, responsables de pôle et référents métier.
+## Preuves autorisées
+src/data/proofs.ts décrit des illustrations fonctionnelles fictives : elles ne sont ni des captures produit ni des résultats client. Les deux guides publiés sont des preuves pédagogiques, pas une attestation métier. Les capacités précises doivent être reliées à un module livré et à une preuve de recette ; l’existence d’un dépôt ne suffit pas. Aucun logo client, témoignage, nombre de cabinets ni pourcentage de gain disponible pour la copy publique. Aucun nom client interne à republier. Kevin Kitanga est l’auteur public des articles et le fondateur, pas un expert-comptable diplômé présumé.
 
-**Primary use case:** Retirer une tâche ou un processus répétitif et chronophage aux équipes sans imposer une nouvelle plateforme ni retirer au cabinet le contrôle de ses décisions.
+## Garde-fous
+Aucune donnée client réelle dans ces livrables, aucun téléphone public ni TVA non confirmée, y compris dans le JSON-LD et les légales. Pas de classement de salariés. Ne pas promettre « toutes vos données restent locales », une certification ou une compatibilité universelle. Faits juridiques : relire la source légale courante ; le siège légal et le lieu d’exercice ne sont pas synonymes.
 
-**Jobs to be done:**
-- Automatiser la mécanique répétitive d'un processus connu.
-- Faire remonter les exceptions et cas ambigus à la bonne personne.
-- Fiabiliser l'exécution d'une règle dans un périmètre éprouvé.
-- Conserver les outils et habitudes utiles du cabinet.
+## Objectif et conversion
+Une action principale : Identifier une tâche à automatiser. Destination interne décidée pour v2 : /contact, puis liens existants Cal.com et contact@memlia.fr. Aucun formulaire collecteur ni dépôt de fichier dans v2. Le visiteur apporte une description sans données client. Mesures de trafic, conversion et requêtes propres à memlia.fr : ND à ce jour dans le présent audit. Un clic CTA ne prouve pas un rendez-vous ni un prospect qualifié.
 
-**Use cases:**
-- Collecter et préparer des informations issues de sources convenues.
-- Contrôler des éléments selon une liste de règles définies par le cabinet.
-- Rapprocher des sources et produire une synthèse vérifiable.
-- Suivre les étapes d'un processus et signaler ce qui bloque.
-- Préparer les éléments nécessaires à une décision professionnelle.
-
-Ces familles sont des exemples de cadrage, pas un catalogue de fonctionnalités disponibles ni une promesse de compatibilité universelle.
-
-## Personas
-
-| Persona | Cares about | Challenge | Value we promise |
-|---------|-------------|-----------|------------------|
-| Expert-comptable / dirigeant | Capacité du cabinet, qualité, maîtrise du risque, valeur apportée aux clients | Le temps des équipes est absorbé par des manipulations répétées ; une IA autonome créerait un risque supplémentaire | Un processus borné et automatisé, facturé selon sa complexité, avec décisions sensibles maintenues au cabinet |
-| Responsable de production | Régularité, visibilité sur les exceptions, respect du processus | Les mêmes contrôles sont rejoués manuellement et les cas atypiques se repèrent tard | Une mécanique constante qui traite le périmètre défini et signale les exceptions |
-| Référent métier / responsable de pôle | Fidélité à la règle métier, cas limites, adoption par l'équipe | Les règles sont connues mais dispersées, implicites ou dépendantes de manipulations individuelles | Une règle formalisée, testée sur des jeux fictifs et validée en recette |
-| Utilisateur opérationnel | Simplicité, continuité des outils, compréhension des résultats | Les ressaisies et bascules entre outils consomment du temps ; les sorties opaques inspirent peu confiance | Une automatisation intégrée au travail existant, avec sorties et refus compréhensibles |
-| Interlocuteur technique / sécurité | Accès, flux, données, maintenance, auditabilité | Une intégration générique peut demander trop de droits ou masquer ses traitements | Sources, droits, traitements et responsabilités documentés pour chaque automatisation |
-
-## Problems & Pain Points
-
-**Core problem:** Les équipes rejouent à la main des tâches fréquentes — collecte, copie, tri, rapprochement, contrôle, synthèse ou suivi — alors que la règle est souvent assez stable pour être automatisée dans un périmètre défini.
-
-**Why alternatives fall short:**
-- Les manipulations manuelles sont souples mais prennent du temps, varient selon les personnes et rendent les exceptions difficiles à suivre.
-- Les outils génériques demandent au cabinet de traduire seul son processus dans une plateforme supplémentaire.
-- Les automatisations opaques ou trop autonomes ne rendent pas clairement les limites, les sources et les décisions.
-- Une migration complète crée un chantier disproportionné lorsqu'une tâche bornée est le vrai problème.
-
-**What it costs them:** Temps opérationnel, reprises, dépendance à des gestes individuels et attention détournée des dossiers ou échanges qui demandent du jugement. Aucun gain chiffré ne doit être publié sans mesure attribuable.
-
-**Emotional tension:** Lassitude de refaire les mêmes opérations, crainte qu'une anomalie passe inaperçue, peur d'une IA qui agirait seule, et réticence à ajouter un nouvel outil lourd à déployer.
-
-## Competitive Landscape
-
-**Direct:** Prestataires ou éditeurs qui automatisent sur mesure les processus des cabinets — ils peuvent concurrencer Memlia sur la personnalisation et l'intégration.
-
-**Secondary:** Logiciels métier et plateformes d'automatisation généralistes — ils couvrent une partie du problème, mais peuvent demander au cabinet de paramétrer lui-même la règle ou de déplacer son travail.
-
-**Indirect:** Traitement manuel dans Excel, exports, messageries et logiciels existants — très familier et adaptable, mais répétitif et dépendant des personnes.
-
-**Reference, not direct equivalence:** Rillet vend un ERP IA et nomme un résultat opérationnel. Memlia reprend le principe marketing « résultat livré + contrôle humain », sans reprendre sa catégorie, ses textes, ses promesses ou son approche de remplacement des outils.
-
-## Differentiation
-
-**Key differentiators:**
-- Un service centré sur un processus réel, pas des sièges logiciels.
-- Une automatisation adaptée aux outils et fichiers existants quand la faisabilité le permet.
-- Des règles, exceptions, arrêts et validations définis avant la livraison.
-- Une recette sur jeux fictifs représentatifs du périmètre.
-- Un comportement fail-closed sur les cas non couverts.
-- Un contrôle humain explicite pour les décisions sensibles.
-- Une conception anti-surveillance : agrégats utiles au processus, jamais classement nominatif des salariés.
-
-**How we do it differently:** Le cabinet montre la tâche. Memlia observe le processus, écrit le périmètre, construit et teste l'automatisation, puis le cabinet valide la recette. Le travail d'implémentation reste à la charge de Memlia ; la validation métier reste au cabinet.
-
-**Why that's better:** Le cabinet retire une friction précise sans acheter une plateforme abstraite, sans payer chaque utilisateur et sans déléguer le jugement professionnel.
-
-**Why customers choose us:** Pour automatiser une tâche fréquente tout en gardant leurs outils utiles, leurs règles, leurs points de contrôle et une compréhension claire des limites.
-
-## Objections
-
-| Objection | Response |
-|-----------|----------|
-| « Il faudra remplacer nos outils. » | Pas par principe. Memlia cherche d'abord à intégrer l'automatisation à l'environnement existant. Toute évolution nécessaire est identifiée avant le développement. |
-| « L'IA risque d'agir ou d'inventer seule. » | La mécanique autorisée, les décisions sensibles et les cas de refus sont distingués dans le périmètre. Un cas ambigu est bloqué ou signalé. |
-| « Notre façon de travailler est trop spécifique. » | La spécificité est le point de départ du service. Elle devient néanmoins une limite si la règle ne peut pas être expliquée, testée ou maintenue. |
-| « Nous ne voulons pas exposer nos données clients. » | Aucun fichier client réel n'est demandé pour une démonstration ou utilisé comme jeu de développement/test. Les besoins d'exploitation sont documentés automatisation par automatisation. |
-| « Le coût augmentera avec l'équipe. » | Le devis dépend de la complexité et de la valeur du processus, jamais du nombre de sièges. |
-
-**Anti-persona:** Cabinet qui cherche une plateforme self-service instantanée, veut automatiser un jugement non formalisable sans validation humaine, exige une compatibilité universelle non testée, souhaite surveiller ou classer individuellement ses salariés, ou refuse de nommer un référent métier pour la recette.
-
-## Switching Dynamics
-
-**Push:** Tâches répétées à chaque cycle, ressaisies, informations dispersées, contrôles rejoués manuellement, exceptions découvertes tardivement.
-
-**Pull:** Un processus précis pris en charge, intégré à l'existant, avec sorties visibles, exceptions signalées et prix indépendant du nombre d'utilisateurs.
-
-**Habit:** Les classeurs, logiciels et manipulations actuels sont connus ; les équipes savent compenser leurs limites et redoutent un projet de migration.
-
-**Anxiety:** Perdre la maîtrise de la règle, créer une erreur à grande échelle, exposer des données, dépendre d'une boîte noire, devoir changer tous les outils ou subir une tarification par siège.
-
-## Customer Language
-
-**How they describe the problem:**
-- « On refait le même contrôle à chaque fois. » — hypothèse de langage à valider en entretien
-- « L'information est dans plusieurs outils et fichiers. » — hypothèse à valider
-- « Les cas particuliers nous prennent plus de temps que le traitement courant. » — hypothèse à valider
-- « Je veux automatiser sans perdre la main. » — hypothèse à valider
-
-**How they describe us:**
-- À collecter lors des prochains entretiens clients ; ne pas fabriquer de citation.
-
-**Words to use:** cabinet, tâche répétitive, processus, règle métier, périmètre, exception, contrôle, recette, outils existants, validation humaine, résultat livré, complexité, signaler, bloquer, jeu fictif.
-
-**Words to avoid:** plateforme tout-en-un, agents autonomes, révolutionnaire, sans erreur, conformité garantie, compatible avec tout, remplace vos équipes, surveillance, scoring des collaborateurs, catalogue de modules, par siège.
-
-**Glossary:**
-
-| Term | Meaning |
-|------|---------|
-| Automatisation | Traitement d'une mécanique définie dans un périmètre accepté ; ne signifie pas délégation illimitée |
-| Périmètre | Sources, règles, exceptions, accès, sorties, validations et environnement couverts |
-| Recette | Vérification par le cabinet des cas attendus, exceptions et refus avant livraison |
-| Fail-closed | Comportement qui bloque ou signale un cas hors règle au lieu de compléter silencieusement |
-| Validation humaine | Décision, modification ou refus par la personne désignée pour une étape sensible |
-| Jeu fictif | Données sans client réel utilisées pour développer, tester ou démontrer |
-| Famille de tâches | Exemple de travail potentiellement automatisable ; pas un module ou une disponibilité publique |
-
-## Brand Voice
-
-**Tone:** Professionnel, calme, direct et rassurant sans minimiser les risques.
-
-**Style:** Français simple, phrases courtes, vocabulaire du travail réel. Montrer le processus et ses limites plutôt que proclamer une supériorité. Une idée par section. Vouvoiement sur les supports publics ; tutoiement avec Kevin en interne.
-
-**Personality:** Méthodique, utile, sobre, responsable, proche du métier.
-
-## Proof Points
-
-**Metrics:** Aucune métrique de gain publiable à ce stade. Tout chiffre doit être mesuré, sourcé et autorisé.
-
-**Customers:** Des déploiements existent dans le contexte interne, mais aucun nom, logo, résultat ou statut de module ne doit être publié sans accord distinct.
-
-**Testimonials:**
-> Aucun témoignage autorisé pour publication à ce stade.
-
-**Value themes:**
-
-| Theme | Proof |
-|-------|-------|
-| Adaptation au cabinet | Processus observé et périmètre écrit avant développement |
-| Maîtrise humaine | Étapes sensibles proposées pour validation, modification ou refus |
-| Robustesse bornée | Cas attendus, exceptions et refus vérifiés en recette sur jeux fictifs |
-| Continuité des outils | Intégration étudiée dans l'environnement existant ; Excel est un exemple possible |
-| Confidentialité | Jeux fictifs pour développement, test et démonstration ; traitements d'exploitation documentés par automatisation |
-| Prix aligné sur le travail | Devis selon complexité et valeur, jamais par siège |
-
-## Goals
-
-**Business goal:** Obtenir des premiers cadrages qualifiés avec des cabinets ayant une tâche fréquente, explicable et assez bornée pour être automatisée.
-
-**Conversion action:** « Identifier une tâche à automatiser » — réserver un échange de cadrage sans transmettre de fichier ni de donnée client réelle.
-
-**Current metrics:** Non documentées dans ce contexte. À renseigner depuis les sources analytics autorisées.
-
-## Messaging Guardrails
-
-- Ne pas réduire Memlia à Excel ; le citer seulement comme un environnement possible parmi les outils et fichiers existants.
-- Ne pas afficher de catalogue, nom, statut ou fiche de module sur la landing.
-- Présenter les usages comme des familles de tâches illustratives et soumises au cadrage.
-- Ne promettre ni gain chiffré, ni compatibilité universelle, ni conformité absolue, ni certification sans preuve.
-- Ne jamais écrire que l'IA remplace le jugement professionnel.
-- Distinguer les jeux fictifs de développement/test/démonstration des traitements nécessaires en exploitation.
-- Ne publier aucun client, logo, témoignage ou résultat sans autorisation explicite.
+## Sources
+- Carte t_630c4a13, mandat et décisions du 15/09/2026.
+- Coffre 10-memlia/00-socle.md ; marketing/positionnement-memlia-automatisation-ia.md ; produit/offre-et-modules.md ; marketing/seo/20-voix-client-vocabulaire.md.
+- src/data/site.mjs, src/data/proofs.ts, src/components/JsonLd.astro et deux articles src/content/blog/ ; lecture du 15/09/2026.
+- docs/strategy/site-v2/evidence/ : collecte publique et limites datées.
 
 ## Changelog
-
-*Newest first. One line per revision: what changed and why.*
-- v1 (2026-09-08) — Contexte initial : Memlia est repositionné comme service d'automatisation IA pour cabinets, sans catalogue public ; Excel devient un environnement possible plutôt que la catégorie du produit.
+- v1 (2026-09-15) — Contexte canonique dérivé du socle et du mandat site v2 : service d’automatisation, preuve circonscrite, Excel comme intégration, distinction Blog/Ressources et aucune métrique inventée.

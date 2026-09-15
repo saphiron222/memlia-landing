@@ -1,0 +1,927 @@
+{
+  "base": "https://memlia.fr",
+  "fetched_at": "2026-09-15T09:04:41Z",
+  "endpoints": {
+    "/robots.txt": {
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "cache_control": "public, max-age=14400, must-revalidate",
+      "etag": "W/\"2d1ca89e46ca361ac927da5f15a0c5f9\"",
+      "text": "# robots.txt — memlia.fr\n# Memlia — IA pour cabinets d'expertise comptable (landing mono-page)\n# ----------------------------------------------------------------------------\n# Domaine canonique : https://memlia.fr/\n# ----------------------------------------------------------------------------\n# Stratégie : marque neuve, priorité = VISIBILITÉ (SEO + GEO/AEO).\n#   - Moteurs classiques + crawlers de RECHERCHE/RÉPONSE IA : AUTORISÉS sans réserve.\n#   - Crawlers d'entraînement IA (GPTBot, CCBot, Google-Extended, ClaudeBot…) :\n#     tolérés pour l'instant (rien de propriétaire à protéger sur une landing).\n#   - Scraper abusif Bytespider : BLOQUÉ ici + à doubler au niveau WAF/Cloudflare.\n# Rappel : robots.txt n'est PAS un mécanisme de sécurité — il demande poliment.\n# Ne jamais bloquer CSS / JS / polices : les crawlers en ont besoin pour le rendu.\n#\n# NB précédence RFC 9309 : un robot suit UNIQUEMENT le groupe le plus spécifique\n# qui le matche et n'hérite PAS du groupe \"User-agent: *\". On NE déclare donc\n# aucun \"Disallow\" ici : il n'y a aujourd'hui aucun endpoint à cacher (les CTA\n# sont des liens mailto:, pas de formulaire ni de POST /api/). Le jour où un\n# endpoint sensible apparaîtra, le protéger CÔTÉ APPLICATION (auth + en-tête\n# noindex), pas via robots.txt — qui de toute façon n'est pas un garde-fou.\n\n# --- Groupe par défaut : s'applique à tout robot non explicitement nommé -------\nUser-agent: *\nAllow: /\n\n# --- Crawlers de RECHERCHE / RÉPONSE IA : autorisés (citent et renvoient du trafic) ---\n\n# OpenAI — crawler de recherche (ChatGPT Search, cite la source)\nUser-agent: OAI-SearchBot\nAllow: /\n\n# OpenAI — fetcher à la demande (un utilisateur ChatGPT ouvre votre lien)\nUser-agent: ChatGPT-User\nAllow: /\n\n# Perplexity — index qui cite et renvoie vers la source\nUser-agent: PerplexityBot\nAllow: /\n\n# Perplexity — fetcher à la demande (l'utilisateur fournit votre URL)\nUser-agent: Perplexity-User\nAllow: /\n\n# Anthropic — crawler de recherche (réponses Claude sourcées)\nUser-agent: Claude-SearchBot\nAllow: /\n\n# Anthropic — fetcher à la demande (l'utilisateur fournit votre URL)\nUser-agent: Claude-User\nAllow: /\n\n# --- Scraper abusif : bloqué (rafales, aucun trafic renvoyé, entraînement seul) ---\n# Bytespider (ByteDance/TikTok) respecte mal robots.txt → à doubler au WAF/Cloudflare.\nUser-agent: Bytespider\nDisallow: /\n\n# --- Déclaration du sitemap (URL ABSOLUE, directive globale hors de tout groupe) ---\n# Le fichier sitemap.xml est livré à la racine en même temps que ce robots.txt.\nSitemap: https://memlia.fr/sitemap.xml\n"
+    },
+    "/sitemap-index.xml": {
+      "status": 200,
+      "content_type": "application/xml",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"c0b126e934b5bd4e675ec83141b9f77b\"",
+      "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><sitemap><loc>https://memlia.fr/sitemap-0.xml</loc><lastmod>2026-09-15T00:00:00.000Z</lastmod></sitemap></sitemapindex>"
+    },
+    "/sitemap.xml": {
+      "status": 200,
+      "content_type": "application/xml",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"c0b126e934b5bd4e675ec83141b9f77b\"",
+      "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><sitemap><loc>https://memlia.fr/sitemap-0.xml</loc><lastmod>2026-09-15T00:00:00.000Z</lastmod></sitemap></sitemapindex>"
+    },
+    "/llms.txt": {
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"4f11425a2681710dbc9b3595008890a7\"",
+      "text": "# Memlia\n\n> L’IA automatise le travail répétitif. Votre cabinet garde la décision. Memlia est un service d'automatisation IA pour cabinets d'expertise comptable : un processus cadré, une automatisation éprouvée et une recette humaine.\n\nMemlia s'adresse aux cabinets d'expertise comptable français qui veulent libérer du temps pris par des tâches répétitives. Principe directeur : **l'IA prépare, l'humain décide.** Aucun envoi externe (mail, déclaration, facture) sans validation humaine. Le devis dépend de la complexité et de la valeur du processus couvert, jamais du nombre de sièges.\n\n**proposition vs saisie** : ce que Memlia génère se régénère ; ce que le cabinet saisit ne se touche jamais. Une information manquante ou ambiguë bloque l'écriture concernée et appelle une revue humaine (fail-closed). Les éventuelles vues de pilotage sont agrégées, jamais des classements individuels.\n\n## Ce que fait Memlia\n\n- [Exemples de tâches](https://memlia.fr/#usages) : collecter, contrôler, rapprocher, suivre et préparer une décision. Exemples génériques et non contractuels, pas des fonctions prêtes à installer.\n- [Méthode](https://memlia.fr/#methode) : observer, cadrer, construire et éprouver, faire la recette et livrer. Maintenance, support et évolutions définis dans la proposition commerciale.\n- [Intégration à l'existant](https://memlia.fr/#integration) : logiciels métier, exports, messageries, dossiers partagés ou classeurs Excel selon la tâche et les accès. Aucune compatibilité universelle promise ; Excel est un exemple possible, pas la catégorie du service.\n- [Contrôle humain](https://memlia.fr/#preuves) : cas limites, refus attendus et jeux fictifs. Aucun témoignage ni résultat client publié.\n- [Garanties](https://memlia.fr/#garanties) : validation humaine, traitements documentés, agrégats non nominatifs et refus en cas de doute.\n- [Questions fréquentes](https://memlia.fr/#questions) : service, compatibilité, confidentialité, contrôle humain, maintenance, recette et prix.\n\n## Pages\n\n- [Accueil Memlia](https://memlia.fr/) : identifier une tâche à automatiser pour son cabinet.\n- [Blog Memlia](https://memlia.fr/blog) : méthodes sourcées pour les pôles social et comptable des cabinets ; flux RSS sur https://memlia.fr/blog/rss.xml.\n\n## Articles du blog\n\n- [Comment contrôler les bulletins de paie avant la DSN ?](https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn) : une liste de contrôles à rejouer chaque mois entre la fin de la paie et le dépôt de la DSN, avec les échéances, les pénalités et ce qu'une automatisation peut signaler sans décider.\n- [Suivre la production sociale dans Excel sans surveiller les personnes](https://memlia.fr/blog/suivre-la-production-sociale-dans-excel) : structurer un classeur de suivi par dossier et par étape, avec des agrégats de production et jamais de classement nominatif, dans le cadre posé par la CNIL et le Code du travail.\n\n## Principes (lignes rouges)\n\n- **Human-in-the-loop** : l'IA prépare, l'humain valide ; aucun envoi externe sans validation humaine.\n- **Anti-surveillance** : métriques en agrégats par rôle, jamais nominatives, aucun scoring individuel.\n- **Confidentialité** : jeux fictifs pour développer, tester et démontrer. En exploitation, données, accès, flux, hébergements, conservation et responsabilités RGPD sont documentés pour chaque automatisation avant installation, dans le respect du secret professionnel. Ce cadrage n'est pas une certification de conformité.\n\n## Optional\n\n- [Identifier une tâche à automatiser](https://cal.com/kevin-svg/decouvrir-memlia) : décrire le processus, les outils et le résultat attendu, sans transmettre de fichier ni de donnée client réelle. Aucun engagement de déploiement.\n- [Contact](mailto:contact@memlia.fr) : échanger avec l'équipe.\n"
+    }
+  },
+  "routes": {
+    "https://memlia.fr/sitemap-0.xml": {
+      "status": 200,
+      "content_type": "application/xml",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"0aa9978620755c99431d737378a81abe\"",
+      "bytes": 986,
+      "title": null,
+      "description": null,
+      "canonical": null,
+      "robots": null,
+      "h1": [],
+      "schema": [],
+      "internal_links": [],
+      "images": [],
+      "asset_links": [],
+      "findings": {
+        "phone_or_tva_terms": []
+      }
+    },
+    "https://memlia.fr/": {
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": null,
+      "bytes": 102827,
+      "title": "Automatisation IA pour cabinets comptables | Memlia",
+      "description": "Memlia transforme les tâches répétitives des cabinets comptables en automatisations adaptées à leurs outils, avec règles cadrées et validation humaine.",
+      "canonical": "https://memlia.fr/",
+      "robots": "index, follow, max-image-preview:large",
+      "h1": [
+        "Automatisez les tâches qui ralentissent votre cabinet."
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://memlia.fr/#organization",
+              "name": "Memlia",
+              "url": "https://memlia.fr/",
+              "logo": "https://memlia.fr/apple-touch-icon.png",
+              "email": "contact@memlia.fr",
+              "slogan": "L’IA automatise le travail répétitif. Votre cabinet garde la décision.",
+              "description": "Memlia est un service d'automatisation IA pour cabinets d'expertise comptable : un processus cadré, une automatisation éprouvée sur jeux fictifs et des décisions sensibles validées par le cabinet.",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "contact@memlia.fr",
+                "contactType": "customer support",
+                "areaServed": "FR",
+                "availableLanguage": "French"
+              }
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://memlia.fr/#website",
+              "url": "https://memlia.fr/",
+              "name": "Memlia",
+              "inLanguage": "fr-FR",
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            },
+            {
+              "@type": "Service",
+              "@id": "https://memlia.fr/#service",
+              "name": "Memlia : automatisation IA du cabinet",
+              "serviceType": "Automatisation IA pour cabinets d'expertise comptable",
+              "areaServed": "FR",
+              "url": "https://memlia.fr/",
+              "image": "https://memlia.fr/assets/og-memlia.png",
+              "description": "Memlia transforme les tâches répétitives des cabinets comptables en automatisations adaptées à leurs outils, avec règles cadrées et validation humaine.",
+              "provider": {
+                "@id": "https://memlia.fr/#organization"
+              },
+              "audience": {
+                "@type": "Audience",
+                "audienceType": "Cabinets d'expertise comptable"
+              }
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://memlia.fr/#faq",
+              "inLanguage": "fr-FR",
+              "isPartOf": {
+                "@id": "https://memlia.fr/#website"
+              },
+              "about": {
+                "@id": "https://memlia.fr/#service"
+              },
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Memlia est-il un logiciel à paramétrer seul ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Non. Memlia est un service d’automatisation IA pour cabinets d’expertise comptable. Nous observons un processus, écrivons ses règles et ses limites, construisons l’automatisation puis la faisons valider par le cabinet."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Faut-il remplacer nos logiciels ou nos fichiers ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pas par principe. Nous cherchons d’abord à intégrer l’automatisation à l’environnement existant. Si une évolution d’outil ou de structure est nécessaire, elle est identifiée avant le développement."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "L’IA peut-elle agir sans validation ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Uniquement pour la mécanique explicitement autorisée dans le périmètre accepté. Les décisions sensibles restent proposées à la personne désignée, qui peut valider, modifier ou refuser. Aucun envoi externe sans validation humaine : mail, déclaration ou facture."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Que se passe-t-il si une information manque ou si le cas est ambigu ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "L’automatisation bloque l’écriture concernée et signale le cas. Elle ne complète pas silencieusement une information métier et n’étend pas seule la règle : c’est le principe fail-closed."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Est-ce un outil de surveillance des équipes ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Non. Les éventuelles vues de pilotage portent sur l’avancement du processus et des agrégats utiles, jamais nominatifs. Memlia ne note pas les salariés et ne publie aucun classement individuel."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Utilisez-vous des données client réelles pour développer ou démontrer ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Non. Les développements, tests et démonstrations utilisent des jeux fictifs. En exploitation, les données, accès, flux, hébergements éventuels, durées de conservation et responsabilités RGPD sont documentés pour chaque automatisation avant installation, dans le respect du secret professionnel. Ce cadrage ne constitue pas une certification de conformité."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Quels processus pouvez-vous automatiser ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Nous étudions les tâches répétitives qui reposent sur des entrées identifiables, des règles explicables, des exceptions listables et un résultat vérifiable. La faisabilité dépend des outils, des accès et du niveau de jugement requis. Les exemples d’usages sont non contractuels."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Comment le prix est-il calculé ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Le devis dépend des sources, des intégrations, des règles, des exceptions, des validations et de la valeur du processus couvert. Il n’est jamais multiplié par le nombre de sièges. Maintenance, support et évolutions sont cadrés dans la proposition commerciale."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Memlia fonctionne-t-il uniquement dans Excel ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Non. Excel peut faire partie du processus, comme un logiciel métier, un export, une messagerie ou un dossier partagé. Le choix dépend de la tâche et des intégrations techniquement accessibles. Les versions et environnements couverts sont définis avant de développer."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Que se passe-t-il si notre processus ou nos outils évoluent ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "La maintenance, le support et les évolutions sont définis dans la proposition commerciale. Tout changement susceptible d’affecter la règle, la source ou le résultat déclenche une analyse d’impact et, si nécessaire, une nouvelle recette."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Comment se déroule la recette ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Vos référents vérifient les cas attendus, les exceptions et les refus sur des jeux fictifs représentatifs. La livraison vaut pour le périmètre et l’environnement explicitement acceptés, pas pour des intégrations non testées."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "internal_links": [
+        "https://cal.com/kevin-svg/decouvrir-memlia",
+        "https://memlia.fr/",
+        "https://memlia.fr/blog",
+        "https://memlia.fr/cdn-cgi/l/email-protection",
+        "https://memlia.fr/media/r8/animatique-hero-45s.mp4",
+        "https://memlia.fr/mentions-legales",
+        "https://memlia.fr/politique-de-confidentialite"
+      ],
+      "images": [
+        {
+          "src": "https://memlia.fr/proofs/02-repetition.webp",
+          "alt": "Quatre gestes manuels regroupés en une préparation : 47 propositions à relire et un cas fictif à vérifier.",
+          "width": "1600",
+          "height": "900"
+        },
+        {
+          "src": "https://memlia.fr/proofs/01-flux.webp",
+          "alt": "Flux fictif : une information entrante passe par les règles du cabinet, une exception est isolée puis soumise à validation humaine.",
+          "width": "1600",
+          "height": "900"
+        },
+        {
+          "src": "https://memlia.fr/proofs/04-observer.webp",
+          "alt": "Timeline d’observation d’un processus fictif, de la source reçue au point de jugement conservé.",
+          "width": "1600",
+          "height": "900"
+        },
+        {
+          "src": "https://memlia.fr/proofs/05-cadrer.webp",
+          "alt": "Tableau de cadrage reliant conditions, actions préparées et cas de blocage avant développement.",
+          "width": "1600",
+          "height": "900"
+        },
+        {
+          "src": "https://memlia.fr/proofs/06-eprouver.webp",
+          "alt": "Matrice de quatre essais fictifs vérifiant les cas courants, absents, inattendus et connus.",
+          "width": "1600",
+          "height": "900"
+        },
+        {
+          "src": "https://memlia.fr/proofs/07-livrer.webp",
+          "alt": "Checklist de recette : règles, cas fictifs et contrôle relus avant la décision du cabinet.",
+          "width": "1600",
+          "height": "900"
+        },
+        {
+          "src": "https://memlia.fr/proofs/08-integration.webp",
+          "alt": "Document, tableur, messagerie et logiciel métier reliés à un flux limité, sous réserve des formats et accès.",
+          "width": "1600",
+          "height": "900"
+        },
+        {
+          "src": "https://memlia.fr/proofs/03-controle.webp",
+          "alt": "Panneau de revue bloqué comparant un champ attendu à un champ vide, avant documentation de la décision humaine.",
+          "width": "1600",
+          "height": "900"
+        },
+        {
+          "src": "https://memlia.fr/proofs/09-garanties.webp",
+          "alt": "Vue agrégée fictive sans détail individuel, accompagnée des garanties de données fictives et de validation humaine.",
+          "width": "1600",
+          "height": "900"
+        }
+      ],
+      "asset_links": [
+        "https://memlia.fr/",
+        "https://memlia.fr/favicon.svg",
+        "https://memlia.fr/favicon-32.png",
+        "https://memlia.fr/apple-touch-icon.png",
+        "https://memlia.fr/sitemap.xml",
+        "https://memlia.fr/blog/rss.xml",
+        "https://memlia.fr/fonts/fraunces-600.woff2",
+        "https://memlia.fr/fonts/hanken-400.woff2",
+        "https://memlia.fr/fonts/hanken-500.woff2",
+        "https://memlia.fr/media/r8/hero-poster-1200.webp",
+        "https://memlia.fr/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+        "https://static.cloudflareinsights.com/beacon.min.js"
+      ],
+      "findings": {
+        "phone_or_tva_terms": []
+      }
+    },
+    "https://memlia.fr/blog": {
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": null,
+      "bytes": 44852,
+      "title": "Blog Memlia : paie, DSN et automatisation en cabinet comptable",
+      "description": "Méthodes concrètes pour les pôles social et comptable des cabinets : ce qui se vérifie, ce qui s’automatise, ce qui reste une décision humaine.",
+      "canonical": "https://memlia.fr/blog",
+      "robots": "index, follow, max-image-preview:large",
+      "h1": [
+        "Ce qui se vérifie, ce qui s’automatise, ce qui se décide."
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Blog",
+              "@id": "https://memlia.fr/blog#blog",
+              "url": "https://memlia.fr/blog",
+              "name": "Blog Memlia : paie, DSN et automatisation en cabinet comptable",
+              "description": "Méthodes concrètes pour les pôles social et comptable des cabinets : ce qui se vérifie, ce qui s’automatise, ce qui reste une décision humaine.",
+              "inLanguage": "fr-FR",
+              "isPartOf": {
+                "@id": "https://memlia.fr/#website"
+              },
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              },
+              "blogPost": [
+                {
+                  "@id": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn#article"
+                },
+                {
+                  "@id": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel#article"
+                }
+              ]
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/blog#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://memlia.fr/blog"
+                }
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://memlia.fr/blog#auteur-kevin",
+              "name": "Kevin Kitanga",
+              "jobTitle": "Fondateur de Memlia",
+              "description": "Kevin Kitanga conçoit et livre les automatisations Memlia pour les cabinets d’expertise comptable : cadrage des règles avec le cabinet, construction sur jeux d’essai fictifs, recette avec les équipes. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+              "url": "https://memlia.fr/blog#auteur-kevin",
+              "worksFor": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://memlia.fr/#organization",
+              "name": "Memlia",
+              "url": "https://memlia.fr/",
+              "logo": "https://memlia.fr/apple-touch-icon.png",
+              "email": "contact@memlia.fr"
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://memlia.fr/#website",
+              "url": "https://memlia.fr/",
+              "name": "Memlia",
+              "inLanguage": "fr-FR",
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            }
+          ]
+        }
+      ],
+      "internal_links": [
+        "https://cal.com/kevin-svg/decouvrir-memlia",
+        "https://memlia.fr/",
+        "https://memlia.fr/blog",
+        "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+        "https://memlia.fr/blog/rss.xml",
+        "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+        "https://memlia.fr/cdn-cgi/l/email-protection",
+        "https://memlia.fr/mentions-legales",
+        "https://memlia.fr/politique-de-confidentialite"
+      ],
+      "images": [
+        {
+          "src": "https://memlia.fr/images/img-23-controle-bulletins-paie-1600.webp",
+          "alt": "Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN.",
+          "width": "1600",
+          "height": "900"
+        },
+        {
+          "src": "https://memlia.fr/images/img-24-suivi-production-sociale-1600.webp",
+          "alt": "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision.",
+          "width": "1600",
+          "height": "900"
+        }
+      ],
+      "asset_links": [
+        "https://memlia.fr/blog",
+        "https://memlia.fr/favicon.svg",
+        "https://memlia.fr/favicon-32.png",
+        "https://memlia.fr/apple-touch-icon.png",
+        "https://memlia.fr/sitemap.xml",
+        "https://memlia.fr/blog/rss.xml",
+        "https://memlia.fr/fonts/fraunces-600.woff2",
+        "https://memlia.fr/fonts/hanken-400.woff2",
+        "https://memlia.fr/fonts/hanken-500.woff2",
+        "https://memlia.fr/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+        "https://static.cloudflareinsights.com/beacon.min.js"
+      ],
+      "findings": {
+        "phone_or_tva_terms": []
+      }
+    },
+    "https://memlia.fr/media/r8/animatique-hero-45s.mp4": {
+      "status": 200,
+      "content_type": "video/mp4",
+      "cache_control": "public, max-age=14400, must-revalidate",
+      "etag": "\"c01f26e6be43588a8a5619e04d8373d8\"",
+      "bytes": 2925093,
+      "title": null,
+      "description": null,
+      "canonical": null,
+      "robots": null,
+      "h1": [],
+      "schema": [],
+      "internal_links": [],
+      "images": [],
+      "asset_links": [],
+      "findings": {
+        "phone_or_tva_terms": [
+          "+33",
+          "07 ",
+          "tva"
+        ]
+      }
+    },
+    "https://memlia.fr/cdn-cgi/l/email-protection": {
+      "status": 404,
+      "content_type": "text/html",
+      "cache_control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "etag": null,
+      "bytes": 4715,
+      "title": "Email Protection | Cloudflare",
+      "description": null,
+      "canonical": null,
+      "robots": "noindex, nofollow",
+      "h1": [
+        "Email Protection"
+      ],
+      "schema": [],
+      "internal_links": [
+        "https://developers.cloudflare.com/fundamentals/setup/account/create-account/",
+        "https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/",
+        "https://www.cloudflare.com/5xx-error-landing",
+        "https://www.cloudflare.com/sign-up?utm_source=email_protection"
+      ],
+      "images": [],
+      "asset_links": [
+        "https://memlia.fr/cdn-cgi/styles/cf.errors.css"
+      ],
+      "findings": {
+        "phone_or_tva_terms": []
+      }
+    },
+    "https://memlia.fr/mentions-legales": {
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": null,
+      "bytes": 36868,
+      "title": "Mentions légales — Memlia",
+      "description": "Mentions légales du site memlia.fr.",
+      "canonical": "https://memlia.fr/mentions-legales",
+      "robots": "noindex, follow",
+      "h1": [
+        "Mentions légales"
+      ],
+      "schema": [],
+      "internal_links": [
+        "https://cal.com/kevin-svg/decouvrir-memlia",
+        "https://memlia.fr/",
+        "https://memlia.fr/blog",
+        "https://memlia.fr/cdn-cgi/l/email-protection",
+        "https://memlia.fr/mentions-legales",
+        "https://memlia.fr/politique-de-confidentialite",
+        "https://www.cloudflare.com/",
+        "https://www.cloudflare.com/terms/",
+        "tel:+18889935273"
+      ],
+      "images": [],
+      "asset_links": [
+        "https://memlia.fr/mentions-legales",
+        "https://memlia.fr/favicon.svg",
+        "https://memlia.fr/favicon-32.png",
+        "https://memlia.fr/apple-touch-icon.png",
+        "https://memlia.fr/sitemap.xml",
+        "https://memlia.fr/blog/rss.xml",
+        "https://memlia.fr/fonts/fraunces-600.woff2",
+        "https://memlia.fr/fonts/hanken-400.woff2",
+        "https://memlia.fr/fonts/hanken-500.woff2",
+        "https://memlia.fr/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+        "https://static.cloudflareinsights.com/beacon.min.js"
+      ],
+      "findings": {
+        "phone_or_tva_terms": [
+          "téléphone"
+        ]
+      }
+    },
+    "https://memlia.fr/politique-de-confidentialite": {
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": null,
+      "bytes": 39721,
+      "title": "Politique de confidentialité — Memlia",
+      "description": "Politique de confidentialité du site memlia.fr : données traitées, finalités, cookies, droits RGPD.",
+      "canonical": "https://memlia.fr/politique-de-confidentialite",
+      "robots": "noindex, follow",
+      "h1": [
+        "Politique de confidentialité"
+      ],
+      "schema": [],
+      "internal_links": [
+        "https://cal.com/kevin-svg/decouvrir-memlia",
+        "https://memlia.fr/",
+        "https://memlia.fr/blog",
+        "https://memlia.fr/cdn-cgi/l/email-protection",
+        "https://memlia.fr/mentions-legales",
+        "https://memlia.fr/politique-de-confidentialite",
+        "https://www.cnil.fr"
+      ],
+      "images": [],
+      "asset_links": [
+        "https://memlia.fr/politique-de-confidentialite",
+        "https://memlia.fr/favicon.svg",
+        "https://memlia.fr/favicon-32.png",
+        "https://memlia.fr/apple-touch-icon.png",
+        "https://memlia.fr/sitemap.xml",
+        "https://memlia.fr/blog/rss.xml",
+        "https://memlia.fr/fonts/fraunces-600.woff2",
+        "https://memlia.fr/fonts/hanken-400.woff2",
+        "https://memlia.fr/fonts/hanken-500.woff2",
+        "https://memlia.fr/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+        "https://static.cloudflareinsights.com/beacon.min.js"
+      ],
+      "findings": {
+        "phone_or_tva_terms": []
+      }
+    },
+    "https://memlia.fr/blog/rss.xml": {
+      "status": 200,
+      "content_type": "application/xml",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"fce42ff92d1a71a9ccdd6c32feed2e2b\"",
+      "bytes": 2059,
+      "title": "Blog Memlia : paie, DSN et automatisation en cabinet comptable",
+      "description": null,
+      "canonical": null,
+      "robots": null,
+      "h1": [],
+      "schema": [],
+      "internal_links": [],
+      "images": [],
+      "asset_links": [],
+      "findings": {
+        "phone_or_tva_terms": []
+      }
+    },
+    "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn": {
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": null,
+      "bytes": 72678,
+      "title": "Contrôler les bulletins avant la DSN : méthode | Memlia",
+      "description": "Méthode en trois revues pour contrôler variables, bulletins et fichier DSN, qualifier les écarts et conserver les preuves avant le dépôt.",
+      "canonical": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "robots": "index, follow, max-image-preview:large",
+      "h1": [
+        "Comment contrôler les bulletins de paie avant la DSN ?"
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "@id": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn#article",
+              "headline": "Comment contrôler les bulletins de paie avant la DSN ?",
+              "description": "Méthode en trois revues pour contrôler variables, bulletins et fichier DSN, qualifier les écarts et conserver les preuves avant le dépôt.",
+              "url": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+              },
+              "datePublished": "2026-09-09T00:00:00.000Z",
+              "dateModified": "2026-09-15T00:00:00.000Z",
+              "inLanguage": "fr-FR",
+              "isPartOf": {
+                "@id": "https://memlia.fr/#website"
+              },
+              "author": {
+                "@id": "https://memlia.fr/blog#auteur-kevin"
+              },
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              },
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://memlia.fr/images/img-23-controle-bulletins-paie-1600.webp",
+                "width": 1600,
+                "height": 900,
+                "caption": "Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN."
+              },
+              "thumbnailUrl": "https://memlia.fr/assets/og-memlia.png",
+              "articleSection": [
+                "Paie",
+                "DSN",
+                "Cabinet",
+                "Méthode"
+              ],
+              "keywords": [
+                "contrôler bulletin de paie avant DSN",
+                "contrôle DSN",
+                "DSN-Val",
+                "compte rendu métier",
+                "checklist paie"
+              ],
+              "wordCount": 2476
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://memlia.fr/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Comment contrôler les bulletins de paie avant la DSN ?",
+                  "item": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+                }
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://memlia.fr/blog#auteur-kevin",
+              "name": "Kevin Kitanga",
+              "jobTitle": "Fondateur de Memlia",
+              "description": "Kevin Kitanga conçoit et livre les automatisations Memlia pour les cabinets d’expertise comptable : cadrage des règles avec le cabinet, construction sur jeux d’essai fictifs, recette avec les équipes. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+              "url": "https://memlia.fr/blog#auteur-kevin",
+              "worksFor": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://memlia.fr/#organization",
+              "name": "Memlia",
+              "url": "https://memlia.fr/",
+              "logo": "https://memlia.fr/apple-touch-icon.png",
+              "email": "contact@memlia.fr"
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://memlia.fr/#website",
+              "url": "https://memlia.fr/",
+              "name": "Memlia",
+              "inLanguage": "fr-FR",
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            }
+          ]
+        }
+      ],
+      "internal_links": [
+        "https://cal.com/kevin-svg/decouvrir-memlia",
+        "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+        "https://memlia.fr/",
+        "https://memlia.fr/blog",
+        "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+        "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+        "https://memlia.fr/cdn-cgi/l/email-protection",
+        "https://memlia.fr/mentions-legales",
+        "https://memlia.fr/politique-de-confidentialite",
+        "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+        "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+        "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/"
+      ],
+      "images": [
+        {
+          "src": "https://memlia.fr/images/img-23-controle-bulletins-paie-1600.webp",
+          "alt": "Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN.",
+          "width": "1600",
+          "height": "900"
+        }
+      ],
+      "asset_links": [
+        "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+        "https://memlia.fr/favicon.svg",
+        "https://memlia.fr/favicon-32.png",
+        "https://memlia.fr/apple-touch-icon.png",
+        "https://memlia.fr/sitemap.xml",
+        "https://memlia.fr/blog/rss.xml",
+        "https://memlia.fr/fonts/fraunces-600.woff2",
+        "https://memlia.fr/fonts/hanken-400.woff2",
+        "https://memlia.fr/fonts/hanken-500.woff2",
+        "https://memlia.fr/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+        "https://static.cloudflareinsights.com/beacon.min.js"
+      ],
+      "findings": {
+        "phone_or_tva_terms": []
+      }
+    },
+    "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel": {
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "cache_control": "public, max-age=0, must-revalidate",
+      "etag": null,
+      "bytes": 70182,
+      "title": "Tableau de suivi de production sociale Excel | Memlia",
+      "description": "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel.",
+      "canonical": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+      "robots": "index, follow, max-image-preview:large",
+      "h1": [
+        "Suivre la production sociale dans Excel : modèle, règles et limites"
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "@id": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel#article",
+              "headline": "Suivre la production sociale dans Excel : modèle, règles et limites",
+              "description": "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel.",
+              "url": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel"
+              },
+              "datePublished": "2026-09-09T00:00:00.000Z",
+              "dateModified": "2026-09-15T00:00:00.000Z",
+              "inLanguage": "fr-FR",
+              "isPartOf": {
+                "@id": "https://memlia.fr/#website"
+              },
+              "author": {
+                "@id": "https://memlia.fr/blog#auteur-kevin"
+              },
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              },
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://memlia.fr/images/img-24-suivi-production-sociale-1600.webp",
+                "width": 1600,
+                "height": 900,
+                "caption": "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision."
+              },
+              "thumbnailUrl": "https://memlia.fr/assets/og-memlia.png",
+              "articleSection": [
+                "Production sociale",
+                "Excel",
+                "Cabinet",
+                "Méthode"
+              ],
+              "keywords": [
+                "tableau suivi production sociale Excel cabinet",
+                "suivi portefeuille social",
+                "classeur pôle social",
+                "états de production",
+                "pilotage anti-surveillance"
+              ],
+              "wordCount": 2211
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://memlia.fr/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Suivre la production sociale dans Excel : modèle, règles et limites",
+                  "item": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel"
+                }
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://memlia.fr/blog#auteur-kevin",
+              "name": "Kevin Kitanga",
+              "jobTitle": "Fondateur de Memlia",
+              "description": "Kevin Kitanga conçoit et livre les automatisations Memlia pour les cabinets d’expertise comptable : cadrage des règles avec le cabinet, construction sur jeux d’essai fictifs, recette avec les équipes. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+              "url": "https://memlia.fr/blog#auteur-kevin",
+              "worksFor": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://memlia.fr/#organization",
+              "name": "Memlia",
+              "url": "https://memlia.fr/",
+              "logo": "https://memlia.fr/apple-touch-icon.png",
+              "email": "contact@memlia.fr"
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://memlia.fr/#website",
+              "url": "https://memlia.fr/",
+              "name": "Memlia",
+              "inLanguage": "fr-FR",
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            }
+          ]
+        }
+      ],
+      "internal_links": [
+        "https://cal.com/kevin-svg/decouvrir-memlia",
+        "https://memlia.fr/",
+        "https://memlia.fr/blog",
+        "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+        "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+        "https://memlia.fr/cdn-cgi/l/email-protection",
+        "https://memlia.fr/mentions-legales",
+        "https://memlia.fr/politique-de-confidentialite",
+        "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
+        "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
+        "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees"
+      ],
+      "images": [
+        {
+          "src": "https://memlia.fr/images/img-24-suivi-production-sociale-1600.webp",
+          "alt": "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision.",
+          "width": "1600",
+          "height": "900"
+        }
+      ],
+      "asset_links": [
+        "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+        "https://memlia.fr/favicon.svg",
+        "https://memlia.fr/favicon-32.png",
+        "https://memlia.fr/apple-touch-icon.png",
+        "https://memlia.fr/sitemap.xml",
+        "https://memlia.fr/blog/rss.xml",
+        "https://memlia.fr/fonts/fraunces-600.woff2",
+        "https://memlia.fr/fonts/hanken-400.woff2",
+        "https://memlia.fr/fonts/hanken-500.woff2",
+        "https://memlia.fr/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+        "https://static.cloudflareinsights.com/beacon.min.js"
+      ],
+      "findings": {
+        "phone_or_tva_terms": [
+          "07 "
+        ]
+      }
+    }
+  },
+  "repo_checks": {
+    "package_scripts": {},
+    "files": {
+      "src/layouts/Base.astro": {
+        "exists": true,
+        "bytes": 4402
+      },
+      "src/components/Nav.astro": {
+        "exists": true,
+        "bytes": 12088
+      },
+      "src/components/Footer.astro": {
+        "exists": true,
+        "bytes": 4922
+      },
+      "playwright.config.ts": {
+        "exists": true,
+        "bytes": 353
+      }
+    },
+    "tests": []
+  }
+}
