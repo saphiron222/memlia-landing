@@ -30,13 +30,13 @@ Règle : une passe intermédiaire est `OBSOLETE` si une branche retenue contient
 | `t_dcd8a18e` | `wt/t_dcd8a18e` | OBSOLETE | Doublon de la passe de revue IA précédente. |
 | `t_1e4e34f1` | `wt/t_1e4e34f1` | OBSOLETE | METIER-FIX-A incluse dans la lignée ressources finale. |
 | `t_9b260748` | `wt/t_9b260748` | OBSOLETE | Même tête finale que la lignée ressources retenue. |
-| `t_6dbc334d` | `wt/t_6dbc334d` | INTEGRER | Lignée ressources finale : QAD, revue IA, METIER A/B et applicabilité métier. |
+| `t_6dbc334d` | `wt/t_6dbc334d` | OBSOLETE | Fusion annulée : le gate blog qu’elle réintroduit bloque les deux articles publiés, désormais différents du baseline et sans dossiers éditoriaux recalculés (2/2 bloqués). La lignée ressources doit être rebasée sur le contenu courant avant intégration. |
 | `t_278eba33` | `site/hub-ressources-adaptateurs` | OBSOLETE | Adaptateurs repris et durcis dans la lignée ressources finale. |
 | `t_27e8be9f` | `site/glossaire` | OBSOLETE | Glossaire repris avec ses contrats et tests dans la lignée ressources finale. |
 | `t_4ec9cc36` | `wt/t_4ec9cc36` | INTEGRER | Sonde d’indexabilité exacte et test absents de `main`. |
 | `t_f5098486` | `wt/t_f5098486` | OBSOLETE | Spécification design historique supplantée par le site Astro et ses documents courants. |
 
-Ordre de fusion retenu : `t_6f653b66` → `t_e7c84a8c` → `t_6dbc334d` → `t_4ec9cc36`.
+Ordre de fusion retenu : `t_6f653b66` → `t_e7c84a8c` → `t_4ec9cc36`.
 
 ## memlia-desk — 9 branches
 
@@ -57,6 +57,6 @@ Ordre de fusion retenu : `t_a4615754` → `t_54183ce5` → `t_14c633b9` → `t_0
 ## Totaux
 
 - 36 branches triées.
-- 11 verdicts `INTEGRER`.
-- 25 verdicts `OBSOLETE`.
+- 10 verdicts `INTEGRER`.
+- 26 verdicts `OBSOLETE`.
 - 0 verdict `A DECIDER`.
