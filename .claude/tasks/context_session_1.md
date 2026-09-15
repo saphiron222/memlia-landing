@@ -1,5 +1,13 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-15 — intégration des branches abandonnées, t_bb13ea9f
+
+- Inventaire trié intégralement : 36 branches, dont 10 `INTEGRER`, 26 `OBSOLETE`, 0 à décider. Verdicts et motifs dans `docs/qa/integration-branches-abandonnees-2026-09-15.md`.
+- `main` landing contient les trois branches retenues ; `git cherry main <branche>` rend zéro commit pour chacune. Vérifications fraîches sur le build servi : Playwright 79/79, Astro check 0 erreur/1 hint hérité, build 7 pages, Python 37/37, images 23 et scripts 9/9.
+- `main` memlia-desk contient les sept branches retenues, le descendant de preuve S52 puis sa clôture `wt/t_d8660ef0` ; `git cherry` rend zéro commit restant. Déclaratif : Vitest 58 fichiers/1 532 tests, TypeScript 0 erreur ; parité 78 entrées, 71 couvertes, 5 écartées, 2 remplacées.
+- Les worktrees des 36 branches sont retirés après contrôle de propreté. Deux worktrees S52 auxiliaires hors inventaire restent volontairement présents car ils contiennent des preuves non suivies.
+- Aucun push ni déploiement. Le serveur de preview local a été arrêté.
+
 ## Hermes — 2026-09-14 — santé production, t_cde15777
 
 - Diagnostic reproduit : l’apex servait une réponse âgée de 98 244 s avec `X-Robots-Tag: noindex`, `s-maxage=604800` et `<track default>` ; les deux derniers déploiements Production 153298f4 et b32f5bb3 répondaient 404, tandis que 393e365e servait encore l’ancien HTML. Une query fraîche sur l’apex tombait elle aussi en 404 : le cache masquait donc un origin Production invalide.
