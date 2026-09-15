@@ -1,6 +1,6 @@
 # Contexte marketing Memlia
 
-Document version : v1
+Document version : v2
 Last updated : 2026-09-15
 
 ## Produit et modèle économique
@@ -33,6 +33,16 @@ Inqom, Dext, Pennylane, MyUnisoft et Silae sont des alternatives de budget/proce
 ## Vocabulaire et voix
 Français professionnel, concret, calme ; vouvoiement public. Tâche, cabinet, dossier, bulletin, DSN, règle, proposition, écart, recette, validation humaine. Définir « recette » et « fail-closed » lors de leur première apparition. Éviter plateforme tout-en-un, autonome, zéro erreur, conformité garantie, révolution, gains chiffrés sans mesure. Aucun faux verbatim client : les formulations sont des synthèses, sauf source autorisée explicite.
 
+| Terme | Sens partagé |
+|---|---|
+| Périmètre | Sources, règles, exceptions, accès, sorties, validations et environnement couverts. |
+| Recette | Vérification par le cabinet des cas attendus, des exceptions et des refus avant livraison. |
+| Fail-closed | Bloquer le traitement concerné hors règle plutôt que compléter silencieusement une donnée. |
+| Jeu fictif | Données sans client réel utilisées pour développer, tester ou démontrer ; ne décrit pas les traitements nécessaires en exploitation. |
+| Famille de tâches | Exemple à cadrer, pas module publiquement disponible. |
+
+Le cabinet doit pouvoir nommer un référent pour la recette. Une tâche sans règle explicable, testable ou maintenable n'est pas un bon périmètre. Les manipulations manuelles et les plateformes généralistes sont aussi des alternatives ; le choix n'est pas limité aux cinq éditeurs du benchmark. Rillet reste une référence de message « résultat livré », pas une équivalence de produit ni un texte à copier.
+
 ## Preuves autorisées
 src/data/proofs.ts décrit des illustrations fonctionnelles fictives : elles ne sont ni des captures produit ni des résultats client. Les deux guides publiés sont des preuves pédagogiques, pas une attestation métier. Les capacités précises doivent être reliées à un module livré et à une preuve de recette ; l’existence d’un dépôt ne suffit pas. Aucun logo client, témoignage, nombre de cabinets ni pourcentage de gain disponible pour la copy publique. Aucun nom client interne à republier. Kevin Kitanga est l’auteur public des articles et le fondateur, pas un expert-comptable diplômé présumé.
 
@@ -49,4 +59,5 @@ Une action principale : Identifier une tâche à automatiser. Destination intern
 - docs/strategy/site-v2/evidence/ : collecte publique et limites datées.
 
 ## Changelog
-- v1 (2026-09-15) — Contexte canonique dérivé du socle et du mandat site v2 : service d’automatisation, preuve circonscrite, Excel comme intégration, distinction Blog/Ressources et aucune métrique inventée.
+- v2 (2026-09-15) — Contexte resserré et actualisé depuis le socle et le mandat site v2 : alternatives relues, preuves circonscrites, auteur exact, contact interne et distinction Blog/Ressources. Le positionnement service existant est conservé, pas recréé.
+- v1 (2026-09-08) — Contexte initial : Memlia est repositionné comme service d'automatisation IA pour cabinets, sans catalogue public ; Excel devient un environnement possible plutôt que la catégorie du produit.
