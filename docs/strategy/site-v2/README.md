@@ -13,7 +13,7 @@
 8. Contexte canonique mis à jour : ../../../.agents/product-marketing.md (v2, historique v1 préservé).
 
 ## Vérification
-`python3 docs/strategy/site-v2/validate-plan.py` depuis la racine du worktree vérifie les champs de l’inventaire, les URL uniques, requêtes principales, liens, parents, profondeur, navigation, dépendances P2, preuves collectées et périmètre Git. Résultat dans evidence/validation.json. `git diff --check` vérifie le patch documentaire.
+`python3 docs/strategy/site-v2/validate-plan.py` depuis la racine du worktree vérifie les champs de l’inventaire, les URL uniques, requêtes principales, liens, parents, profondeur, navigation, dépendances P2, preuves collectées et périmètre Git. Résultat dans validation-plan.json. `git diff --check` vérifie le patch documentaire.
 
 Résultat de cette phase : 12 documents demandés, 14 fiches URL, 66 liens planifiés, profondeur maximale 2, aucune orpheline, 5 concurrents officiels lus, 12 mesures responsive et 4 audits Lighthouse. Il s’agit du graphe cible, pas d’une affirmation de site déjà construit. La cannibalisation est évitée au niveau des intentions/requêtes assignées ; l’overlap SERP actuel n’est pas mesuré.
 

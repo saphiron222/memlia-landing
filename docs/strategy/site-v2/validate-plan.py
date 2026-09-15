@@ -18,7 +18,12 @@ for r in rows:
  assert all(x in urls for x in r['outgoing'])
  assert r['incoming']==[s['url'] for s in rows if r['url'] in s['outgoing']]
  assert r['url']=='/' or r['parent'] in urls
- assert '## '+r['url']+'\n' in (P/'PAGE-INVENTORY.md').read_text()
+ markdown=(P/'PAGE-INVENTORY.md').read_text()
+ marker='## '+r['url']+'\n'
+ assert marker in markdown
+ section=markdown.split(marker,1)[1].split('\n## ',1)[0]
+ for k in fields:
+  assert '- **'+k+'** :' in section,(r['url'],'missing Markdown field',k)
 keys=[r['primary_keyword'] for r in rows];assert len(keys)==len(set(keys))
 def graph(rs):
  d={r['url']:r for r in rs};dist={'/':0};q=deque(['/'])
