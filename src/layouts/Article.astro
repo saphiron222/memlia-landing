@@ -37,9 +37,15 @@ const LIBELLE_SUJET: Record<string, string> = {
   methode: 'Méthode', securite: 'Sécurité', cabinet: 'Cabinet',
 };
 const image = data.image as keyof typeof IMAGES;
+const imageSociale = {
+  url: `${SITE.url}/images/${image}-1200.webp`,
+  largeur: 1200,
+  hauteur: 675,
+  alt: IMAGES[image].alt,
+};
 ---
 
-<Base titre={data.titreOnglet ?? `${data.titre} | Memlia`} titreSocial={data.titre} description={description} chemin={chemin} ogType="article" base="/">
+<Base titre={data.titreOnglet ?? `${data.titre} | Memlia`} titreSocial={data.titre} description={description} chemin={chemin} ogType="article" ogImage={imageSociale} base="/">
   <Fragment slot="head">
     <meta property="article:published_time" content={isoComplet(data.datePublication)} />
     <meta property="article:modified_time" content={isoComplet(dateMiseAJour)} />

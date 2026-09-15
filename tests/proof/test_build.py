@@ -98,8 +98,9 @@ class BuildProof(unittest.TestCase):
         briefs = ROOT / 'public/images'
         self.assertEqual(len(list(briefs.glob('brief-img-1[6-9]-*.md'))) + len(list(briefs.glob('brief-img-2[0-4]-*.md'))), 9)
         self.assertEqual(len(list((DIST / 'images').glob('brief-*.md'))), 0)
-        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 6)
-        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 6)
+        # Trois couvertures publiées, trois largeurs et deux formats chacune.
+        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 9)
+        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 9)
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
 
     def test_five_generic_examples_no_product_statuses(self):

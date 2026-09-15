@@ -20,10 +20,12 @@ interface Props {
   chemin: string;
   noindex?: boolean;
   ogType?: 'website' | 'article';
+  /** Image sociale absolue. Les articles fournissent leur couverture ; le site garde l'OG global. */
+  ogImage?: { url: string; largeur: number; hauteur: number; alt: string };
   /** Ancres de la nav depuis une autre page que l'accueil. */
   base?: string;
 }
-const { titre, titreSocial = titre, description, chemin, noindex = false, ogType = 'website', base = '' } = Astro.props;
+const { titre, titreSocial = titre, description, chemin, noindex = false, ogType = 'website', ogImage = OG_IMAGE, base = '' } = Astro.props;
 const canonical = chemin === '/' ? `${SITE.url}/` : `${SITE.url}${chemin}`;
 const articles = await getCollection('blog', ({ data }) => !data.brouillon);
 const blogActif = articles.length > 0;
@@ -55,14 +57,14 @@ const blogActif = articles.length > 0;
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={titreSocial} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={OG_IMAGE.url} />
-    <meta property="og:image:width" content={String(OG_IMAGE.largeur)} />
-    <meta property="og:image:height" content={String(OG_IMAGE.hauteur)} />
-    <meta property="og:image:alt" content={OG_IMAGE.alt} />
+    <meta property="og:image" content={ogImage.url} />
+    <meta property="og:image:width" content={String(ogImage.largeur)} />
+    <meta property="og:image:height" content={String(ogImage.hauteur)} />
+    <meta property="og:image:alt" content={ogImage.alt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={titreSocial} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={OG_IMAGE.url} />
+    <meta name="twitter:image" content={ogImage.url} />
 
     <slot name="head" />
   </head>

@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
+  "checkedAt": "2026-09-15",
+  "scope": "Claims matériels du corps de l’article ; les exemples fictifs sont contrôlés comme tels.",
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Net-entreprises",
+      "title": "Les retours d’informations suite au dépôt de votre DSN ou signalement d’événement",
+      "url": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+      "published": "2020-09-16",
+      "modified": "2021-02-22",
+      "accessed": "2026-09-15",
+      "applicability": "Cycle post-dépôt, AEE, ARE, CCO, BAN et contrôles bloquants/non bloquants. Recoupé avec S3 et S5 pour les limites actuelles."
+    },
+    {
+      "id": "S2",
+      "publisher": "Net-entreprises",
+      "title": "Les Comptes Rendus Métiers DSN",
+      "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+      "published": "2020-09-16",
+      "modified": "2021-11-30",
+      "accessed": "2026-09-15",
+      "applicability": "Définition et diversité des CRM. La liste d’exemples n’est pas présentée comme exhaustive ou figée."
+    },
+    {
+      "id": "S3",
+      "publisher": "Net-entreprises",
+      "title": "La fiabilisation des données de la DSN",
+      "url": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+      "published": "2025-07-25",
+      "modified": "2026-05-18",
+      "accessed": "2026-09-15",
+      "applicability": "Consultation et correction des CRM en 2026 ; DSN mensuelle uniquement pour la fenêtre annule et remplace citée."
+    },
+    {
+      "id": "S4",
+      "publisher": "Net-entreprises",
+      "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
+      "url": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+      "published": "2020-09-11",
+      "modified": "2026-07-23",
+      "accessed": "2026-09-15",
+      "applicability": "Contrôle avant dépôt avec Dsn-Val, version 2026 affichée lors de la consultation."
+    },
+    {
+      "id": "S5",
+      "publisher": "Net-entreprises",
+      "title": "Cahier technique de la norme DSN 2026.1",
+      "url": "https://www.net-entreprises.fr/media/documentation/dsn-cahier-technique-2026.1.pdf",
+      "version": "2026.1",
+      "accessed": "2026-09-15",
+      "applicability": "Portée du certificat de conformité pour la norme 2026.1."
+    }
+  ],
+  "claims": [
+    {"id":"V01","claim":"Un CRM est un rapport par lequel un organisme ou une administration répond au déclarant après réception lorsqu’une erreur ou suspicion est détectée.","kind":"official","source":"S2","evidence":"Un Compte Rendu Métier est un rapport permettant un retour au déclarant lorsqu’une erreur ou suspicion d’erreur est détectée.","applicability":"Définition générale Net-entreprises.","verdict":"VERIFIED"},
+    {"id":"V02","claim":"Chaque organisme intègre les éléments reçus et vérifie leur cohérence dans son système.","kind":"official","source":"S2","evidence":"Chaque organisme intègre les éléments transmis et vérifie la cohérence des données.","applicability":"Contrôles des organismes destinataires.","verdict":"VERIFIED"},
+    {"id":"V03","claim":"Chaque organisme destinataire met un CRM à disposition après cette analyse.","kind":"official","source":"S2","evidence":"Suite à cette analyse, chaque organisme destinataire met un CRM à disposition.","applicability":"Tableau de bord ou intégration progicielle selon le canal.","verdict":"VERIFIED"},
+    {"id":"V04","claim":"Les anomalies mises en évidence dans les CRM doivent être traitées pour effectuer les corrections nécessaires si besoin.","kind":"official","source":"S2","evidence":"Il est essentiel de traiter les anomalies mises en évidence dans les CRM.","applicability":"Correction si besoin, sans imposer une issue unique.","verdict":"VERIFIED"},
+    {"id":"V05","claim":"Les appellations recensées incluent synthèse, notification, bilan de traitement, BIS, CID, CRM nominatif et CRM financier.","kind":"official","source":"S2","evidence":"La liste officielle associe ces dénominations à différents organismes.","applicability":"Exemples de diversité, pas catalogue exhaustif actuel.","verdict":"VERIFIED"},
+    {"id":"V06","claim":"L’AEE indique que le dépôt est enregistré et que les contrôles suivants peuvent être effectués.","kind":"official","source":"S1","evidence":"Le dépôt est enregistré : un AEE est transmis ; les contrôles suivants peuvent être effectués.","applicability":"Étape immédiate après dépôt.","verdict":"VERIFIED"},
+    {"id":"V07","claim":"L’ARE indique que le dépôt ne remplit pas les conditions techniques d’acceptation.","kind":"official","source":"S1","evidence":"Le dépôt ne remplit pas les conditions techniques d’acceptation : un ARE est transmis.","applicability":"Rejet technique décrit par le retour.","verdict":"VERIFIED"},
+    {"id":"V08","claim":"Le CCO libère des obligations déclaratives vis-à-vis de la transmission de la DSN.","kind":"official","source":"S1","evidence":"Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission.","applicability":"Transmission seulement, sans extension à l’exactitude de la paie.","verdict":"VERIFIED"},
+    {"id":"V09","claim":"Les CRM et retours des organismes restent à vérifier après le CCO.","kind":"official","source":"S1","evidence":"Vous devez impérativement vérifier les comptes rendus métier et retours d’informations.","applicability":"Après certificat.","verdict":"VERIFIED"},
+    {"id":"V10","claim":"Le BAN informe d’une ou plusieurs anomalies relevées lors des contrôles et de l’invalidité de la déclaration.","kind":"official","source":"S1","evidence":"Le bilan d’anomalies informe d’une ou plusieurs anomalies et de l’invalidité de la déclaration.","applicability":"BAN tel que décrit sur Net-entreprises.","verdict":"VERIFIED"},
+    {"id":"V11","claim":"Une DSN peut être acceptée avec un CCO tout en présentant un BAN.","kind":"official","source":"S1","evidence":"La DSN peut être acceptée avec un certificat de conformité mais un bilan d’anomalies est néanmoins présent.","applicability":"Démontre que l’acceptation ne clôt pas tous les retours.","verdict":"VERIFIED"},
+    {"id":"V12","claim":"Net-entreprises distingue contrôles bloquants avec rejet et non bloquants avec acceptation mais écarts potentiels.","kind":"official","source":"S1","evidence":"Contrôle bloquant : DSN rejetée ; contrôle non bloquant : DSN acceptée avec écarts potentiellement à corriger.","applicability":"Qualification à reprendre de la source, pas à deviner.","verdict":"VERIFIED"},
+    {"id":"V13","claim":"Le certificat précise que la déclaration est conforme à la norme d’échange.","kind":"official","source":"S5","evidence":"Un certificat est délivré en précisant que la déclaration est conforme à la norme d’échange.","applicability":"Norme DSN 2026.1.","verdict":"VERIFIED"},
+    {"id":"V14","claim":"Le certificat ne préjuge pas de demandes ultérieures de rectification de données inexactes ou incomplètes.","kind":"official","source":"S5","evidence":"Le compte rendu issu du certificat ne préjuge pas des demandes de rectifier ou mettre à jour les données.","applicability":"Borne la conclusion tirée du CCO.","verdict":"VERIFIED"},
+    {"id":"V15","claim":"Dsn-Val permet de tester un fichier DSN avant son dépôt.","kind":"official","source":"S4","evidence":"L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.","applicability":"Contrôle pré-dépôt.","verdict":"VERIFIED"},
+    {"id":"V16","claim":"Les contrôles Dsn-Val portent sur le cahier technique et le JMN associé.","kind":"official","source":"S4","evidence":"Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme associé.","applicability":"Version applicable à identifier.","verdict":"VERIFIED"},
+    {"id":"V17","claim":"Les CRM et retours doivent être consultés chaque mois après dépôt.","kind":"official","source":"S3","evidence":"Consultation chaque mois des CRM et retours sur le tableau de bord ou dans le logiciel en M2M.","applicability":"Fiabilisation au fil de l’eau.","verdict":"VERIFIED"},
+    {"id":"V18","claim":"En cas d’incompréhension, l’organisme explique le retour métier et l’éditeur accompagne l’usage du logiciel.","kind":"official","source":"S3","evidence":"Le déclarant peut contacter son organisme pour comprendre le retour et son éditeur pour l’usage du logiciel.","applicability":"Répartition des interlocuteurs.","verdict":"VERIFIED"},
+    {"id":"V19","claim":"Pour une DSN mensuelle, une correction peut passer par annule et remplace avant minuit la veille de l’échéance si possible, sinon par le mois suivant.","kind":"official","source":"S3","evidence":"Correction en paie et DSN annule et remplace avant minuit la veille de l’échéance si possible ; sinon mois suivant.","applicability":"DSN mensuelle ; vérifier type, moment et consigne du retour.","verdict":"VERIFIED"},
+    {"id":"V20","claim":"Des CRM normalisés mensuels structurés ont été mis en place par les Urssaf et les caisses MSA pour faciliter l’analyse.","kind":"official","source":"S3","evidence":"CRM normalisés mensuels au format structuré mis en place par les Urssaf et caisses MSA.","applicability":"État décrit sur la page modifiée en mai 2026.","verdict":"VERIFIED"},
+    {"id":"V21","claim":"Le mot CRM ne suffit pas à connaître la portée d’un retour.","kind":"synthesis","source":"S2","evidence":"La source associe des formats, organismes et niveaux de détail différents sous la famille des CRM.","applicability":"Synthèse prudente de la diversité officielle.","verdict":"VERIFIED"},
+    {"id":"M01","claim":"Commencer la lecture par émetteur, type, déclaration, période et population.","kind":"memlia-method","source":null,"evidence":"Convention d’organisation explicitement étiquetée méthode Memlia.","applicability":"À adapter au cabinet.","verdict":"BOUNDED_METHOD"},
+    {"id":"M02","claim":"Conserver qualification à confirmer quand la source ne donne pas de statut.","kind":"memlia-method","source":null,"evidence":"Règle fail-closed, présentée comme méthode.","applicability":"Ne remplace pas la notice du retour.","verdict":"BOUNDED_METHOD"},
+    {"id":"M03","claim":"Utiliser les états expliqué, à corriger et à arbitrer.","kind":"memlia-method","source":null,"evidence":"États explicitement qualifiés de conventions internes.","applicability":"À adapter au workflow.","verdict":"BOUNDED_METHOD"},
+    {"id":"M04","claim":"Documenter retour, donnée, preuve, qualification, décision, auteur, date et canal.","kind":"memlia-method","source":null,"evidence":"Champs minimum proposés par Memlia.","applicability":"À adapter aux accès et systèmes.","verdict":"BOUNDED_METHOD"},
+    {"id":"M05","claim":"Fermer le traitement sur le résultat suivant plutôt que sur une ancienne preuve.","kind":"memlia-method","source":null,"evidence":"Convention de traçabilité, non exigence réglementaire universelle.","applicability":"Workflow interne.","verdict":"BOUNDED_METHOD"},
+    {"id":"M06","claim":"Le registre proposé sépare message reçu et décision humaine.","kind":"memlia-method","source":null,"evidence":"Table qualifiée de proposition Memlia.","applicability":"À adapter aux outils et droits.","verdict":"BOUNDED_METHOD"},
+    {"id":"M07","claim":"La vue agrégée ne classe pas les gestionnaires par défaut.","kind":"memlia-method","source":null,"evidence":"Principe anti-surveillance Memlia, sans prétention à une règle légale complète.","applicability":"Pilotage du flux de dossiers.","verdict":"BOUNDED_METHOD"},
+    {"id":"M08","claim":"L’automatisation rassemble, rapproche et s’arrête si la règle manque.","kind":"memlia-method","source":null,"evidence":"Description bornée du service Memlia.","applicability":"Pas de correction ni dépôt autonome.","verdict":"BOUNDED_METHOD"},
+    {"id":"M09","claim":"Les scénarios D-027, D-031, D-044 et D-052 servent à tester des refus attendus.","kind":"synthetic-test","source":null,"evidence":"Chaque exemple est annoncé comme entièrement fictif et sans règle réelle.","applicability":"Recette éditoriale uniquement.","verdict":"BOUNDED_METHOD"},
+    {"id":"M10","claim":"Un registre partagé ne recopie pas le détail nominatif et reste réservé aux personnes habilitées.","kind":"memlia-method","source":null,"evidence":"Garde-fou de minimisation explicite, sans prétention à remplacer l’analyse RGPD du cabinet.","applicability":"À adapter aux finalités, habilitations et systèmes du cabinet.","verdict":"BOUNDED_METHOD"},
+    {"id":"M11","claim":"Les cinq sources ont été vérifiées le 15 septembre 2026 avec un passage et une limite d’application.","kind":"editorial-proof","source":null,"evidence":"Le présent registre et les extractions locales datées rendent la vérification reproductible.","applicability":"Preuve de processus éditorial, pas claim DSN.","verdict":"BOUNDED_METHOD"},
+    {"id":"M12","claim":"Les libellés peuvent varier selon version, portail, organisme ou logiciel.","kind":"bounded-synthesis","source":"S2","evidence":"La source recense des dénominations hétérogènes selon les organismes ; la variation logicielle est une réserve prudente.","applicability":"Invite à lire le retour reçu, sans imposer une taxonomie.","verdict":"BOUNDED_METHOD"}
+  ],
+  "totals": {"claims":33,"verified":21,"boundedMethod":12,"unverified":0,"rejected":0}
+}

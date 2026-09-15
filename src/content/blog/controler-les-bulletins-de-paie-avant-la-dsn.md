@@ -151,6 +151,8 @@ Un résultat technique sans anomalie bloquante connue ne prouve pas qu'une absen
 
 ## Après le dépôt : transformer chaque CRM en action
 
+Cette section ferme la boucle du contrôle avant transmission. Pour distinguer accusé, certificat, bilan et retours des organismes, puis qualifier chaque message, consultez la [méthode de lecture des comptes rendus métier DSN](/blog/comprendre-les-comptes-rendus-metier-dsn).
+
 Le dépôt ouvre une nouvelle phase. [Net-entreprises](https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/) définit le Compte Rendu Métier, ou CRM, comme « un rapport permettant à l'organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu'une erreur ou suspicion d'erreur est détectée ». La même page précise qu'« il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM » afin d'effectuer les corrections nécessaires si besoin.
 
 <!-- [UNIQUE INSIGHT] -->
