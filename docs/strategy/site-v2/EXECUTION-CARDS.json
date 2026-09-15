@@ -1,0 +1,16 @@
+{
+  "parent": "t_630c4a13",
+  "source_branch": "wt/t_630c4a13",
+  "source_worktree": "/Users/kevinkitanga/dev/interne/memlia-landing/.worktrees/site-v2-plan-astra",
+  "base_commit": "939464c",
+  "notification_followup": "t_5463cd1a",
+  "notification_status": "NOT_CONFIGURED — API permission denied; delegated to authorized ops context, no bypass",
+  "plan_commits": ["0634dac7ccf10449fe61dba8c6f42acf20ca7f0a", "6341e3958fa512fada9963edc33c5017139906b5"],
+  "cards": [
+    {"id": "t_88aa38ae", "role": "review", "assignee": "dev", "parents": ["t_630c4a13"], "notifier": "marketing"},
+    {"id": "t_42bc3eed", "role": "copy", "assignee": "marketing", "parents": ["t_88aa38ae"], "notifier": "marketing"},
+    {"id": "t_c2262a1b", "role": "build", "assignee": "dev", "parents": ["t_42bc3eed", "t_4cd25435"], "notifier": "marketing"},
+    {"id": "t_80055166", "role": "qa", "assignee": "marketing", "parents": ["t_c2262a1b"], "notifier": "marketing"},
+    {"id": "t_4659b272", "role": "release", "assignee": "dev", "parents": ["t_80055166"], "notifier": "marketing"}
+  ]
+}

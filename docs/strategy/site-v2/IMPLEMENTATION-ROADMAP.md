@@ -1,6 +1,6 @@
 # Roadmap d’exécution
 
-15/09/2026. Plan de t_630c4a13. Les IDs réels seront conservés dans EXECUTION-CARDS.json après création. Toutes les cartes vivent dans des worktrees absolus de memlia-landing, modèle Sol, notification marketing. Aucun nouveau profil ni cron.
+15/09/2026. Plan de t_630c4a13. Les IDs réels sont conservés dans EXECUTION-CARDS.json. Les cinq cartes de production vivent dans des worktrees absolus de memlia-landing, profils dev/marketing existants sans override modèle. Notifications marketing prescrites mais NON CONFIGURÉES à la clôture du plan : API refusée par le contexte d’exécution. Le correctif opérationnel borné est confié au profil existant default via t_5463cd1a. Aucun contournement ni nouveau profil ni cron.
 
 ## Graphe minimal
 ```mermaid
