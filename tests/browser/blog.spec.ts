@@ -20,7 +20,7 @@ test('liste du blog : articles, auteur, flux et navigation courante', async ({ p
   const cartes = page.locator('[data-article]');
   expect(await cartes.count()).toBeGreaterThanOrEqual(2);
   expect(await page.locator('.blog-liste').getAttribute('data-articles')).toBe(String(await cartes.count()));
-  await expect(page.locator('#auteur-kevin')).toContainText('Kevin Sauvaget');
+  await expect(page.locator('#auteur-kevin')).toContainText('Kevin Kitanga');
   await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveAttribute('href', '/blog/rss.xml');
   await page.setViewportSize({ width: 1440, height: 900 });
   await expect(page.locator('.nav-centre a[aria-current="page"]')).toHaveText('Blog');

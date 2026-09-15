@@ -181,7 +181,7 @@ class BuildProof(unittest.TestCase):
                 self.assertEqual(posting['datePublished'], metas['article:published_time'])
                 self.assertGreaterEqual(posting['dateModified'], posting['datePublished'])
                 self.assertEqual(posting['author']['@id'], nodes['Person']['@id'])
-                self.assertEqual(nodes['Person']['name'], 'Kevin Sauvaget')
+                self.assertEqual(nodes['Person']['name'], 'Kevin Kitanga')
                 self.assertEqual(posting['publisher']['@id'], f'{SITE}/#organization')
                 image = posting['image']['url']
                 self.assertTrue(image.startswith(f'{SITE}/images/'))
@@ -213,7 +213,7 @@ class BuildProof(unittest.TestCase):
             self.assertTrue(item.find('title').text)
             self.assertTrue(item.find('description').text)
             self.assertTrue(item.find('pubDate').text)
-            self.assertEqual(item.find('{http://purl.org/dc/elements/1.1/}creator').text, 'Kevin Sauvaget')
+            self.assertEqual(item.find('{http://purl.org/dc/elements/1.1/}creator').text, 'Kevin Kitanga')
 
 
 if __name__ == '__main__':

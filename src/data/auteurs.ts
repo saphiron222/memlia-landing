@@ -19,10 +19,10 @@ export interface Auteur {
 export const AUTEURS: Record<IdAuteur, Auteur> = {
   kevin: {
     id: 'kevin',
-    nom: 'Kevin Sauvaget',
+    nom: 'Kevin Kitanga',
     role: 'Fondateur de Memlia',
     bio:
-      'Kevin Sauvaget conçoit et livre les automatisations Memlia pour les cabinets d’expertise comptable : cadrage des règles avec le cabinet, construction sur jeux d’essai fictifs, recette avec les équipes. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.',
+      'Kevin Kitanga conçoit et livre les automatisations Memlia pour les cabinets d’expertise comptable : cadrage des règles avec le cabinet, construction sur jeux d’essai fictifs, recette avec les équipes. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.',
     ancre: '#auteur-kevin',
   },
 };
