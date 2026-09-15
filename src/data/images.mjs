@@ -89,14 +89,14 @@ export const IMAGES = {
     brief: 'IMG-23',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: 'Illustration sur données fictives : quatre cas de test confrontés à leurs résultats attendus, dont deux refus.',
+    alt: 'Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN.',
     generee: true,
   },
   'img-24-suivi-production-sociale': {
     brief: 'IMG-24',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: 'Illustration sur données fictives : volumes agrégés sans détail individuel et validation humaine requise.',
+    alt: 'Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision.',
     generee: true,
   },
 };

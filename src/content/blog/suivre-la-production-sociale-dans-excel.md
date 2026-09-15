@@ -1,190 +1,248 @@
 ---
-titre: "Suivre la production sociale dans Excel sans surveiller les personnes"
-resume: "Un classeur de suivi tient si son unité est le dossier et l’étape, jamais la personne : une ligne par dossier et par mois, des états fermés, des agrégats par étape et par période, des exceptions signalées avant la DSN. Le droit impose proportionnalité, information des salariés et avis du CSE."
-titreOnglet: "Suivi de production sociale dans Excel, sans surveillance | Memlia"
-description: "Méthode en cinq étapes pour structurer un classeur Excel de suivi de la production sociale d’un cabinet : dossier, étape, agrégats, exceptions, cadre CNIL."
+titre: "Suivre la production sociale dans Excel : modèle, règles et limites"
+titreOnglet: "Tableau de suivi de production sociale Excel | Memlia"
+resume: "Construisez le suivi sur l’unité dossier × période × étape : une table de saisie contrôlée, des calculs régénérables et une vue agrégée. Les exceptions portent sur les dossiers, jamais sur un classement individuel."
+description: "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel."
 datePublication: 2026-09-09
+dateMiseAJour: 2026-09-15
 auteur: kevin
 sujets: [production-sociale, excel, cabinet, methode]
-motsCles: ["suivi de production sociale", "classeur Excel cabinet comptable", "pôle social", "surveillance des salariés CNIL", "tableau structuré Excel"]
+motsCles: ["tableau suivi production sociale Excel cabinet", "suivi portefeuille social", "classeur pôle social", "états de production", "pilotage anti-surveillance"]
 brouillon: false
 image: img-24-suivi-production-sociale
+pipelineVersion: 1
+primaryQuery: "tableau suivi production sociale Excel cabinet"
+secondaryQueries: ["suivi portefeuille social", "classeur pôle social", "états de production", "pilotage anti-surveillance"]
+intent: executer
+fanOut: ["colonnes du tableau social", "états et transitions", "séparation Saisie Calcul Vue", "exceptions avant échéance", "gouvernance anti-surveillance", "automatisation du classeur"]
+cluster: excel-outils-existants
+rolePrincipal: paie-responsables-sociaux
+rolesSecondaires: [direction-associes]
+tache: "Structurer un classeur de suivi existant pour identifier l’étape et les exceptions de chaque dossier sans classement individuel."
+preuveRole:
+  niveau: indirect
+  source: "preuves/role.json"
+  date: 2026-09-13
+funnel: MOFU
+contentType: searchable
+format: how-to-guide
+rankability: plausible
+businessRelevance: directe
+proofStatus: verifiee
+proofRequired: "Les affirmations Excel et CNIL sont rattachées aux sources primaires relues le 15 septembre 2026. Le contenu est publié sans attestation métier indépendante."
+reviewRule: "Revue éditoriale et fact-check réalisés ; publication déclarée non attestée par un professionnel du social ou de la protection des données."
+reviewer: marketing
+sourcesVerifieesLe: 2026-09-15
+cta:
+  label: "Identifier une tâche à automatiser"
+  destination: "https://cal.com/kevin-svg/decouvrir-memlia"
+  outcome: "Memlia peut définir avec le cabinet les règles, exceptions et tests à automatiser dans le classeur existant ; le cabinet valide le résultat."
+imageOg: "/images/img-24-suivi-production-sociale-og.webp"
+imageAlt: "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision."
+statutEditorial: publie-non-atteste
 sources:
-  - { editeur: "Légifrance", titre: "Code du travail, article L1121-1", url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006900785", consulte: 2026-09-09 }
-  - { editeur: "Légifrance", titre: "Code du travail, article L1222-4", url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006900861", consulte: 2026-09-09 }
-  - { editeur: "Légifrance", titre: "Code du travail, article L2312-38", url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035610275/2022-04-12", consulte: 2026-09-09 }
-  - { editeur: "CNIL", titre: "Contrôle de l’activité des personnes employées", url: "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees", consulte: 2026-09-09 }
-  - { editeur: "CNIL", titre: "Surveillance excessive des salariés : sanction de 40 000 euros", url: "https://www.cnil.fr/fr/surveillance-excessive-des-salaries-sanction-de-40-000-euros-entreprise-secteur-immobilier", consulte: 2026-09-09 }
-  - { editeur: "CNIL", titre: "Les questions-réponses de la CNIL sur le télétravail", url: "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-le-teletravail", consulte: 2026-09-09 }
-  - { editeur: "CNIL", titre: "Règlement européen sur la protection des données, chapitre 2 (article 5)", url: "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2", consulte: 2026-09-09 }
-  - { editeur: "Service-Public Entreprendre", titre: "Déclaration sociale nominative (DSN)", url: "https://entreprendre.service-public.gouv.fr/vosdroits/F24013", consulte: 2026-09-09 }
-  - { editeur: "Service-Public Entreprendre", titre: "Déclaration préalable à l’embauche (DPAE)", url: "https://entreprendre.service-public.gouv.fr/vosdroits/F23697", consulte: 2026-09-09 }
-  - { editeur: "Service-Public", titre: "Bulletin de paie : mentions obligatoires", url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F559", consulte: 2026-09-09 }
-  - { editeur: "Microsoft Support", titre: "Overview of Excel tables", url: "https://support.microsoft.com/en-us/office/overview-of-excel-tables-7ab0bb7d-3a9e-4b56-a3c9-6c94334e492c", consulte: 2026-09-09 }
-  - { editeur: "Microsoft Support", titre: "Apply data validation to cells", url: "https://support.microsoft.com/en-us/office/apply-data-validation-to-cells-29fecbcc-d1b9-42c1-9d76-eff3ce5f7249", consulte: 2026-09-09 }
-  - { editeur: "Microsoft Support", titre: "Protect a worksheet", url: "https://support.microsoft.com/en-us/office/protect-a-worksheet-3179efdb-1285-4d49-a9c3-f4ca36276de6", consulte: 2026-09-09 }
-  - { editeur: "Raymond R. Panko (arXiv)", titre: "What We Don’t Know About Spreadsheet Errors Today", url: "https://arxiv.org/abs/1602.02601", consulte: 2026-09-09 }
+  - { editeur: "CNIL", titre: "Travail, ressources humaines : le contrôle de l’activité des personnes employées", url: "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees", consulte: 2026-09-15 }
+  - { editeur: "Microsoft Support", titre: "Overview of Excel tables", url: "https://support.microsoft.com/en-us/excel/overview-of-excel-tables", consulte: 2026-09-15 }
+  - { editeur: "Microsoft Support", titre: "Protect a worksheet", url: "https://support.microsoft.com/en-us/excel/protect-a-worksheet", consulte: 2026-09-15 }
 ---
 
-Un pôle social de cabinet tient presque toujours un classeur de suivi : quels dossiers ont reçu leurs variables, quels bulletins sont établis, quelles DSN restent à déposer avant le 5 ou le 15 du mois. Ce classeur rend service tant qu'il décrit des dossiers. Il devient un problème le jour où une colonne « gestionnaire » se transforme en classement des personnes, ou le jour où plus personne ne sait quelle formule fait foi.
+Un tableau de suivi de production sociale utile ne commence pas par des graphiques. Il commence par une unité stable : un dossier, une période et une étape du cycle. La saisie décrit les faits, les formules détectent les exceptions, puis une vue agrégée montre ce qui reste à traiter. Elle ne classe pas les personnes.
 
-Ce guide propose une méthode en cinq étapes pour construire, dans Excel, un suivi de production sociale utile au pilotage du pôle, construit dans le cadre posé par le Code du travail et la CNIL, et assez structuré pour être automatisé plus tard sans le refaire. Il s'adresse aux responsables de pôle social, aux experts-comptables et aux gestionnaires de paie. Ils veulent voir ce qui avance, ce qui bloque et ce qui manque, sans regarder par-dessus l'épaule de leurs collègues.
+Ce guide s'adresse aux responsables de pôle social, dirigeants de cabinet et gestionnaires de paie qui veulent structurer ou reprendre un classeur existant. Il fournit un dictionnaire de colonnes, des états fermés et un jeu d'essai fictif. Les règles proposées restent à adapter à l'organisation, aux accès et aux obligations du cabinet.
 
-## Pourquoi un classeur de suivi dérive
+> **Contenu non attesté.** Ce guide a fait l’objet d’un fact-check sur les sources citées, relues le 15 septembre 2026, mais pas d’une attestation indépendante par un professionnel du social ou de la protection des données. Vérifiez le cadre applicable à votre organisation avant de mettre en place un suivi.
 
-Un tableau de suivi dérive quand son unité de compte change sans que personne ne l'ait décidé. Au départ, chaque ligne décrit un dossier client et son avancement dans le mois. Puis on ajoute une colonne pour savoir qui s'en occupe, une autre pour compter les bulletins produits, un onglet qui totalise par gestionnaire. Le tableau ne suit plus la production ; il mesure des individus.
+> **En bref**
+> - Une ligne représente `dossier × période`, pas un salarié du cabinet.
+> - Une étape est validée par une date ou un état fermé, pas par une couleur libre.
+> - Les feuilles `Saisie`, `Calcul` et `Vue` ont des responsabilités distinctes.
+> - Le pilotage compte les dossiers par état et par échéance. Il n'établit pas de classement individuel.
+> - La protection d'une feuille évite des modifications de cellules, mais ne sécurise pas l'accès au fichier.
 
-Cette dérive a trois conséquences. La première est juridique : un dispositif qui collecte des informations sur l'activité des salariés doit respecter des conditions précises, décrites plus bas. La deuxième est pratique : dès que le tableau sert à comparer les personnes, les saisies deviennent moins fiables, parce que chacun sait ce qu'on en fera. La troisième est technique : un classeur où les états, les formules et les totaux vivent dans les mêmes cellules casse silencieusement. Raymond Panko rappelle en 2016, selon les études qu'il recense, que les erreurs de tableur sont rares cellule par cellule, mais qu'un tableur volumineux a de fortes chances de contenir au moins une valeur finale fausse ([arXiv 1602.02601](https://arxiv.org/abs/1602.02601), consulté le 9 septembre 2026).
+## Le modèle minimal : dossier × période × étape
 
-Le calendrier ajoute la pression : la DSN mensuelle est due au plus tard le 15 du mois suivant pour les employeurs de moins de 50 salariés, et le 5 pour ceux d'au moins 50 salariés dont la paie est versée le mois même ([Service-Public Entreprendre, fiche F24013](https://entreprendre.service-public.gouv.fr/vosdroits/F24013), vérifiée le 1er juin 2026). Un pôle qui gère des dizaines de dossiers a besoin de savoir, chaque jour du cycle, ce qui reste à faire avant ces deux dates. La liste des vérifications à rejouer sur les bulletins eux-mêmes fait l'objet d'un article distinct, cité à l'étape 1.
+Chaque ligne de la table principale représente l'avancement d'un dossier sur une période donnée. Cette granularité permet de répondre à une question opérationnelle : où se trouve le dossier dans le cycle et quelle action manque avant l'échéance qui lui est applicable ?
 
-## Ce que le droit impose avant de construire le tableau
+Évitez trois autres unités :
 
-Un classeur de suivi de production n'est pas un outil de surveillance par nature. Il peut le devenir par son contenu, et le droit français fixe trois conditions que le tableau doit remplir dès sa conception.
+- une ligne par gestionnaire, qui transforme le fichier en tableau individuel ;
+- une ligne par tâche libre, qui rend les états impossibles à comparer ;
+- une ligne permanente par dossier, qui écrase l'historique d'un mois par le suivant.
 
-**La proportionnalité.** Le Code du travail dispose que « nul ne peut apporter aux droits des personnes et aux libertés individuelles et collectives de restrictions qui ne seraient pas justifiées par la nature de la tâche à accomplir ni proportionnées au but recherché » ([article L1121-1](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006900785)). La CNIL en tire une règle simple : « une surveillance constante est excessive » ([CNIL, contrôle de l'activité des personnes employées](https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees), page du 9 juillet 2026). La même page donne un exemple utile pour un pôle social : un logiciel qui compte et transmet, de façon transparente, le nombre de dossiers traités par trimestre et par salarié « semble proportionné car la fréquence de la remontée d'information n'est pas assimilable à une surveillance constante ». La fréquence et le niveau d'agrégation font la différence.
+<!-- [UNIQUE INSIGHT] -->
+La clé technique du suivi n'est pas le numéro de ligne. C'est le couple `id_dossier + période`. Une règle d'unicité sur cette clé évite qu'un même dossier apparaisse deux fois pour le même mois avec des états contradictoires.
 
-**L'information préalable.** « Aucune information concernant personnellement un salarié ne peut être collectée par un dispositif qui n'a pas été porté préalablement à sa connaissance » ([article L1222-4](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006900861)). Si le classeur enregistre qui a fait quoi et quand, les gestionnaires doivent le savoir avant, pas après.
+## Le dictionnaire de colonnes à écrire avant les formules
 
-**La consultation du CSE.** Lorsqu'il existe, le comité social et économique « est informé et consulté, préalablement à la décision de mise en œuvre dans l'entreprise, sur les moyens ou les techniques permettant un contrôle de l'activité des salariés » ([article L2312-38](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035610275/2022-04-12)).
+Le dictionnaire ci-dessous sépare données d'identification, étapes, exceptions et audit. Les noms sont indicatifs. Le cabinet peut les adapter, mais chaque colonne doit garder une seule signification.
 
-Le règlement européen ajoute le principe de minimisation : les données doivent être « adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités » ([RGPD, article 5, reproduit par la CNIL](https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2)). Et la sanction n'est pas théorique : le 19 décembre 2024, la CNIL a prononcé une amende de 40 000 euros contre une société qui mesurait les périodes d'inactivité de ses salariés et prenait des captures d'écran régulières, une « atteinte disproportionnée » selon la décision ([CNIL, 4 février 2025](https://www.cnil.fr/fr/surveillance-excessive-des-salaries-sanction-de-40-000-euros-entreprise-secteur-immobilier)).
+| Colonne | Type | Exemple fictif | Règle de saisie | Usage |
+| --- | --- | --- | --- | --- |
+| `id_dossier` | texte stable | `D-001` | obligatoire, sans nom de client dans la vue agrégée | Identifier le dossier |
+| `periode` | mois | `2026-08` | obligatoire | Former la clé avec `id_dossier` |
+| `echeance` | date | `2026-09-15` | issue de la règle du dossier | Calculer le temps restant |
+| `etat` | liste fermée | `pieces_incompletes` | une valeur autorisée | Situer le dossier dans le cycle |
+| `pieces_recues_le` | date ou vide | `2026-09-03` | date réelle, pas case cochée | Prouver la réception |
+| `bulletins_controles_le` | date ou vide | `2026-09-07` | renseigné après la revue | Relier le contrôle au cycle |
+| `dsn_deposee_le` | date ou vide | `2026-09-10` | renseigné après dépôt | Distinguer prêt et déposé |
+| `exception_code` | liste fermée | `PIECE_MANQUANTE` | vide si aucune exception | Regrouper les cas à traiter |
+| `exception_detail` | texte court | `variable absente` | ne pas y copier de donnée sensible | Donner le contexte minimal |
+| `decision` | liste fermée | `a_arbitrer` | obligatoire si exception | Empêcher une alerte sans suite |
+| `maj_le` | date-heure | `2026-09-07 10:00` | mise à jour contrôlée | Repérer la fraîcheur de la ligne |
 
-La conclusion pour le classeur est nette : suivre des dossiers et des étapes est proportionné ; compter les gestes des personnes en continu ne l'est pas. Ce principe est aussi celui que Memlia applique à toute vue de pilotage : [des agrégats, jamais un classement individuel](/#faq-surveillance).
+Les exemples sont entièrement fictifs. Ils décrivent une structure, pas un dossier réel ni un calendrier à appliquer tel quel.
 
-## Étape 1 : choisir le dossier et l'étape comme unité de suivi
+### Pourquoi utiliser une table Excel structurée ?
 
-À la fin de cette étape, vous avez une grille où chaque ligne représente un dossier client pour un mois de paie, et où l'avancement se lit dans une colonne d'état à valeurs fermées.
+Microsoft indique qu'une plage de données liées peut être convertie en [table Excel](https://support.microsoft.com/en-us/excel/overview-of-excel-tables) pour en faciliter la gestion et l'analyse. Les colonnes obtiennent des en-têtes filtrables et les formules de colonne peuvent se propager aux nouvelles lignes. Cette structure convient mieux qu'une plage dont la fin doit être modifiée à la main chaque mois.
 
-Le cycle mensuel d'un dossier de paie passe par des étapes que tout pôle reconnaît. Leur liste exacte dépend du cabinet ; celle-ci sert de point de départ.
+Donnez un nom explicite à la table, par exemple `t_production_sociale`. Les formules peuvent alors référencer `t_production_sociale[etat]` plutôt qu'une plage fixe comme `H2:H500`.
 
-| Étape | Ce qu'elle constate | Repère public |
-| --- | --- | --- |
-| Pièces reçues | Le client a transmis ses variables du mois : heures, absences, entrées, sorties, primes | Les entrées relèvent de la DPAE, à faire au plus tôt huit jours avant l'embauche ([fiche F23697](https://entreprendre.service-public.gouv.fr/vosdroits/F23697)) |
-| Variables saisies | Les éléments sont intégrés dans le logiciel de paie | Le bulletin doit distinguer heures au taux normal et heures supplémentaires, congés payés et activité partielle ([fiche F559](https://www.service-public.gouv.fr/particuliers/vosdroits/F559)) |
-| Bulletins établis | Les bulletins du mois sont calculés | Mentions obligatoires de la [fiche F559](https://www.service-public.gouv.fr/particuliers/vosdroits/F559) |
-| Contrôle avant DSN | Les vérifications de cohérence sont faites, les écarts traités | Liste de contrôles décrite dans l'article sur [le contrôle des bulletins avant la DSN](/blog/controler-les-bulletins-de-paie-avant-la-dsn) |
-| DSN déposée | La déclaration est transmise avant le 5 ou le 15 | [Fiche F24013](https://entreprendre.service-public.gouv.fr/vosdroits/F24013) |
-| Documents envoyés | Bulletins et journaux remis au client | Conservation du double du bulletin : [fiche F559](https://www.service-public.gouv.fr/particuliers/vosdroits/F559) |
+## Définir des états fermés et leurs transitions
 
-Deux règles rendent cette grille robuste. La première : une ligne par dossier et par mois, jamais une ligne par gestionnaire. La seconde : l'état d'un dossier est une valeur choisie dans une liste fermée (« en attente de pièces », « pièces incomplètes », « saisi », « contrôlé », « déposé », « envoyé »), pas un texte libre. Un texte libre ne se compte pas ; une liste fermée se compte, se filtre et se vérifie.
+Une colonne d'état libre finit par contenir `OK`, `fait`, `terminé`, `déposé` ou des variantes typographiques qui désignent parfois la même chose. Une liste fermée évite cette ambiguïté.
 
-Vérification : prenez trois dossiers du mois dernier et décrivez leur parcours avec la grille. Si une situation réelle ne rentre dans aucun état, la liste est incomplète et il faut l'amender avant d'aller plus loin.
+Voici un cycle de départ à adapter :
 
-## Étape 2 : structurer le classeur pour qu'il se compte
+1. `a_ouvrir`
+2. `attente_pieces`
+3. `pieces_incompletes`
+4. `pret_calcul`
+5. `bulletins_calcules`
+6. `ecarts_a_arbitrer`
+7. `controle_termine`
+8. `dsn_deposee`
+9. `retours_a_traiter`
+10. `clos`
 
-À la fin de cette étape, le classeur sépare ce que le cabinet saisit de ce que les formules calculent, et la saisie est contrainte.
+Une transition doit être cohérente avec les dates. Par exemple, `dsn_deposee` exige une date de dépôt ; `controle_termine` exige une date de contrôle ; `ecarts_a_arbitrer` exige un code d'exception et une décision ouverte. Ces règles sont des choix de gouvernance du cabinet, pas des normes imposées à tous les pôles sociaux.
 
-<figure>
-<svg viewBox="0 0 720 260" role="img" aria-labelledby="fig1-titre" xmlns="http://www.w3.org/2000/svg" font-family="Hanken Grotesk, Arial, sans-serif">
-<title id="fig1-titre">Trois feuilles : saisie par le cabinet, calcul par formules, vue en agrégats du pôle</title>
-<rect x="0" y="0" width="720" height="260" fill="#fcfbf7"/>
-<g>
-<rect x="24" y="40" width="200" height="170" rx="12" fill="#fffefb" stroke="#231f20" stroke-opacity="0.18"/>
-<text x="124" y="72" text-anchor="middle" font-size="16" font-weight="600" fill="#231f20">Feuille Saisie</text>
-<text x="124" y="98" text-anchor="middle" font-size="13" fill="#231f20" fill-opacity="0.72">une ligne par dossier et par mois</text>
-<text x="124" y="120" text-anchor="middle" font-size="13" fill="#231f20" fill-opacity="0.72">états en liste fermée</text>
-<text x="124" y="142" text-anchor="middle" font-size="13" fill="#231f20" fill-opacity="0.72">dates de réception et de dépôt</text>
-<text x="124" y="186" text-anchor="middle" font-size="12" font-weight="600" fill="#176f37">le cabinet écrit ici</text>
-</g>
-<path d="M232 125 H264" stroke="#1c8a41" stroke-width="2"/>
-<path d="M258 118 L268 125 L258 132" fill="none" stroke="#1c8a41" stroke-width="2"/>
-<g>
-<rect x="272" y="40" width="176" height="170" rx="12" fill="#fffefb" stroke="#231f20" stroke-opacity="0.18"/>
-<text x="360" y="72" text-anchor="middle" font-size="16" font-weight="600" fill="#231f20">Feuille Calcul</text>
-<text x="360" y="98" text-anchor="middle" font-size="13" fill="#231f20" fill-opacity="0.72">formules seulement</text>
-<text x="360" y="120" text-anchor="middle" font-size="13" fill="#231f20" fill-opacity="0.72">jours avant l’échéance</text>
-<text x="360" y="142" text-anchor="middle" font-size="13" fill="#231f20" fill-opacity="0.72">exceptions détectées</text>
-<text x="360" y="186" text-anchor="middle" font-size="12" font-weight="600" fill="#176f37">feuille protégée</text>
-</g>
-<path d="M456 125 H488" stroke="#1c8a41" stroke-width="2"/>
-<path d="M482 118 L492 125 L482 132" fill="none" stroke="#1c8a41" stroke-width="2"/>
-<g>
-<rect x="496" y="40" width="200" height="170" rx="12" fill="#eafaef" stroke="#1c8a41" stroke-opacity="0.5"/>
-<text x="596" y="72" text-anchor="middle" font-size="16" font-weight="600" fill="#231f20">Feuille Vue</text>
-<text x="596" y="98" text-anchor="middle" font-size="13" fill="#231f20" fill-opacity="0.72">dossiers par état</text>
-<text x="596" y="120" text-anchor="middle" font-size="13" fill="#231f20" fill-opacity="0.72">avancement du mois du pôle</text>
-<text x="596" y="142" text-anchor="middle" font-size="13" fill="#231f20" fill-opacity="0.72">aucune colonne nominative</text>
-<text x="596" y="186" text-anchor="middle" font-size="12" font-weight="600" fill="#176f37">agrégats par étape et par période</text>
-</g>
-<text x="360" y="240" text-anchor="middle" font-size="12" fill="#231f20" fill-opacity="0.6">Ce que le cabinet saisit ne se touche jamais ; ce qui est calculé se régénère.</text>
-</svg>
-<figcaption>Un classeur qui se compte : la saisie, le calcul et la vue de pilotage vivent dans trois feuilles distinctes.</figcaption>
-</figure>
+### Matrice de transition
 
-Quatre fonctions natives d'Excel suffisent pour poser cette structure.
+| État courant | État suivant autorisé | Condition minimale | Cas refusé |
+| --- | --- | --- | --- |
+| `attente_pieces` | `pieces_incompletes` ou `pret_calcul` | réception évaluée | passage direct à `bulletins_calcules` |
+| `bulletins_calcules` | `ecarts_a_arbitrer` ou `controle_termine` | revue des écarts jouée | état terminé sans date de contrôle |
+| `controle_termine` | `dsn_deposee` | décision humaine et dépôt effectué | date de dépôt future |
+| `dsn_deposee` | `retours_a_traiter` ou `clos` | retours disponibles consultés selon le processus | clôture automatique sans lecture prévue |
 
-1. **Un tableau structuré pour la feuille Saisie.** Microsoft résume son intérêt : « pour faciliter la gestion et l'analyse d'un groupe de données liées, vous pouvez convertir une plage de cellules en tableau Excel » ; chaque colonne porte alors filtre et tri dans son en-tête, et les colonnes calculées se propagent à toute nouvelle ligne ([Overview of Excel tables](https://support.microsoft.com/en-us/office/overview-of-excel-tables-7ab0bb7d-3a9e-4b56-a3c9-6c94334e492c)).
-2. **La validation des données sur la colonne d'état.** Elle sert à « restreindre le type de données ou les valeurs que les utilisateurs saisissent dans une cellule, par exemple une liste déroulante » ([Apply data validation to cells](https://support.microsoft.com/en-us/office/apply-data-validation-to-cells-29fecbcc-d1b9-42c1-9d76-eff3ce5f7249)). La liste fermée de l'étape 1 devient une contrainte, pas une consigne.
-3. **La protection de la feuille Calcul.** Elle empêche de modifier, déplacer ou supprimer, par accident ou délibérément, les données des cellules verrouillées. Microsoft précise que « la protection au niveau de la feuille n'est pas conçue comme une fonction de sécurité » ([Protect a worksheet](https://support.microsoft.com/en-us/office/protect-a-worksheet-3179efdb-1285-4d49-a9c3-f4ca36276de6)) : elle protège des maladresses, pas d'un accès indu, ce qui relève des droits sur le fichier partagé.
-4. **Des dates, pas des cases à cocher.** Une date de réception des pièces et une date de dépôt de la DSN permettent de calculer les jours restants avant l'échéance et de reconstituer le cycle a posteriori. Une case cochée ne dit ni quand ni combien de temps.
+Le classeur doit refuser ou signaler une transition incohérente. Il ne doit pas inventer l'état suivant.
 
-Vérification : essayez de taper un état qui n'est pas dans la liste, et essayez d'écrire dans une cellule de la feuille Calcul. Les deux doivent être refusés.
+## Séparer Saisie, Calcul et Vue
 
-## Étape 3 : calculer des agrégats par étape, jamais des classements
+Une architecture simple utilise trois feuilles.
 
-À la fin de cette étape, la feuille Vue répond aux questions du pilotage sans nommer personne.
+### Feuille Saisie
 
-Les indicateurs utiles à un responsable de pôle portent sur le flux de dossiers : combien de dossiers sont encore en attente de pièces à dix jours de l'échéance, combien sont contrôlés mais non déposés, quelle part du portefeuille est déposée à la date du jour, combien de dossiers ont dépassé l'échéance ce mois-ci. Chacun se calcule avec une fonction de comptage conditionnel sur la colonne d'état et sur les dates, à l'échelle du pôle ou par échéance (5 ou 15).
+Elle contient la table principale et les valeurs renseignées par les personnes autorisées. Les listes et contrôles de saisie y sont visibles. Aucune formule critique ne doit dépendre d'une couleur appliquée manuellement.
 
-Ce que la feuille Vue ne contient pas est aussi important que ce qu'elle contient. Pas de colonne « gestionnaire », pas de nombre de bulletins par personne, pas de temps passé par ligne. Si la répartition de la charge doit être discutée, elle l'est à partir du nombre de dossiers affectés en début de mois, à une fréquence compatible avec l'exemple retenu par la CNIL, et en présence des personnes concernées. La CNIL cite d'ailleurs, pour le télétravail, deux alternatives à la surveillance permanente : « un contrôle de la réalisation par objectifs pour une période donnée » et « un compte rendu régulier du salarié » ([questions-réponses sur le télétravail](https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-le-teletravail), 12 novembre 2020).
+### Feuille Calcul
 
-Vérification : montrez la feuille Vue à un gestionnaire et demandez-lui s'il y trouve quelque chose sur lui. La bonne réponse est non.
+Elle contient les colonnes dérivées : jours avant échéance, clé d'unicité, cohérence des transitions, retard de mise à jour et présence d'une exception non décidée. Tout son contenu doit pouvoir être régénéré à partir de la saisie et des règles écrites.
 
-## Étape 4 : signaler les exceptions avant l'échéance
+La [protection d'une feuille Excel](https://support.microsoft.com/en-us/excel/protect-a-worksheet) peut empêcher la modification de cellules verrouillées. Microsoft précise cependant que cette protection n'est pas une fonction de sécurité et qu'elle ne remplace pas la protection du fichier ou du classeur. Elle limite les modifications de cellules ; les droits d'accès se gèrent ailleurs.
 
-À la fin de cette étape, le classeur met en évidence les dossiers qui demandent une décision, avec la règle qui les a signalés.
+### Feuille Vue
 
-Une exception est un dossier qui ne suit pas le cycle attendu : pièces non reçues à une date fixée par le cabinet, pièces reçues mais incomplètes, contrôle qui a relevé un écart, DSN non déposée alors que l'échéance approche. Chaque règle s'écrit en une phrase (« pièces non reçues cinq jours ouvrés avant l'échéance du dossier »), puis en une formule dans la feuille Calcul, puis en une mise en forme conditionnelle visible dans la feuille Saisie.
+Elle agrège les dossiers par état, période ou échéance. Elle répond à des questions de flux : combien de dossiers attendent des pièces, combien présentent une exception ouverte, combien sont contrôlés mais non déposés ?
 
-Le classeur signale ; il ne décide pas. Relancer le client, accepter une paie sur des variables partielles ou reporter un dépôt sont des décisions du gestionnaire et de l'expert-comptable. Cette séparation entre la mécanique et le jugement est celle que décrit la [méthode Memlia](/#methode) : ce qui est certain est préparé, ce qui est ambigu est signalé.
+La vue ne doit pas exposer un classement par gestionnaire. Une affectation peut être nécessaire dans la saisie pour organiser le travail, mais sa présence ne justifie pas automatiquement un palmarès individuel.
 
-Vérification : introduisez un dossier fictif avec une date de réception vide et une échéance dans trois jours. Il doit apparaître dans les exceptions, avec la règle qui l'a détecté.
+## Les indicateurs utiles au flux
 
-## Étape 5 : encadrer l'usage et le dire à l'équipe
+Un indicateur de pilotage doit mener à une action sur un dossier ou une étape. Les quatre indicateurs de départ peuvent être :
 
-À la fin de cette étape, l'usage du classeur est écrit, connu et limité.
+- nombre de dossiers par état ;
+- nombre de dossiers dont l'échéance approche avec une étape incomplète ;
+- nombre d'exceptions sans décision ;
+- nombre de dossiers dont la dernière mise à jour dépasse le délai interne choisi.
 
-Trois documents courts suffisent. Une note de finalité, qui dit ce que le classeur suit (des dossiers et des étapes), qui le lit (le responsable de pôle et l'expert-comptable) et ce qu'il ne fait pas (aucune évaluation individuelle). Une information des gestionnaires, avant la mise en service, conforme à l'article L1222-4. Une consultation du CSE lorsqu'il existe, conforme à l'article L2312-38. Si le classeur ne contient ni nom de gestionnaire ni mesure d'activité personnelle, ce cadrage est rapide ; c'est justement ce que la structure des étapes 1 à 3 permet.
+Les seuils sont définis par le cabinet. Écrivez chaque règle en français avant sa formule. Exemple : « signaler un dossier dont l'échéance est dans le délai interne choisi et dont l'état n'est pas `controle_termine` ou suivant ». Cette phrase devient la référence de recette.
 
-Vérification : demandez à un gestionnaire de dire, en une phrase, à quoi sert le classeur et qui le lit. S'il ne peut pas, la note de finalité n'a pas circulé.
+Écartez les indicateurs qui mesurent en continu les gestes, le temps ou la cadence d'une personne sans finalité et cadre préalables. La [CNIL rappelle](https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees), dans sa page du 9 juillet 2026, qu'un dispositif de contrôle de l'activité doit satisfaire cumulativement des conditions de justification et de proportionnalité, être soumis aux instances représentatives selon les règles en vigueur et être porté à la connaissance des salariés ou agents.
 
-## Quand Excel ne suffit plus
+<!-- [UNIQUE INSIGHT] -->
+L'anti-surveillance n'est pas seulement une règle d'affichage. Elle doit être testée dans le modèle de données. Si une vue agrégée peut être reconstituée sans identifiant de personne, cet identifiant n'a pas à entrer dans ses formules ni dans ses exports.
 
-Excel reste un bon support pour ce suivi tant que la saisie est faite par une ou deux personnes, que les règles d'exception sont peu nombreuses et que le classeur n'est pas alimenté à la main depuis d'autres outils. Trois signaux indiquent que la limite est atteinte : les mêmes informations sont ressaisies depuis le logiciel de paie, la messagerie ou un dossier partagé ; une règle a été modifiée dans une formule sans que personne ne l'ait relue ; plusieurs personnes éditent le classeur en même temps et les états se contredisent.
+## Jeu d'essai fictif de cinq dossiers
 
-À ce stade, la question n'est pas de quitter Excel. C'est de retirer à l'équipe la mécanique répétitive, en gardant les décisions au cabinet. Une automatisation peut proposer, dans la feuille Saisie, des lignes à valider à partir des sources convenues, rejouer les règles d'exception écrites à l'étape 4 et régénérer la feuille Vue, qui lui appartient, dans un périmètre cadré et testé sur un jeu de dossiers fictif. Elle travaille dans le classeur existant, sans macro ni ressaisie, comme elle peut le faire dans le logiciel de paie ou la messagerie. Excel n'est qu'un des environnements possibles ; le logiciel de paie, la messagerie ou un dossier partagé peuvent faire partie du même processus, comme l'explique la page sur [l'intégration aux outils existants](/#integration).
+Avant d'utiliser le classeur, rejouez les règles sur ce jeu synthétique. Les identifiants, dates et situations sont fictifs.
 
-Le service Memlia se place exactement là : automatiser avec l'IA les tâches chronophages d'un cabinet d'expertise comptable, avec des règles écrites, des exceptions signalées et une validation humaine sur ce qui compte. Le classeur de suivi structuré comme ci-dessus en est un point de départ naturel, parce que ses règles sont déjà explicites.
+| Dossier | Période | État | Exception | Décision attendue du test |
+| --- | --- | --- | --- | --- |
+| `D-001` | `2026-08` | `attente_pieces` | aucune date de réception | signaler selon le seuil interne |
+| `D-002` | `2026-08` | `pieces_incompletes` | `PIECE_MANQUANTE` | rester ouvert jusqu'à décision |
+| `D-003` | `2026-08` | `bulletins_calcules` | aucune | demander la revue des écarts |
+| `D-004` | `2026-08` | `controle_termine` | date de contrôle présente | autoriser le passage au dépôt |
+| `D-005` | `2026-08` | `dsn_deposee` | retour à traiter | interdire la clôture automatique |
 
-## Les erreurs fréquentes
+### Recette minimale
 
-**Mesurer les personnes au lieu des dossiers.** C'est la dérive la plus courante et la plus coûteuse, juridiquement et humainement. Le remède est structurel : aucune colonne nominative dans la vue de pilotage.
+1. Dupliquez `D-001` sur la même période : la clé d'unicité doit signaler le doublon.
+2. Effacez la date de contrôle de `D-004` : l'état doit devenir incohérent.
+3. Tentez de clôturer `D-005` avec un retour ouvert : la transition doit être refusée ou signalée.
+4. Saisissez un état absent de la liste : la validation doit le refuser.
+5. Modifiez une cellule protégée de la feuille Calcul : Excel doit empêcher la modification dans le périmètre configuré.
 
-**Laisser l'état en texte libre.** « OK », « ok », « fait » et « déposé » sont quatre valeurs pour un même état ; les comptages deviennent faux sans qu'aucune formule ne signale l'erreur. La validation des données ferme cette porte.
+<!-- [ORIGINAL DATA] -->
+Ce jeu d'essai n'est pas une observation client. C'est un artefact synthétique conçu pour vérifier cinq propriétés du modèle : unicité, cohérence date-état, clôture des exceptions, domaine fermé des états et protection contre une modification accidentelle.
 
-**Mélanger saisie et calcul.** Une formule écrasée par une valeur tapée à la main ne se voit pas. Séparer les feuilles et protéger celle des calculs rend l'écrasement impossible par inadvertance.
+## Gouvernance : finalité, accès et information
 
-**Confondre protection de feuille et confidentialité.** Microsoft le dit : la protection de feuille n'est pas une fonction de sécurité. L'accès au classeur se règle au niveau du dossier partagé, avec les droits adaptés au secret professionnel.
+Avant la mise en service, décrivez la finalité du classeur, les personnes autorisées à le lire ou le modifier, les données réellement nécessaires et le moment où les historiques sont revus ou supprimés. Ne fixez pas une durée de conservation universelle sans avoir défini la finalité et les contraintes du cabinet.
+
+Si le dispositif permet de contrôler l'activité des personnes, la page de la CNIL citée plus haut demande notamment d'en informer les personnes concernées et de respecter les procédures applicables avec leurs représentants. Un suivi par dossier n'est pas automatiquement conforme par sa seule structure : la finalité, les données, les accès et l'usage réel restent déterminants.
+
+Trois tests simples renforcent ce cadrage :
+
+- la vue agrégée fonctionne-t-elle sans donnée nominative sur les gestionnaires ?
+- une personne non autorisée peut-elle ouvrir le fichier ou ses exports ?
+- le détail conservé est-il nécessaire pour traiter les exceptions du dossier ?
+
+Si une réponse est mauvaise, corrigez le modèle ou les accès avant d'ajouter des graphiques.
+
+## Quand garder Excel, quand automatiser le classeur ?
+
+Gardez le classeur tel quel si la saisie est unique, les formules sont comprises, les modifications sont relues et les exceptions restent peu nombreuses. Automatisez la mécanique lorsque la même donnée est ressaisie, qu'une formule critique peut être écrasée, que plusieurs sources doivent être rapprochées ou que les règles d'exception deviennent difficiles à rejouer à la main.
+
+L'objectif n'est pas forcément de remplacer Excel. Une automatisation peut alimenter ou contrôler la table existante, régénérer les calculs et préparer les exceptions. Elle doit rester fail-closed : une donnée absente ou ambiguë bloque la proposition au lieu d'être complétée silencieusement.
+
+Pour le contrôle situé entre `bulletins_calcules` et `controle_termine`, utilisez la [méthode de contrôle des bulletins avant la DSN](/blog/controler-les-bulletins-de-paie-avant-la-dsn). La [méthode Memlia](/#methode) explique comment coder une règle du cabinet, l'éprouver sur un jeu fictif et laisser la validation humaine. Les [garanties du service](/#garanties) précisent aussi ce qui reste bloqué tant que le cabinet n'a pas validé.
+
+Si votre suivi dépend de ressaisies ou de formules fragiles, Memlia peut préparer une automatisation greffée au classeur et aux outils existants. Le périmètre, les exceptions et la recette sont définis avec le cabinet ; le cabinet valide le résultat.
+
+## Erreurs fréquentes
+
+**Dessiner le tableau de bord avant la table.** Les graphiques masquent alors un modèle de données instable.
+
+**Utiliser des couleurs comme états.** Une couleur n'a pas de définition stable, ne porte pas de date et se compte mal.
+
+**Mélanger saisie et formules.** Une valeur manuelle peut remplacer une formule sans alerte visible.
+
+**Confondre feuille protégée et fichier sécurisé.** La protection de feuille ne gère pas l'accès au classeur.
+
+**Conserver une exception sans décision.** L'alerte devient un décor et le dossier reste ambigu.
+
+**Agréger par personne par défaut.** Le suivi quitte le flux de dossiers pour mesurer des individus sans que cette finalité ait été cadrée.
 
 ## Questions fréquentes
 
-### Un tableau de suivi de production est-il un dispositif de contrôle de l'activité ?
+### Quelles colonnes sont indispensables ?
 
-Il le devient dès qu'il collecte des informations sur l'activité des salariés eux-mêmes, par exemple un nombre de bulletins par personne ou un temps de traitement par ligne. Un tableau qui décrit des dossiers et des étapes, lu en agrégats, reste un outil de gestion de la production. Dans le doute, appliquez les trois conditions du Code du travail, rappelées par la CNIL : proportionnalité, information préalable, consultation du CSE.
+Au minimum : identifiant du dossier, période, échéance, état, dates des étapes clés, code d'exception, décision et date de mise à jour. Ajoutez une colonne seulement si elle soutient une règle, une preuve ou une décision.
 
-### Peut-on quand même savoir qui s'occupe de quel dossier ?
+### Peut-on conserver le nom du gestionnaire ?
 
-L'affectation d'un dossier à un gestionnaire est une information d'organisation, nécessaire pour que le client sache qui appeler. Elle peut figurer dans la feuille Saisie. Ce qui doit rester hors de la feuille Vue, c'est son usage comme mesure de performance individuelle : classement, cadence, temps passé.
+Une affectation peut servir à l'organisation du travail. Elle ne doit pas devenir par défaut un classement ou une mesure continue de performance. La finalité, l'accès et l'usage de cette donnée doivent être cadrés.
 
-### Faut-il un logiciel dédié plutôt qu'Excel ?
+### La protection de feuille suffit-elle ?
 
-Pas par principe. Tant que la structure des étapes 1 à 3 tient et que la saisie n'est pas dupliquée, Excel suffit. Le passage à une automatisation se justifie par la ressaisie, la fragilité des formules ou le nombre de mains sur le classeur, pas par le seul fait d'utiliser un tableur.
+Non. Elle limite les modifications sur les cellules verrouillées. Microsoft indique qu'elle n'est pas conçue comme une fonction de sécurité. Les droits d'ouverture, de partage et de modification du fichier doivent être gérés séparément.
 
-### Combien de temps garder l'historique des mois passés ?
+### Faut-il un logiciel dédié ?
 
-Gardez ce qui sert à reconstituer le cycle en cas de question du client ou d'un organisme, dans une feuille d'archive distincte de la saisie du mois. Le principe de minimisation du RGPD s'applique : conservez les états et les dates des dossiers, pas des traces d'activité des personnes.
+Pas nécessairement. Le critère est la robustesse du processus : saisie non dupliquée, règles lisibles, calculs régénérables, accès maîtrisés et exceptions traitables. Si ces conditions se dégradent, automatisez la mécanique ou changez de support selon le besoin réel.
 
-## Ce qu'il faut retenir
+## Le modèle à retenir
 
-Un classeur de suivi de production sociale tient dans la durée s'il compte des dossiers et des étapes, jamais des personnes ; s'il sépare ce que le cabinet saisit de ce que les formules calculent ; s'il signale les exceptions avant l'échéance DSN et laisse la décision au gestionnaire ; et si son usage a été écrit, annoncé à l'équipe et, le cas échéant, présenté au CSE. Construit ainsi, il est déjà prêt pour l'étape suivante : confier la mécanique à une automatisation, dans un périmètre cadré, et garder au cabinet ce qui demande du jugement. Pour la partie amont du cycle, le contrôle des bulletins avant la DSN, décrit plus haut, suit la même logique.
+Construisez d'abord une table `dossier × période`, imposez des états fermés et séparez Saisie, Calcul et Vue. Testez le modèle sur des cas fictifs, pilotez les dossiers par étape et rendez chaque exception décidable. Excel reste alors un support maîtrisé plutôt qu'un empilement de couleurs et de formules invisibles.
