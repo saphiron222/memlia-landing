@@ -17,7 +17,7 @@ const destinations = [
 ];
 ---
 
-<section class="section orientation" aria-labelledby="orientation-titre">
+<section class="orientation" aria-labelledby="orientation-titre">
   <div class="conteneur">
     <h2 id="orientation-titre" class="orientation-titre">Par où commencer</h2>
     <ul class="orientation-liste">
@@ -32,6 +32,9 @@ const destinations = [
 </section>
 
 <style>
+  /* Même rythme vertical que les autres sections de l'accueil : 96 px, 128 px en grand écran. */
+  .orientation { padding: 96px var(--marge-page) 0; }
+  @media (min-width: 64rem) { .orientation { padding: 128px var(--marge-page-lg) 0; } }
   .orientation-titre {
     font-family: var(--police-display), 'Fraunces Fallback';
     font-size: var(--t-xl);
@@ -59,7 +62,7 @@ const destinations = [
     align-items: center;
     min-height: 44px;
     font-weight: 600;
-    color: var(--vert-profond);
+    color: var(--accent-texte);
   }
   @media (hover: hover) {
     .orientation-lien:hover {

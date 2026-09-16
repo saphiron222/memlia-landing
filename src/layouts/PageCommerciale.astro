@@ -1,12 +1,18 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Button from '@/components/Button.astro';
+import AppelFinal from '@/components/sections/AppelFinal.astro';
 import { CTA, SITE } from '@/data/site.mjs';
+import { PROOFS, type ProofId } from '@/data/proofs';
 
 /**
- * Coque des cinq pages commerciales du site v2 : fil d'Ariane, hero, appels à
- * l'action, puis les sections de la page en slot. Une seule coque pour éviter
- * qu'un chapeau ou un libellé de CTA diverge d'une page à l'autre.
+ * Coque des cinq pages commerciales du site v2, construite avec le langage de l'accueil :
+ * hero centré sous une pastille, une preuve fonctionnelle plein cadre dans le même cadre de
+ * verre que la vidéo de l'accueil, puis les sections de la page, puis le même appel final.
+ *
+ * Les motifs partagés par les cinq pages (rangée preuve, bande à filets, grille de cartes,
+ * étapes alternées, renvois) vivent ici, sous `.page-v2`, pour qu'aucune page n'en garde
+ * une copie qui dériverait.
  */
 interface Props {
   page: {
@@ -18,16 +24,26 @@ interface Props {
     ariane: string;
     secondaire: { libelle: string; href: string };
   };
+  /** Pastille au-dessus du titre, comme le hero de l'accueil. */
+  eyebrow: string;
+  /** Preuve fonctionnelle de tête (série v2), rendue avec son image sociale par scripts/render-proofs-v2.mjs. */
+  hero: ProofId;
   /** Nœuds supplémentaires du graphe de données structurées, avant Organization et WebSite. */
   noeuds?: unknown[];
+  /** Appel final propre à la page ; sinon celui de l'accueil. */
+  appel?: { titre?: string; texte?: string; points?: string[]; action?: { libelle: string; href: string }; secondaire?: { libelle: string; href: string } };
 }
-const { page, noeuds = [] } = Astro.props;
+const { page, eyebrow, hero, noeuds = [], appel = {} } = Astro.props;
 /**
  * L'appel à l'action mène partout à /contact. Sur /contact lui-même il pointerait la
  * page courante : c'est là que la réservation directe prend le relais.
  */
 const actionPrincipale = page.chemin === CTA.principal.href ? CTA.rendezVous : CTA.principal;
 const url = `${SITE.url}${page.chemin}`;
+const preuve = PROOFS[hero];
+const heroSrc = `/proofs/${hero}.webp`;
+// Le recadrage social 1200 × 630 du même cadre vit sous og/, produit par le même rendu.
+const socialImage = { url: `${SITE.url}/proofs/${hero.replace('v2/', 'v2/og/')}.webp`, width: 1200, height: 630, alt: preuve.alt };
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -43,50 +59,139 @@ const graph = {
     { '@type': 'WebSite', '@id': `${SITE.url}/#website`, url: `${SITE.url}/`, name: SITE.nom, inLanguage: SITE.langue, publisher: { '@id': `${SITE.url}/#organization` } },
   ],
 };
+const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
 ---
 
-<Base titre={page.titre} titreSocial={page.h1} description={page.description} chemin={page.chemin} base="/">
+<Base titre={page.titre} titreSocial={page.h1} description={page.description} chemin={page.chemin} base="/" socialImage={socialImage}>
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+  <link slot="head" rel="preload" as="image" href={heroSrc} fetchpriority="high" />
 
   <div class="feuille page-v2">
-    <section class="conteneur page-tete" aria-labelledby="page-titre">
+    <section class="page-hero" aria-labelledby="page-titre">
       <nav class="ariane" aria-label="Fil d’Ariane">
         <ol><li><a href="/">Accueil</a></li><li aria-current="page">{page.ariane}</li></ol>
       </nav>
-      <h1 id="page-titre">{page.h1}</h1>
-      <p class="texte-2 lecture page-chapeau">{page.chapeau}</p>
-      <p class="page-actions">
-        <Button href={actionPrincipale.href} variante="principal" picto="fleche">{actionPrincipale.libelle}</Button>
-        {/* Un lien de courriel est réécrit par Cloudflare en production, et son décodage
-            exige JavaScript : sans les marqueurs, le bouton devient inerte sans JS. */}
-        {page.secondaire.href.startsWith('mailto:') ? (
-          <Fragment set:html={`<!--email_off-->`} />
-        ) : null}
-        <Button href={page.secondaire.href} variante="lien">{page.secondaire.libelle}</Button>
-        {page.secondaire.href.startsWith('mailto:') ? (
-          <Fragment set:html={`<!--/email_off-->`} />
-        ) : null}
-      </p>
+      <div class="page-hero-texte">
+        <span class="pastille">{eyebrow}</span>
+        <h1 id="page-titre" class="page-h1">{page.h1}</h1>
+        <p class="page-chapeau">{page.chapeau}</p>
+        <div class="page-actions">
+          <Button href={actionPrincipale.href} variante="principal" picto="fleche">{actionPrincipale.libelle}</Button>
+          {secondaireCourriel && <Fragment set:html={`<!--email_off-->`} />}
+          <Button href={page.secondaire.href} variante="lien">{page.secondaire.libelle}</Button>
+          {secondaireCourriel && <Fragment set:html={`<!--/email_off-->`} />}
+        </div>
+      </div>
+      <div class="page-cadre">
+        <div class="page-verre">
+          <img src={heroSrc} alt={preuve.alt} width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" class="page-ecran" />
+        </div>
+      </div>
     </section>
 
     <slot />
+
+    <AppelFinal id="suite" {...appel} />
   </div>
 </Base>
 
 <style>
-  .page-v2 { padding-block: clamp(2rem, 6vw, 4rem) clamp(3rem, 8vw, 6rem); }
-  .page-tete { display: grid; gap: 1rem; max-width: 46rem; }
-  .page-tete h1 { margin: 0; }
-  .page-chapeau { margin: 0; }
-  .page-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin: 0.5rem 0 0; }
-  .page-v2 :global(section + section) { margin-block-start: clamp(2.5rem, 6vw, 4rem); }
-  .page-v2 :global(.page-section) { display: grid; gap: 0.75rem; max-width: 46rem; }
-  .page-v2 :global(.page-section h2) { margin: 0; }
-  .page-v2 :global(.page-section h3) { margin: 1rem 0 0; }
-  .page-v2 :global(.page-section p) { margin: 0; }
-  .page-v2 :global(.page-section ul) { margin: 0; padding-inline-start: 1.25rem; display: grid; gap: 0.5rem; }
-  .page-v2 :global(.page-encadre) {
-    border-inline-start: 3px solid var(--vert); background: var(--surface);
-    padding: 1rem 1.25rem; border-radius: 0 12px 12px 0; display: grid; gap: 0.5rem;
+  /* ---- Hero : même anatomie que l'accueil, une preuve fixe à la place de la vidéo. ---- */
+  .page-hero { padding: 40px var(--marge-page) 0; }
+  .ariane { font-size: var(--t-sm); color: var(--texte-2); }
+  .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .ariane li + li::before { content: '/'; margin-right: 6px; color: var(--picto-repos); }
+  .ariane a { color: var(--texte-2); }
+  .page-hero-texte { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 32px; text-align: center; }
+  .page-h1 { max-width: 1050px; font-size: clamp(2.25rem, 1rem + 3.6vw, 3.75rem); }
+  .page-chapeau { max-width: 672px; color: var(--texte-2); font-size: var(--t-base); }
+  .page-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; margin-top: 12px; }
+  .page-cadre { position: relative; left: 50%; width: calc(100% + 256px); max-width: min(1200px, calc(100vw - 32px)); margin-top: 48px; transform: translateX(-50%); }
+  .page-ecran {
+    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
+    border: 1px solid var(--ligne); border-radius: var(--r-ecran); box-shadow: 0 12px 36px rgba(35, 31, 32, 0.06);
+  }
+  @media (min-width: 64rem) {
+    .page-hero { padding: 64px var(--marge-page-lg) 0; }
+    .page-hero-texte { min-height: 270px; justify-content: center; }
+    .page-verre { padding: 16px; border: 1px solid rgba(35, 31, 32, 0.096); border-radius: var(--r-cadre); background: rgba(252, 251, 247, 0.2); }
+  }
+
+  /* ---- Rythme : 96 px, 128 px en grand écran, comme chaque section de l'accueil. ---- */
+  .page-v2 :global(.pv) { padding: 96px var(--marge-page) 0; }
+  .page-v2 :global(.pv-tete) { display: grid; gap: 16px; max-width: 780px; }
+  .page-v2 :global(.pv-tete p) { margin: 0; }
+  .page-v2 :global(.pv-copy) { display: grid; gap: 20px; max-width: 800px; }
+  .page-v2 :global(.pv-copy p) { margin: 0; }
+  .page-v2 :global(.pv-copy h2) { font-size: var(--t-4xl); }
+  .page-v2 :global(.pv-copy strong) { color: var(--texte-fort); font-weight: 600; }
+
+  /* Rangée preuve inversée : illustration à gauche, comme les étapes impaires de l'accueil. */
+  @media (min-width: 64rem) {
+    .page-v2 :global(.pv-inverse .proof-row) { direction: rtl; }
+    .page-v2 :global(.pv-inverse .proof-row > *) { direction: ltr; }
+    .page-v2 :global(.pv-inverse .proof-copy) { padding-right: 0; padding-left: 48px; }
+  }
+
+  /* Bande à filets : cellules crème séparées d'un filet, sans bordure par cellule. */
+  .page-v2 :global(.pv-bande) { margin-top: 40px; }
+  .page-v2 :global(.pv-bande-liste) {
+    display: grid; grid-template-columns: 1fr; gap: 1px; margin: 0; padding: 0; list-style: none;
+    background: var(--ligne-douce); border-top: 1px solid var(--ligne); border-bottom: 1px solid var(--ligne);
+  }
+  .page-v2 :global(.pv-cellule) { display: grid; gap: 12px; align-content: start; padding: 40px 24px 48px; background: var(--surface-feuille); }
+  .page-v2 :global(.pv-cellule h3) { font-size: var(--t-2xl); max-width: 22ch; }
+  .page-v2 :global(.pv-cellule p) { margin: 0; color: var(--texte-2); max-width: 44ch; }
+  @media (min-width: 48rem) {
+    .page-v2 :global(.pv-bande-liste) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .page-v2 :global(.pv-bande-liste[data-colonnes='3'] .pv-cellule:last-child) { grid-column: 1 / -1; }
+    .page-v2 :global(.pv-cellule) { padding: 48px 32px 64px; }
+  }
+  @media (min-width: 64rem) {
+    .page-v2 :global(.pv-bande-liste[data-colonnes='3']) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .page-v2 :global(.pv-bande-liste[data-colonnes='3'] .pv-cellule:last-child) { grid-column: auto; }
+    .page-v2 :global(.pv-cellule) { padding: 64px 48px; }
+  }
+
+  /* Grille de cartes : le motif des usages de l'accueil, marque picto puis texte. */
+  .page-v2 :global(.pv-cartes) { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin: 40px 0 0; padding: 0; list-style: none; }
+  .page-v2 :global(.pv-carte) { min-width: 0; padding: 28px; border-radius: var(--r-carte); background: var(--surface-page); }
+  .page-v2 :global(.pv-carte-marque) { display: grid; place-items: center; width: 48px; height: 48px; color: var(--picto-repos); border-radius: var(--r-pastille); background: var(--surface-feuille); }
+  .page-v2 :global(.pv-carte-corps) { display: grid; gap: 12px; margin-top: 20px; }
+  .page-v2 :global(.pv-carte h3) { font-size: var(--t-2xl); line-height: 1.2; }
+  .page-v2 :global(.pv-carte p) { margin: 0; max-width: 52ch; color: var(--texte-2); }
+  @media (min-width: 48rem) {
+    .page-v2 :global(.pv-cartes) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .page-v2 :global(.pv-carte) { padding: 40px; }
+    .page-v2 :global(.pv-cartes[data-vedette] .pv-carte:first-child) { grid-column: 1 / -1; display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 32px; }
+    .page-v2 :global(.pv-cartes[data-vedette] .pv-carte:first-child .pv-carte-corps) { margin-top: 0; }
+  }
+
+  /* Étapes alternées : copie et illustration, comme la méthode de l'accueil. */
+  .page-v2 :global(.pv-etapes) { display: grid; gap: 56px; margin: 40px 0 0; padding: 0; list-style: none; }
+  .page-v2 :global(.pv-etape) { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: center; }
+  .page-v2 :global(.pv-etape-copy) { display: grid; gap: 16px; min-width: 0; }
+  .page-v2 :global(.pv-etape-copy p) { margin: 0; }
+  .page-v2 :global(.pv-etape-numero) { color: var(--accent-texte); font-weight: 600; }
+  .page-v2 :global(.pv-etape h2) { font-size: var(--t-3xl); }
+  @media (min-width: 64rem) {
+    .page-v2 :global(.pv-etapes) { gap: 80px; }
+    .page-v2 :global(.pv-etape) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
+    .page-v2 :global(.pv-etape-copy) { padding: 32px 48px 32px 0; }
+    .page-v2 :global(.pv-etape:nth-child(odd) .pv-etape-copy) { grid-column: 2; grid-row: 1; padding: 32px 0 32px 48px; }
+    .page-v2 :global(.pv-etape:nth-child(odd) .functional-proof) { grid-column: 1; grid-row: 1; }
+  }
+
+  /* Renvois : les cartes bordées du bloc « Par où commencer » de l'accueil. */
+  .page-v2 :global(.pv-renvois) { display: grid; gap: 16px; margin: 40px 0 0; padding: 0; list-style: none; }
+  .page-v2 :global(.pv-renvoi) { display: grid; gap: 10px; padding: 24px; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-feuille); }
+  .page-v2 :global(.pv-renvoi p) { margin: 0; color: var(--texte); max-width: 44ch; }
+  .page-v2 :global(.pv-renvoi a) { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--accent-texte); }
+  @media (min-width: 48rem) {
+    .page-v2 :global(.pv-renvois) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .page-v2 :global(.pv-renvois[data-colonnes='3']) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (min-width: 64rem) {
+    .page-v2 :global(.pv) { padding: 128px var(--marge-page-lg) 0; }
   }
 </style>

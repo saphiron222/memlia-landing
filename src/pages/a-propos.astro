@@ -1,8 +1,10 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import ProofRow from '@/components/ProofRow.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { auteurPar, identiteAuteur } from '@/data/auteurs';
+
 const page = PAGES_V2.apropos;
 const url = `${SITE.url}${page.chemin}`;
 /** Identité canonique du site : ce nœud est celui que citent le blog et chaque article. */
@@ -18,39 +20,68 @@ const noeuds = [
     jobTitle: auteur.role, description: auteur.bio, worksFor: { '@id': `${SITE.url}/#organization` },
   },
 ];
+const renvois = [
+  { texte: 'Comment se déroule une mission, étape par étape, avec ce que chacune produit.', libelle: 'Comprendre la méthode', href: '/methode' },
+  { texte: 'Des méthodes pour préparer et vérifier avant d’automatiser, signées et sourcées.', libelle: 'Lire les articles', href: '/blog' },
+  { texte: 'Une méthode, une définition ou un support, classés par tâche.', libelle: 'Consulter les ressources', href: '/ressources' },
+];
+const appel = {
+  titre: 'Parlons de votre tâche, pas d’un logiciel.',
+  texte: 'Décrivez le geste qui revient dans votre cabinet. Je vous dirai s’il se cadre, et ce qu’il faudrait pour le faire. Sans fichier client, sans donnée de paie.',
+  points: ['La même personne écoute, écrit et code la règle.', 'Le devis dépend de la complexité, jamais du nombre de postes.', 'La décision reste au cabinet.'],
+};
 ---
 
-<PageCommerciale page={page} noeuds={noeuds}>
-  <section id="kevin-kitanga" class="conteneur page-section" aria-labelledby="fais">
-    <h2 id="fais">Ce que je fais</h2>
-    <p>Je cadre la tâche avec vous, j’écris la règle, je construis l’automatisation et je la soumets à la recette de vos équipes. La même personne mène ces quatre étapes : celle qui a entendu la règle est celle qui la code.</p>
-    <p>C’est un choix de taille, pas une contrainte subie. Une règle de cabinet se perd entre celui qui l’écoute et celui qui l’implémente ; je préfère supprimer ce passage de relais.</p>
+<PageCommerciale page={page} noeuds={noeuds} eyebrow="Qui porte le service" hero="v2/17-hero-apropos" appel={appel}>
+  <section class="pv" id="kevin-kitanga" aria-labelledby="fais">
+    <ProofRow id="v2/10-une-personne">
+      <div class="pv-copy rv">
+        <h2 id="fais">Ce que je fais</h2>
+        <p>Je cadre la tâche avec vous, j’écris la règle, je construis l’automatisation et je la soumets à la recette de vos équipes. La même personne mène ces quatre étapes : celle qui a entendu la règle est celle qui la code.</p>
+        <p class="texte-2">C’est un choix de taille, pas une contrainte subie. Une règle de cabinet se perd entre celui qui l’écoute et celui qui l’implémente ; je préfère supprimer ce passage de relais.</p>
+      </div>
+    </ProofRow>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="nesuispas">
-    <h2 id="nesuispas">Ce que je ne suis pas</h2>
-    <div class="page-encadre">
-      <p><strong>Je ne suis pas expert-comptable.</strong> Je n’ai pas de qualification en paie ni en droit social, et je ne me présenterai jamais comme tel. Quand je publie un contenu qui touche à ces domaines, il porte la mention « non attesté » et renvoie aux sources officielles.</p>
+  <section class="pv" aria-labelledby="nesuispas">
+    <div class="pv-tete rv">
+      <h2 id="nesuispas">Ce que je ne suis pas</h2>
+      <p class="texte-2 lecture">Deux limites dites avant toute mission, parce qu’elles délimitent exactement mon rôle.</p>
     </div>
-    <p>Cela délimite exactement mon rôle : j’écris et j’éprouve la règle <strong>que vous me donnez</strong>. Je ne la valide pas à votre place, et je ne vous dirai pas ce qu’elle devrait être.</p>
-    <p><strong>Je ne suis pas un éditeur de logiciel.</strong> Vous n’achetez pas de licence, ni de sièges. Vous achetez le fait qu’une tâche précise de votre cabinet soit préparée automatiquement, avec des critères de recette écrits.</p>
+    <div class="pv-bande coins">
+      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+      <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
+        <li class="pv-cellule rv"><h3>Je ne suis pas expert-comptable.</h3><p>Je n’ai pas de qualification en paie ni en droit social, et je ne me présenterai jamais comme tel. Quand un sujet touche à ces domaines, je m’appuie sur les sources officielles, je les cite et je les date. J’écris et j’éprouve la règle que vous me donnez. Je ne la valide pas à votre place, et je ne vous dirai pas ce qu’elle devrait être.</p></li>
+        <li class="pv-cellule rv"><h3>Je ne suis pas un éditeur de logiciel.</h3><p>Vous n’achetez pas de licence, ni de sièges. Vous achetez le fait qu’une tâche précise de votre cabinet soit préparée automatiquement, avec des critères de recette écrits.</p></li>
+      </ul>
+    </div>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="pourquoi">
-    <h2 id="pourquoi">Pourquoi Memlia</h2>
-    <p>Les cabinets que je rencontre ne manquent pas d’outils. Ils ont un logiciel de paie, un logiciel de production, des classeurs qui font le lien, et des personnes compétentes qui passent du temps à recopier d’un endroit à l’autre.</p>
-    <p>L’automatisation qui les aiderait n’est pas une plateforme de plus à adopter. C’est quelque chose qui se greffe sur ce qu’ils utilisent déjà, qui connaît <strong>leurs</strong> règles, et qui leur rend la main dès que la situation sort du cadre prévu.</p>
-    <p>C’est ce que je construis.</p>
+  <section class="pv pv-inverse" aria-labelledby="pourquoi">
+    <ProofRow id="v2/11-regle-mots">
+      <div class="pv-copy rv">
+        <h2 id="pourquoi">Pourquoi Memlia</h2>
+        <p>Les cabinets que je rencontre ne manquent pas d’outils. Ils ont un logiciel de paie, un logiciel de production, des classeurs qui font le lien, et des personnes compétentes qui passent du temps à recopier d’un endroit à l’autre.</p>
+        <p class="texte-2">L’automatisation qui les aiderait n’est pas une plateforme de plus à adopter. C’est quelque chose qui se greffe sur ce qu’ils utilisent déjà, qui connaît <strong>leurs</strong> règles, et qui leur rend la main dès que la situation sort du cadre prévu.</p>
+        <p>C’est ce que je construis.</p>
+      </div>
+    </ProofRow>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="ecris">
-    <h2 id="ecris">Ce que j’écris</h2>
-    <p>Je publie sur ce que je vérifie, ce que j’automatise et ce qui reste une décision humaine. Les articles sont signés de mon nom, sourcés, et déclarés non attestés quand ils touchent à la paie ou au droit social.</p>
-    <p><a href="/methode">Comprendre la méthode</a> · <a href="/blog">Lire les articles</a> · <a href="/ressources">Consulter les ressources</a></p>
+  <section class="pv" aria-labelledby="ecris">
+    <div class="pv-tete rv">
+      <h2 id="ecris">Ce que j’écris</h2>
+      <p class="texte-2 lecture">Je publie sur ce que je vérifie, ce que j’automatise et ce qui reste une décision humaine. Les articles sont signés de mon nom et sourcés.</p>
+    </div>
+    <ul class="pv-renvois rv-groupe" data-colonnes="3">
+      {renvois.map((r) => (<li class="pv-renvoi rv"><p>{r.texte}</p><a href={r.href}>{r.libelle}</a></li>))}
+    </ul>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="entite">
-    <h2 id="entite">L’entité</h2>
-    <p>Memlia est une société par actions simplifiée unipersonnelle. Le travail se fait depuis Plérin ; le siège social, l’immatriculation et les autres informations légales figurent dans les <a href="/mentions-legales">mentions légales</a>.</p>
+  <section class="pv" aria-labelledby="entite">
+    <div class="pv-tete rv">
+      <h2 id="entite">L’entité</h2>
+      <p class="texte-2 lecture">Memlia est une société par actions simplifiée unipersonnelle. Le travail se fait depuis Plérin ; le siège social, l’immatriculation et les autres informations légales figurent dans les <a href="/mentions-legales">mentions légales</a>.</p>
+    </div>
   </section>
 </PageCommerciale>

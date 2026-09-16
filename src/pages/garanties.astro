@@ -1,49 +1,137 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import ProofRow from '@/components/ProofRow.astro';
+import Picto, { type NomPicto } from '@/components/Picto.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
+import { SERVICE_ID } from '@/data/schema.mjs';
+
 const page = PAGES_V2.garanties;
 const url = `${SITE.url}${page.chemin}`;
 const noeuds = [{
   '@type': 'WebPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
-  inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` },
+  inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, about: { '@id': SERVICE_ID },
 }];
+/** La grille de l'accueil, dont chaque cellule mène ici à la section qui la tient. */
+const grille: { picto: NomPicto; libelle: string; href: string }[] = [
+  { picto: 'main', libelle: 'L’IA prépare, l’humain décide', href: '#arret' },
+  { picto: 'fictif', libelle: 'Aucune donnée client dans les essais', href: '#donnees' },
+  { picto: 'agregat', libelle: 'Agrégats, jamais nominatif', href: '#personnes' },
+  { picto: 'recette', libelle: 'Recette sur les cas qui doivent échouer', href: '#recette' },
+  { picto: 'regle', libelle: 'Périmètre écrit avant la mise en service', href: '#ecrit' },
+  { picto: 'bouclier', libelle: 'Ce que nous ne promettons pas', href: '#refus' },
+];
+const appel = {
+  titre: 'Ces limites se lisent avant de s’engager.',
+  texte: 'Décrivez votre tâche. Nous vous dirons ce qui se cadre, ce qui se refuse, et ce qui reste à qualifier. Sans fichier client, sans donnée de paie.',
+  points: ['L’exception est présentée, jamais avalée.', 'Vos fichiers sont lus en place.', 'Le périmètre est écrit avant la mise en service.'],
+};
 ---
 
-<PageCommerciale page={page} noeuds={noeuds}>
-  <section class="conteneur page-section" aria-labelledby="arret">
-    <h2 id="arret">Dans le doute, l’automatisation s’arrête</h2>
-    <p>C’est notre règle la plus stricte, et elle a une conséquence désagréable : nos automatisations refusent plus souvent que d’autres.</p>
-    <p>Quand une donnée manque, quand deux règles s’appliquent et se contredisent, quand un format n’est pas celui prévu, le traitement s’interrompt et présente le cas. Il n’écrit pas une valeur par défaut, il ne choisit pas la lecture la plus probable, il ne complète pas silencieusement.</p>
-    <p>Nous assumons ce choix. Une exception visible se traite en quelques minutes. Une exception avalée se découvre des mois plus tard, et il faut alors reprendre tout ce qui en dépendait.</p>
-  </section>
-
-  <section class="conteneur page-section" aria-labelledby="donnees">
-    <h2 id="donnees">Aucune donnée de votre cabinet dans nos essais</h2>
-    <p>Les jeux d’essai que nous construisons sont <strong>entièrement fictifs</strong>. Ils reproduisent la forme de vos fichiers, jamais leur contenu.</p>
-    <p>Les fichiers réels que vous nous confiez pour le cadrage sont lus en place, jamais copiés dans nos dépôts, jamais utilisés pour construire. Pour le premier échange, nous vous demandons d’ailleurs de n’envoyer aucun fichier client ni donnée de paie : la description du geste suffit.</p>
-    <p>Le détail de nos traitements figure dans la <a href="/politique-de-confidentialite">politique de confidentialité</a>.</p>
-  </section>
-
-  <section class="conteneur page-section" aria-labelledby="personnes">
-    <h2 id="personnes">Nous ne mesurons pas les personnes</h2>
-    <p>Un outil de pilotage compte des dossiers, des étapes et des délais. Il ne classe pas les collaborateurs.</p>
-    <p>Les vues que nous livrons présentent des agrégats : combien de dossiers à telle étape, combien d’exceptions en attente, quelles échéances approchent. L’affectation sert à distribuer le travail ; elle ne justifie pas une mesure individuelle continue, et nous ne construisons pas de vue qui la rendrait possible par défaut.</p>
-    <p>Ce n’est pas une contrainte qu’on nous impose : c’est un choix de conception. Un outil qui compte des dossiers n’a pas besoin de nommer qui les traite. Le glossaire définit l’<a href="/glossaire#agregat-non-nominatif">agrégat non nominatif</a> que nous livrons.</p>
-  </section>
-
-  <section class="conteneur page-section" aria-labelledby="refus">
-    <h2 id="refus">Ce que nous ne promettons pas</h2>
-    <ul>
-      <li><strong>Aucune conformité.</strong> Nous ne délivrons pas d’attestation, ni en paie, ni en droit social, ni au titre du règlement européen sur les données. Nos contenus publics portent d’ailleurs la mention « non attesté » lorsqu’ils touchent à ces sujets.</li>
-      <li><strong>Aucun branchement universel.</strong> Nous vérifions les formats et les accès de vos outils avant de nous engager. Si la connexion n’est pas possible, nous le disons.</li>
-      <li><strong>Aucun gain chiffré.</strong> Nous n’annoncerons pas que vous gagnerez tant d’heures ou tant de pourcents. Nous n’avons pas de mesure qui le soutienne, et une promesse de ce type ne s’appuierait sur rien.</li>
-      <li><strong>Aucune illustration trompeuse.</strong> Les exemples que nous publions sont fictifs et le disent. Aucun n’est une capture d’un dossier réel ni un résultat client.</li>
+<PageCommerciale page={page} noeuds={noeuds} eyebrow="Nos limites, énoncées" hero="v2/16-hero-garanties" appel={appel}>
+  <section class="pv" aria-label="Les six garanties">
+    <ul class="garanties-grille rv" data-garanties>
+      {grille.map((g) => (
+        <li class="garantie">
+          <a class="garantie-lien" href={g.href}>
+            <span class="garantie-picto" aria-hidden="true"><Picto nom={g.picto} taille={24} /></span>
+            <span class="garantie-libelle">{g.libelle}</span>
+            <span class="garantie-fleche" aria-hidden="true"><Picto nom="chevron" taille={14} /></span>
+          </a>
+        </li>
+      ))}
     </ul>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="ecrit">
-    <h2 id="ecrit">Ce qui est écrit avant de commencer</h2>
-    <p>Avant la mise en service, un document fixe le périmètre, les accès, les points de validation et les critères de recette. Ce qui n’y figure pas ne fait pas partie de la mission.</p>
+  <section class="pv" id="arret" aria-labelledby="arret-titre">
+    <ProofRow id="v2/07-exception-visible">
+      <div class="pv-copy rv">
+        <h2 id="arret-titre">Dans le doute, l’automatisation s’arrête</h2>
+        <p>C’est notre règle la plus stricte, et elle a une conséquence désagréable : nos automatisations refusent plus souvent que d’autres.</p>
+        <p class="texte-2">Quand une donnée manque, quand deux règles s’appliquent et se contredisent, quand un format n’est pas celui prévu, le traitement s’interrompt et présente le cas. Il n’écrit pas une valeur par défaut, il ne choisit pas la lecture la plus probable, il ne complète pas silencieusement.</p>
+        <p class="texte-2">Nous assumons ce choix. Une exception visible se traite en quelques minutes. Une exception avalée se découvre des mois plus tard, et il faut alors reprendre tout ce qui en dépendait.</p>
+      </div>
+    </ProofRow>
+  </section>
+
+  <section class="pv pv-inverse" id="donnees" aria-labelledby="donnees-titre">
+    <ProofRow id="v2/08-fichiers-en-place">
+      <div class="pv-copy rv">
+        <h2 id="donnees-titre">Aucune donnée de votre cabinet dans nos essais</h2>
+        <p>Les jeux d’essai que nous construisons sont <strong>entièrement fictifs</strong>. Ils reproduisent la forme de vos fichiers, jamais leur contenu.</p>
+        <p class="texte-2">Les fichiers réels que vous nous confiez pour le cadrage sont lus en place, jamais copiés dans nos dépôts, jamais utilisés pour construire. Pour le premier échange, nous vous demandons d’ailleurs de n’envoyer aucun fichier client ni donnée de paie : la description du geste suffit.</p>
+        <p class="texte-2">Le détail de nos traitements figure dans la <a href="/politique-de-confidentialite">politique de confidentialité</a>.</p>
+      </div>
+    </ProofRow>
+  </section>
+
+  <section class="pv" id="personnes" aria-labelledby="personnes-titre">
+    <ProofRow id="09-garanties">
+      <div class="pv-copy rv">
+        <h2 id="personnes-titre">Nous ne mesurons pas les personnes</h2>
+        <p>Un outil de pilotage compte des dossiers, des étapes et des délais. Il ne classe pas les collaborateurs. Les vues que nous livrons présentent des agrégats : combien de dossiers à telle étape, combien d’exceptions en attente, quelles échéances approchent.</p>
+        <p class="texte-2">L’affectation sert à distribuer le travail ; elle ne justifie pas une mesure individuelle continue, et nous ne construisons pas de vue qui la rendrait possible par défaut.</p>
+        <p class="texte-2">Ce n’est pas une contrainte qu’on nous impose : c’est un choix de conception. Un outil qui compte des dossiers n’a pas besoin de nommer qui les traite. Le glossaire définit l’<a href="/glossaire#agregat-non-nominatif">agrégat non nominatif</a> que nous livrons.</p>
+      </div>
+    </ProofRow>
+  </section>
+
+  <section class="pv pv-inverse" id="recette" aria-labelledby="recette-titre">
+    <ProofRow id="06-eprouver">
+      <div class="pv-copy rv">
+        <h2 id="recette-titre">La recette éprouve les refus autant que les résultats</h2>
+        <p>Chaque mission passe par un jeu d’essai fictif qui contient les cas qui doivent aboutir et ceux qui doivent s’arrêter. Un arrêt attendu qui ne se produit pas est traité comme un résultat faux : corrigé avant la recette, jamais livré.</p>
+        <p class="texte-2">La recette se joue ensuite chez vous, sur vos fichiers, avec les personnes qui feront le travail. Le résultat n’est accepté que si elles lisent ce qu’elles attendent.</p>
+      </div>
+    </ProofRow>
+  </section>
+
+  <section class="pv" id="ecrit" aria-labelledby="ecrit-titre">
+    <ProofRow id="v2/09-perimetre-ecrit">
+      <div class="pv-copy rv">
+        <h2 id="ecrit-titre">Ce qui est écrit avant de commencer</h2>
+        <p>Avant la mise en service, un document fixe le périmètre, les accès, les points de validation et les critères de recette. Ce qui n’y figure pas ne fait pas partie de la mission.</p>
+      </div>
+    </ProofRow>
+  </section>
+
+  <section class="pv" id="refus" aria-labelledby="refus-titre">
+    <div class="pv-tete rv">
+      <h2 id="refus-titre">Ce que nous ne promettons pas</h2>
+      <p class="texte-2 lecture">Quatre choses que vous n’entendrez pas de notre part, parce que rien ne les soutiendrait.</p>
+    </div>
+    <div class="pv-bande coins">
+      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+      <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
+        <li class="pv-cellule rv"><h3>Aucune conformité</h3><p>Nous ne délivrons pas d’attestation, ni en paie, ni en droit social, ni au titre du règlement européen sur les données.</p></li>
+        <li class="pv-cellule rv"><h3>Aucun branchement universel</h3><p>Nous vérifions les formats et les accès de vos outils avant de nous engager. Si la connexion n’est pas possible, nous le disons.</p></li>
+        <li class="pv-cellule rv"><h3>Aucun gain chiffré</h3><p>Nous n’annoncerons pas que vous gagnerez tant d’heures ou tant de pourcents. Nous n’avons pas de mesure qui le soutienne, et une promesse de ce type ne s’appuierait sur rien.</p></li>
+        <li class="pv-cellule rv"><h3>Aucune illustration trompeuse</h3><p>Les exemples que nous publions sont fictifs et le disent. Aucun n’est une capture d’un dossier réel ni un résultat client.</p></li>
+      </ul>
+    </div>
   </section>
 </PageCommerciale>
+
+<style>
+  /* La grille des six garanties, telle qu'elle existe sur l'accueil (Garanties.astro),
+     dont chaque cellule mène ici à sa section plutôt qu'à la FAQ. */
+  .garanties-grille { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--ligne-douce); border-top: 1px solid var(--ligne-douce); border-bottom: 1px solid var(--ligne-douce); }
+  .garantie { position: relative; background: var(--surface-feuille); min-height: 96px; overflow: hidden; }
+  .garantie-lien { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 100%; min-height: 96px; padding: 12px 8px 16px; text-align: center; color: var(--texte-2); transition: color var(--duree-4) var(--courbe-standard); }
+  .garantie-picto { color: var(--picto-repos); transition: color var(--duree-4) var(--courbe-standard); }
+  .garantie-libelle { font-size: 0.8125rem; font-weight: 500; line-height: 1.3; text-wrap: balance; }
+  .garantie-fleche { position: absolute; right: 10px; bottom: 8px; opacity: 0; transform: translateY(12px); color: var(--accent-texte); transition: opacity var(--duree-3) var(--courbe-standard), transform var(--duree-3) var(--courbe-standard); }
+  .garantie-lien:focus-visible { outline-offset: -3px; border-radius: 0; }
+  .garantie-lien:focus-visible, .garantie-lien:focus-visible .garantie-picto { color: var(--texte-fort); }
+  .garantie-lien:focus-visible .garantie-fleche { opacity: 1; transform: none; }
+  .garantie::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%); transform: translateX(-100%); pointer-events: none; }
+  :global(html.js) .garanties-grille.in .garantie::after { animation: garantie-balayage 1.5s var(--courbe-standard) both; animation-delay: calc(var(--i, 0) * 150ms); }
+  .garantie:nth-child(2) { --i: 1; } .garantie:nth-child(3) { --i: 2; } .garantie:nth-child(4) { --i: 3; } .garantie:nth-child(5) { --i: 4; } .garantie:nth-child(6) { --i: 5; }
+  @keyframes garantie-balayage { to { transform: translateX(100%); } }
+  @media (hover: hover) {
+    .garantie-lien:hover, .garantie-lien:hover .garantie-picto { color: var(--texte-fort); }
+    .garantie-lien:hover .garantie-fleche { opacity: 1; transform: none; }
+  }
+  @media (min-width: 40rem) { .garantie, .garantie-lien { min-height: 128px; } }
+  @media (prefers-reduced-motion: reduce) { .garantie::after { animation: none !important; } }
+</style>

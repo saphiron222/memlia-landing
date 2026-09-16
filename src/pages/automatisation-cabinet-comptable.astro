@@ -1,5 +1,7 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import ProofRow from '@/components/ProofRow.astro';
+import Picto, { type NomPicto } from '@/components/Picto.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { serviceNode, SERVICE_ID } from '@/data/schema.mjs';
@@ -13,64 +15,115 @@ const noeuds = [
   },
   serviceNode(),
 ];
+const requis: { picto: NomPicto; titre: string; texte: string }[] = [
+  { picto: 'feuilles', titre: 'Les formats réels', texte: 'Pas le format théorique de votre logiciel, celui de vos fichiers.' },
+  { picto: 'bouclier', titre: 'Les accès', texte: 'Ce que l’automatisation doit lire, ce qu’elle peut écrire, et où s’arrête son périmètre.' },
+  { picto: 'limites', titre: 'Les cas limites', texte: 'Le dossier atypique, le mois particulier, la reprise d’un exercice. Ce sont eux qui font échouer une automatisation naïve.' },
+  { picto: 'grille', titre: 'L’environnement', texte: 'La version de vos outils, les postes concernés, qui utilisera quoi.' },
+];
+const renvois = [
+  { texte: 'Contrôler les bulletins de paie avant la DSN : une liste de contrôles à rejouer chaque mois.', libelle: 'Lire la méthode', href: '/blog/controler-les-bulletins-de-paie-avant-la-dsn' },
+  { texte: 'Suivre la production sociale dans Excel sans surveiller les personnes.', libelle: 'Lire la méthode', href: '/blog/suivre-la-production-sociale-dans-excel' },
+  { texte: 'Ce que nous refusons de faire, énoncé avant de commencer.', libelle: 'Nos garanties', href: '/garanties' },
+];
+const appel = {
+  titre: 'Décrivez le geste qui revient.',
+  texte: 'Nous regardons ensemble s’il se cadre, et ce qu’il faudrait pour le faire. Sans fichier client, sans donnée de paie, sans engagement.',
+  points: ['Le geste : ce que quelqu’un refait chaque mois.', 'Les outils : d’où viennent les fichiers, où va le résultat.', 'Le résultat attendu : ce qui devrait exister à la fin.'],
+};
 ---
 
-<PageCommerciale page={page} noeuds={noeuds}>
-  <section class="conteneur page-section" aria-labelledby="situation">
-    <h2 id="situation">La situation, nommée</h2>
-    <p>Chaque mois, quelqu’un du cabinet refait le même geste. Recopier des montants d’un export vers un classeur. Comparer deux états qui devraient concorder. Rassembler des pièces avant un contrôle. Le geste est connu, il est maîtrisé, et il prend le temps de la personne qui le maîtrise le mieux.</p>
-    <p>Ce n’est pas un problème de compétence, ni d’outil manquant. C’est un travail dont la règle existe, mais vit dans la tête d’un collaborateur et dans l’habitude du cabinet.</p>
+<PageCommerciale page={page} noeuds={noeuds} eyebrow="Automatisation sur mesure" hero="v2/14-hero-service" appel={appel}>
+  <section class="pv" aria-labelledby="situation">
+    <ProofRow id="01-flux">
+      <div class="pv-copy rv">
+        <h2 id="situation">La situation, nommée</h2>
+        <p>Chaque mois, quelqu’un du cabinet refait le même geste. Recopier des montants d’un export vers un classeur. Comparer deux états qui devraient concorder. Rassembler des pièces avant un contrôle. Le geste est connu, il est maîtrisé, et il prend le temps de la personne qui le maîtrise le mieux.</p>
+        <p class="texte-2">Ce n’est pas un problème de compétence, ni d’outil manquant. C’est un travail dont la règle existe, mais vit dans la tête d’un collaborateur et dans l’habitude du cabinet.</p>
+      </div>
+    </ProofRow>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="prepare">
-    <h2 id="prepare">Ce que le service prépare</h2>
-    <p>Nous transformons cette règle en automatisation, en trois temps qui ne changent jamais.</p>
-    <h3>L’entrée</h3>
-    <p>Nous partons des fichiers que vous utilisez déjà, dans le format où ils arrivent. Un classeur, un export de votre logiciel de paie, un état comptable.</p>
-    <h3>La règle</h3>
-    <p>Nous l’écrivons avec vous, dans vos mots. Ce qui doit se produire, ce qui constitue une exception, ce qui doit faire arrêter le traitement. Cette écriture est le cœur du travail : une règle qu’on ne sait pas énoncer ne s’automatise pas.</p>
-    <h3>La proposition</h3>
-    <p>L’automatisation prépare le résultat et le présente. Elle ne l’inscrit pas à votre place. Ce qu’elle génère lui appartient et se régénère ; ce que le cabinet saisit ne se touche jamais.</p>
+  <section class="pv" aria-labelledby="prepare">
+    <div class="pv-tete rv">
+      <h2 id="prepare">Ce que le service prépare</h2>
+      <p class="texte-2 lecture">Nous transformons cette règle en automatisation, en trois temps qui ne changent jamais.</p>
+    </div>
+    <div class="pv-bande coins">
+      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+      <ul class="pv-bande-liste rv-groupe" data-colonnes="3">
+        <li class="pv-cellule rv"><h3>L’entrée</h3><p>Nous partons des fichiers que vous utilisez déjà, dans le format où ils arrivent. Un classeur, un export de votre logiciel de paie, un état comptable.</p></li>
+        <li class="pv-cellule rv"><h3>La règle</h3><p>Nous l’écrivons avec vous, dans vos mots. Ce qui doit se produire, ce qui constitue une exception, ce qui doit faire arrêter le traitement. Cette écriture est le cœur du travail : une règle qu’on ne sait pas énoncer ne s’automatise pas.</p></li>
+        <li class="pv-cellule rv"><h3>La proposition</h3><p>L’automatisation prépare le résultat et le présente. Elle ne l’inscrit pas à votre place. Ce qu’elle génère lui appartient et se régénère ; ce que le cabinet saisit ne se touche jamais.</p></li>
+      </ul>
+    </div>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="cabinet">
-    <h2 id="cabinet">Ce qui reste au cabinet</h2>
-    <p>La décision. Toujours.</p>
-    <p>Une proposition qui vous semble juste se valide. Une proposition qui vous surprend s’examine. Et lorsque la règle ne tranche pas — une donnée manque, une exception n’était pas prévue, deux lectures sont possibles — l’automatisation s’arrête et vous le dit, plutôt que d’écrire quelque chose de faux.</p>
-    <p>C’est le point sur lequel nous ne transigeons pas. Une automatisation qui décide seule dans le doute est plus coûteuse que le geste manuel qu’elle remplace.</p>
+  <section class="pv pv-inverse" aria-labelledby="cabinet">
+    <ProofRow id="v2/02-proposition">
+      <div class="pv-copy rv">
+        <h2 id="cabinet">Ce qui reste au cabinet</h2>
+        <p><strong>La décision. Toujours.</strong></p>
+        <p>Une proposition qui vous semble juste se valide. Une proposition qui vous surprend s’examine. Et lorsque la règle ne tranche pas — une donnée manque, une exception n’était pas prévue, deux lectures sont possibles — l’automatisation s’arrête et vous le dit, plutôt que d’écrire quelque chose de faux.</p>
+        <p class="texte-2">C’est le point sur lequel nous ne transigeons pas. Une automatisation qui décide seule dans le doute est plus coûteuse que le geste manuel qu’elle remplace.</p>
+      </div>
+    </ProofRow>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="requis">
-    <h2 id="requis">Ce qui est requis de votre côté</h2>
-    <p>Avant de nous engager, nous qualifions ensemble :</p>
-    <ul>
-      <li><strong>Les formats réels.</strong> Pas le format théorique de votre logiciel, celui de vos fichiers.</li>
-      <li><strong>Les accès.</strong> Ce que l’automatisation doit lire, ce qu’elle peut écrire, et où s’arrête son périmètre.</li>
-      <li><strong>Les cas limites.</strong> Le dossier atypique, le mois particulier, la reprise d’un exercice. Ce sont eux qui font échouer une automatisation naïve.</li>
-      <li><strong>L’environnement.</strong> La version de vos outils, les postes concernés, qui utilisera quoi.</li>
+  <section class="pv" aria-labelledby="requis">
+    <ProofRow id="v2/01-qualification">
+      <div class="pv-copy rv">
+        <h2 id="requis">Ce qui est requis de votre côté</h2>
+        <p>Avant de nous engager, nous qualifions ensemble quatre points sur vos fichiers, pas sur la théorie du logiciel.</p>
+        <p class="texte-2">Cette qualification est un travail, pas une formalité. Elle décide si la tâche est automatisable, et à quel coût.</p>
+      </div>
+    </ProofRow>
+    <ul class="pv-cartes rv-groupe" data-vedette>
+      {requis.map((r) => (
+        <li class="pv-carte rv">
+          <div class="pv-carte-marque" aria-hidden="true"><Picto nom={r.picto} taille={24} /></div>
+          <div class="pv-carte-corps"><h3>{r.titre}</h3><p>{r.texte}</p></div>
+        </li>
+      ))}
     </ul>
-    <p>Cette qualification est un travail, pas une formalité. Elle décide si la tâche est automatisable, et à quel coût.</p>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="livre">
-    <h2 id="livre">Ce qui est livré</h2>
-    <p>Un périmètre écrit, des critères de recette, et une automatisation qui les satisfait sur vos fichiers.</p>
-    <p>La recette se joue sur des cas construits ensemble : ceux qui doivent aboutir, et ceux qui doivent échouer. Un refus attendu qui ne se produit pas est un défaut au même titre qu’un résultat faux.</p>
-    <p>La maintenance se traite au contrat, pas en supplément implicite : vos règles évoluent, vos formats aussi.</p>
-    <div class="page-encadre">
-      <h3>Le prix</h3>
-      <p>Le devis dépend de la complexité de la tâche : règles à appliquer, formats à traiter, exceptions et contraintes de votre environnement. Il précise le périmètre, les critères de recette et les conditions de maintenance. <strong>Vous n’achetez pas un nombre de sièges.</strong></p>
-    </div>
-    <div class="page-encadre">
-      <h3>Vos outils</h3>
-      <p>Un classeur Excel, un export ou un autre outil peut être le point de départ. Nous vérifions les formats et les accès avant de nous engager. <strong>Aucun branchement universel n’est promis.</strong></p>
-    </div>
+  <section class="pv pv-inverse" aria-labelledby="livre">
+    <ProofRow id="07-livrer">
+      <div class="pv-copy rv">
+        <h2 id="livre">Ce qui est livré</h2>
+        <p>Un périmètre écrit, des critères de recette, et une automatisation qui les satisfait sur vos fichiers.</p>
+        <p>La recette se joue sur des cas construits ensemble : ceux qui doivent aboutir, et ceux qui doivent échouer. Un refus attendu qui ne se produit pas est un défaut au même titre qu’un résultat faux.</p>
+        <p class="texte-2">La maintenance se traite au contrat, pas en supplément implicite : vos règles évoluent, vos formats aussi.</p>
+      </div>
+    </ProofRow>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="commencer">
-    <h2 id="commencer">Comment commencer</h2>
-    <p>Décrivez le geste qui revient. Nous regardons ensemble s’il se cadre, et ce qu’il faudrait pour le faire.</p>
-    <p>Pour lire des méthodes avant de nous parler : <a href="/blog/controler-les-bulletins-de-paie-avant-la-dsn">contrôler les bulletins avant la DSN</a> et <a href="/blog/suivre-la-production-sociale-dans-excel">suivre la production sociale dans Excel</a>.</p>
-    <p>Pour savoir ce que nous refusons de faire : <a href="/garanties">nos garanties</a>.</p>
+  <section class="pv" aria-labelledby="prix">
+    <ProofRow id="v2/03-devis">
+      <div class="pv-copy rv">
+        <h2 id="prix">Le prix</h2>
+        <p>Le devis dépend de la complexité de la tâche : règles à appliquer, formats à traiter, exceptions et contraintes de votre environnement. Il précise le périmètre, les critères de recette et les conditions de maintenance. <strong>Vous n’achetez pas un nombre de sièges.</strong></p>
+      </div>
+    </ProofRow>
+  </section>
+
+  <section class="pv pv-inverse" aria-labelledby="outils">
+    <ProofRow id="08-integration">
+      <div class="pv-copy rv">
+        <h2 id="outils">Vos outils</h2>
+        <p>Un classeur Excel, un export ou un autre outil peut être le point de départ. Nous vérifions les formats et les accès avant de nous engager. <strong>Aucun branchement universel n’est promis.</strong></p>
+      </div>
+    </ProofRow>
+  </section>
+
+  <section class="pv" aria-labelledby="avant">
+    <div class="pv-tete rv">
+      <h2 id="avant">Avant de nous parler</h2>
+      <p class="texte-2">Deux méthodes à lire, et ce que nous refusons de faire.</p>
+    </div>
+    <ul class="pv-renvois rv-groupe" data-colonnes="3">
+      {renvois.map((r) => (<li class="pv-renvoi rv"><p>{r.texte}</p><a href={r.href}>{r.libelle}</a></li>))}
+    </ul>
   </section>
 </PageCommerciale>

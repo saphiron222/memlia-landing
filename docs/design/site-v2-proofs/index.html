@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Site v2 — Preuves fonctionnelles des pages commerciales</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+
+    <section class="frame" id="qualification" aria-label="Qualification avant engagement">
+      <div class="side-layout">
+        <div class="side-copy"><h2>Avant de s’engager.</h2><p>Quatre points vérifiés sur vos fichiers, pas sur la théorie du logiciel.</p></div>
+        <article class="window tall">
+          <div class="window-bar"><span class="dot green"></span><span>Qualification</span><small>Jeu fictif</small></div>
+          <ul class="qual-list">
+            <li><div><b>Formats réels</b><small>Ce que vos fichiers contiennent vraiment</small></div><span class="ok">Vérifié</span></li>
+            <li><div><b>Accès</b><small>Ce qui est lu, ce qui peut être écrit</small></div><span class="ok">Vérifié</span></li>
+            <li class="open"><div><b>Cas limites</b><small>Le dossier atypique, le mois de reprise</small></div><span class="status-block">2 cas à écrire</span></li>
+            <li><div><b>Environnement</b><small>Versions des outils, postes concernés</small></div><span class="ok">Vérifié</span></li>
+          </ul>
+          <div class="decision-note"><span>✓</span><span>Automatisable : devis à établir sur cette base</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="frame" id="proposition" aria-label="Proposition contre saisie">
+      <div class="side-layout reverse">
+        <article class="window tall">
+          <div class="window-bar"><span class="dot green"></span><span>Proposition et saisie</span><small>Jeu fictif</small></div>
+          <div class="compare-cols">
+            <div>
+              <h3>Généré par Memlia</h3><small>Se régénère à chaque cycle</small>
+              <div class="cell generated"><span>Montants rapprochés</span><span class="regen">Régénérable</span></div>
+              <div class="cell generated"><span>Écarts signalés</span><span class="regen">Régénérable</span></div>
+              <div class="cell generated"><span>Synthèse préparée</span><span class="regen">Régénérable</span></div>
+            </div>
+            <div>
+              <h3>Saisi par le cabinet</h3><small>Ne se touche jamais</small>
+              <div class="cell"><span>Commentaire du dossier</span><span class="lock">Intouché</span></div>
+              <div class="cell"><span>Décision sur l’écart</span><span class="lock">Intouché</span></div>
+              <div class="cell"><span>Validation finale</span><span class="lock">Intouché</span></div>
+            </div>
+          </div>
+        </article>
+        <div class="side-copy"><h2>Memlia propose. Le cabinet saisit.</h2><p>Ce qui est généré se régénère ; ce que vous écrivez reste à vous.</p></div>
+      </div>
+    </section>
+
+    <section class="frame" id="devis" aria-label="Ce que le devis précise">
+      <div class="side-layout">
+        <div class="side-copy"><h2>Ce que le devis précise.</h2><p>Le périmètre, la recette et la maintenance, avant tout développement.</p></div>
+        <article class="window tall">
+          <div class="window-bar"><span class="dot green"></span><span>Proposition de mission</span><small>Modèle fictif</small></div>
+          <div class="doc">
+            <div class="doc-section"><b>Périmètre</b><span>Sources lues, sorties préparées, et ce qui reste hors champ.</span></div>
+            <div class="doc-section"><b>Critères de recette</b><span>Les cas qui doivent aboutir et ceux qui doivent s’arrêter.</span></div>
+            <div class="doc-section"><b>Maintenance</b><span>Au contrat : vos règles et vos formats évoluent.</span></div>
+            <div class="doc-section"><b>Prix</b><span>À la complexité de la tâche. Aucun siège, aucune licence.</span></div>
+            <div class="doc-foot"><span>Rien n’est développé avant cet écrit</span><span class="ok">Signé par le cabinet</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="frame" id="perimetre" aria-label="Dans le périmètre, hors périmètre">
+      <div class="side-layout reverse">
+        <article class="window tall">
+          <div class="window-bar"><span class="dot green"></span><span>Périmètre écrit</span><small>Cadrage</small></div>
+          <div class="scope-lists">
+            <div class="scope-col"><h4>Dans le périmètre</h4><ul>
+              <li class="in"><i>✓</i><span>Lire l’export mensuel</span></li>
+              <li class="in"><i>✓</i><span>Appliquer la règle écrite</span></li>
+              <li class="in"><i>✓</i><span>Signaler les écarts</span></li>
+              <li class="in"><i>✓</i><span>Préparer la synthèse</span></li>
+            </ul></div>
+            <div class="scope-col"><h4>Hors périmètre</h4><ul>
+              <li class="out"><i>∅</i><span>Modifier la source</span></li>
+              <li class="out"><i>∅</i><span>Déposer une déclaration</span></li>
+              <li class="out"><i>∅</i><span>Choisir dans le doute</span></li>
+              <li class="out"><i>∅</i><span>Corriger un dossier</span></li>
+            </ul></div>
+          </div>
+        </article>
+        <div class="side-copy"><h2>Ce qu’elle touche, et ce qu’elle ne touchera jamais.</h2><p>Le cadrage écrit les deux listes avant la première ligne de code.</p></div>
+      </div>
+    </section>
+
+    <section class="frame" id="refus-attendu" aria-label="Un refus attendu qui ne se produit pas est un défaut">
+      <div class="side-layout">
+        <div class="side-copy"><h2>Un refus attendu qui manque est un défaut.</h2><p>Les essais vérifient les arrêts autant que les résultats.</p></div>
+        <article class="window tall">
+          <div class="window-bar"><span class="dot green"></span><span>Jeu d’essai fictif</span><span class="status-block">1 défaut</span></div>
+          <div class="test-grid">
+            <div class="head"><span>Cas</span><span>Attendu</span><span>Résultat</span></div>
+            <div><span>Cycle courant</span><span>Préparer</span><span class="pass">Conforme</span></div>
+            <div><span>Champ absent</span><span>Bloquer</span><span class="pass">Bloqué</span></div>
+            <div class="row-fail"><span>Format inattendu</span><span>Bloquer</span><span class="fail">Proposé</span></div>
+            <div><span>Exception connue</span><span>Proposer</span><span class="pass">Proposé</span></div>
+          </div>
+          <div class="defect-note"><b>Le format inattendu aurait dû bloquer.</b><p>Corrigé avant la recette : un essai qui passe à tort compte comme un échec.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="frame" id="recette-cabinet" aria-label="La recette se joue chez le cabinet">
+      <div class="side-layout reverse">
+        <article class="window tall">
+          <div class="window-bar"><span class="dot green"></span><span>Recette du cabinet</span><small>Session fictive</small></div>
+          <div class="recette-head"><div><span class="eyebrow">Périmètre convenu</span><h3>Préparation du cycle</h3></div><span class="seal">Prêt<br>à vérifier</span></div>
+          <ul class="recette-rows">
+            <li><div><b>Cas qui aboutissent</b><small>Rejoués sur les fichiers du cabinet</small></div><span class="ok">4 sur 4</span></li>
+            <li><div><b>Cas qui s’arrêtent</b><small>Chaque blocage attendu retrouvé</small></div><span class="ok">2 sur 2</span></li>
+            <li><div><b>Lecture par la personne qui fera le travail</b><small>Elle lit ce qu’elle attend</small></div><span class="ok">Confirmée</span></li>
+          </ul>
+          <div class="recette-decision"><div><b>Décision du cabinet</b><br><small>Accepter, ou demander une correction</small></div><span class="status-block">En attente</span></div>
+        </article>
+        <div class="side-copy"><h2>La recette se joue chez vous.</h2><p>Avec les personnes qui feront le travail, sur vos fichiers.</p></div>
+      </div>
+    </section>
+
+    <section class="frame" id="exception-visible" aria-label="Une exception présentée, jamais avalée">
+      <div class="side-layout">
+        <div class="side-copy"><h2>Dans le doute, l’automatisation s’arrête.</h2><p>Elle présente le cas. Elle n’écrit pas une valeur par défaut.</p></div>
+        <article class="window tall">
+          <div class="window-bar"><span class="dot amber"></span><span>Traitement interrompu</span><span class="status-block">Bloqué</span></div>
+          <div class="exception-card"><span class="eyebrow">Exception présentée</span><b>Ligne 27 · deux règles se contredisent</b><p>La règle du cabinet et la consigne du mois donnent deux lectures. Aucune valeur n’a été écrite.</p></div>
+          <aside class="why-panel" style="margin:0 24px"><span class="lock">⌁</span><div><b>Pourquoi c’est bloqué</b><p>Le traitement ne choisit pas la lecture la plus probable. Une personne tranche, et sa décision est documentée.</p></div></aside>
+          <div class="actions" style="margin-top:26px"><button class="ghost">Renvoyer au cadrage</button><button>Documenter la décision</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="frame" id="fichiers-en-place" aria-label="Vos fichiers restent chez vous">
+      <div class="pair-stage hatch">
+        <article class="window">
+          <div class="window-bar"><span class="dot"></span><span>Chez le cabinet</span><small>Vos fichiers</small></div>
+          <div class="pair-window-body">
+            <div class="item"><i>▤</i><span>Classeur réel, lu en place</span></div>
+            <div class="item"><i>▤</i><span>Export de paie, lu en place</span></div>
+            <div class="item"><i>◇</i><span>Dossier partagé, accès cadré</span></div>
+          </div>
+        </article>
+        <div class="pair-link"><span>Lecture, jamais copie</span><div class="arrow"></div><span class="none">∅ Aucune copie dans nos dépôts</span></div>
+        <article class="window">
+          <div class="window-bar"><span class="dot green"></span><span>Chez Memlia</span><small>Ce qui est construit</small></div>
+          <div class="pair-window-body">
+            <div class="item"><i>≡</i><span>La règle, écrite dans vos mots</span></div>
+            <div class="item"><i>◎</i><span>Un jeu d’essai entièrement fictif</span></div>
+            <div class="item"><i>✓</i><span>Les critères de recette</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="frame" id="perimetre-ecrit" aria-label="Le document écrit avant la mise en service">
+      <div class="side-layout reverse">
+        <article class="window tall">
+          <div class="window-bar"><span class="dot green"></span><span>Document de mise en service</span><small>Avant tout usage</small></div>
+          <ul class="checklist" style="margin-top:22px">
+            <li><span>✓</span><div><b>Périmètre</b><small>Ce que l’automatisation lit et prépare</small></div></li>
+            <li><span>✓</span><div><b>Accès</b><small>Droits vérifiés, rien de plus</small></div></li>
+            <li><span>✓</span><div><b>Points de validation</b><small>Qui décide, à quel moment</small></div></li>
+            <li><span>✓</span><div><b>Critères de recette</b><small>Les cas convenus, aboutis et arrêtés</small></div></li>
+            <li class="pending"><span>5</span><div><b>Mise en service</b><small>Après la décision du cabinet</small></div></li>
+          </ul>
+        </article>
+        <div class="side-copy"><h2>Écrit avant de commencer.</h2><p>Ce qui n’y figure pas ne fait pas partie de la mission.</p></div>
+      </div>
+    </section>
+
+    <section class="frame" id="une-personne" aria-label="Une seule personne mène les quatre étapes">
+      <div class="side-layout" style="grid-template-columns:1fr;padding:24px 60px">
+        <article class="window" style="height:560px">
+          <div class="window-bar"><span class="dot green"></span><span>Une mission</span><small>Quatre étapes, une personne</small></div>
+          <div class="person-line">
+            <div class="person-step"><small>Observer</small><b>Écouter le geste</b><span>Sources, exceptions, hésitations</span></div>
+            <div class="person-step"><small>Cadrer</small><b>Écrire la règle</b><span>Dans les mots du cabinet</span></div>
+            <div class="person-step"><small>Construire</small><b>Coder la règle</b><span>Celle qui a été entendue</span></div>
+            <div class="person-step"><small>Recette</small><b>Faire valider</b><span>Avec ceux qui feront le travail</span></div>
+          </div>
+          <div class="person-band"><span>La même personne mène les quatre étapes</span><small>Aucun passage de relais entre celui qui écoute et celui qui code</small></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="frame" id="regle-mots" aria-label="La règle dans vos mots, puis dans le code">
+      <div class="side-layout">
+        <div class="side-copy"><h2>Votre règle, dans vos mots, puis dans le code.</h2><p>Rien n’est codé qui n’ait d’abord été dit par le cabinet.</p></div>
+        <article class="window tall">
+          <div class="window-bar"><span class="dot green"></span><span>Règle du cabinet</span><small>Exemple fictif</small></div>
+          <div class="quote-card"><small>Dite par le cabinet</small><p>« Un dossier sans pièce justificative ne passe pas au rapprochement : on le met de côté. »</p></div>
+          <div class="rule-rows">
+            <div class="head"><span>Condition</span><span>Action</span><span>Limite</span></div>
+            <div><span>Pièce présente</span><span>Rapprocher</span><span>Dans le cadre</span></div>
+            <div><span>Pièce absente</span><span>Mettre de côté</span><span class="stop">Blocage</span></div>
+            <div><span>Pièce illisible</span><span>Demander une décision</span><span class="stop">Blocage</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="frame" id="avant-echange" aria-label="Avant l'échange, trois réponses suffisent">
+      <div class="side-layout reverse">
+        <article class="window tall">
+          <div class="window-bar"><span class="dot green"></span><span>Avant l’échange</span><small>Trois réponses suffisent</small></div>
+          <div class="form-fields">
+            <div class="field"><label>Le geste</label><div>Chaque mois, rapprocher l’export de paie et le classeur de suivi.</div></div>
+            <div class="field"><label>Les outils</label><div>Un export du logiciel de paie, un classeur partagé.</div></div>
+            <div class="field"><label>Le résultat attendu</label><div class="long">Une liste des écarts à vérifier, prête avant la relecture.</div></div>
+          </div>
+          <div class="no-file"><i>∅</i><span>Aucun fichier client, aucune donnée de paie : la description suffit.</span></div>
+        </article>
+        <div class="side-copy"><h2>Rien d’écrit n’est nécessaire.</h2><p>Trois éléments rendent l’échange utile : le geste, les outils, le résultat attendu.</p></div>
+      </div>
+    </section>
+
+    <section class="frame" id="deux-issues" aria-label="Deux issues possibles à l'échange">
+      <div class="outcomes">
+        <article class="outcome go">
+          <small class="tag ok">Première issue</small>
+          <h3>Un cadrage proposé</h3>
+          <p>Nous voyons ce qu’il y aurait à construire.</p>
+          <ul><li><i>✓</i><span>Un périmètre à écrire</span></li><li><i>✓</i><span>Des critères de recette</span></li><li><i>✓</i><span>Un devis à la complexité</span></li></ul>
+        </article>
+        <article class="outcome">
+          <small class="tag status-block">Seconde issue</small>
+          <h3>Pas automatisable en l’état</h3>
+          <p>Nous le disons à ce moment, pas après le développement.</p>
+          <ul><li><i>·</i><span>La règle n’est pas encore énonçable</span></li><li><i>·</i><span>Les accès manquent</span></li><li><i>·</i><span>Le geste ne se répète pas assez</span></li></ul>
+        </article>
+        <p class="outcomes-foot">Dans les deux cas, vous repartez avec une lecture plus nette de votre geste.</p>
+      </div>
+    </section>
+
+    <!-- ---- Cadres de tête des cinq pages : un écran plein, sous la même grille que le hero de l'accueil.
+         Chaque cadre porte data-og : le rendu produit aussi son image sociale 1200 × 630. ---- -->
+    <section class="frame hero-frame" id="hero-service" data-og aria-label="Un cycle de paie préparé, deux exceptions présentées, rien d’écrit avant validation">
+      <article class="window hero-window rows-4">
+        <div class="window-bar"><span class="dot green"></span><span>Préparation du cycle · Paie de mars</span><small>Jeu fictif</small></div>
+        <div class="cycle-flow">
+          <div class="cycle-step"><small>Entrée</small><b>3 fichiers reçus</b><span>Export de paie, classeur de suivi, état DSN</span></div>
+          <i class="cycle-arrow"></i>
+          <div class="cycle-step"><small>Règle du cabinet</small><b>12 contrôles appliqués</b><span>Version 04, écrite avec le pôle social</span></div>
+          <i class="cycle-arrow"></i>
+          <div class="cycle-step accent"><small>Proposition</small><b>41 dossiers préparés</b><span>2 exceptions présentées, 0 écriture</span></div>
+        </div>
+        <div class="cycle-table">
+          <div class="head"><span>Dossier</span><span>Contrôle</span><span>Proposition</span><span>État</span></div>
+          <div><span>Dossier 14</span><span>Net à payer cohérent</span><span>Montant reporté</span><span class="ok">Préparé</span></div>
+          <div><span>Dossier 15</span><span>Cotisations conformes</span><span>Montant reporté</span><span class="ok">Préparé</span></div>
+          <div class="row-exception"><span>Dossier 16</span><span>Écart de net de 7,4 %</span><span>Aucune, à examiner</span><span class="status-block">Exception</span></div>
+          <div><span>Dossier 17</span><span>Absences rapprochées</span><span>Montant reporté</span><span class="ok">Préparé</span></div>
+          <div class="row-exception"><span>Dossier 18</span><span>Champ SIRET absent</span><span>Aucune, à compléter</span><span class="status-block">Exception</span></div>
+          <div><span>Dossier 19</span><span>Net à payer cohérent</span><span>Montant reporté</span><span class="ok">Préparé</span></div>
+        </div>
+        <div class="cycle-foot"><span>Rien n’est écrit dans le classeur avant votre validation.</span><div><button class="ghost">Examiner les 2 exceptions</button><button>Valider les 41 propositions</button></div></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="hero-methode" data-og aria-label="Une mission en quatre étapes, chacune avec ce qu’elle produit, la recette en cours">
+      <article class="window hero-window rows-3">
+        <div class="window-bar"><span class="dot green"></span><span>Mission fictive · Rapprochement de paie</span><small>Jeu fictif</small></div>
+        <div class="board">
+          <div class="board-col">
+            <header><small>Étape 1</small><h3>Observer</h3><span class="ok">Terminé</span></header>
+            <div class="card">Description du travail réel<small>3 fichiers, 2 irrégularités par mois</small></div>
+            <div class="card">Le moment où une personne tranche<small>Repéré, décrit dans ses mots</small></div>
+            <div class="card">Le cas « normal » qui ne l’est pas<small>Un mois sur trois</small></div>
+            <div class="card">Ce qui est vérifié sans être écrit<small>4 réflexes relevés</small></div>
+          </div>
+          <div class="board-col">
+            <header><small>Étape 2</small><h3>Cadrer</h3><span class="ok">Terminé</span></header>
+            <div class="card">Règle en 12 conditions<small>Dans le vocabulaire du cabinet</small></div>
+            <div class="card">Périmètre écrit<small>4 actions dedans, 4 dehors</small></div>
+            <div class="card">2 cas de blocage nommés<small>Donnée absente, règle ambiguë</small></div>
+            <div class="card">Critères de recette<small>Signés avant la première ligne</small></div>
+          </div>
+          <div class="board-col">
+            <header><small>Étape 3</small><h3>Éprouver</h3><span class="ok">Terminé</span></header>
+            <div class="card">Jeu d’essai entièrement fictif<small>14 cas, 0 donnée réelle</small></div>
+            <div class="card">3 refus attendus<small>3 obtenus</small></div>
+            <div class="card">1 défaut trouvé, corrigé<small>Un cas passait à tort</small></div>
+            <div class="card">Mois de reprise rejoué<small>Bloqué comme prévu</small></div>
+          </div>
+          <div class="board-col current">
+            <header><small>Étape 4</small><h3>Faire valider</h3><span class="status-block">En cours</span></header>
+            <div class="card">Recette au cabinet<small>12 cas rejoués sur vos fichiers</small></div>
+            <div class="card">Lecture confirmée<small>Par la personne qui fera le travail</small></div>
+            <div class="card">Décision du cabinet<small>En attente</small></div>
+            <div class="card">Mise en service<small>Après la décision, pas avant</small></div>
+          </div>
+        </div>
+        <div class="board-line"><span class="done"></span><span class="done"></span><span class="done"></span><span class="current"></span><b>Recette en cours, la décision reste au cabinet</b></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="hero-garanties" data-og aria-label="Un traitement arrêté sur une donnée manquante : le cas est présenté, rien n’est écrit à sa place">
+      <article class="window hero-window rows-2">
+        <div class="window-bar"><span class="dot amber"></span><span>Préparation interrompue · dossier 17</span><span class="status-block">Arrêt</span></div>
+        <div class="halt-body">
+          <div class="halt-list">
+            <div class="head"><span>Dossier</span><span>Contrôle</span><span>État</span></div>
+            <div><span>Dossier 12</span><span>Net à payer cohérent</span><span class="ok">Préparé</span></div>
+            <div><span>Dossier 13</span><span>Cotisations conformes</span><span class="ok">Préparé</span></div>
+            <div><span>Dossier 14</span><span>Absences rapprochées</span><span class="ok">Préparé</span></div>
+            <div><span>Dossier 15</span><span>Heures supplémentaires vérifiées</span><span class="ok">Préparé</span></div>
+            <div><span>Dossier 16</span><span>Net à payer cohérent</span><span class="ok">Préparé</span></div>
+            <div class="row-halt"><span>Dossier 17</span><span>SIRET absent sur l’établissement</span><span class="status-block">Arrêté</span></div>
+            <div class="muted"><span>Dossier 18</span><span>En attente de la décision</span><span>—</span></div>
+            <div class="muted"><span>Dossier 19</span><span>En attente de la décision</span><span>—</span></div>
+            <div class="muted"><span>Dossier 20</span><span>En attente de la décision</span><span>—</span></div>
+          </div>
+          <aside class="halt-panel">
+            <span class="eyebrow">Pourquoi c’est arrêté</span>
+            <b>La règle ne permet pas de trancher.</b>
+            <p>Sans SIRET, le dossier ne peut pas être rattaché à un établissement. Le cas est présenté, pas deviné.</p>
+            <ul class="halt-not">
+              <li><i>✗</i>Écrire une valeur par défaut</li>
+              <li><i>✗</i>Choisir la lecture la plus probable</li>
+              <li><i>✗</i>Continuer le cycle sans le dossier</li>
+            </ul>
+            <div class="halt-actions"><button class="ghost">Exclure et documenter</button><button>Compléter et reprendre</button></div>
+            <div class="halt-journal">
+              <span class="eyebrow">Journal du cycle</span>
+              <div><time>10:41</time><span>Dossier 16 préparé, montant reporté dans la proposition</span></div>
+              <div><time>10:41</time><span>Dossier 17 arrêté, cas présenté au cabinet</span></div>
+              <div><time>10:41</time><span>Aucune valeur écrite dans le classeur</span></div>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="hero-apropos" data-og aria-label="Une règle dite par le cabinet, écrite, codée et éprouvée par la même personne">
+      <article class="window hero-window rows-3">
+        <div class="window-bar"><span class="dot green"></span><span>Règle n° 7 · dite, écrite, éprouvée</span><small>Jeu fictif</small></div>
+        <div class="tri">
+          <div class="tri-col">
+            <span class="eyebrow">Ce que le cabinet dit</span>
+            <blockquote>« Si le net à payer bouge de plus de 5 % d’un mois à l’autre sans avenant, je vérifie avant d’envoyer. »</blockquote>
+            <small>Pôle social, entretien d’observation</small>
+            <ul class="tri-notes">
+              <li><b>Le seuil</b><span>5 %, donné par le cabinet, jamais choisi à sa place</span></li>
+              <li><b>L’avenant</b><span>Ce qui rend l’écart normal, à vérifier dans le dossier</span></li>
+              <li><b>Le mois de référence</b><span>Le précédent, jamais un autre</span></li>
+            </ul>
+          </div>
+          <div class="tri-col">
+            <span class="eyebrow">Ce que la règle devient</span>
+            <div class="rule-lines">
+              <div><b>Écart de net &gt; 5 %, sans avenant</b><span>Signaler, ne pas préparer</span></div>
+              <div><b>Écart de net &gt; 5 %, avenant présent</b><span>Préparer, mentionner l’avenant</span></div>
+              <div><b>Écart de net ≤ 5 %</b><span>Préparer</span></div>
+              <div class="stop"><b>Mois précédent absent</b><span>Bloquer</span></div>
+            </div>
+          </div>
+          <div class="tri-col">
+            <span class="eyebrow">Ce que l’essai vérifie</span>
+            <div class="checks">
+              <div class="head"><span>Cas</span><span>Attendu</span><span>Résultat</span></div>
+              <div><span>+ 3 %</span><span>Préparer</span><span class="pass">Conforme</span></div>
+              <div><span>+ 8 %, avenant</span><span>Préparer</span><span class="pass">Conforme</span></div>
+              <div><span>+ 8 %, sans avenant</span><span>Signaler</span><span class="pass">Conforme</span></div>
+              <div><span>Mois absent</span><span>Bloquer</span><span class="pass">Bloqué</span></div>
+            </div>
+            <div class="checks-foot"><b>4 cas sur 4 conformes</b><span>Jeu d’essai fictif, aucune donnée réelle</span></div>
+          </div>
+        </div>
+        <div class="person-band"><span>Écoutée, écrite, codée et éprouvée par la même personne.</span><small>Aucun passage de relais</small></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="hero-contact" data-og aria-label="Le compte rendu fictif d’un premier échange : le geste, les outils, le résultat attendu, l’issue">
+      <article class="window hero-window rows-2">
+        <div class="window-bar"><span class="dot green"></span><span>Premier échange · 30 minutes</span><small>Jeu fictif</small></div>
+        <div class="cr">
+          <div class="cr-doc">
+            <div class="cr-row"><b>Le geste</b><span>Recopier chaque mois les montants de l’export de paie dans le classeur de suivi du pôle social.</span></div>
+            <div class="cr-row"><b>Les outils</b><span>Logiciel de paie, export CSV, classeur Excel partagé par l’équipe.</span></div>
+            <div class="cr-row"><b>Le résultat attendu</b><span>Un classeur à jour, les écarts signalés avant la DSN.</span></div>
+            <div class="cr-row"><b>Fichiers transmis</b><span>Aucun. La description a suffi pour savoir si le geste se cadre.</span></div>
+            <div class="cr-row"><b>Reste à qualifier</b><span>Deux cas limites et le mois de reprise, sur vos fichiers, au cadrage.</span></div>
+            <div class="cr-row"><b>Prochaine étape</b><span>Un cadrage planifié avec le cabinet, avant tout développement et tout devis.</span></div>
+          </div>
+          <aside class="cr-side">
+            <div class="cr-issue"><span class="eyebrow">Issue de l’échange</span><b>Cadrage proposé</b><p>La règle s’énonce, les formats sont connus, deux cas limites restent à écrire.</p></div>
+            <ul class="cr-none">
+              <li><i>✓</i>Aucun fichier client demandé</li>
+              <li><i>✓</i>Aucune donnée de paie</li>
+              <li><i>✓</i>Aucun engagement à ce stade</li>
+            </ul>
+            <div class="cr-note"><b>Dans tous les cas</b><p>Vous repartez avec une lecture plus nette de votre propre geste, cadrage ou non.</p></div>
+          </aside>
+        </div>
+      </article>
+    </section>
+
+  </main>
+</body>
+</html>

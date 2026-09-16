@@ -1,57 +1,89 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import ProofMedia from '@/components/ProofMedia.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
+import { SERVICE_ID } from '@/data/schema.mjs';
+import type { ProofId } from '@/data/proofs';
+
 const page = PAGES_V2.methode;
 const url = `${SITE.url}${page.chemin}`;
 const noeuds = [{
   '@type': 'WebPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
-  inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` },
+  inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, about: { '@id': SERVICE_ID },
 }];
+/** Les quatre étapes, chacune avec son illustration : c'est une séquence, elle se numérote. */
+const etapes: { id: string; titre: string; image: ProofId; paragraphes: string[] }[] = [
+  { id: 'observer', titre: 'Observer', image: '04-observer', paragraphes: [
+    'Nous regardons le geste tel qu’il se fait, pas tel qu’il devrait se faire.',
+    'Quels fichiers arrivent, dans quel ordre, avec quelles irrégularités. Où la personne hésite. Ce qu’elle vérifie machinalement sans l’avoir jamais écrit. Combien de fois par mois le cas « normal » n’est pas le cas normal.',
+    'Cette étape produit une description du travail réel. Elle dure ce qu’elle doit durer : une tâche mal observée donne une automatisation qui marche en démonstration et échoue au premier dossier atypique.',
+  ] },
+  { id: 'cadrer', titre: 'Cadrer', image: 'v2/04-perimetre', paragraphes: [
+    'Nous écrivons la règle avec vous, dans le vocabulaire du cabinet.',
+    'Ce document dit trois choses : ce qui doit se produire, ce qui constitue une exception, et ce qui doit faire arrêter le traitement. Il fixe aussi le périmètre — ce que l’automatisation touche, et ce qu’elle ne touchera jamais.',
+    'C’est ici que la plupart des projets se jouent. Une règle qu’on ne sait pas énoncer ne s’automatise pas : elle se discute d’abord. Si le cadrage révèle que la tâche n’est pas automatisable en l’état, nous le disons à ce moment, pas après le développement.',
+  ] },
+  { id: 'eprouver', titre: 'Éprouver', image: 'v2/05-refus-attendu', paragraphes: [
+    'Nous construisons un jeu d’essai entièrement fictif, qui ressemble à vos fichiers sans en être.',
+    'Il contient les cas qui doivent aboutir, et surtout ceux qui doivent échouer : la donnée manquante, l’exception non prévue, le format inattendu, le mois de reprise. Pour chacun, nous vérifions que l’automatisation fait ce qu’elle doit — y compris s’arrêter.',
+    'Un refus attendu qui ne se produit pas est un défaut, au même titre qu’un résultat faux. C’est la raison pour laquelle nous testons les échecs autant que les succès. Aucune donnée réelle de votre cabinet n’entre dans cette étape.',
+  ] },
+  { id: 'valider', titre: 'Faire valider', image: 'v2/06-recette-cabinet', paragraphes: [
+    'La recette se joue chez vous, sur vos fichiers, avec les personnes qui feront le travail.',
+    'Nous passons les cas convenus, ceux qui aboutissent et ceux qui s’arrêtent. Le résultat n’est accepté que si la personne qui utilisera l’automatisation confirme qu’elle lit ce qu’elle attend.',
+    'Ensuite seulement la mission est livrée, avec son périmètre écrit et ses conditions de maintenance.',
+  ] },
+];
+const renvois = [
+  { texte: 'Ce que le service livre concrètement, ce qu’il requiert et ce qui détermine le devis.', libelle: 'L’automatisation sur mesure', href: '/automatisation-cabinet-comptable' },
+  { texte: 'Ce que nous refusons de faire, énoncé avant de commencer.', libelle: 'Les garanties', href: '/garanties' },
+  { texte: 'Qui porte ce travail, et avec quelles limites assumées.', libelle: 'À propos', href: '/a-propos' },
+];
+const appel = {
+  titre: 'La première étape commence par un échange.',
+  texte: 'Décrivez le geste qui revient. Nous observons ensemble s’il se cadre, avant tout développement. Sans fichier client, sans donnée de paie.',
+  points: ['Observer le geste réel, pas le geste théorique.', 'Écrire la règle dans vos mots.', 'Éprouver les refus autant que les résultats.'],
+};
 ---
 
-<PageCommerciale page={page} noeuds={noeuds}>
-  <section class="conteneur page-section" aria-labelledby="observer">
-    <h2 id="observer">Étape 1 — Observer</h2>
-    <p>Nous regardons le geste tel qu’il se fait, pas tel qu’il devrait se faire.</p>
-    <p>Quels fichiers arrivent, dans quel ordre, avec quelles irrégularités. Où la personne hésite. Ce qu’elle vérifie machinalement sans l’avoir jamais écrit. Combien de fois par mois le cas « normal » n’est pas le cas normal.</p>
-    <p>Cette étape produit une description du travail réel. Elle dure ce qu’elle doit durer : une tâche mal observée donne une automatisation qui marche en démonstration et échoue au premier dossier atypique.</p>
-  </section>
-
-  <section class="conteneur page-section" aria-labelledby="cadrer">
-    <h2 id="cadrer">Étape 2 — Cadrer</h2>
-    <p>Nous écrivons la règle avec vous, dans le vocabulaire du cabinet.</p>
-    <p>Ce document dit trois choses : ce qui doit se produire, ce qui constitue une exception, et ce qui doit faire arrêter le traitement. Il fixe aussi le périmètre — ce que l’automatisation touche, et ce qu’elle ne touchera jamais.</p>
-    <p>C’est ici que la plupart des projets se jouent. Une règle qu’on ne sait pas énoncer ne s’automatise pas : elle se discute d’abord. Si le cadrage révèle que la tâche n’est pas automatisable en l’état, nous le disons à ce moment, pas après le développement.</p>
-  </section>
-
-  <section class="conteneur page-section" aria-labelledby="eprouver">
-    <h2 id="eprouver">Étape 3 — Éprouver</h2>
-    <p>Nous construisons un jeu d’essai <strong>entièrement fictif</strong>, qui ressemble à vos fichiers sans en être.</p>
-    <p>Il contient les cas qui doivent aboutir, et surtout ceux qui doivent échouer : la donnée manquante, l’exception non prévue, le format inattendu, le mois de reprise. Pour chacun, nous vérifions que l’automatisation fait ce qu’elle doit — y compris s’arrêter.</p>
-    <div class="page-encadre">
-      <p><strong>Un refus attendu qui ne se produit pas est un défaut</strong>, au même titre qu’un résultat faux. C’est la raison pour laquelle nous testons les échecs autant que les succès.</p>
+<PageCommerciale page={page} noeuds={noeuds} eyebrow="Quatre étapes, une recette" hero="v2/15-hero-methode" appel={appel}>
+  <section class="pv" aria-labelledby="etapes-titre">
+    <div class="pv-tete rv">
+      <h2 id="etapes-titre">Quatre étapes, dans cet ordre</h2>
+      <p class="texte-2 lecture">Chacune produit quelque chose que vous pouvez lire : une description, un document, un jeu d’essai, une recette.</p>
     </div>
-    <p>Aucune donnée réelle de votre cabinet n’entre dans cette étape.</p>
+    <ol class="pv-etapes">
+      {etapes.map((e, i) => (
+        <li class="pv-etape" id={e.id}>
+          <div class="pv-etape-copy rv">
+            <p class="pv-etape-numero">Étape {i + 1}</p>
+            <h2>{e.titre}</h2>
+            {e.paragraphes.map((p, j) => (<p class={j === 0 ? undefined : 'texte-2'}>{p}</p>))}
+          </div>
+          <ProofMedia id={e.image} />
+        </li>
+      ))}
+    </ol>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="valider">
-    <h2 id="valider">Étape 4 — Faire valider</h2>
-    <p>La recette se joue chez vous, sur vos fichiers, avec les personnes qui feront le travail.</p>
-    <p>Nous passons les cas convenus, ceux qui aboutissent et ceux qui s’arrêtent. Le résultat n’est accepté que si la personne qui utilisera l’automatisation confirme qu’elle lit ce qu’elle attend.</p>
-    <p>Ensuite seulement la mission est livrée, avec son périmètre écrit et ses conditions de maintenance.</p>
+  <section class="pv" aria-labelledby="cout">
+    <div class="pv-tete rv">
+      <h2 id="cout">Ce que cette méthode coûte, et ce qu’elle évite</h2>
+    </div>
+    <div class="pv-bande coins">
+      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+      <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
+        <li class="pv-cellule rv"><h3>Ce qu’elle coûte</h3><p>Elle est plus lente qu’une démonstration. Le cadrage prend du temps, le jeu d’essai aussi, et nous préférons dire non au cadrage plutôt qu’après.</p></li>
+        <li class="pv-cellule rv"><h3>Ce qu’elle évite</h3><p>Une automatisation livrée vite, qui produit des résultats plausibles, et dont personne ne sait dire quand elle se trompe. Cette situation-là coûte plus cher que le geste manuel, parce qu’elle oblige à tout revérifier.</p></li>
+      </ul>
+    </div>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="cout">
-    <h2 id="cout">Ce que cette méthode coûte, et ce qu’elle évite</h2>
-    <p>Elle est plus lente qu’une démonstration. Le cadrage prend du temps, le jeu d’essai aussi, et nous préférons dire non au cadrage plutôt qu’après.</p>
-    <p>Elle évite la situation inverse : une automatisation livrée vite, qui produit des résultats plausibles, et dont personne ne sait dire quand elle se trompe. Cette situation-là coûte plus cher que le geste manuel, parce qu’elle oblige à tout revérifier.</p>
-  </section>
-
-  <section class="conteneur page-section" aria-labelledby="suite">
-    <h2 id="suite">Ce qui vient ensuite</h2>
-    <p>Pour savoir ce que le service livre concrètement : <a href="/automatisation-cabinet-comptable">l’automatisation sur mesure</a>.</p>
-    <p>Pour savoir ce que nous refusons : <a href="/garanties">les garanties</a>.</p>
-    <p>Pour savoir qui porte ce travail : <a href="/a-propos">à propos</a>.</p>
+  <section class="pv" aria-labelledby="suite-titre-renvois">
+    <div class="pv-tete rv"><h2 id="suite-titre-renvois">Ce qui vient ensuite</h2></div>
+    <ul class="pv-renvois rv-groupe" data-colonnes="3">
+      {renvois.map((r) => (<li class="pv-renvoi rv"><p>{r.texte}</p><a href={r.href}>{r.libelle}</a></li>))}
+    </ul>
   </section>
 </PageCommerciale>

@@ -9,32 +9,53 @@ import { CTA } from '@/data/site.mjs';
  * le CTA humain en secondaire. Fond IMG-02 décoratif, texte au-dessus d'un voile crème
  * pour tenir le contraste quel que soit le visuel livré.
  */
-const cadrage = [
-  'Le processus : une tâche, ses outils, le résultat attendu.',
-  'Le périmètre : sources, exceptions, cas de refus.',
-  'Le devis : à la complexité, jamais au nombre de postes.',
-];
+/**
+ * Le même bloc sert les pages commerciales, avec leur propre titre et leurs points :
+ * un seul composant pour que l'appel final ait partout la même forme.
+ */
+interface Props {
+  id?: string;
+  titre?: string;
+  texte?: string;
+  points?: string[];
+  action?: { libelle: string; href: string };
+  secondaire?: { libelle: string; href: string };
+}
+const {
+  id = 'evaluer',
+  titre = 'Quelle tâche prend encore trop de temps ?',
+  texte = 'Décrivez votre processus sans transmettre de fichier ni de donnée client réelle. Le premier échange sert à identifier les limites, les validations et les inconnues techniques. Aucun engagement de déploiement.',
+  points = [
+    'Le processus : une tâche, ses outils, le résultat attendu.',
+    'Le périmètre : sources, exceptions, cas de refus.',
+    'Le devis : à la complexité, jamais au nombre de postes.',
+  ],
+  action = CTA.principal,
+  secondaire,
+} = Astro.props;
 ---
 
-<section id="evaluer" class="appel" aria-labelledby="appel-titre">
-  <span id="demo" aria-hidden="true"></span>
+<section id={id} class="appel" aria-labelledby={`${id}-titre`}>
+  {id === 'evaluer' && <span id="demo" aria-hidden="true"></span>}
 
   <div class="appel-int coins rv">
     <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-    <h2 id="appel-titre" class="appel-h2">Quelle tâche prend encore trop de temps ?</h2>
-    <p class="texte-2 appel-texte">
-      Décrivez votre processus sans transmettre de fichier ni de donnée client réelle.
-      Le premier échange sert à identifier les limites, les validations et les inconnues techniques.
-      Aucun engagement de déploiement.
-    </p>
+    <h2 id={`${id}-titre`} class="appel-h2">{titre}</h2>
+    <p class="texte-2 appel-texte">{texte}</p>
     <ul class="appel-cadrage">
-      {cadrage.map((c) => (
+      {points.map((c) => (
         <li><Picto nom="coche" taille={14} /><span>{c}</span></li>
       ))}
     </ul>
     <div class="appel-boutons">
-      <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
-
+      <Button href={action.href} variante="principal" picto="fleche">{action.libelle}</Button>
+      {secondaire && (
+        <Fragment>
+          {secondaire.href.startsWith('mailto:') && <Fragment set:html={`<!--email_off-->`} />}
+          <Button href={secondaire.href} variante="contour">{secondaire.libelle}</Button>
+          {secondaire.href.startsWith('mailto:') && <Fragment set:html={`<!--/email_off-->`} />}
+        </Fragment>
+      )}
     </div>
   </div>
 </section>

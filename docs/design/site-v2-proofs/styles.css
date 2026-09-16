@@ -1,0 +1,214 @@
+/* Preuves fonctionnelles du site v2 : même vocabulaire visuel que la série M4-R1 de
+   l'accueil (fenêtres blanches, pastilles d'état, crème, vert, ambre), quelques
+   compositions de plus. Les fontes et les variables viennent de la feuille d'origine. */
+@import url('../m4-r1-functional-proofs/styles.css');
+
+/* Copie à gauche sans numéro d'étape : ces scènes ne sont pas une séquence. */
+.side-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:72px;align-items:center;padding:24px 40px}
+.side-layout.reverse{grid-template-columns:1.28fr .72fr}
+.side-copy h2{font:600 46px/1.06 Fraunces,Georgia,serif;margin:0 0 22px;max-width:12ch;color:var(--ink)}
+.side-copy p{color:var(--muted);font-size:20px;line-height:1.5;max-width:38ch;margin:0}
+.tall{height:550px}
+
+/* Liste de qualification : quatre rangs, un état chacun. */
+.qual-list{list-style:none;margin:0;padding:34px 28px 0;display:grid;gap:14px}
+.qual-list li{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:20px 18px;border:1px solid var(--line-soft);border-radius:10px}
+.qual-list b,.qual-list small{display:block}.qual-list small{color:var(--muted);margin-top:4px;font-size:14px}
+.qual-list li.open{background:var(--amber-pale);border-color:#efcfb1}
+.decision-note{margin:24px 28px 0;padding:20px 22px;background:var(--green-pale);border-radius:10px;color:var(--green-dark);font-weight:600;display:flex;align-items:center;gap:12px}
+
+/* Proposition contre saisie : deux colonnes dans une même fenêtre. */
+.compare-cols{display:grid;grid-template-columns:1fr 1fr;height:calc(100% - 60px)}
+.compare-cols>div{padding:30px 28px}.compare-cols>div+div{border-left:1px solid var(--line-soft)}
+.compare-cols h3{font:600 24px Fraunces,Georgia,serif;margin:0 0 6px}.compare-cols>div>small{display:block;color:var(--muted);margin-bottom:22px;font-size:14px}
+.cell{padding:16px 14px;border:1px solid var(--line-soft);border-radius:9px;margin-bottom:12px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;font-size:15px}
+.cell.generated{background:var(--green-pale);border-color:#cfeeda}
+.cell .lock{color:var(--muted);font-size:13px}
+.cell .regen{color:var(--green-dark);font-size:13px;font-weight:600}
+
+/* Document : sections d'un écrit avant mise en service. */
+.doc{padding:30px 34px;display:grid;gap:14px}
+.doc-section{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft);align-items:start}
+.doc-section b{color:var(--ink)}.doc-section span{color:var(--muted);font-size:15px;line-height:1.45}
+.doc-foot{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:14px;color:var(--muted)}
+
+/* Deux listes : dans le périmètre, hors périmètre. */
+.scope-lists{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:30px 28px}
+.scope-col h4{margin:0 0 14px;font:600 13px Hanken,Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.scope-col li{list-style:none;padding:14px 14px;border:1px solid var(--line-soft);border-radius:9px;margin-bottom:10px;font-size:15px;display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:center}
+.scope-col ul{margin:0;padding:0}
+.scope-col .in i{color:var(--green-dark);font-style:normal;font-weight:600}
+.scope-col .out i{color:var(--muted);font-style:normal;font-weight:600}
+.scope-col .out{color:var(--muted)}
+
+/* Grille d'essai où un refus attendu manque : le défaut est visible. */
+.test-grid .fail{color:var(--amber);font-weight:600}
+.test-grid .row-fail{background:var(--amber-pale)}
+.defect-note{margin:24px 26px 0;padding:18px 20px;border-left:3px solid var(--amber);background:var(--amber-pale);border-radius:0 10px 10px 0}
+.defect-note b{display:block;font-family:Fraunces,Georgia,serif;font-size:20px;line-height:1.2;margin-bottom:6px}
+.defect-note p{margin:0;color:var(--muted);font-size:14px}
+
+/* Recette : un compte, une lecture, une décision qui attend. */
+.recette-head{display:flex;justify-content:space-between;align-items:center;padding:28px 30px 14px}
+.recette-head h3{font:600 26px Fraunces,Georgia,serif;margin:6px 0}
+.recette-rows{list-style:none;margin:0;padding:0 30px}
+.recette-rows li{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:17px 4px;border-top:1px solid var(--line-soft)}
+.recette-rows b,.recette-rows small{display:block}.recette-rows small{color:var(--muted);margin-top:3px;font-size:14px}
+.recette-decision{margin:22px 30px 0;padding:18px 20px;background:var(--amber-pale);border-radius:10px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.recette-decision b{color:#97551a}
+
+/* Fichiers en place : deux fenêtres, une lecture, aucune copie. */
+.pair-stage{position:relative;margin:0 32px;border:1px solid var(--line-soft);border-radius:22px;padding:56px 40px;display:grid;grid-template-columns:1fr 200px 1fr;gap:20px;align-items:center}
+.pair-stage .window{height:430px;z-index:2}
+.pair-window-body{padding:26px 24px;display:grid;gap:14px}
+.pair-window-body .item{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:center;padding:14px;border:1px solid var(--line-soft);border-radius:10px;font-size:15px}
+.pair-window-body .item i{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);border-radius:7px;background:var(--paper);color:var(--green-dark);font-style:normal}
+.pair-link{display:grid;place-items:center;gap:14px;text-align:center;color:var(--muted);font-size:14px}
+.pair-link .arrow{width:100%;height:1px;background:var(--green);position:relative}
+.pair-link .arrow:after{content:"";position:absolute;right:-1px;top:-4px;width:7px;height:7px;border-top:1px solid var(--green);border-right:1px solid var(--green);transform:rotate(45deg)}
+.pair-link .none{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line);color:var(--ink);font-weight:600;font-size:13px}
+
+/* Une seule personne, quatre étapes. */
+.person-line{padding:40px 34px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.person-step{padding:20px 16px;border:1px solid var(--line-soft);border-radius:12px;background:white;display:grid;gap:8px}
+.person-step small{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.person-step b{font-family:Fraunces,Georgia,serif;font-size:21px}
+.person-step span{color:var(--muted);font-size:14px}
+.person-band{margin:26px 34px 0;padding:18px 20px;background:var(--green-pale);border-radius:10px;color:var(--green-dark);display:flex;justify-content:space-between;align-items:center;font-weight:600}
+.person-band small{font-weight:400;color:var(--green-dark)}
+
+/* La règle dans les mots du cabinet, puis codée. */
+.quote-card{margin:30px 28px 0;padding:24px;border:1px solid var(--line-soft);border-radius:12px;background:var(--paper)}
+.quote-card small{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.quote-card p{margin:0;font:600 22px/1.3 Fraunces,Georgia,serif}
+.rule-rows{margin:22px 28px 0;border:1px solid var(--line-soft);border-radius:11px;overflow:hidden}
+.rule-rows>div{display:grid;grid-template-columns:1fr 1.1fr .8fr}
+.rule-rows span{padding:17px 15px;border-bottom:1px solid var(--line-soft);font-size:15px}
+.rule-rows .head{background:var(--paper);font-weight:600;color:var(--muted)}
+.rule-rows .stop{color:#97551a;font-weight:600}
+
+/* Formulaire : trois champs, aucun fichier. */
+.form-fields{padding:30px 30px 0;display:grid;gap:16px}
+.field{display:grid;gap:6px}
+.field label{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.field div{padding:16px 16px;border:1px solid var(--line);border-radius:9px;background:white;font-size:16px;min-height:54px}
+.field div.long{min-height:96px;line-height:1.45}
+.no-file{margin:20px 30px 0;padding:16px 18px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);font-size:14px;display:flex;align-items:center;gap:12px}
+.no-file i{font-style:normal;font-size:20px;color:var(--green-dark)}
+
+/* Deux issues possibles, l'une et l'autre normales. */
+.outcomes{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:24px 40px}
+.outcome{background:white;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:34px 30px;display:grid;gap:14px;align-content:start;min-height:470px}
+.outcome.go{border-color:#a9dcb8}
+.outcome small.tag{justify-self:start}
+.outcome h3{font:600 32px/1.1 Fraunces,Georgia,serif;margin:6px 0 4px}
+.outcome p{margin:0;color:var(--muted);font-size:17px;line-height:1.5}
+.outcome ul{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.outcome li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:center;font-size:15px;padding:12px 12px;border:1px solid var(--line-soft);border-radius:9px}
+.outcome li i{font-style:normal;color:var(--green-dark);font-weight:600}
+.outcomes-foot{grid-column:1/-1;text-align:center;color:var(--muted);font-size:16px}
+
+/* ---- Cadres de tête des cinq pages : un écran plein, sous la même grille que le hero de l'accueil. ---- */
+.hero-frame{background-color:var(--cream);background-image:linear-gradient(rgba(35,31,32,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(35,31,32,.05) 1px,transparent 1px);background-size:64px 64px;background-position:32px 32px}
+.hero-window{height:772px;display:grid}
+.hero-window.rows-2{grid-template-rows:60px minmax(0,1fr)}
+.hero-window.rows-3{grid-template-rows:60px minmax(0,1fr) auto}
+.hero-window.rows-4{grid-template-rows:60px auto minmax(0,1fr) auto}
+
+/* Cycle préparé : entrée, règle, proposition, la table des dossiers, la barre de décision. */
+.cycle-flow{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;align-items:center;gap:18px;padding:26px 30px 8px}
+.cycle-step{padding:18px 20px;border:1px solid var(--line-soft);border-radius:12px;display:grid;gap:4px;background:white}
+.cycle-step.accent{background:var(--green-pale);border-color:#cfeeda}
+.cycle-step small{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.cycle-step b{font:600 23px Fraunces,Georgia,serif}
+.cycle-step span{color:var(--muted);font-size:14px}
+.cycle-arrow{display:block;height:1px;background:var(--green);position:relative}
+.cycle-arrow:after{content:"";position:absolute;right:0;top:-4px;width:8px;height:8px;border-top:1px solid var(--green);border-right:1px solid var(--green);transform:rotate(45deg)}
+.cycle-table{margin:14px 30px 0;border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;align-self:start}
+.cycle-table>div{display:grid;grid-template-columns:.7fr 1.2fr 1.1fr .6fr;align-items:center}
+.cycle-table span{padding:15px 16px;border-bottom:1px solid var(--line-soft);font-size:15px}
+.cycle-table>div:last-child span{border-bottom:0}
+.cycle-table .head span{background:var(--paper);font-weight:600;color:var(--muted);font-size:13px}
+.cycle-table .ok,.cycle-table .status-block{justify-self:start;margin:10px 16px;padding:6px 10px;border-bottom:0}
+.cycle-table .row-exception{background:var(--amber-pale)}
+.cycle-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 30px;border-top:1px solid var(--line-soft);color:var(--muted);font-size:15px}
+.cycle-foot div{display:flex;gap:12px}
+
+/* Tableau de mission : quatre colonnes, la quatrième en cours. */
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:26px 30px 0}
+.board-col{border:1px solid var(--line-soft);border-radius:12px;padding:16px;display:grid;gap:10px;align-content:start;background:white}
+.board-col header{display:grid;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--line-soft);margin-bottom:4px}
+.board-col header small{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.board-col h3{margin:0;font:600 24px Fraunces,Georgia,serif}
+.board-col .ok,.board-col .status-block{justify-self:start}
+.board .card{padding:17px 14px;border:1px solid var(--line-soft);border-radius:9px;background:var(--paper);font-size:16px;font-weight:600;display:grid;gap:4px}
+.board .card small{color:var(--muted);font-weight:400;font-size:14px}
+.board-col.current{border-color:#efcfb1;background:var(--amber-pale)}
+.board-col.current .card{background:white}
+.board-line{display:grid;grid-template-columns:repeat(4,1fr) auto;align-items:center;gap:10px;margin:20px 30px 0;padding:20px 0 24px;border-top:1px solid var(--line-soft)}
+.board-line>span{height:6px;border-radius:3px;background:var(--line-soft)}
+.board-line>span.done{background:var(--green)}
+.board-line>span.current{background:var(--amber)}
+.board-line b{font-size:14px;color:var(--muted);padding-left:10px}
+
+/* Arrêt sur exception : la liste des dossiers, le panneau qui explique, deux décisions possibles. */
+.halt-body{display:grid;grid-template-columns:1.25fr .95fr;gap:24px;padding:26px 30px 28px}
+.halt-list{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;align-self:start}
+.halt-list>div{display:grid;grid-template-columns:.7fr 1.5fr .7fr;align-items:center}
+.halt-list span{padding:16px 16px;border-bottom:1px solid var(--line-soft);font-size:15px}
+.halt-list>div:last-child span{border-bottom:0}
+.halt-list .head span{background:var(--paper);font-weight:600;color:var(--muted);font-size:13px}
+.halt-list .ok,.halt-list .status-block{justify-self:start;margin:10px 16px;padding:6px 10px;border-bottom:0}
+.halt-list .row-halt{background:var(--amber-pale)}
+.halt-list .muted span{color:var(--muted)}
+.halt-panel{border:1px solid var(--line-soft);border-radius:12px;padding:24px;display:grid;gap:12px;align-content:start;background:var(--paper)}
+.halt-panel b{font:600 27px/1.15 Fraunces,Georgia,serif}
+.halt-panel p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+.halt-not{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px}
+.halt-not li{display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:center;padding:11px 12px;border:1px solid var(--line-soft);border-radius:9px;background:white;font-size:14px;color:var(--muted)}
+.halt-not i{font-style:normal;color:var(--amber);font-weight:600}
+.halt-actions{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+
+/* Une règle, trois lectures : les mots du cabinet, la règle écrite, l'essai qui la vérifie. */
+.tri{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:20px;padding:26px 30px 0}
+.tri-col{border:1px solid var(--line-soft);border-radius:12px;padding:20px;display:grid;gap:14px;align-content:start;background:white}
+.tri-col blockquote{margin:0;font:600 24px/1.3 Fraunces,Georgia,serif}
+.tri-col>small{color:var(--muted);font-size:13px}
+.rule-lines{display:grid;gap:8px}
+.rule-lines>div{display:grid;gap:3px;padding:12px 12px;border:1px solid var(--line-soft);border-radius:9px;font-size:14px;background:var(--paper)}
+.rule-lines b{font-size:14px}.rule-lines span{color:var(--muted)}
+.rule-lines .stop{background:var(--amber-pale);border-color:#efcfb1}.rule-lines .stop span{color:#97551a;font-weight:600}
+.checks{border:1px solid var(--line-soft);border-radius:10px;overflow:hidden}
+.checks>div{display:grid;grid-template-columns:1.15fr .9fr .9fr}
+.checks span{padding:12px 12px;border-bottom:1px solid var(--line-soft);font-size:14px}
+.checks>div:last-child span{border-bottom:0}
+.checks .head span{background:var(--paper);color:var(--muted);font-weight:600;font-size:12px}
+.checks .pass{color:var(--green-dark);font-weight:600}
+.hero-window .person-band{margin:20px 30px 26px}
+
+/* Compte rendu du premier échange : le document à gauche, l'issue et ce qui n'a pas été demandé à droite. */
+.cr{display:grid;grid-template-columns:1.35fr .85fr;gap:24px;padding:26px 30px 28px}
+.cr-doc{border:1px solid var(--line-soft);border-radius:12px;padding:6px 24px;display:grid;align-content:start;background:white}
+.cr-row{display:grid;grid-template-columns:190px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line-soft);align-items:start}
+.cr-row:last-child{border-bottom:0}
+.cr-row b{font:600 20px Fraunces,Georgia,serif}
+.cr-row span{color:var(--muted);font-size:16px;line-height:1.5}
+.cr-side{display:grid;gap:16px;align-content:start}
+.cr-issue{border:1px solid #a9dcb8;background:var(--green-pale);border-radius:12px;padding:22px;display:grid;gap:8px}
+.cr-issue b{font:600 28px/1.1 Fraunces,Georgia,serif;color:var(--green-dark)}
+.cr-issue p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+.cr-none{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.cr-none li{display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:center;padding:12px 12px;border:1px solid var(--line-soft);border-radius:9px;font-size:15px;background:white}
+.cr-none i{font-style:normal;color:var(--green-dark);font-weight:600}
+
+/* Compléments des cadres de tête : journal, notes de règle, bilan d'essai, note d'issue. */
+.halt-journal{margin-top:14px;padding-top:16px;border-top:1px solid var(--line-soft);display:grid;gap:8px}
+.halt-journal>div{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:baseline;font-size:14px;color:var(--muted)}
+.halt-journal time{font-size:12px;color:var(--muted)}
+.tri-notes{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px}
+.tri-notes li{display:grid;gap:3px;padding:12px 12px;border:1px solid var(--line-soft);border-radius:9px;background:var(--paper);font-size:14px}
+.tri-notes b{font-size:14px}.tri-notes span{color:var(--muted)}
+.checks-foot{margin-top:4px;padding:14px 14px;border-radius:9px;background:var(--green-pale);display:grid;gap:3px}
+.checks-foot b{color:var(--green-dark);font-size:15px}.checks-foot span{color:var(--muted);font-size:13px}
+.cr-note{padding:18px 20px;border:1px solid var(--line-soft);border-radius:12px;background:var(--paper);display:grid;gap:6px}
+.cr-note b{font:600 18px Fraunces,Georgia,serif}.cr-note p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
