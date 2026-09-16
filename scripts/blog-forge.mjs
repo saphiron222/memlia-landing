@@ -330,6 +330,7 @@ function evidencesSkills({ manifest, corps, sujet, jour, claims, root }) {
 }
 
 function rendreCadreHtml(root, recette) {
+  if (!recette.image.cadre) throw new Error('image.cadre manquant : fournir image.source (image générée) ou image.cadre (cadre HTML).');
   const gabarit = readFileSync(join(root, 'editorial/templates/cadre-article.html'), 'utf8');
   const echap = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const cadre = recette.image.cadre;
@@ -359,13 +360,28 @@ async function rendrePlaywright(html, cible) {
 async function materialiserImage({ root, recette, dossier, sujet, jour, revues, rendreImage }) {
   const imageDir = join(dossier, 'preuves/image');
   mkdirSync(imageDir, { recursive: true });
-  const html = rendreCadreHtml(root, recette);
-  const empreinteCadre = sha256(html);
   const master = join(imageDir, 'master.png');
   const marque = join(imageDir, 'cadre.sha256');
+  const generee = recette.image.source;
+  // Deux régimes : une image générée selon le brief (recette.image.source, chemin relatif à la recette,
+  // avec generationId et modèle), ou, à défaut, le cadre de preuve HTML rendu par Playwright.
+  let html = null;
+  let empreinteCadre;
+  if (generee) {
+    const sourcePath = join(root, 'editorial/recettes', recette.slug, generee.path);
+    if (!existsSync(sourcePath)) throw new Error(`image.source.path introuvable : ${sourcePath}`);
+    empreinteCadre = sha256(readFileSync(sourcePath));
+  } else {
+    html = rendreCadreHtml(root, recette);
+    empreinteCadre = sha256(html);
+  }
   if (!existsSync(master) || !existsSync(marque) || readFileSync(marque, 'utf8').trim() !== empreinteCadre) {
-    await (rendreImage ?? rendrePlaywright)(html, master);
-    writeFileSync(join(imageDir, 'cadre.html'), html);
+    if (generee) {
+      await sharp(join(root, 'editorial/recettes', recette.slug, generee.path)).resize(1920, 1080, { fit: 'cover', position: 'centre' }).png().toFile(master);
+    } else {
+      await (rendreImage ?? rendrePlaywright)(html, master);
+      writeFileSync(join(imageDir, 'cadre.html'), html);
+    }
     writeFileSync(marque, `${empreinteCadre}\n`);
     await sharp(master).resize(1200, 675).extract({ left: 0, top: 22, width: 1200, height: 630 }).webp({ quality: 88 }).toFile(join(imageDir, 'og.webp'));
     for (const format of ['avif', 'webp']) await sharp(master).resize(768, 432)[format]().toFile(join(imageDir, `hero-768.${format}`));
@@ -374,8 +390,13 @@ async function materialiserImage({ root, recette, dossier, sujet, jour, revues, 
     for (const largeur of LARGEURS_HERO) for (const format of ['avif', 'webp']) await sharp(master).resize(largeur, Math.round((largeur * 9) / 16))[format]().toFile(join(root, `public/images/${recette.image.heroId}-${largeur}.${format}`));
   }
   const revueImage = revues?.image;
-  ecrireJson(join(imageDir, 'prompt.json'), artefact(sujet, 'image-prompt', jour, { engine: 'image_generate', prompt: `Cadre de preuve HTML (editorial/templates/cadre-article.html) rendu à 1920×1080 : « ${recette.image.cadre.titre} » — ${recette.image.cadre.sousTitre}. Trois colonnes : ${recette.image.cadre.colonnes.map((c) => c.titre).join(' / ')}. Jeu fictif, aucune donnée client, aucun texte hors charte.` }));
-  ecrireJson(join(imageDir, 'generation.json'), artefact(sujet, 'image-generation', jour, { engine: 'image_generate', generationId: `cadre-${empreinteCadre.slice(0, 24)}`, outputSha256: sha256(readFileSync(master)), renderer: 'playwright-chromium 1920x1080' }));
+  const brief = recette.image.brief;
+  ecrireJson(join(imageDir, 'prompt.json'), artefact(sujet, 'image-prompt', jour, generee
+    ? { engine: 'image_generate', prompt: brief.prompt, brief: { sujet: brief.sujet, composition: brief.composition, style: brief.style, palette: brief.palette, interdits: brief.interdits, alt: recette.image.alt }, reviewCriteria: brief.reviewCriteria }
+    : { engine: 'image_generate', prompt: `Cadre de preuve HTML (editorial/templates/cadre-article.html) rendu à 1920×1080 : « ${recette.image.cadre.titre} » — ${recette.image.cadre.sousTitre}. Trois colonnes : ${recette.image.cadre.colonnes.map((c) => c.titre).join(' / ')}. Jeu fictif, aucune donnée client, aucun texte hors charte.` }));
+  ecrireJson(join(imageDir, 'generation.json'), artefact(sujet, 'image-generation', jour, generee
+    ? { engine: 'image_generate', generationId: generee.generationId, model: generee.model, provider: generee.provider ?? 'higgsfield', generatedAt: generee.generatedAt, sourcePath: generee.path, sourceSha256: empreinteCadre, outputSha256: sha256(readFileSync(master)), credits: generee.credits ?? null }
+    : { engine: 'image_generate', generationId: `cadre-${empreinteCadre.slice(0, 24)}`, outputSha256: sha256(readFileSync(master)), renderer: 'playwright-chromium 1920x1080' }));
   ecrireJson(join(imageDir, 'visual-review.json'), artefact(sujet, 'image-visual-review', jour, {
     status: revueImage ? 'PASS' : 'FAIL',
     criteria: IMAGE_REVIEW_CRITERIA.map((id) => ({ id, result: revueImage?.criteria?.[id]?.result ?? 'FAIL', observations: revueImage?.criteria?.[id]?.observations ?? ['Revue image non exécutée.'] })),
@@ -455,12 +476,34 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   ecrireJson(join(dossier, 'claims.json'), claims);
 
   const { obs, collisions } = evidencesSkills({ manifest: manifestFinal, corps, sujet, jour, claims, root });
+  const generee = recette.image.source;
   if (collisions.length) erreurs.push(`Cannibalisation de requête primaire avec : ${collisions.join(', ')}.`);
-  const ligne = (skill) => SKILLS_TOUJOURS_JOUES.includes(skill)
+  const qualite = revues?.qualite;
+  if (qualite) {
+    ecrireJson(join(dossier, 'quality-review.json'), {
+      version: 1, candidateSlug: slug, reviewedAt: jour, reviewer: qualite.reviewer ?? 'relecteur-qualite-ia-memlia', rubric: 'blog-analyze-100',
+      status: qualite.score >= 90 && (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL', score: qualite.score, p0: (qualite.p0 ?? []).length,
+      categories: qualite.categories, evidence: qualite.evidence ?? [], reservations: qualite.reservations ?? [], verdict: qualite.verdict ?? '',
+      subject: { slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash },
+    });
+    const cats = qualite.categories ?? {};
+    const ligneCat = (id, libelle) => `| ${libelle} | ${cats[id]?.score ?? '—'}/${cats[id]?.max ?? '—'} |`;
+    writeFileSync(join(dossier, 'seo-geo-review.md'), `# SEO et préparation aux citations IA — ${recette.title}\n\nVerdict : ${qualite.score >= 90 && (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL'} — ${qualite.score}/100, ${(qualite.p0 ?? []).length} P0 (revue indépendante du ${jour}, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).\n\n| Catégorie | Score |\n| --- | ---: |\n${ligneCat('contentQuality', 'Qualité du contenu')}\n${ligneCat('seoOptimization', 'SEO')}\n${ligneCat('eeatSignals', 'E-E-A-T')}\n${ligneCat('technicalElements', 'Technique')}\n${ligneCat('aiCitationReadiness', 'Préparation aux citations IA')}\n| Total | ${qualite.score}/100 |\n\n## SEO\n\n${(qualite.seo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Préparation aux citations\n\n${(qualite.geo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Réserves mesurées\n\n${(qualite.reservations ?? []).map((x) => `- ${x}`).join('\n')}\n`);
+  }
+  const preuvesRecette = recette.preuvesSkills ?? {};
+  if (qualite) {
+    const cats = qualite.categories ?? {};
+    preuvesRecette['blog-analyze'] = preuvesRecette['blog-analyze'] ?? [`Revue indépendante barème blog-analyze : ${qualite.score}/100, ${(qualite.p0 ?? []).length} P0 ; catégories ${Object.entries(cats).map(([k, v]) => `${k} ${v.score}/${v.max}`).join(', ')}.`];
+    if (qualite.seo?.length) preuvesRecette['blog-seo-check'] = [...(obs['blog-seo-check'] ?? []), ...qualite.seo];
+    if (qualite.geo?.length) preuvesRecette['blog-geo'] = [...(obs['blog-geo'] ?? []), ...qualite.geo];
+  }
+  if (generee) preuvesRecette['blog-image'] = preuvesRecette['blog-image'] ?? [`Image générée selon le brief à six composantes (${generee.model}, ${generee.provider ?? 'higgsfield'}, job ${generee.generationId}), revue visuelle dans image.json.`];
+  const joue = (skill) => SKILLS_TOUJOURS_JOUES.includes(skill) || Array.isArray(preuvesRecette[skill]);
+  const ligne = (skill) => joue(skill)
     ? { skill, applicable: true, status: 'RUN', result: 'PASS', evidence: `preuves/skills/${skill}.json`, checkedAt: jour, justification: null }
     : { skill, applicable: false, status: 'N/A', result: null, evidence: null, checkedAt: null, justification: JUSTIFICATIONS_NA[skill](recette.title) };
   const skills = { version: 1, blog: BLOG_SKILLS.map(ligne), seo: SEO_SKILLS.map(ligne), contradictions: [] };
-  for (const row of [...skills.blog, ...skills.seo]) if (row.status === 'RUN') ecrireJson(join(dossier, row.evidence), artefact(sujet, 'skill', jour, { skill: row.skill, observations: obs[row.skill] }));
+  for (const row of [...skills.blog, ...skills.seo]) if (row.status === 'RUN') ecrireJson(join(dossier, row.evidence), artefact(sujet, 'skill', jour, { skill: row.skill, observations: preuvesRecette[row.skill] ?? obs[row.skill] }));
   ecrireJson(join(dossier, 'skills.json'), skills);
 
   const editorial = revues?.editorial;

@@ -110,14 +110,14 @@ export const IMAGES = {
     brief: 'ART',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: "Carte des tâches d’un cabinet en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain",
+    alt: "Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation",
     generee: true,
   },
   'img-art-relance-des-pieces': {
     brief: 'ART',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: "Relance des pièces clients en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain",
+    alt: "Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart",
     generee: true,
   },
 };

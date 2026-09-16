@@ -55,7 +55,7 @@
   },
   "image": {
     "heroId": "img-art-carte-des-taches",
-    "alt": "Carte des tâches d’un cabinet en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain",
+    "alt": "Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation",
     "cadre": {
       "titre": "La carte des tâches automatisables d’un cabinet",
       "sousTitre": "Onze pôles, soixante familles, une frontière par tâche",
@@ -90,6 +90,34 @@
         }
       ],
       "pied": "memlia.fr — automatiser un cabinet comptable"
+    },
+    "brief": {
+      "sujet": "La carte des tâches automatisables d’un cabinet : une dizaine d’îlots reliés par des chemins, un jeton posé sur un chemin choisi, une bifurcation ouverte pour la décision humaine.",
+      "composition": "Vue isométrique sur bureau crème papier ; plaques translucides vertes et graphite disposées en une dizaine d’îlots reliés par de fins chemins ; petits objets géométriques (pièces classées, calendrier, pile de feuilles vierges, classeurs, engrenages) sur certaines plaques ; jeton vert au centre devant une bifurcation.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, lumière de studio douce venant du haut gauche, ombres courtes, faible profondeur de champ, composition aérée ; continuité avec la couverture IMG-25 (comptes rendus métier DSN).",
+      "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20.",
+      "interdits": "Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique.",
+      "alt": "Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation",
+      "reviewCriteria": [
+        "continuité avec les couvertures existantes",
+        "des îlots reliés lisibles comme une carte des tâches",
+        "décision humaine évoquée sans personnage (jeton, bifurcation)",
+        "aucun texte, logo, donnée, fausse interface ou action automatique",
+        "palette et lumière conformes à la charte",
+        "dérivés 1920×1080, OG 1200×630, 768/1200/1600 générés"
+      ],
+      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : La carte des tâches automatisables d’un cabinet : une dizaine d’îlots reliés par des chemins, un jeton posé sur un chemin choisi, une bifurcation ouverte pour la décision humaine. Composition : Vue isométrique sur bureau crème papier ; plaques translucides vertes et graphite disposées en une dizaine d’îlots reliés par de fins chemins ; petits objets géométriques (pièces classées, calendrier, pile de feuilles vierges, classeurs, engrenages) sur certaines plaques ; jeton vert au centre devant une bifurcation. Style : Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, lumière de studio douce venant du haut gauche, ombres courtes, faible profondeur de champ, composition aérée ; continuité avec la couverture IMG-25 (comptes rendus métier DSN). Palette : Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20. Interdits : Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique."
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "18bea6d9-dd0c-4f80-85bc-fce55f0ba8d8",
+      "model": "gpt_image_2_5",
+      "provider": "higgsfield",
+      "generatedAt": "2026-09-16",
+      "credits": 3,
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_340edDKgz49ubvQTIJPiYr6YSC6/hf_20260916_182602_18bea6d9-dd0c-4f80-85bc-fce55f0ba8d8.png",
+      "quality": "high",
+      "resolution": "2k"
     }
   },
   "sources": [
@@ -211,7 +239,7 @@
       "explanation": "Définition officielle du compte rendu métier reprise à l’identique depuis Net-entreprises."
     },
     {
-      "unite": "Le calendrier de l’administration donne le cadre",
+      "unite": "calendrier fiscal de l’administration donne le cadre",
       "claim": "dépôt et le paiement de la déclaration mensuelle de TVA entre les 15 et 24 septembre 2026",
       "type": "fiscal",
       "sourceId": "impots-calendrier",
@@ -238,5 +266,25 @@
   "businessReview": {
     "reviewerId": "relecteur-metier-ia-memlia",
     "role": "chefs-mission-portefeuille"
+  },
+  "preuvesSkills": {
+    "blog-brief": [
+      "Brief validé dans docs/strategy/site-v3/cluster-briefs (lecteur direction-associes, requête « automatisation cabinet comptable », preuve attendue : Onze pôles et soixante familles listés depuis src/data/familles.ts ; pour chaque pôle un tableau se-prépare-seul / atten…)."
+    ],
+    "blog-outline": [
+      "Plan calqué sur le gabarit pillar-page du skill blog : réponse directe, définitions, sections par tâche, tableau déclencheur/condition/action/exception, refus, frontière en trois colonnes, jeu fictif, cadre sourcé, erreurs à éviter, questions fréquentes, règle à retenir."
+    ],
+    "blog-style": [
+      "Passe de style : phrases courtes, aucune formule de remplissage, aucun superlatif, aucun chiffre de gain ; charge cognitive mesurée par cognitive_load.py (verdict Healthy, aucune section surchargée)."
+    ],
+    "blog-schema": [
+      "BlogPosting, BreadcrumbList, Person, Organization et WebSite émis par ArticleJsonLd.astro depuis le frontmatter ; ImageObject sur la couverture générée ; aucun FAQPage ni HowTo (résultats enrichis retirés)."
+    ],
+    "blog-image": [
+      "Couverture générée depuis le brief à six composantes (sujet, composition, style, palette, interdits, alt) : Higgsfield, modèle gpt_image_2_5, qualité haute 2K, job 18bea6d9-dd0c-4f80-85bc-fce55f0ba8d8, 3 crédits ; revue visuelle à six critères dans image.json."
+    ],
+    "blog-taxonomy": [
+      "Les onze pôles et soixante familles rendus dans l’article sont ceux de src/data/familles.ts (source unique), relus contre le tableau « La carte en un tableau »."
+    ]
   }
 }

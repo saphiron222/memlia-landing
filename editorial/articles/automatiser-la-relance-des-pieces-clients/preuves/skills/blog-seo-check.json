@@ -4,10 +4,16 @@
   "kind": "skill",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
-  "manifestSha256": "d6c55c2b8cd4cda6e733e3fcef1bd91174eafbe5501870fa822a2c7dd203c88f",
+  "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
+  "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba",
   "observations": [
-    "Titre 41 caractères, onglet 50, description 150 ; 6 lien(s) interne(s) : /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /blog/controler-les-bulletins-de-paie-avant-la-dsn, /glossaire#piece-justificative, /glossaire#regle-de-cabinet, /glossaire#cas-de-refus, /methode ; 0 lien(s) externe(s) dans le corps."
+    "Titre 41 caractères, onglet 50, description 150 ; 6 lien(s) interne(s) : /glossaire#regle-de-cabinet, /glossaire#cas-de-refus, /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /blog/controler-les-bulletins-de-paie-avant-la-dsn, /glossaire#piece-justificative, /methode ; 4 lien(s) externe(s) dans le corps.",
+    "Title 50 caractères (« Automatiser la relance des pièces clients | Memlia »), meta description 150 caractères : les deux dans la fourchette recommandée.",
+    "Canonical https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients cohérent avec og:url et l’URL du JSON-LD ; aucune divergence relevée.",
+    "Hiérarchie de titres H1 unique → H2 → H3 sans saut ; 3 tableaux structurés avec <thead>, 2 listes à puces sur la page rendue.",
+    "7 destinations internes contextuelles distinctes à ancres descriptives (glossaire ×3, articles liés ×2, /methode) ; 4 liens externes tier-1 (CNIL ×3, Service-Public ×1).",
+    "`robots: noindex, follow` sur ce rendu `.qa/render` — cohérent avec la bannière « candidat non publiable », mais à remplacer explicitement au moment de la mise en ligne réelle.",
+    "Couverture livrée en AVIF/WebP à 768/1200/1600 px plus OG 1200×630, chargée en eager/fetchpriority=high : pas de lazy sur l’image LCP."
   ],
   "skill": "blog-seo-check"
 }

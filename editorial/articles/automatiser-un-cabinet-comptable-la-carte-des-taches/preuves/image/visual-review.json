@@ -4,8 +4,8 @@
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
-  "manifestSha256": "a5824e31f1f971a99d93f64b039b774e6189a997638b587d1f10e3d15394f6c3",
+  "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
+  "manifestSha256": "bc0608363d550414794038737e04a7abdcc1f769f4034273cde54776e2467e54",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -14,43 +14,45 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Les six composantes apparaissent sur le rendu : titre « La carte des tâches automatisables d'un cabinet », sous-titre « Onze pôles, soixante familles, une frontière par tâche », étiquette de pôle « Méthode et décision humaine », trois colonnes d'items identiques à cadre.colonnes du paquet, pied « memlia.fr — automatiser un cabinet comptable », et un bandeau « Jeu fictif, aucune donnée client » qui fait aussi office de provenance fictive."
+        "Le fichier prompt.json contient les six composantes attendues (sujet, composition, style, palette, interdits, alt), chacune rédigée séparément et reprise dans le prompt final envoyé au moteur."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "generation.json déclare un rendu playwright-chromium 1920x1080 ; une mesure directe du fichier (sips) confirme 1920×1080 pixels pour master.png.",
-        "La palette verte et crème ainsi que le pairing typographique Fraunces (titre serif et sous-titre italique) et Hanken Grotesk (items de liste, labels) sont visibles à l'écran et conformes à la charte memlia.fr."
+        "Le fichier master.png mesure exactement 1920x1080 (ratio 16:9 vérifié par sips), en rendu diorama 3D isométrique à formes géométriques simplifiées conforme au style demandé.",
+        "La palette observée (vert Memlia translucide, plateformes graphite, fond crème) correspond à la charte fournie ; aucune fausse interface, écran, logo, personnage ou alerte rouge n'est visible sur l'image."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Un badge explicite « Jeu fictif, aucune donnée client » est incrusté en bas à droite de l'image, et les items des trois colonnes (« Relance de pièces à cadence », « Jugement fiscal »...) sont des catégories génériques sans nom de cabinet, de client ni de chiffre réel."
+        "Tous les objets représentés (pièces empilées, classeurs, calendrier, engrenages, blocs, barres de graphique) sont génériques et abstraits, sans document, chiffre lisible ou nom réel identifiable."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Les trois colonnes bordées de couleur (vert, ambre, gris) avec leurs en-têtes « Se prépare seul », « Attend une validation », « Reste humain » rendent le sujet immédiatement reconnaissable et fidèle au concept central répété dans chaque section de l'article."
+        "Le jeton vert central et la bifurcation à deux flèches divergentes sont clairement lisibles et conformes au brief, représentant la décision humaine sur un chemin choisi.",
+        "Le brief corrigé parle désormais d'une dizaine d'îlots reliés par des chemins, plutôt que d'un compte précis de onze ; le comptage visuel du master.png (environ dix plateformes autour du jeton central) est cohérent avec cette formulation, et le texte de l'article réserve le chiffre onze à la taxonomie des pôles, pas à la couverture. Le sujet (une carte d'îlots reliés, un jeton sur un chemin choisi, une bifurcation pour la décision humaine) est donc reconnaissable et fidèle au brief tel qu'il a été corrigé."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "La mesure directe des fichiers confirme og.webp à 1200×630 pixels et hero-768.webp/hero-768.avif à 768×432 pixels, conformément aux dérivés déclarés ; les deux formats WebP et AVIF sont fournis pour la déclinaison 768 px."
+        "Les dimensions déclarées dans image.json sont vérifiées sur disque par sips : master.png en 1920x1080, og.webp en 1200x630 (crop 1200x630+0+22), hero-768 en 768x432 pour l'avif et le webp.",
+        "Les dérivés publiés 1200 et 1600 (avif et webp) présents dans public/images et dist/images respectent aussi le ratio 16:9 et correspondent aux srcset déclarés dans la page rendue."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L'alt fourni (« Carte des tâches d'un cabinet en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain ») décrit fidèlement la structure visible sur le rendu, sans mot-clé forcé ni formule vague."
+        "Le texte alternatif mis à jour (Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation) compte 117 caractères, sous la limite de 125, décrit fidèlement la scène et ne reprend plus de chiffre d'îlots précis, cohérent avec le brief corrigé."
       ]
     }
   ]

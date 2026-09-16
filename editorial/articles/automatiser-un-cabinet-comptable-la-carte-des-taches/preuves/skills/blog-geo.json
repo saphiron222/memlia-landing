@@ -4,10 +4,16 @@
   "kind": "skill",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
-  "manifestSha256": "a5824e31f1f971a99d93f64b039b774e6189a997638b587d1f10e3d15394f6c3",
+  "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
+  "manifestSha256": "bc0608363d550414794038737e04a7abdcc1f769f4034273cde54776e2467e54",
   "observations": [
-    "Réponse directe en tête (79 mots au premier paragraphe) ; définitions extractibles dans le corps."
+    "Réponse directe en tête (79 mots au premier paragraphe) ; définitions extractibles dans le corps.",
+    "Le bloc Réponse directe ouvre l'article avant toute autre section, au format réponse directe idéal pour une extraction par un AI Overview.",
+    "Trois définitions en gras (tâche automatisable, règle de cabinet, frontière d'automatisation) fournissent des entités nommées et non ambiguës, réutilisées ensuite sans dérive terminologique.",
+    "Onze tableaux structurés avec en-têtes offrent des blocs comparatifs autonomes et directement extractibles pour répondre à des requêtes du type ce qui reste humain dans telle tâche.",
+    "Le bloc Questions fréquentes en cinq H3 couvre des questions naturelles (par où commencer, qui contrôle encore) sans balisage FAQPage, ce qui reste optionnel selon le barème.",
+    "La section Ce que cette carte ne contient pas délimite explicitement le périmètre (pas de chiffre de gain, pas d'audit légal, pas de fonction promise), utile pour qu'un moteur IA ne surinterprète pas la portée de l'article.",
+    "Le même noindex, follow qui limite l'indexation classique bloquerait aussi un crawler IA déclaré si cette balise persistait telle quelle en production."
   ],
   "skill": "blog-geo"
 }

@@ -4,8 +4,8 @@
   "kind": "editorial-review",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
-  "manifestSha256": "d6c55c2b8cd4cda6e733e3fcef1bd91174eafbe5501870fa822a2c7dd203c88f",
+  "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
+  "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
   ],
@@ -16,8 +16,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "La section « Réponse directe » résume les trois briques dès le premier paragraphe et répond aux trois exigences de la tâche cible : relancer sans les mains, sans doublon, en s'arrêtant à réception.",
-        "La brique 3 lève explicitement le risque de double relance : « une relance ne part que si une pièce est encore manquante au moment de partir, jamais sur la base de l'état d'il y a trois jours »."
+        "L’intention « exécuter » est servie par les trois briques opérationnelles (checklist, contrôle de complétude, cadence) et le tableau « Déclencheur / Condition / Action / Exception » qui traduit la règle en instructions actionnables pour le collaborateur comptable."
       ]
     },
     {
@@ -25,8 +24,7 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Onze sections en H2, une réponse directe de moins de 70 mots en ouverture et deux tableaux structurés (règle en 5 lignes, répartition en 3 colonnes) sont des formats propices au featured snippet.",
-        "Le titre « Automatiser la relance des pièces clients » ne reprend pas littéralement « pièces manquantes » ni « cabinet comptable » de la requête cible ; les deux expressions apparaissent néanmoins dans le corps."
+        "Le format how-to est respecté à l’écran : « Réponse directe » en ouverture, aside « En bref », puis cinq questions en H3 sous « Questions fréquentes » qui se prêtent à un featured snippet ou à un bloc People Also Ask."
       ]
     },
     {
@@ -34,8 +32,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Les quatre affirmations réglementaires de la section « Le cadre » citent chacune une source tier-1 officielle (CNIL x3, Service-Public.gouv.fr), vérifiées mot pour mot dans les copies locales des sources.",
-        "Aucune assertion légale du corps ne reste sans source : minimisation, durée de conservation, obligation documentaire et définition du sous-traitant sont chacune adossées à une citation exacte."
+        "Quatre sources tier-1 officielles (CNIL ×3, Service-Public ×1) sont citées en ligne puis listées en fin d’article avec date de consultation ; l’auteur Kevin Kitanga est nommé, lié à /a-propos et biographié dans le pied d’article et le JSON-LD Person."
       ]
     },
     {
@@ -43,8 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le tableau « La règle dans les mots du cabinet » (déclencheur/condition/action/exception) et le jeu fictif de six dossiers rejouent la règle sur un cas concret plutôt que d'asserter un résultat.",
-        "La phrase « c'est ce jeu, et non une promesse de gain, qui prouve la règle avant qu'elle ne touche un vrai dossier » écarte explicitement la preuve par chiffre non mesuré au profit du cas rejoué."
+        "Le jeu fictif de six dossiers (TVA mensuelle + caisse, franchise, salariés + emprunt, holding, litige, checklist absente) fait tourner la règle jusqu’au résultat concret, ce qui dépasse un conseil générique non démontré sur le sujet."
       ]
     },
     {
@@ -52,8 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Hiérarchie de titres propre : onze sections en H2, aucun saut de niveau ni H1 dupliqué dans le corps, cohérent avec la règle du site « un seul h1 ».",
-        "Six liens internes à ancre descriptive (la carte des tâches, le contrôle des bulletins, trois entrées de glossaire, la page méthode) maillent l'article sans ancre générique ni sur-optimisation."
+        "Title à 50 caractères, meta description à 150 caractères, canonical et og:url alignés sur https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients, JSON-LD BlogPosting + BreadcrumbList + Person + Organization complet ; seul le `noindex` du rendu de prévisualisation est à lever en production (voir p0)."
       ]
     },
     {
@@ -61,8 +56,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Le paragraphe de réponse directe et le tableau à quatre colonnes forment des unités autoportantes, citables isolément par un moteur génératif sans perte de sens.",
-        "La phrase « Les délais sont des paramètres du cabinet, pas des normes » est une règle nette, citable telle quelle, qui évite la confusion avec une obligation légale de délai."
+        "Trois tableaux avec <thead>, une réponse directe en tête d’article et cinq questions-réponses en H3 offrent des blocs autonomes et citables ; le `noindex` du rendu `.qa/render` empêcherait toutefois toute citation réelle par un moteur IA tant qu’il n’est pas levé à la publication."
       ]
     },
     {
@@ -70,8 +64,7 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "Le CTA structuré du paquet de production (recette.json) pointe vers /contact avec le libellé « Faire coder la règle de relance de votre cabinet », conforme à l'action principale unique du site.",
-        "La section « Pour aller plus loin » relie en plus vers la page /methode et deux articles liés, ce qui construit un parcours de lecture avant la conversion plutôt qu'une vente précoce dans un contenu how-to."
+        "Le bloc de conversion « Cette tâche vous prend encore du temps à la main ? » pointe vers /contact avec une demande alignée sur le modèle de service (décrire la cadence et les exceptions du cabinet), sans chiffre de gain ni promesse de fonction non livrée."
       ]
     }
   ]

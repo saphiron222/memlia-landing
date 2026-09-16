@@ -4,11 +4,27 @@
   "kind": "image-prompt",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
-  "manifestSha256": "a5824e31f1f971a99d93f64b039b774e6189a997638b587d1f10e3d15394f6c3",
+  "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
+  "manifestSha256": "bc0608363d550414794038737e04a7abdcc1f769f4034273cde54776e2467e54",
   "observations": [
     "Contrôle image-prompt relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
   "engine": "image_generate",
-  "prompt": "Cadre de preuve HTML (editorial/templates/cadre-article.html) rendu à 1920×1080 : « La carte des tâches automatisables d’un cabinet » — Onze pôles, soixante familles, une frontière par tâche. Trois colonnes : Se prépare seul / Attend une validation / Reste humain. Jeu fictif, aucune donnée client, aucun texte hors charte."
+  "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : La carte des tâches automatisables d’un cabinet : une dizaine d’îlots reliés par des chemins, un jeton posé sur un chemin choisi, une bifurcation ouverte pour la décision humaine. Composition : Vue isométrique sur bureau crème papier ; plaques translucides vertes et graphite disposées en une dizaine d’îlots reliés par de fins chemins ; petits objets géométriques (pièces classées, calendrier, pile de feuilles vierges, classeurs, engrenages) sur certaines plaques ; jeton vert au centre devant une bifurcation. Style : Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, lumière de studio douce venant du haut gauche, ombres courtes, faible profondeur de champ, composition aérée ; continuité avec la couverture IMG-25 (comptes rendus métier DSN). Palette : Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20. Interdits : Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique.",
+  "brief": {
+    "sujet": "La carte des tâches automatisables d’un cabinet : une dizaine d’îlots reliés par des chemins, un jeton posé sur un chemin choisi, une bifurcation ouverte pour la décision humaine.",
+    "composition": "Vue isométrique sur bureau crème papier ; plaques translucides vertes et graphite disposées en une dizaine d’îlots reliés par de fins chemins ; petits objets géométriques (pièces classées, calendrier, pile de feuilles vierges, classeurs, engrenages) sur certaines plaques ; jeton vert au centre devant une bifurcation.",
+    "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, lumière de studio douce venant du haut gauche, ombres courtes, faible profondeur de champ, composition aérée ; continuité avec la couverture IMG-25 (comptes rendus métier DSN).",
+    "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20.",
+    "interdits": "Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique.",
+    "alt": "Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation"
+  },
+  "reviewCriteria": [
+    "continuité avec les couvertures existantes",
+    "des îlots reliés lisibles comme une carte des tâches",
+    "décision humaine évoquée sans personnage (jeton, bifurcation)",
+    "aucun texte, logo, donnée, fausse interface ou action automatique",
+    "palette et lumière conformes à la charte",
+    "dérivés 1920×1080, OG 1200×630, 768/1200/1600 générés"
+  ]
 }

@@ -4,8 +4,8 @@
   "kind": "business-review",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
-  "manifestSha256": "a5824e31f1f971a99d93f64b039b774e6189a997638b587d1f10e3d15394f6c3",
+  "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
+  "manifestSha256": "bc0608363d550414794038737e04a7abdcc1f769f4034273cde54776e2467e54",
   "observations": [
     "Contrôle business-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -15,7 +15,7 @@
     {
       "id": "review-claim-unit-279d5bd8bf20-1-sp-conservation",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
+      "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
       "claimId": "claim-unit-279d5bd8bf20-1",
       "claimSha256": "2023ed4ccd60bb092bd263483469fa84f1d81e076bdd952bbb9861b5c67c41d2",
       "sourceId": "sp-conservation",
@@ -24,12 +24,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-16",
-      "reasoning": "La citation « une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale » est reprise mot pour mot depuis sp-conservation.source.txt (méta og:description et paragraphe fr-text--lg visible), sans changement de portée ni de polarité par rapport à l'article."
+      "reasoning": "La citation relevée dans sp-conservation.source.txt correspond mot pour mot à l'affirmation reprise dans l'article, sans extension de portée ni changement de polarité ; la règle de conservation documentaire est restituée telle quelle."
     },
     {
       "id": "review-claim-unit-e8439da9f147-1-net-crm",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
+      "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
       "claimId": "claim-unit-e8439da9f147-1",
       "claimSha256": "d7a7b4f575917e0b133ccb4b11688abaea9ae331ca801331de503548086fc8d4",
       "sourceId": "net-crm",
@@ -38,13 +38,13 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-16",
-      "reasoning": "La phrase source (« Un Compte Rendu Métier (CRM) est un rapport permettant à l'organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu'une erreur ou suspicion d'erreur est détectée ») est confirmée dans net-crm.source.txt et reprise à l'identique dans l'article, seule la casse initiale et le sigle CRM étant retirés pour l'intégrer à la phrase, sans altérer le sens."
+      "reasoning": "La définition du compte rendu métier reprend verbatim le texte de Net-entreprises (hors développement du sigle CRM en toutes lettres), sans modifier le sens ni la portée de la définition officielle utilisée dans la section paie."
     },
     {
-      "id": "review-claim-unit-1a356f45cd1d-1-impots-calendrier",
+      "id": "review-claim-unit-ceb5c8df6333-1-impots-calendrier",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
-      "claimId": "claim-unit-1a356f45cd1d-1",
+      "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
+      "claimId": "claim-unit-ceb5c8df6333-1",
       "claimSha256": "82cce41ee2da94b0a2a13edf6c64faead1831a39e5e61725f67002a8a48a455b",
       "sourceId": "impots-calendrier",
       "sourceContentSha256": "4dfb72a30f6375ccee31b39678d77e85af50129caf36378b596164c5c4850522",
@@ -52,13 +52,13 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-16",
-      "reasoning": "Le passage « Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel » est confirmé ligne 642 d'impots-calendrier.source.txt ; l'article le reformule en tête de phrase mais conserve la réserve individuelle « à la date figurant dans l'espace professionnel », donc sans généralisation abusive à toutes les entreprises."
+      "reasoning": "L'article conserve la nuance essentielle de la source impots.gouv.fr, à savoir que la date exacte figure dans l'espace professionnel de chaque entreprise, évitant de transformer toute la fenêtre du 15 au 24 septembre en une échéance unique pour tous."
     },
     {
-      "id": "review-claim-unit-5570a9487db9-1-cnil-principes",
+      "id": "review-claim-unit-f047a1270724-1-cnil-principes",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
-      "claimId": "claim-unit-5570a9487db9-1",
+      "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
+      "claimId": "claim-unit-f047a1270724-1",
       "claimSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
       "sourceId": "cnil-principes",
       "sourceContentSha256": "80a9c95a294d8a738c16ccc39dba4c9df7f43094af68bb782089f5f9037d6490",
@@ -66,13 +66,13 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-16",
-      "reasoning": "Le critère de minimisation « adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées » est cité mot pour mot depuis le chapitre 2 du RGPD tel que reproduit par la CNIL, et l'exemple ajouté par l'article (bulletins de paie) est clairement distingué de la citation elle-même."
+      "reasoning": "La citation du principe de minimisation RGPD est reprise mot pour mot depuis la page CNIL chapitre 2, utilisée pour illustrer une règle applicable à toute automatisation sans déformer le sens du texte réglementaire cité."
     },
     {
-      "id": "review-claim-unit-5570a9487db9-2-cnil-durees",
+      "id": "review-claim-unit-f047a1270724-2-cnil-durees",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
-      "claimId": "claim-unit-5570a9487db9-2",
+      "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
+      "claimId": "claim-unit-f047a1270724-2",
       "claimSha256": "425018890498eb4534d4a887a5f4e6049eed1c45e02941d48e2a844c25450e91",
       "sourceId": "cnil-durees",
       "sourceContentSha256": "020c1d06e3358d4d0bad6c98e3d0f910c6b98ef3e3f54d6bd0dff9465f752a14",
@@ -80,7 +80,7 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-16",
-      "reasoning": "« La définition de la durée de conservation relève de l'analyse de conformité que le responsable doit mener pour son traitement » est reprise à l'identique depuis cnil-durees.source.txt (ligne 776), et sert uniquement à justifier qu'une règle de purge fait partie de toute automatisation, sans dépasser ce que dit la CNIL."
+      "reasoning": "La phrase sur l'analyse de conformité pour la durée de conservation est une citation exacte de la fiche CNIL dédiée, utilisée pour justifier une règle de purge sans inventer de durée chiffrée absente de la source d'origine."
     }
   ]
 }

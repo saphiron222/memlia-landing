@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+  "reviewedAt": "2026-09-16",
+  "reviewer": "relecteur-qualite-ia-memlia",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 96,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 27,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 25,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 14,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 15,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 15,
+      "max": 15
+    }
+  },
+  "evidence": [
+    "Le graphe JSON-LD porte exactement le socle attendu par le barème : BlogPosting, Person, Organization et BreadcrumbList, tous présents avec des identifiants cohérents.",
+    "Les cinq citations externes ont été vérifiées par grep octet pour octet contre les copies locales des sources : correspondance exacte dans les cinq cas, aucune dérive de portée.",
+    "Onze tableaux au total (un tableau maître et dix tableaux par pôle) utilisent un balisage thead/tbody correct, avec la même grille se prépare seul / attend une validation / reste humain.",
+    "L'image de couverture est livrée en <picture> avec sources avif et webp à 768/1200/1600w, fetchpriority=high et loading=eager sur l'image LCP, donc pas de pénalité de lazy-loading.",
+    "Le titre de balise (52 caractères) et la meta description (152 caractères) tiennent tous deux dans les bornes recommandées ; og:image mesure exactement 1200x630 comme prescrit.",
+    "Aucune occurrence des termes proscrits (plateforme tout-en-un, autonome, zéro erreur, conformité garantie, révolution) n'a été trouvée dans le corps rendu ; les seules occurrences de « module » sont des balises techniques <script type=module>, pas du texte éditorial.",
+    "Le meta robots de ce rendu QA est noindex, follow, cohérent avec la bannière visible Candidat éditorial — preview privée, non publiable présente sur la page elle-même."
+  ],
+  "reservations": [
+    "Aucun audit Lighthouse ou CrUX n'a été exécuté ; les signaux de performance (fetchpriority, dimensions explicites, préchargement des polices) sont lus dans le HTML mais le LCP, le CLS et l'INP réels ne sont pas mesurés.",
+    "Aucune vérification de citation réelle par un moteur IA (ChatGPT, Perplexity, AI Overviews) n'a été effectuée ; l'évaluation de citabilité repose sur la structure de la page, pas sur un test de récupération live.",
+    "La présence site-large d'une page de contact et d'une politique éditoriale distinctes n'a été vérifiée que par inférence depuis les liens et le schéma Organization/Person, pas par navigation directe vers ces pages.",
+    "Le compte de dix îlots contre onze sur la couverture (voir revue image) a été établi par inspection visuelle manuelle d'un rendu isométrique dense, avec une marge d'erreur possible sur un comptage aussi fin.",
+    "Le noindex, follow observé sur ce rendu est l'état attendu par construction pour tout candidat non publié (BLOG_PREVIEW_SLUGS) : son retrait en production n'est pas observé par cette revue mais garanti par la porte automatisée production-check (scripts/blog-pipeline.mjs), qui échoue si noindex ou le canonical auto-référent manquent."
+  ],
+  "verdict": "Candidat rigoureusement sourcé et bien structuré (95/100), publiable en l'état sous réserve de confirmer le retrait du noindex de prévisualisation et de vérifier à l'écran le nombre exact d'îlots de la couverture avant validation finale.",
+  "subject": {
+    "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+    "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
+    "manifestSha256": "bc0608363d550414794038737e04a7abdcc1f769f4034273cde54776e2467e54"
+  }
+}

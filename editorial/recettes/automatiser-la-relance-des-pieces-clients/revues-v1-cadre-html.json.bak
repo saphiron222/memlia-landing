@@ -1,0 +1,132 @@
+{
+  "editorial": {
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "La section « Réponse directe » résume les trois briques dès le premier paragraphe et répond aux trois exigences de la tâche cible : relancer sans les mains, sans doublon, en s'arrêtant à réception.",
+          "La brique 3 lève explicitement le risque de double relance : « une relance ne part que si une pièce est encore manquante au moment de partir, jamais sur la base de l'état d'il y a trois jours »."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Onze sections en H2, une réponse directe de moins de 70 mots en ouverture et deux tableaux structurés (règle en 5 lignes, répartition en 3 colonnes) sont des formats propices au featured snippet.",
+          "Le titre « Automatiser la relance des pièces clients » ne reprend pas littéralement « pièces manquantes » ni « cabinet comptable » de la requête cible ; les deux expressions apparaissent néanmoins dans le corps."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Les quatre affirmations réglementaires de la section « Le cadre » citent chacune une source tier-1 officielle (CNIL x3, Service-Public.gouv.fr), vérifiées mot pour mot dans les copies locales des sources.",
+          "Aucune assertion légale du corps ne reste sans source : minimisation, durée de conservation, obligation documentaire et définition du sous-traitant sont chacune adossées à une citation exacte."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Le tableau « La règle dans les mots du cabinet » (déclencheur/condition/action/exception) et le jeu fictif de six dossiers rejouent la règle sur un cas concret plutôt que d'asserter un résultat.",
+          "La phrase « c'est ce jeu, et non une promesse de gain, qui prouve la règle avant qu'elle ne touche un vrai dossier » écarte explicitement la preuve par chiffre non mesuré au profit du cas rejoué."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Hiérarchie de titres propre : onze sections en H2, aucun saut de niveau ni H1 dupliqué dans le corps, cohérent avec la règle du site « un seul h1 ».",
+          "Six liens internes à ancre descriptive (la carte des tâches, le contrôle des bulletins, trois entrées de glossaire, la page méthode) maillent l'article sans ancre générique ni sur-optimisation."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Le paragraphe de réponse directe et le tableau à quatre colonnes forment des unités autoportantes, citables isolément par un moteur génératif sans perte de sens.",
+          "La phrase « Les délais sont des paramètres du cabinet, pas des normes » est une règle nette, citable telle quelle, qui évite la confusion avec une obligation légale de délai."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "Le CTA structuré du paquet de production (recette.json) pointe vers /contact avec le libellé « Faire coder la règle de relance de votre cabinet », conforme à l'action principale unique du site.",
+          "La section « Pour aller plus loin » relie en plus vers la page /methode et deux articles liés, ce qui construit un parcours de lecture avant la conversion plutôt qu'une vente précoce dans un contenu how-to."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "business": {
+    "claims": {
+      "claim-unit-d261dcf7ed61-1": {
+        "verdict": "soutient",
+        "reasoning": "La citation CNIL est reprise mot pour mot pour définir le principe de minimisation, sans changement de portée ni de polarité, et appliquée correctement aux données nécessaires à la relance (checklist, états, adresse de contact)."
+      },
+      "claim-unit-e5aeddef0964-1": {
+        "verdict": "soutient",
+        "reasoning": "La citation CNIL est exacte ; l'article substitue « le cabinet » à « le responsable du fichier », ce qui reste fidèle car le cabinet est le responsable de traitement pour la relance de ses propres clients."
+      },
+      "claim-unit-e5aeddef0964-2": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte de Service-Public.gouv.fr, utilisée pour justifier que la conservation des pièces reçues dépasse le cycle de la seule relance, sans ajouter de délai chiffré absent de la source."
+      },
+      "claim-unit-5cd56910d808-1": {
+        "verdict": "soutient",
+        "reasoning": "Définition CNIL du sous-traitant reprise quasi mot pour mot (seule l'incise sur le responsable de traitement est omise), appliquée à bon escient au cas d'un outil de relance hébergé par un tiers."
+      }
+    }
+  },
+  "image": {
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Les six composantes du brief sont toutes présentes à l'écran : titre, sous-titre, famille, les trois colonnes avec leurs items exacts, le pied « jeu fictif de six dossiers » et le badge de provenance fictive.",
+          "Le champ alt du paquet (« Relance des pièces clients en trois colonnes... ») correspond mot pour mot au contenu visible de l'image."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "master.png mesure exactement 1920×1080 (vérifié par lecture des pixels du fichier), conforme à la contrainte de rendu déclarée dans prompt.json et generation.json.",
+          "cadre.html déclare font-family 'Fraunces' pour les titres et 'Hanken Grotesk' pour le corps, et la palette visible (fond crème, vert de la colonne 1 et du logotype Memlia) suit la charte."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Un badge visible « Jeu fictif, aucune donnée client » et le pied de page « memlia.fr — jeu fictif de six dossiers » excluent toute lecture comme capture produit ou donnée réelle.",
+          "Aucun nom de dossier, de client ni de chiffre n'apparaît dans l'image : seuls des libellés de catégories génériques sont affichés dans les trois colonnes."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Les trois colonnes « Se prépare seul », « Attend une validation », « Reste humain » sont immédiatement lisibles et reprennent exactement les titres du tableau du même nom dans le corps de l'article.",
+          "Les items de chaque colonne (ex. « Arrêt de la cadence à réception », « Sortie d'un dossier du circuit ») correspondent mot pour mot au bloc `image.cadre` du paquet de revue."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "og.webp mesure 1200×630 pixels (vérifié par lecture des pixels du fichier), conforme au format Open Graph attendu.",
+          "hero-768.webp et hero-768.avif mesurent tous deux 768 px de large, conformes au dérivé 768 px déclaré, dans les deux formats attendus."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "L'alt fourni (« Relance des pièces clients en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain ») décrit fidèlement la structure et les trois catégories visibles, sans bourrage de mots-clés."
+        ]
+      }
+    },
+    "directionArt": 17,
+    "semanticRelevance": 24
+  },
+  "sources": {
+    "reviewedBy": "relecteur-metier-ia-memlia",
+    "observations": {
+      "cnil-principes": "Éditeur CNIL, domaine cnil.fr, source tier-1 officielle cohérente pour une citation du texte du RGPD (article 5, principe de minimisation) ; niveau de preuve adapté à une affirmation légale.",
+      "cnil-durees": "Éditeur CNIL, domaine cnil.fr, source tier-1 officielle cohérente pour une fiche pratique sur les durées de conservation ; l'affirmation citée respecte la nuance de la fiche (absence de durée fixée par un texte pour de nombreux traitements).",
+      "sp-conservation": "Éditeur Service Public (Direction de l'information légale et administrative, Premier ministre), domaine service-public.gouv.fr, source tier-1 officielle adaptée à une obligation de conservation documentaire des entreprises.",
+      "cnil-sous-traitant": "Éditeur CNIL, domaine cnil.fr, source tier-1 officielle cohérente pour une définition réglementaire du sous-traitant au sens du RGPD."
+    }
+  }
+}

@@ -66,12 +66,12 @@
     },
     {
       "skill": "blog-taxonomy",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "La taxonomie (src/data/familles.ts) est tenue au niveau du site ; « Automatiser un cabinet comptable : la carte des tâches » y est rattaché par son frontmatter."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-taxonomy.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
     },
     {
       "skill": "blog-brief",
@@ -84,12 +84,12 @@
     },
     {
       "skill": "blog-outline",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "Le plan H2/H3 de « Automatiser un cabinet comptable : la carte des tâches » est celui du brief validé ; aucun plan alternatif n'a été produit."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-outline.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
     },
     {
       "skill": "blog-notebooklm",
@@ -129,12 +129,12 @@
     },
     {
       "skill": "blog-style",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "Le style de « Automatiser un cabinet comptable : la carte des tâches » est relu dans la grille éditoriale (critère intent-satisfaction), sans passe distincte."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-style.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
     },
     {
       "skill": "blog-chart",
@@ -147,21 +147,21 @@
     },
     {
       "skill": "blog-image",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "L'image de « Automatiser un cabinet comptable : la carte des tâches » est un cadre de preuve HTML rendu par la forge, revu dans image.json."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-image.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
     },
     {
       "skill": "blog-schema",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "Le schéma BlogPosting de « Automatiser un cabinet comptable : la carte des tâches » est émis par le gabarit Article ; contrôlé par seo-schema."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-schema.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
     },
     {
       "skill": "blog-seo-check",
@@ -183,12 +183,12 @@
     },
     {
       "skill": "blog-analyze",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "Aucune analyse de performance possible avant publication de « Automatiser un cabinet comptable : la carte des tâches »."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-analyze.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
     },
     {
       "skill": "blog-audit",

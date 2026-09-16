@@ -4,13 +4,18 @@
   "kind": "image-generation",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
-  "manifestSha256": "d6c55c2b8cd4cda6e733e3fcef1bd91174eafbe5501870fa822a2c7dd203c88f",
+  "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
+  "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba",
   "observations": [
     "Contrôle image-generation relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
   ],
   "engine": "image_generate",
-  "generationId": "cadre-a22893dbd58df4d5a1ce410f",
-  "outputSha256": "6ad2b7ec7f57b14c581e185ce9b62225e6a40a4a41c2b84c1b0ffa0b8f0c42bc",
-  "renderer": "playwright-chromium 1920x1080"
+  "generationId": "331b874a-b72e-450a-8108-6e0de60f5d1e",
+  "model": "gpt_image_2_5",
+  "provider": "higgsfield",
+  "generatedAt": "2026-09-16",
+  "sourcePath": "image-source.png",
+  "sourceSha256": "47bd64e988992aae87904418223c1ed04763e067ee89ef8767f876bb7ac36c9c",
+  "outputSha256": "6019c5a71bc874cc67e147177446aa4b958d0bee64e0de3aad39aa66fae2a687",
+  "credits": 3
 }

@@ -4,50 +4,43 @@
       "intent-satisfaction": {
         "result": "PASS",
         "observations": [
-          "La section « Réponse directe » résume les trois briques dès le premier paragraphe et répond aux trois exigences de la tâche cible : relancer sans les mains, sans doublon, en s'arrêtant à réception.",
-          "La brique 3 lève explicitement le risque de double relance : « une relance ne part que si une pièce est encore manquante au moment de partir, jamais sur la base de l'état d'il y a trois jours »."
+          "L’intention « exécuter » est servie par les trois briques opérationnelles (checklist, contrôle de complétude, cadence) et le tableau « Déclencheur / Condition / Action / Exception » qui traduit la règle en instructions actionnables pour le collaborateur comptable."
         ]
       },
       "serp-format-rankability": {
         "result": "PASS",
         "observations": [
-          "Onze sections en H2, une réponse directe de moins de 70 mots en ouverture et deux tableaux structurés (règle en 5 lignes, répartition en 3 colonnes) sont des formats propices au featured snippet.",
-          "Le titre « Automatiser la relance des pièces clients » ne reprend pas littéralement « pièces manquantes » ni « cabinet comptable » de la requête cible ; les deux expressions apparaissent néanmoins dans le corps."
+          "Le format how-to est respecté à l’écran : « Réponse directe » en ouverture, aside « En bref », puis cinq questions en H3 sous « Questions fréquentes » qui se prêtent à un featured snippet ou à un bloc People Also Ask."
         ]
       },
       "eeat-sources": {
         "result": "PASS",
         "observations": [
-          "Les quatre affirmations réglementaires de la section « Le cadre » citent chacune une source tier-1 officielle (CNIL x3, Service-Public.gouv.fr), vérifiées mot pour mot dans les copies locales des sources.",
-          "Aucune assertion légale du corps ne reste sans source : minimisation, durée de conservation, obligation documentaire et définition du sous-traitant sont chacune adossées à une citation exacte."
+          "Quatre sources tier-1 officielles (CNIL ×3, Service-Public ×1) sont citées en ligne puis listées en fin d’article avec date de consultation ; l’auteur Kevin Kitanga est nommé, lié à /a-propos et biographié dans le pied d’article et le JSON-LD Person."
         ]
       },
       "information-gain-proof": {
         "result": "PASS",
         "observations": [
-          "Le tableau « La règle dans les mots du cabinet » (déclencheur/condition/action/exception) et le jeu fictif de six dossiers rejouent la règle sur un cas concret plutôt que d'asserter un résultat.",
-          "La phrase « c'est ce jeu, et non une promesse de gain, qui prouve la règle avant qu'elle ne touche un vrai dossier » écarte explicitement la preuve par chiffre non mesuré au profit du cas rejoué."
+          "Le jeu fictif de six dossiers (TVA mensuelle + caisse, franchise, salariés + emprunt, holding, litige, checklist absente) fait tourner la règle jusqu’au résultat concret, ce qui dépasse un conseil générique non démontré sur le sujet."
         ]
       },
       "technical-onpage-seo": {
         "result": "PASS",
         "observations": [
-          "Hiérarchie de titres propre : onze sections en H2, aucun saut de niveau ni H1 dupliqué dans le corps, cohérent avec la règle du site « un seul h1 ».",
-          "Six liens internes à ancre descriptive (la carte des tâches, le contrôle des bulletins, trois entrées de glossaire, la page méthode) maillent l'article sans ancre générique ni sur-optimisation."
+          "Title à 50 caractères, meta description à 150 caractères, canonical et og:url alignés sur https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients, JSON-LD BlogPosting + BreadcrumbList + Person + Organization complet ; seul le `noindex` du rendu de prévisualisation est à lever en production (voir p0)."
         ]
       },
       "ai-citability": {
         "result": "PASS",
         "observations": [
-          "Le paragraphe de réponse directe et le tableau à quatre colonnes forment des unités autoportantes, citables isolément par un moteur génératif sans perte de sens.",
-          "La phrase « Les délais sont des paramètres du cabinet, pas des normes » est une règle nette, citable telle quelle, qui évite la confusion avec une obligation légale de délai."
+          "Trois tableaux avec <thead>, une réponse directe en tête d’article et cinq questions-réponses en H3 offrent des blocs autonomes et citables ; le `noindex` du rendu `.qa/render` empêcherait toutefois toute citation réelle par un moteur IA tant qu’il n’est pas levé à la publication."
         ]
       },
       "contextual-conversion": {
         "result": "PASS",
         "observations": [
-          "Le CTA structuré du paquet de production (recette.json) pointe vers /contact avec le libellé « Faire coder la règle de relance de votre cabinet », conforme à l'action principale unique du site.",
-          "La section « Pour aller plus loin » relie en plus vers la page /methode et deux articles liés, ce qui construit un parcours de lecture avant la conversion plutôt qu'une vente précoce dans un contenu how-to."
+          "Le bloc de conversion « Cette tâche vous prend encore du temps à la main ? » pointe vers /contact avec une demande alignée sur le modèle de service (décrire la cadence et les exceptions du cabinet), sans chiffre de gain ni promesse de fonction non livrée."
         ]
       }
     },
@@ -57,19 +50,19 @@
     "claims": {
       "claim-unit-d261dcf7ed61-1": {
         "verdict": "soutient",
-        "reasoning": "La citation CNIL est reprise mot pour mot pour définir le principe de minimisation, sans changement de portée ni de polarité, et appliquée correctement aux données nécessaires à la relance (checklist, états, adresse de contact)."
+        "reasoning": "La citation CNIL « adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées » est reprise mot pour mot dans le paragraphe sur le principe de minimisation, sans changement de portée ni de polarité, et correctement attribuée à la CNIL."
       },
-      "claim-unit-e5aeddef0964-1": {
+      "claim-unit-d5a154141847-1": {
         "verdict": "soutient",
-        "reasoning": "La citation CNIL est exacte ; l'article substitue « le cabinet » à « le responsable du fichier », ce qui reste fidèle car le cabinet est le responsable de traitement pour la relance de ses propres clients."
+        "reasoning": "L’article reprend exactement « pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte » de la fiche CNIL avant d’en tirer, sans changer le sens de la source, la nécessité d’une règle de purge écrite par le cabinet pour le journal des relances."
       },
-      "claim-unit-e5aeddef0964-2": {
+      "claim-unit-d5a154141847-2": {
         "verdict": "soutient",
-        "reasoning": "Citation exacte de Service-Public.gouv.fr, utilisée pour justifier que la conservation des pièces reçues dépasse le cycle de la seule relance, sans ajouter de délai chiffré absent de la source."
+        "reasoning": "La phrase de Service-Public sur l’obligation de conserver tout document émis ou reçu dans l’exercice de l’activité est citée à l’identique et appliquée aux pièces reçues, sans être confondue avec la durée de conservation du journal des relances, traitée séparément dans le paragraphe suivant."
       },
       "claim-unit-5cd56910d808-1": {
         "verdict": "soutient",
-        "reasoning": "Définition CNIL du sous-traitant reprise quasi mot pour mot (seule l'incise sur le responsable de traitement est omise), appliquée à bon escient au cas d'un outil de relance hébergé par un tiers."
+        "reasoning": "La définition CNIL du sous-traitant est citée mot pour mot et appliquée correctement au cas d’un outil de relance hébergé par un tiers, sans extension de portée au-delà de la définition réglementaire d’origine ni confusion avec le responsable de traitement."
       }
     }
   },
@@ -78,55 +71,113 @@
       "brief-six-components": {
         "result": "PASS",
         "observations": [
-          "Les six composantes du brief sont toutes présentes à l'écran : titre, sous-titre, famille, les trois colonnes avec leurs items exacts, le pied « jeu fictif de six dossiers » et le badge de provenance fictive.",
-          "Le champ alt du paquet (« Relance des pièces clients en trois colonnes... ») correspond mot pour mot au contenu visible de l'image."
+          "prompt.json expose exactement six composantes renseignées (sujet, composition, style, palette, interdits, alt), chacune détaillée et cohérente avec le champ `image` de paquet-revue.json (même texte alt au caractère près)."
         ]
       },
       "generation-constraints": {
         "result": "PASS",
         "observations": [
-          "master.png mesure exactement 1920×1080 (vérifié par lecture des pixels du fichier), conforme à la contrainte de rendu déclarée dans prompt.json et generation.json.",
-          "cadre.html déclare font-family 'Fraunces' pour les titres et 'Hanken Grotesk' pour le corps, et la palette visible (fond crème, vert de la colonne 1 et du logotype Memlia) suit la charte."
+          "Le PNG mesure 1920×1080 (16:9 exact, vérifié par lecture des pixels) : diorama 3D isométrique à formes géométriques simplifiées et matières mates, sans aucune couleur hors palette crème/vert/graphite ni fausse interface visible à l’écran."
         ]
       },
       "fictive-provenance": {
         "result": "PASS",
         "observations": [
-          "Un badge visible « Jeu fictif, aucune donnée client » et le pied de page « memlia.fr — jeu fictif de six dossiers » excluent toute lecture comme capture produit ou donnée réelle.",
-          "Aucun nom de dossier, de client ni de chiffre n'apparaît dans l'image : seuls des libellés de catégories génériques sont affichés dans les trois colonnes."
+          "Aucun texte lisible, logo, personnage ou donnée identifiable n’apparaît sur l’image : les feuilles du plateau sont vierges et la checklist n’affiche que des traits gris abstraits, conforme à l’absence de provenance réelle exigée par les interdits du brief."
         ]
       },
       "recognizable-subject": {
         "result": "PASS",
         "observations": [
-          "Les trois colonnes « Se prépare seul », « Attend une validation », « Reste humain » sont immédiatement lisibles et reprennent exactement les titres du tableau du même nom dans le corps de l'article.",
-          "Les items de chaque colonne (ex. « Arrêt de la cadence à réception », « Sortie d'un dossier du circuit ») correspondent mot pour mot au bloc `image.cadre` du paquet de revue."
+          "Les quatre sujets du brief sont identifiables sans ambiguïté à l’écran : plateau à six compartiments à moitié rempli, checklist à trois coches vertes et une case vide, enveloppe posée devant le portique à montants verts, pièce graphite isolée à droite de la scène."
         ]
       },
       "technical-derivatives": {
         "result": "PASS",
         "observations": [
-          "og.webp mesure 1200×630 pixels (vérifié par lecture des pixels du fichier), conforme au format Open Graph attendu.",
-          "hero-768.webp et hero-768.avif mesurent tous deux 768 px de large, conformes au dérivé 768 px déclaré, dans les deux formats attendus."
+          "Vérification directe par pixel : master.png 1920×1080, og.webp 1200×630, hero-768 768×432 (avif et webp) dans preuves/image ; public/images ajoute même des variantes 1200×675 et 1600×900 en avif/webp au-delà du minimum déclaré dans image.json."
         ]
       },
       "alt-information": {
         "result": "PASS",
         "observations": [
-          "L'alt fourni (« Relance des pièces clients en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain ») décrit fidèlement la structure et les trois catégories visibles, sans bourrage de mots-clés."
+          "L’attribut alt mesure exactement 125 caractères (limite haute atteinte sans la dépasser, vérifié par comptage) et décrit les quatre éléments visuels concrets de l’image plutôt qu’une formule générique de type « illustration article »."
         ]
       }
     },
-    "directionArt": 17,
+    "directionArt": 19,
     "semanticRelevance": 24
   },
   "sources": {
     "reviewedBy": "relecteur-metier-ia-memlia",
     "observations": {
-      "cnil-principes": "Éditeur CNIL, domaine cnil.fr, source tier-1 officielle cohérente pour une citation du texte du RGPD (article 5, principe de minimisation) ; niveau de preuve adapté à une affirmation légale.",
-      "cnil-durees": "Éditeur CNIL, domaine cnil.fr, source tier-1 officielle cohérente pour une fiche pratique sur les durées de conservation ; l'affirmation citée respecte la nuance de la fiche (absence de durée fixée par un texte pour de nombreux traitements).",
-      "sp-conservation": "Éditeur Service Public (Direction de l'information légale et administrative, Premier ministre), domaine service-public.gouv.fr, source tier-1 officielle adaptée à une obligation de conservation documentaire des entreprises.",
-      "cnil-sous-traitant": "Éditeur CNIL, domaine cnil.fr, source tier-1 officielle cohérente pour une définition réglementaire du sous-traitant au sens du RGPD."
+      "cnil-principes": "Éditeur CNIL (autorité française de protection des données), domaine cnil.fr officiel, niveau tier-1 : source pertinente et suffisante pour une affirmation sur le principe de minimisation du RGPD appliqué à une relance de pièces.",
+      "cnil-durees": "Éditeur CNIL, domaine cnil.fr officiel, tier-1 : fiche pratique dédiée aux durées de conservation, dont l’usage dans l’article (nécessité d’une règle de purge du journal des relances fixée par le cabinet) reste cohérent avec son objet.",
+      "sp-conservation": "Éditeur Service-Public (portail administratif officiel de l’État français), domaine service-public.gouv.fr, tier-1 : source appropriée pour rappeler l’obligation légale de conservation des documents d’entreprise, distincte du journal des relances.",
+      "cnil-sous-traitant": "Éditeur CNIL, domaine cnil.fr officiel, tier-1 : fiche de définition réglementaire directement pertinente pour qualifier un hébergeur tiers d’un outil de relance de « sous-traitant » au sens RGPD."
     }
+  },
+  "qualite": {
+    "reviewer": "relecteur-qualite-ia-memlia",
+    "score": 99,
+    "p0": [],
+    "categories": {
+      "contentQuality": {
+        "score": 29,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 25,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 15,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 15,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 15,
+        "max": 15
+      }
+    },
+    "evidence": [
+      "Title 50 caractères, meta description 150 caractères ; les deux dans la fourchette recommandée et identiques sur meta/og:/twitter:/JSON-LD, sans dérive entre les surfaces.",
+      "JSON-LD @graph complet : BlogPosting + BreadcrumbList + Person + Organization + WebSite ; wordCount déclaré 2369, cohérent avec les « 12 min de lecture » affichées à l’écran.",
+      "Hiérarchie H1 unique → H2 → H3 sans saut ; trois tableaux avec <thead>, deux listes à puces, un aside « En bref » en tête d’article : structure extractible confirmée sur le HTML rendu.",
+      "Les quatre citations légales (claims) ont été vérifiées mot pour mot par grep dans les quatre copies locales .source.txt : aucun écart, aucune extension de portée.",
+      "Recherche automatisée sur le corps : zéro occurrence de « module », « % » ou « € » ; l’unique occurrence de « gain » dément explicitement une promesse de gain chiffrée.",
+      "Couverture 1920×1080 (16:9) vérifiée par lecture de pixels ; dérivés 768/1200/1600 en avif et webp plus OG 1200×630 tous présents et correctement dimensionnés dans public/images.",
+      "L’image héros est chargée en `loading=\"eager\" fetchpriority=\"high\"` (pas de lazy sur le LCP) et les polices critiques sont préchargées : signaux de performance structurels favorables.",
+      "Les fichiers de revue automatique existants (review.json, preuves/review.json, preuves/business-review.json, preuves/image/visual-review.json) sont des gabarits non exécutés (« Revue … non exécutée ») : cette revues.json est donc le premier passage de fond réel sur ce candidat."
+    ],
+    "reservations": [
+      "Aucun Lighthouse / Core Web Vitals réel exécuté : les scores « page speed » et « mobile » s’appuient sur des signaux structurels (préchargement, eager/fetchpriority, CSS inliné), pas sur une mesure de terrain.",
+      "Score de lisibilité calculé avec un outil (textstat) calibré pour l’anglais appliqué à un texte français (Flesch ≈ 76,9) : indicatif seulement, aucune formule de lisibilité française (type Kandel-Moles) appliquée.",
+      "Caractère bidirectionnel des liens internes non vérifié : les pages cibles (/glossaire, /methode, les deux articles liés) n’ont pas été ouvertes pour confirmer qu’elles renvoient vers cet article.",
+      "Aucune citation réelle de l’article par un moteur IA (Google AI Overviews, Perplexity, ChatGPT) testée : la « citabilité » jugée ici est structurelle, pas observée en conditions réelles.",
+      "Contenu réel des pages /a-propos, /contact, /mentions-legales et /politique-de-confidentialite non vérifié au-delà de leur présence en pied de page sur cette page.",
+      "Relecture grammaticale faite à l’œil, sans correcteur outillé ; aucune coquille repérée mais l’exhaustivité n’est pas garantie sur 2369 mots.",
+      "L’absence de `noindex` en production n’a pas été observée directement par cette revue (qui porte sur le rendu `.qa/render`, construit avec `BLOG_PREVIEW_SLUGS`) : elle est garantie par la commande `production-check` de `scripts/blog-pipeline.mjs`, qui échoue si la page publiée contient encore `noindex` ou si le canonical auto-référent manque."
+    ],
+    "seo": [
+      "Title 50 caractères (« Automatiser la relance des pièces clients | Memlia »), meta description 150 caractères : les deux dans la fourchette recommandée.",
+      "Canonical https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients cohérent avec og:url et l’URL du JSON-LD ; aucune divergence relevée.",
+      "Hiérarchie de titres H1 unique → H2 → H3 sans saut ; 3 tableaux structurés avec <thead>, 2 listes à puces sur la page rendue.",
+      "7 destinations internes contextuelles distinctes à ancres descriptives (glossaire ×3, articles liés ×2, /methode) ; 4 liens externes tier-1 (CNIL ×3, Service-Public ×1).",
+      "`robots: noindex, follow` sur ce rendu `.qa/render` — cohérent avec la bannière « candidat non publiable », mais à remplacer explicitement au moment de la mise en ligne réelle.",
+      "Couverture livrée en AVIF/WebP à 768/1200/1600 px plus OG 1200×630, chargée en eager/fetchpriority=high : pas de lazy sur l’image LCP."
+    ],
+    "geo": [
+      "Réponse directe en tête d’article suivie de l’aside « En bref » : format extractible en un seul passage pour un moteur IA, sans avoir à parcourir toute la page.",
+      "3 tableaux avec <thead>, dont un tableau comparatif « se prépare seul / attend une validation / reste humain » : structure hautement citable telle quelle.",
+      "Terminologie stable et définie une fois (« relance de pièces », « complétude du dossier », « checklist conditionnelle ») puis réutilisée sans dérive synonymique : entité non ambiguë.",
+      "5 questions-réponses en H3 sous « Questions fréquentes », chacune autonome et directement citable hors contexte par un moteur conversationnel.",
+      "Chaque affirmation réglementaire (minimisation RGPD, durées de conservation, sous-traitant) est sourcée en ligne vers une source officielle tier-1, avec citation exacte vérifiée mot pour mot.",
+      "Le `noindex` du rendu de prévisualisation empêcherait toute indexation ou citation réelle par un moteur IA tant qu’il n’est pas levé pour la publication effective."
+    ],
+    "verdict": "Article éditorialement et techniquement très abouti — sourcé mot pour mot, structuré pour l’extraction et conforme aux garde-fous de marque — prêt à publier dès que le `noindex` de prévisualisation est levé et qu’un humain du métier confirme la lecture sur le terrain."
   }
 }

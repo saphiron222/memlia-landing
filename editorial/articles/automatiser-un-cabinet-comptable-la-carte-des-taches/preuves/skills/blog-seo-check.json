@@ -4,10 +4,16 @@
   "kind": "skill",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
-  "manifestSha256": "a5824e31f1f971a99d93f64b039b774e6189a997638b587d1f10e3d15394f6c3",
+  "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
+  "manifestSha256": "bc0608363d550414794038737e04a7abdcc1f769f4034273cde54776e2467e54",
   "observations": [
-    "Titre 54 caractères, onglet 52, description 152 ; 16 lien(s) interne(s) : /glossaire#regle-de-cabinet, /blog/automatiser-la-relance-des-pieces-clients, /glossaire#lettrage-comptable, /glossaire#rapprochement-bancaire, /glossaire#revision-comptable, /glossaire#agregat-non-nominatif, /blog/controler-les-bulletins-de-paie-avant-la-dsn, /blog/suivre-la-production-sociale-dans-excel, /blog/comprendre-les-comptes-rendus-metier-dsn, /glossaire#minimisation-des-donnees, /glossaire#cas-de-refus, /glossaire#validation-humaine, /methode, /automatisation-cabinet-comptable, /garanties, /ressources ; 0 lien(s) externe(s) dans le corps."
+    "Titre 54 caractères, onglet 52, description 152 ; 16 lien(s) interne(s) : /glossaire#regle-de-cabinet, /glossaire#cas-de-refus, /glossaire#validation-humaine, /blog/automatiser-la-relance-des-pieces-clients, /glossaire#lettrage-comptable, /glossaire#rapprochement-bancaire, /glossaire#revision-comptable, /glossaire#agregat-non-nominatif, /blog/controler-les-bulletins-de-paie-avant-la-dsn, /blog/suivre-la-production-sociale-dans-excel, /blog/comprendre-les-comptes-rendus-metier-dsn, /glossaire#minimisation-des-donnees, /methode, /automatisation-cabinet-comptable, /garanties, /ressources ; 5 lien(s) externe(s) dans le corps.",
+    "Titre de balise à 52 caractères et meta description à 152 caractères, tous deux dans les bornes d'affichage SERP recommandées.",
+    "Canonical auto-référent correct vers https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches.",
+    "Hiérarchie H1 vers H2 vers H3 sans saut, dix-neuf H2 et quatre H3 de FAQ, cohérente avec un format pilier.",
+    "Cinq liens sortants, tous vers des domaines tier-1 officiels (service-public.gouv.fr, cnil.fr deux fois, impots.gouv.fr, net-entreprises.fr).",
+    "Environ seize liens internes contextuels (ancres de glossaire, articles publiés du pôle paie, pages méthode/garanties/ressources), cohérent avec une architecture pilier vers des pages filles.",
+    "Meta robots noindex, follow sur ce rendu de prévisualisation : à retirer explicitement avant toute mise en production."
   ],
   "skill": "blog-seo-check"
 }

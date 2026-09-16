@@ -1,0 +1,136 @@
+{
+  "editorial": {
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "La section « Réponse directe » définit l'automatisation en une phrase actionnable dès l'ouverture (« exécuter une règle écrite sans intervention humaine... et faire remonter ce qui sort de la règle »), ce qui répond immédiatement à l'intention « comprendre ».",
+          "Le test en trois conditions (répétition, règle écrite, exceptions qui se comptent) donne au lecteur un critère de tri concret, exactement ce que demande la tâche « repérer celles qui ont une règle écrite ».",
+          "La section finale « Par où commencer » réduit la carte à un exercice d'une page (déclencheur, condition, action, exception), ce qui sert un lecteur direction-associés pressé sans l'obliger à lire les onze pôles en entier."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Chacun des onze pôles est un H2 autonome suivi d'un tableau à trois colonnes (Se prépare seul / Attend une validation / Reste humain), un format qui se prête à l'extraction en featured snippet.",
+          "Les liens vers /blog/controler-les-bulletins-de-paie-avant-la-dsn, /blog/suivre-la-production-sociale-dans-excel et /blog/comprendre-les-comptes-rendus-metier-dsn renvoient au détail plutôt que de le réécrire, ce qui évite la cannibalisation typique d'une page pilier.",
+          "Le slug automatiser-un-cabinet-comptable-la-carte-des-taches reprend naturellement la primaryQuery « automatisation cabinet comptable » sans bourrage de mots-clés."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Les cinq citations vérifiées (Service-Public, CNIL x2, impots.gouv.fr, Net-entreprises) sont reproduites mot pour mot dans les copies locales des sources, confirmées par grep dans les fichiers .source.txt, sans changement de portée.",
+          "La phrase « observées de près chez un cabinet client » dans la section Facturation signale une expérience de terrain réelle sans exposer aucun nom ni donnée identifiante, conforme à l'anti-surveillance du site.",
+          "L'exemple de calendrier TVA (15-24 septembre 2026) est exact à la date de publication mais restera daté dans une page pensée comme pilier durable ; l'article l'assume déjà en le présentant comme « pour septembre 2026 »."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Le total « onze pôles et soixante familles » se vérifie par le calcul : les compteurs énumérés pôle par pôle (13+5+7+7+4+5+3+4+3+4+4) totalisent 59, et la famille « audit légal et commissariat aux comptes », explicitement listée mais non ouverte, complète le compte à 60.",
+          "La section « Ce que cette carte ne contient pas » énonce trois renoncements explicites (aucun chiffre de gain, audit légal non documenté, aucune fonction promise), une transparence qui dépasse le contenu générique sur l'IA comptable.",
+          "Le triage à trois colonnes est appliqué de façon identique aux onze pôles avec des exemples différents à chaque fois (ex. lettrage, TVA, boîte mail), ce qui constitue un cadre original plutôt qu'une liste de généralités."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "La hiérarchie de titres du corps est cohérente : un H2 par pôle sans saut de niveau, et les tableaux utilisent des en-têtes de colonnes explicites plutôt que de simples puces.",
+          "Le paquet de revue ne contient pas le frontmatter rendu (title, meta description, canonical, JSON-LD) : ce jugement porte donc sur la structure du corps et le slug, pas sur les balises de la page publiée."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "La phrase d'ouverture « Automatiser une tâche de cabinet, c'est exécuter une règle écrite sans intervention humaine à chaque occurrence, et faire remonter ce qui sort de la règle » est une définition autoportante directement citable par un moteur génératif.",
+          "Les tableaux juxtaposent des exemples courts et concrets (« La relance d'une pièce manquante, à cadence, jusqu'à réception », « L'écriture proposée par le lettrage ou le rapprochement »), un format que les IA extraient facilement en liste de faits."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "La section « Par où commencer » enchaîne un exercice autonome (écrire sa règle sur une page) puis un renvoi vers /methode, /automatisation-cabinet-comptable et /garanties, un entonnoir progressif cohérent avec une intention « comprendre » plutôt qu'un lien prématuré vers /contact."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "business": {
+    "claims": {
+      "claim-unit-279d5bd8bf20-1": {
+        "verdict": "soutient",
+        "reasoning": "La citation « une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale » est reprise mot pour mot depuis sp-conservation.source.txt (méta og:description et paragraphe fr-text--lg visible), sans changement de portée ni de polarité par rapport à l'article."
+      },
+      "claim-unit-e8439da9f147-1": {
+        "verdict": "soutient",
+        "reasoning": "La phrase source (« Un Compte Rendu Métier (CRM) est un rapport permettant à l'organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu'une erreur ou suspicion d'erreur est détectée ») est confirmée dans net-crm.source.txt et reprise à l'identique dans l'article, seule la casse initiale et le sigle CRM étant retirés pour l'intégrer à la phrase, sans altérer le sens."
+      },
+      "claim-unit-1a356f45cd1d-1": {
+        "verdict": "soutient",
+        "reasoning": "Le passage « Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel » est confirmé ligne 642 d'impots-calendrier.source.txt ; l'article le reformule en tête de phrase mais conserve la réserve individuelle « à la date figurant dans l'espace professionnel », donc sans généralisation abusive à toutes les entreprises."
+      },
+      "claim-unit-5570a9487db9-1": {
+        "verdict": "soutient",
+        "reasoning": "Le critère de minimisation « adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées » est cité mot pour mot depuis le chapitre 2 du RGPD tel que reproduit par la CNIL, et l'exemple ajouté par l'article (bulletins de paie) est clairement distingué de la citation elle-même."
+      },
+      "claim-unit-5570a9487db9-2": {
+        "verdict": "soutient",
+        "reasoning": "« La définition de la durée de conservation relève de l'analyse de conformité que le responsable doit mener pour son traitement » est reprise à l'identique depuis cnil-durees.source.txt (ligne 776), et sert uniquement à justifier qu'une règle de purge fait partie de toute automatisation, sans dépasser ce que dit la CNIL."
+      }
+    }
+  },
+  "image": {
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Les six composantes apparaissent sur le rendu : titre « La carte des tâches automatisables d'un cabinet », sous-titre « Onze pôles, soixante familles, une frontière par tâche », étiquette de pôle « Méthode et décision humaine », trois colonnes d'items identiques à cadre.colonnes du paquet, pied « memlia.fr — automatiser un cabinet comptable », et un bandeau « Jeu fictif, aucune donnée client » qui fait aussi office de provenance fictive."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "generation.json déclare un rendu playwright-chromium 1920x1080 ; une mesure directe du fichier (sips) confirme 1920×1080 pixels pour master.png.",
+          "La palette verte et crème ainsi que le pairing typographique Fraunces (titre serif et sous-titre italique) et Hanken Grotesk (items de liste, labels) sont visibles à l'écran et conformes à la charte memlia.fr."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Un badge explicite « Jeu fictif, aucune donnée client » est incrusté en bas à droite de l'image, et les items des trois colonnes (« Relance de pièces à cadence », « Jugement fiscal »...) sont des catégories génériques sans nom de cabinet, de client ni de chiffre réel."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Les trois colonnes bordées de couleur (vert, ambre, gris) avec leurs en-têtes « Se prépare seul », « Attend une validation », « Reste humain » rendent le sujet immédiatement reconnaissable et fidèle au concept central répété dans chaque section de l'article."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "La mesure directe des fichiers confirme og.webp à 1200×630 pixels et hero-768.webp/hero-768.avif à 768×432 pixels, conformément aux dérivés déclarés ; les deux formats WebP et AVIF sont fournis pour la déclinaison 768 px."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "L'alt fourni (« Carte des tâches d'un cabinet en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain ») décrit fidèlement la structure visible sur le rendu, sans mot-clé forcé ni formule vague."
+        ]
+      }
+    },
+    "directionArt": 19,
+    "semanticRelevance": 24
+  },
+  "sources": {
+    "reviewedBy": "relecteur-metier-ia-memlia",
+    "observations": {
+      "sp-conservation": "Éditeur Service-Public (entreprendre.service-public.gouv.fr), domaine .gouv.fr officiel, cohérent avec le niveau tier-1/officiel déclaré ; la page traite précisément des délais de conservation des documents d'entreprise citée par l'article.",
+      "cnil-principes": "Éditeur CNIL (www.cnil.fr), autorité française de protection des données, domaine et niveau tier-1/officiel cohérents ; la page correspond au chapitre 2 du RGPD (principes), pertinente pour la citation sur la minimisation.",
+      "cnil-durees": "Éditeur CNIL (www.cnil.fr), même autorité que cnil-principes, page dédiée spécifiquement aux durées de conservation des données ; domaine et niveau tier-1/officiel cohérents avec le sujet de la citation.",
+      "impots-calendrier": "Éditeur impots.gouv.fr (direction générale des finances publiques), domaine .gouv.fr et niveau tier-1/officiel cohérents ; le calendrier fiscal est la source primaire correcte pour une échéance de TVA datée.",
+      "net-crm": "Éditeur Net-entreprises (www.net-entreprises.fr), portail officiel mandaté pour les déclarations sociales DSN ; le domaine est en .fr et non en .gouv.fr, mais le niveau tier-1/officiel reste cohérent puisqu'il s'agit du portail primaire pour les comptes rendus métier DSN cités par l'article."
+    }
+  }
+}

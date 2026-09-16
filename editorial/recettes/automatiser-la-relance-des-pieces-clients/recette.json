@@ -54,7 +54,7 @@
   },
   "image": {
     "heroId": "img-art-relance-des-pieces",
-    "alt": "Relance des pièces clients en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain",
+    "alt": "Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart",
     "cadre": {
       "titre": "Automatiser la relance des pièces clients",
       "sousTitre": "Checklist conditionnelle, contrôle de complétude, cadence qui s’arrête à réception",
@@ -86,6 +86,34 @@
         }
       ],
       "pied": "memlia.fr — jeu fictif de six dossiers"
+    },
+    "brief": {
+      "sujet": "La relance des pièces manquantes : un plateau à compartiments partiellement rempli, une checklist cochée, une enveloppe qui attend devant un portique, un dossier mis à l’écart.",
+      "composition": "Vue isométrique sur bureau crème papier ; plateau à six compartiments dont trois contiennent des feuilles pliées vierges et trois restent vides ; liste de contrôle en papier avec trois cases cochées en vert et une vide ; petite enveloppe crème devant un portique ouvert aux montants verts, jeton vert posé à côté ; à droite, une pièce graphite isolée.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière de studio douce venant du haut gauche, ombres courtes, composition aérée ; continuité avec la couverture IMG-25.",
+      "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20.",
+      "interdits": "Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique.",
+      "alt": "Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart",
+      "reviewCriteria": [
+        "continuité avec les couvertures existantes",
+        "compartiments vides et remplis distincts (complétude)",
+        "enveloppe en attente devant le portique (validation avant envoi)",
+        "pièce graphite isolée (dossier hors circuit)",
+        "aucun texte, logo, donnée, fausse interface ou action automatique",
+        "dérivés 1920×1080, OG 1200×630, 768/1200/1600 générés"
+      ],
+      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : La relance des pièces manquantes : un plateau à compartiments partiellement rempli, une checklist cochée, une enveloppe qui attend devant un portique, un dossier mis à l’écart. Composition : Vue isométrique sur bureau crème papier ; plateau à six compartiments dont trois contiennent des feuilles pliées vierges et trois restent vides ; liste de contrôle en papier avec trois cases cochées en vert et une vide ; petite enveloppe crème devant un portique ouvert aux montants verts, jeton vert posé à côté ; à droite, une pièce graphite isolée. Style : Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière de studio douce venant du haut gauche, ombres courtes, composition aérée ; continuité avec la couverture IMG-25. Palette : Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20. Interdits : Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique."
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "331b874a-b72e-450a-8108-6e0de60f5d1e",
+      "model": "gpt_image_2_5",
+      "provider": "higgsfield",
+      "generatedAt": "2026-09-16",
+      "credits": 3,
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_340edDKgz49ubvQTIJPiYr6YSC6/hf_20260916_182631_331b874a-b72e-450a-8108-6e0de60f5d1e.png",
+      "quality": "high",
+      "resolution": "2k"
     }
   },
   "sources": [
@@ -217,5 +245,22 @@
   "businessReview": {
     "reviewerId": "relecteur-metier-ia-memlia",
     "role": "collaborateurs-comptables"
+  },
+  "preuvesSkills": {
+    "blog-brief": [
+      "Brief validé dans docs/strategy/site-v3/cluster-briefs (lecteur collaborateurs-comptables, requête « relance pièces manquantes cabinet comptable », preuve attendue : Jeu fictif de six dossiers rejoué sur la règle (cas courant, pièce hors période, dossier en litige, dossier sans checkli…)."
+    ],
+    "blog-outline": [
+      "Plan calqué sur le gabarit how-to-guide du skill blog : réponse directe, définitions, sections par tâche, tableau déclencheur/condition/action/exception, refus, frontière en trois colonnes, jeu fictif, cadre sourcé, erreurs à éviter, questions fréquentes, règle à retenir."
+    ],
+    "blog-style": [
+      "Passe de style : phrases courtes, aucune formule de remplissage, aucun superlatif, aucun chiffre de gain ; charge cognitive mesurée par cognitive_load.py (verdict Healthy, aucune section surchargée)."
+    ],
+    "blog-schema": [
+      "BlogPosting, BreadcrumbList, Person, Organization et WebSite émis par ArticleJsonLd.astro depuis le frontmatter ; ImageObject sur la couverture générée ; aucun FAQPage ni HowTo (résultats enrichis retirés)."
+    ],
+    "blog-image": [
+      "Couverture générée depuis le brief à six composantes (sujet, composition, style, palette, interdits, alt) : Higgsfield, modèle gpt_image_2_5, qualité haute 2K, job 331b874a-b72e-450a-8108-6e0de60f5d1e, 3 crédits ; revue visuelle à six critères dans image.json."
+    ]
   }
 }

@@ -4,10 +4,16 @@
   "kind": "skill",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
-  "manifestSha256": "d6c55c2b8cd4cda6e733e3fcef1bd91174eafbe5501870fa822a2c7dd203c88f",
+  "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
+  "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba",
   "observations": [
-    "Réponse directe en tête (63 mots au premier paragraphe) ; définitions extractibles dans le corps."
+    "Réponse directe en tête (65 mots au premier paragraphe) ; définitions extractibles dans le corps.",
+    "Réponse directe en tête d’article suivie de l’aside « En bref » : format extractible en un seul passage pour un moteur IA, sans avoir à parcourir toute la page.",
+    "3 tableaux avec <thead>, dont un tableau comparatif « se prépare seul / attend une validation / reste humain » : structure hautement citable telle quelle.",
+    "Terminologie stable et définie une fois (« relance de pièces », « complétude du dossier », « checklist conditionnelle ») puis réutilisée sans dérive synonymique : entité non ambiguë.",
+    "5 questions-réponses en H3 sous « Questions fréquentes », chacune autonome et directement citable hors contexte par un moteur conversationnel.",
+    "Chaque affirmation réglementaire (minimisation RGPD, durées de conservation, sous-traitant) est sourcée en ligne vers une source officielle tier-1, avec citation exacte vérifiée mot pour mot.",
+    "Le `noindex` du rendu de prévisualisation empêcherait toute indexation ou citation réelle par un moteur IA tant qu’il n’est pas levé pour la publication effective."
   ],
   "skill": "blog-geo"
 }

@@ -4,8 +4,8 @@
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
-  "manifestSha256": "d6c55c2b8cd4cda6e733e3fcef1bd91174eafbe5501870fa822a2c7dd203c88f",
+  "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
+  "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
   ],
@@ -14,47 +14,42 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Les six composantes du brief sont toutes présentes à l'écran : titre, sous-titre, famille, les trois colonnes avec leurs items exacts, le pied « jeu fictif de six dossiers » et le badge de provenance fictive.",
-        "Le champ alt du paquet (« Relance des pièces clients en trois colonnes... ») correspond mot pour mot au contenu visible de l'image."
+        "prompt.json expose exactement six composantes renseignées (sujet, composition, style, palette, interdits, alt), chacune détaillée et cohérente avec le champ `image` de paquet-revue.json (même texte alt au caractère près)."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "master.png mesure exactement 1920×1080 (vérifié par lecture des pixels du fichier), conforme à la contrainte de rendu déclarée dans prompt.json et generation.json.",
-        "cadre.html déclare font-family 'Fraunces' pour les titres et 'Hanken Grotesk' pour le corps, et la palette visible (fond crème, vert de la colonne 1 et du logotype Memlia) suit la charte."
+        "Le PNG mesure 1920×1080 (16:9 exact, vérifié par lecture des pixels) : diorama 3D isométrique à formes géométriques simplifiées et matières mates, sans aucune couleur hors palette crème/vert/graphite ni fausse interface visible à l’écran."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Un badge visible « Jeu fictif, aucune donnée client » et le pied de page « memlia.fr — jeu fictif de six dossiers » excluent toute lecture comme capture produit ou donnée réelle.",
-        "Aucun nom de dossier, de client ni de chiffre n'apparaît dans l'image : seuls des libellés de catégories génériques sont affichés dans les trois colonnes."
+        "Aucun texte lisible, logo, personnage ou donnée identifiable n’apparaît sur l’image : les feuilles du plateau sont vierges et la checklist n’affiche que des traits gris abstraits, conforme à l’absence de provenance réelle exigée par les interdits du brief."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Les trois colonnes « Se prépare seul », « Attend une validation », « Reste humain » sont immédiatement lisibles et reprennent exactement les titres du tableau du même nom dans le corps de l'article.",
-        "Les items de chaque colonne (ex. « Arrêt de la cadence à réception », « Sortie d'un dossier du circuit ») correspondent mot pour mot au bloc `image.cadre` du paquet de revue."
+        "Les quatre sujets du brief sont identifiables sans ambiguïté à l’écran : plateau à six compartiments à moitié rempli, checklist à trois coches vertes et une case vide, enveloppe posée devant le portique à montants verts, pièce graphite isolée à droite de la scène."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "og.webp mesure 1200×630 pixels (vérifié par lecture des pixels du fichier), conforme au format Open Graph attendu.",
-        "hero-768.webp et hero-768.avif mesurent tous deux 768 px de large, conformes au dérivé 768 px déclaré, dans les deux formats attendus."
+        "Vérification directe par pixel : master.png 1920×1080, og.webp 1200×630, hero-768 768×432 (avif et webp) dans preuves/image ; public/images ajoute même des variantes 1200×675 et 1600×900 en avif/webp au-delà du minimum déclaré dans image.json."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L'alt fourni (« Relance des pièces clients en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain ») décrit fidèlement la structure et les trois catégories visibles, sans bourrage de mots-clés."
+        "L’attribut alt mesure exactement 125 caractères (limite haute atteinte sans la dépasser, vérifié par comptage) et décrit les quatre éléments visuels concrets de l’image plutôt qu’une formule générique de type « illustration article »."
       ]
     }
   ]

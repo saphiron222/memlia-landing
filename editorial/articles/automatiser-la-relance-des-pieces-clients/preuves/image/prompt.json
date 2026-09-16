@@ -4,11 +4,27 @@
   "kind": "image-prompt",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
-  "manifestSha256": "d6c55c2b8cd4cda6e733e3fcef1bd91174eafbe5501870fa822a2c7dd203c88f",
+  "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
+  "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba",
   "observations": [
     "Contrôle image-prompt relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
   ],
   "engine": "image_generate",
-  "prompt": "Cadre de preuve HTML (editorial/templates/cadre-article.html) rendu à 1920×1080 : « Automatiser la relance des pièces clients » — Checklist conditionnelle, contrôle de complétude, cadence qui s’arrête à réception. Trois colonnes : Se prépare seul / Attend une validation / Reste humain. Jeu fictif, aucune donnée client, aucun texte hors charte."
+  "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : La relance des pièces manquantes : un plateau à compartiments partiellement rempli, une checklist cochée, une enveloppe qui attend devant un portique, un dossier mis à l’écart. Composition : Vue isométrique sur bureau crème papier ; plateau à six compartiments dont trois contiennent des feuilles pliées vierges et trois restent vides ; liste de contrôle en papier avec trois cases cochées en vert et une vide ; petite enveloppe crème devant un portique ouvert aux montants verts, jeton vert posé à côté ; à droite, une pièce graphite isolée. Style : Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière de studio douce venant du haut gauche, ombres courtes, composition aérée ; continuité avec la couverture IMG-25. Palette : Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20. Interdits : Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique.",
+  "brief": {
+    "sujet": "La relance des pièces manquantes : un plateau à compartiments partiellement rempli, une checklist cochée, une enveloppe qui attend devant un portique, un dossier mis à l’écart.",
+    "composition": "Vue isométrique sur bureau crème papier ; plateau à six compartiments dont trois contiennent des feuilles pliées vierges et trois restent vides ; liste de contrôle en papier avec trois cases cochées en vert et une vide ; petite enveloppe crème devant un portique ouvert aux montants verts, jeton vert posé à côté ; à droite, une pièce graphite isolée.",
+    "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière de studio douce venant du haut gauche, ombres courtes, composition aérée ; continuité avec la couverture IMG-25.",
+    "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20.",
+    "interdits": "Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique.",
+    "alt": "Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart"
+  },
+  "reviewCriteria": [
+    "continuité avec les couvertures existantes",
+    "compartiments vides et remplis distincts (complétude)",
+    "enveloppe en attente devant le portique (validation avant envoi)",
+    "pièce graphite isolée (dossier hors circuit)",
+    "aucun texte, logo, donnée, fausse interface ou action automatique",
+    "dérivés 1920×1080, OG 1200×630, 768/1200/1600 générés"
+  ]
 }
