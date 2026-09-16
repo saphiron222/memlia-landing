@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "articleSha256": "4c36eb08c035c10a78ae83de9776a64526ca72d5758b72ed7bf98f3f976d2a79",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
+  "kind": "source-classification",
+  "status": "PASS",
+  "checkedAt": "2026-09-13",
+  "observations": [
+    "Le domaine final et l’éditeur déclaré ont été relus séparément à partir de la copie scellée du 13 septembre 2026."
+  ],
+  "sourceId": "net-entreprises-crm",
+  "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+  "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+  "publisher": "Net-entreprises",
+  "level": "tier-1",
+  "provenance": "primary",
+  "official": true,
+  "upstreamUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+  "classifiedBy": "marketing",
+  "reviewedBy": "dev",
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/sources/net-entreprises-crm.classification.json",
+    "originalSha256": "893ecf6f9f8cf689a8dd2f15d9ca3ed5a28e3d603a50027b6307a9008dabbf3e",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

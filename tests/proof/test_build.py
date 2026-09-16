@@ -1,6 +1,7 @@
 """Oracle indépendant sur dist : aucun import du code Astro ou du manifeste produit."""
 import hashlib
 import json
+import os
 from html.parser import HTMLParser
 from pathlib import Path
 import re
@@ -11,9 +12,10 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / 'dist'
 SITE = 'https://memlia.fr'
-PAGES_FIXES = ['404', 'blog', 'index', 'mentions-legales', 'politique-de-confidentialite']
-# Le blog est actif dès qu'un article est publié ; en dessous de ce plancher, la section a été débranchée.
-ARTICLES_MIN = 2
+PAGES_FIXES = ['404', 'blog', 'glossaire', 'index', 'mentions-legales', 'politique-de-confidentialite', 'ressources']
+PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
+PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
+                   'comprendre-les-comptes-rendus-metier-dsn'}
 
 
 class Document(HTMLParser):
@@ -38,11 +40,15 @@ def articles():
     return sorted((DIST / 'blog').glob('*.html'))
 
 
+def is_preview_article(article):
+    return article.stem in PREVIEW_ARTICLES and article.stem not in PUBLIC_ARTICLES
+
+
 class BuildProof(unittest.TestCase):
     def test_pages_one_h1_french(self):
         pages = sorted(DIST.glob('*.html'))
         self.assertEqual([p.stem for p in pages], PAGES_FIXES)
-        self.assertGreaterEqual(len(articles()), ARTICLES_MIN)
+        self.assertEqual({article.stem for article in articles()}, PUBLIC_ARTICLES | PREVIEW_ARTICLES)
         for page in pages + articles():
             doc = Document(page)
             self.assertEqual(len(doc.select('h1')), 1, page.name)
@@ -68,11 +74,12 @@ class BuildProof(unittest.TestCase):
             subtree = ET.parse(DIST / urlsplit(link).path.lstrip('/'))
             for url in subtree.findall('.//s:url', ns):
                 pages[url.find('s:loc', ns).text] = url.find('s:lastmod', ns).text
-        attendues = {f'{SITE}/', f'{SITE}/blog'} | {f'{SITE}/blog/{a.stem}' for a in articles()}
+        published_articles = [a for a in articles() if not is_preview_article(a)]
+        attendues = {f'{SITE}/', f'{SITE}/blog', f'{SITE}/glossaire', f'{SITE}/ressources'} | {f'{SITE}/blog/{a.stem}' for a in published_articles}
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
-        # lastmod d'un article = dateModified de son schéma (une seule source : le frontmatter).
-        for article in articles():
+        # lastmod d'un article publié = dateModified de son schéma (une seule source : le frontmatter).
+        for article in published_articles:
             posting = next(n for g in jsonld(article) for n in g['@graph'] if n['@type'] == 'BlogPosting')
             self.assertEqual(pages[f'{SITE}/blog/{article.stem}'][:10], posting['dateModified'][:10])
         self.assertIn('Sitemap: https://memlia.fr/sitemap.xml', (DIST / 'robots.txt').read_text())
@@ -90,16 +97,18 @@ class BuildProof(unittest.TestCase):
                     if target.startswith('/'):
                         self.assertTrue((DIST / target.lstrip('/')).is_file(), f'{page.name}: {target}')
                         seen.add(target)
-        # M4-R3 : 9 preuves originales + 3 médias R7 + 12 dérivés blog, hors polices/JS/icônes.
+        # M4-R3 : 9 preuves originales ; les dérivés Blog ne sont chargés que pour le candidat explicitement rendu.
         self.assertTrue({f'/proofs/{name}.webp' for name in ['01-flux', '02-repetition', '03-controle', '04-observer', '05-cadrer', '06-eprouver', '07-livrer', '08-integration', '09-garanties']} <= seen)
-        self.assertGreaterEqual(len(seen), 24)
+        self.assertGreaterEqual(len(seen), 24 if PREVIEW_ARTICLES else 18)
 
     def test_placeholders_and_briefs(self):
         briefs = ROOT / 'public/images'
         self.assertEqual(len(list(briefs.glob('brief-img-1[6-9]-*.md'))) + len(list(briefs.glob('brief-img-2[0-4]-*.md'))), 9)
         self.assertEqual(len(list((DIST / 'images').glob('brief-*.md'))), 0)
-        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 6)
-        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 6)
+        # Trois couvertures publiées : 3 largeurs x 2 formats chacune, plus une image
+        # sociale webp par article (imageOg, exigée par le contrat de la collection).
+        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 9)
+        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 12)
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
 
     def test_five_generic_examples_no_product_statuses(self):
@@ -142,8 +151,8 @@ class BuildProof(unittest.TestCase):
         robots = next(m['content'] for m in doc.select('meta') if m.get('name') == 'robots')
         self.assertNotIn('noindex', robots)
         rss = [l for l in doc.select('link') if l.get('rel') == 'alternate']
-        self.assertEqual([l['href'] for l in rss], ['/blog/rss.xml'])
-        self.assertTrue(any(attrs.get('id') == 'auteur-kevin' for _, attrs in doc.tags))
+        self.assertEqual([l['href'] for l in rss], [] if PREVIEW_ARTICLES else ['/blog/rss.xml'])
+        self.assertEqual(any(attrs.get('id') == 'auteur-kevin' for _, attrs in doc.tags), bool(articles()))
         (graph,) = jsonld(DIST / 'blog.html')
         types = [n['@type'] for n in graph['@graph']]
         self.assertEqual(types, ['Blog', 'BreadcrumbList', 'Person', 'Organization', 'WebSite'])
@@ -164,7 +173,10 @@ class BuildProof(unittest.TestCase):
                 metas = {m.get('property') or m.get('name'): m['content'] for m in doc.select('meta') if m.get('content')}
                 self.assertEqual(metas['og:type'], 'article')
                 self.assertEqual(metas['og:url'], url)
-                self.assertNotIn('noindex', metas['robots'])
+                if is_preview_article(article):
+                    self.assertIn('noindex', metas['robots'])
+                else:
+                    self.assertNotIn('noindex', metas['robots'])
                 self.assertRegex(metas['article:published_time'], r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$')
                 self.assertTrue(metas['article:author'].startswith(f'{SITE}/blog#auteur-'))
                 self.assertLessEqual(len(metas['description']), 160)
@@ -205,10 +217,12 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(channel.find('language').text, 'fr-fr')
         self.assertEqual(channel.find('{http://www.w3.org/2005/Atom}link').get('href'), f'{SITE}/blog/rss.xml')
         items = channel.findall('item')
-        self.assertEqual(sorted(i.find('link').text for i in items), [f'{SITE}/blog/{a.stem}' for a in articles()])
-        # Même ordre que la liste HTML (du plus récent au plus ancien).
+        published_articles = [a for a in articles() if not is_preview_article(a)]
+        self.assertEqual(sorted(i.find('link').text for i in items), [f'{SITE}/blog/{a.stem}' for a in published_articles])
+        # Même ordre que la partie publiée de la liste HTML ; un candidat preview reste exclu du flux.
         listed = re.findall(r'data-article="([^"]+)"', (DIST / 'blog.html').read_text())
-        self.assertEqual([i.find('link').text for i in items], [f'{SITE}/blog/{s}' for s in listed])
+        listed_published = [slug for slug in listed if slug not in PREVIEW_ARTICLES]
+        self.assertEqual([i.find('link').text for i in items], [f'{SITE}/blog/{s}' for s in listed_published])
         for item in items:
             self.assertTrue(item.find('title').text)
             self.assertTrue(item.find('description').text)

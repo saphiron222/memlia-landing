@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "0a341080fd998fa54364ab0dfd47440a0f6eb8e724242abd6a3dfa8761694a85",
-  "manifestSha256": "ecefb651ad49f8b563833d6e1a7e1512b89770c4f16e05e45390f7eb86d193b4",
+  "articleSha256": "4c36eb08c035c10a78ae83de9776a64526ca72d5758b72ed7bf98f3f976d2a79",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-09-13",
@@ -56,5 +56,12 @@
         "Le rendu approuvé et ses dérivés vérifiés satisfont le critère observable alt-information."
       ]
     }
-  ]
+  ],
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/image/visual-review.json",
+    "originalSha256": "edac6ea75d0c4768b18d9af85878eb90831af0f5019c18f88ce4a34bc38ebb67",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
 }

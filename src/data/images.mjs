@@ -99,13 +99,24 @@ export const IMAGES = {
     alt: 'Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision.',
     generee: true,
   },
+  'img-25-comptes-rendus-metier-dsn': {
+    brief: 'IMG-25',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: 'Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine.',
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
 export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
-export const PUBLISHED_IMAGE_IDS = ['img-23-controle-bulletins-paie', 'img-24-suivi-production-sociale'];
+export const PUBLISHED_IMAGE_IDS = [
+  'img-23-controle-bulletins-paie',
+  'img-24-suivi-production-sociale',
+  'img-25-comptes-rendus-metier-dsn',
+];
 export const PLACEHOLDERS = new Set(Object.keys(IMAGES).filter(id => !PUBLISHED_IMAGE_IDS.includes(id)));
 
 export const cheminImage = (id, largeur, format) => `/images/${id}-${largeur}.${format}`;

@@ -1,0 +1,149 @@
+{
+  "generatedAt": "2026-09-15T10:49:40.398Z",
+  "pass": false,
+  "phase": "qa",
+  "result": "FAIL",
+  "candidateValidated": false,
+  "scope": "manifestes et surfaces H/T du build rapprochés",
+  "counts": {
+    "discovered": 2,
+    "passed": 0,
+    "failed": 2,
+    "byAdapter": {
+      "H": 1,
+      "A": 0,
+      "T": 1,
+      "G": 0,
+      "M": 0,
+      "invalid": 0
+    },
+    "surfaces": {
+      "discovered": 2,
+      "linked": 2,
+      "unlinked": 0
+    }
+  },
+  "surfaces": [
+    {
+      "formatAdapter": "T",
+      "canonicalPath": "/glossaire",
+      "outputPath": "dist/glossaire.html",
+      "bytes": 151260,
+      "sha256": "5c9a285bd96dfec525a65bf30757deb582ac7da36be9bf135553adb712fed2de",
+      "manifestPaths": [
+        "editorial/resources/glossaire/manifest.json"
+      ],
+      "relationErrors": []
+    },
+    {
+      "formatAdapter": "H",
+      "canonicalPath": "/ressources",
+      "outputPath": "dist/ressources.html",
+      "bytes": 54880,
+      "sha256": "e139854d1ce084c3d87aa30984d901935394f6fe4326f767e726cab693a9218f",
+      "manifestPaths": [
+        "editorial/resources/hub/manifest.json"
+      ],
+      "relationErrors": []
+    }
+  ],
+  "unlinkedSurfaces": [],
+  "errors": [],
+  "manifests": [
+    {
+      "path": "editorial/resources/glossaire/manifest.json",
+      "pass": false,
+      "phase": "qa",
+      "formatAdapter": "T",
+      "counts": {
+        "blogSkills": 31,
+        "seoSkills": 24,
+        "coreSkills": 19,
+        "gates": 7,
+        "renderedUnits": 38,
+        "claims": 39,
+        "citations": 47,
+        "sources": 9
+      },
+      "errors": [
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/reviewerId : must be string.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/reviewerType : must be equal to constant.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/reviewerProfile : must be equal to constant.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/reviewerRole : must be equal to constant.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/reviewedCandidateHash : must be string.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/status : must be equal to one of the allowed values.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/claimSourceVerdicts : must NOT have fewer than 1 items.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/evidenceRef : must be string.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/evidenceSha256 : must be string.",
+        "La matière sensible exige une revue par un agent IA identifié.",
+        "La revue sensible doit être produite par le profil metier.",
+        "Le reviewer IA doit être relié à une carte Kanban traçable.",
+        "La revue IA doit déclarer le rôle interne reviewer-metier-memlia, sans qualification professionnelle humaine.",
+        "La matière sensible exige le verdict explicite AI_REVIEW_PASS ; FAIL, ND et PASS historique ferment le gate.",
+        "La revue IA ne correspond pas au candidat exact (259f8afeaf88c64bd5e1cb521adf45ae8dd595a6074b0b8e3864846c66f2e98b).",
+        "Claim sensible claim-t-dsn : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-dsn-val : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-compte-rendu-metier-dsn : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-annule-et-remplace-dsn : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-donnee-personnelle : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-minimisation-des-donnees : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-anonymisation : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-pseudonymisation : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-recouvrement-amiable : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-annule-et-remplace-dsn-commonConfusion : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-donnee-personnelle-context : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-donnee-personnelle-exampleFictitious : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-donnee-personnelle-commonConfusion : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-minimisation-des-donnees-commonConfusion : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-anonymisation-commonConfusion : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-pseudonymisation-context : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-pseudonymisation-commonConfusion : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-t-recouvrement-amiable-commonConfusion-sequence : verdict IA claim/source traçable absent ou dupliqué.",
+        "La revue métier IA doit contenir exactement un verdict traçable par couple claim/source.",
+        "La preuve de revue IA est absente, illisible, de hash divergent ou ne retrace pas le verdict exact."
+      ]
+    },
+    {
+      "path": "editorial/resources/hub/manifest.json",
+      "pass": false,
+      "phase": "qa",
+      "formatAdapter": "H",
+      "counts": {
+        "blogSkills": 31,
+        "seoSkills": 24,
+        "coreSkills": 19,
+        "gates": 7,
+        "renderedUnits": 3,
+        "claims": 10,
+        "citations": 10,
+        "sources": 6
+      },
+      "errors": [
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/reviewerId : must be string.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/reviewerType : must be equal to constant.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/reviewerProfile : must be equal to constant.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/reviewerRole : must be equal to constant.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/reviewedCandidateHash : must be string.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/status : must be equal to one of the allowed values.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/claimSourceVerdicts : must NOT have fewer than 1 items.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/evidenceRef : must be string.",
+        "Schéma /claimsEvidence/sensitiveMatter/businessReview/evidenceSha256 : must be string.",
+        "La matière sensible exige une revue par un agent IA identifié.",
+        "La revue sensible doit être produite par le profil metier.",
+        "Le reviewer IA doit être relié à une carte Kanban traçable.",
+        "La revue IA doit déclarer le rôle interne reviewer-metier-memlia, sans qualification professionnelle humaine.",
+        "La matière sensible exige le verdict explicite AI_REVIEW_PASS ; FAIL, ND et PASS historique ferment le gate.",
+        "La revue IA ne correspond pas au candidat exact (8868541d848ba7f3b536fc0d418d69c5cface14431ef9234ffd6ada472b104c0).",
+        "Claim sensible claim-h-dsn-deadline-summary-2 : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-h-dsn-deadline-summary-3 : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-h-dsn-deadline-summary-4 : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-h-dsn-deadline-summary-5 : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-h-social-monitoring-summary-2 : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-h-social-monitoring-summary-3 : verdict IA claim/source traçable absent ou dupliqué.",
+        "Claim sensible claim-h-social-monitoring-summary-4 : verdict IA claim/source traçable absent ou dupliqué.",
+        "La revue métier IA doit contenir exactement un verdict traçable par couple claim/source.",
+        "La preuve de revue IA est absente, illisible, de hash divergent ou ne retrace pas le verdict exact."
+      ]
+    }
+  ]
+}

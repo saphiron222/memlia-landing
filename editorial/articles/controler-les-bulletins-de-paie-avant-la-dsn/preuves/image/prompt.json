@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "0a341080fd998fa54364ab0dfd47440a0f6eb8e724242abd6a3dfa8761694a85",
-  "manifestSha256": "ecefb651ad49f8b563833d6e1a7e1512b89770c4f16e05e45390f7eb86d193b4",
+  "articleSha256": "4c36eb08c035c10a78ae83de9776a64526ca72d5758b72ed7bf98f3f976d2a79",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
   "kind": "image-prompt",
   "status": "PASS",
   "checkedAt": "2026-09-13",
@@ -10,5 +10,12 @@
     "Le brief décrit le sujet, la composition, la palette, les interdits et le contexte de lecture en vignette."
   ],
   "engine": "image_generate",
-  "prompt": "Trois panneaux comptables : pièces/variables, comparaison mensuelle avec exception séparée, validation technique vers un paquet électronique."
+  "prompt": "Trois panneaux comptables : pièces/variables, comparaison mensuelle avec exception séparée, validation technique vers un paquet électronique.",
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/image/prompt.json",
+    "originalSha256": "6c2eb773d3933b84855efd8e88b272e9af9173537c491dd6cd39d073a1a0c1c8",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
 }

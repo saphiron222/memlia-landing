@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "articleSha256": "4c36eb08c035c10a78ae83de9776a64526ca72d5758b72ed7bf98f3f976d2a79",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
+  "kind": "skill",
+  "status": "PASS",
+  "checkedAt": "2026-09-13",
+  "observations": [
+    "Le livrable amont scellé et l’intégration courante documentent l’exécution de blog-geo sur ce candidat exact."
+  ],
+  "skill": "blog-geo",
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/skills/blog-geo.json",
+    "originalSha256": "50f2f4f4aa9ec7716bea2ba58292784a8a0be16943e78d18a1ed651d93656187",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

@@ -1,5 +1,18 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Claude Code — 2026-09-16 — reprise des cartes Hermes, plan de chantier
+
+- Hermes figé depuis le 15/09 12:26 (auth Codex perdue : workers rc=0 × 5, disjoncteur). Les 25 cartes landing
+  ouvertes seront exécutées dans Claude Code et closes par `hermes kanban complete` avec preuves.
+- Plan : `~/memlia-vault/10-memlia/chantiers/site-memlia-fr/plan.md` (phases 0 à 3, protocole par carte). Ordre :
+  hygiène du kanban → A3 (t_46ed91b5 → t_cb5e619c) → Ressources (t_391e2204 → … → t_4cd25435) ∥ site v2 docs
+  (t_74efbe3a → t_42bc3eed) → site v2 code (t_c2262a1b → t_80055166 → t_4659b272).
+- Faits mesurés : prod = 939464c = origin/main ; `main` local +11 commits docs/tests ; article 3, /ressources et
+  /glossaire → 404 en prod ; preview A3 6c8f8a89 vivante en noindex ; téléphone encore dans mentions légales sur
+  `main` (retrait b6ee043 à intégrer avec la release Ressources).
+- Aucun push, aucune carte modifiée, aucun code touché.
+
+
 ## Hermes — 2026-09-15 — intégration des branches abandonnées, t_bb13ea9f
 
 - Inventaire trié intégralement : 36 branches, dont 10 `INTEGRER`, 26 `OBSOLETE`, 0 à décider. Verdicts et motifs dans `docs/qa/integration-branches-abandonnees-2026-09-15.md`.
@@ -7,6 +20,20 @@
 - `main` memlia-desk contient les sept branches retenues, le descendant de preuve S52 puis sa clôture `wt/t_d8660ef0` ; `git cherry` rend zéro commit restant. Déclaratif : Vitest 58 fichiers/1 532 tests, TypeScript 0 erreur ; parité 78 entrées, 71 couvertes, 5 écartées, 2 remplacées.
 - Les worktrees des 36 branches sont retirés après contrôle de propreté. Deux worktrees S52 auxiliaires hors inventaire restent volontairement présents car ils contiennent des preuves non suivies.
 - Aucun push ni déploiement. Le serveur de preview local a été arrêté.
+## Hermes — 2026-09-15 — fraîcheur R4, t_54774b16
+
+- Autorité courante : articles publics byte-identiques à `939464c`, Kevin Kitanga, `brouillon:false`. Les anciennes références 92ec8350 du paragraphe suivant sont historiques.
+- Dossiers migrés sans legacy avec reçus complets d'adoption, sources historiques datées du 13 inchangées et limites explicites : aucune nouvelle recherche/fact-check, aucune attestation ni autorisation. Gates preview/production fermés.
+- Recette fraîche : Blog 2/2, Python 56/56, Blog Node 82/82 + rendu 1/1, Ressources 35/35, Playwright 98/98. H/T 41 unités/49 claims/57 citations ; QA/build complet rouges exclusivement businessReview PENDING, aucune erreur liaison/buildOutput.
+- Rapport courant : `docs/qa/hub-ressources/freshness-r4-exec.md`, preuves hashées associées. Commit local exact et état propre à lire dans le handoff t_54774b16 ; aucune publication. Adoption t_391e2204 puis revue technique t_8f07fd85, sans nouveau candidat.
+
+## Hermes — 2026-09-15 — candidat Ressources v3, t_d078dd62
+
+- Candidat v3 repris dans le worktree landing isolé, sans commit, push ni déploiement : 41 unités, 49 claims, 57 citations et 12 sources uniques ; relations unit↔claim↔citation↔source bidirectionnelles, zéro orpheline selon l’oracle indépendant (5/5).
+- Correctifs post-contre-revue : restauration octet pour octet des deux dossiers Blog autoritaires du commit `92ec8350bb7810bd64f6a0507dc02efd1ebdf244` ; doctrine de recouvrement atomisée en deux affirmations ; reçu de build lié au snapshot et vérification explicite de chaque code de sortie. Le scelleur préconstruit le candidat draft, écrit manifeste/reçu/registre, puis fait passer la chaîne complète et refuse toute divergence du bundle.
+- Vérifications fraîches : scelleur code 0 (Astro 9 pages, Python 56/56, médias 23/23, preview-export 4/4, Blog 68/68 + rendu 1/1, Ressources 35/35), `npm run check` 0 erreur/0 warning/1 hint, audit Blog 68/68, oracle v3 5/5, Playwright 100/100 à 375/1440. Captures Ressources mobile et Glossaire desktop relues ; pas de défaut majeur constaté.
+- `resource:audit:qa` et le build complet candidat rendent le code 1 uniquement sur 59 occurrences `businessReview`/`AI_REVIEW_PASS` volontairement absentes ; paie/social reste non attesté et aucune validation métier n’est fabriquée. Score mécanique : 85/100 brut, 100/100 normalisé ; aucun score final tant que la gate métier manque. SERP Hub desktop reste ND historique.
+- Rapport exhaustif : `docs/qa/hub-ressources/metier-fix-c-astra.md`. Registre : `docs/qa/hub-ressources/metier-fix-c-register.json`. Suite précréée : orchestration `t_c58b168b` ; ne pas fabriquer la revue métier et ne pas publier.
 
 ## Hermes — 2026-09-14 — santé production, t_cde15777
 

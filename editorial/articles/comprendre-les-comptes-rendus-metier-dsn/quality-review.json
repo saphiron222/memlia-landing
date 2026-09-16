@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
+  "reviewedAt": "2026-09-15",
+  "reviewer": "independent-gpt-subagent",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 94,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {"score":29,"max":30},
+    "seoOptimization": {"score":25,"max":25},
+    "eeatSignals": {"score":12,"max":15},
+    "technicalElements": {"score":14,"max":15},
+    "aiCitationReadiness": {"score":14,"max":15}
+  },
+  "evidence": [
+    "Couverture complète du cycle post-dépôt, tableau AEE/ARE/CCO/BAN/CRM, méthode en six étapes, registre, cas fictifs, FAQ et synthèse.",
+    "Titre, intention, hiérarchie, URL, meta, maillage interne et cinq liens externes officiels sont cohérents.",
+    "33 claims : 21 officiels vérifiés et 12 méthodes bornées ; zéro non vérifié ou rejeté.",
+    "Build et 44 tests de preuve réussis ; variantes d’image, JSON-LD et image sociale article-spécifique vérifiés.",
+    "Six largeurs sans débordement ; trois captures inspectées ; Playwright 79/79.",
+    "Sections answer-first, tableaux, FAQ, terminologie stable et limites explicites."
+  ],
+  "reservations": [
+    "Aucune attestation métier indépendante en paie ou droit social : limite affichée et retenue dans le score E-E-A-T.",
+    "Aucun score Lighthouse archivé pour l’URL locale.",
+    "Aucun test de citation réelle par un moteur IA ; le score mesure seulement la préparation éditoriale."
+  ],
+  "verdict": "Exceptionnel, publiable comme contenu non attesté ; score heuristique éditorial, sans promesse de classement."
+}

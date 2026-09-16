@@ -1,0 +1,510 @@
+{
+  "version": 1,
+  "blog": [
+    {
+      "skill": "blog-strategy",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-strategy.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-brand",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-brand.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-persona",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-persona.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-discourse",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun signal de discussion praticien ou UGC n’est requis pour cette réécriture, qui n’utilise aucune source communautaire."
+    },
+    {
+      "skill": "blog-google",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "L’accès GSC a été refusé et Kevin autorise cet état ND pour la preview ; aucune métrique Search n’est créditée."
+    },
+    {
+      "skill": "blog-calendar",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-calendar.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-cluster",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-cluster.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-taxonomy",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-taxonomy.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-brief",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-brief.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-outline",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-outline.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-notebooklm",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun notebook n’a été fourni, autorisé ou rendu nécessaire par les sources primaires disponibles."
+    },
+    {
+      "skill": "blog-write",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "L’URL et l’article existent déjà ; le workflow applicable est blog-rewrite, pas la création d’un article neuf."
+    },
+    {
+      "skill": "blog-rewrite",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-rewrite.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-factcheck",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-factcheck.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-style",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun profil de style personnel validé n’existe ; la voix est contrôlée par les règles Memlia et le diagnostic éditorial."
+    },
+    {
+      "skill": "blog-chart",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune série chiffrée fiable n’est utile ; les matrices sémantiques portent l’information sans graphique."
+    },
+    {
+      "skill": "blog-image",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-image.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-schema",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-schema.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-seo-check",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-seo-check.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-geo",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-geo.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-analyze",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-analyze.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-audit",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-audit.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-cannibalization",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-cannibalization.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-decay",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune série GSC n’est disponible ; la date seule ne permet pas de conclure à un déclin du contenu."
+    },
+    {
+      "skill": "blog-flow",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-flow.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "blog-repurpose",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun post, e-mail ou format de redistribution n’est mandaté dans ce chantier de réécriture."
+    },
+    {
+      "skill": "blog-audio",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun format audio n’est mandaté ni utile à la preuve de cet article écrit."
+    },
+    {
+      "skill": "blog-multilingual",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le site et l’article sont uniquement en français ; aucune stratégie multilingue n’est décidée."
+    },
+    {
+      "skill": "blog-translate",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune traduction de l’article français n’est demandée ou autorisée."
+    },
+    {
+      "skill": "blog-localize",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune locale distincte du français national n’est prévue pour cet article."
+    },
+    {
+      "skill": "blog-locale-audit",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le corpus est monolingue et ne contient aucune variante locale à comparer."
+    }
+  ],
+  "seo": [
+    {
+      "skill": "seo-plan",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-plan.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-google",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La permission GSC est refusée ; l’état reste ND et aucune impression, clic ou position n’est interprété."
+    },
+    {
+      "skill": "seo-content-brief",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-content-brief.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-cluster",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-cluster.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-sxo",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-sxo.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-page",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-page.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-content",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-content.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-technical",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-technical.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-schema",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-schema.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-images",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-images.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-sitemap",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-sitemap.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-geo",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-geo.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-flow",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-flow.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-audit",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-audit.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-drift",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Une baseline technique existe mais aucune série de performance ne permet de mesurer une dérive."
+    },
+    {
+      "skill": "seo-backlinks",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun export ni endpoint de backlinks n’est disponible ; leur nombre reste inconnu et n’est jamais assimilé à zéro."
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le candidat n’est ni une comparaison de produits ni une page d’alternatives concurrentes."
+    },
+    {
+      "skill": "seo-local",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La requête visée est nationale et ne porte aucune intention ville, région ou fiche établissement."
+    },
+    {
+      "skill": "seo-maps",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun Map Pack, itinéraire ou besoin géographique n’apparaît dans l’intention de recherche."
+    },
+    {
+      "skill": "seo-hreflang",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Une seule version française existe ; aucune variante linguistique ou régionale ne nécessite hreflang."
+    },
+    {
+      "skill": "seo-ecommerce",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Memlia vend un service B2B ; cette page n’est ni un catalogue, ni une fiche produit transactionnelle, ni un checkout."
+    },
+    {
+      "skill": "seo-programmatic",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le chantier réécrit une URL historique unique et ne génère aucune collection de pages à l’échelle."
+    },
+    {
+      "skill": "seo-dataforseo",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-dataforseo.json",
+      "checkedAt": "2026-09-13",
+      "justification": null
+    },
+    {
+      "skill": "seo-image-gen",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La politique Memlia impose image_generate ; le pipeline seo-image-gen n’est pas utilisé pour cette image."
+    }
+  ],
+  "contradictions": [],
+  "adoption": {
+    "originalPath": "preuves/inherited/skills.json",
+    "originalSha256": "157f2c1d165ecd650cf8a069b61f457624f8da9069eae2cbe965c337e20b1a84",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

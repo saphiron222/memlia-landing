@@ -1,0 +1,58 @@
+{
+  "verification": "PASS — local receipt identity and exact POST parameters; collection FAIL/ND",
+  "newNetworkCalls": 0,
+  "retryPostCount": 2,
+  "retryPostCostUSD": "0.004",
+  "allSixPostCostUSD": "0.012",
+  "getCostCaveat": "GET cost fields are archived separately, not assumed to be incremental charges; no account invoice checked.",
+  "rows": [
+    {
+      "name": "hub-desktop-retry-post",
+      "sessionId": "20260908_173502_d4c1517a",
+      "messageId": 22654,
+      "receiptAt": "2026-09-14T16:59:10.015263+00:00",
+      "taskId": "09141658-1656-0139-0000-c618512e52da",
+      "status": 40101,
+      "message": "Internal SE Server Error.",
+      "costFieldUSD": "0.002",
+      "uniqueOrganicUrls": 0,
+      "receiptSha256": "3c3a116730c6096d8b4c3c93f6ea3127eb5b2c8aff701ca4a87ea338ca31be7f"
+    },
+    {
+      "name": "glossaire-mobile-retry-post",
+      "sessionId": "20260908_173502_d4c1517a",
+      "messageId": 22655,
+      "receiptAt": "2026-09-14T16:59:12.481815+00:00",
+      "taskId": "09141659-1656-0139-0000-bcbd92fefda5",
+      "status": 20000,
+      "message": "Ok.",
+      "costFieldUSD": "0.002",
+      "uniqueOrganicUrls": 10,
+      "receiptSha256": "946abcb1d23ebbc43ba5f0dbf550aed119234a6db7f125abf41bf35f0df09e93"
+    },
+    {
+      "name": "hub-desktop-retry-get",
+      "sessionId": "20260908_173502_d4c1517a",
+      "messageId": 22700,
+      "receiptAt": "2026-09-14T17:00:41.953040+00:00",
+      "taskId": "09141658-1656-0139-0000-c618512e52da",
+      "status": 40101,
+      "message": "Internal SE Server Error.",
+      "costFieldUSD": "0",
+      "uniqueOrganicUrls": 0,
+      "receiptSha256": "6a9a2010e57621126655f0bf9690f071a84fbbb91116af4b7504f28f8af722b2"
+    },
+    {
+      "name": "glossaire-mobile-retry-get",
+      "sessionId": "20260908_173502_d4c1517a",
+      "messageId": 22701,
+      "receiptAt": "2026-09-14T17:00:42.256702+00:00",
+      "taskId": "09141659-1656-0139-0000-bcbd92fefda5",
+      "status": 20000,
+      "message": "Ok.",
+      "costFieldUSD": "0.002",
+      "uniqueOrganicUrls": 10,
+      "receiptSha256": "2db9a7f4440f9ff75a067dc703722f641d3b51d00b674c308c62d4cb42845a1d"
+    }
+  ]
+}

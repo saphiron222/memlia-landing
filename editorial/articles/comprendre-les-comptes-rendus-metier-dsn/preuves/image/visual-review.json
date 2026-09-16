@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-15",
+  "reviewer": "vision_analyze",
+  "score": 95,
+  "criteria": [
+    {"name":"direction artistique Memlia","status":"PASS","note":"Diorama 3D isométrique, crème papier, vert Memlia, graphite et translucides cohérents."},
+    {"name":"dépôt déjà franchi","status":"PASS","note":"Le fichier abstrait est représenté à gauche du mécanisme, sans scène d’envoi en cours."},
+    {"name":"retours multiples","status":"PASS","note":"Plusieurs plaques et cartes distinctes forment une pile de retours."},
+    {"name":"anomalie isolée","status":"PASS","note":"Une pièce gris-graphite sort visuellement du flux principal."},
+    {"name":"arbitrage humain","status":"PASS","note":"La bifurcation et le jeton choisi suggèrent une décision sans automatisation autonome."},
+    {"name":"interdits","status":"PASS","note":"Aucun texte, chiffre, logo, personne, donnée réelle, fausse interface ou symbole d’envoi automatique."}
+  ],
+  "p0": [],
+  "limitations": [
+    "Le choix humain est métaphorique plutôt que figuratif ; l’alt text porte la sémantique explicite.",
+    "L’illustration ne prétend pas reproduire un CRM ou une interface réelle."
+  ]
+}

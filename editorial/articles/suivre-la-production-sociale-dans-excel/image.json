@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
-  "articleSha256": "256952640851bcdb9f23a53d526e149ee1bd7e706e601712fe7c6020a23a61a8",
-  "manifestSha256": "5fea4b437d967080b4068d91e0420144f203af566d0100ad4869fbb4d46a3cfe",
+  "articleSha256": "56a5f5a1e19cd327558d8c024b3570643bc2f233cfce02d117c0ca250430103b",
+  "manifestSha256": "3b4c63f902694ce0015334cefe483cedc0dbca9abe14fbec62005b0d3c56b6a9",
   "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
@@ -63,5 +63,12 @@
   "directionArt": 18,
   "semanticRelevance": 23,
   "p0": [],
-  "kevinApproved": true
+  "kevinApproved": true,
+  "adoption": {
+    "originalPath": "preuves/inherited/image.json",
+    "originalSha256": "2e50923c981dbd7dd8a546dc2121fbe85ec10fb08a651b76c47c1d19408836e3",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
 }

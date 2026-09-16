@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "articleSha256": "4c36eb08c035c10a78ae83de9776a64526ca72d5758b72ed7bf98f3f976d2a79",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
+  "kind": "cannibalization",
+  "status": "PASS",
+  "checkedAt": "2026-09-13",
+  "observations": [
+    "Les deux articles conservent des requêtes, tâches et angles distincts avec un maillage croisé vérifié."
+  ],
+  "comparedUrls": [
+    "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel"
+  ],
+  "decision": "DIFFERENTIATE_AND_LINK",
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/cannibalization.json",
+    "originalSha256": "4eeabc6bfd546882e91ace9c6f07695b635a43b8f5164f8f6b72f5fb7666b9a6",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

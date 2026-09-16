@@ -64,3 +64,20 @@ test('refuse un HTML sans meta robots unique plutôt que de publier une protecti
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+test('refuse une preview candidat sans rapport de gate PASS correspondant', () => {
+  const { root, dist, target } = fixture();
+  try {
+    assert.throws(
+      () => preparePreview({ source: dist, target, candidateSlug: 'article-candidat', gateReport: join(root, 'gate.json') }),
+      /gate PASS/
+    );
+    writeFileSync(join(root, 'gate.json'), JSON.stringify({ slug: 'autre-article', pass: true }));
+    assert.throws(
+      () => preparePreview({ source: dist, target, candidateSlug: 'article-candidat', gateReport: join(root, 'gate.json') }),
+      /gate PASS/
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});

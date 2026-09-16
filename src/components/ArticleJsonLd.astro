@@ -1,7 +1,6 @@
 ---
-import { SITE, OG_IMAGE } from '@/data/site.mjs';
+import { SITE } from '@/data/site.mjs';
 import { BLOG } from '@/data/blog.mjs';
-import { IMAGES, cheminImage, hauteurPour } from '@/data/images.mjs';
 import type { Auteur } from '@/data/auteurs';
 
 /**
@@ -16,18 +15,19 @@ interface Props {
   datePublication: Date;
   dateMiseAJour: Date;
   auteur: Auteur;
-  image: keyof typeof IMAGES;
+  imageUrl: string;
+  imageWidth: number;
+  imageHeight: number;
+  imageAlt: string;
   motsCles: string[];
   sujets: string[];
   nombreMots: number;
 }
-const { chemin, titre, description, datePublication, dateMiseAJour, auteur, image, motsCles, sujets, nombreMots } = Astro.props;
+const { chemin, titre, description, datePublication, dateMiseAJour, auteur, imageUrl, imageWidth, imageHeight, imageAlt, motsCles, sujets, nombreMots } = Astro.props;
 const u = `${SITE.url}/`;
 const url = `${SITE.url}${chemin}`;
 /** Datetime ISO 8601 complet (UTC), aligné sur les balises Open Graph et le lastmod du sitemap. */
 const iso = (d: Date) => d.toISOString();
-const visuel = IMAGES[image];
-const largeur = Math.max(...visuel.largeurs);
 const personne = `${SITE.url}${BLOG.chemin}${auteur.ancre}`;
 
 const graph = {
@@ -48,12 +48,12 @@ const graph = {
       publisher: { '@id': `${u}#organization` },
       image: {
         '@type': 'ImageObject',
-        url: `${SITE.url}${cheminImage(image, largeur, 'webp')}`,
-        width: largeur,
-        height: hauteurPour(visuel, largeur),
-        caption: visuel.alt,
+        url: imageUrl,
+        width: imageWidth,
+        height: imageHeight,
+        caption: imageAlt,
       },
-      thumbnailUrl: OG_IMAGE.url,
+      thumbnailUrl: imageUrl,
       articleSection: sujets,
       keywords: motsCles,
       wordCount: nombreMots,

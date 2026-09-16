@@ -1,0 +1,222 @@
+{
+  "required": true,
+  "reviewerType": "ai-agent",
+  "reviewerProfile": "metier",
+  "reviewerId": "t_91444ae1",
+  "reviewerRole": "reviewer-metier-memlia",
+  "distinctFrom": [
+    "author",
+    "editorialReviewer",
+    "sourceClassifier"
+  ],
+  "reviewedCandidateHash": "4b918cecd5a5fa2c6dae734570c3a45578635240f008e8da1e52edad92475bdc",
+  "status": "AI_REVIEW_PASS",
+  "claimSourceVerdicts": [
+    {
+      "claimId": "claim-t-dsn",
+      "sourceId": "source-net-dsn-overview",
+      "citationIds": [
+        "citation-t-dsn-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "6501b347460ffc6f155702f53fe317b17d1df81cd10c8eebc8cec2448ee7d684",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-dsn-val",
+      "sourceId": "source-net-dsn-val",
+      "citationIds": [
+        "citation-t-dsn-val-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-compte-rendu-metier-dsn",
+      "sourceId": "source-net-crm",
+      "citationIds": [
+        "citation-t-compte-rendu-metier-dsn-1",
+        "citation-t-compte-rendu-metier-dsn-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-annule-et-remplace-dsn",
+      "sourceId": "source-net-annule",
+      "citationIds": [
+        "citation-t-annule-et-remplace-dsn-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-donnee-personnelle",
+      "sourceId": "source-cnil-donnee",
+      "citationIds": [
+        "citation-t-donnee-personnelle-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "b40a155d3aba77d6b8c6a92391edaeab5861fe3b74327e564c90d0ec9cdf5a6e",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-minimisation-des-donnees",
+      "sourceId": "source-cnil-rgpd",
+      "citationIds": [
+        "citation-t-minimisation-des-donnees-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fed6712016214922b4eb8c294bb96b7b9bc7a88b9943dccb6ea368b8f414a3ee",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-anonymisation",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-anonymisation-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-pseudonymisation",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-pseudonymisation-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-recouvrement-amiable",
+      "sourceId": "source-service-public-recouvrement",
+      "citationIds": [
+        "citation-t-recouvrement-amiable-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "2c0a4012d8c3750f8054d7b17ee2f18b924670156119edc6752d6a4f3ce1274e",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-annule-et-remplace-dsn-commonConfusion",
+      "sourceId": "source-net-annule",
+      "citationIds": [
+        "citation-t-annule-et-remplace-dsn-commonConfusion-1",
+        "citation-t-annule-et-remplace-dsn-commonConfusion-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-donnee-personnelle-context",
+      "sourceId": "source-cnil-donnee",
+      "citationIds": [
+        "citation-t-donnee-personnelle-context-1",
+        "citation-t-donnee-personnelle-context-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "b40a155d3aba77d6b8c6a92391edaeab5861fe3b74327e564c90d0ec9cdf5a6e",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-donnee-personnelle-exampleFictitious",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-donnee-personnelle-exampleFictitious-1",
+        "citation-t-donnee-personnelle-exampleFictitious-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-donnee-personnelle-commonConfusion",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-donnee-personnelle-commonConfusion-1",
+        "citation-t-donnee-personnelle-commonConfusion-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-minimisation-des-donnees-commonConfusion",
+      "sourceId": "source-cnil-rgpd",
+      "citationIds": [
+        "citation-t-minimisation-des-donnees-commonConfusion-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fed6712016214922b4eb8c294bb96b7b9bc7a88b9943dccb6ea368b8f414a3ee",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-anonymisation-commonConfusion",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-anonymisation-commonConfusion-1",
+        "citation-t-anonymisation-commonConfusion-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-pseudonymisation-context",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-pseudonymisation-context-1",
+        "citation-t-pseudonymisation-context-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-pseudonymisation-commonConfusion",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-pseudonymisation-commonConfusion-1",
+        "citation-t-pseudonymisation-commonConfusion-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    },
+    {
+      "claimId": "claim-t-recouvrement-amiable-commonConfusion-sequence",
+      "sourceId": "source-service-public-recouvrement",
+      "citationIds": [
+        "citation-t-recouvrement-amiable-commonConfusion-sequence-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "2c0a4012d8c3750f8054d7b17ee2f18b924670156119edc6752d6a4f3ce1274e",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
+      "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+    }
+  ]
+}

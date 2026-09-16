@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "commands": [
+    {
+      "command": "npx astro build",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/strip-briefs.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build:site",
+      "exitCode": 0
+    }
+  ],
+  "startedAt": "2026-09-16T05:43:55.685Z",
+  "endedAt": "2026-09-16T05:44:34.116Z",
+  "result": "PASS",
+  "surfaces": {
+    "H": {
+      "sourceBundleDigest": "10cd5f1ecde60c03ed573274c565ae544362dfd33b399b408606158b0fe8e625",
+      "assetBundleDigest": "62730565e747db359ef83dd42a3c8f145e1ae1605d40d66dc0bc3725043b6d2d",
+      "configBundleDigest": "753d9e3bd567d6f5f882d194c2aa0a6786cf58b2dad0a6318fb216ec1a73fbdf",
+      "outputDigest": "964ffa5782a7d636b75d3df1c72a8c67ffa73a8f73bcce26c3c67ee888610f7b"
+    },
+    "T": {
+      "sourceBundleDigest": "6d2c2db8de4271b374d4ab462a54e88dd4b7955d1607912e49b89203b62e7019",
+      "assetBundleDigest": "6cdf4107b70ae3dd623c7a66a7cfbe02272ec46c6c63e179fe8f03407adb5f14",
+      "configBundleDigest": "f1c5ab55eeccdf89b116e88aeb8181e4ea3ad6c6fa870997f57dde086d27cccc",
+      "outputDigest": "0f4547693a481ef8527c5345f7508a89834f9b6d4ade2a66fc91fcf1589e4bc6"
+    }
+  }
+}
