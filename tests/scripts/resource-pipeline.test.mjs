@@ -72,8 +72,10 @@ test('la QA du candidat courant ne réclame ni preview, ni GO, ni release', () =
   for (const directory of ['hub', 'glossaire']) {
     const path = join(process.cwd(), 'editorial/resources', directory, 'manifest.json');
     const report = auditResourceManifestFile(path, { root: process.cwd(), phase: 'qa' });
-    assert.equal(report.pass, false);
-    assert.ok(hasError(report.errors, 'agent IA'));
+    // Depuis le scellement de la revue metier du 16/09/2026, la QA passe. Ce test garde son
+    // role : verifier qu aucune exigence de preview, de GO ou de release ne fuit dans la QA.
+    assert.equal(report.pass, true, report.errors.join('\n'));
+    assert.equal(hasError(report.errors, 'agent IA'), false, report.errors.join('\n'));
     assert.equal(hasError(report.errors, 'preview exige'), false, report.errors.join('\n'));
     assert.equal(hasError(report.errors, 'GO Kevin'), false, report.errors.join('\n'));
     assert.equal(hasError(report.errors, 'release exige'), false, report.errors.join('\n'));

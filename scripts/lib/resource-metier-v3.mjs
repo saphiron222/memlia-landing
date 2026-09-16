@@ -27,7 +27,7 @@ export function expandV3Evidence({ root, glossary, entries, sources, official, c
     if (!text) throw new Error(`Champ supplémentaire absent : ${slug}:${field}`);
     const spec = reference ? structuredClone(official[reference]) : null;
     if (reference === 'pseudonymisation') spec.citations.push('Les données concernées conservent donc un caractère personnel. L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.');
-    if (reference === 'donnee-personnelle') spec.citations.push('Une personne physique peut être identifiée directement ou indirectement.');
+    if (reference === 'donnee-personnelle') spec.citations.push('Une personne physique peut être identifiée : directement (exemple : nom et prénom); indirectement (exemple : par un numéro de téléphone ou de plaque d’immatriculation).');
     if (reference === 'annule-et-remplace-dsn') spec.citations.push("Si la déclaration « annule et remplace » concerne un signalement d'événement, il n’y a pas de date limite à son envoi (envoi de la déclaration « annule et remplace » dès que nécessaire).");
     const base = entries.find((entry) => entry.id === `T-DEF-${slug.toUpperCase()}`);
     const id = `${slug}-${field}`;

@@ -391,12 +391,12 @@
       "citationIds": [
         "citation-h-description-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Promesse éditoriale du Hub ; elle décrit la posture des ressources.",
         "regime": "Positionnement éditorial Memlia, sans portée réglementaire autonome.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les résumés réglementaires rendus par le Hub possèdent leurs propres claims et preuves.",
         "sourceIds": [
           "source-hub-memlia"
@@ -416,12 +416,12 @@
       "citationIds": [
         "citation-claim-h-dsn-deadline-summary-1-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Méthode ou doctrine propre au service Memlia décrit.",
         "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les règles DSN et CNIL sont séparées dans les autres sous-claims.",
         "sourceIds": [
           "source-summaries-memlia"
@@ -441,12 +441,12 @@
       "citationIds": [
         "citation-claim-h-dsn-deadline-summary-2-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "DSN mensuelle dans la fenêtre propre à l’échéance de l’entreprise.",
         "regime": "DSN mensuelle annule-et-remplace, distincte des signalements d’événement.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les signalements d’événement suivent une autre fenêtre, explicitée près du claim dans le glossaire.",
         "sourceIds": [
           "source-net-annule"
@@ -466,12 +466,12 @@
       "citationIds": [
         "citation-claim-h-dsn-deadline-summary-3-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Signalements d’événement en DSN.",
         "regime": "Annule-et-remplace de signalement, et non DSN mensuelle.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Ne pas appliquer cette absence de limite à la DSN mensuelle.",
         "sourceIds": [
           "source-net-annule"
@@ -491,12 +491,12 @@
       "citationIds": [
         "citation-claim-h-dsn-deadline-summary-4-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Fichiers DSN contrôlés avant dépôt, selon le cahier technique et le JMN applicables.",
         "regime": "Contrôle de norme DSN selon le cahier technique et le JMN applicables au fichier.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Un contrôle de norme ne prouve pas l’exactitude métier des variables de paie.",
         "sourceIds": [
           "source-net-dsn-val"
@@ -516,12 +516,12 @@
       "citationIds": [
         "citation-claim-h-dsn-deadline-summary-5-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Déclarations reçues et analysées par les organismes destinataires.",
         "regime": "Comptes rendus métier émis par les organismes destinataires d’une DSN.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les CRM diffèrent selon l’organisme ; leur silence ne garantit pas la justesse générale.",
         "sourceIds": [
           "source-net-crm"
@@ -541,12 +541,12 @@
       "citationIds": [
         "citation-claim-h-social-monitoring-summary-1-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Méthode ou doctrine propre au service Memlia décrit.",
         "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les règles DSN et CNIL sont séparées dans les autres sous-claims.",
         "sourceIds": [
           "source-summaries-memlia"
@@ -566,12 +566,12 @@
       "citationIds": [
         "citation-claim-h-social-monitoring-summary-2-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Dispositif qui permet le contrôle de l’activité du personnel ; consultation CSE formulée ici pour les entreprises privées de 50 salariés et plus.",
         "regime": "Contrôle de l’activité du personnel et consultation du CSE dans le secteur privé.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La qualification dépend du dispositif ; les exceptions légales et les autres instances du secteur public ne sont pas généralisées au Hub.",
         "sourceIds": [
           "source-cnil-controle-activite"
@@ -591,12 +591,12 @@
       "citationIds": [
         "citation-claim-h-social-monitoring-summary-3-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Dispositif qui permet le contrôle de l’activité du personnel ; consultation CSE formulée ici pour les entreprises privées de 50 salariés et plus.",
         "regime": "Contrôle de l’activité du personnel et consultation du CSE dans le secteur privé.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La qualification dépend du dispositif ; les exceptions légales et les autres instances du secteur public ne sont pas généralisées au Hub.",
         "sourceIds": [
           "source-cnil-controle-activite"
@@ -616,12 +616,12 @@
       "citationIds": [
         "citation-claim-h-social-monitoring-summary-4-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Dispositif qui permet le contrôle de l’activité du personnel ; consultation CSE formulée ici pour les entreprises privées de 50 salariés et plus.",
         "regime": "Contrôle de l’activité du personnel et consultation du CSE dans le secteur privé.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La qualification dépend du dispositif ; les exceptions légales et les autres instances du secteur public ne sont pas généralisées au Hub.",
         "sourceIds": [
           "source-cnil-controle-activite"
@@ -641,12 +641,12 @@
       "citationIds": [
         "citation-t-dsn-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Entreprises du secteur privé et fonction publique concernées par la DSN en France.",
         "regime": "Déclaration sociale nominative française et formalités qu’elle remplace.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les déclarations et signalements couverts par la DSN conservent leurs règles propres.",
         "sourceIds": [
           "source-net-dsn-overview"
@@ -666,12 +666,12 @@
       "citationIds": [
         "citation-t-dsn-val-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Fichiers DSN contrôlés avant dépôt, selon le cahier technique et le JMN applicables.",
         "regime": "Contrôle de norme DSN selon le cahier technique et le JMN applicables au fichier.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Un contrôle de norme ne prouve pas l’exactitude métier des variables de paie.",
         "sourceIds": [
           "source-net-dsn-val"
@@ -692,12 +692,12 @@
         "citation-t-compte-rendu-metier-dsn-1",
         "citation-t-compte-rendu-metier-dsn-2"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Déclarations reçues et analysées par les organismes destinataires.",
         "regime": "Comptes rendus métier émis par les organismes destinataires d’une DSN.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les CRM diffèrent selon l’organisme ; leur silence ne garantit pas la justesse générale.",
         "sourceIds": [
           "source-net-crm"
@@ -717,12 +717,12 @@
       "citationIds": [
         "citation-t-annule-et-remplace-dsn-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "DSN mensuelle dans la fenêtre propre à l’échéance de l’entreprise.",
         "regime": "DSN mensuelle annule-et-remplace, distincte des signalements d’événement.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les signalements d’événement suivent une autre fenêtre, explicitée près du claim dans le glossaire.",
         "sourceIds": [
           "source-net-annule"
@@ -742,12 +742,12 @@
       "citationIds": [
         "citation-t-controle-avant-dsn-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -767,12 +767,12 @@
       "citationIds": [
         "citation-t-production-sociale-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -792,12 +792,12 @@
       "citationIds": [
         "citation-t-donnee-personnelle-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Informations se rapportant à une personne physique identifiée ou identifiable.",
         "regime": "Définition des données à caractère personnel au sens du RGPD.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "L’identification peut être directe ou indirecte ; retirer le nom ne suffit pas nécessairement.",
         "sourceIds": [
           "source-cnil-donnee"
@@ -817,12 +817,12 @@
       "citationIds": [
         "citation-t-minimisation-des-donnees-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Traitements de données à caractère personnel, au regard de finalités déterminées.",
         "regime": "Principe de minimisation des données prévu par le RGPD.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Le nécessaire s’apprécie selon la finalité ; une collecte « au cas où » n’est pas justifiée.",
         "sourceIds": [
           "source-cnil-rgpd"
@@ -842,12 +842,12 @@
       "citationIds": [
         "citation-t-anonymisation-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Jeu de données dont l’irréversibilité pratique doit être démontrée.",
         "regime": "Qualification d’anonymisation selon les critères exposés par la CNIL.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Pseudonymisation et agrégation trop fine ne suffisent pas à établir l’anonymat.",
         "sourceIds": [
           "source-cnil-anonymisation"
@@ -867,12 +867,12 @@
       "citationIds": [
         "citation-t-pseudonymisation-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Données personnelles qui ne peuvent plus être attribuées sans information supplémentaire.",
         "regime": "Pseudonymisation de données personnelles au sens du RGPD.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les données restent personnelles et l’opération est réversible.",
         "sourceIds": [
           "source-cnil-anonymisation"
@@ -892,12 +892,12 @@
       "citationIds": [
         "citation-t-agregat-non-nominatif-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -917,12 +917,12 @@
       "citationIds": [
         "citation-t-lettrage-comptable-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -942,12 +942,12 @@
       "citationIds": [
         "citation-t-rapprochement-bancaire-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -967,12 +967,12 @@
       "citationIds": [
         "citation-t-revision-comptable-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -992,12 +992,12 @@
       "citationIds": [
         "citation-t-piece-justificative-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1017,12 +1017,12 @@
       "citationIds": [
         "citation-t-recouvrement-amiable-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Entreprise créancière confrontée à un retard de paiement client.",
         "regime": "Recouvrement amiable d’une créance professionnelle avant action judiciaire.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La relance et la mise en demeure sont distinctes ; aucun envoi automatique sans validation.",
         "sourceIds": [
           "source-service-public-recouvrement"
@@ -1042,12 +1042,12 @@
       "citationIds": [
         "citation-t-regle-de-cabinet-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1067,12 +1067,12 @@
       "citationIds": [
         "citation-t-cas-de-refus-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1092,12 +1092,12 @@
       "citationIds": [
         "citation-t-controle-de-coherence-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1117,12 +1117,12 @@
       "citationIds": [
         "citation-t-schema-de-donnees-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1142,12 +1142,12 @@
       "citationIds": [
         "citation-t-tracabilite-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1167,12 +1167,12 @@
       "citationIds": [
         "citation-t-validation-humaine-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1192,12 +1192,12 @@
       "citationIds": [
         "citation-t-fail-closed-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.",
         "regime": "Convention de vocabulaire ou contrat technique propre au service Memlia décrit.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1217,12 +1217,12 @@
       "citationIds": [
         "citation-t-dsn-commonConfusion-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention interne Memlia appliquée au suivi du cabinet décrit.",
         "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Ne constitue pas une règle juridique ni une garantie de conformité.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1242,12 +1242,12 @@
       "citationIds": [
         "citation-t-dsn-val-commonConfusion-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention interne Memlia appliquée au suivi du cabinet décrit.",
         "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Ne constitue pas une règle juridique ni une garantie de conformité.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1267,12 +1267,12 @@
       "citationIds": [
         "citation-t-compte-rendu-metier-dsn-commonConfusion-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention interne Memlia appliquée au suivi du cabinet décrit.",
         "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Ne constitue pas une règle juridique ni une garantie de conformité.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1293,12 +1293,12 @@
         "citation-t-annule-et-remplace-dsn-commonConfusion-1",
         "citation-t-annule-et-remplace-dsn-commonConfusion-2"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "DSN mensuelle dans la fenêtre propre à l’échéance de l’entreprise.",
         "regime": "DSN mensuelle annule-et-remplace, distincte des signalements d’événement.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les signalements d’événement suivent une autre fenêtre, explicitée près du claim dans le glossaire.",
         "sourceIds": [
           "source-net-annule"
@@ -1319,12 +1319,12 @@
         "citation-t-donnee-personnelle-context-1",
         "citation-t-donnee-personnelle-context-2"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Informations se rapportant à une personne physique identifiée ou identifiable.",
         "regime": "Définition des données à caractère personnel au sens du RGPD.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "L’identification peut être directe ou indirecte ; retirer le nom ne suffit pas nécessairement.",
         "sourceIds": [
           "source-cnil-donnee"
@@ -1345,12 +1345,12 @@
         "citation-t-donnee-personnelle-exampleFictitious-1",
         "citation-t-donnee-personnelle-exampleFictitious-2"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Données personnelles qui ne peuvent plus être attribuées sans information supplémentaire.",
         "regime": "Pseudonymisation de données personnelles au sens du RGPD.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les données restent personnelles et l’opération est réversible.",
         "sourceIds": [
           "source-cnil-anonymisation"
@@ -1371,12 +1371,12 @@
         "citation-t-donnee-personnelle-commonConfusion-1",
         "citation-t-donnee-personnelle-commonConfusion-2"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Données personnelles qui ne peuvent plus être attribuées sans information supplémentaire.",
         "regime": "Pseudonymisation de données personnelles au sens du RGPD.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les données restent personnelles et l’opération est réversible.",
         "sourceIds": [
           "source-cnil-anonymisation"
@@ -1396,12 +1396,12 @@
       "citationIds": [
         "citation-t-minimisation-des-donnees-context-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention interne Memlia appliquée au suivi du cabinet décrit.",
         "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Ne constitue pas une règle juridique ni une garantie de conformité.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1421,12 +1421,12 @@
       "citationIds": [
         "citation-t-minimisation-des-donnees-commonConfusion-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Traitements de données à caractère personnel, au regard de finalités déterminées.",
         "regime": "Principe de minimisation des données prévu par le RGPD.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Le nécessaire s’apprécie selon la finalité ; une collecte « au cas où » n’est pas justifiée.",
         "sourceIds": [
           "source-cnil-rgpd"
@@ -1446,12 +1446,12 @@
       "citationIds": [
         "citation-t-anonymisation-context-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention interne Memlia appliquée au suivi du cabinet décrit.",
         "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Ne constitue pas une règle juridique ni une garantie de conformité.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1472,12 +1472,12 @@
         "citation-t-anonymisation-commonConfusion-1",
         "citation-t-anonymisation-commonConfusion-2"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Données personnelles qui ne peuvent plus être attribuées sans information supplémentaire.",
         "regime": "Pseudonymisation de données personnelles au sens du RGPD.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les données restent personnelles et l’opération est réversible.",
         "sourceIds": [
           "source-cnil-anonymisation"
@@ -1498,12 +1498,12 @@
         "citation-t-pseudonymisation-context-1",
         "citation-t-pseudonymisation-context-2"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Données personnelles qui ne peuvent plus être attribuées sans information supplémentaire.",
         "regime": "Pseudonymisation de données personnelles au sens du RGPD.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les données restent personnelles et l’opération est réversible.",
         "sourceIds": [
           "source-cnil-anonymisation"
@@ -1524,12 +1524,12 @@
         "citation-t-pseudonymisation-commonConfusion-1",
         "citation-t-pseudonymisation-commonConfusion-2"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Données personnelles qui ne peuvent plus être attribuées sans information supplémentaire.",
         "regime": "Pseudonymisation de données personnelles au sens du RGPD.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Les données restent personnelles et l’opération est réversible.",
         "sourceIds": [
           "source-cnil-anonymisation"
@@ -1549,12 +1549,12 @@
       "citationIds": [
         "citation-t-agregat-non-nominatif-commonConfusion-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention interne Memlia appliquée au suivi du cabinet décrit.",
         "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Ne constitue pas une règle juridique ni une garantie de conformité.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1574,12 +1574,12 @@
       "citationIds": [
         "citation-t-recouvrement-amiable-commonConfusion-doctrine-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Convention interne Memlia appliquée à la préparation des relances du cabinet.",
         "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "Le cabinet décide selon le statut réel du dossier ; cette doctrine ne qualifie pas juridiquement la créance.",
         "sourceIds": [
           "source-glossary-memlia"
@@ -1599,12 +1599,12 @@
       "citationIds": [
         "citation-t-recouvrement-amiable-commonConfusion-sequence-1"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "status": "PASS",
       "applicability": {
         "population": "Entreprise créancière confrontée à un retard de paiement client.",
         "regime": "Recouvrement amiable d’une créance professionnelle avant action judiciaire.",
-        "validAsOf": "2026-09-14",
+        "validAsOf": "2026-09-16",
         "exceptions": "La relance et la mise en demeure sont distinctes ; aucun envoi automatique sans validation.",
         "sourceIds": [
           "source-service-public-recouvrement"
@@ -1624,7 +1624,7 @@
       "sha256": "d6a1d95e30fa8d1ec6851c763ec941a73268d6b7ce994b379d2862ba20b43094",
       "sourceContentSha256": "403ec36bf1469f3b87ce93c8f50b66fff53b9633c5e26c8f0eb639a0efaf86fe",
       "finalUrl": "file://src/pages/ressources.astro",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Positionnement éditorial du Hub Ressources",
       "locator": "description",
       "verdict": "soutient",
@@ -1640,7 +1640,7 @@
       "sha256": "96c8754fe6582c03aaa7ca7776f8ddc9c28dd446ae2041c75d40aded99c3338a",
       "sourceContentSha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88",
       "finalUrl": "file://src/data/resource-summaries.json",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Doctrine des résumés du Hub",
       "locator": "Doctrine Memlia",
       "verdict": "soutient",
@@ -1654,9 +1654,9 @@
       "sourceId": "source-net-annule",
       "text": "L'échéance de dépôt des DSN \"annule et remplace\" est située la veille du jour de l'échéance à minuit.",
       "sha256": "cb8b0286442d47c072d4ab0d0ed21972fef5e7fb7564d154a7c13bc48ee27c96",
-      "sourceContentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
       "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Annule et remplace DSN mensuelle et signalements",
       "locator": "source-net-annule",
       "verdict": "soutient",
@@ -1670,9 +1670,9 @@
       "sourceId": "source-net-annule",
       "text": "Si la déclaration « annule et remplace » concerne un signalement d'événement, il n’y a pas de date limite à son envoi (envoi de la déclaration « annule et remplace » dès que nécessaire).",
       "sha256": "e0027e0c00a4b832265a4f0e30591157482f67b42337f1e3ff9449c4b747343a",
-      "sourceContentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
       "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Annule et remplace DSN mensuelle et signalements",
       "locator": "source-net-annule",
       "verdict": "soutient",
@@ -1686,9 +1686,9 @@
       "sourceId": "source-net-dsn-val",
       "text": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
       "sha256": "08abfcd2ebdbd0882d3eca5eee568fa87f56ace903771057a10db239c1516a6e",
-      "sourceContentSha256": "9834a215c9c9e3958c928cfaae86403dcde770e4bc810ea01fd804bbca32db34",
+      "sourceContentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
       "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
       "locator": "source-net-dsn-val",
       "verdict": "soutient",
@@ -1702,9 +1702,9 @@
       "sourceId": "source-net-crm",
       "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.",
       "sha256": "316a86f81d7fe9ac870a7745a94d71f78ee0f4d85ad19deccc5fa5f684aa781c",
-      "sourceContentSha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15",
+      "sourceContentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
       "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Les Comptes Rendus Métiers DSN",
       "locator": "source-net-crm",
       "verdict": "soutient",
@@ -1720,7 +1720,7 @@
       "sha256": "ab453868e6361a48c72a33384766d5e1339c29bb56a597a6728384c0bd2f5b88",
       "sourceContentSha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88",
       "finalUrl": "file://src/data/resource-summaries.json",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Doctrine des résumés du Hub",
       "locator": "Doctrine Memlia",
       "verdict": "soutient",
@@ -1736,7 +1736,7 @@
       "sha256": "eb941829235973af7b2b045a90636026e51b03a597602576f37f9ffaf039bf28",
       "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
       "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
       "locator": "source-cnil-controle-activite",
       "verdict": "soutient",
@@ -1752,7 +1752,7 @@
       "sha256": "2954f109a90128ec4a65adf33cbcb1e0e4d6aaa38569cd74b29c0d395e93d220",
       "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
       "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
       "locator": "source-cnil-controle-activite",
       "verdict": "soutient",
@@ -1768,7 +1768,7 @@
       "sha256": "124dbedfd03b6f4971a7108f6c86eed159f84fc6efb9fb412e8fa5fdc75e8a21",
       "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
       "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
       "locator": "source-cnil-controle-activite",
       "verdict": "soutient",
@@ -1782,9 +1782,9 @@
       "sourceId": "source-net-dsn-overview",
       "text": "La DSN – Déclaration Sociale Nominative – est obligatoire pour toutes les entreprises du secteur privé ainsi qu’à la Fonction publique. Elle remplace à ce jour près de 80 procédures et a vocation à supprimer encore des formalités qui s’appuient sur les données de paie.",
       "sha256": "516b0ab7e37b49ee17490bc9c24daf0bfdab77457647ac472be1e335dc9f3d6a",
-      "sourceContentSha256": "a1eaf288ec3d9c0db15357a4827bca6a5c081311ffe57d539f0f685868a78acf",
+      "sourceContentSha256": "6501b347460ffc6f155702f53fe317b17d1df81cd10c8eebc8cec2448ee7d684",
       "finalUrl": "https://www.net-entreprises.fr/tableau-de-bord-dsn/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "DSN-INFO : La déclaration Sociale Nominative (DSN)",
       "locator": "DSN-INFO : La déclaration Sociale Nominative (DSN)",
       "verdict": "soutient",
@@ -1798,9 +1798,9 @@
       "sourceId": "source-net-dsn-val",
       "text": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
       "sha256": "08abfcd2ebdbd0882d3eca5eee568fa87f56ace903771057a10db239c1516a6e",
-      "sourceContentSha256": "9834a215c9c9e3958c928cfaae86403dcde770e4bc810ea01fd804bbca32db34",
+      "sourceContentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
       "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
       "locator": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
       "verdict": "soutient",
@@ -1814,9 +1814,9 @@
       "sourceId": "source-net-crm",
       "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.",
       "sha256": "316a86f81d7fe9ac870a7745a94d71f78ee0f4d85ad19deccc5fa5f684aa781c",
-      "sourceContentSha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15",
+      "sourceContentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
       "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Les Comptes Rendus Métiers DSN",
       "locator": "Les Comptes Rendus Métiers DSN",
       "verdict": "soutient",
@@ -1830,9 +1830,9 @@
       "sourceId": "source-net-crm",
       "text": "Suite à cette analyse, chaque organisme destinataire de vos DSN vous met à disposition un « Compte Rendu Métier (ou CRM) » sur votre tableau de bord, pour vous préciser vos anomalies ou vous confirmer la qualité de vos déclarations.",
       "sha256": "9d584c01faaaee0925e15c88b2bc53276037b368bda35cec036670f29ccca36f",
-      "sourceContentSha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15",
+      "sourceContentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
       "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Les Comptes Rendus Métiers DSN",
       "locator": "Les Comptes Rendus Métiers DSN",
       "verdict": "soutient",
@@ -1846,9 +1846,9 @@
       "sourceId": "source-net-annule",
       "text": "Concernant la DSN mensuelle, celle-ci peut faire l'objet d' « annule et remplace » tant que l'échéance d'envoi retenue pour votre entreprise n'est pas dépassée (5 ou 15 du mois suivant).",
       "sha256": "1ff1d2c0c46769bf431ea3392907183085883faa380cf63aaa44443ea10488b9",
-      "sourceContentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
       "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Annule et remplace DSN mensuelle et signalements",
       "locator": "Annule et remplace DSN mensuelle et signalements",
       "verdict": "soutient",
@@ -1864,7 +1864,7 @@
       "sha256": "fca06fe42a7e25b4b05ae0efd1017cfec7f45341c7415d36b8c15070e4b34f46",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -1880,7 +1880,7 @@
       "sha256": "acb724673cb90dace6ec722eb50a00f14ffd211298293d2d6367a4e5fd48cff6",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -1894,9 +1894,9 @@
       "sourceId": "source-cnil-donnee",
       "text": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
       "sha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
-      "sourceContentSha256": "640d1c3a0fbe442918ddc8df0637e6a0cab8097ec1cf71550cba7474dcd9e5de",
+      "sourceContentSha256": "b40a155d3aba77d6b8c6a92391edaeab5861fe3b74327e564c90d0ec9cdf5a6e",
       "finalUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Donnée personnelle",
       "locator": "Donnée personnelle",
       "verdict": "soutient",
@@ -1910,9 +1910,9 @@
       "sourceId": "source-cnil-rgpd",
       "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées (minimisation des données);",
       "sha256": "b896597b868de60cdb15e62210f9ee641d0bbfa0f7ac8bda197d401c70f90b37",
-      "sourceContentSha256": "9070dc4ae25949e60a5828f8655185c60380f78c1b5fa01204466d08daffcd90",
+      "sourceContentSha256": "fed6712016214922b4eb8c294bb96b7b9bc7a88b9943dccb6ea368b8f414a3ee",
       "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "CHAPITRE II - Principes",
       "locator": "CHAPITRE II - Principes",
       "verdict": "soutient",
@@ -1926,9 +1926,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "L’anonymisation est un traitement qui consiste à utiliser un ensemble de techniques de manière à rendre impossible, en pratique, toute identification de la personne par quelque moyen que ce soit et de manière irréversible.",
       "sha256": "206a91761885aeb99be709168d244dd1abf87a2602bc455bbb5829cc748d48a8",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "L’anonymisation de données personnelles",
       "verdict": "soutient",
@@ -1942,9 +1942,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "La pseudonymisation est un traitement de données personnelles réalisé de manière à ce qu'on ne puisse plus attribuer les données relatives à une personne physique sans information supplémentaire.",
       "sha256": "96d06b8369ec7a38081229b2781aedf576d434c1645e45475aeac84de259aaf0",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "L’anonymisation de données personnelles",
       "verdict": "soutient",
@@ -1960,7 +1960,7 @@
       "sha256": "1ebf26f16dd177c4b45395c3a3ccf7db7ed646d53df5f63457e3946d25e63095",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -1976,7 +1976,7 @@
       "sha256": "5e251550804bff5c985f1977625f66a37ec867df5da9ba4a4bfbaf5018dd00fb",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -1992,7 +1992,7 @@
       "sha256": "5d6711e4a86e86cd3a95ed9cb8b0d54d311f6dd578fcdfbf0c99b373cc772c48",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -2008,7 +2008,7 @@
       "sha256": "1bb644f7358a3eb85955f013c6eb131b8722ee74487b4d597b735e4598bbb755",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -2024,7 +2024,7 @@
       "sha256": "a765ba57657d449aef91e08dcac9bbf8e6ad6cba44930a214c16cbe21e9b50bb",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -2038,9 +2038,9 @@
       "sourceId": "source-service-public-recouvrement",
       "text": "Elle peut d'abord essayer de recouvrer ses impayés de façon amiable sans engager une action judiciaire. Cela se traduit généralement par une relance puis, en cas d'échec, par une mise en demeure.",
       "sha256": "99e05c72171dbc9f028e98d11cc9eb343745fef3673cebcd09e2b8cf96f958e4",
-      "sourceContentSha256": "af2f1cc9f8cb1d6611c58dc4cfe9db371013e19eb35bb465fa9a321260d9ebda",
+      "sourceContentSha256": "2c0a4012d8c3750f8054d7b17ee2f18b924670156119edc6752d6a4f3ce1274e",
       "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F38586",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Recouvrement amiable : relance et mise en demeure de payer",
       "locator": "Recouvrement amiable : relance et mise en demeure de payer",
       "verdict": "soutient",
@@ -2056,7 +2056,7 @@
       "sha256": "b94515f0319c8330469b0516ef1bc892a5793f7c70e44cefa4f542e17ad37528",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -2072,7 +2072,7 @@
       "sha256": "322fc7b6a29dc30567b72ea3d2b4c09191c9107ad81d3476e5822275d4dce4dd",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -2088,7 +2088,7 @@
       "sha256": "c9692a450e9890e647cc0292233593ce074db032e72eda209524caeff4189c13",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -2104,7 +2104,7 @@
       "sha256": "f3a6538359f5ecac5b06ce359be2ad772d9e26cff576ab69631a41851c5aca3c",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -2120,7 +2120,7 @@
       "sha256": "b5e9e626feeb05bb79bf98dc5bfff437d28848865218681951503f66df53f36a",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -2136,7 +2136,7 @@
       "sha256": "146f1957b12faf35ffd1ca6a168522cd48a56ca15ef3dd40c10acbb8fe972fab",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -2152,7 +2152,7 @@
       "sha256": "7067305c1bf51ffbc2b0eadee41b25f9a61094299e322ab24906f0d4f91e610d",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "Vocabulaire et contrats Memlia",
       "verdict": "soutient",
@@ -2168,7 +2168,7 @@
       "sha256": "fb32a084fc2aaddb38ba9b411e56bc77c48bf86c485227a6d7f0e33a6f30fc3d",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "dsn:commonConfusion",
       "verdict": "soutient",
@@ -2184,7 +2184,7 @@
       "sha256": "79124f07e103528272a1e8e80fb96fac0ae9f912bd93e7b99fb28725f84e2e4d",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "dsn-val:commonConfusion",
       "verdict": "soutient",
@@ -2200,7 +2200,7 @@
       "sha256": "5501e088db7b2a8b8a6f99eeb9aa5fd04442164687056363e87977c796ceee31",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "compte-rendu-metier-dsn:commonConfusion",
       "verdict": "soutient",
@@ -2214,9 +2214,9 @@
       "sourceId": "source-net-annule",
       "text": "Concernant la DSN mensuelle, celle-ci peut faire l'objet d' « annule et remplace » tant que l'échéance d'envoi retenue pour votre entreprise n'est pas dépassée (5 ou 15 du mois suivant).",
       "sha256": "1ff1d2c0c46769bf431ea3392907183085883faa380cf63aaa44443ea10488b9",
-      "sourceContentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
       "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Annule et remplace DSN mensuelle et signalements",
       "locator": "annule-et-remplace-dsn:commonConfusion",
       "verdict": "soutient",
@@ -2230,9 +2230,9 @@
       "sourceId": "source-net-annule",
       "text": "Si la déclaration « annule et remplace » concerne un signalement d'événement, il n’y a pas de date limite à son envoi (envoi de la déclaration « annule et remplace » dès que nécessaire).",
       "sha256": "e0027e0c00a4b832265a4f0e30591157482f67b42337f1e3ff9449c4b747343a",
-      "sourceContentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
       "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Annule et remplace DSN mensuelle et signalements",
       "locator": "annule-et-remplace-dsn:commonConfusion",
       "verdict": "soutient",
@@ -2246,9 +2246,9 @@
       "sourceId": "source-cnil-donnee",
       "text": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
       "sha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
-      "sourceContentSha256": "640d1c3a0fbe442918ddc8df0637e6a0cab8097ec1cf71550cba7474dcd9e5de",
+      "sourceContentSha256": "b40a155d3aba77d6b8c6a92391edaeab5861fe3b74327e564c90d0ec9cdf5a6e",
       "finalUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Donnée personnelle",
       "locator": "donnee-personnelle:context",
       "verdict": "soutient",
@@ -2260,11 +2260,11 @@
         "claim-t-donnee-personnelle-context"
       ],
       "sourceId": "source-cnil-donnee",
-      "text": "Une personne physique peut être identifiée directement ou indirectement.",
-      "sha256": "6d374622109bdd121a1f7b6d4b7b6126d037938cc87b95dffed9974bdd84c94d",
-      "sourceContentSha256": "640d1c3a0fbe442918ddc8df0637e6a0cab8097ec1cf71550cba7474dcd9e5de",
+      "text": "Une personne physique peut être identifiée : directement (exemple : nom et prénom); indirectement (exemple : par un numéro de téléphone ou de plaque d’immatriculation).",
+      "sha256": "d8d194fa39ff4e8fa7a1f93e485519e228c4e89b58e1ff56a5154b1bc8485ebd",
+      "sourceContentSha256": "b40a155d3aba77d6b8c6a92391edaeab5861fe3b74327e564c90d0ec9cdf5a6e",
       "finalUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Donnée personnelle",
       "locator": "donnee-personnelle:context",
       "verdict": "soutient",
@@ -2278,9 +2278,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "La pseudonymisation est un traitement de données personnelles réalisé de manière à ce qu'on ne puisse plus attribuer les données relatives à une personne physique sans information supplémentaire.",
       "sha256": "96d06b8369ec7a38081229b2781aedf576d434c1645e45475aeac84de259aaf0",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "donnee-personnelle:exampleFictitious",
       "verdict": "soutient",
@@ -2294,9 +2294,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "Les données concernées conservent donc un caractère personnel. L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
       "sha256": "fa4f8b74cfb6af2e0bc8a6b01d883b117a372fbe85f89f7b4142eef9ac3edf6d",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "donnee-personnelle:exampleFictitious",
       "verdict": "soutient",
@@ -2310,9 +2310,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "La pseudonymisation est un traitement de données personnelles réalisé de manière à ce qu'on ne puisse plus attribuer les données relatives à une personne physique sans information supplémentaire.",
       "sha256": "96d06b8369ec7a38081229b2781aedf576d434c1645e45475aeac84de259aaf0",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "donnee-personnelle:commonConfusion",
       "verdict": "soutient",
@@ -2326,9 +2326,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "Les données concernées conservent donc un caractère personnel. L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
       "sha256": "fa4f8b74cfb6af2e0bc8a6b01d883b117a372fbe85f89f7b4142eef9ac3edf6d",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "donnee-personnelle:commonConfusion",
       "verdict": "soutient",
@@ -2344,7 +2344,7 @@
       "sha256": "222d059682b72d7bf0e3943272e101e4715f5ff63d580c1568836c88a79c9935",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "minimisation-des-donnees:context",
       "verdict": "soutient",
@@ -2358,9 +2358,9 @@
       "sourceId": "source-cnil-rgpd",
       "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées (minimisation des données);",
       "sha256": "b896597b868de60cdb15e62210f9ee641d0bbfa0f7ac8bda197d401c70f90b37",
-      "sourceContentSha256": "9070dc4ae25949e60a5828f8655185c60380f78c1b5fa01204466d08daffcd90",
+      "sourceContentSha256": "fed6712016214922b4eb8c294bb96b7b9bc7a88b9943dccb6ea368b8f414a3ee",
       "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "CHAPITRE II - Principes",
       "locator": "minimisation-des-donnees:commonConfusion",
       "verdict": "soutient",
@@ -2376,7 +2376,7 @@
       "sha256": "01e2938e867c247059b0df5f21dcb906616302f3422a997bf4313d8dcacfdd15",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "anonymisation:context",
       "verdict": "soutient",
@@ -2390,9 +2390,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "La pseudonymisation est un traitement de données personnelles réalisé de manière à ce qu'on ne puisse plus attribuer les données relatives à une personne physique sans information supplémentaire.",
       "sha256": "96d06b8369ec7a38081229b2781aedf576d434c1645e45475aeac84de259aaf0",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "anonymisation:commonConfusion",
       "verdict": "soutient",
@@ -2406,9 +2406,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "Les données concernées conservent donc un caractère personnel. L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
       "sha256": "fa4f8b74cfb6af2e0bc8a6b01d883b117a372fbe85f89f7b4142eef9ac3edf6d",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "anonymisation:commonConfusion",
       "verdict": "soutient",
@@ -2422,9 +2422,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "La pseudonymisation est un traitement de données personnelles réalisé de manière à ce qu'on ne puisse plus attribuer les données relatives à une personne physique sans information supplémentaire.",
       "sha256": "96d06b8369ec7a38081229b2781aedf576d434c1645e45475aeac84de259aaf0",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "pseudonymisation:context",
       "verdict": "soutient",
@@ -2438,9 +2438,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "Les données concernées conservent donc un caractère personnel. L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
       "sha256": "fa4f8b74cfb6af2e0bc8a6b01d883b117a372fbe85f89f7b4142eef9ac3edf6d",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "pseudonymisation:context",
       "verdict": "soutient",
@@ -2454,9 +2454,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "La pseudonymisation est un traitement de données personnelles réalisé de manière à ce qu'on ne puisse plus attribuer les données relatives à une personne physique sans information supplémentaire.",
       "sha256": "96d06b8369ec7a38081229b2781aedf576d434c1645e45475aeac84de259aaf0",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "pseudonymisation:commonConfusion",
       "verdict": "soutient",
@@ -2470,9 +2470,9 @@
       "sourceId": "source-cnil-anonymisation",
       "text": "Les données concernées conservent donc un caractère personnel. L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
       "sha256": "fa4f8b74cfb6af2e0bc8a6b01d883b117a372fbe85f89f7b4142eef9ac3edf6d",
-      "sourceContentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "L’anonymisation de données personnelles",
       "locator": "pseudonymisation:commonConfusion",
       "verdict": "soutient",
@@ -2488,7 +2488,7 @@
       "sha256": "26f1e6c921c980f01230d0330015443b1d0332a011a1c8df0c69d891f0ffe9db",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "agregat-non-nominatif:commonConfusion",
       "verdict": "soutient",
@@ -2504,7 +2504,7 @@
       "sha256": "8c8530126b2b75514260098e4107c50cb03e764b282c89231b723c0499e4b03a",
       "sourceContentSha256": "ac184aa5e5050cc5b00009343a39c14eb9badd010a209745202e357e2aa54e0c",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Vocabulaire et contrats Memlia",
       "locator": "recouvrement-amiable:commonConfusion:doctrine-memlia",
       "verdict": "soutient",
@@ -2518,9 +2518,9 @@
       "sourceId": "source-service-public-recouvrement",
       "text": "Elle peut d'abord essayer de recouvrer ses impayés de façon amiable sans engager une action judiciaire. Cela se traduit généralement par une relance puis, en cas d'échec, par une mise en demeure.",
       "sha256": "99e05c72171dbc9f028e98d11cc9eb343745fef3673cebcd09e2b8cf96f958e4",
-      "sourceContentSha256": "af2f1cc9f8cb1d6611c58dc4cfe9db371013e19eb35bb465fa9a321260d9ebda",
+      "sourceContentSha256": "2c0a4012d8c3750f8054d7b17ee2f18b924670156119edc6752d6a4f3ce1274e",
       "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F38586",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "title": "Recouvrement amiable : relance et mise en demeure de payer",
       "locator": "recouvrement-amiable:commonConfusion:sequence-relance",
       "verdict": "soutient",
@@ -2534,7 +2534,7 @@
       "title": "Positionnement éditorial du Hub Ressources",
       "requestedUrl": "file://src/pages/ressources.astro",
       "finalUrl": "file://src/pages/ressources.astro",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "original-method",
       "provenance": "primary",
       "official": false,
@@ -2554,7 +2554,7 @@
       "title": "Doctrine des résumés du Hub",
       "requestedUrl": "file://src/data/resource-summaries.json",
       "finalUrl": "file://src/data/resource-summaries.json",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "original-method",
       "provenance": "primary",
       "official": false,
@@ -2575,13 +2575,13 @@
       "title": "Annule et remplace DSN mensuelle et signalements",
       "requestedUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
       "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-annule.txt",
-      "contentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+      "contentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2596,13 +2596,13 @@
       "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
       "requestedUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
       "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-dsn-val.txt",
-      "contentSha256": "9834a215c9c9e3958c928cfaae86403dcde770e4bc810ea01fd804bbca32db34",
+      "contentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2616,13 +2616,13 @@
       "title": "Les Comptes Rendus Métiers DSN",
       "requestedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
       "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-crm.txt",
-      "contentSha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15",
+      "contentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2636,7 +2636,7 @@
       "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
       "requestedUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
       "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -2658,13 +2658,13 @@
       "title": "DSN-INFO : La déclaration Sociale Nominative (DSN)",
       "requestedUrl": "https://www.net-entreprises.fr/tableau-de-bord-dsn/",
       "finalUrl": "https://www.net-entreprises.fr/tableau-de-bord-dsn/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.net-entreprises.fr/tableau-de-bord-dsn/",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-dsn-overview.txt",
-      "contentSha256": "a1eaf288ec3d9c0db15357a4827bca6a5c081311ffe57d539f0f685868a78acf",
+      "contentSha256": "6501b347460ffc6f155702f53fe317b17d1df81cd10c8eebc8cec2448ee7d684",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2678,13 +2678,13 @@
       "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
       "requestedUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
       "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-dsn-val.txt",
-      "contentSha256": "9834a215c9c9e3958c928cfaae86403dcde770e4bc810ea01fd804bbca32db34",
+      "contentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2698,13 +2698,13 @@
       "title": "Les Comptes Rendus Métiers DSN",
       "requestedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
       "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-crm.txt",
-      "contentSha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15",
+      "contentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2718,13 +2718,13 @@
       "title": "Annule et remplace DSN mensuelle et signalements",
       "requestedUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
       "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-annule.txt",
-      "contentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+      "contentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2739,7 +2739,7 @@
       "title": "Vocabulaire et contrats Memlia",
       "requestedUrl": "file://src/data/glossary.ts",
       "finalUrl": "file://src/data/glossary.ts",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "original-method",
       "provenance": "primary",
       "official": false,
@@ -2779,13 +2779,13 @@
       "title": "Donnée personnelle",
       "requestedUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
       "finalUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/cnil-donnee.txt",
-      "contentSha256": "640d1c3a0fbe442918ddc8df0637e6a0cab8097ec1cf71550cba7474dcd9e5de",
+      "contentSha256": "b40a155d3aba77d6b8c6a92391edaeab5861fe3b74327e564c90d0ec9cdf5a6e",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2800,13 +2800,13 @@
       "title": "CHAPITRE II - Principes",
       "requestedUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
       "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/cnil-rgpd.txt",
-      "contentSha256": "9070dc4ae25949e60a5828f8655185c60380f78c1b5fa01204466d08daffcd90",
+      "contentSha256": "fed6712016214922b4eb8c294bb96b7b9bc7a88b9943dccb6ea368b8f414a3ee",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2821,13 +2821,13 @@
       "title": "L’anonymisation de données personnelles",
       "requestedUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
       "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/cnil-anonymisation.txt",
-      "contentSha256": "15ce8529147ae5e9110d8cfef05434a1bf404fd7c56f1936c2970eabf98030a7",
+      "contentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2847,13 +2847,13 @@
       "title": "Recouvrement amiable : relance et mise en demeure de payer",
       "requestedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F38586",
       "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F38586",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F38586",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/service-public-recouvrement.txt",
-      "contentSha256": "af2f1cc9f8cb1d6611c58dc4cfe9db371013e19eb35bb465fa9a321260d9ebda",
+      "contentSha256": "2c0a4012d8c3750f8054d7b17ee2f18b924670156119edc6752d6a4f3ce1274e",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2872,11 +2872,11 @@
   "generatedFrom": [
     {
       "path": "editorial/resources/hub/manifest.json",
-      "sha256": "677fe51e390477e214470b582379e581a33e6e6659442e0196d68b21020ea14a"
+      "sha256": "0890ff8039832d5de118b647c6b41c97fe7dddf0badcc1bc0292e4c829d458c5"
     },
     {
       "path": "editorial/resources/glossaire/manifest.json",
-      "sha256": "879c216651e5b35336aa906d8aaa8e5fe3bd573625720f129c0ed0334ec4ac9b"
+      "sha256": "66967090a01eaa322cd073de0161ddb7dc5e0704459b852e60ced68d4d981946"
     }
   ]
 }

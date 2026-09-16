@@ -8,7 +8,11 @@ import { createResourceFixture } from '../tests/scripts/resource-fixture.mjs';
 import { loadMetierEvidence } from './lib/resource-metier-evidence.mjs';
 
 const root = process.cwd();
-const checkedAt = '2026-09-14T15:37:40+01:00'; // Date du corpus officiel, pas une date d’effet.
+const checkedAt = '2026-09-16T06:45:00+01:00'; // Date du corpus officiel, pas une date d’effet.
+// Les neuf copies de source ont été rechargées le 16/09/2026 et chaque citation d’autorité a été
+// retrouvée dans la page vivante. Deux formulations avaient changé depuis le 14/09 : la condition
+// de licéité d’un dispositif de contrôle chez la CNIL, et la définition de l’identification d’une
+// personne physique. Les deux citations suivent désormais la page courante.
 const buildCommand = 'npm run build:site';
 const publicEnv = { ...process.env };
 for (const key of ['BLOG_PREVIEW_SLUG', 'BLOG_PREVIEW_SLUGS', 'BLOG_PREVIEW_ALL']) delete publicEnv[key];

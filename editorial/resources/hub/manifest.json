@@ -195,7 +195,7 @@
     "serp": {
       "requiredDecision": false,
       "status": "RUN",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "scope": "France/fr ; Hub desktop indisponible, 40101 après deux essais. Opportunité SEO non établie, pas un gate métier.",
       "inputRefs": [
         "docs/qa/hub-ressources/metier-fix-c-serp/checksums-retry.sha256"
@@ -211,7 +211,7 @@
       "requiredForDecision": false,
       "status": "N/A",
       "propertyQueryEvidenceStatus": "N/A",
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "inputRefs": [
         "docs/qa/hub-ressources/qad-fix.md"
       ],
@@ -221,7 +221,7 @@
       "arbitration": {
         "decision": "Le manque GSC reste ND et ne rapporte aucun point.",
         "decidedBy": "QAD t_7a6dbdf8",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "evidenceRef": "docs/qa/hub-ressources/qad-fix.md"
       },
       "gatePolicy": "Si GSC est requis, ND impose FAIL. Un historique URL structurellement ND reste visible, ne rapporte aucun point et exige arbitrage explicite; A conserve research.gsc RUN/PASS."
@@ -331,12 +331,12 @@
         "citationIds": [
           "citation-h-description-1"
         ],
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "status": "PASS",
         "applicability": {
           "population": "Promesse éditoriale du Hub ; elle décrit la posture des ressources.",
           "regime": "Positionnement éditorial Memlia, sans portée réglementaire autonome.",
-          "validAsOf": "2026-09-14",
+          "validAsOf": "2026-09-16",
           "exceptions": "Les résumés réglementaires rendus par le Hub possèdent leurs propres claims et preuves.",
           "sourceIds": [
             "source-hub-memlia"
@@ -355,12 +355,12 @@
         "citationIds": [
           "citation-claim-h-dsn-deadline-summary-1-1"
         ],
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "status": "PASS",
         "applicability": {
           "population": "Méthode ou doctrine propre au service Memlia décrit.",
           "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-          "validAsOf": "2026-09-14",
+          "validAsOf": "2026-09-16",
           "exceptions": "Les règles DSN et CNIL sont séparées dans les autres sous-claims.",
           "sourceIds": [
             "source-summaries-memlia"
@@ -379,12 +379,12 @@
         "citationIds": [
           "citation-claim-h-dsn-deadline-summary-2-1"
         ],
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "status": "PASS",
         "applicability": {
           "population": "DSN mensuelle dans la fenêtre propre à l’échéance de l’entreprise.",
           "regime": "DSN mensuelle annule-et-remplace, distincte des signalements d’événement.",
-          "validAsOf": "2026-09-14",
+          "validAsOf": "2026-09-16",
           "exceptions": "Les signalements d’événement suivent une autre fenêtre, explicitée près du claim dans le glossaire.",
           "sourceIds": [
             "source-net-annule"
@@ -403,12 +403,12 @@
         "citationIds": [
           "citation-claim-h-dsn-deadline-summary-3-1"
         ],
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "status": "PASS",
         "applicability": {
           "population": "Signalements d’événement en DSN.",
           "regime": "Annule-et-remplace de signalement, et non DSN mensuelle.",
-          "validAsOf": "2026-09-14",
+          "validAsOf": "2026-09-16",
           "exceptions": "Ne pas appliquer cette absence de limite à la DSN mensuelle.",
           "sourceIds": [
             "source-net-annule"
@@ -427,12 +427,12 @@
         "citationIds": [
           "citation-claim-h-dsn-deadline-summary-4-1"
         ],
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "status": "PASS",
         "applicability": {
           "population": "Fichiers DSN contrôlés avant dépôt, selon le cahier technique et le JMN applicables.",
           "regime": "Contrôle de norme DSN selon le cahier technique et le JMN applicables au fichier.",
-          "validAsOf": "2026-09-14",
+          "validAsOf": "2026-09-16",
           "exceptions": "Un contrôle de norme ne prouve pas l’exactitude métier des variables de paie.",
           "sourceIds": [
             "source-net-dsn-val"
@@ -451,12 +451,12 @@
         "citationIds": [
           "citation-claim-h-dsn-deadline-summary-5-1"
         ],
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "status": "PASS",
         "applicability": {
           "population": "Déclarations reçues et analysées par les organismes destinataires.",
           "regime": "Comptes rendus métier émis par les organismes destinataires d’une DSN.",
-          "validAsOf": "2026-09-14",
+          "validAsOf": "2026-09-16",
           "exceptions": "Les CRM diffèrent selon l’organisme ; leur silence ne garantit pas la justesse générale.",
           "sourceIds": [
             "source-net-crm"
@@ -475,12 +475,12 @@
         "citationIds": [
           "citation-claim-h-social-monitoring-summary-1-1"
         ],
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "status": "PASS",
         "applicability": {
           "population": "Méthode ou doctrine propre au service Memlia décrit.",
           "regime": "Doctrine Memlia, sans portée réglementaire autonome.",
-          "validAsOf": "2026-09-14",
+          "validAsOf": "2026-09-16",
           "exceptions": "Les règles DSN et CNIL sont séparées dans les autres sous-claims.",
           "sourceIds": [
             "source-summaries-memlia"
@@ -499,12 +499,12 @@
         "citationIds": [
           "citation-claim-h-social-monitoring-summary-2-1"
         ],
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "status": "PASS",
         "applicability": {
           "population": "Dispositif qui permet le contrôle de l’activité du personnel ; consultation CSE formulée ici pour les entreprises privées de 50 salariés et plus.",
           "regime": "Contrôle de l’activité du personnel et consultation du CSE dans le secteur privé.",
-          "validAsOf": "2026-09-14",
+          "validAsOf": "2026-09-16",
           "exceptions": "La qualification dépend du dispositif ; les exceptions légales et les autres instances du secteur public ne sont pas généralisées au Hub.",
           "sourceIds": [
             "source-cnil-controle-activite"
@@ -523,12 +523,12 @@
         "citationIds": [
           "citation-claim-h-social-monitoring-summary-3-1"
         ],
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "status": "PASS",
         "applicability": {
           "population": "Dispositif qui permet le contrôle de l’activité du personnel ; consultation CSE formulée ici pour les entreprises privées de 50 salariés et plus.",
           "regime": "Contrôle de l’activité du personnel et consultation du CSE dans le secteur privé.",
-          "validAsOf": "2026-09-14",
+          "validAsOf": "2026-09-16",
           "exceptions": "La qualification dépend du dispositif ; les exceptions légales et les autres instances du secteur public ne sont pas généralisées au Hub.",
           "sourceIds": [
             "source-cnil-controle-activite"
@@ -547,12 +547,12 @@
         "citationIds": [
           "citation-claim-h-social-monitoring-summary-4-1"
         ],
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "status": "PASS",
         "applicability": {
           "population": "Dispositif qui permet le contrôle de l’activité du personnel ; consultation CSE formulée ici pour les entreprises privées de 50 salariés et plus.",
           "regime": "Contrôle de l’activité du personnel et consultation du CSE dans le secteur privé.",
-          "validAsOf": "2026-09-14",
+          "validAsOf": "2026-09-16",
           "exceptions": "La qualification dépend du dispositif ; les exceptions légales et les autres instances du secteur public ne sont pas généralisées au Hub.",
           "sourceIds": [
             "source-cnil-controle-activite"
@@ -571,7 +571,7 @@
         "sha256": "d6a1d95e30fa8d1ec6851c763ec941a73268d6b7ce994b379d2862ba20b43094",
         "sourceContentSha256": "403ec36bf1469f3b87ce93c8f50b66fff53b9633c5e26c8f0eb639a0efaf86fe",
         "finalUrl": "file://src/pages/ressources.astro",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "title": "Positionnement éditorial du Hub Ressources",
         "locator": "description",
         "verdict": "soutient"
@@ -586,7 +586,7 @@
         "sha256": "96c8754fe6582c03aaa7ca7776f8ddc9c28dd446ae2041c75d40aded99c3338a",
         "sourceContentSha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88",
         "finalUrl": "file://src/data/resource-summaries.json",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "title": "Doctrine des résumés du Hub",
         "locator": "Doctrine Memlia",
         "verdict": "soutient"
@@ -599,9 +599,9 @@
         "sourceId": "source-net-annule",
         "text": "L'échéance de dépôt des DSN \"annule et remplace\" est située la veille du jour de l'échéance à minuit.",
         "sha256": "cb8b0286442d47c072d4ab0d0ed21972fef5e7fb7564d154a7c13bc48ee27c96",
-        "sourceContentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+        "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
         "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "title": "Annule et remplace DSN mensuelle et signalements",
         "locator": "source-net-annule",
         "verdict": "soutient"
@@ -614,9 +614,9 @@
         "sourceId": "source-net-annule",
         "text": "Si la déclaration « annule et remplace » concerne un signalement d'événement, il n’y a pas de date limite à son envoi (envoi de la déclaration « annule et remplace » dès que nécessaire).",
         "sha256": "e0027e0c00a4b832265a4f0e30591157482f67b42337f1e3ff9449c4b747343a",
-        "sourceContentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+        "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
         "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "title": "Annule et remplace DSN mensuelle et signalements",
         "locator": "source-net-annule",
         "verdict": "soutient"
@@ -629,9 +629,9 @@
         "sourceId": "source-net-dsn-val",
         "text": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
         "sha256": "08abfcd2ebdbd0882d3eca5eee568fa87f56ace903771057a10db239c1516a6e",
-        "sourceContentSha256": "9834a215c9c9e3958c928cfaae86403dcde770e4bc810ea01fd804bbca32db34",
+        "sourceContentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
         "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
         "locator": "source-net-dsn-val",
         "verdict": "soutient"
@@ -644,9 +644,9 @@
         "sourceId": "source-net-crm",
         "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.",
         "sha256": "316a86f81d7fe9ac870a7745a94d71f78ee0f4d85ad19deccc5fa5f684aa781c",
-        "sourceContentSha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15",
+        "sourceContentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
         "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "title": "Les Comptes Rendus Métiers DSN",
         "locator": "source-net-crm",
         "verdict": "soutient"
@@ -661,7 +661,7 @@
         "sha256": "ab453868e6361a48c72a33384766d5e1339c29bb56a597a6728384c0bd2f5b88",
         "sourceContentSha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88",
         "finalUrl": "file://src/data/resource-summaries.json",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "title": "Doctrine des résumés du Hub",
         "locator": "Doctrine Memlia",
         "verdict": "soutient"
@@ -676,7 +676,7 @@
         "sha256": "eb941829235973af7b2b045a90636026e51b03a597602576f37f9ffaf039bf28",
         "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
         "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
         "locator": "source-cnil-controle-activite",
         "verdict": "soutient"
@@ -691,7 +691,7 @@
         "sha256": "2954f109a90128ec4a65adf33cbcb1e0e4d6aaa38569cd74b29c0d395e93d220",
         "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
         "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
         "locator": "source-cnil-controle-activite",
         "verdict": "soutient"
@@ -706,7 +706,7 @@
         "sha256": "124dbedfd03b6f4971a7108f6c86eed159f84fc6efb9fb412e8fa5fdc75e8a21",
         "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
         "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
         "locator": "source-cnil-controle-activite",
         "verdict": "soutient"
@@ -719,7 +719,7 @@
         "title": "Positionnement éditorial du Hub Ressources",
         "requestedUrl": "file://src/pages/ressources.astro",
         "finalUrl": "file://src/pages/ressources.astro",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "level": "original-method",
         "provenance": "primary",
         "official": false,
@@ -738,7 +738,7 @@
         "title": "Doctrine des résumés du Hub",
         "requestedUrl": "file://src/data/resource-summaries.json",
         "finalUrl": "file://src/data/resource-summaries.json",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "level": "original-method",
         "provenance": "primary",
         "official": false,
@@ -758,13 +758,13 @@
         "title": "Annule et remplace DSN mensuelle et signalements",
         "requestedUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
         "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "level": "tier-1",
         "provenance": "primary",
         "official": true,
         "upstreamUrl": "https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/",
         "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-annule.txt",
-        "contentSha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9",
+        "contentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
         "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
         "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
         "claimIds": [
@@ -778,13 +778,13 @@
         "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
         "requestedUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
         "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "level": "tier-1",
         "provenance": "primary",
         "official": true,
         "upstreamUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
         "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-dsn-val.txt",
-        "contentSha256": "9834a215c9c9e3958c928cfaae86403dcde770e4bc810ea01fd804bbca32db34",
+        "contentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
         "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
         "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
         "claimIds": [
@@ -797,13 +797,13 @@
         "title": "Les Comptes Rendus Métiers DSN",
         "requestedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
         "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "level": "tier-1",
         "provenance": "primary",
         "official": true,
         "upstreamUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
         "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/net-crm.txt",
-        "contentSha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15",
+        "contentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
         "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
         "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
         "claimIds": [
@@ -816,7 +816,7 @@
         "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
         "requestedUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
         "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-        "checkedAt": "2026-09-14T15:37:40+01:00",
+        "checkedAt": "2026-09-16T06:45:00+01:00",
         "level": "tier-1",
         "provenance": "primary",
         "official": true,
@@ -860,23 +860,101 @@
         "dsn",
         "legal-reglementaire"
       ],
-      "checkedAt": "2026-09-14T15:37:40+01:00",
+      "checkedAt": "2026-09-16T06:45:00+01:00",
       "businessReview": {
         "required": true,
-        "reviewerId": null,
-        "reviewerType": null,
-        "reviewerProfile": null,
-        "reviewerRole": null,
+        "reviewerId": "t_91444ae1",
+        "reviewerType": "ai-agent",
+        "reviewerProfile": "metier",
+        "reviewerRole": "reviewer-metier-memlia",
         "distinctFrom": [
           "author",
           "editorialReviewer",
           "sourceClassifier"
         ],
-        "reviewedCandidateHash": null,
-        "status": "PENDING",
-        "claimSourceVerdicts": [],
-        "evidenceRef": null,
-        "evidenceSha256": null
+        "reviewedCandidateHash": "516aedfe62d73e26b64b783e700c0058193f05b3885688c5c2408999a60c6c73",
+        "status": "AI_REVIEW_PASS",
+        "claimSourceVerdicts": [
+          {
+            "claimId": "claim-h-dsn-deadline-summary-2",
+            "sourceId": "source-net-annule",
+            "citationIds": [
+              "citation-claim-h-dsn-deadline-summary-2-1"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
+            "checkedAt": "2026-09-16T06:45:00+01:00",
+            "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+          },
+          {
+            "claimId": "claim-h-dsn-deadline-summary-3",
+            "sourceId": "source-net-annule",
+            "citationIds": [
+              "citation-claim-h-dsn-deadline-summary-3-1"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
+            "checkedAt": "2026-09-16T06:45:00+01:00",
+            "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+          },
+          {
+            "claimId": "claim-h-dsn-deadline-summary-4",
+            "sourceId": "source-net-dsn-val",
+            "citationIds": [
+              "citation-claim-h-dsn-deadline-summary-4-1"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
+            "checkedAt": "2026-09-16T06:45:00+01:00",
+            "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+          },
+          {
+            "claimId": "claim-h-dsn-deadline-summary-5",
+            "sourceId": "source-net-crm",
+            "citationIds": [
+              "citation-claim-h-dsn-deadline-summary-5-1"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
+            "checkedAt": "2026-09-16T06:45:00+01:00",
+            "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+          },
+          {
+            "claimId": "claim-h-social-monitoring-summary-2",
+            "sourceId": "source-cnil-controle-activite",
+            "citationIds": [
+              "citation-claim-h-social-monitoring-summary-2-1"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
+            "checkedAt": "2026-09-16T06:45:00+01:00",
+            "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+          },
+          {
+            "claimId": "claim-h-social-monitoring-summary-3",
+            "sourceId": "source-cnil-controle-activite",
+            "citationIds": [
+              "citation-claim-h-social-monitoring-summary-3-1"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
+            "checkedAt": "2026-09-16T06:45:00+01:00",
+            "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+          },
+          {
+            "claimId": "claim-h-social-monitoring-summary-4",
+            "sourceId": "source-cnil-controle-activite",
+            "citationIds": [
+              "citation-claim-h-social-monitoring-summary-4-1"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
+            "checkedAt": "2026-09-16T06:45:00+01:00",
+            "reasoning": "Source primaire officielle rouverte le 16 septembre 2026 et citation retrouvee mot pour mot dans la page vivante ; l affirmation ne depasse pas ce que la source enonce."
+          }
+        ],
+        "evidenceRef": "docs/qa/hub-ressources/metier-review-r4/preuve-hub.json",
+        "evidenceSha256": "759e39aa86ff07b77a22b097f419e6a31fdc9f5e76e54fdba697edd81da3691c"
       }
     }
   },
@@ -1155,7 +1233,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:24:52.222Z",
+        "checkedAt": "2026-09-16T05:43:57.818Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1176,7 +1254,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:24:52.222Z",
+        "checkedAt": "2026-09-16T05:43:57.818Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1260,7 +1338,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:24:52.222Z",
+        "checkedAt": "2026-09-16T05:43:57.818Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1323,7 +1401,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:24:52.222Z",
+        "checkedAt": "2026-09-16T05:43:57.818Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1745,7 +1823,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:24:52.222Z",
+        "checkedAt": "2026-09-16T05:43:57.818Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1829,7 +1907,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:24:52.222Z",
+        "checkedAt": "2026-09-16T05:43:57.818Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1850,7 +1928,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:24:52.222Z",
+        "checkedAt": "2026-09-16T05:43:57.818Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -2663,7 +2741,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T05:24:52.222Z",
+      "checkedAt": "2026-09-16T05:43:57.818Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -2688,7 +2766,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T05:24:52.222Z",
+      "checkedAt": "2026-09-16T05:43:57.818Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -2711,7 +2789,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T05:24:52.222Z",
+      "checkedAt": "2026-09-16T05:43:57.818Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -2736,7 +2814,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T05:24:52.222Z",
+      "checkedAt": "2026-09-16T05:43:57.818Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -2759,7 +2837,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T05:24:52.222Z",
+      "checkedAt": "2026-09-16T05:43:57.818Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -2923,18 +3001,18 @@
         },
         {
           "path": "docs/qa/hub-ressources/metier-fix-a-sources/net-annule.txt",
-          "bytes": 895,
-          "sha256": "378a556297ccb0c0eaa25b61b3db9a23c8b2bf68d86d47a4a78fa7b5cd0bbca9"
+          "bytes": 794,
+          "sha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e"
         },
         {
           "path": "docs/qa/hub-ressources/metier-fix-a-sources/net-crm.txt",
-          "bytes": 874,
-          "sha256": "91947e373079dcfdcc9aa08a0687e19114925388b24c2e3a8d8ac37bdf15cf15"
+          "bytes": 807,
+          "sha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775"
         },
         {
           "path": "docs/qa/hub-ressources/metier-fix-a-sources/net-dsn-val.txt",
           "bytes": 505,
-          "sha256": "9834a215c9c9e3958c928cfaae86403dcde770e4bc810ea01fd804bbca32db34"
+          "sha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316"
         },
         {
           "path": "src/data/resource-summaries.json",
@@ -2947,7 +3025,7 @@
           "sha256": "403ec36bf1469f3b87ce93c8f50b66fff53b9633c5e26c8f0eb639a0efaf86fe"
         }
       ],
-      "digest": "c78cb3c648777fb06296078019d65337a7ae736020df874075dc223f1b50a3ae"
+      "digest": "10cd5f1ecde60c03ed573274c565ae544362dfd33b399b408606158b0fe8e625"
     },
     "assetBundle": {
       "entries": [
@@ -2973,8 +3051,8 @@
         },
         {
           "path": "scripts/lib/resource-metier-v3.mjs",
-          "bytes": 7352,
-          "sha256": "0e7064a6647e5a0116fa699961eae0d421b3ba136421952017e57b2572ab8322"
+          "bytes": 7454,
+          "sha256": "19228d857afa9c3c578cf96fbaa4995f070b45b85ae356a01df353e48572b26e"
         },
         {
           "path": "src/data/resources.ts",
@@ -2982,7 +3060,7 @@
           "sha256": "3c3af3bcf59d0b94d0f5d9b0929bf220129af8bed396f745717d02391a17c5a5"
         }
       ],
-      "digest": "ad93e99ff4bd27511700d64bff04a2570e22b3e9f886cbb0131fbd1f783a1a29"
+      "digest": "753d9e3bd567d6f5f882d194c2aa0a6786cf58b2dad0a6318fb216ec1a73fbdf"
     },
     "buildOutput": {
       "entries": [
@@ -2995,7 +3073,7 @@
       "digest": "964ffa5782a7d636b75d3df1c72a8c67ffa73a8f73bcce26c3c67ee888610f7b"
     },
     "candidateHash": {
-      "value": "6b3690789383c9a9deb42775469da7e0240ec34714fa292ab9c8869b146509c0",
+      "value": "60078c492d70186acdabef6ff9df2401d211b679e8118aa989c3eaf2b2f21b23",
       "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
     },
     "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
@@ -3007,18 +3085,18 @@
       "node scripts/strip-briefs.mjs",
       "npm run build:site"
     ],
-    "startedAt": "2026-09-16T05:24:49.478Z",
-    "endedAt": "2026-09-16T05:25:30.164Z",
+    "startedAt": "2026-09-16T05:43:55.685Z",
+    "endedAt": "2026-09-16T05:44:34.116Z",
     "result": "PASS",
-    "sourceBundleDigest": "c78cb3c648777fb06296078019d65337a7ae736020df874075dc223f1b50a3ae",
+    "sourceBundleDigest": "10cd5f1ecde60c03ed573274c565ae544362dfd33b399b408606158b0fe8e625",
     "assetBundleDigest": "62730565e747db359ef83dd42a3c8f145e1ae1605d40d66dc0bc3725043b6d2d",
-    "configBundleDigest": "ad93e99ff4bd27511700d64bff04a2570e22b3e9f886cbb0131fbd1f783a1a29",
+    "configBundleDigest": "753d9e3bd567d6f5f882d194c2aa0a6786cf58b2dad0a6318fb216ec1a73fbdf",
     "outputDigest": "964ffa5782a7d636b75d3df1c72a8c67ffa73a8f73bcce26c3c67ee888610f7b",
     "reportRefs": [
       "docs/qa/hub-ressources/freshness-r4-exec.md"
     ],
     "receiptRef": "docs/qa/hub-ressources/metier-fix-c-build-receipt.json",
-    "receiptSha256": "338d8c8df225e1a4fc5eee1898d1a4375e6cf19ed9dbebeecbfcfcb2dbe3a975"
+    "receiptSha256": "ca9de95dbafd11028624a086e5e7f186e3f05ad98bc37669bda91b5d6671e02d"
   },
   "preview": {
     "branch": null,
@@ -3036,7 +3114,7 @@
     "reportRef": null
   },
   "audit": {
-    "candidateHash": "6b3690789383c9a9deb42775469da7e0240ec34714fa292ab9c8869b146509c0",
+    "candidateHash": "60078c492d70186acdabef6ff9df2401d211b679e8118aa989c3eaf2b2f21b23",
     "buildOutputDigest": "964ffa5782a7d636b75d3df1c72a8c67ffa73a8f73bcce26c3c67ee888610f7b",
     "gateReportRefs": [
       "fixture://audit/gates"
@@ -3049,7 +3127,7 @@
     "p0": [],
     "p1": [],
     "result": "PASS",
-    "auditHash": "2168eec3a856b67c1931f7ceca97e688cd2ec07ed50375eb3d6e80bd0aeeecf9"
+    "auditHash": "ece7bce424850e68e9f08899a21646dcede0b1caef9e2ad54b3bc76089a8986f"
   },
   "approval": {
     "state": "pending",
