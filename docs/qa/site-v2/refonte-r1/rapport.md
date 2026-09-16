@@ -83,7 +83,9 @@ Deux mécanismes ont été essayés avant le bon :
 
 Mesures : deux constructions du même commit rendent le même octet de sitemap (`2d9e80da…`), et l'octet servi en production est **le même**. Les articles gardent leur date de frontmatter (15/09), les neuf autres pages portent le 16/09. `test_build.py` vérifie les deux sens : la date du sitemap vient du registre, et l'empreinte du registre est celle du HTML construit.
 
-Ce qui reste hors de ma main : **Google doit relire le sitemap**. Il le fera de lui-même, ou tout de suite si Kevin clique « Envoyer à nouveau » sur `sitemap.xml` dans Search Console. L'indexation des cinq pages prendra ensuite quelques jours.
+**Deux mesures de plus, après la première tentative.** La date au jour ne suffisait pas : le sitemap annonçait `2026-09-16T00:00:00Z`, plus **ancien** que la lecture de Google le matin même (02:28). Le registre porte donc l'horodatage à la seconde. Et re-soumettre l'index ne fait relire que l'index : Google l'a relu deux fois (15:08, 15:11) sans jamais redemander l'enfant, resté à sa lecture de 02:28. C'est la déclaration directe de `sitemap-0.xml` — celui qui porte les douze URL — qui l'a débloqué.
+
+Résultat mesuré à 15:19:15, avec l'accord de Kevin pour agir sur sa propriété : **`sitemap-0.xml` lu, 12 URL soumises** (au lieu de 4). L'indexation des cinq pages suivra son cours ; elle prend quelques jours et ne dépend plus de nous.
 
 Preuves de cette passe : 132 tests navigateur, 64 Python, 154 Node, oracle 12 routes, copy 27/27, Lighthouse 100 partout (99 sur deux gabarits mobiles), 14 captures, équivalence 22 routes contre le déploiement immuable `d442193b`, contrôle de production PASS.
 
