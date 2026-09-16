@@ -44,12 +44,16 @@ Carte Hermes `t_3aa92bac` (sous le verrou `t_c64814ed`). Branche `site/v2-refont
 - **L1** interpolation d'une date calculée dans la CLI d'administration : laissée telle quelle (aucune entrée libre ; `wrangler d1 execute --command` ne lie pas de paramètres), notée.
 - **L2** `.dev.vars` ajouté à `.gitignore`.
 
-## Ce qui reste à Kevin (assistant : `bash scripts/assistant-mise-en-service-contact.sh`)
+## Mise en service côté Kevin (16/09, après la release)
 
-Fait par Kevin le 16/09 après la release : la commande de build du projet Cloudflare (`npm run build:site`, sortie `dist`, Node 22) et la validation du paragraphe de la politique de confidentialité.
+| Geste | État |
+|---|---|
+| Commande de build Cloudflare (`npm run build:site`, `dist`, Node 22) | fait ; construction git réussie depuis `e0324c06` |
+| Paragraphe de la politique de confidentialité | validé |
+| Email Routing pour `contact@memlia.fr` | MX `route1/2/3.mx.cloudflare.net` et SPF `v=spf1 include:_spf.mx.cloudflare.net ~all` en place (l'ancien `v=spf1 -all` supprimé) ; la règle `contact@ → Gmail` se prouve par un courriel réel, à envoyer par Kevin |
+| Bot Telegram | secrets `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` posés au tableau de bord (production et preview) — le collage en saisie masquée ne marchait pas dans le terminal de l'app ; token révoqué et régénéré après avoir été collé en clair dans la conversation. Prouvé : après redéploiement `34d54d58`, un message d'essai par le formulaire est passé au statut `notifie` (Telegram a répondu OK), puis effacé |
 
-1. **Email Routing** : `memlia.fr` n'a **aucun MX** et un SPF `v=spf1 -all` ; `contact@memlia.fr`, affiché sur le site, ne peut pas recevoir. Activer Email Routing et router l'adresse vers son Gmail.
-2. **Bot Telegram** dédié : token et chat id posés en secrets Pages par l'assistant ; la fonction prévient alors à chaque message. Lecture : `npm run contact:messages`.
+L'assistant `scripts/assistant-mise-en-service-contact.sh` reste dans le dépôt pour une remise en service (token lu dans `~/.memlia-telegram.token`, étape DNS sautée si les MX sont là).
 
 ## Après la release : la construction git publie (16/09 après-midi)
 

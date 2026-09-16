@@ -60,8 +60,14 @@
         "production",
         "preview"
       ],
-      "TELEGRAM_BOT_TOKEN": "a poser par Kevin",
-      "TELEGRAM_CHAT_ID": "a poser par Kevin"
+      "TELEGRAM_BOT_TOKEN": [
+        "production",
+        "preview"
+      ],
+      "TELEGRAM_CHAT_ID": [
+        "production",
+        "preview"
+      ]
     },
     "purge": {
       "worker": "memlia-contact-purge",
@@ -71,9 +77,15 @@
       "messages": "365 jours"
     },
     "courrier": {
-      "mx": "aucun",
-      "spf": "v=spf1 -all",
-      "consequence": "contact@memlia.fr ne recoit pas ; Email Routing a activer"
+      "mx": "route1/route2/route3.mx.cloudflare.net",
+      "spf": "v=spf1 include:_spf.mx.cloudflare.net ~all",
+      "dkim": "cf2024-1._domainkey",
+      "regleContact": "a prouver par un courriel reel envoye par Kevin"
+    },
+    "notificationTelegram": {
+      "prouveeLe": "2026-09-16T13:39:45Z",
+      "deploiement": "34d54d58",
+      "preuve": "message d essai passe au statut notifie, puis efface"
     }
   },
   "rollback": {
@@ -85,7 +97,6 @@
     "paragrapheFormulaire": "valide par Kevin le 2026-09-16"
   },
   "resteAKevin": [
-    "Email Routing pour contact@memlia.fr (aucun MX)",
-    "bot Telegram : TELEGRAM_BOT_TOKEN et TELEGRAM_CHAT_ID"
+    "envoyer un courriel reel a contact@memlia.fr pour prouver la regle Email Routing"
   ]
 }
