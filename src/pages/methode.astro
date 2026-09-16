@@ -1,5 +1,6 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import Renvois from '@/components/Renvois.astro';
 import ProofMedia from '@/components/ProofMedia.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
@@ -82,8 +83,6 @@ const appel = {
 
   <section class="pv" aria-labelledby="suite-titre-renvois">
     <div class="pv-tete rv"><h2 id="suite-titre-renvois">Ce qui vient ensuite</h2></div>
-    <ul class="pv-renvois rv-groupe" data-colonnes="3">
-      {renvois.map((r) => (<li class="pv-renvoi rv"><p>{r.texte}</p><a href={r.href}>{r.libelle}</a></li>))}
-    </ul>
+    <Renvois items={renvois} />
   </section>
 </PageCommerciale>

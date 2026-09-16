@@ -1,0 +1,21 @@
+---
+/**
+ * Renvois de fin de page : une phrase, un lien, en deux ou trois colonnes. Le motif est partagé
+ * par les pages commerciales ; il vit ici pour qu'aucune page n'en garde une copie qui dériverait.
+ * Les styles `.pv-renvois` / `.pv-renvoi` sont ceux de la coque PageCommerciale.
+ */
+interface Props {
+  items: { texte: string; libelle: string; href: string }[];
+  colonnes?: 2 | 3;
+}
+const { items, colonnes = 3 } = Astro.props;
+---
+
+<ul class="pv-renvois rv-groupe" data-colonnes={String(colonnes)}>
+  {items.map((r) => (
+    <li class="pv-renvoi rv">
+      <p>{r.texte}</p>
+      <a href={r.href}>{r.libelle}</a>
+    </li>
+  ))}
+</ul>

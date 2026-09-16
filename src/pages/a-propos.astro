@@ -1,5 +1,6 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import Renvois from '@/components/Renvois.astro';
 import ProofRow from '@/components/ProofRow.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
@@ -73,9 +74,7 @@ const appel = {
       <h2 id="ecris">Ce que j’écris</h2>
       <p class="texte-2 lecture">Je publie sur ce que je vérifie, ce que j’automatise et ce qui reste une décision humaine. Les articles sont signés de mon nom et sourcés.</p>
     </div>
-    <ul class="pv-renvois rv-groupe" data-colonnes="3">
-      {renvois.map((r) => (<li class="pv-renvoi rv"><p>{r.texte}</p><a href={r.href}>{r.libelle}</a></li>))}
-    </ul>
+    <Renvois items={renvois} />
   </section>
 
   <section class="pv" aria-labelledby="entite">

@@ -1,5 +1,6 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import Renvois from '@/components/Renvois.astro';
 import ProofRow from '@/components/ProofRow.astro';
 import Picto, { type NomPicto } from '@/components/Picto.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
@@ -122,8 +123,6 @@ const appel = {
       <h2 id="avant">Avant de nous parler</h2>
       <p class="texte-2">Deux méthodes à lire, et ce que nous refusons de faire.</p>
     </div>
-    <ul class="pv-renvois rv-groupe" data-colonnes="3">
-      {renvois.map((r) => (<li class="pv-renvoi rv"><p>{r.texte}</p><a href={r.href}>{r.libelle}</a></li>))}
-    </ul>
+    <Renvois items={renvois} />
   </section>
 </PageCommerciale>
