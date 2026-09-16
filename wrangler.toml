@@ -1,0 +1,6 @@
+# Declare a Cloudflare Pages ou se trouve le site construit et comment le construire.
+# Sans cela, la construction automatique publiait la RACINE du depot : /package.json et
+# /README.md repondaient 200 tandis que toutes les pages rendaient 404, et chaque poussee
+# de main mettait le site hors service. Mesure les 14 et 16 septembre 2026.
+name = "memlia"
+pages_build_output_dir = "dist"
