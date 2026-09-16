@@ -80,7 +80,9 @@
       "mx": "route1/route2/route3.mx.cloudflare.net",
       "spf": "v=spf1 include:_spf.mx.cloudflare.net ~all",
       "dkim": "cf2024-1._domainkey",
-      "regleContact": "a prouver par un courriel reel envoye par Kevin"
+      "regleContact": "active, lue par l API le 2026-09-16 : literal=contact@memlia.fr -> forward vers le Gmail de Kevin ; courriel reel recu et transmis",
+      "statut": "ready",
+      "catchAll": "inactive, mode drop : seule contact@ recoit"
     },
     "notificationTelegram": {
       "prouveeLe": "2026-09-16T13:39:45Z",
@@ -96,7 +98,5 @@
   "politiqueConfidentialite": {
     "paragrapheFormulaire": "valide par Kevin le 2026-09-16"
   },
-  "resteAKevin": [
-    "envoyer un courriel reel a contact@memlia.fr pour prouver la regle Email Routing"
-  ]
+  "resteAKevin": []
 }

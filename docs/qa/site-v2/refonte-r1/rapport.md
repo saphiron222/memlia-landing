@@ -50,10 +50,10 @@ Carte Hermes `t_3aa92bac` (sous le verrou `t_c64814ed`). Branche `site/v2-refont
 |---|---|
 | Commande de build Cloudflare (`npm run build:site`, `dist`, Node 22) | fait ; construction git réussie depuis `e0324c06` |
 | Paragraphe de la politique de confidentialité | validé |
-| Email Routing pour `contact@memlia.fr` | MX `route1/2/3.mx.cloudflare.net` et SPF `v=spf1 include:_spf.mx.cloudflare.net ~all` en place (l'ancien `v=spf1 -all` supprimé) ; la règle `contact@ → Gmail` se prouve par un courriel réel, à envoyer par Kevin |
+| Email Routing pour `contact@memlia.fr` | MX `route1/2/3.mx.cloudflare.net` et SPF `v=spf1 include:_spf.mx.cloudflare.net ~all` en place (l'ancien `v=spf1 -all` supprimé) ; règle lue par l'API le 16/09 : statut `ready`, `literal=contact@memlia.fr → forward` vers le Gmail de Kevin, **active**. Courriel réel envoyé par Kevin : Cloudflare l'a reçu et transmis (son avis « missing email? » n'est pas un échec — Gmail replie un message qu'on s'envoie à soi-même). La règle *catch-all* reste inactive en mode « drop » : seule `contact@` reçoit. |
 | Bot Telegram | secrets `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` posés au tableau de bord (production et preview) — le collage en saisie masquée ne marchait pas dans le terminal de l'app ; token révoqué et régénéré après avoir été collé en clair dans la conversation. Prouvé : après redéploiement `34d54d58`, un message d'essai par le formulaire est passé au statut `notifie` (Telegram a répondu OK), puis effacé |
 
-L'assistant `scripts/assistant-mise-en-service-contact.sh` reste dans le dépôt pour une remise en service (token lu dans `~/.memlia-telegram.token`, étape DNS sautée si les MX sont là).
+**Les quatre gestes sont faits ; le formulaire est en service de bout en bout.** L'assistant `scripts/assistant-mise-en-service-contact.sh` reste dans le dépôt pour une remise en service (token lu dans `~/.memlia-telegram.token`, étape DNS sautée si les MX sont là).
 
 ## Après la release : la construction git publie (16/09 après-midi)
 
