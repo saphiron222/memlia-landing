@@ -1,0 +1,26 @@
+# Site v3 — élargir l'éditorial à toute tâche automatisable du cabinet
+
+16 septembre 2026 — proposition à valider par Kevin (décision D2 : recommandation, pas d'exécution). Rien n'est publié, aucun code applicatif ni contenu modifié. Produit avec les skills `seo`, `seo-plan` et `seo-cluster` (expansion, classification d'intention, recouvrement SERP qualitatif, hub-and-spoke, matrice de liens, carte interactive).
+
+## À lire, dans l'ordre
+1. [Stratégie](SEO-STRATEGY.md) : le constat, la thèse, la carte des onze familles, la différenciation, les seuils de décision.
+2. [Concurrents](COMPETITOR-ANALYSIS.md) : qui occupe chaque famille, en quel format, et l'espace libre.
+3. [Architecture](SITE-STRUCTURE.md) : pilier, satellites, règles d'URL, matrice de liens, enablers de code.
+4. [Calendrier](CONTENT-CALENDAR.md) : 36 articles sur 12 mois en quatre vagues, un par tâche.
+5. [Glossaire](GLOSSARY-PLAN.md) : 34 termes automatisation, IA, données, cadre, avec sources et articles porteurs.
+6. [Exécution](IMPLEMENTATION-ROADMAP.md) : phases, commandes, contrôles.
+7. [Plan de cluster](cluster-plan.md), [données](cluster-plan.json), [carte interactive](cluster-map.html) : ouvrir `cluster-map.html` dans un navigateur.
+8. [Briefs de la vague 1](cluster-briefs/) : neuf briefs au format `editorial/templates/brief.md`, prêts pour `npm run blog:create` après validation.
+
+## Vérification
+`python3 docs/strategy/site-v3/build-cluster-plan.py --check` depuis la racine du dépôt : régénère `cluster-plan.json`, `cluster-plan.md` et `cluster-map.html` depuis la source unique (les listes du script) et vérifie l'unicité des slugs et des requêtes primaires, l'appartenance des clusters, rôles et formats aux énumérations du schéma du blog, le lien obligatoire satellite ↔ pilier, le minimum de trois liens entrants par article, l'absence d'orpheline et la répartition mensuelle.
+
+## Ce qui attend Kevin
+- Valider (ou amender) le territoire : onze familles, `audit-cac` dormant.
+- Valider la cadence : 3 articles par mois en régime, 2 le premier mois, 4 le troisième (36 en douze mois).
+- Valider la liste des 34 termes et l'ordre des deux vagues.
+- Valider les neuf briefs de la vague 1, à commencer par « Automatiser la relance des pièces clients ».
+- Dire quand relancer Hermes (cartes de chantier) : pas avant.
+
+## Limites
+Volumes et positions ND hors les deux requêtes chiffrées du 12/09 (10/mois chacune). Le recouvrement SERP est lu sur des relevés WebSearch (listes de 6 à 12 URL), pas sur un top 10 organique exact : les regroupements sont des regroupements de cohérence éditoriale, comme au 10/09. Les dates de la facture électronique et de l'AI Act ne sont pas affirmées ici ; elles se relèvent à la rédaction.
