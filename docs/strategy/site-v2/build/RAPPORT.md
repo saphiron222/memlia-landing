@@ -9,7 +9,7 @@ s'écrire si l'un d'eux est rouge.
 | Élément | Valeur |
 |---|---|
 | Branche | `site/v2` |
-| Commit | `9b5a0dc312b3ae5b95f257e3723ce26ebfc15eea` |
+| Commit | `1fccbeaff4a5543e91c1488a7ef7a216228afd58` |
 | Projet Cloudflare Pages | `memlia` |
 | URL immutable de preview | https://bceec1bb.memlia.pages.dev |
 | Alias de branche | https://preview-site-v2.memlia.pages.dev |
@@ -95,8 +95,10 @@ aucune réponse 4xx. Empreintes dans `captures/manifeste.json`.
   entrées à 48 px, et la consigne l'accepte explicitement. La première vue utile de
   l'accueil tient à 12 px près à 320×740. Le hero n'appartient pas à cette carte ; un
   allègement de sa marge haute rendrait cette marge confortable.
-- `src/components/Footer.astro` importe `CTA` sans l'utiliser. Code mort signalé, non
-  supprimé : le fichier appartient à cette carte mais l'import précède ce lot.
+- `src/components/Footer.astro` importe `CTA` sans l'utiliser, et `CTA.humain` n'est plus
+  référencé par aucun composant depuis que l'appel à l'action mène à `/contact`. Code mort
+  signalé, non supprimé : l'un et l'autre précèdent ce lot ou relèvent d'un arbitrage
+  éditorial — le second rendez-vous Cal.com existe toujours et peut reprendre sa place.
 - La revue métier du dossier Ressources reste épinglée au jour du 2026-09-16 :
   le contrat impose des copies de source du jour même. Le dossier redeviendra rouge
   demain sans nouvelle vérification des sources.
