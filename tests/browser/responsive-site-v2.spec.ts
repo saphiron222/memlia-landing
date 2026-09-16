@@ -25,11 +25,11 @@ for (const [width, height] of LARGEURS) {
       // depuis le menu, au-dessus elles sont en clair dans le bandeau.
       await expect(page.locator('.nav-entree'), route).toHaveCount(5);
       if (width < 1024) {
-        for (const cible of [page.locator('.nav-ressources-mobile'), page.locator('[data-burger]')]) {
-          await expect(cible, route).toBeVisible();
-          const boite = await cible.boundingBox();
-          expect(boite?.height, `${route} à ${width}px`).toBeGreaterThanOrEqual(48);
-        }
+        const bouton = page.locator('[data-burger]');
+        await expect(bouton, route).toBeVisible();
+        const boite = await bouton.boundingBox();
+        expect(boite?.height, `${route} à ${width}px`).toBeGreaterThanOrEqual(48);
+        expect(boite?.width, `${route} à ${width}px`).toBeGreaterThanOrEqual(48);
         await page.locator('[data-burger]').click();
         await expect(page.locator('.nav-mobile-lien'), route).toHaveCount(5);
         await expect(page.locator('#menu-mobile a').last(), route).toBeVisible();

@@ -2,11 +2,11 @@ import { test, expect, type Locator } from '@playwright/test';
 import { CTA } from '../../src/data/site.mjs';
 
 /**
- * Le bandeau mobile lui-même : ce qui reste visible sans ouvrir le panneau.
+ * Le bandeau mobile lui-même : le logo, et le bouton qui ouvre le panneau.
  *
- * Le panneau est éprouvé par mobile-menu.spec.ts. Ici, trois propriétés qui ne dépendent
- * d'aucun geste : le Hub garde son lien, le menu s'ouvre depuis une cible de 48 px, et la
- * navigation reste servie en clair à qui n'a pas JavaScript — le panneau, lui, ne s'ouvrirait pas.
+ * Le panneau est éprouvé par mobile-menu.spec.ts. Ici, ce qui ne dépend d'aucun geste : le
+ * bouton est une cible de 48 px portant un nom accessible malgré l'absence de texte visible,
+ * et la navigation reste servie en clair à qui n'a pas JavaScript — le panneau ne s'ouvrirait pas.
  */
 const PRIMAIRES = ['Automatisation', 'Méthode', 'Garanties', 'Ressources', 'Blog'];
 
@@ -36,16 +36,20 @@ for (const width of [320, 375, 390, 430, 768]) {
       await page.goto('/');
       await page.evaluate(() => document.fonts.ready);
 
-      const mesures = [];
-      for (const cible of [page.locator('.nav-ressources-mobile'), page.locator('[data-burger]')]) {
-        await expect(cible).toBeVisible();
-        mesures.push(await mesurerAtteignable(cible));
-      }
-      // Le bandeau tient sur une ligne : aucune cible ne passe sous une autre.
-      expect(mesures[1].rect.top, 'le menu reste sur la ligne du bandeau').toBeLessThan(mesures[0].rect.bottom);
-      // Les cinq entrées sont dans le document, repliées derrière le menu.
+      const bouton = page.locator('[data-burger]');
+      await expect(bouton).toBeVisible();
+      // Aucun texte visible : le nom accessible doit donc être porté par l'attribut.
+      await expect(bouton).toHaveAttribute('aria-label', 'Ouvrir le menu principal');
+      expect((await bouton.textContent())?.trim()).toBe('');
+      const mesures = [await mesurerAtteignable(bouton)];
+      expect(mesures[0].rect.width, 'cible tactile du bouton').toBeGreaterThanOrEqual(48);
+      // Le bandeau tient sur une ligne : le bouton reste au niveau du logo.
+      const logo = await page.locator('.nav-marque').boundingBox();
+      expect(mesures[0].rect.top, 'le bouton reste sur la ligne du bandeau').toBeLessThan(logo!.y + logo!.height);
+      // Les cinq entrées sont dans le document, repliées derrière le menu — aucune dans le bandeau.
       await expect(page.locator('.nav-centre')).toBeHidden();
       await expect(page.locator('.nav-entree')).toHaveText(PRIMAIRES);
+      await expect(page.locator('.nav-barre a')).toHaveCount(1);
 
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `débordement horizontal à ${width}px`).toBeLessThanOrEqual(0);
@@ -54,23 +58,24 @@ for (const width of [320, 375, 390, 430, 768]) {
   }
 }
 
-test('bandeau : ordre du clavier et page courante marquée', async ({ page }) => {
+test('bandeau : ordre du clavier et page courante marquée dans le panneau', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/ressources');
-  await expect(page.locator('.nav-ressources-mobile')).toHaveAttribute('aria-current', 'page');
 
-  // Le logo, le Hub, puis le menu : une seule séquence, sans piège de focus tant qu'il est fermé.
+  // Le logo puis le bouton : une seule séquence, sans piège de focus tant qu'il est fermé.
   await page.locator('.nav-marque a').focus();
-  for (const libelle of ['Ressources', 'Menu']) {
-    await page.keyboard.press('Tab');
-    const focalise = page.locator(':focus');
-    await expect(focalise).toHaveText(new RegExp(libelle));
-    const marque = await focalise.evaluate((el) => {
-      const style = getComputedStyle(el);
-      return { contour: style.outlineStyle, ombre: style.boxShadow };
-    });
-    expect(marque.contour !== 'none' || (marque.ombre && marque.ombre !== 'none'), libelle).toBe(true);
-  }
+  await page.keyboard.press('Tab');
+  const bouton = page.locator(':focus');
+  await expect(bouton).toHaveAttribute('data-burger', '');
+  const marque = await bouton.evaluate((el) => {
+    const style = getComputedStyle(el);
+    return { contour: style.outlineStyle, ombre: style.boxShadow };
+  });
+  expect(marque.contour !== 'none' || (marque.ombre && marque.ombre !== 'none')).toBe(true);
+
+  // Le Hub est dans le panneau, et s'y marque comme page courante.
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#menu-mobile [aria-current="page"]')).toHaveText('Ressources');
 });
 
 test('bandeau : aucune réservation externe, l’action mène à /contact', async ({ page }) => {

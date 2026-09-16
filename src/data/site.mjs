@@ -7,7 +7,7 @@ export const SITE = {
   nom: 'Memlia',
   tagline: 'L’IA automatise le travail répétitif. Votre cabinet garde la décision.',
   email: 'contact@memlia.fr',
-  /** Date de la dernière modification éditoriale (lastmod du sitemap). */
+  /** Plancher du `lastmod` du sitemap, quand le dépôt git n'est pas lisible (voir astro.config.mjs). */
   derniereMiseAJour: '2026-09-09',
   langue: 'fr-FR',
   couleurTheme: '#fffefb',

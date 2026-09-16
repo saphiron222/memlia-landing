@@ -5,6 +5,7 @@ import os
 from html.parser import HTMLParser
 from pathlib import Path
 import re
+import subprocess
 import unittest
 from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
@@ -102,6 +103,15 @@ class BuildProof(unittest.TestCase):
         for article in published_articles:
             posting = next(n for g in jsonld(article) for n in g['@graph'] if n['@type'] == 'BlogPosting')
             self.assertEqual(pages[f'{SITE}/blog/{article.stem}'][:10], posting['dateModified'][:10])
+        # Les pages non éditoriales datent du dernier commit qui a touché ce qui les rend : une
+        # date figée à la main ne bouge pas quand le site change, et Google ne relit pas un
+        # sitemap qui prétend n'avoir pas bougé (Search Console, 16/09/2026 : 4 pages découvertes
+        # alors que douze étaient en ligne).
+        attendu = subprocess.run(['git', 'log', '-1', '--format=%cI', '--', 'src', 'public', 'astro.config.mjs'],
+                                 cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+        self.assertTrue(attendu, 'dépôt git illisible : la date du sitemap ne peut pas être vérifiée')
+        for page in attendues - {f'{SITE}/blog/{a.stem}' for a in published_articles}:
+            self.assertEqual(pages[page][:10], attendu[:10], page)
         self.assertIn('Sitemap: https://memlia.fr/sitemap.xml', (DIST / 'robots.txt').read_text())
 
     def test_asset_and_srcset_targets(self):

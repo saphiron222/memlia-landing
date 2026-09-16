@@ -14,9 +14,10 @@ import { NAV_V2 } from '@/data/pages-v2.mjs';
  * avec les propriétés qu'il tenait déjà : cible de 48 px, fond opaque, fond rendu inerte,
  * défilement verrouillé puis restauré à la fermeture, sortie par Échap comme par la croix.
  *
- * Deux choses restent hors du panneau, parce qu'elles ne doivent dépendre d'aucun geste :
- * le Hub Ressources garde son lien dans le bandeau, et une navigation en clair est servie
- * à qui n'a pas JavaScript — le panneau, lui, ne s'ouvrirait pas.
+ * Le bandeau ne porte que le logo et le bouton du menu : toutes les destinations, Hub compris,
+ * vivent dans le panneau. Une seule chose reste en dehors, parce qu'elle ne peut dépendre
+ * d'aucun geste : la navigation en clair servie à qui n'a pas JavaScript — le panneau, lui,
+ * ne s'ouvrirait pas.
  *
  * La barre est collante : à 56 px elle ne masque pas le contenu.
  */
@@ -73,8 +74,6 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     </nav>
 
     <div class="nav-droite">
-      <a class="nav-ressources-mobile" href="/ressources" aria-current={surRessources}>Ressources</a>
-
       <Button href={CTA.nav.href} variante="principal" picto="fleche" class="nav-principal" aria-current={actionCourante}>
         {CTA.nav.libelle}
       </Button>
@@ -87,9 +86,8 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
         aria-label="Ouvrir le menu principal"
         data-burger
       >
-        <Picto nom="menu" taille={16} class="burger-ouvrir" />
-        <Picto nom="fermer" taille={16} class="burger-fermer" />
-        <span>Menu</span>
+        <Picto nom="menu" taille={22} class="burger-ouvrir" />
+        <Picto nom="fermer" taille={22} class="burger-fermer" />
       </button>
     </div>
   </div>
@@ -168,20 +166,6 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     align-items: center;
     gap: 4px;
   }
-  /* Le Hub garde une entrée dans le bandeau : il ne dépend d'aucune ouverture de panneau. */
-  .nav-ressources-mobile {
-    display: inline-flex;
-    align-items: center;
-    min-height: 48px;
-    padding-inline: 8px;
-    border-radius: var(--r-bouton);
-    color: var(--texte-fort);
-    font-size: var(--t-sm);
-    font-weight: 600;
-  }
-  .nav-ressources-mobile[aria-current] {
-    background: var(--surface-hover);
-  }
   .nav-principal {
     display: none;
   }
@@ -189,16 +173,12 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
     min-width: 48px;
     min-height: 48px;
-    padding: 6px 10px;
+    padding: 6px;
     border-radius: var(--r-bouton);
     border: 1px solid transparent;
     background: transparent;
-    font-family: inherit;
-    font-size: var(--t-sm);
-    font-weight: 500;
     color: var(--texte-fort);
     cursor: pointer;
     transition: background-color var(--duree-1), border-color var(--duree-1);
@@ -283,9 +263,6 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     .nav {
       gap: 8px;
     }
-    .nav-ressources-mobile {
-      padding-inline: 4px;
-    }
     .nav-burger {
       padding-inline: 6px;
     }
@@ -295,7 +272,6 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
       color: var(--texte-fort);
       background: var(--surface-hover);
     }
-    .nav-ressources-mobile:hover,
     .nav-burger:hover {
       background: var(--surface-hover);
     }
@@ -316,7 +292,6 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     .nav-principal {
       display: inline-flex;
     }
-    .nav-ressources-mobile,
     .nav-burger,
     .nav-mobile {
       display: none;

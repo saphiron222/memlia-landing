@@ -28,18 +28,20 @@ for (const width of widths) {
   });
 }
 
-test('navigation mobile garde Ressources visible hors du panneau', async ({ page }) => {
+test('navigation mobile : le Hub est dans le panneau, à une action', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 });
   await page.goto('/ressources');
-  const direct = page.locator('.nav-ressources-mobile');
+  // Le bandeau ne porte que le logo et le bouton ; le Hub vit dans le panneau, comme les autres pages.
+  await expect(page.locator('.nav-ressources-mobile')).toHaveCount(0);
   const menu = page.locator('[data-burger]');
-  await expect(direct).toBeVisible();
-  await expect(direct).toHaveAttribute('aria-current', 'page');
-  await expect(menu).toContainText('Menu');
-  for (const control of [direct, menu]) {
-    const box = await control.boundingBox();
-    expect(box?.height).toBeGreaterThanOrEqual(48);
-  }
+  const boite = await menu.boundingBox();
+  expect(boite?.height).toBeGreaterThanOrEqual(48);
+  expect(boite?.width).toBeGreaterThanOrEqual(48);
+  await menu.click();
+  const ressources = page.locator('#menu-mobile a[href="/ressources"]');
+  await expect(ressources).toBeVisible();
+  await expect(ressources).toHaveAttribute('aria-current', 'page');
+  expect((await ressources.boundingBox())?.height).toBeGreaterThanOrEqual(48);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
 });
 
@@ -70,8 +72,7 @@ test('sans JavaScript : liste et navigation restent complètes, filtres absents'
   await expect(page.locator('[data-resource-id]')).toHaveCount(RESSOURCES_ATTENDUES);
   await expect(page.locator('[data-filters]')).toBeHidden();
   await expect(page.locator('.sans-js')).toBeVisible();
-  // Le lien du Hub vit dans le bandeau, hors du panneau : il ne dépend d'aucun script.
-  await expect(page.locator('.nav-ressources-mobile')).toBeVisible();
+  // Sans JavaScript le panneau ne s'ouvrirait pas : le repli sert les mêmes destinations.
   await expect(page.locator('.nav-sans-js a[href="/ressources"]')).toBeVisible();
   await context.close();
 });
