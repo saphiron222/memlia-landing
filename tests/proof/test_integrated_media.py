@@ -9,28 +9,32 @@ PROOFS = ['01-flux', '02-repetition', '03-controle', '04-observer', '05-cadrer',
 
 
 class IntegratedMediaProof(unittest.TestCase):
-    def test_r7_is_not_exported(self):
-        dist_r7 = DIST / 'media/r7'
-        self.assertEqual(sorted(p.relative_to(DIST).as_posix() for p in dist_r7.rglob('*') if p.is_file()), [])
+    def test_historical_generations_are_not_exported(self):
+        # R7 (cartouche) et R8 (mention d'épreuve) restent dans le projet vidéo, jamais dans le site.
+        for generation in ['r7', 'r8']:
+            dist_dir = DIST / f'media/{generation}'
+            self.assertEqual(sorted(p.relative_to(DIST).as_posix() for p in dist_dir.rglob('*') if p.is_file()), [], generation)
 
-    def test_r7_is_not_referenced_by_any_exported_surface(self):
+    def test_historical_generations_are_not_referenced_by_any_exported_surface(self):
         references = []
         for path in DIST.rglob('*'):
-            if path.is_file() and path.suffix in {'.html', '.css', '.js', '.json', '.xml'}:
-                if 'media/r7/' in path.read_text(errors='replace').lower():
+            if path.is_file() and path.suffix in {'.html', '.css', '.js', '.json', '.xml', '.txt'}:
+                text = path.read_text(errors='replace').lower()
+                if 'media/r7/' in text or 'media/r8/' in text or 'animatique' in text:
                     references.append(path.relative_to(DIST).as_posix())
         self.assertEqual(references, [])
 
-    def test_r8_is_the_only_exported_video_generation(self):
+    def test_r9_is_the_only_exported_video_generation(self):
+        self.assertEqual(sorted(p.name for p in (DIST / 'media').iterdir()), ['r9'])
         self.assertEqual(
-            sorted(p.name for p in (DIST / 'media/r8').iterdir() if p.is_file()),
-            ['animatique-hero-45s.mp4', 'animatique.vtt', 'hero-poster-1200.webp', 'hero-poster.webp'],
+            sorted(p.name for p in (DIST / 'media/r9').iterdir() if p.is_file()),
+            ['explainer-hero-45s.mp4', 'explainer.vtt', 'hero-poster-1200.webp', 'hero-poster.webp'],
         )
         videos = [video for path in DIST.rglob('*.html') for video in Document(path).select('video')]
         self.assertEqual(len(videos), 1)
-        self.assertEqual(videos[0]['src'], '/media/r8/animatique-hero-45s.mp4')
+        self.assertEqual(videos[0]['src'], '/media/r9/explainer-hero-45s.mp4')
 
-    def test_hero_has_accessible_r8_player(self):
+    def test_hero_has_accessible_r9_player(self):
         doc = Document(DIST / 'index.html')
         videos = doc.select('video')
         self.assertEqual(len(videos), 1)
@@ -42,9 +46,9 @@ class IntegratedMediaProof(unittest.TestCase):
         self.assertEqual(video.get('tabindex'), '0')
         self.assertEqual(video['preload'], 'metadata')
         self.assertTrue(video['aria-label'])
-        self.assertEqual(video['poster'], '/media/r8/hero-poster-1200.webp')
-        self.assertEqual(video['src'], '/media/r8/animatique-hero-45s.mp4')
-        self.assertEqual(hashlib.sha256((DIST / video['src'].lstrip('/')).read_bytes()).hexdigest(), '164f6090f7d7a820d544d6679e5f68257fb4f929fe35079b5ce9a22ef86585e4')
+        self.assertEqual(video['poster'], '/media/r9/hero-poster-1200.webp')
+        self.assertEqual(video['src'], '/media/r9/explainer-hero-45s.mp4')
+        self.assertEqual(hashlib.sha256((DIST / video['src'].lstrip('/')).read_bytes()).hexdigest(), '4c435fd18d104c213764dfc65fc65d090ed76442e313bc429df3a8243961a01a')
         tracks = doc.select('track')
         self.assertEqual(len(tracks), 1)
         self.assertEqual(tracks[0]['kind'], 'subtitles')
@@ -96,7 +100,7 @@ class IntegratedMediaProof(unittest.TestCase):
 
     def test_hero_poster_is_prioritized_before_video_metadata(self):
         links = Document(DIST / 'index.html').select('link')
-        poster = [l for l in links if l.get('href') == '/media/r8/hero-poster-1200.webp']
+        poster = [l for l in links if l.get('href') == '/media/r9/hero-poster-1200.webp']
         self.assertEqual(len(poster), 1)
         self.assertEqual(poster[0].get('rel'), 'preload')
         self.assertEqual(poster[0].get('as'), 'image')

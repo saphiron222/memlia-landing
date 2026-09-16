@@ -27,7 +27,7 @@ class MediaChainProof(unittest.TestCase):
                     self.assertEqual(hashlib.sha256(built.read_bytes()).hexdigest(), entry['sha256'])
 
     def test_vtt_timing_and_captions_are_complete(self):
-        vtt = (DIST / 'media/r8/animatique.vtt').read_text()
+        vtt = (DIST / 'media/r9/explainer.vtt').read_text()
         blocks = vtt.strip().split('\n\n')[1:]
         self.assertEqual(len(blocks), 20)
 

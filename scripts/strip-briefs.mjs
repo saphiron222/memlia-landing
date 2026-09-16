@@ -17,18 +17,21 @@ import { IMAGES, FORMATS, PUBLISHED_IMAGE_IDS } from '../src/data/images.mjs';
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(RACINE, 'dist');
 const DOSSIER_IMAGES = join(RACINE, 'dist', 'images');
-const DOSSIER_MEDIA_R7 = join(RACINE, 'dist', 'media', 'r7');
+// Générations historiques de la vidéo (R7 cartouche, R8 mention d'épreuve) : jamais exportées, seule R9 est servie.
+const GENERATIONS_MEDIA_INTERDITES = ['r7', 'r8'].map((generation) => [generation, join(RACINE, 'dist', 'media', generation)]);
 const MOTIF_BRIEF = /^brief-.+\.md$/;
 
 // Garder /sitemap.xml, URL historique déclarée dans robots.txt et le head.
 copyFileSync(join(RACINE, 'dist', 'sitemap-index.xml'), join(RACINE, 'dist', 'sitemap.xml'));
 
-const fichiersR7 = existsSync(DOSSIER_MEDIA_R7)
-  ? readdirSync(DOSSIER_MEDIA_R7, { recursive: true, withFileTypes: true }).filter((entree) => entree.isFile()).length
-  : 0;
-rmSync(DOSSIER_MEDIA_R7, { recursive: true, force: true });
-if (existsSync(DOSSIER_MEDIA_R7)) throw new Error('Le dossier media/r7 interdit subsiste dans dist.');
-console.log(`[strip-briefs] ${fichiersR7} asset(s) R7 exclu(s) de dist/media/r7/.`);
+for (const [generation, dossier] of GENERATIONS_MEDIA_INTERDITES) {
+  const fichiers = existsSync(dossier)
+    ? readdirSync(dossier, { recursive: true, withFileTypes: true }).filter((entree) => entree.isFile()).length
+    : 0;
+  rmSync(dossier, { recursive: true, force: true });
+  if (existsSync(dossier)) throw new Error(`Le dossier media/${generation} interdit subsiste dans dist.`);
+  console.log(`[strip-briefs] ${fichiers} asset(s) ${generation.toUpperCase()} exclu(s) de dist/media/${generation}/.`);
+}
 
 if (!existsSync(DOSSIER_IMAGES)) {
   console.log(`[strip-briefs] ${DOSSIER_IMAGES} absent : rien à retirer.`);

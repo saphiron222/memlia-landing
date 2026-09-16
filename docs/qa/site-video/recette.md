@@ -62,3 +62,18 @@ SHA-256 R8 scellés :
 La revue Standards n’a trouvé aucune violation bloquante ou importante ; elle signale seulement de petites répétitions de préparation dans les tests, conservées pour leur lisibilité locale. La revue Spec questionne l’absence d’`autoplay` dans le HTML initial. Cette décision est volontaire : l’attribut est posé uniquement après vérification de `prefers-reduced-motion`, ce qui empêche un départ anticipé contraire à la préférence ; le régime normal et le régime réduit sont tous deux joués en navigateur. Sans JavaScript, le lecteur ne démarre pas et propose le téléchargement.
 
 Aucune production, fusion de `main` ou poussée n’a été effectuée.
+
+## R9 — retrait de la mention d'épreuve (16 septembre 2026)
+
+Demande de Kevin : la vidéo du hero R8 portait encore, sous l'accroche et sur toutes les images comme sur l'affiche, la ligne « SCRIPT, VOIX, MUSIQUE ET RACCORDS À VALIDER · SCHÉMA CONCEPTUEL », qui donne au site l'air d'une prévisualisation. La ligne est retirée à la source du projet Remotion (`interne/memlia-video`, recette `docs/recette-m6-r9.md`), les deux vidéos sont rendues à neuf avec le flux audio approuvé remuxé sans réencodage, l'affiche est l'image 418 du hero corrigé. Oracle indépendant `scripts/r9_verify.py` : PASS, 15 contrôles (mention absente sur 1 350 images, témoin R8 positif, accroche conservée, audio intact, sous-titres inchangés).
+
+Intégration par `scripts/import-r9-media.mjs` sous des noms neutres (plus d'« animatique » dans les URL) ; les générations R7 et R8 sont retirées de `public/media` et interdites de `dist` par `strip-briefs.mjs`.
+
+| Fichier servi | SHA-256 |
+|---|---|
+| `/media/r9/explainer-hero-45s.mp4` | `4c435fd18d104c213764dfc65fc65d090ed76442e313bc429df3a8243961a01a` |
+| `/media/r9/explainer.vtt` | `9526c00b857eed59ded3c58aa8e27ef3191aa4e8ddf11883a4a55fca12ecc3a9` (identique à R8) |
+| `/media/r9/hero-poster.webp` | voir `docs/qa/m4-r4/media-manifest.json` |
+| `/media/r9/hero-poster-1200.webp` | dérivé au vol, voir le manifeste |
+
+Le balayage des pages rendues n'a trouvé aucune autre mention de processus visible : « preview » n'apparaît que dans la directive `max-image-preview` des robots, « candidat » et « brouillon » sont des mots du contenu, « placeholder » un attribut du champ de recherche. La ligne du glossaire dans `llms.txt` (« signalées non attestées ») a été reformulée.

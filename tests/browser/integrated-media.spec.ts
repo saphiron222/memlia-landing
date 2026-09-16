@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const VIDEO_SRC = '/media/r8/animatique-hero-45s.mp4';
+const VIDEO_SRC = '/media/r9/explainer-hero-45s.mp4';
 
 test('R8 démarre muette en boucle puis repart à zéro avec le son', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
@@ -162,7 +162,7 @@ test('fallback et sous-titres restent disponibles sans JavaScript', async ({ bro
   const page = await context.newPage();
   await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
   await expect(page.locator('video')).not.toHaveAttribute('controls', '');
-  await expect(page.locator('video track')).toHaveAttribute('src', '/media/r8/animatique.vtt');
+  await expect(page.locator('video track')).toHaveAttribute('src', '/media/r9/explainer.vtt');
   await expect(page.locator('.hero-video-noscript')).toContainText('Votre navigateur ne peut pas lancer le lecteur interactif.');
   await expect(page.getByRole('link', { name: 'Télécharger la vidéo' })).toHaveAttribute('href', VIDEO_SRC);
   await expect(page.locator('[data-proof]')).toHaveCount(9);

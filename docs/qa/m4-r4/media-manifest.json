@@ -1,9 +1,11 @@
 {
   "sources": {
     "sourceProofs": "docs/design/m4-r1-functional-proofs",
-    "sourceVideo": "/Users/kevinkitanga/dev/interne/memlia-video/out/r8"
+    "sourceVideo": "/Users/kevinkitanga/dev/interne/memlia-video/out/r9",
+    "sourceVideoVerification": "/Users/kevinkitanga/dev/interne/memlia-video/out/r9/verification.json"
   },
   "replacedHistoricalMedia": 4,
+  "generation": "r9",
   "entries": [
     {
       "source": "docs/design/m4-r1-functional-proofs/index.html#flux",
@@ -150,29 +152,29 @@
       "sha256": "2b805066b2fab830e889c0516bed70c93e069b752317acbaae5d6e5b9ecd0a0a"
     },
     {
-      "source": "/Users/kevinkitanga/dev/interne/memlia-video/out/r8/animatique-hero-45s.mp4",
-      "target": "public/media/r8/animatique-hero-45s.mp4",
-      "bytes": 2925093,
-      "sha256": "164f6090f7d7a820d544d6679e5f68257fb4f929fe35079b5ce9a22ef86585e4"
+      "source": "/Users/kevinkitanga/dev/interne/memlia-video/out/r9/animatique-hero-45s.mp4",
+      "target": "public/media/r9/explainer-hero-45s.mp4",
+      "bytes": 2890643,
+      "sha256": "4c435fd18d104c213764dfc65fc65d090ed76442e313bc429df3a8243961a01a"
     },
     {
-      "source": "/Users/kevinkitanga/dev/interne/memlia-video/out/r8/hero-poster.webp",
-      "target": "public/media/r8/hero-poster.webp",
-      "bytes": 131454,
-      "sha256": "c549233d274e7ec926f2e2de296436a0c510ddeeeda1ec1ecbfe06de21a9d1f1"
-    },
-    {
-      "source": "/Users/kevinkitanga/dev/interne/memlia-video/out/r8/animatique.vtt",
-      "target": "public/media/r8/animatique.vtt",
+      "source": "/Users/kevinkitanga/dev/interne/memlia-video/out/r9/animatique.vtt",
+      "target": "public/media/r9/explainer.vtt",
       "bytes": 1343,
       "sha256": "9526c00b857eed59ded3c58aa8e27ef3191aa4e8ddf11883a4a55fca12ecc3a9"
     },
     {
-      "source": "public/media/r8/hero-poster.webp",
-      "target": "public/media/r8/hero-poster-1200.webp",
+      "source": "/Users/kevinkitanga/dev/interne/memlia-video/out/r9/hero-poster.webp",
+      "target": "public/media/r9/hero-poster.webp",
+      "bytes": 118494,
+      "sha256": "03d17809abc1d7a511575f61386458cca18cc71cccaf763c2a7342300a70c7f6"
+    },
+    {
+      "source": "public/media/r9/hero-poster.webp",
+      "target": "public/media/r9/hero-poster-1200.webp",
       "derivative": true,
-      "bytes": 24176,
-      "sha256": "ea70ca8acfcef091a5f9879dcc9023002a777cfa8c2b73f83c4cb89bb31eda7e"
+      "bytes": 20582,
+      "sha256": "7e0612dbc5f3f845963207469d0602b0332eaaadbc168a84bb5810b57dad68c4"
     }
   ],
   "proofRender": {
