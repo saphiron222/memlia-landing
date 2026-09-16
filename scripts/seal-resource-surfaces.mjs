@@ -257,7 +257,13 @@ function createManifest(adapter) {
       evidenceRefs: ['docs/qa/hub-ressources/freshness-r4-exec.md'],
     };
   });
-  manifest.quality.recalculatedScore = 100;
+  // Le score se calcule depuis la grille qu'on vient d'ecrire, jamais en dur : une constante
+  // ne peut pas rougir. Meme formule que le validateur (resource-pipeline.mjs).
+  const rawScore = manifest.quality.rubric.reduce((total, row) => total + (row.result === 'PASS' ? row.weight : 0), 0);
+  const measurableWeight = manifest.quality.rubric.reduce((total, row) => total + (row.result === 'ND' ? 0 : row.weight), 0);
+  manifest.quality.recalculatedScore = measurableWeight === 0
+    ? 0
+    : Math.round(rawScore * 100 / measurableWeight);
   manifest.quality.p0 = [];
   manifest.quality.p1 = [];
   manifest.quality.blocking = false;
