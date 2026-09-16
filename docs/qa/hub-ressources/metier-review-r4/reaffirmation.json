@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r4",
-  "reaffirmeLe": "2026-09-16T14:02:31.181Z",
+  "reaffirmeLe": "2026-09-16T14:24:38.713Z",
   "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
-  "registreSha256": "1d7b2cf424c322ff75de9874f5ec679a8869ad9d2fbd3f8aa566271e825aca0d",
+  "registreSha256": "86e333db237572a243cf43d9c4b3330d299de8d54371834e51a880347157a3ac",
   "declarationRef": "docs/qa/hub-ressources/metier-review-r4/reaffirmation-declaration.json",
   "declarationSha256": "73f3863941f5339c8fe512f2e9a74390816cb746df3eeff454ccff0b7fc6bfc6",
   "ancreRef": "docs/qa/hub-ressources/metier-review-r4/sujet-ancre.json",
@@ -13,7 +13,7 @@
     "H": {
       "action": "réaffirmée",
       "sujetAncre": "6b5f58e020fbf3cd97efbe13bbe3ea08b95f8e98f347f1434405cca5c6e4b45a",
-      "sujetReaffirme": "7a2821ea4084159a4d784169f5eead498678dddda0e317307f59a34f07a6e59f",
+      "sujetReaffirme": "66021e8cba406e919af5d6a55c8233d2e21244a556cd71e133cfd6d1b75a2cc6",
       "feuillesEcartees": 9,
       "feuillesParChamp": {
         "buildOutputDigest.buildOutputDigest": 1,
@@ -27,16 +27,16 @@
       },
       "affirmationsRenduesVerifiees": 10,
       "verdictsConserves": 7,
-      "candidateHash": "1485b55e2a01b596609e4bfa89e7f1adc9d0ddc6cfb01669a9b1a3df209c4bf6",
-      "auditHash": "25dea7d32df4663c864f93f6dd7d0207ac1be0e242044e6e7e1e0e4c84e5357e",
-      "manifestSha256": "34c0717b31b0da91e3e0790c872f34ce5af023cdd2fbce891395b3da00985e9d",
+      "candidateHash": "8a99ed42ea9ef34575a29376c4a46ce7261abe4ba8671cbb0c9e32771e0c26b1",
+      "auditHash": "d92ad73be1508c49d437d0c5f07cf8d85bbdc22100f159547683353b0bad90ac",
+      "manifestSha256": "55d55903e29b28e7eba5d27b3a35fbad0c85a62cf2c71fcccd5cb9a6899d4748",
       "preuveRef": "docs/qa/hub-ressources/metier-review-r4/preuve-hub.json",
-      "preuveSha256": "45abd168175067846f6a5a9b42ce8b904df295f3bc121c244b5753dc4b06a9f0"
+      "preuveSha256": "c467ce886a3801f8e0374dc8f8020543326459c9602e09c0482f16945dbb8a3d"
     },
     "T": {
       "action": "réaffirmée",
       "sujetAncre": "361b99b1025228a75d4ba7e2d9194b913054597f22945ae316c068fcd05d64e8",
-      "sujetReaffirme": "829d953a94b1f583b055e8bd1028290edd86a045cb2c6fc28b78270845b961e6",
+      "sujetReaffirme": "fe63062c268b6760778f010aafc6a198445e05bdb4a7dc0a3381ea3e54d4eb04",
       "feuillesEcartees": 9,
       "feuillesParChamp": {
         "buildOutputDigest.buildOutputDigest": 1,
@@ -50,11 +50,11 @@
       },
       "affirmationsRenduesVerifiees": 39,
       "verdictsConserves": 18,
-      "candidateHash": "89e5e4c9d669a40788ce8f0e2973aab226ee2b23b5107e6f51788e53f5cc11c0",
-      "auditHash": "26c54a78837758f9d53a00a1dfcc5f4719174472027bc753c3698878b0b1c4d0",
-      "manifestSha256": "68a8452e4607c5d95fb218aff2a30b09c21eea99b60d3cf60bbfb75ef9c1649c",
+      "candidateHash": "d3b7339bb2be1b5dba7c1256d38c772ccd14fe1f40f17fa00eb60b4bbd80a0a8",
+      "auditHash": "86cefe0c179dbfa260760c4ea98cfbb0d3f2104f285ae71d06a824567c511070",
+      "manifestSha256": "687c4ac2b1425a25b3d4e9b7f9eeb5f5a14f14c741c5ac5ece4deac36a14d7e1",
       "preuveRef": "docs/qa/hub-ressources/metier-review-r4/preuve-glossaire.json",
-      "preuveSha256": "801cb760a8de8b9022bf08c8071a899d1d2f01171d4de847677bc28075e2708b"
+      "preuveSha256": "866feb3aff6a3eb5f279e644b5a92af8fc3b932c9bb1c0377d8be3e8e3cbfe01"
     }
   }
 }

@@ -49,7 +49,8 @@ for (const width of [320, 375, 390, 430, 768]) {
       // Les cinq entrées sont dans le document, repliées derrière le menu — aucune dans le bandeau.
       await expect(page.locator('.nav-centre')).toBeHidden();
       await expect(page.locator('.nav-entree')).toHaveText(PRIMAIRES);
-      await expect(page.locator('.nav-barre a')).toHaveCount(1);
+      // Un seul lien visible dans le bandeau : le logo. Les autres sont dans le document, repliés.
+      await expect(page.locator('.nav-barre a:visible')).toHaveCount(1);
 
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `débordement horizontal à ${width}px`).toBeLessThanOrEqual(0);
