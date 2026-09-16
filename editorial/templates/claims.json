@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "candidateSlug": "__SLUG__",
+  "articleSha256": "__ARTICLE_SHA256__",
+  "contentUnits": [
+    {
+      "id": "unit-__A_RENSEIGNER__",
+      "text": "__A_RENSEIGNER__",
+      "claimIds": ["claim-__A_RENSEIGNER__"]
+    }
+  ],
+  "claims": [
+    {
+      "id": "__A_RENSEIGNER__",
+      "unitId": "unit-__A_RENSEIGNER__",
+      "claim": "__A_RENSEIGNER__",
+      "type": "produit",
+      "sourceIds": [],
+      "sourceExcerpts": {},
+      "checkedAt": "__DATE__",
+      "status": "FAIL",
+      "factCheck": {
+        "verdict": "UNVERIFIED",
+        "checkedAt": "__DATE__",
+        "sourceResults": [
+          {
+            "sourceId": "__A_RENSEIGNER__",
+            "sourceUrl": "__A_RENSEIGNER__",
+            "verifiedUrl": "__A_RENSEIGNER__",
+            "excerpt": "__A_RENSEIGNER__",
+            "context": "__A_RENSEIGNER__",
+            "contextSha256": "__A_RENSEIGNER__",
+            "citation": {
+              "text": "__A_RENSEIGNER__",
+              "sha256": "__A_RENSEIGNER__",
+              "sourceContentSha256": "__A_RENSEIGNER__",
+              "coordinates": {
+                "finalUrl": "__A_RENSEIGNER__",
+                "checkedAt": "__DATE__",
+                "title": "__A_RENSEIGNER__",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": null,
+                  "endLine": null
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [],
+              "reasoning": "__A_RENSEIGNER__"
+            },
+            "verdict": "UNVERIFIED",
+            "supportsClaim": false,
+            "contradictsClaim": null,
+            "explanation": "__A_RENSEIGNER__",
+            "checkedAt": "__DATE__"
+          }
+        ]
+      }
+    }
+  ]
+}

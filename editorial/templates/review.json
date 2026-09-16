@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "reviewer": "marketing",
+  "checkedAt": "__DATE__",
+  "subject": {
+    "slug": "__SLUG__",
+    "articleSha256": "__ARTICLE_SHA256__",
+    "manifestSha256": "__MANIFEST_SHA256__"
+  },
+  "rubricEvidence": "preuves/review.json",
+  "p0": ["Revue non exécutée"],
+  "blocking": true,
+  "decision": "corriger"
+}

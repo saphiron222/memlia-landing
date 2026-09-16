@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "decision": "GO retry SERP 2 appels",
+  "scope": "Deux POST DataForSEO Google Organic Live Advanced : Hub desktop et Glossaire mobile uniquement, France 2250, langue fr, profondeur 10",
+  "authorizedAdditionalTasks": 2,
+  "executedAdditionalTasks": 2,
+  "estimatedAdditionalCostUSD": "0.004",
+  "postResponseCostUSD": "0.004",
+  "furtherPaidRetriesAuthorized": false,
+  "collectionStatus": "FAIL_ND",
+  "stopReason": "Le retry Hub desktop a de nouveau renvoyé 40101 / Internal SE Server Error. La décision de retry imposait l'arrêt sans nouvelle boucle payante si l'une des deux tâches échouait.",
+  "rows": [
+    {
+      "name": "hub-desktop-retry",
+      "request": {
+        "keyword": "ressources cabinet comptable automatisation",
+        "location_code": 2250,
+        "language_code": "fr",
+        "device": "desktop",
+        "depth": 10
+      },
+      "taskId": "09141658-1656-0139-0000-c618512e52da",
+      "envelopeStatus": 20000,
+      "taskStatus": 40101,
+      "taskMessage": "Internal SE Server Error.",
+      "costUSD": 0.002,
+      "resultCount": 0,
+      "organicCount": 0,
+      "result": null,
+      "pass": false
+    },
+    {
+      "name": "glossaire-mobile-retry",
+      "request": {
+        "keyword": "glossaire cabinet comptable",
+        "location_code": 2250,
+        "language_code": "fr",
+        "device": "mobile",
+        "depth": 10
+      },
+      "taskId": "09141659-1656-0139-0000-bcbd92fefda5",
+      "envelopeStatus": 20000,
+      "taskStatus": 20000,
+      "taskMessage": "Ok.",
+      "costUSD": 0.002,
+      "resultCount": 1,
+      "resultDatetime": "2026-09-14 16:59:12 +00:00",
+      "itemTypes": [
+        "organic",
+        "people_also_ask",
+        "people_also_search"
+      ],
+      "organicCount": 10,
+      "uniqueOrganicUrls": 10,
+      "organic": [
+        "https://www.pennylane.com/fr/fiches-pratiques/comptabilite/glossaire-du-vocabulaire-comptable-termes-et-definitions-essentiels",
+        "https://www.capeos.fr/lexique-comptable/",
+        "https://www.capsurlaperformance.fr/ics-basedoc/dl.php?file=427%7C427%7Cglossaire_20250911.pdf",
+        "https://blog.tiime.fr/vocabulaire-comptable",
+        "https://supexpertise.fr/petit-lexique-de-la-comptabilite-a-lusage-des-non-inities/",
+        "https://www.nexco-expertise.com/lexique-comptable",
+        "https://actiononline.fr/wp-content/uploads/2017/06/Glossaire.pdf",
+        "https://www.sage.com/fr-fr/blog/17-termes-comptables-a-maitriser/",
+        "https://www.comptalents.fr/tops/lexique-comptable",
+        "https://www.lgdj.fr/glossaire-comptable-financier-9782856082485.html"
+      ],
+      "pass": true
+    }
+  ],
+  "readback": {
+    "method": "GET task_get/advanced par identifiant après les deux POST",
+    "newSearchTaskPosted": false,
+    "billingNote": "Les champs cost des réponses task_get reprennent le coût stocké de la tâche ; aucune nouvelle tâche de recherche n'a été POSTée lors du readback. Aucun montant supplémentaire n'est déduit de ces champs.",
+    "hubDesktopConfirmedStatus": 40101,
+    "glossaireMobileConfirmedStatus": 20000
+  },
+  "consequences": {
+    "candidateV3Produced": false,
+    "serpGate": "FAIL_ND",
+    "aiReviewPassFabricated": false,
+    "push": false,
+    "remotePreview": false,
+    "publication": false,
+    "production": false,
+    "cron": false
+  }
+}

@@ -37,6 +37,7 @@ cta:
   label: "Identifier une tâche à automatiser"
   destination: "https://cal.com/kevin-svg/decouvrir-memlia"
   outcome: "Memlia peut préparer une file de retours et d’écarts dans les outils du cabinet ; une personne qualifiée interprète le retour, décide et autorise toute correction."
+imageOg: "/images/img-25-comptes-rendus-metier-dsn-og.webp"
 imageAlt: "Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine."
 statutEditorial: publie-non-atteste
 sources:

@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "action": "revision",
+  "editorialStatus": "pret-preview",
+  "title": "Comment contrôler les bulletins de paie avant la DSN ?",
+  "tabTitle": "Contrôler les bulletins avant la DSN : méthode | Memlia",
+  "summary": "Clôturez trois revues sur le fichier exact à transmettre : pièces et variables, écarts du bulletin, puis contrôle technique DSN. Chaque signalement doit être expliqué, corrigé ou confié à une personne désignée.",
+  "description": "Méthode en trois revues pour contrôler variables, bulletins et fichier DSN, qualifier les écarts et conserver les preuves avant le dépôt.",
+  "publicationDate": "2026-09-09",
+  "updatedAt": "2026-09-13",
+  "topics": [
+    "paie",
+    "dsn",
+    "cabinet",
+    "methode"
+  ],
+  "keywords": [
+    "contrôler bulletin de paie avant DSN",
+    "contrôle DSN",
+    "DSN-Val",
+    "compte rendu métier",
+    "checklist paie"
+  ],
+  "primaryQuery": "contrôler bulletin de paie avant DSN",
+  "secondaryQueries": [
+    "comment contrôler la DSN",
+    "contrôle des bulletins de paie",
+    "checklist paie avant DSN",
+    "compte rendu métier DSN"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "préparer les pièces et variables",
+    "qualifier les écarts du bulletin",
+    "tester le fichier avec Dsn-Val",
+    "traiter les comptes rendus métier"
+  ],
+  "role": {
+    "primary": "paie-responsables-sociaux",
+    "secondary": [
+      "direction-associes"
+    ],
+    "proof": {
+      "level": "hypothese",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-09-13"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": null,
+    "role": "paie-responsables-sociaux",
+    "status": "PENDING",
+    "evidence": "preuves/business-review-deferral.json"
+  },
+  "funnel": "TOFU",
+  "cluster": "paie-social",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Exécuter et clôturer une revue reproductible des bulletins et du fichier DSN avant le dépôt, puis organiser le traitement des retours.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Chaque affirmation paie ou DSN est soit rattachée à une source officielle consultée le 13 septembre 2026, soit présentée comme une méthode interne à adapter par le cabinet.",
+  "sourcesVerifiedAt": "2026-09-13",
+  "sources": [
+    {
+      "id": "service-public-dsn",
+      "publisher": "Service Public Entreprendre",
+      "title": "Déclaration sociale nominative (DSN)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+      "checkedAt": "2026-09-13",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+      "classificationReason": "Service Public Entreprendre publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/service-public-dsn.classification.json",
+      "verificationEvidence": "preuves/sources/service-public-dsn.json"
+    },
+    {
+      "id": "net-entreprises-dsn-val",
+      "publisher": "Net-entreprises",
+      "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
+      "url": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+      "checkedAt": "2026-09-13",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+      "classificationReason": "Net-entreprises publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/net-entreprises-dsn-val.classification.json",
+      "verificationEvidence": "preuves/sources/net-entreprises-dsn-val.json"
+    },
+    {
+      "id": "net-entreprises-crm",
+      "publisher": "Net-entreprises",
+      "title": "Les Comptes Rendus Métiers DSN",
+      "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+      "checkedAt": "2026-09-13",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+      "classificationReason": "Net-entreprises publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/net-entreprises-crm.classification.json",
+      "verificationEvidence": "preuves/sources/net-entreprises-crm.json"
+    },
+    {
+      "id": "net-entreprises-fiabilisation",
+      "publisher": "Net-entreprises",
+      "title": "La fiabilisation des données de la DSN",
+      "url": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+      "checkedAt": "2026-09-13",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+      "classificationReason": "Net-entreprises publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/net-entreprises-fiabilisation.classification.json",
+      "verificationEvidence": "preuves/sources/net-entreprises-fiabilisation.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "marketing",
+  "reviewRule": "Revue éditoriale marketing avant preview ; revue métier paie/sociale indépendante obligatoire avant toute décision de publication.",
+  "cta": {
+    "label": "Identifier une tâche à automatiser",
+    "destination": "https://cal.com/kevin-svg/decouvrir-memlia",
+    "outcome": "Memlia peut traduire la règle de contrôle du cabinet en automatisation dans ses outils existants, puis l’éprouver sur des cas fictifs. L’automatisation prépare les écarts ; elle ne valide pas juridiquement la paie, ne corrige pas le dossier et ne dépose aucune DSN."
+  },
+  "image": {
+    "heroId": "img-23-controle-bulletins-paie",
+    "alt": "Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN.",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-09-13"
+    },
+    "gsc": {
+      "status": "ND",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-09-13"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/#integration",
+      "/#garanties"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/suivre-la-production-sociale-dans-excel"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/suivre-la-production-sociale-dans-excel"
+    ],
+    "decision": "DIFFERENTIATE_AND_LINK",
+    "resolutions": [
+      "Les tâches et requêtes primaires restent distinctes.",
+      "Le lien croisé explicite matérialise leur complémentarité."
+    ],
+    "evidence": "preuves/cannibalization.json"
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": false
+  }
+}

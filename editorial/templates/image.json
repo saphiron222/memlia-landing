@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "candidateSlug": "__SLUG__",
+  "articleSha256": "__ARTICLE_SHA256__",
+  "manifestSha256": "__MANIFEST_SHA256__",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": { "path": "preuves/image/master.png", "width": 1920, "height": 1080, "format": "png" },
+  "og": { "path": "preuves/image/og.webp", "width": 1200, "height": 630, "format": "webp", "crop": "1200x630+0+22" },
+  "variants": [],
+  "alt": "__A_RENSEIGNER__",
+  "score": null,
+  "directionArt": null,
+  "semanticRelevance": null,
+  "p0": ["Revue image non exécutée"],
+  "kevinApproved": false
+}

@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "slug": "__SLUG__",
+  "action": "creation",
+  "editorialStatus": "a-preparer",
+  "title": "__TITLE__",
+  "tabTitle": "__TITLE__ | Memlia",
+  "summary": "__A_RENSEIGNER__",
+  "description": "__A_RENSEIGNER__",
+  "publicationDate": "__DATE__",
+  "updatedAt": null,
+  "topics": ["methode"],
+  "keywords": [],
+  "primaryQuery": "__A_RENSEIGNER__",
+  "secondaryQueries": [],
+  "intent": "comprendre",
+  "fanOut": [],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [],
+    "proof": { "level": "hypothese", "source": "preuves/role.json", "verifiedAt": "__DATE__" }
+  },
+  "businessReview": {
+    "required": null,
+    "reviewerId": "__A_RENSEIGNER__",
+    "role": "autre-role-documente",
+    "status": "FAIL",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "TOFU",
+  "cluster": "methode-decision-humaine",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "__A_RENSEIGNER__",
+  "rankability": "bloquante",
+  "businessRelevance": "faible",
+  "proofStatus": "a-produire",
+  "proofRequired": "__A_RENSEIGNER__",
+  "sourcesVerifiedAt": "__DATE__",
+  "sources": [
+    {
+      "id": "__A_RENSEIGNER__",
+      "publisher": "__A_RENSEIGNER__",
+      "title": "__A_RENSEIGNER__",
+      "url": "__A_RENSEIGNER__",
+      "checkedAt": "__DATE__",
+      "level": "original-method",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "__A_RENSEIGNER__",
+      "classificationReason": "__A_RENSEIGNER__",
+      "method": {
+        "period": "__A_RENSEIGNER__",
+        "population": "__A_RENSEIGNER__",
+        "protocol": "__A_RENSEIGNER__",
+        "limitations": "__A_RENSEIGNER__"
+      },
+      "classificationEvidence": "preuves/sources/__A_RENSEIGNER__.classification.json",
+      "verificationEvidence": "preuves/sources/__A_RENSEIGNER__.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "marketing",
+  "reviewRule": "__A_RENSEIGNER__",
+  "cta": { "label": "__A_RENSEIGNER__", "destination": "/#methode", "outcome": "__A_RENSEIGNER__" },
+  "image": {
+    "heroId": "__A_RENSEIGNER__",
+    "alt": "__A_RENSEIGNER__",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": { "status": "ND", "evidence": "preuves/research-serp.json", "checkedAt": "__DATE__" },
+    "gsc": { "status": "ND", "evidence": "preuves/research-gsc.json", "checkedAt": "__DATE__" }
+  },
+  "links": { "outgoing": [], "incoming": [] },
+  "cannibalization": {
+    "risk": "bloquant",
+    "comparedWith": [],
+    "decision": "__A_RENSEIGNER__",
+    "resolutions": []
+  },
+  "contradictions": [],
+  "kevin": { "briefApproved": false, "previewApproved": false, "productionApproved": false }
+}

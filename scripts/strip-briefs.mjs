@@ -44,7 +44,10 @@ console.log(`[strip-briefs] ${briefs.length} brief(s) retiré(s) de dist/images/
 
 // Les essais et images de l’ancien catalogue restent en source, jamais dans la preview.
 const expected = new Set(Object.entries(IMAGES).filter(([id]) => PUBLISHED_IMAGE_IDS.includes(id)).flatMap(([id, image]) =>
-  image.largeurs.flatMap(width => FORMATS.map(format => `${id}-${width}.${format}`))
+  [
+    ...image.largeurs.flatMap(width => FORMATS.map(format => `${id}-${width}.${format}`)),
+    `${id}-og.webp`,
+  ]
 ));
 const excluded = readdirSync(DOSSIER_IMAGES).filter(name => !expected.has(name));
 for (const name of excluded) rmSync(join(DOSSIER_IMAGES, name), { recursive: true });

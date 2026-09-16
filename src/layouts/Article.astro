@@ -4,10 +4,12 @@ import Picture from '@/components/Picture.astro';
 import Picto from '@/components/Picto.astro';
 import Button from '@/components/Button.astro';
 import ArticleJsonLd from '@/components/ArticleJsonLd.astro';
-import { SITE, CTA } from '@/data/site.mjs';
+import { SITE, CTA, OG_IMAGE } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
-import { IMAGES } from '@/data/images.mjs';
+import { IMAGES, cheminImage, hauteurPour } from '@/data/images.mjs';
 import { auteurPar } from '@/data/auteurs';
+import { isPreviewEntry } from '@/data/blog-visibility.mjs';
+import { previewAssetOrigin } from '@/data/blog-preview-origin.mjs';
 import type { CollectionEntry } from 'astro:content';
 
 /**
@@ -37,15 +39,33 @@ const LIBELLE_SUJET: Record<string, string> = {
   methode: 'Méthode', securite: 'Sécurité', cabinet: 'Cabinet',
 };
 const image = data.image as keyof typeof IMAGES;
-const imageSociale = {
-  url: `${SITE.url}/images/${image}-1200.webp`,
-  largeur: 1200,
-  hauteur: 675,
-  alt: IMAGES[image].alt,
+const candidatPreview = isPreviewEntry(entree);
+const assetOrigin = previewAssetOrigin({
+  candidatePreview: candidatPreview,
+  configuredOrigin: process.env.BLOG_PREVIEW_ORIGIN,
+  productionOrigin: SITE.url,
+});
+const socialImage = data.pipelineVersion === 1 && data.imageOg && data.imageAlt
+  ? { url: `${assetOrigin}${data.imageOg}`, width: 1200, height: 630, alt: data.imageAlt }
+  : { url: OG_IMAGE.url, width: OG_IMAGE.largeur, height: OG_IMAGE.hauteur, alt: OG_IMAGE.alt };
+const heroDefinition = IMAGES[image];
+const heroWidth = Math.max(...heroDefinition.largeurs);
+const structuredImage = data.pipelineVersion === 1
+  ? socialImage
+  : {
+      url: `${SITE.url}${cheminImage(image, heroWidth, 'webp')}`,
+      width: heroWidth,
+      height: hauteurPour(heroDefinition, heroWidth),
+      alt: heroDefinition.alt,
+    };
+const articleCta = data.cta ?? {
+  label: CTA.principal.libelle,
+  destination: CTA.principal.href,
+  outcome: 'Memlia automatise avec l’IA les tâches et processus chronophages des cabinets d’expertise comptable : la règle est écrite avec vous, l’automatisation prépare et signale, votre équipe décide. Le premier échange sert à cadrer le périmètre, sans transmettre de fichier ni de donnée client réelle.',
 };
 ---
 
-<Base titre={data.titreOnglet ?? `${data.titre} | Memlia`} titreSocial={data.titre} description={description} chemin={chemin} ogType="article" ogImage={imageSociale} base="/">
+<Base titre={data.titreOnglet ?? `${data.titre} | Memlia`} titreSocial={data.titre} description={description} chemin={chemin} noindex={candidatPreview} ogType="article" socialImage={socialImage} base="/">
   <Fragment slot="head">
     <meta property="article:published_time" content={isoComplet(data.datePublication)} />
     <meta property="article:modified_time" content={isoComplet(dateMiseAJour)} />
@@ -58,7 +78,10 @@ const imageSociale = {
       datePublication={data.datePublication}
       dateMiseAJour={dateMiseAJour}
       auteur={auteur}
-      image={image}
+      imageUrl={structuredImage.url}
+      imageWidth={structuredImage.width}
+      imageHeight={structuredImage.height}
+      imageAlt={structuredImage.alt}
       motsCles={data.motsCles}
       sujets={data.sujets.map((s) => LIBELLE_SUJET[s])}
       nombreMots={nombreMots}
@@ -67,6 +90,7 @@ const imageSociale = {
 
   <div class="feuille article-feuille">
     <article class="article conteneur" data-article={entree.id}>
+      {candidatPreview && <p class="preview-temoin" role="status">Candidat éditorial — preview privée, non publiable</p>}
       <nav class="ariane" aria-label="Fil d’Ariane">
         <ol>
           <li><a href="/">Accueil</a></li>
@@ -120,12 +144,8 @@ const imageSociale = {
         <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
         <span class="eyebrow">Et dans votre cabinet ?</span>
         <h2 id="pont-titre">Cette tâche vous prend encore du temps à la main ?</h2>
-        <p class="texte-2">
-          Memlia automatise avec l’IA les tâches et processus chronophages des cabinets d’expertise comptable :
-          la règle est écrite avec vous, l’automatisation prépare et signale, votre équipe décide. Le premier échange
-          sert à cadrer le périmètre, sans transmettre de fichier ni de donnée client réelle.
-        </p>
-        <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
+        <p class="texte-2" data-cta-outcome>{articleCta.outcome}</p>
+        <Button href={articleCta.destination} variante="principal" picto="fleche">{articleCta.label}</Button>
       </aside>
 
       <footer class="article-auteur">
@@ -164,6 +184,10 @@ const imageSociale = {
     max-width: 720px;
     padding-top: clamp(28px, 5vw, 56px);
     padding-bottom: clamp(48px, 8vw, 96px);
+  }
+  .preview-temoin {
+    margin-bottom: 20px; padding: 10px 14px; border: 2px solid var(--accent-appui);
+    border-radius: var(--r-boite); color: var(--texte-fort); font-weight: 600; background: var(--accent-voile);
   }
   .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; font-size: var(--t-sm); color: var(--texte-2); }
   .ariane li + li::before { content: '›'; margin-right: 6px; color: var(--picto-repos); }

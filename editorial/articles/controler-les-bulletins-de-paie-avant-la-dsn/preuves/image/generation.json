@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "0a341080fd998fa54364ab0dfd47440a0f6eb8e724242abd6a3dfa8761694a85",
-  "manifestSha256": "ecefb651ad49f8b563833d6e1a7e1512b89770c4f16e05e45390f7eb86d193b4",
+  "articleSha256": "03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
   "kind": "image-generation",
   "status": "PASS",
   "checkedAt": "2026-09-13",
@@ -11,5 +11,12 @@
   ],
   "engine": "image_generate",
   "generationId": "openai_codex_gpt-image-2-medium_20260913_211744_c7c22c42",
-  "outputSha256": "b3993a4a147990e2940dd89a0e78c4cef5729d4dd243fa6febae4810a1cdc529"
+  "outputSha256": "b3993a4a147990e2940dd89a0e78c4cef5729d4dd243fa6febae4810a1cdc529",
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/image/generation.json",
+    "originalSha256": "f29df22c050da9c2c69c7e7f4a3de221f30a5134c0837f7e6131ff51bb85617e",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
 }

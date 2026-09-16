@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "sourceId": "net-entreprises-dsn-val",
+  "requestedUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+  "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+  "httpStatus": 200,
+  "checkedAt": "2026-09-13",
+  "contentPath": "preuves/sources/net-entreprises-dsn-val.source.txt",
+  "contentSha256": "1cfd881918e97b8283714964eb46f7e74d4ce5a484f0239dde504adf7469eb18",
+  "excerpt": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
+  "level": "tier-1",
+  "provenance": "primary",
+  "official": true,
+  "upstreamUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+  "classificationReason": "Net-entreprises publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+  "method": null,
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/sources/net-entreprises-dsn-val.json",
+    "originalSha256": "65375a5d42c5c25a13116f8804fd62a435e6a3faf260fa361f3b65f200b27a92",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-09-15T10:41:56.886Z",
+  "pass": true,
+  "counts": {
+    "articles": 2,
+    "legacyPreserved": 0,
+    "pipeline": 2,
+    "blocked": 0
+  },
+  "inventory": [
+    {
+      "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+      "status": "pipeline",
+      "sha256": "03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92"
+    },
+    {
+      "slug": "suivre-la-production-sociale-dans-excel",
+      "status": "pipeline",
+      "sha256": "56a5f5a1e19cd327558d8c024b3570643bc2f233cfce02d117c0ca250430103b"
+    }
+  ],
+  "dossiers": [
+    {
+      "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+      "pass": true,
+      "errors": [],
+      "auditMode": "published-preservation",
+      "publicationAuthorized": false,
+      "freshFactCheck": false
+    },
+    {
+      "slug": "suivre-la-production-sociale-dans-excel",
+      "pass": true,
+      "errors": [],
+      "auditMode": "published-preservation",
+      "publicationAuthorized": false,
+      "freshFactCheck": false
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "sourceId": "service-public-dsn",
+  "requestedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+  "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+  "httpStatus": 200,
+  "checkedAt": "2026-09-13",
+  "contentPath": "preuves/sources/service-public-dsn.source.txt",
+  "contentSha256": "52596510c8fd59e0bdd52ebe7301acb13d7acfd2d8c8565e98538132bc3f2d67",
+  "excerpt": "La DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie.",
+  "level": "tier-1",
+  "provenance": "primary",
+  "official": true,
+  "upstreamUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+  "classificationReason": "Service Public Entreprendre publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+  "method": null,
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/sources/service-public-dsn.json",
+    "originalSha256": "a3964e5e05ae379e8fc87bf05e14cb6cd4d15365655fd6c1f290368e2fdbcb0f",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

@@ -7,6 +7,7 @@ import { SITE } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { IMAGES } from '@/data/images.mjs';
 import { AUTEURS } from '@/data/auteurs';
+import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
 
 /**
  * Route /blog : liste des articles publiés (du plus récent au plus ancien), ligne
@@ -14,7 +15,7 @@ import { AUTEURS } from '@/data/auteurs';
  * Fichier `blog.astro` (pas `blog/index.astro`) : avec `build.format: 'file'`, l'URL
  * canonique sans slash est servie sans redirection.
  */
-const articles = (await getCollection('blog', ({ data }) => !data.brouillon)).sort(
+const articles = (await getCollection('blog', isBlogEntryVisible)).sort(
   (a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime()
 );
 const formatDate = (d: Date) => d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });

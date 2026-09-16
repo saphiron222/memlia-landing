@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
-  "articleSha256": "256952640851bcdb9f23a53d526e149ee1bd7e706e601712fe7c6020a23a61a8",
-  "manifestSha256": "5fea4b437d967080b4068d91e0420144f203af566d0100ad4869fbb4d46a3cfe",
+  "articleSha256": "56a5f5a1e19cd327558d8c024b3570643bc2f233cfce02d117c0ca250430103b",
+  "manifestSha256": "3b4c63f902694ce0015334cefe483cedc0dbca9abe14fbec62005b0d3c56b6a9",
   "kind": "image-prompt",
   "status": "PASS",
   "checkedAt": "2026-09-13",
@@ -10,5 +10,12 @@
     "Le brief décrit le sujet, la composition, la palette, les interdits et le contexte de lecture en vignette."
   ],
   "engine": "image_generate",
-  "prompt": "Cinq dossiers sur une grille, trois couches de traitement, agrégats sans personne et une exception isolée."
+  "prompt": "Cinq dossiers sur une grille, trois couches de traitement, agrégats sans personne et une exception isolée.",
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/image/prompt.json",
+    "originalSha256": "5e3043de15a1bafc346d1a133ea4da5bdaedef1126cbfc5b7a79557ce4e8fcd3",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
 }

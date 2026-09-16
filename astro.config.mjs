@@ -7,6 +7,9 @@ import ancresTitres from './src/lib/ancres-titres.mjs';
 
 import { SITE, PAGES_NOINDEX } from './src/data/site.mjs';
 import { BLOG, lireArticlesPublies } from './src/data/blog.mjs';
+import { parseBlogPreviewSlugs } from './src/data/blog-visibility.mjs';
+
+const BLOG_PREVIEW_SLUGS = new Set(parseBlogPreviewSlugs(process.env.BLOG_PREVIEW_SLUGS ?? process.env.BLOG_PREVIEW_SLUG));
 
 /** lastmod par article (dateMiseAJour ou datePublication) ; les autres pages datent du site. */
 const LASTMOD_BLOG = new Map(lireArticlesPublies().map((a) => [`${SITE.url}${BLOG.chemin}/${a.slug}`, a.lastmod]));
@@ -28,6 +31,7 @@ export default defineConfig({
       filter: (page) => {
         const path = new URL(page).pathname.replace(/\/$/, '') || '/';
         if (PAGES_NOINDEX.includes(path)) return false;
+        if (BLOG_PREVIEW_SLUGS.has(path.slice(`${BLOG.chemin}/`.length))) return false;
 
         return true;
       },

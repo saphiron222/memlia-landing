@@ -1,0 +1,2497 @@
+{
+  "$comment": "FIXTURE FICTIVE DE CONTRAT : PASS structurel/oracle seulement; aucune preuve, approbation, preview ou release réelle.",
+  "schemaVersion": "resource-manifest-v1",
+  "contractRevision": 1,
+  "templateState": "candidate",
+  "executable": true,
+  "formatAdapter": "H",
+  "resourceType": "hub",
+  "editorialFormat": "landing-navigationnelle",
+  "policyBaseline": {
+    "pipelineTask": "t_584e6438",
+    "pipelineCommit": "2d78b8bed588884e53157145077499cd56c27086",
+    "architectureTask": "t_951dc6ce",
+    "publicProjection": "src/data/resources.ts",
+    "resourceTypeRule": "resourceType est distinct du format éditorial existant",
+    "decisions": "D01-D15 inchangées",
+    "qualityThreshold": 90,
+    "maxP0": 0,
+    "maxP1": 0,
+    "hashAlgorithm": "sha256"
+  },
+  "taxonomy": {
+    "canonicalRoles": [
+      "direction-associes",
+      "chefs-mission-portefeuille",
+      "collaborateurs-comptables",
+      "assistants-comptables",
+      "paie-responsables-sociaux",
+      "juridique-fiscal",
+      "audit-cac",
+      "administratif-secretariat",
+      "facturation-recouvrement",
+      "rh-recrutement-formation",
+      "numerique-it-data",
+      "profils-formation"
+    ],
+    "resourceDiscoveryRoles": [
+      "direction-associes",
+      "chefs-mission-portefeuille",
+      "collaborateurs-comptables",
+      "assistants-comptables",
+      "paie-responsables-sociaux",
+      "juridique-fiscal",
+      "audit-cac",
+      "administratif-secretariat",
+      "facturation-recouvrement",
+      "rh-recrutement-formation",
+      "numerique-it-data",
+      "profils-formation"
+    ],
+    "blogRoleEnum": [
+      "direction-associes",
+      "chefs-mission-portefeuille",
+      "collaborateurs-comptables",
+      "assistants-comptables",
+      "paie-responsables-sociaux",
+      "juridique-fiscal",
+      "audit-cac",
+      "administratif-secretariat",
+      "facturation-recouvrement",
+      "rh-recrutement-formation",
+      "numerique-it-data",
+      "profils-formation",
+      "autre-role-documente"
+    ],
+    "otherRoleDocumented": {
+      "allowedInHistoricalBlog": true,
+      "allowedAsResourceDiscoveryRole": false,
+      "requiresDistinctEvidence": true,
+      "adaptationRule": "Un article autre-role-documente exige une primaryRole parmi les 12 familles avant exposition dans le Hub."
+    },
+    "intent": [
+      "comprendre",
+      "executer",
+      "diagnostiquer",
+      "comparer-approches",
+      "evaluer-service",
+      "reduire-risque",
+      "decider"
+    ],
+    "funnel": [
+      "TOFU",
+      "MOFU",
+      "BOFU"
+    ]
+  },
+  "candidate": {
+    "id": "fixture-h-nominal",
+    "slug": "ressources",
+    "canonicalPath": "/ressources",
+    "sourceMode": "new-url",
+    "action": "create",
+    "title": "Fixture Hub Ressources",
+    "summary": "Candidat fictif destiné au test du contrat.",
+    "primaryRole": "direction-associes",
+    "secondaryRoles": [
+      "chefs-mission-portefeuille"
+    ],
+    "task": "Trouver une ressource utile sans retirer Excel au cabinet.",
+    "intent": "comprendre",
+    "funnel": "TOFU",
+    "cluster": "fixture-hub-ressources",
+    "primaryQuery": "fixture ressources cabinet",
+    "secondaryQueries": [
+      "fixture automatisation cabinet"
+    ],
+    "fanOut": [
+      "/blog/fixture-1"
+    ],
+    "owner": "fixture-owner",
+    "author": "fixture-author",
+    "editorialReviewer": "fixture-reviewer-editorial",
+    "maintenanceRule": "Rejouer la fixture à chaque évolution du contrat."
+  },
+  "formatContract": {
+    "requiredInputs": [
+      "source du hub",
+      "inventaire hashé des destinations",
+      "carte de navigation",
+      "corpus"
+    ],
+    "requiredOutputs": [
+      "HTML /ressources",
+      "CollectionPage+ItemList+BreadcrumbList",
+      "liste sans JS",
+      "rapport substance/liens"
+    ],
+    "navigationIntent": "Le /15 vient d’une preuve RUN/PASS navigation, substance et parcours; aucun volume inventé.",
+    "indexSubstance": {
+      "minimum": 5,
+      "excludedResourceTypes": [
+        "hub"
+      ],
+      "unitRule": "destination de détail canonique distincte, approuvée, rendue et substantielle; le Hub lui-même, ancre courte, placeholder et carte vide sont exclus",
+      "computedCount": 5,
+      "eligibleUnitRefs": [
+        "/blog/fixture-1",
+        "/blog/fixture-2",
+        "/blog/fixture-3",
+        "/blog/fixture-4",
+        "/blog/fixture-5"
+      ],
+      "result": "PASS",
+      "transitionTests": [
+        "4 destinations + Hub = Hub absent",
+        "5 destinations = Hub présent",
+        "retrait à 4 = Hub, liens, breadcrumb et sitemap absents"
+      ]
+    },
+    "imagePolicy": "Image facultative; audits image/OG restent RUN."
+  },
+  "research": {
+    "serp": {
+      "requiredDecision": true,
+      "status": "RUN",
+      "checkedAt": "2026-09-13T21:30:00+01:00",
+      "scope": "fixture://serp/navigation",
+      "inputRefs": [
+        "fixture://research/input"
+      ],
+      "outputRefs": [
+        "fixture://research/output"
+      ],
+      "gateResult": "PASS"
+    },
+    "gsc": {
+      "candidateUrlHistoryStatus": "ND",
+      "historyReason": "nouvelle URL sans historique",
+      "requiredForDecision": false,
+      "status": "N/A",
+      "propertyQueryEvidenceStatus": "N/A",
+      "checkedAt": "2026-09-13T21:30:00+01:00",
+      "inputRefs": [
+        "fixture://gsc/decision"
+      ],
+      "outputRefs": [
+        "fixture://gsc/decision-output"
+      ],
+      "arbitration": {
+        "decision": "non-requis-pour-intention-navigationnelle-fixture",
+        "decidedBy": "fixture-decision-owner",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "evidenceRef": "fixture://gsc/arbitration"
+      },
+      "gatePolicy": "Si GSC est requis, ND impose FAIL. Un historique URL structurellement ND reste visible, ne rapporte aucun point et exige arbitrage explicite; A conserve research.gsc RUN/PASS."
+    }
+  },
+  "claimsEvidence": {
+    "recordContracts": {
+      "contentUnit": {
+        "required": [
+          "id",
+          "text",
+          "sha256",
+          "claimIds"
+        ]
+      },
+      "claim": {
+        "required": [
+          "id",
+          "unitId",
+          "text",
+          "sha256",
+          "type",
+          "sourceIds",
+          "citationIds",
+          "checkedAt",
+          "status"
+        ]
+      },
+      "citation": {
+        "required": [
+          "id",
+          "claimIds",
+          "sourceId",
+          "text",
+          "sha256",
+          "sourceContentSha256",
+          "finalUrl",
+          "checkedAt",
+          "title",
+          "locator",
+          "verdict"
+        ]
+      },
+      "source": {
+        "required": [
+          "id",
+          "publisher",
+          "title",
+          "requestedUrl",
+          "finalUrl",
+          "checkedAt",
+          "level",
+          "provenance",
+          "official",
+          "upstreamUrl",
+          "snapshotPath",
+          "contentSha256",
+          "verificationEvidenceRef",
+          "classificationEvidenceRef",
+          "claimIds"
+        ]
+      }
+    },
+    "renderedUnitInventory": [
+      {
+        "id": "fixture-unit-1",
+        "text": "Contenu fictif sans donnée réelle.",
+        "sha256": "046effa2e1da9578798851387ffa99d904531d5e1e50ccb89b08caf9c08278a2",
+        "claimIds": [
+          "fixture-claim-1"
+        ]
+      }
+    ],
+    "claims": [
+      {
+        "id": "fixture-claim-1",
+        "unitId": "fixture-unit-1",
+        "text": "Le candidat est une fixture de contrat.",
+        "sha256": "b3a210e827ce9aeff48690d3b863a3bcb60f504bfccbb1c7015e12b722bf78f5",
+        "type": "fixture",
+        "sourceIds": [
+          "fixture-source-1"
+        ],
+        "citationIds": [
+          "fixture-citation-1"
+        ],
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "status": "PASS"
+      }
+    ],
+    "citations": [
+      {
+        "id": "fixture-citation-1",
+        "claimIds": [
+          "fixture-claim-1"
+        ],
+        "sourceId": "fixture-source-1",
+        "text": "Fixture de contrat.",
+        "sha256": "c8df8a6deb5220e67e98ac077546f9dcabacb7ba44e91e81e9f81f0cd1b05ee9",
+        "sourceContentSha256": "12ec9c794e29dcc3c6d77d3cc5ed2bf36ed2298d0d1ac4e46a6569c792558a49",
+        "finalUrl": "https://fixture.invalid/source",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "title": "Source fictive",
+        "locator": "fixture:1",
+        "verdict": "soutient"
+      }
+    ],
+    "sources": [
+      {
+        "id": "fixture-source-1",
+        "publisher": "Fixture Memlia",
+        "title": "Source fictive",
+        "requestedUrl": "https://fixture.invalid/source",
+        "finalUrl": "https://fixture.invalid/source",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "level": "tier-1",
+        "provenance": "fixture-contractuelle",
+        "official": true,
+        "upstreamUrl": "https://fixture.invalid/upstream",
+        "snapshotPath": "fixture://source/snapshot",
+        "contentSha256": "12ec9c794e29dcc3c6d77d3cc5ed2bf36ed2298d0d1ac4e46a6569c792558a49",
+        "verificationEvidenceRef": "fixture://source/open",
+        "classificationEvidenceRef": "fixture://source/classification",
+        "claimIds": [
+          "fixture-claim-1"
+        ]
+      }
+    ],
+    "requiredRelations": [
+      "chaque unité rendue est inventoriée",
+      "unité.claimIds = claims filtrés par unitId",
+      "claim.sourceIds = sources dont claimIds contient le claim",
+      "claim.citationIds = citations dont claimIds contient le claim",
+      "citation localisée dans copie source hashée",
+      "source↔ouverture et classification distinctes"
+    ],
+    "sourcePolicy": {
+      "acceptedTiers": [
+        "tier-1",
+        "tier-2",
+        "tier-3",
+        "original-method"
+      ],
+      "rejected": [
+        "tier-4",
+        "tier-5",
+        "echo-only"
+      ],
+      "sensitiveRequires": "primaire officielle tier-1 à tier-3, fraîcheur du jour UTC et verdict unitaire soutient"
+    },
+    "sensitiveMatter": {
+      "detected": true,
+      "signals": [
+        "fixture-sensible"
+      ],
+      "checkedAt": "2026-09-13T21:30:00+01:00",
+      "businessReview": {
+        "required": true,
+        "reviewerId": "fixture-reviewer-metier",
+        "reviewerRole": "fixture-role-metier",
+        "distinctFrom": [
+          "author",
+          "editorialReviewer",
+          "sourceClassifier"
+        ],
+        "status": "PASS",
+        "claimSourceVerdicts": [
+          "fixture-claim-1/fixture-source-1:soutient"
+        ],
+        "evidenceRef": "fixture://review/business"
+      }
+    }
+  },
+  "assets": {
+    "decision": "image",
+    "assetRefs": [
+      "fixture://asset/master"
+    ],
+    "image": {
+      "required": true,
+      "engine": "image_generate-fixture",
+      "promptEvidenceRef": "fixture://asset/prompt",
+      "generationEvidenceRef": "fixture://asset/generation",
+      "generationId": "fixture-generation-id",
+      "masterSha256": "8af6b3efeebcebcd2563537d6d20c19bea30892027a5d187a77403f36982afa9",
+      "visualReviewEvidenceRef": "fixture://asset/review",
+      "alt": "Illustration fictive du contrat de recette",
+      "ogSha256": "687093bb23d8b781947a713ea43b399efe6ebd9a1d0eaca71de55a82d4a05aa5",
+      "derivativeRefs": [
+        "fixture://asset/derivative"
+      ],
+      "kevinApproved": true
+    },
+    "uiCapture": {
+      "present": true,
+      "allowedProvenance": "banc-windows-jeu-fictif",
+      "datasetId": "fixture-dataset",
+      "captureEvidenceRef": "fixture://ui/capture",
+      "sha256": "8f91971d591310a6982f23f910c5b0625fb6c996613228623f019c753b9ac2d9"
+    },
+    "policy": "Illustration générée uniquement par image_generate; UI uniquement du banc fictif réel."
+  },
+  "links": {
+    "outgoing": [
+      "/blog/fixture-1",
+      "/blog/fixture-2",
+      "/blog/fixture-3",
+      "/blog/fixture-4",
+      "/blog/fixture-5"
+    ],
+    "incoming": [
+      "/blog"
+    ],
+    "corpusInventoryRef": "fixture://links/corpus",
+    "cannibalization": {
+      "risk": "none",
+      "comparedCanonicalPaths": [
+        "/blog",
+        "/glossaire",
+        "/guides",
+        "/modeles"
+      ],
+      "decision": "distinct",
+      "evidenceRef": "fixture://links/cannibalization"
+    },
+    "filterPolicy": {
+      "javascriptFallbackTestRef": "fixture://links/no-js",
+      "queryVariantsNoindexFollow": true,
+      "canonicalUnfiltered": true,
+      "excludedFromSitemap": true
+    }
+  },
+  "skills": {
+    "registryContract": {
+      "sourceOfTruth": "skills.json du dossier candidat",
+      "historicalTemplatePath": "editorial/templates/skills.json",
+      "historicalTemplateSha256": "b766669a4626e2e94d88830d7b5144606091663cbc34ca1e59f222ebc4bccedc",
+      "candidateRegistryPath": "editorial/fixtures/hub/skills.json",
+      "candidateRegistrySha256": "c978864278bae484402ddb4934b6d1ec78fa688ecd3165c5ffeb6e3eb5a21fc1",
+      "manifestProjectionSha256": "d823c1bbfaa90cf9bfb6ff6e06ccb586f40e0e3fd14c085dd91e4493ebfd3cda",
+      "comparison": "canonical-json bit à bit après projection normalisée",
+      "result": "PASS",
+      "rule": "Les lignes ci-dessous sont une projection de recette; aucune liste parallèle divergente n’est admise. Chemin, empreinte et comparaison PASS sont requis."
+    },
+    "blog": [
+      {
+        "skill": "blog-strategy",
+        "stage": "strategie",
+        "applicabilityRule": "Tous; héritage seulement si périmètre et empreinte couvrent le candidat.",
+        "requiredInputs": [
+          "manifeste, portefeuille, objectif"
+        ],
+        "requiredOutputs": [
+          "fiche objectif, rôle, différenciation"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-strategy",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-strategy"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-brand",
+        "stage": "strategie",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "positionnement Memlia, candidat"
+        ],
+        "requiredOutputs": [
+          "contrôle termes, promesses et non-périmètre"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-brand",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-brand"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-persona",
+        "stage": "recherche",
+        "applicabilityRule": "Tous; aucune persona inventée.",
+        "requiredInputs": [
+          "rôle, preuve de rôle"
+        ],
+        "requiredOutputs": [
+          "rôle, niveau de preuve, source, date"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-persona",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-persona"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-discourse",
+        "stage": "recherche",
+        "applicabilityRule": "RUN si signal praticien requis; sinon N/A borné.",
+        "requiredInputs": [
+          "question, corpus autorisé"
+        ],
+        "requiredOutputs": [
+          "verbatims autorisés ou justification N/A"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-discourse",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-discourse"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-google",
+        "stage": "recherche-mesure",
+        "applicabilityRule": "RUN si donnée Google requise; accès absent = RUN/FAIL et ND.",
+        "requiredInputs": [
+          "URL/requête, propriété, période"
+        ],
+        "requiredOutputs": [
+          "export daté ou diagnostic FAIL/ND"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-google",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-google"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-calendar",
+        "stage": "portefeuille",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "candidat, capacité, dépendances"
+        ],
+        "requiredOutputs": [
+          "entrée de portefeuille, owner, état"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-calendar",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-calendar"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-cluster",
+        "stage": "architecture",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "corpus publié et prévu"
+        ],
+        "requiredOutputs": [
+          "cluster, intention, relations"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-cluster",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-cluster"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-taxonomy",
+        "stage": "architecture",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "métadonnées candidat"
+        ],
+        "requiredOutputs": [
+          "enums et absence d’archive mince"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-taxonomy",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-taxonomy"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-brief",
+        "stage": "brief",
+        "applicabilityRule": "Tous; H utilise un brief navigationnel.",
+        "requiredInputs": [
+          "recherche et arbitrages"
+        ],
+        "requiredOutputs": [
+          "brief validé et hashé"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-brief",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-brief"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-outline",
+        "stage": "plan",
+        "applicabilityRule": "Tous; T/H ont une structure proportionnée, pas une exemption.",
+        "requiredInputs": [
+          "brief"
+        ],
+        "requiredOutputs": [
+          "Hn, sections, réponse directe"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-outline",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-outline"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-notebooklm",
+        "stage": "recherche",
+        "applicabilityRule": "RUN seulement si notebook autorisé; sinon N/A prouvant l’absence d’usage.",
+        "requiredInputs": [
+          "corpus autorisé"
+        ],
+        "requiredOutputs": [
+          "références ou justification N/A"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-notebooklm",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-notebooklm"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-write",
+        "stage": "redaction",
+        "applicabilityRule": "RUN pour création; N/A pour révision/consolidation.",
+        "requiredInputs": [
+          "brief validé"
+        ],
+        "requiredOutputs": [
+          "source complète du candidat"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-write",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-write"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-rewrite",
+        "stage": "redaction",
+        "applicabilityRule": "RUN pour révision/consolidation; N/A pour création.",
+        "requiredInputs": [
+          "audit et source existante"
+        ],
+        "requiredOutputs": [
+          "diff justifié"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-rewrite",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-rewrite"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-factcheck",
+        "stage": "verification",
+        "applicabilityRule": "RUN pour claim porteur; matière sensible toujours RUN.",
+        "requiredInputs": [
+          "unités, claims, copies sources"
+        ],
+        "requiredOutputs": [
+          "résultats claim-source, citations, limites"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-factcheck",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-factcheck"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-style",
+        "stage": "edition",
+        "applicabilityRule": "RUN si profil validé; sinon N/A et revue de voix distincte.",
+        "requiredInputs": [
+          "profil, texte"
+        ],
+        "requiredOutputs": [
+          "écarts et corrections"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-style",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-style"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-chart",
+        "stage": "media",
+        "applicabilityRule": "RUN si donnée à représenter; sinon N/A motivé.",
+        "requiredInputs": [
+          "données, méthode"
+        ],
+        "requiredOutputs": [
+          "calculs, graphique, provenance"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-chart",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-chart"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-image",
+        "stage": "media",
+        "applicabilityRule": "Tous pour auditer le besoin; A conserve t_584e6438.",
+        "requiredInputs": [
+          "sujet, DA, assets"
+        ],
+        "requiredOutputs": [
+          "décision; si image, provenance et revue"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-image",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-image"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-schema",
+        "stage": "technique",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "contenu visible, surface"
+        ],
+        "requiredOutputs": [
+          "JSON-LD cohérent"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-schema",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-schema"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-seo-check",
+        "stage": "audit",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "HTML rendu"
+        ],
+        "requiredOutputs": [
+          "défauts on-page"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-seo-check",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-seo-check"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-geo",
+        "stage": "audit",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "HTML, entités, sources"
+        ],
+        "requiredOutputs": [
+          "citabilité, attribution, limites"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-geo",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-geo"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-analyze",
+        "stage": "score",
+        "applicabilityRule": "Tous; grille Memlia prioritaire.",
+        "requiredInputs": [
+          "HTML et preuves"
+        ],
+        "requiredOutputs": [
+          "grille structurée recalculable"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-analyze",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-analyze"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-audit",
+        "stage": "audit-corpus",
+        "applicabilityRule": "RUN si décision corpus; sinon N/A avec delta contrôlé.",
+        "requiredInputs": [
+          "corpus"
+        ],
+        "requiredOutputs": [
+          "arbitrages corpus"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-audit",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-audit"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-cannibalization",
+        "stage": "audit-corpus",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "corpus, intention, requête"
+        ],
+        "requiredOutputs": [
+          "collisions, arbitrages hashés"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-cannibalization",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-cannibalization"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-decay",
+        "stage": "maintenance",
+        "applicabilityRule": "RUN après baseline; nouvelle URL garde historique ND explicite.",
+        "requiredInputs": [
+          "séries comparables"
+        ],
+        "requiredOutputs": [
+          "diagnostic ou baseline"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-decay",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-decay"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-flow",
+        "stage": "recherche-conversion",
+        "applicabilityRule": "Tous, étapes pertinentes.",
+        "requiredInputs": [
+          "candidat, recherche, offre"
+        ],
+        "requiredOutputs": [
+          "Find/Optimize/Win"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-flow",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-flow"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-repurpose",
+        "stage": "distribution",
+        "applicabilityRule": "RUN seulement après mandat; sinon N/A.",
+        "requiredInputs": [
+          "candidat approuvé"
+        ],
+        "requiredOutputs": [
+          "propositions séparées"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-repurpose",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-repurpose"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-audio",
+        "stage": "media",
+        "applicabilityRule": "RUN si audio validé; sinon N/A.",
+        "requiredInputs": [
+          "script validé"
+        ],
+        "requiredOutputs": [
+          "audio contrôlé ou justification"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-audio",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-audio"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-multilingual",
+        "stage": "international",
+        "applicabilityRule": "RUN si langues autorisées; sinon N/A.",
+        "requiredInputs": [
+          "langues, routes"
+        ],
+        "requiredOutputs": [
+          "plan de parité"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-multilingual",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-multilingual"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-translate",
+        "stage": "international",
+        "applicabilityRule": "RUN si traduction autorisée; sinon N/A.",
+        "requiredInputs": [
+          "texte source"
+        ],
+        "requiredOutputs": [
+          "traduction relue"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-translate",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-translate"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-localize",
+        "stage": "international",
+        "applicabilityRule": "RUN si variante culturelle réelle; sinon N/A.",
+        "requiredInputs": [
+          "locale, traduction"
+        ],
+        "requiredOutputs": [
+          "adaptation relue"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-localize",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-localize"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "blog-locale-audit",
+        "stage": "audit-international",
+        "applicabilityRule": "RUN si variantes publiables; sinon N/A.",
+        "requiredInputs": [
+          "corpus multilingue"
+        ],
+        "requiredOutputs": [
+          "parité, hreflang"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:blog-locale-audit",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/blog-locale-audit"
+        ],
+        "naReason": null
+      }
+    ],
+    "seo": [
+      {
+        "skill": "seo-plan",
+        "stage": "strategie",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "candidat, objectif, offre"
+        ],
+        "requiredOutputs": [
+          "alignement business"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-plan",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-plan"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-google",
+        "stage": "recherche-mesure",
+        "applicabilityRule": "RUN si donnée Google requise; accès absent = RUN/FAIL et ND.",
+        "requiredInputs": [
+          "URL/requête, propriété, période"
+        ],
+        "requiredOutputs": [
+          "export ou diagnostic FAIL/ND"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-google",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-google"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-content-brief",
+        "stage": "brief",
+        "applicabilityRule": "Tous; H est navigationnel.",
+        "requiredInputs": [
+          "SERP, tâche, corpus"
+        ],
+        "requiredOutputs": [
+          "contrat d’information"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-content-brief",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-content-brief"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-cluster",
+        "stage": "architecture",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "requêtes, intentions, corpus"
+        ],
+        "requiredOutputs": [
+          "overlap, cluster, limites"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-cluster",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-cluster"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-sxo",
+        "stage": "recherche",
+        "applicabilityRule": "Tous; H exige une preuve navigationnelle.",
+        "requiredInputs": [
+          "SERP/parcours/tâche"
+        ],
+        "requiredOutputs": [
+          "format utile, intention"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-sxo",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-sxo"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-page",
+        "stage": "audit",
+        "applicabilityRule": "Tous; T ancré est audité dans son conteneur.",
+        "requiredInputs": [
+          "URL ou conteneur rendu"
+        ],
+        "requiredOutputs": [
+          "audit de surface"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-page",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-page"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-content",
+        "stage": "audit",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "texte rendu"
+        ],
+        "requiredOutputs": [
+          "Who/How/Why, E-E-A-T"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-content",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-content"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-technical",
+        "stage": "technique",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "build, HTTP, routes"
+        ],
+        "requiredOutputs": [
+          "crawl, mobile, accessibilité, performance"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-technical",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-technical"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-schema",
+        "stage": "technique",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "visible, JSON-LD"
+        ],
+        "requiredOutputs": [
+          "validation type/contenu"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-schema",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-schema"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-images",
+        "stage": "media-technique",
+        "applicabilityRule": "Tous, y compris absence d’image justifiée.",
+        "requiredInputs": [
+          "assets, décision image"
+        ],
+        "requiredOutputs": [
+          "alt/formats/OG ou absence prouvée"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-images",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-images"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-sitemap",
+        "stage": "technique",
+        "applicabilityRule": "Tous; T ancré contrôle l’index.",
+        "requiredInputs": [
+          "routes, état"
+        ],
+        "requiredOutputs": [
+          "inclusion/exclusion"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-sitemap",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-sitemap"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-geo",
+        "stage": "audit",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "rendu, sources"
+        ],
+        "requiredOutputs": [
+          "lisibilité, surfaces séparées"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-geo",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-geo"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-flow",
+        "stage": "recherche-conversion",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "candidat, recherche"
+        ],
+        "requiredOutputs": [
+          "Find/Optimize/Win"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-flow",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-flow"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-audit",
+        "stage": "audit-corpus",
+        "applicabilityRule": "RUN au lancement/delta; sinon N/A si page suffit.",
+        "requiredInputs": [
+          "corpus, build"
+        ],
+        "requiredOutputs": [
+          "rapport ou justification"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-audit",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-audit"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-drift",
+        "stage": "maintenance",
+        "applicabilityRule": "RUN après baseline; sinon baseline initiale.",
+        "requiredInputs": [
+          "snapshots"
+        ],
+        "requiredOutputs": [
+          "diff ou baseline"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-drift",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-drift"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-backlinks",
+        "stage": "autorite",
+        "applicabilityRule": "RUN si autorité décide l’arbitrage; sinon N/A.",
+        "requiredInputs": [
+          "export"
+        ],
+        "requiredOutputs": [
+          "domaines, limites"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-backlinks",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-backlinks"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-competitor-pages",
+        "stage": "format",
+        "applicabilityRule": "RUN seulement si comparaison autorisée; sinon N/A.",
+        "requiredInputs": [
+          "essais, GO"
+        ],
+        "requiredOutputs": [
+          "matrice symétrique"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-competitor-pages",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-competitor-pages"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-local",
+        "stage": "local",
+        "applicabilityRule": "RUN si intention locale prouvée; sinon N/A national.",
+        "requiredInputs": [
+          "SERP locale"
+        ],
+        "requiredOutputs": [
+          "diagnostic"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-local",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-local"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-maps",
+        "stage": "local",
+        "applicabilityRule": "RUN si Map Pack/GBP requis; sinon N/A.",
+        "requiredInputs": [
+          "observation locale"
+        ],
+        "requiredOutputs": [
+          "diagnostic Map Pack"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-maps",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-maps"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-hreflang",
+        "stage": "international",
+        "applicabilityRule": "RUN si variantes publiables; sinon N/A.",
+        "requiredInputs": [
+          "routes linguistiques"
+        ],
+        "requiredOutputs": [
+          "alternates réciproques"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-hreflang",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-hreflang"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-ecommerce",
+        "stage": "commerce",
+        "applicabilityRule": "N/A pilote: service B2B, pas transaction e-commerce.",
+        "requiredInputs": [
+          "modèle économique"
+        ],
+        "requiredOutputs": [
+          "justification"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-ecommerce",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-ecommerce"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-programmatic",
+        "stage": "architecture",
+        "applicabilityRule": "RUN seulement après autorisation pSEO; sinon N/A.",
+        "requiredInputs": [
+          "dataset, GO"
+        ],
+        "requiredOutputs": [
+          "unicité, anti-thin, lots"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-programmatic",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-programmatic"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-dataforseo",
+        "stage": "recherche",
+        "applicabilityRule": "RUN seulement après nouveau GO budget; sinon N/A.",
+        "requiredInputs": [
+          "accord, coût"
+        ],
+        "requiredOutputs": [
+          "réponse brute, coût"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-dataforseo",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-dataforseo"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "seo-image-gen",
+        "stage": "media",
+        "applicabilityRule": "N/A sous charte; seul image_generate est autorisé.",
+        "requiredInputs": [
+          "politique image"
+        ],
+        "requiredOutputs": [
+          "justification N/A"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:seo-image-gen",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/seo-image-gen"
+        ],
+        "naReason": null
+      }
+    ],
+    "marketingDesignCore": [
+      {
+        "skill": "content-strategy",
+        "stage": "strategie",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "recherche, portefeuille"
+        ],
+        "requiredOutputs": [
+          "choix de portefeuille"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:content-strategy",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/content-strategy"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "site-architecture",
+        "stage": "architecture",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "routes, inventaire"
+        ],
+        "requiredOutputs": [
+          "URL, canonical, maillage"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:site-architecture",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/site-architecture"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "customer-research",
+        "stage": "recherche",
+        "applicabilityRule": "Tous; héritage borné.",
+        "requiredInputs": [
+          "rôle, corpus"
+        ],
+        "requiredOutputs": [
+          "observation/hypothèse"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:customer-research",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/customer-research"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "competitor-profiling",
+        "stage": "recherche",
+        "applicabilityRule": "RUN pour nouveau format/intent; sinon héritage hashé.",
+        "requiredInputs": [
+          "pages"
+        ],
+        "requiredOutputs": [
+          "faits, limites"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:competitor-profiling",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/competitor-profiling"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "product-marketing",
+        "stage": "strategie",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "offre"
+        ],
+        "requiredOutputs": [
+          "positionnement, non-périmètre"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:product-marketing",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/product-marketing"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "brand",
+        "stage": "edition-design",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "charte"
+        ],
+        "requiredOutputs": [
+          "contrôle marque"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:brand",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/brand"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "copywriting",
+        "stage": "redaction",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "brief"
+        ],
+        "requiredOutputs": [
+          "copy contextuelle"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:copywriting",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/copywriting"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "copy-editing",
+        "stage": "edition",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "texte"
+        ],
+        "requiredOutputs": [
+          "clarté, voix, preuve, risque"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:copy-editing",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/copy-editing"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "marketing-psychology",
+        "stage": "conversion",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "freins"
+        ],
+        "requiredOutputs": [
+          "choix éthiques"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:marketing-psychology",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/marketing-psychology"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "cro",
+        "stage": "ux",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "parcours"
+        ],
+        "requiredOutputs": [
+          "CTA, frictions"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:cro",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/cro"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "offers",
+        "stage": "conversion",
+        "applicabilityRule": "RUN si offre change; sinon N/A avec CTA canonique.",
+        "requiredInputs": [
+          "offre"
+        ],
+        "requiredOutputs": [
+          "périmètre, conditions"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:offers",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/offers"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "ai-seo",
+        "stage": "audit",
+        "applicabilityRule": "Tous; sources primaires gouvernent.",
+        "requiredInputs": [
+          "rendu"
+        ],
+        "requiredOutputs": [
+          "utilisabilité sans promesse"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:ai-seo",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/ai-seo"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "analytics",
+        "stage": "mesure",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "questions"
+        ],
+        "requiredOutputs": [
+          "événements agrégés sans PII"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:analytics",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/analytics"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "free-tools",
+        "stage": "format",
+        "applicabilityRule": "N/A pour H/A/T/G/M sans calculateur.",
+        "requiredInputs": [
+          "besoin"
+        ],
+        "requiredOutputs": [
+          "oracle ou justification"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:free-tools",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/free-tools"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "lead-magnets",
+        "stage": "format",
+        "applicabilityRule": "RUN pour M/téléchargement; sinon N/A.",
+        "requiredInputs": [
+          "objet"
+        ],
+        "requiredOutputs": [
+          "accès ouvert, usage"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:lead-magnets",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/lead-magnets"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "frontend-design",
+        "stage": "design",
+        "applicabilityRule": "Tous; héritage si hashé.",
+        "requiredInputs": [
+          "rendu"
+        ],
+        "requiredOutputs": [
+          "revue d’intégration"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:frontend-design",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/frontend-design"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "design-system",
+        "stage": "design",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "tokens, composants"
+        ],
+        "requiredOutputs": [
+          "cohérence"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:design-system",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/design-system"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "memlia-blog-strategie",
+        "stage": "gouvernance",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "candidat"
+        ],
+        "requiredOutputs": [
+          "conformité système"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:memlia-blog-strategie",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/memlia-blog-strategie"
+        ],
+        "naReason": null
+      },
+      {
+        "skill": "memlia-site-design",
+        "stage": "design",
+        "applicabilityRule": "Tous.",
+        "requiredInputs": [
+          "pleine page"
+        ],
+        "requiredOutputs": [
+          "cohérence desktop/mobile"
+        ],
+        "applicable": true,
+        "status": "RUN",
+        "result": "PASS",
+        "toolOrCommand": "fixture:memlia-site-design",
+        "checkedAt": "2026-09-13T21:30:00+01:00",
+        "version": "fixture-v1",
+        "evidenceRefs": [
+          "fixture://skills/memlia-site-design"
+        ],
+        "naReason": null
+      }
+    ],
+    "conditionalExtensions": [
+      {
+        "skill": "social",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/social"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "emails",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/emails"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "cold-email",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/cold-email"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "prospecting",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/prospecting"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "launch",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/launch"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "video",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/video"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "memlia-video-remotion",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/memlia-video-remotion"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "image",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/image"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "ab-testing",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/ab-testing"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "attribution",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/attribution"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      },
+      {
+        "skill": "hermes-agent",
+        "applicable": false,
+        "status": "N/A",
+        "result": null,
+        "evidenceRefs": [
+          "fixture://extensions/hermes-agent"
+        ],
+        "naReason": "Extension hors périmètre de la fixture nominale."
+      }
+    ],
+    "contradictions": []
+  },
+  "gates": [
+    {
+      "id": "G0",
+      "name": "autorisation",
+      "requiredInputs": [
+        "GO G0",
+        "pipeline VERT exact"
+      ],
+      "requiredOutputs": [
+        "prérequis scellés"
+      ],
+      "blockers": [
+        "GO absent",
+        "commit divergent"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-13T21:30:00+01:00",
+      "evidenceRefs": [
+        "fixture://gates/G0"
+      ]
+    },
+    {
+      "id": "G1",
+      "name": "demande-role-format",
+      "requiredInputs": [
+        "rôle/tâche",
+        "SERP",
+        "GSC séparé",
+        "coût",
+        "corpus"
+      ],
+      "requiredOutputs": [
+        "brief et arbitrages"
+      ],
+      "blockers": [
+        "ND requis",
+        "collision",
+        "persona inventée"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-13T21:30:00+01:00",
+      "evidenceRefs": [
+        "fixture://gates/G1"
+      ]
+    },
+    {
+      "id": "G2",
+      "name": "vérité",
+      "requiredInputs": [
+        "unités/claims/citations/sources",
+        "copies",
+        "revue sensible"
+      ],
+      "requiredOutputs": [
+        "registre et verdicts"
+      ],
+      "blockers": [
+        "claim omis",
+        "source non soutenante/T4-T5",
+        "sensible sans primaire/reviewer"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-13T21:30:00+01:00",
+      "evidenceRefs": [
+        "fixture://gates/G2"
+      ]
+    },
+    {
+      "id": "G3",
+      "name": "rendu",
+      "requiredInputs": [
+        "sources",
+        "assets",
+        "routes",
+        "tests format"
+      ],
+      "requiredOutputs": [
+        "HTML/schema/liens/objet testés"
+      ],
+      "blockers": [
+        "fausse UI",
+        "fichier cassé",
+        "orphan",
+        "preview indexable"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-13T21:30:00+01:00",
+      "evidenceRefs": [
+        "fixture://gates/G3"
+      ]
+    },
+    {
+      "id": "G4",
+      "name": "revue",
+      "requiredInputs": [
+        "rendu",
+        "grille",
+        "revue indépendante"
+      ],
+      "requiredOutputs": [
+        "score recalculé, défauts"
+      ],
+      "blockers": [
+        "score <90",
+        "P0/P1",
+        "auto-attestation"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-13T21:30:00+01:00",
+      "evidenceRefs": [
+        "fixture://gates/G4"
+      ]
+    },
+    {
+      "id": "G5",
+      "name": "candidat exact",
+      "requiredInputs": [
+        "hashes",
+        "preview HTML+HTTP",
+        "audit",
+        "GO Kevin"
+      ],
+      "requiredOutputs": [
+        "candidat scellé"
+      ],
+      "blockers": [
+        "hash divergent",
+        "GO vague/ancien",
+        "preview non protégée"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-13T21:30:00+01:00",
+      "evidenceRefs": [
+        "fixture://gates/G5"
+      ]
+    },
+    {
+      "id": "G6",
+      "name": "release",
+      "requiredInputs": [
+        "préflight",
+        "autorisation",
+        "rollback"
+      ],
+      "requiredOutputs": [
+        "lecture distante, baseline"
+      ],
+      "blockers": [
+        "mismatch",
+        "noindex production",
+        "GO absent"
+      ],
+      "status": "PASS",
+      "result": "PASS",
+      "checkedAt": "2026-09-13T21:30:00+01:00",
+      "evidenceRefs": [
+        "fixture://gates/G6"
+      ]
+    }
+  ],
+  "quality": {
+    "severityContractVersion": 1,
+    "migrationRule": "Le pipeline Blog historique contrôle P0. La couche multi-format ajoute P1 sans modifier ce contrôle; P1 absent ou null sur un candidat exécutable bloque et n’équivaut jamais à [].",
+    "rubric": [
+      {
+        "id": "intent-satisfaction",
+        "weight": 20,
+        "result": "PASS",
+        "earned": 20,
+        "observations": [
+          "Fixture nominale."
+        ],
+        "evidenceRefs": [
+          "fixture://quality/intent-satisfaction"
+        ]
+      },
+      {
+        "id": "serp-format-rankability",
+        "weight": 15,
+        "result": "PASS",
+        "earned": 15,
+        "observations": [
+          "Fixture nominale."
+        ],
+        "evidenceRefs": [
+          "fixture://quality/serp-format-rankability"
+        ]
+      },
+      {
+        "id": "eeat-sources",
+        "weight": 20,
+        "result": "PASS",
+        "earned": 20,
+        "observations": [
+          "Fixture nominale."
+        ],
+        "evidenceRefs": [
+          "fixture://quality/eeat-sources"
+        ]
+      },
+      {
+        "id": "information-gain-proof",
+        "weight": 20,
+        "result": "PASS",
+        "earned": 20,
+        "observations": [
+          "Fixture nominale."
+        ],
+        "evidenceRefs": [
+          "fixture://quality/information-gain-proof"
+        ]
+      },
+      {
+        "id": "technical-onpage-seo",
+        "weight": 10,
+        "result": "PASS",
+        "earned": 10,
+        "observations": [
+          "Fixture nominale."
+        ],
+        "evidenceRefs": [
+          "fixture://quality/technical-onpage-seo"
+        ]
+      },
+      {
+        "id": "ai-citability",
+        "weight": 10,
+        "result": "PASS",
+        "earned": 10,
+        "observations": [
+          "Fixture nominale."
+        ],
+        "evidenceRefs": [
+          "fixture://quality/ai-citability"
+        ]
+      },
+      {
+        "id": "contextual-conversion",
+        "weight": 5,
+        "result": "PASS",
+        "earned": 5,
+        "observations": [
+          "Fixture nominale."
+        ],
+        "evidenceRefs": [
+          "fixture://quality/contextual-conversion"
+        ]
+      }
+    ],
+    "recalculatedScore": 100,
+    "minimum": 90,
+    "p0": [],
+    "p1": [],
+    "blocking": false,
+    "rule": "earned=weight si PASS sinon 0; somme sans redistribution ND; final score>=90, p0=[] et p1=[]."
+  },
+  "integrity": {
+    "entryContract": {
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "ordering": "path ASC Unicode, slash POSIX, chemins relatifs à la racine du candidat",
+      "serialization": "UTF-8 JSON canonique, clés triées, sans espaces"
+    },
+    "sourceBundle": {
+      "entries": [
+        {
+          "path": "fixture/source.json",
+          "bytes": 128,
+          "sha256": "43f4b26c3b9003ab3d8b768077b64a3a1bf66964f423826e09c5109bd729da57"
+        }
+      ],
+      "digest": "260716c8ca3b0cb4afa1a50849f33872009a281bdb6fc1067aec8ce76f8aa092"
+    },
+    "assetBundle": {
+      "entries": [
+        {
+          "path": "fixture/asset.json",
+          "bytes": 128,
+          "sha256": "4b6648a233440330e6fb303afc800f1a9708e1757ff8b71e3a1f45eebe995aaf"
+        }
+      ],
+      "digest": "c738724b2b3a3c5a378f87d77a0078505744e5a33f176c875db8b3e45da3c5f7"
+    },
+    "configBundle": {
+      "entries": [
+        {
+          "path": "fixture/config.json",
+          "bytes": 128,
+          "sha256": "1d670a1fc57743cbb07ca9f7268ec1968862049ada6adea9e5516ab94221bf87"
+        }
+      ],
+      "digest": "3907faeeaaa867e5fe31cf45754f6d7ed1bb383afdd9c02d7e733d4f3d336f7f"
+    },
+    "buildOutput": {
+      "entries": [
+        {
+          "path": "fixture/build-output.json",
+          "bytes": 128,
+          "sha256": "df00d4813a823ce4a368d25ee1ce63afcf9f4a87fa802cbe1f9830c486cbc79a"
+        }
+      ],
+      "digest": "df65f865ea162121f893973f7d196a6ef9c5b65312ac2aef978c040ce71ba4f6"
+    },
+    "candidateHash": {
+      "value": "e26a512e691215ab6a72587201ce8a261486598e6f23cb116bbb4f5d654ad37a",
+      "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
+    },
+    "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
+  },
+  "build": {
+    "pipelineCommit": "2d78b8bed588884e53157145077499cd56c27086",
+    "commands": [
+      "fixture:build"
+    ],
+    "startedAt": "2026-09-13T21:30:00+01:00",
+    "endedAt": "2026-09-13T21:31:00+01:00",
+    "result": "PASS",
+    "sourceBundleDigest": "260716c8ca3b0cb4afa1a50849f33872009a281bdb6fc1067aec8ce76f8aa092",
+    "assetBundleDigest": "c738724b2b3a3c5a378f87d77a0078505744e5a33f176c875db8b3e45da3c5f7",
+    "configBundleDigest": "3907faeeaaa867e5fe31cf45754f6d7ed1bb383afdd9c02d7e733d4f3d336f7f",
+    "outputDigest": "df65f865ea162121f893973f7d196a6ef9c5b65312ac2aef978c040ce71ba4f6",
+    "reportRefs": [
+      "fixture://build/report"
+    ]
+  },
+  "preview": {
+    "branch": "preview-fixture-contract",
+    "deploymentId": "fixture-deployment",
+    "requestedUrl": "https://preview.fixture.invalid/ressources",
+    "finalUrl": "https://preview.fixture.invalid/ressources",
+    "candidateHash": "e26a512e691215ab6a72587201ce8a261486598e6f23cb116bbb4f5d654ad37a",
+    "buildOutputDigest": "df65f865ea162121f893973f7d196a6ef9c5b65312ac2aef978c040ce71ba4f6",
+    "htmlNoindexNofollow": true,
+    "httpXRobotsNoindexNofollow": true,
+    "excludedFromSitemap": true,
+    "excludedFromFeeds": true,
+    "routeChecks": [
+      "fixture://preview/routes"
+    ],
+    "captureRefs": [
+      "fixture://preview/capture"
+    ],
+    "reportRef": "fixture://preview/report"
+  },
+  "audit": {
+    "candidateHash": "e26a512e691215ab6a72587201ce8a261486598e6f23cb116bbb4f5d654ad37a",
+    "buildOutputDigest": "df65f865ea162121f893973f7d196a6ef9c5b65312ac2aef978c040ce71ba4f6",
+    "gateReportRefs": [
+      "fixture://audit/gates"
+    ],
+    "testReportRefs": [
+      "fixture://audit/tests"
+    ],
+    "reviewEvidenceRef": "fixture://audit/review",
+    "score": 100,
+    "p0": [],
+    "p1": [],
+    "result": "PASS",
+    "auditHash": "1a60c2defa5bc78b48778d15f2fd68619059bfe6c11671cdc9362d3712db16b6"
+  },
+  "approval": {
+    "state": "approved",
+    "approvedBy": "Kevin",
+    "channel": "fixture-telegram",
+    "exactMessage": "GO FIXTURE candidateHash auditHash previewFinalUrl",
+    "receivedAt": "2026-09-13T21:32:00+01:00",
+    "candidateHash": "e26a512e691215ab6a72587201ce8a261486598e6f23cb116bbb4f5d654ad37a",
+    "auditHash": "1a60c2defa5bc78b48778d15f2fd68619059bfe6c11671cdc9362d3712db16b6",
+    "previewFinalUrl": "https://preview.fixture.invalid/ressources",
+    "durableEvidenceRef": "fixture://approval/evidence",
+    "scope": "fixture contractuelle sans effet externe",
+    "rule": "Seul GO Kevin relié à candidateHash, auditHash et previewFinalUrl exacts; tout changement invalide."
+  },
+  "release": {
+    "authorized": true,
+    "preflightCandidateHash": "e26a512e691215ab6a72587201ce8a261486598e6f23cb116bbb4f5d654ad37a",
+    "deploymentId": "fixture-release-deployment",
+    "productionUrl": "https://production.fixture.invalid/ressources",
+    "remoteDigest": "206b42c0edd6cf43e5cb8775f21051fca640330529049db20ce8b259bd4fc173",
+    "rollbackRef": "fixture://release/rollback",
+    "result": "PASS"
+  },
+  "negativeWitnessesRef": "negative-witnesses-v1.json",
+  "contradictions": [],
+  "limitations": [
+    "Fixture synthétique : aucun GO, reviewer, build, preview, déploiement ou contenu réel n’est attesté."
+  ]
+}

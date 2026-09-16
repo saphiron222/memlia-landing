@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "candidateSlug": "suivre-la-production-sociale-dans-excel",
+  "articleSha256": "256952640851bcdb9f23a53d526e149ee1bd7e706e601712fe7c6020a23a61a8",
+  "manifestSha256": "5fea4b437d967080b4068d91e0420144f203af566d0100ad4869fbb4d46a3cfe",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/img-24-suivi-production-sociale-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/img-24-suivi-production-sociale-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    },
+    {
+      "path": "preuves/image/img-24-suivi-production-sociale-1200.avif",
+      "width": 1200,
+      "height": 675,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/img-24-suivi-production-sociale-1200.webp",
+      "width": 1200,
+      "height": 675,
+      "format": "webp"
+    },
+    {
+      "path": "preuves/image/img-24-suivi-production-sociale-1600.avif",
+      "width": 1600,
+      "height": 900,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/img-24-suivi-production-sociale-1600.webp",
+      "width": 1600,
+      "height": 900,
+      "format": "webp"
+    }
+  ],
+  "alt": "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision.",
+  "score": 100,
+  "directionArt": 18,
+  "semanticRelevance": 23,
+  "p0": [],
+  "kevinApproved": true
+}

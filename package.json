@@ -6,7 +6,8 @@
   "description": "Site memlia.fr — Astro, Cloudflare Pages",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/strip-briefs.mjs && npm run test:proof && npm run test:images && npm run test:scripts",
+    "build": "npm run blog:audit && npm run build:site && npm run resource:audit:qa",
+    "build:site": "astro build && node scripts/strip-briefs.mjs && npm run test:proof && npm run test:images && npm run test:preview-export && npm run test:scripts",
     "preview": "astro preview",
     "preview:prepare": "node scripts/prepare-preview.mjs",
     "check": "astro check",
@@ -18,6 +19,24 @@
     "test:preview-export": "node --test tests/scripts/prepare-preview.test.mjs",
     "test:scripts": "node --test tests/scripts/*.test.mjs",
     "test:indexability": "node scripts/verify-production-indexability.mjs",
+    "test:blog-pipeline": "npm run test:blog-pipeline:unit && npm run test:blog-pipeline:render",
+    "test:blog-pipeline:unit": "node --test tests/scripts/blog-pipeline.test.mjs tests/scripts/blog-pipeline-hardening.test.mjs tests/scripts/blog-published-authority.test.mjs",
+    "test:blog-pipeline:render": "node --test tests/scripts/blog-candidate-render.test.mjs",
+    "test:resource-pipeline:unit": "node --test tests/scripts/resource-pipeline.test.mjs",
+    "blog:audit": "node scripts/blog-pipeline.mjs audit",
+    "blog:create": "node scripts/blog-pipeline.mjs create",
+    "blog:verify-source": "node scripts/blog-pipeline.mjs verify-source",
+    "blog:gate": "node scripts/blog-pipeline.mjs gate",
+    "blog:preview": "node scripts/blog-pipeline.mjs preview",
+    "blog:review": "node scripts/blog-pipeline.mjs review",
+    "blog:production-check": "node scripts/blog-pipeline.mjs production-check",
+    "resource:audit": "node scripts/resource-pipeline.mjs audit",
+    "resource:audit:qa": "node scripts/resource-pipeline.mjs audit --phase qa",
+    "resource:audit:preview": "node scripts/resource-pipeline.mjs audit --phase preview",
+    "resource:audit:approval": "node scripts/resource-pipeline.mjs audit --phase approval",
+    "resource:audit:release": "node scripts/resource-pipeline.mjs audit --phase release",
+    "resource:validate": "node scripts/resource-pipeline.mjs validate",
+    "resource:seal-surfaces": "node scripts/seal-resource-surfaces.mjs",
     "qa:screens": "node scripts/capture.mjs",
     "placeholders": "node scripts/placeholders.mjs",
     "lighthouse": "node scripts/lighthouse.mjs"
@@ -28,8 +47,12 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
+    "ajv": "^8.20.0",
     "astro": "^7.3.2",
-    "sharp": "^0.35.4"
+    "parse5": "8.0.1",
+    "sharp": "^0.35.4",
+    "undici": "8.10.2",
+    "yaml": "2.9.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

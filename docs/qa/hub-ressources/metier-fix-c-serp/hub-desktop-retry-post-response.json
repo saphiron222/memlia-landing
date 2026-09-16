@@ -1,0 +1,40 @@
+{
+  "version": "0.1.20260902",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "19.7556 sec.",
+  "cost": 0.002,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09141658-1656-0139-0000-c618512e52da",
+      "status_code": 40101,
+      "status_message": "Internal SE Server Error.",
+      "time": "19.6738 sec.",
+      "cost": 0.002,
+      "result_count": 0,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "live",
+        "advanced"
+      ],
+      "data": {
+        "api": "serp",
+        "function": "live",
+        "se": "google",
+        "se_type": "organic",
+        "depth": 10,
+        "device": "desktop",
+        "keyword": "ressources cabinet comptable automatisation",
+        "language_code": "fr",
+        "location_code": 2250,
+        "os": "windows"
+      },
+      "result": null
+    }
+  ]
+}

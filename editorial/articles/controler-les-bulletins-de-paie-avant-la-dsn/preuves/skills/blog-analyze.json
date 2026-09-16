@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "articleSha256": "03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92",
+  "manifestSha256": "6dae7ff7635956bbc71d27eb88b3f73a8ce2022a4d8bfa733ffd2c31f685c821",
+  "kind": "skill",
+  "status": "PASS",
+  "checkedAt": "2026-09-13",
+  "observations": [
+    "Le livrable amont scellé et l’intégration courante documentent l’exécution de blog-analyze sur ce candidat exact."
+  ],
+  "skill": "blog-analyze",
+  "adoption": {
+    "originalPath": "preuves/inherited/preuves/skills/blog-analyze.json",
+    "originalSha256": "50db8b79301b44b44d37a6821da80b89a75fed2725d75e887a8fab738015025c",
+    "adoptedBy": "marketing",
+    "mode": "published-preservation",
+    "newExecution": false
+  }
+}

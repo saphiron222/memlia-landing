@@ -1,0 +1,122 @@
+Protect a worksheet
+Applies To
+Get help with Copilot
+How do I enable worksheet protection?
+How do I protect sheet elements in Excel?
+Give me a quick list of how to protect a worksheet.
+
+To prevent other users from accidentally or deliberately changing, moving, or deleting data in a worksheet, you can lock the cells on your Excel worksheet and then protect the sheet with a password. Say you own the team status report worksheet, where you want team members to add data in specific cells only and not be able to modify anything else. With worksheet protection, you can make only certain parts of the sheet editable and users will not be able to modify data in any other region in the sheet. 
+
+Important
+
+Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells within the worksheet. Protecting a worksheet is not the same as protecting an Excel file or a workbook with a password. See below for more information:
+
+To lock your file so that other users can't open it, see Protect an Excel file.
+To prevent users from adding, modifying, moving, copying, or hiding/unhiding sheets within a workbook, see Protect a workbook.
+To know the difference between protecting your Excel file, workbook, or a worksheet see Protection and security in Excel.
+Worksheet protection is not available for U.S. Government Community Cloud High (GCCH) or Department of Defense (DOD) environments.
+Windows
+Web
+
+The following sections describe how to protect and unprotect a worksheet in Excel for Windows.
+
+Choose what cell elements to lock
+
+Here's what you can lock in an unprotected sheet:
+
+Formulas: If you don't want other users to see your formulas, you can hide them from being seen in cells or the Formula bar. For more information, see Display or hide formulas.
+Ranges: You can enable users to work in specific ranges within a protected sheet. For more information, see Lock or unlock specific areas of a protected worksheet.
+
+Note
+
+ActiveX controls, form controls, shapes, charts, SmartArt, Sparklines, Slicers, Timelines, to name a few, are already locked when you add them to a spreadsheet. But the lock will work only when you enable sheet protection. See the subsequent section for more information on how to enable sheet protection.
+
+Enable worksheet protection
+
+Worksheet protection is a two-step process: the first step is to unlock cells that others can edit, and then you can protect the worksheet with or without a password.
+
+Step 1: Unlock any cells that needs to be editable
+
+In your Excel file, select the worksheet tab that you want to protect.
+
+Select the cells that others can edit.
+
+Tip
+
+You can select multiple, non-contiguous cells by pressing Ctrl+Left-Click.
+
+Right-click anywhere in the sheet and select Format Cells (or use Ctrl+1, or Command+1 on the Mac), and then go to the Protection tab and clear Locked.
+
+Step 2: Protect the worksheet
+
+Next, select the actions that users should be allowed to take on the sheet, such as insert or delete columns or rows, edit objects, sort, or use AutoFilter, to name a few. Additionally, you can also specify a password to lock your worksheet. A password prevents other people from removing the worksheet protection—it needs to be entered to unprotect the sheet.
+
+Given below are the steps to protect your sheet.
+
+On the Review tab, select Protect Sheet.
+
+In the Allow all users of this worksheet to list, select the elements you want people to be able to change.
+
+Option	Allows users to
+Select locked cells	Move the pointer to cells for which the Locked box is checked on the Protection tab of the Format Cells dialog box. By default, users are allowed to select locked cells.
+Select unlocked cells	Move the pointer to cells for which the Locked box is unchecked on the Protection tab of the Format Cells dialog box. By default, users can select unlocked cells, and they can press the TAB key to move between the unlocked cells on a protected worksheet.
+Format cells	Change any of the options in the Format Cells or Conditional Formatting dialog boxes. If you applied conditional formatting before you protected the worksheet, the formatting continues to change when a user enters a value that satisfies a different condition.
+Note: Paste now correctly honors the Format cells option. In older versions of Excel, paste always pasted with formatting regardless of the Protection options.
+Format columns	Use any of the column formatting commands, including changing column width or hiding columns (Home tab, Cells group, Format button).
+Format rows	Use any of the row formatting commands, including changing row height or hiding rows (Home tab, Cells group, Format button).
+Insert columns	Insert columns.
+Insert rows	Insert rows.
+Insert hyperlinks	Insert new hyperlinks, even in unlocked cells.
+Delete columns	Delete columns.
+Note: If Delete columns is protected and Insert columns is not protected, a user can insert columns but cannot delete them.
+Delete rows	Delete rows.
+Note: If Delete rows is protected and Insert rows is not protected, a user can insert rows but cannot delete them.
+Sort	Use any commands to sort data (Data tab, Sort & Filter group).
+Note: Users can't sort ranges that contain locked cells on a protected worksheet, regardless of this setting.
+Use AutoFilter	Use the drop-down arrows to change the filter on ranges when AutoFilters are applied.
+Note: Users cannot apply or remove AutoFilter on a protected worksheet, regardless of this setting.
+Use PivotTable reports	Format, change the layout, refresh, or otherwise modify PivotTable reports, or create new reports.
+Edit objects	Doing any of the following:
+
+Make changes to graphic objects including maps, embedded charts, shapes, text boxes, and controls that you did not unlock before you protected the worksheet. For example, if a worksheet has a button that runs a macro, you can select the button to run the macro, but you cannot delete the button.
+Make any changes, such as formatting, to an embedded chart. The chart continues to be updated when you change its source data.
+Add or edit notes.
+
+Edit scenarios	View scenarios that you have hidden, making changes to scenarios that you have prevented changes to, and deleting these scenarios. Users can change the values in the changing cells, if the cells are not protected, and add new scenarios.
+
+Optionally, enter a password in the Password to unprotect sheet box and select OK. Reenter the password in the Confirm Password dialog box and select OK.
+
+Important
+
+Use strong passwords that combine uppercase and lowercase letters, numbers, and symbols. Weak passwords don't mix these elements. Passwords should be 8 or more characters in length. A passphrase that uses 14 or more characters is better.
+It is critical that you remember your password. If you forget your password, Microsoft cannot retrieve it.
+How can I tell if a sheet is protected?
+
+The Protect Sheet option on the ribbon changes to Unprotect Sheet when a sheet is protected. To view this option, select the Review tab on the ribbon, and in Changes, see Unprotect Sheet.
+
+ 
+
+Unprotect an Excel worksheet
+
+To unprotect a sheet, follow these steps:
+
+Go to the worksheet you want to unprotect.
+Go to File > Info > Protect > Unprotect Sheet, or from the Review tab > Changes > Unprotect Sheet.
+If the sheet is protected with a password, then enter the password in the Unprotect Sheet dialog box and select OK.
+See Also
+
+Protection and security in Excel
+
+Protect an Excel file
+
+Protect a workbook
+
+Lock or unlock specific areas of a protected worksheet
+
+Lock cells to protect them
+
+Display or hide formulas
+
+Protect controls and linked cells on a worksheet
+
+Copy and paste in a protected worksheet
