@@ -101,7 +101,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
 
     const player = page.locator('[data-video-player]');
     const video = player.locator('video');
-    await expect(video).toHaveAttribute('poster', '/media/r8/hero-poster-1200.webp');
+    await expect(video).toHaveAttribute('poster', '/media/r9/hero-poster-1200.webp');
     await expect(video).not.toHaveAttribute('autoplay', '');
     const soundButton = player.getByRole('button', { name: 'Activer le son' });
     await expect(soundButton).toBeVisible();
