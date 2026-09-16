@@ -9,9 +9,9 @@ s'écrire si l'un d'eux est rouge.
 | Élément | Valeur |
 |---|---|
 | Branche | `site/v2` |
-| Commit | `1fccbeaff4a5543e91c1488a7ef7a216228afd58` |
+| Commit | `4d6f29bbe7c89c3f2e5f0c1ea4f81fc2826bfe99` |
 | Projet Cloudflare Pages | `memlia` |
-| URL immutable de preview | https://bceec1bb.memlia.pages.dev |
+| URL immutable de preview | https://6c483a4e.memlia.pages.dev |
 | Alias de branche | https://preview-site-v2.memlia.pages.dev |
 | Dossier déployé | `.qa/preview-dist` (copie noindex, jamais `dist`) |
 | Routes contrôlées à distance | 20, toutes conformes |
@@ -30,7 +30,7 @@ La preview porte `noindex, nofollow` en balise et en en-tête HTTP. Aucune pouss
 | `/404` | non | 0 | — | — |
 | `/a-propos` | oui | 14 | 1 | AboutPage, BreadcrumbList, Organization, Person, WebSite |
 | `/automatisation-cabinet-comptable` | oui | 14 | 1 | BreadcrumbList, Organization, Service, WebPage, WebSite |
-| `/blog` | oui | 14 | 1 | Blog, BreadcrumbList, Organization, Person, WebSite |
+| `/blog` | oui | 14 | 1 | BreadcrumbList, Organization, Person, WebSite |
 | `/blog/comprendre-les-comptes-rendus-metier-dsn` | oui | 4 | 2 | BlogPosting, BreadcrumbList, Organization, Person, WebSite |
 | `/blog/controler-les-bulletins-de-paie-avant-la-dsn` | oui | 6 | 2 | BlogPosting, BreadcrumbList, Organization, Person, WebSite |
 | `/blog/suivre-la-production-sociale-dans-excel` | oui | 6 | 2 | BlogPosting, BreadcrumbList, Organization, Person, WebSite |
@@ -91,14 +91,23 @@ aucune réponse 4xx. Empreintes dans `captures/manifeste.json`.
 
 ## Réserves
 
-- Le bandeau mobile occupe 261 px à 320 px de large : c'est la hauteur qu'exigent six
-  entrées à 48 px, et la consigne l'accepte explicitement. La première vue utile de
-  l'accueil tient à 12 px près à 320×740. Le hero n'appartient pas à cette carte ; un
-  allègement de sa marge haute rendrait cette marge confortable.
-- `src/components/Footer.astro` importe `CTA` sans l'utiliser, et `CTA.humain` n'est plus
-  référencé par aucun composant depuis que l'appel à l'action mène à `/contact`. Code mort
-  signalé, non supprimé : l'un et l'autre précèdent ce lot ou relèvent d'un arbitrage
-  éditorial — le second rendez-vous Cal.com existe toujours et peut reprendre sa place.
-- La revue métier du dossier Ressources reste épinglée au jour du 2026-09-16 :
-  le contrat impose des copies de source du jour même. Le dossier redeviendra rouge
-  demain sans nouvelle vérification des sources.
+- **L'accueil dit encore avant elles ce que les cinq pages disent.** Les quatre résumés
+  d'orientation y mènent désormais, mais les sections historiques gardent le détail du
+  service, de la méthode et des garanties. Alléger l'accueil est une décision éditoriale
+  qui dépasse le périmètre de cette carte ; elle est signalée, pas prise.
+- **Aucune preuve illustrée sur les cinq pages neuves.** L'inventaire annonce des visuels
+  fictifs pour la méthode et les garanties ; les neuf illustrations existantes restent sur
+  l'accueil. Ajouter un visuel exige un brief écrit et une génération, hors de ce lot.
+- **Deux documents de référence se contredisent sur la frontière du produit** : la signature
+  du pied de page dit « L'IA automatise le travail répétitif », le document de structure dit
+  « L'IA prépare ». Le candidat a suivi la copy transversale. C'est un arbitrage de Kevin.
+- **Le bandeau mobile occupe 261 px à 320 px de large** : la hauteur qu'exigent six cibles de
+  48 px, que la consigne accepte explicitement. La première vue utile de l'accueil tient à
+  12 px près à 320×740 ; alléger la marge haute du hero, hors périmètre, rendrait cette
+  marge confortable.
+- **`CTA.humain` n'est plus référencé** depuis que l'appel à l'action mène à `/contact`, et
+  `Footer.astro` importe `CTA` sans l'utiliser. Code mort signalé, non supprimé.
+- **La revue métier du dossier Ressources est épinglée au jour même** : le contrat exige des
+  copies de source du jour. Le dossier redeviendra rouge demain sans nouvelle vérification.
+- **Le score qualité de 100 reste normalisé sur 85 points mesurables**, la ligne SERP étant
+  ND. Réserve héritée du dossier Ressources, inchangée.
