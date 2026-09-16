@@ -51,6 +51,10 @@ Fait par Kevin le 16/09 après la release : la commande de build du projet Cloud
 1. **Email Routing** : `memlia.fr` n'a **aucun MX** et un SPF `v=spf1 -all` ; `contact@memlia.fr`, affiché sur le site, ne peut pas recevoir. Activer Email Routing et router l'adresse vers son Gmail.
 2. **Bot Telegram** dédié : token et chat id posés en secrets Pages par l'assistant ; la fonction prévient alors à chaque message. Lecture : `npm run contact:messages`.
 
+## Après la release : la construction git publie (16/09 après-midi)
+
+Kevin a posé la commande de build au tableau de bord. Première construction git avec ce réglage (`8e89cc5e`, commit `b1061a2`) : échec, aucun du site — le test de rendu du blog lance Chromium, absent du builder, et un test du pipeline blog expirait à 20 s sur un builder plusieurs fois plus lent que le poste local ; les 64 tests Python y passaient. Correctif `e0b11f6` : `scripts/test-scripts.mjs` joue `tests/scripts` sans les tests navigateur et imprime ce qu'il écarte (le rendu reste joué par `npm run test:blog-pipeline:render`, 1/1 en local), délais à 120 s. Construction git suivante `e0324c06` : **réussie et en ligne**, contrôle de production PASS, 22 routes identiques octet pour octet au build local, fonction de contact 405 / 400 / 200, base vide après effacement. **Désormais, pousser `main` publie** ; le déploiement explicite par wrangler n'est plus qu'un secours.
+
 ## Rollback
 
 Production précédente : déploiement `88af1244` (commit `55a7c05`, build `2cf4931`). Le rejouer depuis le tableau de bord Cloudflare, ou `git checkout 2cf4931` dans un worktree propre, `npm ci && npm run build:site`, `npx wrangler pages deploy dist --project-name memlia --branch main`. La base D1 et le Worker de purge peuvent rester : sans formulaire, rien ne les appelle.

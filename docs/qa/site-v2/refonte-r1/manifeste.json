@@ -28,17 +28,25 @@
     "deploiementProduction": "e42ab971",
     "urlImmutable": "https://e42ab971.memlia.pages.dev",
     "equivalence": "22 routes, 0 divergence",
-    "verificationProduction": "docs/strategy/site-v2/release/verification-production.json"
+    "verificationProduction": "docs/strategy/site-v2/release/verification-production.json",
+    "deploiementGit": {
+      "commit": "e0b11f6",
+      "deploiement": "e0324c06",
+      "urlImmutable": "https://e0324c06.memlia.pages.dev",
+      "equivalence": "22 routes, 0 divergence",
+      "verificationProduction": "PASS"
+    }
   },
   "constructionGitCloudflare": {
-    "etat": "echoue sur main (aeaa2d33 pour 2cf4931, 50a74dcc pour 4f0d91d)",
+    "etat": "reussit depuis e0b11f6 : deploiement e0324c06 en ligne, publie par la construction git ; echecs anterieurs aeaa2d33, 50a74dcc, 685e9b0a (commande absente) et 8e89cc5e (Chromium absent, delai de 20 s)",
     "cause": "aucune commande de construction configuree au projet",
     "reglageAPoser": {
       "commande": "npm run build:site",
       "sortie": "dist",
       "node": "22"
     },
-    "reglePoseeParKevin": "2026-09-16, apres la release : commande npm run build:site, sortie dist, NODE_VERSION 22"
+    "reglePoseeParKevin": "2026-09-16, apres la release : commande npm run build:site, sortie dist, NODE_VERSION 22",
+    "voieDePublication": "pousser main publie ; wrangler pages deploy dist --branch main reste un secours"
   },
   "contact": {
     "fonction": "functions/api/contact.js",
