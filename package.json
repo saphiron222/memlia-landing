@@ -39,7 +39,10 @@
     "resource:seal-surfaces": "node scripts/seal-resource-surfaces.mjs",
     "qa:screens": "node scripts/capture.mjs",
     "placeholders": "node scripts/placeholders.mjs",
-    "lighthouse": "node scripts/lighthouse.mjs"
+    "lighthouse": "node scripts/lighthouse.mjs",
+    "contact:messages": "node scripts/contact-messages.mjs",
+    "contact:dev": "wrangler pages dev dist --ip 127.0.0.1 --port 8789 --show-interactive-dev-session false",
+    "contact:schema": "wrangler d1 execute memlia-contact --remote --file db/contact/0001-messages.sql"
   },
   "engines": {
     "node": ">=22"

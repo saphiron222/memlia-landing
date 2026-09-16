@@ -4,3 +4,12 @@
 # de main mettait le site hors service. Mesure les 14 et 16 septembre 2026.
 name = "memlia"
 pages_build_output_dir = "dist"
+
+# Formulaire de contact : les messages sont ecrits ici avant toute notification.
+# Base creee le 16/09/2026 (wrangler d1 create memlia-contact), region WEUR.
+compatibility_date = "2026-06-23"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "memlia-contact"
+database_id = "1ba3e044-00bf-4822-ac65-243658538e1b"

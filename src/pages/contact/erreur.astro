@@ -1,0 +1,29 @@
+---
+import Base from '@/layouts/Base.astro';
+import Button from '@/components/Button.astro';
+import { PAGES_V2 } from '@/data/pages-v2.mjs';
+/** Page de réponse en cas d'erreur, servie sans JavaScript : noindex, hors sitemap. */
+---
+
+<Base titre="Le message n’est pas parti | Memlia" description="Un champ manque ou n’est pas valide. Retournez au formulaire, ou écrivez-nous par courriel." chemin="/contact/erreur" noindex base="/">
+  <div class="feuille retour">
+    <div class="retour-int coins">
+      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+      <h1>Le message n’est pas parti.</h1>
+      <p class="texte-2">Un champ manque, une adresse n’est pas valide, ou trop de messages viennent de partir depuis cette connexion. Rien n’a été enregistré.</p>
+      <p class="texte-2">Retournez au formulaire et vérifiez votre nom, votre adresse, le message et la case de consentement. Vous pouvez aussi nous écrire directement.</p>
+      <div class="retour-boutons">
+        <Button href={`${PAGES_V2.contact.chemin}#formulaire`} variante="principal" picto="fleche">Retour au formulaire</Button>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .retour { padding: 96px var(--marge-page) 128px; }
+  .retour-int { display: grid; gap: 16px; justify-items: center; max-width: 720px; margin: 0 auto; padding: 48px 24px; text-align: center; border: 1px solid var(--ligne); border-radius: var(--r-carte); background: rgba(255, 254, 251, 0.92); box-shadow: var(--ombre-xs); }
+  h1 { font-size: var(--t-4xl); max-width: 22ch; }
+  .retour-int p { margin: 0; max-width: 52ch; }
+  .retour-boutons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 12px; }
+  @media (min-width: 64rem) { .retour { padding: 144px var(--marge-page-lg) 176px; } .retour-int { padding: 64px 72px; } }
+</style>

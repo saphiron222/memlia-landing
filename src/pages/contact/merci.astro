@@ -1,0 +1,29 @@
+---
+import Base from '@/layouts/Base.astro';
+import Button from '@/components/Button.astro';
+import { PAGES_V2 } from '@/data/pages-v2.mjs';
+/** Page de réponse du formulaire, servie sans JavaScript : noindex, hors sitemap. */
+---
+
+<Base titre="Message envoyé | Memlia" description="Votre message est bien arrivé. Nous vous répondons par courriel." chemin="/contact/merci" noindex base="/">
+  <div class="feuille retour">
+    <div class="retour-int coins">
+      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+      <h1>Message envoyé.</h1>
+      <p class="texte-2">Nous vous répondons par courriel, sans envoi automatique. Si la tâche se cadre, nous proposerons un échange d’une trentaine de minutes.</p>
+      <div class="retour-boutons">
+        <Button href="/methode" variante="principal" picto="fleche">Comprendre la méthode en attendant</Button>
+        <Button href={PAGES_V2.contact.chemin} variante="lien">Retour au formulaire</Button>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .retour { padding: 96px var(--marge-page) 128px; }
+  .retour-int { display: grid; gap: 16px; justify-items: center; max-width: 720px; margin: 0 auto; padding: 48px 24px; text-align: center; border: 1px solid var(--ligne); border-radius: var(--r-carte); background: rgba(255, 254, 251, 0.92); box-shadow: var(--ombre-xs); }
+  h1 { font-size: var(--t-4xl); max-width: 22ch; }
+  .retour-int p { margin: 0; max-width: 52ch; }
+  .retour-boutons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 12px; }
+  @media (min-width: 64rem) { .retour { padding: 144px var(--marge-page-lg) 176px; } .retour-int { padding: 64px 72px; } }
+</style>

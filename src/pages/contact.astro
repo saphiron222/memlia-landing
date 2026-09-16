@@ -1,50 +1,201 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import ProofRow from '@/components/ProofRow.astro';
+import Button from '@/components/Button.astro';
+import Picto, { type NomPicto } from '@/components/Picto.astro';
 import Courriel from '@/components/Courriel.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { CTA, SITE } from '@/data/site.mjs';
+
 const page = PAGES_V2.contact;
 const url = `${SITE.url}${page.chemin}`;
 const noeuds = [{
   '@type': 'ContactPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
   inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` },
 }];
+const preparer: { picto: NomPicto; titre: string; texte: string }[] = [
+  { picto: 'flux', titre: 'Le geste', texte: 'Ce que quelqu’un refait chaque semaine ou chaque mois, décrit en une phrase.' },
+  { picto: 'excel', titre: 'Les outils', texte: 'D’où viennent les fichiers, où va le résultat.' },
+  { picto: 'coche', titre: 'Le résultat attendu', texte: 'Ce qui devrait exister à la fin, et qui le vérifie aujourd’hui.' },
+];
+const appel = {
+  titre: 'Vous préférez en parler de vive voix ?',
+  texte: 'L’échange dure une trentaine de minutes. Réservez un créneau, ou écrivez directement : les deux mènent au même endroit.',
+  points: ['Sans fichier client ni donnée de paie.', 'Sans engagement sur un développement.', 'Le devis, s’il vient, dépendra de la complexité réelle.'],
+  action: CTA.rendezVous,
+  secondaire: { libelle: 'Écrire à Memlia', href: `mailto:${SITE.email}` },
+};
 ---
 
-<PageCommerciale page={page} noeuds={noeuds}>
-  <section class="conteneur page-section" aria-labelledby="preparer">
-    <h2 id="preparer">Ce qu’il est utile de préparer</h2>
-    <p>Rien d’écrit n’est nécessaire. Trois éléments suffisent à rendre l’échange utile :</p>
-    <ul>
-      <li><strong>Le geste.</strong> Ce que quelqu’un refait chaque semaine ou chaque mois, décrit en une phrase.</li>
-      <li><strong>Les outils.</strong> D’où viennent les fichiers, où va le résultat.</li>
-      <li><strong>Le résultat attendu.</strong> Ce qui devrait exister à la fin, et qui le vérifie aujourd’hui.</li>
-    </ul>
-    <p>Si vous ne savez pas encore quelle tâche choisir, venez avec celle qui agace le plus. C’est souvent la bonne.</p>
-  </section>
+<PageCommerciale page={page} noeuds={noeuds} eyebrow="Premier échange" hero="v2/18-hero-contact" appel={appel}>
+  <section class="pv" aria-labelledby="formulaire-titre">
+    <div class="contact-grille">
+      <form id="formulaire" class="contact-form rv" method="post" action="/api/contact" data-contact>
+        <div class="contact-form-tete">
+          <h2 id="formulaire-titre">Décrivez la tâche</h2>
+          <p class="texte-2">Trois phrases suffisent. Nous répondons par courriel, sans envoi automatique.</p>
+        </div>
+        <div class="champ">
+          <label for="nom">Votre nom</label>
+          <input id="nom" name="nom" type="text" required minlength="2" maxlength="120" autocomplete="name" />
+        </div>
+        <div class="champ">
+          <label for="cabinet">Cabinet <span class="texte-2">(facultatif)</span></label>
+          <input id="cabinet" name="cabinet" type="text" maxlength="160" autocomplete="organization" />
+        </div>
+        <div class="champ">
+          <label for="courriel">Votre adresse de courriel</label>
+          <input id="courriel" name="courriel" type="email" required maxlength="254" autocomplete="email" inputmode="email" />
+        </div>
+        <div class="champ">
+          <label for="message">Le geste qui revient, vos outils, le résultat attendu</label>
+          <textarea id="message" name="message" required minlength="20" maxlength="4000" rows="7" aria-describedby="message-aide"></textarea>
+          <p id="message-aide" class="champ-aide texte-2">Une phrase par élément. Ni fichier, ni donnée de paie : la description suffit.</p>
+        </div>
+        <div class="champ-piege" aria-hidden="true">
+          <label for="site_web">Site web</label>
+          <input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <div class="champ champ-consentement">
+          <input id="consentement" name="consentement" type="checkbox" required />
+          <label for="consentement">J’accepte que Memlia utilise ces informations pour me répondre. Elles ne servent à rien d’autre (<a href="/politique-de-confidentialite">politique de confidentialité</a>).</label>
+        </div>
+        <p class="contact-etat" data-etat role="status" aria-live="polite" hidden></p>
+        <div class="contact-envoi">
+          <Button type="submit" variante="principal" picto="fleche">Envoyer le message</Button>
+        </div>
+      </form>
 
-  <section class="conteneur page-section" aria-labelledby="pasdemande">
-    <h2 id="pasdemande">Ce que nous ne vous demandons pas</h2>
-    <div class="page-encadre">
-      <p><strong>Aucun fichier client.</strong> Ni classeur de paie, ni export de dossier, ni donnée de salarié. La description du geste suffit pour savoir s’il se cadre.</p>
-      <p><strong>Aucun document à déposer.</strong> Cette page ne comporte ni formulaire ni envoi de fichier. Nous préférons un échange de vive voix, et rien ne transite avant que le périmètre ne soit clair.</p>
+      <aside class="contact-aside rv" aria-labelledby="preparer-titre">
+        <h2 id="preparer-titre">Ce qu’il est utile de préparer</h2>
+        <p class="texte-2">Rien d’écrit n’est nécessaire. Trois éléments suffisent à rendre l’échange utile.</p>
+        <ul class="contact-liste">
+          {preparer.map((p) => (
+            <li>
+              <span class="contact-marque" aria-hidden="true"><Picto nom={p.picto} taille={20} /></span>
+              <div><h3>{p.titre}</h3><p class="texte-2">{p.texte}</p></div>
+            </li>
+          ))}
+        </ul>
+        <p class="texte-2 contact-astuce">Si vous ne savez pas encore quelle tâche choisir, venez avec celle qui agace le plus. C’est souvent la bonne.</p>
+      </aside>
     </div>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="ensuite">
-    <h2 id="ensuite">Ce qui se passe ensuite</h2>
-    <p>L’échange dure une trentaine de minutes. Nous regardons si la tâche se cadre, ce qu’il faudrait qualifier, et ce qui reste incertain.</p>
-    <p>À l’issue, deux réponses sont possibles, et la seconde n’a rien d’exceptionnel : soit nous voyons ce qu’il y aurait à construire et je vous propose un cadrage, soit la tâche n’est pas automatisable en l’état et je vous le dis. Dans les deux cas, vous repartez avec une lecture plus nette de votre propre geste.</p>
-    <p>Aucun engagement n’est pris à ce stade, et le devis, s’il vient, dépendra de la complexité réelle — jamais du nombre de personnes dans votre cabinet.</p>
+  <section class="pv" aria-labelledby="pasdemande">
+    <div class="pv-tete rv">
+      <h2 id="pasdemande">Ce que nous ne vous demandons pas</h2>
+    </div>
+    <div class="pv-bande coins">
+      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+      <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
+        <li class="pv-cellule rv"><h3>Aucun fichier client</h3><p>Ni classeur de paie, ni export de dossier, ni donnée de salarié. La description du geste suffit pour savoir s’il se cadre.</p></li>
+        <li class="pv-cellule rv"><h3>Aucun document à déposer</h3><p>Le formulaire n’accepte aucun fichier, et c’est voulu : rien ne transite avant que le périmètre ne soit clair. Nous préférons un échange de vive voix.</p></li>
+      </ul>
+    </div>
   </section>
 
-  <section class="conteneur page-section" aria-labelledby="canaux">
-    <h2 id="canaux">Les canaux</h2>
-    <ul>
-      <li><a href={CTA.rendezVous.href} rel="noopener">{CTA.rendezVous.libelle}</a></li>
-      <li><Courriel libelle="Écrire à Memlia" /> — <Courriel /></li>
-    </ul>
-    <p>Le traitement de vos données de contact est décrit dans la <a href="/politique-de-confidentialite">politique de confidentialité</a>.</p>
-    <p>Avant de nous parler, vous pouvez lire <a href="/automatisation-cabinet-comptable">ce que le service livre</a>, <a href="/methode">comment se déroule une mission</a> ou <a href="/garanties">ce que nous refusons de faire</a>.</p>
+  <section class="pv" aria-labelledby="ensuite">
+    <ProofRow id="v2/13-deux-issues">
+      <div class="pv-copy rv">
+        <h2 id="ensuite">Ce qui se passe ensuite</h2>
+        <p>L’échange dure une trentaine de minutes. Nous regardons si la tâche se cadre, ce qu’il faudrait qualifier, et ce qui reste incertain.</p>
+        <p class="texte-2">À l’issue, deux réponses sont possibles, et la seconde n’a rien d’exceptionnel : soit nous voyons ce qu’il y aurait à construire et je vous propose un cadrage, soit la tâche n’est pas automatisable en l’état et je vous le dis. Dans les deux cas, vous repartez avec une lecture plus nette de votre propre geste.</p>
+        <p class="texte-2">Aucun engagement n’est pris à ce stade, et le devis, s’il vient, dépendra de la complexité réelle — jamais du nombre de personnes dans votre cabinet.</p>
+      </div>
+    </ProofRow>
+  </section>
+
+  <section class="pv pv-inverse" aria-labelledby="canaux">
+    <ProofRow id="v2/12-avant-echange">
+      <div class="pv-copy rv">
+        <h2 id="canaux">Les canaux</h2>
+        <p>Le formulaire ci-dessus, un créneau réservé, ou un courriel : <a href={CTA.rendezVous.href} rel="noopener">{CTA.rendezVous.libelle}</a>, ou <Courriel libelle="écrire à Memlia" /> à <Courriel />.</p>
+        <p class="texte-2">Le traitement de vos données de contact est décrit dans la <a href="/politique-de-confidentialite">politique de confidentialité</a>. Avant de nous parler, vous pouvez lire <a href="/automatisation-cabinet-comptable">ce que le service livre</a>, <a href="/methode">comment se déroule une mission</a> ou <a href="/garanties">ce que nous refusons de faire</a>.</p>
+      </div>
+    </ProofRow>
   </section>
 </PageCommerciale>
+
+<script>
+  /**
+   * Avec JavaScript, le formulaire s'envoie sans quitter la page et dit ce qui s'est passé.
+   * Sans JavaScript, il fonctionne tel quel : la fonction redirige vers une page de réponse.
+   */
+  const formulaire = document.querySelector<HTMLFormElement>('[data-contact]');
+  const etat = document.querySelector<HTMLElement>('[data-etat]');
+  const MESSAGES: Record<string, string> = {
+    nom: 'Indiquez votre nom (au moins deux caractères).',
+    courriel: 'L’adresse de courriel ne semble pas valide.',
+    message: 'Décrivez la tâche en quelques phrases (vingt caractères au moins).',
+    consentement: 'Cochez la case pour que nous puissions vous répondre.',
+    verification: 'La vérification anti-robot a échoué. Réessayez.',
+    'trop-de-messages': 'Plusieurs messages viennent de partir depuis cette connexion. Réessayez dans une heure, ou écrivez-nous par courriel.',
+    indisponible: 'Le formulaire est indisponible pour le moment. Écrivez-nous par courriel.',
+  };
+  if (formulaire && etat) {
+    formulaire.addEventListener('submit', async (evenement) => {
+      if (!formulaire.checkValidity()) return; // Le navigateur signale lui-même le champ manquant.
+      evenement.preventDefault();
+      const bouton = formulaire.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const afficher = (texte: string, ok: boolean) => { etat.textContent = texte; etat.hidden = false; etat.dataset.ok = ok ? 'oui' : 'non'; };
+      if (bouton) bouton.disabled = true;
+      try {
+        const reponse = await fetch(formulaire.action, {
+          method: 'POST', headers: { accept: 'application/json' }, body: new FormData(formulaire),
+        });
+        const corps = await reponse.json().catch(() => ({ ok: false, code: 'illisible' }));
+        if (corps.ok) {
+          formulaire.reset();
+          afficher('Message envoyé. Nous vous répondons par courriel, sans envoi automatique.', true);
+        } else {
+          afficher(MESSAGES[corps.code] ?? 'Le message n’a pas pu partir. Réessayez, ou écrivez-nous par courriel.', false);
+          if (bouton) bouton.disabled = false;
+        }
+      } catch {
+        afficher('Le réseau n’a pas répondu. Réessayez, ou écrivez-nous par courriel.', false);
+        if (bouton) bouton.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .contact-grille { display: grid; gap: 40px; }
+  .contact-form { display: grid; gap: 20px; padding: 32px 24px; border: 1px solid var(--ligne); border-radius: var(--r-carte); background: rgba(255, 254, 251, 0.92); box-shadow: var(--ombre-xs); }
+  .contact-form-tete { display: grid; gap: 8px; }
+  .contact-form-tete h2 { font-size: var(--t-3xl); }
+  .contact-form-tete p { margin: 0; }
+  .champ { display: grid; gap: 8px; }
+  .champ label { font-weight: 500; color: var(--texte-fort); }
+  .champ input[type='text'], .champ input[type='email'], .champ textarea {
+    width: 100%; min-height: 48px; padding: 12px 14px; font: inherit; color: var(--texte-fort);
+    border: 1px solid var(--ligne-forte); border-radius: var(--r-bouton); background: var(--blanc);
+  }
+  .champ textarea { resize: vertical; line-height: 1.5; }
+  .champ input:focus-visible, .champ textarea:focus-visible { outline: 2.5px solid var(--focus); outline-offset: 2px; }
+  .champ-aide { margin: 0; font-size: var(--t-sm); }
+  .champ-consentement { grid-template-columns: 24px minmax(0, 1fr); align-items: start; gap: 12px; }
+  .champ-consentement input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--vert-appui); }
+  .champ-consentement label { font-weight: 400; color: var(--texte); font-size: var(--t-sm); line-height: 1.5; }
+  /* Le champ piège n'existe pas pour une personne : hors écran, hors lecteur d'écran, hors tabulation. */
+  .champ-piege { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .contact-etat { margin: 0; padding: 12px 14px; border-radius: var(--r-bouton); font-size: var(--t-sm); }
+  .contact-etat[data-ok='oui'] { color: var(--vert-texte); background: var(--vert-voile); }
+  .contact-etat[data-ok='non'] { color: var(--rouge); background: #fbecea; }
+  .contact-envoi { display: flex; }
+  .contact-aside { display: grid; gap: 16px; align-content: start; }
+  .contact-aside h2 { font-size: var(--t-3xl); }
+  .contact-aside > p { margin: 0; }
+  .contact-liste { display: grid; gap: 14px; margin: 8px 0 0; padding: 0; list-style: none; }
+  .contact-liste li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: start; }
+  .contact-liste h3 { font-family: var(--police-corps), 'Hanken Fallback'; font-size: var(--t-base); font-weight: 600; letter-spacing: 0; }
+  .contact-liste p { margin: 4px 0 0; font-size: var(--t-sm); }
+  .contact-marque { display: grid; place-items: center; width: 40px; height: 40px; color: var(--picto-repos); border-radius: var(--r-pastille); background: var(--surface-page); }
+  .contact-astuce { margin: 8px 0 0; padding-top: 16px; border-top: 1px solid var(--ligne); font-size: var(--t-sm); }
+  @media (min-width: 48rem) { .contact-form { padding: 40px; } }
+  @media (min-width: 64rem) {
+    .contact-grille { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 64px; align-items: start; }
+    .contact-aside { position: sticky; top: calc(var(--nav-h) + 32px); }
+  }
+</style>

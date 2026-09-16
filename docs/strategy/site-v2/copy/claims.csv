@@ -22,6 +22,7 @@ page;section;affirmation;source ou limite;statut
 /a-propos;entité;"Memlia est une société par actions simplifiée unipersonnelle. Le travail se fait depuis Plérin";statut au registre ; le siège social est celui des mentions légales, distinct du lieu de travail;fait vérifiable
 /contact;échange;"L'échange dure une trentaine de minutes";format proposé;engagement de format
 /contact;échange;"Soit la tâche n'est pas automatisable en l'état et je vous le dis";pratique de cadrage;engagement de méthode
-/contact;données;"Cette page ne comporte ni formulaire ni envoi de fichier";fait vérifiable sur la page;fait vérifiable
+/contact;données;"Le formulaire n'accepte aucun fichier";fait vérifiable sur la page : aucun champ de fichier, aucun enctype multipart ; la fonction refuse tout corps non textuel;fait vérifiable
+/contact;échange;"Nous répondons par courriel, sans envoi automatique";pratique de traitement : aucune réponse automatique n'est envoyée par la fonction de contact, seule une notification interne à Memlia ;engagement de méthode
 /blog;chapeau;"Ces méthodes vous aident à décider quoi automatiser";rôle éditorial du blog;engagement éditorial
 /blog;chapeau;"La vérification et la décision restent humaines";principe du service;engagement de conception

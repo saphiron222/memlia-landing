@@ -28,7 +28,7 @@ export const CTA = {
 };
 
 /** Pages servies mais hors index (noindex) : jamais dans le sitemap. */
-export const PAGES_NOINDEX = ['/mentions-legales', '/politique-de-confidentialite', '/404'];
+export const PAGES_NOINDEX = ['/mentions-legales', '/politique-de-confidentialite', '/404', '/contact/merci', '/contact/erreur'];
 
 /** Montage typographique M3-S (scripts/og.mjs) ; fond définitif éventuel en M4. */
 export const OG_IMAGE = {

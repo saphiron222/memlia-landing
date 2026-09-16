@@ -57,12 +57,27 @@ class BuildProof(unittest.TestCase):
             self.assertEqual(doc.select('html')[0]['lang'], 'fr')
 
     def test_legal_noindex_canonical(self):
-        for slug in ['mentions-legales', 'politique-de-confidentialite']:
+        # Les deux pages de réponse du formulaire de contact suivent le même régime que les pages légales.
+        for slug in ['mentions-legales', 'politique-de-confidentialite', 'contact/merci', 'contact/erreur']:
             doc = Document(DIST / f'{slug}.html')
             robots = next(m['content'] for m in doc.select('meta') if m.get('name') == 'robots')
             self.assertIn('noindex', robots)
             canonical = next(m['href'] for m in doc.select('link') if m.get('rel') == 'canonical')
             self.assertEqual(canonical, f'{SITE}/{slug}')
+            self.assertEqual(len(doc.select('h1')), 1, slug)
+
+    def test_contact_form_posts_to_the_function(self):
+        # Le formulaire fonctionne sans JavaScript : méthode, action, champs requis, piège et consentement.
+        html = (DIST / 'contact.html').read_text()
+        form = re.search(r'<form[^>]*>', html).group(0)
+        self.assertIn('method="post"', form)
+        self.assertIn('action="/api/contact"', form)
+        for name in ['nom', 'cabinet', 'courriel', 'message', 'consentement', 'site_web']:
+            self.assertRegex(html, rf'name="{name}"', name)
+        self.assertNotIn('type="file"', html)
+        self.assertNotIn('enctype', form)
+        self.assertEqual(len(re.findall(r'<form\b', html)), 1)
+        self.assertEqual(len(re.findall(r'<button[^>]*type="submit"', html)), 1)
 
     def test_sitemap_complete_no_legal(self):
         index = ET.parse(DIST / 'sitemap.xml')
@@ -112,9 +127,14 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(len(list((DIST / 'images').glob('brief-*.md'))), 0)
         # Trois couvertures publiées : 3 largeurs x 2 formats chacune, plus une image
         # sociale webp par article (imageOg, exigée par le contrat de la collection).
+        # Les pages commerciales n'ajoutent rien ici : leur visuel de tête est une preuve
+        # fonctionnelle rendue sous public/proofs/v2, avec son image sociale sous og/.
         self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 9)
         self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 12)
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
+        # Série v2 : treize preuves de section, cinq preuves de tête, et l'image sociale de chaque tête.
+        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 18)
+        self.assertEqual(sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')), sorted(f'{n}-hero-{s}.webp' for n, s in [(14, 'service'), (15, 'methode'), (16, 'garanties'), (17, 'apropos'), (18, 'contact')]))
 
     def test_five_generic_examples_no_product_statuses(self):
         html = (DIST / 'index.html').read_text()
