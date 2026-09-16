@@ -8,9 +8,6 @@ const title = 'Glossaire des tâches et contrôles du cabinet | Memlia';
 const description = 'Des définitions directes, leur contexte d’usage et la limite entre préparation automatisable et décision professionnelle.';
 const path = '/glossaire';
 const url = `${SITE.url}${path}`;
-const formatDate = (value: string) => new Date(`${value}T00:00:00Z`).toLocaleDateString('fr-FR', {
-  day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
-});
 const byLetter = new Map<string, typeof GLOSSARY_ENTRIES>();
 for (const entry of GLOSSARY_ENTRIES) {
   const letter = entry.term.normalize('NFD').replace(/\p{Diacritic}/gu, '').charAt(0).toUpperCase();
@@ -91,7 +88,6 @@ const graph = {
                 data-example-fictitious={entry.exampleFictitious}
                 data-common-confusion={entry.commonConfusion}
                 data-automation-boundary={entry.automationBoundary}
-                data-business-reviewer="pending"
                 data-searchable={`${entry.term} ${entry.definition} ${entry.context}`}
               >
                 <dt><a href={`#${entry.anchor}`}>{entry.term}</a></dt>
@@ -121,12 +117,6 @@ const graph = {
                       </ul>
                     </div>
                   </div>
-                  <footer class="entree-meta">
-                    <p><span>Nature</span>{entry.nature}</p>
-                    <p><span>Rédaction</span>{entry.author}</p>
-                    <p><span>Revue métier</span>Requise avant publication</p>
-                    <p><span>Sources relues</span><time datetime={entry.sourceCheckedAt}>{formatDate(entry.sourceCheckedAt)}</time></p>
-                  </footer>
                   <div class="entree-sources">
                     <strong>Sources</strong>
                     <ul>
@@ -195,9 +185,6 @@ const graph = {
   .liens-liste { display: flex; flex-wrap: wrap; gap: 2px 16px; }
   .liens-liste li { display: flex; align-items: center; min-height: 44px; }
   .entree-liens a, .entree-sources a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
-  .entree-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; padding: 16px; background: var(--surface-page); border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); font-size: var(--t-sm); }
-  .entree-meta p { display: grid; gap: 1px; }
-  .entree-meta span { color: var(--texte-2); }
   .entree-sources { display: grid; gap: 4px; font-size: var(--t-sm); color: var(--texte-2); }
   .entree-sources ul { display: grid; gap: 3px; }
   .glossaire-sortie { display: grid; justify-items: start; gap: 12px; max-width: 720px; margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--ligne-forte); }

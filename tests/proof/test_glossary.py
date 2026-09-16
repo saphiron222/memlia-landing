@@ -69,10 +69,15 @@ class GlossaryProof(unittest.TestCase):
         self.assertEqual(self.html.count('data-example-fictitious='), 23)
         self.assertEqual(self.html.count('data-common-confusion='), 23)
         self.assertEqual(self.html.count('data-automation-boundary='), 23)
-        self.assertEqual(self.html.count('data-business-reviewer="pending"'), 23)
-        verification_dates = [time for time in self.doc.select('time') if time.get('datetime') == '2026-09-14']
-        self.assertEqual(len(verification_dates), 23)
         self.assertEqual(self.html.count('class="entree-sources"'), 23)
+        # Le lecteur voit les sources, jamais notre chaîne éditoriale : ni encart de statut,
+        # ni date de relecture, ni marqueur de revue — pas même dans les attributs du HTML.
+        self.assertNotIn('data-business-reviewer', self.html)
+        self.assertNotIn('entree-meta', self.html)
+        self.assertEqual([time.get('datetime') for time in self.doc.select('time')], [])
+        # La date de relecture reste une donnée éditoriale : elle vit dans la source, pas dans la page.
+        donnees = (ROOT / 'src/data/glossary.ts').read_text()
+        self.assertIn("sourceCheckedAt: '2026-09-14'", donnees)
         self.assertNotIn('Donnée client réelle', self.html)
 
     def test_canonical_schema_and_breadcrumb_are_consistent(self):

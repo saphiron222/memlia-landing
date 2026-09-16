@@ -119,6 +119,25 @@ class BuildProof(unittest.TestCase):
                              f'{route} : rendu modifié sans que sa date suive (npm run lastmod:sync)')
         self.assertIn('Sitemap: https://memlia.fr/sitemap.xml', (DIST / 'robots.txt').read_text())
 
+    def test_aucune_mention_de_processus_rendue(self):
+        """Le lecteur ne lit pas notre chaîne éditoriale.
+
+        Kevin l'a demandé deux fois : les encarts de statut, les dates de relecture et les
+        étiquettes de revue n'ont rien à faire dans une page publique. Les sources citées,
+        elles, restent — ce sont des références, pas du processus. Ce contrôle balaie le
+        contenu visible de chaque page pour que la consigne ne dépende pas de la mémoire.
+        """
+        interdits = ['Revue métier', 'Sources relues', 'Éditoriale Memlia', 'Requise avant publication',
+                     'Contenu non attesté', 'non attesté', 'fact-check', 'a-t-il été vérifié',
+                     'revue métier IA', 'statutEditorial']
+        fautes = []
+        for page in sorted(DIST.rglob('*.html')):
+            html = re.sub(r'(?is)<(script|style)\b.*?</\1>', ' ', page.read_text())
+            corps = re.search(r'(?is)<main\b[^>]*>(.*?)</main>', html)
+            visible = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', corps.group(1) if corps else ''))
+            fautes += [f'{page.name} : « {mot} »' for mot in interdits if mot in visible]
+        self.assertEqual(fautes, [], 'mention de processus rendue au lecteur')
+
     def test_asset_and_srcset_targets(self):
         seen = set()
         for page in DIST.rglob('*.html'):
