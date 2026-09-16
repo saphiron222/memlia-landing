@@ -16,7 +16,8 @@ import {
 } from '../../scripts/lib/blog-pipeline.mjs';
 import { candidateManifest, createCompleteDossier } from './blog-fixture.mjs';
 
-const test = (name, run) => nodeTest(name, { timeout: 20_000 }, run);
+// Même marge que blog-pipeline-hardening : le builder Cloudflare est bien plus lent que le poste local.
+const test = (name, run) => nodeTest(name, { timeout: 120_000 }, run);
 const isoDate = '2026-09-13';
 const renderedBlogHtml = (slug) => `<li data-article="${slug}"><a href="/blog/${slug}">Article rendu</a></li>`;
 

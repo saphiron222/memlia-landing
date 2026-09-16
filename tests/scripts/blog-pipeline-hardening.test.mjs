@@ -16,7 +16,9 @@ import {
 } from '../../scripts/lib/blog-pipeline.mjs';
 import { articleMarkdown, createCompleteDossier } from './blog-fixture.mjs';
 
-const TEST_TIMEOUT_MS = 20_000;
+// 120 s : l'image de construction de Cloudflare Pages est plusieurs fois plus lente que la machine
+// de développement ; à 20 s, « chaque famille sensible visible… » y expirait (déploiement 8e89cc5e, 16/09/2026).
+const TEST_TIMEOUT_MS = 120_000;
 const test = Object.assign((name, run) => nodeTest(name, { timeout: TEST_TIMEOUT_MS }, run), { afterEach: nodeTest.afterEach });
 const roots = [];
 const root = (label) => {
