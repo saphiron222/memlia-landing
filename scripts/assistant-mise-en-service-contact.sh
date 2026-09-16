@@ -193,6 +193,7 @@ ICI="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # par wrangler (stdin), sans jamais l'écrire sur le disque. Enregistré dans le résumé final.
 set_pages_secret() {
   local nom="$1" valeur="$2" env
+  if [[ -z "$valeur" ]]; then warn "$nom : valeur vide, rien n'est posé."; SKIPPED+=("$nom (vide)"); return 0; fi
   for env in production preview; do
     if printf '%s' "$valeur" | (cd "$ICI" && npx wrangler pages secret put "$nom" --project-name "$PROJET" --env "$env" >/dev/null 2>&1); then
       WRITTEN_SECRET+=("$nom ($env)")
@@ -221,27 +222,47 @@ banner "memlia.fr — mise en service du formulaire de contact"
 
 # ── 1 · Email Routing : contact@memlia.fr doit pouvoir recevoir ─────────────
 stage "Email Routing — contact@$ZONE reçoit enfin du courrier"
-say "Mesuré : $ZONE n'a aucun enregistrement MX et son SPF est « v=spf1 -all »."
-say "Le site affiche contact@$ZONE ; aujourd'hui un courriel envoyé là est rejeté."
-open_url "https://dash.cloudflare.com/?to=/:account/$ZONE/email/routing"
-step "Email → Email Routing → Get started (ou Enable) : Cloudflare ajoute lui-même les MX et met à jour le SPF."
-step "Destination addresses : ajouter votre Gmail, puis cliquer le lien de vérification reçu."
-step "Routing rules → Create address : contact@$ZONE → votre Gmail → Save."
-pause "Fait ? (Entrée) — je vérifie les MX"
 if dig +short MX "$ZONE" | grep -qi cloudflare; then
-  say "${GREEN}MX en place :${RESET} $(dig +short MX "$ZONE" | tr '\n' ' ')"
+  say "${GREEN}MX Cloudflare déjà en place :${RESET} $(dig +short MX "$ZONE" | tr '\n' ' ')"
+  if dig +short TXT "$ZONE" | grep -q "_spf.mx.cloudflare.net"; then say "${GREEN}SPF corrigé.${RESET}"; else warn "SPF pas encore corrigé : dans Email Routing → DNS records, supprimer « v=spf1 -all » puis « Add missing records »."; SKIPPED+=("SPF $ZONE"); fi
+  say "Reste à vérifier au tableau de bord : Routing rules ≥ 1 (contact@$ZONE → votre Gmail vérifié)."
+  pause "Entrée pour passer à l'étape suivante"
 else
-  warn "Aucun MX Cloudflare visible pour l'instant (propagation en cours, ou étape non terminée). Réessayer : dig +short MX $ZONE"
-  SKIPPED+=("MX $ZONE (à revérifier)")
+  say "Mesuré : $ZONE n'a aucun enregistrement MX et son SPF est « v=spf1 -all »."
+  say "Le site affiche contact@$ZONE ; aujourd'hui un courriel envoyé là est rejeté."
+  open_url "https://dash.cloudflare.com/?to=/:account/$ZONE/email/routing"
+  step "Email → Email Routing → Get started (ou Enable) : Cloudflare ajoute lui-même les MX et met à jour le SPF."
+  step "Destination addresses : ajouter votre Gmail, puis cliquer le lien de vérification reçu."
+  step "Routing rules → Create address : contact@$ZONE → votre Gmail → Save."
+  pause "Fait ? (Entrée) — je vérifie les MX"
+  if dig +short MX "$ZONE" | grep -qi cloudflare; then
+    say "${GREEN}MX en place :${RESET} $(dig +short MX "$ZONE" | tr '\n' ' ')"
+  else
+    warn "Aucun MX Cloudflare visible pour l'instant (propagation en cours, ou étape non terminée). Réessayer : dig +short MX $ZONE"
+    SKIPPED+=("MX $ZONE (à revérifier)")
+  fi
 fi
 
 # ── 2 · Notification Telegram ─────────────────────────────────────────────
 stage "Telegram — être prévenu à chaque message"
 say "Le message est écrit en base quoi qu'il arrive ; la notification est en plus, et ne contient"
 say "que le numéro du message et son heure : aucune donnée personnelle ne quitte la base. Un bot dédié, pas celui d'Hermes."
-open_url "https://t.me/BotFather"
-step "Dans BotFather : /newbot → nom « Memlia contact » → identifiant se terminant par bot → copier le token."
-ask_secret TELEGRAM_BOT_TOKEN "Collez le token du bot :"
+FICHIER_TOKEN="${TELEGRAM_BOT_TOKEN_FILE:-$HOME/.memlia-telegram.token}"
+if [[ -s "$FICHIER_TOKEN" ]]; then
+  TELEGRAM_BOT_TOKEN="$(tr -d '[:space:]' < "$FICHIER_TOKEN")"
+  say "Token lu dans $FICHIER_TOKEN — le fichier sera effacé à la fin de l'étape."
+else
+  open_url "https://t.me/BotFather"
+  step "Dans BotFather : /newbot → nom « Memlia contact » → identifiant se terminant par bot → copier le token."
+  say "Le terminal n'accepte pas toujours un collage en saisie masquée. Voie sûre : copiez le token, puis"
+  say "dans un autre terminal :  pbpaste > ~/.memlia-telegram.token   et relancez cet assistant."
+  ask_secret TELEGRAM_BOT_TOKEN "Collez le token du bot (ou Entrée pour abandonner l'étape) :"
+fi
+if [[ -z "$TELEGRAM_BOT_TOKEN" ]]; then
+  warn "Aucun token : étape abandonnée, rien n'est posé."
+  SKIPPED+=("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID")
+  finish; exit 0
+fi
 step "Ouvrez la conversation avec votre nouveau bot et envoyez-lui n'importe quel message (par ex. « bonjour »)."
 pause "Message envoyé ? (Entrée) — je lis l'identifiant de la conversation"
 TELEGRAM_CHAT_ID="$(curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates" | python3 -c 'import json,sys
@@ -267,5 +288,6 @@ else
   SKIPPED+=("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID")
 fi
 unset TELEGRAM_BOT_TOKEN
+if [[ -f "$FICHIER_TOKEN" ]]; then rm -f "$FICHIER_TOKEN" && say "Fichier $FICHIER_TOKEN effacé."; fi
 
 finish
