@@ -110,7 +110,10 @@ class BuildProof(unittest.TestCase):
         for page in attendues - {f'{SITE}/blog/{a.stem}' for a in published_articles}:
             route = urlsplit(page).path.rstrip('/') or '/'
             self.assertIn(route, registre, route)
-            self.assertEqual(pages[page][:10], registre[route]['lastmod'], route)
+            # À la seconde : une date au jour annonce minuit, plus ancien que la dernière
+            # lecture de Google le même jour, et le sitemap passe pour inchangé.
+            self.assertEqual(pages[page][:19], registre[route]['lastmod'][:19], route)
+            self.assertRegex(registre[route]['lastmod'], r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}')
             fichier = DIST / ('index.html' if route == '/' else f'{route.lstrip("/")}.html')
             self.assertEqual(hashlib.sha256(fichier.read_bytes()).hexdigest(), registre[route]['sha256'],
                              f'{route} : rendu modifié sans que sa date suive (npm run lastmod:sync)')

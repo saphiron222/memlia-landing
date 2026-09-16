@@ -28,8 +28,16 @@ const REGISTRE = 'src/data/pages-lastmod.json';
 const DIST = 'dist';
 const controle = process.argv.includes('--check');
 
-/** Le jour, à Paris : une date de modification n'a pas besoin d'être plus fine que la journée. */
-const aujourdHui = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
+/**
+ * L'instant, en UTC — pas le jour.
+ *
+ * Mesuré le 16/09/2026 : avec une date au jour (`2026-09-16`), le sitemap annonce minuit, or
+ * Google avait lu le fichier à 02:28 ce matin-là. Il voit donc un `lastmod` plus ancien que sa
+ * propre lecture et conclut que rien n'a bougé — Search Console est resté à quatre pages
+ * découvertes malgré la re-soumission. L'horodatage lève l'ambiguïté d'une modification en
+ * cours de journée, et reste figé dans le registre : la construction demeure déterministe.
+ */
+const maintenant = new Date().toISOString();
 const empreinte = (octets) => createHash('sha256').update(octets).digest('hex');
 
 /** Les routes du sitemap qui ne sont pas des articles : leur date ne vient d'aucun frontmatter. */
@@ -60,7 +68,7 @@ for (const route of routes) {
     pages[route] = precedent;
     continue;
   }
-  pages[route] = { sha256, lastmod: aujourdHui };
+  pages[route] = { sha256, lastmod: maintenant };
   bouges.push(route);
 }
 const disparues = Object.keys(registre.pages).filter((route) => !routes.includes(route));
@@ -80,6 +88,6 @@ if (controle) {
 } else {
   registre.pages = Object.fromEntries(Object.entries(pages).sort(([a], [b]) => a.localeCompare(b)));
   writeFileSync(REGISTRE, `${JSON.stringify(registre, null, 2)}\n`);
-  console.log(`${routes.length} page(s) au registre ; ${bouges.length} datée(s) du ${aujourdHui}${bouges.length ? ` : ${bouges.join(', ')}` : ''}.`);
+  console.log(`${routes.length} page(s) au registre ; ${bouges.length} datée(s) du ${maintenant}${bouges.length ? ` : ${bouges.join(', ')}` : ''}.`);
   if (disparues.length > 0) console.log(`retirée(s) : ${disparues.join(', ')}`);
 }
