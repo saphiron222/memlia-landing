@@ -1,9 +1,9 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "controle": "identité et reproductibilité du candidat",
   "regle": "Un statut HTTP ne prouve pas l'identité. La chaîne va du commit aux octets servis, chaque maillon mesuré.",
   "date": "2026-09-16",
-  "commitCandidat": "a9bf01869b3205aed2af7781554386d532ee1724",
+  "commitCandidat": "9044becc648e03f4f64a79503baa15dcfc97f57e",
   "worktreeRecette": "/Users/kevinkitanga/dev/interne/memlia-landing/.worktrees/site-v2-qa",
   "chaine": [
     {
@@ -29,23 +29,35 @@
     {
       "maillon": "URL immuable → commit",
       "methode": "commit source enregistré par le déploiement Cloudflare",
-      "resultat": "4d6f29b, le commit de code du candidat"
+      "resultat": "9044bec, le commit exact du candidat"
     }
   ],
-  "previewImmuable": "https://6c483a4e.memlia.pages.dev",
+  "previewImmuable": "https://d27a0d84.memlia.pages.dev",
+  "transformateursDeBord": [
+    {
+      "quoi": "bandeau d'analyse Cloudflare",
+      "ou": "preview et production",
+      "effet": "un bloc injecté avant </body>, compté et retiré avant comparaison"
+    },
+    {
+      "quoi": "obscurcissement des adresses de courriel",
+      "ou": "production seulement",
+      "effet": "mailto: réécrit en /cdn-cgi/l/email-protection# ; une preview ne peut donc pas prouver ce rendu"
+    }
+  ],
   "fichiersDist": 71,
   "empreintesPages": {
     "404.html": "8c5be3cc41efb445604b7ead0cff2df04aee89b80044cd64ed5a613197fb213b",
     "a-propos.html": "d9dfe2c1082fd068a9a851e8fed4d0df6648b92d835c37eb28ff035f667dd251",
     "automatisation-cabinet-comptable.html": "e2e52ca768e5e3173f137c07c668311e7390c8b9e33db223858e7723b875c9d0",
-    "blog/comprendre-les-comptes-rendus-metier-dsn.html": "46f476e51785b6ce8d2386432f9c6837d16f1f2673d47367d687bea7b79883ea",
-    "blog/controler-les-bulletins-de-paie-avant-la-dsn.html": "6bc9af3c010bcfd010e6bf0ed803f04a1045ae9120a63f6bf93070a0624fc706",
-    "blog/suivre-la-production-sociale-dans-excel.html": "7227ffbf2e649ef93f39d452290e633807d59d9840ed6934930546805df766bc",
-    "blog.html": "3ebf8aaf8b330379eb9dde4391e86c9ed061e4a9109e4766e0c9142595d6061c",
+    "blog/comprendre-les-comptes-rendus-metier-dsn.html": "f9a4d53440c2d6f1801754950cf6b43a6ffde06c8002b1ffb2baa746b10f1839",
+    "blog/controler-les-bulletins-de-paie-avant-la-dsn.html": "d09c8bbaf8a4da7adfb58b67c4ed732fdaa80874ad33509a7570ec113556e2cd",
+    "blog/suivre-la-production-sociale-dans-excel.html": "54591f7f0b328c70dc13e5cac9e97899d05022c8cc0646de85eb7982b47dbd77",
+    "blog.html": "b36606bddd132e020ce4abff46a4ccab02738ea6812d5abaa50f81284aa0322f",
     "contact.html": "7edad2edfce91e8e659c80d4321fd57cd86af6214d20e965fccd069677be0d99",
     "garanties.html": "a73fa2cec51d2ce4daee86fe0fcfc5fe8ec7161c165e040c0a0a6b959dd3d6ab",
     "glossaire.html": "5ff4142b7386fa3a90a2c3e2953f8ba3256dcf021e5ea2401308058314a4c62b",
-    "index.html": "1d52cfa3424a0dff31dd6a60bdcd86834112bba6780ac975a3adc368c7e0e1ff",
+    "index.html": "21b32f7900cb3a9043d48e49915d7c32fac6d45a2d1b3ca822a43f173a368fa6",
     "mentions-legales.html": "6bd3f374853199a2e4e4bb7d4dcaad258d8043a3f270357ff1894528439230cc",
     "methode.html": "2163787d609cea1c6b122dc2a16783b8265de09c321d832d6a8e50f2d7e85ea7",
     "politique-de-confidentialite.html": "47060cff253d3df7bd9178b4d6a0fcec7918c169213081e29544995d3ec7c292",

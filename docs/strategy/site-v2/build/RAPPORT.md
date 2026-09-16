@@ -9,9 +9,9 @@ s'écrire si l'un d'eux est rouge.
 | Élément | Valeur |
 |---|---|
 | Branche | `site/v2` |
-| Commit | `4d6f29bbe7c89c3f2e5f0c1ea4f81fc2826bfe99` |
+| Commit | `9044becc648e03f4f64a79503baa15dcfc97f57e` |
 | Projet Cloudflare Pages | `memlia` |
-| URL immutable de preview | https://6c483a4e.memlia.pages.dev |
+| URL immutable de preview | https://d27a0d84.memlia.pages.dev |
 | Alias de branche | https://preview-site-v2.memlia.pages.dev |
 | Dossier déployé | `.qa/preview-dist` (copie noindex, jamais `dist`) |
 | Routes contrôlées à distance | 20, toutes conformes |

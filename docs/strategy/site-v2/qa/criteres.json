@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "carte": "t_80055166 SITE-V2-QA",
   "date": "2026-09-16",
-  "candidat": "a9bf01869b3205aed2af7781554386d532ee1724",
-  "previewImmuable": "https://6c483a4e.memlia.pages.dev",
+  "candidat": "9044becc648e03f4f64a79503baa15dcfc97f57e",
+  "previewImmuable": "https://d27a0d84.memlia.pages.dev",
   "regle": "Un critère n'est tenu que si sa preuve existe et qu'elle est verte. Aucun verdict de confiance ne remplace une mesure.",
   "criteres": [
     {
@@ -45,7 +45,7 @@
     {
       "critere": "Preview noindex/nofollow, pas de comparaison sur cache seul",
       "preuve": "docs/strategy/site-v2/build/preview-http.json, URL immuable",
-      "mesure": "20/20 routes conformes sur https://6c483a4e.memlia.pages.dev",
+      "mesure": "20/20 routes conformes sur https://d27a0d84.memlia.pages.dev",
       "tenu": true
     },
     {
@@ -63,7 +63,7 @@
     {
       "critere": "Identité du candidat établie, statuts seuls insuffisants",
       "preuve": "docs/strategy/site-v2/qa/identite-candidat.json",
-      "mesure": "commit → build → code 0 ; 63 preuves Python, 4 images, 133 scripts ; build → build de développement → 0 différence ; build → copie preview → 0 écart résiduel ; copie preview → URL immuable → 20/20 conformes ; URL immuable → commit → 4d6f29b, le commit de code du candidat",
+      "mesure": "commit → build → code 0 ; 63 preuves Python, 4 images, 133 scripts ; build → build de développement → 0 différence ; build → copie preview → 0 écart résiduel ; copie preview → URL immuable → 20/20 conformes ; URL immuable → commit → 9044bec, le commit exact du candidat",
       "tenu": true
     }
   ],
