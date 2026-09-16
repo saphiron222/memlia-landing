@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r4",
-  "ancreLe": "2026-09-16T07:34:16.873Z",
+  "ancreLe": "2026-09-16T07:49:03.174Z",
   "regle": "Sujet complet de la revue métier. Son empreinte reproduit le reviewedCandidateHash scellé ; toute feuille qui bouge doit être déclarée et justifiée avant une réaffirmation.",
   "surfaces": {
     "H": {
@@ -9,7 +9,7 @@
       "status": "AI_REVIEW_PASS",
       "reviewerId": "t_91444ae1",
       "evidenceRef": "docs/qa/hub-ressources/metier-review-r4/preuve-hub.json",
-      "reviewedCandidateHash": "6718d2221763eb0b5b0954e62fced316b7ad5d2953f55e7182c79df043c6a0af",
+      "reviewedCandidateHash": "6b5f58e020fbf3cd97efbe13bbe3ea08b95f8e98f347f1434405cca5c6e4b45a",
       "verdicts": 7,
       "claims": 10,
       "sujet": {
@@ -1149,7 +1149,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1170,7 +1170,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1254,7 +1254,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1317,7 +1317,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1739,7 +1739,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1823,7 +1823,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1844,7 +1844,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -2747,7 +2747,7 @@
         "sourceBundleDigest": "10cd5f1ecde60c03ed573274c565ae544362dfd33b399b408606158b0fe8e625",
         "assetBundleDigest": "62730565e747db359ef83dd42a3c8f145e1ae1605d40d66dc0bc3725043b6d2d",
         "configBundleDigest": "753d9e3bd567d6f5f882d194c2aa0a6786cf58b2dad0a6318fb216ec1a73fbdf",
-        "buildOutputDigest": "bd141e932b846d1825e8e4c5a18e72f0eaa9d7d8138bd34fe768cfc64215b9b2"
+        "buildOutputDigest": "0a15ec443c2c1e00740c1ce669c8b20796d9215bad95c03671d9504e571b627c"
       }
     },
     "T": {
@@ -2755,7 +2755,7 @@
       "status": "AI_REVIEW_PASS",
       "reviewerId": "t_91444ae1",
       "evidenceRef": "docs/qa/hub-ressources/metier-review-r4/preuve-glossaire.json",
-      "reviewedCandidateHash": "ff3a3ae7593c4f0ce50e64e811f607878fd93e3f50a2899016c2c98b50e62f94",
+      "reviewedCandidateHash": "361b99b1025228a75d4ba7e2d9194b913054597f22945ae316c068fcd05d64e8",
       "verdicts": 18,
       "claims": 39,
       "sujet": {
@@ -5456,7 +5456,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5477,7 +5477,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5561,7 +5561,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5624,7 +5624,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -6046,7 +6046,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -6130,7 +6130,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -6151,7 +6151,7 @@
               "status": "RUN",
               "result": "PASS",
               "toolOrCommand": "npm run build:site",
-              "checkedAt": "2026-09-16T07:08:01.995Z",
+              "checkedAt": "2026-09-16T07:34:19.326Z",
               "version": "candidat-v3-t_54774b16",
               "evidenceRefs": [
                 "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -7054,7 +7054,7 @@
         "sourceBundleDigest": "6d2c2db8de4271b374d4ab462a54e88dd4b7955d1607912e49b89203b62e7019",
         "assetBundleDigest": "6cdf4107b70ae3dd623c7a66a7cfbe02272ec46c6c63e179fe8f03407adb5f14",
         "configBundleDigest": "f1c5ab55eeccdf89b116e88aeb8181e4ea3ad6c6fa870997f57dde086d27cccc",
-        "buildOutputDigest": "f7f0325aced0fa7fcd2abc43059a777a61efa8500c97d54626a68e9a1c0b82d8"
+        "buildOutputDigest": "bcd260ab058b2b1a2be90ba49dc4ac34244c1797187bd8720a8d4164b137ed97"
       }
     }
   }

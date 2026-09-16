@@ -1,56 +1,52 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r4",
-  "reaffirmeLe": "2026-09-16T07:34:21.286Z",
+  "reaffirmeLe": "2026-09-16T07:49:07.556Z",
   "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
-  "registreSha256": "3bfafba56d65fb3c7afdd98c440e7a3c16bd3296dcfea6e80ba8fbeab2dd2121",
+  "registreSha256": "8727695c99c0936d24b27a6d4182b5ac699ffdcb4b196676cc3e1d12df2f36d9",
   "declarationRef": "docs/qa/hub-ressources/metier-review-r4/reaffirmation-declaration.json",
   "declarationSha256": "704ec230f87b260fe831ab57ef96ee3f0cdb11cd2fd1c109a6355b4fa11bee82",
   "ancreRef": "docs/qa/hub-ressources/metier-review-r4/sujet-ancre.json",
-  "ancreSha256": "70fd3145ca47ae6aa581f46fc258581e3c8b39c169b72af0ebe7a5a2204662c2",
+  "ancreSha256": "5eb21c227f29e5ba3a02fb19d8945210b92176f6f9cdb161a650239ddbf2d037",
   "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
   "surfaces": {
     "H": {
       "action": "réaffirmée",
-      "sujetAncre": "6718d2221763eb0b5b0954e62fced316b7ad5d2953f55e7182c79df043c6a0af",
-      "sujetReaffirme": "6b5f58e020fbf3cd97efbe13bbe3ea08b95f8e98f347f1434405cca5c6e4b45a",
-      "feuillesEcartees": 8,
+      "sujetAncre": "6b5f58e020fbf3cd97efbe13bbe3ea08b95f8e98f347f1434405cca5c6e4b45a",
+      "sujetReaffirme": "b49fd46728260d000ae282f67022e36387e77a007e0c9fa23e9450845a771dcc",
+      "feuillesEcartees": 7,
       "feuillesParChamp": {
-        "buildOutputDigest.buildOutputDigest": 1,
         "skills.checkedAt": 7
       },
       "justifications": {
-        "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. Le HTML rendu de /ressources et /glossaire change donc de chrome sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
         "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées : il bouge à chaque rescellement, par construction. Seul ce champ est autorisé — un statut, un résultat ou une preuve de skill qui changerait ferme la réaffirmation."
       },
       "affirmationsRenduesVerifiees": 10,
       "verdictsConserves": 7,
-      "candidateHash": "d2f9a805809c6a8dc7629cd3fa051375b0f3faf40ec3f5803db8416bbed9d264",
-      "auditHash": "1d8de1d5c4d8147ab2378d2f395ecac76b386c8738ca38d209de54a638682a79",
-      "manifestSha256": "571929e06b33cf43d5b3f1b9c270fbec66264b05a28f381f3b6f4dde4d569055",
+      "candidateHash": "07bb9044f8e47591be6ba7dfef00591d36adbe4d8479e4e581fb2ea18b849b15",
+      "auditHash": "6efc2578866a7a57d410f61c1e0e4e9e397bc32b50dfaa4f80813bb3462b2a61",
+      "manifestSha256": "0e3c84992301078181dffddb2696aa31755a9ae0b493cfec7df2d0bbaf436a11",
       "preuveRef": "docs/qa/hub-ressources/metier-review-r4/preuve-hub.json",
-      "preuveSha256": "84512bee1ac067a2885e62f1d590a388b16f6eac4aaa7367290552753172e05f"
+      "preuveSha256": "1339cd746cb7580bcc7f4f1eae171ad9f4e148e3f34e75a2841e0cfe58f1b4df"
     },
     "T": {
       "action": "réaffirmée",
-      "sujetAncre": "ff3a3ae7593c4f0ce50e64e811f607878fd93e3f50a2899016c2c98b50e62f94",
-      "sujetReaffirme": "361b99b1025228a75d4ba7e2d9194b913054597f22945ae316c068fcd05d64e8",
-      "feuillesEcartees": 8,
+      "sujetAncre": "361b99b1025228a75d4ba7e2d9194b913054597f22945ae316c068fcd05d64e8",
+      "sujetReaffirme": "c10561f92000a8d16988283e97b9bbc1dbff0f8eb8b7325273102c448b7c1d7d",
+      "feuillesEcartees": 7,
       "feuillesParChamp": {
-        "buildOutputDigest.buildOutputDigest": 1,
         "skills.checkedAt": 7
       },
       "justifications": {
-        "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. Le HTML rendu de /ressources et /glossaire change donc de chrome sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
         "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées : il bouge à chaque rescellement, par construction. Seul ce champ est autorisé — un statut, un résultat ou une preuve de skill qui changerait ferme la réaffirmation."
       },
       "affirmationsRenduesVerifiees": 39,
       "verdictsConserves": 18,
-      "candidateHash": "f378d3eb829ecd5cd26166b524422fb4ff8c7b2fa9d77b54079e2363fb5ba99e",
-      "auditHash": "93cf4b693ea3c96ebd7a21bfea4d3143b7339a37bf5110346c030ba112aae841",
-      "manifestSha256": "7bc9c9eb3dc3a5ca60c49b6b0ed32246fe2494f91430dac9aff799e2d122a67b",
+      "candidateHash": "92a903430e3b9f4eec2ce2b75ab9c76d7348181c12ea8111b057bbf6a2e6db46",
+      "auditHash": "cec7c9d4449a213423b5602f9a0eff04c5b0104ce564a9bd4063db51276c28a1",
+      "manifestSha256": "46064aa20be660391d35f52b31ee044c9389dad45c9c0a2f0694fb52670a67a0",
       "preuveRef": "docs/qa/hub-ressources/metier-review-r4/preuve-glossaire.json",
-      "preuveSha256": "4ee2ba33ce4a010afca91cfcbb7b79201a826fddbff42a192d31a63351a69ad5"
+      "preuveSha256": "b488f3e907fc94e89c1c68b24d297e601d385cbfa92051d7b657f69739c646bb"
     }
   }
 }

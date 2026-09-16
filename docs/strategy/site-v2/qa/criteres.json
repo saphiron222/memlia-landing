@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "carte": "t_80055166 SITE-V2-QA",
+  "date": "2026-09-16",
+  "candidat": "a9bf01869b3205aed2af7781554386d532ee1724",
+  "previewImmuable": "https://6c483a4e.memlia.pages.dev",
+  "regle": "Un critère n'est tenu que si sa preuve existe et qu'elle est verte. Aucun verdict de confiance ne remplace une mesure.",
+  "criteres": [
+    {
+      "critere": "Revue page par page : mission, preuve et appel à l'action distincts",
+      "preuve": "trois revues indépendantes, docs/strategy/site-v2/qa/verdict.md",
+      "mesure": "8 défauts retenus, tous corrigés ou déclarés en réserve",
+      "tenu": true
+    },
+    {
+      "critere": "Auteur Kevin Kitanga cohérent HTML, RSS et schéma",
+      "preuve": "un seul nœud Person sur les 15 pages construites",
+      "mesure": "@id unique https://memlia.fr/a-propos#kevin-kitanga ; rel=author y mène",
+      "tenu": true
+    },
+    {
+      "critere": "Aucune donnée client, aucun chiffre non sourcé, aucune promesse non tenue",
+      "preuve": "revue de copy à double sens + balayage d'identités clientes",
+      "mesure": "26/26 affirmations portées, 0 promesse hors registre, 0 identité cliente rendue",
+      "tenu": true
+    },
+    {
+      "critere": "Navigation visible sans clic sur mobile, six largeurs, cibles 48 px",
+      "preuve": "revue navigation indépendante + tests/browser/navigation-mobile.spec.ts",
+      "mesure": "48 combinaisons : 6 destinations servies, 48 px et 16 px, hit-test 48/48, débordement 0",
+      "tenu": true
+    },
+    {
+      "critere": "Clavier, JavaScript désactivé et reduced-motion utilisables",
+      "preuve": "revue navigation indépendante + suite navigateur",
+      "mesure": "9 parcours clavier sans piège, 25 révélations visibles sans JS, 0 animation infinie",
+      "tenu": true
+    },
+    {
+      "critere": "Crawl réel de toutes les routes, aucun lien mort, aucune orpheline, profondeur ≤ 3",
+      "preuve": "docs/strategy/site-v2/build/oracle-rapport.json",
+      "mesure": "12 routes indexables, 0 orpheline, profondeur maximale 2",
+      "tenu": true
+    },
+    {
+      "critere": "Preview noindex/nofollow, pas de comparaison sur cache seul",
+      "preuve": "docs/strategy/site-v2/build/preview-http.json, URL immuable",
+      "mesure": "20/20 routes conformes sur https://6c483a4e.memlia.pages.dev",
+      "tenu": true
+    },
+    {
+      "critere": "Lighthouse mesuré, seuil du contrat respecté, aucune moyenne substituée",
+      "preuve": "docs/strategy/site-v2/build/lighthouse-medianes.json",
+      "mesure": "médiane de 3 sur 12 couples gabarit/profil, seuil 95, 0 sous le seuil",
+      "tenu": true
+    },
+    {
+      "critere": "Captures 1440 et 375 pleine page après défilement",
+      "preuve": "docs/strategy/site-v2/build/captures/manifeste.json",
+      "mesure": "14 captures, 0 en défaut",
+      "tenu": true
+    },
+    {
+      "critere": "Identité du candidat établie, statuts seuls insuffisants",
+      "preuve": "docs/strategy/site-v2/qa/identite-candidat.json",
+      "mesure": "commit → build → code 0 ; 63 preuves Python, 4 images, 133 scripts ; build → build de développement → 0 différence ; build → copie preview → 0 écart résiduel ; copie preview → URL immuable → 20/20 conformes ; URL immuable → commit → 4d6f29b, le commit de code du candidat",
+      "tenu": true
+    }
+  ],
+  "criteresNonTenus": [],
+  "verdict": "PASS"
+}

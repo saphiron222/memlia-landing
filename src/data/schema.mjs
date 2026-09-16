@@ -12,7 +12,12 @@ import { PAGES_V2 } from './pages-v2.mjs';
 /** `url` du service : la page qui le décrit, pas l'accueil qui l'annonce. */
 export const SERVICE_ID = `${SITE.url}/#service`;
 
-export const serviceNode = (description) => ({
+/**
+ * Une entité, une description. Le nœud était émis sur deux pages avec la description de
+ * chacune : même `@id`, deux valeurs pour un champ, donc deux réponses à la même question
+ * pour qui fusionne le graphe. C'est la page qui décrit le service qui fait foi.
+ */
+export const serviceNode = () => ({
   '@type': 'Service',
   '@id': SERVICE_ID,
   name: 'Memlia : automatisation IA du cabinet',
@@ -20,7 +25,7 @@ export const serviceNode = (description) => ({
   areaServed: 'FR',
   url: `${SITE.url}${PAGES_V2.service.chemin}`,
   image: OG_IMAGE.url,
-  description,
+  description: PAGES_V2.service.description,
   provider: { '@id': `${SITE.url}/#organization` },
   audience: { '@type': 'Audience', audienceType: "Cabinets d'expertise comptable" },
 });

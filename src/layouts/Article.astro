@@ -158,7 +158,6 @@ const articleCta = {
         <h2 id="pont-titre">Cette tâche vous prend encore du temps à la main ?</h2>
         <p class="texte-2" data-cta-outcome>{articleCta.outcome}</p>
         <Button href={articleCta.destination} variante="principal" picto="fleche">{articleCta.label}</Button>
-        <p class="texte-2 article-pont-methode">Avant d’en parler : <a href="/methode">comment se déroule une mission</a>.</p>
       </aside>
 
       <footer class="article-auteur">
@@ -185,6 +184,9 @@ const articleCta = {
           </ul>
         </nav>
       )}
+
+      {/* Ordre décrit par la copy transversale : signature, article connexe, puis la méthode. */}
+      <p class="texte-2 article-pont-methode">Avant d’en parler : <a href="/methode">comment se déroule une mission</a>.</p>
 
       <p class="article-retour"><a class="btn btn-lien" href={BLOG.chemin}><Picto nom="gauche" taille={14} /> Tous les articles</a></p>
     </article>

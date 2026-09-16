@@ -127,7 +127,7 @@ const graph = {
         <article class="auteur-fiche" id={a.ancre.slice(1)}>
           <span class="auteur-initiale" aria-hidden="true">{a.nom.charAt(0)}</span>
           <div>
-            <h3 class="auteur-nom">{a.nom} <span class="texte-2 auteur-role">· {a.role}</span></h3>
+            <h3 class="auteur-nom"><a href={identiteAuteur(a)}>{a.nom}</a> <span class="texte-2 auteur-role">· {a.role}</span></h3>
             <p class="texte-2">{a.bio}</p>
             <p class="auteur-contact"><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
           </div>

@@ -10,13 +10,13 @@
   "manifests": {
     "hub": {
       "path": "editorial/resources/hub/manifest.json",
-      "sha256": "571929e06b33cf43d5b3f1b9c270fbec66264b05a28f381f3b6f4dde4d569055",
+      "sha256": "0e3c84992301078181dffddb2696aa31755a9ae0b493cfec7df2d0bbaf436a11",
       "formatAdapter": "H",
       "editorialStatus": null
     },
     "glossaire": {
       "path": "editorial/resources/glossaire/manifest.json",
-      "sha256": "7bc9c9eb3dc3a5ca60c49b6b0ed32246fe2494f91430dac9aff799e2d122a67b",
+      "sha256": "46064aa20be660391d35f52b31ee044c9389dad45c9c0a2f0694fb52670a67a0",
       "formatAdapter": "T",
       "editorialStatus": null
     }
@@ -42,12 +42,12 @@
     "preuve": "docs/qa/hub-ressources/metier-review-r4/reaffirmation.json — écarts déclarés feuille par feuille, 49 affirmations revérifiées rendues mot pour mot, copies de source intactes.",
     "mouvements": {
       "hub": {
-        "avant": "08d4bce4ae1382dcb9915d50e492409bc28890d7ec0b767916dc9b0657e3f30f",
-        "apres": "571929e06b33cf43d5b3f1b9c270fbec66264b05a28f381f3b6f4dde4d569055"
+        "avant": "571929e06b33cf43d5b3f1b9c270fbec66264b05a28f381f3b6f4dde4d569055",
+        "apres": "0e3c84992301078181dffddb2696aa31755a9ae0b493cfec7df2d0bbaf436a11"
       },
       "glossaire": {
-        "avant": "8d4ebae82023c65b7c287695ba253c368267106fb9701364992ee51e901179b6",
-        "apres": "7bc9c9eb3dc3a5ca60c49b6b0ed32246fe2494f91430dac9aff799e2d122a67b"
+        "avant": "7bc9c9eb3dc3a5ca60c49b6b0ed32246fe2494f91430dac9aff799e2d122a67b",
+        "apres": "46064aa20be660391d35f52b31ee044c9389dad45c9c0a2f0694fb52670a67a0"
       }
     }
   }
