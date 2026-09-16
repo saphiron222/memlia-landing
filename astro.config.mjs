@@ -1,5 +1,5 @@
 // @ts-check
-import { execFileSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
@@ -12,30 +12,24 @@ import { parseBlogPreviewSlugs } from './src/data/blog-visibility.mjs';
 
 const BLOG_PREVIEW_SLUGS = new Set(parseBlogPreviewSlugs(process.env.BLOG_PREVIEW_SLUGS ?? process.env.BLOG_PREVIEW_SLUG));
 
-/**
- * `lastmod` des pages non éditoriales : la date du dernier commit qui a touché ce qui les rend.
- *
- * Une date écrite à la main ne bouge que si quelqu'un y pense — et personne n'y a pensé : le
- * 16/09/2026, cinq pages nouvelles étaient en ligne depuis six heures et le sitemap les datait
- * encore du 09/09. Google, qui compare ce `lastmod` à sa dernière lecture, n'avait aucune raison
- * de le relire : Search Console affichait toujours quatre pages découvertes.
- *
- * La date vient donc de git, jamais de l'horloge : deux constructions du même commit produisent
- * le même octet (la chaîne de preuve compare le dist local aux octets servis), et un commit qui
- * ne touche ni les sources ni les actifs ne prétend pas que le site a changé.
- */
-const DERNIERE_SOURCE = (() => {
-  try {
-    const sortie = execFileSync('git', ['log', '-1', '--format=%cI', '--', 'src', 'public', 'astro.config.mjs'], { encoding: 'utf8' }).trim();
-    return sortie || SITE.derniereMiseAJour;
-  } catch {
-    // Sans dépôt (archive, image de construction sans git), la constante déclarée fait office de plancher.
-    return SITE.derniereMiseAJour;
-  }
-})();
-
-/** lastmod par article (dateMiseAJour ou datePublication) ; les autres pages datent du site. */
+/** lastmod par article (dateMiseAJour ou datePublication) : une seule source, le frontmatter. */
 const LASTMOD_BLOG = new Map(lireArticlesPublies().map((a) => [`${SITE.url}${BLOG.chemin}/${a.slug}`, a.lastmod]));
+
+/**
+ * `lastmod` des pages non éditoriales : le registre versionné, tenu par leur contenu rendu.
+ *
+ * Voir scripts/sync-lastmod.mjs pour le pourquoi — une date écrite à la main ne bouge pas, et
+ * une date lue dans git ne se lit pas pareil sur l'image de construction de Cloudflare.
+ */
+const LASTMOD_PAGES = new Map((() => {
+  try {
+    return Object.entries(JSON.parse(readFileSync('./src/data/pages-lastmod.json', 'utf8')).pages)
+      .map(([route, page]) => [`${SITE.url}${route === '/' ? '/' : route}`, page.lastmod]);
+  } catch {
+    // Registre absent : première construction avant son amorçage par scripts/sync-lastmod.mjs.
+    return [];
+  }
+})());
 
 export default defineConfig({
   site: SITE.url,
@@ -60,7 +54,7 @@ export default defineConfig({
       },
       serialize: (item) => ({
         ...item,
-        lastmod: LASTMOD_BLOG.get(item.url) ?? DERNIERE_SOURCE,
+        lastmod: LASTMOD_BLOG.get(item.url) ?? LASTMOD_PAGES.get(item.url) ?? SITE.derniereMiseAJour,
         // `SitemapItem.changefreq` attend l'enum du paquet `sitemap`, pas la chaîne littérale.
         changefreq: item.url === `${SITE.url}${BLOG.chemin}` ? ChangeFreqEnum.WEEKLY : ChangeFreqEnum.MONTHLY,
         priority: item.url === `${SITE.url}/` ? 1.0 : LASTMOD_BLOG.has(item.url) ? 0.7 : 0.6,
