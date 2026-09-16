@@ -52,8 +52,6 @@ Un compte rendu métier DSN ne donne pas un verdict général sur toute la paie.
 
 Ce guide traite **exclusivement de l’interprétation et du suivi après dépôt**. Pour préparer et tester les bulletins et le fichier avant transmission, utilisez plutôt la [méthode de contrôle avant la DSN](/blog/controler-les-bulletins-de-paie-avant-la-dsn). Les deux tâches se suivent, mais ne répondent pas à la même question : avant le dépôt, on éprouve un candidat ; après le dépôt, on interprète les retours réellement émis.
 
-> **Contenu non attesté.** Ce guide a fait l’objet d’un fact-check sur les sources officielles citées, relues le 15 septembre 2026, mais pas d’une attestation indépendante par un professionnel de la paie ou du social. Vérifiez la documentation du retour, la situation du dossier et les consignes de l’organisme avant toute décision ou transmission.
-
 > **En bref**
 > - Un accusé d’enregistrement, un certificat, un bilan d’anomalies et un CRM ne prouvent pas la même chose.
 > - Un dépôt accepté peut encore être accompagné d’un retour à traiter.
@@ -200,12 +198,6 @@ Une automatisation peut collecter les retours accessibles dans les outils autori
 Elle ne doit pas déduire seule qu’une paie est juste, transformer un libellé inconnu en anomalie bloquante, choisir le canal de correction ou déposer une nouvelle déclaration. Quand la règle manque ou que deux sources se contredisent, le traitement s’arrête et présente les éléments à la personne responsable.
 
 La [méthode Memlia](/#methode) part précisément de la règle du cabinet, l’éprouve sur des cas fictifs et garde la validation humaine. Les [garanties du service](/#garanties) bornent l’automatisation : la mécanique prépare et signale ; l’équipe autorisée décide.
-
-## Comment ce guide a-t-il été vérifié ?
-
-Ce candidat a été construit à partir de cinq sources primaires Net-entreprises consultées le 15 septembre 2026. Chaque claim officiel est relié à une source, un passage probant, une date de consultation et une limite d’application dans le registre éditorial du dépôt. Les pages historiques sur les CRM et les retours ont été recoupées avec le cahier technique 2026.1 et une page de fiabilisation mise à jour en mai 2026.
-
-Les règles d’organisation qui ne viennent pas de ces sources portent explicitement l’étiquette « Méthode Memlia ». Les cas `D-027` à `D-052` sont entièrement fictifs. Aucun dossier client ni résultat réel n’a été utilisé. Enfin, ce contenu n’a pas reçu d’attestation métier indépendante en paie ou en droit social : cette limite reste visible avant le premier intertitre et dans les métadonnées de la page.
 
 ## Les erreurs de lecture à éviter
 

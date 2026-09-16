@@ -85,7 +85,9 @@ export function projectPublicResources(articles: CollectionEntry<'blog'>[]): Pub
       typeLabel: 'Article',
       role: discovery.role,
       roleLabel: RESOURCE_ROLE_LABELS[discovery.role],
-      date: article.data.dateMiseAJour ?? article.data.datePublication,
+      // Même date que la liste du blog : celle de publication. Afficher la mise à jour ici
+      // et la publication là-bas faisait lire deux dates pour un même article.
+      date: article.data.datePublication,
       path: discovery.path,
     };
   });

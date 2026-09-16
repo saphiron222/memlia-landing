@@ -50,8 +50,6 @@ Un tableau de suivi de production sociale utile ne commence pas par des graphiqu
 
 Ce guide s'adresse aux responsables de pôle social, dirigeants de cabinet et gestionnaires de paie qui veulent structurer ou reprendre un classeur existant. Il fournit un dictionnaire de colonnes, des états fermés et un jeu d'essai fictif. Les règles proposées restent à adapter à l'organisation, aux accès et aux obligations du cabinet.
 
-> **Contenu non attesté.** Ce guide a fait l’objet d’un fact-check sur les sources citées, relues le 15 septembre 2026, mais pas d’une attestation indépendante par un professionnel du social ou de la protection des données. Vérifiez le cadre applicable à votre organisation avant de mettre en place un suivi.
-
 > **En bref**
 > - Une ligne représente `dossier × période`, pas un salarié du cabinet.
 > - Une étape est validée par une date ou un état fermé, pas par une couleur libre.

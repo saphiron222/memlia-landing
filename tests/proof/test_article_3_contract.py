@@ -57,8 +57,12 @@ def identity_errors(source: str) -> list[str]:
         errors.append("auteur-incorrect")
     if not re.search(r"^statutEditorial: publie-non-atteste$", fm, re.M):
         errors.append("attestation-fabriquee")
-    if "Contenu non attesté." not in body(source):
-        errors.append("mention-non-attestee-absente")
+    # Decision de Kevin du 16/09/2026 : les encarts de methode (« Contenu non atteste »,
+    # « Comment ce guide a-t-il ete verifie ? ») s adressaient au relecteur, pas au lecteur,
+    # et decredibilisaient le site. Le statut reste dans le frontmatter et le dossier de
+    # preuve ; il ne s affiche plus. Un article qui le reafficherait rougit ici.
+    if "Contenu non attesté" in body(source) or "a-t-il été vérifié" in body(source):
+        errors.append("encart-de-methode-affiche")
     return errors
 
 

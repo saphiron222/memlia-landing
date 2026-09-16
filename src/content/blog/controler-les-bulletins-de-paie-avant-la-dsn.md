@@ -51,8 +51,6 @@ Contrôler les bulletins avant la DSN consiste à fermer trois revues sur le fic
 
 Ce guide couvre la préparation avant dépôt et l'organisation des retours après dépôt. Il s'adresse aux gestionnaires de paie et responsables de pôle social. Il ne remplace ni l'analyse du dossier, ni les consignes de l'éditeur ou de l'organisme, ni une validation juridique. Les règles, responsables et seuils proposés doivent être adaptés par le cabinet.
 
-> **Contenu non attesté.** Ce guide a fait l’objet d’un fact-check sur les sources citées, relues le 15 septembre 2026, mais pas d’une attestation indépendante par un professionnel de la paie ou du social. Vérifiez les règles applicables à chaque dossier avant toute décision ou transmission.
-
 > **En bref**
 > - Fermez d'abord la revue des pièces et variables, puis celle des écarts du bulletin.
 > - Testez ensuite le fichier exact destiné au dépôt avec Dsn-Val.
