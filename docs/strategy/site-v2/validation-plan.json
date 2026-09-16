@@ -1,6 +1,6 @@
 {
   "verdict": "PASS",
-  "date": "2026-09-15T09:46:05.802941+00:00",
+  "date": "2026-09-16T06:22:57.530335+00:00",
   "documents": 12,
   "required_fields_per_page": 21,
   "all_graph": {
@@ -20,7 +20,17 @@
   "responsive_measurements": 12,
   "lighthouse_runs": 4,
   "mutants": [
-    "orphan_graph_rejected"
+    "orphan_graph_rejected",
+    "contrat_ressources_falsifie_rejete",
+    "ancre_historique_retiree_rejetee",
+    "doublon_route_rejete"
   ],
+  "resources_contract": "DONE",
+  "overlap": {
+    "duplicate_slug": 0,
+    "duplicate_term": 0,
+    "overlapping_intent": 1
+  },
+  "historical_anchors": 6,
   "scope": "documentation validation; not implementation acceptance"
 }

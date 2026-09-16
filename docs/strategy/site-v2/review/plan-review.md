@@ -4,7 +4,7 @@ Base comparée : `8c368fb...HEAD` (`bf7796c`, `0067e54`, `b5dcd10`, `6ef1047`). 
 
 ## Verdict exécutif
 
-**REFUSÉ pour libération de COPY.** Le plan respecte globalement le périmètre annoncé : il sépare Blog/Ressources, interdit la création de doublons Glossaire/Guides/Modèles, conserve les routes d’articles et les ancres historiques, et réserve les hotspots de code à la chaîne d’implémentation. Le validateur documentaire passe (`14` pages, `66` arêtes, profondeur `2`, `0` orpheline), mais ce vert ne prouve ni le DOM publié ni le contrat de la release Ressources. Un Critical et deux Important restent ouverts ; la carte de correction `t_74efbe3a` doit rendre un PASS explicite avant `t_42bc3eed`.
+**REFUSÉ le 15 septembre ; les quatre constats sont FERMÉS le 16 septembre — voir la section de clôture en fin de document. La copy est libérée.** Le plan respecte globalement le périmètre annoncé : il sépare Blog/Ressources, interdit la création de doublons Glossaire/Guides/Modèles, conserve les routes d’articles et les ancres historiques, et réserve les hotspots de code à la chaîne d’implémentation. Le validateur documentaire passe (`14` pages, `66` arêtes, profondeur `2`, `0` orpheline), mais ce vert ne prouve ni le DOM publié ni le contrat de la release Ressources. Un Critical et deux Important restent ouverts ; la carte de correction `t_74efbe3a` doit rendre un PASS explicite avant `t_42bc3eed`.
 
 ## Verdict par critère
 
@@ -62,3 +62,37 @@ Base comparée : `8c368fb...HEAD` (`bf7796c`, `0067e54`, `b5dcd10`, `6ef1047`). 
 - Historique v1/v2 relu dans `.agents/product-marketing.md` et l’historique Git. Les erreurs SERP sont exclues par `CURRENT-AUDIT.md:65-68` et `COMPETITOR-ANALYSIS.md:21-30`; les scores Lighthouse sous 95 sont bornés comme baseline dans `CURRENT-AUDIT.md:38-50` et D15.
 
 Aucun doublon de route `/ressources` ou `/glossaire` n’est créé par le diff, mais l’absence de doublon de contenu n’est pas encore prouvée. Le plan reste refusé jusqu’au scellement du contrat Ressources, à l’oracle des ancres et au contrôle reproductible de recouvrement. La correction M1 améliore la traçabilité et ne doit pas rouvrir le positionnement.
+
+---
+
+# Clôture des quatre constats — 16 septembre 2026
+
+Carte `t_74efbe3a`. La release Ressources ayant eu lieu entre-temps, C1 se ferme sur des données réelles et non sur une promesse.
+
+## C1 — le contrat Ressources est désormais matérialisé
+
+`evidence/build-resources-contract.py` extrait les routes, les titres et les résumés **depuis les deux manifestes publiés**, et scelle leur empreinte dans `evidence/resources-release-contract.json`. Le plan ne redéfinit plus rien : les deux fiches `/ressources` et `/glossaire` portent `ownedByResourceChain` et renvoient au manifeste.
+
+Le validateur échoue si une empreinte de manifeste ne correspond plus, si la release n'est pas terminée, ou si une route publiée n'est pas marquée comme détenue par l'autre chaîne. État lu : release terminée, revue métier `AI_REVIEW_PASS` sur les deux surfaces.
+
+## I1 — les six ancres historiques ont leur oracle
+
+`TECHNICAL-SEO-SCHEMA.md` porte une section « Oracle des contrats historiques » qui les nomme. Le validateur vérifie qu'elles y sont citées et, dès que `dist/index.html` existe, que chaque identifiant est présent dans le HTML rendu.
+
+Vérifié en production le 16 septembre : les six identifiants sont présents sur l'accueil.
+
+## I2 — le recouvrement est mesuré, plus affirmé
+
+`evidence/build-resource-overlap.py` confronte les 14 pages du plan aux 41 unités publiées et distingue trois cas : route dupliquée, terme dupliqué, intention qui se recoupe. Les deux premiers font échouer ; le troisième exige une décision écrite.
+
+**Une leçon en passant.** La première version comparait les titres mot à mot, au-delà de quatre lettres. Elle rendait 21 recouvrements, presque tous parce que le mot « memlia » apparaît partout. Un motif nu sur-déclare : le signal se noyait. En exigeant deux mots de fond communs, hors marque et hors vocabulaire structurel, le compte tombe à **un seul cas, réel** — le Glossaire définit « production sociale », un article traite du même sujet. La décision est écrite dans `DECISIONS.md` : enrichir l'existant, ne rien créer.
+
+## M1 — les invariants v1 vers v2 sont tracés
+
+`.agents/product-marketing.md` porte une table de dix lignes, chacune disant si la règle de la v1 est conservée, resserrée ou remplacée, et quelle section de la v2 fait foi. Le validateur vérifie la présence de la table, celle de six invariants nommés, et que **chaque ligne déclare un devenir**.
+
+## Mesures
+
+`python3 docs/strategy/site-v2/validate-plan.py` : PASS. 12 documents, 13 pages dans le graphe courant, 60 arêtes, profondeur maximale 2, aucune orpheline, contrat Ressources terminé, zéro doublon de route ou de terme, un recouvrement d'intention décidé, six ancres historiques.
+
+**Quatre mutants rejetés** : graphe orphelin, empreinte de manifeste falsifiée, ancre historique retirée, doublon de route. Chacun correspond à un constat, et prouve que le contrôle rougirait si le défaut revenait.

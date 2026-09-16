@@ -61,3 +61,21 @@ Une action principale : Identifier une tâche à automatiser. Destination intern
 ## Changelog
 - v2 (2026-09-15) — Contexte resserré et actualisé depuis le socle et le mandat site v2 : alternatives relues, preuves circonscrites, auteur exact, contact interne et distinction Blog/Ressources. Le positionnement service existant est conservé, pas recréé.
 - v1 (2026-09-08) — Contexte initial : Memlia est repositionné comme service d'automatisation IA pour cabinets, sans catalogue public ; Excel devient un environnement possible plutôt que la catégorie du produit.
+
+## Invariants v1 → v2
+
+La version 2 de ce contexte a fortement remplacé la version 1. Cette table dit ce que chaque règle
+de la v1 est devenue, pour qu'une revue de copy puisse la tracer sans relire l'historique Git.
+
+| Invariant de la v1 | Devenu | Section de la v2 qui fait foi |
+|---|---|---|
+| Memlia vend un service, pas un catalogue de sièges | conservé | positionnement |
+| Le prix suit la complexité, jamais le nombre de sièges | conservé | positionnement |
+| L'automatisation prépare, une personne valide ; fail-closed en cas de doute | conservé | méthode |
+| On automatise dans les outils existants ; Excel n'est pas la catégorie | resserré : l'outil existant est le point de départ, pas l'argument | offre |
+| Aucune donnée client réelle, jeux d'essai fictifs | conservé | garanties |
+| Aucune métrique client publiée, aucun gain chiffré non sourcé | conservé | garanties |
+| Anti-surveillance : agrégats, jamais de classement nominatif | conservé | garanties |
+| Interdits de copy : superlatifs, promesses de conformité, comparatifs non testés | conservé | interdits |
+| Les contenus sont signés Kevin Kitanga, sans qualification professionnelle supposée | conservé | auteur |
+| Familles de tâches détaillées, anti-persona, preuves par thème | remplacé : le détail vit désormais dans le plan site v2 et le Hub Ressources publiés | renvoi |

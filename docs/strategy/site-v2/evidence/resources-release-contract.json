@@ -1,0 +1,39 @@
+{
+  "sourceCommit": "103e23d",
+  "releaseTask": "t_4cd25435",
+  "releaseStatus": "DONE",
+  "publishedAt": "2026-09-16",
+  "productionUrls": [
+    "https://memlia.fr/ressources",
+    "https://memlia.fr/glossaire"
+  ],
+  "manifests": {
+    "hub": {
+      "path": "editorial/resources/hub/manifest.json",
+      "sha256": "0890ff8039832d5de118b647c6b41c97fe7dddf0badcc1bc0292e4c829d458c5",
+      "formatAdapter": "H",
+      "editorialStatus": null
+    },
+    "glossaire": {
+      "path": "editorial/resources/glossaire/manifest.json",
+      "sha256": "66967090a01eaa322cd073de0161ddb7dc5e0704459b852e60ced68d4d981946",
+      "formatAdapter": "T",
+      "editorialStatus": null
+    }
+  },
+  "routes": {
+    "/ressources": {
+      "surface": "hub",
+      "title": "Ressources pour les tâches du cabinet",
+      "summary": "Des ressources pour comprendre, vérifier et cadrer les tâches d’un cabinet, sans céder la décision humaine.",
+      "businessReviewStatus": "AI_REVIEW_PASS"
+    },
+    "/glossaire": {
+      "surface": "glossaire",
+      "title": "Glossaire des tâches et contrôles du cabinet",
+      "summary": "La déclaration sociale nominative (DSN) est obligatoire pour les entreprises du secteur privé ainsi que pour la fonction publique ; elle remplace des formalités qui s’appuient sur les données de paie.",
+      "businessReviewStatus": "AI_REVIEW_PASS"
+    }
+  },
+  "rule": "Le plan reprend ces routes et ces titres tels quels. Il ne cree ni doublon ni taxonomie concurrente."
+}

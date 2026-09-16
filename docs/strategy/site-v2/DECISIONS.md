@@ -27,6 +27,17 @@ Ensuite : un article sur la lecture des comptes rendus métier DSN si la recherc
 
 Refusé : catalogue de fonctionnalités, pages par intégration sans recette, tarifs fictifs, comparatifs « meilleur » non testés, FAQ dupliquée en page SEO, pages-villes, nouveaux glossaires doublons, croissance par contenu générique, nouveaux crons.
 
+## Recouvrement assumé avec le corpus publié
+
+Le contrôle de recouvrement rend un seul cas : le Glossaire définit « production sociale » et l'article
+`/blog/suivre-la-production-sociale-dans-excel` traite du même sujet. **Décision : enrichir l'existant, ne rien
+créer.** Les deux surfaces répondent à des questions différentes — le Glossaire dit ce que le terme désigne,
+l'article dit comment tenir le suivi — et elles se renvoient l'une à l'autre. Aucune page du plan ne reprend
+ce sujet.
+
+Les deux routes `/ressources` et `/glossaire` appartiennent à la chaîne Ressources, publiée le 16 septembre.
+Le plan les reprend telles quelles depuis le manifeste et ne redéfinit ni leur titre ni leur résumé.
+
 ## Ce qui ferait revoir le choix
 - GSC memlia.fr montre une intention distincte avec impressions et clics : réexaminer la page cible, sans prendre les null pour zéro.
 - Une page service reproduit l’accueil sans livrable/critère propre : fusionner avant publication.

@@ -435,7 +435,10 @@
     ],
     "indexability": "index, follow uniquement une fois publiée et acceptée",
     "title": "Ressources | Memlia",
-    "description": "Choisir une ressource pour comprendre, vérifier ou préparer. Trouver une aide par tâche puis format. Découvrez la méthode et les limites du service Memlia."
+    "description": "Choisir une ressource pour comprendre, vérifier ou préparer. Trouver une aide par tâche puis format. Découvrez la méthode et les limites du service Memlia.",
+    "ownedByResourceChain": true,
+    "editorialSource": "docs/strategy/site-v2/evidence/resources-release-contract.json",
+    "editorialNote": "Titre, resume et routes a reprendre depuis le manifeste publie, jamais redefinis ici."
   },
   {
     "url": "/glossaire",
@@ -472,7 +475,10 @@
     ],
     "indexability": "index, follow uniquement une fois publiée et acceptée",
     "title": "Glossaire | Memlia",
-    "description": "Des définitions pour mieux vérifier les propositions. Comprendre un terme sans quitter le parcours. Découvrez la méthode et les limites du service Memlia."
+    "description": "Des définitions pour mieux vérifier les propositions. Comprendre un terme sans quitter le parcours. Découvrez la méthode et les limites du service Memlia.",
+    "ownedByResourceChain": true,
+    "editorialSource": "docs/strategy/site-v2/evidence/resources-release-contract.json",
+    "editorialNote": "Titre, resume et routes a reprendre depuis le manifeste publie, jamais redefinis ici."
   },
   {
     "url": "/mentions-legales",

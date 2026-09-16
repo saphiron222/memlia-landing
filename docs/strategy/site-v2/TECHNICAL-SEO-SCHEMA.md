@@ -44,3 +44,17 @@ Un manifeste de routes réelles issu du candidat (incluant les routes Ressources
 Relever commit exact, build/config, ID Cloudflare Pages (projet memlia), URL immutable, hashes et diff robots preview/production. Une query cache-busting n’est pas une preuve suffisante d’origine. Lire l’API de déploiement ou une URL immutable liée au manifeste, puis comparer assets et contenu. Conserver état sain antérieur et commande rollback testable, par exemple revert du commit de release sur main suivi du push autorisé ; résoudre les SHAs réellement, pas un placeholder dans la notification finale.
 
 Sources primaires relues le 15/09/2026 : https://developers.google.com/search/docs/appearance/ai-features ; https://developers.google.com/search/docs/fundamentals/creating-helpful-content. Les fonctionnalités spécifiques Google doivent être revérifiées dans leur documentation au moment où elles sont invoquées ; ce plan n’utilise pas les statistiques de citations des packs comme preuves.
+
+## Oracle des contrats historiques
+
+Six ancres de l'accueil sont citées par des liens existants, internes comme externes. **Elles ne sont pas
+négociables** : les supprimer casserait des liens sans qu'aucun test ne rougisse, puisqu'une ancre absente
+rend la page, pas une erreur.
+
+`/#usages` · `/#methode` · `/#integration` · `/#garanties` · `/#questions` · `/#preuves`
+
+Le contrôle est automatique : `validate-plan.py` vérifie que chacune est citée dans ce document, et, dès que
+`dist/index.html` existe, que l'identifiant correspondant est présent dans le HTML rendu. Un mutant qui
+retire une ancre doit faire rougir le contrôle.
+
+Vérifié en production le 16 septembre 2026 : les six identifiants sont présents sur `https://memlia.fr/`.

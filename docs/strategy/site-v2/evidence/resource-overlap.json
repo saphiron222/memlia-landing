@@ -1,0 +1,25 @@
+{
+  "genereLe": "2026-09-16",
+  "corpusPublie": {
+    "routes": [
+      "glossaire",
+      "ressources"
+    ],
+    "termes": 41
+  },
+  "pagesDuPlan": 14,
+  "duplicate_slug": [],
+  "duplicate_term": [],
+  "overlapping_intent": [
+    {
+      "url": "/blog/suivre-la-production-sociale-dans-excel",
+      "terme_publie": "Dans ce glossaire, Memlia appelle « production sociale » le cycle de travail ret",
+      "mots": [
+        "production",
+        "sociale"
+      ]
+    }
+  ],
+  "regle": "duplicate_slug et duplicate_term font echouer le controle. overlapping_intent exige une decision ecrite : enrichir l existant, ou creer avec une preuve distincte.",
+  "contratSha256": "8fd905ee585c481aa8c41881b66e6fe29a0309d362bc2bda6f05624a89836a51"
+}
