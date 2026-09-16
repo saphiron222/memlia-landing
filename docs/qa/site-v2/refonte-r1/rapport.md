@@ -99,16 +99,15 @@ Pour que la consigne ne dépende plus de la mémoire de personne, `test_build.py
 
 **Indexabilité, mesurée page par page en production :** les douze routes indexables portent `index, follow, max-image-preview:large`, une canonical exacte, une entrée au sitemap et des liens entrants internes (15 à 73 selon la page) ; les deux pages légales portent `noindex, follow` et restent hors sitemap, comme voulu. Rien ne bloque côté site.
 
-Côté Google, l'inspection d'URL du 16/09 à 15:35 :
+Côté Google, l'inspection d'URL a été relue trois fois dans l'heure. Aucune API publique ne force l'indexation d'une page ordinaire — la demande se fait à la main dans Search Console, et Kevin l'a faite pour les six pages qui n'étaient pas indexées (le lien profond que j'avais donné d'abord rendait 404 : il faut passer par la barre d'inspection de la propriété).
 
-| État | Routes |
-|---|---|
-| Envoyée et indexée | `/`, `/a-propos` (exploré à 15:25, après la re-soumission), `/blog`, les 3 articles |
-| Détectée, non encore indexée | `/methode`, `/ressources`, `/glossaire` |
-| Pas encore connue | `/automatisation-cabinet-comptable`, `/garanties`, `/contact` |
-| Exclue par `noindex` (voulu) | `/mentions-legales`, `/politique-de-confidentialite` |
+| Heure | Indexées | Explorées, non indexées | Pas encore connues |
+|---|---|---|---|
+| 15:35, avant les demandes | `/`, `/a-propos`, `/blog`, 3 articles (6) | — | `/methode`, `/ressources`, `/glossaire`, `/automatisation-cabinet-comptable`, `/garanties`, `/contact` |
+| 16:00, après 3 demandes | + `/automatisation-cabinet-comptable` (7) | `/garanties`, `/contact` (explorées à 15:56) | `/methode`, `/ressources`, `/glossaire` |
+| **16:10, après 6 demandes** | **+ `/garanties`, `/contact` → 9 sur 12** | `/methode` (exploré à 16:07) | `/ressources`, `/glossaire` |
 
-Ce qui reste est le délai de Google, pas un défaut : il explore déjà les nouvelles pages. Aucune API publique ne force l'indexation d'une page ordinaire ; Kevin peut, s'il veut accélérer, demander l'indexation des trois dernières depuis l'inspection d'URL de Search Console (une dizaine de demandes par jour au maximum).
+Les deux pages légales restent exclues par `noindex`, comme voulu. Pour `/ressources` et `/glossaire`, l'état rendu par l'API n'a pas encore suivi la demande : c'est le délai de Google, sur des pages dont tous les signaux techniques sont bons (`index, follow`, canonical exacte, sitemap, liens entrants).
 
 ## Rollback
 
