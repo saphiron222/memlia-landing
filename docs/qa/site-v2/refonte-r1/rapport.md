@@ -67,6 +67,26 @@ Le site v2 avait déplié les cinq entrées dans le bandeau, en deux colonnes : 
 
 Preuves : `mobile-menu.spec.ts` restauré et adapté aux cinq pages (15 combinaisons de viewport, dont la tablette, plus clavier, verrou, viewport changeant, marquage de section), bandeau couvert à part, six specs réalignées — **132 tests navigateur**, 64 Python, 154 Node, oracle 12 routes, copy 27/27, Lighthouse inchangé (100 partout, 99 sur deux gabarits mobiles), 14 captures sans débordement. Surfaces Ressources rescellées et revue r4 réaffirmée sur l'écart déclaré. Publié par la construction git `968595fa` ; contrôle de production PASS, panneau vérifié ouvert sur memlia.fr à 375 px.
 
+## Suites du 16/09 au soir : le bandeau, puis le sitemap
+
+**Le bandeau.** Kevin : « pourquoi t'as mis Ressources à l'extérieur du menu ? Il faut le mettre dans le menu dépliant ! Et pas la peine de mettre "Menu", juste l'icône avec les 3 barres suffit. » Fait : le bandeau mobile ne porte plus que le logo et un bouton de 48 × 48 px sans texte, dont le nom accessible est porté par `aria-label` (mesuré : Lighthouse accessibilité 100). Toutes les destinations, Hub compris, vivent dans le panneau.
+
+**Le sitemap — un défaut réel, trouvé en répondant à sa question.** Search Console annonçait quatre pages découvertes. L'API le confirme : Google avait lu `sitemap-0.xml` le 16/09 à **02:28**, avant la mise en ligne des cinq pages, et n'avait pas de raison de le relire — le sitemap datait toutes les pages du **09/09**, une constante écrite à la main que personne n'avait bougée. L'inspection d'URL le montre aussi : `/methode` et `/contact` étaient « Google ne reconnaît pas cette URL », tandis que `/` et l'article 3 étaient indexés.
+
+Deux mécanismes ont été essayés avant le bon :
+
+| Mécanisme | Ce qu'il fait | Pourquoi il ne tient pas |
+|---|---|---|
+| Constante `SITE.derniereMiseAJour` | une date dans les sources | ne bouge que si quelqu'un y pense ; personne n'y a pensé |
+| Date du dernier commit (`git log`) | automatique | l'image de construction de Cloudflare clone en **profondeur 1** : le commit de tête y paraît tout avoir écrit. Le sitemap servi (14:33:48) divergeait du sitemap construit ici (14:23:39) — mesuré, et la chaîne de preuve compare ces octets |
+| **Registre versionné** (retenu) | `src/data/pages-lastmod.json` : par page, l'empreinte de son HTML rendu et le jour où elle a changé | lu à la construction, donc identique partout ; mis à jour par `npm run lastmod:sync`, jamais par le build ; `npm run test:lastmod` entre dans la chaîne et refuse un registre périmé |
+
+Mesures : deux constructions du même commit rendent le même octet de sitemap (`2d9e80da…`), et l'octet servi en production est **le même**. Les articles gardent leur date de frontmatter (15/09), les neuf autres pages portent le 16/09. `test_build.py` vérifie les deux sens : la date du sitemap vient du registre, et l'empreinte du registre est celle du HTML construit.
+
+Ce qui reste hors de ma main : **Google doit relire le sitemap**. Il le fera de lui-même, ou tout de suite si Kevin clique « Envoyer à nouveau » sur `sitemap.xml` dans Search Console. L'indexation des cinq pages prendra ensuite quelques jours.
+
+Preuves de cette passe : 132 tests navigateur, 64 Python, 154 Node, oracle 12 routes, copy 27/27, Lighthouse 100 partout (99 sur deux gabarits mobiles), 14 captures, équivalence 22 routes contre le déploiement immuable `d442193b`, contrôle de production PASS.
+
 ## Rollback
 
 Production précédente : déploiement `88af1244` (commit `55a7c05`, build `2cf4931`). Le rejouer depuis le tableau de bord Cloudflare, ou `git checkout 2cf4931` dans un worktree propre, `npm ci && npm run build:site`, `npx wrangler pages deploy dist --project-name memlia --branch main`. La base D1 et le Worker de purge peuvent rester : sans formulaire, rien ne les appelle.
