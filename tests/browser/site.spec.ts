@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { CTA } from '../../src/data/site.mjs';
 
 for (const width of [320, 375, 768, 1024, 1366, 1440, 1920]) {
   test(`accueil sans débordement à ${width}px`, async ({ page }) => {
@@ -15,17 +16,10 @@ for (const width of [320, 375, 768, 1024, 1366, 1440, 1920]) {
   });
 }
 
-test('menu mobile au clavier et ancre FAQ', async ({ page }) => {
+test('ancre FAQ : le fragment ouvre le détail, le clavier le referme', async ({ page }) => {
+  // La navigation mobile est servie dans le flux depuis le site v2 : elle est couverte
+  // par navigation-mobile.spec.ts, plus par un panneau à ouvrir ici.
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.goto('/');
-  const burger = page.locator('[data-burger]');
-  await burger.focus();
-  await page.keyboard.press('Enter');
-  await expect(burger).toHaveAttribute('aria-expanded', 'true');
-  await expect(page.locator('#menu-mobile')).toBeVisible();
-  await page.keyboard.press('Escape');
-  await expect(burger).toBeFocused();
-  await expect(page.locator('#menu-mobile')).toBeHidden();
   await page.goto('/#faq-recette');
   await expect(page.locator('#faq-recette')).toHaveAttribute('open', '');
   await page.locator('#faq-recette summary').press('Enter');
@@ -67,7 +61,7 @@ test('contenu et navigation sans JavaScript', async ({ browser }) => {
   await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.faq-r').first()).toBeVisible();
-  await expect(page.locator('.nav-sans-js a[href="/methode"]')).toBeVisible();
+  await expect(page.locator('.nav-entree[href="/methode"]')).toBeVisible();
   await context.close();
 });
 
@@ -92,7 +86,8 @@ test('menu desktop : cinq pages atteignables au clavier et CTA unique', async ({
     await expect(page.locator('h1')).toBeVisible();
   }
   await page.goto('/');
-  await expect(page.locator('.nav-principal')).toHaveText('Identifier une tâche à automatiser');
+  await expect(page.locator('.nav-principal')).toHaveText(CTA.nav.libelle);
+  await expect(page.locator('.nav-principal')).toHaveAttribute('href', '/contact');
 });
 
 test('accueil : les six ancres historiques restent des cibles servies', async ({ page }) => {
@@ -119,15 +114,12 @@ test('méthode mobile : chaque étape garde son image et son texte dans le flux'
   }
 });
 
-test('icônes burger exclusives et fragment malformé toléré', async ({ page }) => {
+test('fragment malformé toléré, navigation intacte et sans erreur', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/#%');
-  await expect(page.locator('.burger-ouvrir')).toBeVisible();
-  await expect(page.locator('.burger-fermer')).toBeHidden();
-  await page.locator('[data-burger]').click();
-  await expect(page.locator('.burger-ouvrir')).toBeHidden();
-  await expect(page.locator('.burger-fermer')).toBeVisible();
+  await expect(page.locator('.nav-entree')).toHaveCount(5);
+  await expect(page.locator('.nav-principal')).toBeVisible();
   expect(errors).toEqual([]);
 });

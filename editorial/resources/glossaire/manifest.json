@@ -2457,7 +2457,7 @@
           "editorialReviewer",
           "sourceClassifier"
         ],
-        "reviewedCandidateHash": "914d51f521cdfe9b1aaecee9ab5c8265e364e91a6c44a8b00c4b0cee14731e0c",
+        "reviewedCandidateHash": "ff3a3ae7593c4f0ce50e64e811f607878fd93e3f50a2899016c2c98b50e62f94",
         "status": "AI_REVIEW_PASS",
         "claimSourceVerdicts": [
           {
@@ -2668,7 +2668,7 @@
           }
         ],
         "evidenceRef": "docs/qa/hub-ressources/metier-review-r4/preuve-glossaire.json",
-        "evidenceSha256": "425f748f8858ee949338c56c19b40b725354736601000327bd76806c72af973c"
+        "evidenceSha256": "bba9c99ee41b0166f5d72b260df73628d6ee1aee49aa507ddc7d8d18a1adc2b3"
       }
     }
   },
@@ -2923,7 +2923,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T06:55:48.789Z",
+        "checkedAt": "2026-09-16T07:08:01.995Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -2944,7 +2944,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T06:55:48.789Z",
+        "checkedAt": "2026-09-16T07:08:01.995Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -3028,7 +3028,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T06:55:48.789Z",
+        "checkedAt": "2026-09-16T07:08:01.995Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -3091,7 +3091,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T06:55:48.789Z",
+        "checkedAt": "2026-09-16T07:08:01.995Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -3513,7 +3513,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T06:55:48.789Z",
+        "checkedAt": "2026-09-16T07:08:01.995Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -3597,7 +3597,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T06:55:48.789Z",
+        "checkedAt": "2026-09-16T07:08:01.995Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -3618,7 +3618,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T06:55:48.789Z",
+        "checkedAt": "2026-09-16T07:08:01.995Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -4431,7 +4431,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T06:55:48.789Z",
+      "checkedAt": "2026-09-16T07:08:01.995Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -4456,7 +4456,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T06:55:48.789Z",
+      "checkedAt": "2026-09-16T07:08:01.995Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -4479,7 +4479,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T06:55:48.789Z",
+      "checkedAt": "2026-09-16T07:08:01.995Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -4504,7 +4504,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T06:55:48.789Z",
+      "checkedAt": "2026-09-16T07:08:01.995Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -4527,7 +4527,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T06:55:48.789Z",
+      "checkedAt": "2026-09-16T07:08:01.995Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -4771,14 +4771,14 @@
       "entries": [
         {
           "path": "dist/glossaire.html",
-          "bytes": 150874,
-          "sha256": "a74faf46f0529639431a7fdfbb609bf5abfb8891e4beff82aafd7a30d266f98f"
+          "bytes": 142251,
+          "sha256": "6d87a4f1808483c0a2fc095125c554b68c14fe2470a1f49ad1bfc72f79b603c1"
         }
       ],
-      "digest": "38e448d3a2c7c07b748bacb0ff64d68a0733b6d330a56688c5b5cf96ce28f612"
+      "digest": "f7f0325aced0fa7fcd2abc43059a777a61efa8500c97d54626a68e9a1c0b82d8"
     },
     "candidateHash": {
-      "value": "98797951a4022a915e92b9aba7c7d2017bce3457e6cc6522bb3c8f20ee8cb60a",
+      "value": "d1a508159f6693cf21a971e7c9a40f76356d489654d284c3dbc6fcba2614c685",
       "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
     },
     "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
@@ -4789,18 +4789,18 @@
       "npx astro build",
       "node scripts/strip-briefs.mjs"
     ],
-    "startedAt": "2026-09-16T06:55:46.563Z",
-    "endedAt": "2026-09-16T06:55:50.407Z",
+    "startedAt": "2026-09-16T07:07:59.779Z",
+    "endedAt": "2026-09-16T07:08:03.630Z",
     "result": "PASS",
     "sourceBundleDigest": "6d2c2db8de4271b374d4ab462a54e88dd4b7955d1607912e49b89203b62e7019",
     "assetBundleDigest": "6cdf4107b70ae3dd623c7a66a7cfbe02272ec46c6c63e179fe8f03407adb5f14",
     "configBundleDigest": "f1c5ab55eeccdf89b116e88aeb8181e4ea3ad6c6fa870997f57dde086d27cccc",
-    "outputDigest": "38e448d3a2c7c07b748bacb0ff64d68a0733b6d330a56688c5b5cf96ce28f612",
+    "outputDigest": "f7f0325aced0fa7fcd2abc43059a777a61efa8500c97d54626a68e9a1c0b82d8",
     "reportRefs": [
       "docs/qa/hub-ressources/freshness-r4-exec.md"
     ],
     "receiptRef": "docs/qa/hub-ressources/metier-fix-c-build-receipt.json",
-    "receiptSha256": "260264f622f51cc0e24ad80a96ca3ae64a166c976648ff41d6b0ba17df7fdb70"
+    "receiptSha256": "53a5616849348f11e1a613c3b07fdef130a5393e07c8e45369b3f2d41df9e1e2"
   },
   "preview": {
     "branch": null,
@@ -4818,8 +4818,8 @@
     "reportRef": null
   },
   "audit": {
-    "candidateHash": "98797951a4022a915e92b9aba7c7d2017bce3457e6cc6522bb3c8f20ee8cb60a",
-    "buildOutputDigest": "38e448d3a2c7c07b748bacb0ff64d68a0733b6d330a56688c5b5cf96ce28f612",
+    "candidateHash": "d1a508159f6693cf21a971e7c9a40f76356d489654d284c3dbc6fcba2614c685",
+    "buildOutputDigest": "f7f0325aced0fa7fcd2abc43059a777a61efa8500c97d54626a68e9a1c0b82d8",
     "gateReportRefs": [
       "fixture://audit/gates"
     ],
@@ -4831,7 +4831,7 @@
     "p0": [],
     "p1": [],
     "result": "PASS",
-    "auditHash": "c187f38e91b8a50ed37b2acaa9049bab2fc9d7cf6382b85930f4e0da1bb96444"
+    "auditHash": "81be5e7dace59347400f4cd745c700f2396773b8029c24267f15db46249faa49"
   },
   "approval": {
     "state": "pending",

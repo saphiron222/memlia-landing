@@ -1,0 +1,206 @@
+{
+  "base": "https://bceec1bb.memlia.pages.dev",
+  "source": ".qa/preview-dist",
+  "reports": [
+    {
+      "route": "/a-propos",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "129388cc99d4193fa85d965e72db396daa87b9ead0fe4207b68903be00eb207c",
+      "remoteHash": "f8244562e63d1d2ad68d0086ad39c8c760fa86a7345aa12b8c70622a1786cd9d",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/automatisation-cabinet-comptable",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "913a5e55a4e040d67c0d22a17e0bed5b57a28c3e6a4ebbcfb6192f5c096a1e01",
+      "remoteHash": "8505f8763bbc08c9d585047912fc32473eed2c4a6f37cd0f67444e18526b25fc",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/blog",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "e7cceb479d6decfdb19c6fc67c381a97fc2d0291e88da5f800ae2e03cb24fa0a",
+      "remoteHash": "6ecf9652f6f5eaebe8b643c90d50bb30b522b0f90872a183cf98f1413ec7153a",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "b15f110b4b7b3e1b8c785bcc5d9d0c69187d16202036781547b75604a2fd1000",
+      "remoteHash": "2066431cdf2e7587266d5ef2b6b7dcc1e96f2b3fb567b740da90f7130df4ba2a",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "7f7cd2986c77a3fc3d92f344c021fe62a53281e15b8b9c2898f3925ceeca8bc1",
+      "remoteHash": "7066a7d359a47bbfb1128ea2814d21ae63c0342a7a86d10ce5c0ea751a69873b",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/blog/suivre-la-production-sociale-dans-excel",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "b75411ebc6a1eff2c89cb67b9beeb420bb81910c9b26b271b83a04c4fa5bc47f",
+      "remoteHash": "87cb309465996b5a22f54df393a003e86cf1478901c34d646e7be24cb2c3f6da",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "f9d19f06867197494ca8227cc99a5841f5ab9047130c462538fcf1e9ba756276",
+      "remoteHash": "e89a64bb90fd276835b48dd86ff5dcd87afa459f5f037a1d3e8b3f927b2c235a",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/garanties",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "8e197f3c0012166275da3cfd02cb0452ecb8c956464975a7494ee270c7920bb5",
+      "remoteHash": "1cfa41536591d0ab6cee828076ac674109abca0e30cea21dd5d5508c80fa4d5a",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/glossaire",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "446fdf6090f41bfcf120220bdb6b3742b61551dfdf21de7f30ea3c2836faa63c",
+      "remoteHash": "cc55703f0c3bde8da5f45f78b87b18d7698618be6859381418b1411106519481",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "3576c8a3e021c830f1766dfd1f2cee830c44ad943a8cde1dbba79fc00c7010ed",
+      "remoteHash": "82d5e8fb325b2f15d7d064b203e3b7cd642ec343071f335a77c11678b09b4aa8",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/mentions-legales",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "0bf9c5370b3521f7238e8f418253a9ae4559f513dd3e0c29c870a225ec27999c",
+      "remoteHash": "1e59d9f02ea1e0c1da4574afc18fcf6e23a70af26c6a9afec3c26256a694953e",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/methode",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "6c57edd5877b808ec7a57bd1809c90923c6e72bba221d6c66608eb0b58edac77",
+      "remoteHash": "1d4c4139e3d63e3f1777eebb83262caa198f74660cda33a5ac5d13463bc2ffc6",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/politique-de-confidentialite",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "972b5ff691e25892a0873e13ea9893462cc9e5e7d065a3462468259b07ab374d",
+      "remoteHash": "74f77885174f4414df093a7e4b5ab59c47b9a05b1799085d98bcd4b6e98a9ab7",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/ressources",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "5cc062a639164f662caa8f9c69c0e52f32cf1d679528a51592eb07b571e8288e",
+      "remoteHash": "d67a07a12708263f4d7db5edecbc3d819055dab9ecd5108847d74c7839c8c435",
+      "injectedBlocks": 1,
+      "equivalent": true
+    },
+    {
+      "route": "/m3-page-inexistante",
+      "status": 404,
+      "expectedStatus": 404,
+      "robots": "noindex, nofollow",
+      "localHash": "0a6a00369bd8eb301efaf00c921b0ad3922a42b2a4ddfc5a0d686a94348a10f3",
+      "remoteHash": "0a6a00369bd8eb301efaf00c921b0ad3922a42b2a4ddfc5a0d686a94348a10f3",
+      "injectedBlocks": 0,
+      "equivalent": true
+    },
+    {
+      "route": "/blog/rss.xml",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "3da5e137ac38a1f2e5b0d6f0f189b291510c21481051554f7d34182650048b15",
+      "remoteHash": "3da5e137ac38a1f2e5b0d6f0f189b291510c21481051554f7d34182650048b15",
+      "injectedBlocks": 0,
+      "equivalent": true
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "0d089a9bfa31d3b01eea37045e2f95cbc5b0797550f27726cb26a5a04f7a4b98",
+      "remoteHash": "0d089a9bfa31d3b01eea37045e2f95cbc5b0797550f27726cb26a5a04f7a4b98",
+      "injectedBlocks": 0,
+      "equivalent": true
+    },
+    {
+      "route": "/sitemap-0.xml",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "b9e346270f7edb6be5a8ce3462b265a92be6c8c3d90ec2a2f6444f11737e7bd1",
+      "remoteHash": "b9e346270f7edb6be5a8ce3462b265a92be6c8c3d90ec2a2f6444f11737e7bd1",
+      "injectedBlocks": 0,
+      "equivalent": true
+    },
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "9270643bee9d1f058999f132a6eea0ac4d10ca11f5c13ae6705a92292df801e4",
+      "remoteHash": "9270643bee9d1f058999f132a6eea0ac4d10ca11f5c13ae6705a92292df801e4",
+      "injectedBlocks": 0,
+      "equivalent": true
+    },
+    {
+      "route": "/llms.txt",
+      "status": 200,
+      "expectedStatus": 200,
+      "robots": "noindex, nofollow",
+      "localHash": "26571708d813c15861ba4d2b4c8df214a840b22cbec3f31cfbf1a675f6579265",
+      "remoteHash": "26571708d813c15861ba4d2b4c8df214a840b22cbec3f31cfbf1a675f6579265",
+      "injectedBlocks": 0,
+      "equivalent": true
+    }
+  ]
+}

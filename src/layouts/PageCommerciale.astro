@@ -22,6 +22,11 @@ interface Props {
   noeuds?: unknown[];
 }
 const { page, noeuds = [] } = Astro.props;
+/**
+ * L'appel à l'action mène partout à /contact. Sur /contact lui-même il pointerait la
+ * page courante : c'est là que la réservation directe prend le relais.
+ */
+const actionPrincipale = page.chemin === CTA.principal.href ? CTA.rendezVous : CTA.principal;
 const url = `${SITE.url}${page.chemin}`;
 const graph = {
   '@context': 'https://schema.org',
@@ -51,7 +56,7 @@ const graph = {
       <h1 id="page-titre">{page.h1}</h1>
       <p class="texte-2 lecture page-chapeau">{page.chapeau}</p>
       <p class="page-actions">
-        <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
+        <Button href={actionPrincipale.href} variante="principal" picto="fleche">{actionPrincipale.libelle}</Button>
         <Button href={page.secondaire.href} variante="lien">{page.secondaire.libelle}</Button>
       </p>
     </section>

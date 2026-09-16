@@ -13,9 +13,17 @@ export const SITE = {
   couleurTheme: '#fffefb',
 };
 
-/** Un seul CTA principal sur tout le site ; un secondaire « humain ». */
+/**
+ * Un seul appel à l'action sur tout le site. Depuis le site v2 il mène à /contact, qui
+ * explique quoi préparer avant l'échange ; c'est là, et là seulement, que se trouvent
+ * les liens de réservation. Le bouton de navigation porte un libellé court, même
+ * action et même destination.
+ */
 export const CTA = {
-  principal: { libelle: 'Identifier une tâche à automatiser', href: 'https://cal.com/kevin-svg/decouvrir-memlia' },
+  principal: { libelle: 'Identifier une tâche à automatiser', href: '/contact' },
+  nav: { libelle: 'Parlons de votre tâche', href: '/contact' },
+  /** Réservation directe : réservée à /contact, jamais un raccourci depuis une autre page. */
+  rendezVous: { libelle: 'Réserver un échange', href: 'https://cal.com/kevin-svg/decouvrir-memlia' },
   humain: { libelle: 'Parler à un humain', href: 'https://cal.com/kevin-svg/echanger-avec-l-equipe-memlia' },
 };
 

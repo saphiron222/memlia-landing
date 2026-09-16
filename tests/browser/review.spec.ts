@@ -12,17 +12,17 @@ for (const [width, height] of [[320,740],[375,812],[1024,768],[1366,768]]) {
   });
 }
 
-test('menu mobile contient le focus puis libère le fond par Échap', async ({ page }) => {
+test('navigation mobile : aucun piège de focus ni fond verrouillé', async ({ page }) => {
+  // Le site v2 n'ouvre plus de panneau : il n'y a ni focus à contenir, ni fond à rendre
+  // inerte, ni défilement à verrouiller. Ce test garde l'absence de ces trois états.
   await page.setViewportSize({width:375,height:812});
   await page.goto('/');
-  await page.locator('[data-burger]').click();
-  await page.locator('#menu-mobile a').last().focus();
+  await page.locator('.nav-principal').focus();
   await page.keyboard.press('Tab');
-  await expect(page.locator('[data-burger]')).toBeFocused();
-  await expect(page.locator('#main')).toHaveAttribute('inert', '');
-  await page.keyboard.press('Escape');
-  await expect(page.locator('#menu-mobile')).toBeHidden();
+  await expect(page.locator('.nav-principal')).not.toBeFocused();
+  await expect(page.locator('#main')).not.toHaveAttribute('inert');
   await expect(page.locator('body')).not.toHaveCSS('overflow','hidden');
+  await expect(page.locator('body')).not.toHaveCSS('position','fixed');
 });
 
 test('garanties cohérentes avec les limites et les données', async ({ page }) => {

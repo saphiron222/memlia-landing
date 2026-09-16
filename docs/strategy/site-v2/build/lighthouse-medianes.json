@@ -1,0 +1,507 @@
+{
+  "schemaVersion": 1,
+  "origine": "http://127.0.0.1:4458",
+  "seuil": 95,
+  "regle": "Médiane de trois mesures par gabarit et par profil ; les trois passes sont conservées pour montrer la dispersion.",
+  "axes": [
+    "Performance",
+    "Accessibility",
+    "Best Practices",
+    "SEO"
+  ],
+  "mesures": [
+    {
+      "gabarit": "accueil",
+      "route": "/",
+      "profil": "mobile",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "accueil",
+      "route": "/",
+      "profil": "desktop",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "page commerciale",
+      "route": "/methode",
+      "profil": "mobile",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "page commerciale",
+      "route": "/methode",
+      "profil": "desktop",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "liste blog",
+      "route": "/blog",
+      "profil": "mobile",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "liste blog",
+      "route": "/blog",
+      "profil": "desktop",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "article",
+      "route": "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "profil": "mobile",
+      "axes": {
+        "Performance": {
+          "passes": [
+            99,
+            99,
+            99
+          ],
+          "mediane": 99
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "article",
+      "route": "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "profil": "desktop",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "hub ressources",
+      "route": "/ressources",
+      "profil": "mobile",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "hub ressources",
+      "route": "/ressources",
+      "profil": "desktop",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "glossaire",
+      "route": "/glossaire",
+      "profil": "mobile",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    },
+    {
+      "gabarit": "glossaire",
+      "route": "/glossaire",
+      "profil": "desktop",
+      "axes": {
+        "Performance": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Accessibility": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "Best Practices": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        },
+        "SEO": {
+          "passes": [
+            100,
+            100,
+            100
+          ],
+          "mediane": 100
+        }
+      },
+      "sousSeuil": [],
+      "resultat": "PASS"
+    }
+  ],
+  "resultat": "PASS"
+}

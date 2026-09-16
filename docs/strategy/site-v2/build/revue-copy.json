@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "regle": "Le registre et les pages se contrôlent dans les deux sens ; la présence se mesure sur le vocabulaire porteur d'une phrase, pas sur l'identité littérale.",
+  "couvertureMinimale": 0.8,
+  "claims": 26,
+  "pages": [
+    "/a-propos",
+    "/automatisation-cabinet-comptable",
+    "/blog",
+    "/contact",
+    "/garanties",
+    "/methode"
+  ],
+  "affirmationsPortees": 26,
+  "affirmationsNonPortees": [],
+  "affirmationsSansSource": [],
+  "promessesNonEnregistrees": [],
+  "mutants": [
+    {
+      "mutant": "affirmation absente ajoutée au registre",
+      "attrape": true
+    },
+    {
+      "mutant": "promesse chiffrée non enregistrée injectée dans une page",
+      "attrape": true
+    },
+    {
+      "mutant": "source retirée d'une affirmation",
+      "attrape": true
+    }
+  ],
+  "resultat": "PASS"
+}

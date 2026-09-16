@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "regle": "Un oracle vert qu'aucune mutation ne fait rougir ne prouve rien : les six mutants doivent être attrapés.",
+  "routes": {
+    "total": 15,
+    "indexables": [
+      "/",
+      "/a-propos",
+      "/automatisation-cabinet-comptable",
+      "/blog",
+      "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/contact",
+      "/garanties",
+      "/glossaire",
+      "/methode",
+      "/ressources"
+    ],
+    "sitemap": 12
+  },
+  "manifesteRoutes": [
+    {
+      "route": "/",
+      "fichier": "dist/index.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/",
+      "titre": "Automatisation IA pour cabinets comptables | Memlia",
+      "description": "Memlia transforme les tâches répétitives des cabinets comptables en automatisations adaptées à leurs outils, avec règles cadrées et validation humaine.",
+      "schemas": [
+        "FAQPage",
+        "Organization",
+        "Service",
+        "WebSite"
+      ],
+      "liensEntrants": 14,
+      "profondeur": 0
+    },
+    {
+      "route": "/404",
+      "fichier": "dist/404.html",
+      "indexable": false,
+      "canonical": "https://memlia.fr/404",
+      "titre": "Page introuvable — Memlia",
+      "description": "Cette page n’existe pas. Retrouvez le service d’automatisation IA et la méthode Memlia depuis l’accueil.",
+      "schemas": [],
+      "liensEntrants": 0,
+      "profondeur": null
+    },
+    {
+      "route": "/a-propos",
+      "fichier": "dist/a-propos.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/a-propos",
+      "titre": "Kevin Kitanga, fondateur de Memlia | À propos",
+      "description": "Qui construit et livre les automatisations Memlia, avec quel périmètre et quelles limites assumées. Une responsabilité identifiée, pas une qualification supposée.",
+      "schemas": [
+        "AboutPage",
+        "BreadcrumbList",
+        "Organization",
+        "Person",
+        "WebSite"
+      ],
+      "liensEntrants": 14,
+      "profondeur": 1
+    },
+    {
+      "route": "/automatisation-cabinet-comptable",
+      "fichier": "dist/automatisation-cabinet-comptable.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/automatisation-cabinet-comptable",
+      "titre": "Automatisation sur mesure pour cabinet comptable | Memlia",
+      "description": "Nous cadrons une tâche répétitive de votre cabinet, écrivons sa règle et livrons une automatisation dont chaque résultat reste à vérifier. Devis à la complexité, jamais au siège.",
+      "schemas": [
+        "BreadcrumbList",
+        "Organization",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "liensEntrants": 14,
+      "profondeur": 1
+    },
+    {
+      "route": "/blog",
+      "fichier": "dist/blog.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/blog",
+      "titre": "Blog Memlia : vérifier et automatiser le travail du cabinet",
+      "description": "Paie, DSN et suivi des dossiers : des méthodes pour préparer le travail répétitif dans les outils du cabinet, avec vérification et décision humaines.",
+      "schemas": [
+        "Blog",
+        "BreadcrumbList",
+        "Organization",
+        "Person",
+        "WebSite"
+      ],
+      "liensEntrants": 14,
+      "profondeur": 1
+    },
+    {
+      "route": "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "fichier": "dist/blog/comprendre-les-comptes-rendus-metier-dsn.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "titre": "Comptes rendus métier DSN : méthode de lecture | Memlia",
+      "description": "Méthode pour distinguer les retours DSN, lire un CRM, qualifier une anomalie et tracer la correction sans confondre dépôt accepté et paie juste.",
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Organization",
+        "Person",
+        "WebSite"
+      ],
+      "liensEntrants": 4,
+      "profondeur": 2
+    },
+    {
+      "route": "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "fichier": "dist/blog/controler-les-bulletins-de-paie-avant-la-dsn.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "titre": "Contrôler les bulletins avant la DSN : méthode | Memlia",
+      "description": "Méthode en trois revues pour contrôler variables, bulletins et fichier DSN, qualifier les écarts et conserver les preuves avant le dépôt.",
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Organization",
+        "Person",
+        "WebSite"
+      ],
+      "liensEntrants": 6,
+      "profondeur": 2
+    },
+    {
+      "route": "/blog/suivre-la-production-sociale-dans-excel",
+      "fichier": "dist/blog/suivre-la-production-sociale-dans-excel.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+      "titre": "Tableau de suivi de production sociale Excel | Memlia",
+      "description": "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel.",
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Organization",
+        "Person",
+        "WebSite"
+      ],
+      "liensEntrants": 6,
+      "profondeur": 2
+    },
+    {
+      "route": "/contact",
+      "fichier": "dist/contact.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/contact",
+      "titre": "Décrire une tâche à automatiser | Contact Memlia",
+      "description": "Un échange pour décrire le geste qui revient, les outils utilisés et le résultat attendu. Sans fichier client, sans donnée de paie, sans engagement.",
+      "schemas": [
+        "BreadcrumbList",
+        "ContactPage",
+        "Organization",
+        "WebSite"
+      ],
+      "liensEntrants": 14,
+      "profondeur": 1
+    },
+    {
+      "route": "/garanties",
+      "fichier": "dist/garanties.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/garanties",
+      "titre": "Ce que Memlia garantit, et ce qu&#39;il refuse de faire | Garanties",
+      "description": "Arrêt en cas de doute, aucune donnée de cabinet dans les jeux d'essai, aucune mesure individuelle des collaborateurs, périmètre écrit avant la mise en service. Nos limites, énoncées.",
+      "schemas": [
+        "BreadcrumbList",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ],
+      "liensEntrants": 14,
+      "profondeur": 1
+    },
+    {
+      "route": "/glossaire",
+      "fichier": "dist/glossaire.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/glossaire",
+      "titre": "Glossaire des tâches et contrôles du cabinet | Memlia",
+      "description": "Des définitions directes, leur contexte d’usage et la limite entre préparation automatisable et décision professionnelle.",
+      "schemas": [
+        "BreadcrumbList",
+        "CollectionPage",
+        "DefinedTermSet",
+        "Organization",
+        "WebSite"
+      ],
+      "liensEntrants": 14,
+      "profondeur": 1
+    },
+    {
+      "route": "/mentions-legales",
+      "fichier": "dist/mentions-legales.html",
+      "indexable": false,
+      "canonical": "https://memlia.fr/mentions-legales",
+      "titre": "Mentions légales — Memlia",
+      "description": "Mentions légales du site memlia.fr.",
+      "schemas": [],
+      "liensEntrants": 14,
+      "profondeur": 1
+    },
+    {
+      "route": "/methode",
+      "fichier": "dist/methode.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/methode",
+      "titre": "Comment se déroule une mission Memlia | Méthode",
+      "description": "Observer le geste réel, écrire la règle dans vos mots, éprouver sur des cas qui doivent échouer, livrer après recette. Les quatre étapes d'une automatisation vérifiable.",
+      "schemas": [
+        "BreadcrumbList",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ],
+      "liensEntrants": 14,
+      "profondeur": 1
+    },
+    {
+      "route": "/politique-de-confidentialite",
+      "fichier": "dist/politique-de-confidentialite.html",
+      "indexable": false,
+      "canonical": "https://memlia.fr/politique-de-confidentialite",
+      "titre": "Politique de confidentialité — Memlia",
+      "description": "Politique de confidentialité du site memlia.fr : données traitées, finalités, cookies, droits RGPD.",
+      "schemas": [],
+      "liensEntrants": 14,
+      "profondeur": 1
+    },
+    {
+      "route": "/ressources",
+      "fichier": "dist/ressources.html",
+      "indexable": true,
+      "canonical": "https://memlia.fr/ressources",
+      "titre": "Ressources pour les tâches du cabinet | Memlia",
+      "description": "Des ressources pour comprendre, vérifier et cadrer les tâches d’un cabinet, sans céder la décision humaine.",
+      "schemas": [
+        "BreadcrumbList",
+        "CollectionPage",
+        "ItemList",
+        "Organization",
+        "WebSite"
+      ],
+      "liensEntrants": 14,
+      "profondeur": 1
+    }
+  ],
+  "erreurs": [],
+  "mutants": [
+    {
+      "mutant": "noindex retiré d'une page légale",
+      "regle": "C2",
+      "attrape": true,
+      "erreurs": [
+        "C2 sitemap : https://memlia.fr/mentions-legales est indexable mais absente.",
+        "C2 /mentions-legales : doit porter noindex, robots=index, follow."
+      ]
+    },
+    {
+      "mutant": "canonical cassée",
+      "regle": "C1",
+      "attrape": true,
+      "erreurs": [
+        "C1 /methode : canonical https://memlia.fr/mauvaise-route ne correspond pas à la route."
+      ]
+    },
+    {
+      "mutant": "téléphone Memlia introduit",
+      "regle": "C5",
+      "attrape": true,
+      "erreurs": [
+        "C5 /contact : numéro de téléphone français rendu (01 23 45 67 89)."
+      ]
+    },
+    {
+      "mutant": "auteur changé",
+      "regle": "C5",
+      "attrape": true,
+      "erreurs": [
+        "C5 /blog : auteur déclaré « Jean Dupont » hors des noms autorisés."
+      ]
+    },
+    {
+      "mutant": "route future ajoutée au sitemap",
+      "regle": "C2",
+      "attrape": true,
+      "erreurs": [
+        "C2 sitemap : https://memlia.fr/guides n'est pas une route indexable du build."
+      ]
+    },
+    {
+      "mutant": "ancre historique supprimée",
+      "regle": "C6",
+      "attrape": true,
+      "erreurs": [
+        "C6 accueil : ancre historique #preuves absente du HTML rendu."
+      ]
+    }
+  ],
+  "resultat": "PASS"
+}
