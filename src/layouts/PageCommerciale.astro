@@ -57,7 +57,15 @@ const graph = {
       <p class="texte-2 lecture page-chapeau">{page.chapeau}</p>
       <p class="page-actions">
         <Button href={actionPrincipale.href} variante="principal" picto="fleche">{actionPrincipale.libelle}</Button>
+        {/* Un lien de courriel est réécrit par Cloudflare en production, et son décodage
+            exige JavaScript : sans les marqueurs, le bouton devient inerte sans JS. */}
+        {page.secondaire.href.startsWith('mailto:') ? (
+          <Fragment set:html={`<!--email_off-->`} />
+        ) : null}
         <Button href={page.secondaire.href} variante="lien">{page.secondaire.libelle}</Button>
+        {page.secondaire.href.startsWith('mailto:') ? (
+          <Fragment set:html={`<!--/email_off-->`} />
+        ) : null}
       </p>
     </section>
 
