@@ -15,6 +15,7 @@ import { fileURLToPath } from 'node:url';
 import { IMAGES, FORMATS, PUBLISHED_IMAGE_IDS } from '../src/data/images.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const DIST = join(RACINE, 'dist');
 const DOSSIER_IMAGES = join(RACINE, 'dist', 'images');
 const DOSSIER_MEDIA_R7 = join(RACINE, 'dist', 'media', 'r7');
 const MOTIF_BRIEF = /^brief-.+\.md$/;
@@ -54,3 +55,13 @@ for (const name of excluded) rmSync(join(DOSSIER_IMAGES, name), { recursive: tru
 const missing = [...expected].filter(name => !existsSync(join(DOSSIER_IMAGES, name)));
 console.log(`[strip-briefs] ${excluded.length} ancien(s) asset(s) exclu(s), ${expected.size} attendu(s), ${missing.length} manquant(s).`);
 if (missing.length) throw new Error(`Images manquantes : ${missing.join(', ')}`);
+
+// `public/` recopié tel quel : un `.DS_Store` déposé par le Finder partirait en ligne et
+// publierait le contenu d'un dossier. Mesuré le 16/09/2026 sur le checkout principal — deux
+// fichiers, absents du build d'un worktree jamais ouvert dans le Finder. Un artefact de
+// poste de travail ne doit pas dépendre de qui construit.
+const artefactsPoste = readdirSync(DIST, { recursive: true, withFileTypes: true })
+  .filter(entry => entry.isFile() && (entry.name === '.DS_Store' || entry.name === 'Thumbs.db'))
+  .map(entry => join(entry.parentPath, entry.name));
+for (const chemin of artefactsPoste) rmSync(chemin);
+console.log(`[strip-briefs] ${artefactsPoste.length} artefact(s) de poste de travail retiré(s) de dist.`);
