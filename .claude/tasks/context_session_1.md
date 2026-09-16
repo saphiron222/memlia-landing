@@ -1,5 +1,18 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Claude Code — 2026-09-16 — reprise des cartes Hermes, plan de chantier
+
+- Hermes figé depuis le 15/09 12:26 (auth Codex perdue : workers rc=0 × 5, disjoncteur). Les 25 cartes landing
+  ouvertes seront exécutées dans Claude Code et closes par `hermes kanban complete` avec preuves.
+- Plan : `~/memlia-vault/10-memlia/chantiers/site-memlia-fr/plan.md` (phases 0 à 3, protocole par carte). Ordre :
+  hygiène du kanban → A3 (t_46ed91b5 → t_cb5e619c) → Ressources (t_391e2204 → … → t_4cd25435) ∥ site v2 docs
+  (t_74efbe3a → t_42bc3eed) → site v2 code (t_c2262a1b → t_80055166 → t_4659b272).
+- Faits mesurés : prod = 939464c = origin/main ; `main` local +11 commits docs/tests ; article 3, /ressources et
+  /glossaire → 404 en prod ; preview A3 6c8f8a89 vivante en noindex ; téléphone encore dans mentions légales sur
+  `main` (retrait b6ee043 à intégrer avec la release Ressources).
+- Aucun push, aucune carte modifiée, aucun code touché.
+
+
 ## Hermes — 2026-09-15 — intégration des branches abandonnées, t_bb13ea9f
 
 - Inventaire trié intégralement : 36 branches, dont 10 `INTEGRER`, 26 `OBSOLETE`, 0 à décider. Verdicts et motifs dans `docs/qa/integration-branches-abandonnees-2026-09-15.md`.
