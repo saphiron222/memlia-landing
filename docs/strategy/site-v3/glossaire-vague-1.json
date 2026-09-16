@@ -1,0 +1,596 @@
+{
+  "sources": {
+    "cnil-sous-traitant": {
+      "id": "cnil-sous-traitant",
+      "publisher": "CNIL",
+      "title": "Sous-traitant",
+      "url": "https://www.cnil.fr/fr/definition/sous-traitant",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme (« le responsable de traitement »), dans le cadre d’un service ou d’une prestation."
+    },
+    "cnil-modele-de-langage": {
+      "id": "cnil-modele-de-langage",
+      "publisher": "CNIL",
+      "title": "Modèle de langage",
+      "url": "https://www.cnil.fr/fr/definition/modele-de-langage",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "On parle de modèles de langage de grande taille ou « Large Language Models » (LLM) en anglais pour les modèles possédant un grand nombre de paramètres (généralement de l’ordre du milliard de poids ou plus) comme GPT-3, BLOOM, Megatron NLG, Llama ou encore PaLM."
+    },
+    "cnil-ia-generative": {
+      "id": "cnil-ia-generative",
+      "publisher": "CNIL",
+      "title": "Comment déployer une IA générative ? La CNIL apporte de premières précisions",
+      "url": "https://www.cnil.fr/fr/comment-deployer-une-ia-generative-la-cnil-apporte-de-premieres-precisions",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "L’intelligence artificielle dite « générative » désigne les systèmes capables de créer des contenus (texte, code informatique, images, musique, audio, vidéos, etc.)."
+    },
+    "cnil-hallucination": {
+      "id": "cnil-hallucination",
+      "publisher": "CNIL",
+      "title": "Les questions-réponses de la CNIL sur l'utilisation d'un système d'IA générative",
+      "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles (on parle alors souvent d’hallucinations)."
+    },
+    "cnil-intervention-humaine": {
+      "id": "cnil-intervention-humaine",
+      "publisher": "CNIL",
+      "title": "Vos droits à l'intervention humaine face à votre profilage ou à une décision automatisée",
+      "url": "https://www.cnil.fr/fr/vos-droits-lintervention-humaine-face-votre-profilage-ou-une-decision-automatisee",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "Par principe, vous avez le droit de ne pas faire l’objet d’une décision entièrement automatisée — souvent basée sur votre profilage — qui a un effet juridique ou vous affecte sensiblement."
+    },
+    "cnil-anonymisation": {
+      "id": "cnil-anonymisation",
+      "publisher": "CNIL",
+      "title": "L'anonymisation de données personnelles",
+      "url": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "L’anonymisation est un traitement qui consiste à utiliser un ensemble de techniques de manière à rendre impossible, en pratique, toute identification de la personne par quelque moyen que ce soit et de manière irréversible."
+    },
+    "eurlex-ai-act": {
+      "id": "eurlex-ai-act",
+      "publisher": "EUR-Lex — Union européenne",
+      "title": "Règlement (UE) 2024/1689 établissant des règles harmonisées concernant l'intelligence artificielle",
+      "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32024R1689",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "La notion de « système d’IA » figurant dans le présent règlement devrait être clairement définie et devrait être étroitement alignée sur les travaux des organisations internationales œuvrant dans le domaine de l’IA afin de garantir la sécurité juridique (considérant 12, qui introduit la définition de l’article 3, point 1)."
+    },
+    "microsoft-power-automate-flux": {
+      "id": "microsoft-power-automate-flux",
+      "publisher": "Microsoft",
+      "title": "Déclencheurs - Power Automate",
+      "url": "https://learn.microsoft.com/fr-fr/power-automate/triggers-introduction",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "Créez un flux de cloud qui effectue des tâches automatiquement suite à un événement."
+    },
+    "microsoft-power-automate-declencheur": {
+      "id": "microsoft-power-automate-declencheur",
+      "publisher": "Microsoft",
+      "title": "Déclencheurs - Power Automate",
+      "url": "https://learn.microsoft.com/fr-fr/power-automate/triggers-introduction",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "Un déclencheur est un événement qui démarre un flux de cloud."
+    },
+    "microsoft-ocr": {
+      "id": "microsoft-ocr",
+      "publisher": "Microsoft",
+      "title": "OCR – reconnaissance optique de caractères",
+      "url": "https://learn.microsoft.com/fr-fr/azure/ai-services/computer-vision/overview-ocr",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "OCR ou Reconnaissance optique de caractères est également appelé reconnaissance de texte ou extraction de texte. Les techniques OCR basées sur le Machine Learning vous permettent d’extraire du texte imprimé ou manuscrit à partir d’images… ainsi que des documents tels que des articles, des rapports, des formulaires et des factures."
+    },
+    "microsoft-document-intelligence": {
+      "id": "microsoft-document-intelligence",
+      "publisher": "Microsoft",
+      "title": "Qu'est-ce que Azure Document Intelligence dans les outils Foundry ?",
+      "url": "https://learn.microsoft.com/fr-fr/azure/ai-services/document-intelligence/overview?view=doc-intel-4.0.0",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "Azure Document Intelligence dans Foundry Tools est un service OCR et de traitement intelligent de documents à l’aide de l’apprentissage automatique pour automatiser l’extraction de données clés à partir de formulaires et de documents."
+    },
+    "banque-france-sepa": {
+      "id": "banque-france-sepa",
+      "publisher": "Banque de France",
+      "title": "Foire aux questions - Le prélèvement SEPA",
+      "url": "https://www.banque-france.fr/fr/foire-aux-questions-le-prelevement-sepa",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "Lorsque la provision sur votre compte n’est pas suffisante, votre prestataire de services de paiement (généralement votre banque) peut refuser de payer le prélèvement."
+    },
+    "service-public-obligations-comptables": {
+      "id": "service-public-obligations-comptables",
+      "publisher": "Service-Public Entreprendre",
+      "title": "Obligations comptables d'une société commerciale",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F37169",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "La société doit conserver ses documents comptables et pièces justificatives au moins 10 ans ; tout enregistrement comptable doit préciser l’origine, le contenu et l’affectation à un compte de chaque donnée, et les références de la pièce justificative qui l’appuie."
+    },
+    "legifrance-deontologie-honoraires": {
+      "id": "legifrance-deontologie-honoraires",
+      "publisher": "Légifrance",
+      "title": "Article 158 - Décret n° 2012-432 du 30 mars 2012 (Code de déontologie des professionnels de l'expertise comptable)",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039401724",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "Les honoraires sont fixés librement entre le client et les experts-comptables… (compte tenu de l’importance des diligences à mettre en œuvre, de la difficulté des dossiers à traiter, des frais exposés et de la notoriété de l’expert-comptable ou du professionnel)."
+    },
+    "legifrance-ccag-tic": {
+      "id": "legifrance-ccag-tic",
+      "publisher": "Légifrance",
+      "title": "Arrêté du 30 mars 2021 portant approbation du CCAG applicable aux marchés publics de techniques de l'information et de la communication (CCAG-TIC)",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043310689",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "L’« admission » est la décision, prise après vérifications, par laquelle l’acheteur reconnaît la conformité des prestations aux stipulations du marché."
+    },
+    "experts-comptables-data-ia": {
+      "id": "experts-comptables-data-ia",
+      "publisher": "Ordre des experts-comptables",
+      "title": "Travaux Data et IA",
+      "url": "https://www.experts-comptables.fr/travaux-data-et-ia",
+      "checkedAt": "2026-09-16",
+      "verifiedExcerpt": "L’intelligence artificielle (notamment incarnée par l’IA générative ChatGPT et ses avatars) va transformer les méthodes de travail des cabinets."
+    }
+  },
+  "entries": [
+    {
+      "id": "automatisation",
+      "term": "Automatisation",
+      "anchor": "automatisation",
+      "nature": "Technique",
+      "definition": "L’automatisation consiste à faire exécuter par un outil, sans intervention humaine à chaque occurrence, une règle explicite et stable : les mêmes conditions produisent toujours le même traitement. Ce qui sort de la règle — une donnée absente, un cas non prévu — doit être signalé plutôt que traité par approximation, pour rester fidèle à la règle écrite.",
+      "context": "Un cabinet la rencontre dès qu’un traitement répétitif — relance, rapprochement, contrôle — porte sur des dizaines ou des centaines d’occurrences par mois. Elle s’oppose à la simple numérisation, qui change le support d’un document sans toucher au traitement qui l’entoure.",
+      "exampleFictitious": "Dans un cabinet fictif, le contrôle de cohérence entre le grand livre et un relevé bancaire est exécuté chaque semaine pour un jeu de dossiers tests. Les lignes qui correspondent exactement ne remontent nulle part ; celles qui diffèrent sont mises de côté pour un collaborateur fictif nommé pour l’exercice.",
+      "commonConfusion": "L’automatisation est parfois confondue avec la numérisation, qui consiste seulement à remplacer le papier par un fichier, ou avec l’intelligence artificielle, qui infère un résultat au lieu de suivre une règle écrite d’avance.",
+      "automationBoundary": "Exécuter la règle sur chaque occurrence et signaler les cas hors règle est automatisable. Écrire la règle, en fixer les limites et décider quoi faire des cas signalés restent des choix humains, revus à échéance régulière.",
+      "relatedTerms": [
+        "flux-de-travail",
+        "declencheur",
+        "exception",
+        "regle-de-cabinet"
+      ],
+      "sourceIds": [
+        "microsoft-power-automate-flux"
+      ],
+      "articles": [
+        "pilier",
+        "sans-changer-de-logiciel"
+      ]
+    },
+    {
+      "id": "flux-de-travail",
+      "term": "Flux de travail (workflow)",
+      "anchor": "flux-de-travail",
+      "nature": "Technique",
+      "definition": "Un flux de travail est l’enchaînement ordonné des étapes qui transforment une demande en résultat : chacune a un responsable, une condition qui permet de la déclencher, et une sortie qui alimente l’étape suivante. Il existe indépendamment de tout logiciel ; un outil peut ensuite exécuter tout ou partie de ses étapes.",
+      "context": "Un cabinet en dessine un dès qu’il documente une procédure existante — relance, saisie, contrôle — avant d’en automatiser une partie. Le flux reste valable même quand l’outil qui l’exécute change.",
+      "exampleFictitious": "Pour un dossier fictif, le flux de relance de pièces comporte quatre étapes : identifier la pièce manquante, relancer le client, réceptionner la pièce, classer le dossier comme complet. Chaque étape a un responsable désigné, même quand aucune n’est encore automatisée.",
+      "commonConfusion": "Un flux de travail est parfois pris pour le logiciel qui l’exécute ; il existait pourtant sur papier ou dans une tête avant tout outil, et continue d’exister si l’outil change.",
+      "automationBoundary": "Documenter les étapes et exécuter celles qui suivent une règle stable est automatisable. Décider de l’ordre des étapes, du responsable de chacune et de ce qui justifie une exception reste une décision du cabinet.",
+      "relatedTerms": [
+        "automatisation",
+        "declencheur",
+        "regle-de-cabinet",
+        "proposition-puis-validation"
+      ],
+      "sourceIds": [
+        "microsoft-power-automate-flux"
+      ],
+      "articles": [
+        "pilier",
+        "choisir-la-premiere-tache"
+      ]
+    },
+    {
+      "id": "declencheur",
+      "term": "Déclencheur",
+      "anchor": "declencheur",
+      "nature": "Technique",
+      "definition": "Un déclencheur est l’événement précis qui lance l’exécution d’une règle : une date atteinte, la réception d’un document, un changement de statut dans un dossier. Il se distingue de la règle elle-même, qui décrit ce qui se passe une fois l’exécution lancée, et des conditions, qui filtrent ensuite les cas à traiter.",
+      "context": "Un cabinet en fixe un chaque fois qu’il définit une automatisation : sans déclencheur explicite, une règle ne sait jamais quand s’exécuter. La même règle peut être rattachée à plusieurs déclencheurs selon le contexte.",
+      "exampleFictitious": "Dans un scénario fictif, la relance d’une pièce manquante se déclenche cinq jours ouvrés après l’échéance déclarée du dossier, jamais avant. Un autre déclencheur, la réception de la pièce, arrête la relance en cours.",
+      "commonConfusion": "Le déclencheur est souvent confondu avec la règle qu’il lance : le déclencheur répond à « quand », la règle répond à « quoi faire ».",
+      "automationBoundary": "Surveiller la survenue du déclencheur et lancer la règle associée est automatisable. Choisir quel événement doit déclencher quelle règle, et à quelle fréquence, reste une décision du cabinet, revue quand la procédure change.",
+      "relatedTerms": [
+        "flux-de-travail",
+        "automatisation",
+        "regle-de-cabinet"
+      ],
+      "sourceIds": [
+        "microsoft-power-automate-declencheur"
+      ],
+      "articles": [
+        "relance-des-pieces",
+        "relances-honoraires"
+      ]
+    },
+    {
+      "id": "exception",
+      "term": "Exception (cas hors règle)",
+      "anchor": "exception",
+      "nature": "Éditoriale Memlia",
+      "definition": "Une exception est une occurrence que la règle écrite ne couvre pas — une donnée absente, un format inattendu, une combinaison non prévue — et qui doit remonter à une personne plutôt qu’être traitée par une valeur par défaut. Une exception n’est pas une erreur : c’est le fonctionnement attendu d’une règle qui refuse de deviner.",
+      "context": "Un cabinet en rencontre dès qu’un traitement porte sur des dossiers réels, jamais parfaitement uniformes : une pièce mal nommée, un montant à zéro, une date au mauvais format. Leur fréquence renseigne sur la qualité des données reçues, pas sur la qualité de la règle.",
+      "exampleFictitious": "Dans un jeu de test fictif, une facture sans numéro de TVA sort du traitement automatique et remonte avec le motif exact du refus. Un collaborateur fictif la complète ou la renvoie à l’émetteur, selon le cas.",
+      "commonConfusion": "Une exception est parfois prise pour un bug à corriger dans l’outil ; elle signale au contraire que la règle a correctement reconnu ses propres limites plutôt que de produire un résultat non fiable.",
+      "automationBoundary": "Détecter qu’un cas sort de la règle et le signaler avec un motif explicite est automatisable. Décider quoi faire de ce cas — corriger, écarter, faire remonter au client — reste une décision humaine.",
+      "relatedTerms": [
+        "cas-de-refus",
+        "fail-closed",
+        "file-d-anomalies",
+        "controle-de-coherence"
+      ],
+      "sourceIds": [
+        "cnil-intervention-humaine"
+      ],
+      "articles": [
+        "relance-des-pieces",
+        "saisie-ocr",
+        "lettrage"
+      ]
+    },
+    {
+      "id": "file-d-anomalies",
+      "term": "File d'anomalies",
+      "anchor": "file-d-anomalies",
+      "nature": "Éditoriale Memlia",
+      "definition": "Une file d’anomalies est la liste unique où se regroupent toutes les exceptions détectées par un traitement, chacune avec son motif et son statut, pour être reprise en une seule séance par une personne plutôt qu’au fil de l’eau. Elle transforme des interruptions dispersées en une revue périodique et maîtrisable.",
+      "context": "Un cabinet la consulte à échéance régulière — quotidienne ou hebdomadaire selon le volume — plutôt que de réagir à chaque alerte séparée dès qu’elle survient. Chaque ligne porte de quoi comprendre le cas sans rouvrir le dossier complet.",
+      "exampleFictitious": "Pour un exercice fictif, sept lignes s’accumulent dans la file sur une semaine : trois montants incohérents, deux pièces illisibles, deux dates manquantes. Un collaborateur fictif les traite en une session, referme celles qui sont réglées et laisse les autres en attente.",
+      "commonConfusion": "Une file d’anomalies est parfois confondue avec une alerte envoyée par courriel à chaque cas : la file regroupe et hiérarchise, l’alerte au fil de l’eau disperse l’attention et noie les cas urgents dans les cas mineurs.",
+      "automationBoundary": "Détecter chaque anomalie, la qualifier et l’ajouter à la file est automatisable. Décider de l’ordre de traitement et trancher chaque cas reste une tâche humaine, à une cadence choisie par le cabinet.",
+      "relatedTerms": [
+        "exception",
+        "controle-de-coherence",
+        "tracabilite"
+      ],
+      "sourceIds": [
+        "cnil-intervention-humaine"
+      ],
+      "articles": [
+        "completude-dossier",
+        "rapprochement"
+      ]
+    },
+    {
+      "id": "proposition-puis-validation",
+      "term": "Proposition puis validation",
+      "anchor": "proposition-puis-validation",
+      "nature": "Éditoriale Memlia",
+      "definition": "Proposition puis validation décrit un fonctionnement en deux temps : l’outil prépare une valeur, un texte ou une action à partir d’une règle, puis une personne l’accepte, la corrige ou la refuse avant qu’elle ne produise un effet. Ce que la personne saisit ou corrige n’est jamais réécrit ensuite par l’outil.",
+      "context": "Un cabinet applique ce principe à chaque sortie qui engage un tiers — un montant, un courrier, une écriture — plutôt que de laisser un traitement produire un effet sans regard préalable. Le valideur et ce qu’il peut modifier sont définis avant la mise en service.",
+      "exampleFictitious": "Dans un scénario fictif, un rapprochement bancaire propose une correspondance entre une ligne de relevé et une facture ; elle reste en attente jusqu’à ce qu’un collaborateur fictif confirme ou corrige l’affectation proposée. Rien n’est comptabilisé avant cette confirmation.",
+      "commonConfusion": "Ce principe est parfois confondu avec « l’outil fait tout, puis on vérifie après coup » : la validation intervient avant l’effet, jamais en rattrapage d’un résultat déjà produit.",
+      "automationBoundary": "Préparer la proposition à partir d’une règle et consigner la décision prise est automatisable. Porter le jugement sur le cas précis et l’autoriser reste, par construction, une étape humaine.",
+      "relatedTerms": [
+        "validation-humaine",
+        "regle-de-cabinet",
+        "fail-closed"
+      ],
+      "sourceIds": [
+        "cnil-intervention-humaine"
+      ],
+      "articles": [
+        "pilier",
+        "choisir-la-premiere-tache",
+        "ia-generative"
+      ]
+    },
+    {
+      "id": "recette",
+      "term": "Recette",
+      "anchor": "recette",
+      "nature": "Professionnelle",
+      "definition": "La recette est la séance au cours de laquelle le cabinet rejoue ses propres cas sur ses propres fichiers et décide d’accepter ou de refuser le livrable, en confrontant un cas courant, un cas limite et un cas de refus. Le vocabulaire des marchés publics informatiques l’appelle vérification puis admission.",
+      "context": "Un cabinet y participe avant la mise en service de tout traitement nouveau, jamais après : la recette précède l’usage, elle ne le suit pas. Elle porte sur les fichiers réels du cabinet, jamais sur une démonstration générique.",
+      "exampleFictitious": "Pour un module fictif, la recette rejoue douze dossiers inventés : huit cas courants, trois cas limites, un cas volontairement refusé pour vérifier que le refus est bien signalé. Le cabinet fictif valide le livrable seulement après avoir examiné les douze résultats.",
+      "commonConfusion": "La recette est parfois confondue avec une démonstration : la démonstration montre un cas favorable choisi à l’avance, la recette confronte le livrable aux cas propres du cabinet, y compris ceux qui doivent échouer.",
+      "automationBoundary": "Préparer le jeu de cas et comparer un résultat attendu à un résultat obtenu est automatisable. Décider si l’écart constaté est acceptable, et accepter le livrable, reste une décision du cabinet.",
+      "relatedTerms": [
+        "jeu-d-essai-fictif",
+        "cas-de-refus",
+        "validation-humaine"
+      ],
+      "sourceIds": [
+        "legifrance-ccag-tic"
+      ],
+      "articles": [
+        "pilier",
+        "jeu-d-essai-fictif"
+      ]
+    },
+    {
+      "id": "jeu-d-essai-fictif",
+      "term": "Jeu d'essai fictif",
+      "anchor": "jeu-d-essai-fictif",
+      "nature": "Éditoriale Memlia",
+      "definition": "Un jeu d’essai fictif est un ensemble de données entièrement inventées, plausibles, construites pour couvrir un cas courant, un cas limite et un cas de refus, utilisé pour construire et éprouver un traitement sans jamais exposer de dossier réel. Il se distingue de données anonymisées, qui restent des données personnelles au sens du droit.",
+      "context": "Un cabinet s’en sert dès la conception d’un traitement et jusqu’à sa recette, avant tout contact avec un dossier réel. Il reste utilisable après la mise en service, pour rejouer un cas sans exposer de donnée réelle.",
+      "exampleFictitious": "Un jeu fictif comporte par exemple douze salariés inventés, aux noms manifestement fictifs, dont les bulletins couvrent un temps plein, un temps partiel et un contrat rompu en cours de mois. Aucun de ces salariés ne correspond à une personne réelle.",
+      "commonConfusion": "Un jeu d’essai fictif est parfois pris pour un jeu de données anonymisées : l’anonymisation part de données réelles et cherche à empêcher la réidentification, alors que le jeu fictif n’a jamais correspondu à une personne existante.",
+      "automationBoundary": "Générer des variantes du jeu fictif pour couvrir de nouveaux cas est automatisable une fois le jeu initial construit. Décider quels cas limites et quels cas de refus le jeu doit couvrir reste un choix humain, propre à chaque traitement.",
+      "relatedTerms": [
+        "anonymisation",
+        "recette",
+        "cas-de-refus"
+      ],
+      "sourceIds": [
+        "cnil-anonymisation"
+      ],
+      "articles": [
+        "jeu-d-essai-fictif",
+        "mesurer-le-temps"
+      ]
+    },
+    {
+      "id": "systeme-d-ia",
+      "term": "Système d'IA",
+      "anchor": "systeme-d-ia",
+      "nature": "Réglementaire",
+      "definition": "Au sens de l’article 3 du règlement (UE) 2024/1689, un système d’IA est un système basé sur une machine qui, conçu pour fonctionner avec un niveau d’autonomie variable, peut faire preuve d’une capacité d’adaptation après son déploiement et déduit, à partir des entrées qu’il reçoit, comment générer des sorties telles que des prédictions, du contenu, des recommandations ou des décisions.",
+      "context": "Un cabinet croise cette notion chaque fois qu’il évalue un outil qui promet de l’intelligence artificielle : tout logiciel n’est pas un système d’IA au sens du règlement, une macro ou une formule ne le sont pas. La qualification conditionne les obligations qui s’appliquent à l’éditeur et, parfois, à l’utilisateur professionnel.",
+      "exampleFictitious": "Pour un outil fictif de tri de courriels, la qualification de système d’IA dépend de la façon dont il classe les messages : une liste de mots-clés fixée à l’avance ne suffit pas à en faire un, un modèle qui infère la catégorie à partir d’exemples peut en faire un.",
+      "commonConfusion": "Un système d’IA est parfois confondu avec n’importe quel logiciel automatisé ; le règlement réserve la qualification aux systèmes qui déduisent une sortie à partir d’entrées, pas à ceux qui appliquent une instruction fixée d’avance.",
+      "automationBoundary": "Rien dans cette définition ne s’automatise : elle sert à qualifier juridiquement un outil, pas à faire fonctionner un traitement. La qualification d’un outil précis reste un examen à mener au cas par cas, en général avec un conseil compétent.",
+      "relatedTerms": [
+        "ia-generative",
+        "grand-modele-de-langage"
+      ],
+      "sourceIds": [
+        "eurlex-ai-act"
+      ],
+      "articles": [
+        "ia-generative",
+        "ai-act"
+      ]
+    },
+    {
+      "id": "ia-generative",
+      "term": "IA générative",
+      "anchor": "ia-generative",
+      "nature": "Technique",
+      "definition": "L’intelligence artificielle dite générative désigne les systèmes capables de créer des contenus — texte, code informatique, images, son ou vidéo — à partir d’une consigne, plutôt que de retrouver un contenu déjà existant. Le résultat produit est nouveau à chaque exécution, même pour une consigne proche d’une exécution précédente.",
+      "context": "Un cabinet la rencontre dans un assistant de rédaction, un outil de synthèse ou un générateur de code utilisé par son éditeur logiciel. Le contenu produit doit être relu avant tout usage, car sa plausibilité ne garantit pas son exactitude.",
+      "exampleFictitious": "Dans un test fictif, un brouillon de courrier de relance est rédigé par un outil génératif à partir de trois informations : le nom du dossier fictif, l’échéance et la pièce manquante. Un collaborateur fictif relit le brouillon avant tout envoi.",
+      "commonConfusion": "L’IA générative est parfois confondue avec un moteur de recherche : le moteur de recherche retrouve un contenu qui existe déjà quelque part, l’IA générative produit un contenu qui n’existait pas avant la demande.",
+      "automationBoundary": "Produire un brouillon à partir d’une consigne stable est automatisable. Relire ce brouillon, corriger ce qu’il contient et décider de l’envoyer restent des étapes humaines, quel que soit le soin apporté à la consigne.",
+      "relatedTerms": [
+        "grand-modele-de-langage",
+        "hallucination",
+        "systeme-d-ia"
+      ],
+      "sourceIds": [
+        "cnil-ia-generative"
+      ],
+      "articles": [
+        "ia-generative",
+        "trier-la-boite-mail"
+      ]
+    },
+    {
+      "id": "grand-modele-de-langage",
+      "term": "Grand modèle de langage (LLM)",
+      "anchor": "grand-modele-de-langage",
+      "nature": "Technique",
+      "definition": "Un grand modèle de langage, ou Large Language Model (LLM), est un modèle statistique entraîné sur de très grands volumes de texte, comptant généralement plusieurs milliards de paramètres, qui prédit la suite la plus probable d’un texte donné. Cette capacité de prédiction sert ensuite de base à des usages comme la rédaction ou la synthèse.",
+      "context": "Un cabinet en croise un chaque fois qu’un outil s’appuie sur un assistant conversationnel ou un générateur de texte pour préparer une réponse ou un document. Le modèle n’est mis à jour qu’à intervalles espacés : il ignore par construction tout ce qui est postérieur à son entraînement.",
+      "exampleFictitious": "Dans un cas fictif, un modèle de langage propose une reformulation d’un courrier de relance rédigé pour un client fictif, sans connaître les échanges antérieurs propres à ce dossier. Un collaborateur fictif vérifie que la reformulation correspond bien au dossier avant envoi.",
+      "commonConfusion": "Un grand modèle de langage est parfois pris pour une base de connaissances à jour ; il prédit un texte plausible à partir de ce qu’il a appris à l’entraînement, sans consulter une source actuelle sauf si l’outil qui l’utilise le prévoit explicitement.",
+      "automationBoundary": "Générer une suite de texte plausible à partir d’une consigne est ce que le modèle fait par construction. Vérifier l’exactitude de ce texte pour le dossier précis et décider de son usage restent des étapes humaines.",
+      "relatedTerms": [
+        "ia-generative",
+        "hallucination",
+        "systeme-d-ia"
+      ],
+      "sourceIds": [
+        "cnil-modele-de-langage"
+      ],
+      "articles": [
+        "ia-generative",
+        "agent-ia"
+      ]
+    },
+    {
+      "id": "hallucination",
+      "term": "Hallucination",
+      "anchor": "hallucination",
+      "nature": "Technique",
+      "definition": "Une hallucination est un résultat produit par un système d’IA générative qui paraît plausible et formulé avec assurance, mais qui est inexact ou inventé. Elle survient notamment lorsque le système est interrogé sur une information absente de ses données d’entraînement, sans qu’il signale cette absence.",
+      "context": "Un cabinet y est exposé chaque fois qu’un contenu généré par IA sert de base à une réponse client ou à un document sans relecture préalable. Le risque augmente sur les sujets récents ou très spécifiques, que le modèle connaît mal.",
+      "exampleFictitious": "Dans un test fictif, un outil génératif attribue à un texte réglementaire un numéro d’article qui n’existe pas, formulé avec la même assurance que le reste de sa réponse. Seule la vérification par un collaborateur fictif révèle l’erreur.",
+      "commonConfusion": "Une hallucination est parfois prise pour un bug ponctuel réparable par une mise à jour ; c’est en réalité une propriété du fonctionnement probabiliste de ces systèmes, qui ne disparaît pas complètement, mais peut être réduite.",
+      "automationBoundary": "Privilégier des systèmes qui citent leurs sources ou filtrent leurs résultats réduit le risque, et cela s’automatise. Vérifier l’exactitude d’un résultat précis avant de l’utiliser reste, dans tous les cas, une étape humaine.",
+      "relatedTerms": [
+        "ia-generative",
+        "grand-modele-de-langage",
+        "fail-closed"
+      ],
+      "sourceIds": [
+        "cnil-hallucination"
+      ],
+      "articles": [
+        "ia-generative",
+        "rgpd-et-ia"
+      ]
+    },
+    {
+      "id": "reconnaissance-optique-de-caracteres",
+      "term": "Reconnaissance optique de caractères (OCR)",
+      "anchor": "reconnaissance-optique-de-caracteres",
+      "nature": "Technique",
+      "definition": "La reconnaissance optique de caractères, ou OCR, est une technologie qui transforme l’image d’un document — une facture scannée, une photo de ticket — en texte numérique exploitable, mot par mot et ligne par ligne. Elle lit des caractères ; elle n’interprète pas le sens de ce qu’elle lit.",
+      "context": "Un cabinet la rencontre en amont de toute saisie automatisée de factures ou de notes de frais : un document scanné doit d’abord passer par l’OCR avant que ses champs puissent être identifiés. La qualité du scan conditionne directement la qualité du texte obtenu.",
+      "exampleFictitious": "Sur un ticket de caisse fictif légèrement froissé, l’OCR restitue correctement le montant total mais bute sur le nom du commerçant, imprimé trop pâle. Le champ douteux est signalé plutôt que deviné.",
+      "commonConfusion": "L’OCR est parfois prise pour de la compréhension du document ; elle restitue des caractères sans savoir lequel est un montant, une date ou un nom, ce que fait l’étape d’extraction qui suit.",
+      "automationBoundary": "Convertir une image en texte brut est entièrement automatisable et constitue la fonction même de l’OCR. Juger de la fiabilité d’une lecture douteuse — caractère peu net, document froissé — reste une vérification humaine avant usage.",
+      "relatedTerms": [
+        "extraction-de-donnees",
+        "piece-justificative"
+      ],
+      "sourceIds": [
+        "microsoft-ocr"
+      ],
+      "articles": [
+        "saisie-ocr",
+        "notes-de-frais"
+      ]
+    },
+    {
+      "id": "extraction-de-donnees",
+      "term": "Extraction de données",
+      "anchor": "extraction-de-donnees",
+      "nature": "Technique",
+      "definition": "L’extraction de données est l’étape qui repère, dans le texte obtenu après lecture d’un document, les champs qui ont un sens métier — fournisseur, montant, taux de TVA, date d’échéance — pour les rendre exploitables par un traitement. Elle intervient après la lecture du document, jamais avant.",
+      "context": "Un cabinet s’en sert juste après la reconnaissance de caractères, pour transformer un texte brut en informations classées prêtes à être contrôlées. Une extraction erronée sur un seul champ suffit à fausser tout le traitement qui suit.",
+      "exampleFictitious": "Sur une facture fictive, l’extraction identifie correctement le montant et la date, mais place par erreur le numéro de commande dans le champ réservé au numéro de facture. L’écart est signalé avant toute intégration comptable.",
+      "commonConfusion": "L’extraction de données est parfois confondue avec l’OCR elle-même : l’OCR restitue du texte sans savoir ce qu’il représente, l’extraction attribue ensuite chaque portion de texte à un champ précis.",
+      "automationBoundary": "Repérer un champ selon un schéma stable et connu est automatisable. Traiter un document dont la mise en page ne correspond à aucun schéma prévu doit être signalé pour une vérification humaine plutôt que deviné.",
+      "relatedTerms": [
+        "reconnaissance-optique-de-caracteres",
+        "schema-de-donnees",
+        "piece-justificative"
+      ],
+      "sourceIds": [
+        "microsoft-document-intelligence"
+      ],
+      "articles": [
+        "saisie-ocr",
+        "facture-electronique"
+      ]
+    },
+    {
+      "id": "sous-traitant-rgpd",
+      "term": "Sous-traitant (RGPD)",
+      "anchor": "sous-traitant-rgpd",
+      "nature": "Réglementaire",
+      "definition": "Au sens des articles 4 et 28 du RGPD, le sous-traitant est la personne ou l’organisme qui traite des données personnelles pour le compte d’un responsable de traitement, sur ses instructions documentées et dans le cadre d’un contrat prévoyant des garanties précises. Il ne peut pas utiliser ces données pour son propre compte.",
+      "context": "Un cabinet devient responsable de traitement de ses dossiers clients et doit qualifier chaque éditeur logiciel ou hébergeur qu’il utilise : un outil d’IA hébergé par un tiers est souvent lui-même un sous-traitant. Cette qualification déclenche des obligations contractuelles précises envers ce tiers.",
+      "exampleFictitious": "Pour un cabinet fictif, un éditeur de messagerie hébergé à l’étranger qui traite les courriels professionnels est qualifié de sous-traitant ; un contrat fictif décrit alors la nature du traitement, sa durée et les garanties apportées.",
+      "commonConfusion": "Un sous-traitant au sens du RGPD est parfois confondu avec un simple fournisseur ; un fournisseur qui ne touche jamais aux données personnelles n’a pas ce statut, tandis qu’un éditeur d’IA qui héberge des données de dossiers en a un.",
+      "automationBoundary": "Recenser les outils qui traitent des données personnelles pour signaler ceux à qualifier est automatisable. Qualifier juridiquement chaque cas et négocier les clauses contractuelles requises restent des tâches humaines, en général avec un conseil compétent.",
+      "relatedTerms": [
+        "donnee-personnelle",
+        "minimisation-des-donnees",
+        "pseudonymisation"
+      ],
+      "sourceIds": [
+        "cnil-sous-traitant"
+      ],
+      "articles": [
+        "rgpd-et-ia",
+        "ai-act"
+      ]
+    },
+    {
+      "id": "pre-comptabilite",
+      "term": "Pré-comptabilité",
+      "anchor": "pre-comptabilite",
+      "nature": "Professionnelle",
+      "definition": "La pré-comptabilité regroupe les tâches qui précèdent l’écriture comptable proprement dite : collecter les pièces, les trier par nature et par période, vérifier qu’elles sont lisibles et complètes, puis les préparer pour la saisie. Elle s’arrête avant l’imputation sur un compte, qui relève de la tenue comptable.",
+      "context": "Un cabinet y consacre un temps important en amont de chaque clôture, en particulier lorsque les pièces arrivent par des canaux variés — courriel, dépôt, courrier. Une pré-comptabilité incomplète retarde mécaniquement toute la suite de la production.",
+      "exampleFictitious": "Pour un dossier fictif, les pièces d’un mois sont d’abord triées par nature — achats, ventes, banque — avant tout début de saisie. Une pièce illisible est mise de côté et signalée plutôt que saisie approximativement.",
+      "commonConfusion": "La pré-comptabilité est parfois confondue avec la tenue comptable elle-même ; elle s’arrête au tri et à la vérification des pièces, avant toute décision d’imputation sur un compte du plan comptable.",
+      "automationBoundary": "Trier des pièces reçues par type et signaler celles qui sont illisibles ou incomplètes est automatisable une fois la nomenclature du cabinet définie. Décider de l’imputation comptable d’une pièce reste un acte professionnel réservé au collaborateur ou à l’expert-comptable.",
+      "relatedTerms": [
+        "piece-justificative",
+        "completude-du-dossier",
+        "extraction-de-donnees"
+      ],
+      "sourceIds": [
+        "experts-comptables-data-ia"
+      ],
+      "articles": [
+        "saisie-ocr",
+        "relance-des-pieces"
+      ]
+    },
+    {
+      "id": "completude-du-dossier",
+      "term": "Complétude du dossier",
+      "anchor": "completude-du-dossier",
+      "nature": "Éditoriale Memlia",
+      "definition": "La complétude d’un dossier désigne l’état dans lequel toutes les pièces attendues pour une période donnée ont été reçues et sont lisibles, selon une liste définie à l’avance pour ce dossier. Elle se constate pièce par pièce, jamais par une impression générale que « le client a envoyé quelque chose ».",
+      "context": "Un cabinet la vérifie avant chaque clôture ou chaque déclaration, pièce par pièce, plutôt qu’au vu d’ensemble du dossier. La liste des pièces attendues varie selon le type de dossier et doit être tenue à jour.",
+      "exampleFictitious": "Pour un dossier fictif, la liste attendue pour le mois comporte huit pièces ; sept sont reçues et lisibles, la huitième est un relevé bancaire flou. Le dossier est marqué incomplet jusqu’à réception d’un relevé lisible.",
+      "commonConfusion": "La complétude est parfois confondue avec le simple fait que le client a transmis un lot de documents ; un lot reçu peut très bien être incomplet au regard de la liste attendue pour la période.",
+      "automationBoundary": "Comparer les pièces reçues à la liste attendue et signaler les manques est automatisable, à condition que la liste soit définie et tenue à jour. Décider qu’une pièce reçue est acceptable malgré un défaut mineur reste un jugement humain.",
+      "relatedTerms": [
+        "piece-justificative",
+        "relance-de-pieces",
+        "controle-de-coherence"
+      ],
+      "sourceIds": [
+        "service-public-obligations-comptables"
+      ],
+      "articles": [
+        "completude-dossier",
+        "relance-des-pieces"
+      ]
+    },
+    {
+      "id": "relance-de-pieces",
+      "term": "Relance de pièces",
+      "anchor": "relance-de-pieces",
+      "nature": "Professionnelle",
+      "definition": "La relance de pièces est la demande, adressée à un client selon une cadence définie à l’avance, des pièces manquantes pour compléter un dossier ; elle s’arrête dès leur réception. Elle porte sur des documents attendus dans une mission en cours, jamais sur une somme due.",
+      "context": "Un cabinet l’engage dès qu’une pièce attendue manque pour avancer un dossier, avec un ton et une cadence différents d’une relance d’impayé. Elle cesse automatiquement dès que la complétude du dossier est atteinte.",
+      "exampleFictitious": "Pour un dossier fictif, un premier message rappelle la pièce manquante à sept jours, un second à quatorze jours avec le collaborateur en copie. La relance s’arrête dès réception d’un relevé bancaire lisible pour la période concernée.",
+      "commonConfusion": "La relance de pièces est souvent confondue avec la relance d’impayés ; l’une réclame un document nécessaire à une mission, l’autre réclame une somme due, avec un ton et des conséquences très différents.",
+      "automationBoundary": "Envoyer un rappel selon une cadence fixée et l’arrêter à réception de la pièce est automatisable. Décider du contenu d’une relance sensible ou d’y déroger pour un client particulier reste une décision humaine.",
+      "relatedTerms": [
+        "completude-du-dossier",
+        "declencheur",
+        "piece-justificative"
+      ],
+      "sourceIds": [
+        "service-public-obligations-comptables"
+      ],
+      "articles": [
+        "relance-des-pieces",
+        "relances-honoraires"
+      ]
+    },
+    {
+      "id": "prelevement-sepa-et-rejet",
+      "term": "Prélèvement SEPA et rejet",
+      "anchor": "prelevement-sepa-et-rejet",
+      "nature": "Professionnelle",
+      "definition": "Le prélèvement SEPA permet de débiter les honoraires d’un client sur autorisation préalable ; un rejet est le refus de ce débit par la banque du client, notifié avec un motif — provision insuffisante, mandat contesté, compte clos. Un rejet n’est pas un impayé définitif : il appelle une nouvelle présentation ou un contact avec le client.",
+      "context": "Un cabinet le suit dans son propre encaissement d’honoraires mensualisés : chaque rejet doit être identifié, motivé et relancé selon un délai propre au motif constaté. Le volume de rejets d’un mois donne une vision agrégée de la santé des encaissements, jamais un classement de clients.",
+      "exampleFictitious": "Pour un cabinet fictif, un prélèvement du mois est rejeté pour provision insuffisante ; une nouvelle présentation est programmée dix jours plus tard, avec un message informant le client fictif du rejet et de sa cause.",
+      "commonConfusion": "Un rejet de prélèvement est parfois pris pour un impayé acté ; la plupart des rejets se résolvent par une nouvelle présentation ou un rappel, et ne devraient être traités comme un impayé qu’après plusieurs échecs.",
+      "automationBoundary": "Détecter un rejet, en lire le motif codé et programmer une nouvelle présentation selon une règle fixée est automatisable. Décider de contacter directement un client après plusieurs rejets successifs reste une décision humaine.",
+      "relatedTerms": [
+        "relance-de-pieces",
+        "recouvrement-amiable",
+        "declencheur"
+      ],
+      "sourceIds": [
+        "banque-france-sepa"
+      ],
+      "articles": [
+        "rejets-de-prelevement",
+        "relances-honoraires"
+      ]
+    },
+    {
+      "id": "honoraires-mensualises-et-actes-hors-forfait",
+      "term": "Honoraires mensualisés et actes hors forfait",
+      "anchor": "honoraires-mensualises-et-actes-hors-forfait",
+      "nature": "Professionnelle",
+      "definition": "Les honoraires mensualisés sont prélevés chaque mois sur une base fixée par la lettre de mission ; un acte hors forfait correspond à une prestation non comprise dans ce forfait, qui s’ajoute et se facture séparément, une seule fois. Le code de déontologie des experts-comptables fixe les honoraires librement selon la difficulté et le volume du travail.",
+      "context": "Un cabinet distingue les deux dans sa facturation courante : le forfait couvre les missions récurrentes définies à l’avance, l’acte hors forfait couvre une demande ponctuelle qui s’y ajoute. La confusion entre les deux est une source fréquente de facturation contestée.",
+      "exampleFictitious": "Pour un client fictif, le forfait mensuel couvre la tenue et la paie courante ; une attestation ponctuelle demandée en cours d’année est facturée à part, en acte hors forfait, sur la base d’un tarif fictif communiqué au préalable.",
+      "commonConfusion": "L’erreur la plus fréquente est de facturer en acte hors forfait une prestation déjà comprise dans le forfait mensualisé, ce qui revient à facturer deux fois le même travail.",
+      "automationBoundary": "Vérifier qu’un acte facturé hors forfait n’apparaît pas déjà dans le périmètre du forfait est automatisable, à condition que ce périmètre soit décrit avec précision. Fixer le tarif d’un acte hors forfait et le proposer au client restent des décisions humaines.",
+      "relatedTerms": [
+        "recouvrement-amiable",
+        "prelevement-sepa-et-rejet"
+      ],
+      "sourceIds": [
+        "legifrance-deontologie-honoraires"
+      ],
+      "articles": [
+        "ne-pas-facturer-deux-fois",
+        "reperer-un-dossier-sous-tarif"
+      ]
+    }
+  ]
+}

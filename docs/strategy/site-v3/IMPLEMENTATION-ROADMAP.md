@@ -15,6 +15,10 @@
 | Revues indépendantes : identités `marketing` (grille éditoriale) et `relecteur-metier-ia-memlia` (verdict par affirmation), rendues par un agent distinct de l'auteur | `revues.json` de chaque recette | exigées par le gate (score ≥ 90, verdict « soutient » par claim) |
 | Pilier en tête du blog | `src/pages/blog.astro` | `tests/browser/blog.spec.ts` |
 
+## Glossaire vague 1 : rédigé, pas encore intégré
+
+Les 20 termes de la vague 1 (le plan en annonçait 18, ses tableaux en listent 20) sont rédigés au contrat `GlossaryEntry` avec 16 sources officielles ouvertes le 16/09 : `glossaire-vague-1.json`. Ils ne sont pas dans `src/data/glossary.ts`, parce que le glossaire est une surface du pipeline Ressources (manifeste T, contrat v3) : chaque unité rendue d'un terme (définition, contexte, exemple, confusion, frontière) doit porter une preuve de revue métier bidirectionnelle (`test_41_visible_units_have_complete_bidirectional_evidence`), puis la surface est rescellée et réaffirmée. L'intégration se fait donc par la chaîne Ressources (candidat, revue métier IA par unité, sceau, réaffirmation), pas par un simple ajout dans le fichier. Prochain créneau : le premier jour de production de la semaine 39, avant les articles qui citent ces termes.
+
 ## Le cycle d'un article (à rejouer quatre fois par semaine)
 
 1. Écrire la recette : `editorial/recettes/<slug>/recette.json` (métadonnées, sources officielles avec extraits verbatim, affirmations reliées) et `corps.md`.

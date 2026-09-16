@@ -6,8 +6,8 @@
 1. [Stratégie](SEO-STRATEGY.md) : le constat, la thèse, la carte des onze familles, la différenciation, les seuils de décision.
 2. [Concurrents](COMPETITOR-ANALYSIS.md) : qui occupe chaque famille, en quel format, et l'espace libre.
 3. [Architecture](SITE-STRUCTURE.md) : pilier, satellites, règles d'URL, matrice de liens, enablers de code.
-4. [Calendrier](CONTENT-CALENDAR.md) : 36 articles sur 12 mois en quatre vagues, un par tâche.
-5. [Glossaire](GLOSSARY-PLAN.md) : 34 termes automatisation, IA, données, cadre, avec sources et articles porteurs.
+4. [Calendrier](CONTENT-CALENDAR.md) : généré depuis [backlog-v3.json](backlog-v3.json) (236 angles, quatre par famille) à quatre articles par semaine ; les trois articles historiques et le pilier y figurent.
+5. [Glossaire](GLOSSARY-PLAN.md) : 34 termes automatisation, IA, données, cadre ; la vague 1 (20 termes) est rédigée dans [glossaire-vague-1.json](glossaire-vague-1.json), à intégrer par la chaîne Ressources.
 6. [Exécution](IMPLEMENTATION-ROADMAP.md) : phases, commandes, contrôles.
 7. [Plan de cluster](cluster-plan.md), [données](cluster-plan.json), [carte interactive](cluster-map.html) : ouvrir `cluster-map.html` dans un navigateur.
 8. [Briefs de la vague 1](cluster-briefs/) : neuf briefs au format `editorial/templates/brief.md`, prêts pour `npm run blog:create` après validation.
