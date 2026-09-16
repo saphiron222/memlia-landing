@@ -5,9 +5,9 @@ import { isIP } from 'node:net';
 import { dirname, join, relative, resolve } from 'node:path';
 import { parse as parseHtml } from 'parse5';
 import sharp from 'sharp';
-import { Agent } from 'undici';
+import { Agent, fetch as fetchUndici } from 'undici';
 import { parse as parseYaml } from 'yaml';
-import { validatePublishedAdoption } from './blog-published-authority.mjs';
+import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
   'blog-strategy', 'blog-brand', 'blog-persona', 'blog-discourse', 'blog-google', 'blog-calendar',
@@ -54,6 +54,59 @@ export const CLAIM_TYPES = Object.freeze([
 ]);
 
 const MIN_SAFETY_WORDS = 80;
+/** Cadence décidée le 16/09/2026 : quatre articles par semaine, au plus deux le même jour. */
+export const CANDIDATS_PAR_JOUR_MAX = 2;
+export const CANDIDATS_PAR_SEMAINE_MAX = 4;
+/** Reçu de publication : le dossier est scellé sur ses octets le jour de la mise en ligne. */
+export const PUBLICATION_SEAL_PATH = 'preuves/publication.json';
+/** Semaine ISO 8601 d'une date AAAA-MM-JJ, sous la forme AAAA-Wnn. */
+export function semaineIso(value) {
+  const date = new Date(`${value}T00:00:00Z`);
+  const jour = date.getUTCDay() || 7;
+  date.setUTCDate(date.getUTCDate() + 4 - jour);
+  const debutAnnee = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+  const numero = Math.ceil(((date - debutAnnee) / 86_400_000 + 1) / 7);
+  return `${date.getUTCFullYear()}-W${String(numero).padStart(2, '0')}`;
+}
+/** Refuse une date qui ferait dépasser les plafonds quotidien et hebdomadaire de la file. */
+export function verifierPlafonds(actifs, date) {
+  if (actifs.filter((candidate) => candidate.date === date).length >= CANDIDATS_PAR_JOUR_MAX) {
+    throw new Error(`${CANDIDATS_PAR_JOUR_MAX} candidats sont déjà planifiés le ${date} ; le plafond est de ${CANDIDATS_PAR_JOUR_MAX} candidats par jour.`);
+  }
+  const semaine = semaineIso(date);
+  if (actifs.filter((candidate) => isDate(candidate.date) && semaineIso(candidate.date) === semaine).length >= CANDIDATS_PAR_SEMAINE_MAX) {
+    throw new Error(`${CANDIDATS_PAR_SEMAINE_MAX} candidats sont déjà planifiés la semaine ${semaine} ; le plafond est de ${CANDIDATS_PAR_SEMAINE_MAX} candidats par semaine.`);
+  }
+}
+/**
+ * Publication scellée (v3) : un dossier au statut « publie » ne bouge plus. Le reçu inventorie
+ * chaque fichier du dossier avec son empreinte ; tout octet modifié après la mise en ligne
+ * casse le sceau, et le seul chemin de correction est de republier par la forge.
+ */
+export function validatePublicationSeal(dossier, manifest, subject) {
+  const errors = [];
+  if (manifest?.editorialStatus !== 'publie' || manifest?.kevin?.productionApproved !== true) errors.push('Publication scellée : statut publie et productionApproved requis.');
+  if (manifest?.publicationEvidence !== PUBLICATION_SEAL_PATH) errors.push('Publication scellée : reçu de publication obligatoire.');
+  if (!isDate(manifest?.publishedAt)) errors.push('Publication scellée : publishedAt doit être une date AAAA-MM-JJ.');
+  try {
+    const proof = JSON.parse(readFileSync(join(dossier, PUBLICATION_SEAL_PATH), 'utf8'));
+    if (proof.version !== 1 || proof.kind !== 'publication-scellee' || proof.candidateSlug !== subject.slug
+      || proof.articleSha256 !== subject.articleHash || proof.manifestSha256 !== subject.manifestHash
+      || proof.publishedAt !== manifest?.publishedAt) {
+      errors.push('Publication scellée : reçu divergent du candidat exact.');
+    }
+    const paths = dossierFiles(dossier).filter((path) => path !== PUBLICATION_SEAL_PATH);
+    if (JSON.stringify(paths) !== JSON.stringify(proof.files?.map((row) => row.path))) errors.push('Publication scellée : inventaire de dossier divergent.');
+    for (const row of proof.files ?? []) {
+      if (!paths.includes(row.path)) continue;
+      const bytes = readFileSync(join(dossier, row.path));
+      if (row.sha256 !== sha256(bytes) || row.bytes !== bytes.length) errors.push(`Publication scellée : empreinte divergente (${row.path}).`);
+    }
+  } catch (error) {
+    errors.push(`Publication scellée : reçu absent ou illisible (${error.message}).`);
+  }
+  return errors;
+}
 const RESERVED_SOURCE_HOST = /(?:^|\.)(?:example|invalid|localhost|test)$/i;
 const MAX_SOURCE_BYTES = 2 * 1024 * 1024;
 const MAX_SOURCE_REDIRECTS = 4;
@@ -128,7 +181,7 @@ const ENUMS = Object.freeze({
   editorialStatus: ['a-preparer', 'a-valider', 'bloque', 'pret-preview', 'go-production', 'publie', 'publie-non-atteste', 'a-maintenir', 'archive'],
   intent: ['comprendre', 'executer', 'diagnostiquer', 'comparer-approches', 'evaluer-service', 'reduire-risque', 'decider'],
   funnel: ['TOFU', 'MOFU', 'BOFU'],
-  cluster: ['production-comptable', 'portefeuille-echeances', 'paie-social', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-formation', 'excel-outils-existants', 'numerique-it-data', 'methode-decision-humaine'],
+  cluster: ['production-comptable', 'portefeuille-echeances', 'paie-social', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-formation', 'excel-outils-existants', 'numerique-it-data', 'methode-decision-humaine', 'conseil-missions'],
   role: ['direction-associes', 'chefs-mission-portefeuille', 'collaborateurs-comptables', 'assistants-comptables', 'paie-responsables-sociaux', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-recrutement-formation', 'numerique-it-data', 'profils-formation', 'autre-role-documente'],
   roleProof: ['observe', 'indirect', 'hypothese', 'absent'],
   contentType: ['searchable', 'shareable', 'experimental'],
@@ -467,9 +520,8 @@ export function createCandidate({ root = process.cwd(), slug, title, date }) {
   const queuePath = join(absoluteRoot, 'editorial/queue.json');
   const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
   if (!Array.isArray(queue.candidates)) throw new Error('editorial/queue.json doit contenir une liste candidates.');
-  if (queue.candidates.some((candidate) => candidate.date === date && !['archive', 'bloque'].includes(candidate.status))) {
-    throw new Error(`Un candidat est déjà planifié le ${date} ; le plafond est un candidat par jour.`);
-  }
+  const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status));
+  verifierPlafonds(actifs, date);
   if (queue.candidates.some((candidate) => candidate.slug === slug)) throw new Error(`Le candidat ${slug} existe déjà dans la file.`);
 
   const articlePath = join(absoluteRoot, 'src/content/blog', `${slug}.md`);
@@ -590,7 +642,7 @@ async function readBoundedResponse(response) {
   return Buffer.concat(chunks).toString('utf8');
 }
 
-export async function verifySource({ root = process.cwd(), slug, sourceId, excerpt, fetcher = fetch, resolver = dnsLookup }) {
+export async function verifySource({ root = process.cwd(), slug, sourceId, excerpt, fetcher = fetchUndici, resolver = dnsLookup }) {
   const absoluteRoot = resolve(root);
   const dossier = join(absoluteRoot, 'editorial/articles', slug);
   const manifestPath = join(dossier, 'manifest.json');
@@ -1067,6 +1119,8 @@ function validateSensitiveFreshness(manifest, claims, review, skills, verifiedSo
     if (!Number.isFinite(ageDays) || ageDays < 0 || ageDays > MAX_PROTECTED_PREVIEW_EVIDENCE_AGE_DAYS) {
       errors.push(`Fraîcheur sensible : une preview protégée exige une revue âgée de 0 à ${MAX_PROTECTED_PREVIEW_EVIDENCE_AGE_DAYS} jours ; reçu ${reviewDay ?? 'absent'}.`);
     }
+  } else if (gateMode === 'publication-scellee') {
+    if (reviewDay !== manifest?.publishedAt) errors.push(`Fraîcheur sensible : un dossier scellé date sa revue du jour de publication (${manifest?.publishedAt ?? 'absent'}), reçu ${reviewDay ?? 'absent'}.`);
   } else if (reviewDay !== today) {
     errors.push(`Fraîcheur sensible : la revue éditoriale doit être datée du jour du gate (${today}), reçu ${reviewDay ?? 'absent'}.`);
   }
@@ -1302,7 +1356,7 @@ function validateArticleContract(markdown, manifest, gateMode = 'production') {
   } catch (error) {
     return [`Frontmatter YAML invalide : ${error.message}`];
   }
-  const productionApproved = (manifest.editorialStatus === 'go-production' && manifest.kevin?.productionApproved === true)
+  const productionApproved = (['go-production', 'publie'].includes(manifest.editorialStatus) && manifest.kevin?.productionApproved === true)
     || (gateMode === 'published-audit' && manifest.editorialStatus === 'publie-non-atteste');
   const expected = {
     titre: manifest.title,
@@ -1545,6 +1599,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   };
   const sensitiveMatter = detectSensitiveMatter(manifest, claims, markdown);
   if (gateMode === 'published-audit') errors.push(...validatePublishedAdoption(dossier, manifest, subject.articleHash));
+  if (gateMode === 'publication-scellee') errors.push(...validatePublicationSeal(dossier, manifest, subject));
   if (manifest) errors.push(...validateCandidate(manifest, { gateMode }));
   if (skills) errors.push(...validateSkillsManifest(skills));
   if (skills && manifest && claims) errors.push(...validateRequiredSkills(skills, sensitiveMatter));

@@ -1,10 +1,35 @@
-# Feuille de route v3 — de la validation à la quatrième vague
+# Feuille de route v3 — de la validation à la cadence de quatre par semaine
 
-16 septembre 2026. Chaque phase se termine par une preuve, pas par une annonce : suites (Python, Node, Playwright), chaîne de preuve (`build-cluster-plan.py --check`, `test:lastmod`, seal + reaffirm), écran (prévisualisation `pages.dev` puis production).
+16 septembre 2026, mise à jour le soir même après le « go » de Kevin. Chaque phase se termine par une preuve, pas par une annonce : suites (Python, Node, Playwright), chaîne de preuve (`build-cluster-plan.py --check`, `test:lastmod`, seal + reaffirm), écran (prévisualisation `pages.dev` puis production).
 
-## Phase 0 — Décision (cette semaine)
+## Ce qui a été construit le 16 septembre (phase 1, réalisée)
 
-Kevin valide ou amende : le territoire (onze familles, `audit-cac` dormant), la cadence (3/mois, 2 le premier mois), les 34 termes, les neuf briefs de la vague 1. Tant que cette phase n'est pas close, rien n'est créé dans `src/`.
+| Élément | Où | Preuve |
+|---|---|---|
+| Taxonomie : 60 familles en 12 pôles, source unique | `src/data/familles.ts` ; `famille` dans le frontmatter (`src/content.config.ts`) ; pôle `conseil-missions` ajouté au schéma et au pipeline | `npx astro check` 0 erreur ; `tests/proof/test_build.py::test_familles_des_articles_pipeline` |
+| Cadence codée : 2 par jour, 4 par semaine ISO | `CANDIDATS_PAR_JOUR_MAX`, `CANDIDATS_PAR_SEMAINE_MAX`, `verifierPlafonds` (`scripts/lib/blog-pipeline.mjs`) | `tests/scripts/blog-pipeline.test.mjs`, `blog-forge.test.mjs` |
+| La forge éditoriale : recette → dossier complet → gate → publication scellée | `scripts/blog-forge.mjs` (`preparer`, `sceller`, `publier`), recettes dans `editorial/recettes/<slug>/` | `tests/scripts/blog-forge.test.mjs` : le dossier produit passe `validateDossier` en preview protégée, en production et en mode scellé ; un octet modifié casse le sceau |
+| Publication scellée : statut `publie` + reçu `preuves/publication.json` (inventaire sha256), audité à chaque build | `validatePublicationSeal`, mode `publication-scellee` dans `blog:audit` | même test |
+| Images de tête : cadre de preuve HTML rendu par Playwright (1920×1080), OG 1200×630, dérivés 768/1200/1600 AVIF et WebP, déclaration automatique dans `images.mjs` | `editorial/templates/cadre-article.html`, forge | rendu vérifié à l'écran ; `test_placeholders_and_briefs` compte 3 AVIF et 4 WebP par article publié |
+| Vérificateur de sources réparé pour le réseau réel | `verifySource` : `fetch` et `Agent` du même paquet undici | 5 sources officielles ouvertes et copiées le 16/09 |
+| Revues indépendantes : identités `marketing` (grille éditoriale) et `relecteur-metier-ia-memlia` (verdict par affirmation), rendues par un agent distinct de l'auteur | `revues.json` de chaque recette | exigées par le gate (score ≥ 90, verdict « soutient » par claim) |
+| Pilier en tête du blog | `src/pages/blog.astro` | `tests/browser/blog.spec.ts` |
+
+## Le cycle d'un article (à rejouer quatre fois par semaine)
+
+1. Écrire la recette : `editorial/recettes/<slug>/recette.json` (métadonnées, sources officielles avec extraits verbatim, affirmations reliées) et `corps.md`.
+2. `node scripts/blog-forge.mjs preparer <slug>` : sources ouvertes et copiées le jour même, claims construits, cadre rendu, paquet de revue écrit. Corriger la recette tant que `erreurs` n'est pas vide.
+3. Revue indépendante (agent distinct) → `revues.json`.
+4. `node scripts/blog-forge.mjs sceller <slug>` : dossier `pret-preview` puis gate complet (build Astro compris).
+5. `node scripts/blog-forge.mjs publier <slug>` : `go-production`, `production-check` (build du site), puis statut `publie` et sceau.
+6. `npm run lastmod:sync`, `npm run build`, commit par pathspec, push (le push publie), contrôle en ligne sur l'URL immuable `pages.dev`, sitemap renvoyé à Search Console.
+
+Un candidat préparé mais non scellé fait échouer `blog:audit`, donc le build : on ne pousse jamais une recette à moitié jouée.
+
+
+## Phase 0 — Décision (close le 16 septembre)
+
+Kevin a validé le territoire en l'élargissant (soixante familles), fixé la cadence à quatre par semaine et donné le go d'exécution. Les 34 termes du glossaire et les briefs de la vague 1 sont conservés comme point de départ ; le backlog par famille (quatre angles par famille) remplace le calendrier de 36 articles.
 
 ## Phase 1 — Enablers de code (semaines 1 et 2, une seule branche `site/v3-enablers`)
 

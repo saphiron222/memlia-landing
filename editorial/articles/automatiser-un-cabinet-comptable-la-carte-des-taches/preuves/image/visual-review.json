@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-16",
+  "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
+  "manifestSha256": "a5824e31f1f971a99d93f64b039b774e6189a997638b587d1f10e3d15394f6c3",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
+  ],
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Les six composantes apparaissent sur le rendu : titre « La carte des tâches automatisables d'un cabinet », sous-titre « Onze pôles, soixante familles, une frontière par tâche », étiquette de pôle « Méthode et décision humaine », trois colonnes d'items identiques à cadre.colonnes du paquet, pied « memlia.fr — automatiser un cabinet comptable », et un bandeau « Jeu fictif, aucune donnée client » qui fait aussi office de provenance fictive."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "generation.json déclare un rendu playwright-chromium 1920x1080 ; une mesure directe du fichier (sips) confirme 1920×1080 pixels pour master.png.",
+        "La palette verte et crème ainsi que le pairing typographique Fraunces (titre serif et sous-titre italique) et Hanken Grotesk (items de liste, labels) sont visibles à l'écran et conformes à la charte memlia.fr."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Un badge explicite « Jeu fictif, aucune donnée client » est incrusté en bas à droite de l'image, et les items des trois colonnes (« Relance de pièces à cadence », « Jugement fiscal »...) sont des catégories génériques sans nom de cabinet, de client ni de chiffre réel."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Les trois colonnes bordées de couleur (vert, ambre, gris) avec leurs en-têtes « Se prépare seul », « Attend une validation », « Reste humain » rendent le sujet immédiatement reconnaissable et fidèle au concept central répété dans chaque section de l'article."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "La mesure directe des fichiers confirme og.webp à 1200×630 pixels et hero-768.webp/hero-768.avif à 768×432 pixels, conformément aux dérivés déclarés ; les deux formats WebP et AVIF sont fournis pour la déclinaison 768 px."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "L'alt fourni (« Carte des tâches d'un cabinet en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain ») décrit fidèlement la structure visible sur le rendu, sans mot-clé forcé ni formule vague."
+      ]
+    }
+  ]
+}

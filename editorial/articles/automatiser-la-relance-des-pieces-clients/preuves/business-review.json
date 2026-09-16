@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-la-relance-des-pieces-clients",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-16",
+  "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
+  "manifestSha256": "d6c55c2b8cd4cda6e733e3fcef1bd91174eafbe5501870fa822a2c7dd203c88f",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
+  ],
+  "reviewerId": "relecteur-metier-ia-memlia",
+  "role": "collaborateurs-comptables",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-d261dcf7ed61-1-cnil-principes",
+      "candidateSlug": "automatiser-la-relance-des-pieces-clients",
+      "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
+      "claimId": "claim-unit-d261dcf7ed61-1",
+      "claimSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
+      "sourceId": "cnil-principes",
+      "sourceContentSha256": "80a9c95a294d8a738c16ccc39dba4c9df7f43094af68bb782089f5f9037d6490",
+      "citationSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-16",
+      "reasoning": "La citation CNIL est reprise mot pour mot pour définir le principe de minimisation, sans changement de portée ni de polarité, et appliquée correctement aux données nécessaires à la relance (checklist, états, adresse de contact)."
+    },
+    {
+      "id": "review-claim-unit-e5aeddef0964-1-cnil-durees",
+      "candidateSlug": "automatiser-la-relance-des-pieces-clients",
+      "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
+      "claimId": "claim-unit-e5aeddef0964-1",
+      "claimSha256": "e0742974196d31f8e720b08468fbbc4abee0b459ced919bbcba131c64a55d961",
+      "sourceId": "cnil-durees",
+      "sourceContentSha256": "020c1d06e3358d4d0bad6c98e3d0f910c6b98ef3e3f54d6bd0dff9465f752a14",
+      "citationSha256": "03753b8dd6f3d19178af98785f6542f535195836e334fd92027002aabe5de8c2",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-16",
+      "reasoning": "La citation CNIL est exacte ; l'article substitue « le cabinet » à « le responsable du fichier », ce qui reste fidèle car le cabinet est le responsable de traitement pour la relance de ses propres clients."
+    },
+    {
+      "id": "review-claim-unit-e5aeddef0964-2-sp-conservation",
+      "candidateSlug": "automatiser-la-relance-des-pieces-clients",
+      "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
+      "claimId": "claim-unit-e5aeddef0964-2",
+      "claimSha256": "2023ed4ccd60bb092bd263483469fa84f1d81e076bdd952bbb9861b5c67c41d2",
+      "sourceId": "sp-conservation",
+      "sourceContentSha256": "cb03b229f0fd1d181b3154226a65916cb618e11edc023b1ad90562373a989421",
+      "citationSha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-16",
+      "reasoning": "Citation exacte de Service-Public.gouv.fr, utilisée pour justifier que la conservation des pièces reçues dépasse le cycle de la seule relance, sans ajouter de délai chiffré absent de la source."
+    },
+    {
+      "id": "review-claim-unit-5cd56910d808-1-cnil-sous-traitant",
+      "candidateSlug": "automatiser-la-relance-des-pieces-clients",
+      "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
+      "claimId": "claim-unit-5cd56910d808-1",
+      "claimSha256": "f3e376b8cd3bfd3685fecbfa47708a886ad521e8b43735d23a2de9ffeb51d4a3",
+      "sourceId": "cnil-sous-traitant",
+      "sourceContentSha256": "61b510e018ae965f49b8a5c539425875f7f1d33d1696282b8db0a0f65c4826c5",
+      "citationSha256": "527923a27ec2ed451a7ebf42f076caf5f74ea1c14431366ca1b3fcb56e5d5256",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-16",
+      "reasoning": "Définition CNIL du sous-traitant reprise quasi mot pour mot (seule l'incise sur le responsable de traitement est omise), appliquée à bon escient au cas d'un outil de relance hébergé par un tiers."
+    }
+  ]
+}

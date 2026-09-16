@@ -23,6 +23,7 @@ const requis: { picto: NomPicto; titre: string; texte: string }[] = [
   { picto: 'grille', titre: 'L’environnement', texte: 'La version de vos outils, les postes concernés, qui utilisera quoi.' },
 ];
 const renvois = [
+  { texte: 'La carte des tâches automatisables d’un cabinet : onze pôles, soixante familles, une frontière par tâche.', libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
   { texte: 'Contrôler les bulletins de paie avant la DSN : une liste de contrôles à rejouer chaque mois.', libelle: 'Lire la méthode', href: '/blog/controler-les-bulletins-de-paie-avant-la-dsn' },
   { texte: 'Suivre la production sociale dans Excel sans surveiller les personnes.', libelle: 'Lire la méthode', href: '/blog/suivre-la-production-sociale-dans-excel' },
   { texte: 'Ce que nous refusons de faire, énoncé avant de commencer.', libelle: 'Nos garanties', href: '/garanties' },
@@ -123,6 +124,6 @@ const appel = {
       <h2 id="avant">Avant de nous parler</h2>
       <p class="texte-2">Deux méthodes à lire, et ce que nous refusons de faire.</p>
     </div>
-    <Renvois items={renvois} />
+    <Renvois items={renvois} colonnes={2} />
   </section>
 </PageCommerciale>

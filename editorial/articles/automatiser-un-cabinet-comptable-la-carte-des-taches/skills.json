@@ -1,0 +1,503 @@
+{
+  "version": 1,
+  "blog": [
+    {
+      "skill": "blog-strategy",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La stratégie est tenue au niveau du site (docs/strategy/site-v3), pas rejouée pour « Automatiser un cabinet comptable : la carte des tâches »."
+    },
+    {
+      "skill": "blog-brand",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La voix et la charte sont fixées par .agents/product-marketing.md ; « Automatiser un cabinet comptable : la carte des tâches » les applique sans les redéfinir."
+    },
+    {
+      "skill": "blog-persona",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le rôle lecteur de « Automatiser un cabinet comptable : la carte des tâches » vient du hub Ressources et du référentiel des besoins, pas d'une persona nouvelle."
+    },
+    {
+      "skill": "blog-discourse",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune analyse de discours distincte : « Automatiser un cabinet comptable : la carte des tâches » suit le brief et la revue éditoriale."
+    },
+    {
+      "skill": "blog-google",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le relevé Search Console de « Automatiser un cabinet comptable : la carte des tâches » est porté par la preuve GSC du dossier, pas par ce skill."
+    },
+    {
+      "skill": "blog-calendar",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le calendrier est celui de la v3 (docs/strategy/site-v3/CONTENT-CALENDAR.md) ; « Automatiser un cabinet comptable : la carte des tâches » y occupe un créneau attribué."
+    },
+    {
+      "skill": "blog-cluster",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le cluster de « Automatiser un cabinet comptable : la carte des tâches » est fixé par build-cluster-plan.py, source unique du maillage."
+    },
+    {
+      "skill": "blog-taxonomy",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La taxonomie (src/data/familles.ts) est tenue au niveau du site ; « Automatiser un cabinet comptable : la carte des tâches » y est rattaché par son frontmatter."
+    },
+    {
+      "skill": "blog-brief",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-brief.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "blog-outline",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le plan H2/H3 de « Automatiser un cabinet comptable : la carte des tâches » est celui du brief validé ; aucun plan alternatif n'a été produit."
+    },
+    {
+      "skill": "blog-notebooklm",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune synthèse NotebookLM pour « Automatiser un cabinet comptable : la carte des tâches » : les sources sont lues et citées directement."
+    },
+    {
+      "skill": "blog-write",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-write.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "blog-rewrite",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Automatiser un cabinet comptable : la carte des tâches » est une création, pas une réécriture."
+    },
+    {
+      "skill": "blog-factcheck",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-factcheck.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "blog-style",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le style de « Automatiser un cabinet comptable : la carte des tâches » est relu dans la grille éditoriale (critère intent-satisfaction), sans passe distincte."
+    },
+    {
+      "skill": "blog-chart",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Automatiser un cabinet comptable : la carte des tâches » ne contient aucun graphique : les tableaux sont en HTML."
+    },
+    {
+      "skill": "blog-image",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "L'image de « Automatiser un cabinet comptable : la carte des tâches » est un cadre de preuve HTML rendu par la forge, revu dans image.json."
+    },
+    {
+      "skill": "blog-schema",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le schéma BlogPosting de « Automatiser un cabinet comptable : la carte des tâches » est émis par le gabarit Article ; contrôlé par seo-schema."
+    },
+    {
+      "skill": "blog-seo-check",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-seo-check.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "blog-geo",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-geo.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "blog-analyze",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune analyse de performance possible avant publication de « Automatiser un cabinet comptable : la carte des tâches »."
+    },
+    {
+      "skill": "blog-audit",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-audit.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "blog-cannibalization",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-cannibalization.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "blog-decay",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Automatiser un cabinet comptable : la carte des tâches » vient d'être écrit : aucun déclin à mesurer."
+    },
+    {
+      "skill": "blog-flow",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun prompt FLOW distinct pour « Automatiser un cabinet comptable : la carte des tâches » : le brief tient le cadrage."
+    },
+    {
+      "skill": "blog-repurpose",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune déclinaison de « Automatiser un cabinet comptable : la carte des tâches » sur un autre canal n'est prévue."
+    },
+    {
+      "skill": "blog-audio",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune version audio de « Automatiser un cabinet comptable : la carte des tâches »."
+    },
+    {
+      "skill": "blog-multilingual",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Automatiser un cabinet comptable : la carte des tâches » est publié en français uniquement."
+    },
+    {
+      "skill": "blog-translate",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune traduction de « Automatiser un cabinet comptable : la carte des tâches »."
+    },
+    {
+      "skill": "blog-localize",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune localisation de « Automatiser un cabinet comptable : la carte des tâches » : un seul marché, la France."
+    },
+    {
+      "skill": "blog-locale-audit",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun audit de locale pour « Automatiser un cabinet comptable : la carte des tâches » : site monolingue."
+    }
+  ],
+  "seo": [
+    {
+      "skill": "seo-plan",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le plan SEO est celui du site (docs/strategy/site-v3) ; « Automatiser un cabinet comptable : la carte des tâches » l'exécute."
+    },
+    {
+      "skill": "seo-google",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le relevé Google de « Automatiser un cabinet comptable : la carte des tâches » est porté par les preuves SERP et GSC du dossier."
+    },
+    {
+      "skill": "seo-content-brief",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-content-brief.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "seo-cluster",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le cluster de « Automatiser un cabinet comptable : la carte des tâches » est fixé par build-cluster-plan.py."
+    },
+    {
+      "skill": "seo-sxo",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "L'adéquation format/SERP de « Automatiser un cabinet comptable : la carte des tâches » est jugée dans le critère serp-format-rankability de la revue."
+    },
+    {
+      "skill": "seo-page",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-page.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "seo-content",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-content.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "seo-technical",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-technical.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "seo-schema",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-schema.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "seo-images",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-images.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "seo-sitemap",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le sitemap est généré par le build ; « Automatiser un cabinet comptable : la carte des tâches » y entre à la publication (test:lastmod)."
+    },
+    {
+      "skill": "seo-geo",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La citabilité de « Automatiser un cabinet comptable : la carte des tâches » est vérifiée par blog-geo (réponse directe, définitions)."
+    },
+    {
+      "skill": "seo-flow",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun prompt FLOW distinct pour « Automatiser un cabinet comptable : la carte des tâches »."
+    },
+    {
+      "skill": "seo-audit",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-audit.json",
+      "checkedAt": "2026-09-16",
+      "justification": null
+    },
+    {
+      "skill": "seo-drift",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune baseline de dérive avant la publication de « Automatiser un cabinet comptable : la carte des tâches »."
+    },
+    {
+      "skill": "seo-backlinks",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun lien externe entrant à analyser pour « Automatiser un cabinet comptable : la carte des tâches » avant publication."
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune page comparative : « Automatiser un cabinet comptable : la carte des tâches » n'oppose aucun éditeur."
+    },
+    {
+      "skill": "seo-local",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune intention locale pour « Automatiser un cabinet comptable : la carte des tâches » (décision v2 : pas de pages villes)."
+    },
+    {
+      "skill": "seo-maps",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune fiche Maps concernée par « Automatiser un cabinet comptable : la carte des tâches »."
+    },
+    {
+      "skill": "seo-hreflang",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Site monolingue : aucun hreflang pour « Automatiser un cabinet comptable : la carte des tâches »."
+    },
+    {
+      "skill": "seo-ecommerce",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun produit ni marketplace dans « Automatiser un cabinet comptable : la carte des tâches »."
+    },
+    {
+      "skill": "seo-programmatic",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Automatiser un cabinet comptable : la carte des tâches » est un article rédigé, pas une page programmatique."
+    },
+    {
+      "skill": "seo-dataforseo",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun crédit DataForSEO engagé pour « Automatiser un cabinet comptable : la carte des tâches » : volumes ND documentés dans la preuve SERP."
+    },
+    {
+      "skill": "seo-image-gen",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune génération d'image IA pour « Automatiser un cabinet comptable : la carte des tâches » : cadre de preuve HTML."
+    }
+  ],
+  "contradictions": []
+}

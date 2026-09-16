@@ -106,6 +106,20 @@ export const IMAGES = {
     alt: 'Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine.',
     generee: true,
   },
+  'img-art-carte-des-taches': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Carte des tâches d’un cabinet en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain",
+    generee: true,
+  },
+  'img-art-relance-des-pieces': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Relance des pièces clients en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -113,6 +127,8 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-relance-des-pieces',
+  'img-art-carte-des-taches',
   'img-23-controle-bulletins-paie',
   'img-24-suivi-production-sociale',
   'img-25-comptes-rendus-metier-dsn',

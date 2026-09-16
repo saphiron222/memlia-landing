@@ -130,7 +130,11 @@ class GlossaryProof(unittest.TestCase):
             self.assertGreaterEqual(len(text.split()), 55)
 
     def test_glossary_links_to_the_exact_preserved_articles(self):
-        dossiers = sorted((ROOT / 'editorial/articles').glob('*/review.json'))
+        dossiers = sorted(
+            path for path in (ROOT / 'editorial/articles').glob('*/review.json')
+            if json.loads((path.parent / 'manifest.json').read_text()).get('editorialStatus') == 'publie-non-atteste'
+        )
+        # Les deux dossiers historiques conservés ; les dossiers scellés par la forge ont leur propre audit.
         self.assertEqual(len(dossiers), 2)
         for review_path in dossiers:
             review = json.loads(review_path.read_text())

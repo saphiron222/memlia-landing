@@ -9,6 +9,7 @@ import {
   SEO_SKILLS,
   auditArticleInventory,
   createCandidate,
+  semaineIso,
   validateDossier,
   validateCandidate,
   validateHeadings,
@@ -168,12 +169,25 @@ test('la file refuse deux candidats le même jour sans écraser le premier', () 
     const created = createCandidate({ root, slug: 'premier-candidat', title: 'Premier candidat éditorial', date: isoDate });
     assert.equal(created.slug, 'premier-candidat');
     assert.equal(JSON.parse(readFileSync(join(created.dossier, 'preuves/business-review.json'), 'utf8')).candidateSlug, 'premier-candidat');
+    // Cadence du 16/09/2026 : deux candidats le même jour passent, le troisième est refusé.
+    createCandidate({ root, slug: 'second-candidat', title: 'Second candidat éditorial', date: isoDate });
     assert.throws(
-      () => createCandidate({ root, slug: 'second-candidat', title: 'Second candidat éditorial', date: isoDate }),
-      /un candidat est déjà planifié/i
+      () => createCandidate({ root, slug: 'troisieme-candidat', title: 'Troisième candidat éditorial', date: isoDate }),
+      /2 candidats sont déjà planifiés le/
+    );
+    // Et quatre par semaine ISO : deux autres jours de la même semaine remplissent le plafond hebdomadaire.
+    const jour = new Date(`${isoDate}T00:00:00Z`);
+    const decale = (n) => { const d = new Date(jour); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+    const memeSemaine = [1, 2, 3, 4, 5, 6, -1, -2, -3, -4, -5, -6].map(decale).filter((date) => semaineIso(date) === semaineIso(isoDate));
+    assert.ok(memeSemaine.length >= 2, 'la semaine ISO doit offrir deux autres jours');
+    createCandidate({ root, slug: 'quatrieme-candidat', title: 'Quatrième candidat éditorial', date: memeSemaine[0] });
+    createCandidate({ root, slug: 'cinquieme-candidat', title: 'Cinquième candidat éditorial', date: memeSemaine[0] });
+    assert.throws(
+      () => createCandidate({ root, slug: 'sixieme-candidat', title: 'Sixième candidat éditorial', date: memeSemaine[1] }),
+      /4 candidats sont déjà planifiés la semaine/
     );
     const queue = JSON.parse(readFileSync(join(root, 'editorial/queue.json'), 'utf8'));
-    assert.equal(queue.candidates.length, 1);
+    assert.equal(queue.candidates.length, 4);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

@@ -12,7 +12,8 @@ const xml = (texte: string) =>
 /** Flux RSS 2.0 du blog : articles publiés, du plus récent au plus ancien. */
 export async function GET(context: APIContext) {
   const publies = (await getCollection('blog', ({ data }) => !data.brouillon)).sort(
-    (a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime()
+    (a, b) => Number(b.data.format === 'pillar-page') - Number(a.data.format === 'pillar-page')
+      || b.data.datePublication.getTime() - a.data.datePublication.getTime()
   );
   const site = context.site ?? new URL(SITE.url);
   const fluxUrl = new URL(BLOG.fluxRss, site).href;

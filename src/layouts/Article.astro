@@ -38,6 +38,8 @@ const cheminAuteur = identiteAuteur(auteur);
 const urlAuteur = `${SITE.url}${cheminAuteur}`;
 const LIBELLE_SUJET: Record<string, string> = {
   paie: 'Paie', dsn: 'DSN', excel: 'Excel', 'production-sociale': 'Production sociale',
+  automatisation: 'Automatisation', pieces: 'Pièces', saisie: 'Saisie', lettrage: 'Lettrage', revision: 'Révision', fiscal: 'Fiscal',
+  facturation: 'Facturation', courriels: 'Courriels', ia: 'IA', donnees: 'Données', juridique: 'Juridique', pilotage: 'Pilotage',
   methode: 'Méthode', securite: 'Sécurité', cabinet: 'Cabinet',
 };
 const image = data.image as keyof typeof IMAGES;

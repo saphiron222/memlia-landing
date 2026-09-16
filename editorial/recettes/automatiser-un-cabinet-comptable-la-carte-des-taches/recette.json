@@ -1,0 +1,242 @@
+{
+  "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+  "title": "Automatiser un cabinet comptable : la carte des tâches",
+  "tabTitle": "Automatiser un cabinet comptable : la carte | Memlia",
+  "summary": "Soixante familles de tâches réparties en onze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel.",
+  "description": "La carte des tâches automatisables d’un cabinet d’expertise comptable : soixante familles, la règle typique de chacune et sa frontière d’automatisation.",
+  "date": "2026-09-16",
+  "topics": [
+    "automatisation",
+    "methode",
+    "cabinet"
+  ],
+  "keywords": [
+    "automatisation cabinet comptable",
+    "tâches répétitives",
+    "validation humaine",
+    "règle de cabinet",
+    "familles de tâches"
+  ],
+  "primaryQuery": "automatisation cabinet comptable",
+  "secondaryQueries": [
+    "automatiser cabinet expertise comptable",
+    "tâches répétitives cabinet comptable",
+    "automatisation sans changer de logiciel"
+  ],
+  "intent": "comprendre",
+  "fanOut": [
+    "quelles tâches automatiser dans un cabinet",
+    "par où commencer une automatisation",
+    "ce qui reste humain"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "chefs-mission-portefeuille",
+      "numerique-it-data"
+    ],
+    "proofLevel": "indirect",
+    "proofNote": "Référentiel des besoins : poste expert-comptable associé (23 besoins attestés, août 2026) et poste assistante du cabinet (27 besoins) ; les autres rôles restent des hypothèses."
+  },
+  "funnel": "TOFU",
+  "cluster": "methode-decision-humaine",
+  "famille": "choisir-cadrer",
+  "contentType": "searchable",
+  "format": "pillar-page",
+  "task": "Dresser la carte des tâches automatisables du cabinet et repérer celles qui ont une règle écrite.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Onze pôles et soixante familles listés depuis src/data/familles.ts ; pour chaque pôle un tableau se-prépare-seul / attend-une-validation / reste-humain ; cinq affirmations sourcées sur des pages officielles ouvertes le jour de la publication.",
+  "reviewRule": "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données.",
+  "cta": {
+    "label": "Cadrer une première tâche",
+    "destination": "/contact",
+    "outcome": "Une demande décrivant une tâche précise du cabinet, sa règle et ses exceptions."
+  },
+  "image": {
+    "heroId": "img-art-carte-des-taches",
+    "alt": "Carte des tâches d’un cabinet en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain",
+    "cadre": {
+      "titre": "La carte des tâches automatisables d’un cabinet",
+      "sousTitre": "Onze pôles, soixante familles, une frontière par tâche",
+      "famille": "Méthode et décision humaine",
+      "colonnes": [
+        {
+          "titre": "Se prépare seul",
+          "items": [
+            "Relance de pièces à cadence",
+            "Import d’un export logiciel",
+            "Contrôle de cohérence avant dépôt",
+            "Statut d’un dossier par étape"
+          ]
+        },
+        {
+          "titre": "Attend une validation",
+          "items": [
+            "Envoi d’une relance au client",
+            "Écriture proposée par le lettrage",
+            "Échéancier de rattrapage",
+            "Courrier type préparé"
+          ]
+        },
+        {
+          "titre": "Reste humain",
+          "items": [
+            "Jugement fiscal",
+            "Litige ou contentieux",
+            "Signature d’une lettre de mission",
+            "Décision de déposer"
+          ]
+        }
+      ],
+      "pied": "memlia.fr — automatiser un cabinet comptable"
+    }
+  },
+  "sources": [
+    {
+      "id": "sp-conservation",
+      "publisher": "Service Public",
+      "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Source officielle primaire de l’administration française, publiée directement sur le portail Service-Public.",
+      "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
+    },
+    {
+      "id": "cnil-principes",
+      "publisher": "CNIL",
+      "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
+      "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Texte du RGPD publié par l’autorité de protection des données, source primaire officielle.",
+      "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
+    },
+    {
+      "id": "cnil-durees",
+      "publisher": "CNIL",
+      "title": "Les durées de conservation des données",
+      "url": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Fiche officielle de l’autorité de protection des données, source primaire.",
+      "excerpt": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement."
+    },
+    {
+      "id": "impots-calendrier",
+      "publisher": "impots.gouv.fr",
+      "title": "Calendrier fiscal des professionnels",
+      "url": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Calendrier officiel publié par la direction générale des finances publiques, source primaire.",
+      "excerpt": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel."
+    },
+    {
+      "id": "net-crm",
+      "publisher": "Net-entreprises",
+      "title": "Les comptes rendus métiers DSN",
+      "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Portail officiel des déclarations sociales, page primaire sur les comptes rendus métier.",
+      "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/automatisation-cabinet-comptable",
+      "/methode",
+      "/garanties",
+      "/ressources",
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "/glossaire#regle-de-cabinet",
+      "/glossaire#validation-humaine",
+      "/glossaire#cas-de-refus",
+      "/blog/automatiser-la-relance-des-pieces-clients"
+    ],
+    "incoming": [
+      "/blog",
+      "/automatisation-cabinet-comptable"
+    ]
+  },
+  "cannibalization": {
+    "risk": "moyen",
+    "comparedWith": [
+      "/automatisation-cabinet-comptable"
+    ],
+    "decision": "La page service vise l’achat (évaluer-service) et le pilier la lecture (comprendre) ; titres et intentions distincts, chacun renvoie à l’autre ; l’attribution des impressions sera relue dans Search Console à M+3."
+  },
+  "serp": {
+    "requete": "automatisation cabinet comptable",
+    "date": "2026-09-16",
+    "volume": "10 recherches par mois (DataForSEO, relevé du 12/09/2026)",
+    "acteurs": [
+      "Queoval Expert",
+      "AzenFlow",
+      "FlowZero",
+      "Hexagone Stratégie",
+      "Nexco",
+      "cabinets publiant leur offre"
+    ],
+    "formats": "listes de workflows et de tâches répétitives, pages fonctionnalités d’éditeur, aucune carte complète par famille avec frontière d’automatisation",
+    "note": "Relevé WebSearch France/fr du 16/09/2026 ; positions ND ; aucune page classée ne livre la carte par famille ni la frontière par tâche."
+  },
+  "gsc": {
+    "requete": "automatisation cabinet comptable",
+    "date": "2026-09-16",
+    "periode": "90 jours",
+    "impressions": 0,
+    "clics": 0,
+    "note": "Search Console lue le 16/09/2026 : 52 impressions, 10 clics et 2 requêtes distinctes sur 90 jours pour l’ensemble du site ; aucune impression attribuée à cette page, qui n’existait pas. Aucun crédit métrique revendiqué."
+  },
+  "claims": [
+    {
+      "unite": "Service-Public le formule ainsi",
+      "claim": "une entreprise doit conserver tout document émis ou reçu dans l’exercice de son activité pendant une durée minimale",
+      "type": "legal-reglementaire",
+      "sourceId": "sp-conservation",
+      "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+      "explanation": "La phrase de Service-Public est reprise à l’identique, seule l’apostrophe typographique diffère."
+    },
+    {
+      "unite": "Net-entreprises les définit précisément",
+      "claim": "un compte rendu métier est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée",
+      "type": "dsn",
+      "sourceId": "net-crm",
+      "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
+      "explanation": "Définition officielle du compte rendu métier reprise à l’identique depuis Net-entreprises."
+    },
+    {
+      "unite": "Le calendrier de l’administration donne le cadre",
+      "claim": "dépôt et le paiement de la déclaration mensuelle de TVA entre les 15 et 24 septembre 2026",
+      "type": "fiscal",
+      "sourceId": "impots-calendrier",
+      "excerpt": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel.",
+      "explanation": "Fenêtre de dépôt et de paiement de la TVA mensuelle de septembre 2026 telle que publiée par le calendrier fiscal officiel."
+    },
+    {
+      "unite": "La première est la minimisation",
+      "claim": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-principes",
+      "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "explanation": "Principe de minimisation, article 5 du RGPD, cité mot pour mot depuis le texte publié par la CNIL."
+    },
+    {
+      "unite": "La seconde porte sur la durée",
+      "claim": "la définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-durees",
+      "excerpt": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement.",
+      "explanation": "Règle de la CNIL sur la fixation de la durée de conservation, reprise à l’identique."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "chefs-mission-portefeuille"
+  }
+}

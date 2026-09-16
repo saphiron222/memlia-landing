@@ -1,0 +1,414 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-la-relance-des-pieces-clients",
+  "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-99e175b1b02b",
+      "text": "Automatiser la relance des pièces clients, c’est tenir pour chaque dossier la liste des pièces attendues sur la période, constater ce qui manque, préparer une relance à cadence fixe et l’arrêter à réception. Trois briques suffisent : une checklist conditionnelle, un contrôle de complétude, une cadence qui s’arrête. La relance part après validation, jamais seule, et tout dossier en litige sort du circuit.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-66b845d95217",
+      "text": "Pourquoi la relance manuelle casse",
+      "claimIds": []
+    },
+    {
+      "id": "unit-962197005faf",
+      "text": "Chaque mois, la période ne peut pas être tenue parce que des pièces manquent : un relevé, des factures d’achat, la caisse du dernier trimestre. Le collaborateur relance à la main, client par client, depuis sa messagerie. Deux choses cassent alors. Personne ne sait qui a déjà été relancé, ni quand, ni pour quoi ; la deuxième relance répète la première ou l’oublie. Et l’on relance des pièces déjà reçues, parce que la réception n’a pas été constatée au bon endroit. Le résultat n’est pas seulement du temps perdu : c’est un client agacé par une relance inutile, et une pièce vraiment manquante qui attend.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b1ac91e3a1c1",
+      "text": "La cause n’est pas la messagerie, ni le client. C’est l’absence d’une règle écrite : quelles pièces sont attendues pour ce dossier et cette période, dans quel état, et à partir de quand on relance. La suite décrit cette règle en trois briques, rejouables dans un classeur et une messagerie ordinaires, sans changer d’outil.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-cd21ee01d8f6",
+      "text": "Brique 1 : la checklist conditionnelle par dossier",
+      "claimIds": []
+    },
+    {
+      "id": "unit-56b82442bf61",
+      "text": "Une liste unique de pièces ne marche pas, parce que deux dossiers n’attendent pas les mêmes pièces. La checklist est donc conditionnelle : elle dépend du régime du dossier, de sa périodicité de TVA, de la présence de salariés, d’une caisse, d’immobilisations, d’emprunts. Pour un dossier donné, ces conditions produisent la liste des pièces attendues sur la période : relevés bancaires de chaque compte, factures d’achat, factures de vente ou journal de caisse, notes de frais, échéanciers d’emprunt, pièces sociales quand elles ne viennent pas du cabinet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-bfdd09fbebcb",
+      "text": "La checklist s’écrit une fois par condition, pas une fois par dossier. Quand un dossier change de régime ou ouvre un compte, sa liste change avec lui. C’est la première règle de cabinet à écrire, dans les mots du cabinet : « pour un dossier soumis à la TVA mensuelle, on attend chaque mois les relevés de tous les comptes et les factures d’achat ; pour un dossier en franchise, les relevés suffisent ». Rien de plus savant qu’une phrase par condition.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8352513ca2ce",
+      "text": "Brique 2 : le contrôle de complétude",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5160b571450f",
+      "text": "Une pièce attendue passe par quatre états, et pas trois : attendue, reçue, lisible, hors période. « Reçue » ne suffit pas : un relevé scanné de travers, une facture tronquée, un fichier vide sont reçus et inutilisables. « Hors période » évite l’erreur la plus courante : une pièce d’un autre mois, classée comme reçue, qui laisse croire que la période est complète. Le contrôle de complétude compare, pour chaque dossier et chaque période, la liste attendue et l’état de chaque pièce, et produit une seule chose : la liste de ce qui manque encore.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-54290c8687b2",
+      "text": "Ce contrôle est purement déterministe. Il ne juge pas, il compare. C’est ce qui le rend automatisable en toute sécurité : s’il se trompe, c’est que la checklist ou l’état a été mal renseigné, et l’erreur est visible. Il ne déclare jamais un dossier complet de lui-même : la complétude d’une période se valide par une personne, parce que c’est elle qui engage la suite du travail.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9e0a0cdb4788",
+      "text": "Brique 3 : la cadence qui s’arrête à réception",
+      "claimIds": []
+    },
+    {
+      "id": "unit-146ef37e06c8",
+      "text": "La relance suit une cadence choisie par le cabinet, par exemple une première relance quelques jours après la date attendue, une seconde une semaine plus tard, puis une remontée à la personne en charge du dossier. Les délais sont des paramètres du cabinet, pas des normes ; ce qui compte est ailleurs. Une relance ne part que si une pièce est encore manquante au moment de partir, jamais sur la base de l’état d’il y a trois jours. Une relance porte la liste exacte des pièces manquantes, pas une demande générique. Et la cadence s’arrête dès que la pièce est reçue et lisible, sans que personne ait à la désactiver.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-62fcc8e08ab0",
+      "text": "Chaque relance est préparée depuis le message type du cabinet, avec la liste des pièces, puis proposée à validation. La personne qui valide voit ce qui va partir, à qui, et pourquoi. Le journal des relances tient, par dossier, la date, les pièces demandées et l’état au moment de l’envoi : c’est lui qui répond, plus tard, à la question « a-t-on relancé, et quand ».",
+      "claimIds": []
+    },
+    {
+      "id": "unit-104cfb75264f",
+      "text": "La règle dans les mots du cabinet",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8e016fd434d9",
+      "text": "| Déclencheur | Condition | Action | Exception | |---|---|---|---| | Une période s’ouvre pour un dossier | La checklist du dossier est connue | La liste des pièces attendues est créée, toutes à l’état attendu | Dossier sans checklist : remontée, aucune liste créée | | Une pièce arrive | Elle correspond à une pièce attendue de la période | Son état passe à reçue, puis à lisible après contrôle | Pièce illisible ou hors période : état dédié, relance ciblée | | La date de première relance est atteinte | Au moins une pièce est encore attendue | Une relance listant les pièces manquantes est préparée et proposée | Dossier en litige ou signalé : aucune relance proposée | | Une relance est validée | Le message type est complet | La relance part, le journal l’enregistre | Message incomplet : rien ne part | | Toutes les pièces sont lisibles | La période est complète | La cadence s’arrête, la complétude est proposée à validation | Aucune |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8f7b33bdc61b",
+      "text": "Ce que l’outil refuse, et pourquoi",
+      "claimIds": []
+    },
+    {
+      "id": "unit-31ff3eb12b99",
+      "text": "Le refus n’est pas une panne, c’est la partie la plus utile de la règle. L’outil ne relance pas un dossier signalé en litige, en contentieux ou en fin de mission : une relance automatique y ferait plus de mal qu’une pièce manquante. Il ne relance pas un dossier dont la checklist n’a pas été renseignée : relancer « les pièces habituelles » sans savoir lesquelles est exactement l’erreur qu’on veut supprimer. Il n’envoie rien sans validation, même quand la règle est certaine. Et il ne déduit jamais qu’une pièce est reçue parce qu’un courriel est arrivé : la réception se constate sur la pièce, pas sur le message.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-02b54beee1e1",
+      "text": "Chaque refus remonte dans une file unique, avec le dossier, la raison et la date. Cette file est traitée d’un coup, une fois par jour ou par semaine, par une personne. Elle vaut mieux qu’une alerte par cas, qui finit ignorée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-462114bfbd6f",
+      "text": "Ce qui s’automatise, ce qui attend une validation, ce qui reste humain",
+      "claimIds": []
+    },
+    {
+      "id": "unit-38890741e12d",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | La liste des pièces attendues, dossier par dossier, période par période | L’envoi de chaque relance préparée | Le contact avec un client en litige ou en difficulté | | Le constat de ce qui manque, avec l’état de chaque pièce | La déclaration qu’une période est complète | La décision de sortir un dossier du circuit | | L’arrêt de la cadence à réception | La modification d’une checklist quand un dossier change | La qualification d’une pièce ambiguë |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c7e819a93546",
+      "text": "Le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1061f1fae1d8",
+      "text": "Six dossiers inventés suffisent à rejouer la règle. Un commerce soumis à la TVA mensuelle avec une caisse : relevés de deux comptes, factures d’achat, journal de caisse, chaque mois. Une profession libérale en franchise : relevés d’un compte, chaque trimestre. Une société avec salariés et un emprunt : relevés, factures, échéancier, pièces sociales. Une holding sans activité : un relevé. Un dossier en litige, signalé comme tel. Un dossier nouveau, dont la checklist n’a pas encore été renseignée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d677799472ae",
+      "text": "Sur ce jeu, la règle produit exactement ce qu’on attend d’elle. Les quatre premiers dossiers reçoivent une liste attendue conforme à leurs conditions ; deux d’entre eux ont une pièce manquante à la date de première relance et une relance ciblée leur est proposée ; l’un des deux envoie une pièce hors période, qui reste à l’état dédié et déclenche une relance précisant la période attendue. Le dossier en litige ne reçoit rien et apparaît dans la file. Le dossier sans checklist n’a aucune liste et apparaît aussi dans la file, avec sa raison. C’est ce jeu, et non une promesse de gain, qui prouve la règle avant qu’elle ne touche un vrai dossier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1f1d4a574e9d",
+      "text": "Le cadre : données, conservation, sous-traitance",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d261dcf7ed61",
+      "text": "Une relance de pièces manipule des données personnelles, ne serait-ce que le nom et l’adresse de courriel du contact chez le client. Le principe de minimisation s’applique tel quel : les données doivent être adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées. L’outil qui relance n’a besoin ni des bulletins, ni du grand livre, ni de l’historique bancaire ; il a besoin de la checklist, des états et d’une adresse de contact.",
+      "claimIds": [
+        "claim-unit-d261dcf7ed61-1"
+      ]
+    },
+    {
+      "id": "unit-e5aeddef0964",
+      "text": "La durée compte aussi. La CNIL rappelle que, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte ; c’est alors au cabinet de la fixer, et le journal des relances a besoin d’une règle de purge écrite. Les pièces elles-mêmes obéissent au régime de conservation des documents d’entreprise : une entreprise doit conserver tout document émis ou reçu dans l’exercice de son activité pendant une durée minimale, ce qui borne le classement des pièces reçues bien au-delà de la relance.",
+      "claimIds": [
+        "claim-unit-e5aeddef0964-1",
+        "claim-unit-e5aeddef0964-2"
+      ]
+    },
+    {
+      "id": "unit-5cd56910d808",
+      "text": "Enfin, si l’outil de relance est hébergé par un tiers, ce tiers traite des données pour le compte du cabinet. La CNIL définit ainsi le sous-traitant : la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme. Le contrat qui l’encadre fait partie du cadrage, avant la première relance. Ce cadre ne rend pas la relance plus lourde : il lui donne ses limites, et c’est à ces limites qu’on reconnaît une automatisation que le cabinet peut assumer devant ses clients.",
+      "claimIds": [
+        "claim-unit-5cd56910d808-1"
+      ]
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-78c1f182c0fa",
+      "text": "Cette famille est la première de la carte des tâches automatisables d’un cabinet, et la collecte des variables de paie lui ressemble trait pour trait, comme le montre le contrôle des bulletins avant le dépôt. La pièce justificative, la règle de cabinet et le cas de refus sont définis au glossaire. La méthode Memlia part de la règle écrite ci-dessus, la rejoue sur vos fichiers en recette, et la code dans les outils que vous utilisez déjà.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-d261dcf7ed61-1",
+      "unitId": "unit-d261dcf7ed61",
+      "claim": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-principes"
+      ],
+      "sourceExcerpts": {
+        "cnil-principes": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
+      },
+      "checkedAt": "2026-09-16",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-16",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-principes",
+            "sourceUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "verifiedUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+            "context": "<p>c)&nbsp;adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées (<button type=\"button\" class=\"glossary-tooltips\" aria-describedby=\"tooltip_content\" data-definition=\"minimisation\"><span class=\"glossary-tooltips-title\">minimisation</span></button> des données);</p>",
+            "contextSha256": "2699f5a7d291120b27843bf2dd127cdddd3f634063c917a28566bba74643ac55",
+            "citation": {
+              "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+              "sha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
+              "sourceContentSha256": "80a9c95a294d8a738c16ccc39dba4c9df7f43094af68bb782089f5f9037d6490",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+                "checkedAt": "2026-09-16",
+                "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 531,
+                  "endLine": 531
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "adequates",
+                "pertinentes",
+                "limitees",
+                "necessaire",
+                "regard",
+                "finalites",
+                "lesquelles",
+                "traitees"
+              ],
+              "reasoning": "La citation, relevée à la ligne 531 de la copie locale de CNIL, porte les mêmes entités que le claim (adequates, pertinentes, limitees, necessaire, regard, finalites, lesquelles, traitees) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Principe de minimisation, article 5 du RGPD, cité mot pour mot depuis le texte publié par la CNIL.",
+            "checkedAt": "2026-09-16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-e5aeddef0964-1",
+      "unitId": "unit-e5aeddef0964",
+      "claim": "pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-durees"
+      ],
+      "sourceExcerpts": {
+        "cnil-durees": "Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte."
+      },
+      "checkedAt": "2026-09-16",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-16",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-durees",
+            "sourceUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+            "verifiedUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+            "excerpt": "Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte.",
+            "context": "<p>Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte. <strong>Il appartient alors au responsable du <button type=\"button\" class=\"glossary-tooltips\" aria-describedby=\"tooltip_content\" data-definition=\"fichier\"><span class=\"glossary-tooltips-title\">fichier</span></button> de la déterminer en fonction de la finalité du traitement</strong>.</p>",
+            "contextSha256": "2262fe305f27b2663b6482f875cb533cf6a2262fbe0f5954a28e3b398241bccb",
+            "citation": {
+              "text": "Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte.",
+              "sha256": "03753b8dd6f3d19178af98785f6542f535195836e334fd92027002aabe5de8c2",
+              "sourceContentSha256": "020c1d06e3358d4d0bad6c98e3d0f910c6b98ef3e3f54d6bd0dff9465f752a14",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+                "checkedAt": "2026-09-16",
+                "title": "Les durées de conservation des données",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 780,
+                  "endLine": 780
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "nombreux",
+                "traitements",
+                "donnees",
+                "duree",
+                "conservation",
+                "fixee",
+                "texte"
+              ],
+              "reasoning": "La citation, relevée à la ligne 780 de la copie locale de CNIL, porte les mêmes entités que le claim (nombreux, traitements, donnees, duree, conservation, fixee, texte) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Constat de la CNIL sur l’absence de durée fixée par un texte pour de nombreux traitements, repris à l’identique.",
+            "checkedAt": "2026-09-16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-e5aeddef0964-2",
+      "unitId": "unit-e5aeddef0964",
+      "claim": "une entreprise doit conserver tout document émis ou reçu dans l’exercice de son activité pendant une durée minimale",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "sp-conservation"
+      ],
+      "sourceExcerpts": {
+        "sp-conservation": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
+      },
+      "checkedAt": "2026-09-16",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-16",
+        "sourceResults": [
+          {
+            "sourceId": "sp-conservation",
+            "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+            "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+            "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+            "context": "             aria-hidden=\"false\"><p class=\"fr-text--lg\">Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale. Ce délai varie selon la nature des papiers et les obligations légales. L'entreprise peut aussi archiver les documents plus longtemps, sauf s'ils contiennent des données personnelles. Pendant ce délai, l'administration peut mener des contrôles. Cette page indique les délais de conservation des principaux documents. Vous pouvez aussi utiliser un simulateur.</p></div><div class=\"fr-my-4w\" id=\"expired\"",
+            "contextSha256": "32b0c1e8d867208e631699dbcc96b1ad457bd1ae11daa7cf0c76cdb20459774c",
+            "citation": {
+              "text": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+              "sha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
+              "sourceContentSha256": "cb03b229f0fd1d181b3154226a65916cb618e11edc023b1ad90562373a989421",
+              "coordinates": {
+                "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+                "checkedAt": "2026-09-16",
+                "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 307,
+                  "endLine": 307
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "entreprise",
+                "doit",
+                "conserver",
+                "document",
+                "emis",
+                "recu",
+                "exercice",
+                "activite",
+                "pendant",
+                "duree",
+                "minimale"
+              ],
+              "reasoning": "La citation, relevée à la ligne 307 de la copie locale de Service Public, porte les mêmes entités que le claim (entreprise, doit, conserver, document, emis, recu, exercice, activite, pendant, duree, minimale) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La phrase de Service-Public est reprise à l’identique, seule l’apostrophe typographique diffère.",
+            "checkedAt": "2026-09-16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-5cd56910d808-1",
+      "unitId": "unit-5cd56910d808",
+      "claim": "la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-sous-traitant"
+      ],
+      "sourceExcerpts": {
+        "cnil-sous-traitant": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme"
+      },
+      "checkedAt": "2026-09-16",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-16",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-sous-traitant",
+            "sourceUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
+            "verifiedUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
+            "excerpt": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme",
+            "context": "<meta name=\"description\" content=\"Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme (« le responsable de traitement »), dans le cadre d’un service ou d’une prestation. Les sous-traitants ont des obligations concernant les données personnelles, qui doivent être présentes dans le contrat :\" />",
+            "contextSha256": "a6d031dd2f8d74919887f703c12dc03e7b89e8b47b28976683c17ccb92620b34",
+            "citation": {
+              "text": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme",
+              "sha256": "527923a27ec2ed451a7ebf42f076caf5f74ea1c14431366ca1b3fcb56e5d5256",
+              "sourceContentSha256": "61b510e018ae965f49b8a5c539425875f7f1d33d1696282b8db0a0f65c4826c5",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
+                "checkedAt": "2026-09-16",
+                "title": "Définition : sous-traitant",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 7,
+                  "endLine": 7
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "personne",
+                "physique",
+                "morale",
+                "entreprise",
+                "organisme",
+                "public",
+                "traite",
+                "donnees",
+                "compte",
+                "autre"
+              ],
+              "reasoning": "La citation, relevée à la ligne 7 de la copie locale de CNIL, porte les mêmes entités que le claim (personne, physique, morale, entreprise, organisme, public, traite, donnees, compte, autre) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Définition officielle du sous-traitant reprise à l’identique depuis le glossaire de la CNIL.",
+            "checkedAt": "2026-09-16"
+          }
+        ]
+      }
+    }
+  ]
+}

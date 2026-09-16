@@ -17,7 +17,9 @@ PAGES_FIXES = ['404', 'a-propos', 'automatisation-cabinet-comptable', 'blog', 'c
                'glossaire', 'index', 'mentions-legales', 'methode', 'politique-de-confidentialite', 'ressources']
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
 PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
-                   'comprendre-les-comptes-rendus-metier-dsn'}
+                   'comprendre-les-comptes-rendus-metier-dsn',
+                   # v3, 16/09/2026 : le pilier et le premier satellite publiés par la forge.
+                   'automatiser-un-cabinet-comptable-la-carte-des-taches', 'automatiser-la-relance-des-pieces-clients'}
 
 
 class Document(HTMLParser):
@@ -163,8 +165,9 @@ class BuildProof(unittest.TestCase):
         # sociale webp par article (imageOg, exigée par le contrat de la collection).
         # Les pages commerciales n'ajoutent rien ici : leur visuel de tête est une preuve
         # fonctionnelle rendue sous public/proofs/v2, avec son image sociale sous og/.
-        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 9)
-        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 12)
+        publies = [a for a in articles() if not is_preview_article(a)]
+        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 3 * len(publies))
+        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 4 * len(publies))
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
         # Série v2 : treize preuves de section, cinq preuves de tête, et l'image sociale de chaque tête.
         self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 18)
@@ -298,3 +301,22 @@ class BuildProof(unittest.TestCase):
 if __name__ == '__main__':
     print('Sujet SHA256 dist/index.html:', hashlib.sha256((DIST / 'index.html').read_bytes()).hexdigest(), flush=True)
     unittest.main(verbosity=2)
+
+class FamillesDesArticles(unittest.TestCase):
+    """La famille de chaque article du pipeline existe dans la taxonomie (src/data/familles.ts), source unique."""
+
+    def test_familles_des_articles_pipeline(self):
+        taxonomie = (ROOT / 'src/data/familles.ts').read_text(encoding='utf-8')
+        ids = set(re.findall(r"f\('([a-z0-9-]+)'", taxonomie))
+        self.assertGreaterEqual(len(ids), 60)
+        verifies = 0
+        for article in (ROOT / 'src/content/blog').glob('*.md'):
+            frontmatter = article.read_text(encoding='utf-8').split('---', 2)[1]
+            famille = re.search(r'^famille:\s*([a-z0-9-]+)\s*$', frontmatter, re.M)
+            if famille is None:
+                continue
+            self.assertIn(famille.group(1), ids, article.name)
+            verifies += 1
+        # Le compte affiché dit ce que le test a réellement contrôlé : zéro article pipeline n'est pas un succès silencieux.
+        print(f'familles vérifiées : {verifies} article(s) pipeline')
+

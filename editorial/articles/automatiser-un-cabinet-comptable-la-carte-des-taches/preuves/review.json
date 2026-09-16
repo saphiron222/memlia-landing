@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-16",
+  "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
+  "manifestSha256": "a5824e31f1f971a99d93f64b039b774e6189a997638b587d1f10e3d15394f6c3",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
+  ],
+  "reviewer": "marketing",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "La section « Réponse directe » définit l'automatisation en une phrase actionnable dès l'ouverture (« exécuter une règle écrite sans intervention humaine... et faire remonter ce qui sort de la règle »), ce qui répond immédiatement à l'intention « comprendre ».",
+        "Le test en trois conditions (répétition, règle écrite, exceptions qui se comptent) donne au lecteur un critère de tri concret, exactement ce que demande la tâche « repérer celles qui ont une règle écrite ».",
+        "La section finale « Par où commencer » réduit la carte à un exercice d'une page (déclencheur, condition, action, exception), ce qui sert un lecteur direction-associés pressé sans l'obliger à lire les onze pôles en entier."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Chacun des onze pôles est un H2 autonome suivi d'un tableau à trois colonnes (Se prépare seul / Attend une validation / Reste humain), un format qui se prête à l'extraction en featured snippet.",
+        "Les liens vers /blog/controler-les-bulletins-de-paie-avant-la-dsn, /blog/suivre-la-production-sociale-dans-excel et /blog/comprendre-les-comptes-rendus-metier-dsn renvoient au détail plutôt que de le réécrire, ce qui évite la cannibalisation typique d'une page pilier.",
+        "Le slug automatiser-un-cabinet-comptable-la-carte-des-taches reprend naturellement la primaryQuery « automatisation cabinet comptable » sans bourrage de mots-clés."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Les cinq citations vérifiées (Service-Public, CNIL x2, impots.gouv.fr, Net-entreprises) sont reproduites mot pour mot dans les copies locales des sources, confirmées par grep dans les fichiers .source.txt, sans changement de portée.",
+        "La phrase « observées de près chez un cabinet client » dans la section Facturation signale une expérience de terrain réelle sans exposer aucun nom ni donnée identifiante, conforme à l'anti-surveillance du site.",
+        "L'exemple de calendrier TVA (15-24 septembre 2026) est exact à la date de publication mais restera daté dans une page pensée comme pilier durable ; l'article l'assume déjà en le présentant comme « pour septembre 2026 »."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Le total « onze pôles et soixante familles » se vérifie par le calcul : les compteurs énumérés pôle par pôle (13+5+7+7+4+5+3+4+3+4+4) totalisent 59, et la famille « audit légal et commissariat aux comptes », explicitement listée mais non ouverte, complète le compte à 60.",
+        "La section « Ce que cette carte ne contient pas » énonce trois renoncements explicites (aucun chiffre de gain, audit légal non documenté, aucune fonction promise), une transparence qui dépasse le contenu générique sur l'IA comptable.",
+        "Le triage à trois colonnes est appliqué de façon identique aux onze pôles avec des exemples différents à chaque fois (ex. lettrage, TVA, boîte mail), ce qui constitue un cadre original plutôt qu'une liste de généralités."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "La hiérarchie de titres du corps est cohérente : un H2 par pôle sans saut de niveau, et les tableaux utilisent des en-têtes de colonnes explicites plutôt que de simples puces.",
+        "Le paquet de revue ne contient pas le frontmatter rendu (title, meta description, canonical, JSON-LD) : ce jugement porte donc sur la structure du corps et le slug, pas sur les balises de la page publiée."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "La phrase d'ouverture « Automatiser une tâche de cabinet, c'est exécuter une règle écrite sans intervention humaine à chaque occurrence, et faire remonter ce qui sort de la règle » est une définition autoportante directement citable par un moteur génératif.",
+        "Les tableaux juxtaposent des exemples courts et concrets (« La relance d'une pièce manquante, à cadence, jusqu'à réception », « L'écriture proposée par le lettrage ou le rapprochement »), un format que les IA extraient facilement en liste de faits."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "La section « Par où commencer » enchaîne un exercice autonome (écrire sa règle sur une page) puis un renvoi vers /methode, /automatisation-cabinet-comptable et /garanties, un entonnoir progressif cohérent avec une intention « comprendre » plutôt qu'un lien prématuré vers /contact."
+      ]
+    }
+  ]
+}

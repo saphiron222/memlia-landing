@@ -17,8 +17,10 @@ import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
  * Fichier `blog.astro` (pas `blog/index.astro`) : avec `build.format: 'file'`, l'URL
  * canonique sans slash est servie sans redirection.
  */
+// Le pilier (format pillar-page) reste en tête de liste ; les autres articles suivent, du plus récent au plus ancien.
 const articles = (await getCollection('blog', isBlogEntryVisible)).sort(
-  (a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime()
+  (a, b) => Number(b.data.format === 'pillar-page') - Number(a.data.format === 'pillar-page')
+    || b.data.datePublication.getTime() - a.data.datePublication.getTime()
 );
 const formatDate = (d: Date) => d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const iso = (d: Date) => d.toISOString().slice(0, 10);

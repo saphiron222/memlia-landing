@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-la-relance-des-pieces-clients",
+  "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
+  "manifestSha256": "d6c55c2b8cd4cda6e733e3fcef1bd91174eafbe5501870fa822a2c7dd203c88f",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Relance des pièces clients en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain",
+  "score": 100,
+  "directionArt": 17,
+  "semanticRelevance": 24,
+  "p0": [],
+  "kevinApproved": true
+}

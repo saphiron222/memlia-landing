@@ -1,6 +1,6 @@
 # Stratégie SEO et éditoriale v3 — tout le cabinet, pas seulement la paie
 
-16 septembre 2026 — proposition (décision D2 : recommandation à valider par Kevin). Rien n'est publié, aucun code applicatif modifié. Ce dossier remplace, pour l'éditorial, la stratégie v2 (`../site-v2/SEO-STRATEGY.md`, trois piliers dont deux sur la production sociale) et les notes du coffre (`~/memlia-vault/10-memlia/marketing/seo/`, clusters A à F). Les pages commerciales v2 restent telles quelles.
+16 septembre 2026 — validée par Kevin le jour même (« sinon go »), avec deux amendements : cadence **quatre articles par semaine** (au plus deux par jour) et taxonomie élargie à **soixante familles de tâches** en douze pôles (`src/data/familles.ts`), au lieu des onze familles de la première version. Exécution en cours par la forge éditoriale (`scripts/blog-forge.mjs`). Ce dossier remplace, pour l'éditorial, la stratégie v2 (`../site-v2/SEO-STRATEGY.md`, trois piliers dont deux sur la production sociale) et les notes du coffre (`~/memlia-vault/10-memlia/marketing/seo/`, clusters A à F). Les pages commerciales v2 restent telles quelles.
 
 ## 1. Le constat en trois lignes
 
@@ -12,7 +12,7 @@
 
 **Memlia est le site qui explique, tâche par tâche, comment un cabinet d'expertise comptable automatise ce qu'il fait déjà, sans changer de logiciel, avec une règle écrite dans ses mots, un jeu d'essai fictif, et une validation humaine.** Le sujet n'est plus « la production sociale » : c'est **la tâche répétitive du cabinet**, où qu'elle se trouve (collecte de pièces, saisie, lettrage, révision, échéances, honoraires, courriels, paie, juridique, pilotage).
 
-Le terme de catégorie mesuré reste **« automatisation cabinet comptable »** (10 recherches/mois, seule requête de catégorie chiffrée, relevé DataForSEO du 12/09). La page de service `/automatisation-cabinet-comptable` le porte déjà. La v3 lui donne enfin un territoire éditorial à sa taille : **un pilier + onze familles de tâches**, au lieu de deux satellites paie.
+Le terme de catégorie mesuré reste **« automatisation cabinet comptable »** (10 recherches/mois, seule requête de catégorie chiffrée, relevé DataForSEO du 12/09). La page de service `/automatisation-cabinet-comptable` le porte déjà. La v3 lui donne enfin un territoire éditorial à sa taille : **un pilier + soixante familles de tâches en douze pôles**, au lieu de deux satellites paie.
 
 ## 3. Ce qui change, ce qui ne change pas
 
@@ -20,7 +20,7 @@ Le terme de catégorie mesuré reste **« automatisation cabinet comptable »** 
 |---|---|---|
 | Territoire éditorial | production sociale + méthode | **toute tâche automatisable du cabinet**, onze familles |
 | Pilier | aucun article pilier ; la page service tient lieu de hub | **un article pilier** « la carte des tâches automatisables d'un cabinet » (2 500 à 4 000 mots) + la page service |
-| Cadence | 1 à 2 articles/mois | **3/mois en régime** (2 le premier mois, 4 le troisième), soutenable parce que le pipeline éditorial (gate, fact-check, revue métier IA) existe |
+| Cadence | 1 à 2 articles/mois | **4 par semaine**, au plus 2 par jour (plafonds codés dans le pipeline), tenue par la forge : recette → sources vérifiées en ligne → revues indépendantes → gate → publication scellée |
 | Glossaire | 23 termes, 13 sur la paie/DSN | **23 conservés + 34 termes automatisation, IA, données, cadre** (voir `GLOSSARY-PLAN.md`) |
 | Pages commerciales | 5 pages | **inchangées**. Aucune page « par famille » tant qu'aucun module ne la décrit (règle anti-catalogue) |
 | Promesse commerciale | limitée aux modules livrés | **inchangée** ; l'éditorial peut couvrir toute tâche si l'article est rejouable sans Memlia |

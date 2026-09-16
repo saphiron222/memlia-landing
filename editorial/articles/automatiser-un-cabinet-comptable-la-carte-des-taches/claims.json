@@ -1,0 +1,565 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+  "articleSha256": "d6fbc16da84603fe4acf9d952e1548fdcfff7c7636839b97862d51cb4edbc5de",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f66caebf64b6",
+      "text": "Automatiser une tâche de cabinet, c’est exécuter une règle écrite sans intervention humaine à chaque occurrence, et faire remonter ce qui sort de la règle. Un cabinet d’expertise comptable en compte des dizaines qui s’y prêtent : collecte de pièces, lettrage, échéances, honoraires, courriels, paie. Cette carte les classe en onze pôles et soixante familles, avec pour chacune la règle typique et la frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-847087791e31",
+      "text": "Comment lire cette carte",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a06171e9d71f",
+      "text": "Une tâche se prête à l’automatisation quand trois conditions tiennent ensemble. Elle se répète : chaque mois, chaque dossier, chaque pièce. Elle s’écrit en une règle que le cabinet formule dans ses propres mots, avec un déclencheur, une condition, une action et une exception. Et ses exceptions se comptent : une pièce illisible, un client en litige, un montant hors seuil. Quand l’une des trois conditions manque, la tâche reste humaine, et c’est très bien ainsi.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fd225119e528",
+      "text": "Chaque famille ci-dessous est décrite par sa règle typique, puis par sa frontière. La frontière se lit en trois colonnes. Ce qui se prépare seul : l’outil calcule, trie, relance, contrôle, sans que personne n’intervienne. Ce qui attend une validation : l’outil propose, une personne du cabinet valide avant que quoi que ce soit ne parte ou ne s’écrive. Ce qui reste humain : le jugement professionnel, la relation, la décision engageante. Cette frontière n’est pas un aveu de faiblesse de l’outil, c’est la règle de cabinet elle-même.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-04bd2b8055db",
+      "text": "Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. Les règles décrites se posent sur les classeurs, les messageries et les logiciels de production que le cabinet utilise déjà. Quand une famille est déjà documentée par un article détaillé, le lien y mène ; les autres articles viennent semaine après semaine, la carte se complète.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8c7eaf42bca8",
+      "text": "Production comptable : de la pièce reçue au bilan livré",
+      "claimIds": []
+    },
+    {
+      "id": "unit-beed772a721d",
+      "text": "C’est le pôle le plus large, treize familles, parce que c’est là que la répétition est la plus dense. La collecte et la relance des pièces ouvrent la chaîne : chaque dossier attend, pour chaque période, une liste de pièces qui dépend de son régime. La règle typique tient en trois états, attendu, reçu, lisible, et une cadence de relance qui cesse à réception. La saisie et la pré-comptabilité suivent : lecture des pièces, extraction des champs, pré-imputation, avec un reliquat d’exceptions que la lecture n’a pas su traiter et qui doit remonter plutôt que d’être forcé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-57d0aa128c64",
+      "text": "Le lettrage et le rapprochement bancaire obéissent à des règles d’appariement que le cabinet connaît par cœur mais écrit rarement : montant identique, référence présente, tolérance de quelques centimes, délai entre facture et règlement. Écrites, ces règles deviennent une proposition d’écriture et une liste d’écarts typés. Les factures d’achat, les ventes importées d’une caisse ou d’une boutique en ligne, les notes de frais, les tableaux d’amortissement et d’emprunt suivent la même logique : un import sans ressaisie, un contrôle de schéma, une écriture récurrente générée puis validée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d9ca7c990044",
+      "text": "La révision par cycles et la clôture concentrent des contrôles répétitifs : justification de chaque solde, comparaison avec l’exercice précédent, cohérence entre journaux. Une checklist datée, rejouée sur chaque dossier, prépare le travail du réviseur sans jamais le remplacer. Les situations intermédiaires et le reporting client s’en déduisent. La facture électronique change la matière première de tout ce pôle : ce que le cabinet reçoit, sous quel format, par quel canal. Enfin la gestion documentaire, dossier permanent compris, se règle par un nommage et un classement automatiques que l’on vérifie par échantillon.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-279d5bd8bf20",
+      "text": "Sur la conservation des pièces, le cadre est clair et il borne la règle de classement. Service-Public le formule ainsi : une entreprise doit conserver tout document émis ou reçu dans l’exercice de son activité pendant une durée minimale. La durée dépend de la nature du document ; la règle de nommage doit donc porter la date et la nature de la pièce, sinon rien ne peut être purgé proprement plus tard.",
+      "claimIds": [
+        "claim-unit-279d5bd8bf20-1"
+      ]
+    },
+    {
+      "id": "unit-3ddf711ef37e",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | La relance d’une pièce manquante, à cadence, jusqu’à réception | L’écriture proposée par le lettrage ou le rapprochement | La qualification d’une pièce ambiguë | | L’import d’un export de caisse ou de facturation, avec contrôle de schéma | La checklist de révision remplie, avant la revue du réviseur | L’écriture d’inventaire qui engage un jugement | | Le nommage et le classement d’une pièce reçue | La liste des écarts à traiter avant clôture | La décision de clôturer |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b7b251cae506",
+      "text": "Portefeuille et échéances : piloter la production sans classer les personnes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-068a433fe690",
+      "text": "Cinq familles, et un principe qui les traverse : on pilote des dossiers et des étapes, jamais des personnes. Le calendrier des échéances fiscales et sociales du portefeuille se tient par dossier, avec une alerte quand une échéance approche sans que le dossier soit à l’étape attendue. Les télédéclarations et leurs rejets se suivent de la même façon : envoyé, accusé, rejeté, corrigé. Le suivi des dossiers par état, dans un classeur que le cabinet possède déjà, donne en une lecture l’étape de chacun et ses exceptions.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ab60683978b8",
+      "text": "Le tableau de bord de production agrège tout cela en indicateurs non nominatifs : combien de dossiers à chaque étape, combien en retard, combien d’exceptions ouvertes. Le plan de charge en découle, pour répartir les périodes de pointe. La ligne rouge est nette : un indicateur qui classe les collaborateurs n’est pas un indicateur de production, c’est de la surveillance, et la carte ne le prévoit nulle part.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-106d11f6c4f4",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Le statut d’un dossier par étape, mis à jour depuis les fichiers du cabinet | L’alerte sur une échéance proche, à traiter ou à écarter | L’arbitrage entre deux dossiers en retard | | Le compte des rejets de télédéclaration par motif | La réaffectation d’un dossier proposée par le plan de charge | La conversation avec le client dont le dossier bloque |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fa3c223075af",
+      "text": "Paie et social : le pôle déjà documenté",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1b06e4df2032",
+      "text": "Sept familles, dont plusieurs sont déjà couvertes par des articles détaillés, parce que c’est le pôle où Memlia a livré ses premières automatisations. La collecte des variables de paie, chaque mois, ressemble trait pour trait à la relance de pièces : une liste attendue par client, une cadence, un arrêt à réception. Les contrôles des bulletins avant le dépôt rejouent des cohérences connues : variables saisies, bulletin calculé, fichier prêt à partir. Le suivi de la production sociale tient chaque dossier par étape dans le classeur existant, sans classement individuel.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e8439da9f147",
+      "text": "Les retours après dépôt ont leur propre famille. Net-entreprises les définit précisément : un compte rendu métier est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Lire un compte rendu métier, déterminer sa portée et organiser la correction est une tâche qui se prépare, mais dont la décision reste au responsable. Les entrées et sorties de salariés, les absences et leurs indemnités, les échéances de charges sociales complètent le pôle.",
+      "claimIds": [
+        "claim-unit-e8439da9f147-1"
+      ]
+    },
+    {
+      "id": "unit-df3baa4f421c",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | La relance des variables de paie manquantes | Le contrôle de cohérence d’un bulletin, écarts listés | La décision de déposer | | Le statut de chaque dossier du pôle social, par étape | La qualification d’un retour après dépôt | La correction qui engage les droits d’un salarié |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9892a79938af",
+      "text": "Juridique et fiscal : préparer, contrôler, ne jamais décider seul",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1a356f45cd1d",
+      "text": "Sept familles où la frontière est la plus stricte, parce que le jugement professionnel y est engagé à chaque pas. La TVA se prépare : les contrôles de cohérence avant déclaration, le rapprochement entre chiffre d’affaires et TVA collectée, la liste de ce qui a été vérifié. Le calendrier de l’administration donne le cadre : pour septembre 2026, il indique une fenêtre pour le dépôt et le paiement de la déclaration mensuelle de TVA entre les 15 et 24 septembre 2026, à la date figurant dans l’espace professionnel de chaque entreprise. La règle du cabinet part de là, dossier par dossier.",
+      "claimIds": [
+        "claim-unit-1a356f45cd1d-1"
+      ]
+    },
+    {
+      "id": "unit-e6a1e8d64fb6",
+      "text": "L’impôt sur les sociétés, ses acomptes et ses soldes, les déclarations annexes, le secrétariat juridique annuel, les formalités de création et de modification, les registres et obligations périodiques suivent la même logique : le calcul et le suivi se préparent, la déclaration et la signature restent des actes humains. La lettre de mission et la vigilance ont une place à part : leur renouvellement se suit par dossier, leur contenu se rédige et se signe par des personnes.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-08858dee2b2b",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Les contrôles de cohérence avant une déclaration, résultats listés | Le montant d’un acompte calculé, avant transmission | Le dépôt de la déclaration | | Le suivi des renouvellements de lettres de mission par dossier | Le procès-verbal préparé depuis les données tenues | L’arbitrage fiscal et la signature |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-af60d747e6a9",
+      "text": "Facturation et recouvrement du cabinet : ce qui se perd entre deux tableaux",
+      "claimIds": []
+    },
+    {
+      "id": "unit-907ace7bcc16",
+      "text": "Quatre familles, observées de près chez un cabinet client. Les honoraires mensualisés et les actes hors forfait se facturent une seule fois : la règle d’unicité paraît évidente, elle se casse dès que deux personnes tiennent deux tableaux. Les prélèvements s’assemblent en lots, les rejets reviennent de la banque avec un motif, et un échéancier de rattrapage se propose après plusieurs rejets. Les relances d’impayés se préparent au bon stade depuis les messages types du cabinet, et rien ne part sans validation. Enfin le temps, la rentabilité et la sous-facturation se mesurent par dossier, en agrégats.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-061fc4fb2e75",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | La détection d’un acte déjà facturé | La relance d’honoraires préparée au stade prévu | La négociation avec un client en difficulté | | La détection d’un rejet de prélèvement et son motif | L’échéancier de rattrapage proposé | L’accord d’un échéancier |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-eb851d6f3229",
+      "text": "Administration et secrétariat : la boîte mail et les jalons",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a06f4aae8ff8",
+      "text": "Cinq familles. La boîte mail du cabinet, assainie puis tenue par client et par priorité, est la plus demandée et la plus mal comprise : les règles de tri s’écrivent, et ce qui ne se trie jamais seul (un contentieux, une urgence humaine, une ambiguïté) doit remonter en tête plutôt que d’être classé. L’entrée en relation d’un nouveau client, la fin de mission et le transfert d’un dossier, les envois de plaquettes et de documents, la préparation des rendez-vous sont des suites de jalons : chacun se prépare, certains se valident, quelques-uns se signent.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a3deccd8e827",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Le tri d’un courriel d’un client connu vers son dossier | Le courrier type préparé pour un client | La réponse à un client mécontent | | Le suivi des jalons d’une entrée en relation | La liste des pièces d’entrée manquantes à réclamer | La signature de la lettre de mission |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6c77bdd37925",
+      "text": "RH et formation : l’équipe du cabinet",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6f83119ef5ab",
+      "text": "Trois familles, tournées vers l’intérieur. L’arrivée d’un collaborateur, les entretiens, la synthèse annuelle de rémunération d’un salarié se préparent depuis la paie tenue, sans reconstruire les chiffres. La formation à l’IA et à ses limites devient une tâche à part entière : l’équipe doit comprendre ce que les outils préparent et ce qu’ils ne garantissent pas, et le cabinet doit pouvoir en montrer la trace.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4942d6ae5dc9",
+      "text": "Numérique, IT et data : le cadre de toute automatisation",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9c875b69f4de",
+      "text": "Quatre familles qui ne sont pas des tâches de production mais qui les conditionnent toutes. L’IA générative et les agents préparent des brouillons, des résumés, des propositions ; ils ne décident pas. Les connecteurs, les imports et la synchronisation relient les logiciels par interface quand elle existe, par fichiers sinon. Le règlement européen sur l’IA fixe des obligations à l’utilisateur, à relire sur le texte et non sur un billet. Et les données personnelles encadrent tout : le cabinet est responsable de traitement pour ses propres fichiers et sous-traitant pour ceux de ses clients.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5570a9487db9",
+      "text": "Deux règles de la CNIL suffisent à borner la plupart des automatisations. La première est la minimisation : les données traitées doivent être adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées. Un outil qui relance des pièces n’a pas besoin des bulletins de paie. La seconde porte sur la durée : la définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement. Une règle de purge fait donc partie de toute automatisation qui garde des données, et la minimisation se vérifie avant d’écrire la première ligne.",
+      "claimIds": [
+        "claim-unit-5570a9487db9-1",
+        "claim-unit-5570a9487db9-2"
+      ]
+    },
+    {
+      "id": "unit-5b86c17c19b4",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Un brouillon de réponse ou un résumé de document | Tout envoi externe préparé par un outil | La décision d’utiliser une donnée à une autre fin | | Un import de fichier avec contrôle de schéma | La correspondance de champs entre deux logiciels | Le choix d’un sous-traitant et le contrat qui l’encadre |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7b54e70cb8d8",
+      "text": "Excel et outils existants : automatiser en place",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3e0549976194",
+      "text": "Trois familles, et le parti pris de Memlia. Un classeur de suivi partagé se structure : dictionnaire des colonnes, états fermés, contrôles. Un complément se greffe sur ce classeur pour y ajouter les règles, sans macro ni migration. Les exports des logiciels de production s’importent sans ressaisie, avec un contrôle de schéma qui refuse d’écrire quand une colonne a changé de nom. Le cabinet garde ses fichiers, ses habitudes et la propriété de ses règles.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-32a77033a7a3",
+      "text": "Conseil et missions spéciales : ce qui se déduit des données tenues",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e540d6806fed",
+      "text": "Quatre familles adjacentes : prévisionnel et business plan, trésorerie prévisionnelle, dossiers de financement et d’aides, éléments chiffrés d’une évaluation ou d’une transmission. Elles ne sont pas répétitives au même sens que la production, mais leur matière première l’est : des données déjà tenues, à projeter avec des hypothèses tracées. Ce qui se prépare, c’est l’extraction et la mise en forme ; ce qui reste humain, c’est l’hypothèse et le conseil.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ed5799baff01",
+      "text": "Méthode et décision humaine : la famille transversale",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b4d621fc4826",
+      "text": "Quatre familles qui ne produisent rien mais qui décident de tout. Choisir et cadrer une automatisation, en commençant par une tâche qui a une règle écrite plutôt que par la plus douloureuse. Écrire la règle dans les mots du cabinet, la rejouer sur un jeu d’essai fictif qui couvre le cas courant, le cas limite et le cas de refus, puis la recetter sur les fichiers du cabinet. Placer la validation humaine là où une action engage le cabinet ou un client. Mesurer le temps réellement gagné, avant et après, plutôt que de reprendre un chiffre lu ailleurs.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-236329bf3b04",
+      "text": "Ce que cette carte ne contient pas",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d3de2d140449",
+      "text": "Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Elle ne contient pas non plus l’audit légal et le commissariat aux comptes : la famille est listée, aucune tâche n’y est documentée, elle n’est pas ouverte. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d1896e028a23",
+      "text": "Par où commencer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1edb7a22e9a9",
+      "text": "Choisissez une seule famille, la plus répétitive de votre cabinet, et écrivez sa règle sur une page : déclencheur, condition, action, exception. Si la page se remplit sans hésitation, la tâche est candidate. Si elle appelle des « ça dépend », gardez-la pour plus tard. La méthode Memlia part exactement de cette page, la rejoue sur vos fichiers en recette, et le service code la règle dans les outils que vous utilisez déjà, avec les garanties qui vont avec. Le hub Ressources classe les articles par rôle, pour retrouver ceux qui concernent votre poste.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-279d5bd8bf20-1",
+      "unitId": "unit-279d5bd8bf20",
+      "claim": "une entreprise doit conserver tout document émis ou reçu dans l’exercice de son activité pendant une durée minimale",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "sp-conservation"
+      ],
+      "sourceExcerpts": {
+        "sp-conservation": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
+      },
+      "checkedAt": "2026-09-16",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-16",
+        "sourceResults": [
+          {
+            "sourceId": "sp-conservation",
+            "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+            "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+            "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+            "context": "             aria-hidden=\"false\"><p class=\"fr-text--lg\">Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale. Ce délai varie selon la nature des papiers et les obligations légales. L'entreprise peut aussi archiver les documents plus longtemps, sauf s'ils contiennent des données personnelles. Pendant ce délai, l'administration peut mener des contrôles. Cette page indique les délais de conservation des principaux documents. Vous pouvez aussi utiliser un simulateur.</p></div><div class=\"fr-my-4w\" id=\"expired\"",
+            "contextSha256": "32b0c1e8d867208e631699dbcc96b1ad457bd1ae11daa7cf0c76cdb20459774c",
+            "citation": {
+              "text": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+              "sha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
+              "sourceContentSha256": "bf334f3f5f0f409e3d8cf8dcb5724b33b098c024aa733a869bc18da979146f37",
+              "coordinates": {
+                "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+                "checkedAt": "2026-09-16",
+                "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 307,
+                  "endLine": 307
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "entreprise",
+                "doit",
+                "conserver",
+                "document",
+                "emis",
+                "recu",
+                "exercice",
+                "activite",
+                "pendant",
+                "duree",
+                "minimale"
+              ],
+              "reasoning": "La citation, relevée à la ligne 307 de la copie locale de Service Public, porte les mêmes entités que le claim (entreprise, doit, conserver, document, emis, recu, exercice, activite, pendant, duree, minimale) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La phrase de Service-Public est reprise à l’identique, seule l’apostrophe typographique diffère.",
+            "checkedAt": "2026-09-16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-e8439da9f147-1",
+      "unitId": "unit-e8439da9f147",
+      "claim": "un compte rendu métier est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée",
+      "type": "dsn",
+      "sourceIds": [
+        "net-crm"
+      ],
+      "sourceExcerpts": {
+        "net-crm": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
+      },
+      "checkedAt": "2026-09-16",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-16",
+        "sourceResults": [
+          {
+            "sourceId": "net-crm",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+            "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
+            "context": "            Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.         </a>",
+            "contextSha256": "4fcba10565e40fd4346871b2454d6c3db8e75a4b843366395b6aa8ddc454fc91",
+            "citation": {
+              "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
+              "sha256": "ef509c5e2bb80ff3b9aebd039458d169e786ca17dbb00478b7c5774d8192c754",
+              "sourceContentSha256": "6780502577f4d9ee052065e4060bbbf513e1e29faa984f23f22c51208d015ddc",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+                "checkedAt": "2026-09-16",
+                "title": "Les comptes rendus métiers DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 156,
+                  "endLine": 156
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "compte",
+                "rendu",
+                "metier",
+                "rapport",
+                "permettant",
+                "organisme",
+                "administration",
+                "concernee",
+                "retour",
+                "declarants",
+                "reception",
+                "leur",
+                "declaration",
+                "lorsqu",
+                "erreur",
+                "suspicion",
+                "detectee"
+              ],
+              "reasoning": "La citation, relevée à la ligne 156 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (compte, rendu, metier, rapport, permettant, organisme, administration, concernee, retour, declarants, reception, leur, declaration, lorsqu, erreur, suspicion, detectee) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Définition officielle du compte rendu métier reprise à l’identique depuis Net-entreprises.",
+            "checkedAt": "2026-09-16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-1a356f45cd1d-1",
+      "unitId": "unit-1a356f45cd1d",
+      "claim": "dépôt et le paiement de la déclaration mensuelle de TVA entre les 15 et 24 septembre 2026",
+      "type": "fiscal",
+      "sourceIds": [
+        "impots-calendrier"
+      ],
+      "sourceExcerpts": {
+        "impots-calendrier": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel."
+      },
+      "checkedAt": "2026-09-16",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-16",
+        "sourceResults": [
+          {
+            "sourceId": "impots-calendrier",
+            "sourceUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+            "verifiedUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+            "excerpt": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel.",
+            "context": "\t\t\t\t\t\t\t\t<div class=\"fr-card__desc\"><p>Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel.</p></div>",
+            "contextSha256": "7138504f56e9e85745ac5dfea8c182f82d0ef83e45cf520d2af54620d84b3170",
+            "citation": {
+              "text": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel.",
+              "sha256": "9ac9ef6b56935e495b65b71a3269d4f8e3cf5c7386eb8cca7a1686ca5c7d0fc8",
+              "sourceContentSha256": "4dfb72a30f6375ccee31b39678d77e85af50129caf36378b596164c5c4850522",
+              "coordinates": {
+                "finalUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+                "checkedAt": "2026-09-16",
+                "title": "Calendrier fiscal des professionnels",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 642,
+                  "endLine": 642
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "depot",
+                "paiement",
+                "declaration",
+                "mensuelle",
+                "septembre",
+                "2026"
+              ],
+              "reasoning": "La citation, relevée à la ligne 642 de la copie locale de impots.gouv.fr, porte les mêmes entités que le claim (depot, paiement, declaration, mensuelle, septembre, 2026) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Fenêtre de dépôt et de paiement de la TVA mensuelle de septembre 2026 telle que publiée par le calendrier fiscal officiel.",
+            "checkedAt": "2026-09-16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-5570a9487db9-1",
+      "unitId": "unit-5570a9487db9",
+      "claim": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-principes"
+      ],
+      "sourceExcerpts": {
+        "cnil-principes": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
+      },
+      "checkedAt": "2026-09-16",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-16",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-principes",
+            "sourceUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "verifiedUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+            "context": "<p>c)&nbsp;adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées (<button type=\"button\" class=\"glossary-tooltips\" aria-describedby=\"tooltip_content\" data-definition=\"minimisation\"><span class=\"glossary-tooltips-title\">minimisation</span></button> des données);</p>",
+            "contextSha256": "2699f5a7d291120b27843bf2dd127cdddd3f634063c917a28566bba74643ac55",
+            "citation": {
+              "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+              "sha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
+              "sourceContentSha256": "80a9c95a294d8a738c16ccc39dba4c9df7f43094af68bb782089f5f9037d6490",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+                "checkedAt": "2026-09-16",
+                "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 531,
+                  "endLine": 531
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "adequates",
+                "pertinentes",
+                "limitees",
+                "necessaire",
+                "regard",
+                "finalites",
+                "lesquelles",
+                "traitees"
+              ],
+              "reasoning": "La citation, relevée à la ligne 531 de la copie locale de CNIL, porte les mêmes entités que le claim (adequates, pertinentes, limitees, necessaire, regard, finalites, lesquelles, traitees) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Principe de minimisation, article 5 du RGPD, cité mot pour mot depuis le texte publié par la CNIL.",
+            "checkedAt": "2026-09-16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-5570a9487db9-2",
+      "unitId": "unit-5570a9487db9",
+      "claim": "la définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-durees"
+      ],
+      "sourceExcerpts": {
+        "cnil-durees": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement."
+      },
+      "checkedAt": "2026-09-16",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-16",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-durees",
+            "sourceUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+            "verifiedUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+            "excerpt": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement.",
+            "context": "<p>La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement.</p>",
+            "contextSha256": "9e5018f7e0bbf437a2e26c496c48c05ff5515bab5e825e368e753f7b8692c4cb",
+            "citation": {
+              "text": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement.",
+              "sha256": "461c2f50a632e8d85d7fdbd75beaa13bb871fc5651adb58ce1d46fd441da28ee",
+              "sourceContentSha256": "020c1d06e3358d4d0bad6c98e3d0f910c6b98ef3e3f54d6bd0dff9465f752a14",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+                "checkedAt": "2026-09-16",
+                "title": "Les durées de conservation des données",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 776,
+                  "endLine": 776
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "definition",
+                "duree",
+                "conservation",
+                "releve",
+                "analyse",
+                "conformite",
+                "responsable",
+                "doit",
+                "mener",
+                "traitement"
+              ],
+              "reasoning": "La citation, relevée à la ligne 776 de la copie locale de CNIL, porte les mêmes entités que le claim (definition, duree, conservation, releve, analyse, conformite, responsable, doit, mener, traitement) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Règle de la CNIL sur la fixation de la durée de conservation, reprise à l’identique.",
+            "checkedAt": "2026-09-16"
+          }
+        ]
+      }
+    }
+  ]
+}

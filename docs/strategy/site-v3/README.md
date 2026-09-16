@@ -1,6 +1,6 @@
 # Site v3 — élargir l'éditorial à toute tâche automatisable du cabinet
 
-16 septembre 2026 — proposition à valider par Kevin (décision D2 : recommandation, pas d'exécution). Rien n'est publié, aucun code applicatif ni contenu modifié. Produit avec les skills `seo`, `seo-plan` et `seo-cluster` (expansion, classification d'intention, recouvrement SERP qualitatif, hub-and-spoke, matrice de liens, carte interactive).
+16 septembre 2026 — validée par Kevin (« sinon go ») avec deux amendements : quatre articles par semaine, et soixante familles de tâches (`src/data/familles.ts`) au lieu de onze. En exécution : la forge éditoriale (`scripts/blog-forge.mjs`) publie les articles depuis `editorial/recettes/`, chaque dossier étant scellé sur ses octets à la mise en ligne (`preuves/publication.json`). Produit avec les skills `seo`, `seo-plan` et `seo-cluster` (expansion, classification d'intention, recouvrement SERP qualitatif, hub-and-spoke, matrice de liens, carte interactive).
 
 ## À lire, dans l'ordre
 1. [Stratégie](SEO-STRATEGY.md) : le constat, la thèse, la carte des onze familles, la différenciation, les seuils de décision.
@@ -16,8 +16,8 @@
 `python3 docs/strategy/site-v3/build-cluster-plan.py --check` depuis la racine du dépôt : régénère `cluster-plan.json`, `cluster-plan.md` et `cluster-map.html` depuis la source unique (les listes du script) et vérifie l'unicité des slugs et des requêtes primaires, l'appartenance des clusters, rôles et formats aux énumérations du schéma du blog, le lien obligatoire satellite ↔ pilier, le minimum de trois liens entrants par article, l'absence d'orpheline et la répartition mensuelle.
 
 ## Ce qui attend Kevin
-- Valider (ou amender) le territoire : onze familles, `audit-cac` dormant.
-- Valider la cadence : 3 articles par mois en régime, 2 le premier mois, 4 le troisième (36 en douze mois).
+- Territoire validé et élargi : soixante familles en douze pôles, `audit-legal` listée mais fermée.
+- Cadence validée : 4 par semaine, 2 par jour au plus (`CANDIDATS_PAR_SEMAINE_MAX`, `CANDIDATS_PAR_JOUR_MAX`).
 - Valider la liste des 34 termes et l'ordre des deux vagues.
 - Valider les neuf briefs de la vague 1, à commencer par « Automatiser la relance des pièces clients ».
 - Dire quand relancer Hermes (cartes de chantier) : pas avant.

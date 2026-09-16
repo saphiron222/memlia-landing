@@ -117,3 +117,11 @@ test('article sans JavaScript : contenu et navigation visibles', async ({ browse
   await expect(page.locator('.nav-sans-js a[href="/blog"]')).toBeVisible();
   await context.close();
 });
+
+test('le pilier « la carte des tâches » ouvre la liste quand il est publié', async ({ page }) => {
+  await page.goto('/blog');
+  const cartes = page.locator('.blog-liste [data-article]');
+  const slugs = await cartes.evaluateAll((items) => items.map((item) => item.getAttribute('data-article')));
+  test.skip(!slugs.includes('automatiser-un-cabinet-comptable-la-carte-des-taches'), 'pilier non publié dans ce rendu');
+  expect(slugs[0]).toBe('automatiser-un-cabinet-comptable-la-carte-des-taches');
+});

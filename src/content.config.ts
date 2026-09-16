@@ -3,6 +3,7 @@ import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 import { IMAGES } from './data/images.mjs';
 import { IDS_AUTEURS } from './data/auteurs';
+import { IDS_FAMILLES } from './data/familles';
 
 /**
  * Collection `blog` — articles Markdown de src/content/blog/*.md.
@@ -31,7 +32,7 @@ const blog = defineCollection({
       auteur: z.enum(IDS_AUTEURS).default('kevin'),
       /** Sujets bornés au métier : pas de tag libre. */
       sujets: z
-        .array(z.enum(['paie', 'dsn', 'excel', 'production-sociale', 'methode', 'securite', 'cabinet']))
+        .array(z.enum(['paie', 'dsn', 'excel', 'production-sociale', 'methode', 'securite', 'cabinet', 'automatisation', 'pieces', 'saisie', 'lettrage', 'revision', 'fiscal', 'facturation', 'courriels', 'ia', 'donnees', 'juridique', 'pilotage']))
         .min(1)
         .max(4),
       /** Mots-clés du schéma Article (six au plus, en français). */
@@ -46,7 +47,9 @@ const blog = defineCollection({
       secondaryQueries: z.array(z.string().min(3)).default([]),
       intent: z.enum(['comprendre', 'executer', 'diagnostiquer', 'comparer-approches', 'evaluer-service', 'reduire-risque', 'decider']).optional(),
       fanOut: z.array(z.string().min(3)).default([]),
-      cluster: z.enum(['production-comptable', 'portefeuille-echeances', 'paie-social', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-formation', 'excel-outils-existants', 'numerique-it-data', 'methode-decision-humaine']).optional(),
+      cluster: z.enum(['production-comptable', 'portefeuille-echeances', 'paie-social', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-formation', 'excel-outils-existants', 'numerique-it-data', 'methode-decision-humaine', 'conseil-missions']).optional(),
+      /** Famille de tâches (src/data/familles.ts) : la maille éditoriale de la v3, plus fine que le cluster. */
+      famille: z.enum(IDS_FAMILLES).optional(),
       rolePrincipal: z.enum(['direction-associes', 'chefs-mission-portefeuille', 'collaborateurs-comptables', 'assistants-comptables', 'paie-responsables-sociaux', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-recrutement-formation', 'numerique-it-data', 'profils-formation', 'autre-role-documente']).optional(),
       rolesSecondaires: z.array(z.enum(['direction-associes', 'chefs-mission-portefeuille', 'collaborateurs-comptables', 'assistants-comptables', 'paie-responsables-sociaux', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-recrutement-formation', 'numerique-it-data', 'profils-formation', 'autre-role-documente'])).default([]),
       tache: z.string().min(10).optional(),

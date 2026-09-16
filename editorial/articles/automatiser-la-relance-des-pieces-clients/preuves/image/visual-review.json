@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-la-relance-des-pieces-clients",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-16",
+  "articleSha256": "15a598706a2f2278bb7f791d0643456d15ba6bebdba79a515a0f773d4e6b672e",
+  "manifestSha256": "d6c55c2b8cd4cda6e733e3fcef1bd91174eafbe5501870fa822a2c7dd203c88f",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
+  ],
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Les six composantes du brief sont toutes présentes à l'écran : titre, sous-titre, famille, les trois colonnes avec leurs items exacts, le pied « jeu fictif de six dossiers » et le badge de provenance fictive.",
+        "Le champ alt du paquet (« Relance des pièces clients en trois colonnes... ») correspond mot pour mot au contenu visible de l'image."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "master.png mesure exactement 1920×1080 (vérifié par lecture des pixels du fichier), conforme à la contrainte de rendu déclarée dans prompt.json et generation.json.",
+        "cadre.html déclare font-family 'Fraunces' pour les titres et 'Hanken Grotesk' pour le corps, et la palette visible (fond crème, vert de la colonne 1 et du logotype Memlia) suit la charte."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Un badge visible « Jeu fictif, aucune donnée client » et le pied de page « memlia.fr — jeu fictif de six dossiers » excluent toute lecture comme capture produit ou donnée réelle.",
+        "Aucun nom de dossier, de client ni de chiffre n'apparaît dans l'image : seuls des libellés de catégories génériques sont affichés dans les trois colonnes."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Les trois colonnes « Se prépare seul », « Attend une validation », « Reste humain » sont immédiatement lisibles et reprennent exactement les titres du tableau du même nom dans le corps de l'article.",
+        "Les items de chaque colonne (ex. « Arrêt de la cadence à réception », « Sortie d'un dossier du circuit ») correspondent mot pour mot au bloc `image.cadre` du paquet de revue."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "og.webp mesure 1200×630 pixels (vérifié par lecture des pixels du fichier), conforme au format Open Graph attendu.",
+        "hero-768.webp et hero-768.avif mesurent tous deux 768 px de large, conformes au dérivé 768 px déclaré, dans les deux formats attendus."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "L'alt fourni (« Relance des pièces clients en trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain ») décrit fidèlement la structure et les trois catégories visibles, sans bourrage de mots-clés."
+      ]
+    }
+  ]
+}

@@ -72,7 +72,8 @@ async function audit() {
   for (const article of inventory.articles.filter((item) => item.status === 'pipeline')) {
     const manifest = JSON.parse(readFileSync(join(root, 'editorial/articles', article.slug, 'manifest.json')));
     const published = manifest.editorialStatus === 'publie-non-atteste';
-    dossiers.push(await validateWithRenderedBlog(article.slug, published ? '' : article.slug, published ? 'published-audit' : 'protected-preview'));
+    const scelle = manifest.editorialStatus === 'publie';
+    dossiers.push(await validateWithRenderedBlog(article.slug, published || scelle ? '' : article.slug, published ? 'published-audit' : scelle ? 'publication-scellee' : 'protected-preview'));
   }
   const errors = [...inventory.errors, ...dossiers.flatMap((dossier) => dossier.errors.map((error) => `${dossier.slug}: ${error}`))];
   const report = {
