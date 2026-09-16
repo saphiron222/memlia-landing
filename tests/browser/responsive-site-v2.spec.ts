@@ -21,9 +21,9 @@ for (const [width, height] of LARGEURS) {
       await expect(page.locator('.ariane'), route).toBeVisible();
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `${route} à ${width}px`).toBeLessThanOrEqual(0);
-      // Les cinq entrées sont toujours dans le document ; sous 1024 px elles se déplient
-      // depuis le menu, au-dessus elles sont en clair dans le bandeau.
-      await expect(page.locator('.nav-entree'), route).toHaveCount(5);
+      // Les quatre entrées (trois pages et le groupe Ressources) sont toujours dans le document ;
+      // sous 1024 px elles se déplient depuis le menu, au-dessus elles sont en clair dans le bandeau.
+      await expect(page.locator('.nav-entree'), route).toHaveCount(4);
       if (width < 1024) {
         const bouton = page.locator('[data-burger]');
         await expect(bouton, route).toBeVisible();
@@ -59,7 +59,8 @@ test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, req
       canonical: await page.locator('link[rel="canonical"]').getAttribute('href'),
       h1: await page.locator('h1').count(),
       robots: await page.locator('meta[name="robots"]').count(),
-      nav: await page.locator('.nav-entree').evaluateAll((liens) => liens.map((l) => l.getAttribute('href'))),
+      // Les liens seulement : le bouton du groupe Ressources n'a pas de href.
+      nav: await page.locator('.nav-entree[href]').evaluateAll((liens) => liens.map((l) => l.getAttribute('href'))),
     };
     const servi = {
       titre: (initial.match(/<title>(.*?)<\/title>/is)?.[1] ?? '').replace(/&#39;/g, "'").replace(/&amp;/g, '&'),
@@ -72,6 +73,9 @@ test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, req
     expect(rendu.canonical, `${route} canonical`).toBe(servi.canonical);
     expect(rendu.h1, `${route} h1`).toBe(servi.h1);
     expect(rendu.robots, `${route} robots`).toBe(servi.robots);
-    expect(rendu.nav.length, `${route} entrées de navigation`).toBe(5);
+    // Trois liens de page dans le bandeau, identiques dans le HTML servi et dans le DOM rendu ; le blog et
+    // le glossaire sont servis dans le panneau du groupe Ressources (.nav-sous-entree), hors de ce compte.
+    expect(rendu.nav, `${route} entrées de navigation`).toEqual(servi.nav);
+    expect(rendu.nav.length, `${route} entrées de navigation`).toBe(3);
   }
 });

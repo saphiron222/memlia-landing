@@ -128,7 +128,8 @@ test('fragment malformé toléré, navigation intacte et sans erreur', async ({ 
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/#%');
-  await expect(page.locator('.nav-entree')).toHaveCount(5);
+  // Trois pages et le bouton du groupe Ressources : quatre entrées dans le bandeau.
+  await expect(page.locator('.nav-entree')).toHaveCount(4);
   await expect(page.locator('[data-burger]')).toBeVisible();
   await expect(page.locator('.burger-ouvrir')).toBeVisible();
   await expect(page.locator('.burger-fermer')).toBeHidden();

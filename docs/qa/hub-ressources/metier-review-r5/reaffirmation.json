@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 2,
+  "revue": "metier-review-r5",
+  "reaffirmeLe": "2026-09-16T21:20:43.874Z",
+  "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
+  "registreSha256": "0dd24b43821f5dd2f697f645d16e54875ae966c4ef7e0b3868d9849c3ebadf9f",
+  "declarationRef": "docs/qa/hub-ressources/metier-review-r5/reaffirmation-declaration.json",
+  "declarationSha256": "0f0ddff12590dac42a541638e8717d5acbe5799b5dae8c69ce28118703fad2a3",
+  "ancreRef": "docs/qa/hub-ressources/metier-review-r5/sujet-ancre.json",
+  "ancreSha256": "9c0439e2cf6ef93dd34d1a3c3e5725a1eae17a5942ab2197ffe3aa19d86147d6",
+  "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
+  "surfaces": {
+    "T": {
+      "action": "réaffirmée",
+      "sujetAncre": "c2f26c231873c8b268900800936485e24a38005dbef202ff789d426b0f2dad3f",
+      "sujetReaffirme": "44d5d2a3fe5699cd5df0b4b14fc753ec122580d7dc48ac897a9accb8ebe1ed76",
+      "feuillesEcartees": 12,
+      "feuillesParChamp": {
+        "buildOutputDigest.buildOutputDigest": 1,
+        "configBundleDigest.configBundleDigest": 1,
+        "links.comparedCanonicalPaths": 1,
+        "links.incoming": 2,
+        "skills.checkedAt": 7
+      },
+      "justifications": {
+        "buildOutputDigest": "Le HTML rendu de /glossaire change quand le chrome du site change sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge : le 16/09/2026 au soir, l'entrée « Ressources » de la navigation devient un groupe (blog, glossaire) présent sur toutes les pages, et la page /ressources est retirée. Le script revérifie que chaque affirmation revue est encore rendue mot pour mot.",
+        "configBundleDigest": "Le lot de configuration perd src/data/resources.ts (fichier de la page Ressources retirée) et les deux modules de preuve perdent leurs entrées de la surface H (hub) : aucune spécification de la surface T n'est modifiée, ce que le script vérifie affirmation par affirmation et copie par copie.",
+        "links": "Le glossaire n'est plus relié depuis /ressources (page retirée) mais depuis la navigation de toutes les pages ; la cannibalisation n'est plus comparée qu'avec /blog.",
+        "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées ; le verdict de chaque ligne ne peut pas bouger."
+      },
+      "affirmationsRenduesVerifiees": 64,
+      "verdictsConserves": 27,
+      "candidateHash": "65765c56de3cac9ad7448d04f1d4f2ca55e780624d446d66d911ed4785e4b45b",
+      "auditHash": "6b2e0a7ffd4e12802f7fd6b37cc5b40a93823456729a32625fcee602e35413f7",
+      "manifestSha256": "9b20f0fc893f90d8472a66bcda412105799d0babf9232b335d4859bc47cb4747",
+      "preuveRef": "docs/qa/hub-ressources/metier-review-r5/preuve-glossaire.json",
+      "preuveSha256": "26dc537050bee9f9fac1a9566fec1edbdec325001a0787c3d0b7c04e7b5cbc59"
+    }
+  }
+}
