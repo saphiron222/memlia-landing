@@ -113,6 +113,7 @@ test('article sans JavaScript : contenu et navigation visibles', async ({ browse
   await page.goto(`${process.env.QA_URL ?? 'http://127.0.0.1:4321'}/blog`);
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('[data-article]').first()).toBeVisible();
-  await expect(page.locator('.nav-entree[href="/blog"]')).toBeVisible();
+  // Sans JavaScript, le panneau ne s'ouvrirait pas : le repli sert les mêmes destinations.
+  await expect(page.locator('.nav-sans-js a[href="/blog"]')).toBeVisible();
   await context.close();
 });

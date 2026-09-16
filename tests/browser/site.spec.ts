@@ -61,7 +61,8 @@ test('contenu et navigation sans JavaScript', async ({ browser }) => {
   await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.faq-r').first()).toBeVisible();
-  await expect(page.locator('.nav-entree[href="/methode"]')).toBeVisible();
+  // Sans JavaScript le panneau ne s'ouvre pas : la navigation de repli porte les destinations.
+  await expect(page.locator('.nav-sans-js a[href="/methode"]')).toBeVisible();
   await context.close();
 });
 
@@ -120,6 +121,8 @@ test('fragment malformé toléré, navigation intacte et sans erreur', async ({ 
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/#%');
   await expect(page.locator('.nav-entree')).toHaveCount(5);
-  await expect(page.locator('.nav-principal')).toBeVisible();
+  await expect(page.locator('[data-burger]')).toBeVisible();
+  await expect(page.locator('.burger-ouvrir')).toBeVisible();
+  await expect(page.locator('.burger-fermer')).toBeHidden();
   expect(errors).toEqual([]);
 });

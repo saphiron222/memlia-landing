@@ -21,14 +21,22 @@ for (const [width, height] of LARGEURS) {
       await expect(page.locator('.ariane'), route).toBeVisible();
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `${route} à ${width}px`).toBeLessThanOrEqual(0);
-      // Les six entrées restent servies à toutes les largeurs, jamais repliées.
+      // Les cinq entrées sont toujours dans le document ; sous 1024 px elles se déplient
+      // depuis le menu, au-dessus elles sont en clair dans le bandeau.
       await expect(page.locator('.nav-entree'), route).toHaveCount(5);
-      await expect(page.locator('.nav-principal'), route).toBeVisible();
       if (width < 1024) {
-        for (const cible of [page.locator('.nav-entree').first(), page.locator('.nav-principal')]) {
+        for (const cible of [page.locator('.nav-ressources-mobile'), page.locator('[data-burger]')]) {
+          await expect(cible, route).toBeVisible();
           const boite = await cible.boundingBox();
           expect(boite?.height, `${route} à ${width}px`).toBeGreaterThanOrEqual(48);
         }
+        await page.locator('[data-burger]').click();
+        await expect(page.locator('.nav-mobile-lien'), route).toHaveCount(5);
+        await expect(page.locator('#menu-mobile a').last(), route).toBeVisible();
+        await page.keyboard.press('Escape');
+      } else {
+        await expect(page.locator('.nav-centre'), route).toBeVisible();
+        await expect(page.locator('.nav-principal'), route).toBeVisible();
       }
     }
   });

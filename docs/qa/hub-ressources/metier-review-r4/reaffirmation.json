@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r4",
-  "reaffirmeLe": "2026-09-16T10:41:54.634Z",
+  "reaffirmeLe": "2026-09-16T14:02:31.181Z",
   "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
-  "registreSha256": "8b3b5032316f137bd8fd4595d45e92f55a161f64976a457bfdef0dd40f18ba59",
+  "registreSha256": "1d7b2cf424c322ff75de9874f5ec679a8869ad9d2fbd3f8aa566271e825aca0d",
   "declarationRef": "docs/qa/hub-ressources/metier-review-r4/reaffirmation-declaration.json",
-  "declarationSha256": "724ad754ea8c74393b229ecf0e8c93369cce028b84040c7cb6ae36e094282002",
+  "declarationSha256": "73f3863941f5339c8fe512f2e9a74390816cb746df3eeff454ccff0b7fc6bfc6",
   "ancreRef": "docs/qa/hub-ressources/metier-review-r4/sujet-ancre.json",
   "ancreSha256": "5eb21c227f29e5ba3a02fb19d8945210b92176f6f9cdb161a650239ddbf2d037",
   "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
@@ -13,7 +13,7 @@
     "H": {
       "action": "réaffirmée",
       "sujetAncre": "6b5f58e020fbf3cd97efbe13bbe3ea08b95f8e98f347f1434405cca5c6e4b45a",
-      "sujetReaffirme": "e568543e1225e363c1ef070ff3aad1483597a0c87ae75a325667d59ba526d34a",
+      "sujetReaffirme": "7a2821ea4084159a4d784169f5eead498678dddda0e317307f59a34f07a6e59f",
       "feuillesEcartees": 9,
       "feuillesParChamp": {
         "buildOutputDigest.buildOutputDigest": 1,
@@ -21,22 +21,22 @@
         "skills.checkedAt": 7
       },
       "justifications": {
-        "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. La refonte du 16/09 retire ensuite du glossaire le paragraphe de statut « Contenu non attesté … » (une mention de processus interne, hors des 23 définitions) et fait dater chaque article du hub de sa date de publication, comme la page de l'article. Le même jour, la feuille de jetons (src/styles/tokens.css, inlinée dans chaque page) gagne un jeton --rouge-voile pour l'état d'erreur du formulaire de contact. Le HTML rendu de /ressources et /glossaire change donc sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
+        "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. La refonte du 16/09 retire ensuite du glossaire le paragraphe de statut « Contenu non attesté … » (une mention de processus interne, hors des 23 définitions) et fait dater chaque article du hub de sa date de publication, comme la page de l'article. Le même jour, la feuille de jetons (src/styles/tokens.css, inlinée dans chaque page) gagne un jeton --rouge-voile pour l'état d'erreur du formulaire de contact. Le HTML rendu de /ressources et /glossaire change donc sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot. Le 16/09 au soir, la navigation mobile repasse d'une liste dépliée dans le bandeau à un panneau refermable : le bandeau de chaque page perd cinq liens et gagne un bouton de menu, et le panneau — même jeu de destinations — s'ajoute en fin de document. Aucune unité éditoriale du Hub ni du glossaire n'est touchée ; les 49 affirmations revues sont revérifiées rendues mot pour mot.",
         "configBundleDigest": "Un seul fichier du lot de configuration a bougé : src/data/resources.ts (sha256 3c3af3bc… 4 213 octets → d2637d2a… 4 359 octets, commit e2196a3). Le hub datait un article de sa dernière mise à jour quand elle existait (dateMiseAJour ?? datePublication) ; il le date désormais de sa publication, la date que la page de l'article affiche, pour que les deux surfaces disent la même chose. Aucune règle de projection, de rôle, de filtre ou de destination ne change ; editorial/resources/*/skills.json, resource-metier-evidence.mjs et resource-metier-v3.mjs sont intacts octet pour octet.",
         "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées : il bouge à chaque rescellement, par construction. Seul ce champ est autorisé — un statut, un résultat ou une preuve de skill qui changerait ferme la réaffirmation."
       },
       "affirmationsRenduesVerifiees": 10,
       "verdictsConserves": 7,
-      "candidateHash": "dba0885dbd46e180ba599b2c5d416bd0a6c3d97a548e3c71fcda206b321f0b07",
-      "auditHash": "eb925e901ac4a3614f73e67a82c1d80eed1cb01451369dc0e76211f6187dc053",
-      "manifestSha256": "06dd04b11386619e4e16a97d0a99e9bd3ef460e645ac39012308d5e4d9144ab6",
+      "candidateHash": "1485b55e2a01b596609e4bfa89e7f1adc9d0ddc6cfb01669a9b1a3df209c4bf6",
+      "auditHash": "25dea7d32df4663c864f93f6dd7d0207ac1be0e242044e6e7e1e0e4c84e5357e",
+      "manifestSha256": "34c0717b31b0da91e3e0790c872f34ce5af023cdd2fbce891395b3da00985e9d",
       "preuveRef": "docs/qa/hub-ressources/metier-review-r4/preuve-hub.json",
-      "preuveSha256": "b98eef2f5e529d1fa222f76dc6cbe4150a94659f9aa61c4663650c8cf68c5ba7"
+      "preuveSha256": "45abd168175067846f6a5a9b42ce8b904df295f3bc121c244b5753dc4b06a9f0"
     },
     "T": {
       "action": "réaffirmée",
       "sujetAncre": "361b99b1025228a75d4ba7e2d9194b913054597f22945ae316c068fcd05d64e8",
-      "sujetReaffirme": "863867e78f8babd1b8a737e92d4daae4f313ff3dfba69b62fd3e0d0c6708b8d7",
+      "sujetReaffirme": "829d953a94b1f583b055e8bd1028290edd86a045cb2c6fc28b78270845b961e6",
       "feuillesEcartees": 9,
       "feuillesParChamp": {
         "buildOutputDigest.buildOutputDigest": 1,
@@ -44,17 +44,17 @@
         "skills.checkedAt": 7
       },
       "justifications": {
-        "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. La refonte du 16/09 retire ensuite du glossaire le paragraphe de statut « Contenu non attesté … » (une mention de processus interne, hors des 23 définitions) et fait dater chaque article du hub de sa date de publication, comme la page de l'article. Le même jour, la feuille de jetons (src/styles/tokens.css, inlinée dans chaque page) gagne un jeton --rouge-voile pour l'état d'erreur du formulaire de contact. Le HTML rendu de /ressources et /glossaire change donc sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
+        "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. La refonte du 16/09 retire ensuite du glossaire le paragraphe de statut « Contenu non attesté … » (une mention de processus interne, hors des 23 définitions) et fait dater chaque article du hub de sa date de publication, comme la page de l'article. Le même jour, la feuille de jetons (src/styles/tokens.css, inlinée dans chaque page) gagne un jeton --rouge-voile pour l'état d'erreur du formulaire de contact. Le HTML rendu de /ressources et /glossaire change donc sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot. Le 16/09 au soir, la navigation mobile repasse d'une liste dépliée dans le bandeau à un panneau refermable : le bandeau de chaque page perd cinq liens et gagne un bouton de menu, et le panneau — même jeu de destinations — s'ajoute en fin de document. Aucune unité éditoriale du Hub ni du glossaire n'est touchée ; les 49 affirmations revues sont revérifiées rendues mot pour mot.",
         "configBundleDigest": "Un seul fichier du lot de configuration a bougé : src/data/resources.ts (sha256 3c3af3bc… 4 213 octets → d2637d2a… 4 359 octets, commit e2196a3). Le hub datait un article de sa dernière mise à jour quand elle existait (dateMiseAJour ?? datePublication) ; il le date désormais de sa publication, la date que la page de l'article affiche, pour que les deux surfaces disent la même chose. Aucune règle de projection, de rôle, de filtre ou de destination ne change ; editorial/resources/*/skills.json, resource-metier-evidence.mjs et resource-metier-v3.mjs sont intacts octet pour octet.",
         "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées : il bouge à chaque rescellement, par construction. Seul ce champ est autorisé — un statut, un résultat ou une preuve de skill qui changerait ferme la réaffirmation."
       },
       "affirmationsRenduesVerifiees": 39,
       "verdictsConserves": 18,
-      "candidateHash": "c8f0e584a1a4ef7616a3a27836eb781cc68004ad659c04c94b752f5611243855",
-      "auditHash": "b210b338dd7ad6953329d73d30bedf87c8444baa0bff9d27205bff782ad4ced1",
-      "manifestSha256": "eb73e1302124c7a370b6a11b5f584d51220f7a430e5f1e1cae91ded7ff138384",
+      "candidateHash": "89e5e4c9d669a40788ce8f0e2973aab226ee2b23b5107e6f51788e53f5cc11c0",
+      "auditHash": "26c54a78837758f9d53a00a1dfcc5f4719174472027bc753c3698878b0b1c4d0",
+      "manifestSha256": "68a8452e4607c5d95fb218aff2a30b09c21eea99b60d3cf60bbfb75ef9c1649c",
       "preuveRef": "docs/qa/hub-ressources/metier-review-r4/preuve-glossaire.json",
-      "preuveSha256": "935a685b1980f0b0fbf77583fce1b8244ff4110355b7ccf913a27ba762c7621e"
+      "preuveSha256": "801cb760a8de8b9022bf08c8071a899d1d2f01171d4de847677bc28075e2708b"
     }
   }
 }

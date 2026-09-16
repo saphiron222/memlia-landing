@@ -1,18 +1,24 @@
 ---
 import Lockup from './Lockup.astro';
 import Button from './Button.astro';
+import Picto from './Picto.astro';
 import { CTA } from '@/data/site.mjs';
 import { NAV_V2 } from '@/data/pages-v2.mjs';
 
 /**
- * Navigation du site v2 : six entrées hors logo — les cinq pages, plus l'appel à l'action.
+ * Navigation : les cinq pages en clair à partir de 1024 px, repliées derrière un menu en dessous.
  *
- * Aucune entrée primaire n'est cachée derrière un menu. Sur mobile elles descendent dans
- * le flux, en deux colonnes puis une seule quand le texte ne tient plus, et l'appel à
- * l'action prend toute la largeur. Il n'y a donc ni panneau à ouvrir, ni verrou de
- * défilement, ni dépendance au JavaScript : la navigation est du HTML servi.
+ * Le site v2 avait servi les cinq entrées dans le flux du bandeau, en deux colonnes. Elles
+ * étaient atteignables sans action, mais occupaient le haut de chaque page et se lisaient
+ * comme une liste en vrac. Le panneau refermable revient donc (demande de Kevin, 16/09/2026),
+ * avec les propriétés qu'il tenait déjà : cible de 48 px, fond opaque, fond rendu inerte,
+ * défilement verrouillé puis restauré à la fermeture, sortie par Échap comme par la croix.
  *
- * La barre n'est collante qu'en grand écran ; en mobile sa hauteur masquerait le contenu.
+ * Deux choses restent hors du panneau, parce qu'elles ne doivent dépendre d'aucun geste :
+ * le Hub Ressources garde son lien dans le bandeau, et une navigation en clair est servie
+ * à qui n'a pas JavaScript — le panneau, lui, ne s'ouvrirait pas.
+ *
+ * La barre est collante : à 56 px elle ne masque pas le contenu.
  */
 interface Props {
   blogActif: boolean;
@@ -67,15 +73,55 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     </nav>
 
     <div class="nav-droite">
+      <a class="nav-ressources-mobile" href="/ressources" aria-current={surRessources}>Ressources</a>
+
       <Button href={CTA.nav.href} variante="principal" picto="fleche" class="nav-principal" aria-current={actionCourante}>
         {CTA.nav.libelle}
       </Button>
+
+      <button
+        type="button"
+        class="nav-burger"
+        aria-expanded="false"
+        aria-controls="menu-mobile"
+        aria-label="Ouvrir le menu principal"
+        data-burger
+      >
+        <Picto nom="menu" taille={16} class="burger-ouvrir" />
+        <Picto nom="fermer" taille={16} class="burger-fermer" />
+        <span>Menu</span>
+      </button>
     </div>
   </div>
 </header>
 
+<!-- Frère du header : son backdrop-filter ne doit pas contenir le fixed (WebKit). -->
+<div class="nav-mobile" id="menu-mobile" data-menu-mobile hidden>
+  <nav aria-label="Navigation principale, menu" class="conteneur">
+    <ul class="nav-mobile-liste">
+      {entrees.map((e) => (
+        <li><a class="nav-mobile-lien" href={e.href} aria-current={e.courant}>{e.libelle}</a></li>
+      ))}
+      <li class="nav-mobile-cta">
+        <Button href={CTA.nav.href} variante="principal" picto="fleche" aria-current={actionCourante}>
+          {CTA.nav.libelle}
+        </Button>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<noscript>
+  <nav class="conteneur nav-sans-js" aria-label="Navigation sans JavaScript">
+    {entrees.map((e) => <a href={e.href} aria-current={e.courant}>{e.libelle}</a>)}
+    <a href={CTA.nav.href} aria-current={actionCourante}>{CTA.nav.libelle}</a>
+  </nav>
+</noscript>
+
 <style>
   .nav-barre {
+    position: sticky;
+    top: 0;
     z-index: 50;
     background: rgba(255, 254, 251, 0.92);
     backdrop-filter: blur(10px);
@@ -84,65 +130,164 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     padding-top: env(safe-area-inset-top, 0px);
   }
   .nav {
-    display: grid;
-    /* Cinq cibles de 48 px occupent déjà la hauteur : le rythme vertical du bandeau
-       reste serré pour ne pas repousser la première vue utile sous la ligne de flottaison. */
-    gap: 4px;
-    padding-block: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: var(--nav-h);
   }
   .nav-marque {
     display: flex;
     align-items: center;
-    min-height: 48px;
+  }
+  .nav-centre {
+    display: none;
   }
   .nav-liste {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 8px;
-  }
-  .nav-item {
-    display: flex;
-  }
-  .nav-entree {
     display: flex;
     align-items: center;
-    width: 100%;
-    min-height: 48px;
+    gap: 4px;
+  }
+  .nav-entree {
+    display: inline-flex;
+    align-items: center;
     padding: 6px 8px;
     border-radius: var(--r-bouton);
-    /* 1rem en mobile : une entrée primaire ne rétrécit pas parce qu'elle descend
-       dans le flux. Le pas typographique du bandeau ne revient qu'en grand écran. */
-    font-size: 1rem;
+    font-size: var(--t-sm);
     font-weight: 500;
     color: var(--texte);
     transition: color var(--duree-1) ease-out, background-color var(--duree-1) ease-out;
   }
-  .nav-entree[aria-current] {
-    color: var(--texte-fort);
-    background: var(--surface-hover);
-  }
+  .nav-entree[aria-current],
   .nav-entree:focus-visible {
     color: var(--texte-fort);
     background: var(--surface-hover);
   }
   .nav-droite {
     display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  /* Le Hub garde une entrée dans le bandeau : il ne dépend d'aucune ouverture de panneau. */
+  .nav-ressources-mobile {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding-inline: 8px;
+    border-radius: var(--r-bouton);
+    color: var(--texte-fort);
+    font-size: var(--t-sm);
+    font-weight: 600;
+  }
+  .nav-ressources-mobile[aria-current] {
+    background: var(--surface-hover);
   }
   .nav-principal {
-    width: 100%;
-    min-height: 48px;
-    justify-content: center;
-    white-space: normal;
-    font-size: 1rem;
+    display: none;
   }
-  /*
-   * Le libellé le plus large, « Automatisation », demande 125 px avec sa gouttière,
-   * mesuré dans Hanken Grotesk à 16 px : deux colonnes tiennent dès 320 px. En dessous
-   * elles couperaient le texte, donc une seule — jamais une cible plus petite.
-   */
-  @media (max-width: 19rem) {
-    .nav-liste {
-      grid-template-columns: minmax(0, 1fr);
+  .nav-burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 6px 10px;
+    border-radius: var(--r-bouton);
+    border: 1px solid transparent;
+    background: transparent;
+    font-family: inherit;
+    font-size: var(--t-sm);
+    font-weight: 500;
+    color: var(--texte-fort);
+    cursor: pointer;
+    transition: background-color var(--duree-1), border-color var(--duree-1);
+  }
+  .nav-burger .burger-fermer,
+  .nav-burger[aria-expanded='true'] .burger-ouvrir {
+    display: none;
+  }
+  .nav-burger[aria-expanded='true'] .burger-fermer {
+    display: block;
+  }
+  .nav-mobile {
+    position: fixed;
+    z-index: 49;
+    top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 1px);
+    left: 0;
+    right: 0;
+    height: calc(100vh - var(--nav-h) - env(safe-area-inset-top, 0px) - 1px);
+    height: calc(100dvh - var(--nav-h) - env(safe-area-inset-top, 0px) - 1px);
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    /* Opaque, jamais translucide : le contenu ne doit pas transparaître sous les liens. */
+    background: #fffefb;
+    border-top: 1px solid var(--ligne);
+    padding: 12px env(safe-area-inset-right, 0px) max(32px, env(safe-area-inset-bottom, 0px)) env(safe-area-inset-left, 0px);
+  }
+  .nav-mobile[hidden] {
+    display: none;
+  }
+  .nav-mobile-liste {
+    display: grid;
+  }
+  .nav-mobile-lien {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 12px 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--texte-fort);
+    border-bottom: 1px solid var(--ligne-douce);
+  }
+  .nav-mobile-lien[aria-current] {
+    color: var(--accent-texte);
+  }
+  .nav-mobile-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px 8px 0;
+  }
+  .nav-mobile-cta :global(.btn) {
+    min-height: 48px;
+    font-size: 1rem;
+    white-space: normal;
+  }
+  .nav-sans-js {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-block: 12px;
+  }
+  @media (max-width: 63.999rem) {
+    .nav-barre[data-mobile-open] {
+      position: fixed;
+      left: 0;
+      right: 0;
+      background: #fffefb;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+  /* Le fond ne défile pas derrière le panneau, et retrouve sa position à la fermeture. */
+  :global(body[data-mobile-menu-open]) {
+    position: fixed;
+    top: var(--mobile-menu-scroll-top);
+    left: 0;
+    right: 0;
+    overflow: hidden;
+  }
+  @media (max-width: 21.875rem) {
+    .nav {
+      gap: 8px;
+    }
+    .nav-ressources-mobile {
+      padding-inline: 4px;
+    }
+    .nav-burger {
+      padding-inline: 6px;
     }
   }
   @media (hover: hover) {
@@ -150,38 +295,106 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
       color: var(--texte-fort);
       background: var(--surface-hover);
     }
+    .nav-ressources-mobile:hover,
+    .nav-burger:hover {
+      background: var(--surface-hover);
+    }
+    .nav-burger:hover {
+      border-color: var(--ligne);
+    }
   }
   @media (min-width: 64rem) {
-    .nav-barre {
-      position: sticky;
-      top: 0;
-    }
     .nav {
+      display: grid;
       grid-template-columns: auto 1fr auto;
-      align-items: center;
       gap: 16px;
-      height: var(--nav-h);
-      padding-block: 0;
     }
     .nav-centre {
+      display: block;
       justify-self: center;
     }
-    .nav-liste {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .nav-entree {
-      width: auto;
-      min-height: 0;
-      padding: 6px 8px;
-      font-size: var(--t-sm);
-    }
     .nav-principal {
-      width: auto;
-      min-height: 0;
-      white-space: nowrap;
-      font-size: var(--t-sm);
+      display: inline-flex;
+    }
+    .nav-ressources-mobile,
+    .nav-burger,
+    .nav-mobile {
+      display: none;
     }
   }
 </style>
+
+<script>
+  // Fond inerte et scroll conservé ; la navigation mobile reste quittable par X / Échap.
+  const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
+  const menu = document.querySelector<HTMLElement>('[data-menu-mobile]');
+  const header = document.querySelector<HTMLElement>('.nav-barre');
+  if (burger && menu && header) {
+    const desktop = window.matchMedia('(min-width: 64rem)');
+    let scrollPosition = { x: 0, y: 0 };
+    let previousScrollTop = '';
+    let inertElements: { element: HTMLElement; inert: boolean }[] = [];
+    const closeMenu = (restoreFocus = true) => {
+      if (menu.hidden) return;
+      menu.hidden = true;
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Ouvrir le menu principal');
+      header.removeAttribute('data-mobile-open');
+      document.body.removeAttribute('data-mobile-menu-open');
+      if (previousScrollTop) document.body.style.setProperty('--mobile-menu-scroll-top', previousScrollTop);
+      else document.body.style.removeProperty('--mobile-menu-scroll-top');
+      inertElements.forEach(({ element, inert }) => { element.inert = inert; });
+      inertElements = [];
+      window.scrollTo({ left: scrollPosition.x, top: scrollPosition.y, behavior: 'instant' });
+      if (restoreFocus) burger.focus({ preventScroll: true });
+    };
+    burger.addEventListener('click', () => {
+      if (!menu.hidden) return closeMenu();
+      if (desktop.matches) return;
+      scrollPosition = { x: window.scrollX, y: window.scrollY };
+      previousScrollTop = document.body.style.getPropertyValue('--mobile-menu-scroll-top');
+      document.body.style.setProperty('--mobile-menu-scroll-top', `${-scrollPosition.y}px`);
+      document.body.setAttribute('data-mobile-menu-open', '');
+      header.setAttribute('data-mobile-open', '');
+      const background = [...document.body.children].filter((element): element is HTMLElement =>
+        element instanceof HTMLElement && element !== header && element !== menu &&
+        !['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(element.tagName));
+      inertElements = [...background, ...header.querySelectorAll<HTMLElement>('a')]
+        .map(element => ({ element, inert: element.inert }));
+      inertElements.forEach(({ element }) => { element.inert = true; });
+      menu.hidden = false;
+      menu.scrollTop = 0;
+      burger.setAttribute('aria-expanded', 'true');
+      burger.setAttribute('aria-label', 'Fermer le menu principal');
+      burger.focus({ preventScroll: true });
+    });
+    menu.addEventListener('click', (e) => {
+      // Restaurer le fond avant l'action native du lien (ancre ou changement de page).
+      if ((e.target as Element).closest('a')) closeMenu();
+    });
+    document.addEventListener('focusin', (e) => {
+      if (!menu.hidden && e.target !== burger && !menu.contains(e.target as Node)) burger.focus({ preventScroll: true });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (menu.hidden) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeMenu();
+      } else if (e.key === 'Tab') {
+        // Safari peut exclure les liens du Tab natif : parcourir toute la boucle explicitement.
+        const controls = [burger, ...menu.querySelectorAll<HTMLAnchorElement>('a[href]')];
+        const index = controls.indexOf(document.activeElement as HTMLButtonElement | HTMLAnchorElement);
+        const next = (index + (e.shiftKey ? -1 : 1) + controls.length) % controls.length;
+        e.preventDefault();
+        controls[next].focus();
+      }
+    });
+    desktop.addEventListener('change', (e) => {
+      if (!e.matches || menu.hidden) return;
+      closeMenu(false);
+      header.querySelector<HTMLAnchorElement>('.nav-centre a')?.focus({ preventScroll: true });
+    });
+    // Ne pas conserver le verrou si la page est restaurée depuis le bfcache.
+    window.addEventListener('pagehide', () => closeMenu(false));
+  }
+</script>

@@ -2,18 +2,17 @@ import { test, expect, type Locator } from '@playwright/test';
 import { CTA } from '../../src/data/site.mjs';
 
 /**
- * Navigation mobile du site v2 : six entrées hors logo, aucune cachée.
+ * Le bandeau mobile lui-même : ce qui reste visible sans ouvrir le panneau.
  *
- * Le site a remplacé le panneau hamburger par une navigation servie dans le flux. Les
- * contrôles qui protégeaient le panneau — cible tactile, texte lisible, lien réellement
- * cliquable, ordre DOM égal à l'ordre visuel — restent tenus ici, sans qu'aucune action
- * ne soit nécessaire pour atteindre une entrée primaire.
+ * Le panneau est éprouvé par mobile-menu.spec.ts. Ici, trois propriétés qui ne dépendent
+ * d'aucun geste : le Hub garde son lien, le menu s'ouvre depuis une cible de 48 px, et la
+ * navigation reste servie en clair à qui n'a pas JavaScript — le panneau, lui, ne s'ouvrirait pas.
  */
 const PRIMAIRES = ['Automatisation', 'Méthode', 'Garanties', 'Ressources', 'Blog'];
 
-/** Un lien n'est atteignable que si le hit-test le rend, pas seulement sa boîte DOM. */
-async function mesurerAtteignable(lien: Locator) {
-  const etat = await lien.evaluate((el) => {
+/** Un contrôle n'est atteignable que si le hit-test le rend, pas seulement sa boîte DOM. */
+async function mesurerAtteignable(cible: Locator) {
+  const etat = await cible.evaluate((el) => {
     const r = el.getBoundingClientRect();
     return {
       texte: el.textContent!.trim(),
@@ -23,44 +22,30 @@ async function mesurerAtteignable(lien: Locator) {
       touches: [0.15, 0.5, 0.85].map((ratio) => el.contains(document.elementFromPoint(r.left + r.width * ratio, r.top + r.height / 2))),
     };
   });
+  expect(etat.dansLEcran, etat.texte).toBe(true);
   expect(etat.touches, etat.texte).toEqual([true, true, true]);
   expect(etat.rect.height, etat.texte).toBeGreaterThanOrEqual(48);
-  expect(etat.police, etat.texte).toBeGreaterThanOrEqual(16);
   return etat;
 }
 
-for (const width of [320, 375, 390, 430]) {
+for (const width of [320, 375, 390, 430, 768]) {
   for (const height of [844, 568, 360]) {
-    test(`navigation visible sans action ${width}x${height}`, async ({ page }, testInfo) => {
+    test(`bandeau lisible sans action ${width}x${height}`, async ({ page }, testInfo) => {
       await page.setViewportSize({ width, height });
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.goto('/');
       await page.evaluate(() => document.fonts.ready);
 
-      // Aucun panneau à ouvrir : le hamburger n'existe plus.
-      await expect(page.locator('[data-burger]')).toHaveCount(0);
-      await expect(page.locator('#menu-mobile')).toHaveCount(0);
-
-      const entrees = page.locator('.nav-entree');
-      await expect(entrees).toHaveText(PRIMAIRES);
-      const action = page.locator('.nav-principal');
-      await expect(action).toHaveText(CTA.nav.libelle);
-      await expect(action).toHaveAttribute('href', CTA.nav.href);
-
       const mesures = [];
-      for (const lien of [...(await entrees.all()), action]) {
-        await lien.scrollIntoViewIfNeeded();
-        mesures.push(await mesurerAtteignable(lien));
+      for (const cible of [page.locator('.nav-ressources-mobile'), page.locator('[data-burger]')]) {
+        await expect(cible).toBeVisible();
+        mesures.push(await mesurerAtteignable(cible));
       }
-      // Ordre DOM = ordre visuel : chaque entrée commence au plus tôt sur la ligne de
-      // la précédente, jamais au-dessus d'elle.
-      for (let i = 1; i < mesures.length; i++) {
-        expect(mesures[i].rect.top, `${mesures[i].texte} après ${mesures[i - 1].texte}`)
-          .toBeGreaterThanOrEqual(mesures[i - 1].rect.top);
-      }
-      // « Automatisation » demande 125 px : deux colonnes tiennent dès 320 px.
-      const colonnes = new Set(mesures.slice(0, PRIMAIRES.length).map((m) => Math.round(m.rect.left))).size;
-      expect(colonnes, `${width}px`).toBe(2);
+      // Le bandeau tient sur une ligne : aucune cible ne passe sous une autre.
+      expect(mesures[1].rect.top, 'le menu reste sur la ligne du bandeau').toBeLessThan(mesures[0].rect.bottom);
+      // Les cinq entrées sont dans le document, repliées derrière le menu.
+      await expect(page.locator('.nav-centre')).toBeHidden();
+      await expect(page.locator('.nav-entree')).toHaveText(PRIMAIRES);
 
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `débordement horizontal à ${width}px`).toBeLessThanOrEqual(0);
@@ -69,19 +54,17 @@ for (const width of [320, 375, 390, 430]) {
   }
 }
 
-test('navigation : ordre du clavier, focus visible et page courante', async ({ page }) => {
+test('bandeau : ordre du clavier et page courante marquée', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/methode');
-  await expect(page.locator('.nav-entree[aria-current="page"]')).toHaveText('Méthode');
+  await page.goto('/ressources');
+  await expect(page.locator('.nav-ressources-mobile')).toHaveAttribute('aria-current', 'page');
 
-  // Le logo puis les cinq entrées puis l'action : une seule séquence, sans piège de focus.
+  // Le logo, le Hub, puis le menu : une seule séquence, sans piège de focus tant qu'il est fermé.
   await page.locator('.nav-marque a').focus();
-  for (const libelle of [...PRIMAIRES, CTA.nav.libelle]) {
+  for (const libelle of ['Ressources', 'Menu']) {
     await page.keyboard.press('Tab');
     const focalise = page.locator(':focus');
-    await expect(focalise).toHaveText(new RegExp(libelle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
-    // Le bouton principal signale le focus par une ombre portée, les liens par un
-    // contour : exiger l'un des deux, pas un mécanisme en particulier.
+    await expect(focalise).toHaveText(new RegExp(libelle));
     const marque = await focalise.evaluate((el) => {
       const style = getComputedStyle(el);
       return { contour: style.outlineStyle, ombre: style.boxShadow };
@@ -90,24 +73,27 @@ test('navigation : ordre du clavier, focus visible et page courante', async ({ p
   }
 });
 
-test('navigation : aucune réservation externe depuis le bandeau', async ({ page }) => {
+test('bandeau : aucune réservation externe, l’action mène à /contact', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 844 });
   await page.goto('/');
   // L'échange se prépare sur /contact : le bandeau n'y court-circuite jamais.
   await expect(page.locator('.nav-barre a[href*="cal.com"]')).toHaveCount(0);
-  await page.locator('.nav-principal').click();
+  await expect(page.locator('#menu-mobile a[href*="cal.com"]')).toHaveCount(0);
+  await page.locator('[data-burger]').click();
+  await page.locator('#menu-mobile a').last().click();
   await expect(page).toHaveURL(/\/contact$/);
-  await expect(page.locator('.nav-principal[aria-current="page"]')).toHaveCount(1);
   await expect(page.locator(`a[href="${CTA.rendezVous.href}"]`).first()).toBeVisible();
 });
 
-test('navigation : sans JavaScript, les six entrées restent servies', async ({ browser }) => {
+test('sans JavaScript : les cinq entrées et l’action restent servies', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
   await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
-  await expect(page.locator('.nav-entree')).toHaveText(PRIMAIRES);
-  await expect(page.locator('.nav-principal')).toHaveAttribute('href', CTA.nav.href);
-  await page.locator('.nav-entree', { hasText: 'Méthode' }).click();
+  // Le panneau ne s'ouvrirait pas : la navigation de repli porte les mêmes destinations.
+  const repli = page.locator('.nav-sans-js a');
+  await expect(repli).toHaveText([...PRIMAIRES, CTA.nav.libelle]);
+  await expect(repli.last()).toHaveAttribute('href', CTA.nav.href);
+  await repli.filter({ hasText: 'Méthode' }).click();
   await expect(page).toHaveURL(/\/methode$/);
   await context.close();
 });
