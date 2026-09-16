@@ -95,7 +95,7 @@ git commit -m "feat(blog): <titre de l'article>" -- editorial public/images publ
 git push origin main
 ```
 
-Le message de commit se termine par la ligne d'attribution `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`. Puis attendre le déploiement (`npx wrangler pages deployment list --project-name memlia --json`, statut `Active` sur le commit poussé, cinq à dix minutes), contrôler en ligne :
+Le message de commit se termine par la ligne d'attribution `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`. Puis attendre le déploiement : `npx wrangler pages deployment list --project-name memlia --json` donne l'identifiant du déploiement du commit poussé (`Source`), mais son statut `Active` s'affiche dès le push, avant la fin du build ; la preuve que le build est fini est l'URL propre du déploiement `https://<id>.memlia.pages.dev/<page>` (en-tête User-Agent de navigateur, `pages.dev` refuse curl nu) qui sert un marqueur du contenu poussé (nouveau titre, nombre de termes, texte ajouté), en général cinq à dix minutes après le push. Ensuite contrôler en ligne :
 
 ```bash
 curl -s -o /dev/null -w '%{http_code}\n' https://memlia.fr/blog/<slug>
