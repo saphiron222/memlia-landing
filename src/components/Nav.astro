@@ -198,11 +198,15 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   .nav-groupe {
     position: relative;
   }
+  /* Un bouton n'hérite pas de la police : seule la famille est reprise, la taille et la graisse
+     restent celles de .nav-entree (le raccourci « font: inherit » les écrasait). */
   .nav-groupe-bouton {
     gap: 4px;
+    margin: 0;
     border: 0;
     background: transparent;
-    font: inherit;
+    font-family: inherit;
+    line-height: inherit;
     cursor: pointer;
   }
   .nav-chevron {
