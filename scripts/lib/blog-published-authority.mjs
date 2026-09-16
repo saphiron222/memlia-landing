@@ -5,10 +5,10 @@ import { isDeepStrictEqual } from 'node:util';
 
 // Conservation des deux articles déjà publiés, pas une autorisation de publication.
 // Autorite re-pointee le 16/09/2026 : la production a avance avec la release de l'article 3.
-export const PUBLISHED_BLOG_COMMIT = 'de3d821c2935c35032f2417379392828f43bf84e';
+export const PUBLISHED_BLOG_COMMIT = 'e2196a3075490794cd48c00aeeac7ae4baf2cad6';
 export const PUBLISHED_BLOG_HASHES = Object.freeze({
-  'controler-les-bulletins-de-paie-avant-la-dsn': '4c36eb08c035c10a78ae83de9776a64526ca72d5758b72ed7bf98f3f976d2a79',
-  'suivre-la-production-sociale-dans-excel': '56a5f5a1e19cd327558d8c024b3570643bc2f233cfce02d117c0ca250430103b',
+  'controler-les-bulletins-de-paie-avant-la-dsn': 'b8c678eff08c79efc96784ded33deb9842eaf99f83bec50aa1e5d78bddd97cb8',
+  'suivre-la-production-sociale-dans-excel': 'bd822ed24264fd9dbbb5e2865dd429ba03c8445fc89523e2fde3a9d52961cf4b',
 });
 export const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 export const ADOPTION_PATH = 'preuves/published-adoption.json';

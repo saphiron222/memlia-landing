@@ -2,21 +2,23 @@
   "schemaVersion": 1,
   "revue": "metier-review-r4",
   "declareLe": "2026-09-16",
-  "declarePar": "t_c2262a1b SITE-V2-BUILD",
+  "declarePar": "t_c2262a1b SITE-V2-BUILD, complété par la refonte des pages commerciales (site/v2-refonte)",
   "regle": "Seules les clés listées ici peuvent bouger sans refaire la revue métier. Toute autre clé du sujet ferme la réaffirmation.",
   "deltasAutorises": {
-    "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. Le HTML rendu de /ressources et /glossaire change donc de chrome sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
+    "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. La refonte du 16/09 retire ensuite du glossaire le paragraphe de statut « Contenu non attesté … » (une mention de processus interne, hors des 23 définitions) et fait dater chaque article du hub de sa date de publication, comme la page de l'article. Le HTML rendu de /ressources et /glossaire change donc sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
     "limitations": "Correction d'une contradiction interne du dossier : il portait le verdict AI_REVIEW_PASS tout en affirmant dans ses limites qu'aucun AI_REVIEW_PASS n'était revendiqué. La limite dit désormais ce que la revue métier couvre et ce qu'elle ne couvre pas, sans élargir sa portée.",
     "skills": {
       "raison": "Les lignes de skill portent l'horodatage du build qui les a rejouées : il bouge à chaque rescellement, par construction. Seul ce champ est autorisé — un statut, un résultat ou une preuve de skill qui changerait ferme la réaffirmation.",
       "champsAutorises": [
         "checkedAt"
       ]
-    }
+    },
+    "configBundleDigest": "Un seul fichier du lot de configuration a bougé : src/data/resources.ts (sha256 3c3af3bc… 4 213 octets → d2637d2a… 4 359 octets, commit e2196a3). Le hub datait un article de sa dernière mise à jour quand elle existait (dateMiseAJour ?? datePublication) ; il le date désormais de sa publication, la date que la page de l'article affiche, pour que les deux surfaces disent la même chose. Aucune règle de projection, de rôle, de filtre ou de destination ne change ; editorial/resources/*/skills.json, resource-metier-evidence.mjs et resource-metier-v3.mjs sont intacts octet pour octet."
   },
   "horsPerimetre": [
     "claimsEvidence : aucune affirmation, citation, source ou applicabilité ne peut bouger.",
-    "sourceBundleDigest et configBundleDigest : la matière et la configuration jugées restent intactes.",
+    "sourceBundleDigest : la matière jugée reste intacte.",
+    "configBundleDigest : seule la règle de date du hub dans src/data/resources.ts est déclarée ci-dessus ; tout autre fichier du lot (skills.json, resource-metier-evidence.mjs, resource-metier-v3.mjs) reste intact.",
     "quality : le score et les défauts constatés par la revue ne se recalculent pas à sa faveur.",
     "skills : seul checkedAt peut bouger ; status, result, evidenceRefs et registryContract restent figés."
   ]

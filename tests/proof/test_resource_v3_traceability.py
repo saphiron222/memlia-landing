@@ -59,11 +59,11 @@ class VisibleTextParser(HTMLParser):
 
 class ResourceV3TraceabilityProof(unittest.TestCase):
     def test_blog_authority_and_recouvrement_doctrine_are_preserved(self) -> None:
-        # Autorite Blog re-pointee le 16/09/2026 sur la production servie apres la
-        # release de l'article 3 : trois articles publies, aucun brouillon.
+        # Autorite Blog re-pointee le 16/09/2026 sur le commit e2196a3 qui retire les encarts
+        # de processus des trois articles publies, aucun brouillon.
         expected_articles = {
-            "controler-les-bulletins-de-paie-avant-la-dsn": "4c36eb08c035c10a78ae83de9776a64526ca72d5758b72ed7bf98f3f976d2a79",
-            "suivre-la-production-sociale-dans-excel": "56a5f5a1e19cd327558d8c024b3570643bc2f233cfce02d117c0ca250430103b",
+            "controler-les-bulletins-de-paie-avant-la-dsn": "b8c678eff08c79efc96784ded33deb9842eaf99f83bec50aa1e5d78bddd97cb8",
+            "suivre-la-production-sociale-dans-excel": "bd822ed24264fd9dbbb5e2865dd429ba03c8445fc89523e2fde3a9d52961cf4b",
         }
         for slug, expected_hash in expected_articles.items():
             article = ROOT / f"src/content/blog/{slug}.md"
@@ -76,7 +76,7 @@ class ResourceV3TraceabilityProof(unittest.TestCase):
         # garde en octets, pour qu'une regression du blog publie reste detectee.
         self.assertEqual(
             sha256((ROOT / "src/content/blog/comprendre-les-comptes-rendus-metier-dsn.md").read_bytes()),
-            "7594381c04a8b93a88fbf82939bfa028fb816653a7cc51f3ae7bf2816d4777b2",
+            "9cc990b2451c024ee24d5bb5950382c3b1ffe0e5ac43096bbe79972f53d32db8",
             "comprendre-les-comptes-rendus-metier-dsn",
         )
 

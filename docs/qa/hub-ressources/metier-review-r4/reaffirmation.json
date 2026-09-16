@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r4",
-  "reaffirmeLe": "2026-09-16T07:49:07.556Z",
+  "reaffirmeLe": "2026-09-16T09:53:44.609Z",
   "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
-  "registreSha256": "8727695c99c0936d24b27a6d4182b5ac699ffdcb4b196676cc3e1d12df2f36d9",
+  "registreSha256": "cf5539bc6e4ea3255f414536c7ba928cc0e1d36388fc48318d9724fbf1bfb097",
   "declarationRef": "docs/qa/hub-ressources/metier-review-r4/reaffirmation-declaration.json",
-  "declarationSha256": "704ec230f87b260fe831ab57ef96ee3f0cdb11cd2fd1c109a6355b4fa11bee82",
+  "declarationSha256": "cc92632f1cd03685f3d2005b48f2d587669fd83f601f68b3cf59094e32ec349e",
   "ancreRef": "docs/qa/hub-ressources/metier-review-r4/sujet-ancre.json",
   "ancreSha256": "5eb21c227f29e5ba3a02fb19d8945210b92176f6f9cdb161a650239ddbf2d037",
   "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
@@ -13,40 +13,48 @@
     "H": {
       "action": "réaffirmée",
       "sujetAncre": "6b5f58e020fbf3cd97efbe13bbe3ea08b95f8e98f347f1434405cca5c6e4b45a",
-      "sujetReaffirme": "b49fd46728260d000ae282f67022e36387e77a007e0c9fa23e9450845a771dcc",
-      "feuillesEcartees": 7,
+      "sujetReaffirme": "15dad97955e4e039da74ef888320817b5cffe53777169468279510d9566cfd2d",
+      "feuillesEcartees": 9,
       "feuillesParChamp": {
+        "buildOutputDigest.buildOutputDigest": 1,
+        "configBundleDigest.configBundleDigest": 1,
         "skills.checkedAt": 7
       },
       "justifications": {
+        "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. La refonte du 16/09 retire ensuite du glossaire le paragraphe de statut « Contenu non attesté … » (une mention de processus interne, hors des 23 définitions) et fait dater chaque article du hub de sa date de publication, comme la page de l'article. Le HTML rendu de /ressources et /glossaire change donc sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
+        "configBundleDigest": "Un seul fichier du lot de configuration a bougé : src/data/resources.ts (sha256 3c3af3bc… 4 213 octets → d2637d2a… 4 359 octets, commit e2196a3). Le hub datait un article de sa dernière mise à jour quand elle existait (dateMiseAJour ?? datePublication) ; il le date désormais de sa publication, la date que la page de l'article affiche, pour que les deux surfaces disent la même chose. Aucune règle de projection, de rôle, de filtre ou de destination ne change ; editorial/resources/*/skills.json, resource-metier-evidence.mjs et resource-metier-v3.mjs sont intacts octet pour octet.",
         "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées : il bouge à chaque rescellement, par construction. Seul ce champ est autorisé — un statut, un résultat ou une preuve de skill qui changerait ferme la réaffirmation."
       },
       "affirmationsRenduesVerifiees": 10,
       "verdictsConserves": 7,
-      "candidateHash": "07bb9044f8e47591be6ba7dfef00591d36adbe4d8479e4e581fb2ea18b849b15",
-      "auditHash": "6efc2578866a7a57d410f61c1e0e4e9e397bc32b50dfaa4f80813bb3462b2a61",
-      "manifestSha256": "0e3c84992301078181dffddb2696aa31755a9ae0b493cfec7df2d0bbaf436a11",
+      "candidateHash": "0509bbfcc45d5a101b7cebd200d118834873ef39dc85191d5ebe27002a137c8e",
+      "auditHash": "ef0240d45b050e5ccc7b3b8371f8b5d9672a98034a72c20413a9af063d7fd85e",
+      "manifestSha256": "771faf3d9a432e032fd83f582e7aea093aba1e32be0230dfc8cd06e8f81513fb",
       "preuveRef": "docs/qa/hub-ressources/metier-review-r4/preuve-hub.json",
-      "preuveSha256": "1339cd746cb7580bcc7f4f1eae171ad9f4e148e3f34e75a2841e0cfe58f1b4df"
+      "preuveSha256": "c73b4cb399069b394537b1dee318053b9e99f446020ee68ba70a32cd65a4e506"
     },
     "T": {
       "action": "réaffirmée",
       "sujetAncre": "361b99b1025228a75d4ba7e2d9194b913054597f22945ae316c068fcd05d64e8",
-      "sujetReaffirme": "c10561f92000a8d16988283e97b9bbc1dbff0f8eb8b7325273102c448b7c1d7d",
-      "feuillesEcartees": 7,
+      "sujetReaffirme": "044046924ae16e544f8e1b5de598196635b705fe0133e3a06b42caf1136928e3",
+      "feuillesEcartees": 9,
       "feuillesParChamp": {
+        "buildOutputDigest.buildOutputDigest": 1,
+        "configBundleDigest.configBundleDigest": 1,
         "skills.checkedAt": 7
       },
       "justifications": {
+        "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. La refonte du 16/09 retire ensuite du glossaire le paragraphe de statut « Contenu non attesté … » (une mention de processus interne, hors des 23 définitions) et fait dater chaque article du hub de sa date de publication, comme la page de l'article. Le HTML rendu de /ressources et /glossaire change donc sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
+        "configBundleDigest": "Un seul fichier du lot de configuration a bougé : src/data/resources.ts (sha256 3c3af3bc… 4 213 octets → d2637d2a… 4 359 octets, commit e2196a3). Le hub datait un article de sa dernière mise à jour quand elle existait (dateMiseAJour ?? datePublication) ; il le date désormais de sa publication, la date que la page de l'article affiche, pour que les deux surfaces disent la même chose. Aucune règle de projection, de rôle, de filtre ou de destination ne change ; editorial/resources/*/skills.json, resource-metier-evidence.mjs et resource-metier-v3.mjs sont intacts octet pour octet.",
         "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées : il bouge à chaque rescellement, par construction. Seul ce champ est autorisé — un statut, un résultat ou une preuve de skill qui changerait ferme la réaffirmation."
       },
       "affirmationsRenduesVerifiees": 39,
       "verdictsConserves": 18,
-      "candidateHash": "92a903430e3b9f4eec2ce2b75ab9c76d7348181c12ea8111b057bbf6a2e6db46",
-      "auditHash": "cec7c9d4449a213423b5602f9a0eff04c5b0104ce564a9bd4063db51276c28a1",
-      "manifestSha256": "46064aa20be660391d35f52b31ee044c9389dad45c9c0a2f0694fb52670a67a0",
+      "candidateHash": "2acf2624d89535de9de30173ed34c96f73fcb003ad02f1c901182ab8f41b52fc",
+      "auditHash": "0ed9736d65d9a304e87f5d7feada68b6140c03ddc6662386da5566b8ae4af8b1",
+      "manifestSha256": "05a781827978ca3a8eddbd78555cf7ce4322d0538468443240571f7cd5261617",
       "preuveRef": "docs/qa/hub-ressources/metier-review-r4/preuve-glossaire.json",
-      "preuveSha256": "b488f3e907fc94e89c1c68b24d297e601d385cbfa92051d7b657f69739c646bb"
+      "preuveSha256": "89b669a00a3529ff365a1511b37408bbd8fd4216869d1c4d6f5ccae3c8cde575"
     }
   }
 }
