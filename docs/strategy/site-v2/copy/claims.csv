@@ -1,0 +1,27 @@
+page;section;affirmation;source ou limite;statut
+/automatisation-cabinet-comptable;situation;"Chaque mois, quelqu'un du cabinet refait le même geste";observation de terrain issue des audits collaborateur du cabinet pilote;constat borné, non chiffré
+/automatisation-cabinet-comptable;service;"Nous partons des fichiers que vous utilisez déjà, dans le format où ils arrivent";nature du service, vérifiable au cadrage;engagement de méthode
+/automatisation-cabinet-comptable;service;"Ce qu'elle génère lui appartient et se régénère ; ce que le cabinet saisit ne se touche jamais";motif directeur du produit, appliqué dans les modules livrés;engagement de conception
+/automatisation-cabinet-comptable;décision;"L'automatisation s'arrête et vous le dit, plutôt que d'écrire quelque chose de faux";principe fail-closed, éprouvé par les cas de refus de la recette;engagement vérifiable à la recette
+/automatisation-cabinet-comptable;prix;"Vous n'achetez pas un nombre de sièges";politique tarifaire, devis à la complexité;engagement commercial
+/automatisation-cabinet-comptable;outils;"Aucun branchement universel n'est promis";limite explicite;limite assumée
+/methode;étape 1;"Une tâche mal observée donne une automatisation qui échoue au premier dossier atypique";raisonnement de méthode, non mesuré;opinion de méthode, présentée comme telle
+/methode;étape 3;"Le jeu d'essai est entièrement fictif";règle non négociable du service;engagement vérifiable
+/methode;étape 3;"Un refus attendu qui ne se produit pas est un défaut";critère de recette effectivement appliqué;engagement vérifiable à la recette
+/methode;étape 4;"La recette se joue chez vous, sur vos fichiers";déroulé de mission;engagement de méthode
+/methode;coût;"Elle est plus lente qu'une démonstration";honnêteté sur le compromis, non chiffrée;constat assumé
+/garanties;arrêt;"Nos automatisations refusent plus souvent que d'autres";conséquence assumée du principe fail-closed, non comparée à un concurrent;opinion assumée, sans comparaison
+/garanties;données;"Les fichiers réels sont lus en place, jamais copiés dans nos dépôts";règle non négociable, vérifiable dans les dépôts;engagement vérifiable
+/garanties;personnes;"Les vues livrées présentent des agrégats, pas un classement des collaborateurs";principe anti-surveillance appliqué aux modules livrés;engagement de conception
+/garanties;personnes;"C'est aussi ce que le cadre applicable attend d'un dispositif de contrôle de l'activité";CNIL, contrôle de l'activité des personnes employées, page relue le 16 septembre 2026;source officielle, renvoi au glossaire
+/garanties;promesses;"Nous ne délivrons pas d'attestation, ni en paie, ni en droit social, ni au titre du règlement européen";limite explicite;limite assumée
+/garanties;promesses;"Nous n'annoncerons pas que vous gagnerez tant d'heures";absence de mesure, déclarée;limite assumée
+/a-propos;rôle;"La même personne mène les quatre étapes";organisation réelle du service;fait vérifiable
+/a-propos;limite;"Je ne suis pas expert-comptable, je n'ai pas de qualification en paie ni en droit social";limite explicite;limite assumée
+/a-propos;constat;"Les cabinets que je rencontre ne manquent pas d'outils";observation issue des audits collaborateur;constat borné, non chiffré
+/a-propos;entité;"Société par actions simplifiée unipersonnelle établie à Plérin";mentions légales du site;fait vérifiable
+/contact;échange;"L'échange dure une trentaine de minutes";format proposé;engagement de format
+/contact;échange;"Soit la tâche n'est pas automatisable en l'état et je vous le dis";pratique de cadrage;engagement de méthode
+/contact;données;"Cette page ne comporte ni formulaire ni envoi de fichier";fait vérifiable sur la page;fait vérifiable
+/blog;chapeau;"Ces méthodes vous aident à décider quoi automatiser";rôle éditorial du blog;engagement éditorial
+/blog;chapeau;"La vérification et la décision restent humaines";principe du service;engagement de conception

@@ -66,8 +66,8 @@
 - **quality** : Livrables, exclusions, outils et critères de devis concrets ; aucune fonction non livrée
 - **nav** : header Automatisation
 - **indexability** : index, follow uniquement une fois publiée et acceptée
-- **title** : Automatisation sur mesure | Memlia
-- **description** : Votre tâche, vos règles, un résultat à vérifier. Définir une tâche et savoir quel livrable acheter. Découvrez la méthode et les limites du service Memlia.
+- **title** : Automatisation sur mesure pour cabinet comptable | Memlia
+- **description** : Nous cadrons une tâche répétitive de votre cabinet, écrivons sa règle et livrons une automatisation dont chaque résultat reste à vérifier. Devis à la complexité, jamais au siège.
 
 ## /methode
 
@@ -91,8 +91,8 @@
 - **quality** : Chaque étape nomme entrée, sortie, décision ; exemple de refus, maintenance bornée
 - **nav** : header Méthode
 - **indexability** : index, follow uniquement une fois publiée et acceptée
-- **title** : Méthode | Memlia
-- **description** : Observer, cadrer, éprouver, faire valider. Comprendre la mission et sa recette. Découvrez la méthode et les limites du service Memlia.
+- **title** : Comment se déroule une mission Memlia | Méthode
+- **description** : Observer le geste réel, écrire la règle dans vos mots, éprouver sur des cas qui doivent échouer, livrer après recette. Les quatre étapes d'une automatisation vérifiable.
 
 ## /garanties
 
@@ -116,8 +116,8 @@
 - **quality** : Distinguer engagement de méthode, dispositif vérifié et contrat ; aucun hébergement présumé
 - **nav** : header Garanties
 - **indexability** : index, follow uniquement une fois publiée et acceptée
-- **title** : Garanties et limites | Memlia
-- **description** : La proposition ne prend pas la décision. Évaluer confidentialité, contrôle et conditions de confiance. Découvrez la méthode et les limites du service Memlia.
+- **title** : Ce que Memlia garantit, et ce qu'il refuse de faire | Garanties
+- **description** : Arrêt en cas de doute, aucune donnée de cabinet dans les jeux d'essai, aucune mesure individuelle des collaborateurs, périmètre écrit avant la mise en service. Nos limites, énoncées.
 
 ## /a-propos
 
@@ -141,8 +141,8 @@
 - **quality** : Kevin Kitanga cohérent byline/RSS/schema ; lieu activité distinct du siège
 - **nav** : footer Memlia + bylines
 - **indexability** : index, follow uniquement une fois publiée et acceptée
-- **title** : À propos | Memlia
-- **description** : Une responsabilité identifiée, un périmètre assumé. Identifier le responsable et son rôle réel. Découvrez la méthode et les limites du service Memlia.
+- **title** : Kevin Kitanga, fondateur de Memlia | À propos
+- **description** : Qui construit et livre les automatisations Memlia, avec quel périmètre et quelles limites assumées. Une responsabilité identifiée, pas une qualification supposée.
 
 ## /contact
 
@@ -166,8 +166,8 @@
 - **quality** : Aucun formulaire/upload ; expliquer fichiers exclus et prochain pas, liens utilisables sans JS
 - **nav** : header CTA
 - **indexability** : index, follow uniquement une fois publiée et acceptée
-- **title** : Contact | Memlia
-- **description** : Commençons par décrire une tâche, sans données client. Comprendre le prochain échange et choisir le canal. Découvrez la méthode et les limites du service Memlia.
+- **title** : Décrire une tâche à automatiser | Contact Memlia
+- **description** : Un échange pour décrire le geste qui revient, les outils utilisés et le résultat attendu. Sans fichier client, sans donnée de paie, sans engagement.
 
 ## /blog
 
