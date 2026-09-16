@@ -1,5 +1,6 @@
 ---
 import Legal from '@/layouts/Legal.astro';
+import Courriel from '@/components/Courriel.astro';
 import { SITE } from '@/data/site.mjs';
 
 /** Mentions légales (noindex, hors sitemap — voir PAGES_NOINDEX dans src/data/site.mjs). */
@@ -22,7 +23,7 @@ import { SITE } from '@/data/site.mjs';
     <li>SIREN : 108 621 541 — SIRET : 10862154100011.</li>
     <li>Immatriculation : RCS Paris 108 621 541.</li>
     <li>Directeur de la publication : Kevin KITANGA, président de MEMLIA.</li>
-    <li>Contact : <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</li>
+    <li>Contact : <Courriel />.</li>
   </ul>
 
   <h2>2. Objet du site</h2>
@@ -67,7 +68,7 @@ import { SITE } from '@/data/site.mjs';
   </p>
 
   <h2>8. Contact</h2>
-  <p>Pour toute question concernant le site : <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+  <p>Pour toute question concernant le site : <Courriel />.</p>
 
   <h2>9. Hébergement</h2>
   <p>

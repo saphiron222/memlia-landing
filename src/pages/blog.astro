@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import Courriel from '@/components/Courriel.astro';
 import Base from '@/layouts/Base.astro';
 import Picture from '@/components/Picture.astro';
 import Picto from '@/components/Picto.astro';
@@ -129,7 +130,7 @@ const graph = {
           <div>
             <h3 class="auteur-nom"><a href={identiteAuteur(a)}>{a.nom}</a> <span class="texte-2 auteur-role">· {a.role}</span></h3>
             <p class="texte-2">{a.bio}</p>
-            <p class="auteur-contact"><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+            <p class="auteur-contact"><Courriel /></p>
           </div>
         </article>
       ))}

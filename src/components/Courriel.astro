@@ -1,0 +1,23 @@
+---
+import { SITE } from '@/data/site.mjs';
+
+/**
+ * Adresse de courriel, protégée de l'obscurcissement de Cloudflare.
+ *
+ * Mesuré en production le 16/09/2026 : Cloudflare réécrit tout `mailto:` en
+ * `/cdn-cgi/l/email-protection#…` et remplace l'adresse visible par « [email protected] ».
+ * Ce décodage exige JavaScript — donc sans JavaScript, l'adresse devient illisible et son
+ * lien inerte. Sur un site dont le contact ne passe que par là, c'est une voie fermée.
+ *
+ * Aucune prévisualisation ne pouvait le montrer : la réécriture n'a lieu que sur le domaine
+ * de production. Les marqueurs `email_off` sont l'exclusion que Cloudflare honore.
+ */
+interface Props {
+  /** Texte du lien ; l'adresse elle-même par défaut. */
+  libelle?: string;
+  class?: string;
+}
+const { libelle, class: className } = Astro.props;
+---
+
+<!--email_off--><a href={`mailto:${SITE.email}`} class={className}>{libelle ?? SITE.email}</a><!--/email_off-->

@@ -1,5 +1,6 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import Courriel from '@/components/Courriel.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { CTA, SITE } from '@/data/site.mjs';
 const page = PAGES_V2.contact;
@@ -41,7 +42,7 @@ const noeuds = [{
     <h2 id="canaux">Les canaux</h2>
     <ul>
       <li><a href={CTA.rendezVous.href} rel="noopener">{CTA.rendezVous.libelle}</a></li>
-      <li><a href={`mailto:${SITE.email}`}>Écrire à Memlia</a> — {SITE.email}</li>
+      <li><Courriel libelle="Écrire à Memlia" /> — <Courriel /></li>
     </ul>
     <p>Le traitement de vos données de contact est décrit dans la <a href="/politique-de-confidentialite">politique de confidentialité</a>.</p>
     <p>Avant de nous parler, vous pouvez lire <a href="/automatisation-cabinet-comptable">ce que le service livre</a>, <a href="/methode">comment se déroule une mission</a> ou <a href="/garanties">ce que nous refusons de faire</a>.</p>

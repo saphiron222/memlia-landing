@@ -1,5 +1,6 @@
 ---
 import Legal from '@/layouts/Legal.astro';
+import Courriel from '@/components/Courriel.astro';
 import { SITE } from '@/data/site.mjs';
 
 /** Politique de confidentialité (noindex, hors sitemap — voir PAGES_NOINDEX). */
@@ -101,7 +102,7 @@ import { SITE } from '@/data/site.mjs';
   <p>
     Conformément au RGPD, vous disposez d’un droit d’accès, de rectification, d’effacement, d’opposition et de
     limitation concernant vos données personnelles. Pour exercer ces droits, écrivez-nous à
-    <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Vous pouvez également introduire une réclamation auprès de
+    <Courriel />. Vous pouvez également introduire une réclamation auprès de
     la <a href="https://www.cnil.fr" rel="noopener">CNIL</a>.
   </p>
 
@@ -133,6 +134,6 @@ import { SITE } from '@/data/site.mjs';
   <h2>16. Contact</h2>
   <p>
     Pour toute question relative à cette politique ou à vos données personnelles :
-    <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+    <Courriel />.
   </p>
 </Legal>
