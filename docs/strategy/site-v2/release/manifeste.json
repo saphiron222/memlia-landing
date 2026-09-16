@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "carte": "t_4659b272 SITE-V2-RELEASE",
+  "date": "2026-09-16",
+  "candidatRecette": {
+    "commit": "139b993",
+    "verdict": "PASS",
+    "preuve": "docs/strategy/site-v2/qa/verdict.md",
+    "previewImmuable": "https://d27a0d84.memlia.pages.dev"
+  },
+  "publie": {
+    "branche": "main",
+    "commit": "55a7c0579e01256a67806a7fda855206ab0c6019",
+    "brancheDeRelease": "site/v2-release",
+    "projetCloudflare": "memlia",
+    "deploiementProduction": "88af1244",
+    "urlImmutable": "https://88af1244.memlia.pages.dev",
+    "domaines": [
+      "memlia.fr",
+      "www.memlia.fr",
+      "memlia.pages.dev"
+    ]
+  },
+  "commitsApresRecette": [
+    {
+      "commit": "968e097",
+      "objet": "interdire la publication des artefacts de poste de travail",
+      "raison": "le build depuis le checkout principal embarquait deux .DS_Store du Finder, absents du build propre"
+    },
+    {
+      "commit": "c2357ee",
+      "objet": "garder l'adresse de courriel lisible sans JavaScript",
+      "raison": "défaut visible en production seulement : Cloudflare réécrit les mailto, le décodage exige JavaScript"
+    },
+    {
+      "commit": "d7cc9ca",
+      "objet": "protéger aussi le bouton de courriel du hero",
+      "raison": "même cause, rendu par le gabarit"
+    },
+    {
+      "commit": "55a7c05",
+      "objet": "protéger la dernière adresse rendue en texte brut",
+      "raison": "Cloudflare obscurcit aussi les adresses écrites en texte, pas seulement les liens"
+    }
+  ],
+  "delta": {
+    "routesNouvelles": [
+      "/automatisation-cabinet-comptable",
+      "/methode",
+      "/garanties",
+      "/a-propos",
+      "/contact"
+    ],
+    "routesSupprimees": [],
+    "sitemap": {
+      "avant": 7,
+      "apres": 12
+    },
+    "ancresHistoriques": "les six restent servies sur l'accueil",
+    "ressources": "aucune régression : /ressources et /glossaire gardent leurs titres et leur dossier éditorial"
+  },
+  "constructionGitCloudflare": {
+    "etat": "ÉCHOUE sur main",
+    "cause": "aucune commande de construction configurée au projet",
+    "consequence": "la publication passe par un déploiement explicite après la poussée ; une poussée seule ne publie rien",
+    "reglageAPoser": {
+      "commande": "npm run build:site",
+      "sortie": "dist",
+      "node": "22"
+    }
+  },
+  "rollback": {
+    "commitSain": "5c574e0",
+    "pourquoi": "c'est le commit dont le build était en ligne avant cette release",
+    "procedure": [
+      "git checkout 5c574e0 dans un worktree propre",
+      "npm ci && npm run build:site",
+      "npx wrangler pages deploy dist --project-name memlia --branch main",
+      "ou, plus rapide : rejouer le déploiement f19935a7 depuis le tableau de bord Cloudflare"
+    ],
+    "verification": "python3 docs/strategy/site-v2/release/verifier-production.py doit rendre PASS après restauration"
+  },
+  "verificationProduction": "docs/strategy/site-v2/release/verification-production.json"
+}
