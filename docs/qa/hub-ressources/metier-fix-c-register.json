@@ -24,8 +24,8 @@
     },
     {
       "id": "unit-h-social-monitoring-summary",
-      "text": "Doctrine Memlia : suivre les dossiers et les étapes, jamais classer les personnes. Sauf exception légale, un dispositif de contrôle de l’activité du personnel doit être justifié et proportionné. Il doit être porté à la connaissance des personnes concernées avant sa mise en place. Dans les entreprises privées de 50 salariés et plus, l’employeur doit consulter le CSE sur ce dispositif.",
-      "sha256": "89e74ab7b8e4b469a6236d67542e27acd40c487bef072b35785bbb474dabac00",
+      "text": "Doctrine Memlia : suivre les dossiers et les étapes, jamais classer les personnes. Pour être licite, un dispositif de contrôle de l’activité du personnel doit être justifié et proportionné. Il doit être porté à la connaissance des personnes concernées avant sa mise en place. Dans les entreprises privées de 50 salariés et plus, l’employeur doit consulter le CSE sur ce dispositif.",
+      "sha256": "1c447f1b5108b1d2091d5020087298d0db8b4a9565c16054823f6d4bc713ea94",
       "claimIds": [
         "claim-h-social-monitoring-summary-1",
         "claim-h-social-monitoring-summary-2",
@@ -557,8 +557,8 @@
     {
       "id": "claim-h-social-monitoring-summary-2",
       "unitId": "unit-h-social-monitoring-summary",
-      "text": "Sauf exception légale, un dispositif de contrôle de l’activité du personnel doit être justifié et proportionné.",
-      "sha256": "defe30c11e00c37a27e54f2ddb1e9389b96be6c5134e2f8c17c5b6c77044681d",
+      "text": "Pour être licite, un dispositif de contrôle de l’activité du personnel doit être justifié et proportionné.",
+      "sha256": "ede5a454f080f1fbd04b76be1166e2b6fba1d5252c854e05a1eb6e5c3a3726a5",
       "type": "legal-reglementaire",
       "sourceIds": [
         "source-cnil-controle-activite"
@@ -1638,7 +1638,7 @@
       "sourceId": "source-summaries-memlia",
       "text": "Méthode Memlia : une liste de contrôles écrite, rejouée chaque mois ; le cabinet décide.",
       "sha256": "96c8754fe6582c03aaa7ca7776f8ddc9c28dd446ae2041c75d40aded99c3338a",
-      "sourceContentSha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4",
+      "sourceContentSha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88",
       "finalUrl": "file://src/data/resource-summaries.json",
       "checkedAt": "2026-09-14T15:37:40+01:00",
       "title": "Doctrine des résumés du Hub",
@@ -1718,7 +1718,7 @@
       "sourceId": "source-summaries-memlia",
       "text": "Doctrine Memlia : suivre les dossiers et les étapes, jamais classer les personnes.",
       "sha256": "ab453868e6361a48c72a33384766d5e1339c29bb56a597a6728384c0bd2f5b88",
-      "sourceContentSha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4",
+      "sourceContentSha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88",
       "finalUrl": "file://src/data/resource-summaries.json",
       "checkedAt": "2026-09-14T15:37:40+01:00",
       "title": "Doctrine des résumés du Hub",
@@ -1732,9 +1732,9 @@
         "claim-h-social-monitoring-summary-2"
       ],
       "sourceId": "source-cnil-controle-activite",
-      "text": "Sauf exception (par exemple, lorsqu’un dispositif de contrôle est imposé par la loi), un dispositif de contrôle de l’activité du personnel doit cumulativement : satisfaire aux tests de justification et de proportionnalité ; être soumis aux instances représentatives du personnel selon les règles en vigueur ; être porté à la connaissance des salariés/agents.",
-      "sha256": "a9a2b545ea4c286af1f5534d1b4b95a83bfc146318262dbef07a81ce4de8fe2d",
-      "sourceContentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+      "text": "Pour être licite (c’est-à-dire autorisé par la loi), un dispositif de contrôle de l’activité du personnel doit cumulativement : satisfaire aux tests de justification et de proportionnalité ; être soumis aux instances représentatives du personnel selon les règles en vigueur ; être porté à la connaissance des salariés/agents.",
+      "sha256": "eb941829235973af7b2b045a90636026e51b03a597602576f37f9ffaf039bf28",
+      "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
       "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
       "checkedAt": "2026-09-14T15:37:40+01:00",
       "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
@@ -1750,7 +1750,7 @@
       "sourceId": "source-cnil-controle-activite",
       "text": "Le dispositif doit être porté à la connaissance des personnes concernées, préalablement à sa mise en place, pour satisfaire aux obligations de loyauté et d’information qui incombent à l'employeur.",
       "sha256": "2954f109a90128ec4a65adf33cbcb1e0e4d6aaa38569cd74b29c0d395e93d220",
-      "sourceContentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+      "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
       "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
       "checkedAt": "2026-09-14T15:37:40+01:00",
       "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
@@ -1766,7 +1766,7 @@
       "sourceId": "source-cnil-controle-activite",
       "text": "Dans le cadre du dialogue social, l'employeur doit consulter : le conseil social et économique (CSE) dans les entreprises privées de 50 salariés et plus, les établissements publics à caractère industriel et commercial et les établissements publics à caractère administratif lorsqu'ils emploient du personnel dans les conditions du droit privé ; le comité social d’administration, territorial ou d’établissement (CSA, CST et CSE) ou leurs formations spécialisées dans les organismes publics.",
       "sha256": "124dbedfd03b6f4971a7108f6c86eed159f84fc6efb9fb412e8fa5fdc75e8a21",
-      "sourceContentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+      "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
       "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
       "checkedAt": "2026-09-14T15:37:40+01:00",
       "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
@@ -2560,7 +2560,7 @@
       "official": false,
       "upstreamUrl": "file://src/data/resource-summaries.json",
       "snapshotPath": "src/data/resource-summaries.json",
-      "contentSha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4",
+      "contentSha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2642,7 +2642,7 @@
       "official": true,
       "upstreamUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
       "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/cnil-controle-activite.txt",
-      "contentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+      "contentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
       "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
       "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
       "claimIds": [
@@ -2872,11 +2872,11 @@
   "generatedFrom": [
     {
       "path": "editorial/resources/hub/manifest.json",
-      "sha256": "ae1e2d7de4ad1acba8fd610f2349804519941d26dea96ccb2915e8da98815686"
+      "sha256": "677fe51e390477e214470b582379e581a33e6e6659442e0196d68b21020ea14a"
     },
     {
       "path": "editorial/resources/glossaire/manifest.json",
-      "sha256": "8a319da6e8517737d4df286557e547114fde0adc29594a975ddda79503dca1eb"
+      "sha256": "879c216651e5b35336aa906d8aaa8e5fe3bd573625720f129c0ed0334ec4ac9b"
     }
   ]
 }

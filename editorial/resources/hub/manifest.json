@@ -308,8 +308,8 @@
       },
       {
         "id": "unit-h-social-monitoring-summary",
-        "text": "Doctrine Memlia : suivre les dossiers et les étapes, jamais classer les personnes. Sauf exception légale, un dispositif de contrôle de l’activité du personnel doit être justifié et proportionné. Il doit être porté à la connaissance des personnes concernées avant sa mise en place. Dans les entreprises privées de 50 salariés et plus, l’employeur doit consulter le CSE sur ce dispositif.",
-        "sha256": "89e74ab7b8e4b469a6236d67542e27acd40c487bef072b35785bbb474dabac00",
+        "text": "Doctrine Memlia : suivre les dossiers et les étapes, jamais classer les personnes. Pour être licite, un dispositif de contrôle de l’activité du personnel doit être justifié et proportionné. Il doit être porté à la connaissance des personnes concernées avant sa mise en place. Dans les entreprises privées de 50 salariés et plus, l’employeur doit consulter le CSE sur ce dispositif.",
+        "sha256": "1c447f1b5108b1d2091d5020087298d0db8b4a9565c16054823f6d4bc713ea94",
         "claimIds": [
           "claim-h-social-monitoring-summary-1",
           "claim-h-social-monitoring-summary-2",
@@ -490,8 +490,8 @@
       {
         "id": "claim-h-social-monitoring-summary-2",
         "unitId": "unit-h-social-monitoring-summary",
-        "text": "Sauf exception légale, un dispositif de contrôle de l’activité du personnel doit être justifié et proportionné.",
-        "sha256": "defe30c11e00c37a27e54f2ddb1e9389b96be6c5134e2f8c17c5b6c77044681d",
+        "text": "Pour être licite, un dispositif de contrôle de l’activité du personnel doit être justifié et proportionné.",
+        "sha256": "ede5a454f080f1fbd04b76be1166e2b6fba1d5252c854e05a1eb6e5c3a3726a5",
         "type": "legal-reglementaire",
         "sourceIds": [
           "source-cnil-controle-activite"
@@ -584,7 +584,7 @@
         "sourceId": "source-summaries-memlia",
         "text": "Méthode Memlia : une liste de contrôles écrite, rejouée chaque mois ; le cabinet décide.",
         "sha256": "96c8754fe6582c03aaa7ca7776f8ddc9c28dd446ae2041c75d40aded99c3338a",
-        "sourceContentSha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4",
+        "sourceContentSha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88",
         "finalUrl": "file://src/data/resource-summaries.json",
         "checkedAt": "2026-09-14T15:37:40+01:00",
         "title": "Doctrine des résumés du Hub",
@@ -659,7 +659,7 @@
         "sourceId": "source-summaries-memlia",
         "text": "Doctrine Memlia : suivre les dossiers et les étapes, jamais classer les personnes.",
         "sha256": "ab453868e6361a48c72a33384766d5e1339c29bb56a597a6728384c0bd2f5b88",
-        "sourceContentSha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4",
+        "sourceContentSha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88",
         "finalUrl": "file://src/data/resource-summaries.json",
         "checkedAt": "2026-09-14T15:37:40+01:00",
         "title": "Doctrine des résumés du Hub",
@@ -672,9 +672,9 @@
           "claim-h-social-monitoring-summary-2"
         ],
         "sourceId": "source-cnil-controle-activite",
-        "text": "Sauf exception (par exemple, lorsqu’un dispositif de contrôle est imposé par la loi), un dispositif de contrôle de l’activité du personnel doit cumulativement : satisfaire aux tests de justification et de proportionnalité ; être soumis aux instances représentatives du personnel selon les règles en vigueur ; être porté à la connaissance des salariés/agents.",
-        "sha256": "a9a2b545ea4c286af1f5534d1b4b95a83bfc146318262dbef07a81ce4de8fe2d",
-        "sourceContentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+        "text": "Pour être licite (c’est-à-dire autorisé par la loi), un dispositif de contrôle de l’activité du personnel doit cumulativement : satisfaire aux tests de justification et de proportionnalité ; être soumis aux instances représentatives du personnel selon les règles en vigueur ; être porté à la connaissance des salariés/agents.",
+        "sha256": "eb941829235973af7b2b045a90636026e51b03a597602576f37f9ffaf039bf28",
+        "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
         "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
         "checkedAt": "2026-09-14T15:37:40+01:00",
         "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
@@ -689,7 +689,7 @@
         "sourceId": "source-cnil-controle-activite",
         "text": "Le dispositif doit être porté à la connaissance des personnes concernées, préalablement à sa mise en place, pour satisfaire aux obligations de loyauté et d’information qui incombent à l'employeur.",
         "sha256": "2954f109a90128ec4a65adf33cbcb1e0e4d6aaa38569cd74b29c0d395e93d220",
-        "sourceContentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+        "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
         "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
         "checkedAt": "2026-09-14T15:37:40+01:00",
         "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
@@ -704,7 +704,7 @@
         "sourceId": "source-cnil-controle-activite",
         "text": "Dans le cadre du dialogue social, l'employeur doit consulter : le conseil social et économique (CSE) dans les entreprises privées de 50 salariés et plus, les établissements publics à caractère industriel et commercial et les établissements publics à caractère administratif lorsqu'ils emploient du personnel dans les conditions du droit privé ; le comité social d’administration, territorial ou d’établissement (CSA, CST et CSE) ou leurs formations spécialisées dans les organismes publics.",
         "sha256": "124dbedfd03b6f4971a7108f6c86eed159f84fc6efb9fb412e8fa5fdc75e8a21",
-        "sourceContentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+        "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
         "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
         "checkedAt": "2026-09-14T15:37:40+01:00",
         "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
@@ -744,7 +744,7 @@
         "official": false,
         "upstreamUrl": "file://src/data/resource-summaries.json",
         "snapshotPath": "src/data/resource-summaries.json",
-        "contentSha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4",
+        "contentSha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88",
         "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
         "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
         "claimIds": [
@@ -822,7 +822,7 @@
         "official": true,
         "upstreamUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
         "snapshotPath": "docs/qa/hub-ressources/metier-fix-a-sources/cnil-controle-activite.txt",
-        "contentSha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3",
+        "contentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
         "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
         "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
         "claimIds": [
@@ -1155,7 +1155,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T04:46:56.149Z",
+        "checkedAt": "2026-09-16T05:24:52.222Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1176,7 +1176,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T04:46:56.149Z",
+        "checkedAt": "2026-09-16T05:24:52.222Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1260,7 +1260,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T04:46:56.149Z",
+        "checkedAt": "2026-09-16T05:24:52.222Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1323,7 +1323,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T04:46:56.149Z",
+        "checkedAt": "2026-09-16T05:24:52.222Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1745,7 +1745,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T04:46:56.149Z",
+        "checkedAt": "2026-09-16T05:24:52.222Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1829,7 +1829,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T04:46:56.149Z",
+        "checkedAt": "2026-09-16T05:24:52.222Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -1850,7 +1850,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T04:46:56.149Z",
+        "checkedAt": "2026-09-16T05:24:52.222Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -2663,7 +2663,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T04:46:56.149Z",
+      "checkedAt": "2026-09-16T05:24:52.222Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -2688,7 +2688,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T04:46:56.149Z",
+      "checkedAt": "2026-09-16T05:24:52.222Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -2711,7 +2711,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T04:46:56.149Z",
+      "checkedAt": "2026-09-16T05:24:52.222Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -2736,7 +2736,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T04:46:56.149Z",
+      "checkedAt": "2026-09-16T05:24:52.222Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -2759,7 +2759,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T04:46:56.149Z",
+      "checkedAt": "2026-09-16T05:24:52.222Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -2918,8 +2918,8 @@
       "entries": [
         {
           "path": "docs/qa/hub-ressources/metier-fix-a-sources/cnil-controle-activite.txt",
-          "bytes": 1602,
-          "sha256": "f2c64ee8a487847e6fe864a168e5835e77abc86c376e9c84d1c4d29815fa10d3"
+          "bytes": 1723,
+          "sha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe"
         },
         {
           "path": "docs/qa/hub-ressources/metier-fix-a-sources/net-annule.txt",
@@ -2938,8 +2938,8 @@
         },
         {
           "path": "src/data/resource-summaries.json",
-          "bytes": 1086,
-          "sha256": "d1adfb5605c20a34c194e9b7c8884b543649013bf9b8032733d23ef978241ce4"
+          "bytes": 1081,
+          "sha256": "43f84609a0cabf057acbbd0e51af449a43d37343a3c5788f50728abcb291dd88"
         },
         {
           "path": "src/pages/ressources.astro",
@@ -2947,7 +2947,7 @@
           "sha256": "403ec36bf1469f3b87ce93c8f50b66fff53b9633c5e26c8f0eb639a0efaf86fe"
         }
       ],
-      "digest": "e63bdba6d4d667c059d3bc83827f0e97b5b4d62098bf1637589ed4bcc2bec7f7"
+      "digest": "c78cb3c648777fb06296078019d65337a7ae736020df874075dc223f1b50a3ae"
     },
     "assetBundle": {
       "entries": [
@@ -2968,8 +2968,8 @@
         },
         {
           "path": "scripts/lib/resource-metier-evidence.mjs",
-          "bytes": 17542,
-          "sha256": "3799774a921c0b299b93b065ea238246836068f6e7a9d04f1ebd75752c67df29"
+          "bytes": 17537,
+          "sha256": "3f2c200dd6722c347cfc0da5f274c174b7aa02559c218ea93643d5627e5c91bb"
         },
         {
           "path": "scripts/lib/resource-metier-v3.mjs",
@@ -2982,20 +2982,20 @@
           "sha256": "3c3af3bcf59d0b94d0f5d9b0929bf220129af8bed396f745717d02391a17c5a5"
         }
       ],
-      "digest": "aa7914062971462c34dd4d65410aa2509812ffb98cb8864f29477a6305e07b19"
+      "digest": "ad93e99ff4bd27511700d64bff04a2570e22b3e9f886cbb0131fbd1f783a1a29"
     },
     "buildOutput": {
       "entries": [
         {
           "path": "dist/ressources.html",
-          "bytes": 56534,
-          "sha256": "45900e3a4571ad0b862c3ad4a1aab1886b2aa813937405bf2ed6fd9bdeffc2f5"
+          "bytes": 56529,
+          "sha256": "a75d362a475bcdef8b5c34980153a37209ad93bfe0d47f93e3d70cc3c0f6fd33"
         }
       ],
-      "digest": "5f48057b03f5b3d1192059bf259fdb6ad9528a7bc48748646b674ee28a58b270"
+      "digest": "964ffa5782a7d636b75d3df1c72a8c67ffa73a8f73bcce26c3c67ee888610f7b"
     },
     "candidateHash": {
-      "value": "4c6ac99ac7185974a85a044a1df886ada699f31a0c5a91a61aa26e3c19ef975a",
+      "value": "6b3690789383c9a9deb42775469da7e0240ec34714fa292ab9c8869b146509c0",
       "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
     },
     "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
@@ -3007,18 +3007,18 @@
       "node scripts/strip-briefs.mjs",
       "npm run build:site"
     ],
-    "startedAt": "2026-09-16T04:46:53.684Z",
-    "endedAt": "2026-09-16T04:47:35.429Z",
+    "startedAt": "2026-09-16T05:24:49.478Z",
+    "endedAt": "2026-09-16T05:25:30.164Z",
     "result": "PASS",
-    "sourceBundleDigest": "e63bdba6d4d667c059d3bc83827f0e97b5b4d62098bf1637589ed4bcc2bec7f7",
+    "sourceBundleDigest": "c78cb3c648777fb06296078019d65337a7ae736020df874075dc223f1b50a3ae",
     "assetBundleDigest": "62730565e747db359ef83dd42a3c8f145e1ae1605d40d66dc0bc3725043b6d2d",
-    "configBundleDigest": "aa7914062971462c34dd4d65410aa2509812ffb98cb8864f29477a6305e07b19",
-    "outputDigest": "5f48057b03f5b3d1192059bf259fdb6ad9528a7bc48748646b674ee28a58b270",
+    "configBundleDigest": "ad93e99ff4bd27511700d64bff04a2570e22b3e9f886cbb0131fbd1f783a1a29",
+    "outputDigest": "964ffa5782a7d636b75d3df1c72a8c67ffa73a8f73bcce26c3c67ee888610f7b",
     "reportRefs": [
       "docs/qa/hub-ressources/freshness-r4-exec.md"
     ],
     "receiptRef": "docs/qa/hub-ressources/metier-fix-c-build-receipt.json",
-    "receiptSha256": "b0e0e4d8b6a8eb3afc5e1e18dfce5f00506356759620b713141625419d790f48"
+    "receiptSha256": "338d8c8df225e1a4fc5eee1898d1a4375e6cf19ed9dbebeecbfcfcb2dbe3a975"
   },
   "preview": {
     "branch": null,
@@ -3036,8 +3036,8 @@
     "reportRef": null
   },
   "audit": {
-    "candidateHash": "4c6ac99ac7185974a85a044a1df886ada699f31a0c5a91a61aa26e3c19ef975a",
-    "buildOutputDigest": "5f48057b03f5b3d1192059bf259fdb6ad9528a7bc48748646b674ee28a58b270",
+    "candidateHash": "6b3690789383c9a9deb42775469da7e0240ec34714fa292ab9c8869b146509c0",
+    "buildOutputDigest": "964ffa5782a7d636b75d3df1c72a8c67ffa73a8f73bcce26c3c67ee888610f7b",
     "gateReportRefs": [
       "fixture://audit/gates"
     ],
@@ -3049,7 +3049,7 @@
     "p0": [],
     "p1": [],
     "result": "PASS",
-    "auditHash": "3022bdcd38c94a58965784e101e87d98a9d3a5b456f8a53a1dc7f9a626374c9d"
+    "auditHash": "2168eec3a856b67c1931f7ceca97e688cd2ec07ed50375eb3d6e80bd0aeeecf9"
   },
   "approval": {
     "state": "pending",
