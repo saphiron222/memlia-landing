@@ -66,8 +66,9 @@ for (const width of [320, 375, 390, 430]) {
       await testInfo.attach('menu-ouvert', { body: png, contentType: 'image/png' });
       await expect(page.locator('#main')).toHaveAttribute('inert', '');
       const links = page.locator('#menu-mobile a');
-      await expect(page.locator('.nav-mobile-lien')).toHaveText(['Usages', 'Méthode', 'Intégration', 'Garanties', 'Questions', 'Ressources', 'Articles', 'Glossaire']);
-      await expect(links).toHaveCount(9);
+      // Cinq entrées v2 + le seul sous-lien du Hub qui n'est pas déjà une entrée.
+      await expect(page.locator('.nav-mobile-lien')).toHaveText(['Automatisation', 'Méthode', 'Garanties', 'Ressources', 'Blog', 'Glossaire']);
+      await expect(links).toHaveCount(7);
       const states = [];
       for (const link of await links.all()) {
         // En hauteur normale, aucun scroll nécessaire ; en paysage chaque lien doit rester atteignable.
@@ -129,10 +130,12 @@ test('menu : clavier, focus, verrou du fond et restauration du scroll', async ({
   await expect(burger).toBeFocused();
   await expect.poll(() => page.evaluate(() => scrollY)).toBe(before);
   await expect(page.locator('body')).not.toHaveCSS('position', 'fixed');
-  await burger.click();
-  await expectCovered(page);
-  await page.locator('.nav-mobile-lien[href="#questions"]').click();
-  await expect(page.locator('#menu-mobile')).toBeHidden();
+  // Le menu v2 ne porte plus d'ancre : ce sont les liens du pied de page qui mènent aux
+  // sections narratives. La propriété vérifiée reste la même — une navigation par
+  // fragment, après déverrouillage du défilement, atterrit bien sur sa cible.
+  const ancre = page.locator('.pied-lien[href="#questions"]');
+  await ancre.scrollIntoViewIfNeeded();
+  await ancre.click();
   await expect(page).toHaveURL(/#questions$/);
   await expect.poll(async () => Math.abs(await page.locator('#questions').evaluate(el => el.getBoundingClientRect().top)) < 150).toBe(true);
 });
@@ -187,9 +190,16 @@ test('menu : navigation Ressources et états du fond préexistants conservés', 
   await expect(page.locator('#menu-mobile')).toBeHidden();
   await page.locator('[data-burger]').click();
   await expectCovered(page);
-  await expect(page.locator('#menu-mobile [aria-current="true"]')).toHaveText('Ressources');
-  await page.locator('#menu-mobile a[href="/#usages"]').click();
-  await expect(page).toHaveURL(/\/#usages$/);
+  await expect(page.locator('#menu-mobile [aria-current="page"]')).toHaveText('Blog');
+  // Le menu v2 ne porte plus d'ancre : on vérifie le déverrouillage sur le seul type
+  // de lien qu'il contient, un changement de page, et sur la fermeture par Échap.
+  await page.locator('#menu-mobile a[href="/glossaire"]').click();
+  await expect(page).toHaveURL(/\/glossaire$/);
+  await expect(page.locator('#main')).not.toHaveAttribute('inert');
+  await expect(page.locator('body')).not.toHaveCSS('position', 'fixed');
+  await page.locator('[data-burger]').click();
+  await expect(page.locator('body')).toHaveCSS('position', 'fixed');
+  await page.keyboard.press('Escape');
   await expect(page.locator('#main')).not.toHaveAttribute('inert');
   await expect(page.locator('body')).not.toHaveCSS('position', 'fixed');
 });

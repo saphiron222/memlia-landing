@@ -1,0 +1,49 @@
+---
+import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import { PAGES_V2 } from '@/data/pages-v2.mjs';
+import { SITE } from '@/data/site.mjs';
+const page = PAGES_V2.garanties;
+const url = `${SITE.url}${page.chemin}`;
+const noeuds = [{
+  '@type': 'WebPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
+  inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` },
+}];
+---
+
+<PageCommerciale page={page} noeuds={noeuds}>
+  <section class="conteneur page-section" aria-labelledby="arret">
+    <h2 id="arret">Dans le doute, l’automatisation s’arrête</h2>
+    <p>C’est notre règle la plus stricte, et elle a une conséquence désagréable : nos automatisations refusent plus souvent que d’autres.</p>
+    <p>Quand une donnée manque, quand deux règles s’appliquent et se contredisent, quand un format n’est pas celui prévu, le traitement s’interrompt et présente le cas. Il n’écrit pas une valeur par défaut, il ne choisit pas la lecture la plus probable, il ne complète pas silencieusement.</p>
+    <p>Nous assumons ce choix. Une exception visible se traite en quelques minutes. Une exception avalée se découvre des mois plus tard, et il faut alors reprendre tout ce qui en dépendait.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="donnees">
+    <h2 id="donnees">Aucune donnée de votre cabinet dans nos essais</h2>
+    <p>Les jeux d’essai que nous construisons sont <strong>entièrement fictifs</strong>. Ils reproduisent la forme de vos fichiers, jamais leur contenu.</p>
+    <p>Les fichiers réels que vous nous confiez pour le cadrage sont lus en place, jamais copiés dans nos dépôts, jamais utilisés pour construire. Pour le premier échange, nous vous demandons d’ailleurs de n’envoyer aucun fichier client ni donnée de paie : la description du geste suffit.</p>
+    <p>Le détail de nos traitements figure dans la <a href="/politique-de-confidentialite">politique de confidentialité</a>.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="personnes">
+    <h2 id="personnes">Nous ne mesurons pas les personnes</h2>
+    <p>Un outil de pilotage compte des dossiers, des étapes et des délais. Il ne classe pas les collaborateurs.</p>
+    <p>Les vues que nous livrons présentent des agrégats : combien de dossiers à telle étape, combien d’exceptions en attente, quelles échéances approchent. L’affectation sert à distribuer le travail ; elle ne justifie pas une mesure individuelle continue, et nous ne construisons pas de vue qui la rendrait possible par défaut.</p>
+    <p>Ce n’est pas seulement une position : c’est aussi ce que le cadre applicable attend d’un dispositif de contrôle de l’activité, comme le rappelle notre <a href="/glossaire">glossaire</a>.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="refus">
+    <h2 id="refus">Ce que nous ne promettons pas</h2>
+    <ul>
+      <li><strong>Aucune conformité.</strong> Nous ne délivrons pas d’attestation, ni en paie, ni en droit social, ni au titre du règlement européen sur les données. Nos contenus publics portent d’ailleurs la mention « non attesté » lorsqu’ils touchent à ces sujets.</li>
+      <li><strong>Aucun branchement universel.</strong> Nous vérifions les formats et les accès de vos outils avant de nous engager. Si la connexion n’est pas possible, nous le disons.</li>
+      <li><strong>Aucun gain chiffré.</strong> Nous n’annoncerons pas que vous gagnerez tant d’heures ou tant de pourcents. Nous n’avons pas de mesure qui le soutienne, et une promesse de ce type ne s’appuierait sur rien.</li>
+      <li><strong>Aucune illustration trompeuse.</strong> Les exemples que nous publions sont fictifs et le disent. Aucun n’est une capture d’un dossier réel ni un résultat client.</li>
+    </ul>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="ecrit">
+    <h2 id="ecrit">Ce qui est écrit avant de commencer</h2>
+    <p>Avant la mise en service, un document fixe le périmètre, les accès, les points de validation et les critères de recette. Ce qui n’y figure pas ne fait pas partie de la mission.</p>
+  </section>
+</PageCommerciale>

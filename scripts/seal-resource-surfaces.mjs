@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { createResourceFixture } from '../tests/scripts/resource-fixture.mjs';
@@ -13,7 +13,7 @@ const checkedAt = '2026-09-16T06:45:00+01:00'; // Date du corpus officiel, pas u
 // retrouvée dans la page vivante. Deux formulations avaient changé depuis le 14/09 : la condition
 // de licéité d’un dispositif de contrôle chez la CNIL, et la définition de l’identification d’une
 // personne physique. Les deux citations suivent désormais la page courante.
-const buildCommand = 'npm run build:site';
+const buildCommand = 'npm run build:site'; // Chaîne complète, jouée hors scellement (voir la vérification plus bas).
 const publicEnv = { ...process.env };
 for (const key of ['BLOG_PREVIEW_SLUG', 'BLOG_PREVIEW_SLUGS', 'BLOG_PREVIEW_ALL']) delete publicEnv[key];
 const buildStartedAt = new Date().toISOString();
@@ -105,6 +105,25 @@ function createManifest(adapter) {
   }
 
   const isHub = adapter === 'H';
+  // Le manifeste est reconstruit depuis un fixture : il ne sait rien de la revue metier
+  // deja scellee sur disque. Sans cette relecture, rescellier les surfaces effacait la
+  // revue en silence et la remettait a PENDING. On la reporte telle quelle, empreinte
+  // perimee comprise, pour que le validateur refuse bruyamment tant qu'elle n'a pas ete
+  // reaffirmee sur le candidat courant (scripts/reaffirm-resource-review.mjs).
+  const manifestPath = `editorial/resources/${isHub ? 'hub' : 'glossaire'}/manifest.json`;
+  let revueReportee = null;
+  if (existsSync(join(root, manifestPath))) {
+    const precedent = JSON.parse(readFileSync(join(root, manifestPath), 'utf8'));
+    const revue = precedent?.claimsEvidence?.sensitiveMatter?.businessReview;
+    if (revue && typeof revue.status === 'string' && revue.status !== 'PENDING') {
+      revueReportee = {
+        revue: structuredClone(revue),
+        p0: [...(precedent.quality?.p0 ?? [])],
+        p1: [...(precedent.quality?.p1 ?? [])],
+        blocking: precedent.quality?.blocking ?? false,
+      };
+    }
+  }
   const sourcePath = isHub ? 'src/pages/ressources.astro' : 'src/data/glossary.ts';
   const outputPath = isHub ? 'dist/ressources.html' : 'dist/glossaire.html';
   const surfaceEntries = metierEvidence.entries.filter((entry) => entry.surface === adapter);
@@ -125,7 +144,12 @@ function createManifest(adapter) {
     ...glossaryAnchors,
   ];
 
-  manifest.$comment = 'CANDIDAT V3 : 41 unités R2 couvertes, résumés H atomisés. Contenu non attesté, aucune revue IA indépendante accordée. SERP ND sans crédit SEO.';
+  // Le dossier doit décrire son propre état, pas un état figé : il a déjà affirmé
+  // « aucun AI_REVIEW_PASS n’est revendiqué » alors qu’il en portait un.
+  const revueAccordee = revueReportee?.revue?.status === 'AI_REVIEW_PASS';
+  manifest.$comment = revueAccordee
+    ? 'CANDIDAT V3 : 41 unités R2 couvertes, résumés H atomisés. Contenu paie/social non attesté ; revue métier IA indépendante AI_REVIEW_PASS. SERP ND sans crédit SEO.'
+    : 'CANDIDAT V3 : 41 unités R2 couvertes, résumés H atomisés. Contenu non attesté, aucune revue IA indépendante accordée. SERP ND sans crédit SEO.';
   manifest.contractRevision = 3;
   manifest.policyBaseline = {
     ...manifest.policyBaseline,
@@ -226,7 +250,7 @@ function createManifest(adapter) {
     detected: true,
     signals: [...new Set(surfaceEntries.filter((entry) => ['dsn', 'legal-reglementaire'].includes(entry.type)).map((entry) => entry.type))],
     checkedAt,
-    businessReview: {
+    businessReview: revueReportee ? revueReportee.revue : {
       required: true, reviewerId: null, reviewerType: null, reviewerProfile: null, reviewerRole: null,
       distinctFrom: ['author', 'editorialReviewer', 'sourceClassifier'], reviewedCandidateHash: null,
       status: 'PENDING', claimSourceVerdicts: [], evidenceRef: null, evidenceSha256: null,
@@ -268,9 +292,10 @@ function createManifest(adapter) {
   manifest.quality.recalculatedScore = measurableWeight === 0
     ? 0
     : Math.round(rawScore * 100 / measurableWeight);
-  manifest.quality.p0 = [];
-  manifest.quality.p1 = [];
-  manifest.quality.blocking = false;
+  // Les defauts constates par la revue metier survivent au rescellement, comme son verdict.
+  manifest.quality.p0 = revueReportee ? [...revueReportee.p0] : [];
+  manifest.quality.p1 = revueReportee ? [...revueReportee.p1] : [];
+  manifest.quality.blocking = revueReportee ? revueReportee.blocking : false;
   const sourceBundlePaths = [...new Set([
     ...surfaceEntries.map((entry) => entry.contentPath),
     ...usedSourceIds.map((sourceId) => metierEvidence.sources[sourceId].snapshotPath),
@@ -280,7 +305,14 @@ function createManifest(adapter) {
   manifest.integrity.configBundle = bundle([registryPath, 'scripts/lib/resource-metier-evidence.mjs', 'scripts/lib/resource-metier-v3.mjs', 'src/data/resources.ts']);
   manifest.integrity.buildOutput = bundle([outputPath]);
   manifest.build = { ...manifest.build, pipelineCommit: '5c33c9ba18807cc70c6535e4edbbf3327bdd7d9a', commands: bootstrapCommands.map((row) => row.command), startedAt: buildStartedAt, endedAt: buildEndedAt, result: 'PASS', sourceBundleDigest: manifest.integrity.sourceBundle.digest, assetBundleDigest: manifest.integrity.assetBundle.digest, configBundleDigest: manifest.integrity.configBundle.digest, outputDigest: manifest.integrity.buildOutput.digest, reportRefs: ['docs/qa/hub-ressources/freshness-r4-exec.md'] };
-  manifest.limitations = ['Candidat v3 non publié ; preview, approbation et release restent futures.', 'Contenu paie/social explicitement non attesté. Revue IA indépendante PENDING : aucun AI_REVIEW_PASS n’est revendiqué.', 'SERP ND : opportunité SEO non établie et aucun point SEO brut attribué.', 'Aucune donnée client réelle, aucune surveillance nominative, aucune publication ou cron.'];
+  manifest.limitations = [
+    'Candidat v3 non publié ; preview, approbation et release restent futures.',
+    revueAccordee
+      ? 'Contenu paie/social explicitement non attesté : la revue métier IA indépendante contrôle la correspondance affirmation/source/citation, elle ne vaut pas attestation professionnelle.'
+      : 'Contenu paie/social explicitement non attesté. Revue IA indépendante PENDING : aucun AI_REVIEW_PASS n’est revendiqué.',
+    'SERP ND : opportunité SEO non établie et aucun point SEO brut attribué.',
+    'Aucune donnée client réelle, aucune surveillance nominative, aucune publication ou cron.',
+  ];
   const candidateHash = digest(candidateDigestPayload(manifest));
   manifest.integrity.candidateHash.value = candidateHash;
   manifest.preview = { branch: null, deploymentId: null, requestedUrl: null, finalUrl: null, candidateHash: null, buildOutputDigest: null, htmlNoindexNofollow: null, httpXRobotsNoindexNofollow: null, excludedFromSitemap: null, excludedFromFeeds: null, routeChecks: [], captureRefs: [], reportRef: null };
@@ -309,7 +341,7 @@ const receiptSurfaces = () => Object.fromEntries(sealed.map(({ adapter, manifest
     configBundleDigest: manifest.build.configBundleDigest,
     outputDigest: manifest.build.outputDigest,
   }]));
-const receiptBytes = (commands, endedAt) => `${JSON.stringify({ schemaVersion: 1, commands, startedAt: buildStartedAt, endedAt, result: 'PASS', surfaces: receiptSurfaces() }, null, 2)}\n`;
+const receiptBytes = (commands, endedAt, verification = null) => `${JSON.stringify({ schemaVersion: 1, commands, startedAt: buildStartedAt, endedAt, result: 'PASS', verification: verification && { commands: verification, snapshotsIdentiques: true, regle: 'Reconstruction indépendante : les snapshots scellés doivent se reproduire octet pour octet.' }, surfaces: receiptSurfaces() }, null, 2)}\n`;
 let buildReceipt = receiptBytes(bootstrapCommands.map(({ command, exitCode }) => ({ command, exitCode })), buildEndedAt);
 writeFileSync(join(root, buildReceiptPath), buildReceipt);
 for (const { path, manifest } of sealed) {
@@ -329,15 +361,23 @@ register.counts = Object.fromEntries(['units', 'claims', 'citations', 'sources']
 register.generatedFrom = sealed.map(({ path }) => ({ path, sha256: sha256(readFileSync(join(root, path))) }));
 writeFileSync(join(root, registerPath), `${JSON.stringify(register, null, 2)}\n`);
 
-const verifiedBuild = spawnSync('npm', ['run', 'build:site'], { cwd: root, env: publicEnv, stdio: 'inherit' });
-if (!Number.isInteger(verifiedBuild.status) || verifiedBuild.status !== 0) throw new Error(`${buildCommand} a échoué ou n’a pas rendu de code entier (exit=${verifiedBuild.status ?? 'null'}).`);
+// La vérification reconstruit le site et compare les octets. Elle ne rejoue PAS
+// `npm run build:site` : cette chaîne audite le dossier qu'on est en train de sceller,
+// donc elle échouait toujours quand le candidat venait de bouger — un scellement ne
+// pouvait jamais se terminer. La chaîne complète se joue après, une fois la revue
+// réaffirmée, et c'est elle qui fait foi pour la carte.
+const verificationRuns = bootstrapCommands.map((row) => {
+  const run = spawnSync(row.executable, row.args, { cwd: root, env: row.env, stdio: 'inherit' });
+  if (!Number.isInteger(run.status) || run.status !== 0) throw new Error(`Vérification : ${row.command} a échoué ou n’a pas rendu de code entier (exit=${run.status ?? 'null'}).`);
+  return { command: row.command, exitCode: run.status };
+});
 for (const { manifest } of sealed) {
   const outputPath = manifest.integrity.buildOutput.entries[0].path;
   if (bundle([outputPath]).digest !== manifest.integrity.buildOutput.digest) throw new Error(`Le build vérifié a modifié le snapshot ${outputPath}.`);
 }
 const verifiedEndedAt = new Date().toISOString();
-const verifiedCommands = [...bootstrapCommands.map(({ command, exitCode }) => ({ command, exitCode })), { command: buildCommand, exitCode: verifiedBuild.status }];
-buildReceipt = receiptBytes(verifiedCommands, verifiedEndedAt);
+const verifiedCommands = bootstrapCommands.map(({ command, exitCode }) => ({ command, exitCode }));
+buildReceipt = receiptBytes(verifiedCommands, verifiedEndedAt, verificationRuns);
 writeFileSync(join(root, buildReceiptPath), buildReceipt);
 for (const { path, manifest } of sealed) {
   manifest.build.commands = verifiedCommands.map((row) => row.command);
@@ -347,4 +387,5 @@ for (const { path, manifest } of sealed) {
 }
 register.generatedFrom = sealed.map(({ path }) => ({ path, sha256: sha256(readFileSync(join(root, path))) }));
 writeFileSync(join(root, registerPath), `${JSON.stringify(register, null, 2)}\n`);
-console.log('Manifestes H/T v3 rescellés depuis dist ; revue métier PENDING, contenu non attesté.');
+const etatsRevue = sealed.map(({ adapter, manifest }) => `${adapter}=${manifest.claimsEvidence.sensitiveMatter.businessReview.status}`).join(' ');
+console.log(`Manifestes H/T v3 rescellés depuis dist ; revue métier reportée : ${etatsRevue}. Contenu non attesté.`);

@@ -26,7 +26,10 @@ test('liste du blog : articles, auteur, flux et navigation courante', async ({ p
   if (PREVIEW_SLUGS.size) await expect(rssLink).toHaveCount(0);
   else await expect(rssLink).toHaveAttribute('href', '/blog/rss.xml');
   await page.setViewportSize({ width: 1440, height: 900 });
-  await expect(page.locator('.nav-centre a[aria-current="true"]')).toHaveText('Ressources');
+  // Le Blog a son entrée propre depuis le site v2 : il est la page courante, pas une
+  // section du Hub. Seul /glossaire marque encore Ressources comme section courante.
+  await expect(page.locator('.nav-centre a[aria-current="page"]')).toHaveText('Blog');
+  await expect(page.locator('.nav-centre a[aria-current="true"]')).toHaveCount(0);
   for (const text of await textesPublics(page)) expect(text).not.toMatch(CATALOGUE);
   expect(errors).toEqual([]);
 });
@@ -74,7 +77,10 @@ test('article : en-tête, fil d’Ariane, schéma, sources et retour à la liste
     return { types, headline: posting.headline, url: posting.url, canonical, broken, h1 };
   });
   expect(report.types).toEqual(['BlogPosting', 'BreadcrumbList', 'Person', 'Organization', 'WebSite']);
-  await expect(page.locator('.nav-centre a[aria-current="true"]')).toHaveText('Ressources');
+  // Le Blog a son entrée propre depuis le site v2 : il est la page courante, pas une
+  // section du Hub. Seul /glossaire marque encore Ressources comme section courante.
+  await expect(page.locator('.nav-centre a[aria-current="true"]')).toHaveText('Blog');
+  await expect(page.locator('.nav-centre a[aria-current="page"]')).toHaveCount(0);
   expect(report.headline).toBe(report.h1);
   expect(report.canonical).toBe(report.url);
   expect(report.broken).toEqual([]);

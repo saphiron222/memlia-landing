@@ -1,5 +1,5 @@
 {
-  "$comment": "CANDIDAT V3 : 41 unités R2 couvertes, résumés H atomisés. Contenu non attesté, aucune revue IA indépendante accordée. SERP ND sans crédit SEO.",
+  "$comment": "CANDIDAT V3 : 41 unités R2 couvertes, résumés H atomisés. Contenu paie/social non attesté ; revue métier IA indépendante AI_REVIEW_PASS. SERP ND sans crédit SEO.",
   "schemaVersion": "resource-manifest-v1",
   "contractRevision": 3,
   "templateState": "candidate",
@@ -2457,7 +2457,7 @@
           "editorialReviewer",
           "sourceClassifier"
         ],
-        "reviewedCandidateHash": "4b918cecd5a5fa2c6dae734570c3a45578635240f008e8da1e52edad92475bdc",
+        "reviewedCandidateHash": "914d51f521cdfe9b1aaecee9ab5c8265e364e91a6c44a8b00c4b0cee14731e0c",
         "status": "AI_REVIEW_PASS",
         "claimSourceVerdicts": [
           {
@@ -2668,7 +2668,7 @@
           }
         ],
         "evidenceRef": "docs/qa/hub-ressources/metier-review-r4/preuve-glossaire.json",
-        "evidenceSha256": "3b098458bb695f7101593054588546c66d939b337a16ff8a2e738f719828a808"
+        "evidenceSha256": "425f748f8858ee949338c56c19b40b725354736601000327bd76806c72af973c"
       }
     }
   },
@@ -2923,7 +2923,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:43:57.818Z",
+        "checkedAt": "2026-09-16T06:55:48.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -2944,7 +2944,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:43:57.818Z",
+        "checkedAt": "2026-09-16T06:55:48.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -3028,7 +3028,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:43:57.818Z",
+        "checkedAt": "2026-09-16T06:55:48.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -3091,7 +3091,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:43:57.818Z",
+        "checkedAt": "2026-09-16T06:55:48.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -3513,7 +3513,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:43:57.818Z",
+        "checkedAt": "2026-09-16T06:55:48.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -3597,7 +3597,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:43:57.818Z",
+        "checkedAt": "2026-09-16T06:55:48.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -3618,7 +3618,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-16T05:43:57.818Z",
+        "checkedAt": "2026-09-16T06:55:48.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -4431,7 +4431,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T05:43:57.818Z",
+      "checkedAt": "2026-09-16T06:55:48.789Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -4456,7 +4456,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T05:43:57.818Z",
+      "checkedAt": "2026-09-16T06:55:48.789Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -4479,7 +4479,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T05:43:57.818Z",
+      "checkedAt": "2026-09-16T06:55:48.789Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -4504,7 +4504,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T05:43:57.818Z",
+      "checkedAt": "2026-09-16T06:55:48.789Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -4527,7 +4527,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-16T05:43:57.818Z",
+      "checkedAt": "2026-09-16T06:55:48.789Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -4771,14 +4771,14 @@
       "entries": [
         {
           "path": "dist/glossaire.html",
-          "bytes": 151260,
-          "sha256": "5c9a285bd96dfec525a65bf30757deb582ac7da36be9bf135553adb712fed2de"
+          "bytes": 150874,
+          "sha256": "a74faf46f0529639431a7fdfbb609bf5abfb8891e4beff82aafd7a30d266f98f"
         }
       ],
-      "digest": "0f4547693a481ef8527c5345f7508a89834f9b6d4ade2a66fc91fcf1589e4bc6"
+      "digest": "38e448d3a2c7c07b748bacb0ff64d68a0733b6d330a56688c5b5cf96ce28f612"
     },
     "candidateHash": {
-      "value": "8cbc4b0c931b2793eeac4160d8162c639bf93740e5371b17b3bc0b3df6186d29",
+      "value": "98797951a4022a915e92b9aba7c7d2017bce3457e6cc6522bb3c8f20ee8cb60a",
       "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
     },
     "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
@@ -4787,21 +4787,20 @@
     "pipelineCommit": "5c33c9ba18807cc70c6535e4edbbf3327bdd7d9a",
     "commands": [
       "npx astro build",
-      "node scripts/strip-briefs.mjs",
-      "npm run build:site"
+      "node scripts/strip-briefs.mjs"
     ],
-    "startedAt": "2026-09-16T05:43:55.685Z",
-    "endedAt": "2026-09-16T05:44:34.116Z",
+    "startedAt": "2026-09-16T06:55:46.563Z",
+    "endedAt": "2026-09-16T06:55:50.407Z",
     "result": "PASS",
     "sourceBundleDigest": "6d2c2db8de4271b374d4ab462a54e88dd4b7955d1607912e49b89203b62e7019",
     "assetBundleDigest": "6cdf4107b70ae3dd623c7a66a7cfbe02272ec46c6c63e179fe8f03407adb5f14",
     "configBundleDigest": "f1c5ab55eeccdf89b116e88aeb8181e4ea3ad6c6fa870997f57dde086d27cccc",
-    "outputDigest": "0f4547693a481ef8527c5345f7508a89834f9b6d4ade2a66fc91fcf1589e4bc6",
+    "outputDigest": "38e448d3a2c7c07b748bacb0ff64d68a0733b6d330a56688c5b5cf96ce28f612",
     "reportRefs": [
       "docs/qa/hub-ressources/freshness-r4-exec.md"
     ],
     "receiptRef": "docs/qa/hub-ressources/metier-fix-c-build-receipt.json",
-    "receiptSha256": "ca9de95dbafd11028624a086e5e7f186e3f05ad98bc37669bda91b5d6671e02d"
+    "receiptSha256": "260264f622f51cc0e24ad80a96ca3ae64a166c976648ff41d6b0ba17df7fdb70"
   },
   "preview": {
     "branch": null,
@@ -4819,8 +4818,8 @@
     "reportRef": null
   },
   "audit": {
-    "candidateHash": "8cbc4b0c931b2793eeac4160d8162c639bf93740e5371b17b3bc0b3df6186d29",
-    "buildOutputDigest": "0f4547693a481ef8527c5345f7508a89834f9b6d4ade2a66fc91fcf1589e4bc6",
+    "candidateHash": "98797951a4022a915e92b9aba7c7d2017bce3457e6cc6522bb3c8f20ee8cb60a",
+    "buildOutputDigest": "38e448d3a2c7c07b748bacb0ff64d68a0733b6d330a56688c5b5cf96ce28f612",
     "gateReportRefs": [
       "fixture://audit/gates"
     ],
@@ -4832,7 +4831,7 @@
     "p0": [],
     "p1": [],
     "result": "PASS",
-    "auditHash": "c4c9d891848882fd02d08d94eef0c2f0b8451f0736371b245ac4a6ab45b416b1"
+    "auditHash": "c187f38e91b8a50ed37b2acaa9049bab2fc9d7cf6382b85930f4e0da1bb96444"
   },
   "approval": {
     "state": "pending",
@@ -4860,7 +4859,7 @@
   "contradictions": [],
   "limitations": [
     "Candidat v3 non publié ; preview, approbation et release restent futures.",
-    "Contenu paie/social explicitement non attesté. Revue IA indépendante PENDING : aucun AI_REVIEW_PASS n’est revendiqué.",
+    "Contenu paie/social explicitement non attesté : la revue métier IA indépendante contrôle la correspondance affirmation/source/citation, elle ne vaut pas attestation professionnelle.",
     "SERP ND : opportunité SEO non établie et aucun point SEO brut attribué.",
     "Aucune donnée client réelle, aucune surveillance nominative, aucune publication ou cron."
   ]

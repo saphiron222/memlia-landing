@@ -12,9 +12,9 @@ import { fileURLToPath } from 'node:url';
 
 export const BLOG = {
   chemin: '/blog',
-  titre: 'Blog Memlia : paie, DSN et automatisation en cabinet comptable',
+  titre: 'Blog Memlia : vérifier et automatiser le travail du cabinet',
   description:
-    'Méthodes concrètes pour les pôles social et comptable des cabinets : ce qui se vérifie, ce qui s’automatise, ce qui reste une décision humaine.',
+    'Paie, DSN et suivi des dossiers : des méthodes pour préparer le travail répétitif dans les outils du cabinet, avec vérification et décision humaines.',
   fluxRss: '/blog/rss.xml',
   /** Mots par minute retenus pour le temps de lecture affiché. */
   motsParMinute: 200,

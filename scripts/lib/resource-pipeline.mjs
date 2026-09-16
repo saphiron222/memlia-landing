@@ -57,15 +57,15 @@ const timestamp = (value) => {
   return Number.isFinite(parsed) ? parsed : null;
 };
 const calendarDate = (value) => ISO_DATE.test(value ?? '') && timestamp(`${value}T00:00:00Z`) !== null;
-const canonicalJson = (value) => {
+export const canonicalJson = (value) => {
   if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
   if (value && typeof value === 'object') {
     return `{${Object.keys(value).filter((key) => value[key] !== undefined).sort().map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(',')}}`;
   }
   return JSON.stringify(value);
 };
-const digest = (value) => sha256(canonicalJson(value));
-const candidateDigestPayload = (manifest) => ({
+export const digest = (value) => sha256(canonicalJson(value));
+export const candidateDigestPayload = (manifest) => ({
   schemaVersion: manifest.schemaVersion,
   contractRevision: manifest.contractRevision,
   formatAdapter: manifest.formatAdapter,
@@ -89,7 +89,7 @@ const candidateDigestPayload = (manifest) => ({
   configBundleDigest: manifest.integrity?.configBundle?.digest,
   buildOutputDigest: manifest.integrity?.buildOutput?.digest,
 });
-const reviewSubjectDigestPayload = (manifest) => {
+export const reviewSubjectDigestPayload = (manifest) => {
   const payload = candidateDigestPayload(manifest);
   payload.claimsEvidence = structuredClone(manifest.claimsEvidence ?? {});
   if (payload.claimsEvidence.sensitiveMatter) delete payload.claimsEvidence.sensitiveMatter.businessReview;

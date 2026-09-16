@@ -3,7 +3,8 @@ import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
 import Picture from '@/components/Picture.astro';
 import Picto from '@/components/Picto.astro';
-import { SITE } from '@/data/site.mjs';
+import Button from '@/components/Button.astro';
+import { SITE, CTA } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { IMAGES } from '@/data/images.mjs';
 import { AUTEURS } from '@/data/auteurs';
@@ -76,10 +77,12 @@ const graph = {
       <span class="eyebrow">Blog</span>
       <h1 id="blog-titre">Ce qui se vérifie, ce qui s’automatise, ce qui se décide.</h1>
       <p class="texte-2 lecture blog-intro">
-        Des méthodes concrètes pour les pôles social et comptable des cabinets d’expertise comptable :
-        paie, DSN, classeurs de suivi, contrôles avant envoi. Chaque article cite ses sources et distingue
-        la mécanique qu’une automatisation peut prendre en charge de la décision qui reste au cabinet.
+        Contrôler des bulletins avant la DSN, suivre les dossiers du pôle social, repérer les ressaisies :
+        ces méthodes vous aident à décider quoi automatiser dans votre cabinet. Chez Memlia, nous partons
+        de vos outils et de vos règles pour préparer le travail répétitif. La vérification et la décision
+        restent humaines.
       </p>
+      <p class="texte-2 lecture blog-transition">Commencez par la tâche qui vous occupe.</p>
       <a class="btn btn-lien blog-rss" href={BLOG.fluxRss} type="application/rss+xml">Flux RSS <Picto nom="fleche" taille={14} /></a>
     </section>
 
@@ -104,6 +107,15 @@ const graph = {
           </li>
         ))}
       </ul>
+    </section>
+
+    <section class="conteneur blog-suite" aria-labelledby="suite-titre">
+      <h2 id="suite-titre" class="sr-only">Pour aller plus loin</h2>
+      <p class="texte-2 lecture">Vous cherchez une définition ou un support pratique ? <a href="/ressources">Explorez les ressources</a>.</p>
+      <p class="blog-actions">
+        <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
+        <Button href="/methode" variante="lien">Comprendre notre méthode</Button>
+      </p>
     </section>
 
     <section class="conteneur blog-auteurs" aria-labelledby="auteurs-titre">

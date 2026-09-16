@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "revue": "metier-review-r4",
+  "declareLe": "2026-09-16",
+  "declarePar": "t_c2262a1b SITE-V2-BUILD",
+  "regle": "Seules les clés listées ici peuvent bouger sans refaire la revue métier. Toute autre clé du sujet ferme la réaffirmation.",
+  "deltasAutorises": {
+    "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. Le HTML rendu de /ressources et /glossaire change donc de chrome sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
+    "limitations": "Correction d'une contradiction interne du dossier : il portait le verdict AI_REVIEW_PASS tout en affirmant dans ses limites qu'aucun AI_REVIEW_PASS n'était revendiqué. La limite dit désormais ce que la revue métier couvre et ce qu'elle ne couvre pas, sans élargir sa portée.",
+    "skills": {
+      "raison": "Les lignes de skill portent l'horodatage du build qui les a rejouées : il bouge à chaque rescellement, par construction. Seul ce champ est autorisé — un statut, un résultat ou une preuve de skill qui changerait ferme la réaffirmation.",
+      "champsAutorises": [
+        "checkedAt"
+      ]
+    }
+  },
+  "horsPerimetre": [
+    "claimsEvidence : aucune affirmation, citation, source ou applicabilité ne peut bouger.",
+    "sourceBundleDigest et configBundleDigest : la matière et la configuration jugées restent intactes.",
+    "quality : le score et les défauts constatés par la revue ne se recalculent pas à sa faveur.",
+    "skills : seul checkedAt peut bouger ; status, result, evidenceRefs et registryContract restent figés."
+  ]
+}

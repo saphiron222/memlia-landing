@@ -67,7 +67,7 @@ test('contenu et navigation sans JavaScript', async ({ browser }) => {
   await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.faq-r').first()).toBeVisible();
-  await expect(page.locator('.nav-sans-js a[href="#methode"]')).toBeVisible();
+  await expect(page.locator('.nav-sans-js a[href="/methode"]')).toBeVisible();
   await context.close();
 });
 
@@ -78,18 +78,30 @@ test('reduced-motion garde les étapes lisibles', async ({ page }) => {
   for (const step of await page.locator('[data-etape]').all()) await expect(step).toHaveCSS('opacity', '1');
 });
 
-test('menu desktop : ancres narratives directes et CTA unique', async ({ page }) => {
+test('menu desktop : cinq pages atteignables au clavier et CTA unique', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   const links = page.locator('.nav-centre a');
-  await expect(links).toHaveText(['Usages', 'Méthode', 'Intégration', 'Garanties', 'Questions', 'Ressources']);
-  for (const id of ['usages', 'methode', 'integration', 'garanties', 'questions']) {
-    const link = page.locator(`.nav-centre a[href="#${id}"]`);
+  await expect(links).toHaveText(['Automatisation', 'Méthode', 'Garanties', 'Ressources', 'Blog']);
+  for (const route of ['/automatisation-cabinet-comptable', '/methode', '/garanties', '/ressources', '/blog']) {
+    await page.goto('/');
+    const link = page.locator(`.nav-centre a[href="${route}"]`);
     await link.focus();
     await link.press('Enter');
-    await expect(page).toHaveURL(new RegExp(`#${id}$`));
+    await expect(page).toHaveURL(new RegExp(`${route}/?$`));
+    await expect(page.locator('h1')).toBeVisible();
   }
+  await page.goto('/');
   await expect(page.locator('.nav-principal')).toHaveText('Identifier une tâche à automatiser');
+});
+
+test('accueil : les six ancres historiques restent des cibles servies', async ({ page }) => {
+  // La navigation v2 pointe des pages, plus des ancres. Les liens entrants acquis
+  // pointent encore ces fragments : leurs cibles doivent survivre à la refonte.
+  await page.goto('/');
+  for (const id of ['usages', 'methode', 'integration', 'garanties', 'questions', 'preuves']) {
+    await expect(page.locator(`#${id}`)).toHaveCount(1);
+  }
 });
 
 test('méthode mobile : chaque étape garde son image et son texte dans le flux', async ({ page }) => {

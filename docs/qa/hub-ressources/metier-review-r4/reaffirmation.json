@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 2,
+  "revue": "metier-review-r4",
+  "reaffirmeLe": "2026-09-16T06:55:50.730Z",
+  "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
+  "registreSha256": "8f7ba0da771add7313922464952799f81b3a8a8a0d2304dbe27c702bf274c2f6",
+  "declarationRef": "docs/qa/hub-ressources/metier-review-r4/reaffirmation-declaration.json",
+  "declarationSha256": "704ec230f87b260fe831ab57ef96ee3f0cdb11cd2fd1c109a6355b4fa11bee82",
+  "ancreRef": "docs/qa/hub-ressources/metier-review-r4/sujet-ancre.json",
+  "ancreSha256": "c4aa0315c6444f2795fa57bb4250121fe4389868cfc94710b27f3d8f89976ee5",
+  "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
+  "surfaces": {
+    "H": {
+      "action": "réaffirmée",
+      "sujetAncre": "516aedfe62d73e26b64b783e700c0058193f05b3885688c5c2408999a60c6c73",
+      "sujetReaffirme": "d6c941279078825bcf13f354e928abc89ad78e7c70310b1fb9252ed70a1fa40c",
+      "feuillesEcartees": 9,
+      "feuillesParChamp": {
+        "buildOutputDigest.buildOutputDigest": 1,
+        "limitations.limitations": 1,
+        "skills.checkedAt": 7
+      },
+      "justifications": {
+        "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. Le HTML rendu de /ressources et /glossaire change donc de chrome sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
+        "limitations": "Correction d'une contradiction interne du dossier : il portait le verdict AI_REVIEW_PASS tout en affirmant dans ses limites qu'aucun AI_REVIEW_PASS n'était revendiqué. La limite dit désormais ce que la revue métier couvre et ce qu'elle ne couvre pas, sans élargir sa portée.",
+        "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées : il bouge à chaque rescellement, par construction. Seul ce champ est autorisé — un statut, un résultat ou une preuve de skill qui changerait ferme la réaffirmation."
+      },
+      "affirmationsRenduesVerifiees": 10,
+      "verdictsConserves": 7,
+      "candidateHash": "16ef5bbe1d20141d861ba40deaaa42ccdf39833bdc1242bd11645dc92ba2df99",
+      "auditHash": "25db0e0c428f38ec076b990a723be14a0f6982e8e87da451deff8b30b5b0a25e",
+      "manifestSha256": "f7e58234a9d759bdf481a4360f7eafb8e97b6dad5752bbfc868587c883f0f181",
+      "preuveRef": "docs/qa/hub-ressources/metier-review-r4/preuve-hub.json",
+      "preuveSha256": "7e118bdbeffa3bb666096199acc4a0edb37a363504253126ac1d2e6beb3557c8"
+    },
+    "T": {
+      "action": "réaffirmée",
+      "sujetAncre": "4b918cecd5a5fa2c6dae734570c3a45578635240f008e8da1e52edad92475bdc",
+      "sujetReaffirme": "914d51f521cdfe9b1aaecee9ab5c8265e364e91a6c44a8b00c4b0cee14731e0c",
+      "feuillesEcartees": 9,
+      "feuillesParChamp": {
+        "buildOutputDigest.buildOutputDigest": 1,
+        "limitations.limitations": 1,
+        "skills.checkedAt": 7
+      },
+      "justifications": {
+        "buildOutputDigest": "Le site v2 ajoute cinq pages commerciales à la navigation et au pied de page, présents sur toutes les pages. Le HTML rendu de /ressources et /glossaire change donc de chrome sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que les 49 affirmations revues sont encore rendues mot pour mot.",
+        "limitations": "Correction d'une contradiction interne du dossier : il portait le verdict AI_REVIEW_PASS tout en affirmant dans ses limites qu'aucun AI_REVIEW_PASS n'était revendiqué. La limite dit désormais ce que la revue métier couvre et ce qu'elle ne couvre pas, sans élargir sa portée.",
+        "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées : il bouge à chaque rescellement, par construction. Seul ce champ est autorisé — un statut, un résultat ou une preuve de skill qui changerait ferme la réaffirmation."
+      },
+      "affirmationsRenduesVerifiees": 39,
+      "verdictsConserves": 18,
+      "candidateHash": "98797951a4022a915e92b9aba7c7d2017bce3457e6cc6522bb3c8f20ee8cb60a",
+      "auditHash": "c187f38e91b8a50ed37b2acaa9049bab2fc9d7cf6382b85930f4e0da1bb96444",
+      "manifestSha256": "27b8d8cdd8a6ec7d2718805cf36d625607145f4f74b5f81b35688bf624294af1",
+      "preuveRef": "docs/qa/hub-ressources/metier-review-r4/preuve-glossaire.json",
+      "preuveSha256": "425f748f8858ee949338c56c19b40b725354736601000327bd76806c72af973c"
+    }
+  }
+}

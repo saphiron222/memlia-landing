@@ -12,7 +12,9 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / 'dist'
 SITE = 'https://memlia.fr'
-PAGES_FIXES = ['404', 'blog', 'glossaire', 'index', 'mentions-legales', 'politique-de-confidentialite', 'ressources']
+# Les cinq pages commerciales du site v2 ont rejoint le site le 16/09/2026.
+PAGES_FIXES = ['404', 'a-propos', 'automatisation-cabinet-comptable', 'blog', 'contact', 'garanties',
+               'glossaire', 'index', 'mentions-legales', 'methode', 'politique-de-confidentialite', 'ressources']
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
 PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
                    'comprendre-les-comptes-rendus-metier-dsn'}
@@ -75,7 +77,10 @@ class BuildProof(unittest.TestCase):
             for url in subtree.findall('.//s:url', ns):
                 pages[url.find('s:loc', ns).text] = url.find('s:lastmod', ns).text
         published_articles = [a for a in articles() if not is_preview_article(a)]
-        attendues = {f'{SITE}/', f'{SITE}/blog', f'{SITE}/glossaire', f'{SITE}/ressources'} | {f'{SITE}/blog/{a.stem}' for a in published_articles}
+        # Les pages legales restent hors sitemap ; les cinq pages commerciales y entrent.
+        attendues = {f'{SITE}/', f'{SITE}/blog', f'{SITE}/glossaire', f'{SITE}/ressources',
+                     f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
+                     f'{SITE}/a-propos', f'{SITE}/contact'} | {f'{SITE}/blog/{a.stem}' for a in published_articles}
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
         # lastmod d'un article publié = dateModified de son schéma (une seule source : le frontmatter).

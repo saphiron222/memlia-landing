@@ -1,0 +1,52 @@
+---
+import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import { PAGES_V2 } from '@/data/pages-v2.mjs';
+import { SITE } from '@/data/site.mjs';
+const page = PAGES_V2.apropos;
+const url = `${SITE.url}${page.chemin}`;
+const noeuds = [
+  {
+    '@type': 'AboutPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
+    inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': `${SITE.url}/#kevin` },
+  },
+  {
+    '@type': 'Person', '@id': `${SITE.url}/#kevin`, name: 'Kevin Kitanga', url,
+    jobTitle: 'Fondateur de Memlia', worksFor: { '@id': `${SITE.url}/#organization` },
+  },
+];
+---
+
+<PageCommerciale page={page} noeuds={noeuds}>
+  <section class="conteneur page-section" aria-labelledby="fais">
+    <h2 id="fais">Ce que je fais</h2>
+    <p>Je cadre la tâche avec vous, j’écris la règle, je construis l’automatisation et je la soumets à la recette de vos équipes. La même personne mène ces quatre étapes : celle qui a entendu la règle est celle qui la code.</p>
+    <p>C’est un choix de taille, pas une contrainte subie. Une règle de cabinet se perd entre celui qui l’écoute et celui qui l’implémente ; je préfère supprimer ce passage de relais.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="nesuispas">
+    <h2 id="nesuispas">Ce que je ne suis pas</h2>
+    <div class="page-encadre">
+      <p><strong>Je ne suis pas expert-comptable.</strong> Je n’ai pas de qualification en paie ni en droit social, et je ne me présenterai jamais comme tel. Quand je publie un contenu qui touche à ces domaines, il porte la mention « non attesté » et renvoie aux sources officielles.</p>
+    </div>
+    <p>Cela délimite exactement mon rôle : j’écris et j’éprouve la règle <strong>que vous me donnez</strong>. Je ne la valide pas à votre place, et je ne vous dirai pas ce qu’elle devrait être.</p>
+    <p><strong>Je ne suis pas un éditeur de logiciel.</strong> Vous n’achetez pas de licence, ni de sièges. Vous achetez le fait qu’une tâche précise de votre cabinet soit préparée automatiquement, avec des critères de recette écrits.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="pourquoi">
+    <h2 id="pourquoi">Pourquoi Memlia</h2>
+    <p>Les cabinets que je rencontre ne manquent pas d’outils. Ils ont un logiciel de paie, un logiciel de production, des classeurs qui font le lien, et des personnes compétentes qui passent du temps à recopier d’un endroit à l’autre.</p>
+    <p>L’automatisation qui les aiderait n’est pas une plateforme de plus à adopter. C’est quelque chose qui se greffe sur ce qu’ils utilisent déjà, qui connaît <strong>leurs</strong> règles, et qui leur rend la main dès que la situation sort du cadre prévu.</p>
+    <p>C’est ce que je construis.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="ecris">
+    <h2 id="ecris">Ce que j’écris</h2>
+    <p>Je publie sur ce que je vérifie, ce que j’automatise et ce qui reste une décision humaine. Les articles sont signés de mon nom, sourcés, et déclarés non attestés quand ils touchent à la paie ou au droit social.</p>
+    <p><a href="/blog">Lire les méthodes</a> · <a href="/ressources">Consulter les ressources</a></p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="entite">
+    <h2 id="entite">L’entité</h2>
+    <p>Memlia est une société par actions simplifiée unipersonnelle établie à Plérin. Les informations légales figurent dans les <a href="/mentions-legales">mentions légales</a>.</p>
+  </section>
+</PageCommerciale>

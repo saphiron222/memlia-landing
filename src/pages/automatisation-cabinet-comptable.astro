@@ -1,0 +1,80 @@
+---
+import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import { PAGES_V2 } from '@/data/pages-v2.mjs';
+import { SITE } from '@/data/site.mjs';
+
+const page = PAGES_V2.service;
+const url = `${SITE.url}${page.chemin}`;
+const noeuds = [
+  {
+    '@type': 'WebPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
+    inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': `${url}#service` },
+  },
+  {
+    '@type': 'Service', '@id': `${url}#service`, name: 'Automatisation sur mesure pour cabinet comptable',
+    description: page.description, serviceType: 'Automatisation de tâches répétitives',
+    provider: { '@id': `${SITE.url}/#organization` }, areaServed: 'FR',
+    audience: { '@type': 'Audience', audienceType: "Cabinets d’expertise comptable" },
+  },
+];
+---
+
+<PageCommerciale page={page} noeuds={noeuds}>
+  <section class="conteneur page-section" aria-labelledby="situation">
+    <h2 id="situation">La situation, nommée</h2>
+    <p>Chaque mois, quelqu’un du cabinet refait le même geste. Recopier des montants d’un export vers un classeur. Comparer deux états qui devraient concorder. Rassembler des pièces avant un contrôle. Le geste est connu, il est maîtrisé, et il prend le temps de la personne qui le maîtrise le mieux.</p>
+    <p>Ce n’est pas un problème de compétence, ni d’outil manquant. C’est un travail dont la règle existe, mais vit dans la tête d’un collaborateur et dans l’habitude du cabinet.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="prepare">
+    <h2 id="prepare">Ce que le service prépare</h2>
+    <p>Nous transformons cette règle en automatisation, en trois temps qui ne changent jamais.</p>
+    <h3>L’entrée</h3>
+    <p>Nous partons des fichiers que vous utilisez déjà, dans le format où ils arrivent. Un classeur, un export de votre logiciel de paie, un état comptable.</p>
+    <h3>La règle</h3>
+    <p>Nous l’écrivons avec vous, dans vos mots. Ce qui doit se produire, ce qui constitue une exception, ce qui doit faire arrêter le traitement. Cette écriture est le cœur du travail : une règle qu’on ne sait pas énoncer ne s’automatise pas.</p>
+    <h3>La proposition</h3>
+    <p>L’automatisation prépare le résultat et le présente. Elle ne l’inscrit pas à votre place. Ce qu’elle génère lui appartient et se régénère ; ce que le cabinet saisit ne se touche jamais.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="cabinet">
+    <h2 id="cabinet">Ce qui reste au cabinet</h2>
+    <p>La décision. Toujours.</p>
+    <p>Une proposition qui vous semble juste se valide. Une proposition qui vous surprend s’examine. Et lorsque la règle ne tranche pas — une donnée manque, une exception n’était pas prévue, deux lectures sont possibles — l’automatisation s’arrête et vous le dit, plutôt que d’écrire quelque chose de faux.</p>
+    <p>C’est le point sur lequel nous ne transigeons pas. Une automatisation qui décide seule dans le doute est plus coûteuse que le geste manuel qu’elle remplace.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="requis">
+    <h2 id="requis">Ce qui est requis de votre côté</h2>
+    <p>Avant de nous engager, nous qualifions ensemble :</p>
+    <ul>
+      <li><strong>Les formats réels.</strong> Pas le format théorique de votre logiciel, celui de vos fichiers.</li>
+      <li><strong>Les accès.</strong> Ce que l’automatisation doit lire, ce qu’elle peut écrire, et où s’arrête son périmètre.</li>
+      <li><strong>Les cas limites.</strong> Le dossier atypique, le mois particulier, la reprise d’un exercice. Ce sont eux qui font échouer une automatisation naïve.</li>
+      <li><strong>L’environnement.</strong> La version de vos outils, les postes concernés, qui utilisera quoi.</li>
+    </ul>
+    <p>Cette qualification est un travail, pas une formalité. Elle décide si la tâche est automatisable, et à quel coût.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="livre">
+    <h2 id="livre">Ce qui est livré</h2>
+    <p>Un périmètre écrit, des critères de recette, et une automatisation qui les satisfait sur vos fichiers.</p>
+    <p>La recette se joue sur des cas construits ensemble : ceux qui doivent aboutir, et ceux qui doivent échouer. Un refus attendu qui ne se produit pas est un défaut au même titre qu’un résultat faux.</p>
+    <p>La maintenance se traite au contrat, pas en supplément implicite : vos règles évoluent, vos formats aussi.</p>
+    <div class="page-encadre">
+      <h3>Le prix</h3>
+      <p>Le devis dépend de la complexité de la tâche : règles à appliquer, formats à traiter, exceptions et contraintes de votre environnement. Il précise le périmètre, les critères de recette et les conditions de maintenance. <strong>Vous n’achetez pas un nombre de sièges.</strong></p>
+    </div>
+    <div class="page-encadre">
+      <h3>Vos outils</h3>
+      <p>Un classeur Excel, un export ou un autre outil peut être le point de départ. Nous vérifions les formats et les accès avant de nous engager. <strong>Aucun branchement universel n’est promis.</strong></p>
+    </div>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="commencer">
+    <h2 id="commencer">Comment commencer</h2>
+    <p>Décrivez le geste qui revient. Nous regardons ensemble s’il se cadre, et ce qu’il faudrait pour le faire.</p>
+    <p>Pour lire des méthodes avant de nous parler : <a href="/blog/controler-les-bulletins-de-paie-avant-la-dsn">contrôler les bulletins avant la DSN</a> et <a href="/blog/suivre-la-production-sociale-dans-excel">suivre la production sociale dans Excel</a>.</p>
+    <p>Pour savoir ce que nous refusons de faire : <a href="/garanties">nos garanties</a>.</p>
+  </section>
+</PageCommerciale>

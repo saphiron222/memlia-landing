@@ -4,6 +4,7 @@ import Button from './Button.astro';
 
 import Picto from './Picto.astro';
 import { CTA } from '@/data/site.mjs';
+import { NAV_V2 } from '@/data/pages-v2.mjs';
 
 
 /**
@@ -20,22 +21,34 @@ const { chemin, base = '' } = Astro.props;
 /** Le Hub reste la section courante depuis les contenus qu’il réunit. */
 const surRessources: 'page' | 'true' | undefined = chemin === '/ressources'
   ? 'page'
-  : ['/blog', '/glossaire', '/guides', '/modeles'].some((route) => chemin === route || chemin.startsWith(`${route}/`))
+  : ['/glossaire', '/guides', '/modeles'].some((route) => chemin === route || chemin.startsWith(`${route}/`))
     ? 'true'
     : undefined;
 
-const entrees = [
-  { libelle: 'Usages', href: `${base}#usages` },
-  { libelle: 'Méthode', href: `${base}#methode` },
-  { libelle: 'Intégration', href: `${base}#integration` },
-  { libelle: 'Garanties', href: `${base}#garanties` },
-  { libelle: 'Questions', href: `${base}#questions` },
-  { libelle: 'Ressources', href: '/ressources', courant: surRessources },
-];
+/**
+ * Deux marquages distincts : « page » quand on est exactement sur l'entrée, « true »
+ * quand on est dans sa section. Sans le second, un article de blog ne marquait plus
+ * aucune entrée et le lecteur perdait sa position dans la navigation.
+ */
+const entrees = NAV_V2.map((entree) => ({
+  ...entree,
+  courant: entree.href === '/ressources'
+    ? surRessources
+    : chemin === entree.href
+      ? ('page' as const)
+      : chemin.startsWith(`${entree.href}/`)
+        ? ('true' as const)
+        : undefined,
+}));
+/**
+ * Sous-liens du Hub dans le menu mobile et la navigation sans JavaScript.
+ * Une destination déjà présente en entrée principale en est retirée : sinon /blog
+ * apparaissait deux fois dans le même menu, sous « Blog » puis sous « Articles ».
+ */
 const ressourcesMobile = [
   { libelle: 'Articles', href: '/blog' },
   { libelle: 'Glossaire', href: '/glossaire' },
-];
+].filter((sous) => !NAV_V2.some((entree) => entree.href === sous.href));
 ---
 
 <header class="nav-barre">

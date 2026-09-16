@@ -1,0 +1,57 @@
+---
+import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import { PAGES_V2 } from '@/data/pages-v2.mjs';
+import { SITE } from '@/data/site.mjs';
+const page = PAGES_V2.methode;
+const url = `${SITE.url}${page.chemin}`;
+const noeuds = [{
+  '@type': 'WebPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
+  inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` },
+}];
+---
+
+<PageCommerciale page={page} noeuds={noeuds}>
+  <section class="conteneur page-section" aria-labelledby="observer">
+    <h2 id="observer">Étape 1 — Observer</h2>
+    <p>Nous regardons le geste tel qu’il se fait, pas tel qu’il devrait se faire.</p>
+    <p>Quels fichiers arrivent, dans quel ordre, avec quelles irrégularités. Où la personne hésite. Ce qu’elle vérifie machinalement sans l’avoir jamais écrit. Combien de fois par mois le cas « normal » n’est pas le cas normal.</p>
+    <p>Cette étape produit une description du travail réel. Elle dure ce qu’elle doit durer : une tâche mal observée donne une automatisation qui marche en démonstration et échoue au premier dossier atypique.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="cadrer">
+    <h2 id="cadrer">Étape 2 — Cadrer</h2>
+    <p>Nous écrivons la règle avec vous, dans le vocabulaire du cabinet.</p>
+    <p>Ce document dit trois choses : ce qui doit se produire, ce qui constitue une exception, et ce qui doit faire arrêter le traitement. Il fixe aussi le périmètre — ce que l’automatisation touche, et ce qu’elle ne touchera jamais.</p>
+    <p>C’est ici que la plupart des projets se jouent. Une règle qu’on ne sait pas énoncer ne s’automatise pas : elle se discute d’abord. Si le cadrage révèle que la tâche n’est pas automatisable en l’état, nous le disons à ce moment, pas après le développement.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="eprouver">
+    <h2 id="eprouver">Étape 3 — Éprouver</h2>
+    <p>Nous construisons un jeu d’essai <strong>entièrement fictif</strong>, qui ressemble à vos fichiers sans en être.</p>
+    <p>Il contient les cas qui doivent aboutir, et surtout ceux qui doivent échouer : la donnée manquante, l’exception non prévue, le format inattendu, le mois de reprise. Pour chacun, nous vérifions que l’automatisation fait ce qu’elle doit — y compris s’arrêter.</p>
+    <div class="page-encadre">
+      <p><strong>Un refus attendu qui ne se produit pas est un défaut</strong>, au même titre qu’un résultat faux. C’est la raison pour laquelle nous testons les échecs autant que les succès.</p>
+    </div>
+    <p>Aucune donnée réelle de votre cabinet n’entre dans cette étape.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="valider">
+    <h2 id="valider">Étape 4 — Faire valider</h2>
+    <p>La recette se joue chez vous, sur vos fichiers, avec les personnes qui feront le travail.</p>
+    <p>Nous passons les cas convenus, ceux qui aboutissent et ceux qui s’arrêtent. Le résultat n’est accepté que si la personne qui utilisera l’automatisation confirme qu’elle lit ce qu’elle attend.</p>
+    <p>Ensuite seulement la mission est livrée, avec son périmètre écrit et ses conditions de maintenance.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="cout">
+    <h2 id="cout">Ce que cette méthode coûte, et ce qu’elle évite</h2>
+    <p>Elle est plus lente qu’une démonstration. Le cadrage prend du temps, le jeu d’essai aussi, et nous préférons dire non au cadrage plutôt qu’après.</p>
+    <p>Elle évite la situation inverse : une automatisation livrée vite, qui produit des résultats plausibles, et dont personne ne sait dire quand elle se trompe. Cette situation-là coûte plus cher que le geste manuel, parce qu’elle oblige à tout revérifier.</p>
+  </section>
+
+  <section class="conteneur page-section" aria-labelledby="suite">
+    <h2 id="suite">Ce qui vient ensuite</h2>
+    <p>Pour savoir ce que le service livre concrètement : <a href="/automatisation-cabinet-comptable">l’automatisation sur mesure</a>.</p>
+    <p>Pour savoir ce que nous refusons : <a href="/garanties">les garanties</a>.</p>
+    <p>Pour savoir qui porte ce travail : <a href="/a-propos">à propos</a>.</p>
+  </section>
+</PageCommerciale>
