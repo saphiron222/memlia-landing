@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "origine": "http://127.0.0.1:4460",
+  "origine": "http://127.0.0.1:4321",
   "seuil": 95,
   "regle": "Médiane de trois mesures par gabarit et par profil ; les trois passes sont conservées pour montrer la dispersion.",
   "axes": [
@@ -99,11 +99,11 @@
       "axes": {
         "Performance": {
           "passes": [
-            100,
-            100,
-            100
+            99,
+            99,
+            99
           ],
-          "mediane": 100
+          "mediane": 99
         },
         "Accessibility": {
           "passes": [

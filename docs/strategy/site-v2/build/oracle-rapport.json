@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "regle": "Un oracle vert qu'aucune mutation ne fait rougir ne prouve rien : les six mutants doivent être attrapés.",
   "routes": {
-    "total": 15,
+    "total": 17,
     "indexables": [
       "/",
       "/a-propos",
@@ -33,7 +33,7 @@
         "Service",
         "WebSite"
       ],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 0
     },
     {
@@ -61,7 +61,7 @@
         "Person",
         "WebSite"
       ],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 1
     },
     {
@@ -78,7 +78,7 @@
         "WebPage",
         "WebSite"
       ],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 1
     },
     {
@@ -94,7 +94,7 @@
         "Person",
         "WebSite"
       ],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 1
     },
     {
@@ -161,8 +161,30 @@
         "Organization",
         "WebSite"
       ],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 1
+    },
+    {
+      "route": "/contact/erreur",
+      "fichier": "dist/contact/erreur.html",
+      "indexable": false,
+      "canonical": "https://memlia.fr/contact/erreur",
+      "titre": "Le message n’est pas parti | Memlia",
+      "description": "Un champ manque ou n’est pas valide. Retournez au formulaire, ou écrivez-nous par courriel.",
+      "schemas": [],
+      "liensEntrants": 0,
+      "profondeur": null
+    },
+    {
+      "route": "/contact/merci",
+      "fichier": "dist/contact/merci.html",
+      "indexable": false,
+      "canonical": "https://memlia.fr/contact/merci",
+      "titre": "Message envoyé | Memlia",
+      "description": "Votre message est bien arrivé. Nous vous répondons par courriel.",
+      "schemas": [],
+      "liensEntrants": 0,
+      "profondeur": null
     },
     {
       "route": "/garanties",
@@ -177,7 +199,7 @@
         "WebPage",
         "WebSite"
       ],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 1
     },
     {
@@ -194,7 +216,7 @@
         "Organization",
         "WebSite"
       ],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 1
     },
     {
@@ -205,7 +227,7 @@
       "titre": "Mentions légales — Memlia",
       "description": "Mentions légales du site memlia.fr.",
       "schemas": [],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 1
     },
     {
@@ -221,7 +243,7 @@
         "WebPage",
         "WebSite"
       ],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 1
     },
     {
@@ -232,7 +254,7 @@
       "titre": "Politique de confidentialité — Memlia",
       "description": "Politique de confidentialité du site memlia.fr : données traitées, finalités, cookies, droits RGPD.",
       "schemas": [],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 1
     },
     {
@@ -249,7 +271,7 @@
         "Organization",
         "WebSite"
       ],
-      "liensEntrants": 14,
+      "liensEntrants": 16,
       "profondeur": 1
     }
   ],
