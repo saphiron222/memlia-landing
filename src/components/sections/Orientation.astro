@@ -1,0 +1,75 @@
+---
+import { PAGES_V2 } from '@/data/pages-v2.mjs';
+
+/**
+ * Les quatre résumés d'orientation de l'accueil (copy transversale, section « Accueil —
+ * les résumés qui mènent aux nouvelles pages »).
+ *
+ * L'accueil oriente ; il ne détaille pas. Sans ce bloc, les cinq pages du site v2
+ * n'étaient atteignables que par le bandeau et le pied de page : aucun lien de corps,
+ * donc aucun chemin de lecture depuis la page d'entrée.
+ */
+const destinations = [
+  { texte: 'Une tâche répétitive, sa règle écrite avec vous, une automatisation dont chaque résultat reste à vérifier.', libelle: 'Découvrir le service', href: PAGES_V2.service.chemin },
+  { texte: 'Observer le geste réel, cadrer la règle, éprouver sur des cas qui doivent échouer, livrer après recette.', libelle: 'Comment nous travaillons', href: PAGES_V2.methode.chemin },
+  { texte: 'Dans le doute, l’automatisation s’arrête et vous présente le cas. Voici ce que nous refusons de faire.', libelle: 'Nos limites', href: PAGES_V2.garanties.chemin },
+  { texte: 'Une méthode, une définition ou un support, classés par tâche.', libelle: 'Explorer les ressources', href: '/ressources' },
+];
+---
+
+<section class="section orientation" aria-labelledby="orientation-titre">
+  <div class="conteneur">
+    <h2 id="orientation-titre" class="orientation-titre">Par où commencer</h2>
+    <ul class="orientation-liste">
+      {destinations.map((d) => (
+        <li class="orientation-item">
+          <p class="orientation-texte">{d.texte}</p>
+          <a class="orientation-lien" href={d.href}>{d.libelle}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .orientation-titre {
+    font-family: var(--police-display), 'Fraunces Fallback';
+    font-size: var(--t-xl);
+    color: var(--texte-fort);
+    margin-bottom: 24px;
+  }
+  .orientation-liste {
+    display: grid;
+    gap: 16px;
+  }
+  .orientation-item {
+    display: grid;
+    gap: 10px;
+    padding: 24px;
+    border: 1px solid var(--ligne-douce);
+    border-radius: var(--r-boite);
+    background: var(--surface-feuille);
+  }
+  .orientation-texte {
+    color: var(--texte);
+    max-width: 44ch;
+  }
+  .orientation-lien {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-weight: 600;
+    color: var(--vert-profond);
+  }
+  @media (hover: hover) {
+    .orientation-lien:hover {
+      color: var(--texte-fort);
+    }
+  }
+  @media (min-width: 48rem) {
+    .orientation-liste {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+  }
+</style>

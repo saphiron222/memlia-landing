@@ -2,22 +2,26 @@
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
+import { auteurPar, identiteAuteur } from '@/data/auteurs';
 const page = PAGES_V2.apropos;
 const url = `${SITE.url}${page.chemin}`;
+/** Identité canonique du site : ce nœud est celui que citent le blog et chaque article. */
+const auteur = auteurPar('kevin');
+const identite = `${SITE.url}${identiteAuteur(auteur)}`;
 const noeuds = [
   {
     '@type': 'AboutPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
-    inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': `${SITE.url}/#kevin` },
+    inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': identite },
   },
   {
-    '@type': 'Person', '@id': `${SITE.url}/#kevin`, name: 'Kevin Kitanga', url,
-    jobTitle: 'Fondateur de Memlia', worksFor: { '@id': `${SITE.url}/#organization` },
+    '@type': 'Person', '@id': identite, name: auteur.nom, url,
+    jobTitle: auteur.role, description: auteur.bio, worksFor: { '@id': `${SITE.url}/#organization` },
   },
 ];
 ---
 
 <PageCommerciale page={page} noeuds={noeuds}>
-  <section class="conteneur page-section" aria-labelledby="fais">
+  <section id="kevin-kitanga" class="conteneur page-section" aria-labelledby="fais">
     <h2 id="fais">Ce que je fais</h2>
     <p>Je cadre la tâche avec vous, j’écris la règle, je construis l’automatisation et je la soumets à la recette de vos équipes. La même personne mène ces quatre étapes : celle qui a entendu la règle est celle qui la code.</p>
     <p>C’est un choix de taille, pas une contrainte subie. Une règle de cabinet se perd entre celui qui l’écoute et celui qui l’implémente ; je préfère supprimer ce passage de relais.</p>
@@ -42,11 +46,11 @@ const noeuds = [
   <section class="conteneur page-section" aria-labelledby="ecris">
     <h2 id="ecris">Ce que j’écris</h2>
     <p>Je publie sur ce que je vérifie, ce que j’automatise et ce qui reste une décision humaine. Les articles sont signés de mon nom, sourcés, et déclarés non attestés quand ils touchent à la paie ou au droit social.</p>
-    <p><a href="/blog">Lire les méthodes</a> · <a href="/ressources">Consulter les ressources</a></p>
+    <p><a href="/methode">Comprendre la méthode</a> · <a href="/blog">Lire les articles</a> · <a href="/ressources">Consulter les ressources</a></p>
   </section>
 
   <section class="conteneur page-section" aria-labelledby="entite">
     <h2 id="entite">L’entité</h2>
-    <p>Memlia est une société par actions simplifiée unipersonnelle établie à Plérin. Les informations légales figurent dans les <a href="/mentions-legales">mentions légales</a>.</p>
+    <p>Memlia est une société par actions simplifiée unipersonnelle. Le travail se fait depuis Plérin ; le siège social, l’immatriculation et les autres informations légales figurent dans les <a href="/mentions-legales">mentions légales</a>.</p>
   </section>
 </PageCommerciale>

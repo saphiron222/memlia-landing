@@ -160,7 +160,9 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(any(attrs.get('id') == 'auteur-kevin' for _, attrs in doc.tags), bool(articles()))
         (graph,) = jsonld(DIST / 'blog.html')
         types = [n['@type'] for n in graph['@graph']]
-        self.assertEqual(types, ['Blog', 'BreadcrumbList', 'Person', 'Organization', 'WebSite'])
+        # Le contrat de schema attend une CollectionPage ; « Blog » seul ne fournissait
+        # aucun noeud de page a cette route.
+        self.assertEqual(types, [['CollectionPage', 'Blog'], 'BreadcrumbList', 'Person', 'Organization', 'WebSite'])
         blog = graph['@graph'][0]
         self.assertEqual(sorted(p['@id'] for p in blog['blogPost']), [f'{SITE}/blog/{a.stem}#article' for a in articles()])
         # Du plus récent au plus ancien, dans la liste HTML comme dans le graphe (égalité des dates tolérée).
@@ -183,7 +185,11 @@ class BuildProof(unittest.TestCase):
                 else:
                     self.assertNotIn('noindex', metas['robots'])
                 self.assertRegex(metas['article:published_time'], r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$')
-                self.assertTrue(metas['article:author'].startswith(f'{SITE}/blog#auteur-'))
+                # Une seule identite d'auteur sur tout le site : la balise Open Graph doit
+                # designer exactement le noeud Person du graphe, pas une fiche de liste.
+                personne = next(n for g in jsonld(article) for n in g['@graph'] if n['@type'] == 'Person')
+                self.assertEqual(metas['article:author'], personne['@id'])
+                self.assertEqual(personne['@id'], f'{SITE}/a-propos#kevin-kitanga')
                 self.assertLessEqual(len(metas['description']), 160)
                 titre = re.search(r'<title>(.*?)</title>', article.read_text()).group(1)
                 self.assertLessEqual(len(titre), 70, titre)

@@ -7,7 +7,7 @@ import ArticleJsonLd from '@/components/ArticleJsonLd.astro';
 import { SITE, CTA, OG_IMAGE } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { IMAGES, cheminImage, hauteurPour } from '@/data/images.mjs';
-import { auteurPar } from '@/data/auteurs';
+import { auteurPar, identiteAuteur } from '@/data/auteurs';
 import { isPreviewEntry } from '@/data/blog-visibility.mjs';
 import { previewAssetOrigin } from '@/data/blog-preview-origin.mjs';
 import type { CollectionEntry } from 'astro:content';
@@ -33,7 +33,9 @@ const formatDate = (d: Date) => d.toLocaleDateString('fr-FR', { day: 'numeric', 
 const iso = (d: Date) => d.toISOString().slice(0, 10);
 /** Open Graph attend un datetime ISO 8601 complet ; l'attribut `datetime` visible garde la date seule. */
 const isoComplet = (d: Date) => d.toISOString();
-const urlAuteur = `${SITE.url}${BLOG.chemin}${auteur.ancre}`;
+/** Cible unique de l'attribution : la page qui présente la personne, jamais une fiche de liste. */
+const cheminAuteur = identiteAuteur(auteur);
+const urlAuteur = `${SITE.url}${cheminAuteur}`;
 const LIBELLE_SUJET: Record<string, string> = {
   paie: 'Paie', dsn: 'DSN', excel: 'Excel', 'production-sociale': 'Production sociale',
   methode: 'Méthode', securite: 'Sécurité', cabinet: 'Cabinet',
@@ -58,10 +60,20 @@ const structuredImage = data.pipelineVersion === 1
       height: hauteurPour(heroDefinition, heroWidth),
       alt: heroDefinition.alt,
     };
-const articleCta = data.cta ?? {
-  label: CTA.principal.libelle,
-  destination: CTA.principal.href,
-  outcome: 'Memlia automatise avec l’IA les tâches et processus chronophages des cabinets d’expertise comptable : la règle est écrite avec vous, l’automatisation prépare et signale, votre équipe décide. Le premier échange sert à cadrer le périmètre, sans transmettre de fichier ni de donnée client réelle.',
+const ctaArticle = data.cta;
+/**
+ * La destination de l'appel à l'action suit la règle du site, pas le frontmatter.
+ * Les articles publiés pointent Cal.com dans leurs octets scellés ; ces octets ne se
+ * retouchent pas — c'est le gabarit qui applique la règle courante, et l'échange se
+ * prépare désormais sur /contact avant toute réservation.
+ */
+const destinationArticle = ctaArticle?.destination && !ctaArticle.destination.includes('cal.com')
+  ? ctaArticle.destination
+  : CTA.principal.href;
+const articleCta = {
+  label: ctaArticle?.label ?? CTA.principal.libelle,
+  destination: destinationArticle,
+  outcome: ctaArticle?.outcome ?? 'Memlia automatise avec l’IA les tâches et processus chronophages des cabinets d’expertise comptable : la règle est écrite avec vous, l’automatisation prépare et signale, votre équipe décide. Le premier échange sert à cadrer le périmètre, sans transmettre de fichier ni de donnée client réelle.',
 };
 ---
 
@@ -105,7 +117,7 @@ const articleCta = data.cta ?? {
         </ul>
         <h1 class="article-h1">{data.titre}</h1>
         <p class="article-meta texte-2">
-          <a href={`${BLOG.chemin}${auteur.ancre}`} rel="author">{auteur.nom}</a>
+          <a href={cheminAuteur} rel="author">{auteur.nom}</a>
           <span aria-hidden="true">·</span>
           <time datetime={iso(data.datePublication)}>{formatDate(data.datePublication)}</time>
           {data.dateMiseAJour && (
@@ -146,12 +158,13 @@ const articleCta = data.cta ?? {
         <h2 id="pont-titre">Cette tâche vous prend encore du temps à la main ?</h2>
         <p class="texte-2" data-cta-outcome>{articleCta.outcome}</p>
         <Button href={articleCta.destination} variante="principal" picto="fleche">{articleCta.label}</Button>
+        <p class="texte-2 article-pont-methode">Avant d’en parler : <a href="/methode">comment se déroule une mission</a>.</p>
       </aside>
 
       <footer class="article-auteur">
         <span class="auteur-initiale" aria-hidden="true">{auteur.nom.charAt(0)}</span>
         <div>
-          <p class="auteur-nom"><a href={`${BLOG.chemin}${auteur.ancre}`} rel="author">{auteur.nom}</a> <span class="texte-2">· {auteur.role}</span></p>
+          <p class="auteur-nom"><a href={cheminAuteur} rel="author">{auteur.nom}</a> <span class="texte-2">· {auteur.role}</span></p>
           <p class="texte-2 auteur-bio">{auteur.bio}</p>
         </div>
       </footer>

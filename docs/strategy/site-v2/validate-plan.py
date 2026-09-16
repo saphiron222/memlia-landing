@@ -58,6 +58,15 @@ for route in contrat['routes']:
 
 # --- I1 : les six ancres historiques doivent exister dans le HTML de l accueil.
 historical_anchors=['/#usages','/#methode','/#integration','/#garanties','/#questions','/#preuves']
+# Le controle lisait dist/index.html sous un `if ... is_file()`. dist est gitignore :
+# sur un checkout propre le fichier manque, la condition est fausse et l oracle rend PASS
+# sans avoir rien verifie. Les ancres se controlent donc d abord dans les SOURCES, qui
+# sont toujours la, et en plus dans le rendu quand il existe. Aucun chemin ne se tait.
+sources=P.parents[2]/'src/components/sections'
+assert sources.is_dir(),('sources des sections introuvables',str(sources))
+source_texte=''.join(f.read_text() for f in sorted(sources.glob('*.astro')))
+for a in historical_anchors:
+ assert 'id="'+a.split('#')[1]+'"' in source_texte,('ancre historique absente des sources',a)
 accueil=P.parents[2]/'dist/index.html'
 if accueil.is_file():
  html=accueil.read_text()
@@ -112,7 +121,12 @@ try:
 except AssertionError:mutants.append('doublon_route_rejete')
 assert len(mutants)==4,mutants
 tracked=subprocess.run(['git','diff','--name-only','HEAD'],capture_output=True,text=True,check=True).stdout.splitlines()
-assert all(x.startswith(('.agents/','docs/strategy/site-v2/')) for x in tracked),tracked
+# Cet oracle valide le PLAN, pas une implementation : son verdict le dit lui-meme
+# (scope: documentation validation). Un arbre de travail qui porte du code modifie n est
+# donc pas un echec de release, c est un usage hors phase — le message doit le dire,
+# sinon on lit un gate rouge la ou il n y en a pas.
+hors_perimetre=[x for x in tracked if not x.startswith(('.agents/','docs/strategy/site-v2/'))]
+assert not hors_perimetre,('oracle de PLAN lance sur un arbre qui porte du code non commite ; commiter puis relancer',hors_perimetre)
 subprocess.run(['git','diff','--check'],check=True)
 out={'verdict':'PASS','date':datetime.now(timezone.utc).isoformat(),'documents':len(required_docs),'required_fields_per_page':len(fields),'all_graph':all_graph,'now_graph':now_graph,'new_pages':sum('créer' in r['priority'] for r in rows),'competitors_directly_read':len(competitors),'responsive_measurements':len(browser['responsive']),'lighthouse_runs':len(lh),'mutants':mutants,'resources_contract':contrat['releaseStatus'],'overlap':{k:len(recouvrement[k]) for k in ('duplicate_slug','duplicate_term','overlapping_intent')},'historical_anchors':len(historical_anchors),'scope':'documentation validation; not implementation acceptance'}
 (P/'validation-plan.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False,indent=2))

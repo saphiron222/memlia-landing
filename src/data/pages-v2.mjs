@@ -45,7 +45,7 @@ export const PAGES_V2 = {
     h1: 'Memlia, un service porté par Kevin Kitanga.',
     chapeau: "J’aide les cabinets à transformer leurs tâches répétitives en automatisations délimitées et vérifiables. Le point de départ reste le travail réel ; la décision reste au cabinet.",
     ariane: 'À propos',
-    secondaire: { libelle: 'Lire les méthodes', href: '/blog' },
+    secondaire: { libelle: 'Comprendre la méthode', href: '/methode' },
   },
   contact: {
     chemin: '/contact',

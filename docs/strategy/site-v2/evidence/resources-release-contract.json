@@ -10,13 +10,13 @@
   "manifests": {
     "hub": {
       "path": "editorial/resources/hub/manifest.json",
-      "sha256": "0890ff8039832d5de118b647c6b41c97fe7dddf0badcc1bc0292e4c829d458c5",
+      "sha256": "571929e06b33cf43d5b3f1b9c270fbec66264b05a28f381f3b6f4dde4d569055",
       "formatAdapter": "H",
       "editorialStatus": null
     },
     "glossaire": {
       "path": "editorial/resources/glossaire/manifest.json",
-      "sha256": "66967090a01eaa322cd073de0161ddb7dc5e0704459b852e60ced68d4d981946",
+      "sha256": "7bc9c9eb3dc3a5ca60c49b6b0ed32246fe2494f91430dac9aff799e2d122a67b",
       "formatAdapter": "T",
       "editorialStatus": null
     }
@@ -35,5 +35,20 @@
       "businessReviewStatus": "AI_REVIEW_PASS"
     }
   },
-  "rule": "Le plan reprend ces routes et ces titres tels quels. Il ne cree ni doublon ni taxonomie concurrente."
+  "rule": "Le plan reprend ces routes et ces titres tels quels. Il ne cree ni doublon ni taxonomie concurrente.",
+  "manifestDrift": {
+    "date": "2026-09-16",
+    "cause": "Le site v2 modifie la navigation et le pied de page de toutes les pages. L'empreinte de build de /ressources et /glossaire change donc, et avec elle celle de leur manifeste, sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge.",
+    "preuve": "docs/qa/hub-ressources/metier-review-r4/reaffirmation.json — écarts déclarés feuille par feuille, 49 affirmations revérifiées rendues mot pour mot, copies de source intactes.",
+    "mouvements": {
+      "hub": {
+        "avant": "08d4bce4ae1382dcb9915d50e492409bc28890d7ec0b767916dc9b0657e3f30f",
+        "apres": "571929e06b33cf43d5b3f1b9c270fbec66264b05a28f381f3b6f4dde4d569055"
+      },
+      "glossaire": {
+        "avant": "8d4ebae82023c65b7c287695ba253c368267106fb9701364992ee51e901179b6",
+        "apres": "7bc9c9eb3dc3a5ca60c49b6b0ed32246fe2494f91430dac9aff799e2d122a67b"
+      }
+    }
+  }
 }

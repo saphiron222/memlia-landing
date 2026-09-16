@@ -7,7 +7,7 @@ import Button from '@/components/Button.astro';
 import { SITE, CTA } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { IMAGES } from '@/data/images.mjs';
-import { AUTEURS } from '@/data/auteurs';
+import { AUTEURS, identiteAuteur } from '@/data/auteurs';
 import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
 
 /**
@@ -30,13 +30,16 @@ const graph = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Blog',
-      '@id': `${url}#blog`,
+      // Le contrat de schéma attend une CollectionPage : c'est aussi le seul nœud de page
+      // de cette route, que « Blog » seul ne fournissait pas.
+      '@type': ['CollectionPage', 'Blog'],
+      '@id': `${url}#page`,
       url,
       name: BLOG.titre,
       description: BLOG.description,
       inLanguage: SITE.langue,
       isPartOf: { '@id': `${u}#website` },
+      mainEntityOfPage: { '@id': `${url}#page` },
       publisher: { '@id': `${u}#organization` },
       blogPost: articles.map((a) => ({ '@id': `${SITE.url}${BLOG.chemin}/${a.id}#article` })),
     },
@@ -50,11 +53,11 @@ const graph = {
     },
     ...auteurs.map((a) => ({
       '@type': 'Person',
-      '@id': `${url}${a.ancre}`,
+      '@id': `${u}${identiteAuteur(a).slice(1)}`,
       name: a.nom,
       jobTitle: a.role,
       description: a.bio,
-      url: `${url}${a.ancre}`,
+      url: `${SITE.url}${a.pageIdentite}`,
       worksFor: { '@id': `${u}#organization` },
     })),
     { '@type': 'Organization', '@id': `${u}#organization`, name: SITE.nom, url: u, logo: `${SITE.url}/apple-touch-icon.png`, email: SITE.email },

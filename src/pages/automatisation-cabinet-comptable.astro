@@ -2,20 +2,16 @@
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
+import { serviceNode, SERVICE_ID } from '@/data/schema.mjs';
 
 const page = PAGES_V2.service;
 const url = `${SITE.url}${page.chemin}`;
 const noeuds = [
   {
     '@type': 'WebPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
-    inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': `${url}#service` },
+    inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': SERVICE_ID },
   },
-  {
-    '@type': 'Service', '@id': `${url}#service`, name: 'Automatisation sur mesure pour cabinet comptable',
-    description: page.description, serviceType: 'Automatisation de tâches répétitives',
-    provider: { '@id': `${SITE.url}/#organization` }, areaServed: 'FR',
-    audience: { '@type': 'Audience', audienceType: "Cabinets d’expertise comptable" },
-  },
+  serviceNode(page.description),
 ];
 ---
 

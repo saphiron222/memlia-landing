@@ -1,7 +1,7 @@
 ---
 import { SITE } from '@/data/site.mjs';
 import { BLOG } from '@/data/blog.mjs';
-import type { Auteur } from '@/data/auteurs';
+import { identiteAuteur, type Auteur } from '@/data/auteurs';
 
 /**
  * Données structurées d'un article : BlogPosting, fil d'Ariane, auteur (Person) et
@@ -28,7 +28,8 @@ const u = `${SITE.url}/`;
 const url = `${SITE.url}${chemin}`;
 /** Datetime ISO 8601 complet (UTC), aligné sur les balises Open Graph et le lastmod du sitemap. */
 const iso = (d: Date) => d.toISOString();
-const personne = `${SITE.url}${BLOG.chemin}${auteur.ancre}`;
+/** Identité canonique unique : la page qui présente la personne, jamais la fiche du blog. */
+const personne = `${SITE.url}${identiteAuteur(auteur)}`;
 
 const graph = {
   '@context': 'https://schema.org',
@@ -73,7 +74,7 @@ const graph = {
       name: auteur.nom,
       jobTitle: auteur.role,
       description: auteur.bio,
-      url: personne,
+      url: `${SITE.url}${auteur.pageIdentite}`,
       worksFor: { '@id': `${u}#organization` },
     },
     {

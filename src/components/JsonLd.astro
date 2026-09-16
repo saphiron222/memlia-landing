@@ -1,5 +1,6 @@
 ---
 import { SITE, OG_IMAGE } from '@/data/site.mjs';
+import { serviceNode } from '@/data/schema.mjs';
 import { FAQ } from '@/data/faq';
 
 
@@ -43,18 +44,7 @@ const graph = {
       inLanguage: SITE.langue,
       publisher: { '@id': `${u}#organization` },
     },
-    {
-      '@type': 'Service',
-      '@id': `${u}#service`,
-      name: 'Memlia : automatisation IA du cabinet',
-      serviceType: "Automatisation IA pour cabinets d'expertise comptable",
-      areaServed: 'FR',
-      url: u,
-      image: OG_IMAGE.url,
-      description,
-      provider: { '@id': `${u}#organization` },
-      audience: { '@type': 'Audience', audienceType: "Cabinets d'expertise comptable" },
-    },
+    serviceNode(description),
     {
       '@type': 'FAQPage',
       '@id': `${u}#faq`,
