@@ -8,7 +8,7 @@ Automatiser une tâche de cabinet, c’est exécuter une règle écrite sans int
 
 Ces trois définitions suffisent à trier n’importe quelle tâche du cabinet. Quand la règle ne s’écrit pas sans « ça dépend », la tâche n’est pas mûre. Quand les exceptions sont plus nombreuses que les cas courants, elle ne l’est pas non plus. Le [glossaire](/glossaire#regle-de-cabinet) définit la règle de cabinet, le [cas de refus](/glossaire#cas-de-refus) et la [validation humaine](/glossaire#validation-humaine) avec un exemple fictif pour chacun.
 
-## Comment lire cette carte
+## Comment lire cette carte ?
 
 Une tâche se prête à l’automatisation quand trois conditions tiennent ensemble. Elle se répète : chaque mois, chaque dossier, chaque pièce. Elle s’écrit en une règle que le cabinet formule dans ses propres mots. Et ses exceptions se comptent : une pièce illisible, un client en litige, un montant hors seuil. Quand l’une des trois conditions manque, la tâche reste humaine, et c’est très bien ainsi.
 
@@ -126,7 +126,7 @@ Quatre familles adjacentes : prévisionnel et business plan, trésorerie prévis
 
 Quatre familles qui ne produisent rien mais qui décident de tout. Choisir et cadrer une automatisation, en commençant par une tâche qui a une règle écrite plutôt que par la plus douloureuse. Écrire la règle dans les mots du cabinet, la rejouer sur un jeu d’essai fictif qui couvre le cas courant, le cas limite et le cas de refus, puis la recetter sur les fichiers du cabinet. Placer la validation humaine là où une action engage le cabinet ou un client. Mesurer le temps réellement gagné, avant et après, plutôt que de reprendre un chiffre lu ailleurs.
 
-## Ce que cette carte ne contient pas
+## Que ne contient pas cette carte ?
 
 Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Elle ne contient pas non plus l’audit légal et le commissariat aux comptes : la famille est listée, aucune tâche n’y est documentée, elle n’est pas ouverte. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.
 
@@ -165,6 +165,6 @@ Chaque famille reçoit son article détaillé, au rythme de plusieurs par semain
 
 Une tâche s’automatise quand elle se répète, que sa règle s’écrit dans les mots du cabinet et que ses exceptions se comptent. Tout le reste est une frontière à placer : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain.
 
-## Par où commencer
+## Par où commencer ?
 
 Choisissez une seule famille, la plus répétitive de votre cabinet, et écrivez sa règle sur une page : déclencheur, condition, action, exception. Si la page se remplit sans hésitation, la tâche est candidate. Si elle appelle des « ça dépend », gardez-la pour plus tard. La [méthode Memlia](/methode) part exactement de cette page, la rejoue sur vos fichiers en recette, et [le service](/automatisation-cabinet-comptable) code la règle dans les outils que vous utilisez déjà, avec les [garanties](/garanties) qui vont avec. Le [hub Ressources](/ressources) classe les articles par rôle, pour retrouver ceux qui concernent votre poste.

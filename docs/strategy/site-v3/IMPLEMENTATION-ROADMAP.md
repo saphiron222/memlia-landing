@@ -15,9 +15,9 @@
 | Revues indépendantes : identités `marketing` (grille éditoriale) et `relecteur-metier-ia-memlia` (verdict par affirmation), rendues par un agent distinct de l'auteur | `revues.json` de chaque recette | exigées par le gate (score ≥ 90, verdict « soutient » par claim) |
 | Pilier en tête du blog | `src/pages/blog.astro` | `tests/browser/blog.spec.ts` |
 
-## Glossaire vague 1 : rédigé, pas encore intégré
+## Glossaire vague 1 : intégré le 16/09/2026
 
-Les 20 termes de la vague 1 (le plan en annonçait 18, ses tableaux en listent 20) sont rédigés au contrat `GlossaryEntry` avec 16 sources officielles ouvertes le 16/09 : `glossaire-vague-1.json`. Ils ne sont pas dans `src/data/glossary.ts`, parce que le glossaire est une surface du pipeline Ressources (manifeste T, contrat v3) : chaque unité rendue d'un terme (définition, contexte, exemple, confusion, frontière) doit porter une preuve de revue métier bidirectionnelle (`test_41_visible_units_have_complete_bidirectional_evidence`), puis la surface est rescellée et réaffirmée. L'intégration se fait donc par la chaîne Ressources (candidat, revue métier IA par unité, sceau, réaffirmation), pas par un simple ajout dans le fichier. Prochain créneau : le premier jour de production de la semaine 39, avant les articles qui citent ces termes.
+Les 20 termes de la vague 1 (le plan en annonçait 18, ses tableaux en listent 20) ont été rédigés au contrat `GlossaryEntry` (`glossaire-vague-1.json`) puis intégrés à `src/data/glossary.ts` par la chaîne Ressources (manifeste T, contrat v3) : 43 termes rendus, 66 unités inventoriées, 74 affirmations, 87 citations, 26 sources dont 11 nouvelles rouvertes le jour même (`docs/qa/hub-ressources/glossaire-vague-1.md`). Six définitions ont été recadrées sur ce que leurs sources énoncent (système d'IA, sous-traitant RGPD, honoraires, prélèvement SEPA, jeu d'essai fictif, grand modèle de langage) et huit termes sont des conventions Memlia adossées à `/methode`. Revue métier indépendante R5 (carte `t_eebf35f8`, 34 affirmations sensibles), sceau et ancrage : `docs/qa/hub-ressources/metier-review-r5/`. La procédure d'une vague suivante est dans `RUNBOOK-QUOTIDIEN.md` §6.
 
 ## Le cycle d'un article (à rejouer quatre fois par semaine)
 

@@ -93,7 +93,7 @@ class ResourceV3TraceabilityProof(unittest.TestCase):
         )
         self.assertTrue(any("simple retard" in claim["text"] for claim in claims))
 
-    def test_41_visible_units_have_complete_bidirectional_evidence(self) -> None:
+    def test_visible_units_have_complete_bidirectional_evidence(self) -> None:
         totals = {"units": 0, "claims": 0, "citations": 0}
         global_unit_ids: set[str] = set()
 
@@ -173,7 +173,7 @@ class ResourceV3TraceabilityProof(unittest.TestCase):
             totals["claims"] += len(claims)
             totals["citations"] += len(citations)
 
-        self.assertEqual(totals, {"units": 41, "claims": 49, "citations": 57})
+        self.assertEqual(totals, {"units": 66, "claims": 74, "citations": 87})
 
     def test_machine_readable_register_is_an_exact_projection(self) -> None:
         register = json.loads(REGISTER.read_text())

@@ -30,28 +30,26 @@
     }
   },
   "evidence": [
-    "Title 50 caractères, meta description 150 caractères ; les deux dans la fourchette recommandée et identiques sur meta/og:/twitter:/JSON-LD, sans dérive entre les surfaces.",
-    "JSON-LD @graph complet : BlogPosting + BreadcrumbList + Person + Organization + WebSite ; wordCount déclaré 2369, cohérent avec les « 12 min de lecture » affichées à l’écran.",
-    "Hiérarchie H1 unique → H2 → H3 sans saut ; trois tableaux avec <thead>, deux listes à puces, un aside « En bref » en tête d’article : structure extractible confirmée sur le HTML rendu.",
-    "Les quatre citations légales (claims) ont été vérifiées mot pour mot par grep dans les quatre copies locales .source.txt : aucun écart, aucune extension de portée.",
-    "Recherche automatisée sur le corps : zéro occurrence de « module », « % » ou « € » ; l’unique occurrence de « gain » dément explicitement une promesse de gain chiffrée.",
-    "Couverture 1920×1080 (16:9) vérifiée par lecture de pixels ; dérivés 768/1200/1600 en avif et webp plus OG 1200×630 tous présents et correctement dimensionnés dans public/images.",
-    "L’image héros est chargée en `loading=\"eager\" fetchpriority=\"high\"` (pas de lazy sur le LCP) et les polices critiques sont préchargées : signaux de performance structurels favorables.",
-    "Les fichiers de revue automatique existants (review.json, preuves/review.json, preuves/business-review.json, preuves/image/visual-review.json) sont des gabarits non exécutés (« Revue … non exécutée ») : cette revues.json est donc le premier passage de fond réel sur ce candidat."
+    "Title 59 caractères, H1 52 caractères, meta description 150 caractères — mesurés directement sur le HTML rendu (Python len()) ; tous dans les fourchettes recommandées, sans trace d’ancien intitulé sur og:title/twitter:title/JSON-LD/fil d’Ariane.",
+    "4/4 claims retrouvées mot pour mot par grep dans les copies locales des sources (cnil-principes L531, cnil-durees L780, sp-conservation L307, cnil-sous-traitant L500).",
+    "Schéma JSON-LD @graph complet : BlogPosting + BreadcrumbList + Person + Organization + WebSite ; wordCount déclaré 2374.",
+    "Un seul <h1> ; hiérarchie H1→H2 (15 dans le corps)→H3 (5, tous sous « Questions fréquentes ») sans saut de niveau ; exactement 4 H2 en forme interrogative, conforme à la recette de retitrage.",
+    "3 tableaux avec <thead>, 2 listes à puces, un aside « En bref » en tête d’article : structure extractible confirmée sur le rendu.",
+    "6 liens internes contextuels dans le corps (glossaire ×3, articles liés ×2, méthode) à ancres descriptives, plus 2 articles recommandés en pied avec résumé ; 4 liens externes tier-1 (CNIL ×3, Service-Public ×1).",
+    "Couverture 1920×1080 (16:9) vérifiée par lecture de pixels (sips) ; dérivés 768/1200/1600 en AVIF/WebP plus OG 1200×630 tous présents sur disque et référencés dans le <picture> et les balises og:image/twitter:image.",
+    "Image héros chargée en loading=\"eager\" fetchpriority=\"high\" (pas de lazy sur le LCP) ; polices critiques préchargées avec font-display swap."
   ],
   "reservations": [
-    "Aucun Lighthouse / Core Web Vitals réel exécuté : les scores « page speed » et « mobile » s’appuient sur des signaux structurels (préchargement, eager/fetchpriority, CSS inliné), pas sur une mesure de terrain.",
-    "Score de lisibilité calculé avec un outil (textstat) calibré pour l’anglais appliqué à un texte français (Flesch ≈ 76,9) : indicatif seulement, aucune formule de lisibilité française (type Kandel-Moles) appliquée.",
-    "Caractère bidirectionnel des liens internes non vérifié : les pages cibles (/glossaire, /methode, les deux articles liés) n’ont pas été ouvertes pour confirmer qu’elles renvoient vers cet article.",
-    "Aucune citation réelle de l’article par un moteur IA (Google AI Overviews, Perplexity, ChatGPT) testée : la « citabilité » jugée ici est structurelle, pas observée en conditions réelles.",
-    "Contenu réel des pages /a-propos, /contact, /mentions-legales et /politique-de-confidentialite non vérifié au-delà de leur présence en pied de page sur cette page.",
-    "Relecture grammaticale faite à l’œil, sans correcteur outillé ; aucune coquille repérée mais l’exhaustivité n’est pas garantie sur 2369 mots.",
-    "L’absence de `noindex` en production n’a pas été observée directement par cette revue (qui porte sur le rendu `.qa/render`, construit avec `BLOG_PREVIEW_SLUGS`) : elle est garantie par la commande `production-check` de `scripts/blog-pipeline.mjs`, qui échoue si la page publiée contient encore `noindex` ou si le canonical auto-référent manque."
+    "Le caractère bidirectionnel des liens internes (la page pilier « la carte des tâches » et les deux articles « à lire ensuite » pointent-ils en retour vers cet article) n’a pas été vérifié dans cette passe, centrée sur le rendu de cet article seul.",
+    "La lisibilité a été jugée qualitativement, sans outil de calcul de score Flesch exécuté dans cette revue ; quelques phrases à clauses multiples dans la section RGPD, acceptables vu la nature technique du sujet.",
+    "Le title tag est à 59/60 caractères, à la limite haute de la fourchette recommandée : toute évolution future devrait éviter de l’allonger pour ne pas risquer une troncature en SERP.",
+    "Le `noindex` de ce rendu de banc est un artefact du harnais de prévisualisation signalé dans la consigne ; non compté comme défaut ici, mais son retrait effectif en production n’a pas été observé directement par cette revue.",
+    "Le rendu de la page à largeur mobile (~400px) n’a pas été vérifié visuellement dans cette passe ; l’évaluation « mobile-friendliness » s’appuie sur les signaux de code (meta viewport, media queries, nav-burger), pas sur une capture d’écran réelle."
   ],
-  "verdict": "Article éditorialement et techniquement très abouti — sourcé mot pour mot, structuré pour l’extraction et conforme aux garde-fous de marque — prêt à publier dès que le `noindex` de prévisualisation est levé et qu’un humain du métier confirme la lecture sur le terrain.",
+  "verdict": "99/100, bande Exceptional : couverture complète et sourcée (4/4 claims tier-1 vérifiées mot pour mot dans leurs copies locales), socle technique et schéma complets, title/H1/meta cohérents malgré une formulation volontairement différenciée entre surface de recherche et surface de lecture, et exactement quatre intertitres interrogatifs conformes à la recette de retitrage. Aucun défaut bloquant identifié sur ce rendu ; publiable en l’état sous réserve de la levée du `noindex` de prévisualisation en production.",
   "subject": {
     "slug": "automatiser-la-relance-des-pieces-clients",
-    "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
-    "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba"
+    "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
+    "manifestSha256": "d939bb49c47f2694aa72e48f48decd39b0ddfc41efd035ef7de1dfc39adcc23e"
   }
 }

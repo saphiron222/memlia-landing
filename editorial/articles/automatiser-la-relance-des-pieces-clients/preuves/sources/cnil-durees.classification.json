@@ -4,8 +4,8 @@
   "kind": "source-classification",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
-  "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba",
+  "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
+  "manifestSha256": "d939bb49c47f2694aa72e48f48decd39b0ddfc41efd035ef7de1dfc39adcc23e",
   "sourceId": "cnil-durees",
   "sourceUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
   "finalUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
@@ -18,6 +18,6 @@
   "reviewedBy": "relecteur-metier-ia-memlia",
   "observations": [
     "Fiche officielle de l’autorité de protection des données, source primaire.",
-    "Éditeur CNIL, domaine cnil.fr officiel, tier-1 : fiche pratique dédiée aux durées de conservation, dont l’usage dans l’article (nécessité d’une règle de purge du journal des relances fixée par le cabinet) reste cohérent avec son objet."
+    "Fiche pratique officielle CNIL sur les durées de conservation (cnil.fr, tier-1) ; citation retrouvée mot pour mot ligne 780 de la copie locale ; l’article applique correctement la notion de « responsable du fichier » au cabinet pour son propre journal de relances."
   ]
 }

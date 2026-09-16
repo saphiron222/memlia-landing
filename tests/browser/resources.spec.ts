@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
 
 const widths = [320, 375, 768, 1024, 1440, 1920];
-// Composition du hub au 16/09/2026 : les trois articles publies du blog et l'entree glossaire.
-// L'article 3 a rejoint l'index automatiquement : projectPublicResources derive sa fiche de son
-// frontmatter des lors qu'il porte pipelineVersion 1, une tache et un role documente.
-const RESSOURCES_ATTENDUES = 4;
+// Composition du hub au 16/09/2026 au soir : les cinq articles publies du blog et l'entree glossaire.
+// Chaque article rejoint l'index automatiquement : projectPublicResources derive sa fiche de son
+// frontmatter des lors qu'il porte pipelineVersion 1, une tache et un role documente (le pilier
+// « carte des taches » et « relance des pieces » publies par la forge le 16/09/2026).
+const RESSOURCES_ATTENDUES = 6;
 // Le role affiche par le hub est un axe de DECOUVERTE, pas le rolePrincipal du frontmatter :
 // ARTICLE_DISCOVERY (src/data/resources.ts) place volontairement « suivre la production sociale »
 // sous direction-associes pour etaler les axes. Restent donc sous paie-responsables-sociaux le

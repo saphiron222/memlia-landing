@@ -35,9 +35,10 @@ const SURFACES = [
   { adapter: 'H', manifestPath: 'editorial/resources/hub/manifest.json', outputPath: 'dist/ressources.html' },
   { adapter: 'T', manifestPath: 'editorial/resources/glossaire/manifest.json', outputPath: 'dist/glossaire.html' },
 ];
-const ANCRE = 'docs/qa/hub-ressources/metier-review-r4/sujet-ancre.json';
-const DECLARATION = 'docs/qa/hub-ressources/metier-review-r4/reaffirmation-declaration.json';
-const RAPPORT = 'docs/qa/hub-ressources/metier-review-r4/reaffirmation.json';
+const REVUE = 'metier-review-r5'; // La revue métier en vigueur : son dossier porte l’ancre, la déclaration et le rapport.
+const ANCRE = `docs/qa/hub-ressources/${REVUE}/sujet-ancre.json`;
+const DECLARATION = `docs/qa/hub-ressources/${REVUE}/reaffirmation-declaration.json`;
+const RAPPORT = `docs/qa/hub-ressources/${REVUE}/reaffirmation.json`;
 const REGISTRE = 'docs/qa/hub-ressources/metier-fix-c-register.json';
 
 const resoudre = (chemin) => (isAbsolute(chemin) ? chemin : join(root, chemin));
@@ -131,7 +132,7 @@ function commandeAncrer(options) {
   if (motifs.length > 0) refuser(motifs);
   ecrireJson(ANCRE, {
     schemaVersion: 2,
-    revue: 'metier-review-r4',
+    revue: REVUE,
     ancreLe: new Date().toISOString(),
     regle: "Sujet complet de la revue métier. Son empreinte reproduit le reviewedCandidateHash scellé ; toute feuille qui bouge doit être déclarée et justifiée avant une réaffirmation.",
     surfaces,

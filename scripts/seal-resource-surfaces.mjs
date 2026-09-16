@@ -8,11 +8,16 @@ import { createResourceFixture } from '../tests/scripts/resource-fixture.mjs';
 import { loadMetierEvidence } from './lib/resource-metier-evidence.mjs';
 
 const root = process.cwd();
-const checkedAt = '2026-09-16T06:45:00+01:00'; // Date du corpus officiel, pas une date d’effet.
-// Les neuf copies de source ont été rechargées le 16/09/2026 et chaque citation d’autorité a été
-// retrouvée dans la page vivante. Deux formulations avaient changé depuis le 14/09 : la condition
-// de licéité d’un dispositif de contrôle chez la CNIL, et la définition de l’identification d’une
-// personne physique. Les deux citations suivent désormais la page courante.
+const checkedAt = '2026-09-16T20:24:14+01:00'; // Date du corpus officiel, pas une date d’effet.
+// Le 16/09/2026 au soir, les neuf copies de source du candidat précédent ont été rouvertes (curl avec
+// en-tête de navigateur, et navigateur pour l’assistance Net-entreprises qui refuse curl) : chaque
+// passage cité est encore présent mot pour mot dans la page vivante. Les copies de la vague 1 du
+// glossaire (docs/qa/hub-ressources/glossaire-vague-1-sources) ont été prises au même moment.
+// Le matin du 16/09, deux formulations avaient changé depuis le 14/09 (licéité d’un dispositif de
+// contrôle, identification d’une personne physique) ; les citations suivent la page courante.
+// Heure de la revue métier en vigueur (R5) : le validateur exige que chaque verdict, chaque claim et
+// chaque copie de source soient antérieurs ou égaux à cet instant, et du même jour.
+const revueCheckedAt = '2026-09-16T21:09:13+01:00';
 const buildCommand = 'npm run build:site'; // Chaîne complète, jouée hors scellement (voir la vérification plus bas).
 const publicEnv = { ...process.env };
 for (const key of ['BLOG_PREVIEW_SLUG', 'BLOG_PREVIEW_SLUGS', 'BLOG_PREVIEW_ALL']) delete publicEnv[key];
@@ -130,14 +135,11 @@ function createManifest(adapter) {
   const unitText = isHub
     ? surfaceEntries.find((entry) => entry.id === 'H-DESCRIPTION').text
     : surfaceEntries.find((entry) => entry.id === 'T-DEF-DSN').text;
-  const glossaryAnchors = [
-    'dsn', 'dsn-val', 'compte-rendu-metier-dsn', 'annule-et-remplace-dsn', 'controle-avant-dsn',
-    'production-sociale', 'donnee-personnelle', 'minimisation-des-donnees', 'anonymisation',
-    'pseudonymisation', 'agregat-non-nominatif', 'lettrage-comptable', 'rapprochement-bancaire',
-    'revision-comptable', 'piece-justificative', 'recouvrement-amiable', 'regle-de-cabinet',
-    'cas-de-refus', 'controle-de-coherence', 'schema-de-donnees', 'tracabilite',
-    'validation-humaine', 'fail-closed',
-  ].map((anchor) => `/glossaire#${anchor}`);
+  // Les ancres viennent des données rendues, jamais d’une liste recopiée : une ancre ajoutée au
+  // glossaire sans passer ici serait invisible du sceau.
+  const glossaryAnchors = [...readFileSync(join(root, 'src/data/glossary.ts'), 'utf8').matchAll(/^\s+\.\.\.common, id: '[^']+', term: '[^']+', anchor: '([^']+)'/gm)]
+    .map((match) => `/glossaire#${match[1]}`);
+  if (glossaryAnchors.length < 43) throw new Error(`Ancres de glossaire incomplètes : ${glossaryAnchors.length} lues, 43 attendues au moins.`);
   const destinations = [
     '/blog/controler-les-bulletins-de-paie-avant-la-dsn',
     '/blog/suivre-la-production-sociale-dans-excel',
@@ -148,8 +150,8 @@ function createManifest(adapter) {
   // « aucun AI_REVIEW_PASS n’est revendiqué » alors qu’il en portait un.
   const revueAccordee = revueReportee?.revue?.status === 'AI_REVIEW_PASS';
   manifest.$comment = revueAccordee
-    ? 'CANDIDAT V3 : 41 unités R2 couvertes, résumés H atomisés. Contenu paie/social non attesté ; revue métier IA indépendante AI_REVIEW_PASS. SERP ND sans crédit SEO.'
-    : 'CANDIDAT V3 : 41 unités R2 couvertes, résumés H atomisés. Contenu non attesté, aucune revue IA indépendante accordée. SERP ND sans crédit SEO.';
+    ? `CANDIDAT V3 : ${new Set(metierEvidence.entries.map((entry) => entry.unitId)).size} unités R2 couvertes, résumés H atomisés. Contenu paie/social non attesté ; revue métier IA indépendante AI_REVIEW_PASS. SERP ND sans crédit SEO.`
+    : `CANDIDAT V3 : ${new Set(metierEvidence.entries.map((entry) => entry.unitId)).size} unités R2 couvertes, résumés H atomisés. Contenu non attesté, aucune revue IA indépendante accordée. SERP ND sans crédit SEO.`;
   manifest.contractRevision = 3;
   manifest.policyBaseline = {
     ...manifest.policyBaseline,
@@ -157,7 +159,7 @@ function createManifest(adapter) {
     pipelineCommit: 'c2efa557476bc5d8eab3b6995fd116007a4f4c7c',
     architectureTask: isHub ? 't_f7f13852' : 't_27e8be9f',
     publicProjection: isHub ? 'src/pages/ressources.astro' : 'src/pages/glossaire.astro',
-    decisions: '/glossaire reste un index unique de 23 ancres ; aucun guide ou modèle.',
+    decisions: `/glossaire reste un index unique de ${glossaryAnchors.length} ancres ; aucun guide ou modèle.`,
   };
   manifest.candidate = {
     ...manifest.candidate,
@@ -188,7 +190,7 @@ function createManifest(adapter) {
       indexSubstance: {
         minimum: 5,
         excludedResourceTypes: ['hub'],
-        unitRule: 'Deux articles historiques et vingt-trois ancres de glossaire, sans auto-compter le Hub.',
+        unitRule: `Deux articles historiques et ${glossaryAnchors.length} ancres de glossaire, sans auto-compter le Hub.`,
         computedCount: destinations.length,
         eligibleUnitRefs: destinations,
         result: 'PASS',
@@ -198,9 +200,9 @@ function createManifest(adapter) {
     }
     : {
       requiredInputs: ['src/data/glossary.ts', 'src/pages/glossaire.astro', 'dist/glossaire.html'],
-      requiredOutputs: ['dist/glossaire.html', '23 ancres uniques'],
+      requiredOutputs: ['dist/glossaire.html', `${glossaryAnchors.length} ancres uniques`],
       routeDecision: { status: 'PASS', choice: 'index', allowed: ['anchor', 'index', 'page'], evidenceRef: 'docs/qa/glossaire/recette.md', rule: 'Index unique ; aucune page /glossaire/{slug}.', containerAuditResult: 'PASS' },
-      anchorPolicy: 'Le conteneur /glossaire porte exactement les 23 ancres déclarées.',
+      anchorPolicy: `Le conteneur /glossaire porte exactement les ${glossaryAnchors.length} ancres déclarées.`,
       noNaAbuse: 'Les audits du conteneur restent requis.',
       imagePolicy: 'Aucune image utile à cet index.',
     };
@@ -249,7 +251,7 @@ function createManifest(adapter) {
   manifest.claimsEvidence.sensitiveMatter = {
     detected: true,
     signals: [...new Set(surfaceEntries.filter((entry) => ['dsn', 'legal-reglementaire'].includes(entry.type)).map((entry) => entry.type))],
-    checkedAt,
+    checkedAt: revueCheckedAt,
     businessReview: revueReportee ? revueReportee.revue : {
       required: true, reviewerId: null, reviewerType: null, reviewerProfile: null, reviewerRole: null,
       distinctFrom: ['author', 'editorialReviewer', 'sourceClassifier'], reviewedCandidateHash: null,

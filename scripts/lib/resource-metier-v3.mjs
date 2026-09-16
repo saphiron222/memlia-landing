@@ -18,6 +18,12 @@ export const ADDITIONAL_UNITS = [
   ['pseudonymisation', 'commonConfusion', 'pseudonymisation'],
   ['agregat-non-nominatif', 'commonConfusion', null],
   ['recouvrement-amiable', 'commonConfusion', 'recouvrement-amiable'],
+  // vague 1 (2026-09-16) : les champs qui affirment une portée juridique portent leur propre preuve
+  ['systeme-d-ia', 'context', 'systeme-d-ia-regles'],
+  ['systeme-d-ia', 'commonConfusion', 'systeme-d-ia-regles'],
+  ['sous-traitant-rgpd', 'context', 'sous-traitant-rgpd'],
+  ['sous-traitant-rgpd', 'commonConfusion', 'sous-traitant-rgpd'],
+  ['jeu-d-essai-fictif', 'commonConfusion', 'jeu-d-essai-fictif-anonymisation'],
 ];
 
 export function expandV3Evidence({ root, glossary, entries, sources, official, checkedAt }) {

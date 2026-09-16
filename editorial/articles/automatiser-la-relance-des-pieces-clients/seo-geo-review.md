@@ -1,4 +1,4 @@
-# SEO et préparation aux citations IA — Automatiser la relance des pièces clients
+# SEO et préparation aux citations IA — Automatiser la relance des pièces clients manquantes
 
 Verdict : PASS — 99/100, 0 P0 (revue indépendante du 2026-09-16, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
@@ -13,28 +13,25 @@ Verdict : PASS — 99/100, 0 P0 (revue indépendante du 2026-09-16, barème blog
 
 ## SEO
 
-- Title 50 caractères (« Automatiser la relance des pièces clients | Memlia »), meta description 150 caractères : les deux dans la fourchette recommandée.
-- Canonical https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients cohérent avec og:url et l’URL du JSON-LD ; aucune divergence relevée.
-- Hiérarchie de titres H1 unique → H2 → H3 sans saut ; 3 tableaux structurés avec <thead>, 2 listes à puces sur la page rendue.
-- 7 destinations internes contextuelles distinctes à ancres descriptives (glossaire ×3, articles liés ×2, /methode) ; 4 liens externes tier-1 (CNIL ×3, Service-Public ×1).
-- `robots: noindex, follow` sur ce rendu `.qa/render` — cohérent avec la bannière « candidat non publiable », mais à remplacer explicitement au moment de la mise en ligne réelle.
-- Couverture livrée en AVIF/WebP à 768/1200/1600 px plus OG 1200×630, chargée en eager/fetchpriority=high : pas de lazy sur l’image LCP.
+- Title = « Relance des pièces manquantes en cabinet comptable | Memlia » (59 caractères) : exact quant au contenu, lisible, dans la fourchette 40-60 donc résistant à la troncature desktop typique, et porte la requête primaire « relance pièces manquantes cabinet comptable » quasi mot pour mot et dans l’ordre, sans bourrage.
+- H1 = « Automatiser la relance des pièces clients manquantes » (52 caractères) : formulation volontairement différente du title (verbe d’action pour le lecteur vs formulation orientée requête pour le SERP) mais sans contradiction de sujet ; repris à l’identique par og:title, twitter:title, le headline JSON-LD et le fil d’Ariane, donc aucune incohérence résiduelle entre les métadonnées touchées par le retitrage.
+- Meta description (150 caractères) alignée sur le H1/title et sur l’aside « En bref » affiché en tête de l’article visible ; canonical https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients cohérent avec og:url et le JSON-LD.
+- Exactement 4 des 15 H2 du corps sont passés en forme interrogative, conformément à la recette de retitrage, sans casser la hiérarchie H1→H2→H3 ni le style déclaratif des sections « Brique 1/2/3 » et tableaux.
+- OG (image 1200×630 avec alt et dimensions), Twitter Card summary_large_image, et socle JSON-LD (BlogPosting/Person/Organization/BreadcrumbList) tous présents et cohérents avec le couple title/H1 retitré.
 
 ## Préparation aux citations
 
-- Réponse directe en tête d’article suivie de l’aside « En bref » : format extractible en un seul passage pour un moteur IA, sans avoir à parcourir toute la page.
-- 3 tableaux avec <thead>, dont un tableau comparatif « se prépare seul / attend une validation / reste humain » : structure hautement citable telle quelle.
-- Terminologie stable et définie une fois (« relance de pièces », « complétude du dossier », « checklist conditionnelle ») puis réutilisée sans dérive synonymique : entité non ambiguë.
-- 5 questions-réponses en H3 sous « Questions fréquentes », chacune autonome et directement citable hors contexte par un moteur conversationnel.
-- Chaque affirmation réglementaire (minimisation RGPD, durées de conservation, sous-traitant) est sourcée en ligne vers une source officielle tier-1, avec citation exacte vérifiée mot pour mot.
-- Le `noindex` du rendu de prévisualisation empêcherait toute indexation ou citation réelle par un moteur IA tant qu’il n’est pas levé pour la publication effective.
+- Deux définitions en gras (« La relance de pièces est... », « La complétude du dossier est... ») juste après la réponse directe : ancrage d’entité utile à une IA générative avant citation du reste de l’article.
+- Trois tableaux structurés (<thead>), dont un tableau déclencheur/condition/action/exception et un comparatif « se prépare seul / attend une validation / reste humain », directement extractibles par un moteur de réponse IA.
+- Bloc FAQ en 5 questions/réponses autonomes (H3), extractible même sans balisage FAQPage — absent ici mais non pénalisant selon la grille, qui ne bonifie pas ce schéma.
+- Terminologie stable et définie une fois (relance de pièces, complétude du dossier, checklist conditionnelle, cadence) puis réutilisée sans dérive synonymique : entité non ambiguë.
+- Contenu du corps entièrement présent dans le HTML statique (Astro, rendu serveur) sans dépendance JS, favorable à un crawler IA à budget de rendu limité.
+- Le `noindex` de ce rendu de banc n’est pas interprété comme un problème d’accessibilité aux crawlers IA : c’est un artefact de prévisualisation signalé dans la consigne, la production portant le canonical et le schéma d’indexation attendus.
 
 ## Réserves mesurées
 
-- Aucun Lighthouse / Core Web Vitals réel exécuté : les scores « page speed » et « mobile » s’appuient sur des signaux structurels (préchargement, eager/fetchpriority, CSS inliné), pas sur une mesure de terrain.
-- Score de lisibilité calculé avec un outil (textstat) calibré pour l’anglais appliqué à un texte français (Flesch ≈ 76,9) : indicatif seulement, aucune formule de lisibilité française (type Kandel-Moles) appliquée.
-- Caractère bidirectionnel des liens internes non vérifié : les pages cibles (/glossaire, /methode, les deux articles liés) n’ont pas été ouvertes pour confirmer qu’elles renvoient vers cet article.
-- Aucune citation réelle de l’article par un moteur IA (Google AI Overviews, Perplexity, ChatGPT) testée : la « citabilité » jugée ici est structurelle, pas observée en conditions réelles.
-- Contenu réel des pages /a-propos, /contact, /mentions-legales et /politique-de-confidentialite non vérifié au-delà de leur présence en pied de page sur cette page.
-- Relecture grammaticale faite à l’œil, sans correcteur outillé ; aucune coquille repérée mais l’exhaustivité n’est pas garantie sur 2369 mots.
-- L’absence de `noindex` en production n’a pas été observée directement par cette revue (qui porte sur le rendu `.qa/render`, construit avec `BLOG_PREVIEW_SLUGS`) : elle est garantie par la commande `production-check` de `scripts/blog-pipeline.mjs`, qui échoue si la page publiée contient encore `noindex` ou si le canonical auto-référent manque.
+- Le caractère bidirectionnel des liens internes (la page pilier « la carte des tâches » et les deux articles « à lire ensuite » pointent-ils en retour vers cet article) n’a pas été vérifié dans cette passe, centrée sur le rendu de cet article seul.
+- La lisibilité a été jugée qualitativement, sans outil de calcul de score Flesch exécuté dans cette revue ; quelques phrases à clauses multiples dans la section RGPD, acceptables vu la nature technique du sujet.
+- Le title tag est à 59/60 caractères, à la limite haute de la fourchette recommandée : toute évolution future devrait éviter de l’allonger pour ne pas risquer une troncature en SERP.
+- Le `noindex` de ce rendu de banc est un artefact du harnais de prévisualisation signalé dans la consigne ; non compté comme défaut ici, mais son retrait effectif en production n’a pas été observé directement par cette revue.
+- Le rendu de la page à largeur mobile (~400px) n’a pas été vérifié visuellement dans cette passe ; l’évaluation « mobile-friendliness » s’appuie sur les signaux de code (meta viewport, media queries, nav-burger), pas sur une capture d’écran réelle.

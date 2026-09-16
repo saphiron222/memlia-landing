@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "revue": "metier-review-r5",
+  "declareLe": "2026-09-16",
+  "declarePar": "Claude Code, session memlia.fr v3 du 16/09/2026 (carte kanban t_eebf35f8 pour la revue)",
+  "regle": "Seules les clés listées ici peuvent bouger sans refaire la revue métier. Toute autre clé du sujet ferme la réaffirmation.",
+  "deltasAutorises": {
+    "buildOutputDigest": "Le HTML rendu de /ressources et /glossaire change quand le chrome du site (navigation, pied de page, jetons de style) ou le titre d’un article listé par le hub change, sans qu’aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que chaque affirmation revue est encore rendue mot pour mot."
+  }
+}

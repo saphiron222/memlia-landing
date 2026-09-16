@@ -2,7 +2,7 @@
 
 Automatiser la relance des pièces clients, c’est tenir pour chaque dossier la liste des pièces attendues sur la période, constater ce qui manque, préparer une relance à cadence fixe et la faire cesser à réception. Trois briques suffisent : une checklist conditionnelle, un contrôle de complétude, une cadence qui cesse. La relance part après validation, jamais seule, et tout dossier en litige sort du circuit.
 
-## Qu’est-ce que la relance de pièces, et pourquoi elle casse à la main
+## Qu’est-ce que la relance de pièces, et pourquoi casse-t-elle à la main ?
 
 **La relance de pièces** est la demande, adressée à un client à cadence définie, des pièces qu’un cabinet attend pour tenir une période comptable, et qui cesse dès que la pièce est reçue et lisible. **La complétude du dossier** est l’état d’un dossier dont toutes les pièces attendues pour une période sont reçues et exploitables. Les deux notions vont ensemble : on ne relance bien que ce dont on sait précisément qu’il manque.
 
@@ -10,7 +10,7 @@ Chaque mois, la période ne peut pas être tenue parce que des pièces manquent 
 
 La cause n’est pas la messagerie, ni le client. C’est l’absence d’une règle écrite : quelles pièces sont attendues pour ce dossier et cette période, dans quel état, et à partir de quand on relance. La suite décrit cette règle en trois briques, rejouables dans un classeur et une messagerie ordinaires, sans changer d’outil. C’est une méthode Memlia, pas une procédure réglementaire : chaque cabinet en fixe les paramètres.
 
-## Avant de commencer : ce qu’il faut avoir sous la main
+## Que faut-il avoir sous la main avant de commencer ?
 
 - La liste des dossiers du portefeuille, avec pour chacun son régime d’imposition, sa périodicité de TVA, la présence de salariés, d’une caisse, d’immobilisations ou d’emprunts.
 - La messagerie du cabinet et ses messages types de relance, tels qu’ils existent aujourd’hui.
@@ -54,7 +54,7 @@ Chaque relance est préparée depuis le message type du cabinet, avec la liste d
 | Une relance est validée | Le message type est complet | La relance part, le journal l’enregistre | Message incomplet : rien ne part |
 | Toutes les pièces sont lisibles | La période est complète | La cadence cesse, la complétude est proposée à validation | Aucune |
 
-## Ce que l’outil refuse, et pourquoi
+## Que refuse l’outil, et pourquoi ?
 
 Le refus n’est pas une panne, c’est la partie la plus utile de la règle. L’outil ne relance pas un dossier signalé en litige, en contentieux ou en fin de mission : une relance automatique y ferait plus de mal qu’une pièce manquante. Il ne relance pas un dossier dont la checklist n’a pas été renseignée : relancer « les pièces habituelles » sans savoir lesquelles est exactement l’erreur qu’on veut supprimer. Il n’envoie rien sans validation, même quand la règle est certaine. Et il ne déduit jamais qu’une pièce est reçue parce qu’un courriel est arrivé : la réception se constate sur la pièce, pas sur le message.
 
@@ -74,7 +74,7 @@ Six dossiers inventés suffisent à rejouer la règle. Un commerce soumis à la 
 
 Sur ce jeu, la règle produit exactement ce qu’on attend d’elle. Les quatre premiers dossiers reçoivent une liste attendue conforme à leurs conditions ; deux d’entre eux ont une pièce manquante à la date de première relance et une relance ciblée leur est proposée ; l’un des deux envoie une pièce hors période, qui reste à l’état dédié et déclenche une relance précisant la période attendue. Le dossier en litige ne reçoit rien et apparaît dans la file. Le dossier sans checklist n’a aucune liste et apparaît aussi dans la file, avec sa raison. C’est ce jeu, et non une promesse de gain, qui prouve la règle avant qu’elle ne touche un vrai dossier.
 
-## Le cadre : données, conservation, sous-traitance
+## Quel cadre pour les données, leur conservation et la sous-traitance ?
 
 Une relance de pièces manipule des données personnelles, ne serait-ce que le nom et l’adresse de courriel du contact chez le client. Le [principe de minimisation](https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2) s’applique tel quel : les données doivent être adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées. L’outil qui relance n’a besoin ni des bulletins, ni du grand livre, ni de l’historique bancaire ; il a besoin de la checklist, des états et d’une adresse de contact.
 

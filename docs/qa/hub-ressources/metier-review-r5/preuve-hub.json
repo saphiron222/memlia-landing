@@ -1,0 +1,93 @@
+{
+  "required": true,
+  "reviewerType": "ai-agent",
+  "reviewerProfile": "metier",
+  "reviewerId": "t_eebf35f8",
+  "reviewerRole": "reviewer-metier-memlia",
+  "distinctFrom": [
+    "author",
+    "editorialReviewer",
+    "sourceClassifier"
+  ],
+  "reviewedCandidateHash": "a0b876ab9d59a6f82f2aea6f59ccd4bdf3d29c828486b1bc3002ca1d69d67356",
+  "status": "AI_REVIEW_PASS",
+  "claimSourceVerdicts": [
+    {
+      "claimId": "claim-h-dsn-deadline-summary-2",
+      "sourceId": "source-net-annule",
+      "citationIds": [
+        "citation-claim-h-dsn-deadline-summary-2-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source inaccessible à curl (HTTP 401, net-entreprises.custhelp.com refuse la requête anonyme) ; jugement fondé sur la copie datée du 16 septembre 2026 au matin, dont le SHA-256 correspond exactement à celui enregistré dans le manifeste et au fichier réel (shasum vérifié). La citation sur la clôture de l'annule-et-remplace la veille de l'échéance à minuit y figure mot pour mot. L'affirmation ne dit pas plus que la source."
+    },
+    {
+      "claimId": "claim-h-dsn-deadline-summary-3",
+      "sourceId": "source-net-annule",
+      "citationIds": [
+        "citation-claim-h-dsn-deadline-summary-3-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Même source, même copie datée, même vérification de SHA-256. La citation sur l'absence de délai d'envoi pour un signalement d'événement y figure mot pour mot. L'affirmation ne dit pas plus que la source, et la borne bien à ce cas (« pour un signalement d'événement »), distinct de la DSN mensuelle traitée par le claim précédent."
+    },
+    {
+      "claimId": "claim-h-dsn-deadline-summary-4",
+      "sourceId": "source-net-dsn-val",
+      "citationIds": [
+        "citation-claim-h-dsn-deadline-summary-4-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; la citation sur DSN-Val, le cahier technique et le journal de maintenance de la norme (JMN) est retrouvée mot pour mot. L'affirmation ne dit pas plus que la source."
+    },
+    {
+      "claimId": "claim-h-dsn-deadline-summary-5",
+      "sourceId": "source-net-crm",
+      "citationIds": [
+        "citation-claim-h-dsn-deadline-summary-5-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; la citation sur le compte rendu métier est retrouvée mot pour mot. L'affirmation résume fidèlement sans réduire le CRM aux seules anomalies, alors que la source couvre aussi la confirmation de qualité des déclarations."
+    },
+    {
+      "claimId": "claim-h-social-monitoring-summary-2",
+      "sourceId": "source-cnil-controle-activite",
+      "citationIds": [
+        "citation-claim-h-social-monitoring-summary-2-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; la citation sur la licéité (tests cumulatifs de justification et de proportionnalité) est retrouvée mot pour mot. L'affirmation isole une des trois conditions cumulatives de la source sans prétendre qu'elle est suffisante à elle seule ; les deux autres conditions (information préalable des personnes, consultation des instances représentatives) sont couvertes par les deux claims suivants du même résumé, sans contradiction entre eux."
+    },
+    {
+      "claimId": "claim-h-social-monitoring-summary-3",
+      "sourceId": "source-cnil-controle-activite",
+      "citationIds": [
+        "citation-claim-h-social-monitoring-summary-3-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Même source. La citation sur l'information préalable des personnes concernées, avant la mise en place du dispositif, est retrouvée mot pour mot. L'affirmation ne dit pas plus que la source."
+    },
+    {
+      "claimId": "claim-h-social-monitoring-summary-4",
+      "sourceId": "source-cnil-controle-activite",
+      "citationIds": [
+        "citation-claim-h-social-monitoring-summary-4-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "ba72f236d4d90c20a6ae610c9d4fb0cb4c5bb20d80ef28137874ce4832e3fcfe",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Même source. La citation est retrouvée à l'identique une fois la capitalisation d'amorce ignorée (la page vivante poursuit une phrase commençant par « ...dans le cadre du dialogue social », citée ici avec un « Dans » capitalisé en tête d'extrait, sans autre écart) ; elle couvre à la fois des instances du secteur privé et du secteur public. L'affirmation se limite au seul cas des entreprises privées de 50 salariés et plus effectivement énoncé par la source, sans généraliser aux établissements publics que la même phrase mentionne aussi : c'est un rétrécissement de portée, cohérent avec applicability.exceptions qui l'assume explicitement (« les autres instances du secteur public ne sont pas généralisées au Hub »)."
+    }
+  ]
+}

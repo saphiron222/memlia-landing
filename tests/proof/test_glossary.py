@@ -13,6 +13,12 @@ DIST = ROOT / 'dist'
 SITE = 'https://memlia.fr'
 GLOSSARY_URL = f'{SITE}/glossaire'
 EXPECTED_ANCHORS = {
+    # vague 1 (2026-09-16), vingt termes
+    'automatisation', 'flux-de-travail', 'declencheur', 'exception', 'file-d-anomalies',
+    'proposition-puis-validation', 'recette', 'jeu-d-essai-fictif', 'systeme-d-ia', 'ia-generative',
+    'grand-modele-de-langage', 'hallucination', 'reconnaissance-optique-de-caracteres', 'extraction-de-donnees',
+    'sous-traitant-rgpd', 'pre-comptabilite', 'completude-du-dossier', 'relance-de-pieces',
+    'prelevement-sepa-et-rejet', 'honoraires-mensualises-et-actes-hors-forfait',
     'agregat-non-nominatif', 'annule-et-remplace-dsn', 'anonymisation',
     'cas-de-refus', 'compte-rendu-metier-dsn', 'controle-avant-dsn',
     'controle-de-coherence', 'donnee-personnelle', 'dsn', 'dsn-val',
@@ -54,22 +60,22 @@ class GlossaryProof(unittest.TestCase):
         self.html = self.path.read_text()
         self.doc = Document(self.path)
 
-    def test_exactly_23_unique_visible_terms_and_real_letters(self):
+    def test_exactly_43_unique_visible_terms_and_real_letters(self):
         anchors = re.findall(r'<div class="glossaire-entree" id="([a-z0-9-]+)"', self.html)
-        self.assertEqual(len(anchors), 23)
+        self.assertEqual(len(anchors), 43)
         self.assertEqual(set(anchors), EXPECTED_ANCHORS)
         self.assertEqual(len(anchors), len(set(anchors)))
         terms = re.findall(r'<dt[^>]*>\s*<a[^>]*>(.*?)</a>', self.html, re.S)
-        self.assertEqual(len(terms), 23)
+        self.assertEqual(len(terms), 43)
         letters = re.findall(r'<section[^>]*data-lettre="([A-Z])"', self.html)
         self.assertEqual(letters, sorted(set(term.strip()[0].upper() for term in terms)))
 
     def test_metadata_sources_and_boundaries_are_complete(self):
-        self.assertEqual(self.html.count('data-definition='), 23)
-        self.assertEqual(self.html.count('data-example-fictitious='), 23)
-        self.assertEqual(self.html.count('data-common-confusion='), 23)
-        self.assertEqual(self.html.count('data-automation-boundary='), 23)
-        self.assertEqual(self.html.count('class="entree-sources"'), 23)
+        self.assertEqual(self.html.count('data-definition='), 43)
+        self.assertEqual(self.html.count('data-example-fictitious='), 43)
+        self.assertEqual(self.html.count('data-common-confusion='), 43)
+        self.assertEqual(self.html.count('data-automation-boundary='), 43)
+        self.assertEqual(self.html.count('class="entree-sources"'), 43)
         # Le lecteur voit les sources, jamais notre chaîne éditoriale : ni encart de statut,
         # ni date de relecture, ni marqueur de revue — pas même dans les attributs du HTML.
         self.assertNotIn('data-business-reviewer', self.html)
@@ -90,7 +96,7 @@ class GlossaryProof(unittest.TestCase):
         self.assertEqual(types, ['CollectionPage', 'DefinedTermSet', 'BreadcrumbList', 'Organization', 'WebSite'])
         term_set = graph[1]
         self.assertEqual(term_set['url'], GLOSSARY_URL)
-        self.assertEqual(len(term_set['hasDefinedTerm']), 23)
+        self.assertEqual(len(term_set['hasDefinedTerm']), 43)
         schema_urls = {term['url'] for term in term_set['hasDefinedTerm']}
         self.assertEqual(schema_urls, {f'{GLOSSARY_URL}#{anchor}' for anchor in EXPECTED_ANCHORS})
         self.assertTrue(all(term['inDefinedTermSet'] == {'@id': f'{GLOSSARY_URL}#term-set'} for term in term_set['hasDefinedTerm']))
@@ -123,8 +129,8 @@ class GlossaryProof(unittest.TestCase):
         self.assertEqual(list((DIST / 'glossaire').glob('*.html')), [])
         self.assertNotRegex(self.html, r'href="/glossaire/[^"]+"')
         definitions = [re.sub(r'<[^>]+>', ' ', value).strip() for value in re.findall(r'<p class="definition"[^>]*>(.*?)</p>', self.html, re.S)]
-        self.assertEqual(len(definitions), 23)
-        self.assertEqual(len(set(definitions)), 23)
+        self.assertEqual(len(definitions), 43)
+        self.assertEqual(len(set(definitions)), 43)
         for entry in re.findall(r'<div class="glossaire-entree".*?</dd>\s*</div>', self.html, re.S):
             text = re.sub(r'<[^>]+>', ' ', entry)
             self.assertGreaterEqual(len(text.split()), 55)

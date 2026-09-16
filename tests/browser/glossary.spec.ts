@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const EXPECTED_TERMS = 23;
+const EXPECTED_TERMS = 43;
 
 async function glossaryReport(page: import('@playwright/test').Page) {
   return page.evaluate(() => ({
@@ -13,15 +13,16 @@ async function glossaryReport(page: import('@playwright/test').Page) {
   }));
 }
 
-test('glossaire : 23 termes, alphabet réel, canonical, breadcrumb et schéma', async ({ page }) => {
+test('glossaire : 43 termes, alphabet réel, canonical, breadcrumb et schéma', async ({ page }) => {
   const response = await page.goto('/glossaire');
   expect(response?.status()).toBe(200);
   const report = await glossaryReport(page);
   expect(report).toEqual(expect.objectContaining({ terms: EXPECTED_TERMS, h1: 1, broken: [] }));
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/glossaire');
   await expect(page.locator('.ariane [aria-current="page"]')).toHaveText('Glossaire');
-  await expect(page.locator('[data-lettre]')).toHaveCount(11);
-  await expect(page.locator('.alphabet a')).toHaveCount(11);
+  // 16 initiales depuis la vague 1 du 16/09/2026 (E, G, H, I, J rejoignent les onze lettres initiales).
+  await expect(page.locator('[data-lettre]')).toHaveCount(16);
+  await expect(page.locator('.alphabet a')).toHaveCount(16);
   const schema = await page.locator('script[type="application/ld+json"]').textContent();
   const types = JSON.parse(schema!)['@graph'].map((node: { '@type': string }) => node['@type']);
   expect(types).toEqual(['CollectionPage', 'DefinedTermSet', 'BreadcrumbList', 'Organization', 'WebSite']);

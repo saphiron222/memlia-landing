@@ -4,8 +4,8 @@
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
-  "manifestSha256": "bc0608363d550414794038737e04a7abdcc1f769f4034273cde54776e2467e54",
+  "articleSha256": "b298b8ffbe97e1911ae3f4637a4aac3a8a6ccb342cf25b4f6ad779ecc2e7df53",
+  "manifestSha256": "9558427af905216975aa8b25f6058ee3c20550d26ccfeca9a176cf7e30f681ef",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -14,45 +14,45 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Le fichier prompt.json contient les six composantes attendues (sujet, composition, style, palette, interdits, alt), chacune rédigée séparément et reprise dans le prompt final envoyé au moteur."
+        "prompt.json contient les six composantes attendues (sujet, composition, style, palette, interdits, alt), chacune rédigée séparément puis assemblée dans le prompt final envoyé au moteur de génération, sans composante manquante ni fusionnée."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Le fichier master.png mesure exactement 1920x1080 (ratio 16:9 vérifié par sips), en rendu diorama 3D isométrique à formes géométriques simplifiées conforme au style demandé.",
-        "La palette observée (vert Memlia translucide, plateformes graphite, fond crème) correspond à la charte fournie ; aucune fausse interface, écran, logo, personnage ou alerte rouge n'est visible sur l'image."
+        "master.png mesure 1920x1080 (16:9 exact, vérifié par sips), en diorama 3D isométrique à formes géométriques simplifiées, matières mates (plateformes graphite) et translucides (plateformes vertes), lumière douce et ombres courtes conformes au style demandé.",
+        "Inspection visuelle directe de master.png : aucun texte lisible, chiffre, logo, personnage, visage, écran, fausse interface logicielle, alerte rouge ni symbole d'envoi automatique — les six interdits du brief sont respectés ; la palette observée (vert Memlia, vert profond, crème, graphite) correspond à la charte fournie."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Tous les objets représentés (pièces empilées, classeurs, calendrier, engrenages, blocs, barres de graphique) sont génériques et abstraits, sans document, chiffre lisible ou nom réel identifiable."
+        "Tous les objets représentés (pièces empilées, classeurs, calendrier à grille vierge, engrenages, blocs, barres de graphique, piles de feuilles) sont des icônes génériques et abstraites, sans document, donnée, nom ou chiffre réel identifiable ; rien n'imite une capture d'écran ou une photographie réelle."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Le jeton vert central et la bifurcation à deux flèches divergentes sont clairement lisibles et conformes au brief, représentant la décision humaine sur un chemin choisi.",
-        "Le brief corrigé parle désormais d'une dizaine d'îlots reliés par des chemins, plutôt que d'un compte précis de onze ; le comptage visuel du master.png (environ dix plateformes autour du jeton central) est cohérent avec cette formulation, et le texte de l'article réserve le chiffre onze à la taxonomie des pôles, pas à la couverture. Le sujet (une carte d'îlots reliés, un jeton sur un chemin choisi, une bifurcation pour la décision humaine) est donc reconnaissable et fidèle au brief tel qu'il a été corrigé."
+        "Le jeton vert central et la bifurcation à deux flèches divergentes sont clairement lisibles et conformes au brief, représentant la décision humaine sur un chemin choisi ; une dizaine de plateformes reliées par des chemins entourent ce point central, cohérent avec « une dizaine d'îlots reliés par des chemins » du brief.",
+        "Les icônes choisies (calendrier, classeurs, pièces, engrenages, barres de graphique) évoquent des objets administratifs et comptables plausibles, ce qui ancre le sujet dans le monde du cabinet malgré un registre volontairement abstrait ; la lisibilité du sujet précis dépend en partie du texte alternatif et du contexte de page, limite habituelle du style diorama déjà en place sur le reste du site."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Les dimensions déclarées dans image.json sont vérifiées sur disque par sips : master.png en 1920x1080, og.webp en 1200x630 (crop 1200x630+0+22), hero-768 en 768x432 pour l'avif et le webp.",
-        "Les dérivés publiés 1200 et 1600 (avif et webp) présents dans public/images et dist/images respectent aussi le ratio 16:9 et correspondent aux srcset déclarés dans la page rendue."
+        "Dimensions vérifiées sur disque par sips : master.png 1920x1080, img-art-carte-des-taches-og.webp 1200x630 (conforme à og:image:width/height), img-art-carte-des-taches-768.webp 768x432, -1200.webp 1200x675, -1600.webp 1600x900 — ratio 16:9 respecté sur tous les dérivés.",
+        "Les six fichiers requis (768/1200/1600 en avif et webp, plus og.webp) sont présents à la fois dans public/images et dist/images, et la page rendue les référence correctement via <picture>/srcset avec width=1600 height=900 sur l'image LCP."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Le texte alternatif mis à jour (Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation) compte 117 caractères, sous la limite de 125, décrit fidèlement la scène et ne reprend plus de chiffre d'îlots précis, cohérent avec le brief corrigé."
+        "Le texte alternatif (« Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation ») compte 117 caractères (sous la limite usuelle de 125), décrit fidèlement la scène observée et reste identique entre l'attribut alt de l'image, og:image:alt et la légende de l'objet image du JSON-LD."
       ]
     }
   ]

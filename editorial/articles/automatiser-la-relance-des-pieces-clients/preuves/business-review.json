@@ -4,8 +4,8 @@
   "kind": "business-review",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
-  "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba",
+  "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
+  "manifestSha256": "d939bb49c47f2694aa72e48f48decd39b0ddfc41efd035ef7de1dfc39adcc23e",
   "observations": [
     "Contrôle business-review relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
   ],
@@ -15,7 +15,7 @@
     {
       "id": "review-claim-unit-d261dcf7ed61-1-cnil-principes",
       "candidateSlug": "automatiser-la-relance-des-pieces-clients",
-      "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
+      "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
       "claimId": "claim-unit-d261dcf7ed61-1",
       "claimSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
       "sourceId": "cnil-principes",
@@ -24,12 +24,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-16",
-      "reasoning": "La citation CNIL « adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées » est reprise mot pour mot dans le paragraphe sur le principe de minimisation, sans changement de portée ni de polarité, et correctement attribuée à la CNIL."
+      "reasoning": "La copie locale cnil-principes.source.txt (ligne 531) porte mot pour mot « adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées ». L’article cite cette même formule pour justifier que l’outil de relance ne demande que la checklist, les états et une adresse de contact : application directe du principe de minimisation, sans extension de portée."
     },
     {
       "id": "review-claim-unit-d5a154141847-1-cnil-durees",
       "candidateSlug": "automatiser-la-relance-des-pieces-clients",
-      "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
+      "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
       "claimId": "claim-unit-d5a154141847-1",
       "claimSha256": "e0742974196d31f8e720b08468fbbc4abee0b459ced919bbcba131c64a55d961",
       "sourceId": "cnil-durees",
@@ -38,12 +38,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-16",
-      "reasoning": "L’article reprend exactement « pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte » de la fiche CNIL avant d’en tirer, sans changer le sens de la source, la nécessité d’une règle de purge écrite par le cabinet pour le journal des relances."
+      "reasoning": "La copie locale cnil-durees.source.txt (ligne 780) porte mot pour mot « pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte », suivi de « Il appartient alors au responsable du fichier de la déterminer ». L’article traduit fidèlement « responsable du fichier » par « le cabinet », qui est bien responsable de traitement pour son propre journal de relances : pas d’extrapolation abusive."
     },
     {
       "id": "review-claim-unit-d5a154141847-2-sp-conservation",
       "candidateSlug": "automatiser-la-relance-des-pieces-clients",
-      "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
+      "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
       "claimId": "claim-unit-d5a154141847-2",
       "claimSha256": "2023ed4ccd60bb092bd263483469fa84f1d81e076bdd952bbb9861b5c67c41d2",
       "sourceId": "sp-conservation",
@@ -52,12 +52,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-16",
-      "reasoning": "La phrase de Service-Public sur l’obligation de conserver tout document émis ou reçu dans l’exercice de l’activité est citée à l’identique et appliquée aux pièces reçues, sans être confondue avec la durée de conservation du journal des relances, traitée séparément dans le paragraphe suivant."
+      "reasoning": "La copie locale sp-conservation.source.txt (ligne 307, reprise en og:description) porte mot pour mot « Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale ». L’article reprend cette phrase quasi à l’identique pour distinguer la conservation des pièces reçues de la purge du seul journal des relances, traitée séparément juste après."
     },
     {
       "id": "review-claim-unit-5cd56910d808-1-cnil-sous-traitant",
       "candidateSlug": "automatiser-la-relance-des-pieces-clients",
-      "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
+      "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
       "claimId": "claim-unit-5cd56910d808-1",
       "claimSha256": "f3e376b8cd3bfd3685fecbfa47708a886ad521e8b43735d23a2de9ffeb51d4a3",
       "sourceId": "cnil-sous-traitant",
@@ -66,7 +66,7 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-16",
-      "reasoning": "La définition CNIL du sous-traitant est citée mot pour mot et appliquée correctement au cas d’un outil de relance hébergé par un tiers, sans extension de portée au-delà de la définition réglementaire d’origine ni confusion avec le responsable de traitement."
+      "reasoning": "La copie locale cnil-sous-traitant.source.txt (ligne 500, et sa meta description) porte mot pour mot « Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d'un autre organisme ». L’article cite cette définition à l’identique pour cadrer le cas d’un outil de relance hébergé par un tiers, sans la confondre avec le responsable de traitement."
     }
   ]
 }

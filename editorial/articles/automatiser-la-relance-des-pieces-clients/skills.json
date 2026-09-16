@@ -8,7 +8,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "La stratégie est tenue au niveau du site (docs/strategy/site-v3), pas rejouée pour « Automatiser la relance des pièces clients »."
+      "justification": "La stratégie est tenue au niveau du site (docs/strategy/site-v3), pas rejouée pour « Automatiser la relance des pièces clients manquantes »."
     },
     {
       "skill": "blog-brand",
@@ -17,7 +17,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "La voix et la charte sont fixées par .agents/product-marketing.md ; « Automatiser la relance des pièces clients » les applique sans les redéfinir."
+      "justification": "La voix et la charte sont fixées par .agents/product-marketing.md ; « Automatiser la relance des pièces clients manquantes » les applique sans les redéfinir."
     },
     {
       "skill": "blog-persona",
@@ -26,7 +26,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le rôle lecteur de « Automatiser la relance des pièces clients » vient du hub Ressources et du référentiel des besoins, pas d'une persona nouvelle."
+      "justification": "Le rôle lecteur de « Automatiser la relance des pièces clients manquantes » vient du hub Ressources et du référentiel des besoins, pas d'une persona nouvelle."
     },
     {
       "skill": "blog-discourse",
@@ -35,7 +35,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune analyse de discours distincte : « Automatiser la relance des pièces clients » suit le brief et la revue éditoriale."
+      "justification": "Aucune analyse de discours distincte : « Automatiser la relance des pièces clients manquantes » suit le brief et la revue éditoriale."
     },
     {
       "skill": "blog-google",
@@ -44,7 +44,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le relevé Search Console de « Automatiser la relance des pièces clients » est porté par la preuve GSC du dossier, pas par ce skill."
+      "justification": "Le relevé Search Console de « Automatiser la relance des pièces clients manquantes » est porté par la preuve GSC du dossier, pas par ce skill."
     },
     {
       "skill": "blog-calendar",
@@ -53,7 +53,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le calendrier est celui de la v3 (docs/strategy/site-v3/CONTENT-CALENDAR.md) ; « Automatiser la relance des pièces clients » y occupe un créneau attribué."
+      "justification": "Le calendrier est celui de la v3 (docs/strategy/site-v3/CONTENT-CALENDAR.md) ; « Automatiser la relance des pièces clients manquantes » y occupe un créneau attribué."
     },
     {
       "skill": "blog-cluster",
@@ -62,7 +62,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le cluster de « Automatiser la relance des pièces clients » est fixé par build-cluster-plan.py, source unique du maillage."
+      "justification": "Le cluster de « Automatiser la relance des pièces clients manquantes » est fixé par build-cluster-plan.py, source unique du maillage."
     },
     {
       "skill": "blog-taxonomy",
@@ -71,7 +71,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "La taxonomie (src/data/familles.ts) est tenue au niveau du site ; « Automatiser la relance des pièces clients » y est rattaché par son frontmatter."
+      "justification": "La taxonomie (src/data/familles.ts) est tenue au niveau du site ; « Automatiser la relance des pièces clients manquantes » y est rattaché par son frontmatter."
     },
     {
       "skill": "blog-brief",
@@ -98,7 +98,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune synthèse NotebookLM pour « Automatiser la relance des pièces clients » : les sources sont lues et citées directement."
+      "justification": "Aucune synthèse NotebookLM pour « Automatiser la relance des pièces clients manquantes » : les sources sont lues et citées directement."
     },
     {
       "skill": "blog-write",
@@ -116,7 +116,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "« Automatiser la relance des pièces clients » est une création, pas une réécriture."
+      "justification": "« Automatiser la relance des pièces clients manquantes » est une création, pas une réécriture."
     },
     {
       "skill": "blog-factcheck",
@@ -143,7 +143,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "« Automatiser la relance des pièces clients » ne contient aucun graphique : les tableaux sont en HTML."
+      "justification": "« Automatiser la relance des pièces clients manquantes » ne contient aucun graphique : les tableaux sont en HTML."
     },
     {
       "skill": "blog-image",
@@ -215,7 +215,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "« Automatiser la relance des pièces clients » vient d'être écrit : aucun déclin à mesurer."
+      "justification": "« Automatiser la relance des pièces clients manquantes » vient d'être écrit : aucun déclin à mesurer."
     },
     {
       "skill": "blog-flow",
@@ -224,7 +224,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun prompt FLOW distinct pour « Automatiser la relance des pièces clients » : le brief tient le cadrage."
+      "justification": "Aucun prompt FLOW distinct pour « Automatiser la relance des pièces clients manquantes » : le brief tient le cadrage."
     },
     {
       "skill": "blog-repurpose",
@@ -233,7 +233,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune déclinaison de « Automatiser la relance des pièces clients » sur un autre canal n'est prévue."
+      "justification": "Aucune déclinaison de « Automatiser la relance des pièces clients manquantes » sur un autre canal n'est prévue."
     },
     {
       "skill": "blog-audio",
@@ -242,7 +242,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune version audio de « Automatiser la relance des pièces clients »."
+      "justification": "Aucune version audio de « Automatiser la relance des pièces clients manquantes »."
     },
     {
       "skill": "blog-multilingual",
@@ -251,7 +251,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "« Automatiser la relance des pièces clients » est publié en français uniquement."
+      "justification": "« Automatiser la relance des pièces clients manquantes » est publié en français uniquement."
     },
     {
       "skill": "blog-translate",
@@ -260,7 +260,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune traduction de « Automatiser la relance des pièces clients »."
+      "justification": "Aucune traduction de « Automatiser la relance des pièces clients manquantes »."
     },
     {
       "skill": "blog-localize",
@@ -269,7 +269,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune localisation de « Automatiser la relance des pièces clients » : un seul marché, la France."
+      "justification": "Aucune localisation de « Automatiser la relance des pièces clients manquantes » : un seul marché, la France."
     },
     {
       "skill": "blog-locale-audit",
@@ -278,7 +278,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun audit de locale pour « Automatiser la relance des pièces clients » : site monolingue."
+      "justification": "Aucun audit de locale pour « Automatiser la relance des pièces clients manquantes » : site monolingue."
     }
   ],
   "seo": [
@@ -289,7 +289,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le plan SEO est celui du site (docs/strategy/site-v3) ; « Automatiser la relance des pièces clients » l'exécute."
+      "justification": "Le plan SEO est celui du site (docs/strategy/site-v3) ; « Automatiser la relance des pièces clients manquantes » l'exécute."
     },
     {
       "skill": "seo-google",
@@ -298,7 +298,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le relevé Google de « Automatiser la relance des pièces clients » est porté par les preuves SERP et GSC du dossier."
+      "justification": "Le relevé Google de « Automatiser la relance des pièces clients manquantes » est porté par les preuves SERP et GSC du dossier."
     },
     {
       "skill": "seo-content-brief",
@@ -316,7 +316,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le cluster de « Automatiser la relance des pièces clients » est fixé par build-cluster-plan.py."
+      "justification": "Le cluster de « Automatiser la relance des pièces clients manquantes » est fixé par build-cluster-plan.py."
     },
     {
       "skill": "seo-sxo",
@@ -325,7 +325,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "L'adéquation format/SERP de « Automatiser la relance des pièces clients » est jugée dans le critère serp-format-rankability de la revue."
+      "justification": "L'adéquation format/SERP de « Automatiser la relance des pièces clients manquantes » est jugée dans le critère serp-format-rankability de la revue."
     },
     {
       "skill": "seo-page",
@@ -379,7 +379,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le sitemap est généré par le build ; « Automatiser la relance des pièces clients » y entre à la publication (test:lastmod)."
+      "justification": "Le sitemap est généré par le build ; « Automatiser la relance des pièces clients manquantes » y entre à la publication (test:lastmod)."
     },
     {
       "skill": "seo-geo",
@@ -388,7 +388,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "La citabilité de « Automatiser la relance des pièces clients » est vérifiée par blog-geo (réponse directe, définitions)."
+      "justification": "La citabilité de « Automatiser la relance des pièces clients manquantes » est vérifiée par blog-geo (réponse directe, définitions)."
     },
     {
       "skill": "seo-flow",
@@ -397,7 +397,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun prompt FLOW distinct pour « Automatiser la relance des pièces clients »."
+      "justification": "Aucun prompt FLOW distinct pour « Automatiser la relance des pièces clients manquantes »."
     },
     {
       "skill": "seo-audit",
@@ -415,7 +415,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune baseline de dérive avant la publication de « Automatiser la relance des pièces clients »."
+      "justification": "Aucune baseline de dérive avant la publication de « Automatiser la relance des pièces clients manquantes »."
     },
     {
       "skill": "seo-backlinks",
@@ -424,7 +424,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun lien externe entrant à analyser pour « Automatiser la relance des pièces clients » avant publication."
+      "justification": "Aucun lien externe entrant à analyser pour « Automatiser la relance des pièces clients manquantes » avant publication."
     },
     {
       "skill": "seo-competitor-pages",
@@ -433,7 +433,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune page comparative : « Automatiser la relance des pièces clients » n'oppose aucun éditeur."
+      "justification": "Aucune page comparative : « Automatiser la relance des pièces clients manquantes » n'oppose aucun éditeur."
     },
     {
       "skill": "seo-local",
@@ -442,7 +442,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune intention locale pour « Automatiser la relance des pièces clients » (décision v2 : pas de pages villes)."
+      "justification": "Aucune intention locale pour « Automatiser la relance des pièces clients manquantes » (décision v2 : pas de pages villes)."
     },
     {
       "skill": "seo-maps",
@@ -451,7 +451,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune fiche Maps concernée par « Automatiser la relance des pièces clients »."
+      "justification": "Aucune fiche Maps concernée par « Automatiser la relance des pièces clients manquantes »."
     },
     {
       "skill": "seo-hreflang",
@@ -460,7 +460,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Site monolingue : aucun hreflang pour « Automatiser la relance des pièces clients »."
+      "justification": "Site monolingue : aucun hreflang pour « Automatiser la relance des pièces clients manquantes »."
     },
     {
       "skill": "seo-ecommerce",
@@ -469,7 +469,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun produit ni marketplace dans « Automatiser la relance des pièces clients »."
+      "justification": "Aucun produit ni marketplace dans « Automatiser la relance des pièces clients manquantes »."
     },
     {
       "skill": "seo-programmatic",
@@ -478,7 +478,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "« Automatiser la relance des pièces clients » est un article rédigé, pas une page programmatique."
+      "justification": "« Automatiser la relance des pièces clients manquantes » est un article rédigé, pas une page programmatique."
     },
     {
       "skill": "seo-dataforseo",
@@ -487,7 +487,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun crédit DataForSEO engagé pour « Automatiser la relance des pièces clients » : volumes ND documentés dans la preuve SERP."
+      "justification": "Aucun crédit DataForSEO engagé pour « Automatiser la relance des pièces clients manquantes » : volumes ND documentés dans la preuve SERP."
     },
     {
       "skill": "seo-image-gen",
@@ -496,7 +496,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune génération d'image IA pour « Automatiser la relance des pièces clients » : cadre de preuve HTML."
+      "justification": "Aucune génération d'image IA pour « Automatiser la relance des pièces clients manquantes » : cadre de preuve HTML."
     }
   ],
   "contradictions": []

@@ -4,8 +4,8 @@
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
-  "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba",
+  "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
+  "manifestSha256": "d939bb49c47f2694aa72e48f48decd39b0ddfc41efd035ef7de1dfc39adcc23e",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
   ],
@@ -14,42 +14,45 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "prompt.json expose exactement six composantes renseignées (sujet, composition, style, palette, interdits, alt), chacune détaillée et cohérente avec le champ `image` de paquet-revue.json (même texte alt au caractère près)."
+        "Les éléments de la composition du brief sont identifiables sur master.png : plateau à six compartiments (3 remplis de feuilles pliées vierges, 3 vides), checklist papier à 3 coches vertes et 1 case vide, portique aux montants verts avec bouton rond vert, enveloppe crème posée devant le portique, jeton vert à côté, et une pièce graphite isolée à droite du cadre."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Le PNG mesure 1920×1080 (16:9 exact, vérifié par lecture des pixels) : diorama 3D isométrique à formes géométriques simplifiées et matières mates, sans aucune couleur hors palette crème/vert/graphite ni fausse interface visible à l’écran."
+        "Aucun texte lisible, chiffre, logo, personnage, visage, écran, fausse interface, alerte rouge ni symbole d’envoi automatique observé sur master.png : les lignes de la checklist sont de simples barres grises non typographiées, conforme à la liste d’interdits de prompt.json.",
+        "Palette limitée au vert Memlia, vert profond, crème, papier et graphite, sans écart de teinte visible."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Aucun texte lisible, logo, personnage ou donnée identifiable n’apparaît sur l’image : les feuilles du plateau sont vierges et la checklist n’affiche que des traits gris abstraits, conforme à l’absence de provenance réelle exigée par les interdits du brief."
+        "Rendu 3D isométrique stylisé (formes géométriques simplifiées, matières mates, lumière studio depuis le haut-gauche), sans ambiguïté possible avec une photo ou une capture d’écran réelle ; prompt.json confirme engine « image_generate », status PASS et un couple articleSha256/manifestSha256 lié au candidat exact."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Les quatre sujets du brief sont identifiables sans ambiguïté à l’écran : plateau à six compartiments à moitié rempli, checklist à trois coches vertes et une case vide, enveloppe posée devant le portique à montants verts, pièce graphite isolée à droite de la scène."
+        "La combinaison plateau à moitié rempli, checklist partiellement cochée, enveloppe en attente devant un portique et pièce isolée restitue, une fois rapprochée du alt et du H1, les notions de complétude partielle, de validation avant envoi et de dossier hors circuit.",
+        "Comme les autres couvertures Memlia, l’image reste un diorama abstrait plutôt qu’une scène littérale de « relance » : elle s’appuie sur l’alt et le titre pour lever l’ambiguïté, ce qui est cohérent avec la continuité de style demandée (IMG-25) mais reste à noter."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Vérification directe par pixel : master.png 1920×1080, og.webp 1200×630, hero-768 768×432 (avif et webp) dans preuves/image ; public/images ajoute même des variantes 1200×675 et 1600×900 en avif/webp au-delà du minimum déclaré dans image.json."
+        "master.png mesure 1920×1080 (16:9, vérifié par lecture de pixels, sips) comme demandé.",
+        "Les dérivés attendus existent sur disque et dans le HTML rendu : AVIF et WebP en 768/1200/1600w référencés dans le <picture>, plus l’OG dédié 1200×630 (img-art-relance-des-pieces-og.webp) en og:image et twitter:image."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L’attribut alt mesure exactement 125 caractères (limite haute atteinte sans la dépasser, vérifié par comptage) et décrit les quatre éléments visuels concrets de l’image plutôt qu’une formule générique de type « illustration article »."
+        "L’attribut alt (« Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart ») mesure 125 caractères (compté), correspond au caractère près à image.alt du paquet et à og:image:alt, décrit le contenu réel de la scène et signale sa nature de diorama plutôt que de suggérer une capture authentique."
       ]
     }
   ]

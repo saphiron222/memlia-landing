@@ -4,8 +4,8 @@
   "kind": "editorial-review",
   "status": "PASS",
   "checkedAt": "2026-09-16",
-  "articleSha256": "88f8dadd8efbc209cb06415b6f23aaba5bae8b0ac7210ce8caa76395d5eace3d",
-  "manifestSha256": "52800d24759b17aef9eb98e9962e1d02d6f64fd8a1ec74a07d91a9894bf373ba",
+  "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
+  "manifestSha256": "d939bb49c47f2694aa72e48f48decd39b0ddfc41efd035ef7de1dfc39adcc23e",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
   ],
@@ -16,7 +16,9 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "L’intention « exécuter » est servie par les trois briques opérationnelles (checklist, contrôle de complétude, cadence) et le tableau « Déclencheur / Condition / Action / Exception » qui traduit la règle en instructions actionnables pour le collaborateur comptable."
+        "La « Réponse directe » en ouverture répond immédiatement à la tâche du brief (obtenir les pièces manquantes sans relance à la main, sans doublon, en s’arrêtant à réception) avant tout développement.",
+        "Les trois briques (checklist conditionnelle, contrôle de complétude à 4 états, cadence qui cesse) couvrent chacune une sous-tâche du brief, avec un tableau conditions→pièces et un tableau déclencheur/condition/action/exception directement exploitables par un collaborateur comptable, pas seulement théoriques.",
+        "La section « Que refuse l’outil » et le tableau « se prépare seul / attend une validation / reste humain » traitent les cas limites (dossier en litige, checklist absente, pièce hors période) attendus d’un rôle d’exécution."
       ]
     },
     {
@@ -24,7 +26,9 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Le format how-to est respecté à l’écran : « Réponse directe » en ouverture, aside « En bref », puis cinq questions en H3 sous « Questions fréquentes » qui se prêtent à un featured snippet ou à un bloc People Also Ask."
+        "Trois tableaux avec <thead> et une liste à puces à amorces en gras (« Les erreurs fréquentes ») offrent des blocs prêts pour un extrait enrichi.",
+        "Exactement quatre H2 sont passés en forme interrogative (« Qu’est-ce que la relance de pièces... », « Que faut-il avoir sous la main... », « Que refuse l’outil... », « Quel cadre pour les données... »), conformément à la recette de retitrage ; les autres intertitres (Brique 1/2/3, tableaux, jeu fictif) restent déclaratifs, donc pas de sur-conversion de la hiérarchie.",
+        "Bloc « Questions fréquentes » en 5 H3, chacun une vraie question de recherche avec réponse autonome en un paragraphe, propice à un bloc type People Also Ask."
       ]
     },
     {
@@ -32,7 +36,8 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Quatre sources tier-1 officielles (CNIL ×3, Service-Public ×1) sont citées en ligne puis listées en fin d’article avec date de consultation ; l’auteur Kevin Kitanga est nommé, lié à /a-propos et biographié dans le pied d’article et le JSON-LD Person."
+        "4 sources tier-1 officielles (CNIL ×3, Service-Public ×1) citées en ligne puis listées en fin d’article avec date de consultation (16 septembre 2026) ; les 4 citations ont été retrouvées mot pour mot dans les copies locales (voir revue métier ci-dessous).",
+        "Auteur nommé et lié (Kevin Kitanga, rel=author vers /a-propos#kevin-kitanga), bio complète en pied d’article, schema Person avec jobTitle « Fondateur de Memlia » sans qualification professionnelle usurpée."
       ]
     },
     {
@@ -40,7 +45,8 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le jeu fictif de six dossiers (TVA mensuelle + caisse, franchise, salariés + emprunt, holding, litige, checklist absente) fait tourner la règle jusqu’au résultat concret, ce qui dépasse un conseil générique non démontré sur le sujet."
+        "Taxonomie à 4 états par pièce (attendue/reçue/lisible/hors période) qui va au-delà du conseil générique « relancer les pièces manquantes » et nomme explicitement l’erreur la plus fréquente (confondre reçu et lisible).",
+        "Le jeu fictif de six dossiers donne un scénario vérifiable et chiffré (2 dossiers relancés, 1 pièce hors période, 1 dossier en litige exclu, 1 dossier sans checklist) plutôt qu’une promesse de gain non mesurée."
       ]
     },
     {
@@ -48,7 +54,10 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Title à 50 caractères, meta description à 150 caractères, canonical et og:url alignés sur https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients, JSON-LD BlogPosting + BreadcrumbList + Person + Organization complet ; seul le `noindex` du rendu de prévisualisation est à lever en production (voir p0)."
+        "Balise title = « Relance des pièces manquantes en cabinet comptable | Memlia », 59 caractères (mesuré), dans la fourchette 40-60, sans bourrage, portant la requête primaire « relance pièces manquantes cabinet comptable » quasi mot pour mot et dans l’ordre.",
+        "H1 = « Automatiser la relance des pièces clients manquantes » (52 caractères, mesuré) : formulation volontairement différente du title (verbe d’action pour le lecteur vs formulation orientée recherche pour le SERP) mais sur le même sujet ; og:title, twitter:title, le headline JSON-LD et le fil d’Ariane reprennent tous cette même formulation H1, sans trace résiduelle d’un ancien intitulé.",
+        "Meta description (150 caractères, mesuré) cohérente avec le H1/title et avec l’aside « En bref » visible en tête d’article ; un seul <h1>, hiérarchie H1→H2 (15 dans le corps)→H3 (5, tous sous « Questions fréquentes ») sans saut de niveau ; schéma JSON-LD BlogPosting + Person + Organization + BreadcrumbList complet.",
+        "Le `<meta name=\"robots\" content=\"noindex, follow\">` présent sur ce rendu est l’artefact du harnais de prévisualisation signalé dans la consigne : non retenu comme défaut de l’article."
       ]
     },
     {
@@ -56,7 +65,8 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Trois tableaux avec <thead>, une réponse directe en tête d’article et cinq questions-réponses en H3 offrent des blocs autonomes et citables ; le `noindex` du rendu `.qa/render` empêcherait toutefois toute citation réelle par un moteur IA tant qu’il n’est pas levé à la publication."
+        "Deux définitions en gras dès la deuxième section (« La relance de pièces est... », « La complétude du dossier est... ») ancrent l’entité avant le reste de l’article, utile à une IA générative pour citer sans ambiguïté.",
+        "Contenu du corps entièrement présent dans le HTML statique rendu (Astro, pas de dépendance JS pour le texte), favorable à un crawler IA à budget de rendu limité ; trois tableaux structurés et 5 Q/R en FAQ offrent des blocs autonomes citables hors contexte."
       ]
     },
     {
@@ -64,7 +74,7 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "Le bloc de conversion « Cette tâche vous prend encore du temps à la main ? » pointe vers /contact avec une demande alignée sur le modèle de service (décrire la cadence et les exceptions du cabinet), sans chiffre de gain ni promesse de fonction non livrée."
+        "CTA unique et contextualisé (« Faire coder la règle de relance de votre cabinet » vers /contact) avec une amorce de demande spécifique au sujet de l’article plutôt qu’un CTA générique, conforme à l’action principale unique décrite dans product-marketing.md."
       ]
     }
   ]

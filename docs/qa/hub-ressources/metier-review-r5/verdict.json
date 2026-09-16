@@ -1,0 +1,37 @@
+{
+  "candidat": "6e3b3a1",
+  "date": "2026-09-16",
+  "verdict": "AI_REVIEW_PASS",
+  "p0": [],
+  "p1": [],
+  "claims_sensibles": 34,
+  "soutenus": 34,
+  "nuances": 0,
+  "contredits": 0,
+  "sources_externes": 13,
+  "http_200": 11,
+  "inaccessibles_curl": [
+    "source-net-annule (https://net-entreprises.custhelp.com/app/answers/detail/a_id/434/) : HTTP 401 sous curl ; jugement fondé sur la copie du 16 septembre 2026 au matin",
+    "source-legifrance-deontologie-honoraires (https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039401724) : HTTP 403 sous curl (défi anti-robot Cloudflare) ; jugement fondé sur la copie prise dans Chrome le 16 septembre 2026 au soir"
+  ],
+  "reserves": [
+    "Correction et rejugement (copie de source) : la copie locale de source-legifrance-deontologie-honoraires a changé d'en-tête (heure réelle de capture Chrome au décalage machine, 2026-09-16T20:36:00+01:00, à la place d'une heure précédente ; le passage cité de l'article 158 est inchangé), ce qui a changé le contentSha256 de cette seule source dans le manifeste rescellé (nouveau 3857e998191e3e1c32d1f852b3195e33476a4524dc2cf87affe29980ee8bba3b, vérifié par shasum -a 256 sur le fichier). Le claim claim-t-honoraires-mensualises-et-actes-hors-forfait et sa citation sont restés inchangés (mêmes sha256). Rejugé le 16 septembre 2026 à 21:09:13+01:00 (heure machine réelle) : soutient, sans changement de fond ; reviewedClaimsDigest du glossaire inchangé puisqu'aucun claim n'a bougé.",
+    "Correction et rejugement : claim-t-anonymisation a été corrigé dans src/data/glossary.ts (le texte dit désormais « quelque moyen que ce soit », comme la source CNIL citée, au lieu de « tout moyen raisonnablement utilisable ») puis les deux manifestes rescellés (nouveau sha256 08d753e86e5bb8c8389ce478536f0fe9e92f381c65586b4431a1c47c20a54918, vérifié dans le manifeste courant ; les 26 autres claims sensibles du glossaire sont inchangés, diff confirmé). Rejugé le 16 septembre 2026 en soirée : soutient. C'était l'unique défaut de la revue initiale ; le verdict global passe donc de AI_REVIEW_FAIL à AI_REVIEW_PASS.",
+    "citation-t-donnee-personnelle-context-2 (glossaire, source-cnil-donnee) : l'extrait cité tronque la liste d'exemples de la page CNIL vivante (qui continue au-delà de « plaque d'immatriculation » avec d'autres identifiants avant sa vraie fin de phrase) et referme par une parenthèse et un point absents à cet endroit de la source ; verbatim dans la copie locale, sans impact sur le verdict puisque le claim ne revendique que la distinction générale directe/indirecte, mais fidélité de citation à corriger (marquer l'ellipse).",
+    "claim-t-prelevement-sepa-et-rejet et claim-t-honoraires-mensualises-et-actes-hors-forfait (glossaire) : chacune mélange, dans une seule affirmation sensible de type juridique, un fait attribué à la source externe et une phrase de doctrine Memlia non sourcée par ce même sourceId ; applicability.exceptions déclare honnêtement la limite dans les deux cas, ce qui évite l'usurpation d'autorité, mais un futur passage éditorial gagnerait à séparer fait sourcé et doctrine en claims distincts pour ces deux unités.",
+    "Cette revue porte uniquement sur la matière sensible (34 affirmations) ; elle ne revérifie pas la grille qualité (information-gain-proof, SERP) ni le reste du contrat Ressources v3, hors de son mandat."
+  ],
+  "attestation_humaine": false,
+  "statut_contenu": "non atteste",
+  "reviewedClaimsDigest": {
+    "hub": "cb08a700da5c4097cc079487e3905383bd15afd9b34738f7113badb9f6e36ffd",
+    "glossaire": "8c79734ca692b9af7b83376483798acfaa216e693e6cba779cb561b7f1e65c4b"
+  },
+  "revueCheckedAt": "2026-09-16T21:09:13+01:00",
+  "horodatages": {
+    "regle": "Heures réelles, décalage de la machine (+01:00). Le relecteur avait horodaté ses verdicts avec un décalage +02:00 supposé et une valeur postérieure à l’heure courante ; les heures retenues sont celles d’écriture de ses fichiers : première passe 21:00:59, rejugement d’anonymisation 21:06:16.",
+    "premierePasse": "2026-09-16T21:00:59+01:00",
+    "rejugement": "2026-09-16T21:06:16+01:00",
+    "corpus": "2026-09-16T20:24:14+01:00"
+  }
+}

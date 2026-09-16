@@ -5,11 +5,11 @@
   "reviewer": "relecteur-qualite-ia-memlia",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 96,
+  "score": 98,
   "p0": 0,
   "categories": {
     "contentQuality": {
-      "score": 27,
+      "score": 28,
       "max": 30
     },
     "seoOptimization": {
@@ -17,7 +17,7 @@
       "max": 25
     },
     "eeatSignals": {
-      "score": 14,
+      "score": 15,
       "max": 15
     },
     "technicalElements": {
@@ -30,25 +30,25 @@
     }
   },
   "evidence": [
-    "Le graphe JSON-LD porte exactement le socle attendu par le barème : BlogPosting, Person, Organization et BreadcrumbList, tous présents avec des identifiants cohérents.",
-    "Les cinq citations externes ont été vérifiées par grep octet pour octet contre les copies locales des sources : correspondance exacte dans les cinq cas, aucune dérive de portée.",
-    "Onze tableaux au total (un tableau maître et dix tableaux par pôle) utilisent un balisage thead/tbody correct, avec la même grille se prépare seul / attend une validation / reste humain.",
-    "L'image de couverture est livrée en <picture> avec sources avif et webp à 768/1200/1600w, fetchpriority=high et loading=eager sur l'image LCP, donc pas de pénalité de lazy-loading.",
-    "Le titre de balise (52 caractères) et la meta description (152 caractères) tiennent tous deux dans les bornes recommandées ; og:image mesure exactement 1200x630 comme prescrit.",
-    "Aucune occurrence des termes proscrits (plateforme tout-en-un, autonome, zéro erreur, conformité garantie, révolution) n'a été trouvée dans le corps rendu ; les seules occurrences de « module » sont des balises techniques <script type=module>, pas du texte éditorial.",
-    "Le meta robots de ce rendu QA est noindex, follow, cohérent avec la bannière visible Candidat éditorial — preview privée, non publiable présente sur la page elle-même."
+    "Les cinq citations de claims ont été vérifiées par recherche littérale dans les cinq copies locales *.source.txt : correspondance exacte caractère pour caractère dans les cinq cas (aux entités HTML d'apostrophe près), aucune extension de portée.",
+    "Graphe JSON-LD complet : BlogPosting (wordCount 3332, dates, articleSection, keywords), BreadcrumbList à trois niveaux, Person (auteur avec bio réelle), Organization, WebSite — socle du barème entièrement couvert.",
+    "Image de couverture en <picture> avec sources avif/webp à 768/1200/1600w, dimensions vérifiées sur disque par sips (1920x1080 pour master.png, 1200x630 pour og.webp), fetchpriority=high et loading=eager sur l'image LCP — pas de pénalité de lazy-loading.",
+    "Titre de balise 60 caractères avec la requête primaire « automatisation cabinet comptable » en attaque exacte ; meta description 152 caractères ; les deux mesurés par calcul de longueur, pas par estimation visuelle.",
+    "Aucune formulation proscrite du lexique de marque (plateforme tout-en-un, autonome, zéro erreur, conformité garantie, révolution) trouvée dans le corps rendu ; l'article revendique au contraire explicitement l'absence de tout chiffre de gain non mesuré.",
+    "FAQPage absente du JSON-LD malgré une FAQ visible en quatre H3, mais absente aussi des cinq autres pages de blog rendues du site (dist/blog/*.html) : caractéristique constante du gabarit, pas une régression propre à ce candidat, et sans bonus de score prévu par la grille."
   ],
   "reservations": [
-    "Aucun audit Lighthouse ou CrUX n'a été exécuté ; les signaux de performance (fetchpriority, dimensions explicites, préchargement des polices) sont lus dans le HTML mais le LCP, le CLS et l'INP réels ne sont pas mesurés.",
-    "Aucune vérification de citation réelle par un moteur IA (ChatGPT, Perplexity, AI Overviews) n'a été effectuée ; l'évaluation de citabilité repose sur la structure de la page, pas sur un test de récupération live.",
-    "La présence site-large d'une page de contact et d'une politique éditoriale distinctes n'a été vérifiée que par inférence depuis les liens et le schéma Organization/Person, pas par navigation directe vers ces pages.",
-    "Le compte de dix îlots contre onze sur la couverture (voir revue image) a été établi par inspection visuelle manuelle d'un rendu isométrique dense, avec une marge d'erreur possible sur un comptage aussi fin.",
-    "Le noindex, follow observé sur ce rendu est l'état attendu par construction pour tout candidat non publié (BLOG_PREVIEW_SLUGS) : son retrait en production n'est pas observé par cette revue mais garanti par la porte automatisée production-check (scripts/blog-pipeline.mjs), qui échoue si noindex ou le canonical auto-référent manquent."
+    "Le paragraphe « révision par cycles et clôture » (section Production comptable) enchaîne cinq phrases couvrant quatre sous-sujets distincts (checklist de révision, situations intermédiaires, facture électronique, gestion documentaire) : un découpage supplémentaire améliorerait le repérage visuel, sans que la compréhension soit réellement bloquée. Seule réserve concrète retenue sur la structure du texte.",
+    "L'article cite cinq faits sourcés à caractère réglementaire ou définitionnel, aucune statistique chiffrée : sous le repère indicatif de huit statistiques de la grille qualité, mais cohérent avec le genre (une carte méthodologique, pas un article de données chiffrées) et avec le refus assumé de tout gain chiffré non mesuré ; les cinq affirmations effectivement faites sont, elles, vérifiées exactes à 100 %.",
+    "Le nom « Memlia » apparaît quatre fois dans le corps : trois occurrences attribuent l'origine méthodologique de la taxonomie (transparence sur la provenance plutôt que ton promotionnel) et une se trouve dans l'encart de conversion final, à sa place attendue — au-delà du repère indicatif d'une mention, mais sans formulation superlative ni non conforme au lexique de marque.",
+    "Le titre de balise est à 60 caractères pile, donc sans marge restante : un allongement lors d'une prochaine évolution éditoriale le ferait sortir de la fourchette recommandée.",
+    "Aucune mesure Lighthouse/CrUX réelle n'a été exécutée ; les signaux de performance jugés (préchargement des polices, fetchpriority, absence de CSS externe bloquant) sont lus dans le HTML statique du rendu QA, pas mesurés en conditions réelles.",
+    "Le meta robots noindex, follow de ce rendu est un artefact du harnais de prévisualisation signalé par le brief de revue ; son retrait effectif à la mise en production n'est pas observable depuis ce rendu QA et n'a donc pas été noté contre l'article."
   ],
-  "verdict": "Candidat rigoureusement sourcé et bien structuré (95/100), publiable en l'état sous réserve de confirmer le retrait du noindex de prévisualisation et de vérifier à l'écran le nombre exact d'îlots de la couverture avant validation finale.",
+  "verdict": "98/100 — candidat rigoureusement sourcé (cinq citations vérifiées mot pour mot sur cinq), structurellement complet sur les cinq catégories de la grille, et dont la retitration place la requête primaire en tête de balise title sans rien dégrader ailleurs. Aucun défaut bloquant. Seules réserves : un paragraphe à re-découper dans « Production comptable » et un titre de balise désormais sans marge, à surveiller lors d'une prochaine évolution éditoriale.",
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "articleSha256": "93faae1f312b8e054632c94198ca8c014d060c9a0e27b7687cd090d3ab99ed8f",
-    "manifestSha256": "bc0608363d550414794038737e04a7abdcc1f769f4034273cde54776e2467e54"
+    "articleSha256": "b298b8ffbe97e1911ae3f4637a4aac3a8a6ccb342cf25b4f6ad779ecc2e7df53",
+    "manifestSha256": "9558427af905216975aa8b25f6058ee3c20550d26ccfeca9a176cf7e30f681ef"
   }
 }
