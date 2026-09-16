@@ -115,15 +115,6 @@ const graph = {
       </ul>
     </section>
 
-    <section class="conteneur blog-suite" aria-labelledby="suite-titre">
-      <h2 id="suite-titre" class="sr-only">Pour aller plus loin</h2>
-      <p class="texte-2 lecture">Vous cherchez une définition ? <a href="/glossaire">Consultez le glossaire</a>.</p>
-      <p class="blog-actions">
-        <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
-        <Button href="/methode" variante="lien">Comprendre notre méthode</Button>
-      </p>
-    </section>
-
     <section class="conteneur blog-auteurs" aria-labelledby="auteurs-titre">
       <h2 id="auteurs-titre">Qui écrit ici</h2>
       {auteurs.map((a) => (
@@ -136,6 +127,16 @@ const graph = {
           </div>
         </article>
       ))}
+    </section>
+
+    <!-- Sortie de page : même forme que celle du glossaire (titre en question, une phrase, l'action), en dernier. -->
+    <section class="conteneur blog-sortie" aria-labelledby="sortie-titre">
+      <h2 id="sortie-titre">Une tâche revient chaque semaine dans votre cabinet ?</h2>
+      <p class="texte-2">Le premier échange sert à la nommer, avec ses exceptions et la validation attendue, sans transmettre de donnée client réelle. Pour le vocabulaire, le <a href="/glossaire">glossaire</a> fixe chaque terme et sa frontière d’automatisation.</p>
+      <p class="blog-actions">
+        <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
+        <Button href="/methode" variante="lien">Comprendre notre méthode</Button>
+      </p>
     </section>
   </div>
 </Base>
@@ -160,6 +161,10 @@ const graph = {
   .carte-resume { max-width: 58ch; }
   .carte-lire { justify-self: start; margin-top: 4px; }
   .blog-auteurs { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--ligne-douce); display: grid; gap: 16px; }
+  .blog-sortie { display: grid; justify-items: start; gap: 12px; max-width: 720px; margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--ligne-forte); }
+  .blog-sortie h2 { font-size: var(--t-3xl); max-width: 24ch; }
+  .blog-sortie p { max-width: 60ch; }
+  .blog-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 8px; }
   .blog-auteurs h2 { font-size: var(--t-2xl); }
   .auteur-fiche { display: flex; gap: 16px; align-items: flex-start; max-width: 720px; scroll-margin-top: calc(var(--nav-h) + 24px); }
   .auteur-initiale {
