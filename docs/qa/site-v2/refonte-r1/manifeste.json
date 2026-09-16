@@ -3,17 +3,81 @@
   "carte": "t_3aa92bac SITE-V2-REFONTE",
   "date": "2026-09-16",
   "base": "2cf4931",
-  "commits": ["e2196a3", "3e83340", "b06926d", "312e800", "f1f0854", "4f0d91d"],
-  "revues": { "code": "APPROVE, 0 CRITICAL, 0 HIGH, 1 MEDIUM et 3 LOW traites", "securite": "1 CRITICAL, 3 HIGH, 4 MEDIUM, 2 LOW ; tous traites sauf L1 (note)" },
-  "preview": { "deploiement": "0669b745", "url": "https://0669b745.memlia.pages.dev", "alias": "https://preview-site-v2-refonte.memlia.pages.dev", "equivalence": "22 routes, 0 divergence" },
-  "publie": { "branche": "main", "commit": "4f0d91d", "projetCloudflare": "memlia", "deploiementProduction": "e42ab971", "urlImmutable": "https://e42ab971.memlia.pages.dev", "equivalence": "22 routes, 0 divergence", "verificationProduction": "docs/strategy/site-v2/release/verification-production.json" },
-  "constructionGitCloudflare": { "etat": "echoue sur main (aeaa2d33 pour 2cf4931, 50a74dcc pour 4f0d91d)", "cause": "aucune commande de construction configuree au projet", "reglageAPoser": { "commande": "npm run build:site", "sortie": "dist", "node": "22" } },
+  "commits": [
+    "e2196a3",
+    "3e83340",
+    "b06926d",
+    "312e800",
+    "f1f0854",
+    "4f0d91d"
+  ],
+  "revues": {
+    "code": "APPROVE, 0 CRITICAL, 0 HIGH, 1 MEDIUM et 3 LOW traites",
+    "securite": "1 CRITICAL, 3 HIGH, 4 MEDIUM, 2 LOW ; tous traites sauf L1 (note)"
+  },
+  "preview": {
+    "deploiement": "0669b745",
+    "url": "https://0669b745.memlia.pages.dev",
+    "alias": "https://preview-site-v2-refonte.memlia.pages.dev",
+    "equivalence": "22 routes, 0 divergence"
+  },
+  "publie": {
+    "branche": "main",
+    "commit": "4f0d91d",
+    "projetCloudflare": "memlia",
+    "deploiementProduction": "e42ab971",
+    "urlImmutable": "https://e42ab971.memlia.pages.dev",
+    "equivalence": "22 routes, 0 divergence",
+    "verificationProduction": "docs/strategy/site-v2/release/verification-production.json"
+  },
+  "constructionGitCloudflare": {
+    "etat": "echoue sur main (aeaa2d33 pour 2cf4931, 50a74dcc pour 4f0d91d)",
+    "cause": "aucune commande de construction configuree au projet",
+    "reglageAPoser": {
+      "commande": "npm run build:site",
+      "sortie": "dist",
+      "node": "22"
+    },
+    "reglePoseeParKevin": "2026-09-16, apres la release : commande npm run build:site, sortie dist, NODE_VERSION 22"
+  },
   "contact": {
     "fonction": "functions/api/contact.js",
-    "base": { "nom": "memlia-contact", "id": "1ba3e044-00bf-4822-ac65-243658538e1b", "lignesApresRelease": 0 },
-    "secrets": { "CONTACT_SALT": ["production", "preview"], "TELEGRAM_BOT_TOKEN": "a poser par Kevin", "TELEGRAM_CHAT_ID": "a poser par Kevin" },
-    "purge": { "worker": "memlia-contact-purge", "url": "https://memlia-contact-purge.kevinsauvaget113.workers.dev", "cron": "17 * * * *", "empreintes": "24 h", "messages": "365 jours" },
-    "courrier": { "mx": "aucun", "spf": "v=spf1 -all", "consequence": "contact@memlia.fr ne recoit pas ; Email Routing a activer" }
+    "base": {
+      "nom": "memlia-contact",
+      "id": "1ba3e044-00bf-4822-ac65-243658538e1b",
+      "lignesApresRelease": 0
+    },
+    "secrets": {
+      "CONTACT_SALT": [
+        "production",
+        "preview"
+      ],
+      "TELEGRAM_BOT_TOKEN": "a poser par Kevin",
+      "TELEGRAM_CHAT_ID": "a poser par Kevin"
+    },
+    "purge": {
+      "worker": "memlia-contact-purge",
+      "url": "https://memlia-contact-purge.kevinsauvaget113.workers.dev",
+      "cron": "17 * * * *",
+      "empreintes": "24 h",
+      "messages": "365 jours"
+    },
+    "courrier": {
+      "mx": "aucun",
+      "spf": "v=spf1 -all",
+      "consequence": "contact@memlia.fr ne recoit pas ; Email Routing a activer"
+    }
   },
-  "rollback": { "deploiement": "88af1244", "commit": "55a7c05", "build": "2cf4931" }
+  "rollback": {
+    "deploiement": "88af1244",
+    "commit": "55a7c05",
+    "build": "2cf4931"
+  },
+  "politiqueConfidentialite": {
+    "paragrapheFormulaire": "valide par Kevin le 2026-09-16"
+  },
+  "resteAKevin": [
+    "Email Routing pour contact@memlia.fr (aucun MX)",
+    "bot Telegram : TELEGRAM_BOT_TOKEN et TELEGRAM_CHAT_ID"
+  ]
 }

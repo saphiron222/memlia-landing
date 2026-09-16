@@ -46,10 +46,10 @@ Carte Hermes `t_3aa92bac` (sous le verrou `t_c64814ed`). Branche `site/v2-refont
 
 ## Ce qui reste à Kevin (assistant : `bash scripts/assistant-mise-en-service-contact.sh`)
 
-1. **Cloudflare Pages, commande de build git** : `npm run build:site`, sortie `dist`, `NODE_VERSION=22`. Sans elle, chaque poussée de `main` produit un déploiement en échec (visible : `aeaa2d33`, `50a74dcc`) et seule une publication explicite met en ligne.
-2. **Email Routing** : `memlia.fr` n'a **aucun MX** et un SPF `v=spf1 -all` ; `contact@memlia.fr`, affiché sur le site, ne peut pas recevoir. Activer Email Routing et router l'adresse vers son Gmail.
-3. **Bot Telegram** dédié : token et chat id posés en secrets Pages par l'assistant ; la fonction prévient alors à chaque message. Lecture : `npm run contact:messages`.
-4. **Politique de confidentialité** : valider le paragraphe ajouté (texte juridique).
+Fait par Kevin le 16/09 après la release : la commande de build du projet Cloudflare (`npm run build:site`, sortie `dist`, Node 22) et la validation du paragraphe de la politique de confidentialité.
+
+1. **Email Routing** : `memlia.fr` n'a **aucun MX** et un SPF `v=spf1 -all` ; `contact@memlia.fr`, affiché sur le site, ne peut pas recevoir. Activer Email Routing et router l'adresse vers son Gmail.
+2. **Bot Telegram** dédié : token et chat id posés en secrets Pages par l'assistant ; la fonction prévient alors à chaque message. Lecture : `npm run contact:messages`.
 
 ## Rollback
 

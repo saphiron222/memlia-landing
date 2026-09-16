@@ -184,7 +184,7 @@ finish() {
 # Replace the example below. Set TOTAL_STAGES to match the stages you write.
 # ──────────────────────────────────────────────────────────────────────────
 
-TOTAL_STAGES=4
+TOTAL_STAGES=2
 PROJET="memlia"
 ZONE="memlia.fr"
 ICI="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -219,17 +219,7 @@ finish() {
 
 banner "memlia.fr — mise en service du formulaire de contact"
 
-# ── 1 · Cloudflare Pages : la commande de build git ───────────────────────
-stage "Cloudflare Pages — la commande de build"
-say "Sans commande de build, chaque poussée de main publie la racine du dépôt et le site rend 404."
-say "wrangler.toml déclare déjà le dossier de sortie ; la commande, elle, vit dans le tableau de bord."
-open_url "https://dash.cloudflare.com/?to=/:account/pages/view/$PROJET/settings/builds"
-step "Build configuration → Edit : Build command = npm run build:site · Build output directory = dist"
-step "Variables and Secrets (Build) : NODE_VERSION = 22 (production ET preview)"
-step "Enregistrer. Aucun déploiement n'est lancé par cette étape."
-pause "Fait ? (Entrée)"
-
-# ── 2 · Email Routing : contact@memlia.fr doit pouvoir recevoir ─────────────
+# ── 1 · Email Routing : contact@memlia.fr doit pouvoir recevoir ─────────────
 stage "Email Routing — contact@$ZONE reçoit enfin du courrier"
 say "Mesuré : $ZONE n'a aucun enregistrement MX et son SPF est « v=spf1 -all »."
 say "Le site affiche contact@$ZONE ; aujourd'hui un courriel envoyé là est rejeté."
@@ -245,7 +235,7 @@ else
   SKIPPED+=("MX $ZONE (à revérifier)")
 fi
 
-# ── 3 · Notification Telegram ─────────────────────────────────────────────
+# ── 2 · Notification Telegram ─────────────────────────────────────────────
 stage "Telegram — être prévenu à chaque message"
 say "Le message est écrit en base quoi qu'il arrive ; la notification est en plus, et ne contient"
 say "que le numéro du message et son heure : aucune donnée personnelle ne quitte la base. Un bot dédié, pas celui d'Hermes."
@@ -277,20 +267,5 @@ else
   SKIPPED+=("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID")
 fi
 unset TELEGRAM_BOT_TOKEN
-
-# ── 4 · La politique de confidentialité, texte juridique ──────────────────
-stage "Politique de confidentialité — valider le paragraphe du formulaire"
-say "Le texte ajouté (à valider, c'est un écrit juridique) :"
-note "« Formulaire de contact : nous recevons votre nom, le nom de votre cabinet si vous le donnez, votre adresse de"
-note "courriel et votre message, uniquement pour vous répondre. Ces messages sont enregistrés dans une base hébergée"
-note "par Cloudflare en Europe de l'Ouest et conservés au plus douze mois. Pour limiter les envois automatisés, une"
-note "empreinte de l'adresse IP est conservée vingt-quatre heures, puis effacée. »"
-open_url "https://memlia.fr/politique-de-confidentialite"
-if confirm "Ce texte vous convient tel quel ?"; then
-  say "Validé. La purge des empreintes : npm run contact:messages -- --purger-ip ; la lecture : npm run contact:messages"
-else
-  warn "Notez ce qui doit changer et demandez la reformulation dans Claude Code ; rien n'est modifié par cet assistant."
-  SKIPPED+=("politique de confidentialité (reformulation demandée)")
-fi
 
 finish
