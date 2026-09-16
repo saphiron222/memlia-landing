@@ -10,8 +10,8 @@
       "exitCode": 0
     }
   ],
-  "startedAt": "2026-09-16T20:08:21.230Z",
-  "endedAt": "2026-09-16T20:08:24.686Z",
+  "startedAt": "2026-09-16T21:20:40.523Z",
+  "endedAt": "2026-09-16T21:20:43.556Z",
   "result": "PASS",
   "verification": {
     "commands": [
@@ -28,17 +28,11 @@
     "regle": "Reconstruction indépendante : les snapshots scellés doivent se reproduire octet pour octet."
   },
   "surfaces": {
-    "H": {
-      "sourceBundleDigest": "10cd5f1ecde60c03ed573274c565ae544362dfd33b399b408606158b0fe8e625",
-      "assetBundleDigest": "62730565e747db359ef83dd42a3c8f145e1ae1605d40d66dc0bc3725043b6d2d",
-      "configBundleDigest": "a22f429140569d4c40e6906a4e11fd68a0da915820b2b62435967329fb9e0f7d",
-      "outputDigest": "1af62b02a95f5f0ac1381e731f7493002eaf789bbe28fc18a8b8f897190c658e"
-    },
     "T": {
       "sourceBundleDigest": "710c85ce96f9a9ec8920ea10056fecec9cc799600e3889090da68295557b82b2",
       "assetBundleDigest": "2325f58f2fd5cf8c5881d697930c559601169bbcd6e3a36abc821d70497845e0",
-      "configBundleDigest": "41a8c9afc07bf6b9bf29b55e786c677da3c5963fe6168c6be890cfb53be96fe6",
-      "outputDigest": "bc870c133e6fdaa67e30b7a61631c2b0ecafe59af769f77746deb0fd6fe95108"
+      "configBundleDigest": "774d8a72747c6ab0c35bf24e388f9b5d1669b1e958d43ec7f315696b26e65351",
+      "outputDigest": "fe3c92e37332823daedd9e17d0a0579fd550db048c13375c5b461e668017c4fd"
     }
   }
 }

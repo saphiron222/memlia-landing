@@ -73,12 +73,20 @@ test('reduced-motion garde les étapes lisibles', async ({ page }) => {
   for (const step of await page.locator('[data-etape]').all()) await expect(step).toHaveCSS('opacity', '1');
 });
 
-test('menu desktop : cinq pages atteignables au clavier et CTA unique', async ({ page }) => {
+test('menu desktop : cinq destinations atteignables au clavier, groupe Ressources et CTA unique', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   const links = page.locator('.nav-centre a');
-  await expect(links).toHaveText(['Automatisation', 'Méthode', 'Garanties', 'Ressources', 'Blog']);
-  for (const route of ['/automatisation-cabinet-comptable', '/methode', '/garanties', '/ressources', '/blog']) {
+  // « Ressources » est un bouton de groupe ; ses destinations (blog, glossaire) restent dans l'ordre du clavier.
+  await expect(page.locator('.nav-centre .nav-groupe-bouton')).toHaveText('Ressources');
+  await expect(page.locator('.nav-centre .nav-groupe-bouton')).toHaveAttribute('aria-expanded', 'false');
+  await expect(links).toHaveText(['Automatisation', 'Méthode', 'Garanties', 'Blog', 'Glossaire']);
+  await page.locator('.nav-centre .nav-groupe-bouton').click();
+  await expect(page.locator('.nav-centre .nav-groupe-bouton')).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('.nav-sous-menu a[href="/glossaire"]')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.nav-centre .nav-groupe-bouton')).toHaveAttribute('aria-expanded', 'false');
+  for (const route of ['/automatisation-cabinet-comptable', '/methode', '/garanties', '/blog', '/glossaire']) {
     await page.goto('/');
     const link = page.locator(`.nav-centre a[href="${route}"]`);
     await link.focus();

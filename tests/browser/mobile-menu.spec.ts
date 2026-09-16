@@ -6,7 +6,8 @@ import { CTA } from '../../src/data/site.mjs';
  * Le panneau de navigation mobile, restauré le 16/09/2026 après la parenthèse du site v2 :
  * il porte les cinq pages et l'appel à l'action, et tient les propriétés qu'il tenait déjà.
  */
-const ENTREES = ['Automatisation', 'Méthode', 'Garanties', 'Ressources', 'Blog'];
+// Le panneau liste les trois pages puis, sous l'intitulé « Ressources », le blog et le glossaire.
+const ENTREES = ['Automatisation', 'Méthode', 'Garanties', 'Blog', 'Glossaire'];
 
 // Une boîte DOM peut être visible tout en étant rognée par le header filtré.
 // Le hit-test ET les pixels doivent échouer si le contenu repasse devant le menu.
@@ -192,8 +193,9 @@ test('menu : section courante marquée et états du fond préexistants conservé
   await expect(page).toHaveURL(/\/garanties$/);
   await expect(page.locator('#main')).not.toHaveAttribute('inert');
   await expect(page.locator('body')).not.toHaveCSS('position', 'fixed');
-  // Le Hub reste marqué depuis les contenus qu'il réunit, sans être la page courante.
+  // Le glossaire est une destination du groupe Ressources : il se marque comme page courante.
   await page.goto('/glossaire');
   await page.locator('[data-burger]').click();
-  await expect(page.locator('#menu-mobile [aria-current="true"]')).toHaveText('Ressources');
+  await expect(page.locator('#menu-mobile .nav-mobile-groupe-titre')).toHaveText('Ressources');
+  await expect(page.locator('#menu-mobile [aria-current="page"]')).toHaveText('Glossaire');
 });

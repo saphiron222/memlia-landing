@@ -31,8 +31,8 @@ import { digest, candidateDigestPayload, reviewSubjectDigestPayload } from './li
 const root = process.cwd();
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 
+// La surface H (page Ressources) est retirée depuis le 16/09/2026 au soir : seul le glossaire reste scellé.
 const SURFACES = [
-  { adapter: 'H', manifestPath: 'editorial/resources/hub/manifest.json', outputPath: 'dist/ressources.html' },
   { adapter: 'T', manifestPath: 'editorial/resources/glossaire/manifest.json', outputPath: 'dist/glossaire.html' },
 ];
 const REVUE = 'metier-review-r5'; // La revue métier en vigueur : son dossier porte l’ancre, la déclaration et le rapport.

@@ -47,7 +47,7 @@ for (const [width, height] of LARGEURS) {
  * robots. Un script qui réécrit un titre ou une canonical après le chargement ne casse
  * rien à l'écran : seule cette comparaison le voit.
  */
-const INDEXABLES = ['/', '/automatisation-cabinet-comptable', '/methode', '/garanties', '/a-propos', '/contact', '/blog', '/ressources', '/glossaire'];
+const INDEXABLES = ['/', '/automatisation-cabinet-comptable', '/methode', '/garanties', '/a-propos', '/contact', '/blog', '/glossaire'];
 
 test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, request }) => {
   for (const route of INDEXABLES) {

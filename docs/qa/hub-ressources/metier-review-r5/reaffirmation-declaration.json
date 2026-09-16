@@ -5,6 +5,26 @@
   "declarePar": "Claude Code, session memlia.fr v3 du 16/09/2026 (carte kanban t_eebf35f8 pour la revue)",
   "regle": "Seules les clés listées ici peuvent bouger sans refaire la revue métier. Toute autre clé du sujet ferme la réaffirmation.",
   "deltasAutorises": {
-    "buildOutputDigest": "Le HTML rendu de /ressources et /glossaire change quand le chrome du site (navigation, pied de page, jetons de style) ou le titre d’un article listé par le hub change, sans qu’aucune unité éditoriale, affirmation, citation ou source ne bouge. Le script revérifie que chaque affirmation revue est encore rendue mot pour mot."
+    "buildOutputDigest": "Le HTML rendu de /glossaire change quand le chrome du site change sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge : le 16/09/2026 au soir, l'entrée « Ressources » de la navigation devient un groupe (blog, glossaire) présent sur toutes les pages, et la page /ressources est retirée. Le script revérifie que chaque affirmation revue est encore rendue mot pour mot.",
+    "configBundleDigest": "Le lot de configuration perd src/data/resources.ts (fichier de la page Ressources retirée) et les deux modules de preuve perdent leurs entrées de la surface H (hub) : aucune spécification de la surface T n'est modifiée, ce que le script vérifie affirmation par affirmation et copie par copie.",
+    "links": {
+      "raison": "Le glossaire n'est plus relié depuis /ressources (page retirée) mais depuis la navigation de toutes les pages ; la cannibalisation n'est plus comparée qu'avec /blog.",
+      "champsAutorises": [
+        "incoming",
+        "comparedCanonicalPaths"
+      ]
+    },
+    "skills": {
+      "raison": "Les lignes de skill portent l'horodatage du build qui les a rejouées ; le verdict de chaque ligne ne peut pas bouger.",
+      "champsAutorises": [
+        "checkedAt"
+      ]
+    },
+    "gates": {
+      "raison": "Les gates rejoués portent l'horodatage du build ; leur statut ne peut pas bouger.",
+      "champsAutorises": [
+        "checkedAt"
+      ]
+    }
   }
 }

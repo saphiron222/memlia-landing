@@ -81,30 +81,6 @@ class ResourceProof(unittest.TestCase):
 
         self.assertLess(build_steps.index('npm run build:site'), build_steps.index('npm run resource:audit:qa'))
 
-    def test_hub_renders_only_real_published_destinations(self):
-        page = DIST / 'ressources.html'
-        self.assertTrue(page.is_file(), '/ressources doit être généré même sans guide ou modèle')
-
-        parser = PageParser()
-        parser.feed(page.read_text(encoding='utf-8'))
-        expected_links = {f'/blog/{slug}' for slug in visible_blog_slugs()} | {'/glossaire'}
-
-        self.assertEqual(parser.canonicals, [f'{SITE}/ressources'])
-        self.assertEqual(parser.h1, 1)
-        self.assertEqual(parser.resources, len(expected_links))
-        self.assertTrue(expected_links.issubset(set(parser.links)))
-        self.assertNotIn('/guides', parser.links)
-        self.assertNotIn('/modeles', parser.links)
-        self.assertFalse(any('/roles/' in link or '/tags/' in link or '?' in link for link in parser.links))
-
-        graph_types = {
-            node_type
-            for script in parser.scripts
-            for node in script.get('@graph', [script])
-            for node_type in ([node.get('@type')] if isinstance(node.get('@type'), str) else node.get('@type', []))
-        }
-        self.assertTrue({'CollectionPage', 'ItemList', 'BreadcrumbList'}.issubset(graph_types))
-
     def test_conditional_indexes_and_sitemap_fail_closed(self):
         self.assertFalse((DIST / 'guides.html').exists())
         self.assertFalse((DIST / 'modeles.html').exists())
@@ -112,7 +88,7 @@ class ResourceProof(unittest.TestCase):
         self.assertFalse((DIST / 'modeles').exists())
 
         urls = sitemap_urls()
-        self.assertIn(f'{SITE}/ressources', urls)
+        self.assertNotIn(f'{SITE}/ressources', urls)
         self.assertIn(f'{SITE}/glossaire', urls)
         self.assertNotIn(f'{SITE}/guides', urls)
         self.assertNotIn(f'{SITE}/modeles', urls)

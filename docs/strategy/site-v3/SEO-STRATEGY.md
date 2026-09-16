@@ -29,7 +29,7 @@ Ce qui ne bouge pas, parce que ce sont des règles de maison : aucune donnée cl
 
 ## 4. La carte du territoire
 
-Chaque famille reprend l'identifiant `cluster` du schéma du blog. Les rôles sont ceux du hub Ressources. La colonne « preuve terrain » cite le référentiel des besoins (`~/dev/produit/referentiel-besoins/`, deux postes documentés : assistante du cabinet, expert-comptable associé) : c'est ce qui distingue une famille observée d'une famille supposée.
+Chaque famille reprend l'identifiant `cluster` du schéma du blog. Les rôles sont ceux de la taxonomie Ressources (douze rôles canoniques du contrat v3). La colonne « preuve terrain » cite le référentiel des besoins (`~/dev/produit/referentiel-besoins/`, deux postes documentés : assistante du cabinet, expert-comptable associé) : c'est ce qui distingue une famille observée d'une famille supposée.
 
 | # | Cluster (`cluster`) | Tâches couvertes | Rôle principal | Preuve terrain | Priorité |
 |---|---|---|---|---|---|

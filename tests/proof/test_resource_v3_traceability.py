@@ -12,8 +12,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+# La surface H (page Ressources) est retirée depuis le 16/09/2026 au soir : seul le glossaire est scellé.
 MANIFESTS = (
-    ROOT / "editorial/resources/hub/manifest.json",
     ROOT / "editorial/resources/glossaire/manifest.json",
 )
 REGISTER = ROOT / "docs/qa/hub-ressources/metier-fix-c-register.json"
@@ -80,7 +80,7 @@ class ResourceV3TraceabilityProof(unittest.TestCase):
             "comprendre-les-comptes-rendus-metier-dsn",
         )
 
-        glossary_manifest = json.loads(MANIFESTS[1].read_text())
+        glossary_manifest = json.loads(MANIFESTS[0].read_text())
         unit_id = "unit-t-recouvrement-amiable-commonConfusion"
         claims = [
             claim for claim in glossary_manifest["claimsEvidence"]["claims"]
@@ -173,7 +173,7 @@ class ResourceV3TraceabilityProof(unittest.TestCase):
             totals["claims"] += len(claims)
             totals["citations"] += len(citations)
 
-        self.assertEqual(totals, {"units": 66, "claims": 74, "citations": 87})
+        self.assertEqual(totals, {"units": 63, "claims": 64, "citations": 77})
 
     def test_machine_readable_register_is_an_exact_projection(self) -> None:
         register = json.loads(REGISTER.read_text())

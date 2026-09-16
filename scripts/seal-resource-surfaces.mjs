@@ -260,9 +260,9 @@ function createManifest(adapter) {
   };
   manifest.assets = { ...manifest.assets, decision: 'aucun-visuel-informatif', assetRefs: [sourcePath], image: { ...manifest.assets.image, required: false }, uiCapture: { ...manifest.assets.uiCapture, present: false } };
   manifest.links.outgoing = isHub ? destinations : ['/blog/controler-les-bulletins-de-paie-avant-la-dsn', '/blog/suivre-la-production-sociale-dans-excel', '/ressources'];
-  manifest.links.incoming = isHub ? ['/', '/blog', '/glossaire'] : ['/ressources'];
+  manifest.links.incoming = isHub ? ['/', '/blog', '/glossaire'] : ['/', '/blog'];
   manifest.links.corpusInventoryRef = 'src/data/resources.ts';
-  manifest.links.cannibalization = { risk: 'controlled', comparedCanonicalPaths: ['/blog', '/glossaire', '/ressources'], decision: 'distinct', evidenceRef: 'docs/qa/glossaire/recette.md' };
+  manifest.links.cannibalization = { risk: 'controlled', comparedCanonicalPaths: ['/blog', '/glossaire'], decision: 'distinct', evidenceRef: 'docs/qa/glossaire/recette.md' };
   manifest.links.filterPolicy.javascriptFallbackTestRef = isHub ? 'tests/browser/resources.spec.ts' : 'tests/browser/glossary.spec.ts';
   manifest.skills.blog = normalizeSkillRows(manifest.skills.blog);
   manifest.skills.seo = normalizeSkillRows(manifest.skills.seo);
@@ -304,7 +304,7 @@ function createManifest(adapter) {
   ])];
   manifest.integrity.sourceBundle = bundle(sourceBundlePaths);
   manifest.integrity.assetBundle = bundle([sourcePath]);
-  manifest.integrity.configBundle = bundle([registryPath, 'scripts/lib/resource-metier-evidence.mjs', 'scripts/lib/resource-metier-v3.mjs', 'src/data/resources.ts']);
+  manifest.integrity.configBundle = bundle([registryPath, 'scripts/lib/resource-metier-evidence.mjs', 'scripts/lib/resource-metier-v3.mjs']);
   manifest.integrity.buildOutput = bundle([outputPath]);
   manifest.build = { ...manifest.build, pipelineCommit: '5c33c9ba18807cc70c6535e4edbbf3327bdd7d9a', commands: bootstrapCommands.map((row) => row.command), startedAt: buildStartedAt, endedAt: buildEndedAt, result: 'PASS', sourceBundleDigest: manifest.integrity.sourceBundle.digest, assetBundleDigest: manifest.integrity.assetBundle.digest, configBundleDigest: manifest.integrity.configBundle.digest, outputDigest: manifest.integrity.buildOutput.digest, reportRefs: ['docs/qa/hub-ressources/freshness-r4-exec.md'] };
   manifest.limitations = [
@@ -328,7 +328,7 @@ function createManifest(adapter) {
 }
 
 const sealed = [];
-for (const adapter of ['H', 'T']) {
+for (const adapter of ['T']) {
   const directory = join(root, 'editorial/resources', adapter === 'H' ? 'hub' : 'glossaire');
   mkdirSync(directory, { recursive: true });
   const manifest = createManifest(adapter);
@@ -390,4 +390,4 @@ for (const { path, manifest } of sealed) {
 register.generatedFrom = sealed.map(({ path }) => ({ path, sha256: sha256(readFileSync(join(root, path))) }));
 writeFileSync(join(root, registerPath), `${JSON.stringify(register, null, 2)}\n`);
 const etatsRevue = sealed.map(({ adapter, manifest }) => `${adapter}=${manifest.claimsEvidence.sensitiveMatter.businessReview.status}`).join(' ');
-console.log(`Manifestes H/T v3 rescellés depuis dist ; revue métier reportée : ${etatsRevue}. Contenu non attesté.`);
+console.log(`Manifeste T v3 rescellé depuis dist (la surface H, page Ressources, est retirée depuis le 16/09/2026) ; revue métier reportée : ${etatsRevue}. Contenu non attesté.`);

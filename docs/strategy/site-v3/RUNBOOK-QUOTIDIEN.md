@@ -81,7 +81,7 @@ Dans cet ordre, pour tous les articles du jour puis le pilier (qui a reçu un li
 ```bash
 node --input-type=module -e "import { materialiser } from './scripts/blog-forge.mjs'; for (const slug of ['<slug>', 'automatiser-un-cabinet-comptable-la-carte-des-taches']) { const r = await materialiser({ root: process.cwd(), slug, statut: 'go-production' }); console.log(slug, r.erreurs); }"
 npx astro build && npm run lastmod:sync
-npm run resource:seal-surfaces && node scripts/reaffirm-resource-review.mjs reaffirmer
+npm run resource:seal-surfaces && node scripts/reaffirm-resource-review.mjs reaffirmer   # la surface Ressources scellée est le glossaire seul (la page /ressources est retirée depuis le 16/09/2026 au soir) ; à rejouer dès que le HTML du glossaire ou le chrome du site change
 node scripts/blog-forge.mjs publier <slug>
 node scripts/blog-forge.mjs publier automatiser-un-cabinet-comptable-la-carte-des-taches
 ```

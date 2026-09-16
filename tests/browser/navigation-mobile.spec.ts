@@ -8,7 +8,9 @@ import { CTA } from '../../src/data/site.mjs';
  * bouton est une cible de 48 px portant un nom accessible malgré l'absence de texte visible,
  * et la navigation reste servie en clair à qui n'a pas JavaScript — le panneau ne s'ouvrirait pas.
  */
-const PRIMAIRES = ['Automatisation', 'Méthode', 'Garanties', 'Ressources', 'Blog'];
+// Dans le bandeau, « Ressources » est un groupe (bouton) ; à plat, il se déplie en Blog et Glossaire.
+const PRIMAIRES = ['Automatisation', 'Méthode', 'Garanties', 'Ressources'];
+const DESTINATIONS = ['Automatisation', 'Méthode', 'Garanties', 'Blog', 'Glossaire'];
 
 /** Un contrôle n'est atteignable que si le hit-test le rend, pas seulement sa boîte DOM. */
 async function mesurerAtteignable(cible: Locator) {
@@ -61,7 +63,7 @@ for (const width of [320, 375, 390, 430, 768]) {
 
 test('bandeau : ordre du clavier et page courante marquée dans le panneau', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/ressources');
+  await page.goto('/glossaire');
 
   // Le logo puis le bouton : une seule séquence, sans piège de focus tant qu'il est fermé.
   await page.locator('.nav-marque a').focus();
@@ -74,9 +76,9 @@ test('bandeau : ordre du clavier et page courante marquée dans le panneau', asy
   });
   expect(marque.contour !== 'none' || (marque.ombre && marque.ombre !== 'none')).toBe(true);
 
-  // Le Hub est dans le panneau, et s'y marque comme page courante.
+  // Le glossaire est dans le panneau, sous le groupe Ressources, et s'y marque comme page courante.
   await page.keyboard.press('Enter');
-  await expect(page.locator('#menu-mobile [aria-current="page"]')).toHaveText('Ressources');
+  await expect(page.locator('#menu-mobile [aria-current="page"]')).toHaveText('Glossaire');
 });
 
 test('bandeau : aucune réservation externe, l’action mène à /contact', async ({ page }) => {
@@ -97,7 +99,7 @@ test('sans JavaScript : les cinq entrées et l’action restent servies', async 
   await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
   // Le panneau ne s'ouvrirait pas : la navigation de repli porte les mêmes destinations.
   const repli = page.locator('.nav-sans-js a');
-  await expect(repli).toHaveText([...PRIMAIRES, CTA.nav.libelle]);
+  await expect(repli).toHaveText([...DESTINATIONS, CTA.nav.libelle]);
   await expect(repli.last()).toHaveAttribute('href', CTA.nav.href);
   await repli.filter({ hasText: 'Méthode' }).click();
   await expect(page).toHaveURL(/\/methode$/);

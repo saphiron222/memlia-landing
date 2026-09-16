@@ -1,5 +1,3 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
 
 // Référence exhaustive des 15 assertions additionnelles identifiées en R2.
 export const ADDITIONAL_UNITS = [
@@ -80,41 +78,6 @@ export function expandV3Evidence({ root, glossary, entries, sources, official, c
       regime: spec?.regime ?? 'Doctrine Memlia, sans portée réglementaire autonome.',
       exceptions: spec?.exceptions ?? 'Ne constitue pas une règle juridique ni une garantie de conformité.',
       citations: (spec?.citations ?? [text]).map((text, i) => ({ id: `citation-t-${id}-${i + 1}`, text, locator: `${slug}:${field}` })),
-    });
-  }
-  const summariesPath = 'src/data/resource-summaries.json';
-  sources['source-summaries-memlia'] = { ...sources['source-glossary-memlia'],
-    id: 'source-summaries-memlia', title: 'Doctrine des résumés du Hub', snapshotPath: summariesPath,
-    url: `file://${summariesPath}`, requestedUrl: `file://${summariesPath}`, finalUrl: `file://${summariesPath}`, upstreamUrl: `file://${summariesPath}`, checkedAt,
-  };
-  const summaries = JSON.parse(readFileSync(join(root, summariesPath), 'utf8'));
-  const dsn = entries.find((entry) => entry.id === 'H-DSN-DEADLINE-SUMMARY');
-  const social = entries.find((entry) => entry.id === 'H-SOCIAL-MONITORING-SUMMARY');
-  entries.splice(entries.indexOf(dsn), 1);
-  entries.splice(entries.indexOf(social), 1);
-  const specifications = [
-    [dsn, summaries['controler-les-bulletins-de-paie-avant-la-dsn'], [
-      null,
-      { ...official['annule-et-remplace-dsn'], citations: [dsn.citations[0].text] },
-      { ...official['annule-et-remplace-dsn'], citations: [dsn.citations[1].text], applicability: 'Signalements d’événement en DSN.', regime: 'Annule-et-remplace de signalement, et non DSN mensuelle.', exceptions: 'Ne pas appliquer cette absence de limite à la DSN mensuelle.' },
-      official['dsn-val'],
-      { ...official['compte-rendu-metier-dsn'], citations: [official['compte-rendu-metier-dsn'].citations[0]] },
-    ]],
-    [social, summaries['suivre-la-production-sociale-dans-excel'], [null, ...[0, 2, 1].map((i) => ({ ...social, citations: [social.citations[i].text] }))]],
-  ];
-  for (const [base, parts, specs] of specifications) {
-    if (parts.length !== specs.length) throw new Error(`Résumé incomplet : ${base.id}`);
-    parts.forEach((text, i) => {
-      const spec = specs[i];
-      const claimId = `${base.claimId}-${i + 1}`;
-      entries.push({ ...base, text, unitText: parts.join(' '), claimId,
-        contentPath: summariesPath, contentLocator: `${base.id}:${i + 1}`,
-        sourceId: spec?.sourceId ?? 'source-summaries-memlia', type: spec?.type ?? 'methode-memlia',
-        applicability: spec?.applicability ?? 'Méthode ou doctrine propre au service Memlia décrit.',
-        regime: spec?.regime ?? 'Doctrine Memlia, sans portée réglementaire autonome.',
-        exceptions: spec?.exceptions ?? 'Les règles DSN et CNIL sont séparées dans les autres sous-claims.',
-        citations: (spec?.citations ?? [text]).map((text, j) => ({ id: `citation-${claimId}-${j + 1}`, text, locator: spec?.sourceId ?? 'Doctrine Memlia' })),
-      });
     });
   }
 }

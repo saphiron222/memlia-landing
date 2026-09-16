@@ -59,13 +59,22 @@ export const PAGES_V2 = {
   },
 };
 
-/** Les six destinations du header, visibles sans ouvrir de menu sur mobile (D05). */
+/**
+ * Les destinations du header. « Ressources » n'est pas une page mais un groupe : au survol
+ * ou au clavier il déplie le blog et le glossaire, et accueillera les ressources à venir
+ * (décision de Kevin, 16/09/2026 : la page /ressources ne servait à rien, elle est retirée).
+ */
 export const NAV_V2 = [
   { libelle: PAGES_V2.service.nav, href: PAGES_V2.service.chemin },
   { libelle: PAGES_V2.methode.nav, href: PAGES_V2.methode.chemin },
   { libelle: PAGES_V2.garanties.nav, href: PAGES_V2.garanties.chemin },
-  { libelle: 'Ressources', href: '/ressources' },
-  { libelle: 'Blog', href: '/blog' },
+  {
+    libelle: 'Ressources',
+    sousEntrees: [
+      { libelle: 'Blog', href: '/blog' },
+      { libelle: 'Glossaire', href: '/glossaire' },
+    ],
+  },
 ];
 
 /**

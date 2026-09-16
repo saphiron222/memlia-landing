@@ -69,7 +69,7 @@ test('un champ requis de la phase courante reste bloquant', () => {
 });
 
 test('la QA du candidat courant ne réclame ni preview, ni GO, ni release', () => {
-  for (const directory of ['hub', 'glossaire']) {
+  for (const directory of ['glossaire']) {
     const path = join(process.cwd(), 'editorial/resources', directory, 'manifest.json');
     const report = auditResourceManifestFile(path, { root: process.cwd(), phase: 'qa' });
     // Depuis le scellement de la revue metier du 16/09/2026, la QA passe. Ce test garde son

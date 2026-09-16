@@ -3,9 +3,10 @@ import { join } from 'node:path';
 import { expandV3Evidence } from './resource-metier-v3.mjs';
 
 const REPORT = 'docs/qa/hub-ressources/metier-fix-a.md';
-// Planchers fail-closed : 23 définitions et 41 unités au candidat R4, 43 et 66 depuis la vague 1 (R5).
+// Planchers fail-closed : 23 définitions et 41 unités (dont 3 du hub) au candidat R4 ; 43 définitions et 63 unités
+// depuis la vague 1 (R5) et le retrait de la page Ressources (16/09/2026 au soir), qui ne laisse que la surface T.
 const DEFINITIONS_ATTENDUES = 43;
-const UNITES_ATTENDUES = 66;
+const UNITES_ATTENDUES = 63;
 
 const SOURCE_SPECS = {
   'source-net-dsn-overview': {
@@ -58,12 +59,6 @@ const SOURCE_SPECS = {
     publisher: 'Service-Public Entreprendre', title: 'Recouvrement amiable : relance et mise en demeure de payer',
     url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F38586',
     snapshotPath: 'docs/qa/hub-ressources/metier-fix-a-sources/service-public-recouvrement.txt',
-    level: 'tier-1', provenance: 'primary', official: true,
-  },
-  'source-cnil-controle-activite': {
-    publisher: 'CNIL', title: 'Travail, ressources humaines : le contrôle de l’activité des personnes employées',
-    url: 'https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees',
-    snapshotPath: 'docs/qa/hub-ressources/metier-fix-a-sources/cnil-controle-activite.txt',
     level: 'tier-1', provenance: 'primary', official: true,
   },
   // --- vague 1 du glossaire (2026-09-16) : copies prises le jour même, rapport docs/qa/hub-ressources/glossaire-vague-1.md ---
@@ -136,11 +131,6 @@ const SOURCE_SPECS = {
   'source-glossary-memlia': {
     publisher: 'Memlia', title: 'Vocabulaire et contrats Memlia',
     url: 'file://src/data/glossary.ts', snapshotPath: 'src/data/glossary.ts',
-    level: 'original-method', provenance: 'primary', official: false,
-  },
-  'source-hub-memlia': {
-    publisher: 'Memlia', title: 'Positionnement éditorial du Hub Ressources',
-    url: 'file://src/pages/ressources.astro', snapshotPath: 'src/pages/ressources.astro',
     level: 'original-method', provenance: 'primary', official: false,
   },
 };
@@ -320,23 +310,10 @@ function extractDefinitions(source) {
   return entries;
 }
 
-function extractSummary(source, path) {
-  const summary = source.match(/^resume: "(.+)"$/m)?.[1];
-  if (!summary) throw new Error(`Résumé introuvable dans ${path}.`);
-  return summary;
-}
 
 export function loadMetierEvidence(root, checkedAt) {
   const glossaryPath = 'src/data/glossary.ts';
-  const resourcesPath = 'src/pages/ressources.astro';
-  const dsnArticlePath = 'src/content/blog/controler-les-bulletins-de-paie-avant-la-dsn.md';
-  const socialArticlePath = 'src/content/blog/suivre-la-production-sociale-dans-excel.md';
   const glossary = readFileSync(join(root, glossaryPath), 'utf8');
-  const resources = readFileSync(join(root, resourcesPath), 'utf8');
-  const dsnArticle = readFileSync(join(root, dsnArticlePath), 'utf8');
-  const socialArticle = readFileSync(join(root, socialArticlePath), 'utf8');
-  const hubDescription = 'Des ressources pour comprendre, vérifier et cadrer les tâches d’un cabinet, sans céder la décision humaine.';
-  if (!resources.includes(hubDescription)) throw new Error('Claim H-DESCRIPTION absent de la page Ressources.');
 
   const sources = Object.fromEntries(Object.entries(SOURCE_SPECS).map(([id, source]) => [id, {
     id, ...source, checkedAt,
@@ -365,46 +342,6 @@ export function loadMetierEvidence(root, checkedAt) {
       exceptions: official?.exceptions ?? 'La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.',
     };
   });
-
-  entries.push(
-    {
-      id: 'H-DESCRIPTION', surface: 'H', unitId: 'unit-h-description', claimId: 'claim-h-description',
-      text: hubDescription, type: 'positionnement', sourceId: 'source-hub-memlia',
-      citations: [{ id: 'citation-h-description-1', text: hubDescription, locator: 'description' }],
-      contentPath: resourcesPath, contentLocator: 'description',
-      applicability: 'Promesse éditoriale du Hub ; elle décrit la posture des ressources.',
-      regime: 'Positionnement éditorial Memlia, sans portée réglementaire autonome.',
-      validAsOf: checkedAt.slice(0, 10),
-      exceptions: 'Les résumés réglementaires rendus par le Hub possèdent leurs propres claims et preuves.',
-    },
-    {
-      id: 'H-DSN-DEADLINE-SUMMARY', surface: 'H', unitId: 'unit-h-dsn-deadline-summary', claimId: 'claim-h-dsn-deadline-summary',
-      text: extractSummary(dsnArticle, dsnArticlePath), type: 'dsn', sourceId: 'source-net-annule',
-      citations: [
-        { id: 'citation-h-dsn-deadline-1', text: 'L\'échéance de dépôt des DSN "annule et remplace" est située la veille du jour de l\'échéance à minuit.', locator: 'Annule et remplace DSN mensuelle et signalements' },
-        { id: 'citation-h-dsn-deadline-2', text: "Si la déclaration « annule et remplace » concerne un signalement d'événement, il n’y a pas de date limite à son envoi (envoi de la déclaration « annule et remplace » dès que nécessaire).", locator: 'Annule et remplace DSN mensuelle et signalements' },
-      ],
-      contentPath: dsnArticlePath, contentLocator: 'frontmatter.resume',
-      applicability: 'DSN mensuelle annule-et-remplace ; échéance propre à l’entreprise, le 5 ou le 15.',
-      regime: 'DSN mensuelle annule-et-remplace, distincte des signalements d’événement.',
-      validAsOf: checkedAt.slice(0, 10),
-      exceptions: 'Le résumé visible précise que les signalements d’événement suivent une autre fenêtre.',
-    },
-    {
-      id: 'H-SOCIAL-MONITORING-SUMMARY', surface: 'H', unitId: 'unit-h-social-monitoring-summary', claimId: 'claim-h-social-monitoring-summary',
-      text: extractSummary(socialArticle, socialArticlePath), type: 'legal-reglementaire', sourceId: 'source-cnil-controle-activite',
-      citations: [
-        { id: 'citation-h-social-1', text: 'Pour être licite (c’est-à-dire autorisé par la loi), un dispositif de contrôle de l’activité du personnel doit cumulativement : satisfaire aux tests de justification et de proportionnalité ; être soumis aux instances représentatives du personnel selon les règles en vigueur ; être porté à la connaissance des salariés/agents.', locator: 'Conditions cumulatives, formulation du 16/09/2026' },
-        { id: 'citation-h-social-2', text: "Dans le cadre du dialogue social, l'employeur doit consulter : le conseil social et économique (CSE) dans les entreprises privées de 50 salariés et plus, les établissements publics à caractère industriel et commercial et les établissements publics à caractère administratif lorsqu'ils emploient du personnel dans les conditions du droit privé ; le comité social d’administration, territorial ou d’établissement (CSA, CST et CSE) ou leurs formations spécialisées dans les organismes publics.", locator: 'Condition n°2' },
-        { id: 'citation-h-social-3', text: "Le dispositif doit être porté à la connaissance des personnes concernées, préalablement à sa mise en place, pour satisfaire aux obligations de loyauté et d’information qui incombent à l'employeur.", locator: 'Condition n°3' },
-      ],
-      contentPath: socialArticlePath, contentLocator: 'frontmatter.resume',
-      applicability: 'Dispositif qui permet le contrôle de l’activité du personnel ; consultation CSE formulée ici pour les entreprises privées de 50 salariés et plus.',
-      regime: 'Contrôle de l’activité du personnel et consultation du CSE dans le secteur privé.',
-      validAsOf: checkedAt.slice(0, 10),
-      exceptions: 'La qualification dépend du dispositif ; les exceptions légales et les autres instances du secteur public ne sont pas généralisées au Hub.',
-    },
-  );
 
   expandV3Evidence({ root, glossary, entries, sources, official: OFFICIAL, checkedAt });
   if (new Set(entries.map((entry) => entry.unitId)).size !== UNITES_ATTENDUES) throw new Error(`${UNITES_ATTENDUES} unités métier sont obligatoires.`);

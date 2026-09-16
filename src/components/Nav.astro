@@ -30,30 +30,35 @@ interface Props {
 }
 const { blogActif, chemin } = Astro.props;
 
-/** Le Hub reste la section courante depuis les contenus qu'il réunit. */
-const surRessources: 'page' | 'true' | undefined = chemin === '/ressources'
-  ? 'page'
-  : ['/glossaire', '/guides', '/modeles'].some((route) => chemin === route || chemin.startsWith(`${route}/`))
-    ? 'true'
-    : undefined;
+type Marque = 'page' | 'true' | undefined;
+interface Destination { libelle: string; href: string; courant: Marque }
+interface Groupe { libelle: string; sousEntrees: Destination[]; courant: Marque }
 
 /**
  * Deux marquages distincts : « page » quand on est exactement sur l'entrée, « true »
  * quand on est dans sa section. Sans le second, un article de blog ne marquait plus
  * aucune entrée et le lecteur perdait sa position dans la navigation.
  */
-const entrees = NAV_V2
-  .filter((entree) => blogActif || entree.href !== '/blog')
-  .map((entree) => ({
-    ...entree,
-    courant: entree.href === '/ressources'
-      ? surRessources
-      : chemin === entree.href
-        ? ('page' as const)
-        : chemin.startsWith(`${entree.href}/`)
-          ? ('true' as const)
-          : undefined,
-  }));
+const marquer = (href: string): Marque =>
+  chemin === href ? 'page' : chemin.startsWith(`${href}/`) ? 'true' : undefined;
+
+/**
+ * « Ressources » n'est pas une page : c'est un groupe qui réunit le blog et le glossaire
+ * (décision de Kevin, 16/09/2026) et qui accueillera les ressources à venir. Il se marque
+ * « true » dès qu'une de ses destinations est courante ; ses destinations portent leur propre marque.
+ */
+const entrees: (Destination | Groupe)[] = NAV_V2.map((entree: any) => {
+  if (entree.sousEntrees) {
+    const sousEntrees: Destination[] = entree.sousEntrees
+      .filter((sous: any) => blogActif || sous.href !== '/blog')
+      .map((sous: any) => ({ ...sous, courant: marquer(sous.href) }));
+    return { libelle: entree.libelle, sousEntrees, courant: sousEntrees.some((sous) => sous.courant) ? 'true' : undefined };
+  }
+  return { ...entree, courant: marquer(entree.href) };
+});
+const estGroupe = (e: Destination | Groupe): e is Groupe => 'sousEntrees' in e;
+/** Toutes les destinations à plat, pour la navigation servie sans JavaScript. */
+const destinationsPlates = entrees.flatMap((e) => (estGroupe(e) ? e.sousEntrees : [e]));
 const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
 ---
 
@@ -65,7 +70,26 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
 
     <nav class="nav-centre" aria-label="Navigation principale">
       <ul class="nav-liste">
-        {entrees.map((e) => (
+        {entrees.map((e) => estGroupe(e) ? (
+          <li class="nav-item nav-groupe" data-groupe>
+            <button
+              type="button"
+              class="nav-entree nav-groupe-bouton"
+              aria-expanded="false"
+              aria-controls="sous-menu-ressources"
+              aria-current={e.courant}
+              data-groupe-bouton
+            >
+              {e.libelle}
+              <Picto nom="chevron" taille={14} class="nav-chevron" />
+            </button>
+            <ul class="nav-sous-menu" id="sous-menu-ressources" aria-label={e.libelle}>
+              {e.sousEntrees.map((s) => (
+                <li><a class="nav-sous-entree" href={s.href} aria-current={s.courant}>{s.libelle}</a></li>
+              ))}
+            </ul>
+          </li>
+        ) : (
           <li class="nav-item">
             <a class="nav-entree" href={e.href} aria-current={e.courant}>{e.libelle}</a>
           </li>
@@ -97,7 +121,16 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
 <div class="nav-mobile" id="menu-mobile" data-menu-mobile hidden>
   <nav aria-label="Navigation principale, menu" class="conteneur">
     <ul class="nav-mobile-liste">
-      {entrees.map((e) => (
+      {entrees.map((e) => estGroupe(e) ? (
+        <li class="nav-mobile-groupe">
+          <p class="nav-mobile-groupe-titre" id="menu-mobile-ressources">{e.libelle}</p>
+          <ul class="nav-mobile-sous-liste" aria-labelledby="menu-mobile-ressources">
+            {e.sousEntrees.map((s) => (
+              <li><a class="nav-mobile-lien nav-mobile-sous-lien" href={s.href} aria-current={s.courant}>{s.libelle}</a></li>
+            ))}
+          </ul>
+        </li>
+      ) : (
         <li><a class="nav-mobile-lien" href={e.href} aria-current={e.courant}>{e.libelle}</a></li>
       ))}
       <li class="nav-mobile-cta">
@@ -111,7 +144,7 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
 
 <noscript>
   <nav class="conteneur nav-sans-js" aria-label="Navigation sans JavaScript">
-    {entrees.map((e) => <a href={e.href} aria-current={e.courant}>{e.libelle}</a>)}
+    {destinationsPlates.map((e) => <a href={e.href} aria-current={e.courant}>{e.libelle}</a>)}
     <a href={CTA.nav.href} aria-current={actionCourante}>{CTA.nav.libelle}</a>
   </nav>
 </noscript>
@@ -158,6 +191,63 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   }
   .nav-entree[aria-current],
   .nav-entree:focus-visible {
+    color: var(--texte-fort);
+    background: var(--surface-hover);
+  }
+  /* Le groupe « Ressources » : un bouton, et un panneau qui s'ouvre au survol, au focus ou au clic. */
+  .nav-groupe {
+    position: relative;
+  }
+  .nav-groupe-bouton {
+    gap: 4px;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+  }
+  .nav-chevron {
+    transition: transform var(--duree-1) ease-out;
+  }
+  .nav-sous-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 200px;
+    display: grid;
+    gap: 2px;
+    padding: 6px;
+    background: #fffefb;
+    border: 1px solid var(--ligne-douce);
+    border-radius: var(--r-bouton);
+    box-shadow: 0 12px 32px rgba(35, 31, 32, 0.12);
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+    transition: opacity var(--duree-1) ease-out, transform var(--duree-1) ease-out;
+  }
+  /* Les destinations restent dans l'ordre du clavier : le panneau se révèle dès qu'une reçoit le focus. */
+  .nav-groupe:focus-within .nav-sous-menu,
+  .nav-groupe[data-ouvert] .nav-sous-menu {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .nav-groupe:focus-within .nav-chevron,
+  .nav-groupe[data-ouvert] .nav-chevron {
+    transform: rotate(180deg);
+  }
+  .nav-sous-entree {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 10px;
+    border-radius: var(--r-bouton);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    color: var(--texte);
+  }
+  .nav-sous-entree[aria-current],
+  .nav-sous-entree:focus-visible {
     color: var(--texte-fort);
     background: var(--surface-hover);
   }
@@ -224,6 +314,15 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   .nav-mobile-lien[aria-current] {
     color: var(--accent-texte);
   }
+  .nav-mobile-groupe-titre {
+    padding: 18px 8px 4px;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--texte-2);
+  }
+  .nav-mobile-sous-lien {
+    padding-left: 20px;
+  }
   .nav-mobile-cta {
     display: flex;
     flex-wrap: wrap;
@@ -267,7 +366,25 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
       padding-inline: 6px;
     }
   }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-sous-menu,
+    .nav-chevron {
+      transition: none;
+    }
+  }
   @media (hover: hover) {
+    .nav-groupe:hover .nav-sous-menu {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .nav-groupe:hover .nav-chevron {
+      transform: rotate(180deg);
+    }
+    .nav-sous-entree:hover {
+      color: var(--texte-fort);
+      background: var(--surface-hover);
+    }
     .nav-entree:hover {
       color: var(--texte-fort);
       background: var(--surface-hover);
@@ -371,5 +488,33 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     });
     // Ne pas conserver le verrou si la page est restaurée depuis le bfcache.
     window.addEventListener('pagehide', () => closeMenu(false));
+  }
+
+  // Le groupe « Ressources » : le survol et le focus le révèlent en CSS ; le clic, Échap et
+  // le clic hors du groupe tiennent l'état annoncé (aria-expanded) et l'ouverture sans souris.
+  const groupes = [...document.querySelectorAll<HTMLElement>('[data-groupe]')];
+  for (const groupe of groupes) {
+    const bouton = groupe.querySelector<HTMLButtonElement>('[data-groupe-bouton]');
+    if (!bouton) continue;
+    const ouvrir = (etat: boolean) => {
+      groupe.toggleAttribute('data-ouvert', etat);
+      bouton.setAttribute('aria-expanded', String(etat));
+    };
+    bouton.addEventListener('click', () => ouvrir(!groupe.hasAttribute('data-ouvert')));
+    groupe.addEventListener('mouseenter', () => bouton.setAttribute('aria-expanded', 'true'));
+    groupe.addEventListener('mouseleave', () => { if (!groupe.hasAttribute('data-ouvert')) bouton.setAttribute('aria-expanded', 'false'); });
+    groupe.addEventListener('focusout', (e) => { if (!groupe.contains(e.relatedTarget as Node | null)) ouvrir(false); });
+    groupe.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && groupe.hasAttribute('data-ouvert')) { e.preventDefault(); ouvrir(false); bouton.focus(); }
+    });
+  }
+  if (groupes.length) {
+    document.addEventListener('click', (e) => {
+      for (const groupe of groupes) {
+        if (groupe.contains(e.target as Node)) continue;
+        groupe.removeAttribute('data-ouvert');
+        groupe.querySelector('[data-groupe-bouton]')?.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 </script>
