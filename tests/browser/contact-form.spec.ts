@@ -59,6 +59,18 @@ test('contact : avec JavaScript, l’envoi reste en place et affiche le résulta
   expect(corps[1]).not.toContain('filename=');
 });
 
+test('contact : la page d’erreur nomme le champ refusé quand la fonction le lui dit, et reste juste sans lui', async ({ page }) => {
+  await page.goto('/contact/erreur?champ=message');
+  await expect(page.locator('[data-motif]')).toBeVisible();
+  await expect(page.locator('[data-motif]')).toContainText('vingt caractères');
+  await expect(page.locator('[data-generique]')).toBeHidden();
+  await page.goto('/contact/erreur?champ=inconnu');
+  await expect(page.locator('[data-motif]')).toBeHidden();
+  await expect(page.locator('[data-generique]')).toBeVisible();
+  await page.goto('/contact/erreur');
+  await expect(page.locator('[data-generique]')).toBeVisible();
+});
+
 test('contact : les deux pages de réponse existent, hors index, avec un retour au formulaire', async ({ page }) => {
   for (const chemin of ['/contact/merci', '/contact/erreur']) {
     const reponse = await page.goto(chemin);

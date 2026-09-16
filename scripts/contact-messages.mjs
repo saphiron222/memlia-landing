@@ -5,6 +5,7 @@
  *   npm run contact:messages            — les messages non traités, du plus récent au plus ancien
  *   npm run contact:messages -- --tous  — tout l'historique
  *   npm run contact:messages -- --purger-ip — efface les empreintes d'adresse de plus de 24 h
+ *                                              (secours manuel : workers/purge-contact le fait chaque heure)
  *
  * Lit la base D1 de production via wrangler ; rien n'est modifié sauf avec --purger-ip.
  */
@@ -31,7 +32,8 @@ if (options.has('--purger-ip')) {
   process.exit(0);
 }
 
-const filtre = options.has('--tous') ? '' : "WHERE statut = 'nouveau'";
+// « notifie » = Telegram a prévenu, personne n'a encore lu : c'est encore un message à traiter.
+const filtre = options.has('--tous') ? '' : "WHERE statut IN ('nouveau', 'notifie')";
 const lignes = executer(`SELECT id, recu_le, nom, cabinet, courriel, message, statut FROM messages ${filtre} ORDER BY recu_le DESC LIMIT 200`);
 if (lignes.length === 0) {
   console.log(options.has('--tous') ? 'Aucun message.' : 'Aucun message nouveau.');

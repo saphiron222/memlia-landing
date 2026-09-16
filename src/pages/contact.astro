@@ -118,21 +118,13 @@ const appel = {
 </PageCommerciale>
 
 <script>
+  import { MESSAGES_CONTACT, MESSAGE_CONTACT_DEFAUT } from '@/data/contact-messages.mjs';
   /**
    * Avec JavaScript, le formulaire s'envoie sans quitter la page et dit ce qui s'est passé.
    * Sans JavaScript, il fonctionne tel quel : la fonction redirige vers une page de réponse.
    */
   const formulaire = document.querySelector<HTMLFormElement>('[data-contact]');
   const etat = document.querySelector<HTMLElement>('[data-etat]');
-  const MESSAGES: Record<string, string> = {
-    nom: 'Indiquez votre nom (au moins deux caractères).',
-    courriel: 'L’adresse de courriel ne semble pas valide.',
-    message: 'Décrivez la tâche en quelques phrases (vingt caractères au moins).',
-    consentement: 'Cochez la case pour que nous puissions vous répondre.',
-    verification: 'La vérification anti-robot a échoué. Réessayez.',
-    'trop-de-messages': 'Plusieurs messages viennent de partir depuis cette connexion. Réessayez dans une heure, ou écrivez-nous par courriel.',
-    indisponible: 'Le formulaire est indisponible pour le moment. Écrivez-nous par courriel.',
-  };
   if (formulaire && etat) {
     formulaire.addEventListener('submit', async (evenement) => {
       if (!formulaire.checkValidity()) return; // Le navigateur signale lui-même le champ manquant.
@@ -149,7 +141,7 @@ const appel = {
           formulaire.reset();
           afficher('Message envoyé. Nous vous répondons par courriel, sans envoi automatique.', true);
         } else {
-          afficher(MESSAGES[corps.code] ?? 'Le message n’a pas pu partir. Réessayez, ou écrivez-nous par courriel.', false);
+          afficher((MESSAGES_CONTACT as Record<string, string>)[corps.code] ?? MESSAGE_CONTACT_DEFAUT, false);
           if (bouton) bouton.disabled = false;
         }
       } catch {
@@ -182,7 +174,7 @@ const appel = {
   .champ-piege { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   .contact-etat { margin: 0; padding: 12px 14px; border-radius: var(--r-bouton); font-size: var(--t-sm); }
   .contact-etat[data-ok='oui'] { color: var(--vert-texte); background: var(--vert-voile); }
-  .contact-etat[data-ok='non'] { color: var(--rouge); background: #fbecea; }
+  .contact-etat[data-ok='non'] { color: var(--rouge); background: var(--rouge-voile); }
   .contact-envoi { display: flex; }
   .contact-aside { display: grid; gap: 16px; align-content: start; }
   .contact-aside h2 { font-size: var(--t-3xl); }

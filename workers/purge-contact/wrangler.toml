@@ -1,0 +1,14 @@
+# Purge programmee de la base du formulaire de contact : ce que la politique de confidentialite
+# promet, ce Worker le tient. Les fonctions Pages n'ont pas de declencheur horaire, d'ou un Worker
+# a part, deploye par : npm run contact:purge:deploy
+name = "memlia-contact-purge"
+main = "index.mjs"
+compatibility_date = "2026-06-23"
+
+[triggers]
+crons = ["17 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "memlia-contact"
+database_id = "1ba3e044-00bf-4822-ac65-243658538e1b"

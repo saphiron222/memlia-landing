@@ -7,9 +7,9 @@ CREATE TABLE IF NOT EXISTS messages (
   cabinet     TEXT,
   courriel    TEXT    NOT NULL,
   message     TEXT    NOT NULL,
-  ip_hash     TEXT,                        -- SHA-256 salé, uniquement pour la limite de débit ; purgé après 24 h
+  ip_hash     TEXT,                        -- SHA-256 salé du réseau (IPv4, ou /64 IPv6), pour la limite de débit ; purgé après 24 h par workers/purge-contact
   navigateur  TEXT,
-  statut      TEXT    NOT NULL DEFAULT 'nouveau'  -- nouveau | lu | traite
+  statut      TEXT    NOT NULL DEFAULT 'nouveau'  -- nouveau | notifie (Telegram a prévenu) | lu | traite
 );
 CREATE INDEX IF NOT EXISTS messages_recu_le ON messages (recu_le);
 CREATE INDEX IF NOT EXISTS messages_ip_hash ON messages (ip_hash, recu_le);

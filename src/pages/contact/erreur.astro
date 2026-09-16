@@ -10,7 +10,8 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
     <div class="retour-int coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
       <h1>Le message n’est pas parti.</h1>
-      <p class="texte-2">Un champ manque, une adresse n’est pas valide, ou trop de messages viennent de partir depuis cette connexion. Rien n’a été enregistré.</p>
+      <p class="texte-2" data-generique>Un champ manque, une adresse n’est pas valide, ou trop de messages viennent de partir depuis cette connexion. Rien n’a été enregistré.</p>
+      <p class="retour-motif" data-motif hidden></p>
       <p class="texte-2">Retournez au formulaire et vérifiez votre nom, votre adresse, le message et la case de consentement. Vous pouvez aussi nous écrire directement.</p>
       <div class="retour-boutons">
         <Button href={`${PAGES_V2.contact.chemin}#formulaire`} variante="principal" picto="fleche">Retour au formulaire</Button>
@@ -19,7 +20,23 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
   </div>
 </Base>
 
+<script>
+  // La fonction redirige ici avec ?champ=<code> : quand il est connu, on le nomme, et le
+  // paragraphe générique s'efface. Sans JavaScript, le générique reste vrai et suffit.
+  import { MESSAGES_CONTACT } from '@/data/contact-messages.mjs';
+  const code = new URLSearchParams(location.search).get('champ') ?? '';
+  const motif = (MESSAGES_CONTACT as Record<string, string>)[code];
+  const cible = document.querySelector<HTMLElement>('[data-motif]');
+  const generique = document.querySelector<HTMLElement>('[data-generique]');
+  if (motif && cible && generique) {
+    cible.textContent = `${motif} Rien n’a été enregistré.`;
+    cible.hidden = false;
+    generique.hidden = true;
+  }
+</script>
+
 <style>
+  .retour-motif { margin: 0; max-width: 52ch; padding: 12px 14px; border-radius: var(--r-bouton); color: var(--rouge); background: var(--rouge-voile); }
   .retour { padding: 96px var(--marge-page) 128px; }
   .retour-int { display: grid; gap: 16px; justify-items: center; max-width: 720px; margin: 0 auto; padding: 48px 24px; text-align: center; border: 1px solid var(--ligne); border-radius: var(--r-carte); background: rgba(255, 254, 251, 0.92); box-shadow: var(--ombre-xs); }
   h1 { font-size: var(--t-4xl); max-width: 22ch; }
