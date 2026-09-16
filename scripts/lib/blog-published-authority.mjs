@@ -4,9 +4,10 @@ import { join } from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
 
 // Conservation des deux articles déjà publiés, pas une autorisation de publication.
-export const PUBLISHED_BLOG_COMMIT = '939464c90ecee928bfd9d7f7be26ea028758cf8b';
+// Autorite re-pointee le 16/09/2026 : la production a avance avec la release de l'article 3.
+export const PUBLISHED_BLOG_COMMIT = 'de3d821c2935c35032f2417379392828f43bf84e';
 export const PUBLISHED_BLOG_HASHES = Object.freeze({
-  'controler-les-bulletins-de-paie-avant-la-dsn': '03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92',
+  'controler-les-bulletins-de-paie-avant-la-dsn': '4c36eb08c035c10a78ae83de9776a64526ca72d5758b72ed7bf98f3f976d2a79',
   'suivre-la-production-sociale-dans-excel': '56a5f5a1e19cd327558d8c024b3570643bc2f233cfce02d117c0ca250430103b',
 });
 export const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -22,7 +23,7 @@ export function dossierFiles(directory, prefix = '') {
 export function validatePublishedAdoption(dossier, manifest, articleHash) {
   const errors = [];
   const slug = manifest?.slug;
-  if (!PUBLISHED_BLOG_HASHES[slug] || articleHash !== PUBLISHED_BLOG_HASHES[slug]) errors.push('Autorité publiée : octets non autorisés par 939464c.');
+  if (!PUBLISHED_BLOG_HASHES[slug] || articleHash !== PUBLISHED_BLOG_HASHES[slug]) errors.push('Autorité publiée : octets non autorisés par la production courante.');
   if (manifest?.editorialStatus !== 'publie-non-atteste' || manifest?.author !== 'kevin') errors.push('Autorité publiée : statut ou auteur divergent.');
   if (manifest?.publicationEvidence !== ADOPTION_PATH) errors.push('Autorité publiée : reçu d’adoption obligatoire.');
   try {

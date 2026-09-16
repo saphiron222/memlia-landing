@@ -1,6 +1,15 @@
 import { test, expect } from '@playwright/test';
 
 const widths = [320, 375, 768, 1024, 1440, 1920];
+// Composition du hub au 16/09/2026 : les trois articles publies du blog et l'entree glossaire.
+// L'article 3 a rejoint l'index automatiquement : projectPublicResources derive sa fiche de son
+// frontmatter des lors qu'il porte pipelineVersion 1, une tache et un role documente.
+const RESSOURCES_ATTENDUES = 4;
+// Le role affiche par le hub est un axe de DECOUVERTE, pas le rolePrincipal du frontmatter :
+// ARTICLE_DISCOVERY (src/data/resources.ts) place volontairement « suivre la production sociale »
+// sous direction-associes pour etaler les axes. Restent donc sous paie-responsables-sociaux le
+// controle des bulletins avant la DSN et, depuis le 16/09/2026, la lecture des comptes rendus metier.
+const ROLE_PAIE_ATTENDU = 2;
 
 for (const width of widths) {
   test(`Hub Ressources sans débordement à ${width}px`, async ({ page }) => {
@@ -9,7 +18,7 @@ for (const width of widths) {
     expect(response?.status()).toBe(200);
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('[data-resource-id]')).toHaveCount(3);
+    await expect(page.locator('[data-resource-id]')).toHaveCount(RESSOURCES_ATTENDUES);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     for (const section of await page.locator('main section').all()) {
       await section.scrollIntoViewIfNeeded();
@@ -42,15 +51,15 @@ test('filtres progressifs : rôle, format, combinaison vide et reset', async ({ 
   const reset = page.locator('[data-reset]');
   const count = page.locator('[data-count]');
 
-  await expect(entries).toHaveCount(3);
+  await expect(entries).toHaveCount(RESSOURCES_ATTENDUES);
   await role.selectOption('paie-responsables-sociaux');
-  await expect(entries.filter({ visible: true })).toHaveCount(1);
-  await expect(count).toHaveText('1 ressource');
+  await expect(entries.filter({ visible: true })).toHaveCount(ROLE_PAIE_ATTENDU);
+  await expect(count).toHaveText(`${ROLE_PAIE_ATTENDU} ressources`);
   await type.selectOption('terme');
   await expect(page.locator('[data-empty]')).toBeVisible();
   await expect(count).toHaveText('0 ressources');
   await reset.click();
-  await expect(entries.filter({ visible: true })).toHaveCount(3);
+  await expect(entries.filter({ visible: true })).toHaveCount(RESSOURCES_ATTENDUES);
   await expect(role).toBeFocused();
 });
 
@@ -58,7 +67,7 @@ test('sans JavaScript : liste et navigation restent complètes, filtres absents'
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 667 } });
   const page = await context.newPage();
   await page.goto(`${process.env.QA_URL ?? 'http://127.0.0.1:4321'}/ressources`);
-  await expect(page.locator('[data-resource-id]')).toHaveCount(3);
+  await expect(page.locator('[data-resource-id]')).toHaveCount(RESSOURCES_ATTENDUES);
   await expect(page.locator('[data-filters]')).toBeHidden();
   await expect(page.locator('.sans-js')).toBeVisible();
   await expect(page.locator('.nav-sans-js a[href="/ressources"]')).toBeVisible();
@@ -72,7 +81,7 @@ test('routes, canonical et schéma n’annoncent aucun index absent', async ({ p
   expect(graph['@graph'].map((node: { '@type': string }) => node['@type'])).toEqual([
     'CollectionPage', 'ItemList', 'BreadcrumbList', 'Organization', 'WebSite',
   ]);
-  expect(graph['@graph'][1].numberOfItems).toBe(3);
+  expect(graph['@graph'][1].numberOfItems).toBe(RESSOURCES_ATTENDUES);
   expect((await request.get('/guides')).status()).toBe(404);
   expect((await request.get('/modeles')).status()).toBe(404);
   await expect(page.locator('a[href="/guides"], a[href="/modeles"]')).toHaveCount(0);

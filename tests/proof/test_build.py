@@ -14,7 +14,8 @@ DIST = ROOT / 'dist'
 SITE = 'https://memlia.fr'
 PAGES_FIXES = ['404', 'blog', 'glossaire', 'index', 'mentions-legales', 'politique-de-confidentialite', 'ressources']
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
-PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel'}
+PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
+                   'comprendre-les-comptes-rendus-metier-dsn'}
 
 
 class Document(HTMLParser):

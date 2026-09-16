@@ -59,8 +59,10 @@ class VisibleTextParser(HTMLParser):
 
 class ResourceV3TraceabilityProof(unittest.TestCase):
     def test_blog_authority_and_recouvrement_doctrine_are_preserved(self) -> None:
+        # Autorite Blog re-pointee le 16/09/2026 sur la production servie apres la
+        # release de l'article 3 : trois articles publies, aucun brouillon.
         expected_articles = {
-            "controler-les-bulletins-de-paie-avant-la-dsn": "03be4a3d996f0f3c9c9035c9038e7fbd00bfdc5d4a281352ae6cd0050046be92",
+            "controler-les-bulletins-de-paie-avant-la-dsn": "4c36eb08c035c10a78ae83de9776a64526ca72d5758b72ed7bf98f3f976d2a79",
             "suivre-la-production-sociale-dans-excel": "56a5f5a1e19cd327558d8c024b3570643bc2f233cfce02d117c0ca250430103b",
         }
         for slug, expected_hash in expected_articles.items():
@@ -68,6 +70,15 @@ class ResourceV3TraceabilityProof(unittest.TestCase):
             dossier = ROOT / f"editorial/articles/{slug}/manifest.json"
             self.assertEqual(sha256(article.read_bytes()), expected_hash, slug)
             self.assertTrue(dossier.is_file(), slug)
+
+        # L'article 3 est publie depuis le 16/09/2026 par la chaine blog, sans manifeste de
+        # ressource : son dossier n'a donc pas ete adopte par ce candidat. Il est malgre tout
+        # garde en octets, pour qu'une regression du blog publie reste detectee.
+        self.assertEqual(
+            sha256((ROOT / "src/content/blog/comprendre-les-comptes-rendus-metier-dsn.md").read_bytes()),
+            "7594381c04a8b93a88fbf82939bfa028fb816653a7cc51f3ae7bf2816d4777b2",
+            "comprendre-les-comptes-rendus-metier-dsn",
+        )
 
         glossary_manifest = json.loads(MANIFESTS[1].read_text())
         unit_id = "unit-t-recouvrement-amiable-commonConfusion"
