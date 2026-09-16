@@ -89,6 +89,27 @@ Résultat mesuré à 15:19:15, avec l'accord de Kevin pour agir sur sa propriét
 
 Preuves de cette passe : 132 tests navigateur, 64 Python, 154 Node, oracle 12 routes, copy 27/27, Lighthouse 100 partout (99 sur deux gabarits mobiles), 14 captures, équivalence 22 routes contre le déploiement immuable `d442193b`, contrôle de production PASS.
 
+## Balayage des mentions de processus et indexabilité (16/09, fin de journée)
+
+Kevin a relevé que le glossaire portait encore, sous chacune des 23 définitions : « Nature · Rédaction · Revue métier : requise avant publication · Sources relues : 14 septembre 2026 ». Retiré, ainsi que le marqueur `data-business-reviewer="pending"` qui disait la même chose dans le HTML sans que rien ne s'en serve. **Les Sources restent** : ce sont des références, pas du processus, et la date de relecture demeure une donnée éditoriale dans `src/data/glossary.ts`.
+
+Balayage complet des 17 pages construites puis des **14 routes servies en production**, sur le texte visible *et* sur la source : aucune occurrence de « Revue métier », « Sources relues », « Éditoriale Memlia », « Requise avant publication », « non attesté », « fact-check », « a-t-il été vérifié », `data-business-reviewer`, `statutEditorial`. Les trois occurrences restantes du mot-racine « attest » sont du contenu légitime, vérifié une à une : « Nous ne délivrons pas d'attestation… » (positionnement), « le certificat atteste la conformité à la norme » (explication sourcée), « Nature du retour » (en-tête de colonne d'un tableau CRM).
+
+Pour que la consigne ne dépende plus de la mémoire de personne, `test_build.py` balaie désormais le contenu visible de chaque page à chaque construction et refuse ces neuf formules.
+
+**Indexabilité, mesurée page par page en production :** les douze routes indexables portent `index, follow, max-image-preview:large`, une canonical exacte, une entrée au sitemap et des liens entrants internes (15 à 73 selon la page) ; les deux pages légales portent `noindex, follow` et restent hors sitemap, comme voulu. Rien ne bloque côté site.
+
+Côté Google, l'inspection d'URL du 16/09 à 15:35 :
+
+| État | Routes |
+|---|---|
+| Envoyée et indexée | `/`, `/a-propos` (exploré à 15:25, après la re-soumission), `/blog`, les 3 articles |
+| Détectée, non encore indexée | `/methode`, `/ressources`, `/glossaire` |
+| Pas encore connue | `/automatisation-cabinet-comptable`, `/garanties`, `/contact` |
+| Exclue par `noindex` (voulu) | `/mentions-legales`, `/politique-de-confidentialite` |
+
+Ce qui reste est le délai de Google, pas un défaut : il explore déjà les nouvelles pages. Aucune API publique ne force l'indexation d'une page ordinaire ; Kevin peut, s'il veut accélérer, demander l'indexation des trois dernières depuis l'inspection d'URL de Search Console (une dizaine de demandes par jour au maximum).
+
 ## Rollback
 
 Production précédente : déploiement `88af1244` (commit `55a7c05`, build `2cf4931`). Le rejouer depuis le tableau de bord Cloudflare, ou `git checkout 2cf4931` dans un worktree propre, `npm ci && npm run build:site`, `npx wrangler pages deploy dist --project-name memlia --branch main`. La base D1 et le Worker de purge peuvent rester : sans formulaire, rien ne les appelle.
