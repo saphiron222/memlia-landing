@@ -13,24 +13,24 @@ Verdict : PASS — 98/100, 0 P0 (revue indépendante du 2026-09-17, barème blog
 
 ## SEO
 
-- Title tag corrigé à 55 caractères (« Saisie comptable OCR : ce qui reste à vérifier | Memlia »), dans la fourchette recommandée de 40-60 caractères et attaquant sur la requête primaire « automatisation saisie comptable OCR ».
-- Meta description de 143 caractères, cohérente avec le contenu visible et dans la fourchette usuelle.
-- Six liens internes contextuels dans le corps : trois vers le glossaire, deux vers d'autres articles du blog, un vers /methode.
-- URL canonique stable et lisible : /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.
-- Un seul h1, hiérarchie h2/h3 sans saut de niveau, y compris dans le bloc FAQ.
-- Quatre liens externes vers des sources tier-1 (service-public.gouv.fr x3, cnil.fr x1), dans la fourchette de 3 à 8 recommandée.
+- Title tag rendu à 58 caractères (« Automatisation saisie comptable : les 6 contrôles | Memlia »), dans la fourchette 40-60 recommandée et aligné sur la requête primaire.
+- Meta description à 143 caractères, cohérente avec le contenu visible et avec le résumé « En bref ».
+- 7 liens internes contextuels dans le corps de l'article (glossaire x3, article frère, article pilier, /methode, /automatisation-cabinet-comptable), plus 2 dans le bloc de clôture.
+- 4 liens externes vers des sources tier-1 (service-public.gouv.fr x3, cnil.fr x1), dans la fourchette de 3 à 8 recommandée.
+- URL canonique stable, minuscule et à tirets : /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.
+- Un seul h1 et une hiérarchie h2/h3 sans saut de niveau, y compris dans le bloc FAQ à cinq questions.
 
 ## Préparation aux citations
 
-- Réponse directe en tête d'article, formulée comme un paragraphe autonome et extractible par un moteur génératif sans contexte supplémentaire.
-- Terminologie d'entité stable tout au long du texte : « saisie comptable automatisée », « pré-comptabilité », « file d'anomalies », ce qui limite l'ambiguïté pour un système IA.
-- Cinq questions fréquentes formulées en langage naturel sous forme de h3, propices à une citation directe dans une réponse conversationnelle.
-- Tableaux avec <thead> sur les six contrôles et la règle déclencheur/condition/action/exception, format propice à l'extraction structurée par un système IA.
-- Le meta robots « noindex » de cette page de candidat la rend actuellement invisible aux robots respectueux du robots meta, tant qu'elle n'est pas publiée en production — artefact de preview, non compté dans le score.
+- Réponse directe en tête d'article (environ 72 mots), formulée comme un paragraphe autonome extractible sans contexte supplémentaire.
+- Terminologie d'entité stable tout au long du texte (saisie comptable automatisée, OCR, pré-comptabilité, file d'anomalies, reliquat), reliée au glossaire du site.
+- Cinq questions fréquentes en langage naturel, balisées h3 sous « Questions fréquentes », propices à une citation directe dans une réponse conversationnelle (sans schema FAQPage, optionnel selon le barème).
+- Quatre tableaux avec <thead> (champs extraits, six contrôles, règle déclencheur/condition/action/exception, répartition automatisé/validé/humain), format propice à l'extraction structurée.
+- Chaque affirmation sensible porte une citation exacte liée en ligne vers une source officielle, toutes consultées à la même date (17 septembre 2026).
 
 ## Réserves mesurées
 
-- Le score Lighthouse (LCP/INP/CLS) n'a pas été mesuré directement sur cette page rendue, seule la présence des signaux favorables (fetchpriority, préchargement des polices) a été vérifiée dans le code.
-- La citabilité IA réelle (apparition effective dans une réponse ChatGPT, Perplexity ou Google AI Overviews) n'a pas été testée ; seule la structure extractible du contenu a été évaluée.
-- Le meta robots de cette page rendue est « noindex, follow » car il s'agit d'un candidat en preview privée non publiable ; c'est un artefact du rendu de prévisualisation, pas un défaut de l'article, mais il reste à vérifier que le robots sera bien indexable une fois l'article publié en production.
-- Le CTR et le temps de lecture réel ne peuvent pas être estimés sans données de trafic, absentes de ce contrôle éditorial.
+- Le score Lighthouse (LCP/INP/CLS réels) n'a pas été mesuré : seule la présence de signaux favorables dans le code (CSS inliné, polices préchargées, fetchpriority sur le hero) a été vérifiée, pas leur effet chiffré.
+- La citabilité IA réelle (apparition effective dans une réponse Google AI Overviews, ChatGPT ou Perplexity) n'a pas été testée ; seule la structure extractible du HTML a été évaluée.
+- La page porte <meta name="robots" content="noindex, follow"> et le bandeau « Candidat éditorial — preview privée, non publiable » : identiques sur les 6 fichiers de .qa/render-tous/blog/, donc un artefact du harnais de rendu QA plutôt qu'un réglage propre à cet article — à confirmer absent une fois l'URL publiée en production.
+- La lisibilité (Flesch ou équivalent français) n'a pas été calculée par un outil ; l'appréciation de densité de phrase reste qualitative.

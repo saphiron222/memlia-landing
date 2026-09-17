@@ -3,16 +3,17 @@
   "candidateSlug": "automatiser-la-relance-des-pieces-clients",
   "kind": "skill",
   "status": "PASS",
-  "checkedAt": "2026-09-16",
-  "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
-  "manifestSha256": "d939bb49c47f2694aa72e48f48decd39b0ddfc41efd035ef7de1dfc39adcc23e",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "3627fa25049818da9ea4a4da962bb1abaa3dc6810000382b06e2a479dac664bb",
+  "manifestSha256": "0b39ecac258866ed08a79ef5c6e5e4a7f2c830fc7f15b54bc5a1a426acf26ae9",
   "observations": [
-    "Titre 52 caractères, onglet 59, description 150 ; 6 lien(s) interne(s) : /glossaire#regle-de-cabinet, /glossaire#cas-de-refus, /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /blog/controler-les-bulletins-de-paie-avant-la-dsn, /glossaire#piece-justificative, /methode ; 4 lien(s) externe(s) dans le corps.",
-    "Title = « Relance des pièces manquantes en cabinet comptable | Memlia » (59 caractères) : exact quant au contenu, lisible, dans la fourchette 40-60 donc résistant à la troncature desktop typique, et porte la requête primaire « relance pièces manquantes cabinet comptable » quasi mot pour mot et dans l’ordre, sans bourrage.",
-    "H1 = « Automatiser la relance des pièces clients manquantes » (52 caractères) : formulation volontairement différente du title (verbe d’action pour le lecteur vs formulation orientée requête pour le SERP) mais sans contradiction de sujet ; repris à l’identique par og:title, twitter:title, le headline JSON-LD et le fil d’Ariane, donc aucune incohérence résiduelle entre les métadonnées touchées par le retitrage.",
-    "Meta description (150 caractères) alignée sur le H1/title et sur l’aside « En bref » affiché en tête de l’article visible ; canonical https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients cohérent avec og:url et le JSON-LD.",
-    "Exactement 4 des 15 H2 du corps sont passés en forme interrogative, conformément à la recette de retitrage, sans casser la hiérarchie H1→H2→H3 ni le style déclaratif des sections « Brique 1/2/3 » et tableaux.",
-    "OG (image 1200×630 avec alt et dimensions), Twitter Card summary_large_image, et socle JSON-LD (BlogPosting/Person/Organization/BreadcrumbList) tous présents et cohérents avec le couple title/H1 retitré."
+    "Titre 52 caractères, onglet 59, description 150 ; 7 lien(s) interne(s) : /glossaire#regle-de-cabinet, /glossaire#cas-de-refus, /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /blog/controler-les-bulletins-de-paie-avant-la-dsn, /glossaire#piece-justificative, /methode, /automatisation-cabinet-comptable ; 4 lien(s) externe(s) dans le corps.",
+    "Title = « Relance des pièces manquantes en cabinet comptable | Memlia » (59 caractères) : porte la requête primaire « relance pièces manquantes cabinet comptable » quasi mot pour mot et dans l’ordre, sans bourrage de mots-clés.",
+    "H1 = « Automatiser la relance des pièces clients manquantes » (distinct du title mais sur le même sujet) repris à l’identique par og:title, twitter:title, le headline JSON-LD et le fil d’Ariane : aucune incohérence de surface entre les métadonnées.",
+    "Canonical https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients cohérent avec og:url ; robots actuellement « noindex, follow », attendu et propre à ce rendu de prévisualisation.",
+    "Hiérarchie de titres propre (1 h1, 15 h2, 5 h3 tous en FAQ) sans saut de niveau ; trois tableaux structurés avec <thead> favorables à l’extraction SERP.",
+    "Maillage interne du corps : trois ancres de glossaire, un lien vers le pilier de la famille de tâches, un lien vers un article frère, deux liens vers /methode et un vers /automatisation-cabinet-comptable — dans la fourchette recommandée de liens contextuels.",
+    "OG (image 1200×630 avec alt et dimensions), Twitter Card summary_large_image, et socle JSON-LD (BlogPosting/Person/Organization/BreadcrumbList/WebSite) tous présents et mutuellement cohérents."
   ],
   "skill": "blog-seo-check"
 }

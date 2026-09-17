@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "articleSha256": "3218163766cd1d894fac55558c25d313812b5f0599175ebe245f0cac4142ea7c",
+  "articleSha256": "b003816625a783b40c463995ec503c987588747f376cf8aa9a709ce7c6109a6c",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -29,8 +29,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-091f6fdc136c",
-      "text": "À la main, la saisie casse pour une raison connue de tous les cabinets : elle est répétitive sur la plupart des pièces et délicate sur quelques-unes, et c’est la même personne qui traite les deux, dans le même mouvement, à la même vitesse. La pièce ambiguë passe alors comme les autres. Automatiser sans séparer ces deux régimes ne corrige rien : cela accélère aussi les erreurs. La méthode ci-dessous, une méthode Memlia et non une règle réglementaire, sépare ce que la lecture propose de ce qu’une personne vérifie, et fait remonter le reste au lieu de le forcer.",
+      "id": "unit-3d2f1db6443c",
+      "text": "À la main, la saisie casse pour une raison connue de tous les cabinets : elle est répétitive sur la plupart des pièces et délicate sur quelques-unes, et c’est la même personne qui traite les deux, dans le même mouvement, à la même vitesse. La pièce ambiguë passe alors comme les autres. Le collaborateur sait pourtant ce qui distingue l’une de l’autre : quel fournisseur s’impute où, quel écart mérite un regard, quel ticket ne vaut rien. Ce savoir n’est écrit nulle part, et il part avec lui. Automatiser sans l’écrire ne corrige rien : cela accélère aussi les erreurs. La méthode ci-dessous, une méthode Memlia, sépare ce que la lecture propose de ce qu’une personne vérifie, et fait remonter le reste au lieu de le forcer.",
       "claimIds": []
     },
     {
@@ -269,8 +269,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-e735791dc744",
-      "text": "Cette famille est l’une des treize du pôle production comptable décrites dans la carte des tâches automatisables d’un cabinet, et elle commence là où finit la collecte : sans pièce reçue, rien à lire. La méthode Memlia part de la règle écrite ci-dessus, la rejoue sur vos propres fichiers en recette, et la code dans les outils que le cabinet utilise déjà.",
+      "id": "unit-7e43b4767220",
+      "text": "Cette famille est l’une des treize du pôle production comptable décrites dans la carte des tâches automatisables d’un cabinet, et elle commence là où finit la collecte : sans pièce reçue, rien à lire. Nous prenons cette tâche entière : nous écrivons la règle de saisie de votre cabinet, fournisseurs récurrents, imputations habituelles et motifs de refus compris, nous l’automatisons dans les outils que vos équipes utilisent déjà, elles la recettent sur un lot de pièces, et nous la maintenons quand un fournisseur change. Vous gardez la validation de chaque écriture et l’imputation des achats inhabituels. C’est la méthode, et c’est le service : une tâche prise en charge, pas des sièges.",
       "claimIds": []
     }
   ],

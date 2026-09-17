@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "candidateSlug": "suivre-la-production-sociale-dans-excel",
+  "reviewedAt": "2026-09-17",
+  "reviewer": "relecteur-qualite-ia-memlia",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 97,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 28,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 25,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 14,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 15,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 15,
+      "max": 15
+    }
+  },
+  "evidence": [
+    "Schema JSON-LD @graph complet et cohérent : BlogPosting, BreadcrumbList, Person et Organization (+ WebSite), avec datePublished 2026-09-09 et dateModified 2026-09-17 qui reflètent la republication déclarée.",
+    "Les 5 claims du paquet de revue ont été vérifiés indépendamment par recherche directe dans les copies locales des sources (lignes 698, 703, 757, 805, 830) : les 5 citations correspondent mot pour mot au texte source.",
+    "Maillage interne au-delà du minimum attendu : lien vers le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, deux articles frères cités en corps (contrôle des bulletins, comptes rendus DSN), deux autres en « À lire ensuite », /methode, /garanties et deux ancres de glossaire.",
+    "Image de couverture livrée en AVIF/WebP responsive (768/1200/1600w), dimensions explicites 1600×900, loading=\"eager\" et fetchpriority=\"high\" réservés à l’image LCP, cohérente avec les dérivés déclarés dans image.json et vérifiés sur les fichiers eux-mêmes (master 1920×1080, OG 1200×630, hero 768×432).",
+    "Trois tableaux structurés avec <thead> (dictionnaire de 11 colonnes, matrice de transition à 4 cas, jeu d’essai de 5 dossiers) plus un tableau comparatif à 3 colonnes (automatisable / validation / humain), sans saut de hiérarchie de titres sur l’ensemble du rendu.",
+    "Title tag à 60 caractères et meta description à 142 caractères, tous deux cohérents avec le contenu visible ; canonical et balises OG/Twitter (image 1200×630) présentes et correctes.",
+    "La formule d’atténuation « à adapter », relevée deux fois par la revue précédente et posée en P0 éditorial, a été retirée du corps : recherche vérifiée à zéro occurrence dans corps.md et dans le rendu HTML.",
+    "Aucun chiffre de gain, aucune donnée client réelle, aucun tiret cadratin et aucun usage du mot « module » dans le corps de l’article ; le bandeau noindex et « Candidat éditorial » visibles sur ce rendu appartiennent au harnais de prévisualisation QA."
+  ],
+  "reservations": [
+    "Aucun audit Lighthouse (performance, accessibilité, bonnes pratiques, SEO) n’a été exécuté sur ce rendu : les signaux statiques (fetchpriority, dimensions explicites, préchargement des polices) sont favorables mais non chiffrés.",
+    "Le rendu mobile réel (320/768 px) n’a pas été capturé dans un navigateur ; seules les media queries et les unités clamp() du CSS ont été lues dans le code source.",
+    "La citation réelle de la page par un moteur génératif (Google AI Overviews, ChatGPT, Perplexity) n’est pas mesurable avant publication : ce rendu porte un robots noindex propre au harnais de prévisualisation QA, pas à l’article publié.",
+    "L’existence et le contenu réels des pages liées en pied de page (/a-propos, /mentions-legales, /politique-de-confidentialite) n’ont pas été revérifiés dans le cadre de cette revue, qui porte sur l’article lui-même."
+  ],
+  "verdict": "Article prêt sur le plan contenu, SEO, technique et citabilité IA (97/100) : le P0 éditorial de la revue précédente (« à adapter » répété deux fois) est corrigé et vérifié absent, sans régression détectée ailleurs dans le rendu.",
+  "subject": {
+    "slug": "suivre-la-production-sociale-dans-excel",
+    "articleSha256": "1329a741a1b7df93e661e94ef755eae8421eb3c4a936aa6283103f2fd42ddc3b",
+    "manifestSha256": "ee13296cbfae5cd4c4e319deda3a8a4184f5a463b8a658bb20889bc480588245"
+  }
+}

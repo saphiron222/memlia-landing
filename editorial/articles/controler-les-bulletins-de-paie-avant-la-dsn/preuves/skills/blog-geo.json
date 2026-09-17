@@ -1,20 +1,18 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "skill",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "observations": [
-    "Le livrable amont scellé et l’intégration courante documentent l’exécution de blog-geo sur ce candidat exact."
+    "Réponse directe en tête (87 mots au premier paragraphe) ; définitions extractibles dans le corps.",
+    "Contenu présent dans le HTML statique dès le chargement, sans dépendance JavaScript pour le texte principal : accessible à un crawler IA sans exécution de script.",
+    "Huit tableaux avec <thead> et une « Réponse directe » en ouverture offrent des passages autonomes, citables indépendamment du reste de l'article.",
+    "Terminologie stable (DSN, Dsn-Val, CRM, écart, revue) définie en gras à la première occurrence puis réutilisée sans synonymie flottante.",
+    "La FAQ à cinq questions et la checklist finale en tableau renforcent l'extractibilité pour une réponse générative directe.",
+    "Le robots meta « noindex, follow » bloque actuellement l'indexation IA et recherche, cohérent avec le statut de candidat non publié plutôt qu'un défaut de contenu."
   ],
-  "skill": "blog-geo",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/skills/blog-geo.json",
-    "originalSha256": "50f2f4f4aa9ec7716bea2ba58292784a8a0be16943e78d18a1ed651d93656187",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "skill": "blog-geo"
 }

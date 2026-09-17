@@ -30,25 +30,25 @@
     }
   },
   "evidence": [
-    "Schema JSON-LD complet sur la page rendue : BlogPosting, Person (Kevin Kitanga), Organization (Memlia, SIREN/SIRET), BreadcrumbList et WebSite, sans élément manquant du socle attendu.",
-    "Quatre sources tier-1 officielles (3x Service-Public, 1x CNIL) citées avec URL et date de consultation dans une section « Sources consultées » dédiée, en plus des liens contextuels dans le corps.",
-    "Six tableaux structurés avec <thead> couvrent les champs extraits par certitude, les six contrôles ordonnés, la règle déclencheur/condition/action/exception, et la matrice automatisé/validé/humain.",
-    "Bloc « En bref » résumant la réponse dès l'ouverture, suivi d'un paragraphe de réponse directe, conforme au format answer-first attendu pour l'intent « executer ».",
-    "Jeu de test fictif chiffré (50 pièces réparties en huit catégories, dont pièges construits) qui démontre la méthode par un cas rejouable plutôt que de l'affirmer abstraitement.",
-    "Image de couverture avec dérivés AVIF/WebP déclarés en 768/1200/1600px, OG 1200x630 avec largeur et hauteur explicites, alt descriptif de 121 caractères.",
-    "FAQ de cinq questions en h3 sous « Questions fréquentes », sans schema FAQPage dédié — non pénalisant selon le barème qui traite le FAQPage comme optionnel.",
-    "Title tag corrigé : « Saisie comptable OCR : ce qui reste à vérifier | Memlia » fait désormais 55 caractères et attaque sur la requête primaire, contre 63 caractères avant correction."
+    "Schema JSON-LD complet sur la page rendue : BlogPosting, Person (Kevin Kitanga, avec bio et lien /a-propos), Organization (Memlia, SIREN 108621541, adresse Paris 8e), BreadcrumbList et WebSite.",
+    "Les cinq claims sourcés du paquet de revue sont vérifiés mot pour mot dans les copies locales (.source.txt) des quatre sources tier-1 citées, sans écart de portée ni de polarité.",
+    "Hiérarchie de titres propre sur toute la page : un seul h1, puis des h2, avec des h3 réservés à la FAQ — aucun saut de niveau relevé.",
+    "9 liens internes contextuels au total (7 dans le corps : glossaire x3, article frère, article pilier, /methode, /automatisation-cabinet-comptable ; 2 dans le bloc de clôture) et 4 liens externes tier-1, dans les fourchettes recommandées par le barème.",
+    "Image de couverture servie en AVIF/WebP avec srcset 768/1200/1600w, loading=\"eager\" et fetchpriority=\"high\" sur l'image LCP (pas de lazy-loading fautif), alt de 121 caractères.",
+    "Maillage bidirectionnel vérifié par grep : l'article pilier (automatiser-un-cabinet-comptable-la-carte-des-taches.html) et l'article frère (automatiser-la-relance-des-pieces-clients.html) renvoient tous deux vers cet article, et réciproquement.",
+    "Zéro tiret cadratin, zéro chiffre de gain, zéro mention de donnée client et zéro occurrence du mot « module » dans le corps de l'article ; le jeu de test est explicitement qualifié de « fictif ».",
+    "Plusieurs phrases s'enchaînent par point-virgule sur cinq ou six propositions (ex. l'ouverture de Brique 2 : « On vérifie d'abord que... puis que... puis que... »), ce qui allonge la longueur moyenne de phrase au-delà des ~22 mots recommandés pour la lisibilité."
   ],
   "reservations": [
-    "Le score Lighthouse (LCP/INP/CLS) n'a pas été mesuré directement sur cette page rendue, seule la présence des signaux favorables (fetchpriority, préchargement des polices) a été vérifiée dans le code.",
-    "La citabilité IA réelle (apparition effective dans une réponse ChatGPT, Perplexity ou Google AI Overviews) n'a pas été testée ; seule la structure extractible du contenu a été évaluée.",
-    "Le meta robots de cette page rendue est « noindex, follow » car il s'agit d'un candidat en preview privée non publiable ; c'est un artefact du rendu de prévisualisation, pas un défaut de l'article, mais il reste à vérifier que le robots sera bien indexable une fois l'article publié en production.",
-    "Le CTR et le temps de lecture réel ne peuvent pas être estimés sans données de trafic, absentes de ce contrôle éditorial."
+    "Le score Lighthouse (LCP/INP/CLS réels) n'a pas été mesuré : seule la présence de signaux favorables dans le code (CSS inliné, polices préchargées, fetchpriority sur le hero) a été vérifiée, pas leur effet chiffré.",
+    "La citabilité IA réelle (apparition effective dans une réponse Google AI Overviews, ChatGPT ou Perplexity) n'a pas été testée ; seule la structure extractible du HTML a été évaluée.",
+    "La page porte <meta name=\"robots\" content=\"noindex, follow\"> et le bandeau « Candidat éditorial — preview privée, non publiable » : identiques sur les 6 fichiers de .qa/render-tous/blog/, donc un artefact du harnais de rendu QA plutôt qu'un réglage propre à cet article — à confirmer absent une fois l'URL publiée en production.",
+    "La lisibilité (Flesch ou équivalent français) n'a pas été calculée par un outil ; l'appréciation de densité de phrase reste qualitative."
   ],
-  "verdict": "Article complet, rigoureusement sourcé et structuré pour l'extraction IA (98/100) ; le title tag a été corrigé sous les 60 caractères, prêt pour publication sous réserve de lever le noindex de preview.",
+  "verdict": "Article rigoureusement sourcé (5/5 claims vérifiées soutient) et structuré pour l'extraction humaine et IA (98/100) ; publiable tel quel sous la seule réserve de confirmer, hors de cet artefact de preview QA, que la page finale ne sera pas en noindex.",
   "subject": {
     "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "articleSha256": "3218163766cd1d894fac55558c25d313812b5f0599175ebe245f0cac4142ea7c",
-    "manifestSha256": "84c87ed7474b6c1539c5aad63f7ec0fd57319d820da5b12eccb41ecd16630591"
+    "articleSha256": "b003816625a783b40c463995ec503c987588747f376cf8aa9a709ce7c6109a6c",
+    "manifestSha256": "ef237f9e8a6d23f474e9549b70c391d60e7e795e4e473a355751372e72f5dbbb"
   }
 }

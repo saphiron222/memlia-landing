@@ -3,15 +3,17 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
 
-// Conservation des deux articles déjà publiés, pas une autorisation de publication.
+// Conservation d'un article publié hors forge, pas une autorisation de publication.
 // Autorite re-pointee le 16/09/2026 : la production a avance avec la release de l'article 3.
 // Re-pointé le 17/09/2026 sur le commit e5354f6, qui ne change que le titre d'onglet des
 // trois articles antérieurs à la v3 : corps, sources, affirmations et images intacts.
+// Vidé le 17/09/2026 au soir : les trois articles antérieurs à la v3 (bulletins, production
+// sociale, CRM DSN) sont entrés dans la forge avec une recette, des sources revérifiées et
+// une revue neuve ; leur dossier est scellé par preuves/publication.json comme les autres.
+// Le mécanisme reste en place pour un article qui serait publié hors forge : y inscrire
+// le commit de production et l'empreinte de l'article, puis rejouer migrate-published-blog.
 export const PUBLISHED_BLOG_COMMIT = 'e5354f6295f50c7d9918c66aae3240418425d3fe';
-export const PUBLISHED_BLOG_HASHES = Object.freeze({
-  'controler-les-bulletins-de-paie-avant-la-dsn': '2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9',
-  'suivre-la-production-sociale-dans-excel': '154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788',
-});
+export const PUBLISHED_BLOG_HASHES = Object.freeze({});
 export const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 export const ADOPTION_PATH = 'preuves/published-adoption.json';
 export function dossierFiles(directory, prefix = '') {

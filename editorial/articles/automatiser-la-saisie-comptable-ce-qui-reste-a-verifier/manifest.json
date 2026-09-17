@@ -23,10 +23,11 @@
     "file d’anomalies",
     "doublon de facture"
   ],
-  "primaryQuery": "automatisation saisie comptable OCR",
+  "primaryQuery": "automatisation saisie comptable",
   "secondaryQueries": [
     "pré-comptabilisation automatique pièces",
-    "extraction automatique facture comptabilité"
+    "extraction automatique facture comptabilité",
+    "automatisation saisie comptable OCR"
   ],
   "intent": "executer",
   "fanOut": [
@@ -130,9 +131,9 @@
   "reviewer": "marketing",
   "reviewRule": "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois.",
   "cta": {
-    "label": "Faire coder la règle de saisie de votre cabinet",
+    "label": "Confier cette tâche",
     "destination": "/contact",
-    "outcome": "Une demande décrivant les contrôles et les exceptions actuels du cabinet."
+    "outcome": "Nous écrivons la règle de saisie de votre cabinet dans vos mots, fournisseurs récurrents et motifs de refus compris, nous l’automatisons dans les outils que vos équipes utilisent déjà, et elles la recettent sur un lot de pièces. Chaque écriture reste validée par une personne. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
   },
   "image": {
     "heroId": "img-art-saisie-comptable",
@@ -160,7 +161,8 @@
       "/methode",
       "/glossaire#reconnaissance-optique-de-caracteres",
       "/glossaire#pre-comptabilite",
-      "/glossaire#file-d-anomalies"
+      "/glossaire#file-d-anomalies",
+      "/automatisation-cabinet-comptable"
     ],
     "incoming": [
       "/blog",

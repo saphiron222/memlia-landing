@@ -2,7 +2,7 @@
   "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "title": "Automatiser un cabinet comptable : la carte des tâches",
   "tabTitle": "Automatisation cabinet comptable : carte des tâches | Memlia",
-  "summary": "Soixante familles de tâches réparties en onze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel.",
+  "summary": "Soixante familles de tâches réparties en douze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel.",
   "description": "La carte des tâches automatisables d’un cabinet d’expertise comptable : soixante familles, la règle typique de chacune et sa frontière d’automatisation.",
   "date": "2026-09-16",
   "topics": [
@@ -46,19 +46,19 @@
   "task": "Dresser la carte des tâches automatisables du cabinet et repérer celles qui ont une règle écrite.",
   "rankability": "plausible",
   "businessRelevance": "directe",
-  "proofRequired": "Onze pôles et soixante familles listés depuis src/data/familles.ts ; pour chaque pôle un tableau se-prépare-seul / attend-une-validation / reste-humain ; cinq affirmations sourcées sur des pages officielles ouvertes le jour de la publication.",
+  "proofRequired": "Douze pôles et soixante familles listés depuis src/data/familles.ts ; pour chacun des onze pôles ouverts, un tableau se-prépare-seul / attend-une-validation / reste-humain ; le douzième (audit légal) listé et non ouvert ; cinq affirmations sourcées sur des pages officielles ouvertes le jour de la publication.",
   "reviewRule": "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données.",
   "cta": {
-    "label": "Cadrer une première tâche",
+    "label": "Confier une première tâche",
     "destination": "/contact",
-    "outcome": "Une demande décrivant une tâche précise du cabinet, sa règle et ses exceptions."
+    "outcome": "Nous écrivons la règle de la tâche que vous choisissez dans vos mots, nous l’automatisons dans les outils que vos équipes utilisent déjà, et elles la recettent sur vos dossiers. La décision reste à vos équipes, à chaque endroit où elle engage le cabinet. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
   },
   "image": {
     "heroId": "img-art-carte-des-taches",
     "alt": "Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation",
     "cadre": {
       "titre": "La carte des tâches automatisables d’un cabinet",
-      "sousTitre": "Onze pôles, soixante familles, une frontière par tâche",
+      "sousTitre": "Douze pôles, soixante familles, une frontière par tâche",
       "famille": "Méthode et décision humaine",
       "colonnes": [
         {
@@ -275,7 +275,7 @@
       "Plan calqué sur le gabarit pillar-page du skill blog : réponse directe, définitions, sections par tâche, tableau déclencheur/condition/action/exception, refus, frontière en trois colonnes, jeu fictif, cadre sourcé, erreurs à éviter, questions fréquentes, règle à retenir."
     ],
     "blog-style": [
-      "Passe de style : phrases courtes, aucune formule de remplissage, aucun superlatif, aucun chiffre de gain ; charge cognitive mesurée par cognitive_load.py (verdict Healthy, aucune section surchargée)."
+      "cognitive_load.py joué le 17/09/2026 sur corps.md : verdict global « Healthy », 20 sections analysées, 1 section(s) signalée(s) (La carte en un tableau : clause_depth) ; profondeur de proposition moyenne maximale 13.5."
     ],
     "blog-schema": [
       "BlogPosting, BreadcrumbList, Person, Organization et WebSite émis par ArticleJsonLd.astro depuis le frontmatter ; ImageObject sur la couverture générée ; aucun FAQPage ni HowTo (résultats enrichis retirés)."
@@ -284,7 +284,11 @@
       "Couverture générée depuis le brief à six composantes (sujet, composition, style, palette, interdits, alt) : Higgsfield, modèle gpt_image_2_5, qualité haute 2K, job 18bea6d9-dd0c-4f80-85bc-fce55f0ba8d8, 3 crédits ; revue visuelle à six critères dans image.json."
     ],
     "blog-taxonomy": [
-      "Les onze pôles et soixante familles rendus dans l’article sont ceux de src/data/familles.ts (source unique), relus contre le tableau « La carte en un tableau »."
+      "Les douze pôles et soixante familles rendus dans l’article sont ceux de src/data/familles.ts (source unique), relus contre le tableau « La carte en un tableau »."
+    ],
+    "blog-rewrite": [
+      "Republication du 17/09/2026 selon la charte de message v3 (§7 bis) : « Comment lire cette carte ? » nomme le savoir-faire que personne n’a écrit ; « Par où commencer ? » dit ce que nous prenons en charge, entier, et ce que le cabinet garde ; vocabulaire de catalogue retiré (« compléments ») ; appel « Confier une première tâche » (le pilier ne traite pas une tâche unique). Familles, tableaux, sources et affirmations inchangés. Deuxième passe du 17/09/2026 : compte des pôles recalé sur src/data/familles.ts (douze pôles, dont l’audit légal listé et non ouvert ; le tableau totalise désormais soixante familles), et un tableau de frontière ajouté aux quatre pôles qui n’en avaient pas (RH, Excel et outils existants, conseil, méthode), comme « Comment lire cette carte ? » l’annonce."
     ]
-  }
+  },
+  "updatedAt": "2026-09-17"
 }

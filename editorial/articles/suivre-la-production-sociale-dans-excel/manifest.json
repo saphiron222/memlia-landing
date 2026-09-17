@@ -1,14 +1,14 @@
 {
   "version": 1,
   "slug": "suivre-la-production-sociale-dans-excel",
-  "action": "revision",
-  "editorialStatus": "publie-non-atteste",
+  "action": "creation",
+  "editorialStatus": "publie",
   "title": "Suivre la production sociale dans Excel : modèle, règles et limites",
   "tabTitle": "Tableau de bord paie Excel : suivre sans surveiller | Memlia",
-  "summary": "Construisez le suivi sur l’unité dossier × période × étape : une table de saisie contrôlée, des calculs régénérables et une vue agrégée. Les exceptions portent sur les dossiers, jamais sur un classement individuel.",
+  "summary": "Construisez le suivi sur l’unité dossier × période × étape : une table de saisie contrôlée, des calculs régénérables et une vue agrégée. Les exceptions portent sur les dossiers, jamais sur un classement individuel, et un jeu d’essai fictif éprouve le modèle avant la mise en service.",
   "description": "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel.",
   "publicationDate": "2026-09-09",
-  "updatedAt": "2026-09-15",
+  "updatedAt": "2026-09-17",
   "topics": [
     "production-sociale",
     "excel",
@@ -22,12 +22,14 @@
     "états de production",
     "pilotage anti-surveillance"
   ],
-  "primaryQuery": "tableau suivi production sociale Excel cabinet",
+  "primaryQuery": "tableau de bord paie excel",
   "secondaryQueries": [
     "suivi portefeuille social",
     "classeur pôle social",
     "états de production",
-    "pilotage anti-surveillance"
+    "pilotage anti-surveillance",
+    "tableau suivi production sociale Excel cabinet",
+    "suivi production sociale excel"
   ],
   "intent": "executer",
   "fanOut": [
@@ -46,83 +48,81 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-13"
+      "verifiedAt": "2026-09-17"
     }
   },
   "businessReview": {
     "required": true,
-    "reviewerId": null,
+    "reviewerId": "relecteur-metier-ia-memlia",
     "role": "paie-responsables-sociaux",
-    "status": "PENDING",
-    "evidence": "preuves/published-non-attestation.json"
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
   },
   "funnel": "MOFU",
   "cluster": "excel-outils-existants",
+  "famille": "suivi-production-sociale",
   "contentType": "searchable",
   "format": "how-to-guide",
   "task": "Structurer un classeur de suivi existant pour identifier l’étape et les exceptions de chaque dossier sans classement individuel.",
   "rankability": "plausible",
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
-  "proofRequired": "Les affirmations Excel et CNIL sont rattachées aux sources primaires relues le 15 septembre 2026. Le contenu est publié sans attestation métier indépendante.",
-  "sourcesVerifiedAt": "2026-09-15",
+  "proofRequired": "Dictionnaire de onze colonnes, dix états fermés et leur matrice de transition, jeu d’essai fictif de cinq dossiers avec recette en cinq points, frontière en trois colonnes ; cinq affirmations citées mot pour mot depuis la CNIL et le support Microsoft, ouvertes le jour de la republication.",
+  "sourcesVerifiedAt": "2026-09-17",
   "sources": [
     {
       "id": "cnil-employee-monitoring",
       "publisher": "CNIL",
       "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
       "url": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-      "classificationReason": "CNIL publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "classificationReason": "Page officielle de l’autorité de protection des données sur les conditions d’un dispositif de contrôle de l’activité des salariés.",
       "method": null,
       "classificationEvidence": "preuves/sources/cnil-employee-monitoring.classification.json",
-      "verificationEvidence": "preuves/sources/cnil-employee-monitoring.json",
-      "publishedCheckedAt": "2026-09-15"
+      "verificationEvidence": "preuves/sources/cnil-employee-monitoring.json"
     },
     {
       "id": "microsoft-excel-tables",
       "publisher": "Microsoft Support",
       "title": "Overview of Excel tables",
       "url": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "level": "tier-2",
       "provenance": "primary",
       "official": false,
       "upstreamUrl": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
-      "classificationReason": "Microsoft Support publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "classificationReason": "Documentation de l’éditeur du logiciel décrit, source primaire sur la fonction, non officielle au sens réglementaire.",
       "method": null,
       "classificationEvidence": "preuves/sources/microsoft-excel-tables.classification.json",
-      "verificationEvidence": "preuves/sources/microsoft-excel-tables.json",
-      "publishedCheckedAt": "2026-09-15"
+      "verificationEvidence": "preuves/sources/microsoft-excel-tables.json"
     },
     {
       "id": "microsoft-protect-sheet",
       "publisher": "Microsoft Support",
       "title": "Protect a worksheet",
       "url": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "level": "tier-2",
       "provenance": "primary",
       "official": false,
       "upstreamUrl": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
-      "classificationReason": "Microsoft Support publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "classificationReason": "Documentation de l’éditeur du logiciel décrit, source primaire sur la portée de la protection de feuille.",
       "method": null,
       "classificationEvidence": "preuves/sources/microsoft-protect-sheet.classification.json",
-      "verificationEvidence": "preuves/sources/microsoft-protect-sheet.json",
-      "publishedCheckedAt": "2026-09-15"
+      "verificationEvidence": "preuves/sources/microsoft-protect-sheet.json"
     }
   ],
   "author": "kevin",
   "reviewer": "marketing",
-  "reviewRule": "Revue éditoriale et fact-check réalisés ; publication déclarée non attestée par un professionnel du social ou de la protection des données.",
+  "reviewRule": "Réviser à chaque changement de la page CNIL sur le contrôle de l’activité des personnes employées ou des pages Microsoft citées, et à la publication de l’article sur le tableau de bord de production ; relecture des sources à six mois.",
   "cta": {
-    "label": "Identifier une tâche à automatiser",
-    "destination": "https://cal.com/kevin-svg/decouvrir-memlia",
-    "outcome": "Memlia peut définir avec le cabinet les règles, exceptions et tests à automatiser dans le classeur existant ; le cabinet valide le résultat."
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de suivi de votre pôle social dans vos mots, unité, états, transitions et exceptions compris, nous l’automatisons dans le classeur et les outils que votre équipe utilise déjà, et elle la recette sur le jeu fictif puis sur vos dossiers. Chaque décision sur une exception, et tout ce qui touche aux personnes, reste à vos équipes. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
   },
   "image": {
     "heroId": "img-24-suivi-production-sociale",
@@ -135,43 +135,49 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-13"
+      "checkedAt": "2026-09-17"
     },
     "gsc": {
-      "status": "ND",
+      "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-13"
+      "checkedAt": "2026-09-17"
     }
   },
   "links": {
     "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
       "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
-      "/#methode",
-      "/#garanties"
+      "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "/methode",
+      "/garanties",
+      "/glossaire#fail-closed",
+      "/glossaire#agregat-non-nominatif"
     ],
     "incoming": [
       "/blog",
-      "/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/comprendre-les-comptes-rendus-metier-dsn"
     ]
   },
   "cannibalization": {
     "risk": "faible",
     "comparedWith": [
-      "/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
     ],
-    "decision": "DIFFERENTIATE_AND_LINK",
-    "resolutions": [
-      "Les tâches et requêtes primaires restent distinctes.",
-      "Le lien croisé explicite matérialise leur complémentarité."
-    ],
-    "evidence": "preuves/cannibalization.json"
+    "decision": "Cet article structure le classeur de suivi du pôle social (requête « tableau de bord paie excel », intention exécuter) ; l’article sur les bulletins traite un contrôle situé entre deux états de ce suivi ; le pilier cartographie. Intentions distinctes, liens croisés."
   },
   "contradictions": [],
   "kevin": {
     "briefApproved": true,
     "previewApproved": true,
-    "productionApproved": false
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
   },
-  "evidenceVerifiedAt": "2026-09-13",
-  "publicationEvidence": "preuves/published-adoption.json"
+  "publishedAt": "2026-09-17",
+  "publicationEvidence": "preuves/publication.json"
 }

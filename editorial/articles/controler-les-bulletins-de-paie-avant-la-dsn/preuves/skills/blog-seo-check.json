@@ -1,20 +1,18 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "skill",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "observations": [
-    "Le livrable amont scellé et l’intégration courante documentent l’exécution de blog-seo-check sur ce candidat exact."
+    "Titre 54 caractères, onglet 60, description 137 ; 8 lien(s) interne(s) : /blog/comprendre-les-comptes-rendus-metier-dsn, /blog/suivre-la-production-sociale-dans-excel, /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /blog/automatiser-la-relance-des-pieces-clients, /glossaire#controle-avant-dsn, /glossaire#dsn-val, /methode, /garanties ; 4 lien(s) externe(s) dans le corps.",
+    "Title de 60 caractères (« Contrôle bulletin de paie en cabinet : avant la DSN | Memlia »), mot-clé en tête, à la limite haute de la fourchette 40-60 sans la dépasser.",
+    "Meta description de 137 caractères, fidèle au contenu visible (trois revues, écarts, preuves avant dépôt).",
+    "URL stable et lisible : /blog/controler-les-bulletins-de-paie-avant-la-dsn, casse cohérente.",
+    "Quatre liens externes tier-1, dans la fourchette recommandée 3-8, et six ancres internes contextuelles avec ancres descriptives (pilier, glossaire x2, article frère, méthode, garanties).",
+    "Canonical, Open Graph (image 1200x630 vérifiée par lecture du fichier) et Twitter Card summary_large_image tous renseignés et cohérents avec l'URL de production."
   ],
-  "skill": "blog-seo-check",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/skills/blog-seo-check.json",
-    "originalSha256": "1ea0c3be222216dc1871030b776415dbd02607cb8972f0125e707588a5f80ef0",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "skill": "blog-seo-check"
 }

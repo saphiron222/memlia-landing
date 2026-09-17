@@ -1,11 +1,7 @@
 {
   "version": 1,
-  "articles": {
-    "controler-les-bulletins-de-paie-avant-la-dsn": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-    "suivre-la-production-sociale-dans-excel": "154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788",
-    "comprendre-les-comptes-rendus-metier-dsn": "2e64f531c87b7a1c416830e995b83295ba44c8d5394eb11914c1334e46f1ba1d"
-  },
+  "articles": {},
   "notes": {
-    "comprendre-les-comptes-rendus-metier-dsn": "Publie le 16/09/2026 par la chaine blog anterieure au contrat de dossier du candidat Ressources. Son dossier editorial existe et a ete verifie (fact-check 5 sources officielles, revue qualite 94/100, contre-revue independante t_46ed91b5 99/100, 0 P0), mais il ne suit pas le format manifest.json + skills.json du pipeline. Epingle ici pour que toute modification silencieuse soit detectee ; sa migration vers le format pipeline reste a faire. Octets re-epingles le 16/09/2026 (commit e2196a3) apres le retrait de l'encart « Contenu non atteste » et de la section « Comment ce guide a-t-il ete verifie ? », a la demande de Kevin ; le frontmatter de statut editorial est inchange. Octets re-epingles le 17/09/2026 (commit e5354f6) apres correction du seul titre d'onglet, cale sur la requete reellement tapee (« CRM DSN ») : corps, sources, affirmations et image inchanges."
+    "2026-09-17": "Vide depuis le 17/09/2026 au soir : les trois articles antérieurs à la v3 (controler-les-bulletins-de-paie-avant-la-dsn, suivre-la-production-sociale-dans-excel, comprendre-les-comptes-rendus-metier-dsn) sont entrés dans la forge (editorial/recettes/<slug>/) avec une recette, des sources revérifiées le jour même et une revue neuve ; leur dossier est scellé par preuves/publication.json. Un article publié hors forge s'inscrirait ici, octets épinglés sans preuve prêtée (voir scripts/lib/blog-published-authority.mjs)."
   }
 }

@@ -1,20 +1,13 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "skill",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "observations": [
-    "Le livrable amont scellé et l’intégration courante documentent l’exécution de seo-content sur ce candidat exact."
+    "3202 mots, 16 H2 ; lecture par la grille éditoriale (intent-satisfaction, eeat-sources, information-gain-proof)."
   ],
-  "skill": "seo-content",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/skills/seo-content.json",
-    "originalSha256": "0859aec86e89b05bd4dcbeeb3bd8cb5a9400c06bdaf91ae493cc812837f3bd2c",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "skill": "seo-content"
 }

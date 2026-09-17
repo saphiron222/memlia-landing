@@ -4,6 +4,7 @@ titreOnglet: "Relance des pièces manquantes en cabinet comptable | Memlia"
 resume: "Trois briques rejouables sans changer d’outil : une checklist conditionnelle par dossier, un contrôle de complétude à quatre états, une cadence de relance qui s’arrête à réception. Rien ne part sans validation, tout dossier en litige sort du circuit."
 description: "Relancer les pièces manquantes d’un dossier client en trois briques : checklist conditionnelle, contrôle de complétude, cadence qui cesse à réception."
 datePublication: 2026-09-16
+dateMiseAJour: 2026-09-17
 auteur: kevin
 sujets: [pieces, automatisation, cabinet]
 motsCles: ["relance pièces manquantes", "collecte de pièces", "complétude du dossier", "relance clients cabinet comptable", "checklist conditionnelle"]
@@ -22,7 +23,7 @@ tache: "Obtenir les pièces manquantes d’un dossier sans relancer à la main, 
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-16
+  date: 2026-09-17
 funnel: MOFU
 contentType: searchable
 format: how-to-guide
@@ -32,11 +33,11 @@ proofStatus: verifiee
 proofRequired: "Jeu fictif de six dossiers rejoué sur la règle (cas courant, pièce hors période, dossier en litige, dossier sans checklist) ; tableau déclencheur-condition-action-exception ; quatre affirmations sourcées."
 reviewRule: "Réviser à la publication de l’article sur la complétude du dossier et de celui sur la facture électronique ; relecture des sources à six mois."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-16
+sourcesVerifieesLe: 2026-09-17
 cta:
-  label: "Faire coder la règle de relance de votre cabinet"
+  label: "Confier cette tâche"
   destination: "/contact"
-  outcome: "Une demande décrivant la cadence et les exceptions actuelles du cabinet."
+  outcome: "Nous écrivons la règle de relance de votre cabinet dans vos mots, nous l’automatisons dans votre messagerie et votre classeur de suivi, et vos équipes la recettent sur vos dossiers. Chaque envoi reste validé par une personne. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
 imageOg: "/images/img-art-relance-des-pieces-og.webp"
 imageAlt: "Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart"
 statutEditorial: publie
@@ -44,19 +45,19 @@ sources:
   - editeur: "CNIL"
     titre: "Règlement européen sur la protection des données, chapitre 2 : principes"
     url: "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2"
-    consulte: 2026-09-16
+    consulte: 2026-09-17
   - editeur: "CNIL"
     titre: "Les durées de conservation des données"
     url: "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees"
-    consulte: 2026-09-16
+    consulte: 2026-09-17
   - editeur: "Service Public"
     titre: "Quels sont les délais de conservation des documents pour les entreprises ?"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F10029"
-    consulte: 2026-09-16
+    consulte: 2026-09-17
   - editeur: "CNIL"
     titre: "Définition : sous-traitant"
     url: "https://www.cnil.fr/fr/definition/sous-traitant"
-    consulte: 2026-09-16
+    consulte: 2026-09-17
 ---
 
 ## Réponse directe
@@ -69,7 +70,7 @@ Automatiser la relance des pièces clients, c’est tenir pour chaque dossier la
 
 Chaque mois, la période ne peut pas être tenue parce que des pièces manquent : un relevé, des factures d’achat, la caisse du dernier trimestre. Le collaborateur relance à la main, client par client, depuis sa messagerie. Deux choses cassent alors. Personne ne sait qui a déjà été relancé, ni quand, ni pour quoi ; la deuxième relance répète la première ou l’oublie. Et l’on relance des pièces déjà reçues, parce que la réception n’a pas été constatée au bon endroit. Le résultat n’est pas seulement du temps perdu : c’est un client agacé par une relance inutile, et une pièce vraiment manquante qui attend.
 
-La cause n’est pas la messagerie, ni le client. C’est l’absence d’une règle écrite : quelles pièces sont attendues pour ce dossier et cette période, dans quel état, et à partir de quand on relance. La suite décrit cette règle en trois briques, rejouables dans un classeur et une messagerie ordinaires, sans changer d’outil. C’est une méthode Memlia, pas une procédure réglementaire : chaque cabinet en fixe les paramètres.
+La cause n’est ni la messagerie ni le client. C’est une règle que le cabinet applique sans l’avoir écrite : quelles pièces sont attendues pour ce dossier et cette période, dans quel état, et à partir de quand on relance. Le collaborateur qui la connaît la rejoue de mémoire, entre deux dossiers qui demandent son jugement ; le jour où il part, la règle part avec lui. La suite l’écrit en trois briques, rejouables dans un classeur et une messagerie ordinaires, sans changer d’outil. C’est une méthode Memlia : chaque cabinet en fixe les paramètres.
 
 ## Que faut-il avoir sous la main avant de commencer ?
 
@@ -180,4 +181,4 @@ Une checklist par condition, quatre états par pièce, une cadence qui cesse à 
 
 ## Pour aller plus loin
 
-Cette famille est la première de [la carte des tâches automatisables d’un cabinet](/blog/automatiser-un-cabinet-comptable-la-carte-des-taches), et la collecte des variables de paie lui ressemble trait pour trait, comme le montre [le contrôle des bulletins avant le dépôt](/blog/controler-les-bulletins-de-paie-avant-la-dsn). La [pièce justificative](/glossaire#piece-justificative) est définie au glossaire. La [méthode Memlia](/methode) part de la règle écrite ci-dessus, la rejoue sur vos fichiers en recette, et la code dans les outils que vous utilisez déjà.
+Cette famille ouvre [la carte des tâches automatisables d’un cabinet](/blog/automatiser-un-cabinet-comptable-la-carte-des-taches), et la collecte des variables de paie lui ressemble trait pour trait, comme le montre [le contrôle des bulletins avant le dépôt](/blog/controler-les-bulletins-de-paie-avant-la-dsn). La [pièce justificative](/glossaire#piece-justificative) est définie au glossaire. Nous prenons cette tâche entière : nous écrivons la règle de relance de votre cabinet dans vos mots, nous l’automatisons dans votre messagerie et votre classeur de suivi, vos équipes la recettent sur vos dossiers, et nous la maintenons quand un dossier change de régime. Vous gardez l’envoi de chaque relance, la déclaration de complétude et le contact avec un client en difficulté. C’est [la méthode](/methode), et c’est [le service](/automatisation-cabinet-comptable) : une tâche prise en charge, pas des sièges.

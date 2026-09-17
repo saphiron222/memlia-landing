@@ -1,0 +1,260 @@
+{
+  "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "title": "Comment contrôler les bulletins de paie avant la DSN ?",
+  "tabTitle": "Contrôle bulletin de paie en cabinet : avant la DSN | Memlia",
+  "summary": "Trois revues à clore sur le fichier exact qui sera transmis : pièces et variables, écarts du bulletin, contrôle technique du fichier. Chaque écart est expliqué, corrigé puis retesté, ou confié à une personne désignée, et la trace se rattache au dernier fichier. Rien ne part sans validation.",
+  "description": "Méthode en trois revues pour contrôler variables, bulletins et fichier DSN, qualifier les écarts et conserver les preuves avant le dépôt.",
+  "date": "2026-09-09",
+  "updatedAt": "2026-09-17",
+  "topics": [
+    "paie",
+    "dsn",
+    "cabinet",
+    "methode"
+  ],
+  "keywords": [
+    "contrôler bulletin de paie avant DSN",
+    "contrôle DSN",
+    "DSN-Val",
+    "compte rendu métier",
+    "checklist paie"
+  ],
+  "primaryQuery": "contrôle bulletin de paie",
+  "secondaryQueries": [
+    "comment contrôler la DSN",
+    "contrôle des bulletins de paie",
+    "checklist paie avant DSN",
+    "compte rendu métier DSN",
+    "contrôler bulletin de paie avant DSN",
+    "vérifier bulletin de paie"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "préparer les pièces et variables",
+    "qualifier les écarts du bulletin",
+    "tester le fichier avec Dsn-Val",
+    "traiter les comptes rendus métier"
+  ],
+  "role": {
+    "primary": "paie-responsables-sociaux",
+    "secondary": [
+      "direction-associes"
+    ],
+    "proofLevel": "hypothese",
+    "proofNote": "Niveau conservé de la première publication du 09/09/2026 : rôle déduit du référentiel des besoins du pôle social (poste production sociale), à confirmer au premier rendez-vous d’un cabinet sur ce sujet."
+  },
+  "funnel": "TOFU",
+  "cluster": "paie-social",
+  "famille": "bulletins-controle",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Exécuter et clôturer une revue reproductible des bulletins et du fichier DSN avant le dépôt, puis organiser le traitement des retours.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Trois revues décrites avec leur responsable, leur moment, leur critère de blocage et leur preuve ; jeu fictif à trois cas (pièce cohérente, absente, contradictoire) ; tableau à trois colonnes de la frontière ; huit affirmations DSN et paie citées mot pour mot depuis Service-Public et Net-entreprises, ouvertes le jour de la republication.",
+  "reviewRule": "Réviser à chaque changement de version de Dsn-Val ou du cahier technique DSN cité par Net-entreprises, et à la publication de l’article sur la collecte des variables de paie ; relecture des sources à six mois.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de contrôle de votre cabinet dans vos mots, rubriques sensibles, seuils et responsables compris, nous l’automatisons dans les outils que votre pôle social utilise déjà, et vos gestionnaires la recettent sur des cas fictifs puis sur vos dossiers. La qualification des écarts, la correction et le dépôt restent à vos équipes. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
+  },
+  "image": {
+    "heroId": "img-23-controle-bulletins-paie",
+    "alt": "Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN.",
+    "brief": {
+      "sujet": "Le contrôle des bulletins avant le dépôt de la DSN : trois panneaux comptables successifs, pièces et variables, comparaison mensuelle avec une exception mise à part, validation technique d’un paquet électronique.",
+      "composition": "Horizontale 16:9, trois stations lues de gauche à droite sur un plateau ; à gauche des pièces empilées, au centre deux colonnes comparées avec une pièce mise à l’écart, à droite un paquet qui franchit un portique.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche, ombres courtes, faible profondeur, composition aérée.",
+      "palette": "Vert Memlia #27b657 et vert profond #1c8a41 dominants, fond crème papier, touches de graphite.",
+      "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome.",
+      "prompt": "Trois panneaux comptables : pièces/variables, comparaison mensuelle avec exception séparée, validation technique vers un paquet électronique. Diorama 3D isométrique, formes simplifiées, matières mates et translucides, fond crème papier, palette vert #27b657 / vert profond #1c8a41 / crème / graphite, lumière douce du haut gauche. Sans texte, sans chiffre, sans logo, sans personnage, sans interface.",
+      "reviewCriteria": [
+        "continuité avec les couvertures existantes",
+        "trois contrôles successifs lisibles",
+        "exception mise à l’écart avant décision",
+        "aucun texte, logo, donnée, fausse interface ou action automatique"
+      ]
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "openai_codex_gpt-image-2-medium_20260913_211744_c7c22c42",
+      "model": "gpt-image-2-medium",
+      "provider": "openai-codex",
+      "generatedAt": "2026-09-13",
+      "credits": null
+    }
+  },
+  "sources": [
+    {
+      "id": "service-public-dsn",
+      "publisher": "Service Public",
+      "title": "Déclaration sociale nominative (DSN)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Fiche officielle de la Direction de l’information légale et administrative, source primaire sur la DSN.",
+      "excerpt": "est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie"
+    },
+    {
+      "id": "net-entreprises-dsn-val",
+      "publisher": "Net-entreprises",
+      "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
+      "url": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle du GIP-MDS, opérateur de la DSN, sur l’outil d’auto-contrôle du fichier.",
+      "excerpt": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer."
+    },
+    {
+      "id": "net-entreprises-crm",
+      "publisher": "Net-entreprises",
+      "title": "Les comptes rendus métiers DSN",
+      "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle du GIP-MDS définissant le compte rendu métier et son traitement.",
+      "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
+    },
+    {
+      "id": "net-entreprises-fiabilisation",
+      "publisher": "Net-entreprises",
+      "title": "La fiabilisation des données de la DSN",
+      "url": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle du GIP-MDS sur les contrôles avant dépôt et la correction des erreurs signalées.",
+      "excerpt": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel."
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/methode",
+      "/garanties",
+      "/glossaire#controle-avant-dsn",
+      "/glossaire#dsn-val"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "/blog/suivre-la-production-sociale-dans-excel"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ],
+    "decision": "Cet article traite le contrôle avant dépôt (intention : exécuter une revue) ; l’article sur les comptes rendus métier traite la lecture des retours après dépôt (intention : comprendre) ; le pilier cartographie. Requêtes primaires et intentions distinctes, liens croisés dans les deux sens."
+  },
+  "serp": {
+    "requete": "contrôle bulletin de paie",
+    "date": "2026-09-17",
+    "volume": "ND",
+    "acteurs": [
+      "non relevé : l’appel DataForSEO du relevé de demande du 17/09/2026 a rendu l’erreur serveur 40101 sur cette requête"
+    ],
+    "formats": "relevé de l’audit des titres du 17/09/2026 : la requête a du volume en autocomplétion Google, l’intention dominante est celle d’un salarié qui vérifie sa propre fiche ; « en cabinet » dans le titre d’onglet filtre cette intention",
+    "note": "Aucune position revendiquée ; memlia.fr absent du top 20 sur les requêtes voisines mesurées le 17/09/2026."
+  },
+  "gsc": {
+    "requete": "contrôle bulletin de paie",
+    "date": "2026-09-17",
+    "periode": "28 jours au 14/09/2026",
+    "impressions": 0,
+    "clics": 0,
+    "note": "Search Console lue par le relevé de demande du 17/09/2026 (semaine du 08 au 14/09) : 0 impression et 0 clic sur cet article sur 7 et 28 jours ; le site entier compte 17 impressions et 4 clics sur 28 jours, tous sur l’accueil. Aucun crédit métrique revendiqué."
+  },
+  "claims": [
+    {
+      "unite": "rappelle que la DSN",
+      "claim": "est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie",
+      "type": "dsn",
+      "sourceId": "service-public-dsn",
+      "excerpt": "est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie",
+      "explanation": "Définition de la DSN citée mot pour mot depuis la fiche Service-Public, relue le jour de la republication."
+    },
+    {
+      "unite": "Cette dépendance donne l’ordre du travail",
+      "claim": "un logiciel de paie compatible avec la DSN est nécessaire",
+      "type": "dsn",
+      "sourceId": "service-public-dsn",
+      "excerpt": "les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.",
+      "explanation": "La fiche Service-Public pose la dépendance de la DSN au logiciel de paie, d’où l’ordre des revues."
+    },
+    {
+      "unite": "précise que « l’outil de contrôle Dsn-Val",
+      "claim": "l’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer",
+      "type": "dsn",
+      "sourceId": "net-entreprises-dsn-val",
+      "excerpt": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
+      "explanation": "Rôle de Dsn-Val décrit par Net-entreprises, cité mot pour mot."
+    },
+    {
+      "unite": "Dsn-Val est donc un outil d’auto-contrôle du fichier",
+      "claim": "les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé",
+      "type": "dsn",
+      "sourceId": "net-entreprises-dsn-val",
+      "excerpt": "Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
+      "explanation": "Périmètre des contrôles de Dsn-Val, cité mot pour mot depuis la même page."
+    },
+    {
+      "unite": "Le dépôt ouvre une nouvelle phase",
+      "claim": "un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée",
+      "type": "dsn",
+      "sourceId": "net-entreprises-crm",
+      "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
+      "explanation": "Définition officielle du compte rendu métier par Net-entreprises."
+    },
+    {
+      "unite": "La même page ajoute qu’« il est essentiel",
+      "claim": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM",
+      "type": "dsn",
+      "sourceId": "net-entreprises-crm",
+      "excerpt": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration",
+      "explanation": "Obligation de traitement des anomalies des CRM, formulée par Net-entreprises."
+    },
+    {
+      "unite": "distingue les contrôles avant dépôt et la consultation mensuelle",
+      "claim": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant",
+      "type": "dsn",
+      "sourceId": "net-entreprises-fiabilisation",
+      "excerpt": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
+      "explanation": "Fenêtre de retransmission « annule et remplace » et report au mois suivant, cités mot pour mot depuis la page de fiabilisation."
+    },
+    {
+      "unite": "En cas d’incompréhension, la même page invite",
+      "claim": "contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel",
+      "type": "dsn",
+      "sourceId": "net-entreprises-fiabilisation",
+      "excerpt": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
+      "explanation": "Répartition organisme / éditeur recommandée par Net-entreprises en cas d’incompréhension d’un retour."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "paie-responsables-sociaux"
+  },
+  "preuvesSkills": {
+    "blog-brief": [
+      "Brief hérité de la première publication du 09/09/2026, requête recalée sur « contrôle bulletin de paie » à l’audit des titres du 17/09/2026 (lecteur paie-responsables-sociaux, intention exécuter, entonnoir TOFU) ; tâche : exécuter et clôturer une revue reproductible des bulletins et du fichier DSN avant le dépôt."
+    ],
+    "blog-outline": [
+      "Plan aligné le 17/09/2026 sur le gabarit how-to-guide de la forge : réponse directe, définitions, pourquoi la tâche casse à la main, avant de commencer, résultat attendu, trois revues avec leurs tableaux, après le dépôt, écart inexpliqué, trace, frontière en trois colonnes, erreurs, questions fréquentes, checklist, règle à retenir, pour aller plus loin."
+    ],
+    "blog-rewrite": [
+      "Republication du 17/09/2026 selon la charte de message v3 (§7 bis) : entrée dans la forge (recette, quatre sources revérifiées le jour même, revue neuve), formules défensives retirées, section « pourquoi la tâche casse à la main » sur la règle que le gestionnaire applique sans l’avoir écrite, citation de Service-Public recalée sur la page en ligne (la phrase citée le 13/09 avait changé), appel « Confier cette tâche », liens vers le pilier, la méthode et les garanties. Revues, tableaux et jeu fictif conservés."
+    ],
+    "blog-schema": [
+      "BlogPosting émis par le gabarit Article avec datePublished 2026-09-09 et dateModified 2026-09-17 (updatedAt de la recette), BreadcrumbList, Person Kevin Kitanga rattaché à /a-propos#kevin-kitanga ; aucun FAQPage."
+    ],
+    "blog-style": [
+      "cognitive_load.py joué le 17/09/2026 sur corps.md : verdict global « Healthy », 16 sections analysées, 3 section(s) signalée(s) (Comment traiter un écart inexpliqué ? : numeric; Quelle trace conserver dans le portefeuille ? : entity; Checklist finale de clôture : entity) ; profondeur de proposition moyenne maximale 2.1."
+    ]
+  }
+}

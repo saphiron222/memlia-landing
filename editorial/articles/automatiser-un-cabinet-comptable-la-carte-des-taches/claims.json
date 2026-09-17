@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-  "articleSha256": "ceaad3298c603a00eba1a0dd17f7072edeeb50b75e4e1641a88303ceed2d6945",
+  "articleSha256": "03dfaab5f4d211d303f7f5e28bcb480847d15b23b34920a1f8c8d44cf36be6a6",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -9,8 +9,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-f66caebf64b6",
-      "text": "Automatiser une tâche de cabinet, c’est exécuter une règle écrite sans intervention humaine à chaque occurrence, et faire remonter ce qui sort de la règle. Un cabinet d’expertise comptable en compte des dizaines qui s’y prêtent : collecte de pièces, lettrage, échéances, honoraires, courriels, paie. Cette carte les classe en onze pôles et soixante familles, avec pour chacune la règle typique et la frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain.",
+      "id": "unit-b033c4d2aff3",
+      "text": "Automatiser une tâche de cabinet, c’est exécuter une règle écrite sans intervention humaine à chaque occurrence, et faire remonter ce qui sort de la règle. Un cabinet d’expertise comptable en compte des dizaines qui s’y prêtent : collecte de pièces, lettrage, échéances, honoraires, courriels, paie. Cette carte les classe en douze pôles et soixante familles, avec pour chacune la règle typique et la frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain.",
       "claimIds": []
     },
     {
@@ -39,6 +39,11 @@
       "claimIds": []
     },
     {
+      "id": "unit-993706c57f45",
+      "text": "La plupart de ces règles existent déjà dans votre cabinet. Elles ne sont écrites nulle part : elles vivent dans la tête des collaborateurs qui les appliquent chaque mois, entre deux dossiers qui demandent leur jugement, et elles partent avec eux. Cette carte sert d’abord à cela : repérer, pôle par pôle, le savoir-faire que personne n’a écrit, et décider par quelle règle commencer.",
+      "claimIds": []
+    },
+    {
       "id": "unit-a66730602ec3",
       "text": "Chaque famille ci-dessous est décrite par sa règle typique, puis par sa frontière, en trois colonnes. Ce qui se prépare seul : l’outil calcule, trie, relance, contrôle, sans que personne n’intervienne. Ce qui attend une validation : l’outil propose, une personne du cabinet valide avant que quoi que ce soit ne parte ou ne s’écrive. Ce qui reste humain : le jugement professionnel, la relation, la décision engageante. Cette frontière n’est pas un aveu de faiblesse de l’outil, c’est la règle de cabinet elle-même. Ce classement est une méthode Memlia, née d’un cabinet observé de près et de deux postes documentés ; il se corrige à chaque cabinet rencontré.",
       "claimIds": []
@@ -54,8 +59,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-d87e9617aace",
-      "text": "| Pôle | Familles | Tâches les plus répétitives | Ce qui reste toujours humain | |---|---|---|---| | Production comptable | 13 | relance de pièces, saisie, lettrage, rapprochement, révision, clôture | la qualification d’une pièce ambiguë, l’écriture d’inventaire, la clôture | | Portefeuille et échéances | 5 | échéances par dossier, télédéclarations, suivi par état, tableau de bord | l’arbitrage entre dossiers, la conversation avec le client | | Paie et social | 7 | variables de paie, contrôles de bulletins, dépôt, retours après dépôt | la décision de déposer, la correction qui engage un salarié | | Juridique et fiscal | 7 | TVA, acomptes, déclarations annexes, secrétariat juridique, lettre de mission | l’arbitrage fiscal, la signature, le dépôt | | Facturation et recouvrement | 4 | honoraires, prélèvements, relances d’impayés, rentabilité | la négociation, l’accord d’un échéancier | | Administration et secrétariat | 5 | boîte mail, entrée en relation, envois, rendez-vous | la réponse à un client mécontent, la signature | | RH et formation | 3 | arrivée d’un collaborateur, synthèse de rémunération, formation | l’entretien, la décision RH | | Numérique, IT et data | 4 | brouillons IA, imports, connecteurs, conformité | l’usage d’une donnée à une autre fin, le choix d’un sous-traitant | | Excel et outils existants | 3 | classeurs de suivi, compléments, exports | la propriété de la règle | | Conseil et missions spéciales | 4 | prévisionnel, trésorerie, financement, évaluation | l’hypothèse et le conseil | | Méthode et décision humaine | 4 | choisir, écrire la règle, recetter, mesurer | tout ce qui précède |",
+      "id": "unit-760bad6c3674",
+      "text": "| Pôle | Familles | Tâches les plus répétitives | Ce qui reste toujours humain | |---|---|---|---| | Production comptable | 13 | relance de pièces, saisie, lettrage, rapprochement, révision, clôture | la qualification d’une pièce ambiguë, l’écriture d’inventaire, la clôture | | Portefeuille et échéances | 5 | échéances par dossier, télédéclarations, suivi par état, tableau de bord | l’arbitrage entre dossiers, la conversation avec le client | | Paie et social | 7 | variables de paie, contrôles de bulletins, dépôt, retours après dépôt | la décision de déposer, la correction qui engage un salarié | | Juridique et fiscal | 7 | TVA, acomptes, déclarations annexes, secrétariat juridique, lettre de mission | l’arbitrage fiscal, la signature, le dépôt | | Facturation et recouvrement | 4 | honoraires, prélèvements, relances d’impayés, rentabilité | la négociation, l’accord d’un échéancier | | Administration et secrétariat | 5 | boîte mail, entrée en relation, envois, rendez-vous | la réponse à un client mécontent, la signature | | RH et formation | 3 | arrivée d’un collaborateur, synthèse de rémunération, formation | l’entretien, la décision RH | | Numérique, IT et data | 4 | brouillons IA, imports, connecteurs, conformité | l’usage d’une donnée à une autre fin, le choix d’un sous-traitant | | Excel et outils existants | 3 | classeurs de suivi, règles greffées, exports | la propriété de la règle | | Conseil et missions spéciales | 4 | prévisionnel, trésorerie, financement, évaluation | l’hypothèse et le conseil | | Méthode et décision humaine | 4 | choisir, écrire la règle, recetter, mesurer | tout ce qui précède | | Audit légal | 1 | commissariat aux comptes : famille listée, aucune tâche ouverte | tout |",
       "claimIds": []
     },
     {
@@ -195,6 +200,11 @@
       "claimIds": []
     },
     {
+      "id": "unit-034febed5b5b",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | La checklist d’arrivée d’un collaborateur, jalon par jalon, depuis la date d’entrée | La synthèse annuelle de rémunération préparée depuis la paie tenue | L’entretien, et toute décision qui concerne une personne | | Le suivi des formations suivies et à planifier, par équipe | Le support de formation à l’IA et à ses limites, avant diffusion | Ce que le cabinet décide de confier à un outil |",
+      "claimIds": []
+    },
+    {
       "id": "unit-4942d6ae5dc9",
       "text": "Numérique, IT et data : le cadre de toute automatisation",
       "claimIds": []
@@ -223,8 +233,13 @@
       "claimIds": []
     },
     {
-      "id": "unit-3e0549976194",
-      "text": "Trois familles, et le parti pris de Memlia. Un classeur de suivi partagé se structure : dictionnaire des colonnes, états fermés, contrôles. Un complément se greffe sur ce classeur pour y ajouter les règles, sans macro ni migration. Les exports des logiciels de production s’importent sans ressaisie, avec un contrôle de schéma qui refuse d’écrire quand une colonne a changé de nom. Le cabinet garde ses fichiers, ses habitudes et la propriété de ses règles.",
+      "id": "unit-25399a460837",
+      "text": "Trois familles, et le parti pris de Memlia. Un classeur de suivi partagé se structure : dictionnaire des colonnes, états fermés, contrôles. Les règles se greffent sur ce classeur, en place, sans macro ni migration. Les exports des logiciels de production s’importent sans ressaisie, avec un contrôle de schéma qui refuse d’écrire quand une colonne a changé de nom. Le cabinet garde ses fichiers, ses habitudes et la propriété de ses règles.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-27e315b4101b",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Le contrôle de structure d’un classeur partagé : colonnes, états, doublons | Une règle greffée sur le classeur, avant sa première exécution sur les vrais dossiers | La propriété de la règle, et sa modification | | L’import d’un export de logiciel de production, refusé si une colonne a changé de nom | Le remplacement d’une formule fragile par une règle écrite | Le choix de garder ou de changer de support |",
       "claimIds": []
     },
     {
@@ -238,6 +253,11 @@
       "claimIds": []
     },
     {
+      "id": "unit-7542d304d4b4",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | L’extraction et la mise en forme des données déjà tenues, période par période | Un prévisionnel ou un plan de trésorerie préparé sur des hypothèses tracées | L’hypothèse elle-même, et le conseil qui en découle | | Le rapprochement d’un dossier de financement avec les pièces disponibles | Les éléments chiffrés d’une évaluation, avant remise | La présentation au client et la décision qu’il prend |",
+      "claimIds": []
+    },
+    {
       "id": "unit-ed5799baff01",
       "text": "Méthode et décision humaine : la famille transversale",
       "claimIds": []
@@ -248,13 +268,18 @@
       "claimIds": []
     },
     {
+      "id": "unit-f3997df1f297",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Le jeu d’essai fictif rejoué à chaque changement de règle | La règle écrite, avant son premier passage en recette | Le choix de la tâche par laquelle commencer | | La mesure du temps avant et après, sur le même jeu d’essai | La place de chaque validation humaine, écrite dans la règle | La décision d’interrompre ou d’étendre une automatisation |",
+      "claimIds": []
+    },
+    {
       "id": "unit-f3df88729ec1",
       "text": "Que ne contient pas cette carte ?",
       "claimIds": []
     },
     {
-      "id": "unit-d3de2d140449",
-      "text": "Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Elle ne contient pas non plus l’audit légal et le commissariat aux comptes : la famille est listée, aucune tâche n’y est documentée, elle n’est pas ouverte. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.",
+      "id": "unit-9315ff4ba23c",
+      "text": "Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Elle ne documente pas l’audit légal et le commissariat aux comptes : ce douzième pôle et sa famille unique sont listés, aucune tâche n’y est ouverte. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.",
       "claimIds": []
     },
     {
@@ -338,8 +363,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-28698d5681f4",
-      "text": "Choisissez une seule famille, la plus répétitive de votre cabinet, et écrivez sa règle sur une page : déclencheur, condition, action, exception. Si la page se remplit sans hésitation, la tâche est candidate. Si elle appelle des « ça dépend », gardez-la pour plus tard. La méthode Memlia part exactement de cette page, la rejoue sur vos fichiers en recette, et le service code la règle dans les outils que vous utilisez déjà, avec les garanties qui vont avec. Le glossaire fixe le vocabulaire de ces règles, terme par terme.",
+      "id": "unit-c51d2f57fe7e",
+      "text": "Choisissez une seule famille, la plus répétitive de votre cabinet, et écrivez sa règle sur une page : déclencheur, condition, action, exception. Si la page se remplit sans hésitation, la tâche est candidate. Si elle appelle des « ça dépend », gardez-la pour plus tard. Puis confiez-nous la tâche entière : nous observons le geste avec vos équipes, nous écrivons la règle dans vos mots, nous la construisons dans les outils que vous utilisez déjà, vos équipes la recettent, et nous la maintenons. Vous gardez la décision à chaque endroit où elle engage le cabinet ou un client. C’est la méthode, le service et ses garanties ; le glossaire fixe le vocabulaire de ces règles, terme par terme.",
       "claimIds": []
     }
   ],

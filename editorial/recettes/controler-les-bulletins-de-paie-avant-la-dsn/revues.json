@@ -1,0 +1,219 @@
+{
+  "editorial": {
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "La section « Réponse directe » ouvre l'article par une réponse opérationnelle en une phrase avant tout développement, conforme à l'intention « executer » et au format how-to-guide déclarés dans paquet-revue.json.",
+          "Les trois revues numérotées exposent chacune six champs identiques (responsable, moment, sources, critère de blocage, preuve attendue, clôture), ce qui rend le protocole rejouable dossier par dossier, exactement la tâche « exécuter et clôturer une revue reproductible ».",
+          "La section « Après le dépôt » et le protocole en six étapes pour un écart inexpliqué couvrent la seconde moitié de la tâche déclarée, « organiser le traitement des retours », sous un angle opérationnel qu'aucune des quatre sources officielles ne fournit."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Le H1 « Comment contrôler les bulletins de paie avant la DSN ? » reprend la forme interrogative attendue pour un how-to-guide et couvre la requête primaire « contrôle bulletin de paie ».",
+          "Le title mesure exactement 60 caractères (recompté en Python, pas en octets UTF-8 qui en indiquaient 61), mot-clé en tête avant le repère « | Memlia », à la limite haute de la fourchette 40-60 sans la dépasser.",
+          "Huit tableaux à en-tête `<thead>` (compté directement dans le HTML rendu) et plusieurs listes numérotées structurent le contenu en blocs scannables, cohérents avec le format guide pratique déclaré."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Les huit citations de l'article ont été retrouvées mot pour mot dans les quatre copies locales des sources par grep direct sur les .source.txt, sans écart de ponctuation ni de sens.",
+          "La section « Sources consultées » date les quatre pages au 17 septembre 2026, cohérent avec dateModified du JSON-LD et la republication déclarée du même jour.",
+          "Le schéma Person lie l'auteur Kevin Kitanga à /a-propos avec la mention « Fondateur de Memlia », jamais « expert-comptable », conforme au garde-fou du §10 de product-marketing.md."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Le protocole à trois revues et six champs de preuve est une synthèse propre à Memlia : les quatre sources officielles ne définissent que la DSN, Dsn-Val et le CRM, jamais une méthode de contrôle en trois temps.",
+          "L'exemple fictif du dossier D-014 (période 2026-08, pièce P-014-08) illustre trois issues possibles d'un même écart de brut (expliqué, à arbitrer, à corriger), une démonstration absente des pages Net-entreprises et Service-Public.",
+          "Le tableau « ce qui s'automatise / attend une validation / reste humain » propose une lecture opérationnelle du partage des tâches qu'aucune des quatre sources citées ne fournit."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Title (60 caractères), meta description (137 caractères, recomptés en Python), canonical, Open Graph et Twitter Card sont tous renseignés et cohérents avec le contenu et l'image 1200x630, dimension vérifiée directement sur le fichier og.webp.",
+          "Le JSON-LD @graph couvre BlogPosting, BreadcrumbList, Person et Organization avec SIREN/SIRET, soit le socle de balisage attendu par le barème ; FAQPage est absent mais explicitement optionnel, sans bonus de score.",
+          "La hiérarchie de titres, recomptée directement dans le HTML, donne 1 H1, 23 H2 et 6 H3 sans saut de niveau : les H3 se nichent sous « Revue 2 » (exemple fictif) et sous « Questions fréquentes » (cinq sous-questions).",
+          "Le robots meta « noindex, follow » et le bandeau visible « Candidat éditorial — preview privée, non publiable » appartiennent au harnais de prévisualisation, pas à l'article : état attendu d'un candidat non publié."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Huit tableaux portent un `<thead>` explicite et le contenu est présent dans le HTML statique dès le chargement, vérifié en ouvrant le fichier rendu dans un navigateur, sans dépendance JavaScript pour le texte.",
+          "Les termes DSN, Dsn-Val, CRM et écart sont définis en gras à leur première occurrence puis réutilisés sans synonymie flottante sur l'ensemble de l'article.",
+          "La « Réponse directe » et les cinq questions de la FAQ forment des passages autonomes, citables indépendamment du reste de l'article par un moteur génératif."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "La phrase de la FAQ signalée en première passe a été réécrite en affirmation positive : « Cette règle... vaut mieux qu'une checklist générique : elle nomme les rubriques qui comptent pour ce dossier », et une recherche exhaustive sur le rendu ne trouve plus aucune occurrence de « ne remplace pas ».",
+          "Recherche exhaustive sur le HTML rendu : zéro occurrence de « à adapter », « Memlia peut », « ne fournit pas », « nous constatons », et « module » n'apparaît que dans la balise technique `<script type=\"module\">`, jamais dans le texte visible.",
+          "Zéro tiret cadratin dans le corps de l'article : le seul « — » du document appartient au bandeau « Candidat éditorial — preview privée, non publiable », propre au harnais de prévisualisation.",
+          "Le maillage de clôture respecte le §7 bis : lien pilier vers /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, lien fraternel vers un article frère, deux ancres du glossaire, /methode et /garanties, puis le bloc « Et dans votre cabinet ? » avec le bouton « Confier cette tâche » vers /contact et un texte qui dit ce que Memlia fait, ce que le cabinet garde, et qu'il n'y a rien à envoyer."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "business": {
+    "claims": {
+      "claim-unit-f853bef5785e-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation vérifiée verbatim par grep direct dans service-public-dsn.source.txt ; l'article la reprend entre guillemets sans reformulation, sans changement de portée ni de polarité."
+      },
+      "claim-unit-f853bef5785e-2": {
+        "verdict": "soutient",
+        "reasoning": "La phrase « Un logiciel de paie compatible avec la DSN est nécessaire. » est retrouvée à l'identique dans la source locale et citée telle quelle, sans extension du périmètre affirmé."
+      },
+      "claim-unit-f5aaef967736-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation confirmée mot pour mot dans net-entreprises-dsn-val.source.txt par recherche directe ; l'article la place entre guillemets sans en déplacer le sens ni la portée."
+      },
+      "claim-unit-f5aaef967736-2": {
+        "verdict": "soutient",
+        "reasoning": "La phrase sur le cahier technique et le journal de maintenance de la norme est identique à la source locale ; l'article en conserve la portée exacte, sans généraliser au-delà du contrôle du fichier."
+      },
+      "claim-unit-8e25db1cb634-1": {
+        "verdict": "soutient",
+        "reasoning": "La définition du CRM citée dans l'article correspond mot pour mot à la définition trouvée dans net-entreprises-crm.source.txt, sans changement de polarité ni de sujet."
+      },
+      "claim-unit-8e25db1cb634-2": {
+        "verdict": "soutient",
+        "reasoning": "Le segment entre guillemets est vérifié verbatim dans la source ; la fin de phrase, en paraphrase légère, ne modifie ni la portée ni la polarité de l'affirmation d'origine."
+      },
+      "claim-unit-c3c741fa7fe1-1": {
+        "verdict": "soutient",
+        "reasoning": "La citation sur la fenêtre avant minuit la veille de l'échéance est identique à net-entreprises-fiabilisation.source.txt, et l'article reprend lui-même la réserve de portée déjà présente dans la page source."
+      },
+      "claim-unit-c3c741fa7fe1-2": {
+        "verdict": "soutient",
+        "reasoning": "La citation sur le contact de l'organisme et de l'éditeur correspond exactement à la phrase source, sans restriction ni extension du conseil donné au déclarant."
+      }
+    }
+  },
+  "image": {
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Les composantes structurelles du brief corrigé sont respectées : trois stations lues de gauche à droite sur un plateau, cadre horizontal 16:9 (1920x1080 mesuré avec PIL), style diorama 3D mat et translucide sur fond clair, et aucun des interdits listés n'est visible.",
+          "La composition centrale a été corrigée pour décrire « une pièce mise à l'écart » sans couleur imposée : le rendu montre cette pièce isolée par sa position et un lien pointillé, plus par la couleur — la contradiction de la première passe (pièce annoncée graphite, rendue verte) ne se reproduit plus puisque le brief ne l'impose plus.",
+          "Échantillonnage de pixels sur master.png : le vert du panneau droit (RVB 20/120/67) et le fond (RVB 254/253/252) collent aux teintes de marque #1c8a41 et #fffefb à un ou deux points près ; en revanche, aucun pixel réellement graphite (gris neutre) n'a été trouvé sur l'image entière — les pixels les plus sombres échantillonnés sont tous des verts saturés. La « touche de graphite » du paragraphe palette du brief reste un détail mineur non honoré, sans incidence sur la lisibilité des trois stations."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Aucun texte, chiffre, logo, personnage ni fausse interface n'est visible sur master.png ; aucune touche de rouge n'apparaît, ce qui exclut toute alerte visuelle interdite par le brief.",
+          "Le panneau droit (grille de carrés traversant un anneau vers un cube) reste un pictogramme de flux et de validation, sans enveloppe ni coche évoquant un envoi automatique ou une correction autonome."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "L'image est un diorama de formes géométriques abstraites généré par prompt d'après preuves/image/generation.json, sans aucune capture d'écran, logo ou photo d'outil réel.",
+          "Rien dans le rendu ne simule une interface, un document ou un client réel : uniquement des plans de verre translucides, des piles de feuilles blanches et des cubes colorés."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Les trois stations se lisent de gauche à droite comme une intégration de pièces, une comparaison avec une pièce mise à l'écart, puis une validation technique vers un paquet, cohérent avec l'alt déclaré.",
+          "Le niveau d'abstraction, sans texte ni chiffre, laisse une distance d'interprétation sur le panneau droit (grille, anneau, cube) que seuls l'alt et la légende lèvent complètement ; le sujet reste néanmoins reconnaissable comme un pipeline de contrôle en trois étapes plutôt qu'une scène de paie littérale."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Vérification indépendante par lecture des fichiers avec PIL : master.png fait 1920x1080, og.webp 1200x630, hero-768.avif et hero-768.webp 768x432 — les quatre dimensions déclarées dans image.json correspondent exactement aux pixels réels des fichiers sur disque.",
+          "Les quatre fichiers déclarés existent bien dans preuves/image/ (confirmé par listing du dossier), sans dérivé manquant ni format substitué."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Recompté en Python : l'attribut alt fait 96 caractères, sous la limite de 125, et reste identique entre image.json, prompt.json, le HTML rendu (og:image:alt, JSON-LD caption) et l'attribut alt de la balise img.",
+          "L'alt décrit fidèlement les trois panneaux effectivement visibles (pièces de paie, comparaison mensuelle, validation du fichier DSN), sans terme absent de l'image ni promesse non représentée."
+        ]
+      }
+    },
+    "directionArt": 18,
+    "semanticRelevance": 22
+  },
+  "sources": {
+    "reviewedBy": "relecteur-metier-ia-memlia",
+    "observations": {
+      "service-public-dsn": "Service Public (Direction de l'information légale et administrative), domaine gouvernemental entreprendre.service-public.gouv.fr : source tier-1 officielle et primaire pour la définition légale de la DSN.",
+      "net-entreprises-dsn-val": "Net-entreprises (GIP-MDS, opérateur technique de la DSN), domaine net-entreprises.fr : source tier-1 officielle et primaire pour l'outil d'auto-contrôle Dsn-Val et son périmètre exact (cahier technique, JMN).",
+      "net-entreprises-crm": "Net-entreprises (GIP-MDS), domaine net-entreprises.fr : source tier-1 officielle et primaire pour la définition du compte rendu métier et l'obligation de traiter les anomalies signalées.",
+      "net-entreprises-fiabilisation": "Net-entreprises (GIP-MDS), domaine net-entreprises.fr : source tier-1 officielle et primaire pour la fenêtre de correction « annule et remplace » et les canaux de recours en cas d'incompréhension."
+    }
+  },
+  "qualite": {
+    "reviewer": "relecteur-qualite-ia-memlia",
+    "score": 98,
+    "p0": [],
+    "categories": {
+      "contentQuality": {
+        "score": 29,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 25,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 15,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 15,
+        "max": 15
+      }
+    },
+    "evidence": [
+      "Huit citations vérifiées mot pour mot par grep direct contre les quatre fichiers source locaux (service-public-dsn, net-entreprises-dsn-val/-crm/-fiabilisation) ; aucun écart trouvé.",
+      "Comptage direct dans le HTML rendu : 1 H1, 23 H2, 6 H3, sans saut de niveau ; title à 60 caractères exactement (recompté en caractères, pas en octets) ; meta description à 137 caractères.",
+      "JSON-LD @graph complet : BlogPosting, BreadcrumbList, Person (auteur avec bio, lien /a-propos), Organization (SIREN 108621541) et WebSite.",
+      "Quatre liens externes, tous tier-1 officiels (service-public.gouv.fr, net-entreprises.fr x3), et six ancres internes contextuelles (pilier, article frère, deux glossaire, méthode, garanties).",
+      "Dimensions des dérivés d'image vérifiées par lecture directe des fichiers : master.png 1920x1080, og.webp 1200x630, hero-768.avif/webp 768x432, conformes à image.json.",
+      "La phrase défensive « ne remplace pas » identifiée en première passe est absente du rendu (recherche exhaustive, zéro occurrence) ; remplacée par une affirmation positive dans la FAQ.",
+      "Le bloc de clôture « Et dans votre cabinet ? » porte le libellé « Confier cette tâche » vers /contact, avec un texte qui nomme ce que Memlia fait et ce que le cabinet garde, conforme au §7 bis.",
+      "Un seul visuel (la couverture) sur tout l'article : aucune illustration additionnelle intégrée au corps, la structure reposant sur huit tableaux et deux listes numérotées."
+    ],
+    "reservations": [
+      "Aucune mesure Lighthouse ou Core Web Vitals réelle (LCP, INP, CLS) : les signaux (fetchpriority, preload, formats AVIF/WebP) sont vérifiés dans le code, pas chronométrés en conditions réelles.",
+      "Score de lisibilité Flesch et part de voix passive non calculés par un outil dédié au français ; l'appréciation reste qualitative, et au moins une phrase de l'introduction cumule quatre propositions séparées par des virgules.",
+      "Le wordCount déclaré dans le JSON-LD (2859) diffère légèrement d'un recomptage indépendant sur le HTML rendu, tags retirés (2908 mots) : écart mineur d'environ 2 %, probablement une différence de méthode de découpage, sans incidence sur le jugement de fond.",
+      "Les pages /a-propos, /contact et /mentions-legales liées en pied de page n'ont pas été rouvertes pour cette revue : leur présence est vérifiée, pas leur contenu.",
+      "Les citations sont vérifiées contre la copie locale figée du 17/09/2026 (preuves/sources/*.source.txt), pas contre une nouvelle consultation en direct des quatre pages au moment de cette revue.",
+      "Le robots meta « noindex, follow » bloque actuellement toute indexation IA ou recherche : cohérent avec le statut de candidat non publié, mais à faire basculer explicitement au moment de la publication réelle."
+    ],
+    "seo": [
+      "Title de 60 caractères (« Contrôle bulletin de paie en cabinet : avant la DSN | Memlia »), mot-clé en tête, à la limite haute de la fourchette 40-60 sans la dépasser.",
+      "Meta description de 137 caractères, fidèle au contenu visible (trois revues, écarts, preuves avant dépôt).",
+      "URL stable et lisible : /blog/controler-les-bulletins-de-paie-avant-la-dsn, casse cohérente.",
+      "Quatre liens externes tier-1, dans la fourchette recommandée 3-8, et six ancres internes contextuelles avec ancres descriptives (pilier, glossaire x2, article frère, méthode, garanties).",
+      "Canonical, Open Graph (image 1200x630 vérifiée par lecture du fichier) et Twitter Card summary_large_image tous renseignés et cohérents avec l'URL de production."
+    ],
+    "geo": [
+      "Contenu présent dans le HTML statique dès le chargement, sans dépendance JavaScript pour le texte principal : accessible à un crawler IA sans exécution de script.",
+      "Huit tableaux avec <thead> et une « Réponse directe » en ouverture offrent des passages autonomes, citables indépendamment du reste de l'article.",
+      "Terminologie stable (DSN, Dsn-Val, CRM, écart, revue) définie en gras à la première occurrence puis réutilisée sans synonymie flottante.",
+      "La FAQ à cinq questions et la checklist finale en tableau renforcent l'extractibilité pour une réponse générative directe.",
+      "Le robots meta « noindex, follow » bloque actuellement l'indexation IA et recherche, cohérent avec le statut de candidat non publié plutôt qu'un défaut de contenu."
+    ],
+    "verdict": "Article rigoureusement sourcé et balisé (98/100) : le P0 de la FAQ est résolu, aucun nouveau défaut bloquant n'a été trouvé, et l'article est publiable dès bascule de l'indexation au moment de la mise en ligne réelle."
+  }
+}

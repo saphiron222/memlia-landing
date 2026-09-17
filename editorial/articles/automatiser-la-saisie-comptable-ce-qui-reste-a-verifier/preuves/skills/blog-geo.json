@@ -4,15 +4,15 @@
   "kind": "skill",
   "status": "PASS",
   "checkedAt": "2026-09-17",
-  "articleSha256": "3218163766cd1d894fac55558c25d313812b5f0599175ebe245f0cac4142ea7c",
-  "manifestSha256": "84c87ed7474b6c1539c5aad63f7ec0fd57319d820da5b12eccb41ecd16630591",
+  "articleSha256": "b003816625a783b40c463995ec503c987588747f376cf8aa9a709ce7c6109a6c",
+  "manifestSha256": "ef237f9e8a6d23f474e9549b70c391d60e7e795e4e473a355751372e72f5dbbb",
   "observations": [
     "Réponse directe en tête (74 mots au premier paragraphe) ; définitions extractibles dans le corps.",
-    "Réponse directe en tête d'article, formulée comme un paragraphe autonome et extractible par un moteur génératif sans contexte supplémentaire.",
-    "Terminologie d'entité stable tout au long du texte : « saisie comptable automatisée », « pré-comptabilité », « file d'anomalies », ce qui limite l'ambiguïté pour un système IA.",
-    "Cinq questions fréquentes formulées en langage naturel sous forme de h3, propices à une citation directe dans une réponse conversationnelle.",
-    "Tableaux avec <thead> sur les six contrôles et la règle déclencheur/condition/action/exception, format propice à l'extraction structurée par un système IA.",
-    "Le meta robots « noindex » de cette page de candidat la rend actuellement invisible aux robots respectueux du robots meta, tant qu'elle n'est pas publiée en production — artefact de preview, non compté dans le score."
+    "Réponse directe en tête d'article (environ 72 mots), formulée comme un paragraphe autonome extractible sans contexte supplémentaire.",
+    "Terminologie d'entité stable tout au long du texte (saisie comptable automatisée, OCR, pré-comptabilité, file d'anomalies, reliquat), reliée au glossaire du site.",
+    "Cinq questions fréquentes en langage naturel, balisées h3 sous « Questions fréquentes », propices à une citation directe dans une réponse conversationnelle (sans schema FAQPage, optionnel selon le barème).",
+    "Quatre tableaux avec <thead> (champs extraits, six contrôles, règle déclencheur/condition/action/exception, répartition automatisé/validé/humain), format propice à l'extraction structurée.",
+    "Chaque affirmation sensible porte une citation exacte liée en ligne vers une source officielle, toutes consultées à la même date (17 septembre 2026)."
   ],
   "skill": "blog-geo"
 }

@@ -11,6 +11,9 @@
  *   node scripts/blog-forge.mjs preparer <slug>   dossier + sources vérifiées + paquet de revue
  *   node scripts/blog-forge.mjs sceller <slug>    dossier complet (revues exigées) puis gate
  *   node scripts/blog-forge.mjs publier <slug>    go-production, production-check, puis sceau de publication
+ *
+ * Republication d'un article déjà en ligne : la recette porte `updatedAt` (AAAA-MM-JJ) ; la forge le
+ * projette en `dateMiseAJour` (frontmatter, JSON-LD dateModified, lastmod du sitemap). `date` ne change jamais.
  */
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
@@ -122,7 +125,7 @@ export function construireManifest(recette, statut, jour, revues) {
   return {
     version: 1, slug: recette.slug, action: 'creation', editorialStatus: statut,
     title: recette.title, tabTitle: recette.tabTitle, summary: recette.summary, description: recette.description,
-    publicationDate: recette.date, updatedAt: null, topics: recette.topics, keywords: recette.keywords,
+    publicationDate: recette.date, updatedAt: recette.updatedAt ?? null, topics: recette.topics, keywords: recette.keywords,
     primaryQuery: recette.primaryQuery, secondaryQueries: recette.secondaryQueries, intent: recette.intent, fanOut: recette.fanOut,
     role: { primary: recette.role.primary, secondary: recette.role.secondary ?? [], proof: { level: recette.role.proofLevel, source: 'preuves/role.json', verifiedAt: jour } },
     businessReview: { required: true, reviewerId: recette.businessReview.reviewerId, role: recette.businessReview.role, status: revues?.business ? 'PASS' : 'FAIL', evidence: 'preuves/business-review.json' },
@@ -158,7 +161,7 @@ titre: ${yamlTexte(manifest.title)}
 titreOnglet: ${yamlTexte(manifest.tabTitle)}
 resume: ${yamlTexte(manifest.summary)}
 description: ${yamlTexte(manifest.description)}
-datePublication: ${manifest.publicationDate}
+datePublication: ${manifest.publicationDate}${manifest.updatedAt ? `\ndateMiseAJour: ${manifest.updatedAt}` : ''}
 auteur: ${manifest.author}
 sujets: ${yamlListe(manifest.topics, false)}
 motsCles: ${yamlListe(manifest.keywords)}

@@ -1,0 +1,262 @@
+{
+  "slug": "suivre-la-production-sociale-dans-excel",
+  "title": "Suivre la production sociale dans Excel : modèle, règles et limites",
+  "tabTitle": "Tableau de bord paie Excel : suivre sans surveiller | Memlia",
+  "summary": "Construisez le suivi sur l’unité dossier × période × étape : une table de saisie contrôlée, des calculs régénérables et une vue agrégée. Les exceptions portent sur les dossiers, jamais sur un classement individuel, et un jeu d’essai fictif éprouve le modèle avant la mise en service.",
+  "description": "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel.",
+  "date": "2026-09-09",
+  "updatedAt": "2026-09-17",
+  "topics": [
+    "production-sociale",
+    "excel",
+    "cabinet",
+    "methode"
+  ],
+  "keywords": [
+    "tableau suivi production sociale Excel cabinet",
+    "suivi portefeuille social",
+    "classeur pôle social",
+    "états de production",
+    "pilotage anti-surveillance"
+  ],
+  "primaryQuery": "tableau de bord paie excel",
+  "secondaryQueries": [
+    "suivi portefeuille social",
+    "classeur pôle social",
+    "états de production",
+    "pilotage anti-surveillance",
+    "tableau suivi production sociale Excel cabinet",
+    "suivi production sociale excel"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "colonnes du tableau social",
+    "états et transitions",
+    "séparation Saisie Calcul Vue",
+    "exceptions avant échéance",
+    "gouvernance anti-surveillance",
+    "automatisation du classeur"
+  ],
+  "role": {
+    "primary": "paie-responsables-sociaux",
+    "secondary": [
+      "direction-associes"
+    ],
+    "proofLevel": "indirect",
+    "proofNote": "Niveau conservé de la première publication du 09/09/2026 : rôle appuyé sur l’audit du poste production sociale du référentiel des besoins (cabinet observé, juillet 2026), sans entretien dédié à ce sujet."
+  },
+  "funnel": "MOFU",
+  "cluster": "excel-outils-existants",
+  "famille": "suivi-production-sociale",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Structurer un classeur de suivi existant pour identifier l’étape et les exceptions de chaque dossier sans classement individuel.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Dictionnaire de onze colonnes, dix états fermés et leur matrice de transition, jeu d’essai fictif de cinq dossiers avec recette en cinq points, frontière en trois colonnes ; cinq affirmations citées mot pour mot depuis la CNIL et le support Microsoft, ouvertes le jour de la republication.",
+  "reviewRule": "Réviser à chaque changement de la page CNIL sur le contrôle de l’activité des personnes employées ou des pages Microsoft citées, et à la publication de l’article sur le tableau de bord de production ; relecture des sources à six mois.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de suivi de votre pôle social dans vos mots, unité, états, transitions et exceptions compris, nous l’automatisons dans le classeur et les outils que votre équipe utilise déjà, et elle la recette sur le jeu fictif puis sur vos dossiers. Chaque décision sur une exception, et tout ce qui touche aux personnes, reste à vos équipes. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
+  },
+  "image": {
+    "heroId": "img-24-suivi-production-sociale",
+    "alt": "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision.",
+    "brief": {
+      "sujet": "Le suivi de production sociale : cinq dossiers sur une grille, trois couches de traitement (saisie, calcul, vue), des agrégats sans personne et une exception isolée pour décision.",
+      "composition": "Horizontale 16:9 ; cinq jetons-dossiers alignés sur une grille, trois plateaux superposés lus de bas en haut, une pièce graphite mise à part sur le côté, aucune figure humaine.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche, ombres courtes, faible profondeur, composition aérée.",
+      "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème, graphite.",
+      "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, classement de personnes.",
+      "prompt": "Cinq dossiers sur une grille, trois couches de traitement, agrégats sans personne et une exception isolée. Diorama 3D isométrique, formes simplifiées, matières mates et translucides, fond crème papier, palette vert #27b657 / vert profond #1c8a41 / crème / graphite, lumière douce du haut gauche. Sans texte, sans chiffre, sans logo, sans personnage, sans interface.",
+      "reviewCriteria": [
+        "continuité avec les couvertures existantes",
+        "cinq dossiers et trois couches lisibles",
+        "exception isolée avant décision",
+        "aucune personne ni classement figuré",
+        "aucun texte, logo, donnée, fausse interface ou action automatique"
+      ]
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "openai_codex_gpt-image-2-medium_20260913_211413_af37d6ae",
+      "model": "gpt-image-2-medium",
+      "provider": "openai-codex",
+      "generatedAt": "2026-09-13",
+      "credits": null
+    }
+  },
+  "sources": [
+    {
+      "id": "cnil-employee-monitoring",
+      "publisher": "CNIL",
+      "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
+      "url": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle de l’autorité de protection des données sur les conditions d’un dispositif de contrôle de l’activité des salariés.",
+      "excerpt": "être soumis aux instances représentatives du personnel selon les règles en vigueur"
+    },
+    {
+      "id": "microsoft-excel-tables",
+      "publisher": "Microsoft Support",
+      "title": "Overview of Excel tables",
+      "url": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Documentation de l’éditeur du logiciel décrit, source primaire sur la fonction, non officielle au sens réglementaire.",
+      "excerpt": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table (previously known as an Excel list)."
+    },
+    {
+      "id": "microsoft-protect-sheet",
+      "publisher": "Microsoft Support",
+      "title": "Protect a worksheet",
+      "url": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Documentation de l’éditeur du logiciel décrit, source primaire sur la portée de la protection de feuille.",
+      "excerpt": "Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells within the worksheet."
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "/methode",
+      "/garanties",
+      "/glossaire#fail-closed",
+      "/glossaire#agregat-non-nominatif"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/comprendre-les-comptes-rendus-metier-dsn"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ],
+    "decision": "Cet article structure le classeur de suivi du pôle social (requête « tableau de bord paie excel », intention exécuter) ; l’article sur les bulletins traite un contrôle situé entre deux états de ce suivi ; le pilier cartographie. Intentions distinctes, liens croisés."
+  },
+  "serp": {
+    "requete": "tableau de bord paie excel",
+    "date": "2026-09-17",
+    "volume": "ND",
+    "acteurs": [
+      "fr.smartsheet.com",
+      "lucca.fr",
+      "mamzelle-excel.com",
+      "fiche-paie.fr",
+      "combohr.com",
+      "etsy.com",
+      "eurecia.com"
+    ],
+    "formats": "modèles Excel à télécharger (préparation de paie, fiche de paie, tableau de bord RH) ; aucun résultat ne traite le suivi de production d’un pôle social de cabinet ni l’anti-surveillance",
+    "note": "Relevé DataForSEO France du 17/09/2026 (relevé de demande C2), profondeur 20 : memlia.fr absent du top 20 ; aucune position revendiquée ; l’intention dominante (modèle à télécharger) diffère de celle de l’article, d’où « suivre sans surveiller » dans le titre d’onglet."
+  },
+  "gsc": {
+    "requete": "tableau de bord paie excel",
+    "date": "2026-09-17",
+    "periode": "28 jours au 14/09/2026",
+    "impressions": 0,
+    "clics": 0,
+    "note": "Search Console lue par le relevé de demande du 17/09/2026 (semaine du 08 au 14/09) : 0 impression et 0 clic sur cet article sur 7 et 28 jours ; le site entier compte 17 impressions et 4 clics sur 28 jours, tous sur l’accueil. Aucun crédit métrique revendiqué."
+  },
+  "claims": [
+    {
+      "unite": "Microsoft indique qu’une plage de données liées",
+      "claim": "une plage de données liées peut être convertie en table Excel pour en faciliter la gestion et l’analyse",
+      "type": "information",
+      "sourceId": "microsoft-excel-tables",
+      "excerpt": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table (previously known as an Excel list).",
+      "translationTerms": [
+        {
+          "claimTerm": "plage",
+          "citationTerm": "range"
+        },
+        {
+          "claimTerm": "table Excel",
+          "citationTerm": "Excel table"
+        },
+        {
+          "claimTerm": "gestion",
+          "citationTerm": "managing"
+        }
+      ],
+      "explanation": "La page de support Microsoft décrit la conversion d’une plage en table pour en faciliter la gestion et l’analyse ; traduction fidèle."
+    },
+    {
+      "unite": "Microsoft précise cependant que cette protection",
+      "claim": "cette protection n’est pas une fonction de sécurité",
+      "type": "information",
+      "sourceId": "microsoft-protect-sheet",
+      "excerpt": "Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells within the worksheet.",
+      "translationTerms": [
+        {
+          "claimTerm": "protection",
+          "citationTerm": "protection"
+        },
+        {
+          "claimTerm": "sécurité",
+          "citationTerm": "security"
+        },
+        {
+          "claimTerm": "fonction",
+          "citationTerm": "feature"
+        }
+      ],
+      "explanation": "Microsoft borne la protection de feuille : elle empêche la modification de cellules verrouillées et n’est pas une fonction de sécurité ; traduction fidèle."
+    },
+    {
+      "unite": "Écartez les indicateurs qui mesurent en continu",
+      "claim": "être soumis aux instances représentatives du personnel selon les règles en vigueur",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-employee-monitoring",
+      "excerpt": "être soumis aux instances représentatives du personnel selon les règles en vigueur",
+      "explanation": "Condition cumulative d’un dispositif de contrôle de l’activité, citée mot pour mot depuis la page de la CNIL."
+    },
+    {
+      "unite": "La même page donne l’exemple d’un dispositif jugé proportionné",
+      "claim": "un logiciel qui compte et transmet à l’encadrant (de façon transparente) le nombre de dossiers traités par trimestre par salarié/agent",
+      "type": "juridique",
+      "sourceId": "cnil-employee-monitoring",
+      "excerpt": "un logiciel qui compte et transmet à l’encadrant (de façon transparente) le nombre de dossiers traités par trimestre par salarié/agent semble proportionné",
+      "explanation": "Exemple de dispositif proportionné donné par la CNIL, cité mot pour mot ; il borne ce qu’un suivi peut remonter sur les personnes."
+    },
+    {
+      "unite": "demande à l’employeur de pouvoir prouver le respect des conditions",
+      "claim": "les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-employee-monitoring",
+      "excerpt": "Notamment, il est important de détailler les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées",
+      "explanation": "Éléments que l’employeur doit pouvoir détailler pour prouver le respect des conditions, cités mot pour mot depuis la page de la CNIL."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "paie-responsables-sociaux"
+  },
+  "preuvesSkills": {
+    "blog-brief": [
+      "Brief hérité de la première publication du 09/09/2026, requête recalée sur « tableau de bord paie excel » à l’audit des titres du 17/09/2026 (lecteur paie-responsables-sociaux, intention exécuter, entonnoir MOFU) ; tâche : structurer un classeur de suivi existant pour identifier l’étape et les exceptions de chaque dossier sans classement individuel."
+    ],
+    "blog-outline": [
+      "Plan aligné le 17/09/2026 sur le gabarit how-to-guide de la forge : réponse directe, définitions, pourquoi le suivi casse à la main, modèle minimal, dictionnaire de colonnes, états et transitions, trois feuilles, indicateurs et cadre CNIL, jeu d’essai fictif, gouvernance, frontière en trois colonnes, erreurs, questions fréquentes, règle à retenir, pour aller plus loin."
+    ],
+    "blog-rewrite": [
+      "Republication du 17/09/2026 selon la charte de message v3 (§7 bis) : entrée dans la forge (recette, trois sources revérifiées le jour même, revue neuve), section « pourquoi le suivi casse à la main » sur la règle que le responsable de pôle applique sans l’avoir écrite, exemple de dispositif proportionné de la CNIL ajouté et cité mot pour mot, formules « Memlia peut » et « doivent être adaptées » retirées, frontière en trois colonnes ajoutée, appel « Confier cette tâche », liens vers le pilier, la méthode et les garanties. Modèle, dictionnaire, matrice et jeu d’essai conservés."
+    ],
+    "blog-schema": [
+      "BlogPosting émis par le gabarit Article avec datePublished 2026-09-09 et dateModified 2026-09-17 (updatedAt de la recette), BreadcrumbList, Person Kevin Kitanga rattaché à /a-propos#kevin-kitanga ; aucun FAQPage."
+    ],
+    "blog-style": [
+      "cognitive_load.py joué le 17/09/2026 sur corps.md : verdict global « Healthy », 14 sections analysées, 3 section(s) signalée(s) (Le dictionnaire de colonnes à écrire avant les formules : entity, numeric; Définir des états fermés et leurs transitions : numeric; Jeu d’essai fictif de cinq dossiers : numeric) ; profondeur de proposition moyenne maximale 1.08."
+    ]
+  }
+}

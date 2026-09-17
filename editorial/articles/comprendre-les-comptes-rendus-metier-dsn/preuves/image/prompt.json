@@ -3,9 +3,22 @@
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
   "kind": "image-prompt",
   "status": "PASS",
-  "checkedAt": "2026-09-15",
-  "brief": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : comprendre et traiter les comptes rendus métier après un dépôt DSN. À gauche, un fichier abstrait a déjà franchi un portique ; au centre, plusieurs plaques translucides représentent des retours distincts ; une pièce gris-graphite est isolée ; à droite, une bifurcation et un jeton évoquent l’arbitrage humain. Style : diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, palette Memlia vert #27b657 / vert profond #1c8a41 / crème / graphite, lumière de studio douce, ombres courtes, faible profondeur, composition aérée. Interdits : texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome.",
-  "edit": "Conserver le style, la lumière, les matériaux et la composition. Isoler nettement la pièce graphite et transformer le mécanisme droit en bifurcation ouverte avec jeton vert déplacé vers une voie, sans ajouter de texte ni de symbole humain figuratif.",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "c7055d564b5249a1f8b2399a58f7f4db5827f7927e4a49e06abbff5b5e31be91",
+  "manifestSha256": "23f90957b7523de8047c1bb2b304b3ced0e26778ddb5d344bfc2881739bea513",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact comprendre-les-comptes-rendus-metier-dsn."
+  ],
+  "engine": "image_generate",
+  "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : comprendre et traiter les comptes rendus métier après un dépôt DSN. À gauche, un fichier abstrait a déjà franchi un portique ; au centre, plusieurs plaques translucides représentent des retours distincts ; une pièce gris-graphite est isolée ; à droite, une bifurcation et un jeton évoquent l’arbitrage humain. Style : diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, palette Memlia vert #27b657 / vert profond #1c8a41 / crème / graphite, lumière de studio douce, ombres courtes, faible profondeur, composition aérée. Interdits : texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome.",
+  "brief": {
+    "sujet": "Comprendre et traiter les comptes rendus métier après un dépôt DSN : un fichier abstrait a déjà franchi un portique ; plusieurs retours distincts arrivent ; une anomalie est isolée ; une bifurcation attend l’arbitrage humain.",
+    "composition": "Horizontale 16:9 ; à gauche un fichier abstrait passé le portique ; au centre plusieurs plaques translucides pour les retours distincts, une pièce gris-graphite isolée ; à droite une bifurcation ouverte et un jeton vert déplacé vers une voie.",
+    "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce, ombres courtes, faible profondeur, composition aérée.",
+    "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème, graphite.",
+    "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome.",
+    "alt": "Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine."
+  },
   "reviewCriteria": [
     "continuité avec les couvertures existantes",
     "dépôt déjà franchi",

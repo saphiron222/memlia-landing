@@ -1,13 +1,13 @@
 {
   "version": 1,
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
-  "articleSha256": "154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788",
-  "manifestSha256": "bdbd3b9a26d19cd202deb1084d156cee92ce2109ca607c27fdbbbd8081147a55",
   "kind": "editorial-review",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "1329a741a1b7df93e661e94ef755eae8421eb3c4a936aa6283103f2fd42ddc3b",
+  "manifestSha256": "ee13296cbfae5cd4c4e319deda3a8a4184f5a463b8a658bb20889bc480588245",
   "observations": [
-    "La revue éditoriale consolidée ne relève aucun P0 ou P1 sur le candidat intégré en preview protégée."
+    "Contrôle editorial-review relu sur le candidat exact suivre-la-production-sociale-dans-excel."
   ],
   "reviewer": "marketing",
   "criteria": [
@@ -16,7 +16,8 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère intent-satisfaction."
+        "Le corps répond dès l’ouverture par un bloc « Réponse directe » de 78 mots qui fixe l’unité dossier × période × étape, puis livre un modèle actionnable complet (dictionnaire de 11 colonnes, cycle à 10 états, matrice de transition à 4 cas, jeu d’essai de 5 dossiers avec recette en 5 étapes) qui correspond exactement à la tâche déclarée « structurer un classeur de suivi existant » et à l’intent « executer » de paquet-revue.json.",
+        "Le rôle visé (paie-responsables-sociaux) est servi par un vocabulaire et des exemples de son métier (DSN, bulletins, écarts, retours) et par une FAQ à 4 questions qui couvre des objections opérationnelles réelles : colonnes indispensables, conservation du nom du gestionnaire, limites de la protection de feuille, nécessité d’un logiciel dédié."
       ]
     },
     {
@@ -24,7 +25,8 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère serp-format-rankability."
+        "Hiérarchie de titres sans saut sur le rendu : un seul h1, des h2 de section et des h3 imbriqués uniquement sous leur h2 parent (ex. « Pourquoi utiliser une table Excel structurée ? » sous « Le dictionnaire de colonnes »), avec 3 tableaux à <thead> et une liste numérotée pour la recette, un format propice aux featured snippets et aux « People also ask ».",
+        "Le titre d’onglet (60 caractères, « Tableau de bord paie Excel : suivre sans surveiller | Memlia ») et la meta description (142 caractères) sont distincts du h1 mais restent cohérents avec le contenu visible et la requête primaire déclarée (« tableau de bord paie excel »)."
       ]
     },
     {
@@ -32,7 +34,8 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère eeat-sources."
+        "Auteur nommé, lié (rel=\"author\" vers /a-propos#kevin-kitanga) et décrit par une bio d’expertise (« il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter »), avec un schema Person distinct de l’Organization dans le JSON-LD @graph.",
+        "Les 3 sources déclarées (CNIL tier-1 officielle, 2× Microsoft Support tier-2) sont listées dans « Sources consultées » avec une date de consultation identique au rendu (17 septembre 2026), et chacune des 5 citations a été retrouvée verbatim dans la copie locale du texte source par une recherche directe (lignes 698, 703, 757, 805 et 830)."
       ]
     },
     {
@@ -40,7 +43,8 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère information-gain-proof."
+        "Au-delà d’un rappel générique d’Excel, l’article livre une clé technique précise (id_dossier + période), un cycle fermé à 10 états avec une matrice de transition à 4 cas acceptés/refusés, et un jeu d’essai synthétique de 5 dossiers avec une recette de 5 manipulations vérifiables (doublon, incohérence date-état, clôture refusée, valeur hors liste, cellule protégée).",
+        "Le tableau à 3 colonnes « Se prépare seul / Attend une validation / Reste humain » et les 3 tests de gouvernance (vue reconstituable sans nominatif, accès non autorisé, nécessité du détail conservé) dépassent la documentation Excel pour proposer un cadre de décision original et directement réutilisable par le lecteur."
       ]
     },
     {
@@ -48,7 +52,8 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère technical-onpage-seo."
+        "JSON-LD @graph complet et cohérent (BlogPosting, BreadcrumbList, Person, Organization, WebSite) avec datePublished 2026-09-09 et dateModified 2026-09-17 reflétant la republication, canonical correct vers /blog/suivre-la-production-sociale-dans-excel, un seul h1 et lang=\"fr\".",
+        "Image de couverture en <picture> AVIF/WebP responsive (768/1200/1600w), dimensions explicites 1600×900, loading=\"eager\" et fetchpriority=\"high\" réservés à l’image LCP ; le noindex et le bandeau « Candidat éditorial » visibles sur ce rendu appartiennent au harnais de prévisualisation QA, pas à la page publiée."
       ]
     },
     {
@@ -56,7 +61,8 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère ai-citability."
+        "Les 3 définitions clés (le suivi de production sociale, une exception, un agrégat non nominatif) sont posées en gras dès leur première occurrence, formant des unités auto-suffisantes citables isolément par un moteur génératif, avec une terminologie d’entité stable (dossier, DSN, état, exception, agrégat non nominatif) sur tout l’article.",
+        "Les citations légales sont exactes, entre guillemets, liées directement vers cnil.fr et datées, ce qui réduit le risque qu’une IA les tronque ou les recontextualise à tort ; le contenu est présent nativement dans le HTML statique du rendu, sans dépendance au JavaScript pour son affichage."
       ]
     },
     {
@@ -64,15 +70,10 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère contextual-conversion."
+        "La formule d’atténuation « à adapter », relevée deux fois par la revue précédente (« une méthode Memlia à adapter à l’organisation... » et « Voici un cycle de départ à adapter : ») et posée en P0, a été retirée : recherche vérifiée à zéro occurrence dans corps.md et dans le rendu HTML, remplacée dans les deux cas par « dont le cabinet fixe... », sans nouvelle formule défensive répétée.",
+        "La clôture respecte le reste de la charte du §7 bis : voix « nous » constante (« Nous prenons cette tâche entière : nous écrivons la règle... nous l’automatisons... nous la maintenons »), CTA de fin « Confier cette tâche » → /contact qui dit ce que nous faisons (écrire la règle dans vos mots, l’automatiser dans vos outils, la faire recetter) et ce que le cabinet garde (« chaque décision sur une exception et tout ce qui touche aux personnes »).",
+        "Maillage de clôture complet : lien vers le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, vers /methode et /garanties, deux articles frères cités en corps et deux ancres de glossaire (#fail-closed, #agregat-non-nominatif) ; aucun chiffre de gain, aucune donnée client réelle, aucun usage du mot « module » et aucun tiret cadratin dans le corps de l’article, et les seuils cités (délai interne, échéance) sont désignés comme des paramètres que « le cabinet » fixe, jamais des valeurs figées."
       ]
     }
-  ],
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/review.json",
-    "originalSha256": "f5d26033b01c6cc74715ca4daec586ce4a876d3904d91fb369e8df08e6153a98",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  ]
 }

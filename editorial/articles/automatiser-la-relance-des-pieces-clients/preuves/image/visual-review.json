@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-la-relance-des-pieces-clients",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-16",
-  "articleSha256": "78a4c2769a0228116876044e600de491262d58a953a500429b09c678e507e973",
-  "manifestSha256": "d939bb49c47f2694aa72e48f48decd39b0ddfc41efd035ef7de1dfc39adcc23e",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "3627fa25049818da9ea4a4da962bb1abaa3dc6810000382b06e2a479dac664bb",
+  "manifestSha256": "0b39ecac258866ed08a79ef5c6e5e4a7f2c830fc7f15b54bc5a1a426acf26ae9",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
   ],
@@ -14,45 +14,45 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Les éléments de la composition du brief sont identifiables sur master.png : plateau à six compartiments (3 remplis de feuilles pliées vierges, 3 vides), checklist papier à 3 coches vertes et 1 case vide, portique aux montants verts avec bouton rond vert, enveloppe crème posée devant le portique, jeton vert à côté, et une pièce graphite isolée à droite du cadre."
+        "L’image montre les six composantes du brief : un plateau à six compartiments (trois remplis de piles de feuilles blanches pliées, trois vides), une checklist en papier avec trois coches vertes et une case vide, un portique aux montants verts surmonté d’un bouton rond vert, une enveloppe crème posée devant ce portique avec un jeton vert à côté, et une pièce sombre (graphite) isolée à droite du cadre — vérifié par lecture directe de master.png."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Aucun texte lisible, chiffre, logo, personnage, visage, écran, fausse interface, alerte rouge ni symbole d’envoi automatique observé sur master.png : les lignes de la checklist sont de simples barres grises non typographiées, conforme à la liste d’interdits de prompt.json.",
-        "Palette limitée au vert Memlia, vert profond, crème, papier et graphite, sans écart de teinte visible."
+        "Aucun texte lisible, chiffre, logo, personnage, visage, écran ni fausse interface logicielle n’est visible sur master.png : les lignes de la checklist sont de simples barres grises non typographiées, conforme à la liste d’interdits de prompt.json.",
+        "Aucune alerte rouge ni symbole d’envoi automatique constaté ; la palette observée (crème, blanc papier, deux verts, graphite sombre) correspond à la palette du brief sans écart de teinte visible."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Rendu 3D isométrique stylisé (formes géométriques simplifiées, matières mates, lumière studio depuis le haut-gauche), sans ambiguïté possible avec une photo ou une capture d’écran réelle ; prompt.json confirme engine « image_generate », status PASS et un couple articleSha256/manifestSha256 lié au candidat exact."
+        "Le rendu est un diorama 3D isométrique stylisé (formes géométriques simplifiées, matières mates, lumière studio venant du haut-gauche, ombres courtes) sans aucune ambiguïté possible avec une photo ou une capture d’écran réelle ; prompt.json confirme un engine « image_generate » et un couple articleSha256/manifestSha256 lié au candidat exact."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "La combinaison plateau à moitié rempli, checklist partiellement cochée, enveloppe en attente devant un portique et pièce isolée restitue, une fois rapprochée du alt et du H1, les notions de complétude partielle, de validation avant envoi et de dossier hors circuit.",
-        "Comme les autres couvertures Memlia, l’image reste un diorama abstrait plutôt qu’une scène littérale de « relance » : elle s’appuie sur l’alt et le titre pour lever l’ambiguïté, ce qui est cohérent avec la continuité de style demandée (IMG-25) mais reste à noter."
+        "La combinaison plateau partiellement rempli, checklist partiellement cochée, enveloppe en attente devant un portique et pièce isolée restitue, rapprochée du H1 et de l’alt, les notions de complétude partielle, de validation avant envoi et de dossier mis à l’écart.",
+        "Comme les autres couvertures Memlia, l’image reste un diorama abstrait plutôt qu’une scène littérale de relance par courriel : elle s’appuie sur l’alt et le H1 pour lever l’ambiguïté, cohérent avec la continuité de style demandée envers la couverture IMG-25 mais à noter."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "master.png mesure 1920×1080 (16:9, vérifié par lecture de pixels, sips) comme demandé.",
-        "Les dérivés attendus existent sur disque et dans le HTML rendu : AVIF et WebP en 768/1200/1600w référencés dans le <picture>, plus l’OG dédié 1200×630 (img-art-relance-des-pieces-og.webp) en og:image et twitter:image."
+        "master.png mesure 1920×1080 (16:9) comme déclaré dans image.json et confirmé à l’ouverture du fichier ; le crop OG 1200×630 (+0+22) et les variantes 768×432 en AVIF/WebP sont déclarés dans image.json et référencés dans le <picture> du rendu HTML (srcset 768/1200/1600w).",
+        "Les balises og:image et twitter:image pointent vers img-art-relance-des-pieces-og.webp en 1200×630 avec og:image:width/height renseignés, cohérent avec le crop déclaré."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L’attribut alt (« Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart ») mesure 125 caractères (compté), correspond au caractère près à image.alt du paquet et à og:image:alt, décrit le contenu réel de la scène et signale sa nature de diorama plutôt que de suggérer une capture authentique."
+        "L’attribut alt (« Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart ») mesure 125 caractères (compté), exactement à la limite requise, décrit fidèlement le contenu visuel réel et signale sa nature de diorama ; repris à l’identique en og:image:alt et dans le JSON-LD (caption)."
       ]
     }
   ]

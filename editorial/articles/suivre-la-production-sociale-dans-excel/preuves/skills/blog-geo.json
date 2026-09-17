@@ -1,20 +1,18 @@
 {
   "version": 1,
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
-  "articleSha256": "154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788",
-  "manifestSha256": "bdbd3b9a26d19cd202deb1084d156cee92ce2109ca607c27fdbbbd8081147a55",
   "kind": "skill",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "1329a741a1b7df93e661e94ef755eae8421eb3c4a936aa6283103f2fd42ddc3b",
+  "manifestSha256": "ee13296cbfae5cd4c4e319deda3a8a4184f5a463b8a658bb20889bc480588245",
   "observations": [
-    "Le livrable amont scellé et l’intégration courante documentent l’exécution de blog-geo sur ce candidat exact."
+    "Réponse directe en tête (78 mots au premier paragraphe) ; définitions extractibles dans le corps.",
+    "Bloc « Réponse directe » de 78 mots en ouverture du corps, répondant à la requête avant tout développement : format answer-first favorable à l’extraction par un aperçu IA.",
+    "Trois définitions clés posées en gras dès leur première occurrence (suivi de production sociale, exception, agrégat non nominatif), formant des extraits auto-suffisants citables isolément.",
+    "Citations légales exactes entre guillemets, liées directement vers cnil.fr et datées au 17 septembre 2026, ce qui réduit le risque de citation tronquée ou hors contexte par une IA générative.",
+    "Trois tableaux avec <thead> structuré, en format extraction-friendly pour des réponses génératives comparatives (dictionnaire de colonnes, matrice de transition, jeu d’essai).",
+    "Contenu présent nativement dans le HTML statique du rendu, sans dépendance au JavaScript pour son affichage ; le robots noindex observé sur ce rendu est propre au harnais de prévisualisation, pas à la page publiée."
   ],
-  "skill": "blog-geo",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/skills/blog-geo.json",
-    "originalSha256": "926755e6a4dd9d9ad044ff7b6e7fb715502762ea9a5546de174d07a60da5a411",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "skill": "blog-geo"
 }

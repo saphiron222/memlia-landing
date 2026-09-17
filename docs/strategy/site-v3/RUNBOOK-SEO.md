@@ -93,7 +93,7 @@ node scripts/seo/forge-seo.mjs maintenance lister
 Deux tâches au plus par vendredi, dans l'ordre rendu (gravité puis ancienneté). Chaque tâche se traite par **republication scellée**, jamais par une édition directe :
 
 - article v3 (une recette existe dans `editorial/recettes/<slug>/`) : corriger la recette (`corps.md` pour un lien ou un rafraîchissement, `recette.json` pour un titre, une source, un extrait), puis `preparer`, rendu, revue par un sous-agent, `sceller`, `publier`, contrôle en ligne, `apres-publication` ;
-- article antérieur à la v3 (pas de recette : les trois articles DSN et paie) : la voie sanctionnée est `scripts/migrate-published-blog.mjs`, comme le 17/09/2026 pour les titres d'onglet, qui rescelle le dossier en préservant les preuves héritées.
+- article publié hors forge (aucun depuis le 17/09/2026 au soir : les trois articles DSN et paie ont rejoint la forge avec une recette, des sources revérifiées et une revue neuve) : la voie serait `scripts/migrate-published-blog.mjs`, qui rescelle un dossier adopté en préservant ses preuves héritées, mais qui ne peut pas accueillir une source revérifiée ; une tâche `reverifier-source` sur un tel article se traite donc en le faisant entrer dans la forge.
 
 Types : `inserer-lien` (un lien dans le corps, avec une ancre parlante ; pour `lien-vers-pilier`, là où la carte des tâches est nommée), `recaler-titre` (titre d'onglet ou introduction sur la requête mesurée, sans rien promettre), `reverifier-source` (rouvrir la source, corriger l'URL, l'extrait ou l'affirmation), `rafraichir` (relire, redater, compléter). Puis :
 

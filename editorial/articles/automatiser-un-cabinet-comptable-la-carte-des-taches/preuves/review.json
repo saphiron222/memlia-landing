@@ -4,8 +4,8 @@
   "kind": "editorial-review",
   "status": "PASS",
   "checkedAt": "2026-09-17",
-  "articleSha256": "ceaad3298c603a00eba1a0dd17f7072edeeb50b75e4e1641a88303ceed2d6945",
-  "manifestSha256": "9ac0ee7c3fdf84489aebe4337a531c350fc81c245aee73660e2fc9b4824b5556",
+  "articleSha256": "03dfaab5f4d211d303f7f5e28bcb480847d15b23b34920a1f8c8d44cf36be6a6",
+  "manifestSha256": "bfc5cb1edb11ed92175ee3c1125a7076f4c604de8977573d255fe6cb2b1247ed",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -16,9 +16,10 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "L'encart « En bref » puis le H2 « Réponse directe » livrent en moins de cent mots la définition d'une tâche automatisable et l'annonce de la carte (onze pôles, soixante familles), ce qui satisfait immédiatement l'intention comprendre avant tout développement.",
-        "Le tableau maître de la section « La carte en un tableau » donne pour chacun des onze pôles le nombre de familles, les tâches les plus répétitives et ce qui reste toujours humain : exactement la vue d'ensemble qu'une direction/associés recherche pour arbitrer par où commencer.",
-        "Les quatre questions de la FAQ (par où commencer, perte de contrôle, un outil par famille, maturité d'une tâche) couvrent les objections réelles d'un lecteur direction-associes listées dans le contexte marketing du site (« une IA peut se tromper », « cela va changer notre organisation »)."
+        "Le H2 « Réponse directe » ouvre le corps par une définition opérationnelle avant tout développement, et l'encart « En bref » reprend la même promesse (« Soixante familles de tâches réparties en douze pôles ») pour le lecteur qui scanne, conforme à l'intent « comprendre » déclaré.",
+        "Le tableau « La carte en un tableau » donne, pôle par pôle, le nombre de familles, les tâches les plus répétitives et ce qui reste toujours humain : la vue d'ensemble qu'un lecteur direction-associes cherche avant de choisir par où commencer, sans avoir à ouvrir les onze sections détaillées.",
+        "La section « Comment lire cette carte ? » explique la grille à trois colonnes (se prépare seul / attend une validation / reste humain) avant de l'appliquer aux onze pôles ouverts, ce qui évite au lecteur de deviner la convention en cours de route.",
+        "Les cinq questions de la FAQ couvrent des objections réelles d'un dirigeant (perte de contrôle, outil unique ou multiple par famille, maturité d'une tâche, suite de la carte), chacune répondue en un paragraphe autonome et complet."
       ]
     },
     {
@@ -26,9 +27,10 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Format pilier confirmé : un tableau de synthèse à onze lignes, dix tableaux de frontière (se prépare seul / attend une validation / reste humain) et un bloc FAQ à quatre H3, tous avec thead/tbody, forment un contenu hautement scannable et snippet-able.",
-        "Quatre intertitres H2 sont en forme interrogative sur le rendu courant (« Qu'est-ce qu'une tâche automatisable… ? », « Comment lire cette carte ? », « Que ne contient pas cette carte ? », « Par où commencer ? »), ce qui élargit la surface de correspondance avec des formulations de recherche et de People Also Ask.",
-        "Le H1 reste inchangé (« Automatiser un cabinet comptable : la carte des tâches ») pendant que la balise title est reformulée en tête de requête primaire : les deux textes restent sémantiquement identiques, sans dérive de sujet entre le lien SERP et la page réelle."
+        "Comptage direct sur le rendu : douze tableaux au total, un tableau de synthèse à douze lignes puis onze tableaux de frontière à trois colonnes (thead/tbody), un pour chacun des onze pôles ouverts — contre sept tableaux de frontière sur onze pôles relevés dans la version précédemment revue : l'écart alors noté est comblé.",
+        "Un seul H1, vingt H2 de contenu (plus trois H2 de gabarit — sources, pont de conversion, à lire ensuite — et quatre H2 de pied de page global, vérifiés par comptage de balises), cinq H3 tous imbriqués sous le H2 « Questions fréquentes » : aucun saut de hiérarchie.",
+        "Plusieurs H2 en forme interrogative (« Qu'est-ce qu'une tâche automatisable… ? », « Comment lire cette carte ? », « Que ne contient pas cette carte ? », « Par où commencer ? ») élargissent la correspondance avec des formulations de type People Also Ask.",
+        "BreadcrumbList JSON-LD à trois niveaux (Accueil, Blog, titre de l'article), cohérente avec le fil d'Ariane visible ; URL stable et canonical auto-référent corrects, vérifiés par un parsing programmatique du graphe JSON-LD."
       ]
     },
     {
@@ -36,9 +38,10 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Cinq sources exclusivement tier-1 officielles (Service-Public, CNIL deux fois, impots.gouv.fr, Net-entreprises) sont citées en lien contextuel puis reprises datées (16 septembre 2026) dans une section « Sources consultées » dédiée.",
-        "Les cinq citations ont été vérifiées par recherche littérale dans les copies locales *.source.txt : correspondance exacte caractère pour caractère dans les cinq cas (aux entités HTML d'apostrophe près), aucune extension de portée par rapport au texte d'origine.",
-        "L'auteur Kevin Kitanga est nommé, lié à /a-propos#kevin-kitanga, décrit par le schéma Person avec un rôle exact (fondateur qui cadre et livre les automatisations sur jeux d'essai fictifs) et sans qualification d'expert-comptable prêtée à tort."
+        "Cinq sources exclusivement tier-1 officielles (Service-Public, CNIL deux fois, impots.gouv.fr, Net-entreprises), citées en lien contextuel dans le corps puis reprises datées « 17 septembre 2026 » dans une section « Sources consultées » à cinq entrées.",
+        "Les cinq citations ont été revérifiées cette passe-ci par recherche normalisée (apostrophes typographiques neutralisées) dans les cinq copies locales *.source.txt : correspondance exacte dans les cinq cas, sans régression depuis la précédente revue.",
+        "L'auteur Kevin Kitanga est nommé, lié deux fois à /a-propos#kevin-kitanga (rel=author), décrit par un schéma Person complet (jobTitle « Fondateur de Memlia », description, worksFor) et par une bio de pied d'article cohérente avec ce schéma.",
+        "Organization JSON-LD complet avec SIREN 108621541 et SIRET, adresse postale parisienne, cohérent avec les liens de pied de page vers mentions légales et contact : les signaux de confiance du site entourent bien l'article."
       ]
     },
     {
@@ -46,8 +49,10 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "La taxonomie à onze pôles et soixante familles, croisée systématiquement avec la grille se prépare seul / attend une validation / reste humain, est une synthèse propriétaire explicitement rattachée à une observation de terrain (« née d'un cabinet observé de près et de deux postes documentés »), pas une compilation générique.",
-        "La section « Que ne contient pas cette carte ? » délimite le périmètre par la négative (aucun chiffre de gain non mesuré, audit légal et CAC exclus, aucune fonction promise) : une transparence méthodologique rarement affichée par un contenu concurrent, cohérente avec le garde-fou produit « aucune métrique client publiée, aucun gain chiffré non sourcé »."
+        "Le compte est désormais vérifié à trois niveaux concordants : le tableau « La carte en un tableau » porte douze lignes (13+5+7+7+4+5+3+4+3+4+4+1) qui totalisent exactement 60, recalculé par extraction programmatique des <td>, contre 59 dans la version précédemment revue.",
+        "Ce compte a été comparé directement au référentiel src/data/familles.ts : douze identifiants dans le type PoleId, soixante entrées dans le tableau FAMILLES, et la répartition par pôle (recomptée famille par famille dans le code source) reproduit à l'identique les douze chiffres du tableau de l'article, pôle par pôle.",
+        "Le douzième pôle (« Audit et commissariat aux comptes » dans familles.ts, `active:false` sur sa famille unique ; « Audit légal » dans le tableau de l'article) est traité comme listé-non-ouvert : présent dans le tableau de synthèse mais sans tableau de frontière ni section dédiée, exactement comme l'annonce « Que ne contient pas cette carte ? ».",
+        "« Soixante familles » et « douze pôles » sont désormais alignés sur toutes les surfaces où le chiffre apparaît (meta description, og:description, twitter:description, description JSON-LD, « En bref », « Réponse directe ») ; une recherche exhaustive du mot « onze » sur le rendu entier ne retourne plus aucune occurrence."
       ]
     },
     {
@@ -55,10 +60,11 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Balise title « Automatisation cabinet comptable : carte des tâches | Memlia » : 60 caractères exactement (calculé, pas estimé), à la limite haute mais dans la fourchette 40-60 ; porte la requête primaire « automatisation cabinet comptable » en position d'attaque, ce qui maximise la correspondance et le surlignage SERP ; reste fidèle au contenu et au H1 conservé, dans une tournure nominale plus télégraphique (sans article) assumée par la recette éditoriale de la maison ; à 60 caractères pile la marge contre une troncature mobile (repère usuel ~55 caractères) est nulle, alors qu'elle reste confortable en desktop.",
-        "Meta description : 152 caractères, dans la fourchette de sécurité SERP usuelle, fidèle et spécifique (soixante familles, règle typique, frontière d'automatisation) ; ne reprend cependant pas le syntagme exact de la requête primaire (« automatisables » et « d'automatisation » apparaissent séparément) donc Google peut préférer générer son propre extrait plutôt que mettre en gras la requête complète — remarque mineure, la description reste utile et non trompeuse.",
-        "Graphe JSON-LD complet sur le socle attendu (BlogPosting, BreadcrumbList, Person, Organization, WebSite), canonical auto-référent correct, un seul H1, hiérarchie H2/H3 sans saut ; FAQPage absente malgré une FAQ visible en quatre questions, mais absente aussi des cinq autres pages de blog rendues du site (dist/blog/*.html) — caractéristique du gabarit, pas une régression propre à ce candidat.",
-        "Le meta robots de ce rendu porte noindex, follow, cohérent avec la bannière visible « Candidat éditorial — preview privée, non publiable » : artefact du harnais de prévisualisation signalé par le brief de revue, non imputable à l'article et non pénalisé ici."
+        "Balise title « Automatisation cabinet comptable : carte des tâches | Memlia » : 60 caractères exactement (calculé), requête primaire en position d'attaque, à la limite haute de la fourchette 40-60 sans marge restante.",
+        "Meta description de 152 caractères (calculé), spécifique et cohérente avec le contenu visible ; le chiffre « soixante familles » qu'elle porte est désormais intégralement vérifiable par la page elle-même (voir information-gain-proof).",
+        "Graphe JSON-LD syntaxiquement valide (parsé programmatiquement) et complet : BlogPosting (wordCount 3702, dates de publication 16/09 et de mise à jour 17/09 cohérentes avec l'affichage), BreadcrumbList, Person, Organization, WebSite.",
+        "Image de couverture en <picture> avec sources avif/webp 768/1200/1600w vérifiées présentes sur disque (public/images et dist/images) par lecture directe des dimensions : master.png 1920x1080, og.webp 1200x630 ; fetchpriority=high et loading=eager sur l'image LCP.",
+        "Le robots « noindex, follow » de ce rendu est confirmé, en lisant Article.astro et Base.astro, comme entièrement conditionné par le même booléen `candidatPreview` que la bannière « Candidat éditorial » : un artefact du harnais de prévisualisation, pas un réglage de production."
       ]
     },
     {
@@ -66,8 +72,9 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Trois définitions en gras (tâche automatisable, règle de cabinet, frontière d'automatisation) posent des entités non ambiguës, réutilisées sans dérive terminologique dans les onze sections suivantes.",
-        "Onze tableaux structurés avec en-têtes (thead/tbody) répètent la même grille de lecture par pôle, formant des blocs autonomes et comparables, directement extractibles pour une requête du type « ce qui reste humain dans telle tâche »."
+        "Format réponse directe et encart « En bref » en tout premier bloc de contenu, trois définitions en gras (tâche automatisable, règle de cabinet, frontière d'automatisation) posant une terminologie d'entité stable, réutilisée sans dérive dans les onze sections de pôle.",
+        "Cinq questions-réponses autonomes en FAQ (H3), chacune un paragraphe complet citable indépendamment ; douze tableaux thead/tbody offrent des blocs comparables directement extractibles pour une requête du type « ce qui reste humain dans telle tâche ».",
+        "Le passage le plus probable d'être repris tel quel par un assistant IA (« Réponse directe », « En bref ») porte le chiffre « soixante familles », qui se vérifie maintenant par le tableau de la page elle-même : une reprise verbatim ne propagerait plus un chiffre non prouvé, à la différence de la version précédemment revue."
       ]
     },
     {
@@ -75,8 +82,10 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "Un encart de conversion unique et contextualisé (« Cette tâche vous prend encore du temps à la main ? » → « Cadrer une première tâche » vers /contact) suit directement le corps de l'article, sans appel concurrent, conforme à l'action principale unique du contexte marketing (« Identifier une tâche à automatiser »).",
-        "La conclusion ajoute un pont doux vers /methode, /garanties et /ressources plutôt qu'une relance commerciale, cohérent avec une intention comprendre en haut de tunnel (TOFU déclaré en frontmatter)."
+        "Voix « nous » cohérente (sept occurrences dans le corps, zéro « je »), aucune des formules défensives interdites par la charte §7bis (« ne remplace pas », « à adapter », « Memlia peut »), zéro occurrence du mot « module », zéro tiret cadratin dans le corps de l'article : vérifié par recherche exhaustive programmatique, pas par lecture partielle.",
+        "L'unique tiret cadratin détecté dans le fichier rendu appartient à la bannière du harnais de prévisualisation (« Candidat éditorial — preview privée, non publiable »), confirmée par le code comme un ajout du gabarit de preview, pas du corps Markdown de l'article.",
+        "La clôture relie en une phrase les trois destinations attendues par la charte (/methode, /automatisation-cabinet-comptable, /garanties), en plus de huit ancres de glossaire distinctes et de quatre articles satellites déjà publiés cités en contexte.",
+        "L'appel de fin porte le libellé « Confier une première tâche », la forme réservée au pilier par §7bis (qui ne traite pas une tâche unique, à la différence des articles satellites qui portent « Confier cette tâche ») ; le texte d'accompagnement dit ce que nous faisons (« nous écrivons… nous l'automatisons… ») et ce que le cabinet garde (« La décision reste à vos équipes »)."
       ]
     }
   ]

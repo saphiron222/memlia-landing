@@ -1,21 +1,28 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "image-prompt",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "observations": [
-    "Le brief décrit le sujet, la composition, la palette, les interdits et le contexte de lecture en vignette."
+    "Contrôle image-prompt relu sur le candidat exact controler-les-bulletins-de-paie-avant-la-dsn."
   ],
   "engine": "image_generate",
-  "prompt": "Trois panneaux comptables : pièces/variables, comparaison mensuelle avec exception séparée, validation technique vers un paquet électronique.",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/image/prompt.json",
-    "originalSha256": "6c2eb773d3933b84855efd8e88b272e9af9173537c491dd6cd39d073a1a0c1c8",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "prompt": "Trois panneaux comptables : pièces/variables, comparaison mensuelle avec exception séparée, validation technique vers un paquet électronique. Diorama 3D isométrique, formes simplifiées, matières mates et translucides, fond crème papier, palette vert #27b657 / vert profond #1c8a41 / crème / graphite, lumière douce du haut gauche. Sans texte, sans chiffre, sans logo, sans personnage, sans interface.",
+  "brief": {
+    "sujet": "Le contrôle des bulletins avant le dépôt de la DSN : trois panneaux comptables successifs, pièces et variables, comparaison mensuelle avec une exception mise à part, validation technique d’un paquet électronique.",
+    "composition": "Horizontale 16:9, trois stations lues de gauche à droite sur un plateau ; à gauche des pièces empilées, au centre deux colonnes comparées avec une pièce mise à l’écart, à droite un paquet qui franchit un portique.",
+    "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche, ombres courtes, faible profondeur, composition aérée.",
+    "palette": "Vert Memlia #27b657 et vert profond #1c8a41 dominants, fond crème papier, touches de graphite.",
+    "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome.",
+    "alt": "Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN."
+  },
+  "reviewCriteria": [
+    "continuité avec les couvertures existantes",
+    "trois contrôles successifs lisibles",
+    "exception mise à l’écart avant décision",
+    "aucun texte, logo, donnée, fausse interface ou action automatique"
+  ]
 }

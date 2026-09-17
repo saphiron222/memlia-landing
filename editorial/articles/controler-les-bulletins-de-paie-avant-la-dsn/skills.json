@@ -3,30 +3,30 @@
   "blog": [
     {
       "skill": "blog-strategy",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-strategy.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La stratégie est tenue au niveau du site (docs/strategy/site-v3), pas rejouée pour « Comment contrôler les bulletins de paie avant la DSN ? »."
     },
     {
       "skill": "blog-brand",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-brand.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La voix et la charte sont fixées par .agents/product-marketing.md ; « Comment contrôler les bulletins de paie avant la DSN ? » les applique sans les redéfinir."
     },
     {
       "skill": "blog-persona",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-persona.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le rôle lecteur de « Comment contrôler les bulletins de paie avant la DSN ? » vient du hub Ressources et du référentiel des besoins, pas d'une persona nouvelle."
     },
     {
       "skill": "blog-discourse",
@@ -35,7 +35,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun signal de discussion praticien ou UGC n’est requis pour cette réécriture, qui n’utilise aucune source communautaire."
+      "justification": "Aucune analyse de discours distincte : « Comment contrôler les bulletins de paie avant la DSN ? » suit le brief et la revue éditoriale."
     },
     {
       "skill": "blog-google",
@@ -44,34 +44,34 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "L’accès GSC a été refusé et Kevin autorise cet état ND pour la preview ; aucune métrique Search n’est créditée."
+      "justification": "Le relevé Search Console de « Comment contrôler les bulletins de paie avant la DSN ? » est porté par la preuve GSC du dossier, pas par ce skill."
     },
     {
       "skill": "blog-calendar",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-calendar.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le calendrier est celui de la v3 (docs/strategy/site-v3/CONTENT-CALENDAR.md) ; « Comment contrôler les bulletins de paie avant la DSN ? » y occupe un créneau attribué."
     },
     {
       "skill": "blog-cluster",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-cluster.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le cluster de « Comment contrôler les bulletins de paie avant la DSN ? » est fixé par build-cluster-plan.py, source unique du maillage."
     },
     {
       "skill": "blog-taxonomy",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-taxonomy.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La taxonomie (src/data/familles.ts) est tenue au niveau du site ; « Comment contrôler les bulletins de paie avant la DSN ? » y est rattaché par son frontmatter."
     },
     {
       "skill": "blog-brief",
@@ -79,7 +79,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-brief.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -88,7 +88,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-outline.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -98,16 +98,16 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun notebook n’a été fourni, autorisé ou rendu nécessaire par les sources primaires disponibles."
+      "justification": "Aucune synthèse NotebookLM pour « Comment contrôler les bulletins de paie avant la DSN ? » : les sources sont lues et citées directement."
     },
     {
       "skill": "blog-write",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "L’URL et l’article existent déjà ; le workflow applicable est blog-rewrite, pas la création d’un article neuf."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-write.json",
+      "checkedAt": "2026-09-17",
+      "justification": null
     },
     {
       "skill": "blog-rewrite",
@@ -115,7 +115,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-rewrite.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -124,17 +124,17 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-factcheck.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
       "skill": "blog-style",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "Aucun profil de style personnel validé n’existe ; la voix est contrôlée par les règles Memlia et le diagnostic éditorial."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-style.json",
+      "checkedAt": "2026-09-17",
+      "justification": null
     },
     {
       "skill": "blog-chart",
@@ -143,7 +143,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune série chiffrée fiable n’est utile ; les matrices sémantiques portent l’information sans graphique."
+      "justification": "« Comment contrôler les bulletins de paie avant la DSN ? » ne contient aucun graphique : les tableaux sont en HTML."
     },
     {
       "skill": "blog-image",
@@ -151,7 +151,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-image.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -160,7 +160,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-schema.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -169,7 +169,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-seo-check.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -178,7 +178,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-geo.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -187,7 +187,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-analyze.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -196,7 +196,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-audit.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -205,7 +205,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-cannibalization.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -215,16 +215,16 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune série GSC n’est disponible ; la date seule ne permet pas de conclure à un déclin du contenu."
+      "justification": "« Comment contrôler les bulletins de paie avant la DSN ? » vient d'être écrit : aucun déclin à mesurer."
     },
     {
       "skill": "blog-flow",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-flow.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun prompt FLOW distinct pour « Comment contrôler les bulletins de paie avant la DSN ? » : le brief tient le cadrage."
     },
     {
       "skill": "blog-repurpose",
@@ -233,7 +233,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun post, e-mail ou format de redistribution n’est mandaté dans ce chantier de réécriture."
+      "justification": "Aucune déclinaison de « Comment contrôler les bulletins de paie avant la DSN ? » sur un autre canal n'est prévue."
     },
     {
       "skill": "blog-audio",
@@ -242,7 +242,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun format audio n’est mandaté ni utile à la preuve de cet article écrit."
+      "justification": "Aucune version audio de « Comment contrôler les bulletins de paie avant la DSN ? »."
     },
     {
       "skill": "blog-multilingual",
@@ -251,7 +251,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le site et l’article sont uniquement en français ; aucune stratégie multilingue n’est décidée."
+      "justification": "« Comment contrôler les bulletins de paie avant la DSN ? » est publié en français uniquement."
     },
     {
       "skill": "blog-translate",
@@ -260,7 +260,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune traduction de l’article français n’est demandée ou autorisée."
+      "justification": "Aucune traduction de « Comment contrôler les bulletins de paie avant la DSN ? »."
     },
     {
       "skill": "blog-localize",
@@ -269,7 +269,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune locale distincte du français national n’est prévue pour cet article."
+      "justification": "Aucune localisation de « Comment contrôler les bulletins de paie avant la DSN ? » : un seul marché, la France."
     },
     {
       "skill": "blog-locale-audit",
@@ -278,18 +278,18 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le corpus est monolingue et ne contient aucune variante locale à comparer."
+      "justification": "Aucun audit de locale pour « Comment contrôler les bulletins de paie avant la DSN ? » : site monolingue."
     }
   ],
   "seo": [
     {
       "skill": "seo-plan",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-plan.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le plan SEO est celui du site (docs/strategy/site-v3) ; « Comment contrôler les bulletins de paie avant la DSN ? » l'exécute."
     },
     {
       "skill": "seo-google",
@@ -298,7 +298,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "La permission GSC est refusée ; l’état reste ND et aucune impression, clic ou position n’est interprété."
+      "justification": "Le relevé Google de « Comment contrôler les bulletins de paie avant la DSN ? » est porté par les preuves SERP et GSC du dossier."
     },
     {
       "skill": "seo-content-brief",
@@ -306,26 +306,26 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-content-brief.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
       "skill": "seo-cluster",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-cluster.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le cluster de « Comment contrôler les bulletins de paie avant la DSN ? » est fixé par build-cluster-plan.py."
     },
     {
       "skill": "seo-sxo",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-sxo.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "L'adéquation format/SERP de « Comment contrôler les bulletins de paie avant la DSN ? » est jugée dans le critère serp-format-rankability de la revue."
     },
     {
       "skill": "seo-page",
@@ -333,7 +333,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-page.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -342,7 +342,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-content.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -351,7 +351,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-technical.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -360,7 +360,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-schema.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -369,35 +369,35 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-images.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
       "skill": "seo-sitemap",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-sitemap.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le sitemap est généré par le build ; « Comment contrôler les bulletins de paie avant la DSN ? » y entre à la publication (test:lastmod)."
     },
     {
       "skill": "seo-geo",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-geo.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La citabilité de « Comment contrôler les bulletins de paie avant la DSN ? » est vérifiée par blog-geo (réponse directe, définitions)."
     },
     {
       "skill": "seo-flow",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-flow.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun prompt FLOW distinct pour « Comment contrôler les bulletins de paie avant la DSN ? »."
     },
     {
       "skill": "seo-audit",
@@ -405,7 +405,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-audit.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -415,7 +415,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Une baseline technique existe mais aucune série de performance ne permet de mesurer une dérive."
+      "justification": "Aucune baseline de dérive avant la publication de « Comment contrôler les bulletins de paie avant la DSN ? »."
     },
     {
       "skill": "seo-backlinks",
@@ -424,7 +424,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun export ni endpoint de backlinks n’est disponible ; leur nombre reste inconnu et n’est jamais assimilé à zéro."
+      "justification": "Aucun lien externe entrant à analyser pour « Comment contrôler les bulletins de paie avant la DSN ? » avant publication."
     },
     {
       "skill": "seo-competitor-pages",
@@ -433,7 +433,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le candidat n’est ni une comparaison de produits ni une page d’alternatives concurrentes."
+      "justification": "Aucune page comparative : « Comment contrôler les bulletins de paie avant la DSN ? » n'oppose aucun éditeur."
     },
     {
       "skill": "seo-local",
@@ -442,7 +442,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "La requête visée est nationale et ne porte aucune intention ville, région ou fiche établissement."
+      "justification": "Aucune intention locale pour « Comment contrôler les bulletins de paie avant la DSN ? » (décision v2 : pas de pages villes)."
     },
     {
       "skill": "seo-maps",
@@ -451,7 +451,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun Map Pack, itinéraire ou besoin géographique n’apparaît dans l’intention de recherche."
+      "justification": "Aucune fiche Maps concernée par « Comment contrôler les bulletins de paie avant la DSN ? »."
     },
     {
       "skill": "seo-hreflang",
@@ -460,7 +460,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Une seule version française existe ; aucune variante linguistique ou régionale ne nécessite hreflang."
+      "justification": "Site monolingue : aucun hreflang pour « Comment contrôler les bulletins de paie avant la DSN ? »."
     },
     {
       "skill": "seo-ecommerce",
@@ -469,7 +469,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Memlia vend un service B2B ; cette page n’est ni un catalogue, ni une fiche produit transactionnelle, ni un checkout."
+      "justification": "Aucun produit ni marketplace dans « Comment contrôler les bulletins de paie avant la DSN ? »."
     },
     {
       "skill": "seo-programmatic",
@@ -478,16 +478,16 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le chantier réécrit une URL historique unique et ne génère aucune collection de pages à l’échelle."
+      "justification": "« Comment contrôler les bulletins de paie avant la DSN ? » est un article rédigé, pas une page programmatique."
     },
     {
       "skill": "seo-dataforseo",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-dataforseo.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun crédit DataForSEO engagé pour « Comment contrôler les bulletins de paie avant la DSN ? » : volumes ND documentés dans la preuve SERP."
     },
     {
       "skill": "seo-image-gen",
@@ -496,15 +496,8 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "La politique Memlia impose image_generate ; le pipeline seo-image-gen n’est pas utilisé pour cette image."
+      "justification": "Aucune génération d'image IA pour « Comment contrôler les bulletins de paie avant la DSN ? » : cadre de preuve HTML."
     }
   ],
-  "contradictions": [],
-  "adoption": {
-    "originalPath": "preuves/inherited/skills.json",
-    "originalSha256": "157f2c1d165ecd650cf8a069b61f457624f8da9069eae2cbe965c337e20b1a84",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "contradictions": []
 }

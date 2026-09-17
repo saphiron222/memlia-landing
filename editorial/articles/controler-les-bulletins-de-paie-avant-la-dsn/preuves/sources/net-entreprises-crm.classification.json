@@ -1,14 +1,11 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "source-classification",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
-  "observations": [
-    "Le domaine final et l’éditeur déclaré ont été relus séparément à partir de la copie scellée du 13 septembre 2026."
-  ],
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "sourceId": "net-entreprises-crm",
   "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
   "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
@@ -17,13 +14,10 @@
   "provenance": "primary",
   "official": true,
   "upstreamUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-  "classifiedBy": "marketing",
-  "reviewedBy": "dev",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/sources/net-entreprises-crm.classification.json",
-    "originalSha256": "893ecf6f9f8cf689a8dd2f15d9ca3ed5a28e3d603a50027b6307a9008dabbf3e",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "classifiedBy": "kevin",
+  "reviewedBy": "relecteur-metier-ia-memlia",
+  "observations": [
+    "Page officielle du GIP-MDS définissant le compte rendu métier et son traitement.",
+    "Net-entreprises (GIP-MDS), domaine net-entreprises.fr : source tier-1 officielle et primaire pour la définition du compte rendu métier et l'obligation de traiter les anomalies signalées."
+  ]
 }

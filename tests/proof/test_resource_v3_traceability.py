@@ -59,26 +59,35 @@ class VisibleTextParser(HTMLParser):
 
 class ResourceV3TraceabilityProof(unittest.TestCase):
     def test_blog_authority_and_recouvrement_doctrine_are_preserved(self) -> None:
-        # Autorite Blog re-pointee le 16/09/2026 sur le commit e2196a3 qui retire les encarts
-        # de processus des trois articles publies, aucun brouillon.
-        expected_articles = {
-            "controler-les-bulletins-de-paie-avant-la-dsn": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-            "suivre-la-production-sociale-dans-excel": "154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788",
-        }
-        for slug, expected_hash in expected_articles.items():
-            article = ROOT / f"src/content/blog/{slug}.md"
-            dossier = ROOT / f"editorial/articles/{slug}/manifest.json"
-            self.assertEqual(sha256(article.read_bytes()), expected_hash, slug)
-            self.assertTrue(dossier.is_file(), slug)
-
-        # L'article 3 est publie depuis le 16/09/2026 par la chaine blog, sans manifeste de
-        # ressource : son dossier n'a donc pas ete adopte par ce candidat. Il est malgre tout
-        # garde en octets, pour qu'une regression du blog publie reste detectee.
-        self.assertEqual(
-            sha256((ROOT / "src/content/blog/comprendre-les-comptes-rendus-metier-dsn.md").read_bytes()),
-            "2e64f531c87b7a1c416830e995b83295ba44c8d5394eb11914c1334e46f1ba1d",
-            "comprendre-les-comptes-rendus-metier-dsn",
-        )
+        # Depuis le 17/09/2026 au soir, les six articles sortent de la forge : chacun est scellé
+        # par preuves/publication.json sur les octets exacts de son fichier source. Cet oracle
+        # relit ce sceau sans passer par le validateur JavaScript, pour qu'une regression du
+        # blog publie reste detectee par deux instruments independants.
+        articles = sorted((ROOT / "src/content/blog").glob("*.md"))
+        self.assertGreaterEqual(len(articles), 6)
+        sealed = 0
+        for article in articles:
+            source = article.read_text(encoding="utf-8")
+            # Un article en « go-production » est en cours de controle de production : son sceau
+            # n'existe pas encore (ou date de la publication precedente), le gate de la forge le
+            # couvre. Seul un article « publie » doit repondre de son sceau ici.
+            if "\nstatutEditorial: publie\n" not in source:
+                continue
+            sealed += 1
+            seal_path = ROOT / "editorial/articles" / article.stem / "preuves/publication.json"
+            self.assertTrue(seal_path.is_file(), article.stem)
+            seal = json.loads(seal_path.read_text())
+            self.assertEqual(seal["kind"], "publication-scellee", article.stem)
+            self.assertEqual(seal["candidateSlug"], article.stem)
+            self.assertEqual(seal["articleSha256"], sha256(article.read_bytes()), article.stem)
+            manifest_path = ROOT / "editorial/articles" / article.stem / "manifest.json"
+            self.assertEqual(seal["manifestSha256"], sha256(manifest_path.read_bytes()), article.stem)
+            for row in seal["files"]:
+                self.assertEqual(row["sha256"], sha256((ROOT / "editorial/articles" / article.stem / row["path"]).read_bytes()), f"{article.stem}:{row['path']}")
+        # Hors controle de production, les six articles sont scelles : un compte qui tombe a zero
+        # signalerait un oracle qui ne mesure plus rien.
+        if not any("\nstatutEditorial: go-production\n" in a.read_text(encoding="utf-8") for a in articles):
+            self.assertGreaterEqual(sealed, 6)
 
         glossary_manifest = json.loads(MANIFESTS[0].read_text())
         unit_id = "unit-t-recouvrement-amiable-commonConfusion"

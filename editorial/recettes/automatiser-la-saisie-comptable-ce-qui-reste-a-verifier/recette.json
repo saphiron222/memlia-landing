@@ -19,10 +19,11 @@
     "file d’anomalies",
     "doublon de facture"
   ],
-  "primaryQuery": "automatisation saisie comptable OCR",
+  "primaryQuery": "automatisation saisie comptable",
   "secondaryQueries": [
     "pré-comptabilisation automatique pièces",
-    "extraction automatique facture comptabilité"
+    "extraction automatique facture comptabilité",
+    "automatisation saisie comptable OCR"
   ],
   "intent": "executer",
   "fanOut": [
@@ -50,9 +51,9 @@
   "proofRequired": "Jeu fictif de cinquante pièces (trente-deux fournisseurs récurrents, six inconnus, quatre tickets dont deux coupés, trois hors période, un doublon reçu deux fois, deux notes de frais sans justificatif, un avoir) rejoué sur la règle ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées.",
   "reviewRule": "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois.",
   "cta": {
-    "label": "Faire coder la règle de saisie de votre cabinet",
+    "label": "Confier cette tâche",
     "destination": "/contact",
-    "outcome": "Une demande décrivant les contrôles et les exceptions actuels du cabinet."
+    "outcome": "Nous écrivons la règle de saisie de votre cabinet dans vos mots, fournisseurs récurrents et motifs de refus compris, nous l’automatisons dans les outils que vos équipes utilisent déjà, et elles la recettent sur un lot de pièces. Chaque écriture reste validée par une personne. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
   },
   "image": {
     "heroId": "img-art-saisie-comptable",
@@ -135,7 +136,8 @@
       "/methode",
       "/glossaire#reconnaissance-optique-de-caracteres",
       "/glossaire#pre-comptabilite",
-      "/glossaire#file-d-anomalies"
+      "/glossaire#file-d-anomalies",
+      "/automatisation-cabinet-comptable"
     ],
     "incoming": [
       "/blog",
@@ -151,7 +153,7 @@
     "decision": "Le pilier cartographie les pôles, cet article exécute une famille ; la relance traite l’obtention de la pièce, celui-ci ce qui se passe une fois la pièce reçue. Requêtes primaires et intentions distinctes."
   },
   "serp": {
-    "requete": "automatisation saisie comptable OCR",
+    "requete": "automatisation saisie comptable",
     "date": "2026-09-17",
     "volume": "ND",
     "acteurs": [
@@ -169,7 +171,7 @@
     "note": "Relevé WebSearch du 17/09/2026 ; positions ND. Aucun résultat relevé ne donne l’ordre des contrôles qui restent après l’extraction, ni une file d’anomalies à motifs fermés, ni la manière de compter le reliquat."
   },
   "gsc": {
-    "requete": "automatisation saisie comptable OCR",
+    "requete": "automatisation saisie comptable",
     "date": "2026-09-17",
     "periode": "90 jours",
     "impressions": 0,
@@ -230,13 +232,16 @@
       "Plan calqué sur le gabarit how-to-guide du skill blog : réponse directe, définitions, avant de commencer, trois briques, tableau déclencheur/condition/action/exception, refus, frontière en trois colonnes, jeu fictif, cadre sourcé, erreurs, questions fréquentes, règle à retenir, pour aller plus loin."
     ],
     "blog-style": [
-      "Passe de style : phrases courtes, aucun superlatif, aucun chiffre de gain, aucun mot de catalogue ; le reliquat est présenté comme un instrument de réglage rapporté à son lot, jamais comme une performance."
+      "cognitive_load.py joué le 17/09/2026 sur corps.md : verdict global « Healthy », 15 sections analysées, 0 section(s) signalée(s) ; profondeur de proposition moyenne maximale 2.1."
     ],
     "blog-schema": [
       "BlogPosting, BreadcrumbList, Person, Organization et WebSite émis par ArticleJsonLd.astro depuis le frontmatter ; ImageObject sur la couverture générée ; aucun FAQPage ni HowTo."
     ],
     "blog-image": [
       "Couverture générée depuis le brief à six composantes : Higgsfield, modèle gpt_image_2_5, qualité haute 2K, job 96b28b2f-871c-4905-9b5f-706f549512e3, 3 crédits, regardée avant publication (aucun texte, aucun personnage, aucune fausse interface)."
+    ],
+    "blog-rewrite": [
+      "Republication du 17/09/2026, jour de la première publication, selon la charte de message v3 (§7 bis) : la section « pourquoi la tâche casse à la main » nomme le savoir que le collaborateur applique sans l’avoir écrit ; « Pour aller plus loin » dit ce que nous prenons en charge et ce que le cabinet garde ; appel « Confier cette tâche » ; lien vers le service ajouté. Méthode, tableaux, jeu fictif, sources et affirmations inchangés."
     ]
   }
 }

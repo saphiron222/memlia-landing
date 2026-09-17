@@ -4,16 +4,16 @@
   "kind": "skill",
   "status": "PASS",
   "checkedAt": "2026-09-17",
-  "articleSha256": "ceaad3298c603a00eba1a0dd17f7072edeeb50b75e4e1641a88303ceed2d6945",
-  "manifestSha256": "9ac0ee7c3fdf84489aebe4337a531c350fc81c245aee73660e2fc9b4824b5556",
+  "articleSha256": "03dfaab5f4d211d303f7f5e28bcb480847d15b23b34920a1f8c8d44cf36be6a6",
+  "manifestSha256": "bfc5cb1edb11ed92175ee3c1125a7076f4c604de8977573d255fe6cb2b1247ed",
   "observations": [
     "Réponse directe en tête (79 mots au premier paragraphe) ; définitions extractibles dans le corps.",
-    "Encart « En bref » puis H2 « Réponse directe » en tout premier bloc de contenu : format réponse directe idéal pour une reprise par un AI Overview ou un assistant conversationnel.",
-    "Trois définitions en gras (tâche automatisable, règle de cabinet, frontière d'automatisation) posent une terminologie d'entité stable, réutilisée sans dérive dans les onze sections suivantes.",
-    "Onze tableaux structurés avec thead/tbody offrent des blocs autonomes directement citables pour une requête du type « ce qui reste humain dans telle tâche du cabinet ».",
-    "La section « Que ne contient pas cette carte ? » délimite explicitement le périmètre (pas de chiffre de gain non mesuré, pas d'audit légal/CAC, pas de fonction livrée promise), réduisant le risque qu'un moteur IA surinterprète la portée de l'article.",
-    "Quatre questions en H3 dans « Questions fréquentes », réponses autonomes en un paragraphe chacune, sans balisage FAQPage — optionnel et sans bonus de score selon la grille, donc sans conséquence sur la note.",
-    "Le noindex, follow de ce rendu QA limiterait un crawler IA déclaré s'il persistait en production ; exclu du jugement ici car explicitement signalé comme artefact du harnais de prévisualisation."
+    "Encart « En bref » puis H2 « Réponse directe » en tout premier bloc de contenu : format idéal pour une reprise par un AI Overview ou un assistant conversationnel, et le chiffre qu'il porte (« soixante familles réparties en douze pôles ») se vérifie maintenant par le reste de la page.",
+    "Trois définitions en gras (tâche automatisable, règle de cabinet, frontière d'automatisation) posent une terminologie d'entité stable, réutilisée sans dérive dans les onze sections de pôle qui suivent.",
+    "Douze tableaux structurés avec thead/tbody, dont onze tableaux de frontière à trois colonnes désormais présents pour chacun des onze pôles ouverts, offrent des blocs autonomes directement citables pour une requête du type « ce qui reste humain dans telle tâche ».",
+    "La section « Que ne contient pas cette carte ? » délimite explicitement le périmètre (pas de chiffre de gain non mesuré, pas d'audit légal documenté, pas de fonction livrée promise), ce qui réduit le risque qu'un moteur IA surinterprète la portée de l'article.",
+    "Cinq questions en H3 dans « Questions fréquentes », réponses autonomes en un paragraphe chacune, sans balisage FAQPage — sans bonus de score selon la grille, donc sans conséquence sur la note.",
+    "Le noindex de ce rendu QA limiterait un crawler IA déclaré s'il persistait en production ; vérifié dans le code comme un artefact du harnais de prévisualisation lié au statut candidat, pas la configuration de production."
   ],
   "skill": "blog-geo"
 }

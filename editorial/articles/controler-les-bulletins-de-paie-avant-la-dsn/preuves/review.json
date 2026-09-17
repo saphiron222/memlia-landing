@@ -1,13 +1,13 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "editorial-review",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "observations": [
-    "La revue éditoriale consolidée ne relève aucun P0 ou P1 sur le candidat intégré en preview protégée."
+    "Contrôle editorial-review relu sur le candidat exact controler-les-bulletins-de-paie-avant-la-dsn."
   ],
   "reviewer": "marketing",
   "criteria": [
@@ -16,7 +16,9 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère intent-satisfaction."
+        "La section « Réponse directe » ouvre l'article par une réponse opérationnelle en une phrase avant tout développement, conforme à l'intention « executer » et au format how-to-guide déclarés dans paquet-revue.json.",
+        "Les trois revues numérotées exposent chacune six champs identiques (responsable, moment, sources, critère de blocage, preuve attendue, clôture), ce qui rend le protocole rejouable dossier par dossier, exactement la tâche « exécuter et clôturer une revue reproductible ».",
+        "La section « Après le dépôt » et le protocole en six étapes pour un écart inexpliqué couvrent la seconde moitié de la tâche déclarée, « organiser le traitement des retours », sous un angle opérationnel qu'aucune des quatre sources officielles ne fournit."
       ]
     },
     {
@@ -24,7 +26,9 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère serp-format-rankability."
+        "Le H1 « Comment contrôler les bulletins de paie avant la DSN ? » reprend la forme interrogative attendue pour un how-to-guide et couvre la requête primaire « contrôle bulletin de paie ».",
+        "Le title mesure exactement 60 caractères (recompté en Python, pas en octets UTF-8 qui en indiquaient 61), mot-clé en tête avant le repère « | Memlia », à la limite haute de la fourchette 40-60 sans la dépasser.",
+        "Huit tableaux à en-tête `<thead>` (compté directement dans le HTML rendu) et plusieurs listes numérotées structurent le contenu en blocs scannables, cohérents avec le format guide pratique déclaré."
       ]
     },
     {
@@ -32,7 +36,9 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère eeat-sources."
+        "Les huit citations de l'article ont été retrouvées mot pour mot dans les quatre copies locales des sources par grep direct sur les .source.txt, sans écart de ponctuation ni de sens.",
+        "La section « Sources consultées » date les quatre pages au 17 septembre 2026, cohérent avec dateModified du JSON-LD et la republication déclarée du même jour.",
+        "Le schéma Person lie l'auteur Kevin Kitanga à /a-propos avec la mention « Fondateur de Memlia », jamais « expert-comptable », conforme au garde-fou du §10 de product-marketing.md."
       ]
     },
     {
@@ -40,7 +46,9 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère information-gain-proof."
+        "Le protocole à trois revues et six champs de preuve est une synthèse propre à Memlia : les quatre sources officielles ne définissent que la DSN, Dsn-Val et le CRM, jamais une méthode de contrôle en trois temps.",
+        "L'exemple fictif du dossier D-014 (période 2026-08, pièce P-014-08) illustre trois issues possibles d'un même écart de brut (expliqué, à arbitrer, à corriger), une démonstration absente des pages Net-entreprises et Service-Public.",
+        "Le tableau « ce qui s'automatise / attend une validation / reste humain » propose une lecture opérationnelle du partage des tâches qu'aucune des quatre sources citées ne fournit."
       ]
     },
     {
@@ -48,7 +56,10 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère technical-onpage-seo."
+        "Title (60 caractères), meta description (137 caractères, recomptés en Python), canonical, Open Graph et Twitter Card sont tous renseignés et cohérents avec le contenu et l'image 1200x630, dimension vérifiée directement sur le fichier og.webp.",
+        "Le JSON-LD @graph couvre BlogPosting, BreadcrumbList, Person et Organization avec SIREN/SIRET, soit le socle de balisage attendu par le barème ; FAQPage est absent mais explicitement optionnel, sans bonus de score.",
+        "La hiérarchie de titres, recomptée directement dans le HTML, donne 1 H1, 23 H2 et 6 H3 sans saut de niveau : les H3 se nichent sous « Revue 2 » (exemple fictif) et sous « Questions fréquentes » (cinq sous-questions).",
+        "Le robots meta « noindex, follow » et le bandeau visible « Candidat éditorial — preview privée, non publiable » appartiennent au harnais de prévisualisation, pas à l'article : état attendu d'un candidat non publié."
       ]
     },
     {
@@ -56,7 +67,9 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère ai-citability."
+        "Huit tableaux portent un `<thead>` explicite et le contenu est présent dans le HTML statique dès le chargement, vérifié en ouvrant le fichier rendu dans un navigateur, sans dépendance JavaScript pour le texte.",
+        "Les termes DSN, Dsn-Val, CRM et écart sont définis en gras à leur première occurrence puis réutilisés sans synonymie flottante sur l'ensemble de l'article.",
+        "La « Réponse directe » et les cinq questions de la FAQ forment des passages autonomes, citables indépendamment du reste de l'article par un moteur génératif."
       ]
     },
     {
@@ -64,15 +77,11 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "Le dossier amont et le candidat intégré apportent une preuve vérifiable pour le critère contextual-conversion."
+        "La phrase de la FAQ signalée en première passe a été réécrite en affirmation positive : « Cette règle... vaut mieux qu'une checklist générique : elle nomme les rubriques qui comptent pour ce dossier », et une recherche exhaustive sur le rendu ne trouve plus aucune occurrence de « ne remplace pas ».",
+        "Recherche exhaustive sur le HTML rendu : zéro occurrence de « à adapter », « Memlia peut », « ne fournit pas », « nous constatons », et « module » n'apparaît que dans la balise technique `<script type=\"module\">`, jamais dans le texte visible.",
+        "Zéro tiret cadratin dans le corps de l'article : le seul « — » du document appartient au bandeau « Candidat éditorial — preview privée, non publiable », propre au harnais de prévisualisation.",
+        "Le maillage de clôture respecte le §7 bis : lien pilier vers /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, lien fraternel vers un article frère, deux ancres du glossaire, /methode et /garanties, puis le bloc « Et dans votre cabinet ? » avec le bouton « Confier cette tâche » vers /contact et un texte qui dit ce que Memlia fait, ce que le cabinet garde, et qu'il n'y a rien à envoyer."
       ]
     }
-  ],
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/review.json",
-    "originalSha256": "00fc811dec4052d864d1a8c467bb95a2d638e636d83ef7192f0df919270570ad",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  ]
 }

@@ -1,6 +1,6 @@
 ## Réponse directe
 
-Automatiser une tâche de cabinet, c’est exécuter une règle écrite sans intervention humaine à chaque occurrence, et faire remonter ce qui sort de la règle. Un cabinet d’expertise comptable en compte des dizaines qui s’y prêtent : collecte de pièces, lettrage, échéances, honoraires, courriels, paie. Cette carte les classe en onze pôles et soixante familles, avec pour chacune la règle typique et la frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain.
+Automatiser une tâche de cabinet, c’est exécuter une règle écrite sans intervention humaine à chaque occurrence, et faire remonter ce qui sort de la règle. Un cabinet d’expertise comptable en compte des dizaines qui s’y prêtent : collecte de pièces, lettrage, échéances, honoraires, courriels, paie. Cette carte les classe en douze pôles et soixante familles, avec pour chacune la règle typique et la frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain.
 
 ## Qu’est-ce qu’une tâche automatisable dans un cabinet ?
 
@@ -11,6 +11,8 @@ Ces trois définitions suffisent à trier n’importe quelle tâche du cabinet. 
 ## Comment lire cette carte ?
 
 Une tâche se prête à l’automatisation quand trois conditions tiennent ensemble. Elle se répète : chaque mois, chaque dossier, chaque pièce. Elle s’écrit en une règle que le cabinet formule dans ses propres mots. Et ses exceptions se comptent : une pièce illisible, un client en litige, un montant hors seuil. Quand l’une des trois conditions manque, la tâche reste humaine, et c’est très bien ainsi.
+
+La plupart de ces règles existent déjà dans votre cabinet. Elles ne sont écrites nulle part : elles vivent dans la tête des collaborateurs qui les appliquent chaque mois, entre deux dossiers qui demandent leur jugement, et elles partent avec eux. Cette carte sert d’abord à cela : repérer, pôle par pôle, le savoir-faire que personne n’a écrit, et décider par quelle règle commencer.
 
 Chaque famille ci-dessous est décrite par sa règle typique, puis par sa frontière, en trois colonnes. Ce qui se prépare seul : l’outil calcule, trie, relance, contrôle, sans que personne n’intervienne. Ce qui attend une validation : l’outil propose, une personne du cabinet valide avant que quoi que ce soit ne parte ou ne s’écrive. Ce qui reste humain : le jugement professionnel, la relation, la décision engageante. Cette frontière n’est pas un aveu de faiblesse de l’outil, c’est la règle de cabinet elle-même. Ce classement est une méthode Memlia, née d’un cabinet observé de près et de deux postes documentés ; il se corrige à chaque cabinet rencontré.
 
@@ -28,9 +30,10 @@ Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. L
 | Administration et secrétariat | 5 | boîte mail, entrée en relation, envois, rendez-vous | la réponse à un client mécontent, la signature |
 | RH et formation | 3 | arrivée d’un collaborateur, synthèse de rémunération, formation | l’entretien, la décision RH |
 | Numérique, IT et data | 4 | brouillons IA, imports, connecteurs, conformité | l’usage d’une donnée à une autre fin, le choix d’un sous-traitant |
-| Excel et outils existants | 3 | classeurs de suivi, compléments, exports | la propriété de la règle |
+| Excel et outils existants | 3 | classeurs de suivi, règles greffées, exports | la propriété de la règle |
 | Conseil et missions spéciales | 4 | prévisionnel, trésorerie, financement, évaluation | l’hypothèse et le conseil |
 | Méthode et décision humaine | 4 | choisir, écrire la règle, recetter, mesurer | tout ce qui précède |
+| Audit légal | 1 | commissariat aux comptes : famille listée, aucune tâche ouverte | tout |
 
 ## Production comptable : de la pièce reçue au bilan livré
 
@@ -103,6 +106,11 @@ Cinq familles. La boîte mail du cabinet, assainie puis tenue par client et par 
 
 Trois familles, tournées vers l’intérieur. L’arrivée d’un collaborateur, les entretiens, la synthèse annuelle de rémunération d’un salarié se préparent depuis la paie tenue, sans reconstruire les chiffres. La formation à l’IA et à ses limites devient une tâche à part entière : l’équipe doit comprendre ce que les outils préparent et ce qu’ils ne garantissent pas, et le cabinet doit pouvoir en montrer la trace.
 
+| Se prépare seul | Attend une validation | Reste humain |
+|---|---|---|
+| La checklist d’arrivée d’un collaborateur, jalon par jalon, depuis la date d’entrée | La synthèse annuelle de rémunération préparée depuis la paie tenue | L’entretien, et toute décision qui concerne une personne |
+| Le suivi des formations suivies et à planifier, par équipe | Le support de formation à l’IA et à ses limites, avant diffusion | Ce que le cabinet décide de confier à un outil |
+
 ## Numérique, IT et data : le cadre de toute automatisation
 
 Quatre familles qui ne sont pas des tâches de production mais qui les conditionnent toutes. L’IA générative et les agents préparent des brouillons, des résumés, des propositions ; ils ne décident pas. Les connecteurs, les imports et la synchronisation relient les logiciels par interface quand elle existe, par fichiers sinon. Le règlement européen sur l’IA fixe des obligations à l’utilisateur, à relire sur le texte et non sur un billet. Et les données personnelles encadrent tout : le cabinet est responsable de traitement pour ses propres fichiers et sous-traitant pour ceux de ses clients.
@@ -116,19 +124,34 @@ Deux règles de la CNIL suffisent à borner la plupart des automatisations. La p
 
 ## Excel et outils existants : automatiser en place
 
-Trois familles, et le parti pris de Memlia. Un classeur de suivi partagé se structure : dictionnaire des colonnes, états fermés, contrôles. Un complément se greffe sur ce classeur pour y ajouter les règles, sans macro ni migration. Les exports des logiciels de production s’importent sans ressaisie, avec un contrôle de schéma qui refuse d’écrire quand une colonne a changé de nom. Le cabinet garde ses fichiers, ses habitudes et la propriété de ses règles.
+Trois familles, et le parti pris de Memlia. Un classeur de suivi partagé se structure : dictionnaire des colonnes, états fermés, contrôles. Les règles se greffent sur ce classeur, en place, sans macro ni migration. Les exports des logiciels de production s’importent sans ressaisie, avec un contrôle de schéma qui refuse d’écrire quand une colonne a changé de nom. Le cabinet garde ses fichiers, ses habitudes et la propriété de ses règles.
+
+| Se prépare seul | Attend une validation | Reste humain |
+|---|---|---|
+| Le contrôle de structure d’un classeur partagé : colonnes, états, doublons | Une règle greffée sur le classeur, avant sa première exécution sur les vrais dossiers | La propriété de la règle, et sa modification |
+| L’import d’un export de logiciel de production, refusé si une colonne a changé de nom | Le remplacement d’une formule fragile par une règle écrite | Le choix de garder ou de changer de support |
 
 ## Conseil et missions spéciales : ce qui se déduit des données tenues
 
 Quatre familles adjacentes : prévisionnel et business plan, trésorerie prévisionnelle, dossiers de financement et d’aides, éléments chiffrés d’une évaluation ou d’une transmission. Elles ne sont pas répétitives au même sens que la production, mais leur matière première l’est : des données déjà tenues, à projeter avec des hypothèses tracées. Ce qui se prépare, c’est l’extraction et la mise en forme ; ce qui reste humain, c’est l’hypothèse et le conseil.
 
+| Se prépare seul | Attend une validation | Reste humain |
+|---|---|---|
+| L’extraction et la mise en forme des données déjà tenues, période par période | Un prévisionnel ou un plan de trésorerie préparé sur des hypothèses tracées | L’hypothèse elle-même, et le conseil qui en découle |
+| Le rapprochement d’un dossier de financement avec les pièces disponibles | Les éléments chiffrés d’une évaluation, avant remise | La présentation au client et la décision qu’il prend |
+
 ## Méthode et décision humaine : la famille transversale
 
 Quatre familles qui ne produisent rien mais qui décident de tout. Choisir et cadrer une automatisation, en commençant par une tâche qui a une règle écrite plutôt que par la plus douloureuse. Écrire la règle dans les mots du cabinet, la rejouer sur un jeu d’essai fictif qui couvre le cas courant, le cas limite et le cas de refus, puis la recetter sur les fichiers du cabinet. Placer la validation humaine là où une action engage le cabinet ou un client. Mesurer le temps réellement gagné, avant et après, plutôt que de reprendre un chiffre lu ailleurs.
 
+| Se prépare seul | Attend une validation | Reste humain |
+|---|---|---|
+| Le jeu d’essai fictif rejoué à chaque changement de règle | La règle écrite, avant son premier passage en recette | Le choix de la tâche par laquelle commencer |
+| La mesure du temps avant et après, sur le même jeu d’essai | La place de chaque validation humaine, écrite dans la règle | La décision d’interrompre ou d’étendre une automatisation |
+
 ## Que ne contient pas cette carte ?
 
-Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Elle ne contient pas non plus l’audit légal et le commissariat aux comptes : la famille est listée, aucune tâche n’y est documentée, elle n’est pas ouverte. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.
+Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Elle ne documente pas l’audit légal et le commissariat aux comptes : ce douzième pôle et sa famille unique sont listés, aucune tâche n’y est ouverte. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.
 
 ## Les erreurs à éviter quand on automatise un cabinet
 
@@ -167,4 +190,4 @@ Une tâche s’automatise quand elle se répète, que sa règle s’écrit dans 
 
 ## Par où commencer ?
 
-Choisissez une seule famille, la plus répétitive de votre cabinet, et écrivez sa règle sur une page : déclencheur, condition, action, exception. Si la page se remplit sans hésitation, la tâche est candidate. Si elle appelle des « ça dépend », gardez-la pour plus tard. La [méthode Memlia](/methode) part exactement de cette page, la rejoue sur vos fichiers en recette, et [le service](/automatisation-cabinet-comptable) code la règle dans les outils que vous utilisez déjà, avec les [garanties](/garanties) qui vont avec. Le [glossaire](/glossaire) fixe le vocabulaire de ces règles, terme par terme. 
+Choisissez une seule famille, la plus répétitive de votre cabinet, et écrivez sa règle sur une page : déclencheur, condition, action, exception. Si la page se remplit sans hésitation, la tâche est candidate. Si elle appelle des « ça dépend », gardez-la pour plus tard. Puis confiez-nous la tâche entière : nous observons le geste avec vos équipes, nous écrivons la règle dans vos mots, nous la construisons dans les outils que vous utilisez déjà, vos équipes la recettent, et nous la maintenons. Vous gardez la décision à chaque endroit où elle engage le cabinet ou un client. C’est [la méthode](/methode), [le service](/automatisation-cabinet-comptable) et ses [garanties](/garanties) ; le [glossaire](/glossaire) fixe le vocabulaire de ces règles, terme par terme. 

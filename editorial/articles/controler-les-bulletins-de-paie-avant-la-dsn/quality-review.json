@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "reviewedAt": "2026-09-17",
+  "reviewer": "relecteur-qualite-ia-memlia",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 98,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 29,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 25,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 14,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 15,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 15,
+      "max": 15
+    }
+  },
+  "evidence": [
+    "Huit citations vérifiées mot pour mot par grep direct contre les quatre fichiers source locaux (service-public-dsn, net-entreprises-dsn-val/-crm/-fiabilisation) ; aucun écart trouvé.",
+    "Comptage direct dans le HTML rendu : 1 H1, 23 H2, 6 H3, sans saut de niveau ; title à 60 caractères exactement (recompté en caractères, pas en octets) ; meta description à 137 caractères.",
+    "JSON-LD @graph complet : BlogPosting, BreadcrumbList, Person (auteur avec bio, lien /a-propos), Organization (SIREN 108621541) et WebSite.",
+    "Quatre liens externes, tous tier-1 officiels (service-public.gouv.fr, net-entreprises.fr x3), et six ancres internes contextuelles (pilier, article frère, deux glossaire, méthode, garanties).",
+    "Dimensions des dérivés d'image vérifiées par lecture directe des fichiers : master.png 1920x1080, og.webp 1200x630, hero-768.avif/webp 768x432, conformes à image.json.",
+    "La phrase défensive « ne remplace pas » identifiée en première passe est absente du rendu (recherche exhaustive, zéro occurrence) ; remplacée par une affirmation positive dans la FAQ.",
+    "Le bloc de clôture « Et dans votre cabinet ? » porte le libellé « Confier cette tâche » vers /contact, avec un texte qui nomme ce que Memlia fait et ce que le cabinet garde, conforme au §7 bis.",
+    "Un seul visuel (la couverture) sur tout l'article : aucune illustration additionnelle intégrée au corps, la structure reposant sur huit tableaux et deux listes numérotées."
+  ],
+  "reservations": [
+    "Aucune mesure Lighthouse ou Core Web Vitals réelle (LCP, INP, CLS) : les signaux (fetchpriority, preload, formats AVIF/WebP) sont vérifiés dans le code, pas chronométrés en conditions réelles.",
+    "Score de lisibilité Flesch et part de voix passive non calculés par un outil dédié au français ; l'appréciation reste qualitative, et au moins une phrase de l'introduction cumule quatre propositions séparées par des virgules.",
+    "Le wordCount déclaré dans le JSON-LD (2859) diffère légèrement d'un recomptage indépendant sur le HTML rendu, tags retirés (2908 mots) : écart mineur d'environ 2 %, probablement une différence de méthode de découpage, sans incidence sur le jugement de fond.",
+    "Les pages /a-propos, /contact et /mentions-legales liées en pied de page n'ont pas été rouvertes pour cette revue : leur présence est vérifiée, pas leur contenu.",
+    "Les citations sont vérifiées contre la copie locale figée du 17/09/2026 (preuves/sources/*.source.txt), pas contre une nouvelle consultation en direct des quatre pages au moment de cette revue.",
+    "Le robots meta « noindex, follow » bloque actuellement toute indexation IA ou recherche : cohérent avec le statut de candidat non publié, mais à faire basculer explicitement au moment de la publication réelle."
+  ],
+  "verdict": "Article rigoureusement sourcé et balisé (98/100) : le P0 de la FAQ est résolu, aucun nouveau défaut bloquant n'a été trouvé, et l'article est publiable dès bascule de l'indexation au moment de la mise en ligne réelle.",
+  "subject": {
+    "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+    "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+    "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48"
+  }
+}

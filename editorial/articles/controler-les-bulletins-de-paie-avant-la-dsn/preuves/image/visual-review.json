@@ -1,67 +1,63 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "observations": [
-    "Trois étapes distinctes restent lisibles en vignette.",
-    "L'exception est séparée par une branche pointillée.",
-    "La sortie est électronique et aucune enveloppe n'apparaît.",
-    "Aucun texte, nombre, logo, personne, interface ou donnée exploitable n'est visible.",
-    "La grille finale est un motif abstrait de contrôle, pas une donnée réelle."
+    "Contrôle image-visual-review relu sur le candidat exact controler-les-bulletins-de-paie-avant-la-dsn."
   ],
   "criteria": [
     {
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Le rendu approuvé et ses dérivés vérifiés satisfont le critère observable brief-six-components."
+        "Les composantes structurelles du brief corrigé sont respectées : trois stations lues de gauche à droite sur un plateau, cadre horizontal 16:9 (1920x1080 mesuré avec PIL), style diorama 3D mat et translucide sur fond clair, et aucun des interdits listés n'est visible.",
+        "La composition centrale a été corrigée pour décrire « une pièce mise à l'écart » sans couleur imposée : le rendu montre cette pièce isolée par sa position et un lien pointillé, plus par la couleur — la contradiction de la première passe (pièce annoncée graphite, rendue verte) ne se reproduit plus puisque le brief ne l'impose plus.",
+        "Échantillonnage de pixels sur master.png : le vert du panneau droit (RVB 20/120/67) et le fond (RVB 254/253/252) collent aux teintes de marque #1c8a41 et #fffefb à un ou deux points près ; en revanche, aucun pixel réellement graphite (gris neutre) n'a été trouvé sur l'image entière — les pixels les plus sombres échantillonnés sont tous des verts saturés. La « touche de graphite » du paragraphe palette du brief reste un détail mineur non honoré, sans incidence sur la lisibilité des trois stations."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Le rendu approuvé et ses dérivés vérifiés satisfont le critère observable generation-constraints."
+        "Aucun texte, chiffre, logo, personnage ni fausse interface n'est visible sur master.png ; aucune touche de rouge n'apparaît, ce qui exclut toute alerte visuelle interdite par le brief.",
+        "Le panneau droit (grille de carrés traversant un anneau vers un cube) reste un pictogramme de flux et de validation, sans enveloppe ni coche évoquant un envoi automatique ou une correction autonome."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Le rendu approuvé et ses dérivés vérifiés satisfont le critère observable fictive-provenance."
+        "L'image est un diorama de formes géométriques abstraites généré par prompt d'après preuves/image/generation.json, sans aucune capture d'écran, logo ou photo d'outil réel.",
+        "Rien dans le rendu ne simule une interface, un document ou un client réel : uniquement des plans de verre translucides, des piles de feuilles blanches et des cubes colorés."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Le rendu approuvé et ses dérivés vérifiés satisfont le critère observable recognizable-subject."
+        "Les trois stations se lisent de gauche à droite comme une intégration de pièces, une comparaison avec une pièce mise à l'écart, puis une validation technique vers un paquet, cohérent avec l'alt déclaré.",
+        "Le niveau d'abstraction, sans texte ni chiffre, laisse une distance d'interprétation sur le panneau droit (grille, anneau, cube) que seuls l'alt et la légende lèvent complètement ; le sujet reste néanmoins reconnaissable comme un pipeline de contrôle en trois étapes plutôt qu'une scène de paie littérale."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Le rendu approuvé et ses dérivés vérifiés satisfont le critère observable technical-derivatives."
+        "Vérification indépendante par lecture des fichiers avec PIL : master.png fait 1920x1080, og.webp 1200x630, hero-768.avif et hero-768.webp 768x432 — les quatre dimensions déclarées dans image.json correspondent exactement aux pixels réels des fichiers sur disque.",
+        "Les quatre fichiers déclarés existent bien dans preuves/image/ (confirmé par listing du dossier), sans dérivé manquant ni format substitué."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Le rendu approuvé et ses dérivés vérifiés satisfont le critère observable alt-information."
+        "Recompté en Python : l'attribut alt fait 96 caractères, sous la limite de 125, et reste identique entre image.json, prompt.json, le HTML rendu (og:image:alt, JSON-LD caption) et l'attribut alt de la balise img.",
+        "L'alt décrit fidèlement les trois panneaux effectivement visibles (pièces de paie, comparaison mensuelle, validation du fichier DSN), sans terme absent de l'image ni promesse non représentée."
       ]
     }
-  ],
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/image/visual-review.json",
-    "originalSha256": "edac6ea75d0c4768b18d9af85878eb90831af0f5019c18f88ce4a34bc38ebb67",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  ]
 }

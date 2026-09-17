@@ -86,24 +86,24 @@ export const IMAGES = {
   },
   /* Couvertures du blog (16:9) : liste à 50 vw, article à 720 px, écrans 2x. */
   'img-23-controle-bulletins-paie': {
-    brief: 'IMG-23',
+    brief: 'ART',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: 'Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN.',
+    alt: "Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN.",
     generee: true,
   },
   'img-24-suivi-production-sociale': {
-    brief: 'IMG-24',
+    brief: 'ART',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: 'Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision.',
+    alt: "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision.",
     generee: true,
   },
   'img-25-comptes-rendus-metier-dsn': {
-    brief: 'IMG-25',
+    brief: 'ART',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: 'Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine.',
+    alt: "Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine.",
     generee: true,
   },
   'img-art-carte-des-taches': {

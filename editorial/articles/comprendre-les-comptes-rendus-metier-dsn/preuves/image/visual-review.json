@@ -3,20 +3,58 @@
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-15",
-  "reviewer": "vision_analyze",
-  "score": 95,
-  "criteria": [
-    {"name":"direction artistique Memlia","status":"PASS","note":"Diorama 3D isométrique, crème papier, vert Memlia, graphite et translucides cohérents."},
-    {"name":"dépôt déjà franchi","status":"PASS","note":"Le fichier abstrait est représenté à gauche du mécanisme, sans scène d’envoi en cours."},
-    {"name":"retours multiples","status":"PASS","note":"Plusieurs plaques et cartes distinctes forment une pile de retours."},
-    {"name":"anomalie isolée","status":"PASS","note":"Une pièce gris-graphite sort visuellement du flux principal."},
-    {"name":"arbitrage humain","status":"PASS","note":"La bifurcation et le jeton choisi suggèrent une décision sans automatisation autonome."},
-    {"name":"interdits","status":"PASS","note":"Aucun texte, chiffre, logo, personne, donnée réelle, fausse interface ou symbole d’envoi automatique."}
+  "checkedAt": "2026-09-17",
+  "articleSha256": "c7055d564b5249a1f8b2399a58f7f4db5827f7927e4a49e06abbff5b5e31be91",
+  "manifestSha256": "23f90957b7523de8047c1bb2b304b3ced0e26778ddb5d344bfc2881739bea513",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact comprendre-les-comptes-rendus-metier-dsn."
   ],
-  "p0": [],
-  "limitations": [
-    "Le choix humain est métaphorique plutôt que figuratif ; l’alt text porte la sémantique explicite.",
-    "L’illustration ne prétend pas reproduire un CRM ou une interface réelle."
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Les quatre zones du brief sont présentes : à gauche un portique vert traversé par un bloc crème (fichier déjà franchi), au centre une pile de plaques translucides à formes distinctes (cercle, triangle, hexagone et losange, pentagone) pour les retours, une plaque gris-graphite isolée en avant-plan pour l'anomalie, et à droite une bifurcation avec un disque au point de fourche.",
+        "Le jeton au point de bifurcation est crème plutôt que littéralement vert comme le décrit le texte de composition du brief ; c'est une déviation mineure qui n'empêche pas de lire la scène comme un arbitrage sans personnage."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Format 16:9 (1920x1080 selon image.json), style diorama 3D isométrique à matières mates et translucides sur fond crème, conforme au brief.",
+        "Palette limitée au vert Memlia, au vert profond, au crème et au graphite ; aucune alerte rouge, aucune fausse interface ni écran, et aucun texte ou chiffre lisible détecté sur l'image."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "L'image est un rendu 3D abstrait sans ressemblance photographique, capture d'écran ou logo d'un organisme réel ; aucune personne ni donnée identifiable n'apparaît, cohérent avec une origine explicitement générée."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "La séquence portique franchi puis plaques distinctes puis pièce isolée puis bifurcation restitue lisiblement l'alt « un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine », un registre attendu pour une couverture conceptuelle plutôt que littérale."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "image.json déclare le master 1920x1080 en PNG, un dérivé OG 1200x630 en WebP (recadré 1200x630+0+22), et un dérivé hero-768 en AVIF et WebP (768x432), couvrant les trois formats attendus.",
+        "Le HTML rendu consomme bien ces tailles : srcset 768/1200/1600w en AVIF et WebP pour le hero, og:image et twitter:image en 1200x630 avec largeur et hauteur déclarées."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "L'attribut alt compte 95 caractères, sous la limite de 125, et décrit la scène (dépôt franchi, retours distincts, anomalie isolée, décision humaine) plutôt qu'un mot-clé ou une promesse marketing.",
+        "Le même texte alt est répété à l'identique entre paquet-revue.json, prompt.json, image.json, og:image:alt et l'attribut alt du HTML rendu, sans dérive entre les surfaces."
+      ]
+    }
   ]
 }

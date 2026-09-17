@@ -3,30 +3,30 @@
   "blog": [
     {
       "skill": "blog-strategy",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-strategy.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La stratégie est tenue au niveau du site (docs/strategy/site-v3), pas rejouée pour « Suivre la production sociale dans Excel : modèle, règles et limites »."
     },
     {
       "skill": "blog-brand",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-brand.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La voix et la charte sont fixées par .agents/product-marketing.md ; « Suivre la production sociale dans Excel : modèle, règles et limites » les applique sans les redéfinir."
     },
     {
       "skill": "blog-persona",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-persona.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le rôle lecteur de « Suivre la production sociale dans Excel : modèle, règles et limites » vient du hub Ressources et du référentiel des besoins, pas d'une persona nouvelle."
     },
     {
       "skill": "blog-discourse",
@@ -35,43 +35,43 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le sujet est evergreen et aucun corpus praticien récent n’est fourni ou autorisé ; aucune tendance sociale n’est revendiquée."
+      "justification": "Aucune analyse de discours distincte : « Suivre la production sociale dans Excel : modèle, règles et limites » suit le brief et la revue éditoriale."
     },
     {
       "skill": "blog-google",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-google.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le relevé Search Console de « Suivre la production sociale dans Excel : modèle, règles et limites » est porté par la preuve GSC du dossier, pas par ce skill."
     },
     {
       "skill": "blog-calendar",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-calendar.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le calendrier est celui de la v3 (docs/strategy/site-v3/CONTENT-CALENDAR.md) ; « Suivre la production sociale dans Excel : modèle, règles et limites » y occupe un créneau attribué."
     },
     {
       "skill": "blog-cluster",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-cluster.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le cluster de « Suivre la production sociale dans Excel : modèle, règles et limites » est fixé par build-cluster-plan.py, source unique du maillage."
     },
     {
       "skill": "blog-taxonomy",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-taxonomy.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La taxonomie (src/data/familles.ts) est tenue au niveau du site ; « Suivre la production sociale dans Excel : modèle, règles et limites » y est rattaché par son frontmatter."
     },
     {
       "skill": "blog-brief",
@@ -79,7 +79,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-brief.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -88,7 +88,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-outline.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -98,16 +98,16 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun notebook n’est fourni, requis ou autorisé ; les sources primaires locales suffisent à cette réécriture."
+      "justification": "Aucune synthèse NotebookLM pour « Suivre la production sociale dans Excel : modèle, règles et limites » : les sources sont lues et citées directement."
     },
     {
       "skill": "blog-write",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "L’URL et l’article existent déjà ; le workflow applicable est blog-rewrite, pas la création d’un article neuf."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-write.json",
+      "checkedAt": "2026-09-17",
+      "justification": null
     },
     {
       "skill": "blog-rewrite",
@@ -115,7 +115,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-rewrite.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -124,17 +124,17 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-factcheck.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
       "skill": "blog-style",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "Aucun profil de style personnel validé n’existe ; la revue de style est portée par blog-rewrite et les règles Memlia."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-style.json",
+      "checkedAt": "2026-09-17",
+      "justification": null
     },
     {
       "skill": "blog-chart",
@@ -143,7 +143,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune série chiffrée fiable n’est à tracer ; le dictionnaire et les matrices sémantiques sont plus adaptés."
+      "justification": "« Suivre la production sociale dans Excel : modèle, règles et limites » ne contient aucun graphique : les tableaux sont en HTML."
     },
     {
       "skill": "blog-image",
@@ -151,7 +151,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-image.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -160,7 +160,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-schema.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -169,7 +169,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-seo-check.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -178,7 +178,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-geo.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -187,7 +187,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-analyze.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -196,7 +196,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-audit.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -205,26 +205,26 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/blog-cannibalization.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
       "skill": "blog-decay",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-decay.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Suivre la production sociale dans Excel : modèle, règles et limites » vient d'être écrit : aucun déclin à mesurer."
     },
     {
       "skill": "blog-flow",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/blog-flow.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun prompt FLOW distinct pour « Suivre la production sociale dans Excel : modèle, règles et limites » : le brief tient le cadrage."
     },
     {
       "skill": "blog-repurpose",
@@ -233,7 +233,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun post, e-mail ou autre format de diffusion n’est mandaté et toute publication externe est interdite."
+      "justification": "Aucune déclinaison de « Suivre la production sociale dans Excel : modèle, règles et limites » sur un autre canal n'est prévue."
     },
     {
       "skill": "blog-audio",
@@ -242,7 +242,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucun format audio n’est mandaté et aucune narration n’est nécessaire à cette preview écrite."
+      "justification": "Aucune version audio de « Suivre la production sociale dans Excel : modèle, règles et limites »."
     },
     {
       "skill": "blog-multilingual",
@@ -251,7 +251,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le site et l’article sont uniquement en français ; aucune stratégie multilingue n’est décidée."
+      "justification": "« Suivre la production sociale dans Excel : modèle, règles et limites » est publié en français uniquement."
     },
     {
       "skill": "blog-translate",
@@ -260,7 +260,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune traduction de l’article français n’est demandée ou autorisée."
+      "justification": "Aucune traduction de « Suivre la production sociale dans Excel : modèle, règles et limites »."
     },
     {
       "skill": "blog-localize",
@@ -269,7 +269,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune locale secondaire ou adaptation régionale n’est prévue pour cet article."
+      "justification": "Aucune localisation de « Suivre la production sociale dans Excel : modèle, règles et limites » : un seul marché, la France."
     },
     {
       "skill": "blog-locale-audit",
@@ -278,27 +278,27 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le corpus est monolingue et ne contient aucune variante locale à comparer."
+      "justification": "Aucun audit de locale pour « Suivre la production sociale dans Excel : modèle, règles et limites » : site monolingue."
     }
   ],
   "seo": [
     {
       "skill": "seo-plan",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-plan.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le plan SEO est celui du site (docs/strategy/site-v3) ; « Suivre la production sociale dans Excel : modèle, règles et limites » l'exécute."
     },
     {
       "skill": "seo-google",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-google.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le relevé Google de « Suivre la production sociale dans Excel : modèle, règles et limites » est porté par les preuves SERP et GSC du dossier."
     },
     {
       "skill": "seo-content-brief",
@@ -306,26 +306,26 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-content-brief.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
       "skill": "seo-cluster",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-cluster.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le cluster de « Suivre la production sociale dans Excel : modèle, règles et limites » est fixé par build-cluster-plan.py."
     },
     {
       "skill": "seo-sxo",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-sxo.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "L'adéquation format/SERP de « Suivre la production sociale dans Excel : modèle, règles et limites » est jugée dans le critère serp-format-rankability de la revue."
     },
     {
       "skill": "seo-page",
@@ -333,7 +333,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-page.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -342,7 +342,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-content.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -351,7 +351,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-technical.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -360,7 +360,7 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-schema.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
@@ -369,35 +369,35 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-images.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
       "skill": "seo-sitemap",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-sitemap.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le sitemap est généré par le build ; « Suivre la production sociale dans Excel : modèle, règles et limites » y entre à la publication (test:lastmod)."
     },
     {
       "skill": "seo-geo",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-geo.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La citabilité de « Suivre la production sociale dans Excel : modèle, règles et limites » est vérifiée par blog-geo (réponse directe, définitions)."
     },
     {
       "skill": "seo-flow",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-flow.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun prompt FLOW distinct pour « Suivre la production sociale dans Excel : modèle, règles et limites »."
     },
     {
       "skill": "seo-audit",
@@ -405,26 +405,26 @@
       "status": "RUN",
       "result": "PASS",
       "evidence": "preuves/skills/seo-audit.json",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "justification": null
     },
     {
       "skill": "seo-drift",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-drift.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune baseline de dérive avant la publication de « Suivre la production sociale dans Excel : modèle, règles et limites »."
     },
     {
       "skill": "seo-backlinks",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-backlinks.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun lien externe entrant à analyser pour « Suivre la production sociale dans Excel : modèle, règles et limites » avant publication."
     },
     {
       "skill": "seo-competitor-pages",
@@ -433,7 +433,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le candidat n’est ni une comparaison de produits ni une page d’alternatives concurrentes."
+      "justification": "Aucune page comparative : « Suivre la production sociale dans Excel : modèle, règles et limites » n'oppose aucun éditeur."
     },
     {
       "skill": "seo-local",
@@ -442,7 +442,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "La requête visée est nationale et ne porte aucun besoin de page ville ou de fiche établissement."
+      "justification": "Aucune intention locale pour « Suivre la production sociale dans Excel : modèle, règles et limites » (décision v2 : pas de pages villes)."
     },
     {
       "skill": "seo-maps",
@@ -451,7 +451,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Aucune intention Map Pack, itinéraire ou donnée géographique n’est pertinente pour cet article."
+      "justification": "Aucune fiche Maps concernée par « Suivre la production sociale dans Excel : modèle, règles et limites »."
     },
     {
       "skill": "seo-hreflang",
@@ -460,7 +460,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Une seule version française existe ; aucune variante linguistique ou régionale ne nécessite hreflang."
+      "justification": "Site monolingue : aucun hreflang pour « Suivre la production sociale dans Excel : modèle, règles et limites »."
     },
     {
       "skill": "seo-ecommerce",
@@ -469,7 +469,7 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Memlia vend un service B2B ; cette page n’est ni un produit marchand, ni un catalogue, ni un checkout."
+      "justification": "Aucun produit ni marketplace dans « Suivre la production sociale dans Excel : modèle, règles et limites »."
     },
     {
       "skill": "seo-programmatic",
@@ -478,16 +478,16 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "Le chantier réécrit une URL historique unique et ne génère aucune collection de pages à l’échelle."
+      "justification": "« Suivre la production sociale dans Excel : modèle, règles et limites » est un article rédigé, pas une page programmatique."
     },
     {
       "skill": "seo-dataforseo",
-      "applicable": true,
-      "status": "RUN",
-      "result": "PASS",
-      "evidence": "preuves/skills/seo-dataforseo.json",
-      "checkedAt": "2026-09-13",
-      "justification": null
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun crédit DataForSEO engagé pour « Suivre la production sociale dans Excel : modèle, règles et limites » : volumes ND documentés dans la preuve SERP."
     },
     {
       "skill": "seo-image-gen",
@@ -496,15 +496,8 @@
       "result": null,
       "evidence": null,
       "checkedAt": null,
-      "justification": "La politique Memlia impose image_generate ; l’extension seo-image-gen n’est pas utilisée pour cette image."
+      "justification": "Aucune génération d'image IA pour « Suivre la production sociale dans Excel : modèle, règles et limites » : cadre de preuve HTML."
     }
   ],
-  "contradictions": [],
-  "adoption": {
-    "originalPath": "preuves/inherited/skills.json",
-    "originalSha256": "de949fa1a365b2be863d95d27e402447d8c5ec2bce114934627988ad2c7d74c2",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "contradictions": []
 }

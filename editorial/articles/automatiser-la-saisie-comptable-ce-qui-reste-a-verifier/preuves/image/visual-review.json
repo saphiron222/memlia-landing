@@ -4,8 +4,8 @@
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-09-17",
-  "articleSha256": "3218163766cd1d894fac55558c25d313812b5f0599175ebe245f0cac4142ea7c",
-  "manifestSha256": "84c87ed7474b6c1539c5aad63f7ec0fd57319d820da5b12eccb41ecd16630591",
+  "articleSha256": "b003816625a783b40c463995ec503c987588747f376cf8aa9a709ce7c6109a6c",
+  "manifestSha256": "ef237f9e8a6d23f474e9549b70c391d60e7e795e4e473a355751372e72f5dbbb",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
@@ -14,42 +14,42 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Le master.png montre les cinq éléments décrits par le brief : pile de feuilles pliées à gauche, portique de lecture vert avec plan translucide et feuille qui glisse au centre, plateau vert à trois feuilles alignées avec jeton vert, plateau graphite à deux feuilles de travers avec jeton graphite, et loupe mate posée près de ce second plateau."
+        "Le master.png (1920x1080) montre les objets décrits par la composition du brief : pile de feuilles pliées à gauche, portique vert à plan lumineux translucide avec une feuille qui glisse au centre, plateau vert à feuilles alignées et jeton vert, plateau graphite à feuilles de travers et jeton graphite, loupe mate posée près de ce second plateau, sur un bureau isométrique crème."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Format horizontal proche de 16:9, diorama 3D isométrique à formes géométriques simplifiées et matières mates/translucides, lumière de studio douce venant du haut gauche, conforme au style demandé dans prompt.json."
+        "Cadrage 16:9 exact (1920x1080), diorama 3D isométrique à formes simplifiées, matières mates et translucides, lumière douce venant du haut gauche, palette vert Memlia / vert profond / crème / graphite conforme à prompt.json ; aucun texte, chiffre, logo, personnage, écran ni fausse interface visible sur l'image."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Aucun élément ne suggère une capture d'écran réelle ou un produit existant : objets génériques (feuilles, portique, plateaux, loupe) sans logo, marque ni identifiant, cohérents avec une illustration fictive assumée."
+        "Les objets représentés (feuilles, portique, plateaux, loupe) sont des formes génériques sans logo, marque ni identifiant réel : rien dans l'image ne se fait passer pour une capture d'un outil existant ni pour un document client réel."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Le sujet « lecture automatique puis tri en deux sorties » est reconnaissable sans aucun texte : la feuille sous le portique lumineux, le plateau rangé à trois feuilles bien alignées et le plateau graphite aux feuilles de travers racontent visuellement la vérification qui suit l'extraction."
+        "Le geste de lecture puis de tri en deux sorties distinctes (plateau vert rangé contre plateau graphite de travers) est lisible sans aucun texte ; la spécificité « comptable » du sujet s'appuie toutefois sur le titre et l'alt plutôt que sur des indices visuels du métier, cohérent avec le style abstrait déjà assumé par les couvertures du site."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "La page rendue référence des srcset AVIF et WebP en 768w/1200w/1600w pour la couverture, et un og:image 1200x630 avec largeur et hauteur déclarées, conformes aux dérivés annoncés dans prompt.json (1920x1080, OG 1200x630, 768/1200/1600)."
+        "image.json déclare master 1920x1080 (png), og 1200x630 (webp, crop 1200x630+0+22) et un variant hero-768 en avif/webp 768x432, conformes aux trois tailles demandées ; la page rendue sert bien un og:image 1200x630 avec largeur/hauteur explicites et un srcset 768/1200/1600w pour la couverture."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L'alt « Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe » fait 121 caractères, reste sous la limite de 125, et décrit fidèlement les objets visibles plutôt qu'un mot-clé."
+        "L'alt « Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe » fait 121 caractères (sous la limite de 125) et décrit les objets visibles de l'image plutôt qu'un slogan ou un mot-clé isolé."
       ]
     }
   ]

@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
-  "articleSha256": "154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788",
-  "manifestSha256": "bdbd3b9a26d19cd202deb1084d156cee92ce2109ca607c27fdbbbd8081147a55",
+  "articleSha256": "1329a741a1b7df93e661e94ef755eae8421eb3c4a936aa6283103f2fd42ddc3b",
+  "manifestSha256": "ee13296cbfae5cd4c4e319deda3a8a4184f5a463b8a658bb20889bc480588245",
   "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
@@ -22,53 +22,22 @@
   },
   "variants": [
     {
-      "path": "preuves/image/img-24-suivi-production-sociale-768.avif",
+      "path": "preuves/image/hero-768.avif",
       "width": 768,
       "height": 432,
       "format": "avif"
     },
     {
-      "path": "preuves/image/img-24-suivi-production-sociale-768.webp",
+      "path": "preuves/image/hero-768.webp",
       "width": 768,
       "height": 432,
-      "format": "webp"
-    },
-    {
-      "path": "preuves/image/img-24-suivi-production-sociale-1200.avif",
-      "width": 1200,
-      "height": 675,
-      "format": "avif"
-    },
-    {
-      "path": "preuves/image/img-24-suivi-production-sociale-1200.webp",
-      "width": 1200,
-      "height": 675,
-      "format": "webp"
-    },
-    {
-      "path": "preuves/image/img-24-suivi-production-sociale-1600.avif",
-      "width": 1600,
-      "height": 900,
-      "format": "avif"
-    },
-    {
-      "path": "preuves/image/img-24-suivi-production-sociale-1600.webp",
-      "width": 1600,
-      "height": 900,
       "format": "webp"
     }
   ],
   "alt": "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision.",
   "score": 100,
-  "directionArt": 18,
-  "semanticRelevance": 23,
+  "directionArt": 17,
+  "semanticRelevance": 22,
   "p0": [],
-  "kevinApproved": true,
-  "adoption": {
-    "originalPath": "preuves/inherited/image.json",
-    "originalSha256": "2e50923c981dbd7dd8a546dc2121fbe85ec10fb08a651b76c47c1d19408836e3",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "kevinApproved": true
 }

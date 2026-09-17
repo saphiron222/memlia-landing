@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "c7055d564b5249a1f8b2399a58f7f4db5827f7927e4a49e06abbff5b5e31be91",
+  "manifestSha256": "23f90957b7523de8047c1bb2b304b3ced0e26778ddb5d344bfc2881739bea513",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact comprendre-les-comptes-rendus-metier-dsn."
+  ],
+  "reviewer": "marketing",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "La « Réponse directe » (75 mots) répond immédiatement à l'intention comprendre pour « crm dsn » : elle nomme l'objet (un contrôle d'un organisme, pas un verdict sur toute la paie) avant tout développement.",
+        "La méthode en six étapes (identifier l'objet exact, lire le statut, localiser la donnée, rapprocher de la paie, documenter la décision, contrôler le retour suivant) couvre exactement la tâche du brief : lire un retour, déterminer sa portée, organiser une correction ou un classement justifié.",
+        "Le périmètre est borné dès le deuxième paragraphe (« Ce guide traite exclusivement de l'interprétation et du suivi après dépôt »), avec renvoi explicite vers l'article frère pour l'avant-dépôt, ce qui évite toute confusion de tâche pour le rôle paie-responsables-sociaux."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Titre de balise à 56 caractères (« CRM DSN : lire le compte rendu et ses anomalies | Memlia »), dans la fourchette 40-60 recommandée, et meta description à 144 caractères cohérente avec le contenu visible.",
+        "Hiérarchie de titres propre et sans saut : un seul H1, des H2 par section, des H3 pour les six étapes et pour les cinq questions de la FAQ.",
+        "Cinq tableaux avec <thead> (retours après dépôt, situations fictives, registre à dix champs, répartition automatisation/validation/humain) offrent un format comparatif adapté au how-to-guide déclaré."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Quatre sources tier-1 officielles (Net-entreprises/GIP-MDS) sont citées mot pour mot dans le corps et listées avec date de consultation (17 septembre 2026) dans « Sources consultées ».",
+        "Auteur nommé et lié (Kevin Kitanga, Fondateur de Memlia) avec bio en pied d'article, lien rel=\"author\" vers /a-propos#kevin-kitanga, et balisage Person/BlogPosting/Organization/BreadcrumbList dans le JSON-LD.",
+        "Les sept citations du paquet de revue sont retrouvées à l'identique dans les fichiers preuves/sources/*.source.txt correspondants (ex. « le certificat de conformité vous libère de vos obligations déclaratives... » à la ligne 999 de net-entreprises-retours.source.txt)."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Le tableau des retours ajoute une colonne « Premier geste » explicitement étiquetée comme méthode Memlia et distincte de la définition sourcée (« la consigne effectivement reçue prime toujours »), ce qui crée un gain d'information balisé plutôt que noyé dans la source.",
+        "Le registre à dix champs (id_retour, emetteur, type_retour, statut_source, decision, controle_suivant...) et l'exemple fictif D-027/R-027-A traduisent la méthode en objets concrets qu'aucune des quatre pages Net-entreprises ne fournit.",
+        "Le tableau « ce qui s'automatise / attend une validation / reste humain » synthétise une répartition des tâches propre à Memlia, absente des pages sources citées."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Canonical, Open Graph (image 1200x630 avec largeur/hauteur déclarées et alt), Twitter Card et JSON-LD (BlogPosting, BreadcrumbList, Person, Organization, WebSite) sont tous présents et cohérents avec le titre et la description visibles.",
+        "L'image de couverture utilise loading=\"eager\" et fetchpriority=\"high\" avec un srcset AVIF/WebP à 768/1200/1600w, un traitement correct pour l'image LCP plutôt qu'un lazy-load pénalisant, et un alt de 95 caractères.",
+        "La balise noindex et le bandeau « Candidat éditorial » observés dans ce rendu appartiennent au harnais de prévisualisation QA, pas à l'article une fois publié, et ne sont donc pas comptés comme un défaut de la page."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "La FAQ (5 questions en H3) répond en une à trois phrases autonomes et sourcées par question (ex. « Un certificat de conformité garantit-il que la paie est juste ? » → réponse directe rattachée à Net-entreprises), un format extractible par un moteur de réponse.",
+        "La terminologie (CRM, bilan d'anomalies, certificat de conformité, BAN, CCO, AEE, ARE) est définie une seule fois puis réutilisée sans dérive de vocabulaire sur les 3001 mots de l'article, ce qui clarifie l'entité traitée."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "La formule « à adapter », cause du FAIL en première passe (répétée dans la colonne « Premier geste » et dans l'intro du registre), n'apparaît plus une seule fois dans ce rendu : les deux phrases concernées ont été réécrites (« la consigne effectivement reçue prime toujours » ; « le cabinet en fixe les droits d'accès et l'outil »).",
+        "L'appel de fin reprend exactement le libellé prescrit par la charte : bloc « Et dans votre cabinet ? », bouton « Confier cette tâche » vers /contact, et un texte qui dit ce que Memlia fait (écrire la règle, automatiser la collecte et le rapprochement, faire recetter) et ce que le cabinet garde (interprétation, correction, dépôt), avec « Rien à envoyer » en formulation positive.",
+        "Les deux liens requis par la charte sont présents dans le corps : vers le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches (« Pour aller plus loin ») et vers /methode (bouton « Comprendre notre méthode » du bloc d'appel, et lien « la méthode » dans la clôture).",
+        "Aucun tiret cadratin dans le corps de l'article : la seule occurrence du fichier rendu est dans le bandeau « Candidat éditorial — preview privée, non publiable » du harnais de prévisualisation, hors contenu éditorial.",
+        "« ne remplace pas » apparaît trois fois mais sur trois objets distincts (l'outil Dsn-Val, un code isolé, l'automatisation), et une seule fois à propos du service, dans la FAQ (« L'automatisation prépare ce rapprochement ; elle ne remplace pas l'interprétation métier ») : c'est la réserve unique en forme de frontière que prescrit le §7 bis, pas un avertissement répété. « ne constitue pas » apparaît une fois, à propos d'un CRM (document DSN), non du service Memlia. « Memlia peut » et « module » (hors balises <script type=\"module\">) sont absents."
+      ]
+    }
+  ]
+}

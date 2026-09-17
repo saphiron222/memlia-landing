@@ -1,14 +1,11 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "source-classification",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
-  "observations": [
-    "Le domaine final et l’éditeur déclaré ont été relus séparément à partir de la copie scellée du 13 septembre 2026."
-  ],
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "sourceId": "net-entreprises-dsn-val",
   "sourceUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
   "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
@@ -17,13 +14,10 @@
   "provenance": "primary",
   "official": true,
   "upstreamUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-  "classifiedBy": "marketing",
-  "reviewedBy": "dev",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/sources/net-entreprises-dsn-val.classification.json",
-    "originalSha256": "714af4dbd423a1a578a5a6cf48b2809deb134cf161ba7b7cb0240801f97331b3",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "classifiedBy": "kevin",
+  "reviewedBy": "relecteur-metier-ia-memlia",
+  "observations": [
+    "Page officielle du GIP-MDS, opérateur de la DSN, sur l’outil d’auto-contrôle du fichier.",
+    "Net-entreprises (GIP-MDS, opérateur technique de la DSN), domaine net-entreprises.fr : source tier-1 officielle et primaire pour l'outil d'auto-contrôle Dsn-Val et son périmètre exact (cahier technique, JMN)."
+  ]
 }

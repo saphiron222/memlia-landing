@@ -1,21 +1,29 @@
 {
   "version": 1,
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
-  "articleSha256": "154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788",
-  "manifestSha256": "bdbd3b9a26d19cd202deb1084d156cee92ce2109ca607c27fdbbbd8081147a55",
   "kind": "image-prompt",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "1329a741a1b7df93e661e94ef755eae8421eb3c4a936aa6283103f2fd42ddc3b",
+  "manifestSha256": "ee13296cbfae5cd4c4e319deda3a8a4184f5a463b8a658bb20889bc480588245",
   "observations": [
-    "Le brief décrit le sujet, la composition, la palette, les interdits et le contexte de lecture en vignette."
+    "Contrôle image-prompt relu sur le candidat exact suivre-la-production-sociale-dans-excel."
   ],
   "engine": "image_generate",
-  "prompt": "Cinq dossiers sur une grille, trois couches de traitement, agrégats sans personne et une exception isolée.",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/image/prompt.json",
-    "originalSha256": "5e3043de15a1bafc346d1a133ea4da5bdaedef1126cbfc5b7a79557ce4e8fcd3",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "prompt": "Cinq dossiers sur une grille, trois couches de traitement, agrégats sans personne et une exception isolée. Diorama 3D isométrique, formes simplifiées, matières mates et translucides, fond crème papier, palette vert #27b657 / vert profond #1c8a41 / crème / graphite, lumière douce du haut gauche. Sans texte, sans chiffre, sans logo, sans personnage, sans interface.",
+  "brief": {
+    "sujet": "Le suivi de production sociale : cinq dossiers sur une grille, trois couches de traitement (saisie, calcul, vue), des agrégats sans personne et une exception isolée pour décision.",
+    "composition": "Horizontale 16:9 ; cinq jetons-dossiers alignés sur une grille, trois plateaux superposés lus de bas en haut, une pièce graphite mise à part sur le côté, aucune figure humaine.",
+    "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche, ombres courtes, faible profondeur, composition aérée.",
+    "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème, graphite.",
+    "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, classement de personnes.",
+    "alt": "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision."
+  },
+  "reviewCriteria": [
+    "continuité avec les couvertures existantes",
+    "cinq dossiers et trois couches lisibles",
+    "exception isolée avant décision",
+    "aucune personne ni classement figuré",
+    "aucun texte, logo, donnée, fausse interface ou action automatique"
+  ]
 }

@@ -1,20 +1,13 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "skill",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "observations": [
-    "Le livrable amont scellé et l’intégration courante documentent l’exécution de seo-page sur ce candidat exact."
+    "Métadonnées : title « Contrôle bulletin de paie en cabinet : avant la DSN | Memlia », description 137 caractères, canonical auto-référent émis par le gabarit Article."
   ],
-  "skill": "seo-page",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/skills/seo-page.json",
-    "originalSha256": "680821ca172896ef28f6cbfdf0ef428c99124d17bae0d71058c743ab59550b1a",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "skill": "seo-page"
 }

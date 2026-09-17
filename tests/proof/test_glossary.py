@@ -136,19 +136,30 @@ class GlossaryProof(unittest.TestCase):
             self.assertGreaterEqual(len(text.split()), 55)
 
     def test_glossary_links_to_the_exact_preserved_articles(self):
-        dossiers = sorted(
-            path for path in (ROOT / 'editorial/articles').glob('*/review.json')
-            if json.loads((path.parent / 'manifest.json').read_text()).get('editorialStatus') == 'publie-non-atteste'
+        # Depuis le 17/09/2026 au soir, plus aucun dossier « publie-non-atteste » : les trois articles
+        # historiques sont entres dans la forge. Chaque dossier porte alors un review.json dont le sujet
+        # scelle les octets exacts de l'article ; cet oracle le relit pour chaque article publie, sans
+        # passer par le validateur JavaScript.
+        preserved = [
+            path for path in (ROOT / 'editorial/articles').glob('*/manifest.json')
+            if json.loads(path.read_text()).get('editorialStatus') == 'publie-non-atteste'
+        ]
+        self.assertEqual(preserved, [])
+        published = sorted(
+            article for article in (ROOT / 'src/content/blog').glob('*.md')
+            if '\nbrouillon: false\n' in article.read_text(encoding='utf-8')
         )
-        # Les deux dossiers historiques conservés ; les dossiers scellés par la forge ont leur propre audit.
-        self.assertEqual(len(dossiers), 2)
-        for review_path in dossiers:
-            review = json.loads(review_path.read_text())
-            slug = review['subject']['slug']
-            expected_hash = review['subject']['articleSha256']
-            source = (ROOT / 'src/content/blog' / f'{slug}.md').read_bytes()
-            self.assertEqual(hashlib.sha256(source).hexdigest(), expected_hash, slug)
-            self.assertIn(f'href="/blog/{slug}"', self.html, slug)
+        self.assertGreaterEqual(len(published), 6)
+        for article in published:
+            review = json.loads((ROOT / 'editorial/articles' / article.stem / 'review.json').read_text())
+            self.assertEqual(review['subject']['slug'], article.stem)
+            self.assertEqual(hashlib.sha256(article.read_bytes()).hexdigest(), review['subject']['articleSha256'], article.stem)
+        # Le glossaire ne renvoie qu'a des articles publies, et garde ses renvois historiques vers les
+        # deux articles paie et social qu'il citait avant leur entree dans la forge.
+        linked = set(re.findall(r'href="/blog/([a-z0-9-]+)"', self.html))
+        self.assertTrue(linked <= {article.stem for article in published}, linked)
+        for slug in ('controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel'):
+            self.assertIn(slug, linked)
 
 
 if __name__ == '__main__':

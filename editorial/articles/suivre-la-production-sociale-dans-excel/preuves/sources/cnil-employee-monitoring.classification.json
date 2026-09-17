@@ -1,14 +1,11 @@
 {
   "version": 1,
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
-  "articleSha256": "154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788",
-  "manifestSha256": "bdbd3b9a26d19cd202deb1084d156cee92ce2109ca607c27fdbbbd8081147a55",
   "kind": "source-classification",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
-  "observations": [
-    "Le domaine final et l’éditeur déclaré ont été relus séparément à partir de la copie scellée du 13 septembre 2026."
-  ],
+  "checkedAt": "2026-09-17",
+  "articleSha256": "1329a741a1b7df93e661e94ef755eae8421eb3c4a936aa6283103f2fd42ddc3b",
+  "manifestSha256": "ee13296cbfae5cd4c4e319deda3a8a4184f5a463b8a658bb20889bc480588245",
   "sourceId": "cnil-employee-monitoring",
   "sourceUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
   "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
@@ -17,13 +14,10 @@
   "provenance": "primary",
   "official": true,
   "upstreamUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-  "classifiedBy": "marketing",
-  "reviewedBy": "dev",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/sources/cnil-employee-monitoring.classification.json",
-    "originalSha256": "1c069700cf6efb7e7301a38ee2152119ee74eea6ef117fbce4c252a736e78bb8",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "classifiedBy": "kevin",
+  "reviewedBy": "relecteur-metier-ia-memlia",
+  "observations": [
+    "Page officielle de l’autorité de protection des données sur les conditions d’un dispositif de contrôle de l’activité des salariés.",
+    "CNIL, autorité administrative indépendante française, page officielle sur cnil.fr consacrée au contrôle de l’activité des personnes employées : source tier-1 institutionnelle qui fait autorité sur le cadrage RGPD et anti-surveillance de la section Gouvernance."
+  ]
 }

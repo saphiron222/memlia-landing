@@ -5,7 +5,7 @@
   "reviewer": "relecteur-qualite-ia-memlia",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 98,
+  "score": 97,
   "p0": 0,
   "categories": {
     "contentQuality": {
@@ -13,7 +13,7 @@
       "max": 30
     },
     "seoOptimization": {
-      "score": 25,
+      "score": 24,
       "max": 25
     },
     "eeatSignals": {
@@ -30,25 +30,27 @@
     }
   },
   "evidence": [
-    "Les cinq citations de claims ont été vérifiées par recherche littérale dans les cinq copies locales *.source.txt : correspondance exacte caractère pour caractère dans les cinq cas (aux entités HTML d'apostrophe près), aucune extension de portée.",
-    "Graphe JSON-LD complet : BlogPosting (wordCount 3332, dates, articleSection, keywords), BreadcrumbList à trois niveaux, Person (auteur avec bio réelle), Organization, WebSite — socle du barème entièrement couvert.",
-    "Image de couverture en <picture> avec sources avif/webp à 768/1200/1600w, dimensions vérifiées sur disque par sips (1920x1080 pour master.png, 1200x630 pour og.webp), fetchpriority=high et loading=eager sur l'image LCP — pas de pénalité de lazy-loading.",
-    "Titre de balise 60 caractères avec la requête primaire « automatisation cabinet comptable » en attaque exacte ; meta description 152 caractères ; les deux mesurés par calcul de longueur, pas par estimation visuelle.",
-    "Aucune formulation proscrite du lexique de marque (plateforme tout-en-un, autonome, zéro erreur, conformité garantie, révolution) trouvée dans le corps rendu ; l'article revendique au contraire explicitement l'absence de tout chiffre de gain non mesuré.",
-    "FAQPage absente du JSON-LD malgré une FAQ visible en quatre H3, mais absente aussi des cinq autres pages de blog rendues du site (dist/blog/*.html) : caractéristique constante du gabarit, pas une régression propre à ce candidat, et sans bonus de score prévu par la grille."
+    "Le tableau de synthèse totalise désormais exactement 60 familles sur douze pôles (13+5+7+7+4+5+3+4+3+4+4+1, recalculé), et cette répartition pôle par pôle reproduit à l'identique le compte de src/data/familles.ts (douze identifiants PoleId, soixante entrées FAMILLES) : le défaut bloquant de la revue précédente est corrigé et revérifié à la source.",
+    "Onze tableaux de frontière à trois colonnes (se prépare seul / attend une validation / reste humain) couvrent désormais les onze pôles ouverts un par un, contre sept sur onze dans la version précédemment revue ; seul le douzième pôle (audit légal) en est dépourvu, conformément à son statut listé-non-ouvert.",
+    "Les cinq citations de claims ont été revérifiées par recherche littérale normalisée dans les cinq copies locales *.source.txt : correspondance exacte dans les cinq cas, aucune extension de portée ni de polarité.",
+    "Recherche exhaustive sur le rendu entier : zéro occurrence du mot « onze », zéro tiret cadratin dans le corps de l'article (le seul du fichier appartient à la bannière du harnais de preview), zéro occurrence de « module », voix « nous » cohérente (sept occurrences).",
+    "Graphe JSON-LD complet et syntaxiquement valide (parsé programmatiquement) : BlogPosting, BreadcrumbList à trois niveaux, Person avec bio réelle, Organization avec SIREN/SIRET, WebSite.",
+    "Image de couverture vérifiée sur le disque, pas seulement dans image.json : master.png 1920x1080, dérivés 768/1200/1600 en avif/webp et og.webp 1200x630 tous présents dans public/images et dist/images.",
+    "Comptage direct sur le rendu : un seul H1, vingt H2 de contenu, cinq H3 tous dans la FAQ, sans saut de hiérarchie ; douze tableaux thead/tbody au total.",
+    "Le robots noindex de ce rendu est confirmé par lecture du code (Article.astro, Base.astro) comme conditionné par le même booléen `candidatPreview` que la bannière de preview : un artefact du harnais, pas un réglage de production."
   ],
   "reservations": [
-    "Le paragraphe « révision par cycles et clôture » (section Production comptable) enchaîne cinq phrases couvrant quatre sous-sujets distincts (checklist de révision, situations intermédiaires, facture électronique, gestion documentaire) : un découpage supplémentaire améliorerait le repérage visuel, sans que la compréhension soit réellement bloquée. Seule réserve concrète retenue sur la structure du texte.",
-    "L'article cite cinq faits sourcés à caractère réglementaire ou définitionnel, aucune statistique chiffrée : sous le repère indicatif de huit statistiques de la grille qualité, mais cohérent avec le genre (une carte méthodologique, pas un article de données chiffrées) et avec le refus assumé de tout gain chiffré non mesuré ; les cinq affirmations effectivement faites sont, elles, vérifiées exactes à 100 %.",
-    "Le nom « Memlia » apparaît quatre fois dans le corps : trois occurrences attribuent l'origine méthodologique de la taxonomie (transparence sur la provenance plutôt que ton promotionnel) et une se trouve dans l'encart de conversion final, à sa place attendue — au-delà du repère indicatif d'une mention, mais sans formulation superlative ni non conforme au lexique de marque.",
-    "Le titre de balise est à 60 caractères pile, donc sans marge restante : un allongement lors d'une prochaine évolution éditoriale le ferait sortir de la fourchette recommandée.",
-    "Aucune mesure Lighthouse/CrUX réelle n'a été exécutée ; les signaux de performance jugés (préchargement des polices, fetchpriority, absence de CSS externe bloquant) sont lus dans le HTML statique du rendu QA, pas mesurés en conditions réelles.",
-    "Le meta robots noindex, follow de ce rendu est un artefact du harnais de prévisualisation signalé par le brief de revue ; son retrait effectif à la mise en production n'est pas observable depuis ce rendu QA et n'a donc pas été noté contre l'article."
+    "Aucune mesure Lighthouse/CrUX réelle n'a été exécutée ; les signaux de performance (préchargement des polices, fetchpriority, absence de CSS bloquant) sont lus dans le HTML statique du rendu QA, pas mesurés en conditions réelles.",
+    "La reprise effective de ce contenu par un moteur IA (AI Overviews, ChatGPT, Perplexity) n'est pas mesurable a priori ; seule la citabilité structurelle (format réponse directe, tableaux, FAQ) a été évaluée.",
+    "Le wordCount du JSON-LD (3702) et le temps de lecture affiché (19 min) sont cohérents entre eux, mais un comptage indépendant approximatif sur le seul corps rendu (hors CTA et sources) donne un ordre de grandeur proche sans être identique, faute de chronométrage réel.",
+    "L'ordre des pôles dans le tableau de l'article (…Excel, Conseil, Méthode, Audit) diffère de l'ordre de déclaration dans src/data/familles.ts (…Excel, Méthode, Conseil, Audit) ; les décomptes par pôle concordent malgré tout exactement, donc sans conséquence factuelle.",
+    "La densité de maillage interne (plus d'une quinzaine de liens contextuels dans le corps) dépasse largement la fourchette indicative de 3 à 10 liens du barème, attendu et cohérent pour un format pilier faisant fonction de hub, mais à surveiller si ce gabarit sert un format plus court.",
+    "Le titre de balise est à 60 caractères pile, donc sans marge restante : un allongement lors d'une prochaine évolution éditoriale le ferait sortir de la fourchette recommandée."
   ],
-  "verdict": "98/100 — candidat rigoureusement sourcé (cinq citations vérifiées mot pour mot sur cinq), structurellement complet sur les cinq catégories de la grille, et dont la retitration place la requête primaire en tête de balise title sans rien dégrader ailleurs. Aucun défaut bloquant. Seules réserves : un paragraphe à re-découper dans « Production comptable » et un titre de balise désormais sans marge, à surveiller lors d'une prochaine évolution éditoriale.",
+  "verdict": "97/100 — le défaut bloquant de la revue précédente (soixante familles non vérifiables) est corrigé et revérifié à trois niveaux concordants (tableau du rendu, référentiel de code, section de cadrage), le format pilier est maintenant uniforme sur ses onze pôles ouverts, et aucun nouveau défaut critique n'a été trouvé : publication recommandée.",
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "articleSha256": "ceaad3298c603a00eba1a0dd17f7072edeeb50b75e4e1641a88303ceed2d6945",
-    "manifestSha256": "9ac0ee7c3fdf84489aebe4337a531c350fc81c245aee73660e2fc9b4824b5556"
+    "articleSha256": "03dfaab5f4d211d303f7f5e28bcb480847d15b23b34920a1f8c8d44cf36be6a6",
+    "manifestSha256": "bfc5cb1edb11ed92175ee3c1125a7076f4c604de8977573d255fe6cb2b1247ed"
   }
 }

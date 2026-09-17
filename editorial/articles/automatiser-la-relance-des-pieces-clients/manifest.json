@@ -8,7 +8,7 @@
   "summary": "Trois briques rejouables sans changer d’outil : une checklist conditionnelle par dossier, un contrôle de complétude à quatre états, une cadence de relance qui s’arrête à réception. Rien ne part sans validation, tout dossier en litige sort du circuit.",
   "description": "Relancer les pièces manquantes d’un dossier client en trois briques : checklist conditionnelle, contrôle de complétude, cadence qui cesse à réception.",
   "publicationDate": "2026-09-16",
-  "updatedAt": null,
+  "updatedAt": "2026-09-17",
   "topics": [
     "pieces",
     "automatisation",
@@ -41,7 +41,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-16"
+      "verifiedAt": "2026-09-17"
     }
   },
   "businessReview": {
@@ -61,14 +61,14 @@
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
   "proofRequired": "Jeu fictif de six dossiers rejoué sur la règle (cas courant, pièce hors période, dossier en litige, dossier sans checklist) ; tableau déclencheur-condition-action-exception ; quatre affirmations sourcées.",
-  "sourcesVerifiedAt": "2026-09-16",
+  "sourcesVerifiedAt": "2026-09-17",
   "sources": [
     {
       "id": "cnil-principes",
       "publisher": "CNIL",
       "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
       "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -83,7 +83,7 @@
       "publisher": "CNIL",
       "title": "Les durées de conservation des données",
       "url": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -98,7 +98,7 @@
       "publisher": "Service Public",
       "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
       "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -113,7 +113,7 @@
       "publisher": "CNIL",
       "title": "Définition : sous-traitant",
       "url": "https://www.cnil.fr/fr/definition/sous-traitant",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -128,9 +128,9 @@
   "reviewer": "marketing",
   "reviewRule": "Réviser à la publication de l’article sur la complétude du dossier et de celui sur la facture électronique ; relecture des sources à six mois.",
   "cta": {
-    "label": "Faire coder la règle de relance de votre cabinet",
+    "label": "Confier cette tâche",
     "destination": "/contact",
-    "outcome": "Une demande décrivant la cadence et les exceptions actuelles du cabinet."
+    "outcome": "Nous écrivons la règle de relance de votre cabinet dans vos mots, nous l’automatisons dans votre messagerie et votre classeur de suivi, et vos équipes la recettent sur vos dossiers. Chaque envoi reste validé par une personne. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
   },
   "image": {
     "heroId": "img-art-relance-des-pieces",
@@ -143,12 +143,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-16"
+      "checkedAt": "2026-09-17"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-16"
+      "checkedAt": "2026-09-17"
     }
   },
   "links": {
@@ -158,7 +158,8 @@
       "/methode",
       "/glossaire#piece-justificative",
       "/glossaire#regle-de-cabinet",
-      "/glossaire#cas-de-refus"
+      "/glossaire#cas-de-refus",
+      "/automatisation-cabinet-comptable"
     ],
     "incoming": [
       "/blog",
@@ -183,6 +184,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-09-16",
+  "publishedAt": "2026-09-17",
   "publicationEvidence": "preuves/publication.json"
 }

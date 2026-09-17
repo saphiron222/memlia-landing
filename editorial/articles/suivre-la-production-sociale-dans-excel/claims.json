@@ -1,21 +1,31 @@
 {
   "version": 1,
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
-  "articleSha256": "154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788",
+  "articleSha256": "1329a741a1b7df93e661e94ef755eae8421eb3c4a936aa6283103f2fd42ddc3b",
   "contentUnits": [
     {
-      "id": "unit-d170bd92ce2e",
-      "text": "Un tableau de suivi de production sociale utile ne commence pas par des graphiques. Il commence par une unité stable : un dossier, une période et une étape du cycle. La saisie décrit les faits, les formules détectent les exceptions, puis une vue agrégée montre ce qui reste à traiter. Elle ne classe pas les personnes.",
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
       "claimIds": []
     },
     {
-      "id": "unit-f44e4df9e42d",
-      "text": "Ce guide s'adresse aux responsables de pôle social, dirigeants de cabinet et gestionnaires de paie qui veulent structurer ou reprendre un classeur existant. Il fournit un dictionnaire de colonnes, des états fermés et un jeu d'essai fictif. Les règles proposées restent à adapter à l'organisation, aux accès et aux obligations du cabinet.",
+      "id": "unit-f3e9cfc750db",
+      "text": "Un tableau de suivi de production sociale utile ne commence pas par des graphiques. Il commence par une unité stable : un dossier, une période et une étape du cycle. La saisie décrit les faits, les formules détectent les exceptions, puis une vue agrégée montre ce qui reste à traiter, sans classer les personnes. Trois feuilles suffisent, Saisie, Calcul et Vue, avec des états fermés et un jeu d’essai fictif pour éprouver le modèle avant de s’en servir.",
       "claimIds": []
     },
     {
-      "id": "unit-52c4d0c3bc40",
-      "text": "> En bref > - Une ligne représente dossier × période, pas un salarié du cabinet. > - Une étape est validée par une date ou un état fermé, pas par une couleur libre. > - Les feuilles Saisie, Calcul et Vue ont des responsabilités distinctes. > - Le pilotage compte les dossiers par état et par échéance. Il n'établit pas de classement individuel. > - La protection d'une feuille évite des modifications de cellules, mais ne sécurise pas l'accès au fichier.",
+      "id": "unit-7ad3c0dcb10d",
+      "text": "Qu’est-ce que le suivi de production sociale, et pourquoi casse-t-il à la main ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7b915be67568",
+      "text": "Le suivi de production sociale est la tenue, dossier par dossier et période par période, de l’étape atteinte dans le cycle de paie : pièces reçues, bulletins calculés, écarts arbitrés, DSN déposée, retours traités. Une exception est un dossier qui ne peut pas avancer sans une décision : pièce manquante, écart non expliqué, retour à traiter. Un agrégat non nominatif compte des dossiers par état et par échéance, jamais des personnes.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d185e1061df7",
+      "text": "Dans la plupart des cabinets, ce suivi existe déjà, dans un classeur que le responsable de pôle connaît par cœur : une couleur pour « en attente », une autre pour « fait », une colonne de commentaires qui dit tout et son contraire. La règle qui fait tenir ce classeur, quel dossier est prêt, lequel bloque, pourquoi, vit dans la tête de la personne qui le tient. Le jour où elle est absente, le pôle avance à l’aveugle ; le jour où elle part, le classeur ne veut plus rien dire. Écrire cette règle, c’est d’abord fixer l’unité, les états et les exceptions ; c’est ce que fait la méthode ci-dessous, une méthode Memlia dont le cabinet fixe les seuils, les accès et les responsables.",
       "claimIds": []
     },
     {
@@ -24,8 +34,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-1efec79204d6",
-      "text": "Chaque ligne de la table principale représente l'avancement d'un dossier sur une période donnée. Cette granularité permet de répondre à une question opérationnelle : où se trouve le dossier dans le cycle et quelle action manque avant l'échéance qui lui est applicable ?",
+      "id": "unit-5da822811d92",
+      "text": "Chaque ligne de la table principale représente l’avancement d’un dossier sur une période donnée. Cette granularité permet de répondre à une question opérationnelle : où se trouve le dossier dans le cycle et quelle action manque avant l’échéance qui lui est applicable ?",
       "claimIds": []
     },
     {
@@ -34,13 +44,13 @@
       "claimIds": []
     },
     {
-      "id": "unit-3409e49eddaf",
-      "text": "- une ligne par gestionnaire, qui transforme le fichier en tableau individuel ; - une ligne par tâche libre, qui rend les états impossibles à comparer ; - une ligne permanente par dossier, qui écrase l'historique d'un mois par le suivant.",
+      "id": "unit-768b56ca9b2c",
+      "text": "- une ligne par gestionnaire, qui transforme le fichier en tableau individuel ; - une ligne par tâche libre, qui rend les états impossibles à comparer ; - une ligne permanente par dossier, qui écrase l’historique d’un mois par le suivant.",
       "claimIds": []
     },
     {
-      "id": "unit-0f27f66b3bae",
-      "text": "La clé technique du suivi n'est pas le numéro de ligne. C'est le couple iddossier + période. Une règle d'unicité sur cette clé évite qu'un même dossier apparaisse deux fois pour le même mois avec des états contradictoires.",
+      "id": "unit-636c32f08a39",
+      "text": "La clé technique du suivi n’est pas le numéro de ligne. C’est le couple iddossier + période. Une règle d’unicité sur cette clé évite qu’un même dossier apparaisse deux fois pour le même mois avec des états contradictoires.",
       "claimIds": []
     },
     {
@@ -49,8 +59,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-6ed87478d034",
-      "text": "Le dictionnaire ci-dessous sépare données d'identification, étapes, exceptions et audit. Les noms sont indicatifs. Le cabinet peut les adapter, mais chaque colonne doit garder une seule signification.",
+      "id": "unit-bea58fd9f4c1",
+      "text": "Le dictionnaire ci-dessous sépare données d’identification, étapes, exceptions et audit. Les noms sont indicatifs. Le cabinet peut les adapter, mais chaque colonne garde une seule signification.",
       "claimIds": []
     },
     {
@@ -69,16 +79,15 @@
       "claimIds": []
     },
     {
-      "id": "unit-f919a121fa55",
-      "text": "Microsoft indique qu'une plage de données liées peut être convertie en table Excel pour en faciliter la gestion et l'analyse. Les colonnes obtiennent des en-têtes filtrables et les formules de colonne peuvent se propager aux nouvelles lignes. Cette structure convient mieux qu'une plage dont la fin doit être modifiée à la main chaque mois.",
+      "id": "unit-88cc58357ee3",
+      "text": "Microsoft indique qu’une plage de données liées peut être convertie en table Excel pour en faciliter la gestion et l’analyse. Les colonnes obtiennent des en-têtes filtrables et les formules de colonne se propagent aux nouvelles lignes. Cette structure convient mieux qu’une plage dont la fin se modifie à la main chaque mois.",
       "claimIds": [
-        "excel-table",
-        "excel-table-colonnes"
+        "claim-unit-88cc58357ee3-1"
       ]
     },
     {
-      "id": "unit-03c2fd7ba895",
-      "text": "Donnez un nom explicite à la table, par exemple tproductionsociale. Les formules peuvent alors référencer tproductionsociale[etat] plutôt qu'une plage fixe comme H2:H500.",
+      "id": "unit-b7bbad508871",
+      "text": "Donnez un nom explicite à la table, par exemple tproductionsociale. Les formules peuvent alors référencer tproductionsociale[etat] plutôt qu’une plage fixe comme H2:H500.",
       "claimIds": []
     },
     {
@@ -87,13 +96,13 @@
       "claimIds": []
     },
     {
-      "id": "unit-becab79ba403",
-      "text": "Une colonne d'état libre finit par contenir OK, fait, terminé, déposé ou des variantes typographiques qui désignent parfois la même chose. Une liste fermée évite cette ambiguïté.",
+      "id": "unit-64e202529f1b",
+      "text": "Une colonne d’état libre finit par contenir OK, fait, terminé, déposé ou des variantes typographiques qui désignent parfois la même chose. Une liste fermée évite cette ambiguïté.",
       "claimIds": []
     },
     {
-      "id": "unit-52a9e0da5ba0",
-      "text": "Voici un cycle de départ à adapter :",
+      "id": "unit-99674d80c887",
+      "text": "Voici un cycle de départ, dont le cabinet fixe les noms et le nombre d’états :",
       "claimIds": []
     },
     {
@@ -102,8 +111,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-042fa3da38a7",
-      "text": "Une transition doit être cohérente avec les dates. Par exemple, dsndeposee exige une date de dépôt ; controletermine exige une date de contrôle ; ecartsaarbitrer exige un code d'exception et une décision ouverte. Ces règles sont des choix de gouvernance du cabinet, pas des normes imposées à tous les pôles sociaux.",
+      "id": "unit-1a67fa6780db",
+      "text": "Une transition reste cohérente avec les dates. Par exemple, dsndeposee exige une date de dépôt ; controletermine exige une date de contrôle ; ecartsaarbitrer exige un code d’exception et une décision ouverte. Ces règles sont des choix du cabinet, écrits dans sa règle de suivi.",
       "claimIds": []
     },
     {
@@ -117,8 +126,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-b1221634cbfb",
-      "text": "Le classeur doit refuser ou signaler une transition incohérente. Il ne doit pas inventer l'état suivant.",
+      "id": "unit-4c09f5b224fc",
+      "text": "Le classeur refuse ou signale une transition incohérente. Il n’invente pas l’état suivant.",
       "claimIds": []
     },
     {
@@ -137,8 +146,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-9f01bb94a0f2",
-      "text": "Elle contient la table principale et les valeurs renseignées par les personnes autorisées. Les listes et contrôles de saisie y sont visibles. Aucune formule critique ne doit dépendre d'une couleur appliquée manuellement.",
+      "id": "unit-dcf04a430016",
+      "text": "Elle contient la table principale et les valeurs renseignées par les personnes autorisées. Les listes et contrôles de saisie y sont visibles. Aucune formule critique ne dépend d’une couleur appliquée à la main.",
       "claimIds": []
     },
     {
@@ -147,15 +156,15 @@
       "claimIds": []
     },
     {
-      "id": "unit-64552375b60a",
-      "text": "Elle contient les colonnes dérivées : jours avant échéance, clé d'unicité, cohérence des transitions, retard de mise à jour et présence d'une exception non décidée. Tout son contenu doit pouvoir être régénéré à partir de la saisie et des règles écrites.",
+      "id": "unit-ba46b27fce07",
+      "text": "Elle contient les colonnes dérivées : jours avant échéance, clé d’unicité, cohérence des transitions, retard de mise à jour et présence d’une exception non décidée. Tout son contenu peut se régénérer à partir de la saisie et des règles écrites.",
       "claimIds": []
     },
     {
-      "id": "unit-fa9f763d0250",
-      "text": "La protection d'une feuille Excel peut empêcher la modification de cellules verrouillées. Microsoft précise cependant que cette protection n'est pas une fonction de sécurité et qu'elle ne remplace pas la protection du fichier ou du classeur. Elle limite les modifications de cellules ; les droits d'accès se gèrent ailleurs.",
+      "id": "unit-ad1971dbad5b",
+      "text": "La protection d’une feuille Excel empêche la modification de cellules verrouillées. Microsoft précise cependant que cette protection n’est pas une fonction de sécurité et qu’elle ne remplace pas la protection du fichier ou du classeur. Elle limite les modifications de cellules ; les droits d’accès se gèrent ailleurs.",
       "claimIds": [
-        "excel-protection-limite"
+        "claim-unit-ad1971dbad5b-1"
       ]
     },
     {
@@ -169,8 +178,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-2267ddd0e158",
-      "text": "La vue ne doit pas exposer un classement par gestionnaire. Une affectation peut être nécessaire dans la saisie pour organiser le travail, mais sa présence ne justifie pas automatiquement un palmarès individuel.",
+      "id": "unit-325de27df3bf",
+      "text": "La vue n’expose pas un classement par gestionnaire. Une affectation peut être nécessaire dans la saisie pour organiser le travail, mais sa présence ne justifie pas un palmarès individuel.",
       "claimIds": []
     },
     {
@@ -179,46 +188,52 @@
       "claimIds": []
     },
     {
-      "id": "unit-5947d31e439e",
-      "text": "Un indicateur de pilotage doit mener à une action sur un dossier ou une étape. Les quatre indicateurs de départ peuvent être :",
+      "id": "unit-4a08e7b90f1f",
+      "text": "Un indicateur de pilotage mène à une action sur un dossier ou une étape. Les quatre indicateurs de départ peuvent être :",
       "claimIds": []
     },
     {
-      "id": "unit-349296808722",
-      "text": "- nombre de dossiers par état ; - nombre de dossiers dont l'échéance approche avec une étape incomplète ; - nombre d'exceptions sans décision ; - nombre de dossiers dont la dernière mise à jour dépasse le délai interne choisi.",
+      "id": "unit-9edf2e9c1156",
+      "text": "- nombre de dossiers par état ; - nombre de dossiers dont l’échéance approche avec une étape incomplète ; - nombre d’exceptions sans décision ; - nombre de dossiers dont la dernière mise à jour dépasse le délai interne choisi.",
       "claimIds": []
     },
     {
-      "id": "unit-3352af400623",
-      "text": "Les seuils sont définis par le cabinet. Écrivez chaque règle en français avant sa formule. Exemple : « signaler un dossier dont l'échéance est dans le délai interne choisi et dont l'état n'est pas controletermine ou suivant ». Cette phrase devient la référence de recette.",
+      "id": "unit-a72367cf5486",
+      "text": "Les seuils sont définis par le cabinet. Écrivez chaque règle en français avant sa formule. Exemple : « signaler un dossier dont l’échéance est dans le délai interne choisi et dont l’état n’est pas controletermine ou suivant ». Cette phrase devient la référence de recette.",
       "claimIds": []
     },
     {
-      "id": "unit-1bc4f3a01aca",
-      "text": "Écartez les indicateurs qui mesurent en continu les gestes, le temps ou la cadence d'une personne sans finalité et cadre préalables. La CNIL rappelle, dans sa page du 9 juillet 2026, qu'un dispositif de contrôle de l'activité doit satisfaire cumulativement des conditions de justification et de proportionnalité, être soumis aux instances représentatives selon les règles en vigueur et être porté à la connaissance des salariés ou agents.",
+      "id": "unit-a308f29638ab",
+      "text": "Écartez les indicateurs qui mesurent en continu les gestes, le temps ou la cadence d’une personne sans finalité ni cadre préalables. La CNIL rappelle, dans sa page sur le contrôle de l’activité des personnes employées, qu’un tel dispositif doit satisfaire cumulativement des conditions : « être soumis aux instances représentatives du personnel selon les règles en vigueur », se justifier et rester proportionné, et être porté à la connaissance des salariés ou agents.",
       "claimIds": [
-        "cnil-conditions",
-        "cnil-information"
+        "claim-unit-a308f29638ab-1"
       ]
     },
     {
-      "id": "unit-c5c19ca737d0",
-      "text": "L'anti-surveillance n'est pas seulement une règle d'affichage. Elle doit être testée dans le modèle de données. Si une vue agrégée peut être reconstituée sans identifiant de personne, cet identifiant n'a pas à entrer dans ses formules ni dans ses exports.",
+      "id": "unit-7624548185cf",
+      "text": "La même page donne l’exemple d’un dispositif jugé proportionné : « un logiciel qui compte et transmet à l’encadrant (de façon transparente) le nombre de dossiers traités par trimestre par salarié/agent », parce que la fréquence de la remontée n’est pas assimilable à une surveillance constante. Le suivi décrit ici compte des dossiers par état et par échéance ; il ne remonte rien sur les personnes par défaut, et ce qu’il remonterait un jour se cadre avant d’être construit.",
+      "claimIds": [
+        "claim-unit-7624548185cf-1"
+      ]
+    },
+    {
+      "id": "unit-a90fb5aca8c0",
+      "text": "L’anti-surveillance n’est pas seulement une règle d’affichage. Elle se teste dans le modèle de données : si une vue agrégée peut être reconstituée sans identifiant de personne, cet identifiant n’a pas à entrer dans ses formules ni dans ses exports.",
       "claimIds": []
     },
     {
-      "id": "unit-16668db16cea",
-      "text": "Jeu d'essai fictif de cinq dossiers",
+      "id": "unit-14dd6cef0bbe",
+      "text": "Jeu d’essai fictif de cinq dossiers",
       "claimIds": []
     },
     {
-      "id": "unit-993f74ea1068",
-      "text": "Avant d'utiliser le classeur, rejouez les règles sur ce jeu synthétique. Les identifiants, dates et situations sont fictifs.",
+      "id": "unit-e623b821e130",
+      "text": "Avant d’utiliser le classeur, rejouez les règles sur ce jeu synthétique. Les identifiants, dates et situations sont fictifs.",
       "claimIds": []
     },
     {
-      "id": "unit-6897de1d2929",
-      "text": "| Dossier | Période | État | Exception | Décision attendue du test | | --- | --- | --- | --- | --- | | D-001 | 2026-08 | attentepieces | aucune date de réception | signaler selon le seuil interne | | D-002 | 2026-08 | piecesincompletes | PIECEMANQUANTE | rester ouvert jusqu'à décision | | D-003 | 2026-08 | bulletinscalcules | aucune | demander la revue des écarts | | D-004 | 2026-08 | controletermine | date de contrôle présente | autoriser le passage au dépôt | | D-005 | 2026-08 | dsndeposee | retour à traiter | interdire la clôture automatique |",
+      "id": "unit-b0348706e751",
+      "text": "| Dossier | Période | État | Exception | Décision attendue du test | | --- | --- | --- | --- | --- | | D-001 | 2026-08 | attentepieces | aucune date de réception | signaler selon le seuil interne | | D-002 | 2026-08 | piecesincompletes | PIECEMANQUANTE | rester ouvert jusqu’à décision | | D-003 | 2026-08 | bulletinscalcules | aucune | demander la revue des écarts | | D-004 | 2026-08 | controletermine | date de contrôle présente | autoriser le passage au dépôt | | D-005 | 2026-08 | dsndeposee | retour à traiter | interdire la clôture automatique |",
       "claimIds": []
     },
     {
@@ -227,13 +242,13 @@
       "claimIds": []
     },
     {
-      "id": "unit-758a8aa6b250",
-      "text": "1. Dupliquez D-001 sur la même période : la clé d'unicité doit signaler le doublon. 2. Effacez la date de contrôle de D-004 : l'état doit devenir incohérent. 3. Tentez de clôturer D-005 avec un retour ouvert : la transition doit être refusée ou signalée. 4. Saisissez un état absent de la liste : la validation doit le refuser. 5. Modifiez une cellule protégée de la feuille Calcul : Excel doit empêcher la modification dans le périmètre configuré.",
+      "id": "unit-1b270d35efc4",
+      "text": "1. Dupliquez D-001 sur la même période : la clé d’unicité signale le doublon. 2. Effacez la date de contrôle de D-004 : l’état devient incohérent. 3. Tentez de clôturer D-005 avec un retour ouvert : la transition est refusée ou signalée. 4. Saisissez un état absent de la liste : la validation le refuse. 5. Modifiez une cellule protégée de la feuille Calcul : Excel empêche la modification dans le périmètre configuré.",
       "claimIds": []
     },
     {
-      "id": "unit-7e323639e752",
-      "text": "Ce jeu d'essai n'est pas une observation client. C'est un artefact synthétique conçu pour vérifier cinq propriétés du modèle : unicité, cohérence date-état, clôture des exceptions, domaine fermé des états et protection contre une modification accidentelle.",
+      "id": "unit-e6b29bdcf5ac",
+      "text": "Ce jeu d’essai n’est pas une observation client. C’est un artefact synthétique conçu pour vérifier cinq propriétés du modèle : unicité, cohérence date-état, clôture des exceptions, domaine fermé des états et protection contre une modification accidentelle.",
       "claimIds": []
     },
     {
@@ -247,9 +262,11 @@
       "claimIds": []
     },
     {
-      "id": "unit-8c64bd1f8361",
-      "text": "Si le dispositif permet de contrôler l'activité des personnes, la page de la CNIL citée plus haut demande notamment d'en informer les personnes concernées et de respecter les procédures applicables avec leurs représentants. Un suivi par dossier n'est pas automatiquement conforme par sa seule structure : la finalité, les données, les accès et l'usage réel restent déterminants.",
-      "claimIds": []
+      "id": "unit-ae9784786381",
+      "text": "Si le dispositif permet de contrôler l’activité des personnes, la page de la CNIL citée plus haut demande à l’employeur de pouvoir prouver le respect des conditions, en détaillant notamment « les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées », et d’informer les personnes concernées. Un suivi par dossier n’est pas conforme par sa seule structure : la finalité, les données, les accès et l’usage réel restent déterminants.",
+      "claimIds": [
+        "claim-unit-ae9784786381-1"
+      ]
     },
     {
       "id": "unit-e517b2a6e29a",
@@ -262,33 +279,23 @@
       "claimIds": []
     },
     {
-      "id": "unit-7d46b6197b35",
-      "text": "Si une réponse est mauvaise, corrigez le modèle ou les accès avant d'ajouter des graphiques.",
+      "id": "unit-fd80dfae365b",
+      "text": "Si une réponse est mauvaise, corrigez le modèle ou les accès avant d’ajouter des graphiques.",
       "claimIds": []
     },
     {
-      "id": "unit-60c0549380ce",
-      "text": "Quand garder Excel, quand automatiser le classeur ?",
+      "id": "unit-462114bfbd6f",
+      "text": "Ce qui s’automatise, ce qui attend une validation, ce qui reste humain",
       "claimIds": []
     },
     {
-      "id": "unit-64a6499f6818",
-      "text": "Gardez le classeur tel quel si la saisie est unique, les formules sont comprises, les modifications sont relues et les exceptions restent peu nombreuses. Automatisez la mécanique lorsque la même donnée est ressaisie, qu'une formule critique peut être écrasée, que plusieurs sources doivent être rapprochées ou que les règles d'exception deviennent difficiles à rejouer à la main.",
+      "id": "unit-5cc9bb8712cd",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | | --- | --- | --- | | L’état de chaque dossier par étape, mis à jour depuis les fichiers du cabinet | Le passage d’une exception à l’état expliqué ou à corriger | L’arbitrage entre deux dossiers en retard | | La clé d’unicité, la cohérence date-état et la file des exceptions sans décision | La clôture d’un dossier dont les retours ont été lus | La conversation avec le client dont le dossier bloque | | Les comptes par état et par échéance dans la vue agrégée | La modification d’une règle de transition | Toute mesure qui porterait sur une personne |",
       "claimIds": []
     },
     {
-      "id": "unit-360d64ef9db8",
-      "text": "L'objectif n'est pas forcément de remplacer Excel. Une automatisation peut alimenter ou contrôler la table existante, régénérer les calculs et préparer les exceptions. Elle doit rester fail-closed : une donnée absente ou ambiguë bloque la proposition au lieu d'être complétée silencieusement.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-3a8e7d4e2acc",
-      "text": "Pour le contrôle situé entre bulletinscalcules et controletermine, utilisez la méthode de contrôle des bulletins avant la DSN. La méthode Memlia explique comment coder une règle du cabinet, l'éprouver sur un jeu fictif et laisser la validation humaine. Les garanties du service précisent aussi ce qui reste bloqué tant que le cabinet n'a pas validé.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-e244c0b27038",
-      "text": "Si votre suivi dépend de ressaisies ou de formules fragiles, Memlia peut préparer une automatisation greffée au classeur et aux outils existants. Le périmètre, les exceptions et la recette sont définis avec le cabinet ; le cabinet valide le résultat.",
+      "id": "unit-98402a7f2518",
+      "text": "Gardez le classeur tel quel si la saisie est unique, les formules comprises, les modifications relues et les exceptions peu nombreuses. Automatisez la mécanique lorsque la même donnée est ressaisie, qu’une formule critique peut être écrasée, que plusieurs sources doivent être rapprochées ou que les règles d’exception deviennent difficiles à rejouer à la main. Une automatisation alimente ou contrôle la table existante, régénère les calculs et prépare les exceptions ; elle reste fail-closed : une donnée absente ou ambiguë bloque la proposition au lieu d’être complétée en silence.",
       "claimIds": []
     },
     {
@@ -297,33 +304,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-22026d448995",
-      "text": "Dessiner le tableau de bord avant la table. Les graphiques masquent alors un modèle de données instable.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-67d262337f3c",
-      "text": "Utiliser des couleurs comme états. Une couleur n'a pas de définition stable, ne porte pas de date et se compte mal.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-895058d6a3a5",
-      "text": "Mélanger saisie et formules. Une valeur manuelle peut remplacer une formule sans alerte visible.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-1a7c30c4e335",
-      "text": "Confondre feuille protégée et fichier sécurisé. La protection de feuille ne gère pas l'accès au classeur.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-5c7a58b14db3",
-      "text": "Conserver une exception sans décision. L'alerte devient un décor et le dossier reste ambigu.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-45d6cc24743e",
-      "text": "Agréger par personne par défaut. Le suivi quitte le flux de dossiers pour mesurer des individus sans que cette finalité ait été cadrée.",
+      "id": "unit-914bf091f736",
+      "text": "- Dessiner le tableau de bord avant la table. Les graphiques masquent alors un modèle de données instable. - Utiliser des couleurs comme états. Une couleur n’a pas de définition stable, ne porte pas de date et se compte mal. - Mélanger saisie et formules. Une valeur manuelle peut remplacer une formule sans alerte visible. - Confondre feuille protégée et fichier sécurisé. La protection de feuille ne gère pas l’accès au classeur. - Conserver une exception sans décision. L’alerte devient un décor et le dossier reste ambigu. - Agréger par personne par défaut. Le suivi quitte le flux de dossiers pour mesurer des individus sans que cette finalité ait été cadrée.",
       "claimIds": []
     },
     {
@@ -337,8 +319,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-bb077f81c7b4",
-      "text": "Au minimum : identifiant du dossier, période, échéance, état, dates des étapes clés, code d'exception, décision et date de mise à jour. Ajoutez une colonne seulement si elle soutient une règle, une preuve ou une décision.",
+      "id": "unit-6d54a4de28b2",
+      "text": "Au minimum : identifiant du dossier, période, échéance, état, dates des étapes clés, code d’exception, décision et date de mise à jour. Ajoutez une colonne seulement si elle soutient une règle, une preuve ou une décision.",
       "claimIds": []
     },
     {
@@ -347,8 +329,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-095808c2bbe6",
-      "text": "Une affectation peut servir à l'organisation du travail. Elle ne doit pas devenir par défaut un classement ou une mesure continue de performance. La finalité, l'accès et l'usage de cette donnée doivent être cadrés.",
+      "id": "unit-bc2b22680459",
+      "text": "Une affectation peut servir à l’organisation du travail. Elle ne devient pas par défaut un classement ou une mesure continue de performance. La finalité, l’accès et l’usage de cette donnée se cadrent avant.",
       "claimIds": []
     },
     {
@@ -357,8 +339,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-a00cbae78b69",
-      "text": "Non. Elle limite les modifications sur les cellules verrouillées. Microsoft indique qu'elle n'est pas conçue comme une fonction de sécurité. Les droits d'ouverture, de partage et de modification du fichier doivent être gérés séparément.",
+      "id": "unit-615cbbc43e1e",
+      "text": "Non. Elle limite les modifications sur les cellules verrouillées. Microsoft indique qu’elle n’est pas conçue comme une fonction de sécurité. Les droits d’ouverture, de partage et de modification du fichier se gèrent séparément.",
       "claimIds": []
     },
     {
@@ -372,53 +354,63 @@
       "claimIds": []
     },
     {
-      "id": "unit-32acf6443d1a",
-      "text": "Le modèle à retenir",
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
       "claimIds": []
     },
     {
-      "id": "unit-ee14afce5f31",
-      "text": "Construisez d'abord une table dossier × période, imposez des états fermés et séparez Saisie, Calcul et Vue. Testez le modèle sur des cas fictifs, pilotez les dossiers par étape et rendez chaque exception décidable. Excel reste alors un support maîtrisé plutôt qu'un empilement de couleurs et de formules invisibles.",
+      "id": "unit-74f9bdfa4e04",
+      "text": "Une table dossier × période, des états fermés, trois feuilles aux responsabilités distinctes, un jeu d’essai fictif rejoué avant la mise en service, et un pilotage qui compte des dossiers par étape sans jamais classer les personnes. Excel reste alors un support maîtrisé plutôt qu’un empilement de couleurs et de formules invisibles.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e6154a789600",
+      "text": "Ce suivi est l’une des sept familles du pôle paie et social de la carte des tâches automatisables d’un cabinet. Entre bulletinscalcules et controletermine, il s’appuie sur le contrôle des bulletins avant la DSN ; après dsndeposee, sur la lecture des comptes rendus métier ; l’agrégat non nominatif est défini au glossaire. Nous prenons cette tâche entière : nous écrivons la règle de suivi de votre pôle social dans vos mots, unité, états, transitions et exceptions compris, nous l’automatisons dans le classeur et les outils que votre équipe utilise déjà, elle la recette sur le jeu fictif puis sur vos dossiers, et nous la maintenons. Vous gardez chaque décision sur une exception et tout ce qui touche aux personnes. C’est la méthode, et ce sont nos engagements : des agrégats, jamais un classement.",
       "claimIds": []
     }
   ],
   "claims": [
     {
-      "id": "excel-table",
-      "unitId": "unit-f919a121fa55",
-      "claim": "une plage de données liées peut être convertie en table Excel",
-      "type": "produit",
+      "id": "claim-unit-88cc58357ee3-1",
+      "unitId": "unit-88cc58357ee3",
+      "claim": "une plage de données liées peut être convertie en table Excel pour en faciliter la gestion et l’analyse",
+      "type": "information",
       "sourceIds": [
         "microsoft-excel-tables"
       ],
       "sourceExcerpts": {
-        "microsoft-excel-tables": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table"
+        "microsoft-excel-tables": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table (previously known as an Excel list)."
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "microsoft-excel-tables",
             "sourceUrl": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
             "verifiedUrl": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
-            "excerpt": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table",
-            "context": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table (previously known as an Excel list).",
-            "contextSha256": "402ca03d5bfe83d7712f555194248c2c0a80cb8ec5d5ca89823e1f9eb94860a8",
+            "excerpt": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table (previously known as an Excel list).",
+            "context": "<meta name=\"description\" content=\"To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table (previously known as an Excel list).\" />",
+            "contextSha256": "e0f3226a619c54881f98ae3941be7f6b2d0d3d9531a7e3a4ba967c1efb2d9477",
             "citation": {
-              "text": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table",
-              "sha256": "0056c72db6175c71e5fb7b70cb4d23d5ff5c08f5f592a265ea9c0ff8cf65d970",
-              "sourceContentSha256": "9fda69c9f3961cbf9b384d7a63ae0c74da09fad1e7a622b3cdf33a283fc271df",
+              "text": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table (previously known as an Excel list).",
+              "sha256": "402ca03d5bfe83d7712f555194248c2c0a80cb8ec5d5ca89823e1f9eb94860a8",
+              "sourceContentSha256": "5adf6c0cec03a43debe28790eb674d016cb1609dba3299e6fe889d6c31ce2349",
               "coordinates": {
                 "finalUrl": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
-                "checkedAt": "2026-09-13",
+                "checkedAt": "2026-09-17",
                 "title": "Overview of Excel tables",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 8,
-                  "endLine": 8
+                  "startLine": 14,
+                  "endLine": 14
                 }
               }
             },
@@ -429,123 +421,65 @@
               ],
               "translationTerms": [
                 {
-                  "claimTerm": "données liées",
-                  "citationTerm": "related data"
+                  "claimTerm": "plage",
+                  "citationTerm": "range"
                 },
                 {
                   "claimTerm": "table Excel",
                   "citationTerm": "Excel table"
-                }
-              ],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
-            },
-            "verdict": "SUPPORTED",
-            "supportsClaim": true,
-            "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
-          }
-        ]
-      }
-    },
-    {
-      "id": "excel-table-colonnes",
-      "unitId": "unit-f919a121fa55",
-      "claim": "Les colonnes obtiennent des en-têtes filtrables et les formules de colonne peuvent se propager aux nouvelles lignes.",
-      "type": "produit",
-      "sourceIds": [
-        "microsoft-excel-tables"
-      ],
-      "sourceExcerpts": {
-        "microsoft-excel-tables": "Every table column has filtering enabled in the header row"
-      },
-      "checkedAt": "2026-09-13",
-      "status": "PASS",
-      "factCheck": {
-        "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
-        "sourceResults": [
-          {
-            "sourceId": "microsoft-excel-tables",
-            "sourceUrl": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
-            "verifiedUrl": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
-            "excerpt": "Every table column has filtering enabled in the header row",
-            "context": "Header row By default, a table has a header row. Every table column has filtering enabled in the header row so that you can filter or sort your table data quickly. For more information, see Filter data or Sort data.",
-            "contextSha256": "59ab60832b62914cf28e9205e05696d5562c7af96932ef93e1538870626e5a74",
-            "citation": {
-              "text": "Every table column has filtering enabled in the header row",
-              "sha256": "c2943094cac6ce7ea2b5c227157bee252d84f0781b283e5e24b4adc654a9e406",
-              "sourceContentSha256": "9fda69c9f3961cbf9b384d7a63ae0c74da09fad1e7a622b3cdf33a283fc271df",
-              "coordinates": {
-                "finalUrl": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
-                "checkedAt": "2026-09-13",
-                "title": "Overview of Excel tables",
-                "locator": {
-                  "kind": "line-range",
-                  "startLine": 18,
-                  "endLine": 18
-                }
-              }
-            },
-            "justification": {
-              "sharedTerms": [],
-              "translationTerms": [
-                {
-                  "claimTerm": "colonnes",
-                  "citationTerm": "column"
                 },
                 {
-                  "claimTerm": "en-têtes filtrables",
-                  "citationTerm": "filtering enabled in the header row"
+                  "claimTerm": "gestion",
+                  "citationTerm": "managing"
                 }
               ],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 14 de la copie locale de Microsoft Support, porte les mêmes entités que le claim (table, excel, plage→range, table Excel→Excel table, gestion→managing) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "La page de support Microsoft décrit la conversion d’une plage en table pour en faciliter la gestion et l’analyse ; traduction fidèle.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     },
     {
-      "id": "excel-protection-limite",
-      "unitId": "unit-fa9f763d0250",
-      "claim": "cette protection n'est pas une fonction de sécurité",
-      "type": "produit",
+      "id": "claim-unit-ad1971dbad5b-1",
+      "unitId": "unit-ad1971dbad5b",
+      "claim": "cette protection n’est pas une fonction de sécurité",
+      "type": "information",
       "sourceIds": [
         "microsoft-protect-sheet"
       ],
       "sourceExcerpts": {
-        "microsoft-protect-sheet": "Worksheet level protection isn't intended as a security feature."
+        "microsoft-protect-sheet": "Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells within the worksheet."
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "microsoft-protect-sheet",
             "sourceUrl": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
             "verifiedUrl": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
-            "excerpt": "Worksheet level protection isn't intended as a security feature.",
-            "context": "Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells within the worksheet. Protecting a worksheet is not the same as protecting an Excel file or a workbook with a password. See below for more information:",
-            "contextSha256": "1e52b7ee28f3835431f54fbe58b2bb61fc43d401507e79ce7bb7638c79fd976a",
+            "excerpt": "Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells within the worksheet.",
+            "context": "<p>Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells within the worksheet. Protecting a worksheet is not the same as protecting an Excel file or a workbook with a password. See below for more information:</p>",
+            "contextSha256": "561a61ac8237968b03523204db8f1964607f704feb2377e869d40af069370ffd",
             "citation": {
-              "text": "Worksheet level protection isn't intended as a security feature.",
-              "sha256": "f8ab4c4ed9c0b5b7c324fa24865e68a94cffde8a8e6a33ed045770dafa702125",
-              "sourceContentSha256": "836db95ad8e92a46c84304de659ce871626944f16550ec0266edd0f9db591ae8",
+              "text": "Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells within the worksheet.",
+              "sha256": "51feaa5e4904e12512fd63b1cf21d4aa1178d45a29bc5e0652e24cdbc0a3f9d0",
+              "sourceContentSha256": "68167f61289873206e8c5ecaf0afdc35f7c64106d82b855cfe5dc8eed31cf4f2",
               "coordinates": {
                 "finalUrl": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
-                "checkedAt": "2026-09-13",
+                "checkedAt": "2026-09-17",
                 "title": "Protect a worksheet",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 12,
-                  "endLine": 12
+                  "startLine": 703,
+                  "endLine": 703
                 }
               }
             },
@@ -561,143 +495,206 @@
                 {
                   "claimTerm": "sécurité",
                   "citationTerm": "security"
+                },
+                {
+                  "claimTerm": "fonction",
+                  "citationTerm": "feature"
                 }
               ],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 703 de la copie locale de Microsoft Support, porte les mêmes entités que le claim (protection, protection→protection, sécurité→security, fonction→feature) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "Microsoft borne la protection de feuille : elle empêche la modification de cellules verrouillées et n’est pas une fonction de sécurité ; traduction fidèle.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     },
     {
-      "id": "cnil-conditions",
-      "unitId": "unit-1bc4f3a01aca",
-      "claim": "un dispositif de contrôle de l'activité doit satisfaire cumulativement des conditions de justification et de proportionnalité",
+      "id": "claim-unit-a308f29638ab-1",
+      "unitId": "unit-a308f29638ab",
+      "claim": "être soumis aux instances représentatives du personnel selon les règles en vigueur",
       "type": "legal-reglementaire",
       "sourceIds": [
         "cnil-employee-monitoring"
       ],
       "sourceExcerpts": {
-        "cnil-employee-monitoring": "Cependant, de manière générale, trois conditions cumulatives s’imposent à l’employeur pour lui permettre d’installer un dispositif de contrôle de l'activité des travailleurs.\n\nÀ quelles conditions un dispositif de contrôle de l’activité du personnel est-il possible ?\n\nPour être licite (c'est-à-dire autorisé par la loi), un dispositif de contrôle de l’activité du personnel doit cumulativement :\n\nsatisfaire aux tests de justification et de proportionnalité ;\nêtre soumis aux instances représentatives du personnel selon les règles en vigueur ;\nêtre porté à la connaissance des salariés/agents.\nCondition n°1 : la justification et la proportionnalité"
+        "cnil-employee-monitoring": "être soumis aux instances représentatives du personnel selon les règles en vigueur"
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "cnil-employee-monitoring",
             "sourceUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
             "verifiedUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-            "excerpt": "Cependant, de manière générale, trois conditions cumulatives s’imposent à l’employeur pour lui permettre d’installer un dispositif de contrôle de l'activité des travailleurs.\n\nÀ quelles conditions un dispositif de contrôle de l’activité du personnel est-il possible ?\n\nPour être licite (c'est-à-dire autorisé par la loi), un dispositif de contrôle de l’activité du personnel doit cumulativement :\n\nsatisfaire aux tests de justification et de proportionnalité ;\nêtre soumis aux instances représentatives du personnel selon les règles en vigueur ;\nêtre porté à la connaissance des salariés/agents.\nCondition n°1 : la justification et la proportionnalité",
-            "context": "Cependant, de manière générale, trois conditions cumulatives s’imposent à l’employeur pour lui permettre d’installer un dispositif de contrôle de l'activité des travailleurs.\n\nÀ quelles conditions un dispositif de contrôle de l’activité du personnel est-il possible ?\n\nPour être licite (c'est-à-dire autorisé par la loi), un dispositif de contrôle de l’activité du personnel doit cumulativement :\n\nsatisfaire aux tests de justification et de proportionnalité ;\nêtre soumis aux instances représentatives du personnel selon les règles en vigueur ;\nêtre porté à la connaissance des salariés/agents.\nCondition n°1 : la justification et la proportionnalité",
-            "contextSha256": "2344695585ff7a8524e3efa247ede5a203bf3677ae26db60e5245abca5903261",
+            "excerpt": "être soumis aux instances représentatives du personnel selon les règles en vigueur",
+            "context": "\t<li>être soumis aux instances représentatives du personnel selon les règles en vigueur&nbsp;;</li>",
+            "contextSha256": "03fbc7a37802a4c28af586d68787c9dd4013bf94bfe8ad6c7edab6dee73d038d",
             "citation": {
-              "text": "Cependant, de manière générale, trois conditions cumulatives s’imposent à l’employeur pour lui permettre d’installer un dispositif de contrôle de l'activité des travailleurs.\n\nÀ quelles conditions un dispositif de contrôle de l’activité du personnel est-il possible ?\n\nPour être licite (c'est-à-dire autorisé par la loi), un dispositif de contrôle de l’activité du personnel doit cumulativement :\n\nsatisfaire aux tests de justification et de proportionnalité ;\nêtre soumis aux instances représentatives du personnel selon les règles en vigueur ;\nêtre porté à la connaissance des salariés/agents.\nCondition n°1 : la justification et la proportionnalité",
-              "sha256": "2344695585ff7a8524e3efa247ede5a203bf3677ae26db60e5245abca5903261",
-              "sourceContentSha256": "9966528c42e2a984bfdc7de119cdfc161fd626853438db62a742ccb2fe51fef3",
+              "text": "être soumis aux instances représentatives du personnel selon les règles en vigueur",
+              "sha256": "0b7378845209d64769403e9264b711a77c2cd53af1f14271a81ec727d0369bb0",
+              "sourceContentSha256": "545dce48ff2e5546dc40f889ecb89e44c2c18c1ac871cfa9996377c89460715a",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-                "checkedAt": "2026-09-13",
+                "checkedAt": "2026-09-17",
                 "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 26,
-                  "endLine": 35
+                  "startLine": 757,
+                  "endLine": 757
                 }
               }
             },
             "justification": {
               "sharedTerms": [
-                "dispositif",
-                "controle",
-                "activite",
-                "doit",
-                "satisfaire",
-                "cumulativement"
+                "soumis",
+                "instances",
+                "representatives",
+                "personnel",
+                "regles",
+                "vigueur"
               ],
-              "translationTerms": [],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 757 de la copie locale de CNIL, porte les mêmes entités que le claim (soumis, instances, representatives, personnel, regles, vigueur) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "Condition cumulative d’un dispositif de contrôle de l’activité, citée mot pour mot depuis la page de la CNIL.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     },
     {
-      "id": "cnil-information",
-      "unitId": "unit-1bc4f3a01aca",
-      "claim": "être porté à la connaissance des salariés ou agents",
-      "type": "legal-reglementaire",
+      "id": "claim-unit-7624548185cf-1",
+      "unitId": "unit-7624548185cf",
+      "claim": "un logiciel qui compte et transmet à l’encadrant (de façon transparente) le nombre de dossiers traités par trimestre par salarié/agent",
+      "type": "juridique",
       "sourceIds": [
         "cnil-employee-monitoring"
       ],
       "sourceExcerpts": {
-        "cnil-employee-monitoring": "être soumis aux instances représentatives du personnel selon les règles en vigueur ;\nêtre porté à la connaissance des salariés/agents.\nCondition n°1 : la justification et la proportionnalité"
+        "cnil-employee-monitoring": "un logiciel qui compte et transmet à l’encadrant (de façon transparente) le nombre de dossiers traités par trimestre par salarié/agent semble proportionné"
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "cnil-employee-monitoring",
             "sourceUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
             "verifiedUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-            "excerpt": "être soumis aux instances représentatives du personnel selon les règles en vigueur ;\nêtre porté à la connaissance des salariés/agents.\nCondition n°1 : la justification et la proportionnalité",
-            "context": "être soumis aux instances représentatives du personnel selon les règles en vigueur ;\nêtre porté à la connaissance des salariés/agents.\nCondition n°1 : la justification et la proportionnalité",
-            "contextSha256": "1985a74ee0b56733a18f79f847eb3553fb9c9177c22ea16191aafbaacfffac4d",
+            "excerpt": "un logiciel qui compte et transmet à l’encadrant (de façon transparente) le nombre de dossiers traités par trimestre par salarié/agent semble proportionné",
+            "context": "<p><strong>Exemple d’un dispositif proportionné</strong>&nbsp;: un logiciel qui compte et transmet à l’encadrant (de façon transparente) le nombre de dossiers traités par trimestre par salarié/agent semble proportionné car la fréquence de la remontée d’information n’est pas assimilable à une surveillance constante. En outre, la productivité peut varier en raison de facteurs externes légitimes et peut parfois diminuer sur des courtes durées&nbsp;: il est donc plus cohérent de la mesurer sur des périodes plus longues qui seront plus représentatives du travail fourni.</p>",
+            "contextSha256": "e5bd707676e92b62bc550b1d5df98d218918e62ab044b7dbee12ff1d4eaaf60a",
             "citation": {
-              "text": "être soumis aux instances représentatives du personnel selon les règles en vigueur ;\nêtre porté à la connaissance des salariés/agents.\nCondition n°1 : la justification et la proportionnalité",
-              "sha256": "1985a74ee0b56733a18f79f847eb3553fb9c9177c22ea16191aafbaacfffac4d",
-              "sourceContentSha256": "9966528c42e2a984bfdc7de119cdfc161fd626853438db62a742ccb2fe51fef3",
+              "text": "un logiciel qui compte et transmet à l’encadrant (de façon transparente) le nombre de dossiers traités par trimestre par salarié/agent semble proportionné",
+              "sha256": "2a164c1700e02bc305130eafbaf4fe5ba2d93868d1e91fdebf57e2c25c765ece",
+              "sourceContentSha256": "545dce48ff2e5546dc40f889ecb89e44c2c18c1ac871cfa9996377c89460715a",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-                "checkedAt": "2026-09-13",
+                "checkedAt": "2026-09-17",
                 "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 33,
-                  "endLine": 35
+                  "startLine": 805,
+                  "endLine": 805
                 }
               }
             },
             "justification": {
               "sharedTerms": [
-                "porte",
-                "connaissance",
-                "salaries",
-                "agents"
+                "logiciel",
+                "compte",
+                "transmet",
+                "encadrant",
+                "facon",
+                "transparente",
+                "nombre",
+                "dossiers",
+                "traites",
+                "trimestre",
+                "salarie",
+                "agent"
               ],
-              "translationTerms": [],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 805 de la copie locale de CNIL, porte les mêmes entités que le claim (logiciel, compte, transmet, encadrant, facon, transparente, nombre, dossiers, traites, trimestre, salarie, agent) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "Exemple de dispositif proportionné donné par la CNIL, cité mot pour mot ; il borne ce qu’un suivi peut remonter sur les personnes.",
+            "checkedAt": "2026-09-17"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-ae9784786381-1",
+      "unitId": "unit-ae9784786381",
+      "claim": "les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-employee-monitoring"
+      ],
+      "sourceExcerpts": {
+        "cnil-employee-monitoring": "Notamment, il est important de détailler les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées"
+      },
+      "checkedAt": "2026-09-17",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-17",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-employee-monitoring",
+            "sourceUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+            "verifiedUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+            "excerpt": "Notamment, il est important de détailler les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées",
+            "context": "<p><strong>L’employeur doit pouvoir prouver le respect de ces conditions</strong>. Notamment, il est important de détailler les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées ainsi que les mesures prises par le <button type=\"button\" class=\"glossary-tooltips\" aria-describedby=\"tooltip_content\" data-definition=\"responsable de traitement\"><span class=\"glossary-tooltips-title\">responsable de traitement</span></button> pour l’information et l’exercice des droits des salariés concernés. Au-delà de prouver sa conformité à la règlementation en matière de protection des données, et indirectement au code du travail, cela permet de réévaluer facilement la situation en cas de changement.</p>",
+            "contextSha256": "82f3216884aee7389ca560beb20797efc21f2c6eb6a185ad6c4ed624e37f115b",
+            "citation": {
+              "text": "Notamment, il est important de détailler les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées",
+              "sha256": "11208a75cabf6aa6bb6e1dffa56fb10d8db8476f91439884d5ebc818d60ac5a7",
+              "sourceContentSha256": "545dce48ff2e5546dc40f889ecb89e44c2c18c1ac871cfa9996377c89460715a",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+                "checkedAt": "2026-09-17",
+                "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 830,
+                  "endLine": 830
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "etapes",
+                "analyse",
+                "necessite",
+                "proportionnalite",
+                "cycle",
+                "donnees",
+                "traitees"
+              ],
+              "reasoning": "La citation, relevée à la ligne 830 de la copie locale de CNIL, porte les mêmes entités que le claim (etapes, analyse, necessite, proportionnalite, cycle, donnees, traitees) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Éléments que l’employeur doit pouvoir détailler pour prouver le respect des conditions, cités mot pour mot depuis la page de la CNIL.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     }
-  ],
-  "adoption": {
-    "originalPath": "preuves/inherited/claims.json",
-    "originalSha256": "deffd5a51075c4d3f0381471cd4de73186f37f43ad7226eed06b7e9e11a53137",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  ]
 }

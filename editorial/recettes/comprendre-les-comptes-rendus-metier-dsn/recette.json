@@ -1,0 +1,261 @@
+{
+  "slug": "comprendre-les-comptes-rendus-metier-dsn",
+  "title": "Comprendre les comptes rendus métier DSN : méthode de lecture",
+  "tabTitle": "CRM DSN : lire le compte rendu et ses anomalies | Memlia",
+  "summary": "Un dépôt accepté ne clôt pas le contrôle. Identifiez le retour, son émetteur, sa période et sa population ; lisez le statut dans sa source, rapprochez la donnée de paie, puis documentez la décision et le contrôle suivant. La mécanique rassemble et rapproche ; votre équipe décide.",
+  "description": "Méthode pour distinguer les retours DSN, lire un CRM, qualifier une anomalie et tracer la correction sans confondre dépôt accepté et paie juste.",
+  "date": "2026-09-15",
+  "updatedAt": "2026-09-17",
+  "topics": [
+    "dsn",
+    "paie",
+    "production-sociale",
+    "methode"
+  ],
+  "keywords": [
+    "comptes rendus métier DSN",
+    "CRM DSN",
+    "bilan d’anomalies DSN",
+    "certificat de conformité DSN",
+    "CRM nominatif"
+  ],
+  "primaryQuery": "crm dsn",
+  "secondaryQueries": [
+    "comprendre CRM DSN",
+    "bilan d’anomalies DSN",
+    "certificat de conformité DSN",
+    "CRM nominatif",
+    "comptes rendus métier DSN",
+    "compte rendu métier dsn",
+    "anomalies dsn"
+  ],
+  "intent": "comprendre",
+  "fanOut": [
+    "distinguer AEE ARE CCO BAN",
+    "lire un CRM par organisme",
+    "qualifier une anomalie DSN",
+    "corriger après un retour DSN",
+    "tracer la décision"
+  ],
+  "role": {
+    "primary": "paie-responsables-sociaux",
+    "secondary": [
+      "direction-associes"
+    ],
+    "proofLevel": "hypothese",
+    "proofNote": "Niveau conservé de la première publication du 15/09/2026 : rôle déduit du référentiel des besoins du pôle social, à confirmer au premier rendez-vous d’un cabinet sur ce sujet."
+  },
+  "funnel": "TOFU",
+  "cluster": "paie-social",
+  "famille": "dsn-crm",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Lire les retours reçus après une DSN, déterminer leur portée et organiser une correction ou un classement justifié.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; sept affirmations DSN citées mot pour mot depuis Net-entreprises, ouvertes le jour de la republication.",
+  "reviewRule": "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val) et à chaque nouvelle version de norme DSN ; relecture des sources à six mois.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de lecture des retours de votre cabinet dans vos mots, organisme par organisme, nous automatisons la collecte des retours et leur rapprochement avec la paie dans les outils que votre pôle social utilise déjà, et vos gestionnaires la recettent sur des cas fictifs puis sur vos dossiers. L’interprétation, la correction et le dépôt restent à vos équipes. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
+  },
+  "image": {
+    "heroId": "img-25-comptes-rendus-metier-dsn",
+    "alt": "Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine.",
+    "brief": {
+      "sujet": "Comprendre et traiter les comptes rendus métier après un dépôt DSN : un fichier abstrait a déjà franchi un portique ; plusieurs retours distincts arrivent ; une anomalie est isolée ; une bifurcation attend l’arbitrage humain.",
+      "composition": "Horizontale 16:9 ; à gauche un fichier abstrait passé le portique ; au centre plusieurs plaques translucides pour les retours distincts, une pièce gris-graphite isolée ; à droite une bifurcation ouverte et un jeton vert déplacé vers une voie.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce, ombres courtes, faible profondeur, composition aérée.",
+      "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème, graphite.",
+      "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome.",
+      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : comprendre et traiter les comptes rendus métier après un dépôt DSN. À gauche, un fichier abstrait a déjà franchi un portique ; au centre, plusieurs plaques translucides représentent des retours distincts ; une pièce gris-graphite est isolée ; à droite, une bifurcation et un jeton évoquent l’arbitrage humain. Style : diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, palette Memlia vert #27b657 / vert profond #1c8a41 / crème / graphite, lumière de studio douce, ombres courtes, faible profondeur, composition aérée. Interdits : texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome.",
+      "reviewCriteria": [
+        "continuité avec les couvertures existantes",
+        "dépôt déjà franchi",
+        "retours multiples distincts",
+        "anomalie isolée",
+        "arbitrage humain lisible sans personnage",
+        "aucun texte, logo, donnée, fausse interface ou action automatique"
+      ]
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "openai_codex_gpt-image-2-medium_20260915_111346_25aea5fd",
+      "model": "gpt-image-2-medium",
+      "provider": "openai-codex",
+      "generatedAt": "2026-09-15",
+      "credits": null
+    }
+  },
+  "sources": [
+    {
+      "id": "net-entreprises-crm",
+      "publisher": "Net-entreprises",
+      "title": "Les comptes rendus métiers DSN",
+      "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle du GIP-MDS, opérateur de la DSN, définissant le compte rendu métier.",
+      "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
+    },
+    {
+      "id": "net-entreprises-retours",
+      "publisher": "Net-entreprises",
+      "title": "Les retours d’informations suite au dépôt de votre DSN ou signalement d’événement",
+      "url": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle du GIP-MDS décrivant les retours après dépôt (AEE, ARE, certificat, bilan d’anomalies, CRM).",
+      "excerpt": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN"
+    },
+    {
+      "id": "net-entreprises-fiabilisation",
+      "publisher": "Net-entreprises",
+      "title": "La fiabilisation des données de la DSN",
+      "url": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle du GIP-MDS sur la correction des erreurs signalées et les interlocuteurs.",
+      "excerpt": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel."
+    },
+    {
+      "id": "net-entreprises-dsn-val",
+      "publisher": "Net-entreprises",
+      "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
+      "url": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle du GIP-MDS sur l’outil d’auto-contrôle du fichier avant dépôt.",
+      "excerpt": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer."
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/methode",
+      "/garanties",
+      "/glossaire#compte-rendu-metier-dsn",
+      "/glossaire#annule-et-remplace-dsn"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ],
+    "decision": "Cet article traite la lecture des retours après dépôt (requête « crm dsn », intention comprendre) ; l’article sur les bulletins traite le contrôle avant dépôt (intention exécuter) ; le pilier cartographie. Intentions distinctes, liens croisés dans les deux sens."
+  },
+  "serp": {
+    "requete": "crm dsn",
+    "date": "2026-09-17",
+    "volume": "ND",
+    "acteurs": [
+      "net-entreprises.fr",
+      "urssaf.fr",
+      "group-gac.com",
+      "net-entreprises.custhelp.com",
+      "zendsn.com",
+      "sintia.fr",
+      "faq.kerialis.fr",
+      "youtube.com"
+    ],
+    "formats": "pages officielles (Net-entreprises en tête, Urssaf), guides d’éditeurs de paie et d’organismes, une vidéo ; aucun résultat ne livre la méthode de lecture en six étapes avec registre",
+    "note": "Relevé DataForSEO France du 17/09/2026 (relevé de demande C2), profondeur 20 : memlia.fr absent du top 20 ; aucune position revendiquée."
+  },
+  "gsc": {
+    "requete": "crm dsn",
+    "date": "2026-09-17",
+    "periode": "28 jours au 14/09/2026",
+    "impressions": 0,
+    "clics": 0,
+    "note": "Search Console lue par le relevé de demande du 17/09/2026 (semaine du 08 au 14/09) : 0 impression et 0 clic sur cet article sur 7 et 28 jours ; le site entier compte 17 impressions et 4 clics sur 28 jours, tous sur l’accueil. Aucun crédit métrique revendiqué."
+  },
+  "claims": [
+    {
+      "unite": "Net-entreprises définit le CRM comme",
+      "claim": "un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée",
+      "type": "dsn",
+      "sourceId": "net-entreprises-crm",
+      "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
+      "explanation": "Définition officielle du compte rendu métier, citée mot pour mot depuis Net-entreprises."
+    },
+    {
+      "unite": "La page officielle sur les comptes rendus métier DSN précise aussi",
+      "claim": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises",
+      "type": "dsn",
+      "sourceId": "net-entreprises-crm",
+      "excerpt": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations",
+      "explanation": "Le traitement des données par chaque organisme avant la mise à disposition du CRM, cité mot pour mot."
+    },
+    {
+      "unite": "Elle borne le certificat en une phrase",
+      "claim": "le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN",
+      "type": "dsn",
+      "sourceId": "net-entreprises-retours",
+      "excerpt": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN",
+      "explanation": "Portée du certificat de conformité, limitée à la transmission, formulée par Net-entreprises."
+    },
+    {
+      "unite": "La même page distingue le contrôle bloquant",
+      "claim": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires",
+      "type": "dsn",
+      "sourceId": "net-entreprises-retours",
+      "excerpt": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires",
+      "explanation": "Définition du contrôle non bloquant : une DSN acceptée peut encore porter des écarts à corriger."
+    },
+    {
+      "unite": "décrit Dsn-Val ainsi",
+      "claim": "permet de tester votre fichier DSN avant de le déposer",
+      "type": "dsn",
+      "sourceId": "net-entreprises-dsn-val",
+      "excerpt": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
+      "explanation": "Rôle de Dsn-Val, outil d’auto-contrôle du fichier avant dépôt, cité depuis Net-entreprises."
+    },
+    {
+      "unite": "indique qu’en cas d’incompréhension le déclarant peut",
+      "claim": "contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel",
+      "type": "dsn",
+      "sourceId": "net-entreprises-fiabilisation",
+      "excerpt": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
+      "explanation": "Répartition organisme / éditeur recommandée par Net-entreprises."
+    },
+    {
+      "unite": "La même page de fiabilisation précise le canal usuel",
+      "claim": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant",
+      "type": "dsn",
+      "sourceId": "net-entreprises-fiabilisation",
+      "excerpt": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
+      "explanation": "Fenêtre de la DSN « annule et remplace » et report au mois suivant, cités mot pour mot."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "paie-responsables-sociaux"
+  },
+  "preuvesSkills": {
+    "blog-brief": [
+      "Brief hérité de la première publication du 15/09/2026, requête recalée sur « crm dsn » à l’audit des titres du 17/09/2026 (lecteur paie-responsables-sociaux, intention comprendre, entonnoir TOFU) ; tâche : lire les retours reçus après une DSN, déterminer leur portée et organiser une correction ou un classement justifié."
+    ],
+    "blog-outline": [
+      "Plan aligné le 17/09/2026 sur le gabarit how-to-guide de la forge : réponse directe, périmètre après dépôt, définitions, pourquoi la lecture casse à la main, pourquoi un dépôt accepté ne suffit pas (tableau des retours), structure ou cohérence, six étapes, jeu fictif, registre, frontière en trois colonnes, erreurs, questions fréquentes, règle à retenir, pour aller plus loin."
+    ],
+    "blog-rewrite": [
+      "Republication du 17/09/2026 selon la charte de message v3 (§7 bis) : entrée dans la forge (recette, quatre pages Net-entreprises revérifiées le jour même, revue neuve) ; la citation du cahier technique en PDF, invérifiable par la chaîne, est remplacée par la phrase de Net-entreprises qui borne le certificat de conformité et par la définition du contrôle non bloquant ; section « pourquoi la lecture casse à la main » sur la règle que le gestionnaire applique sans l’avoir écrite ; formules « Memlia peut » retirées ; appel « Confier cette tâche » ; liens vers le pilier, la méthode et les garanties. Méthode en six étapes, jeu fictif et registre conservés."
+    ],
+    "blog-schema": [
+      "BlogPosting émis par le gabarit Article avec datePublished 2026-09-15 et dateModified 2026-09-17 (updatedAt de la recette), BreadcrumbList, Person Kevin Kitanga rattaché à /a-propos#kevin-kitanga ; aucun FAQPage."
+    ],
+    "blog-style": [
+      "cognitive_load.py joué le 17/09/2026 sur corps.md : verdict global « Healthy », 12 sections analysées, 1 section(s) signalée(s) (Exemple fictif : un CRM nominatif à qualifier : numeric) ; profondeur de proposition moyenne maximale 0.9."
+    ]
+  }
+}

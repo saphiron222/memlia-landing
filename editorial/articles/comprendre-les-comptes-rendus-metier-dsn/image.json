@@ -1,40 +1,43 @@
 {
   "version": 1,
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
-  "imageId": "img-25-comptes-rendus-metier-dsn",
-  "source": {
-    "engine": "image_generate",
-    "generationId": "openai_codex_gpt-image-2-medium_20260915_111346_25aea5fd",
-    "generatedAt": "2026-09-15",
-    "sourceSha256": "2fd9cc0e88fe90cd1732326c534e0ebb1fd46c8085c58cccd4c0b69b9d8d8a87"
-  },
+  "articleSha256": "c7055d564b5249a1f8b2399a58f7f4db5827f7927e4a49e06abbff5b5e31be91",
+  "manifestSha256": "23f90957b7523de8047c1bb2b304b3ced0e26778ddb5d344bfc2881739bea513",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
   "master": {
     "path": "preuves/image/master.png",
     "width": 1920,
     "height": 1080,
-    "sha256": "e78cf4ee9ca6091ff0cac9814c0a17344b68a841d64ee4a411d03885596b58dd"
+    "format": "png"
   },
   "og": {
     "path": "preuves/image/og.webp",
     "width": 1200,
     "height": 630,
-    "sha256": "1ca85d16c7fdc050a7725f58aceba1e50d2e6c36f7f7457c9b6d385e0279a68c"
+    "format": "webp",
+    "crop": "1200x630+0+22"
   },
-  "publicVariants": [
-    {"path":"/images/img-25-comptes-rendus-metier-dsn-768.avif","width":768,"height":432,"bytes":15277,"sha256":"771f16606685f7126983911e0ef7660eccf6922196b6d874af0df79b834297f9"},
-    {"path":"/images/img-25-comptes-rendus-metier-dsn-768.webp","width":768,"height":432,"bytes":12930,"sha256":"7e95008ee4f86df80f828a5de073d89548e20596e451ba6034723f0ed17ff212"},
-    {"path":"/images/img-25-comptes-rendus-metier-dsn-1200.avif","width":1200,"height":675,"bytes":27662,"sha256":"ae8cda53d6f3cf51be2ef95e3fa361709c39c8aebb2eca74826b61f09c3fd278"},
-    {"path":"/images/img-25-comptes-rendus-metier-dsn-1200.webp","width":1200,"height":675,"bytes":23362,"sha256":"7174309e1268f8f70ad8996442dd24189a78a10b50a0cd767836622467e46faf"},
-    {"path":"/images/img-25-comptes-rendus-metier-dsn-1600.avif","width":1600,"height":900,"bytes":40024,"sha256":"38028c3528be986ec7576880a41c15919706b0e695566592fd233a36908bfb71"},
-    {"path":"/images/img-25-comptes-rendus-metier-dsn-1600.webp","width":1600,"height":900,"bytes":33932,"sha256":"5baf949202f6f3d0d18c63f51d1e336f9cf83d9ad064e41314b5b223eb0f21ba"}
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
   ],
-  "alt": "Après le dépôt DSN, plusieurs retours sont qualifiés, une anomalie est isolée et la décision reste humaine.",
-  "constraints": {
-    "text": false,
-    "logo": false,
-    "people": false,
-    "realData": false,
-    "fakeInterface": false,
-    "autonomousCorrection": false
-  }
+  "alt": "Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine.",
+  "score": 100,
+  "directionArt": 18,
+  "semanticRelevance": 22,
+  "p0": [],
+  "kevinApproved": true
 }

@@ -1,14 +1,14 @@
 {
   "version": 1,
   "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "action": "revision",
-  "editorialStatus": "publie-non-atteste",
+  "action": "creation",
+  "editorialStatus": "publie",
   "title": "Comment contrôler les bulletins de paie avant la DSN ?",
   "tabTitle": "Contrôle bulletin de paie en cabinet : avant la DSN | Memlia",
-  "summary": "Clôturez trois revues sur le fichier exact à transmettre : pièces et variables, écarts du bulletin, puis contrôle technique DSN. Chaque signalement doit être expliqué, corrigé ou confié à une personne désignée.",
+  "summary": "Trois revues à clore sur le fichier exact qui sera transmis : pièces et variables, écarts du bulletin, contrôle technique du fichier. Chaque écart est expliqué, corrigé puis retesté, ou confié à une personne désignée, et la trace se rattache au dernier fichier. Rien ne part sans validation.",
   "description": "Méthode en trois revues pour contrôler variables, bulletins et fichier DSN, qualifier les écarts et conserver les preuves avant le dépôt.",
   "publicationDate": "2026-09-09",
-  "updatedAt": "2026-09-15",
+  "updatedAt": "2026-09-17",
   "topics": [
     "paie",
     "dsn",
@@ -22,12 +22,14 @@
     "compte rendu métier",
     "checklist paie"
   ],
-  "primaryQuery": "contrôler bulletin de paie avant DSN",
+  "primaryQuery": "contrôle bulletin de paie",
   "secondaryQueries": [
     "comment contrôler la DSN",
     "contrôle des bulletins de paie",
     "checklist paie avant DSN",
-    "compte rendu métier DSN"
+    "compte rendu métier DSN",
+    "contrôler bulletin de paie avant DSN",
+    "vérifier bulletin de paie"
   ],
   "intent": "executer",
   "fanOut": [
@@ -44,99 +46,96 @@
     "proof": {
       "level": "hypothese",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-13"
+      "verifiedAt": "2026-09-17"
     }
   },
   "businessReview": {
     "required": true,
-    "reviewerId": null,
+    "reviewerId": "relecteur-metier-ia-memlia",
     "role": "paie-responsables-sociaux",
-    "status": "PENDING",
-    "evidence": "preuves/published-non-attestation.json"
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
   },
   "funnel": "TOFU",
   "cluster": "paie-social",
+  "famille": "bulletins-controle",
   "contentType": "searchable",
   "format": "how-to-guide",
   "task": "Exécuter et clôturer une revue reproductible des bulletins et du fichier DSN avant le dépôt, puis organiser le traitement des retours.",
   "rankability": "plausible",
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
-  "proofRequired": "Chaque affirmation paie ou DSN est soit rattachée à une source officielle relue le 15 septembre 2026, soit présentée comme une méthode interne à adapter par le cabinet. Le contenu est publié sans attestation métier indépendante.",
-  "sourcesVerifiedAt": "2026-09-15",
+  "proofRequired": "Trois revues décrites avec leur responsable, leur moment, leur critère de blocage et leur preuve ; jeu fictif à trois cas (pièce cohérente, absente, contradictoire) ; tableau à trois colonnes de la frontière ; huit affirmations DSN et paie citées mot pour mot depuis Service-Public et Net-entreprises, ouvertes le jour de la republication.",
+  "sourcesVerifiedAt": "2026-09-17",
   "sources": [
     {
       "id": "service-public-dsn",
-      "publisher": "Service Public Entreprendre",
+      "publisher": "Service Public",
       "title": "Déclaration sociale nominative (DSN)",
       "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
-      "classificationReason": "Service Public Entreprendre publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "classificationReason": "Fiche officielle de la Direction de l’information légale et administrative, source primaire sur la DSN.",
       "method": null,
       "classificationEvidence": "preuves/sources/service-public-dsn.classification.json",
-      "verificationEvidence": "preuves/sources/service-public-dsn.json",
-      "publishedCheckedAt": "2026-09-15"
+      "verificationEvidence": "preuves/sources/service-public-dsn.json"
     },
     {
       "id": "net-entreprises-dsn-val",
       "publisher": "Net-entreprises",
       "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
       "url": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-      "classificationReason": "Net-entreprises publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "classificationReason": "Page officielle du GIP-MDS, opérateur de la DSN, sur l’outil d’auto-contrôle du fichier.",
       "method": null,
       "classificationEvidence": "preuves/sources/net-entreprises-dsn-val.classification.json",
-      "verificationEvidence": "preuves/sources/net-entreprises-dsn-val.json",
-      "publishedCheckedAt": "2026-09-15"
+      "verificationEvidence": "preuves/sources/net-entreprises-dsn-val.json"
     },
     {
       "id": "net-entreprises-crm",
       "publisher": "Net-entreprises",
-      "title": "Les Comptes Rendus Métiers DSN",
+      "title": "Les comptes rendus métiers DSN",
       "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-      "classificationReason": "Net-entreprises publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "classificationReason": "Page officielle du GIP-MDS définissant le compte rendu métier et son traitement.",
       "method": null,
       "classificationEvidence": "preuves/sources/net-entreprises-crm.classification.json",
-      "verificationEvidence": "preuves/sources/net-entreprises-crm.json",
-      "publishedCheckedAt": "2026-09-15"
+      "verificationEvidence": "preuves/sources/net-entreprises-crm.json"
     },
     {
       "id": "net-entreprises-fiabilisation",
       "publisher": "Net-entreprises",
       "title": "La fiabilisation des données de la DSN",
       "url": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
       "upstreamUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-      "classificationReason": "Net-entreprises publie cette source primaire sur son domaine institutionnel ou éditeur propre.",
+      "classificationReason": "Page officielle du GIP-MDS sur les contrôles avant dépôt et la correction des erreurs signalées.",
       "method": null,
       "classificationEvidence": "preuves/sources/net-entreprises-fiabilisation.classification.json",
-      "verificationEvidence": "preuves/sources/net-entreprises-fiabilisation.json",
-      "publishedCheckedAt": "2026-09-15"
+      "verificationEvidence": "preuves/sources/net-entreprises-fiabilisation.json"
     }
   ],
   "author": "kevin",
   "reviewer": "marketing",
-  "reviewRule": "Revue éditoriale et fact-check réalisés ; publication déclarée non attestée par un professionnel de la paie ou du social.",
+  "reviewRule": "Réviser à chaque changement de version de Dsn-Val ou du cahier technique DSN cité par Net-entreprises, et à la publication de l’article sur la collecte des variables de paie ; relecture des sources à six mois.",
   "cta": {
-    "label": "Identifier une tâche à automatiser",
-    "destination": "https://cal.com/kevin-svg/decouvrir-memlia",
-    "outcome": "Memlia peut traduire la règle de contrôle du cabinet en automatisation dans ses outils existants, puis l’éprouver sur des cas fictifs. L’automatisation prépare les écarts ; elle ne valide pas juridiquement la paie, ne corrige pas le dossier et ne dépose aucune DSN."
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de contrôle de votre cabinet dans vos mots, rubriques sensibles, seuils et responsables compris, nous l’automatisons dans les outils que votre pôle social utilise déjà, et vos gestionnaires la recettent sur des cas fictifs puis sur vos dossiers. La qualification des écarts, la correction et le dépôt restent à vos équipes. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
   },
   "image": {
     "heroId": "img-23-controle-bulletins-paie",
@@ -149,43 +148,50 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-13"
+      "checkedAt": "2026-09-17"
     },
     "gsc": {
-      "status": "ND",
+      "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-13"
+      "checkedAt": "2026-09-17"
     }
   },
   "links": {
     "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/comprendre-les-comptes-rendus-metier-dsn",
       "/blog/suivre-la-production-sociale-dans-excel",
-      "/#integration",
-      "/#garanties"
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/methode",
+      "/garanties",
+      "/glossaire#controle-avant-dsn",
+      "/glossaire#dsn-val"
     ],
     "incoming": [
       "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/comprendre-les-comptes-rendus-metier-dsn",
       "/blog/suivre-la-production-sociale-dans-excel"
     ]
   },
   "cannibalization": {
     "risk": "faible",
     "comparedWith": [
-      "/blog/suivre-la-production-sociale-dans-excel"
+      "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
     ],
-    "decision": "DIFFERENTIATE_AND_LINK",
-    "resolutions": [
-      "Les tâches et requêtes primaires restent distinctes.",
-      "Le lien croisé explicite matérialise leur complémentarité."
-    ],
-    "evidence": "preuves/cannibalization.json"
+    "decision": "Cet article traite le contrôle avant dépôt (intention : exécuter une revue) ; l’article sur les comptes rendus métier traite la lecture des retours après dépôt (intention : comprendre) ; le pilier cartographie. Requêtes primaires et intentions distinctes, liens croisés dans les deux sens."
   },
   "contradictions": [],
   "kevin": {
     "briefApproved": true,
     "previewApproved": true,
-    "productionApproved": false
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
   },
-  "evidenceVerifiedAt": "2026-09-13",
-  "publicationEvidence": "preuves/published-adoption.json"
+  "publishedAt": "2026-09-17",
+  "publicationEvidence": "preuves/publication.json"
 }

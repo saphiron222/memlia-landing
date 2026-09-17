@@ -1,0 +1,211 @@
+{
+  "editorial": {
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "La « Réponse directe » (75 mots) répond immédiatement à l'intention comprendre pour « crm dsn » : elle nomme l'objet (un contrôle d'un organisme, pas un verdict sur toute la paie) avant tout développement.",
+          "La méthode en six étapes (identifier l'objet exact, lire le statut, localiser la donnée, rapprocher de la paie, documenter la décision, contrôler le retour suivant) couvre exactement la tâche du brief : lire un retour, déterminer sa portée, organiser une correction ou un classement justifié.",
+          "Le périmètre est borné dès le deuxième paragraphe (« Ce guide traite exclusivement de l'interprétation et du suivi après dépôt »), avec renvoi explicite vers l'article frère pour l'avant-dépôt, ce qui évite toute confusion de tâche pour le rôle paie-responsables-sociaux."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Titre de balise à 56 caractères (« CRM DSN : lire le compte rendu et ses anomalies | Memlia »), dans la fourchette 40-60 recommandée, et meta description à 144 caractères cohérente avec le contenu visible.",
+          "Hiérarchie de titres propre et sans saut : un seul H1, des H2 par section, des H3 pour les six étapes et pour les cinq questions de la FAQ.",
+          "Cinq tableaux avec <thead> (retours après dépôt, situations fictives, registre à dix champs, répartition automatisation/validation/humain) offrent un format comparatif adapté au how-to-guide déclaré."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Quatre sources tier-1 officielles (Net-entreprises/GIP-MDS) sont citées mot pour mot dans le corps et listées avec date de consultation (17 septembre 2026) dans « Sources consultées ».",
+          "Auteur nommé et lié (Kevin Kitanga, Fondateur de Memlia) avec bio en pied d'article, lien rel=\"author\" vers /a-propos#kevin-kitanga, et balisage Person/BlogPosting/Organization/BreadcrumbList dans le JSON-LD.",
+          "Les sept citations du paquet de revue sont retrouvées à l'identique dans les fichiers preuves/sources/*.source.txt correspondants (ex. « le certificat de conformité vous libère de vos obligations déclaratives... » à la ligne 999 de net-entreprises-retours.source.txt)."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Le tableau des retours ajoute une colonne « Premier geste » explicitement étiquetée comme méthode Memlia et distincte de la définition sourcée (« la consigne effectivement reçue prime toujours »), ce qui crée un gain d'information balisé plutôt que noyé dans la source.",
+          "Le registre à dix champs (id_retour, emetteur, type_retour, statut_source, decision, controle_suivant...) et l'exemple fictif D-027/R-027-A traduisent la méthode en objets concrets qu'aucune des quatre pages Net-entreprises ne fournit.",
+          "Le tableau « ce qui s'automatise / attend une validation / reste humain » synthétise une répartition des tâches propre à Memlia, absente des pages sources citées."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Canonical, Open Graph (image 1200x630 avec largeur/hauteur déclarées et alt), Twitter Card et JSON-LD (BlogPosting, BreadcrumbList, Person, Organization, WebSite) sont tous présents et cohérents avec le titre et la description visibles.",
+          "L'image de couverture utilise loading=\"eager\" et fetchpriority=\"high\" avec un srcset AVIF/WebP à 768/1200/1600w, un traitement correct pour l'image LCP plutôt qu'un lazy-load pénalisant, et un alt de 95 caractères.",
+          "La balise noindex et le bandeau « Candidat éditorial » observés dans ce rendu appartiennent au harnais de prévisualisation QA, pas à l'article une fois publié, et ne sont donc pas comptés comme un défaut de la page."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "La FAQ (5 questions en H3) répond en une à trois phrases autonomes et sourcées par question (ex. « Un certificat de conformité garantit-il que la paie est juste ? » → réponse directe rattachée à Net-entreprises), un format extractible par un moteur de réponse.",
+          "La terminologie (CRM, bilan d'anomalies, certificat de conformité, BAN, CCO, AEE, ARE) est définie une seule fois puis réutilisée sans dérive de vocabulaire sur les 3001 mots de l'article, ce qui clarifie l'entité traitée."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "La formule « à adapter », cause du FAIL en première passe (répétée dans la colonne « Premier geste » et dans l'intro du registre), n'apparaît plus une seule fois dans ce rendu : les deux phrases concernées ont été réécrites (« la consigne effectivement reçue prime toujours » ; « le cabinet en fixe les droits d'accès et l'outil »).",
+          "L'appel de fin reprend exactement le libellé prescrit par la charte : bloc « Et dans votre cabinet ? », bouton « Confier cette tâche » vers /contact, et un texte qui dit ce que Memlia fait (écrire la règle, automatiser la collecte et le rapprochement, faire recetter) et ce que le cabinet garde (interprétation, correction, dépôt), avec « Rien à envoyer » en formulation positive.",
+          "Les deux liens requis par la charte sont présents dans le corps : vers le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches (« Pour aller plus loin ») et vers /methode (bouton « Comprendre notre méthode » du bloc d'appel, et lien « la méthode » dans la clôture).",
+          "Aucun tiret cadratin dans le corps de l'article : la seule occurrence du fichier rendu est dans le bandeau « Candidat éditorial — preview privée, non publiable » du harnais de prévisualisation, hors contenu éditorial.",
+          "« ne remplace pas » apparaît trois fois mais sur trois objets distincts (l'outil Dsn-Val, un code isolé, l'automatisation), et une seule fois à propos du service, dans la FAQ (« L'automatisation prépare ce rapprochement ; elle ne remplace pas l'interprétation métier ») : c'est la réserve unique en forme de frontière que prescrit le §7 bis, pas un avertissement répété. « ne constitue pas » apparaît une fois, à propos d'un CRM (document DSN), non du service Memlia. « Memlia peut » et « module » (hors balises <script type=\"module\">) sont absents."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "business": {
+    "claims": {
+      "claim-unit-23db2433190f-1": {
+        "verdict": "soutient",
+        "reasoning": "La citation est reprise mot pour mot entre guillemets et attribuée à Net-entreprises comme définition du CRM ; elle est retrouvée à l'identique dans net-entreprises-crm.source.txt, sans changement de portée ni de polarité."
+      },
+      "claim-unit-23db2433190f-2": {
+        "verdict": "soutient",
+        "reasoning": "L'article cite la phrase source à l'identique (« chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises ») et l'ajout « avant de mettre son retour à disposition sur le tableau de bord » correspond à la phrase suivante du même document source."
+      },
+      "claim-unit-7608066ad21a-1": {
+        "verdict": "soutient",
+        "reasoning": "La citation exacte du certificat de conformité est reprise en gras entre guillemets, avec la même portée limitative que dans net-entreprises-retours.source.txt, sans extension ni atténuation."
+      },
+      "claim-unit-faf3c7a9923e-1": {
+        "verdict": "soutient",
+        "reasoning": "La définition du contrôle non bloquant est citée mot pour mot et rattachée correctement à l'opposition bloquant/non bloquant du document source, sans extension de portée au-delà de ce que dit Net-entreprises."
+      },
+      "claim-unit-29991bc0bacc-1": {
+        "verdict": "soutient",
+        "reasoning": "La phrase sur Dsn-Val est citée à l'identique et correctement attribuée à l'outil d'auto-contrôle avant dépôt, conforme à l'usage décrit par la page source consultée."
+      },
+      "claim-unit-fe38de788788-1": {
+        "verdict": "soutient",
+        "reasoning": "La citation sur les deux interlocuteurs (l'organisme pour le retour métier, l'éditeur pour le logiciel) est reprise mot pour mot et conserve exactement la même répartition des rôles que la source."
+      },
+      "claim-unit-d922dfd38c11-1": {
+        "verdict": "soutient",
+        "reasoning": "Le délai « avant minuit la veille de l'échéance » est cité mot pour mot ; l'article ajoute une restriction supplémentaire (valable pour la DSN mensuelle, pas pour tous les retours) qui resserre la portée sans la déformer, ce qui reste fidèle à la source."
+      }
+    }
+  },
+  "image": {
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Les quatre zones du brief sont présentes : à gauche un portique vert traversé par un bloc crème (fichier déjà franchi), au centre une pile de plaques translucides à formes distinctes (cercle, triangle, hexagone et losange, pentagone) pour les retours, une plaque gris-graphite isolée en avant-plan pour l'anomalie, et à droite une bifurcation avec un disque au point de fourche.",
+          "Le jeton au point de bifurcation est crème plutôt que littéralement vert comme le décrit le texte de composition du brief ; c'est une déviation mineure qui n'empêche pas de lire la scène comme un arbitrage sans personnage."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Format 16:9 (1920x1080 selon image.json), style diorama 3D isométrique à matières mates et translucides sur fond crème, conforme au brief.",
+          "Palette limitée au vert Memlia, au vert profond, au crème et au graphite ; aucune alerte rouge, aucune fausse interface ni écran, et aucun texte ou chiffre lisible détecté sur l'image."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "L'image est un rendu 3D abstrait sans ressemblance photographique, capture d'écran ou logo d'un organisme réel ; aucune personne ni donnée identifiable n'apparaît, cohérent avec une origine explicitement générée."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "La séquence portique franchi puis plaques distinctes puis pièce isolée puis bifurcation restitue lisiblement l'alt « un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine », un registre attendu pour une couverture conceptuelle plutôt que littérale."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "image.json déclare le master 1920x1080 en PNG, un dérivé OG 1200x630 en WebP (recadré 1200x630+0+22), et un dérivé hero-768 en AVIF et WebP (768x432), couvrant les trois formats attendus.",
+          "Le HTML rendu consomme bien ces tailles : srcset 768/1200/1600w en AVIF et WebP pour le hero, og:image et twitter:image en 1200x630 avec largeur et hauteur déclarées."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "L'attribut alt compte 95 caractères, sous la limite de 125, et décrit la scène (dépôt franchi, retours distincts, anomalie isolée, décision humaine) plutôt qu'un mot-clé ou une promesse marketing.",
+          "Le même texte alt est répété à l'identique entre paquet-revue.json, prompt.json, image.json, og:image:alt et l'attribut alt du HTML rendu, sans dérive entre les surfaces."
+        ]
+      }
+    },
+    "directionArt": 18,
+    "semanticRelevance": 22
+  },
+  "sources": {
+    "reviewedBy": "relecteur-metier-ia-memlia",
+    "observations": {
+      "net-entreprises-crm": "Net-entreprises (net-entreprises.fr), plateforme officielle du GIP-MDS opérateur de la DSN, source tier-1 pour la définition du compte rendu métier et le mécanisme de contrôle de cohérence par organisme.",
+      "net-entreprises-retours": "Net-entreprises (net-entreprises.fr), même plateforme officielle tier-1, source de la distinction entre certificat de conformité, bilan d'anomalies et contrôle bloquant ou non bloquant après dépôt.",
+      "net-entreprises-fiabilisation": "Net-entreprises (net-entreprises.fr), tier-1, source de la procédure de fiabilisation des données (interlocuteur organisme ou éditeur, canal de correction par DSN annule et remplace).",
+      "net-entreprises-dsn-val": "Net-entreprises (net-entreprises.fr), tier-1, source de la description de l'outil d'auto-contrôle Dsn-Val utilisé avant le dépôt de la DSN."
+    }
+  },
+  "qualite": {
+    "reviewer": "relecteur-qualite-ia-memlia",
+    "score": 97,
+    "p0": [],
+    "categories": {
+      "contentQuality": {
+        "score": 28,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 25,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 15,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 15,
+        "max": 15
+      }
+    },
+    "evidence": [
+      "Cinq tableaux structurés (<thead>) organisent la comparaison des retours, le registre à dix champs, les trois situations fictives et la matrice d'automatisation, un format favorable à la lecture comme à l'extraction.",
+      "Les sept citations du paquet de revue sont vérifiées mot pour mot contre les quatre fichiers sources tier-1 (Net-entreprises), chacune rattachée à la bonne page et au bon paragraphe.",
+      "Auteur nommé, lié et biographié (Kevin Kitanga, Fondateur de Memlia) avec balisage Person/BlogPosting/Organization/BreadcrumbList dans le JSON-LD.",
+      "Le mot « à adapter », cause du FAIL de la première passe, est absent du rendu actuel ; « Memlia peut » et « module » (hors balises <script type=\"module\">) sont également absents après vérification exhaustive.",
+      "L'exemple fictif (dossier D-027, retour R-027-A, rubrique X-14, pièce P-027-08) est explicitement étiqueté « entièrement fictif, sans donnée client ni règle de paie réelle », et les trois situations complémentaires (D-031, D-044, D-052) le sont tout autant.",
+      "Une phrase de la FAQ (« le terme apparaît notamment dans la liste officielle des retours de l'administration fiscale ») avance une affirmation factuelle spécifique sans lien ni citation directe dans ce paragraphe précis, contrairement aux sept claims du paquet de revue qui sont tous sourcés.",
+      "L'image de couverture (1920x1080) décline des dérivés OG 1200x630 et hero 768 en AVIF/WebP déclarés dans image.json, avec chargement eager et fetchpriority high pour l'image LCP plutôt qu'un lazy-load pénalisant.",
+      "Sept liens internes contextuels distincts dans le corps (deux articles frères, le pilier, deux ancres de glossaire, /methode, /garanties), plus /contact et /methode dans le bloc d'appel de fin."
+    ],
+    "reservations": [
+      "Le score Lighthouse (performance, accessibilité, SEO, Core Web Vitals) n'a pas été mesuré dans cette revue ; l'appréciation technique s'appuie sur une lecture du code (preload de polices, fetchpriority sur l'image hero, formats AVIF/WebP), pas sur un audit chronométré.",
+      "La citation réelle de cette page par des moteurs IA (AI Overviews, Perplexity, ChatGPT) n'est pas mesurée ; le jugement porte sur la structure d'extraction (réponse directe, FAQ, tableaux à <thead>), pas sur une citation observée en production.",
+      "Le rendu mobile (320-768px, cibles tactiles, absence de défilement horizontal) n'a pas été vérifié visuellement dans un navigateur ; l'appréciation s'appuie sur les media queries et les unités clamp() lues dans le CSS.",
+      "Le score de lisibilité (Flesch ou équivalent français) n'a pas été calculé par un outil dédié ; la densité de certaines phrases longues à clauses multiples est une lecture qualitative, pas une mesure."
+    ],
+    "seo": [
+      "Titre de balise à 56 caractères, dans la fourchette 40-60 recommandée, distinct du H1 mais cohérent avec lui.",
+      "Meta description à 144 caractères, cohérente avec le contenu visible, sans troncature apparente ni mot-clé forcé.",
+      "URL stable, lisible et en minuscules : /blog/comprendre-les-comptes-rendus-metier-dsn.",
+      "Hiérarchie de titres propre : un seul H1, puis H2 vers H3 sans saut de niveau, y compris dans les six étapes et la FAQ.",
+      "Quatre liens externes distincts vers des pages tier-1 officielles (net-entreprises.fr), chacun cité en contexte et repris dans « Sources consultées » avec date de consultation.",
+      "Canonical et Open Graph (image 1200x630 avec largeur et hauteur déclarées, alt renseigné) cohérents avec le titre et la description de la page."
+    ],
+    "geo": [
+      "La section « Réponse directe » ouvre l'article sur une réponse autonome de 75 mots, extractible sans le reste du contexte.",
+      "Cinq questions de FAQ répondent chacune en une à trois phrases autonomes, la source étant nommée dans la réponse quand elle existe.",
+      "Chaque définition clé (CRM, bilan d'anomalies, certificat de conformité) est posée une seule fois puis réutilisée sans synonymie flottante, ce qui limite l'ambiguïté d'entité pour un moteur de réponse.",
+      "Les citations sont attribuées nommément à Net-entreprises avec lien direct vers la page officielle, un signal de vérifiabilité pour une réponse générée par IA.",
+      "Aucun schema FAQPage n'est déclaré malgré la section Questions fréquentes visible ; le guide de notation du site traite ce balisage comme optionnel et sans bonus, donc non pénalisant ici.",
+      "Le robots « noindex, follow » observé dans ce rendu est propre au harnais de prévisualisation QA (bandeau « Candidat éditorial ») et ne décrit pas le comportement de la page une fois publiée."
+    ],
+    "verdict": "Le candidat corrige réellement l'écart de la première passe (la formule « à adapter » a disparu, remplacée par des formulations qui gardent le sens) et atteint un niveau élevé sur les sept critères éditoriaux comme sur le barème qualité à 100 points, avec seulement des réserves mineures et non bloquantes."
+  }
+}

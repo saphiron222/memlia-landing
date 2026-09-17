@@ -16,7 +16,7 @@ Trois bénéfices, toujours dans cet ordre, jamais chiffrés : moins de charge r
 
 **Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils, prise entière : observation, règle, construction, recette, maintenance.**
 
-- L'ambition porte sur l'étendue (toute tâche répétitive dont la règle peut s'écrire : les soixante familles des onze pôles de `src/data/familles.ts`, de la saisie au reporting, de la relance des pièces à la DSN) et sur l'engagement (la tâche entière, livrée, maintenue ; « vous confiez une tâche, elle est prise en charge »).
+- L'ambition porte sur l'étendue (toute tâche répétitive dont la règle peut s'écrire : les soixante familles des douze pôles de `src/data/familles.ts` (le douzième, l'audit légal, est listé et non ouvert), de la saisie au reporting, de la relance des pièces à la DSN) et sur l'engagement (la tâche entière, livrée, maintenue ; « vous confiez une tâche, elle est prise en charge »).
 - L'ambition ne porte jamais sur des chiffres de gain, sur le jugement (qui reste humain) ni sur une compatibilité universelle. Formule de référence : **« Nous prenons toute la mécanique. Vous gardez tout le jugement. »**
 - Le prix se dit ainsi : **« Vous payez une tâche prise en charge, pas des sièges. »** Le devis dépend de la complexité (sources, règles, exceptions, validations) ; maintenance, support et évolutions y sont écrits.
 
@@ -28,6 +28,7 @@ Trois bénéfices, toujours dans cet ordre, jamais chiffrés : moins de charge r
 - Le mantra « sans fichier client, sans donnée de paie » répété à chaque page : il se dit une fois, au formulaire, et positivement (« Rien à envoyer : la description suffit »).
 - « nous étudions », « sans promettre », « pas par principe », « non contractuel » en réflexe défensif : on dit ce qu'on fait, on garde les réserves pour la page Garanties où elles sont une preuve.
 - « Identifier une tâche à automatiser » comme appel principal : remplacé par **« Confier une première tâche »**, qui dit la délégation.
+- Dans les articles (retiré le 17/09/2026) : « Memlia peut préparer… », « le service ne fournit pas… », « ce guide ne remplace ni… ni… ni… », « les règles proposées doivent être adaptées » en réflexe répété, et l'appel « Identifier une tâche à automatiser » vers un agenda. Les articles parlent en nous, disent ce que nous prenons en charge, et gardent une seule frontière, dite une fois (§7 bis).
 
 ## 4. Produit et modèle économique
 
@@ -65,10 +66,25 @@ Anti-personas : salarié cherchant à vérifier sa propre paie ; acheteur d'un m
 | `/garanties` | les engagements, et ce qu'on ne promet pas | garanties Memlia | Ce que nous garantissons, avant même de commencer. |
 | `/a-propos` | pourquoi Memlia existe, qui est derrière (page de marque : « memlia ») | memlia | Nous écrivons ce que votre cabinet sait faire. Puis nous le faisons tourner. |
 | `/contact` | la conversion | — | Quelle tâche vos collaborateurs refont-ils encore à la main ? |
-| `/blog`, articles | les méthodes, sourcées | requêtes du registre (`docs/strategy/site-v3/mesures/registre-requetes.json`) | par article |
+| `/blog`, articles | les méthodes, sourcées (règles au §7 bis) | requêtes du registre (`docs/strategy/site-v3/mesures/registre-requetes.json`) | par article |
 | `/glossaire` | le vocabulaire et sa frontière d'automatisation | glossaire cabinet comptable | inchangé |
 
 Les titres d'onglet gardent la requête mesurée (audit des titres du 17/09/2026) ; le H1 porte l'angle. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation dit « Parlons de votre tâche ». Tagline (pied de page, slogan JSON-LD) : « Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous. »
+
+## 7 bis. Les articles du blog
+
+Un article est une méthode publiée, pas une page de vente : il vaut par ce qu'il apprend au lecteur, et il convertit par la confiance qu'il installe. Il suit la même charte que les pages, appliquée ainsi (rejouée sur les six articles le 17/09/2026 ; tout article suivant sort de la forge avec ces règles, `docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md` §3) :
+
+- **La réponse d'abord.** Le corps ouvre sur `## Réponse directe` (40 à 80 mots) qui répond à la requête sans détour ; le résumé « En bref » et la description d'onglet disent la méthode, pas la promesse.
+- **L'angle entre par le geste.** Chaque article nomme, dans sa section « pourquoi la tâche casse à la main », la règle que le cabinet applique sans l'avoir écrite, et ce qu'il perd quand elle vit dans une seule tête. Une fois : ni slogan répété, ni paragraphe commercial au milieu de la méthode.
+- **Ce qui est nôtre est dit comme tel, sans s'excuser.** « Méthode Memlia » étiquette une convention de travail ; une réserve se formule une seule fois, comme une frontière (« ce qui reste au cabinet »), jamais comme un avertissement répété (« ne remplace pas », « à adapter », « ne constitue pas »). Les phrases « Memlia peut… », « le service ne fournit pas… » sont retirées : on dit ce que nous faisons.
+- **Nous, jamais je.** Quand Memlia parle, c'est « nous » ; le lecteur est « vous » ou « votre cabinet » ; les collaborateurs sont nommés par leur geste.
+- **Les sources se citent mot pour mot, en lien dans le corps**, chaque affirmation sensible portée par une citation exacte d'une page officielle ouverte le jour même (chaîne de la forge). Aucun chiffre de gain, aucune donnée client, aucun cas réel : le jeu fictif est nommé fictif.
+- **Chaque article tient sa place dans le maillage** : un lien vers le pilier (`/blog/automatiser-un-cabinet-comptable-la-carte-des-taches`) là où sa famille est nommée, un lien vers un article frère, un vers `/methode`, un vers `/automatisation-cabinet-comptable` ou `/garanties` dans la clôture, une ou deux ancres du glossaire. Les ancres d'accueil (`/#methode`, `/#garanties`) ne servent plus : les pages existent.
+- **La clôture porte l'ambition** : « La règle à retenir » (deux phrases) puis « Pour aller plus loin », qui dit ce que nous prenons en charge pour cette tâche précise, entière, dans les outils du cabinet, et ce que le cabinet garde.
+- **L'appel de fin d'article** (bloc « Et dans votre cabinet ? ») : le libellé est **« Confier cette tâche »** (même verbe que l'appel principal, au singulier de l'article lu ; le pilier, qui ne traite pas une tâche unique, garde « Confier une première tâche »), la destination `/contact`, et le texte d'accompagnement dit en deux ou trois phrases ce que nous faisons de cette tâche (écrire la règle dans vos mots, l'automatiser dans vos outils, la faire recetter par vos équipes), ce que vous gardez (la décision), et qu'il n'y a rien à envoyer. Jamais une description de ce que le lecteur devrait nous fournir.
+- **Interdits propres aux articles** : tiret cadratin, « nous constatons », « module », « complément » au sens catalogue, superlatif, mot de processus (revue métier, fact-check, non attesté), formule défensive en tête d'article.
+- **Une republication est datée** : `updatedAt` dans la recette, `dateMiseAJour` dans le frontmatter ; la date de publication ne bouge jamais.
 
 ## 8. Voix
 
@@ -93,5 +109,6 @@ Une action principale : confier une première tâche, sur `/contact` (formulaire
 ## 12. Sources
 
 - Décision de Kevin du 17/09/2026 : l'angle « savoir-faire que personne n'a écrit », l'ambition sur la proposition de valeur, le retrait de tout ce qui dessert.
+- Décision de Kevin du 17/09/2026 (soir) : « fais pareil pour les articles du blog » ; les six articles réécrits selon le §7 bis et republiés par la forge, les trois articles antérieurs à la v3 compris.
 - v2 du 15/09/2026 (carte t_630c4a13), coffre 10-memlia/00-socle.md, marketing/positionnement-memlia-automatisation-ia.md, marketing/seo/20-voix-client-vocabulaire.md.
 - `src/data/familles.ts`, `src/data/site.mjs`, `src/data/pages-v2.mjs`, `src/data/faq.ts`, `src/data/schema.mjs`, `public/llms.txt`, et `docs/strategy/site-v3/` (stratégie, crons, journal).

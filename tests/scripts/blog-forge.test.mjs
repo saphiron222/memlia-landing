@@ -190,3 +190,11 @@ test('la forge refuse un claim dont la citation ne recouvre pas l’affirmation'
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+test('la recette porte sa date de mise à jour jusqu’au frontmatter, et son absence ne l’invente pas', () => {
+  const sans = frontmatter(construireManifest(recette(), 'publie', jour, null));
+  assert.ok(!/^dateMiseAJour:/m.test(sans), 'aucune date de mise à jour ne doit apparaître sans updatedAt');
+  const manifest = construireManifest({ ...recette(), updatedAt: '2026-09-17' }, 'publie', jour, null);
+  assert.equal(manifest.updatedAt, '2026-09-17');
+  assert.match(frontmatter(manifest), /^datePublication: [^\n]+\ndateMiseAJour: 2026-09-17$/m);
+});

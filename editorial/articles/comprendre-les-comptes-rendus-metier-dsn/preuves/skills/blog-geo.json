@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
+  "kind": "skill",
+  "status": "PASS",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "c7055d564b5249a1f8b2399a58f7f4db5827f7927e4a49e06abbff5b5e31be91",
+  "manifestSha256": "23f90957b7523de8047c1bb2b304b3ced0e26778ddb5d344bfc2881739bea513",
+  "observations": [
+    "Réponse directe en tête (76 mots au premier paragraphe) ; définitions extractibles dans le corps.",
+    "La section « Réponse directe » ouvre l'article sur une réponse autonome de 75 mots, extractible sans le reste du contexte.",
+    "Cinq questions de FAQ répondent chacune en une à trois phrases autonomes, la source étant nommée dans la réponse quand elle existe.",
+    "Chaque définition clé (CRM, bilan d'anomalies, certificat de conformité) est posée une seule fois puis réutilisée sans synonymie flottante, ce qui limite l'ambiguïté d'entité pour un moteur de réponse.",
+    "Les citations sont attribuées nommément à Net-entreprises avec lien direct vers la page officielle, un signal de vérifiabilité pour une réponse générée par IA.",
+    "Aucun schema FAQPage n'est déclaré malgré la section Questions fréquentes visible ; le guide de notation du site traite ce balisage comme optionnel et sans bonus, donc non pénalisant ici.",
+    "Le robots « noindex, follow » observé dans ce rendu est propre au harnais de prévisualisation QA (bandeau « Candidat éditorial ») et ne décrit pas le comportement de la page une fois publiée."
+  ],
+  "skill": "blog-geo"
+}

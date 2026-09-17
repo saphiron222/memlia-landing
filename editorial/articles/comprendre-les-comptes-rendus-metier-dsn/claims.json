@@ -1,0 +1,836 @@
+{
+  "version": 1,
+  "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
+  "articleSha256": "c7055d564b5249a1f8b2399a58f7f4db5827f7927e4a49e06abbff5b5e31be91",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-cb8ec15acc07",
+      "text": "Un compte rendu métier DSN ne donne pas un verdict général sur toute la paie. Il rapporte le résultat d’un contrôle effectué par un organisme destinataire sur les données qu’il a reçues. Pour agir sans surinterpréter le message, identifiez le retour, son émetteur, la déclaration et la population visées ; lisez ensuite son statut dans la documentation associée, rapprochez l’écart de la donnée de paie concernée, puis tracez la décision et le résultat du contrôle suivant.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-196593b8c2c9",
+      "text": "Ce guide traite exclusivement de l’interprétation et du suivi après dépôt. Pour préparer et tester les bulletins et le fichier avant transmission, utilisez la méthode de contrôle avant la DSN. Les deux tâches se suivent, mais ne répondent pas à la même question : avant le dépôt, on éprouve un candidat ; après le dépôt, on interprète les retours réellement émis.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4647cd012b4b",
+      "text": "Qu’est-ce qu’un compte rendu métier DSN, et pourquoi sa lecture casse-t-elle à la main ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6bee4d8fd6ce",
+      "text": "Un compte rendu métier, ou CRM, est le retour d’un organisme destinataire de la DSN après analyse des données reçues. Un bilan d’anomalies rend compte des contrôles effectués sur la déclaration elle-même. Un certificat de conformité atteste que la transmission a atteint le niveau de conformité indiqué par le certificat, et rien de plus. Ces trois documents ne prouvent pas la même chose, et c’est toute la difficulté.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-23db2433190f",
+      "text": "Net-entreprises définit le CRM comme « un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée ». La page officielle sur les comptes rendus métier DSN précise aussi que « chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises » avant de mettre son retour à disposition sur le tableau de bord.",
+      "claimIds": [
+        "claim-unit-23db2433190f-1",
+        "claim-unit-23db2433190f-2"
+      ]
+    },
+    {
+      "id": "unit-2610f83befa8",
+      "text": "Un CRM se lit donc comme un message situé : qui contrôle quoi, sur quelle déclaration, selon quelle règle et avec quelle action demandée ? Il ne constitue pas, à lui seul, une certification du bulletin, du dossier ou de toutes les obligations du déclarant.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-14a8f6522de5",
+      "text": "Le vocabulaire n’est pas uniforme. La source officielle recense, selon les organismes, des synthèses, notifications, bilans de traitement, bilans d’identification, contrôles inter-déclarations et CRM nominatif ou financier. Une étiquette proche ne permet pas de transposer la portée d’un retour à un autre. Le document reçu et sa notice restent la référence.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-22895ea47912",
+      "text": "À la main, cette lecture casse toujours au même endroit. Le gestionnaire qui suit le dossier depuis des années sait quel retour de quel organisme appelle un correctif immédiat, lequel se justifie par une pièce et lequel se classe. Cette règle vit dans sa tête, jamais dans le dossier : un collègue qui reprend le portefeuille recommence à zéro, un retour lu trop vite devient une correction inutile, un retour lu trop tard devient une régularisation. La méthode ci-dessous, une méthode Memlia, écrit cette règle en six étapes et un registre, pour qu’elle appartienne au cabinet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9a3459dfd811",
+      "text": "Pourquoi un dépôt accepté ne suffit-il pas ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7608066ad21a",
+      "text": "Le dépôt et l’analyse métier forment des étages différents. La page Net-entreprises consacrée aux retours après dépôt distingue l’accusé d’enregistrement électronique ou l’avis de rejet, le certificat de conformité, le bilan d’anomalies, puis les CRM des organismes. Elle borne le certificat en une phrase : « le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN », et demande aussitôt de vérifier les comptes rendus métier et retours d’informations mis à disposition par les organismes. Autrement dit, conforme à la transmission n’est pas synonyme de paie juste.",
+      "claimIds": [
+        "claim-unit-7608066ad21a-1"
+      ]
+    },
+    {
+      "id": "unit-faf3c7a9923e",
+      "text": "La même page distingue le contrôle bloquant, où la DSN est rejetée et à réémettre, du contrôle non bloquant, où « votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires ». Un dépôt accepté peut donc encore porter des écarts à traiter.",
+      "claimIds": [
+        "claim-unit-faf3c7a9923e-1"
+      ]
+    },
+    {
+      "id": "unit-dbe563a5b55a",
+      "text": "Dans le tableau, la définition des retours vient de cette source ; la colonne « Premier geste » est une méthode Memlia ; la consigne effectivement reçue prime toujours.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1eb75b0f5629",
+      "text": "| Retour | Ce qu’il permet de constater | Premier geste | Ce qu’il ne faut pas en déduire | | --- | --- | --- | --- | | AEE, accusé d’enregistrement électronique | Le dépôt est enregistré et les contrôles suivants peuvent être effectués. | Conserver la référence du dépôt et poursuivre la lecture des retours. | Que la déclaration a franchi tous les contrôles. | | ARE, avis de rejet | Le dépôt ne remplit pas les conditions techniques d’acceptation décrites par le retour. | Lire la cause technique, corriger le fichier puis reprendre la transmission selon la consigne. | La cause métier d’un autre écart éventuel. | | CCO, certificat de conformité | La transmission a atteint le niveau de conformité indiqué par le certificat. | Archiver le certificat, puis vérifier les bilans et CRM. | Que toutes les données de paie sont justes ou qu’aucun organisme ne demandera de correction. | | BAN, bilan d’anomalies | Un ou plusieurs contrôles ont relevé des anomalies dans la déclaration. | Ouvrir chaque contrôle et reprendre sa qualification officielle. | Que chaque écart a la même gravité ou la même action. | | CRM d’un organisme | L’organisme communique le résultat de ses contrôles sur les données reçues. | Identifier émetteur, déclaration, population, règle et action avant toute correction. | Qu’un vocabulaire unique, une échéance unique ou une correction unique vaut pour tous les CRM. |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-70190a908d2e",
+      "text": "Les sigles de ce tableau sont ceux de la documentation Net-entreprises. L’intitulé affiché peut varier selon la version de norme, le portail, l’organisme ou le logiciel. La portée à retenir est celle décrite dans le retour effectivement reçu, pas celle que suggère une étiquette familière.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-59ed96d51155",
+      "text": "La frontière entre BAN et CRM dépend du périmètre, du format et de l’organisme décrits dans le retour reçu. Le tableau oriente la lecture ; il ne remplace ni le document ni sa notice.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d04369436357",
+      "text": "Contrôle de structure ou contrôle de cohérence : que regarder ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8527a10b74f8",
+      "text": "La première question est la couche du contrôle. Un rejet technique et un écart métier ne se traitent pas avec les mêmes preuves.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-29991bc0bacc",
+      "text": "- Structure et norme d’échange. Le fichier respecte la forme attendue pour être reçu et exploité. Net-entreprises décrit Dsn-Val ainsi : l’outil « permet de tester votre fichier DSN avant de le déposer », au regard du cahier technique et du journal de maintenance de la norme. Ce test prépare la transmission ; il ne remplace pas l’analyse des organismes après réception. - Cohérence métier. L’organisme applique ses contrôles aux données qu’il reçoit et produit un retour selon son périmètre. La question devient alors : quelle donnée, quelle période, quelle population et quelle règle ont déclenché le message ?",
+      "claimIds": [
+        "claim-unit-29991bc0bacc-1"
+      ]
+    },
+    {
+      "id": "unit-3790618b4f88",
+      "text": "Ces deux expressions servent à orienter la lecture, pas à imposer une taxonomie universelle à tous les organismes. Le statut bloquant ou non bloquant vient du retour ou de sa documentation. Il ne se devine pas à partir d’une couleur, d’un code mémorisé ou de la seule présence du mot « anomalie ».",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7de24c0fab52",
+      "text": "Comment lire un CRM en six étapes ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b2ebea069bd1",
+      "text": "La séquence suivante est une méthode Memlia. Elle organise les preuves et les décisions ; elle ne décide pas à la place du gestionnaire.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-18bab0403613",
+      "text": "1. Identifier l’objet exact du retour",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5d08a11f4ac5",
+      "text": "Relevez l’organisme émetteur, le type ou code du retour, la déclaration concernée, le SIRET ou identifiant technique autorisé, la période, la date de mise à disposition et, si elle apparaît, la population visée. Ne commencez pas par corriger une donnée tant que le retour n’est pas rattaché au bon dépôt.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9c1aab0093ee",
+      "text": "Dans un portefeuille, deux déclarations proches peuvent produire des messages différents. Un titre générique tel que CRM DSN ne suffit pas à relier la preuve au fichier ou à la période.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8b1c82bea318",
+      "text": "2. Lire le statut dans la source du retour",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a7f64fe3361a",
+      "text": "Cherchez le libellé exact, la règle de contrôle, le niveau indiqué et l’action demandée. Si la notice classe l’écart comme bloquant, informatif, à corriger ou à justifier, conservez cette qualification. Si elle ne le fait pas, notez qualification à confirmer plutôt que d’inventer une gravité.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fe38de788788",
+      "text": "La page de fiabilisation des données DSN indique qu’en cas d’incompréhension le déclarant peut « contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel ». Cette séparation évite de demander à l’un de trancher une question qui relève de l’autre.",
+      "claimIds": [
+        "claim-unit-fe38de788788-1"
+      ]
+    },
+    {
+      "id": "unit-efc447d6338c",
+      "text": "3. Localiser la donnée et la population concernées",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4ec1e7ed300c",
+      "text": "Rattachez le contrôle à la rubrique, au bloc, au salarié ou à l’agrégat que le retour désigne. Vérifiez ensuite la période d’afférence et la déclaration source. Un CRM nominatif, par exemple, peut viser des éléments individuels ; un retour financier peut porter une autre lecture. Le mot CRM ne suffit pas à connaître le niveau de détail.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-820817f750a8",
+      "text": "Le tableau de suivi conserve un identifiant de dossier et une référence de retour, tandis que le détail nominatif reste dans le système habilité. Pour structurer cette vue sans classement individuel, voyez le modèle de suivi de production sociale.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c88b7ddd4544",
+      "text": "4. Rapprocher le retour de la paie et de la preuve",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8a646d0c2eee",
+      "text": "Comparez la donnée déclarée avec le bulletin, l’événement, la pièce ou le paramétrage pertinent. Le but n’est pas de faire disparaître l’alerte, mais d’expliquer l’écart avec une preuve datée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-82b5e987b997",
+      "text": "À ce stade, utilisez trois issues internes simples :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f8b198553048",
+      "text": "- expliqué : la donnée et sa cause sont retrouvées, et aucune correction n’est décidée ; - à corriger : la personne habilitée a confirmé la correction à effectuer dans l’outil de paie ; - à arbitrer : la règle, la preuve ou l’applicabilité ne permet pas encore de décider.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-668312629c82",
+      "text": "Ces états sont des conventions de travail. Ils ne remplacent jamais les statuts du CRM.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-78ba35ec7d1f",
+      "text": "5. Documenter la décision et le canal de correction",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2155f4a67ad0",
+      "text": "Conservez au minimum : le retour source, la donnée examinée, la preuve consultée, la qualification officielle lorsqu’elle existe, la décision, son auteur, sa date et le canal prévu. Une correction en paie, une nouvelle transmission, une correction ultérieure ou une opposition motivée ne sont pas interchangeables.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d922dfd38c11",
+      "text": "La même page de fiabilisation précise le canal usuel : une erreur signalée se corrige en paie, en transmettant une DSN « annule et remplace » « avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant ». Cette règle vaut pour la DSN mensuelle ; elle ne s’étend pas d’office aux signalements d’événement ni à tous les retours. Avant toute action, lisez la consigne du CRM et vérifiez le type de déclaration, le calendrier et la procédure de l’organisme concerné.",
+      "claimIds": [
+        "claim-unit-d922dfd38c11-1"
+      ]
+    },
+    {
+      "id": "unit-25537c379e1e",
+      "text": "6. Contrôler le retour suivant avant de fermer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c3cae86748ec",
+      "text": "Après correction, régénérez les éléments concernés, rejouez les contrôles applicables et reliez le nouveau résultat à la décision. Ne clôturez pas sur la preuve d’un ancien fichier. Si le retour suivant maintient l’écart, ouvrez un nouvel arbitrage au lieu d’écraser l’historique.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3dc1fc29c211",
+      "text": "La boucle est donc : retour identifié → portée comprise → donnée rapprochée → décision tracée → correction autorisée → résultat suivant vérifié.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e2c0bbb59e8b",
+      "text": "Exemple fictif : un CRM nominatif à qualifier",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2b9bcb53f1d1",
+      "text": "> Jeu d’essai entièrement fictif, sans donnée client ni règle de paie réelle. Le dossier D-027, période 2026-08, reçoit le retour R-027-A. L’émetteur et la notice associent ce retour à une donnée individuelle. Le contrôle indique un écart, mais l’exemple ne lui attribue volontairement ni gravité ni délai réels.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-cbb516712c6c",
+      "text": "Le gestionnaire suit la séquence :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8fd0b29f6c0b",
+      "text": "1. il rattache R-027-A au dépôt et à la période concernés ; 2. il lit le libellé et l’action dans la notice applicable ; 3. il localise la rubrique fictive X-14 et la population visée ; 4. il compare la donnée déclarée à la pièce fictive P-027-08 ; 5. si les éléments concordent, il documente pourquoi aucune correction n’est retenue ; s’ils divergent, il passe l’état interne à à corriger ou à arbitrer ; 6. après la décision, il conserve le résultat du contrôle suivant sous une nouvelle référence.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f9c695309155",
+      "text": "Ce scénario teste la traçabilité. Il ne fournit aucune règle permettant de conclure sur une vraie anomalie DSN.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-51f34b3962d9",
+      "text": "Trois autres situations fictives à distinguer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-971b0a07da9d",
+      "text": "| Situation fictive | Ce que le registre doit empêcher | Action de méthode | | --- | --- | --- | | D-031 reçoit un CCO et un BAN | Clore sur le seul certificat et oublier le bilan. | Ouvrir les deux preuves, puis traiter le BAN selon sa notice. | | D-044 reçoit un message sans action explicite | Inventer une gravité à partir de sa couleur ou de son code. | Conserver qualification à confirmer et rechercher la documentation de l’émetteur. | | D-052 reçoit un retour qui impose un canal particulier | Appliquer par habitude une correction dans la DSN mensuelle suivante. | Vérifier le type de déclaration, le moment et les instructions du retour avant décision. |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7123287e0ccc",
+      "text": "Ces cas sont synthétiques. Ils ne reproduisent aucun CRM réel et ne fixent aucune conséquence. Ils servent à tester trois refus attendus : clôture prématurée, qualification inventée et canal supposé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-84315349b97f",
+      "text": "Quel registre tenir pour ne perdre aucun retour ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3a22d2af11a6",
+      "text": "Un registre utile sépare le message reçu de la décision humaine. La structure ci-dessous est une proposition Memlia ; le cabinet en fixe les droits d’accès et l’outil.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ef3fd38ec4a3",
+      "text": "| Champ | Exemple fictif | Rôle | | --- | --- | --- | | idretour | R-027-A | Relier sans ambiguïté la preuve reçue. | | emetteur | ORGANISME-A | Rechercher la bonne documentation. | | typeretour | CRM-N | Conserver le libellé ou code source. | | periode | 2026-08 | Éviter un rapprochement sur le mauvais mois. | | population | P-03 | Borner les personnes ou agrégats concernés. | | statutsource | à confirmer | Ne pas inventer une qualification absente. | | donneevisee | X-14 | Relier le retour à la paie ou au paramétrage. | | decision | à arbitrer | Rendre l’exception actionnable. | | preuve | P-027-08 | Retrouver l’élément consulté. | | controlesuivant | R-027-B | Prouver le résultat après action. |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4773dce1861a",
+      "text": "Dans la vue agrégée, comptez les dossiers ou retours par état et par échéance. N’affichez pas par défaut un classement des gestionnaires. L’affectation sert à distribuer le travail ; elle ne justifie pas une mesure individuelle continue.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1eda7b20b4bd",
+      "text": "Quand un CRM contient des données nominatives, le registre de pilotage ne devient pas une copie générale du retour. Limitez les champs au strict nécessaire, réservez l’accès aux personnes habilitées et renvoyez vers la pièce source sécurisée plutôt que de recopier des données individuelles dans une vue partagée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-462114bfbd6f",
+      "text": "Ce qui s’automatise, ce qui attend une validation, ce qui reste humain",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5cceef7cf1bd",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | | --- | --- | --- | | La collecte des retours accessibles dans les outils autorisés, et leur rattachement au dépôt et à la période | La qualification d’un retour dont la notice ne fixe pas le niveau | L’interprétation d’un libellé inconnu | | Le rapprochement d’un retour avec la donnée de paie visée, écart présenté avec sa preuve | Le passage d’un retour à l’état expliqué ou à corriger | Le choix du canal et du moment de la correction | | La file des retours sans décision, des preuves manquantes et des contrôles suivants absents | La clôture d’un retour dont le contrôle suivant confirme l’action | Le dépôt d’une nouvelle déclaration |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-aaf953c7c49b",
+      "text": "Quand la règle manque ou que deux sources se contredisent, le traitement cesse et présente les éléments à la personne responsable. C’est ce refus qui rend l’automatisation fiable : elle ne déduit jamais seule qu’une paie est juste, ne transforme pas un libellé inconnu en anomalie bloquante et ne dépose rien.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a24774698aad",
+      "text": "Les erreurs de lecture à éviter",
+      "claimIds": []
+    },
+    {
+      "id": "unit-13a5647f5324",
+      "text": "- Clore au certificat. Le certificat porte sur la transmission selon son périmètre. D’autres contrôles et CRM peuvent encore demander une action. - Traiter tous les CRM comme un même document. L’émetteur, le format, la population, la règle et l’action varient. - Deviner la gravité. Une couleur ou un code isolé ne remplace pas la qualification fournie par la source applicable. - Corriger sans revenir à la paie. Le CRM signale un résultat de contrôle ; la décision exige le rapprochement avec la donnée et sa preuve. - Réutiliser une échéance mémorisée. Le type de retour et le moment déterminent les options encore ouvertes. Relisez la consigne applicable au cas. - Écraser le premier retour. Gardez le lien entre la décision, le fichier corrigé et le contrôle suivant.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-bb14cef82b82",
+      "text": "Un certificat de conformité garantit-il que la paie est juste ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-702692d8488b",
+      "text": "Non. Net-entreprises indique que le certificat libère le déclarant de ses obligations vis-à-vis de la transmission, et demande de vérifier les comptes rendus métier et retours d’informations mis à disposition par les organismes. Il faut donc encore lire les bilans et les CRM.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-defb7f29283a",
+      "text": "Quelle différence entre un bilan d’anomalies et un CRM ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-31999aab2d5c",
+      "text": "Le bilan d’anomalies rend compte d’anomalies issues des contrôles de la déclaration au niveau décrit par Net-entreprises. Le CRM est le retour d’un organisme destinataire après intégration et analyse des données. Le document reçu et sa notice fixent la portée exacte.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9d539a0389f1",
+      "text": "Un CRM nominatif concerne-t-il toujours la même administration ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-da9239b8cebd",
+      "text": "Le terme apparaît notamment dans la liste officielle des retours de l’administration fiscale, mais la portée d’un document ne se déduit pas de son seul nom. Vérifiez l’émetteur, le code, la période et la notice associés au retour réellement reçu.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-979a11c84832",
+      "text": "Faut-il corriger d’office toute anomalie ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9a11f97e2ecc",
+      "text": "Non. Il faut d’abord comprendre la règle, localiser la donnée, vérifier la preuve et faire décider la personne habilitée. L’automatisation prépare ce rapprochement ; elle ne remplace pas l’interprétation métier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-67d55857dead",
+      "text": "Quand le traitement d’un CRM est-il terminé ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ccf5417e09d2",
+      "text": "Selon la méthode proposée ici, lorsque le retour est rattaché au bon dépôt, sa portée est documentée, la décision est tracée et le résultat suivant confirme l’action ou ouvre explicitement un nouvel arbitrage.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c5deb2dba3df",
+      "text": "Ne cherchez pas un voyant unique après le dépôt. Lisez chaque retour comme une preuve située, séparez le statut porté par la source de votre état de traitement interne, puis fermez la boucle sur le résultat suivant, pas sur la seule correction effectuée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a3c99101cd19",
+      "text": "La lecture des retours après dépôt est l’une des sept familles du pôle paie et social de la carte des tâches automatisables d’un cabinet. Elle suit le contrôle des bulletins avant la DSN et alimente le suivi de production sociale ; le compte rendu métier et la DSN « annule et remplace » sont définis au glossaire. Nous prenons cette tâche entière : nous écrivons la règle de lecture de votre cabinet dans vos mots, organisme par organisme, nous automatisons la collecte des retours et leur rapprochement avec la paie dans les outils que votre pôle social utilise déjà, vos gestionnaires la recettent sur des cas fictifs puis sur vos dossiers, et nous la maintenons. Vous gardez l’interprétation, la correction et le dépôt. C’est la méthode, et ce sont nos engagements : la mécanique rassemble et rapproche, votre équipe décide.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-23db2433190f-1",
+      "unitId": "unit-23db2433190f",
+      "claim": "un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-crm"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-crm": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
+      },
+      "checkedAt": "2026-09-17",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-17",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-crm",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+            "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
+            "context": "            Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.         </a>",
+            "contextSha256": "4fcba10565e40fd4346871b2454d6c3db8e75a4b843366395b6aa8ddc454fc91",
+            "citation": {
+              "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
+              "sha256": "ef509c5e2bb80ff3b9aebd039458d169e786ca17dbb00478b7c5774d8192c754",
+              "sourceContentSha256": "a5711aa7eb19791ace5fe4ef5eb138e95d8ab2edaf1e8ba5573e4d9f0acc4ed2",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+                "checkedAt": "2026-09-17",
+                "title": "Les comptes rendus métiers DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 156,
+                  "endLine": 156
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "rapport",
+                "permettant",
+                "organisme",
+                "administration",
+                "concernee",
+                "retour",
+                "declarants",
+                "reception",
+                "leur",
+                "declaration",
+                "lorsqu",
+                "erreur",
+                "suspicion",
+                "detectee"
+              ],
+              "reasoning": "La citation, relevée à la ligne 156 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (rapport, permettant, organisme, administration, concernee, retour, declarants, reception, leur, declaration, lorsqu, erreur, suspicion, detectee) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Définition officielle du compte rendu métier, citée mot pour mot depuis Net-entreprises.",
+            "checkedAt": "2026-09-17"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-23db2433190f-2",
+      "unitId": "unit-23db2433190f",
+      "claim": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-crm"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-crm": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations"
+      },
+      "checkedAt": "2026-09-17",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-17",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-crm",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+            "excerpt": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations",
+            "context": "<p>A réception des données de la DSN, chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations afin d&rsquo;en garantir la fiabilité.</p>",
+            "contextSha256": "bb5479513aef567c0ee1811565e087c642904e60f550f4f97c0f0212095a2966",
+            "citation": {
+              "text": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations",
+              "sha256": "9025f56c250f637d165f2b9a2d58120108f667fe3d692f91c0760da2769b823c",
+              "sourceContentSha256": "a5711aa7eb19791ace5fe4ef5eb138e95d8ab2edaf1e8ba5573e4d9f0acc4ed2",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+                "checkedAt": "2026-09-17",
+                "title": "Les comptes rendus métiers DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 990,
+                  "endLine": 990
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "chaque",
+                "organisme",
+                "integre",
+                "elements",
+                "transmis",
+                "systeme",
+                "verifie",
+                "coherence",
+                "donnees",
+                "transmises"
+              ],
+              "reasoning": "La citation, relevée à la ligne 990 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (chaque, organisme, integre, elements, transmis, systeme, verifie, coherence, donnees, transmises) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Le traitement des données par chaque organisme avant la mise à disposition du CRM, cité mot pour mot.",
+            "checkedAt": "2026-09-17"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-7608066ad21a-1",
+      "unitId": "unit-7608066ad21a",
+      "claim": "le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-retours"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-retours": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN"
+      },
+      "checkedAt": "2026-09-17",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-17",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-retours",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+            "excerpt": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN",
+            "context": "<p><strong>Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN</strong>. Vous devez impérativement vérifier les comptes rendus métier et retours d’informations mis à disposition par vos organismes.</p>",
+            "contextSha256": "fc6b3654789c6d62b4589d15a103f99cfc0c5752342305058f411510bb681271",
+            "citation": {
+              "text": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN",
+              "sha256": "a83fa12f2c9ef77adba16046bafed7c7a1a525fd36f923c4967aa6fbf55736ba",
+              "sourceContentSha256": "a8e5da0e0f225418f868c33bf5615360e20f82e6820a5c56e799f301dd3e2200",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+                "checkedAt": "2026-09-17",
+                "title": "Les retours d’informations suite au dépôt de votre DSN ou signalement d’événement",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 999,
+                  "endLine": 999
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "certificat",
+                "conformite",
+                "vous",
+                "libere",
+                "obligations",
+                "declaratives",
+                "transmission"
+              ],
+              "reasoning": "La citation, relevée à la ligne 999 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (certificat, conformite, vous, libere, obligations, declaratives, transmission) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Portée du certificat de conformité, limitée à la transmission, formulée par Net-entreprises.",
+            "checkedAt": "2026-09-17"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-faf3c7a9923e-1",
+      "unitId": "unit-faf3c7a9923e",
+      "claim": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-retours"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-retours": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires"
+      },
+      "checkedAt": "2026-09-17",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-17",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-retours",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+            "excerpt": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires",
+            "context": "<li><strong>Contrôle non bloquant</strong> : votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires.</li>",
+            "contextSha256": "cc00934bb6d57ac521d2ec80679a24cf2d514b3e040426dcdb0fd226f3ee0281",
+            "citation": {
+              "text": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires",
+              "sha256": "f10987711b83d2fd6cbc7c2d4d2f8bb0a4992a9712f9df537aa77e2be69799c5",
+              "sourceContentSha256": "a8e5da0e0f225418f868c33bf5615360e20f82e6820a5c56e799f301dd3e2200",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+                "checkedAt": "2026-09-17",
+                "title": "Les retours d’informations suite au dépôt de votre DSN ou signalement d’événement",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1010,
+                  "endLine": 1010
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "acceptee",
+                "ecarts",
+                "potentiellement",
+                "corriger",
+                "prise",
+                "compte",
+                "correcte",
+                "organismes",
+                "administrations",
+                "destinataires"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1010 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (acceptee, ecarts, potentiellement, corriger, prise, compte, correcte, organismes, administrations, destinataires) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Définition du contrôle non bloquant : une DSN acceptée peut encore porter des écarts à corriger.",
+            "checkedAt": "2026-09-17"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-29991bc0bacc-1",
+      "unitId": "unit-29991bc0bacc",
+      "claim": "permet de tester votre fichier DSN avant de le déposer",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-dsn-val"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-dsn-val": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer."
+      },
+      "checkedAt": "2026-09-17",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-17",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-dsn-val",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+            "excerpt": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
+            "context": "<p>L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.</p>",
+            "contextSha256": "f566bbef2d076729f66f7a714d01a4b3e140a318d0d6bfd2cd8680c456501dd2",
+            "citation": {
+              "text": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
+              "sha256": "893f99eabd891f24099976f4a6929fa77d2c407d17fc2218d8b85d1d198d7065",
+              "sourceContentSha256": "f6d761e89724550a8b9fd454dabbcd3d218de1486b79a191a243ed502d113608",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+                "checkedAt": "2026-09-17",
+                "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1011,
+                  "endLine": 1011
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "permet",
+                "tester",
+                "fichier",
+                "avant",
+                "deposer"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1011 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (permet, tester, fichier, avant, deposer) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Rôle de Dsn-Val, outil d’auto-contrôle du fichier avant dépôt, cité depuis Net-entreprises.",
+            "checkedAt": "2026-09-17"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-fe38de788788-1",
+      "unitId": "unit-fe38de788788",
+      "claim": "contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-fiabilisation"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-fiabilisation": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel."
+      },
+      "checkedAt": "2026-09-17",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-17",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-fiabilisation",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+            "excerpt": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
+            "context": "<li>En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.</li>",
+            "contextSha256": "019c8fcb678b79348973b4e1ab6e07485c31be7cf6dbe3723f06eead6c35e3b1",
+            "citation": {
+              "text": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
+              "sha256": "bb9fec5b0347c9d1d02e0020a766c08ffbaa4c0a202f3e6d07880bcce5331631",
+              "sourceContentSha256": "566e46c188936cce4a352d71815858862b8a47c1497e94fee83d1ab1524669fa",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+                "checkedAt": "2026-09-17",
+                "title": "La fiabilisation des données de la DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1028,
+                  "endLine": 1028
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "contacter",
+                "organisme",
+                "comprendre",
+                "retour",
+                "metier",
+                "editeur",
+                "accompagnement",
+                "usage",
+                "logiciel"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1028 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (contacter, organisme, comprendre, retour, metier, editeur, accompagnement, usage, logiciel) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Répartition organisme / éditeur recommandée par Net-entreprises.",
+            "checkedAt": "2026-09-17"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-d922dfd38c11-1",
+      "unitId": "unit-d922dfd38c11",
+      "claim": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-fiabilisation"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-fiabilisation": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant."
+      },
+      "checkedAt": "2026-09-17",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-17",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-fiabilisation",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+            "excerpt": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
+            "context": "<li>En corrigeant <u>au plus tôt</u> les erreurs signalées en réalisant la modification en paie et en transmettant une DSN « annule et remplace » avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.</li>",
+            "contextSha256": "263996c2fc19df2c9309d3c238f0176c28b48625266d7311be2c8fcc65d64545",
+            "citation": {
+              "text": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
+              "sha256": "0a60eada4f445fa37d853caa0d214039ff76e44db4b0063797cd0a1c7815f3ec",
+              "sourceContentSha256": "566e46c188936cce4a352d71815858862b8a47c1497e94fee83d1ab1524669fa",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+                "checkedAt": "2026-09-17",
+                "title": "La fiabilisation des données de la DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1031,
+                  "endLine": 1031
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "avant",
+                "minuit",
+                "veille",
+                "echeance",
+                "cela",
+                "encore",
+                "possible",
+                "echeant",
+                "correction",
+                "pourra",
+                "realisee",
+                "mois",
+                "suivant"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1031 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (avant, minuit, veille, echeance, cela, encore, possible, echeant, correction, pourra, realisee, mois, suivant) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Fenêtre de la DSN « annule et remplace » et report au mois suivant, cités mot pour mot.",
+            "checkedAt": "2026-09-17"
+          }
+        ]
+      }
+    }
+  ]
+}

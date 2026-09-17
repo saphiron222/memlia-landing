@@ -111,12 +111,12 @@
     },
     {
       "skill": "blog-rewrite",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "« Automatiser un cabinet comptable : la carte des tâches » est une création, pas une réécriture."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-rewrite.json",
+      "checkedAt": "2026-09-17",
+      "justification": null
     },
     {
       "skill": "blog-factcheck",

@@ -1,0 +1,192 @@
+{
+  "editorial": {
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Le corps répond dès l’ouverture par un bloc « Réponse directe » de 78 mots qui fixe l’unité dossier × période × étape, puis livre un modèle actionnable complet (dictionnaire de 11 colonnes, cycle à 10 états, matrice de transition à 4 cas, jeu d’essai de 5 dossiers avec recette en 5 étapes) qui correspond exactement à la tâche déclarée « structurer un classeur de suivi existant » et à l’intent « executer » de paquet-revue.json.",
+          "Le rôle visé (paie-responsables-sociaux) est servi par un vocabulaire et des exemples de son métier (DSN, bulletins, écarts, retours) et par une FAQ à 4 questions qui couvre des objections opérationnelles réelles : colonnes indispensables, conservation du nom du gestionnaire, limites de la protection de feuille, nécessité d’un logiciel dédié."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Hiérarchie de titres sans saut sur le rendu : un seul h1, des h2 de section et des h3 imbriqués uniquement sous leur h2 parent (ex. « Pourquoi utiliser une table Excel structurée ? » sous « Le dictionnaire de colonnes »), avec 3 tableaux à <thead> et une liste numérotée pour la recette, un format propice aux featured snippets et aux « People also ask ».",
+          "Le titre d’onglet (60 caractères, « Tableau de bord paie Excel : suivre sans surveiller | Memlia ») et la meta description (142 caractères) sont distincts du h1 mais restent cohérents avec le contenu visible et la requête primaire déclarée (« tableau de bord paie excel »)."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Auteur nommé, lié (rel=\"author\" vers /a-propos#kevin-kitanga) et décrit par une bio d’expertise (« il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter »), avec un schema Person distinct de l’Organization dans le JSON-LD @graph.",
+          "Les 3 sources déclarées (CNIL tier-1 officielle, 2× Microsoft Support tier-2) sont listées dans « Sources consultées » avec une date de consultation identique au rendu (17 septembre 2026), et chacune des 5 citations a été retrouvée verbatim dans la copie locale du texte source par une recherche directe (lignes 698, 703, 757, 805 et 830)."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Au-delà d’un rappel générique d’Excel, l’article livre une clé technique précise (id_dossier + période), un cycle fermé à 10 états avec une matrice de transition à 4 cas acceptés/refusés, et un jeu d’essai synthétique de 5 dossiers avec une recette de 5 manipulations vérifiables (doublon, incohérence date-état, clôture refusée, valeur hors liste, cellule protégée).",
+          "Le tableau à 3 colonnes « Se prépare seul / Attend une validation / Reste humain » et les 3 tests de gouvernance (vue reconstituable sans nominatif, accès non autorisé, nécessité du détail conservé) dépassent la documentation Excel pour proposer un cadre de décision original et directement réutilisable par le lecteur."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "JSON-LD @graph complet et cohérent (BlogPosting, BreadcrumbList, Person, Organization, WebSite) avec datePublished 2026-09-09 et dateModified 2026-09-17 reflétant la republication, canonical correct vers /blog/suivre-la-production-sociale-dans-excel, un seul h1 et lang=\"fr\".",
+          "Image de couverture en <picture> AVIF/WebP responsive (768/1200/1600w), dimensions explicites 1600×900, loading=\"eager\" et fetchpriority=\"high\" réservés à l’image LCP ; le noindex et le bandeau « Candidat éditorial » visibles sur ce rendu appartiennent au harnais de prévisualisation QA, pas à la page publiée."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Les 3 définitions clés (le suivi de production sociale, une exception, un agrégat non nominatif) sont posées en gras dès leur première occurrence, formant des unités auto-suffisantes citables isolément par un moteur génératif, avec une terminologie d’entité stable (dossier, DSN, état, exception, agrégat non nominatif) sur tout l’article.",
+          "Les citations légales sont exactes, entre guillemets, liées directement vers cnil.fr et datées, ce qui réduit le risque qu’une IA les tronque ou les recontextualise à tort ; le contenu est présent nativement dans le HTML statique du rendu, sans dépendance au JavaScript pour son affichage."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "La formule d’atténuation « à adapter », relevée deux fois par la revue précédente (« une méthode Memlia à adapter à l’organisation... » et « Voici un cycle de départ à adapter : ») et posée en P0, a été retirée : recherche vérifiée à zéro occurrence dans corps.md et dans le rendu HTML, remplacée dans les deux cas par « dont le cabinet fixe... », sans nouvelle formule défensive répétée.",
+          "La clôture respecte le reste de la charte du §7 bis : voix « nous » constante (« Nous prenons cette tâche entière : nous écrivons la règle... nous l’automatisons... nous la maintenons »), CTA de fin « Confier cette tâche » → /contact qui dit ce que nous faisons (écrire la règle dans vos mots, l’automatiser dans vos outils, la faire recetter) et ce que le cabinet garde (« chaque décision sur une exception et tout ce qui touche aux personnes »).",
+          "Maillage de clôture complet : lien vers le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, vers /methode et /garanties, deux articles frères cités en corps et deux ancres de glossaire (#fail-closed, #agregat-non-nominatif) ; aucun chiffre de gain, aucune donnée client réelle, aucun usage du mot « module » et aucun tiret cadratin dans le corps de l’article, et les seuils cités (délai interne, échéance) sont désignés comme des paramètres que « le cabinet » fixe, jamais des valeurs figées."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "business": {
+    "claims": {
+      "claim-unit-88cc58357ee3-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation anglaise vérifiée verbatim ligne 698 de microsoft-excel-tables.source.txt (« you can turn a range of cells into an Excel table... to make managing and analyzing... easier ») ; la traduction française du claim reprend les mêmes entités (plage→range, table Excel→Excel table, gestion→managing) sans changer la portée ni la polarité de l’affirmation."
+      },
+      "claim-unit-ad1971dbad5b-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation vérifiée verbatim ligne 703 de microsoft-protect-sheet.source.txt (« Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells... ») ; la traduction « cette protection n’est pas une fonction de sécurité » est fidèle, sans extension ni inversion de sens."
+      },
+      "claim-unit-a308f29638ab-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation française exacte retrouvée verbatim ligne 757 de cnil-employee-monitoring.source.txt (« être soumis aux instances représentatives du personnel selon les règles en vigueur »), reprise mot pour mot entre guillemets dans le corps de l’article sans changement de portée."
+      },
+      "claim-unit-7624548185cf-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation vérifiée verbatim ligne 805 de cnil-employee-monitoring.source.txt sur le logiciel qui compte et transmet le nombre de dossiers traités par trimestre par salarié/agent ; l’article reprend l’exemple et son motif de proportionnalité (fréquence non assimilable à une surveillance constante) sans le déformer."
+      },
+      "claim-unit-ae9784786381-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée verbatim ligne 830 de cnil-employee-monitoring.source.txt (« les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées »), reprise mot pour mot dans la section Gouvernance de l’article sans changement de sens."
+      }
+    }
+  },
+  "image": {
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Format 1920×1080 confirmé sur le fichier lui-même (16:9), cinq jetons circulaires verts alignés en colonne sur une plaque de verre quadrillée représentent les cinq dossiers, et la palette crème / dégradé de vert / accents graphite (trait de séparation, éclats des plateaux en terrazzo) est respectée sur l’ensemble de la scène.",
+          "La pièce mise à part à droite (carte crème avec trombone vert, séparée par un trait vertical noir) matérialise bien l’exception isolée avant décision, mais elle reste crème plutôt que franchement graphite comme le demandait le brief : écart mineur de teinte, pas une absence du composant.",
+          "La consigne des « trois plateaux superposés lus de bas en haut » est traduite en trois zones matérielles juxtaposées de gauche à droite (cartes vierges, plaque de verre à jetons et cubes, présentoir en pierre au graphique de cylindres) plutôt qu’en un empilement vertical strict : une interprétation libre mais lisible d’un brief volontairement abstrait."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Inspection directe de master.png : aucun texte, chiffre, lettre, logo, personnage ni fausse interface visible, conforme aux interdits de prompt.json (« Sans texte, sans chiffre, sans logo, sans personnage, sans interface »).",
+          "Aucune alerte rouge ni symbole d’envoi automatique dans l’image : la seule couleur saturée est le vert de marque, cohérente avec la palette demandée et l’absence d’urgence visuelle imposée par les interdits du brief."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Le décor est une nature morte de bureau générique (plante, tasse à café, carnet relié, plateaux en pierre terrazzo, pot à crayons, trombone) sans logo, marque, nom de cabinet ni interface logicielle réelle identifiable."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "La progression visuelle de cartes vierges vers des jetons puis des cubes en dégradé de vert, jusqu’à un graphique à barres cylindriques sur un présentoir séparé, se lit comme une avancée de dossiers vers un agrégat, avec une pièce isolée pour l’exception : sujet reconnaissable au niveau conceptuel visé par un brief volontairement abstrait, même sans dossier ni interface figurés littéralement."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Dimensions vérifiées directement sur les fichiers : master.png 1920×1080 (PIL), og.webp 1200×630 et hero-768.webp/avif 768×432 (sips), toutes conformes aux valeurs déclarées dans image.json et reprises dans le <picture> du rendu (srcset 768/1200/1600w)."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "L’alt « Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision. » compte 92 caractères (≤125), décrit la scène sans la sur-promettre, et apparaît à l’identique dans l’attribut alt de l’<img>, le og:image:alt et le caption du JSON-LD ImageObject."
+        ]
+      }
+    },
+    "directionArt": 17,
+    "semanticRelevance": 22
+  },
+  "sources": {
+    "reviewedBy": "relecteur-metier-ia-memlia",
+    "observations": {
+      "cnil-employee-monitoring": "CNIL, autorité administrative indépendante française, page officielle sur cnil.fr consacrée au contrôle de l’activité des personnes employées : source tier-1 institutionnelle qui fait autorité sur le cadrage RGPD et anti-surveillance de la section Gouvernance.",
+      "microsoft-excel-tables": "Microsoft Support, éditeur du logiciel décrit, page support.microsoft.com sur les tableaux Excel : source tier-2 vendeur (non institutionnelle mais faisant autorité sur le fonctionnement du produit), utilisée pour justifier l’usage d’une table structurée plutôt qu’une plage classique.",
+      "microsoft-protect-sheet": "Microsoft Support, même éditeur et même domaine support.microsoft.com, page sur la protection de feuille : source tier-2 vendeur utilisée pour borner exactement la portée de cette protection, à savoir le verrouillage de cellules et non une fonction de sécurité."
+    }
+  },
+  "qualite": {
+    "reviewer": "relecteur-qualite-ia-memlia",
+    "score": 97,
+    "p0": [],
+    "categories": {
+      "contentQuality": {
+        "score": 28,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 25,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 15,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 15,
+        "max": 15
+      }
+    },
+    "evidence": [
+      "Schema JSON-LD @graph complet et cohérent : BlogPosting, BreadcrumbList, Person et Organization (+ WebSite), avec datePublished 2026-09-09 et dateModified 2026-09-17 qui reflètent la republication déclarée.",
+      "Les 5 claims du paquet de revue ont été vérifiés indépendamment par recherche directe dans les copies locales des sources (lignes 698, 703, 757, 805, 830) : les 5 citations correspondent mot pour mot au texte source.",
+      "Maillage interne au-delà du minimum attendu : lien vers le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, deux articles frères cités en corps (contrôle des bulletins, comptes rendus DSN), deux autres en « À lire ensuite », /methode, /garanties et deux ancres de glossaire.",
+      "Image de couverture livrée en AVIF/WebP responsive (768/1200/1600w), dimensions explicites 1600×900, loading=\"eager\" et fetchpriority=\"high\" réservés à l’image LCP, cohérente avec les dérivés déclarés dans image.json et vérifiés sur les fichiers eux-mêmes (master 1920×1080, OG 1200×630, hero 768×432).",
+      "Trois tableaux structurés avec <thead> (dictionnaire de 11 colonnes, matrice de transition à 4 cas, jeu d’essai de 5 dossiers) plus un tableau comparatif à 3 colonnes (automatisable / validation / humain), sans saut de hiérarchie de titres sur l’ensemble du rendu.",
+      "Title tag à 60 caractères et meta description à 142 caractères, tous deux cohérents avec le contenu visible ; canonical et balises OG/Twitter (image 1200×630) présentes et correctes.",
+      "La formule d’atténuation « à adapter », relevée deux fois par la revue précédente et posée en P0 éditorial, a été retirée du corps : recherche vérifiée à zéro occurrence dans corps.md et dans le rendu HTML.",
+      "Aucun chiffre de gain, aucune donnée client réelle, aucun tiret cadratin et aucun usage du mot « module » dans le corps de l’article ; le bandeau noindex et « Candidat éditorial » visibles sur ce rendu appartiennent au harnais de prévisualisation QA."
+    ],
+    "reservations": [
+      "Aucun audit Lighthouse (performance, accessibilité, bonnes pratiques, SEO) n’a été exécuté sur ce rendu : les signaux statiques (fetchpriority, dimensions explicites, préchargement des polices) sont favorables mais non chiffrés.",
+      "Le rendu mobile réel (320/768 px) n’a pas été capturé dans un navigateur ; seules les media queries et les unités clamp() du CSS ont été lues dans le code source.",
+      "La citation réelle de la page par un moteur génératif (Google AI Overviews, ChatGPT, Perplexity) n’est pas mesurable avant publication : ce rendu porte un robots noindex propre au harnais de prévisualisation QA, pas à l’article publié.",
+      "L’existence et le contenu réels des pages liées en pied de page (/a-propos, /mentions-legales, /politique-de-confidentialite) n’ont pas été revérifiés dans le cadre de cette revue, qui porte sur l’article lui-même."
+    ],
+    "seo": [
+      "Title tag distinct du h1 (« Tableau de bord paie Excel : suivre sans surveiller », 60 caractères) : cible la requête primaire du registre et l’angle anti-surveillance plutôt que de répéter le h1 littéral.",
+      "3 liens externes tier-1/tier-2 (CNIL, 2× Microsoft Support), au bas de la fourchette cible de 3-8 mais tous vérifiés verbatim et à forte autorité sur leur sujet respectif.",
+      "URL stable et lisible /blog/suivre-la-production-sociale-dans-excel, cohérente avec le slug déclaré dans paquet-revue.json.",
+      "Canonical, Open Graph (title/description/image 1200×630/locale fr_FR) et Twitter Card summary_large_image tous présents et cohérents avec le contenu visible.",
+      "Hiérarchie de titres sans saut (h1 unique puis h2/h3 imbriqués) sur l’ensemble du rendu, avec 4 questions de FAQ en h3 sans schema FAQPage dédié (optionnel selon le barème, sans effet sur le score)."
+    ],
+    "geo": [
+      "Bloc « Réponse directe » de 78 mots en ouverture du corps, répondant à la requête avant tout développement : format answer-first favorable à l’extraction par un aperçu IA.",
+      "Trois définitions clés posées en gras dès leur première occurrence (suivi de production sociale, exception, agrégat non nominatif), formant des extraits auto-suffisants citables isolément.",
+      "Citations légales exactes entre guillemets, liées directement vers cnil.fr et datées au 17 septembre 2026, ce qui réduit le risque de citation tronquée ou hors contexte par une IA générative.",
+      "Trois tableaux avec <thead> structuré, en format extraction-friendly pour des réponses génératives comparatives (dictionnaire de colonnes, matrice de transition, jeu d’essai).",
+      "Contenu présent nativement dans le HTML statique du rendu, sans dépendance au JavaScript pour son affichage ; le robots noindex observé sur ce rendu est propre au harnais de prévisualisation, pas à la page publiée."
+    ],
+    "verdict": "Article prêt sur le plan contenu, SEO, technique et citabilité IA (97/100) : le P0 éditorial de la revue précédente (« à adapter » répété deux fois) est corrigé et vérifié absent, sans régression détectée ailleurs dans le rendu."
+  }
+}

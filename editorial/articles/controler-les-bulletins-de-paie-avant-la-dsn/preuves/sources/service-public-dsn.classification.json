@@ -1,29 +1,23 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "source-classification",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
-  "observations": [
-    "Le domaine final et l’éditeur déclaré ont été relus séparément à partir de la copie scellée du 13 septembre 2026."
-  ],
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "sourceId": "service-public-dsn",
   "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
   "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
-  "publisher": "Service Public Entreprendre",
+  "publisher": "Service Public",
   "level": "tier-1",
   "provenance": "primary",
   "official": true,
   "upstreamUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
-  "classifiedBy": "marketing",
-  "reviewedBy": "dev",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/sources/service-public-dsn.classification.json",
-    "originalSha256": "05d1d12e0d65720ed865d69119a8ba968945d4181d2043c8b7299ffc2e81f9b7",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "classifiedBy": "kevin",
+  "reviewedBy": "relecteur-metier-ia-memlia",
+  "observations": [
+    "Fiche officielle de la Direction de l’information légale et administrative, source primaire sur la DSN.",
+    "Service Public (Direction de l'information légale et administrative), domaine gouvernemental entreprendre.service-public.gouv.fr : source tier-1 officielle et primaire pour la définition légale de la DSN."
+  ]
 }

@@ -4,8 +4,8 @@
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-09-17",
-  "articleSha256": "ceaad3298c603a00eba1a0dd17f7072edeeb50b75e4e1641a88303ceed2d6945",
-  "manifestSha256": "9ac0ee7c3fdf84489aebe4337a531c350fc81c245aee73660e2fc9b4824b5556",
+  "articleSha256": "03dfaab5f4d211d303f7f5e28bcb480847d15b23b34920a1f8c8d44cf36be6a6",
+  "manifestSha256": "bfc5cb1edb11ed92175ee3c1125a7076f4c604de8977573d255fe6cb2b1247ed",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -14,45 +14,42 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "prompt.json contient les six composantes attendues (sujet, composition, style, palette, interdits, alt), chacune rédigée séparément puis assemblée dans le prompt final envoyé au moteur de génération, sans composante manquante ni fusionnée."
+        "Les six composantes du brief (sujet, composition, style, palette, interdits, alt) se retrouvent toutes dans master.png, observé directement : environ dix îlots (plaques vertes et graphite) reliés par de fins chemins clairs, un jeton vert cylindrique au centre devant une bifurcation à deux flèches divergentes, sur un fond crème neutre."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "master.png mesure 1920x1080 (16:9 exact, vérifié par sips), en diorama 3D isométrique à formes géométriques simplifiées, matières mates (plateformes graphite) et translucides (plateformes vertes), lumière douce et ombres courtes conformes au style demandé.",
-        "Inspection visuelle directe de master.png : aucun texte lisible, chiffre, logo, personnage, visage, écran, fausse interface logicielle, alerte rouge ni symbole d'envoi automatique — les six interdits du brief sont respectés ; la palette observée (vert Memlia, vert profond, crème, graphite) correspond à la charte fournie."
+        "Observation directe de master.png : le calendrier (îlot du haut) montre une grille de cases vides sans aucun chiffre ni lettre, une seule case surlignée en vert ; aucun écran, logo, personnage, visage, alerte rouge ni symbole d'envoi automatique nulle part dans l'image de 1920x1080."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Tous les objets représentés (pièces empilées, classeurs, calendrier à grille vierge, engrenages, blocs, barres de graphique, piles de feuilles) sont des icônes génériques et abstraites, sans document, donnée, nom ou chiffre réel identifiable ; rien n'imite une capture d'écran ou une photographie réelle."
+        "Tous les objets visibles (pièces de monnaie empilées, classeurs, calendrier à grille vierge, engrenages, cubes géométriques, barres de graphique, piles de papier) sont des icônes génériques en matière mate ou translucide, sans document, nom ou chiffre identifiable : rien n'imite une capture d'écran ou une photographie réelle."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Le jeton vert central et la bifurcation à deux flèches divergentes sont clairement lisibles et conformes au brief, représentant la décision humaine sur un chemin choisi ; une dizaine de plateformes reliées par des chemins entourent ce point central, cohérent avec « une dizaine d'îlots reliés par des chemins » du brief.",
-        "Les icônes choisies (calendrier, classeurs, pièces, engrenages, barres de graphique) évoquent des objets administratifs et comptables plausibles, ce qui ancre le sujet dans le monde du cabinet malgré un registre volontairement abstrait ; la lisibilité du sujet précis dépend en partie du texte alternatif et du contexte de page, limite habituelle du style diorama déjà en place sur le reste du site."
+        "Le jeton vert et la bifurcation à deux flèches se lisent immédiatement comme un point de décision sur un chemin parmi d'autres, conforme au brief ; les îlots reliés autour restent cohérents avec une carte administrative une fois associés à l'alt et à la légende de l'article."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Dimensions vérifiées sur disque par sips : master.png 1920x1080, img-art-carte-des-taches-og.webp 1200x630 (conforme à og:image:width/height), img-art-carte-des-taches-768.webp 768x432, -1200.webp 1200x675, -1600.webp 1600x900 — ratio 16:9 respecté sur tous les dérivés.",
-        "Les six fichiers requis (768/1200/1600 en avif et webp, plus og.webp) sont présents à la fois dans public/images et dist/images, et la page rendue les référence correctement via <picture>/srcset avec width=1600 height=900 sur l'image LCP."
+        "Vérifié par lecture directe des fichiers (PIL), pas seulement par le JSON déclaratif : master.png mesure 1920x1080 (16:9 exact), og.webp mesure 1200x630, les variantes 768/1200/1600 en avif et webp sont présentes à la fois dans public/images et dist/images avec les dimensions attendues (768x432, 1200x675, 1600x900)."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Le texte alternatif (« Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation ») compte 117 caractères (sous la limite usuelle de 125), décrit fidèlement la scène observée et reste identique entre l'attribut alt de l'image, og:image:alt et la légende de l'objet image du JSON-LD."
+        "Le texte alternatif (« Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation ») compte 117 caractères (calculé), sous la limite de 125, et reste identique entre l'attribut alt de l'image, og:image:alt et la légende ImageObject du JSON-LD."
       ]
     }
   ]

@@ -65,9 +65,9 @@ const structuredImage = data.pipelineVersion === 1
 const ctaArticle = data.cta;
 /**
  * La destination de l'appel à l'action suit la règle du site, pas le frontmatter.
- * Les articles publiés pointent Cal.com dans leurs octets scellés ; ces octets ne se
- * retouchent pas — c'est le gabarit qui applique la règle courante, et l'échange se
- * prépare désormais sur /contact avant toute réservation.
+ * Garde-fou conservé : un article qui pointerait encore Cal.com (les trois articles
+ * antérieurs à la v3 le faisaient avant leur republication par la forge le 17/09/2026)
+ * est ramené sur /contact, où l'échange se prépare avant toute réservation.
  */
 const destinationArticle = ctaArticle?.destination && !ctaArticle.destination.includes('cal.com')
   ? ctaArticle.destination

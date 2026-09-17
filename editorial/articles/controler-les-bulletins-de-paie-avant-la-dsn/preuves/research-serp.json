@@ -1,19 +1,20 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "serp",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "observations": [
-    "Le snapshot DataForSEO du 13 septembre 2026 a été réutilisé sans nouvel appel ni promesse de classement."
+    "Aucune position revendiquée ; memlia.fr absent du top 20 sur les requêtes voisines mesurées le 17/09/2026."
   ],
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/research-serp.json",
-    "originalSha256": "c279bb21660019b0da6901d9a2a6459b532fa0d24c02407f39b75c17160229de",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "requete": "contrôle bulletin de paie",
+  "date": "2026-09-17",
+  "volume": "ND",
+  "acteurs": [
+    "non relevé : l’appel DataForSEO du relevé de demande du 17/09/2026 a rendu l’erreur serveur 40101 sur cette requête"
+  ],
+  "formats": "relevé de l’audit des titres du 17/09/2026 : la requête a du volume en autocomplétion Google, l’intention dominante est celle d’un salarié qui vérifie sa propre fiche ; « en cabinet » dans le titre d’onglet filtre cette intention",
+  "note": "Aucune position revendiquée ; memlia.fr absent du top 20 sur les requêtes voisines mesurées le 17/09/2026."
 }

@@ -1,59 +1,64 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
   "contentUnits": [
     {
-      "id": "unit-174f5f82f150",
-      "text": "Contrôler les bulletins avant la DSN consiste à fermer trois revues sur le fichier exact qui sera transmis : les pièces et variables, les écarts du bulletin, puis le contrôle technique DSN. Le dossier n'est pas prêt tant qu'un écart reste inexpliqué, qu'une correction n'a pas été retestée ou que la preuve conservée ne correspond plus au fichier final.",
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
       "claimIds": []
     },
     {
-      "id": "unit-7cdff2763eec",
-      "text": "Ce guide couvre la préparation avant dépôt et l'organisation des retours après dépôt. Il s'adresse aux gestionnaires de paie et responsables de pôle social. Il ne remplace ni l'analyse du dossier, ni les consignes de l'éditeur ou de l'organisme, ni une validation juridique. Les règles, responsables et seuils proposés doivent être adaptés par le cabinet.",
+      "id": "unit-42bfb986650b",
+      "text": "Contrôler les bulletins de paie avant la DSN, c’est clore trois revues sur le fichier exact qui sera transmis : les pièces et variables, les écarts du bulletin, puis le contrôle technique du fichier. Chaque écart est expliqué, corrigé puis retesté, ou confié à une personne désignée, et aucune preuve ne vaut si elle ne correspond plus au dernier fichier. Ce contrôle a une règle ; la suite l’écrit pour qu’il se rejoue chaque mois de la même façon, quelle que soit la personne qui le tient.",
       "claimIds": []
     },
     {
-      "id": "unit-3b01f441b256",
-      "text": "> En bref > - Fermez d'abord la revue des pièces et variables, puis celle des écarts du bulletin. > - Testez ensuite le fichier exact destiné au dépôt avec Dsn-Val. > - Après chaque correction, régénérez le fichier et rejouez les contrôles touchés. > - Ne clôturez qu'avec un résultat, une preuve et une décision rattachés au dernier fichier.",
+      "id": "unit-ad0beeecae2f",
+      "text": "Qu’est-ce que le contrôle avant dépôt, et pourquoi casse-t-il à la main ?",
       "claimIds": []
     },
     {
-      "id": "unit-d8cc8a3830da",
-      "text": "Quel résultat faut-il obtenir avant le dépôt ?",
+      "id": "unit-12add2d9e91d",
+      "text": "Le contrôle avant dépôt est la revue, pour un dossier et une période, des données qui alimentent la paie, des bulletins calculés et du fichier de déclaration, avant sa transmission. La déclaration sociale nominative, ou DSN, est ce fichier mensuel qui porte les données de paie aux organismes. Un écart est une variation détectée entre la période et sa référence : il n’est pas une erreur, il devient expliqué, à corriger ou à arbitrer.",
       "claimIds": []
     },
     {
-      "id": "unit-74004455cc66",
-      "text": "Le résultat attendu n'est pas une case « OK ». Il faut pouvoir identifier le fichier testé, les contrôles joués, les écarts détectés, la qualification retenue et la personne qui autorise le dépôt.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-8c494c49919c",
-      "text": "D'après Service Public Entreprendre, « la DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie » et « un logiciel de paie compatible avec la DSN est nécessaire ». Cette dépendance donne l'ordre de travail : contrôler les entrées et le calcul avant de conclure sur le fichier de déclaration.",
+      "id": "unit-f853bef5785e",
+      "text": "Service-Public Entreprendre rappelle que la DSN « est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie » et qu’« un logiciel de paie compatible avec la DSN est nécessaire ». Cette dépendance donne l’ordre du travail : contrôler les entrées et le calcul avant de conclure sur le fichier de déclaration.",
       "claimIds": [
-        "dsn-definition",
-        "dsn-logiciel-compatible"
+        "claim-unit-f853bef5785e-1",
+        "claim-unit-f853bef5785e-2"
       ]
     },
     {
-      "id": "unit-1f71a2cde760",
-      "text": "> Méthode Memlia, pas exigence réglementaire. Les trois revues, les six champs de trace et les états fermés décrits ci-dessous forment une convention de travail proposée au cabinet. Ils ne constituent pas une liste légale universelle.",
+      "id": "unit-5a8ce029d646",
+      "text": "À la main, ce contrôle casse pour une raison précise. Le gestionnaire sait quelles rubriques regarder sur ce dossier, quel écart est normal en août, quelle prime revient chaque trimestre, quelle absence attend encore son justificatif. Cette règle n’est écrite nulle part : elle se rejoue de mémoire, sous la pression de l’échéance, et elle part avec la personne qui la détient. Le résultat n’est pas un bulletin faux à chaque fois ; c’est un contrôle inégal, qu’on ne peut ni prouver ni transmettre à un collègue. La méthode ci-dessous, une méthode Memlia, écrit cette règle en trois revues et une trace, pour qu’elle appartienne au cabinet.",
       "claimIds": []
     },
     {
-      "id": "unit-a6cfc4a6a9bb",
-      "text": "Pour chaque période, commencez par fixer :",
+      "id": "unit-d5abe769c876",
+      "text": "Que faut-il avoir sous la main avant de commencer ?",
       "claimIds": []
     },
     {
-      "id": "unit-e70b57ec683c",
-      "text": "- le dossier et la période concernés ; - l'échéance applicable à l'entreprise, vérifiée dans la source ou l'outil officiel utilisé par le cabinet ; - la personne qui prépare, celle qui tranche les exceptions et celle qui autorise le dépôt ; - l'identifiant ou l'empreinte du fichier qui passera le dernier contrôle.",
+      "id": "unit-a7f532bf8e13",
+      "text": "- Le dossier et la période concernés, avec l’échéance applicable à l’entreprise, vérifiée dans la source ou l’outil que le cabinet utilise pour cela. - Les pièces et instructions du mois telles qu’elles arrivent aujourd’hui : entrées et sorties, absences, variables, régularisations. - La personne qui prépare, celle qui tranche les exceptions et celle qui autorise le dépôt, nommées pour ce dossier. - L’identifiant ou l’empreinte du fichier qui passera le dernier contrôle : c’est à lui que toute preuve se rattache. - Un endroit où tenir la trace, même sommaire : une ligne par dossier, par période et par revue suffit pour commencer.",
       "claimIds": []
     },
     {
-      "id": "unit-24500f37208b",
-      "text": "Une échéance ne doit pas être déduite d'un ancien tableau. Si elle n'est pas confirmée pour le dossier et la période, le workflow reste bloqué.",
+      "id": "unit-ec1d5f1fcd8b",
+      "text": "Une échéance ne se déduit pas d’un ancien tableau. Tant qu’elle n’est pas confirmée pour le dossier et la période, le contrôle reste ouvert et rien ne part.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2b536cc04abc",
+      "text": "Quel résultat obtenir avant le dépôt ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9e46749f46de",
+      "text": "Le résultat attendu n’est pas une case « OK ». C’est de pouvoir dire, pour ce dossier et cette période, quel fichier a été testé, quels contrôles ont été joués, quels écarts ont été détectés, quelle qualification chacun a reçue, et qui a autorisé le dépôt. Les trois revues, les six champs de trace et les états fermés qui suivent sont une convention de travail : le cabinet en fixe les seuils, les responsables et les rubriques sensibles.",
       "claimIds": []
     },
     {
@@ -62,28 +67,28 @@
       "claimIds": []
     },
     {
-      "id": "unit-96a474a896df",
-      "text": "La première revue vérifie que ce qui devait alimenter la paie est identifiable et rattaché à la bonne période. Elle ne juge pas, à elle seule, la validité juridique d'une pièce.",
+      "id": "unit-b67b3d5523b2",
+      "text": "La première revue vérifie que ce qui devait alimenter la paie est identifiable et rattaché à la bonne période. Elle ne juge pas la validité d’une pièce ; elle constate qu’elle est là, lisible, et qu’elle appartient au bon mois.",
       "claimIds": []
     },
     {
-      "id": "unit-b843c2667301",
-      "text": "| Élément de la revue | Règle de travail | | --- | --- | | Responsable | Gestionnaire du dossier ; arbitrage confié au responsable social selon la règle du cabinet | | Moment | Avant le calcul déclaré définitif et avant la génération du fichier DSN à tester | | Sources de référence | Pièces et instructions présentes dans le système autorisé, paramétrage du dossier et règle écrite du cabinet | | Critère de blocage | Pièce absente, instruction contradictoire, période incertaine ou événement sans traitement décidé | | Preuve attendue | Référence de la pièce ou de l'instruction, période, date de contrôle et résultat | | Clôture | Chaque événement attendu est saisi, explicitement différé ou confié à une personne désignée |",
+      "id": "unit-0a1744cc4cc3",
+      "text": "| Élément de la revue | Règle de travail | | --- | --- | | Responsable | Gestionnaire du dossier ; arbitrage confié au responsable social selon la règle du cabinet | | Moment | Avant le calcul déclaré définitif et avant la génération du fichier DSN à tester | | Sources de référence | Pièces et instructions présentes dans le système autorisé, paramétrage du dossier et règle écrite du cabinet | | Critère de blocage | Pièce absente, instruction contradictoire, période incertaine ou événement sans traitement décidé | | Preuve attendue | Référence de la pièce ou de l’instruction, période, date de contrôle et résultat | | Clôture | Chaque événement attendu est saisi, explicitement différé ou confié à une personne désignée |",
       "claimIds": []
     },
     {
-      "id": "unit-aeed78e58b58",
-      "text": "Le périmètre dépend du dossier. La checklist doit toutefois obliger le gestionnaire à se prononcer sur les rubriques sensibles qui lui sont applicables, sans présumer de leur traitement :",
+      "id": "unit-1c4b1841dc6c",
+      "text": "Le périmètre dépend du dossier. La checklist oblige toutefois le gestionnaire à se prononcer sur les rubriques sensibles qui lui sont applicables, sans présumer de leur traitement :",
       "claimIds": []
     },
     {
-      "id": "unit-a7ec25f48641",
-      "text": "| Zone à examiner si elle concerne le dossier | Question de contrôle | Sortie attendue | | --- | --- | --- | | Entrée ou sortie | L'événement, sa date d'effet et la pièce de référence concordent-ils ? | Rapproché, à corriger ou à arbitrer | | Absence | La nature, la période et le justificatif disponible sont-ils cohérents ? | Variable tracée ou exception ouverte | | IJSS et maintien | Les éléments disponibles et le paramétrage attendu concordent-ils ? | Contrôle documenté, sans conclure au droit par automatisme | | Prévoyance et mutuelle | L'affiliation, la période et le paramétrage attendu ont-ils été revus ? | Écart expliqué ou transmis au responsable | | Temps, prime ou indemnité | La source convenue, la période et la rubrique visée sont-elles identifiées ? | Saisie vérifiée ou anomalie ouverte | | Prélèvement à la source | La donnée utilisée provient-elle du flux ou du processus de référence du dossier ? | Origine et période tracées | | Régularisation | La période d'afférence, le motif et la décision sont-ils documentés ? | Traitement explicite, puis contrôle rejoué |",
+      "id": "unit-acbd2744e85f",
+      "text": "| Zone à examiner si elle concerne le dossier | Question de contrôle | Sortie attendue | | --- | --- | --- | | Entrée ou sortie | L’événement, sa date d’effet et la pièce de référence concordent-ils ? | Rapproché, à corriger ou à arbitrer | | Absence | La nature, la période et le justificatif disponible sont-ils cohérents ? | Variable tracée ou exception ouverte | | IJSS et maintien | Les éléments disponibles et le paramétrage attendu concordent-ils ? | Contrôle documenté, sans conclure au droit par automatisme | | Prévoyance et mutuelle | L’affiliation, la période et le paramétrage attendu ont-ils été revus ? | Écart expliqué ou transmis au responsable | | Temps, prime ou indemnité | La source convenue, la période et la rubrique visée sont-elles identifiées ? | Saisie vérifiée ou anomalie ouverte | | Prélèvement à la source | La donnée utilisée provient-elle du flux ou du processus de référence du dossier ? | Origine et période tracées | | Régularisation | La période d’afférence, le motif et la décision sont-ils documentés ? | Traitement explicite, puis contrôle rejoué |",
       "claimIds": []
     },
     {
-      "id": "unit-83e99fd08242",
-      "text": "Cette table ne fixe aucun calcul. Elle empêche seulement qu'une rubrique applicable disparaisse du périmètre sans décision.",
+      "id": "unit-65acd3ddffd3",
+      "text": "Cette table ne fixe aucun calcul. Elle empêche seulement qu’une rubrique applicable disparaisse du périmètre sans décision.",
       "claimIds": []
     },
     {
@@ -92,8 +97,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-5990f0dda8b8",
-      "text": "La deuxième revue cherche les variations qui nécessitent une explication. Un écart n'est pas une erreur : il devient soit attendu et prouvé, soit à corriger, soit à arbitrer.",
+      "id": "unit-eaf349fb24c5",
+      "text": "La deuxième revue cherche les variations qui appellent une explication. Un écart n’est pas une erreur : il devient soit attendu et prouvé, soit à corriger, soit à arbitrer.",
       "claimIds": []
     },
     {
@@ -102,8 +107,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-cc5eab920b22",
-      "text": "Examinez au minimum les zones applicables au dossier : présence des rubriques attendues, brut et net, bases, plafonds et taux, temps et absences, IJSS et maintien, prévoyance, mutuelle, prélèvement à la source, régularisations, entrées et sorties. Le contrôle ne doit pas décréter qu'un taux ou un plafond est correct à partir d'une valeur mémorisée. Il doit le comparer à la référence datée choisie par le cabinet.",
+      "id": "unit-0cc6458147f2",
+      "text": "Examinez au minimum les zones applicables au dossier : présence des rubriques attendues, brut et net, bases, plafonds et taux, temps et absences, IJSS et maintien, prévoyance, mutuelle, prélèvement à la source, régularisations, entrées et sorties. Le contrôle ne décrète pas qu’un taux ou un plafond est correct à partir d’une valeur mémorisée : il le compare à la référence datée que le cabinet a choisie.",
       "claimIds": []
     },
     {
@@ -112,8 +117,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-fbcb24fc8bc3",
-      "text": "1. détecter la variation ; 2. retrouver l'événement, la pièce ou la règle qui peut l'expliquer ; 3. choisir expliqué, à corriger ou à arbitrer ; 4. corriger dans l'outil de paie si la personne habilitée le décide ; 5. recalculer, régénérer le fichier et rejouer les contrôles touchés.",
+      "id": "unit-53673f914ee4",
+      "text": "1. détecter la variation ; 2. retrouver l’événement, la pièce ou la règle qui peut l’expliquer ; 3. choisir expliqué, à corriger ou à arbitrer ; 4. corriger dans l’outil de paie si la personne habilitée le décide ; 5. recalculer, régénérer le fichier et rejouer les contrôles touchés.",
       "claimIds": []
     },
     {
@@ -122,8 +127,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-7d3f906eea1a",
-      "text": "> Jeu d'essai fictif, sans donnée client et sans règle de paie réelle. Le dossier D-014, période 2026-08, comporte une prime ponctuelle de 250 unités fictives. Le contrôle signale une variation du brut. Si la pièce fictive P-014-08 est présente et cohérente avec la période, le gestionnaire peut retenir expliqué. Si elle manque, l'état devient à arbitrer. Si elle contredit la saisie, l'état devient à corriger.",
+      "id": "unit-a2d2cd393a46",
+      "text": "> Jeu d’essai fictif, sans donnée client et sans règle de paie réelle. Le dossier D-014, période 2026-08, comporte une prime ponctuelle de 250 unités fictives. Le contrôle signale une variation du brut. Si la pièce fictive P-014-08 est présente et cohérente avec la période, le gestionnaire retient expliqué. Si elle manque, l’état devient à arbitrer. Si elle contredit la saisie, l’état devient à corriger.",
       "claimIds": []
     },
     {
@@ -137,21 +142,21 @@
       "claimIds": []
     },
     {
-      "id": "unit-ea11f0bd83c2",
-      "text": "Net-entreprises précise que « l'outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer » et que « les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé ». Dsn-Val est donc un outil d'auto-contrôle du fichier, pas une validation des pièces ou des décisions de paie.",
+      "id": "unit-f5aaef967736",
+      "text": "Net-entreprises précise que « l’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer » et que « les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé ». Dsn-Val est donc un outil d’auto-contrôle du fichier, pas une validation des pièces ni des décisions de paie.",
       "claimIds": [
-        "dsn-val-test",
-        "dsn-val-portee"
+        "claim-unit-f5aaef967736-1",
+        "claim-unit-f5aaef967736-2"
       ]
     },
     {
-      "id": "unit-38d7c243682a",
-      "text": "| Élément de la revue | Règle de travail | | --- | --- | | Responsable | Gestionnaire ou personne chargée du dépôt, selon l'organisation du cabinet | | Moment | Après les corrections de paie, sur le fichier exact destiné à la transmission | | Source de référence | Version de Dsn-Val et documentation technique applicables au fichier | | Critère de blocage | Anomalie bloquante, résultat rattaché à un ancien fichier ou version de contrôle non identifiée | | Preuve attendue | Identifiant du fichier, version ou date de l'outil, résultat, anomalies et date du test | | Clôture | Le fichier final a été testé et chaque anomalie remontée a une action décidée |",
+      "id": "unit-9583f1ec9823",
+      "text": "| Élément de la revue | Règle de travail | | --- | --- | | Responsable | Gestionnaire ou personne chargée du dépôt, selon l’organisation du cabinet | | Moment | Après les corrections de paie, sur le fichier exact destiné à la transmission | | Source de référence | Version de Dsn-Val et documentation technique applicables au fichier | | Critère de blocage | Anomalie bloquante, résultat rattaché à un ancien fichier ou version de contrôle non identifiée | | Preuve attendue | Identifiant du fichier, version ou date de l’outil, résultat, anomalies et date du test | | Clôture | Le fichier final a été testé et chaque anomalie remontée a une action décidée |",
       "claimIds": []
     },
     {
-      "id": "unit-3847fabcd545",
-      "text": "Un résultat technique sans anomalie bloquante connue ne prouve pas qu'une absence a été saisie, qu'un maintien est correct ou qu'une régularisation a été décidée sur la bonne période. Si une correction modifie la paie ou le fichier, l'ancien résultat ne couvre plus le candidat : régénérez et retestez.",
+      "id": "unit-8bd7b1c5b528",
+      "text": "Un résultat technique sans anomalie bloquante ne prouve pas qu’une absence a été saisie, qu’un maintien est correct ou qu’une régularisation a été décidée sur la bonne période. Si une correction modifie la paie ou le fichier, l’ancien résultat ne couvre plus le candidat : régénérez et retestez.",
       "claimIds": []
     },
     {
@@ -160,41 +165,39 @@
       "claimIds": []
     },
     {
-      "id": "unit-baaf7a4f04bb",
-      "text": "Cette section ferme la boucle du contrôle avant transmission. Pour distinguer accusé, certificat, bilan et retours des organismes, puis qualifier chaque message, consultez la méthode de lecture des comptes rendus métier DSN.",
-      "claimIds": [],
-      "editorialNotice": true,
-      "provenance": "published-article-939464c"
-    },
-    {
-      "id": "unit-b616e8ae44f3",
-      "text": "Le dépôt ouvre une nouvelle phase. Net-entreprises définit le Compte Rendu Métier, ou CRM, comme « un rapport permettant à l'organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu'une erreur ou suspicion d'erreur est détectée ». La même page précise qu'« il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM » afin d'effectuer les corrections nécessaires si besoin.",
-      "claimIds": [
-        "crm-definition",
-        "crm-traitement"
-      ]
-    },
-    {
-      "id": "unit-ec9a713b6b87",
-      "text": "Ne confondez pas l'état du workflow avec la gravité du signalement. Déposé indique une étape franchie ; il ne signifie ni sans anomalie, ni conforme. Conservez deux champs séparés.",
+      "id": "unit-baef6e24dcb1",
+      "text": "Cette section ferme la boucle du contrôle avant transmission. Pour distinguer accusé, certificat, bilan et retours des organismes, puis qualifier chaque message, lisez la méthode de lecture des comptes rendus métier DSN.",
       "claimIds": []
     },
     {
-      "id": "unit-f4b6e222160e",
-      "text": "| Champ CRM | Contenu attendu | | --- | --- | | Organisme | Émetteur du retour | | Période | Période ou déclaration concernée | | Nature du retour | Anomalie, suspicion, confirmation ou autre qualification portée par le document | | Action | Comprendre, corriger en paie, régénérer, retransmettre, contester ou classer avec justification | | Échéance de traitement | Date ou fenêtre indiquée par la source applicable, pas une date supposée | | Responsable | Personne chargée de décider ou d'exécuter l'action | | Preuve de clôture | Nouveau test, retransmission, réponse, justificatif ou décision documentée |",
-      "claimIds": []
-    },
-    {
-      "id": "unit-c96217f4b6ea",
-      "text": "La page officielle sur la fiabilisation des données de la DSN distingue les contrôles avant dépôt et la consultation mensuelle des CRM après dépôt. Elle indique qu'une erreur signalée doit être corrigée en paie et que la DSN mensuelle peut être retransmise en « annule et remplace » avant minuit la veille de l'échéance si cela est encore possible. « Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant. »",
+      "id": "unit-8e25db1cb634",
+      "text": "Le dépôt ouvre une nouvelle phase. Net-entreprises définit le compte rendu métier, ou CRM, comme « un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée ». La même page ajoute qu’« il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM » afin d’effectuer les corrections nécessaires si besoin.",
       "claimIds": [
-        "dsn-fiabilisation-sequence",
-        "dsn-annule-remplace"
+        "claim-unit-8e25db1cb634-1",
+        "claim-unit-8e25db1cb634-2"
       ]
     },
     {
-      "id": "unit-1aba67916cea",
-      "text": "Cette indication ne suffit pas à décider tous les cas. L'applicabilité dépend notamment du moment, du type de correction et des instructions du retour ou de l'organisme. Le présent guide traite la DSN mensuelle ; il ne transpose pas cette fenêtre aux signalements d'événement ou à d'autres canaux. En cas d'incertitude, gardez l'état bloquant et consultez la documentation ou l'interlocuteur officiel adapté.",
+      "id": "unit-d895c9369613",
+      "text": "Ne confondez pas l’état du workflow avec la gravité du signalement. Déposé indique une étape franchie ; il ne signifie ni sans anomalie, ni conforme. Conservez deux champs séparés.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e36488bf9d8e",
+      "text": "| Champ CRM | Contenu attendu | | --- | --- | | Organisme | Émetteur du retour | | Période | Période ou déclaration concernée | | Nature du retour | Anomalie, suspicion, confirmation ou autre qualification portée par le document | | Action | Comprendre, corriger en paie, régénérer, retransmettre, contester ou classer avec justification | | Échéance de traitement | Date ou fenêtre indiquée par la source applicable, pas une date supposée | | Responsable | Personne chargée de décider ou d’exécuter l’action | | Preuve de clôture | Nouveau test, retransmission, réponse, justificatif ou décision documentée |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c3c741fa7fe1",
+      "text": "La page officielle sur la fiabilisation des données de la DSN distingue les contrôles avant dépôt et la consultation mensuelle des CRM après dépôt. Elle indique qu’une erreur signalée se corrige en paie, en transmettant une DSN « annule et remplace » « avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant ». En cas d’incompréhension, la même page invite le déclarant à « contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel ».",
+      "claimIds": [
+        "claim-unit-c3c741fa7fe1-1",
+        "claim-unit-c3c741fa7fe1-2"
+      ]
+    },
+    {
+      "id": "unit-722e284a3410",
+      "text": "Cette fenêtre ne suffit pas à décider tous les cas. Son applicabilité dépend du moment, du type de correction et des instructions du retour ou de l’organisme. Le présent guide traite la DSN mensuelle ; il ne transpose pas cette fenêtre aux signalements d’événement ni à d’autres canaux. Dans le doute, gardez l’état bloquant et consultez la documentation ou l’interlocuteur officiel adapté.",
       "claimIds": []
     },
     {
@@ -203,18 +206,18 @@
       "claimIds": []
     },
     {
-      "id": "unit-3d712469febc",
-      "text": "Un écart inexpliqué ne doit être ni ignoré ni corrigé automatiquement.",
+      "id": "unit-62624d5184f5",
+      "text": "Un écart inexpliqué n’est ni ignoré ni corrigé d’office.",
       "claimIds": []
     },
     {
-      "id": "unit-7b3212efe585",
-      "text": "1. Passez l'état du contrôle à à arbitrer. 2. Identifiez la règle qui a déclenché le signalement et la donnée observée. 3. Recherchez la pièce, l'événement ou la référence datée susceptible de l'expliquer. 4. Attribuez l'arbitrage à une personne nommée dans le workflow du cabinet. 5. Après décision, conservez la justification, corrigez si nécessaire, puis rejouez les contrôles affectés. 6. Fermez seulement lorsque la preuve correspond au dernier fichier testé.",
+      "id": "unit-76301abd7315",
+      "text": "1. Passez l’état du contrôle à à arbitrer. 2. Identifiez la règle qui a déclenché le signalement et la donnée observée. 3. Recherchez la pièce, l’événement ou la référence datée susceptible de l’expliquer. 4. Attribuez l’arbitrage à une personne nommée dans le workflow du cabinet. 5. Après décision, conservez la justification, corrigez si nécessaire, puis rejouez les contrôles affectés. 6. Fermez seulement lorsque la preuve correspond au dernier fichier testé.",
       "claimIds": []
     },
     {
-      "id": "unit-750846f2a710",
-      "text": "La gravité reste un champ distinct, par exemple information, à traiter avant dépôt ou bloquant selon la règle du cabinet. Ces libellés sont des choix internes, pas des catégories réglementaires.",
+      "id": "unit-ff3f798ad0ab",
+      "text": "La gravité reste un champ distinct, par exemple information, à traiter avant dépôt ou bloquant selon la règle du cabinet. Ces libellés sont des choix du cabinet, écrits dans sa règle.",
       "claimIds": []
     },
     {
@@ -223,38 +226,33 @@
       "claimIds": []
     },
     {
-      "id": "unit-0d3799b3ed42",
-      "text": "La méthode Memlia propose six champs minimum : dossier, période, revue, résultat, preuve et décision. Ajoutez le responsable et l'horodatage si le circuit du cabinet en a besoin.",
+      "id": "unit-741d2e0dcc47",
+      "text": "Six champs suffisent au départ : dossier, période, revue, résultat, preuve et décision. Ajoutez le responsable et l’horodatage si le circuit du cabinet en a besoin.",
       "claimIds": []
     },
     {
-      "id": "unit-64bcba0cf821",
-      "text": "| Champ | Exemple fictif | Utilité | | --- | --- | --- | | Dossier | D-014 | Relier le contrôle sans afficher de nom dans la vue agrégée | | Période | 2026-08 | Empêcher la réutilisation d'une preuve d'un autre mois | | Revue | bulletin-écarts | Identifier la couche contrôlée | | Résultat | à arbitrer | Distinguer le signalement de la décision | | Preuve | P-014-08 | Retrouver l'élément dans le système autorisé | | Décision | expliqué après revue | Fermer explicitement l'écart |",
+      "id": "unit-f5622cfcd262",
+      "text": "| Champ | Exemple fictif | Utilité | | --- | --- | --- | | Dossier | D-014 | Relier le contrôle sans afficher de nom dans la vue agrégée | | Période | 2026-08 | Empêcher la réutilisation d’une preuve d’un autre mois | | Revue | bulletin-écarts | Identifier la couche contrôlée | | Résultat | à arbitrer | Distinguer le signalement de la décision | | Preuve | P-014-08 | Retrouver l’élément dans le système autorisé | | Décision | expliqué après revue | Fermer explicitement l’écart |",
       "claimIds": []
     },
     {
-      "id": "unit-921034bd5f30",
-      "text": "Le responsable de pôle peut ensuite suivre des volumes par état, sans classement nominatif. La structure d'une telle vue est détaillée dans le tableau de suivi de production sociale dans Excel.",
+      "id": "unit-decf2688e23c",
+      "text": "Le responsable de pôle suit ensuite des volumes par état, sans classement nominatif. La structure d’une telle vue est détaillée dans le tableau de suivi de production sociale.",
       "claimIds": []
     },
     {
-      "id": "unit-a1f4a9fa1059",
-      "text": "Ce qui peut être automatisé, et ce qui doit rester décidé",
+      "id": "unit-462114bfbd6f",
+      "text": "Ce qui s’automatise, ce qui attend une validation, ce qui reste humain",
       "claimIds": []
     },
     {
-      "id": "unit-420b31255170",
-      "text": "Une automatisation peut rapprocher des listes, comparer des périodes, appliquer une règle écrite, signaler une preuve absente et préparer une file d'exceptions. Elle doit montrer pourquoi un contrôle s'est déclenché et s'arrêter quand la règle ne permet pas de conclure.",
+      "id": "unit-02154597276b",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | | --- | --- | --- | | Le rapprochement des pièces et variables attendues avec celles reçues, dossier par dossier | La qualification de chaque écart signalé sur le bulletin | La correction dans l’outil de paie, et ce qu’elle engage pour un salarié | | La comparaison du bulletin avec sa période de référence, écarts listés avec leur rubrique | Le passage d’un contrôle à l’état expliqué | Le choix du canal et du moment d’une régularisation | | Le contrôle qu’un résultat Dsn-Val se rattache au dernier fichier, et la file des preuves manquantes | La clôture d’une revue dont tous les écarts ont une décision | L’autorisation du dépôt |",
       "claimIds": []
     },
     {
-      "id": "unit-998b0aff8f6b",
-      "text": "Le cabinet reste responsable de la qualification, de la correction dans l'outil de paie, du choix du canal et du moment de régularisation, puis du dépôt. Les outils existants restent le point de départ et les garanties du service excluent l'envoi silencieux.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-7e85667ef840",
-      "text": "Memlia peut coder la règle du cabinet, l'éprouver sur des cas fictifs puis l'intégrer à son environnement Excel. Le service ne fournit pas une validation juridique, ne corrige pas seul la paie et ne dépose pas la DSN. Le livrable utile est une mécanique de contrôle explicable que l'équipe valide.",
+      "id": "unit-9e6d5200471f",
+      "text": "Une automatisation montre pourquoi un contrôle s’est déclenché, et elle cesse quand la règle ne permet pas de conclure : c’est ce refus qui la rend fiable. Le cabinet garde la qualification, la correction, le canal et le dépôt.",
       "claimIds": []
     },
     {
@@ -263,38 +261,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-02911bcb93cf",
-      "text": "Commencer par Dsn-Val. Le format est testé avant les données qui l'alimentent.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-4ab86d2937b0",
-      "text": "Utiliser un seuil comme verdict. Une variation dépasse un repère interne, mais sa cause reste à qualifier.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-fe218edc389a",
-      "text": "Mélanger état et gravité. Déposé décrit l'avancement, pas la conformité.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-b02a66a0e204",
-      "text": "Corriger sans régénérer et retester. La preuve ne correspond plus au fichier final.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-022ec31fbd2f",
-      "text": "Appliquer automatiquement « annule et remplace ». Il faut d'abord vérifier que la fenêtre et le cas le permettent.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-1895e6d48a66",
-      "text": "Clore au dépôt. Les CRM disponibles doivent encore être lus, attribués et traités.",
-      "claimIds": []
-    },
-    {
-      "id": "unit-ef485304f043",
-      "text": "Conserver seulement « OK ». Personne ne peut savoir ce qui a été vérifié, sur quelle période et avec quelle preuve.",
+      "id": "unit-b45362c9057b",
+      "text": "- Commencer par Dsn-Val. Le format est testé avant les données qui l’alimentent. - Utiliser un seuil comme verdict. Une variation dépasse un repère interne, mais sa cause reste à qualifier. - Mélanger état et gravité. Déposé décrit l’avancement, pas la conformité. - Corriger sans régénérer et retester. La preuve ne correspond plus au fichier final. - Appliquer d’office « annule et remplace ». Il faut d’abord vérifier que la fenêtre et le cas le permettent. - Clore au dépôt. Les CRM disponibles restent à lire, à attribuer et à traiter. - Conserver seulement « OK ». Personne ne peut savoir ce qui a été vérifié, sur quelle période et avec quelle preuve.",
       "claimIds": []
     },
     {
@@ -318,8 +286,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-c9de84fea2ab",
-      "text": "Le cabinet définit le périmètre à partir des zones sensibles du dossier, des événements du mois, des rubriques attendues et des écarts par rapport à une période pertinente. Une checklist générique ne remplace pas cette règle documentée.",
+      "id": "unit-eb92d127a972",
+      "text": "Le cabinet définit le périmètre à partir des zones sensibles du dossier, des événements du mois, des rubriques attendues et des écarts par rapport à une période pertinente. Cette règle, écrite dans les mots du cabinet, vaut mieux qu’une checklist générique : elle nomme les rubriques qui comptent pour ce dossier.",
       "claimIds": []
     },
     {
@@ -328,18 +296,18 @@
       "claimIds": []
     },
     {
-      "id": "unit-a6c81149f06b",
-      "text": "Recalculez si nécessaire, régénérez le fichier et rejouez les contrôles affectés. Conservez la preuve du dernier candidat, pas celle d'une version devenue obsolète.",
+      "id": "unit-0bafe0587fe6",
+      "text": "Recalculez si nécessaire, régénérez le fichier et rejouez les contrôles affectés. Conservez la preuve du dernier candidat, pas celle d’une version devenue obsolète.",
       "claimIds": []
     },
     {
-      "id": "unit-15b5f0a5eab3",
-      "text": "Jusqu'à quand utiliser une DSN « annule et remplace » ?",
+      "id": "unit-5be50720dcb8",
+      "text": "Jusqu’à quand utiliser une DSN « annule et remplace » ?",
       "claimIds": []
     },
     {
-      "id": "unit-ee45427aefa2",
-      "text": "Pour la DSN mensuelle, la source Net-entreprises consultée le 15 septembre 2026 indique une retransmission avant minuit la veille de l'échéance si cela est encore possible. Le type de correction, le canal et les instructions de l'organisme doivent être vérifiés pour le cas traité. Ce guide ne généralise pas cette fenêtre aux signalements d'événement.",
+      "id": "unit-3a698fd235b1",
+      "text": "Pour la DSN mensuelle, la page de Net-entreprises consultée le 17 septembre 2026 indique une retransmission avant minuit la veille de l’échéance si cela est encore possible. Le type de correction, le canal et les instructions de l’organisme restent à vérifier pour le cas traité ; ce guide ne généralise pas cette fenêtre aux signalements d’événement.",
       "claimIds": []
     },
     {
@@ -348,8 +316,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-26ef24edcd10",
-      "text": "Avant dépôt, lorsque les trois revues sont closes sur le fichier exact à transmettre. Après dépôt, lorsque chaque CRM disponible a été lu et qu'une action, une échéance, un responsable et une preuve de clôture ont été renseignés.",
+      "id": "unit-0b214968b977",
+      "text": "Avant dépôt, lorsque les trois revues sont closes sur le fichier exact à transmettre. Après dépôt, lorsque chaque CRM disponible a été lu et qu’une action, une échéance, un responsable et une preuve de clôture ont été renseignés.",
       "claimIds": []
     },
     {
@@ -358,53 +326,68 @@
       "claimIds": []
     },
     {
-      "id": "unit-754027f3b052",
-      "text": "| Étape | Contrôle | Preuve | Exception | Décision | | --- | --- | --- | --- | --- | | Préparer | Dossier, période, échéance et responsables identifiés | Référence datée | Échéance ou rôle incertain | Bloquer et faire préciser | | Revue 1 | Pièces, événements et variables rapprochés | Pièce ou instruction | Absence ou contradiction | Saisir, différer ou arbitrer | | Revue 2 | Rubriques applicables et écarts qualifiés | Cause, référence et recalcul | Écart inexpliqué | Corriger ou confier au responsable | | Revue 3 | Fichier final testé avec l'outil applicable | Identifiant du fichier et résultat | Anomalie ou ancien résultat | Corriger, régénérer et retester | | Après dépôt | CRM lus et attribués | Retour, action et échéance | Canal ou correction incertain | Consulter l'organisme ou l'éditeur | | Fermer | Preuves alignées sur le dernier fichier | Trace complète | Champ manquant | Garder le dossier ouvert |",
+      "id": "unit-2a01531a950c",
+      "text": "| Étape | Contrôle | Preuve | Exception | Décision | | --- | --- | --- | --- | --- | | Préparer | Dossier, période, échéance et responsables identifiés | Référence datée | Échéance ou rôle incertain | Bloquer et faire préciser | | Revue 1 | Pièces, événements et variables rapprochés | Pièce ou instruction | Absence ou contradiction | Saisir, différer ou arbitrer | | Revue 2 | Rubriques applicables et écarts qualifiés | Cause, référence et recalcul | Écart inexpliqué | Corriger ou confier au responsable | | Revue 3 | Fichier final testé avec l’outil applicable | Identifiant du fichier et résultat | Anomalie ou ancien résultat | Corriger, régénérer et retester | | Après dépôt | CRM lus et attribués | Retour, action et échéance | Canal ou correction incertain | Consulter l’organisme ou l’éditeur | | Fermer | Preuves alignées sur le dernier fichier | Trace complète | Champ manquant | Garder le dossier ouvert |",
       "claimIds": []
     },
     {
-      "id": "unit-e4c4a69d1781",
-      "text": "Cette séquence rend le contrôle rejouable : la mécanique détecte et rassemble ; la personne qualifie, décide et autorise le dépôt.",
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2ec630487c0f",
+      "text": "Trois revues closes sur le fichier exact à transmettre, un écart toujours expliqué, corrigé puis retesté ou confié à une personne nommée, et une trace qui se rattache au dernier fichier. La mécanique détecte et rassemble ; la personne qualifie, décide et autorise le dépôt.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-19433ca3d510",
+      "text": "Ce contrôle est l’une des sept familles du pôle paie et social de la carte des tâches automatisables d’un cabinet. Il commence là où finit la collecte des pièces, dont la relance des variables de paie est la jumelle, et il ouvre sur la lecture des comptes rendus métier après dépôt ; le contrôle avant DSN et Dsn-Val sont définis au glossaire. Nous prenons cette tâche entière : nous écrivons la règle de contrôle de votre cabinet dans vos mots, rubriques sensibles, seuils et responsables compris, nous l’automatisons dans les outils que votre pôle social utilise déjà, vos gestionnaires la recettent sur des cas fictifs puis sur vos dossiers, et nous la maintenons. Vous gardez la qualification des écarts, la correction et le dépôt. C’est la méthode, et ce sont nos engagements : rien ne part sans validation.",
       "claimIds": []
     }
   ],
   "claims": [
     {
-      "id": "dsn-definition",
-      "unitId": "unit-8c494c49919c",
-      "claim": "la DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie",
+      "id": "claim-unit-f853bef5785e-1",
+      "unitId": "unit-f853bef5785e",
+      "claim": "est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie",
       "type": "dsn",
       "sourceIds": [
         "service-public-dsn"
       ],
       "sourceExcerpts": {
-        "service-public-dsn": "La DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie."
+        "service-public-dsn": "est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie"
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "service-public-dsn",
             "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
             "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
-            "excerpt": "La DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie.",
-            "context": "La DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie. Elle permet à l’employeur de payer les cotisations sociales et de transmettre de manière sécurisée aux organismes sociaux (Urssaf, CPAM, France Travail, etc.) les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.",
-            "contextSha256": "e1057b2230d5ed57257bcf613efaf8c8d7bac22cda098d858e6450ea10fc7cc7",
+            "excerpt": "est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie",
+            "context": "              class=\"fr-tooltip fr-placement\" role=\"tooltip\">: titleContent</span></abbr> est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie. Elle permet à l’employeur de payer les cotisations sociales et de transmettre de manière sécurisée aux organismes sociaux (<abbr class=\"sp-tooltip\" id=\"sp-tooltip-R44849-WZPBJ\"",
+            "contextSha256": "24e27f93db8ead394d528c1644181e750e9e32c1faf36777ed287fc362f37164",
             "citation": {
-              "text": "La DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie.",
-              "sha256": "895507302ed0fdf293efff118413831b4d4a827c5c3525ccfec5c808a49038f8",
-              "sourceContentSha256": "52596510c8fd59e0bdd52ebe7301acb13d7acfd2d8c8565e98538132bc3f2d67",
+              "text": "est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie",
+              "sha256": "c07a70557c38bb905bd985d24e841543cce58a6efd61ea1889389644da0bb059",
+              "sourceContentSha256": "e58d59600898f1c2dbe43c3aa9c011e4f7cafc995cd14106a36e09fb203af50a",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
-                "checkedAt": "2026-09-13",
+                "checkedAt": "2026-09-17",
                 "title": "Déclaration sociale nominative (DSN)",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 10,
-                  "endLine": 10
+                  "startLine": 308,
+                  "endLine": 308
                 }
               }
             },
@@ -415,56 +398,57 @@
                 "realisee",
                 "mois",
                 "partir",
-                "donnees"
+                "donnees",
+                "liees",
+                "paie"
               ],
-              "translationTerms": [],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 308 de la copie locale de Service Public, porte les mêmes entités que le claim (declaration, ligne, realisee, mois, partir, donnees, liees, paie) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "Définition de la DSN citée mot pour mot depuis la fiche Service-Public, relue le jour de la republication.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     },
     {
-      "id": "dsn-logiciel-compatible",
-      "unitId": "unit-8c494c49919c",
+      "id": "claim-unit-f853bef5785e-2",
+      "unitId": "unit-f853bef5785e",
       "claim": "un logiciel de paie compatible avec la DSN est nécessaire",
       "type": "dsn",
       "sourceIds": [
         "service-public-dsn"
       ],
       "sourceExcerpts": {
-        "service-public-dsn": "\nLa DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie. Elle permet à l’employeur de payer les cotisations sociales et de transmettre de manière sécurisée aux organismes sociaux (Urssaf, CPAM, France Travail, etc.) les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.\n"
+        "service-public-dsn": "les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire."
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "service-public-dsn",
             "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
             "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
-            "excerpt": "\nLa DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie. Elle permet à l’employeur de payer les cotisations sociales et de transmettre de manière sécurisée aux organismes sociaux (Urssaf, CPAM, France Travail, etc.) les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.\n",
-            "context": "\nLa DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie. Elle permet à l’employeur de payer les cotisations sociales et de transmettre de manière sécurisée aux organismes sociaux (Urssaf, CPAM, France Travail, etc.) les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.\n",
-            "contextSha256": "ac9216855a7633e899e98c67f8a135a80376e97da5e1eb6a729a4149979803e0",
+            "excerpt": "les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.",
+            "context": "              class=\"fr-tooltip fr-placement\" role=\"tooltip\">: titleContent</span></abbr>, France Travail, etc.) les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.</p></div><div class=\"fr-my-4w\" id=\"expired\"",
+            "contextSha256": "30f0647c2013852e8e72e3525fb78984ef3832eef476b7e4014a6277b76bdd53",
             "citation": {
-              "text": "\nLa DSN est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie. Elle permet à l’employeur de payer les cotisations sociales et de transmettre de manière sécurisée aux organismes sociaux (Urssaf, CPAM, France Travail, etc.) les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.\n",
-              "sha256": "ac9216855a7633e899e98c67f8a135a80376e97da5e1eb6a729a4149979803e0",
-              "sourceContentSha256": "52596510c8fd59e0bdd52ebe7301acb13d7acfd2d8c8565e98538132bc3f2d67",
+              "text": "les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.",
+              "sha256": "8b023f6121ebce63d11d2d6b429ba7cf3daf0a2a66bbe9b588ced030b0e53858",
+              "sourceContentSha256": "e58d59600898f1c2dbe43c3aa9c011e4f7cafc995cd14106a36e09fb203af50a",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
-                "checkedAt": "2026-09-13",
+                "checkedAt": "2026-09-17",
                 "title": "Déclaration sociale nominative (DSN)",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 9,
-                  "endLine": 11
+                  "startLine": 312,
+                  "endLine": 312
                 }
               }
             },
@@ -475,22 +459,21 @@
                 "compatible",
                 "necessaire"
               ],
-              "translationTerms": [],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 312 de la copie locale de Service Public, porte les mêmes entités que le claim (logiciel, paie, compatible, necessaire) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "La fiche Service-Public pose la dépendance de la DSN au logiciel de paie, d’où l’ordre des revues.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     },
     {
-      "id": "dsn-val-test",
-      "unitId": "unit-ea11f0bd83c2",
-      "claim": "l'outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer",
+      "id": "claim-unit-f5aaef967736-1",
+      "unitId": "unit-f5aaef967736",
+      "claim": "l’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer",
       "type": "dsn",
       "sourceIds": [
         "net-entreprises-dsn-val"
@@ -498,31 +481,31 @@
       "sourceExcerpts": {
         "net-entreprises-dsn-val": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer."
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-dsn-val",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
             "excerpt": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
-            "context": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
-            "contextSha256": "08abfcd2ebdbd0882d3eca5eee568fa87f56ace903771057a10db239c1516a6e",
+            "context": "<p>L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.</p>",
+            "contextSha256": "f566bbef2d076729f66f7a714d01a4b3e140a318d0d6bfd2cd8680c456501dd2",
             "citation": {
               "text": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
               "sha256": "893f99eabd891f24099976f4a6929fa77d2c407d17fc2218d8b85d1d198d7065",
-              "sourceContentSha256": "1cfd881918e97b8283714964eb46f7e74d4ce5a484f0239dde504adf7469eb18",
+              "sourceContentSha256": "f6d761e89724550a8b9fd454dabbcd3d218de1486b79a191a243ed502d113608",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-                "checkedAt": "2026-09-13",
+                "checkedAt": "2026-09-17",
                 "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 13,
-                  "endLine": 13
+                  "startLine": 1011,
+                  "endLine": 1011
                 }
               }
             },
@@ -533,23 +516,23 @@
                 "permet",
                 "tester",
                 "fichier",
-                "avant"
+                "avant",
+                "deposer"
               ],
-              "translationTerms": [],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 1011 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (outil, controle, permet, tester, fichier, avant, deposer) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "Rôle de Dsn-Val décrit par Net-entreprises, cité mot pour mot.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     },
     {
-      "id": "dsn-val-portee",
-      "unitId": "unit-ea11f0bd83c2",
+      "id": "claim-unit-f5aaef967736-2",
+      "unitId": "unit-f5aaef967736",
       "claim": "les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé",
       "type": "dsn",
       "sourceIds": [
@@ -558,31 +541,31 @@
       "sourceExcerpts": {
         "net-entreprises-dsn-val": "Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé."
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-dsn-val",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
             "excerpt": "Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
-            "context": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
-            "contextSha256": "08abfcd2ebdbd0882d3eca5eee568fa87f56ace903771057a10db239c1516a6e",
+            "context": "<p>L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.</p>",
+            "contextSha256": "f566bbef2d076729f66f7a714d01a4b3e140a318d0d6bfd2cd8680c456501dd2",
             "citation": {
               "text": "Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
               "sha256": "28c0304ec003ebd1cc6dbd6af548813560591a93d36bed1779583bf0c1bbb23b",
-              "sourceContentSha256": "1cfd881918e97b8283714964eb46f7e74d4ce5a484f0239dde504adf7469eb18",
+              "sourceContentSha256": "f6d761e89724550a8b9fd454dabbcd3d218de1486b79a191a243ed502d113608",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-                "checkedAt": "2026-09-13",
+                "checkedAt": "2026-09-17",
                 "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 13,
-                  "endLine": 13
+                  "startLine": 1011,
+                  "endLine": 1011
                 }
               }
             },
@@ -593,24 +576,26 @@
                 "portent",
                 "cahier",
                 "technique",
-                "journal"
+                "journal",
+                "maintenance",
+                "norme",
+                "associe"
               ],
-              "translationTerms": [],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 1011 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (controles, effectues, portent, cahier, technique, journal, maintenance, norme, associe) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "Périmètre des contrôles de Dsn-Val, cité mot pour mot depuis la même page.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     },
     {
-      "id": "crm-definition",
-      "unitId": "unit-b616e8ae44f3",
-      "claim": "un rapport permettant à l'organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu'une erreur ou suspicion d'erreur est détectée",
+      "id": "claim-unit-8e25db1cb634-1",
+      "unitId": "unit-8e25db1cb634",
+      "claim": "un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée",
       "type": "dsn",
       "sourceIds": [
         "net-entreprises-crm"
@@ -618,31 +603,31 @@
       "sourceExcerpts": {
         "net-entreprises-crm": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-crm",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
             "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
-            "context": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.",
-            "contextSha256": "316a86f81d7fe9ac870a7745a94d71f78ee0f4d85ad19deccc5fa5f684aa781c",
+            "context": "            Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.         </a>",
+            "contextSha256": "4fcba10565e40fd4346871b2454d6c3db8e75a4b843366395b6aa8ddc454fc91",
             "citation": {
               "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
               "sha256": "ef509c5e2bb80ff3b9aebd039458d169e786ca17dbb00478b7c5774d8192c754",
-              "sourceContentSha256": "051420495dd724bc51804d3f7a62d336da97d0dd925c785b8ddb3569366ba54a",
+              "sourceContentSha256": "caac4575cacb501c6fe8a5cb119b5a8da2fbf80b96f6363c6a28e7fb93ff8d8f",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-                "checkedAt": "2026-09-13",
-                "title": "Les Comptes Rendus Métiers DSN",
+                "checkedAt": "2026-09-17",
+                "title": "Les comptes rendus métiers DSN",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 6,
-                  "endLine": 6
+                  "startLine": 156,
+                  "endLine": 156
                 }
               }
             },
@@ -653,56 +638,63 @@
                 "organisme",
                 "administration",
                 "concernee",
-                "retour"
+                "retour",
+                "declarants",
+                "reception",
+                "leur",
+                "declaration",
+                "lorsqu",
+                "erreur",
+                "suspicion",
+                "detectee"
               ],
-              "translationTerms": [],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 156 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (rapport, permettant, organisme, administration, concernee, retour, declarants, reception, leur, declaration, lorsqu, erreur, suspicion, detectee) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "Définition officielle du compte rendu métier par Net-entreprises.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     },
     {
-      "id": "crm-traitement",
-      "unitId": "unit-b616e8ae44f3",
+      "id": "claim-unit-8e25db1cb634-2",
+      "unitId": "unit-8e25db1cb634",
       "claim": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM",
       "type": "dsn",
       "sourceIds": [
         "net-entreprises-crm"
       ],
       "sourceExcerpts": {
-        "net-entreprises-crm": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration en sortie des DSN ou signalement transmises afin d’effectuer par la suite les corrections nécessaires si besoin"
+        "net-entreprises-crm": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration"
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-crm",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-            "excerpt": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration en sortie des DSN ou signalement transmises afin d’effectuer par la suite les corrections nécessaires si besoin",
-            "context": "Pour autant, en l’état même du système il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration en sortie des DSN ou signalement transmises afin d’effectuer par la suite les corrections nécessaires si besoin.",
-            "contextSha256": "81e272b4f617202dc5348c39a2f52b541e21f7fb6303f35a13a4e584f2504390",
+            "excerpt": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration",
+            "context": "<p>Pour autant, en l’état même du système il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration en sortie des DSN ou signalement transmises afin d’effectuer par la suite les corrections nécessaires si besoin.</p>",
+            "contextSha256": "ee45e3c54309c542788991027bee47d68a15fa841d7c191646926f6b662ca43a",
             "citation": {
-              "text": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration en sortie des DSN ou signalement transmises afin d’effectuer par la suite les corrections nécessaires si besoin",
-              "sha256": "1a8eb4a05607dcd563de3131ee22738058c5a233a911da88fcc8fd89deadbe3a",
-              "sourceContentSha256": "051420495dd724bc51804d3f7a62d336da97d0dd925c785b8ddb3569366ba54a",
+              "text": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration",
+              "sha256": "acb394465b9534262b1d1a144f167055feece9ee93b5041d38d7711530d100ce",
+              "sourceContentSha256": "caac4575cacb501c6fe8a5cb119b5a8da2fbf80b96f6363c6a28e7fb93ff8d8f",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-                "checkedAt": "2026-09-13",
-                "title": "Les Comptes Rendus Métiers DSN",
+                "checkedAt": "2026-09-17",
+                "title": "Les comptes rendus métiers DSN",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 18,
-                  "endLine": 18
+                  "startLine": 994,
+                  "endLine": 994
                 }
               }
             },
@@ -715,141 +707,144 @@
                 "mises",
                 "evidence"
               ],
-              "translationTerms": [],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 994 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (essentiel, declarants, traiter, anomalies, mises, evidence) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "Obligation de traitement des anomalies des CRM, formulée par Net-entreprises.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     },
     {
-      "id": "dsn-fiabilisation-sequence",
-      "unitId": "unit-c96217f4b6ea",
-      "claim": "les contrôles avant dépôt",
+      "id": "claim-unit-c3c741fa7fe1-1",
+      "unitId": "unit-c3c741fa7fe1",
+      "claim": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant",
       "type": "dsn",
       "sourceIds": [
         "net-entreprises-fiabilisation"
       ],
       "sourceExcerpts": {
-        "net-entreprises-fiabilisation": "En réalisant des contrôles avant le dépôt de la DSN grâce aux outils de contrôles DSN-val et DSN-FPOC disponibles sur le site ou directement intégrés aux logiciels de paie."
+        "net-entreprises-fiabilisation": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant."
       },
-      "checkedAt": "2026-09-13",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-fiabilisation",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-            "excerpt": "En réalisant des contrôles avant le dépôt de la DSN grâce aux outils de contrôles DSN-val et DSN-FPOC disponibles sur le site ou directement intégrés aux logiciels de paie.",
-            "context": "En réalisant des contrôles avant le dépôt de la DSN grâce aux outils de contrôles DSN-val et DSN-FPOC disponibles sur le site ou directement intégrés aux logiciels de paie.",
-            "contextSha256": "b6c53da1201dcf3cdcf3cf5c8ed9a969d5d027135454d8cdd6e9a6f612aef53d",
+            "excerpt": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
+            "context": "<li>En corrigeant <u>au plus tôt</u> les erreurs signalées en réalisant la modification en paie et en transmettant une DSN « annule et remplace » avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.</li>",
+            "contextSha256": "263996c2fc19df2c9309d3c238f0176c28b48625266d7311be2c8fcc65d64545",
             "citation": {
-              "text": "En réalisant des contrôles avant le dépôt de la DSN grâce aux outils de contrôles DSN-val et DSN-FPOC disponibles sur le site ou directement intégrés aux logiciels de paie.",
-              "sha256": "b6c53da1201dcf3cdcf3cf5c8ed9a969d5d027135454d8cdd6e9a6f612aef53d",
-              "sourceContentSha256": "1ebde6ce11d34a25d9c025262642c88b2880fd778caf61edc0e6d7abc4770f1d",
+              "text": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
+              "sha256": "0a60eada4f445fa37d853caa0d214039ff76e44db4b0063797cd0a1c7815f3ec",
+              "sourceContentSha256": "ea4259c79972324851fa69a38a77ef0c3b12123fbca16813b7bcc57990a52fd2",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-                "checkedAt": "2026-09-13",
+                "checkedAt": "2026-09-17",
                 "title": "La fiabilisation des données de la DSN",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 19,
-                  "endLine": 19
+                  "startLine": 1031,
+                  "endLine": 1031
                 }
               }
             },
             "justification": {
               "sharedTerms": [
-                "controles",
-                "avant",
-                "depot"
-              ],
-              "translationTerms": [],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
-            },
-            "verdict": "SUPPORTED",
-            "supportsClaim": true,
-            "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
-          }
-        ]
-      }
-    },
-    {
-      "id": "dsn-annule-remplace",
-      "unitId": "unit-c96217f4b6ea",
-      "claim": "retransmise en « annule et remplace » avant minuit la veille de l'échéance si cela est encore possible",
-      "type": "dsn",
-      "sourceIds": [
-        "net-entreprises-fiabilisation"
-      ],
-      "sourceExcerpts": {
-        "net-entreprises-fiabilisation": "En corrigeant au plus tôt les erreurs signalées en réalisant la modification en paie et en transmettant une DSN « annule et remplace » avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant."
-      },
-      "checkedAt": "2026-09-13",
-      "status": "PASS",
-      "factCheck": {
-        "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-13",
-        "sourceResults": [
-          {
-            "sourceId": "net-entreprises-fiabilisation",
-            "sourceUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-            "verifiedUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-            "excerpt": "En corrigeant au plus tôt les erreurs signalées en réalisant la modification en paie et en transmettant une DSN « annule et remplace » avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
-            "context": "En corrigeant au plus tôt les erreurs signalées en réalisant la modification en paie et en transmettant une DSN « annule et remplace » avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
-            "contextSha256": "003ab13214eeda86719cee76237e230ea1f80a5d81f94204a2f5a455eaa03f93",
-            "citation": {
-              "text": "En corrigeant au plus tôt les erreurs signalées en réalisant la modification en paie et en transmettant une DSN « annule et remplace » avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
-              "sha256": "003ab13214eeda86719cee76237e230ea1f80a5d81f94204a2f5a455eaa03f93",
-              "sourceContentSha256": "1ebde6ce11d34a25d9c025262642c88b2880fd778caf61edc0e6d7abc4770f1d",
-              "coordinates": {
-                "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-                "checkedAt": "2026-09-13",
-                "title": "La fiabilisation des données de la DSN",
-                "locator": {
-                  "kind": "line-range",
-                  "startLine": 24,
-                  "endLine": 24
-                }
-              }
-            },
-            "justification": {
-              "sharedTerms": [
-                "annule",
-                "remplace",
                 "avant",
                 "minuit",
                 "veille",
-                "echeance"
+                "echeance",
+                "cela",
+                "encore",
+                "possible",
+                "echeant",
+                "correction",
+                "pourra",
+                "realisee",
+                "mois",
+                "suivant"
               ],
-              "translationTerms": [],
-              "reasoning": "La citation officielle reprend les termes métier centraux, avec les correspondances de traduction explicites si la source est en anglais."
+              "reasoning": "La citation, relevée à la ligne 1031 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (avant, minuit, veille, echeance, cela, encore, possible, echeant, correction, pourra, realisee, mois, suivant) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "La copie officielle vérifiée contient explicitement la proposition attribuée dans le candidat.",
-            "checkedAt": "2026-09-13"
+            "explanation": "Fenêtre de retransmission « annule et remplace » et report au mois suivant, cités mot pour mot depuis la page de fiabilisation.",
+            "checkedAt": "2026-09-17"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-c3c741fa7fe1-2",
+      "unitId": "unit-c3c741fa7fe1",
+      "claim": "contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-fiabilisation"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-fiabilisation": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel."
+      },
+      "checkedAt": "2026-09-17",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-17",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-fiabilisation",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+            "excerpt": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
+            "context": "<li>En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.</li>",
+            "contextSha256": "019c8fcb678b79348973b4e1ab6e07485c31be7cf6dbe3723f06eead6c35e3b1",
+            "citation": {
+              "text": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
+              "sha256": "bb9fec5b0347c9d1d02e0020a766c08ffbaa4c0a202f3e6d07880bcce5331631",
+              "sourceContentSha256": "ea4259c79972324851fa69a38a77ef0c3b12123fbca16813b7bcc57990a52fd2",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+                "checkedAt": "2026-09-17",
+                "title": "La fiabilisation des données de la DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1028,
+                  "endLine": 1028
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "contacter",
+                "organisme",
+                "comprendre",
+                "retour",
+                "metier",
+                "editeur",
+                "accompagnement",
+                "usage",
+                "logiciel"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1028 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (contacter, organisme, comprendre, retour, metier, editeur, accompagnement, usage, logiciel) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Répartition organisme / éditeur recommandée par Net-entreprises en cas d’incompréhension d’un retour.",
+            "checkedAt": "2026-09-17"
           }
         ]
       }
     }
-  ],
-  "adoption": {
-    "originalPath": "preuves/inherited/claims.json",
-    "originalSha256": "129b0412b09d691f2dd7017ad46f87bf0dba6294b26f8d035fc0fd61f0e996ec",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  ]
 }

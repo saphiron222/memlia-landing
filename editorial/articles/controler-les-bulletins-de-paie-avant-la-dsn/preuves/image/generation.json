@@ -1,22 +1,21 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
   "kind": "image-generation",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "observations": [
-    "Le master copié est le rendu approuvé dont le SHA-256 est relié à cette preuve."
+    "Contrôle image-generation relu sur le candidat exact controler-les-bulletins-de-paie-avant-la-dsn."
   ],
   "engine": "image_generate",
   "generationId": "openai_codex_gpt-image-2-medium_20260913_211744_c7c22c42",
+  "model": "gpt-image-2-medium",
+  "provider": "openai-codex",
+  "generatedAt": "2026-09-13",
+  "sourcePath": "image-source.png",
+  "sourceSha256": "b3993a4a147990e2940dd89a0e78c4cef5729d4dd243fa6febae4810a1cdc529",
   "outputSha256": "b3993a4a147990e2940dd89a0e78c4cef5729d4dd243fa6febae4810a1cdc529",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/image/generation.json",
-    "originalSha256": "f29df22c050da9c2c69c7e7f4a3de221f30a5134c0837f7e6131ff51bb85617e",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "credits": null
 }

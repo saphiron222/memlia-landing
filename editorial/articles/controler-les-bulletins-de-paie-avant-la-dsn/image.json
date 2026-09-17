@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
-  "manifestSha256": "a37527627ab5bca5700b60f4b71f51f20ce239c7aa69d558fc94963901e62a0e",
+  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
+  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
   "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
@@ -22,53 +22,22 @@
   },
   "variants": [
     {
-      "path": "preuves/image/img-23-controle-bulletins-paie-768.avif",
+      "path": "preuves/image/hero-768.avif",
       "width": 768,
       "height": 432,
       "format": "avif"
     },
     {
-      "path": "preuves/image/img-23-controle-bulletins-paie-768.webp",
+      "path": "preuves/image/hero-768.webp",
       "width": 768,
       "height": 432,
-      "format": "webp"
-    },
-    {
-      "path": "preuves/image/img-23-controle-bulletins-paie-1200.avif",
-      "width": 1200,
-      "height": 675,
-      "format": "avif"
-    },
-    {
-      "path": "preuves/image/img-23-controle-bulletins-paie-1200.webp",
-      "width": 1200,
-      "height": 675,
-      "format": "webp"
-    },
-    {
-      "path": "preuves/image/img-23-controle-bulletins-paie-1600.avif",
-      "width": 1600,
-      "height": 900,
-      "format": "avif"
-    },
-    {
-      "path": "preuves/image/img-23-controle-bulletins-paie-1600.webp",
-      "width": 1600,
-      "height": 900,
       "format": "webp"
     }
   ],
   "alt": "Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN.",
   "score": 100,
   "directionArt": 18,
-  "semanticRelevance": 23,
+  "semanticRelevance": 22,
   "p0": [],
-  "kevinApproved": true,
-  "adoption": {
-    "originalPath": "preuves/inherited/image.json",
-    "originalSha256": "fda9ded60ac7c73c12625ee7242ee5bd3aee774e1e3e0920655df7fad32b8f0e",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "kevinApproved": true
 }

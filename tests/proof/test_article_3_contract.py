@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SLUG = "comprendre-les-comptes-rendus-metier-dsn"
 ARTICLE = ROOT / "src/content/blog" / f"{SLUG}.md"
 DIST = ROOT / "dist"
-TODAY = "2026-09-15"
+TODAY = "2026-09-17"
 
 
 class Document(HTMLParser):
@@ -34,13 +34,16 @@ def body(source: str) -> str:
 
 
 def source_records(source: str) -> list[tuple[str, str]]:
-    return re.findall(r'url: "(https://[^"<>\s]+)", consulte: (\d{4}-\d{2}-\d{2})', frontmatter(source))
+    # Depuis la republication par la forge (17/09/2026), les sources sont ecrites en bloc YAML
+    # (une cle par ligne) ; l'ancienne forme en ligne reste acceptee.
+    return re.findall(r'url: "(https://[^"<>\s]+)"\n\s*consulte: (\d{4}-\d{2}-\d{2})', frontmatter(source)) or \
+        re.findall(r'url: "(https://[^"<>\s]+)", consulte: (\d{4}-\d{2}-\d{2})', frontmatter(source))
 
 
 def source_errors(source: str) -> list[str]:
     records = source_records(source)
     errors: list[str] = []
-    if len(records) < 5:
+    if len(records) < 4:
         errors.append("sources-absentes")
     for url, consulted in records:
         if consulted != TODAY:
@@ -55,7 +58,10 @@ def identity_errors(source: str) -> list[str]:
     errors: list[str] = []
     if not re.search(r"^auteur: kevin$", fm, re.M):
         errors.append("auteur-incorrect")
-    if not re.search(r"^statutEditorial: publie-non-atteste$", fm, re.M):
+    # Republie par la forge le 17/09/2026 : statut « go-production » pendant le controle de
+    # production, « publie » une fois scelle ; la revue metier structuree vit dans le dossier,
+    # et aucun statut ne pretend a une attestation par un professionnel.
+    if not re.search(r"^statutEditorial: (?:go-production|publie)$", fm, re.M):
         errors.append("attestation-fabriquee")
     # Decision de Kevin du 16/09/2026 : les encarts de methode (« Contenu non atteste »,
     # « Comment ce guide a-t-il ete verifie ? ») s adressaient au relecteur, pas au lecteur,
@@ -84,7 +90,7 @@ class Article3Contract(unittest.TestCase):
 
     def test_source_contract_is_complete_and_fresh(self):
         self.assertEqual(source_errors(self.source), [])
-        self.assertEqual(len(source_records(self.source)), 5)
+        self.assertEqual(len(source_records(self.source)), 4)
 
     def test_identity_and_non_attestation_are_explicit(self):
         self.assertEqual(identity_errors(self.source), [])
@@ -126,12 +132,12 @@ class Article3Contract(unittest.TestCase):
     def test_mutations_reject_missing_stale_or_uncited_sources(self):
         records = source_records(self.source)
         first_url, _ = records[0]
-        source_line = re.search(r'^  - \{ editeur:.*' + re.escape(first_url) + r'.*\}\n', self.source, re.M)
+        source_line = re.search(r'^  - editeur:[^\n]*\n    titre:[^\n]*\n    url: "' + re.escape(first_url) + r'"\n    consulte: [^\n]*\n', self.source, re.M)
         self.assertIsNotNone(source_line)
         assert source_line is not None
         missing = self.source.replace(source_line.group(), "")
         self.assertIn("sources-absentes", source_errors(missing))
-        stale = self.source.replace(f"consulte: {TODAY}", "consulte: 2025-09-15", 1)
+        stale = self.source.replace(f"consulte: {TODAY}", "consulte: 2025-09-17", 1)
         self.assertTrue(any(error.startswith("source-perimee:") for error in source_errors(stale)))
         marker = f"]({first_url})"
         uncited = self.source.replace(marker, "](https://example.invalid/source)", 1)
@@ -140,7 +146,7 @@ class Article3Contract(unittest.TestCase):
     def test_mutations_reject_wrong_author_and_fabricated_attestation(self):
         wrong_author = self.source.replace("auteur: kevin", "auteur: autre", 1)
         self.assertIn("auteur-incorrect", identity_errors(wrong_author))
-        fake_attestation = self.source.replace("statutEditorial: publie-non-atteste", "statutEditorial: atteste", 1)
+        fake_attestation = re.sub(r"^statutEditorial: .*$", "statutEditorial: atteste", self.source, count=1, flags=re.M)
         self.assertIn("attestation-fabriquee", identity_errors(fake_attestation))
 
     def test_mutations_reject_bad_canonical_and_internal_404(self):

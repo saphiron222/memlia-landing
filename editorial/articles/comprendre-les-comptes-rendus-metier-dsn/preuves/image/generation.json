@@ -1,19 +1,21 @@
 {
   "version": 1,
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
-  "articleSha256": "bd71665a08a424ad6482e5796c0576c05051b2e9d6f78972be0e3a01166e958b",
-  "manifestSha256": "f81d6063aec068872cdb9dbaaa62fcdf386d1c394d9cfddb2a4067be82dbac32",
   "kind": "image-generation",
   "status": "PASS",
-  "checkedAt": "2026-09-15",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "c7055d564b5249a1f8b2399a58f7f4db5827f7927e4a49e06abbff5b5e31be91",
+  "manifestSha256": "23f90957b7523de8047c1bb2b304b3ced0e26778ddb5d344bfc2881739bea513",
+  "observations": [
+    "Contrôle image-generation relu sur le candidat exact comprendre-les-comptes-rendus-metier-dsn."
+  ],
   "engine": "image_generate",
   "generationId": "openai_codex_gpt-image-2-medium_20260915_111346_25aea5fd",
-  "sourcePath": "/Users/kevinkitanga/.hermes/profiles/marketing/cache/images/openai_codex_gpt-image-2-medium_20260915_111346_25aea5fd.png",
-  "sourceSha256": "2fd9cc0e88fe90cd1732326c534e0ebb1fd46c8085c58cccd4c0b69b9d8d8a87",
-  "masterSha256": "e78cf4ee9ca6091ff0cac9814c0a17344b68a841d64ee4a411d03885596b58dd",
-  "ogSha256": "1ca85d16c7fdc050a7725f58aceba1e50d2e6c36f7f7457c9b6d385e0279a68c",
-  "observations": [
-    "La première génération a été retouchée avec la même source pour isoler l’anomalie et rendre la bifurcation plus explicite.",
-    "Le master est une normalisation 1920 × 1080 du rendu final ; les variantes publiques en dérivent avec Sharp."
-  ]
+  "model": "gpt-image-2-medium",
+  "provider": "openai-codex",
+  "generatedAt": "2026-09-15",
+  "sourcePath": "image-source.png",
+  "sourceSha256": "e78cf4ee9ca6091ff0cac9814c0a17344b68a841d64ee4a411d03885596b58dd",
+  "outputSha256": "e78cf4ee9ca6091ff0cac9814c0a17344b68a841d64ee4a411d03885596b58dd",
+  "credits": null
 }

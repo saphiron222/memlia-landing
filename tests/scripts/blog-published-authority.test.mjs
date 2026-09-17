@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { after, before, test } from 'node:test';
-import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { auditArticleInventory, validateDossier } from '../../scripts/lib/blog-pipeline.mjs';
@@ -8,14 +8,30 @@ import { ADOPTION_PATH, PUBLISHED_BLOG_HASHES, validatePublishedAdoption, sha256
 import { preparePreview } from '../../scripts/prepare-preview.mjs';
 
 const slugs = Object.keys(PUBLISHED_BLOG_HASHES);
+// Sans article adopté (depuis le 17/09/2026, les six articles sortent de la forge), le mécanisme
+// de conservation n'a plus de sujet vivant : ce fichier vérifie alors que rien ne s'en réclame
+// en silence (aucun reçu d'adoption dans un dossier, aucun article « legacy-preserved »),
+// et laisse les oracles de mutation en veille, explicitement, plutôt que verts sur du vide.
+if (slugs.length === 0) {
+  test('aucun article adopté : aucun dossier ne porte de reçu d’adoption et l’inventaire ne conserve rien', () => {
+    const dossiers = readdirSync('editorial/articles', { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name);
+    assert.ok(dossiers.length >= 6, `au moins six dossiers attendus, ${dossiers.length} trouvé(s)`);
+    for (const slug of dossiers) assert.ok(!existsSync(join('editorial/articles', slug, ADOPTION_PATH)), `${slug} porte un reçu d’adoption sans figurer dans PUBLISHED_BLOG_HASHES`);
+    const inventory = auditArticleInventory({ root: process.cwd() });
+    assert.deepEqual(inventory.errors, []);
+    assert.equal(inventory.articles.filter((a) => a.status === 'legacy-preserved').length, 0);
+    assert.ok(inventory.articles.every((a) => a.status === 'pipeline'), JSON.stringify(inventory.articles));
+  });
+}
 let root;
-before(() => {
+before(function () {
+  if (slugs.length === 0) return;
   root = mkdtempSync(join(tmpdir(), 'memlia-published-audit-'));
   for (const path of ['editorial/articles', 'src/content/blog', 'src/data', 'src/pages', 'public/images']) {
     cpSync(path, join(root, path), { recursive: true });
   }
 });
-after(() => rmSync(root, {recursive:true, force:true}));
+after(() => { if (root) rmSync(root, {recursive:true, force:true}); });
 const dossier = (slug=slugs[0]) => join(root,'editorial/articles',slug);
 const readJson = (path) => JSON.parse(readFileSync(path));
 const writeJson = (path, value) => writeFileSync(path, JSON.stringify(value,null,2)+'\n');
@@ -25,6 +41,7 @@ async function mutated(path, transform, check) {
   try { writeFileSync(path,transform(original.toString())); await check(); }
   finally { writeFileSync(path,original); }
 }
+if (slugs.length > 0) {
 for (const slug of slugs) {
   test(`dossier publié complet validé sans nouveau fact-check ni autorisation : ${slug}`, async () => {
     const result=await validate(slug);
@@ -107,3 +124,4 @@ test('un rapport de conservation ne peut pas servir de gate de préparation de p
   const source=join(root,'build-empty');mkdirSync(source);
   assert.throws(()=>preparePreview({source,target:join(root,'preview'),candidateSlug:slugs[0],gateReport:path}),/gate PASS/);
 });
+}

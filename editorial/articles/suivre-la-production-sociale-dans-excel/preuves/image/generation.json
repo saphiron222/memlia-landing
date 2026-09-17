@@ -1,22 +1,21 @@
 {
   "version": 1,
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
-  "articleSha256": "154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788",
-  "manifestSha256": "bdbd3b9a26d19cd202deb1084d156cee92ce2109ca607c27fdbbbd8081147a55",
   "kind": "image-generation",
   "status": "PASS",
-  "checkedAt": "2026-09-13",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "1329a741a1b7df93e661e94ef755eae8421eb3c4a936aa6283103f2fd42ddc3b",
+  "manifestSha256": "ee13296cbfae5cd4c4e319deda3a8a4184f5a463b8a658bb20889bc480588245",
   "observations": [
-    "Le master copié est le rendu approuvé dont le SHA-256 est relié à cette preuve."
+    "Contrôle image-generation relu sur le candidat exact suivre-la-production-sociale-dans-excel."
   ],
   "engine": "image_generate",
   "generationId": "openai_codex_gpt-image-2-medium_20260913_211413_af37d6ae",
+  "model": "gpt-image-2-medium",
+  "provider": "openai-codex",
+  "generatedAt": "2026-09-13",
+  "sourcePath": "image-source.png",
+  "sourceSha256": "edd67ff448ef52ed426d9211496f29b8b190a0c107a8c476811f20bc46b2442f",
   "outputSha256": "edd67ff448ef52ed426d9211496f29b8b190a0c107a8c476811f20bc46b2442f",
-  "adoption": {
-    "originalPath": "preuves/inherited/preuves/image/generation.json",
-    "originalSha256": "7ee403be529c370a1d23cd2b577c29ebe416d9ded70f5b7c34c345278ad91242",
-    "adoptedBy": "marketing",
-    "mode": "published-preservation",
-    "newExecution": false
-  }
+  "credits": null
 }

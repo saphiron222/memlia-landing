@@ -48,9 +48,9 @@
   "proofRequired": "Jeu fictif de six dossiers rejoué sur la règle (cas courant, pièce hors période, dossier en litige, dossier sans checklist) ; tableau déclencheur-condition-action-exception ; quatre affirmations sourcées.",
   "reviewRule": "Réviser à la publication de l’article sur la complétude du dossier et de celui sur la facture électronique ; relecture des sources à six mois.",
   "cta": {
-    "label": "Faire coder la règle de relance de votre cabinet",
+    "label": "Confier cette tâche",
     "destination": "/contact",
-    "outcome": "Une demande décrivant la cadence et les exceptions actuelles du cabinet."
+    "outcome": "Nous écrivons la règle de relance de votre cabinet dans vos mots, nous l’automatisons dans votre messagerie et votre classeur de suivi, et vos équipes la recettent sur vos dossiers. Chaque envoi reste validé par une personne. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
   },
   "image": {
     "heroId": "img-art-relance-des-pieces",
@@ -165,7 +165,8 @@
       "/methode",
       "/glossaire#piece-justificative",
       "/glossaire#regle-de-cabinet",
-      "/glossaire#cas-de-refus"
+      "/glossaire#cas-de-refus",
+      "/automatisation-cabinet-comptable"
     ],
     "incoming": [
       "/blog",
@@ -254,13 +255,17 @@
       "Plan calqué sur le gabarit how-to-guide du skill blog : réponse directe, définitions, sections par tâche, tableau déclencheur/condition/action/exception, refus, frontière en trois colonnes, jeu fictif, cadre sourcé, erreurs à éviter, questions fréquentes, règle à retenir."
     ],
     "blog-style": [
-      "Passe de style : phrases courtes, aucune formule de remplissage, aucun superlatif, aucun chiffre de gain ; charge cognitive mesurée par cognitive_load.py (verdict Healthy, aucune section surchargée)."
+      "cognitive_load.py joué le 17/09/2026 sur corps.md : verdict global « Healthy », 15 sections analysées, 0 section(s) signalée(s) ; profondeur de proposition moyenne maximale 1.8."
     ],
     "blog-schema": [
       "BlogPosting, BreadcrumbList, Person, Organization et WebSite émis par ArticleJsonLd.astro depuis le frontmatter ; ImageObject sur la couverture générée ; aucun FAQPage ni HowTo (résultats enrichis retirés)."
     ],
     "blog-image": [
       "Couverture générée depuis le brief à six composantes (sujet, composition, style, palette, interdits, alt) : Higgsfield, modèle gpt_image_2_5, qualité haute 2K, job 331b874a-b72e-450a-8108-6e0de60f5d1e, 3 crédits ; revue visuelle à six critères dans image.json."
+    ],
+    "blog-rewrite": [
+      "Republication du 17/09/2026 selon la charte de message v3 (§7 bis) : la section « pourquoi la tâche casse à la main » nomme la règle que le cabinet applique sans l’avoir écrite ; « Pour aller plus loin » dit ce que nous prenons en charge pour cette tâche et ce que le cabinet garde ; appel « Confier cette tâche » ; lien vers le service ajouté. Méthode, tableaux, jeu fictif, sources et affirmations inchangés."
     ]
-  }
+  },
+  "updatedAt": "2026-09-17"
 }

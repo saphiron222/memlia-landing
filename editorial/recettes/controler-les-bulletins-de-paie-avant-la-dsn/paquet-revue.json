@@ -1,0 +1,158 @@
+{
+  "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+  "title": "Comment contrôler les bulletins de paie avant la DSN ?",
+  "primaryQuery": "contrôle bulletin de paie",
+  "intent": "executer",
+  "role": "paie-responsables-sociaux",
+  "format": "how-to-guide",
+  "task": "Exécuter et clôturer une revue reproductible des bulletins et du fichier DSN avant le dépôt, puis organiser le traitement des retours.",
+  "corps": "## Réponse directe\n\nContrôler les bulletins de paie avant la DSN, c’est clore trois revues sur le fichier exact qui sera transmis : les pièces et variables, les écarts du bulletin, puis le contrôle technique du fichier. Chaque écart est expliqué, corrigé puis retesté, ou confié à une personne désignée, et aucune preuve ne vaut si elle ne correspond plus au dernier fichier. Ce contrôle a une règle ; la suite l’écrit pour qu’il se rejoue chaque mois de la même façon, quelle que soit la personne qui le tient.\n\n## Qu’est-ce que le contrôle avant dépôt, et pourquoi casse-t-il à la main ?\n\n**Le contrôle avant dépôt** est la revue, pour un dossier et une période, des données qui alimentent la paie, des bulletins calculés et du fichier de déclaration, avant sa transmission. **La déclaration sociale nominative**, ou DSN, est ce fichier mensuel qui porte les données de paie aux organismes. **Un écart** est une variation détectée entre la période et sa référence : il n’est pas une erreur, il devient expliqué, à corriger ou à arbitrer.\n\n[Service-Public Entreprendre](https://entreprendre.service-public.gouv.fr/vosdroits/F34059) rappelle que la DSN « est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie » et qu’« un logiciel de paie compatible avec la DSN est nécessaire ». Cette dépendance donne l’ordre du travail : contrôler les entrées et le calcul avant de conclure sur le fichier de déclaration.\n\nÀ la main, ce contrôle casse pour une raison précise. Le gestionnaire sait quelles rubriques regarder sur ce dossier, quel écart est normal en août, quelle prime revient chaque trimestre, quelle absence attend encore son justificatif. Cette règle n’est écrite nulle part : elle se rejoue de mémoire, sous la pression de l’échéance, et elle part avec la personne qui la détient. Le résultat n’est pas un bulletin faux à chaque fois ; c’est un contrôle inégal, qu’on ne peut ni prouver ni transmettre à un collègue. La méthode ci-dessous, une méthode Memlia, écrit cette règle en trois revues et une trace, pour qu’elle appartienne au cabinet.\n\n## Que faut-il avoir sous la main avant de commencer ?\n\n- Le dossier et la période concernés, avec l’échéance applicable à l’entreprise, vérifiée dans la source ou l’outil que le cabinet utilise pour cela.\n- Les pièces et instructions du mois telles qu’elles arrivent aujourd’hui : entrées et sorties, absences, variables, régularisations.\n- La personne qui prépare, celle qui tranche les exceptions et celle qui autorise le dépôt, nommées pour ce dossier.\n- L’identifiant ou l’empreinte du fichier qui passera le dernier contrôle : c’est à lui que toute preuve se rattache.\n- Un endroit où tenir la trace, même sommaire : une ligne par dossier, par période et par revue suffit pour commencer.\n\nUne échéance ne se déduit pas d’un ancien tableau. Tant qu’elle n’est pas confirmée pour le dossier et la période, le contrôle reste ouvert et rien ne part.\n\n## Quel résultat obtenir avant le dépôt ?\n\nLe résultat attendu n’est pas une case « OK ». C’est de pouvoir dire, pour ce dossier et cette période, quel fichier a été testé, quels contrôles ont été joués, quels écarts ont été détectés, quelle qualification chacun a reçue, et qui a autorisé le dépôt. Les trois revues, les six champs de trace et les états fermés qui suivent sont une convention de travail : le cabinet en fixe les seuils, les responsables et les rubriques sensibles.\n\n## Revue 1 : rapprocher les pièces, événements et variables\n\nLa première revue vérifie que ce qui devait alimenter la paie est identifiable et rattaché à la bonne période. Elle ne juge pas la validité d’une pièce ; elle constate qu’elle est là, lisible, et qu’elle appartient au bon mois.\n\n| Élément de la revue | Règle de travail |\n| --- | --- |\n| Responsable | Gestionnaire du dossier ; arbitrage confié au responsable social selon la règle du cabinet |\n| Moment | Avant le calcul déclaré définitif et avant la génération du fichier DSN à tester |\n| Sources de référence | Pièces et instructions présentes dans le système autorisé, paramétrage du dossier et règle écrite du cabinet |\n| Critère de blocage | Pièce absente, instruction contradictoire, période incertaine ou événement sans traitement décidé |\n| Preuve attendue | Référence de la pièce ou de l’instruction, période, date de contrôle et résultat |\n| Clôture | Chaque événement attendu est saisi, explicitement différé ou confié à une personne désignée |\n\nLe périmètre dépend du dossier. La checklist oblige toutefois le gestionnaire à se prononcer sur les rubriques sensibles qui lui sont applicables, sans présumer de leur traitement :\n\n| Zone à examiner si elle concerne le dossier | Question de contrôle | Sortie attendue |\n| --- | --- | --- |\n| Entrée ou sortie | L’événement, sa date d’effet et la pièce de référence concordent-ils ? | Rapproché, à corriger ou à arbitrer |\n| Absence | La nature, la période et le justificatif disponible sont-ils cohérents ? | Variable tracée ou exception ouverte |\n| IJSS et maintien | Les éléments disponibles et le paramétrage attendu concordent-ils ? | Contrôle documenté, sans conclure au droit par automatisme |\n| Prévoyance et mutuelle | L’affiliation, la période et le paramétrage attendu ont-ils été revus ? | Écart expliqué ou transmis au responsable |\n| Temps, prime ou indemnité | La source convenue, la période et la rubrique visée sont-elles identifiées ? | Saisie vérifiée ou anomalie ouverte |\n| Prélèvement à la source | La donnée utilisée provient-elle du flux ou du processus de référence du dossier ? | Origine et période tracées |\n| Régularisation | La période d’afférence, le motif et la décision sont-ils documentés ? | Traitement explicite, puis contrôle rejoué |\n\nCette table ne fixe aucun calcul. Elle empêche seulement qu’une rubrique applicable disparaisse du périmètre sans décision.\n\n## Revue 2 : examiner le bulletin et qualifier les écarts\n\nLa deuxième revue cherche les variations qui appellent une explication. Un écart n’est pas une erreur : il devient soit attendu et prouvé, soit à corriger, soit à arbitrer.\n\n| Élément de la revue | Règle de travail |\n| --- | --- |\n| Responsable | Gestionnaire ; responsable social pour les cas hors règle écrite |\n| Moment | Après calcul, avant génération du fichier final à transmettre |\n| Sources de référence | Bulletin courant, période de comparaison pertinente, pièces rapprochées et paramètres de référence du dossier |\n| Critère de blocage | Variation sensible sans cause retrouvée, rubrique attendue absente, rubrique nouvelle inexpliquée ou correction non recalculée |\n| Preuve attendue | Rubrique concernée, valeur ou état observé, cause, pièce ou règle consultée et décision |\n| Clôture | Tous les écarts sont expliqués, corrigés puis retestés, ou confiés à un décideur identifié |\n\nExaminez au minimum les zones applicables au dossier : présence des rubriques attendues, brut et net, bases, plafonds et taux, temps et absences, IJSS et maintien, prévoyance, mutuelle, prélèvement à la source, régularisations, entrées et sorties. Le contrôle ne décrète pas qu’un taux ou un plafond est correct à partir d’une valeur mémorisée : il le compare à la référence datée que le cabinet a choisie.\n\nLa séquence de qualification reste courte :\n\n1. détecter la variation ;\n2. retrouver l’événement, la pièce ou la règle qui peut l’expliquer ;\n3. choisir `expliqué`, `à corriger` ou `à arbitrer` ;\n4. corriger dans l’outil de paie si la personne habilitée le décide ;\n5. recalculer, régénérer le fichier et rejouer les contrôles touchés.\n\n### Exemple fictif : une variation de brut expliquée\n\n> **Jeu d’essai fictif, sans donnée client et sans règle de paie réelle.** Le dossier `D-014`, période `2026-08`, comporte une prime ponctuelle de `250 unités fictives`. Le contrôle signale une variation du brut. Si la pièce fictive `P-014-08` est présente et cohérente avec la période, le gestionnaire retient `expliqué`. Si elle manque, l’état devient `à arbitrer`. Si elle contredit la saisie, l’état devient `à corriger`.\n\nLa recette de cette règle comporte trois cas : pièce cohérente, pièce absente, pièce contradictoire. Son but est de vérifier le comportement du contrôle, pas de certifier un bulletin.\n\n## Revue 3 : tester le fichier exact avec Dsn-Val\n\n[Net-entreprises](https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/) précise que « l’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer » et que « les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé ». Dsn-Val est donc un outil d’auto-contrôle du fichier, pas une validation des pièces ni des décisions de paie.\n\n| Élément de la revue | Règle de travail |\n| --- | --- |\n| Responsable | Gestionnaire ou personne chargée du dépôt, selon l’organisation du cabinet |\n| Moment | Après les corrections de paie, sur le fichier exact destiné à la transmission |\n| Source de référence | Version de Dsn-Val et documentation technique applicables au fichier |\n| Critère de blocage | Anomalie bloquante, résultat rattaché à un ancien fichier ou version de contrôle non identifiée |\n| Preuve attendue | Identifiant du fichier, version ou date de l’outil, résultat, anomalies et date du test |\n| Clôture | Le fichier final a été testé et chaque anomalie remontée a une action décidée |\n\nUn résultat technique sans anomalie bloquante ne prouve pas qu’une absence a été saisie, qu’un maintien est correct ou qu’une régularisation a été décidée sur la bonne période. Si une correction modifie la paie ou le fichier, l’ancien résultat ne couvre plus le candidat : régénérez et retestez.\n\n## Après le dépôt : transformer chaque CRM en action\n\nCette section ferme la boucle du contrôle avant transmission. Pour distinguer accusé, certificat, bilan et retours des organismes, puis qualifier chaque message, lisez la [méthode de lecture des comptes rendus métier DSN](/blog/comprendre-les-comptes-rendus-metier-dsn).\n\nLe dépôt ouvre une nouvelle phase. [Net-entreprises](https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/) définit le compte rendu métier, ou CRM, comme « un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée ». La même page ajoute qu’« il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM » afin d’effectuer les corrections nécessaires si besoin.\n\nNe confondez pas l’état du workflow avec la gravité du signalement. `Déposé` indique une étape franchie ; il ne signifie ni `sans anomalie`, ni `conforme`. Conservez deux champs séparés.\n\n| Champ CRM | Contenu attendu |\n| --- | --- |\n| Organisme | Émetteur du retour |\n| Période | Période ou déclaration concernée |\n| Nature du retour | Anomalie, suspicion, confirmation ou autre qualification portée par le document |\n| Action | Comprendre, corriger en paie, régénérer, retransmettre, contester ou classer avec justification |\n| Échéance de traitement | Date ou fenêtre indiquée par la source applicable, pas une date supposée |\n| Responsable | Personne chargée de décider ou d’exécuter l’action |\n| Preuve de clôture | Nouveau test, retransmission, réponse, justificatif ou décision documentée |\n\nLa page officielle sur [la fiabilisation des données de la DSN](https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/) distingue les contrôles avant dépôt et la consultation mensuelle des CRM après dépôt. Elle indique qu’une erreur signalée se corrige en paie, en transmettant une DSN « annule et remplace » « avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant ». En cas d’incompréhension, la même page invite le déclarant à « contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel ».\n\nCette fenêtre ne suffit pas à décider tous les cas. Son applicabilité dépend du moment, du type de correction et des instructions du retour ou de l’organisme. Le présent guide traite la DSN mensuelle ; il ne transpose pas cette fenêtre aux signalements d’événement ni à d’autres canaux. Dans le doute, gardez l’état bloquant et consultez la documentation ou l’interlocuteur officiel adapté.\n\n## Comment traiter un écart inexpliqué ?\n\nUn écart inexpliqué n’est ni ignoré ni corrigé d’office.\n\n1. Passez l’état du contrôle à `à arbitrer`.\n2. Identifiez la règle qui a déclenché le signalement et la donnée observée.\n3. Recherchez la pièce, l’événement ou la référence datée susceptible de l’expliquer.\n4. Attribuez l’arbitrage à une personne nommée dans le workflow du cabinet.\n5. Après décision, conservez la justification, corrigez si nécessaire, puis rejouez les contrôles affectés.\n6. Fermez seulement lorsque la preuve correspond au dernier fichier testé.\n\nLa gravité reste un champ distinct, par exemple `information`, `à traiter avant dépôt` ou `bloquant selon la règle du cabinet`. Ces libellés sont des choix du cabinet, écrits dans sa règle.\n\n## Quelle trace conserver dans le portefeuille ?\n\nSix champs suffisent au départ : dossier, période, revue, résultat, preuve et décision. Ajoutez le responsable et l’horodatage si le circuit du cabinet en a besoin.\n\n| Champ | Exemple fictif | Utilité |\n| --- | --- | --- |\n| Dossier | `D-014` | Relier le contrôle sans afficher de nom dans la vue agrégée |\n| Période | `2026-08` | Empêcher la réutilisation d’une preuve d’un autre mois |\n| Revue | `bulletin-écarts` | Identifier la couche contrôlée |\n| Résultat | `à arbitrer` | Distinguer le signalement de la décision |\n| Preuve | `P-014-08` | Retrouver l’élément dans le système autorisé |\n| Décision | `expliqué après revue` | Fermer explicitement l’écart |\n\nLe responsable de pôle suit ensuite des volumes par état, sans classement nominatif. La structure d’une telle vue est détaillée dans [le tableau de suivi de production sociale](/blog/suivre-la-production-sociale-dans-excel).\n\n## Ce qui s’automatise, ce qui attend une validation, ce qui reste humain\n\n| Se prépare seul | Attend une validation | Reste humain |\n| --- | --- | --- |\n| Le rapprochement des pièces et variables attendues avec celles reçues, dossier par dossier | La qualification de chaque écart signalé sur le bulletin | La correction dans l’outil de paie, et ce qu’elle engage pour un salarié |\n| La comparaison du bulletin avec sa période de référence, écarts listés avec leur rubrique | Le passage d’un contrôle à l’état `expliqué` | Le choix du canal et du moment d’une régularisation |\n| Le contrôle qu’un résultat Dsn-Val se rattache au dernier fichier, et la file des preuves manquantes | La clôture d’une revue dont tous les écarts ont une décision | L’autorisation du dépôt |\n\nUne automatisation montre pourquoi un contrôle s’est déclenché, et elle cesse quand la règle ne permet pas de conclure : c’est ce refus qui la rend fiable. Le cabinet garde la qualification, la correction, le canal et le dépôt.\n\n## Les erreurs de méthode à éviter\n\n- **Commencer par Dsn-Val.** Le format est testé avant les données qui l’alimentent.\n- **Utiliser un seuil comme verdict.** Une variation dépasse un repère interne, mais sa cause reste à qualifier.\n- **Mélanger état et gravité.** `Déposé` décrit l’avancement, pas la conformité.\n- **Corriger sans régénérer et retester.** La preuve ne correspond plus au fichier final.\n- **Appliquer d’office « annule et remplace ».** Il faut d’abord vérifier que la fenêtre et le cas le permettent.\n- **Clore au dépôt.** Les CRM disponibles restent à lire, à attribuer et à traiter.\n- **Conserver seulement « OK ».** Personne ne peut savoir ce qui a été vérifié, sur quelle période et avec quelle preuve.\n\n## Questions fréquentes\n\n### Dsn-Val suffit-il pour contrôler une DSN ?\n\nNon. Dsn-Val contrôle le fichier au regard du cahier technique et du journal de maintenance de la norme associée. Les pièces, les variables, les écarts du bulletin et les décisions du dossier appartiennent à des revues distinctes.\n\n### Faut-il vérifier chaque ligne du bulletin ?\n\nLe cabinet définit le périmètre à partir des zones sensibles du dossier, des événements du mois, des rubriques attendues et des écarts par rapport à une période pertinente. Cette règle, écrite dans les mots du cabinet, vaut mieux qu’une checklist générique : elle nomme les rubriques qui comptent pour ce dossier.\n\n### Que faire si une correction intervient après le premier test ?\n\nRecalculez si nécessaire, régénérez le fichier et rejouez les contrôles affectés. Conservez la preuve du dernier candidat, pas celle d’une version devenue obsolète.\n\n### Jusqu’à quand utiliser une DSN « annule et remplace » ?\n\nPour la DSN mensuelle, la page de Net-entreprises consultée le 17 septembre 2026 indique une retransmission avant minuit la veille de l’échéance si cela est encore possible. Le type de correction, le canal et les instructions de l’organisme restent à vérifier pour le cas traité ; ce guide ne généralise pas cette fenêtre aux signalements d’événement.\n\n### Quand le contrôle est-il terminé ?\n\nAvant dépôt, lorsque les trois revues sont closes sur le fichier exact à transmettre. Après dépôt, lorsque chaque CRM disponible a été lu et qu’une action, une échéance, un responsable et une preuve de clôture ont été renseignés.\n\n## Checklist finale de clôture\n\n| Étape | Contrôle | Preuve | Exception | Décision |\n| --- | --- | --- | --- | --- |\n| Préparer | Dossier, période, échéance et responsables identifiés | Référence datée | Échéance ou rôle incertain | Bloquer et faire préciser |\n| Revue 1 | Pièces, événements et variables rapprochés | Pièce ou instruction | Absence ou contradiction | Saisir, différer ou arbitrer |\n| Revue 2 | Rubriques applicables et écarts qualifiés | Cause, référence et recalcul | Écart inexpliqué | Corriger ou confier au responsable |\n| Revue 3 | Fichier final testé avec l’outil applicable | Identifiant du fichier et résultat | Anomalie ou ancien résultat | Corriger, régénérer et retester |\n| Après dépôt | CRM lus et attribués | Retour, action et échéance | Canal ou correction incertain | Consulter l’organisme ou l’éditeur |\n| Fermer | Preuves alignées sur le dernier fichier | Trace complète | Champ manquant | Garder le dossier ouvert |\n\n## La règle à retenir\n\nTrois revues closes sur le fichier exact à transmettre, un écart toujours expliqué, corrigé puis retesté ou confié à une personne nommée, et une trace qui se rattache au dernier fichier. La mécanique détecte et rassemble ; la personne qualifie, décide et autorise le dépôt.\n\n## Pour aller plus loin\n\nCe contrôle est l’une des sept familles du pôle paie et social de [la carte des tâches automatisables d’un cabinet](/blog/automatiser-un-cabinet-comptable-la-carte-des-taches). Il commence là où finit [la collecte des pièces](/blog/automatiser-la-relance-des-pieces-clients), dont la relance des variables de paie est la jumelle, et il ouvre sur la lecture des comptes rendus métier après dépôt ; le [contrôle avant DSN](/glossaire#controle-avant-dsn) et [Dsn-Val](/glossaire#dsn-val) sont définis au glossaire. Nous prenons cette tâche entière : nous écrivons la règle de contrôle de votre cabinet dans vos mots, rubriques sensibles, seuils et responsables compris, nous l’automatisons dans les outils que votre pôle social utilise déjà, vos gestionnaires la recettent sur des cas fictifs puis sur vos dossiers, et nous la maintenons. Vous gardez la qualification des écarts, la correction et le dépôt. C’est [la méthode](/methode), et ce sont [nos engagements](/garanties) : rien ne part sans validation.",
+  "sources": [
+    {
+      "id": "service-public-dsn",
+      "publisher": "Service Public",
+      "title": "Déclaration sociale nominative (DSN)",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+      "level": "tier-1",
+      "official": true
+    },
+    {
+      "id": "net-entreprises-dsn-val",
+      "publisher": "Net-entreprises",
+      "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
+      "url": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+      "level": "tier-1",
+      "official": true
+    },
+    {
+      "id": "net-entreprises-crm",
+      "publisher": "Net-entreprises",
+      "title": "Les comptes rendus métiers DSN",
+      "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+      "level": "tier-1",
+      "official": true
+    },
+    {
+      "id": "net-entreprises-fiabilisation",
+      "publisher": "Net-entreprises",
+      "title": "La fiabilisation des données de la DSN",
+      "url": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+      "level": "tier-1",
+      "official": true
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-f853bef5785e-1",
+      "claim": "est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie",
+      "type": "dsn",
+      "sourceId": "service-public-dsn",
+      "citation": "est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie",
+      "contexte": "              class=\"fr-tooltip fr-placement\" role=\"tooltip\">: titleContent</span></abbr> est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie. Elle permet à l’employeur de payer les cotisations sociales et de transmettre de manière sécurisée aux organismes sociaux (<abbr class=\"sp-tooltip\" id=\"sp-tooltip-R44849-WZPBJ\""
+    },
+    {
+      "id": "claim-unit-f853bef5785e-2",
+      "claim": "un logiciel de paie compatible avec la DSN est nécessaire",
+      "type": "dsn",
+      "sourceId": "service-public-dsn",
+      "citation": "les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.",
+      "contexte": "              class=\"fr-tooltip fr-placement\" role=\"tooltip\">: titleContent</span></abbr>, France Travail, etc.) les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.</p></div><div class=\"fr-my-4w\" id=\"expired\""
+    },
+    {
+      "id": "claim-unit-f5aaef967736-1",
+      "claim": "l’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer",
+      "type": "dsn",
+      "sourceId": "net-entreprises-dsn-val",
+      "citation": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
+      "contexte": "<p>L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.</p>"
+    },
+    {
+      "id": "claim-unit-f5aaef967736-2",
+      "claim": "les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé",
+      "type": "dsn",
+      "sourceId": "net-entreprises-dsn-val",
+      "citation": "Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
+      "contexte": "<p>L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.</p>"
+    },
+    {
+      "id": "claim-unit-8e25db1cb634-1",
+      "claim": "un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée",
+      "type": "dsn",
+      "sourceId": "net-entreprises-crm",
+      "citation": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
+      "contexte": "            Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.         </a>"
+    },
+    {
+      "id": "claim-unit-8e25db1cb634-2",
+      "claim": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM",
+      "type": "dsn",
+      "sourceId": "net-entreprises-crm",
+      "citation": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration",
+      "contexte": "<p>Pour autant, en l’état même du système il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration en sortie des DSN ou signalement transmises afin d’effectuer par la suite les corrections nécessaires si besoin.</p>"
+    },
+    {
+      "id": "claim-unit-c3c741fa7fe1-1",
+      "claim": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant",
+      "type": "dsn",
+      "sourceId": "net-entreprises-fiabilisation",
+      "citation": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
+      "contexte": "<li>En corrigeant <u>au plus tôt</u> les erreurs signalées en réalisant la modification en paie et en transmettant une DSN « annule et remplace » avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.</li>"
+    },
+    {
+      "id": "claim-unit-c3c741fa7fe1-2",
+      "claim": "contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel",
+      "type": "dsn",
+      "sourceId": "net-entreprises-fiabilisation",
+      "citation": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
+      "contexte": "<li>En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.</li>"
+    }
+  ],
+  "criteresEditoriaux": [
+    {
+      "id": "intent-satisfaction",
+      "weight": 20
+    },
+    {
+      "id": "serp-format-rankability",
+      "weight": 15
+    },
+    {
+      "id": "eeat-sources",
+      "weight": 20
+    },
+    {
+      "id": "information-gain-proof",
+      "weight": 20
+    },
+    {
+      "id": "technical-onpage-seo",
+      "weight": 10
+    },
+    {
+      "id": "ai-citability",
+      "weight": 10
+    },
+    {
+      "id": "contextual-conversion",
+      "weight": 5
+    }
+  ],
+  "criteresImage": [
+    "brief-six-components",
+    "generation-constraints",
+    "fictive-provenance",
+    "recognizable-subject",
+    "technical-derivatives",
+    "alt-information"
+  ],
+  "image": {
+    "alt": "Trois contrôles successifs : pièces de paie, comparaison mensuelle et validation du fichier DSN.",
+    "master": "editorial/articles/controler-les-bulletins-de-paie-avant-la-dsn/preuves/image/master.png"
+  },
+  "identites": {
+    "auteur": "kevin",
+    "reviewerEditorial": "marketing",
+    "reviewerMetier": "relecteur-metier-ia-memlia",
+    "roleMetier": "paie-responsables-sociaux"
+  }
+}

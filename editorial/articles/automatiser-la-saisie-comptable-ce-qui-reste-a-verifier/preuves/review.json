@@ -4,8 +4,8 @@
   "kind": "editorial-review",
   "status": "PASS",
   "checkedAt": "2026-09-17",
-  "articleSha256": "3218163766cd1d894fac55558c25d313812b5f0599175ebe245f0cac4142ea7c",
-  "manifestSha256": "84c87ed7474b6c1539c5aad63f7ec0fd57319d820da5b12eccb41ecd16630591",
+  "articleSha256": "b003816625a783b40c463995ec503c987588747f376cf8aa9a709ce7c6109a6c",
+  "manifestSha256": "ef237f9e8a6d23f474e9549b70c391d60e7e795e4e473a355751372e72f5dbbb",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
@@ -16,8 +16,8 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le brief demande de faire lire les pièces et proposer des écritures sans enregistrement automatique, et de faire remonter ce qui n'est pas traité ; les trois briques (extraction, six contrôles ordonnés, file d'anomalies) répondent exactement à ce task pour le rôle collaborateurs-comptables.",
-        "La section « Réponse directe » et le tableau « Se prépare seul / Attend une validation / Reste humain » couvrent le how-to attendu par l'intent « executer » sans dévier vers un contenu commercial générique."
+        "Le brief demande de faire lire les pièces et proposer des écritures sans rien enregistrer seul, en faisant remonter ce que la lecture n'a pas su traiter ; les trois briques (extraction par champ, six contrôles ordonnés, file d'anomalies) et le tableau détaillé de la marche à suivre couvrent exactement cette tâche pour le rôle collaborateurs-comptables.",
+        "La checklist « Que faut-il avoir sous la main avant de commencer » (pièces d'une période complète, fournisseurs récurrents, plan de comptes, règle de TVA, personne désignée) rend le guide directement actionnable pour l'intent executer, sans détour commercial en tête d'article."
       ]
     },
     {
@@ -25,8 +25,8 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Format how-to-guide respecté : bloc En bref, réponse directe en premier paragraphe, six tableaux avec en-têtes, FAQ en h3, ce qui rend la page scannable et apte au featured snippet.",
-        "Le title tag rendu (« Saisie comptable OCR : ce qui reste à vérifier | Memlia ») fait désormais 55 caractères, dans la fourchette 40-60 recommandée, et attaque directement sur la requête primaire « automatisation saisie comptable OCR » : la réserve précédente sur la troncature SERP est levée."
+        "Format how-to-guide tenu de bout en bout : bloc En bref, Réponse directe en ouverture, six tableaux à en-têtes, cinq questions FAQ en h3 — un format scannable propice au featured snippet sur une requête informationnelle comme « automatisation saisie comptable OCR ».",
+        "Le title tag rendu, « Automatisation saisie comptable : les 6 contrôles | Memlia » (58 caractères), reprend la requête primaire et ajoute un chiffre concret distinctif, ce qui le différencie d'un intitulé générique sur l'OCR comptable."
       ]
     },
     {
@@ -34,8 +34,8 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Quatre sources officielles tier-1 (Service-Public x3, CNIL x1) citées avec URL et date de consultation dans une section Sources consultées dédiée, en plus des liens contextuels dans le corps.",
-        "Auteur nommé et lié (Kevin Kitanga, rel=author, bio de fondateur sans qualification professionnelle usurpée), conforme à la règle produit qui interdit de le présenter comme expert-comptable diplômé."
+        "Quatre sources tier-1 officielles (Service-Public x3, CNIL x1) sont citées avec URL et date de consultation identique (17 septembre 2026) dans une section « Sources consultées » dédiée, en plus des liens contextuels insérés dans le corps.",
+        "L'auteur Kevin Kitanga est nommé, lié en rel=author vers /a-propos#kevin-kitanga, avec une bio de fondateur qui ne revendique aucune qualification d'expert-comptable, conforme à la charte qui interdit de le faire passer pour tel."
       ]
     },
     {
@@ -43,8 +43,8 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le jeu fictif de cinquante pièces (32 récurrentes, 6 inconnues, 4 tickets dont 2 coupés, 3 hors période, 1 doublon, 2 notes de frais, 1 avoir) démontre la règle par un cas chiffré et rejouable plutôt que de l'affirmer abstraitement.",
-        "La table des six champs extraits avec leur certitude, et la table des six contrôles ordonnés du plus grossier au plus fin, constituent une synthèse originale au-delà d'un article générique sur l'OCR comptable."
+        "Le jeu fictif de cinquante pièces (32 récurrentes, 6 fournisseurs inconnus, 4 tickets dont 2 coupés, 3 hors période, 2 doublons reçus par deux canaux, 2 notes de frais, 1 avoir) rejoue la règle sur un cas chiffré et vérifiable plutôt que de l'affirmer dans l'abstrait.",
+        "Le concept de « reliquat » présenté comme instrument de réglage plutôt qu'argument commercial, et la liste des refus assumés de l'outil (ne crée pas de fiche, n'arrondit pas, ne réimpute pas, ne supprime jamais un doublon), apportent une synthèse distincte d'un article générique sur l'OCR."
       ]
     },
     {
@@ -52,8 +52,8 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Canonical, OG complet (image 1200x630 avec largeur/hauteur déclarées), Twitter Card, sitemap et RSS liés, lang=fr, un seul h1 : le socle technique attendu est présent sur la page rendue.",
-        "Le meta robots de cette page rendue est « noindex, follow » parce qu'il s'agit d'un candidat en preview privée (bandeau « Candidat éditorial » visible) ; ce n'est pas un défaut de l'article mais un état à lever avant mise en production."
+        "Canonical correct, JSON-LD complet (BlogPosting, Person, Organization, BreadcrumbList, WebSite), OG et Twitter Card avec image 1200x630 déclarée en largeur/hauteur, un seul h1, hiérarchie h2/h3 sans saut : le socle technique attendu par le barème est présent sur la page rendue.",
+        "La page porte <meta name=\"robots\" content=\"noindex, follow\"> et le bandeau « Candidat éditorial — preview privée, non publiable » ; ces deux éléments sont identiques sur les 6 fichiers de .qa/render-tous/blog/ (vérifié par grep), donc un artefact du harnais de rendu QA et non un réglage propre à cet article — à vérifier absent une fois l'article publié en production."
       ]
     },
     {
@@ -61,8 +61,8 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "La réponse directe en tête d'article est formulée comme un paragraphe autonome et extractible, et chaque tableau porte un <thead> qui facilite le passage structuré pour un système génératif.",
-        "Terminologie d'entité stable sur tout l'article (saisie comptable automatisée, OCR, pré-comptabilité, file d'anomalies), ce qui évite l'ambiguïté qu'un moteur IA pourrait mal résoudre."
+        "La Réponse directe (environ 72 mots) forme un paragraphe autonome et directement extractible, et chaque tableau (champs extraits, six contrôles, règle déclencheur/condition/action/exception, répartition automatisé/validé/humain) porte un <thead> qui facilite une citation structurée par un moteur génératif.",
+        "La terminologie d'entité reste stable sur tout l'article (saisie comptable automatisée, OCR, pré-comptabilité, file d'anomalies, reliquat), reliée aux ancres du glossaire, ce qui limite l'ambiguïté qu'un système IA pourrait mal résoudre."
       ]
     },
     {
@@ -70,8 +70,8 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "Le pont de conversion (« Cette tâche vous prend encore du temps à la main ? ») reformule le CTA autour du contrôle et des exceptions du cabinet, cohérent avec le positionnement service et non un pack de sièges.",
-        "Le CTA renvoie vers /contact, la destination interne approuvée pour la v2, sans formulaire collecteur ni promesse au-delà du cadrage décrit dans le contexte marketing."
+        "Le bloc de clôture « Cette tâche vit encore dans la tête de vos collaborateurs ? » dit en trois phrases ce que Memlia fait (écrire la règle, l'automatiser, la faire recetter), ce que le cabinet garde (la validation de chaque écriture) et qu'il n'y a rien à envoyer, avec un bouton « Confier cette tâche » vers /contact.",
+        "Aucun tiret cadratin ni formule défensive répétée (« ne remplace pas », « à adapter », « Memlia peut ») dans le corps de l'article (vérifié par grep) ; le lien vers le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches et deux liens vers /methode sont présents comme l'exige la charte §7 bis."
       ]
     }
   ]

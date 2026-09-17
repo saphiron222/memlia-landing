@@ -4,50 +4,50 @@
       "intent-satisfaction": {
         "result": "PASS",
         "observations": [
-          "Le brief demande de faire lire les pièces et proposer des écritures sans enregistrement automatique, et de faire remonter ce qui n'est pas traité ; les trois briques (extraction, six contrôles ordonnés, file d'anomalies) répondent exactement à ce task pour le rôle collaborateurs-comptables.",
-          "La section « Réponse directe » et le tableau « Se prépare seul / Attend une validation / Reste humain » couvrent le how-to attendu par l'intent « executer » sans dévier vers un contenu commercial générique."
+          "Le brief demande de faire lire les pièces et proposer des écritures sans rien enregistrer seul, en faisant remonter ce que la lecture n'a pas su traiter ; les trois briques (extraction par champ, six contrôles ordonnés, file d'anomalies) et le tableau détaillé de la marche à suivre couvrent exactement cette tâche pour le rôle collaborateurs-comptables.",
+          "La checklist « Que faut-il avoir sous la main avant de commencer » (pièces d'une période complète, fournisseurs récurrents, plan de comptes, règle de TVA, personne désignée) rend le guide directement actionnable pour l'intent executer, sans détour commercial en tête d'article."
         ]
       },
       "serp-format-rankability": {
         "result": "PASS",
         "observations": [
-          "Format how-to-guide respecté : bloc En bref, réponse directe en premier paragraphe, six tableaux avec en-têtes, FAQ en h3, ce qui rend la page scannable et apte au featured snippet.",
-          "Le title tag rendu (« Saisie comptable OCR : ce qui reste à vérifier | Memlia ») fait désormais 55 caractères, dans la fourchette 40-60 recommandée, et attaque directement sur la requête primaire « automatisation saisie comptable OCR » : la réserve précédente sur la troncature SERP est levée."
+          "Format how-to-guide tenu de bout en bout : bloc En bref, Réponse directe en ouverture, six tableaux à en-têtes, cinq questions FAQ en h3 — un format scannable propice au featured snippet sur une requête informationnelle comme « automatisation saisie comptable OCR ».",
+          "Le title tag rendu, « Automatisation saisie comptable : les 6 contrôles | Memlia » (58 caractères), reprend la requête primaire et ajoute un chiffre concret distinctif, ce qui le différencie d'un intitulé générique sur l'OCR comptable."
         ]
       },
       "eeat-sources": {
         "result": "PASS",
         "observations": [
-          "Quatre sources officielles tier-1 (Service-Public x3, CNIL x1) citées avec URL et date de consultation dans une section Sources consultées dédiée, en plus des liens contextuels dans le corps.",
-          "Auteur nommé et lié (Kevin Kitanga, rel=author, bio de fondateur sans qualification professionnelle usurpée), conforme à la règle produit qui interdit de le présenter comme expert-comptable diplômé."
+          "Quatre sources tier-1 officielles (Service-Public x3, CNIL x1) sont citées avec URL et date de consultation identique (17 septembre 2026) dans une section « Sources consultées » dédiée, en plus des liens contextuels insérés dans le corps.",
+          "L'auteur Kevin Kitanga est nommé, lié en rel=author vers /a-propos#kevin-kitanga, avec une bio de fondateur qui ne revendique aucune qualification d'expert-comptable, conforme à la charte qui interdit de le faire passer pour tel."
         ]
       },
       "information-gain-proof": {
         "result": "PASS",
         "observations": [
-          "Le jeu fictif de cinquante pièces (32 récurrentes, 6 inconnues, 4 tickets dont 2 coupés, 3 hors période, 1 doublon, 2 notes de frais, 1 avoir) démontre la règle par un cas chiffré et rejouable plutôt que de l'affirmer abstraitement.",
-          "La table des six champs extraits avec leur certitude, et la table des six contrôles ordonnés du plus grossier au plus fin, constituent une synthèse originale au-delà d'un article générique sur l'OCR comptable."
+          "Le jeu fictif de cinquante pièces (32 récurrentes, 6 fournisseurs inconnus, 4 tickets dont 2 coupés, 3 hors période, 2 doublons reçus par deux canaux, 2 notes de frais, 1 avoir) rejoue la règle sur un cas chiffré et vérifiable plutôt que de l'affirmer dans l'abstrait.",
+          "Le concept de « reliquat » présenté comme instrument de réglage plutôt qu'argument commercial, et la liste des refus assumés de l'outil (ne crée pas de fiche, n'arrondit pas, ne réimpute pas, ne supprime jamais un doublon), apportent une synthèse distincte d'un article générique sur l'OCR."
         ]
       },
       "technical-onpage-seo": {
         "result": "PASS",
         "observations": [
-          "Canonical, OG complet (image 1200x630 avec largeur/hauteur déclarées), Twitter Card, sitemap et RSS liés, lang=fr, un seul h1 : le socle technique attendu est présent sur la page rendue.",
-          "Le meta robots de cette page rendue est « noindex, follow » parce qu'il s'agit d'un candidat en preview privée (bandeau « Candidat éditorial » visible) ; ce n'est pas un défaut de l'article mais un état à lever avant mise en production."
+          "Canonical correct, JSON-LD complet (BlogPosting, Person, Organization, BreadcrumbList, WebSite), OG et Twitter Card avec image 1200x630 déclarée en largeur/hauteur, un seul h1, hiérarchie h2/h3 sans saut : le socle technique attendu par le barème est présent sur la page rendue.",
+          "La page porte <meta name=\"robots\" content=\"noindex, follow\"> et le bandeau « Candidat éditorial — preview privée, non publiable » ; ces deux éléments sont identiques sur les 6 fichiers de .qa/render-tous/blog/ (vérifié par grep), donc un artefact du harnais de rendu QA et non un réglage propre à cet article — à vérifier absent une fois l'article publié en production."
         ]
       },
       "ai-citability": {
         "result": "PASS",
         "observations": [
-          "La réponse directe en tête d'article est formulée comme un paragraphe autonome et extractible, et chaque tableau porte un <thead> qui facilite le passage structuré pour un système génératif.",
-          "Terminologie d'entité stable sur tout l'article (saisie comptable automatisée, OCR, pré-comptabilité, file d'anomalies), ce qui évite l'ambiguïté qu'un moteur IA pourrait mal résoudre."
+          "La Réponse directe (environ 72 mots) forme un paragraphe autonome et directement extractible, et chaque tableau (champs extraits, six contrôles, règle déclencheur/condition/action/exception, répartition automatisé/validé/humain) porte un <thead> qui facilite une citation structurée par un moteur génératif.",
+          "La terminologie d'entité reste stable sur tout l'article (saisie comptable automatisée, OCR, pré-comptabilité, file d'anomalies, reliquat), reliée aux ancres du glossaire, ce qui limite l'ambiguïté qu'un système IA pourrait mal résoudre."
         ]
       },
       "contextual-conversion": {
         "result": "PASS",
         "observations": [
-          "Le pont de conversion (« Cette tâche vous prend encore du temps à la main ? ») reformule le CTA autour du contrôle et des exceptions du cabinet, cohérent avec le positionnement service et non un pack de sièges.",
-          "Le CTA renvoie vers /contact, la destination interne approuvée pour la v2, sans formulaire collecteur ni promesse au-delà du cadrage décrit dans le contexte marketing."
+          "Le bloc de clôture « Cette tâche vit encore dans la tête de vos collaborateurs ? » dit en trois phrases ce que Memlia fait (écrire la règle, l'automatiser, la faire recetter), ce que le cabinet garde (la validation de chaque écriture) et qu'il n'y a rien à envoyer, avec un bouton « Confier cette tâche » vers /contact.",
+          "Aucun tiret cadratin ni formule défensive répétée (« ne remplace pas », « à adapter », « Memlia peut ») dans le corps de l'article (vérifié par grep) ; le lien vers le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches et deux liens vers /methode sont présents comme l'exige la charte §7 bis."
         ]
       }
     },
@@ -57,23 +57,23 @@
     "claims": {
       "claim-unit-750912b300a9-1": {
         "verdict": "soutient",
-        "reasoning": "La citation exacte de la source Service-Public pose l'obligation, pour toute facture, de comporter les mentions listées quel que soit le type de client ; l'article reprend cette portée à l'identique, sans l'élargir ni en changer la polarité."
+        "reasoning": "La citation est reprise mot pour mot de la page Service-Public F31808 (« comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique »), dans le même contexte d'obligation de mentions sur toute facture, sans changement de portée ni de polarité."
       },
       "claim-unit-5c6ac2c7683f-1": {
         "verdict": "soutient",
-        "reasoning": "La phrase est reprise mot pour mot de la source Service-Public sur l'obligation de suivi des factures électroniques tout au long de leur cycle de vie, sans changement de portée ni de polarité par rapport au texte source."
+        "reasoning": "Vérifiée dans sp-facture-electronique.source.txt : la phrase est la première ligne de la section « Organiser le suivi des factures reçues » de la fiche F39785, reprise à l'identique par l'article sans changement de portée ni de polarité."
       },
       "claim-unit-34aa154b9200-1": {
         "verdict": "soutient",
-        "reasoning": "La source décrit une procédure recommandée permettant à l'entreprise de signaler toute anomalie sur la plateforme ; l'article restitue cette possibilité avec le même sens et la même portée, sans la transformer en obligation absolue ni en droit différent."
+        "reasoning": "Vérifiée dans le même passage source (F39785) : la citation correspond à l'une des trois actions de la procédure que Service-Public recommande de mettre en place ; l'article la restitue comme une possibilité pour l'entreprise, fidèle au sens et à la portée de la source."
       },
       "claim-unit-4526cc40d1a9-1": {
         "verdict": "soutient",
-        "reasoning": "La citation reprend l'obligation de conservation des pièces sur lesquelles s'exercent les droits de communication et de contrôle de l'administration ; l'article généralise le délai précis de 6 ans en « durée déterminée » sans dénaturer l'affirmation ni sa portée."
+        "reasoning": "La citation reprend l'obligation de conservation des livres, registres et pièces de la fiche F10029 ; l'article remplace le délai chiffré de 6 ans par « une durée déterminée », ce qui reste fidèle à l'affirmation citée sans en changer le sens ni la portée."
       },
       "claim-unit-9f32a6b33444-1": {
         "verdict": "soutient",
-        "reasoning": "Définition officielle de la CNIL reprise mot pour mot dans l'article, sans altération de sens, de portée ni de polarité par rapport à la source consultée."
+        "reasoning": "Définition confirmée dans le corps de page de la fiche CNIL « Donnée personnelle » (pas seulement en meta-description), reprise mot pour mot par l'article sans altération de sens, de portée ni de polarité."
       }
     }
   },
@@ -82,50 +82,50 @@
       "brief-six-components": {
         "result": "PASS",
         "observations": [
-          "Le master.png montre les cinq éléments décrits par le brief : pile de feuilles pliées à gauche, portique de lecture vert avec plan translucide et feuille qui glisse au centre, plateau vert à trois feuilles alignées avec jeton vert, plateau graphite à deux feuilles de travers avec jeton graphite, et loupe mate posée près de ce second plateau."
+          "Le master.png (1920x1080) montre les objets décrits par la composition du brief : pile de feuilles pliées à gauche, portique vert à plan lumineux translucide avec une feuille qui glisse au centre, plateau vert à feuilles alignées et jeton vert, plateau graphite à feuilles de travers et jeton graphite, loupe mate posée près de ce second plateau, sur un bureau isométrique crème."
         ]
       },
       "generation-constraints": {
         "result": "PASS",
         "observations": [
-          "Format horizontal proche de 16:9, diorama 3D isométrique à formes géométriques simplifiées et matières mates/translucides, lumière de studio douce venant du haut gauche, conforme au style demandé dans prompt.json."
+          "Cadrage 16:9 exact (1920x1080), diorama 3D isométrique à formes simplifiées, matières mates et translucides, lumière douce venant du haut gauche, palette vert Memlia / vert profond / crème / graphite conforme à prompt.json ; aucun texte, chiffre, logo, personnage, écran ni fausse interface visible sur l'image."
         ]
       },
       "fictive-provenance": {
         "result": "PASS",
         "observations": [
-          "Aucun élément ne suggère une capture d'écran réelle ou un produit existant : objets génériques (feuilles, portique, plateaux, loupe) sans logo, marque ni identifiant, cohérents avec une illustration fictive assumée."
+          "Les objets représentés (feuilles, portique, plateaux, loupe) sont des formes génériques sans logo, marque ni identifiant réel : rien dans l'image ne se fait passer pour une capture d'un outil existant ni pour un document client réel."
         ]
       },
       "recognizable-subject": {
         "result": "PASS",
         "observations": [
-          "Le sujet « lecture automatique puis tri en deux sorties » est reconnaissable sans aucun texte : la feuille sous le portique lumineux, le plateau rangé à trois feuilles bien alignées et le plateau graphite aux feuilles de travers racontent visuellement la vérification qui suit l'extraction."
+          "Le geste de lecture puis de tri en deux sorties distinctes (plateau vert rangé contre plateau graphite de travers) est lisible sans aucun texte ; la spécificité « comptable » du sujet s'appuie toutefois sur le titre et l'alt plutôt que sur des indices visuels du métier, cohérent avec le style abstrait déjà assumé par les couvertures du site."
         ]
       },
       "technical-derivatives": {
         "result": "PASS",
         "observations": [
-          "La page rendue référence des srcset AVIF et WebP en 768w/1200w/1600w pour la couverture, et un og:image 1200x630 avec largeur et hauteur déclarées, conformes aux dérivés annoncés dans prompt.json (1920x1080, OG 1200x630, 768/1200/1600)."
+          "image.json déclare master 1920x1080 (png), og 1200x630 (webp, crop 1200x630+0+22) et un variant hero-768 en avif/webp 768x432, conformes aux trois tailles demandées ; la page rendue sert bien un og:image 1200x630 avec largeur/hauteur explicites et un srcset 768/1200/1600w pour la couverture."
         ]
       },
       "alt-information": {
         "result": "PASS",
         "observations": [
-          "L'alt « Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe » fait 121 caractères, reste sous la limite de 125, et décrit fidèlement les objets visibles plutôt qu'un mot-clé."
+          "L'alt « Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe » fait 121 caractères (sous la limite de 125) et décrit les objets visibles de l'image plutôt qu'un slogan ou un mot-clé isolé."
         ]
       }
     },
-    "directionArt": 19,
-    "semanticRelevance": 24
+    "directionArt": 18,
+    "semanticRelevance": 23
   },
   "sources": {
     "reviewedBy": "relecteur-metier-ia-memlia",
     "observations": {
-      "sp-mentions-facture": "Service Public (entreprendre.service-public.gouv.fr), éditeur gouvernemental officiel, source tier-1 faisant autorité sur les mentions obligatoires de facturation.",
-      "sp-facture-electronique": "Service Public (entreprendre.service-public.gouv.fr), même éditeur officiel tier-1, page dédiée à l'obligation de facturation électronique et au suivi du cycle de vie des factures reçues.",
-      "sp-conservation-pieces": "Service Public (entreprendre.service-public.gouv.fr), éditeur officiel tier-1, page sur les délais de conservation des documents et pièces comptables des entreprises.",
-      "cnil-donnee-personnelle": "CNIL (cnil.fr), autorité administrative indépendante française de protection des données, source tier-1 pour la définition légale de donnée personnelle."
+      "sp-mentions-facture": "Service Public (entreprendre.service-public.gouv.fr), éditeur gouvernemental officiel français, source tier-1 faisant autorité sur les mentions obligatoires de facturation.",
+      "sp-facture-electronique": "Service Public (entreprendre.service-public.gouv.fr), même éditeur officiel tier-1, fiche dédiée à l'obligation de facturation électronique et au suivi du cycle de vie des factures reçues.",
+      "sp-conservation-pieces": "Service Public (entreprendre.service-public.gouv.fr), éditeur officiel tier-1, fiche sur les délais légaux de conservation des documents et pièces des entreprises.",
+      "cnil-donnee-personnelle": "CNIL (cnil.fr), autorité administrative indépendante française de protection des données personnelles, source tier-1 pour la définition légale de donnée personnelle."
     }
   },
   "qualite": {
@@ -155,36 +155,36 @@
       }
     },
     "evidence": [
-      "Schema JSON-LD complet sur la page rendue : BlogPosting, Person (Kevin Kitanga), Organization (Memlia, SIREN/SIRET), BreadcrumbList et WebSite, sans élément manquant du socle attendu.",
-      "Quatre sources tier-1 officielles (3x Service-Public, 1x CNIL) citées avec URL et date de consultation dans une section « Sources consultées » dédiée, en plus des liens contextuels dans le corps.",
-      "Six tableaux structurés avec <thead> couvrent les champs extraits par certitude, les six contrôles ordonnés, la règle déclencheur/condition/action/exception, et la matrice automatisé/validé/humain.",
-      "Bloc « En bref » résumant la réponse dès l'ouverture, suivi d'un paragraphe de réponse directe, conforme au format answer-first attendu pour l'intent « executer ».",
-      "Jeu de test fictif chiffré (50 pièces réparties en huit catégories, dont pièges construits) qui démontre la méthode par un cas rejouable plutôt que de l'affirmer abstraitement.",
-      "Image de couverture avec dérivés AVIF/WebP déclarés en 768/1200/1600px, OG 1200x630 avec largeur et hauteur explicites, alt descriptif de 121 caractères.",
-      "FAQ de cinq questions en h3 sous « Questions fréquentes », sans schema FAQPage dédié — non pénalisant selon le barème qui traite le FAQPage comme optionnel.",
-      "Title tag corrigé : « Saisie comptable OCR : ce qui reste à vérifier | Memlia » fait désormais 55 caractères et attaque sur la requête primaire, contre 63 caractères avant correction."
+      "Schema JSON-LD complet sur la page rendue : BlogPosting, Person (Kevin Kitanga, avec bio et lien /a-propos), Organization (Memlia, SIREN 108621541, adresse Paris 8e), BreadcrumbList et WebSite.",
+      "Les cinq claims sourcés du paquet de revue sont vérifiés mot pour mot dans les copies locales (.source.txt) des quatre sources tier-1 citées, sans écart de portée ni de polarité.",
+      "Hiérarchie de titres propre sur toute la page : un seul h1, puis des h2, avec des h3 réservés à la FAQ — aucun saut de niveau relevé.",
+      "9 liens internes contextuels au total (7 dans le corps : glossaire x3, article frère, article pilier, /methode, /automatisation-cabinet-comptable ; 2 dans le bloc de clôture) et 4 liens externes tier-1, dans les fourchettes recommandées par le barème.",
+      "Image de couverture servie en AVIF/WebP avec srcset 768/1200/1600w, loading=\"eager\" et fetchpriority=\"high\" sur l'image LCP (pas de lazy-loading fautif), alt de 121 caractères.",
+      "Maillage bidirectionnel vérifié par grep : l'article pilier (automatiser-un-cabinet-comptable-la-carte-des-taches.html) et l'article frère (automatiser-la-relance-des-pieces-clients.html) renvoient tous deux vers cet article, et réciproquement.",
+      "Zéro tiret cadratin, zéro chiffre de gain, zéro mention de donnée client et zéro occurrence du mot « module » dans le corps de l'article ; le jeu de test est explicitement qualifié de « fictif ».",
+      "Plusieurs phrases s'enchaînent par point-virgule sur cinq ou six propositions (ex. l'ouverture de Brique 2 : « On vérifie d'abord que... puis que... puis que... »), ce qui allonge la longueur moyenne de phrase au-delà des ~22 mots recommandés pour la lisibilité."
     ],
     "reservations": [
-      "Le score Lighthouse (LCP/INP/CLS) n'a pas été mesuré directement sur cette page rendue, seule la présence des signaux favorables (fetchpriority, préchargement des polices) a été vérifiée dans le code.",
-      "La citabilité IA réelle (apparition effective dans une réponse ChatGPT, Perplexity ou Google AI Overviews) n'a pas été testée ; seule la structure extractible du contenu a été évaluée.",
-      "Le meta robots de cette page rendue est « noindex, follow » car il s'agit d'un candidat en preview privée non publiable ; c'est un artefact du rendu de prévisualisation, pas un défaut de l'article, mais il reste à vérifier que le robots sera bien indexable une fois l'article publié en production.",
-      "Le CTR et le temps de lecture réel ne peuvent pas être estimés sans données de trafic, absentes de ce contrôle éditorial."
+      "Le score Lighthouse (LCP/INP/CLS réels) n'a pas été mesuré : seule la présence de signaux favorables dans le code (CSS inliné, polices préchargées, fetchpriority sur le hero) a été vérifiée, pas leur effet chiffré.",
+      "La citabilité IA réelle (apparition effective dans une réponse Google AI Overviews, ChatGPT ou Perplexity) n'a pas été testée ; seule la structure extractible du HTML a été évaluée.",
+      "La page porte <meta name=\"robots\" content=\"noindex, follow\"> et le bandeau « Candidat éditorial — preview privée, non publiable » : identiques sur les 6 fichiers de .qa/render-tous/blog/, donc un artefact du harnais de rendu QA plutôt qu'un réglage propre à cet article — à confirmer absent une fois l'URL publiée en production.",
+      "La lisibilité (Flesch ou équivalent français) n'a pas été calculée par un outil ; l'appréciation de densité de phrase reste qualitative."
     ],
     "seo": [
-      "Title tag corrigé à 55 caractères (« Saisie comptable OCR : ce qui reste à vérifier | Memlia »), dans la fourchette recommandée de 40-60 caractères et attaquant sur la requête primaire « automatisation saisie comptable OCR ».",
-      "Meta description de 143 caractères, cohérente avec le contenu visible et dans la fourchette usuelle.",
-      "Six liens internes contextuels dans le corps : trois vers le glossaire, deux vers d'autres articles du blog, un vers /methode.",
-      "URL canonique stable et lisible : /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.",
-      "Un seul h1, hiérarchie h2/h3 sans saut de niveau, y compris dans le bloc FAQ.",
-      "Quatre liens externes vers des sources tier-1 (service-public.gouv.fr x3, cnil.fr x1), dans la fourchette de 3 à 8 recommandée."
+      "Title tag rendu à 58 caractères (« Automatisation saisie comptable : les 6 contrôles | Memlia »), dans la fourchette 40-60 recommandée et aligné sur la requête primaire.",
+      "Meta description à 143 caractères, cohérente avec le contenu visible et avec le résumé « En bref ».",
+      "7 liens internes contextuels dans le corps de l'article (glossaire x3, article frère, article pilier, /methode, /automatisation-cabinet-comptable), plus 2 dans le bloc de clôture.",
+      "4 liens externes vers des sources tier-1 (service-public.gouv.fr x3, cnil.fr x1), dans la fourchette de 3 à 8 recommandée.",
+      "URL canonique stable, minuscule et à tirets : /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.",
+      "Un seul h1 et une hiérarchie h2/h3 sans saut de niveau, y compris dans le bloc FAQ à cinq questions."
     ],
     "geo": [
-      "Réponse directe en tête d'article, formulée comme un paragraphe autonome et extractible par un moteur génératif sans contexte supplémentaire.",
-      "Terminologie d'entité stable tout au long du texte : « saisie comptable automatisée », « pré-comptabilité », « file d'anomalies », ce qui limite l'ambiguïté pour un système IA.",
-      "Cinq questions fréquentes formulées en langage naturel sous forme de h3, propices à une citation directe dans une réponse conversationnelle.",
-      "Tableaux avec <thead> sur les six contrôles et la règle déclencheur/condition/action/exception, format propice à l'extraction structurée par un système IA.",
-      "Le meta robots « noindex » de cette page de candidat la rend actuellement invisible aux robots respectueux du robots meta, tant qu'elle n'est pas publiée en production — artefact de preview, non compté dans le score."
+      "Réponse directe en tête d'article (environ 72 mots), formulée comme un paragraphe autonome extractible sans contexte supplémentaire.",
+      "Terminologie d'entité stable tout au long du texte (saisie comptable automatisée, OCR, pré-comptabilité, file d'anomalies, reliquat), reliée au glossaire du site.",
+      "Cinq questions fréquentes en langage naturel, balisées h3 sous « Questions fréquentes », propices à une citation directe dans une réponse conversationnelle (sans schema FAQPage, optionnel selon le barème).",
+      "Quatre tableaux avec <thead> (champs extraits, six contrôles, règle déclencheur/condition/action/exception, répartition automatisé/validé/humain), format propice à l'extraction structurée.",
+      "Chaque affirmation sensible porte une citation exacte liée en ligne vers une source officielle, toutes consultées à la même date (17 septembre 2026)."
     ],
-    "verdict": "Article complet, rigoureusement sourcé et structuré pour l'extraction IA (98/100) ; le title tag a été corrigé sous les 60 caractères, prêt pour publication sous réserve de lever le noindex de preview."
+    "verdict": "Article rigoureusement sourcé (5/5 claims vérifiées soutient) et structuré pour l'extraction humaine et IA (98/100) ; publiable tel quel sous la seule réserve de confirmer, hors de cet artefact de preview QA, que la page finale ne sera pas en noindex."
   }
 }

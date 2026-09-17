@@ -1,31 +1,54 @@
 {
   "version": 1,
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
-  "reviewedAt": "2026-09-15",
-  "reviewer": "independent-gpt-subagent",
+  "reviewedAt": "2026-09-17",
+  "reviewer": "relecteur-qualite-ia-memlia",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 94,
+  "score": 97,
   "p0": 0,
   "categories": {
-    "contentQuality": {"score":29,"max":30},
-    "seoOptimization": {"score":25,"max":25},
-    "eeatSignals": {"score":12,"max":15},
-    "technicalElements": {"score":14,"max":15},
-    "aiCitationReadiness": {"score":14,"max":15}
+    "contentQuality": {
+      "score": 28,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 25,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 14,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 15,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 15,
+      "max": 15
+    }
   },
   "evidence": [
-    "Couverture complète du cycle post-dépôt, tableau AEE/ARE/CCO/BAN/CRM, méthode en six étapes, registre, cas fictifs, FAQ et synthèse.",
-    "Titre, intention, hiérarchie, URL, meta, maillage interne et cinq liens externes officiels sont cohérents.",
-    "33 claims : 21 officiels vérifiés et 12 méthodes bornées ; zéro non vérifié ou rejeté.",
-    "Build et 44 tests de preuve réussis ; variantes d’image, JSON-LD et image sociale article-spécifique vérifiés.",
-    "Six largeurs sans débordement ; trois captures inspectées ; Playwright 79/79.",
-    "Sections answer-first, tableaux, FAQ, terminologie stable et limites explicites."
+    "Cinq tableaux structurés (<thead>) organisent la comparaison des retours, le registre à dix champs, les trois situations fictives et la matrice d'automatisation, un format favorable à la lecture comme à l'extraction.",
+    "Les sept citations du paquet de revue sont vérifiées mot pour mot contre les quatre fichiers sources tier-1 (Net-entreprises), chacune rattachée à la bonne page et au bon paragraphe.",
+    "Auteur nommé, lié et biographié (Kevin Kitanga, Fondateur de Memlia) avec balisage Person/BlogPosting/Organization/BreadcrumbList dans le JSON-LD.",
+    "Le mot « à adapter », cause du FAIL de la première passe, est absent du rendu actuel ; « Memlia peut » et « module » (hors balises <script type=\"module\">) sont également absents après vérification exhaustive.",
+    "L'exemple fictif (dossier D-027, retour R-027-A, rubrique X-14, pièce P-027-08) est explicitement étiqueté « entièrement fictif, sans donnée client ni règle de paie réelle », et les trois situations complémentaires (D-031, D-044, D-052) le sont tout autant.",
+    "Une phrase de la FAQ (« le terme apparaît notamment dans la liste officielle des retours de l'administration fiscale ») avance une affirmation factuelle spécifique sans lien ni citation directe dans ce paragraphe précis, contrairement aux sept claims du paquet de revue qui sont tous sourcés.",
+    "L'image de couverture (1920x1080) décline des dérivés OG 1200x630 et hero 768 en AVIF/WebP déclarés dans image.json, avec chargement eager et fetchpriority high pour l'image LCP plutôt qu'un lazy-load pénalisant.",
+    "Sept liens internes contextuels distincts dans le corps (deux articles frères, le pilier, deux ancres de glossaire, /methode, /garanties), plus /contact et /methode dans le bloc d'appel de fin."
   ],
   "reservations": [
-    "Aucune attestation métier indépendante en paie ou droit social : limite affichée et retenue dans le score E-E-A-T.",
-    "Aucun score Lighthouse archivé pour l’URL locale.",
-    "Aucun test de citation réelle par un moteur IA ; le score mesure seulement la préparation éditoriale."
+    "Le score Lighthouse (performance, accessibilité, SEO, Core Web Vitals) n'a pas été mesuré dans cette revue ; l'appréciation technique s'appuie sur une lecture du code (preload de polices, fetchpriority sur l'image hero, formats AVIF/WebP), pas sur un audit chronométré.",
+    "La citation réelle de cette page par des moteurs IA (AI Overviews, Perplexity, ChatGPT) n'est pas mesurée ; le jugement porte sur la structure d'extraction (réponse directe, FAQ, tableaux à <thead>), pas sur une citation observée en production.",
+    "Le rendu mobile (320-768px, cibles tactiles, absence de défilement horizontal) n'a pas été vérifié visuellement dans un navigateur ; l'appréciation s'appuie sur les media queries et les unités clamp() lues dans le CSS.",
+    "Le score de lisibilité (Flesch ou équivalent français) n'a pas été calculé par un outil dédié ; la densité de certaines phrases longues à clauses multiples est une lecture qualitative, pas une mesure."
   ],
-  "verdict": "Exceptionnel, publiable comme contenu non attesté ; score heuristique éditorial, sans promesse de classement."
+  "verdict": "Le candidat corrige réellement l'écart de la première passe (la formule « à adapter » a disparu, remplacée par des formulations qui gardent le sens) et atteint un niveau élevé sur les sept critères éditoriaux comme sur le barème qualité à 100 points, avec seulement des réserves mineures et non bloquantes.",
+  "subject": {
+    "slug": "comprendre-les-comptes-rendus-metier-dsn",
+    "articleSha256": "c7055d564b5249a1f8b2399a58f7f4db5827f7927e4a49e06abbff5b5e31be91",
+    "manifestSha256": "23f90957b7523de8047c1bb2b304b3ced0e26778ddb5d344bfc2881739bea513"
+  }
 }
