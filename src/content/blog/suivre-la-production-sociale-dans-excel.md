@@ -1,6 +1,6 @@
 ---
 titre: "Suivre la production sociale dans Excel : modèle, règles et limites"
-titreOnglet: "Tableau de suivi de production sociale Excel | Memlia"
+titreOnglet: "Tableau de bord paie Excel : suivre sans surveiller | Memlia"
 resume: "Construisez le suivi sur l’unité dossier × période × étape : une table de saisie contrôlée, des calculs régénérables et une vue agrégée. Les exceptions portent sur les dossiers, jamais sur un classement individuel."
 description: "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel."
 datePublication: 2026-09-09

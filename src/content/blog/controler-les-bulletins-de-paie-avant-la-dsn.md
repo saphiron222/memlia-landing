@@ -1,6 +1,6 @@
 ---
 titre: "Comment contrôler les bulletins de paie avant la DSN ?"
-titreOnglet: "Contrôler les bulletins avant la DSN : méthode | Memlia"
+titreOnglet: "Contrôle bulletin de paie en cabinet : avant la DSN | Memlia"
 resume: "Clôturez trois revues sur le fichier exact à transmettre : pièces et variables, écarts du bulletin, puis contrôle technique DSN. Chaque signalement doit être expliqué, corrigé ou confié à une personne désignée."
 description: "Méthode en trois revues pour contrôler variables, bulletins et fichier DSN, qualifier les écarts et conserver les preuves avant le dépôt."
 datePublication: 2026-09-09

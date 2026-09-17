@@ -1,6 +1,6 @@
 ---
 titre: "Comprendre les comptes rendus métier DSN : méthode de lecture"
-titreOnglet: "Comptes rendus métier DSN : méthode de lecture | Memlia"
+titreOnglet: "CRM DSN : lire le compte rendu et ses anomalies | Memlia"
 resume: "Un dépôt accepté ne clôt pas le contrôle. Identifiez le retour, son émetteur, sa période et sa population ; lisez le statut dans sa source, rapprochez la donnée de paie, puis documentez la décision et le contrôle suivant."
 description: "Méthode pour distinguer les retours DSN, lire un CRM, qualifier une anomalie et tracer la correction sans confondre dépôt accepté et paie juste."
 datePublication: 2026-09-15
