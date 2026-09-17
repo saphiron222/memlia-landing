@@ -1,6 +1,6 @@
 # CLAUDE.md — memlia.fr
 
-Site public de **Memlia** (SASU, Plérin) : l'IA pour les cabinets d'expertise comptable. Markdown français.
+Site public de **Memlia** (SASU, Paris 8ᵉ — RCS Paris 108 621 541) : l'IA pour les cabinets d'expertise comptable. Markdown français.
 Dépôt privé `saphiron222/memlia-landing`, poussé sur `main` par Kevin, déployé sur **Cloudflare Pages**.
 
 ## Ce que ce dépôt est, et ce qu'il n'est pas
