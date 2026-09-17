@@ -8,7 +8,7 @@ Automatiser la saisie comptable, c’est laisser une lecture automatique extrair
 
 Confondre ces trois étapes est l’erreur d’origine. Une lecture qui rend « 1 248,00 » a extrait un nombre ; elle n’a pas établi que ce nombre est le total TTC de cette facture, ni que la facture vient du fournisseur attendu, ni qu’elle appartient à la période traitée. L’extraction est une hypothèse documentée, l’imputation est une décision, la validation engage le cabinet. Une automatisation tenable garde les trois séparées et montre ce qu’elle a supposé.
 
-À la main, la saisie casse pour une raison connue de tous les cabinets : elle est répétitive sur la plupart des pièces et délicate sur quelques-unes, et c’est la même personne qui traite les deux, dans le même mouvement, à la même vitesse. La pièce ambiguë passe alors comme les autres. Automatiser sans séparer ces deux régimes ne corrige rien : cela accélère aussi les erreurs. La méthode ci-dessous — une méthode Memlia, pas une règle réglementaire — sépare ce que la lecture propose de ce qu’une personne vérifie, et fait remonter le reste au lieu de le forcer.
+À la main, la saisie casse pour une raison connue de tous les cabinets : elle est répétitive sur la plupart des pièces et délicate sur quelques-unes, et c’est la même personne qui traite les deux, dans le même mouvement, à la même vitesse. La pièce ambiguë passe alors comme les autres. Automatiser sans séparer ces deux régimes ne corrige rien : cela accélère aussi les erreurs. La méthode ci-dessous, une méthode Memlia et non une règle réglementaire, sépare ce que la lecture propose de ce qu’une personne vérifie, et fait remonter le reste au lieu de le forcer.
 
 ## Que faut-il avoir sous la main avant de commencer ?
 
@@ -46,11 +46,11 @@ Les contrôles se passent dans un ordre fixe, du plus grossier au plus fin, parc
 | Période | La date de la pièce tombe dans la période traitée | Pièce hors période, conservée pour la bonne période |
 | Doublon | Le couple fournisseur et numéro est absent du journal | Rapprochement proposé, aucune écriture créée |
 
-Quatre de ces six contrôles sont purement déterministes : ils comparent, ils ne jugent pas. C’est ce qui les rend automatisables sans risque. Les deux autres — l’émetteur inconnu, l’imputation d’un achat inhabituel — demandent une décision, et cette décision appartient au cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre ce qui se prouve par comparaison et ce qui s’apprécie.
+Quatre de ces six contrôles sont purement déterministes : ils comparent, ils ne jugent pas. C’est ce qui les rend automatisables sans risque. Les deux autres, l’émetteur inconnu et l’imputation d’un achat inhabituel, demandent une décision, et cette décision appartient au cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre ce qui se prouve par comparaison et ce qui s’apprécie.
 
 ## Brique 3 : la file d’anomalies, et le reliquat qui se compte
 
-Tout ce qui ne franchit pas un contrôle tombe dans une [file d’anomalies](/glossaire#file-d-anomalies) unique, avec la pièce, le contrôle qui a échoué et la date. Une file unique, relue à heure fixe, vaut mieux qu’une alerte par pièce, qui finit ignorée. Chaque ligne porte un motif fermé — document non facturé, fournisseur inconnu, pièce incomplète, écart de montants, hors période, doublon probable — et ces motifs sont peu nombreux à dessein : ils servent à décider, pas à décrire.
+Tout ce qui ne franchit pas un contrôle tombe dans une [file d’anomalies](/glossaire#file-d-anomalies) unique, avec la pièce, le contrôle qui a échoué et la date. Une file unique, relue à heure fixe, vaut mieux qu’une alerte par pièce, qui finit ignorée. Chaque ligne porte un motif fermé : document non facturé, fournisseur inconnu, pièce incomplète, écart de montants, hors période, doublon probable. Ces motifs sont peu nombreux à dessein, ils servent à décider et non à décrire.
 
 Le reliquat, c’est la part des pièces qui termine dans cette file. Il se compte, période par période, et il n’a de sens que rapporté au jeu de pièces sur lequel il a été compté : un dossier de commerce avec beaucoup de tickets ne produit pas le même reliquat qu’un dossier de prestations à dix factures par mois. Ce chiffre n’est pas un argument de vente, c’est un instrument de réglage : quand un motif domine la file, c’est la règle qu’il faut corriger, pas la personne qui relit.
 
@@ -68,7 +68,7 @@ Le reliquat, c’est la part des pièces qui termine dans cette file. Il se comp
 
 Le refus est la partie utile de la règle. L’outil ne crée jamais une fiche fournisseur de lui-même : un fournisseur créé par erreur se retrouve six mois plus tard dans une balance que personne ne comprend. Il n’arrondit pas un écart de montants, même d’un centime, parce qu’un centime est parfois le symptôme d’une remise mal lue. Il ne réimpute pas un achat inhabituel sur l’habitude du fournisseur. Il n’enregistre rien tant qu’une personne n’a pas validé, même quand la proposition est certaine. Et il ne supprime jamais une pièce qu’il croit être un doublon : il propose un rapprochement, la suppression reste une décision.
 
-Ces refus ont un coût visible — des lignes dans une file — et c’est exactement ce qu’on veut. Une automatisation qui ne refuse rien ne dit pas qu’elle a tout compris ; elle dit qu’elle ne vérifie rien.
+Ces refus ont un coût visible, des lignes dans une file, et c’est exactement ce qu’on veut. Une automatisation qui ne refuse rien ne dit pas qu’elle a tout compris ; elle dit qu’elle ne vérifie rien.
 
 ## Ce qui s’automatise, ce qui attend une validation, ce qui reste humain
 

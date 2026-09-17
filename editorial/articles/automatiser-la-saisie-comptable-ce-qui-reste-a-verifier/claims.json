@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "articleSha256": "9948de3ca7f4518e069677d2e315c78d8af0464b0b9b4e9d80390685f7dabdc7",
+  "articleSha256": "3218163766cd1d894fac55558c25d313812b5f0599175ebe245f0cac4142ea7c",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -29,8 +29,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-a939887ef41a",
-      "text": "À la main, la saisie casse pour une raison connue de tous les cabinets : elle est répétitive sur la plupart des pièces et délicate sur quelques-unes, et c’est la même personne qui traite les deux, dans le même mouvement, à la même vitesse. La pièce ambiguë passe alors comme les autres. Automatiser sans séparer ces deux régimes ne corrige rien : cela accélère aussi les erreurs. La méthode ci-dessous — une méthode Memlia, pas une règle réglementaire — sépare ce que la lecture propose de ce qu’une personne vérifie, et fait remonter le reste au lieu de le forcer.",
+      "id": "unit-091f6fdc136c",
+      "text": "À la main, la saisie casse pour une raison connue de tous les cabinets : elle est répétitive sur la plupart des pièces et délicate sur quelques-unes, et c’est la même personne qui traite les deux, dans le même mouvement, à la même vitesse. La pièce ambiguë passe alors comme les autres. Automatiser sans séparer ces deux régimes ne corrige rien : cela accélère aussi les erreurs. La méthode ci-dessous, une méthode Memlia et non une règle réglementaire, sépare ce que la lecture propose de ce qu’une personne vérifie, et fait remonter le reste au lieu de le forcer.",
       "claimIds": []
     },
     {
@@ -79,8 +79,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-0a05a119b0ce",
-      "text": "Quatre de ces six contrôles sont purement déterministes : ils comparent, ils ne jugent pas. C’est ce qui les rend automatisables sans risque. Les deux autres — l’émetteur inconnu, l’imputation d’un achat inhabituel — demandent une décision, et cette décision appartient au cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre ce qui se prouve par comparaison et ce qui s’apprécie.",
+      "id": "unit-fcfe9901ff9c",
+      "text": "Quatre de ces six contrôles sont purement déterministes : ils comparent, ils ne jugent pas. C’est ce qui les rend automatisables sans risque. Les deux autres, l’émetteur inconnu et l’imputation d’un achat inhabituel, demandent une décision, et cette décision appartient au cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre ce qui se prouve par comparaison et ce qui s’apprécie.",
       "claimIds": []
     },
     {
@@ -89,8 +89,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-179594c66ac6",
-      "text": "Tout ce qui ne franchit pas un contrôle tombe dans une file d’anomalies unique, avec la pièce, le contrôle qui a échoué et la date. Une file unique, relue à heure fixe, vaut mieux qu’une alerte par pièce, qui finit ignorée. Chaque ligne porte un motif fermé — document non facturé, fournisseur inconnu, pièce incomplète, écart de montants, hors période, doublon probable — et ces motifs sont peu nombreux à dessein : ils servent à décider, pas à décrire.",
+      "id": "unit-29aae8c34193",
+      "text": "Tout ce qui ne franchit pas un contrôle tombe dans une file d’anomalies unique, avec la pièce, le contrôle qui a échoué et la date. Une file unique, relue à heure fixe, vaut mieux qu’une alerte par pièce, qui finit ignorée. Chaque ligne porte un motif fermé : document non facturé, fournisseur inconnu, pièce incomplète, écart de montants, hors période, doublon probable. Ces motifs sont peu nombreux à dessein, ils servent à décider et non à décrire.",
       "claimIds": []
     },
     {
@@ -119,8 +119,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-915432230a9a",
-      "text": "Ces refus ont un coût visible — des lignes dans une file — et c’est exactement ce qu’on veut. Une automatisation qui ne refuse rien ne dit pas qu’elle a tout compris ; elle dit qu’elle ne vérifie rien.",
+      "id": "unit-1034527e53c3",
+      "text": "Ces refus ont un coût visible, des lignes dans une file, et c’est exactement ce qu’on veut. Une automatisation qui ne refuse rien ne dit pas qu’elle a tout compris ; elle dit qu’elle ne vérifie rien.",
       "claimIds": []
     },
     {
