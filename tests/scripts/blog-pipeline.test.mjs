@@ -409,8 +409,8 @@ test('le gate refuse une boucle de lien placée dans une branche morte de /blog'
     const fixture = await createCompleteDossier(root);
     const actualBlogPage = readFileSync(new URL('../../src/pages/blog.astro', import.meta.url), 'utf8');
     const deadBranch = actualBlogPage.replace(
-      '{articles.map(',
-      '{false && articles.map('
+      '{suite.map(',
+      '{false && suite.map('
     );
     assert.notEqual(deadBranch, actualBlogPage, 'la fixture doit placer la boucle réelle dans une branche morte');
     writeFileSync(join(root, 'src/pages/blog.astro'), deadBranch);

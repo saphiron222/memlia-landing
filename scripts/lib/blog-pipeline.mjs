@@ -1503,9 +1503,14 @@ function incomingSourceContainsLink(root, sourceUrl, slug, renderedBlogHtml) {
   if (sourceUrl === '/blog') {
     if (typeof renderedBlogHtml !== 'string') return false;
     const document = parseHtml(renderedBlogHtml);
+    // Une entrée d'article sur /blog est un `li` dans la liste chronologique, ou un `article`
+    // dans le bloc de départ qui porte le pilier depuis le 17/09/2026. La balise reste
+    // contrainte à ces deux-là, pour qu'un lien caché dans un conteneur quelconque ne passe
+    // pas pour une entrée. Le contrôle reste strict : exactement une entrée, un vrai lien dedans.
     const renderedEntries = findHtmlElements(
       document,
-      (element) => element.tagName === 'li' && htmlAttribute(element, 'data-article') === slug,
+      (element) => (element.tagName === 'li' || element.tagName === 'article')
+        && htmlAttribute(element, 'data-article') === slug,
     );
     if (renderedEntries.length !== 1) return false;
     return findHtmlElements(

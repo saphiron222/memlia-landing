@@ -20,7 +20,9 @@ test('liste du blog : articles, auteur, flux et navigation courante', async ({ p
   await expect(page.locator('h1')).toHaveCount(1);
   const cartes = page.locator('[data-article]');
   expect(await cartes.count()).toBeGreaterThanOrEqual(2);
-  expect(await page.locator('.blog-liste').getAttribute('data-articles')).toBe(String(await cartes.count()));
+  // `data-articles` compte les cartes de la liste, pas celles de la page : le pilier a son propre
+  // bloc au-dessus et n'y figure plus.
+  expect(await page.locator('.blog-liste').getAttribute('data-articles')).toBe(String(await page.locator('.blog-liste [data-article]').count()));
   await expect(page.locator('#auteur-kevin')).toContainText('Kevin Kitanga');
   const rssLink = page.locator('link[rel="alternate"][type="application/rss+xml"]');
   if (PREVIEW_SLUGS.size) await expect(rssLink).toHaveCount(0);
@@ -118,10 +120,16 @@ test('article sans JavaScript : contenu et navigation visibles', async ({ browse
   await context.close();
 });
 
-test('le pilier « la carte des tâches » ouvre la liste quand il est publié', async ({ page }) => {
+test('le pilier ouvre la page dans son propre bloc, et ne figure pas dans la liste', async ({ page }) => {
   await page.goto('/blog');
-  const cartes = page.locator('.blog-liste [data-article]');
-  const slugs = await cartes.evaluateAll((items) => items.map((item) => item.getAttribute('data-article')));
-  test.skip(!slugs.includes('automatiser-un-cabinet-comptable-la-carte-des-taches'), 'pilier non publié dans ce rendu');
-  expect(slugs[0]).toBe('automatiser-un-cabinet-comptable-la-carte-des-taches');
+  const PILIER = 'automatiser-un-cabinet-comptable-la-carte-des-taches';
+  const tous = await page.locator('[data-article]').evaluateAll((items) => items.map((i) => i.getAttribute('data-article')));
+  test.skip(!tous.includes(PILIER), 'pilier non publié dans ce rendu');
+  // Il ouvre la page : première carte du document, dans le bloc de départ.
+  expect(tous[0]).toBe(PILIER);
+  await expect(page.locator(`.blog-depart [data-article="${PILIER}"]`)).toHaveCount(1);
+  // Et il sort de la liste, pour que celle-ci se lise strictement du plus récent au plus ancien.
+  await expect(page.locator(`.blog-liste [data-article="${PILIER}"]`)).toHaveCount(0);
+  const liste = await page.locator('.blog-liste [data-article]').evaluateAll((items) => items.map((i) => i.getAttribute('data-article')));
+  expect(liste.length).toBe(tous.length - 1);
 });

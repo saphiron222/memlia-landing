@@ -13,16 +13,21 @@ import { AUTEURS, identiteAuteur } from '@/data/auteurs';
 import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
 
 /**
- * Route /blog : liste des articles publiés (le pilier en tête, puis du plus récent au plus ancien), ligne
+ * Route /blog : le pilier en point de départ, puis la liste des autres articles du plus récent au plus ancien, ligne
  * éditoriale, fiche auteur ancrée (#auteur-kevin, cible du `rel=author` des articles).
  * Fichier `blog.astro` (pas `blog/index.astro`) : avec `build.format: 'file'`, l'URL
  * canonique sans slash est servie sans redirection.
  */
-// Le pilier (format pillar-page) reste en tête de liste ; les autres articles suivent, du plus récent au plus ancien.
-const articles = (await getCollection('blog', isBlogEntryVisible)).sort(
-  (a, b) => Number(b.data.format === 'pillar-page') - Number(a.data.format === 'pillar-page')
-    || b.data.datePublication.getTime() - a.data.datePublication.getTime()
+// Le pilier (format pillar-page) SORT de la liste : il ouvre la page comme point de départ, et la
+// liste qui suit se lit alors strictement du plus récent au plus ancien. Épinglé dans la liste, il
+// donnait à lire un ordre faux dès qu'un satellite portait une date postérieure.
+const parDate = (await getCollection('blog', isBlogEntryVisible)).sort(
+  (a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime()
 );
+const pilier = parDate.find((a) => a.data.format === 'pillar-page');
+const suite = parDate.filter((a) => a !== pilier);
+// L'ordre du DOM, et donc celui du graphe : le pilier d'abord, puis la liste chronologique.
+const articles = pilier ? [pilier, ...suite] : suite;
 const formatDate = (d: Date) => d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const iso = (d: Date) => d.toISOString().slice(0, 10);
 const minutes = (corps: string | undefined) => Math.max(1, Math.ceil(compterMots(corps ?? '') / BLOG.motsParMinute));
@@ -93,10 +98,32 @@ const graph = {
       <a class="btn btn-lien blog-rss" href={BLOG.fluxRss} type="application/rss+xml">Flux RSS <Picto nom="fleche" taille={14} /></a>
     </section>
 
-    <section class="conteneur" aria-labelledby="articles-titre">
-      <h2 id="articles-titre" class="sr-only">Articles</h2>
-      <ul class="blog-liste rv-groupe" data-articles={articles.length}>
-        {articles.map((a) => (
+    {pilier && (
+      <section class="conteneur blog-depart" aria-labelledby="depart-titre">
+        <span class="pastille"><span class="point"></span>À lire en premier</span>
+        <h2 id="depart-titre" class="sr-only">Article de référence</h2>
+        <article class="blog-carte blog-pilier rv" data-article={pilier.id}>
+          <a href={`${BLOG.chemin}/${pilier.id}`} class="carte-image" aria-hidden="true" tabindex="-1">
+            <Picture id={pilier.data.image as keyof typeof IMAGES} sizes="(min-width: 64rem) 560px, (min-width: 48rem) 50vw, 100vw" />
+          </a>
+          <div class="carte-texte">
+            <p class="carte-meta texte-2">
+              <time datetime={iso(pilier.data.datePublication)}>{formatDate(pilier.data.datePublication)}</time>
+              <span aria-hidden="true">·</span>
+              <span>{minutes(pilier.body)} min de lecture</span>
+            </p>
+            <h3 class="carte-titre"><a href={`${BLOG.chemin}/${pilier.id}`}>{pilier.data.titre}</a></h3>
+            <p class="texte-2 carte-resume">{pilier.data.resume}</p>
+            <span class="btn btn-lien carte-lire" aria-hidden="true">Lire l’article <Picto nom="fleche" taille={14} /></span>
+          </div>
+        </article>
+      </section>
+    )}
+
+    <section class="conteneur blog-section-liste" aria-labelledby="articles-titre">
+      <h2 id="articles-titre" class="blog-liste-titre">Les articles</h2>
+      <ul class="blog-liste rv-groupe" data-articles={suite.length}>
+        {suite.map((a) => (
           <li class="blog-carte rv" data-article={a.id}>
             <a href={`${BLOG.chemin}/${a.id}`} class="carte-image" aria-hidden="true" tabindex="-1">
               <Picture id={a.data.image as keyof typeof IMAGES} sizes="(min-width: 64rem) 560px, (min-width: 48rem) 50vw, 100vw" />
@@ -152,7 +179,14 @@ const graph = {
   .blog-tete h1 { font-size: var(--t-5xl); max-width: 20ch; }
   .blog-intro { max-width: 62ch; }
   .blog-rss { justify-self: start; }
-  .blog-liste { display: grid; gap: 32px; border-top: 1px solid var(--ligne); padding-top: 32px; }
+  /* Le pilier a son propre bloc au-dessus de la liste : la liste redevient strictement
+     chronologique, et le moyeu du cluster reste la première chose vue. */
+  .blog-depart { display: grid; justify-items: start; gap: 20px; border-top: 1px solid var(--ligne); padding-top: 32px; }
+  .blog-pilier { width: 100%; }
+  .blog-pilier .carte-titre { font-size: var(--t-3xl); }
+  .blog-section-liste { margin-top: 56px; border-top: 1px solid var(--ligne); padding-top: 32px; }
+  .blog-liste-titre { font-size: var(--t-xl); margin-bottom: 24px; }
+  .blog-liste { display: grid; gap: 32px; }
   .blog-carte { display: grid; gap: 16px; }
   .carte-image { display: block; border-radius: var(--r-carte); overflow: hidden; border: 1px solid var(--ligne-douce); }
   .carte-texte { display: grid; gap: 8px; align-content: start; }
