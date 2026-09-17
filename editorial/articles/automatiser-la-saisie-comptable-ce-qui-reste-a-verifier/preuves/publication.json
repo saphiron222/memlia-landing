@@ -2,10 +2,10 @@
   "version": 1,
   "kind": "publication-scellee",
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "articleSha256": "0e65c8f1da973605691efd05b91a4cf9c803fceea155d25c55c74fb3df843c77",
-  "manifestSha256": "5fb151f485a2eadc9c4e718701ce001742f0a4a42a751399663f9dbb1715be27",
+  "articleSha256": "9948de3ca7f4518e069677d2e315c78d8af0464b0b9b4e9d80390685f7dabdc7",
+  "manifestSha256": "97b996fb17b6cde6130dd9f761227f82633ec9364bc1324deeb964e98c6bb89e",
   "publishedAt": "2026-09-17",
-  "sealedAt": "2026-09-17T10:29:18.271Z",
+  "sealedAt": "2026-09-17T10:48:19.912Z",
   "files": [
     {
       "path": "brief.md",
@@ -15,22 +15,22 @@
     {
       "path": "claims.json",
       "bytes": 45160,
-      "sha256": "add69c43699ce6de89da83737f4d7928517a83aedb2e6f1f7dd291b804cd6bfc"
+      "sha256": "9d705f72209618cee3802367fc723b4de69bbbf95a37a444a5f29480b46fd843"
     },
     {
       "path": "image.json",
       "bytes": 1231,
-      "sha256": "a767f3f10ccd8ec0b436a4b5336ccaa03393a2466f3b633096efe6e3f7f3c736"
+      "sha256": "12d78472753edcf1113da969fd17f1b8d5987896ba63344876087ea70daff94c"
     },
     {
       "path": "manifest.json",
-      "bytes": 8232,
-      "sha256": "5fb151f485a2eadc9c4e718701ce001742f0a4a42a751399663f9dbb1715be27"
+      "bytes": 8234,
+      "sha256": "97b996fb17b6cde6130dd9f761227f82633ec9364bc1324deeb964e98c6bb89e"
     },
     {
       "path": "preuves/business-review.json",
       "bytes": 5563,
-      "sha256": "902e4749ddfa8a6069176b5022e80a34c7ce5ace8ea7464bee7a74622e785a65"
+      "sha256": "5cc0fa432ee7312a267e263aed5e6ee11dda7114706c5ee5f7a55ba43fccfed5"
     },
     {
       "path": "preuves/image/cadre.sha256",
@@ -40,7 +40,7 @@
     {
       "path": "preuves/image/generation.json",
       "bytes": 892,
-      "sha256": "fdacad6840ae5c1c6a3f6b3dd279cf948864d8b952819f15879505e02a1b7d3b"
+      "sha256": "4dcfe83351b3e67704ca907d93059bd514569d063c6a5255a56f647dde25a901"
     },
     {
       "path": "preuves/image/hero-768.avif",
@@ -65,132 +65,132 @@
     {
       "path": "preuves/image/prompt.json",
       "bytes": 3701,
-      "sha256": "c796bda88a4da5365ddf87344dcecf2bb2a01cdc0ef67e8ab0d7c6b5c1a3c99f"
+      "sha256": "f6f463aa2c016491061e89ab21c24ec8ff2facbf55bf75ad4291ef05f3a58015"
     },
     {
       "path": "preuves/image/visual-review.json",
       "bytes": 2802,
-      "sha256": "57d5b37a380ed064b20f2ee03e648c120212ad219d7324df6a23f56b6ece35df"
+      "sha256": "61bb3775088668d429b8d3ed7fab0d74d15597e15c8a8129f755518f256f1a0c"
     },
     {
       "path": "preuves/research-gsc.json",
       "bytes": 1131,
-      "sha256": "dcce03deaef5e468232c91ace3d12b3be9f6243c665baaf26b9d0ae3332debbc"
+      "sha256": "3e31a59039c75a14655639f0960ede1b375b44356b95061462cd75e54f75045e"
     },
     {
       "path": "preuves/research-serp.json",
       "bytes": 1293,
-      "sha256": "9f16f2ea3b7fed3d485bc4c665930b8802ed53ed4d801ead3da50fca0b62a43b"
+      "sha256": "04a7ac79037c394d17df8a3b23375a2fb0ca79d76bafeb6a9e2bdf95699fdb9f"
     },
     {
       "path": "preuves/review.json",
       "bytes": 4639,
-      "sha256": "f8c34e49626884be9354f9d8e0c9bf5eb9f3752f86d7fd92c9ae619c1c9576bc"
+      "sha256": "f67d43ca1a50a003652243b86ea120e0d902181225572a9413e7cf891d3a64e3"
     },
     {
       "path": "preuves/role.json",
       "bytes": 625,
-      "sha256": "57707d50a7fff46b74ef02c4fe4a6f3a3b21f34f797859572e195805565436a8"
+      "sha256": "5ad63b0f951f865484faaed7de859b1d99c9a2ac42d071272586893b6a84b322"
     },
     {
       "path": "preuves/skills/blog-analyze.json",
       "bytes": 584,
-      "sha256": "072e030a8985d7e4c4e776ce75cc2bae58f51a18524d5cd2b4ebf4dd83d4ef06"
+      "sha256": "9254a26dd5b599697f3b00b8beee7971ea968963b786fdf5ec7987c96e19c2f3"
     },
     {
       "path": "preuves/skills/blog-audit.json",
       "bytes": 474,
-      "sha256": "33704d9783cef0f01b33961d32e60d0bd2f5d234085f0ff1b78d230f7317d2d8"
+      "sha256": "4e6aea02da0e1bc8dba27690d1d79ef1e22675d4d5081763743489b8b1986ff3"
     },
     {
       "path": "preuves/skills/blog-brief.json",
       "bytes": 689,
-      "sha256": "bfa0f46c30753a8e09c45f35e38ff07e9cdce260118b99e4727f4110134713db"
+      "sha256": "06bd6e2f00d675c43973a3891cd1b76ddfd8908eb1c57320929efba55440e541"
     },
     {
       "path": "preuves/skills/blog-cannibalization.json",
       "bytes": 532,
-      "sha256": "696520a90e3028a3ac3db1c25adbdb7fc00e6aae689c79566a2e9303fddea193"
+      "sha256": "8017cb5e7288771d9ac5baeba74acc84635ae8de670d7bed03ab4cfac2fe959e"
     },
     {
       "path": "preuves/skills/blog-factcheck.json",
       "bytes": 537,
-      "sha256": "bb0dba8027c7a2a42aa2d064da83c007e35ee4f8ff3789cd775b11829495b2f6"
+      "sha256": "8abed48c139490566a0aff98cf6368c6561510c1e6a112f1bad0ed6a970d275e"
     },
     {
       "path": "preuves/skills/blog-geo.json",
       "bytes": 1398,
-      "sha256": "d25fce97af97553bbc521085850a61a2750c56f37323c17e585421b50b7f2ac1"
+      "sha256": "c456d51d4655feeff7ab5b02117e31069a4cdd0627bb90a112af32df30a99917"
     },
     {
       "path": "preuves/skills/blog-image.json",
       "bytes": 649,
-      "sha256": "415e87a68966410f23d691f4113fcfdc3b65d0967f9d43b76f14097683bd69e0"
+      "sha256": "de7a23d6c9c4a7f0ed8985289c069d764d68d4e6536ec9f885a9f1935bfc4ebc"
     },
     {
       "path": "preuves/skills/blog-outline.json",
       "bytes": 708,
-      "sha256": "b71fae515fd6e54fe0b4e23f2c419c4774653f88b2269a96e4955736b95fd30e"
+      "sha256": "3205bfb4ffc40cd7a639a2061d97c59c7548184b3c9b12deba0cd8fce4157aef"
     },
     {
       "path": "preuves/skills/blog-schema.json",
       "bytes": 579,
-      "sha256": "c4324f75f46d93f764123521481bbdf81e7d77cd104f0ff9cbd1c11a5abe77e3"
+      "sha256": "174e735cb9053ed740b270c8e6e1996adcd50a3a7ab987bcb19a7350cf6022ab"
     },
     {
       "path": "preuves/skills/blog-seo-check.json",
       "bytes": 1553,
-      "sha256": "531baf3d854d2e1e5a3c7c44d437917466aaddbdb6481573cca0c465b5ed7ba9"
+      "sha256": "3d0b47c77f7771635bdee763dd5db4ea3268fa3b102cab7256ccec1cfe5c333d"
     },
     {
       "path": "preuves/skills/blog-style.json",
       "bytes": 607,
-      "sha256": "d96869f5801860d8230f424346e5e03279dc04193ccf03ff860a4b378f19bb05"
+      "sha256": "24de48bfb33cf4876e5c358d1f567933177ba590e0730620029a8b8f836781a2"
     },
     {
       "path": "preuves/skills/blog-write.json",
       "bytes": 461,
-      "sha256": "fbf8b582a5c88b1e34707924b032d11a3c08b627b2a6a7343a1ed578cb1f0241"
+      "sha256": "85206e2d100a221f0108dc53528098baee25e91944452977a28b223e5a09fe44"
     },
     {
       "path": "preuves/skills/seo-audit.json",
       "bytes": 485,
-      "sha256": "b9083066ed38f0f7204dad2c10a1d53f765f1ef55ae46415970f87500825fecc"
+      "sha256": "dbc42257895b7437aa2cc6e432d72d4d2bb1b407d11dc4a0d015f45f5279ef77"
     },
     {
       "path": "preuves/skills/seo-content-brief.json",
       "bytes": 603,
-      "sha256": "ac02a95d2a8c5d3e657dd2f54395e433812fb31f9df62ecf774b89890f2f9040"
+      "sha256": "d6bb2fc3ad5c8873364ccec4286ceeededcb91ed8cfb6a407951dbcc673625f2"
     },
     {
       "path": "preuves/skills/seo-content.json",
       "bytes": 511,
-      "sha256": "5b194204d0773ed5df220f0a45178a0ab32cf986f536d9247ac1d6467de0a487"
+      "sha256": "3345ee993cbc9d9c24b491f497fa2c4f033d7e121c9696acd0fb4d3edaf2b32d"
     },
     {
       "path": "preuves/skills/seo-images.json",
       "bytes": 537,
-      "sha256": "a999740d208d903e943079d67a86e96a37a31fab3a58da89fb3b1f901a4a4442"
+      "sha256": "47af81ef32f514937f4c2e1e34a0d1bcdc74b6c36ebeaebeb33e933342596e2c"
     },
     {
       "path": "preuves/skills/seo-page.json",
-      "bytes": 566,
-      "sha256": "0853fe2ca1f5153298eb8ba7ccb3515ec118c11fd1c738987604138ef943397a"
+      "bytes": 568,
+      "sha256": "899682b66bda6ba7d5b1d3356d6d72715b6b1664eef2e962e0268efef8d0efa1"
     },
     {
       "path": "preuves/skills/seo-schema.json",
       "bytes": 504,
-      "sha256": "b78bec1a9f35f9049164fcbb27dd4b3687910295fab1cd416f4dacabee76bc5a"
+      "sha256": "0bc754ced08e7dbfe446f70d1cd183e86696a05edfe2a03aa21aa56dfecba1bd"
     },
     {
       "path": "preuves/skills/seo-technical.json",
       "bytes": 572,
-      "sha256": "fb341eda76627459ce284b79316ab753df61ad37c22f168a8caf9716dd2fdd17"
+      "sha256": "ec56c9827bef394294469856ee83bdafa52133542bc9a515d994886d81286122"
     },
     {
       "path": "preuves/sources/cnil-donnee-personnelle.classification.json",
       "bytes": 1068,
-      "sha256": "e8e36674522f5b1ab832cc336be850644bf792b0b5647c617119d880131fc558"
+      "sha256": "4175370b567b49818e77883bc821a41ae83e4845a75adce71567be84f34e2c22"
     },
     {
       "path": "preuves/sources/cnil-donnee-personnelle.json",
@@ -205,7 +205,7 @@
     {
       "path": "preuves/sources/sp-conservation-pieces.classification.json",
       "bytes": 1133,
-      "sha256": "8aa824433a868bda636de130e817a00c7b0659d4b49ae709efb980a66d2e9bbf"
+      "sha256": "c0123de92c3dc3cd24033d0a6e54b40a96f0a8a704a21425f1901e26d6f853d1"
     },
     {
       "path": "preuves/sources/sp-conservation-pieces.json",
@@ -220,7 +220,7 @@
     {
       "path": "preuves/sources/sp-facture-electronique.classification.json",
       "bytes": 1143,
-      "sha256": "445b3390bb2872cb80024ad380bf9fa2701dbbc3966db2afa54f7cc9b2b48466"
+      "sha256": "6251f119d5ede52ff14e23ae179d79d392e9bf5a3b03b8477f41b295d12c1814"
     },
     {
       "path": "preuves/sources/sp-facture-electronique.json",
@@ -235,7 +235,7 @@
     {
       "path": "preuves/sources/sp-mentions-facture.classification.json",
       "bytes": 1116,
-      "sha256": "8406d3b5e9e9e7db5163ecdd7d1ddfaadf115890472e69f40ff6336a4f141dac"
+      "sha256": "c7d4386d2ca5a5cf4281b3611475769a34cdd4d890a8f300dca398ad96a5bb9a"
     },
     {
       "path": "preuves/sources/sp-mentions-facture.json",
@@ -250,12 +250,12 @@
     {
       "path": "quality-review.json",
       "bytes": 3538,
-      "sha256": "268c7b984e87f626588c2197b8f5f6e88b5666122941e5f55032571a5dbb4b04"
+      "sha256": "5b1e5ffa1877968f496f9ad1c1c34da6837af5e0d2047ccb2955cd7ce7b24218"
     },
     {
       "path": "review.json",
       "bytes": 450,
-      "sha256": "bd2a3c7f1235da1c4ee2d870947e55c6056e62f62d7669342d8385b71f830f2a"
+      "sha256": "849b8bd34f8108fe2add485e6e6392c185e40689ab56363d941c0cbc524c7bbd"
     },
     {
       "path": "seo-geo-review.md",

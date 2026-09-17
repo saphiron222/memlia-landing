@@ -1,6 +1,6 @@
 ---
 titre: "Automatiser la saisie comptable : ce qui reste à vérifier"
-titreOnglet: "Saisie comptable OCR : ce qui reste à vérifier | Memlia"
+titreOnglet: "Automatisation saisie comptable : les 6 contrôles | Memlia"
 resume: "La lecture extrait, une personne vérifie : six contrôles dans un ordre fixe — nature, émetteur, mentions, montants, période, doublon — puis une file d’anomalies à motifs fermés. Rien ne s’enregistre sans validation, et le reliquat se recompte à chaque période."
 description: "Ce que la lecture automatique extrait d’une pièce, les six contrôles qui restent, et la file d’anomalies où part ce qui ne se vérifie pas seul."
 datePublication: 2026-09-17
