@@ -11,7 +11,8 @@
 6. [Exécution](IMPLEMENTATION-ROADMAP.md) : phases, commandes, contrôles.
 7. [Plan de cluster](cluster-plan.md), [données](cluster-plan.json), [carte interactive](cluster-map.html) : ouvrir `cluster-map.html` dans un navigateur.
 8. [Briefs de la vague 1](cluster-briefs/) : neuf briefs au format `editorial/templates/brief.md`, prêts pour `npm run blog:create` après validation.
-9. [Crons SEO](CRONS-SEO.md) : proposition du 17/09/2026, rien de planifié ; cinq crons de mesure (indexation, demande, intégrité, autorité et entité, décroissance) et deux extensions de la forge, avec le relevé du jour en point zéro.
+9. [Crons SEO](CRONS-SEO.md) : cinq crons de mesure (indexation, demande, intégrité, autorité et entité, décroissance) et deux extensions de la forge, avec le relevé du 17/09/2026 en point zéro ; C1 à C3 et les extensions sont construits.
+10. [Mode opératoire des crons SEO](RUNBOOK-SEO.md) : la sentinelle quotidienne, le relevé de demande du lundi, l'intégrité du mercredi, l'après-publication et le vendredi de maintenance de la forge.
 
 ## Vérification
 `python3 docs/strategy/site-v3/build-cluster-plan.py --check` depuis la racine du dépôt : régénère `cluster-plan.json`, `cluster-plan.md` et `cluster-map.html` depuis la source unique (les listes du script) et vérifie l'unicité des slugs et des requêtes primaires, l'appartenance des clusters, rôles et formats aux énumérations du schéma du blog, le lien obligatoire satellite ↔ pilier, le minimum de trois liens entrants par article, l'absence d'orpheline et la répartition mensuelle.

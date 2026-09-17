@@ -1,0 +1,605 @@
+{
+  "date": "2026-09-17",
+  "semaine": "2026-W38",
+  "fenetres": {
+    "fin": "2026-09-14",
+    "semaine": {
+      "debut": "2026-09-08",
+      "fin": "2026-09-14"
+    },
+    "mois": {
+      "debut": "2026-08-18",
+      "fin": "2026-09-14"
+    },
+    "moisPrecedent": {
+      "debut": "2026-07-21",
+      "fin": "2026-08-17"
+    }
+  },
+  "totaux": {
+    "semaine": {
+      "clicks": 3,
+      "impressions": 10,
+      "ctr": 30,
+      "position": 1
+    },
+    "mois": {
+      "clicks": 4,
+      "impressions": 17,
+      "ctr": 23.53,
+      "position": 1.8
+    },
+    "moisPrecedent": {
+      "clicks": 3,
+      "impressions": 24,
+      "ctr": 12.5,
+      "position": 6.2
+    },
+    "complet28j": true
+  },
+  "gscMuet": false,
+  "parArticle": [
+    {
+      "slug": "automatiser-la-relance-des-pieces-clients",
+      "famille": "collecte-pieces",
+      "requete": "relance pièces manquantes cabinet comptable",
+      "impressions7": 0,
+      "clics7": 0,
+      "impressions28": 0,
+      "clics28": 0,
+      "position28": null,
+      "requetes": []
+    },
+    {
+      "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "famille": "saisie-ocr",
+      "requete": "automatisation saisie comptable",
+      "impressions7": 0,
+      "clics7": 0,
+      "impressions28": 0,
+      "clics28": 0,
+      "position28": null,
+      "requetes": []
+    },
+    {
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "famille": "choisir-cadrer",
+      "requete": "automatisation cabinet comptable",
+      "impressions7": 0,
+      "clics7": 0,
+      "impressions28": 0,
+      "clics28": 0,
+      "position28": null,
+      "requetes": []
+    },
+    {
+      "slug": "comprendre-les-comptes-rendus-metier-dsn",
+      "famille": "dsn-crm",
+      "requete": "crm dsn",
+      "impressions7": 0,
+      "clics7": 0,
+      "impressions28": 0,
+      "clics28": 0,
+      "position28": null,
+      "requetes": []
+    },
+    {
+      "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+      "famille": "bulletins-controle",
+      "requete": "contrôle bulletin de paie",
+      "impressions7": 0,
+      "clics7": 0,
+      "impressions28": 0,
+      "clics28": 0,
+      "position28": null,
+      "requetes": []
+    },
+    {
+      "slug": "suivre-la-production-sociale-dans-excel",
+      "famille": "suivi-production-sociale",
+      "requete": "tableau de bord paie excel",
+      "impressions7": 0,
+      "clics7": 0,
+      "impressions28": 0,
+      "clics28": 0,
+      "position28": null,
+      "requetes": []
+    }
+  ],
+  "horsRegistre": [
+    {
+      "page": "https://memlia.fr/",
+      "impressions28": 17,
+      "clics28": 4
+    }
+  ],
+  "parFamille": [
+    {
+      "famille": "collecte-pieces",
+      "articles": 1,
+      "impressions28": 0,
+      "requetesAvecImpressions": 0
+    },
+    {
+      "famille": "saisie-ocr",
+      "articles": 1,
+      "impressions28": 0,
+      "requetesAvecImpressions": 0
+    },
+    {
+      "famille": "choisir-cadrer",
+      "articles": 1,
+      "impressions28": 0,
+      "requetesAvecImpressions": 0
+    },
+    {
+      "famille": "dsn-crm",
+      "articles": 1,
+      "impressions28": 0,
+      "requetesAvecImpressions": 0
+    },
+    {
+      "famille": "bulletins-controle",
+      "articles": 1,
+      "impressions28": 0,
+      "requetesAvecImpressions": 0
+    },
+    {
+      "famille": "suivi-production-sociale",
+      "articles": 1,
+      "impressions28": 0,
+      "requetesAvecImpressions": 0
+    }
+  ],
+  "famillesSansImpression": [],
+  "portee": [],
+  "ctr": [],
+  "chutes": [],
+  "nouvelles": [
+    "emlia"
+  ],
+  "marque": [
+    {
+      "requete": "memlia",
+      "statut": "absente",
+      "position": null,
+      "impressions": 0,
+      "clics": 0,
+      "pages": []
+    }
+  ],
+  "serp": {
+    "joue": true,
+    "requetes": [
+      {
+        "slug": "automatiser-la-relance-des-pieces-clients",
+        "requete": "relance pièces manquantes cabinet comptable",
+        "erreur": "40106 Task completed with partial results. Some pages could not be retrieved after several retry attempts. You have not been charged for the pages that were not returned."
+      },
+      {
+        "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+        "requete": "automatisation saisie comptable",
+        "spell": null,
+        "rangMemlia": null,
+        "urlMemlia": null,
+        "top": [
+          {
+            "rang": 4,
+            "domaine": "www.chaintrust.io",
+            "titre": "Automatisation de la saisie comptable : quel intérêt ?",
+            "url": "https://www.chaintrust.io/blog/la-tech-dans-la-compta/automatisation-de-la-saisie-comptable-quel-interet/"
+          },
+          {
+            "rang": 5,
+            "domaine": "dext.com",
+            "titre": "Logiciel de saisie comptable 100 % automatique",
+            "url": "https://dext.com/fr/cabinet/produits/saisie-comptable"
+          },
+          {
+            "rang": 6,
+            "domaine": "www.medius.com",
+            "titre": "6 étapes pour automatiser vos processus comptables",
+            "url": "https://www.medius.com/fr/blog/6-etapes-pour-automatiser-votre-processus-comptable/"
+          },
+          {
+            "rang": 7,
+            "domaine": "www.welyb.fr",
+            "titre": "Top 10 des logiciels d'automatisation de la saisie comptable",
+            "url": "https://www.welyb.fr/blog/top-10-des-logiciels-dautomatisation-de-la-saisie-comptable"
+          },
+          {
+            "rang": 8,
+            "domaine": "www.edcparis.edu",
+            "titre": "10 étapes pour automatiser efficacement votre comptabilité",
+            "url": "https://www.edcparis.edu/fr/blog/10-etapes-pour-automatiser-efficacement-votre-comptabilite"
+          },
+          {
+            "rang": 9,
+            "domaine": "qonto.com",
+            "titre": "Automatisation de la saisie comptable : avantages et outils",
+            "url": "https://qonto.com/fr/blog/gestion-entreprise/comptabilite/automatisation-saisie-comptable"
+          },
+          {
+            "rang": 10,
+            "domaine": "www.pennylane.com",
+            "titre": "Quel logiciel d'automatisation de la saisie comptable ...",
+            "url": "https://www.pennylane.com/fr/fiches-pratiques/comptabilite/les-5-meilleurs-logiciels-dautomatisation-de-la-saisie-comptable"
+          },
+          {
+            "rang": 11,
+            "domaine": "www.sage.com",
+            "titre": "Saisie comptable automatisée pour Experts-comptables - Sage",
+            "url": "https://www.sage.com/fr-fr/experts-comptables/saisie-comptable-automatique/"
+          },
+          {
+            "rang": 13,
+            "domaine": "www.zuora.com",
+            "titre": "Automatisation comptable : Guide complet",
+            "url": "https://www.zuora.com/fr/glossary/accounting-automation/"
+          },
+          {
+            "rang": 14,
+            "domaine": "parseur.com",
+            "titre": "Automatisation de la saisie de données en 2026",
+            "url": "https://parseur.com/fr/blog/automatisation-saisie-de-donnees"
+          }
+        ],
+        "blocs": {
+          "aiOverview": true,
+          "peopleAlsoAsk": true,
+          "video": true,
+          "knowledgeGraph": false,
+          "featuredSnippet": false
+        },
+        "memliaDansAiOverview": false,
+        "resultats": 124
+      },
+      {
+        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "requete": "automatisation cabinet comptable",
+        "spell": null,
+        "rangMemlia": null,
+        "urlMemlia": null,
+        "top": [
+          {
+            "rang": 2,
+            "domaine": "www.eliott-markus.com",
+            "titre": "Automatisation : une menace pour les experts comptables ?",
+            "url": "https://www.eliott-markus.com/wilo/automatisation-menace-experts-comptables/"
+          },
+          {
+            "rang": 3,
+            "domaine": "www.getyooz.com",
+            "titre": "Automatisation de la comptabilité : tout comprendre",
+            "url": "https://www.getyooz.com/fr/automatisation-comptabilite"
+          },
+          {
+            "rang": 5,
+            "domaine": "www.agiris.fr",
+            "titre": "Automatisation comptable : une chance pour le cabinet ...",
+            "url": "https://www.agiris.fr/articles/automatisation-comptable-une-chance-pour-le-cabinet-bien-%C3%A9quip%C3%A9"
+          },
+          {
+            "rang": 6,
+            "domaine": "www.chaintrust.io",
+            "titre": "Le cabinet comptable 2.0 : vers l'automatisation ?",
+            "url": "https://www.chaintrust.io/blog/la-tech-dans-la-compta/cabinet-comptable-automatisation-des-processus-metier/"
+          },
+          {
+            "rang": 7,
+            "domaine": "www.everial.com",
+            "titre": "Automatisation de la comptabilité : tout comprendre",
+            "url": "https://www.everial.com/partage-expertises/automatisation-de-la-comptabilite-tout-comprendre/"
+          },
+          {
+            "rang": 8,
+            "domaine": "bonjouria.fr",
+            "titre": "Automatisation IA spécifique Cabinet Expert-Comptable",
+            "url": "https://bonjouria.fr/application-metier-ia/automatisation-ia-expert-comptable/"
+          },
+          {
+            "rang": 9,
+            "domaine": "www.queoval-expert.com",
+            "titre": "Automatisation cabinet comptable : le guide complet 2026",
+            "url": "https://www.queoval-expert.com/actualites/automatisation-cabinet-comptable-guide-complet-2026"
+          },
+          {
+            "rang": 10,
+            "domaine": "www.factory456.com",
+            "titre": "Automatisation de la comptabilité en cabinet",
+            "url": "https://www.factory456.com/automatisation-de-la-comptabilite"
+          },
+          {
+            "rang": 11,
+            "domaine": "www.septeo.com",
+            "titre": "Automatisation des processus comptables : quels ...",
+            "url": "https://www.septeo.com/fr/articles/automatisation-processus-comptables"
+          },
+          {
+            "rang": 12,
+            "domaine": "www.laprovence.com",
+            "titre": "Après l'agression d'un médecin à Miramas, le cabinet ...",
+            "url": "https://www.laprovence.com/article/faits-divers-justice/45981199938675/a-miramas-apres-l-agression-d-un-medecin-le-cabinet-medical-medic-perm-ferme-temporairement"
+          }
+        ],
+        "blocs": {
+          "aiOverview": true,
+          "peopleAlsoAsk": true,
+          "video": false,
+          "knowledgeGraph": false,
+          "featuredSnippet": false
+        },
+        "memliaDansAiOverview": false,
+        "resultats": 128
+      },
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "requete": "crm dsn",
+        "spell": null,
+        "rangMemlia": null,
+        "urlMemlia": null,
+        "top": [
+          {
+            "rang": 1,
+            "domaine": "www.net-entreprises.fr",
+            "titre": "Les Comptes Rendus Métiers DSN",
+            "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/"
+          },
+          {
+            "rang": 4,
+            "domaine": "www.urssaf.fr",
+            "titre": "que faire à réception du compte-rendu métier de rappel ...",
+            "url": "https://www.urssaf.fr/accueil/actualites/dsn-compte-rendu-metier-annuel.html"
+          },
+          {
+            "rang": 5,
+            "domaine": "group-gac.com",
+            "titre": "CRM paie (DSN) : définition, types de CRM et guide pratique",
+            "url": "https://group-gac.com/guide-crm-dsn/"
+          },
+          {
+            "rang": 6,
+            "domaine": "net-entreprises.custhelp.com",
+            "titre": "DSN - Le tableau de bord et les retours d'informations / CRM",
+            "url": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/3319/~/fiche-chapeau-%3A-dsn---le-tableau-de-bord-et-les-retours-dinformations-%2F-crm"
+          },
+          {
+            "rang": 7,
+            "domaine": "zendsn.com",
+            "titre": "Comprendre le CRM DSN : définition et structure et lecture",
+            "url": "https://zendsn.com/comprendre-le-crm-dsn-definition-structure-et-lecture/"
+          },
+          {
+            "rang": 8,
+            "domaine": "sintia.fr",
+            "titre": "DSN - Le Compte Rendu Métier",
+            "url": "https://sintia.fr/solutions/dsn/dsn-le-compte-rendu-metier"
+          },
+          {
+            "rang": 9,
+            "domaine": "www.net-entreprises.fr",
+            "titre": "DSN : Mise à disposition du Compte Rendu Métier Identité",
+            "url": "https://www.net-entreprises.fr/dsn-mise-a-disposition-du-compte-rendu-metier-identite/"
+          },
+          {
+            "rang": 10,
+            "domaine": "faq.kerialis.fr",
+            "titre": "Qu'est-ce-que le Compte-Rendu Métier (CRM) ?",
+            "url": "https://faq.kerialis.fr/base-de-connaissances/quest-ce-que-le-compte-rendu-m%C3%A9tier-crm"
+          },
+          {
+            "rang": 11,
+            "domaine": "www.youtube.com",
+            "titre": "Maîtriser les CRM 119, 120 et 124 pour fiabiliser la DSN | L'e ...",
+            "url": "https://www.youtube.com/watch?v=MDHoZlEKdqA"
+          },
+          {
+            "rang": 13,
+            "domaine": "www.urssaf.fr",
+            "titre": "FAQ - Webconférence « DSN de substitution »",
+            "url": "https://www.urssaf.fr/files/live/sites/urssaffr/files/autres/webconference-DSN-de-substitution-faq.pdf"
+          }
+        ],
+        "blocs": {
+          "aiOverview": true,
+          "peopleAlsoAsk": true,
+          "video": false,
+          "knowledgeGraph": false,
+          "featuredSnippet": false
+        },
+        "memliaDansAiOverview": false,
+        "resultats": 123
+      },
+      {
+        "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+        "requete": "contrôle bulletin de paie",
+        "erreur": "40101 Internal SE Server Error."
+      },
+      {
+        "slug": "suivre-la-production-sociale-dans-excel",
+        "requete": "tableau de bord paie excel",
+        "spell": null,
+        "rangMemlia": null,
+        "urlMemlia": null,
+        "top": [
+          {
+            "rang": 1,
+            "domaine": "fr.smartsheet.com",
+            "titre": "15 modèles gratuits de paie",
+            "url": "https://fr.smartsheet.com/free-payroll-templates"
+          },
+          {
+            "rang": 3,
+            "domaine": "www.lucca.fr",
+            "titre": "Tableau de préparation de la paie sur Excel : mode d'emploi",
+            "url": "https://www.lucca.fr/magazine/administration/paie/preparation-paie-excel"
+          },
+          {
+            "rang": 4,
+            "domaine": "mamzelle-excel.com",
+            "titre": "Tableau De Bord RH : Exemples Et Modèle Excel",
+            "url": "https://mamzelle-excel.com/blog-excel/tableau-de-bord-rh-exemples-et-modele-excel/"
+          },
+          {
+            "rang": 6,
+            "domaine": "fiche-paie.fr",
+            "titre": "Modèle de fiche de paie Excel gratuit à télécharger — 2026",
+            "url": "https://fiche-paie.fr/modele-excel-fiche-de-paie-gratuit"
+          },
+          {
+            "rang": 8,
+            "domaine": "combohr.com",
+            "titre": "Tableau préparation de la paie - modèle Excel",
+            "url": "https://combohr.com/fr/blog/tableau-excel-preparation-paie"
+          },
+          {
+            "rang": 9,
+            "domaine": "www.etsy.com",
+            "titre": "Modèle RH de tableau de bord de la paie (Excel, Google ...",
+            "url": "https://www.etsy.com/fr/listing/1480212592/tableau-de-bord-de-la-paie-o-tableau-de"
+          },
+          {
+            "rang": 10,
+            "domaine": "www.eurecia.com",
+            "titre": "Fiche de paie : modèle Excel gratuit à télécharger",
+            "url": "https://www.eurecia.com/toolbox/fiche-de-paie"
+          },
+          {
+            "rang": 13,
+            "domaine": "www.alcool-info-service.fr",
+            "titre": "Journal de bord d'une jeune femme alcoolique",
+            "url": "https://www.alcool-info-service.fr/forum/pour-les-consommateurs/journal-de-bord-dune-jeune-femme-alcoolique"
+          },
+          {
+            "rang": 14,
+            "domaine": "www.ultimate-fishing.net",
+            "titre": "Pêche du bar à vue du bord en Estuaire – Vidéo",
+            "url": "https://www.ultimate-fishing.net/peche-du-bar-a-vue-du-bord-en-estuaire-video/"
+          },
+          {
+            "rang": 15,
+            "domaine": "www.arte.tv",
+            "titre": "L'incroyable périple de Magellan (2/4) - Voyage au bord du ...",
+            "url": "https://www.arte.tv/fr/videos/093644-002-A/l-incroyable-periple-de-magellan-2-4/"
+          }
+        ],
+        "blocs": {
+          "aiOverview": true,
+          "peopleAlsoAsk": false,
+          "video": true,
+          "knowledgeGraph": false,
+          "featuredSnippet": false
+        },
+        "memliaDansAiOverview": false,
+        "resultats": 121
+      },
+      {
+        "slug": null,
+        "requete": "memlia",
+        "spell": {
+          "mot": "mellia",
+          "type": "did_you_mean"
+        },
+        "rangMemlia": 21,
+        "urlMemlia": "https://memlia.fr/contact",
+        "top": [
+          {
+            "rang": 2,
+            "domaine": "www.instagram.com",
+            "titre": "Seb Mellia (@sebmellia)",
+            "url": "https://www.instagram.com/sebmellia/?hl=fr"
+          },
+          {
+            "rang": 3,
+            "domaine": "fr.wikipedia.org",
+            "titre": "Seb Mellia",
+            "url": "https://fr.wikipedia.org/wiki/Seb_Mellia"
+          },
+          {
+            "rang": 4,
+            "domaine": "www.sebmellia.fr",
+            "titre": "Seb Mellia | Site Officiel",
+            "url": "https://www.sebmellia.fr/"
+          },
+          {
+            "rang": 5,
+            "domaine": "www.programme-television.org",
+            "titre": "\"J'ai mis du temps à parler parce que...\" : Accusé de viols et ...",
+            "url": "https://www.programme-television.org/news/people/justice/jai-mis-du-temps-a-parler-parce-que-accuse-de-viols-et-de-violences-sexuelles-lhumoriste-seb-mellia-prend-la-parole-10368"
+          },
+          {
+            "rang": 6,
+            "domaine": "www.youtube.com",
+            "titre": "SebMellia",
+            "url": "https://www.youtube.com/user/SebMellia"
+          },
+          {
+            "rang": 7,
+            "domaine": "www.20minutes.fr",
+            "titre": "L'humoriste Seb Mellia relâché après sa garde à vue pour ...",
+            "url": "https://www.20minutes.fr/justice/4163001-20250710-enquete-viols-humoriste-seb-mellia-entendu-garde-vue-puis-relache"
+          },
+          {
+            "rang": 8,
+            "domaine": "www.facebook.com",
+            "titre": "Seb Mellia (@sebmellia)",
+            "url": "https://www.facebook.com/sebmellia/?locale=fr_FR"
+          },
+          {
+            "rang": 9,
+            "domaine": "www.spectacles.carrefour.fr",
+            "titre": "Seb Mellia | Spectacle, billetterie 2025-2026",
+            "url": "https://www.spectacles.carrefour.fr/fr/artiste/seb-mellia/idartiste/3640"
+          },
+          {
+            "rang": 10,
+            "domaine": "www.telerama.fr",
+            "titre": "Plaintes pour viols contre Seb Mellia : placé en garde à ...",
+            "url": "https://www.telerama.fr/debats-reportages/plaintes-pour-viols-contre-seb-mellia-place-en-garde-a-vue-l-humoriste-confronte-a-l-une-de-ses-accusatrices-7026549.php"
+          },
+          {
+            "rang": 11,
+            "domaine": "www.ticketac.com",
+            "titre": "Seb Mellia - Comédien | Billets Spectacles",
+            "url": "https://www.ticketac.com/artistes/seb-mellia.htm"
+          }
+        ],
+        "blocs": {
+          "aiOverview": false,
+          "peopleAlsoAsk": false,
+          "video": false,
+          "knowledgeGraph": true,
+          "featuredSnippet": false
+        },
+        "memliaDansAiOverview": null,
+        "resultats": 107
+      }
+    ],
+    "cout": 0.0215,
+    "raison": null
+  },
+  "misesAJourGoogle": {
+    "ok": true,
+    "erreur": null,
+    "dansLaFenetre": [
+      {
+        "nom": "August 2026 spam update",
+        "date": "2026-08-18",
+        "duree": "2 days, 16 hours"
+      }
+    ]
+  },
+  "alertes": [],
+  "taches": {
+    "deposees": 0,
+    "ajoutees": 0,
+    "misesAJour": 0
+  },
+  "registre": {
+    "total": 6,
+    "ajoutes": [],
+    "sansRequete": []
+  },
+  "exclusions": [],
+  "messages": []
+}

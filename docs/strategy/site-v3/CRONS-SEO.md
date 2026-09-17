@@ -1,6 +1,6 @@
 # Crons SEO — suivre, optimiser, améliorer en continu
 
-Proposition du 17 septembre 2026. **Statut : rien n'est planifié.** Kevin décide (§7). Le seul cron en place est la forge éditoriale (`memlia-forge-quotidienne`, jours ouvrés 9 h, `RUNBOOK-QUOTIDIEN.md`) : elle écrit. Ce document décrit ce qui doit **mesurer, décider et corriger** autour d'elle, sur le modèle de `SEO-STRATEGY.md` §8 : des seuils de décision, pas des prévisions.
+Proposition du 17 septembre 2026. **Statut : C1, C2, C3 et les deux extensions F1, F2 sont construits et planifiés depuis le 17/09/2026 sur le go de Kevin ; le mode opératoire des sessions est [RUNBOOK-SEO.md](RUNBOOK-SEO.md). C4 et C5 restent des propositions, décisions D2 à D4 au §7.** Le seul cron en place est la forge éditoriale (`memlia-forge-quotidienne`, jours ouvrés 9 h, `RUNBOOK-QUOTIDIEN.md`) : elle écrit. Ce document décrit ce qui doit **mesurer, décider et corriger** autour d'elle, sur le modèle de `SEO-STRATEGY.md` §8 : des seuils de décision, pas des prévisions.
 
 ## 1. Ce que les instruments disent aujourd'hui (relevé du 17/09/2026)
 

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "taches": [
+    {
+      "id": "2026-09-17-inserer-lien-comprendre-les-comptes-rendus-metier-dsn-1",
+      "slug": "comprendre-les-comptes-rendus-metier-dsn",
+      "type": "inserer-lien",
+      "cle": "lien-vers-pilier",
+      "motif": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches : ajouter le lien dans le corps, là où la carte des tâches est nommée, par republication scellée",
+      "mesure": {
+        "valeur": "absent",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-09-17"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-09-17",
+      "misAJourLe": "2026-09-17",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-09-17-inserer-lien-controler-les-bulletins-de-paie-avant-la-dsn-1",
+      "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+      "type": "inserer-lien",
+      "cle": "lien-vers-pilier",
+      "motif": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches : ajouter le lien dans le corps, là où la carte des tâches est nommée, par republication scellée",
+      "mesure": {
+        "valeur": "absent",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-09-17"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-09-17",
+      "misAJourLe": "2026-09-17",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-09-17-inserer-lien-suivre-la-production-sociale-dans-excel-1",
+      "slug": "suivre-la-production-sociale-dans-excel",
+      "type": "inserer-lien",
+      "cle": "lien-vers-pilier",
+      "motif": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches : ajouter le lien dans le corps, là où la carte des tâches est nommée, par republication scellée",
+      "mesure": {
+        "valeur": "absent",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-09-17"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-09-17",
+      "misAJourLe": "2026-09-17",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-09-17-reverifier-source-controler-les-bulletins-de-paie-avant-la-dsn-1",
+      "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+      "type": "reverifier-source",
+      "cle": "service-public-dsn",
+      "motif": "la citation exacte n'est plus dans https://entreprendre.service-public.gouv.fr/vosdroits/F34059 : relire la source, corriger l'extrait ou l'affirmation, puis republier",
+      "mesure": {
+        "valeur": "extrait absent",
+        "instrument": "ouverture de la source avec l’UA du vérificateur",
+        "date": "2026-09-17"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-09-17",
+      "misAJourLe": "2026-09-17",
+      "traiteLe": null,
+      "commit": null
+    }
+  ]
+}

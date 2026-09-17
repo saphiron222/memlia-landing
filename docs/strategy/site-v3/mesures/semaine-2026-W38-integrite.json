@@ -1,0 +1,800 @@
+{
+  "date": "2026-09-17",
+  "semaine": "2026-W38",
+  "pages": {
+    "lues": 14,
+    "echecs": []
+  },
+  "maillage": {
+    "liens": [
+      {
+        "cible": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "entrants": [
+          "/automatisation-cabinet-comptable",
+          "/blog",
+          "/blog/automatiser-la-relance-des-pieces-clients",
+          "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+          "/glossaire"
+        ],
+        "nombre": 5
+      },
+      {
+        "cible": "/blog/automatiser-la-relance-des-pieces-clients",
+        "entrants": [
+          "/blog",
+          "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+          "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "/blog/comprendre-les-comptes-rendus-metier-dsn",
+          "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+          "/blog/suivre-la-production-sociale-dans-excel",
+          "/glossaire"
+        ],
+        "nombre": 7
+      },
+      {
+        "cible": "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+        "entrants": [
+          "/blog",
+          "/blog/automatiser-la-relance-des-pieces-clients",
+          "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "/blog/comprendre-les-comptes-rendus-metier-dsn",
+          "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+          "/blog/suivre-la-production-sociale-dans-excel"
+        ],
+        "nombre": 6
+      },
+      {
+        "cible": "/blog/comprendre-les-comptes-rendus-metier-dsn",
+        "entrants": [
+          "/blog",
+          "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+        ],
+        "nombre": 3
+      },
+      {
+        "cible": "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+        "entrants": [
+          "/automatisation-cabinet-comptable",
+          "/blog",
+          "/blog/automatiser-la-relance-des-pieces-clients",
+          "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "/blog/comprendre-les-comptes-rendus-metier-dsn",
+          "/blog/suivre-la-production-sociale-dans-excel",
+          "/glossaire"
+        ],
+        "nombre": 7
+      },
+      {
+        "cible": "/blog/suivre-la-production-sociale-dans-excel",
+        "entrants": [
+          "/automatisation-cabinet-comptable",
+          "/blog",
+          "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "/blog/comprendre-les-comptes-rendus-metier-dsn",
+          "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+          "/glossaire"
+        ],
+        "nombre": 6
+      }
+    ],
+    "rouges": [
+      {
+        "code": "satellite-sans-lien-pilier",
+        "cible": "/blog/comprendre-les-comptes-rendus-metier-dsn",
+        "message": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+      },
+      {
+        "code": "satellite-sans-lien-pilier",
+        "cible": "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+        "message": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+      },
+      {
+        "code": "satellite-sans-lien-pilier",
+        "cible": "/blog/suivre-la-production-sociale-dans-excel",
+        "message": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+      }
+    ],
+    "avertissements": [],
+    "infos": [
+      {
+        "code": "liens-entrants",
+        "message": "automatiser-un-cabinet-comptable-la-carte-des-taches 5, automatiser-la-relance-des-pieces-clients 7, automatiser-la-saisie-comptable-ce-qui-reste-a-verifier 6, comprendre-les-comptes-rendus-metier-dsn 3, controler-les-bulletins-de-paie-avant-la-dsn 7, suivre-la-production-sociale-dans-excel 6"
+      }
+    ]
+  },
+  "sources": {
+    "total": 25,
+    "ok": 24,
+    "rouges": [
+      {
+        "code": "extrait-absent",
+        "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+        "sourceId": "service-public-dsn",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+        "message": "la page répond mais la citation exacte n’y figure plus, même après normalisation"
+      }
+    ],
+    "avertissements": [
+      {
+        "code": "extrait-forme-changee",
+        "slug": "suivre-la-production-sociale-dans-excel",
+        "sourceId": "cnil-employee-monitoring",
+        "url": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+        "message": "citation retrouvée après normalisation typographique : la page a changé de forme, pas de fond"
+      }
+    ],
+    "lents": [],
+    "nonVerifiables": [
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "sourceId": "S1",
+        "url": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+        "origine": "claims-sources"
+      },
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "sourceId": "S2",
+        "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+        "origine": "claims-sources"
+      },
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "sourceId": "S3",
+        "url": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+        "origine": "claims-sources"
+      },
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "sourceId": "S4",
+        "url": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+        "origine": "claims-sources"
+      },
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "sourceId": "S5",
+        "url": "https://www.net-entreprises.fr/media/documentation/dsn-cahier-technique-2026.1.pdf",
+        "origine": "claims-sources"
+      }
+    ],
+    "verifications": [
+      {
+        "slug": "automatiser-la-relance-des-pieces-clients",
+        "sourceId": "cnil-principes",
+        "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 1269,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-la-relance-des-pieces-clients",
+        "sourceId": "cnil-durees",
+        "url": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 321,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-la-relance-des-pieces-clients",
+        "sourceId": "sp-conservation",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 3469,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-la-relance-des-pieces-clients",
+        "sourceId": "cnil-sous-traitant",
+        "url": "https://www.cnil.fr/fr/definition/sous-traitant",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 4461,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+        "sourceId": "sp-mentions-facture",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 3442,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+        "sourceId": "sp-facture-electronique",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 2796,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+        "sourceId": "sp-conservation-pieces",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 3469,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+        "sourceId": "cnil-donnee-personnelle",
+        "url": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 2004,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "sourceId": "sp-conservation",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 3469,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "sourceId": "cnil-principes",
+        "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 1269,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "sourceId": "cnil-durees",
+        "url": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 321,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "sourceId": "impots-calendrier",
+        "url": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 1577,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "sourceId": "net-crm",
+        "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 1508,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "sourceId": "S1",
+        "url": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+        "origine": "claims-sources",
+        "extraits": 0,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
+            "extraitTrouve": null,
+            "extraitsManquants": [],
+            "dureeMs": 1185,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "sourceId": "S2",
+        "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+        "origine": "claims-sources",
+        "extraits": 0,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+            "extraitTrouve": null,
+            "extraitsManquants": [],
+            "dureeMs": 1508,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "sourceId": "S3",
+        "url": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+        "origine": "claims-sources",
+        "extraits": 0,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+            "extraitTrouve": null,
+            "extraitsManquants": [],
+            "dureeMs": 1479,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "sourceId": "S4",
+        "url": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+        "origine": "claims-sources",
+        "extraits": 0,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+            "extraitTrouve": null,
+            "extraitsManquants": [],
+            "dureeMs": 839,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "comprendre-les-comptes-rendus-metier-dsn",
+        "sourceId": "S5",
+        "url": "https://www.net-entreprises.fr/media/documentation/dsn-cahier-technique-2026.1.pdf",
+        "origine": "claims-sources",
+        "extraits": 0,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.net-entreprises.fr/media/documentation/dsn-cahier-technique-2026.1.pdf",
+            "extraitTrouve": null,
+            "extraitsManquants": [],
+            "dureeMs": 1066,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+        "sourceId": "service-public-dsn",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+            "extraitTrouve": false,
+            "extraitsManquants": [
+              "La DSN est une déclaration en ligne réalisée tous les mois à partir des données "
+            ],
+            "dureeMs": 4087,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+        "sourceId": "net-entreprises-dsn-val",
+        "url": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 839,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+        "sourceId": "net-entreprises-crm",
+        "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 1508,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+        "sourceId": "net-entreprises-fiabilisation",
+        "url": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 1479,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "suivre-la-production-sociale-dans-excel",
+        "sourceId": "cnil-employee-monitoring",
+        "url": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 1749,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "suivre-la-production-sociale-dans-excel",
+        "sourceId": "microsoft-excel-tables",
+        "url": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 2316,
+            "erreur": null
+          }
+        ]
+      },
+      {
+        "slug": "suivre-la-production-sociale-dans-excel",
+        "sourceId": "microsoft-protect-sheet",
+        "url": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
+        "origine": "manifest",
+        "extraits": 1,
+        "essais": [
+          {
+            "ok": true,
+            "status": 200,
+            "finalUrl": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
+            "extraitTrouve": true,
+            "extraitsManquants": [],
+            "dureeMs": 1208,
+            "erreur": null
+          }
+        ]
+      }
+    ]
+  },
+  "vitesse": {
+    "resultats": [
+      {
+        "url": "https://memlia.fr/",
+        "scores": {
+          "performance": 96,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "seo": 100
+        },
+        "labo": {
+          "lcpMs": 2401,
+          "cls": 0,
+          "tbtMs": 0,
+          "fcpMs": 1670.2592986094166,
+          "speedIndexMs": 3316.1865414513027
+        },
+        "auditsEchoues": [
+          "legacy-javascript-insight",
+          "network-dependency-tree-insight",
+          "image-delivery-insight",
+          "cache-insight",
+          "total-byte-weight"
+        ],
+        "erreur": null
+      },
+      {
+        "url": "https://memlia.fr/blog",
+        "scores": {
+          "performance": 98,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "seo": 100
+        },
+        "labo": {
+          "lcpMs": 2101,
+          "cls": 0.000003725011408676115,
+          "tbtMs": 0,
+          "fcpMs": 1516.3626199439177,
+          "speedIndexMs": 2584.5694599146764
+        },
+        "auditsEchoues": [
+          "network-dependency-tree-insight",
+          "cache-insight",
+          "legacy-javascript-insight",
+          "image-delivery-insight"
+        ],
+        "erreur": null
+      },
+      {
+        "url": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "scores": {
+          "performance": 98,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "seo": 100
+        },
+        "labo": {
+          "lcpMs": 2102,
+          "cls": 0.007769890030782965,
+          "tbtMs": 0,
+          "fcpMs": 1656.4623124154737,
+          "speedIndexMs": 1656.4623124154737
+        },
+        "auditsEchoues": [
+          "network-dependency-tree-insight",
+          "cache-insight",
+          "legacy-javascript-insight"
+        ],
+        "erreur": null
+      },
+      {
+        "url": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+        "scores": {
+          "performance": 98,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "seo": 100
+        },
+        "labo": {
+          "lcpMs": 2101,
+          "cls": 0,
+          "tbtMs": 0,
+          "fcpMs": 1666.8773815227473,
+          "speedIndexMs": 1666.8773815227473
+        },
+        "auditsEchoues": [
+          "legacy-javascript-insight",
+          "network-dependency-tree-insight",
+          "cache-insight"
+        ],
+        "erreur": null
+      },
+      {
+        "url": "https://memlia.fr/contact",
+        "scores": {
+          "performance": 98,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "seo": 100
+        },
+        "labo": {
+          "lcpMs": 2101,
+          "cls": 0,
+          "tbtMs": 0,
+          "fcpMs": 1654.3331096491324,
+          "speedIndexMs": 1654.3331096491324
+        },
+        "auditsEchoues": [
+          "image-delivery-insight",
+          "network-dependency-tree-insight",
+          "legacy-javascript-insight",
+          "cache-insight"
+        ],
+        "erreur": null
+      },
+      {
+        "url": "https://memlia.fr/glossaire",
+        "scores": {
+          "performance": 99,
+          "accessibility": 100,
+          "bestPractices": 100,
+          "seo": 100
+        },
+        "labo": {
+          "lcpMs": 1819.677785958503,
+          "cls": 0,
+          "tbtMs": 0,
+          "fcpMs": 1668.3833394688772,
+          "speedIndexMs": 1668.3833394688772
+        },
+        "auditsEchoues": [
+          "network-dependency-tree-insight",
+          "forced-reflow-insight",
+          "cache-insight",
+          "legacy-javascript-insight"
+        ],
+        "erreur": null
+      }
+    ],
+    "rouges": [],
+    "aSurveiller": [],
+    "avertissements": []
+  },
+  "crux": {
+    "disponible": false,
+    "message": "No CrUX data for this origin. The site likely has insufficient Chrome traffic volume for eligibility."
+  },
+  "rouges": [
+    {
+      "volet": "maillage",
+      "code": "satellite-sans-lien-pilier",
+      "cible": "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "message": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    },
+    {
+      "volet": "maillage",
+      "code": "satellite-sans-lien-pilier",
+      "cible": "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "message": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    },
+    {
+      "volet": "maillage",
+      "code": "satellite-sans-lien-pilier",
+      "cible": "/blog/suivre-la-production-sociale-dans-excel",
+      "message": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    },
+    {
+      "volet": "sources",
+      "code": "extrait-absent",
+      "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+      "sourceId": "service-public-dsn",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
+      "message": "la page répond mais la citation exacte n’y figure plus, même après normalisation"
+    }
+  ],
+  "taches": {
+    "deposees": 4,
+    "ajoutees": 4,
+    "misesAJour": 0
+  },
+  "exclusions": [
+    "5 source(s) sans citation exacte vérifiable (dossier hérité ou document non textuel) : seule la réponse HTTP est vérifiée"
+  ],
+  "messages": []
+}

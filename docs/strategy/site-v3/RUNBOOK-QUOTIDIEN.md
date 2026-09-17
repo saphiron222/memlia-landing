@@ -101,7 +101,10 @@ Le message de commit se termine par la ligne d'attribution `Co-Authored-By: Clau
 curl -s -o /dev/null -w '%{http_code}\n' https://memlia.fr/blog/<slug>
 PREVIEW_SOURCE=dist QA_URL=https://<id>.memlia.pages.dev node scripts/verify-preview.mjs
 ~/.claude/skills/seo/.venv/bin/python scripts/gsc-resubmit-sitemap.py
+node scripts/seo/forge-seo.mjs apres-publication <slug>
 ```
+
+La dernière commande est l'extension F1 (`RUNBOOK-SEO.md` §6) : elle attend que la production serve le titre d'onglet de l'article, pose les baselines de dérive (article, `/blog`, pilier), inscrit la requête primaire au registre `docs/strategy/site-v3/mesures/registre-requetes.json` (la commande `publier` l'a déjà fait) et envoie le ping IndexNow ; son JSON va dans la note du journal.
 
 Consigner dans `docs/strategy/site-v3/JOURNAL.md` (une ligne par article : date, slug, commit, identifiant de déploiement, code HTTP, équivalence octets, sitemap renvoyé) et commiter le journal.
 
@@ -112,7 +115,8 @@ Dans l'ordre, sans publier d'article :
 1. Régénérer le plan (`build-cluster-plan.py --check`) et vérifier que les articles de la semaine sont bien `published`.
 2. Relever l'indexation des URL publiées depuis sept jours (Search Console : `~/.claude/skills/seo/.venv/bin/python scripts/gsc-resubmit-sitemap.py` affiche le sitemap ; l'inspection d'URL unitaire reste manuelle, Kevin la fait dans la propriété).
 3. Glossaire : la vague 1 (vingt termes) est intégrée depuis le 16/09/2026 par la chaîne Ressources (revue métier R5 : `docs/qa/hub-ressources/metier-review-r5/`, rapport de sources : `docs/qa/hub-ressources/glossaire-vague-1.md`). Pour une vague suivante, rejouer la même chaîne et jamais un simple ajout dans le fichier : entrées dans `src/data/glossary.ts` (une seule apostrophe typographique, jamais droite, dans les textes) ; copies de source datées dans `docs/qa/hub-ressources/<vague>-sources/` (curl avec en-tête de navigateur ; Légifrance et l'assistance Net-entreprises exigent un navigateur) ; spécifications de preuve et planchers `DEFINITIONS_ATTENDUES` / `UNITES_ATTENDUES` dans `scripts/lib/resource-metier-evidence.mjs` ; champs à portée juridique déclarés dans `ADDITIONAL_UNITS` de `resource-metier-v3.mjs` ; compteurs des tests (`tests/proof/test_glossary.py`, `tests/browser/glossary.spec.ts`, totaux de `test_resource_v3_traceability.py`) ; `npm run resource:seal-surfaces` ; revue métier par un agent distinct sous une carte kanban `t_…` (verdict par couple affirmation/source sur les types sensibles) ; injection de la revue dans les deux manifestes puis `node scripts/reaffirm-resource-review.mjs ancrer` ; `npm run resource:audit:qa` vert.
-4. Consigner dans `JOURNAL.md` ce qui a été fait, et pousser.
+4. Maintenance SEO, l'extension F2 (`RUNBOOK-SEO.md` §7) : `node scripts/seo/forge-seo.mjs maintenance lister` donne les tâches déposées par les crons ; en traiter deux au plus, par gravité, chacune par republication scellée (la recette pour un article v3 ; `scripts/migrate-published-blog.mjs` pour les trois articles antérieurs à la v3), puis `node scripts/seo/forge-seo.mjs maintenance cloturer <id> --commit <sha>` ; une tâche jugée fausse s'écarte avec `ecarter <id> --motif "…"` et son motif dans le journal.
+5. Consigner dans `JOURNAL.md` ce qui a été fait, et pousser.
 
 ## 7. Prompt du sous-agent relecteur (version complète)
 

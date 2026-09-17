@@ -23,6 +23,7 @@ import {
   PUBLICATION_SEAL_PATH, verifierPlafonds, verifySource,
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
+import { inscrireArticle } from './seo/forge-seo.mjs';
 
 export const IMAGE_REVIEW_CRITERIA = ['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'];
 export const LARGEURS_HERO = [768, 1200, 1600];
@@ -575,7 +576,9 @@ export async function commande(argv, root = process.cwd()) {
     if (!lancer(root, ['production-check', slug])) { process.exitCode = 1; return; }
     await materialiser({ root, slug, statut: 'publie' });
     ecrireSceau(root, slug);
-    console.log(JSON.stringify({ slug, statut: 'publie', sceau: PUBLICATION_SEAL_PATH, suite: 'npm run lastmod:sync && npm run build, puis commit et push' }, null, 2));
+  const inscription = inscrireArticle(root, slug);
+  if (!inscription.ok) console.error(`registre des requêtes SEO : ${inscription.message}`);
+    console.log(JSON.stringify({ slug, statut: 'publie', sceau: PUBLICATION_SEAL_PATH, suite: 'npm run lastmod:sync && npm run build, puis commit et push, puis node scripts/seo/forge-seo.mjs apres-publication <slug> après le contrôle en ligne' }, null, 2));
     return;
   }
   throw new Error(`Action inconnue : ${action}`);
