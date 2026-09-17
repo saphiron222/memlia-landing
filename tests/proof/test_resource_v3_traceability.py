@@ -62,8 +62,8 @@ class ResourceV3TraceabilityProof(unittest.TestCase):
         # Autorite Blog re-pointee le 16/09/2026 sur le commit e2196a3 qui retire les encarts
         # de processus des trois articles publies, aucun brouillon.
         expected_articles = {
-            "controler-les-bulletins-de-paie-avant-la-dsn": "b8c678eff08c79efc96784ded33deb9842eaf99f83bec50aa1e5d78bddd97cb8",
-            "suivre-la-production-sociale-dans-excel": "bd822ed24264fd9dbbb5e2865dd429ba03c8445fc89523e2fde3a9d52961cf4b",
+            "controler-les-bulletins-de-paie-avant-la-dsn": "2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9",
+            "suivre-la-production-sociale-dans-excel": "154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788",
         }
         for slug, expected_hash in expected_articles.items():
             article = ROOT / f"src/content/blog/{slug}.md"
@@ -76,7 +76,7 @@ class ResourceV3TraceabilityProof(unittest.TestCase):
         # garde en octets, pour qu'une regression du blog publie reste detectee.
         self.assertEqual(
             sha256((ROOT / "src/content/blog/comprendre-les-comptes-rendus-metier-dsn.md").read_bytes()),
-            "9cc990b2451c024ee24d5bb5950382c3b1ffe0e5ac43096bbe79972f53d32db8",
+            "2e64f531c87b7a1c416830e995b83295ba44c8d5394eb11914c1334e46f1ba1d",
             "comprendre-les-comptes-rendus-metier-dsn",
         )
 

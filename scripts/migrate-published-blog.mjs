@@ -26,6 +26,10 @@ for (const [slug, expected] of Object.entries(PUBLISHED_BLOG_HASHES)) {
   const original = (p) => JSON.parse(readFileSync(join(originalsDir,p)));
   const manifest=original('manifest.json');
   manifest.editorialStatus=fm.statutEditorial;
+  // Le frontmatter publié fait foi pour le titre d'onglet, comme il fait déjà foi pour le
+  // statut et les dates. Sans cette projection, corriger un titre d'onglet fait diverger le
+  // manifeste et l'audit refuse, alors que le corps, les sources et les preuves sont intacts.
+  manifest.tabTitle=fm.titreOnglet;
   manifest.updatedAt=fm.dateMiseAJour;
   manifest.proofRequired=fm.proofRequired;
   manifest.reviewRule=fm.reviewRule;

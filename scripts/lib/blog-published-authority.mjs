@@ -5,10 +5,12 @@ import { isDeepStrictEqual } from 'node:util';
 
 // Conservation des deux articles déjà publiés, pas une autorisation de publication.
 // Autorite re-pointee le 16/09/2026 : la production a avance avec la release de l'article 3.
-export const PUBLISHED_BLOG_COMMIT = 'e2196a3075490794cd48c00aeeac7ae4baf2cad6';
+// Re-pointé le 17/09/2026 sur le commit e5354f6, qui ne change que le titre d'onglet des
+// trois articles antérieurs à la v3 : corps, sources, affirmations et images intacts.
+export const PUBLISHED_BLOG_COMMIT = 'e5354f6295f50c7d9918c66aae3240418425d3fe';
 export const PUBLISHED_BLOG_HASHES = Object.freeze({
-  'controler-les-bulletins-de-paie-avant-la-dsn': 'b8c678eff08c79efc96784ded33deb9842eaf99f83bec50aa1e5d78bddd97cb8',
-  'suivre-la-production-sociale-dans-excel': 'bd822ed24264fd9dbbb5e2865dd429ba03c8445fc89523e2fde3a9d52961cf4b',
+  'controler-les-bulletins-de-paie-avant-la-dsn': '2bf253ea832e22ba94275b66031f1351042a36c9d245c5fe4a8d3a4eb7f39bc9',
+  'suivre-la-production-sociale-dans-excel': '154abdb04fe4ef2ceecba38758d5f2363e8c813029337a1de10e7030a8c07788',
 });
 export const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 export const ADOPTION_PATH = 'preuves/published-adoption.json';
