@@ -6,6 +6,7 @@ import Picture from '@/components/Picture.astro';
 import Picto from '@/components/Picto.astro';
 import Button from '@/components/Button.astro';
 import { SITE, CTA } from '@/data/site.mjs';
+import { organizationNode } from '@/data/schema.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { IMAGES } from '@/data/images.mjs';
 import { AUTEURS, identiteAuteur } from '@/data/auteurs';
@@ -63,7 +64,7 @@ const graph = {
       url: `${SITE.url}${a.pageIdentite}`,
       worksFor: { '@id': `${u}#organization` },
     })),
-    { '@type': 'Organization', '@id': `${u}#organization`, name: SITE.nom, url: u, logo: `${SITE.url}/apple-touch-icon.png`, email: SITE.email },
+    organizationNode(),
     { '@type': 'WebSite', '@id': `${u}#website`, url: u, name: SITE.nom, inLanguage: SITE.langue, publisher: { '@id': `${u}#organization` } },
   ],
 };

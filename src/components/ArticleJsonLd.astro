@@ -1,5 +1,6 @@
 ---
 import { SITE } from '@/data/site.mjs';
+import { organizationNode } from '@/data/schema.mjs';
 import { BLOG } from '@/data/blog.mjs';
 import { identiteAuteur, type Auteur } from '@/data/auteurs';
 
@@ -77,14 +78,7 @@ const graph = {
       url: `${SITE.url}${auteur.pageIdentite}`,
       worksFor: { '@id': `${u}#organization` },
     },
-    {
-      '@type': 'Organization',
-      '@id': `${u}#organization`,
-      name: SITE.nom,
-      url: u,
-      logo: `${SITE.url}/apple-touch-icon.png`,
-      email: SITE.email,
-    },
+    organizationNode(),
     // Même `@id` que sur l'accueil : chaque page est un graphe isolé pour les moteurs,
     // la référence `isPartOf` doit donc être résolue localement.
     { '@type': 'WebSite', '@id': `${u}#website`, url: u, name: SITE.nom, inLanguage: SITE.langue, publisher: { '@id': `${u}#organization` } },

@@ -1,6 +1,6 @@
 ---
 import { SITE, OG_IMAGE } from '@/data/site.mjs';
-import { serviceNode } from '@/data/schema.mjs';
+import { organizationNode, serviceNode } from '@/data/schema.mjs';
 import { FAQ } from '@/data/faq';
 
 
@@ -18,24 +18,7 @@ const u = `${SITE.url}/`;
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': `${u}#organization`,
-      name: SITE.nom,
-      url: u,
-      logo: `${SITE.url}/apple-touch-icon.png`,
-      email: SITE.email,
-      slogan: SITE.tagline,
-      description:
-        "Memlia est un service d'automatisation IA pour cabinets d'expertise comptable : un processus cadré, une automatisation éprouvée sur jeux fictifs et des décisions sensibles validées par le cabinet.",
-      contactPoint: {
-        '@type': 'ContactPoint',
-        email: SITE.email,
-        contactType: 'customer support',
-        areaServed: 'FR',
-        availableLanguage: 'French',
-      },
-    },
+    organizationNode(),
     {
       '@type': 'WebSite',
       '@id': `${u}#website`,

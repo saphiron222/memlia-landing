@@ -3,6 +3,7 @@ import Base from '@/layouts/Base.astro';
 import Button from '@/components/Button.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
 import { CTA, SITE } from '@/data/site.mjs';
+import { organizationNode } from '@/data/schema.mjs';
 import { PROOFS, type ProofId } from '@/data/proofs';
 
 /**
@@ -55,7 +56,7 @@ const graph = {
         { '@type': 'ListItem', position: 2, name: page.ariane, item: url },
       ],
     },
-    { '@type': 'Organization', '@id': `${SITE.url}/#organization`, name: SITE.nom, url: `${SITE.url}/`, logo: `${SITE.url}/apple-touch-icon.png`, email: SITE.email },
+    organizationNode(),
     { '@type': 'WebSite', '@id': `${SITE.url}/#website`, url: `${SITE.url}/`, name: SITE.nom, inLanguage: SITE.langue, publisher: { '@id': `${SITE.url}/#organization` } },
   ],
 };
