@@ -42,7 +42,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-16"
+      "verifiedAt": "2026-09-17"
     }
   },
   "businessReview": {
@@ -62,14 +62,14 @@
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
   "proofRequired": "Onze pôles et soixante familles listés depuis src/data/familles.ts ; pour chaque pôle un tableau se-prépare-seul / attend-une-validation / reste-humain ; cinq affirmations sourcées sur des pages officielles ouvertes le jour de la publication.",
-  "sourcesVerifiedAt": "2026-09-16",
+  "sourcesVerifiedAt": "2026-09-17",
   "sources": [
     {
       "id": "sp-conservation",
       "publisher": "Service Public",
       "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
       "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -84,7 +84,7 @@
       "publisher": "CNIL",
       "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
       "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -99,7 +99,7 @@
       "publisher": "CNIL",
       "title": "Les durées de conservation des données",
       "url": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -114,7 +114,7 @@
       "publisher": "impots.gouv.fr",
       "title": "Calendrier fiscal des professionnels",
       "url": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -129,7 +129,7 @@
       "publisher": "Net-entreprises",
       "title": "Les comptes rendus métiers DSN",
       "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -159,12 +159,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-16"
+      "checkedAt": "2026-09-17"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-16"
+      "checkedAt": "2026-09-17"
     }
   },
   "links": {
@@ -178,7 +178,8 @@
       "/glossaire#regle-de-cabinet",
       "/glossaire#validation-humaine",
       "/glossaire#cas-de-refus",
-      "/blog/automatiser-la-relance-des-pieces-clients"
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier"
     ],
     "incoming": [
       "/blog",
@@ -202,6 +203,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-09-16",
+  "publishedAt": "2026-09-17",
   "publicationEvidence": "preuves/publication.json"
 }

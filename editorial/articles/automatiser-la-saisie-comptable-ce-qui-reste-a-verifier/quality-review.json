@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+  "reviewedAt": "2026-09-17",
+  "reviewer": "relecteur-qualite-ia-memlia",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 98,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 28,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 25,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 15,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 15,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 15,
+      "max": 15
+    }
+  },
+  "evidence": [
+    "Schema JSON-LD complet sur la page rendue : BlogPosting, Person (Kevin Kitanga), Organization (Memlia, SIREN/SIRET), BreadcrumbList et WebSite, sans élément manquant du socle attendu.",
+    "Quatre sources tier-1 officielles (3x Service-Public, 1x CNIL) citées avec URL et date de consultation dans une section « Sources consultées » dédiée, en plus des liens contextuels dans le corps.",
+    "Six tableaux structurés avec <thead> couvrent les champs extraits par certitude, les six contrôles ordonnés, la règle déclencheur/condition/action/exception, et la matrice automatisé/validé/humain.",
+    "Bloc « En bref » résumant la réponse dès l'ouverture, suivi d'un paragraphe de réponse directe, conforme au format answer-first attendu pour l'intent « executer ».",
+    "Jeu de test fictif chiffré (50 pièces réparties en huit catégories, dont pièges construits) qui démontre la méthode par un cas rejouable plutôt que de l'affirmer abstraitement.",
+    "Image de couverture avec dérivés AVIF/WebP déclarés en 768/1200/1600px, OG 1200x630 avec largeur et hauteur explicites, alt descriptif de 121 caractères.",
+    "FAQ de cinq questions en h3 sous « Questions fréquentes », sans schema FAQPage dédié — non pénalisant selon le barème qui traite le FAQPage comme optionnel.",
+    "Title tag corrigé : « Saisie comptable OCR : ce qui reste à vérifier | Memlia » fait désormais 55 caractères et attaque sur la requête primaire, contre 63 caractères avant correction."
+  ],
+  "reservations": [
+    "Le score Lighthouse (LCP/INP/CLS) n'a pas été mesuré directement sur cette page rendue, seule la présence des signaux favorables (fetchpriority, préchargement des polices) a été vérifiée dans le code.",
+    "La citabilité IA réelle (apparition effective dans une réponse ChatGPT, Perplexity ou Google AI Overviews) n'a pas été testée ; seule la structure extractible du contenu a été évaluée.",
+    "Le meta robots de cette page rendue est « noindex, follow » car il s'agit d'un candidat en preview privée non publiable ; c'est un artefact du rendu de prévisualisation, pas un défaut de l'article, mais il reste à vérifier que le robots sera bien indexable une fois l'article publié en production.",
+    "Le CTR et le temps de lecture réel ne peuvent pas être estimés sans données de trafic, absentes de ce contrôle éditorial."
+  ],
+  "verdict": "Article complet, rigoureusement sourcé et structuré pour l'extraction IA (98/100) ; le title tag a été corrigé sous les 60 caractères, prêt pour publication sous réserve de lever le noindex de preview.",
+  "subject": {
+    "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+    "articleSha256": "0e65c8f1da973605691efd05b91a4cf9c803fceea155d25c55c74fb3df843c77",
+    "manifestSha256": "5fb151f485a2eadc9c4e718701ce001742f0a4a42a751399663f9dbb1715be27"
+  }
+}

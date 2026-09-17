@@ -1,0 +1,242 @@
+{
+  "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+  "title": "Automatiser la saisie comptable : ce qui reste à vérifier",
+  "tabTitle": "Saisie comptable OCR : ce qui reste à vérifier | Memlia",
+  "summary": "La lecture extrait, une personne vérifie : six contrôles dans un ordre fixe — nature, émetteur, mentions, montants, période, doublon — puis une file d’anomalies à motifs fermés. Rien ne s’enregistre sans validation, et le reliquat se recompte à chaque période.",
+  "description": "Ce que la lecture automatique extrait d’une pièce, les six contrôles qui restent, et la file d’anomalies où part ce qui ne se vérifie pas seul.",
+  "date": "2026-09-17",
+  "topics": [
+    "saisie",
+    "pieces",
+    "automatisation",
+    "ia"
+  ],
+  "keywords": [
+    "saisie comptable automatisée",
+    "OCR comptable",
+    "pré-comptabilité",
+    "contrôles de saisie",
+    "file d’anomalies",
+    "doublon de facture"
+  ],
+  "primaryQuery": "automatisation saisie comptable OCR",
+  "secondaryQueries": [
+    "pré-comptabilisation automatique pièces",
+    "extraction automatique facture comptabilité"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "ce que la lecture extrait vraiment d’une pièce",
+    "quels contrôles restent après l’extraction",
+    "ce qui part en file d’anomalies et pourquoi"
+  ],
+  "role": {
+    "primary": "collaborateurs-comptables",
+    "secondary": [
+      "assistants-comptables",
+      "chefs-mission-portefeuille"
+    ],
+    "proofLevel": "indirect",
+    "proofNote": "Le référentiel des besoins ne documente pas encore le pôle comptable ; le module flux compta (août 2026) en approche le terrain sur les ventes et la caisse. Rôle à confirmer au premier rendez-vous d’un cabinet sur ce sujet."
+  },
+  "funnel": "MOFU",
+  "cluster": "production-comptable",
+  "famille": "saisie-ocr",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Faire lire les pièces et proposer les écritures sans que rien ne s’enregistre sans contrôle, et faire remonter ce que la lecture n’a pas su traiter.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Jeu fictif de cinquante pièces (trente-deux fournisseurs récurrents, six inconnus, quatre tickets dont deux coupés, trois hors période, un doublon reçu deux fois, deux notes de frais sans justificatif, un avoir) rejoué sur la règle ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées.",
+  "reviewRule": "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois.",
+  "cta": {
+    "label": "Faire coder la règle de saisie de votre cabinet",
+    "destination": "/contact",
+    "outcome": "Une demande décrivant les contrôles et les exceptions actuels du cabinet."
+  },
+  "image": {
+    "heroId": "img-art-saisie-comptable",
+    "alt": "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe",
+    "brief": {
+      "sujet": "La lecture automatique d’une pièce comptable et le tri qui suit : une pile de feuilles pliées passe sous une barre de lecture, deux plateaux de sortie la reçoivent, l’un rangé, l’autre mis de côté.",
+      "composition": "Vue isométrique sur bureau crème papier ; à gauche une pile de feuilles pliées vierges ; au centre un portique bas aux montants verts avec un plan lumineux translucide sous lequel glisse une feuille ; à droite deux plateaux distincts, le premier avec trois feuilles parfaitement alignées et un jeton vert, le second avec deux feuilles posées de travers et un jeton graphite ; une loupe aux formes simplifiées, mate, posée près du second plateau.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, lumière de studio douce venant du haut gauche, ombres courtes, composition aérée ; continuité avec les couvertures IMG-25 et celle de la relance des pièces.",
+      "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20.",
+      "interdits": "Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique.",
+      "alt": "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe",
+      "reviewCriteria": [
+        "continuité avec les couvertures existantes (diorama isométrique, fond crème)",
+        "une pile en entrée et deux plateaux de sortie distincts (proposé / à vérifier)",
+        "la barre de lecture translucide lit sans rien envoyer",
+        "le plateau graphite et la loupe disent la relecture humaine",
+        "aucun texte, chiffre, logo, personnage, donnée ou fausse interface",
+        "dérivés 1920×1080, OG 1200×630, 768/1200/1600 générés"
+      ],
+      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : la lecture automatique d'une pièce comptable et le tri qui suit : une pile de feuilles pliées passe sous une barre de lecture, deux plateaux de sortie la reçoivent, l'un rangé, l'autre mis de côté. Composition : Vue isométrique sur bureau crème papier ; à gauche une pile de feuilles pliées vierges ; au centre un portique bas aux montants verts avec un plan lumineux translucide sous lequel glisse une feuille ; à droite deux plateaux distincts, le premier avec trois feuilles parfaitement alignées et un jeton vert, le second avec deux feuilles posées de travers et un jeton graphite ; une loupe aux formes simplifiées, mate, posée près du second plateau. Style : Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, lumière de studio douce venant du haut gauche, ombres courtes, composition aérée ; continuité avec les couvertures IMG-25 et celle de la relance des pièces. Palette : Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20. Interdits : Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d'envoi automatique."
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "96b28b2f-871c-4905-9b5f-706f549512e3",
+      "model": "gpt_image_2_5",
+      "provider": "higgsfield",
+      "generatedAt": "2026-09-17",
+      "credits": 3,
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_340edDKgz49ubvQTIJPiYr6YSC6/hf_20260917_080901_96b28b2f-871c-4905-9b5f-706f549512e3.png",
+      "quality": "high",
+      "resolution": "2k"
+    }
+  },
+  "sources": [
+    {
+      "id": "sp-mentions-facture",
+      "publisher": "Service Public",
+      "title": "Mentions obligatoires sur une facture",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Fiche officielle de l’administration française publiée sur le portail Service-Public, source primaire.",
+      "excerpt": "comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique"
+    },
+    {
+      "id": "sp-facture-electronique",
+      "publisher": "Service Public",
+      "title": "Comment se mettre en conformité avec l’obligation de facturation électronique ?",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Fiche officielle de l’administration française sur la facturation électronique, source primaire.",
+      "excerpt": "La facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie."
+    },
+    {
+      "id": "sp-conservation-pieces",
+      "publisher": "Service Public",
+      "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Fiche officielle de l’administration française sur la conservation des documents d’entreprise, source primaire.",
+      "excerpt": "documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés"
+    },
+    {
+      "id": "cnil-donnee-personnelle",
+      "publisher": "CNIL",
+      "title": "Définition : donnée personnelle",
+      "url": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Définition officielle publiée par l’autorité de protection des données, source primaire.",
+      "excerpt": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable."
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/methode",
+      "/glossaire#reconnaissance-optique-de-caracteres",
+      "/glossaire#pre-comptabilite",
+      "/glossaire#file-d-anomalies"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/automatiser-la-relance-des-pieces-clients"
+    ],
+    "decision": "Le pilier cartographie les pôles, cet article exécute une famille ; la relance traite l’obtention de la pièce, celui-ci ce qui se passe une fois la pièce reçue. Requêtes primaires et intentions distinctes."
+  },
+  "serp": {
+    "requete": "automatisation saisie comptable OCR",
+    "date": "2026-09-17",
+    "volume": "ND",
+    "acteurs": [
+      "Qonto",
+      "Sage",
+      "Pennylane",
+      "Deltic",
+      "Koncile",
+      "CabinetDigital",
+      "Wize-Expert",
+      "Advyse",
+      "Septeo"
+    ],
+    "formats": "pages produit d’éditeurs et comparatifs « top 5 » ou « 11 meilleures solutions », articles « avantages de l’automatisation » ; promesses de gain chiffrées sans méthode de mesure",
+    "note": "Relevé WebSearch du 17/09/2026 ; positions ND. Aucun résultat relevé ne donne l’ordre des contrôles qui restent après l’extraction, ni une file d’anomalies à motifs fermés, ni la manière de compter le reliquat."
+  },
+  "gsc": {
+    "requete": "automatisation saisie comptable OCR",
+    "date": "2026-09-17",
+    "periode": "90 jours",
+    "impressions": 0,
+    "clics": 0,
+    "note": "Page nouvelle, créée le 17/09/2026 : aucune impression ne peut lui être attribuée. Dernier relevé de site lu le 16/09/2026 (52 impressions, 10 clics, 2 requêtes distinctes sur 90 jours pour l’ensemble du site). Aucune inspection d’URL demandée, aucun crédit métrique revendiqué."
+  },
+  "claims": [
+    {
+      "unite": "Une pièce lue n’est pas une pièce valable",
+      "claim": "comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique",
+      "type": "juridique",
+      "sourceId": "sp-mentions-facture",
+      "excerpt": "comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique",
+      "explanation": "La phrase de la fiche Service-Public sur les mentions obligatoires d’une facture est reprise à l’identique, sans élargir sa portée."
+    },
+    {
+      "unite": "La bascule vers la facture électronique déplace ce travail",
+      "claim": "la facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie",
+      "type": "fiscal",
+      "sourceId": "sp-facture-electronique",
+      "excerpt": "La facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie.",
+      "explanation": "Constat de la fiche Service-Public sur la facturation électronique, repris mot pour mot, sans y ajouter de date ni d’obligation."
+    },
+    {
+      "unite": "Le traitement des anomalies change lui aussi de nature",
+      "claim": "de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)",
+      "type": "fiscal",
+      "sourceId": "sp-facture-electronique",
+      "excerpt": "de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)",
+      "explanation": "Possibilité de signalement décrite par la fiche Service-Public, citée à l’identique et présentée comme une possibilité, non comme une obligation."
+    },
+    {
+      "unite": "La pièce, elle, se conserve",
+      "claim": "documents ou pièces sur lesquels peuvent s’exercer les droits de communication, d’enquête et de contrôle de l’administration doivent être conservés",
+      "type": "juridique",
+      "sourceId": "sp-conservation-pieces",
+      "excerpt": "documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés",
+      "explanation": "Phrase de la fiche Service-Public sur la conservation des documents reprise à l’identique ; seule l’apostrophe typographique diffère, et aucune durée n’est affirmée."
+    },
+    {
+      "unite": "Enfin, une facture porte presque toujours des données personnelles",
+      "claim": "une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-donnee-personnelle",
+      "excerpt": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+      "explanation": "Définition officielle de la donnée personnelle publiée par la CNIL, reprise à l’identique."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "collaborateurs-comptables"
+  },
+  "preuvesSkills": {
+    "blog-brief": [
+      "Brief pris dans docs/strategy/site-v3/backlog-v3.json (famille saisie-ocr, lecteur collaborateurs-comptables, requête « automatisation saisie comptable OCR », preuve attendue : reliquat d’exceptions mesuré sur un jeu fictif de cinquante pièces, avec la file d’anomalies qui en sort)."
+    ],
+    "blog-outline": [
+      "Plan calqué sur le gabarit how-to-guide du skill blog : réponse directe, définitions, avant de commencer, trois briques, tableau déclencheur/condition/action/exception, refus, frontière en trois colonnes, jeu fictif, cadre sourcé, erreurs, questions fréquentes, règle à retenir, pour aller plus loin."
+    ],
+    "blog-style": [
+      "Passe de style : phrases courtes, aucun superlatif, aucun chiffre de gain, aucun mot de catalogue ; le reliquat est présenté comme un instrument de réglage rapporté à son lot, jamais comme une performance."
+    ],
+    "blog-schema": [
+      "BlogPosting, BreadcrumbList, Person, Organization et WebSite émis par ArticleJsonLd.astro depuis le frontmatter ; ImageObject sur la couverture générée ; aucun FAQPage ni HowTo."
+    ],
+    "blog-image": [
+      "Couverture générée depuis le brief à six composantes : Higgsfield, modèle gpt_image_2_5, qualité haute 2K, job 96b28b2f-871c-4905-9b5f-706f549512e3, 3 crédits, regardée avant publication (aucun texte, aucun personnage, aucune fausse interface)."
+    ]
+  }
+}

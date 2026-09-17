@@ -22,7 +22,7 @@ tache: "Dresser la carte des tâches automatisables du cabinet et repérer celle
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-16
+  date: 2026-09-17
 funnel: TOFU
 contentType: searchable
 format: pillar-page
@@ -32,7 +32,7 @@ proofStatus: verifiee
 proofRequired: "Onze pôles et soixante familles listés depuis src/data/familles.ts ; pour chaque pôle un tableau se-prépare-seul / attend-une-validation / reste-humain ; cinq affirmations sourcées sur des pages officielles ouvertes le jour de la publication."
 reviewRule: "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-16
+sourcesVerifieesLe: 2026-09-17
 cta:
   label: "Cadrer une première tâche"
   destination: "/contact"
@@ -44,23 +44,23 @@ sources:
   - editeur: "Service Public"
     titre: "Quels sont les délais de conservation des documents pour les entreprises ?"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F10029"
-    consulte: 2026-09-16
+    consulte: 2026-09-17
   - editeur: "CNIL"
     titre: "Règlement européen sur la protection des données, chapitre 2 : principes"
     url: "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2"
-    consulte: 2026-09-16
+    consulte: 2026-09-17
   - editeur: "CNIL"
     titre: "Les durées de conservation des données"
     url: "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees"
-    consulte: 2026-09-16
+    consulte: 2026-09-17
   - editeur: "impots.gouv.fr"
     titre: "Calendrier fiscal des professionnels"
     url: "https://www.impots.gouv.fr/professionnel/calendrier-fiscal"
-    consulte: 2026-09-16
+    consulte: 2026-09-17
   - editeur: "Net-entreprises"
     titre: "Les comptes rendus métiers DSN"
     url: "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/"
-    consulte: 2026-09-16
+    consulte: 2026-09-17
 ---
 
 ## Réponse directe
@@ -99,7 +99,7 @@ Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. L
 
 ## Production comptable : de la pièce reçue au bilan livré
 
-C’est le pôle le plus large, treize familles, parce que c’est là que la répétition est la plus dense. La [collecte et la relance des pièces](/blog/automatiser-la-relance-des-pieces-clients) ouvrent la chaîne : chaque dossier attend, pour chaque période, une liste de pièces qui dépend de son régime. La règle typique tient en trois états, attendu, reçu, lisible, et une cadence de relance qui cesse à réception. La saisie et la pré-comptabilité suivent : lecture des pièces, extraction des champs, pré-imputation, avec un reliquat d’exceptions que la lecture n’a pas su traiter et qui doit remonter plutôt que d’être forcé.
+C’est le pôle le plus large, treize familles, parce que c’est là que la répétition est la plus dense. La [collecte et la relance des pièces](/blog/automatiser-la-relance-des-pieces-clients) ouvrent la chaîne : chaque dossier attend, pour chaque période, une liste de pièces qui dépend de son régime. La règle typique tient en trois états, attendu, reçu, lisible, et une cadence de relance qui cesse à réception. [La saisie et la pré-comptabilité](/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier) suivent : lecture des pièces, extraction des champs, pré-imputation, avec un reliquat d’exceptions que la lecture n’a pas su traiter et qui doit remonter plutôt que d’être forcé.
 
 Le [lettrage](/glossaire#lettrage-comptable) et le [rapprochement bancaire](/glossaire#rapprochement-bancaire) obéissent à des règles d’appariement que le cabinet connaît par cœur mais écrit rarement : montant identique, référence présente, tolérance de quelques centimes, délai entre facture et règlement. Écrites, ces règles deviennent une proposition d’écriture et une liste d’écarts typés. Les factures d’achat, les ventes importées d’une caisse ou d’une boutique en ligne, les notes de frais, les tableaux d’amortissement et d’emprunt suivent la même logique : un import sans ressaisie, un contrôle de schéma, une écriture récurrente générée puis validée.
 

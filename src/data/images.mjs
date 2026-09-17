@@ -120,6 +120,13 @@ export const IMAGES = {
     alt: "Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart",
     generee: true,
   },
+  'img-art-saisie-comptable': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -127,6 +134,7 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-saisie-comptable',
   'img-art-relance-des-pieces',
   'img-art-carte-des-taches',
   'img-23-controle-bulletins-paie',

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+  "articleSha256": "0e65c8f1da973605691efd05b91a4cf9c803fceea155d25c55c74fb3df843c77",
+  "manifestSha256": "5fb151f485a2eadc9c4e718701ce001742f0a4a42a751399663f9dbb1715be27",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe",
+  "score": 100,
+  "directionArt": 19,
+  "semanticRelevance": 24,
+  "p0": [],
+  "kevinApproved": true
+}

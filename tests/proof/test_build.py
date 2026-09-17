@@ -19,7 +19,9 @@ PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').sp
 PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
                    'comprendre-les-comptes-rendus-metier-dsn',
                    # v3, 16/09/2026 : le pilier et le premier satellite publiés par la forge.
-                   'automatiser-un-cabinet-comptable-la-carte-des-taches', 'automatiser-la-relance-des-pieces-clients'}
+                   'automatiser-un-cabinet-comptable-la-carte-des-taches', 'automatiser-la-relance-des-pieces-clients',
+                   # v3, 17/09/2026 : deuxième satellite, famille « Saisie, OCR et pré-comptabilité ».
+                   'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'}
 
 
 class Document(HTMLParser):
@@ -46,6 +48,23 @@ def articles():
 
 def is_preview_article(article):
     return article.stem in PREVIEW_ARTICLES and article.stem not in PUBLIC_ARTICLES
+
+
+def pillar_slugs():
+    """
+    Slugs déclarés `format: pillar-page` dans la source. Le rendu n'expose ce format nulle
+    part : la liste du blog l'applique en triant, sans l'écrire. L'oracle lit donc l'intention
+    à la source et vérifie que le rendu lui obéit, comme il le fait déjà pour `famille:`.
+    """
+    trouves = set()
+    for article in (ROOT / 'src/content/blog').glob('*.md'):
+        texte = article.read_text(encoding='utf-8')
+        if not texte.startswith('---'):
+            continue
+        frontmatter = texte.split('---', 2)[1]
+        if re.search(r'^format:\s*[\'"]?pillar-page[\'"]?\s*$', frontmatter, re.M):
+            trouves.add(article.stem)
+    return trouves
 
 
 class BuildProof(unittest.TestCase):
@@ -222,9 +241,18 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(types, [['CollectionPage', 'Blog'], 'BreadcrumbList', 'Person', 'Organization', 'WebSite'])
         blog = graph['@graph'][0]
         self.assertEqual(sorted(p['@id'] for p in blog['blogPost']), [f'{SITE}/blog/{a.stem}#article' for a in articles()])
-        # Du plus récent au plus ancien, dans la liste HTML comme dans le graphe (égalité des dates tolérée).
+        # Règle réelle depuis la v3 (16/09/2026, commit d992cec) : le pilier ouvre la liste quand
+        # il est publié, puis les autres du plus récent au plus ancien, dans la liste HTML comme
+        # dans le graphe (égalité des dates tolérée). L'assertion précédente n'exigeait qu'une
+        # décroissance stricte, sans exception : elle est restée verte par coïncidence tant que le
+        # pilier était l'article le plus récent, et le premier satellite daté après lui l'a cassée.
         dates = {a.stem: next(n for g in jsonld(a) for n in g['@graph'] if n['@type'] == 'BlogPosting')['datePublished'] for a in articles()}
-        self.assertEqual([dates[s] for s in listed], sorted((dates[s] for s in listed), reverse=True))
+        piliers = [s for s in listed if s in pillar_slugs()]
+        self.assertLessEqual(len(piliers), 1, 'un seul article peut porter le format pillar-page')
+        if piliers:
+            self.assertEqual(listed[0], piliers[0], 'le pilier doit ouvrir la liste du blog')
+        suite = [s for s in listed if s not in piliers]
+        self.assertEqual([dates[s] for s in suite], sorted((dates[s] for s in suite), reverse=True))
         self.assertEqual([p['@id'] for p in blog['blogPost']], [f'{SITE}/blog/{s}#article' for s in listed])
 
     def test_blog_articles_schema_and_head(self):

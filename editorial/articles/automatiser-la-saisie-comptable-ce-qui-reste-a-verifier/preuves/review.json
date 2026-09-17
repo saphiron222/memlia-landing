@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "0e65c8f1da973605691efd05b91a4cf9c803fceea155d25c55c74fb3df843c77",
+  "manifestSha256": "5fb151f485a2eadc9c4e718701ce001742f0a4a42a751399663f9dbb1715be27",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
+  ],
+  "reviewer": "marketing",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Le brief demande de faire lire les pièces et proposer des écritures sans enregistrement automatique, et de faire remonter ce qui n'est pas traité ; les trois briques (extraction, six contrôles ordonnés, file d'anomalies) répondent exactement à ce task pour le rôle collaborateurs-comptables.",
+        "La section « Réponse directe » et le tableau « Se prépare seul / Attend une validation / Reste humain » couvrent le how-to attendu par l'intent « executer » sans dévier vers un contenu commercial générique."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Format how-to-guide respecté : bloc En bref, réponse directe en premier paragraphe, six tableaux avec en-têtes, FAQ en h3, ce qui rend la page scannable et apte au featured snippet.",
+        "Le title tag rendu (« Saisie comptable OCR : ce qui reste à vérifier | Memlia ») fait désormais 55 caractères, dans la fourchette 40-60 recommandée, et attaque directement sur la requête primaire « automatisation saisie comptable OCR » : la réserve précédente sur la troncature SERP est levée."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Quatre sources officielles tier-1 (Service-Public x3, CNIL x1) citées avec URL et date de consultation dans une section Sources consultées dédiée, en plus des liens contextuels dans le corps.",
+        "Auteur nommé et lié (Kevin Kitanga, rel=author, bio de fondateur sans qualification professionnelle usurpée), conforme à la règle produit qui interdit de le présenter comme expert-comptable diplômé."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Le jeu fictif de cinquante pièces (32 récurrentes, 6 inconnues, 4 tickets dont 2 coupés, 3 hors période, 1 doublon, 2 notes de frais, 1 avoir) démontre la règle par un cas chiffré et rejouable plutôt que de l'affirmer abstraitement.",
+        "La table des six champs extraits avec leur certitude, et la table des six contrôles ordonnés du plus grossier au plus fin, constituent une synthèse originale au-delà d'un article générique sur l'OCR comptable."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Canonical, OG complet (image 1200x630 avec largeur/hauteur déclarées), Twitter Card, sitemap et RSS liés, lang=fr, un seul h1 : le socle technique attendu est présent sur la page rendue.",
+        "Le meta robots de cette page rendue est « noindex, follow » parce qu'il s'agit d'un candidat en preview privée (bandeau « Candidat éditorial » visible) ; ce n'est pas un défaut de l'article mais un état à lever avant mise en production."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "La réponse directe en tête d'article est formulée comme un paragraphe autonome et extractible, et chaque tableau porte un <thead> qui facilite le passage structuré pour un système génératif.",
+        "Terminologie d'entité stable sur tout l'article (saisie comptable automatisée, OCR, pré-comptabilité, file d'anomalies), ce qui évite l'ambiguïté qu'un moteur IA pourrait mal résoudre."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "Le pont de conversion (« Cette tâche vous prend encore du temps à la main ? ») reformule le CTA autour du contrôle et des exceptions du cabinet, cohérent avec le positionnement service et non un pack de sièges.",
+        "Le CTA renvoie vers /contact, la destination interne approuvée pour la v2, sans formulaire collecteur ni promesse au-delà du cadrage décrit dans le contexte marketing."
+      ]
+    }
+  ]
+}

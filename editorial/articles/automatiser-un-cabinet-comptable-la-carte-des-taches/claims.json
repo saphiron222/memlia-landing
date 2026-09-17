@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-  "articleSha256": "2095ccd654d04de2374c2c32ba5b41739472abdfac8fcb4a385b8408fa6fe439",
+  "articleSha256": "ceaad3298c603a00eba1a0dd17f7072edeeb50b75e4e1641a88303ceed2d6945",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -355,11 +355,11 @@
       "sourceExcerpts": {
         "sp-conservation": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
       },
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-16",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "sp-conservation",
@@ -371,10 +371,10 @@
             "citation": {
               "text": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
               "sha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
-              "sourceContentSha256": "bf334f3f5f0f409e3d8cf8dcb5724b33b098c024aa733a869bc18da979146f37",
+              "sourceContentSha256": "93b2fadbaee3680e44da4285c7ec92a2beecabc3da483f5e3467df78ab188d45",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
-                "checkedAt": "2026-09-16",
+                "checkedAt": "2026-09-17",
                 "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
                 "locator": {
                   "kind": "line-range",
@@ -403,7 +403,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La phrase de Service-Public est reprise à l’identique, seule l’apostrophe typographique diffère.",
-            "checkedAt": "2026-09-16"
+            "checkedAt": "2026-09-17"
           }
         ]
       }
@@ -419,11 +419,11 @@
       "sourceExcerpts": {
         "net-crm": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
       },
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-16",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "net-crm",
@@ -435,10 +435,10 @@
             "citation": {
               "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
               "sha256": "ef509c5e2bb80ff3b9aebd039458d169e786ca17dbb00478b7c5774d8192c754",
-              "sourceContentSha256": "6780502577f4d9ee052065e4060bbbf513e1e29faa984f23f22c51208d015ddc",
+              "sourceContentSha256": "87932b9c691004f9d7d8308b0815701b4b84a91de5a445ecb4bad22d00343899",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-                "checkedAt": "2026-09-16",
+                "checkedAt": "2026-09-17",
                 "title": "Les comptes rendus métiers DSN",
                 "locator": {
                   "kind": "line-range",
@@ -473,7 +473,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition officielle du compte rendu métier reprise à l’identique depuis Net-entreprises.",
-            "checkedAt": "2026-09-16"
+            "checkedAt": "2026-09-17"
           }
         ]
       }
@@ -489,11 +489,11 @@
       "sourceExcerpts": {
         "impots-calendrier": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel."
       },
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-16",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "impots-calendrier",
@@ -508,7 +508,7 @@
               "sourceContentSha256": "4dfb72a30f6375ccee31b39678d77e85af50129caf36378b596164c5c4850522",
               "coordinates": {
                 "finalUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
-                "checkedAt": "2026-09-16",
+                "checkedAt": "2026-09-17",
                 "title": "Calendrier fiscal des professionnels",
                 "locator": {
                   "kind": "line-range",
@@ -532,7 +532,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Fenêtre de dépôt et de paiement de la TVA mensuelle de septembre 2026 telle que publiée par le calendrier fiscal officiel.",
-            "checkedAt": "2026-09-16"
+            "checkedAt": "2026-09-17"
           }
         ]
       }
@@ -548,11 +548,11 @@
       "sourceExcerpts": {
         "cnil-principes": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
       },
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-16",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "cnil-principes",
@@ -564,10 +564,10 @@
             "citation": {
               "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
               "sha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
-              "sourceContentSha256": "80a9c95a294d8a738c16ccc39dba4c9df7f43094af68bb782089f5f9037d6490",
+              "sourceContentSha256": "2b0b047057d992e3cf0ed2129b1a34bfe5c39c5e03448678feaf7d0e422df9f7",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-                "checkedAt": "2026-09-16",
+                "checkedAt": "2026-09-17",
                 "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
                 "locator": {
                   "kind": "line-range",
@@ -593,7 +593,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Principe de minimisation, article 5 du RGPD, cité mot pour mot depuis le texte publié par la CNIL.",
-            "checkedAt": "2026-09-16"
+            "checkedAt": "2026-09-17"
           }
         ]
       }
@@ -609,11 +609,11 @@
       "sourceExcerpts": {
         "cnil-durees": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement."
       },
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-16",
+        "checkedAt": "2026-09-17",
         "sourceResults": [
           {
             "sourceId": "cnil-durees",
@@ -625,10 +625,10 @@
             "citation": {
               "text": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement.",
               "sha256": "461c2f50a632e8d85d7fdbd75beaa13bb871fc5651adb58ce1d46fd441da28ee",
-              "sourceContentSha256": "020c1d06e3358d4d0bad6c98e3d0f910c6b98ef3e3f54d6bd0dff9465f752a14",
+              "sourceContentSha256": "404d47a79a75ace0931f3afe631aa5e5ab3a3293b28254399b00fdf432e94591",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
-                "checkedAt": "2026-09-16",
+                "checkedAt": "2026-09-17",
                 "title": "Les durées de conservation des données",
                 "locator": {
                   "kind": "line-range",
@@ -656,7 +656,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Règle de la CNIL sur la fixation de la durée de conservation, reprise à l’identique.",
-            "checkedAt": "2026-09-16"
+            "checkedAt": "2026-09-17"
           }
         ]
       }

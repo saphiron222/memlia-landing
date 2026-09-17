@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+  "action": "creation",
+  "editorialStatus": "publie",
+  "title": "Automatiser la saisie comptable : ce qui reste à vérifier",
+  "tabTitle": "Saisie comptable OCR : ce qui reste à vérifier | Memlia",
+  "summary": "La lecture extrait, une personne vérifie : six contrôles dans un ordre fixe — nature, émetteur, mentions, montants, période, doublon — puis une file d’anomalies à motifs fermés. Rien ne s’enregistre sans validation, et le reliquat se recompte à chaque période.",
+  "description": "Ce que la lecture automatique extrait d’une pièce, les six contrôles qui restent, et la file d’anomalies où part ce qui ne se vérifie pas seul.",
+  "publicationDate": "2026-09-17",
+  "updatedAt": null,
+  "topics": [
+    "saisie",
+    "pieces",
+    "automatisation",
+    "ia"
+  ],
+  "keywords": [
+    "saisie comptable automatisée",
+    "OCR comptable",
+    "pré-comptabilité",
+    "contrôles de saisie",
+    "file d’anomalies",
+    "doublon de facture"
+  ],
+  "primaryQuery": "automatisation saisie comptable OCR",
+  "secondaryQueries": [
+    "pré-comptabilisation automatique pièces",
+    "extraction automatique facture comptabilité"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "ce que la lecture extrait vraiment d’une pièce",
+    "quels contrôles restent après l’extraction",
+    "ce qui part en file d’anomalies et pourquoi"
+  ],
+  "role": {
+    "primary": "collaborateurs-comptables",
+    "secondary": [
+      "assistants-comptables",
+      "chefs-mission-portefeuille"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-09-17"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "collaborateurs-comptables",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "production-comptable",
+  "famille": "saisie-ocr",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Faire lire les pièces et proposer les écritures sans que rien ne s’enregistre sans contrôle, et faire remonter ce que la lecture n’a pas su traiter.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Jeu fictif de cinquante pièces (trente-deux fournisseurs récurrents, six inconnus, quatre tickets dont deux coupés, trois hors période, un doublon reçu deux fois, deux notes de frais sans justificatif, un avoir) rejoué sur la règle ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées.",
+  "sourcesVerifiedAt": "2026-09-17",
+  "sources": [
+    {
+      "id": "sp-mentions-facture",
+      "publisher": "Service Public",
+      "title": "Mentions obligatoires sur une facture",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808",
+      "checkedAt": "2026-09-17",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808",
+      "classificationReason": "Fiche officielle de l’administration française publiée sur le portail Service-Public, source primaire.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/sp-mentions-facture.classification.json",
+      "verificationEvidence": "preuves/sources/sp-mentions-facture.json"
+    },
+    {
+      "id": "sp-facture-electronique",
+      "publisher": "Service Public",
+      "title": "Comment se mettre en conformité avec l’obligation de facturation électronique ?",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
+      "checkedAt": "2026-09-17",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
+      "classificationReason": "Fiche officielle de l’administration française sur la facturation électronique, source primaire.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/sp-facture-electronique.classification.json",
+      "verificationEvidence": "preuves/sources/sp-facture-electronique.json"
+    },
+    {
+      "id": "sp-conservation-pieces",
+      "publisher": "Service Public",
+      "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "checkedAt": "2026-09-17",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "classificationReason": "Fiche officielle de l’administration française sur la conservation des documents d’entreprise, source primaire.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/sp-conservation-pieces.classification.json",
+      "verificationEvidence": "preuves/sources/sp-conservation-pieces.json"
+    },
+    {
+      "id": "cnil-donnee-personnelle",
+      "publisher": "CNIL",
+      "title": "Définition : donnée personnelle",
+      "url": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+      "checkedAt": "2026-09-17",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+      "classificationReason": "Définition officielle publiée par l’autorité de protection des données, source primaire.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/cnil-donnee-personnelle.classification.json",
+      "verificationEvidence": "preuves/sources/cnil-donnee-personnelle.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "marketing",
+  "reviewRule": "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois.",
+  "cta": {
+    "label": "Faire coder la règle de saisie de votre cabinet",
+    "destination": "/contact",
+    "outcome": "Une demande décrivant les contrôles et les exceptions actuels du cabinet."
+  },
+  "image": {
+    "heroId": "img-art-saisie-comptable",
+    "alt": "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-09-17"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-09-17"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/methode",
+      "/glossaire#reconnaissance-optique-de-caracteres",
+      "/glossaire#pre-comptabilite",
+      "/glossaire#file-d-anomalies"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/automatiser-la-relance-des-pieces-clients"
+    ],
+    "decision": "Le pilier cartographie les pôles, cet article exécute une famille ; la relance traite l’obtention de la pièce, celui-ci ce qui se passe une fois la pièce reçue. Requêtes primaires et intentions distinctes."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  },
+  "publishedAt": "2026-09-17",
+  "publicationEvidence": "preuves/publication.json"
+}

@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-17",
+  "articleSha256": "0e65c8f1da973605691efd05b91a4cf9c803fceea155d25c55c74fb3df843c77",
+  "manifestSha256": "5fb151f485a2eadc9c4e718701ce001742f0a4a42a751399663f9dbb1715be27",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
+  ],
+  "reviewerId": "relecteur-metier-ia-memlia",
+  "role": "collaborateurs-comptables",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-750912b300a9-1-sp-mentions-facture",
+      "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "articleSha256": "0e65c8f1da973605691efd05b91a4cf9c803fceea155d25c55c74fb3df843c77",
+      "claimId": "claim-unit-750912b300a9-1",
+      "claimSha256": "a72dc227ddf1ee2aed9d18974e3f0dc5372d1a237540c1e9e8f7b18ee518865f",
+      "sourceId": "sp-mentions-facture",
+      "sourceContentSha256": "4d32fc0b593d172f272c702f1d68bc1c3d86329b24d7403da0eeed79f12e02f0",
+      "citationSha256": "a72dc227ddf1ee2aed9d18974e3f0dc5372d1a237540c1e9e8f7b18ee518865f",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-17",
+      "reasoning": "La citation exacte de la source Service-Public pose l'obligation, pour toute facture, de comporter les mentions listées quel que soit le type de client ; l'article reprend cette portée à l'identique, sans l'élargir ni en changer la polarité."
+    },
+    {
+      "id": "review-claim-unit-5c6ac2c7683f-1-sp-facture-electronique",
+      "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "articleSha256": "0e65c8f1da973605691efd05b91a4cf9c803fceea155d25c55c74fb3df843c77",
+      "claimId": "claim-unit-5c6ac2c7683f-1",
+      "claimSha256": "8d2c932884f0c123d6bf3daaee2ee68949403fa0fe5b90ee0d9b9122767daa81",
+      "sourceId": "sp-facture-electronique",
+      "sourceContentSha256": "4788eb52f0c48347d6b20a9bcab252d93a6ee19753c9a2646e877df8deab3930",
+      "citationSha256": "2f0d3b50ec4fbf8e596e2cf11e31ea2486ee93daa2ca6988b05c1aef83b130f7",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-17",
+      "reasoning": "La phrase est reprise mot pour mot de la source Service-Public sur l'obligation de suivi des factures électroniques tout au long de leur cycle de vie, sans changement de portée ni de polarité par rapport au texte source."
+    },
+    {
+      "id": "review-claim-unit-34aa154b9200-1-sp-facture-electronique",
+      "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "articleSha256": "0e65c8f1da973605691efd05b91a4cf9c803fceea155d25c55c74fb3df843c77",
+      "claimId": "claim-unit-34aa154b9200-1",
+      "claimSha256": "1ae1e12a01631eda63072a90881bfe166bc334dd047eb5bf17c759ef8f555794",
+      "sourceId": "sp-facture-electronique",
+      "sourceContentSha256": "4788eb52f0c48347d6b20a9bcab252d93a6ee19753c9a2646e877df8deab3930",
+      "citationSha256": "1ae1e12a01631eda63072a90881bfe166bc334dd047eb5bf17c759ef8f555794",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-17",
+      "reasoning": "La source décrit une procédure recommandée permettant à l'entreprise de signaler toute anomalie sur la plateforme ; l'article restitue cette possibilité avec le même sens et la même portée, sans la transformer en obligation absolue ni en droit différent."
+    },
+    {
+      "id": "review-claim-unit-4526cc40d1a9-1-sp-conservation-pieces",
+      "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "articleSha256": "0e65c8f1da973605691efd05b91a4cf9c803fceea155d25c55c74fb3df843c77",
+      "claimId": "claim-unit-4526cc40d1a9-1",
+      "claimSha256": "28682d7e20774397dccd1d080dabca63c8c8317746230ccac28844ff715c360d",
+      "sourceId": "sp-conservation-pieces",
+      "sourceContentSha256": "13993453427a36c3d5300571040f8e785767e927eaca0f01bbbbb15695f296e2",
+      "citationSha256": "2dd5eff7a2e0a76255fb0246b4e0465bf43a558fe57608c894de50149156f8a2",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-17",
+      "reasoning": "La citation reprend l'obligation de conservation des pièces sur lesquelles s'exercent les droits de communication et de contrôle de l'administration ; l'article généralise le délai précis de 6 ans en « durée déterminée » sans dénaturer l'affirmation ni sa portée."
+    },
+    {
+      "id": "review-claim-unit-9f32a6b33444-1-cnil-donnee-personnelle",
+      "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "articleSha256": "0e65c8f1da973605691efd05b91a4cf9c803fceea155d25c55c74fb3df843c77",
+      "claimId": "claim-unit-9f32a6b33444-1",
+      "claimSha256": "58918f5c37a0757221a0d0d4e6d4fb32780dfa119beba59db4f9cf7a8f788393",
+      "sourceId": "cnil-donnee-personnelle",
+      "sourceContentSha256": "c508ec4aae8ce16b66edfaf6a6b3a0c0910c0e21534b90df37fd27a9bf0ac189",
+      "citationSha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-17",
+      "reasoning": "Définition officielle de la CNIL reprise mot pour mot dans l'article, sans altération de sens, de portée ni de polarité par rapport à la source consultée."
+    }
+  ]
+}
