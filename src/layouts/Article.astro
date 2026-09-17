@@ -159,7 +159,10 @@ const articleCta = {
         <span class="eyebrow">Et dans votre cabinet ?</span>
         <h2 id="pont-titre">Cette tâche vous prend encore du temps à la main ?</h2>
         <p class="texte-2" data-cta-outcome>{articleCta.outcome}</p>
-        <Button href={articleCta.destination} variante="principal" picto="fleche">{articleCta.label}</Button>
+        <p class="article-pont-actions">
+          <Button href={articleCta.destination} variante="principal" picto="fleche">{articleCta.label}</Button>
+          <Button href="/methode" variante="lien">Comprendre notre méthode</Button>
+        </p>
       </aside>
 
       <footer class="article-auteur">
@@ -186,9 +189,6 @@ const articleCta = {
           </ul>
         </nav>
       )}
-
-      {/* Ordre décrit par la copy transversale : signature, article connexe, puis la méthode. */}
-      <p class="texte-2 article-pont-methode">Avant d’en parler : <a href="/methode">comment se déroule une mission</a>.</p>
 
       <p class="article-retour"><a class="btn btn-lien" href={BLOG.chemin}><Picto nom="gauche" taille={14} /> Tous les articles</a></p>
     </article>
@@ -259,6 +259,10 @@ const articleCta = {
   }
   .article-pont h2 { font-size: var(--t-3xl); max-width: 24ch; }
   .article-pont p { max-width: 58ch; }
+  /* Le lien vers la méthode était une ligne nue en fin de page, sans style ni marge, là où
+     l'attention est la plus faible. Il devient l'action secondaire du bloc d'appel, au moment
+     où la décision se pose, sur le motif déjà employé par la sortie de la page blog. */
+  .article-pont-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 4px; }
   .article-auteur { display: flex; gap: 16px; align-items: flex-start; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--ligne-douce); }
   .auteur-initiale {
     display: grid; place-items: center; flex: 0 0 auto; width: 48px; height: 48px; border-radius: 12px;
