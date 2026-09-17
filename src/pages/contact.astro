@@ -21,7 +21,7 @@ const preparer: { picto: NomPicto; titre: string; texte: string }[] = [
 const appel = {
   titre: 'Vous préférez en parler de vive voix ?',
   texte: 'L’échange dure une trentaine de minutes. Réservez un créneau, ou écrivez directement : les deux mènent au même endroit.',
-  points: ['Sans fichier client ni donnée de paie.', 'Sans engagement sur un développement.', 'Le devis, s’il vient, dépendra de la complexité réelle.'],
+  points: ['Rien à envoyer : la description suffit.', 'Sans engagement sur un développement.', 'Le devis, s’il vient, dépendra de la complexité réelle.'],
   action: CTA.rendezVous,
   secondaire: { libelle: 'Écrire à Memlia', href: `mailto:${SITE.email}` },
 };
@@ -50,7 +50,7 @@ const appel = {
         <div class="champ">
           <label for="message">Le geste qui revient, vos outils, le résultat attendu</label>
           <textarea id="message" name="message" required minlength="20" maxlength="4000" rows="7" aria-describedby="message-aide"></textarea>
-          <p id="message-aide" class="champ-aide texte-2">Une phrase par élément. Ni fichier, ni donnée de paie : la description suffit.</p>
+          <p id="message-aide" class="champ-aide texte-2">Une phrase par élément. La description suffit : ni fichier, ni donnée de paie.</p>
         </div>
         <div class="champ-piege" aria-hidden="true">
           <label for="site_web">Site web</label>
@@ -84,7 +84,7 @@ const appel = {
 
   <section class="pv" aria-labelledby="pasdemande">
     <div class="pv-tete rv">
-      <h2 id="pasdemande">Ce que nous ne vous demandons pas</h2>
+      <h2 id="pasdemande">Vous n’avez rien à nous envoyer</h2>
     </div>
     <div class="pv-bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
@@ -100,7 +100,7 @@ const appel = {
       <div class="pv-copy rv">
         <h2 id="ensuite">Ce qui se passe ensuite</h2>
         <p>L’échange dure une trentaine de minutes. Nous regardons si la tâche se cadre, ce qu’il faudrait qualifier, et ce qui reste incertain.</p>
-        <p class="texte-2">À l’issue, deux réponses sont possibles, et la seconde n’a rien d’exceptionnel : soit nous voyons ce qu’il y aurait à construire et je vous propose un cadrage, soit la tâche n’est pas automatisable en l’état et je vous le dis. Dans les deux cas, vous repartez avec une lecture plus nette de votre propre geste.</p>
+        <p class="texte-2">À l’issue, deux réponses sont possibles, et la seconde n’a rien d’exceptionnel : soit nous voyons ce qu’il y aurait à construire et nous vous proposons un cadrage, soit la tâche n’est pas automatisable en l’état et nous vous le disons. Dans les deux cas, vous repartez avec une réponse.</p>
         <p class="texte-2">Aucun engagement n’est pris à ce stade, et le devis, s’il vient, dépendra de la complexité réelle — jamais du nombre de personnes dans votre cabinet.</p>
       </div>
     </ProofRow>

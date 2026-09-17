@@ -14,7 +14,7 @@ export const BLOG = {
   chemin: '/blog',
   titre: 'Blog Memlia : vérifier et automatiser le travail du cabinet',
   description:
-    'Paie, DSN et suivi des dossiers : des méthodes pour préparer le travail répétitif dans les outils du cabinet, avec vérification et décision humaines.',
+    'Saisie, relances, contrôles avant la DSN, suivi des dossiers : des méthodes qui écrivent le savoir-faire du cabinet et disent ce qui se prépare seul.',
   fluxRss: '/blog/rss.xml',
   /** Mots par minute retenus pour le temps de lecture affiché. */
   motsParMinute: 200,

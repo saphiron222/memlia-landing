@@ -75,7 +75,7 @@ const destinationArticle = ctaArticle?.destination && !ctaArticle.destination.in
 const articleCta = {
   label: ctaArticle?.label ?? CTA.principal.libelle,
   destination: destinationArticle,
-  outcome: ctaArticle?.outcome ?? 'Memlia automatise avec l’IA les tâches et processus chronophages des cabinets d’expertise comptable : la règle est écrite avec vous, l’automatisation prépare et signale, votre équipe décide. Le premier échange sert à cadrer le périmètre, sans transmettre de fichier ni de donnée client réelle.',
+  outcome: ctaArticle?.outcome ?? 'Memlia écrit le savoir-faire des cabinets d’expertise comptable et automatise, avec l’IA, la part répétitive du travail : la règle est écrite avec vous, l’automatisation prépare et signale, votre équipe décide. Le premier échange sert à cadrer la tâche, sans rien nous envoyer.',
 };
 ---
 
@@ -157,7 +157,7 @@ const articleCta = {
       <aside class="article-pont coins" aria-labelledby="pont-titre">
         <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
         <span class="eyebrow">Et dans votre cabinet ?</span>
-        <h2 id="pont-titre">Cette tâche vous prend encore du temps à la main ?</h2>
+        <h2 id="pont-titre">Cette tâche vit encore dans la tête de vos collaborateurs ?</h2>
         <p class="texte-2" data-cta-outcome>{articleCta.outcome}</p>
         <p class="article-pont-actions">
           <Button href={articleCta.destination} variante="principal" picto="fleche">{articleCta.label}</Button>

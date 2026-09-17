@@ -5,7 +5,7 @@
 export const SITE = {
   url: 'https://memlia.fr',
   nom: 'Memlia',
-  tagline: 'L’IA automatise le travail répétitif. Votre cabinet garde la décision.',
+  tagline: 'Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.',
   email: 'contact@memlia.fr',
   /** Plancher du `lastmod` du sitemap, quand le dépôt git n'est pas lisible (voir astro.config.mjs). */
   derniereMiseAJour: '2026-09-09',
@@ -20,7 +20,7 @@ export const SITE = {
  * action et même destination.
  */
 export const CTA = {
-  principal: { libelle: 'Identifier une tâche à automatiser', href: '/contact' },
+  principal: { libelle: 'Confier une première tâche', href: '/contact' },
   nav: { libelle: 'Parlons de votre tâche', href: '/contact' },
   /** Réservation directe : réservée à /contact, jamais un raccourci depuis une autre page. */
   rendezVous: { libelle: 'Réserver un échange', href: 'https://cal.com/kevin-svg/decouvrir-memlia' },

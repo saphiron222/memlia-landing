@@ -26,30 +26,30 @@ const renvois = [
   { texte: 'La carte des tâches automatisables d’un cabinet : onze pôles, soixante familles, une frontière par tâche.', libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
   { texte: 'Contrôler les bulletins de paie avant la DSN : une liste de contrôles à rejouer chaque mois.', libelle: 'Lire la méthode', href: '/blog/controler-les-bulletins-de-paie-avant-la-dsn' },
   { texte: 'Suivre la production sociale dans Excel sans surveiller les personnes.', libelle: 'Lire la méthode', href: '/blog/suivre-la-production-sociale-dans-excel' },
-  { texte: 'Ce que nous refusons de faire, énoncé avant de commencer.', libelle: 'Nos garanties', href: '/garanties' },
+  { texte: 'Nos engagements, écrits avant de commencer.', libelle: 'Nos garanties', href: '/garanties' },
 ];
 const appel = {
   titre: 'Décrivez le geste qui revient.',
-  texte: 'Nous regardons ensemble s’il se cadre, et ce qu’il faudrait pour le faire. Sans fichier client, sans donnée de paie, sans engagement.',
+  texte: 'Nous regardons ensemble s’il se cadre, ce qu’il faudrait pour le prendre en charge, et à quel prix. Rien à envoyer, aucun engagement.',
   points: ['Le geste : ce que quelqu’un refait chaque mois.', 'Les outils : d’où viennent les fichiers, où va le résultat.', 'Le résultat attendu : ce qui devrait exister à la fin.'],
 };
 ---
 
-<PageCommerciale page={page} noeuds={noeuds} eyebrow="Automatisation sur mesure" hero="v2/14-hero-service" appel={appel}>
+<PageCommerciale page={page} noeuds={noeuds} eyebrow="Le service" hero="v2/14-hero-service" appel={appel}>
   <section class="pv" aria-labelledby="situation">
     <ProofRow id="01-flux">
       <div class="pv-copy rv">
-        <h2 id="situation">La situation, nommée</h2>
-        <p>Chaque mois, quelqu’un du cabinet refait le même geste. Recopier des montants d’un export vers un classeur. Comparer deux états qui devraient concorder. Rassembler des pièces avant un contrôle. Le geste est connu, il est maîtrisé, et il prend le temps de la personne qui le maîtrise le mieux.</p>
-        <p class="texte-2">Ce n’est pas un problème de compétence, ni d’outil manquant. C’est un travail dont la règle existe, mais vit dans la tête d’un collaborateur et dans l’habitude du cabinet.</p>
+        <h2 id="situation">Le geste que quelqu’un refait chaque mois</h2>
+        <p>Recopier des montants d’un export vers un classeur. Réclamer les mêmes pièces aux mêmes clients. Comparer deux états qui devraient concorder. Le geste est maîtrisé, il revient chaque mois, et il prend le temps de la personne la plus qualifiée pour autre chose.</p>
+        <p class="texte-2">Ce n’est ni un problème de compétence ni un outil qui manque. C’est un savoir-faire qui vit dans la tête d’un collaborateur et dans les habitudes du cabinet, que personne n’a écrit, et qui part le jour où il part.</p>
       </div>
     </ProofRow>
   </section>
 
   <section class="pv" aria-labelledby="prepare">
     <div class="pv-tete rv">
-      <h2 id="prepare">Ce que le service prépare</h2>
-      <p class="texte-2 lecture">Nous transformons cette règle en automatisation, en trois temps qui ne changent jamais.</p>
+      <h2 id="prepare">Ce que nous livrons, en trois temps</h2>
+      <p class="texte-2 lecture">Nous transformons cette règle en automatisation, dans vos outils, en trois temps qui ne changent jamais.</p>
     </div>
     <div class="pv-bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
@@ -75,8 +75,8 @@ const appel = {
   <section class="pv" aria-labelledby="requis">
     <ProofRow id="v2/01-qualification">
       <div class="pv-copy rv">
-        <h2 id="requis">Ce qui est requis de votre côté</h2>
-        <p>Avant de nous engager, nous qualifions ensemble quatre points sur vos fichiers, pas sur la théorie du logiciel.</p>
+        <h2 id="requis">Ce que nous regardons ensemble avant de nous engager</h2>
+        <p>Quatre points, sur vos fichiers réels, pas sur la théorie du logiciel.</p>
         <p class="texte-2">Cette qualification est un travail, pas une formalité. Elle décide si la tâche est automatisable, et à quel coût.</p>
       </div>
     </ProofRow>
@@ -101,11 +101,18 @@ const appel = {
     </ProofRow>
   </section>
 
+  <section class="pv" aria-labelledby="perimetre">
+    <div class="pv-tete rv">
+      <h2 id="perimetre">Ce que nous savons écrire</h2>
+      <p class="texte-2 lecture">Production comptable, paie et social, portefeuille et échéances, facturation et recouvrement, juridique et fiscal, administratif, ressources humaines, données et outils : soixante familles de tâches, onze pôles, une frontière par tâche. Si votre cabinet la refait chaque mois, elle a une règle, et une règle s’écrit. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
+    </div>
+  </section>
+
   <section class="pv" aria-labelledby="prix">
     <ProofRow id="v2/03-devis">
       <div class="pv-copy rv">
-        <h2 id="prix">Le prix</h2>
-        <p>Le devis dépend de la complexité de la tâche : règles à appliquer, formats à traiter, exceptions et contraintes de votre environnement. Il précise le périmètre, les critères de recette et les conditions de maintenance. <strong>Vous n’achetez pas un nombre de sièges.</strong></p>
+        <h2 id="prix">Vous payez une tâche prise en charge, pas des sièges.</h2>
+        <p>Le devis dépend de la complexité de la tâche : règles à appliquer, formats à traiter, exceptions et contraintes de votre environnement. Il précise le périmètre, les critères de recette et les conditions de maintenance. <strong>Il n’est jamais multiplié par le nombre de postes.</strong></p>
       </div>
     </ProofRow>
   </section>
@@ -114,15 +121,15 @@ const appel = {
     <ProofRow id="08-integration">
       <div class="pv-copy rv">
         <h2 id="outils">Vos outils</h2>
-        <p>Un classeur Excel, un export ou un autre outil peut être le point de départ. Nous vérifions les formats et les accès avant de nous engager. <strong>Aucun branchement universel n’est promis.</strong></p>
+        <p>Un classeur, un export ou un logiciel métier peut être le point de départ. Nous vérifions les formats et les accès avant de nous engager, et nous vous disons ce qui se branche. <strong>Nous ne promettons rien que nous n’ayons vérifié.</strong></p>
       </div>
     </ProofRow>
   </section>
 
   <section class="pv" aria-labelledby="avant">
     <div class="pv-tete rv">
-      <h2 id="avant">Avant de nous parler</h2>
-      <p class="texte-2">Deux méthodes à lire, et ce que nous refusons de faire.</p>
+      <h2 id="avant">Pour aller plus loin</h2>
+      <p class="texte-2">La carte des tâches, deux méthodes publiées, et nos engagements.</p>
     </div>
     <Renvois items={renvois} colonnes={2} />
   </section>

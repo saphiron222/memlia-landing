@@ -23,64 +23,64 @@ const noeuds = [
 ];
 const renvois = [
   { texte: 'Comment se déroule une mission, étape par étape, avec ce que chacune produit.', libelle: 'Comprendre la méthode', href: '/methode' },
-  { texte: 'Des méthodes pour préparer et vérifier avant d’automatiser, signées et sourcées.', libelle: 'Lire les articles', href: '/blog' },
+  { texte: 'Des méthodes pour écrire et vérifier une tâche avant de l’automatiser, signées et sourcées.', libelle: 'Lire les articles', href: '/blog' },
   { texte: 'Le vocabulaire du cabinet, terme par terme, sourcé et daté, avec la frontière d’automatisation de chacun.', libelle: 'Consulter le glossaire', href: '/glossaire' },
 ];
 const appel = {
-  titre: 'Parlons de votre tâche, pas d’un logiciel.',
-  texte: 'Décrivez le geste qui revient dans votre cabinet. Je vous dirai s’il se cadre, et ce qu’il faudrait pour le faire. Sans fichier client, sans donnée de paie.',
-  points: ['La même personne écoute, écrit et code la règle.', 'Le devis dépend de la complexité, jamais du nombre de postes.', 'La décision reste au cabinet.'],
+  titre: 'Parlons de la tâche, pas d’un logiciel.',
+  texte: 'Décrivez le geste qui revient dans votre cabinet. Nous vous disons s’il se cadre, ce qu’il faudrait pour le prendre en charge, et à quel prix. Rien à envoyer.',
+  points: ['La même personne écoute, écrit et code la règle.', 'Le devis dépend de la complexité, jamais du nombre de postes.', 'La décision reste à vos équipes.'],
 };
 ---
 
-<PageCommerciale page={page} noeuds={noeuds} eyebrow="Qui porte le service" hero="v2/17-hero-apropos" appel={appel}>
-  <section class="pv" id="kevin-kitanga" aria-labelledby="fais">
-    <ProofRow id="v2/10-une-personne">
+<PageCommerciale page={page} noeuds={noeuds} eyebrow="Qui nous sommes" hero="v2/17-hero-apropos" appel={appel}>
+  <section class="pv" aria-labelledby="pourquoi">
+    <ProofRow id="v2/11-regle-mots">
       <div class="pv-copy rv">
-        <h2 id="fais">Ce que je fais</h2>
-        <p>Je cadre la tâche avec vous, j’écris la règle, je construis l’automatisation et je la soumets à la recette de vos équipes. La même personne mène ces quatre étapes : celle qui a entendu la règle est celle qui la code.</p>
-        <p class="texte-2">C’est un choix de taille, pas une contrainte subie. Une règle de cabinet se perd entre celui qui l’écoute et celui qui l’implémente ; je préfère supprimer ce passage de relais.</p>
+        <h2 id="pourquoi">Pourquoi Memlia existe</h2>
+        <p>Un cabinet tourne sur des règles que personne n’a écrites. Quelle pièce réclamer, quel écart vérifier avant le bulletin, quel retour DSN mérite un appel : ce savoir vit dans la tête de collaborateurs qui en ont déjà trop, difficiles à recruter, plus difficiles encore à garder.</p>
+        <p class="texte-2">Quand l’un d’eux part, la règle part avec lui. Memlia existe pour que ce savoir-faire appartienne au cabinet : écrit, testé, et automatisé partout où il se répète.</p>
       </div>
     </ProofRow>
   </section>
 
-  <section class="pv" aria-labelledby="nesuispas">
+  <section class="pv pv-inverse" aria-labelledby="faisons">
+    <ProofRow id="v2/10-une-personne">
+      <div class="pv-copy rv">
+        <h2 id="faisons">Ce que nous faisons</h2>
+        <p>Nous prenons une tâche répétitive de votre cabinet et nous la menons de bout en bout : observer le geste, écrire la règle dans vos mots, construire l’automatisation dans vos outils, la faire recetter par vos équipes, la maintenir. Vous n’achetez ni licence ni sièges : vous confiez une tâche, et elle est prise en charge.</p>
+        <p class="texte-2">La même personne écoute la règle et la code. Une règle de cabinet se perd entre celui qui l’entend et celui qui l’implémente ; nous avons supprimé ce relais.</p>
+      </div>
+    </ProofRow>
+  </section>
+
+  <section class="pv" aria-labelledby="expert">
     <div class="pv-tete rv">
-      <h2 id="nesuispas">Ce que je ne suis pas</h2>
-      <p class="texte-2 lecture">Deux limites dites avant toute mission, parce qu’elles délimitent exactement mon rôle.</p>
+      <h2 id="expert">Vous restez l’expert. Nous écrivons, et nous faisons tourner.</h2>
+      <p class="texte-2 lecture">Deux choses que nous disons avant toute mission, parce qu’elles délimitent exactement ce que vous nous confiez.</p>
     </div>
     <div class="pv-bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
       <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
-        <li class="pv-cellule rv"><h3>Je ne suis pas expert-comptable.</h3><p>Je n’ai pas de qualification en paie ni en droit social, et je ne me présenterai jamais comme tel. Quand un sujet touche à ces domaines, je m’appuie sur les sources officielles, je les cite et je les date. J’écris et j’éprouve la règle que vous me donnez. Je ne la valide pas à votre place, et je ne vous dirai pas ce qu’elle devrait être.</p></li>
-        <li class="pv-cellule rv"><h3>Je ne suis pas un éditeur de logiciel.</h3><p>Vous n’achetez pas de licence, ni de sièges. Vous achetez le fait qu’une tâche précise de votre cabinet soit préparée automatiquement, avec des critères de recette écrits.</p></li>
+        <li class="pv-cellule rv"><h3>Votre règle, pas la nôtre.</h3><p>En paie, en social, en fiscal, la règle est la vôtre. Nous l’écrivons telle que vous la donnez, nous la testons, et nous citons et datons les sources officielles quand elle s’y adosse. Nous ne la validons pas à votre place : le jugement professionnel reste au cabinet.</p></li>
+        <li class="pv-cellule rv"><h3>Un service, pas un logiciel.</h3><p>Vous ne paramétrez rien et vous ne payez pas de sièges. Vous confiez une tâche ; elle revient écrite, automatisée, recettée et maintenue, avec des critères de recette que vos équipes ont lus.</p></li>
       </ul>
     </div>
   </section>
 
-  <section class="pv pv-inverse" aria-labelledby="pourquoi">
-    <ProofRow id="v2/11-regle-mots">
-      <div class="pv-copy rv">
-        <h2 id="pourquoi">Pourquoi Memlia</h2>
-        <p>Les cabinets que je rencontre ne manquent pas d’outils. Ils ont un logiciel de paie, un logiciel de production, des classeurs qui font le lien, et des personnes compétentes qui passent du temps à recopier d’un endroit à l’autre.</p>
-        <p class="texte-2">L’automatisation qui les aiderait n’est pas une plateforme de plus à adopter. C’est quelque chose qui se greffe sur ce qu’ils utilisent déjà, qui connaît <strong>leurs</strong> règles, et qui leur rend la main dès que la situation sort du cadre prévu.</p>
-        <p>C’est ce que je construis.</p>
-      </div>
-    </ProofRow>
+  <section class="pv" id="kevin-kitanga" aria-labelledby="fondateur">
+    <div class="pv-tete rv">
+      <h2 id="fondateur">Qui est derrière Memlia</h2>
+      <p class="lecture"><strong>Kevin Kitanga, fondateur.</strong> Il livre lui-même chaque automatisation : il observe le geste avec vos équipes, écrit la règle, la code et la fait recetter. Il signe les méthodes publiées sur ce site, sourcées et datées.</p>
+      <p class="texte-2 lecture">Memlia est une société établie à Paris, immatriculée au RCS de Paris. Les informations légales figurent dans les <a href="/mentions-legales">mentions légales</a>.</p>
+    </div>
   </section>
 
-  <section class="pv" aria-labelledby="ecris">
+  <section class="pv" aria-labelledby="ecrivons">
     <div class="pv-tete rv">
-      <h2 id="ecris">Ce que j’écris</h2>
-      <p class="texte-2 lecture">Je publie sur ce que je vérifie, ce que j’automatise et ce qui reste une décision humaine. Les articles sont signés de mon nom et sourcés.</p>
+      <h2 id="ecrivons">Ce que nous publions</h2>
+      <p class="texte-2 lecture">Nous écrivons sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine. Chaque article est signé et sourcé.</p>
     </div>
     <Renvois items={renvois} />
-  </section>
-
-  <section class="pv" aria-labelledby="entite">
-    <div class="pv-tete rv">
-      <h2 id="entite">L’entité</h2>
-      <p class="texte-2 lecture">Memlia est une société par actions simplifiée unipersonnelle, immatriculée au RCS de Paris et domiciliée dans le 8ᵉ arrondissement. Le siège social, le numéro d’immatriculation et les autres informations légales figurent dans les <a href="/mentions-legales">mentions légales</a>.</p>
-    </div>
   </section>
 </PageCommerciale>

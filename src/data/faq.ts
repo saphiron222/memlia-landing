@@ -14,13 +14,13 @@ export const FAQ: readonly QuestionReponse[] = [
     id: 'abonnement',
     question: 'Memlia est-il un logiciel à paramétrer seul ?',
     reponse:
-      'Non. Memlia est un service d’automatisation IA pour cabinets d’expertise comptable. Nous observons un processus, écrivons ses règles et ses limites, construisons l’automatisation puis la faisons valider par le cabinet.',
+      'Non. Memlia est un service : nous observons la tâche, nous écrivons sa règle et ses limites, nous construisons l’automatisation dans vos outils, et vos équipes la valident. Vous n’avez rien à paramétrer.',
   },
   {
     id: 'quitter-excel',
     question: 'Faut-il remplacer nos logiciels ou nos fichiers ?',
     reponse:
-      'Pas par principe. Nous cherchons d’abord à intégrer l’automatisation à l’environnement existant. Si une évolution d’outil ou de structure est nécessaire, elle est identifiée avant le développement.',
+      'Non. L’automatisation se greffe sur l’environnement existant : logiciel métier, exports, messagerie, dossier partagé, classeur. Si une évolution d’outil est nécessaire, elle est identifiée avant le développement, jamais découverte après.',
   },
   {
     id: 'ia-decide',
@@ -50,13 +50,13 @@ export const FAQ: readonly QuestionReponse[] = [
     id: 'sujets',
     question: 'Quels processus pouvez-vous automatiser ?',
     reponse:
-      'Nous étudions les tâches répétitives qui reposent sur des entrées identifiables, des règles explicables, des exceptions listables et un résultat vérifiable. La faisabilité dépend des outils, des accès et du niveau de jugement requis. Les exemples d’usages sont non contractuels.',
+      'Toute tâche répétitive dont la règle peut s’écrire : des entrées identifiables, des exceptions listables, un résultat vérifiable. Saisie, relances de pièces, rapprochements, contrôles de paie, retours DSN, échéances, dossier permanent, reporting. Ce qui demande un jugement reste à vos équipes ; ce qui se répète nous revient.',
   },
   {
     id: 'prix',
     question: 'Comment le prix est-il calculé ?',
     reponse:
-      'Le devis dépend des sources, des intégrations, des règles, des exceptions, des validations et de la valeur du processus couvert. Il n’est jamais multiplié par le nombre de sièges. Maintenance, support et évolutions sont cadrés dans la proposition commerciale.',
+      'Vous payez une tâche prise en charge, pas des sièges. Le devis dépend des sources, des règles, des exceptions et des validations à couvrir ; maintenance, support et évolutions y sont écrits.',
   },
   {
     id: 'compatibilite',

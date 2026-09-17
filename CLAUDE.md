@@ -26,6 +26,15 @@ npx astro check                  # types et contenu : doit rendre 0 erreur
 npx playwright test              # suite navigateur
 ```
 
+## Message et copy
+
+**La charte de message fait foi : `.agents/product-marketing.md` (v3, 17/09/2026).** Toute surface publique
+(site, blog, LinkedIn, devis, prise de parole) suit son angle (« Votre cabinet tourne sur un savoir-faire que
+personne n'a écrit »), sa promesse (toute tâche répétitive, prise entière), sa voix (« nous », concret,
+confiant) et ses interdits. Une phrase qui la contredit se corrige ; une phrase qu'elle ne couvre pas se
+discute dans la charte avant d'être publiée. Le copy des pages vit dans `src/data/pages-v2.mjs`,
+`src/data/site.mjs`, `src/data/faq.ts`, les sections de l'accueil et les pages ; `public/llms.txt` le reflète.
+
 ## Charte
 
 Vert `#27b657`, vert profond `#1c8a41`, crème `#fffefb`, surface `#fcfbf7`, encre `#231f20`.
@@ -40,7 +49,7 @@ rédigé, en WebP/AVIF ; les captures produit viennent du banc Windows, sur le j
   **prévisualisation** (`npx wrangler pages deploy dist --project-name memlia --branch preview-<sujet>`)
   et tu donnes l'URL. La production (`--branch main`) et `git push` sont **interdits** : Kevin s'en charge.
 - **Le SEO acquis ne régresse pas** : `title`, `description`, canonical, Open Graph, JSON-LD (Organization,
-  WebSite, SoftwareApplication, FAQPage), `robots.txt`, sitemap, `llms.txt`, pages légales en `noindex`,
+  WebSite, Service, FAQPage), `robots.txt`, sitemap, `llms.txt`, pages légales en `noindex`,
   `lang="fr"`, un seul `h1`. Lighthouse ≥ 95 sur les quatre axes.
 - **Aucune donnée client réelle**, aucun chiffre non sourcé, aucune promesse au-delà des modules livrés.
 - Principes affichés et tenus : l'IA prépare, l'humain décide ; anti-surveillance (agrégats, jamais nominatif) ;

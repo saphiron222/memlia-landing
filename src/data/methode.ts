@@ -14,29 +14,29 @@ export const METHODE = {
   etapes: [
     {
       numero: 1,
-      titre: 'Observer le processus.',
+      titre: 'Observer le geste réel.',
       texte:
-        'Vous décrivez la tâche, ses entrées, ses outils et les moments où une personne tranche, sans transmettre de donnée client réelle.',
+        'Vous décrivez la tâche, ses entrées, ses outils et les moments où quelqu’un tranche. Vous n’avez aucun fichier à nous envoyer.',
       image: '04-observer',
     },
     {
       numero: 2,
-      titre: 'Cadrer les limites.',
-      texte: 'Sources, exceptions, validations et cas de refus deviennent un contrat testable.',
+      titre: 'Écrire la règle dans vos mots.',
+      texte: 'Ce qui doit se produire, ce qui fait exception, ce qui doit s’arrêter : la règle devient un document que vos équipes relisent.',
       image: '05-cadrer',
     },
     {
       numero: 3,
       titre: 'Construire et éprouver.',
       texte:
-        'Nous développons l’automatisation et la testons sur des jeux fictifs représentatifs du périmètre convenu.',
+        'Nous développons l’automatisation et la testons sur un jeu d’essai fictif : les cas qui doivent aboutir, et ceux qui doivent échouer.',
       image: '06-eprouver',
     },
     {
       numero: 4,
       titre: 'Faire la recette et livrer.',
       texte:
-        'Vos référents vérifient les cas attendus et les refus. Livraison, support et évolutions sont définis pour ce périmètre. Le devis dépend de la complexité, jamais des sièges.',
+        'Vos référents vérifient les cas attendus et les refus, sur vos fichiers. Livraison, maintenance et évolutions sont écrites pour ce périmètre ; le devis dépend de la complexité, jamais des sièges.',
       image: '07-livrer',
     },
   ] satisfies readonly Etape[],

@@ -36,7 +36,7 @@ export const organizationNode = () => ({
   email: SITE.email,
   slogan: SITE.tagline,
   description:
-    "Memlia est un service d'automatisation IA pour cabinets d'expertise comptable : un processus cadré, une automatisation éprouvée sur jeux fictifs et des décisions sensibles validées par le cabinet.",
+    "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Bureau 326, 59 rue de Ponthieu',

@@ -4,17 +4,17 @@ import Picto, { type NomPicto } from '@/components/Picto.astro';
 const pictos: NomPicto[] = ['feuilles', 'bouclier', 'limites', 'flux', 'main'];
 
 const examples = [
-  { id: 'collect', title: 'Collecter et préparer', text: 'Rassembler les informations des sources convenues et vérifier les éléments attendus avant le traitement.' },
-  { id: 'check', title: 'Contrôler et signaler', text: 'Appliquer les règles du cabinet, isoler les écarts et orienter les cas à revoir.' },
-  { id: 'compare', title: 'Rapprocher et synthétiser', text: 'Comparer les sources et préparer une synthèse dont chaque information reste identifiable.' },
-  { id: 'follow', title: 'Suivre un processus', text: 'Repérer ce qui bloque et préparer les rappels utiles. Leur envoi reste soumis à validation humaine.' },
-  { id: 'decide', title: 'Préparer une décision', text: 'Réunir les données, hypothèses et pièces pour que le professionnel puisse valider, modifier ou refuser.' },
+  { id: 'collect', title: 'Collecter et préparer', text: 'Rassembler les pièces et les informations attendues depuis les sources convenues, et signaler ce qui manque avant le traitement.' },
+  { id: 'check', title: 'Contrôler et signaler', text: 'Appliquer les règles du cabinet, isoler les écarts et présenter les cas à revoir, avec la raison du signalement.' },
+  { id: 'compare', title: 'Rapprocher et synthétiser', text: 'Comparer deux sources qui devraient concorder et préparer une synthèse où chaque information reste traçable.' },
+  { id: 'follow', title: 'Suivre un processus', text: 'Repérer ce qui bloque et préparer les relances utiles. Leur envoi reste soumis à validation humaine.' },
+  { id: 'decide', title: 'Préparer une décision', text: 'Réunir données, hypothèses et pièces pour que le professionnel valide, modifie ou refuse en connaissance de cause.' },
 ];
 ---
 <section id="usages" class="uses" aria-labelledby="uses-title">
   <div class="uses-heading">
-    <h2 id="uses-title">Commencez par la tâche qui revient.</h2>
-    <p class="texte-2 lecture">Un bon premier sujet est fréquent, repose sur des règles explicables et produit un résultat vérifiable.</p>
+    <h2 id="uses-title">Toute tâche répétitive a une règle. Nous l’écrivons.</h2>
+    <p class="texte-2 lecture">De la collecte des pièces aux retours DSN, de la saisie au reporting : soixante familles de tâches, onze pôles, et pour chacune la frontière entre ce qui se prépare seul et ce qui se décide. Commencez par celle qui revient le plus.</p>
   </div>
   <div class="uses-grid">
     {examples.map((example, i) => (

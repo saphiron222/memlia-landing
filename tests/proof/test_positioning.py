@@ -147,7 +147,7 @@ class PositioningProof(unittest.TestCase):
     def test_service_identity_and_hero(self):
         html = (DIST / 'index.html').read_text()
         text = ' '.join(Text(html).parts)
-        self.assertIn('Automatisez les tâches qui ralentissent votre cabinet.', text)
+        self.assertIn('Votre cabinet tourne sur un savoir-faire que personne n’a écrit.', text)
         hero = re.search(r'<section[^>]*class="hero"[\s\S]*?</section>', html).group()
         self.assertNotIn('Excel', hero)
         self.assertNotIn('module', hero.lower())

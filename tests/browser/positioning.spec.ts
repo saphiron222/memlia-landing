@@ -18,6 +18,6 @@ for (const [route, status, phrase] of [
     ]);
     for (const text of texts) expect(text).not.toMatch(/\bmodules?\b|compléments?\s+(Excel|Memlia)/i);
     await page.getByRole('link', { name: /Retour à l’accueil/ }).click();
-    await expect(page.locator('h1')).toHaveText('Automatisez les tâches qui ralentissent votre cabinet.');
+    await expect(page.locator('h1')).toHaveText('Votre cabinet tourne sur un savoir-faire que personne n’a écrit.');
   });
 }

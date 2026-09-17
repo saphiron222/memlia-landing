@@ -38,12 +38,12 @@ const etapes: { id: string; titre: string; image: ProofId; paragraphes: string[]
 ];
 const renvois = [
   { texte: 'Ce que le service livre concrètement, ce qu’il requiert et ce qui détermine le devis.', libelle: 'L’automatisation sur mesure', href: '/automatisation-cabinet-comptable' },
-  { texte: 'Ce que nous refusons de faire, énoncé avant de commencer.', libelle: 'Les garanties', href: '/garanties' },
-  { texte: 'Qui porte ce travail, et avec quelles limites assumées.', libelle: 'À propos', href: '/a-propos' },
+  { texte: 'Nos engagements, écrits avant de commencer.', libelle: 'Les garanties', href: '/garanties' },
+  { texte: 'Pourquoi Memlia existe, et qui écrit et code la règle.', libelle: 'À propos', href: '/a-propos' },
 ];
 const appel = {
   titre: 'La première étape commence par un échange.',
-  texte: 'Décrivez le geste qui revient. Nous observons ensemble s’il se cadre, avant tout développement. Sans fichier client, sans donnée de paie.',
+  texte: 'Décrivez le geste qui revient. Nous observons ensemble s’il se cadre, avant tout développement. Rien à envoyer.',
   points: ['Observer le geste réel, pas le geste théorique.', 'Écrire la règle dans vos mots.', 'Éprouver les refus autant que les résultats.'],
 };
 ---
@@ -52,7 +52,7 @@ const appel = {
   <section class="pv" aria-labelledby="etapes-titre">
     <div class="pv-tete rv">
       <h2 id="etapes-titre">Quatre étapes, dans cet ordre</h2>
-      <p class="texte-2 lecture">Chacune produit quelque chose que vous pouvez lire : une description, un document, un jeu d’essai, une recette.</p>
+      <p class="texte-2 lecture">Chacune produit quelque chose que vous pouvez lire : une description du geste, une règle, un jeu d’essai, une recette. À la fin, le savoir-faire est écrit, et il tourne.</p>
     </div>
     <ol class="pv-etapes">
       {etapes.map((e, i) => (
