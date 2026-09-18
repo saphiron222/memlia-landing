@@ -450,6 +450,212 @@ export function verifierMaillage({ pages, pilier, satellites = [], seuil = SEUIL
   return { liens, rouges, avertissements, infos, taches };
 }
 
+// ---------------------------------------------------------------- C3 : ancres des liens internes
+
+/** Le texte qu'un lecteur voit : balises et entités retirées, casse conservée. */
+const texteVisible = (fragment) => String(fragment ?? '')
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+  .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+  .replace(/&([a-z]+);/gi, (m, nom) => ENTITES[nom.toLowerCase()] ?? m)
+  .replace(/[\u00a0\u202f\u2009]/g, ' ')
+  .replace(/\s+/g, ' ')
+  .trim();
+
+/**
+ * Ancres qui ne décrivent pas leur destination : le lecteur ne sait pas où il va, et la
+ * page d'arrivée ne reçoit aucun mot qui la qualifie.
+ */
+const ANCRES_GENERIQUES = new Set([
+  'ici', 'cliquez ici', 'cliquer ici', 'ce lien', 'lien', 'le lien', 'cet article', 'cette page',
+  'lire', 'lire la suite', 'lire l article', 'voir', 'voir plus', 'en savoir plus',
+  'plus d informations', 'plus d info', 'la page', 'la suite', 'cliquez', 'suivant',
+]);
+
+const MOTS_VIDES = new Set([
+  'avec', 'dans', 'pour', 'sans', 'sous', 'leur', 'leurs', 'cette', 'comme', 'entre', 'plus', 'tout',
+  'tous', 'toute', 'toutes', 'elle', 'elles', 'etre', 'avoir', 'faire', 'chaque', 'selon', 'vers',
+  'mais', 'donc', 'ainsi', 'aussi', 'depuis', 'apres', 'avant',
+  // Mots de trois lettres : le seuil descend à trois pour garder les sigles du métier
+  // (dsn, crm, tva, ocr), il faut donc écarter la grammaire de la même longueur.
+  'les', 'des', 'une', 'aux', 'par', 'sur', 'que', 'qui', 'quoi', 'ces', 'ses', 'son', 'sa', 'ils',
+  'est', 'ont', 'ete', 'non', 'oui', 'car', 'nos', 'vos', 'ils', 'lui', 'peu', 'ceux', 'cela',
+]);
+
+/** Mots comparables : sans balise, sans entité, sans accent, sans ponctuation. */
+const normaliserMots = (texte) => normaliserTexte(texte)
+  .normalize('NFD').replace(/\p{Diacritic}/gu, '')
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, ' ')
+  .trim();
+
+/**
+ * Les ancres telles qu'un lecteur les perçoit. Un lien `aria-hidden` double une destination
+ * déjà annoncée à côté (les cartes du blog le font pour ne pas lire deux fois le même titre) :
+ * il ne porte pas d'ancre et n'en attend pas. À défaut de texte, l'alt de l'image en tient lieu.
+ */
+const ancresDe = (html) => [...contenuPrincipal(html).matchAll(/<a\b([^>]*)href="([^"]+)"([^>]*)>([\s\S]*?)<\/a>/gi)]
+  .filter((m) => !/aria-hidden="true"/i.test(m[1] + m[3]))
+  .map((m) => {
+    // `normaliserTexte` met en bas de casse (il sert à comparer des citations) ; une ancre se
+    // relit telle que le lecteur la voit, donc la casse est rendue à la chaîne nettoyée.
+    const texte = texteVisible(m[4]);
+    const alt = texte ? null : texteVisible(m[4].match(/<img\b[^>]*\balt="([^"]*)"/i)?.[1] ?? '');
+    return { href: m[2], ancre: texte || alt || '' };
+  })
+  .filter((l) => l.href.startsWith('/'));
+
+/**
+ * Deux défauts seulement, et c'est voulu. Une ancre générique ne dit pas au lecteur ce
+ * qu'il trouvera ; une ancre ambiguë le mène à deux endroits différents selon la page.
+ * Répéter l'ancre la plus claire vers une même destination n'est PAS un défaut : le
+ * compte des ancres distinctes est rendu en info, sans verdict.
+ */
+export function verifierAncres({ pages, aujourdhui = null }) {
+  const rouges = [];
+  const avertissements = [];
+  const infos = [];
+  const taches = [];
+  const vues = new Set();
+  const mesure = (valeur) => ({ valeur, instrument: 'HTML servi, ancres dans main', ...(aujourdhui ? { date: aujourdhui } : {}) });
+  const deposer = (depuis, cible, motif, valeur, gravite) => {
+    // Seul un article se republie par la forge ; une ancre d'une page commerciale se
+    // corrige à la main, elle est signalée sans tâche pour ne pas déposer un ticket
+    // que le vendredi de la forge ne saurait pas traiter.
+    if (!depuis.startsWith('/blog/')) return;
+    const cle = `ancre-vers-${slugDe(cible) ?? 'accueil'}`;
+    const id = `${slugDe(depuis)}|${cle}`;
+    if (vues.has(id)) return;
+    vues.add(id);
+    taches.push({ slug: slugDe(depuis), type: 'varier-ancre', cle, motif, mesure: mesure(valeur), gravite, cron: 'C3' });
+  };
+
+  const liens = [];
+  for (const chemin of Object.keys(pages).sort()) {
+    for (const { href, ancre } of ancresDe(pages[chemin])) {
+      const cible = normaliserLien(href);
+      if (cible === chemin) continue;
+      liens.push({ depuis: chemin, cible, ancre, cle: normaliserMots(ancre) });
+    }
+  }
+
+  for (const l of liens) {
+    if (l.cle && !ANCRES_GENERIQUES.has(l.cle)) continue;
+    const vue = l.ancre || '(vide)';
+    rouges.push({ code: 'ancre-generique', depuis: l.depuis, cible: l.cible, ancre: vue, message: `l'ancre « ${vue} » ne décrit pas ${l.cible}` });
+    deposer(l.depuis, l.cible, `l'ancre « ${vue} » vers ${l.cible} ne dit pas ce que le lecteur y trouve : la réécrire dans la phrase qui la porte`, vue, 'moyenne');
+  }
+
+  const parAncre = new Map();
+  for (const l of liens) {
+    if (!l.cle || ANCRES_GENERIQUES.has(l.cle)) continue;
+    parAncre.set(l.cle, [...(parAncre.get(l.cle) ?? []), l]);
+  }
+  for (const [, groupe] of [...parAncre].sort(([a], [b]) => a.localeCompare(b))) {
+    const parCible = new Map();
+    for (const l of groupe) parCible.set(l.cible, [...(parCible.get(l.cible) ?? []), l]);
+    if (parCible.size < 2) continue;
+    const cibles = [...parCible.keys()].sort();
+    rouges.push({ code: 'ancre-ambigue', ancre: groupe[0].ancre, cibles, depuis: [...new Set(groupe.map((l) => l.depuis))].sort(), message: `l'ancre « ${groupe[0].ancre} » mène à ${cibles.join(' et ')}` });
+    const compte = [...parCible.values()].map((v) => v.length);
+    const max = Math.max(...compte);
+    const majoritaireUnique = compte.filter((n) => n === max).length === 1;
+    for (const [cible, v] of parCible) {
+      // La destination majoritaire garde ses mots ; ce sont les autres qui doivent changer.
+      if (majoritaireUnique && v.length === max) continue;
+      for (const l of v) deposer(l.depuis, cible, `l'ancre « ${l.ancre} » mène ici à ${cible} et ailleurs à ${cibles.filter((c) => c !== cible).join(', ')} : choisir des mots propres à cette destination`, l.ancre, 'moyenne');
+    }
+  }
+
+  const parDestination = new Map();
+  for (const l of liens) {
+    const etat = parDestination.get(l.cible) ?? { liens: 0, ancres: new Set() };
+    etat.liens += 1;
+    etat.ancres.add(l.cle);
+    parDestination.set(l.cible, etat);
+  }
+  const destinations = [...parDestination]
+    .map(([cible, e]) => ({ cible, liens: e.liens, ancres: e.ancres.size }))
+    .sort((a, b) => b.liens - a.liens || a.cible.localeCompare(b.cible));
+  infos.push({ code: 'ancres-par-destination', destinations, message: `${liens.length} lien(s) interne(s) vers ${destinations.length} destination(s)` });
+  return { liens, rouges, avertissements, infos, taches };
+}
+
+// ---------------------------------------------------------------- C3 : routes vers les articles
+
+/**
+ * Les pages qui nomment des tâches ou des engagements que les articles documentent.
+ * `/contact` en est exclue par décision : c'est la page de conversion, l'en sortir dessert.
+ * Les pages légales et `/a-propos` (page de marque) n'ont pas à router vers un article.
+ */
+export const PAGES_A_SERVIR = Object.freeze(['/', '/automatisation-cabinet-comptable', '/methode', '/garanties']);
+
+/**
+ * Deux mesures, aucune tâche : les correctifs vivent hors de la forge (une page .astro, le
+ * glossaire et sa chaîne scellée), donc un ticket déposé ici ne suivrait pas le code.
+ */
+export function verifierRoutes({ pages, articles = [], pagesAServir = PAGES_A_SERVIR }) {
+  const avertissements = [];
+  const infos = [];
+  const chemins = Object.keys(pages).sort();
+  const estArticle = (chemin) => chemin.startsWith('/blog/');
+  const sortants = (chemin) => liensDe(pages[chemin]).map(normaliserLien);
+
+  const orphelins = [];
+  for (const article of articles) {
+    if (pages[article] === undefined) continue;
+    const entrants = chemins.filter((c) => c !== article && sortants(c).includes(article));
+    const horsBlog = entrants.filter((c) => c !== '/blog' && !estArticle(c));
+    if (horsBlog.length > 0) continue;
+    orphelins.push(article);
+    avertissements.push({ code: 'article-sans-route-hors-blog', cible: article, entrants, message: `aucune page hors du blog ne mène à cet article (${entrants.length} lien(s) entrant(s), tous depuis le blog ou ses articles)` });
+  }
+
+  const muettes = [];
+  for (const page of pagesAServir) {
+    if (pages[page] === undefined) continue;
+    if (sortants(page).some(estArticle)) continue;
+    muettes.push(page);
+    avertissements.push({ code: 'page-sans-route-vers-article', cible: page, message: 'cette page ne mène à aucun article' });
+  }
+
+  infos.push({ code: 'routes', orphelins, muettes, message: `${articles.length - orphelins.length}/${articles.length} article(s) atteignable(s) hors du blog · ${pagesAServir.length - muettes.length}/${pagesAServir.length} page(s) qui mènent à un article` });
+  return { avertissements, infos, taches: [] };
+}
+
+// ---------------------------------------------------------------- F3 : passages candidats
+
+/**
+ * Les paragraphes d'un corps qui portent tous les mots significatifs d'une expression.
+ * Sert à proposer un lien là où la tâche est déjà nommée, sans deviner le sens : titres et
+ * tableaux sont écartés, une phrase qui ne porte qu'une partie des mots ne compte pas.
+ */
+export function chercherPassages(corps, expressions = [], { minJetons = 3, minParExpression = 2, longueur = 220 } = {}) {
+  const paragraphes = String(corps ?? '')
+    .split(/\r?\n\s*\r?\n/)
+    .map((p) => p.trim())
+    .filter((p) => p && !p.startsWith('#') && !p.startsWith('|'));
+  const significatifs = (texte) => [...new Set(normaliserMots(texte).split(' ').filter((t) => t.length >= minJetons && !MOTS_VIDES.has(t)))];
+  // Un sigle (trois lettres) doit correspondre exactement ; au-delà, l'accord et le pluriel
+  // sont tolérés par préfixe. Sans cette borne, « con » vaudrait « contrôle ».
+  const correspond = (attendu, mot) => (attendu.length <= 3 || mot.length <= 3
+    ? attendu === mot
+    : mot.startsWith(attendu) || attendu.startsWith(mot));
+  const trouves = [];
+  for (const expression of expressions) {
+    const attendus = significatifs(expression);
+    // Un seul mot significatif ne justifie pas un lien : mesuré le 18/09/2026, « anomalies dsn »
+    // réduit à « anomalies » proposait six paragraphes d'un article qui ne parle pas de DSN.
+    if (attendus.length < minParExpression) continue;
+    for (const paragraphe of paragraphes) {
+      const presents = significatifs(paragraphe);
+      if (!attendus.every((j) => presents.some((mot) => correspond(j, mot)))) continue;
+      trouves.push({ expression, paragraphe: paragraphe.length > longueur ? `${paragraphe.slice(0, longueur)}…` : paragraphe });
+    }
+  }
+  return trouves;
+}
+
 // ---------------------------------------------------------------- C3 : vitesse
 
 export function jugerVitesse({ resultats = [], precedent = [], plancher = SEUILS.plancherVitesse, seuils = SEUILS }) {

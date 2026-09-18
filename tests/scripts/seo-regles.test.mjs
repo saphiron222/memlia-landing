@@ -10,10 +10,13 @@ import {
   jugerIndexation,
   jugerSources,
   jugerVitesse,
+  chercherPassages,
   liensEntrants,
   normaliserTexte,
   semaineIso,
+  verifierAncres,
   verifierMaillage,
+  verifierRoutes,
 } from '../../scripts/lib/seo-regles.mjs';
 
 // ---------------------------------------------------------------- C1 : indexation et dérive
@@ -412,4 +415,113 @@ test('jugerSources : une source sans citation enregistrée compte comme ouverte 
   assert.deepEqual(v.rouges, []);
   assert.equal(v.ok, 1);
   assert.equal(v.nonVerifiables, 1);
+});
+
+// ---------------------------------------------------------------- C3 : ancres et routes
+
+const servie = (liens) => `<main>${liens.map(([href, texte]) => `<a href="${href}">${texte}</a>`).join(' ')}</main>`;
+
+test('verifierAncres : une ancre qui ne décrit rien rougit et dépose une tâche ; une ancre descriptive passe', () => {
+  const pages = {
+    '/blog/a': servie([['/methode', 'la méthode'], ['/blog/b', 'cliquez ici']]),
+    '/blog/b': servie([['/methode', 'notre façon de travailler']]),
+  };
+  const r = verifierAncres({ pages, aujourdhui: '2026-09-18' });
+  assert.deepEqual(r.rouges.map((x) => x.code), ['ancre-generique']);
+  assert.equal(r.rouges[0].depuis, '/blog/a');
+  assert.equal(r.rouges[0].ancre, 'cliquez ici');
+  assert.deepEqual(r.taches.map((t) => [t.slug, t.type, t.gravite]), [['a', 'varier-ancre', 'moyenne']]);
+});
+
+test('verifierAncres : la même ancre vers la même page n’est pas un défaut, vers deux pages elle l’est', () => {
+  // Témoin : six articles qui écrivent « la méthode » pour lier /methode ne déclenchent rien.
+  // Répéter l'ancre la plus claire est voulu ; c'est l'ambiguïté qui trompe le lecteur.
+  const fidele = Object.fromEntries('abcdef'.split('').map((s) => [`/blog/${s}`, servie([['/methode', 'la méthode']])]));
+  const rFidele = verifierAncres({ pages: fidele, aujourdhui: '2026-09-18' });
+  assert.deepEqual(rFidele.rouges, []);
+  assert.deepEqual(rFidele.taches, []);
+  const compte = rFidele.infos.find((i) => i.code === 'ancres-par-destination').destinations.find((d) => d.cible === '/methode');
+  assert.deepEqual([compte.liens, compte.ancres], [6, 1]);
+
+  const ambigu = { ...fidele, '/blog/g': servie([['/garanties', 'la méthode']]) };
+  const r = verifierAncres({ pages: ambigu, aujourdhui: '2026-09-18' });
+  assert.deepEqual(r.rouges.map((x) => x.code), ['ancre-ambigue']);
+  assert.deepEqual(r.rouges[0].cibles, ['/garanties', '/methode']);
+  // La tâche va sur la page minoritaire : c'est elle qui doit changer de mots.
+  assert.deepEqual(r.taches.map((t) => t.slug), ['g']);
+});
+
+test('verifierRoutes : un article que seul le blog atteint est signalé ; une route depuis le glossaire lève le signal', () => {
+  const sansRoute = {
+    '/blog': servie([['/blog/a', 'Article A']]),
+    '/blog/a': servie([['/methode', 'la méthode']]),
+    '/blog/b': servie([['/blog/a', 'l’article A']]),
+    '/glossaire': servie([['/blog/b', 'suivre la production']]),
+    '/methode': servie([['/blog/b', 'notre méthode appliquée']]),
+  };
+  const r = verifierRoutes({ pages: sansRoute, articles: ['/blog/a', '/blog/b'] });
+  assert.deepEqual(r.avertissements.filter((a) => a.code === 'article-sans-route-hors-blog').map((a) => a.cible), ['/blog/a']);
+  assert.deepEqual(r.taches, []); // le correctif vit hors de la forge : on mesure, on ne déclare pas de tâche
+});
+
+test('verifierRoutes : une page qui nomme des tâches sans route vers un article est signalée, la page de conversion non', () => {
+  const pages = {
+    '/': servie([['/methode', 'la méthode']]),
+    '/methode': servie([['/blog/a', 'le contrôle avant la DSN']]),
+    '/garanties': servie([['/contact', 'confier une tâche']]),
+    '/contact': servie([['/methode', 'la méthode']]),
+    '/blog/a': servie([['/methode', 'la méthode']]),
+  };
+  const r = verifierRoutes({ pages, articles: ['/blog/a'] });
+  const sansRoute = r.avertissements.filter((a) => a.code === 'page-sans-route-vers-article').map((a) => a.cible);
+  assert.deepEqual(sansRoute.sort(), ['/', '/garanties']);
+  assert.ok(!sansRoute.includes('/contact'));
+});
+
+test('chercherPassages : un paragraphe qui porte tous les mots de la requête, ni un partiel ni un tableau', () => {
+  const corps = [
+    '## Un titre qui contient bulletin et paie et contrôle',
+    'Le contrôle des bulletins avant la paie se rejoue chaque mois dans le cabinet.',
+    'Les bulletins arrivent du logiciel, sans contrôle particulier à cette étape.',
+    '| Contrôle | Bulletin | Paie |',
+  ].join('\n\n');
+  const trouves = chercherPassages(corps, ['contrôle bulletin de paie']);
+  assert.equal(trouves.length, 1);
+  assert.match(trouves[0].paragraphe, /^Le contrôle des bulletins avant la paie/);
+  assert.equal(trouves[0].expression, 'contrôle bulletin de paie');
+  assert.deepEqual(chercherPassages(corps, ['relance des pièces manquantes']), []);
+});
+
+test('chercherPassages : un seul mot significatif ne propose rien, et un sigle doit correspondre exactement', () => {
+  const corps = [
+    'Les anomalies de la file se relisent chaque semaine, sans rapport avec le dépôt.',
+    'Le CRM d’un organisme arrive après le dépôt de la DSN et porte son propre statut.',
+    'Un contrôle conjoint des comptes.',
+  ].join('\n\n');
+  // Mesuré le 18/09/2026 sur le corpus réel : « anomalies dsn » se réduisait au seul mot
+  // « anomalies » et proposait six paragraphes d'un article qui ne parle pas de DSN.
+  assert.deepEqual(chercherPassages(corps, ['anomalies dsn']), []);
+  assert.deepEqual(chercherPassages(corps, ['les anomalies']), []);
+  // Un sigle porte le sens : « crm dsn » doit trouver le paragraphe qui porte les deux.
+  assert.equal(chercherPassages(corps, ['crm dsn']).length, 1);
+  // Mais un sigle ne se laisse pas préfixer : « con » ne vaut pas « contrôle ».
+  assert.deepEqual(chercherPassages(corps, ['con comptes']), []);
+});
+
+test('verifierAncres : un lien décoratif masqué au lecteur ne compte pas, l’alt d’une image tient lieu d’ancre', () => {
+  // Mesuré le 18/09/2026 sur la production : la liste du blog double chaque carte d'un lien
+  // d'image « aria-hidden », voulu pour ne pas annoncer deux fois la même destination. Six
+  // rouges « ancre vide » accusaient cette pratique correcte, pas le site.
+  const pages = {
+    '/blog': `<main>
+      <a href="/blog/a" class="carte-image" aria-hidden="true" tabindex="-1"><img src="/i.webp" alt=""></a>
+      <a href="/blog/a">Contrôler les bulletins avant la DSN</a>
+      <a href="/blog/b"><img src="/j.webp" alt="Le suivi de production dans un classeur"></a>
+    </main>`,
+  };
+  const r = verifierAncres({ pages, aujourdhui: '2026-09-18' });
+  assert.deepEqual(r.rouges, []);
+  const vers = (cible) => r.liens.filter((l) => l.cible === cible);
+  assert.deepEqual(vers('/blog/a').map((l) => l.ancre), ['Contrôler les bulletins avant la DSN']);
+  assert.deepEqual(vers('/blog/b').map((l) => l.ancre), ['Le suivi de production dans un classeur']);
 });

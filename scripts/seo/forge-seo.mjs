@@ -12,14 +12,21 @@
  *   node scripts/seo/forge-seo.mjs maintenance ecarter <id> --motif "…"
  *   node scripts/seo/forge-seo.mjs indexnow initialiser|verifier|envoyer <url…>
  *   node scripts/seo/forge-seo.mjs apres-publication <slug…> [--sans-indexnow] [--attente-max-s 600]
+ *   node scripts/seo/forge-seo.mjs liens <slug> [--json]
  *
  * `apres-publication` (F1) se lance après le contrôle en ligne du runbook §5 : il attend que la production
  * serve l'article, pose la baseline de dérive de l'article, de /blog et du pilier, inscrit l'article au
  * registre des requêtes et envoie un ping IndexNow. Le vendredi (F2), `maintenance lister` donne à la forge
  * les tâches à traiter par republication scellée, et `cloturer` les ferme avec le commit.
+ *
+ * `liens` (F3) cherche, dans les corps de recette déjà publiés, les paragraphes qui nomment déjà la tâche
+ * d'un article sans le lier — dans les deux sens. Il se lance à l'écriture de la recette (runbook §3) pour
+ * poser les liens sortants du nouvel article ; `apres-publication` le rejoue et dépose une tâche
+ * `inserer-lien` sur les articles anciens qui devraient mener au nouveau. Aucune recherche sémantique :
+ * un paragraphe candidat porte tous les mots significatifs d'une requête de l'article visé.
  */
 import { randomBytes } from 'node:crypto';
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import {
@@ -40,6 +47,7 @@ import {
   tachesAFaire,
 } from '../lib/seo-registres.mjs';
 import { CHEMIN_INDEXNOW, ORIGINE, UA_NAVIGATEUR, chercherPage, commitDistant, derivePoser, indexNow, lireCleIndexNow } from '../lib/seo-instruments.mjs';
+import { chercherPassages } from '../lib/seo-regles.mjs';
 
 const dateLocale = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
 const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -182,6 +190,64 @@ async function attendreProduction(url, { marqueur = null, attenteMaxS = 600 } = 
   return { servie: false, apresS: attenteMaxS, ...dernier };
 }
 
+/** Nombre maximal de tâches déposées par article publié : deux liens par vendredi suffisent. */
+export const LIENS_CANDIDATS_MAX = 3;
+
+const corpsDeRecette = (root, slug) => {
+  const chemin = join(root, 'editorial/recettes', slug, 'corps.md');
+  return existsSync(chemin) ? readFileSync(chemin, 'utf8') : null;
+};
+
+const expressionsDe = (article) => [article.requete, ...(article.secondaires ?? [])].filter((x) => typeof x === 'string' && x.trim());
+
+/**
+ * Les liens qui manquent autour d'un article, dans les deux sens : un article ancien qui nomme
+ * déjà sa tâche sans le lier (entrant), et un article que le nouveau nomme sans le lier (sortant).
+ * Lecture seule : les tâches rendues ne sont déposées que par `apres-publication`.
+ */
+export function liensCandidats(root, slug, { aujourdhui = dateLocale(), max = LIENS_CANDIDATS_MAX } = {}) {
+  const publies = articlesPublies(root, { aujourdhui });
+  const cible = publies.find((a) => a.slug === slug);
+  if (!cible) return { ok: false, slug, message: `article ${slug} introuvable parmi les articles publiés`, entrants: [], sortants: [], taches: [], sansRecette: [] };
+  const corpsCible = corpsDeRecette(root, slug);
+  const sansRecette = [];
+  const lie = (corps, vers) => typeof corps === 'string' && corps.includes(`](/blog/${vers})`);
+  const classer = (a, b) => b.expressions - a.expressions || b.passages.length - a.passages.length || a.slug.localeCompare(b.slug);
+
+  const entrants = [];
+  const sortants = [];
+  for (const autre of publies) {
+    if (autre.slug === slug) continue;
+    const corpsAutre = corpsDeRecette(root, autre.slug);
+    if (corpsAutre === null) {
+      sansRecette.push(autre.slug);
+    } else if (!lie(corpsAutre, slug)) {
+      const passages = chercherPassages(corpsAutre, expressionsDe(cible));
+      if (passages.length) entrants.push({ slug: autre.slug, url: autre.url, expressions: new Set(passages.map((p) => p.expression)).size, passages });
+    }
+    if (corpsCible !== null && !lie(corpsCible, autre.slug)) {
+      const passages = chercherPassages(corpsCible, expressionsDe(autre));
+      if (passages.length) sortants.push({ slug: autre.slug, url: autre.url, expressions: new Set(passages.map((p) => p.expression)).size, passages });
+    }
+  }
+  if (corpsCible === null) sansRecette.push(slug);
+  entrants.sort(classer);
+  sortants.sort(classer);
+
+  // Seul le sens entrant devient une tâche : le sens sortant se traite dans la recette du
+  // nouvel article, avant sa publication, sans repasser par la file du vendredi.
+  const taches = entrants.slice(0, max).map((e) => ({
+    slug: e.slug,
+    type: 'inserer-lien',
+    cle: `lien-vers-${slug}`,
+    motif: `nomme déjà la tâche de /blog/${slug} sans la lier : ajouter le lien dans « ${e.passages[0].paragraphe} », avec une ancre qui dit ce que le lecteur y trouve`,
+    mesure: { valeur: `${e.passages.length} passage(s)`, instrument: 'corps de recette, mots de la requête', date: aujourdhui },
+    gravite: 'moyenne',
+    cron: 'F3',
+  }));
+  return { ok: true, slug, requetes: expressionsDe(cible), entrants, sortants, taches, sansRecette };
+}
+
 export async function apresPublication(root, slugs, { sansIndexnow = false, attenteMaxS = 600 } = {}) {
   const date = dateLocale();
   const publies = articlesPublies(root, { aujourdhui: date });
@@ -189,7 +255,9 @@ export async function apresPublication(root, slugs, { sansIndexnow = false, atte
   const etatChemin = join(root, CHEMINS.brut, 'etat-sentinelle.json');
   const etat = lireJson(etatChemin, () => ({ version: 1, premieresVues: {}, etat: {}, baselines: {} }));
   const commit = commitDistant(root);
-  const rapport = { date, commit, articles: [], baselines: [], registre: [], indexnow: null, erreurs: [] };
+  const rapport = { date, commit, articles: [], baselines: [], registre: [], liens: [], taches: { deposees: 0 }, indexnow: null, erreurs: [] };
+  let file = chargerMaintenance(root);
+  let deposees = 0;
 
   const aBaseliner = new Set([`${ORIGINE}/blog`]);
   if (pilier) aBaseliner.add(pilier.url);
@@ -208,7 +276,17 @@ export async function apresPublication(root, slugs, { sansIndexnow = false, atte
     }
     aBaseliner.add(article.url);
     rapport.registre.push(inscrireArticle(root, slug, { aujourdhui: date }));
+    // F3 : les articles déjà publiés qui nomment cette tâche sans la lier passent au vendredi.
+    const candidats = liensCandidats(root, slug, { aujourdhui: date });
+    rapport.liens.push({ slug, entrants: candidats.entrants.map((e) => ({ slug: e.slug, passages: e.passages.length })), sortants: candidats.sortants.map((e) => e.slug), sansRecette: candidats.sansRecette });
+    for (const tache of candidats.taches) {
+      const r = ajouterTache(file, tache, { aujourdhui: date });
+      file = r.file;
+      deposees += r.ajoutee ? 1 : 0;
+    }
   }
+  if (rapport.liens.some((l) => l.entrants.length)) sauverMaintenance(root, file);
+  rapport.taches = { deposees };
 
   for (const url of aBaseliner) {
     const pose = derivePoser(url);
@@ -242,7 +320,11 @@ if (estPrincipal) {
       const slugs = [sousCommande, ...positionnels].filter((s) => s && !s.startsWith('--'));
       resultat = await apresPublication(root, slugs, { sansIndexnow: Boolean(o['sans-indexnow']), attenteMaxS: Number(o['attente-max-s'] ?? 600) });
       if (resultat.erreurs.length) process.exitCode = 2;
-    } else throw new Error('commande attendue : registre | maintenance | indexnow | apres-publication');
+    } else if (commande === 'liens') {
+      if (!sousCommande) throw new Error('usage : liens <slug>');
+      resultat = liensCandidats(root, sousCommande);
+      if (!resultat.ok) process.exitCode = 2;
+    } else throw new Error('commande attendue : registre | maintenance | indexnow | apres-publication | liens');
     console.log(JSON.stringify(resultat, null, 2));
   } catch (e) {
     console.error(`forge-seo : ${e.message}`);

@@ -1,6 +1,6 @@
 # Crons SEO — suivre, optimiser, améliorer en continu
 
-Proposition du 17 septembre 2026. **Statut : C1, C2, C3 et les deux extensions F1, F2 sont construits et planifiés depuis le 17/09/2026 sur le go de Kevin ; le mode opératoire des sessions est [RUNBOOK-SEO.md](RUNBOOK-SEO.md). C4 et C5 restent des propositions, décisions D2 à D4 au §7.** Le seul cron en place est la forge éditoriale (`memlia-forge-quotidienne`, jours ouvrés 9 h, `RUNBOOK-QUOTIDIEN.md`) : elle écrit. Ce document décrit ce qui doit **mesurer, décider et corriger** autour d'elle, sur le modèle de `SEO-STRATEGY.md` §8 : des seuils de décision, pas des prévisions.
+Proposition du 17 septembre 2026. **Statut : C1, C2, C3 et les extensions F1, F2, F3 sont construits et planifiés depuis les 17 et 18/09/2026 sur le go de Kevin ; le mode opératoire des sessions est [RUNBOOK-SEO.md](RUNBOOK-SEO.md). C4 et C5 restent des propositions, décisions D2 à D4 au §7.** Le seul cron en place est la forge éditoriale (`memlia-forge-quotidienne`, jours ouvrés 9 h, `RUNBOOK-QUOTIDIEN.md`) : elle écrit. Ce document décrit ce qui doit **mesurer, décider et corriger** autour d'elle, sur le modèle de `SEO-STRATEGY.md` §8 : des seuils de décision, pas des prévisions.
 
 ## 1. Ce que les instruments disent aujourd'hui (relevé du 17/09/2026)
 
@@ -85,6 +85,23 @@ Inutile avant qu'il y ait du trafic à perdre ; C2 accumule d'ici là la série 
 - **Décroissance.** `content_decay.py` (skill `blog-decay`) sur 28 jours contre les 28 précédents, par page : −20 % avertissement, −40 % élevé, −60 % critique → rafraîchir (`blog-rewrite` par la forge), chercher le glissement de requête, ou consolider.
 - **Cannibalisation.** Une requête avec impressions sur **deux pages memlia ou plus** la même semaine (GSC page × requête) ; et le mode local du skill `blog-cannibalization` sur titres, H1 et H2 du corpus, qui grossit de quatre articles par semaine → différencier, fusionner, ou ne rien faire en le notant. Le backlog est propre aujourd'hui : 236 requêtes primaires, aucun doublon.
 - **Coût.** 0 $ (DataForSEO `page_intersection` à 0,01 $ en option).
+
+## 3 bis. Maillage interne : ce qui a été ajouté le 18/09/2026
+
+Lecture de « 8 internal linking hacks to improve SEO » (Distribb, Borja). Sa preuve est l'observation de onze pages Mailchimp **sans test d'effet sur le classement**, l'auteur l'écrit ; la structure vaut d'être copiée, l'effet n'est pas démontré. Trois de ses huit étapes manquaient chez nous, les cinq autres étaient déjà tenues ou sans sujet.
+
+| Étape de l'article | Chez nous |
+|---|---|
+| relever Search Console | C2, depuis le 17/09 |
+| grouper les sujets | fixé par `src/data/familles.ts` (60 familles, 12 pôles) : une donnée, pas une découverte |
+| choisir les piliers | un seul `format: pillar-page`, verrouillé par `test_build.py`, Playwright et C3 |
+| choisir les pages de conversion | l'appel unique de la charte ; **routes mesurées depuis le 18/09** |
+| choisir les articles de soutien | C3, liens entrants ≥ 3 |
+| pousser les pages de page 2 | **aucun sujet** : 0 impression sur les six articles, memlia absent du top 20. À armer dans C2 aux premières impressions |
+| liens du pied de page | déjà en place (cinq pages commerciales, blog, glossaire) : contrôle unique, pas une routine |
+| varier les ancres | **mesuré depuis le 18/09**, avec la réserve que l'article pose lui-même : répéter l'ancre la plus claire est voulu |
+
+Construit : deux volets dans C3 (ancres, routes) et l'extension **F3** de la forge (les liens qui manquent autour d'un article, dans les deux sens). Détail des règles et des refus dans [RUNBOOK-SEO.md](RUNBOOK-SEO.md) §4 et §6 bis.
 
 ## 4. Deux extensions de la forge existante
 

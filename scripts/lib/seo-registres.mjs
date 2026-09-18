@@ -20,7 +20,7 @@ export const CHEMINS = Object.freeze({
   brut: '.qa/seo',
 });
 
-export const TYPES_TACHE = Object.freeze(['recaler-titre', 'reverifier-source', 'inserer-lien', 'rafraichir']);
+export const TYPES_TACHE = Object.freeze(['recaler-titre', 'reverifier-source', 'inserer-lien', 'varier-ancre', 'rafraichir']);
 export const GRAVITES = Object.freeze(['haute', 'moyenne', 'basse']);
 const RANG_GRAVITE = { haute: 0, moyenne: 1, basse: 2 };
 const DATE_ISO = /^\d{4}-\d{2}-\d{2}$/;

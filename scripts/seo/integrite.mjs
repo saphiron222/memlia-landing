@@ -15,7 +15,7 @@ import { existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { CHEMINS, ajouterTache, articlesPublies, chargerMaintenance, ecrireJson, lireJson, sauverMaintenance } from '../lib/seo-registres.mjs';
-import { SEUILS, chercherExtrait, jugerSources, jugerVitesse, semaineIso, verifierMaillage } from '../lib/seo-regles.mjs';
+import { SEUILS, chercherExtrait, jugerSources, jugerVitesse, semaineIso, verifierAncres, verifierMaillage, verifierRoutes } from '../lib/seo-regles.mjs';
 import { ORIGINE, UA_VERIFICATEUR, cheminDepuisUrl, chercherPage, cruxOrigine, pagesProduction, psiMobile, sitemapProduction } from '../lib/seo-instruments.mjs';
 
 const ESSAIS_SOURCE = 3;
@@ -95,6 +95,11 @@ export async function integrite({ root = process.cwd(), date = dateLocale(), san
     seuil: SEUILS.liensEntrantsMin,
     aujourdhui: date,
   });
+  // Les ancres des liens (ce que le lecteur lit avant de cliquer) et les routes qui mènent
+  // aux articles depuis le reste du site : deux volets de maillage que le compte de liens
+  // entrants ne mesure pas.
+  const ancres = verifierAncres({ pages, aujourdhui: date });
+  const routes = verifierRoutes({ pages, articles: publies.map((a) => cheminDepuisUrl(a.url)) });
 
   let sources = { total: 0, ok: 0, rouges: [], avertissements: [], lents: [], nonVerifiables: [], taches: [], verifications: [] };
   if (sansSources) {
@@ -144,7 +149,7 @@ export async function integrite({ root = process.cwd(), date = dateLocale(), san
   }
 
   let file = chargerMaintenance(root);
-  const tachesADeposer = [...maillage.taches, ...sources.taches];
+  const tachesADeposer = [...maillage.taches, ...ancres.taches, ...sources.taches];
   let ajoutees = 0;
   let misesAJour = 0;
   for (const t of tachesADeposer) {
@@ -157,6 +162,7 @@ export async function integrite({ root = process.cwd(), date = dateLocale(), san
 
   const rouges = [
     ...maillage.rouges.map((r) => ({ volet: 'maillage', ...r })),
+    ...ancres.rouges.map((r) => ({ volet: 'ancres', ...r })),
     ...sources.rouges.map((r) => ({ volet: 'sources', ...r })),
     ...vitesse.rouges.map((r) => ({ volet: 'vitesse', ...r })),
   ];
@@ -165,6 +171,8 @@ export async function integrite({ root = process.cwd(), date = dateLocale(), san
     semaine: semaineIso(date),
     pages: { lues: Object.keys(pages).length, echecs },
     maillage: { liens: maillage.liens, rouges: maillage.rouges, avertissements: maillage.avertissements, infos: maillage.infos },
+    ancres: { rouges: ancres.rouges, infos: ancres.infos },
+    routes: { avertissements: routes.avertissements, infos: routes.infos },
     sources: { total: sources.total, ok: sources.ok, rouges: sources.rouges, avertissements: sources.avertissements, lents: sources.lents, nonVerifiables: sources.nonVerifiables, verifications: (sources.verifications ?? []).map((v) => ({ ...v, essais: v.essais.map(({ ok, status, finalUrl, extraitTrouve, extraitsManquants, dureeMs, erreur }) => ({ ok, status, finalUrl, extraitTrouve, extraitsManquants, dureeMs, erreur })) })) },
     vitesse: { resultats: vitesse.resultats, rouges: vitesse.rouges, aSurveiller: vitesse.aSurveiller, avertissements: vitesse.avertissements },
     crux,
@@ -191,6 +199,10 @@ function afficher(r, json) {
   console.log(`  maillage : ${r.maillage.infos.map((i) => i.message).join(' · ')}`);
   for (const x of r.maillage.rouges) console.log(`  ROUGE maillage ${x.code} ${x.cible ?? x.depuis ?? ''} : ${x.message}`);
   for (const x of r.maillage.avertissements) console.log(`  avertissement maillage ${x.code} ${x.cible ?? ''} : ${x.message}`);
+  console.log(`  ancres : ${r.ancres.infos.map((i) => i.message).join(' · ')}`);
+  for (const x of r.ancres.rouges) console.log(`  ROUGE ancre ${x.code} ${x.depuis ?? ''} : ${x.message}`);
+  console.log(`  routes : ${r.routes.infos.map((i) => i.message).join(' · ')}`);
+  for (const x of r.routes.avertissements) console.log(`  avertissement route ${x.code} ${x.cible} : ${x.message}`);
   console.log(`  sources : ${r.sources.ok}/${r.sources.total} ouvertes avec leur citation · ${r.sources.lents.length} lente(s) · ${r.sources.nonVerifiables.length} sans citation enregistrée`);
   for (const x of r.sources.rouges) console.log(`  ROUGE source ${x.code} ${x.slug} ${x.sourceId} ${x.url} : ${x.message}`);
   for (const x of r.sources.avertissements) console.log(`  avertissement source ${x.code} ${x.slug} ${x.sourceId} : ${x.message}`);

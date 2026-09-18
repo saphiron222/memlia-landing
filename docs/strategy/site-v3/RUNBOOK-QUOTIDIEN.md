@@ -42,6 +42,14 @@ Pièges mesurés : le mot « module » est interdit ; « s'arrête » est lu com
 
 Sources : 3 à 5 pages officielles ouvertes le jour même, chacune avec un `excerpt` verbatim d'au moins 40 caractères pris dans le HTML brut de la page (une seule ligne du fichier, sans entité HTML au milieu). Claims : 4 à 8, chacun une sous-chaîne exacte d'un paragraphe (`unite` = un fragment unique de ce paragraphe, `claim` = la phrase, `excerpt` = la citation exacte, `type` parmi `legal-reglementaire`, `fiscal`, `dsn`, `paie`, `social`, `juridique`, `information`, `methode`, `produit`, `statistique-chiffre`) ; la citation doit partager au moins 60 % des mots de quatre lettres et plus du claim, sinon ajouter `translationTerms` (deux paires). Les types sensibles exigent une source officielle reconnue (Service-Public, CNIL, impots.gouv, Net-entreprises, Insee, travail-emploi).
 
+Avant d'arrêter les liens, demander à la forge ce qui existe déjà :
+
+```bash
+node scripts/seo/forge-seo.mjs liens <slug>
+```
+
+Elle rend les paragraphes des articles publiés qui nomment déjà la tâche du nouvel article sans le lier (`entrants`, traités par le vendredi après publication) et ceux du nouvel article qui nomment la tâche d'un ancien sans le lier (`sortants`, **à poser maintenant** dans `corps.md`). Lecture seule, aucune écriture.
+
 Liens : `links.outgoing` = le pilier `/blog/automatiser-un-cabinet-comptable-la-carte-des-taches`, les articles publiés voisins, `/methode`, une ou deux ancres de `/glossaire#…` existantes (`grep -o "anchor: '[^']*'" src/data/glossary.ts`) ; chaque lien doit apparaître dans le corps sous la forme `](/chemin`. `links.incoming` = `["/blog", "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"]` : ajouter dans `editorial/recettes/automatiser-un-cabinet-comptable-la-carte-des-taches/corps.md` un lien vers le nouvel article là où sa famille est nommée, et le slug dans `links.outgoing` de la recette du pilier. `businessReview.reviewerId` = `relecteur-metier-ia-memlia`, `role` = le rôle du lecteur. `serp` = relevé WebSearch du jour (acteurs, formats, note) ; `gsc` = état Search Console (impressions 0 pour une page nouvelle, « aucun crédit métrique revendiqué »). `preuvesSkills` = une observation par skill blog réellement joué (brief, outline avec le gabarit utilisé, style avec le verdict de `cognitive_load.py`, schema, image).
 
 ### L'image de tête : la recette d'image des articles

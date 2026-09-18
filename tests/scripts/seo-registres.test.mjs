@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { inscrireArticle } from '../../scripts/seo/forge-seo.mjs';
+import { inscrireArticle, liensCandidats } from '../../scripts/seo/forge-seo.mjs';
 
 import {
   ajouterAuRegistre,
@@ -171,6 +171,43 @@ test('inscrireArticle (F1) inscrit un article publié depuis son frontmatter, re
     assert.equal(registre.articles[0].famille, 'saisie-ocr');
     assert.equal(inscrireArticle(root, 'y', { aujourdhui: '2026-09-17' }).ok, false);
     assert.equal(inscrireArticle(root, 'x', { aujourdhui: '2026-09-17' }).ajoute, false);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('liensCandidats (F3) : propose le lien là où la requête est déjà nommée, dans les deux sens, et écarte ce qui est déjà lié', () => {
+  const root = mkdtempSync(join(tmpdir(), 'memlia-seo-liens-'));
+  try {
+    mkdirSync(join(root, 'src/content/blog'), { recursive: true });
+    const article = (slug, requete, secondaires) =>
+      writeFileSync(join(root, `src/content/blog/${slug}.md`), `---\ntitre: "${slug}"\ndatePublication: 2026-09-10\nbrouillon: false\nfamille: f\nprimaryQuery: "${requete}"\nsecondaryQueries: ${JSON.stringify(secondaires)}\nformat: how-to-guide\n---\ncorps\n`);
+    const corps = (slug, texte) => {
+      mkdirSync(join(root, 'editorial/recettes', slug), { recursive: true });
+      writeFileSync(join(root, 'editorial/recettes', slug, 'corps.md'), texte);
+    };
+    article('ancien', 'relance des pièces manquantes', []);
+    article('nouveau', 'contrôle bulletin de paie', ['écarts du bulletin']);
+    article('deja-lie', 'suivi de production sociale', []);
+    corps('ancien', '## Titre\n\nLe contrôle des bulletins avant la paie se rejoue chaque mois.\n\nLa relance des pièces est une autre tâche.\n');
+    corps('nouveau', '## Titre\n\nUn suivi de la production sociale se tient par dossier et par période.\n\nRien sur les pièces ici.\n');
+    corps('deja-lie', '## Titre\n\nLe contrôle des bulletins de paie est décrit dans [cet autre guide](/blog/nouveau).\n');
+
+    const r = liensCandidats(root, 'nouveau');
+    // Entrant : « ancien » nomme la tâche du nouvel article sans le lier ; « deja-lie » le lie déjà.
+    assert.deepEqual(r.entrants.map((e) => e.slug), ['ancien']);
+    assert.match(r.entrants[0].passages[0].paragraphe, /^Le contrôle des bulletins avant la paie/);
+    // Sortant : le nouvel article nomme la tâche de « deja-lie » sans le lier.
+    assert.deepEqual(r.sortants.map((e) => e.slug), ['deja-lie']);
+    assert.match(r.sortants[0].passages[0].paragraphe, /^Un suivi de la production sociale/);
+    // Les tâches ne portent que le sens entrant : le sens sortant se traite dans la recette avant publication.
+    assert.deepEqual(r.taches.map((t) => [t.slug, t.type, t.cle]), [['ancien', 'inserer-lien', 'lien-vers-nouveau']]);
+
+    // Témoin : une fois le lien posé dans « ancien », il n'est plus candidat et aucune tâche ne reste.
+    corps('ancien', '## Titre\n\nLe contrôle des bulletins avant la paie se rejoue chaque mois, voir [le contrôle avant la DSN](/blog/nouveau).\n');
+    const apres = liensCandidats(root, 'nouveau');
+    assert.deepEqual(apres.entrants, []);
+    assert.deepEqual(apres.taches, []);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

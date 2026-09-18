@@ -54,15 +54,21 @@ La session écrit une ligne de journal avec : les totaux (semaine, 28 jours, 28 
 node scripts/seo/integrite.mjs
 ```
 
-Quatre à huit minutes : lecture des pages de production, maillage, réouverture de chaque source citée (UA `MemliaBlogSourceVerifier/1.0`, trois essais, recherche de la citation exacte sans rien écrire dans les dossiers scellés), PageSpeed mobile sur six pages, CrUX. Écrit `docs/strategy/site-v3/mesures/semaine-<AAAA-Www>-integrite.json`. Code 2 avec rouge.
+Quatre à huit minutes : lecture des pages de production, maillage (liens entrants, ancres, routes), réouverture de chaque source citée (UA `MemliaBlogSourceVerifier/1.0`, trois essais, recherche de la citation exacte sans rien écrire dans les dossiers scellés), PageSpeed mobile sur six pages, CrUX. Écrit `docs/strategy/site-v3/mesures/semaine-<AAAA-Www>-integrite.json`. Code 2 avec rouge.
 
 | Volet | Rouges | Avertissements et infos |
 |---|---|---|
 | maillage | `orpheline`, `liens-entrants-insuffisants`, `satellite-sans-lien-pilier`, `pilier-sans-lien-satellite`, `ancre-glossaire-absente` | `page-non-lue`, `glossaire-non-lu` |
+| ancres | `ancre-generique` (l'ancre ne décrit pas la destination), `ancre-ambigue` (les mêmes mots mènent à deux pages) | info `ancres-par-destination` : liens et ancres distinctes par destination, **sans verdict** |
+| routes | — | `article-sans-route-hors-blog` (seul le blog y mène), `page-sans-route-vers-article` (une page qui nomme des tâches ne mène à aucun article) |
 | sources | `source-morte` (trois essais), `extrait-absent` (même après normalisation) | `source-redirigee`, `extrait-forme-changee` (citation retrouvée après normalisation typographique), lentes, non vérifiables (dossier hérité ou document non textuel : seule la réponse HTTP est jugée) |
 | vitesse | `score-sous-plancher` (deux relevés consécutifs sous 95), `cls` (au-dessus de 0,1) | « à surveiller » (un seul relevé sous 95), `lcp` (au-dessus de 2,5 s en laboratoire), `psi-indisponible` |
 
-La session écrit une ligne de journal (liens entrants par article, sources ouvertes sur total, rouges, scores), puis commit et push. Un rouge de vitesse devient un ticket dans le journal, jamais un correctif automatique. Les rouges de maillage et de sources ont déjà déposé leurs tâches : la forge les traite le vendredi.
+La session écrit une ligne de journal (liens entrants par article, sources ouvertes sur total, rouges, scores), puis commit et push. Un rouge de vitesse devient un ticket dans le journal, jamais un correctif automatique. Les rouges de maillage, d'ancres et de sources ont déjà déposé leurs tâches : la forge les traite le vendredi.
+
+**Ce que le volet ancres ne fait pas.** Il ne réclame pas de varier les mots. Répéter l'ancre la plus claire vers une même destination est voulu, et le compte d'ancres distinctes est rendu en info, sans jugement. Deux défauts seulement le font rougir : une ancre qui ne décrit rien (« ici », « cet article ») et une ancre qui mène à deux endroits différents selon la page — celle-là trompe le lecteur. Un lien `aria-hidden` (la vignette des cartes du blog, qui double le titre juste à côté) n'est pas une ancre et n'est pas compté ; à défaut de texte, l'`alt` de l'image en tient lieu.
+
+**Ce que le volet routes ne fait pas.** Il ne dépose aucune tâche : ses correctifs vivent hors de la forge (une page `.astro`, le glossaire et sa chaîne scellée), et un ticket que le vendredi ne saurait pas traiter serait un ticket qui ment. Les quatre pages surveillées sont `/`, `/automatisation-cabinet-comptable`, `/methode` et `/garanties` ; `/contact` en est exclue par décision (c'est la page de conversion, en sortir dessert), comme les pages légales et `/a-propos`.
 
 ## 5. Commit et push d'une session de cron
 
@@ -84,6 +90,21 @@ node scripts/seo/forge-seo.mjs apres-publication <slug> [<slug2>]
 
 Attend que la production serve le titre d'onglet de l'article (dix minutes au plus), pose la baseline de dérive de l'article, de `/blog` et du pilier, inscrit l'article au registre des requêtes (la commande `publier` de la forge l'a déjà fait ; c'est idempotent), envoie un ping IndexNow. Le JSON rendu va dans la note du journal. Sans cette étape, la sentinelle posera les baselines le soir et C2 réconciliera le registre le lundi : rien n'est perdu, mais la journée a un trou.
 
+## 6 bis. F3 — les liens qui manquent autour d'un article
+
+```bash
+node scripts/seo/forge-seo.mjs liens <slug>
+```
+
+Cherche, dans les corps de recette des articles publiés, les paragraphes qui **nomment déjà la tâche** d'un article sans le lier, dans les deux sens : `entrants` (un article ancien devrait mener au nouveau), `sortants` (le nouvel article devrait mener à un ancien). Aucune recherche sémantique : un paragraphe candidat porte **tous** les mots significatifs d'une requête de l'article visé ; les sigles du métier (DSN, CRM, TVA, OCR) comptent mais doivent correspondre exactement, et une requête qui se réduit à un seul mot significatif ne propose rien.
+
+Deux moments :
+
+- **à l'écriture de la recette** (`RUNBOOK-QUOTIDIEN.md` §3) : lecture seule, pour poser les liens **sortants** du nouvel article avant sa publication ;
+- **dans `apres-publication`** : les trois premiers `entrants` deviennent des tâches `inserer-lien` (clé `lien-vers-<slug>`, gravité moyenne, cron `F3`), avec le paragraphe exact dans le motif. Le sens sortant n'en dépose jamais : il se traite dans la recette, pas le vendredi.
+
+Un article sans recette (publié hors forge) apparaît dans `sansRecette` : il ne peut ni être fouillé ni être republié, et c'est dit plutôt que deviné.
+
 ## 7. F2 — le vendredi (forge, `RUNBOOK-QUOTIDIEN.md` §6)
 
 ```bash
@@ -95,7 +116,7 @@ Deux tâches au plus par vendredi, dans l'ordre rendu (gravité puis ancienneté
 - article v3 (une recette existe dans `editorial/recettes/<slug>/`) : corriger la recette (`corps.md` pour un lien ou un rafraîchissement, `recette.json` pour un titre, une source, un extrait), puis `preparer`, rendu, revue par un sous-agent, `sceller`, `publier`, contrôle en ligne, `apres-publication` ;
 - article publié hors forge (aucun depuis le 17/09/2026 au soir : les trois articles DSN et paie ont rejoint la forge avec une recette, des sources revérifiées et une revue neuve) : la voie serait `scripts/migrate-published-blog.mjs`, qui rescelle un dossier adopté en préservant ses preuves héritées, mais qui ne peut pas accueillir une source revérifiée ; une tâche `reverifier-source` sur un tel article se traite donc en le faisant entrer dans la forge.
 
-Types : `inserer-lien` (un lien dans le corps, avec une ancre parlante ; pour `lien-vers-pilier`, là où la carte des tâches est nommée), `recaler-titre` (titre d'onglet ou introduction sur la requête mesurée, sans rien promettre), `reverifier-source` (rouvrir la source, corriger l'URL, l'extrait ou l'affirmation), `rafraichir` (relire, redater, compléter). Puis :
+Types : `inserer-lien` (un lien dans le corps, avec une ancre parlante ; pour `lien-vers-pilier`, là où la carte des tâches est nommée ; pour une tâche déposée par F3, le motif porte le paragraphe exact où poser le lien), `varier-ancre` (réécrire l'ancre dans la phrase qui la porte, sans changer la destination), `recaler-titre` (titre d'onglet ou introduction sur la requête mesurée, sans rien promettre), `reverifier-source` (rouvrir la source, corriger l'URL, l'extrait ou l'affirmation), `rafraichir` (relire, redater, compléter). Puis :
 
 ```bash
 node scripts/seo/forge-seo.mjs maintenance cloturer <id> --commit <sha>
