@@ -3,9 +3,9 @@
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-17",
-  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
-  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
+  "checkedAt": "2026-09-18",
+  "articleSha256": "70ba23a9b3fdcf921fd41b0b4e477b98b5a397effa7525281d6c25ac2fca95c1",
+  "manifestSha256": "ce9086643fb616a88230bc953afb25fa17b75599a2f1696e17340d08f4e6ea72",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact controler-les-bulletins-de-paie-avant-la-dsn."
   ],
@@ -14,49 +14,49 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Les composantes structurelles du brief corrigé sont respectées : trois stations lues de gauche à droite sur un plateau, cadre horizontal 16:9 (1920x1080 mesuré avec PIL), style diorama 3D mat et translucide sur fond clair, et aucun des interdits listés n'est visible.",
-        "La composition centrale a été corrigée pour décrire « une pièce mise à l'écart » sans couleur imposée : le rendu montre cette pièce isolée par sa position et un lien pointillé, plus par la couleur — la contradiction de la première passe (pièce annoncée graphite, rendue verte) ne se reproduit plus puisque le brief ne l'impose plus.",
-        "Échantillonnage de pixels sur master.png : le vert du panneau droit (RVB 20/120/67) et le fond (RVB 254/253/252) collent aux teintes de marque #1c8a41 et #fffefb à un ou deux points près ; en revanche, aucun pixel réellement graphite (gris neutre) n'a été trouvé sur l'image entière — les pixels les plus sombres échantillonnés sont tous des verts saturés. La « touche de graphite » du paragraphe palette du brief reste un détail mineur non honoré, sans incidence sur la lisibilité des trois stations."
+        "Les six composantes sont relues une à une sur le master régénéré du 2026-09-18 : sujet (trois contrôles successifs), composition (16:9 horizontal mesuré 1920x1080 avec PIL, trois stations sur un même plateau, pièces empilées à gauche, deux colonnes comparées au centre avec un bloc nettement détaché par un vide, paquet franchissant un portique à droite), style, palette, interdits et alt.",
+        "Palette mesurée sur la totalité des 2 073 600 pixels du master, et non par échantillonnage : crème 70,87 %, vert 16,89 %, graphite 10,18 %. Le vert est dominant comme l'exige le brief, et la « touche de graphite » est présente : le pixel le plus proche du graphite de marque #231f20 est #221f20, à une distance de 1,0.",
+        "Le style « matières mates et translucides » est satisfait sur ses deux termes : les volumes verts, le plateau et le portique sont mats, et chaque station porte une plaque de verre vert franchement translucide. Lumière de studio douce venant du haut gauche, ombres courtes portées vers la droite, composition aérée."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Aucun texte, chiffre, logo, personnage ni fausse interface n'est visible sur master.png ; aucune touche de rouge n'apparaît, ce qui exclut toute alerte visuelle interdite par le brief.",
-        "Le panneau droit (grille de carrés traversant un anneau vers un cube) reste un pictogramme de flux et de validation, sans enveloppe ni coche évoquant un envoi automatique ou une correction autonome."
+        "Aucun texte, lettre, chiffre, logo, personnage ni donnée client sur master.png. Aucune fausse interface : pas d'écran, pas de cadre d'écran, pas de graphique ni d'histogramme, pas de carte à champs — uniquement des volumes pleins, une pile de feuilles, des plaques de verre translucides et un portique.",
+        "Absence d'alerte rouge vérifiée par mesure et non à l'œil : zéro pixel de teinte rouge franche (saturation > 0,35 et valeur > 0,35) sur l'ensemble du master. Aucune flèche, enveloppe ni coche, donc aucun symbole d'envoi automatique ni promesse de correction autonome."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "L'image est un diorama de formes géométriques abstraites généré par prompt d'après preuves/image/generation.json, sans aucune capture d'écran, logo ou photo d'outil réel.",
-        "Rien dans le rendu ne simule une interface, un document ou un client réel : uniquement des plans de verre translucides, des piles de feuilles blanches et des cubes colorés."
+        "Image générée par prompt le 2026-09-18 (higgsfield, gpt_image_2_5, job 4f56805b-235e-4476-9690-e062fe3edcef) d'après preuves/image/generation.json, dont outputSha256 correspond octet pour octet au master.png présent sur disque (recalculé).",
+        "Rien ne simule un outil, un document ou un client réel : aucune capture d'écran, aucun logo, aucune photo. La scène n'est faite que de cubes, de feuilles crème empilées, de plaques de verre et d'un portique, tous abstraits."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Les trois stations se lisent de gauche à droite comme une intégration de pièces, une comparaison avec une pièce mise à l'écart, puis une validation technique vers un paquet, cohérent avec l'alt déclaré.",
-        "Le niveau d'abstraction, sans texte ni chiffre, laisse une distance d'interprétation sur le panneau droit (grille, anneau, cube) que seuls l'alt et la légende lèvent complètement ; le sujet reste néanmoins reconnaissable comme un pipeline de contrôle en trois étapes plutôt qu'une scène de paie littérale."
+        "Les trois stations se lisent de gauche à droite comme l'intégration des pièces, la comparaison de deux colonnes de blocs empilés dont un bloc est mis à l'écart par un vide net sur le plateau, puis le passage d'un paquet par un portique de validation — l'ordre et la mise à l'écart sont lisibles sans légende.",
+        "Le niveau d'abstraction reste élevé : la station de droite (cube franchissant un portique) ne devient pleinement univoque qu'avec l'alt et la légende. Réserve maintenue à l'identique de la revue précédente, l'image ne la lève pas."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Vérification indépendante par lecture des fichiers avec PIL : master.png fait 1920x1080, og.webp 1200x630, hero-768.avif et hero-768.webp 768x432 — les quatre dimensions déclarées dans image.json correspondent exactement aux pixels réels des fichiers sur disque.",
-        "Les quatre fichiers déclarés existent bien dans preuves/image/ (confirmé par listing du dossier), sans dérivé manquant ni format substitué."
+        "Les quatre dérivés relus au pixel avec PIL après régénération : master.png 1920x1080 PNG, og.webp 1200x630 WEBP, hero-768.avif et hero-768.webp 768x432 — les quatre correspondent exactement aux dimensions déclarées dans image.json.",
+        "Les quatre fichiers existent dans preuves/image/. Le recadrage OG a été regardé : la scène entière y tient avec ses marges, aucun élément n'est coupé par l'extraction 1200x630."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Recompté en Python : l'attribut alt fait 96 caractères, sous la limite de 125, et reste identique entre image.json, prompt.json, le HTML rendu (og:image:alt, JSON-LD caption) et l'attribut alt de la balise img.",
-        "L'alt décrit fidèlement les trois panneaux effectivement visibles (pièces de paie, comparaison mensuelle, validation du fichier DSN), sans terme absent de l'image ni promesse non représentée."
+        "Alt recompté à 96 caractères, sous la limite de 125, et identique dans image.json, prompt.json et le frontmatter du Markdown (comparaison de chaînes, pas lecture à l'œil).",
+        "Il décrit les trois stations effectivement visibles — pièces de paie, comparaison mensuelle, validation du fichier DSN — sans terme absent de l'image ni promesse non représentée."
       ]
     }
   ]

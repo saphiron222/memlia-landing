@@ -3,19 +3,19 @@
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
   "kind": "image-generation",
   "status": "PASS",
-  "checkedAt": "2026-09-17",
-  "articleSha256": "825dad12308720c72f626f764bfc37ab4fd0a5b3ed8a871a2f16615d052ca2b1",
-  "manifestSha256": "54b0ef620ceb15096dd88ad38ecdb49fdb01ee3f7819eb6ea8cbbf6fc8e28f48",
+  "checkedAt": "2026-09-18",
+  "articleSha256": "70ba23a9b3fdcf921fd41b0b4e477b98b5a397effa7525281d6c25ac2fca95c1",
+  "manifestSha256": "ce9086643fb616a88230bc953afb25fa17b75599a2f1696e17340d08f4e6ea72",
   "observations": [
     "Contrôle image-generation relu sur le candidat exact controler-les-bulletins-de-paie-avant-la-dsn."
   ],
   "engine": "image_generate",
-  "generationId": "openai_codex_gpt-image-2-medium_20260913_211744_c7c22c42",
-  "model": "gpt-image-2-medium",
-  "provider": "openai-codex",
-  "generatedAt": "2026-09-13",
+  "generationId": "4f56805b-235e-4476-9690-e062fe3edcef",
+  "model": "gpt_image_2_5",
+  "provider": "higgsfield",
+  "generatedAt": "2026-09-18",
   "sourcePath": "image-source.png",
-  "sourceSha256": "b3993a4a147990e2940dd89a0e78c4cef5729d4dd243fa6febae4810a1cdc529",
-  "outputSha256": "b3993a4a147990e2940dd89a0e78c4cef5729d4dd243fa6febae4810a1cdc529",
-  "credits": null
+  "sourceSha256": "80ddda3f41675add226b7883d7410fe35389b7c1253ec713f7dc261475045b24",
+  "outputSha256": "341ad8637d2face6103b89c6200dc456d78e1edaf99da19b866a4ef10319eb9f",
+  "credits": 3
 }
