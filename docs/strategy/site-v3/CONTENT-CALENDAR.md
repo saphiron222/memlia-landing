@@ -11,7 +11,7 @@ Généré le 16 septembre 2026 par `build-cluster-plan.py` depuis `backlog-v3.js
 
 ## Volume
 
-- 238 satellites + 1 pilier ; 4 satellite(s) publié(s) au 16/09/2026 ; dernier créneau planifié : 2027-11-01.
+- 238 satellites + 1 pilier ; 5 satellite(s) publié(s) au 16/09/2026 ; dernier créneau planifié : 2027-11-01.
 
 ## Semaine par semaine
 
@@ -29,7 +29,7 @@ Généré le 16 septembre 2026 par `build-cluster-plan.py` depuis `backlog-v3.js
 | 2026-09-15 | [Comprendre les comptes rendus métier DSN : méthode de lecture](/blog/comprendre-les-comptes-rendus-metier-dsn) | DSN et comptes rendus métier | Paie et social | how-to-guide | 1 | published |
 | 2026-09-16 | [Automatiser la relance des pièces clients manquantes](/blog/automatiser-la-relance-des-pieces-clients) | Collecte et relance des pièces | Production comptable | how-to-guide | 1 | published |
 | 2026-09-16 | [Automatiser un cabinet comptable : la carte des tâches](/blog/automatiser-un-cabinet-comptable-la-carte-des-taches) | Choisir et cadrer une automatisation | Méthode et décision humaine | pillar-page | 1 | published |
-| 2026-09-17 | [Automatiser la saisie comptable : ce qui reste à vérifier](/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier) | Saisie, OCR et pré-comptabilité | Production comptable | how-to-guide | 1 | planned |
+| 2026-09-17 | [Automatiser la saisie comptable : ce qui reste à vérifier](/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier) | Saisie, OCR et pré-comptabilité | Production comptable | how-to-guide | 1 | published |
 
 ### Semaine 2026-W39
 

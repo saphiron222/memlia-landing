@@ -163,7 +163,7 @@
           "officialSources": [
             "aucune"
           ],
-          "status": "planned",
+          "status": "published",
           "incomingLinks": 3
         },
         {
@@ -2152,7 +2152,7 @@
         },
         {
           "title": "Comment contrôler les bulletins de paie avant la DSN ?",
-          "keyword": "contrôler bulletin de paie avant DSN",
+          "keyword": "contrôle bulletin de paie",
           "volume": null,
           "template": "how-to",
           "format": "how-to-guide",
@@ -2280,7 +2280,7 @@
         },
         {
           "title": "Comprendre les comptes rendus métier DSN : méthode de lecture",
-          "keyword": "comptes rendus métier DSN",
+          "keyword": "crm dsn",
           "volume": null,
           "template": "how-to",
           "format": "how-to-guide",
@@ -2722,7 +2722,7 @@
         },
         {
           "title": "Suivre la production sociale dans Excel : modèle, règles et limites",
-          "keyword": "tableau suivi production sociale Excel cabinet",
+          "keyword": "tableau de bord paie excel",
           "volume": null,
           "template": "how-to",
           "format": "how-to-guide",
@@ -6386,6 +6386,18 @@
       "anchor": "Automatiser la relance des pièces clients manquantes"
     },
     {
+      "from": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "type": "pilier",
+      "anchor": "Automatiser la saisie comptable : ce qui reste à vérifier"
+    },
+    {
       "from": "controler-les-bulletins-de-paie-avant-la-dsn",
       "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
       "type": "pilier",
@@ -6420,18 +6432,6 @@
       "to": "suivre-la-production-sociale-dans-excel",
       "type": "pilier",
       "anchor": "Suivre la production sociale dans Excel : modèle, règles et limites"
-    },
-    {
-      "from": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "type": "pilier",
-      "anchor": "automatiser une tâche du cabinet"
-    },
-    {
-      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "to": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "type": "pilier",
-      "anchor": "Automatiser la saisie comptable : ce qui reste à vérifier"
     },
     {
       "from": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
@@ -9278,6 +9278,54 @@
       "anchor": "pièces manquantes dossier comptable checklist"
     },
     {
+      "from": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "to": "controler-une-pre-comptabilisation-automatique-avant-validation",
+      "type": "famille",
+      "anchor": "checklist contrôle saisie comptable automatisée"
+    },
+    {
+      "from": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "to": "quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur",
+      "type": "famille",
+      "anchor": "OCR comptable erreur reconnaissance que faire"
+    },
+    {
+      "from": "controler-une-pre-comptabilisation-automatique-avant-validation",
+      "to": "quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur",
+      "type": "famille",
+      "anchor": "OCR comptable erreur reconnaissance que faire"
+    },
+    {
+      "from": "controler-une-pre-comptabilisation-automatique-avant-validation",
+      "to": "ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie",
+      "type": "famille",
+      "anchor": "différence OCR et IA comptabilité"
+    },
+    {
+      "from": "quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur",
+      "to": "ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie",
+      "type": "famille",
+      "anchor": "différence OCR et IA comptabilité"
+    },
+    {
+      "from": "quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur",
+      "to": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "type": "famille",
+      "anchor": "automatisation saisie comptable OCR"
+    },
+    {
+      "from": "ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie",
+      "to": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "type": "famille",
+      "anchor": "automatisation saisie comptable OCR"
+    },
+    {
+      "from": "ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie",
+      "to": "controler-une-pre-comptabilisation-automatique-avant-validation",
+      "type": "famille",
+      "anchor": "checklist contrôle saisie comptable automatisée"
+    },
+    {
       "from": "automatiser-les-controles-de-bulletins-apres-le-calcul-de-la-paie",
       "to": "checklist-de-controle-des-bulletins-a-elements-variables",
       "type": "famille",
@@ -9311,13 +9359,13 @@
       "from": "les-bulletins-de-paie-qu-un-controle-automatique-doit-toujours-isoler",
       "to": "controler-les-bulletins-de-paie-avant-la-dsn",
       "type": "famille",
-      "anchor": "contrôler bulletin de paie avant DSN"
+      "anchor": "contrôle bulletin de paie"
     },
     {
       "from": "quelles-mentions-un-bulletin-de-paie-doit-il-toujours-comporter",
       "to": "controler-les-bulletins-de-paie-avant-la-dsn",
       "type": "famille",
-      "anchor": "contrôler bulletin de paie avant DSN"
+      "anchor": "contrôle bulletin de paie"
     },
     {
       "from": "quelles-mentions-un-bulletin-de-paie-doit-il-toujours-comporter",
@@ -9371,13 +9419,13 @@
       "from": "que-faire-quand-un-compte-rendu-metier-dsn-signale-une-anomalie",
       "to": "comprendre-les-comptes-rendus-metier-dsn",
       "type": "famille",
-      "anchor": "comptes rendus métier DSN"
+      "anchor": "crm dsn"
     },
     {
       "from": "dsn-evenementielle-et-dsn-mensuelle-quelle-difference",
       "to": "comprendre-les-comptes-rendus-metier-dsn",
       "type": "famille",
-      "anchor": "comptes rendus métier DSN"
+      "anchor": "crm dsn"
     },
     {
       "from": "dsn-evenementielle-et-dsn-mensuelle-quelle-difference",
@@ -9431,13 +9479,13 @@
       "from": "pourquoi-un-indicateur-de-production-sociale-ne-doit-jamais-remonter-un-nom",
       "to": "suivre-la-production-sociale-dans-excel",
       "type": "famille",
-      "anchor": "tableau suivi production sociale Excel cabinet"
+      "anchor": "tableau de bord paie excel"
     },
     {
       "from": "qu-est-ce-que-le-suivi-de-la-production-sociale-d-un-cabinet",
       "to": "suivre-la-production-sociale-dans-excel",
       "type": "famille",
-      "anchor": "tableau suivi production sociale Excel cabinet"
+      "anchor": "tableau de bord paie excel"
     },
     {
       "from": "qu-est-ce-que-le-suivi-de-la-production-sociale-d-un-cabinet",
@@ -9456,54 +9504,6 @@
       "to": "checklist-des-indicateurs-a-agreger-pour-le-pole-social",
       "type": "famille",
       "anchor": "indicateurs de pilotage pôle social cabinet comptable"
-    },
-    {
-      "from": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "to": "controler-une-pre-comptabilisation-automatique-avant-validation",
-      "type": "famille",
-      "anchor": "checklist contrôle saisie comptable automatisée"
-    },
-    {
-      "from": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "to": "quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur",
-      "type": "famille",
-      "anchor": "OCR comptable erreur reconnaissance que faire"
-    },
-    {
-      "from": "controler-une-pre-comptabilisation-automatique-avant-validation",
-      "to": "quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur",
-      "type": "famille",
-      "anchor": "OCR comptable erreur reconnaissance que faire"
-    },
-    {
-      "from": "controler-une-pre-comptabilisation-automatique-avant-validation",
-      "to": "ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie",
-      "type": "famille",
-      "anchor": "différence OCR et IA comptabilité"
-    },
-    {
-      "from": "quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur",
-      "to": "ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie",
-      "type": "famille",
-      "anchor": "différence OCR et IA comptabilité"
-    },
-    {
-      "from": "quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur",
-      "to": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "type": "famille",
-      "anchor": "automatisation saisie comptable OCR"
-    },
-    {
-      "from": "ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie",
-      "to": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "type": "famille",
-      "anchor": "automatisation saisie comptable OCR"
-    },
-    {
-      "from": "ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie",
-      "to": "controler-une-pre-comptabilisation-automatique-avant-validation",
-      "type": "famille",
-      "anchor": "checklist contrôle saisie comptable automatisée"
     },
     {
       "from": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
@@ -12088,8 +12088,8 @@
   ],
   "meta": {
     "totalPosts": 238,
-    "plannedPosts": 234,
-    "publishedPosts": 4,
+    "plannedPosts": 233,
+    "publishedPosts": 5,
     "totalClusters": 11,
     "totalFamilies": 59,
     "totalLinks": 952,

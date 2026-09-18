@@ -1,6 +1,6 @@
 # Plan de cluster v3 — « automatisation cabinet comptable »
 
-Généré le 2026-09-16 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 238 satellites (4 publiés, 234 planifiés) en 59 familles et 11 pôles, 952 liens, 342400 mots estimés.
+Généré le 2026-09-16 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 238 satellites (5 publiés, 233 planifiés) en 59 familles et 11 pôles, 952 liens, 342400 mots estimés.
 
 ## Méthode
 
@@ -31,7 +31,7 @@ Lire les pièces, extraire les champs, pré-imputer, et faire remonter ce que la
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-09-17 | [Automatiser la saisie comptable : ce qui reste à vérifier](/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier) | automatisation saisie comptable OCR | how-to-guide | collaborateurs-comptables | 1 | planned |
+| 2026-09-17 | [Automatiser la saisie comptable : ce qui reste à vérifier](/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier) | automatisation saisie comptable OCR | how-to-guide | collaborateurs-comptables | 1 | published |
 | 2026-11-10 | [Contrôler une pré-comptabilisation automatique avant validation](/blog/controler-une-pre-comptabilisation-automatique-avant-validation) | checklist contrôle saisie comptable automatisée | listicle-checklist | collaborateurs-comptables | 1 | planned |
 | 2027-01-04 | [Quand la lecture automatique d'une pièce doit remonter à un collaborateur](/blog/quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur) | OCR comptable erreur reconnaissance que faire | how-to-guide | collaborateurs-comptables | 1 | planned |
 | 2027-02-25 | [OCR comptable et IA générative : quelle différence pour la saisie ?](/blog/ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie) | différence OCR et IA comptabilité | faq-knowledge | collaborateurs-comptables | 1 | planned |
@@ -237,7 +237,7 @@ Contrôler la cohérence des bulletins avant le dépôt et après le calcul.
 | 2026-11-30 | [La checklist de contrôle des bulletins à éléments variables](/blog/checklist-de-controle-des-bulletins-a-elements-variables) | checklist bulletin de paie éléments variables contrôle | listicle-checklist | paie-responsables-sociaux | 1 | planned |
 | 2027-01-21 | [Les bulletins de paie qu'un contrôle automatique isole toujours](/blog/les-bulletins-de-paie-qu-un-controle-automatique-doit-toujours-isoler) | bulletin de paie atypique contrôle manuel | how-to-guide | paie-responsables-sociaux | 1 | planned |
 | 2027-03-17 | [Quelles mentions un bulletin de paie doit-il toujours comporter ?](/blog/quelles-mentions-un-bulletin-de-paie-doit-il-toujours-comporter) | mentions obligatoires bulletin de paie définition | faq-knowledge | paie-responsables-sociaux | 1 | planned |
-| 2026-09-09 | [Comment contrôler les bulletins de paie avant la DSN ?](/blog/controler-les-bulletins-de-paie-avant-la-dsn) | contrôler bulletin de paie avant DSN | how-to-guide | paie-responsables-sociaux | 1 | published |
+| 2026-09-09 | [Comment contrôler les bulletins de paie avant la DSN ?](/blog/controler-les-bulletins-de-paie-avant-la-dsn) | contrôle bulletin de paie | how-to-guide | paie-responsables-sociaux | 1 | published |
 
 ### DSN et comptes rendus métier (`dsn-crm`)
 
@@ -249,7 +249,7 @@ Préparer, contrôler et déposer la DSN ; lire et traiter les retours.
 | 2026-12-01 | [La checklist avant le dépôt mensuel de la DSN](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | checklist dépôt DSN mensuelle cabinet | listicle-checklist | paie-responsables-sociaux | 1 | planned |
 | 2027-01-25 | [Que faire quand un compte rendu métier DSN signale une anomalie ?](/blog/que-faire-quand-un-compte-rendu-metier-dsn-signale-une-anomalie) | compte rendu métier DSN anomalie action corrective | how-to-guide | paie-responsables-sociaux | 1 | planned |
 | 2027-03-18 | [DSN événementielle et DSN mensuelle : quelle différence ?](/blog/dsn-evenementielle-et-dsn-mensuelle-quelle-difference) | différence DSN événementielle et DSN mensuelle | faq-knowledge | paie-responsables-sociaux | 1 | planned |
-| 2026-09-15 | [Comprendre les comptes rendus métier DSN : méthode de lecture](/blog/comprendre-les-comptes-rendus-metier-dsn) | comptes rendus métier DSN | how-to-guide | paie-responsables-sociaux | 1 | published |
+| 2026-09-15 | [Comprendre les comptes rendus métier DSN : méthode de lecture](/blog/comprendre-les-comptes-rendus-metier-dsn) | crm dsn | how-to-guide | paie-responsables-sociaux | 1 | published |
 
 ### Entrées, sorties et attestations (`entrees-sorties-salaries`)
 
@@ -294,7 +294,7 @@ Piloter le pôle social par dossier et par étape, en agrégats, jamais par pers
 | 2026-12-08 | [Les indicateurs à agréger pour piloter le pôle social](/blog/checklist-des-indicateurs-a-agreger-pour-le-pole-social) | indicateurs de pilotage pôle social cabinet comptable | listicle-checklist | paie-responsables-sociaux | 1 | planned |
 | 2027-02-01 | [Pourquoi un indicateur de production sociale ne remonte jamais un nom](/blog/pourquoi-un-indicateur-de-production-sociale-ne-doit-jamais-remonter-un-nom) | indicateur RH nominatif pôle social risque CNIL | how-to-guide | paie-responsables-sociaux | 1 | planned |
 | 2027-03-25 | [Qu'est-ce que le suivi de la production sociale d'un cabinet ?](/blog/qu-est-ce-que-le-suivi-de-la-production-sociale-d-un-cabinet) | définition suivi production sociale cabinet comptable | faq-knowledge | paie-responsables-sociaux | 1 | planned |
-| 2026-09-09 | [Suivre la production sociale dans Excel : modèle, règles et limites](/blog/suivre-la-production-sociale-dans-excel) | tableau suivi production sociale Excel cabinet | how-to-guide | paie-responsables-sociaux | 1 | published |
+| 2026-09-09 | [Suivre la production sociale dans Excel : modèle, règles et limites](/blog/suivre-la-production-sociale-dans-excel) | tableau de bord paie excel | how-to-guide | paie-responsables-sociaux | 1 | published |
 
 ## Juridique et fiscal (`juridique-fiscal`)
 
