@@ -1,0 +1,251 @@
+{
+  "version": 1,
+  "kind": "publication-scellee",
+  "candidateSlug": "la-plateforme-que-personne-n-a-achetee",
+  "articleSha256": "ddfb4c480460217d2129793740edadf530908ba0350bdeddaaa86ac8973d7574",
+  "manifestSha256": "d918fba641257765d88712d9942869bdbabdde6d0229b8e8820c616bb607fd68",
+  "publishedAt": "2026-09-19",
+  "sealedAt": "2026-09-19T17:24:46.130Z",
+  "files": [
+    {
+      "path": "brief.md",
+      "bytes": 361,
+      "sha256": "27d95bd0a8860d5289b1399aa5c87d5137cc146436808241bda90c19d2c1f945"
+    },
+    {
+      "path": "claims.json",
+      "bytes": 24856,
+      "sha256": "d715408caf19a01a1ea742a10d1b0e55db988988e5980148e7db9453564d5a08"
+    },
+    {
+      "path": "image.json",
+      "bytes": 1445,
+      "sha256": "f9f8193422544eba01d94b93952f834a1422052d91035378fba2672c51dc76d3"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 8633,
+      "sha256": "d918fba641257765d88712d9942869bdbabdde6d0229b8e8820c616bb607fd68"
+    },
+    {
+      "path": "preuves/business-review.json",
+      "bytes": 3497,
+      "sha256": "25a2f5311c80df8ba91a5d720bbf51b3a7b77b369a7eee9ae1c045c0c1286cae"
+    },
+    {
+      "path": "preuves/image/cadre.sha256",
+      "bytes": 65,
+      "sha256": "510621351e828fcec51c78f76c6e9d1678909612664eb1724169d3917d03b19b"
+    },
+    {
+      "path": "preuves/image/generation.json",
+      "bytes": 858,
+      "sha256": "7363c87cc1381702e108fadbd3a38dd78e812c4feda851141bd34555a7556261"
+    },
+    {
+      "path": "preuves/image/hero-768.avif",
+      "bytes": 7810,
+      "sha256": "14e071a829cb68786f7fc72ae806d9cafd8867b71a4f4953978c813b3d892788"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "bytes": 12846,
+      "sha256": "42cea4dd002db18f618be5f08c8a9e7b2fec5a5af327b5ba29568f4eda4b3ad3"
+    },
+    {
+      "path": "preuves/image/master.png",
+      "bytes": 1916740,
+      "sha256": "c189e911d1854996096a569ea4f64ad702cc7811e4846e026307510af426e825"
+    },
+    {
+      "path": "preuves/image/og.webp",
+      "bytes": 32372,
+      "sha256": "c9ed70e3d00a07157ad6b7dc39dc7b3907647f3d6db00f425bdea3eff1c71a66"
+    },
+    {
+      "path": "preuves/image/prompt.json",
+      "bytes": 4453,
+      "sha256": "14d2a9c88bd098eff026438eb8adf554483ba665293f279b8a7af744358d6519"
+    },
+    {
+      "path": "preuves/image/visual-review.json",
+      "bytes": 3010,
+      "sha256": "083167af1ba197460ad9259add33b97b393d7910f2774abd135c1a599592795e"
+    },
+    {
+      "path": "preuves/research-gsc.json",
+      "bytes": 954,
+      "sha256": "33db5b64a92332cf1a10ffdf192eed35f97e3e702386e6a1e7004b20b8220023"
+    },
+    {
+      "path": "preuves/research-serp.json",
+      "bytes": 1486,
+      "sha256": "bc7656fad032064368371afa12b031dd8a0594259fac8ffcc82cec14ea0ed352"
+    },
+    {
+      "path": "preuves/review.json",
+      "bytes": 3033,
+      "sha256": "d9908910c118543c3692c2b310b43c0b2ad4fc4d57318236a6297badfb142975"
+    },
+    {
+      "path": "preuves/role.json",
+      "bytes": 730,
+      "sha256": "0a714143669471df09e9813ec592f3f20709fcd35c8c318ccc5933eaa6b02f72"
+    },
+    {
+      "path": "preuves/skills/blog-analyze.json",
+      "bytes": 567,
+      "sha256": "67064aa4e6d031f0c617c38d51cc8319793fb01f2d69e34e20fd4aad50f43d0c"
+    },
+    {
+      "path": "preuves/skills/blog-audit.json",
+      "bytes": 457,
+      "sha256": "714b237f2dc28081d723c38c6e1090859f7ffc93d96850b738a0346ceff7493c"
+    },
+    {
+      "path": "preuves/skills/blog-brief.json",
+      "bytes": 721,
+      "sha256": "45174c4aa7f29d5bc6ec97bb3dfbc2671aa6178ec4bedb6d668bd250c9d62271"
+    },
+    {
+      "path": "preuves/skills/blog-cannibalization.json",
+      "bytes": 549,
+      "sha256": "76bec5dc88b344c9f8182abf4e3e93ae5749f6a46e77c5978f6f6609dceb4b44"
+    },
+    {
+      "path": "preuves/skills/blog-factcheck.json",
+      "bytes": 520,
+      "sha256": "78bfdd37cb7895208d338e81a045870214bd5de3213bf31fcf1fcefc5e14dc72"
+    },
+    {
+      "path": "preuves/skills/blog-geo.json",
+      "bytes": 819,
+      "sha256": "0c7ff1e058ae7e6d10ec768ebf644c3c3e79ee54a5dd5cbb278ffdabfe9c2c7b"
+    },
+    {
+      "path": "preuves/skills/blog-image.json",
+      "bytes": 638,
+      "sha256": "9a1896dc95d4f63cdb117de3bd544f473aaee7c70075d6666638cea61b964927"
+    },
+    {
+      "path": "preuves/skills/blog-outline.json",
+      "bytes": 779,
+      "sha256": "901d09a02e28baf218792d56a3e3ad844146c7ab542d9ca4df17ef2311ebda10"
+    },
+    {
+      "path": "preuves/skills/blog-schema.json",
+      "bytes": 571,
+      "sha256": "258e905e13fc16480f3838419a92ddcd105043195983f061a99f38965b5cdfff"
+    },
+    {
+      "path": "preuves/skills/blog-seo-check.json",
+      "bytes": 1075,
+      "sha256": "c4973e53d5a2efeed576731dba597849badcd9c3878044b8098b3af733b8a6c0"
+    },
+    {
+      "path": "preuves/skills/blog-write.json",
+      "bytes": 450,
+      "sha256": "4cc9b32a7713f92dfdc8b0cdc90aa6387e1b5efca18fc422e4b321ff1c5399b8"
+    },
+    {
+      "path": "preuves/skills/seo-audit.json",
+      "bytes": 468,
+      "sha256": "a1d32f5e6ac00aa01767a302efa73b8b8974fc127b8fd5c848942fdde9d55fa9"
+    },
+    {
+      "path": "preuves/skills/seo-content-brief.json",
+      "bytes": 647,
+      "sha256": "78fdfbc6c240c662da94f11e98993c77863e5ff4e6cc96eb1f65d8ebe1164cf3"
+    },
+    {
+      "path": "preuves/skills/seo-content.json",
+      "bytes": 494,
+      "sha256": "5b64e3dc883a8171cdd5fda9061e9c4b0b04b480793a92e2a15559e9ec4ac569"
+    },
+    {
+      "path": "preuves/skills/seo-images.json",
+      "bytes": 542,
+      "sha256": "5f37092304102714170a323784d214144a8e56615299d3d6117daf56e360d863"
+    },
+    {
+      "path": "preuves/skills/seo-page.json",
+      "bytes": 551,
+      "sha256": "49b1b2763a345aa2ba33912c3f1fdd73583d19b916bcc149a442ae76a7d16afa"
+    },
+    {
+      "path": "preuves/skills/seo-schema.json",
+      "bytes": 487,
+      "sha256": "88b50346060e8c16cefa4f987b40fa15adff434c97d489c533f38607ac6f0123"
+    },
+    {
+      "path": "preuves/skills/seo-technical.json",
+      "bytes": 538,
+      "sha256": "929509415f7609c1e6a91501487fe445a9854d2b340b6cfaeed807da7e403ae6"
+    },
+    {
+      "path": "preuves/sources/analyse-processus.classification.json",
+      "bytes": 1290,
+      "sha256": "cfd98df56e91026b0a08cf01590c838d0e05d39bb61ea49cf35fa91c5bb896ca"
+    },
+    {
+      "path": "preuves/sources/analyse-processus.json",
+      "bytes": 1134,
+      "sha256": "0d7e7961b429a89e1871752d8eb762ffec0eabc854e2cd2e8b61a16770e5e41e"
+    },
+    {
+      "path": "preuves/sources/analyse-processus.source.txt",
+      "bytes": 52802,
+      "sha256": "46c2ff5b8c2e942d98fcd1eceb53f6c5345bed707c97229a19deab2d4267a3e5"
+    },
+    {
+      "path": "preuves/sources/deploiement-test.classification.json",
+      "bytes": 1258,
+      "sha256": "44a033ca9b691b9c66abd157ca6e324eacf1c5c8c759f4c5afee52846e0650de"
+    },
+    {
+      "path": "preuves/sources/deploiement-test.json",
+      "bytes": 1034,
+      "sha256": "21da71c727605b507eb0641d7115d3f8682fc78458a95ca2ced65e54a8e2a363"
+    },
+    {
+      "path": "preuves/sources/deploiement-test.source.txt",
+      "bytes": 1589662,
+      "sha256": "550718aa742bd557443768ec761ef011dc7ef0e5f76184f7d127c09e44ea0b88"
+    },
+    {
+      "path": "preuves/sources/plateforme-extension.classification.json",
+      "bytes": 1261,
+      "sha256": "d842b3c6f468c65199dbb335316e90333cf5ce4e1527b917c27d31d3dfef57ce"
+    },
+    {
+      "path": "preuves/sources/plateforme-extension.json",
+      "bytes": 1139,
+      "sha256": "848e10bf380b9fae52e991ce6f456c3994c983a3f5459573f70f6707d611f765"
+    },
+    {
+      "path": "preuves/sources/plateforme-extension.source.txt",
+      "bytes": 65316,
+      "sha256": "336002aa13b2f9b144d33e3f040da6c4911498df669e86de1dc0c0cad6381495"
+    },
+    {
+      "path": "quality-review.json",
+      "bytes": 2250,
+      "sha256": "aaa914e7ef29b6de3412454c54320c7852ee7b97187adbf5877c926a7c2843b3"
+    },
+    {
+      "path": "review.json",
+      "bytes": 433,
+      "sha256": "f96f66d1a39985a5b22fa0799b38d27ab0f67c3e3e13b60d352d9e4858066a84"
+    },
+    {
+      "path": "seo-geo-review.md",
+      "bytes": 1774,
+      "sha256": "a5021efa127bc360b0da0176fed4fd763da29e7c2fec9c35ba024128eeeb340e"
+    },
+    {
+      "path": "skills.json",
+      "bytes": 16659,
+      "sha256": "1274e6b3d97bfa8fc0ab41c2603ba0264a3f7fff396bcb749ec710b46b605e22"
+    }
+  ]
+}

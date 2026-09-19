@@ -6,7 +6,7 @@ J’ai construit une application complète pour remplacer les classeurs d’un c
 
 Un cabinet d’expertise comptable tenait sa production sociale dans des classeurs. Un pour le suivi, un pour la facturation, un pour les contrôles de fin de mois. Chaque mois, la même personne rouvrait les mêmes fichiers, recopiait les mêmes colonnes d’un export vers un autre, et rattrapait à l’œil les oublis de la fois précédente.
 
-Ma conclusion m’a paru évidente : le problème, c’est le classeur, donc on remplace le classeur. J’ai construit une application web complète — fiches clients, facturation du mois, relances, courriers types, et une validation humaine obligatoire avant tout envoi. Une évaluation de design menée en dehors de moi lui a donné 8 sur 10 et la mention « niveau professionnel ». J’avais préparé une offre, un prix, une durée d’engagement.
+Ma conclusion m’a paru évidente : le problème, c’est le classeur, donc on remplace le classeur. J’ai construit une application web complète : fiches clients, facturation du mois, relances, courriers types, et une validation humaine obligatoire avant tout envoi. Une évaluation de design menée en dehors de moi lui a donné 8 sur 10 et la mention « niveau professionnel ». J’avais préparé une offre, un prix, une durée d’engagement.
 
 Rien là-dedans n’était bâclé. C’était simplement à côté.
 
@@ -52,7 +52,7 @@ Je ne mettrai pas de chiffre d’économie en face : je n’en ai pas mesuré. C
 
 **La proposition.** Ce que nous produisons, c’est un relevé chiffré et une règle écrite ; ce que le cabinet garde, c’est le choix de la tâche et le dernier mot sur la règle. Nous ne proposons plus un outil avant d’avoir relevé le temps qu’il ferait gagner. Et nous ne proposons plus un outil de plus : l’automatisation se greffe dans le logiciel, le classeur ou la messagerie déjà ouverts, c’est la [proposition puis validation](/glossaire#proposition-puis-validation) qui change, pas l’écran.
 
-**L’arrêt.** Le cadrage s’arrête et le dit dans trois cas. Quand la [règle de cabinet](/glossaire#regle-de-cabinet) n’est pas reproductible — la question se pose telle quelle : si je prends votre fichier et votre règle, une personne qui ne vous connaît pas produirait-elle exactement le même résultat que vous ? Un non écarte la tâche, même celle qui pèse le plus lourd, et une exception « et parfois d’autres cas » vaut un non : seule une liste finie et énumérable sauve la piste. Quand la donnée nécessaire n’existe dans aucun fichier et vit dans la tête de quelqu’un. Et quand le relevé lui-même est incomplet, parce qu’un cadrage bâti sur des lignes vides est une hypothèse déguisée. Dans ces trois cas, nous refusons de nous engager plutôt que de promettre faux : c’est le principe [fail-closed](/glossaire#fail-closed).
+**L’arrêt.** Le cadrage s’arrête et le dit dans trois cas. Quand la [règle de cabinet](/glossaire#regle-de-cabinet) n’est pas reproductible. La question se pose telle quelle : si je prends votre fichier et votre règle, une personne qui ne vous connaît pas produirait-elle exactement le même résultat que vous ? Un non écarte la tâche, même celle qui pèse le plus lourd, et une exception « et parfois d’autres cas » vaut un non : seule une liste finie et énumérable sauve la piste. Quand la donnée nécessaire n’existe dans aucun fichier et vit dans la tête de quelqu’un. Et quand le relevé lui-même est incomplet, parce qu’un cadrage bâti sur des lignes vides est une hypothèse déguisée. Dans ces trois cas, nous refusons de nous engager plutôt que de promettre faux : c’est le principe [fail-closed](/glossaire#fail-closed).
 
 **Le jeu d’essai.** La règle est rejouée sur un [jeu d’essai fictif](/glossaire#jeu-d-essai-fictif), des dossiers inventés pour l’exercice qui ne portent aucune donnée de cabinet. Et l’extension ne part pas d’un écran vert : on commence par réaliser rapidement un déploiement test à petite échelle : un poste, une personne, un mois réel, avant d’en parler à quiconque d’autre.
 
@@ -61,7 +61,7 @@ Je ne mettrai pas de chiffre d’économie en face : je n’en ai pas mesuré. C
 | Cas joué | Sortie obtenue | Décision |
 |---|---|---|
 | Tâche la plus douloureuse du relevé, règle non reproductible par un tiers | Refus « règle non déterministe : une exception non énumérable » | Écartée, exclusion annoncée à voix haute devant l’équipe |
-| Tâche discrète, revenant chaque semaine, donnée déjà dans le fichier ouvert | Gain annuel calculé par durée multipliée par fréquence, faisabilité haute | Retenue, et passée en premier |
+| Tâche discrète, revenant chaque semaine, donnée déjà dans le fichier ouvert | Jeu fictif : 20 minutes × 52 occurrences = 17 h 20 par an, faisabilité haute | Retenue, et passée en premier |
 | Tâche fréquente dont la donnée ne vit dans aucun fichier | Refus « donnée absente du système d’information » | Ajournée, une source de donnée à créer d’abord |
 | Relevé rendu avec des lignes de réponse vides | Bloc final listant les champs manquants et les tâches incomplètes | Second passage avant tout engagement |
 

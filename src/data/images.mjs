@@ -127,6 +127,13 @@ export const IMAGES = {
     alt: "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe",
     generee: true,
   },
+  'img-art-la-plateforme-que-personne-n-a-achetee': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Diorama 3D isométrique : un bâtiment neuf et fermé à côté d’un établi ouvert où le travail se fait, fond crème",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -134,6 +141,7 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-la-plateforme-que-personne-n-a-achetee',
   'img-art-saisie-comptable',
   'img-art-relance-des-pieces',
   'img-art-carte-des-taches',

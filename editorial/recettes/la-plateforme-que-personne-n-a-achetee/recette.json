@@ -44,9 +44,9 @@
   "contentType": "shareable",
   "format": "thought-leadership",
   "task": "Choisir la tâche d’un cabinet qui sera prise en charge en premier, et décider où l’automatisation doit vivre, sans ajouter un outil ni s’engager sur une hypothèse.",
-  "rankability": "faible",
+  "rankability": "plausible",
   "businessRelevance": "directe",
-  "proofRequired": "Récit du refus du 21/07/2026 et du pivot vers l’outil déjà ouvert, avec le délai mesuré de cinq jours jusqu’à la première recette ; le questionnaire revenu avec toutes ses lignes de réponse vides et le formulaire qui calcule ses propres manques, écrit une semaine plus tard ; quatre affirmations reliées à trois pages de documentation ouvertes.",
+  "proofRequired": "Récit du refus du 21/07/2026 et du pivot vers l’outil déjà ouvert, avec le délai mesuré de cinq jours jusqu’à la première recette ; le questionnaire revenu avec toutes ses lignes de réponse vides et le formulaire qui calcule ses propres manques, écrit une semaine plus tard ; trois affirmations documentaires reliées à deux pages ouvertes, plus une troisième page de contexte sans claim attribué.",
   "reviewRule": "Réviser si le test de reproductibilité ou les échelles de cotation du cadrage changent, et à la publication d’un article de la famille choisir et cadrer ; relecture des sources à six mois.",
   "cta": {
     "label": "Confier cette tâche",
@@ -60,7 +60,7 @@
       "sujet": "Deux volumes posés côte à côte sur un même socle : à gauche un petit bâtiment neuf, net, entièrement clos, dont aucune ouverture n’est franchie ; à droite un établi bas, déjà encombré d’objets en usage, sur lequel un mécanisme simple vient d’être ajouté et fonctionne.",
       "composition": "Vue isométrique sur un plateau crème papier ; à gauche, un volume architectural neuf aux arêtes franches, portes closes, aucune trace d’usage autour de lui, une fine poussière de lumière le laisse intact ; à droite, à la même échelle, un plan de travail ouvert où des formes simples sont disposées comme on les laisse en travaillant, et où un petit rouage vert translucide s’est glissé entre elles sans rien déplacer ; entre les deux, un chemin au sol qui mène clairement au second et pas au premier ; ombres courtes, composition aérée, beaucoup de vide autour des deux volumes.",
       "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche ; continuité avec les couvertures IMG-23, IMG-24 et IMG-25.",
-      "palette": "Vert Memlia #27b657 et vert profond #1c8a41 dominants, fond crème #fcfbf7, touches de graphite #231f20.",
+      "palette": "Fond crème #fcfbf7 dominant, vert Memlia #27b657 et vert profond #1c8a41 en accents, touches de graphite #231f20.",
       "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, marque, écran ou fausse interface logicielle, alerte rouge, croix ou signe de faute.",
       "alt": "Diorama 3D isométrique : un bâtiment neuf et fermé à côté d’un établi ouvert où le travail se fait, fond crème",
       "reviewCriteria": [
@@ -72,7 +72,15 @@
         "aucun texte, chiffre, logo, personne identifiable, marque ou fausse interface",
         "dérivés 1920×1080, OG 1200×630, 768/1200/1600 générés"
       ],
-      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : deux volumes posés côte à côte sur un même socle : à gauche un petit bâtiment neuf, net, entièrement clos, dont aucune ouverture n'est franchie ; à droite un établi bas, déjà encombré d'objets en usage, sur lequel un mécanisme simple vient d'être ajouté et fonctionne. Composition : vue isométrique sur un plateau crème papier ; à gauche, un volume architectural neuf aux arêtes franches, portes closes, aucune trace d'usage autour de lui ; à droite, à la même échelle, un plan de travail ouvert où des formes simples sont disposées comme on les laisse en travaillant, et où un petit rouage vert translucide s'est glissé entre elles sans rien déplacer ; entre les deux, un chemin au sol qui mène clairement au second et pas au premier ; ombres courtes, composition aérée, beaucoup de vide autour des deux volumes. Style : diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche ; continuité avec les couvertures IMG-23, IMG-24 et IMG-25. Palette : Vert Memlia #27b657 et vert profond #1c8a41 dominants, fond crème #fcfbf7, touches de graphite #231f20. Interdits : texte lisible, lettres, chiffres, logo, personne identifiable, marque, écran ou fausse interface logicielle, alerte rouge, croix ou signe de faute."
+      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : deux volumes posés côte à côte sur un même socle : à gauche un petit bâtiment neuf, net, entièrement clos, dont aucune ouverture n'est franchie ; à droite un établi bas, déjà encombré d'objets en usage, sur lequel un mécanisme simple vient d'être ajouté et fonctionne. Composition : vue isométrique sur un plateau crème papier ; à gauche, un volume architectural neuf aux arêtes franches, portes closes, aucune trace d'usage autour de lui ; à droite, à la même échelle, un plan de travail ouvert où des formes simples sont disposées comme on les laisse en travaillant, et où un petit rouage vert translucide s'est glissé entre elles sans rien déplacer ; entre les deux, un chemin rectangulaire continu au sol rejoint clairement l'espace sous l'établi, sans pointe ni flèche ; ombres courtes, composition aérée, beaucoup de vide autour des deux volumes. Style : diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche ; continuité avec les couvertures IMG-23, IMG-24 et IMG-25. Palette stricte, proportions imposées : fond crème #fcfbf7 dominant, vert Memlia #27b657 sur au moins 3 % de l'image en surfaces pleines (chemin et plateau de l'établi), vert profond #1c8a41 sur au moins 3 % en surfaces pleines distinctes (pieds, bacs et engrenage), touches de graphite #231f20 sur au moins 2 % (outils, arêtes et ombres). Interdits : texte lisible, lettres, chiffres, logo, personne identifiable, marque, écran ou fausse interface logicielle, alerte rouge, croix ou signe de faute, flèche, courbe de mouvement, symbole flottant, annotation."
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "cf6a3d0d-5abc-4cdc-a843-d3f7e7673155",
+      "model": "gpt_image_2_5",
+      "provider": "higgsfield",
+      "generatedAt": "2026-09-19",
+      "credits": 6
     }
   },
   "sources": [
@@ -119,7 +127,8 @@
       "/glossaire#fail-closed"
     ],
     "incoming": [
-      "/blog"
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
     ]
   },
   "cannibalization": {
@@ -157,35 +166,27 @@
   "claims": [
     {
       "unite": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
-      "claim": "La plateforme d’extension d’une suite bureautique sert à créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
+      "claim": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
       "type": "information",
       "sourceId": "plateforme-extension",
       "excerpt": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
       "explanation": "La phrase de la documentation de l’éditeur est reprise mot pour mot ; seule la formule d’introduction change, la capacité décrite et son périmètre restent ceux de la source."
     },
     {
-      "unite": "aide les entreprises à comprendre leurs processus réels",
-      "claim": "L’analyse de processus aide les entreprises à comprendre leurs processus réels",
+      "unite": "Elle aide les entreprises à comprendre leurs processus réels",
+      "claim": "Elle aide les entreprises à comprendre leurs processus réels",
       "type": "information",
       "sourceId": "analyse-processus",
       "excerpt": "aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration",
       "explanation": "Reprise à l’identique du début de la définition donnée par la documentation de l’éditeur ; la suite de la phrase est omise et rien n’est ajouté à sa portée."
     },
     {
-      "unite": "fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
-      "claim": "En partant des données d’exécution, l’analyse de processus fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
+      "unite": "en partant des données d’exécution",
+      "claim": "en partant des données d’exécution elle fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
       "type": "information",
       "sourceId": "analyse-processus",
       "excerpt": "fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
       "explanation": "Phrase de la documentation de l’éditeur reprise à l’identique ; la mention des données d’événements est résumée en données d’exécution sans changer ce qui est affirmé."
-    },
-    {
-      "unite": "on commence par réaliser rapidement un déploiement test à petite échelle",
-      "claim": "réaliser rapidement un déploiement test à petite échelle",
-      "type": "methode",
-      "sourceId": "deploiement-test",
-      "excerpt": "réaliser rapidement un déploiement test du navigateur Chrome à petite échelle",
-      "explanation": "La page d’aide au déploiement recommande un déploiement test à petite échelle avant le parc ; la pratique est reprise telle quelle, sans revendiquer la sienne pour un autre produit."
     }
   ],
   "businessReview": {
@@ -200,7 +201,7 @@
       "Plan calqué sur le gabarit thought-leadership et sur la charte §7 ter : réponse directe, la décision de départ et pourquoi elle paraissait raisonnable, ce qui a cassé et la phrase qui l’a montré, la seconde erreur du choix non mesuré, ce que cela a coûté, La règle écrite en quatre libellés, Rejoué sur le jeu fictif, questions fréquentes, règle à retenir, pour aller plus loin."
     ],
     "blog-image": [
-      "Brief à six composantes écrit (sujet, composition, style, palette épinglée par hex, interdits, alt) ; aucune génération lancée : la passe Higgsfield coûte 3 crédits et attend le go de Kevin, donc image.source reste absent."
+      "Couverture générée depuis le brief à six composantes : deux passes Higgsfield gpt_image_2_5, qualité haute 2K, 6 crédits. La première a été écartée sur la palette et deux symboles parasites ; la seconde est retenue après mesure et revue visuelle."
     ],
     "blog-schema": [
       "BlogPosting, BreadcrumbList, Person, Organization et WebSite émis par ArticleJsonLd.astro depuis le frontmatter ; ImageObject sur la couverture une fois générée ; aucun FAQPage ni HowTo."

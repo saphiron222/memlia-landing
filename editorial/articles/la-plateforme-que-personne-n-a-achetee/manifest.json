@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "slug": "la-plateforme-que-personne-n-a-achetee",
+  "action": "creation",
+  "editorialStatus": "publie",
+  "title": "La plateforme que personne n’a achetée, et ce que le refus m’a appris",
+  "tabTitle": "Pourquoi un cabinet n’adopte pas un nouvel outil | Memlia",
+  "summary": "J’ai construit une application complète pour remplacer les classeurs d’un cabinet. La personne qui allait s’en servir a dit non, pas au prix mais à l’idée d’abandonner son fichier : j’avais ajouté un outil de plus, et choisi les tâches sans les mesurer.",
+  "description": "Une application finie, évaluée, jamais adoptée : pourquoi ajouter un outil est une erreur de cadrage, et la règle de relevé qui en est sortie.",
+  "publicationDate": "2026-10-01",
+  "updatedAt": null,
+  "topics": [
+    "methode",
+    "cabinet",
+    "automatisation",
+    "pilotage"
+  ],
+  "keywords": [
+    "adoption d’un outil en cabinet comptable",
+    "choisir une tâche à automatiser",
+    "relevé de temps par tâche",
+    "automatisation greffée dans un outil existant",
+    "cadrage d’un projet d’automatisation",
+    "règle reproductible"
+  ],
+  "primaryQuery": "pourquoi les cabinets comptables n’adoptent pas les nouveaux outils",
+  "secondaryQueries": [
+    "adoption outil cabinet comptable",
+    "changement de logiciel cabinet comptable resistance"
+  ],
+  "intent": "comprendre",
+  "fanOut": [
+    "pourquoi un outil fini et bien noté peut n’être jamais ouvert",
+    "comment choisir la tâche à automatiser en premier dans un cabinet",
+    "ce qu’il faut relever avant de s’engager sur une automatisation"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "chefs-mission-portefeuille"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-09-19"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "direction-associes",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "TOFU",
+  "cluster": "methode-decision-humaine",
+  "famille": "choisir-cadrer",
+  "contentType": "shareable",
+  "format": "thought-leadership",
+  "task": "Choisir la tâche d’un cabinet qui sera prise en charge en premier, et décider où l’automatisation doit vivre, sans ajouter un outil ni s’engager sur une hypothèse.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Récit du refus du 21/07/2026 et du pivot vers l’outil déjà ouvert, avec le délai mesuré de cinq jours jusqu’à la première recette ; le questionnaire revenu avec toutes ses lignes de réponse vides et le formulaire qui calcule ses propres manques, écrit une semaine plus tard ; trois affirmations documentaires reliées à deux pages ouvertes, plus une troisième page de contexte sans claim attribué.",
+  "sourcesVerifiedAt": "2026-09-19",
+  "sources": [
+    {
+      "id": "plateforme-extension",
+      "publisher": "Microsoft Learn",
+      "title": "Vue d’ensemble de la plateforme de compléments pour Office",
+      "url": "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins",
+      "checkedAt": "2026-09-19",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins",
+      "classificationReason": "Documentation de l’éditeur sur sa propre plateforme d’extension : elle décrit de première main ce qu’une solution greffée dans une application bureautique peut faire et où elle s’exécute.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/plateforme-extension.classification.json",
+      "verificationEvidence": "preuves/sources/plateforme-extension.json"
+    },
+    {
+      "id": "analyse-processus",
+      "publisher": "Microsoft Learn",
+      "title": "Vue d’ensemble de l’exploration de processus dans Power Automate",
+      "url": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
+      "checkedAt": "2026-09-19",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
+      "classificationReason": "Documentation de l’éditeur sur un outil d’analyse de processus, citée pour la démarche qu’elle décrit — partir des données d’exécution pour voir le déroulement réel — et non pour le produit qu’elle documente.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/analyse-processus.classification.json",
+      "verificationEvidence": "preuves/sources/analyse-processus.json"
+    },
+    {
+      "id": "deploiement-test",
+      "publisher": "Google Chrome Enterprise and Education",
+      "title": "Installer le navigateur Chrome sur un parc de postes gérés",
+      "url": "https://support.google.com/chrome/a/answer/9025903?hl=fr",
+      "checkedAt": "2026-09-19",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://support.google.com/chrome/a/answer/9025903?hl=fr",
+      "classificationReason": "Page publique d’aide au déploiement d’un logiciel sur un parc de postes gérés, citée pour la conduite de déploiement qu’elle décrit, pas pour le produit qu’elle documente.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/deploiement-test.classification.json",
+      "verificationEvidence": "preuves/sources/deploiement-test.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "marketing",
+  "reviewRule": "Réviser si le test de reproductibilité ou les échelles de cotation du cadrage changent, et à la publication d’un article de la famille choisir et cadrer ; relecture des sources à six mois.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous relevons d’abord ce que vos gestes répétitifs coûtent en durée et en fréquence, poste par poste, et nous vous disons à voix haute ce que nous écartons. Nous écrivons la règle de la tâche dans vos mots, vous la corrigez, puis nous l’automatisons dans le logiciel, le classeur ou la messagerie que vos équipes ouvrent déjà. Elles la recettent sur un mois réel avant toute extension. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
+  },
+  "image": {
+    "heroId": "img-art-la-plateforme-que-personne-n-a-achetee",
+    "alt": "Diorama 3D isométrique : un bâtiment neuf et fermé à côté d’un établi ouvert où le travail se fait, fond crème",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-09-19"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-09-19"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/methode",
+      "/garanties",
+      "/glossaire#regle-de-cabinet",
+      "/glossaire#proposition-puis-validation",
+      "/glossaire#jeu-d-essai-fictif",
+      "/glossaire#fail-closed"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/suivre-la-production-sociale-dans-excel"
+    ],
+    "decision": "Le pilier cartographie les pôles et les familles de tâches ; l’article sur la production sociale exécute une famille. Celui-ci ne décrit aucune tâche de production : il raconte un cadrage raté et la règle de choix qui en est sortie. Requête primaire, intention et format distincts."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  },
+  "publishedAt": "2026-09-19",
+  "publicationEvidence": "preuves/publication.json"
+}

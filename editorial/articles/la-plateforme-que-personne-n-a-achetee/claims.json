@@ -1,0 +1,404 @@
+{
+  "version": 1,
+  "candidateSlug": "la-plateforme-que-personne-n-a-achetee",
+  "articleSha256": "ddfb4c480460217d2129793740edadf530908ba0350bdeddaaa86ac8973d7574",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-57cba25dbc42",
+      "text": "J’ai construit une application complète pour remplacer les classeurs d’un cabinet. Le jour du rendez-vous, la personne qui allait s’en servir tous les jours a dit non : pas au prix, que je n’ai jamais annoncé, mais à l’idée de quitter un fichier qu’elle tenait depuis quinze ans. Elle avait raison. La règle qui en est sortie : on automatise dans l’outil que le cabinet ouvre déjà, et on choisit la tâche sur un relevé de temps, jamais sur une hypothèse.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ab441841851d",
+      "text": "La décision de départ, et pourquoi elle paraissait raisonnable",
+      "claimIds": []
+    },
+    {
+      "id": "unit-451bca5f2b2b",
+      "text": "Un cabinet d’expertise comptable tenait sa production sociale dans des classeurs. Un pour le suivi, un pour la facturation, un pour les contrôles de fin de mois. Chaque mois, la même personne rouvrait les mêmes fichiers, recopiait les mêmes colonnes d’un export vers un autre, et rattrapait à l’œil les oublis de la fois précédente.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ad5720f26d2b",
+      "text": "Ma conclusion m’a paru évidente : le problème, c’est le classeur, donc on remplace le classeur. J’ai construit une application web complète : fiches clients, facturation du mois, relances, courriers types, et une validation humaine obligatoire avant tout envoi. Une évaluation de design menée en dehors de moi lui a donné 8 sur 10 et la mention « niveau professionnel ». J’avais préparé une offre, un prix, une durée d’engagement.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-28560b05aa93",
+      "text": "Rien là-dedans n’était bâclé. C’était simplement à côté.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9f0a3b8645d3",
+      "text": "Ce qui a cassé, et la phrase qui l’a montré",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ff288bbe815e",
+      "text": "Au rendez-vous de cadrage, la personne qui allait utiliser l’outil tous les jours l’a regardé et a dit non.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6e83b597a4b5",
+      "text": "Pas non au prix : la conversation s’est arrêtée avant que je l’annonce. Non à l’idée d’abandonner un classeur dont elle connaissait chaque onglet, chaque couleur et chaque exception. Et en l’écoutant, j’ai compris ce que j’avais réellement fabriqué. Je ne lui retirais pas un outil : je lui en ajoutais un. Une fenêtre de plus, un mot de passe de plus, un endroit de plus où aller chercher une information qu’elle avait déjà sous les yeux.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9eb4124ba7f7",
+      "text": "C’est la mesure la plus nette que j’aie eue à ce jour, et elle n’a demandé aucun instrument. L’outil existait, il était fini, il était bon, et il n’a pas été adopté. Un logiciel qu’on n’ouvre pas ne vaut rien, quelle que soit sa note.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1922ff459a3f",
+      "text": "J’ai proposé autre chose dans la même heure : on ne remplace pas le classeur, on automatise le travail à l’intérieur. L’expert-comptable a validé le principe le jour même. Cinq jours plus tard, une première automatisation greffée dans ce classeur passait sa recette et servait pour de bon.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-199e38b80305",
+      "text": "Ce déplacement n’a rien d’exotique. La plateforme d’extension d’une suite bureautique existe précisément pour créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office. L’automatisation vit dans le fichier que la personne a déjà sous les yeux : pas de fenêtre en plus, pas de mot de passe en plus. Le geste reste là où il se faisait ; c’est le travail répétitif qui disparaît.",
+      "claimIds": [
+        "claim-unit-199e38b80305-1"
+      ]
+    },
+    {
+      "id": "unit-8baecff4adf8",
+      "text": "La seconde erreur, moins visible : j’avais choisi les tâches sans les mesurer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-af8a519378bf",
+      "text": "Le refus n’était que la moitié de la leçon. L’autre moitié a mis des semaines à se voir.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-42187369df04",
+      "text": "Pour décider quoi automatiser, j’avais regardé les fichiers qu’on m’avait envoyés et j’en avais déduit ce qui devait coûter cher. Déduit. Je n’avais pas relevé combien de temps chaque geste prenait réellement, ni à quelle fréquence il revenait, ni où vivait la donnée dont il avait besoin. J’avais construit sur une intuition bien informée, ce qui reste une intuition.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-be59b0b628f7",
+      "text": "C’est exactement ce que l’analyse de processus fait dans l’autre sens. Elle aide les entreprises à comprendre leurs processus réels, et en partant des données d’exécution elle fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique. Le mot qui compte est réels : ce qui est écrit dans une procédure et ce qui se passe le mardi matin sont deux objets différents, et seul le second se chronomètre.",
+      "claimIds": [
+        "claim-unit-be59b0b628f7-1",
+        "claim-unit-be59b0b628f7-2"
+      ]
+    },
+    {
+      "id": "unit-e3e80169c905",
+      "text": "La preuve que je n’avais rien mesuré était sous mes yeux, et je ne l’ai pas vue. Le questionnaire de ce rendez-vous est reparti avec toutes ses lignes de réponse vides. Personne ne s’en est aperçu pendant des mois, parce qu’un manque qu’aucun contrôle ne compte n’existe pour personne.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-feb6b2d34043",
+      "text": "Une semaine après, j’ai remplacé le questionnaire par un formulaire qui calcule ce qui lui manque : les champs vides et les tâches incomplètes remontent tout seuls dans un bloc à la fin. Un relevé incomplet se voit à la fin du rendez-vous, sur place, pas des mois plus tard.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7677f4691dbe",
+      "text": "Ce que cela a coûté",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b9880e0ec555",
+      "text": "Une application entière construite, évaluée, jamais vendue, jamais mise en service. Des semaines de travail qui n’ont produit aucune valeur pour le cabinet, et un rendez-vous de cadrage à refaire depuis la première question.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-87d6d61e2565",
+      "text": "Je ne mettrai pas de chiffre d’économie en face : je n’en ai pas mesuré. Ce que j’ai mesuré, c’est le délai entre le refus et la première automatisation réellement utilisée, greffée dans l’outil existant. Cinq jours. Le savoir-faire était là depuis le début ; c’est le véhicule qui était faux.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3c0484ca637d",
+      "text": "La frontière. Choisir et cadrer une tâche à automatiser se découpe en trois colonnes, lues avant la première ligne de code.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f86abf51b6e0",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Le relevé des gestes d’un mois : durée, fréquence, où vit la donnée | La liste des tâches retenues et, dites à voix haute, celles qu’on écarte | Le choix de ce que le cabinet veut voir pris en charge en premier | | La règle de la tâche, écrite dans les mots du cabinet | La règle relue et corrigée par la personne qui fait le geste | Le jugement sur ce qui compte comme une exception | | Le rejeu de cette règle sur un jeu d’essai fictif | La recette par la personne qui utilisera l’automatisation | La décision de mettre en service, ou de s’arrêter |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c1baebbfaf76",
+      "text": "La proposition. Ce que nous produisons, c’est un relevé chiffré et une règle écrite ; ce que le cabinet garde, c’est le choix de la tâche et le dernier mot sur la règle. Nous ne proposons plus un outil avant d’avoir relevé le temps qu’il ferait gagner. Et nous ne proposons plus un outil de plus : l’automatisation se greffe dans le logiciel, le classeur ou la messagerie déjà ouverts, c’est la proposition puis validation qui change, pas l’écran.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a27c84f1129d",
+      "text": "L’arrêt. Le cadrage s’arrête et le dit dans trois cas. Quand la règle de cabinet n’est pas reproductible. La question se pose telle quelle : si je prends votre fichier et votre règle, une personne qui ne vous connaît pas produirait-elle exactement le même résultat que vous ? Un non écarte la tâche, même celle qui pèse le plus lourd, et une exception « et parfois d’autres cas » vaut un non : seule une liste finie et énumérable sauve la piste. Quand la donnée nécessaire n’existe dans aucun fichier et vit dans la tête de quelqu’un. Et quand le relevé lui-même est incomplet, parce qu’un cadrage bâti sur des lignes vides est une hypothèse déguisée. Dans ces trois cas, nous refusons de nous engager plutôt que de promettre faux : c’est le principe fail-closed.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-86debe376a0b",
+      "text": "Le jeu d’essai. La règle est rejouée sur un jeu d’essai fictif, des dossiers inventés pour l’exercice qui ne portent aucune donnée de cabinet. Et l’extension ne part pas d’un écran vert : on commence par réaliser rapidement un déploiement test à petite échelle : un poste, une personne, un mois réel, avant d’en parler à quiconque d’autre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a34dbe359751",
+      "text": "| Cas joué | Sortie obtenue | Décision | |---|---|---| | Tâche la plus douloureuse du relevé, règle non reproductible par un tiers | Refus « règle non déterministe : une exception non énumérable » | Écartée, exclusion annoncée à voix haute devant l’équipe | | Tâche discrète, revenant chaque semaine, donnée déjà dans le fichier ouvert | Jeu fictif : 20 minutes × 52 occurrences = 17 h 20 par an, faisabilité haute | Retenue, et passée en premier | | Tâche fréquente dont la donnée ne vit dans aucun fichier | Refus « donnée absente du système d’information » | Ajournée, une source de donnée à créer d’abord | | Relevé rendu avec des lignes de réponse vides | Bloc final listant les champs manquants et les tâches incomplètes | Second passage avant tout engagement |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-83684567987c",
+      "text": "Faut-il donc renoncer à tout nouvel outil ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b838be76a573",
+      "text": "Non. Il faut renoncer à en ajouter un par défaut. La question n’est pas « quel outil », mais « où se fait le geste aujourd’hui ». Si le travail se fait dans un classeur ouvert huit heures par jour, l’automatisation doit y vivre. Si un logiciel métier est déjà le point d’entrée, elle s’y branche. Un écran neuf se justifie quand la tâche n’a aujourd’hui aucun endroit où se faire.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-aa0c53e66fca",
+      "text": "Combien de temps prend un relevé sérieux ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-cd3917d656cb",
+      "text": "Un passage sur place, poste par poste, avec un formulaire qui chiffre chaque geste en durée et en fréquence et qui signale ses propres trous. Puis un second passage si le premier est revenu incomplet. C’est plus long qu’une intuition, et c’est la seule façon de ne pas construire quelque chose que personne n’ouvrira.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d6d83452c26c",
+      "text": "Et si la tâche la plus pénible est justement celle qu’on écarte ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-15b125ed38f9",
+      "text": "Cela arrive, et c’est le cas le plus difficile à annoncer. Une règle qu’un tiers ne peut pas reproduire produira des résultats faux dès qu’elle sortira des mains de son auteur. Nous le disons devant la personne concernée, avec la raison, et nous cherchons ce qui peut être automatisé autour : la préparation, le contrôle, la mise en forme, pendant que le jugement reste humain.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2ae6e12a33ae",
+      "text": "Pourquoi publier un échec plutôt qu’une réussite ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a63320460a97",
+      "text": "Parce que la règle qui compte vient de là. Un cabinet reconnaît tout de suite quelqu’un qui a déjà payé une erreur, et une méthode qui n’a jamais rien coûté à personne n’est qu’un argument commercial.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-81e4e35f3d4d",
+      "text": "On n’ajoute pas un outil à une équipe : on automatise le travail là où il se fait déjà. Et on ne choisit pas une tâche parce qu’elle a l’air coûteuse, on la choisit sur un relevé de durée et de fréquence, avec une règle qu’un tiers saurait reproduire. Tant que ces deux conditions ne sont pas réunies, il n’y a rien à vendre et rien à construire.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-346b5e03b19b",
+      "text": "- La carte des tâches d’un cabinet comptable, pour situer une tâche avant de la cadrer. - Suivre la production sociale dans un classeur, un exemple de tâche reprise dans l’outil déjà ouvert. - Notre méthode et nos garanties, qui décrivent le relevé, la règle écrite et la recette.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-199e38b80305-1",
+      "unitId": "unit-199e38b80305",
+      "claim": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
+      "type": "information",
+      "sourceIds": [
+        "plateforme-extension"
+      ],
+      "sourceExcerpts": {
+        "plateforme-extension": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office"
+      },
+      "checkedAt": "2026-09-19",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-19",
+        "sourceResults": [
+          {
+            "sourceId": "plateforme-extension",
+            "sourceUrl": "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins",
+            "verifiedUrl": "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins",
+            "excerpt": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
+            "context": "\t <div class=\"content\"><p>Utilisez la plateforme des compléments Office pour créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office. En utilisant Compléments Office, vous pouvez utiliser des technologies web familières telles que HTML, CSS et JavaScript pour étendre Outlook, Excel, Word, PowerPoint, OneNote et Project et interagir avec eux. Votre solution peut s’exécuter dans Office sur plusieurs plateformes, notamment Windows, Mac, iPad et dans un navigateur.</p>",
+            "contextSha256": "a9789b2b4419654622623bbd56224708e623f5b0bd7366cbe989b5fb43ca3e5f",
+            "citation": {
+              "text": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
+              "sha256": "0d66c08b928f16edc318248bc4aeea7db8b1b54a3f2032af963696f7ae853fd7",
+              "sourceContentSha256": "336002aa13b2f9b144d33e3f040da6c4911498df669e86de1dc0c0cad6381495",
+              "coordinates": {
+                "finalUrl": "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins",
+                "checkedAt": "2026-09-19",
+                "title": "Vue d’ensemble de la plateforme de compléments pour Office",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 707,
+                  "endLine": 707
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "creer",
+                "solutions",
+                "etendent",
+                "applications",
+                "office",
+                "interagissent",
+                "contenu",
+                "documents"
+              ],
+              "reasoning": "La citation, relevée à la ligne 707 de la copie locale de Microsoft Learn, porte les mêmes entités que le claim (creer, solutions, etendent, applications, office, interagissent, contenu, documents) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La phrase de la documentation de l’éditeur est reprise mot pour mot ; seule la formule d’introduction change, la capacité décrite et son périmètre restent ceux de la source.",
+            "checkedAt": "2026-09-19"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-be59b0b628f7-1",
+      "unitId": "unit-be59b0b628f7",
+      "claim": "Elle aide les entreprises à comprendre leurs processus réels",
+      "type": "information",
+      "sourceIds": [
+        "analyse-processus"
+      ],
+      "sourceExcerpts": {
+        "analyse-processus": "aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration"
+      },
+      "checkedAt": "2026-09-19",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-19",
+        "sourceResults": [
+          {
+            "sourceId": "analyse-processus",
+            "sourceUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
+            "verifiedUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
+            "excerpt": "aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration",
+            "context": "\t <div class=\"content\"><p>L’exploration de processus est un domaine de recherche et une technologie qui aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration, d’automatisation et de digitalisation.</p>",
+            "contextSha256": "974793faceabf7c196b7cd156d57b3d20d3d6913ff56af6b6fd1cd9d155bb205",
+            "citation": {
+              "text": "aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration",
+              "sha256": "ecf2c590671439fe84f13dfe8e1f7a0c662d4f3e10be999303da355698fc1a43",
+              "sourceContentSha256": "46c2ff5b8c2e942d98fcd1eceb53f6c5345bed707c97229a19deab2d4267a3e5",
+              "coordinates": {
+                "finalUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
+                "checkedAt": "2026-09-19",
+                "title": "Vue d’ensemble de l’exploration de processus dans Power Automate",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 719,
+                  "endLine": 719
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "aide",
+                "entreprises",
+                "comprendre",
+                "processus",
+                "reels"
+              ],
+              "reasoning": "La citation, relevée à la ligne 719 de la copie locale de Microsoft Learn, porte les mêmes entités que le claim (aide, entreprises, comprendre, processus, reels) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Reprise à l’identique du début de la définition donnée par la documentation de l’éditeur ; la suite de la phrase est omise et rien n’est ajouté à sa portée.",
+            "checkedAt": "2026-09-19"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-be59b0b628f7-2",
+      "unitId": "unit-be59b0b628f7",
+      "claim": "en partant des données d’exécution elle fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
+      "type": "information",
+      "sourceIds": [
+        "analyse-processus"
+      ],
+      "sourceExcerpts": {
+        "analyse-processus": "fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique"
+      },
+      "checkedAt": "2026-09-19",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-19",
+        "sourceResults": [
+          {
+            "sourceId": "analyse-processus",
+            "sourceUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
+            "verifiedUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
+            "excerpt": "fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
+            "context": "<p>La valeur commerciale de la fonctionnalité d’exploration de processus réside dans sa capacité à aider les organisations à obtenir des informations sur leurs processus opérationnels et à identifier les domaines à améliorer. En analysant les données d’événements de diverses sources, la fonctionnalité d’exploration de processus fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique. Cette vue aide les entreprises à :</p>",
+            "contextSha256": "50f1d4342a11eee03563085cf4b1273d93f8746b53442b6f23ce3a72457f82f2",
+            "citation": {
+              "text": "fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
+              "sha256": "9ff5bd199e588d86de4ead38b550764d57ea515cf19170fdc9cfa19b0a7a1192",
+              "sourceContentSha256": "46c2ff5b8c2e942d98fcd1eceb53f6c5345bed707c97229a19deab2d4267a3e5",
+              "coordinates": {
+                "finalUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
+                "checkedAt": "2026-09-19",
+                "title": "Vue d’ensemble de l’exploration de processus dans Power Automate",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 723,
+                  "endLine": 723
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "fournit",
+                "claire",
+                "maniere",
+                "dont",
+                "processus",
+                "reellement",
+                "executes",
+                "pratique"
+              ],
+              "reasoning": "La citation, relevée à la ligne 723 de la copie locale de Microsoft Learn, porte les mêmes entités que le claim (fournit, claire, maniere, dont, processus, reellement, executes, pratique) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Phrase de la documentation de l’éditeur reprise à l’identique ; la mention des données d’événements est résumée en données d’exécution sans changer ce qui est affirmé.",
+            "checkedAt": "2026-09-19"
+          }
+        ]
+      }
+    }
+  ]
+}

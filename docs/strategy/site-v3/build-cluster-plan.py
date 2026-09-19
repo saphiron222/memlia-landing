@@ -84,18 +84,36 @@ def planifier(entrees, publies):
     # La série « Cicatrices » (charte §7 ter) passe d'abord : un article par mois, sur un créneau
     # ordinaire et jamais en plus. Sans cette passe, ses entrées de priorité 3 tomberaient en fin de
     # calendrier, ce qui n'est pas « un par mois ».
-    mois = None
-    for e in [x for x in entrees if x.get('serie') and x['slug'] not in publies]:
-        # La série démarre le mois SUIVANT : le créneau du jour appartient déjà à un article prêt,
-        # et un article signé demande à Kevin le temps de le relire avant publication.
-        base = PREMIER_JOUR if mois is None else mois
-        candidat = date(base.year + (base.month == 12), base.month % 12 + 1, 1)
-        while not (candidat.weekday() in JOURS_DE_PUBLICATION and par_jour[candidat] < PAR_JOUR_MAX and par_semaine[semaine_iso(candidat)] < PAR_SEMAINE_MAX):
-            candidat += timedelta(days=1)
+    series = [x for x in entrees if x.get('serie') and x['slug'] not in publies]
+    mois_reserves = set()
+
+    def reserver_cicatrice(e, candidat):
+        cle_mois = (candidat.year, candidat.month)
+        if cle_mois in mois_reserves:
+            raise SystemExit(f"deux cicatrices le même mois : {e['slug']} ({candidat.isoformat()})")
+        if not (candidat.weekday() in JOURS_DE_PUBLICATION and par_jour[candidat] < PAR_JOUR_MAX and par_semaine[semaine_iso(candidat)] < PAR_SEMAINE_MAX):
+            raise SystemExit(f"date de cicatrice indisponible : {e['slug']} ({candidat.isoformat()})")
         e['date'] = candidat.isoformat()
         e['statut'] = 'planned'
         par_jour[candidat] += 1
         par_semaine[semaine_iso(candidat)] += 1
+        mois_reserves.add(cle_mois)
+
+    # Les dates portées par le backlog sont des décisions éditoriales : elles se réservent avant
+    # le calcul des autres mois et ne bougent jamais au gré d'une régénération.
+    for e in [x for x in series if x.get('date')]:
+        reserver_cicatrice(e, date.fromisoformat(e['date']))
+
+    mois = PREMIER_JOUR
+    for e in [x for x in series if not x.get('date')]:
+        # Sans date explicite, la série démarre au premier mois libre suivant : un article signé
+        # demande à Kevin le temps de le relire avant publication.
+        candidat = date(mois.year + (mois.month == 12), mois.month % 12 + 1, 1)
+        while (candidat.year, candidat.month) in mois_reserves:
+            candidat = date(candidat.year + (candidat.month == 12), candidat.month % 12 + 1, 1)
+        while not (candidat.weekday() in JOURS_DE_PUBLICATION and par_jour[candidat] < PAR_JOUR_MAX and par_semaine[semaine_iso(candidat)] < PAR_SEMAINE_MAX):
+            candidat += timedelta(days=1)
+        reserver_cicatrice(e, candidat)
         mois = candidat
 
     jour = PREMIER_JOUR
@@ -262,7 +280,7 @@ def ecrire_md(data, familles):
 def ecrire_calendrier(pilier, satellites, familles, poles):
     tous = sorted([pilier] + satellites, key=lambda e: (e['date'], e['slug']))
     L = ['# Calendrier éditorial v3 — quatre articles par semaine', '',
-         f"Généré le {date.today().strftime("%d/%m/%Y")} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles par semaine, deux par jour au plus, du lundi au jeudi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
+         f"Généré le {date.today().strftime('%d/%m/%Y')} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles par semaine, deux par jour au plus, du lundi au jeudi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
          '## Règles', '',
          "- Ordre de production : les articles publiés d'abord, puis la priorité mesurée 1 → 3 (1 : la requête primaire a des suggestions d'autocomplétion Google ; 2 : seule une requête secondaire en a ; 3 : aucune demande mesurée — relevé `scripts/seo/questions.mjs`, bloc `demande` de chaque angle), puis l'angle (méthode, contrôle ou checklist, exceptions et refus, définition), puis l'ordre des familles dans la taxonomie.",
          '- Chaque famille active compte quatre angles ; aucune famille n’est épuisée avant que toutes n’aient leur méthode.',

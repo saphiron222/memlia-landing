@@ -16,7 +16,7 @@ La plupart de ces règles existent déjà dans votre cabinet. Elles ne sont écr
 
 Chaque famille ci-dessous est décrite par sa règle typique, puis par sa frontière, en trois colonnes. Ce qui se prépare seul : l’outil calcule, trie, relance, contrôle, sans que personne n’intervienne. Ce qui attend une validation : l’outil propose, une personne du cabinet valide avant que quoi que ce soit ne parte ou ne s’écrive. Ce qui reste humain : le jugement professionnel, la relation, la décision engageante. Cette frontière n’est pas un aveu de faiblesse de l’outil, c’est la règle de cabinet elle-même. Ce classement est une méthode Memlia, née d’un cabinet observé de près et de deux postes documentés ; il se corrige à chaque cabinet rencontré.
 
-Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. Les règles décrites se posent sur les classeurs, les messageries et les logiciels de production que le cabinet utilise déjà. Quand une famille est déjà documentée par un article détaillé, le lien y mène ; les autres articles viennent semaine après semaine, la carte se complète.
+Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. Les règles décrites se posent sur les classeurs, les messageries et les logiciels de production que le cabinet utilise déjà. [La plateforme que personne n’a achetée](/blog/la-plateforme-que-personne-n-a-achetee) raconte pourquoi cette règle existe. Quand une famille est déjà documentée par un article détaillé, le lien y mène ; les autres articles viennent semaine après semaine, la carte se complète.
 
 ## La carte en un tableau
 

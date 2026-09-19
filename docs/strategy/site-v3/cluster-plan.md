@@ -547,7 +547,7 @@ Relier les logiciels par API ou par fichiers, sans ressaisie ni double écriture
 | 2027-05-06 | [La checklist avant de brancher un connecteur entre deux logiciels](/blog/checklist-avant-de-brancher-un-connecteur-entre-deux-logiciels-du-cabinet) | checklist connecteur logiciels cabinet comptable | listicle-checklist | numerique-it-data | 3 | planned |
 | 2027-08-09 | [Les échecs de synchronisation qu'un connecteur signale sans rejouer seul](/blog/les-echecs-de-synchronisation-qu-un-connecteur-doit-toujours-signaler-sans-rejouer-seul) | échec de synchronisation connecteur cabinet comptable | how-to-guide | numerique-it-data | 3 | planned |
 | 2027-10-20 | [Qu'est-ce qu'un connecteur entre logiciels, et quand s'en passer ?](/blog/qu-est-ce-qu-un-connecteur-entre-logiciels-et-quand-s-en-passer) | définition connecteur logiciel cabinet comptable | faq-knowledge | numerique-it-data | 3 | planned |
-| 2026-10-01 | [L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »](/blog/l-outil-qui-ne-se-chargeait-jamais) | pourquoi une installation logicielle echoue en cabinet | thought-leadership | numerique-it-data | 3 | planned |
+| 2026-11-02 | [L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »](/blog/l-outil-qui-ne-se-chargeait-jamais) | pourquoi une installation logicielle echoue en cabinet | thought-leadership | numerique-it-data | 3 | planned |
 
 ### AI Act et conformité des outils (`ai-act-conformite`)
 
@@ -606,7 +606,7 @@ Qualifier les tâches candidates, choisir la première, écrire le cadre.
 | 2027-05-17 | [Choisir la première tâche à automatiser](/blog/choisir-la-premiere-tache-a-automatiser) | quelle tâche automatiser cabinet comptable | how-to-guide | direction-associes | 3 | planned |
 | 2027-08-17 | [Les signaux qui disent qu'une tâche n'est pas prête à être automatisée](/blog/les-signaux-qui-disent-qu-une-tache-n-est-pas-prete-a-etre-automatisee) | quand ne pas automatiser une tâche cabinet comptable | listicle-checklist | direction-associes | 3 | planned |
 | 2027-10-28 | [Qu'est-ce qu'une tâche répétitive automatisable, dans un cabinet comptable ?](/blog/qu-est-ce-qu-une-tache-repetitive-automatisable-dans-un-cabinet-comptable) | définition tâche automatisable cabinet comptable | faq-knowledge | direction-associes | 3 | planned |
-| 2026-11-02 | [La plateforme que personne n'a achetée, et ce que le refus m'a appris](/blog/la-plateforme-que-personne-n-a-achetee) | pourquoi les cabinets comptables n'adoptent pas les nouveaux outils | thought-leadership | direction-associes | 3 | planned |
+| 2026-10-01 | [La plateforme que personne n'a achetée, et ce que le refus m'a appris](/blog/la-plateforme-que-personne-n-a-achetee) | pourquoi les cabinets comptables n'adoptent pas les nouveaux outils | thought-leadership | direction-associes | 3 | planned |
 
 ### Règle, jeu d’essai et recette (`regle-jeu-essai-recette`)
 

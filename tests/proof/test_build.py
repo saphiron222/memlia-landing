@@ -21,7 +21,9 @@ PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-pr
                    # v3, 16/09/2026 : le pilier et le premier satellite publiés par la forge.
                    'automatiser-un-cabinet-comptable-la-carte-des-taches', 'automatiser-la-relance-des-pieces-clients',
                    # v3, 17/09/2026 : deuxième satellite, famille « Saisie, OCR et pré-comptabilité ».
-                   'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'}
+                   'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
+                   # v3, 19/09/2026 : première cicatrice, relue et validée par Kevin.
+                   'la-plateforme-que-personne-n-a-achetee'}
 
 
 class Document(HTMLParser):

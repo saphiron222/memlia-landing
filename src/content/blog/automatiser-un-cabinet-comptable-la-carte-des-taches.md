@@ -23,7 +23,7 @@ tache: "Dresser la carte des tâches automatisables du cabinet et repérer celle
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-17
+  date: 2026-09-19
 funnel: TOFU
 contentType: searchable
 format: pillar-page
@@ -33,7 +33,7 @@ proofStatus: verifiee
 proofRequired: "Douze pôles et soixante familles listés depuis src/data/familles.ts ; pour chacun des onze pôles ouverts, un tableau se-prépare-seul / attend-une-validation / reste-humain ; le douzième (audit légal) listé et non ouvert ; cinq affirmations sourcées sur des pages officielles ouvertes le jour de la publication."
 reviewRule: "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-17
+sourcesVerifieesLe: 2026-09-19
 cta:
   label: "Confier une première tâche"
   destination: "/contact"
@@ -45,23 +45,23 @@ sources:
   - editeur: "Service Public"
     titre: "Quels sont les délais de conservation des documents pour les entreprises ?"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F10029"
-    consulte: 2026-09-17
+    consulte: 2026-09-19
   - editeur: "CNIL"
     titre: "Règlement européen sur la protection des données, chapitre 2 : principes"
     url: "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2"
-    consulte: 2026-09-17
+    consulte: 2026-09-19
   - editeur: "CNIL"
     titre: "Les durées de conservation des données"
     url: "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees"
-    consulte: 2026-09-17
+    consulte: 2026-09-19
   - editeur: "impots.gouv.fr"
     titre: "Calendrier fiscal des professionnels"
     url: "https://www.impots.gouv.fr/professionnel/calendrier-fiscal"
-    consulte: 2026-09-17
+    consulte: 2026-09-19
   - editeur: "Net-entreprises"
     titre: "Les comptes rendus métiers DSN"
     url: "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/"
-    consulte: 2026-09-17
+    consulte: 2026-09-19
 ---
 
 ## Réponse directe
@@ -82,7 +82,7 @@ La plupart de ces règles existent déjà dans votre cabinet. Elles ne sont écr
 
 Chaque famille ci-dessous est décrite par sa règle typique, puis par sa frontière, en trois colonnes. Ce qui se prépare seul : l’outil calcule, trie, relance, contrôle, sans que personne n’intervienne. Ce qui attend une validation : l’outil propose, une personne du cabinet valide avant que quoi que ce soit ne parte ou ne s’écrive. Ce qui reste humain : le jugement professionnel, la relation, la décision engageante. Cette frontière n’est pas un aveu de faiblesse de l’outil, c’est la règle de cabinet elle-même. Ce classement est une méthode Memlia, née d’un cabinet observé de près et de deux postes documentés ; il se corrige à chaque cabinet rencontré.
 
-Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. Les règles décrites se posent sur les classeurs, les messageries et les logiciels de production que le cabinet utilise déjà. Quand une famille est déjà documentée par un article détaillé, le lien y mène ; les autres articles viennent semaine après semaine, la carte se complète.
+Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. Les règles décrites se posent sur les classeurs, les messageries et les logiciels de production que le cabinet utilise déjà. [La plateforme que personne n’a achetée](/blog/la-plateforme-que-personne-n-a-achetee) raconte pourquoi cette règle existe. Quand une famille est déjà documentée par un article détaillé, le lien y mène ; les autres articles viennent semaine après semaine, la carte se complète.
 
 ## La carte en un tableau
 

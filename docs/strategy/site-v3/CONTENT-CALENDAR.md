@@ -47,7 +47,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-09-28 | [Manuel de procédures d'un cabinet d'expertise comptable : écrire les règles qui tournent](/blog/manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent) | Règle, jeu d’essai et recette | Méthode et décision humaine | how-to-guide | 1 | planned |
 | 2026-09-29 | [Mentions obligatoires de la facture électronique : la checklist avant le passage](/blog/checklist-de-conformite-avant-le-passage-a-la-facture-electronique) | Facture électronique et e-reporting | Production comptable | listicle-checklist | 1 | planned |
 | 2026-09-30 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | DSN et comptes rendus métier | Paie et social | listicle-checklist | 1 | planned |
-| 2026-10-01 | [L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »](/blog/l-outil-qui-ne-se-chargeait-jamais) | Connecteurs, imports et synchronisation | Numérique, IT et data | thought-leadership | 3 | planned |
+| 2026-10-01 | [La plateforme que personne n'a achetée, et ce que le refus m'a appris](/blog/la-plateforme-que-personne-n-a-achetee) | Choisir et cadrer une automatisation | Méthode et décision humaine | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W41
 
@@ -89,7 +89,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 
 | Date | Article | Famille | Pôle | Format | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-11-02 | [La plateforme que personne n'a achetée, et ce que le refus m'a appris](/blog/la-plateforme-que-personne-n-a-achetee) | Choisir et cadrer une automatisation | Méthode et décision humaine | thought-leadership | 3 | planned |
+| 2026-11-02 | [L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »](/blog/l-outil-qui-ne-se-chargeait-jamais) | Connecteurs, imports et synchronisation | Numérique, IT et data | thought-leadership | 3 | planned |
 | 2026-11-02 | [Délai de dépôt des comptes au greffe : le calendrier que le cabinet tient par dossier](/blog/quel-est-le-delai-legal-pour-approuver-les-comptes-annuels) | Approbation des comptes et secrétariat juridique | Juridique et fiscal | faq-knowledge | 1 | planned |
 | 2026-11-03 | [Transfert de siège social : les formalités, et ce qui se prépare seul au cabinet](/blog/quelles-formalites-declencher-lors-d-une-modification-statutaire) | Création, modifications et formalités | Juridique et fiscal | faq-knowledge | 1 | planned |
 | 2026-11-04 | [Qu'est-ce que le registre des bénéficiaires effectifs ?](/blog/qu-est-ce-que-le-registre-des-beneficiaires-effectifs) | Registres et obligations périodiques | Juridique et fiscal | faq-knowledge | 1 | planned |

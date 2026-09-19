@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-  "articleSha256": "03dfaab5f4d211d303f7f5e28bcb480847d15b23b34920a1f8c8d44cf36be6a6",
-  "manifestSha256": "bfc5cb1edb11ed92175ee3c1125a7076f4c604de8977573d255fe6cb2b1247ed",
+  "articleSha256": "741bf5c70b4dc085065fc36a7610635973d2d2d743f19c502a1b23b1f49b4697",
+  "manifestSha256": "4cdc8d045243581ec473b2b06c6d754c822749f263008129775c34e99a9c0aad",
   "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
@@ -39,5 +39,15 @@
   "directionArt": 18,
   "semanticRelevance": 22,
   "p0": [],
-  "kevinApproved": true
+  "kevinApproved": true,
+  "palette": {
+    "statut": "PASS",
+    "parts": {
+      "#fcfbf7": 0.7209722222222222,
+      "#27b657": 0.022083333333333333,
+      "#1c8a41": 0.028090277777777777,
+      "#231f20": 0.025225694444444443
+    },
+    "ecarts": []
+  }
 }
