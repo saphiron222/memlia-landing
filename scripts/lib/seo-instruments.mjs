@@ -9,8 +9,6 @@ import { existsSync, readFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 
-export const CLAUDE_SEO = join(homedir(), '.claude/skills/seo/bin/claude-seo');
-export const PYTHON_SEO = join(homedir(), '.claude/skills/seo/.venv/bin/python');
 export const ORIGINE = 'https://memlia.fr';
 export const UA_VERIFICATEUR = 'MemliaBlogSourceVerifier/1.0 (+https://memlia.fr)';
 export const UA_NAVIGATEUR = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36 MemliaSeoCron/1.0';
@@ -144,32 +142,56 @@ export function executer(commande, args, { timeoutMs = 120_000, cwd = process.cw
   return { code: r.status, sortie: r.stdout ?? '', erreur: r.stderr ?? '', signal: r.signal ?? null, echec: r.error?.message ?? null };
 }
 
-export const claudeSeo = (script, args = [], options = {}) => executer(CLAUDE_SEO, ['run', script, ...args], options);
+/** Runtime Python du pack SEO utilisé par les profils GPT de Hermes. */
+export function resoudreRuntimeSeo({ home = homedir(), env = process.env } = {}) {
+  const racine = env.MEMLIA_SEO_RUNTIME_ROOT || join(home, 'hermes/packs/claude-seo');
+  return {
+    python: env.MEMLIA_SEO_PYTHON || join(racine, '.venv/bin/python'),
+    scripts: env.MEMLIA_SEO_SCRIPTS || join(racine, 'scripts'),
+    browsers: env.PLAYWRIGHT_BROWSERS_PATH || join(racine, 'ms-playwright'),
+  };
+}
+
+export function executerSeo(script, args = [], { runtime = resoudreRuntimeSeo(), ...options } = {}) {
+  if (!/^[A-Za-z0-9][A-Za-z0-9_-]*\.py$/.test(script)) {
+    return { code: 2, sortie: '', erreur: `script SEO invalide : ${script}`, signal: null, echec: null };
+  }
+  const env = {
+    ...process.env,
+    ...(options.env ?? {}),
+    PYTHONUTF8: '1',
+    PYTHONIOENCODING: 'utf-8',
+    ...(runtime.browsers ? { PLAYWRIGHT_BROWSERS_PATH: runtime.browsers } : {}),
+  };
+  return executer(runtime.python, [join(runtime.scripts, script), ...args], { ...options, env });
+}
+
+const sortieOutil = (resultat) => resultat.sortie || resultat.erreur || resultat.echec || `code de sortie ${resultat.code}`;
 
 export function gscPy(root, sousCommande, args = []) {
-  const r = executer(PYTHON_SEO, [join(root, 'scripts/seo/gsc.py'), sousCommande, ...args], { timeoutMs: 600_000, cwd: root });
+  const r = executer(resoudreRuntimeSeo().python, [join(root, 'scripts/seo/gsc.py'), sousCommande, ...args], { timeoutMs: 600_000, cwd: root });
   return { ...r, json: analyserSortieJson(r.sortie) };
 }
 
 export function deriveComparer(url, { commitBaseline = null } = {}) {
-  const r = claudeSeo('drift_compare.py', [url, '--skip-cwv'], { timeoutMs: 90_000 });
-  return lireDerive({ sortie: r.sortie || r.erreur, code: r.code, url, commitBaseline });
+  const r = executerSeo('drift_compare.py', [url, '--skip-cwv'], { timeoutMs: 90_000 });
+  return lireDerive({ sortie: sortieOutil(r), code: r.code, url, commitBaseline });
 }
 
 export function derivePoser(url) {
-  const r = claudeSeo('drift_baseline.py', [url, '--skip-cwv'], { timeoutMs: 90_000 });
+  const r = executerSeo('drift_baseline.py', [url, '--skip-cwv'], { timeoutMs: 90_000 });
   const json = analyserSortieJson(r.sortie);
   const ok = Boolean(json) && json.status === 'ok';
-  return { url, ok, baselineId: json?.baseline_id ?? null, message: ok ? null : (r.erreur || r.sortie).trim().slice(0, 300) };
+  return { url, ok, baselineId: json?.baseline_id ?? null, message: ok ? null : sortieOutil(r).trim().slice(0, 300) };
 }
 
 export function psiMobile(url) {
-  const r = claudeSeo('pagespeed_check.py', [url, '--strategy', 'mobile', '--psi-only', '--json'], { timeoutMs: 180_000 });
+  const r = executerSeo('pagespeed_check.py', [url, '--strategy', 'mobile', '--psi-only', '--json'], { timeoutMs: 180_000 });
   return lirePsi(analyserSortieJson(r.sortie), { url });
 }
 
 export function cruxOrigine(url) {
-  const r = claudeSeo('pagespeed_check.py', [url, '--crux-only', '--json'], { timeoutMs: 60_000 });
+  const r = executerSeo('pagespeed_check.py', [url, '--crux-only', '--json'], { timeoutMs: 60_000 });
   const json = analyserSortieJson(r.sortie);
   if (!json) return { disponible: false, message: 'réponse vide de CrUX' };
   if (json.error) return { disponible: false, message: String(json.error) };
@@ -351,13 +373,13 @@ export async function referentsCloudflare({ compte, depuis, jusqu, hote = '%meml
 }
 
 export function porteDeCout(endpoint, count) {
-  const r = claudeSeo('dataforseo_costs.py', ['check', endpoint, '--count', String(count)], { timeoutMs: 30_000 });
+  const r = executerSeo('dataforseo_costs.py', ['check', endpoint, '--count', String(count)], { timeoutMs: 30_000 });
   const json = analyserSortieJson(r.sortie);
-  return { statut: json?.status ?? 'inconnu', coutPrevu: json?.total_cost_usd ?? null, resteJour: json?.daily_remaining_usd ?? null, message: json ? null : (r.erreur || r.sortie).trim().slice(0, 200) };
+  return { statut: json?.status ?? 'inconnu', coutPrevu: json?.total_cost_usd ?? null, resteJour: json?.daily_remaining_usd ?? null, message: json ? null : sortieOutil(r).trim().slice(0, 200) };
 }
 
 export function journaliserCout(endpoint, cout) {
-  const r = claudeSeo('dataforseo_costs.py', ['log', endpoint, String(cout)], { timeoutMs: 30_000 });
+  const r = executerSeo('dataforseo_costs.py', ['log', endpoint, String(cout)], { timeoutMs: 30_000 });
   return r.code === 0;
 }
 
@@ -381,8 +403,8 @@ export function indexNow(root, urls, { verifierSeulement = false } = {}) {
   const args = ['--host', 'memlia.fr', '--key', cle.cle, '--key-location', cle.emplacement, '--json'];
   if (verifierSeulement) args.push('--verify-only');
   else args.push('--urls', ...urls);
-  const r = claudeSeo('indexnow_submit.py', args, { timeoutMs: 60_000 });
+  const r = executerSeo('indexnow_submit.py', args, { timeoutMs: 60_000 });
   const json = analyserSortieJson(r.sortie);
   const ok = r.code === 0 && (json?.ok ?? true);
-  return { ok, statut: ok ? (verifierSeulement ? 'verifie' : 'envoye') : 'echec', message: ok ? null : (r.erreur || r.sortie).trim().slice(0, 300), json };
+  return { ok, statut: ok ? (verifierSeulement ? 'verifie' : 'envoye') : 'echec', message: ok ? null : sortieOutil(r).trim().slice(0, 300), json };
 }

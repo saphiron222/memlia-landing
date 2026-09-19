@@ -9,8 +9,11 @@
  * Les fonctions de calcul sont pures (l'argument reçu n'est jamais muté) ; la lecture et l'écriture
  * sont explicites et séparées. Aucune donnée nominative ne transite ici.
  */
+import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+
+import { PUBLICATION_SEAL_PATH, validatePublicationSeal } from './blog-pipeline.mjs';
 
 export const CHEMINS = Object.freeze({
   mesures: 'docs/strategy/site-v3/mesures',
@@ -205,23 +208,42 @@ export function lireFrontmatter(markdown) {
   return champs;
 }
 
+function publicationScellee(root, slug, markdown) {
+  const dossier = join(root, 'editorial/articles', slug);
+  const manifestPath = join(dossier, 'manifest.json');
+  if (!existsSync(manifestPath) || !existsSync(join(dossier, PUBLICATION_SEAL_PATH))) return false;
+  try {
+    const manifestBytes = readFileSync(manifestPath);
+    const manifest = JSON.parse(manifestBytes.toString('utf8'));
+    const sha256 = (contenu) => createHash('sha256').update(contenu).digest('hex');
+    return validatePublicationSeal(dossier, manifest, {
+      slug,
+      articleHash: sha256(markdown),
+      manifestHash: sha256(manifestBytes),
+    }).length === 0;
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Les articles publiés du site, tels que les sources les décrivent : le frontmatter fait foi
  * (`brouillon: false` comme pour le site, `datePublication`, `famille`, `primaryQuery`), la recette
  * complète ce qui manque. Un article sans requête connue est rendu avec `requete: null` : c'est au
  * registre de la porter (les trois articles antérieurs à la v3).
  */
-export function articlesPublies(root, { aujourdhui } = {}) {
+export function articlesPublies(root, { aujourdhui, inclureScellesFuturs = false } = {}) {
   const dossier = join(root, 'src/content/blog');
   if (!existsSync(dossier)) return [];
   const jour = aujourdhui ?? new Date().toISOString().slice(0, 10);
   const articles = [];
   for (const fichier of readdirSync(dossier).filter((f) => f.endsWith('.md')).sort()) {
     const slug = fichier.slice(0, -3);
-    const fm = lireFrontmatter(readFileSync(join(dossier, fichier), 'utf8'));
+    const markdown = readFileSync(join(dossier, fichier), 'utf8');
+    const fm = lireFrontmatter(markdown);
     if (fm.brouillon !== false) continue;
     const publieLe = typeof fm.datePublication === 'string' ? fm.datePublication.slice(0, 10) : null;
-    if (publieLe && publieLe > jour) continue;
+    if (publieLe && publieLe > jour && !(inclureScellesFuturs && fm.statutEditorial === 'publie' && publicationScellee(root, slug, markdown))) continue;
     const recette = lireJson(join(root, 'editorial/recettes', slug, 'recette.json'), null);
     const secondaires = Array.isArray(fm.secondaryQueries) ? fm.secondaryQueries : Array.isArray(recette?.secondaryQueries) ? recette.secondaryQueries : [];
     articles.push({

@@ -1,15 +1,20 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 import {
   analyserSortieJson,
   cheminDepuisUrl,
   estTexte,
+  executerSeo,
   extraireLiensSitemap,
   lireDerive,
   lireMisesAJourGoogle,
   lirePsi,
   lireSerpDataForSeo,
+  resoudreRuntimeSeo,
 } from '../../scripts/lib/seo-instruments.mjs';
 
 test('analyserSortieJson lit un objet JSON précédé de lignes de texte', () => {
@@ -132,6 +137,25 @@ test('estTexte ne lit le corps que des réponses textuelles', () => {
   assert.equal(estTexte('application/xhtml+xml'), true);
   assert.equal(estTexte('application/pdf'), false);
   assert.equal(estTexte(null), true);
+});
+
+test('le runtime SEO GPT exécute directement les scripts du pack Hermes sans lanceur Claude', () => {
+  const runtime = resoudreRuntimeSeo({ home: '/utilisateur', env: {} });
+  assert.equal(runtime.python, '/utilisateur/hermes/packs/claude-seo/.venv/bin/python');
+  assert.equal(runtime.scripts, '/utilisateur/hermes/packs/claude-seo/scripts');
+  assert.doesNotMatch(runtime.python, /\.claude/);
+
+  const root = mkdtempSync(join(tmpdir(), 'memlia-seo-runtime-'));
+  try {
+    const scripts = join(root, 'scripts');
+    mkdirSync(scripts);
+    writeFileSync(join(scripts, 'outil.py'), 'console.log(JSON.stringify({ runtime: "gpt", args: process.argv.slice(2) }));\n');
+    const resultat = executerSeo('outil.py', ['--verifier'], { runtime: { python: process.execPath, scripts } });
+    assert.equal(resultat.code, 0);
+    assert.deepEqual(JSON.parse(resultat.sortie), { runtime: 'gpt', args: ['--verifier'] });
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('lireAutocompletion lit la réponse firefox de Google et rend une liste vide sur tout le reste', async () => {

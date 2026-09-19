@@ -1,14 +1,16 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { inscrireArticle, liensCandidats } from '../../scripts/seo/forge-seo.mjs';
+import { apresPublication, inscrireArticle, liensCandidats } from '../../scripts/seo/forge-seo.mjs';
 
 import {
   ajouterAuRegistre,
   ajouterTache,
+  articlesPublies,
   cloturerTache,
   ecarterTache,
   maintenanceVide,
@@ -17,6 +19,8 @@ import {
   registreVide,
   tachesAFaire,
 } from '../../scripts/lib/seo-registres.mjs';
+
+const sha256 = (contenu) => createHash('sha256').update(contenu).digest('hex');
 
 const entree = (slug, extra = {}) => ({
   slug,
@@ -171,6 +175,102 @@ test('inscrireArticle (F1) inscrit un article publié depuis son frontmatter, re
     assert.equal(registre.articles[0].famille, 'saisie-ocr');
     assert.equal(inscrireArticle(root, 'y', { aujourdhui: '2026-09-17' }).ok, false);
     assert.equal(inscrireArticle(root, 'x', { aujourdhui: '2026-09-17' }).ajoute, false);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la phase après-publication admet un article futur uniquement quand sa publication exacte est scellée', () => {
+  const root = mkdtempSync(join(tmpdir(), 'memlia-seo-futur-'));
+  const slug = 'article-futur';
+  try {
+    const article = '---\ntitre: "Article futur"\ntitreOnglet: "Article futur | Memlia"\ndatePublication: 2026-10-01\nbrouillon: false\nstatutEditorial: publie\nprimaryQuery: "requete future"\n---\ncorps\n';
+    const dossier = join(root, 'editorial/articles', slug);
+    mkdirSync(join(root, 'src/content/blog'), { recursive: true });
+    mkdirSync(join(dossier, 'preuves'), { recursive: true });
+    writeFileSync(join(root, 'src/content/blog', `${slug}.md`), article);
+
+    assert.deepEqual(articlesPublies(root, { aujourdhui: '2026-09-19', inclureScellesFuturs: true }), []);
+
+    const manifest = JSON.stringify({
+      editorialStatus: 'publie',
+      publishedAt: '2026-09-19',
+      publicationEvidence: 'preuves/publication.json',
+      kevin: { productionApproved: true },
+    }, null, 2) + '\n';
+    writeFileSync(join(dossier, 'manifest.json'), manifest);
+    writeFileSync(join(dossier, 'preuves/publication.json'), JSON.stringify({
+      version: 1,
+      kind: 'publication-scellee',
+      candidateSlug: slug,
+      articleSha256: sha256(article),
+      manifestSha256: sha256(manifest),
+      publishedAt: '2026-09-19',
+      files: [{ path: 'manifest.json', bytes: Buffer.byteLength(manifest), sha256: sha256(manifest) }],
+    }, null, 2) + '\n');
+
+    assert.deepEqual(articlesPublies(root, { aujourdhui: '2026-09-19' }), []);
+    assert.deepEqual(
+      articlesPublies(root, { aujourdhui: '2026-09-19', inclureScellesFuturs: true }).map((a) => a.slug),
+      [slug]
+    );
+
+    writeFileSync(join(root, 'src/content/blog', `${slug}.md`), article.replace('corps', 'corps modifié'));
+    assert.deepEqual(articlesPublies(root, { aujourdhui: '2026-09-19', inclureScellesFuturs: true }), []);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('après-publication reste sans effet quand un article futur scellé échoue au contrôle HTTP', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'memlia-seo-http-ko-'));
+  const slug = 'article-futur';
+  try {
+    const article = '---\ntitre: "Article futur"\ntitreOnglet: "Article futur | Memlia"\ndatePublication: 2026-10-01\nbrouillon: false\nstatutEditorial: publie\nprimaryQuery: "requete future"\n---\ncorps\n';
+    const dossier = join(root, 'editorial/articles', slug);
+    mkdirSync(join(root, 'src/content/blog'), { recursive: true });
+    mkdirSync(join(dossier, 'preuves'), { recursive: true });
+    writeFileSync(join(root, 'src/content/blog', `${slug}.md`), article);
+    const manifest = JSON.stringify({
+      editorialStatus: 'publie',
+      publishedAt: '2026-09-19',
+      publicationEvidence: 'preuves/publication.json',
+      kevin: { productionApproved: true },
+    }, null, 2) + '\n';
+    writeFileSync(join(dossier, 'manifest.json'), manifest);
+    writeFileSync(join(dossier, 'preuves/publication.json'), JSON.stringify({
+      version: 1,
+      kind: 'publication-scellee',
+      candidateSlug: slug,
+      articleSha256: sha256(article),
+      manifestSha256: sha256(manifest),
+      publishedAt: '2026-09-19',
+      files: [{ path: 'manifest.json', bytes: Buffer.byteLength(manifest), sha256: sha256(manifest) }],
+    }, null, 2) + '\n');
+
+    const appels = { attente: 0, baseline: 0, indexnow: 0 };
+    const rapport = await apresPublication(root, [slug], {
+      attenteMaxS: 0,
+      attendreProduction: async () => {
+        appels.attente += 1;
+        return { servie: false, apresS: 0, status: 404 };
+      },
+      derivePoser: () => {
+        appels.baseline += 1;
+        return { ok: true, baselineId: 'interdit' };
+      },
+      indexNow: () => {
+        appels.indexnow += 1;
+        return { ok: true, statut: 'interdit' };
+      },
+      commitDistant: () => 'fixture',
+    });
+
+    assert.deepEqual(appels, { attente: 1, baseline: 0, indexnow: 0 });
+    assert.equal(rapport.indexnow, null);
+    assert.equal(existsSync(join(root, 'docs/strategy/site-v3/mesures/registre-requetes.json')), false);
+    assert.equal(existsSync(join(root, '.qa/seo/etat-sentinelle.json')), false);
+    assert.equal(existsSync(join(root, 'editorial/maintenance.json')), false);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

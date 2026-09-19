@@ -72,9 +72,9 @@ function lireOptions(argv) {
 
 // ---------------------------------------------------------------- registre
 
-export function inscrireArticle(root, slug, { aujourdhui = dateLocale() } = {}) {
-  const article = articlesPublies(root, { aujourdhui }).find((a) => a.slug === slug);
-  if (!article) return { ok: false, message: `article ${slug} introuvable parmi les articles publiés (brouillon: false, date passée)` };
+export function inscrireArticle(root, slug, { aujourdhui = dateLocale(), inclureScellesFuturs = false } = {}) {
+  const article = articlesPublies(root, { aujourdhui, inclureScellesFuturs }).find((a) => a.slug === slug);
+  if (!article) return { ok: false, message: `article ${slug} introuvable parmi les articles publiés (date passée, ou publication future scellée pour après-publication)` };
   if (!article.requete) return { ok: false, message: `article ${slug} sans requête primaire dans le frontmatter ni la recette` };
   const registre = chargerRegistre(root);
   const existant = registre.articles.find((a) => a.slug === slug);
@@ -205,8 +205,8 @@ const expressionsDe = (article) => [article.requete, ...(article.secondaires ?? 
  * déjà sa tâche sans le lier (entrant), et un article que le nouveau nomme sans le lier (sortant).
  * Lecture seule : les tâches rendues ne sont déposées que par `apres-publication`.
  */
-export function liensCandidats(root, slug, { aujourdhui = dateLocale(), max = LIENS_CANDIDATS_MAX } = {}) {
-  const publies = articlesPublies(root, { aujourdhui });
+export function liensCandidats(root, slug, { aujourdhui = dateLocale(), max = LIENS_CANDIDATS_MAX, inclureScellesFuturs = false } = {}) {
+  const publies = articlesPublies(root, { aujourdhui, inclureScellesFuturs });
   const cible = publies.find((a) => a.slug === slug);
   if (!cible) return { ok: false, slug, message: `article ${slug} introuvable parmi les articles publiés`, entrants: [], sortants: [], taches: [], sansRecette: [] };
   const corpsCible = corpsDeRecette(root, slug);
@@ -248,19 +248,24 @@ export function liensCandidats(root, slug, { aujourdhui = dateLocale(), max = LI
   return { ok: true, slug, requetes: expressionsDe(cible), entrants, sortants, taches, sansRecette };
 }
 
-export async function apresPublication(root, slugs, { sansIndexnow = false, attenteMaxS = 600 } = {}) {
+export async function apresPublication(root, slugs, {
+  sansIndexnow = false,
+  attenteMaxS = 600,
+  attendreProduction: sonderProduction = attendreProduction,
+  derivePoser: poserBaseline = derivePoser,
+  indexNow: envoyerIndexNow = indexNow,
+  commitDistant: lireCommitDistant = commitDistant,
+} = {}) {
   const date = dateLocale();
-  const publies = articlesPublies(root, { aujourdhui: date });
+  const publies = articlesPublies(root, { aujourdhui: date, inclureScellesFuturs: true });
   const pilier = publies.find((a) => a.format === 'pillar-page');
   const etatChemin = join(root, CHEMINS.brut, 'etat-sentinelle.json');
   const etat = lireJson(etatChemin, () => ({ version: 1, premieresVues: {}, etat: {}, baselines: {} }));
-  const commit = commitDistant(root);
-  const rapport = { date, commit, articles: [], baselines: [], registre: [], liens: [], taches: { deposees: 0 }, indexnow: null, erreurs: [] };
+  const rapport = { date, commit: null, articles: [], baselines: [], registre: [], liens: [], taches: { deposees: 0 }, indexnow: null, erreurs: [] };
   let file = chargerMaintenance(root);
   let deposees = 0;
 
-  const aBaseliner = new Set([`${ORIGINE}/blog`]);
-  if (pilier) aBaseliner.add(pilier.url);
+  const aBaseliner = new Set();
   for (const slug of slugs) {
     const article = publies.find((a) => a.slug === slug);
     if (!article) {
@@ -268,16 +273,18 @@ export async function apresPublication(root, slugs, { sansIndexnow = false, atte
       continue;
     }
     const marqueur = article.titreOnglet ? article.titreOnglet.replace(/&/g, '&amp;') : null;
-    const attente = await attendreProduction(article.url, { marqueur, attenteMaxS });
+    const attente = await sonderProduction(article.url, { marqueur, attenteMaxS });
     rapport.articles.push({ slug, url: article.url, ...attente });
     if (!attente.servie) {
       rapport.erreurs.push(`${article.url} ne sert pas encore le contenu publié après ${attenteMaxS} s`);
       continue;
     }
+    aBaseliner.add(`${ORIGINE}/blog`);
+    if (pilier) aBaseliner.add(pilier.url);
     aBaseliner.add(article.url);
-    rapport.registre.push(inscrireArticle(root, slug, { aujourdhui: date }));
+    rapport.registre.push(inscrireArticle(root, slug, { aujourdhui: date, inclureScellesFuturs: true }));
     // F3 : les articles déjà publiés qui nomment cette tâche sans la lier passent au vendredi.
-    const candidats = liensCandidats(root, slug, { aujourdhui: date });
+    const candidats = liensCandidats(root, slug, { aujourdhui: date, inclureScellesFuturs: true });
     rapport.liens.push({ slug, entrants: candidats.entrants.map((e) => ({ slug: e.slug, passages: e.passages.length })), sortants: candidats.sortants.map((e) => e.slug), sansRecette: candidats.sansRecette });
     for (const tache of candidats.taches) {
       const r = ajouterTache(file, tache, { aujourdhui: date });
@@ -288,8 +295,12 @@ export async function apresPublication(root, slugs, { sansIndexnow = false, atte
   if (rapport.liens.some((l) => l.entrants.length)) sauverMaintenance(root, file);
   rapport.taches = { deposees };
 
+  if (aBaseliner.size === 0) return rapport;
+  const commit = lireCommitDistant(root);
+  rapport.commit = commit;
+
   for (const url of aBaseliner) {
-    const pose = derivePoser(url);
+    const pose = poserBaseline(url);
     if (pose.ok) {
       etat.baselines[url] = { baselineId: pose.baselineId, commit, date };
       if (!etat.premieresVues[url]) etat.premieresVues[url] = date;
@@ -300,7 +311,7 @@ export async function apresPublication(root, slugs, { sansIndexnow = false, atte
   }
   ecrireJson(etatChemin, etat);
 
-  rapport.indexnow = sansIndexnow ? { statut: 'desactive' } : indexNow(root, [...aBaseliner]);
+  rapport.indexnow = sansIndexnow ? { statut: 'desactive' } : envoyerIndexNow(root, [...aBaseliner]);
   return rapport;
 }
 

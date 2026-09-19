@@ -1,6 +1,6 @@
 # Mode opératoire des crons SEO — sentinelle, relevé de demande, intégrité, et les deux extensions de la forge
 
-Construit le 17 septembre 2026 sur le go de Kevin (« go, construis C1, C2, C3 et les deux extensions »), d'après [CRONS-SEO.md](CRONS-SEO.md), qui dit le pourquoi. Trois tâches planifiées Claude Code tournent sur ce Mac, chacune dans une session neuve : **memlia-sentinelle-seo** (tous les jours, 18 h 30), **memlia-releve-demande** (le lundi, 7 h), **memlia-integrite** (le mercredi, 7 h). Ce document est la seule mémoire de la procédure ; lire aussi `RUNBOOK-QUOTIDIEN.md` §0 pour les rails du dépôt.
+Construit le 17 septembre 2026 sur le go de Kevin (« go, construis C1, C2, C3 et les deux extensions »), d'après [CRONS-SEO.md](CRONS-SEO.md), qui dit le pourquoi. Trois tâches planifiées Hermes tournent avec le profil GPT configuré sur ce Mac, chacune dans une session neuve : **memlia-sentinelle-seo** (tous les jours, 18 h 30), **memlia-releve-demande** (le lundi, 7 h), **memlia-integrite** (le mercredi, 7 h). Ce document est la seule mémoire de la procédure ; lire aussi `RUNBOOK-QUOTIDIEN.md` §0 pour les rails du dépôt.
 
 ## 0. Rails non négociables
 
@@ -36,7 +36,7 @@ Ce que la session fait ensuite :
 
 1. **Sans rouge et « à commiter : non »** : rien à commiter ; terminer sur le résumé d'une ligne.
 2. **Sans rouge et « à commiter : oui »** (une URL nouvelle indexée, une baseline posée) : une ligne dans `JOURNAL.md`, commit et push (étape 5).
-3. **Avec rouge** : lire le brut `.qa/seo/sentinelle/<date>.json` pour la cause. `derive` : lire le déploiement (rail ci-dessus) avant de conclure. `non-indexee-7j` : la liste « À DEMANDER » va dans le journal, pour Kevin. `instrument-muet` : jouer `"$HOME/.claude/skills/seo/bin/claude-seo" run google_auth.py --check --json` et consigner ce qu'il dit. `indexabilite` : lire `.qa/indexation/production-indexability.json`. Puis journal, commit, push. Ne rien corriger sur le site : nommer.
+3. **Avec rouge** : lire le brut `.qa/seo/sentinelle/<date>.json` pour la cause. `derive` : lire le déploiement (rail ci-dessus) avant de conclure. `non-indexee-7j` : la liste « À DEMANDER » va dans le journal, pour Kevin. `instrument-muet` : jouer `"$HOME/hermes/packs/claude-seo/.venv/bin/python" "$HOME/hermes/packs/claude-seo/scripts/google_auth.py" --check --json` et consigner ce qu'il dit. `indexabilite` : lire `.qa/indexation/production-indexability.json`. Puis journal, commit, push. Ne rien corriger sur le site : nommer.
 
 ## 3. C2 — le relevé de demande (le lundi, 7 h)
 
@@ -114,7 +114,7 @@ git commit -m "chore(seo): <sentinelle|releve de demande|integrite> du <AAAA-MM-
 git push origin main
 ```
 
-Le message de commit se termine par la ligne `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`. Format de la ligne de journal, dans le tableau existant : `| <date> | <cron> | <commit> | — | — | — | — | <résumé : chiffres, rouges, tâches, ce qui est écarté> |`.
+Le message de commit suit la convention du dépôt, sans attribution à un runtime ou à un modèle. Format de la ligne de journal, dans le tableau existant : `| <date> | <cron> | <commit> | — | — | — | — | <résumé : chiffres, rouges, tâches, ce qui est écarté> |`.
 
 ## 6. F1 — après une publication (forge, `RUNBOOK-QUOTIDIEN.md` §5)
 
@@ -124,7 +124,7 @@ Après le contrôle en ligne et le renvoi du sitemap :
 node scripts/seo/forge-seo.mjs apres-publication <slug> [<slug2>]
 ```
 
-Attend que la production serve le titre d'onglet de l'article (dix minutes au plus), pose la baseline de dérive de l'article, de `/blog` et du pilier, inscrit l'article au registre des requêtes (la commande `publier` de la forge l'a déjà fait ; c'est idempotent), envoie un ping IndexNow. Le JSON rendu va dans la note du journal. Sans cette étape, la sentinelle posera les baselines le soir et C2 réconciliera le registre le lundi : rien n'est perdu, mais la journée a un trou.
+Attend que la production serve le titre d'onglet de l'article (dix minutes au plus), pose la baseline de dérive de l'article, de `/blog` et du pilier, inscrit l'article au registre des requêtes (la commande `publier` de la forge l'a déjà fait ; c'est idempotent), envoie un ping IndexNow. Pour cette phase seulement, une `datePublication` future est admise si le frontmatter est `publie` et si le reçu `preuves/publication.json` scelle exactement l'article et son manifeste ; le contrôle HTTP reste obligatoire. Les instruments Python sont lancés directement par le runtime du pack SEO Hermes (`~/hermes/packs/claude-seo/.venv/bin/python`), sans lanceur ni profil Claude ; `MEMLIA_SEO_RUNTIME_ROOT`, `MEMLIA_SEO_PYTHON` et `MEMLIA_SEO_SCRIPTS` permettent un chemin explicite. Le JSON rendu va dans la note du journal. Sans cette étape, la sentinelle posera les baselines le soir et C2 réconciliera le registre le lundi : rien n'est perdu, mais la journée a un trou.
 
 ## 6 bis. F3 — les liens qui manquent autour d'un article
 
