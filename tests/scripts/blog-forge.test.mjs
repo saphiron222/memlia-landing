@@ -5,12 +5,36 @@ import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter } from '../../scripts/blog-forge.mjs';
 import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH } from '../../scripts/lib/blog-pipeline.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const SLUG = 'automatiser-une-tache-de-test';
 const jour = new Date().toISOString().slice(0, 10);
+
+const CORPS_REGLE = `## La règle écrite
+
+**La frontière.** Ce qui se prépare seul, ce qui attend une validation, ce qui reste humain.
+
+| Se prépare seul | Attend une validation | Reste humain |
+|---|---|---|
+| la lecture du relevé | l'écart typé | le jugement sur un écart inexpliqué |
+
+**La proposition.** Nous produisons une proposition ; le collaborateur saisit ou valide.
+
+**L’arrêt.** Un montant illisible arrête la règle, qui nomme la ligne refusée.
+
+**Le jeu d’essai.** Rejoué sur un dossier fictif de douze mouvements.
+
+## Rejoué sur le jeu fictif
+
+| Cas joué | Sortie obtenue | Décision |
+|---|---|---|
+| mouvement courant | rapproché, écart 0,00 | proposé |
+| montant illisible | refusé, ligne 7 nommée | humain |
+| doublon | rapproché, doublon signalé | validation |
+`;
 
 const CORPS = `## Réponse directe
 
@@ -22,7 +46,8 @@ Les données personnelles ne peuvent pas être conservées indéfiniment et une 
 
 ## Ce qui reste humain
 
-Le module prépare un résultat et la personne responsable conserve la validation ; il refuse d'écrire quand une pièce est illisible ou quand la règle ne couvre pas le cas rencontré. Voir [la méthode](/methode) et [l'article frère](/blog/article-frere).`;
+Le module prépare un résultat et la personne responsable conserve la validation ; il refuse d'écrire quand une pièce est illisible ou quand la règle ne couvre pas le cas rencontré. Voir [la méthode](/methode) et [l'article frère](/blog/article-frere).
+${CORPS_REGLE}`;
 
 const PAGE_SOURCE = `<html><head><title>Durées de conservation</title></head>
 <body>
@@ -197,4 +222,42 @@ test('la recette porte sa date de mise à jour jusqu’au frontmatter, et son ab
   const manifest = construireManifest({ ...recette(), updatedAt: '2026-09-17' }, 'publie', jour, null);
   assert.equal(manifest.updatedAt, '2026-09-17');
   assert.match(frontmatter(manifest), /^datePublication: [^\n]+\ndateMiseAJour: 2026-09-17$/m);
+});
+
+// --- La règle écrite (charte §2 bis, 19/09/2026) : exigée pour les articles nouveaux, jamais pour les anciens.
+
+
+test('la règle écrite : exigée pour un article daté à partir du 19/09/2026, ignorée avant', () => {
+  const ancien = '## Réponse directe\n\nRien de plus.';
+  assert.deepEqual(forge.verifierRegleEcrite(ancien, { date: '2026-09-18' }), []);
+  const erreurs = forge.verifierRegleEcrite(ancien, { date: '2026-09-19' });
+  assert.ok(erreurs.some((e) => /La règle écrite/.test(e)), erreurs.join('\n'));
+  assert.ok(erreurs.some((e) => /Rejoué sur le jeu fictif/.test(e)), erreurs.join('\n'));
+  assert.deepEqual(forge.verifierRegleEcrite(`${ancien}\n\n${CORPS_REGLE}`, { date: '2026-09-19' }), []);
+});
+
+test('la règle écrite : chaque partie manquante est nommée, et deux lignes de rejeu ne suffisent pas', () => {
+  const sansArret = CORPS_REGLE.replace('**L’arrêt.** Un montant illisible arrête la règle, qui nomme la ligne refusée.', 'Un montant illisible arrête la règle.');
+  const e1 = forge.verifierRegleEcrite(sansArret, { date: '2026-10-01' });
+  assert.ok(e1.some((e) => /L’arrêt/.test(e)) && e1.length === 1, e1.join('\n'));
+  const sansTableau = CORPS_REGLE.replace(/\| Se prépare seul[\s\S]*?humain \|\n/, '');
+  assert.ok(forge.verifierRegleEcrite(sansTableau, { date: '2026-10-01' }).some((e) => /trois colonnes/.test(e)));
+  const deuxLignes = CORPS_REGLE.replace('| doublon | rapproché, doublon signalé | validation |\n', '');
+  assert.ok(forge.verifierRegleEcrite(deuxLignes, { date: '2026-10-01' }).some((e) => /trois lignes/.test(e)));
+  const apostropheDroite = CORPS_REGLE.replace('**L’arrêt.**', "**L'arrêt.**").replace('**Le jeu d’essai.**', "**Le jeu d'essai.**");
+  assert.deepEqual(forge.verifierRegleEcrite(apostropheDroite, { date: '2026-10-01' }), []);
+});
+
+test('la forge refuse de matérialiser un article nouveau sans sa règle écrite, et l’accepte avec', async () => {
+  const root = racineDeTest();
+  try {
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'corps.md'), CORPS.replace(CORPS_REGLE, ''));
+    const refus = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
+    assert.ok(refus.erreurs.some((e) => /La règle écrite/.test(e)), refus.erreurs.join('\n'));
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'corps.md'), CORPS);
+    const ok = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
+    assert.deepEqual(ok.erreurs, []);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });

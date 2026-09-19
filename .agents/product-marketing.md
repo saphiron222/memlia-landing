@@ -20,6 +20,19 @@ Trois bénéfices, toujours dans cet ordre, jamais chiffrés : moins de charge r
 - L'ambition ne porte jamais sur des chiffres de gain, sur le jugement (qui reste humain) ni sur une compatibilité universelle. Formule de référence : **« Nous prenons toute la mécanique. Vous gardez tout le jugement. »**
 - Le prix se dit ainsi : **« Vous payez une tâche prise en charge, pas des sièges. »** Le devis dépend de la complexité (sources, règles, exceptions, validations) ; maintenance, support et évolutions y sont écrits.
 
+## 2 bis. Le mécanisme, nommé : « la règle écrite » (19/09/2026, révisable par Kevin)
+
+Ce que Memlia fait a un nom, et ce nom revient à l'identique sur toute surface : **la règle écrite**. Ce n'est pas une méthode de plus, c'est ce qui distingue une tâche confiée à Memlia d'une tâche confiée à un logiciel ou à un prestataire. Quatre parties, toujours les quatre, toujours dans cet ordre :
+
+1. **La frontière en trois colonnes.** Pour chaque tâche, ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Elle se lit en un tableau ; elle ne se déduit pas d'un paragraphe.
+2. **Proposition puis validation.** Ce que nous produisons est une proposition ; la saisie et la décision restent au collaborateur. Ce que nous générons nous appartient et se régénère ; ce que le cabinet saisit ne se touche jamais.
+3. **L'arrêt dans le doute.** Devant une pièce illisible, un cas hors règle ou un écart inexpliqué, la règle refuse d'écrire et nomme sa condition d'arrêt. Une règle qui devine n'est pas une règle écrite.
+4. **Le jeu d'essai fictif.** Chaque règle est rejouée sur un dossier fictif avant de toucher un vrai dossier, et l'article montre ce rejeu : les cas joués, la sortie obtenue, ce qui a été refusé.
+
+Ce que cela change dans l'écriture : chaque article **nouveau** (daté à partir du 19/09/2026) porte une section `## La règle écrite` qui déroule ces quatre parties pour sa tâche, avec les quatre libellés en gras (**La frontière.** **La proposition.** **L'arrêt.** **Le jeu d'essai.**), puis une section `## Rejoué sur le jeu fictif` avec le tableau des cas joués et leur sortie. La forge refuse de sceller un article nouveau qui n'en porte pas. Les six articles publiés avant cette date restent tels quels jusqu'à une lecture Search Console utile (mi-octobre 2026) : on ne réécrit pas ce que l'on n'a pas encore mesuré.
+
+Ce que le nom ne dit jamais : un chiffre de gain, une promesse d'autonomie, une conformité garantie. La règle écrite est une manière de travailler, pas un produit ; « module », « plateforme » et « logiciel » restent interdits (§9).
+
 ## 3. Ce que nous ne disons plus (retiré du site le 17/09/2026)
 
 - « un service porté par Kevin Kitanga » en titre, et le « je » sur les pages commerciales : le site parle en **nous**. Le fondateur a une section (« Qui est derrière Memlia »), pas le titre.

@@ -223,6 +223,31 @@ export function analyserSerp(resultat, { domaine }) {
   };
 }
 
+/** Ce qu'une SERP dit de la demande : les questions « Autres questions », les recherches associées, les domaines organiques dans l'ordre, l'aperçu IA. */
+export function extraireQuestionsSerp(resultat) {
+  const items = Array.isArray(resultat?.items) ? resultat.items : [];
+  const questions = items.filter((i) => i.type === 'people_also_ask').flatMap((i) => (i.items ?? []).map((q) => q.title).filter(Boolean));
+  const associees = items.filter((i) => i.type === 'related_searches').flatMap((i) => (i.items ?? []).filter((s) => typeof s === 'string'));
+  const domaines = items.filter((i) => i.type === 'organic').sort((a, b) => (a.rank_group ?? 0) - (b.rank_group ?? 0)).map((i) => sansWww(i.domain)).filter(Boolean);
+  return {
+    questions: [...new Set(questions)],
+    associees: [...new Set(associees)],
+    domaines: [...new Set(domaines)],
+    apercuIa: items.some((i) => i.type === 'ai_overview'),
+    spell: resultat?.spell ? { mot: resultat.spell.keyword ?? null, type: resultat.spell.type ?? null } : null,
+  };
+}
+
+/**
+ * C2 — une requête primaire mesurée à zéro suggestion d'autocomplétion est un angle que personne ne tape.
+ * Une requête absente des mesures n'a pas été mesurée (instrument en panne) : aucune alerte, jamais un zéro supposé.
+ */
+export function alertesDemande(registre, autocompletion) {
+  return (registre?.articles ?? [])
+    .filter((a) => Object.prototype.hasOwnProperty.call(autocompletion ?? {}, a.requete) && (autocompletion[a.requete] ?? []).length === 0)
+    .map((a) => `requête primaire sans demande mesurée à l’autocomplétion : « ${a.requete} » (${a.slug}) — recaler le titre ou l’angle (voir questions.mjs)`);
+}
+
 const normaliserPage = (page) => String(page ?? '').replace(/\/$/, '') || String(page ?? '');
 const cle1 = (ligne) => ligne.keys?.[0];
 const cle2 = (ligne) => ligne.keys?.[1];

@@ -173,6 +173,12 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     for slug in publies:
         if slug not in slugs:
             erreurs.append(f'article publié absent du backlog et de la table historique : {slug}')
+    # Depuis le 19/09/2026, une priorité 1 se mérite par une mesure : autocomplétion ou page de résultats datée (scripts/seo/questions.mjs).
+    for e in satellites:
+        if e.get('historique') or e['slug'] in publies:
+            continue
+        if e['priorite'] == 1 and not (e.get('demande') or {}).get('mesureeLe'):
+            erreurs.append(f"angle de priorité 1 sans demande mesurée : {e['slug']}")
     par_jour, par_semaine = Counter(), Counter()
     for e in tous:
         d = date.fromisoformat(e['date'])
@@ -205,7 +211,7 @@ def ecrire_json(poles, familles, pilier, satellites, liens, entrants):
             for e in sorted(posts, key=lambda e: (familles[e['famille']]['rang'], e['rang_famille']))]})
     data = {
         'version': 2, 'date': '2026-09-16', 'seed': 'automatisation cabinet comptable',
-        'methode': 'backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 59 familles actives en 12 pôles ; cadence 4 par semaine et 2 par jour au plus ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; volumes ND sauf la requête du pilier (10/mois, DataForSEO 12/09/2026)',
+        'methode': 'backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 59 familles actives en 12 pôles ; cadence 4 par semaine et 2 par jour au plus ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorité posée depuis la demande mesurée par angle (autocomplétion Google et pages de résultats DataForSEO, scripts/seo/questions.mjs, depuis le 19/09/2026 ; un angle de priorité 1 sans mesure datée fait échouer --check)',
         'pillar': {'title': pilier['titre'], 'keyword': pilier['requete'], 'volume': 10, 'template': pilier['gabarit'], 'wordCount': pilier['mots'], 'url': pilier['url'], 'slug': pilier['slug'], 'family': pilier['famille'], 'status': pilier['statut'], 'date': pilier['date']},
         'clusters': clusters,
         'links': [{'from': l['de'], 'to': l['vers'], 'type': l['type'], 'anchor': l['ancre']} for l in liens],
@@ -235,9 +241,9 @@ def ecrire_md(data, familles):
 def ecrire_calendrier(pilier, satellites, familles, poles):
     tous = sorted([pilier] + satellites, key=lambda e: (e['date'], e['slug']))
     L = ['# Calendrier éditorial v3 — quatre articles par semaine', '',
-         "Généré le 16 septembre 2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles par semaine, deux par jour au plus, du lundi au jeudi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
+         f"Généré le {date.today().strftime("%d/%m/%Y")} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles par semaine, deux par jour au plus, du lundi au jeudi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
          '## Règles', '',
-         "- Ordre de production : les articles publiés d'abord, puis priorité 1 → 3, puis l'angle (méthode, contrôle ou checklist, exceptions et refus, définition), puis l'ordre des familles dans la taxonomie.",
+         "- Ordre de production : les articles publiés d'abord, puis la priorité mesurée 1 → 3 (1 : la requête primaire a des suggestions d'autocomplétion Google ; 2 : seule une requête secondaire en a ; 3 : aucune demande mesurée — relevé `scripts/seo/questions.mjs`, bloc `demande` de chaque angle), puis l'angle (méthode, contrôle ou checklist, exceptions et refus, définition), puis l'ordre des familles dans la taxonomie.",
          '- Chaque famille active compte quatre angles ; aucune famille n’est épuisée avant que toutes n’aient leur méthode.',
          '- Une requête primaire par article, unique ; sources officielles obligatoires pour toute matière paie, sociale, fiscale, juridique ou données.',
          '- Le pilier reçoit un lien à chaque publication (republication scellée par la forge).', '',

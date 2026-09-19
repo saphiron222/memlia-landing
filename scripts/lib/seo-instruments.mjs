@@ -272,6 +272,27 @@ export async function serpDataForSeo(keyword, { locationCode = 2250, languageCod
   }
 }
 
+/** Réponse `client=firefox` de l'autocomplétion Google : `[requête, [suggestions…]]`. Tout le reste vaut « aucune suggestion ». */
+export function lireAutocompletion(json) {
+  if (!Array.isArray(json) || !Array.isArray(json[1])) return [];
+  return json[1].filter((s) => typeof s === 'string' && s.trim()).map((s) => s.trim());
+}
+
+/**
+ * Autocomplétion Google (gratuite) : elle ne propose que des requêtes au-dessus d'un seuil de volume,
+ * donc une liste vide est une mesure. `ok: false` distingue une panne de l'instrument d'un zéro mesuré.
+ */
+export async function autocompleterGoogle(requete, { hl = 'fr', gl = 'fr', timeoutMs = 15_000, ua = UA_NAVIGATEUR } = {}) {
+  const url = `https://suggestqueries.google.com/complete/search?client=firefox&hl=${hl}&gl=${gl}&q=${encodeURIComponent(requete)}`;
+  try {
+    const r = await fetch(url, { headers: { 'user-agent': ua, accept: 'application/json,text/javascript;q=0.9,*/*;q=0.5' }, signal: AbortSignal.timeout(timeoutMs) });
+    if (!r.ok) return { ok: false, suggestions: [], erreur: `HTTP ${r.status}` };
+    return { ok: true, suggestions: lireAutocompletion(JSON.parse(await r.text())), erreur: null };
+  } catch (e) {
+    return { ok: false, suggestions: [], erreur: e?.message ?? String(e) };
+  }
+}
+
 export function porteDeCout(endpoint, count) {
   const r = claudeSeo('dataforseo_costs.py', ['check', endpoint, '--count', String(count)], { timeoutMs: 30_000 });
   const json = analyserSortieJson(r.sortie);

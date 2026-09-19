@@ -103,6 +103,12 @@ Lecture de « 8 internal linking hacks to improve SEO » (Distribb, Borja). Sa p
 
 Construit : deux volets dans C3 (ancres, routes) et l'extension **F3** de la forge (les liens qui manquent autour d'un article, dans les deux sens). Détail des règles et des refus dans [RUNBOOK-SEO.md](RUNBOOK-SEO.md) §4 et §6 bis.
 
+## 3 ter. Le relevé des questions : ce qui a été ajouté le 19/09/2026
+
+Revue de la stratégie blog avec Kevin : les articles sont bons (97 à 99) mais posés sur des requêtes dont le chercheur n'est pas l'acheteur, et le backlog avait été construit de l'intérieur (60 familles) sans mesure de demande. Décisions : **la cadence reste à quatre par semaine** ; le mécanisme est nommé dans la charte (§2 bis « la règle écrite ») et exigé par la forge pour tout article daté à partir du 19/09 ; le backlog se recale depuis les questions mesurées ; les six articles publiés ne bougent pas avant une lecture Search Console utile (mi-octobre).
+
+Construit : `scripts/seo/questions.mjs` (relever, rapport, recaler ; règle dans `scripts/lib/seo-questions.mjs`), l'invariant « priorité 1 ⇒ demande mesurée » dans `build-cluster-plan.py --check`, l'alerte d'autocomplétion dans **C2**, les amorces de marché `mesures/amorces-marche.json`. Détail dans [RUNBOOK-SEO.md](RUNBOOK-SEO.md) §3 bis. Ce que cela ne mesure pas : le volume exact d'une requête (l'autocomplétion est un seuil, pas un compte) et l'effet sur le classement (aucune impression sur les articles à ce jour).
+
 ## 4. Deux extensions de la forge existante
 
 - **F1, à la publication (§5 du runbook).** Poser la baseline de dérive de l'URL publiée (`drift_baseline.py --skip-cwv`), inscrire la requête primaire et les secondaires au registre des requêtes, envoyer un ping IndexNow (Bing) quand la clé existe.

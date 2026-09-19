@@ -48,6 +48,24 @@ Environ deux minutes : Search Console sur la semaine close et les 28 jours (par 
 
 La session écrit une ligne de journal avec : les totaux (semaine, 28 jours, 28 jours précédents), le nombre de requêtes avec impressions par famille, les familles sans impression après trois articles (**proposition de réallocation pour Kevin, jamais une action**), les requêtes à portée et les CTR anormaux (tâches déposées), les chutes, le rang de memlia.fr par requête et l'orthographe de « memlia » (`spell` = la marque est encore corrigée), la présence d'AI Overview, les mises à jour Google dans la fenêtre, et ce qui a été écarté (requêtes anonymisées, SERP non jouée). Zéro est une mesure : la ligne s'écrit même quand tout est à zéro. Puis commit et push (étape 5).
 
+## 3 bis. Le relevé des questions — `scripts/seo/questions.mjs` (mensuel, et à chaque refonte du backlog)
+
+Depuis le 19/09/2026, le backlog éditorial se construit **de l'extérieur** : depuis ce que le lecteur tape, pas depuis notre taxonomie. Deux instruments, deux propriétés à ne pas confondre :
+
+- **L'autocomplétion Google** (gratuite, `client=firefox`, `hl=fr&gl=fr`) ne propose que des requêtes au-dessus d'un seuil de volume : **une liste vide est une mesure**, un angle que personne ne tape. Une panne de l'instrument (HTTP 429, délai) n'est jamais comptée comme zéro : l'amorce reste « non mesurée » et la priorité de l'angle ne bouge pas.
+- **La page de résultats DataForSEO** (`serp_organic_live_advanced`, 0,002 $ l'appel, porte de coût obligatoire) porte les questions « Autres questions », les recherches associées et les domaines qui gagnent : quand la moitié du haut de page est tenue par des éditeurs de logiciel (`DOMAINES_LOGICIEL`), l'intention est « logiciel », ce que Memlia refuse de vendre — l'angle se corrige, la priorité ne bouge pas toute seule.
+
+```bash
+node scripts/seo/questions.mjs relever            # toutes les requêtes du backlog + mesures/amorces-marche.json ; une SERP par famille (≤ 62 appels)
+node scripts/seo/questions.mjs rapport            # mesures/questions-<jour>.md : la lecture par famille, pour corriger les angles à la main
+node scripts/seo/questions.mjs recaler            # priorité + bloc `demande` de chaque angle du backlog
+python3 docs/strategy/site-v3/build-cluster-plan.py --check   # calendrier régénéré ; refuse un angle de priorité 1 sans demande mesurée
+```
+
+Règle de priorité (`scripts/lib/seo-questions.mjs`, testée) : **1** si la requête primaire a des suggestions, **2** si seule une secondaire en a, **3** si rien n'en a ; le pilier n'est jamais recalé. Le relevé complet coûte environ 0,13 $ et deux minutes ; il se rejoue le premier vendredi du mois (`RUNBOOK-QUOTIDIEN.md` §6) et chaque fois qu'un angle est réécrit. Ce que le relevé ne fait pas : il ne réécrit ni titre ni requête — c'est une lecture, la correction d'un angle reste une décision écrite dans le backlog, puis un `--check`.
+
+C2 porte depuis le même jour une alerte hebdomadaire : chaque requête primaire du registre est autocomplétée, et « requête primaire sans demande mesurée » sort dans `alertes` quand la liste est vide (`alertesDemande`, testée).
+
 ## 4. C3 — l'intégrité éditoriale et technique (le mercredi, 7 h)
 
 ```bash

@@ -525,3 +525,39 @@ test('verifierAncres : un lien décoratif masqué au lecteur ne compte pas, l’
   assert.deepEqual(vers('/blog/a').map((l) => l.ancre), ['Contrôler les bulletins avant la DSN']);
   assert.deepEqual(vers('/blog/b').map((l) => l.ancre), ['Le suivi de production dans un classeur']);
 });
+
+test('extraireQuestionsSerp rend les questions « Autres questions », les recherches associées, les domaines organiques et l’aperçu IA', async () => {
+  const { extraireQuestionsSerp } = await import('../../scripts/lib/seo-regles.mjs');
+  const resultat = {
+    keyword: 'manuel de procédures cabinet expertise comptable',
+    spell: { keyword: 'manuel de procedure cabinet expertise comptable', type: 'did_you_mean' },
+    items: [
+      { type: 'ai_overview', items: [] },
+      { type: 'organic', rank_group: 1, domain: 'monmanuelcabinet.fr', url: 'https://monmanuelcabinet.fr/', title: 'Mon manuel cabinet' },
+      { type: 'people_also_ask', items: [
+        { type: 'people_also_ask_element', title: 'Comment rédiger un manuel de procédure ?', seed_question: null },
+        { type: 'people_also_ask_element', title: 'Quel est le référentiel normatif des experts-comptables ?', seed_question: 'Comment rédiger un manuel de procédure ?' },
+      ] },
+      { type: 'organic', rank_group: 2, domain: 'www.oec-bretagne.fr', url: 'https://www.oec-bretagne.fr/x', title: 'OEC' },
+      { type: 'related_searches', items: ['référentiel normatif expert-comptable 2026', 'manuel de procédures cabinet comptable pdf'] },
+    ],
+  };
+  const q = extraireQuestionsSerp(resultat);
+  assert.deepEqual(q.questions, ['Comment rédiger un manuel de procédure ?', 'Quel est le référentiel normatif des experts-comptables ?']);
+  assert.deepEqual(q.associees, ['référentiel normatif expert-comptable 2026', 'manuel de procédures cabinet comptable pdf']);
+  assert.deepEqual(q.domaines, ['monmanuelcabinet.fr', 'oec-bretagne.fr']);
+  assert.equal(q.apercuIa, true);
+  assert.deepEqual(q.spell, { mot: 'manuel de procedure cabinet expertise comptable', type: 'did_you_mean' });
+  assert.deepEqual(extraireQuestionsSerp(null), { questions: [], associees: [], domaines: [], apercuIa: false, spell: null });
+});
+
+test('alertesDemande nomme les articles dont la requête primaire n’a aucune suggestion, et ignore les requêtes non mesurées', async () => {
+  const { alertesDemande } = await import('../../scripts/lib/seo-regles.mjs');
+  const registre = { articles: [
+    { slug: 'a', requete: 'crm dsn' },
+    { slug: 'b', requete: 'suivi production sociale' },
+    { slug: 'c', requete: 'jamais mesurée' },
+  ] };
+  const alertes = alertesDemande(registre, { 'crm dsn': ['crm dsn c est quoi'], 'suivi production sociale': [] });
+  assert.deepEqual(alertes, ['requête primaire sans demande mesurée à l’autocomplétion : « suivi production sociale » (b) — recaler le titre ou l’angle (voir questions.mjs)']);
+});

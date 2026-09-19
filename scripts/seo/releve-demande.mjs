@@ -26,8 +26,8 @@ import {
   sauverRegistre,
   sauverRequetesVues,
 } from '../lib/seo-registres.mjs';
-import { analyserSerp, detecterDemande, fenetres, semaineIso } from '../lib/seo-regles.mjs';
-import { gscPy, journaliserCout, misesAJourGoogle, porteDeCout, serpDataForSeo } from '../lib/seo-instruments.mjs';
+import { analyserSerp, detecterDemande, fenetres, semaineIso, alertesDemande } from '../lib/seo-regles.mjs';
+import { autocompleterGoogle, gscPy, journaliserCout, misesAJourGoogle, porteDeCout, serpDataForSeo } from '../lib/seo-instruments.mjs';
 
 const ENDPOINT_SERP = 'serp_organic_live_advanced';
 const dateLocale = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
@@ -129,6 +129,15 @@ export async function releveDemande({ root = process.cwd(), date = dateLocale(),
     }
   }
 
+  // Autocomplétion Google sur chaque requête primaire du registre (gratuite) : zéro suggestion est une mesure, une panne n'est pas un zéro.
+  const autocompletion = { mesuree: {}, pannes: [] };
+  for (const a of registre.articles) {
+    if (!a.requete) continue;
+    const ac = await autocompleterGoogle(a.requete);
+    if (ac.ok) autocompletion.mesuree[a.requete] = ac.suggestions;
+    else autocompletion.pannes.push({ requete: a.requete, erreur: ac.erreur });
+  }
+
   const maj = await misesAJourGoogle();
   const misesAJour = { ok: maj.ok, erreur: maj.erreur, dansLaFenetre: maj.lignes.filter((l) => l.date >= f.moisPrecedent.debut) };
 
@@ -146,6 +155,7 @@ export async function releveDemande({ root = process.cwd(), date = dateLocale(),
   const alertes = [
     ...detection.chutes.map((c) => `chute ${c.slug ?? c.page} : ${c.avant} → ${c.apres} impressions`),
     ...detection.marque.filter((m) => m.statut === 'hors-rang-1' && m.impressions > 0).map((m) => `marque « ${m.requete} » en position ${m.position}`),
+    ...alertesDemande(registre, autocompletion.mesuree),
     ...detection.famillesSansImpression.map((fam) => `famille ${fam} sans impression après ${detection.parFamille.find((x) => x.famille === fam)?.articles ?? '?'} articles : réallocation à proposer`),
   ];
 
@@ -165,6 +175,7 @@ export async function releveDemande({ root = process.cwd(), date = dateLocale(),
     nouvelles: detection.nouvelles,
     marque: detection.marque,
     serp,
+    autocompletion,
     misesAJourGoogle: misesAJour,
     alertes,
     taches: { deposees: detection.taches.length, ajoutees, misesAJour: misesAJourTaches },

@@ -133,3 +133,11 @@ test('estTexte ne lit le corps que des réponses textuelles', () => {
   assert.equal(estTexte('application/pdf'), false);
   assert.equal(estTexte(null), true);
 });
+
+test('lireAutocompletion lit la réponse firefox de Google et rend une liste vide sur tout le reste', async () => {
+  const { lireAutocompletion } = await import('../../scripts/lib/seo-instruments.mjs');
+  assert.deepEqual(lireAutocompletion(['crm dsn', ['crm dsn c est quoi', 'crm dsn 120']]), ['crm dsn c est quoi', 'crm dsn 120']);
+  assert.deepEqual(lireAutocompletion(['sans volume', []]), []);
+  assert.deepEqual(lireAutocompletion({ pas: 'un tableau' }), []);
+  assert.deepEqual(lireAutocompletion(null), []);
+});

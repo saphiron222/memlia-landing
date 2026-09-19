@@ -446,6 +446,49 @@ function inscrireFile(root, slug, date, statut) {
 }
 
 /** Matérialise le dossier complet pour un statut donné ; renvoie les erreurs de recette (vides si tout tient). */
+// ---------------------------------------------------------------- la règle écrite (charte §2 bis, 19/09/2026)
+
+/** Premier jour où un article doit porter le mécanisme nommé ; les articles datés avant restent tels quels. */
+export const DEBUT_REGLE_ECRITE = '2026-09-19';
+const TITRE_REGLE = 'La règle écrite';
+const TITRE_REJEU = 'Rejoué sur le jeu fictif';
+const LIBELLES_REGLE = ['La frontière.', 'La proposition.', 'L’arrêt.', 'Le jeu d’essai.'];
+const COLONNES_FRONTIERE = ['Se prépare seul', 'Attend une validation', 'Reste humain'];
+const LIGNES_REJEU_MIN = 3;
+
+const apostropheTypo = (texte) => texte.replace(/'/g, '’');
+const sectionH2 = (corps, titre) => {
+  const m = new RegExp(`^## ${titre.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$([\\s\\S]*?)(?=^## |(?![\\s\\S]))`, 'm').exec(corps);
+  return m ? m[1] : null;
+};
+const lignesDeTableau = (section) => section.split('\n').filter((l) => /^\|/.test(l.trim()) && !/^\|\s*-/.test(l.trim()));
+
+/**
+ * Un article nouveau porte le mécanisme nommé : `## La règle écrite` (quatre libellés en gras, le tableau
+ * de frontière à trois colonnes) puis `## Rejoué sur le jeu fictif` (au moins trois lignes de cas joués).
+ * Rend la liste des manques, vide quand tout y est ou quand l'article date d'avant DEBUT_REGLE_ECRITE.
+ */
+export function verifierRegleEcrite(corps, { date }) {
+  if (!date || date < DEBUT_REGLE_ECRITE) return [];
+  const texte = apostropheTypo(String(corps ?? ''));
+  const erreurs = [];
+  const regle = sectionH2(texte, TITRE_REGLE);
+  if (regle === null) {
+    erreurs.push(`Section « ## ${TITRE_REGLE} » absente : un article daté à partir du ${DEBUT_REGLE_ECRITE} porte le mécanisme nommé (charte §2 bis).`);
+  } else {
+    for (const libelle of LIBELLES_REGLE) if (!regle.includes(`**${libelle}**`)) erreurs.push(`« ${TITRE_REGLE} » : le libellé **${libelle}** manque.`);
+    const entete = lignesDeTableau(regle)[0] ?? '';
+    if (!COLONNES_FRONTIERE.every((c) => entete.includes(c))) erreurs.push(`« ${TITRE_REGLE} » : le tableau de frontière à trois colonnes (${COLONNES_FRONTIERE.join(' | ')}) manque.`);
+  }
+  const rejeu = sectionH2(texte, TITRE_REJEU);
+  if (rejeu === null) {
+    erreurs.push(`Section « ## ${TITRE_REJEU} » absente : les cas joués et leur sortie font partie de l'article.`);
+  } else if (lignesDeTableau(rejeu).length < LIGNES_REJEU_MIN + 1) {
+    erreurs.push(`« ${TITRE_REJEU} » : au moins trois lignes de cas joués sont attendues sous l'en-tête du tableau (${LIGNES_REJEU_MIN} au minimum).`);
+  }
+  return erreurs;
+}
+
 export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour = aujourdhui() }) {
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
   const dossier = join(root, 'editorial/articles', slug);
@@ -478,6 +521,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   }
   const { erreurs, claims } = construireClaims({ recette, corps, dossier, sujet, jour });
   ecrireJson(join(dossier, 'claims.json'), claims);
+  erreurs.push(...verifierRegleEcrite(corps, { date: recette.date }));
 
   const { obs, collisions } = evidencesSkills({ manifest: manifestFinal, corps, sujet, jour, claims, root });
   const generee = recette.image.source;
