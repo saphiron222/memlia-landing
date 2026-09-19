@@ -1,80 +1,120 @@
-# Plan du glossaire v3 — 23 termes conservés, 34 termes automatisation, IA, données, cadre
+# Glossaire v3 : vague 1 intégrée, vague 2 à faire
 
-16 septembre 2026 — proposition. Le glossaire actuel (`src/data/glossary.ts`, 23 ancres) est conservé tel quel : ses termes sont scellés, sourcés, et treize d'entre eux servent encore aux articles paie. La v3 ajoute **34 termes** en deux vagues, tous employés par au moins un article du calendrier. Total cible : **57 ancres**.
+Plan écrit le 16 septembre 2026, remis à l'état réel le 19 septembre 2026.
 
-## 1. Le contrat ne change pas
+**Le glossaire porte 43 termes aujourd'hui** : les 23 historiques et les 20 de la vague 1, intégrés
+le 16/09/2026. Le compte est vérifiable dans `src/data/glossary.ts` (43 ancres uniques) et
+`tests/proof/test_glossary.py` en exige exactement 43. La vague 2
+compte **14 termes**, ce qui porterait le total à 57.
 
-Chaque nouveau terme remplit le contrat `GlossaryEntry` : `term`, `anchor`, `nature` (Réglementaire · Professionnelle · Technique · Éditoriale Memlia), `definition` (40 à 60 mots, autonome, extractible), `context` (où le cabinet le rencontre), `exampleFictitious` (jeu fictif, jamais un client), `commonConfusion`, **`automationBoundary`** (ce qui se prépare seul, ce qui attend une validation, ce qui reste humain), `relatedTerms`, `internalLinks` (vers les articles qui l'emploient), `sourceIds` (sources datées, `checkedAt`). Aucune mention de processus rendue (le test `test_aucune_mention_de_processus_rendue` le garantit).
+Correction d'un compte faux que ce document portait : le plan annonçait « vague 1 : 18 termes » et
+« vague 2 : 16 termes », alors que ses propres tableaux marquaient 20 termes en vague 1 et 14 en
+vague 2. Ce sont les 20 qui ont été rédigés et intégrés.
 
-Règle d'admission : **pas de terme sans article qui l'emploie**, pas d'article qui emploie un terme absent du glossaire sans le définir en ligne. La colonne « Articles » ci-dessous porte cette correspondance ; les slugs sont ceux de `CONTENT-CALENDAR.md`.
+## 1. Le contrat, inchangé
 
-## 2. Famille A — Automatisation (12 termes)
+Chaque terme remplit le contrat `GlossaryEntry` : `term`, `anchor`, `nature` (Réglementaire,
+Professionnelle, Technique, Éditoriale Memlia), `definition` (40 à 60 mots, autonome, extractible),
+`context`, `exampleFictitious` (jeu fictif, jamais un client), `commonConfusion`,
+**`automationBoundary`** (ce qui se prépare seul, ce qui attend une validation, ce qui reste humain),
+`relatedTerms`, `internalLinks`, `sourceIds` avec `checkedAt`. Aucune mention de processus rendue :
+`test_aucune_mention_de_processus_rendue` le garantit.
 
-| Terme | Nature | En une ligne (à développer en 40-60 mots) | Confusion courante | Source à citer | Articles | Vague |
-|---|---|---|---|---|---|---|
-| Automatisation | Technique | exécuter une règle écrite sans intervention humaine à chaque occurrence, en signalant ce qui sort de la règle | confondue avec la numérisation (passer du papier au PDF) et avec l'IA | France Num (Direction générale des Entreprises), fiche « automatiser ses tâches » ; à relever | pilier, sans-changer-de-logiciel | 1 |
-| Flux de travail (workflow) | Technique | enchaînement ordonné d'étapes, avec pour chacune un responsable, une condition d'entrée et une sortie | pris pour un logiciel ; un workflow existe sur papier avant tout outil | CNIL ou ANSSI selon la fiche ; à relever | pilier, choisir-la-premiere-tache | 1 |
-| Automatisation robotisée des processus (RPA) | Technique | logiciel qui rejoue des clics et des saisies à la place d'un humain dans une interface | confondue avec l'IA ; la RPA ne comprend rien, elle rejoue | France Num ou AFNOR ; à relever | ia-generative, sans-changer-de-logiciel | 2 |
-| Déclencheur | Technique | l'événement qui lance une règle : une date, une réception, un état qui change | confondu avec la règle elle-même | définition Memlia, sourcée sur un standard de workflow (BPMN, OMG) ; à relever | relance-des-pieces, relances-honoraires | 1 |
-| Exception (cas hors règle) | Éditoriale Memlia | occurrence que la règle ne couvre pas et qui doit remonter à un humain au lieu d'être traitée | prise pour une erreur ; une exception bien remontée est le fonctionnement normal | jurisprudence interne : « Cas de refus » existant, motif proposition/validation | relance-des-pieces, saisie-ocr, lettrage | 1 |
-| File d'anomalies | Éditoriale Memlia | liste unique où remontent toutes les exceptions, traitée d'un coup par un humain, avec statut | confondue avec une alerte par courriel à chaque cas | référentiel des besoins (HYP-ASS-006), sans citation nominative | completude-dossier, rapprochement | 1 |
-| Proposition puis validation | Éditoriale Memlia | l'outil propose une valeur ou une action, l'humain saisit ou valide ; ce qui est saisi n'est jamais réécrit | confondue avec « l'outil fait tout puis on vérifie après » | doctrine Memlia, page Méthode | pilier, choisir-la-premiere-tache, ia-generative | 1 |
-| Idempotence | Technique | rejouer un traitement ne change rien s'il n'apporte rien : un import relancé n'écrit pas deux fois | confondue avec « annuler » ; deux régimes : l'import ne réécrit pas, la régénération réécrit tout | définition informatique standard (RFC 9110 pour le sens HTTP) ; à relever | importer-un-export, ne-pas-facturer-deux-fois | 2 |
-| Reliquat d'exceptions | Professionnelle | la part des occurrences que l'automatisation n'a pas su traiter et qu'un humain reprend | confondue avec un taux d'erreur ; un reliquat est attendu, un taux d'erreur est un défaut | article Wize Expert (cité comme usage professionnel, pas comme autorité) ; à relever | saisie-ocr, lettrage, rapprochement | 2 |
-| Seuil d'alerte | Éditoriale Memlia | valeur au-delà de laquelle un écart remonte ; réglé par le cabinet, jamais par l'outil | confondu avec une tolérance comptable | référentiel des besoins (HYP-EXC-007), non nominatif | reperer-un-dossier-sous-tarif, tableau-de-bord | 2 |
-| Recette | Professionnelle | séance où le cabinet rejoue ses cas sur ses fichiers et accepte ou refuse le livrable | confondue avec une démonstration ; une recette se fait sur les fichiers du cabinet | vocabulaire des marchés informatiques (CCAG-TIC, « vérification d'aptitude ») ; à relever | pilier, jeu-d-essai-fictif | 1 |
-| Jeu d'essai fictif | Éditoriale Memlia | données inventées, plausibles, qui couvrent le cas courant, le cas limite et le cas de refus | pris pour des données anonymisées (qui restent personnelles au sens CNIL) | CNIL « anonymisation » (déjà sourcée), doctrine Memlia | jeu-d-essai-fictif, mesurer-le-temps | 1 |
+Règle d'admission : **pas de terme sans article qui l'emploie**, pas d'article qui emploie un terme
+absent du glossaire sans le définir en ligne.
 
-## 3. Famille B — Intelligence artificielle (9 termes)
+## 2. Vague 1 : intégrée le 16/09/2026
 
-| Terme | Nature | En une ligne | Confusion courante | Source à citer | Articles | Vague |
-|---|---|---|---|---|---|---|
-| Système d'IA | Réglementaire | définition du règlement (UE) 2024/1689, article 3 : système qui infère, à partir d'entrées, des sorties (prédictions, contenus, recommandations, décisions) | tout logiciel n'est pas un système d'IA ; une macro ne l'est pas | EUR-Lex, règlement (UE) 2024/1689 ; date de lecture à poser | ia-generative, ai-act | 1 |
-| IA générative | Technique | modèle qui produit du texte, des images ou du code à partir d'une consigne | confondue avec un moteur de recherche ; elle produit, elle ne retrouve pas | CNIL, fiches « IA générative » ; à relever | ia-generative, trier-la-boite-mail | 1 |
-| Grand modèle de langage (LLM) | Technique | modèle entraîné sur de grands corpus de texte, qui prédit la suite d'un texte | pris pour une base de connaissances à jour | CNIL ; à relever | ia-generative, agent-ia | 1 |
-| Agent IA | Technique | système qui enchaîne des actions avec des outils pour atteindre un but, avec une autonomie bornée | confondu avec un assistant conversationnel ; l'agent agit, l'assistant répond | définition à sourcer sur un document institutionnel (CNIL ou Commission) ; à relever | agent-ia, ce-qu-il-ne-faut-pas-automatiser | 2 |
-| Hallucination | Technique | sortie plausible mais fausse d'un modèle génératif, formulée avec assurance | prise pour un bug réparable ; c'est une propriété du procédé | CNIL ; à relever | ia-generative, rgpd-et-ia | 1 |
-| Génération augmentée par recherche (RAG) | Technique | technique où le modèle répond à partir de documents fournis, cités, plutôt que de sa mémoire | prise pour une garantie d'exactitude ; elle borne, elle ne garantit pas | CNIL, fiches « développer un système d'IA » ; à relever | trier-la-boite-mail, agent-ia | 2 |
-| Modèle local | Technique | modèle exécuté sur une machine du cabinet, sans envoi des données à un tiers | confondu avec « hébergé en France » | CNIL (sous-traitance, transferts) ; module 5 Memlia | rgpd-et-ia, ia-generative | 2 |
-| Supervision humaine | Réglementaire | exigence de l'AI Act (article 14) : une personne peut comprendre, surveiller et interrompre le système | confondue avec la validation humaine Memlia (pratique), qui va plus loin : rien ne part sans validation | EUR-Lex, règlement (UE) 2024/1689 ; à relever | ai-act, pilier | 2 |
-| Maîtrise de l'IA | Réglementaire | obligation de l'AI Act (article 4) : le personnel qui utilise un système d'IA en comprend le fonctionnement et les limites ; **date d'application à vérifier sur EUR-Lex le jour de la rédaction** (des billets annoncent le 2 août 2026, d'autres une date antérieure) | prise pour une certification | EUR-Lex ; à relever avec date | ai-act, rh-formation (synthese-remuneration) | 2 |
+Vingt termes rédigés au contrat (`glossaire-vague-1.json`) puis intégrés par la chaîne Ressources
+(manifeste T, contrat v3). Les ancres servies :
 
-## 4. Famille C — Données et intégration (6 termes)
+| Famille | Termes (ancre) |
+|---|---|
+| Automatisation (8) | `automatisation`, `flux-de-travail`, `declencheur`, `exception`, `file-d-anomalies`, `proposition-puis-validation`, `recette`, `jeu-d-essai-fictif` |
+| Intelligence artificielle (4) | `systeme-d-ia`, `ia-generative`, `grand-modele-de-langage`, `hallucination` |
+| Données et intégration (3) | `reconnaissance-optique-de-caracteres`, `extraction-de-donnees`, `sous-traitant-rgpd` |
+| Vocabulaire des tâches (5) | `pre-comptabilite`, `completude-du-dossier`, `relance-de-pieces`, `prelevement-sepa-et-rejet`, `honoraires-mensualises-et-actes-hors-forfait` |
 
-| Terme | Nature | En une ligne | Confusion courante | Source à citer | Articles | Vague |
-|---|---|---|---|---|---|---|
-| Reconnaissance optique de caractères (OCR) | Technique | transformation d'une image de document en texte exploitable | prise pour de la compréhension ; l'OCR lit, elle n'interprète pas | définition standard ; comparatif cabinetdigital cité comme usage | saisie-ocr, notes-de-frais | 1 |
-| Extraction de données | Technique | repérage, dans un document lu, des champs utiles (fournisseur, montant, TVA, date) | confondue avec l'OCR ; l'extraction vient après | à relever (France Num ou éditeur cité pour sa propre fonction) | saisie-ocr, facture-electronique | 1 |
-| Connecteur et API | Technique | interface par laquelle deux logiciels échangent sans ressaisie ; quand elle manque, on passe par des exports | « sans API » ne veut pas dire « sans automatisation » : l'export fichier est une voie | à relever (documentation d'un éditeur pour sa propre API) | importer-un-export, sans-changer-de-logiciel | 2 |
-| Export logiciel et import CSV | Technique | fichier plat produit par un logiciel, lu par un autre ; son schéma doit être vérifié à chaque import | pris pour une copie fiable ; un export change de colonnes sans prévenir | RFC 4180 (CSV) ; à relever | importer-un-export, ce-qu-excel-tient | 2 |
-| Clé de rapprochement | Technique | l'identifiant, ou la combinaison de champs, qui permet de dire que deux lignes parlent du même dossier | confondue avec un nom ; deux orthographes cassent un rapprochement | doctrine Memlia ; article Tensoria cité comme usage | rapprochement, lettrage, importer-un-export | 2 |
-| Sous-traitant (RGPD) | Réglementaire | celui qui traite des données personnelles pour le compte du cabinet, sous contrat (article 28) | confondu avec un fournisseur quelconque ; un éditeur d'IA hébergé est souvent un sous-traitant | CNIL, « sous-traitant », et RGPD article 28 (EUR-Lex) | rgpd-et-ia, ai-act | 1 |
+Ce que la vague a produit, mesuré le jour même : 43 termes rendus, 66 unités inventoriées, 74
+affirmations, 87 citations, 26 sources dont 11 rouvertes le jour même
+(`docs/qa/hub-ressources/glossaire-vague-1.md`). Six définitions ont été recadrées sur ce que leurs
+sources énoncent réellement (système d'IA, sous-traitant RGPD, honoraires, prélèvement SEPA, jeu
+d'essai fictif, grand modèle de langage) et huit termes sont des conventions Memlia adossées à
+`/methode`. Revue métier indépendante R5, 34 affirmations sensibles, 34 verdicts « soutient » après
+correction d'« anonymisation » : `docs/qa/hub-ressources/metier-review-r5/`.
 
-## 5. Famille D — Vocabulaire des nouvelles familles de tâches (7 termes)
+## 3. Vague 2 : 14 termes, à faire
 
-| Terme | Nature | En une ligne | Confusion courante | Source à citer | Articles | Vague |
-|---|---|---|---|---|---|---|
-| Pré-comptabilité | Professionnelle | collecte, tri et préparation des pièces avant l'écriture comptable | confondue avec la tenue ; la pré-compta s'arrête avant l'imputation | à relever (OEC ou éditeur cité pour sa propre définition) | saisie-ocr, relance-des-pieces | 1 |
-| Complétude du dossier | Éditoriale Memlia | état d'un dossier dont toutes les pièces attendues pour une période sont reçues et lisibles | confondue avec « le client a envoyé quelque chose » | doctrine Memlia ; checklist conditionnelle | completude-dossier, relance-des-pieces | 1 |
-| Relance de pièces | Professionnelle | demande, à cadence définie, des pièces manquantes d'un dossier, qui s'arrête à réception | confondue avec la relance d'impayés (autre objet, autre ton) | doctrine Memlia | relance-des-pieces, relances-honoraires | 1 |
-| Lettre de mission | Réglementaire | contrat obligatoire entre l'expert-comptable et le client, qui définit la mission et les honoraires | prise pour un devis | Code de déontologie des professionnels de l'expertise comptable (décret n° 2012-432), article sur la lettre de mission ; Légifrance, à relever | lettres-de-mission, onboarding | 2 |
-| Facture électronique et plateforme agréée | Réglementaire | facture émise, transmise et reçue dans un format structuré via une plateforme agréée par l'administration (dénomination et calendrier **à vérifier sur impots.gouv.fr le jour de la rédaction**) | confondue avec un PDF envoyé par courriel | impots.gouv.fr, dossier « facturation électronique » ; à relever avec date | facture-electronique, completude-dossier | 2 |
-| Prélèvement SEPA et rejet | Professionnelle | prélèvement des honoraires sur mandat ; un rejet est un retour de la banque du client, avec un motif codé | pris pour un impayé définitif ; un rejet appelle une relance ou un échéancier | Banque de France ou CFONB, codes motifs de rejet ; à relever | rejets-de-prelevement, relances-honoraires | 1 |
-| Honoraires mensualisés et actes hors forfait | Professionnelle | honoraires prélevés chaque mois sur une base contractuelle ; les actes hors forfait s'y ajoutent et se facturent une seule fois | double facturation d'un acte déjà inclus | Code de déontologie (honoraires), OEC ; à relever | ne-pas-facturer-deux-fois, reperer-un-dossier-sous-tarif | 1 |
+Aucune date n'est posée : la vague attend la validation de Kevin sur la liste et sur le moment. Les
+sources marquées « à relever » se relèvent et se datent le jour de la rédaction, jamais avant.
 
-## 6. Répartition et calendrier
+### Automatisation (4)
 
-| Vague | Termes | Quand | Condition |
-|---|---|---|---|
-| 1 | 18 termes (marqués « 1 ») | avec le pilier et les deux premiers satellites (M1) | sources relevées et datées, exemples fictifs écrits, frontière d'automatisation remplie |
-| 2 | 16 termes (marqués « 2 ») | avec la vague 2 d'articles (M4) | idem, plus relecture des dates AI Act et facture électronique |
+| Terme | Nature | En une ligne, à développer en 40 à 60 mots | Confusion courante | Source à citer | Article qui l'emploie |
+|---|---|---|---|---|---|
+| Automatisation robotisée des processus (RPA) | Technique | logiciel qui rejoue des clics et des saisies à la place d'un humain, dans une interface | confondue avec l'IA ; la RPA ne comprend rien, elle rejoue | France Num ou AFNOR, à relever | `automatiser-sans-changer-de-logiciel`, `ia-generative-au-cabinet-ce-qu-elle-prepare-ce-qu-elle-ne-decide-pas` |
+| Idempotence | Technique | rejouer un traitement ne change rien s'il n'apporte rien : un import relancé n'écrit pas deux fois | confondue avec « annuler ». Deux régimes : l'import ne réécrit pas, la régénération réécrit tout | RFC 9110 pour le sens HTTP, à relever | `importer-un-export-logiciel-dans-excel-sans-ressaisie`, `ne-pas-facturer-deux-fois-un-acte-hors-forfait` |
+| Reliquat d'exceptions | Professionnelle | la part des occurrences que l'automatisation n'a pas su traiter et qu'un humain reprend | confondue avec un taux d'erreur ; un reliquat est attendu, un taux d'erreur est un défaut | usage professionnel cité comme tel, pas comme autorité, à relever | à fixer sur l'angle publié des familles `saisie-ocr`, `lettrage`, `banque-rapprochement` |
+| Seuil d'alerte | Éditoriale Memlia | valeur au-delà de laquelle un écart remonte, réglée par le cabinet et jamais par l'outil | confondu avec une tolérance comptable | référentiel des besoins, sans citation nominative | `tableau-de-bord-de-production-sans-classer-les-personnes` |
 
-## 7. La chaîne à rejouer à chaque vague
+### Intelligence artificielle (5)
 
-1. Ajouter les entrées et leurs sources dans `src/data/glossary.ts` (mêmes champs, `sourceCheckedAt` daté du relevé).
-2. `editorial/resources/glossaire/manifest.json` : la décision « index unique de 23 ancres » devient « 57 ancres », `contractRevision` incrémenté.
-3. Mettre à jour les compteurs de `tests/proof/test_glossary.py` (23 → 41 puis 57) et vérifier `test_aucune_mention_de_processus_rendue`.
-4. `npm run build` (audit, build, preuves, lastmod, images, scripts).
-5. `npm run resource:seal-surfaces` puis `node scripts/reaffirm-resource-review.mjs reaffirmer` contre la déclaration r4.
-6. `npm run lastmod:sync` (le HTML du glossaire change → nouvelle empreinte), rebuild, `--check`.
-7. Playwright `resources.spec.ts` et `review.spec.ts`, puis vérification en ligne sur l'URL immuable `pages.dev` après publication.
+| Terme | Nature | En une ligne | Confusion courante | Source à citer | Article qui l'emploie |
+|---|---|---|---|---|---|
+| Agent IA | Technique | système qui enchaîne des actions avec des outils pour atteindre un but, avec une autonomie bornée | confondu avec un assistant conversationnel : l'agent agit, l'assistant répond | document institutionnel (CNIL ou Commission), à relever | `agent-ia-ou-assistant-ia-la-difference-pour-un-cabinet` |
+| Génération augmentée par recherche (RAG) | Technique | technique où le modèle répond à partir de documents fournis et cités, plutôt que de sa mémoire | prise pour une garantie d'exactitude : elle borne, elle ne garantit pas | CNIL, fiches « développer un système d'IA », à relever | `trier-la-boite-mail-du-cabinet-par-client-et-priorite` |
+| Modèle local | Technique | modèle exécuté sur une machine du cabinet, sans envoi des données à un tiers | confondu avec « hébergé en France » | CNIL, sous-traitance et transferts, à relever | `rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel` |
+| Supervision humaine | Réglementaire | exigence de l'AI Act (article 14) : une personne peut comprendre, surveiller et interrompre le système | confondue avec la validation humaine Memlia, qui va plus loin : rien ne part sans validation | EUR-Lex, règlement (UE) 2024/1689, à relever | `mettre-un-cabinet-comptable-en-conformite-avec-l-ai-act` |
+| Maîtrise de l'IA | Réglementaire | obligation de l'AI Act (article 4) : le personnel qui utilise un système d'IA en comprend le fonctionnement et les limites. **Date d'application à vérifier sur EUR-Lex le jour de la rédaction** | prise pour une certification | EUR-Lex, à relever avec la date | `checklist-de-conformite-ai-act-pour-un-petit-cabinet-comptable` |
+
+### Données et intégration (3)
+
+| Terme | Nature | En une ligne | Confusion courante | Source à citer | Article qui l'emploie |
+|---|---|---|---|---|---|
+| Connecteur et API | Technique | interface par laquelle deux logiciels échangent sans ressaisie ; quand elle manque, on passe par des exports | « sans API » ne veut pas dire « sans automatisation » : l'export fichier est une voie | documentation d'un éditeur pour sa propre API, à relever | `automatiser-sans-changer-de-logiciel`, `importer-un-export-logiciel-dans-excel-sans-ressaisie` |
+| Export logiciel et import CSV | Technique | fichier plat produit par un logiciel et lu par un autre ; son schéma se vérifie à chaque import | pris pour une copie fiable : un export change de colonnes sans prévenir | RFC 4180, à relever | `checklist-avant-d-importer-un-export-logiciel-dans-excel` |
+| Clé de rapprochement | Technique | l'identifiant, ou la combinaison de champs, qui permet de dire que deux lignes parlent du même dossier | confondue avec un nom : deux orthographes cassent un rapprochement | doctrine Memlia, usage professionnel cité comme tel | `rapprochement-bancaire-automatise-les-ecarts-a-remonter`, `lettrage-automatique-regles-et-cas-de-refus` |
+
+### Vocabulaire des tâches (2)
+
+| Terme | Nature | En une ligne | Confusion courante | Source à citer | Article qui l'emploie |
+|---|---|---|---|---|---|
+| Lettre de mission | Réglementaire | contrat obligatoire entre l'expert-comptable et son client, qui définit la mission et les honoraires | prise pour un devis | Code de déontologie des professionnels de l'expertise comptable (décret n° 2012-432), Légifrance, à relever | `qu-est-ce-que-la-lettre-de-mission-d-un-expert-comptable` |
+| Facture électronique et plateforme agréée | Réglementaire | facture émise, transmise et reçue dans un format structuré via une plateforme agréée par l'administration. **Dénomination et calendrier à vérifier sur impots.gouv.fr le jour de la rédaction** | confondue avec un PDF envoyé par courriel | impots.gouv.fr, dossier facturation électronique, à relever avec la date | `checklist-de-conformite-avant-le-passage-a-la-facture-electronique`, `facture-electronique-ce-que-change-la-collecte-des-pieces` |
+
+Les slugs cités sont ceux de `backlog-v3.json` au 19/09/2026 : ils se revérifient au moment de la
+vague, puisqu'un angle peut être réécrit par un recalage de la demande.
+
+## 4. La chaîne de publication d'une vague
+
+Jamais un simple ajout dans le fichier. La procédure complète est dans `RUNBOOK-QUOTIDIEN.md` §6.3 ;
+en voici l'ossature, dans l'ordre :
+
+1. **Rédiger les entrées** dans `src/data/glossary.ts` (apostrophe typographique, jamais droite, dans les textes).
+2. **Copier et dater les sources** dans `docs/qa/hub-ressources/<vague>-sources/`, avec un en-tête de navigateur : Légifrance et l'assistance Net-entreprises refusent un agent nu.
+3. **Déclarer les preuves attendues** : planchers `DEFINITIONS_ATTENDUES` et `UNITES_ATTENDUES` (`scripts/lib/resource-metier-evidence.mjs`), champs à portée juridique dans `ADDITIONAL_UNITS` (`resource-metier-v3.mjs`).
+4. **Monter les compteurs** : `tests/proof/test_glossary.py` (43 vers 57), `tests/browser/glossary.spec.ts`, totaux de `test_resource_v3_traceability.py`.
+5. `npm run build`, puis **`npm run resource:seal-surfaces`** : la surface scellée est le glossaire seul depuis le retrait de `/ressources`.
+6. **Revue métier par un agent distinct de l'auteur**, sous une carte de suivi, avec un verdict par couple affirmation et source sur tous les types sensibles.
+7. **Injecter la revue** dans les manifestes, puis `node scripts/reaffirm-resource-review.mjs ancrer` : l'ancre enregistre le sujet complet de la revue après avoir vérifié qu'il reproduit l'empreinte épinglée.
+8. `npm run resource:audit:qa` vert, `npm run lastmod:sync`, rebuild, Playwright `glossary.spec.ts` et `review.spec.ts`, puis vérification en ligne.
+
+Entre deux vagues, quand le chrome du site change sans que la matière bouge, on ne rescelle pas : on
+**réaffirme** (`node scripts/reaffirm-resource-review.mjs reaffirmer`), qui compare le sujet courant
+à l'ancre feuille par feuille, refuse tout écart non déclaré, revérifie que chaque affirmation est
+encore rendue et chaque copie de source intacte, puis re-épingle. La revue en vigueur est
+`metier-review-r5`.
+
+## 5. Le piège, écrit pour ne pas être refait
+
+**Ne jamais rejouer `resource:seal-surfaces` après un scellement de revue.** Le scellement des
+surfaces réinitialise sans condition les listes de défauts et le blocage : relancé après coup, il
+efface le bloc de revue que le scellement venait d'écrire, **silencieusement**. Le dossier repart en
+attente sans que rien ne rougisse. C'est un défaut connu du script, relevé lors du scellement R2 et
+consigné dans `docs/qa/hub-ressources/metier-r2-seal.md` ; tant qu'il n'est pas corrigé, l'ordre du
+§4 est contraignant : sceller d'abord, faire relire ensuite, ancrer enfin.
+
+Second piège, du même genre : une réaffirmation n'est pas un rescellement. Rescellier en effaçant la
+revue serait la perte silencieuse ; re-épingler automatiquement serait pire, une revue qui suit
+n'importe quel contenu ne revoit plus rien. Le script tient la troisième voie, explicite et
+fail-closed, et refuse d'écrire dès qu'une vérification manque.

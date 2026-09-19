@@ -1,99 +1,173 @@
-# Stratégie SEO et éditoriale v3 — tout le cabinet, pas seulement la paie
+# Stratégie SEO et éditoriale v3 : tout le cabinet, pas seulement la paie
 
-16 septembre 2026 — validée par Kevin le jour même (« sinon go »), avec deux amendements : cadence **quatre articles par semaine** (au plus deux par jour) et taxonomie élargie à **soixante familles de tâches** en douze pôles (`src/data/familles.ts`), au lieu des onze familles de la première version. Exécution en cours par la forge éditoriale (`scripts/blog-forge.mjs`). Ce dossier remplace, pour l'éditorial, la stratégie v2 (`../site-v2/SEO-STRATEGY.md`, trois piliers dont deux sur la production sociale) et les notes du coffre (`~/memlia-vault/10-memlia/marketing/seo/`, clusters A à F). Les pages commerciales v2 restent telles quelles.
+Écrite le 16 septembre 2026, validée par Kevin le jour même avec deux amendements (quatre articles
+par semaine, territoire élargi à toute tâche automatisable du cabinet). **Remise à l'état réel le
+19 septembre 2026**, après la revue mesurée de la demande. La thèse et le constat tiennent ; la
+carte du territoire, les chiffres et les seuils sont ceux d'aujourd'hui.
 
-## 1. Le constat en trois lignes
+Ce dossier remplace, pour l'éditorial, la stratégie v2 (`../site-v2/SEO-STRATEGY.md`, trois piliers
+dont deux sur la production sociale) et les notes du coffre. Les pages commerciales suivent la
+charte de message (`.agents/product-marketing.md` v3), pas ce document.
 
-- **Le site tourne autour de la DSN parce que le corpus a été écrit depuis l'unique cabinet client et ses deux modules livrés** (pôle social). Les trois articles publiés, treize des vingt-trois termes du glossaire et deux des trois piliers v2 parlent paie, bulletin, DSN.
-- **Le contrat éditorial prévoyait déjà tout le cabinet** : le schéma du blog (`src/content.config.ts`) accepte onze clusters et treize rôles, du recouvrement à l'IT. Un seul cluster a été utilisé. La file `editorial/queue.json` est vide.
-- **Il n'y a rien à perdre en élargissant** : Search Console sur 90 jours donne 10 clics, 52 impressions, 2 requêtes distinctes ; 9 pages sur 12 indexées au 16 septembre (les trois dernières demandées ce jour).
+## 1. Le constat, relu le 19/09
 
-## 2. La thèse
+- **Le corpus est né du pôle social**, parce que c'est là que les premières tâches ont été prises en charge. Trois des six articles publiés portent la paie, le bulletin ou la DSN, et six des 43 termes du glossaire portent la DSN ou la production sociale (comptés dans `src/content/blog/` et `src/data/glossary.ts`).
+- **Le contrat éditorial prévoyait déjà tout le cabinet** : le schéma du blog (`src/content.config.ts`) accepte douze pôles et les rôles de la taxonomie Ressources. La taxonomie complète existe désormais en source unique, `src/data/familles.ts`.
+- **Il n'y avait rien à perdre en élargissant, et il n'y a toujours rien à défendre** : sur 28 jours au 14/09, Search Console donne 4 clics et 17 impressions, tous sur l'accueil, sur des requêtes de marque mal orthographiées ; les six articles sont à zéro impression (`mesures/semaine-2026-W38-demande.json`). La base technique, elle, est propre : 14 URL au sitemap, 14 indexées, 0 rouge (`mesures/sentinelle.jsonl`, 18/09).
 
-**Memlia est le site qui explique, tâche par tâche, comment un cabinet d'expertise comptable automatise ce qu'il fait déjà, sans changer de logiciel, avec une règle écrite dans ses mots, un jeu d'essai fictif, et une validation humaine.** Le sujet n'est plus « la production sociale » : c'est **la tâche répétitive du cabinet**, où qu'elle se trouve (collecte de pièces, saisie, lettrage, révision, échéances, honoraires, courriels, paie, juridique, pilotage).
+## 2. La thèse, inchangée
 
-Le terme de catégorie mesuré reste **« automatisation cabinet comptable »** (10 recherches/mois, seule requête de catégorie chiffrée, relevé DataForSEO du 12/09). La page de service `/automatisation-cabinet-comptable` le porte déjà. La v3 lui donne enfin un territoire éditorial à sa taille : **un pilier + soixante familles de tâches en douze pôles**, au lieu de deux satellites paie.
+**Memlia est le site qui explique, tâche par tâche, comment un cabinet d'expertise comptable
+automatise ce qu'il fait déjà, sans changer de logiciel, avec une règle écrite dans ses mots, un jeu
+d'essai fictif, et une validation humaine.** Le sujet n'est pas « la production sociale » : c'est
+**la tâche répétitive du cabinet**, où qu'elle se trouve.
 
-## 3. Ce qui change, ce qui ne change pas
+Le terme de catégorie mesuré reste **« automatisation cabinet comptable »** (10 recherches par mois,
+seule requête de catégorie chiffrée, relevé DataForSEO du 12/09/2026). La page de service
+`/automatisation-cabinet-comptable` le porte. Le pilier
+`/blog/automatiser-un-cabinet-comptable-la-carte-des-taches` le porte côté éditorial et vise la même
+requête (`mesures/registre-requetes.json`).
 
-| | v2 (15/09) | v3 (proposée) |
+Depuis le 19/09, la thèse a un nom sur toute surface : **« la règle écrite »** (charte §2 bis), en
+quatre parties, la frontière en trois colonnes, proposition puis validation, l'arrêt dans le doute,
+le jeu d'essai fictif. Ce n'est pas un ajout éditorial : la forge refuse de matérialiser un article
+daté à partir du 19/09/2026 qui ne porte pas `## La règle écrite` et `## Rejoué sur le jeu fictif`
+(`verifierRegleEcrite`, `scripts/blog-forge.mjs`).
+
+## 3. Ce qui a changé depuis la v2
+
+| | v2 (15/09) | v3, en exécution au 19/09 |
 |---|---|---|
-| Territoire éditorial | production sociale + méthode | **toute tâche automatisable du cabinet**, onze familles |
-| Pilier | aucun article pilier ; la page service tient lieu de hub | **un article pilier** « la carte des tâches automatisables d'un cabinet » (2 500 à 4 000 mots) + la page service |
-| Cadence | 1 à 2 articles/mois | **4 par semaine**, au plus 2 par jour (plafonds codés dans le pipeline), tenue par la forge : recette → sources vérifiées en ligne → revues indépendantes → gate → publication scellée |
-| Glossaire | 23 termes, 13 sur la paie/DSN | **23 conservés + 34 termes automatisation, IA, données, cadre** (voir `GLOSSARY-PLAN.md`) |
-| Pages commerciales | 5 pages | **inchangées**. Aucune page « par famille » tant qu'aucun module ne la décrit (règle anti-catalogue) |
-| Promesse commerciale | limitée aux modules livrés | **inchangée** ; l'éditorial peut couvrir toute tâche si l'article est rejouable sans Memlia |
+| Territoire éditorial | production sociale et méthode | **toute tâche automatisable du cabinet** : 60 familles en 12 pôles (`src/data/familles.ts`) |
+| Pilier | aucun ; la page de service tenait lieu de hub | **un article pilier publié** le 16/09, plus la page de service |
+| Cadence | 1 à 2 articles par mois | **4 par semaine, 2 par jour au plus**, du lundi au jeudi ; plafonds codés et testés |
+| Chaîne de production | rédaction directe | **la forge** : recette, sources ouvertes le jour même, revue indépendante, gate, publication scellée sur les octets |
+| Glossaire | 23 termes, dont 6 sur la DSN et la production sociale | **43 termes rendus** depuis le 16/09 (23 + vague 1), vague 2 de 14 termes à faire |
+| Priorité des sujets | jugée de l'intérieur | **mesurée** depuis le 19/09 : autocomplétion Google et pages de résultats, invariant au `--check` |
+| Pages commerciales | 5 pages | **inchangées**. Aucune page par famille tant qu'une tâche n'est pas livrée et décrite (règle anti-catalogue) |
 
-Ce qui ne bouge pas, parce que ce sont des règles de maison : aucune donnée client, aucun chiffre non sourcé, fact-check daté sur la paie et le fiscal, validation humaine, anti-surveillance (agrégats, jamais nominatif), fail-closed, pas de page « X vs Y », pas de page ville, pas de contenu macros/VBA.
+Ce qui ne bouge pas, parce que ce sont des règles de maison : aucune donnée client, aucun chiffre non
+sourcé, fact-check daté sur la paie et le fiscal, validation humaine, anti-surveillance (agrégats,
+jamais nominatif), fail-closed, pas de page « X contre Y », pas de page ville, pas de contenu macros.
 
-## 4. La carte du territoire
+## 4. La carte du territoire : 60 familles en 12 pôles
 
-Chaque famille reprend l'identifiant `cluster` du schéma du blog. Les rôles sont ceux de la taxonomie Ressources (douze rôles canoniques du contrat v3). La colonne « preuve terrain » cite le référentiel des besoins (`~/dev/produit/referentiel-besoins/`, deux postes documentés : assistante du cabinet, expert-comptable associé) : c'est ce qui distingue une famille observée d'une famille supposée.
+La source unique est `src/data/familles.ts` : un pôle est un `cluster` du schéma du blog, une famille
+est la maille éditoriale. `audit-legal` (pôle audit et commissariat aux comptes) est **listée et non
+ouverte** : aucune tâche documentée, aucun angle au backlog. Le backlog porte donc 59 familles
+actives, quatre angles par famille, ce que le plan généré compte comme 11 pôles.
 
-| # | Cluster (`cluster`) | Tâches couvertes | Rôle principal | Preuve terrain | Priorité |
-|---|---|---|---|---|---|
-| 1 | `production-comptable` | collecte et **relance de pièces**, complétude du dossier, saisie et OCR, pré-comptabilité, lettrage, rapprochement bancaire, révision par cycles, clôture, facture électronique | collaborateurs comptables, chefs de mission | indirecte (module 4 flux compta ; aucun BES- sur le pôle compta) | **1** |
-| 2 | `facturation-recouvrement` | honoraires mensualisés, actes hors forfait, double facturation, prélèvements et rejets, relances d'impayés, échéanciers, sous-facturation | facturation-recouvrement, direction | **observée** : BES-ASS-004 à 016, BES-ASS-019, BES-EXC-012, 013, 017, 019 | **1** |
-| 3 | `administratif-secretariat` | boîte mail saturée, tri par client et priorité, lettres de mission et renouvellement, plaquettes de bilan, entrée en relation (onboarding), courriers types | administratif-secrétariat, assistants | **observée** : BES-ASS-017, 018, 021, 025 ; BES-EXC-020 à 022 | **1** |
-| 4 | `portefeuille-echeances` | échéances fiscales et sociales du portefeuille, statut par dossier, alertes, tableau de bord de production, liasse EDI-TDFC et rejets | chefs de mission, direction | **observée** : BES-ASS-013, 020, 021 ; BES-EXC-010, 014 | 2 |
-| 5 | `methode-decision-humaine` | choisir la première tâche, écrire la règle, jeu d'essai, recette, validation humaine, cas de refus, mesurer le temps réel, ce qu'il ne faut pas automatiser | direction, tous | doctrine Memlia (motif « proposition vs saisie ») | **1** (porte le pilier) |
-| 6 | `numerique-it-data` | IA générative au cabinet, agent vs assistant, OCR vs IA, données et secret professionnel, sous-traitance, AI Act, modèle local, connecteurs sans API, imports CSV | numérique-IT-data, direction | indirecte (module 5 messagerie, IA locale) | 2 |
-| 7 | `excel-outils-existants` | automatiser sans changer de logiciel, ce qu'Excel tient et ne tient plus, importer un export logiciel, Power Query, complément Office.js, maintenance d'un classeur partagé | collaborateurs, direction | **observée** : BES-ASS-001, 026, 027 ; BES-EXC-001 à 006, 015, 016 | 2 |
-| 8 | `paie-social` | bulletins, DSN, comptes rendus métier, **collecte des variables de paie**, synthèse de rémunération | paie-responsables sociaux | **livrée** (modules 1, 2, 6) | maintenance + 3 articles |
-| 9 | `juridique-fiscal` | TVA (CA3, CA12) préparée et contrôlée, approbation des comptes et AG, secrétariat juridique annuel, suivi CAC et juriste | juridique-fiscal | indirecte (BES-ASS-021) | 3 |
-| 10 | `rh-formation` | plan de charge, entretiens, synthèse de rémunération (côté employeur), formation à l'IA (obligation AI Act, à sourcer) | RH-formation | indirecte (BES-EXC-023) | 3 |
-| 11 | `audit-cac` | — | audit-CAC | aucune | **dormant** : aucun besoin documenté, aucun module ; ne pas ouvrir |
+Colonnes mesurées : « angles » et « P1 » sont comptés dans `backlog-v3.json` après le recalage du
+19/09 ; « publiés » est compté dans `CONTENT-CALENDAR.md`. La preuve terrain de chaque famille vit
+dans le référentiel des besoins (`~/dev/produit/referentiel-besoins/`) et dans le champ `preuve` de
+chaque angle du backlog : elle n'est pas recopiée ici, pour qu'il n'y ait qu'un endroit à corriger.
 
-Lecture : les priorités 1 sont les familles où **soit un besoin est observé sur le terrain, soit la demande de recherche est la plus formulée** (la relance de pièces est la tâche la plus citée par les concurrents de contenu, sans qu'aucun d'eux livre la méthode). La priorité 3 attend un signal : une demande client, ou des impressions Search Console sur ses requêtes.
+| Pôle (`cluster`) | Familles | Angles | Dont P1 | Publiés |
+|---|---|---|---|---|
+| Production comptable | 13 | 52 | 4 | 2 |
+| Paie et social | 7 | 28 | 6 | 3 |
+| Juridique et fiscal | 7 | 28 | 10 | 0 |
+| Portefeuille et échéances | 5 | 20 | 2 | 0 |
+| Administration et secrétariat | 5 | 20 | 2 | 0 |
+| Facturation et recouvrement du cabinet | 4 | 16 | 2 | 0 |
+| Numérique, IT et data | 4 | 16 | 2 | 0 |
+| Conseil et missions spéciales | 4 | 16 | 1 | 0 |
+| Méthode et décision humaine | 4 | 15 | 1 | 1 (le pilier) |
+| RH et formation | 3 | 12 | 1 | 0 |
+| Excel et outils existants | 3 | 12 | 0 | 0 |
+| Audit et commissariat aux comptes | 1 | 0 | 0 | 0 |
+| **Total** | **60** | **235** | **31** | **6** |
 
-## 5. Ce que la SERP dit (relevés WebSearch, 16/09/2026, 14 requêtes)
+Le pilier compte pour un angle de priorité 1 supplémentaire, hors satellites : 32 angles en priorité
+1 au total, 9 en priorité 2, 195 en priorité 3.
 
-Volumes : **ND** sauf les deux requêtes chiffrées du 12/09 (« automatisation cabinet comptable » et « compte rendu métier DSN », 10/mois chacune). Ne pas inventer de volume ; les positions Memlia sont ND (2 requêtes en 90 jours).
+Deux lectures à ne pas confondre. **Priorité 1 ne veut pas dire famille importante** : elle dit
+seulement que la requête primaire de l'angle a des suggestions d'autocomplétion, donc qu'elle passe
+un seuil de volume. Le juridique et fiscal domine la colonne P1 parce que ses requêtes sont des
+questions de définition largement tapées, pas parce qu'un cabinet y souffre plus qu'ailleurs.
+**Priorité 3 ne veut pas dire sujet mort** : elle dit qu'aucune demande n'est mesurable sur la
+formulation actuelle de l'angle, ce qui appelle une réécriture de l'angle avant un abandon.
 
-**Recouvrement d'URL entre familles : faible (1 à 2 domaines partagés, jamais 4).** Les seuls domaines qui reviennent d'une famille à l'autre sont deux acteurs de catégorie (un éditeur de logiciel de gestion de cabinet, une agence d'automatisation n8n). Conclusion identique à celle du 10/09 sur 23 requêtes : **une famille = un cluster distinct, interliés par le pilier**, pas de fusion. Détail dans `cluster-plan.md`.
+## 5. Ce que la page de résultats dit (relevés des 17 et 19/09)
 
-**Qui occupe le terrain** (détail dans `COMPETITOR-ANALYSIS.md`) : des agences RPA/n8n/IA (FlowZero, AzenFlow, Tensoria, Bonjour IA, Productiv·IA), des éditeurs (Queoval, Dext, Pennylane, Sage, Cegid, MyUnisoft, Agiris), un média professionnel (Compta Online), et un tissu de cabinets qui publient sur leur propre offre. FlowZero couvre déjà 29 sujets, dont relances, onboarding, TVA, notes de frais, clôture, rapprochement, facture électronique, AI Act. **Le terrain n'est pas vide, il est occupé par des promesses chiffrées** (« -40 % d'impayés », « 8 heures par dossier », « 94 % de temps gagné ») que personne ne source. C'est l'espace de Memlia.
+- **memlia.fr est absent des 20 premiers** sur « automatisation cabinet comptable » et sur « automatisation saisie comptable ». Sur la requête de marque, `spell = did_you_mean` corrige « memlia » en « mellia », une autre entité occupe la page, et seule `/contact` apparaît au rang 20 (`CRONS-SEO.md` §1).
+- **Un aperçu IA occupe 57 des 59 pages de résultats relevées** le 19/09 (`mesures/questions-2026-09-19.json`). Ce n'est pas un détail de forme : sur ces requêtes, la première réponse lue n'est pas un lien.
+- **Le haut de page appartient aux éditeurs de logiciel** sur les requêtes de production comptable (chaintrust, pennylane, sage, cegid, dext, qonto reviennent d'une famille à l'autre, `mesures/questions-2026-09-19.md`). Le détecteur automatique d'intention « logiciel » n'a pourtant rougi sur aucune des 59 pages : il exige que la moitié des cinq premiers domaines figure dans une liste fermée d'éditeurs (`DOMAINES_LOGICIEL`, `scripts/lib/seo-questions.mjs`), et cette liste ne connaît pas tous les acteurs rencontrés. **La lecture de l'intention reste donc humaine**, sur le rapport, pas sur le champ.
+- **Le recouvrement entre familles reste faible** : au plus deux domaines partagés, jamais quatre (`cluster-plan.md`). Une famille reste un cluster distinct, interlié par le pilier.
 
-## 6. La différenciation, page par page
+Volumes : non mesurés, hors les deux requêtes chiffrées du 12/09. Ne pas en inventer.
 
-Chaque article de la v3 porte les cinq marqueurs suivants ; un article qui n'en porte pas trois n'est pas publié.
+## 5 bis. Ce que la demande mesurée a changé le 19/09
+
+Relevé de `scripts/seo/questions.mjs` : 704 amorces, 704 mesurées, **72 avec au moins une
+suggestion**, 59 pages de résultats, 0,2125 $, 0 panne (`mesures/questions-2026-09-19.json`). Les
+priorités du backlog sont passées de 124 / 60 / 52 à **32 / 9 / 195**.
+
+Quatre enseignements, qui commandent la réécriture des angles :
+
+1. **Le langage du diagnostic n'a aucun volume.** Les formulations par lesquelles nous décrivons le problème (le manque de collaborateurs, les tâches répétitives, le temps gagné) ne sont pas tapées. Une amorce comme « cabinet comptable surcharge de travail » ne rend que deux suggestions, dont la sienne. Écrire pour le diagnostic, c'est écrire pour personne.
+2. **Les têtes de requête portent une autre intention que la nôtre** : chercher un logiciel (le haut de page des familles de production), la situation d'un salarié (les requêtes de bulletin et de contrat), ou un modèle de document à télécharger (les recherches associées en « PDF », « Excel », « exemple », « modèle »).
+3. **« Manuel de procédures cabinet expertise comptable » est le mot du marché pour ce que nous appelons écrire le savoir-faire.** L'amorce rend deux suggestions, ses secondaires jusqu'à sept, et le haut de page est tenu par des vendeurs de trames, pas par des méthodes (`mesures/questions-2026-09-19.md`). C'est la porte d'entrée lexicale de l'angle de marque, et un article de priorité 1 la vise déjà au calendrier.
+4. **Les requêtes de métier précises tiennent.** « crm dsn » rend dix suggestions, jusqu'à la question hyper-spécifique (où trouver le compte rendu dans Net-entreprises, les codes 120, 114, 124, la substitution). Là où le vocabulaire est celui du praticien, la demande existe.
+
+Ce que cela change dans la mécanique : un angle de priorité 1 **sans demande mesurée datée** fait
+échouer `build-cluster-plan.py --check`, et C2 lève chaque semaine une alerte « requête primaire sans
+demande mesurée » (`RUNBOOK-SEO.md` §3 bis). Ce que cela ne change pas : la cadence, confirmée à
+quatre par semaine le 19/09, et les six articles publiés, qui ne bougent pas avant une lecture
+Search Console utile.
+
+## 6. La différenciation, article par article
+
+Chaque article porte les marqueurs suivants ; un article qui n'en porte pas trois n'est pas publié,
+et les deux derniers sont vérifiés par la forge, pas par le relecteur seul.
 
 1. **Rejouable sans Memlia** : le lecteur peut exécuter la méthode avec ses outils. Sinon c'est une plaquette.
 2. **La règle dans les mots du cabinet** : chaque tâche est décrite par sa règle (déclencheur, condition, action, exception), pas par un outil.
-3. **Un jeu fictif qui montre le cas courant, le cas limite et le cas de refus** : « ce que l'outil refuse de faire » est le bloc que personne d'autre n'écrit.
-4. **Une frontière d'automatisation explicite** : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Reprise du champ `automationBoundary` du glossaire.
-5. **Des sources primaires datées** (DGFiP, Urssaf, CNIL, OEC, Légifrance, Net-entreprises, éditeurs cités pour leurs propres fonctions) et **aucun chiffre de gain non mesuré**. Si un gain est cité, il est mesuré sur un jeu fictif et présenté comme tel.
+3. **Un jeu fictif qui montre le cas courant, le cas limite et le cas de refus.** « Ce que l'outil refuse de faire » est le bloc que personne d'autre n'écrit.
+4. **Des sources primaires datées** (Service-Public, CNIL, impots.gouv, Net-entreprises, Insee, travail-emploi), citées mot pour mot, en lien dans le corps, ouvertes le jour même par le vérificateur. Aucun chiffre de gain.
+5. **`## La règle écrite`** : la frontière en trois colonnes, la proposition, l'arrêt, le jeu d'essai, pour cette tâche précise et non en formules générales.
+6. **`## Rejoué sur le jeu fictif`** : un tableau d'au moins trois lignes, cas joué, sortie obtenue, décision, avec des sorties réelles du rejeu.
 
-Formats à privilégier parce que la SERP les récompense et les concurrents les écrivent en prose : checklist numérotée et datée, tableau *anomalie → cause → action*, tableau *ce qui s'automatise / ce qui attend une validation / ce qui reste humain*, définition autonome de 40 à 60 mots en tête (extractible par les moteurs et les assistants IA).
+Formats privilégiés parce que la page de résultats les récompense et que les concurrents les écrivent
+en prose : checklist numérotée et datée, tableau anomalie, cause, action ; tableau de la frontière
+d'automatisation ; définition autonome de 40 à 60 mots en tête, extractible par les moteurs et les
+assistants.
 
 ## 7. Le pilier et les satellites
 
-- **Pilier** : `/blog/automatiser-un-cabinet-comptable-la-carte-des-taches` (format `pillar-page`, cluster `methode-decision-humaine`, rôle direction). Une carte des onze familles, pour chacune : la tâche, ce qui se répète, la règle typique, la frontière, et le lien vers les satellites. Il renvoie vers la page service et reçoit un lien de chaque satellite (ancre : « automatiser une tâche du cabinet » ou variante).
-- **Satellites** : 1 200 à 1 800 mots, un par tâche, format `how-to-guide` par défaut, `faq-knowledge` pour les articles de définition (IA, AI Act), `listicle-checklist` pour les checklists.
-- **Maillage** : chaque satellite → pilier (obligatoire), pilier → chaque satellite (obligatoire), 2 à 3 liens vers les satellites de sa famille, 0 à 1 lien vers une autre famille, 1 à 2 ancres vers le glossaire. Minimum trois liens entrants par article, aucune orpheline, ancre = requête ou variante proche.
+- **Pilier** : `/blog/automatiser-un-cabinet-comptable-la-carte-des-taches`, publié le 16/09, format `pillar-page`. Il porte la carte des 60 familles en 12 pôles, l'audit légal listé et non ouvert. Il reçoit un lien de chaque satellite et rend un lien vers chacun ; il est en tête de `/blog`, hors de la liste, et cette position est contrôlée côté Python et côté navigateur (`JOURNAL.md`, « Tranché » du 17/09).
+- **Satellites** : 1 800 à 2 500 mots, un par angle, `how-to-guide` par défaut, `faq-knowledge` pour les définitions, `listicle-checklist` pour les checklists. Le plan en compte **238** (les 235 angles satellites du backlog et les trois articles antérieurs à la v3, entrés dans la forge le 17/09), dont 5 publiés, plus le pilier (`cluster-plan.json`, champ `meta`).
+- **Maillage** : satellite vers pilier et pilier vers satellite, obligatoires dans les deux sens ; 2 liens de famille ; 1 à 2 ancres de glossaire ; minimum trois liens entrants par article ; aucune orpheline. Contrôlé au `--check` avant chaque vague et chaque mercredi par C3.
 
-## 8. Mesure : des seuils de décision, pas des prévisions
+## 8. Mesure : des seuils de décision datés, pas des prévisions
 
-Aucune cible de trafic n'est inventée. Point de départ : 10 clics, 52 impressions, 2 requêtes, 9 pages indexées (90 jours au 16/09/2026).
+Aucune cible de trafic n'est inventée, et aucune promesse de résultat n'est écrite. Point zéro, au
+17/09/2026 : 4 clics et 17 impressions sur 28 jours, tous sur l'accueil ; zéro impression sur les six
+articles ; 14 URL indexées sur 14 ; memlia.fr hors des 20 premiers sur ses requêtes de tête ; marque
+réécrite en « mellia ».
 
 | Échéance | Ce qu'on regarde | Seuil de décision |
 |---|---|---|
-| M+1 | pilier indexé, 2 premiers satellites indexés, glossaire vague 1 en ligne | sinon : problème technique avant problème éditorial (sitemap, lastmod, demande d'indexation) |
-| M+3 | requêtes distinctes avec impressions, par cluster | un cluster à **0 impression sur ses requêtes** après 3 satellites ne reçoit pas de deuxième vague ; on réalloue |
-| M+3 | liens entrants par article ≥ 3, aucune orpheline (`INTERNAL-LINKING` vérifié au build) | sinon on corrige le maillage avant d'écrire |
-| M+6 | demandes de contact citant un article ou une tâche (formulaire, champ message) | la famille citée passe en priorité 1 ; une famille jamais citée et sans impression passe en priorité 3 |
-| M+6 | fraîcheur : chaque article fiscal/paie relu et redaté | un article non relu depuis 6 mois repasse en `a-maintenir` |
-| M+12 | 36 articles publiés sur 36 planifiés, 55 termes au glossaire, 100 % des satellites reliés au pilier | bilan et v4 |
+| chaque lundi (C2) | impressions par page et par famille | la ligne s'écrit même à zéro : zéro est une mesure, et la série commence au jour un. Aucune réallocation de créneau avant la première lecture utile |
+| chaque mercredi (C3) | liens entrants (≥ 3), ancres, sources, vitesse (plancher 95) | un rouge se corrige le vendredi suivant par republication scellée, **avant** d'écrire un article de plus |
+| **mi-octobre 2026**, première lecture Search Console utile | requêtes avec impressions, par page, sur les articles publiés depuis au moins 28 jours | si aucun article n'a d'impression, le défaut est d'indexation ou de demande, pas de rédaction : on relit la requête visée et le titre avant de toucher au corps. C'est aussi la date à partir de laquelle les six articles peuvent être réécrits (`JOURNAL.md`, « Tranché » du 19/09) |
+| **fin novembre 2026** (le calendrier y place 47 articles, 6 publiés et 41 planifiés) | familles ayant trois satellites publiés | une famille à zéro impression sur ses requêtes après trois satellites ne reçoit pas de quatrième créneau ; ils vont à une famille qui en a. Le cron propose, Kevin décide |
+| **31 décembre 2026** | le champ `spell` sur la requête de marque | encore actif, il déclenche un plan d'entité (annuaires, mentions, page publique) avant tout effort éditorial supplémentaire sur la marque (`CRONS-SEO.md` §3, C4) |
+| **31 décembre 2026** | trois mois de série C2 | seuil d'armement de C5, décroissance et cannibalisation : sans série, il n'a rien à comparer |
+| **31 mars 2027** | demandes de contact citant une tâche ou un article | tant que D4 n'est pas tranché, cela ne se mesure que sur le texte du message : la famille citée monte en priorité de production, une famille jamais citée et sans impression descend |
 
-Indicateurs avancés lisibles sans relancer un audit : nombre de requêtes avec impressions (GSC, par page), pages indexées (12 → 48), taux de sourçage (sources par article), délai brief → publication.
+Indicateurs avancés, lisibles sans relancer un audit : nombre de requêtes avec impressions par page,
+URL indexées sur URL du sitemap, liens entrants par article, sources rouvertes sur sources citées,
+délai entre le créneau du calendrier et la publication.
 
 ## 9. Risques et réponses
 
 | Risque | Réponse |
 |---|---|
-| Écrire sur une tâche qu'aucun module ne livre et qu'un prospect demande | l'article est pédagogique ; la page service et le formulaire cadrent : « on code la règle de votre cabinet », prix à la complexité. Aucune fonction promise. |
-| Faits fiscaux mouvants (facture électronique 2026-2027, AI Act) | fact-check daté obligatoire, tableau des dates sourcé sur impots.gouv.fr et EUR-Lex au moment de la rédaction, revue trimestrielle |
-| Cadence ×2 sans baisse de qualité | le pipeline (gate, claims, revue métier IA) reste le seul chemin ; un article qui n'atteint pas le seuil qualité attend |
-| Cannibalisation entre satellites voisins (« relance de pièces » / « collecte de pièces ») | une requête primaire par article, matrice dans `cluster-plan.json`, contrôle avant chaque brief |
-| Le glossaire devient un catalogue de définitions génériques | chaque terme garde le contrat : exemple fictif, confusion courante, frontière d'automatisation, sources ; pas de terme sans article qui l'emploie |
+| Écrire sur une tâche qu'un prospect demande et qui n'est pas encore prise en charge | l'article est une méthode ; la page de service et le formulaire cadrent : nous écrivons la règle du cabinet, prix à la complexité. Aucune fonction promise |
+| Faits fiscaux et sociaux mouvants (facture électronique, AI Act) | source officielle ouverte le jour même, citation verbatim vérifiée, réouverture hebdomadaire par C3 ; une citation disparue fait passer l'article en maintenance |
+| Cadence de quatre par semaine sans baisse de qualité | la forge est le seul chemin : gate, revue indépendante à 100 points avec 0 défaut bloquant, scellement sur les octets. Un article qui n'atteint pas le seuil attend le créneau suivant |
+| Écrire pour notre vocabulaire et non pour la demande | relevé mensuel des questions, invariant « priorité 1 implique demande mesurée », alerte hebdomadaire de C2 |
+| L'aperçu IA capte la réponse | définition autonome en tête, tableaux extractibles, `llms.txt` à jour. L'effet n'est pas mesuré et ne doit pas être annoncé comme acquis |
+| Cannibalisation entre angles voisins | une requête primaire par article, unique sur tout le site, contrôlée au `--check` ; C5 en décembre pour le corpus qui grossit |
+| Le glossaire devient un catalogue de définitions génériques | chaque terme garde son contrat : exemple fictif, confusion courante, frontière d'automatisation, sources datées ; pas de terme sans article qui l'emploie |

@@ -1,62 +1,121 @@
-# Architecture v3 — un pilier, onze familles, un glossaire élargi
+# Architecture v3 : l'arbre du site en ligne
 
-16 septembre 2026. Les 14 URL de la v2 (`../site-v2/PAGE-INVENTORY.md`) ne changent pas. La v3 ajoute des articles, des ancres de glossaire, et une facette « par tâche » sur le hub Ressources. Profondeur maximale : 2 clics depuis l'accueil pour tout article.
+Écrite le 16 septembre 2026, remise à l'état réel le 19 septembre 2026. Ce document décrit le site
+tel qu'il est servi, pas un projet d'arborescence. Profondeur maximale : 2 clics depuis l'accueil
+pour tout article.
 
-## 1. Arbre
+## 1. L'arbre réel
 
 ```
-/                                         accueil (inchangé)
-├── /automatisation-cabinet-comptable     service : hub commercial de la catégorie (inchangé)
-├── /methode  /garanties  /a-propos  /contact   (inchangés)
-├── /blog                                 index : chapeau + pilier en tête + derniers articles
-│   ├── /blog/automatiser-un-cabinet-comptable-la-carte-des-taches     PILIER (pillar-page)
-│   ├── /blog/<satellite>                  36 articles v3, un par tâche (voir CONTENT-CALENDAR.md)
-│   └── /blog/<3 articles publiés>         conservés, reliés au pilier (cluster paie-social)
-├── /ressources                           hub : par rôle (existant) + par famille de tâches (v3)
-├── /glossaire                            23 ancres existantes + 34 ancres v3 (GLOSSARY-PLAN.md)
-└── /mentions-legales  /politique-de-confidentialite  /contact/merci  /contact/erreur   noindex (inchangés)
+/                                         accueil
+├── /automatisation-cabinet-comptable     service : hub commercial de la catégorie
+├── /methode  /garanties  /a-propos  /contact
+├── /blog                                 le pilier en tête, hors liste, puis « Les articles »
+│   ├── /blog/automatiser-un-cabinet-comptable-la-carte-des-taches    PILIER (pillar-page)
+│   ├── /blog/automatiser-la-relance-des-pieces-clients
+│   ├── /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier
+│   ├── /blog/comprendre-les-comptes-rendus-metier-dsn
+│   ├── /blog/controler-les-bulletins-de-paie-avant-la-dsn
+│   └── /blog/suivre-la-production-sociale-dans-excel
+├── /glossaire                            43 ancres
+├── /blog/rss.xml                         flux
+└── /mentions-legales  /politique-de-confidentialite  /contact/merci  /contact/erreur   noindex
 ```
 
-Le pilier est lié depuis `/blog` (en tête), depuis la page service (bloc « comprendre par la pratique »), et depuis chaque satellite. Chaque satellite est lié depuis le pilier et depuis 2 à 3 satellites de sa famille : **profondeur 2 garantie** (accueil → blog → article, ou accueil → service → pilier → article).
+Huit pages au registre `src/data/pages-lastmod.json` et six articles : **14 URL au sitemap**, 14
+indexées au dernier relevé de la sentinelle (`mesures/sentinelle.jsonl`, 18/09).
+
+**`/ressources` n'existe plus.** La page a été retirée le 16/09/2026 au soir sur décision de Kevin
+et rend 404 (`JOURNAL.md`, ligne du 16/09). « Ressources » est devenu un **groupe de navigation**,
+sans page propre, qui réunit le blog et le glossaire : un bouton et un panneau qui s'ouvre au
+survol, au focus ou au clic, et qui se marque courant dès qu'une de ses destinations l'est
+(`src/components/Nav.astro`). Le pied de page porte la même colonne « Ressources » (Blog,
+Glossaire, Questions fréquentes, `src/components/Footer.astro`). Conséquence à ne pas oublier : la
+surface Ressources scellée par la chaîne de preuve est **le glossaire seul**.
+
+Le pilier est lié depuis `/blog` (dans son propre bloc au-dessus de la liste, avec la pastille « À
+lire en premier »), depuis la page de service, depuis le glossaire et depuis chaque satellite. Il est
+**absent de la liste** : épinglé dedans, il donnait à lire un ordre faux dès qu'un satellite portait
+une date postérieure. La règle est contrôlée deux fois, côté Python (`test_build.py`, helper
+`pillar_slugs()` qui lit `format: pillar-page` à la source) et côté navigateur (`blog.spec.ts`), et
+la décision est écrite dans `JOURNAL.md`, « Tranché » du 17/09.
 
 ## 2. Règles d'URL
 
-- Slug en français, **verbe à l'infinitif + tâche** : `automatiser-la-relance-des-pieces-clients`, `trier-la-boite-mail-du-cabinet-par-client-et-priorite`. Pas de date, pas de catégorie, pas de mot vide.
-- **Une requête primaire par URL**, unique sur tout le site (contrôlée dans `cluster-plan.json`). Deux articles qui viseraient la même requête fusionnent.
-- Le `cluster` et le `rolePrincipal` sont des champs du frontmatter, jamais des segments d'URL.
-- Aucune page de catégorie ou de tag : le hub Ressources et le pilier tiennent ce rôle.
+- Slug en français, **verbe à l'infinitif puis tâche** : `automatiser-la-relance-des-pieces-clients`. Pas de date, pas de catégorie, pas de mot vide.
+- **Une requête primaire par URL**, unique sur tout le site, contrôlée par `build-cluster-plan.py --check`. Deux articles qui viseraient la même requête fusionnent.
+- `cluster`, `famille` et `rolePrincipal` sont des champs du frontmatter, jamais des segments d'URL.
+- Aucune page de catégorie ni de tag : le pilier tient ce rôle.
+- Une republication ne change jamais l'URL ni la date de publication ; elle porte `updatedAt` dans la recette et `dateMiseAJour` dans le frontmatter.
 
-## 3. Hub-and-spoke et matrice de liens
+## 3. Le maillage, tel qu'il est contrôlé aujourd'hui
 
 | Lien | Sens | Règle |
 |---|---|---|
-| satellite → pilier | obligatoire | dans le corps, ancre « automatiser une tâche du cabinet » ou variante ; jamais « cliquez ici » |
-| pilier → satellite | obligatoire | une ligne par tâche dans la carte, ancre = la tâche |
-| satellite → satellite (même famille) | 2 à 3 | dans le corps, au moment où la tâche voisine intervient |
-| satellite → satellite (autre famille) | 0 à 1 | seulement si la tâche enchaîne réellement (relance de pièces → relance d'honoraires) |
-| satellite → glossaire | 1 à 2 | ancre sur le terme, vers `/glossaire#<ancre>` |
-| satellite → page service ou méthode | 1 | le CTA de fin, un seul |
+| satellite vers pilier | obligatoire | dans le corps, ancre « automatiser une tâche du cabinet » ou variante ; jamais « cliquez ici » |
+| pilier vers satellite | obligatoire | une ligne par tâche dans la carte, là où la famille est nommée, ancre = la tâche |
+| satellite vers satellite (même famille) | 2 | dans le corps, au moment où la tâche voisine intervient |
+| satellite vers satellite (autre famille) | 0 à 1 | seulement si la tâche enchaîne réellement |
+| satellite vers glossaire | 1 à 2 | ancre sur le terme, vers `/glossaire#<ancre>` |
+| satellite vers page de service ou méthode | 1 | le bloc d'appel de fin, un seul bouton principal |
 
-Minimum trois liens entrants par article, aucune orpheline, contrôle par `build-cluster-plan.py --check` avant chaque vague. Les trois articles publiés reçoivent un lien depuis le pilier et rendent un lien vers lui (ajout d'une ligne, réadoption du dossier scellé par `migrate-published-blog.mjs`, jamais à la main).
+Deux contrôles, deux moments. **Au `--check`**, avant chaque vague : unicité des slugs et des
+requêtes primaires, appartenance aux énumérations du schéma, lien obligatoire satellite vers pilier,
+minimum de trois liens entrants par article, aucune orpheline, plafonds de cadence, et depuis le
+19/09 l'invariant « angle de priorité 1 implique demande mesurée ». **Chaque mercredi**, le cron C3
+mesure sur la production (`RUNBOOK-SEO.md` §4) :
 
-## 4. Le hub Ressources : ajouter « par famille de tâches »
+- **liens entrants par article**, plancher 3. Dernier relevé, le 17/09 : pilier 5, relance 7, saisie 6, compte rendu métier DSN 3, bulletins 7, production sociale 6 (`mesures/semaine-2026-W38-integrite.json`). Le compte rendu métier DSN est au plancher.
+- **ancres** : rouge sur une ancre qui ne décrit rien (« ici », « cet article ») et sur une ancre qui mène à deux destinations différentes selon la page. Le nombre d'ancres distinctes par destination est rendu **en info, sans verdict** : répéter l'ancre la plus claire est voulu.
+- **routes** : une page qui nomme des tâches sans mener à aucun article, un article auquel seul le blog mène. Quatre pages surveillées, `/`, `/automatisation-cabinet-comptable`, `/methode`, `/garanties` ; `/contact` en est exclue par décision, en sortir dessert. Ce volet ne dépose aucune tâche : ses correctifs vivent hors de la forge.
+- **sources et vitesse** : réouverture de chaque source citée avec recherche de la citation exacte, PageSpeed mobile sur six pages, plancher 95.
 
-Aujourd'hui `/ressources` classe par rôle (13 rôles) et par chemin (comprendre, faire vérifier, cadrer). La v3 ajoute une facette **par famille de tâches** (les onze clusters), parce que le lecteur arrive avec une tâche en tête avant un intitulé de poste. Implémentation : `src/data/resources.ts` expose déjà `cluster` via le frontmatter pipeline ; il manque un libellé par cluster et un bloc de rendu. À faire en vague 2, une fois les premiers satellites publiés (une facette vide nuit).
+Le relevé du 17/09 portait quatre rouges (les trois articles antérieurs à la v3 ne liaient pas le
+pilier, et une fiche Service-Public réécrite dont la citation avait disparu). Les quatre ont été
+clos le 17/09 au soir sur `e651bb1` (`JOURNAL.md`). **Ils n'ont pas été remesurés depuis** : le
+prochain relevé d'intégrité est celui du mercredi.
 
-## 5. Le glossaire : de 23 à 57 ancres, même contrat
+## 4. Le glossaire : 43 ancres
 
-Chaque terme garde le contrat d'entrée (`GlossaryEntry`) : définition, contexte, exemple fictif, confusion courante, **frontière d'automatisation**, termes liés, liens internes, sources datées. Les 34 nouveaux termes sont listés dans `GLOSSARY-PLAN.md`. Chaque satellite renvoie vers 1 à 2 ancres ; chaque terme cite au moins un article qui l'emploie (règle « pas de terme sans article »). La chaîne de scellement (surfaces H/T, réaffirmation r4) est rejouée à chaque vague.
+`src/data/glossary.ts` porte 43 termes, et `tests/proof/test_glossary.py` en exige exactement 43 :
+ancres, termes, définitions (uniques), exemples fictifs, confusions courantes, frontières
+d'automatisation, blocs de sources et `DefinedTerm` du `DefinedTermSet`, chacun compté à 43.
+Chaque terme garde son contrat d'entrée ; chaque
+satellite renvoie vers 1 à 2 ancres ; chaque terme cite au moins un article qui l'emploie. La vague
+2 (14 termes, cible 57) et la chaîne à rejouer sont dans `GLOSSARY-PLAN.md`.
 
-## 6. Ce que le code doit permettre (chantier avant la vague 1)
+## 5. Ce que le code fait déjà
 
-| Enabler | Fichier | Pourquoi |
+| Capacité | Où | État |
 |---|---|---|
-| Étendre l'énumération `sujets` | `src/content.config.ts` | aujourd'hui limitée à paie, dsn, excel, production-sociale, methode, securite, cabinet ; ajouter pieces, saisie, lettrage, revision, fiscal, facturation, courriels, ia, donnees, juridique, pilotage, automatisation |
-| Une image de tête par article | `src/data/images.mjs` + `docs/design/site-v2-proofs/` | le champ `image` exige un identifiant du manifeste ; les articles v3 utilisent des **cadres de preuve HTML** rendus par `render-proofs-v2.mjs`, un par famille, jamais une nature morte générée |
-| Libellés des clusters | `src/data/resources.ts` | facette « par tâche » du hub (vague 2) |
-| Compteurs de tests | `tests/proof/test_glossary.py`, `test_build.py` | 23 termes → 57 ; images 9 AVIF / 12 WebP → à réviser ; sitemap 12 → 12 + articles |
-| Chapeau Blog | `src/pages/blog/index.astro` | le pilier en tête, sous le chapeau validé v2 |
+| Taxonomie en source unique, lue par le schéma, le plan et les tests | `src/data/familles.ts`, `famille` dans `src/content.config.ts` | fait : 60 familles, 12 pôles, `audit-legal` listée et non ouverte |
+| Sujets bornés au métier, étendus à la v3 | `src/content.config.ts` | fait : 19 valeurs, dont les 12 ajoutées (automatisation, pieces, saisie, lettrage, revision, fiscal, facturation, courriels, ia, donnees, juridique, pilotage) |
+| Cadence codée | `CANDIDATS_PAR_JOUR_MAX`, `CANDIDATS_PAR_SEMAINE_MAX`, `verifierPlafonds` | fait, testé |
+| Image de tête par article | brief à six composantes, génération payante, recadrage 1920x1080, OG 1200x630, dérivés 768/1200/1600 en AVIF et WebP, déclaration dans `src/data/images.mjs` | fait. Le cadre de preuve HTML ne sert plus pour un article publié (`RUNBOOK-QUOTIDIEN.md` §3) |
+| Pilier hors liste, en tête du blog | `src/pages/blog.astro` | fait, contrôlé côté Python et côté navigateur |
+| Groupe de navigation « Ressources » | `src/components/Nav.astro`, `src/components/Footer.astro` | fait ; la page `/ressources` est retirée |
+| Compteurs de tests | `tests/proof/test_glossary.py` (43), `test_build.py` (`PUBLIC_ARTICLES`, 6 slugs) | fait, à incrémenter à chaque publication et à chaque vague de glossaire |
+| Registre `lastmod` | `npm run lastmod:sync`, `src/data/pages-lastmod.json` | fait : 8 pages ; les articles portent leurs dates de frontmatter |
+| Exigence « la règle écrite » | `DEBUT_REGLE_ECRITE`, `verifierRegleEcrite` (`scripts/blog-forge.mjs`) | fait le 19/09, témoin de mutation joué |
 
-## 7. Schéma et balisage
+Ce qui reste, et qui n'est pas urgent : aucune facette « par famille de tâches » n'existe, et elle
+n'a plus de page d'accueil depuis le retrait de `/ressources`. Si le besoin revient, il se pose sur
+`/blog`, pas sur un hub : une facette à 59 familles actives dont 6 ont un article serait une
+facette vide (familles lues dans le frontmatter `famille:` des six articles). À rouvrir quand
+plusieurs familles auront leurs quatre satellites publiés, pas avant.
 
-Inchangés : Article + BreadcrumbList sur les articles, DefinedTerm là où le glossaire le porte déjà, Organization/WebSite au niveau site. Aucun FAQPage nouveau (résultat enrichi retiré en mai 2026), jamais de HowTo. `lastmod` du sitemap : les articles portent leurs dates de frontmatter, les pages le registre `pages-lastmod.json` ; à chaque publication, `npm run lastmod:sync` avant le build.
+## 6. Schéma et balisage
+
+Inchangés : `Article` et `BreadcrumbList` sur les articles, `DefinedTerm` porté par le glossaire,
+`Organization` et `WebSite` au niveau du site. Aucun `FAQPage` nouveau (résultat enrichi retiré en
+mai 2026), jamais de `HowTo`.
+
+Depuis le 17/09, l'identité d'entité est **une définition unique** dans `src/data/schema.mjs`, émise
+à l'identique par les cinq surfaces, avec l'invariant « un `@id`, une définition » et six preuves
+dédiées : les surfaces divergeaient sous le même `@id`, ce qui est le levier de la confirmation
+d'entité, pas la page (`JOURNAL.md`, ligne du 17/09).
+
+`lastmod` du sitemap : les articles portent leurs dates de frontmatter, les pages le registre
+`pages-lastmod.json`. À chaque publication ou modification de copy : `npm run lastmod:sync` avant le
+build, puis la chaîne Ressources (scellement des surfaces et réaffirmation de la revue), puis
+`npm run build`.

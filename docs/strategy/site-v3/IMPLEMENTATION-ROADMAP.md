@@ -1,73 +1,87 @@
-# Feuille de route v3 — de la validation à la cadence de quatre par semaine
+# Exécution v3 : l'état au 19 septembre 2026, et ce qui reste
 
-16 septembre 2026, mise à jour le soir même après le « go » de Kevin. Chaque phase se termine par une preuve, pas par une annonce : suites (Python, Node, Playwright), chaîne de preuve (`build-cluster-plan.py --check`, `test:lastmod`, seal + reaffirm), écran (prévisualisation `pages.dev` puis production).
+Écrite le 16 septembre 2026, remise à l'état réel le 19 septembre 2026. Les phases 0 à 3 de la
+première version sont soit faites, soit périmées : elles sont remplacées ici par l'état constaté, le
+cycle réel d'un article, et une liste datée de ce qui reste.
 
-## Ce qui a été construit le 16 septembre (phase 1, réalisée)
+Chaque avancée se termine par une preuve, pas par une annonce : les suites (Python, Node,
+navigateur), la chaîne de preuve (`build-cluster-plan.py --check`, `test:lastmod`, scellement et
+réaffirmation de la surface Ressources), et l'écran (contrôle en ligne sur l'URL immuable du
+déploiement, puis la production).
+
+## 1. Ce qui est construit
 
 | Élément | Où | Preuve |
 |---|---|---|
-| Taxonomie : 60 familles en 12 pôles, source unique | `src/data/familles.ts` ; `famille` dans le frontmatter (`src/content.config.ts`) ; pôle `conseil-missions` ajouté au schéma et au pipeline | `npx astro check` 0 erreur ; `tests/proof/test_build.py::test_familles_des_articles_pipeline` |
-| Cadence codée : 2 par jour, 4 par semaine ISO | `CANDIDATS_PAR_JOUR_MAX`, `CANDIDATS_PAR_SEMAINE_MAX`, `verifierPlafonds` (`scripts/lib/blog-pipeline.mjs`) | `tests/scripts/blog-pipeline.test.mjs`, `blog-forge.test.mjs` |
-| La forge éditoriale : recette → dossier complet → gate → publication scellée | `scripts/blog-forge.mjs` (`preparer`, `sceller`, `publier`), recettes dans `editorial/recettes/<slug>/` | `tests/scripts/blog-forge.test.mjs` : le dossier produit passe `validateDossier` en preview protégée, en production et en mode scellé ; un octet modifié casse le sceau |
-| Publication scellée : statut `publie` + reçu `preuves/publication.json` (inventaire sha256), audité à chaque build | `validatePublicationSeal`, mode `publication-scellee` dans `blog:audit` | même test |
-| Images de tête : cadre de preuve HTML rendu par Playwright (1920×1080), OG 1200×630, dérivés 768/1200/1600 AVIF et WebP, déclaration automatique dans `images.mjs` | `editorial/templates/cadre-article.html`, forge | rendu vérifié à l'écran ; `test_placeholders_and_briefs` compte 3 AVIF et 4 WebP par article publié |
-| Vérificateur de sources réparé pour le réseau réel | `verifySource` : `fetch` et `Agent` du même paquet undici | 5 sources officielles ouvertes et copiées le 16/09 |
-| Revues indépendantes : identités `marketing` (grille éditoriale) et `relecteur-metier-ia-memlia` (verdict par affirmation), rendues par un agent distinct de l'auteur | `revues.json` de chaque recette | exigées par le gate (score ≥ 90, verdict « soutient » par claim) |
-| Pilier en tête du blog | `src/pages/blog.astro` | `tests/browser/blog.spec.ts` |
+| Taxonomie en source unique : 60 familles, 12 pôles, `audit-legal` listée et non ouverte | `src/data/familles.ts`, `famille` dans `src/content.config.ts` | `npx astro check` sans erreur ; `test_build.py::test_familles_des_articles_pipeline` |
+| Cadence codée : 2 par jour, 4 par semaine ISO, lundi à jeudi | `CANDIDATS_PAR_JOUR_MAX`, `CANDIDATS_PAR_SEMAINE_MAX`, `verifierPlafonds` | `tests/scripts/blog-pipeline.test.mjs`, `blog-forge.test.mjs` |
+| La forge éditoriale : recette, dossier complet, gate, publication scellée | `scripts/blog-forge.mjs` (`preparer`, `sceller`, `publier`), recettes dans `editorial/recettes/<slug>/` | `tests/scripts/blog-forge.test.mjs` : le dossier passe `validateDossier` en prévisualisation, en production et scellé ; un octet modifié casse le sceau |
+| Publication scellée : statut `publie` et reçu `preuves/publication.json` (inventaire sha256), audité à chaque build | `validatePublicationSeal`, mode `publication-scellee` de `blog:audit` | même test |
+| Six articles publiés, tous passés par la forge | `src/content/blog/`, `editorial/recettes/` | `PUBLIC_ARTICLES` dans `test_build.py` (6 slugs) ; `blog:audit` PASS, 6 dossiers scellés |
+| Copy v3 servie sur toute surface | `.agents/product-marketing.md` v3, pages et articles | `test_positioning.py`, `test_integrated_media.py`, `test_legal_identity.py`, `positioning.spec.ts` |
+| « La règle écrite » exigée des articles nouveaux | `DEBUT_REGLE_ECRITE = '2026-09-19'`, `verifierRegleEcrite` (`scripts/blog-forge.mjs`) | testé, témoin de mutation joué (`JOURNAL.md`, « Tranché » du 19/09) |
+| Glossaire vague 1 intégrée : 43 termes rendus | `src/data/glossary.ts`, manifeste T, revue R5 ancrée | `test_glossary.py` (43), `resource:audit:qa` PASS |
+| Identité d'entité : un `@id`, une définition, cinq surfaces | `src/data/schema.mjs` | six preuves dédiées, dont l'invariant (`JOURNAL.md`, 17/09) |
+| Backlog recalé sur la demande mesurée | `scripts/seo/questions.mjs`, `scripts/lib/seo-questions.mjs`, `backlog-v3.json` | invariant « priorité 1 implique demande mesurée » dans `build-cluster-plan.py --check` ; relevé `mesures/questions-2026-09-19.json` |
+| Mesure en place : C1, C2, C3, F1, F2, F3 | `scripts/seo/`, `scripts/lib/seo-*` | `RUNBOOK-SEO.md` ; trois tâches planifiées ; relevés commités dans `mesures/` |
 
-## Glossaire vague 1 : intégré le 16/09/2026
+## 2. Le cycle d'un article, tel qu'il tourne
 
-Les 20 termes de la vague 1 (le plan en annonçait 18, ses tableaux en listent 20) ont été rédigés au contrat `GlossaryEntry` (`glossaire-vague-1.json`) puis intégrés à `src/data/glossary.ts` par la chaîne Ressources (manifeste T, contrat v3) : 43 termes rendus, 66 unités inventoriées, 74 affirmations, 87 citations, 26 sources dont 11 nouvelles rouvertes le jour même (`docs/qa/hub-ressources/glossaire-vague-1.md`). Six définitions ont été recadrées sur ce que leurs sources énoncent (système d'IA, sous-traitant RGPD, honoraires, prélèvement SEPA, jeu d'essai fictif, grand modèle de langage) et huit termes sont des conventions Memlia adossées à `/methode`. Revue métier indépendante R5 (carte `t_eebf35f8`, 34 affirmations sensibles), sceau et ancrage : `docs/qa/hub-ressources/metier-review-r5/`. La procédure d'une vague suivante est dans `RUNBOOK-QUOTIDIEN.md` §6.
+Quatre fois par semaine, du lundi au jeudi. Les commandes exactes sont dans `RUNBOOK-QUOTIDIEN.md`,
+qui fait foi ; ce qui suit en est la forme, pour comprendre où sont les portes.
 
-## Le cycle d'un article (à rejouer quatre fois par semaine)
+1. **Lire le créneau du jour** : `--check` puis la ligne de la date dans `CONTENT-CALENDAR.md`. Le slug donne l'entrée complète du backlog (titre, requête primaire et secondaires, famille, rôle, intention, format, preuve attendue, autorités, bloc `demande`).
+2. **Écrire la recette** : `editorial/recettes/<slug>/recette.json` et `corps.md`. Le corps porte, depuis le 19/09, `## La règle écrite` (la frontière en trois colonnes, la proposition, l'arrêt, le jeu d'essai) et `## Rejoué sur le jeu fictif` (au moins trois lignes, cas joué, sortie obtenue, décision, avec des sorties réelles du rejeu). Avant d'arrêter les liens, demander à la forge ce qui existe déjà (`forge-seo.mjs liens <slug>`, lecture seule) et poser les liens sortants maintenant.
+3. **Préparer** : `blog-forge.mjs preparer <slug>` ouvre et copie les sources le jour même, construit les claims, rend la couverture et écrit le paquet de revue. Corriger la recette tant que `erreurs` n'est pas vide.
+4. **Faire relire par un sous-agent** d'identité distincte de l'auteur, sur la page rendue : grille éditoriale, verdict métier par affirmation, grille image, et revue qualité à 100 points. Seuil 90 avec zéro défaut bloquant, et tout verdict autre que « soutient » se corrige **dans la recette**, jamais dans la revue.
+5. **Sceller** : `sceller <slug>`, gate complet, build Astro compris. Deux tentatives de correction au plus.
+6. **Publier** : passage en `go-production`, build et `lastmod:sync`, scellement de la surface Ressources et réaffirmation de la revue, puis `publier <slug>` et `publier` du pilier, qui a reçu un lien.
+7. **Prouver et pousser** : `npm run build`, commit par pathspec (jamais `git commit -a`), push, attente du déploiement, contrôle en ligne (code HTTP, équivalence octet à octet sur l'URL du déploiement, sitemap renvoyé à Search Console).
+8. **Fermer la boucle** : `forge-seo.mjs apres-publication <slug>` (extension F1) attend que la production serve le titre d'onglet, pose les baselines de dérive de l'article, de `/blog` et du pilier, inscrit la requête au registre et envoie le ping IndexNow. Puis une ligne dans `JOURNAL.md`.
 
-1. Écrire la recette : `editorial/recettes/<slug>/recette.json` (métadonnées, sources officielles avec extraits verbatim, affirmations reliées) et `corps.md`.
-2. `node scripts/blog-forge.mjs preparer <slug>` : sources ouvertes et copiées le jour même, claims construits, cadre rendu, paquet de revue écrit. Corriger la recette tant que `erreurs` n'est pas vide.
-3. Revue indépendante (agent distinct) → `revues.json`.
-4. `node scripts/blog-forge.mjs sceller <slug>` : dossier `pret-preview` puis gate complet (build Astro compris).
-5. `node scripts/blog-forge.mjs publier <slug>` : `go-production`, `production-check` (build du site), puis statut `publie` et sceau.
-6. `npm run lastmod:sync`, `npm run build`, commit par pathspec, push (le push publie), contrôle en ligne sur l'URL immuable `pages.dev`, sitemap renvoyé à Search Console.
+Trois portes ferment ce cycle, et aucune ne s'ouvre à la main : un candidat préparé mais non scellé
+fait échouer `blog:audit`, donc le build ; un article daté à partir du 19/09 sans la règle écrite est
+refusé par la forge ; un article publié ne se modifie que par republication scellée.
 
-Un candidat préparé mais non scellé fait échouer `blog:audit`, donc le build : on ne pousse jamais une recette à moitié jouée.
+## 3. Le jour sans créneau
 
+Le calendrier n'attribue de créneau que du lundi au jeudi. Le vendredi, et toute journée sans ligne :
+régénérer le plan et vérifier les statuts, relever l'indexation, traiter au plus deux tâches de la
+file de maintenance par republication scellée (F2), consigner, pousser. Le **premier vendredi du
+mois**, avant tout le reste : `questions.mjs relever`, `rapport`, puis correction à la main des
+angles sans demande ou d'intention adverse, et seulement ensuite `recaler` et `--check`. Environ
+0,13 $ derrière la porte de coût (`RUNBOOK-QUOTIDIEN.md` §6).
 
-## Phase 0 — Décision (close le 16 septembre)
+## 4. Ce qui reste, daté
 
-Kevin a validé le territoire en l'élargissant (soixante familles), fixé la cadence à quatre par semaine et donné le go d'exécution. Les 34 termes du glossaire et les briefs de la vague 1 sont conservés comme point de départ ; le backlog par famille (quatre angles par famille) remplace le calendrier de 36 articles.
-
-## Phase 1 — Enablers de code (semaines 1 et 2, une seule branche `site/v3-enablers`)
-
-| Tâche | Fichiers | Preuve |
+| Quand | Quoi | Condition de sortie |
 |---|---|---|
-| Étendre `sujets` (12 valeurs de plus) | `src/content.config.ts`, `tests/proof/test_build.py` | `npx astro check` 0 erreur ; test qui refuse un sujet hors liste |
-| Cadres de preuve HTML par famille (11 cadres 1600×900 + recadrage OG) | `docs/design/site-v2-proofs/`, `scripts/render-proofs-v2.mjs --adopt`, `src/data/proofs.ts`, `src/data/images.mjs` | `--check` vert ; compteurs `test_build.py` ajustés |
-| Glossaire vague 1 (18 termes) | `src/data/glossary.ts`, `editorial/resources/glossaire/manifest.json`, `tests/proof/test_glossary.py` | 41 ancres rendues ; `resource:seal-surfaces` + `reaffirm` ; `test_aucune_mention_de_processus_rendue` |
-| Pilier en tête du blog | `src/pages/blog/index.astro`, `tests/browser/blog.spec.ts` | Playwright : le pilier est le premier lien de la liste |
-| Registre lastmod | `npm run lastmod:sync` puis `npm run build` | `test:lastmod` vert |
+| lundi 21/09/2026 | reprise de la cadence : quatre créneaux en semaine W39 (21, 22, 23 et 24/09), le premier planifié du calendrier | premiers articles à porter `## La règle écrite` et `## Rejoué sur le jeu fictif` ; c'est la première mise à l'épreuve réelle de `verifierRegleEcrite` |
+| vendredi 02/10/2026 | premier relevé mensuel des questions après le recalage | les angles de priorité 3 dont la formulation est le seul obstacle sont réécrits avant d'être abandonnés |
+| mi-octobre 2026 | première lecture Search Console utile (les articles du 09 au 17/09 auront 28 jours) | décision sur la réécriture des six articles publiés, gelée jusque-là (`JOURNAL.md`, « Tranché » du 19/09) |
+| fin novembre 2026 | le calendrier place 47 articles (6 publiés, 41 planifiés) | seuil « famille à zéro impression après trois satellites » applicable pour la première fois |
+| décembre 2026 | armement de C5 (décroissance et cannibalisation) | trois mois de série C2, sans quoi il n'a rien à comparer |
+| sans date, attend Kevin | vague 2 du glossaire (14 termes, `GLOSSARY-PLAN.md` §3) | validation de la liste et du moment |
+| sans date, attend Kevin | C4 autorité, entité et visibilité IA (décision D2), Bing Webmaster Tools et jeton Cloudflare Analytics (D3), champ « page d'origine » du formulaire (D4) | `CRONS-SEO.md` §7 |
+| sans date, attend Kevin | série de cicatrices | décision sur ses trois premiers sujets (`JOURNAL.md`, « Tranché » du 19/09) |
 
-Livraison : prévisualisation `wrangler pages deploy dist --branch preview-v3-enablers`, vérification octet à octet `PREVIEW_SOURCE=dist QA_URL=<url> node scripts/verify-preview.mjs`, puis fusion sur `main` (le push publie).
+Deux chantiers restent ouverts sans échéance et sans blocage : la chaîne de redirection de
+`http://www.memlia.fr/`, qui passe par deux sauts au lieu d'un (avertissement constant de la
+sentinelle depuis le 17/09, zéro impression perdue à ce jour) ; et le maillage du compte rendu
+métier DSN, au plancher de trois liens entrants au dernier relevé d'intégrité.
 
-## Phase 2 — Vague 1, mois 1 (octobre 2026)
+## 5. Ce qui est périmé, et pourquoi
 
-1. `npm run blog:create automatiser-un-cabinet-comptable-la-carte-des-taches "Automatiser un cabinet comptable : la carte des tâches"` ; copier le brief validé dans le dossier candidat ; rédiger ; `blog:verify-source` pour chaque source ; `blog:gate` ; `blog:preview` ; `blog:review` (revue métier IA) ; `blog:production-check`.
-2. Même chaîne pour `automatiser-la-relance-des-pieces-clients`.
-3. Relier les trois articles publiés au pilier (une ligne chacun) et réadopter leurs dossiers scellés par `node scripts/migrate-published-blog.mjs`.
-4. `npm run lastmod:sync`, build, push, contrôle en ligne, demande d'indexation des nouvelles URL dans Search Console (barre d'inspection de la propriété).
+- **Les phases 1 à 3 de la version du 16/09** : les enablers de code sont livrés (sujets étendus, cadence, forge, pilier en tête, registre `lastmod`), la vague 1 du glossaire est intégrée, et les deux premiers articles sont publiés depuis le 16/09.
+- **Le calendrier de 36 articles** : remplacé par le backlog de 235 angles satellites plus le pilier, dont le plan tire 238 satellites (les trois articles antérieurs à la v3 compris) et un calendrier qui court jusqu'en novembre 2027.
+- **`npm run blog:create` et la chaîne `blog:gate` / `blog:preview` / `blog:review`** : remplacés par la forge (`preparer`, `sceller`, `publier`), qui scelle le dossier sur ses octets.
+- **`scripts/migrate-published-blog.mjs`** : il ne sert plus, les trois articles antérieurs à la v3 ayant rejoint la forge le 17/09 au soir avec une recette, des sources revérifiées et une revue neuve. Il ne servirait qu'à un article publié hors forge, et il ne sait pas accueillir une source revérifiée.
+- **La facette « par famille de tâches » du hub Ressources** : sans objet depuis le retrait de `/ressources` (voir `SITE-STRUCTURE.md` §5).
+- **La mesure fixée à fin décembre** : la première lecture utile est attendue à la mi-octobre, et les seuils de `SEO-STRATEGY.md` §8 sont désormais datés un par un.
 
-## Phase 3 — Vague 1, mois 2 et 3
+## 6. Ce que cette feuille de route ne fait pas
 
-Sept satellites (voir `CONTENT-CALENDAR.md` : trois en M2, quatre en M3), dans l'ordre des priorités : familles observées sur le terrain d'abord (facturation-recouvrement, administratif-secretariat). Après chaque publication : `build-cluster-plan.py --check` (liens entrants ≥ 3, aucune orpheline), sitemap, RSS.
-
-## Phase 4 — Mesure à M+3 (fin décembre 2026)
-
-Relevé Search Console par page (`gsc_query.py` du skill `seo`) : requêtes avec impressions par cluster, pages indexées, demandes de contact citant une tâche. Application des seuils de `SEO-STRATEGY.md` §8 : un cluster sans impression après trois satellites ne reçoit pas de deuxième vague, ses créneaux vont à une famille qui en a. Facette « par tâche » du hub Ressources livrée à ce moment (vague 2 de l'architecture).
-
-## Phases 5 à 7 — Vagues 2, 3, 4 (janvier à septembre 2027)
-
-Neuf articles par vague, glossaire vague 2 (16 termes) avec la vague 2. Une relecture trimestrielle des articles paie et fiscaux (dates, sources, `dateMiseAJour`), un article non relu depuis six mois passe en `a-maintenir`. Bilan à M+12 et v4.
-
-## Ce que cette feuille de route ne fait pas
-
-- Elle ne crée aucune page commerciale par famille : la règle anti-catalogue reste (une page de conversion décrit une chose livrée).
-- Elle ne fixe pas de cible de trafic. Elle fixe des seuils de décision.
-- Elle ne remplace pas les cartes Hermes : elles seront créées quand Kevin le dira, une par phase.
+- Elle ne crée aucune page commerciale par famille : une page de conversion décrit une chose livrée, c'est la règle anti-catalogue.
+- Elle ne fixe aucune cible de trafic et ne promet aucun résultat. Elle fixe des seuils de décision.
+- Elle ne demande jamais l'indexation d'une URL : la sentinelle liste, Kevin clique.
+- Elle ne modifie aucun article publié hors d'une republication scellée par la forge.

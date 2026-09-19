@@ -1,6 +1,6 @@
 # Plan de cluster v3 — « automatisation cabinet comptable »
 
-Généré le 2026-09-16 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 238 satellites (5 publiés, 233 planifiés) en 59 familles et 11 pôles, 952 liens, 342600 mots estimés.
+Généré le 2026-09-19 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 238 satellites (5 publiés, 233 planifiés) en 59 familles et 11 pôles, 952 liens, 342600 mots estimés.
 
 ## Méthode
 
