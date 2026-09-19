@@ -4,9 +4,10 @@ import { expandV3Evidence } from './resource-metier-v3.mjs';
 
 const REPORT = 'docs/qa/hub-ressources/metier-fix-a.md';
 // Planchers fail-closed : 23 définitions et 41 unités (dont 3 du hub) au candidat R4 ; 43 définitions et 63 unités
-// depuis la vague 1 (R5) et le retrait de la page Ressources (16/09/2026 au soir), qui ne laisse que la surface T.
-const DEFINITIONS_ATTENDUES = 43;
-const UNITES_ATTENDUES = 63;
+// depuis la vague 1 (R5) et le retrait de la page Ressources (16/09/2026 au soir), qui ne laisse que la surface T ;
+// 53 définitions et 76 unités depuis la vague 2 (19/09/2026), qui n’ajoute aucune affirmation de type sensible.
+const DEFINITIONS_ATTENDUES = 53;
+const UNITES_ATTENDUES = 76;
 
 const SOURCE_SPECS = {
   'source-net-dsn-overview': {
@@ -127,6 +128,50 @@ const SOURCE_SPECS = {
     url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043310689",
     snapshotPath: "docs/qa/hub-ressources/glossaire-vague-1-sources/legifrance-ccag-tic.txt", report: "docs/qa/hub-ressources/glossaire-vague-1.md",
     level: 'tier-1', provenance: 'primary', official: true,
+  },
+  // --- vague 2 du glossaire (2026-09-19) : copies prises le jour même, rapport docs/qa/hub-ressources/glossaire-vague-2.md.
+  // Ces sources portent leur propre date d’ouverture : le corpus sensible reste daté du 16/09 avec sa revue R5.
+  "source-microsoft-power-automate-rpa": {
+    publisher: "Microsoft", title: "Introduction aux flux de bureau - Power Automate | Microsoft Learn",
+    url: "https://learn.microsoft.com/fr-fr/power-automate/desktop-flows/introduction",
+    snapshotPath: "docs/qa/hub-ressources/glossaire-vague-2-sources/microsoft-power-automate-rpa.txt", report: "docs/qa/hub-ressources/glossaire-vague-2.md",
+    checkedAt: '2026-09-19T14:55:38+01:00', level: 'tier-1', provenance: 'primary', official: true,
+  },
+  "source-rfc-9110-idempotence": {
+    publisher: "IETF — RFC Editor", title: "RFC 9110: HTTP Semantics, section 9.2.2 « Idempotent Methods »",
+    url: "https://www.rfc-editor.org/rfc/rfc9110.txt",
+    snapshotPath: "docs/qa/hub-ressources/glossaire-vague-2-sources/rfc-9110-idempotence.txt", report: "docs/qa/hub-ressources/glossaire-vague-2.md",
+    checkedAt: '2026-09-19T14:55:38+01:00', level: 'tier-1', provenance: 'primary', official: true,
+  },
+  "source-cnil-ia-agentique": {
+    publisher: "CNIL", title: "IA agentique | CNIL",
+    url: "https://www.cnil.fr/fr/definition/ia-agentique",
+    snapshotPath: "docs/qa/hub-ressources/glossaire-vague-2-sources/cnil-ia-agentique.txt", report: "docs/qa/hub-ressources/glossaire-vague-2.md",
+    checkedAt: '2026-09-19T14:55:38+01:00', level: 'tier-1', provenance: 'primary', official: true,
+  },
+  "source-microsoft-rag": {
+    publisher: "Microsoft", title: "Génération augmentée par récupération (RAG) dans Recherche Azure AI | Microsoft Learn",
+    url: "https://learn.microsoft.com/fr-fr/azure/search/retrieval-augmented-generation-overview",
+    snapshotPath: "docs/qa/hub-ressources/glossaire-vague-2-sources/microsoft-rag.txt", report: "docs/qa/hub-ressources/glossaire-vague-2.md",
+    checkedAt: '2026-09-19T14:55:38+01:00', level: 'tier-1', provenance: 'primary', official: true,
+  },
+  "source-cnil-ia-generative-deploiement": {
+    publisher: "CNIL", title: "Comment déployer une IA générative ? La CNIL apporte de premières précisions | CNIL",
+    url: "https://www.cnil.fr/fr/comment-deployer-une-ia-generative-la-cnil-apporte-de-premieres-precisions",
+    snapshotPath: "docs/qa/hub-ressources/glossaire-vague-2-sources/cnil-ia-generative-deploiement.txt", report: "docs/qa/hub-ressources/glossaire-vague-2.md",
+    checkedAt: '2026-09-19T14:55:38+01:00', level: 'tier-1', provenance: 'primary', official: true,
+  },
+  "source-microsoft-connecteurs": {
+    publisher: "Microsoft", title: "Vue d’ensemble des connecteurs personnalisés | Microsoft Learn",
+    url: "https://learn.microsoft.com/fr-fr/connectors/custom-connectors/",
+    snapshotPath: "docs/qa/hub-ressources/glossaire-vague-2-sources/microsoft-connecteurs.txt", report: "docs/qa/hub-ressources/glossaire-vague-2.md",
+    checkedAt: '2026-09-19T14:55:38+01:00', level: 'tier-1', provenance: 'primary', official: true,
+  },
+  "source-rfc-4180-csv": {
+    publisher: "IETF — RFC Editor", title: "RFC 4180: Common Format and MIME Type for Comma-Separated Values (CSV) Files",
+    url: "https://www.rfc-editor.org/rfc/rfc4180.html",
+    snapshotPath: "docs/qa/hub-ressources/glossaire-vague-2-sources/rfc-4180-csv.txt", report: "docs/qa/hub-ressources/glossaire-vague-2.md",
+    checkedAt: '2026-09-19T14:55:38+01:00', level: 'tier-1', provenance: 'primary', official: true,
   },
   'source-glossary-memlia': {
     publisher: 'Memlia', title: 'Vocabulaire et contrats Memlia',
@@ -287,6 +332,78 @@ const OFFICIAL = {
     regime: "CCAG-TIC approuvé par l’arrêté du 30 mars 2021, article 2, définition de l’admission.",
     exceptions: "La recette Memlia est une convention de service ; le CCAG n’est cité que pour le vocabulaire vérification puis admission.",
   },
+  // --- vague 2 (2026-09-19) : sept restitutions de définition, toutes de type « information ».
+  // Aucune n’affirme une obligation opposable au cabinet : le corpus sensible reste celui de la revue R5.
+  'automatisation-robotisee-des-processus': {
+    sourceId: 'source-microsoft-power-automate-rpa', type: 'information',
+    citations: ['Les flux de bureau élargissent les possibilités existantes d’automatisation robotisée des processus (RPA) dans Power Automate et vous permettent d’automatiser tous les processus de bureau répétitifs.'],
+    applicability: 'Automatisations qui pilotent l’interface d’une application de bureau ou web.',
+    regime: 'Documentation d’un éditeur sur son propre produit, citée pour la définition du procédé.',
+    exceptions: 'La documentation décrit un produit donné ; elle ne vaut pas norme du procédé chez les autres éditeurs.',
+  },
+  idempotence: {
+    sourceId: 'source-rfc-9110-idempotence', type: 'information',
+    citations: ['A request method is considered "idempotent" if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request.'],
+    applicability: 'Traitements qu’une reprise ou une relance peut rejouer sur les mêmes données.',
+    regime: 'Définition normative de l’idempotence dans la spécification HTTP (RFC 9110, section 9.2.2), citée en anglais.',
+    exceptions: 'La spécification porte sur les méthodes HTTP ; l’application aux imports d’un cabinet est une transposition.',
+  },
+  'agent-ia': {
+    sourceId: 'source-cnil-ia-agentique', type: 'information',
+    citations: ["L'IA agentique désigne couramment un ensemble de systèmes qui reposent sur la coordination de plusieurs sous-systèmes appelés agents IA."],
+    applicability: 'Systèmes qui enchaînent des actions sur un environnement au moyen d’outils.',
+    regime: 'Définition publiée par la CNIL dans son lexique, citée telle quelle.',
+    exceptions: 'La CNIL définit le vocabulaire ; elle ne qualifie pas le niveau de risque d’un agent donné.',
+  },
+  'agent-ia-environnement': {
+    sourceId: 'source-cnil-ia-agentique', type: 'information',
+    citations: ["Ces agents IA sont souvent constitués d'un modèle d'IA générative, capable d'agir sur un environnement défini (applications tierces, bases de données, postes de travail ou tout autre système) et d'en modifier l'état (lecture, modification, suppression de données, exécution d'actions), avec des niveaux variables d'autonomie."],
+    applicability: 'Distinction entre un agent qui agit et un assistant qui répond.',
+    regime: 'Définition publiée par la CNIL dans son lexique, citée telle quelle.',
+    exceptions: 'La CNIL décrit ce que peut faire un agent ; elle n’autorise ni n’interdit un usage particulier.',
+  },
+  'generation-augmentee-par-recuperation': {
+    sourceId: 'source-microsoft-rag', type: 'information',
+    citations: ['La génération augmentée par récupération (RAG) est un modèle qui étend les capacités des LLM en ancrant les réponses dans votre contenu propriétaire.'],
+    applicability: 'Réponses d’un modèle de langage ancrées dans des documents fournis au moment de la question.',
+    regime: 'Documentation d’un éditeur sur son propre produit, citée pour la définition du procédé.',
+    exceptions: 'L’ancrage borne ce que le modèle peut invoquer ; il ne garantit pas l’exactitude de la réponse.',
+  },
+  'modele-local': {
+    sourceId: 'source-cnil-ia-generative-deploiement', type: 'information',
+    citations: ['Choisir un système robuste et un mode de déploiement sécurisé, par exemple en privilégiant le recours à des systèmes locaux, sécurisés et spécialisés'],
+    applicability: 'Choix du mode de déploiement d’un système d’IA générative dans un organisme.',
+    regime: 'Recommandation de déploiement publiée par la CNIL, citée telle quelle.',
+    exceptions: 'La CNIL recommande un mode de déploiement ; elle ne certifie aucun produit ni aucun hébergeur.',
+  },
+  'modele-local-reutilisation': {
+    sourceId: 'source-cnil-ia-generative-deploiement', type: 'information',
+    citations: ['A défaut, il faut déterminer dans quelle mesure le prestataire opérant le système est susceptible de réutiliser les données fournies au système d’IA, et adapter l’usage en conséquence.'],
+    applicability: 'Recours à un système d’IA opéré par un prestataire plutôt qu’en local.',
+    regime: 'Recommandation de déploiement publiée par la CNIL, citée telle quelle.',
+    exceptions: 'La recommandation porte sur la démarche à conduire, non sur la licéité d’un service donné.',
+  },
+  'connecteur-et-api': {
+    sourceId: 'source-microsoft-connecteurs', type: 'information',
+    citations: ['Un connecteur personnalisé est un wrapper autour d’une API REST qui permet à Logic Apps, Power Automate, Power Apps ou Copilot Studio de communiquer avec cette API REST ou SOAP.'],
+    applicability: 'Échanges entre deux logiciels par une interface de programmation.',
+    regime: 'Documentation d’un éditeur sur son propre produit, citée pour la définition du procédé.',
+    exceptions: 'La documentation décrit une plateforme donnée ; d’autres écosystèmes nomment autrement la même enveloppe.',
+  },
+  'export-logiciel-et-import-csv': {
+    sourceId: 'source-rfc-4180-csv', type: 'information',
+    citations: ['The comma separated values format (CSV) has been used for exchanging and converting data between various spreadsheet programs for quite some time.'],
+    applicability: 'Fichiers plats échangés entre deux logiciels, au format séparé par des virgules.',
+    regime: 'Description du format CSV enregistrée par l’IETF (RFC 4180), citée en anglais.',
+    exceptions: 'La RFC documente l’usage le plus répandu ; elle ne s’impose à aucun éditeur.',
+  },
+  'export-logiciel-et-import-csv-schema': {
+    sourceId: 'source-rfc-4180-csv', type: 'information',
+    citations: ['Each line should contain the same number of fields throughout the file.'],
+    applicability: 'Contrôle de forme appliqué à un fichier plat avant son import.',
+    regime: 'Description du format CSV enregistrée par l’IETF (RFC 4180), citée en anglais.',
+    exceptions: 'La RFC décrit une attente de forme ; elle n’oblige pas un éditeur à conserver ses colonnes.',
+  },
   'jeu-d-essai-fictif-anonymisation': {
     ...OFFICIAL_ANONYMISATION_REF(),
   },
@@ -315,8 +432,9 @@ export function loadMetierEvidence(root, checkedAt) {
   const glossaryPath = 'src/data/glossary.ts';
   const glossary = readFileSync(join(root, glossaryPath), 'utf8');
 
+  // Une source porte la date à laquelle ELLE a été ouverte : une vague nouvelle ne re-date pas le corpus précédent.
   const sources = Object.fromEntries(Object.entries(SOURCE_SPECS).map(([id, source]) => [id, {
-    id, ...source, checkedAt,
+    id, ...source, checkedAt: source.checkedAt ?? checkedAt,
     requestedUrl: source.url,
     finalUrl: source.url,
     upstreamUrl: source.url,
@@ -336,9 +454,10 @@ export function loadMetierEvidence(root, checkedAt) {
         id: `citation-t-${slug}-${index + 1}`, text: citation, locator: sources[sourceId].title,
       })),
       contentPath: glossaryPath, contentLocator: `${slug}:definition`,
+      checkedAt: sources[sourceId].checkedAt > checkedAt ? sources[sourceId].checkedAt : checkedAt,
       applicability: official?.applicability ?? 'Convention de vocabulaire ou contrat technique Memlia, limitée au service décrit.',
       regime: official?.regime ?? 'Convention de vocabulaire ou contrat technique propre au service Memlia décrit.',
-      validAsOf: checkedAt.slice(0, 10),
+      validAsOf: sources[sourceId].checkedAt.slice(0, 10),
       exceptions: official?.exceptions ?? 'La définition décrit le vocabulaire Memlia ; elle ne constitue ni une norme professionnelle universelle ni une qualification juridique.',
     };
   });

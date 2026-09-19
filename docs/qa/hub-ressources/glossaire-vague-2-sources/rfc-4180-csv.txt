@@ -1,0 +1,9 @@
+Éditeur : IETF — RFC Editor
+Titre : RFC 4180: Common Format and MIME Type for Comma-Separated Values (CSV) Files
+URL demandée et finale : https://www.rfc-editor.org/rfc/rfc4180.html
+Consulté par curl avec en-tête de navigateur : 2026-09-19T13:55:38+00:00
+Extraction : texte visible, espaces normalisés.
+
+The comma separated values format (CSV) has been used for exchanging and converting data between various spreadsheet programs for quite some time. Surprisingly, while this format is very common, it has never been formally documented.
+
+Within the header and each record, there may be one or more fields, separated by commas. Each line should contain the same number of fields throughout the file. Spaces are considered part of a field and should not be ignored. The last field in the record must not be followed by a comma.

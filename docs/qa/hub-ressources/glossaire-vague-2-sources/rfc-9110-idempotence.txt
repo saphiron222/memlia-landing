@@ -1,0 +1,7 @@
+Éditeur : IETF — RFC Editor
+Titre : RFC 9110: HTTP Semantics, section 9.2.2 « Idempotent Methods »
+URL demandée et finale : https://www.rfc-editor.org/rfc/rfc9110.txt
+Consulté par curl avec en-tête de navigateur : 2026-09-19T13:55:38+00:00
+Extraction : texte visible, espaces normalisés.
+
+A request method is considered "idempotent" if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request. Of the request methods defined by this specification, PUT, DELETE, and safe request methods are idempotent.

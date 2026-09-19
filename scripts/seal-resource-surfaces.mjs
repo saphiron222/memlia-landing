@@ -139,7 +139,7 @@ function createManifest(adapter) {
   // glossaire sans passer ici serait invisible du sceau.
   const glossaryAnchors = [...readFileSync(join(root, 'src/data/glossary.ts'), 'utf8').matchAll(/^\s+\.\.\.common, id: '[^']+', term: '[^']+', anchor: '([^']+)'/gm)]
     .map((match) => `/glossaire#${match[1]}`);
-  if (glossaryAnchors.length < 43) throw new Error(`Ancres de glossaire incomplètes : ${glossaryAnchors.length} lues, 43 attendues au moins.`);
+  if (glossaryAnchors.length < 53) throw new Error(`Ancres de glossaire incomplètes : ${glossaryAnchors.length} lues, 53 attendues au moins.`);
   const destinations = [
     '/blog/controler-les-bulletins-de-paie-avant-la-dsn',
     '/blog/suivre-la-production-sociale-dans-excel',
@@ -215,7 +215,7 @@ function createManifest(adapter) {
   });
   manifest.claimsEvidence.claims = surfaceEntries.map((entry) => ({
     id: entry.claimId, unitId: entry.unitId, text: entry.text, sha256: sha256(entry.text), type: entry.type,
-    sourceIds: [entry.sourceId], citationIds: entry.citations.map((citation) => citation.id), checkedAt, status: 'PASS',
+    sourceIds: [entry.sourceId], citationIds: entry.citations.map((citation) => citation.id), checkedAt: entry.checkedAt ?? checkedAt, status: 'PASS',
     applicability: {
       population: entry.applicability,
       regime: entry.regime,
@@ -230,7 +230,7 @@ function createManifest(adapter) {
     return entry.citations.map((citation) => ({
       id: citation.id, claimIds: [entry.claimId], sourceId: entry.sourceId,
       text: citation.text, sha256: sha256(citation.text), sourceContentSha256: sha256(sourceContent),
-      finalUrl: source.finalUrl, checkedAt, title: source.title, locator: citation.locator, verdict: 'soutient',
+      finalUrl: source.finalUrl, checkedAt: source.checkedAt, title: source.title, locator: citation.locator, verdict: 'soutient',
     }));
   });
   const usedSourceIds = [...new Set(surfaceEntries.map((entry) => entry.sourceId))];

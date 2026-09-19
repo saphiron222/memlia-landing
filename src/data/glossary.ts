@@ -28,7 +28,7 @@ export interface GlossaryEntry {
   editorialReviewer: 'Équipe éditoriale Memlia';
   businessReviewer: null;
   reviewedAt: null;
-  sourceCheckedAt: '2026-09-14' | '2026-09-16';
+  sourceCheckedAt: '2026-09-14' | '2026-09-16' | '2026-09-19';
   nextReviewAt: '2026-12-13' | '2027-03-13';
   sourceIds: string[];
   routeDecision: 'anchor';
@@ -132,6 +132,35 @@ export const GLOSSARY_SOURCES: Record<string, GlossarySource> = {
   'legifrance-ccag-tic': {
     id: 'legifrance-ccag-tic', publisher: 'Légifrance',
     title: 'Arrêté du 30 mars 2021 portant approbation du CCAG applicable aux marchés publics de techniques de l’information et de la communication (CCAG-TIC)', url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043310689', checkedAt: '2026-09-16',
+  },
+  // --- vague 2 (2026-09-19) : sept sources ouvertes le jour même, copies dans docs/qa/hub-ressources/glossaire-vague-2-sources ---
+  'microsoft-power-automate-rpa': {
+    id: 'microsoft-power-automate-rpa', publisher: 'Microsoft',
+    title: 'Introduction aux flux de bureau — Power Automate', url: 'https://learn.microsoft.com/fr-fr/power-automate/desktop-flows/introduction', checkedAt: '2026-09-19',
+  },
+  'rfc-9110-idempotence': {
+    id: 'rfc-9110-idempotence', publisher: 'IETF — RFC Editor',
+    title: 'RFC 9110 : HTTP Semantics, section 9.2.2 « Idempotent Methods »', url: 'https://www.rfc-editor.org/rfc/rfc9110.txt', checkedAt: '2026-09-19',
+  },
+  'cnil-ia-agentique': {
+    id: 'cnil-ia-agentique', publisher: 'CNIL',
+    title: 'IA agentique', url: 'https://www.cnil.fr/fr/definition/ia-agentique', checkedAt: '2026-09-19',
+  },
+  'microsoft-rag': {
+    id: 'microsoft-rag', publisher: 'Microsoft',
+    title: 'Génération augmentée par récupération (RAG) dans Recherche Azure AI', url: 'https://learn.microsoft.com/fr-fr/azure/search/retrieval-augmented-generation-overview', checkedAt: '2026-09-19',
+  },
+  'cnil-ia-generative-deploiement': {
+    id: 'cnil-ia-generative-deploiement', publisher: 'CNIL',
+    title: 'Comment déployer une IA générative ? La CNIL apporte de premières précisions', url: 'https://www.cnil.fr/fr/comment-deployer-une-ia-generative-la-cnil-apporte-de-premieres-precisions', checkedAt: '2026-09-19',
+  },
+  'microsoft-connecteurs': {
+    id: 'microsoft-connecteurs', publisher: 'Microsoft',
+    title: 'Vue d’ensemble des connecteurs personnalisés', url: 'https://learn.microsoft.com/fr-fr/connectors/custom-connectors/', checkedAt: '2026-09-19',
+  },
+  'rfc-4180-csv': {
+    id: 'rfc-4180-csv', publisher: 'IETF — RFC Editor',
+    title: 'RFC 4180 : Common Format and MIME Type for Comma-Separated Values (CSV) Files', url: 'https://www.rfc-editor.org/rfc/rfc4180.html', checkedAt: '2026-09-19',
   },
 };
 
@@ -639,6 +668,127 @@ export const GLOSSARY_ENTRIES = ([
     relatedTerms: ['recouvrement-amiable', 'prelevement-sepa-et-rejet'],
     internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }],
     owner: 'Gestion du cabinet', nextReviewAt: '2026-12-13', sourceIds: ['legifrance-deontologie-honoraires'],
+  },
+  // --- vague 2 (2026-09-19) : dix termes ; contrat Ressources v3, sources rouvertes le jour même ---
+  {
+    ...common, id: 'automatisation-robotisee-des-processus', term: 'Automatisation robotisée des processus (RPA)', anchor: 'automatisation-robotisee-des-processus', nature: 'Technique',
+    sourceCheckedAt: '2026-09-19' as const,
+    definition: 'L’automatisation robotisée des processus désigne un logiciel qui rejoue, dans l’interface d’une application, les clics et les saisies qu’une personne exécuterait : ouvrir un écran, lire un champ, recopier une valeur. Elle suit une séquence d’actions écrite à l’avance et ne comprend ni le document ni la décision qu’elle transporte.',
+    context: 'Un cabinet y recourt quand un logiciel ne propose ni interface d’échange ni export exploitable : la reprise passe alors par l’écran, faute d’une autre porte. Le procédé reste dépendant de la mise en page de l’application pilotée, qu’une mise à jour peut déplacer.',
+    exampleFictitious: 'Dans un cabinet fictif, une séquence recopie chaque semaine l’état de dix dossiers fictifs depuis un écran de suivi vers un classeur. Un bouton déplacé par une mise à jour l’arrête : elle s’interrompt et nomme l’écran qu’elle n’a pas reconnu, sans rien écrire.',
+    commonConfusion: 'L’automatisation robotisée est souvent confondue avec l’intelligence artificielle : elle rejoue une séquence de gestes décrite à l’avance et ne déduit rien du contenu qu’elle manipule.',
+    automationBoundary: 'Rejouer la séquence et s’arrêter dès qu’un écran ne correspond plus est automatisable. Décider qu’une application modifiée reste sûre à piloter, et à quelle cadence, reste une décision humaine.',
+    relatedTerms: ['automatisation', 'flux-de-travail', 'connecteur-et-api'],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    owner: 'Pôle comptable', nextReviewAt: '2026-12-13', sourceIds: ['microsoft-power-automate-rpa'],
+  },
+  {
+    ...common, id: 'idempotence', term: 'Idempotence', anchor: 'idempotence', nature: 'Technique',
+    sourceCheckedAt: '2026-09-19' as const,
+    definition: 'Une opération est idempotente lorsque la rejouer produit le même état final que l’exécuter une seule fois : relancé sur les mêmes données, un import n’écrit pas une deuxième fois les lignes déjà présentes. La propriété porte sur l’effet obtenu, pas sur le nombre d’exécutions.',
+    context: 'Un cabinet en dépend dès qu’un traitement peut être relancé après une coupure ou un doute. Deux régimes coexistent et ne se confondent pas : un import n’écrit rien s’il n’apporte rien, tandis qu’une feuille régénérée est réécrite intégralement.',
+    exampleFictitious: 'Sur un jeu d’essai fictif, le même relevé est importé deux fois de suite. Le second passage ne crée aucune écriture et rend le nombre de lignes déjà présentes, que le collaborateur compare à celui du premier import.',
+    commonConfusion: 'L’idempotence est souvent prise pour une annulation : elle ne défait rien et ne rattrape aucune erreur, elle garantit seulement qu’un second passage ne modifie pas l’état obtenu au premier.',
+    automationBoundary: 'Reconnaître qu’une ligne existe déjà et refuser de la réécrire est automatisable, à condition qu’une clé stable la désigne. Choisir cette clé et trancher qu’un doublon apparent en est un reste humain.',
+    relatedTerms: ['cle-de-rapprochement', 'schema-de-donnees', 'fail-closed'],
+    internalLinks: [{ label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    owner: 'Contrat technique', nextReviewAt: '2027-03-13', sourceIds: ['rfc-9110-idempotence'],
+  },
+  {
+    ...common, id: 'reliquat-d-exceptions', term: 'Reliquat d’exceptions', anchor: 'reliquat-d-exceptions', nature: 'Professionnelle',
+    sourceCheckedAt: '2026-09-19' as const,
+    definition: 'Le reliquat d’exceptions est la part des occurrences qu’un traitement automatisé n’a pas su trancher et qu’il remonte à un collaborateur : cas hors règle, pièce illisible, écart inexpliqué. Il se compte à chaque passage et se suit dans le temps comme une charge de travail attendue.',
+    context: 'Un cabinet le regarde avant d’étendre une automatisation : un reliquat stable indique une règle qui tient, un reliquat qui enfle signale une règle devenue fausse ou une source qui a changé de forme.',
+    exampleFictitious: 'Sur un jeu fictif de deux cents lignes, cent quatre-vingt-douze sont traitées et huit remontent : six pièces illisibles et deux montants sans correspondance. Le chiffre huit est affiché à côté du total, jamais masqué.',
+    commonConfusion: 'Un reliquat est souvent lu comme un taux d’erreur : le premier est attendu et dimensionné dès l’écriture de la règle, le second est un défaut à corriger.',
+    automationBoundary: 'Compter les cas écartés, les classer par motif et les présenter est automatisable. Traiter chaque cas remonté, et décider si leur nombre justifie de réécrire la règle, revient au cabinet.',
+    relatedTerms: ['exception', 'file-d-anomalies', 'seuil-d-alerte'],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    owner: 'Pôle comptable', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
+  },
+  {
+    ...common, id: 'seuil-d-alerte', term: 'Seuil d’alerte', anchor: 'seuil-d-alerte', nature: 'Éditoriale Memlia',
+    sourceCheckedAt: '2026-09-19' as const,
+    definition: 'Un seuil d’alerte est la valeur à partir de laquelle un écart cesse d’être ignoré et remonte pour examen : un montant, un pourcentage, un nombre de jours. Il est fixé par le cabinet et révisé par lui ; l’outil l’applique sans jamais le déduire des données.',
+    context: 'Il se pose par contrôle et non une fois pour toutes. Un seuil trop bas noie l’examen sous des écarts sans portée ; un seuil trop haut laisse passer ce qu’il fallait voir.',
+    exampleFictitious: 'Pour un dossier fictif, un écart de plus de cinquante euros ou de plus de cinq pour cent entre deux relevés remonte. Sous ces deux valeurs, la ligne est classée sans mention, et le seuil retenu reste affiché.',
+    commonConfusion: 'Un seuil d’alerte est parfois pris pour une tolérance comptable : il décide de ce qui remonte à un humain, jamais de ce qui est régulier, exact ou acceptable en comptabilité.',
+    automationBoundary: 'Appliquer le seuil, compter ce qu’il écarte et l’afficher est automatisable. Fixer sa valeur, la réviser et assumer ce qu’elle laisse passer restent des décisions du cabinet.',
+    relatedTerms: ['reliquat-d-exceptions', 'regle-de-cabinet', 'exception'],
+    internalLinks: [{ label: 'structurer un suivi par dossier, sans classer les personnes', href: '/blog/suivre-la-production-sociale-dans-excel' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    owner: 'Doctrine anti-surveillance', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
+  },
+  {
+    ...common, id: 'agent-ia', term: 'Agent IA', anchor: 'agent-ia', nature: 'Technique',
+    sourceCheckedAt: '2026-09-19' as const,
+    definition: 'Un agent IA est un composant logiciel qui enchaîne des actions au moyen d’outils — lire un fichier, interroger une base, écrire une ligne — pour atteindre un but formulé en langage courant. Il agit sur un environnement défini et en modifie l’état, avec un niveau d’autonomie variable.',
+    context: 'Un cabinet le rencontre dès qu’un assistant se voit confier des droits d’écriture plutôt que la seule rédaction d’un texte. Ce qu’il peut atteindre, et ce qu’il ne peut que proposer, se décide avant la mise en service.',
+    exampleFictitious: 'Dans un cabinet fictif, un agent lit une boîte de réception fictive, classe les messages par dossier et prépare un brouillon de réponse. L’envoi reste bloqué : aucun message ne part sans qu’un collaborateur l’ait ouvert et validé.',
+    commonConfusion: 'Un agent est souvent confondu avec un assistant conversationnel : le second répond dans une fenêtre, le premier agit sur un environnement défini — applications tierces, bases de données, postes de travail — et en modifie l’état.',
+    automationBoundary: 'Enchaîner des lectures, préparer un classement et rédiger une proposition est automatisable. Écrire dans un logiciel du cabinet ou envoyer un message reste soumis à une validation humaine explicite.',
+    relatedTerms: ['systeme-d-ia', 'ia-generative', 'generation-augmentee-par-recuperation', 'validation-humaine'],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'les garanties appliquées aux données', href: '/#garanties' }],
+    owner: 'Référentiel IA', nextReviewAt: '2026-12-13', sourceIds: ['cnil-ia-agentique'],
+  },
+  {
+    ...common, id: 'generation-augmentee-par-recuperation', term: 'Génération augmentée par récupération (RAG)', anchor: 'generation-augmentee-par-recuperation', nature: 'Technique',
+    sourceCheckedAt: '2026-09-19' as const,
+    definition: 'La génération augmentée par récupération est une technique où un modèle de langage répond à partir de documents qui lui sont fournis au moment de la question, plutôt qu’à partir de ce qu’il a mémorisé. Les réponses sont ancrées dans un contenu choisi, et les passages utilisés peuvent être cités.',
+    context: 'Un cabinet y voit le moyen de faire répondre un modèle sur ses propres documents — une convention collective, un dossier permanent — sans les confondre avec le reste du web.',
+    exampleFictitious: 'Sur un corpus fictif de notes internes, une question sur une règle de calcul rend la réponse accompagnée du paragraphe d’où elle est tirée. Sans paragraphe rattaché, la réponse est refusée plutôt que produite.',
+    commonConfusion: 'Cette technique est souvent prise pour une garantie d’exactitude : elle borne ce que le modèle peut invoquer, sans empêcher une lecture fautive du passage retenu ni le choix d’un document inadapté.',
+    automationBoundary: 'Rechercher les passages pertinents, les fournir au modèle et afficher la citation est automatisable. Vérifier que le passage cité dit bien ce que la réponse affirme reste une lecture humaine.',
+    relatedTerms: ['grand-modele-de-langage', 'hallucination', 'agent-ia'],
+    internalLinks: [{ label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }, { label: 'les garanties appliquées aux données', href: '/#garanties' }],
+    owner: 'Référentiel IA', nextReviewAt: '2026-12-13', sourceIds: ['microsoft-rag'],
+  },
+  {
+    ...common, id: 'modele-local', term: 'Modèle local', anchor: 'modele-local', nature: 'Technique',
+    sourceCheckedAt: '2026-09-19' as const,
+    definition: 'Un modèle local s’exécute sur une machine contrôlée par le cabinet : les documents soumis ne quittent pas son parc et aucun prestataire ne les reçoit. C’est le mode de déploiement, et non le pays d’hébergement, qui détermine qui peut lire les données.',
+    context: 'La question se pose avant tout usage sur des pièces couvertes par le secret professionnel. À défaut d’un déploiement local, il faut établir dans quelle mesure le prestataire qui opère le service peut réutiliser ce qui lui est transmis.',
+    exampleFictitious: 'Dans un cabinet fictif, un modèle installé sur un poste dédié résume des pièces fictives sans connexion sortante. Le même travail confié à un service distant sortirait les pièces du parc, ce qui change la question posée.',
+    commonConfusion: 'Un modèle local est souvent confondu avec un service « hébergé en France » : un service distant, même installé en France, reçoit bien les documents, et la réutilisation possible par le prestataire qui l’opère reste à établir.',
+    automationBoundary: 'Exécuter le traitement sans connexion sortante et le prouver est automatisable. Décider quelles pièces peuvent être soumises, et à quel mode de déploiement, reste une décision du cabinet.',
+    relatedTerms: ['sous-traitant-rgpd', 'systeme-d-ia', 'donnee-personnelle'],
+    internalLinks: [{ label: 'les garanties appliquées aux données', href: '/#garanties' }, { label: 'le cadrage des données avant développement', href: '/#faq-donnees-reelles' }],
+    owner: 'Référentiel RGPD', nextReviewAt: '2026-12-13', sourceIds: ['cnil-ia-generative-deploiement'],
+  },
+  {
+    ...common, id: 'connecteur-et-api', term: 'Connecteur et API', anchor: 'connecteur-et-api', nature: 'Technique',
+    sourceCheckedAt: '2026-09-19' as const,
+    definition: 'Une interface de programmation, ou API, est la porte par laquelle un logiciel expose ses données à un autre ; un connecteur est l’enveloppe qui relie cette porte à un outil donné. Quand aucune porte n’existe, l’échange passe par un fichier exporté puis importé.',
+    context: 'Un cabinet le découvre en inventoriant ses logiciels : certains offrent une porte documentée, d’autres n’offrent qu’un bouton d’export. Le choix du véhicule d’automatisation en dépend directement, tâche par tâche.',
+    exampleFictitious: 'Pour un cabinet fictif, un outil de suivi expose une porte qui rend la liste des dossiers ; un second n’en a pas et livre un fichier chaque nuit. Les deux alimentent le même tableau fictif, par deux voies distinctes.',
+    commonConfusion: 'L’absence d’API est souvent lue comme une impossibilité d’automatiser : l’export de fichier reste une voie praticable, plus fragile, à condition d’en vérifier le format à chaque passage.',
+    automationBoundary: 'Appeler la porte, lire la réponse et refuser un format inattendu est automatisable. Obtenir les droits d’accès, accepter les conditions de l’éditeur et arbitrer entre deux voies restent humains.',
+    relatedTerms: ['export-logiciel-et-import-csv', 'automatisation-robotisee-des-processus', 'flux-de-travail'],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }],
+    owner: 'Contrat technique', nextReviewAt: '2026-12-13', sourceIds: ['microsoft-connecteurs'],
+  },
+  {
+    ...common, id: 'export-logiciel-et-import-csv', term: 'Export logiciel et import CSV', anchor: 'export-logiciel-et-import-csv', nature: 'Technique',
+    sourceCheckedAt: '2026-09-19' as const,
+    definition: 'Un export est un fichier plat produit par un logiciel pour être relu par un autre ; le format CSV en est la forme la plus répandue. Aucune spécification unique ne s’impose : le nombre et l’ordre des colonnes se vérifient à chaque import, jamais une fois pour toutes.',
+    context: 'Un cabinet en reçoit chaque mois, de son logiciel de paie comme de sa banque. Une mise à jour de l’éditeur peut ajouter, renommer ou déplacer une colonne sans annonce, et l’import silencieux devient alors faux.',
+    exampleFictitious: 'Sur un export fictif, une colonne attendue manque. L’import s’arrête, nomme la colonne absente et n’écrit aucune ligne, plutôt que de décaler les valeurs suivantes d’un rang.',
+    commonConfusion: 'Un export est souvent pris pour une copie stable : chaque ligne d’un même fichier doit porter le même nombre de champs, et rien n’oblige un éditeur à conserver ses colonnes d’une version à l’autre.',
+    automationBoundary: 'Vérifier l’en-tête, compter les champs et refuser un fichier non conforme est automatisable. Décider d’accepter une nouvelle colonne, ou de réécrire la règle de lecture, reste une décision humaine.',
+    relatedTerms: ['schema-de-donnees', 'connecteur-et-api', 'cle-de-rapprochement'],
+    internalLinks: [{ label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    owner: 'Contrat technique', nextReviewAt: '2026-12-13', sourceIds: ['rfc-4180-csv'],
+  },
+  {
+    ...common, id: 'cle-de-rapprochement', term: 'Clé de rapprochement', anchor: 'cle-de-rapprochement', nature: 'Technique',
+    sourceCheckedAt: '2026-09-19' as const,
+    definition: 'Une clé de rapprochement est le champ, ou la combinaison de champs, qui permet d’affirmer que deux lignes venues de sources différentes désignent le même objet : un numéro de dossier, un identifiant de pièce, un montant associé à une date. Elle doit être stable et non ambiguë.',
+    context: 'Elle se choisit avant d’écrire le moindre rapprochement, et elle se documente. Une clé instable produit des correspondances plausibles mais fausses, que rien ne distingue des bonnes une fois la ligne écrite.',
+    exampleFictitious: 'Sur un jeu fictif, deux écritures portent le même montant le même jour pour deux dossiers distincts. La clé retenue ajoute le numéro de dossier ; sans lui, les deux lignes se seraient rapprochées l’une de l’autre.',
+    commonConfusion: 'Un nom est souvent utilisé comme clé : une orthographe différente, un accent ou une raison sociale abrégée suffisent alors à casser le rapprochement, sans que rien ne signale la ligne manquée.',
+    automationBoundary: 'Appliquer la clé, refuser les correspondances multiples et lister les lignes sans correspondance est automatisable. Choisir la clé, et trancher un cas à plusieurs candidats, reste un acte humain.',
+    relatedTerms: ['rapprochement-bancaire', 'lettrage-comptable', 'idempotence'],
+    internalLinks: [{ label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }, { label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }],
+    owner: 'Contrat technique', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
 ] satisfies GlossaryEntry[]).sort((a, b) => a.term.localeCompare(b.term, 'fr'));
 

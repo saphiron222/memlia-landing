@@ -1,11 +1,13 @@
-# Glossaire v3 : vague 1 intégrée, vague 2 à faire
+# Glossaire v3 : vagues 1 et 2 intégrées, quatre termes réglementaires en attente
 
-Plan écrit le 16 septembre 2026, remis à l'état réel le 19 septembre 2026.
+Plan écrit le 16 septembre 2026, remis à l'état réel le 19 septembre 2026, puis le 19 au soir après
+l'intégration de la vague 2.
 
-**Le glossaire porte 43 termes aujourd'hui** : les 23 historiques et les 20 de la vague 1, intégrés
-le 16/09/2026. Le compte est vérifiable dans `src/data/glossary.ts` (43 ancres uniques) et
-`tests/proof/test_glossary.py` en exige exactement 43. La vague 2
-compte **14 termes**, ce qui porterait le total à 57.
+**Le glossaire porte 53 termes aujourd'hui** : les 23 historiques, les 20 de la vague 1 (16/09/2026) et
+les 10 de la vague 2 (19/09/2026). Le compte est vérifiable dans `src/data/glossary.ts` (53 ancres
+uniques), `tests/proof/test_glossary.py` en exige exactement 53 et `dist/glossaire.html` en rend 53.
+La vague 2 devait compter **14 termes** ; **quatre sont reportés**, pour une raison mesurée, exposée
+au §3 et détaillée dans `docs/qa/hub-ressources/glossaire-vague-2.md`.
 
 Correction d'un compte faux que ce document portait : le plan annonçait « vague 1 : 18 termes » et
 « vague 2 : 16 termes », alors que ses propres tableaux marquaient 20 termes en vague 1 et 14 en
@@ -43,44 +45,43 @@ d'essai fictif, grand modèle de langage) et huit termes sont des conventions Me
 `/methode`. Revue métier indépendante R5, 34 affirmations sensibles, 34 verdicts « soutient » après
 correction d'« anonymisation » : `docs/qa/hub-ressources/metier-review-r5/`.
 
-## 3. Vague 2 : 14 termes, à faire
+## 2 bis. Vague 2 : dix termes intégrés le 19/09/2026
 
-Aucune date n'est posée : la vague attend la validation de Kevin sur la liste et sur le moment. Les
-sources marquées « à relever » se relèvent et se datent le jour de la rédaction, jamais avant.
+| Famille | Termes (ancre) |
+|---|---|
+| Automatisation (4) | `automatisation-robotisee-des-processus`, `idempotence`, `reliquat-d-exceptions`, `seuil-d-alerte` |
+| Intelligence artificielle (3) | `agent-ia`, `generation-augmentee-par-recuperation`, `modele-local` |
+| Données et intégration (3) | `connecteur-et-api`, `export-logiciel-et-import-csv`, `cle-de-rapprochement` |
 
-### Automatisation (4)
+Sept sources ouvertes le jour même, copies dans `docs/qa/hub-ressources/glossaire-vague-2-sources`,
+lot rédigé dans `glossaire-vague-2.json`, rapport dans `docs/qa/hub-ressources/glossaire-vague-2.md`.
+Deux sources pressenties ont été **remplacées après mesure** : France Num/AFNOR pour la RPA (aucune
+page de définition) et une définition CNIL du RAG (404 le 19/09). En revanche la CNIL publie bien une
+définition « IA agentique », qui sert à `agent-ia`.
 
-| Terme | Nature | En une ligne, à développer en 40 à 60 mots | Confusion courante | Source à citer | Article qui l'emploie |
+Une règle du contrat a bougé, et c'est la seule : **une source porte désormais sa propre date
+d'ouverture**. Le corpus de la vague 1 garde le 16/09/2026, celui de la vague 2 porte le 19/09/2026.
+Sans cela, une vague nouvelle re-datait des pages que personne n'avait rouvertes.
+
+## 3. Les quatre termes réglementaires, reportés
+
+Les sources sont relevées et les dates établies (voir le rapport de vague 2) : ce n'est pas la
+documentation qui manque, c'est la **revue métier**. Ces quatre définitions énoncent une règle
+opposable — type `legal-reglementaire` ou `fiscal` — et le contrat exige alors un verdict par couple
+affirmation/source. Or une revue R6 doit être datée du jour **et** partager ce jour avec toutes les
+copies de source sensibles : le 19/09/2026, **Légifrance rend 403** (anti-robot, trois essais) et
+**l'assistance Net-entreprises rend 401**. Les vingt copies de la vague 1 ne peuvent donc pas être
+rouvertes le même jour, et R6 est impossible. Les classer `information` pour passer le gate serait
+exactement le vert qui ne prouve rien.
+
+À reprendre dès que Légifrance et Net-entreprises répondent, sans refaire le travail de source :
+
+| Terme | Nature | En une ligne | Confusion courante | Source RELEVÉE le 19/09/2026 | Article qui l'emploie |
 |---|---|---|---|---|---|
-| Automatisation robotisée des processus (RPA) | Technique | logiciel qui rejoue des clics et des saisies à la place d'un humain, dans une interface | confondue avec l'IA ; la RPA ne comprend rien, elle rejoue | France Num ou AFNOR, à relever | `automatiser-sans-changer-de-logiciel`, `ia-generative-au-cabinet-ce-qu-elle-prepare-ce-qu-elle-ne-decide-pas` |
-| Idempotence | Technique | rejouer un traitement ne change rien s'il n'apporte rien : un import relancé n'écrit pas deux fois | confondue avec « annuler ». Deux régimes : l'import ne réécrit pas, la régénération réécrit tout | RFC 9110 pour le sens HTTP, à relever | `importer-un-export-logiciel-dans-excel-sans-ressaisie`, `ne-pas-facturer-deux-fois-un-acte-hors-forfait` |
-| Reliquat d'exceptions | Professionnelle | la part des occurrences que l'automatisation n'a pas su traiter et qu'un humain reprend | confondue avec un taux d'erreur ; un reliquat est attendu, un taux d'erreur est un défaut | usage professionnel cité comme tel, pas comme autorité, à relever | à fixer sur l'angle publié des familles `saisie-ocr`, `lettrage`, `banque-rapprochement` |
-| Seuil d'alerte | Éditoriale Memlia | valeur au-delà de laquelle un écart remonte, réglée par le cabinet et jamais par l'outil | confondu avec une tolérance comptable | référentiel des besoins, sans citation nominative | `tableau-de-bord-de-production-sans-classer-les-personnes` |
-
-### Intelligence artificielle (5)
-
-| Terme | Nature | En une ligne | Confusion courante | Source à citer | Article qui l'emploie |
-|---|---|---|---|---|---|
-| Agent IA | Technique | système qui enchaîne des actions avec des outils pour atteindre un but, avec une autonomie bornée | confondu avec un assistant conversationnel : l'agent agit, l'assistant répond | document institutionnel (CNIL ou Commission), à relever | `agent-ia-ou-assistant-ia-la-difference-pour-un-cabinet` |
-| Génération augmentée par recherche (RAG) | Technique | technique où le modèle répond à partir de documents fournis et cités, plutôt que de sa mémoire | prise pour une garantie d'exactitude : elle borne, elle ne garantit pas | CNIL, fiches « développer un système d'IA », à relever | `trier-la-boite-mail-du-cabinet-par-client-et-priorite` |
-| Modèle local | Technique | modèle exécuté sur une machine du cabinet, sans envoi des données à un tiers | confondu avec « hébergé en France » | CNIL, sous-traitance et transferts, à relever | `rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel` |
-| Supervision humaine | Réglementaire | exigence de l'AI Act (article 14) : une personne peut comprendre, surveiller et interrompre le système | confondue avec la validation humaine Memlia, qui va plus loin : rien ne part sans validation | EUR-Lex, règlement (UE) 2024/1689, à relever | `mettre-un-cabinet-comptable-en-conformite-avec-l-ai-act` |
-| Maîtrise de l'IA | Réglementaire | obligation de l'AI Act (article 4) : le personnel qui utilise un système d'IA en comprend le fonctionnement et les limites. **Date d'application à vérifier sur EUR-Lex le jour de la rédaction** | prise pour une certification | EUR-Lex, à relever avec la date | `checklist-de-conformite-ai-act-pour-un-petit-cabinet-comptable` |
-
-### Données et intégration (3)
-
-| Terme | Nature | En une ligne | Confusion courante | Source à citer | Article qui l'emploie |
-|---|---|---|---|---|---|
-| Connecteur et API | Technique | interface par laquelle deux logiciels échangent sans ressaisie ; quand elle manque, on passe par des exports | « sans API » ne veut pas dire « sans automatisation » : l'export fichier est une voie | documentation d'un éditeur pour sa propre API, à relever | `automatiser-sans-changer-de-logiciel`, `importer-un-export-logiciel-dans-excel-sans-ressaisie` |
-| Export logiciel et import CSV | Technique | fichier plat produit par un logiciel et lu par un autre ; son schéma se vérifie à chaque import | pris pour une copie fiable : un export change de colonnes sans prévenir | RFC 4180, à relever | `checklist-avant-d-importer-un-export-logiciel-dans-excel` |
-| Clé de rapprochement | Technique | l'identifiant, ou la combinaison de champs, qui permet de dire que deux lignes parlent du même dossier | confondue avec un nom : deux orthographes cassent un rapprochement | doctrine Memlia, usage professionnel cité comme tel | `rapprochement-bancaire-automatise-les-ecarts-a-remonter`, `lettrage-automatique-regles-et-cas-de-refus` |
-
-### Vocabulaire des tâches (2)
-
-| Terme | Nature | En une ligne | Confusion courante | Source à citer | Article qui l'emploie |
-|---|---|---|---|---|---|
-| Lettre de mission | Réglementaire | contrat obligatoire entre l'expert-comptable et son client, qui définit la mission et les honoraires | prise pour un devis | Code de déontologie des professionnels de l'expertise comptable (décret n° 2012-432), Légifrance, à relever | `qu-est-ce-que-la-lettre-de-mission-d-un-expert-comptable` |
-| Facture électronique et plateforme agréée | Réglementaire | facture émise, transmise et reçue dans un format structuré via une plateforme agréée par l'administration. **Dénomination et calendrier à vérifier sur impots.gouv.fr le jour de la rédaction** | confondue avec un PDF envoyé par courriel | impots.gouv.fr, dossier facturation électronique, à relever avec la date | `checklist-de-conformite-avant-le-passage-a-la-facture-electronique`, `facture-electronique-ce-que-change-la-collecte-des-pieces` |
+| Supervision humaine | Réglementaire | exigence de contrôle humain sur un système d'IA à haut risque : comprendre ses capacités et ses limites, surveiller son fonctionnement, intervenir | confondue avec la validation humaine du service, qui va plus loin : rien ne part sans validation | EUR-Lex, règlement (UE) 2024/1689, **article 14 « Contrôle humain »**, chapitre III section 2. **Applicable à partir du 2 août 2026** (article 113, règle générale) | `mettre-un-cabinet-comptable-en-conformite-avec-l-ai-act` |
+| Maîtrise de l'IA | Réglementaire | obligation faite aux fournisseurs et aux déployeurs de garantir un niveau suffisant de maîtrise de l'IA pour leur personnel | prise pour une certification | EUR-Lex, règlement (UE) 2024/1689, **article 4 « Maîtrise de l'IA »**, chapitre I. **Applicable depuis le 2 février 2025** (article 113, point a) | `checklist-de-conformite-ai-act-pour-un-petit-cabinet-comptable` |
+| Lettre de mission | Réglementaire | contrat écrit qui lie l'expert-comptable à son client et dans les limites duquel il engage sa responsabilité | prise pour un devis | Service-Public Entreprendre, fiche `F31447`, vérifiée le 01/06/2026 : « […] dans le cadre et dans les limites de la lettre de mission le liant contractuellement à son client. » ⚠ cette fiche **n'énonce pas** le caractère obligatoire : il vient du décret n° 2012-432, sur Légifrance, inaccessible ce jour | `qu-est-ce-que-la-lettre-de-mission-d-un-expert-comptable` |
+| Facture électronique et plateforme agréée | Réglementaire | facture émise, transmise et reçue dans un format structuré via une plateforme agréée par l'administration | confondue avec un PDF envoyé par courriel | impots.gouv.fr, « Je passe à la facturation électronique », modifiée le 01/09/2026 : généralisation « effective depuis le **1er septembre 2026** ». Dénomination confirmée : **« plateformes agréées »** | `checklist-de-conformite-avant-le-passage-a-la-facture-electronique`, `facture-electronique-ce-que-change-la-collecte-des-pieces` |
 
 Les slugs cités sont ceux de `backlog-v3.json` au 19/09/2026 : ils se revérifient au moment de la
 vague, puisqu'un angle peut être réécrit par un recalage de la demande.
@@ -98,6 +99,14 @@ en voici l'ossature, dans l'ordre :
 6. **Revue métier par un agent distinct de l'auteur**, sous une carte de suivi, avec un verdict par couple affirmation et source sur tous les types sensibles.
 7. **Injecter la revue** dans les manifestes, puis `node scripts/reaffirm-resource-review.mjs ancrer` : l'ancre enregistre le sujet complet de la revue après avoir vérifié qu'il reproduit l'empreinte épinglée.
 8. `npm run resource:audit:qa` vert, `npm run lastmod:sync`, rebuild, Playwright `glossary.spec.ts` et `review.spec.ts`, puis vérification en ligne.
+
+**Quel instrument, et quand.** L'étape 6-7 (revue puis `ancrer`) n'est possible que si **toutes** les
+copies de source sensibles peuvent être rouvertes le jour de la revue : le contrat exige que la revue,
+chaque affirmation sensible et chaque copie de source sensible partagent le même jour. Une vague qui
+n'ajoute **aucune affirmation de type sensible** n'a pas besoin de R6 : la revue en vigueur est
+**réaffirmée** sur le sujet courant, avec une déclaration écrite et une mesure préalable établissant
+que les affirmations sensibles n'ont pas bougé d'un octet. C'est la voie prise le 19/09/2026 pour la
+vague 2, et la raison pour laquelle ses quatre termes réglementaires sont restés dehors.
 
 Entre deux vagues, quand le chrome du site change sans que la matière bouge, on ne rescelle pas : on
 **réaffirme** (`node scripts/reaffirm-resource-review.mjs reaffirmer`), qui compare le sujet courant

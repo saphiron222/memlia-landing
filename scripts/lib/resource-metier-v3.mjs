@@ -22,6 +22,10 @@ export const ADDITIONAL_UNITS = [
   ['sous-traitant-rgpd', 'context', 'sous-traitant-rgpd'],
   ['sous-traitant-rgpd', 'commonConfusion', 'sous-traitant-rgpd'],
   ['jeu-d-essai-fictif', 'commonConfusion', 'jeu-d-essai-fictif-anonymisation'],
+  // vague 2 (2026-09-19) : les confusions qui s’appuient sur la source portent leur propre citation
+  ['agent-ia', 'commonConfusion', 'agent-ia-environnement'],
+  ['modele-local', 'commonConfusion', 'modele-local-reutilisation'],
+  ['export-logiciel-et-import-csv', 'commonConfusion', 'export-logiciel-et-import-csv-schema'],
 ];
 
 export function expandV3Evidence({ root, glossary, entries, sources, official, checkedAt }) {

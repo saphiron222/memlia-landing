@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const EXPECTED_TERMS = 43;
+const EXPECTED_TERMS = 53;
 
 async function glossaryReport(page: import('@playwright/test').Page) {
   return page.evaluate(() => ({
@@ -13,7 +13,7 @@ async function glossaryReport(page: import('@playwright/test').Page) {
   }));
 }
 
-test('glossaire : 43 termes, alphabet réel, canonical, breadcrumb et schéma', async ({ page }) => {
+test('glossaire : 53 termes, alphabet réel, canonical, breadcrumb et schéma', async ({ page }) => {
   const response = await page.goto('/glossaire');
   expect(response?.status()).toBe(200);
   const report = await glossaryReport(page);

@@ -1,14 +1,36 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "revue": "metier-review-r5",
-  "declareLe": "2026-09-16",
-  "declarePar": "Claude Code, session memlia.fr v3 du 16/09/2026 (carte kanban t_eebf35f8 pour la revue)",
-  "regle": "Seules les clés listées ici peuvent bouger sans refaire la revue métier. Toute autre clé du sujet ferme la réaffirmation.",
+  "declareLe": "2026-09-19",
+  "declarePar": "Claude Code, session memlia.fr v3 du 19/09/2026 (vague 2 du glossaire) ; déclaration du 16/09/2026 reprise et amendée",
+  "regle": "Seules les clés listées ici peuvent bouger sans refaire la revue métier. Toute autre clé du sujet ferme la réaffirmation. La revue R5 porte sur les affirmations de type sensible : la déclaration n'est recevable que si aucune d'elles n'a bougé, ce que la mesure ci-dessous établit et que le gate resource:audit:qa revérifie en exigeant un verdict par couple affirmation/source sensible.",
   "deltasAutorises": {
-    "buildOutputDigest": "Le HTML rendu de /glossaire change quand le chrome du site change sans qu'aucune unité éditoriale, affirmation, citation ou source ne bouge : le 16/09/2026 au soir, l'entrée « Ressources » de la navigation devient un groupe (blog, glossaire) présent sur toutes les pages, et la page /ressources est retirée. Le script revérifie que chaque affirmation revue est encore rendue mot pour mot.",
-    "configBundleDigest": "Le lot de configuration perd src/data/resources.ts (fichier de la page Ressources retirée) et les deux modules de preuve perdent leurs entrées de la surface H (hub) : aucune spécification de la surface T n'est modifiée, ce que le script vérifie affirmation par affirmation et copie par copie.",
+    "buildOutputDigest": "Le HTML rendu de /glossaire change à chaque vague : le 19/09/2026 il porte dix définitions de plus, soit 53 ancres au lieu de 43. Le script revérifie que chacune des affirmations revues par R5 est encore rendue mot pour mot dans ce HTML.",
+    "configBundleDigest": "Le lot de configuration suit src/data/glossary.ts, qui gagne sept sources et dix entrées, et les deux modules de preuve, dont les planchers passent de 43 à 53 définitions et de 63 à 76 unités. Aucune spécification d'une affirmation sensible n'est modifiée.",
+    "assetBundleDigest": "Le lot d'actifs suit le rendu : il n'entre ni image ni média dans cette vague, mais son empreinte est dérivée du build qui vient de changer. Aucun actif n'est ajouté, retiré ni remplacé.",
+    "sourceBundleDigest": "Le lot d'intégrité des copies de source gagne les sept copies de la vague 2 (docs/qa/hub-ressources/glossaire-vague-2-sources), ouvertes le 19/09/2026, et suit la copie de src/data/glossary.ts. Aucune des vingt copies jugées par R5 n'est modifiée : les vingt-sept verdicts portent encore sur des octets identiques.",
+    "claimsEvidence": "La vague 2 ajoute treize affirmations — dix définitions et trois champs « confusion fréquente » — et sept sources, toutes de type non sensible (dix « information », trois « methode-memlia »). Mesure du jour : aucune affirmation ni unité conservée n'a bougé d'un octet ; les vingt-sept affirmations sensibles de R5 sont identiques une à une ; les seules lignes conservées à changer sont les trente citations adossées à source-glossary-memlia et cette source elle-même, dont la copie EST src/data/glossary.ts : seuls contentSha256, sourceContentSha256 et claimIds y bougent. Cette source n'est officielle pour aucune affirmation sensible, donc aucun verdict R5 ne s'y appuie. Le reste des écarts est positionnel : les tableaux sont comparés par rang, et insérer treize lignes décale les suivantes.",
+    "candidate": {
+      "raison": "Le rayonnement interne du glossaire gagne les dix ancres de la vague 2 ; aucun autre champ du candidat ne bouge.",
+      "champsAutorises": [
+        "fanOut"
+      ]
+    },
+    "formatContract": {
+      "raison": "La politique d'ancres et les sorties attendues comptent les ancres rendues : elles passent de 43 à 53.",
+      "champsAutorises": [
+        "anchorPolicy",
+        "requiredOutputs"
+      ]
+    },
+    "policyBaseline": {
+      "raison": "La décision d'architecture énonce le nombre d'ancres de l'index unique : elle passe de 43 à 53.",
+      "champsAutorises": [
+        "decisions"
+      ]
+    },
     "links": {
-      "raison": "Le glossaire n'est plus relié depuis /ressources (page retirée) mais depuis la navigation de toutes les pages ; la cannibalisation n'est plus comparée qu'avec /blog.",
+      "raison": "Le glossaire n'est plus relié depuis /ressources (page retirée le 16/09/2026) mais depuis la navigation de toutes les pages ; la cannibalisation n'est plus comparée qu'avec /blog.",
       "champsAutorises": [
         "incoming",
         "comparedCanonicalPaths"
@@ -25,6 +47,57 @@
       "champsAutorises": [
         "checkedAt"
       ]
+    }
+  },
+  "mesureDuJour": {
+    "date": "2026-09-19",
+    "commande": "comparaison du sujet ancré et du sujet courant, ligne par ligne et champ par champ",
+    "affirmationsSensibles": {
+      "avant": 27,
+      "apres": 27,
+      "identiquesOctetPourOctet": true
+    },
+    "verdictsR5": {
+      "nombre": 27,
+      "copiesDeSourceModifiees": 0
+    },
+    "affirmations": {
+      "avant": 64,
+      "apres": 77,
+      "disparues": 0,
+      "modifiees": 0,
+      "ajoutees": 13
+    },
+    "unitesRendues": {
+      "avant": 63,
+      "apres": 76,
+      "disparues": 0,
+      "modifiees": 0,
+      "ajoutees": 13
+    },
+    "citations": {
+      "avant": 77,
+      "apres": 90,
+      "disparues": 0,
+      "ajoutees": 13,
+      "modifiees": 30,
+      "seulChampModifie": "sourceContentSha256"
+    },
+    "sources": {
+      "avant": 20,
+      "apres": 27,
+      "disparues": 0,
+      "ajoutees": 7,
+      "modifiees": 1,
+      "ligneModifiee": "source-glossary-memlia",
+      "champsModifies": [
+        "contentSha256",
+        "claimIds"
+      ]
+    },
+    "typesDesAffirmationsAjoutees": {
+      "information": 10,
+      "methode-memlia": 3
     }
   }
 }
