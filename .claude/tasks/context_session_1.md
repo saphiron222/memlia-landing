@@ -1,5 +1,12 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-19 — sources de la forge : encodage et contexte
+
+- `verifySource` décode désormais les octets avec le `charset` déclaré par `Content-Type`, UTF-8 par défaut, et refuse une séquence invalide au lieu d'écrire une copie corrompue.
+- Le contexte d'un claim est extrait du bloc HTML visible qui contient la citation, puis borné à sa phrase ; `head`, CSS, scripts, `noscript` et `template` sont exclus. Extraction et validation partagent désormais cette projection : un contexte traversant une balise inline reste relié au snapshot exact et passe le gate.
+- TDD rouge puis vert sur une vraie distinction ISO-8859-15 (`€`, octet `0xA4`) et sur une page HTML monoligne chargée de CSS dont une balise `<a>` entoure la citation. Le nouveau test échouait au gate sur le contexte avant correction. Vérification fraîche : check 0 erreur (11 hints hérités), Python 71/71, scripts 248/248, Playwright 123/123, build 19 pages.
+- Aucun contenu public, déploiement, push ou publication. Diff limité à quatre fichiers de code/test et ce contexte ; nouvelle passation en revue croisée marketing sur la carte `t_2ab266bf`.
+
 ## Claude Code — 2026-09-16 — reprise des cartes Hermes, plan de chantier
 
 - Hermes figé depuis le 15/09 12:26 (auth Codex perdue : workers rc=0 × 5, disjoncteur). Les 25 cartes landing

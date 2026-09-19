@@ -656,7 +656,14 @@ async function readBoundedResponse(response) {
     }
     chunks.push(Buffer.from(value));
   }
-  return Buffer.concat(chunks).toString('utf8');
+  const contentType = response.headers?.get?.('content-type') ?? '';
+  const charsetMatch = contentType.match(/charset\s*=\s*(?:"([^"]+)"|'([^']+)'|([^;\s]+))/i);
+  const charset = charsetMatch?.slice(1).find(Boolean)?.trim() ?? 'utf-8';
+  try {
+    return new TextDecoder(charset, { fatal: true }).decode(Buffer.concat(chunks));
+  } catch (error) {
+    throw new Error(`La source ne peut pas être décodée avec le charset déclaré « ${charset} ».`, { cause: error });
+  }
 }
 
 export async function verifySource({ root = process.cwd(), slug, sourceId, excerpt, fetcher = fetchUndici, resolver = dnsLookup }) {
@@ -852,6 +859,48 @@ function renderedContentUnits(markdown) {
 
 function normalizedDetectionText(value) {
   return String(value ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+}
+
+function visibleSourceBlocks(source) {
+  if (!/<(?:html|body|main|article|section|p|div|h[1-6])\b/i.test(source)) return [source.replace(/\s+/g, ' ').trim()];
+  const document = parseHtml(source);
+  const ignoredTags = new Set(['head', 'style', 'script', 'noscript', 'template']);
+  const blockTags = new Set(['p', 'li', 'blockquote', 'figcaption', 'td', 'th', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
+  const nodeText = (node, hidden = false) => {
+    const ignored = hidden || ignoredTags.has(node.tagName);
+    if (ignored) return '';
+    if (node.nodeName === '#text') return node.value;
+    return (node.childNodes ?? []).map((child) => nodeText(child, ignored)).join(' ');
+  };
+  const blocks = [];
+  const visit = (node, hidden = false) => {
+    const ignored = hidden || ignoredTags.has(node.tagName);
+    if (!ignored && blockTags.has(node.tagName)) {
+      const text = nodeText(node).replace(/\s+/g, ' ').trim();
+      if (text) blocks.push(text);
+      return;
+    }
+    for (const child of node.childNodes ?? []) visit(child, ignored);
+  };
+  visit(document);
+  const fallback = nodeText(document).replace(/\s+/g, ' ').trim();
+  return blocks.length ? blocks : [fallback];
+}
+
+export function contexteDeCitation(source, excerpt) {
+  const citation = excerpt.replace(/\s+/g, ' ').trim();
+  const visible = visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
+  const position = visible.indexOf(citation);
+  if (position < 0) return citation;
+  const end = position + citation.length;
+  for (const { segment, index } of new Intl.Segmenter('fr', { granularity: 'sentence' }).segment(visible)) {
+    if (index <= position && index + segment.length >= end) return segment.trim();
+  }
+  return citation;
+}
+
+function sourceContainsContext(source, context) {
+  return source.includes(context) || visibleSourceBlocks(source).some((block) => block.includes(context));
 }
 
 function sensitiveTextSignals(value) {
@@ -1093,7 +1142,7 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
       }
       if (result.sourceUrl !== source?.url || result.verifiedUrl !== verified?.proof?.finalUrl) errors.push(`${resultPrefix} ne relie pas les URL source et finale exactes.`);
       if (result.excerpt !== claim.sourceExcerpts?.[sourceId]) errors.push(`${resultPrefix}.excerpt diverge de l’extrait relié au claim.`);
-      if (!hasText(result.context, 12) || !result.context.includes(result.excerpt ?? '') || (verified && !verified.snapshot.includes(result.context))) {
+      if (!hasText(result.context, 12) || !result.context.includes(result.excerpt ?? '') || (verified && !sourceContainsContext(verified.snapshot, result.context))) {
         errors.push(`${resultPrefix}.context est absent, hors de la copie vérifiée ou ne contient pas l’extrait exact.`);
       }
       if (!/^[a-f0-9]{64}$/.test(result.contextSha256 ?? '') || sha256(result.context ?? '') !== result.contextSha256) errors.push(`${resultPrefix}.contextSha256 ne correspond pas au contexte exact.`);

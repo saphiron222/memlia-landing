@@ -755,6 +755,38 @@ test('verifySource ouvre la source et écrit une preuve reliée à sa copie exac
   assert.ok(gate.errors.some((error) => /citation\.sourceContentSha256|revue métier.*sourceContentSha256/i.test(error)), gate.errors.join('\n'));
 });
 
+test('verifySource décode une source selon le charset déclaré', async () => {
+  const fixture = await createCompleteDossier(root('verify-source-iso-8859-15'));
+  const excerpt = 'Les écritures contrôlées sont prêtes pour la révision au coût de 15 €.';
+  const sourceBody = `<main><p>${excerpt}</p></main>`;
+  const encodedSource = Buffer.from(sourceBody.replace('€', '¤'), 'latin1');
+
+  const result = await verifySource({
+    root: fixture.root,
+    slug: fixture.slug,
+    sourceId: 'source-urssaf',
+    excerpt,
+    fetcher: async () => ({
+      ok: true,
+      status: 200,
+      url: fixture.manifest.sources[0].url,
+      headers: {
+        get: (name) => {
+          if (name === 'content-length') return String(encodedSource.byteLength);
+          if (name === 'content-type') return 'text/html; charset=iso-8859-15';
+          return null;
+        },
+      },
+      body: new ReadableStream({ start(controller) { controller.enqueue(encodedSource); controller.close(); } }),
+    }),
+    resolver: async () => [{ address: '93.184.216.34', family: 4 }],
+  });
+
+  const snapshot = readFileSync(join(fixture.root, result.content), 'utf8');
+  assert.equal(snapshot, sourceBody);
+  assert.ok(snapshot.includes(excerpt));
+});
+
 test('verifySource rejette le loopback avant tout appel au fetcher', async () => {
   const fixture = await createCompleteDossier(root('ssrf-loopback'));
   const manifest = readJson(fixture.manifestPath);

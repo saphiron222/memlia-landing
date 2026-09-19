@@ -69,6 +69,7 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
     const fixture = await createCompleteDossier(staging, { slug, heroId });
     copyFile(fixture.articlePath, join(project, 'src/content/blog', `${slug}.md`));
     copyFile(fixture.dossier, join(project, 'editorial/articles', slug));
+    copyFile(join(staging, 'docs/strategy/site-v3/mesures'), join(project, 'docs/strategy/site-v3/mesures'));
     for (const extension of ['avif', 'webp']) {
       copyFile(join(staging, `public/images/${heroId}-768.${extension}`), join(project, `public/images/${heroId}-768.${extension}`));
     }

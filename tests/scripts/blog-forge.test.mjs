@@ -255,6 +255,40 @@ test('la forge refuse un claim dont la citation ne recouvre pas l’affirmation'
   }
 });
 
+test('le contexte d’une source HTML monoligne avec balise inline reste borné et passe le gate', async () => {
+  const root = racineDeTest();
+  try {
+    const r = recette();
+    const phrase = r.claims[0].excerpt;
+    const autresExtraits = r.sources.slice(1).map((source) => `<p>${source.excerpt} dans une phrase de contrôle distincte.</p>`).join('');
+    const contexteAttendu = `Introduction ${phrase} conclusion.`;
+    const pageSurUneLigne = `<html><head><style>${'.carte{color:#231f20}'.repeat(80)}</style></head><body><p>Phrase précédente sans rapport.</p><p>Introduction <a>${phrase}</a> conclusion.</p>${autresExtraits}<p>Phrase suivante sans rapport.</p></body></html>`;
+    const fetcherMonoligne = async () => new Response(pageSurUneLigne, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } });
+    const preparation = await materialiser({
+      root,
+      slug: SLUG,
+      statut: 'a-valider',
+      fetcher: fetcherMonoligne,
+      rendreImage,
+    });
+    assert.deepEqual(preparation.erreurs, []);
+    const claims = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'claims.json'), 'utf8'));
+    const contexte = claims.claims[0].factCheck.sourceResults[0].context;
+    assert.equal(contexte, contexteAttendu);
+    assert.ok(!contexte.includes('.carte'));
+    assert.ok(contexte.length < 300);
+
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(claims.claims[0].id), null, 2));
+    const scellement = await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher: fetcherMonoligne, rendreImage });
+    assert.deepEqual(scellement.erreurs, []);
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.deepEqual(gate.errors, []);
+    assert.equal(gate.pass, true);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('la recette porte sa date de mise à jour jusqu’au frontmatter, et son absence ne l’invente pas', () => {
   const sans = frontmatter(construireManifest(recette(), 'publie', jour, null));
   assert.ok(!/^dateMiseAJour:/m.test(sans), 'aucune date de mise à jour ne doit apparaître sans updatedAt');

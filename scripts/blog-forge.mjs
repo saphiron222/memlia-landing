@@ -25,7 +25,7 @@ import { couleursDuBrief, verifierBriefPalette, verifierParts, SEUILS_PALETTE } 
 import { mesurerPalette } from './mesurer-palette.mjs';
 import {
   BLOG_SKILLS, SEO_SKILLS, CORE_BLOG_SKILLS, CORE_SEO_SKILLS, REVIEW_CRITERIA, CLAIM_TYPES,
-  PUBLICATION_SEAL_PATH, verifierPlafonds, verifySource,
+  PUBLICATION_SEAL_PATH, contexteDeCitation, verifierPlafonds, verifySource,
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
@@ -262,7 +262,7 @@ export function construireClaims({ recette, corps, dossier, sujet, jour }) {
     const pos = v.texte.indexOf(c.excerpt);
     if (pos < 0 || /\r?\n/.test(c.excerpt)) { erreurs.push(`${prefixe} : l'extrait n'est pas une ligne de la copie locale de ${c.sourceId}.`); return; }
     const ligne = v.texte.slice(0, pos).split(/\r?\n/).length;
-    const contexte = v.texte.split(/\r?\n/)[ligne - 1];
+    const contexte = contexteDeCitation(v.texte, c.excerpt);
     const jetonsClaim = jetons(c.claim);
     const jetonsCitation = jetons(c.excerpt);
     const partages = jetonsClaim.filter((t) => jetonsCitation.includes(t));
