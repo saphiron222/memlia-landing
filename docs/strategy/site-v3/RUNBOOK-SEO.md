@@ -88,6 +88,22 @@ La session écrit une ligne de journal (liens entrants par article, sources ouve
 
 **Ce que le volet routes ne fait pas.** Il ne dépose aucune tâche : ses correctifs vivent hors de la forge (une page `.astro`, le glossaire et sa chaîne scellée), et un ticket que le vendredi ne saurait pas traiter serait un ticket qui ment. Les quatre pages surveillées sont `/`, `/automatisation-cabinet-comptable`, `/methode` et `/garanties` ; `/contact` en est exclue par décision (c'est la page de conversion, en sortir dessert), comme les pages légales et `/a-propos`.
 
+## 4 bis. C4 — l'autorité, l'entité et la visibilité IA (le 1er du mois, 7 h 30)
+
+```bash
+node scripts/seo/autorite.mjs relever --budget 0.60
+```
+
+Trois grandeurs distinctes, qu'on ne mélange jamais : **l'autorité** (le profil de liens entrants, DataForSEO), **l'entité** (le moteur sait-il qui nous sommes : réécriture de la marque, rang sur son propre nom, autocomplétion) et **la visibilité IA**. Le relevé s'écrit dans `mesures/mois-<AAAA-MM>-autorite.json` et se compare au mois précédent ; sans mois précédent, aucun recul n'est conclu.
+
+**Ce que ce cron ne mesure pas, et pourquoi c'est écrit dans chaque relevé.** L'interface d'assistant de DataForSEO répond, sur ce compte, **sans recherche web** (`web_search` rendu à `false` quel que soit le paramètre, mesuré le 19/09/2026). Elle ne peut donc pas dire **qui un assistant cite** : le champ `cite` vaut `null` et une exclusion le déclare. Ce qui reste mesurable est **« la marque est-elle nommée »** dans la réponse de mémoire du modèle. Ne jamais lire « 0 citation » comme un résultat tant que `avecRecherche` vaut 0.
+
+**Deux pièges du même jour, à ne pas rejouer.** L'appel exige `model_name` : sans lui l'interface rend `40501` et coûte 0, et le premier câblage enregistrait ce refus en « 0 citation sur 6 requêtes ». Et la réponse porte `items[].sections[].text`, pas `items[].message` : un lecteur qui cherche la mauvaise forme rend « aucune citation » sur des réponses pleines. **Trois zéros creux dans un seul instrument, tous attrapés en regardant la réponse brute.**
+
+**Le coût et son autorisation.** Chaque appel payant passe par la porte de coût du poste. Les mesures IA y sont au-dessus du seuil d'approbation automatique : elles ne s'exécutent que si `--budget` les couvre, et ce dépassement est **écrit dans le relevé** avec le verdict qu'avait rendu la porte. C'est la décision D2 de Kevin du 19/09/2026 (environ 0,40 $ par mois), rendue vérifiable. Relevé réel du 19/09 : **0,0325 $** pour le profil de liens, la page de résultats de la marque et six requêtes d'assistant.
+
+⚠ `autorite.rang` est le **rang de domaine de DataForSEO**, pas l'autorité de domaine de Moz : deux échelles, jamais comparées entre elles. Un relevé se compare au relevé du mois précédent **par le même instrument**.
+
 ## 5. Commit et push d'une session de cron
 
 ```bash

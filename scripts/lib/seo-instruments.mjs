@@ -293,6 +293,33 @@ export async function autocompleterGoogle(requete, { hl = 'fr', gl = 'fr', timeo
   }
 }
 
+/** Un appel DataForSEO quelconque : même authentification, même refus fermé quand les identifiants manquent. */
+export async function dataForSeoPost(chemin, corps, { timeoutMs = 120_000 } = {}) {
+  const login = process.env.DATAFORSEO_LOGIN || process.env.DATAFORSEO_USERNAME;
+  const motDePasse = process.env.DATAFORSEO_PASSWORD;
+  if (!login || !motDePasse) return { ok: false, reponse: null, erreur: 'identifiants DataForSEO absents de l’environnement' };
+  const auth = Buffer.from(`${login}:${motDePasse}`).toString('base64');
+  try {
+    const r = await fetch(`https://api.dataforseo.com/v3/${chemin}`, {
+      method: 'POST',
+      headers: { Authorization: `Basic ${auth}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(corps),
+      signal: AbortSignal.timeout(timeoutMs),
+    });
+    if (!r.ok) return { ok: false, reponse: null, erreur: `HTTP ${r.status}` };
+    return { ok: true, reponse: await r.json(), erreur: null };
+  } catch (e) {
+    return { ok: false, reponse: null, erreur: e?.message ?? String(e) };
+  }
+}
+
+/** Le profil de liens entrants d'un domaine (DataForSEO backlinks summary). */
+export const backlinksDataForSeo = (domaine) => dataForSeoPost('backlinks/summary/live', [{ target: domaine, internal_list_limit: 1, backlinks_status_type: 'live' }]);
+
+/** Ce qu'un assistant répond à une requête, avec ses sources (DataForSEO ChatGPT scraper). */
+export const chatGptDataForSeo = (requete, { locationCode = 2250, languageCode = 'fr', modele = 'gpt-4o-mini' } = {}) =>
+  dataForSeoPost('ai_optimization/chat_gpt/llm_responses/live', [{ user_prompt: requete, model_name: modele, location_code: locationCode, language_code: languageCode, web_search: true }]);
+
 export function porteDeCout(endpoint, count) {
   const r = claudeSeo('dataforseo_costs.py', ['check', endpoint, '--count', String(count)], { timeoutMs: 30_000 });
   const json = analyserSortieJson(r.sortie);

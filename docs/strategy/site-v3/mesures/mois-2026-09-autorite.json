@@ -1,0 +1,116 @@
+{
+  "mois": "2026-09",
+  "jour": "2026-09-19",
+  "autorite": {
+    "instrument": "dataforseo-backlinks-summary",
+    "domaine": "memlia.fr",
+    "rang": 0,
+    "liens": 6,
+    "domainesReferents": 6,
+    "domainesPrincipaux": 6,
+    "liensCasses": 0,
+    "erreur": null
+  },
+  "entite": {
+    "spell": {
+      "mot": "mellia",
+      "type": "showing_results_for"
+    },
+    "rangMarque": null,
+    "suggestions": 0,
+    "erreur": null
+  },
+  "ia": {
+    "requetes": 6,
+    "avecRecherche": 0,
+    "citations": 0,
+    "nomme": 0,
+    "detail": [
+      {
+        "requete": "automatisation cabinet comptable",
+        "rechercheWeb": false,
+        "cite": null,
+        "nomme": false,
+        "domainesCites": []
+      },
+      {
+        "requete": "ia expert comptable",
+        "rechercheWeb": false,
+        "cite": null,
+        "nomme": false,
+        "domainesCites": []
+      },
+      {
+        "requete": "manuel de procédures cabinet expertise comptable",
+        "rechercheWeb": false,
+        "cite": null,
+        "nomme": false,
+        "domainesCites": []
+      },
+      {
+        "requete": "crm dsn",
+        "rechercheWeb": false,
+        "cite": null,
+        "nomme": false,
+        "domainesCites": []
+      },
+      {
+        "requete": "automatisation saisie comptable",
+        "rechercheWeb": false,
+        "cite": null,
+        "nomme": false,
+        "domainesCites": []
+      },
+      {
+        "requete": "cabinet comptable surcharge de travail",
+        "rechercheWeb": false,
+        "cite": null,
+        "nomme": false,
+        "domainesCites": []
+      }
+    ],
+    "erreur": null
+  },
+  "depenses": {
+    "total": 0.0325,
+    "parEndpoint": {
+      "backlinks_summary": 0.024,
+      "serp_organic_live_advanced": 0.0035,
+      "ai_optimization_chat_gpt_scraper": 0.005
+    }
+  },
+  "budget": 0.6,
+  "portes": {
+    "liens": {
+      "ok": true,
+      "porte": "approved",
+      "couvertPar": "porte"
+    },
+    "serp": {
+      "ok": true,
+      "porte": "approved",
+      "couvertPar": "porte"
+    }
+  },
+  "exclusions": [
+    "citations IA non mesurées : l'interface a répondu sans recherche web sur les 6 requêtes (relevé du 19/09/2026 : web_search rendu à false quel que soit le paramètre) ; seul « la marque est nommée » est mesuré"
+  ],
+  "rouges": [],
+  "avertissements": [
+    {
+      "code": "marque-reecrite",
+      "motif": "le moteur réécrit la marque ; c'est attendu tant que l'entité est jeune",
+      "mesure": "« mellia »"
+    },
+    {
+      "code": "citations-ia-non-mesurees",
+      "motif": "le modèle a répondu sans recherche web : les citations ne sont pas mesurées ce mois-ci",
+      "mesure": "6 requêtes, 0 avec recherche"
+    }
+  ],
+  "infos": [
+    "Aucun mois précédent au registre : aucun recul n'est conclu, ce relevé pose le point de départ.",
+    "La marque est nommée dans 0 réponse(s) sur 6, de mémoire du modèle et sans source.",
+    "L'autocomplétion ne propose rien sur la marque : elle est sous le seuil de volume, ce qui est attendu pour une marque jeune."
+  ]
+}

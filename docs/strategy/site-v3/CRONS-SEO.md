@@ -78,6 +78,8 @@ Avant la forge, pour que le lundi commence par ce que Google a montré la semain
 - **Coût.** Environ 0,40 $ par mois.
 - **N'est pas mesuré.** La qualité d'une mention, le trafic réel des assistants IA (la plupart arrivent sans référent).
 
+**Construit et joué le 19/09/2026** (décision D2 accordée par Kevin) : `scripts/seo/autorite.mjs`, règles pures dans `scripts/lib/seo-autorite.mjs`, relevé dans `mesures/mois-<AAAA-MM>-autorite.json`, mode opératoire dans [RUNBOOK-SEO.md](RUNBOOK-SEO.md) §4 bis. Premier relevé : 6 domaines référents, marque toujours réécrite en « mellia », 0,0325 $. **Révision du périmètre annoncé ici** : les citations d'assistants ne sont **pas** mesurables sur ce compte, l'interface répond sans recherche web ; seul « la marque est nommée » l'est, et chaque relevé écrit l'exclusion.
+
 ### C5 — Décroissance et cannibalisation · mensuel, armé en décembre 2026 (M+3)
 
 Inutile avant qu'il y ait du trafic à perdre ; C2 accumule d'ici là la série dont C5 a besoin.
