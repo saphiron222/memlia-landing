@@ -1,10 +1,20 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { lireBacklinks, lireCitationsIa, detecterAutorite, SEUILS_AUTORITE } from '../../scripts/lib/seo-autorite.mjs';
-import { dateParis } from '../../scripts/seo/autorite.mjs';
+import * as autoriteScript from '../../scripts/seo/autorite.mjs';
 
 test('dateParis attribue un relevé après minuit à la date civile de Paris', () => {
-  assert.equal(dateParis(new Date('2026-09-19T23:30:00.000Z')), '2026-09-20');
+  assert.equal(autoriteScript.dateParis(new Date('2026-09-19T23:30:00.000Z')), '2026-09-20');
+});
+
+test('le repère Paris garde le mois, le jour, le libellé et le chemin cohérents au changement de mois', () => {
+  assert.equal(typeof autoriteScript.repereParis, 'function', 'repereParis doit être exporté');
+  assert.deepEqual(autoriteScript.repereParis(new Date('2026-09-30T22:30:00.000Z')), {
+    mois: '2026-10',
+    jour: '2026-10-01',
+    jourFrancais: '01/10/2026',
+    chemin: 'docs/strategy/site-v3/mesures/mois-2026-10-autorite.json',
+  });
 });
 
 test('lireBacklinks sépare une réponse utile de son coût et nomme une tâche refusée', () => {
