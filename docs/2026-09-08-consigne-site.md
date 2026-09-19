@@ -1,5 +1,18 @@
 # Consigne — refonte de memlia.fr (posée le 08/09/2026)
 
+> **Lecture au 19/09/2026 — la refonte est faite, le site est en ligne.** Ce document reste utile pour
+> ce qu'il fixe une fois pour toutes ; il ne décrit plus un chantier à mener.
+>
+> **Ce qui reste vrai** : les références visuelles et la règle « on reproduit la structure et le langage
+> visuel, on recode tout de zéro », les interdits de copie (HTML, CSS, JS, images, textes, logos,
+> marques d'autrui), la livraison par prévisualisation et la vérification avant mise en ligne.
+>
+> **Ce qui est périmé** : « HTML statique aujourd'hui » (le site est en Astro depuis le 16/09) ; et
+> surtout **le copy n'est plus adossé au positionnement d'un tiers** — la charte
+> `.agents/product-marketing.md` (v3 du 17/09, §2 bis du 19/09) fait seule foi sur le message, l'angle,
+> la voix, le vocabulaire et les interdits, pour toute surface publique. En cas de désaccord entre ce
+> document et la charte, **la charte gagne**.
+
 Tu es un worker Hermes sur UNE carte du chantier « nouveau site ». Dépôt : `~/dev/interne/memlia-landing` (HTML statique aujourd'hui,
 Cloudflare Pages, `wrangler` connecté). Le site final vit dans le même dépôt, en **Astro** (content collections pour le blog).
 

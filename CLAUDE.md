@@ -81,4 +81,5 @@ modules produit : bulletin, DSN, portefeuille, pôle social, collaborateur, éca
 ### Consigne de chantier
 
 Avant toute refonte ou ajout de page, lire `docs/2026-09-08-consigne-site.md` : références visuelles,
-interdits, livraison par prévisualisation.
+interdits de copie, livraison par prévisualisation. ⚠ Son volet **copy** est périmé depuis le 17/09 :
+la charte `.agents/product-marketing.md` fait seule foi sur le message, et gagne en cas de désaccord.
