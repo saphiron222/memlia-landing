@@ -261,3 +261,42 @@ test('la forge refuse de matérialiser un article nouveau sans sa règle écrite
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+test('la palette : le brief d’un article nouveau doit épingler ses couleurs, et l’image doit les porter', async () => {
+  const root = racineDeTest();
+  try {
+    const source = join(root, 'editorial/recettes', SLUG, 'image-source.png');
+    // Une image crème et verte, sans le moindre graphite : exactement la dette mesurée le 18/09/2026.
+    await sharp({ create: { width: 640, height: 360, channels: 3, background: '#fcfbf7' } })
+      .composite([{ input: await sharp({ create: { width: 320, height: 180, channels: 3, background: '#27b657' } }).png().toBuffer(), left: 40, top: 40 }])
+      .png().toFile(source);
+    const r = recette();
+    r.date = '2026-09-20';
+    r.image.source = { path: 'image-source.png', generationId: 'test-1', model: 'gpt_image_2_5', provider: 'higgsfield', generatedAt: r.date, credits: 3 };
+    r.image.brief = { sujet: 'Sujet de test.', composition: 'Composition de test.', style: 'Style de test.', palette: 'Vert Memlia #27b657 dominant, crème #fcfbf7, touches de graphite #231f20.', interdits: 'Texte lisible.', prompt: 'Prompt de test.' };
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r, null, 2));
+    const refus = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
+    assert.ok(refus.erreurs.some((e) => /#231f20/.test(e) && /plancher/.test(e)), refus.erreurs.join('\n'));
+    const revue = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'preuves/image/visual-review.json'), 'utf8'));
+    assert.equal(revue.palette.statut, 'FAIL');
+    assert.ok(revue.palette.parts['#27b657'] > 0.2, 'le vert du carré est bien mesuré');
+
+    // Le même défaut sur un article antérieur au 19/09 : enregistré en dette, il ne bloque pas.
+    r.date = '2026-09-15';
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r, null, 2));
+    const dette = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
+    assert.deepEqual(dette.erreurs, []);
+    const revueDette = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'preuves/image/visual-review.json'), 'utf8'));
+    assert.equal(revueDette.palette.statut, 'DETTE');
+    assert.ok(revueDette.palette.ecarts.some((e) => /#231f20/.test(e)));
+
+    // Un brief qui nomme une couleur sans son hex est refusé avant même de regarder l'image.
+    r.date = '2026-09-20';
+    r.image.brief.palette = 'Vert Memlia #27b657 dominant, crème #fcfbf7, touches de graphite.';
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r, null, 2));
+    const flou = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
+    assert.ok(flou.erreurs.some((e) => /graphite/.test(e) && /hex/.test(e)), flou.erreurs.join('\n'));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});

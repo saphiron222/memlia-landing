@@ -21,6 +21,8 @@ import { dirname, join, relative, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 import sharp from 'sharp';
+import { couleursDuBrief, verifierBriefPalette, verifierParts, SEUILS_PALETTE } from './lib/palette.mjs';
+import { mesurerPalette } from './mesurer-palette.mjs';
 import {
   BLOG_SKILLS, SEO_SKILLS, CORE_BLOG_SKILLS, CORE_SEO_SKILLS, REVIEW_CRITERIA, CLAIM_TYPES,
   PUBLICATION_SEAL_PATH, verifierPlafonds, verifySource,
@@ -395,6 +397,28 @@ async function materialiserImage({ root, recette, dossier, sujet, jour, revues, 
   }
   const revueImage = revues?.image;
   const brief = recette.image.brief;
+  // La palette se MESURE (leçon du 18/09/2026 : la revue image ne la mesurait pas). Le brief d'un
+  // article daté à partir du 19/09 doit épingler ses couleurs par leur hex, et l'image doit les
+  // porter ; avant cette date, l'écart est enregistré en dette, il ne bloque pas une republication.
+  const erreursImage = [];
+  let palette = null;
+  if (generee) {
+    const couleurs = couleursDuBrief(brief?.palette);
+    const defautsBrief = verifierBriefPalette(brief?.palette);
+    const mesure = couleurs.length ? await mesurerPalette(master, couleurs.map((c) => c.hex)) : null;
+    const manques = mesure ? verifierParts(couleurs, mesure.parts) : [];
+    const exigee = String(recette.date ?? '') >= DEBUT_REGLE_ECRITE;
+    palette = {
+      epinglee: couleurs,
+      tolerance: mesure?.tolerance ?? null,
+      pixelsMesures: mesure?.pixels ?? null,
+      parts: mesure?.parts ?? null,
+      seuils: SEUILS_PALETTE,
+      statut: defautsBrief.length + manques.length === 0 ? 'PASS' : (exigee ? 'FAIL' : 'DETTE'),
+      ecarts: [...defautsBrief, ...manques],
+    };
+    if (exigee) erreursImage.push(...defautsBrief, ...manques);
+  }
   ecrireJson(join(imageDir, 'prompt.json'), artefact(sujet, 'image-prompt', jour, generee
     ? { engine: 'image_generate', prompt: brief.prompt, brief: { sujet: brief.sujet, composition: brief.composition, style: brief.style, palette: brief.palette, interdits: brief.interdits, alt: recette.image.alt }, reviewCriteria: brief.reviewCriteria }
     : { engine: 'image_generate', prompt: `Cadre de preuve HTML (editorial/templates/cadre-article.html) rendu à 1920×1080 : « ${recette.image.cadre.titre} » — ${recette.image.cadre.sousTitre}. Trois colonnes : ${recette.image.cadre.colonnes.map((c) => c.titre).join(' / ')}. Jeu fictif, aucune donnée client, aucun texte hors charte.` }));
@@ -403,6 +427,7 @@ async function materialiserImage({ root, recette, dossier, sujet, jour, revues, 
     : { engine: 'image_generate', generationId: `cadre-${empreinteCadre.slice(0, 24)}`, outputSha256: sha256(readFileSync(master)), renderer: 'playwright-chromium 1920x1080' }));
   ecrireJson(join(imageDir, 'visual-review.json'), artefact(sujet, 'image-visual-review', jour, {
     status: revueImage ? 'PASS' : 'FAIL',
+    palette,
     criteria: IMAGE_REVIEW_CRITERIA.map((id) => ({ id, result: revueImage?.criteria?.[id]?.result ?? 'FAIL', observations: revueImage?.criteria?.[id]?.observations ?? ['Revue image non exécutée.'] })),
   }));
   ecrireJson(join(dossier, 'image.json'), {
@@ -413,7 +438,9 @@ async function materialiserImage({ root, recette, dossier, sujet, jour, revues, 
     variants: [{ path: 'preuves/image/hero-768.avif', width: 768, height: 432, format: 'avif' }, { path: 'preuves/image/hero-768.webp', width: 768, height: 432, format: 'webp' }],
     alt: recette.image.alt, score: revueImage ? 100 : null, directionArt: revueImage?.directionArt ?? null, semanticRelevance: revueImage?.semanticRelevance ?? null,
     p0: revueImage ? [] : ['Revue image non exécutée'], kevinApproved: true,
+    palette: palette ? { statut: palette.statut, parts: palette.parts, ecarts: palette.ecarts } : null,
   });
+  return erreursImage;
 }
 
 /** Déclare le hero dans src/data/images.mjs (entrée + liste des visuels livrés), sans toucher au reste. */
@@ -572,7 +599,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
     })),
   }));
 
-  await materialiserImage({ root, recette, dossier, sujet, jour, revues, rendreImage });
+  erreurs.push(...(await materialiserImage({ root, recette, dossier, sujet, jour, revues, rendreImage })));
   declarerImage(root, recette.image.heroId, recette.image.alt);
   const briefStrategie = existsSync(join(root, 'docs/strategy/site-v3/cluster-briefs')) ? readdirSync(join(root, 'docs/strategy/site-v3/cluster-briefs')).find((f) => f.endsWith(`-${slug}.md`)) : null;
   writeFileSync(join(dossier, 'brief.md'), briefStrategie ? readFileSync(join(root, 'docs/strategy/site-v3/cluster-briefs', briefStrategie), 'utf8') : `# Brief — ${recette.title}\n\nRequête primaire : ${recette.primaryQuery}\nTâche : ${recette.task}\n`);

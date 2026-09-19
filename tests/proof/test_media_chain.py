@@ -20,6 +20,10 @@ class MediaChainProof(unittest.TestCase):
         for entry in entries:
             with self.subTest(target=entry['target']):
                 path = ROOT / entry['target']
+                # Un champ que personne ne lit pourrit en silence : le 18/09/2026, douze sources
+                # de dérivés pointaient sur des fichiers qui n'ont jamais existé à cet endroit.
+                source = ROOT / entry['source'].split('#')[0]
+                self.assertTrue(source.exists(), f"source introuvable pour {entry['target']} : {entry['source']}")
                 self.assertEqual(path.stat().st_size, entry['bytes'])
                 self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), entry['sha256'])
                 if entry['target'].startswith('public/'):
