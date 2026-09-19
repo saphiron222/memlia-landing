@@ -16,7 +16,7 @@
       "mot": "mellia",
       "type": "showing_results_for"
     },
-    "rangMarque": 21,
+    "rangMarque": null,
     "suggestions": 0,
     "erreur": null
   },
@@ -29,13 +29,19 @@
     "erreur": null
   },
   "audience": {
-    "ok": false,
-    "erreur": "CLOUDFLARE_ANALYTICS_TOKEN absent de l’environnement",
-    "visites": null,
-    "directes": null,
+    "ok": true,
+    "erreur": null,
+    "chargements": 1890,
+    "directes": 1460,
+    "internes": 420,
+    "externes": [
+      {
+        "hote": "bing.com",
+        "visites": 10
+      }
+    ],
     "assistants": [],
-    "visitesAssistants": null,
-    "hotes": []
+    "visitesAssistants": 0
   },
   "depenses": {
     "total": 0.0275,
@@ -44,7 +50,7 @@
       "serp_organic_live_advanced": 0.0035
     }
   },
-  "budget": 0,
+  "budget": 0.1,
   "portes": {
     "liens": {
       "ok": true,
@@ -58,8 +64,7 @@
     }
   },
   "exclusions": [
-    "visibilité IA non relevée : désactivée par option",
-    "référents d'audience non relevés : CLOUDFLARE_ANALYTICS_TOKEN absent de l’environnement"
+    "visibilité IA non relevée : désactivée par option"
   ],
   "rouges": [],
   "avertissements": [
@@ -72,11 +77,6 @@
       "code": "visibilite-ia-non-mesuree",
       "motif": "aucune requête n'a abouti : la visibilité IA n'est pas mesurée ce mois-ci",
       "mesure": "0 refus"
-    },
-    {
-      "code": "marque-hors-premiere-page",
-      "motif": "le site n'est pas en première page sur son propre nom",
-      "mesure": "rang 21"
     }
   ],
   "infos": [
