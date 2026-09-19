@@ -98,8 +98,15 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
         maxBuffer: 10 * 1024 * 1024,
       });
     };
-    const deadBranch = blogSource.replace('{articles.map(', '{false && articles.map(');
-    assert.notEqual(deadBranch, blogSource, 'la fixture doit placer la boucle réelle dans une branche morte');
+    // La page /blog émet le lien entrant par deux endroits depuis l’épinglage du pilier : l’article mis en
+    // avant et la liste décroissante. Les deux sont neutralisés, et chaque ancre est exigée présente —
+    // sinon ce témoin resterait vert en ne neutralisant plus rien.
+    const EMETTEURS_DE_LIEN = ['{pilier && (', '{suite.map('];
+    const deadBranch = EMETTEURS_DE_LIEN.reduce((source, ancre) => {
+      assert.ok(source.includes(ancre), `la page /blog n’émet plus de lien par ${ancre} : l’oracle de ce témoin doit suivre la page`);
+      return source.replaceAll(ancre, `{false && ${ancre.slice(1)}`);
+    }, blogSource);
+    assert.notEqual(deadBranch, blogSource, 'la fixture doit placer les boucles réelles dans une branche morte');
     writeFileSync(blogPath, deadBranch);
     const deadBranchGate = runGate();
     assert.equal(deadBranchGate.status, 1, 'une boucle présente dans le source mais absente du rendu ne doit pas être créditée');

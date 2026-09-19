@@ -106,7 +106,7 @@ for (const adapter of ['H', 'A', 'T', 'G', 'M']) {
     const report = validateResourceManifest(manifest, { root });
     assert.equal(report.pass, true, report.errors.join('\n'));
     assert.equal(report.formatAdapter, adapter);
-    assert.deepEqual(report.counts, { blogSkills: 31, seoSkills: 24, coreSkills: 19, gates: 7, renderedUnits: 1, claims: 1, citations: 1, sources: 1 });
+    assert.deepEqual(report.counts, { blogSkills: 31, seoSkills: 24, coreSkills: 19, gates: 7, renderedUnits: 1, claims: 1, citations: 1, sources: 1, sensitiveVerdictsReportes: 0 });
   }));
 }
 
@@ -575,4 +575,59 @@ test('le lien manifeste vers le build contrôle le chemin, les octets, le hash e
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+// Une campagne de revue date les couples qu’elle juge ; les autres gardent leur propre date, jusqu’à leur validité.
+const withDatedFixture = (options, run) => {
+  const root = mkdtempSync(join(tmpdir(), 'memlia-resource-date-'));
+  try {
+    return run(createResourceFixture(root, 'A', 'release', options), root);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+};
+
+test('une revue métier ne rouvre que ce qu’elle juge, date chaque verdict et compte ce qu’elle reporte', () => {
+  withDatedFixture({}, (nominal, root) => {
+    const report = validateResourceManifest(nominal, { root });
+    assert.equal(report.pass, true, report.errors.join(' | '));
+    assert.equal(report.counts.sensitiveVerdictsReportes, 0);
+  });
+
+  // Le cœur : une campagne du 13/09 ne déclare pas périmé un couple qu’elle ne rouvre pas.
+  withDatedFixture({ sensitiveVerdictDay: '2026-08-20' }, (reporte, root) => {
+    const report = validateResourceManifest(reporte, { root });
+    assert.ok(!hasError(report.errors, 'contrôle périmé'), report.errors.join(' | '));
+    assert.ok(!hasError(report.errors, 'copie source périmée'), report.errors.join(' | '));
+    assert.equal(report.pass, true, report.errors.join(' | '));
+    assert.equal(report.counts.sensitiveVerdictsReportes, 1);
+  });
+
+  // Le contrepoids : passé sa validité, le couple doit être rouvert ; le report n’est pas une dispense.
+  withDatedFixture({ sensitiveVerdictDay: '2026-01-10' }, (perime, root) => {
+    assert.ok(hasError(validateResourceManifest(perime, { root }).errors, 'hors de validité'));
+  });
+
+  // La cohérence par couple survit : un claim daté d’un autre jour que SON verdict reste refusé.
+  withDatedFixture({ sensitiveVerdictDay: '2026-08-20' }, (reporte, root) => {
+    const claimHorsVerdict = clone(reporte);
+    claimHorsVerdict.claimsEvidence.claims[0].checkedAt = '2026-08-19T10:00:00+01:00';
+    assert.ok(hasError(errorsFor(claimHorsVerdict, root), 'contrôle périmé'));
+  });
+
+  // La fenêtre de 24 heures se mesure sur le verdict qui juge, pas sur la campagne : 23 heures avant son
+  // verdict, la copie source passe, alors qu’elle précède la campagne de 24 jours.
+  withDatedFixture({ sensitiveVerdictDay: '2026-08-20' }, (reporte, root) => {
+    const veilleDuVerdict = clone(reporte);
+    veilleDuVerdict.claimsEvidence.sources[0].checkedAt = '2026-08-20T00:00:00+14:00';
+    assert.ok(!hasError(errorsFor(veilleDuVerdict, root), 'plus de 24 heures'));
+  });
+
+  // Et elle reste fermante : la même copie source, jugée treize heures plus tard, dépasse la fenêtre.
+  withDatedFixture({ sensitiveVerdictDay: '2026-08-20' }, (reporte, root) => {
+    const sourceTropTot = clone(reporte);
+    sourceTropTot.claimsEvidence.sources[0].checkedAt = '2026-08-20T00:00:00+14:00';
+    sourceTropTot.claimsEvidence.sensitiveMatter.businessReview.claimSourceVerdicts[0].checkedAt = '2026-08-20T23:30:00+01:00';
+    assert.ok(hasError(errorsFor(sourceTropTot, root), 'plus de 24 heures'));
+  });
 });

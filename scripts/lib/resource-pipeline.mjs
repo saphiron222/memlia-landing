@@ -41,6 +41,9 @@ const SENSITIVE_TYPES = new Set(['paie', 'social', 'dsn', 'fiscal', 'juridique',
 const SHA256 = /^[a-f0-9]{64}$/;
 const KANBAN_TASK_ID = /^t_[a-f0-9]{8}$/;
 const REVIEW_FRESHNESS_MS = 24 * 60 * 60 * 1000;
+// Une revue juge des couples claim/source et les date. Passé cette validité, le couple doit être rouvert :
+// sans elle, reporter un verdict deviendrait le moyen de ne plus jamais revérifier.
+const VERDICT_VALIDITY_MS = 183 * 24 * 60 * 60 * 1000;
 const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
 const ISO_TIMESTAMP = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?(?:Z|([+-])(\d{2}):(\d{2}))$/;
 const hasText = (value, minimum = 1) => typeof value === 'string' && value.trim().length >= minimum;
@@ -257,6 +260,8 @@ function validateClaims(manifest, phase, errors) {
     if (!bundleEntry || bundleEntry.sha256 !== source.contentSha256) errors.push(`Source ${source.id} : copie source hors du bundle d’intégrité ou hash divergent.`);
   }
   const sensitiveClaims = [...claims.values()].filter((claim) => SENSITIVE_TYPES.has(claim.type));
+  // Corollaire maison : un contrôle qui accepte un report doit compter ce qu’il reporte, et l’afficher.
+  let sensitiveVerdictsReportes = 0;
   const sensitive = evidence.sensitiveMatter;
   const renderedText = [...units.values(), ...claims.values()].map((row) => row.text ?? '').join(' ');
   const candidateSignals = [manifest.candidate?.title, manifest.candidate?.summary, manifest.candidate?.task, manifest.candidate?.primaryQuery, ...(manifest.candidate?.secondaryQueries ?? []), manifest.candidate?.primaryRole, ...(manifest.candidate?.secondaryRoles ?? []), manifest.candidate?.cluster, renderedText].join(' ').toLocaleLowerCase('fr');
@@ -284,19 +289,32 @@ function validateClaims(manifest, phase, errors) {
     const claimsRequiringSensitiveReview = sensitiveClaims.length > 0 ? sensitiveClaims : [...claims.values()];
     const verdicts = Array.isArray(review?.claimSourceVerdicts) ? review.claimSourceVerdicts : [];
     const verdictKeys = new Set();
+    const jourDeCampagne = typeof sensitive?.checkedAt === 'string' ? sensitive.checkedAt.slice(0, 10) : null;
     for (const claim of claimsRequiringSensitiveReview) {
+      // La date de référence d’un claim sensible est celle du verdict qui le juge, jamais celle de la campagne :
+      // une revue qui ajoute des termes prouve ces termes, elle ne redate pas ceux qu’elle ne rouvre pas.
+      const claimVerdicts = (claim.sourceIds ?? [])
+        .map((sourceId) => verdicts.filter((row) => row?.claimId === claim.id && row?.sourceId === sourceId))
+        .filter((rows) => rows.length === 1)
+        .map((rows) => rows[0]);
+      const joursDuJugement = new Set(claimVerdicts.map((row) => String(row?.checkedAt ?? '').slice(0, 10)));
+      if (joursDuJugement.size > 1) errors.push(`Claim sensible ${claim.id} : ses verdicts IA portent des jours différents, il n’a pas de date de jugement unique.`);
+      const jourDuJugement = joursDuJugement.size === 1 ? [...joursDuJugement][0] : null;
+      const datesDuJugement = claimVerdicts.map((row) => timestamp(row?.checkedAt)).filter((value) => value !== null);
+      const dateDuJugement = datesDuJugement.length === claimVerdicts.length && datesDuJugement.length > 0 ? Math.max(...datesDuJugement) : null;
+      const jugementDate = jourDuJugement !== null && dateDuJugement !== null;
+      if (jugementDate && reviewCheckedAt !== null) {
+        if (dateDuJugement > reviewCheckedAt) errors.push(`Claim sensible ${claim.id} : son verdict IA est postérieur à la campagne de revue.`);
+        if (reviewCheckedAt - dateDuJugement > VERDICT_VALIDITY_MS) errors.push(`Claim sensible ${claim.id} : verdict IA hors de validité (plus de ${Math.round(VERDICT_VALIDITY_MS / 86400000)} jours), la source doit être rouverte.`);
+        if (jourDuJugement !== jourDeCampagne) sensitiveVerdictsReportes += 1;
+      }
       const claimCheckedAt = timestamp(claim.checkedAt);
-      if (claimCheckedAt === null || reviewCheckedAt === null || claim.checkedAt.slice(0, 10) !== sensitive.checkedAt.slice(0, 10) || claimCheckedAt > reviewCheckedAt) {
+      if (claimCheckedAt === null || !jugementDate || claim.checkedAt.slice(0, 10) !== jourDuJugement || claimCheckedAt > dateDuJugement) {
         errors.push(`Claim sensible ${claim.id} : contrôle périmé, invalide ou postérieur à la revue métier.`);
       }
       for (const sourceId of claim.sourceIds ?? []) {
         const source = sources.get(sourceId);
         if (!source?.official || source.provenance !== 'primary' || !['tier-1', 'tier-2', 'tier-3'].includes(source.level)) errors.push(`Claim sensible ${claim.id} : une source primaire officielle tier-1 à tier-3 est requise.`);
-        const sourceCheckedAt = timestamp(source?.checkedAt);
-        if (sourceCheckedAt === null || reviewCheckedAt === null || source.checkedAt.slice(0, 10) !== sensitive.checkedAt.slice(0, 10) || sourceCheckedAt > reviewCheckedAt) {
-          errors.push(`Claim sensible ${claim.id} : copie source périmée, invalide ou postérieure à la revue métier.`);
-        }
-        if (sourceCheckedAt !== null && reviewCheckedAt !== null && reviewCheckedAt - sourceCheckedAt > REVIEW_FRESHNESS_MS) errors.push(`Claim sensible ${claim.id} : copie source consultée plus de 24 heures avant la revue métier.`);
         const matchingVerdicts = verdicts.filter((row) => row?.claimId === claim.id && row?.sourceId === sourceId);
         if (matchingVerdicts.length !== 1) {
           errors.push(`Claim sensible ${claim.id} : verdict IA claim/source traçable absent ou dupliqué.`);
@@ -304,15 +322,19 @@ function validateClaims(manifest, phase, errors) {
         }
         const verdict = matchingVerdicts[0];
         verdictKeys.add(`${claim.id}/${sourceId}`);
-        const expectedCitationIds = (claim.citationIds ?? []).filter((citationId) => citations.get(citationId)?.sourceId === sourceId).sort();
         const verdictCheckedAt = timestamp(verdict.checkedAt);
+        const sourceCheckedAt = timestamp(source?.checkedAt);
+        if (sourceCheckedAt === null || verdictCheckedAt === null || source.checkedAt.slice(0, 10) !== verdict.checkedAt.slice(0, 10) || sourceCheckedAt > verdictCheckedAt) {
+          errors.push(`Claim sensible ${claim.id} : copie source périmée, invalide ou postérieure à la revue métier.`);
+        }
+        if (sourceCheckedAt !== null && verdictCheckedAt !== null && verdictCheckedAt - sourceCheckedAt > REVIEW_FRESHNESS_MS) errors.push(`Claim sensible ${claim.id} : copie source consultée plus de 24 heures avant la revue métier.`);
+        const expectedCitationIds = (claim.citationIds ?? []).filter((citationId) => citations.get(citationId)?.sourceId === sourceId).sort();
         if (verdict.verdict !== 'soutient'
           || !sameArray([...(verdict.citationIds ?? [])].sort(), expectedCitationIds)
           || expectedCitationIds.length === 0
           || verdict.sourceContentSha256 !== source?.contentSha256
           || verdictCheckedAt === null
           || reviewCheckedAt === null
-          || verdict.checkedAt.slice(0, 10) !== sensitive.checkedAt.slice(0, 10)
           || verdictCheckedAt > reviewCheckedAt
           || !hasText(verdict.reasoning, 12)) {
           errors.push(`Claim sensible ${claim.id} : verdict IA claim/source non traçable, non soutenant ou périmé.`);
@@ -341,7 +363,7 @@ function validateClaims(manifest, phase, errors) {
     };
     if (!evidence || canonicalJson(evidence) !== canonicalJson(expectedEvidence)) errors.push('La preuve de revue IA est absente, illisible, de hash divergent ou ne retrace pas le verdict exact.');
   }
-  return { units, claims, citations, sources };
+  return { units, claims, citations, sources, sensitiveVerdictsReportes };
 }
 
 function validateSkills(manifest, errors) {
@@ -651,6 +673,7 @@ function validateResourceManifestUnsafe(input, { root = process.cwd(), phase = '
       claims: relations.claims.size,
       citations: relations.citations.size,
       sources: relations.sources.size,
+      sensitiveVerdictsReportes: relations.sensitiveVerdictsReportes ?? 0,
     },
     errors,
   };

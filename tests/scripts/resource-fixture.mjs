@@ -68,7 +68,12 @@ function formatContract(adapter) {
   return { ...common, artifactPolicy: 'Fichier fictif contrôlé.', typeIndexMinimumSubstantiveUnits: 5, downloadPolicy: 'Accès ouvert sans capture email.', imagePolicy: 'Aperçu réel seulement.', download: { path: 'fixtures/model.xlsx', publicUrl: '/modeles/fixture.xlsx', mediaType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', version: '1', sha256: null, bytes: null, license: 'usage interne autorisé', testEvidenceRef: 'fixture://model/test', containsMacros: false, containsExternalLinks: false, containsRealClientData: false, containsPersonalMetadata: false }, oracle: { commonCase: 'PASS', invalidCases: 'PASS', limits: 'PASS', formulas: 'PASS', errors: 'PASS', independentEvidenceRef: 'fixture://model/oracle' }, openAccess: true };
 }
 
-export function createResourceFixture(root, adapter = 'H', phase = 'release') {
+export function createResourceFixture(root, adapter = 'H', phase = 'release', options = {}) {
+  // Un couple claim/source/verdict peut être daté d’un jour antérieur : c’est le cas réel d’une revue
+  // qui ajoute des termes sans rouvrir ceux qu’elle ne juge pas. La campagne, elle, garde sa date.
+  const jourSensible = options.sensitiveVerdictDay ?? null;
+  const dateClaimSensible = jourSensible ? `${jourSensible}T10:00:00+01:00` : '2026-09-13T21:30:00+01:00';
+  const dateSourceSensible = jourSensible ? `${jourSensible}T09:00:00+01:00` : '2026-09-13T21:30:00+01:00';
   if (!['qa', 'preview', 'approval', 'release'].includes(phase)) throw new Error(`Phase fixture inconnue : ${phase}.`);
   const manifest = clone(BASE);
   manifest.contractRevision = 3;
@@ -134,17 +139,17 @@ export function createResourceFixture(root, adapter = 'H', phase = 'release') {
   manifest.claimsEvidence.renderedUnitInventory = [{ id: 'unit-1', text: unitText, sha256: sha256(unitText), claimIds: ['claim-1'] }];
   manifest.claimsEvidence.claims = [{
     id: 'claim-1', unitId: 'unit-1', text: claimText, sha256: sha256(claimText), type: 'juridique',
-    sourceIds: ['source-1'], citationIds: ['citation-1'], checkedAt: '2026-09-13T21:30:00+01:00', status: 'PASS',
+    sourceIds: ['source-1'], citationIds: ['citation-1'], checkedAt: dateClaimSensible, status: 'PASS',
     applicability: {
       population: 'Entreprises françaises concernées par la règle juridique fictive.',
       regime: 'Régime juridique fictif décrit par la source primaire de la fixture.',
-      validAsOf: '2026-09-13',
+      validAsOf: jourSensible ?? '2026-09-13',
       exceptions: 'Les situations hors du régime fictif restent exclues du claim.',
       sourceIds: ['source-1'],
     },
   }];
-  manifest.claimsEvidence.citations = [{ id: 'citation-1', claimIds: ['claim-1'], sourceId: 'source-1', text: sourceText, sha256: sha256(sourceText), sourceContentSha256: sha256(sourceText), finalUrl: 'https://www.service-public.fr/fixture', checkedAt: '2026-09-13T21:30:00+01:00', title: 'Source fixture', locator: 'ligne 1', verdict: 'soutient' }];
-  manifest.claimsEvidence.sources = [{ id: 'source-1', publisher: 'Service Public', title: 'Source fixture', requestedUrl: 'https://www.service-public.fr/fixture', finalUrl: 'https://www.service-public.fr/fixture', checkedAt: '2026-09-13T21:30:00+01:00', level: 'tier-1', provenance: 'primary', official: true, upstreamUrl: 'https://www.service-public.fr/fixture', snapshotPath: 'fixtures/source.md', contentSha256: sha256(sourceText), verificationEvidenceRef: 'fixture://source/open', classificationEvidenceRef: 'fixture://source/classification', claimIds: ['claim-1'] }];
+  manifest.claimsEvidence.citations = [{ id: 'citation-1', claimIds: ['claim-1'], sourceId: 'source-1', text: sourceText, sha256: sha256(sourceText), sourceContentSha256: sha256(sourceText), finalUrl: 'https://www.service-public.fr/fixture', checkedAt: dateClaimSensible, title: 'Source fixture', locator: 'ligne 1', verdict: 'soutient' }];
+  manifest.claimsEvidence.sources = [{ id: 'source-1', publisher: 'Service Public', title: 'Source fixture', requestedUrl: 'https://www.service-public.fr/fixture', finalUrl: 'https://www.service-public.fr/fixture', checkedAt: dateSourceSensible, level: 'tier-1', provenance: 'primary', official: true, upstreamUrl: 'https://www.service-public.fr/fixture', snapshotPath: 'fixtures/source.md', contentSha256: sha256(sourceText), verificationEvidenceRef: 'fixture://source/open', classificationEvidenceRef: 'fixture://source/classification', claimIds: ['claim-1'] }];
   manifest.claimsEvidence.sensitiveMatter = { detected: true, signals: ['juridique'], checkedAt: '2026-09-13T21:30:00+01:00', businessReview: null };
 
   manifest.assets.assetRefs = ['fixtures/image.webp'];
@@ -172,7 +177,7 @@ export function createResourceFixture(root, adapter = 'H', phase = 'release') {
   const reviewedCandidateHash = digest(reviewSubjectDigestPayload(manifest));
   const claimSourceVerdicts = [{
     claimId: 'claim-1', sourceId: 'source-1', citationIds: ['citation-1'], verdict: 'soutient',
-    sourceContentSha256: sha256(sourceText), checkedAt: '2026-09-13T21:30:00+01:00',
+    sourceContentSha256: sha256(sourceText), checkedAt: dateClaimSensible,
     reasoning: 'Le profil métier a comparé le claim, la citation exacte et la source primaire.',
   }];
   const reviewEvidence = `${JSON.stringify({
