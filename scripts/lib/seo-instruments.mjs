@@ -326,12 +326,12 @@ export const chatGptDataForSeo = (requete, { locationCode = 2250, languageCode =
  * nom est lu par Wrangler en priorité sur sa session OAuth, et un jeton limité aux statistiques
  * ferait échouer tous les déploiements (mesuré le 14/09/2026).
  */
-export async function referentsCloudflare({ compte, depuis, jusqu, limite = 50, timeoutMs = 60_000 } = {}) {
+export async function referentsCloudflare({ compte, depuis, jusqu, hote = '%memlia.fr', limite = 50, timeoutMs = 60_000 } = {}) {
   const jeton = process.env.CLOUDFLARE_ANALYTICS_TOKEN;
   if (!jeton) return { ok: false, reponse: null, erreur: 'CLOUDFLARE_ANALYTICS_TOKEN absent de l’environnement' };
-  const requete = `query($compte: string!, $depuis: Time!, $jusqu: Time!, $limite: Int!) {
+  const requete = `query($compte: string!, $depuis: Time!, $jusqu: Time!, $limite: Int!, $hote: string!) {
   viewer { accounts(filter: { accountTag: $compte }) {
-    rumPageloadEventsAdaptiveGroups(limit: $limite, filter: { datetime_geq: $depuis, datetime_leq: $jusqu }, orderBy: [count_DESC]) {
+    rumPageloadEventsAdaptiveGroups(limit: $limite, filter: { datetime_geq: $depuis, datetime_leq: $jusqu, requestHost_like: $hote }, orderBy: [count_DESC]) {
       count
       dimensions { refererHost }
     }
@@ -340,7 +340,7 @@ export async function referentsCloudflare({ compte, depuis, jusqu, limite = 50, 
     const r = await fetch('https://api.cloudflare.com/client/v4/graphql', {
       method: 'POST',
       headers: { Authorization: `Bearer ${jeton}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: requete, variables: { compte, depuis, jusqu, limite } }),
+      body: JSON.stringify({ query: requete, variables: { compte, depuis, jusqu, limite, hote } }),
       signal: AbortSignal.timeout(timeoutMs),
     });
     if (!r.ok) return { ok: false, reponse: null, erreur: `HTTP ${r.status}` };

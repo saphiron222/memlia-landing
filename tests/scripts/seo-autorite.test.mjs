@@ -94,29 +94,32 @@ test('lireTacheIa : une tâche refusée par l’interface est une ERREUR, jamais
   assert.equal(ok.lecture.cite, true);
 });
 
-test('lireReferents : sépare les assistants du reste, et un jeton absent n’est pas un zéro', async () => {
+test('lireReferents : sépare les assistants, la navigation interne et les visites directes', async () => {
   const { lireReferents, ASSISTANTS } = await import('../../scripts/lib/seo-autorite.mjs');
   const r = lireReferents({
     data: { viewer: { accounts: [{ rumPageloadEventsAdaptiveGroups: [
       { count: 12, dimensions: { refererHost: 'chatgpt.com' } },
-      { count: 7, dimensions: { refererHost: '' } },
-      { count: 4, dimensions: { refererHost: 'www.google.com' } },
+      { count: 1470, dimensions: { refererHost: '' } },
+      { count: 420, dimensions: { refererHost: 'memlia.fr' } },
+      { count: 10, dimensions: { refererHost: 'bing.com' } },
       { count: 2, dimensions: { refererHost: 'perplexity.ai' } },
     ] }] } },
-  });
+  }, { hoteSite: 'memlia.fr' });
   assert.equal(r.ok, true);
-  assert.equal(r.visites, 25);
-  assert.equal(r.directes, 7, 'un référent vide est une visite directe, pas un référent inconnu');
+  assert.equal(r.chargements, 1914, 'le total compte tout ce que la balise a vu');
+  assert.equal(r.directes, 1470);
+  assert.equal(r.internes, 420, 'une visite venue du site lui-même est de la navigation interne, pas un référent');
+  assert.deepEqual(r.externes, [{ hote: 'chatgpt.com', visites: 12 }, { hote: 'bing.com', visites: 10 }, { hote: 'perplexity.ai', visites: 2 }]);
   assert.deepEqual(r.assistants, [{ hote: 'chatgpt.com', visites: 12 }, { hote: 'perplexity.ai', visites: 2 }]);
   assert.equal(r.visitesAssistants, 14);
-  assert.ok(ASSISTANTS.includes('chatgpt.com') && ASSISTANTS.includes('perplexity.ai'));
+  assert.ok(ASSISTANTS.includes('chatgpt.com'));
 
   const erreur = lireReferents({ errors: [{ message: 'Authentication error' }] });
   assert.equal(erreur.ok, false);
   assert.match(erreur.erreur, /Authentication error/);
-  assert.equal(erreur.visites, null, 'une réponse en erreur ne rend aucun compte, surtout pas zéro');
+  assert.equal(erreur.chargements, null, 'une réponse en erreur ne rend aucun compte, surtout pas zéro');
   assert.equal(lireReferents(null).ok, false);
-  const vide = lireReferents({ data: { viewer: { accounts: [{ rumPageloadEventsAdaptiveGroups: [] }] } } });
+  const vide = lireReferents({ data: { viewer: { accounts: [{ rumPageloadEventsAdaptiveGroups: [] }] } } }, { hoteSite: 'memlia.fr' });
   assert.equal(vide.ok, true);
-  assert.equal(vide.visites, 0, 'une réponse valide sans ligne est un vrai zéro');
+  assert.equal(vide.chargements, 0, 'une réponse valide sans ligne est un vrai zéro');
 });

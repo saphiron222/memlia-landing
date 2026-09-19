@@ -145,7 +145,7 @@ export async function relever(root, { mois = moisCourant(), sansIa = false, budg
     audience.erreur = ref.erreur;
     exclusions.push(`référents d'audience non relevés : ${ref.erreur}`);
   } else {
-    audience = lireReferents(ref.reponse);
+    audience = lireReferents(ref.reponse, { hoteSite: 'memlia.fr' });
     if (!audience.ok) exclusions.push(`référents d'audience non lus : ${audience.erreur}`);
   }
 
@@ -167,7 +167,7 @@ if (estPrincipal) {
   if (argv[0] !== 'relever') { console.error('usage : autorite.mjs relever [--sans-ia] [--budget N] [--mois AAAA-MM]'); process.exit(2); }
   const r = await relever(process.cwd(), o);
   console.log(`autorité ${r.mois} : rang ${r.autorite.rang ?? 'ND'}, ${r.autorite.domainesReferents ?? 'ND'} domaines référents ; marque ${r.entite.spell ? `réécrite en « ${r.entite.spell.mot} »` : 'non réécrite'}, rang ${r.entite.rangMarque ?? 'hors top'} ; IA ${r.ia.avecRecherche === 0 ? `citations non mesurées (0 recherche web sur ${r.ia.requetes} requêtes), marque nommée ${r.ia.nomme} fois` : `${r.ia.citations}/${r.ia.avecRecherche} citations`} ; ${r.depenses.total} $`);
-  console.log(`  audience : ${r.audience.ok ? `${r.audience.visites} visites sur 30 jours, dont ${r.audience.directes} directes et ${r.audience.visitesAssistants} venues d'un assistant (plancher : la plupart arrivent sans référent)` : `non relevée — ${r.audience.erreur}`}`);
+  console.log(`  audience : ${r.audience.ok ? `${r.audience.chargements} chargements vus par la balise sur 30 jours (dont ${r.audience.directes} sans référent et ${r.audience.internes} de navigation interne — ce total inclut nos propres passages, ce n'est pas une audience) ; référents externes : ${r.audience.externes.length ? r.audience.externes.map((h) => `${h.hote} ${h.visites}`).join(', ') : 'aucun'} ; venues d'un assistant : ${r.audience.visitesAssistants} (plancher)` : `non relevée — ${r.audience.erreur}`}`);
   for (const x of r.rouges) console.log(`  ROUGE ${x.code} : ${x.motif} (${x.mesure})`);
   for (const x of r.avertissements) console.log(`  avertissement ${x.code} : ${x.motif} (${x.mesure})`);
   for (const x of r.infos) console.log(`  info ${x}`);

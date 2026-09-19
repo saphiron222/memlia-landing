@@ -116,24 +116,29 @@ export const ASSISTANTS = Object.freeze([
  * ne rend aucun compte — surtout pas zéro : c'est la leçon des trois zéros creux du 19/09/2026.
  * Un référent vide est une visite **directe**, pas un référent inconnu.
  */
-export function lireReferents(reponse) {
-  if (!reponse) return { ok: false, erreur: 'aucune réponse', visites: null, directes: null, assistants: [], visitesAssistants: null, hotes: [] };
-  if (Array.isArray(reponse.errors) && reponse.errors.length > 0) {
-    return { ok: false, erreur: reponse.errors.map((e) => e.message).join(' · '), visites: null, directes: null, assistants: [], visitesAssistants: null, hotes: [] };
-  }
+export function lireReferents(reponse, { hoteSite = 'memlia.fr' } = {}) {
+  const vide = { ok: false, erreur: null, chargements: null, directes: null, internes: null, externes: [], assistants: [], visitesAssistants: null };
+  if (!reponse) return { ...vide, erreur: 'aucune réponse' };
+  if (Array.isArray(reponse.errors) && reponse.errors.length > 0) return { ...vide, erreur: reponse.errors.map((e) => e.message).join(' · ') };
   const lignes = reponse?.data?.viewer?.accounts?.[0]?.rumPageloadEventsAdaptiveGroups;
-  if (!Array.isArray(lignes)) return { ok: false, erreur: 'réponse sans jeu de données attendu', visites: null, directes: null, assistants: [], visitesAssistants: null, hotes: [] };
+  if (!Array.isArray(lignes)) return { ...vide, erreur: 'réponse sans jeu de données attendu' };
   const hotes = lignes.map((l) => ({ hote: String(l.dimensions?.refererHost ?? '').toLowerCase(), visites: Number(l.count ?? 0) }));
-  const directes = hotes.filter((h) => !h.hote).reduce((n, h) => n + h.visites, 0);
-  const assistants = hotes.filter((h) => h.hote && ASSISTANTS.includes(h.hote));
+  const interne = (h) => h === hoteSite || h === `www.${hoteSite}` || h.endsWith(`.${hoteSite}`);
+  const externes = hotes.filter((h) => h.hote && !interne(h.hote));
+  const assistants = externes.filter((h) => ASSISTANTS.includes(h.hote));
   return {
     ok: true,
     erreur: null,
-    visites: hotes.reduce((n, h) => n + h.visites, 0),
-    directes,
+    // ⚠ `chargements` compte TOUT ce que la balise a vu, y compris nos propres passages
+    // automatisés (recettes, contrôles de production, suites navigateur). Ce n'est PAS une
+    // audience : mesuré le 19/09/2026, 1 890 chargements pour 15 impressions au moteur.
+    // Ce qui vaut quelque chose ici, c'est la LISTE des référents externes, pas le total.
+    chargements: hotes.reduce((n, h) => n + h.visites, 0),
+    directes: hotes.filter((h) => !h.hote).reduce((n, h) => n + h.visites, 0),
+    internes: hotes.filter((h) => h.hote && interne(h.hote)).reduce((n, h) => n + h.visites, 0),
+    externes,
     assistants,
     visitesAssistants: assistants.reduce((n, h) => n + h.visites, 0),
-    hotes: hotes.filter((h) => h.hote),
   };
 }
 
