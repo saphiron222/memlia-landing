@@ -42,6 +42,7 @@ const REQUETES_IA = [
   'cabinet comptable surcharge de travail',
 ];
 
+export const dateParis = (d = new Date()) => d.toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
 const moisCourant = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 const moisEcoules = (depuis, jusqu) => {
   const [a1, m1] = depuis.split('-').map(Number);
@@ -151,7 +152,7 @@ export async function relever(root, { mois = moisCourant(), sansIa = false, budg
 
   const precedent = lireJson(join(root, DOSSIER, `mois-${moisPrecedent(mois)}-autorite.json`), null);
   const detection = detecterAutorite({ mois, autorite, entite, ia, precedent, moisDepuisDepart: moisEcoules(DEPART, mois) });
-  const releve = { mois, jour: new Date().toISOString().slice(0, 10), autorite, entite, ia, audience, depenses, budget, portes: { liens: porteLiens, serp: porteSerp }, exclusions, ...detection };
+  const releve = { mois, jour: dateParis(), autorite, entite, ia, audience, depenses, budget, portes: { liens: porteLiens, serp: porteSerp }, exclusions, ...detection };
   ecrireJson(join(root, DOSSIER, `mois-${mois}-autorite.json`), releve);
   return releve;
 }

@@ -1,6 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { lireBacklinks, lireCitationsIa, detecterAutorite, SEUILS_AUTORITE } from '../../scripts/lib/seo-autorite.mjs';
+import { dateParis } from '../../scripts/seo/autorite.mjs';
+
+test('dateParis attribue un relevé après minuit à la date civile de Paris', () => {
+  assert.equal(dateParis(new Date('2026-09-19T23:30:00.000Z')), '2026-09-20');
+});
 
 test('lireBacklinks sépare une réponse utile de son coût et nomme une tâche refusée', () => {
   const ok = lireBacklinks({ tasks: [{ status_code: 20000, cost: 0.02, result: [{ target: 'memlia.fr', rank: 4, backlinks: 31, referring_domains: 19, referring_main_domains: 17, broken_backlinks: 2 }] }] });
