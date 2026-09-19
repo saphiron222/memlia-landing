@@ -7416,5 +7416,65 @@
       "intention": null,
       "apercuIa": true
     }
+  },
+  {
+    "slug": "la-plateforme-que-personne-n-a-achetee",
+    "titre": "La plateforme que personne n'a achetée, et ce que le refus m'a appris",
+    "requete": "pourquoi les cabinets comptables n'adoptent pas les nouveaux outils",
+    "secondaires": [
+      "adoption outil cabinet comptable",
+      "changement de logiciel cabinet comptable resistance"
+    ],
+    "famille": "choisir-cadrer",
+    "role": "direction-associes",
+    "intent": "comprendre",
+    "funnel": "TOFU",
+    "format": "thought-leadership",
+    "preuve": "la règle qui en est sortie, appliquée depuis à chaque cadrage : on automatise dans l'outil que le cabinet ouvre déjà, et on le prouve sur son propre classeur avant d'en parler",
+    "sourcesOfficielles": [
+      "aucune"
+    ],
+    "priorite": 3,
+    "serie": "cicatrices"
+  },
+  {
+    "slug": "trois-bugs-que-des-tests-verts-n-ont-pas-vus",
+    "titre": "Trois défauts que des tests verts n'ont pas vus, et la règle des trois passes",
+    "requete": "pourquoi des tests qui passent ne prouvent rien",
+    "secondaires": [
+      "tests verts faux positifs",
+      "controle automatique qui ne detecte rien"
+    ],
+    "famille": "regle-jeu-essai-recette",
+    "role": "direction-associes",
+    "intent": "comprendre",
+    "funnel": "TOFU",
+    "format": "thought-leadership",
+    "preuve": "les trois défauts nommés, la mesure qui aurait dû rougir et ne rougissait pas, et la recette en trois passes qui les attrape depuis",
+    "sourcesOfficielles": [
+      "aucune"
+    ],
+    "priorite": 3,
+    "serie": "cicatrices"
+  },
+  {
+    "slug": "l-outil-qui-ne-se-chargeait-jamais",
+    "titre": "L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »",
+    "requete": "pourquoi une installation logicielle echoue en cabinet",
+    "secondaires": [
+      "droits administrateur installation cabinet comptable",
+      "deploiement outil poste de travail cabinet"
+    ],
+    "famille": "integration-connecteurs",
+    "role": "numerique-it-data",
+    "intent": "reduire-risque",
+    "funnel": "TOFU",
+    "format": "thought-leadership",
+    "preuve": "la mesure par substitution qui a montré la cause réelle, et la règle de cadrage qui en est sortie : les accès et les droits se vérifient avant tout engagement",
+    "sourcesOfficielles": [
+      "aucune"
+    ],
+    "priorite": 3,
+    "serie": "cicatrices"
   }
 ]

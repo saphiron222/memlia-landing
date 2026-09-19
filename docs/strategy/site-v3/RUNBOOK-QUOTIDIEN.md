@@ -97,6 +97,14 @@ node scripts/blog-forge.mjs sceller <slug>
 
 Le gate doit rendre `"pass": true`. Sinon lire les `errors`, corriger la recette, recommencer (deux fois au plus).
 
+## 4 bis. Si le créneau du jour est un article de la série « Cicatrices »
+
+Le calendrier place un article par mois portant `serie: "cicatrices"` dans `backlog-v3.json` (charte §7 ter). Il est **signé Kevin, à la première personne**, et raconte une chose qui a cassé dans la construction de Memlia, ce qu'elle a coûté, et la règle qui en est sortie.
+
+**Tu ne l'écris pas et tu ne le publies pas.** La forge le prépare et le scelle si sa recette existe déjà (`editorial/recettes/<slug>/`), puis tu t'arrêtes : `publier` demande le go de Kevin, parce que l'article porte sa signature et son expérience. Écris dans `JOURNAL.md` que l'article est scellé et attend sa relecture, et passe au créneau suivant s'il en reste un dans les plafonds.
+
+Si la recette n'existe pas, ne l'invente pas : une cicatrice est un fait vécu, pas un sujet. Note dans `JOURNAL.md` que le créneau est vide faute de recette, et arrête-toi.
+
 ## 5. Publier, prouver, pousser
 
 Dans cet ordre, pour tous les articles du jour puis le pilier (qui a reçu un lien) :

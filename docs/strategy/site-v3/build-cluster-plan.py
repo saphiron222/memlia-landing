@@ -33,8 +33,8 @@ PAR_JOUR_MAX = 2
 PAR_SEMAINE_MAX = 4
 JOURS_DE_PUBLICATION = (0, 1, 2, 3)  # lundi à jeudi ; la semaine 38 (deux articles le 16/09) se complète le jeudi 17/09
 PREMIER_JOUR = date(2026, 9, 17)
-GABARIT_PAR_FORMAT = {'pillar-page': 'ultimate-guide', 'how-to-guide': 'how-to', 'faq-knowledge': 'explainer', 'listicle-checklist': 'listicle', 'tutorial': 'how-to', 'resource-template': 'landing-page'}
-MOTS_PAR_FORMAT = {'pillar-page': 3200, 'how-to-guide': 1500, 'faq-knowledge': 1300, 'listicle-checklist': 1400, 'tutorial': 1500, 'resource-template': 1200}
+GABARIT_PAR_FORMAT = {'pillar-page': 'ultimate-guide', 'how-to-guide': 'how-to', 'faq-knowledge': 'explainer', 'listicle-checklist': 'listicle', 'tutorial': 'how-to', 'resource-template': 'landing-page', 'thought-leadership': 'essai'}
+MOTS_PAR_FORMAT = {'pillar-page': 3200, 'how-to-guide': 1500, 'faq-knowledge': 1300, 'listicle-checklist': 1400, 'tutorial': 1500, 'resource-template': 1200, 'thought-leadership': 1400}
 
 
 def enum_du_schema(nom):
@@ -81,8 +81,27 @@ def planifier(entrees, publies):
             d = date.fromisoformat(p['date'])
             par_jour[d] += 1
             par_semaine[semaine_iso(d)] += 1
+    # La série « Cicatrices » (charte §7 ter) passe d'abord : un article par mois, sur un créneau
+    # ordinaire et jamais en plus. Sans cette passe, ses entrées de priorité 3 tomberaient en fin de
+    # calendrier, ce qui n'est pas « un par mois ».
+    mois = None
+    for e in [x for x in entrees if x.get('serie') and x['slug'] not in publies]:
+        # La série démarre le mois SUIVANT : le créneau du jour appartient déjà à un article prêt,
+        # et un article signé demande à Kevin le temps de le relire avant publication.
+        base = PREMIER_JOUR if mois is None else mois
+        candidat = date(base.year + (base.month == 12), base.month % 12 + 1, 1)
+        while not (candidat.weekday() in JOURS_DE_PUBLICATION and par_jour[candidat] < PAR_JOUR_MAX and par_semaine[semaine_iso(candidat)] < PAR_SEMAINE_MAX):
+            candidat += timedelta(days=1)
+        e['date'] = candidat.isoformat()
+        e['statut'] = 'planned'
+        par_jour[candidat] += 1
+        par_semaine[semaine_iso(candidat)] += 1
+        mois = candidat
+
     jour = PREMIER_JOUR
     for e in entrees:
+        if e.get('serie') and e.get('date'):
+            continue
         if e['slug'] in publies:
             e['date'] = publies[e['slug']]['date']
             e['statut'] = 'published'
@@ -166,7 +185,9 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     if manquantes:
         erreurs.append(f'familles actives sans angle : {sorted(manquantes)}')
     for fid, membres in par_famille.items():
-        angles = [e for e in membres if not e.get('historique')]
+        # La série « Cicatrices » (charte §7 ter) prend un créneau mais n'est pas un angle de famille :
+        # elle vise la marque, pas une requête, et n'entre donc pas dans le compte des quatre.
+        angles = [e for e in membres if not e.get('historique') and not e.get('serie')]
         attendu = 3 if fid == pilier['famille'] else 4  # le pilier est le quatrième angle de sa famille
         if len(angles) != attendu:
             erreurs.append(f'{fid} : {len(angles)} angles au lieu de {attendu}')
@@ -175,7 +196,7 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
             erreurs.append(f'article publié absent du backlog et de la table historique : {slug}')
     # Depuis le 19/09/2026, une priorité 1 se mérite par une mesure : autocomplétion ou page de résultats datée (scripts/seo/questions.mjs).
     for e in satellites:
-        if e.get('historique') or e['slug'] in publies:
+        if e.get('historique') or e.get('serie') or e['slug'] in publies:
             continue
         if e['priorite'] == 1 and not (e.get('demande') or {}).get('mesureeLe'):
             erreurs.append(f"angle de priorité 1 sans demande mesurée : {e['slug']}")

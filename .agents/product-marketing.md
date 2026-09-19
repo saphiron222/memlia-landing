@@ -99,6 +99,18 @@ Un article est une méthode publiée, pas une page de vente : il vaut par ce qu'
 - **Interdits propres aux articles** : tiret cadratin, « nous constatons », « module », « complément » au sens catalogue, superlatif, mot de processus (revue métier, fact-check, non attesté), formule défensive en tête d'article.
 - **Une republication est datée** : `updatedAt` dans la recette, `dateMiseAJour` dans le frontmatter ; la date de publication ne bouge jamais.
 
+## 7 ter. La série « Cicatrices » — un article par mois, signé Kevin (19/09/2026)
+
+Onze articles sur douze parlent en **nous** et décrivent une tâche. Un article par mois fait exception : il est **signé Kevin Kitanga à la première personne**, et il raconte **une chose qui a cassé** dans la construction de Memlia, ce qu'elle a coûté, et la règle qui en est sortie et que nous appliquons depuis. C'est la preuve que le savoir-faire s'écrit parce qu'on l'a payé : un cabinet reconnaît immédiatement quelqu'un qui a déjà ouvert un vrai dossier.
+
+**Ce qu'un article de la série doit porter**, dans cet ordre : le geste ou la décision de départ, tels qu'ils paraissaient raisonnables ; ce qui a cassé, avec la mesure exacte qui l'a montré ; ce que cela a coûté en temps, en travail refait ou en occasion manquée, sans chiffre inventé ; **la règle qui en est sortie**, écrite comme une règle applicable par quelqu'un d'autre ; et ce que cette règle change pour un cabinet qui nous confie une tâche. Il porte aussi, comme tout article daté à partir du 19/09/2026, ses sections « La règle écrite » et « Rejoué sur le jeu fictif » lorsque la leçon se rejoue.
+
+**Ce qu'il ne porte jamais** : le nom d'un cabinet, d'un client, d'un éditeur ou d'une personne, y compris en creux ; un chiffre de résultat non mesuré ; une leçon qui ne se termine pas par une règle ; un aveu qui ne sert qu'à paraître humble. Une cicatrice sans règle est une confidence, pas un article. Le « je » de cette série ne contamine aucune autre surface : les autres articles et les pages restent en « nous ».
+
+**Cadence et place** : un par mois, sur l'un des quatre créneaux hebdomadaires, jamais en plus. Format `thought-leadership`, rôle `direction-associes`. La demande de recherche n'est pas le critère de cette série : elle vise la mémorisation de la marque et la citation, pas une requête. Les entrées portent `serie: "cicatrices"` dans le backlog et sortent du compte des quatre angles par famille.
+
+**Ces articles sont les seuls que Kevin relit avant publication** : ils portent sa signature et son expérience. La forge les prépare et les scelle ; elle ne les publie pas sans son go.
+
 ## 8. Voix
 
 Nous, vouvoiement, français professionnel, concret, calme et confiant. Phrases courtes, un sujet par phrase, le lecteur en sujet (« vos collaborateurs », « votre cabinet »). On nomme des gestes réels (recopier, réclamer, rapprocher, lettrer, contrôler avant la DSN), jamais des catégories abstraites. Une réserve se dit une fois, à l'endroit où elle rassure (Garanties, formulaire), pas partout. Aucun superlatif, aucun mot anglais de plateforme, aucun tiret cadratin dans les articles du blog (le reste du site le garde).

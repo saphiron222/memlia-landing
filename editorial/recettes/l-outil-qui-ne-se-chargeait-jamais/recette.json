@@ -1,0 +1,214 @@
+{
+  "slug": "l-outil-qui-ne-se-chargeait-jamais",
+  "title": "L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »",
+  "tabTitle": "Pourquoi une installation logicielle échoue en cabinet | Memlia",
+  "summary": "J’ai promis une installation sans droits d’administrateur. Chez l’utilisateur, l’installation s’annonçait réussie et rien ne se chargeait. Trois hypothèses fausses, une substitution qui tranche, et une recette verte qui ne mesurait qu’un résidu. La règle : les droits se relèvent avant tout engagement, et l’installation refuse d’écrire plutôt que de faire semblant.",
+  "description": "Un outil livré « sans droits d’administrateur » qui ne se chargeait jamais : la mesure qui a tranché, et la règle de cadrage qui en est sortie.",
+  "date": "2026-10-01",
+  "topics": [
+    "installation",
+    "droits",
+    "mise-en-service",
+    "preuve"
+  ],
+  "keywords": [
+    "installation logicielle en cabinet",
+    "droits d’administrateur",
+    "mise en service d’une automatisation",
+    "déploiement sur poste de travail",
+    "recette de livraison",
+    "fail-closed"
+  ],
+  "primaryQuery": "pourquoi une installation logicielle echoue en cabinet",
+  "secondaryQueries": [
+    "droits administrateur installation cabinet comptable",
+    "deploiement outil poste de travail cabinet"
+  ],
+  "intent": "reduire-risque",
+  "fanOut": [
+    "pourquoi une installation peut réussir et ne rien charger",
+    "quels droits une automatisation greffée dans un logiciel demande vraiment",
+    "comment prouver qu’une mise en service tient avant de l’étendre"
+  ],
+  "role": {
+    "primary": "numerique-it-data",
+    "secondary": [
+      "direction-associes"
+    ],
+    "proofLevel": "indirect",
+    "proofNote": "Le référentiel des besoins documente le poste numérique et IT d’un cabinet sans couvrir la mise en service d’un outil greffé dans un logiciel existant. Le récit vient d’une livraison Memlia mesurée les 20/08 et 06/09/2026 ; le rôle lecteur est à confirmer au premier rendez-vous d’un cabinet sur ce sujet."
+  },
+  "funnel": "TOFU",
+  "cluster": "numerique-it-data",
+  "famille": "integration-connecteurs",
+  "contentType": "shareable",
+  "format": "thought-leadership",
+  "task": "Mettre une automatisation en service sur les postes d’un cabinet sans promettre un droit qui n’existe pas, et prouver qu’elle charge avant de l’étendre.",
+  "rankability": "faible",
+  "businessRelevance": "directe",
+  "proofRequired": "Récit de la substitution du 06/09/2026 (le même enregistrement copié d’une ruche à l’autre, activation refusée d’un côté, obtenue de l’autre) ; jeu d’essai fictif à trois postes (sans droit, avec résidu, sain) rejoué avec ses sorties ; cinq affirmations reliées à trois pages de documentation ouvertes.",
+  "reviewRule": "Réviser si la règle d’arrêt de l’installateur change de conditions, et à la publication d’un article de la famille connecteurs et imports ; relecture des sources à six mois.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous relevons les accès, les droits et les versions de vos postes avant de nous engager, nous écrivons la règle de la tâche dans vos mots, nous l’automatisons dans les outils que vos équipes utilisent déjà, et elles la recettent sur un poste réel. Vous gardez la décision d’ouvrir un droit et celle de mettre en service. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
+  },
+  "image": {
+    "heroId": "img-art-l-outil-qui-ne-se-chargeait-jamais",
+    "alt": "Diorama 3D isométrique : une porte close avec une clé qui n’entre pas, à côté d’une porte identique ouverte, fond crème",
+    "brief": {
+      "sujet": "Deux portes identiques posées côte à côte sur un socle : la première reste close et une clé, arrêtée à mi-course, n’entre pas dans sa serrure ; la seconde, en tout point semblable, est ouverte et laisse passer un rai de lumière.",
+      "composition": "Vue isométrique sur un plateau crème papier ; au premier plan à gauche une porte pleine, fermée, encadrée d’un chambranle vert profond, avec une clé mate en suspension devant une serrure qui ne la reçoit pas ; à droite, à la même échelle et au même angle, une porte identique entrouverte vers l’intérieur, un plan lumineux translucide vert posé au sol devant elle ; entre les deux, un petit socle vide qui souligne qu’il s’agit du même objet à deux emplacements ; ombres courtes, composition aérée, beaucoup de vide autour des deux portes.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche ; continuité avec les couvertures IMG-23, IMG-24 et IMG-25.",
+      "palette": "Vert Memlia #27b657 et vert profond #1c8a41 dominants, fond crème #fcfbf7, touches de graphite #231f20.",
+      "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, marque, écran ou fausse interface logicielle, alerte rouge.",
+      "alt": "Diorama 3D isométrique : une porte close avec une clé qui n’entre pas, à côté d’une porte identique ouverte, fond crème",
+      "reviewCriteria": [
+        "continuité avec les couvertures existantes (diorama isométrique, fond crème, lumière douce du haut gauche)",
+        "deux portes visiblement identiques, l’une close, l’autre ouverte",
+        "la clé est arrêtée devant la serrure, elle n’y entre pas",
+        "aucune indication de faute : pas de croix, pas d’alerte rouge",
+        "aucun texte, chiffre, logo, personne identifiable, marque ou fausse interface",
+        "dérivés 1920×1080, OG 1200×630, 768/1200/1600 générés"
+      ],
+      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : deux portes identiques posées côte à côte sur un socle : la première reste close et une clé, arrêtée à mi-course, n'entre pas dans sa serrure ; la seconde, en tout point semblable, est ouverte et laisse passer un rai de lumière. Composition : vue isométrique sur un plateau crème papier ; au premier plan à gauche une porte pleine, fermée, encadrée d'un chambranle vert profond, avec une clé mate en suspension devant une serrure qui ne la reçoit pas ; à droite, à la même échelle et au même angle, une porte identique entrouverte vers l'intérieur, un plan lumineux translucide vert posé au sol devant elle ; entre les deux, un petit socle vide qui souligne qu'il s'agit du même objet à deux emplacements ; ombres courtes, composition aérée, beaucoup de vide autour des deux portes. Style : diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche ; continuité avec les couvertures IMG-23, IMG-24 et IMG-25. Palette : Vert Memlia #27b657 et vert profond #1c8a41 dominants, fond crème #fcfbf7, touches de graphite #231f20. Interdits : texte lisible, lettres, chiffres, logo, personne identifiable, marque, écran ou fausse interface logicielle, alerte rouge."
+    }
+  },
+  "sources": [
+    {
+      "id": "inscription-composants",
+      "publisher": "Microsoft Learn",
+      "title": "clé HKEY_CLASSES_ROOT",
+      "url": "https://learn.microsoft.com/fr-fr/windows/win32/sysinfo/hkey-classes-root-key",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Documentation de l’éditeur sur son propre système : elle décrit de première main où les informations d’inscription des composants sont stockées et quels droits leur inscription suppose.",
+      "excerpt": "Les applications qui nécessitent des droits d’administrateur doivent inscrire des objets COM dépendants pendant l’installation dans le magasin de configuration COM par ordinateur"
+    },
+    {
+      "id": "contexte-installation",
+      "publisher": "Microsoft Learn",
+      "title": "Contexte d’installation",
+      "url": "https://learn.microsoft.com/fr-fr/windows/win32/msi/installation-context",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Documentation de l’éditeur sur son propre installeur : elle décrit de première main les deux contextes d’installation et l’autorisation qu’exige le contexte par ordinateur.",
+      "excerpt": "les utilisateurs standard disposant de privilèges limités peuvent être empêchés d’installer un package dans le contexte par ordinateur sans obtenir d’abord l’autorisation."
+    },
+    {
+      "id": "deploiement-poste",
+      "publisher": "Google Chrome Enterprise and Education",
+      "title": "Installer le navigateur Chrome sur un parc de postes gérés",
+      "url": "https://support.google.com/chrome/a/answer/9025903?hl=fr",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Page publique d’aide au déploiement d’un logiciel sur un parc de postes gérés, citée pour la conduite du déploiement qu’elle décrit, pas pour le produit qu’elle documente.",
+      "excerpt": "Vous pouvez également vous aider du guide pour réaliser rapidement un déploiement test du navigateur Chrome à petite échelle."
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "/methode",
+      "/garanties",
+      "/glossaire#recette",
+      "/glossaire#fail-closed"
+    ],
+    "incoming": [
+      "/blog"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier"
+    ],
+    "decision": "Le pilier cartographie les pôles et les familles ; l’article sur la saisie exécute une famille comptable. Celui-ci ne décrit aucune tâche de production : il raconte une mise en service qui a échoué et la règle de cadrage qui en est sortie. Requête primaire, intention et format distincts."
+  },
+  "serp": {
+    "requete": "pourquoi une installation logicielle echoue en cabinet",
+    "date": "2026-09-19",
+    "volume": "ND",
+    "acteurs": [
+      "Microsoft Q&A",
+      "Microsoft Support",
+      "Sage Knowledge Base",
+      "BSC Sécurité",
+      "Compta Online",
+      "Tutoriaux Excalibur",
+      "Forum SOSPC"
+    ],
+    "formats": "fils de forum et pages d’assistance d’éditeurs qui expliquent comment obtenir le droit manquant sur un poste, et articles génériques « reprendre le contrôle de son PC » ; positions ND",
+    "note": "Relevé WebSearch du 19/09/2026 ; volumes et positions ND. Aucun résultat relevé ne traite la question du point de vue du cabinet qui reçoit l’outil : ce qui se vérifie avant de s’engager, ce qu’une installation doit refuser, et ce qui prouve qu’une mise en service tient."
+  },
+  "gsc": {
+    "requete": "pourquoi une installation logicielle echoue en cabinet",
+    "date": "2026-09-19",
+    "periode": "90 jours",
+    "impressions": 0,
+    "clics": 0,
+    "note": "Page nouvelle, écrite le 19/09/2026 pour une publication au 01/10/2026 : aucune impression ne peut lui être attribuée. Aucune inspection d’URL demandée, aucun crédit métrique revendiqué."
+  },
+  "claims": [
+    {
+      "unite": "Les applications qui nécessitent des droits d’administrateur doivent inscrire leurs composants",
+      "claim": "Les applications qui nécessitent des droits d’administrateur doivent inscrire leurs composants pendant l’installation dans la configuration par ordinateur",
+      "type": "information",
+      "sourceId": "inscription-composants",
+      "excerpt": "Les applications qui nécessitent des droits d’administrateur doivent inscrire des objets COM dépendants pendant l’installation dans le magasin de configuration COM par ordinateur",
+      "explanation": "La phrase de la documentation de l’éditeur est reprise sans changer sa portée ; seule la désignation des composants est généralisée, l’obligation et son emplacement restent ceux de la source."
+    },
+    {
+      "unite": "L’emplacement symétrique, celui de l’utilisateur",
+      "claim": "contient des paramètres qui s’appliquent uniquement à l’utilisateur interactif",
+      "type": "information",
+      "sourceId": "inscription-composants",
+      "excerpt": "contient des paramètres qui s’appliquent uniquement à l’utilisateur interactif.",
+      "explanation": "Description, mot pour mot, de la portée de l’emplacement propre à l’utilisateur telle que la documentation de l’éditeur l’énonce."
+    },
+    {
+      "unite": "une installation par ordinateur est nécessaire pour permettre",
+      "claim": "une installation par ordinateur est nécessaire pour permettre à tous les utilisateurs de l’ordinateur d’accéder à l’application",
+      "type": "information",
+      "sourceId": "contexte-installation",
+      "excerpt": "Une installation par ordinateur du package est nécessaire pour permettre à tous les utilisateurs de l’ordinateur d’accéder à l’application et de les utiliser.",
+      "explanation": "Reprise à l’identique de la condition posée par la documentation de l’éditeur ; la mention du paquet est omise et rien n’est ajouté."
+    },
+    {
+      "unite": "les utilisateurs standard disposant de privilèges limités",
+      "claim": "les utilisateurs standard disposant de privilèges limités peuvent être empêchés d’installer dans le contexte par ordinateur sans obtenir d’abord l’autorisation",
+      "type": "information",
+      "sourceId": "contexte-installation",
+      "excerpt": "les utilisateurs standard disposant de privilèges limités peuvent être empêchés d’installer un package dans le contexte par ordinateur sans obtenir d’abord l’autorisation.",
+      "explanation": "Phrase de la documentation de l’éditeur reprise à l’identique, possibilité gardée comme possibilité, sans la transformer en interdiction générale."
+    },
+    {
+      "unite": "nous commençons par réaliser un déploiement test à petite échelle",
+      "claim": "réaliser un déploiement test à petite échelle",
+      "type": "methode",
+      "sourceId": "deploiement-poste",
+      "excerpt": "Vous pouvez également vous aider du guide pour réaliser rapidement un déploiement test du navigateur Chrome à petite échelle.",
+      "explanation": "La page d’aide au déploiement recommande un déploiement test à petite échelle avant le parc ; la pratique est reprise telle quelle, sans revendiquer la sienne pour un autre produit."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "numerique-it-data"
+  },
+  "preuvesSkills": {
+    "blog-brief": [
+      "Brief pris dans docs/strategy/site-v3/backlog-v3.json (slug l-outil-qui-ne-se-chargeait-jamais, série cicatrices, famille integration-connecteurs, lecteur numerique-it-data, requête « pourquoi une installation logicielle echoue en cabinet », preuve attendue : la mesure par substitution et la règle de cadrage qui en est sortie)."
+    ],
+    "blog-outline": [
+      "Plan calqué sur le gabarit thought-leadership et sur la charte §7 ter : réponse directe, la promesse et ce que l’utilisateur a vu, les trois hypothèses fausses et la substitution qui tranche, le vert qui ne mesurait rien, La règle écrite en quatre libellés, Rejoué sur le jeu fictif, questions fréquentes, règle à retenir, pour aller plus loin."
+    ],
+    "blog-image": [
+      "Brief à six composantes écrit (sujet, composition, style, palette épinglée par hex, interdits, alt) ; aucune génération lancée : la passe Higgsfield coûte 3 crédits et attend le go de Kevin, donc image.source reste absent."
+    ],
+    "blog-schema": [
+      "BlogPosting, BreadcrumbList, Person, Organization et WebSite émis par ArticleJsonLd.astro depuis le frontmatter ; ImageObject sur la couverture une fois générée ; aucun FAQPage ni HowTo."
+    ]
+  }
+}
