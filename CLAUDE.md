@@ -7,13 +7,17 @@ Dépôt privé `saphiron222/memlia-landing`, poussé sur `main` par Kevin, dépl
 
 | Il fait | Il ne fait pas |
 |---|---|
-| le site public et le blog : présenter l'offre, capter, convertir | livrer du produit — les compléments Excel vivent dans `~/dev/produit*` |
-| parler le vocabulaire réel des cabinets (paie, DSN, bulletin, portefeuille) | promettre des fonctions qu'aucun module ne livre |
+| le site public et le blog : présenter l'offre, capter, convertir | livrer du produit — les automatisations livrées vivent dans `~/dev/produit*` |
+| parler le vocabulaire réel des cabinets (paie, DSN, bulletin, portefeuille) | promettre une fonction qu'aucune automatisation livrée ne fait |
 
-**Ce qui se vend, et qui doit transparaître :** des compléments Excel (Office.js sans macro, et COM/.NET
-pour la ligne bureau) greffés sur les classeurs que le cabinet utilise déjà. On n'ôte pas Excel au cabinet,
-on l'automatise en place. Positionnement : un **résultat livré**, la règle du cabinet codée et éprouvée sur
-ses propres fichiers, avec proposition puis validation humaine ; prix à la complexité, jamais au siège.
+**Ce qui se vend, et qui doit transparaître : l'automatisation IA des tâches répétitives d'un cabinet
+d'expertise comptable.** Un service, pas un logiciel : observer la tâche, écrire sa règle et ses limites dans
+les mots du cabinet, automatiser **dans les outils existants**, éprouver sur un jeu d'essai fictif, recetter,
+maintenir. Proposition puis validation humaine ; prix à la complexité, jamais au siège. Le **véhicule** se
+choisit par tâche (panneau Office.js sur un classeur, add-in COM/.NET, application de bureau) et n'est
+jamais la catégorie commerciale : ⚠ **« module » et « complément Excel » ne s'écrivent sur aucune surface
+publique** — charte §9, verrouillé par `tests/proof/test_positioning.py`. Excel est une intégration
+possible, jamais un mot du hero (charte §4).
 
 ## Stack
 
@@ -51,7 +55,7 @@ rédigé, en WebP/AVIF ; les captures produit viennent du banc Windows, sur le j
 - **Le SEO acquis ne régresse pas** : `title`, `description`, canonical, Open Graph, JSON-LD (Organization,
   WebSite, Service, FAQPage), `robots.txt`, sitemap, `llms.txt`, pages légales en `noindex`,
   `lang="fr"`, un seul `h1`. Lighthouse ≥ 95 sur les quatre axes.
-- **Aucune donnée client réelle**, aucun chiffre non sourcé, aucune promesse au-delà des modules livrés.
+- **Aucune donnée client réelle**, aucun chiffre non sourcé, aucune promesse au-delà de ce qui est livré.
 - Principes affichés et tenus : l'IA prépare, l'humain décide ; anti-surveillance (agrégats, jamais nominatif) ;
   RGPD et secret professionnel.
 - Contenu paie et fiscal : **fact-check obligatoire**, sources datées.

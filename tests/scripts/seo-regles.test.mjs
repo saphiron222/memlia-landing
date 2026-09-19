@@ -474,8 +474,12 @@ test('verifierRoutes : une page qui nomme des tâches sans route vers un article
   };
   const r = verifierRoutes({ pages, articles: ['/blog/a'] });
   const sansRoute = r.avertissements.filter((a) => a.code === 'page-sans-route-vers-article').map((a) => a.cible);
-  assert.deepEqual(sansRoute.sort(), ['/', '/garanties']);
-  assert.ok(!sansRoute.includes('/contact'));
+  assert.deepEqual(sansRoute.sort(), ['/garanties']);
+  assert.ok(!sansRoute.includes('/contact'), '/contact est exclue par décision du 18/09');
+  assert.ok(!sansRoute.includes('/'), 'l’accueil est exclu depuis le 19/09 : son corps ne porte aucun lien par conception');
+  // La liste des pages à servir est un paramètre : nommer l'accueil le fait mesurer à nouveau.
+  const force = verifierRoutes({ pages, articles: ['/blog/a'], pagesAServir: ['/'] });
+  assert.deepEqual(force.avertissements.filter((a) => a.code === 'page-sans-route-vers-article').map((a) => a.cible), ['/']);
 });
 
 test('chercherPassages : un paragraphe qui porte tous les mots de la requête, ni un partiel ni un tableau', () => {
@@ -560,4 +564,10 @@ test('alertesDemande nomme les articles dont la requête primaire n’a aucune s
   ] };
   const alertes = alertesDemande(registre, { 'crm dsn': ['crm dsn c est quoi'], 'suivi production sociale': [] });
   assert.deepEqual(alertes, ['requête primaire sans demande mesurée à l’autocomplétion : « suivi production sociale » (b) — recaler le titre ou l’angle (voir questions.mjs)']);
+});
+
+test('PAGES_A_SERVIR exclut l’accueil : son corps ne porte aucun lien par décision de conception', async () => {
+  const { PAGES_A_SERVIR } = await import('../../scripts/lib/seo-regles.mjs');
+  assert.ok(!PAGES_A_SERVIR.includes('/'), 'l’accueil est exclu, comme /contact l’est déjà');
+  assert.deepEqual([...PAGES_A_SERVIR], ['/automatisation-cabinet-comptable', '/methode', '/garanties']);
 });

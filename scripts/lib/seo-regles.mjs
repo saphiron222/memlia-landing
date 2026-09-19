@@ -613,7 +613,16 @@ export function verifierAncres({ pages, aujourdhui = null }) {
  * `/contact` en est exclue par décision : c'est la page de conversion, l'en sortir dessert.
  * Les pages légales et `/a-propos` (page de marque) n'ont pas à router vers un article.
  */
-export const PAGES_A_SERVIR = Object.freeze(['/', '/automatisation-cabinet-comptable', '/methode', '/garanties']);
+/**
+ * Les pages commerciales qui doivent mener à au moins un article. `/contact` en est exclue par
+ * décision (18/09), et `/` depuis le 19/09 : le corps de l'accueil ne porte aucun lien par
+ * conception, et ses illustrations ne doivent pas redevenir un catalogue — un garde-fou le
+ * refuse (`tests/proof/test_positioning.py::test_illustrations_are_not_product_cards`, éprouvé
+ * le 19/09 : il a rejeté un lien ajouté dans la section « usages »). La route de l'accueil vers
+ * le blog passe par la navigation et le pied de page. Un avertissement qu'on ne corrigera
+ * jamais est du bruit, pas une mesure.
+ */
+export const PAGES_A_SERVIR = Object.freeze(['/automatisation-cabinet-comptable', '/methode', '/garanties']);
 
 /**
  * Deux mesures, aucune tâche : les correctifs vivent hors de la forge (une page .astro, le
