@@ -23,7 +23,7 @@ try {
     await page.evaluate(() => window.scrollTo({top:0,behavior:'instant'}));
     await page.waitForTimeout(700);
     await page.screenshot({ path: `${dir}/${width}-full.png`, fullPage: true });
-    for (const id of ['modules','methode','questions']) {
+    for (const id of ['methode','questions']) {
       await page.locator(`#${id}`).scrollIntoViewIfNeeded();
       await page.waitForTimeout(700);
       await page.screenshot({ path: `${dir}/${width}-${id}.png` });
