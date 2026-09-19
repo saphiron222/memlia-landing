@@ -7436,13 +7436,26 @@
       "aucune"
     ],
     "priorite": 3,
-    "serie": "cicatrices"
+    "serie": "cicatrices",
+    "demande": {
+      "mesureeLe": "2026-09-19",
+      "requete": 0,
+      "statut": "requete-primaire-sans-suggestion",
+      "preuve": "docs/strategy/site-v3/mesures/cicatrices-gisement-2026-09-19.json"
+    },
+    "origine": {
+      "fichier": "skill:memlia-lecons/references/mission-cabinet-elodie.md",
+      "date": "2026-07-21",
+      "faitMesure": "Le rendez-vous du 21/07 a arrêté le remplacement des classeurs : la personne qui devait utiliser l'application a refusé de quitter quinze ans d'habitudes, aucun prix n'avait été annoncé et le principe d'automatiser l'outil existant a été retenu.",
+      "coutAtteste": "Une application de démonstration complète, évaluée 8/10, n'a pas été adoptée.",
+      "regle": "Mesurer la tâche avant de choisir le véhicule, puis automatiser dans l'outil déjà ouvert par l'équipe."
+    }
   },
   {
     "slug": "trois-bugs-que-des-tests-verts-n-ont-pas-vus",
-    "titre": "Trois défauts que des tests verts n'ont pas vus, et la règle des trois passes",
+    "titre": "Pourquoi des tests verts manquent des défauts : la règle des trois passes",
     "date": "2026-09-26",
-    "requete": "pourquoi des tests qui passent ne prouvent rien",
+    "requete": "pourquoi des tests verts peuvent manquer des défauts",
     "secondaires": [
       "tests verts faux positifs",
       "controle automatique qui ne detecte rien"
@@ -7457,13 +7470,26 @@
       "aucune"
     ],
     "priorite": 3,
-    "serie": "cicatrices"
+    "serie": "cicatrices",
+    "demande": {
+      "mesureeLe": "2026-09-19",
+      "requete": 0,
+      "statut": "requete-primaire-sans-suggestion",
+      "preuve": "docs/strategy/site-v3/mesures/cicatrices-gisement-2026-09-19.json"
+    },
+    "origine": {
+      "fichier": "skill:memlia-lecons/references/memlia-module2-supervision-sociale.md",
+      "date": "2026-07-25",
+      "faitMesure": "Les suites restaient vertes après l'insertion d'une colonne, tandis que la chaîne de preuve trouvait trois références désalignées et 137 divergences.",
+      "coutAtteste": "Trois défauts réels ont dû être repris hors des suites déjà vertes.",
+      "regle": "Toute recette combine trois passes indépendantes : suites, chaîne de preuve et écran."
+    }
   },
   {
     "slug": "l-outil-qui-ne-se-chargeait-jamais",
-    "titre": "L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »",
+    "titre": "Pourquoi une installation logicielle échoue en cabinet : le test qui a tranché",
     "date": "2026-10-03",
-    "requete": "pourquoi une installation logicielle echoue en cabinet",
+    "requete": "pourquoi une installation logicielle échoue en cabinet",
     "secondaires": [
       "droits administrateur installation cabinet comptable",
       "deploiement outil poste de travail cabinet"
@@ -7478,6 +7504,189 @@
       "aucune"
     ],
     "priorite": 3,
-    "serie": "cicatrices"
+    "serie": "cicatrices",
+    "demande": {
+      "mesureeLe": "2026-09-19",
+      "requete": 0,
+      "statut": "requete-primaire-sans-suggestion",
+      "preuve": "docs/strategy/site-v3/mesures/cicatrices-gisement-2026-09-19.json"
+    },
+    "origine": {
+      "fichier": "skill:memlia-lecons/references/mscoree-hkcu-non-lu-installeur-com.md",
+      "date": "2026-09-06",
+      "faitMesure": "Le même enregistrement copié tel quel rendait 0x80070002 sous HKCU et s'activait sous HKLM ; la substitution a isolé le besoin réel d'élévation.",
+      "coutAtteste": "Trois hypothèses plausibles ont coûté un aller-retour chacune avant la substitution.",
+      "regle": "Vérifier les droits, les accès et le compte réellement servi avant tout engagement de déploiement."
+    }
+  },
+  {
+    "slug": "build-reussi-application-ne-demarre-pas",
+    "titre": "Pourquoi un build réussi ne prouve pas qu’une application démarre",
+    "date": "2026-10-10",
+    "requete": "pourquoi un build réussi ne prouve pas qu'une application démarre",
+    "secondaires": [
+      "application installée ne démarre pas",
+      "test de démarrage application de bureau"
+    ],
+    "famille": "integration-connecteurs",
+    "role": "numerique-it-data",
+    "intent": "reduire-risque",
+    "funnel": "TOFU",
+    "format": "thought-leadership",
+    "preuve": "le 404 observé sur l'application empaquetée malgré des tests, un build et une CI verts, puis la règle qui installe et lance chaque exécutable avant livraison",
+    "sourcesOfficielles": [
+      "aucune"
+    ],
+    "priorite": 3,
+    "serie": "cicatrices",
+    "demande": {
+      "mesureeLe": "2026-09-19",
+      "requete": 0,
+      "statut": "requete-primaire-sans-suggestion",
+      "preuve": "docs/strategy/site-v3/mesures/cicatrices-gisement-2026-09-19.json"
+    },
+    "origine": {
+      "fichier": "skill:memlia-lecons/references/paquet-gele-compile-nest-pas-demarre.md",
+      "date": "2026-08-07",
+      "faitMesure": "L'application empaquetée affichait un 404 sur index.html sur le poste de livraison alors que la suite de tests, le build et la CI étaient verts ; la CI compilait sans exécuter.",
+      "coutAtteste": "Le défaut a été découvert au moment de la livraison ; aucun temps chiffré n'est attesté dans la source.",
+      "regle": "Installer et démarrer l'artefact livré, vérifier sa survie et l'existence de chaque ressource qu'il cherche."
+    }
+  },
+  {
+    "slug": "zero-erreur-collecte-incomplete",
+    "titre": "Pourquoi zéro erreur ne prouve pas une collecte complète : sept pages manquaient",
+    "date": "2026-10-17",
+    "requete": "pourquoi zéro erreur ne prouve pas une collecte complète",
+    "secondaires": [
+      "vérifier la couverture d'une collecte automatique",
+      "zéro échec données manquantes"
+    ],
+    "famille": "regle-jeu-essai-recette",
+    "role": "numerique-it-data",
+    "intent": "diagnostiquer",
+    "funnel": "TOFU",
+    "format": "thought-leadership",
+    "preuve": "le relevé à 112 éléments et zéro échec qui omettait sept pages et quatre catégories, puis le second comptage indépendant qui a révélé le manque",
+    "sourcesOfficielles": [
+      "aucune"
+    ],
+    "priorite": 3,
+    "serie": "cicatrices",
+    "demande": {
+      "mesureeLe": "2026-09-19",
+      "requete": 0,
+      "statut": "requete-primaire-sans-suggestion",
+      "preuve": "docs/strategy/site-v3/mesures/cicatrices-gisement-2026-09-19.json"
+    },
+    "origine": {
+      "fichier": "skill:memlia-lecons/references/zero-echec-ne-mesure-pas-la-couverture.md",
+      "date": "2026-08-26",
+      "faitMesure": "La première passe rendait 112 articles, zéro échec et zéro fichier vide, mais omettait sept articles et quatre catégories ; un second chemin comptait 16 catégories contre 19 auparavant.",
+      "coutAtteste": "Le corpus de conformité aurait été scellé amputé ; aucun temps chiffré n'est attesté dans la source.",
+      "regle": "Mesurer la couverture par deux énumérations indépendantes et réconcilier leurs comptes avant de conclure."
+    }
+  },
+  {
+    "slug": "rapport-analytics-mauvais-site",
+    "titre": "Pourquoi un rapport analytics peut mesurer le mauvais site",
+    "date": "2026-10-24",
+    "requete": "pourquoi un rapport analytics peut mesurer le mauvais site",
+    "secondaires": [
+      "vérifier la propriété d'un rapport analytics",
+      "rapport audience mauvais domaine"
+    ],
+    "famille": "mesure-roi",
+    "role": "direction-associes",
+    "intent": "diagnostiquer",
+    "funnel": "TOFU",
+    "format": "thought-leadership",
+    "preuve": "le rapport plausible produit pour une autre propriété, puis la règle qui oblige chaque chaîne de preuve à nommer son sujet, son domaine et sa période",
+    "sourcesOfficielles": [
+      "aucune"
+    ],
+    "priorite": 3,
+    "serie": "cicatrices",
+    "demande": {
+      "mesureeLe": "2026-09-19",
+      "requete": 0,
+      "statut": "requete-primaire-sans-suggestion",
+      "preuve": "docs/strategy/site-v3/mesures/cicatrices-gisement-2026-09-19.json"
+    },
+    "origine": {
+      "fichier": "skill:memlia-lecons/references/memlia-ga4-config-est-1lab.md",
+      "date": "2026-09-17",
+      "faitMesure": "Le rapport lancé sans propriété annonçait cinq sessions organiques sur 28 jours pour un autre site ; le site visé ne servait aucun marqueur GA4.",
+      "coutAtteste": "Les chiffres plausibles ont failli entrer dans une proposition SEO ; aucun coût chiffré n'est attesté.",
+      "regle": "Toute preuve nomme explicitement son sujet, son domaine, sa propriété et sa période avant d'être utilisée."
+    }
+  },
+  {
+    "slug": "revue-visuelle-mauvaise-palette",
+    "titre": "Pourquoi une revue visuelle peut valider la mauvaise palette",
+    "date": "2026-10-31",
+    "requete": "pourquoi une revue visuelle peut valider la mauvaise palette",
+    "secondaires": [
+      "critères mesurables revue design",
+      "validation visuelle palette de marque"
+    ],
+    "famille": "regle-jeu-essai-recette",
+    "role": "direction-associes",
+    "intent": "diagnostiquer",
+    "funnel": "TOFU",
+    "format": "thought-leadership",
+    "preuve": "la couverture validée malgré zéro graphite mesuré, puis la règle qui remplace les adjectifs par des couleurs exactes et contrôle l'artefact final",
+    "sourcesOfficielles": [
+      "aucune"
+    ],
+    "priorite": 3,
+    "serie": "cicatrices",
+    "demande": {
+      "mesureeLe": "2026-09-19",
+      "requete": 0,
+      "statut": "requete-primaire-sans-suggestion",
+      "preuve": "docs/strategy/site-v3/mesures/cicatrices-gisement-2026-09-19.json"
+    },
+    "origine": {
+      "fichier": "skill:memlia-lecons/references/memlia-revue-image-ne-mesure-pas-la-palette.md",
+      "date": "2026-09-18",
+      "faitMesure": "Une couverture portant 0,00 % de graphite et 2,70 % de vert passait la revue malgré un brief demandant du vert dominant et des touches de graphite ; les trois briefs avec le code #231f20 ont produit trois images conformes sur trois.",
+      "coutAtteste": "Deux couvertures restaient en dette de palette ; aucun crédit de régénération n'est compté comme dépensé dans la source.",
+      "regle": "Écrire les critères visuels en valeurs mesurables et les contrôler sur l'artefact final, pas sur l'intention du brief."
+    }
+  },
+  {
+    "slug": "test-automatise-accuse-mauvais-systeme",
+    "titre": "Pourquoi un test automatisé peut accuser le mauvais système",
+    "date": "2026-11-07",
+    "requete": "pourquoi un test automatisé peut accuser le mauvais système",
+    "secondaires": [
+      "faux positif test automatisé",
+      "vérifier un instrument de recette"
+    ],
+    "famille": "regle-jeu-essai-recette",
+    "role": "numerique-it-data",
+    "intent": "diagnostiquer",
+    "funnel": "TOFU",
+    "format": "thought-leadership",
+    "preuve": "les cinq premiers échecs produits par le harnais lui-même, puis le résultat 203 sur 203 après correction de l'instrument et la règle de bissection qui en est sortie",
+    "sourcesOfficielles": [
+      "aucune"
+    ],
+    "priorite": 3,
+    "serie": "cicatrices",
+    "demande": {
+      "mesureeLe": "2026-09-19",
+      "requete": 0,
+      "statut": "requete-primaire-sans-suggestion",
+      "preuve": "docs/strategy/site-v3/mesures/cicatrices-gisement-2026-09-19.json"
+    },
+    "origine": {
+      "fichier": "skill:memlia-lecons/references/un-rouge-qui-ne-prouve-rien.md",
+      "date": "2026-09-17/18",
+      "faitMesure": "Cinq échecs successifs venaient de l'instrument, pas du produit ; après correction, la même recette rendait 203 contrôles sur 203 et zéro muette.",
+      "coutAtteste": "Deux diagnostics initiaux étaient faux et ont été démolis par une image ; aucun temps chiffré n'est attesté.",
+      "regle": "Un instrument neuf doit d'abord rendre un vert attendu ; son premier rouge se tranche par capture ou bissection à une variable."
+    }
   }
 ]

@@ -1,5 +1,6 @@
 """Oracle de la cadence éditoriale : 4 articles lun-jeu + 1 Cicatrice le samedi."""
 from copy import deepcopy
+from datetime import date
 from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 import unittest
@@ -25,8 +26,12 @@ class EditorialCadenceProof(unittest.TestCase):
         self.assertEqual(par_semaine[(2026, 38)], 4)
         satellites = donnees[4]
         cicatrices = sorted((e for e in satellites if e.get("serie") == "cicatrices"), key=lambda e: e["date"])
-        self.assertEqual([e["date"] for e in cicatrices], ["2026-09-19", "2026-09-26", "2026-10-03"])
-        self.assertEqual([e["statut"] for e in cicatrices], ["published", "planned", "planned"])
+        dates = [date.fromisoformat(e["date"]) for e in cicatrices]
+        self.assertGreaterEqual(len(dates), 8)
+        self.assertEqual(dates[0].isoformat(), "2026-09-19")
+        self.assertTrue(all((b - a).days == 7 for a, b in zip(dates, dates[1:])), dates)
+        self.assertEqual(cicatrices[0]["statut"], "published")
+        self.assertTrue(all(e["statut"] == "planned" for e in cicatrices[1:]), cicatrices)
 
     def test_cicatrice_hors_samedi_rougit(self):
         donnees, _, _, _ = construire_et_verifier()

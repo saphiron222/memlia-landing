@@ -1,6 +1,6 @@
 # Plan de cluster v3 — « automatisation cabinet comptable »
 
-Généré le 2026-09-19 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 241 satellites (6 publiés, 235 planifiés) en 59 familles et 11 pôles, 964 liens, 346800 mots estimés.
+Généré le 2026-09-19 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 246 satellites (6 publiés, 240 planifiés) en 59 familles et 11 pôles, 984 liens, 353800 mots estimés.
 
 ## Méthode
 
@@ -547,7 +547,8 @@ Relier les logiciels par API ou par fichiers, sans ressaisie ni double écriture
 | 2027-05-03 | [La checklist avant de brancher un connecteur entre deux logiciels](/blog/checklist-avant-de-brancher-un-connecteur-entre-deux-logiciels-du-cabinet) | checklist connecteur logiciels cabinet comptable | listicle-checklist | numerique-it-data | 3 | planned |
 | 2027-08-03 | [Les échecs de synchronisation qu'un connecteur signale sans rejouer seul](/blog/les-echecs-de-synchronisation-qu-un-connecteur-doit-toujours-signaler-sans-rejouer-seul) | échec de synchronisation connecteur cabinet comptable | how-to-guide | numerique-it-data | 3 | planned |
 | 2027-10-14 | [Qu'est-ce qu'un connecteur entre logiciels, et quand s'en passer ?](/blog/qu-est-ce-qu-un-connecteur-entre-logiciels-et-quand-s-en-passer) | définition connecteur logiciel cabinet comptable | faq-knowledge | numerique-it-data | 3 | planned |
-| 2026-10-03 | [L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »](/blog/l-outil-qui-ne-se-chargeait-jamais) | pourquoi une installation logicielle echoue en cabinet | thought-leadership | numerique-it-data | 3 | planned |
+| 2026-10-03 | [Pourquoi une installation logicielle échoue en cabinet : le test qui a tranché](/blog/l-outil-qui-ne-se-chargeait-jamais) | pourquoi une installation logicielle échoue en cabinet | thought-leadership | numerique-it-data | 3 | planned |
+| 2026-10-10 | [Pourquoi un build réussi ne prouve pas qu’une application démarre](/blog/build-reussi-application-ne-demarre-pas) | pourquoi un build réussi ne prouve pas qu'une application démarre | thought-leadership | numerique-it-data | 3 | planned |
 
 ### AI Act et conformité des outils (`ai-act-conformite`)
 
@@ -618,7 +619,10 @@ Qualifier les tâches candidates, choisir la première, écrire le cadre.
 | 2027-05-12 | [La checklist de recette avant de mettre en service une automatisation](/blog/checklist-de-recette-avant-de-mettre-en-service-une-automatisation) | checklist recette automatisation cabinet comptable | listicle-checklist | direction-associes | 3 | planned |
 | 2027-08-12 | [Les cas qu'un jeu d'essai doit toujours inclure avant la recette](/blog/les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette) | jeu d'essai cas limite cas de refus automatisation | how-to-guide | direction-associes | 3 | planned |
 | 2026-11-25 | [Qu'est-ce qu'un manuel de procédures comptables, et que doit-il contenir ?](/blog/qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir) | qu'est-ce qu'un manuel de procédures comptables | faq-knowledge | direction-associes | 2 | planned |
-| 2026-09-26 | [Trois défauts que des tests verts n'ont pas vus, et la règle des trois passes](/blog/trois-bugs-que-des-tests-verts-n-ont-pas-vus) | pourquoi des tests qui passent ne prouvent rien | thought-leadership | direction-associes | 3 | planned |
+| 2026-09-26 | [Pourquoi des tests verts manquent des défauts : la règle des trois passes](/blog/trois-bugs-que-des-tests-verts-n-ont-pas-vus) | pourquoi des tests verts peuvent manquer des défauts | thought-leadership | direction-associes | 3 | planned |
+| 2026-10-17 | [Pourquoi zéro erreur ne prouve pas une collecte complète : sept pages manquaient](/blog/zero-erreur-collecte-incomplete) | pourquoi zéro erreur ne prouve pas une collecte complète | thought-leadership | numerique-it-data | 3 | planned |
+| 2026-10-31 | [Pourquoi une revue visuelle peut valider la mauvaise palette](/blog/revue-visuelle-mauvaise-palette) | pourquoi une revue visuelle peut valider la mauvaise palette | thought-leadership | direction-associes | 3 | planned |
+| 2026-11-07 | [Pourquoi un test automatisé peut accuser le mauvais système](/blog/test-automatise-accuse-mauvais-systeme) | pourquoi un test automatisé peut accuser le mauvais système | thought-leadership | numerique-it-data | 3 | planned |
 
 ### Validation humaine et cas de refus (`validation-humaine-refus`)
 
@@ -641,6 +645,7 @@ Mesurer avant et après sur un jeu fictif ; ne pas reprendre de chiffre non mesu
 | 2027-05-17 | [La checklist du protocole de mesure avant-après une automatisation](/blog/checklist-du-protocole-de-mesure-avant-apres-une-automatisation) | checklist mesure avant après automatisation cabinet comptable | listicle-checklist | direction-associes | 3 | planned |
 | 2027-08-17 | [Ce qu'un gain de temps mesuré ne doit jamais généraliser sans le dire](/blog/ce-qu-un-gain-de-temps-mesure-ne-doit-jamais-generaliser-sans-le-dire) | chiffre de gain de temps automatisation fiable | how-to-guide | direction-associes | 3 | planned |
 | 2027-10-27 | [Qu'est-ce qu'un gain de temps mesuré, en automatisation de cabinet ?](/blog/qu-est-ce-qu-un-gain-de-temps-mesure-en-automatisation-de-cabinet) | définition gain de temps mesuré automatisation | faq-knowledge | direction-associes | 3 | planned |
+| 2026-10-24 | [Pourquoi un rapport analytics peut mesurer le mauvais site](/blog/rapport-analytics-mauvais-site) | pourquoi un rapport analytics peut mesurer le mauvais site | thought-leadership | direction-associes | 3 | planned |
 
 ## Conseil et missions spéciales (`conseil-missions`)
 

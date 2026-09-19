@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "measuredAt": "2026-09-19T20:06:12.984Z",
+  "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+  "locale": {
+    "hl": "fr",
+    "gl": "fr"
+  },
+  "rule": "ok=true avec une liste vide est une mesure sans suggestion ; ok=false seul indique une absence de mesure.",
+  "autocompletion": {
+    "pourquoi les cabinets comptables n'adoptent pas les nouveaux outils": [],
+    "pourquoi des tests verts peuvent manquer des défauts": [],
+    "pourquoi une installation logicielle échoue en cabinet": [],
+    "pourquoi un build réussi ne prouve pas qu'une application démarre": [],
+    "pourquoi zéro erreur ne prouve pas une collecte complète": [],
+    "pourquoi un rapport analytics peut mesurer le mauvais site": [],
+    "pourquoi une revue visuelle peut valider la mauvaise palette": [],
+    "pourquoi un test automatisé peut accuser le mauvais système": []
+  },
+  "failures": []
+}

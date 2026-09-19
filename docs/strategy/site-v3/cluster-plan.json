@@ -5111,8 +5111,8 @@
           "incomingLinks": 3
         },
         {
-          "title": "L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »",
-          "keyword": "pourquoi une installation logicielle echoue en cabinet",
+          "title": "Pourquoi une installation logicielle échoue en cabinet : le test qui a tranché",
+          "keyword": "pourquoi une installation logicielle échoue en cabinet",
           "volume": null,
           "template": "essai",
           "format": "thought-leadership",
@@ -5130,6 +5130,32 @@
             "deploiement outil poste de travail cabinet"
           ],
           "proof": "la mesure par substitution qui a montré la cause réelle, et la règle de cadrage qui en est sortie : les accès et les droits se vérifient avant tout engagement",
+          "officialSources": [
+            "aucune"
+          ],
+          "status": "planned",
+          "incomingLinks": 3
+        },
+        {
+          "title": "Pourquoi un build réussi ne prouve pas qu’une application démarre",
+          "keyword": "pourquoi un build réussi ne prouve pas qu'une application démarre",
+          "volume": null,
+          "template": "essai",
+          "format": "thought-leadership",
+          "wordCount": 1400,
+          "url": "/blog/build-reussi-application-ne-demarre-pas",
+          "slug": "build-reussi-application-ne-demarre-pas",
+          "family": "integration-connecteurs",
+          "role": "numerique-it-data",
+          "intent": "reduire-risque",
+          "funnel": "TOFU",
+          "priority": 3,
+          "date": "2026-10-10",
+          "secondaryKeywords": [
+            "application installée ne démarre pas",
+            "test de démarrage application de bureau"
+          ],
+          "proof": "le 404 observé sur l'application empaquetée malgré des tests, un build et une CI verts, puis la règle qui installe et lance chaque exécutable avant livraison",
           "officialSources": [
             "aucune"
           ],
@@ -5788,8 +5814,8 @@
           "incomingLinks": 3
         },
         {
-          "title": "Trois défauts que des tests verts n'ont pas vus, et la règle des trois passes",
-          "keyword": "pourquoi des tests qui passent ne prouvent rien",
+          "title": "Pourquoi des tests verts manquent des défauts : la règle des trois passes",
+          "keyword": "pourquoi des tests verts peuvent manquer des défauts",
           "volume": null,
           "template": "essai",
           "format": "thought-leadership",
@@ -5807,6 +5833,84 @@
             "controle automatique qui ne detecte rien"
           ],
           "proof": "les trois défauts nommés, la mesure qui aurait dû rougir et ne rougissait pas, et la recette en trois passes qui les attrape depuis",
+          "officialSources": [
+            "aucune"
+          ],
+          "status": "planned",
+          "incomingLinks": 3
+        },
+        {
+          "title": "Pourquoi zéro erreur ne prouve pas une collecte complète : sept pages manquaient",
+          "keyword": "pourquoi zéro erreur ne prouve pas une collecte complète",
+          "volume": null,
+          "template": "essai",
+          "format": "thought-leadership",
+          "wordCount": 1400,
+          "url": "/blog/zero-erreur-collecte-incomplete",
+          "slug": "zero-erreur-collecte-incomplete",
+          "family": "regle-jeu-essai-recette",
+          "role": "numerique-it-data",
+          "intent": "diagnostiquer",
+          "funnel": "TOFU",
+          "priority": 3,
+          "date": "2026-10-17",
+          "secondaryKeywords": [
+            "vérifier la couverture d'une collecte automatique",
+            "zéro échec données manquantes"
+          ],
+          "proof": "le relevé à 112 éléments et zéro échec qui omettait sept pages et quatre catégories, puis le second comptage indépendant qui a révélé le manque",
+          "officialSources": [
+            "aucune"
+          ],
+          "status": "planned",
+          "incomingLinks": 3
+        },
+        {
+          "title": "Pourquoi une revue visuelle peut valider la mauvaise palette",
+          "keyword": "pourquoi une revue visuelle peut valider la mauvaise palette",
+          "volume": null,
+          "template": "essai",
+          "format": "thought-leadership",
+          "wordCount": 1400,
+          "url": "/blog/revue-visuelle-mauvaise-palette",
+          "slug": "revue-visuelle-mauvaise-palette",
+          "family": "regle-jeu-essai-recette",
+          "role": "direction-associes",
+          "intent": "diagnostiquer",
+          "funnel": "TOFU",
+          "priority": 3,
+          "date": "2026-10-31",
+          "secondaryKeywords": [
+            "critères mesurables revue design",
+            "validation visuelle palette de marque"
+          ],
+          "proof": "la couverture validée malgré zéro graphite mesuré, puis la règle qui remplace les adjectifs par des couleurs exactes et contrôle l'artefact final",
+          "officialSources": [
+            "aucune"
+          ],
+          "status": "planned",
+          "incomingLinks": 3
+        },
+        {
+          "title": "Pourquoi un test automatisé peut accuser le mauvais système",
+          "keyword": "pourquoi un test automatisé peut accuser le mauvais système",
+          "volume": null,
+          "template": "essai",
+          "format": "thought-leadership",
+          "wordCount": 1400,
+          "url": "/blog/test-automatise-accuse-mauvais-systeme",
+          "slug": "test-automatise-accuse-mauvais-systeme",
+          "family": "regle-jeu-essai-recette",
+          "role": "numerique-it-data",
+          "intent": "diagnostiquer",
+          "funnel": "TOFU",
+          "priority": 3,
+          "date": "2026-11-07",
+          "secondaryKeywords": [
+            "faux positif test automatisé",
+            "vérifier un instrument de recette"
+          ],
+          "proof": "les cinq premiers échecs produits par le harnais lui-même, puis le résultat 203 sur 203 après correction de l'instrument et la règle de bissection qui en est sortie",
           "officialSources": [
             "aucune"
           ],
@@ -6015,6 +6119,32 @@
             "temps gagné automatisation cabinet comptable calcul"
           ],
           "proof": "définition autonome de 50 mots avec un exemple fictif de protocole avant/après",
+          "officialSources": [
+            "aucune"
+          ],
+          "status": "planned",
+          "incomingLinks": 3
+        },
+        {
+          "title": "Pourquoi un rapport analytics peut mesurer le mauvais site",
+          "keyword": "pourquoi un rapport analytics peut mesurer le mauvais site",
+          "volume": null,
+          "template": "essai",
+          "format": "thought-leadership",
+          "wordCount": 1400,
+          "url": "/blog/rapport-analytics-mauvais-site",
+          "slug": "rapport-analytics-mauvais-site",
+          "family": "mesure-roi",
+          "role": "direction-associes",
+          "intent": "diagnostiquer",
+          "funnel": "TOFU",
+          "priority": 3,
+          "date": "2026-10-24",
+          "secondaryKeywords": [
+            "vérifier la propriété d'un rapport analytics",
+            "rapport audience mauvais domaine"
+          ],
+          "proof": "le rapport plausible produit pour une autre propriété, puis la règle qui oblige chaque chaîne de preuve à nommer son sujet, son domaine et sa période",
           "officialSources": [
             "aucune"
           ],
@@ -9332,7 +9462,7 @@
       "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
       "to": "l-outil-qui-ne-se-chargeait-jamais",
       "type": "pilier",
-      "anchor": "L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »"
+      "anchor": "Pourquoi une installation logicielle échoue en cabinet : le test qui a tranché"
     },
     {
       "from": "trois-bugs-que-des-tests-verts-n-ont-pas-vus",
@@ -9344,7 +9474,67 @@
       "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
       "to": "trois-bugs-que-des-tests-verts-n-ont-pas-vus",
       "type": "pilier",
-      "anchor": "Trois défauts que des tests verts n'ont pas vus, et la règle des trois passes"
+      "anchor": "Pourquoi des tests verts manquent des défauts : la règle des trois passes"
+    },
+    {
+      "from": "rapport-analytics-mauvais-site",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "rapport-analytics-mauvais-site",
+      "type": "pilier",
+      "anchor": "Pourquoi un rapport analytics peut mesurer le mauvais site"
+    },
+    {
+      "from": "build-reussi-application-ne-demarre-pas",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "build-reussi-application-ne-demarre-pas",
+      "type": "pilier",
+      "anchor": "Pourquoi un build réussi ne prouve pas qu’une application démarre"
+    },
+    {
+      "from": "zero-erreur-collecte-incomplete",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "zero-erreur-collecte-incomplete",
+      "type": "pilier",
+      "anchor": "Pourquoi zéro erreur ne prouve pas une collecte complète : sept pages manquaient"
+    },
+    {
+      "from": "revue-visuelle-mauvaise-palette",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "revue-visuelle-mauvaise-palette",
+      "type": "pilier",
+      "anchor": "Pourquoi une revue visuelle peut valider la mauvaise palette"
+    },
+    {
+      "from": "test-automatise-accuse-mauvais-systeme",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "test-automatise-accuse-mauvais-systeme",
+      "type": "pilier",
+      "anchor": "Pourquoi un test automatisé peut accuser le mauvais système"
     },
     {
       "from": "automatiser-les-controles-de-bulletins-apres-le-calcul-de-la-paie",
@@ -9896,28 +10086,64 @@
       "from": "les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette",
       "to": "trois-bugs-que-des-tests-verts-n-ont-pas-vus",
       "type": "famille",
-      "anchor": "pourquoi des tests qui passent ne prouvent rien"
+      "anchor": "pourquoi des tests verts peuvent manquer des défauts"
     },
     {
       "from": "qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir",
       "to": "trois-bugs-que-des-tests-verts-n-ont-pas-vus",
       "type": "famille",
-      "anchor": "pourquoi des tests qui passent ne prouvent rien"
+      "anchor": "pourquoi des tests verts peuvent manquer des défauts"
     },
     {
       "from": "qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir",
+      "to": "zero-erreur-collecte-incomplete",
+      "type": "famille",
+      "anchor": "pourquoi zéro erreur ne prouve pas une collecte complète"
+    },
+    {
+      "from": "trois-bugs-que-des-tests-verts-n-ont-pas-vus",
+      "to": "zero-erreur-collecte-incomplete",
+      "type": "famille",
+      "anchor": "pourquoi zéro erreur ne prouve pas une collecte complète"
+    },
+    {
+      "from": "trois-bugs-que-des-tests-verts-n-ont-pas-vus",
+      "to": "revue-visuelle-mauvaise-palette",
+      "type": "famille",
+      "anchor": "pourquoi une revue visuelle peut valider la mauvaise palette"
+    },
+    {
+      "from": "zero-erreur-collecte-incomplete",
+      "to": "revue-visuelle-mauvaise-palette",
+      "type": "famille",
+      "anchor": "pourquoi une revue visuelle peut valider la mauvaise palette"
+    },
+    {
+      "from": "zero-erreur-collecte-incomplete",
+      "to": "test-automatise-accuse-mauvais-systeme",
+      "type": "famille",
+      "anchor": "pourquoi un test automatisé peut accuser le mauvais système"
+    },
+    {
+      "from": "revue-visuelle-mauvaise-palette",
+      "to": "test-automatise-accuse-mauvais-systeme",
+      "type": "famille",
+      "anchor": "pourquoi un test automatisé peut accuser le mauvais système"
+    },
+    {
+      "from": "revue-visuelle-mauvaise-palette",
       "to": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
       "type": "famille",
       "anchor": "manuel de procédures cabinet expertise comptable"
     },
     {
-      "from": "trois-bugs-que-des-tests-verts-n-ont-pas-vus",
+      "from": "test-automatise-accuse-mauvais-systeme",
       "to": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
       "type": "famille",
       "anchor": "manuel de procédures cabinet expertise comptable"
     },
     {
-      "from": "trois-bugs-que-des-tests-verts-n-ont-pas-vus",
+      "from": "test-automatise-accuse-mauvais-systeme",
       "to": "checklist-de-recette-avant-de-mettre-en-service-une-automatisation",
       "type": "famille",
       "anchor": "checklist recette automatisation cabinet comptable"
@@ -11828,19 +12054,25 @@
       "from": "les-echecs-de-synchronisation-qu-un-connecteur-doit-toujours-signaler-sans-rejouer-seul",
       "to": "l-outil-qui-ne-se-chargeait-jamais",
       "type": "famille",
-      "anchor": "pourquoi une installation logicielle echoue en cabinet"
+      "anchor": "pourquoi une installation logicielle échoue en cabinet"
     },
     {
       "from": "qu-est-ce-qu-un-connecteur-entre-logiciels-et-quand-s-en-passer",
       "to": "l-outil-qui-ne-se-chargeait-jamais",
       "type": "famille",
-      "anchor": "pourquoi une installation logicielle echoue en cabinet"
+      "anchor": "pourquoi une installation logicielle échoue en cabinet"
     },
     {
       "from": "qu-est-ce-qu-un-connecteur-entre-logiciels-et-quand-s-en-passer",
-      "to": "automatiser-les-echanges-entre-logiciels-par-connecteur-ou-par-fichier",
+      "to": "build-reussi-application-ne-demarre-pas",
       "type": "famille",
-      "anchor": "connecteur entre logiciels cabinet comptable automatisation"
+      "anchor": "pourquoi un build réussi ne prouve pas qu'une application démarre"
+    },
+    {
+      "from": "l-outil-qui-ne-se-chargeait-jamais",
+      "to": "build-reussi-application-ne-demarre-pas",
+      "type": "famille",
+      "anchor": "pourquoi un build réussi ne prouve pas qu'une application démarre"
     },
     {
       "from": "l-outil-qui-ne-se-chargeait-jamais",
@@ -11849,7 +12081,13 @@
       "anchor": "connecteur entre logiciels cabinet comptable automatisation"
     },
     {
-      "from": "l-outil-qui-ne-se-chargeait-jamais",
+      "from": "build-reussi-application-ne-demarre-pas",
+      "to": "automatiser-les-echanges-entre-logiciels-par-connecteur-ou-par-fichier",
+      "type": "famille",
+      "anchor": "connecteur entre logiciels cabinet comptable automatisation"
+    },
+    {
+      "from": "build-reussi-application-ne-demarre-pas",
       "to": "checklist-avant-de-brancher-un-connecteur-entre-deux-logiciels-du-cabinet",
       "type": "famille",
       "anchor": "checklist connecteur logiciels cabinet comptable"
@@ -12126,9 +12364,15 @@
     },
     {
       "from": "ce-qu-un-gain-de-temps-mesure-ne-doit-jamais-generaliser-sans-le-dire",
-      "to": "mesurer-le-temps-reellement-gagne-par-une-automatisation",
+      "to": "rapport-analytics-mauvais-site",
       "type": "famille",
-      "anchor": "ROI automatisation cabinet comptable"
+      "anchor": "pourquoi un rapport analytics peut mesurer le mauvais site"
+    },
+    {
+      "from": "qu-est-ce-qu-un-gain-de-temps-mesure-en-automatisation-de-cabinet",
+      "to": "rapport-analytics-mauvais-site",
+      "type": "famille",
+      "anchor": "pourquoi un rapport analytics peut mesurer le mauvais site"
     },
     {
       "from": "qu-est-ce-qu-un-gain-de-temps-mesure-en-automatisation-de-cabinet",
@@ -12137,7 +12381,13 @@
       "anchor": "ROI automatisation cabinet comptable"
     },
     {
-      "from": "qu-est-ce-qu-un-gain-de-temps-mesure-en-automatisation-de-cabinet",
+      "from": "rapport-analytics-mauvais-site",
+      "to": "mesurer-le-temps-reellement-gagne-par-une-automatisation",
+      "type": "famille",
+      "anchor": "ROI automatisation cabinet comptable"
+    },
+    {
+      "from": "rapport-analytics-mauvais-site",
       "to": "checklist-du-protocole-de-mesure-avant-apres-une-automatisation",
       "type": "famille",
       "anchor": "checklist mesure avant après automatisation cabinet comptable"
@@ -12240,12 +12490,12 @@
     }
   ],
   "meta": {
-    "totalPosts": 241,
-    "plannedPosts": 235,
+    "totalPosts": 246,
+    "plannedPosts": 240,
     "publishedPosts": 6,
     "totalClusters": 11,
     "totalFamilies": 59,
-    "totalLinks": 964,
-    "estimatedWords": 346800
+    "totalLinks": 984,
+    "estimatedWords": 353800
   }
 }

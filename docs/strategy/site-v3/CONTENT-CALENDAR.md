@@ -13,7 +13,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 
 ## Volume
 
-- 241 satellites + 1 pilier ; 6 satellite(s) publié(s) au 16/09/2026 ; dernier créneau planifié : 2027-11-01.
+- 246 satellites + 1 pilier ; 6 satellite(s) publié(s) au 16/09/2026 ; dernier créneau planifié : 2027-11-01.
 
 ## Semaine par semaine
 
@@ -42,7 +42,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-09-22 | [Calendrier fiscal d'un cabinet comptable : suivre les échéances d'un portefeuille](/blog/suivre-les-echeances-fiscales-d-un-portefeuille) | Calendrier et échéances fiscales du portefeuille | Portefeuille et échéances | how-to-guide | 1 | planned |
 | 2026-09-23 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | Entrée en relation et onboarding client | Administration et secrétariat | listicle-checklist | 1 | planned |
 | 2026-09-24 | [IA et expert-comptable : ce que l'IA prépare au cabinet, ce qu'elle ne décide pas](/blog/ia-generative-au-cabinet-ce-qu-elle-prepare-ce-qu-elle-ne-decide-pas) | IA générative et agents | Numérique, IT et data | faq-knowledge | 1 | planned |
-| 2026-09-26 | [Trois défauts que des tests verts n'ont pas vus, et la règle des trois passes](/blog/trois-bugs-que-des-tests-verts-n-ont-pas-vus) | Règle, jeu d’essai et recette | Méthode et décision humaine | thought-leadership | 3 | planned |
+| 2026-09-26 | [Pourquoi des tests verts manquent des défauts : la règle des trois passes](/blog/trois-bugs-que-des-tests-verts-n-ont-pas-vus) | Règle, jeu d’essai et recette | Méthode et décision humaine | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W40
 
@@ -52,7 +52,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-09-29 | [Mentions obligatoires de la facture électronique : la checklist avant le passage](/blog/checklist-de-conformite-avant-le-passage-a-la-facture-electronique) | Facture électronique et e-reporting | Production comptable | listicle-checklist | 1 | planned |
 | 2026-09-30 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | DSN et comptes rendus métier | Paie et social | listicle-checklist | 1 | planned |
 | 2026-10-01 | [Documents obligatoires en fin de contrat : la checklist de sortie d'un salarié](/blog/checklist-de-sortie-d-un-salarie-documents-et-delais) | Entrées, sorties et attestations | Paie et social | listicle-checklist | 1 | planned |
-| 2026-10-03 | [L'outil qui ne se chargeait jamais, et pourquoi je ne promets plus « sans installation »](/blog/l-outil-qui-ne-se-chargeait-jamais) | Connecteurs, imports et synchronisation | Numérique, IT et data | thought-leadership | 3 | planned |
+| 2026-10-03 | [Pourquoi une installation logicielle échoue en cabinet : le test qui a tranché](/blog/l-outil-qui-ne-se-chargeait-jamais) | Connecteurs, imports et synchronisation | Numérique, IT et data | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W41
 
@@ -62,6 +62,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-10-06 | [Agent IA ou assistant IA : la différence pour un cabinet](/blog/agent-ia-ou-assistant-ia-la-difference-pour-un-cabinet) | IA générative et agents | Numérique, IT et data | faq-knowledge | 1 | planned |
 | 2026-10-07 | [Mise au rebut d'une immobilisation : ce qu'un tableau d'amortissement ne tranche pas](/blog/cession-et-mise-au-rebut-ce-qu-un-tableau-d-amortissement-automatique-ne-tranche-pas) | Immobilisations, amortissements et emprunts | Production comptable | how-to-guide | 1 | planned |
 | 2026-10-08 | [Rupture conventionnelle : délai d'homologation, ce qu'un générateur ne boucle pas seul](/blog/les-ruptures-de-contrat-qu-un-generateur-automatique-de-documents-ne-doit-pas-boucler-seul) | Entrées, sorties et attestations | Paie et social | how-to-guide | 1 | planned |
+| 2026-10-10 | [Pourquoi un build réussi ne prouve pas qu’une application démarre](/blog/build-reussi-application-ne-demarre-pas) | Connecteurs, imports et synchronisation | Numérique, IT et data | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W42
 
@@ -71,6 +72,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-10-13 | [Changement de bénéficiaire effectif : ce qu'une mise à jour ne déclare pas seule](/blog/changement-de-beneficiaire-effectif-ce-qu-une-mise-a-jour-automatique-ne-declare-pas-seule) | Registres et obligations périodiques | Juridique et fiscal | how-to-guide | 1 | planned |
 | 2026-10-14 | [Déclaration de soupçon Tracfin : ce qu'un suivi de mission ne décide jamais seul](/blog/vigilance-lcb-ft-ce-qu-un-suivi-automatique-de-mission-ne-decide-jamais-seul) | Lettre de mission et vigilance | Juridique et fiscal | how-to-guide | 1 | planned |
 | 2026-10-15 | [Proposer un échéancier de paiement à un client : la proposition, puis la validation](/blog/les-echeanciers-de-regularisation-qu-un-outil-ne-doit-jamais-proposer-sans-validation) | Prélèvements, encaissements et rejets | Facturation et recouvrement du cabinet | how-to-guide | 1 | planned |
+| 2026-10-17 | [Pourquoi zéro erreur ne prouve pas une collecte complète : sept pages manquaient](/blog/zero-erreur-collecte-incomplete) | Règle, jeu d’essai et recette | Méthode et décision humaine | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W43
 
@@ -80,6 +82,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-10-20 | [Cabinet comptable en surcharge de travail : où passe le temps, et ce qui s'écrit](/blog/cabinet-comptable-en-surcharge-de-travail-ou-passe-le-temps-et-ce-qui-s-ecrit) | Plan de charge et affectation | Portefeuille et échéances | how-to-guide | 1 | planned |
 | 2026-10-21 | [CRM DSN de substitution : ce que le compte rendu remplace, et ce qu'il faut refaire](/blog/crm-dsn-de-substitution-ce-que-le-compte-rendu-remplace-et-ce-qu-il-faut-refaire) | DSN et comptes rendus métier | Paie et social | faq-knowledge | 1 | planned |
 | 2026-10-22 | [Caisses de retraite complémentaire obligatoires : ce que le cabinet suit par dossier](/blog/quelles-charges-sociales-un-cabinet-doit-il-suivre-pour-chaque-dossier) | Charges sociales et échéances | Paie et social | faq-knowledge | 1 | planned |
+| 2026-10-24 | [Pourquoi un rapport analytics peut mesurer le mauvais site](/blog/rapport-analytics-mauvais-site) | Mesurer le temps gagné | Méthode et décision humaine | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W44
 
@@ -89,6 +92,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-10-27 | [Comment se calcule un acompte d'impôt sur les sociétés ?](/blog/comment-se-calcule-un-acompte-d-impot-sur-les-societes) | Impôt sur les sociétés, acomptes et soldes | Juridique et fiscal | faq-knowledge | 1 | planned |
 | 2026-10-28 | [Qui doit déclarer la CVAE ? La règle du cabinet, dossier par dossier](/blog/cfe-cvae-das2-ifu-a-quoi-correspond-chaque-declaration-annexe) | Déclarations annexes | Juridique et fiscal | faq-knowledge | 1 | planned |
 | 2026-10-29 | [Délai de dépôt des comptes au greffe : le calendrier que le cabinet tient par dossier](/blog/quel-est-le-delai-legal-pour-approuver-les-comptes-annuels) | Approbation des comptes et secrétariat juridique | Juridique et fiscal | faq-knowledge | 1 | planned |
+| 2026-10-31 | [Pourquoi une revue visuelle peut valider la mauvaise palette](/blog/revue-visuelle-mauvaise-palette) | Règle, jeu d’essai et recette | Méthode et décision humaine | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W45
 
@@ -98,6 +102,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-11-03 | [Qu'est-ce que le registre des bénéficiaires effectifs ?](/blog/qu-est-ce-que-le-registre-des-beneficiaires-effectifs) | Registres et obligations périodiques | Juridique et fiscal | faq-knowledge | 1 | planned |
 | 2026-11-04 | [Qu'est-ce que la lettre de mission d'un expert-comptable ?](/blog/qu-est-ce-que-la-lettre-de-mission-d-un-expert-comptable) | Lettre de mission et vigilance | Juridique et fiscal | faq-knowledge | 1 | planned |
 | 2026-11-05 | [Codes motifs de rejet de prélèvement SEPA : les lire, puis proposer l'échéancier](/blog/qu-est-ce-qu-un-rejet-de-prelevement-et-quels-sont-ses-motifs-courants) | Prélèvements, encaissements et rejets | Facturation et recouvrement du cabinet | faq-knowledge | 1 | planned |
+| 2026-11-07 | [Pourquoi un test automatisé peut accuser le mauvais système](/blog/test-automatise-accuse-mauvais-systeme) | Règle, jeu d’essai et recette | Méthode et décision humaine | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W46
 
