@@ -1,6 +1,6 @@
 # SEO et préparation aux citations IA — Suivre la production sociale dans Excel : modèle, règles et limites
 
-Verdict : PASS — 97/100, 0 P0 (revue indépendante du 2026-09-17, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
+Verdict : PASS — 97/100, 0 P0 (revue indépendante du 2026-09-19, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
 | Catégorie | Score |
 | --- | ---: |

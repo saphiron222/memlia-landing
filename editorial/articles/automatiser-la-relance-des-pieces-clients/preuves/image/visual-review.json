@@ -3,56 +3,88 @@
   "candidateSlug": "automatiser-la-relance-des-pieces-clients",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-17",
-  "articleSha256": "3627fa25049818da9ea4a4da962bb1abaa3dc6810000382b06e2a479dac664bb",
-  "manifestSha256": "0b39ecac258866ed08a79ef5c6e5e4a7f2c830fc7f15b54bc5a1a426acf26ae9",
+  "checkedAt": "2026-09-19",
+  "articleSha256": "7b70a1f9e35fa6dd74a12534f874210d4d8ad87cfc74811bbecab9a168bb169e",
+  "manifestSha256": "ef9fb2e0365152ff0213f708e039146653f230d29d18b5797a993ecef8b8c0c0",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-relance-des-pieces-clients."
   ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "touche"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "touche"
+      },
+      {
+        "hex": "#231f20",
+        "role": "touche"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.7371701388888889,
+      "#27b657": 0.02640625,
+      "#1c8a41": 0.055538194444444446,
+      "#231f20": 0.028784722222222222
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
   "criteria": [
     {
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "L’image montre les six composantes du brief : un plateau à six compartiments (trois remplis de piles de feuilles blanches pliées, trois vides), une checklist en papier avec trois coches vertes et une case vide, un portique aux montants verts surmonté d’un bouton rond vert, une enveloppe crème posée devant ce portique avec un jeton vert à côté, et une pièce sombre (graphite) isolée à droite du cadre — vérifié par lecture directe de master.png."
+        "Le brief porte ses six composantes et épingle chaque couleur par son hex ; la palette mesurée sur le master rendu : crème 74,00 % · vert 2,68 % · vert profond 5,67 % · graphite 2,73 %."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Aucun texte lisible, chiffre, logo, personnage, visage, écran ni fausse interface logicielle n’est visible sur master.png : les lignes de la checklist sont de simples barres grises non typographiées, conforme à la liste d’interdits de prompt.json.",
-        "Aucune alerte rouge ni symbole d’envoi automatique constaté ; la palette observée (crème, blanc papier, deux verts, graphite sombre) correspond à la palette du brief sans écart de teinte visible."
+        "Génération gpt_image_2_5, 16:9, qualité haute, 2K, master 1920×1080 adopté par la forge ; coût et passes consignés dans image-source.json."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Le rendu est un diorama 3D isométrique stylisé (formes géométriques simplifiées, matières mates, lumière studio venant du haut-gauche, ombres courtes) sans aucune ambiguïté possible avec une photo ou une capture d’écran réelle ; prompt.json confirme un engine « image_generate » et un couple articleSha256/manifestSha256 lié au candidat exact."
+        "Scène entièrement construite, aucun document réel, aucune donnée de cabinet, aucun nom ni chiffre."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "La combinaison plateau partiellement rempli, checklist partiellement cochée, enveloppe en attente devant un portique et pièce isolée restitue, rapprochée du H1 et de l’alt, les notions de complétude partielle, de validation avant envoi et de dossier mis à l’écart.",
-        "Comme les autres couvertures Memlia, l’image reste un diorama abstrait plutôt qu’une scène littérale de relance par courriel : elle s’appuie sur l’alt et le H1 pour lever l’ambiguïté, cohérent avec la continuité de style demandée envers la couverture IMG-25 mais à noter."
+        "Plateau à six compartiments dont trois garnis de feuilles vierges, liste de contrôle à trois cases cochées et une vide, enveloppe devant un portique, dossier graphite mis à l'écart. Aucun texte lisible, aucun chiffre, aucune interface, aucune personne."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "master.png mesure 1920×1080 (16:9) comme déclaré dans image.json et confirmé à l’ouverture du fichier ; le crop OG 1200×630 (+0+22) et les variantes 768×432 en AVIF/WebP sont déclarés dans image.json et référencés dans le <picture> du rendu HTML (srcset 768/1200/1600w).",
-        "Les balises og:image et twitter:image pointent vers img-art-relance-des-pieces-og.webp en 1200×630 avec og:image:width/height renseignés, cohérent avec le crop déclaré."
+        "Dérivés 768, 1200 et 1600 en AVIF et WebP plus l'image sociale 1200×630, produits par la forge depuis ce master et scellés au dossier."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L’attribut alt (« Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart ») mesure 125 caractères (compté), exactement à la limite requise, décrit fidèlement le contenu visuel réel et signale sa nature de diorama ; repris à l’identique en og:image:alt et dans le JSON-LD (caption)."
+        "L'alternative textuelle décrit ce que l'image montre pour cette tâche, sans promesse ni vocabulaire de catalogue."
       ]
     }
   ]

@@ -4,7 +4,7 @@ titreOnglet: "CRM DSN : lire le compte rendu et ses anomalies | Memlia"
 resume: "Un dépôt accepté ne clôt pas le contrôle. Identifiez le retour, son émetteur, sa période et sa population ; lisez le statut dans sa source, rapprochez la donnée de paie, puis documentez la décision et le contrôle suivant. La mécanique rassemble et rapproche ; votre équipe décide."
 description: "Méthode pour distinguer les retours DSN, lire un CRM, qualifier une anomalie et tracer la correction sans confondre dépôt accepté et paie juste."
 datePublication: 2026-09-15
-dateMiseAJour: 2026-09-17
+dateMiseAJour: 2026-09-19
 auteur: kevin
 sujets: [dsn, paie, production-sociale, methode]
 motsCles: ["comptes rendus métier DSN", "CRM DSN", "bilan d’anomalies DSN", "certificat de conformité DSN", "CRM nominatif"]
@@ -23,7 +23,7 @@ tache: "Lire les retours reçus après une DSN, déterminer leur portée et orga
 preuveRole:
   niveau: hypothese
   source: "preuves/role.json"
-  date: 2026-09-17
+  date: 2026-09-19
 funnel: TOFU
 contentType: searchable
 format: how-to-guide
@@ -33,7 +33,7 @@ proofStatus: verifiee
 proofRequired: "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; sept affirmations DSN citées mot pour mot depuis Net-entreprises, ouvertes le jour de la republication."
 reviewRule: "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val) et à chaque nouvelle version de norme DSN ; relecture des sources à six mois."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-17
+sourcesVerifieesLe: 2026-09-19
 cta:
   label: "Confier cette tâche"
   destination: "/contact"
@@ -45,19 +45,19 @@ sources:
   - editeur: "Net-entreprises"
     titre: "Les comptes rendus métiers DSN"
     url: "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/"
-    consulte: 2026-09-17
+    consulte: 2026-09-19
   - editeur: "Net-entreprises"
     titre: "Les retours d’informations suite au dépôt de votre DSN ou signalement d’événement"
     url: "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/"
-    consulte: 2026-09-17
+    consulte: 2026-09-19
   - editeur: "Net-entreprises"
     titre: "La fiabilisation des données de la DSN"
     url: "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/"
-    consulte: 2026-09-17
+    consulte: 2026-09-19
   - editeur: "Net-entreprises"
     titre: "Outils d’auto-contrôle Dsn-Val et brique de contrôle"
     url: "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/"
-    consulte: 2026-09-17
+    consulte: 2026-09-19
 ---
 
 ## Réponse directe

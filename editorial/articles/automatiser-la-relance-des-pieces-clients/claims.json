@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-relance-des-pieces-clients",
-  "articleSha256": "3627fa25049818da9ea4a4da962bb1abaa3dc6810000382b06e2a479dac664bb",
+  "articleSha256": "7b70a1f9e35fa6dd74a12534f874210d4d8ad87cfc74811bbecab9a168bb169e",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -268,11 +268,11 @@
       "sourceExcerpts": {
         "cnil-principes": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-19",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-19",
         "sourceResults": [
           {
             "sourceId": "cnil-principes",
@@ -284,10 +284,10 @@
             "citation": {
               "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
               "sha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
-              "sourceContentSha256": "cd718b4ec80cfefd36f81e69b6a91259b9775c909a2a60a965e8119bed4b1f5a",
+              "sourceContentSha256": "27d13c45909736771f8631276cfaf22bd2f6dfe920202dc069a4cb4eafb0b8bd",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-19",
                 "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
                 "locator": {
                   "kind": "line-range",
@@ -313,7 +313,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Principe de minimisation, article 5 du RGPD, cité mot pour mot depuis le texte publié par la CNIL.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-19"
           }
         ]
       }
@@ -329,11 +329,11 @@
       "sourceExcerpts": {
         "cnil-durees": "Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte."
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-19",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-19",
         "sourceResults": [
           {
             "sourceId": "cnil-durees",
@@ -345,10 +345,10 @@
             "citation": {
               "text": "Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte.",
               "sha256": "03753b8dd6f3d19178af98785f6542f535195836e334fd92027002aabe5de8c2",
-              "sourceContentSha256": "33a7bd43349547f204c9443aa4b8b7333c0ad94ae0a2923f1232ee05d0f58f23",
+              "sourceContentSha256": "831d0a13cb439e911c20ee963b68e99bc75c1e830672ac7df60618ef0088080b",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-19",
                 "title": "Les durées de conservation des données",
                 "locator": {
                   "kind": "line-range",
@@ -373,7 +373,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Constat de la CNIL sur l’absence de durée fixée par un texte pour de nombreux traitements, repris à l’identique.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-19"
           }
         ]
       }
@@ -389,11 +389,11 @@
       "sourceExcerpts": {
         "sp-conservation": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-19",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-19",
         "sourceResults": [
           {
             "sourceId": "sp-conservation",
@@ -405,10 +405,10 @@
             "citation": {
               "text": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
               "sha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
-              "sourceContentSha256": "73b3bb8edd29ea7adc122c9b90e50408adc7a15ffebb9c88411a15cacdc6d970",
+              "sourceContentSha256": "c2a1d9c03104a8ad9e3261906bad9bb00c78cb864f0659003c8088be4feede7b",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-19",
                 "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
                 "locator": {
                   "kind": "line-range",
@@ -437,7 +437,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La phrase de Service-Public est reprise à l’identique, seule l’apostrophe typographique diffère.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-19"
           }
         ]
       }
@@ -453,11 +453,11 @@
       "sourceExcerpts": {
         "cnil-sous-traitant": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme"
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-19",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-19",
         "sourceResults": [
           {
             "sourceId": "cnil-sous-traitant",
@@ -469,10 +469,10 @@
             "citation": {
               "text": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme",
               "sha256": "527923a27ec2ed451a7ebf42f076caf5f74ea1c14431366ca1b3fcb56e5d5256",
-              "sourceContentSha256": "ab6439bae00bcdef312ae704a635946a3027f2d4ba1fe759deba4d0161776753",
+              "sourceContentSha256": "7a9954cae7a849a03c8b91e894e386e36bb03640d8b002a0c60174e852048ce7",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-19",
                 "title": "Définition : sous-traitant",
                 "locator": {
                   "kind": "line-range",
@@ -500,7 +500,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition officielle du sous-traitant reprise à l’identique depuis le glossaire de la CNIL.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-19"
           }
         ]
       }

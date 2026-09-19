@@ -5,7 +5,7 @@
   "summary": "Un dépôt accepté ne clôt pas le contrôle. Identifiez le retour, son émetteur, sa période et sa population ; lisez le statut dans sa source, rapprochez la donnée de paie, puis documentez la décision et le contrôle suivant. La mécanique rassemble et rapproche ; votre équipe décide.",
   "description": "Méthode pour distinguer les retours DSN, lire un CRM, qualifier une anomalie et tracer la correction sans confondre dépôt accepté et paie juste.",
   "date": "2026-09-15",
-  "updatedAt": "2026-09-17",
+  "updatedAt": "2026-09-19",
   "topics": [
     "dsn",
     "paie",
@@ -67,9 +67,9 @@
       "sujet": "Comprendre et traiter les comptes rendus métier après un dépôt DSN : un fichier abstrait a déjà franchi un portique ; plusieurs retours distincts arrivent ; une anomalie est isolée ; une bifurcation attend l’arbitrage humain.",
       "composition": "Horizontale 16:9 ; à gauche un fichier abstrait passé le portique ; au centre plusieurs plaques translucides pour les retours distincts, une pièce gris-graphite isolée ; à droite une bifurcation ouverte et un jeton vert déplacé vers une voie.",
       "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce, ombres courtes, faible profondeur, composition aérée.",
-      "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème, graphite.",
-      "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome.",
-      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : comprendre et traiter les comptes rendus métier après un dépôt DSN. À gauche, un fichier abstrait a déjà franchi un portique ; au centre, plusieurs plaques translucides représentent des retours distincts ; une pièce gris-graphite est isolée ; à droite, une bifurcation et un jeton évoquent l’arbitrage humain. Style : diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, palette Memlia vert #27b657 / vert profond #1c8a41 / crème / graphite, lumière de studio douce, ombres courtes, faible profondeur, composition aérée. Interdits : texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome.",
+      "palette": "Fond crème #fcfbf7 dominant, vert Memlia #27b657 et vert profond #1c8a41 en accents, touches de graphite #231f20.",
+      "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome. Aucune figure humaine, aucun pictogramme de personne, aucune silhouette, aucun avatar : l'arbitrage humain se représente par une bifurcation ou un jeton neutre, jamais par quelqu'un.",
+      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : comprendre et traiter les comptes rendus métier après un dépôt DSN. À gauche, un fichier abstrait a déjà franchi un portique ; au centre, plusieurs plaques translucides représentent des retours distincts ; une pièce gris-graphite est isolée ; à droite, une bifurcation et un jeton évoquent l’arbitrage humain. Style : diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, Interdits : texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, promesse de correction autonome. Palette stricte, proportions imposées : fond crème #fcfbf7 dominant (environ 70 % de l'image) ; vert Memlia #27b657 et vert profond #1c8a41 en accents nettement visibles, chacun au moins 2 % de l'image, posés sur des volumes pleins et non sur de fins liserés ; touches de graphite #231f20 sur au moins 2 % de l'image, en arêtes, ombres portées et pièces isolées. Aucune autre couleur saturée. Aucune figure humaine, aucun pictogramme de personne, aucune silhouette, aucun avatar : l'arbitrage humain se représente par une bifurcation ou un jeton neutre, jamais par quelqu'un.",
       "reviewCriteria": [
         "continuité avec les couvertures existantes",
         "dépôt déjà franchi",
@@ -81,11 +81,11 @@
     },
     "source": {
       "path": "image-source.png",
-      "generationId": "openai_codex_gpt-image-2-medium_20260915_111346_25aea5fd",
-      "model": "gpt-image-2-medium",
-      "provider": "openai-codex",
-      "generatedAt": "2026-09-15",
-      "credits": null
+      "generationId": "e10f5649-c5e7-4fe1-9f96-bf879764f87e",
+      "model": "gpt_image_2_5",
+      "provider": "higgsfield",
+      "generatedAt": "2026-09-19",
+      "credits": 6
     }
   },
   "sources": [

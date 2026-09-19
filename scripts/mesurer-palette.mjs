@@ -12,9 +12,10 @@
  * complète de l'image.
  */
 import sharp from 'sharp';
-import { classerPixel, hexEnRgb } from './lib/palette.mjs';
+import { classerPixel, hexEnRgb, TOLERANCE_MESURE } from './lib/palette.mjs';
 
-export const TOLERANCE_PAR_DEFAUT = 60;
+/** Une seule tolérance pour la mesure et pour le contrôle du brief : elles décrivent le même pouvoir de séparation. */
+export const TOLERANCE_PAR_DEFAUT = TOLERANCE_MESURE;
 export const LARGEUR_MESURE = 320;
 
 export async function mesurerPalette(chemin, hexes, { tolerance = TOLERANCE_PAR_DEFAUT, largeur = LARGEUR_MESURE } = {}) {

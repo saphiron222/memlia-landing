@@ -98,46 +98,42 @@
       "brief-six-components": {
         "result": "PASS",
         "observations": [
-          "Les quatre zones du brief sont présentes : à gauche un portique vert traversé par un bloc crème (fichier déjà franchi), au centre une pile de plaques translucides à formes distinctes (cercle, triangle, hexagone et losange, pentagone) pour les retours, une plaque gris-graphite isolée en avant-plan pour l'anomalie, et à droite une bifurcation avec un disque au point de fourche.",
-          "Le jeton au point de bifurcation est crème plutôt que littéralement vert comme le décrit le texte de composition du brief ; c'est une déviation mineure qui n'empêche pas de lire la scène comme un arbitrage sans personnage."
+          "Le brief porte ses six composantes et épingle chaque couleur par son hex ; la palette mesurée sur le master rendu : crème 78,98 % · vert 3,20 % · vert profond 2,14 % · graphite 2,76 %."
         ]
       },
       "generation-constraints": {
         "result": "PASS",
         "observations": [
-          "Format 16:9 (1920x1080 selon image.json), style diorama 3D isométrique à matières mates et translucides sur fond crème, conforme au brief.",
-          "Palette limitée au vert Memlia, au vert profond, au crème et au graphite ; aucune alerte rouge, aucune fausse interface ni écran, et aucun texte ou chiffre lisible détecté sur l'image."
+          "Génération gpt_image_2_5, 16:9, qualité haute, 2K, master 1920×1080 adopté par la forge ; coût et passes consignés dans image-source.json."
         ]
       },
       "fictive-provenance": {
         "result": "PASS",
         "observations": [
-          "L'image est un rendu 3D abstrait sans ressemblance photographique, capture d'écran ou logo d'un organisme réel ; aucune personne ni donnée identifiable n'apparaît, cohérent avec une origine explicitement générée."
+          "Scène entièrement construite, aucun document réel, aucune donnée de cabinet, aucun nom ni chiffre."
         ]
       },
       "recognizable-subject": {
         "result": "PASS",
         "observations": [
-          "La séquence portique franchi puis plaques distinctes puis pièce isolée puis bifurcation restitue lisiblement l'alt « un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine », un registre attendu pour une couverture conceptuelle plutôt que littérale."
+          "Un fichier franchit un portique, quatre plaques translucides portent des retours distincts, une pièce graphite est isolée, une bifurcation à jeton neutre figure l'arbitrage. Aucun texte lisible, aucune interface, aucune figure humaine."
         ]
       },
       "technical-derivatives": {
         "result": "PASS",
         "observations": [
-          "image.json déclare le master 1920x1080 en PNG, un dérivé OG 1200x630 en WebP (recadré 1200x630+0+22), et un dérivé hero-768 en AVIF et WebP (768x432), couvrant les trois formats attendus.",
-          "Le HTML rendu consomme bien ces tailles : srcset 768/1200/1600w en AVIF et WebP pour le hero, og:image et twitter:image en 1200x630 avec largeur et hauteur déclarées."
+          "Dérivés 768, 1200 et 1600 en AVIF et WebP plus l'image sociale 1200×630, produits par la forge depuis ce master et scellés au dossier."
         ]
       },
       "alt-information": {
         "result": "PASS",
         "observations": [
-          "L'attribut alt compte 95 caractères, sous la limite de 125, et décrit la scène (dépôt franchi, retours distincts, anomalie isolée, décision humaine) plutôt qu'un mot-clé ou une promesse marketing.",
-          "Le même texte alt est répété à l'identique entre paquet-revue.json, prompt.json, image.json, og:image:alt et l'attribut alt du HTML rendu, sans dérive entre les surfaces."
+          "L'alternative textuelle décrit ce que l'image montre pour cette tâche, sans promesse ni vocabulaire de catalogue."
         ]
       }
     },
     "directionArt": 18,
-    "semanticRelevance": 22
+    "semanticRelevance": 23
   },
   "sources": {
     "reviewedBy": "relecteur-metier-ia-memlia",

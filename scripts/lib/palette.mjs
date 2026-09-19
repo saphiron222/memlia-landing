@@ -20,13 +20,23 @@ const MOTS_COULEUR = ['vert', 'verte', 'crème', 'creme', 'graphite', 'papier', 
 const MINIMUM_HEX = 3;
 
 /**
- * Planchers calibrés sur les six couvertures livrées, mesurés le 19/09/2026 (le corpus AVANT de s'y fier) :
- * crème de 27 à 82 %, verts de 0,3 à 9,9 %, graphite de 0,03 à 8,5 %. Une « dominante » à 10 % serait
- * fausse : dans cette direction artistique, c'est le fond crème qui domine et le vert qui accentue.
- * Retenu : une couleur annoncée dominante doit être clairement visible (2 %), une touche présente (0,5 %).
- * Ces planchers n'absolvent personne — deux couvertures livrées les manquent, et c'est écrit en dette.
+ * La tolérance de la mesure des pixels, et donc le pouvoir de séparation de l'instrument.
+ * Calibrée le 19/09/2026 sur les six couvertures livrées : elle doit rester SOUS la plus petite
+ * distance entre deux couleurs de la marque, sinon l'instrument ne sait pas les distinguer. Les
+ * deux verts Memlia sont distants de 50,4 : à 60 ils se confondaient, à 45 ils se séparent, et
+ * une matière mate reste comptée (verts de 0,2 à 6,2 %, crème de 17 à 80 % selon la couverture).
  */
-export const SEUILS_PALETTE = Object.freeze({ dominante: 0.02, touche: 0.005, presente: 0.005 });
+export const TOLERANCE_MESURE = 45;
+export const distanceRgb = ([r, g, b], [r2, g2, b2]) => Math.sqrt((r - r2) ** 2 + (g - g2) ** 2 + (b - b2) ** 2);
+
+/**
+ * Planchers calibrés sur les six couvertures livrées, mesurées AVANT de s'y fier (tolérance 45) :
+ * le fond crème occupe 17 à 80 % de l'image, les verts de la marque 0,2 à 6,2 %, le graphite 0 à
+ * 6,1 %. Dans cette direction artistique, c'est le fond qui domine et la couleur de marque qui
+ * accentue : un brief qui annonce le vert « dominant » décrit une image qui n'existe pas.
+ * Retenu : une dominante couvre au moins 10 % de l'image, une touche au moins 0,5 %.
+ */
+export const SEUILS_PALETTE = Object.freeze({ dominante: 0.1, touche: 0.005, presente: 0.005 });
 
 const pourcent = (part) => `${(part * 100).toFixed(3).replace(/\.?0+$/, '').replace('.', ',')} %`;
 
@@ -59,6 +69,15 @@ export function verifierBriefPalette(palette) {
     if ((segment.match(HEX) ?? []).length > 0) continue;
     const mot = MOTS_COULEUR.find((m) => new RegExp(`\\b${m}\\b`, 'i').test(segment));
     if (mot) erreurs.push(`Palette du brief : « ${segment.trim()} » nomme une couleur (${mot}) sans son code hex — l'épingler, sinon la revue image ne peut pas la mesurer.`);
+  }
+  // Deux couleurs plus proches que la tolérance de mesure ne se partagent pas : le classement au
+  // plus proche leur attribue les mêmes pixels de façon arbitraire, et l'une des deux échoue son
+  // plancher sans que l'image soit en cause. Mesuré le 19/09/2026 sur deux couvertures livrées.
+  for (let i = 0; i < couleurs.length; i += 1) {
+    for (let j = i + 1; j < couleurs.length; j += 1) {
+      const d = distanceRgb(hexEnRgb(couleurs[i].hex), hexEnRgb(couleurs[j].hex));
+      if (d < TOLERANCE_MESURE) erreurs.push(`Palette du brief : ${couleurs[i].hex} et ${couleurs[j].hex} sont distantes de ${d.toFixed(1)}, sous la tolérance de mesure (${TOLERANCE_MESURE}) — indiscernables, n'en épingler qu'une.`);
+    }
   }
   if (couleurs.length < MINIMUM_HEX) erreurs.push(`Palette du brief : ${couleurs.length} couleur(s) épinglée(s), au moins trois attendues (fond, dominante, touche).`);
   return erreurs;

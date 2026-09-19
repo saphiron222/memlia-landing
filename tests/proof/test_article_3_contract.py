@@ -12,7 +12,9 @@ ROOT = Path(__file__).resolve().parents[2]
 SLUG = "comprendre-les-comptes-rendus-metier-dsn"
 ARTICLE = ROOT / "src/content/blog" / f"{SLUG}.md"
 DIST = ROOT / "dist"
-TODAY = "2026-09-17"
+# La règle réelle : les sources ont été consultées le JOUR de la (re)publication de l'article.
+# Une date épinglée ici se périmait à chaque republication et forçait à retoucher l'oracle —
+# c'est l'article qui porte sa date, l'oracle la lit (constaté le 19/09/2026 en republiant).
 
 
 class Document(HTMLParser):
@@ -40,13 +42,21 @@ def source_records(source: str) -> list[tuple[str, str]]:
         re.findall(r'url: "(https://[^"<>\s]+)", consulte: (\d{4}-\d{2}-\d{2})', frontmatter(source))
 
 
+def jour_de_publication(source: str) -> str:
+    fm = frontmatter(source)
+    maj = re.search(r'^dateMiseAJour: (\d{4}-\d{2}-\d{2})', fm, re.M)
+    pub = re.search(r'^datePublication: (\d{4}-\d{2}-\d{2})', fm, re.M)
+    return (maj or pub).group(1)
+
+
 def source_errors(source: str) -> list[str]:
     records = source_records(source)
+    attendu = jour_de_publication(source)
     errors: list[str] = []
     if len(records) < 4:
         errors.append("sources-absentes")
     for url, consulted in records:
-        if consulted != TODAY:
+        if consulted != attendu:
             errors.append(f"source-perimee:{url}")
         if url not in body(source):
             errors.append(f"claim-sans-citation:{url}")
@@ -137,7 +147,7 @@ class Article3Contract(unittest.TestCase):
         assert source_line is not None
         missing = self.source.replace(source_line.group(), "")
         self.assertIn("sources-absentes", source_errors(missing))
-        stale = self.source.replace(f"consulte: {TODAY}", "consulte: 2025-09-17", 1)
+        stale = self.source.replace(f"consulte: {jour_de_publication(self.source)}", "consulte: 2025-09-17", 1)
         self.assertTrue(any(error.startswith("source-perimee:") for error in source_errors(stale)))
         marker = f"]({first_url})"
         uncited = self.source.replace(marker, "](https://example.invalid/source)", 1)

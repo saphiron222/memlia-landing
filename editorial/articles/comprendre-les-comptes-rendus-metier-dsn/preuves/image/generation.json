@@ -3,19 +3,19 @@
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
   "kind": "image-generation",
   "status": "PASS",
-  "checkedAt": "2026-09-17",
-  "articleSha256": "c7055d564b5249a1f8b2399a58f7f4db5827f7927e4a49e06abbff5b5e31be91",
-  "manifestSha256": "23f90957b7523de8047c1bb2b304b3ced0e26778ddb5d344bfc2881739bea513",
+  "checkedAt": "2026-09-19",
+  "articleSha256": "d2a11828ef0c9bad0653b3a30835344ef10d4942dcfd55ac3fc669ca2be766f1",
+  "manifestSha256": "9f8ef2fcfb66c6638c6a3311f6321108d4aeab942689236e58e45c74de70c313",
   "observations": [
     "Contrôle image-generation relu sur le candidat exact comprendre-les-comptes-rendus-metier-dsn."
   ],
   "engine": "image_generate",
-  "generationId": "openai_codex_gpt-image-2-medium_20260915_111346_25aea5fd",
-  "model": "gpt-image-2-medium",
-  "provider": "openai-codex",
-  "generatedAt": "2026-09-15",
+  "generationId": "e10f5649-c5e7-4fe1-9f96-bf879764f87e",
+  "model": "gpt_image_2_5",
+  "provider": "higgsfield",
+  "generatedAt": "2026-09-19",
   "sourcePath": "image-source.png",
-  "sourceSha256": "e78cf4ee9ca6091ff0cac9814c0a17344b68a841d64ee4a411d03885596b58dd",
-  "outputSha256": "e78cf4ee9ca6091ff0cac9814c0a17344b68a841d64ee4a411d03885596b58dd",
-  "credits": null
+  "sourceSha256": "847fcdb77ccc856df7e55792938128c089c6d9605892093773cb06e622b1142f",
+  "outputSha256": "64a84b5a3e5db1ffb9a0d4453cd2d7142515f77a641a9eaf6f3ca14667cb9636",
+  "credits": 6
 }

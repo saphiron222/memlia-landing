@@ -5,7 +5,7 @@
   "summary": "Construisez le suivi sur l’unité dossier × période × étape : une table de saisie contrôlée, des calculs régénérables et une vue agrégée. Les exceptions portent sur les dossiers, jamais sur un classement individuel, et un jeu d’essai fictif éprouve le modèle avant la mise en service.",
   "description": "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel.",
   "date": "2026-09-09",
-  "updatedAt": "2026-09-17",
+  "updatedAt": "2026-09-19",
   "topics": [
     "production-sociale",
     "excel",
@@ -67,9 +67,9 @@
       "sujet": "Le suivi de production sociale : cinq dossiers sur une grille, trois couches de traitement (saisie, calcul, vue), des agrégats sans personne et une exception isolée pour décision.",
       "composition": "Horizontale 16:9 ; cinq jetons-dossiers alignés sur une grille, trois plateaux superposés lus de bas en haut, une pièce graphite mise à part sur le côté, aucune figure humaine.",
       "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche, ombres courtes, faible profondeur, composition aérée.",
-      "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème, graphite.",
+      "palette": "Fond crème #fcfbf7 dominant, vert Memlia #27b657 et vert profond #1c8a41 en accents, touches de graphite #231f20.",
       "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, classement de personnes.",
-      "prompt": "Cinq dossiers sur une grille, trois couches de traitement, agrégats sans personne et une exception isolée. Diorama 3D isométrique, formes simplifiées, matières mates et translucides, fond crème papier, palette vert #27b657 / vert profond #1c8a41 / crème / graphite, lumière douce du haut gauche. Sans texte, sans chiffre, sans logo, sans personnage, sans interface.",
+      "prompt": "Cinq dossiers sur une grille, trois couches de traitement, agrégats sans personne et une exception isolée. Diorama 3D isométrique, formes simplifiées, matières mates et translucides, fond crème papier, Sans texte, sans chiffre, sans logo, sans personnage, sans interface. Palette stricte, proportions imposées : fond crème #fcfbf7 dominant (environ 70 % de l'image) ; vert Memlia #27b657 et vert profond #1c8a41 en accents nettement visibles, chacun au moins 2 % de l'image, posés sur des volumes pleins et non sur de fins liserés ; touches de graphite #231f20 sur au moins 2 % de l'image, en arêtes, ombres portées et pièces isolées. Aucune autre couleur saturée.",
       "reviewCriteria": [
         "continuité avec les couvertures existantes",
         "cinq dossiers et trois couches lisibles",
@@ -80,11 +80,11 @@
     },
     "source": {
       "path": "image-source.png",
-      "generationId": "openai_codex_gpt-image-2-medium_20260913_211413_af37d6ae",
-      "model": "gpt-image-2-medium",
-      "provider": "openai-codex",
-      "generatedAt": "2026-09-13",
-      "credits": null
+      "generationId": "91dda302-a4d9-437c-a2e9-700cad3c5462",
+      "model": "gpt_image_2_5",
+      "provider": "higgsfield",
+      "generatedAt": "2026-09-19",
+      "credits": 3
     }
   },
   "sources": [

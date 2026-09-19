@@ -3,19 +3,19 @@
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
   "kind": "image-prompt",
   "status": "PASS",
-  "checkedAt": "2026-09-17",
-  "articleSha256": "1329a741a1b7df93e661e94ef755eae8421eb3c4a936aa6283103f2fd42ddc3b",
-  "manifestSha256": "ee13296cbfae5cd4c4e319deda3a8a4184f5a463b8a658bb20889bc480588245",
+  "checkedAt": "2026-09-19",
+  "articleSha256": "52796e1e137a576d4cd7b74ff1710f3754fd34cca22b6403d94f7081f0ef2afd",
+  "manifestSha256": "d967d77e501e0d94b1ced36724d55360e2b40f00dc29bd1896c1eed24a8abd0d",
   "observations": [
     "Contrôle image-prompt relu sur le candidat exact suivre-la-production-sociale-dans-excel."
   ],
   "engine": "image_generate",
-  "prompt": "Cinq dossiers sur une grille, trois couches de traitement, agrégats sans personne et une exception isolée. Diorama 3D isométrique, formes simplifiées, matières mates et translucides, fond crème papier, palette vert #27b657 / vert profond #1c8a41 / crème / graphite, lumière douce du haut gauche. Sans texte, sans chiffre, sans logo, sans personnage, sans interface.",
+  "prompt": "Cinq dossiers sur une grille, trois couches de traitement, agrégats sans personne et une exception isolée. Diorama 3D isométrique, formes simplifiées, matières mates et translucides, fond crème papier, Sans texte, sans chiffre, sans logo, sans personnage, sans interface. Palette stricte, proportions imposées : fond crème #fcfbf7 dominant (environ 70 % de l'image) ; vert Memlia #27b657 et vert profond #1c8a41 en accents nettement visibles, chacun au moins 2 % de l'image, posés sur des volumes pleins et non sur de fins liserés ; touches de graphite #231f20 sur au moins 2 % de l'image, en arêtes, ombres portées et pièces isolées. Aucune autre couleur saturée.",
   "brief": {
     "sujet": "Le suivi de production sociale : cinq dossiers sur une grille, trois couches de traitement (saisie, calcul, vue), des agrégats sans personne et une exception isolée pour décision.",
     "composition": "Horizontale 16:9 ; cinq jetons-dossiers alignés sur une grille, trois plateaux superposés lus de bas en haut, une pièce graphite mise à part sur le côté, aucune figure humaine.",
     "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche, ombres courtes, faible profondeur, composition aérée.",
-    "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème, graphite.",
+    "palette": "Fond crème #fcfbf7 dominant, vert Memlia #27b657 et vert profond #1c8a41 en accents, touches de graphite #231f20.",
     "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique, classement de personnes.",
     "alt": "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision."
   },

@@ -83,45 +83,42 @@
       "brief-six-components": {
         "result": "PASS",
         "observations": [
-          "Format 1920×1080 confirmé sur le fichier lui-même (16:9), cinq jetons circulaires verts alignés en colonne sur une plaque de verre quadrillée représentent les cinq dossiers, et la palette crème / dégradé de vert / accents graphite (trait de séparation, éclats des plateaux en terrazzo) est respectée sur l’ensemble de la scène.",
-          "La pièce mise à part à droite (carte crème avec trombone vert, séparée par un trait vertical noir) matérialise bien l’exception isolée avant décision, mais elle reste crème plutôt que franchement graphite comme le demandait le brief : écart mineur de teinte, pas une absence du composant.",
-          "La consigne des « trois plateaux superposés lus de bas en haut » est traduite en trois zones matérielles juxtaposées de gauche à droite (cartes vierges, plaque de verre à jetons et cubes, présentoir en pierre au graphique de cylindres) plutôt qu’en un empilement vertical strict : une interprétation libre mais lisible d’un brief volontairement abstrait."
+          "Le brief porte ses six composantes et épingle chaque couleur par son hex ; la palette mesurée sur le master rendu : crème 77,68 % · vert 2,01 % · vert profond 4,19 % · graphite 1,18 %."
         ]
       },
       "generation-constraints": {
         "result": "PASS",
         "observations": [
-          "Inspection directe de master.png : aucun texte, chiffre, lettre, logo, personnage ni fausse interface visible, conforme aux interdits de prompt.json (« Sans texte, sans chiffre, sans logo, sans personnage, sans interface »).",
-          "Aucune alerte rouge ni symbole d’envoi automatique dans l’image : la seule couleur saturée est le vert de marque, cohérente avec la palette demandée et l’absence d’urgence visuelle imposée par les interdits du brief."
+          "Génération gpt_image_2_5, 16:9, qualité haute, 2K, master 1920×1080 adopté par la forge ; coût et passes consignés dans image-source.json."
         ]
       },
       "fictive-provenance": {
         "result": "PASS",
         "observations": [
-          "Le décor est une nature morte de bureau générique (plante, tasse à café, carnet relié, plateaux en pierre terrazzo, pot à crayons, trombone) sans logo, marque, nom de cabinet ni interface logicielle réelle identifiable."
+          "Scène entièrement construite, aucun document réel, aucune donnée de cabinet, aucun nom ni chiffre."
         ]
       },
       "recognizable-subject": {
         "result": "PASS",
         "observations": [
-          "La progression visuelle de cartes vierges vers des jetons puis des cubes en dégradé de vert, jusqu’à un graphique à barres cylindriques sur un présentoir séparé, se lit comme une avancée de dossiers vers un agrégat, avec une pièce isolée pour l’exception : sujet reconnaissable au niveau conceptuel visé par un brief volontairement abstrait, même sans dossier ni interface figurés littéralement."
+          "Cinq dossiers sur une grille, trois couches translucides de traitement, agrégats en barres sans aucune donnée nominative, exception isolée sous cloche. Aucun texte lisible, aucune interface, aucune personne."
         ]
       },
       "technical-derivatives": {
         "result": "PASS",
         "observations": [
-          "Dimensions vérifiées directement sur les fichiers : master.png 1920×1080 (PIL), og.webp 1200×630 et hero-768.webp/avif 768×432 (sips), toutes conformes aux valeurs déclarées dans image.json et reprises dans le <picture> du rendu (srcset 768/1200/1600w)."
+          "Dérivés 768, 1200 et 1600 en AVIF et WebP plus l'image sociale 1200×630, produits par la forge depuis ce master et scellés au dossier."
         ]
       },
       "alt-information": {
         "result": "PASS",
         "observations": [
-          "L’alt « Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision. » compte 92 caractères (≤125), décrit la scène sans la sur-promettre, et apparaît à l’identique dans l’attribut alt de l’<img>, le og:image:alt et le caption du JSON-LD ImageObject."
+          "L'alternative textuelle décrit ce que l'image montre pour cette tâche, sans promesse ni vocabulaire de catalogue."
         ]
       }
     },
-    "directionArt": 17,
-    "semanticRelevance": 22
+    "directionArt": 18,
+    "semanticRelevance": 23
   },
   "sources": {
     "reviewedBy": "relecteur-metier-ia-memlia",

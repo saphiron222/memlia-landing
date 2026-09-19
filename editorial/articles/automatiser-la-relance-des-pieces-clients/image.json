@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-relance-des-pieces-clients",
-  "articleSha256": "3627fa25049818da9ea4a4da962bb1abaa3dc6810000382b06e2a479dac664bb",
-  "manifestSha256": "0b39ecac258866ed08a79ef5c6e5e4a7f2c830fc7f15b54bc5a1a426acf26ae9",
+  "articleSha256": "7b70a1f9e35fa6dd74a12534f874210d4d8ad87cfc74811bbecab9a168bb169e",
+  "manifestSha256": "ef9fb2e0365152ff0213f708e039146653f230d29d18b5797a993ecef8b8c0c0",
   "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
@@ -37,7 +37,17 @@
   "alt": "Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart",
   "score": 100,
   "directionArt": 18,
-  "semanticRelevance": 22,
+  "semanticRelevance": 23,
   "p0": [],
-  "kevinApproved": true
+  "kevinApproved": true,
+  "palette": {
+    "statut": "PASS",
+    "parts": {
+      "#fcfbf7": 0.7371701388888889,
+      "#27b657": 0.02640625,
+      "#1c8a41": 0.055538194444444446,
+      "#231f20": 0.028784722222222222
+    },
+    "ecarts": []
+  }
 }

@@ -91,7 +91,7 @@
       "sujet": "La relance des pièces manquantes : un plateau à compartiments partiellement rempli, une checklist cochée, une enveloppe qui attend devant un portique, un dossier mis à l’écart.",
       "composition": "Vue isométrique sur bureau crème papier ; plateau à six compartiments dont trois contiennent des feuilles pliées vierges et trois restent vides ; liste de contrôle en papier avec trois cases cochées en vert et une vide ; petite enveloppe crème devant un portique ouvert aux montants verts, jeton vert posé à côté ; à droite, une pièce graphite isolée.",
       "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière de studio douce venant du haut gauche, ombres courtes, composition aérée ; continuité avec la couverture IMG-25.",
-      "palette": "Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20.",
+      "palette": "Fond crème #fcfbf7 dominant, vert Memlia #27b657 et vert profond #1c8a41 en accents, touches de graphite #231f20.",
       "interdits": "Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique.",
       "alt": "Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart",
       "reviewCriteria": [
@@ -102,18 +102,15 @@
         "aucun texte, logo, donnée, fausse interface ou action automatique",
         "dérivés 1920×1080, OG 1200×630, 768/1200/1600 générés"
       ],
-      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : La relance des pièces manquantes : un plateau à compartiments partiellement rempli, une checklist cochée, une enveloppe qui attend devant un portique, un dossier mis à l’écart. Composition : Vue isométrique sur bureau crème papier ; plateau à six compartiments dont trois contiennent des feuilles pliées vierges et trois restent vides ; liste de contrôle en papier avec trois cases cochées en vert et une vide ; petite enveloppe crème devant un portique ouvert aux montants verts, jeton vert posé à côté ; à droite, une pièce graphite isolée. Style : Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière de studio douce venant du haut gauche, ombres courtes, composition aérée ; continuité avec la couverture IMG-25. Palette : Vert Memlia #27b657, vert profond #1c8a41, crème #fcfbf7, papier #fffefb, graphite #231f20. Interdits : Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique."
+      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : La relance des pièces manquantes : un plateau à compartiments partiellement rempli, une checklist cochée, une enveloppe qui attend devant un portique, un dossier mis à l’écart. Composition : Vue isométrique sur bureau crème papier ; plateau à six compartiments dont trois contiennent des feuilles pliées vierges et trois restent vides ; liste de contrôle en papier avec trois cases cochées en vert et une vide ; petite enveloppe crème devant un portique ouvert aux montants verts, jeton vert posé à côté ; à droite, une pièce graphite isolée. Style : Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière de studio douce venant du haut gauche, ombres courtes, composition aérée ; continuité avec la couverture IMG-25. Interdits : Texte lisible, lettres, chiffres, logo, personnage, visage, donnée client, écran ou fausse interface logicielle, alerte rouge, symbole d’envoi automatique. Palette stricte, proportions imposées : fond crème #fcfbf7 dominant (environ 70 % de l'image) ; vert Memlia #27b657 et vert profond #1c8a41 en accents nettement visibles, chacun au moins 2 % de l'image, posés sur des volumes pleins et non sur de fins liserés ; touches de graphite #231f20 sur au moins 2 % de l'image, en arêtes, ombres portées et pièces isolées. Aucune autre couleur saturée."
     },
     "source": {
       "path": "image-source.png",
-      "generationId": "331b874a-b72e-450a-8108-6e0de60f5d1e",
+      "generationId": "e96a37e2-3f11-469e-be59-89e293003a75",
       "model": "gpt_image_2_5",
       "provider": "higgsfield",
-      "generatedAt": "2026-09-16",
-      "credits": 3,
-      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_340edDKgz49ubvQTIJPiYr6YSC6/hf_20260916_182631_331b874a-b72e-450a-8108-6e0de60f5d1e.png",
-      "quality": "high",
-      "resolution": "2k"
+      "generatedAt": "2026-09-19",
+      "credits": 3
     }
   },
   "sources": [
@@ -267,5 +264,5 @@
       "Republication du 17/09/2026 selon la charte de message v3 (§7 bis) : la section « pourquoi la tâche casse à la main » nomme la règle que le cabinet applique sans l’avoir écrite ; « Pour aller plus loin » dit ce que nous prenons en charge pour cette tâche et ce que le cabinet garde ; appel « Confier cette tâche » ; lien vers le service ajouté. Méthode, tableaux, jeu fictif, sources et affirmations inchangés."
     ]
   },
-  "updatedAt": "2026-09-17"
+  "updatedAt": "2026-09-19"
 }

@@ -1,6 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { join, resolve, dirname } from 'node:path';
+import { tmpdir } from 'node:os';
+import { rmSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { couleursDuBrief, verifierBriefPalette, classerPixel, verifierParts, SEUILS_PALETTE } from '../../scripts/lib/palette.mjs';
 
@@ -48,19 +50,40 @@ test('verifierParts refuse une couleur épinglée sous le plancher de son rôle,
   const absente = verifierParts(couleurs, { '#27b657': 0.004 });
   assert.equal(absente.length, 2, 'une dominante sous son plancher et une couleur non mesurée sont deux rouges');
   // Planchers calibrés le 19/09/2026 sur les six couvertures livrées, pas choisis a priori.
-  assert.equal(SEUILS_PALETTE.dominante, 0.02);
+  assert.equal(SEUILS_PALETTE.dominante, 0.1);
   assert.equal(SEUILS_PALETTE.touche, 0.005);
 });
 
-test('mesurerPalette compte les parts d’un master réel et discrimine les deux couvertures connues', async () => {
+test('mesurerPalette mesure un master réel, et rend zéro pour une couleur absente', async () => {
   const { mesurerPalette } = await import('../../scripts/mesurer-palette.mjs');
-  const conforme = await mesurerPalette(join(RACINE, 'editorial/articles/controler-les-bulletins-de-paie-avant-la-dsn/preuves/image/master.png'), ['#27b657', '#1c8a41', '#fffefb', '#231f20']);
-  assert.ok(conforme.parts['#231f20'] > 0.005, `graphite mesuré à ${conforme.parts['#231f20']}`);
-  assert.ok(conforme.parts['#27b657'] + conforme.parts['#1c8a41'] > 0.05, 'le vert est présent');
-  // Témoin de la dette écrite le 18/09/2026 : cette couverture n'a jamais suivi son brief.
-  // Le jour où elle est régénérée, ce test change avec elle : c'est son objet.
-  const dette = await mesurerPalette(join(RACINE, 'editorial/articles/comprendre-les-comptes-rendus-metier-dsn/preuves/image/master.png'), ['#27b657', '#1c8a41', '#fffefb', '#231f20']);
-  assert.ok(dette.parts['#231f20'] < 0.005, `la dette connue du 18/09 doit se voir : graphite ${dette.parts['#231f20']}`);
-  assert.equal(Object.keys(conforme.parts).length, 4);
-  assert.ok(conforme.pixels > 10000);
+  const sharp = (await import('sharp')).default;
+  // Le corpus réel : depuis le 19/09/2026 les six couvertures portent les couleurs de leur brief.
+  // Ce test mesurait auparavant une dette (une couverture sans graphite) ; la dette est payée,
+  // donc la discrimination se prouve maintenant sur une image construite, qui ne peut pas guérir.
+  const master = join(RACINE, 'editorial/articles/controler-les-bulletins-de-paie-avant-la-dsn/preuves/image/master.png');
+  const reelle = await mesurerPalette(master, ['#27b657', '#1c8a41', '#fcfbf7', '#231f20']);
+  assert.ok(reelle.parts['#fcfbf7'] > 0.1, `le fond crème domine : ${reelle.parts['#fcfbf7']}`);
+  assert.ok(reelle.parts['#231f20'] > 0.005, `le graphite est présent : ${reelle.parts['#231f20']}`);
+  assert.equal(Object.keys(reelle.parts).length, 4);
+  assert.ok(reelle.pixels > 10000);
+
+  const unie = join(tmpdir(), `palette-unie-${process.pid}.png`);
+  await sharp({ create: { width: 200, height: 120, channels: 3, background: '#fcfbf7' } }).png().toFile(unie);
+  const absente = await mesurerPalette(unie, ['#fcfbf7', '#231f20']);
+  assert.ok(absente.parts['#fcfbf7'] > 0.99, 'la couleur unie est comptée');
+  assert.equal(absente.parts['#231f20'], 0, 'une couleur absente se mesure à zéro, pas à « peu »');
+  rmSync(unie, { force: true });
+});
+
+test('verifierBriefPalette refuse deux couleurs plus proches que la tolérance : la mesure ne peut pas les partager', () => {
+  // #fcfbf7 et #fffefb sont distants d'environ 6 sur 255 : un pixel proche de l'une est proche de
+  // l'autre, et le classement au plus proche partage arbitrairement. Mesuré le 19/09/2026 sur deux
+  // couvertures livrées, dont l'une échouait son plancher pour cette seule raison.
+  const erreurs = verifierBriefPalette('Vert #27b657 dominant, crème #fcfbf7, papier #fffefb, graphite #231f20.');
+  assert.equal(erreurs.length, 1, erreurs.join('\n'));
+  assert.match(erreurs[0], /#fcfbf7/);
+  assert.match(erreurs[0], /#fffefb/);
+  assert.match(erreurs[0], /tolérance/);
+  assert.match(erreurs[0], /45/);
+  assert.deepEqual(verifierBriefPalette('Vert #27b657 dominant, crème #fcfbf7, graphite #231f20.'), []);
 });

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "suivre-la-production-sociale-dans-excel",
-  "articleSha256": "1329a741a1b7df93e661e94ef755eae8421eb3c4a936aa6283103f2fd42ddc3b",
+  "articleSha256": "52796e1e137a576d4cd7b74ff1710f3754fd34cca22b6403d94f7081f0ef2afd",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -386,11 +386,11 @@
       "sourceExcerpts": {
         "microsoft-excel-tables": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table (previously known as an Excel list)."
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-19",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-19",
         "sourceResults": [
           {
             "sourceId": "microsoft-excel-tables",
@@ -402,10 +402,10 @@
             "citation": {
               "text": "To make managing and analyzing a group of related data easier, you can turn a range of cells into an Excel table (previously known as an Excel list).",
               "sha256": "402ca03d5bfe83d7712f555194248c2c0a80cb8ec5d5ca89823e1f9eb94860a8",
-              "sourceContentSha256": "5adf6c0cec03a43debe28790eb674d016cb1609dba3299e6fe889d6c31ce2349",
+              "sourceContentSha256": "41c68d5c353c5d466f38802c0a9b60451a943ebc6edc7875372789372cdcbe23",
               "coordinates": {
                 "finalUrl": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-19",
                 "title": "Overview of Excel tables",
                 "locator": {
                   "kind": "line-range",
@@ -439,7 +439,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La page de support Microsoft décrit la conversion d’une plage en table pour en faciliter la gestion et l’analyse ; traduction fidèle.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-19"
           }
         ]
       }
@@ -455,11 +455,11 @@
       "sourceExcerpts": {
         "microsoft-protect-sheet": "Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells within the worksheet."
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-19",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-19",
         "sourceResults": [
           {
             "sourceId": "microsoft-protect-sheet",
@@ -471,10 +471,10 @@
             "citation": {
               "text": "Worksheet level protection isn't intended as a security feature. It simply prevents users from modifying locked cells within the worksheet.",
               "sha256": "51feaa5e4904e12512fd63b1cf21d4aa1178d45a29bc5e0652e24cdbc0a3f9d0",
-              "sourceContentSha256": "68167f61289873206e8c5ecaf0afdc35f7c64106d82b855cfe5dc8eed31cf4f2",
+              "sourceContentSha256": "de5e790aa19bfc62baacd18a0e96df903cf90fc41e9aecd7f52bc94dd4baf95f",
               "coordinates": {
                 "finalUrl": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-19",
                 "title": "Protect a worksheet",
                 "locator": {
                   "kind": "line-range",
@@ -507,7 +507,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Microsoft borne la protection de feuille : elle empêche la modification de cellules verrouillées et n’est pas une fonction de sécurité ; traduction fidèle.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-19"
           }
         ]
       }
@@ -523,11 +523,11 @@
       "sourceExcerpts": {
         "cnil-employee-monitoring": "être soumis aux instances représentatives du personnel selon les règles en vigueur"
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-19",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-19",
         "sourceResults": [
           {
             "sourceId": "cnil-employee-monitoring",
@@ -539,10 +539,10 @@
             "citation": {
               "text": "être soumis aux instances représentatives du personnel selon les règles en vigueur",
               "sha256": "0b7378845209d64769403e9264b711a77c2cd53af1f14271a81ec727d0369bb0",
-              "sourceContentSha256": "545dce48ff2e5546dc40f889ecb89e44c2c18c1ac871cfa9996377c89460715a",
+              "sourceContentSha256": "01f06a60a2cf2fba7d9f9acc4600f9978b14a368da2270f4d068101b6966fa21",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-19",
                 "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
                 "locator": {
                   "kind": "line-range",
@@ -566,7 +566,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Condition cumulative d’un dispositif de contrôle de l’activité, citée mot pour mot depuis la page de la CNIL.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-19"
           }
         ]
       }
@@ -582,11 +582,11 @@
       "sourceExcerpts": {
         "cnil-employee-monitoring": "un logiciel qui compte et transmet à l’encadrant (de façon transparente) le nombre de dossiers traités par trimestre par salarié/agent semble proportionné"
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-19",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-19",
         "sourceResults": [
           {
             "sourceId": "cnil-employee-monitoring",
@@ -598,10 +598,10 @@
             "citation": {
               "text": "un logiciel qui compte et transmet à l’encadrant (de façon transparente) le nombre de dossiers traités par trimestre par salarié/agent semble proportionné",
               "sha256": "2a164c1700e02bc305130eafbaf4fe5ba2d93868d1e91fdebf57e2c25c765ece",
-              "sourceContentSha256": "545dce48ff2e5546dc40f889ecb89e44c2c18c1ac871cfa9996377c89460715a",
+              "sourceContentSha256": "01f06a60a2cf2fba7d9f9acc4600f9978b14a368da2270f4d068101b6966fa21",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-19",
                 "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
                 "locator": {
                   "kind": "line-range",
@@ -631,7 +631,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Exemple de dispositif proportionné donné par la CNIL, cité mot pour mot ; il borne ce qu’un suivi peut remonter sur les personnes.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-19"
           }
         ]
       }
@@ -647,11 +647,11 @@
       "sourceExcerpts": {
         "cnil-employee-monitoring": "Notamment, il est important de détailler les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées"
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-19",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-19",
         "sourceResults": [
           {
             "sourceId": "cnil-employee-monitoring",
@@ -663,10 +663,10 @@
             "citation": {
               "text": "Notamment, il est important de détailler les étapes de l’analyse de nécessité et de proportionnalité, le cycle de vie des données traitées",
               "sha256": "11208a75cabf6aa6bb6e1dffa56fb10d8db8476f91439884d5ebc818d60ac5a7",
-              "sourceContentSha256": "545dce48ff2e5546dc40f889ecb89e44c2c18c1ac871cfa9996377c89460715a",
+              "sourceContentSha256": "01f06a60a2cf2fba7d9f9acc4600f9978b14a368da2270f4d068101b6966fa21",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-19",
                 "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
                 "locator": {
                   "kind": "line-range",
@@ -691,7 +691,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Éléments que l’employeur doit pouvoir détailler pour prouver le respect des conditions, cités mot pour mot depuis la page de la CNIL.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-19"
           }
         ]
       }
