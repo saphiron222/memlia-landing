@@ -11,7 +11,10 @@ from test_build import DIST
 ROOT = DIST.parent
 MANIFEST = ROOT / 'docs/qa/m4-r4/media-manifest.json'
 # Les seules provenances admises hors du dépôt : les rendus de l'atelier vidéo.
-EXTERNES = (str(Path.home() / 'dev/interne/memlia-video'),)
+# Le MOTIF, pas un chemin de machine : `Path.home()` vaut /opt/buildhome sur le constructeur
+# Cloudflare, et une provenance dérivée de lui n'y reconnaissait plus rien (échec mesuré le
+# 19/09/2026, déploiement cc9532b3). Un contrôle de forme ne doit rien devoir à la machine.
+EXTERNES = re.compile(r'^/.+/dev/interne/memlia-video/out/r\d+/')
 
 
 class MediaChainProof(unittest.TestCase):
@@ -31,7 +34,7 @@ class MediaChainProof(unittest.TestCase):
                 # 19/09/2026 sur le déploiement 546ffe1b). Leur chemin absolu dit la provenance.
                 brut = entry['source'].split('#')[0]
                 if brut.startswith('/'):
-                    self.assertTrue(brut.startswith(EXTERNES), f"source hors dépôt non déclarée : {brut}")
+                    self.assertRegex(brut, EXTERNES, f"source hors dépôt non déclarée : {brut}")
                 else:
                     verifiees.append(brut)
                     self.assertTrue((ROOT / brut).exists(), f"source introuvable pour {entry['target']} : {brut}")
