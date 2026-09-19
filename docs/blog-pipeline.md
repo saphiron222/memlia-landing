@@ -5,7 +5,7 @@ Ce pipeline prépare un candidat par jour au maximum. Il ne publie rien : un art
 ## Créer un candidat
 
 ```bash
-npm run blog:create -- <slug> "<titre de travail>" [AAAA-MM-JJ]
+npm run blog:create -- <slug> "<titre intent-first>" "<requête primaire mesurée>" [AAAA-MM-JJ]
 ```
 
 La commande ajoute l’entrée à `editorial/queue.json`, crée `src/content/blog/<slug>.md` et initialise `editorial/articles/<slug>/`. Elle refuse un second candidat actif le même jour et n’écrase jamais un dossier existant.

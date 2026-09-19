@@ -277,12 +277,12 @@ export async function main(argv = process.argv.slice(2)) {
     return;
   }
   if (command === 'create') {
-    const [slug, title, date = new Date().toISOString().slice(0, 10)] = args;
-    const result = createCandidate({ root, slug, title, date });
+    const [slug, title, primaryQuery, date = new Date().toISOString().slice(0, 10)] = args;
+    const result = createCandidate({ root, slug, title, primaryQuery, date });
     console.log(JSON.stringify(result, null, 2));
     return;
   }
-  throw new Error('Commande attendue : audit | create <slug> <titre> [date] | verify-source <slug> <source-id> <extrait exact> | gate <slug> | preview <slug> | review <slug> | production-check <slug>.');
+  throw new Error('Commande attendue : audit | create <slug> <titre> <requête-primaire-mesurée> [date] | verify-source <slug> <source-id> <extrait exact> | gate <slug> | preview <slug> | review <slug> | production-check <slug>.');
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {

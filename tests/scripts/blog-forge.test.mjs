@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -108,6 +108,14 @@ function racineDeTest() {
   mkdirSync(join(root, 'src/pages'), { recursive: true });
   mkdirSync(join(root, 'src/data'), { recursive: true });
   mkdirSync(join(root, 'public/fonts'), { recursive: true });
+  mkdirSync(join(root, 'docs/strategy/site-v3/mesures'), { recursive: true });
+  writeFileSync(join(root, `docs/strategy/site-v3/mesures/questions-${jour}.json`), JSON.stringify({
+    jour,
+    autocompletion: {
+      'automatiser une tâche de test cabinet': [],
+      'tâche de test cabinet comptable': [],
+    },
+  }));
   writeFileSync(join(root, 'editorial/templates/cadre-article.html'), readFileSync(join(RACINE, 'editorial/templates/cadre-article.html'), 'utf8'));
   writeFileSync(join(root, 'editorial/queue.json'), JSON.stringify({ version: 1, candidates: [] }));
   writeFileSync(join(root, 'src/data/images.mjs'), "export const IMAGES = {\n  'img-existante': {\n    largeurs: [768],\n    ratio: [16, 9],\n    alt: 'Existante',\n  },\n};\nexport const PUBLISHED_IMAGE_IDS = [\n  'img-existante',\n];\n");
@@ -163,6 +171,23 @@ test('le frontmatter reproduit le manifeste champ pour champ', () => {
   assert.match(fm, /^statutEditorial: pret-preview$/m);
   const publie = frontmatter(construireManifest(recette(), 'publie', jour, null));
   assert.match(publie, /^brouillon: false$/m);
+});
+
+test('la forge refuse un H1 narratif avant de créer le candidat', async () => {
+  const root = racineDeTest();
+  try {
+    const r = recette();
+    r.title = "La plateforme que personne n'a achetée, et ce que le refus m'a appris";
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r, null, 2));
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour }),
+      /H1 narratif sans intention mesurée/,
+    );
+    assert.equal(existsSync(join(root, 'editorial/articles', SLUG)), false, 'aucun dossier candidat ne doit être écrit');
+    assert.equal(existsSync(join(root, 'src/content/blog', `${SLUG}.md`)), false, 'aucun article ne doit être écrit');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('la forge produit un dossier que le gate accepte, puis un dossier publié scellé sur ses octets', async () => {

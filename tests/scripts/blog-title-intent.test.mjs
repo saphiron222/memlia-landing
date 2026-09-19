@@ -4,11 +4,11 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { parse as parseHtml } from 'parse5';
 import { parse as parseYaml } from 'yaml';
-import { titrePorteUneRequeteMesuree } from '../../scripts/lib/blog-title-intent.mjs';
+import { chargerAutocompletionMesuree, titrePorteUneRequeteMesuree } from '../../scripts/lib/blog-title-intent.mjs';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const BLOG = join(ROOT, 'src/content/blog');
-const mesure = JSON.parse(readFileSync(join(ROOT, 'docs/strategy/site-v3/mesures/titres-intent-2026-09-19.json'), 'utf8'));
+const mesure = chargerAutocompletionMesuree(ROOT);
 
 function frontmatter(path) {
   const source = readFileSync(path, 'utf8');
@@ -59,7 +59,7 @@ function surfacesArticle(slug) {
 
 test('chaque H1 publié porte une requête mesurée, y compris une mesure sans suggestion', () => {
   const articles = articlesPublies();
-  assert.equal(articles.length, 7);
+  assert.ok(articles.length >= 7, `corpus publié anormalement vide : ${articles.length} article(s)`);
   for (const { slug, fm } of articles) {
     const requetes = [fm.primaryQuery, ...(fm.secondaryQueries ?? [])];
     const mesurees = requetes.filter((requete) => Object.hasOwn(mesure.autocompletion, requete));

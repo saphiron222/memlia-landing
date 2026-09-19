@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
 import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS } from '../../scripts/lib/blog-pipeline.mjs';
@@ -224,6 +224,14 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
   mkdirSync(join(root, 'src/data'), { recursive: true });
   mkdirSync(join(root, 'public/images'), { recursive: true });
   mkdirSync(join(root, 'editorial'), { recursive: true });
+  const mesuresDir = join(root, 'docs/strategy/site-v3/mesures');
+  const mesurePath = join(mesuresDir, `questions-${fixtureDate}.json`);
+  mkdirSync(mesuresDir, { recursive: true });
+  const mesure = existsSync(mesurePath)
+    ? JSON.parse(readFileSync(mesurePath, 'utf8'))
+    : { jour: fixtureDate, autocompletion: {} };
+  for (const requete of [manifest.primaryQuery, ...(manifest.secondaryQueries ?? [])]) mesure.autocompletion[requete] = [];
+  writeJson(mesurePath, mesure);
 
   const markdown = articleMarkdown(manifest, body);
   const articlePath = join(root, 'src/content/blog', `${slug}.md`);

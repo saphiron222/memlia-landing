@@ -157,7 +157,7 @@ test('la file refuse deux candidats le même jour sans écraser le premier', () 
   try {
     mkdirSync(join(root, 'editorial/templates'), { recursive: true });
     mkdirSync(join(root, 'src/content/blog'), { recursive: true });
-    writeFileSync(join(root, 'editorial/templates/article.md'), '---\ntitre: "__TITLE__"\nbrouillon: true\n---\n\n## Réponse directe\n');
+    writeFileSync(join(root, 'editorial/templates/article.md'), '---\ntitre: "__TITLE__"\nbrouillon: true\nprimaryQuery: "__PRIMARY_QUERY__"\n---\n\n## Réponse directe\n');
     writeFileSync(join(root, 'editorial/templates/manifest.json'), JSON.stringify(validCandidate()));
     writeFileSync(join(root, 'editorial/templates/skills.json'), JSON.stringify(validSkills()));
     for (const filename of ['brief.md', 'claims.json', 'review.json', 'image.json']) {
@@ -165,14 +165,27 @@ test('la file refuse deux candidats le même jour sans écraser le premier', () 
     }
     writeFileSync(join(root, 'editorial/templates/business-review-evidence.json'), '{"candidateSlug":"__SLUG__"}\n');
     writeFileSync(join(root, 'editorial/queue.json'), JSON.stringify({ version: 1, candidates: [] }));
+    mkdirSync(join(root, 'docs/strategy/site-v3/mesures'), { recursive: true });
+    writeFileSync(join(root, 'docs/strategy/site-v3/mesures/questions-2026-09-07.json'), JSON.stringify({
+      jour: '2026-09-07',
+      autocompletion: { 'candidat éditorial': [] },
+    }));
+    const intent = { primaryQuery: 'candidat éditorial', secondaryQueries: [] };
 
-    const created = createCandidate({ root, slug: 'premier-candidat', title: 'Premier candidat éditorial', date: isoDate });
+    assert.throws(
+      () => createCandidate({ root, slug: 'candidat-narratif', title: "La plateforme que personne n'a achetée, et ce que le refus m'a appris", date: isoDate, ...intent }),
+      /H1 narratif sans intention mesurée/,
+    );
+
+    const created = createCandidate({ root, slug: 'premier-candidat', title: 'Premier candidat éditorial', date: isoDate, ...intent });
     assert.equal(created.slug, 'premier-candidat');
     assert.equal(JSON.parse(readFileSync(join(created.dossier, 'preuves/business-review.json'), 'utf8')).candidateSlug, 'premier-candidat');
+    assert.equal(JSON.parse(readFileSync(join(created.dossier, 'manifest.json'), 'utf8')).primaryQuery, 'candidat éditorial');
+    assert.match(readFileSync(created.article, 'utf8'), /primaryQuery: "candidat éditorial"/);
     // Cadence du 16/09/2026 : deux candidats le même jour passent, le troisième est refusé.
-    createCandidate({ root, slug: 'second-candidat', title: 'Second candidat éditorial', date: isoDate });
+    createCandidate({ root, slug: 'second-candidat', title: 'Second candidat éditorial', date: isoDate, ...intent });
     assert.throws(
-      () => createCandidate({ root, slug: 'troisieme-candidat', title: 'Troisième candidat éditorial', date: isoDate }),
+      () => createCandidate({ root, slug: 'troisieme-candidat', title: 'Troisième candidat éditorial', date: isoDate, ...intent }),
       /2 candidats sont déjà planifiés le/
     );
     // Et quatre par semaine ISO : deux autres jours de la même semaine remplissent le plafond hebdomadaire.
@@ -180,10 +193,10 @@ test('la file refuse deux candidats le même jour sans écraser le premier', () 
     const decale = (n) => { const d = new Date(jour); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
     const memeSemaine = [1, 2, 3, 4, 5, 6, -1, -2, -3, -4, -5, -6].map(decale).filter((date) => semaineIso(date) === semaineIso(isoDate));
     assert.ok(memeSemaine.length >= 2, 'la semaine ISO doit offrir deux autres jours');
-    createCandidate({ root, slug: 'quatrieme-candidat', title: 'Quatrième candidat éditorial', date: memeSemaine[0] });
-    createCandidate({ root, slug: 'cinquieme-candidat', title: 'Cinquième candidat éditorial', date: memeSemaine[0] });
+    createCandidate({ root, slug: 'quatrieme-candidat', title: 'Quatrième candidat éditorial', date: memeSemaine[0], ...intent });
+    createCandidate({ root, slug: 'cinquieme-candidat', title: 'Cinquième candidat éditorial', date: memeSemaine[0], ...intent });
     assert.throws(
-      () => createCandidate({ root, slug: 'sixieme-candidat', title: 'Sixième candidat éditorial', date: memeSemaine[1] }),
+      () => createCandidate({ root, slug: 'sixieme-candidat', title: 'Sixième candidat éditorial', date: memeSemaine[1], ...intent }),
       /4 candidats sont déjà planifiés la semaine/
     );
     const queue = JSON.parse(readFileSync(join(root, 'editorial/queue.json'), 'utf8'));
@@ -223,6 +236,22 @@ test('le gate dossier accepte un candidat dont preuves, revue, images et maillag
     unlinkSync(join(root, 'public/images/img-article-de-test-og.webp'));
     const missingPublicOg = await validateDossier({ root, slug: fixture.slug });
     assert.ok(missingPublicOg.errors.some((error) => error.includes('OG public')));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('le gate dossier refuse aussi un H1 narratif écrit après la création', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'memlia-blog-intent-gate-'));
+  try {
+    const fixture = await createCompleteDossier(root, {
+      manifestMutator: (manifest) => {
+        manifest.title = "La plateforme que personne n'a achetée, et ce que le refus m'a appris";
+      },
+    });
+    const result = await validateDossier({ root, slug: fixture.slug, renderedBlogHtml: renderedBlogHtml(fixture.slug) });
+    assert.equal(result.pass, false);
+    assert.ok(result.errors.some((error) => /Intention SEO.*H1 narratif sans intention mesurée/.test(error)), result.errors.join('\n'));
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

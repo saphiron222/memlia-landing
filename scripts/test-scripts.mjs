@@ -18,6 +18,7 @@ import { join } from 'node:path';
 const DOSSIER = 'tests/scripts';
 const SANS_NAVIGATEUR = {
   'blog-candidate-render.test.mjs': 'lance Chromium (Playwright) : joué par npm run test:blog-pipeline:render, hors chaîne de build',
+  'blog-title-intent.test.mjs': 'joué explicitement par npm run test:blog-title-intent juste après le rendu Astro',
 };
 
 const fichiers = readdirSync(DOSSIER).filter((f) => f.endsWith('.test.mjs')).sort();

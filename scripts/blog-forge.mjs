@@ -28,6 +28,7 @@ import {
   PUBLICATION_SEAL_PATH, verifierPlafonds, verifySource,
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
+import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
 
 export const IMAGE_REVIEW_CRITERIA = ['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'];
@@ -521,6 +522,9 @@ export function verifierRegleEcrite(corps, { date }) {
 
 export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour = aujourdhui() }) {
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
+  const requetes = [recette.primaryQuery, ...(recette.secondaryQueries ?? [])];
+  verifierTitreIntentMesure({ root, titre: recette.title, requetes, au: jour, surface: `${slug} : H1` });
+  verifierTitreIntentMesure({ root, titre: recette.tabTitle, requetes, au: jour, surface: `${slug} : titre d’onglet` });
   const dossier = join(root, 'editorial/articles', slug);
   mkdirSync(join(dossier, 'preuves/sources'), { recursive: true });
   mkdirSync(join(dossier, 'preuves/skills'), { recursive: true });

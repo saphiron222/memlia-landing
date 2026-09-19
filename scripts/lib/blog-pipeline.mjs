@@ -8,6 +8,7 @@ import sharp from 'sharp';
 import { Agent, fetch as fetchUndici } from 'undici';
 import { parse as parseYaml } from 'yaml';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
+import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
   'blog-strategy', 'blog-brand', 'blog-persona', 'blog-discourse', 'blog-google', 'blog-calendar',
@@ -522,11 +523,14 @@ function replaceTemplateTokens(value, replacements) {
   return value;
 }
 
-export function createCandidate({ root = process.cwd(), slug, title, date }) {
+export function createCandidate({ root = process.cwd(), slug, title, primaryQuery, secondaryQueries = [], date }) {
   const absoluteRoot = resolve(root);
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug ?? '')) throw new Error('Le slug doit être en minuscules ASCII séparées par des tirets.');
   if (!hasText(title, 10)) throw new Error('Le titre de travail doit contenir au moins 10 caractères.');
+  if (!hasText(primaryQuery, 3)) throw new Error('La création exige une requête primaire mesurée.');
+  if (!Array.isArray(secondaryQueries)) throw new Error('secondaryQueries doit être une liste.');
   if (!isDate(date)) throw new Error('La date candidat doit être au format AAAA-MM-JJ.');
+  verifierTitreIntentMesure({ root: absoluteRoot, titre: title, requetes: [primaryQuery, ...secondaryQueries], au: date, surface: `${slug} : H1` });
   const queuePath = join(absoluteRoot, 'editorial/queue.json');
   const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
   if (!Array.isArray(queue.candidates)) throw new Error('editorial/queue.json doit contenir une liste candidates.');
@@ -539,7 +543,7 @@ export function createCandidate({ root = process.cwd(), slug, title, date }) {
   if (existsSync(articlePath) || existsSync(dossier)) throw new Error(`Le candidat ${slug} existe déjà sur disque.`);
   const templates = join(absoluteRoot, 'editorial/templates');
   const articleTemplate = readFileSync(join(templates, 'article.md'), 'utf8');
-  const replacements = { __SLUG__: slug, __TITLE__: title, __DATE__: date };
+  const replacements = { __SLUG__: slug, __TITLE__: title, __PRIMARY_QUERY__: primaryQuery, __DATE__: date };
   const manifest = replaceTemplateTokens(JSON.parse(readFileSync(join(templates, 'manifest.json'), 'utf8')), replacements);
   const skillTemplate = JSON.parse(readFileSync(join(templates, 'skills.json'), 'utf8'));
   const pendingRow = (skill) => ({ skill, applicable: null, status: 'TODO', result: null, evidence: `preuves/skills/${skill}.json`, checkedAt: null, justification: '__A_RENSEIGNER__' });
@@ -554,11 +558,14 @@ export function createCandidate({ root = process.cwd(), slug, title, date }) {
   mkdirSync(join(dossier, 'preuves', 'sources'), { recursive: true });
   manifest.slug = slug;
   manifest.title = title;
+  manifest.primaryQuery = primaryQuery;
+  manifest.secondaryQueries = secondaryQueries;
   manifest.editorialStatus = 'a-preparer';
   manifest.kevin = { briefApproved: false, previewApproved: false, productionApproved: false };
   writeJsonAtomic(join(dossier, 'manifest.json'), manifest);
   writeJsonAtomic(join(dossier, 'skills.json'), skills);
-  writeFileSync(articlePath, articleTemplate.replaceAll('__SLUG__', slug).replaceAll('__TITLE__', title).replaceAll('__DATE__', date));
+  const article = Object.entries(replacements).reduce((content, [token, replacement]) => content.replaceAll(token, replacement), articleTemplate);
+  writeFileSync(articlePath, article);
   const artifactReplacements = {
     ...replacements,
     __ARTICLE_SHA256__: sha256(readFileSync(articlePath)),
@@ -1615,7 +1622,17 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   const sensitiveMatter = detectSensitiveMatter(manifest, claims, markdown);
   if (gateMode === 'published-audit') errors.push(...validatePublishedAdoption(dossier, manifest, subject.articleHash));
   if (gateMode === 'publication-scellee') errors.push(...validatePublicationSeal(dossier, manifest, subject));
-  if (manifest) errors.push(...validateCandidate(manifest, { gateMode }));
+  if (manifest) {
+    errors.push(...validateCandidate(manifest, { gateMode }));
+    const requetes = [manifest.primaryQuery, ...(manifest.secondaryQueries ?? [])];
+    for (const [surface, titre] of [['H1', manifest.title], ['titre d’onglet', manifest.tabTitle]]) {
+      try {
+        verifierTitreIntentMesure({ root: absoluteRoot, titre, requetes, surface: `${slug} : ${surface}` });
+      } catch (error) {
+        errors.push(`Intention SEO : ${error.message}`);
+      }
+    }
+  }
   if (skills) errors.push(...validateSkillsManifest(skills));
   if (skills && manifest && claims) errors.push(...validateRequiredSkills(skills, sensitiveMatter));
   const sources = manifest ? validateSources(manifest, dossier, subject) : { errors: [], verified: new Map() };

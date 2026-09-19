@@ -10,7 +10,7 @@ motsCles: []
 brouillon: true
 image: img-16-flux-automatisation
 pipelineVersion: 1
-primaryQuery: "À renseigner"
+primaryQuery: "__PRIMARY_QUERY__"
 secondaryQueries: []
 intent: comprendre
 fanOut: []
