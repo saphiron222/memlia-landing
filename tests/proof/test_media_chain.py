@@ -10,6 +10,8 @@ from test_build import DIST
 
 ROOT = DIST.parent
 MANIFEST = ROOT / 'docs/qa/m4-r4/media-manifest.json'
+# Les seules provenances admises hors du dépôt : les rendus de l'atelier vidéo.
+EXTERNES = (str(Path.home() / 'dev/interne/memlia-video'),)
 
 
 class MediaChainProof(unittest.TestCase):
@@ -17,18 +19,29 @@ class MediaChainProof(unittest.TestCase):
         entries = json.loads(MANIFEST.read_text())['entries']
         self.assertEqual(len(entries), 26)
         self.assertEqual(sum(not e.get('derivative', False) for e in entries), 13)
+        verifiees = []
         for entry in entries:
             with self.subTest(target=entry['target']):
                 path = ROOT / entry['target']
                 # Un champ que personne ne lit pourrit en silence : le 18/09/2026, douze sources
                 # de dérivés pointaient sur des fichiers qui n'ont jamais existé à cet endroit.
-                source = ROOT / entry['source'].split('#')[0]
-                self.assertTrue(source.exists(), f"source introuvable pour {entry['target']} : {entry['source']}")
+                # On ne contrôle que les sources DU dépôt : quatre entrées viennent de
+                # ~/dev/interne/memlia-video, absent du constructeur Cloudflare — exiger leur
+                # présence ferait dépendre la construction d'un autre dépôt (échec mesuré le
+                # 19/09/2026 sur le déploiement 546ffe1b). Leur chemin absolu dit la provenance.
+                brut = entry['source'].split('#')[0]
+                if brut.startswith('/'):
+                    self.assertTrue(brut.startswith(EXTERNES), f"source hors dépôt non déclarée : {brut}")
+                else:
+                    verifiees.append(brut)
+                    self.assertTrue((ROOT / brut).exists(), f"source introuvable pour {entry['target']} : {brut}")
                 self.assertEqual(path.stat().st_size, entry['bytes'])
                 self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), entry['sha256'])
                 if entry['target'].startswith('public/'):
                     built = DIST / Path(entry['target']).relative_to('public')
                     self.assertEqual(hashlib.sha256(built.read_bytes()).hexdigest(), entry['sha256'])
+        # « aucune source vérifiée » serait un vert creux : au moins une doit l'avoir été.
+        self.assertGreaterEqual(len(verifiees), 4, 'aucune source du dépôt contrôlée')
 
     def test_vtt_timing_and_captions_are_complete(self):
         vtt = (DIST / 'media/r9/explainer.vtt').read_text()
