@@ -56,6 +56,7 @@ const appel = {
           <label for="site_web">Site web</label>
           <input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off" />
         </div>
+        <input id="origine" name="origine" type="hidden" value="" />
         <div class="champ champ-consentement">
           <input id="consentement" name="consentement" type="checkbox" required />
           <label for="consentement">J’accepte que Memlia utilise ces informations pour me répondre. Elles ne servent à rien d’autre (<a href="/politique-de-confidentialite">politique de confidentialité</a>).</label>
@@ -125,6 +126,25 @@ const appel = {
    */
   const formulaire = document.querySelector<HTMLFormElement>('[data-contact]');
   const etat = document.querySelector<HTMLElement>('[data-etat]');
+
+  /**
+   * D4 — la page d'origine : d'où vient la personne qui écrit, pour savoir quel article amène
+   * une demande. On ne retient que le CHEMIN d'une page du site : un référent externe, absent
+   * ou illisible laisse le champ vide, et la fonction écarte de toute façon ce qui n'est pas une
+   * route interne. Sans JavaScript, le champ reste vide : c'est une commodité de mesure, pas une
+   * condition d'envoi.
+   */
+  const origine = document.querySelector<HTMLInputElement>('#origine');
+  if (origine) {
+    try {
+      const venant = new URL(document.referrer, window.location.href);
+      if (document.referrer && venant.origin === window.location.origin && venant.pathname !== window.location.pathname) {
+        origine.value = venant.pathname;
+      }
+    } catch {
+      /* Un référent illisible ne vaut pas une erreur pour le visiteur. */
+    }
+  }
   if (formulaire && etat) {
     formulaire.addEventListener('submit', async (evenement) => {
       if (!formulaire.checkValidity()) return; // Le navigateur signale lui-même le champ manquant.
