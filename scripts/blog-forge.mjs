@@ -463,12 +463,15 @@ export function declarerImage(root, heroId, alt) {
   writeFileSync(path, texte);
 }
 
-function inscrireFile(root, slug, date, statut) {
+function inscrireFile(root, slug, date, statut, serie = null) {
   const path = join(root, 'editorial/queue.json');
   const queue = lireJson(path);
   const existant = queue.candidates.find((c) => c.slug === slug);
-  if (existant) { existant.status = statut; existant.date = date; }
-  else { verifierPlafonds(queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)), date); queue.candidates.push({ slug, date, status: statut }); }
+  if (existant) { existant.status = statut; existant.date = date; if (serie) existant.serie = serie; else delete existant.serie; }
+  else {
+    verifierPlafonds(queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)), date, { serie });
+    queue.candidates.push({ slug, date, status: statut, ...(serie ? { serie } : {}) });
+  }
   ecrireJson(path, queue);
 }
 
@@ -603,7 +606,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   declarerImage(root, recette.image.heroId, recette.image.alt);
   const briefStrategie = existsSync(join(root, 'docs/strategy/site-v3/cluster-briefs')) ? readdirSync(join(root, 'docs/strategy/site-v3/cluster-briefs')).find((f) => f.endsWith(`-${slug}.md`)) : null;
   writeFileSync(join(dossier, 'brief.md'), briefStrategie ? readFileSync(join(root, 'docs/strategy/site-v3/cluster-briefs', briefStrategie), 'utf8') : `# Brief — ${recette.title}\n\nRequête primaire : ${recette.primaryQuery}\nTâche : ${recette.task}\n`);
-  inscrireFile(root, slug, recette.date, statut);
+  inscrireFile(root, slug, recette.date, statut, recette.serie ?? null);
   ecrireJson(join(dossierRecette, 'paquet-revue.json'), {
     slug, title: recette.title, primaryQuery: recette.primaryQuery, intent: recette.intent, role: recette.role.primary, format: recette.format, task: recette.task,
     corps, sources: manifestFinal.sources.map((s) => ({ id: s.id, publisher: s.publisher, title: s.title, url: s.url, level: s.level, official: s.official })),

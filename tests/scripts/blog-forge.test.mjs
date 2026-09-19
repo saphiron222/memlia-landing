@@ -134,6 +134,20 @@ test('semaineIso et les plafonds de cadence : deux par jour, quatre par semaine 
   verifierPlafonds(semainePleine, '2026-09-21');
 });
 
+test('les Cicatrices ont leur samedi hebdomadaire en sus des quatre articles ordinaires', () => {
+  const semainePleine = [
+    { date: '2026-09-15', status: 'publie' },
+    { date: '2026-09-16', status: 'publie' },
+    { date: '2026-09-16', status: 'publie' },
+    { date: '2026-09-17', status: 'publie' },
+  ];
+  verifierPlafonds(semainePleine, '2026-09-19', { serie: 'cicatrices' });
+  assert.throws(() => verifierPlafonds(semainePleine, '2026-09-18', { serie: 'cicatrices' }), /paraît le samedi/);
+  const avecCicatrice = [...semainePleine, { date: '2026-09-19', status: 'publie', serie: 'cicatrices' }];
+  assert.throws(() => verifierPlafonds(avecCicatrice, '2026-09-19', { serie: 'cicatrices' }), /déjà planifiée la semaine 2026-W38/);
+  assert.throws(() => verifierPlafonds(avecCicatrice, '2026-09-17'), /4 candidats sont déjà planifiés la semaine 2026-W38/);
+});
+
 test('le découpage en unités et les jetons suivent le pipeline', () => {
   const unites = unitesRendues('## Titre **gras**\n\nUn [lien](/x) et du `code`.\n\n\nDernier.');
   assert.deepEqual(unites.map((u) => u.text), ['Titre gras', 'Un lien et du code.', 'Dernier.']);

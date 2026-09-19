@@ -1,9 +1,10 @@
 ---
-titre: "La plateforme que personne n’a achetée, et ce que le refus m’a appris"
+titre: "Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec"
 titreOnglet: "Pourquoi un cabinet n’adopte pas un nouvel outil | Memlia"
 resume: "J’ai construit une application complète pour remplacer les classeurs d’un cabinet. La personne qui allait s’en servir a dit non, pas au prix mais à l’idée d’abandonner son fichier : j’avais ajouté un outil de plus, et choisi les tâches sans les mesurer."
 description: "Une application finie, évaluée, jamais adoptée : pourquoi ajouter un outil est une erreur de cadrage, et la règle de relevé qui en est sortie."
-datePublication: 2026-10-01
+datePublication: 2026-09-19
+dateMiseAJour: 2026-09-19
 auteur: kevin
 sujets: [methode, cabinet, automatisation, pilotage]
 motsCles: ["adoption d’un outil en cabinet comptable", "choisir une tâche à automatiser", "relevé de temps par tâche", "automatisation greffée dans un outil existant", "cadrage d’un projet d’automatisation", "règle reproductible"]

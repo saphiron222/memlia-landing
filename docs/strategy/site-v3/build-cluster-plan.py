@@ -74,51 +74,50 @@ def semaine_iso(jour):
 
 
 def planifier(entrees, publies):
-    """Attribue une date à chaque angle non publié : 4 par semaine ISO, au plus 2 par jour, lundi à jeudi."""
+    """Planifie 4 articles ordinaires lun-jeu et 1 cicatrice le samedi, par semaine ISO."""
     par_jour, par_semaine = Counter(), Counter()
-    for p in publies.values():
+    slugs_cicatrices = {e['slug'] for e in entrees if e.get('serie') == 'cicatrices'}
+    for slug, p in publies.items():
+        if slug in slugs_cicatrices:
+            continue
         if p['date']:
             d = date.fromisoformat(p['date'])
             par_jour[d] += 1
             par_semaine[semaine_iso(d)] += 1
-    # La série « Cicatrices » (charte §7 ter) passe d'abord : un article par mois, sur un créneau
-    # ordinaire et jamais en plus. Sans cette passe, ses entrées de priorité 3 tomberaient en fin de
-    # calendrier, ce qui n'est pas « un par mois ».
-    series = [x for x in entrees if x.get('serie') and x['slug'] not in publies]
-    mois_reserves = set()
+    # La série « Cicatrices » (charte §7 ter) a sa propre cadence : un samedi par semaine ISO,
+    # en sus des quatre articles ordinaires. Son stock reste factuel ; le planificateur place les
+    # entrées existantes mais n'en invente jamais pour combler une semaine future.
+    series = [e for e in entrees if e.get('serie') == 'cicatrices']
+    semaines_reservees = set()
 
     def reserver_cicatrice(e, candidat):
-        cle_mois = (candidat.year, candidat.month)
-        if cle_mois in mois_reserves:
-            raise SystemExit(f"deux cicatrices le même mois : {e['slug']} ({candidat.isoformat()})")
-        if not (candidat.weekday() in JOURS_DE_PUBLICATION and par_jour[candidat] < PAR_JOUR_MAX and par_semaine[semaine_iso(candidat)] < PAR_SEMAINE_MAX):
-            raise SystemExit(f"date de cicatrice indisponible : {e['slug']} ({candidat.isoformat()})")
+        cle_semaine = semaine_iso(candidat)
+        if candidat.weekday() != 5:
+            raise SystemExit(f"une cicatrice paraît le samedi : {e['slug']} ({candidat.isoformat()})")
+        if cle_semaine in semaines_reservees:
+            raise SystemExit(f"deux cicatrices la même semaine ISO : {e['slug']} ({candidat.isoformat()})")
         e['date'] = candidat.isoformat()
-        e['statut'] = 'planned'
-        par_jour[candidat] += 1
-        par_semaine[semaine_iso(candidat)] += 1
-        mois_reserves.add(cle_mois)
+        e['statut'] = 'published' if e['slug'] in publies else 'planned'
+        semaines_reservees.add(cle_semaine)
 
-    # Les dates portées par le backlog sont des décisions éditoriales : elles se réservent avant
-    # le calcul des autres mois et ne bougent jamais au gré d'une régénération.
-    for e in [x for x in series if x.get('date')]:
-        reserver_cicatrice(e, date.fromisoformat(e['date']))
+    # Une date publiée fait foi. Une date explicite du backlog doit lui être identique et ne bouge
+    # jamais au gré d'une régénération.
+    for e in [x for x in series if x.get('date') or x['slug'] in publies]:
+        date_publiee = publies.get(e['slug'], {}).get('date')
+        if date_publiee and e.get('date') and date_publiee != e['date']:
+            raise SystemExit(f"date publiée divergente du backlog : {e['slug']} ({date_publiee} != {e['date']})")
+        reserver_cicatrice(e, date.fromisoformat(date_publiee or e['date']))
 
-    mois = PREMIER_JOUR
-    for e in [x for x in series if not x.get('date')]:
-        # Sans date explicite, la série démarre au premier mois libre suivant : un article signé
-        # demande à Kevin le temps de le relire avant publication.
-        candidat = date(mois.year + (mois.month == 12), mois.month % 12 + 1, 1)
-        while (candidat.year, candidat.month) in mois_reserves:
-            candidat = date(candidat.year + (candidat.month == 12), candidat.month % 12 + 1, 1)
-        while not (candidat.weekday() in JOURS_DE_PUBLICATION and par_jour[candidat] < PAR_JOUR_MAX and par_semaine[semaine_iso(candidat)] < PAR_SEMAINE_MAX):
-            candidat += timedelta(days=1)
+    premier_samedi = PREMIER_JOUR + timedelta(days=(5 - PREMIER_JOUR.weekday()) % 7)
+    for e in sorted([x for x in series if not x.get('date') and x['slug'] not in publies], key=lambda x: (x['priorite'], x['rang_famille'])):
+        candidat = premier_samedi
+        while semaine_iso(candidat) in semaines_reservees:
+            candidat += timedelta(days=7)
         reserver_cicatrice(e, candidat)
-        mois = candidat
 
     jour = PREMIER_JOUR
     for e in entrees:
-        if e.get('serie') and e.get('date'):
+        if e.get('serie') == 'cicatrices':
             continue
         if e['slug'] in publies:
             e['date'] = publies[e['slug']]['date']
@@ -218,15 +217,32 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
             continue
         if e['priorite'] == 1 and not (e.get('demande') or {}).get('mesureeLe'):
             erreurs.append(f"angle de priorité 1 sans demande mesurée : {e['slug']}")
+    ordinaires = [e for e in tous if e.get('serie') != 'cicatrices']
+    cicatrices = [e for e in tous if e.get('serie') == 'cicatrices']
     par_jour, par_semaine = Counter(), Counter()
-    for e in tous:
+    for e in ordinaires:
         d = date.fromisoformat(e['date'])
         par_jour[d] += 1
         par_semaine[semaine_iso(d)] += 1
+        if d >= PREMIER_JOUR and d.weekday() not in JOURS_DE_PUBLICATION:
+            erreurs.append(f"article ordinaire hors lundi-jeudi : {e['slug']} ({e['date']})")
     if any(n > PAR_JOUR_MAX for n in par_jour.values()):
         erreurs.append('plus de deux articles le même jour')
     if any(n > PAR_SEMAINE_MAX for n in par_semaine.values()):
         erreurs.append('plus de quatre articles la même semaine')
+    cicatrices_par_semaine = Counter()
+    dates_cicatrices = []
+    for e in cicatrices:
+        d = date.fromisoformat(e['date'])
+        dates_cicatrices.append(d)
+        cicatrices_par_semaine[semaine_iso(d)] += 1
+        if d.weekday() != 5:
+            erreurs.append(f"cicatrice hors samedi : {e['slug']} ({e['date']})")
+    if any(n > 1 for n in cicatrices_par_semaine.values()):
+        erreurs.append('plus d’une cicatrice la même semaine ISO')
+    dates_cicatrices.sort()
+    if any((b - a).days != 7 for a, b in zip(dates_cicatrices, dates_cicatrices[1:])):
+        erreurs.append('la série Cicatrices ne tient pas sa cadence hebdomadaire du samedi')
     entrants = {s: 0 for s in slugs}
     for l in liens:
         if l['vers'] not in entrants or l['de'] not in entrants:
@@ -250,7 +266,7 @@ def ecrire_json(poles, familles, pilier, satellites, liens, entrants):
             for e in sorted(posts, key=lambda e: (familles[e['famille']]['rang'], e['rang_famille']))]})
     data = {
         'version': 2, 'date': date.today().isoformat(), 'seed': 'automatisation cabinet comptable',
-        'methode': 'backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 59 familles actives en 12 pôles ; cadence 4 par semaine et 2 par jour au plus ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorité posée depuis la demande mesurée par angle (autocomplétion Google et pages de résultats DataForSEO, scripts/seo/questions.mjs, depuis le 19/09/2026 ; un angle de priorité 1 sans mesure datée fait échouer --check)',
+        'methode': 'backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 59 familles actives en 12 pôles ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorité posée depuis la demande mesurée par angle (autocomplétion Google et pages de résultats DataForSEO, scripts/seo/questions.mjs, depuis le 19/09/2026 ; un angle de priorité 1 sans mesure datée fait échouer --check)',
         'pillar': {'title': pilier['titre'], 'keyword': pilier['requete'], 'volume': 10, 'template': pilier['gabarit'], 'wordCount': pilier['mots'], 'url': pilier['url'], 'slug': pilier['slug'], 'family': pilier['famille'], 'status': pilier['statut'], 'date': pilier['date']},
         'clusters': clusters,
         'links': [{'from': l['de'], 'to': l['vers'], 'type': l['type'], 'anchor': l['ancre']} for l in liens],
@@ -279,13 +295,14 @@ def ecrire_md(data, familles):
 
 def ecrire_calendrier(pilier, satellites, familles, poles):
     tous = sorted([pilier] + satellites, key=lambda e: (e['date'], e['slug']))
-    L = ['# Calendrier éditorial v3 — quatre articles par semaine', '',
-         f"Généré le {date.today().strftime('%d/%m/%Y')} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles par semaine, deux par jour au plus, du lundi au jeudi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
+    L = ['# Calendrier éditorial v3 — quatre articles et une Cicatrice par semaine', '',
+         f"Généré le {date.today().strftime('%d/%m/%Y')} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
          '## Règles', '',
          "- Ordre de production : les articles publiés d'abord, puis la priorité mesurée 1 → 3 (1 : la requête primaire a des suggestions d'autocomplétion Google ; 2 : seule une requête secondaire en a ; 3 : aucune demande mesurée — relevé `scripts/seo/questions.mjs`, bloc `demande` de chaque angle), puis l'angle (méthode, contrôle ou checklist, exceptions et refus, définition), puis l'ordre des familles dans la taxonomie.",
          '- Chaque famille active compte quatre angles ; aucune famille n’est épuisée avant que toutes n’aient leur méthode.',
          '- Une requête primaire par article, unique ; sources officielles obligatoires pour toute matière paie, sociale, fiscale, juridique ou données.',
          '- Le pilier reçoit un lien à chaque publication (republication scellée par la forge).', '',
+         '- La série « Cicatrices » paraît le samedi, exactement une fois par semaine ISO, en sus du plafond des quatre articles ordinaires.', '',
          '## Volume', '', f"- {len(satellites)} satellites + 1 pilier ; {sum(1 for e in satellites if e['statut'] == 'published')} satellite(s) publié(s) au 16/09/2026 ; dernier créneau planifié : {tous[-1]['date']}.", '',
          '## Semaine par semaine', '']
     par_sem = defaultdict(list)

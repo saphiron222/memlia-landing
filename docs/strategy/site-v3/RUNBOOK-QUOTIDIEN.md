@@ -1,11 +1,11 @@
 # Mode opératoire quotidien — la forge éditoriale de memlia.fr
 
-Exécuté par la tâche planifiée « memlia-forge-quotidienne » chaque jour ouvré à 9 h (heure locale), sur ce Mac, dans une session Claude Code neuve. Autorisation de Kevin du 16 septembre 2026 : « on doit être à 4/semaine », « sinon go », « go, mets la tâche planifiée chaque jour ouvré à 9h ». Chaque exécution part de zéro : ce document est la seule mémoire de la procédure. Lire aussi `README.md` et `IMPLEMENTATION-ROADMAP.md` de ce dossier avant d'agir.
+Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au samedi à 9 h (heure locale), sur ce Mac, dans une session GPT neuve. Autorisations de Kevin : quatre articles ordinaires par semaine (16/09/2026), puis une Cicatrice chaque samedi en plus (19/09/2026). Chaque exécution part de zéro : ce document est la seule mémoire de la procédure. Lire aussi `README.md` et `IMPLEMENTATION-ROADMAP.md` de ce dossier avant d'agir.
 
 ## 0. Rails non négociables
 
 - **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`, branche `main`. Le push publie (Cloudflare Pages construit `main`).
-- **Cadence** : au plus 2 articles par jour et 4 par semaine ISO ; le pipeline refuse au-delà (`verifierPlafonds`). Le calendrier n'attribue de créneau que du lundi au jeudi ; un jour sans créneau est un jour de maintenance (§6).
+- **Cadence** : au plus 2 articles ordinaires par jour et 4 par semaine ISO, du lundi au jeudi, puis exactement 1 Cicatrice le samedi en sus ; le pipeline refuse le dépassement, une Cicatrice hors samedi et une deuxième Cicatrice dans la même semaine (`verifierPlafonds`). Le vendredi reste un jour de maintenance (§6).
 - **Aucun chiffre de gain non mesuré, aucune donnée client, aucune promesse de fonction, aucun mot de catalogue** (« module », « complément Excel/Memlia ») sur une surface publique. L'IA prépare, l'humain décide ; agrégats, jamais nominatif. Fact-check daté pour toute matière paie, sociale, fiscale, juridique ou données.
 - **Sources** : uniquement des pages officielles que le vérificateur ouvre réellement (`verifySource`, agent `MemliaBlogSourceVerifier/1.0`). Ouvertes le 16/09 : `entreprendre.service-public.gouv.fr`, `www.cnil.fr`, `www.impots.gouv.fr` (calendrier fiscal), `bofip.impots.gouv.fr`, `www.net-entreprises.fr`. Bloquées : `legifrance.gouv.fr` (403), `urssaf.fr` (connexion coupée). Tester chaque URL avec `curl -sS -L -A 'MemliaBlogSourceVerifier/1.0 (+https://memlia.fr)' -o /tmp/s.html -w '%{http_code} %{url_effective}\n' <url>` et prendre l'URL finale.
 - **Rien ne se pousse à moitié** : un candidat préparé mais non scellé fait échouer `blog:audit`, donc le build. Soit l'article est publié et scellé, soit ses fichiers ne sont pas commités.
@@ -28,7 +28,7 @@ python3 docs/strategy/site-v3/build-cluster-plan.py --check
 grep -n "^| $(date +%Y-%m-%d) |" docs/strategy/site-v3/CONTENT-CALENDAR.md
 ```
 
-Chaque ligne de la date du jour au statut `planned` est un article à produire (une, parfois deux). Son slug donne l'entrée complète dans `docs/strategy/site-v3/backlog-v3.json` : titre, requête primaire, requêtes secondaires, famille, rôle, intention, entonnoir, format, preuve attendue, autorités à citer. Aucune ligne : aller au §6.
+Chaque ligne de la date du jour au statut `planned` est un article à produire (une, parfois deux du lundi au jeudi ; une seule Cicatrice le samedi). Son slug donne l'entrée complète dans `docs/strategy/site-v3/backlog-v3.json` : titre, requête primaire, requêtes secondaires, famille, rôle, intention, entonnoir, format, preuve attendue, autorités à citer. Aucune ligne un jour ordinaire : aller au §6. Aucune ligne un samedi : ne pas inventer de récit ; consigner le stock vide dans `JOURNAL.md` et ouvrir une carte de réapprovisionnement depuis les leçons et faits mesurés.
 
 ## 3. Écrire la recette (la recette éditoriale Memlia, héritée de l'article 3)
 
@@ -97,11 +97,11 @@ node scripts/blog-forge.mjs sceller <slug>
 
 Le gate doit rendre `"pass": true`. Sinon lire les `errors`, corriger la recette, recommencer (deux fois au plus).
 
-## 4 bis. Si le créneau du jour est un article de la série « Cicatrices »
+## 4 bis. Si le créneau du samedi est un article de la série « Cicatrices »
 
-Le calendrier place un article par mois portant `serie: "cicatrices"` dans `backlog-v3.json` (charte §7 ter). Il est **signé Kevin, à la première personne**, et raconte une chose qui a cassé dans la construction de Memlia, ce qu'elle a coûté, et la règle qui en est sortie.
+Le calendrier place exactement un article portant `serie: "cicatrices"` chaque samedi, en sus des quatre articles ordinaires (charte §7 ter). Il est **signé Kevin, à la première personne**, et raconte une chose qui a cassé dans la construction de Memlia, ce qu'elle a coûté, et la règle qui en est sortie.
 
-**Tu ne l'écris pas et tu ne le publies pas.** La forge le prépare et le scelle si sa recette existe déjà (`editorial/recettes/<slug>/`), puis tu t'arrêtes : `publier` demande le go de Kevin, parce que l'article porte sa signature et son expérience. Écris dans `JOURNAL.md` que l'article est scellé et attend sa relecture, et passe au créneau suivant s'il en reste un dans les plafonds.
+**Tu ne l'inventes pas et tu ne le publies pas sans son go nominatif.** La forge le prépare et le scelle si sa recette existe déjà (`editorial/recettes/<slug>/`), puis attend le go de Kevin, parce que l'article porte sa signature et son expérience. Une Cicatrice déjà relue et autorisée se publie le samedi par la chaîne du §5. Écris dans `JOURNAL.md` si l'article reste scellé en attente ; son absence ne libère jamais un second article ordinaire.
 
 Si la recette n'existe pas, ne l'invente pas : une cicatrice est un fait vécu, pas un sujet. Note dans `JOURNAL.md` que le créneau est vide faute de recette, et arrête-toi.
 
@@ -139,7 +139,7 @@ La dernière commande est l'extension F1 (`RUNBOOK-SEO.md` §6) : elle attend qu
 
 Consigner dans `docs/strategy/site-v3/JOURNAL.md` (une ligne par article : date, slug, commit, identifiant de déploiement, code HTTP, équivalence octets, sitemap renvoyé) et commiter le journal.
 
-## 6. Jour sans créneau (vendredi, ou semaine complète)
+## 6. Jour ordinaire sans créneau (vendredi, ou semaine complète)
 
 Dans l'ordre, sans publier d'article :
 

@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "measuredAt": "2026-09-19T19:31:48.367Z",
+  "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+  "locale": {
+    "hl": "fr",
+    "gl": "fr"
+  },
+  "rule": "Une liste vide est une mesure de demande nulle, jamais une panne ; ok=false seul indique une absence de mesure.",
+  "autocompletion": {
+    "relance pièces manquantes cabinet comptable": [],
+    "automatisation saisie comptable": [
+      "automatisation saisie comptable",
+      "logiciel automatisation saisie comptable",
+      "saisie automatique comptabilité"
+    ],
+    "automatisation cabinet comptable": [
+      "automatisation cabinet comptable",
+      "automatisation expert comptable",
+      "automatisation ia cabinet comptable"
+    ],
+    "crm dsn": [
+      "crm dsn",
+      "crm dsn de substitution",
+      "crm dsn c est quoi",
+      "crm dsn urssaf",
+      "crm dsn substitution net entreprise",
+      "dsn crm 120",
+      "dsn crm 119",
+      "dsn crm 124",
+      "dsn crm 121",
+      "dsn crm 34"
+    ],
+    "comptes rendus métier DSN": [
+      "compte rendu métier dsn"
+    ],
+    "contrôle bulletin de paie": [
+      "controle bulletin de paie",
+      "controle fiche de paie urssaf",
+      "controle fiche de paie gratuit",
+      "controler ses fiches de paie",
+      "controle caf fiche de paie"
+    ],
+    "tableau de bord paie excel": [
+      "tableau de bord paie excel",
+      "tableau de bord salaire excel"
+    ],
+    "suivi production sociale excel": [],
+    "pourquoi les cabinets comptables n'adoptent pas les nouveaux outils": [],
+    "pourquoi un cabinet n'adopte pas un nouvel outil": [],
+    "pourquoi un cabinet comptable n'adopte pas un nouvel outil": [],
+    "pourquoi un cabinet n'adopte pas un outil": [],
+    "adoption outil cabinet comptable": [],
+    "changement de logiciel cabinet comptable resistance": []
+  },
+  "decision": {
+    "slug": "la-plateforme-que-personne-n-a-achetee",
+    "title": "Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec",
+    "characters": 65,
+    "reason": "Les quatre formulations d’adoption interrogées répondent correctement mais sans suggestion. Aucune variante ne gagne donc au seuil d’autocomplétion. Le titre retenu place l’intention déjà mesurée par la SERP en première proposition, reste sous le plafond de 70 caractères et conserve le récit en seconde proposition."
+  }
+}

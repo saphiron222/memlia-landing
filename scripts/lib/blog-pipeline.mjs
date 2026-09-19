@@ -68,13 +68,23 @@ export function semaineIso(value) {
   const numero = Math.ceil(((date - debutAnnee) / 86_400_000 + 1) / 7);
   return `${date.getUTCFullYear()}-W${String(numero).padStart(2, '0')}`;
 }
-/** Refuse une date qui ferait dépasser les plafonds quotidien et hebdomadaire de la file. */
-export function verifierPlafonds(actifs, date) {
-  if (actifs.filter((candidate) => candidate.date === date).length >= CANDIDATS_PAR_JOUR_MAX) {
+/** Refuse une date qui ferait dépasser la cadence propre à chaque flux éditorial. */
+export function verifierPlafonds(actifs, date, { serie = null } = {}) {
+  const semaine = semaineIso(date);
+  if (serie === 'cicatrices') {
+    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6) {
+      throw new Error(`Une cicatrice paraît le samedi ; ${date} n’est pas un samedi.`);
+    }
+    if (actifs.some((candidate) => candidate.serie === 'cicatrices' && isDate(candidate.date) && semaineIso(candidate.date) === semaine)) {
+      throw new Error(`Une cicatrice est déjà planifiée la semaine ${semaine} ; le plafond est d’une cicatrice par semaine ISO.`);
+    }
+    return;
+  }
+  const ordinaires = actifs.filter((candidate) => candidate.serie !== 'cicatrices');
+  if (ordinaires.filter((candidate) => candidate.date === date).length >= CANDIDATS_PAR_JOUR_MAX) {
     throw new Error(`${CANDIDATS_PAR_JOUR_MAX} candidats sont déjà planifiés le ${date} ; le plafond est de ${CANDIDATS_PAR_JOUR_MAX} candidats par jour.`);
   }
-  const semaine = semaineIso(date);
-  if (actifs.filter((candidate) => isDate(candidate.date) && semaineIso(candidate.date) === semaine).length >= CANDIDATS_PAR_SEMAINE_MAX) {
+  if (ordinaires.filter((candidate) => isDate(candidate.date) && semaineIso(candidate.date) === semaine).length >= CANDIDATS_PAR_SEMAINE_MAX) {
     throw new Error(`${CANDIDATS_PAR_SEMAINE_MAX} candidats sont déjà planifiés la semaine ${semaine} ; le plafond est de ${CANDIDATS_PAR_SEMAINE_MAX} candidats par semaine.`);
   }
 }

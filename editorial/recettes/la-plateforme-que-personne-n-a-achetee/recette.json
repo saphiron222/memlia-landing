@@ -1,10 +1,12 @@
 {
   "slug": "la-plateforme-que-personne-n-a-achetee",
-  "title": "La plateforme que personne n’a achetée, et ce que le refus m’a appris",
+  "title": "Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec",
   "tabTitle": "Pourquoi un cabinet n’adopte pas un nouvel outil | Memlia",
   "summary": "J’ai construit une application complète pour remplacer les classeurs d’un cabinet. La personne qui allait s’en servir a dit non, pas au prix mais à l’idée d’abandonner son fichier : j’avais ajouté un outil de plus, et choisi les tâches sans les mesurer.",
   "description": "Une application finie, évaluée, jamais adoptée : pourquoi ajouter un outil est une erreur de cadrage, et la règle de relevé qui en est sortie.",
-  "date": "2026-10-01",
+  "date": "2026-09-19",
+  "updatedAt": "2026-09-19",
+  "serie": "cicatrices",
   "topics": [
     "methode",
     "cabinet",
@@ -153,7 +155,30 @@
       "Aquero"
     ],
     "formats": "billets d’éditeurs de logiciels et de prestataires sur l’accompagnement du changement, plus un article de la presse professionnelle sur le défi humain des cabinets ; positions ND",
-    "note": "Relevé WebSearch du 19/09/2026 ; volumes et positions ND. Les résultats relevés s’adressent au cabinet pour l’aider à faire adopter un outil qu’il a déjà choisi. Aucun ne prend le point de vue de celui qui a construit le mauvais outil, ni ne donne de règle pour choisir la tâche avant de choisir l’outil."
+    "note": "Relevé WebSearch du 19/09/2026 ; volumes et positions ND. Les résultats relevés s’adressent au cabinet pour l’aider à faire adopter un outil qu’il a déjà choisi. Aucun ne prend le point de vue de celui qui a construit le mauvais outil, ni ne donne de règle pour choisir la tâche avant de choisir l’outil. L’autocomplétion Google du 19/09 à 19:31 UTC répond sans panne et sans suggestion sur quatre formulations de l’intention ; le zéro est la mesure, pas un silence.",
+    "autocompletion": {
+      "measuredAt": "2026-09-19T19:31:48.367Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "results": [
+        {
+          "query": "pourquoi les cabinets comptables n'adoptent pas les nouveaux outils",
+          "suggestions": []
+        },
+        {
+          "query": "pourquoi un cabinet n'adopte pas un nouvel outil",
+          "suggestions": []
+        },
+        {
+          "query": "pourquoi un cabinet comptable n'adopte pas un nouvel outil",
+          "suggestions": []
+        },
+        {
+          "query": "pourquoi un cabinet n'adopte pas un outil",
+          "suggestions": []
+        }
+      ],
+      "decision": "Aucune variante ne franchit le seuil d’autocomplétion. Le H1 place donc l’intention déjà mesurée par la SERP en première proposition, reste sous 70 caractères et conserve le récit en seconde proposition."
+    }
   },
   "gsc": {
     "requete": "pourquoi les cabinets comptables n’adoptent pas les nouveaux outils",
@@ -161,7 +186,7 @@
     "periode": "90 jours",
     "impressions": 0,
     "clics": 0,
-    "note": "Page nouvelle, écrite le 19/09/2026 pour une publication au 01/10/2026 : aucune impression ne peut lui être attribuée. Aucune inspection d’URL demandée, aucun crédit métrique revendiqué."
+    "note": "Page nouvelle, écrite et publiée le 19/09/2026 : aucune impression ne peut encore lui être attribuée. Aucune inspection d’URL demandée, aucun crédit métrique revendiqué."
   },
   "claims": [
     {

@@ -82,7 +82,7 @@ Anti-personas : salarié cherchant à vérifier sa propre paie ; acheteur d'un m
 | `/blog`, articles | les méthodes, sourcées (règles au §7 bis) | requêtes du registre (`docs/strategy/site-v3/mesures/registre-requetes.json`) | par article |
 | `/glossaire` | le vocabulaire et sa frontière d'automatisation | glossaire cabinet comptable | inchangé |
 
-Les titres d'onglet gardent la requête mesurée (audit des titres du 17/09/2026) ; le H1 porte l'angle. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation dit « Parlons de votre tâche ». Tagline (pied de page, slogan JSON-LD) : « Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous. »
+Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête mesurée par l'instrument du registre, y compris quand l'autocomplétion répond sans suggestion ; le JSON-LD `headline` et `og:title` reprennent ce H1 à l'identique. Le titre d'onglet peut être plus court pour la largeur du SERP, mais vise la même requête. Un angle narratif reste possible en seconde proposition, jamais à la place de l'intention. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation dit « Parlons de votre tâche ». Tagline (pied de page, slogan JSON-LD) : « Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous. »
 
 ## 7 bis. Les articles du blog
 
@@ -99,15 +99,15 @@ Un article est une méthode publiée, pas une page de vente : il vaut par ce qu'
 - **Interdits propres aux articles** : tiret cadratin, « nous constatons », « module », « complément » au sens catalogue, superlatif, mot de processus (revue métier, fact-check, non attesté), formule défensive en tête d'article.
 - **Une republication est datée** : `updatedAt` dans la recette, `dateMiseAJour` dans le frontmatter ; la date de publication ne bouge jamais.
 
-## 7 ter. La série « Cicatrices » — un article par mois, signé Kevin (19/09/2026)
+## 7 ter. La série « Cicatrices » — un article par semaine, signé Kevin (19/09/2026)
 
-Onze articles sur douze parlent en **nous** et décrivent une tâche. Un article par mois fait exception : il est **signé Kevin Kitanga à la première personne**, et il raconte **une chose qui a cassé** dans la construction de Memlia, ce qu'elle a coûté, et la règle qui en est sortie et que nous appliquons depuis. C'est la preuve que le savoir-faire s'écrit parce qu'on l'a payé : un cabinet reconnaît immédiatement quelqu'un qui a déjà ouvert un vrai dossier.
+Les articles ordinaires parlent en **nous** et décrivent une tâche. Une fois par semaine, la série fait exception : l'article est **signé Kevin Kitanga à la première personne**, et il raconte **une chose qui a cassé** dans la construction de Memlia, ce qu'elle a coûté, et la règle qui en est sortie et que nous appliquons depuis. C'est la preuve que le savoir-faire s'écrit parce qu'on l'a payé : un cabinet reconnaît immédiatement quelqu'un qui a déjà ouvert un vrai dossier.
 
 **Ce qu'un article de la série doit porter**, dans cet ordre : le geste ou la décision de départ, tels qu'ils paraissaient raisonnables ; ce qui a cassé, avec la mesure exacte qui l'a montré ; ce que cela a coûté en temps, en travail refait ou en occasion manquée, sans chiffre inventé ; **la règle qui en est sortie**, écrite comme une règle applicable par quelqu'un d'autre ; et ce que cette règle change pour un cabinet qui nous confie une tâche. Il porte aussi, comme tout article daté à partir du 19/09/2026, ses sections « La règle écrite » et « Rejoué sur le jeu fictif » lorsque la leçon se rejoue.
 
 **Ce qu'il ne porte jamais** : le nom d'un cabinet, d'un client, d'un éditeur ou d'une personne, y compris en creux ; un chiffre de résultat non mesuré ; une leçon qui ne se termine pas par une règle ; un aveu qui ne sert qu'à paraître humble. Une cicatrice sans règle est une confidence, pas un article. Le « je » de cette série ne contamine aucune autre surface : les autres articles et les pages restent en « nous ».
 
-**Cadence et place** : un par mois, sur l'un des quatre créneaux hebdomadaires, jamais en plus. Format `thought-leadership`, rôle `direction-associes`. La demande de recherche n'est pas le critère de cette série : elle vise la mémorisation de la marque et la citation, pas une requête. Les entrées portent `serie: "cicatrices"` dans le backlog et sortent du compte des quatre angles par famille.
+**Cadence et place** : exactement une Cicatrice par semaine ISO, le samedi, en sus des quatre articles ordinaires du lundi au jeudi ; elle ne consomme jamais leur plafond. Format `thought-leadership`, rôle `direction-associes`. Sa valeur vient du récit réel, mais son titre reste intent-first : la requête mesurée ouvre le H1 et la cicatrice vient en seconde proposition. Les entrées portent `serie: "cicatrices"` dans le backlog et sortent du compte des quatre angles par famille. Le planificateur refuse une Cicatrice hors samedi, une deuxième dans la même semaine ou un trou entre deux entrées déjà approvisionnées ; il ne fabrique jamais un récit pour combler le stock.
 
 **Ces articles sont les seuls que Kevin relit avant publication** : ils portent sa signature et son expérience. La forge les prépare et les scelle ; elle ne les publie pas sans son go.
 
