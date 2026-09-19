@@ -19,13 +19,14 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { autocompleterGoogle, backlinksDataForSeo, chatGptDataForSeo, journaliserCout, porteDeCout, serpDataForSeo } from '../lib/seo-instruments.mjs';
+import { autocompleterGoogle, backlinksDataForSeo, chatGptDataForSeo, journaliserCout, porteDeCout, referentsCloudflare, serpDataForSeo } from '../lib/seo-instruments.mjs';
 import { analyserSerp } from '../lib/seo-regles.mjs';
-import { detecterAutorite, lireBacklinks, lireTacheIa } from '../lib/seo-autorite.mjs';
+import { detecterAutorite, lireBacklinks, lireReferents, lireTacheIa } from '../lib/seo-autorite.mjs';
 
 const DOMAINE = 'memlia.fr';
 const MARQUE = 'memlia';
-const DEPART = '2026-09'; // Premier relevé : l'âge du site sert à juger un zéro.
+const DEPART = '2026-09';
+const COMPTE_CLOUDFLARE = '063970336833bc239dbe83778a7fea26'; // Premier relevé : l'âge du site sert à juger un zéro.
 const DOSSIER = 'docs/strategy/site-v3/mesures';
 const ENDPOINT_BACKLINKS = 'backlinks_summary';
 const ENDPOINT_IA = 'ai_optimization_chat_gpt_scraper';
@@ -134,9 +135,23 @@ export async function relever(root, { mois = moisCourant(), sansIa = false, budg
     exclusions.push(`citations IA non mesurées : l'interface a répondu sans recherche web sur les ${ia.requetes} requêtes (relevé du 19/09/2026 : web_search rendu à false quel que soit le paramètre) ; seul « la marque est nommée » est mesuré`);
   }
 
+  // 4. Audience : d'où viennent les visites, et notamment celles envoyées par un assistant.
+  // Gratuit, mais il faut le jeton ; sans lui, on l'écrit au lieu de compter zéro visite.
+  let audience = { ok: false, erreur: 'non relevée', visites: null, directes: null, assistants: [], visitesAssistants: null, hotes: [] };
+  const finMois = new Date();
+  const debutMois = new Date(finMois.getTime() - 30 * 24 * 3600 * 1000);
+  const ref = await referentsCloudflare({ compte: COMPTE_CLOUDFLARE, depuis: debutMois.toISOString(), jusqu: finMois.toISOString() });
+  if (!ref.ok) {
+    audience.erreur = ref.erreur;
+    exclusions.push(`référents d'audience non relevés : ${ref.erreur}`);
+  } else {
+    audience = lireReferents(ref.reponse);
+    if (!audience.ok) exclusions.push(`référents d'audience non lus : ${audience.erreur}`);
+  }
+
   const precedent = lireJson(join(root, DOSSIER, `mois-${moisPrecedent(mois)}-autorite.json`), null);
   const detection = detecterAutorite({ mois, autorite, entite, ia, precedent, moisDepuisDepart: moisEcoules(DEPART, mois) });
-  const releve = { mois, jour: new Date().toISOString().slice(0, 10), autorite, entite, ia, depenses, budget, portes: { liens: porteLiens, serp: porteSerp }, exclusions, ...detection };
+  const releve = { mois, jour: new Date().toISOString().slice(0, 10), autorite, entite, ia, audience, depenses, budget, portes: { liens: porteLiens, serp: porteSerp }, exclusions, ...detection };
   ecrireJson(join(root, DOSSIER, `mois-${mois}-autorite.json`), releve);
   return releve;
 }
@@ -152,6 +167,7 @@ if (estPrincipal) {
   if (argv[0] !== 'relever') { console.error('usage : autorite.mjs relever [--sans-ia] [--budget N] [--mois AAAA-MM]'); process.exit(2); }
   const r = await relever(process.cwd(), o);
   console.log(`autorité ${r.mois} : rang ${r.autorite.rang ?? 'ND'}, ${r.autorite.domainesReferents ?? 'ND'} domaines référents ; marque ${r.entite.spell ? `réécrite en « ${r.entite.spell.mot} »` : 'non réécrite'}, rang ${r.entite.rangMarque ?? 'hors top'} ; IA ${r.ia.avecRecherche === 0 ? `citations non mesurées (0 recherche web sur ${r.ia.requetes} requêtes), marque nommée ${r.ia.nomme} fois` : `${r.ia.citations}/${r.ia.avecRecherche} citations`} ; ${r.depenses.total} $`);
+  console.log(`  audience : ${r.audience.ok ? `${r.audience.visites} visites sur 30 jours, dont ${r.audience.directes} directes et ${r.audience.visitesAssistants} venues d'un assistant (plancher : la plupart arrivent sans référent)` : `non relevée — ${r.audience.erreur}`}`);
   for (const x of r.rouges) console.log(`  ROUGE ${x.code} : ${x.motif} (${x.mesure})`);
   for (const x of r.avertissements) console.log(`  avertissement ${x.code} : ${x.motif} (${x.mesure})`);
   for (const x of r.infos) console.log(`  info ${x}`);

@@ -93,3 +93,30 @@ test('lireTacheIa : une tâche refusée par l’interface est une ERREUR, jamais
   assert.equal(ok.cout, 0.000657);
   assert.equal(ok.lecture.cite, true);
 });
+
+test('lireReferents : sépare les assistants du reste, et un jeton absent n’est pas un zéro', async () => {
+  const { lireReferents, ASSISTANTS } = await import('../../scripts/lib/seo-autorite.mjs');
+  const r = lireReferents({
+    data: { viewer: { accounts: [{ rumPageloadEventsAdaptiveGroups: [
+      { count: 12, dimensions: { refererHost: 'chatgpt.com' } },
+      { count: 7, dimensions: { refererHost: '' } },
+      { count: 4, dimensions: { refererHost: 'www.google.com' } },
+      { count: 2, dimensions: { refererHost: 'perplexity.ai' } },
+    ] }] } },
+  });
+  assert.equal(r.ok, true);
+  assert.equal(r.visites, 25);
+  assert.equal(r.directes, 7, 'un référent vide est une visite directe, pas un référent inconnu');
+  assert.deepEqual(r.assistants, [{ hote: 'chatgpt.com', visites: 12 }, { hote: 'perplexity.ai', visites: 2 }]);
+  assert.equal(r.visitesAssistants, 14);
+  assert.ok(ASSISTANTS.includes('chatgpt.com') && ASSISTANTS.includes('perplexity.ai'));
+
+  const erreur = lireReferents({ errors: [{ message: 'Authentication error' }] });
+  assert.equal(erreur.ok, false);
+  assert.match(erreur.erreur, /Authentication error/);
+  assert.equal(erreur.visites, null, 'une réponse en erreur ne rend aucun compte, surtout pas zéro');
+  assert.equal(lireReferents(null).ok, false);
+  const vide = lireReferents({ data: { viewer: { accounts: [{ rumPageloadEventsAdaptiveGroups: [] }] } } });
+  assert.equal(vide.ok, true);
+  assert.equal(vide.visites, 0, 'une réponse valide sans ligne est un vrai zéro');
+});

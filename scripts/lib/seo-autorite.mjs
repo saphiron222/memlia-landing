@@ -101,6 +101,42 @@ export function lireTacheIa(tache, { domaine }) {
   return { ok: true, cout: Number(tache.cost ?? 0), lecture: lireCitationsIa(tache.result?.[0] ?? null, { domaine }), erreur: null };
 }
 
+/**
+ * Les hôtes d'assistants dont une visite compte comme une arrivée « par l'IA ».
+ * ⚠ La plupart des visites venues d'un assistant arrivent **sans référent** et tombent donc dans
+ * les visites directes : ce compte est un plancher, jamais un total.
+ */
+export const ASSISTANTS = Object.freeze([
+  'chatgpt.com', 'chat.openai.com', 'perplexity.ai', 'www.perplexity.ai', 'claude.ai',
+  'gemini.google.com', 'copilot.microsoft.com', 'bing.com/chat', 'you.com', 'mistral.ai', 'chat.mistral.ai',
+]);
+
+/**
+ * Les référents d'audience (Cloudflare Web Analytics, interface GraphQL). Une réponse en erreur
+ * ne rend aucun compte — surtout pas zéro : c'est la leçon des trois zéros creux du 19/09/2026.
+ * Un référent vide est une visite **directe**, pas un référent inconnu.
+ */
+export function lireReferents(reponse) {
+  if (!reponse) return { ok: false, erreur: 'aucune réponse', visites: null, directes: null, assistants: [], visitesAssistants: null, hotes: [] };
+  if (Array.isArray(reponse.errors) && reponse.errors.length > 0) {
+    return { ok: false, erreur: reponse.errors.map((e) => e.message).join(' · '), visites: null, directes: null, assistants: [], visitesAssistants: null, hotes: [] };
+  }
+  const lignes = reponse?.data?.viewer?.accounts?.[0]?.rumPageloadEventsAdaptiveGroups;
+  if (!Array.isArray(lignes)) return { ok: false, erreur: 'réponse sans jeu de données attendu', visites: null, directes: null, assistants: [], visitesAssistants: null, hotes: [] };
+  const hotes = lignes.map((l) => ({ hote: String(l.dimensions?.refererHost ?? '').toLowerCase(), visites: Number(l.count ?? 0) }));
+  const directes = hotes.filter((h) => !h.hote).reduce((n, h) => n + h.visites, 0);
+  const assistants = hotes.filter((h) => h.hote && ASSISTANTS.includes(h.hote));
+  return {
+    ok: true,
+    erreur: null,
+    visites: hotes.reduce((n, h) => n + h.visites, 0),
+    directes,
+    assistants,
+    visitesAssistants: assistants.reduce((n, h) => n + h.visites, 0),
+    hotes: hotes.filter((h) => h.hote),
+  };
+}
+
 const rouge = (code, motif, mesure) => ({ code, motif, mesure });
 
 /** Les rouges, avertissements et informations du relevé mensuel, chacun avec sa mesure. */

@@ -102,6 +102,8 @@ Trois grandeurs distinctes, qu'on ne mélange jamais : **l'autorité** (le profi
 
 **Le coût et son autorisation.** Chaque appel payant passe par la porte de coût du poste. Les mesures IA y sont au-dessus du seuil d'approbation automatique : elles ne s'exécutent que si `--budget` les couvre, et ce dépassement est **écrit dans le relevé** avec le verdict qu'avait rendu la porte. C'est la décision D2 de Kevin du 19/09/2026 (environ 0,40 $ par mois), rendue vérifiable. Relevé réel du 19/09 : **0,0325 $** pour le profil de liens, la page de résultats de la marque et six requêtes d'assistant.
 
+**Le volet audience** lit les référents de Cloudflare Web Analytics (gratuit, interface GraphQL). Il exige la variable **`CLOUDFLARE_ANALYTICS_TOKEN`** — ⚠ **jamais `CLOUDFLARE_API_TOKEN`** : ce nom-là est lu par Wrangler en priorité sur sa session, et un jeton limité aux statistiques ferait échouer tous les déploiements (mesuré le 14/09/2026). Sans le jeton, le relevé écrit « non relevée » et son motif ; il ne compte jamais zéro visite. ⚠ Les visites venues d'un assistant qui arrivent **sans référent** tombent dans les visites directes : le compte des assistants est un **plancher**, jamais un total.
+
 ⚠ `autorite.rang` est le **rang de domaine de DataForSEO**, pas l'autorité de domaine de Moz : deux échelles, jamais comparées entre elles. Un relevé se compare au relevé du mois précédent **par le même instrument**.
 
 ## 5. Commit et push d'une session de cron

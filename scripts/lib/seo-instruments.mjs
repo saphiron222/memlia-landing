@@ -320,6 +320,36 @@ export const backlinksDataForSeo = (domaine) => dataForSeoPost('backlinks/summar
 export const chatGptDataForSeo = (requete, { locationCode = 2250, languageCode = 'fr', modele = 'gpt-4o-mini' } = {}) =>
   dataForSeoPost('ai_optimization/chat_gpt/llm_responses/live', [{ user_prompt: requete, model_name: modele, location_code: locationCode, language_code: languageCode, web_search: true }]);
 
+/**
+ * Les référents d'audience de Cloudflare Web Analytics, par l'interface GraphQL.
+ * ⚠ Le jeton se nomme CLOUDFLARE_ANALYTICS_TOKEN, **jamais** CLOUDFLARE_API_TOKEN : ce dernier
+ * nom est lu par Wrangler en priorité sur sa session OAuth, et un jeton limité aux statistiques
+ * ferait échouer tous les déploiements (mesuré le 14/09/2026).
+ */
+export async function referentsCloudflare({ compte, depuis, jusqu, limite = 50, timeoutMs = 60_000 } = {}) {
+  const jeton = process.env.CLOUDFLARE_ANALYTICS_TOKEN;
+  if (!jeton) return { ok: false, reponse: null, erreur: 'CLOUDFLARE_ANALYTICS_TOKEN absent de l’environnement' };
+  const requete = `query($compte: string!, $depuis: Time!, $jusqu: Time!, $limite: Int!) {
+  viewer { accounts(filter: { accountTag: $compte }) {
+    rumPageloadEventsAdaptiveGroups(limit: $limite, filter: { datetime_geq: $depuis, datetime_leq: $jusqu }, orderBy: [count_DESC]) {
+      count
+      dimensions { refererHost }
+    }
+  } } }`;
+  try {
+    const r = await fetch('https://api.cloudflare.com/client/v4/graphql', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${jeton}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: requete, variables: { compte, depuis, jusqu, limite } }),
+      signal: AbortSignal.timeout(timeoutMs),
+    });
+    if (!r.ok) return { ok: false, reponse: null, erreur: `HTTP ${r.status}` };
+    return { ok: true, reponse: await r.json(), erreur: null };
+  } catch (e) {
+    return { ok: false, reponse: null, erreur: e?.message ?? String(e) };
+  }
+}
+
 export function porteDeCout(endpoint, count) {
   const r = claudeSeo('dataforseo_costs.py', ['check', endpoint, '--count', String(count)], { timeoutMs: 30_000 });
   const json = analyserSortieJson(r.sortie);
