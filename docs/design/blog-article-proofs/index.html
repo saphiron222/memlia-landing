@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preuves fonctionnelles des articles Memlia</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <section class="frame" id="controle-dsn-val" aria-label="Reconstitution d’un résultat Dsn-Val sur un fichier fictif">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Auto-contrôle Dsn-Val</b><span>Jeu d’essai fictif · D-014 · 2026-08</span></header>
+      <div class="hero-line"><div><small>Fichier exact testé</small><h2>D-014_2026-08.dsn</h2><p>La preuve reste attachée à ce candidat. Toute régénération impose un nouveau test.</p></div><span class="pill amber">Contrôle à traiter</span></div>
+      <div class="split">
+        <div class="table-card"><div class="table-head"><span>Couche</span><span>Résultat du rejeu</span><span>Suite</span></div><div><span>Structure du fichier</span><span>Lisible par le contrôle</span><span class="ok">Passé</span></div><div class="warn"><span>Contrôle technique</span><span>Une anomalie bloquante fictive</span><span class="stop">Corriger</span></div><div><span>Pièces et variables</span><span>Hors du périmètre de Dsn-Val</span><span class="muted">Revue séparée</span></div></div>
+        <aside class="decision"><small>Condition d’arrêt</small><h3>Le fichier ne part pas.</h3><p>L’anomalie est corrigée dans l’outil autorisé, puis le fichier est régénéré et retesté.</p><dl><div><dt>Version du contrôle</dt><dd>À consigner au test</dd></div><div><dt>Date</dt><dd>20 septembre 2026</dd></div></dl></aside>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="bulletins-crm" aria-label="Retour CRM fictif transformé en action traçable">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Retour après dépôt</b><span>Jeu d’essai fictif · CRM R-014-A</span></header>
+      <div class="document-grid">
+        <section class="source-doc"><small>Compte rendu reçu</small><h2>R-014-A</h2><div class="doc-row"><b>Émetteur</b><span>ORGANISME-A</span></div><div class="doc-row"><b>Période</b><span>2026-08</span></div><div class="doc-row"><b>Nature</b><span>Écart à qualifier selon la notice</span></div><div class="doc-row"><b>Donnée visée</b><span>Rubrique fictive X-14</span></div></section>
+        <div class="arrow" aria-hidden="true">→</div>
+        <section class="action-doc"><small>Action documentée</small><h2>À arbitrer</h2><ul><li><b>1</b><span>Rattacher le retour au bon dépôt</span></li><li><b>2</b><span>Lire la qualification dans la source</span></li><li><b>3</b><span>Comparer à la preuve P-014-08</span></li><li><b>4</b><span>Conserver le contrôle suivant</span></li></ul><p class="note">Aucune gravité, échéance ou correction n’est déduite du seul libellé.</p></section>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="saisie-six-controles" aria-label="Six contrôles de saisie comptable dans leur ordre fixe">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Lecture d’une pièce fictive</b><span>Lot TEST-050 · aucune écriture enregistrée</span></header>
+      <div class="flow-title"><small>Ordre fixe</small><h2>Une étape qui échoue arrête les suivantes.</h2></div>
+      <ol class="steps six"><li><i>1</i><b>Nature</b><span>Facture identifiée</span></li><li><i>2</i><b>Émetteur</b><span>Fournisseur connu</span></li><li><i>3</i><b>Mentions</b><span>Champs attendus présents</span></li><li class="blocked"><i>4</i><b>Montants</b><span>Écart détecté</span></li><li class="waiting"><i>5</i><b>Période</b><span>Non joué</span></li><li class="waiting"><i>6</i><b>Doublon</b><span>Non joué</span></li></ol>
+      <div class="outcome-band"><span class="pill amber">Refus attendu</span><b>Aucune correction d’office.</b><span>La pièce rejoint la file avec le motif « écart de montants ».</span></div>
+    </article>
+  </section>
+
+  <section class="frame" id="saisie-file-anomalies" aria-label="File d’anomalies comptables à six motifs fermés">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>File d’anomalies</b><span>Jeu fictif · lot TEST-050</span></header>
+      <div class="queue-layout">
+        <section><small>Motifs fermés</small><h2>Chaque refus nomme la règle qui s’est arrêtée.</h2><div class="motifs"><span>Document non facturé <b>1</b></span><span>Fournisseur inconnu <b>6</b></span><span>Pièce incomplète <b>2</b></span><span class="active">Écart de montants <b>1</b></span><span>Hors période <b>3</b></span><span>Doublon probable <b>1</b></span></div></section>
+        <section class="case"><small>Cas sélectionné</small><h3>TEST-023 · écart de montants</h3><dl><div><dt>Contrôle</dt><dd>HT + TVA ≠ TTC lu</dd></div><div><dt>Action automatique</dt><dd>Aucune</dd></div><div><dt>Décision attendue</dt><dd>Relire la pièce</dd></div><div><dt>État</dt><dd><span class="pill amber">À traiter</span></dd></div></dl><p>Le reliquat se recompte pour ce lot. Il ne classe aucune personne.</p></section>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="social-dictionnaire" aria-label="Dictionnaire des colonnes de production du cabinet">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Dictionnaire du suivi social</b><span>Jeu d’essai fictif · table t_production_sociale</span></header>
+      <div class="dictionary"><div class="table-head"><span>Colonne</span><span>Type</span><span>Exemple fictif</span><span>Règle</span></div><div><span>id_dossier</span><span>texte stable</span><span>D-001</span><span>sans nom dans la vue</span></div><div><span>periode</span><span>mois</span><span>2026-08</span><span>obligatoire</span></div><div><span>etat</span><span>liste fermée</span><span>pieces_incompletes</span><span>une valeur autorisée</span></div><div><span>exception_code</span><span>liste fermée</span><span>PIECE_MANQUANTE</span><span>vide si aucune exception</span></div><div><span>decision</span><span>liste fermée</span><span>a_arbitrer</span><span>requise si exception</span></div><div><span>maj_le</span><span>date-heure</span><span>2026-09-07 10:00</span><span>fraîcheur contrôlée</span></div></div>
+      <div class="contract-band"><b>Clé :</b><span>id_dossier + periode</span><i></i><b>Principe :</b><span>une colonne, une signification</span><i></i><b>Données :</b><span>entièrement fictives</span></div>
+    </article>
+  </section>
+
+  <section class="frame" id="social-vue-agregee" aria-label="Vue agrégée non nominative de la production sociale">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Vue du pôle social</b><span>Jeu d’essai fictif · période 2026-08</span></header>
+      <div class="aggregate-layout"><section><small>Dossiers par état</small><h2>Le flux, jamais les personnes.</h2><div class="bars"><div><b>2</b><span>Attente pièces</span><i style="--h:72%"></i></div><div><b>1</b><span>Écart à arbitrer</span><i style="--h:42%"></i></div><div><b>1</b><span>Contrôle terminé</span><i style="--h:42%"></i></div><div><b>1</b><span>Retour à traiter</span><i style="--h:42%"></i></div></div></section><aside><small>Exceptions ouvertes</small><ul><li><b>D-002</b><span>PIECE_MANQUANTE</span><em>À arbitrer</em></li><li><b>D-005</b><span>RETOUR_A_TRAITER</span><em>Clôture refusée</em></li></ul><div class="privacy"><b>Vue sans identifiant de personne</b><span>Aucun classement, aucune cadence individuelle.</span></div></aside></div>
+    </article>
+  </section>
+
+  <section class="frame" id="relance-checklist" aria-label="Checklist conditionnelle des pièces attendues">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Checklist conditionnelle</b><span>Jeu d’essai fictif · dossier D-004 · 2026-08</span></header>
+      <div class="rules-layout"><section><small>Conditions du dossier</small><h2>La liste attendue se calcule depuis la règle.</h2><ul class="conditions"><li><span>TVA mensuelle</span><b class="ok">Oui</b></li><li><span>Deux comptes bancaires</span><b class="ok">Oui</b></li><li><span>Caisse</span><b class="ok">Oui</b></li><li><span>Salariés</span><b class="muted">Non</b></li><li><span>Emprunt</span><b class="muted">Non</b></li></ul></section><div class="arrow" aria-hidden="true">→</div><section class="expected"><small>Pièces attendues</small><ul><li><i>✓</i><span>Relevé · compte 1</span><em>Reçu</em></li><li><i>✓</i><span>Relevé · compte 2</span><em>Reçu</em></li><li><i>·</i><span>Factures d’achat</span><em class="amber-text">Attendu</em></li><li><i>✓</i><span>Factures de vente</span><em>Lisible</em></li><li><i>·</i><span>Journal de caisse</span><em class="amber-text">Attendu</em></li></ul><p>La relance préparée ne nomme que les deux pièces encore attendues.</p></section></div>
+    </article>
+  </section>
+
+  <section class="frame" id="relance-quatre-etats" aria-label="Quatre états de complétude d’une pièce">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Contrôle de complétude</b><span>Jeu d’essai fictif · période 2026-08</span></header>
+      <div class="state-title"><small>Domaine fermé</small><h2>Une pièce reçue n’est pas forcément exploitable.</h2></div>
+      <div class="states"><article><i>1</i><h3>Attendue</h3><p>La checklist exige la pièce pour cette période.</p><span>Relance possible après validation</span></article><article><i>2</i><h3>Reçue</h3><p>Le fichier est arrivé, sans conclusion sur sa lecture.</p><span>Contrôle de lisibilité</span></article><article class="good"><i>3</i><h3>Lisible</h3><p>La pièce reçue peut alimenter la suite du travail.</p><span>Complétude à valider</span></article><article class="halt"><i>4</i><h3>Hors période</h3><p>La pièce est conservée pour le bon mois.</p><span>La période courante reste ouverte</span></article></div>
+    </article>
+  </section>
+
+  <section class="frame" id="crm-lecture-ligne" aria-label="Compte rendu métier fictif lu ligne à ligne">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Lecture du CRM</b><span>Jeu d’essai fictif · R-027-A</span></header>
+      <div class="crm-lines"><div class="table-head"><span>Ligne du retour</span><span>Valeur fictive lue</span><span>Question de méthode</span></div><div><span>Émetteur</span><span>ORGANISME-A</span><span>Quelle notice fait foi ?</span></div><div><span>Déclaration</span><span>Dépôt D-027 · 2026-08</span><span>Est-ce le bon fichier ?</span></div><div><span>Population</span><span>P-03</span><span>Quel périmètre est visé ?</span></div><div><span>Donnée</span><span>Rubrique fictive X-14</span><span>Quelle preuve la porte ?</span></div><div class="warn"><span>Qualification</span><span>Non précisée</span><span class="stop">Ne pas inventer la gravité</span></div><div><span>Contrôle suivant</span><span>R-027-B</span><span>Confirme-t-il la décision ?</span></div></div>
+      <div class="loop">Retour identifié <i>→</i> portée comprise <i>→</i> donnée rapprochée <i>→</i> décision tracée <i>→</i> résultat suivant vérifié</div>
+    </article>
+  </section>
+
+  <section class="frame" id="crm-registre" aria-label="Registre fictif des comptes rendus métier">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Registre des retours</b><span>Jeu d’essai fictif · vue de pilotage</span></header>
+      <div class="register"><div class="table-head"><span>Retour</span><span>Émetteur</span><span>Période</span><span>Statut source</span><span>Décision</span><span>Contrôle suivant</span></div><div><span>R-027-A</span><span>ORGANISME-A</span><span>2026-08</span><span>à confirmer</span><span class="pill amber">À arbitrer</span><span>R-027-B</span></div><div><span>R-031-A</span><span>ORGANISME-B</span><span>2026-08</span><span>BAN reçu</span><span class="pill amber">Ouvert</span><span>Absent</span></div><div><span>R-044-A</span><span>ORGANISME-C</span><span>2026-08</span><span>informatif</span><span class="pill green">Expliqué</span><span>R-044-B</span></div></div>
+      <div class="register-foot"><div><small>Preuve source</small><b>Référence, jamais copie nominative</b></div><div><small>État interne</small><b>Séparé du statut du CRM</b></div><div><small>Clôture</small><b>Sur le résultat suivant</b></div></div>
+    </article>
+  </section>
+
+  <section class="frame" id="carte-douze-poles" aria-label="Carte des douze pôles du cabinet et de leurs familles">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Carte du cabinet</b><span>12 pôles · 60 familles · source de vérité éditoriale</span></header>
+      <div class="pole-grid"><article><b>13</b><span>Production comptable</span></article><article><b>5</b><span>Portefeuille et échéances</span></article><article><b>7</b><span>Paie et social</span></article><article><b>7</b><span>Juridique et fiscal</span></article><article><b>4</b><span>Facturation et recouvrement</span></article><article><b>5</b><span>Administration et secrétariat</span></article><article><b>3</b><span>RH et formation</span></article><article><b>4</b><span>Numérique, IT et data</span></article><article><b>3</b><span>Excel et outils existants</span></article><article class="active"><b>4</b><span>Méthode et décision humaine</span></article><article><b>4</b><span>Conseil et missions spéciales</span></article><article class="closed"><b>1</b><span>Audit légal · listé, non ouvert</span></article></div>
+      <p class="map-note">Chaque famille décrit une tâche et sa frontière. La carte ne promet aucune fonction et n’ouvre pas l’audit légal.</p>
+    </article>
+  </section>
+
+  <section class="frame" id="carte-test-regle" aria-label="Test de maturité d’une règle de cabinet">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Choisir par quelle règle commencer</b><span>Jeu d’essai fictif</span></header>
+      <div class="maturity"><section><small>Tâche candidate</small><h2>Relance de pièces</h2><p>Déclencheur, condition, action et exception sont écrits sur une page.</p></section><div class="checks-list"><div><i>✓</i><span><b>Se répète</b><small>Chaque dossier, chaque période</small></span><em class="ok">Oui</em></div><div><i>✓</i><span><b>La règle s’écrit</b><small>Aucun « ça dépend » non borné</small></span><em class="ok">Oui</em></div><div><i>✓</i><span><b>Les exceptions se comptent</b><small>Illisible, litige, hors période</small></span><em class="ok">Oui</em></div></div><aside><small>Décision humaine</small><h3>Candidate au cadrage</h3><p>Le test ne lance rien. Le cabinet choisit la première tâche et valide sa frontière.</p><span class="pill green">Règle reproductible</span></aside></div>
+    </article>
+  </section>
+
+  <section class="frame" id="cicatrice-questionnaire-vide" aria-label="Questionnaire de cadrage fictif revenu vide">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Questionnaire de cadrage</b><span>Reconstitution · aucune trace d’écran refusé conservée</span></header>
+      <div class="empty-form"><section><small>Questionnaire revenu</small><h2>Les lignes vides n’avaient déclenché aucun signal.</h2><div class="form-row"><b>Tâche observée</b><span></span></div><div class="form-row"><b>Durée</b><span></span></div><div class="form-row"><b>Fréquence</b><span></span></div><div class="form-row"><b>Source de donnée</b><span></span></div></section><aside><span class="big-zero">0</span><b>réponse renseignée</b><p>Le manque n’était ni compté ni présenté avant la fin du rendez-vous.</p><span class="pill amber">Cadrage incomplet</span></aside></div>
+    </article>
+  </section>
+
+  <section class="frame" id="cicatrice-formulaire-manques" aria-label="Formulaire fictif qui calcule ses propres champs manquants">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Relevé de tâche</b><span>Jeu d’essai fictif · contrôle de complétude</span></header>
+      <div class="form-check"><section><small>Réponses du relevé</small><div class="answer"><b>Tâche</b><span>Rapprocher l’export et le classeur</span><em class="ok">Renseigné</em></div><div class="answer"><b>Durée</b><span>20 minutes</span><em class="ok">Renseigné</em></div><div class="answer missing"><b>Fréquence</b><span>Champ vide</span><em class="stop">Manquant</em></div><div class="answer missing"><b>Source</b><span>Champ vide</span><em class="stop">Manquant</em></div></section><aside><small>Bloc calculé</small><h2>2 éléments manquent</h2><ul><li>Fréquence de la tâche</li><li>Emplacement de la donnée</li></ul><p>Aucun engagement tant que le relevé est incomplet.</p><button type="button" disabled>Terminer le cadrage</button></aside></div>
+    </article>
+  </section>
+</main>
+</body>
+</html>

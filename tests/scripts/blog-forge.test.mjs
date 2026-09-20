@@ -6,7 +6,7 @@ import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
-import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter } from '../../scripts/blog-forge.mjs';
+import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
 import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH } from '../../scripts/lib/blog-pipeline.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -68,6 +68,10 @@ function recette() {
     task: 'Décider quelle tâche automatiser en premier.', rankability: 'plausible', businessRelevance: 'directe',
     proofRequired: 'Jeu fictif à trois cas : courant, limite, refus.', reviewRule: 'Réviser lors de tout changement de source officielle citée.',
     cta: { label: 'Voir la méthode', destination: '/methode', outcome: 'Comprendre le cadrage d’une automatisation.' },
+    inlineProofs: [
+      { id: 'preuve-test-a', insertBeforeHeading: 'Ce qui reste humain', alt: 'Première preuve fonctionnelle sur un jeu fictif.', source: 'jeu d’essai fictif', capturedAt: '2026-09-20' },
+      { id: 'preuve-test-b', insertBeforeHeading: 'Ce qui reste humain', alt: 'Seconde preuve fonctionnelle sur un jeu fictif.', source: 'jeu d’essai fictif', capturedAt: '2026-09-20' },
+    ],
     image: { heroId: `img-art-${SLUG}`, alt: 'Trois colonnes : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain', cadre: { titre: 'Automatiser une tâche de test', sousTitre: 'La règle, le jeu fictif, la validation', famille: 'Méthode', colonnes: [{ titre: 'Se prépare seul', items: ['Relance à J+7'] }, { titre: 'Attend une validation', items: ['Envoi au client'] }, { titre: 'Reste humain', items: ['Litige'] }], pied: 'memlia.fr' } },
     sources: [
       { id: 'cnil-durees', publisher: 'CNIL', title: 'Les durées de conservation des données', url: 'https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees', level: 'tier-1', official: true, classificationReason: 'Source officielle primaire publiée directement par l’autorité de protection des données.', excerpt: 'une durée de conservation doit être déterminée par le responsable de traitement' },
@@ -163,6 +167,26 @@ test('le découpage en unités et les jetons suivent le pipeline', () => {
   assert.deepEqual(jetons('Les données personnelles ne peuvent pas être conservées'), ['donnees', 'personnelles', 'peuvent', 'conservees']);
 });
 
+test('les preuves inline sont datées, sourcées et ancrées sans modifier les phrases du corps', () => {
+  const corps = '## Première section\n\nPhrase scellée.\n\n## Section cible\n\nSuite scellée.\n';
+  const rendu = injecterPreuvesInline(corps, [{
+    id: 'preuve-fictive',
+    insertBeforeHeading: 'Section cible',
+    alt: 'Une preuve fictive correctement décrite.',
+    source: 'jeu d’essai fictif décrit dans l’article',
+    capturedAt: '2026-09-20',
+  }]);
+  assert.ok(rendu.includes('Phrase scellée.'));
+  assert.ok(rendu.includes('Suite scellée.'));
+  assert.match(rendu, /<figure data-blog-proof="preuve-fictive">/);
+  assert.match(rendu, /Source : jeu d’essai fictif décrit dans l’article ; capture du <time datetime="2026-09-20">20 septembre 2026<\/time>\./);
+  assert.ok(rendu.indexOf('data-blog-proof') < rendu.indexOf('## Section cible'));
+  assert.deepEqual(unitesRendues(rendu), unitesRendues(corps), 'une figure sourcée est une preuve visuelle, pas une affirmation éditoriale');
+  assert.throws(() => injecterPreuvesInline(corps, [{
+    id: 'preuve-fictive', insertBeforeHeading: 'Section absente', alt: 'Preuve fictive.', source: 'jeu fictif', capturedAt: '2026-09-20',
+  }]), /H2 d’ancrage absent/);
+});
+
 test('le frontmatter reproduit le manifeste champ pour champ', () => {
   const manifest = construireManifest(recette(), 'pret-preview', jour, null);
   const fm = frontmatter(manifest);
@@ -210,6 +234,7 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     const preview = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
     assert.deepEqual(preview.errors, []);
     assert.equal(preview.pass, true);
+    assert.equal((readFileSync(join(root, 'src/content/blog', `${SLUG}.md`), 'utf8').match(/data-blog-proof=/g) ?? []).length, 2, 'les deux preuves sont dans le candidat exact');
     const images = readFileSync(join(root, 'src/data/images.mjs'), 'utf8');
     assert.ok(images.includes(`'img-art-${SLUG}'`) && images.includes('Trois colonnes'), 'hero déclaré avec son alt');
     assert.ok(images.includes("'img-existante'"), 'les entrées existantes sont conservées');

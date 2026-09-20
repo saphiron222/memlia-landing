@@ -109,11 +109,21 @@ Les contrôles se passent dans un ordre fixe, du plus grossier au plus fin, parc
 
 Quatre de ces six contrôles sont purement déterministes : ils comparent, ils ne jugent pas. C’est ce qui les rend automatisables sans risque. Les deux autres, l’émetteur inconnu et l’imputation d’un achat inhabituel, demandent une décision, et cette décision appartient au cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre ce qui se prouve par comparaison et ce qui s’apprécie.
 
+<figure data-blog-proof="saisie-six-controles">
+  <img src="/proofs/blog/saisie-six-controles.webp" alt="Six contrôles de saisie dans leur ordre fixe, arrêtés sur un écart de montants fictif." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif et règle écrite décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
+
 ## Brique 3 : la file d’anomalies, et le reliquat qui se compte
 
 Tout ce qui ne franchit pas un contrôle tombe dans une [file d’anomalies](/glossaire#file-d-anomalies) unique, avec la pièce, le contrôle qui a échoué et la date. Une file unique, relue à heure fixe, vaut mieux qu’une alerte par pièce, qui finit ignorée. Chaque ligne porte un motif fermé : document non facturé, fournisseur inconnu, pièce incomplète, écart de montants, hors période, doublon probable. Ces motifs sont peu nombreux à dessein, ils servent à décider et non à décrire.
 
 Le reliquat, c’est la part des pièces qui termine dans cette file. Il se compte, période par période, et il n’a de sens que rapporté au jeu de pièces sur lequel il a été compté : un dossier de commerce avec beaucoup de tickets ne produit pas le même reliquat qu’un dossier de prestations à dix factures par mois. Ce chiffre n’est pas un argument de vente, c’est un instrument de réglage : quand un motif domine la file, c’est la règle qu’il faut corriger, pas la personne qui relit.
+
+<figure data-blog-proof="saisie-file-anomalies">
+  <img src="/proofs/blog/saisie-file-anomalies.webp" alt="File d’anomalies fictive avec six motifs fermés et un écart de montants à traiter." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif et règle écrite décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
 
 ## La règle dans les mots du cabinet
 

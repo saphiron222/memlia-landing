@@ -151,8 +151,8 @@ class GlossaryProof(unittest.TestCase):
     def test_glossary_links_to_the_exact_preserved_articles(self):
         # Depuis le 17/09/2026 au soir, plus aucun dossier « publie-non-atteste » : les trois articles
         # historiques sont entres dans la forge. Chaque dossier porte alors un review.json dont le sujet
-        # scelle les octets exacts de l'article ; cet oracle le relit pour chaque article publie, sans
-        # passer par le validateur JavaScript.
+        # scelle les octets éditoriaux de l'article. Les figures data-blog-proof ont leur propre manifeste
+        # de rendu : elles sont retirées comme le fait la forge avant de recalculer cette empreinte.
         preserved = [
             path for path in (ROOT / 'editorial/articles').glob('*/manifest.json')
             if json.loads(path.read_text()).get('editorialStatus') == 'publie-non-atteste'
@@ -166,7 +166,15 @@ class GlossaryProof(unittest.TestCase):
         for article in published:
             review = json.loads((ROOT / 'editorial/articles' / article.stem / 'review.json').read_text())
             self.assertEqual(review['subject']['slug'], article.stem)
-            self.assertEqual(hashlib.sha256(article.read_bytes()).hexdigest(), review['subject']['articleSha256'], article.stem)
+            markdown = article.read_text(encoding='utf-8')
+            editorial = re.sub(
+                r'<figure\b[^>]*\bdata-blog-proof=(?:"[^"]*"|\'[^\']*\')[^>]*>.*?</figure>',
+                '',
+                markdown,
+                flags=re.I | re.S,
+            )
+            editorial = re.sub(r'\n{3,}', '\n\n', editorial)
+            self.assertEqual(hashlib.sha256(editorial.encode()).hexdigest(), review['subject']['articleSha256'], article.stem)
         # Le glossaire ne renvoie qu'a des articles publies, et garde ses renvois historiques vers les
         # deux articles paie et social qu'il citait avant leur entree dans la forge.
         linked = set(re.findall(r'href="/blog/([a-z0-9-]+)"', self.html))

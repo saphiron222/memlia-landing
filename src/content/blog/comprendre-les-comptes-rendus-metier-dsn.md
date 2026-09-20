@@ -178,6 +178,11 @@ Ce scénario teste la traçabilité. Il ne fournit aucune règle permettant de c
 
 Ces cas sont synthétiques. Ils ne reproduisent aucun CRM réel et ne fixent aucune conséquence. Ils servent à tester trois refus attendus : clôture prématurée, qualification inventée et canal supposé.
 
+<figure data-blog-proof="crm-lecture-ligne">
+  <img src="/proofs/blog/crm-lecture-ligne.webp" alt="Compte rendu métier fictif lu ligne à ligne sans inventer une qualification absente." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif décrit dans cet article, d’après Net-entreprises (<a href="https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/" rel="noopener">https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/</a>) ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
+
 ## Quel registre tenir pour ne perdre aucun retour ?
 
 Un registre utile sépare le message reçu de la décision humaine. La structure ci-dessous est une proposition Memlia ; le cabinet en fixe les droits d’accès et l’outil.
@@ -198,6 +203,11 @@ Un registre utile sépare le message reçu de la décision humaine. La structure
 Dans la vue agrégée, comptez les dossiers ou retours par état et par échéance. N’affichez pas par défaut un classement des gestionnaires. L’affectation sert à distribuer le travail ; elle ne justifie pas une mesure individuelle continue.
 
 Quand un CRM contient des données nominatives, le registre de pilotage ne devient pas une copie générale du retour. Limitez les champs au strict nécessaire, réservez l’accès aux personnes habilitées et renvoyez vers la pièce source sécurisée plutôt que de recopier des données individuelles dans une vue partagée.
+
+<figure data-blog-proof="crm-registre">
+  <img src="/proofs/blog/crm-registre.webp" alt="Registre fictif séparant le statut source, la décision et le contrôle suivant de trois retours." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif et registre à dix champs décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
 
 ## Ce qui s’automatise, ce qui attend une validation, ce qui reste humain
 

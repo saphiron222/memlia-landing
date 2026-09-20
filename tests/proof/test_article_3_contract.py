@@ -149,8 +149,11 @@ class Article3Contract(unittest.TestCase):
         self.assertIn("sources-absentes", source_errors(missing))
         stale = self.source.replace(f"consulte: {jour_de_publication(self.source)}", "consulte: 2025-09-17", 1)
         self.assertTrue(any(error.startswith("source-perimee:") for error in source_errors(stale)))
-        marker = f"]({first_url})"
-        uncited = self.source.replace(marker, "](https://example.invalid/source)", 1)
+        # Une même source peut désormais être citée dans le texte et dans la légende datée
+        # d’une preuve. La mutation doit retirer toutes ses occurrences pour simuler une source
+        # réellement non citée, pas seulement le premier lien Markdown.
+        article_body = body(self.source)
+        uncited = self.source[:-len(article_body)] + article_body.replace(first_url, "https://example.invalid/source")
         self.assertIn(f"claim-sans-citation:{first_url}", source_errors(uncited))
 
     def test_mutations_reject_wrong_author_and_fabricated_attestation(self):

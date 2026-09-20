@@ -28,6 +28,7 @@ import {
   PUBLICATION_SEAL_PATH, contexteDeCitation, verifierPlafonds, verifySource,
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
+import { retirerPreuvesInline } from './lib/blog-proof-figures.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
 
@@ -98,7 +99,9 @@ export const aujourdhui = () => new Date().toISOString().slice(0, 10);
 
 /** Copie exacte du découpage en unités du pipeline (claims.contentUnits doit le reproduire au caractère près). */
 export function unitesRendues(body) {
-  return body.replace(/<!--[\s\S]*?-->/g, '').split(/\r?\n\s*\r?\n/)
+  return retirerPreuvesInline(body)
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .split(/\r?\n\s*\r?\n/)
     .map((part) => part.trim())
     .filter(Boolean)
     .map((raw) => ({ raw, text: raw
@@ -487,6 +490,52 @@ const LIBELLES_REGLE = ['La frontière.', 'La proposition.', 'L’arrêt.', 'Le 
 const COLONNES_FRONTIERE = ['Se prépare seul', 'Attend une validation', 'Reste humain'];
 const LIGNES_REJEU_MIN = 3;
 
+const echapperHtml = (texte) => String(texte)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
+const dateFrLongue = (date) => new Intl.DateTimeFormat('fr-FR', {
+  day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
+}).format(new Date(`${date}T00:00:00Z`));
+
+/**
+ * Ajoute les preuves visuelles déclarées par la recette sans modifier son corps éditorial.
+ * Chaque insertion échoue fermée si le H2 d'ancrage a disparu : une preuve ne doit jamais
+ * glisser silencieusement vers une section sans rapport après une réécriture.
+ */
+export function injecterPreuvesInline(corps, preuves = []) {
+  if (!preuves.length) return corps;
+  const ids = new Set();
+  const groupes = new Map();
+  for (const preuve of preuves) {
+    if (!/^[a-z0-9-]+$/.test(preuve.id ?? '')) throw new Error(`Preuve inline : identifiant invalide « ${preuve.id ?? ''} ».`);
+    if (ids.has(preuve.id)) throw new Error(`Preuve inline dupliquée : ${preuve.id}.`);
+    ids.add(preuve.id);
+    if (!preuve.insertBeforeHeading) throw new Error(`Preuve inline ${preuve.id} : insertBeforeHeading manquant.`);
+    if (!preuve.alt || [...preuve.alt].length > 125) throw new Error(`Preuve inline ${preuve.id} : alt absent ou supérieur à 125 caractères.`);
+    if (!preuve.source || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')) throw new Error(`Preuve inline ${preuve.id} : source ou date de capture invalide.`);
+    if (preuve.sourceUrl && !/^https:\/\//.test(preuve.sourceUrl)) throw new Error(`Preuve inline ${preuve.id} : sourceUrl doit être une URL HTTPS.`);
+    const liste = groupes.get(preuve.insertBeforeHeading) ?? [];
+    liste.push(preuve);
+    groupes.set(preuve.insertBeforeHeading, liste);
+  }
+  let resultat = corps;
+  for (const [titre, groupe] of groupes) {
+    const ancre = `\n## ${titre}\n`;
+    if (!resultat.includes(ancre)) throw new Error(`Preuves inline : H2 d’ancrage absent « ${titre} ».`);
+    const figures = groupe.map((preuve) => {
+      const source = preuve.sourceUrl
+        ? `${echapperHtml(preuve.source)} (<a href="${echapperHtml(preuve.sourceUrl)}" rel="noopener">${echapperHtml(preuve.sourceUrl)}</a>)`
+        : echapperHtml(preuve.source);
+      return `<figure data-blog-proof="${preuve.id}">\n  <img src="/proofs/blog/${preuve.id}.webp" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n  <figcaption>Source : ${source} ; capture du <time datetime="${preuve.capturedAt}">${dateFrLongue(preuve.capturedAt)}</time>.</figcaption>\n</figure>`;
+    }).join('\n\n');
+    resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
+  }
+  return resultat;
+}
+
 const apostropheTypo = (texte) => texte.replace(/'/g, '’');
 const sectionH2 = (corps, titre) => {
   const m = new RegExp(`^## ${titre.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$([\\s\\S]*?)(?=^## |(?![\\s\\S]))`, 'm').exec(corps);
@@ -537,9 +586,18 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   ecrireJson(manifestPath, manifestFinal);
   const articlePath = join(root, 'src/content/blog', `${slug}.md`);
   mkdirSync(dirname(articlePath), { recursive: true });
-  const markdown = `${frontmatter(manifestFinal)}\n${corps}\n`;
+  let corpsPublie = corps;
+  let erreurPreuveInline = null;
+  try {
+    corpsPublie = injecterPreuvesInline(corps, recette.inlineProofs ?? []);
+  } catch (error) {
+    erreurPreuveInline = error.message;
+  }
+  const markdown = `${frontmatter(manifestFinal)}\n${corpsPublie}\n`;
   writeFileSync(articlePath, markdown);
-  const sujet = { slug, articleHash: sha256(markdown), manifestHash: sha256(readFileSync(manifestPath)) };
+  // Les preuves inline ont leur propre contrat (rendu, empreinte et légende).
+  // Les preuves éditoriales restent reliées aux octets scellés avant leur insertion.
+  const sujet = { slug, articleHash: sha256(retirerPreuvesInline(markdown)), manifestHash: sha256(readFileSync(manifestPath)) };
 
   ecrireJson(join(dossier, 'preuves/role.json'), artefact(sujet, 'role', jour, { level: recette.role.proofLevel, observations: [recette.role.proofNote] }));
   ecrireJson(join(dossier, 'preuves/research-serp.json'), artefact(sujet, 'serp', jour, { ...recette.serp, observations: [recette.serp.note] }));
@@ -553,7 +611,10 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
       observations: [source.classificationReason, ...(revues?.sources?.observations?.[source.id] ? [revues.sources.observations[source.id]] : [])],
     });
   }
-  const { erreurs, claims } = construireClaims({ recette, corps, dossier, sujet, jour });
+  // Les figures sont des attestations visuelles, pas de nouvelles affirmations éditoriales :
+  // unitesRendues les ignore et conserve le registre des phrases scellées inchangé.
+  const { erreurs, claims } = construireClaims({ recette, corps: corpsPublie, dossier, sujet, jour });
+  if (erreurPreuveInline) erreurs.push(erreurPreuveInline);
   ecrireJson(join(dossier, 'claims.json'), claims);
   erreurs.push(...verifierRegleEcrite(corps, { date: recette.date }));
 
@@ -613,7 +674,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   inscrireFile(root, slug, recette.date, statut, recette.serie ?? null);
   ecrireJson(join(dossierRecette, 'paquet-revue.json'), {
     slug, title: recette.title, primaryQuery: recette.primaryQuery, intent: recette.intent, role: recette.role.primary, format: recette.format, task: recette.task,
-    corps, sources: manifestFinal.sources.map((s) => ({ id: s.id, publisher: s.publisher, title: s.title, url: s.url, level: s.level, official: s.official })),
+    corps, preuvesInline: recette.inlineProofs ?? [], sources: manifestFinal.sources.map((s) => ({ id: s.id, publisher: s.publisher, title: s.title, url: s.url, level: s.level, official: s.official })),
     claims: claims.claims.map((c) => ({ id: c.id, claim: c.claim, type: c.type, sourceId: c.sourceIds[0], citation: c.sourceExcerpts[c.sourceIds[0]], contexte: c.factCheck.sourceResults[0].context.slice(0, 1200) })),
     criteresEditoriaux: REVIEW_CRITERIA, criteresImage: IMAGE_REVIEW_CRITERIA, image: { alt: recette.image.alt, cadre: recette.image.cadre, master: relative(root, join(dossier, 'preuves/image/master.png')) },
     identites: { auteur: 'kevin', reviewerEditorial: 'marketing', reviewerMetier: recette.businessReview.reviewerId, roleMetier: recette.businessReview.role },

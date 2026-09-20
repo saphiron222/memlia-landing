@@ -92,6 +92,16 @@ La preuve que je n’avais rien mesuré était sous mes yeux, et je ne l’ai pa
 
 Une semaine après, j’ai remplacé le questionnaire par un formulaire qui calcule ce qui lui manque : les champs vides et les tâches incomplètes remontent tout seuls dans un bloc à la fin. Un relevé incomplet se voit à la fin du rendez-vous, sur place, pas des mois plus tard.
 
+<figure data-blog-proof="cicatrice-questionnaire-vide">
+  <img src="/proofs/blog/cicatrice-questionnaire-vide.webp" alt="Reconstitution du questionnaire de cadrage revenu vide, sans signal automatique sur les manques." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : reconstitution fidèle au récit et à la preuve exigée dans la recette scellée ; aucune capture de l’écran refusé n’est conservée dans le dépôt ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
+
+<figure data-blog-proof="cicatrice-formulaire-manques">
+  <img src="/proofs/blog/cicatrice-formulaire-manques.webp" alt="Reconstitution du formulaire fictif qui remonte deux champs manquants avant tout engagement." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : reconstitution fidèle au récit et à la preuve exigée dans la recette scellée ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
+
 ## Ce que cela a coûté
 
 Une application entière construite, évaluée, jamais vendue, jamais mise en service. Des semaines de travail qui n’ont produit aucune valeur pour le cabinet, et un rendez-vous de cadrage à refaire depuis la première question.

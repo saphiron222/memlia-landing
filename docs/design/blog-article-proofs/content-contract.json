@@ -1,0 +1,128 @@
+[
+  {
+    "id": "controle-dsn-val",
+    "article": "controler-les-bulletins-de-paie-avant-la-dsn",
+    "alt": "Reconstitution d’un résultat Dsn-Val sur un fichier fictif, avec anomalie bloquante et nouveau test attendu.",
+    "source": "Jeu d’essai fictif décrit dans l’article, d’après Net-entreprises",
+    "sourceUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
+    "capturedAt": "2026-09-20",
+    "centralText": "Auto-contrôle Dsn-Val Jeu d’essai fictif · D-014 · 2026-08 Fichier exact testé D-014_2026-08.dsn La preuve reste attachée à ce candidat. Toute régénération impose un nouveau test. Contrôle à traiter Couche Résultat du rejeu Suite Structure du fichier Lisible par le contrôle Passé Contrôle technique Une anomalie bloquante fictive Corriger Pièces et variables Hors du périmètre de Dsn-Val Revue séparée Condition d’arrêt Le fichier ne part pas. L’anomalie est corrigée dans l’outil autorisé, puis le fichier est régénéré et retesté. Version du contrôle À consigner au test Date 20 septembre 2026"
+  },
+  {
+    "id": "bulletins-crm",
+    "article": "controler-les-bulletins-de-paie-avant-la-dsn",
+    "alt": "Retour CRM fictif relié à son dépôt, sa preuve et une décision humaine à arbitrer.",
+    "source": "Jeu d’essai fictif décrit dans l’article, d’après Net-entreprises",
+    "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+    "capturedAt": "2026-09-20",
+    "centralText": "Retour après dépôt Jeu d’essai fictif · CRM R-014-A Compte rendu reçu R-014-A Émetteur ORGANISME-A Période 2026-08 Nature Écart à qualifier selon la notice Donnée visée Rubrique fictive X-14 → Action documentée À arbitrer 1 Rattacher le retour au bon dépôt 2 Lire la qualification dans la source 3 Comparer à la preuve P-014-08 4 Conserver le contrôle suivant Aucune gravité, échéance ou correction n’est déduite du seul libellé."
+  },
+  {
+    "id": "saisie-six-controles",
+    "article": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+    "alt": "Six contrôles de saisie dans leur ordre fixe, arrêtés sur un écart de montants fictif.",
+    "source": "Jeu d’essai fictif et règle écrite décrits dans l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "Lecture d’une pièce fictive Lot TEST-050 · aucune écriture enregistrée Ordre fixe Une étape qui échoue arrête les suivantes. 1 Nature Facture identifiée 2 Émetteur Fournisseur connu 3 Mentions Champs attendus présents 4 Montants Écart détecté 5 Période Non joué 6 Doublon Non joué Refus attendu Aucune correction d’office. La pièce rejoint la file avec le motif « écart de montants »."
+  },
+  {
+    "id": "saisie-file-anomalies",
+    "article": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+    "alt": "File d’anomalies fictive avec six motifs fermés et un écart de montants à traiter.",
+    "source": "Jeu d’essai fictif et règle écrite décrits dans l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "File d’anomalies Jeu fictif · lot TEST-050 Motifs fermés Chaque refus nomme la règle qui s’est arrêtée. Document non facturé 1 Fournisseur inconnu 6 Pièce incomplète 2 Écart de montants 1 Hors période 3 Doublon probable 1 Cas sélectionné TEST-023 · écart de montants Contrôle HT + TVA ≠ TTC lu Action automatique Aucune Décision attendue Relire la pièce État À traiter Le reliquat se recompte pour ce lot. Il ne classe aucune personne."
+  },
+  {
+    "id": "social-dictionnaire",
+    "article": "suivre-la-production-sociale-dans-excel",
+    "alt": "Dictionnaire fictif des colonnes de production avec types, exemples et règles de saisie.",
+    "source": "Jeu d’essai fictif et dictionnaire de colonnes décrits dans l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "Dictionnaire du suivi social Jeu d’essai fictif · table t_production_sociale Colonne Type Exemple fictif Règle id_dossier texte stable D-001 sans nom dans la vue periode mois 2026-08 obligatoire etat liste fermée pieces_incompletes une valeur autorisée exception_code liste fermée PIECE_MANQUANTE vide si aucune exception decision liste fermée a_arbitrer requise si exception maj_le date-heure 2026-09-07 10:00 fraîcheur contrôlée Clé : id_dossier + periode Principe : une colonne, une signification Données : entièrement fictives"
+  },
+  {
+    "id": "social-vue-agregee",
+    "article": "suivre-la-production-sociale-dans-excel",
+    "alt": "Vue agrégée fictive des dossiers par état et des exceptions, sans donnée nominative.",
+    "source": "Jeu d’essai fictif de cinq dossiers décrit dans l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "Vue du pôle social Jeu d’essai fictif · période 2026-08 Dossiers par état Le flux, jamais les personnes. 2 Attente pièces 1 Écart à arbitrer 1 Contrôle terminé 1 Retour à traiter Exceptions ouvertes D-002 PIECE_MANQUANTE À arbitrer D-005 RETOUR_A_TRAITER Clôture refusée Vue sans identifiant de personne Aucun classement, aucune cadence individuelle."
+  },
+  {
+    "id": "relance-checklist",
+    "article": "automatiser-la-relance-des-pieces-clients",
+    "alt": "Checklist conditionnelle fictive qui déduit les pièces attendues des conditions du dossier.",
+    "source": "Jeu d’essai fictif et checklist conditionnelle décrits dans l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "Checklist conditionnelle Jeu d’essai fictif · dossier D-004 · 2026-08 Conditions du dossier La liste attendue se calcule depuis la règle. TVA mensuelle Oui Deux comptes bancaires Oui Caisse Oui Salariés Non Emprunt Non → Pièces attendues ✓ Relevé · compte 1 Reçu ✓ Relevé · compte 2 Reçu · Factures d’achat Attendu ✓ Factures de vente Lisible · Journal de caisse Attendu La relance préparée ne nomme que les deux pièces encore attendues."
+  },
+  {
+    "id": "relance-quatre-etats",
+    "article": "automatiser-la-relance-des-pieces-clients",
+    "alt": "Les quatre états fermés d’une pièce fictive : attendue, reçue, lisible et hors période.",
+    "source": "Jeu d’essai fictif et contrôle de complétude décrits dans l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "Contrôle de complétude Jeu d’essai fictif · période 2026-08 Domaine fermé Une pièce reçue n’est pas forcément exploitable. 1 Attendue La checklist exige la pièce pour cette période. Relance possible après validation 2 Reçue Le fichier est arrivé, sans conclusion sur sa lecture. Contrôle de lisibilité 3 Lisible La pièce reçue peut alimenter la suite du travail. Complétude à valider 4 Hors période La pièce est conservée pour le bon mois. La période courante reste ouverte"
+  },
+  {
+    "id": "crm-lecture-ligne",
+    "article": "comprendre-les-comptes-rendus-metier-dsn",
+    "alt": "Compte rendu métier fictif lu ligne à ligne sans inventer une qualification absente.",
+    "source": "Jeu d’essai fictif décrit dans l’article, d’après Net-entreprises",
+    "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+    "capturedAt": "2026-09-20",
+    "centralText": "Lecture du CRM Jeu d’essai fictif · R-027-A Ligne du retour Valeur fictive lue Question de méthode Émetteur ORGANISME-A Quelle notice fait foi ? Déclaration Dépôt D-027 · 2026-08 Est-ce le bon fichier ? Population P-03 Quel périmètre est visé ? Donnée Rubrique fictive X-14 Quelle preuve la porte ? Qualification Non précisée Ne pas inventer la gravité Contrôle suivant R-027-B Confirme-t-il la décision ? Retour identifié → portée comprise → donnée rapprochée → décision tracée → résultat suivant vérifié"
+  },
+  {
+    "id": "crm-registre",
+    "article": "comprendre-les-comptes-rendus-metier-dsn",
+    "alt": "Registre fictif séparant le statut source, la décision et le contrôle suivant de trois retours.",
+    "source": "Jeu d’essai fictif et registre à dix champs décrits dans l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "Registre des retours Jeu d’essai fictif · vue de pilotage Retour Émetteur Période Statut source Décision Contrôle suivant R-027-A ORGANISME-A 2026-08 à confirmer À arbitrer R-027-B R-031-A ORGANISME-B 2026-08 BAN reçu Ouvert Absent R-044-A ORGANISME-C 2026-08 informatif Expliqué R-044-B Preuve source Référence, jamais copie nominative État interne Séparé du statut du CRM Clôture Sur le résultat suivant"
+  },
+  {
+    "id": "carte-douze-poles",
+    "article": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+    "alt": "Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert.",
+    "source": "Taxonomie éditoriale versionnée du dépôt",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "Carte du cabinet 12 pôles · 60 familles · source de vérité éditoriale 13 Production comptable 5 Portefeuille et échéances 7 Paie et social 7 Juridique et fiscal 4 Facturation et recouvrement 5 Administration et secrétariat 3 RH et formation 4 Numérique, IT et data 3 Excel et outils existants 4 Méthode et décision humaine 4 Conseil et missions spéciales 1 Audit légal · listé, non ouvert Chaque famille décrit une tâche et sa frontière. La carte ne promet aucune fonction et n’ouvre pas l’audit légal."
+  },
+  {
+    "id": "carte-test-regle",
+    "article": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+    "alt": "Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables.",
+    "source": "Test de maturité décrit dans l’article sur la carte des tâches",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "Choisir par quelle règle commencer Jeu d’essai fictif Tâche candidate Relance de pièces Déclencheur, condition, action et exception sont écrits sur une page. ✓ Se répète Chaque dossier, chaque période Oui ✓ La règle s’écrit Aucun « ça dépend » non borné Oui ✓ Les exceptions se comptent Illisible, litige, hors période Oui Décision humaine Candidate au cadrage Le test ne lance rien. Le cabinet choisit la première tâche et valide sa frontière. Règle reproductible"
+  },
+  {
+    "id": "cicatrice-questionnaire-vide",
+    "article": "la-plateforme-que-personne-n-a-achetee",
+    "alt": "Reconstitution du questionnaire de cadrage revenu vide, sans signal automatique sur les manques.",
+    "source": "Récit et preuve exigée dans la recette scellée de l’article ; aucune capture de l’écran refusé n’est conservée dans le dépôt",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "Questionnaire de cadrage Reconstitution · aucune trace d’écran refusé conservée Questionnaire revenu Les lignes vides n’avaient déclenché aucun signal. Tâche observée Durée Fréquence Source de donnée 0 réponse renseignée Le manque n’était ni compté ni présenté avant la fin du rendez-vous. Cadrage incomplet"
+  },
+  {
+    "id": "cicatrice-formulaire-manques",
+    "article": "la-plateforme-que-personne-n-a-achetee",
+    "alt": "Reconstitution du formulaire fictif qui remonte deux champs manquants avant tout engagement.",
+    "source": "Récit et preuve exigée dans la recette scellée de l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-09-20",
+    "centralText": "Relevé de tâche Jeu d’essai fictif · contrôle de complétude Réponses du relevé Tâche Rapprocher l’export et le classeur Renseigné Durée 20 minutes Renseigné Fréquence Champ vide Manquant Source Champ vide Manquant Bloc calculé 2 éléments manquent Fréquence de la tâche Emplacement de la donnée Aucun engagement tant que le relevé est incomplet. Terminer le cadrage"
+  }
+]

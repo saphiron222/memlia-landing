@@ -60,6 +60,23 @@
     "destination": "/contact",
     "outcome": "Nous écrivons la règle de lecture des retours de votre cabinet dans vos mots, organisme par organisme, nous automatisons la collecte des retours et leur rapprochement avec la paie dans les outils que votre pôle social utilise déjà, et vos gestionnaires la recettent sur des cas fictifs puis sur vos dossiers. L’interprétation, la correction et le dépôt restent à vos équipes. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
   },
+  "inlineProofs": [
+    {
+      "id": "crm-lecture-ligne",
+      "insertBeforeHeading": "Quel registre tenir pour ne perdre aucun retour ?",
+      "alt": "Compte rendu métier fictif lu ligne à ligne sans inventer une qualification absente.",
+      "source": "jeu d’essai fictif décrit dans cet article, d’après Net-entreprises",
+      "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
+      "capturedAt": "2026-09-20"
+    },
+    {
+      "id": "crm-registre",
+      "insertBeforeHeading": "Ce qui s’automatise, ce qui attend une validation, ce qui reste humain",
+      "alt": "Registre fictif séparant le statut source, la décision et le contrôle suivant de trois retours.",
+      "source": "jeu d’essai fictif et registre à dix champs décrits dans cet article",
+      "capturedAt": "2026-09-20"
+    }
+  ],
   "image": {
     "heroId": "img-25-comptes-rendus-metier-dsn",
     "alt": "Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine.",

@@ -8,6 +8,7 @@ import sharp from 'sharp';
 import { Agent, fetch as fetchUndici } from 'undici';
 import { parse as parseYaml } from 'yaml';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
+import { retirerPreuvesInline } from './blog-proof-figures.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
@@ -841,7 +842,9 @@ function validateSources(manifest, dossier, expected) {
 }
 
 function renderedContentUnits(markdown) {
-  return markdownBody(markdown).replace(/<!--[\s\S]*?-->/g, '').split(/\r?\n\s*\r?\n/)
+  return retirerPreuvesInline(markdownBody(markdown))
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .split(/\r?\n\s*\r?\n/)
     .map((part) => part.trim())
     .filter(Boolean)
     .map((raw) => ({
@@ -1668,6 +1671,10 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     articleHash: markdown ? sha256(markdown) : null,
     manifestHash: existsSync(manifestPath) ? sha256(readFileSync(manifestPath)) : null,
   };
+  const evidenceSubject = {
+    ...subject,
+    articleHash: markdown ? sha256(retirerPreuvesInline(markdown)) : null,
+  };
   const sensitiveMatter = detectSensitiveMatter(manifest, claims, markdown);
   if (gateMode === 'published-audit') errors.push(...validatePublishedAdoption(dossier, manifest, subject.articleHash));
   if (gateMode === 'publication-scellee') errors.push(...validatePublicationSeal(dossier, manifest, subject));
@@ -1684,17 +1691,17 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   }
   if (skills) errors.push(...validateSkillsManifest(skills));
   if (skills && manifest && claims) errors.push(...validateRequiredSkills(skills, sensitiveMatter));
-  const sources = manifest ? validateSources(manifest, dossier, subject) : { errors: [], verified: new Map() };
+  const sources = manifest ? validateSources(manifest, dossier, evidenceSubject) : { errors: [], verified: new Map() };
   errors.push(...sources.errors);
-  if (claims) errors.push(...validateClaims(claims, markdown, manifest, sources.verified, subject, sensitiveMatter));
-  if (review && manifest) errors.push(...validateReview(review, dossier, manifest, subject));
-  if (manifest && claims) errors.push(...validateBusinessReview(manifest, dossier, subject, sensitiveMatter, claims, sources.verified, gateMode));
+  if (claims) errors.push(...validateClaims(claims, markdown, manifest, sources.verified, evidenceSubject, sensitiveMatter));
+  if (review && manifest) errors.push(...validateReview(review, dossier, manifest, evidenceSubject));
+  if (manifest && claims) errors.push(...validateBusinessReview(manifest, dossier, evidenceSubject, sensitiveMatter, claims, sources.verified, gateMode));
   if (manifest && claims && review && skills) errors.push(...validateSensitiveFreshness(manifest, claims, review, skills, sources.verified, dossier, sensitiveMatter, gateMode));
-  if (image && manifest) errors.push(...await validateImage(image, dossier, manifest, absoluteRoot, subject));
+  if (image && manifest) errors.push(...await validateImage(image, dossier, manifest, absoluteRoot, evidenceSubject));
   if (markdown) errors.push(...validateHeadings(markdown));
   if (markdown && manifest) errors.push(...validateArticleContract(markdown, manifest, gateMode));
   if (markdown) errors.push(...validateContentDepthAndDuplication(markdown, absoluteRoot, slug));
-  if (manifest) errors.push(...validateIntentCannibalization(manifest, dossier, absoluteRoot, subject));
+  if (manifest) errors.push(...validateIntentCannibalization(manifest, dossier, absoluteRoot, evidenceSubject));
 
   if (manifest) {
     const evidence = [
@@ -1704,7 +1711,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     ];
     for (const item of evidence) {
       const proof = readEvidenceJson(dossier, item.reference, errors, item.label);
-      validateSubjectEvidence(errors, proof, subject, item.label, item.kind);
+      validateSubjectEvidence(errors, proof, evidenceSubject, item.label, item.kind);
       if (item.kind === 'gsc' && manifest.research?.gsc?.status === 'ND') {
         if (!['protected-preview', 'published-audit'].includes(gateMode) || proof?.availability !== 'permission-denied' || proof?.metricsCredited !== false || proof?.previewAuthorizedBy !== 'kevin') {
           errors.push('GSC=ND exige en preview protégée une preuve permission-denied, metricsCredited=false et previewAuthorizedBy=kevin.');
@@ -1733,7 +1740,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
       if (row.status === 'RUN') {
         const label = `preuve du skill ${row.skill}`;
         const proof = readEvidenceJson(dossier, row.evidence, errors, label);
-        validateSubjectEvidence(errors, proof, subject, label, 'skill');
+        validateSubjectEvidence(errors, proof, evidenceSubject, label, 'skill');
         if (proof?.skill !== row.skill) errors.push(`${label}.skill n’est pas relié à ${row.skill}.`);
       }
     }
