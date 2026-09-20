@@ -117,6 +117,7 @@ function collectLast30Days(path, now) {
       terrain: 'last30days · monde',
       status: Object.values(sourceStatus).some(({ state }) => !['ok', 'no-results'].includes(state)) ? 'partial' : 'ok',
       sourceStatus: Object.fromEntries(Object.entries(sourceStatus).map(([source, status]) => [source, status.state])),
+      families: (report.query_plan?.subqueries ?? []).map(({ label }) => label),
       itemsScanned: items.length,
       relevantQuestions: observations.length,
     },

@@ -1,0 +1,57 @@
+{
+  "intent": "research",
+  "freshness_mode": "strict",
+  "cluster_mode": "semantic",
+  "raw_topic": "operational pain and repetitive work in accounting firms worldwide",
+  "subqueries": [
+    {
+      "label": "client-documents",
+      "search_query": "accounting firm clients missing documents chasing receipts workflow pain",
+      "ranking_query": "Recent first-hand reports from accountants, bookkeepers, payroll teams or auditors about repeatedly chasing clients for documents, receipts, records or approvals and the operational cost of that work.",
+      "sources": ["reddit"],
+      "weight": 1.0
+    },
+    {
+      "label": "close-reconciliation",
+      "search_query": "accountant month end close bank reconciliation manual repetitive pain firm",
+      "ranking_query": "Recent first-hand reports from accounting professionals about manual reconciliation, month-end close, review, data entry, or repetitive spreadsheet work inside firms.",
+      "sources": ["reddit"],
+      "weight": 1.0
+    },
+    {
+      "label": "software-exports",
+      "search_query": "accounting practice software export import duplicate entry integration pain",
+      "ranking_query": "Recent first-hand reports from accounting practices about copying data between systems, duplicate entry, broken integrations, exports, portals, or software workflow friction.",
+      "sources": ["reddit"],
+      "weight": 1.0
+    },
+    {
+      "label": "payroll-deadlines",
+      "search_query": "payroll bureau repetitive work client changes deadline errors workload",
+      "ranking_query": "Recent first-hand reports from payroll professionals or accounting firms about repetitive payroll preparation, late client changes, deadline pressure, checks, or error risk.",
+      "sources": ["reddit"],
+      "weight": 1.0
+    },
+    {
+      "label": "audit-review",
+      "search_query": "audit firm repetitive testing review notes documentation workflow pain",
+      "ranking_query": "Recent first-hand reports from auditors about repetitive testing, evidence collection, review notes, documentation, sampling, or workpaper friction.",
+      "sources": ["reddit"],
+      "weight": 0.9
+    },
+    {
+      "label": "ai-adoption",
+      "search_query": "accounting firm AI rollout adoption workflow staff review client data pain",
+      "ranking_query": "Recent first-hand reports from accounting firms about adopting AI or automation, including trust, review, privacy, staff training, implementation, or workflow failures.",
+      "sources": ["reddit"],
+      "weight": 1.0
+    }
+  ],
+  "source_weights": {
+    "reddit": 1.0
+  },
+  "notes": [
+    "Worldwide pain discovery only. A foreign source proves a pain, never a French rule.",
+    "Any retained pain must pass a separate French gesture, primary-rule, competition and measured-vocabulary filter."
+  ]
+}
