@@ -28,6 +28,24 @@ const records = [];
 const candidates = [];
 mkdirSync(output, { recursive: true });
 
+// Les hashes WebP scellent un rendu visuel produit et revu sur macOS. Les
+// recalculer dans l'image Linux de Cloudflare donnerait des octets différents
+// (rasterisation des polices), même lorsque le contenu et la mise en page sont
+// inchangés. En CI Pages, on vérifie donc le sceau portable : sources, manifeste
+// et actifs versionnés. Le rendu pixel complet reste obligatoire localement.
+if (mode === 'check' && process.env.CF_PAGES === '1') {
+  const previous = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  const currentSources = previous.sources.map(({ path }) => ({ path, sha256: hash(readFileSync(path)) }));
+  assert.deepEqual(previous.sources, currentSources, 'Sources ou contrat de rendu périmés');
+  assert.equal(previous.entries.length, contract.length, 'Le manifeste ne couvre pas toutes les preuves');
+  for (const entry of previous.entries) {
+    assert.ok(existsSync(entry.target), `Actif absent : ${entry.target}`);
+    assert.equal(hash(readFileSync(entry.target)), entry.sha256, `Actif périmé : ${entry.target}`);
+  }
+  console.log(`check Cloudflare : ${previous.entries.length} preuves scellées, sources et actifs intègres.`);
+  process.exit(0);
+}
+
 const browser = await chromium.launch({ channel: 'chromium' });
 try {
   const page = await browser.newPage({ viewport: { width: 1720, height: 1000 }, deviceScaleFactor: 1 });
