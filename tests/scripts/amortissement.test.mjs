@@ -53,7 +53,7 @@ test('dégressif : coefficient, prorata mensuel et bascule au quotient résiduel
 test('les entrées incohérentes sont refusées avant tout plan', () => {
   assert.throws(
     () => buildDepreciationSchedule({ value: 0, startDate: '2026-01-01', durationYears: 5, method: 'linear' }),
-    /supérieure à zéro/,
+    /0,01 €/,
   );
   assert.throws(
     () => buildDepreciationSchedule({ value: 1000, startDate: '2026-02-30', durationYears: 5, method: 'linear' }),
@@ -63,4 +63,22 @@ test('les entrées incohérentes sont refusées avant tout plan', () => {
     () => buildDepreciationSchedule({ value: 1000, startDate: '2026-01-01', durationYears: 2, method: 'declining' }),
     /au moins 3 ans/,
   );
+});
+
+test('la valeur amortissable respecte la précision monétaire au centime', () => {
+  for (const value of [0.001, 0.004]) {
+    assert.throws(
+      () => buildDepreciationSchedule({ value, startDate: '2026-01-01', durationYears: 5, method: 'linear' }),
+      /centime/,
+    );
+  }
+
+  const plan = buildDepreciationSchedule({
+    value: 0.01,
+    startDate: '2026-01-01',
+    durationYears: 5,
+    method: 'linear',
+  });
+  assert.equal(plan.value, 0.01);
+  assert.equal(plan.total, 0.01);
 });

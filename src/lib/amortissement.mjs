@@ -4,6 +4,10 @@ function roundCents(value) {
   return Math.round((value + Number.EPSILON) * 100) / 100;
 }
 
+function hasCentPrecision(value) {
+  return roundCents(value) === value;
+}
+
 function parseIsoDate(value) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
   const [year, month, day] = value.split('-').map(Number);
@@ -33,8 +37,8 @@ function previousDay(date) {
 }
 
 function validateInput({ value, startDate, durationYears, method }) {
-  if (!Number.isFinite(value) || value <= 0 || value > 1_000_000_000) {
-    throw new Error('La valeur amortissable doit être supérieure à zéro et ne pas dépasser 1 milliard d’euros.');
+  if (!Number.isFinite(value) || value < 0.01 || value > 1_000_000_000 || !hasCentPrecision(value)) {
+    throw new Error('La valeur amortissable doit être comprise entre 0,01 € et 1 milliard d’euros et saisie au centime, avec deux décimales au plus.');
   }
   const start = parseIsoDate(startDate);
   if (!start) throw new Error('La date de mise en service doit être une date valide.');

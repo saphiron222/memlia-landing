@@ -3,7 +3,7 @@
     <label class="champ" for="amortissement-valeur">
       <span>Valeur amortissable</span>
       <span class="saisie-montant"><input id="amortissement-valeur" name="valeur" inputmode="decimal" autocomplete="off" value="10000" aria-describedby="amortissement-valeur-aide" required /><b aria-hidden="true">€</b></span>
-      <small id="amortissement-valeur-aide">Base hors valeur résiduelle, supérieure à zéro.</small>
+      <small id="amortissement-valeur-aide">Base hors valeur résiduelle, au moins 0,01 €, avec deux décimales au plus.</small>
     </label>
     <label class="champ" for="amortissement-date">
       <span>Date de mise en service</span>
@@ -41,7 +41,7 @@
   <div class="resultat-tete">
     <div>
       <p class="etiquette">Plan calculé</p>
-      <h3 id="amortissement-resultat-titre" data-result-method></h3>
+      <h3 id="amortissement-resultat-titre" data-result-method tabindex="-1"></h3>
       <p data-result-convention></p>
     </div>
     <dl class="resume">
@@ -117,10 +117,11 @@
 
       const markInvalid = (name: string) => {
         const field = form.elements.namedItem(name);
-        if (!(field instanceof HTMLElement)) return;
+        if (!(field instanceof HTMLElement)) return null;
         field.setAttribute('aria-invalid', 'true');
         const description = descriptions.get(name);
         field.setAttribute('aria-describedby', description ? `${description} amortissement-erreur` : 'amortissement-erreur');
+        return field;
       };
 
       const data = new FormData(form);
@@ -128,7 +129,7 @@
       if (selectedMethod === 'declining' && data.get('eligibilite') !== 'on') {
         error.textContent = 'Le dégressif fiscal reste bloqué tant que l’éligibilité du bien n’est pas confirmée.';
         error.hidden = false;
-        markInvalid('eligibilite');
+        markInvalid('eligibilite')?.focus();
         return;
       }
 
@@ -177,21 +178,27 @@
           }));
         }
         result.hidden = false;
+        if (methodNode instanceof HTMLElement) methodNode.focus({ preventScroll: true });
         result.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
       } catch (caught) {
         const message = caught instanceof Error ? caught.message : 'Le calcul n’a pas pu être effectué.';
         error.textContent = message;
         error.hidden = false;
-        if (message.includes('valeur amortissable')) markInvalid('valeur');
-        else if (message.includes('date de mise en service')) markInvalid('date');
-        else if (message.includes('durée') || message.includes('Dégressif fiscal')) markInvalid('duree');
-        else if (message.includes('méthode')) markInvalid('methode');
+        let invalidField = null;
+        if (message.includes('valeur amortissable')) invalidField = markInvalid('valeur');
+        else if (message.includes('date de mise en service')) invalidField = markInvalid('date');
+        else if (message.includes('durée') || message.includes('Dégressif fiscal')) invalidField = markInvalid('duree');
+        else if (message.includes('méthode')) invalidField = markInvalid('methode');
+        invalidField?.focus();
       }
     });
   }
 </script>
 
 <style>
+  [hidden] {
+    display: none !important;
+  }
   .amortissement {
     display: grid;
     gap: 24px;

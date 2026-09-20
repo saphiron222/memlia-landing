@@ -16,7 +16,7 @@ Factur-X n’est pas livré : la chaîne exigée par le catalogue — PDF/A-3, p
 
 Entrées :
 
-- valeur amortissable strictement positive ;
+- valeur amortissable de 0,01 € à 1 milliard d’euros, avec deux décimales au plus ;
 - date ISO de mise en service ;
 - durée entière de 1 à 50 ans, choisie par le cabinet ;
 - méthode linéaire ou dégressive.
@@ -30,7 +30,7 @@ Sorties :
 
 Refus :
 
-- valeur vide, nulle, négative ou hors borne ;
+- valeur vide, inférieure à 0,01 €, au-delà de 1 milliard d’euros ou non représentable au centime ;
 - date invalide ;
 - durée non entière ou hors borne ;
 - méthode inconnue ;
@@ -43,7 +43,7 @@ Le dernier centime est réconcilié sur la dernière ligne afin que la somme des
 | Sujet | Source contrôlée le 20/09/2026 | Ce que l’outil en retient |
 |---|---|---|
 | Mode comptable | [ANC — Plan comptable général, version au 1er janvier 2026](https://www.anc.gouv.fr/plan-comptable-general-0), article 214-13 | Le mode traduit le rythme de consommation des avantages économiques ; à défaut de mode mieux adapté, le linéaire est appliqué. |
-| Coefficients dégressifs | [CGI, article 39 A](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291) et [BOFiP BOI-BIC-AMT-20-20-10](https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-10-20170301) | Coefficients 1,25 pour 3 ou 4 ans, 1,75 pour 5 ou 6 ans, 2,25 au-delà ; prorata mensuel et bascule vers le linéaire résiduel. |
+| Coefficients dégressifs | [CGI, article 39 A](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291) | Coefficients 1,25 pour 3 ou 4 ans, 1,75 pour 5 ou 6 ans, 2,25 au-delà ; prorata mensuel et bascule vers le linéaire résiduel. La référence BOFiP datée de 2017 a été retirée après contrôle HTTP 404 le 20/09/2026. |
 | Durée | Aucune durée d’usage n’est prescrite par l’outil. | La durée est une entrée. Le calculateur ne recommande pas une durée et ne classe pas le bien. |
 
 Le calcul ne traite ni valeur résiduelle, ni cession, ni exercice décalé, ni composant séparé, ni régime fiscal particulier.

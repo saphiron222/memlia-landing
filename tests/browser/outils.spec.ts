@@ -85,11 +85,22 @@ test('échéance : les deux conventions divergent et l’absence de convention e
 
 test('amortissement : plan linéaire tracé, dégressif confirmé et entrées incohérentes refusées', async ({ page }) => {
   await page.goto(`${HUB}/calculateur-amortissement-comptable`);
+  const result = page.locator('[data-amortization-result]');
+  const confirmation = page.locator('[data-declining-confirmation]');
+  const value = page.getByLabel('Valeur amortissable');
+  const duration = page.getByLabel('Durée d’utilisation');
+  const resultTitle = page.locator('#amortissement-resultat-titre');
+
+  await expect(result).toBeHidden();
+  await expect(confirmation).toBeHidden();
   await page.getByLabel('Valeur amortissable').fill('10000');
   await page.getByLabel('Date de mise en service').fill('2026-04-01');
-  await page.getByLabel('Durée d’utilisation').fill('5');
+  await duration.fill('5');
   await page.getByLabel('Méthode').selectOption('linear');
+  await expect(confirmation).toBeHidden();
   await page.getByRole('button', { name: 'Calculer le plan' }).click();
+  await expect(result).toBeVisible();
+  await expect(resultTitle).toBeFocused();
   await expect(page.locator('[data-result-method]')).toHaveText('Linéaire comptable');
   await expect(page.locator('[data-result-rate]')).toHaveText('20,00 %');
   await expect(page.locator('[data-result-rows] tr').first()).toContainText('275/365');
@@ -97,20 +108,42 @@ test('amortissement : plan linéaire tracé, dégressif confirmé et entrées in
   await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
   await expect(page.locator('[data-result-rows] tr')).toHaveCount(6);
 
-  await page.getByLabel('Durée d’utilisation').fill('0');
+  await duration.fill('0');
   await page.getByRole('button', { name: 'Calculer le plan' }).click();
+  await expect(result).toBeHidden();
   await expect(page.locator('[data-error]')).toContainText('compris entre 1 et 50 ans');
-  await expect(page.getByLabel('Durée d’utilisation')).toHaveAttribute('aria-invalid', 'true');
-  await expect(page.getByLabel('Durée d’utilisation')).toHaveAttribute('aria-describedby', /amortissement-erreur/);
+  await expect(duration).toHaveAttribute('aria-invalid', 'true');
+  await expect(duration).toHaveAttribute('aria-describedby', /amortissement-erreur/);
+  await expect(duration).toBeFocused();
 
-  await page.getByLabel('Durée d’utilisation').fill('5');
-  await page.getByLabel('Méthode').selectOption('declining');
+  for (const subCent of ['0.001', '0.004']) {
+    await value.fill(subCent);
+    await duration.fill('5');
+    await page.getByRole('button', { name: 'Calculer le plan' }).click();
+    await expect(result).toBeHidden();
+    await expect(page.locator('[data-error]')).toContainText('centime');
+    await expect(value).toBeFocused();
+  }
+
+  await value.fill('0.01');
   await page.getByRole('button', { name: 'Calculer le plan' }).click();
+  await expect(result).toBeVisible();
+  await expect(page.locator('[data-result-total]')).toHaveText('0,01 €');
+  await expect(resultTitle).toBeFocused();
+
+  await value.fill('10000');
+  await page.getByLabel('Méthode').selectOption('declining');
+  await expect(confirmation).toBeVisible();
+  await page.getByRole('button', { name: 'Calculer le plan' }).click();
+  await expect(result).toBeHidden();
   await expect(page.locator('[data-error]')).toContainText('éligibilité du bien');
   await expect(page.getByLabel(/Je confirme avoir vérifié/)).toHaveAttribute('aria-invalid', 'true');
   await expect(page.getByLabel(/Je confirme avoir vérifié/)).toHaveAttribute('aria-describedby', 'amortissement-erreur');
+  await expect(page.getByLabel(/Je confirme avoir vérifié/)).toBeFocused();
   await page.getByLabel(/Je confirme avoir vérifié/).check();
   await page.getByRole('button', { name: 'Calculer le plan' }).click();
+  await expect(result).toBeVisible();
+  await expect(resultTitle).toBeFocused();
   await expect(page.locator('[data-result-method]')).toHaveText('Dégressif fiscal');
   await expect(page.locator('[data-result-coefficient]')).toHaveText('1,75');
   await expect(page.locator('[data-result-rows] tr').first()).toContainText('2 625,00 €');
