@@ -7,7 +7,9 @@ import { auditerServiceDesign } from './verify-service-design.mjs';
 
 const CLAUSES = Object.freeze({ 1: 'DA', 2: 'IMAGES', 3: 'SEO', 4: 'COPIE', 5: 'LIENS' });
 const DATE_ISO = /^\d{4}-\d{2}-\d{2}$/;
-const IMPORT_COMPOSITION = /from\s+['"](?:@\/|\.\.\/|\.\/)*(?:components\/sections\/|layouts\/(?:PageCommerciale|Article|Service|Legal|Outil))/;
+const IMPORTS = /import\s+(?:[^'";]+?\s+from\s+)?['"]([^'"]+)['"]/g;
+const SECTION_PATH = /(?:^|\/)components\/sections\/([^/]+)\.astro$/;
+const LAYOUT_PATH = /(?:^|\/)layouts\/([^/]+)\.astro$/;
 
 function walk(directory, predicate = () => true) {
   if (!existsSync(directory)) return [];
@@ -32,6 +34,53 @@ function sourceForRoute(root, route) {
   if (route.startsWith('/automatisation/')) return join(root, 'src/pages/automatisation/[slug].astro');
   if (route.startsWith('/blog/')) return join(root, 'src/pages/blog/[slug].astro');
   return join(root, 'src/pages', `${route.slice(1)}.astro`);
+}
+
+function resolveLocalImport(root, owner, specifier) {
+  if (specifier.startsWith('@/')) return join(root, 'src', specifier.slice(2));
+  if (specifier.startsWith('./') || specifier.startsWith('../')) return resolve(join(owner, '..'), specifier);
+  return null;
+}
+
+export function auditerComposition({ root = process.cwd(), sourcePath }) {
+  const visited = new Set();
+  const sections = new Set();
+  const layouts = new Set();
+  let cssLocalLines = 0;
+
+  function follow(path) {
+    if (!path || visited.has(path) || !existsSync(path)) return;
+    visited.add(path);
+    const source = readFileSync(path, 'utf8');
+    for (const block of source.matchAll(/<style(?:\s[^>]*)?>([\s\S]*?)<\/style>/g)) {
+      cssLocalLines += block[1].split('\n').filter((line) => {
+        const trimmed = line.trim();
+        return trimmed && !trimmed.startsWith('/*') && !trimmed.startsWith('*') && !trimmed.endsWith('*/');
+      }).length;
+    }
+    for (const match of source.matchAll(IMPORTS)) {
+      const imported = resolveLocalImport(root, path, match[1]);
+      if (!imported) continue;
+      const section = imported.match(SECTION_PATH)?.[1];
+      if (section) sections.add(section);
+      const layout = imported.match(LAYOUT_PATH)?.[1];
+      if (layout) {
+        layouts.add(layout);
+        follow(imported);
+      }
+    }
+  }
+
+  follow(sourcePath);
+  const errors = [];
+  if (sections.size === 0 && layouts.size === 0) errors.push('aucune section ou aucun layout de composition approuvé n’est importé');
+  if (layouts.has('Outil') && sections.size < 3) {
+    errors.push(`le gabarit Outil ne compose que ${sections.size} section(s) du système, 3 requises au minimum`);
+  }
+  if (layouts.has('Outil') && cssLocalLines > 10) {
+    errors.push(`le gabarit Outil porte ${cssLocalLines} ligne(s) CSS locale(s), 10 tolérées au maximum pour les ajustements propres au layout`);
+  }
+  return { pass: errors.length === 0, errors, sections: [...sections].sort(), layouts: [...layouts].sort(), cssLocalLines };
 }
 
 function traverse(node, visit) {
@@ -72,7 +121,7 @@ function collectJsonLd(document) {
   return values;
 }
 
-function collectSchema(value, state = { types: new Set(), headlines: [] }) {
+function collectSchema(value, state = { types: new Set(), headlines: [], authors: 0, datesPublished: [], datesModified: [] }) {
   if (Array.isArray(value)) {
     for (const item of value) collectSchema(item, state);
     return state;
@@ -81,6 +130,9 @@ function collectSchema(value, state = { types: new Set(), headlines: [] }) {
   const type = value['@type'];
   for (const item of Array.isArray(type) ? type : type ? [type] : []) state.types.add(item);
   if (typeof value.headline === 'string') state.headlines.push(normalizedText(value.headline));
+  if (value.author) state.authors += 1;
+  if (typeof value.datePublished === 'string') state.datesPublished.push(value.datePublished);
+  if (typeof value.dateModified === 'string') state.datesModified.push(value.dateModified);
   for (const child of Object.values(value)) collectSchema(child, state);
   return state;
 }
@@ -91,6 +143,7 @@ function pageSnapshot(route, path) {
   const descriptions = [];
   const ogTitles = [];
   const hrefs = [];
+  const footerHrefs = [];
   const media = [];
   let title = '';
   let main = null;
@@ -104,6 +157,13 @@ function pageSnapshot(route, path) {
     if (node.nodeName === 'a') {
       const href = normalizeRoute(attr(node, 'href'));
       if (href) hrefs.push(href);
+    }
+    if (node.nodeName === 'footer') {
+      traverse(node, (child) => {
+        if (child.nodeName !== 'a') return;
+        const href = normalizeRoute(attr(child, 'href'));
+        if (href) footerHrefs.push(href);
+      });
     }
   });
   if (main) {
@@ -119,7 +179,7 @@ function pageSnapshot(route, path) {
   const jsonLd = collectJsonLd(document);
   const schema = collectSchema(jsonLd);
   return {
-    route, path, document, main, h1s: headings, title, descriptions, ogTitles, hrefs,
+    route, path, document, main, h1s: headings, title, descriptions, ogTitles, hrefs, footerHrefs,
     media: [...new Set(media.filter((item) => item.startsWith('/')))], robots, jsonLd, schema,
   };
 }
@@ -186,6 +246,11 @@ function expectedSchema(route) {
 
 export function routesAvecIntentionMesuree(root) {
   const routes = new Set();
+  const contract = join(root, 'config/page-intent-contract.json');
+  if (existsSync(contract)) {
+    const value = JSON.parse(readFileSync(contract, 'utf8'));
+    for (const route of Object.keys(value.pages ?? {})) routes.add(route);
+  }
   const registre = join(root, 'docs/strategy/site-v3/mesures/registre-requetes.json');
   if (existsSync(registre)) {
     const value = JSON.parse(readFileSync(registre, 'utf8'));
@@ -198,6 +263,13 @@ export function routesAvecIntentionMesuree(root) {
     for (const match of readFileSync(audit, 'utf8').matchAll(/^\|\s*`(\/[^`]*)`\s*\|/gm)) routes.add(match[1].replace(/\/$/, '') || '/');
   }
   return routes;
+}
+
+export function contratsIntention(root) {
+  const path = join(root, 'config/page-intent-contract.json');
+  if (!existsSync(path)) return new Map();
+  const value = JSON.parse(readFileSync(path, 'utf8'));
+  return new Map(Object.entries(value.pages ?? {}));
 }
 
 function literalTokenErrors(root) {
@@ -259,6 +331,7 @@ function isExempt(exemptions, route, clause) {
 export function auditerContratPages({
   root = process.cwd(), dist = join(root, 'dist'), exemptions = [], copyVerifier = () => ({ pass: true, errors: [] }),
   intentRoutes = routesAvecIntentionMesuree(root),
+  intentContracts = contratsIntention(root),
 } = {}) {
   const paths = walk(dist, (path) => path.endsWith('.html'));
   const pages = paths.map((path) => pageSnapshot(routeFromHtml(dist, path), path)).sort((a, b) => a.route.localeCompare(b.route, 'fr'));
@@ -284,8 +357,8 @@ export function auditerContratPages({
     const sourcePath = sourceForRoute(root, page.route);
     if (!existsSync(sourcePath)) erreurs.push(error(page.route, 1, `source Astro introuvable : ${relative(root, sourcePath)}`));
     else {
-      const source = readFileSync(sourcePath, 'utf8');
-      if (!IMPORT_COMPOSITION.test(source)) erreurs.push(error(page.route, 1, 'aucune section ou aucun layout de composition approuvé n’est importé'));
+      const composition = auditerComposition({ root, sourcePath });
+      for (const detail of composition.errors) erreurs.push(error(page.route, 1, detail));
     }
     if (!page.main || page.main.childNodes?.length === 0) erreurs.push(error(page.route, 1, 'contenu principal absent ou vide'));
 
@@ -299,18 +372,32 @@ export function auditerContratPages({
           : `aucun média propre issu d’une série rendue et scellée ; vus : ${page.media.join(', ')}`;
       erreurs.push(error(page.route, 2, detail));
     }
+    const minimumMedia = intentContracts.get(page.route)?.minMedia ?? 1;
+    if (ownedManifested.length > 0 && ownedManifested.length < minimumMedia) {
+      erreurs.push(error(page.route, 2, `${ownedManifested.length} média(s) propre(s) manifesté(s), ${minimumMedia} requis par le contrat de cette page`));
+    }
 
     const h1 = page.h1s[0];
+    const indexable = !page.robots.toLowerCase().includes('noindex');
     if (!intentRoutes.has(page.route)) erreurs.push(error(page.route, 3, 'aucune requête mesurée ni décision d’intention écrite pour cette route'));
     if (!page.title) erreurs.push(error(page.route, 3, 'title d’onglet absent'));
     if (page.descriptions.length !== 1 || !page.descriptions[0]) erreurs.push(error(page.route, 3, `${page.descriptions.length} description(s), une description non vide requise`));
     if (page.descriptions.length === 1 && (descriptionOwners.get(page.descriptions[0])?.length ?? 0) > 1) {
       erreurs.push(error(page.route, 3, `description dupliquée avec ${descriptionOwners.get(page.descriptions[0]).filter((route) => route !== page.route).join(', ')}`));
     }
+    const intentContract = intentContracts.get(page.route);
+    if (indexable && !intentContract) erreurs.push(error(page.route, 3, 'contrat de requête et d’ouverture de description absent'));
+    if (indexable && intentContract && page.descriptions.length === 1 &&
+        !page.descriptions[0].toLocaleLowerCase('fr').startsWith(String(intentContract.descriptionLead).toLocaleLowerCase('fr'))) {
+      erreurs.push(error(page.route, 3, `la description doit ouvrir sur ${JSON.stringify(intentContract.descriptionLead)} pour la requête ${JSON.stringify(intentContract.query)}`));
+    }
     if (page.h1s.length !== 1) erreurs.push(error(page.route, 3, `${page.h1s.length} H1, un seul requis`));
     if (page.ogTitles.length !== 1 || !h1 || page.ogTitles[0] !== h1) erreurs.push(error(page.route, 3, `og:title doit être identique au H1 ; H1=${JSON.stringify(h1 ?? null)}, og:title=${JSON.stringify(page.ogTitles[0] ?? null)}`));
     if (page.jsonLd.some((value) => value?.__invalid)) erreurs.push(error(page.route, 3, 'JSON-LD invalide'));
     if (!h1 || !page.schema.headlines.includes(h1)) erreurs.push(error(page.route, 3, 'headline JSON-LD doit être identique au H1'));
+    if (page.schema.authors === 0) erreurs.push(error(page.route, 3, 'author absent du JSON-LD'));
+    if (page.schema.datesPublished.length === 0) erreurs.push(error(page.route, 3, 'datePublished absente du JSON-LD'));
+    if (page.schema.datesModified.length === 0) erreurs.push(error(page.route, 3, 'dateModified absente du JSON-LD'));
     for (const type of expectedSchema(page.route)) {
       if (!page.schema.types.has(type)) erreurs.push(error(page.route, 3, `schéma ${type} absent ou incohérent avec le type de page`));
     }
@@ -326,6 +413,11 @@ export function auditerContratPages({
   for (const target of pages) {
     const incoming = pages.filter((source) => source.route !== target.route && source.hrefs.includes(target.route));
     if (incoming.length === 0) erreurs.push(error(target.route, 5, 'aucune page servie ne pointe vers elle'));
+  }
+  for (const page of pages) {
+    if (!page.footerHrefs.includes('/outils-comptables-gratuits')) {
+      erreurs.push(error(page.route, 5, 'le footer généré ne porte pas le hub /outils-comptables-gratuits'));
+    }
   }
 
   const validExemptions = exemptions.filter((item) => !invalidExemptions.includes(item));

@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: saisie-ocr
 verifiedAt: 2026-09-20
-status: publie
+status: pret-preview
 candidateFingerprint: "9d79e7044f442738e18d64e6c6984ccbf73b84c1d9148fccbaca173a3a406c08"
 cta:
   label: "Confier une première tâche"

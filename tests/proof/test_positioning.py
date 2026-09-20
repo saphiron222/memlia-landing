@@ -152,7 +152,11 @@ class PositioningProof(unittest.TestCase):
         self.assertNotIn('Excel', hero)
         self.assertNotIn('module', hero.lower())
         self.assertIn('Automatisation IA pour cabinets comptables | Memlia', html)
-        graph = json.loads(re.search(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html).group(1))['@graph']
+        schemas = [
+            json.loads(payload)
+            for payload in re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html)
+        ]
+        graph = next(schema['@graph'] for schema in schemas if '@graph' in schema)
         service = next(n for n in graph if n['@type'] == 'Service')
         self.assertEqual(service['serviceType'], "Automatisation IA pour cabinets d'expertise comptable")
         self.assertNotIn('offers', service)

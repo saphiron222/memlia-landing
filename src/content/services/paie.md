@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: paie-social
 verifiedAt: 2026-09-20
-status: publie
+status: pret-preview
 candidateFingerprint: "784426c19bf20c7f374a6d51960dd6649306d6727892214507bd69eef7cebc1b"
 cta:
   label: "Confier une première tâche"

@@ -96,7 +96,7 @@ export const OUTILS: readonly OutilDefinition[] = [
     statut: 'disponible',
     h1: 'Modèle de rapprochement bancaire Excel gratuit',
     title: 'Modèle de rapprochement bancaire Excel gratuit | Memlia',
-    description: 'Préparez un contrôle fictif de soldes et téléchargez un fichier CSV UTF-8 ouvrable dans Excel, sans importer de relevé.',
+    description: 'Modèle de rapprochement bancaire Excel gratuit : préparez un contrôle fictif de soldes et téléchargez un CSV sans importer de relevé.',
     promesse: { entree: 'Période, soldes et éléments de rapprochement fictifs', resultat: 'Contrôle des soldes et modèle CSV ouvrable dans Excel' },
     limites: [
       'Le téléchargement est un fichier CSV UTF-8 séparé par des points-virgules, pas un fichier .xlsx.',
@@ -120,7 +120,7 @@ export const OUTILS: readonly OutilDefinition[] = [
     statut: 'temoin',
     h1: 'Témoin de calcul local',
     title: 'Témoin de calcul local | Memlia',
-    description: 'Une addition fictive qui démontre le calcul, la copie et le téléchargement dans le navigateur, sans envoi ni conservation des valeurs.',
+    description: 'Témoin de calcul local : une addition fictive démontre le calcul, la copie et le téléchargement sans envoi ni conservation des valeurs.',
     promesse: {
       entree: 'Deux nombres fictifs',
       resultat: 'Leur somme et une trace téléchargeable',

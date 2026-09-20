@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "measuredAt": "2026-09-20",
+  "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
+  "pages": {
+    "/": { "query": "automatisation IA cabinet comptable", "descriptionLead": "Votre cabinet" },
+    "/a-propos": { "query": "marque / preuve d’identité", "descriptionLead": "À propos de Memlia" },
+    "/automatisation-cabinet-comptable": { "query": "automatisation cabinet comptable", "descriptionLead": "Toute tâche répétitive" },
+    "/automatisation/factures-fournisseurs": { "query": "factures fournisseurs des dossiers clients", "descriptionLead": "Factures fournisseurs des dossiers clients" },
+    "/automatisation/notes-de-frais": { "query": "notes de frais des clients en cabinet", "descriptionLead": "Notes de frais des clients en cabinet" },
+    "/automatisation/paie": { "query": "automatisation paie pôle social", "descriptionLead": "Automatisation paie pôle social" },
+    "/automatisation/rapprochement-bancaire": { "query": "rapprochement bancaire en cabinet", "descriptionLead": "Confiez la préparation du rapprochement bancaire" },
+    "/automatisation/saisie-comptable": { "query": "saisie comptable en cabinet", "descriptionLead": "Saisie comptable en cabinet" },
+    "/blog": { "query": "index éditorial", "descriptionLead": "Blog Memlia" },
+    "/blog/automatiser-la-relance-des-pieces-clients": { "query": "relance pièces manquantes cabinet comptable", "descriptionLead": "Relancer les pièces manquantes", "minMedia": 2 },
+    "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier": { "query": "automatisation saisie comptable", "descriptionLead": "Ce que la lecture automatique extrait", "minMedia": 2 },
+    "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches": { "query": "automatisation cabinet comptable", "descriptionLead": "La carte des tâches automatisables", "minMedia": 2 },
+    "/blog/comprendre-les-comptes-rendus-metier-dsn": { "query": "crm dsn", "descriptionLead": "CRM DSN", "minMedia": 2 },
+    "/blog/controler-les-bulletins-de-paie-avant-la-dsn": { "query": "contrôle bulletin de paie", "descriptionLead": "Contrôle bulletin de paie", "minMedia": 2 },
+    "/blog/la-plateforme-que-personne-n-a-achetee": { "query": "pourquoi les cabinets comptables n’adoptent pas les nouveaux outils", "descriptionLead": "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils", "minMedia": 2 },
+    "/blog/suivre-la-production-sociale-dans-excel": { "query": "tableau de bord paie excel", "descriptionLead": "Tableau de bord paie Excel", "minMedia": 2 },
+    "/contact": { "query": "navigation transactionnelle de marque", "descriptionLead": "Décrivez la tâche" },
+    "/garanties": { "query": "preuve et réduction du risque", "descriptionLead": "Garanties Memlia" },
+    "/glossaire": { "query": "glossaire comptable", "descriptionLead": "Glossaire comptable" },
+    "/methode": { "query": "méthode automatisation cabinet comptable", "descriptionLead": "Observer le geste réel" },
+    "/outils-comptables-gratuits": { "query": "outils comptables gratuits", "descriptionLead": "Des outils gratuits" },
+    "/outils-comptables-gratuits/calculateur-date-echeance-facture": { "query": "calculateur date échéance facture", "descriptionLead": "Calculez une date d’échéance" },
+    "/outils-comptables-gratuits/calculateur-marge-commerciale": { "query": "calculateur marge commerciale", "descriptionLead": "Calculez une marge commerciale" },
+    "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit": { "query": "modèle rapprochement bancaire Excel gratuit", "descriptionLead": "Modèle de rapprochement bancaire Excel gratuit" }
+  }
+}
