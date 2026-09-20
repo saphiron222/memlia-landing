@@ -14,6 +14,11 @@ const { data } = entree;
 const chemin = `/automatisation/${entree.id}`;
 const url = `${SITE.url}${chemin}`;
 const noindex = data.status !== 'publie';
+const toolLink = entree.id === 'factures-fournisseurs'
+  ? { href: '/outils-comptables-gratuits/calculateur-date-echeance-facture', label: 'Calculer une date d’échéance de facture' }
+  : entree.id === 'rapprochement-bancaire'
+    ? { href: '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit', label: 'Préparer un modèle de rapprochement bancaire fictif' }
+    : null;
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -86,6 +91,12 @@ const graph = {
 
       <div class="service-corps lecture">
         <slot />
+        {toolLink && (
+          <aside class="service-outil" aria-label="Outil gratuit associé">
+            <strong>Rejouer la règle sur des données fictives</strong>
+            <a href={toolLink.href}>{toolLink.label}</a>
+          </aside>
+        )}
       </div>
 
       <aside class="service-appel coins" aria-labelledby="service-appel-titre">
@@ -120,6 +131,8 @@ const graph = {
   .service-corps :global(li) { margin: 0.4em 0; }
   .service-corps :global(a) { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
   .service-corps :global(strong) { color: var(--texte-fort); font-weight: 600; }
+  .service-outil { display: grid; gap: 8px; margin-top: 32px; padding: 20px; border-left: 3px solid var(--accent-appui); background: var(--accent-voile); }
+  .service-outil a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
   .service-corps :global(table) { width: 100%; max-width: 100%; margin: 1.2em 0 1.6em; border-collapse: collapse; table-layout: fixed; font-size: var(--t-sm); }
   .service-corps :global(th), .service-corps :global(td) { width: 33.333%; padding: 10px 8px; border-bottom: 1px solid var(--ligne-douce); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
   .service-corps :global(th) { color: var(--texte-fort); font-weight: 600; border-bottom-color: var(--ligne-forte); }

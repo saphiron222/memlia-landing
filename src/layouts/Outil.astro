@@ -68,9 +68,21 @@ const graph = {
       <ul>{outil.limites.map((limite) => <li>{limite}</li>)}</ul>
     </section>
 
+    <section class="conteneur outil-source" aria-labelledby="source-titre" data-official-source>
+      <h2 id="source-titre">Règle et source officielle</h2>
+      <p>{outil.source.extrait}</p>
+      <p class="texte-2"><a href={outil.source.url} rel={outil.source.url.startsWith('http') ? 'noopener' : undefined}>{outil.source.nom}</a> · vérifiée le {outil.source.verifieeLe}.</p>
+      {outil.source.complement && (
+        <p class="source-complement">
+          {outil.source.complement.extrait}{' '}
+          <a href={outil.source.complement.url} rel="noopener">{outil.source.complement.nom}</a>.
+        </p>
+      )}
+    </section>
+
     <nav class="conteneur outil-liens" data-tool-links aria-label="Pour continuer">
       <a href={OUTILS_HUB_PATH}>Tous les outils comptables gratuits</a>
-      {outil.articleExact && <a href={outil.articleExact}>Lire l’article correspondant</a>}
+      {outil.articleExact && <a href={outil.articleExact}>Consulter la ressource associée</a>}
       <a href={outil.pageService}>Comprendre la méthode</a>
       <Button href={outil.cta} variante="principal" picto="fleche">Confier une première tâche</Button>
     </nav>
@@ -100,6 +112,10 @@ const graph = {
   .outil-limites ul { display: grid; gap: 10px; }
   .outil-limites li { position: relative; padding-left: 20px; color: var(--texte-2); }
   .outil-limites li::before { content: ''; position: absolute; top: 0.65em; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-appui); }
+  .outil-source { display: grid; gap: 12px; max-width: 820px; margin-top: 48px; padding: 24px; border: 1px solid var(--ligne); border-radius: var(--r-boite); background: var(--surface-page); }
+  .outil-source h2 { font-size: var(--t-2xl); }
+  .outil-source p { margin: 0; }
+  .outil-source a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 3px; }
   .outil-liens { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--ligne-forte); }
   .outil-liens > a:not(.btn) { min-height: 44px; display: inline-flex; align-items: center; color: var(--accent-texte); text-decoration: underline; text-underline-offset: 3px; }
   @media (min-width: 48rem) {

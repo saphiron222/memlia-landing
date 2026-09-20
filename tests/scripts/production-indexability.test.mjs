@@ -6,6 +6,7 @@ import {
   buildProbeUrl,
   verifyProductionIndexability,
 } from '../../scripts/verify-production-indexability.mjs';
+import { PAGES_NOINDEX } from '../../src/data/site.mjs';
 
 const INDEXABLE_HOME = '<!doctype html><html><head><meta name="robots" content="index, follow, max-image-preview:large"></head></html>';
 
@@ -50,7 +51,7 @@ test('rougit si une URL du sitemap reçoit noindex dans les en-têtes', async ()
     if (pathname === '/robots.txt') return new Response('User-agent: *\nAllow: /\nSitemap: https://memlia.fr/sitemap.xml\n');
     if (pathname === '/sitemap.xml') return new Response(sitemapIndex);
     if (pathname === '/sitemap-0.xml') return new Response(sitemapPages);
-    if (['/mentions-legales', '/politique-de-confidentialite', '/contact/merci', '/contact/erreur'].includes(pathname)) return new Response(noindex);
+    if (PAGES_NOINDEX.includes(pathname)) return new Response(noindex);
     if (pathname === '/page-test') return new Response(INDEXABLE_HOME, { headers: { 'x-robots-tag': 'noindex' } });
     return new Response(INDEXABLE_HOME);
   };
