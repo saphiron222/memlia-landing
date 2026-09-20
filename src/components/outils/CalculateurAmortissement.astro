@@ -1,0 +1,385 @@
+<form class="amortissement" data-amortization-form novalidate>
+  <div class="amortissement-grid">
+    <label class="champ" for="amortissement-valeur">
+      <span>Valeur amortissable</span>
+      <span class="saisie-montant"><input id="amortissement-valeur" name="valeur" inputmode="decimal" autocomplete="off" value="10000" aria-describedby="amortissement-valeur-aide" required /><b aria-hidden="true">€</b></span>
+      <small id="amortissement-valeur-aide">Base hors valeur résiduelle, au moins 0,01 €, avec deux décimales au plus.</small>
+    </label>
+    <label class="champ" for="amortissement-date">
+      <span>Date de mise en service</span>
+      <input id="amortissement-date" name="date" type="date" value="2026-04-01" aria-describedby="amortissement-date-aide" required />
+      <small id="amortissement-date-aide">Point de départ du plan linéaire.</small>
+    </label>
+    <label class="champ" for="amortissement-duree">
+      <span>Durée d’utilisation</span>
+      <span class="saisie-montant"><input id="amortissement-duree" name="duree" type="number" min="1" max="50" step="1" value="5" aria-describedby="amortissement-duree-aide" required /><b aria-hidden="true">ans</b></span>
+      <small id="amortissement-duree-aide">Durée retenue par le cabinet, de 1 à 50 ans.</small>
+    </label>
+    <label class="champ" for="amortissement-methode">
+      <span>Méthode</span>
+      <select id="amortissement-methode" name="methode" aria-describedby="amortissement-methode-aide" required>
+        <option value="linear">Linéaire comptable, prorata au jour</option>
+        <option value="declining">Dégressif fiscal, exercice civil</option>
+      </select>
+      <small id="amortissement-methode-aide">Le dégressif ne vérifie pas l’éligibilité du bien.</small>
+    </label>
+  </div>
+
+  <label class="confirmation" data-declining-confirmation hidden>
+    <input type="checkbox" name="eligibilite" />
+    <span>Je confirme avoir vérifié que le bien entre dans le champ de l’article 39 A du CGI.</span>
+  </label>
+
+  <div class="actions">
+    <button class="bouton bouton-primaire" type="submit">Calculer le plan</button>
+    <p class="note-locale">Calcul local. Aucune valeur n’est envoyée ou conservée.</p>
+  </div>
+  <p class="erreur" id="amortissement-erreur" data-error role="alert" aria-live="assertive" hidden></p>
+</form>
+
+<section class="resultat" data-amortization-result aria-labelledby="amortissement-resultat-titre" aria-live="polite" hidden>
+  <div class="resultat-tete">
+    <div>
+      <p class="etiquette">Plan calculé</p>
+      <h3 id="amortissement-resultat-titre" data-result-method tabindex="-1"></h3>
+      <p data-result-convention></p>
+    </div>
+    <dl class="resume">
+      <div><dt>Taux annuel</dt><dd data-result-rate></dd></div>
+      <div><dt>Total amorti</dt><dd data-result-total></dd></div>
+      <div data-result-coefficient-row hidden><dt>Coefficient</dt><dd data-result-coefficient></dd></div>
+    </dl>
+  </div>
+
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Plan d’amortissement, défilement horizontal possible">
+    <table>
+      <thead>
+        <tr><th>Exercice</th><th>Base d’ouverture</th><th>Règle et prorata</th><th>Dotation</th><th>Cumul</th><th>Valeur nette</th></tr>
+      </thead>
+      <tbody data-result-rows></tbody>
+      <tfoot><tr><th colspan="3">Total</th><td data-result-footer></td><td colspan="2">Valeur nette finale : 0,00 €</td></tr></tfoot>
+    </table>
+  </div>
+  <p class="trace"><strong>Trace de calcul :</strong> chaque ligne montre sa base, son taux ou son quotient, et son prorata. Le dernier centime est ajusté sur la dernière ligne pour que le total reste égal à la valeur amortissable.</p>
+</section>
+
+<script>
+  import { buildDepreciationSchedule } from '../../lib/amortissement.mjs';
+
+  const form = document.querySelector('[data-amortization-form]');
+  const result = document.querySelector('[data-amortization-result]');
+  const error = form?.querySelector('[data-error]');
+  const method = form?.querySelector('[name="methode"]');
+  const confirmation = form?.querySelector('[data-declining-confirmation]');
+  const money = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });
+  const percent = new Intl.NumberFormat('fr-FR', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 4 });
+  const descriptions = new Map([
+    ['valeur', 'amortissement-valeur-aide'],
+    ['date', 'amortissement-date-aide'],
+    ['duree', 'amortissement-duree-aide'],
+    ['methode', 'amortissement-methode-aide'],
+  ]);
+
+  const parseFrenchNumber = (value: string) => Number(value.trim().replace(/\s/g, '').replace(',', '.'));
+
+  const updateConfirmation = () => {
+    if (!(method instanceof HTMLSelectElement) || !(confirmation instanceof HTMLElement)) return;
+    confirmation.hidden = method.value !== 'declining';
+    const checkbox = confirmation.querySelector('input');
+    if (checkbox instanceof HTMLInputElement) {
+      checkbox.required = method.value === 'declining';
+      if (method.value !== 'declining') checkbox.checked = false;
+    }
+  };
+
+  if (method instanceof HTMLSelectElement) {
+    method.addEventListener('change', updateConfirmation);
+    updateConfirmation();
+  }
+
+  if (form instanceof HTMLFormElement && result instanceof HTMLElement && error instanceof HTMLElement) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      error.hidden = true;
+      result.hidden = true;
+      descriptions.forEach((description, name) => {
+        const field = form.elements.namedItem(name);
+        if (field instanceof HTMLElement) {
+          field.removeAttribute('aria-invalid');
+          field.setAttribute('aria-describedby', description);
+        }
+      });
+      const eligibility = form.elements.namedItem('eligibilite');
+      if (eligibility instanceof HTMLElement) {
+        eligibility.removeAttribute('aria-invalid');
+        eligibility.removeAttribute('aria-describedby');
+      }
+
+      const markInvalid = (name: string) => {
+        const field = form.elements.namedItem(name);
+        if (!(field instanceof HTMLElement)) return null;
+        field.setAttribute('aria-invalid', 'true');
+        const description = descriptions.get(name);
+        field.setAttribute('aria-describedby', description ? `${description} amortissement-erreur` : 'amortissement-erreur');
+        return field;
+      };
+
+      const data = new FormData(form);
+      const selectedMethod = String(data.get('methode') ?? '');
+      if (selectedMethod === 'declining' && data.get('eligibilite') !== 'on') {
+        error.textContent = 'Le dégressif fiscal reste bloqué tant que l’éligibilité du bien n’est pas confirmée.';
+        error.hidden = false;
+        markInvalid('eligibilite')?.focus();
+        return;
+      }
+
+      try {
+        const schedule = buildDepreciationSchedule({
+          value: parseFrenchNumber(String(data.get('valeur') ?? '')),
+          startDate: String(data.get('date') ?? ''),
+          durationYears: Number(data.get('duree')),
+          method: selectedMethod,
+        });
+
+        const methodNode = result.querySelector('[data-result-method]');
+        const conventionNode = result.querySelector('[data-result-convention]');
+        const rateNode = result.querySelector('[data-result-rate]');
+        const totalNode = result.querySelector('[data-result-total]');
+        const footerNode = result.querySelector('[data-result-footer]');
+        const coefficientRow = result.querySelector('[data-result-coefficient-row]');
+        const coefficientNode = result.querySelector('[data-result-coefficient]');
+        const rows = result.querySelector('[data-result-rows]');
+
+        if (methodNode) methodNode.textContent = schedule.method;
+        if (conventionNode) conventionNode.textContent = schedule.convention;
+        if (rateNode) rateNode.textContent = percent.format(schedule.annualRate);
+        if (totalNode) totalNode.textContent = money.format(schedule.total);
+        if (footerNode) footerNode.textContent = money.format(schedule.total);
+        if (coefficientRow instanceof HTMLElement) coefficientRow.hidden = schedule.coefficient === undefined;
+        if (coefficientNode) coefficientNode.textContent = schedule.coefficient === undefined ? '' : schedule.coefficient.toFixed(2).replace('.', ',');
+        if (rows) {
+          rows.replaceChildren(...schedule.rows.map((row) => {
+            const tr = document.createElement('tr');
+            const values = [
+              String(row.year),
+              money.format(row.opening),
+              `${row.rule} (${row.formula})`,
+              money.format(row.amount),
+              money.format(row.accumulated),
+              money.format(row.closing),
+            ];
+            values.forEach((value, index) => {
+              const cell = document.createElement(index === 0 ? 'th' : 'td');
+              if (index === 0) cell.setAttribute('scope', 'row');
+              cell.textContent = value;
+              tr.append(cell);
+            });
+            return tr;
+          }));
+        }
+        result.hidden = false;
+        if (methodNode instanceof HTMLElement) methodNode.focus({ preventScroll: true });
+        result.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
+      } catch (caught) {
+        const message = caught instanceof Error ? caught.message : 'Le calcul n’a pas pu être effectué.';
+        error.textContent = message;
+        error.hidden = false;
+        let invalidField = null;
+        if (message.includes('valeur amortissable')) invalidField = markInvalid('valeur');
+        else if (message.includes('date de mise en service')) invalidField = markInvalid('date');
+        else if (message.includes('durée') || message.includes('Dégressif fiscal')) invalidField = markInvalid('duree');
+        else if (message.includes('méthode')) invalidField = markInvalid('methode');
+        invalidField?.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  [hidden] {
+    display: none !important;
+  }
+  .amortissement {
+    display: grid;
+    gap: 24px;
+  }
+  .amortissement-grid {
+    display: grid;
+    gap: 20px;
+  }
+  .champ {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+  }
+  .champ > span:first-child {
+    font-weight: 600;
+    color: var(--texte-fort);
+  }
+  .champ small,
+  .note-locale,
+  .resultat-tete p,
+  .trace {
+    color: var(--texte-2);
+  }
+  .champ input,
+  .champ select {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-bouton);
+    background: var(--surface-feuille);
+    color: var(--texte-fort);
+    padding: 10px 12px;
+    font: inherit;
+  }
+  .champ input[aria-invalid='true'],
+  .confirmation input[aria-invalid='true'] {
+    outline: 2px solid var(--rouge);
+    outline-offset: 2px;
+  }
+  .saisie-montant {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-bouton);
+    background: var(--surface-feuille);
+    overflow: hidden;
+  }
+  .saisie-montant input {
+    border: 0;
+    border-radius: 0;
+  }
+  .saisie-montant b {
+    padding: 0 14px;
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+  }
+  .confirmation {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 16px;
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-boite);
+    background: var(--surface-page);
+  }
+  .confirmation input {
+    width: 20px;
+    height: 20px;
+    margin: 2px 0 0;
+    accent-color: var(--accent-appui);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+  .note-locale {
+    max-width: 48ch;
+    font-size: var(--t-sm);
+  }
+  .erreur {
+    padding: 14px 16px;
+    border-left: 3px solid var(--rouge);
+    background: var(--rouge-voile);
+    color: var(--rouge);
+    font-weight: 600;
+  }
+  .resultat {
+    display: grid;
+    gap: 24px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ligne);
+  }
+  .resultat-tete {
+    display: grid;
+    gap: 24px;
+  }
+  .resultat-tete h3 {
+    margin: 4px 0 8px;
+  }
+  .etiquette {
+    color: var(--accent-texte) !important;
+    font-size: var(--t-sm);
+    font-weight: 600;
+  }
+  .resume {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0;
+    border: 1px solid var(--ligne);
+    background: var(--ligne);
+  }
+  .resume div {
+    display: grid;
+    gap: 4px;
+    padding: 14px;
+    background: var(--surface-feuille);
+  }
+  .resume dt {
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+  }
+  .resume dd {
+    margin: 0;
+    color: var(--texte-fort);
+    font-family: var(--police-display);
+    font-size: var(--t-xl);
+    font-weight: 600;
+  }
+  .table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-boite);
+  }
+  table {
+    width: 100%;
+    min-width: 920px;
+    border-collapse: collapse;
+    background: var(--surface-feuille);
+    font-variant-numeric: tabular-nums;
+  }
+  th,
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--ligne-douce);
+    text-align: left;
+    vertical-align: top;
+  }
+  thead th,
+  tfoot th,
+  tfoot td {
+    background: var(--surface-page);
+    color: var(--texte-fort);
+    font-weight: 600;
+  }
+  tbody td:nth-child(n + 4),
+  tfoot td {
+    white-space: nowrap;
+  }
+  tbody td:nth-child(3) {
+    min-width: 280px;
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+  }
+  .trace {
+    max-width: 78ch;
+    font-size: var(--t-sm);
+  }
+  @media (min-width: 48rem) {
+    .amortissement-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .resultat-tete {
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      align-items: start;
+    }
+  }
+</style>

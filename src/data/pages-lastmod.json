@@ -3,56 +3,60 @@
   "regle": "lastmod = jour où le HTML rendu de la page a changé. Mis à jour par scripts/sync-lastmod.mjs, jamais par le build.",
   "pages": {
     "/": {
-      "sha256": "1a6221b6a988257a1f0b89ab71da9008ff7341bb8f88ca2b473285388f4b3b31",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "9eac2f92cd9fa18e01023d55205a76dda8b9b33534171a36e8ff554ca7b65001",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/a-propos": {
-      "sha256": "437078bce801802ff56e47a10a636a60414ab10fbc1bb0a67c5b6bf9b725f3ce",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "655ae831a3bb04ec4342eca3e4c44b451286d81ce30a426bae4fd88a2191b16e",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/automatisation-cabinet-comptable": {
-      "sha256": "c1755bddda7ccd30a77e4df00e6aeb430624ce0d97831fafc0c1ee0be819f254",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "eda51954b1825c59d6a46a87c88c26bb1cf7655cbff85103283e60d8cf155773",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/automatisation/rapprochement-bancaire": {
-      "sha256": "d33fb593f751187b554c8d55024f617ad454bb546c53688d48ba6645ccd1ee57",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "21c788e273eb2faf90eedd48b523a5954912f75615657b788ddca17f67ee2970",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/blog": {
-      "sha256": "1d547d2c7b0e126a08359aabe383fcdd85e47705c33c19e603b2657fc6183e32",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "6380bd337c9fe91b2ce65375aa0f13e1dabbd5889a3f05e8beb7a7ec64fd0dca",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/contact": {
-      "sha256": "e7cc7b6cddc24fb82ad78b3e1a782075b65cef432c4ce9da1217bdc1b3ad66cd",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "8a8203b6aba15005ab6abdad613a908453270f60f2d7e1a9b1243d9ed8d04aef",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/garanties": {
-      "sha256": "309991922cbb8f6bc4ee37f1194a6b5dc1ebed048fca527a67c84048e98161f4",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "ad9a8872900522d9bfc62e9a512806a516f5d73dba053b9d82c29b1cef98cc45",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/glossaire": {
-      "sha256": "97e110d336e51873d98b51e0430f3ed8bfee31272d5a540e32399536f49c68a4",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "3b03f1b385e662cddeef07cefa6154d6bd18115393b3b89a80c0e25939bd7472",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/methode": {
-      "sha256": "8c09721e73828dfb18494b511099bc1cfc303c020b6245ee35235fbed1b3fd73",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "abb0a52088ef013c71b549331035bec9285c45b3d2ad54e01d748aedb6d90a56",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/outils-comptables-gratuits": {
-      "sha256": "54b42fe8298ddf9112134b54bfa9a8103dc3b19af88f894ec6f068ed35730fcd",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "2bd8498df1e25bdde2775f2b573b55fd8af341bcf29a9d8ad169f163d06256bf",
+      "lastmod": "2026-09-20T21:48:35.524Z"
+    },
+    "/outils-comptables-gratuits/calculateur-amortissement-comptable": {
+      "sha256": "72fde3ebfc4764820983c896e9d52e412923ab3e0dd7b38e35e1b02caf12b158",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/outils-comptables-gratuits/calculateur-date-echeance-facture": {
-      "sha256": "d6fa6826517e794c865657459734015d657f9bb13ccfdecad175553093430a3f",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "896271a35d683f76de9ae15e65f32ddae303b6a34cdb44acaa8a12040e928f33",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/outils-comptables-gratuits/calculateur-marge-commerciale": {
-      "sha256": "49a7dd5cf8d2cef01136680d2291787a5c596c770f76f37d04dbac245712269e",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "642bc0169a28edb55df971e1ae1bfd6130807bfa15fdbdbd26c98880ccf949a4",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     },
     "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit": {
-      "sha256": "37e9885771a7d1755eed540c8a4ddaa760e32e9ea969b8c7a70634ab63a1f5e2",
-      "lastmod": "2026-09-20T21:10:00.097Z"
+      "sha256": "a0242a2e4c4e2ab47024faf4e3f69fb7a88dc2434dae35996192a4234c39c162",
+      "lastmod": "2026-09-20T21:48:35.524Z"
     }
   }
 }

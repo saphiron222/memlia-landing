@@ -469,15 +469,16 @@
     </section>
 
     <!-- ---- Hub et outils gratuits : scènes propres, calculs fictifs, résultat et refus visibles. ---- -->
-    <section class="frame hero-frame" id="outils-hub" data-og aria-label="Trois outils gratuits annoncent leur entrée, leur résultat et leur refus, sans envoyer les valeurs">
+    <section class="frame hero-frame" id="outils-hub" data-og aria-label="Quatre outils gratuits annoncent leur entrée, leur résultat et leur refus, sans envoyer les valeurs">
       <article class="window hero-window rows-3 tool-proof">
         <div class="window-bar"><span class="dot green"></span><span>Outils comptables gratuits</span><small>Calculs dans le navigateur</small></div>
-        <div class="tool-hub-grid">
+        <div class="tool-hub-grid four">
           <section><span class="eyebrow">Calculer</span><b>Marge commerciale</b><p><small>Entrée</small> Deux montants HT<br><small>Sortie</small> Marge, taux et formule</p><span class="tool-stop">Montant nul : aucun taux</span></section>
           <section><span class="eyebrow">Calculer</span><b>Date d’échéance</b><p><small>Entrée</small> Date et convention<br><small>Sortie</small> Échéance et étapes</p><span class="tool-stop">Convention absente : aucune date</span></section>
+          <section><span class="eyebrow">Calculer</span><b>Amortissement</b><p><small>Entrée</small> Valeur, date, durée, méthode<br><small>Sortie</small> Plan et prorata</p><span class="tool-stop">Entrée incohérente : aucun plan</span></section>
           <section><span class="eyebrow">Vérifier</span><b>Rapprochement bancaire</b><p><small>Entrée</small> Deux soldes fictifs<br><small>Sortie</small> Contrôle et CSV local</p><span class="tool-stop">Écart : téléchargement bloqué</span></section>
         </div>
-        <div class="tool-proof-foot"><span>Aucune valeur envoyée ou conservée</span><strong>3 règles visibles · 3 cas de refus éprouvés</strong></div>
+        <div class="tool-proof-foot"><span>Aucune valeur envoyée ou conservée</span><strong>4 règles visibles · 4 cas de refus éprouvés</strong></div>
       </article>
     </section>
 
@@ -516,6 +517,17 @@
           <aside><span class="ok">CSV prêt à valider</span><p>UTF-8 · point-virgule<br>Validation du collaborateur requise</p></aside>
         </div>
         <div class="tool-proof-foot"><span>Aucun relevé importé · aucune écriture produite</span><strong class="tool-stop">Cas de refus · écart ou élément inexpliqué : téléchargement bloqué</strong></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="outil-amortissement" data-og aria-label="Plan fictif d’amortissement linéaire : valeur de 10 000 euros, mise en service le 1er avril 2026, durée de cinq ans et première dotation sur 275 jours">
+      <article class="window hero-window rows-3 tool-proof">
+        <div class="window-bar"><span class="dot green"></span><span>Calculateur d’amortissement comptable</span><small>Cas fictif</small></div>
+        <div class="tool-depreciation">
+          <div class="tool-depreciation-inputs"><span class="eyebrow">Règle saisie</span><p><small>Valeur amortissable</small><b>10 000,00 €</b></p><p><small>Mise en service</small><b>1er avril 2026</b></p><p><small>Durée et méthode</small><b>5 ans · linéaire</b></p></div>
+          <div class="tool-depreciation-plan"><span class="eyebrow">Premières lignes du plan</span><div class="head"><span>Exercice</span><span>Prorata</span><span>Dotation</span><span>Valeur nette</span></div><div><span>2026</span><span>275 / 365</span><b>1 506,85 €</b><span>8 493,15 €</span></div><div><span>2027</span><span>365 / 365</span><b>2 000,00 €</b><span>6 493,15 €</span></div><div><span>2028</span><span>366 / 366</span><b>2 000,00 €</b><span>4 493,15 €</span></div></div>
+        </div>
+        <div class="tool-proof-foot"><span>Taux 20,00 % · total final 10 000,00 €</span><strong class="tool-stop">Autre entrée testée · durée incohérente → refus avant calcul</strong></div>
       </article>
     </section>
 

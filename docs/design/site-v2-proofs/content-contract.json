@@ -93,7 +93,7 @@
   },
   {
     "id": "outils-hub",
-    "centralText": "Outils comptables gratuits Calculs dans le navigateur Calculer Marge commerciale Entrée Deux montants HT Sortie Marge, taux et formule Montant nul : aucun taux Calculer Date d’échéance Entrée Date et convention Sortie Échéance et étapes Convention absente : aucune date Vérifier Rapprochement bancaire Entrée Deux soldes fictifs Sortie Contrôle et CSV local Écart : téléchargement bloqué Aucune valeur envoyée ou conservée 3 règles visibles · 3 cas de refus éprouvés"
+    "centralText": "Outils comptables gratuits Calculs dans le navigateur Calculer Marge commerciale Entrée Deux montants HT Sortie Marge, taux et formule Montant nul : aucun taux Calculer Date d’échéance Entrée Date et convention Sortie Échéance et étapes Convention absente : aucune date Calculer Amortissement Entrée Valeur, date, durée, méthode Sortie Plan et prorata Entrée incohérente : aucun plan Vérifier Rapprochement bancaire Entrée Deux soldes fictifs Sortie Contrôle et CSV local Écart : téléchargement bloqué Aucune valeur envoyée ou conservée 4 règles visibles · 4 cas de refus éprouvés"
   },
   {
     "id": "outil-marge",
@@ -106,5 +106,9 @@
   {
     "id": "outil-rapprochement",
     "centralText": "Modèle de rapprochement bancaire Données fictives Banque Solde du relevé 1 000,00 € + 0,00 € de remises − 0,00 € de paiements Solde ajusté · 1 000,00 € = Différence 0,00 € Comptabilité Solde du compte 512 950,00 € − 0,00 € de frais + 50,00 € d’intérêts Solde ajusté · 1 000,00 € CSV prêt à valider UTF-8 · point-virgule Validation du collaborateur requise Aucun relevé importé · aucune écriture produite Cas de refus · écart ou élément inexpliqué : téléchargement bloqué"
+  },
+  {
+    "id": "outil-amortissement",
+    "centralText": "Calculateur d’amortissement comptable Cas fictif Règle saisie Valeur amortissable 10 000,00 € Mise en service 1er avril 2026 Durée et méthode 5 ans · linéaire Premières lignes du plan Exercice Prorata Dotation Valeur nette 2026 275 / 365 1 506,85 € 8 493,15 € 2027 365 / 365 2 000,00 € 6 493,15 € 2028 366 / 366 2 000,00 € 4 493,15 € Taux 20,00 % · total final 10 000,00 € Autre entrée testée · durée incohérente → refus avant calcul"
   }
 ]
