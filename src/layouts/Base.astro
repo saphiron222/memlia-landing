@@ -5,6 +5,8 @@ import Nav from '@/components/Nav.astro';
 import Footer from '@/components/Footer.astro';
 import { SITE, OG_IMAGE } from '@/data/site.mjs';
 import { BLOG } from '@/data/blog.mjs';
+import { construireRubriques } from '@/data/blog-rubriques.mjs';
+import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
 
 /**
  * Gabarit commun : head SEO complet (title, description, canonical, robots, OG, Twitter),
@@ -39,8 +41,9 @@ const {
   csp,
 } = Astro.props;
 const canonical = chemin === '/' ? `${SITE.url}/` : `${SITE.url}${chemin}`;
-const articles = await getCollection('blog', ({ data }) => !data.brouillon);
+const articles = await getCollection('blog', isBlogEntryVisible);
 const blogActif = articles.length > 0;
+const rubriques = construireRubriques(articles);
 ---
 
 <!doctype html>
@@ -87,7 +90,7 @@ const blogActif = articles.length > 0;
     <main id="main">
       <slot />
     </main>
-    <Footer blogActif={blogActif} base={base} />
+    <Footer blogActif={blogActif} rubriques={rubriques} base={base} />
 
     <script>
       // Apparitions au défilement (spec §5.2) : la classe `js` active les états initiaux ;
