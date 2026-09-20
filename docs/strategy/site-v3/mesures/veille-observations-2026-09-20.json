@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-20T11:28:41.533Z",
+  "windowDays": 31,
+  "privacy": "Titres, dates et URL seulement; aucun nom, pseudonyme, commentaire ou profil conservé.",
+  "threshold": {
+    "occurrences": 3,
+    "distinctContributors": 3,
+    "distinctThreads": 2,
+    "windowDays": 31,
+    "rule": "Un accès nouveau exige trois occurrences, trois contributeurs distincts vérifiés transitoirement, au moins deux fils et aucune couverture C1."
+  },
+  "terrains": [
+    {
+      "terrain": "Compta Online",
+      "status": "ok",
+      "listingHttpStatus": 200,
+      "itemsScanned": 40,
+      "relevantQuestions": 3,
+      "staleExcluded": 2
+    },
+    {
+      "terrain": "last30days · monde",
+      "status": "partial",
+      "sourceStatus": {
+        "reddit": "ok",
+        "youtube": "timeout"
+      },
+      "itemsScanned": 9,
+      "relevantQuestions": 1
+    }
+  ],
+  "observations": [
+    {
+      "question": "Cut-off en révision : votre méthode ?",
+      "source": "Compta Online · forum professionnel",
+      "sourceItemId": "72e0c01a1be26126",
+      "url": "https://www.compta-online.com/cut-off-en-revision-votre-methode-t74756#entry281620",
+      "publishedAt": "2026-09-17",
+      "httpStatus": 200
+    },
+    {
+      "question": "Comment gérez-vous les documents manquants de vos clients ?",
+      "source": "Compta Online · forum professionnel",
+      "sourceItemId": "c846641da59c3716",
+      "url": "https://www.compta-online.com/comment-gerez-vous-les-documents-manquants-de-vos-clients-t74739",
+      "publishedAt": "2026-09-01",
+      "httpStatus": 200
+    },
+    {
+      "question": "Micro-entreprise : les 7 erreurs de facturation qui coûtent cher (et comment les éviter)",
+      "source": "Compta Online · forum professionnel",
+      "sourceItemId": "3eb2857fe9ae2b39",
+      "url": "https://www.compta-online.com/micro-entreprise-les-erreurs-de-facturation-qui-coutent-cher-et-comment-les-eviter-t74738",
+      "publishedAt": "2026-08-26",
+      "httpStatus": 200
+    },
+    {
+      "question": "Bookkeeping Clean-Up Work",
+      "source": "last30days · reddit · r/Bookkeeping",
+      "sourceItemId": "6b7e58f16d70e70f",
+      "url": "https://www.reddit.com/r/Bookkeeping/comments/1wa59w7/bookkeeping_cleanup_work/",
+      "publishedAt": "2026-09-07",
+      "httpStatus": 200,
+      "occurrenceCount": 10,
+      "distinctContributors": 10,
+      "distinctThreads": 1
+    }
+  ]
+}
