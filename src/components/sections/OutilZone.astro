@@ -2,9 +2,10 @@
 interface Props {
   mentionLocale: string;
   limites: readonly string[];
+  suspension?: { motif: string; date: string };
 }
 
-const { mentionLocale, limites } = Astro.props;
+const { mentionLocale, limites, suspension } = Astro.props;
 ---
 
 <section class="outil-zone-section" data-tool-section="calcul" aria-labelledby="outil-zone-titre">
@@ -13,7 +14,17 @@ const { mentionLocale, limites } = Astro.props;
     <div class="outil-zone">
       <div class="outil-calcul coins">
         <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-        <slot />
+        {suspension ? (
+          <div class="outil-suspension" role="status" aria-labelledby="outil-suspension-titre">
+            <p class="outil-suspension-label">Règle à revérifier</p>
+            <h2 id="outil-suspension-titre">Calcul suspendu</h2>
+            <p>Nous avons arrêté ce calcul plutôt que de répondre avec une règle que sa source officielle ne confirme plus.</p>
+            <dl>
+              <div><dt>Motif</dt><dd>{suspension.motif}</dd></div>
+              <div><dt>Depuis le</dt><dd>{suspension.date}</dd></div>
+            </dl>
+          </div>
+        ) : <slot />}
       </div>
       <aside class="outil-local rv" data-local-notice aria-labelledby="local-titre">
         <h2 id="local-titre">Ce qui reste dans votre navigateur</h2>
@@ -54,6 +65,38 @@ const { mentionLocale, limites } = Astro.props;
     border-radius: var(--r-cadre);
     background: var(--surface-feuille);
     box-shadow: var(--ombre-xs);
+  }
+  .outil-suspension {
+    display: grid;
+    gap: 16px;
+    max-width: 62ch;
+  }
+  .outil-suspension-label {
+    color: var(--accent-texte);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .outil-suspension h2 {
+    font-size: var(--t-4xl);
+  }
+  .outil-suspension > p:not(.outil-suspension-label),
+  .outil-suspension dd {
+    color: var(--texte-2);
+  }
+  .outil-suspension dl {
+    display: grid;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .outil-suspension dl div {
+    display: grid;
+    gap: 4px;
+    padding-top: 12px;
+    border-top: 1px solid var(--ligne-douce);
+  }
+  .outil-suspension dt {
+    font-weight: 700;
   }
   .outil-local {
     display: grid;

@@ -25,6 +25,7 @@
     "test:c3-r1": "node --test tests/scripts/c3-r1-validator.test.mjs",
     "veille:questions": "node scripts/veille/questions.mjs",
     "veille:reglementaire": "node scripts/veille/reglementaire.mjs",
+    "veille:outils": "node scripts/veille-outils.mjs",
     "test:veille": "node --test tests/scripts/veille-acces.test.mjs",
     "test:scripts": "node scripts/test-scripts.mjs",
     "test:indexability": "node scripts/verify-production-indexability.mjs",
