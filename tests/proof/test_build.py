@@ -125,7 +125,10 @@ class BuildProof(unittest.TestCase):
                 services_publies.add(f'{SITE}/automatisation/{service.stem}')
         attendues = {f'{SITE}/', f'{SITE}/blog', f'{SITE}/glossaire',
                      f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
-                     f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/outils-comptables-gratuits'} | {
+                     f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/outils-comptables-gratuits',
+                     f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
+                     f'{SITE}/outils-comptables-gratuits/calculateur-date-echeance-facture',
+                     f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/{a.stem}' for a in published_articles
                      } | services_publies
         self.assertEqual(set(pages), attendues)
@@ -164,6 +167,25 @@ class BuildProof(unittest.TestCase):
         graph = jsonld(path)[0]['@graph']
         self.assertEqual([node['@type'] for node in graph], ['WebPage', 'WebApplication', 'BreadcrumbList'])
         self.assertNotIn('SoftwareApplication', path.read_text())
+
+    def test_outils_disponibles_ont_trois_liens_entrants_contextuels(self):
+        outils = {
+            '/outils-comptables-gratuits/calculateur-marge-commerciale',
+            '/outils-comptables-gratuits/calculateur-date-echeance-facture',
+            '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit',
+        }
+        sources = {}
+        for page in DIST.rglob('*.html'):
+            route = '/' + str(page.relative_to(DIST)).removesuffix('.html')
+            if route == '/index': route = '/'
+            hrefs = {attrs.get('href') for attrs in Document(page).select('a')}
+            for outil in outils:
+                if outil in hrefs and route != outil:
+                    sources.setdefault(outil, set()).add(route)
+        for outil in outils:
+            self.assertGreaterEqual(len(sources.get(outil, set())), 3, (outil, sources.get(outil)))
+            self.assertIn('/outils-comptables-gratuits', sources[outil])
+            self.assertIn('/methode', sources[outil], 'la méthode est la ressource exacte qui rejoue le geste')
 
     def test_aucune_mention_de_processus_rendue(self):
         """Le lecteur ne lit pas notre chaîne éditoriale.

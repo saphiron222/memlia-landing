@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import CalculateurMarge from '@/components/outils/CalculateurMarge.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('calculateur-marge-commerciale');
+---
+<Outil outil={outil}><CalculateurMarge /></Outil>

@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import ModeleRapprochement from '@/components/outils/ModeleRapprochement.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('modele-rapprochement-bancaire-excel-gratuit');
+---
+<Outil outil={outil}><ModeleRapprochement /></Outil>

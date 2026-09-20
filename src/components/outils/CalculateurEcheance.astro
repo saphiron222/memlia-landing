@@ -1,0 +1,70 @@
+<form class="outil-form" data-due-form novalidate>
+  <label>Règle générale
+    <select name="rule" required>
+      <option value="">Choisir une règle</option>
+      <option value="default30">30 jours après réception ou exécution</option>
+      <option value="invoice60">60 jours date de facture</option>
+      <option value="eom45">45 jours fin de mois</option>
+    </select>
+  </label>
+  <div class="fields two">
+    <label>Date de facture <input type="date" name="invoiceDate" /></label>
+    <label>Date de réception ou d’exécution <input type="date" name="receiptDate" /></label>
+  </div>
+  <fieldset data-convention hidden>
+    <legend>Convention « 45 jours fin de mois »</legend>
+    <label><input type="radio" name="convention" value="add45ThenEom" /> Ajouter 45 jours, puis aller à la fin du mois</label>
+    <label><input type="radio" name="convention" value="eomThenAdd45" /> Aller à la fin du mois de facturation, puis ajouter 45 jours</label>
+  </fieldset>
+  <label class="check"><input type="checkbox" name="generalCase" /> Je confirme qu’il s’agit d’un cas général, sans règle sectorielle ni accord particulier.</label>
+  <button class="btn btn-principal" type="submit">Calculer l’échéance</button>
+  <p class="error" data-error role="alert" hidden></p>
+  <section class="result" data-output aria-live="polite" hidden>
+    <h2>Résultat et trace</h2>
+    <p class="date" data-result></p><ol data-trace></ol>
+    <p class="proof"><strong>Preuve de refus :</strong> sans point de départ, convention explicite ou confirmation du cas général, aucune date n’est proposée.</p>
+  </section>
+</form>
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-due-form]');
+  const parseDate = (value: string) => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+    const [y,m,d] = value.split('-').map(Number); const date = new Date(Date.UTC(y,m-1,d));
+    return date.getUTCFullYear() === y && date.getUTCMonth() === m-1 && date.getUTCDate() === d ? date : null;
+  };
+  const addDays = (date: Date, days: number) => new Date(date.getTime() + days * 86400000);
+  const endOfMonth = (date: Date) => new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth()+1, 0));
+  const display = (date: Date) => new Intl.DateTimeFormat('fr-FR', { day:'2-digit', month:'long', year:'numeric', timeZone:'UTC' }).format(date);
+  if (form) {
+    const rule = form.elements.namedItem('rule') as HTMLSelectElement;
+    const convention = form.querySelector<HTMLElement>('[data-convention]')!;
+    rule.addEventListener('change', () => { convention.hidden = rule.value !== 'eom45'; });
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); const data = new FormData(form); const error = form.querySelector<HTMLElement>('[data-error]')!; const output = form.querySelector<HTMLElement>('[data-output]')!;
+      output.hidden = true;
+      if (data.get('generalCase') !== 'on') { error.textContent = 'Refus : cet outil couvre uniquement les cas généraux confirmés.'; error.hidden = false; return; }
+      let result: Date | null = null; let steps: string[] = [];
+      if (data.get('rule') === 'default30') {
+        const start = parseDate(String(data.get('receiptDate') ?? ''));
+        if (!start) { error.textContent = 'Refus : renseignez une date de réception ou d’exécution valide pour le délai supplétif.'; error.hidden = false; return; }
+        result = addDays(start, 30); steps = [`Point de départ : réception ou exécution le ${display(start)}.`, `Ajout de 30 jours calendaires : ${display(result)}.`];
+      } else if (data.get('rule') === 'invoice60') {
+        const start = parseDate(String(data.get('invoiceDate') ?? ''));
+        if (!start) { error.textContent = 'Refus : renseignez une date de facture valide pour le délai de 60 jours.'; error.hidden = false; return; }
+        result = addDays(start, 60); steps = [`Point de départ : facture du ${display(start)}.`, `Ajout de 60 jours calendaires : ${display(result)}.`];
+      } else if (data.get('rule') === 'eom45') {
+        const start = parseDate(String(data.get('invoiceDate') ?? '')); const choice = String(data.get('convention') ?? '');
+        if (!start) { error.textContent = 'Refus : renseignez une date de facture valide.'; error.hidden = false; return; }
+        if (!choice) { error.textContent = 'Refus : choisissez explicitement l’une des deux conventions de calcul des 45 jours fin de mois.'; error.hidden = false; return; }
+        if (choice === 'add45ThenEom') { const intermediate = addDays(start,45); result = endOfMonth(intermediate); steps = [`Facture du ${display(start)}.`, `Ajout de 45 jours : ${display(intermediate)}.`, `Fin de ce mois : ${display(result)}.`]; }
+        else { const intermediate = endOfMonth(start); result = addDays(intermediate,45); steps = [`Facture du ${display(start)}.`, `Fin du mois de facturation : ${display(intermediate)}.`, `Ajout de 45 jours : ${display(result)}.`]; }
+      } else { error.textContent = 'Refus : choisissez une règle de délai.'; error.hidden = false; return; }
+      error.hidden = true; form.querySelector<HTMLElement>('[data-result]')!.textContent = `Échéance calculée : ${display(result!)}.`;
+      form.querySelector<HTMLOListElement>('[data-trace]')!.innerHTML = steps.map((step) => `<li>${step}</li>`).join(''); output.hidden = false;
+    });
+  }
+</script>
+<style>
+  .outil-form,.fields,label,fieldset,.result { display:grid; gap:12px; }
+  .fields.two{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px} select,input[type=date]{width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);background:var(--surface-feuille);color:var(--texte-fort);font:inherit} label,legend{font-weight:600;color:var(--texte-fort)} fieldset{padding:16px;border:1px solid var(--ligne);border-radius:var(--r-boite)} fieldset label,.check{grid-template-columns:auto 1fr;align-items:start;font-weight:400}.btn{justify-self:start}.error{margin:0;padding:12px 14px;border-left:3px solid var(--rouge);background:var(--rouge-voile);color:var(--rouge)}.result{box-sizing:border-box;width:100%;min-width:0;padding:20px;border:1px solid var(--ligne);border-radius:var(--r-boite);background:var(--surface-page)}.result h2{font-size:var(--t-2xl)}.date{font-size:var(--t-xl);font-weight:700}.result ol{display:grid;gap:8px;padding-left:20px}.proof{margin:0;color:var(--texte-2)}.outil-form [hidden]{display:none!important}@media(max-width:40rem){.fields.two{grid-template-columns:1fr}}
+</style>
