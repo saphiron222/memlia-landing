@@ -8,7 +8,7 @@ const movedArticle = {
   // L'ancien slug reste littéral uniquement dans public/_redirects, la source de la migration.
   path: `/blog/${['la', 'plateforme', 'que', 'personne', 'n', 'a', 'achetee'].join('-')}`,
   status: 308,
-  location: `${target}/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils`,
+  location: '/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
   canonical: `${target}/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils`,
 };
 // Les attentes sont explicites, indépendantes de la configuration Cloudflare.
@@ -70,7 +70,7 @@ for (const entry of cases) {
     assert.equal(report.status, movedArticle.status, 'L’ancienne URL de l’article doit répondre 308');
     assert.equal(report.location, movedArticle.location, 'L’ancienne URL doit viser directement le nouveau chemin');
 
-    const destination = await fetch(report.location, { redirect: 'manual', signal: AbortSignal.timeout(20_000) });
+    const destination = await fetch(new URL(report.location, target), { redirect: 'manual', signal: AbortSignal.timeout(20_000) });
     report.destinationStatus = destination.status;
     report.destinationLocation = destination.headers.get('location');
     const html = await destination.text();
@@ -92,5 +92,5 @@ const output = '.qa/www-redirect.json';
 mkdirSync('.qa', { recursive: true });
 writeFileSync(output, JSON.stringify(result, null, 2) + '\n');
 console.log(JSON.stringify(result, null, 2));
-console.log(`Redirection www : ${passed}/${cases.length}. Preuve : ${output}`);
-if (passed !== cases.length) process.exitCode = 1;
+console.log(`Redirection www : ${passed}/${cases.length + 1}. Preuve : ${output}`);
+if (passed !== cases.length + 1) process.exitCode = 1;
