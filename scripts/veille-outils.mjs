@@ -3,7 +3,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { normaliserTexte, verifierSignatures } from './lib/outils-boucle.mjs';
 
-const SORTIE_PAR_DEFAUT = 'docs/strategy/site-v3/mesures/veille-outils-latest.json';
+const SORTIE_PAR_DEFAUT = '.qa/veille-outils-latest.json';
 const UA = 'MemliaOutilsSourceWatch/1.0 (+https://memlia.fr)';
 
 export const SOURCES_OUTILS = [
