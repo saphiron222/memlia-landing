@@ -2,6 +2,7 @@
 import { SITE } from '@/data/site.mjs';
 import { organizationNode, serviceNode } from '@/data/schema.mjs';
 import { FAQ } from '@/data/faq';
+import { AUTEURS, identiteAuteur } from '@/data/auteurs';
 
 
 /**
@@ -15,6 +16,8 @@ interface Props {
 }
 const { description, headline } = Astro.props;
 const u = `${SITE.url}/`;
+const auteurId = `${SITE.url}${identiteAuteur(AUTEURS.kevin)}`;
+const dateModified = '2026-09-20';
 
 const graph = {
   '@context': 'https://schema.org',
@@ -38,6 +41,9 @@ const graph = {
       inLanguage: SITE.langue,
       isPartOf: { '@id': `${u}#website` },
       about: { '@id': `${u}#service` },
+      author: { '@id': auteurId },
+      datePublished: '2026-09-16',
+      dateModified,
     },
     serviceNode(),
     {

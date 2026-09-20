@@ -44,8 +44,7 @@ const graph = {
 };
 ---
 
-<Base titre={title} titreSocial={headline} description={description} chemin={path} base="/">
-  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+<Base titre={title} titreSocial={headline} description={description} chemin={path} base="/" schema={graph}>
 
   <div class="feuille glossaire-feuille">
     <section class="conteneur glossaire-tete" aria-labelledby="glossaire-titre">

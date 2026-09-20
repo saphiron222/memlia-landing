@@ -44,8 +44,7 @@ const graph = {
 };
 ---
 
-<Base titre={outil.title} titreSocial={outil.h1} description={outil.description} chemin={path} noindex={outil.statut !== 'disponible'} base="/" csp={csp} socialImage={socialImage}>
-  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+<Base titre={outil.title} titreSocial={outil.h1} description={outil.description} chemin={path} noindex={outil.statut !== 'disponible'} base="/" csp={csp} socialImage={socialImage} schema={graph}>
 
   <div class="feuille">
     <OutilHero

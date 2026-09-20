@@ -77,8 +77,7 @@ const graph = {
 };
 ---
 
-<Base titre={BLOG.titre} titreSocial={headline} description={BLOG.description} chemin={BLOG.chemin} base="/">
-  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+<Base titre={BLOG.titre} titreSocial={headline} description={BLOG.description} chemin={BLOG.chemin} base="/" schema={graph}>
 
   <div class="feuille blog-feuille">
     <section class="conteneur blog-tete" aria-labelledby="blog-titre">

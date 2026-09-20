@@ -4,6 +4,7 @@ import { extname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseHtml } from 'parse5';
 import { auditerServiceDesign } from './verify-service-design.mjs';
+import { BLOG_RUBRIQUES } from '../src/data/blog-rubriques.mjs';
 
 const CLAUSES = Object.freeze({ 1: 'DA', 2: 'IMAGES', 3: 'SEO', 4: 'COPIE', 5: 'LIENS' });
 const DATE_ISO = /^\d{4}-\d{2}-\d{2}$/;
@@ -32,8 +33,13 @@ function routeFromHtml(dist, path) {
 function sourceForRoute(root, route) {
   if (route === '/') return join(root, 'src/pages/index.astro');
   if (route.startsWith('/automatisation/')) return join(root, 'src/pages/automatisation/[slug].astro');
+  if (route.startsWith('/blog/rubrique/')) return join(root, 'src/pages/blog/rubrique/[slug].astro');
   if (route.startsWith('/blog/')) return join(root, 'src/pages/blog/[slug].astro');
   return join(root, 'src/pages', `${route.slice(1)}.astro`);
+}
+
+function isBlogArticle(route) {
+  return /^\/blog\/[^/]+$/.test(route);
 }
 
 function resolveLocalImport(root, owner, specifier) {
@@ -237,7 +243,8 @@ function expectedSchema(route) {
   if (/^\/automatisation\/[^/]+$/.test(route)) return ['WebPage', 'Service', 'Audience', 'BreadcrumbList'];
   if (/^\/outils-comptables-gratuits\/[^/]+$/.test(route)) return ['WebPage', 'WebApplication', 'BreadcrumbList'];
   if (route === '/outils-comptables-gratuits') return ['CollectionPage', 'ItemList', 'BreadcrumbList'];
-  if (/^\/blog\/[^/]+$/.test(route)) return ['BlogPosting', 'BreadcrumbList'];
+  if (/^\/blog\/rubrique\/[^/]+$/.test(route)) return ['WebPage', 'CollectionPage', 'BreadcrumbList'];
+  if (isBlogArticle(route)) return ['BlogPosting', 'BreadcrumbList'];
   if (route === '/blog' || route === '/glossaire') return ['CollectionPage', 'BreadcrumbList'];
   if (route === '/a-propos') return ['AboutPage', 'BreadcrumbList'];
   if (route === '/contact') return ['ContactPage', 'BreadcrumbList'];
@@ -246,6 +253,7 @@ function expectedSchema(route) {
 
 export function routesAvecIntentionMesuree(root) {
   const routes = new Set();
+  for (const rubrique of BLOG_RUBRIQUES) routes.add(rubrique.chemin);
   const contract = join(root, 'config/page-intent-contract.json');
   if (existsSync(contract)) {
     const value = JSON.parse(readFileSync(contract, 'utf8'));
@@ -267,9 +275,15 @@ export function routesAvecIntentionMesuree(root) {
 
 export function contratsIntention(root) {
   const path = join(root, 'config/page-intent-contract.json');
-  if (!existsSync(path)) return new Map();
-  const value = JSON.parse(readFileSync(path, 'utf8'));
-  return new Map(Object.entries(value.pages ?? {}));
+  const pages = existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')).pages ?? {} : {};
+  const contrats = new Map(Object.entries(pages));
+  for (const rubrique of BLOG_RUBRIQUES) {
+    contrats.set(rubrique.chemin, {
+      query: rubrique.primaryQuery,
+      descriptionLead: rubrique.descriptionLead,
+    });
+  }
+  return contrats;
 }
 
 function literalTokenErrors(root) {
@@ -386,8 +400,8 @@ export function auditerContratPages({
       erreurs.push(error(page.route, 3, `description dupliquée avec ${descriptionOwners.get(page.descriptions[0]).filter((route) => route !== page.route).join(', ')}`));
     }
     const intentContract = intentContracts.get(page.route);
-    if (indexable && !intentContract) erreurs.push(error(page.route, 3, 'contrat de requête et d’ouverture de description absent'));
-    if (indexable && intentContract && page.descriptions.length === 1 &&
+    if (indexable && !isBlogArticle(page.route) && !intentContract) erreurs.push(error(page.route, 3, 'contrat de requête et d’ouverture de description absent'));
+    if (indexable && !isBlogArticle(page.route) && intentContract && page.descriptions.length === 1 &&
         !page.descriptions[0].toLocaleLowerCase('fr').startsWith(String(intentContract.descriptionLead).toLocaleLowerCase('fr'))) {
       erreurs.push(error(page.route, 3, `la description doit ouvrir sur ${JSON.stringify(intentContract.descriptionLead)} pour la requête ${JSON.stringify(intentContract.query)}`));
     }
@@ -443,6 +457,7 @@ function cli() {
   });
   const delegates = [
     { label: 'service-forge', clause: 3, result: run(process.execPath, ['scripts/service-forge.mjs', 'auditer'], root) },
+    { label: 'blog-contract', clause: 3, result: run(process.execPath, ['scripts/verify-blog-contract.mjs'], root) },
     { label: 'blog-title-intent', clause: 3, result: run(process.execPath, ['--test', 'tests/scripts/blog-title-intent.test.mjs'], root) },
   ];
   const serviceDesign = auditerServiceDesign({ root });

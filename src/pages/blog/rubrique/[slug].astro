@@ -68,8 +68,7 @@ const graph = {
 };
 ---
 
-<Base titre={rubrique.titreOnglet} titreSocial={rubrique.h1} description={rubrique.description} chemin={rubrique.chemin} base="/">
-  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+<Base titre={rubrique.titreOnglet} titreSocial={rubrique.h1} description={rubrique.description} chemin={rubrique.chemin} base="/" schema={graph}>
 
   <div class="feuille rubrique-feuille">
     <header class="conteneur rubrique-tete">

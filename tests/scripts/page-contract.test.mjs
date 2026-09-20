@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { auditerComposition, auditerContratPages, auditerNavigationMobile } from '../../scripts/verify-page-contract.mjs';
+import { auditerComposition, auditerContratPages, auditerNavigationMobile, contratsIntention } from '../../scripts/verify-page-contract.mjs';
 
 function html({ route, h1, media, href, ogTitle = h1, headline = h1, description, attribution = true, footerOutils = true }) {
   const url = `https://memlia.fr${route}`;
@@ -232,6 +232,68 @@ test('la clause DA suit le gabarit Outil et refuse une section avec trop de CSS 
     const vert = auditerComposition({ root, sourcePath });
     assert.equal(vert.pass, true);
     assert.deepEqual(vert.sections, ['Garanties', 'Preuves', 'TestSection']);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('les articles délèguent leur intention au contrat blog au lieu de la recopier', () => {
+  const { root } = fixture();
+  try {
+    mkdirSync(join(root, 'src/pages/blog'), { recursive: true });
+    mkdirSync(join(root, 'dist/blog'), { recursive: true });
+    writeFileSync(join(root, 'src/pages/blog/[slug].astro'), "import TestSection from '@/components/sections/TestSection.astro';\n<TestSection />\n");
+    writeFileSync(join(root, 'dist/blog/article.html'), html({
+      route: '/blog/article', h1: 'Article mesuré', media: '/proofs/alpha.webp', href: '/alpha',
+      description: 'Requête article : une réponse directe et mesurée.',
+    }));
+    writeFileSync(join(root, 'dist/alpha.html'), html({
+      route: '/alpha', h1: 'Automatisation alpha en cabinet', media: '/proofs/alpha.webp', href: '/blog/article',
+      description: 'Description alpha propre et suffisamment distincte pour le contrat universel.',
+    }));
+
+    const resultat = auditerContratPages({
+      root,
+      copyVerifier: () => ({ pass: true, errors: [] }),
+      exemptions: [],
+      intentRoutes: new Set(['/alpha', '/source', '/blog/article']),
+      intentContracts: intentContracts(),
+    });
+    const erreursArticle = resultat.erreurs.filter((erreur) => erreur.route === '/blog/article' && erreur.clause === 3);
+    assert.doesNotMatch(erreursArticle.map((erreur) => erreur.message).join('\n'), /contrat de requête et d’ouverture de description absent/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('les rubriques blog lisent leur intention canonique et leur vrai gabarit', () => {
+  const contrats = contratsIntention(process.cwd());
+  assert.deepEqual(contrats.get('/blog/rubrique/paie-dsn-cabinet-comptable'), {
+    query: 'paie et dsn cabinet comptable',
+    descriptionLead: 'Paie et DSN en cabinet comptable',
+  });
+
+  const { root } = fixture();
+  try {
+    mkdirSync(join(root, 'src/pages/blog/rubrique'), { recursive: true });
+    mkdirSync(join(root, 'dist/blog/rubrique'), { recursive: true });
+    writeFileSync(join(root, 'src/pages/blog/[slug].astro'), "import TestSection from '@/components/sections/TestSection.astro';\n<TestSection />\n");
+    writeFileSync(join(root, 'src/pages/blog/rubrique/[slug].astro'), '<main><h1>Rubrique brute</h1></main>');
+    writeFileSync(join(root, 'dist/blog/rubrique/test.html'), html({
+      route: '/blog/rubrique/test', h1: 'Rubrique test', media: '/proofs/alpha.webp', href: '/alpha',
+      description: 'Rubrique test : une collection mesurée.',
+    }));
+    const resultat = auditerContratPages({
+      root,
+      copyVerifier: () => ({ pass: true, errors: [] }),
+      exemptions: [],
+      intentRoutes: new Set(['/alpha', '/source', '/blog/rubrique/test']),
+      intentContracts: new Map([...intentContracts(), ['/blog/rubrique/test', { query: 'rubrique test', descriptionLead: 'Rubrique test' }]]),
+    });
+    assert.match(
+      resultat.erreurs.filter((erreur) => erreur.route === '/blog/rubrique/test' && erreur.clause === 1).map((erreur) => erreur.message).join('\n'),
+      /aucune section ou aucun layout de composition approuvé/,
+    );
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
