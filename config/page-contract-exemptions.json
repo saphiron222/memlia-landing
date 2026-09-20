@@ -2,12 +2,6 @@
   "version": 1,
   "exemptions": [
     {
-      "route": "/blog",
-      "clauses": [1, 2],
-      "date": "2026-09-20",
-      "reason": "Index éditorial composé par son gabarit de collection : les images visibles appartiennent à leurs articles et ne peuvent pas devenir la preuve propre du hub."
-    },
-    {
       "route": "/blog/rubrique/gestion-pieces-comptables",
       "clauses": [2],
       "date": "2026-09-20",
@@ -18,72 +12,6 @@
       "clauses": [2],
       "date": "2026-09-20",
       "reason": "Page de collection : les médias visibles identifient les articles liés et restent leurs preuves propres ; ajouter une illustration décorative ne prouverait rien sur la rubrique."
-    },
-    {
-      "route": "/glossaire",
-      "clauses": [1, 2],
-      "date": "2026-09-20",
-      "reason": "Collection de définitions avec recherche et index alphabétique : son gabarit spécialisé et textuel sert la consultation, sans illustration décorative ajoutée pour passer le garde."
-    },
-    {
-      "route": "/integrations",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "Page de collection : elle distribue neuf guides dont chacun porte sa preuve fonctionnelle propre ; ajouter une illustration décorative au hub ne prouverait rien de plus."
-    },
-    {
-      "route": "/integrations/rapprochement-bancaire-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/lettrage-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/dsn-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/bulletin-de-paie-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/saisie-comptable-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/cloture-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/lettrage-cegid",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/dsn-silae",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/bulletin-de-paie-silae",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
     }
   ]
 }

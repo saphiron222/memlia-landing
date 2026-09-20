@@ -438,11 +438,19 @@ export function auditerContratPages({
   const invalidExemptions = validateExemptions(exemptions, routes);
   for (const item of invalidExemptions) erreurs.push({ route: item?.route ?? '/*', clause: 0, message: `${item?.route ?? '/*'} : exemption invalide — route exacte, clauses, date ISO et raison d’au moins 60 caractères requises` });
   for (const [route, contract] of routeContracts) {
-    const valid = routes.has(route) && contract?.indexing === 'noindex' &&
-      ['technical', 'transactional', 'legal'].includes(contract?.role) &&
+    const commonValid = routes.has(route) &&
       ['mediaRequired', 'measuredIntentRequired', 'incomingLinkRequired'].every((key) => typeof contract?.[key] === 'boolean') &&
       Array.isArray(contract?.schemaTypes) && contract.schemaTypes.every((type) => typeof type === 'string' && type.length > 0);
-    if (!valid) erreurs.push({ route, clause: 0, message: `${route} : contrat de route invalide — route servie, noindex, rôle connu, décisions booléennes et schemaTypes requis` });
+    const noindexValid = contract?.indexing === 'noindex' &&
+      ['technical', 'transactional', 'legal'].includes(contract?.role);
+    const assetDecision = contract?.assetDecision;
+    const indexableCollectionValid = contract?.indexing === 'index' && contract?.role === 'collection' &&
+      contract.mediaRequired === false && contract.measuredIntentRequired === true && contract.incomingLinkRequired === true &&
+      Array.isArray(contract.schemaTypes) && contract.schemaTypes.length > 0 && assetDecision?.kind === 'no-functional-media' &&
+      typeof assetDecision?.reason === 'string' && assetDecision.reason.trim().length >= 60;
+    if (!commonValid || (!noindexValid && !indexableCollectionValid)) {
+      erreurs.push({ route, clause: 0, message: `${route} : contrat de route invalide — route servie, indexation et rôle cohérents, décisions booléennes, schemaTypes et décision asset motivée si indexable requis` });
+    }
   }
 
   for (const detail of literalTokenErrors(root)) erreurs.push(error('/*', 1, detail));
@@ -487,6 +495,7 @@ export function auditerContratPages({
     const h1 = page.h1s[0];
     const indexable = !page.robots.toLowerCase().includes('noindex');
     if (routeContract?.indexing === 'noindex' && indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige noindex'));
+    if (routeContract?.indexing === 'index' && !indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige une page indexable'));
     const measuredIntentRequired = routeContract?.measuredIntentRequired ?? true;
     if (measuredIntentRequired && !intentRoutes.has(page.route)) erreurs.push(error(page.route, 3, 'aucune requête mesurée ni décision d’intention écrite pour cette route'));
     if (!page.title) erreurs.push(error(page.route, 3, 'title d’onglet absent'));

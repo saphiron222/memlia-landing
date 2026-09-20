@@ -3,7 +3,7 @@ import { OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
 
 const HUB = '/outils-comptables-gratuits';
 const TEMOIN = `${HUB}/temoin-calcul-local`;
-const H1_HUB = 'Outils comptables gratuits : calculer, vérifier, convertir';
+const H1_HUB = 'Outils comptables gratuits : calculer et vérifier';
 const H1_TEMOIN = 'Témoin de calcul local';
 
 async function graphFrom(page: Page) {

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { auditerComposition, auditerContratPages, auditerNavigationMobile, auditerServicesPublics, contratsIntention, contratsRoute } from '../../scripts/verify-page-contract.mjs';
@@ -202,12 +202,41 @@ test('une page manuelle noindex échoue sans contrat explicite puis respecte son
   }
 });
 
-test('les six routes manuelles portent un contrat noindex explicite et aucune autre route', () => {
+test('une collection indexable peut manifester qu’aucun média fonctionnel ne sert son intention', () => {
+  const { root } = fixture();
+  try {
+    writeFileSync(join(root, 'dist/alpha.html'), html({
+      route: '/alpha', h1: 'Automatisation alpha en cabinet', media: '', href: '/source',
+      description: 'Description alpha propre et suffisamment distincte pour le contrat universel.',
+    }));
+    const routeContracts = new Map([['/alpha', {
+      indexing: 'index', role: 'collection', mediaRequired: false,
+      measuredIntentRequired: true, schemaTypes: ['WebPage'], incomingLinkRequired: true,
+      assetDecision: {
+        kind: 'no-functional-media',
+        reason: 'La collection sert une recherche textuelle et une image décorative ne prouverait aucune tâche au lecteur.',
+      },
+    }]]);
+
+    const resultat = auditerContratPages({
+      root, copyVerifier: () => ({ pass: true, errors: [] }), exemptions: [],
+      intentRoutes: new Set(['/alpha', '/source']), intentContracts: intentContracts(), routeContracts,
+    });
+    assert.deepEqual(resultat.erreurs.filter((erreur) => erreur.route === '/alpha'), []);
+    assert.equal(resultat.pass, true);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('les contrats explicites couvrent six routes noindex et deux collections indexables', () => {
   const contrats = contratsRoute(process.cwd());
   assert.deepEqual([...contrats.keys()].sort(), [
     '/404',
+    '/blog',
     '/contact/erreur',
     '/contact/merci',
+    '/glossaire',
     '/mentions-legales',
     '/outils-comptables-gratuits/temoin-calcul-local',
     '/politique-de-confidentialite',
@@ -218,7 +247,27 @@ test('les six routes manuelles portent un contrat noindex explicite et aucune au
   assert.equal(contrats.get('/mentions-legales').role, 'legal');
   assert.equal(contrats.get('/politique-de-confidentialite').role, 'legal');
   assert.equal(contrats.get('/outils-comptables-gratuits/temoin-calcul-local').role, 'technical');
-  for (const contrat of contrats.values()) assert.equal(contrat.indexing, 'noindex');
+  for (const route of ['/404', '/contact/erreur', '/contact/merci', '/mentions-legales', '/outils-comptables-gratuits/temoin-calcul-local', '/politique-de-confidentialite']) {
+    assert.equal(contrats.get(route).indexing, 'noindex');
+  }
+  for (const route of ['/blog', '/glossaire']) {
+    assert.equal(contrats.get(route).indexing, 'index');
+    assert.equal(contrats.get(route).role, 'collection');
+    assert.equal(contrats.get(route).assetDecision.kind, 'no-functional-media');
+  }
+});
+
+test('les six routes indexables ciblées ne portent plus aucune exemption', () => {
+  const cible = new Set([
+    '/blog',
+    '/glossaire',
+    '/outils-comptables-gratuits',
+    '/outils-comptables-gratuits/calculateur-date-echeance-facture',
+    '/outils-comptables-gratuits/calculateur-marge-commerciale',
+    '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit',
+  ]);
+  const exemptions = JSON.parse(readFileSync(join(process.cwd(), 'config/page-contract-exemptions.json'), 'utf8')).exemptions;
+  assert.deepEqual(exemptions.filter((item) => cible.has(item.route)), []);
 });
 
 test('une exemption doit être exacte, datée et motivée', () => {

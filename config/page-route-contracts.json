@@ -1,6 +1,30 @@
 {
   "version": 1,
   "routes": {
+    "/blog": {
+      "indexing": "index",
+      "role": "collection",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": ["CollectionPage", "BreadcrumbList"],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "no-functional-media",
+        "reason": "Les images visibles identifient les articles liés et leur appartiennent ; une illustration décorative du hub ne prouverait aucune tâche supplémentaire."
+      }
+    },
+    "/glossaire": {
+      "indexing": "index",
+      "role": "collection",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": ["CollectionPage", "BreadcrumbList"],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "no-functional-media",
+        "reason": "La recherche, l’index alphabétique et les définitions constituent la preuve fonctionnelle ; une illustration décorative n’aiderait pas la consultation."
+      }
+    },
     "/404": {
       "indexing": "noindex",
       "role": "technical",
