@@ -505,7 +505,7 @@ export function auditerContratPages({
     }
     const intentContract = intentContracts.get(page.route);
     if (measuredIntentRequired && indexable && !isBlogArticle(page.route) && !intentContract) erreurs.push(error(page.route, 3, 'contrat de requête et d’ouverture de description absent'));
-    if (measuredIntentRequired && indexable && !isBlogArticle(page.route) && intentContract && page.descriptions.length === 1 &&
+    if (measuredIntentRequired && indexable && intentContract && page.descriptions.length === 1 &&
         !page.descriptions[0].toLocaleLowerCase('fr').startsWith(String(intentContract.descriptionLead).toLocaleLowerCase('fr'))) {
       erreurs.push(error(page.route, 3, `la description doit ouvrir sur ${JSON.stringify(intentContract.descriptionLead)} pour la requête ${JSON.stringify(intentContract.query)}`));
     }
