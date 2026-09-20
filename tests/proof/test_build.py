@@ -14,7 +14,8 @@ DIST = ROOT / 'dist'
 SITE = 'https://memlia.fr'
 # Les cinq pages commerciales du site v2 ont rejoint le site le 16/09/2026.
 PAGES_FIXES = ['404', 'a-propos', 'automatisation-cabinet-comptable', 'blog', 'contact', 'garanties',
-               'glossaire', 'index', 'mentions-legales', 'methode', 'politique-de-confidentialite']
+               'glossaire', 'index', 'mentions-legales', 'methode', 'outils-comptables-gratuits',
+               'politique-de-confidentialite']
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
 PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
                    'comprendre-les-comptes-rendus-metier-dsn',
@@ -81,7 +82,8 @@ class BuildProof(unittest.TestCase):
 
     def test_legal_noindex_canonical(self):
         # Les deux pages de réponse du formulaire de contact suivent le même régime que les pages légales.
-        for slug in ['mentions-legales', 'politique-de-confidentialite', 'contact/merci', 'contact/erreur']:
+        for slug in ['mentions-legales', 'politique-de-confidentialite', 'contact/merci', 'contact/erreur',
+                     'outils-comptables-gratuits/temoin-calcul-local']:
             doc = Document(DIST / f'{slug}.html')
             robots = next(m['content'] for m in doc.select('meta') if m.get('name') == 'robots')
             self.assertIn('noindex', robots)
@@ -118,9 +120,12 @@ class BuildProof(unittest.TestCase):
         # Les pages legales restent hors sitemap ; les cinq pages commerciales y entrent.
         attendues = {f'{SITE}/', f'{SITE}/blog', f'{SITE}/glossaire',
                      f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
-                     f'{SITE}/a-propos', f'{SITE}/contact'} | {f'{SITE}/blog/{a.stem}' for a in published_articles}
+                     f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/outils-comptables-gratuits'} | {
+                         f'{SITE}/blog/{a.stem}' for a in published_articles
+                     }
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
+        self.assertNotIn(f'{SITE}/outils-comptables-gratuits/temoin-calcul-local', pages)
         # lastmod d'un article publié = dateModified de son schéma (une seule source : le frontmatter).
         for article in published_articles:
             posting = next(n for g in jsonld(article) for n in g['@graph'] if n['@type'] == 'BlogPosting')
@@ -141,6 +146,19 @@ class BuildProof(unittest.TestCase):
             self.assertEqual(hashlib.sha256(fichier.read_bytes()).hexdigest(), registre[route]['sha256'],
                              f'{route} : rendu modifié sans que sa date suive (npm run lastmod:sync)')
         self.assertIn('Sitemap: https://memlia.fr/sitemap.xml', (DIST / 'robots.txt').read_text())
+
+    def test_outil_temoin_csp_and_schema_are_fail_closed(self):
+        slug = 'outils-comptables-gratuits/temoin-calcul-local'
+        path = DIST / f'{slug}.html'
+        doc = Document(path)
+        csp = next(m['content'] for m in doc.select('meta') if m.get('http-equiv') == 'Content-Security-Policy')
+        self.assertIn("connect-src 'none'", csp)
+        headers = (DIST / '_headers').read_text()
+        self.assertIn('/outils-comptables-gratuits/*', headers)
+        self.assertIn("connect-src 'none'", headers)
+        graph = jsonld(path)[0]['@graph']
+        self.assertEqual([node['@type'] for node in graph], ['WebPage', 'WebApplication', 'BreadcrumbList'])
+        self.assertNotIn('SoftwareApplication', path.read_text())
 
     def test_aucune_mention_de_processus_rendue(self):
         """Le lecteur ne lit pas notre chaîne éditoriale.
