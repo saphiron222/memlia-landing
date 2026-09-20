@@ -379,9 +379,16 @@ Pour C4, le cycle exact d’une page de service est distinct de celui du blog :
 npm run service:preparer -- <slug>  # rend le candidat noindex après validation de la recette
 # déposer ensuite la revue indépendante PASS dans commercial/recettes/<slug>/revues.json
 npm run service:sceller -- <slug>   # réserve la requête et scelle le candidat de prévisualisation
-npm run service:publier -- <slug>   # écrit la preuve de publication et son nouveau sceau
+# construire puis déployer ce candidat scellé sur une preview noindex immuable
+MEMLIA_SERVICE_CANDIDATE_ORIGIN=https://DEPLOIEMENT.memlia.pages.dev npm run service:publier -- <slug>
+# reconstruire et déployer ensuite le candidat publié ; relever son URL de production à 200
 npm run service:audit               # relit toutes les recettes, mesures fraîches, liens et empreintes
 ```
+
+`service:publier` interroge l’URL exacte sans query string, avec `Cache-Control: no-cache`, et
+refuse d’écrire le statut, la date ou le reçu si le HTTP 200, le canonical, le H1 et l’empreinte
+`memlia-candidate` du HTML servi ne désignent pas le candidat scellé. Le reçu distingue le constat
+servi (URL, en-têtes de cache, empreinte du HTML) des empreintes locales de page et de manifeste.
 
 Une commande refusée ne matérialise ni page ni manifeste. `preparer` précède la revue ; `sceller`
 et `publier` exigent la revue indépendante. Le build joue `service:audit` en plus de `blog:audit`.

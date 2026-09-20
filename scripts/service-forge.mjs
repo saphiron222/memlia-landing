@@ -13,6 +13,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { parse } from 'parse5';
 
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { ajouterAuRegistre, chargerRegistre, sauverRegistre } from './lib/seo-registres.mjs';
@@ -43,7 +44,8 @@ const writeJson = (path, value) => {
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
 };
-const todayIso = () => new Date().toISOString().slice(0, 10);
+export const dateServiceParis = (date = new Date()) => date.toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
+const todayIso = () => dateServiceParis();
 const typographicApostrophe = (text) => String(text ?? '').replace(/'/g, '’');
 const normalizedQuery = (value) => String(value ?? '')
   .normalize('NFD')
@@ -99,17 +101,30 @@ function publicRouteForSource(sourcePath) {
   return `/${route}`;
 }
 
-function verifyIncomingLinks(root, recipe, errors) {
+function verifyIncomingLinkDeclarations(recipe, errors) {
   const links = Array.isArray(recipe.incomingLinks) ? recipe.incomingLinks : [];
   const distinctUrls = new Set(links.map((link) => link?.url));
   const distinctSources = new Set(links.map((link) => link?.sourcePath));
   if (links.length < 3 || distinctUrls.size < 3 || distinctSources.size < 3) errors.push('Trois liens entrants contextuels depuis trois URL indexables distinctes sont requis avant publication.');
   for (const link of links) {
     const prefix = link?.url ?? 'lien sans URL';
+    if (!link || typeof link.url !== 'string' || !link.url.startsWith('/') || typeof link.anchor !== 'string' || !link.anchor.trim()) {
+      errors.push(`${prefix} : chaque lien planifié exige une URL publique et une ancre non vide.`);
+    }
     if (!link || typeof link.sourcePath !== 'string' || !link.sourcePath.startsWith('src/')) {
       errors.push(`${prefix} : sourcePath doit désigner une source publique sous src/.`);
       continue;
     }
+    if (/(?:layouts|components)[/\\]/.test(link.sourcePath)) errors.push(`${prefix} : header, footer, fil d’Ariane et composant global ne comptent pas comme lien entrant.`);
+  }
+}
+
+function verifyIncomingLinks(root, recipe, errors) {
+  verifyIncomingLinkDeclarations(recipe, errors);
+  const links = Array.isArray(recipe.incomingLinks) ? recipe.incomingLinks : [];
+  for (const link of links) {
+    const prefix = link?.url ?? 'lien sans URL';
+    if (!link || typeof link.sourcePath !== 'string' || !link.sourcePath.startsWith('src/')) continue;
     const absolute = resolve(root, link.sourcePath);
     const rootPrefix = `${resolve(root)}${process.platform === 'win32' ? '\\' : '/'}`;
     if (!absolute.startsWith(rootPrefix) || !existsSync(absolute)) {
@@ -125,7 +140,6 @@ function verifyIncomingLinks(root, recipe, errors) {
     if (!(source.includes(markdownLink) || (source.includes(astroLink) && source.includes(`>${link.anchor}<`)))) {
       errors.push(`${prefix} : aucun lien contextuel avec l’ancre « ${link.anchor} » vers ${recipe.path} dans ${link.sourcePath}.`);
     }
-    if (/(?:layouts|components)[/\\]/.test(link.sourcePath)) errors.push(`${prefix} : header, footer, fil d’Ariane et composant global ne comptent pas comme lien entrant.`);
   }
 }
 
@@ -211,7 +225,7 @@ export function verifierRecetteService({ root, recipe, body, review, today = tod
   }
   const collision = registryCollision(root, recipe);
   if (collision) errors.push(`La requête primaire « ${recipe.primaryQuery} » appartient déjà à ${collision.url} (${collision.type ?? 'blog'}).`);
-  verifyIncomingLinks(root, recipe, errors);
+  verifyIncomingLinkDeclarations(recipe, errors);
   return [...new Set(errors)];
 }
 
@@ -225,7 +239,11 @@ function loadRecipe(root, slug) {
   return { recipe, body, review };
 }
 
-function frontmatter(recipe, status) {
+function candidateFingerprint({ recipe, body, review }) {
+  return sha256(JSON.stringify({ recipe, body, review }));
+}
+
+function frontmatter(recipe, status, fingerprint) {
   const value = (input) => JSON.stringify(String(input));
   const list = (items) => `[${items.map(value).join(', ')}]`;
   return `---
@@ -240,6 +258,7 @@ intent: ${recipe.intent}
 family: ${recipe.family}
 verifiedAt: ${recipe.verifiedAt}
 status: ${status}
+candidateFingerprint: ${value(fingerprint)}
 cta:
   label: ${value(recipe.cta.label)}
   destination: ${value(recipe.cta.destination)}
@@ -274,15 +293,16 @@ function hashesFor(root, slug) {
   }));
 }
 
-export function materialiserService({ root = process.cwd(), slug, status = 'a-valider', today = todayIso() }) {
-  const { recipe, body, review } = loadRecipe(root, slug);
+export function materialiserService({ root = process.cwd(), slug, status = 'a-valider', today = todayIso(), snapshot = null }) {
+  const { recipe, body, review } = snapshot ?? loadRecipe(root, slug);
   const errors = verifierRecetteService({ root, recipe, body, review, today, requireReview: false });
   const dossier = join(root, 'commercial/services', slug);
   const pagePath = join(root, 'src/content/services', `${slug}.md`);
   if (errors.length) return { errors, recipe, manifest: null, dossier, pagePath };
   mkdirSync(dirname(pagePath), { recursive: true });
   mkdirSync(join(dossier, 'preuves'), { recursive: true });
-  const page = `${frontmatter(recipe, status)}\n\n${body}\n`;
+  const fingerprint = candidateFingerprint({ recipe, body, review });
+  const page = `${frontmatter(recipe, status, fingerprint)}\n\n${body}\n`;
   writeFileSync(pagePath, page);
   const proofSource = join(root, 'commercial/recettes', slug, recipe.proof.evidencePath);
   if (existsSync(proofSource)) writeFileSync(join(dossier, 'preuves/rejeu.json'), readFileSync(proofSource));
@@ -292,6 +312,7 @@ export function materialiserService({ root = process.cwd(), slug, status = 'a-va
     slug,
     path: recipe.path,
     status,
+    candidateFingerprint: fingerprint,
     title: recipe.title,
     tabTitle: recipe.tabTitle,
     ogTitle: recipe.ogTitle,
@@ -313,9 +334,13 @@ export function materialiserService({ root = process.cwd(), slug, status = 'a-va
   return { errors, recipe, manifest, dossier, pagePath };
 }
 
-function writeSeal(root, slug, kind, sealedAt) {
+function writeSeal(root, slug, kind, sealedAt, inheritedFiles = null) {
   const dossier = join(root, 'commercial/services', slug);
-  writeJson(join(dossier, SEAL_PATH), { version: 1, kind, slug, sealedAt, files: hashesFor(root, slug) });
+  const files = hashesFor(root, slug);
+  for (const key of ['recipe', 'body', 'review']) {
+    if (inheritedFiles?.[key]) files[key] = inheritedFiles[key];
+  }
+  writeJson(join(dossier, SEAL_PATH), { version: 1, kind, slug, sealedAt, files });
 }
 
 function verifySeal(root, slug) {
@@ -367,19 +392,125 @@ export function scellerService({ root = process.cwd(), slug, today = todayIso() 
   return { pass: true, errors: [], dossier: result.dossier };
 }
 
-export function publierService({ root = process.cwd(), slug, today = todayIso() }) {
-  const before = verifySeal(root, slug);
-  if (before.length) return { pass: false, errors: before };
-  const result = materialiserService({ root, slug, status: 'publie', today });
-  if (result.errors.length) return { pass: false, errors: result.errors };
-  registerService(root, result.recipe);
-  const registry = chargerRegistre(root);
-  sauverRegistre(root, {
-    ...registry,
-    articles: registry.articles.map((item) => item.slug === slug && item.type === 'service'
-      ? { ...item, publieLe: today, source: 'recette-service-publiee' }
-      : item),
+function elementsByName(node, name, found = []) {
+  if (node?.nodeName === name) found.push(node);
+  for (const child of node?.childNodes ?? []) elementsByName(child, name, found);
+  return found;
+}
+
+function attribute(node, name) {
+  return node?.attrs?.find((item) => item.name === name)?.value ?? null;
+}
+
+function nodeText(node) {
+  if (node?.nodeName === '#text') return node.value ?? '';
+  return (node?.childNodes ?? []).map(nodeText).join('');
+}
+
+async function observerArtefactServi({ servedUrl }) {
+  const response = await fetch(servedUrl, {
+    headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache', Accept: 'text/html' },
+    redirect: 'manual',
   });
+  const html = await response.text();
+  const document = parse(html);
+  const canonicals = elementsByName(document, 'link')
+    .filter((node) => (attribute(node, 'rel') ?? '').split(/\s+/).includes('canonical'))
+    .map((node) => attribute(node, 'href'));
+  const h1s = elementsByName(document, 'h1').map((node) => nodeText(node).replace(/\s+/g, ' ').trim());
+  const robots = elementsByName(document, 'meta')
+    .filter((node) => attribute(node, 'name')?.toLowerCase() === 'robots')
+    .map((node) => attribute(node, 'content'));
+  const fingerprints = elementsByName(document, 'meta')
+    .filter((node) => attribute(node, 'name') === 'memlia-candidate')
+    .map((node) => attribute(node, 'content'));
+  const xRobotsTag = response.headers.get('x-robots-tag');
+  return {
+    url: response.url,
+    status: response.status,
+    canonical: canonicals.length === 1 ? canonicals[0] : null,
+    canonicalCount: canonicals.length,
+    h1: h1s.length === 1 ? h1s[0] : null,
+    h1Count: h1s.length,
+    candidateFingerprint: fingerprints.length === 1 ? fingerprints[0] : null,
+    candidateFingerprintCount: fingerprints.length,
+    bodySha256: sha256(html),
+    observedAt: new Date().toISOString(),
+    cacheControl: response.headers.get('cache-control'),
+    cfCacheStatus: response.headers.get('cf-cache-status'),
+    age: response.headers.get('age'),
+    xRobotsTag,
+    metaRobots: robots,
+    indexable: !/\bnoindex\b/i.test(xRobotsTag ?? '') && !robots.some((value) => /\bnoindex\b/i.test(value ?? '')),
+  };
+}
+
+function verifyServedObservation(observation, recipe, expectedFingerprint, expectedServedUrl) {
+  const errors = [];
+  const expectedUrl = `https://memlia.fr${recipe.path}`;
+  if (!observation || typeof observation !== 'object') return ['Une observation HTTP de l’artefact servi est requise avant publication.'];
+  if (observation.status !== 200) errors.push(`L’artefact servi doit répondre HTTP 200, reçu : ${observation.status ?? 'aucun statut'}.`);
+  if (observation.url !== expectedServedUrl) errors.push(`L’URL servie diverge : attendu ${expectedServedUrl}, reçu ${observation.url ?? 'aucune URL'}.`);
+  if (observation.canonical !== expectedUrl) errors.push(`Le canonical servi diverge : attendu ${expectedUrl}, reçu ${observation.canonical ?? 'aucun canonical unique'}.`);
+  if (observation.h1 !== recipe.title) errors.push(`Le H1 servi « ${observation.h1 ?? 'absent ou multiple'} » diverge du candidat « ${recipe.title} ».`);
+  if (observation.candidateFingerprint !== expectedFingerprint) errors.push(`L’empreinte du candidat servi diverge : attendu ${expectedFingerprint}, reçu ${observation.candidateFingerprint ?? 'aucune empreinte unique'}.`);
+  if (!/^[a-f0-9]{64}$/.test(observation.bodySha256 ?? '')) errors.push('L’observation servie doit porter l’empreinte SHA-256 du HTML reçu.');
+  return errors;
+}
+
+export async function publierService({ root = process.cwd(), slug, today = todayIso(), observeServed = observerArtefactServi, beforeCommit = null, servedOrigin = process.env.MEMLIA_SERVICE_CANDIDATE_ORIGIN ?? 'https://memlia.fr' }) {
+  const snapshot = loadRecipe(root, slug);
+  const expectedFingerprint = candidateFingerprint(snapshot);
+  let servedUrl;
+  try {
+    const origin = new URL(servedOrigin);
+    if (origin.protocol !== 'https:' || origin.search || origin.hash || origin.pathname !== '/') throw new Error('origine HTTPS seule attendue');
+    servedUrl = new URL(snapshot.recipe.path, origin).href;
+  } catch {
+    return { pass: false, errors: ['L’origine du candidat servi doit être une origine HTTPS exacte, sans chemin, query string ni fragment.'] };
+  }
+  const sealPath = join(root, 'commercial/services', slug, SEAL_PATH);
+  const before = verifierRecetteService({ root, ...snapshot, today, requireReview: true });
+  verifyIncomingLinks(root, snapshot.recipe, before);
+  before.push(...verifySeal(root, slug));
+  if (before.length) return { pass: false, errors: [...new Set(before)] };
+  const candidateSealBytes = readFileSync(sealPath);
+  const candidateSeal = JSON.parse(candidateSealBytes.toString('utf8'));
+
+  let servedObservation;
+  try {
+    servedObservation = await observeServed({ root, slug, recipe: snapshot.recipe, expectedFingerprint, servedUrl });
+  } catch (error) {
+    return { pass: false, errors: [`Observation de l’artefact servi impossible : ${error.message}.`] };
+  }
+  const observationErrors = verifyServedObservation(servedObservation, snapshot.recipe, expectedFingerprint, servedUrl);
+  if (observationErrors.length) return { pass: false, errors: observationErrors };
+
+  if (beforeCommit !== null) beforeCommit({ root, slug });
+  const terminalErrors = verifySeal(root, slug);
+  if (!existsSync(sealPath) || sha256(readFileSync(sealPath)) !== sha256(candidateSealBytes)) terminalErrors.push(`${slug} : le sceau candidat a changé pendant l’observation servie.`);
+  verifyIncomingLinks(root, snapshot.recipe, terminalErrors);
+  if (terminalErrors.length) return { pass: false, errors: [...new Set(terminalErrors)] };
+
+  let nextRegistry;
+  try {
+    nextRegistry = ajouterAuRegistre(chargerRegistre(root), {
+      slug: snapshot.recipe.slug,
+      type: 'service',
+      url: `https://memlia.fr${snapshot.recipe.path}`,
+      requete: snapshot.recipe.primaryQuery,
+      secondaires: snapshot.recipe.secondaryQueries,
+      famille: snapshot.recipe.family,
+      publieLe: today,
+      source: 'recette-service-publiee',
+    });
+  } catch (error) {
+    return { pass: false, errors: [error.message] };
+  }
+
+  const result = materialiserService({ root, slug, status: 'publie', today, snapshot });
+  if (result.errors.length) return { pass: false, errors: result.errors };
+  sauverRegistre(root, nextRegistry);
   const publicationPath = join(result.dossier, 'preuves/publication.json');
   writeJson(publicationPath, {
     version: 1,
@@ -387,23 +518,63 @@ export function publierService({ root = process.cwd(), slug, today = todayIso() 
     slug,
     path: result.recipe.path,
     status: 'publie',
+    publishedOn: today,
     publishedAt: new Date().toISOString(),
+    servedObservation,
     page: { path: relative(root, result.pagePath), bytes: readFileSync(result.pagePath).length, sha256: sha256(readFileSync(result.pagePath)) },
     manifest: { path: relative(root, join(result.dossier, 'manifest.json')), bytes: readFileSync(join(result.dossier, 'manifest.json')).length, sha256: sha256(readFileSync(join(result.dossier, 'manifest.json'))) },
   });
-  writeSeal(root, slug, 'service-publication-scellee', new Date().toISOString());
+  writeSeal(root, slug, 'service-publication-scellee', new Date().toISOString(), candidateSeal.files);
   return { pass: true, errors: [], dossier: result.dossier };
 }
 
 export function auditerServices({ root = process.cwd(), today = todayIso() } = {}) {
   const base = join(root, 'commercial/services');
-  if (!existsSync(base)) return { pass: true, services: 0, errors: [] };
-  const slugs = readdirSync(base, { withFileTypes: true }).filter((entry) => entry.isDirectory()).map((entry) => entry.name).sort();
+  const slugs = existsSync(base)
+    ? readdirSync(base, { withFileTypes: true }).filter((entry) => entry.isDirectory()).map((entry) => entry.name).sort()
+    : [];
   const errors = [];
+  const registryServices = (chargerRegistre(root).articles ?? []).filter((entry) => entry.type === 'service');
+  const folders = new Set(slugs);
+  const registeredSlugs = new Set(registryServices.map((entry) => entry.slug));
+  for (const entry of registryServices) {
+    if (!folders.has(entry.slug)) errors.push(`Registre service sans dossier commercial/services/${entry.slug}.`);
+  }
+  for (const slug of slugs) {
+    if (!registeredSlugs.has(slug)) errors.push(`Dossier service sans entrée du registre : ${slug}.`);
+  }
   for (const slug of slugs) {
     try {
-      const { recipe, body, review } = loadRecipe(root, slug);
+      const snapshot = loadRecipe(root, slug);
+      const { recipe, body, review } = snapshot;
       errors.push(...verifierRecetteService({ root, recipe, body, review, today, requireReview: true }).map((error) => `${slug} : ${error}`));
+      const manifest = readJson(join(base, slug, 'manifest.json'));
+      const expectedFingerprint = candidateFingerprint(snapshot);
+      const entries = registryServices.filter((entry) => entry.slug === slug);
+      if (entries.length !== 1) errors.push(`${slug} : le registre doit contenir exactement une entrée service, reçu ${entries.length}.`);
+      const entry = entries[0];
+      if (entry && (entry.url !== `https://memlia.fr${manifest.path}` || normalizedQuery(entry.requete) !== normalizedQuery(manifest.primaryQuery))) {
+        errors.push(`${slug} : divergence URL ou requête entre registre et manifeste.`);
+      }
+      if (manifest.slug !== slug || manifest.type !== 'service') errors.push(`${slug} : divergence de slug ou type dans le manifeste.`);
+      if (manifest.candidateFingerprint !== expectedFingerprint) errors.push(`${slug} : l’empreinte du candidat diverge entre recette et manifeste.`);
+      const publicationPath = join(base, slug, 'preuves/publication.json');
+      if (manifest.status === 'publie') {
+        verifyIncomingLinks(root, recipe, errors);
+        if (!entry?.publieLe || entry.source !== 'recette-service-publiee') errors.push(`${slug} : le registre ne porte pas l’état de publication daté.`);
+        if (!existsSync(publicationPath)) {
+          errors.push(`${slug} : preuve de publication servie absente.`);
+        } else {
+          const publication = readJson(publicationPath);
+          if (publication.status !== 'publie' || publication.slug !== slug || publication.path !== recipe.path) errors.push(`${slug} : preuve de publication incohérente avec la recette.`);
+          errors.push(...verifyServedObservation(publication.servedObservation, recipe, expectedFingerprint, publication.servedObservation?.url).map((error) => `${slug} : ${error}`));
+          if (!DATE_RE.test(publication.publishedOn ?? '') || Number.isNaN(Date.parse(publication.publishedAt))) errors.push(`${slug} : dates de publication absentes ou invalides.`);
+          if (entry?.publieLe !== publication.publishedOn) errors.push(`${slug} : publieLe diverge du constat de publication.`);
+        }
+      } else {
+        if (entry?.publieLe !== null) errors.push(`${slug} : un candidat non publié ne doit pas porter publieLe.`);
+        if (existsSync(publicationPath)) errors.push(`${slug} : un candidat non publié ne doit pas conserver une preuve de publication.`);
+      }
       errors.push(...verifySeal(root, slug));
     } catch (error) {
       errors.push(`${slug} : audit impossible (${error.message}).`);
@@ -421,7 +592,7 @@ export async function commande(argv, root = process.cwd()) {
     const prepared = materialiserService({ root, slug, status: 'a-valider' });
     result = { pass: prepared.errors.length === 0, slug, dossier: relative(root, prepared.dossier), errors: prepared.errors, suite: prepared.errors.length ? 'corriger la recette' : 'faire relire puis sceller' };
   } else if (action === 'sceller') result = scellerService({ root, slug });
-  else if (action === 'publier') result = publierService({ root, slug });
+  else if (action === 'publier') result = await publierService({ root, slug });
   else throw new Error(`Action inconnue : ${action}`);
   console.log(JSON.stringify(result, null, 2));
   if (!result.pass) process.exitCode = 1;

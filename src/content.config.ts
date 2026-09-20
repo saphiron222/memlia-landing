@@ -119,6 +119,7 @@ const services = defineCollection({
     family: z.string().min(3),
     verifiedAt: z.coerce.date(),
     status: z.enum(['a-valider', 'pret-preview', 'publie']),
+    candidateFingerprint: z.string().regex(/^[a-f0-9]{64}$/),
     cta: z.object({
       label: z.literal('Confier une première tâche'),
       destination: z.literal('/contact'),

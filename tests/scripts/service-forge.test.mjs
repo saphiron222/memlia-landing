@@ -7,6 +7,7 @@ import { join } from 'node:path';
 
 import {
   auditerServices,
+  dateServiceParis,
   materialiserService,
   publierService,
   scellerService,
@@ -17,6 +18,17 @@ import { verifierPlafonds } from '../../scripts/lib/blog-pipeline.mjs';
 const SLUG = 'tache-de-test';
 const JOUR = '2026-09-20';
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+
+const observationServie = (overrides = {}) => async ({ recipe, expectedFingerprint, servedUrl }) => ({
+  url: servedUrl,
+  status: 200,
+  canonical: `https://memlia.fr${recipe.path}`,
+  h1: recipe.title,
+  candidateFingerprint: expectedFingerprint,
+  bodySha256: 'a'.repeat(64),
+  observedAt: '2026-09-20T08:00:00.000Z',
+  ...overrides,
+});
 
 const CORPS = `## La tâche dans les mots du cabinet
 
@@ -202,7 +214,7 @@ test('chaque porte service refuse son témoin négatif observable', () => {
       ['preuve', { ...valide, proof: { ...valide.proof, evidencePath: 'preuves/absente.json' } }, /preuve de rejeu.*absente/i],
       ['vocabulaire', valide, /vocabulaire public interdit.*logiciel/i],
       ['trois entrants', { ...valide, incomingLinks: valide.incomingLinks.slice(0, 2) }, /trois liens entrants/i],
-      ['URL entrante inventée', { ...valide, incomingLinks: valide.incomingLinks.map((link, index) => index === 0 ? { ...link, url: '/blog/autre-url' } : link) }, /ne correspond pas à la route publique/i],
+      ['URL entrante mal formée', { ...valide, incomingLinks: valide.incomingLinks.map((link, index) => index === 0 ? { ...link, url: 'blog/sans-slash' } : link) }, /URL publique.*ancre non vide/i],
     ];
     for (const [nom, candidate, attendu] of cas) {
       let body = CORPS;
@@ -234,15 +246,23 @@ test('la requête primaire est unique entre blog et service avant toute écritur
   }
 });
 
-test('un lien déclaré mais absent et une altération après scellement font rougir l’audit', () => {
+test('préparer et sceller acceptent trois liens planifiés, publier exige leur présence effective', async () => {
   const root = racineDeTest();
   try {
     writeFileSync(join(root, 'src/content/blog/source-c.md'), '---\ntitre: "Source c"\nbrouillon: false\n---\n\nAucun lien ici.\n');
     let result = materialiserService({ root, slug: SLUG, status: 'a-valider', today: JOUR });
+    assert.deepEqual(result.errors, []);
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+
+    result = await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie() });
+    assert.equal(result.pass, false);
     assert.ok(result.errors.some((error) => /source-c.*lien contextuel/i.test(error)), result.errors.join('\n'));
+    assert.equal(existsSync(join(root, 'commercial/services', SLUG, 'preuves/publication.json')), false);
+    assert.doesNotMatch(readFileSync(join(root, 'src/content/services', `${SLUG}.md`), 'utf8'), /status: publie/);
 
     writeFileSync(join(root, 'src/content/blog/source-c.md'), `---\ntitre: "Source c"\nbrouillon: false\n---\n\n[confier la tâche de test c](/automatisation/${SLUG})\n`);
-    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    result = await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie() });
+    assert.equal(result.pass, true, result.errors.join('\n'));
     const pagePath = join(root, 'src/content/services', `${SLUG}.md`);
     writeFileSync(pagePath, `${readFileSync(pagePath, 'utf8')}\naltération`);
     result = auditerServices({ root });
@@ -253,16 +273,42 @@ test('un lien déclaré mais absent et une altération après scellement font ro
   }
 });
 
-test('publier écrit une preuve scellée et l’audit refuse sa modification', () => {
+test('publier refuse sans observation, sur 404 et sur identité divergente, puis scelle le constat servi', async () => {
   const root = racineDeTest();
   try {
     assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
-    const publication = publierService({ root, slug: SLUG, today: JOUR });
+    const pagePath = join(root, 'src/content/services', `${SLUG}.md`);
+    const registryPath = join(root, 'docs/strategy/site-v3/mesures/registre-requetes.json');
+    const pageAvant = sha256(readFileSync(pagePath));
+    const registreAvant = sha256(readFileSync(registryPath));
+
+    let publication = await publierService({ root, slug: SLUG, today: JOUR, observeServed: async () => null });
+    assert.equal(publication.pass, false);
+    assert.match(publication.errors.join('\n'), /observation.*artefact servi/i);
+    publication = await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie({ status: 404 }) });
+    assert.equal(publication.pass, false);
+    assert.match(publication.errors.join('\n'), /HTTP 200.*404/i);
+    publication = await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie({ h1: 'Autre page' }) });
+    assert.equal(publication.pass, false);
+    assert.match(publication.errors.join('\n'), /H1 servi.*diverge/i);
+    publication = await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie({ candidateFingerprint: 'b'.repeat(64) }) });
+    assert.equal(publication.pass, false);
+    assert.match(publication.errors.join('\n'), /empreinte du candidat servi diverge/i);
+    assert.equal(sha256(readFileSync(pagePath)), pageAvant, 'un refus ne modifie pas la page');
+    assert.equal(sha256(readFileSync(registryPath)), registreAvant, 'un refus ne date pas le registre');
+    assert.equal(existsSync(join(root, 'commercial/services', SLUG, 'preuves/publication.json')), false);
+
+    publication = await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie(), servedOrigin: 'https://preview-service.memlia.pages.dev' });
     assert.equal(publication.pass, true, publication.errors.join('\n'));
     const receiptPath = join(root, 'commercial/services', SLUG, 'preuves/publication.json');
     const receipt = JSON.parse(readFileSync(receiptPath, 'utf8'));
     assert.equal(receipt.status, 'publie');
     assert.equal(receipt.type, 'service');
+    assert.equal(receipt.servedObservation.status, 200);
+    assert.equal(receipt.servedObservation.url, `https://preview-service.memlia.pages.dev/automatisation/${SLUG}`);
+    assert.equal(receipt.servedObservation.canonical, `https://memlia.fr/automatisation/${SLUG}`);
+    assert.match(receipt.servedObservation.candidateFingerprint, /^[a-f0-9]{64}$/);
+    assert.equal(receipt.servedObservation.bodySha256, 'a'.repeat(64));
     assert.equal(auditerServices({ root, today: JOUR }).pass, true);
     writeFileSync(receiptPath, `${readFileSync(receiptPath, 'utf8')} `);
     const audit = auditerServices({ root, today: JOUR });
@@ -285,15 +331,69 @@ test('l’audit échoue fermé quand le relevé d’intention a plus de huit jou
   }
 });
 
-test('l’audit refuse la suppression d’un fichier qui appartenait au sceau', () => {
+test('l’audit refuse la suppression d’un fichier qui appartenait au sceau', async () => {
   const root = racineDeTest();
   try {
     assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
-    assert.equal(publierService({ root, slug: SLUG, today: JOUR }).pass, true);
+    assert.equal((await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie() })).pass, true);
     rmSync(join(root, 'commercial/services', SLUG, 'preuves/publication.json'));
     const audit = auditerServices({ root, today: JOUR });
     assert.equal(audit.pass, false);
     assert.ok(audit.errors.some((error) => /fichier scellé absent.*publication/i.test(error)), audit.errors.join('\n'));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('l’audit réconcilie bidirectionnellement le registre service et les dossiers', () => {
+  const root = racineDeTest();
+  try {
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    rmSync(join(root, 'commercial/services'), { recursive: true, force: true });
+    let audit = auditerServices({ root, today: JOUR });
+    assert.equal(audit.pass, false);
+    assert.ok(audit.errors.some((error) => /registre.*sans dossier.*tache-de-test/i.test(error)), audit.errors.join('\n'));
+
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    const registryPath = join(root, 'docs/strategy/site-v3/mesures/registre-requetes.json');
+    const registry = JSON.parse(readFileSync(registryPath, 'utf8'));
+    registry.articles = registry.articles.filter((entry) => entry.type !== 'service');
+    writeFileSync(registryPath, `${JSON.stringify(registry, null, 2)}\n`);
+    audit = auditerServices({ root, today: JOUR });
+    assert.equal(audit.pass, false);
+    assert.ok(audit.errors.some((error) => /dossier.*sans entrée.*registre.*tache-de-test/i.test(error)), audit.errors.join('\n'));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la date de service suit Europe/Paris à la frontière UTC', () => {
+  assert.equal(dateServiceParis(new Date('2026-09-19T21:59:59.000Z')), '2026-09-19');
+  assert.equal(dateServiceParis(new Date('2026-09-19T22:00:00.000Z')), '2026-09-20');
+});
+
+test('publier refuse une mutation entre le contrôle du sceau et la matérialisation', async () => {
+  const root = racineDeTest();
+  try {
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    const recipePath = join(root, 'commercial/recettes', SLUG, 'recette.json');
+    let barrierCrossed = false;
+    const publication = await publierService({
+      root,
+      slug: SLUG,
+      today: JOUR,
+      observeServed: observationServie(),
+      beforeCommit: () => {
+        barrierCrossed = true;
+        const mutated = { ...JSON.parse(readFileSync(recipePath, 'utf8')), description: 'Mutation concurrente après le premier contrôle du sceau.' };
+        writeFileSync(recipePath, `${JSON.stringify(mutated, null, 2)}\n`);
+      },
+    });
+    assert.equal(barrierCrossed, true, 'le témoin doit franchir la fenêtre terminale avant écriture');
+    assert.equal(publication.pass, false);
+    assert.ok(publication.errors.some((error) => /empreinte divergente.*recipe/i.test(error)), publication.errors.join('\n'));
+    assert.equal(existsSync(join(root, 'commercial/services', SLUG, 'preuves/publication.json')), false);
+    assert.doesNotMatch(readFileSync(join(root, 'src/content/services', `${SLUG}.md`), 'utf8'), /status: publie/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

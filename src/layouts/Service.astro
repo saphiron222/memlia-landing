@@ -64,6 +64,7 @@ const graph = {
 
 <Base titre={data.tabTitle} titreSocial={data.ogTitle} description={data.description} chemin={chemin} noindex={noindex} base="/">
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+  <meta slot="head" name="memlia-candidate" content={data.candidateFingerprint} />
 
   <div class="feuille service-feuille">
     <article class="service conteneur" data-service={entree.id}>

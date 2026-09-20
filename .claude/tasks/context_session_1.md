@@ -409,3 +409,10 @@ after Kevin adds the two records to confirm green.
 - Revue indépendante finale : zéro défaut Critical/Important. Deux défauts trouvés puis corrigés : URL entrante non rapprochée de son fichier source et suppression d’un fichier scellé non détectée.
 - Piège : Astro conserve les entrées supprimées dans `node_modules/.astro/data-store.json`; après une fixture temporaire, nettoyer `node_modules/.astro`, `.astro` et `dist` avant la preuve finale.
 - Suite : `t_343871c3` peut produire et éprouver la première page manuelle avec les commandes documentées dans `ARCHITECTURE-ACCES-COMMERCIAUX.md`. Aucun push ni déploiement exécuté.
+
+## Hermes — 2026-09-20 — C2 reprise après revue marketing
+
+- Les cinq défauts de revue sont fermés : liens réels exigés seulement à `publier`, constat HTTP 200 du candidat servi avant toute écriture publiée, audit bidirectionnel registre↔dossiers et cohérence du reçu, date `Europe/Paris`, barrière TOCTOU terminale.
+- L’identité servie ne repose plus sur le seul H1 : la forge calcule `candidateFingerprint`, Astro le rend dans `<meta name="memlia-candidate">`, et `service:publier` rapproche URL servie, canonical, H1 et empreinte exacte. Une preview immuable noindex peut servir de constat via `MEMLIA_SERVICE_CANDIDATE_ORIGIN` avant la matérialisation `publie`.
+- Vérifications fraîches : tests ciblés 32/32 ; Playwright 123/123 ; Astro 166 fichiers, 0 erreur/0 avertissement et 11 hints hérités ; build PASS avec Python 74/74 et Node 266/266. Revue indépendante R2 : zéro défaut Critical/Important.
+- Aucun service réel, push ou déploiement. Suite : revue marketing de la même carte, puis C4 si elle approuve.
