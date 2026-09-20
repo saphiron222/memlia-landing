@@ -21,15 +21,16 @@ désigner l'offre.
 1. [Stratégie](SEO-STRATEGY.md) : le constat, la thèse, la carte des 60 familles en 12 pôles, ce que la demande mesurée du 19/09 a changé, les seuils de décision datés.
 2. [Concurrents](COMPETITOR-ANALYSIS.md) : qui occupe chaque famille, en quel format, et l'espace libre. Relevé du 16/09, non remesuré depuis : à lire comme daté.
 3. [Architecture](SITE-STRUCTURE.md) : l'arbre du site en ligne, les règles d'URL, le maillage tel que le cron d'intégrité le contrôle, ce que le code fait déjà.
-4. [Glossaire](GLOSSARY-PLAN.md) : la vague 1 intégrée (20 termes, 43 rendus), la vague 2 restante (14 termes), la chaîne de publication et son piège.
-5. [Exécution](IMPLEMENTATION-ROADMAP.md) : l'état au 19/09, le cycle réel d'un article aujourd'hui, ce qui reste et à quelle échéance.
-6. [Crons SEO](CRONS-SEO.md) : pourquoi chaque instrument existe, ce qu'il ne mesure pas, le point zéro du 17/09.
-7. [Mode opératoire des crons](RUNBOOK-SEO.md) : sentinelle quotidienne, relevé de demande du lundi, intégrité du mercredi, relevé des questions, extensions de la forge.
-8. [Mode opératoire quotidien](RUNBOOK-QUOTIDIEN.md) : la forge éditoriale, de la recette au contrôle en ligne. C'est le document qu'une session de production lit en premier.
-9. [Journal](JOURNAL.md) : une ligne par exécution, et les sections « Tranché » qui portent les décisions (l'ordre de la liste du blog le 17/09, la stratégie blog le 19/09).
-10. [Mesures](mesures/) : les relevés commités. `questions-2026-09-19.md` et `.json` (la demande), `semaine-2026-W38-demande.json`, `semaine-2026-W38-integrite.json`, `sentinelle.jsonl`, `registre-requetes.json`, `amorces-marche.json`.
-11. [Calendrier](CONTENT-CALENDAR.md), [plan de cluster](cluster-plan.md), [données](cluster-plan.json), [carte interactive](cluster-map.html) : générés par `build-cluster-plan.py`. Ne pas les éditer à la main ; corriger `backlog-v3.json` ou la taxonomie, puis régénérer.
-12. [Briefs du 16/09](cluster-briefs/) : périmés (voir plus bas). Ne pas s'en servir comme source d'un article.
+4. [Accès commerciaux](ARCHITECTURE-ACCES-COMMERCIAUX.md) : l'espace `/automatisation/`, les pages de service mesurées, le type comparatif, le gabarit, le contrat de lien et la règle anti-cannibalisation arrêtés le 20/09.
+5. [Glossaire](GLOSSARY-PLAN.md) : la vague 1 intégrée (20 termes, 43 rendus), la vague 2 restante (14 termes), la chaîne de publication et son piège.
+6. [Exécution](IMPLEMENTATION-ROADMAP.md) : l'état au 19/09, le cycle réel d'un article aujourd'hui, ce qui reste et à quelle échéance.
+7. [Crons SEO](CRONS-SEO.md) : pourquoi chaque instrument existe, ce qu'il ne mesure pas, le point zéro du 17/09.
+8. [Mode opératoire des crons](RUNBOOK-SEO.md) : sentinelle quotidienne, relevé de demande du lundi, intégrité du mercredi, relevé des questions, extensions de la forge.
+9. [Mode opératoire quotidien](RUNBOOK-QUOTIDIEN.md) : la forge éditoriale, de la recette au contrôle en ligne. C'est le document qu'une session de production lit en premier.
+10. [Journal](JOURNAL.md) : une ligne par exécution, et les sections « Tranché » qui portent les décisions (l'ordre de la liste du blog le 17/09, la stratégie blog le 19/09).
+11. [Mesures](mesures/) : les relevés commités. `questions-2026-09-19.md` et `.json` (la demande), `semaine-2026-W38-demande.json`, `semaine-2026-W38-integrite.json`, `sentinelle.jsonl`, `registre-requetes.json`, `amorces-marche.json`.
+12. [Calendrier](CONTENT-CALENDAR.md), [plan de cluster](cluster-plan.md), [données](cluster-plan.json), [carte interactive](cluster-map.html) : générés par `build-cluster-plan.py`. Ne pas les éditer à la main ; corriger `backlog-v3.json` ou la taxonomie, puis régénérer.
+13. [Briefs du 16/09](cluster-briefs/) : périmés (voir plus bas). Ne pas s'en servir comme source d'un article.
 
 ## Ce qui est fait
 

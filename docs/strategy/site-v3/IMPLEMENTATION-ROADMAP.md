@@ -81,7 +81,10 @@ métier DSN, au plancher de trois liens entrants au dernier relevé d'intégrit�
 
 ## 6. Ce que cette feuille de route ne fait pas
 
-- Elle ne crée aucune page commerciale par famille : une page de conversion décrit une chose livrée, c'est la règle anti-catalogue.
+- Depuis la décision ACCÈS du 20/09, elle peut créer une page commerciale par **tâche mesurée**,
+  jamais par simple famille éditoriale : chaque page décrit une seule règle livrée, sans catalogue.
+  L'architecture, le gabarit et les portes propres à ce flux vivent dans
+  `ARCHITECTURE-ACCES-COMMERCIAUX.md` ; ces pages ne passent pas pour des articles.
 - Elle ne fixe aucune cible de trafic et ne promet aucun résultat. Elle fixe des seuils de décision.
 - Elle ne demande jamais l'indexation d'une URL : la sentinelle liste, Kevin clique.
 - Elle ne modifie aucun article publié hors d'une republication scellée par la forge.

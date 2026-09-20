@@ -18,7 +18,9 @@ function parseDirectives(value) {
 }
 
 export function buildProbeUrl(url) {
-  return new URL(url).href;
+  const probe = new URL(url);
+  probe.searchParams.set('__memlia_probe', String(Date.now()));
+  return probe.href;
 }
 
 function analyzeMetaRobots(html, expectedDirective) {
@@ -43,22 +45,31 @@ export function analyzeHomeResponse({ status, xRobotsTag, html }) {
 
 async function fetchFresh(url, fetchImpl) {
   const probeUrl = buildProbeUrl(url);
-  const response = await fetchImpl(probeUrl, {
-    redirect: 'manual',
-    headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' },
-    signal: AbortSignal.timeout(20_000),
-  });
-  const body = await response.text();
-  return {
-    url,
-    probeUrl,
-    status: response.status,
-    age: response.headers.get('age'),
-    cacheStatus: response.headers.get('cf-cache-status'),
-    cacheControl: response.headers.get('cache-control'),
-    xRobotsTag: response.headers.get('x-robots-tag'),
-    body,
-  };
+  let lastError;
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      const response = await fetchImpl(probeUrl, {
+        redirect: 'manual',
+        headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' },
+        signal: AbortSignal.timeout(20_000),
+      });
+      const body = await response.text();
+      return {
+        url,
+        probeUrl,
+        status: response.status,
+        age: response.headers.get('age'),
+        cacheStatus: response.headers.get('cf-cache-status'),
+        cacheControl: response.headers.get('cache-control'),
+        xRobotsTag: response.headers.get('x-robots-tag'),
+        body,
+      };
+    } catch (error) {
+      lastError = error;
+      if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, attempt * 250));
+    }
+  }
+  throw lastError;
 }
 
 function sitemapLocations(xml) {
@@ -130,7 +141,14 @@ export async function verifyProductionIndexability({ fetchImpl = fetch } = {}) {
   for (const path of PAGES_NOINDEX) {
     assert.ok(!allLocations.includes(`${PRODUCTION_ORIGIN}${path}`), `${path} est noindex et doit rester hors sitemap.`);
   }
+  const indexablePages = [];
+  for (const location of allLocations) {
+    const response = await fetchFresh(location, fetchImpl);
+    const analysis = analyzeHomeResponse({ ...response, html: response.body });
+    indexablePages.push({ ...response, body: undefined, analysis });
+  }
   report.checks.sitemap = { ...sitemapIndex, body: undefined, indexLocations, pageLocations: allLocations };
+  report.checks.indexablePages = indexablePages;
   report.passed = true;
   return report;
 }
