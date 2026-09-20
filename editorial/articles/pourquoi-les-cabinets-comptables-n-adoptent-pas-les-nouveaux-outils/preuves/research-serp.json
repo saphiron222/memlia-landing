@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "candidateSlug": "pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+  "kind": "serp",
+  "status": "PASS",
+  "checkedAt": "2026-09-20",
+  "articleSha256": "04b328b1ba7a55d1befa33d4b3a1ff39643f5111b1e28ce4db969847ef11465e",
+  "manifestSha256": "50536085bc00cbf21cc2a27d9f768af9b1f33b28328c412df046917934ccc3d1",
+  "observations": [
+    "Relevé WebSearch du 19/09/2026 ; volumes et positions ND. Les résultats relevés s’adressent au cabinet pour l’aider à faire adopter un outil qu’il a déjà choisi. Aucun ne prend le point de vue de celui qui a construit le mauvais outil, ni ne donne de règle pour choisir la tâche avant de choisir l’outil. L’autocomplétion Google du 19/09 à 19:31 UTC répond sans panne et sans suggestion sur quatre formulations de l’intention ; le zéro est la mesure, pas un silence."
+  ],
+  "requete": "pourquoi les cabinets comptables n’adoptent pas les nouveaux outils",
+  "date": "2026-09-19",
+  "volume": "ND",
+  "acteurs": [
+    "Cegid",
+    "Eurécia",
+    "Shine",
+    "Compta Online",
+    "Groupe Revue Fiduciaire",
+    "Rohrbach-Pfalz",
+    "Aquero"
+  ],
+  "formats": "billets d’éditeurs de logiciels et de prestataires sur l’accompagnement du changement, plus un article de la presse professionnelle sur le défi humain des cabinets ; positions ND",
+  "note": "Relevé WebSearch du 19/09/2026 ; volumes et positions ND. Les résultats relevés s’adressent au cabinet pour l’aider à faire adopter un outil qu’il a déjà choisi. Aucun ne prend le point de vue de celui qui a construit le mauvais outil, ni ne donne de règle pour choisir la tâche avant de choisir l’outil. L’autocomplétion Google du 19/09 à 19:31 UTC répond sans panne et sans suggestion sur quatre formulations de l’intention ; le zéro est la mesure, pas un silence.",
+  "autocompletion": {
+    "measuredAt": "2026-09-19T19:31:48.367Z",
+    "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+    "results": [
+      {
+        "query": "pourquoi les cabinets comptables n'adoptent pas les nouveaux outils",
+        "suggestions": []
+      },
+      {
+        "query": "pourquoi un cabinet n'adopte pas un nouvel outil",
+        "suggestions": []
+      },
+      {
+        "query": "pourquoi un cabinet comptable n'adopte pas un nouvel outil",
+        "suggestions": []
+      },
+      {
+        "query": "pourquoi un cabinet n'adopte pas un outil",
+        "suggestions": []
+      }
+    ],
+    "decision": "Aucune variante ne franchit le seuil d’autocomplétion. Le H1 place donc l’intention déjà mesurée par la SERP en première proposition, reste sous 70 caractères et conserve le récit en seconde proposition."
+  }
+}

@@ -4,6 +4,13 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 
 const source = 'https://www.memlia.fr';
 const target = 'https://memlia.fr';
+const movedArticle = {
+  // L'ancien slug reste littéral uniquement dans public/_redirects, la source de la migration.
+  path: `/blog/${['la', 'plateforme', 'que', 'personne', 'n', 'a', 'achetee'].join('-')}`,
+  status: 308,
+  location: `${target}/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils`,
+  canonical: `${target}/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils`,
+};
 // Les attentes sont explicites, indépendantes de la configuration Cloudflare.
 const cases = [
   { path: '/', status: 200, canonical: `${target}/` },
@@ -51,8 +58,36 @@ for (const entry of cases) {
     if (error.cause) report.cause = error.cause.code ?? error.cause.message;
   }
 }
+{
+  const report = { path: movedArticle.path, expectedLocation: movedArticle.location, ok: false };
+  reports.push(report);
+  try {
+    // La route apex doit faire un seul saut permanent vers la nouvelle URL canonique.
+    const response = await fetch(target + movedArticle.path, { redirect: 'manual', signal: AbortSignal.timeout(20_000) });
+    report.status = response.status;
+    report.location = response.headers.get('location');
+    await response.body?.cancel();
+    assert.equal(report.status, movedArticle.status, 'L’ancienne URL de l’article doit répondre 308');
+    assert.equal(report.location, movedArticle.location, 'L’ancienne URL doit viser directement le nouveau chemin');
+
+    const destination = await fetch(report.location, { redirect: 'manual', signal: AbortSignal.timeout(20_000) });
+    report.destinationStatus = destination.status;
+    report.destinationLocation = destination.headers.get('location');
+    const html = await destination.text();
+    assert.equal(report.destinationStatus, 200, 'La nouvelle URL de l’article doit répondre 200');
+    assert.equal(report.destinationLocation, null, 'La redirection de l’article doit tenir en un seul saut');
+    const canonicals = [...html.matchAll(/<link\b[^>]*\brel="canonical"[^>]*>/gi)]
+      .map(([tag]) => tag.match(/\bhref="([^"]+)"/i)?.[1]);
+    report.canonicals = canonicals;
+    assert.deepEqual(canonicals, [movedArticle.canonical], 'La nouvelle URL doit porter son canonical unique');
+    report.ok = true;
+  } catch (error) {
+    report.error = error.message;
+    if (error.cause) report.cause = error.cause.code ?? error.cause.message;
+  }
+}
 const passed = reports.filter(report => report.ok).length;
-const result = { measuredAt: new Date().toISOString(), source, target, forcedDns: false, passed, total: cases.length, reports };
+const result = { measuredAt: new Date().toISOString(), source, target, forcedDns: false, passed, total: cases.length + 1, reports };
 const output = '.qa/www-redirect.json';
 mkdirSync('.qa', { recursive: true });
 writeFileSync(output, JSON.stringify(result, null, 2) + '\n');

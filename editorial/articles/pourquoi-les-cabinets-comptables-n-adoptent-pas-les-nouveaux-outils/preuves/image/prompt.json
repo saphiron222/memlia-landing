@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "candidateSlug": "pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-09-20",
+  "articleSha256": "04b328b1ba7a55d1befa33d4b3a1ff39643f5111b1e28ce4db969847ef11465e",
+  "manifestSha256": "50536085bc00cbf21cc2a27d9f768af9b1f33b28328c412df046917934ccc3d1",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils."
+  ],
+  "engine": "image_generate",
+  "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : deux volumes posés côte à côte sur un même socle : à gauche un petit bâtiment neuf, net, entièrement clos, dont aucune ouverture n'est franchie ; à droite un établi bas, déjà encombré d'objets en usage, sur lequel un mécanisme simple vient d'être ajouté et fonctionne. Composition : vue isométrique sur un plateau crème papier ; à gauche, un volume architectural neuf aux arêtes franches, portes closes, aucune trace d'usage autour de lui ; à droite, à la même échelle, un plan de travail ouvert où des formes simples sont disposées comme on les laisse en travaillant, et où un petit rouage vert translucide s'est glissé entre elles sans rien déplacer ; entre les deux, un chemin rectangulaire continu au sol rejoint clairement l'espace sous l'établi, sans pointe ni flèche ; ombres courtes, composition aérée, beaucoup de vide autour des deux volumes. Style : diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche ; continuité avec les couvertures IMG-23, IMG-24 et IMG-25. Palette stricte, proportions imposées : fond crème #fcfbf7 dominant, vert Memlia #27b657 sur au moins 3 % de l'image en surfaces pleines (chemin et plateau de l'établi), vert profond #1c8a41 sur au moins 3 % en surfaces pleines distinctes (pieds, bacs et engrenage), touches de graphite #231f20 sur au moins 2 % (outils, arêtes et ombres). Interdits : texte lisible, lettres, chiffres, logo, personne identifiable, marque, écran ou fausse interface logicielle, alerte rouge, croix ou signe de faute, flèche, courbe de mouvement, symbole flottant, annotation.",
+  "brief": {
+    "sujet": "Deux volumes posés côte à côte sur un même socle : à gauche un petit bâtiment neuf, net, entièrement clos, dont aucune ouverture n’est franchie ; à droite un établi bas, déjà encombré d’objets en usage, sur lequel un mécanisme simple vient d’être ajouté et fonctionne.",
+    "composition": "Vue isométrique sur un plateau crème papier ; à gauche, un volume architectural neuf aux arêtes franches, portes closes, aucune trace d’usage autour de lui, une fine poussière de lumière le laisse intact ; à droite, à la même échelle, un plan de travail ouvert où des formes simples sont disposées comme on les laisse en travaillant, et où un petit rouage vert translucide s’est glissé entre elles sans rien déplacer ; entre les deux, un chemin au sol qui mène clairement au second et pas au premier ; ombres courtes, composition aérée, beaucoup de vide autour des deux volumes.",
+    "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche ; continuité avec les couvertures IMG-23, IMG-24 et IMG-25.",
+    "palette": "Fond crème #fcfbf7 dominant, vert Memlia #27b657 et vert profond #1c8a41 en accents, touches de graphite #231f20.",
+    "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, marque, écran ou fausse interface logicielle, alerte rouge, croix ou signe de faute.",
+    "alt": "Diorama 3D isométrique : un bâtiment neuf et fermé à côté d’un établi ouvert où le travail se fait, fond crème"
+  },
+  "reviewCriteria": [
+    "continuité avec les couvertures existantes (diorama isométrique, fond crème, lumière douce du haut gauche)",
+    "le volume neuf est visiblement clos et sans trace d’usage",
+    "l’établi porte des traces d’usage et le mécanisme ajouté ne déplace rien",
+    "le chemin au sol désigne le second volume sans ambiguïté",
+    "aucune indication de faute : pas de croix, pas d’alerte rouge",
+    "aucun texte, chiffre, logo, personne identifiable, marque ou fausse interface",
+    "dérivés 1920×1080, OG 1200×630, 768/1200/1600 générés"
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "slug": "pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+  "title": "Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec",
+  "tabTitle": "Pourquoi un cabinet n’adopte pas un nouvel outil | Memlia",
+  "summary": "J’ai construit une application complète pour remplacer les classeurs d’un cabinet. La personne qui allait s’en servir a dit non, pas au prix mais à l’idée d’abandonner son fichier : j’avais ajouté un outil de plus, et choisi les tâches sans les mesurer.",
+  "description": "Une application finie, évaluée, jamais adoptée : pourquoi ajouter un outil est une erreur de cadrage, et la règle de relevé qui en est sortie.",
+  "date": "2026-09-19",
+  "updatedAt": "2026-09-19",
+  "serie": "cicatrices",
+  "topics": [
+    "methode",
+    "cabinet",
+    "automatisation",
+    "pilotage"
+  ],
+  "keywords": [
+    "adoption d’un outil en cabinet comptable",
+    "choisir une tâche à automatiser",
+    "relevé de temps par tâche",
+    "automatisation greffée dans un outil existant",
+    "cadrage d’un projet d’automatisation",
+    "règle reproductible"
+  ],
+  "primaryQuery": "pourquoi les cabinets comptables n’adoptent pas les nouveaux outils",
+  "secondaryQueries": [
+    "adoption outil cabinet comptable",
+    "changement de logiciel cabinet comptable resistance"
+  ],
+  "intent": "comprendre",
+  "fanOut": [
+    "pourquoi un outil fini et bien noté peut n’être jamais ouvert",
+    "comment choisir la tâche à automatiser en premier dans un cabinet",
+    "ce qu’il faut relever avant de s’engager sur une automatisation"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "chefs-mission-portefeuille"
+    ],
+    "proofLevel": "indirect",
+    "proofNote": "Le référentiel des besoins documente les postes d’un cabinet et le formulaire d’audit collaborateur qui en est sorti, sans couvrir la décision d’adopter ou de refuser un outil. Le récit vient d’un cadrage Memlia du 21/07/2026 et du pivot qui l’a suivi ; le rôle lecteur est à confirmer au premier rendez-vous d’un cabinet sur ce sujet."
+  },
+  "funnel": "TOFU",
+  "cluster": "methode-decision-humaine",
+  "famille": "choisir-cadrer",
+  "contentType": "shareable",
+  "format": "thought-leadership",
+  "task": "Choisir la tâche d’un cabinet qui sera prise en charge en premier, et décider où l’automatisation doit vivre, sans ajouter un outil ni s’engager sur une hypothèse.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Récit du refus du 21/07/2026 et du pivot vers l’outil déjà ouvert, avec le délai mesuré de cinq jours jusqu’à la première recette ; le questionnaire revenu avec toutes ses lignes de réponse vides et le formulaire qui calcule ses propres manques, écrit une semaine plus tard ; trois affirmations documentaires reliées à deux pages ouvertes, plus une troisième page de contexte sans claim attribué.",
+  "reviewRule": "Réviser si le test de reproductibilité ou les échelles de cotation du cadrage changent, et à la publication d’un article de la famille choisir et cadrer ; relecture des sources à six mois.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous relevons d’abord ce que vos gestes répétitifs coûtent en durée et en fréquence, poste par poste, et nous vous disons à voix haute ce que nous écartons. Nous écrivons la règle de la tâche dans vos mots, vous la corrigez, puis nous l’automatisons dans le logiciel, le classeur ou la messagerie que vos équipes ouvrent déjà. Elles la recettent sur un mois réel avant toute extension. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
+  },
+  "inlineProofs": [
+    {
+      "id": "cicatrice-questionnaire-vide",
+      "insertBeforeHeading": "Ce que cela a coûté",
+      "alt": "Reconstitution du questionnaire de cadrage revenu vide, sans signal automatique sur les manques.",
+      "source": "reconstitution fidèle au récit et à la preuve exigée dans la recette scellée ; aucune capture de l’écran refusé n’est conservée dans le dépôt",
+      "capturedAt": "2026-09-20"
+    },
+    {
+      "id": "cicatrice-formulaire-manques",
+      "insertBeforeHeading": "Ce que cela a coûté",
+      "alt": "Reconstitution du formulaire fictif qui remonte deux champs manquants avant tout engagement.",
+      "source": "reconstitution fidèle au récit et à la preuve exigée dans la recette scellée",
+      "capturedAt": "2026-09-20"
+    }
+  ],
+  "image": {
+    "heroId": "img-art-pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+    "alt": "Diorama 3D isométrique : un bâtiment neuf et fermé à côté d’un établi ouvert où le travail se fait, fond crème",
+    "brief": {
+      "sujet": "Deux volumes posés côte à côte sur un même socle : à gauche un petit bâtiment neuf, net, entièrement clos, dont aucune ouverture n’est franchie ; à droite un établi bas, déjà encombré d’objets en usage, sur lequel un mécanisme simple vient d’être ajouté et fonctionne.",
+      "composition": "Vue isométrique sur un plateau crème papier ; à gauche, un volume architectural neuf aux arêtes franches, portes closes, aucune trace d’usage autour de lui, une fine poussière de lumière le laisse intact ; à droite, à la même échelle, un plan de travail ouvert où des formes simples sont disposées comme on les laisse en travaillant, et où un petit rouage vert translucide s’est glissé entre elles sans rien déplacer ; entre les deux, un chemin au sol qui mène clairement au second et pas au premier ; ombres courtes, composition aérée, beaucoup de vide autour des deux volumes.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche ; continuité avec les couvertures IMG-23, IMG-24 et IMG-25.",
+      "palette": "Fond crème #fcfbf7 dominant, vert Memlia #27b657 et vert profond #1c8a41 en accents, touches de graphite #231f20.",
+      "interdits": "Texte lisible, lettres, chiffres, logo, personne identifiable, marque, écran ou fausse interface logicielle, alerte rouge, croix ou signe de faute.",
+      "alt": "Diorama 3D isométrique : un bâtiment neuf et fermé à côté d’un établi ouvert où le travail se fait, fond crème",
+      "reviewCriteria": [
+        "continuité avec les couvertures existantes (diorama isométrique, fond crème, lumière douce du haut gauche)",
+        "le volume neuf est visiblement clos et sans trace d’usage",
+        "l’établi porte des traces d’usage et le mécanisme ajouté ne déplace rien",
+        "le chemin au sol désigne le second volume sans ambiguïté",
+        "aucune indication de faute : pas de croix, pas d’alerte rouge",
+        "aucun texte, chiffre, logo, personne identifiable, marque ou fausse interface",
+        "dérivés 1920×1080, OG 1200×630, 768/1200/1600 générés"
+      ],
+      "prompt": "Couverture éditoriale 3D originale, horizontale 16:9. Sujet : deux volumes posés côte à côte sur un même socle : à gauche un petit bâtiment neuf, net, entièrement clos, dont aucune ouverture n'est franchie ; à droite un établi bas, déjà encombré d'objets en usage, sur lequel un mécanisme simple vient d'être ajouté et fonctionne. Composition : vue isométrique sur un plateau crème papier ; à gauche, un volume architectural neuf aux arêtes franches, portes closes, aucune trace d'usage autour de lui ; à droite, à la même échelle, un plan de travail ouvert où des formes simples sont disposées comme on les laisse en travaillant, et où un petit rouage vert translucide s'est glissé entre elles sans rien déplacer ; entre les deux, un chemin rectangulaire continu au sol rejoint clairement l'espace sous l'établi, sans pointe ni flèche ; ombres courtes, composition aérée, beaucoup de vide autour des deux volumes. Style : diorama 3D isométrique, formes géométriques simplifiées, matières mates et translucides, fond crème papier, lumière de studio douce venant du haut gauche ; continuité avec les couvertures IMG-23, IMG-24 et IMG-25. Palette stricte, proportions imposées : fond crème #fcfbf7 dominant, vert Memlia #27b657 sur au moins 3 % de l'image en surfaces pleines (chemin et plateau de l'établi), vert profond #1c8a41 sur au moins 3 % en surfaces pleines distinctes (pieds, bacs et engrenage), touches de graphite #231f20 sur au moins 2 % (outils, arêtes et ombres). Interdits : texte lisible, lettres, chiffres, logo, personne identifiable, marque, écran ou fausse interface logicielle, alerte rouge, croix ou signe de faute, flèche, courbe de mouvement, symbole flottant, annotation."
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "cf6a3d0d-5abc-4cdc-a843-d3f7e7673155",
+      "model": "gpt_image_2_5",
+      "provider": "higgsfield",
+      "generatedAt": "2026-09-19",
+      "credits": 6
+    }
+  },
+  "sources": [
+    {
+      "id": "plateforme-extension",
+      "publisher": "Microsoft Learn",
+      "title": "Vue d’ensemble de la plateforme de compléments pour Office",
+      "url": "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Documentation de l’éditeur sur sa propre plateforme d’extension : elle décrit de première main ce qu’une solution greffée dans une application bureautique peut faire et où elle s’exécute.",
+      "excerpt": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office"
+    },
+    {
+      "id": "analyse-processus",
+      "publisher": "Microsoft Learn",
+      "title": "Vue d’ensemble de l’exploration de processus dans Power Automate",
+      "url": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Documentation de l’éditeur sur un outil d’analyse de processus, citée pour la démarche qu’elle décrit — partir des données d’exécution pour voir le déroulement réel — et non pour le produit qu’elle documente.",
+      "excerpt": "fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique"
+    },
+    {
+      "id": "deploiement-test",
+      "publisher": "Google Chrome Enterprise and Education",
+      "title": "Installer le navigateur Chrome sur un parc de postes gérés",
+      "url": "https://support.google.com/chrome/a/answer/9025903?hl=fr",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Page publique d’aide au déploiement d’un logiciel sur un parc de postes gérés, citée pour la conduite de déploiement qu’elle décrit, pas pour le produit qu’elle documente.",
+      "excerpt": "réaliser rapidement un déploiement test du navigateur Chrome à petite échelle"
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/methode",
+      "/garanties",
+      "/glossaire#regle-de-cabinet",
+      "/glossaire#proposition-puis-validation",
+      "/glossaire#jeu-d-essai-fictif",
+      "/glossaire#fail-closed"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/suivre-la-production-sociale-dans-excel"
+    ],
+    "decision": "Le pilier cartographie les pôles et les familles de tâches ; l’article sur la production sociale exécute une famille. Celui-ci ne décrit aucune tâche de production : il raconte un cadrage raté et la règle de choix qui en est sortie. Requête primaire, intention et format distincts."
+  },
+  "serp": {
+    "requete": "pourquoi les cabinets comptables n’adoptent pas les nouveaux outils",
+    "date": "2026-09-19",
+    "volume": "ND",
+    "acteurs": [
+      "Cegid",
+      "Eurécia",
+      "Shine",
+      "Compta Online",
+      "Groupe Revue Fiduciaire",
+      "Rohrbach-Pfalz",
+      "Aquero"
+    ],
+    "formats": "billets d’éditeurs de logiciels et de prestataires sur l’accompagnement du changement, plus un article de la presse professionnelle sur le défi humain des cabinets ; positions ND",
+    "note": "Relevé WebSearch du 19/09/2026 ; volumes et positions ND. Les résultats relevés s’adressent au cabinet pour l’aider à faire adopter un outil qu’il a déjà choisi. Aucun ne prend le point de vue de celui qui a construit le mauvais outil, ni ne donne de règle pour choisir la tâche avant de choisir l’outil. L’autocomplétion Google du 19/09 à 19:31 UTC répond sans panne et sans suggestion sur quatre formulations de l’intention ; le zéro est la mesure, pas un silence.",
+    "autocompletion": {
+      "measuredAt": "2026-09-19T19:31:48.367Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "results": [
+        {
+          "query": "pourquoi les cabinets comptables n'adoptent pas les nouveaux outils",
+          "suggestions": []
+        },
+        {
+          "query": "pourquoi un cabinet n'adopte pas un nouvel outil",
+          "suggestions": []
+        },
+        {
+          "query": "pourquoi un cabinet comptable n'adopte pas un nouvel outil",
+          "suggestions": []
+        },
+        {
+          "query": "pourquoi un cabinet n'adopte pas un outil",
+          "suggestions": []
+        }
+      ],
+      "decision": "Aucune variante ne franchit le seuil d’autocomplétion. Le H1 place donc l’intention déjà mesurée par la SERP en première proposition, reste sous 70 caractères et conserve le récit en seconde proposition."
+    }
+  },
+  "gsc": {
+    "requete": "pourquoi les cabinets comptables n’adoptent pas les nouveaux outils",
+    "date": "2026-09-19",
+    "periode": "90 jours",
+    "impressions": 0,
+    "clics": 0,
+    "note": "Page nouvelle, écrite et publiée le 19/09/2026 : aucune impression ne peut encore lui être attribuée. Aucune inspection d’URL demandée, aucun crédit métrique revendiqué."
+  },
+  "claims": [
+    {
+      "unite": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
+      "claim": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
+      "type": "information",
+      "sourceId": "plateforme-extension",
+      "excerpt": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
+      "explanation": "La phrase de la documentation de l’éditeur est reprise mot pour mot ; seule la formule d’introduction change, la capacité décrite et son périmètre restent ceux de la source."
+    },
+    {
+      "unite": "Elle aide les entreprises à comprendre leurs processus réels",
+      "claim": "Elle aide les entreprises à comprendre leurs processus réels",
+      "type": "information",
+      "sourceId": "analyse-processus",
+      "excerpt": "aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration",
+      "explanation": "Reprise à l’identique du début de la définition donnée par la documentation de l’éditeur ; la suite de la phrase est omise et rien n’est ajouté à sa portée."
+    },
+    {
+      "unite": "en partant des données d’exécution",
+      "claim": "en partant des données d’exécution elle fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
+      "type": "information",
+      "sourceId": "analyse-processus",
+      "excerpt": "fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
+      "explanation": "Phrase de la documentation de l’éditeur reprise à l’identique ; la mention des données d’événements est résumée en données d’exécution sans changer ce qui est affirmé."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "direction-associes"
+  },
+  "preuvesSkills": {
+    "blog-brief": [
+      "Brief pris dans docs/strategy/site-v3/backlog-v3.json (slug pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils, série cicatrices, famille choisir-cadrer, lecteur direction-associes, requête « pourquoi les cabinets comptables n’adoptent pas les nouveaux outils », preuve attendue : la règle qui en est sortie, appliquée depuis à chaque cadrage)."
+    ],
+    "blog-outline": [
+      "Plan calqué sur le gabarit thought-leadership et sur la charte §7 ter : réponse directe, la décision de départ et pourquoi elle paraissait raisonnable, ce qui a cassé et la phrase qui l’a montré, la seconde erreur du choix non mesuré, ce que cela a coûté, La règle écrite en quatre libellés, Rejoué sur le jeu fictif, questions fréquentes, règle à retenir, pour aller plus loin."
+    ],
+    "blog-image": [
+      "Couverture générée depuis le brief à six composantes : deux passes Higgsfield gpt_image_2_5, qualité haute 2K, 6 crédits. La première a été écartée sur la palette et deux symboles parasites ; la seconde est retenue après mesure et revue visuelle."
+    ],
+    "blog-schema": [
+      "BlogPosting, BreadcrumbList, Person, Organization et WebSite émis par ArticleJsonLd.astro depuis le frontmatter ; ImageObject sur la couverture une fois générée ; aucun FAQPage ni HowTo."
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-  "articleSha256": "741bf5c70b4dc085065fc36a7610635973d2d2d743f19c502a1b23b1f49b4697",
+  "articleSha256": "7f0d32cc33a3faab293f197e773ea3bdc83d7740128b094c960ac2a063cb413f",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -380,26 +380,26 @@
       "sourceExcerpts": {
         "sp-conservation": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "sp-conservation",
             "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
             "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
             "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
-            "context": "             aria-hidden=\"false\"><p class=\"fr-text--lg\">Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale. Ce délai varie selon la nature des papiers et les obligations légales. L'entreprise peut aussi archiver les documents plus longtemps, sauf s'ils contiennent des données personnelles. Pendant ce délai, l'administration peut mener des contrôles. Cette page indique les délais de conservation des principaux documents. Vous pouvez aussi utiliser un simulateur.</p></div><div class=\"fr-my-4w\" id=\"expired\"",
-            "contextSha256": "32b0c1e8d867208e631699dbcc96b1ad457bd1ae11daa7cf0c76cdb20459774c",
+            "context": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+            "contextSha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
             "citation": {
               "text": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
               "sha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
-              "sourceContentSha256": "663cc63faa41893bb0b9e152fdd5b0f93c44ce4a1647a09c6e99cf16cd44c87c",
+              "sourceContentSha256": "29da0e6ec839a0d63b7cf4f20889cf372f2de7daac5d596b7d0fec6050d08d17",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
                 "locator": {
                   "kind": "line-range",
@@ -428,7 +428,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La phrase de Service-Public est reprise à l’identique, seule l’apostrophe typographique diffère.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -444,26 +444,26 @@
       "sourceExcerpts": {
         "net-crm": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "net-crm",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
             "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
-            "context": "            Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.         </a>",
-            "contextSha256": "4fcba10565e40fd4346871b2454d6c3db8e75a4b843366395b6aa8ddc454fc91",
+            "context": "En savoir plus Les outils de suivi – Tableaux de bord En savoir plus CRM DSN net-entreprises.fr Les Comptes Rendus Métiers DSN Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
+            "contextSha256": "d210afde5ad408d15d548d9ce16e7c9d14554bec36446c5fab4ca1cb934a5a6f",
             "citation": {
               "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
               "sha256": "ef509c5e2bb80ff3b9aebd039458d169e786ca17dbb00478b7c5774d8192c754",
-              "sourceContentSha256": "9a05b93fcb4b0f1c2b4faf6f1c95d749eb4286b2688983899a62ebd61ef681b5",
+              "sourceContentSha256": "ae8e495b153d8948a88031af88740f2ae502e49ca052c5fbcd2b2aa2082dd214",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Les comptes rendus métiers DSN",
                 "locator": {
                   "kind": "line-range",
@@ -498,7 +498,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition officielle du compte rendu métier reprise à l’identique depuis Net-entreprises.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -514,26 +514,26 @@
       "sourceExcerpts": {
         "impots-calendrier": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel."
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "impots-calendrier",
             "sourceUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
             "verifiedUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
             "excerpt": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel.",
-            "context": "\t\t\t\t\t\t\t\t<div class=\"fr-card__desc\"><p>Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel.</p></div>",
-            "contextSha256": "7138504f56e9e85745ac5dfea8c182f82d0ef83e45cf520d2af54620d84b3170",
+            "context": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel.",
+            "contextSha256": "9ac9ef6b56935e495b65b71a3269d4f8e3cf5c7386eb8cca7a1686ca5c7d0fc8",
             "citation": {
               "text": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel.",
               "sha256": "9ac9ef6b56935e495b65b71a3269d4f8e3cf5c7386eb8cca7a1686ca5c7d0fc8",
               "sourceContentSha256": "4dfb72a30f6375ccee31b39678d77e85af50129caf36378b596164c5c4850522",
               "coordinates": {
                 "finalUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Calendrier fiscal des professionnels",
                 "locator": {
                   "kind": "line-range",
@@ -557,7 +557,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Fenêtre de dépôt et de paiement de la TVA mensuelle de septembre 2026 telle que publiée par le calendrier fiscal officiel.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -573,26 +573,26 @@
       "sourceExcerpts": {
         "cnil-principes": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "cnil-principes",
             "sourceUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
             "verifiedUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
             "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
-            "context": "<p>c)&nbsp;adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées (<button type=\"button\" class=\"glossary-tooltips\" aria-describedby=\"tooltip_content\" data-definition=\"minimisation\"><span class=\"glossary-tooltips-title\">minimisation</span></button> des données);</p>",
-            "contextSha256": "2699f5a7d291120b27843bf2dd127cdddd3f634063c917a28566bba74643ac55",
+            "context": "a) traitées de manière licite, loyale et transparente au regard de la personne concernée (licéité, loyauté, transparence); b) collectées pour des finalités déterminées, explicites et légitimes, et ne pas être traitées ultérieurement d'une manière incompatible avec ces finalités; le traitement ultérieur à des fins archivistiques dans l'intérêt public, à des fins de recherche scientifique ou historique ou à des fins statistiques n'est pas considéré, conformément à l'article 89, paragraphe 1, comme incompatible avec les finalités initiales (limitation des finalités); c) adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées ( minimisation des données); d) exactes et, si nécessaire, tenues à jour; toutes les mesures raisonnables doivent être prises pour que les données à caractère personnel qui sont inexactes, eu égard aux finalités pour lesquelles elles sont traitées, soient effacées ou rectifiées sans tarder (exactitude); e) conservées sous une forme permettant l'identification des personnes concernées pendant une durée n'excédant pas celle nécessaire au regard des finalités pour lesquelles elles sont traitées; les données à caractère personnel peuvent être conservées pour des durées plus longues dans la mesure où elles seront traitées exclusivement à des fins archivistiques dans l'intérêt public, à des fins de recherche scientifique ou historique ou à des fins statistiques conformément à l'article 89, paragraphe 1, pour autant que soient mises en œuvre les mesures techniques et organisationnelles appropriées requises par le présent règlement afin de garantir les droits et libertés de la personne concernée (limitation de la conservation); f) traitées de façon à garantir une sécurité appropriée des données à caractère personnel, y compris la protection contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle, à l'aide de mesures techniques ou organisationnelles appropriées (intégrité et confidentialité);",
+            "contextSha256": "c225de36bf199a45fea454329c7f85442fab95ca16e5c28784c24e1ce65a0ebd",
             "citation": {
               "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
               "sha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
-              "sourceContentSha256": "f2c85b0023ca1bcdda780dd4d922cc511f739f6aae65b6af8bc9d444fbc7a8c4",
+              "sourceContentSha256": "3b02aa776fd69392b051e713f3a002fa252d7be63ffd19ae32781093fed2af42",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
                 "locator": {
                   "kind": "line-range",
@@ -618,7 +618,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Principe de minimisation, article 5 du RGPD, cité mot pour mot depuis le texte publié par la CNIL.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -634,26 +634,26 @@
       "sourceExcerpts": {
         "cnil-durees": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement."
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "cnil-durees",
             "sourceUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
             "verifiedUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
             "excerpt": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement.",
-            "context": "<p>La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement.</p>",
-            "contextSha256": "9e5018f7e0bbf437a2e26c496c48c05ff5515bab5e825e368e753f7b8692c4cb",
+            "context": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement.",
+            "contextSha256": "461c2f50a632e8d85d7fdbd75beaa13bb871fc5651adb58ce1d46fd441da28ee",
             "citation": {
               "text": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement.",
               "sha256": "461c2f50a632e8d85d7fdbd75beaa13bb871fc5651adb58ce1d46fd441da28ee",
-              "sourceContentSha256": "3d4759c6984bee2165c1e0018071bdec53147e1577eb42030aa9539076358f61",
+              "sourceContentSha256": "67697218a91859f6a1272197c83f05d986227c77c53cd58f69f20b4a3634e3f1",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Les durées de conservation des données",
                 "locator": {
                   "kind": "line-range",
@@ -681,7 +681,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Règle de la CNIL sur la fixation de la durée de conservation, reprise à l’identique.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }

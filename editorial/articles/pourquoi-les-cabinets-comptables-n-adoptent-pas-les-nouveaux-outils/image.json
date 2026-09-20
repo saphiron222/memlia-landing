@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "candidateSlug": "pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+  "articleSha256": "04b328b1ba7a55d1befa33d4b3a1ff39643f5111b1e28ce4db969847ef11465e",
+  "manifestSha256": "50536085bc00cbf21cc2a27d9f768af9b1f33b28328c412df046917934ccc3d1",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Diorama 3D isométrique : un bâtiment neuf et fermé à côté d’un établi ouvert où le travail se fait, fond crème",
+  "score": 100,
+  "directionArt": 19,
+  "semanticRelevance": 23,
+  "p0": [],
+  "kevinApproved": true,
+  "palette": {
+    "statut": "PASS",
+    "parts": {
+      "#fcfbf7": 0.7715277777777778,
+      "#27b657": 0.023020833333333334,
+      "#1c8a41": 0.029670138888888888,
+      "#231f20": 0.015885416666666666
+    },
+    "ecarts": []
+  }
+}

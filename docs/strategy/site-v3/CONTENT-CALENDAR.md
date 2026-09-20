@@ -32,7 +32,7 @@ Généré le 19/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-09-16 | [Automatiser la relance des pièces clients manquantes](/blog/automatiser-la-relance-des-pieces-clients) | Collecte et relance des pièces | Production comptable | how-to-guide | 3 | published |
 | 2026-09-16 | [Automatiser un cabinet comptable : la carte des tâches](/blog/automatiser-un-cabinet-comptable-la-carte-des-taches) | Choisir et cadrer une automatisation | Méthode et décision humaine | pillar-page | 1 | published |
 | 2026-09-17 | [Automatiser la saisie comptable : ce qui reste à vérifier](/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier) | Saisie, OCR et pré-comptabilité | Production comptable | how-to-guide | 3 | published |
-| 2026-09-19 | [Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec](/blog/la-plateforme-que-personne-n-a-achetee) | Choisir et cadrer une automatisation | Méthode et décision humaine | thought-leadership | 3 | published |
+| 2026-09-19 | [Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec](/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils) | Choisir et cadrer une automatisation | Méthode et décision humaine | thought-leadership | 3 | published |
 
 ### Semaine 2026-W39
 

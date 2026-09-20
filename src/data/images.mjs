@@ -127,7 +127,7 @@ export const IMAGES = {
     alt: "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe",
     generee: true,
   },
-  'img-art-la-plateforme-que-personne-n-a-achetee': {
+  'img-art-pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils': {
     brief: 'ART',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
@@ -141,7 +141,7 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
-  'img-art-la-plateforme-que-personne-n-a-achetee',
+  'img-art-pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
   'img-art-saisie-comptable',
   'img-art-relance-des-pieces',
   'img-art-carte-des-taches',

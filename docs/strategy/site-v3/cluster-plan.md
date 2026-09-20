@@ -607,7 +607,7 @@ Qualifier les tâches candidates, choisir la première, écrire le cadre.
 | 2027-05-11 | [Choisir la première tâche à automatiser](/blog/choisir-la-premiere-tache-a-automatiser) | quelle tâche automatiser cabinet comptable | how-to-guide | direction-associes | 3 | planned |
 | 2027-08-11 | [Les signaux qui disent qu'une tâche n'est pas prête à être automatisée](/blog/les-signaux-qui-disent-qu-une-tache-n-est-pas-prete-a-etre-automatisee) | quand ne pas automatiser une tâche cabinet comptable | listicle-checklist | direction-associes | 3 | planned |
 | 2027-10-25 | [Qu'est-ce qu'une tâche répétitive automatisable, dans un cabinet comptable ?](/blog/qu-est-ce-qu-une-tache-repetitive-automatisable-dans-un-cabinet-comptable) | définition tâche automatisable cabinet comptable | faq-knowledge | direction-associes | 3 | planned |
-| 2026-09-19 | [Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec](/blog/la-plateforme-que-personne-n-a-achetee) | pourquoi les cabinets comptables n'adoptent pas les nouveaux outils | thought-leadership | direction-associes | 3 | published |
+| 2026-09-19 | [Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec](/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils) | pourquoi les cabinets comptables n'adoptent pas les nouveaux outils | thought-leadership | direction-associes | 3 | published |
 
 ### Règle, jeu d’essai et recette (`regle-jeu-essai-recette`)
 
