@@ -23,8 +23,9 @@ interface Props {
   motsCles: string[];
   sujets: string[];
   nombreMots: number;
+  rubrique?: { libelle: string; chemin: string } | null;
 }
-const { chemin, titre, description, datePublication, dateMiseAJour, auteur, imageUrl, imageWidth, imageHeight, imageAlt, motsCles, sujets, nombreMots } = Astro.props;
+const { chemin, titre, description, datePublication, dateMiseAJour, auteur, imageUrl, imageWidth, imageHeight, imageAlt, motsCles, sujets, nombreMots, rubrique = null } = Astro.props;
 const u = `${SITE.url}/`;
 const url = `${SITE.url}${chemin}`;
 /** Datetime ISO 8601 complet (UTC), aligné sur les balises Open Graph et le lastmod du sitemap. */
@@ -66,7 +67,8 @@ const graph = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Accueil', item: u },
         { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}${BLOG.chemin}` },
-        { '@type': 'ListItem', position: 3, name: titre, item: url },
+        ...(rubrique ? [{ '@type': 'ListItem', position: 3, name: rubrique.libelle, item: `${SITE.url}${rubrique.chemin}` }] : []),
+        { '@type': 'ListItem', position: rubrique ? 4 : 3, name: titre, item: url },
       ],
     },
     {

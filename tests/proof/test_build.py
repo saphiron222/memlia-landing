@@ -25,6 +25,13 @@ PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-pr
                    'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
                    # v3, 19/09/2026 : première cicatrice, relue et validée par Kevin.
                    'la-plateforme-que-personne-n-a-achetee'}
+BLOG_RUBRIQUES = {
+    'controler-les-bulletins-de-paie-avant-la-dsn': 'paie-dsn-cabinet-comptable',
+    'comprendre-les-comptes-rendus-metier-dsn': 'paie-dsn-cabinet-comptable',
+    'suivre-la-production-sociale-dans-excel': 'paie-dsn-cabinet-comptable',
+    'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier': 'gestion-pieces-comptables',
+    'automatiser-la-relance-des-pieces-clients': 'gestion-pieces-comptables',
+}
 
 
 class Document(HTMLParser):
@@ -129,8 +136,8 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
                      f'{SITE}/outils-comptables-gratuits/calculateur-date-echeance-facture',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
-                         f'{SITE}/blog/{a.stem}' for a in published_articles
-                     } | services_publies
+                         f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
+                     } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
         self.assertNotIn(f'{SITE}/outils-comptables-gratuits/temoin-calcul-local', pages)
@@ -143,7 +150,8 @@ class BuildProof(unittest.TestCase):
         # sitemap qui prétend n'avoir pas bougé (Search Console, 16/09/2026 : 4 pages découvertes
         # alors que douze étaient en ligne).
         registre = json.loads((ROOT / 'src/data/pages-lastmod.json').read_text())['pages']
-        for page in attendues - {f'{SITE}/blog/{a.stem}' for a in published_articles}:
+        pages_non_editoriales = {page for page in attendues if not urlsplit(page).path.startswith('/blog/')}
+        for page in pages_non_editoriales:
             route = urlsplit(page).path.rstrip('/') or '/'
             self.assertIn(route, registre, route)
             # À la seconde : une date au jour annonce minuit, plus ancien que la dernière
@@ -357,7 +365,11 @@ class BuildProof(unittest.TestCase):
                 mots = len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
                 self.assertLess(abs(mots - posting['wordCount']) / mots, 0.10, (mots, posting['wordCount']))
                 crumbs = nodes['BreadcrumbList']['itemListElement']
-                self.assertEqual([c['item'] for c in crumbs], [f'{SITE}/', f'{SITE}/blog', url])
+                attendus = [f'{SITE}/', f'{SITE}/blog']
+                if article.stem in BLOG_RUBRIQUES:
+                    attendus.append(f'{SITE}/blog/rubrique/{BLOG_RUBRIQUES[article.stem]}')
+                attendus.append(url)
+                self.assertEqual([c['item'] for c in crumbs], attendus)
                 self.assertNotIn('aggregateRating', article.read_text())
                 self.assertIn('Sources consultées', article.read_text())
                 self.assertGreaterEqual(article.read_text().count('rel="noopener"'), 3)

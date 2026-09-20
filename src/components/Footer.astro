@@ -7,9 +7,10 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
 /** Pied de page (spec §4.14) : 4 colonnes, ligne © en --texte-2, emblème « M » en filigrane. */
 interface Props {
   blogActif: boolean;
+  rubriques: Array<{ libelle: string; chemin: string }>;
   base?: string;
 }
-const { blogActif } = Astro.props;
+const { blogActif, rubriques } = Astro.props;
 const annee = new Date().getFullYear();
 const services = (await getCollection('services', ({ data }) => data.status === 'publie'))
   .sort((a, b) => a.data.primaryQuery.localeCompare(b.data.primaryQuery, 'fr'))
@@ -23,6 +24,7 @@ const colonnes = [
     titre: 'Comprendre',
     liens: [
       ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
+      ...rubriques.map((rubrique) => ({ libelle: rubrique.libelle, href: rubrique.chemin })),
       { libelle: 'Glossaire', href: '/glossaire' },
       { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
     ],
