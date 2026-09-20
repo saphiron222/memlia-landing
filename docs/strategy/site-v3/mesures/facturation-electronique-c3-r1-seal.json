@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "kind": "c3-r1-candidate-seal",
+  "sealedAt": "2026-09-20T03:18:28+01:00",
+  "prePublishTtlHours": 24,
+  "files": {
+    "docs/strategy/site-v3/POLE-FACTURATION-ELECTRONIQUE.md": "d223e32dbdd523df50cb98fa563179c8c92c181e6bab12f17b8c404ac1041a7f",
+    "docs/strategy/site-v3/METHODE-FENETRES-REGLEMENTAIRES.md": "7f37f55f1bf98841d945b0f00b4ca69937c844f4a7b5503b7a9bf867602dd90e",
+    "docs/strategy/site-v3/mesures/facturation-electronique-2026-09-20.json": "69388060df021ef10c86b9a8a5a935c2597105b592860f96e863d5c38c719dec"
+  },
+  "claims": {
+    "FE-01": {
+      "statement": "la généralisation est effective depuis la date affichée par la DGFiP",
+      "sha256": "b9bc1eb34e3e805a22a6849d66024a21cd9b8977e607dd92fbbffc4c5e10716b"
+    },
+    "FE-02": {
+      "statement": "les échéances diffèrent selon la situation de l’entreprise",
+      "sha256": "9086790f8780a5b49fc3f48abb258d75fe804f7fe004f1edec1fc3a17f552a0d"
+    },
+    "FE-03": {
+      "statement": "L’émission, la transmission et la réception des factures électroniques s’effectuent en recourant à une plateforme agréée.",
+      "sha256": "831abb3d5dffea1c856e5818b8db2ecd68558032a67152df93bc41fc654c443f"
+    },
+    "FE-04": {
+      "statement": "la liste officielle en vigueur est celle de la DGFiP, modifiée le 17/09/2026",
+      "sha256": "d07af2fade3a37082eb3bd8e577661beed28aaf5ab36165cea5ba615332e7e1f"
+    },
+    "FE-05": {
+      "statement": "Service-Public recommande une procédure qui vérifie chaque facture à réception, la valide si elle est conforme et signale sur la plateforme toute anomalie.",
+      "sha256": "406d676f8471b65f20c6fa0d5ae679b8da4587d1371862ff3b62ef7bee67db6e"
+    },
+    "FE-06": {
+      "statement": "L’annuaire AIFE permet de rechercher une structure afin d’accéder à ses adresses de facturation électronique en cours de validité.",
+      "sha256": "e52b773250d13d6593a5144b7db62d5545e9391397cd11959866023b91a952d4"
+    }
+  }
+}
