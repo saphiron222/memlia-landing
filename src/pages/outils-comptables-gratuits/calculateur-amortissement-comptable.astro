@@ -1,0 +1,11 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import CalculateurAmortissement from '@/components/outils/CalculateurAmortissement.astro';
+import { getOutil } from '@/data/outils';
+
+const outil = getOutil('calculateur-amortissement-comptable');
+---
+
+<Outil {outil}>
+  <CalculateurAmortissement />
+</Outil>

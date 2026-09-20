@@ -6,17 +6,18 @@ const TEMOIN = `${HUB}/temoin-calcul-local`;
 const H1_HUB = 'Outils comptables gratuits : calculer, vérifier, convertir';
 const H1_TEMOIN = 'Témoin de calcul local';
 
-function graphFrom(page: Page) {
-  return page.locator('script[type="application/ld+json"]').textContent().then((text) => JSON.parse(text ?? '{}')['@graph']);
+async function graphFrom(page: Page) {
+  const payloads = await page.locator('script[type="application/ld+json"]').allTextContents();
+  return payloads.map((text) => JSON.parse(text)).find((payload) => Array.isArray(payload['@graph']))?.['@graph'] ?? [];
 }
 
-test('hub : trois outils disponibles et schéma de collection', async ({ page }) => {
+test('hub : quatre outils disponibles et schéma de collection', async ({ page }) => {
   const response = await page.goto(HUB);
   expect(response?.status()).toBe(200);
   await expect(page.locator('main h1')).toHaveText(H1_HUB);
   await expect(page.locator('main h1')).toHaveCount(1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${HUB}`);
-  await expect(page.locator('[data-outil-card]')).toHaveCount(3);
+  await expect(page.locator('[data-outil-card]')).toHaveCount(4);
   await expect(page.locator('[data-empty-category]')).toHaveCount(0);
   await expect(page.locator('[data-tool-media]')).toHaveCount(1);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', '/proofs/v2/og/24-outils-hub.webp');
@@ -28,7 +29,7 @@ test('hub : trois outils disponibles et schéma de collection', async ({ page })
     'CollectionPage', 'ItemList', 'BreadcrumbList',
   ]);
   expect(graph.find((node: { '@type': string }) => node['@type'] === 'CollectionPage').headline).toBe(H1_HUB);
-  expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(3);
+  expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(4);
 });
 
 test('footer : le hub et les outils publiés sont générés, le témoin reste absent', async ({ page }) => {
@@ -80,6 +81,40 @@ test('échéance : les deux conventions divergent et l’absence de convention e
   await page.getByLabel('Date de facture', { exact: true }).fill('2026-01-20');
   await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
   await expect(page.locator('[data-result]')).toContainText('21 mars 2026');
+});
+
+test('amortissement : plan linéaire tracé, dégressif confirmé et entrées incohérentes refusées', async ({ page }) => {
+  await page.goto(`${HUB}/calculateur-amortissement-comptable`);
+  await page.getByLabel('Valeur amortissable').fill('10000');
+  await page.getByLabel('Date de mise en service').fill('2026-04-01');
+  await page.getByLabel('Durée d’utilisation').fill('5');
+  await page.getByLabel('Méthode').selectOption('linear');
+  await page.getByRole('button', { name: 'Calculer le plan' }).click();
+  await expect(page.locator('[data-result-method]')).toHaveText('Linéaire comptable');
+  await expect(page.locator('[data-result-rate]')).toHaveText('20,00 %');
+  await expect(page.locator('[data-result-rows] tr').first()).toContainText('275/365');
+  await expect(page.locator('[data-result-rows] tr').first()).toContainText('1 506,85 €');
+  await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
+  await expect(page.locator('[data-result-rows] tr')).toHaveCount(6);
+
+  await page.getByLabel('Durée d’utilisation').fill('0');
+  await page.getByRole('button', { name: 'Calculer le plan' }).click();
+  await expect(page.locator('[data-error]')).toContainText('compris entre 1 et 50 ans');
+  await expect(page.getByLabel('Durée d’utilisation')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByLabel('Durée d’utilisation')).toHaveAttribute('aria-describedby', /amortissement-erreur/);
+
+  await page.getByLabel('Durée d’utilisation').fill('5');
+  await page.getByLabel('Méthode').selectOption('declining');
+  await page.getByRole('button', { name: 'Calculer le plan' }).click();
+  await expect(page.locator('[data-error]')).toContainText('éligibilité du bien');
+  await expect(page.getByLabel(/Je confirme avoir vérifié/)).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByLabel(/Je confirme avoir vérifié/)).toHaveAttribute('aria-describedby', 'amortissement-erreur');
+  await page.getByLabel(/Je confirme avoir vérifié/).check();
+  await page.getByRole('button', { name: 'Calculer le plan' }).click();
+  await expect(page.locator('[data-result-method]')).toHaveText('Dégressif fiscal');
+  await expect(page.locator('[data-result-coefficient]')).toHaveText('1,75');
+  await expect(page.locator('[data-result-rows] tr').first()).toContainText('2 625,00 €');
+  await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
 });
 
 test('rapprochement : CSV exact et refus d’une différence', async ({ page }) => {
@@ -173,6 +208,7 @@ test('maillage entrant : trois contextes rendus par outil, dont le hub et une re
   const referrers = new Map<string, string[]>([
     [`${HUB}/calculateur-marge-commerciale`, [HUB, '/methode', '/automatisation-cabinet-comptable']],
     [`${HUB}/calculateur-date-echeance-facture`, [HUB, '/methode', '/automatisation/factures-fournisseurs']],
+    [`${HUB}/calculateur-amortissement-comptable`, [HUB, '/methode', '/automatisation-cabinet-comptable']],
     [`${HUB}/modele-rapprochement-bancaire-excel-gratuit`, [HUB, '/methode', '/automatisation/rapprochement-bancaire']],
   ]);
   for (const [tool, routes] of referrers) {
@@ -207,6 +243,12 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByLabel(/Je confirme/).check();
       await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
       await expect(page.locator('[data-result]')).toContainText('21 mars 2026');
+    } else if (outil.slug === 'calculateur-amortissement-comptable') {
+      await page.getByLabel('Valeur amortissable').fill('10000');
+      await page.getByLabel('Date de mise en service').fill('2026-04-01');
+      await page.getByLabel('Durée d’utilisation').fill('5');
+      await page.getByRole('button', { name: 'Calculer le plan' }).click();
+      await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
     } else {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');

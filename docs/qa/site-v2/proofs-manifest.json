@@ -3,11 +3,11 @@
   "sources": [
     {
       "path": "docs/design/site-v2-proofs/index.html",
-      "sha256": "b6654f1de59c3e27c9dfd1b4466a7dad53e2ec1ccab802de336fd8c000c82abf"
+      "sha256": "89e872ec8dab16e820a5a51cfb76d4e413162952d06ca365366cf7d54723d5da"
     },
     {
       "path": "docs/design/site-v2-proofs/styles.css",
-      "sha256": "e81594e5b0b28a5dff493a4710e0aa0063e6b887c2697e8c53ec8186750e09c1"
+      "sha256": "8d1756b1b9c4dda46beba50da94568de786864e6513a6082860e73de92bb755d"
     },
     {
       "path": "docs/design/m4-r1-functional-proofs/styles.css",
@@ -15,7 +15,7 @@
     },
     {
       "path": "docs/design/site-v2-proofs/content-contract.json",
-      "sha256": "8765b08f6e87f075cd8f6f19bad17e912a00f547a0f3d0dd466ca5358fa20da1"
+      "sha256": "0226389484a1b0ac8dd2f4bbcdf0db8825768f4c796b0b85915fd8650ac8f3b9"
     },
     {
       "path": "scripts/render-proofs-v2.mjs",
@@ -195,14 +195,14 @@
     {
       "source": "docs/design/site-v2-proofs/index.html#outils-hub",
       "target": "public/proofs/v2/24-outils-hub.webp",
-      "bytes": 34754,
-      "sha256": "5767a61d2413eb2a5e3dede140e677d9428e7a29a5fa4991e5f5d103e4a30946"
+      "bytes": 38642,
+      "sha256": "e0b3fc4a6b974d9a8061d09036d3d414799ad921136d9a0b5a9540b67b05c20a"
     },
     {
       "source": "docs/design/site-v2-proofs/index.html#outils-hub",
       "target": "public/proofs/v2/og/24-outils-hub.webp",
-      "bytes": 21660,
-      "sha256": "dfe0f166cf7167f19c367342adf07452570ebc42575b723820ba276faa7b7dc7"
+      "bytes": 24620,
+      "sha256": "c703045fad7a5d15d24b8e0a0193e9cbf7653c61b4eac4b6ccb54b544b3b28fd"
     },
     {
       "source": "docs/design/site-v2-proofs/index.html#outil-marge",
@@ -239,6 +239,18 @@
       "target": "public/proofs/v2/og/27-outil-rapprochement.webp",
       "bytes": 20158,
       "sha256": "e77d85bc9342d86e7f1fbff0d4d61d34857b1d920fff1c59b023dba4c45bce18"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outil-amortissement",
+      "target": "public/proofs/v2/28-outil-amortissement.webp",
+      "bytes": 30512,
+      "sha256": "3f030a2ba36aa277feb48bf8052dd930c3c5cb246e6fced8f9282b5bf04167dd"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outil-amortissement",
+      "target": "public/proofs/v2/og/28-outil-amortissement.webp",
+      "bytes": 19946,
+      "sha256": "dc04a324c8853c15021c7b454bb9cada6e1c737d676ccc6cfded90691e0f33f7"
     }
   ]
 }

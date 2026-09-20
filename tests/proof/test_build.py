@@ -135,6 +135,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/outils-comptables-gratuits',
                      f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
                      f'{SITE}/outils-comptables-gratuits/calculateur-date-echeance-facture',
+                     f'{SITE}/outils-comptables-gratuits/calculateur-amortissement-comptable',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | services_publies
@@ -180,6 +181,7 @@ class BuildProof(unittest.TestCase):
         outils = {
             '/outils-comptables-gratuits/calculateur-marge-commerciale',
             '/outils-comptables-gratuits/calculateur-date-echeance-facture',
+            '/outils-comptables-gratuits/calculateur-amortissement-comptable',
             '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit',
         }
         sources = {}
@@ -244,15 +246,16 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 4 * len(publies))
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
         # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
-        # aux pages de service et quatre scènes propres aux outils. Les neuf images sociales
+        # aux pages de service et cinq scènes propres aux outils. Les dix images sociales
         # correspondantes restent sous og/.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 27)
+        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 28)
         self.assertEqual(
             sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')),
             sorted([
                 '14-hero-service.webp', '15-hero-methode.webp', '16-hero-garanties.webp',
                 '17-hero-apropos.webp', '18-hero-contact.webp', '24-outils-hub.webp',
                 '25-outil-marge.webp', '26-outil-echeance.webp', '27-outil-rapprochement.webp',
+                '28-outil-amortissement.webp',
             ]),
         )
 
