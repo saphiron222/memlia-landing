@@ -123,6 +123,12 @@ Le reviewer métier juge chaque couple, jamais « l’article en général ». `
 claim. L’absence d’attestation professionnelle produit la mention interne `non attesté`; elle ne
 transforme pas un claim non soutenu en claim publiable.
 
+Si la revue refuse la fraîcheur ou l’applicabilité d’un paquet primaire, le candidat conserve le
+snapshot et ses empreintes comme preuve historique, mais ferme le couple tant que l’état courant
+n’est pas réconcilié. Un extrait exact dans un paquet périmé ne reste jamais `soutient`. Le registre
+recalcule alors les verdicts, les sévérités et les totaux publiables sur le candidat corrigé avant
+toute nouvelle revue.
+
 ## 8. Poser la péremption avant d’écrire
 
 Chaque page réglementaire déclare un manifeste `regulatoryFreshness` :

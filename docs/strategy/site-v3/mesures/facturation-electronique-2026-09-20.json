@@ -228,6 +228,15 @@
       "effectiveFrom": "2026-02-21",
       "effectiveTo": "2222-02-22",
       "applicabilityNote": "Maintained until reprise by the regulatory measures named in the XML note; independent reviewer must confirm current applicability before publication.",
+      "freshnessReview": {
+        "reviewedAt": "2026-09-20T02:33:35+01:00",
+        "officialIndexLatestPackage": "LEGI_20260919-214658.tar.gz",
+        "candidateReconciledThrough": "2026-07-29",
+        "currentStateReconciled": false,
+        "reason": "The candidate does not apply the later DILA packages or prove the absence of a successor version; scope I, exclusions IV/V and the ABROGE_DIFF transition remain unsealed."
+      },
+      "claimBearing": false,
+      "publicationEligible": false,
       "claimExcerptSha256": "9f8a61b9ab546a11f69a67263bb55d8fda66189ecfdb3717746a79f5f9d0c874",
       "claimExcerpt": "L'émission, la transmission et la réception des factures électroniques s'effectuent en recourant à une plateforme agréée."
     },
@@ -251,18 +260,18 @@
     "professionalAttestation": "absent; report as non-attested, not as a gate",
     "candidateCounts": {
       "claims": 6,
-      "SOUTIENT": 4,
+      "SOUTIENT": 3,
       "SOUTIENT_PARTIELLEMENT": 0,
-      "SOURCE_INACCESSIBLE": 2,
-      "publicationEligible": 4,
-      "publicationIneligible": 2
+      "SOURCE_INACCESSIBLE": 3,
+      "publicationEligible": 3,
+      "publicationIneligible": 3
     },
-    "legalTextStatus": "partial-primary-route: FE-03 has a DILA XML candidate; FE-01 and FE-02 remain closed because the applicable article 91 was not opened",
+    "legalTextStatus": "closed-primary-route: FE-01 and FE-02 lack an opened applicable article 91; FE-03 retains a historical DILA snapshot but the current state, transition, scope and exclusions are not reconciled",
     "aiReviewPass": false,
     "claims": [
       {"id": "FE-01", "statement": "la généralisation est effective depuis la date affichée par la DGFiP", "sourceIds": ["impots-situation", "legifrance-loi-2023-1322-art-91"], "verdict": "SOURCE_INACCESSIBLE", "severity": "P1", "publicationEligible": false, "reason": "The doctrine page is open but the applicable primary article 91 remains unreadable; the absolute wording also collapses distinct obligations and populations."},
       {"id": "FE-02", "statement": "les échéances diffèrent selon la situation de l’entreprise", "sourceIds": ["impots-situation", "legifrance-loi-2023-1322-art-91"], "verdict": "SOURCE_INACCESSIBLE", "severity": "P1", "publicationEligible": false, "reason": "Official doctrine supports the idea, but the applicable primary schedule was not opened in the bounded DILA collection."},
-      {"id": "FE-03", "statement": "L’émission, la transmission et la réception des factures électroniques s’effectuent en recourant à une plateforme agréée.", "sourceIds": ["dila-legi-20260729-cgi-289-bis", "impots-pa-guide"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Independent review must confirm the transitional applicability note before any publication."},
+      {"id": "FE-03", "statement": "L’émission, la transmission et la réception des factures électroniques s’effectuent en recourant à une plateforme agréée.", "sourceIds": ["dila-legi-20260729-cgi-289-bis", "impots-pa-guide"], "verdict": "SOURCE_INACCESSIBLE", "severity": "P1", "publicationEligible": false, "reason": "The exact quote is present in the 2026-07-29 DILA package, but the official index reaches 2026-09-19 and the later state was not reconciled. ETAT=ABROGE_DIFF, the conditional transition, scope I and exclusions IV/V are not sealed; doctrine cannot replace the current applicable primary text."},
       {"id": "FE-04", "statement": "la liste officielle en vigueur est celle de la DGFiP, modifiée le 17/09/2026", "sourceIds": ["impots-pa-list"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Link the live DGFiP page, do not copy the list, and distinguish definitive approval from pending interoperability tests."},
       {"id": "FE-05", "statement": "Service-Public recommande une procédure qui vérifie chaque facture à réception, la valide si elle est conforme et signale sur la plateforme toute anomalie.", "sourceIds": ["service-public-f39785"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Keep explicit attribution to Service-Public; do not describe the procedure as an exhaustive legal obligation."},
       {"id": "FE-06", "statement": "L’annuaire AIFE permet de rechercher une structure afin d’accéder à ses adresses de facturation électronique en cours de validité.", "sourceIds": ["aife-annuaire", "service-public-r74135"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Limit the claim to a structure present in the directory; do not add an exclusion not displayed by the current AIFE interface."}
