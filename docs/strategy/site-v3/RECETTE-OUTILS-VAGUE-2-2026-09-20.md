@@ -55,9 +55,11 @@ Le calcul ne traite ni valeur résiduelle, ni cession, ni exercice décalé, ni 
 | Linéaire, 10 000 €, mise en service le 01/04/2026, 5 ans | 6 lignes ; première dotation 1 506,85 € sur 275/365 ; total 10 000,00 €. |
 | Dégressif, mêmes données, éligibilité confirmée | coefficient 1,75 ; première dotation 2 625,00 € ; bascule au quotient résiduel ; total 10 000,00 €. |
 | Durée 0 | refus « compris entre 1 et 50 ans » ; aucun plan rendu. |
+| Valeur 0,001 € ou 0,004 € | refus « saisie au centime » ; aucun plan rendu ; focus rendu au champ valeur. |
+| Valeur 0,01 € | plan accepté ; total réconcilié à 0,01 € ; focus placé sur le titre du résultat. |
 | Dégressif sans confirmation | refus explicite sur l’éligibilité du bien ; aucun plan rendu. |
 
-Tests déterministes : `node --test tests/scripts/amortissement.test.mjs` → **3/3 PASS**.
+Tests déterministes : `node --test tests/scripts/amortissement.test.mjs` → **4/4 PASS**.
 
 ## Preuve réseau et stockage
 
@@ -105,6 +107,7 @@ La route `/convertisseur-factur-x` reste donc absente. Réouverture seulement av
 - quatre outils publiés dans l’`ItemList` du hub ;
 - trois liens entrants contextuels vers le calculateur : hub, méthode, page service ;
 - labels associés, erreurs reliées par `aria-describedby`, `aria-invalid`, résultat annoncé par `aria-live` ;
+- résultat et confirmation réellement absents tant que `hidden` est posé ; focus rendu au premier champ invalide après refus et au titre du résultat après succès ;
 - navigation clavier native ;
 - préférence `prefers-reduced-motion` contrôlée ;
 - aucun débordement horizontal à 320, 375, 768, 1024, 1440 et 1920 px ;
@@ -114,9 +117,9 @@ La route `/convertisseur-factur-x` reste donc absente. Réouverture seulement av
 
 | Contrôle | Résultat mesuré |
 |---|---|
-| `npm run check` | 0 erreur ; 11 hints hérités. |
-| `node --test tests/scripts/amortissement.test.mjs` | 3/3 PASS. |
+| `npm run check` | 0 erreur ; 10 hints hérités. |
+| `node --test tests/scripts/amortissement.test.mjs` | 4/4 PASS. |
 | `node scripts/render-proofs-v2.mjs --check` | 38 preuves conformes au manifeste. |
-| `npm run build` | exit 0 ; 31 pages ; 295 tests de scripts PASS ; audit ressource QA PASS. |
+| `npm run build` | exit 0 ; 33 pages ; 316/316 tests de scripts PASS ; audit ressource QA PASS. |
 | Playwright outils | 20/20 PASS. |
 | Témoin réseau rouge puis vert | exit 1 attendu, puis 1/1 PASS sans injection. |
