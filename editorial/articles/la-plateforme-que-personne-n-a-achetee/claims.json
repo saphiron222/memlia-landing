@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "la-plateforme-que-personne-n-a-achetee",
-  "articleSha256": "c134603854f8b9daa47cad679a0b39c319efe24837db51e67bfcee197219e134",
+  "articleSha256": "61383a8af4288c9385dc3dd2d7d87a53fc7e163b231c34a2daa1868591413175",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -231,26 +231,26 @@
       "sourceExcerpts": {
         "plateforme-extension": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office"
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "plateforme-extension",
             "sourceUrl": "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins",
             "verifiedUrl": "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins",
             "excerpt": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
-            "context": "\t <div class=\"content\"><p>Utilisez la plateforme des compléments Office pour créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office. En utilisant Compléments Office, vous pouvez utiliser des technologies web familières telles que HTML, CSS et JavaScript pour étendre Outlook, Excel, Word, PowerPoint, OneNote et Project et interagir avec eux. Votre solution peut s’exécuter dans Office sur plusieurs plateformes, notamment Windows, Mac, iPad et dans un navigateur.</p>",
-            "contextSha256": "a9789b2b4419654622623bbd56224708e623f5b0bd7366cbe989b5fb43ca3e5f",
+            "context": "Utilisez la plateforme des compléments Office pour créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office.",
+            "contextSha256": "0211c435be965115b11cf8566784d0143d2e7dcf21477800783cedae2d5fe112",
             "citation": {
               "text": "créer des solutions qui étendent des applications Office et interagissent avec du contenu dans des documents Office",
               "sha256": "0d66c08b928f16edc318248bc4aeea7db8b1b54a3f2032af963696f7ae853fd7",
               "sourceContentSha256": "336002aa13b2f9b144d33e3f040da6c4911498df669e86de1dc0c0cad6381495",
               "coordinates": {
                 "finalUrl": "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Vue d’ensemble de la plateforme de compléments pour Office",
                 "locator": {
                   "kind": "line-range",
@@ -276,7 +276,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La phrase de la documentation de l’éditeur est reprise mot pour mot ; seule la formule d’introduction change, la capacité décrite et son périmètre restent ceux de la source.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -292,26 +292,26 @@
       "sourceExcerpts": {
         "analyse-processus": "aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration"
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "analyse-processus",
             "sourceUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
             "verifiedUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
             "excerpt": "aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration",
-            "context": "\t <div class=\"content\"><p>L’exploration de processus est un domaine de recherche et une technologie qui aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration, d’automatisation et de digitalisation.</p>",
-            "contextSha256": "974793faceabf7c196b7cd156d57b3d20d3d6913ff56af6b6fd1cd9d155bb205",
+            "context": "L’exploration de processus est un domaine de recherche et une technologie qui aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration, d’automatisation et de digitalisation.",
+            "contextSha256": "4df1a0b3c6a9e674d78293c0b51135b08f7b3113ad984ed51928464c1843a799",
             "citation": {
               "text": "aide les entreprises à comprendre leurs processus réels, leur fonctionnement et à identifier les opportunités d’amélioration",
               "sha256": "ecf2c590671439fe84f13dfe8e1f7a0c662d4f3e10be999303da355698fc1a43",
               "sourceContentSha256": "46c2ff5b8c2e942d98fcd1eceb53f6c5345bed707c97229a19deab2d4267a3e5",
               "coordinates": {
                 "finalUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Vue d’ensemble de l’exploration de processus dans Power Automate",
                 "locator": {
                   "kind": "line-range",
@@ -334,7 +334,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Reprise à l’identique du début de la définition donnée par la documentation de l’éditeur ; la suite de la phrase est omise et rien n’est ajouté à sa portée.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -350,26 +350,26 @@
       "sourceExcerpts": {
         "analyse-processus": "fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique"
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "analyse-processus",
             "sourceUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
             "verifiedUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
             "excerpt": "fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
-            "context": "<p>La valeur commerciale de la fonctionnalité d’exploration de processus réside dans sa capacité à aider les organisations à obtenir des informations sur leurs processus opérationnels et à identifier les domaines à améliorer. En analysant les données d’événements de diverses sources, la fonctionnalité d’exploration de processus fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique. Cette vue aide les entreprises à :</p>",
-            "contextSha256": "50f1d4342a11eee03563085cf4b1273d93f8746b53442b6f23ce3a72457f82f2",
+            "context": "En analysant les données d’événements de diverses sources, la fonctionnalité d’exploration de processus fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique.",
+            "contextSha256": "31ce4b4036cfb6a5e18de0c30a819d2560418f1dd7458b91055c6bfe1d8fd9a6",
             "citation": {
               "text": "fournit une vue claire de la manière dont les processus sont réellement exécutés dans la pratique",
               "sha256": "9ff5bd199e588d86de4ead38b550764d57ea515cf19170fdc9cfa19b0a7a1192",
               "sourceContentSha256": "46c2ff5b8c2e942d98fcd1eceb53f6c5345bed707c97229a19deab2d4267a3e5",
               "coordinates": {
                 "finalUrl": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Vue d’ensemble de l’exploration de processus dans Power Automate",
                 "locator": {
                   "kind": "line-range",
@@ -395,7 +395,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Phrase de la documentation de l’éditeur reprise à l’identique ; la mention des données d’événements est résumée en données d’exécution sans changer ce qui est affirmé.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }

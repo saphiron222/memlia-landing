@@ -6,9 +6,9 @@
   "title": "Automatiser la relance des pièces clients manquantes",
   "tabTitle": "Relance des pièces manquantes en cabinet comptable | Memlia",
   "summary": "Trois briques rejouables sans changer d’outil : une checklist conditionnelle par dossier, un contrôle de complétude à quatre états, une cadence de relance qui s’arrête à réception. Rien ne part sans validation, tout dossier en litige sort du circuit.",
-  "description": "Relancer les pièces manquantes d’un dossier client en trois briques : checklist conditionnelle, contrôle de complétude, cadence qui cesse à réception.",
+  "description": "Relance pièces manquantes cabinet comptable : une checklist, quatre états et une cadence qui s’arrête à réception, après validation.",
   "publicationDate": "2026-09-16",
-  "updatedAt": "2026-09-19",
+  "updatedAt": "2026-09-20",
   "topics": [
     "pieces",
     "automatisation",
@@ -41,7 +41,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-19"
+      "verifiedAt": "2026-09-20"
     }
   },
   "businessReview": {
@@ -61,14 +61,14 @@
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
   "proofRequired": "Jeu fictif de six dossiers rejoué sur la règle (cas courant, pièce hors période, dossier en litige, dossier sans checklist) ; tableau déclencheur-condition-action-exception ; quatre affirmations sourcées.",
-  "sourcesVerifiedAt": "2026-09-19",
+  "sourcesVerifiedAt": "2026-09-20",
   "sources": [
     {
       "id": "cnil-principes",
       "publisher": "CNIL",
       "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
       "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -83,7 +83,7 @@
       "publisher": "CNIL",
       "title": "Les durées de conservation des données",
       "url": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -98,7 +98,7 @@
       "publisher": "Service Public",
       "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
       "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -113,7 +113,7 @@
       "publisher": "CNIL",
       "title": "Définition : sous-traitant",
       "url": "https://www.cnil.fr/fr/definition/sous-traitant",
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -143,12 +143,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-19"
+      "checkedAt": "2026-09-20"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-19"
+      "checkedAt": "2026-09-20"
     }
   },
   "links": {
@@ -184,6 +184,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-09-19",
+  "publishedAt": "2026-09-20",
   "publicationEvidence": "preuves/publication.json"
 }

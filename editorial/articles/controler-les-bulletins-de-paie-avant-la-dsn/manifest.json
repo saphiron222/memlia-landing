@@ -6,9 +6,9 @@
   "title": "Comment contrôler les bulletins de paie avant la DSN ?",
   "tabTitle": "Contrôle bulletin de paie en cabinet : avant la DSN | Memlia",
   "summary": "Trois revues à clore sur le fichier exact qui sera transmis : pièces et variables, écarts du bulletin, contrôle technique du fichier. Chaque écart est expliqué, corrigé puis retesté, ou confié à une personne désignée, et la trace se rattache au dernier fichier. Rien ne part sans validation.",
-  "description": "Méthode en trois revues pour contrôler variables, bulletins et fichier DSN, qualifier les écarts et conserver les preuves avant le dépôt.",
+  "description": "Contrôle bulletin de paie : trois revues pour vérifier variables, bulletins et fichier DSN, traiter les écarts et garder les preuves.",
   "publicationDate": "2026-09-09",
-  "updatedAt": "2026-09-17",
+  "updatedAt": "2026-09-20",
   "topics": [
     "paie",
     "dsn",
@@ -46,7 +46,7 @@
     "proof": {
       "level": "hypothese",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-18"
+      "verifiedAt": "2026-09-20"
     }
   },
   "businessReview": {
@@ -66,14 +66,14 @@
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
   "proofRequired": "Trois revues décrites avec leur responsable, leur moment, leur critère de blocage et leur preuve ; jeu fictif à trois cas (pièce cohérente, absente, contradictoire) ; tableau à trois colonnes de la frontière ; huit affirmations DSN et paie citées mot pour mot depuis Service-Public et Net-entreprises, ouvertes le jour de la republication.",
-  "sourcesVerifiedAt": "2026-09-18",
+  "sourcesVerifiedAt": "2026-09-20",
   "sources": [
     {
       "id": "service-public-dsn",
       "publisher": "Service Public",
       "title": "Déclaration sociale nominative (DSN)",
       "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F34059",
-      "checkedAt": "2026-09-18",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -88,7 +88,7 @@
       "publisher": "Net-entreprises",
       "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
       "url": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-      "checkedAt": "2026-09-18",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -103,7 +103,7 @@
       "publisher": "Net-entreprises",
       "title": "Les comptes rendus métiers DSN",
       "url": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-      "checkedAt": "2026-09-18",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -118,7 +118,7 @@
       "publisher": "Net-entreprises",
       "title": "La fiabilisation des données de la DSN",
       "url": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-      "checkedAt": "2026-09-18",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -148,12 +148,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-18"
+      "checkedAt": "2026-09-20"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-18"
+      "checkedAt": "2026-09-20"
     }
   },
   "links": {
@@ -192,6 +192,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-09-18",
+  "publishedAt": "2026-09-20",
   "publicationEvidence": "preuves/publication.json"
 }

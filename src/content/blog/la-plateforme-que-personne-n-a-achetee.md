@@ -4,7 +4,7 @@ titreOnglet: "Pourquoi un cabinet n’adopte pas un nouvel outil | Memlia"
 resume: "J’ai construit une application complète pour remplacer les classeurs d’un cabinet. La personne qui allait s’en servir a dit non, pas au prix mais à l’idée d’abandonner son fichier : j’avais ajouté un outil de plus, et choisi les tâches sans les mesurer."
 description: "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils : un échec réel et la règle de cadrage qui en est sortie."
 datePublication: 2026-09-19
-dateMiseAJour: 2026-09-19
+dateMiseAJour: 2026-09-20
 auteur: kevin
 sujets: [methode, cabinet, automatisation, pilotage]
 motsCles: ["adoption d’un outil en cabinet comptable", "choisir une tâche à automatiser", "relevé de temps par tâche", "automatisation greffée dans un outil existant", "cadrage d’un projet d’automatisation", "règle reproductible"]
@@ -23,7 +23,7 @@ tache: "Choisir la tâche d’un cabinet qui sera prise en charge en premier, et
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-19
+  date: 2026-09-20
 funnel: TOFU
 contentType: shareable
 format: thought-leadership
@@ -33,7 +33,7 @@ proofStatus: verifiee
 proofRequired: "Récit du refus du 21/07/2026 et du pivot vers l’outil déjà ouvert, avec le délai mesuré de cinq jours jusqu’à la première recette ; le questionnaire revenu avec toutes ses lignes de réponse vides et le formulaire qui calcule ses propres manques, écrit une semaine plus tard ; trois affirmations documentaires reliées à deux pages ouvertes, plus une troisième page de contexte sans claim attribué."
 reviewRule: "Réviser si le test de reproductibilité ou les échelles de cotation du cadrage changent, et à la publication d’un article de la famille choisir et cadrer ; relecture des sources à six mois."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-19
+sourcesVerifieesLe: 2026-09-20
 cta:
   label: "Confier cette tâche"
   destination: "/contact"
@@ -45,15 +45,15 @@ sources:
   - editeur: "Microsoft Learn"
     titre: "Vue d’ensemble de la plateforme de compléments pour Office"
     url: "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins"
-    consulte: 2026-09-19
+    consulte: 2026-09-20
   - editeur: "Microsoft Learn"
     titre: "Vue d’ensemble de l’exploration de processus dans Power Automate"
     url: "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview"
-    consulte: 2026-09-19
+    consulte: 2026-09-20
   - editeur: "Google Chrome Enterprise and Education"
     titre: "Installer le navigateur Chrome sur un parc de postes gérés"
     url: "https://support.google.com/chrome/a/answer/9025903?hl=fr"
-    consulte: 2026-09-19
+    consulte: 2026-09-20
 ---
 
 ## Réponse directe

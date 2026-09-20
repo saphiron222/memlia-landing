@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
-  "articleSha256": "d2a11828ef0c9bad0653b3a30835344ef10d4942dcfd55ac3fc669ca2be766f1",
+  "articleSha256": "63c2afb4b30b2a9d21cd072495546f215c3fe950db9e992a9b76daca841574c6",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -404,26 +404,26 @@
       "sourceExcerpts": {
         "net-entreprises-crm": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-crm",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
             "excerpt": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
-            "context": "            Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.         </a>",
-            "contextSha256": "4fcba10565e40fd4346871b2454d6c3db8e75a4b843366395b6aa8ddc454fc91",
+            "context": "En savoir plus Les outils de suivi – Tableaux de bord En savoir plus CRM DSN net-entreprises.fr Les Comptes Rendus Métiers DSN Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
+            "contextSha256": "d210afde5ad408d15d548d9ce16e7c9d14554bec36446c5fab4ca1cb934a5a6f",
             "citation": {
               "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
               "sha256": "ef509c5e2bb80ff3b9aebd039458d169e786ca17dbb00478b7c5774d8192c754",
-              "sourceContentSha256": "936cc3cca2914f9429d152e72dd8415a5847e1f84405b7628c81d072e706c176",
+              "sourceContentSha256": "db69317c2cca63948cc62765ed33eae68e895d11d727bc9021cb6d11a6924185",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Les comptes rendus métiers DSN",
                 "locator": {
                   "kind": "line-range",
@@ -455,7 +455,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition officielle du compte rendu métier, citée mot pour mot depuis Net-entreprises.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -471,26 +471,26 @@
       "sourceExcerpts": {
         "net-entreprises-crm": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations"
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-crm",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
             "excerpt": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations",
-            "context": "<p>A réception des données de la DSN, chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations afin d&rsquo;en garantir la fiabilité.</p>",
-            "contextSha256": "bb5479513aef567c0ee1811565e087c642904e60f550f4f97c0f0212095a2966",
+            "context": "A réception des données de la DSN, chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations afin d’en garantir la fiabilité.",
+            "contextSha256": "8de23f02b5ab3ab0d60b580b938809462e4c60855788ce56598920b6b657ecfe",
             "citation": {
               "text": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations",
               "sha256": "9025f56c250f637d165f2b9a2d58120108f667fe3d692f91c0760da2769b823c",
-              "sourceContentSha256": "936cc3cca2914f9429d152e72dd8415a5847e1f84405b7628c81d072e706c176",
+              "sourceContentSha256": "db69317c2cca63948cc62765ed33eae68e895d11d727bc9021cb6d11a6924185",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Les comptes rendus métiers DSN",
                 "locator": {
                   "kind": "line-range",
@@ -518,7 +518,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Le traitement des données par chaque organisme avant la mise à disposition du CRM, cité mot pour mot.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -534,26 +534,26 @@
       "sourceExcerpts": {
         "net-entreprises-retours": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN"
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-retours",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
             "excerpt": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN",
-            "context": "<p><strong>Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN</strong>. Vous devez impérativement vérifier les comptes rendus métier et retours d’informations mis à disposition par vos organismes.</p>",
-            "contextSha256": "fc6b3654789c6d62b4589d15a103f99cfc0c5752342305058f411510bb681271",
+            "context": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN .",
+            "contextSha256": "49bff6fc0b48ae0e678125adf987ef4e72e4f3926c9f7f960d7e097606a97f2d",
             "citation": {
               "text": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN",
               "sha256": "a83fa12f2c9ef77adba16046bafed7c7a1a525fd36f923c4967aa6fbf55736ba",
-              "sourceContentSha256": "9f56bbe25d3ed3b79c53e68ff855c4b02f686d61018ad468b6c9e85e2fb4682a",
+              "sourceContentSha256": "4070e20c8f755b6297f7784bd144d67e833cd449b76ac920bdb9ad03d02a72e6",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Les retours d’informations suite au dépôt de votre DSN ou signalement d’événement",
                 "locator": {
                   "kind": "line-range",
@@ -578,7 +578,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Portée du certificat de conformité, limitée à la transmission, formulée par Net-entreprises.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -594,26 +594,26 @@
       "sourceExcerpts": {
         "net-entreprises-retours": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires"
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-retours",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
             "excerpt": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires",
-            "context": "<li><strong>Contrôle non bloquant</strong> : votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires.</li>",
-            "contextSha256": "cc00934bb6d57ac521d2ec80679a24cf2d514b3e040426dcdb0fd226f3ee0281",
+            "context": "Contrôle non bloquant : votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires.",
+            "contextSha256": "cba1149df3d5550b29b79ce765931e82149c74ccee052f3816c6e18c0f2f47e0",
             "citation": {
               "text": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires",
               "sha256": "f10987711b83d2fd6cbc7c2d4d2f8bb0a4992a9712f9df537aa77e2be69799c5",
-              "sourceContentSha256": "9f56bbe25d3ed3b79c53e68ff855c4b02f686d61018ad468b6c9e85e2fb4682a",
+              "sourceContentSha256": "4070e20c8f755b6297f7784bd144d67e833cd449b76ac920bdb9ad03d02a72e6",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Les retours d’informations suite au dépôt de votre DSN ou signalement d’événement",
                 "locator": {
                   "kind": "line-range",
@@ -641,7 +641,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition du contrôle non bloquant : une DSN acceptée peut encore porter des écarts à corriger.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -657,26 +657,26 @@
       "sourceExcerpts": {
         "net-entreprises-dsn-val": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer."
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-dsn-val",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
             "excerpt": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
-            "context": "<p>L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.</p>",
-            "contextSha256": "f566bbef2d076729f66f7a714d01a4b3e140a318d0d6bfd2cd8680c456501dd2",
+            "context": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
+            "contextSha256": "893f99eabd891f24099976f4a6929fa77d2c407d17fc2218d8b85d1d198d7065",
             "citation": {
               "text": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
               "sha256": "893f99eabd891f24099976f4a6929fa77d2c407d17fc2218d8b85d1d198d7065",
-              "sourceContentSha256": "8265c7bbf43f7e3dc108dd40e7b773e800d221c04be74f0320b85143444970c9",
+              "sourceContentSha256": "9f1587d55b15b76771404c9625bf1993803c5d450a77145f595f8f5bc34cb714",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
                 "locator": {
                   "kind": "line-range",
@@ -699,7 +699,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Rôle de Dsn-Val, outil d’auto-contrôle du fichier avant dépôt, cité depuis Net-entreprises.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -715,26 +715,26 @@
       "sourceExcerpts": {
         "net-entreprises-fiabilisation": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel."
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-fiabilisation",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
             "excerpt": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
-            "context": "<li>En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.</li>",
-            "contextSha256": "019c8fcb678b79348973b4e1ab6e07485c31be7cf6dbe3723f06eead6c35e3b1",
+            "context": "Des outils complémentaires sont également mis à disposition : Suivi DSN de l’Urssaf, DSN-Fiab de l’Agirc-Arrco, PEP’S de la Caisse des Dépôts … En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
+            "contextSha256": "db8d8e5d4a5789e5f8ca33b6eaa5987122e7e820b0e4d6dd249ab5b5fb24adfb",
             "citation": {
               "text": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
               "sha256": "bb9fec5b0347c9d1d02e0020a766c08ffbaa4c0a202f3e6d07880bcce5331631",
-              "sourceContentSha256": "b2fafee4f86827db972e981c03de401ba96abdd0d2e7276fd5f5f0ca6c3e30d3",
+              "sourceContentSha256": "09c6a5f14b70a21e8403ae9d7eb6dceaccb8064a288132aa2639c5ea10273591",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "La fiabilisation des données de la DSN",
                 "locator": {
                   "kind": "line-range",
@@ -761,7 +761,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Répartition organisme / éditeur recommandée par Net-entreprises.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -777,26 +777,26 @@
       "sourceExcerpts": {
         "net-entreprises-fiabilisation": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant."
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-fiabilisation",
             "sourceUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
             "verifiedUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
             "excerpt": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
-            "context": "<li>En corrigeant <u>au plus tôt</u> les erreurs signalées en réalisant la modification en paie et en transmettant une DSN « annule et remplace » avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.</li>",
-            "contextSha256": "263996c2fc19df2c9309d3c238f0176c28b48625266d7311be2c8fcc65d64545",
+            "context": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
+            "contextSha256": "0a60eada4f445fa37d853caa0d214039ff76e44db4b0063797cd0a1c7815f3ec",
             "citation": {
               "text": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
               "sha256": "0a60eada4f445fa37d853caa0d214039ff76e44db4b0063797cd0a1c7815f3ec",
-              "sourceContentSha256": "b2fafee4f86827db972e981c03de401ba96abdd0d2e7276fd5f5f0ca6c3e30d3",
+              "sourceContentSha256": "09c6a5f14b70a21e8403ae9d7eb6dceaccb8064a288132aa2639c5ea10273591",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "La fiabilisation des données de la DSN",
                 "locator": {
                   "kind": "line-range",
@@ -827,7 +827,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Fenêtre de la DSN « annule et remplace » et report au mois suivant, cités mot pour mot.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }

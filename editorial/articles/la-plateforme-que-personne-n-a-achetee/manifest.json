@@ -6,9 +6,9 @@
   "title": "Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec",
   "tabTitle": "Pourquoi un cabinet n’adopte pas un nouvel outil | Memlia",
   "summary": "J’ai construit une application complète pour remplacer les classeurs d’un cabinet. La personne qui allait s’en servir a dit non, pas au prix mais à l’idée d’abandonner son fichier : j’avais ajouté un outil de plus, et choisi les tâches sans les mesurer.",
-  "description": "Une application finie, évaluée, jamais adoptée : pourquoi ajouter un outil est une erreur de cadrage, et la règle de relevé qui en est sortie.",
+  "description": "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils : un échec réel et la règle de cadrage qui en est sortie.",
   "publicationDate": "2026-09-19",
-  "updatedAt": "2026-09-19",
+  "updatedAt": "2026-09-20",
   "topics": [
     "methode",
     "cabinet",
@@ -42,7 +42,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-19"
+      "verifiedAt": "2026-09-20"
     }
   },
   "businessReview": {
@@ -62,14 +62,14 @@
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
   "proofRequired": "Récit du refus du 21/07/2026 et du pivot vers l’outil déjà ouvert, avec le délai mesuré de cinq jours jusqu’à la première recette ; le questionnaire revenu avec toutes ses lignes de réponse vides et le formulaire qui calcule ses propres manques, écrit une semaine plus tard ; trois affirmations documentaires reliées à deux pages ouvertes, plus une troisième page de contexte sans claim attribué.",
-  "sourcesVerifiedAt": "2026-09-19",
+  "sourcesVerifiedAt": "2026-09-20",
   "sources": [
     {
       "id": "plateforme-extension",
       "publisher": "Microsoft Learn",
       "title": "Vue d’ensemble de la plateforme de compléments pour Office",
       "url": "https://learn.microsoft.com/fr-fr/office/dev/add-ins/overview/office-add-ins",
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "level": "tier-2",
       "provenance": "primary",
       "official": false,
@@ -84,7 +84,7 @@
       "publisher": "Microsoft Learn",
       "title": "Vue d’ensemble de l’exploration de processus dans Power Automate",
       "url": "https://learn.microsoft.com/fr-fr/power-automate/process-mining-overview",
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "level": "tier-2",
       "provenance": "primary",
       "official": false,
@@ -99,7 +99,7 @@
       "publisher": "Google Chrome Enterprise and Education",
       "title": "Installer le navigateur Chrome sur un parc de postes gérés",
       "url": "https://support.google.com/chrome/a/answer/9025903?hl=fr",
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "level": "tier-2",
       "provenance": "primary",
       "official": false,
@@ -129,12 +129,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-19"
+      "checkedAt": "2026-09-20"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-19"
+      "checkedAt": "2026-09-20"
     }
   },
   "links": {
@@ -171,6 +171,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-09-19",
+  "publishedAt": "2026-09-20",
   "publicationEvidence": "preuves/publication.json"
 }

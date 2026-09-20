@@ -1,6 +1,6 @@
 # SEO et préparation aux citations IA — Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec
 
-Verdict : PASS — 94/100, 0 P0 (revue indépendante du 2026-09-19, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
+Verdict : PASS — 94/100, 0 P0 (revue indépendante du 2026-09-20, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
 | Catégorie | Score |
 | --- | ---: |

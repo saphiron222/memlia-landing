@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "articleSha256": "b003816625a783b40c463995ec503c987588747f376cf8aa9a709ce7c6109a6c",
+  "articleSha256": "b53e32e3210a41188f2a6569efe70e2f1070807e9841dd975ebfaf7d176fdc25",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -286,26 +286,26 @@
       "sourceExcerpts": {
         "sp-mentions-facture": "comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique"
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "sp-mentions-facture",
             "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808",
             "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808",
             "excerpt": "comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique",
-            "context": "               data-chapter-btn=\"accordion-chapter-btn-1\" aria-labelledby=\"accordion-chapter-btn-1\" data-fr-analytics-action=\"false\"><div class=\"sp-chapter-content\"><p data-test=\"contenu-texte\">Pour être conforme aux règles de <a href=\"https://entreprendre.service-public.gouv.fr/vosdroits/F23208\"><span>facturation</span></a>, une facture doit <strong>obligatoirement</strong> comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique :</p><div class=\"fr-table fr-table--bordered\"><div class=\"fr-table__wrapper\"><div class=\"fr-table__container\"><div class=\"fr-table__content\"><table class=\"fr-cell--multiline sp-table\"><caption><svg aria-hidden=\"true\" focusable=\"false\" class=\"sp-icon fr-mr-1v sp-icon-ri-table-line\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path d=\"M4 8h16V5H4v3zm10 11v-9h-4v9h4zm2 0h4v-9h-4v9zm-8 0v-9H4v9h4zM3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z\"></path></svg><span data-test=\"titre-tableau-riche\">",
-            "contextSha256": "96e5275edf8665ef04b1f99aebd5e420ef9f2c474b549ca182693f00fd205a91",
+            "context": "Pour être conforme aux règles de facturation , une facture doit obligatoirement comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique :",
+            "contextSha256": "c0f873f4bf9aed5000c0d1f0ee428b2601811a4a67adc0a33851fe47b9ab5ace",
             "citation": {
               "text": "comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique",
               "sha256": "a72dc227ddf1ee2aed9d18974e3f0dc5372d1a237540c1e9e8f7b18ee518865f",
-              "sourceContentSha256": "4d32fc0b593d172f272c702f1d68bc1c3d86329b24d7403da0eeed79f12e02f0",
+              "sourceContentSha256": "0d295b9b80942cfdee24d664656096c6a88bb93b49596b7acde59050dfbf4aaa",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-20",
                 "title": "Mentions obligatoires sur une facture",
                 "locator": {
                   "kind": "line-range",
@@ -332,7 +332,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La phrase de la fiche Service-Public sur les mentions obligatoires d’une facture est reprise à l’identique, sans élargir sa portée.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -348,26 +348,26 @@
       "sourceExcerpts": {
         "sp-facture-electronique": "La facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie."
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "sp-facture-electronique",
             "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
             "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
             "excerpt": "La facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie.",
-            "context": "      ><svg aria-hidden=\"true\" focusable=\"false\" class=\"fr-mr-1w sp-icon sp-icon-ri-equalizer-line\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path d=\"M6.17 18a3.001 3.001 0 0 1 5.66 0H22v2H11.83a3.001 3.001 0 0 1-5.66 0H2v-2h4.17zm6-7a3.001 3.001 0 0 1 5.66 0H22v2h-4.17a3.001 3.001 0 0 1-5.66 0H2v-2h10.17zm-6-7a3.001 3.001 0 0 1 5.66 0H22v2H11.83a3.001 3.001 0 0 1-5.66 0H2V4h4.17zM9 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm6 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-6 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2z\"></path></svg><span>Évaluer son obligation de facturation électronique<span class=\"fr-icon-external-link-line fr-fi--sm fr-ml-1w\"></span></span></a></p></div><div data-print-section><h4 class=\"fr-h4 fr-my-3w\"><span class=\"sp-title-number-container\"><span class=\"sp-title-number-number\"><span>2</span></span><span class=\"sp-title-number-title\">Adapter les outils et les processus internes</span></span></h4><p data-test=\"contenu-texte\">La cartographie des flux de facturation permet également :</p><ul class=\"sp-item-list fr-text--md\"><li>d'adapter les outils actuellement utilisés à la facturation électronique</li><li>d'adapter les processus internes de l'entreprise</li><li>de choisir une solution de transmission adaptée aux besoins de l'entreprise</li></ul></div><div data-print-section><h4 class=\"fr-h4 fr-my-3w\"><span class=\"sp-title-number-container\"><span class=\"sp-title-number-number\"><span>3</span></span><span class=\"sp-title-number-title\">Organiser le suivi des factures reçues</span></span></h4><p data-test=\"contenu-texte\">La facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie.</p><p data-test=\"contenu-texte\">Il convient notamment de mettre en place une procédure permettant :</p><ul class=\"sp-item-list fr-text--md\"><li>de vérifier chaque facture dès sa réception</li><li>de la valider lorsqu'elle est conforme</li><li>de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)</li></ul></div><div data-print-section><h4 class=\"fr-h4 fr-my-3w\"><span class=\"sp-title-number-container\"><span class=\"sp-title-number-number\"><span>4</span></span><span class=\"sp-title-number-title\">Anticiper le traitement des factures impayées</span></span></h4><p data-test=\"contenu-texte\">Lorsqu’une facture entre entreprises n’est pas payée et n’a pas été contestée, elle est considérée comme une dette reconnue.</p><p data-test=\"contenu-texte\">Dans ce cas, la <strong>procédure de recouvrement des <span class=\"sp-tooltip\" tabindex=\"0\"  id=\"sp-tooltip-R76829-K82EF\" data-definition=\"R76829\" data-id=\"R76829-K82EF\" aria-describedby=\"tooltip-R76829-K82EF\"",
-            "contextSha256": "ab60a3ea6fdc3f6b08a466a5bdd8a743d08667e7796757cea72fb0deb8196140",
+            "context": "La facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie.",
+            "contextSha256": "2f0d3b50ec4fbf8e596e2cf11e31ea2486ee93daa2ca6988b05c1aef83b130f7",
             "citation": {
               "text": "La facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie.",
               "sha256": "2f0d3b50ec4fbf8e596e2cf11e31ea2486ee93daa2ca6988b05c1aef83b130f7",
-              "sourceContentSha256": "4788eb52f0c48347d6b20a9bcab252d93a6ee19753c9a2646e877df8deab3930",
+              "sourceContentSha256": "8c12cfa03c4799f6cfb19d7c10e3166011b5f481392a10c8cc346633201f75c8",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-20",
                 "title": "Comment se mettre en conformité avec l’obligation de facturation électronique ?",
                 "locator": {
                   "kind": "line-range",
@@ -394,7 +394,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Constat de la fiche Service-Public sur la facturation électronique, repris mot pour mot, sans y ajouter de date ni d’obligation.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -410,26 +410,26 @@
       "sourceExcerpts": {
         "sp-facture-electronique": "de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)"
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "sp-facture-electronique",
             "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
             "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
             "excerpt": "de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)",
-            "context": "      ><svg aria-hidden=\"true\" focusable=\"false\" class=\"fr-mr-1w sp-icon sp-icon-ri-equalizer-line\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path d=\"M6.17 18a3.001 3.001 0 0 1 5.66 0H22v2H11.83a3.001 3.001 0 0 1-5.66 0H2v-2h4.17zm6-7a3.001 3.001 0 0 1 5.66 0H22v2h-4.17a3.001 3.001 0 0 1-5.66 0H2v-2h10.17zm-6-7a3.001 3.001 0 0 1 5.66 0H22v2H11.83a3.001 3.001 0 0 1-5.66 0H2V4h4.17zM9 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm6 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-6 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2z\"></path></svg><span>Évaluer son obligation de facturation électronique<span class=\"fr-icon-external-link-line fr-fi--sm fr-ml-1w\"></span></span></a></p></div><div data-print-section><h4 class=\"fr-h4 fr-my-3w\"><span class=\"sp-title-number-container\"><span class=\"sp-title-number-number\"><span>2</span></span><span class=\"sp-title-number-title\">Adapter les outils et les processus internes</span></span></h4><p data-test=\"contenu-texte\">La cartographie des flux de facturation permet également :</p><ul class=\"sp-item-list fr-text--md\"><li>d'adapter les outils actuellement utilisés à la facturation électronique</li><li>d'adapter les processus internes de l'entreprise</li><li>de choisir une solution de transmission adaptée aux besoins de l'entreprise</li></ul></div><div data-print-section><h4 class=\"fr-h4 fr-my-3w\"><span class=\"sp-title-number-container\"><span class=\"sp-title-number-number\"><span>3</span></span><span class=\"sp-title-number-title\">Organiser le suivi des factures reçues</span></span></h4><p data-test=\"contenu-texte\">La facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie.</p><p data-test=\"contenu-texte\">Il convient notamment de mettre en place une procédure permettant :</p><ul class=\"sp-item-list fr-text--md\"><li>de vérifier chaque facture dès sa réception</li><li>de la valider lorsqu'elle est conforme</li><li>de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)</li></ul></div><div data-print-section><h4 class=\"fr-h4 fr-my-3w\"><span class=\"sp-title-number-container\"><span class=\"sp-title-number-number\"><span>4</span></span><span class=\"sp-title-number-title\">Anticiper le traitement des factures impayées</span></span></h4><p data-test=\"contenu-texte\">Lorsqu’une facture entre entreprises n’est pas payée et n’a pas été contestée, elle est considérée comme une dette reconnue.</p><p data-test=\"contenu-texte\">Dans ce cas, la <strong>procédure de recouvrement des <span class=\"sp-tooltip\" tabindex=\"0\"  id=\"sp-tooltip-R76829-K82EF\" data-definition=\"R76829\" data-id=\"R76829-K82EF\" aria-describedby=\"tooltip-R76829-K82EF\"",
-            "contextSha256": "ab60a3ea6fdc3f6b08a466a5bdd8a743d08667e7796757cea72fb0deb8196140",
+            "context": "de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)",
+            "contextSha256": "1ae1e12a01631eda63072a90881bfe166bc334dd047eb5bf17c759ef8f555794",
             "citation": {
               "text": "de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)",
               "sha256": "1ae1e12a01631eda63072a90881bfe166bc334dd047eb5bf17c759ef8f555794",
-              "sourceContentSha256": "4788eb52f0c48347d6b20a9bcab252d93a6ee19753c9a2646e877df8deab3930",
+              "sourceContentSha256": "8c12cfa03c4799f6cfb19d7c10e3166011b5f481392a10c8cc346633201f75c8",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-20",
                 "title": "Comment se mettre en conformité avec l’obligation de facturation électronique ?",
                 "locator": {
                   "kind": "line-range",
@@ -455,7 +455,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Possibilité de signalement décrite par la fiche Service-Public, citée à l’identique et présentée comme une possibilité, non comme une obligation.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -471,26 +471,26 @@
       "sourceExcerpts": {
         "sp-conservation-pieces": "documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés"
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "sp-conservation-pieces",
             "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
             "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
             "excerpt": "documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés",
-            "context": "               data-chapter-btn=\"accordion-chapter-btn-3\" aria-labelledby=\"accordion-chapter-btn-3\" data-fr-analytics-action=\"false\"><div class=\"sp-chapter-content\"><p data-test=\"contenu-texte\">Les livres, registres, documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés pendant un délai de <strong>6 ans</strong>.</p><p data-test=\"contenu-texte\">Ce délai commence à partir de <strong>l'un des moments suivants</strong>  :</p><ul class=\"sp-item-list fr-text--md\"><li>Dernière opération mentionnée sur les livres ou registres</li><li>Date à laquelle les documents ou pièces ont été établis.</li></ul><p data-test=\"contenu-texte\">Exemple : les éléments concernant les revenus de 2018, déclarés en 2019, doivent être conservés jusqu'à fin 2024.</p><div class=\"fr-table fr-table--bordered\"><div class=\"fr-table__wrapper\"><div class=\"fr-table__container\"><div class=\"fr-table__content\"><table class=\"fr-cell--multiline sp-table\"><caption><svg aria-hidden=\"true\" focusable=\"false\" class=\"sp-icon fr-mr-1v sp-icon-ri-table-line\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path d=\"M4 8h16V5H4v3zm10 11v-9h-4v9h4zm2 0h4v-9h-4v9zm-8 0v-9H4v9h4zM3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z\"></path></svg><span data-test=\"titre-tableau-riche\">",
-            "contextSha256": "2a9860a72f5efa05231750838c0207250b26845b8cbbcfa680978c04bbeb005e",
+            "context": "Les livres, registres, documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés pendant un délai de 6 ans .",
+            "contextSha256": "948548783fb4c245277a061373da75a2179a8ca81f14b65ee9343d209cc30e9f",
             "citation": {
               "text": "documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés",
               "sha256": "2dd5eff7a2e0a76255fb0246b4e0465bf43a558fe57608c894de50149156f8a2",
-              "sourceContentSha256": "13993453427a36c3d5300571040f8e785767e927eaca0f01bbbbb15695f296e2",
+              "sourceContentSha256": "7bd136262ec61272d4955a76aa719133027a04adb5520df94c335389c0d09c1c",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-20",
                 "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
                 "locator": {
                   "kind": "line-range",
@@ -520,7 +520,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Phrase de la fiche Service-Public sur la conservation des documents reprise à l’identique ; seule l’apostrophe typographique diffère, et aucune durée n’est affirmée.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -536,26 +536,26 @@
       "sourceExcerpts": {
         "cnil-donnee-personnelle": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable."
       },
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "cnil-donnee-personnelle",
             "sourceUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
             "verifiedUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
             "excerpt": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
-            "context": "<meta name=\"description\" content=\"Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable. Mais, parce qu’elles concernent des personnes, celles-ci doivent en conserver la maîtrise. Une personne physique peut être identifiée :\" />",
-            "contextSha256": "d9fea1c45d3e15bed36558f979655b3ca32c9ec405bae1288aad403412070c59",
+            "context": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+            "contextSha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
             "citation": {
               "text": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
               "sha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
-              "sourceContentSha256": "c508ec4aae8ce16b66edfaf6a6b3a0c0910c0e21534b90df37fd27a9bf0ac189",
+              "sourceContentSha256": "ff583e80ed586d34582ee4986c3321d0ccd4bd0ae8a157b959a0784954171d47",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
-                "checkedAt": "2026-09-17",
+                "checkedAt": "2026-09-20",
                 "title": "Définition : donnée personnelle",
                 "locator": {
                   "kind": "line-range",
@@ -581,7 +581,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition officielle de la donnée personnelle publiée par la CNIL, reprise à l’identique.",
-            "checkedAt": "2026-09-17"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
