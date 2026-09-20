@@ -3,12 +3,47 @@
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-18",
-  "articleSha256": "70ba23a9b3fdcf921fd41b0b4e477b98b5a397effa7525281d6c25ac2fca95c1",
-  "manifestSha256": "ce9086643fb616a88230bc953afb25fa17b75599a2f1696e17340d08f4e6ea72",
+  "checkedAt": "2026-09-20",
+  "articleSha256": "1be22a34d3209c5a71cd920035ab94698dcfc8a6edfda01adc018e6614670b01",
+  "manifestSha256": "89b614fa29017fe7933051904d2e80132be14bf0ee821e979ba7e6bcb2443926",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact controler-les-bulletins-de-paie-avant-la-dsn."
   ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "touche"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "touche"
+      },
+      {
+        "hex": "#231f20",
+        "role": "touche"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.69921875,
+      "#27b657": 0.019427083333333334,
+      "#1c8a41": 0.06236111111111111,
+      "#231f20": 0.06053819444444444
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
   "criteria": [
     {
       "id": "brief-six-components",

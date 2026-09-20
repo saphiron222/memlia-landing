@@ -54,6 +54,30 @@ const normalizedQuery = (value) => String(value ?? '')
   .replace(/\s+/g, ' ')
   .trim();
 
+function verifyCommercialAudience(recipe, errors) {
+  const audience = recipe?.audience;
+  if (!audience || !['qualified', 'exception'].includes(audience.mode)) {
+    errors.push('Clause audience : audience.mode doit valoir qualified ou exception pour une page commerciale.');
+    return;
+  }
+  const reason = String(audience.reason ?? '').trim();
+  if (audience.mode === 'exception') {
+    if (reason.length < 80) errors.push('Clause audience : une requête commerciale non qualifiée exige une décision d’exception motivée (80 caractères minimum).');
+    return;
+  }
+  const qualifier = normalizedQuery(audience.qualifier);
+  if (qualifier.length < 3) {
+    errors.push('Clause audience : le qualificatif métier doit être écrit pour une page commerciale qualifiée.');
+    return;
+  }
+  if (reason.length < 40) errors.push('Clause audience : la raison du qualificatif métier doit contenir au moins 40 caractères.');
+  for (const [surface, value] of [['requête primaire', recipe.primaryQuery], ['H1', recipe.title], ['titre d’onglet', recipe.tabTitle]]) {
+    if (!normalizedQuery(value).includes(qualifier)) {
+      errors.push(`Clause audience : ${surface} non qualifié par « ${audience.qualifier} » (${recipe.path ?? recipe.slug ?? 'page commerciale'}).`);
+    }
+  }
+}
+
 function section(body, title) {
   const escaped = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return new RegExp(`^## ${escaped}\\s*$([\\s\\S]*?)(?=^## |(?![\\s\\S]))`, 'm').exec(body)?.[1] ?? null;
@@ -182,6 +206,7 @@ export function verifierRecetteService({ root, recipe, body, review, today = tod
   if (recipe?.intent !== 'evaluer-service') errors.push('intent doit valoir evaluer-service pour une page de service.');
   if (!DATE_RE.test(recipe?.verifiedAt ?? '') || recipe.verifiedAt > today) errors.push('verifiedAt doit être une date non future au format AAAA-MM-JJ.');
   verifyTitleMeasurement(root, recipe, today, errors);
+  verifyCommercialAudience(recipe, errors);
 
   const normalizedBody = typographicApostrophe(body);
   let previous = -1;
@@ -254,6 +279,10 @@ description: ${value(recipe.description)}
 hero: ${value(recipe.hero)}
 primaryQuery: ${value(recipe.primaryQuery)}
 secondaryQueries: ${list(recipe.secondaryQueries)}
+audience:
+  mode: ${value(recipe.audience.mode)}
+  qualifier: ${recipe.audience.qualifier === null ? 'null' : value(recipe.audience.qualifier)}
+  reason: ${value(recipe.audience.reason)}
 intent: ${recipe.intent}
 family: ${recipe.family}
 verifiedAt: ${recipe.verifiedAt}
@@ -321,6 +350,7 @@ export function materialiserService({ root = process.cwd(), slug, status = 'a-va
     hero: recipe.hero,
     primaryQuery: recipe.primaryQuery,
     secondaryQueries: recipe.secondaryQueries,
+    audience: recipe.audience,
     family: recipe.family,
     verifiedAt: recipe.verifiedAt,
     cta: recipe.cta,

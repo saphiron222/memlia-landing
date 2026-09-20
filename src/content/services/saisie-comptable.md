@@ -1,21 +1,25 @@
 ---
-title: "Saisie automatique comptabilité : chaque écriture reste à valider"
-tabTitle: "Saisie automatique comptabilité | Memlia"
-ogTitle: "Saisie automatique comptabilité : chaque écriture reste à valider"
+title: "Saisie comptable en cabinet : chaque écriture reste à valider"
+tabTitle: "Saisie comptable en cabinet | Memlia"
+ogTitle: "Saisie comptable en cabinet : chaque écriture reste à valider"
 description: "Confiez la préparation répétitive de la saisie comptable : règle écrite, écritures proposées, anomalies nommées et validation humaine."
 hero: "Nous écrivons vos règles d’extraction, d’imputation habituelle et de refus, puis nous préparons les écritures dans vos outils. Une pièce conforme produit une proposition traçable. Une période incohérente, un doublon ou une lecture incertaine rejoint une file d’examen. Le collaborateur garde la saisie définitive, la correction et le jugement comptable."
-primaryQuery: "saisie automatique comptabilité"
-secondaryQueries: ["automatisation saisie comptable OCR", "pré-comptabilisation automatique pièces"]
+primaryQuery: "saisie comptable en cabinet"
+secondaryQueries: ["saisie automatique comptabilité", "saisie automatique comptabilité cabinet comptable"]
+audience:
+  mode: "qualified"
+  qualifier: "en cabinet"
+  reason: "En cabinet qualifie la tâche pour les collaborateurs et sépare la page de la recherche de saisie d’une entreprise."
 intent: evaluer-service
 family: saisie-ocr
 verifiedAt: 2026-09-20
 status: publie
-candidateFingerprint: "479be60af0be3436d579956be17d168a04a80b421b01ac7a9353a40c0a56a695"
+candidateFingerprint: "9d79e7044f442738e18d64e6c6984ccbf73b84c1d9148fccbaca173a3a406c08"
 cta:
   label: "Confier une première tâche"
   destination: "/contact"
 schemaTypes: ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
-headline: "Saisie automatique comptabilité : chaque écriture reste à valider"
+headline: "Saisie comptable en cabinet : chaque écriture reste à valider"
 proof:
   replayedAt: 2026-09-20
   evidencePath: "preuves/rejeu.json"

@@ -1,21 +1,25 @@
 ---
-title: "Automatisation paie : les contrôles restent au pôle social"
-tabTitle: "Automatisation paie pour cabinet comptable | Memlia"
-ogTitle: "Automatisation paie : les contrôles restent au pôle social"
+title: "Automatisation paie du pôle social : chaque contrôle reste à valider"
+tabTitle: "Automatisation paie du pôle social | Memlia"
+ogTitle: "Automatisation paie du pôle social : chaque contrôle reste à valider"
 description: "Confiez la mécanique répétitive autour de la paie : règle écrite, contrôles préparés, écarts visibles et décisions conservées par le pôle social."
 hero: "Nous écrivons avec votre pôle social la règle d’un geste répétitif autour de la paie, puis nous l’automatisons dans ses outils. Les éléments conformes avancent jusqu’à une proposition contrôlable. Une donnée absente, une variation hors règle ou un écart inexpliqué arrête le traitement. Les gestionnaires gardent la correction, la validation et toute décision sur un salarié."
-primaryQuery: "automatisation paie"
-secondaryQueries: ["automatiser paie cabinet comptable", "automatisation contrôle paie"]
+primaryQuery: "automatisation paie pôle social"
+secondaryQueries: ["automatisation paie", "automatisation paie cabinet comptable"]
+audience:
+  mode: "qualified"
+  qualifier: "pôle social"
+  reason: "Pôle social désigne le métier visé, évite la recherche employeur et retire la concurrence partielle avec le pilier cabinet comptable."
 intent: evaluer-service
 family: paie-social
 verifiedAt: 2026-09-20
 status: publie
-candidateFingerprint: "b4ab3ada19111d5c19bf5adc7583b3cf2638a6874244fe624a2e22562eb8dca9"
+candidateFingerprint: "784426c19bf20c7f374a6d51960dd6649306d6727892214507bd69eef7cebc1b"
 cta:
   label: "Confier une première tâche"
   destination: "/contact"
 schemaTypes: ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
-headline: "Automatisation paie : les contrôles restent au pôle social"
+headline: "Automatisation paie du pôle social : chaque contrôle reste à valider"
 proof:
   replayedAt: 2026-09-20
   evidencePath: "preuves/rejeu.json"

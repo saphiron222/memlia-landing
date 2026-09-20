@@ -1,6 +1,6 @@
 {
   "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "title": "Comment contrôler les bulletins de paie avant la DSN ?",
+  "title": "Contrôle bulletin de paie en cabinet : que vérifier avant la DSN ?",
   "primaryQuery": "contrôle bulletin de paie",
   "intent": "executer",
   "role": "paie-responsables-sociaux",
@@ -48,7 +48,7 @@
       "type": "dsn",
       "sourceId": "service-public-dsn",
       "citation": "est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie",
-      "contexte": "              class=\"fr-tooltip fr-placement\" role=\"tooltip\">: titleContent</span></abbr> est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie. Elle permet à l’employeur de payer les cotisations sociales et de transmettre de manière sécurisée aux organismes sociaux (<abbr class=\"sp-tooltip\" id=\"sp-tooltip-R44849-48N4K\""
+      "contexte": "La DSN : titleContent est une déclaration en ligne réalisée tous les mois à partir des données liées à la paie."
     },
     {
       "id": "claim-unit-f853bef5785e-2",
@@ -56,7 +56,7 @@
       "type": "dsn",
       "sourceId": "service-public-dsn",
       "citation": "les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.",
-      "contexte": "              class=\"fr-tooltip fr-placement\" role=\"tooltip\">: titleContent</span></abbr>, France Travail, etc.) les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire.</p></div><div class=\"fr-my-4w\" id=\"expired\""
+      "contexte": "les informations nécessaires à la gestion de la protection sociale des salariés. Un logiciel de paie compatible avec la DSN est nécessaire."
     },
     {
       "id": "claim-unit-f5aaef967736-1",
@@ -64,7 +64,7 @@
       "type": "dsn",
       "sourceId": "net-entreprises-dsn-val",
       "citation": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
-      "contexte": "<p>L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.</p>"
+      "contexte": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer."
     },
     {
       "id": "claim-unit-f5aaef967736-2",
@@ -72,7 +72,7 @@
       "type": "dsn",
       "sourceId": "net-entreprises-dsn-val",
       "citation": "Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.",
-      "contexte": "<p>L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer. Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé.</p>"
+      "contexte": "Les contrôles effectués portent sur le cahier technique et le journal de maintenance de la norme (JMN) associé."
     },
     {
       "id": "claim-unit-8e25db1cb634-1",
@@ -80,7 +80,7 @@
       "type": "dsn",
       "sourceId": "net-entreprises-crm",
       "citation": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
-      "contexte": "            Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée. Il est donc important de prendre en compte ces retours.         </a>"
+      "contexte": "En savoir plus Les outils de suivi – Tableaux de bord En savoir plus CRM DSN net-entreprises.fr Les Comptes Rendus Métiers DSN Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
     },
     {
       "id": "claim-unit-8e25db1cb634-2",
@@ -88,7 +88,7 @@
       "type": "dsn",
       "sourceId": "net-entreprises-crm",
       "citation": "il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration",
-      "contexte": "<p>Pour autant, en l’état même du système il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration en sortie des DSN ou signalement transmises afin d’effectuer par la suite les corrections nécessaires si besoin.</p>"
+      "contexte": "Pour autant, en l’état même du système il est essentiel pour les déclarants de traiter des anomalies mises en évidence dans les CRM mis à disposition par chaque organisme ou administration en sortie des DSN ou signalement transmises afin d’effectuer par la suite les corrections nécessaires si besoin."
     },
     {
       "id": "claim-unit-c3c741fa7fe1-1",
@@ -96,7 +96,7 @@
       "type": "dsn",
       "sourceId": "net-entreprises-fiabilisation",
       "citation": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
-      "contexte": "<li>En corrigeant <u>au plus tôt</u> les erreurs signalées en réalisant la modification en paie et en transmettant une DSN « annule et remplace » avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.</li>"
+      "contexte": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant."
     },
     {
       "id": "claim-unit-c3c741fa7fe1-2",
@@ -104,7 +104,7 @@
       "type": "dsn",
       "sourceId": "net-entreprises-fiabilisation",
       "citation": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
-      "contexte": "<li>En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.</li>"
+      "contexte": "Des outils complémentaires sont également mis à disposition : Suivi DSN de l’Urssaf, DSN-Fiab de l’Agirc-Arrco, PEP’S de la Caisse des Dépôts … En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel."
     }
   ],
   "criteresEditoriaux": [
