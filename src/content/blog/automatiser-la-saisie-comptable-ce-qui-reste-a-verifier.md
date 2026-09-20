@@ -4,6 +4,7 @@ titreOnglet: "Automatisation saisie comptable : les 6 contrôles | Memlia"
 resume: "La lecture extrait, une personne vérifie. Six contrôles dans un ordre fixe : nature, émetteur, mentions, montants, période, doublon. Puis une file d’anomalies à motifs fermés. Rien ne s’enregistre sans validation, et le reliquat se recompte à chaque période."
 description: "Automatisation saisie comptable : six contrôles à garder, une file d’anomalies et ce qui exige encore une validation humaine."
 datePublication: 2026-09-17
+dateMiseAJour: 2026-09-20
 auteur: kevin
 sujets: [saisie, pieces, automatisation, ia]
 motsCles: ["saisie comptable automatisée", "OCR comptable", "pré-comptabilité", "contrôles de saisie", "file d’anomalies", "doublon de facture"]
@@ -22,7 +23,7 @@ tache: "Faire lire les pièces et proposer les écritures sans que rien ne s’e
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-17
+  date: 2026-09-20
 funnel: MOFU
 contentType: searchable
 format: how-to-guide
@@ -32,7 +33,7 @@ proofStatus: verifiee
 proofRequired: "Jeu fictif de cinquante pièces (trente-deux fournisseurs récurrents, six inconnus, quatre tickets dont deux coupés, trois hors période, un doublon reçu deux fois, deux notes de frais sans justificatif, un avoir) rejoué sur la règle ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées."
 reviewRule: "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-17
+sourcesVerifieesLe: 2026-09-20
 cta:
   label: "Confier cette tâche"
   destination: "/contact"
@@ -44,19 +45,19 @@ sources:
   - editeur: "Service Public"
     titre: "Mentions obligatoires sur une facture"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F31808"
-    consulte: 2026-09-17
+    consulte: 2026-09-20
   - editeur: "Service Public"
     titre: "Comment se mettre en conformité avec l’obligation de facturation électronique ?"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F39785"
-    consulte: 2026-09-17
+    consulte: 2026-09-20
   - editeur: "Service Public"
     titre: "Quels sont les délais de conservation des documents pour les entreprises ?"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F10029"
-    consulte: 2026-09-17
+    consulte: 2026-09-20
   - editeur: "CNIL"
     titre: "Définition : donnée personnelle"
     url: "https://www.cnil.fr/fr/definition/donnee-personnelle"
-    consulte: 2026-09-17
+    consulte: 2026-09-20
 ---
 
 ## Réponse directe

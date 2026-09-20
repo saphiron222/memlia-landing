@@ -4,7 +4,7 @@ titreOnglet: "Automatisation cabinet comptable : carte des tâches | Memlia"
 resume: "Soixante familles de tâches réparties en douze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel."
 description: "Automatisation cabinet comptable : une carte pour choisir une tâche, écrire sa règle et fixer ce qui se prépare, se valide ou reste humain."
 datePublication: 2026-09-16
-dateMiseAJour: 2026-09-17
+dateMiseAJour: 2026-09-20
 auteur: kevin
 sujets: [automatisation, methode, cabinet]
 motsCles: ["automatisation cabinet comptable", "tâches répétitives", "validation humaine", "règle de cabinet", "familles de tâches"]

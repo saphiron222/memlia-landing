@@ -6,9 +6,9 @@
   "title": "Suivre la production sociale dans Excel : modèle, règles et limites",
   "tabTitle": "Tableau de bord paie Excel : suivre sans surveiller | Memlia",
   "summary": "Construisez le suivi sur l’unité dossier × période × étape : une table de saisie contrôlée, des calculs régénérables et une vue agrégée. Les exceptions portent sur les dossiers, jamais sur un classement individuel, et un jeu d’essai fictif éprouve le modèle avant la mise en service.",
-  "description": "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel.",
+  "description": "Tableau de bord paie Excel : les colonnes, états et règles d’une vue agrégée pour suivre les dossiers sans classer les collaborateurs.",
   "publicationDate": "2026-09-09",
-  "updatedAt": "2026-09-19",
+  "updatedAt": "2026-09-20",
   "topics": [
     "production-sociale",
     "excel",
@@ -48,7 +48,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-19"
+      "verifiedAt": "2026-09-20"
     }
   },
   "businessReview": {
@@ -68,14 +68,14 @@
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
   "proofRequired": "Dictionnaire de onze colonnes, dix états fermés et leur matrice de transition, jeu d’essai fictif de cinq dossiers avec recette en cinq points, frontière en trois colonnes ; cinq affirmations citées mot pour mot depuis la CNIL et le support Microsoft, ouvertes le jour de la republication.",
-  "sourcesVerifiedAt": "2026-09-19",
+  "sourcesVerifiedAt": "2026-09-20",
   "sources": [
     {
       "id": "cnil-employee-monitoring",
       "publisher": "CNIL",
       "title": "Travail, ressources humaines : le contrôle de l’activité des personnes employées",
       "url": "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees",
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -90,7 +90,7 @@
       "publisher": "Microsoft Support",
       "title": "Overview of Excel tables",
       "url": "https://support.microsoft.com/en-us/excel/overview-of-excel-tables",
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "level": "tier-2",
       "provenance": "primary",
       "official": false,
@@ -105,7 +105,7 @@
       "publisher": "Microsoft Support",
       "title": "Protect a worksheet",
       "url": "https://support.microsoft.com/en-us/excel/protect-a-worksheet",
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "level": "tier-2",
       "provenance": "primary",
       "official": false,
@@ -135,12 +135,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-19"
+      "checkedAt": "2026-09-20"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-19"
+      "checkedAt": "2026-09-20"
     }
   },
   "links": {
@@ -178,6 +178,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-09-19",
+  "publishedAt": "2026-09-20",
   "publicationEvidence": "preuves/publication.json"
 }

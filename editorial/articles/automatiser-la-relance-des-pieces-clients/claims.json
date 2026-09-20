@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-relance-des-pieces-clients",
-  "articleSha256": "7b70a1f9e35fa6dd74a12534f874210d4d8ad87cfc74811bbecab9a168bb169e",
+  "articleSha256": "7f1787655a3cd1aeb104f95d5b969428dd6d06f5cf42d1046676677475cb7b07",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -268,26 +268,26 @@
       "sourceExcerpts": {
         "cnil-principes": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "cnil-principes",
             "sourceUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
             "verifiedUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
             "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
-            "context": "<p>c)&nbsp;adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées (<button type=\"button\" class=\"glossary-tooltips\" aria-describedby=\"tooltip_content\" data-definition=\"minimisation\"><span class=\"glossary-tooltips-title\">minimisation</span></button> des données);</p>",
-            "contextSha256": "2699f5a7d291120b27843bf2dd127cdddd3f634063c917a28566bba74643ac55",
+            "context": "a) traitées de manière licite, loyale et transparente au regard de la personne concernée (licéité, loyauté, transparence); b) collectées pour des finalités déterminées, explicites et légitimes, et ne pas être traitées ultérieurement d'une manière incompatible avec ces finalités; le traitement ultérieur à des fins archivistiques dans l'intérêt public, à des fins de recherche scientifique ou historique ou à des fins statistiques n'est pas considéré, conformément à l'article 89, paragraphe 1, comme incompatible avec les finalités initiales (limitation des finalités); c) adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées ( minimisation des données); d) exactes et, si nécessaire, tenues à jour; toutes les mesures raisonnables doivent être prises pour que les données à caractère personnel qui sont inexactes, eu égard aux finalités pour lesquelles elles sont traitées, soient effacées ou rectifiées sans tarder (exactitude); e) conservées sous une forme permettant l'identification des personnes concernées pendant une durée n'excédant pas celle nécessaire au regard des finalités pour lesquelles elles sont traitées; les données à caractère personnel peuvent être conservées pour des durées plus longues dans la mesure où elles seront traitées exclusivement à des fins archivistiques dans l'intérêt public, à des fins de recherche scientifique ou historique ou à des fins statistiques conformément à l'article 89, paragraphe 1, pour autant que soient mises en œuvre les mesures techniques et organisationnelles appropriées requises par le présent règlement afin de garantir les droits et libertés de la personne concernée (limitation de la conservation); f) traitées de façon à garantir une sécurité appropriée des données à caractère personnel, y compris la protection contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle, à l'aide de mesures techniques ou organisationnelles appropriées (intégrité et confidentialité);",
+            "contextSha256": "c225de36bf199a45fea454329c7f85442fab95ca16e5c28784c24e1ce65a0ebd",
             "citation": {
               "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
               "sha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
-              "sourceContentSha256": "27d13c45909736771f8631276cfaf22bd2f6dfe920202dc069a4cb4eafb0b8bd",
+              "sourceContentSha256": "be691a18f7eba59883b3fa99a444fa44fa5e84d65ae35a664db845508140d3e0",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
                 "locator": {
                   "kind": "line-range",
@@ -313,7 +313,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Principe de minimisation, article 5 du RGPD, cité mot pour mot depuis le texte publié par la CNIL.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -329,26 +329,26 @@
       "sourceExcerpts": {
         "cnil-durees": "Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte."
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "cnil-durees",
             "sourceUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
             "verifiedUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
             "excerpt": "Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte.",
-            "context": "<p>Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte. <strong>Il appartient alors au responsable du <button type=\"button\" class=\"glossary-tooltips\" aria-describedby=\"tooltip_content\" data-definition=\"fichier\"><span class=\"glossary-tooltips-title\">fichier</span></button> de la déterminer en fonction de la finalité du traitement</strong>.</p>",
-            "contextSha256": "2262fe305f27b2663b6482f875cb533cf6a2262fbe0f5954a28e3b398241bccb",
+            "context": "Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte.",
+            "contextSha256": "03753b8dd6f3d19178af98785f6542f535195836e334fd92027002aabe5de8c2",
             "citation": {
               "text": "Toutefois, pour de nombreux traitements de données, la durée de conservation n’est pas fixée par un texte.",
               "sha256": "03753b8dd6f3d19178af98785f6542f535195836e334fd92027002aabe5de8c2",
-              "sourceContentSha256": "831d0a13cb439e911c20ee963b68e99bc75c1e830672ac7df60618ef0088080b",
+              "sourceContentSha256": "2752feace7b9cbe21b00f60596ff53fb55b6ab0ef7a9ec9df76ac343292a1ef3",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Les durées de conservation des données",
                 "locator": {
                   "kind": "line-range",
@@ -373,7 +373,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Constat de la CNIL sur l’absence de durée fixée par un texte pour de nombreux traitements, repris à l’identique.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -389,26 +389,26 @@
       "sourceExcerpts": {
         "sp-conservation": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "sp-conservation",
             "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
             "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
             "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
-            "context": "             aria-hidden=\"false\"><p class=\"fr-text--lg\">Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale. Ce délai varie selon la nature des papiers et les obligations légales. L'entreprise peut aussi archiver les documents plus longtemps, sauf s'ils contiennent des données personnelles. Pendant ce délai, l'administration peut mener des contrôles. Cette page indique les délais de conservation des principaux documents. Vous pouvez aussi utiliser un simulateur.</p></div><div class=\"fr-my-4w\" id=\"expired\"",
-            "contextSha256": "32b0c1e8d867208e631699dbcc96b1ad457bd1ae11daa7cf0c76cdb20459774c",
+            "context": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+            "contextSha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
             "citation": {
               "text": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
               "sha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
-              "sourceContentSha256": "c2a1d9c03104a8ad9e3261906bad9bb00c78cb864f0659003c8088be4feede7b",
+              "sourceContentSha256": "963af37caa0bb5264f61df7185052f9886c575981032f04a492e0407b0984209",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
                 "locator": {
                   "kind": "line-range",
@@ -437,7 +437,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La phrase de Service-Public est reprise à l’identique, seule l’apostrophe typographique diffère.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
@@ -453,26 +453,26 @@
       "sourceExcerpts": {
         "cnil-sous-traitant": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme"
       },
-      "checkedAt": "2026-09-19",
+      "checkedAt": "2026-09-20",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-20",
         "sourceResults": [
           {
             "sourceId": "cnil-sous-traitant",
             "sourceUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
             "verifiedUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
             "excerpt": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme",
-            "context": "<meta name=\"description\" content=\"Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme (« le responsable de traitement »), dans le cadre d’un service ou d’une prestation. Les sous-traitants ont des obligations concernant les données personnelles, qui doivent être présentes dans le contrat :\" />",
-            "contextSha256": "a6d031dd2f8d74919887f703c12dc03e7b89e8b47b28976683c17ccb92620b34",
+            "context": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme (« le responsable de traitement »), dans le cadre d’un service ou d’une prestation.",
+            "contextSha256": "9ac521413a676aea6356a985cb7ea0488557001bfb09990e5b2ee85e67d92280",
             "citation": {
               "text": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme",
               "sha256": "527923a27ec2ed451a7ebf42f076caf5f74ea1c14431366ca1b3fcb56e5d5256",
-              "sourceContentSha256": "7a9954cae7a849a03c8b91e894e386e36bb03640d8b002a0c60174e852048ce7",
+              "sourceContentSha256": "21df1da93e121b0a9e71487a82acd430e059e693346fef1a3d197c9eb44c9619",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
-                "checkedAt": "2026-09-19",
+                "checkedAt": "2026-09-20",
                 "title": "Définition : sous-traitant",
                 "locator": {
                   "kind": "line-range",
@@ -500,7 +500,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition officielle du sous-traitant reprise à l’identique depuis le glossaire de la CNIL.",
-            "checkedAt": "2026-09-19"
+            "checkedAt": "2026-09-20"
           }
         ]
       }
