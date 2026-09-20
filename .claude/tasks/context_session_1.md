@@ -400,3 +400,12 @@ after Kevin adds the two records to confirm green.
 - Rien d'autre touché : aucun fichier produit, aucune copy/design, aucun commit, aucun push, aucun
   déploiement, aucune écriture Cloudflare/DNS.
 - Restent deux gestes humains : `git push origin main` et libération des deux enfants SEO précréés.
+
+## Hermes — 2026-09-20 — C2, forge des pages service
+
+- Carte `t_9149e763`, branche `wt/t_9149e763` : forge dédiée `scripts/service-forge.mjs`, collection Astro `services`, route `/automatisation/<tache>`, rendu commercial et registre SEO partagé avec les autres types. Aucun article ni plafond de cadence blog n’est lu ou réécrit.
+- Portes fail-closed : mesure d’intention fraîche, requête primaire unique inter-types, contenu borné, vocabulaire public, quatre surfaces alignées, cinq schémas exacts, jeu fictif, trois liens entrants réellement présents et rattachés à leur URL, revue indépendante avant scellement, empreintes et preuve de publication.
+- Preuves : Node 263/263 dans le build, Playwright 167/167, Python 120/120, Astro check 0 erreur/0 avertissement, build complet PASS. Recette visuelle synthétique Chromium 375 et 1440 : un H1, cinq types JSON-LD, zéro débordement ; fixture retirée avant le build final.
+- Revue indépendante finale : zéro défaut Critical/Important. Deux défauts trouvés puis corrigés : URL entrante non rapprochée de son fichier source et suppression d’un fichier scellé non détectée.
+- Piège : Astro conserve les entrées supprimées dans `node_modules/.astro/data-store.json`; après une fixture temporaire, nettoyer `node_modules/.astro`, `.astro` et `dist` avant la preuve finale.
+- Suite : `t_343871c3` peut produire et éprouver la première page manuelle avec les commandes documentées dans `ARCHITECTURE-ACCES-COMMERCIAUX.md`. Aucun push ni déploiement exécuté.

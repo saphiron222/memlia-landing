@@ -373,6 +373,19 @@ Avant la première page, le dépôt doit recevoir :
 5. un scellement et une preuve de publication propres aux pages commerciales ;
 6. plus tard, un type `comparatif` avec sources datées et péremption fail-closed.
 
+Pour C4, le cycle exact d’une page de service est distinct de celui du blog :
+
+```bash
+npm run service:preparer -- <slug>  # rend le candidat noindex après validation de la recette
+# déposer ensuite la revue indépendante PASS dans commercial/recettes/<slug>/revues.json
+npm run service:sceller -- <slug>   # réserve la requête et scelle le candidat de prévisualisation
+npm run service:publier -- <slug>   # écrit la preuve de publication et son nouveau sceau
+npm run service:audit               # relit toutes les recettes, mesures fraîches, liens et empreintes
+```
+
+Une commande refusée ne matérialise ni page ni manifeste. `preparer` précède la revue ; `sceller`
+et `publier` exigent la revue indépendante. Le build joue `service:audit` en plus de `blog:audit`.
+
 La cadence de quatre articles par semaine reste inchangée. Les pages de service en sortent par
 type explicite, pas par exception manuelle.
 

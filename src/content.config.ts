@@ -101,4 +101,39 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+/** Pages de service produites par la forge commerciale, distinctes de la collection blog. */
+const services = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/services' }),
+  schema: z.object({
+    title: z.string().min(10).max(90),
+    tabTitle: z.string().min(10).max(70),
+    ogTitle: z.string().min(10).max(90),
+    description: z.string().min(50).max(160),
+    hero: z.string().refine((value) => {
+      const words = value.trim().split(/\s+/).filter(Boolean).length;
+      return words >= 40 && words <= 80;
+    }, 'La réponse commerciale du héros doit contenir 40 à 80 mots.'),
+    primaryQuery: z.string().min(3),
+    secondaryQueries: z.array(z.string().min(3)).default([]),
+    intent: z.literal('evaluer-service'),
+    family: z.string().min(3),
+    verifiedAt: z.coerce.date(),
+    status: z.enum(['a-valider', 'pret-preview', 'publie']),
+    cta: z.object({
+      label: z.literal('Confier une première tâche'),
+      destination: z.literal('/contact'),
+    }),
+    schemaTypes: z.array(z.enum(['WebPage', 'Service', 'BreadcrumbList', 'Organization', 'WebSite'])).length(5),
+    headline: z.string().min(10).max(90),
+    proof: z.object({ replayedAt: z.coerce.date(), evidencePath: z.string().regex(/^preuves\/[a-z0-9-]+\.json$/) }),
+  }).superRefine((data, context) => {
+    if (data.title !== data.ogTitle || data.title !== data.headline) {
+      context.addIssue({ code: 'custom', message: 'H1, og:title et headline doivent être identiques.', path: ['ogTitle'] });
+    }
+    if (new Set(data.schemaTypes).size !== 5) {
+      context.addIssue({ code: 'custom', message: 'Les cinq types de schéma doivent être présents une fois chacun.', path: ['schemaTypes'] });
+    }
+  }),
+});
+
+export const collections = { blog, services };

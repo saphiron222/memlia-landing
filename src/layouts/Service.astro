@@ -1,0 +1,132 @@
+---
+import Base from './Base.astro';
+import Button from '@/components/Button.astro';
+import { SITE } from '@/data/site.mjs';
+import { organizationNode } from '@/data/schema.mjs';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entree: CollectionEntry<'services'>;
+}
+
+const { entree } = Astro.props;
+const { data } = entree;
+const chemin = `/automatisation/${entree.id}`;
+const url = `${SITE.url}${chemin}`;
+const noindex = data.status !== 'publie';
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: data.headline,
+      headline: data.headline,
+      description: data.description,
+      inLanguage: SITE.langue,
+      isPartOf: { '@id': `${SITE.url}/#website` },
+      about: { '@id': `${url}#service` },
+      breadcrumb: { '@id': `${url}#breadcrumb` },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${url}#service`,
+      name: data.headline,
+      serviceType: data.primaryQuery,
+      description: data.description,
+      url,
+      areaServed: 'FR',
+      provider: { '@id': `${SITE.url}/#organization` },
+      audience: { '@type': 'Audience', audienceType: "Cabinets d'expertise comptable" },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` },
+        { '@type': 'ListItem', position: 2, name: 'Automatisation', item: `${SITE.url}/automatisation-cabinet-comptable` },
+        { '@type': 'ListItem', position: 3, name: data.headline, item: url },
+      ],
+    },
+    organizationNode(),
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.url}/#website`,
+      url: `${SITE.url}/`,
+      name: SITE.nom,
+      inLanguage: SITE.langue,
+      publisher: { '@id': `${SITE.url}/#organization` },
+    },
+  ],
+};
+---
+
+<Base titre={data.tabTitle} titreSocial={data.ogTitle} description={data.description} chemin={chemin} noindex={noindex} base="/">
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+
+  <div class="feuille service-feuille">
+    <article class="service conteneur" data-service={entree.id}>
+      {noindex && <p class="preview-temoin" role="status">Page de service en prévisualisation — non indexable</p>}
+      <nav class="ariane" aria-label="Fil d’Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/automatisation-cabinet-comptable">Automatisation</a></li>
+          <li aria-current="page">{data.headline}</li>
+        </ol>
+      </nav>
+
+      <header class="service-tete">
+        <span class="pastille">Une tâche prise en charge de bout en bout</span>
+        <h1>{data.headline}</h1>
+        <p class="service-chapeau">{data.hero}</p>
+        <Button href={data.cta.destination} variante="principal" picto="fleche">{data.cta.label}</Button>
+      </header>
+
+      <div class="service-corps lecture">
+        <slot />
+      </div>
+
+      <aside class="service-appel coins" aria-labelledby="service-appel-titre">
+        <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+        <span class="eyebrow">Première tâche</span>
+        <h2 id="service-appel-titre">Décrivez le geste qui revient.</h2>
+        <p>Une description suffit pour le premier échange. Aucun fichier ne vous est demandé à ce stade.</p>
+        <Button href={data.cta.destination} variante="principal" picto="fleche">{data.cta.label}</Button>
+      </aside>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .service-feuille { background: var(--surface-feuille); }
+  .service { max-width: 800px; padding-top: clamp(28px, 5vw, 56px); padding-bottom: clamp(56px, 9vw, 112px); }
+  .preview-temoin { margin-bottom: 20px; padding: 10px 14px; border: 2px solid var(--accent-appui); border-radius: var(--r-boite); color: var(--texte-fort); font-weight: 600; background: var(--accent-voile); }
+  .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; font-size: var(--t-sm); color: var(--texte-2); }
+  .ariane li + li::before { content: '›'; margin-right: 6px; color: var(--picto-repos); }
+  .ariane a { color: var(--texte-2); text-decoration: underline; text-underline-offset: 2px; }
+  .ariane [aria-current] { min-width: 0; color: var(--texte); overflow-wrap: anywhere; }
+  .service-tete { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; margin-top: 48px; }
+  .service-tete h1 { max-width: 18ch; font-size: var(--t-5xl); line-height: 1.08; }
+  .service-chapeau { max-width: 66ch; color: var(--texte-2); font-size: var(--t-lg); line-height: 1.55; }
+  .service-corps { margin-top: clamp(56px, 8vw, 96px); max-width: none; }
+  .service-corps :global(h2) { margin: 2.2em 0 0.6em; font-size: var(--t-3xl); }
+  .service-corps :global(h3) { margin: 1.6em 0 0.5em; font-size: var(--t-xl); }
+  .service-corps :global(p) { margin: 0 0 1.1em; color: var(--texte); }
+  .service-corps :global(ul), .service-corps :global(ol) { margin: 0 0 1.2em; padding-left: 1.3em; }
+  .service-corps :global(ul) { list-style: disc; }
+  .service-corps :global(ol) { list-style: decimal; }
+  .service-corps :global(li) { margin: 0.4em 0; }
+  .service-corps :global(a) { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
+  .service-corps :global(strong) { color: var(--texte-fort); font-weight: 600; }
+  .service-corps :global(table) { width: 100%; max-width: 100%; margin: 1.2em 0 1.6em; border-collapse: collapse; table-layout: fixed; font-size: var(--t-sm); }
+  .service-corps :global(th), .service-corps :global(td) { width: 33.333%; padding: 10px 8px; border-bottom: 1px solid var(--ligne-douce); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+  .service-corps :global(th) { color: var(--texte-fort); font-weight: 600; border-bottom-color: var(--ligne-forte); }
+  .service-appel { display: grid; justify-items: start; gap: 12px; margin-top: 64px; padding: 32px 24px; border: 1px solid var(--ligne); border-radius: var(--r-carte); background: var(--surface-page); box-shadow: var(--ombre-xs); }
+  .service-appel h2 { max-width: 24ch; font-size: var(--t-3xl); }
+  .service-appel p { max-width: 58ch; color: var(--texte-2); }
+  .service-appel :global(.btn) { margin-top: 8px; }
+  @media (min-width: 48rem) {
+    .service-appel { padding: 48px; }
+  }
+</style>

@@ -58,34 +58,49 @@ export function registreVide() {
   return { version: 1, marque: ['memlia'], articles: [] };
 }
 
+const normaliserRequete = (value) => String(value ?? '')
+  .normalize('NFD')
+  .replace(/\p{Diacritic}/gu, '')
+  .toLowerCase()
+  .replace(/\s+/g, ' ')
+  .trim();
+
 function validerEntree(entree) {
   if (!entree || typeof entree.slug !== 'string' || !entree.slug.trim()) throw new Error('registre : slug requis');
   if (typeof entree.requete !== 'string' || !entree.requete.trim()) throw new Error(`registre : requete requise pour ${entree.slug}`);
   if (typeof entree.url !== 'string' || !/^https:\/\/memlia\.fr\//.test(entree.url)) throw new Error(`registre : url https://memlia.fr/… requise pour ${entree.slug}`);
   if (entree.secondaires !== undefined && !Array.isArray(entree.secondaires)) throw new Error(`registre : secondaires doit être une liste pour ${entree.slug}`);
+  if (entree.type !== undefined && !['blog', 'service', 'comparatif'].includes(entree.type)) throw new Error(`registre : type inconnu pour ${entree.slug}`);
   if (entree.publieLe !== undefined && entree.publieLe !== null) exigerDate(entree.publieLe, `registre : publieLe de ${entree.slug}`);
 }
 
 export function ajouterAuRegistre(registre, entree) {
   validerEntree(entree);
-  const existante = registre.articles.find((a) => a.slug === entree.slug);
+  const existante = registre.articles.find((a) => a.url === entree.url);
+  const requeteNormalisee = normaliserRequete(entree.requete);
+  const collision = registre.articles.find((a) =>
+    a.url !== entree.url
+    && normaliserRequete(a.requete) === requeteNormalisee);
+  if (collision) {
+    throw new Error(`registre : la requête primaire « ${entree.requete.trim()} » appartient déjà à ${collision.slug} (${collision.url}).`);
+  }
   const secondaires = [...new Set([...(existante?.secondaires ?? []), ...(entree.secondaires ?? [])])];
-  const fusion = { ...(existante ?? {}), ...entree, requete: entree.requete.trim(), secondaires };
+  const fusion = { ...(existante ?? {}), ...entree, type: entree.type ?? existante?.type ?? 'blog', requete: entree.requete.trim(), secondaires };
   const articles = existante
-    ? registre.articles.map((a) => (a.slug === entree.slug ? fusion : a))
+    ? registre.articles.map((a) => (a.url === entree.url ? fusion : a))
     : [...registre.articles, fusion];
   return { ...registre, articles };
 }
 
 /** Ajoute les articles publiés absents du registre ; un article déjà inscrit garde sa requête. */
 export function reconcilierRegistre(registre, publies) {
-  const connus = new Set(registre.articles.map((a) => a.slug));
+  const connus = new Set(registre.articles.map((a) => a.url));
   const ajoutes = [];
   let resultat = registre;
   for (const publie of publies) {
-    if (connus.has(publie.slug)) continue;
+    if (connus.has(publie.url)) continue;
     resultat = ajouterAuRegistre(resultat, publie);
-    connus.add(publie.slug);
+    connus.add(publie.url);
     ajoutes.push(publie.slug);
   }
   return { registre: resultat, ajoutes };
