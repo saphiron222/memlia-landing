@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Button from '@/components/Button.astro';
+import OutilHero from '@/components/sections/OutilHero.astro';
 import { SITE } from '@/data/site.mjs';
 import { OUTILS_HUB_PATH, outilPath, type OutilDefinition } from '@/data/outils';
 
@@ -8,12 +9,16 @@ interface Props { outil: OutilDefinition }
 const { outil } = Astro.props;
 const path = outilPath(outil);
 const url = `${SITE.url}${path}`;
+const socialImage = outil.proof ? {
+  url: `/proofs/v2/og/${outil.proof.slice(3)}.webp`, width: 1200, height: 630,
+  alt: `Aperçu fictif — ${outil.h1}`,
+} : undefined;
 const csp = "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'";
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'WebPage', '@id': `${url}#page`, url, name: outil.h1, description: outil.description,
+      '@type': 'WebPage', '@id': `${url}#page`, url, name: outil.h1, headline: outil.h1, description: outil.description,
       inLanguage: SITE.langue, mainEntity: { '@id': `${url}#application` },
     },
     {
@@ -33,21 +38,31 @@ const graph = {
 };
 ---
 
-<Base titre={outil.title} titreSocial={outil.h1} description={outil.description} chemin={path} noindex={outil.statut === 'temoin'} base="/" csp={csp}>
+<Base titre={outil.title} titreSocial={outil.h1} description={outil.description} chemin={path} noindex={outil.statut === 'temoin'} base="/" csp={csp} socialImage={socialImage}>
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
 
   <div class="feuille outil-feuille">
-    <section class="conteneur outil-tete" aria-labelledby="outil-titre">
-      <nav class="ariane" aria-label="Fil d’Ariane">
-        <ol>
-          <li><a href="/">Accueil</a></li>
-          <li><a href={OUTILS_HUB_PATH}>Outils comptables gratuits</a></li>
-          <li aria-current="page">{outil.h1}</li>
-        </ol>
-      </nav>
-      {outil.statut === 'temoin' && <span class="pastille">Démonstration technique</span>}
-      <h1 id="outil-titre">{outil.h1}</h1>
-      <p class="texte-2 lecture">{outil.description}</p>
+    {outil.proof ? (
+      <OutilHero
+        title={outil.h1}
+        description={outil.description}
+        proof={outil.proof}
+        titleId="outil-titre"
+        breadcrumbs={[
+          { label: 'Accueil', href: '/' },
+          { label: 'Outils comptables gratuits', href: OUTILS_HUB_PATH },
+          { label: outil.h1 },
+        ]}
+      />
+    ) : (
+      <section class="conteneur outil-tete" aria-labelledby="outil-titre">
+        <nav class="ariane" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href={OUTILS_HUB_PATH}>Outils comptables gratuits</a></li><li aria-current="page">{outil.h1}</li></ol></nav>
+        <span class="pastille">Démonstration technique</span>
+        <h1 id="outil-titre">{outil.h1}</h1>
+        <p class="texte-2 lecture">{outil.description}</p>
+      </section>
+    )}
+    <section class="conteneur outil-promesse-wrap" aria-label="Entrée et résultat attendus">
       <dl class="outil-promesse">
         <div><dt>Vous saisissez</dt><dd>{outil.promesse.entree}</dd></div>
         <div><dt>Vous obtenez</dt><dd>{outil.promesse.resultat}</dd></div>
@@ -97,7 +112,8 @@ const graph = {
   .ariane a { color: var(--texte-2); text-decoration: underline; text-underline-offset: 2px; }
   .ariane [aria-current] { color: var(--texte); }
   .outil-tete h1 { max-width: 21ch; font-size: var(--t-5xl); }
-  .outil-promesse { display: grid; width: 100%; margin-top: 16px; border-block: 1px solid var(--ligne); }
+  .outil-promesse-wrap { padding-top: 32px; }
+  .outil-promesse { display: grid; width: 100%; border-block: 1px solid var(--ligne); }
   .outil-promesse div { display: grid; gap: 4px; padding: 20px 0; }
   .outil-promesse div + div { border-top: 1px solid var(--ligne); }
   .outil-promesse dt { color: var(--texte-2); font-size: var(--t-sm); font-weight: 600; }

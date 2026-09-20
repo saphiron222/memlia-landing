@@ -3,11 +3,11 @@
   "sources": [
     {
       "path": "docs/design/site-v2-proofs/index.html",
-      "sha256": "ca36f1f5fee750885815c112df36df99b9319afd0a7fcba60796f45b536ab24b"
+      "sha256": "b6654f1de59c3e27c9dfd1b4466a7dad53e2ec1ccab802de336fd8c000c82abf"
     },
     {
       "path": "docs/design/site-v2-proofs/styles.css",
-      "sha256": "5863db73b7a1f4fd601d7c3edbbdf91bf140513b78835d954828c1dcd13a888a"
+      "sha256": "e81594e5b0b28a5dff493a4710e0aa0063e6b887c2697e8c53ec8186750e09c1"
     },
     {
       "path": "docs/design/m4-r1-functional-proofs/styles.css",
@@ -15,7 +15,7 @@
     },
     {
       "path": "docs/design/site-v2-proofs/content-contract.json",
-      "sha256": "7abfb7594940eecb6cb69d84e7e72471152e552c03cba2d5a52cc30735343016"
+      "sha256": "8765b08f6e87f075cd8f6f19bad17e912a00f547a0f3d0dd466ca5358fa20da1"
     },
     {
       "path": "scripts/render-proofs-v2.mjs",
@@ -191,6 +191,54 @@
       "target": "public/proofs/v2/23-service-factures-fournisseurs.webp",
       "bytes": 40478,
       "sha256": "92e9fb553c9185dc33806841dd43bef80dbee63aa0394ba082d096efce2af9ca"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outils-hub",
+      "target": "public/proofs/v2/24-outils-hub.webp",
+      "bytes": 34754,
+      "sha256": "5767a61d2413eb2a5e3dede140e677d9428e7a29a5fa4991e5f5d103e4a30946"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outils-hub",
+      "target": "public/proofs/v2/og/24-outils-hub.webp",
+      "bytes": 21660,
+      "sha256": "dfe0f166cf7167f19c367342adf07452570ebc42575b723820ba276faa7b7dc7"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outil-marge",
+      "target": "public/proofs/v2/25-outil-marge.webp",
+      "bytes": 23202,
+      "sha256": "13f3c9733a25a90cea426a64a3b70ec3272a1c68b54652df33ea0cf7498f65d5"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outil-marge",
+      "target": "public/proofs/v2/og/25-outil-marge.webp",
+      "bytes": 14778,
+      "sha256": "c692bff694f1c17858a0b1b5a7c730a234e955c9462488c62ca79ab2b5cb0f00"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outil-echeance",
+      "target": "public/proofs/v2/26-outil-echeance.webp",
+      "bytes": 23436,
+      "sha256": "f5411aef46ec471e73c90c2fcda1171404f427546f19c481753b9a23e6adc27f"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outil-echeance",
+      "target": "public/proofs/v2/og/26-outil-echeance.webp",
+      "bytes": 15274,
+      "sha256": "2c6bda25c6648f9620d925ab0a6011a84ed13cb83d885622b2145bb1a53ebb5d"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outil-rapprochement",
+      "target": "public/proofs/v2/27-outil-rapprochement.webp",
+      "bytes": 30886,
+      "sha256": "c1c91590cf4722cb96ca44e2f5d98601af8874a787e1ac7a9349273231279cb6"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outil-rapprochement",
+      "target": "public/proofs/v2/og/27-outil-rapprochement.webp",
+      "bytes": 20158,
+      "sha256": "e77d85bc9342d86e7f1fbff0d4d61d34857b1d920fff1c59b023dba4c45bce18"
     }
   ]
 }

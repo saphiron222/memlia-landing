@@ -90,5 +90,21 @@
   {
     "id": "service-factures-fournisseurs",
     "centralText": "Factures fournisseurs · flux fictif Exceptions visibles Réception Pièces reconnues Fournisseur, numéro, montant Règle écrite Contrôles du flux Doublon, avoir, données absentes Proposition Classement préparé Paiement hors du périmètre Document Contrôle Sortie État FAC-440 Fournisseur connu Proposition liée À valider FAC-441 N° et montant déjà reçus Aucun second flux Doublon AVO-078 Origine introuvable Aucun rattachement Arrêt Traitement conservé L’exception ne disparaît pas. Le collaborateur garde l’imputation nouvelle, le rattachement d’un avoir et toute décision de paiement. ✗ Rattacher un avoir par analogie ✗ Décider d’un paiement Documents fictifs · circuit vérifiable 1 proposition · 2 exceptions"
+  },
+  {
+    "id": "outils-hub",
+    "centralText": "Outils comptables gratuits Calculs dans le navigateur Calculer Marge commerciale Entrée Deux montants HT Sortie Marge, taux et formule Montant nul : aucun taux Calculer Date d’échéance Entrée Date et convention Sortie Échéance et étapes Convention absente : aucune date Vérifier Rapprochement bancaire Entrée Deux soldes fictifs Sortie Contrôle et CSV local Écart : téléchargement bloqué Aucune valeur envoyée ou conservée 3 règles visibles · 3 cas de refus éprouvés"
+  },
+  {
+    "id": "outil-marge",
+    "centralText": "Calculateur de marge commerciale Cas fictif Vous saisissez Prix d’achat HT 80,00 € Prix de vente HT 100,00 € Montants positifs · deux décimales Vous obtenez Marge commerciale 20,00 € Taux de marge 25,00 % Taux de marque 20,00 % Marge = 100,00 € − 80,00 € = 20,00 € Cas de refus éprouvé · montant nul : aucun taux"
+  },
+  {
+    "id": "outil-echeance",
+    "centralText": "Calculateur de date d’échéance Cas général fictif 1 Point de départ Facture du 20 janvier 2026 2 Convention choisie Ajouter 45 jours 3 Étape intermédiaire 6 mars 2026 4 Fin du mois 31 mars 2026 Chaque date et la convention restent visibles Cas de refus éprouvé · sans convention : aucune date"
+  },
+  {
+    "id": "outil-rapprochement",
+    "centralText": "Modèle de rapprochement bancaire Données fictives Banque Solde du relevé 1 000,00 € + 0,00 € de remises − 0,00 € de paiements Solde ajusté · 1 000,00 € = Différence 0,00 € Comptabilité Solde du compte 512 950,00 € − 0,00 € de frais + 50,00 € d’intérêts Solde ajusté · 1 000,00 € CSV prêt à valider UTF-8 · point-virgule Validation du collaborateur requise Aucun relevé importé · aucune écriture produite Cas de refus · écart ou élément inexpliqué : téléchargement bloqué"
   }
 ]

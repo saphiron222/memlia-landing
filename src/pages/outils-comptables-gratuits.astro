@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
+import OutilHero from '@/components/sections/OutilHero.astro';
 import { SITE } from '@/data/site.mjs';
 import { OUTIL_CATEGORIES, OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
 
@@ -11,7 +12,7 @@ const graph = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'CollectionPage', '@id': `${url}#page`, url, name: h1, description,
+      '@type': 'CollectionPage', '@id': `${url}#page`, url, name: h1, headline: h1, description,
       inLanguage: SITE.langue, mainEntity: { '@id': `${url}#list` },
     },
     {
@@ -32,18 +33,18 @@ const graph = {
 };
 ---
 
-<Base titre={title} titreSocial={h1} description={description} chemin={OUTILS_HUB_PATH} base="/">
+<Base titre={title} titreSocial={h1} description={description} chemin={OUTILS_HUB_PATH} base="/" socialImage={{ url: '/proofs/v2/og/24-outils-hub.webp', width: 1200, height: 630, alt: 'Trois outils comptables gratuits : marge, échéance et rapprochement bancaire.' }}>
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
 
   <div class="feuille outils-feuille">
-    <section class="conteneur outils-tete" aria-labelledby="outils-titre">
-      <nav class="ariane" aria-label="Fil d’Ariane">
-        <ol><li><a href="/">Accueil</a></li><li aria-current="page">Outils comptables gratuits</li></ol>
-      </nav>
-      <span class="eyebrow">Règles visibles, calculs locaux</span>
-      <h1 id="outils-titre">{h1}</h1>
-      <p class="texte-2 lecture">Chaque outil publié ici annonce ses entrées, son résultat et ses limites. Les valeurs restent dans votre navigateur ; devant un cas hors règle, l’outil refuse de produire un résultat.</p>
-    </section>
+    <OutilHero
+      title={h1}
+      description="Chaque outil publié ici annonce ses entrées, son résultat et ses limites. Les valeurs restent dans votre navigateur ; devant un cas hors règle, l’outil refuse de produire un résultat."
+      proof="v2/24-outils-hub"
+      titleId="outils-titre"
+      eyebrow="Règles visibles, calculs locaux"
+      breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Outils comptables gratuits' }]}
+    />
 
     <div class="conteneur outils-categories">
       {OUTIL_CATEGORIES.map((category) => {
@@ -60,9 +61,7 @@ const graph = {
                   </li>
                 ))}
               </ul>
-            ) : (
-              <p class="outils-vide" data-empty-category>Aucun outil n’est publié dans cette catégorie pour le moment.</p>
-            )}
+            ) : null}
           </section>
         );
       })}
@@ -72,12 +71,6 @@ const graph = {
 
 <style>
   .outils-feuille { min-height: 70vh; padding-bottom: clamp(56px, 8vw, 104px); background: var(--surface-feuille); }
-  .outils-tete { display: grid; justify-items: start; gap: 16px; max-width: 920px; padding-top: clamp(28px, 5vw, 64px); }
-  .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; font-size: var(--t-sm); color: var(--texte-2); margin-bottom: 12px; }
-  .ariane li + li::before { content: '›'; margin-right: 6px; color: var(--picto-repos); }
-  .ariane a { color: var(--texte-2); text-decoration: underline; text-underline-offset: 2px; }
-  .ariane [aria-current] { color: var(--texte); }
-  .outils-tete h1 { max-width: 25ch; font-size: var(--t-5xl); }
   .outils-categories { display: grid; margin-top: 56px; border-top: 1px solid var(--ligne-forte); }
   .outils-categorie { display: grid; gap: 20px; padding: 32px 0; border-bottom: 1px solid var(--ligne); }
   .outils-categorie h2 { font-size: var(--t-3xl); }
@@ -86,7 +79,7 @@ const graph = {
   .outils-categorie h3 { font-size: var(--t-2xl); }
   .outils-categorie h3 a { color: var(--texte-fort); text-decoration: underline; text-decoration-color: var(--ligne-forte); text-underline-offset: 4px; }
   .outils-categorie p { margin: 0; color: var(--texte-2); }
-  .outils-vide { max-width: 60ch; padding-left: 16px; border-left: 3px solid var(--ligne-forte); }
+
   @media (min-width: 48rem) {
     .outils-categorie { grid-template-columns: minmax(180px, 1fr) minmax(0, 3fr); gap: 40px; padding: 40px 0; }
   }

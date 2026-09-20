@@ -1,3 +1,5 @@
+import type { ProofId } from './proofs';
+
 export const OUTILS_HUB_PATH = '/outils-comptables-gratuits' as const;
 
 export const OUTIL_CATEGORIES = [
@@ -20,6 +22,7 @@ export interface OutilDefinition {
   promesse: { entree: string; resultat: string };
   limites: readonly string[];
   mentionLocale: string;
+  proof?: ProofId;
   source: {
     nom: string;
     url: string;
@@ -47,6 +50,7 @@ export const OUTILS: readonly OutilDefinition[] = [
       'Il refuse un montant négatif, nul ou ambigu ; une marge négative reste acceptée lorsque le prix de vente est inférieur au prix d’achat.',
     ],
     mentionLocale: 'Les deux montants et les résultats restent dans ce navigateur. Ils ne sont ni envoyés, ni enregistrés, ni réutilisés.',
+    proof: 'v2/25-outil-marge',
     source: {
       nom: 'Insee — Marge commerciale',
       url: 'https://www.insee.fr/fr/metadonnees/definition/c1774',
@@ -70,6 +74,7 @@ export const OUTILS: readonly OutilDefinition[] = [
       'Il refuse le calcul lorsque le point de départ manque ou que la convention « 45 jours fin de mois » n’est pas choisie explicitement.',
     ],
     mentionLocale: 'Les dates et le résultat restent dans ce navigateur. Aucune date n’est envoyée ou conservée.',
+    proof: 'v2/26-outil-echeance',
     source: {
       nom: 'Légifrance — Code de commerce, article L441-10',
       url: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038414392',
@@ -98,6 +103,7 @@ export const OUTILS: readonly OutilDefinition[] = [
       'Il refuse une période inversée, un montant illisible, un élément inexpliqué ou des soldes ajustés qui ne concordent pas.',
     ],
     mentionLocale: 'Aucun relevé n’est importé. Les montants fictifs sont calculés dans ce navigateur ; le fichier est créé localement puis son adresse temporaire est révoquée.',
+    proof: 'v2/27-outil-rapprochement',
     source: {
       nom: 'Autorité des normes comptables — Plan comptable général, version au 1er janvier 2026',
       url: 'https://www.anc.gouv.fr/plan-comptable-general-0',

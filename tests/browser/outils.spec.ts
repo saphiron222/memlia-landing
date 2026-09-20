@@ -17,7 +17,9 @@ test('hub : trois outils disponibles et schéma de collection', async ({ page })
   await expect(page.locator('main h1')).toHaveCount(1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${HUB}`);
   await expect(page.locator('[data-outil-card]')).toHaveCount(3);
-  await expect(page.locator('[data-empty-category]')).toHaveCount(1);
+  await expect(page.locator('[data-empty-category]')).toHaveCount(0);
+  await expect(page.locator('[data-tool-media]')).toHaveCount(1);
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', '/proofs/v2/og/24-outils-hub.webp');
   await expect(page.locator(`a[href="${TEMOIN}"]`)).toHaveCount(0);
 
 
@@ -25,6 +27,7 @@ test('hub : trois outils disponibles et schéma de collection', async ({ page })
   expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual([
     'CollectionPage', 'ItemList', 'BreadcrumbList',
   ]);
+  expect(graph.find((node: { '@type': string }) => node['@type'] === 'CollectionPage').headline).toBe(H1_HUB);
   expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(3);
 });
 
@@ -125,8 +128,11 @@ test('outils publiés : métadonnées, source datée et schémas concordent', as
     await expect(page.locator('[data-official-source]')).toContainText(`vérifiée le ${outil.source.verifieeLe}`);
     await expect(page.locator(`[data-official-source] a[href="${outil.source.url}"]`)).toHaveCount(1);
     await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toBeVisible();
+    await expect(page.locator(`[data-proof="${outil.proof}"] img`)).toBeVisible();
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `/proofs/v2/og/${outil.proof?.slice(3)}.webp`);
     const graph = await graphFrom(page);
     expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual(['WebPage', 'WebApplication', 'BreadcrumbList']);
+    expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebPage').headline).toBe(outil.h1);
     expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebApplication').name).toBe(outil.h1);
   }
 });
