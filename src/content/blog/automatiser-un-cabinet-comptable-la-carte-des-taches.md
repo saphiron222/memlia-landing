@@ -2,7 +2,7 @@
 titre: "Automatiser un cabinet comptable : la carte des tâches"
 titreOnglet: "Automatisation cabinet comptable : carte des tâches | Memlia"
 resume: "Soixante familles de tâches réparties en douze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel."
-description: "La carte des tâches automatisables d’un cabinet d’expertise comptable : soixante familles, la règle typique de chacune et sa frontière d’automatisation."
+description: "Automatisation cabinet comptable : une carte pour choisir une tâche, écrire sa règle et fixer ce qui se prépare, se valide ou reste humain."
 datePublication: 2026-09-16
 dateMiseAJour: 2026-09-17
 auteur: kevin

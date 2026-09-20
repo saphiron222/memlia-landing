@@ -7,6 +7,10 @@ import {
   chargerAutocompletionMesuree,
   titrePorteUneRequeteMesuree,
 } from './lib/blog-title-intent.mjs';
+import {
+  ARTICLES_HORS_RUBRIQUE,
+  rubriquePourArticle,
+} from '../src/data/blog-rubriques.mjs';
 
 const MEDIA_TAGS = new Set(['img', 'picture', 'svg', 'video']);
 const DATE_VISIBLE = /\b(?:\d{4}-\d{2}-\d{2}|\d{1,2}\s+(?:janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+\d{4})\b/i;
@@ -82,7 +86,8 @@ function requetesDeclarees(frontmatter) {
 }
 
 function requetesMesurees(frontmatter, mesure) {
-  return requetesDeclarees(frontmatter).filter((requete) => Object.hasOwn(mesure.autocompletion, requete));
+  const clesMesurees = new Set(Object.keys(mesure.autocompletion).map(normaliser));
+  return requetesDeclarees(frontmatter).filter((requete) => clesMesurees.has(normaliser(requete)));
 }
 
 function descriptionCommenceParRequete(description, frontmatter, mesure) {
@@ -139,19 +144,30 @@ function surfacesTitre(document) {
   };
 }
 
-function routeRubriqueDeclaree(rubrique) {
+function routeRubriqueDeclaree(rubrique, articleSlug) {
   if (typeof rubrique === 'string' && rubrique.trim()) {
     const valeur = rubrique.trim();
     if (valeur.startsWith('/')) return [valeur];
     return [`/blog/${valeur}`, `/blog/rubrique/${valeur}`];
   }
-  if (!rubrique || typeof rubrique !== 'object') return [];
+  if (!rubrique || typeof rubrique !== 'object') {
+    const canonique = rubriquePourArticle(articleSlug);
+    return canonique ? [canonique.chemin] : [];
+  }
   const chemin = rubrique.chemin ?? rubrique.path ?? rubrique.href;
   if (typeof chemin === 'string' && chemin.startsWith('/')) return [chemin];
   const slug = rubrique.slug ?? rubrique.id;
   return typeof slug === 'string' && slug.trim()
     ? [`/blog/${slug.trim()}`, `/blog/rubrique/${slug.trim()}`]
     : [];
+}
+
+function exemptionRubrique(slug) {
+  const exemption = ARTICLES_HORS_RUBRIQUE[slug];
+  if (!exemption) return null;
+  const dateValide = /^\d{4}-\d{2}-\d{2}$/.test(exemption.date ?? '');
+  const raisonValide = typeof exemption.raison === 'string' && exemption.raison.trim().length >= 50;
+  return { ...exemption, valide: dateValide && raisonValide };
 }
 
 function auditerArticle({ dist, slug, path, mesure }) {
@@ -203,9 +219,14 @@ function auditerArticle({ dist, slug, path, mesure }) {
     erreurs.push(`${slug} : clause 3, la meta-description n’ouvre sur aucune requête déclarée et mesurée — « ${description.slice(0, 72)}${description.length > 72 ? '…' : ''} »`);
   }
 
-  const cheminsDeclares = routeRubriqueDeclaree(frontmatter.rubrique);
+  const exemption = exemptionRubrique(slug);
+  const cheminsDeclares = routeRubriqueDeclaree(frontmatter.rubrique, slug);
   if (cheminsDeclares.length === 0) {
-    erreurs.push(`${slug} : clause 4, rubrique non déclarée dans le frontmatter`);
+    if (exemption && !exemption.valide) {
+      erreurs.push(`${slug} : clause 4, exemption hors rubrique invalide — date ISO et raison d’au moins 50 caractères requises`);
+    } else if (!exemption) {
+      erreurs.push(`${slug} : clause 4, rubrique non déclarée dans le registre canonique ni dans le frontmatter`);
+    }
   } else {
     const liensRubrique = elements(document, (node) => node.tagName === 'a' && (
       aAttribut(node, 'data-blog-rubrique')
@@ -264,11 +285,14 @@ export function auditerContratBlog({
     }
   }
   const erreurs = [];
+  const exemptions = [];
   for (const slug of selection) {
+    const exemption = exemptionRubrique(slug);
+    if (exemption?.valide) exemptions.push({ slug, clause: 4, date: exemption.date, raison: exemption.raison });
     if (erreurMesure) erreurs.push(`${slug} : clauses 3 et 5, ${erreurMesure}`);
     erreurs.push(...auditerArticle({ dist, slug, path: join(dossier, `${slug}.md`), mesure: mesureChargee }));
   }
-  return { pass: erreurs.length === 0, articles: selection.length, erreurs };
+  return { pass: erreurs.length === 0, articles: selection.length, exemptions, erreurs };
 }
 
 function cli() {
@@ -276,7 +300,8 @@ function cli() {
   const indexSlug = args.indexOf('--slug');
   const slugs = indexSlug >= 0 && args[indexSlug + 1] ? [args[indexSlug + 1]] : null;
   const resultat = auditerContratBlog({ root: resolve(process.cwd()), slugs });
-  console.log(`${resultat.pass ? 'VERT' : 'ROUGE'} — contrat blog : ${resultat.articles} article(s) contrôlé(s)`);
+  console.log(`${resultat.pass ? 'VERT' : 'ROUGE'} — contrat blog : ${resultat.articles} article(s) contrôlé(s) · ${resultat.exemptions.length} exemption(s) clause 4`);
+  for (const exemption of resultat.exemptions) console.log(`- ${exemption.slug} : clause 4 exemptée le ${exemption.date} — ${exemption.raison}`);
   for (const erreur of resultat.erreurs) console.error(`- ${erreur}`);
   if (!resultat.pass) process.exitCode = 1;
 }
