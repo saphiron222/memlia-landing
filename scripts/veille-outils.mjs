@@ -89,7 +89,7 @@ async function main() {
   };
   mkdirSync(dirname(sortie), { recursive: true });
   writeFileSync(sortie, `${JSON.stringify(rapport, null, 2)}\n`);
-  process.stdout.write(`${JSON.stringify({ verdict: rapport.verdict, sortie, outils: outils.map(({ slug, etat, tentatives }) => ({ slug, etat, tentatives: tentatives.length })) })}\n`);
+  process.stdout.write(`${JSON.stringify({ verdict: rapport.verdict, sortie, outils: outils.map(({ slug, etat }) => ({ slug, etat })) })}\n`);
   process.exitCode = rapport.verdict === 'PASS' ? 0 : 2;
 }
 
