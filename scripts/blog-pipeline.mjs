@@ -8,6 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parse as parseHtml } from 'parse5';
 import { auditArticleInventory, createCandidate, validateDossier, verifySource } from './lib/blog-pipeline.mjs';
 import { preparePreview } from './prepare-preview.mjs';
+import { auditerContratBlog } from './verify-blog-contract.mjs';
 import { requireBlogPreviewOrigin } from '../src/data/blog-preview-origin.mjs';
 
 const root = process.cwd();
@@ -60,7 +61,13 @@ async function validateWithRenderedBlog(slug, previewSlug = slug, gateMode = 'pr
     run(process.execPath, [astroCli, 'build', '--root', root, '--outDir', outputRoot], { ...process.env, BLOG_PREVIEW_SLUG: previewSlug });
     const blogPath = renderedPagePath(outputRoot, '/blog');
     const renderedBlogHtml = existsSync(blogPath) ? readFileSync(blogPath, 'utf8') : undefined;
-    return validateDossier({ root, slug, renderedBlogHtml, gateMode });
+    const dossier = await validateDossier({ root, slug, renderedBlogHtml, gateMode });
+    const contrat = auditerContratBlog({ root, dist: outputRoot, slugs: [slug] });
+    return {
+      ...dossier,
+      pass: dossier.pass && contrat.pass,
+      errors: [...dossier.errors, ...contrat.erreurs],
+    };
   } finally {
     rmSync(outputRoot, { recursive: true, force: true });
   }
