@@ -41,3 +41,14 @@ export const auteurPar = (id: IdAuteur): Auteur => AUTEURS[id];
 
 /** Chemin canonique de la personne : cible du `rel=author` et `@id` de son nœud `Person`. */
 export const identiteAuteur = (a: Auteur): string => `${a.pageIdentite}${a.ancreIdentite}`;
+
+/** Un seul portrait structuré, relié à l'organisation plutôt que recopié différemment par page. */
+export const noeudAuteur = (a: Auteur, siteUrl: string) => ({
+  '@type': 'Person',
+  '@id': `${siteUrl}${identiteAuteur(a)}`,
+  name: a.nom,
+  url: `${siteUrl}${a.pageIdentite}`,
+  jobTitle: a.role,
+  description: a.bio,
+  worksFor: { '@id': `${siteUrl}/#organization` },
+});

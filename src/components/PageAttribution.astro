@@ -1,0 +1,28 @@
+---
+import { auteurPar, identiteAuteur } from '@/data/auteurs';
+import type { PageEeat } from '@/data/page-eeat';
+
+interface Props { eeat: PageEeat; align?: 'center' | 'start' }
+const { eeat, align = 'center' } = Astro.props;
+const auteur = auteurPar(eeat.auteur);
+const format = (date: string) => new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
+---
+
+<p class:list={['page-attribution', { start: align === 'start' }]} data-page-byline>
+  <span>Par <a href={identiteAuteur(auteur)} rel="author">{auteur.nom}</a></span>
+  <span>publié le <time datetime={eeat.datePublication}>{format(eeat.datePublication)}</time></span>
+  <span>mis à jour le <time datetime={eeat.dateModification}>{format(eeat.dateModification)}</time></span>
+</p>
+
+<style>
+  .page-attribution {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 8px; margin: 0;
+    color: var(--texte-2); font-size: var(--t-sm); line-height: 1.5;
+  }
+  .page-attribution.start { justify-content: flex-start; }
+  .page-attribution span { white-space: nowrap; }
+  .page-attribution a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
+  @media (min-width: 48rem) {
+    .page-attribution span + span::before { content: '·'; margin-right: 8px; color: var(--picto-repos); }
+  }
+</style>

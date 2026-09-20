@@ -30,6 +30,7 @@ const { headline, hero, cta, proof, preview = false } = Astro.props;
         <span class="pastille service-hero-label">Une tâche prise en charge de bout en bout</span>
         <h1 id="service-title">{headline}</h1>
         <p class="service-hero-lead">{hero}</p>
+        <slot name="attribution" />
         <div class="service-hero-action">
           <Button href={cta.destination} variante="principal" picto="fleche">{cta.label}</Button>
         </div>

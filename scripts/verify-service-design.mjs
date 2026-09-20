@@ -7,6 +7,8 @@ const REQUIRED_MARKERS = [
   ['data-service-hero', 'hero éditorial'],
   ['data-service-sections', 'sections structurées'],
   ['data-service-media', 'premier média fonctionnel'],
+  ['data-page-byline', 'signature visible'],
+  ['data-primary-source', 'source primaire datée'],
 ];
 
 export function servicesServis(root) {
@@ -47,6 +49,8 @@ export function auditerServiceDesign({ root = process.cwd(), dist = join(root, '
     for (const [marker, label] of REQUIRED_MARKERS) {
       if (!html.includes(marker)) erreurs.push(`${route} : ${label} absent`);
     }
+    if (!html.includes('"@type":"Person"')) erreurs.push(`${route} : nœud Person absent du JSON-LD`);
+    if (!html.includes('"worksFor":{"@id":"https://memlia.fr/#organization"}')) erreurs.push(`${route} : Person non reliée à Organization`);
     if (!/class="[^"]*\brv\b/.test(html)) erreurs.push(`${route} : animation de révélation absente`);
     const medias = (html.match(/data-service-media/g) ?? []).length;
     if (medias < 2) erreurs.push(`${route} : ${medias} média(s), 2 requis`);

@@ -16,10 +16,6 @@ const noeuds = [
     '@type': 'AboutPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
     inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': identite },
   },
-  {
-    '@type': 'Person', '@id': identite, name: auteur.nom, url,
-    jobTitle: auteur.role, description: auteur.bio, worksFor: { '@id': `${SITE.url}/#organization` },
-  },
 ];
 const renvois = [
   { texte: 'Comment se déroule une mission, étape par étape, avec ce que chacune produit.', libelle: 'Comprendre la méthode', href: '/methode' },

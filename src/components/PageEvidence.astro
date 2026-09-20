@@ -1,0 +1,55 @@
+---
+import type { PageEeat } from '@/data/page-eeat';
+
+interface Props { eeat: PageEeat }
+const { eeat } = Astro.props;
+const format = (date: string) => new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
+---
+
+{(eeat.sources.length > 0 || eeat.experience) && (
+  <section class="page-evidence" aria-labelledby="page-evidence-title">
+    <div class="page-evidence-inner">
+      <div class="page-evidence-head">
+        <p class="page-evidence-kicker">Ce qui soutient cette page</p>
+        <h2 id="page-evidence-title">Sources et expérience vérifiables</h2>
+      </div>
+
+      {eeat.sources.length > 0 && (
+        <ul class="page-evidence-list" aria-label="Sources primaires">
+          {eeat.sources.map((source) => (
+            <li data-primary-source>
+              <p><strong>{source.editeur}</strong> · <a href={source.url} rel="noopener">{source.titre}</a></p>
+              <p>{source.preuve}</p>
+              <p class="page-evidence-date">Consultée le <time datetime={source.consulteLe}>{format(source.consulteLe)}</time>.</p>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {eeat.experience && (
+        <aside class="page-experience" data-first-hand-experience>
+          <p class="page-evidence-kicker">Expérience de première main</p>
+          <h3><a href={eeat.experience.href}>{eeat.experience.titre}</a></h3>
+          <p>{eeat.experience.lien}</p>
+        </aside>
+      )}
+    </div>
+  </section>
+)}
+
+<style>
+  .page-evidence { padding: 96px var(--marge-page) 0; }
+  .page-evidence-inner { display: grid; gap: 32px; max-width: 960px; margin: 0 auto; }
+  .page-evidence-head { display: grid; gap: 10px; }
+  .page-evidence-kicker { margin: 0; color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; letter-spacing: .02em; }
+  .page-evidence h2 { max-width: 22ch; font-size: var(--t-4xl); }
+  .page-evidence-list { display: grid; gap: 1px; margin: 0; padding: 1px; list-style: none; background: var(--ligne-douce); }
+  .page-evidence-list li, .page-experience { display: grid; gap: 10px; padding: 24px; background: var(--surface-feuille); }
+  .page-evidence-list p, .page-experience p { margin: 0; color: var(--texte-2); }
+  .page-evidence-list strong { color: var(--texte-fort); }
+  .page-evidence-list a, .page-experience a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 3px; }
+  .page-evidence-date { font-size: var(--t-sm); }
+  .page-experience { border-left: 3px solid var(--accent-appui); background: var(--accent-voile); }
+  .page-experience h3 { font-size: var(--t-2xl); }
+  @media (min-width: 64rem) { .page-evidence { padding: 128px var(--marge-page-lg) 0; } }
+</style>

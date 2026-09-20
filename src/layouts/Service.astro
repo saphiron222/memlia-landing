@@ -4,9 +4,13 @@ import ServiceHero from '@/components/sections/ServiceHero.astro';
 import ServiceBody from '@/components/sections/ServiceBody.astro';
 import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
+import PageAttribution from '@/components/PageAttribution.astro';
+import PageEvidence from '@/components/PageEvidence.astro';
 import { SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 import { serviceDesignFor } from '@/data/service-design';
+import { auteurPar, identiteAuteur, noeudAuteur } from '@/data/auteurs';
+import { eeatService } from '@/data/page-eeat';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -19,6 +23,9 @@ const chemin = `/automatisation/${entree.id}`;
 const url = `${SITE.url}${chemin}`;
 const noindex = data.status !== 'publie';
 const design = serviceDesignFor(entree.id);
+const eeat = eeatService(entree.id);
+const auteur = auteurPar(eeat.auteur);
+const auteurId = `${SITE.url}${identiteAuteur(auteur)}`;
 const toolLink = entree.id === 'factures-fournisseurs'
   ? { href: '/outils-comptables-gratuits/calculateur-date-echeance-facture', label: 'Calculer une date d’échéance de facture' }
   : entree.id === 'rapprochement-bancaire'
@@ -38,6 +45,9 @@ const graph = {
       isPartOf: { '@id': `${SITE.url}/#website` },
       about: { '@id': `${url}#service` },
       breadcrumb: { '@id': `${url}#breadcrumb` },
+      author: { '@id': auteurId },
+      datePublished: eeat.datePublication,
+      dateModified: eeat.dateModification,
     },
     {
       '@type': 'Service',
@@ -59,6 +69,7 @@ const graph = {
         { '@type': 'ListItem', position: 3, name: data.headline, item: url },
       ],
     },
+    noeudAuteur(auteur, SITE.url),
     organizationNode(),
     {
       '@type': 'WebSite',
@@ -77,7 +88,9 @@ const graph = {
 
   <div class="feuille">
     <article data-service={entree.id} data-service-layout="da-v1">
-      <ServiceHero headline={data.headline} hero={data.hero} cta={data.cta} proof={design.heroProof} preview={noindex} />
+      <ServiceHero headline={data.headline} hero={data.hero} cta={data.cta} proof={design.heroProof} preview={noindex}>
+        <PageAttribution slot="attribution" eeat={eeat} align="start" />
+      </ServiceHero>
       <ServiceBody proof={design.bodyProof}>
         <slot />
         {toolLink && (
@@ -88,6 +101,7 @@ const graph = {
         )}
       </ServiceBody>
       <ServicePrinciples />
+      <PageEvidence eeat={eeat} />
       <AppelFinal
         id="confier"
         titre="Décrivez le geste qui revient."
