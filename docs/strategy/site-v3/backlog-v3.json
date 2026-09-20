@@ -5563,132 +5563,138 @@
     }
   },
   {
-    "slug": "ia-generative-au-cabinet-ce-qu-elle-prepare-ce-qu-elle-ne-decide-pas",
-    "titre": "IA et expert-comptable : ce que l'IA prépare au cabinet, ce qu'elle ne décide pas",
-    "requete": "ia expert comptable",
+    "slug": "ia-cabinet-comptable",
+    "titre": "IA cabinet comptable : ce qu’elle prépare, ce que vous décidez",
+    "requete": "ia cabinet comptable",
     "secondaires": [
-      "ia cabinet comptable",
-      "intelligence artificielle expertise comptable",
-      "IA cabinet expertise comptable"
+      "ia expert comptable",
+      "ia expertise comptable",
+      "automatisation ia cabinet comptable"
+    ],
+    "famille": "ia-generative-agents",
+    "role": "direction-associes",
+    "intent": "comprendre",
+    "funnel": "TOFU",
+    "format": "pillar-page",
+    "roleGrappe": "hub",
+    "liensPlanifies": [
+      "/blog/logiciel-ia-comptabilite",
+      "/blog/intelligence-artificielle-expert-comptable",
+      "/automatisation-cabinet-comptable"
+    ],
+    "preuve": "hub de la grappe : définitions sourcées, frontière prépare / valide / humain, liens vers les deux satellites mesurés et vers la page de service existante sans reprendre sa requête",
+    "sourcesOfficielles": [
+      "cnil.fr"
+    ],
+    "priorite": 1,
+    "demande": {
+      "mesureeLe": "2026-09-20",
+      "requete": 10,
+      "secondaires": 3,
+      "questions": [],
+      "intention": null,
+      "apercuIa": null,
+      "note": "Maximum observé à l’autocomplétion française ; les trois requêtes secondaires figurent dans les suggestions."
+    },
+    "cannibalisation": {
+      "risque": "moyen-controle",
+      "compareAvec": [
+        "/",
+        "/automatisation-cabinet-comptable",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/automatisation/factures-fournisseurs",
+        "/automatisation/notes-de-frais",
+        "/automatisation/paie",
+        "/automatisation/rapprochement-bancaire",
+        "/automatisation/saisie-comptable"
+      ],
+      "decision": "DIFFERENTIATE : le hub répond à l’intention informationnelle IA ; l’accueil porte le service général, les cinq pages portent chacune une tâche et le pilier cartographie l’automatisation. Maillage croisé, aucune reprise de leur requête primaire."
+    }
+  },
+  {
+    "slug": "logiciel-ia-comptabilite",
+    "titre": "Logiciel IA comptabilité : comparer l’outil à la tâche du cabinet",
+    "requete": "logiciel ia comptabilite",
+    "secondaires": [
+      "logiciel ia comptabilite gratuit"
+    ],
+    "famille": "ia-generative-agents",
+    "role": "direction-associes",
+    "intent": "comparer-approches",
+    "funnel": "MOFU",
+    "format": "faq-knowledge",
+    "roleGrappe": "satellite",
+    "liensPlanifies": [
+      "/blog/ia-cabinet-comptable",
+      "/outils-comptables-gratuits",
+      "/automatisation-cabinet-comptable"
+    ],
+    "preuve": "grille de comparaison fondée sur la tâche, la règle écrite, les données, les validations et la recette ; renvoi explicite de la variante gratuite vers /outils-comptables-gratuits, sans présenter Memlia comme un logiciel",
+    "sourcesOfficielles": [
+      "cnil.fr"
+    ],
+    "priorite": 1,
+    "demande": {
+      "mesureeLe": "2026-09-20",
+      "requete": 8,
+      "secondaires": 1,
+      "questions": [],
+      "intention": "logiciel",
+      "apercuIa": null,
+      "note": "La variante gratuite observée est traitée par maillage vers l’index d’outils, pas par une quatrième page."
+    },
+    "cannibalisation": {
+      "risque": "faible",
+      "compareAvec": [
+        "/blog/ia-cabinet-comptable",
+        "/outils-comptables-gratuits",
+        "/automatisation-cabinet-comptable"
+      ],
+      "decision": "NO ACTION : intention de comparaison de logiciels distincte du hub informatif, de l’index d’outils gratuits et de la page de service. Les liens rendent les frontières explicites."
+    }
+  },
+  {
+    "slug": "intelligence-artificielle-expert-comptable",
+    "titre": "Intelligence artificielle expert comptable : usages, limites et règle écrite",
+    "requete": "intelligence artificielle expert comptable",
+    "secondaires": [
+      "intelligence artificielle expert comptable ordre des experts comptables"
     ],
     "famille": "ia-generative-agents",
     "role": "direction-associes",
     "intent": "comprendre",
     "funnel": "TOFU",
     "format": "faq-knowledge",
-    "preuve": "définitions sourcées (IA générative, LLM, hallucination), tableau prépare / valide / humain",
+    "roleGrappe": "satellite",
+    "liensPlanifies": [
+      "/blog/ia-cabinet-comptable",
+      "/automatisation-cabinet-comptable",
+      "/methode"
+    ],
+    "preuve": "synthèse sourcée des usages et limites, avec la règle écrite et la validation humaine ; l’Ordre et la CNIL sont ouverts le jour de la recette, sans attribuer à Kevin une compétence d’expert-comptable",
     "sourcesOfficielles": [
-      "cnil.fr"
+      "cnil.fr",
+      "experts-comptables.fr — source primaire à ouvrir le jour de la recette"
     ],
     "priorite": 1,
     "demande": {
-      "mesureeLe": "2026-09-19",
-      "requete": 10,
-      "secondaires": 10,
-      "questions": [
-        "Quel est le salaire d'un agent IA ?",
-        "Quelle IA pour comptable ?",
-        "Quel est le tarif d'un agent IA ?",
-        "Est-ce que l'IA va remplacer les comptables ?"
-      ],
+      "mesureeLe": "2026-09-20",
+      "requete": 4,
+      "secondaires": 1,
+      "questions": [],
       "intention": null,
-      "apercuIa": true
-    }
-  },
-  {
-    "slug": "agent-ia-ou-assistant-ia-la-difference-pour-un-cabinet",
-    "titre": "Agent IA ou assistant IA : la différence pour un cabinet",
-    "requete": "agent IA cabinet comptable",
-    "secondaires": [
-      "définition agent IA autonome",
-      "assistant IA cabinet comptable définition"
-    ],
-    "famille": "ia-generative-agents",
-    "role": "numerique-it-data",
-    "intent": "comparer-approches",
-    "funnel": "TOFU",
-    "format": "faq-knowledge",
-    "preuve": "définitions sourcées, autonomie bornée, exemples fictifs de tâche confiée à chacun",
-    "sourcesOfficielles": [
-      "aucune"
-    ],
-    "priorite": 1,
-    "demande": {
-      "mesureeLe": "2026-09-19",
-      "requete": 2,
-      "secondaires": 0,
-      "questions": [
-        "Quel est le salaire d'un agent IA ?",
-        "Quelle IA pour comptable ?",
-        "Quel est le tarif d'un agent IA ?",
-        "Est-ce que l'IA va remplacer les comptables ?"
+      "apercuIa": null,
+      "note": "La suggestion liée à l’Ordre commande une source primaire datée, pas un article séparé."
+    },
+    "cannibalisation": {
+      "risque": "faible",
+      "compareAvec": [
+        "/blog/ia-cabinet-comptable",
+        "/automatisation-cabinet-comptable",
+        "/automatisation/paie",
+        "/automatisation/saisie-comptable"
       ],
-      "intention": null,
-      "apercuIa": true
-    }
-  },
-  {
-    "slug": "automatiser-une-tache-avec-un-agent-ia-la-methode-en-cabinet-comptable",
-    "titre": "Automatiser une tâche avec un agent IA : la méthode en cabinet comptable",
-    "requete": "utiliser un agent IA cabinet comptable méthode",
-    "secondaires": [
-      "mettre en place un agent IA cabinet comptable",
-      "cadrer un agent IA sur un dossier client"
-    ],
-    "famille": "ia-generative-agents",
-    "role": "numerique-it-data",
-    "intent": "executer",
-    "funnel": "MOFU",
-    "format": "how-to-guide",
-    "preuve": "jeu fictif d'un agent IA cadré sur une tâche unique, avec ses limites d'action écrites et testées",
-    "sourcesOfficielles": [
-      "aucune"
-    ],
-    "priorite": 3,
-    "demande": {
-      "mesureeLe": "2026-09-19",
-      "requete": 0,
-      "secondaires": 0,
-      "questions": [
-        "Quel est le salaire d'un agent IA ?",
-        "Quelle IA pour comptable ?",
-        "Quel est le tarif d'un agent IA ?",
-        "Est-ce que l'IA va remplacer les comptables ?"
-      ],
-      "intention": null,
-      "apercuIa": true
-    }
-  },
-  {
-    "slug": "ce-qu-un-agent-ia-ne-doit-jamais-decider-seul-dans-un-cabinet-comptable",
-    "titre": "Ce qu'un agent IA ne doit jamais décider seul dans un cabinet comptable",
-    "requete": "agent IA décision autonome cabinet comptable risque",
-    "secondaires": [
-      "autonomie d'un agent IA limite cabinet",
-      "supervision humaine agent IA obligation"
-    ],
-    "famille": "ia-generative-agents",
-    "role": "numerique-it-data",
-    "intent": "reduire-risque",
-    "funnel": "BOFU",
-    "format": "how-to-guide",
-    "preuve": "tableau se-prépare-seul / attend-validation / reste-humain sur quatre actions fictives d'un agent IA",
-    "sourcesOfficielles": [
-      "cnil.fr"
-    ],
-    "priorite": 3,
-    "demande": {
-      "mesureeLe": "2026-09-19",
-      "requete": 0,
-      "secondaires": 0,
-      "questions": [
-        "Quel est le salaire d'un agent IA ?",
-        "Quelle IA pour comptable ?",
-        "Quel est le tarif d'un agent IA ?",
-        "Est-ce que l'IA va remplacer les comptables ?"
-      ],
-      "intention": null,
-      "apercuIa": true
+      "decision": "DIFFERENTIATE : ce satellite traite le cadre professionnel et les sources d’autorité ; le hub organise la grappe et les pages commerciales décrivent la prise en charge d’une tâche."
     }
   },
   {

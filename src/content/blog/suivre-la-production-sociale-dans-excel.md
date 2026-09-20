@@ -1,10 +1,10 @@
 ---
-titre: "Suivre la production sociale dans Excel : modèle, règles et limites"
+titre: "Tableau de bord paie Excel en cabinet : suivre sans surveiller"
 titreOnglet: "Tableau de bord paie Excel : suivre sans surveiller | Memlia"
 resume: "Construisez le suivi sur l’unité dossier × période × étape : une table de saisie contrôlée, des calculs régénérables et une vue agrégée. Les exceptions portent sur les dossiers, jamais sur un classement individuel, et un jeu d’essai fictif éprouve le modèle avant la mise en service."
 description: "Dictionnaire de colonnes, états fermés, jeu d’essai fictif et règles de gouvernance pour un tableau de suivi de production sociale dans Excel."
 datePublication: 2026-09-09
-dateMiseAJour: 2026-09-19
+dateMiseAJour: 2026-09-20
 auteur: kevin
 sujets: [production-sociale, excel, cabinet, methode]
 motsCles: ["tableau suivi production sociale Excel cabinet", "suivi portefeuille social", "classeur pôle social", "états de production", "pilotage anti-surveillance"]
@@ -23,7 +23,7 @@ tache: "Structurer un classeur de suivi existant pour identifier l’étape et l
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-19
+  date: 2026-09-20
 funnel: MOFU
 contentType: searchable
 format: how-to-guide
@@ -33,27 +33,27 @@ proofStatus: verifiee
 proofRequired: "Dictionnaire de onze colonnes, dix états fermés et leur matrice de transition, jeu d’essai fictif de cinq dossiers avec recette en cinq points, frontière en trois colonnes ; cinq affirmations citées mot pour mot depuis la CNIL et le support Microsoft, ouvertes le jour de la republication."
 reviewRule: "Réviser à chaque changement de la page CNIL sur le contrôle de l’activité des personnes employées ou des pages Microsoft citées, et à la publication de l’article sur le tableau de bord de production ; relecture des sources à six mois."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-19
+sourcesVerifieesLe: 2026-09-20
 cta:
   label: "Confier cette tâche"
   destination: "/contact"
   outcome: "Nous écrivons la règle de suivi de votre pôle social dans vos mots, unité, états, transitions et exceptions compris, nous l’automatisons dans le classeur et les outils que votre équipe utilise déjà, et elle la recette sur le jeu fictif puis sur vos dossiers. Chaque décision sur une exception, et tout ce qui touche aux personnes, reste à vos équipes. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
 imageOg: "/images/img-24-suivi-production-sociale-og.webp"
 imageAlt: "Cinq dossiers avancent dans trois couches de suivi, avec une exception isolée pour décision."
-statutEditorial: publie
+statutEditorial: go-production
 sources:
   - editeur: "CNIL"
     titre: "Travail, ressources humaines : le contrôle de l’activité des personnes employées"
     url: "https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees"
-    consulte: 2026-09-19
+    consulte: 2026-09-20
   - editeur: "Microsoft Support"
     titre: "Overview of Excel tables"
     url: "https://support.microsoft.com/en-us/excel/overview-of-excel-tables"
-    consulte: 2026-09-19
+    consulte: 2026-09-20
   - editeur: "Microsoft Support"
     titre: "Protect a worksheet"
     url: "https://support.microsoft.com/en-us/excel/protect-a-worksheet"
-    consulte: 2026-09-19
+    consulte: 2026-09-20
 ---
 
 ## Réponse directe

@@ -143,7 +143,9 @@ def construire():
     backlog = json.loads(BACKLOG.read_text(encoding='utf-8'))
     for i, e in enumerate(backlog):
         e['rang_famille'] = sum(1 for x in backlog[:i] if x['famille'] == e['famille'])
-    pilier = next(e for e in backlog if e['format'] == 'pillar-page')
+    # Le pilier transversal est désigné par son slug : des grappes spécialisées peuvent aussi
+    # employer le gabarit pillar-page sans remplacer le hub éditorial de tout le cabinet.
+    pilier = next(e for e in backlog if e['slug'] == 'automatiser-un-cabinet-comptable-la-carte-des-taches')
     satellites = [e for e in backlog if e is not pilier]
     for slug, famille in FAMILLE_HISTORIQUE.items():
         p = publies.get(slug)
@@ -205,7 +207,10 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         # La série « Cicatrices » (charte §7 ter) prend un créneau mais n'est pas un angle de famille :
         # elle vise la marque, pas une requête, et n'entre donc pas dans le compte des quatre.
         angles = [e for e in membres if not e.get('historique') and not e.get('serie')]
-        attendu = 3 if fid == pilier['famille'] else 4  # le pilier est le quatrième angle de sa famille
+        # La grappe IA est bornée aux trois requêtes positives mesurées le 20/09/2026. Un quatrième
+        # article reprendrait soit une requête à zéro suggestion, soit « automatisation cabinet
+        # comptable », déjà portée par le service et le pilier transversal.
+        attendu = 3 if fid in {pilier['famille'], 'ia-generative-agents'} else 4
         if len(angles) != attendu:
             erreurs.append(f'{fid} : {len(angles)} angles au lieu de {attendu}')
     for slug in publies:
