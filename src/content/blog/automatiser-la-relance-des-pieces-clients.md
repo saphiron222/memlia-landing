@@ -2,7 +2,7 @@
 titre: "Automatiser la relance des pièces clients manquantes"
 titreOnglet: "Relance des pièces manquantes en cabinet comptable | Memlia"
 resume: "Trois briques rejouables sans changer d’outil : une checklist conditionnelle par dossier, un contrôle de complétude à quatre états, une cadence de relance qui s’arrête à réception. Rien ne part sans validation, tout dossier en litige sort du circuit."
-description: "Relancer les pièces manquantes d’un dossier client en trois briques : checklist conditionnelle, contrôle de complétude, cadence qui cesse à réception."
+description: "Relance pièces manquantes cabinet comptable : une checklist, quatre états et une cadence qui s’arrête à réception, après validation."
 datePublication: 2026-09-16
 dateMiseAJour: 2026-09-19
 auteur: kevin

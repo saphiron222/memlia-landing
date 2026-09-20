@@ -6,6 +6,7 @@ import Button from '@/components/Button.astro';
 import ArticleJsonLd from '@/components/ArticleJsonLd.astro';
 import { SITE, CTA, OG_IMAGE } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
+import { rubriquePourArticle } from '@/data/blog-rubriques.mjs';
 import { IMAGES, cheminImage, hauteurPour } from '@/data/images.mjs';
 import { auteurPar, identiteAuteur } from '@/data/auteurs';
 import { isPreviewEntry } from '@/data/blog-visibility.mjs';
@@ -20,10 +21,14 @@ import type { CollectionEntry } from 'astro:content';
 interface Props {
   entree: CollectionEntry<'blog'>;
   suivants: CollectionEntry<'blog'>[];
+  headings: Array<{ depth: number; slug: string; text: string }>;
 }
-const { entree, suivants } = Astro.props;
+const { entree, suivants, headings } = Astro.props;
 const { data } = entree;
+const sections = headings.filter(({ depth }) => depth === 2);
+const afficherSommaire = sections.length >= 6;
 const chemin = `${BLOG.chemin}/${entree.id}`;
+const rubrique = rubriquePourArticle(entree.id);
 const auteur = auteurPar(data.auteur);
 const dateMiseAJour = data.dateMiseAJour ?? data.datePublication;
 const description = data.description ?? data.resume.slice(0, 157).trimEnd() + '…';
@@ -99,6 +104,7 @@ const articleCta = {
       motsCles={data.motsCles}
       sujets={data.sujets.map((s) => LIBELLE_SUJET[s])}
       nombreMots={nombreMots}
+      rubrique={rubrique}
     />
   </Fragment>
 
@@ -109,12 +115,16 @@ const articleCta = {
         <ol>
           <li><a href="/">Accueil</a></li>
           <li><a href={BLOG.chemin}>Blog</a></li>
+          {rubrique && <li><a href={rubrique.chemin}>{rubrique.libelle}</a></li>}
           <li aria-current="page">{data.titre}</li>
         </ol>
       </nav>
 
       <header class="article-tete">
         <ul class="article-sujets" aria-label="Sujets">
+          {rubrique && (
+            <li><a class="pastille rubrique-lien" data-blog-rubrique href={rubrique.chemin}><span class="point"></span>{rubrique.libelle}</a></li>
+          )}
           {data.sujets.map((s) => <li class="pastille"><span class="point"></span>{LIBELLE_SUJET[s]}</li>)}
         </ul>
         <h1 class="article-h1">{data.titre}</h1>
@@ -135,6 +145,16 @@ const articleCta = {
           <span id="en-bref-titre" class="eyebrow">En bref</span>
           <p>{data.resume}</p>
         </aside>
+        {afficherSommaire && (
+          <nav class="article-sommaire" aria-labelledby="sommaire-titre" data-blog-toc>
+            <h2 id="sommaire-titre">Dans cet article</h2>
+            <ol>
+              {sections.map((section) => (
+                <li><a href={`#${section.slug}`}>{section.text}</a></li>
+              ))}
+            </ol>
+          </nav>
+        )}
       </header>
 
       <Picture id={image} sizes="(min-width: 48rem) 720px, 100vw" loading="eager" fetchpriority="high" class="article-couverture" />
@@ -212,6 +232,7 @@ const articleCta = {
   .ariane [aria-current] { color: var(--texte); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 34ch; }
   .article-tete { display: grid; gap: 16px; margin-top: 28px; }
   .article-sujets { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rubrique-lien { transition: color var(--duree-1), border-color var(--duree-1), background-color var(--duree-1); }
   .article-h1 { font-size: var(--t-5xl); line-height: 1.08; }
   .article-meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: var(--t-sm); }
   .article-meta a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
@@ -221,6 +242,14 @@ const articleCta = {
     border-radius: var(--r-boite); background: var(--accent-voile);
   }
   .en-bref p { font-size: var(--t-lg); color: var(--texte-fort); line-height: 1.5; }
+  .article-sommaire {
+    display: grid; gap: 14px; padding: 20px 24px; margin-top: 8px;
+    border: 1px solid var(--ligne); border-radius: var(--r-boite); background: var(--surface-page);
+  }
+  .article-sommaire h2 { font-size: var(--t-xl); }
+  .article-sommaire ol { display: grid; gap: 8px; padding-left: 1.25em; list-style: decimal; }
+  .article-sommaire li { padding-left: 4px; color: var(--texte-2); }
+  .article-sommaire a { color: var(--texte-fort); text-decoration: underline; text-decoration-color: var(--ligne-forte); text-underline-offset: 3px; }
   .article-couverture { margin-top: 32px; border-radius: var(--r-carte); overflow: hidden; border: 1px solid var(--ligne-douce); }
   .article-corps { margin-top: 40px; max-width: none; }
   .article-corps :global(h2) { font-size: var(--t-3xl); margin: 2.2em 0 0.6em; }
@@ -279,6 +308,8 @@ const articleCta = {
   .suite-resume { font-size: var(--t-sm); }
   .article-retour { margin-top: 32px; }
   @media (hover: hover) {
+    .article-sommaire a:hover { color: var(--accent-texte); text-decoration-color: currentColor; }
+    .rubrique-lien:hover { color: var(--accent-texte); border-color: var(--accent); background: var(--accent-voile); }
     .suite-lien:hover { border-color: var(--ligne-forte); background: var(--surface-page); }
   }
   @media (min-width: 48rem) {

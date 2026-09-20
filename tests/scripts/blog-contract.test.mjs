@@ -67,7 +67,7 @@ test('le contrat vert contrôle chaque article de la collection sans slug codé 
     writeFileSync(join(root, 'src/content/blog', `${second}.md`), sourceArticle());
     writeFileSync(join(root, 'dist/blog', `${second}.html`), pageArticle());
     writeFileSync(join(root, 'dist/blog/paie-dsn.html'), `<h1>Paie / DSN</h1><a href="/blog/${SLUG}">Lire</a><a href="/blog/${second}">Lire</a>`);
-    assert.deepEqual(auditer(root), { pass: true, articles: 2, erreurs: [] });
+    assert.deepEqual(auditer(root), { pass: true, articles: 2, exemptions: [], erreurs: [] });
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
