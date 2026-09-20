@@ -1,0 +1,115 @@
+---
+import Picto from '@/components/Picto.astro';
+
+interface Props {
+  mentionLocale: string;
+}
+
+const { mentionLocale } = Astro.props;
+const questions = [
+  {
+    id: 'outil-faq-gratuit',
+    question: 'Cet outil est-il vraiment gratuit ?',
+    reponse: 'Oui. Vous pouvez l’utiliser sans compte, sans adresse e-mail et sans transmettre de moyen de paiement.',
+  },
+  {
+    id: 'outil-faq-local',
+    question: 'Mes données quittent-elles le navigateur ?',
+    reponse: `${mentionLocale} La politique de sécurité de cette page bloque aussi les connexions sortantes pendant le calcul.`,
+  },
+];
+---
+
+<section class="outil-faq" data-tool-section="faq" aria-labelledby="outil-faq-titre">
+  <div class="conteneur outil-faq-inner">
+    <div class="outil-faq-heading rv">
+      <h2 id="outil-faq-titre">Avant d’utiliser l’outil.</h2>
+      <p>Les deux objections relevées lors de la conception des outils gratuits.</p>
+    </div>
+    <div class="outil-faq-list rv-groupe">
+      {questions.map((item) => (
+        <details class="outil-faq-item rv" id={item.id} open>
+          <summary>
+            <span>{item.question}</span>
+            <Picto nom="chevron" taille={16} class="outil-faq-chevron" />
+          </summary>
+          <p>{item.reponse}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .outil-faq {
+    border-bottom: 1px solid var(--ligne-douce);
+    background: var(--surface-feuille);
+  }
+  .outil-faq-inner {
+    display: grid;
+    gap: 32px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .outil-faq-heading {
+    display: grid;
+    gap: 12px;
+    max-width: 520px;
+  }
+  .outil-faq-heading p,
+  .outil-faq-item p {
+    color: var(--texte-2);
+  }
+  .outil-faq-list {
+    border-top: 1px solid var(--ligne);
+  }
+  .outil-faq-item {
+    border-bottom: 1px solid var(--ligne-douce);
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  .outil-faq-item summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 4px;
+    cursor: pointer;
+    list-style: none;
+    color: var(--texte-fort);
+    font-family: var(--police-display), 'Fraunces Fallback';
+    font-size: var(--t-xl);
+    font-weight: 600;
+    line-height: 1.25;
+    text-wrap: pretty;
+  }
+  .outil-faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .outil-faq-chevron {
+    flex: 0 0 auto;
+    margin-top: 0.35em;
+    color: var(--picto-repos);
+    transition: transform var(--duree-2) var(--courbe-standard), color var(--duree-1) var(--courbe-standard);
+  }
+  .outil-faq-item[open] .outil-faq-chevron {
+    transform: rotate(180deg);
+    color: var(--accent-texte);
+  }
+  .outil-faq-item p {
+    max-width: 62ch;
+    padding: 0 4px 28px;
+  }
+  @media (min-width: 64rem) {
+    .outil-faq-inner {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 96px;
+      padding-top: 112px;
+      padding-bottom: 112px;
+    }
+    .outil-faq-heading {
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+      align-self: start;
+    }
+  }
+</style>

@@ -154,6 +154,15 @@ const { headline, hero, cta, proof, preview = false } = Astro.props;
     from { opacity: 0; transform: scale(0.98); filter: blur(6px) grayscale(1); }
     to { opacity: 1; transform: none; filter: none; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    .service-hero-copy h1,
+    .service-hero-label,
+    .service-hero-lead,
+    .service-hero-action,
+    .service-hero-visual {
+      animation: none;
+    }
+  }
   @media (min-width: 64rem) {
     .service-hero-inner {
       padding-top: 32px;

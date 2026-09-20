@@ -35,7 +35,13 @@ const {
 } = Astro.props;
 ---
 
-<section id={id} class="appel" data-service-section={id === 'confier' ? 'appel' : undefined} aria-labelledby={`${id}-titre`}>
+<section
+  id={id}
+  class="appel"
+  data-service-section={id === 'confier' ? 'appel' : undefined}
+  data-tool-section={id === 'outil-confier' ? 'appel' : undefined}
+  aria-labelledby={`${id}-titre`}
+>
   {id === 'evaluer' && <span id="demo" aria-hidden="true"></span>}
 
   <div class="appel-int coins rv">

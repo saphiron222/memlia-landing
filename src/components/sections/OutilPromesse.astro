@@ -1,0 +1,77 @@
+---
+interface Props {
+  entree: string;
+  resultat: string;
+}
+
+const { entree, resultat } = Astro.props;
+---
+
+<section class="outil-promesse-section" data-tool-section="promesse" aria-labelledby="outil-promesse-titre">
+  <div class="conteneur outil-promesse-inner">
+    <h2 id="outil-promesse-titre" class="sr-only">Entrée et résultat attendus</h2>
+    <dl class="outil-promesse rv-groupe">
+      <div class="rv">
+        <dt>Vous saisissez</dt>
+        <dd>{entree}</dd>
+      </div>
+      <div class="rv">
+        <dt>Vous obtenez</dt>
+        <dd>{resultat}</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .outil-promesse-section {
+    border-bottom: 1px solid var(--ligne-douce);
+    background: var(--surface-feuille);
+  }
+  .outil-promesse-inner {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .outil-promesse {
+    display: grid;
+    width: 100%;
+    border-block: 1px solid var(--ligne);
+  }
+  .outil-promesse div {
+    display: grid;
+    gap: 4px;
+    padding: 20px 0;
+  }
+  .outil-promesse div + div {
+    border-top: 1px solid var(--ligne);
+  }
+  .outil-promesse dt {
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+    font-weight: 600;
+  }
+  .outil-promesse dd {
+    margin: 0;
+    color: var(--texte-fort);
+    text-wrap: pretty;
+  }
+  @media (min-width: 48rem) {
+    .outil-promesse {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .outil-promesse div {
+      padding: 24px 32px 24px 0;
+    }
+    .outil-promesse div + div {
+      border-top: 0;
+      border-left: 1px solid var(--ligne);
+      padding-left: 32px;
+    }
+  }
+  @media (min-width: 64rem) {
+    .outil-promesse-inner {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+  }
+</style>

@@ -31,6 +31,15 @@ test('hub : trois outils disponibles et schéma de collection', async ({ page })
   expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(3);
 });
 
+test('footer : le hub et les outils publiés sont générés, le témoin reste absent', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator(`footer a[href="${HUB}"]`)).toHaveCount(1);
+  for (const outil of OUTILS_DISPONIBLES) {
+    await expect(page.locator(`footer a[href="${outilPath(outil)}"]`)).toHaveCount(1);
+  }
+  await expect(page.locator(`footer a[href="${TEMOIN}"]`)).toHaveCount(0);
+});
+
 test('marge : calcul exact, marge négative et refus visibles', async ({ page }) => {
   await page.goto(`${HUB}/calculateur-marge-commerciale`);
   await page.getByLabel('Prix d’achat HT').fill('80,00');
@@ -125,15 +134,38 @@ test('outils publiés : métadonnées, source datée et schémas concordent', as
     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', outil.h1);
     await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', outil.h1);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${path}`);
-    await expect(page.locator('[data-official-source]')).toContainText(`vérifiée le ${outil.source.verifieeLe}`);
+    await expect(page.locator('[data-official-source]')).toContainText(
+      new RegExp(`vérifiée le ${outil.source.verifieeLe}`, 'i'),
+    );
     await expect(page.locator(`[data-official-source] a[href="${outil.source.url}"]`)).toHaveCount(1);
     await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toBeVisible();
     await expect(page.locator(`[data-proof="${outil.proof}"] img`)).toBeVisible();
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `/proofs/v2/og/${outil.proof?.slice(3)}.webp`);
+    await expect(page.locator('[data-tool-section]')).toHaveCount(8);
+    await expect(page.locator('[data-tool-section="garanties"]')).toBeVisible();
+    await expect(page.locator('[data-tool-section="faq"] details')).toHaveCount(2);
+    await expect(page.getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(3);
     const graph = await graphFrom(page);
     expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual(['WebPage', 'WebApplication', 'BreadcrumbList']);
     expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebPage').headline).toBe(outil.h1);
     expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebApplication').name).toBe(outil.h1);
+  }
+});
+
+test('outils et services : les entrées respectent la préférence de mouvement réduit', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const route of [
+    `${HUB}/calculateur-marge-commerciale`,
+    '/automatisation/paie',
+  ]) {
+    await page.goto(route);
+    const animated = page.locator(route.startsWith(HUB)
+      ? '.outil-hero-copy h1, .outil-hero-copy p, .outil-hero-visual'
+      : '.service-hero-copy h1, .service-hero-label, .service-hero-lead, .service-hero-action, .service-hero-visual');
+    const count = await animated.count();
+    expect(await animated.evaluateAll((elements) => elements.map((element) => getComputedStyle(element).animationName))).toEqual(
+      Array(count).fill('none'),
+    );
   }
 });
 

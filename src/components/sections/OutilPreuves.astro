@@ -1,0 +1,121 @@
+---
+import type { OutilDefinition } from '@/data/outils';
+
+interface Props {
+  source: OutilDefinition['source'];
+  mentionLocale: string;
+  refus: string;
+}
+
+const { source, mentionLocale, refus } = Astro.props;
+---
+
+<section class="outil-preuves" data-tool-section="preuves" aria-labelledby="outil-preuves-titre">
+  <div class="conteneur outil-preuves-inner">
+    <div class="outil-preuves-heading rv">
+      <span class="eyebrow">La règle reste lisible</span>
+      <h2 id="outil-preuves-titre">Le calcul, sa source et son refus sont visibles.</h2>
+    </div>
+    <div class="outil-preuves-grid rv-groupe">
+      <article class="outil-preuve rv">
+        <h3>Calcul local</h3>
+        <p>{mentionLocale}</p>
+      </article>
+      <article class="outil-preuve rv">
+        <h3>Arrêt explicite</h3>
+        <p>{refus}</p>
+      </article>
+      <article class="outil-preuve rv" data-official-source>
+        <h3>Source officielle</h3>
+        <p>{source.extrait}</p>
+        <p class="outil-source-meta">
+          <a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.nom}</a>
+          <span>Vérifiée le {source.verifieeLe}.</span>
+        </p>
+        {source.complement && (
+          <p class="outil-source-complement">
+            {source.complement.extrait}{' '}
+            <a href={source.complement.url} rel="noopener">{source.complement.nom}</a>.
+          </p>
+        )}
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .outil-preuves {
+    border-bottom: 1px solid var(--ligne);
+    background: var(--surface-page);
+  }
+  .outil-preuves-inner {
+    display: grid;
+    gap: 48px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .outil-preuves-heading {
+    display: grid;
+    gap: 12px;
+    max-width: 760px;
+  }
+  .outil-preuves-grid {
+    display: grid;
+    gap: 1px;
+    border-block: 1px solid var(--ligne);
+    background: var(--ligne);
+  }
+  .outil-preuve {
+    display: grid;
+    align-content: start;
+    gap: 12px;
+    min-width: 0;
+    padding: 32px 24px 40px;
+    background: var(--surface-feuille);
+  }
+  .outil-preuve h3 {
+    font-size: var(--t-2xl);
+  }
+  .outil-preuve p {
+    color: var(--texte-2);
+  }
+  .outil-source-meta {
+    display: grid;
+    gap: 4px;
+    font-size: var(--t-sm);
+  }
+  .outil-preuve a {
+    color: var(--accent-texte);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .outil-source-complement {
+    padding-top: 12px;
+    border-top: 1px solid var(--ligne-douce);
+    font-size: var(--t-sm);
+  }
+  @media (min-width: 48rem) {
+    .outil-preuves-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .outil-preuve:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (min-width: 64rem) {
+    .outil-preuves-inner {
+      gap: 64px;
+      padding-top: 112px;
+      padding-bottom: 112px;
+    }
+    .outil-preuves-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .outil-preuve:last-child {
+      grid-column: auto;
+    }
+    .outil-preuve {
+      padding: 40px 32px 48px;
+    }
+  }
+</style>
