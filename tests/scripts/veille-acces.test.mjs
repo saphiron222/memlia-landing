@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { isRelevantQuestion, normalizeQuestion, qualifiesSignal } from '../../scripts/veille/questions.mjs';
+import { decodeHtml, isRelevantQuestion, isWithinWindow, normalizeQuestion, qualifiesSignal } from '../../scripts/veille/questions.mjs';
 import { canonicalText, evaluateClaimSource, normalizedIncludes, sha256 } from '../../scripts/veille/reglementaire.mjs';
 
 test('la veille questions normalise sans conserver une identité', () => {
@@ -13,6 +13,18 @@ test('le seuil refuse un message isolé et un accès déjà couvert', () => {
   assert.equal(qualifiesSignal({ occurrences: 1, distinctContributors: 1, distinctThreads: 1, coveredByC1: false }), false);
   assert.equal(qualifiesSignal({ occurrences: 3, distinctContributors: 3, distinctThreads: 2, coveredByC1: true }), false);
   assert.equal(qualifiesSignal({ occurrences: 3, distinctContributors: 3, distinctThreads: 2, coveredByC1: false }), true);
+});
+
+test('la fenêtre de 31 jours exclut le vieux contenu et les dates futures', () => {
+  const now = new Date('2026-09-20T12:00:00Z');
+  assert.equal(isWithinWindow('2026-08-21', now), true);
+  assert.equal(isWithinWindow('2026-08-19', now), false);
+  assert.equal(isWithinWindow('2026-09-21', now), false);
+});
+
+test('le collecteur respecte le charset historique des forums', () => {
+  const bytes = Uint8Array.from(Buffer.from('Comment g\xe9rez-vous les pi\xe8ces ?', 'latin1'));
+  assert.equal(decodeHtml(bytes, 'text/html; charset=ISO-8859-1'), 'Comment gérez-vous les pièces ?');
 });
 
 test('la veille réglementaire ignore le balisage pour retrouver une citation', () => {

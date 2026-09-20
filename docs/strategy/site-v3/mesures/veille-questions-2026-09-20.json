@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "measuredAt": "2026-09-20",
+  "windowDays": 31,
+  "threshold": {
+    "occurrences": 3,
+    "distinctContributors": 3,
+    "distinctThreads": 2,
+    "coveredByC1": false,
+    "reason": "Trois personnes évitent l’anecdote ; deux fils indépendants évitent de compter une conversation active comme plusieurs besoins."
+  },
+  "coverage": [
+    {"terrain": "Compta Online", "status": "ok", "itemsScanned": 40, "freshQuestions": 3, "staleExcluded": 2},
+    {"terrain": "last30days Reddit monde", "status": "partial", "itemsScanned": 9, "freshRelevantThreads": 1, "detail": "Reddit a répondu mais a subi des 429 ; YouTube a expiré après 120 s."},
+    {"terrain": "last30days bibliothèque lot6b", "status": "source-inaccessible", "detail": "Le fichier iCloud annoncé à 52 résultats renvoie Resource deadlock avoided ; aucune conclusion n’en est tirée."},
+    {"terrain": "LinkedIn/Facebook", "status": "non-mesurable-sans-identifiants", "detail": "Aucun groupe privé n’est aspiré et aucune identité n’est collectée."},
+    {"terrain": "sources institutionnelles", "status": "ok-partiel", "itemsScanned": 5, "http200": 3, "inaccessible": 2}
+  ],
+  "retained": [],
+  "rejected": [
+    {
+      "pain": "Reprendre une comptabilité désorganisée sans refaire plusieurs fois le même travail",
+      "source": "last30days · Reddit r/Bookkeeping · 2026-09-07",
+      "occurrences": 10,
+      "distinctContributors": 10,
+      "distinctThreads": 1,
+      "gestureExistsInFrance": true,
+      "frenchRuleEffect": "Non évalué : le seuil multi-fils n’est pas atteint ; aucune règle étrangère n’est importée.",
+      "alreadyServedInFrance": "À mesurer seulement si un second fil indépendant apparaît.",
+      "measuredFrenchVocabulary": ["saisie comptable", "pièces manquantes comptable"],
+      "coveredByC1": true,
+      "reason": "Un seul fil et accès C1 déjà couvert ; signal humain fort mais pas un nouvel accès."
+    },
+    {
+      "pain": "Trouver une méthode de cut-off en révision",
+      "source": "Compta Online · 2026-09-17",
+      "occurrences": 1,
+      "distinctContributors": 1,
+      "distinctThreads": 1,
+      "gestureExistsInFrance": true,
+      "frenchRuleEffect": "Question française ; aucune obligation n’est déduite du fil.",
+      "alreadyServedInFrance": "Non évalué sous le seuil.",
+      "measuredFrenchVocabulary": ["cut-off en révision"],
+      "coveredByC1": false,
+      "reason": "Question réelle mais isolée."
+    },
+    {
+      "pain": "Gérer les documents manquants des clients",
+      "source": "Compta Online · 2026-09-01",
+      "occurrences": 1,
+      "distinctContributors": 1,
+      "distinctThreads": 1,
+      "gestureExistsInFrance": true,
+      "frenchRuleEffect": "Question française ; aucune obligation n’est déduite du fil.",
+      "alreadyServedInFrance": "Accès déjà présent dans C1.",
+      "measuredFrenchVocabulary": ["documents manquants", "pièces manquantes comptable"],
+      "coveredByC1": true,
+      "reason": "Question isolée et accès déjà couvert."
+    },
+    {
+      "pain": "Éviter les erreurs de facturation",
+      "source": "Compta Online · 2026-08-26",
+      "occurrences": 1,
+      "distinctContributors": 1,
+      "distinctThreads": 1,
+      "gestureExistsInFrance": true,
+      "frenchRuleEffect": "Question française ; toute règle éventuelle devra venir d’une source primaire française datée.",
+      "alreadyServedInFrance": "Non évalué sous le seuil.",
+      "measuredFrenchVocabulary": ["erreurs de facturation"],
+      "coveredByC1": false,
+      "reason": "Question réelle mais isolée."
+    }
+  ],
+  "verdict": "Aucun nouvel accès ne franchit le seuil dans ce premier lot ; aucune carte d’accès n’est créée. Le silence est le résultat juste.",
+  "privacy": "Aucun nom, pseudonyme, profil ou commentaire brut conservé."
+}

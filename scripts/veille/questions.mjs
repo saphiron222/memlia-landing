@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 import { createHash } from 'node:crypto';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
 const LISTING_URL = 'https://www.compta-online.com/discussions-professionnel';
 const WINDOW_DAYS = 31;
-const NEED_PATTERN = /\b(?:automatis\w*|logiciel\w*|outil\w*|méthode\w*|methode\w*|chronophage\w*|temps|manquant\w*|relan\w*|contrôl\w*|control\w*|rapproch\w*|révision\w*|revision\w*|cut-off|tva|factur\w*|dsn|paie|fec|écriture\w*|ecriture\w*|pièce\w*|piece\w*)\b/i;
-const QUESTION_PATTERN = /\?|\b(?:comment|quel|quelle|quels|quelles|votre|vos|besoin|difficulté|difficulte)\b/i;
+const NEED_PATTERN = /\b(?:automatis\w*|logiciel\w*|outil\w*|méthode\w*|methode\w*|chronophage\w*|temps|manquant\w*|missing|relan\w*|chasing|contrôl\w*|controls?|rapproch\w*|reconcil\w*|révision\w*|revision\w*|cleanup|clean-up|rework|redoing|duplicat\w*|cut-off|tva|factur\w*|invoice\w*|dsn|payroll|paie|fec|écriture\w*|ecriture\w*|pièce\w*|piece\w*|document\w*|receipt\w*)\b/i;
+const QUESTION_PATTERN = /\?|\b(?:comment|quel|quelle|quels|quelles|votre|vos|besoin|difficulté|difficulte|how|what|why|anyone|your)\b/i;
 
 export function cleanText(value) {
   return String(value ?? '')
@@ -43,6 +44,14 @@ export function qualifiesSignal({ occurrences, distinctContributors, distinctThr
     && coveredByC1 === false;
 }
 
+export function isWithinWindow(date, now = new Date(), days = WINDOW_DAYS) {
+  if (!date) return false;
+  const measured = new Date(`${date}T00:00:00Z`);
+  if (Number.isNaN(measured.getTime())) return false;
+  const ageMs = now.getTime() - measured.getTime();
+  return ageMs >= 0 && ageMs <= days * 86_400_000;
+}
+
 function parseFrenchDate(html) {
   const match = cleanText(html).match(/Ecrit le:\s*(\d{2})\/(\d{2})\/(\d{4})/i);
   return match ? `${match[3]}-${match[2]}-${match[1]}` : null;
@@ -61,6 +70,13 @@ function parseListingLinks(html) {
   return links;
 }
 
+export function decodeHtml(bytes, contentType = '') {
+  const probe = new TextDecoder('windows-1252').decode(bytes.slice(0, 2_048));
+  const declared = `${contentType} ${probe.match(/charset\s*=\s*["']?([^\s"';>]+)/i)?.[1] ?? ''}`.toLowerCase();
+  const encoding = /(?:iso-8859-1|windows-1252|latin-1)/.test(declared) ? 'windows-1252' : 'utf-8';
+  return new TextDecoder(encoding).decode(bytes);
+}
+
 async function fetchText(url) {
   const response = await fetch(url, {
     redirect: 'follow',
@@ -70,11 +86,46 @@ async function fetchText(url) {
     },
     signal: AbortSignal.timeout(20_000),
   });
-  return { response, body: await response.text() };
+  const bytes = new Uint8Array(await response.arrayBuffer());
+  return { response, body: decodeHtml(bytes, response.headers.get('content-type') ?? '') };
 }
 
-export async function collectQuestions() {
-  const generatedAt = new Date().toISOString();
+function collectLast30Days(path, now) {
+  if (!path) return { terrain: null, observations: [] };
+  const report = JSON.parse(readFileSync(path, 'utf8'));
+  const sourceStatus = report.source_status ?? {};
+  const items = Object.values(report.items_by_source ?? {}).flat();
+  const observations = items
+    .filter((item) => isWithinWindow(item.published_at, now) && isRelevantQuestion(`${item.title ?? ''} ${item.body ?? ''}`))
+    .map((item) => {
+      const url = String(item.url ?? '');
+      const contributors = new Set((item.metadata?.top_comments ?? []).map(({ author }) => author).filter(Boolean));
+      return {
+        question: cleanText(item.title),
+        source: `last30days · ${item.source}${item.container ? ` · r/${item.container}` : ''}`,
+        sourceItemId: createHash('sha256').update(url).digest('hex').slice(0, 16),
+        url,
+        publishedAt: item.published_at ?? null,
+        httpStatus: 200,
+        occurrenceCount: Math.max(1, contributors.size),
+        distinctContributors: contributors.size || 1,
+        distinctThreads: 1,
+      };
+    });
+  return {
+    terrain: {
+      terrain: 'last30days · monde',
+      status: Object.values(sourceStatus).some(({ state }) => !['ok', 'no-results'].includes(state)) ? 'partial' : 'ok',
+      sourceStatus: Object.fromEntries(Object.entries(sourceStatus).map(([source, status]) => [source, status.state])),
+      itemsScanned: items.length,
+      relevantQuestions: observations.length,
+    },
+    observations,
+  };
+}
+
+export async function collectQuestions({ now = new Date(), last30daysPath = null } = {}) {
+  const generatedAt = now.toISOString();
   const result = {
     schemaVersion: 1,
     generatedAt,
@@ -111,16 +162,26 @@ export async function collectQuestions() {
         return { question: entry.title, source: 'Compta Online · forum professionnel', sourceItemId: createHash('sha256').update(entry.url).digest('hex').slice(0, 16), url: entry.url, publishedAt: null, httpStatus: 0 };
       }
     }));
-    result.terrains.push({ terrain: 'Compta Online', status: 'ok', listingHttpStatus: listing.response.status, itemsScanned: links.length, relevantQuestions: details.length });
-    result.observations.push(...details);
+    const freshDetails = details.filter(({ publishedAt }) => isWithinWindow(publishedAt, now));
+    result.terrains.push({ terrain: 'Compta Online', status: 'ok', listingHttpStatus: listing.response.status, itemsScanned: links.length, relevantQuestions: freshDetails.length, staleExcluded: details.length - freshDetails.length });
+    result.observations.push(...freshDetails);
   } catch (error) {
     result.terrains.push({ terrain: 'Compta Online', status: 'source-inaccessible', error: error instanceof Error ? error.message : 'unknown' });
   }
+
+  const worldwide = collectLast30Days(last30daysPath, now);
+  if (worldwide.terrain) result.terrains.push(worldwide.terrain);
+  result.observations.push(...worldwide.observations);
 
   return result;
 }
 
 const invoked = process.argv[1] ? pathToFileURL(process.argv[1]).href : null;
 if (invoked === import.meta.url) {
-  console.log(JSON.stringify(await collectQuestions(), null, 2));
+  const value = (name) => process.argv.find((argument) => argument.startsWith(`--${name}=`))?.slice(name.length + 3) ?? null;
+  const output = value('output');
+  const report = await collectQuestions({ last30daysPath: value('last30days') });
+  const serialized = `${JSON.stringify(report, null, 2)}\n`;
+  if (output) writeFileSync(output, serialized);
+  else process.stdout.write(serialized);
 }
