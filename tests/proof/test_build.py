@@ -14,7 +14,8 @@ DIST = ROOT / 'dist'
 SITE = 'https://memlia.fr'
 # Les cinq pages commerciales du site v2 ont rejoint le site le 16/09/2026.
 PAGES_FIXES = ['404', 'a-propos', 'automatisation-cabinet-comptable', 'blog', 'contact', 'garanties',
-               'glossaire', 'index', 'mentions-legales', 'methode', 'politique-de-confidentialite']
+               'glossaire', 'index', 'mentions-legales', 'methode', 'outils-comptables-gratuits',
+               'politique-de-confidentialite']
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
 PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
                    'comprendre-les-comptes-rendus-metier-dsn',
@@ -81,7 +82,8 @@ class BuildProof(unittest.TestCase):
 
     def test_legal_noindex_canonical(self):
         # Les deux pages de réponse du formulaire de contact suivent le même régime que les pages légales.
-        for slug in ['mentions-legales', 'politique-de-confidentialite', 'contact/merci', 'contact/erreur']:
+        for slug in ['mentions-legales', 'politique-de-confidentialite', 'contact/merci', 'contact/erreur',
+                     'outils-comptables-gratuits/temoin-calcul-local']:
             doc = Document(DIST / f'{slug}.html')
             robots = next(m['content'] for m in doc.select('meta') if m.get('name') == 'robots')
             self.assertIn('noindex', robots)
@@ -123,9 +125,15 @@ class BuildProof(unittest.TestCase):
                 services_publies.add(f'{SITE}/automatisation/{service.stem}')
         attendues = {f'{SITE}/', f'{SITE}/blog', f'{SITE}/glossaire',
                      f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
-                     f'{SITE}/a-propos', f'{SITE}/contact'} | {f'{SITE}/blog/{a.stem}' for a in published_articles} | services_publies
+                     f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/outils-comptables-gratuits',
+                     f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
+                     f'{SITE}/outils-comptables-gratuits/calculateur-date-echeance-facture',
+                     f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
+                         f'{SITE}/blog/{a.stem}' for a in published_articles
+                     } | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
+        self.assertNotIn(f'{SITE}/outils-comptables-gratuits/temoin-calcul-local', pages)
         # lastmod d'un article publié = dateModified de son schéma (une seule source : le frontmatter).
         for article in published_articles:
             posting = next(n for g in jsonld(article) for n in g['@graph'] if n['@type'] == 'BlogPosting')
@@ -146,6 +154,38 @@ class BuildProof(unittest.TestCase):
             self.assertEqual(hashlib.sha256(fichier.read_bytes()).hexdigest(), registre[route]['sha256'],
                              f'{route} : rendu modifié sans que sa date suive (npm run lastmod:sync)')
         self.assertIn('Sitemap: https://memlia.fr/sitemap.xml', (DIST / 'robots.txt').read_text())
+
+    def test_outil_temoin_csp_and_schema_are_fail_closed(self):
+        slug = 'outils-comptables-gratuits/temoin-calcul-local'
+        path = DIST / f'{slug}.html'
+        doc = Document(path)
+        csp = next(m['content'] for m in doc.select('meta') if m.get('http-equiv') == 'Content-Security-Policy')
+        self.assertIn("connect-src 'none'", csp)
+        headers = (DIST / '_headers').read_text()
+        self.assertIn('/outils-comptables-gratuits/*', headers)
+        self.assertIn("connect-src 'none'", headers)
+        graph = jsonld(path)[0]['@graph']
+        self.assertEqual([node['@type'] for node in graph], ['WebPage', 'WebApplication', 'BreadcrumbList'])
+        self.assertNotIn('SoftwareApplication', path.read_text())
+
+    def test_outils_disponibles_ont_trois_liens_entrants_contextuels(self):
+        outils = {
+            '/outils-comptables-gratuits/calculateur-marge-commerciale',
+            '/outils-comptables-gratuits/calculateur-date-echeance-facture',
+            '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit',
+        }
+        sources = {}
+        for page in DIST.rglob('*.html'):
+            route = '/' + str(page.relative_to(DIST)).removesuffix('.html')
+            if route == '/index': route = '/'
+            hrefs = {attrs.get('href') for attrs in Document(page).select('a')}
+            for outil in outils:
+                if outil in hrefs and route != outil:
+                    sources.setdefault(outil, set()).add(route)
+        for outil in outils:
+            self.assertGreaterEqual(len(sources.get(outil, set())), 3, (outil, sources.get(outil)))
+            self.assertIn('/outils-comptables-gratuits', sources[outil])
+            self.assertIn('/methode', sources[outil], 'la méthode est la ressource exacte qui rejoue le geste')
 
     def test_aucune_mention_de_processus_rendue(self):
         """Le lecteur ne lit pas notre chaîne éditoriale.
@@ -195,10 +235,18 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 3 * len(publies))
         self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 4 * len(publies))
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
-        # Série v2 : treize preuves de section, cinq preuves de tête et cinq scènes propres
-        # aux pages de service ; les cinq images sociales restent sous og/.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 23)
-        self.assertEqual(sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')), sorted(f'{n}-hero-{s}.webp' for n, s in [(14, 'service'), (15, 'methode'), (16, 'garanties'), (17, 'apropos'), (18, 'contact')]))
+        # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
+        # aux pages de service et quatre scènes propres aux outils. Les neuf images sociales
+        # correspondantes restent sous og/.
+        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 27)
+        self.assertEqual(
+            sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')),
+            sorted([
+                '14-hero-service.webp', '15-hero-methode.webp', '16-hero-garanties.webp',
+                '17-hero-apropos.webp', '18-hero-contact.webp', '24-outils-hub.webp',
+                '25-outil-marge.webp', '26-outil-echeance.webp', '27-outil-rapprochement.webp',
+            ]),
+        )
 
     def test_five_generic_examples_no_product_statuses(self):
         html = (DIST / 'index.html').read_text()

@@ -19,6 +19,11 @@ const chemin = `/automatisation/${entree.id}`;
 const url = `${SITE.url}${chemin}`;
 const noindex = data.status !== 'publie';
 const design = serviceDesignFor(entree.id);
+const toolLink = entree.id === 'factures-fournisseurs'
+  ? { href: '/outils-comptables-gratuits/calculateur-date-echeance-facture', label: 'Calculer une date d’échéance de facture' }
+  : entree.id === 'rapprochement-bancaire'
+    ? { href: '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit', label: 'Préparer un modèle de rapprochement bancaire fictif' }
+    : null;
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -76,6 +81,12 @@ const graph = {
       <ServiceHero headline={data.headline} hero={data.hero} cta={data.cta} proof={design.heroProof} preview={noindex} />
       <ServiceBody proof={design.bodyProof}>
         <slot />
+        {toolLink && (
+          <aside class="service-outil" aria-label="Outil gratuit associé">
+            <strong>Rejouer la règle sur des données fictives</strong>
+            <a href={toolLink.href}>{toolLink.label}</a>
+          </aside>
+        )}
       </ServiceBody>
       <ServicePrinciples />
       <AppelFinal
@@ -92,3 +103,8 @@ const graph = {
     </article>
   </div>
 </Base>
+
+<style>
+  .service-outil { display: grid; gap: 8px; margin-top: 32px; padding: 20px; border-left: 3px solid var(--accent-appui); background: var(--accent-voile); }
+  .service-outil a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
+</style>

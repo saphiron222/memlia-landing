@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-20T11:28:41.533Z",
+  "generatedAt": "2026-09-20T15:24:04.522Z",
   "windowDays": 31,
   "privacy": "Titres, dates et URL seulement; aucun nom, pseudonyme, commentaire ou profil conservé.",
   "threshold": {
@@ -21,12 +21,15 @@
     },
     {
       "terrain": "last30days · monde",
-      "status": "partial",
+      "status": "ok",
       "sourceStatus": {
-        "reddit": "ok",
-        "youtube": "timeout"
+        "reddit": "ok"
       },
-      "itemsScanned": 9,
+      "families": [
+        "software-exports",
+        "payroll-deadlines"
+      ],
+      "itemsScanned": 22,
       "relevantQuestions": 1
     }
   ],

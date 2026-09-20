@@ -243,3 +243,22 @@
 .service-actions button{padding:9px 12px;font-size:12px}
 .service-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 30px 22px;border-top:1px solid var(--line-soft);color:var(--muted);font-size:14px}
 .service-foot strong{color:var(--green-dark)}
+
+/* ---- Outils gratuits : quatre scènes propres, sans donnée réelle. ---- */
+.tool-proof{grid-template-rows:60px minmax(0,1fr) auto}
+.tool-hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:54px 34px;align-items:center}
+.tool-hub-grid section{border:1px solid var(--line-soft);border-radius:14px;padding:26px;display:grid;gap:14px;align-content:start;background:white;min-height:300px}
+.tool-hub-grid b{font:600 25px/1.12 Fraunces,Georgia,serif}.tool-hub-grid p{margin:0;color:var(--muted);font-size:16px;line-height:1.65}.tool-hub-grid p small{display:inline-block;min-width:54px;color:var(--green-dark);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.tool-proof-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 30px;border-top:1px solid var(--line-soft);color:var(--muted);font-size:15px}
+.tool-proof-foot strong{color:var(--green-dark)}
+.tool-stop{justify-self:start;margin-top:auto;padding:6px 10px;border-radius:999px;background:var(--amber-pale);color:#97551a!important;font-size:13px;font-weight:600}
+.tool-calc-grid{display:grid;grid-template-columns:1fr 90px 1.2fr;gap:24px;padding:54px 54px;align-items:center}
+.tool-inputs,.tool-results{display:grid;gap:12px}.tool-inputs>div,.tool-results>div{border:1px solid var(--line-soft);border-radius:10px;padding:15px 17px;background:white;display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
+.tool-inputs small,.tool-results small{color:var(--muted);font-size:14px}.tool-inputs b,.tool-results b{font:600 22px Fraunces,Georgia,serif}.tool-inputs p{margin:0;color:var(--muted);font-size:13px}
+.tool-results>div{background:var(--green-pale);border-color:#cfeeda}.tool-arrow{height:1px;background:var(--green);position:relative}.tool-arrow:after{content:"";position:absolute;right:0;top:-5px;width:9px;height:9px;border-top:1px solid var(--green);border-right:1px solid var(--green);transform:rotate(45deg)}
+.tool-timeline{display:grid;grid-template-columns:1fr 48px 1fr 48px 1fr 48px 1fr;gap:10px;align-items:center;padding:100px 34px}
+.tool-timeline>div{border:1px solid var(--line-soft);border-radius:13px;padding:22px;display:grid;gap:8px;min-height:160px;align-content:center;background:white}.tool-timeline>div.accent{background:var(--green-pale);border-color:#cfeeda}.tool-timeline>div>span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--paper);color:var(--green-dark);font-weight:700}.tool-timeline small{color:var(--muted);font-size:13px}.tool-timeline b{font:600 22px/1.16 Fraunces,Georgia,serif}.tool-timeline i{height:1px;background:var(--green);position:relative}.tool-timeline i:after{content:"";position:absolute;right:0;top:-4px;width:8px;height:8px;border-top:1px solid var(--green);border-right:1px solid var(--green);transform:rotate(45deg)}
+.tool-reconciliation{display:grid;grid-template-columns:1fr 130px 1fr .72fr;gap:22px;align-items:stretch;padding:58px 34px}
+.tool-ledger{border:1px solid var(--line-soft);border-radius:13px;padding:24px;display:grid;gap:12px;align-content:start;background:white}.tool-ledger small{color:var(--muted);font-size:14px}.tool-ledger>b{font:600 34px Fraunces,Georgia,serif}.tool-ledger strong{margin-top:auto;padding:15px;border-radius:9px;background:var(--green-pale);color:var(--green-dark)}
+.tool-equals{display:grid;place-items:center;text-align:center}.tool-equals>span{font:600 52px Fraunces,Georgia,serif;color:var(--green-dark)}.tool-equals small{color:var(--muted);line-height:1.45}.tool-equals small b{font-size:18px;color:var(--green-dark)}
+.tool-reconciliation aside{border:1px solid #cfeeda;border-radius:13px;padding:24px;background:var(--green-pale);display:grid;gap:16px;align-content:center}.tool-reconciliation aside .ok{justify-self:start}.tool-reconciliation aside p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}

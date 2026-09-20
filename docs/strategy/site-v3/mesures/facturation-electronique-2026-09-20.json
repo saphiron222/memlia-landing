@@ -173,14 +173,74 @@
     {"candidate": "/automatisation/facturation-electronique", "reason": "requête dédiée sous le seuil et zéro suggestion ; la tâche mesurée est factures fournisseurs"}
   ],
   "sourceSnapshots": [
-    {"id": "service-public-f39785", "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785", "sourceDate": "2026-08-07", "consultedAt": "2026-09-20", "httpStatus": 200, "sha256": "9d38956b2d9633ed8b5f2e25373690aeb361fe8ee9936b5a60c1a6920d26c854"},
+    {
+      "id": "service-public-f39785",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
+      "sourceDate": "2026-08-07",
+      "consultedAt": "2026-09-20T02:01:36+01:00",
+      "httpStatus": 200,
+      "rawBodySha256": "6ec2b638a39d7f2b6201e45d8fc611af316a040db8837c16044e0cf344391e09",
+      "previousManifestSha256": "9d38956b2d9633ed8b5f2e25373690aeb361fe8ee9936b5a60c1a6920d26c854",
+      "rawHashStatus": "updated-after-live-read; dynamic body includes request-specific values",
+      "claimExcerptSha256": "415a57f03a39753021830e314efb7e394434444816f62ebde4967d279dfa5d29",
+      "claimExcerpt": "Il convient notamment de mettre en place une procédure permettant : de vérifier chaque facture dès sa réception ; de la valider lorsqu'elle est conforme ; de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)."
+    },
     {"id": "impots-situation", "url": "https://www.impots.gouv.fr/facturation-electronique-qu-est-ce-que-ca-change-pour-moi", "sourceDate": "2026-09-14", "sourceDateEvidence": "Last-Modified", "consultedAt": "2026-09-20", "httpStatus": 200, "sha256": "0ada8cd241db7607cb2d247fcef62bc62027899b9808e40414fdeb31d7487b05"},
-    {"id": "impots-pa-list", "url": "https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees", "sourceDate": "2026-09-17", "consultedAt": "2026-09-20", "httpStatus": 200, "sha256": "0d2d755ca534c0d99253c4da0bab9a2b210e86b660ae7c1419101b586f61adc7"},
-    {"id": "impots-pa-guide", "url": "https://www.impots.gouv.fr/facturation-electronique-et-plateformes-agreees", "sourceDate": "2026-09-03", "sourceDateEvidence": "og:updated_time", "consultedAt": "2026-09-20", "httpStatus": 200, "sha256": "72158f2ea041e9d7c7992c07f4f55f7792d1fe9508be22918ba4f4dee4ef569a"},
+    {"id": "impots-pa-list", "url": "https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees", "sourceDate": "2026-09-17", "consultedAt": "2026-09-20T02:01:47+01:00", "httpStatus": 200, "sha256": "0d2d755ca534c0d99253c4da0bab9a2b210e86b660ae7c1419101b586f61adc7"},
+    {"id": "impots-pa-guide", "url": "https://www.impots.gouv.fr/facturation-electronique-et-plateformes-agreees", "sourceDate": "2026-09-14", "sourceDateEvidence": "Last-Modified", "consultedAt": "2026-09-20T02:01:48+01:00", "httpStatus": 200, "sha256": "72158f2ea041e9d7c7992c07f4f55f7792d1fe9508be22918ba4f4dee4ef569a"},
     {"id": "service-public-r74145", "url": "https://entreprendre.service-public.gouv.fr/vosdroits/R74145", "sourceDate": "2026-08-04", "consultedAt": "2026-09-20", "httpStatus": 200, "sha256": "36d17d2be8edc6a0ff6fc626ab78490ea4e002d81687a608dc50cd07011843ce"},
-    {"id": "service-public-r74135", "url": "https://entreprendre.service-public.gouv.fr/vosdroits/R74135", "sourceDate": "2025-10-22", "consultedAt": "2026-09-20", "httpStatus": 200, "sha256": "9e527cb660e4248977dc3be24270b857e3d08b795b8e2faaff87660577ef0d65"},
+    {
+      "id": "service-public-r74135",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/R74135",
+      "sourceDate": "2025-10-22",
+      "consultedAt": "2026-09-20T02:01:45+01:00",
+      "httpStatus": 200,
+      "rawBodySha256": "c03ef021656ab210e1e7fabc8518acc618639a491983feb34fe332b0831d955c",
+      "previousManifestSha256": "9e527cb660e4248977dc3be24270b857e3d08b795b8e2faaff87660577ef0d65",
+      "role": "secondary pointer to AIFE; not the claim-bearing primary source"
+    },
+    {
+      "id": "aife-annuaire",
+      "url": "https://facturation.chorus-pro.gouv.fr/annuaire/",
+      "sourceDate": "2026-06-18T12:40:50Z",
+      "sourceDateEvidence": "Last-Modified",
+      "consultedAt": "2026-09-20T02:02:38+01:00",
+      "httpStatus": 200,
+      "rawBodySha256": "2f42ac0b644bd4dcf38608fb1253daf5992baa491b333ac29aa58e6c4b5783df",
+      "claimExcerptSha256": "a24577cd9e2f640bd0e81afb5e48f9a8c267b55258d60db2783ff0848f6255b9",
+      "claimExcerpt": "L'annuaire de la facturation électronique - Rechercher une structure afin d'accéder à ses adresses de facturation électronique en cours de validité.",
+      "population": "structures présentes dans l'annuaire",
+      "displayedExclusions": []
+    },
     {"id": "impots-simulator-news", "url": "https://www.impots.gouv.fr/actualite/facturation-electronique-mise-disposition-dun-outil-pour-connaitre-vos-futures", "sourceDate": "2025-10-27", "consultedAt": "2026-09-20", "httpStatus": 200, "sha256": "afbc4137665e9f6320b10d00790b88c6066e6992926c0f9589e9f083e72edcfd"},
-    {"id": "legifrance-cgi-289-bis", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195635", "consultedAt": "2026-09-20", "httpStatus": 403, "contentVerified": false, "publicationEligible": false},
+    {
+      "id": "dila-legi-20260729-cgi-289-bis",
+      "url": "https://echanges.dila.gouv.fr/OPENDATA/LEGI/LEGI_20260729-223923.tar.gz",
+      "sourceDate": "2026-07-29",
+      "consultedAt": "2026-09-20",
+      "httpStatus": 200,
+      "archiveSha256": "33e0da5a4d086acd2d95b2fbff24eba39db2b3576ba73f91c2fc8e60231309a0",
+      "xmlPath": "20260729-223923/legi/global/code_et_TNC_en_vigueur/code_en_vigueur/LEGI/TEXT/00/00/06/06/95/LEGITEXT000006069577/article/LEGI/ARTI/00/00/53/54/66/LEGIARTI000053546660.xml",
+      "xmlSha256": "b750a0436d418acb28581a5f4ca3300fd5cf879081b20a90080172196a7538ec",
+      "articleId": "LEGIARTI000053546660",
+      "articleNumber": "289 bis",
+      "articleState": "ABROGE_DIFF",
+      "effectiveFrom": "2026-02-21",
+      "effectiveTo": "2222-02-22",
+      "applicabilityNote": "Maintained until reprise by the regulatory measures named in the XML note; independent reviewer must confirm current applicability before publication.",
+      "freshnessReview": {
+        "reviewedAt": "2026-09-20T02:33:35+01:00",
+        "officialIndexLatestPackage": "LEGI_20260919-214658.tar.gz",
+        "candidateReconciledThrough": "2026-07-29",
+        "currentStateReconciled": false,
+        "reason": "The candidate does not apply the later DILA packages or prove the absence of a successor version; scope I, exclusions IV/V and the ABROGE_DIFF transition remain unsealed."
+      },
+      "claimBearing": false,
+      "publicationEligible": false,
+      "claimExcerptSha256": "9f8a61b9ab546a11f69a67263bb55d8fda66189ecfdb3717746a79f5f9d0c874",
+      "claimExcerpt": "L'émission, la transmission et la réception des factures électroniques s'effectuent en recourant à une plateforme agréée."
+    },
+    {"id": "legifrance-cgi-289-bis-obsolete-url", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195635", "consultedAt": "2026-09-20", "httpStatus": 403, "contentVerifiedViaCanonical": false, "dilaVersionEnd": "2026-02-21", "publicationEligible": false},
     {"id": "legifrance-loi-2023-1322-art-91", "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048727444", "consultedAt": "2026-09-20", "httpStatus": 403, "contentVerified": false, "publicationEligible": false},
     {"id": "legifrance-decret-2026-677", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054499487", "consultedAt": "2026-09-20", "httpStatus": 403, "contentVerified": false, "publicationEligible": false}
   ],
@@ -195,8 +255,26 @@
   },
   "review": {
     "requiredProfile": "metier",
+    "status": "awaiting-independent-review",
     "claimSourcePairs": ["FE-01", "FE-02", "FE-03", "FE-04", "FE-05", "FE-06"],
     "professionalAttestation": "absent; report as non-attested, not as a gate",
-    "legalTextStatus": "blocked-403; no claim relying on Legifrance may publish until text is opened"
+    "candidateCounts": {
+      "claims": 6,
+      "SOUTIENT": 3,
+      "SOUTIENT_PARTIELLEMENT": 0,
+      "SOURCE_INACCESSIBLE": 3,
+      "publicationEligible": 3,
+      "publicationIneligible": 3
+    },
+    "legalTextStatus": "closed-primary-route: FE-01 and FE-02 lack an opened applicable article 91; FE-03 retains a historical DILA snapshot but the current state, transition, scope and exclusions are not reconciled",
+    "aiReviewPass": false,
+    "claims": [
+      {"id": "FE-01", "statement": "la généralisation est effective depuis la date affichée par la DGFiP", "sourceIds": ["impots-situation", "legifrance-loi-2023-1322-art-91"], "verdict": "SOURCE_INACCESSIBLE", "severity": "P1", "publicationEligible": false, "reason": "The doctrine page is open but the applicable primary article 91 remains unreadable; the absolute wording also collapses distinct obligations and populations."},
+      {"id": "FE-02", "statement": "les échéances diffèrent selon la situation de l’entreprise", "sourceIds": ["impots-situation", "legifrance-loi-2023-1322-art-91"], "verdict": "SOURCE_INACCESSIBLE", "severity": "P1", "publicationEligible": false, "reason": "Official doctrine supports the idea, but the applicable primary schedule was not opened in the bounded DILA collection."},
+      {"id": "FE-03", "statement": "L’émission, la transmission et la réception des factures électroniques s’effectuent en recourant à une plateforme agréée.", "sourceIds": ["dila-legi-20260729-cgi-289-bis", "impots-pa-guide"], "verdict": "SOURCE_INACCESSIBLE", "severity": "P1", "publicationEligible": false, "reason": "The exact quote is present in the 2026-07-29 DILA package, but the official index reaches 2026-09-19 and the later state was not reconciled. ETAT=ABROGE_DIFF, the conditional transition, scope I and exclusions IV/V are not sealed; doctrine cannot replace the current applicable primary text."},
+      {"id": "FE-04", "statement": "la liste officielle en vigueur est celle de la DGFiP, modifiée le 17/09/2026", "sourceIds": ["impots-pa-list"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Link the live DGFiP page, do not copy the list, and distinguish definitive approval from pending interoperability tests."},
+      {"id": "FE-05", "statement": "Service-Public recommande une procédure qui vérifie chaque facture à réception, la valide si elle est conforme et signale sur la plateforme toute anomalie.", "sourceIds": ["service-public-f39785"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Keep explicit attribution to Service-Public; do not describe the procedure as an exhaustive legal obligation."},
+      {"id": "FE-06", "statement": "L’annuaire AIFE permet de rechercher une structure afin d’accéder à ses adresses de facturation électronique en cours de validité.", "sourceIds": ["aife-annuaire", "service-public-r74135"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Limit the claim to a structure present in the directory; do not add an exclusion not displayed by the current AIFE interface."}
+    ]
   }
 }

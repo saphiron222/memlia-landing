@@ -160,31 +160,41 @@ La carte C6 `t_6bdef7fe` doit implémenter ce contrat. La méthode réutilisable
 
 | Source | Date propre à la source | État live | Usage autorisé |
 |---|---|---|---|
-| Service-Public `F39785`, mise en conformité | vérifiée le 07/08/2026 | HTTP 200, empreinte `9d38956b…` | étapes, flux, rôle des plateformes ; doctrine secondaire officielle |
+| Service-Public `F39785`, mise en conformité | vérifiée le 07/08/2026 ; relue à 02:01 UTC+01 | HTTP 200, corps brut `6ec2b638…`, extrait FE-05 `415a57f0…` | recommandation de procédure, toujours attribuée à Service-Public ; jamais présentée comme une obligation exhaustive |
 | impots.gouv.fr, « qu’est-ce que ça change pour moi ? » | `Last-Modified` 14/09/2026 | HTTP 200, empreinte `0ada8cd…` | doctrine et calendrier DGFiP, selon la situation choisie |
 | impots.gouv.fr, liste des plateformes agréées | modifiée le 17/09/2026 | HTTP 200, empreinte `0d2d755c…` | liste officielle ; ne jamais la recopier sans nouvelle vérification |
 | impots.gouv.fr, plateformes agréées | `og:updated_time` 03/09/2026 | HTTP 200, empreinte `72158f2e…` | rôle et doctrine DGFiP |
 | Service-Public `R74145`, liste des plateformes agréées | vérifiée le 04/08/2026 | HTTP 200, empreinte `36d17d2b…` | porte vers l’outil DGFiP |
-| Service-Public `R74135`, annuaire | vérifiée le 22/10/2025 | HTTP 200, empreinte `9e527cb6…` | annuaire AIFE ; source plus ancienne, outil uniquement |
+| AIFE, annuaire de la facturation électronique | `Last-Modified` 18/06/2026 ; relu à 02:02 UTC+01 | HTTP 200, corps `2f42ac0b…`, extrait FE-06 `a24577cd…` | source primaire de l’outil : recherche d’une structure et de ses adresses en cours de validité |
+| Service-Public `R74135`, porte vers l’annuaire AIFE | vérifiée le 22/10/2025 ; relue à 02:01 UTC+01 | HTTP 200, corps brut `c03ef021…` | population secondaire : entreprises et entités publiques soumises aux obligations ; aucune exclusion « micro-entrepreneur » affichée dans la version relue |
 | impots.gouv.fr, annonce du simulateur | publiée le 27/10/2025 | HTTP 200, empreinte `afbc4137…` | lien vers le simulateur officiel |
-| Légifrance, CGI art. 289 bis | non lue | HTTP 403 le 20/09/2026 | **aucune affirmation publiable** tant que le texte n’est pas ouvert |
+| DILA Open Data LEGI, CGI art. 289 bis `LEGIARTI000053546660` | paquet du 29/07/2026, téléchargé le 20/09/2026 | archive `33e0da5a…`, XML `b750a043…` ; l’index officiel relu par la revue va jusqu’au paquet du 19/09/2026 | témoin primaire historique uniquement : état `ABROGE_DIFF`, mises à jour postérieures non réconciliées, portée du I et exclusions IV/V non scellées ; ne soutient aucun claim publiable |
+| Légifrance, ancienne URL CGI art. 289 bis `LEGIARTI000046195635` | version terminée le 21/02/2026 d’après l’XML DILA | HTTP 403 le 20/09/2026 | ne plus employer comme référence applicable ; elle ne soutient aucun claim de C3-R1 |
 | Légifrance, loi 2023-1322 art. 91 | non lue | HTTP 403 le 20/09/2026 | **aucune date légale publiable** depuis cette URL dans l’état actuel |
 | Légifrance, décret 2026-677 du 27/07/2026 | non lu | HTTP 403 le 20/09/2026 | **aucune portée réglementaire publiable** dans l’état actuel |
 
-Les références Légifrance viennent de la fiche Service-Public ouverte ; elles ne remplacent pas la
-lecture du texte. La publication reste fermée sur les claims juridiques correspondants.
+La collecte C3-R1 a utilisé une seule voie primaire de secours : les paquets officiels
+`echanges.dila.gouv.fr/OPENDATA/LEGI/`. Le paquet du 29/07 contient bien l’extrait de l’article
+289 bis, mais la revue indépendante a observé le 20/09 des paquets officiels jusqu’au 19/09. Sans
+réconciliation de ces mises à jour, de l’état `ABROGE_DIFF`, de la transition conditionnelle, de la
+portée du I et des exclusions IV/V, cet extrait ne prouve pas l’état applicable. L’article 91 n’a pas
+non plus été ouvert dans une version applicable et directement vérifiable. Un XML historique ou un
+lien présent dans une fiche ne remplace pas le texte actuel : FE-01, FE-02 et FE-03 restent fermés.
 
-## Matrice remise à la revue métier
+## Matrice C3-R1 remise à la revue métier
 
-| Claim | Affirmation à juger | Source attendue | État avant revue |
-|---|---|---|---|
-| FE-01 | la généralisation est effective depuis la date affichée par la DGFiP | impots.gouv.fr + texte Légifrance | doctrine ouverte, texte bloqué |
-| FE-02 | les échéances diffèrent selon la situation de l’entreprise | impots.gouv.fr interactif + art. 91 | doctrine ouverte, texte bloqué |
-| FE-03 | une plateforme agréée est l’intermédiaire reconnu pour les transmissions décrites | impots.gouv.fr PA + CGI 289 bis | doctrine ouverte, texte bloqué |
-| FE-04 | la liste officielle en vigueur est celle de la DGFiP, modifiée le 17/09/2026 | impots.gouv.fr liste PA | soutenable, à relire |
-| FE-05 | le suivi des factures reçues comprend vérification, validation et signalement des anomalies | Service-Public F39785 + texte applicable | doctrine ouverte, texte à confirmer |
-| FE-06 | l’annuaire permet d’identifier raccordement et adresses de facturation | Service-Public R74135 / AIFE | soutenable, source datée 2025 |
+| Claim | Formulation candidate exacte | Source ouverte | État candidat | Publication |
+|---|---|---|---|---|
+| FE-01 | « la généralisation est effective depuis la date affichée par la DGFiP » | DGFiP ouverte ; art. 91 canonique toujours HTTP 403 ; aucun équivalent applicable retrouvé dans le paquet ciblé | `SOURCE_INACCESSIBLE` | non |
+| FE-02 | « les échéances diffèrent selon la situation de l’entreprise » | DGFiP et Service-Public ouverts ; art. 91 applicable non ouvert | `SOURCE_INACCESSIBLE` | non |
+| FE-03 | « L’émission, la transmission et la réception des factures électroniques s’effectuent en recourant à une plateforme agréée. » | extrait exact dans le XML DILA du 29/07, mais état courant non réconcilié jusqu’au 19/09, `ABROGE_DIFF`, transition, portée du I et exclusions IV/V non scellés | `SOURCE_INACCESSIBLE` (P1) | non, jusqu’à ouverture et réconciliation d’un état primaire applicable |
+| FE-04 | « la liste officielle en vigueur est celle de la DGFiP, modifiée le 17/09/2026 » | liste DGFiP, corps `0d2d755c…` | `SOUTIENT` | oui, avec lien live, sans recopier la liste, en séparant agrément définitif et attente d’interopérabilité |
+| FE-05 | « Service-Public recommande une procédure qui vérifie chaque facture à réception, la valide si elle est conforme et signale sur la plateforme toute anomalie. » | Service-Public `F39785`, extrait exact `415a57f0…` | `SOUTIENT` | oui, uniquement comme recommandation attribuée, pas comme obligation légale exhaustive |
+| FE-06 | « L’annuaire AIFE permet de rechercher une structure afin d’accéder à ses adresses de facturation électronique en cours de validité. » | interface AIFE live, extrait exact `a24577cd…` | `SOUTIENT` | oui, pour une structure présente dans l’annuaire ; aucune exclusion non affichée n’est ajoutée |
 
-La revue métier est obligatoire avant toute publication. Faute d’expert-comptable attestant le
-fond, le verdict peut sortir **non attesté** ; cette absence de compétence n’est pas un gate. Une
-source inaccessible ou un claim non soutenu reste, lui, un refus de publication.
+Le candidat compte six couples : trois `SOUTIENT`, trois `SOURCE_INACCESSIBLE`, zéro claim
+orphelin, trois publiables et trois fermés. Il ne porte pas `AI_REVIEW_PASS` : la nouvelle revue
+métier indépendante doit confirmer ou réduire ces verdicts. Faute d’expert-comptable attestant le
+fond, la revue peut sortir **non attestée** ; cette absence de compétence n’est pas un gate. Une
+source inaccessible, insuffisamment fraîche ou dont l’applicabilité n’est pas scellée reste, elle,
+un refus de publication.

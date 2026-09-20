@@ -1,0 +1,81 @@
+<form class="outil-form" data-margin-form novalidate>
+  <div class="fields two">
+    <label>Prix d’achat HT <input name="purchase" inputmode="decimal" autocomplete="off" placeholder="Ex. 80,00" required /></label>
+    <label>Prix de vente HT <input name="sale" inputmode="decimal" autocomplete="off" placeholder="Ex. 100,00" required /></label>
+  </div>
+  <p class="hint">Montants positifs, deux décimales au maximum, bornés à 999 999 999,99 €.</p>
+  <button class="btn btn-principal" type="submit">Calculer la marge</button>
+  <p class="error" data-error role="alert" hidden></p>
+  <section class="result" data-output aria-live="polite" aria-atomic="true" hidden>
+    <h2>Résultat et trace</h2>
+    <dl>
+      <div><dt>Marge commerciale</dt><dd data-margin></dd></div>
+      <div><dt>Taux de marge</dt><dd data-rate-margin></dd></div>
+      <div><dt>Taux de marque</dt><dd data-rate-mark></dd></div>
+    </dl>
+    <ol data-trace></ol>
+    <p class="proof"><strong>Preuve de refus :</strong> un montant vide, négatif, nul, ambigu ou au-delà de la borne ne produit aucun taux.</p>
+  </section>
+</form>
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-margin-form]');
+  const parseCents = (raw: string) => {
+    const value = raw.trim().replace(/\u00a0|\u202f| /g, '');
+    if (!/^\d{1,9}(?:[,.]\d{1,2})?$/.test(value)) return null;
+    const [whole, decimals = ''] = value.replace(',', '.').split('.');
+    const cents = Number(whole) * 100 + Number(decimals.padEnd(2, '0'));
+    return Number.isSafeInteger(cents) && cents <= 99999999999 ? cents : null;
+  };
+  const money = (cents: number) => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(cents / 100);
+  const percent = (value: number) => new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value) + ' %';
+  if (form) form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const error = form.querySelector<HTMLElement>('[data-error]')!;
+    const output = form.querySelector<HTMLElement>('[data-output]')!;
+    const data = new FormData(form);
+    const purchase = parseCents(String(data.get('purchase') ?? ''));
+    const sale = parseCents(String(data.get('sale') ?? ''));
+    output.hidden = true;
+    if (purchase === null || sale === null) {
+      error.textContent = 'Refus : saisissez deux montants positifs, sans séparateur de milliers, avec deux décimales au maximum.';
+      error.hidden = false; return;
+    }
+    if (purchase === 0 || sale === 0) {
+      error.textContent = 'Refus : le prix d’achat et le prix de vente doivent être supérieurs à zéro pour calculer les taux.';
+      error.hidden = false; return;
+    }
+    error.hidden = true;
+    const margin = sale - purchase;
+    const rateMargin = margin / purchase * 100;
+    const rateMark = margin / sale * 100;
+    form.querySelector<HTMLElement>('[data-margin]')!.textContent = money(margin);
+    form.querySelector<HTMLElement>('[data-rate-margin]')!.textContent = percent(rateMargin);
+    form.querySelector<HTMLElement>('[data-rate-mark]')!.textContent = percent(rateMark);
+    form.querySelector<HTMLOListElement>('[data-trace]')!.innerHTML = [
+      `Marge = ${money(sale)} − ${money(purchase)} = ${money(margin)}.`,
+      `Taux de marge = ${money(margin)} ÷ ${money(purchase)} × 100 = ${percent(rateMargin)}.`,
+      `Taux de marque = ${money(margin)} ÷ ${money(sale)} × 100 = ${percent(rateMark)}.`,
+      'Les montants sont calculés au centime ; les taux sont arrondis à deux décimales pour l’affichage.',
+    ].map((line) => `<li>${line}</li>`).join('');
+    output.hidden = false;
+  });
+</script>
+<style>
+  .outil-form,.fields,label,.result,.result dl,.result dl div { display:grid; gap:12px; }
+  .fields.two { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+  label { color:var(--texte-fort); font-weight:600; }
+  input { width:100%; min-height:48px; padding:10px 12px; border:1px solid var(--ligne-forte); border-radius:var(--r-bouton); background:var(--surface-feuille); color:var(--texte-fort); font:inherit; }
+  .hint { margin:0; color:var(--texte-2); font-size:var(--t-sm); }
+  .btn { justify-self:start; }
+  .error { margin:0; padding:12px 14px; border-left:3px solid var(--rouge); background:var(--rouge-voile); color:var(--rouge); }
+  .result { margin-top:8px; padding:20px; border:1px solid var(--ligne); border-radius:var(--r-boite); background:var(--surface-page); }
+  .result h2 { font-size:var(--t-2xl); }
+  .result dl { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .result dl div { padding:12px; border-left:3px solid var(--accent-appui); }
+  dt { color:var(--texte-2); font-size:var(--t-sm); } dd { margin:0; font-weight:700; font-size:var(--t-xl); }
+  .result ol { display:grid; gap:8px; padding-left:20px; }
+  .proof { margin:0; color:var(--texte-2); }
+  .outil-form [hidden] { display:none !important; }
+  .result { box-sizing:border-box; width:100%; min-width:0; }
+  @media(max-width:40rem){.fields.two,.result dl{grid-template-columns:1fr;}}
+</style>

@@ -11,10 +11,10 @@
   },
   "coverage": [
     {"terrain": "Compta Online", "status": "ok", "itemsScanned": 40, "freshQuestions": 3, "staleExcluded": 2},
-    {"terrain": "last30days Reddit monde", "status": "partial", "itemsScanned": 9, "freshRelevantThreads": 1, "detail": "Reddit a répondu mais a subi des 429 ; YouTube a expiré après 120 s."},
+    {"terrain": "last30days Reddit monde", "status": "ok", "itemsScanned": 22, "freshRelevantThreads": 1, "families": ["software-exports", "payroll-deadlines"], "detail": "Reddit keyless a répondu ; le cron fait tourner deux familles sur six chaque semaine et couvre le cycle en trois semaines."},
     {"terrain": "last30days bibliothèque lot6b", "status": "source-inaccessible", "detail": "Le fichier iCloud annoncé à 52 résultats renvoie Resource deadlock avoided ; aucune conclusion n’en est tirée."},
     {"terrain": "LinkedIn/Facebook", "status": "non-mesurable-sans-identifiants", "detail": "Aucun groupe privé n’est aspiré et aucune identité n’est collectée."},
-    {"terrain": "sources institutionnelles", "status": "ok-partiel", "itemsScanned": 5, "http200": 3, "inaccessible": 2}
+    {"terrain": "sources institutionnelles", "status": "ok-partiel", "itemsScanned": 5, "http200": 4, "inaccessible": 1, "detail": "URSSAF actualités n’a pas répondu ; la panne est un signal, pas un silence."}
   ],
   "retained": [],
   "rejected": [

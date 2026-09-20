@@ -25,12 +25,22 @@ Pour chaque source primaire, enregistrer avant analyse :
 - éditeur et type (`texte`, `doctrine`, `annuaire`, `communiqué`) ;
 - date affichée ou en-tête `Last-Modified` ;
 - date/heure de consultation ;
-- code HTTP et empreinte SHA-256 du corps ;
+- code HTTP et empreinte SHA-256 du corps brut ;
+- citation exacte qui porte le claim et empreinte SHA-256 de cette citation ;
 - claims que la source peut soutenir ;
 - claims qu’elle ne peut pas soutenir.
 
 Une source inaccessible, non datable ou servie depuis un cache non vérifiable ne soutient aucun
-claim. Une page secondaire qui cite Légifrance ne remplace pas le texte Légifrance.
+claim. Une page secondaire qui cite Légifrance ne remplace pas le texte Légifrance. Si la surface
+canonique bloque mais que l’Open Data officiel DILA répond, le paquet peut servir de source
+primaire seulement si le registre conserve l’URL exacte du paquet, son empreinte, le chemin XML,
+l’identifiant de version, ses dates d’effet, son état et l’extrait exact. Une version historique ou
+un XML dont l’applicabilité n’est pas établie reste fermé.
+
+Sur une page dynamique, le hash brut peut changer à cause d’un jeton CSRF ou d’un identifiant de
+rendu sans que la preuve change. Conserver ce hash de transport, mais sceller séparément l’extrait
+exact qui soutient le claim. Toute divergence brute ouvre une différence ; seule la relecture du
+corps et de l’extrait permet de la qualifier. Ne jamais remplacer silencieusement le hash précédent.
 
 ## 3. Mesurer le vocabulaire réellement tapé
 
@@ -104,14 +114,20 @@ créée.
 Avant la recette, créer un identifiant par affirmation sensible :
 
 ```text
-claim · formulation exacte · type · source primaire · date source · consulté le · empreinte ·
-portée soutenue · reviewer · verdict
+claim · formulation exacte · type · source primaire · date source · consulté le · hash corps brut ·
+citation exacte · hash citation · portée soutenue · reviewer · verdict · publiable
 ```
 
 Le reviewer métier juge chaque couple, jamais « l’article en général ». `soutient_partiellement`,
 `contredit`, `hors_sujet`, source inaccessible ou citation de portée différente interdisent le
 claim. L’absence d’attestation professionnelle produit la mention interne `non attesté`; elle ne
 transforme pas un claim non soutenu en claim publiable.
+
+Si la revue refuse la fraîcheur ou l’applicabilité d’un paquet primaire, le candidat conserve le
+snapshot et ses empreintes comme preuve historique, mais ferme le couple tant que l’état courant
+n’est pas réconcilié. Un extrait exact dans un paquet périmé ne reste jamais `soutient`. Le registre
+recalcule alors les verdicts, les sévérités et les totaux publiables sur le candidat corrigé avant
+toute nouvelle revue.
 
 ## 8. Poser la péremption avant d’écrire
 

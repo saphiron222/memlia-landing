@@ -1,0 +1,86 @@
+---
+import Base from '@/layouts/Base.astro';
+import OutilHero from '@/components/sections/OutilHero.astro';
+import { SITE } from '@/data/site.mjs';
+import { OUTIL_CATEGORIES, OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
+
+const h1 = 'Outils comptables gratuits : calculer, vérifier, convertir';
+const title = `${h1} | Memlia`;
+const description = 'Des outils gratuits conçus pour rendre une règle lisible, garder les valeurs dans le navigateur et s’arrêter plutôt que deviner.';
+const url = `${SITE.url}${OUTILS_HUB_PATH}`;
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage', '@id': `${url}#page`, url, name: h1, headline: h1, description,
+      inLanguage: SITE.langue, mainEntity: { '@id': `${url}#list` },
+    },
+    {
+      '@type': 'ItemList', '@id': `${url}#list`, name: 'Outils comptables gratuits',
+      numberOfItems: OUTILS_DISPONIBLES.length,
+      itemListElement: OUTILS_DISPONIBLES.map((outil, index) => ({
+        '@type': 'ListItem', position: index + 1, name: outil.h1, url: `${SITE.url}${outilPath(outil)}`,
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` },
+        { '@type': 'ListItem', position: 2, name: 'Outils comptables gratuits', item: url },
+      ],
+    },
+  ],
+};
+---
+
+<Base titre={title} titreSocial={h1} description={description} chemin={OUTILS_HUB_PATH} base="/" socialImage={{ url: '/proofs/v2/og/24-outils-hub.webp', width: 1200, height: 630, alt: 'Trois outils comptables gratuits : marge, échéance et rapprochement bancaire.' }}>
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+
+  <div class="feuille outils-feuille">
+    <OutilHero
+      title={h1}
+      description="Chaque outil publié ici annonce ses entrées, son résultat et ses limites. Les valeurs restent dans votre navigateur ; devant un cas hors règle, l’outil refuse de produire un résultat."
+      proof="v2/24-outils-hub"
+      titleId="outils-titre"
+      eyebrow="Règles visibles, calculs locaux"
+      breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Outils comptables gratuits' }]}
+    />
+
+    <div class="conteneur outils-categories">
+      {OUTIL_CATEGORIES.map((category) => {
+        const tools = OUTILS_DISPONIBLES.filter((outil) => outil.categorie === category.id);
+        return (
+          <section class="outils-categorie" aria-labelledby={`categorie-${category.id}`}>
+            <h2 id={`categorie-${category.id}`}>{category.label}</h2>
+            {tools.length > 0 ? (
+              <ul>
+                {tools.map((outil) => (
+                  <li data-outil-card>
+                    <h3><a href={outilPath(outil)}>{outil.h1}</a></h3>
+                    <p>{outil.description}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </section>
+        );
+      })}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .outils-feuille { min-height: 70vh; padding-bottom: clamp(56px, 8vw, 104px); background: var(--surface-feuille); }
+  .outils-categories { display: grid; margin-top: 56px; border-top: 1px solid var(--ligne-forte); }
+  .outils-categorie { display: grid; gap: 20px; padding: 32px 0; border-bottom: 1px solid var(--ligne); }
+  .outils-categorie h2 { font-size: var(--t-3xl); }
+  .outils-categorie ul { display: grid; gap: 16px; }
+  .outils-categorie li { display: grid; gap: 8px; padding: 24px; border: 1px solid var(--ligne); border-radius: var(--r-boite); background: var(--surface-page); }
+  .outils-categorie h3 { font-size: var(--t-2xl); }
+  .outils-categorie h3 a { color: var(--texte-fort); text-decoration: underline; text-decoration-color: var(--ligne-forte); text-underline-offset: 4px; }
+  .outils-categorie p { margin: 0; color: var(--texte-2); }
+
+  @media (min-width: 48rem) {
+    .outils-categorie { grid-template-columns: minmax(180px, 1fr) minmax(0, 3fr); gap: 40px; padding: 40px 0; }
+  }
+</style>

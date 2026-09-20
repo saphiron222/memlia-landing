@@ -468,6 +468,57 @@
       </article>
     </section>
 
+    <!-- ---- Hub et outils gratuits : scènes propres, calculs fictifs, résultat et refus visibles. ---- -->
+    <section class="frame hero-frame" id="outils-hub" data-og aria-label="Trois outils gratuits annoncent leur entrée, leur résultat et leur refus, sans envoyer les valeurs">
+      <article class="window hero-window rows-3 tool-proof">
+        <div class="window-bar"><span class="dot green"></span><span>Outils comptables gratuits</span><small>Calculs dans le navigateur</small></div>
+        <div class="tool-hub-grid">
+          <section><span class="eyebrow">Calculer</span><b>Marge commerciale</b><p><small>Entrée</small> Deux montants HT<br><small>Sortie</small> Marge, taux et formule</p><span class="tool-stop">Montant nul : aucun taux</span></section>
+          <section><span class="eyebrow">Calculer</span><b>Date d’échéance</b><p><small>Entrée</small> Date et convention<br><small>Sortie</small> Échéance et étapes</p><span class="tool-stop">Convention absente : aucune date</span></section>
+          <section><span class="eyebrow">Vérifier</span><b>Rapprochement bancaire</b><p><small>Entrée</small> Deux soldes fictifs<br><small>Sortie</small> Contrôle et CSV local</p><span class="tool-stop">Écart : téléchargement bloqué</span></section>
+        </div>
+        <div class="tool-proof-foot"><span>Aucune valeur envoyée ou conservée</span><strong>3 règles visibles · 3 cas de refus éprouvés</strong></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="outil-marge" data-og aria-label="Calcul fictif de marge commerciale : achat 80 euros, vente 100 euros, trois résultats et un refus explicite">
+      <article class="window hero-window rows-3 tool-proof">
+        <div class="window-bar"><span class="dot green"></span><span>Calculateur de marge commerciale</span><small>Cas fictif</small></div>
+        <div class="tool-calc-grid">
+          <div class="tool-inputs"><span class="eyebrow">Vous saisissez</span><div><small>Prix d’achat HT</small><b>80,00 €</b></div><div><small>Prix de vente HT</small><b>100,00 €</b></div><p>Montants positifs · deux décimales</p></div>
+          <div class="tool-arrow" aria-hidden="true"></div>
+          <div class="tool-results"><span class="eyebrow">Vous obtenez</span><div><small>Marge commerciale</small><b>20,00 €</b></div><div><small>Taux de marge</small><b>25,00 %</b></div><div><small>Taux de marque</small><b>20,00 %</b></div></div>
+        </div>
+        <div class="tool-proof-foot"><span>Marge = 100,00 € − 80,00 € = 20,00 €</span><strong class="tool-stop">Cas de refus éprouvé · montant nul : aucun taux</strong></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="outil-echeance" data-og aria-label="Calcul fictif d’une échéance au 31 mars 2026 avec chaque étape visible et un refus sans convention">
+      <article class="window hero-window rows-3 tool-proof">
+        <div class="window-bar"><span class="dot green"></span><span>Calculateur de date d’échéance</span><small>Cas général fictif</small></div>
+        <div class="tool-timeline">
+          <div><span>1</span><small>Point de départ</small><b>Facture du 20 janvier 2026</b></div><i></i>
+          <div><span>2</span><small>Convention choisie</small><b>Ajouter 45 jours</b></div><i></i>
+          <div><span>3</span><small>Étape intermédiaire</small><b>6 mars 2026</b></div><i></i>
+          <div class="accent"><span>4</span><small>Fin du mois</small><b>31 mars 2026</b></div>
+        </div>
+        <div class="tool-proof-foot"><span>Chaque date et la convention restent visibles</span><strong class="tool-stop">Cas de refus éprouvé · sans convention : aucune date</strong></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="outil-rapprochement" data-og aria-label="Contrôle fictif de rapprochement : deux soldes ajustés à 1 000 euros, différence nulle et CSV local prêt">
+      <article class="window hero-window rows-3 tool-proof">
+        <div class="window-bar"><span class="dot green"></span><span>Modèle de rapprochement bancaire</span><small>Données fictives</small></div>
+        <div class="tool-reconciliation">
+          <div class="tool-ledger"><span class="eyebrow">Banque</span><small>Solde du relevé</small><b>1 000,00 €</b><small>+ 0,00 € de remises − 0,00 € de paiements</small><strong>Solde ajusté · 1 000,00 €</strong></div>
+          <div class="tool-equals"><span>=</span><small>Différence<br><b>0,00 €</b></small></div>
+          <div class="tool-ledger"><span class="eyebrow">Comptabilité</span><small>Solde du compte 512</small><b>950,00 €</b><small>− 0,00 € de frais + 50,00 € d’intérêts</small><strong>Solde ajusté · 1 000,00 €</strong></div>
+          <aside><span class="ok">CSV prêt à valider</span><p>UTF-8 · point-virgule<br>Validation du collaborateur requise</p></aside>
+        </div>
+        <div class="tool-proof-foot"><span>Aucun relevé importé · aucune écriture produite</span><strong class="tool-stop">Cas de refus · écart ou élément inexpliqué : téléchargement bloqué</strong></div>
+      </article>
+    </section>
+
   </main>
 </body>
 </html>
