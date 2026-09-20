@@ -4,7 +4,7 @@ titreOnglet: "Relance des pièces manquantes en cabinet comptable | Memlia"
 resume: "Trois briques rejouables sans changer d’outil : une checklist conditionnelle par dossier, un contrôle de complétude à quatre états, une cadence de relance qui s’arrête à réception. Rien ne part sans validation, tout dossier en litige sort du circuit."
 description: "Relance pièces manquantes cabinet comptable : une checklist, quatre états et une cadence qui s’arrête à réception, après validation."
 datePublication: 2026-09-16
-dateMiseAJour: 2026-09-19
+dateMiseAJour: 2026-09-20
 auteur: kevin
 sujets: [pieces, automatisation, cabinet]
 motsCles: ["relance pièces manquantes", "collecte de pièces", "complétude du dossier", "relance clients cabinet comptable", "checklist conditionnelle"]
@@ -23,7 +23,7 @@ tache: "Obtenir les pièces manquantes d’un dossier sans relancer à la main, 
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-19
+  date: 2026-09-20
 funnel: MOFU
 contentType: searchable
 format: how-to-guide
@@ -33,7 +33,7 @@ proofStatus: verifiee
 proofRequired: "Jeu fictif de six dossiers rejoué sur la règle (cas courant, pièce hors période, dossier en litige, dossier sans checklist) ; tableau déclencheur-condition-action-exception ; quatre affirmations sourcées."
 reviewRule: "Réviser à la publication de l’article sur la complétude du dossier et de celui sur la facture électronique ; relecture des sources à six mois."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-19
+sourcesVerifieesLe: 2026-09-20
 cta:
   label: "Confier cette tâche"
   destination: "/contact"
@@ -45,19 +45,19 @@ sources:
   - editeur: "CNIL"
     titre: "Règlement européen sur la protection des données, chapitre 2 : principes"
     url: "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2"
-    consulte: 2026-09-19
+    consulte: 2026-09-20
   - editeur: "CNIL"
     titre: "Les durées de conservation des données"
     url: "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees"
-    consulte: 2026-09-19
+    consulte: 2026-09-20
   - editeur: "Service Public"
     titre: "Quels sont les délais de conservation des documents pour les entreprises ?"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F10029"
-    consulte: 2026-09-19
+    consulte: 2026-09-20
   - editeur: "CNIL"
     titre: "Définition : sous-traitant"
     url: "https://www.cnil.fr/fr/definition/sous-traitant"
-    consulte: 2026-09-19
+    consulte: 2026-09-20
 ---
 
 ## Réponse directe

@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
-  "articleSha256": "70ba23a9b3fdcf921fd41b0b4e477b98b5a397effa7525281d6c25ac2fca95c1",
-  "manifestSha256": "ce9086643fb616a88230bc953afb25fa17b75599a2f1696e17340d08f4e6ea72",
+  "articleSha256": "392eece8d9fa331ee5d6b70b20c5380dfd38bd79906838b81120d490142a4045",
+  "manifestSha256": "290d02933047a227b277af58c80df5e863c9d67bc60cd8687f62d8da0a197980",
   "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
@@ -39,5 +39,15 @@
   "directionArt": 18,
   "semanticRelevance": 22,
   "p0": [],
-  "kevinApproved": true
+  "kevinApproved": true,
+  "palette": {
+    "statut": "PASS",
+    "parts": {
+      "#fcfbf7": 0.69921875,
+      "#27b657": 0.019427083333333334,
+      "#1c8a41": 0.06236111111111111,
+      "#231f20": 0.06053819444444444
+    },
+    "ecarts": []
+  }
 }

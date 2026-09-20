@@ -6,9 +6,9 @@
   "title": "Automatiser la saisie comptable : ce qui reste à vérifier",
   "tabTitle": "Automatisation saisie comptable : les 6 contrôles | Memlia",
   "summary": "La lecture extrait, une personne vérifie. Six contrôles dans un ordre fixe : nature, émetteur, mentions, montants, période, doublon. Puis une file d’anomalies à motifs fermés. Rien ne s’enregistre sans validation, et le reliquat se recompte à chaque période.",
-  "description": "Ce que la lecture automatique extrait d’une pièce, les six contrôles qui restent, et la file d’anomalies où part ce qui ne se vérifie pas seul.",
+  "description": "Automatisation saisie comptable : six contrôles à garder, une file d’anomalies et ce qui exige encore une validation humaine.",
   "publicationDate": "2026-09-17",
-  "updatedAt": null,
+  "updatedAt": "2026-09-20",
   "topics": [
     "saisie",
     "pieces",
@@ -44,7 +44,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-17"
+      "verifiedAt": "2026-09-20"
     }
   },
   "businessReview": {
@@ -64,14 +64,14 @@
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
   "proofRequired": "Jeu fictif de cinquante pièces (trente-deux fournisseurs récurrents, six inconnus, quatre tickets dont deux coupés, trois hors période, un doublon reçu deux fois, deux notes de frais sans justificatif, un avoir) rejoué sur la règle ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées.",
-  "sourcesVerifiedAt": "2026-09-17",
+  "sourcesVerifiedAt": "2026-09-20",
   "sources": [
     {
       "id": "sp-mentions-facture",
       "publisher": "Service Public",
       "title": "Mentions obligatoires sur une facture",
       "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F31808",
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -86,7 +86,7 @@
       "publisher": "Service Public",
       "title": "Comment se mettre en conformité avec l’obligation de facturation électronique ?",
       "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -101,7 +101,7 @@
       "publisher": "Service Public",
       "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
       "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -116,7 +116,7 @@
       "publisher": "CNIL",
       "title": "Définition : donnée personnelle",
       "url": "https://www.cnil.fr/fr/definition/donnee-personnelle",
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-20",
       "level": "tier-1",
       "provenance": "primary",
       "official": true,
@@ -146,12 +146,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-17"
+      "checkedAt": "2026-09-20"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-17"
+      "checkedAt": "2026-09-20"
     }
   },
   "links": {
@@ -187,6 +187,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-09-17",
+  "publishedAt": "2026-09-20",
   "publicationEvidence": "preuves/publication.json"
 }
