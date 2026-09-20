@@ -6,29 +6,29 @@ export interface ServiceDesign {
 }
 
 /**
- * Les médias des pages service sont des preuves fonctionnelles fictives déjà scellées.
- * Aucun visuel ne simule un produit ni ne contient de donnée client.
+ * Chaque page service possède sa propre preuve fonctionnelle fictive, rendue depuis
+ * docs/design/site-v2-proofs. Aucun visuel ne simule un produit ni ne contient de donnée client.
  */
 export const SERVICE_DESIGN: Record<string, ServiceDesign> = {
   'paie': {
-    heroProof: 'v2/14-hero-service',
-    bodyProof: '03-controle',
+    heroProof: 'v2/19-service-paie',
+    bodyProof: 'v2/19-service-paie',
   },
   'saisie-comptable': {
-    heroProof: '01-flux',
-    bodyProof: '05-cadrer',
+    heroProof: 'v2/20-service-saisie-comptable',
+    bodyProof: 'v2/20-service-saisie-comptable',
   },
   'rapprochement-bancaire': {
-    heroProof: '02-repetition',
-    bodyProof: '06-eprouver',
+    heroProof: 'v2/21-service-rapprochement-bancaire',
+    bodyProof: 'v2/21-service-rapprochement-bancaire',
   },
   'notes-de-frais': {
-    heroProof: '08-integration',
-    bodyProof: '07-livrer',
+    heroProof: 'v2/22-service-notes-de-frais',
+    bodyProof: 'v2/22-service-notes-de-frais',
   },
   'factures-fournisseurs': {
-    heroProof: 'v2/01-qualification',
-    bodyProof: 'v2/07-exception-visible',
+    heroProof: 'v2/23-service-factures-fournisseurs',
+    bodyProof: 'v2/23-service-factures-fournisseurs',
   },
 };
 

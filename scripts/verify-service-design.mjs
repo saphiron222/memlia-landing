@@ -29,6 +29,11 @@ export function auditerServiceDesign({ root = process.cwd(), dist = join(root, '
   const services = servicesServis(root);
   const servicesDansFooter = servicesPublies(root);
   const erreurs = [];
+  const proprietairesMedia = new Map();
+  const manifesteV2 = join(root, 'docs/qa/site-v2/proofs-manifest.json');
+  const mediasScelles = existsSync(manifesteV2)
+    ? new Set(JSON.parse(readFileSync(manifesteV2, 'utf8')).entries.map((entry) => entry.target))
+    : new Set();
   for (const slug of services) {
     const route = `/automatisation/${slug}`;
     const dossier = join(dist, 'automatisation', slug, 'index.html');
@@ -45,6 +50,19 @@ export function auditerServiceDesign({ root = process.cwd(), dist = join(root, '
     if (!/class="[^"]*\brv\b/.test(html)) erreurs.push(`${route} : animation de révélation absente`);
     const medias = (html.match(/data-service-media/g) ?? []).length;
     if (medias < 2) erreurs.push(`${route} : ${medias} média(s), 2 requis`);
+    const preuves = [...new Set([...html.matchAll(/data-proof="([^"]+)"/g)].map((match) => match[1]))];
+    if (preuves.length === 0) erreurs.push(`${route} : aucune recette d’image référencée`);
+    for (const preuve of preuves) {
+      const cibleRelative = `public/proofs/${preuve}.webp`;
+      if (!existsSync(join(root, cibleRelative))) erreurs.push(`${route} : média rendu absent pour ${preuve}`);
+      if (!mediasScelles.has(cibleRelative)) erreurs.push(`${route} : recette scellée absente pour ${preuve}`);
+      const proprietaire = proprietairesMedia.get(preuve);
+      if (proprietaire && proprietaire !== slug) {
+        erreurs.push(`média ${preuve} partagé entre /automatisation/${proprietaire} et ${route}`);
+      } else {
+        proprietairesMedia.set(preuve, slug);
+      }
+    }
     for (const destination of servicesDansFooter) {
       const href = `/automatisation/${destination}`;
       if (!html.includes(`href="${href}"`)) erreurs.push(`${route} : lien de footer absent vers ${href}`);

@@ -15,6 +15,13 @@ const destinations = [
   { texte: 'Dans le doute, l’automatisation s’arrête et vous présente le cas. Nos engagements, écrits avant de commencer.', libelle: 'Nos garanties', href: PAGES_V2.garanties.chemin },
   { texte: 'Le vocabulaire du cabinet, terme par terme, avec pour chacun la limite entre ce qui se prépare seul et ce qui se décide.', libelle: 'Consulter le glossaire', href: '/glossaire' },
 ];
+const services = [
+  { libelle: 'Paie', href: '/automatisation/paie' },
+  { libelle: 'Saisie comptable', href: '/automatisation/saisie-comptable' },
+  { libelle: 'Rapprochement bancaire', href: '/automatisation/rapprochement-bancaire' },
+  { libelle: 'Notes de frais', href: '/automatisation/notes-de-frais' },
+  { libelle: 'Factures fournisseurs', href: '/automatisation/factures-fournisseurs' },
+];
 ---
 
 <section class="orientation" aria-labelledby="orientation-titre">
@@ -28,6 +35,12 @@ const destinations = [
         </li>
       ))}
     </ul>
+    <nav class="orientation-services" aria-label="Pages de service">
+      <span>Voir une règle appliquée à une tâche</span>
+      <ul>
+        {services.map((service) => <li><a href={service.href}>{service.libelle}</a></li>)}
+      </ul>
+    </nav>
   </div>
 </section>
 
@@ -64,10 +77,21 @@ const destinations = [
     font-weight: 600;
     color: var(--accent-texte);
   }
+  .orientation-services {
+    display: grid;
+    gap: 14px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--ligne-douce);
+  }
+  .orientation-services > span { color: var(--texte-2); font-weight: 600; }
+  .orientation-services ul { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .orientation-services a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-texte); font-weight: 600; text-underline-offset: 3px; }
   @media (hover: hover) {
     .orientation-lien:hover {
       color: var(--texte-fort);
     }
+    .orientation-services a:hover { color: var(--texte-fort); text-decoration: underline; }
   }
   @media (min-width: 48rem) {
     .orientation-liste {

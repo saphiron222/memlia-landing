@@ -195,8 +195,9 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 3 * len(publies))
         self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 4 * len(publies))
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
-        # Série v2 : treize preuves de section, cinq preuves de tête, et l'image sociale de chaque tête.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 18)
+        # Série v2 : treize preuves de section, cinq preuves de tête et cinq scènes propres
+        # aux pages de service ; les cinq images sociales restent sous og/.
+        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 23)
         self.assertEqual(sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')), sorted(f'{n}-hero-{s}.webp' for n, s in [(14, 'service'), (15, 'methode'), (16, 'garanties'), (17, 'apropos'), (18, 'contact')]))
 
     def test_five_generic_examples_no_product_statuses(self):
