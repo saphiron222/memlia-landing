@@ -1,0 +1,155 @@
+---
+import Base from '@/layouts/Base.astro';
+import { auteurPar, identiteAuteur } from '@/data/auteurs';
+import { INTEGRATIONS_INDEXABLES, integrationPath } from '@/data/integrations';
+import { SITE } from '@/data/site.mjs';
+import { organizationNode } from '@/data/schema.mjs';
+
+const chemin = '/integrations';
+const url = `${SITE.url}${chemin}`;
+const auteur = auteurPar('kevin');
+const vendors = ['Sage', 'Cegid', 'Silae'] as const;
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: 'Guides par environnement comptable',
+      headline: 'Guides par environnement comptable',
+      description: 'Des repères factuels par logiciel et par tâche, reliés aux moyeux de service Memlia et limités aux requêtes dont la demande a été mesurée.',
+      datePublished: '2026-09-20',
+      dateModified: '2026-09-20',
+      inLanguage: SITE.langue,
+      author: { '@id': `${SITE.url}${identiteAuteur(auteur)}` },
+      isPartOf: { '@id': `${SITE.url}/#website` },
+      mainEntity: { '@id': `${url}#items` },
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${url}#items`,
+      numberOfItems: INTEGRATIONS_INDEXABLES.length,
+      itemListElement: INTEGRATIONS_INDEXABLES.map((integration, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: integration.h1,
+        url: `${SITE.url}${integrationPath(integration)}`,
+      })),
+    },
+    organizationNode(),
+  ],
+};
+---
+
+<Base
+  titre="Guides par environnement comptable | Memlia"
+  titreSocial="Guides par environnement comptable"
+  description="Des repères factuels par logiciel et par tâche, reliés aux moyeux de service Memlia et limités aux requêtes dont la demande a été mesurée."
+  chemin={chemin}
+  base="/"
+>
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+  <meta slot="head" name="author" content={auteur.nom} />
+
+  <header class="hub-hero">
+    <div class="conteneur hub-hero-interieur">
+      <p class="surtitre">9 variations fortes · vague 1</p>
+      <h1>Guides par environnement comptable</h1>
+      <p class="chapeau">Une tâche se décrit avec les mots du cabinet, puis se rattache à l’environnement qui la porte. Ces guides ajoutent les menus, champs et pièges propres à cet environnement sans transformer un nom d’éditeur en promesse de compatibilité.</p>
+      <div class="signature">
+        <a rel="author" href={identiteAuteur(auteur)}>{auteur.nom}</a>
+        <span aria-hidden="true">·</span>
+        <time datetime="2026-09-20">20 septembre 2026</time>
+      </div>
+    </div>
+  </header>
+
+  <div class="conteneur hub-corps">
+    <section class="regle" aria-labelledby="regle-publication">
+      <div>
+        <p class="surtitre">La règle de publication</p>
+        <h2 id="regle-publication">Mesurer, publier peu, puis entretenir</h2>
+      </div>
+      <ol>
+        <li><strong>Demande forte.</strong><span>La vague 1 retient seulement les neuf couples tâche–logiciel ayant au moins six suggestions mesurées.</span></li>
+        <li><strong>Donnée propre.</strong><span>Chaque page porte un chemin, des champs, un piège et une source propres à l’environnement.</span></li>
+        <li><strong>Signal réel.</strong><span>Les variations moyennes restent fermées tant que l’indexation de cette première vague n’est pas mesurée.</span></li>
+        <li><strong>Suppression prévue.</strong><span>Une page sans signal est consolidée vers son moyeu de service au lieu de rester comme contenu maigre.</span></li>
+      </ol>
+    </section>
+
+    {vendors.map((vendor) => {
+      const pages = INTEGRATIONS_INDEXABLES.filter((integration) => integration.vendor === vendor);
+      return (
+        <section class="groupe" aria-labelledby={`vendor-${vendor.toLowerCase()}`}>
+          <div class="groupe-tete">
+            <p class="surtitre">{vendor}</p>
+            <h2 id={`vendor-${vendor.toLowerCase()}`}>{pages[0].product}</h2>
+            <p>{pages.length} {pages.length > 1 ? 'guides mesurés' : 'guide mesuré'}, chacun relié au moyeu de service correspondant.</p>
+          </div>
+          <ul class="cartes">
+            {pages.map((integration) => (
+              <li>
+                <a href={integrationPath(integration)}>
+                  <span>{integration.primaryQuery}</span>
+                  <h3>{integration.h1}</h3>
+                  <p>{integration.description}</p>
+                  <small>{integration.suggestions} suggestions · source vérifiée le 20/09/2026</small>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })}
+
+    <aside class="limite" aria-labelledby="pas-catalogue">
+      <div>
+        <p class="surtitre">Ce que ce hub ne dit pas</p>
+        <h2 id="pas-catalogue">Ce n’est pas un catalogue de compatibilités</h2>
+      </div>
+      <p>Un menu documenté publiquement ne prouve ni l’édition du cabinet, ni ses droits, ni le format qu’il produit. L’engagement naît seulement après observation, règle écrite et recette sur un jeu fictif. Jusque-là, chaque page reste un guide de cadrage.</p>
+      <a href="/automatisation-cabinet-comptable">Comprendre le service Memlia</a>
+    </aside>
+  </div>
+</Base>
+
+<style>
+  .hub-hero { padding: clamp(96px, 14vw, 176px) 0 80px; border-bottom: 1px solid var(--ligne-douce); background: var(--surface-feuille); }
+  .hub-hero-interieur { display: grid; gap: 22px; max-width: 1000px; }
+  .surtitre { color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  h1 { max-width: 15ch; font-size: clamp(3rem, 8vw, 6.5rem); line-height: .95; }
+  .chapeau { max-width: 72ch; color: var(--texte-2); font-size: clamp(1.15rem, 2vw, 1.4rem); line-height: 1.6; }
+  .signature { display: flex; flex-wrap: wrap; gap: 8px; color: var(--texte-2); font-size: var(--t-sm); }
+  .signature a { color: var(--texte-fort); font-weight: 600; }
+  .hub-corps { display: grid; gap: 72px; padding-block: clamp(72px, 10vw, 128px); }
+  .regle, .limite { display: grid; gap: 32px; padding: clamp(24px, 5vw, 56px); border: 1px solid var(--ligne-douce); background: var(--surface-feuille); }
+  .regle h2, .groupe h2, .limite h2 { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.06; }
+  .regle ol { display: grid; gap: 1px; background: var(--ligne-douce); }
+  .regle li { display: grid; gap: 6px; padding: 20px; background: var(--surface-page); }
+  .regle li span { color: var(--texte-2); }
+  .groupe { display: grid; gap: 28px; }
+  .groupe-tete { display: grid; gap: 10px; max-width: 70ch; }
+  .groupe-tete > p:last-child { color: var(--texte-2); }
+  .cartes { display: grid; gap: 14px; }
+  .cartes a { display: grid; height: 100%; gap: 12px; min-height: 48px; padding: 24px; border: 1px solid var(--ligne-douce); background: var(--surface-feuille); color: var(--texte-fort); }
+  .cartes a > span { color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; }
+  .cartes h3 { font-size: 1.35rem; }
+  .cartes p, .cartes small { color: var(--texte-2); }
+  .limite { border-left: 4px solid var(--accent-appui); }
+  .limite > p { max-width: 72ch; color: var(--texte-2); }
+  .limite a { display: inline-flex; width: fit-content; min-height: 48px; align-items: center; padding: 12px 16px; border: 1px solid var(--ligne); color: var(--texte-fort); font-weight: 600; }
+  @media (min-width: 48rem) {
+    .regle { grid-template-columns: minmax(0, .75fr) minmax(0, 1.5fr); align-items: start; }
+    .regle ol, .cartes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .limite { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+    .limite a { grid-column: 2; }
+  }
+  @media (min-width: 72rem) {
+    .cartes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (hover: hover) {
+    .cartes a:hover, .limite a:hover { border-color: var(--accent-appui); background: var(--accent-voile); }
+  }
+</style>
