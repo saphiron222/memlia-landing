@@ -4,6 +4,7 @@ import ServiceHero from '@/components/sections/ServiceHero.astro';
 import ServiceBody from '@/components/sections/ServiceBody.astro';
 import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
+import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 import { serviceDesignFor } from '@/data/service-design';
@@ -87,6 +88,7 @@ const graph = {
           </aside>
         )}
       </ServiceBody>
+      <RelatedIntegrations servicePath={chemin} />
       <ServicePrinciples />
       <AppelFinal
         id="confier"
