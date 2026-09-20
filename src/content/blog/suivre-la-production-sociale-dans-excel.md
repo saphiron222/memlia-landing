@@ -106,7 +106,6 @@ Donnez un nom explicite à la table, par exemple `t_production_sociale`. Les for
 
 <figure data-blog-proof="social-dictionnaire">
   <img src="/proofs/blog/social-dictionnaire.webp" alt="Dictionnaire fictif des colonnes de production avec types, exemples et règles de saisie." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/social-dictionnaire.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : jeu d’essai fictif et dictionnaire de colonnes décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Définir des états fermés et leurs transitions
@@ -161,7 +160,6 @@ La vue n’expose pas un classement par gestionnaire. Une affectation peut être
 
 <figure data-blog-proof="social-vue-agregee">
   <img src="/proofs/blog/social-vue-agregee.webp" alt="Vue agrégée fictive des dossiers par état et des exceptions, sans donnée nominative." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/social-vue-agregee.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : jeu d’essai fictif de cinq dossiers décrit dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Les indicateurs utiles au flux

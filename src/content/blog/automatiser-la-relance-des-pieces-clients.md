@@ -96,7 +96,6 @@ La checklist s’écrit une fois par condition, pas une fois par dossier. Quand 
 
 <figure data-blog-proof="relance-checklist">
   <img src="/proofs/blog/relance-checklist.webp" alt="Checklist conditionnelle fictive qui déduit les pièces attendues des conditions du dossier." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/relance-checklist.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : jeu d’essai fictif et checklist conditionnelle décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Brique 2 : le contrôle de complétude
@@ -107,7 +106,6 @@ Ce contrôle est purement déterministe. Il ne juge pas, il compare. C’est ce 
 
 <figure data-blog-proof="relance-quatre-etats">
   <img src="/proofs/blog/relance-quatre-etats.webp" alt="Les quatre états fermés d’une pièce fictive : attendue, reçue, lisible et hors période." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/relance-quatre-etats.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : jeu d’essai fictif et contrôle de complétude décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Brique 3 : la cadence qui cesse à réception

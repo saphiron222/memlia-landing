@@ -17,7 +17,7 @@ function sourceArticle({ rubrique = true } = {}) {
 }
 
 function preuve(numero) {
-  return `<figure data-blog-proof><img src="/preuves/${numero}.webp" alt="Preuve ${numero}"><figcaption>Source : jeu d’essai fictif Memlia — capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption></figure>`;
+  return `<figure data-blog-proof><img src="/preuves/${numero}.webp" alt="Preuve ${numero}"></figure>`;
 }
 
 function pageArticle({
@@ -28,10 +28,12 @@ function pageArticle({
   headline = TITRE,
   title = TITRE_ONGLET,
   lienRubrique = true,
+  legendeTechnique = false,
 } = {}) {
   const sections = Array.from({ length: 6 }, (_, index) => `<h2 id="section-${index + 1}">Section ${index + 1}</h2><p>Contenu.</p>`).join('');
   const liens = Array.from({ length: 6 }, (_, index) => `<li><a href="#section-${index + 1}">Section ${index + 1}</a></li>`).join('');
-  return `<!doctype html><html><head><title>${title}</title><meta name="description" content="${description}"><meta property="og:title" content="${ogTitle}"><script type="application/ld+json">${JSON.stringify({ '@graph': [{ '@type': 'BlogPosting', headline }] })}</script></head><body><article><h1>${TITRE}</h1>${lienRubrique ? '<a data-blog-rubrique href="/blog/paie-dsn">Paie / DSN</a>' : ''}${sommaire ? `<nav data-blog-toc aria-label="Sommaire"><ol>${liens}</ol></nav>` : ''}<div class="article-corps">${Array.from({ length: preuves }, (_, index) => preuve(index + 1)).join('')}${sections}</div></article></body></html>`;
+  const technique = legendeTechnique ? '<p>Ouvrir la preuve en grand. Source : recette scellée ; capture du 20 septembre 2026.</p>' : '';
+  return `<!doctype html><html><head><title>${title}</title><meta name="description" content="${description}"><meta property="og:title" content="${ogTitle}"><script type="application/ld+json">${JSON.stringify({ '@graph': [{ '@type': 'BlogPosting', headline }] })}</script></head><body><article><h1>${TITRE}</h1>${lienRubrique ? '<a data-blog-rubrique href="/blog/paie-dsn">Paie / DSN</a>' : ''}${sommaire ? `<nav data-blog-toc aria-label="Sommaire"><ol>${liens}</ol></nav>` : ''}<div class="article-corps">${Array.from({ length: preuves }, (_, index) => preuve(index + 1)).join('')}${technique}${sections}</div></article></body></html>`;
 }
 
 function fixture(options = {}) {
@@ -73,8 +75,12 @@ test('le contrat vert contrôle chaque article de la collection sans slug codé 
   }
 });
 
-test('clause 1 — deux preuves légendées, sourcées et datées en plus de la couverture', () => {
+test('clause 1 — deux images de preuve avec alternative accessible en plus de la couverture', () => {
   temoinClause(1, { preuves: 1 });
+});
+
+test('clause 1 — une légende technique publique fait échouer le contrat', () => {
+  temoinClause(1, { legendeTechnique: true });
 });
 
 test('clause 2 — dès six H2, le sommaire porte toutes les ancres', () => {

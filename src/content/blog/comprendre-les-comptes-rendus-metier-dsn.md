@@ -180,7 +180,6 @@ Ces cas sont synthétiques. Ils ne reproduisent aucun CRM réel et ne fixent auc
 
 <figure data-blog-proof="crm-lecture-ligne">
   <img src="/proofs/blog/crm-lecture-ligne.webp" alt="Compte rendu métier fictif lu ligne à ligne sans inventer une qualification absente." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/crm-lecture-ligne.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : jeu d’essai fictif décrit dans cet article, d’après Net-entreprises (<a href="https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/" rel="noopener">https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/</a>) ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Quel registre tenir pour ne perdre aucun retour ?
@@ -206,7 +205,6 @@ Quand un CRM contient des données nominatives, le registre de pilotage ne devie
 
 <figure data-blog-proof="crm-registre">
   <img src="/proofs/blog/crm-registre.webp" alt="Registre fictif séparant le statut source, la décision et le contrôle suivant de trois retours." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/crm-registre.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : jeu d’essai fictif et registre à dix champs décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Ce qui s’automatise, ce qui attend une validation, ce qui reste humain

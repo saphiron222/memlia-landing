@@ -167,7 +167,7 @@ test('le découpage en unités et les jetons suivent le pipeline', () => {
   assert.deepEqual(jetons('Les données personnelles ne peuvent pas être conservées'), ['donnees', 'personnelles', 'peuvent', 'conservees']);
 });
 
-test('les preuves inline sont datées, sourcées et ancrées sans modifier les phrases du corps', () => {
+test('les preuves inline gardent leur traçabilité interne sans légende technique publique', () => {
   const corps = '## Première section\n\nPhrase scellée.\n\n## Section cible\n\nSuite scellée.\n';
   const rendu = injecterPreuvesInline(corps, [{
     id: 'preuve-fictive',
@@ -179,8 +179,8 @@ test('les preuves inline sont datées, sourcées et ancrées sans modifier les p
   assert.ok(rendu.includes('Phrase scellée.'));
   assert.ok(rendu.includes('Suite scellée.'));
   assert.match(rendu, /<figure data-blog-proof="preuve-fictive">/);
-  assert.match(rendu, /href="\/proofs\/blog\/preuve-fictive\.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand<\/a>/);
-  assert.match(rendu, /Source : jeu d’essai fictif décrit dans l’article ; capture du <time datetime="2026-09-20">20 septembre 2026<\/time>\./);
+  assert.match(rendu, /<img src="\/proofs\/blog\/preuve-fictive\.webp" alt="Une preuve fictive correctement décrite\."/);
+  assert.doesNotMatch(rendu, /Ouvrir la preuve en grand|<figcaption>|Source\s*:|capture du/i);
   assert.ok(rendu.indexOf('data-blog-proof') < rendu.indexOf('## Section cible'));
   assert.deepEqual(unitesRendues(rendu), unitesRendues(corps), 'une figure sourcée est une preuve visuelle, pas une affirmation éditoriale');
   assert.throws(() => injecterPreuvesInline(corps, [{

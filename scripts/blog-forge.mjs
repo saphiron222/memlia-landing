@@ -496,12 +496,10 @@ const echapperHtml = (texte) => String(texte)
   .replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;');
 
-const dateFrLongue = (date) => new Intl.DateTimeFormat('fr-FR', {
-  day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
-}).format(new Date(`${date}T00:00:00Z`));
-
 /**
  * Ajoute les preuves visuelles déclarées par la recette sans modifier son corps éditorial.
+ * La source et la date restent dans la recette et le manifeste internes : la page publique
+ * ne rend que l'image et son alternative accessible, sans légende technique de fabrication.
  * Chaque insertion échoue fermée si le H2 d'ancrage a disparu : une preuve ne doit jamais
  * glisser silencieusement vers une section sans rapport après une réécriture.
  */
@@ -526,11 +524,8 @@ export function injecterPreuvesInline(corps, preuves = []) {
     const ancre = `\n## ${titre}\n`;
     if (!resultat.includes(ancre)) throw new Error(`Preuves inline : H2 d’ancrage absent « ${titre} ».`);
     const figures = groupe.map((preuve) => {
-      const source = preuve.sourceUrl
-        ? `${echapperHtml(preuve.source)} (<a href="${echapperHtml(preuve.sourceUrl)}" rel="noopener">${echapperHtml(preuve.sourceUrl)}</a>)`
-        : echapperHtml(preuve.source);
       const imagePath = `/proofs/blog/${preuve.id}.webp`;
-      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n  <figcaption><a href="${imagePath}" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : ${source} ; capture du <time datetime="${preuve.capturedAt}">${dateFrLongue(preuve.capturedAt)}</time>.</figcaption>\n</figure>`;
+      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`;
     }).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }
@@ -596,7 +591,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   }
   const markdown = `${frontmatter(manifestFinal)}\n${corpsPublie}\n`;
   writeFileSync(articlePath, markdown);
-  // Les preuves inline ont leur propre contrat (rendu, empreinte et légende).
+  // Les preuves inline ont leur propre contrat (rendu, empreinte et traçabilité interne).
   // Les preuves éditoriales restent reliées aux octets scellés avant leur insertion.
   const sujet = { slug, articleHash: sha256(retirerPreuvesInline(markdown)), manifestHash: sha256(readFileSync(manifestPath)) };
 
