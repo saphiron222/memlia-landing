@@ -59,22 +59,12 @@ export const PAGES_V2 = {
   },
 };
 
-/**
- * Les destinations du header. « Ressources » n'est pas une page mais un groupe : au survol
- * ou au clavier il déplie le blog et le glossaire, et accueillera les ressources à venir
- * (décision de Kevin, 16/09/2026 : la page /ressources ne servait à rien, elle est retirée).
- */
+/** Le header reste une lecture courte de l'accueil ; le footer porte le plan du site complet. */
 export const NAV_V2 = [
-  { libelle: PAGES_V2.service.nav, href: PAGES_V2.service.chemin },
-  { libelle: PAGES_V2.methode.nav, href: PAGES_V2.methode.chemin },
-  { libelle: PAGES_V2.garanties.nav, href: PAGES_V2.garanties.chemin },
-  {
-    libelle: 'Ressources',
-    sousEntrees: [
-      { libelle: 'Blog', href: '/blog' },
-      { libelle: 'Glossaire', href: '/glossaire' },
-    ],
-  },
+  { libelle: 'Tâches', href: '/#usages' },
+  { libelle: 'Méthode', href: '/#methode' },
+  { libelle: 'Contrôle humain', href: '/#preuves' },
+  { libelle: 'Questions', href: '/#questions' },
 ];
 
 /**

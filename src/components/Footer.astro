@@ -1,6 +1,7 @@
 ---
 import Lockup from './Lockup.astro';
-import { SITE, CTA } from '@/data/site.mjs';
+import { getCollection } from 'astro:content';
+import { SITE } from '@/data/site.mjs';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 
 /** Pied de page (spec §4.14) : 4 colonnes, ligne © en --texte-2, emblème « M » en filigrane. */
@@ -8,32 +9,35 @@ interface Props {
   blogActif: boolean;
   base?: string;
 }
-const { blogActif, base = '' } = Astro.props;
+const { blogActif } = Astro.props;
 const annee = new Date().getFullYear();
+const services = (await getCollection('services', ({ data }) => data.status === 'publie'))
+  .sort((a, b) => a.data.primaryQuery.localeCompare(b.data.primaryQuery, 'fr'))
+  .map((entree) => ({
+    libelle: entree.data.primaryQuery.charAt(0).toUpperCase() + entree.data.primaryQuery.slice(1),
+    href: `/automatisation/${entree.id}`,
+  }));
 
 const colonnes = [
   {
-    titre: 'Méthode',
-    liens: [
-      { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
-      { libelle: 'Nos garanties', href: PAGES_V2.garanties.chemin },
-      { libelle: 'Sécurité et RGPD', href: `${base}#faq-donnees-reelles` },
-      { libelle: 'Anti-surveillance', href: `${base}#faq-surveillance` },
-    ],
-  },
-  {
-    titre: 'Ressources',
+    titre: 'Comprendre',
     liens: [
       ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
       { libelle: 'Glossaire', href: '/glossaire' },
-      { libelle: 'Questions fréquentes', href: `${base}#questions` },
+      { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
     ],
   },
   {
-    titre: 'Cabinet',
+    titre: 'L’entreprise',
     liens: [
       { libelle: 'À propos', href: PAGES_V2.apropos.chemin },
-      { libelle: 'Contact', href: PAGES_V2.contact.chemin },
+      { libelle: 'Nos garanties', href: PAGES_V2.garanties.chemin },
+      { libelle: 'Confier une première tâche', href: PAGES_V2.contact.chemin },
+    ],
+  },
+  {
+    titre: 'Légal',
+    liens: [
       { libelle: 'Mentions légales', href: '/mentions-legales' },
       { libelle: 'Confidentialité', href: '/politique-de-confidentialite' },
     ],
@@ -50,12 +54,12 @@ const colonnes = [
 
     <div class="pied-colonnes">
       <div class="pied-col">
-        <h2 class="pied-titre">Automatisation IA</h2>
+        <h2 class="pied-titre">Ce qu’on automatise</h2>
         <ul class="pied-liste">
-          <li><a class="pied-lien" href={PAGES_V2.service.chemin}>Le service</a></li>
-          <li><a class="pied-lien" href={`${base}#usages`}>Exemples de tâches</a></li>
-          <li><a class="pied-lien" href={`${base}#integration`}>Vos outils existants</a></li>
-          <li><a class="pied-lien" href={`${base}#preuves`}>Proposition vs saisie</a></li>
+          <li><a class="pied-lien" href={PAGES_V2.service.chemin}>Automatisation pour cabinet comptable</a></li>
+          {services.map((service) => (
+            <li><a class="pied-lien" href={service.href}>{service.libelle}</a></li>
+          ))}
         </ul>
       </div>
       {colonnes.map((c) => (
