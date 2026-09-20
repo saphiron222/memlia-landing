@@ -295,6 +295,40 @@ test('les articles délèguent leur intention au contrat blog au lieu de la reco
   }
 });
 
+test('un article explicitement inscrit au contrat universel y verrouille aussi son amorce', () => {
+  const { root } = fixture();
+  try {
+    mkdirSync(join(root, 'src/pages/blog'), { recursive: true });
+    mkdirSync(join(root, 'dist/blog'), { recursive: true });
+    writeFileSync(join(root, 'src/pages/blog/[slug].astro'), "import TestSection from '@/components/sections/TestSection.astro';\n<TestSection />\n");
+    writeFileSync(join(root, 'dist/blog/article.html'), html({
+      route: '/blog/article', h1: 'Article mesuré', media: '/proofs/alpha.webp', href: '/alpha',
+      description: 'Une méthode qui masque la requête primaire.',
+    }));
+    writeFileSync(join(root, 'dist/alpha.html'), html({
+      route: '/alpha', h1: 'Automatisation alpha en cabinet', media: '/proofs/alpha.webp', href: '/blog/article',
+      description: 'Description alpha propre et suffisamment distincte pour le contrat universel.',
+    }));
+
+    const resultat = auditerContratPages({
+      root,
+      copyVerifier: () => ({ pass: true, errors: [] }),
+      exemptions: [],
+      intentRoutes: new Set(['/alpha', '/source', '/blog/article']),
+      intentContracts: new Map([...intentContracts(), ['/blog/article', {
+        query: 'requête article',
+        descriptionLead: 'Requête article',
+      }]]),
+    });
+    assert.match(
+      resultat.erreurs.filter((erreur) => erreur.route === '/blog/article' && erreur.clause === 3).map((erreur) => erreur.message).join('\n'),
+      /description doit ouvrir sur "Requête article"/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('les rubriques blog lisent leur intention canonique et leur vrai gabarit', () => {
   const contrats = contratsIntention(process.cwd());
   assert.deepEqual(contrats.get('/blog/rubrique/paie-dsn-cabinet-comptable'), {
