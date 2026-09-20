@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "description": "Autorité durable des services déjà publiés. Une sortie de cette liste exige une entrée depublie et sa preuve autorisée.",
+  "services": [
+    {
+      "slug": "factures-fournisseurs",
+      "route": "/automatisation/factures-fournisseurs",
+      "status": "publie",
+      "publishedOn": "2026-09-20"
+    },
+    {
+      "slug": "notes-de-frais",
+      "route": "/automatisation/notes-de-frais",
+      "status": "publie",
+      "publishedOn": "2026-09-20"
+    },
+    {
+      "slug": "paie",
+      "route": "/automatisation/paie",
+      "status": "publie",
+      "publishedOn": "2026-09-20"
+    },
+    {
+      "slug": "rapprochement-bancaire",
+      "route": "/automatisation/rapprochement-bancaire",
+      "status": "publie",
+      "publishedOn": "2026-09-20"
+    },
+    {
+      "slug": "saisie-comptable",
+      "route": "/automatisation/saisie-comptable",
+      "status": "publie",
+      "publishedOn": "2026-09-20"
+    }
+  ]
+}

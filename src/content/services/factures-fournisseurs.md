@@ -2,7 +2,7 @@
 title: "Factures fournisseurs des dossiers clients : les exceptions restent visibles"
 tabTitle: "Factures fournisseurs des dossiers clients | Memlia"
 ogTitle: "Factures fournisseurs des dossiers clients : les exceptions restent visibles"
-description: "Confiez les factures fournisseurs des dossiers clients : règle écrite, doublons et avoirs isolés, propositions contrôlables, validation humaine."
+description: "Factures fournisseurs des dossiers clients : règle écrite, doublons et avoirs isolés, propositions contrôlables, validation humaine."
 hero: "Nous écrivons la règle qui relie réception, lecture, contrôle et proposition d’imputation des factures fournisseurs de vos dossiers clients. Les pièces conformes suivent le circuit prévu. Un doublon probable, un avoir, une pièce illisible ou une information manquante est isolé avec son motif. Le cabinet garde l’imputation définitive, le traitement du litige et toute décision de paiement."
 primaryQuery: "factures fournisseurs des dossiers clients"
 secondaryQueries: ["automatisation factures fournisseurs", "automatiser factures fournisseurs cabinet comptable"]
@@ -13,8 +13,8 @@ audience:
 intent: evaluer-service
 family: achats-fournisseurs
 verifiedAt: 2026-09-20
-status: pret-preview
-candidateFingerprint: "cd9df3cb053c3136fec02deac5dafa04554d187c5901c63316da0ea30de818bd"
+status: publie
+candidateFingerprint: "53ce45766652e9c159414a8d74122039df422bab50c0b943134302eb44e39f65"
 cta:
   label: "Confier une première tâche"
   destination: "/contact"

@@ -150,6 +150,7 @@ function pageSnapshot(route, path) {
   const headings = [];
   const descriptions = [];
   const ogTitles = [];
+  const canonicals = [];
   const hrefs = [];
   const footerHrefs = [];
   const media = [];
@@ -162,6 +163,7 @@ function pageSnapshot(route, path) {
     if (node.nodeName === 'meta' && attr(node, 'name') === 'description') descriptions.push(normalizedText(attr(node, 'content')));
     if (node.nodeName === 'meta' && attr(node, 'name') === 'robots') robots = normalizedText(attr(node, 'content'));
     if (node.nodeName === 'meta' && attr(node, 'property') === 'og:title') ogTitles.push(normalizedText(attr(node, 'content')));
+    if (node.nodeName === 'link' && (attr(node, 'rel') ?? '').split(/\s+/).includes('canonical')) canonicals.push(attr(node, 'href'));
     if (node.nodeName === 'a') {
       const href = normalizeRoute(attr(node, 'href'));
       if (href) hrefs.push(href);
@@ -187,7 +189,7 @@ function pageSnapshot(route, path) {
   const jsonLd = collectJsonLd(document);
   const schema = collectSchema(jsonLd);
   return {
-    route, path, document, main, h1s: headings, title, descriptions, ogTitles, hrefs, footerHrefs,
+    route, path, document, main, h1s: headings, title, descriptions, ogTitles, canonicals, hrefs, footerHrefs,
     media: [...new Set(media.filter((item) => item.startsWith('/')))], robots, jsonLd, schema,
   };
 }
@@ -342,6 +344,77 @@ function error(route, clause, detail) {
   return { route, clause, message: `${route} : clause ${clause} (${CLAUSES[clause]}) — ${detail}` };
 }
 
+export function auditerServicesPublics({ root = process.cwd(), dist = join(root, 'dist'), pages = null } = {}) {
+  const ledgerPath = join(root, 'config/service-publication-ledger.json');
+  if (!existsSync(ledgerPath)) return { pass: true, errors: [], expected: [] };
+  const errors = [];
+  let ledger;
+  try {
+    ledger = JSON.parse(readFileSync(ledgerPath, 'utf8'));
+  } catch (cause) {
+    return { pass: false, errors: [`registre des services publics illisible : ${cause.message}`], expected: [] };
+  }
+  if (ledger.version !== 1 || !Array.isArray(ledger.services)) {
+    return { pass: false, errors: ['registre des services publics invalide : version 1 et liste services requises'], expected: [] };
+  }
+  const seen = new Set();
+  const expected = [];
+  for (const service of ledger.services) {
+    const prefix = service?.route ?? service?.slug ?? 'service inconnu';
+    const fixtureRoute = service?.testFixture === true && service?.route === `/${service.slug}`;
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(service?.slug ?? '') || (service?.route !== `/automatisation/${service.slug}` && !fixtureRoute)) {
+      errors.push(`${prefix} : entrée de publication invalide (slug et route canonique requis)`);
+      continue;
+    }
+    if (seen.has(service.route)) errors.push(`${prefix} : route dupliquée dans le registre des services publics`);
+    seen.add(service.route);
+    if (!DATE_ISO.test(service.publishedOn ?? '')) errors.push(`${prefix} : publishedOn ISO requis`);
+    if (service.status === 'publie') {
+      expected.push(service.route);
+      continue;
+    }
+    if (service.status !== 'depublie') {
+      errors.push(`${prefix} : status doit valoir publie ou depublie`);
+      continue;
+    }
+    const proofPath = join(root, service.depublicationPath ?? `commercial/services/${service.slug}/preuves/depublication.json`);
+    try {
+      const proof = JSON.parse(readFileSync(proofPath, 'utf8'));
+      const destination = [proof.replacement, proof.redirect].filter((value) => typeof value === 'string' && value.startsWith('/'));
+      if (proof.route !== service.route || proof.slug !== service.slug || proof.authorizedBy !== 'Kevin Kitanga' ||
+          !DATE_ISO.test(proof.depublishedOn ?? '') || String(proof.reason ?? '').trim().length < 60 || destination.length !== 1) {
+        errors.push(`${prefix} : preuve de dépublication invalide ; route, raison, date, remplacement ou redirection et autorisation de Kevin sont requis`);
+      }
+    } catch (cause) {
+      errors.push(`${prefix} : preuve de dépublication absente ou illisible (${cause.message})`);
+    }
+  }
+
+  const snapshots = pages ?? walk(dist, (path) => path.endsWith('.html'))
+    .map((path) => pageSnapshot(routeFromHtml(dist, path), path));
+  const byRoute = new Map(snapshots.map((page) => [page.route, page]));
+  const sitemapLocations = new Set();
+  for (const path of walk(dist, (item) => /sitemap(?:-[^/]+)?\.xml$/.test(item))) {
+    for (const match of readFileSync(path, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)) sitemapLocations.add(match[1]);
+  }
+  for (const route of expected) {
+    const page = byRoute.get(route);
+    if (!page) {
+      errors.push(`${route} : HTML public attendu absent du build`);
+      continue;
+    }
+    if (/\bnoindex\b/i.test(page.robots) || !/\bindex\b/i.test(page.robots) || !/\bfollow\b/i.test(page.robots)) {
+      errors.push(`${route} : robots doit rester index, follow sans noindex (reçu : ${page.robots || 'absent'})`);
+    }
+    if (page.canonicals.length !== 1 || page.canonicals[0] !== `https://memlia.fr${route}`) errors.push(`${route} : canonical public exact absent`);
+    if (!sitemapLocations.has(`https://memlia.fr${route}`)) errors.push(`${route} : absent du sitemap public`);
+    for (const source of snapshots) {
+      if (!source.footerHrefs.includes(route)) errors.push(`${route} : absent du footer rendu sur ${source.route}`);
+    }
+  }
+  return { pass: errors.length === 0, errors, expected };
+}
+
 function isExempt(exemptions, route, clause) {
   return exemptions.some((item) => item.route === route && item.clauses.includes(clause));
 }
@@ -436,6 +509,12 @@ export function auditerContratPages({
     if (!page.footerHrefs.includes('/outils-comptables-gratuits')) {
       erreurs.push(error(page.route, 5, 'le footer généré ne porte pas le hub /outils-comptables-gratuits'));
     }
+  }
+
+  const servicesPublics = auditerServicesPublics({ root, dist, pages });
+  for (const detail of servicesPublics.errors) {
+    const route = detail.match(/^(\/[^ ]+)/)?.[1] ?? '/*';
+    erreurs.push(error(route, /footer|sitemap|HTML public/.test(detail) ? 5 : 3, detail));
   }
 
   const validExemptions = exemptions.filter((item) => !invalidExemptions.includes(item));

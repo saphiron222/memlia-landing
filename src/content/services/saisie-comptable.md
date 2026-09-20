@@ -2,7 +2,7 @@
 title: "Saisie comptable en cabinet : chaque écriture reste à valider"
 tabTitle: "Saisie comptable en cabinet | Memlia"
 ogTitle: "Saisie comptable en cabinet : chaque écriture reste à valider"
-description: "Confiez la préparation répétitive de la saisie comptable : règle écrite, écritures proposées, anomalies nommées et validation humaine."
+description: "Saisie comptable en cabinet : règle écrite, écritures proposées, anomalies nommées et validation humaine."
 hero: "Nous écrivons vos règles d’extraction, d’imputation habituelle et de refus, puis nous préparons les écritures dans vos outils. Une pièce conforme produit une proposition traçable. Une période incohérente, un doublon ou une lecture incertaine rejoint une file d’examen. Le collaborateur garde la saisie définitive, la correction et le jugement comptable."
 primaryQuery: "saisie comptable en cabinet"
 secondaryQueries: ["saisie automatique comptabilité", "saisie automatique comptabilité cabinet comptable"]
@@ -13,8 +13,8 @@ audience:
 intent: evaluer-service
 family: saisie-ocr
 verifiedAt: 2026-09-20
-status: pret-preview
-candidateFingerprint: "9d79e7044f442738e18d64e6c6984ccbf73b84c1d9148fccbaca173a3a406c08"
+status: publie
+candidateFingerprint: "88c0a2f5a3ef448452663fd80423109b6ce2188d5a87b6bb2955144f969f467f"
 cta:
   label: "Confier une première tâche"
   destination: "/contact"

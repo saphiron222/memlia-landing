@@ -41,6 +41,7 @@
     "service:preparer": "node scripts/service-forge.mjs preparer",
     "service:sceller": "node scripts/service-forge.mjs sceller",
     "service:publier": "node scripts/service-forge.mjs publier",
+    "service:depublier": "node scripts/service-forge.mjs depublier",
     "blog:create": "node scripts/blog-pipeline.mjs create",
     "blog:verify-source": "node scripts/blog-pipeline.mjs verify-source",
     "blog:gate": "node scripts/blog-pipeline.mjs gate",

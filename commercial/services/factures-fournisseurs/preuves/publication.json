@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "factures-fournisseurs",
+  "path": "/automatisation/factures-fournisseurs",
+  "status": "publie",
+  "publishedOn": "2026-09-21",
+  "publishedAt": "2026-09-20T22:53:40.559Z",
+  "servedObservation": {
+    "url": "https://localhost:4443/automatisation/factures-fournisseurs",
+    "status": 200,
+    "canonical": "https://memlia.fr/automatisation/factures-fournisseurs",
+    "canonicalCount": 1,
+    "h1": "Factures fournisseurs des dossiers clients : les exceptions restent visibles",
+    "h1Count": 1,
+    "candidateFingerprint": "53ce45766652e9c159414a8d74122039df422bab50c0b943134302eb44e39f65",
+    "candidateFingerprintCount": 1,
+    "bodySha256": "004049d5e6ace53b0051d7496940994d590fcd62a6c9b9dc92b6457e085a59fa",
+    "observedAt": "2026-09-20T22:53:40.554Z",
+    "cacheControl": null,
+    "cfCacheStatus": null,
+    "age": null,
+    "xRobotsTag": null,
+    "metaRobots": [
+      "noindex, follow"
+    ],
+    "indexable": false
+  },
+  "page": {
+    "path": "src/content/services/factures-fournisseurs.md",
+    "bytes": 5730,
+    "sha256": "d04690d2d17d2946cc2347e4ef64de9eb12ab59ca89f0f790e81cb7155d812be"
+  },
+  "manifest": {
+    "path": "commercial/services/factures-fournisseurs/manifest.json",
+    "bytes": 2608,
+    "sha256": "a27f0c299be440069ef887143abfba8e2372e4950650f69477baad6eda465642"
+  }
+}

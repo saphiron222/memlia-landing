@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "paie",
+  "path": "/automatisation/paie",
+  "status": "publie",
+  "publishedOn": "2026-09-21",
+  "publishedAt": "2026-09-20T22:53:41.290Z",
+  "servedObservation": {
+    "url": "https://localhost:4443/automatisation/paie",
+    "status": 200,
+    "canonical": "https://memlia.fr/automatisation/paie",
+    "canonicalCount": 1,
+    "h1": "Automatisation paie du pôle social : chaque contrôle reste à valider",
+    "h1Count": 1,
+    "candidateFingerprint": "ab45407c7d956a1a892696d5c72d622602039f7bf2e41f79e213cbd337f02977",
+    "candidateFingerprintCount": 1,
+    "bodySha256": "233fd7673fcdf76be42a9ced4effd253c6fd38861e2382dc2888930ef4d38fc5",
+    "observedAt": "2026-09-20T22:53:41.281Z",
+    "cacheControl": null,
+    "cfCacheStatus": null,
+    "age": null,
+    "xRobotsTag": null,
+    "metaRobots": [
+      "noindex, follow"
+    ],
+    "indexable": false
+  },
+  "page": {
+    "path": "src/content/services/paie.md",
+    "bytes": 5755,
+    "sha256": "f44aa7bca25ebe05c6f04fa629003c9061493103ec25a7274780ba1de786110e"
+  },
+  "manifest": {
+    "path": "commercial/services/paie/manifest.json",
+    "bytes": 2487,
+    "sha256": "9d907e8b503426d6f8b7d2e1c55da6049b2a7dacd225827dd60e587e8c277b92"
+  }
+}

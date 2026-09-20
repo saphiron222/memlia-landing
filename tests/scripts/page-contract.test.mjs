@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { auditerComposition, auditerContratPages, auditerNavigationMobile, contratsIntention } from '../../scripts/verify-page-contract.mjs';
+import { auditerComposition, auditerContratPages, auditerNavigationMobile, auditerServicesPublics, contratsIntention } from '../../scripts/verify-page-contract.mjs';
 
 function html({ route, h1, media, href, ogTitle = h1, headline = h1, description, attribution = true, footerOutils = true }) {
   const url = `https://memlia.fr${route}`;
@@ -69,6 +69,35 @@ function afficherTemoin(resultat, clause) {
   console.log(`TÉMOIN ROUGE CLAUSE ${clause}\n${sortie}`);
   return sortie;
 }
+
+test('la surface publique attendue refuse exactement la dépublication silencieuse de l’incident', () => {
+  const { root, pages } = fixture();
+  try {
+    mkdirSync(join(root, 'config'), { recursive: true });
+    writeFileSync(join(root, 'config/service-publication-ledger.json'), `${JSON.stringify({
+      version: 1,
+      services: [{ slug: 'alpha', route: '/alpha', status: 'publie', publishedOn: '2026-09-20', testFixture: true }],
+    }, null, 2)}\n`);
+    const footer = '<a href="/alpha">Automatisation alpha</a><a href="/outils-comptables-gratuits">Outils comptables gratuits</a>';
+    writeFileSync(join(root, 'dist/alpha.html'), pages.alpha.replace('<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>', footer));
+    writeFileSync(join(root, 'dist/source.html'), pages.source.replace('<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>', footer));
+    writeFileSync(join(root, 'dist/sitemap-0.xml'), '<urlset><url><loc>https://memlia.fr/alpha</loc></url></urlset>');
+
+    assert.deepEqual(auditerServicesPublics({ root }).errors, []);
+
+    writeFileSync(join(root, 'dist/alpha.html'), pages.alpha.replace('index, follow', 'noindex, follow'));
+    writeFileSync(join(root, 'dist/source.html'), pages.source);
+    writeFileSync(join(root, 'dist/sitemap-0.xml'), '<urlset></urlset>');
+
+    const rouge = auditerServicesPublics({ root });
+    assert.equal(rouge.pass, false);
+    assert.match(rouge.errors.join('\n'), /\/alpha.*noindex/i);
+    assert.match(rouge.errors.join('\n'), /\/alpha.*footer/i);
+    assert.match(rouge.errors.join('\n'), /\/alpha.*sitemap/i);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
 
 test('les cinq clauses rougissent avec la page et la clause, puis la fixture restaurée repasse au vert', () => {
   const { root, pages } = fixture();
