@@ -1,5 +1,11 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-20 — téléphone officiel de l’hébergeur
+
+- Les conditions Cloudflare, relues en HTTP 200 le 20/09/2026, publient `+1 (888) 99 FLARE`, le lien `tel:18889935273` et la date « Last Updated September 12, 2025 ». Les mentions légales transcrivent désormais ce numéro sous ses formes officielle et numérique, avec source et date de consultation visibles.
+- L’oracle légal conserve `PublisherEntityProof` et `AboutPageLocationProof`, exige le numéro, le lien et les deux dates, puis expire le relevé après 30 jours. Mutation d’expiration : 1/1 rouge ; suite légale 9/9, preuves 75/75, Node 256/256, Playwright 123/123, Astro 0 erreur et build PASS.
+- Commit candidat `7e7ad46`, sans push, preview ni production. Cron hebdomadaire marketing `ff37f9a32948`, lundi 8 h 15, relit Cloudflare et la page servie puis alerte fail-closed sur divergence, panne ou consultation âgée de 30 jours ; l’ancien job dev `bdc591af6362` a été retiré.
+
 ## Hermes — 2026-09-19 — sources de la forge : encodage et contexte
 
 - `verifySource` décode désormais les octets avec le `charset` déclaré par `Content-Type`, UTF-8 par défaut, et refuse une séquence invalide au lieu d'écrire une copie corrompue.
