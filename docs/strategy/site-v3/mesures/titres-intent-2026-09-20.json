@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "measuredAt": "2026-09-20T14:19:21.059Z",
+  "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+  "locale": {
+    "hl": "fr",
+    "gl": "fr"
+  },
+  "rule": "Une liste vide est une mesure sous le seuil d’autocomplétion, jamais une absence de lecteur ; ok=false seul indique une panne.",
+  "autocompletion": {
+    "automatisation factures fournisseurs": [
+      "automatisation factures fournisseurs"
+    ],
+    "automatiser factures fournisseurs cabinet comptable": [],
+    "automatiser factures fournisseurs clients": [],
+    "factures fournisseurs des dossiers clients": [],
+    "automatisation notes de frais": [
+      "automatisation note de frais",
+      "automatisation de la gestion des notes de frais"
+    ],
+    "automatisation notes de frais cabinet comptable": [],
+    "notes de frais en cabinet": [],
+    "notes de frais des clients en cabinet": [],
+    "rapprochement bancaire automatique": [
+      "rapprochement bancaire automatique excel",
+      "rapprochement bancaire automatique sage 100",
+      "rapprochement bancaire automatique",
+      "rapprochement bancaire automatique excel gratuit",
+      "rapprochement bancaire automatique sage",
+      "rapprochement bancaire automatique ebp"
+    ],
+    "rapprochement bancaire automatique cabinet comptable": [],
+    "rapprochement bancaire en cabinet": [],
+    "saisie automatique comptabilité": [
+      "saisie automatique comptabilité"
+    ],
+    "saisie automatique comptabilité cabinet comptable": [],
+    "saisie comptable en cabinet": [],
+    "automatisation paie": [
+      "automatisation paie",
+      "automate paiement"
+    ],
+    "automatisation paie cabinet comptable": [],
+    "automatisation paie pôle social": []
+  },
+  "decision": {
+    "scope": "cinq pages de service",
+    "reason": "Les requêtes nues sont mesurables mais visent surtout les entreprises. Les variantes qualifiées sont sous le seuil ; elles sont retenues car elles amènent le bon lecteur. Le pilier conserve la catégorie « automatisation cabinet comptable » ; les enfants se distinguent par la tâche et son vocabulaire métier."
+  }
+}

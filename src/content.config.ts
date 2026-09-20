@@ -115,6 +115,18 @@ const services = defineCollection({
     }, 'La réponse commerciale du héros doit contenir 40 à 80 mots.'),
     primaryQuery: z.string().min(3),
     secondaryQueries: z.array(z.string().min(3)).default([]),
+    audience: z.discriminatedUnion('mode', [
+      z.object({
+        mode: z.literal('qualified'),
+        qualifier: z.string().min(3),
+        reason: z.string().min(40),
+      }),
+      z.object({
+        mode: z.literal('exception'),
+        qualifier: z.null(),
+        reason: z.string().min(80),
+      }),
+    ]),
     intent: z.literal('evaluer-service'),
     family: z.string().min(3),
     verifiedAt: z.coerce.date(),

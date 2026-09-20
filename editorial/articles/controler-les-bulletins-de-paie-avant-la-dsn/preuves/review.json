@@ -3,9 +3,9 @@
   "candidateSlug": "controler-les-bulletins-de-paie-avant-la-dsn",
   "kind": "editorial-review",
   "status": "PASS",
-  "checkedAt": "2026-09-18",
-  "articleSha256": "70ba23a9b3fdcf921fd41b0b4e477b98b5a397effa7525281d6c25ac2fca95c1",
-  "manifestSha256": "ce9086643fb616a88230bc953afb25fa17b75599a2f1696e17340d08f4e6ea72",
+  "checkedAt": "2026-09-20",
+  "articleSha256": "1be22a34d3209c5a71cd920035ab94698dcfc8a6edfda01adc018e6614670b01",
+  "manifestSha256": "89b614fa29017fe7933051904d2e80132be14bf0ee821e979ba7e6bcb2443926",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact controler-les-bulletins-de-paie-avant-la-dsn."
   ],
@@ -26,7 +26,7 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Le H1 « Comment contrôler les bulletins de paie avant la DSN ? » reprend la forme interrogative attendue pour un how-to-guide et couvre la requête primaire « contrôle bulletin de paie ».",
+        "Le H1 « Contrôle bulletin de paie en cabinet : que vérifier avant la DSN ? » ouvre sur la requête primaire, qualifie l’audience cabinet avant la question opérationnelle et reste distinct du service paie qui vise le pôle social.",
         "Le title mesure exactement 60 caractères (recompté en Python, pas en octets UTF-8 qui en indiquaient 61), mot-clé en tête avant le repère « | Memlia », à la limite haute de la fourchette 40-60 sans la dépasser.",
         "Huit tableaux à en-tête `<thead>` (compté directement dans le HTML rendu) et plusieurs listes numérotées structurent le contenu en blocs scannables, cohérents avec le format guide pratique déclaré."
       ]
