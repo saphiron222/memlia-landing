@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-09-20",
+  "rule": "Un appariement unique couvert produit une proposition ; une combinaison ambiguë ou un mouvement sans pièce reste ouvert.",
+  "cases": [
+    {
+      "id": "RAPP-COURANT-01",
+      "kind": "courant",
+      "input": { "montant": "840,00", "referenceCommune": true, "combinaisonsPossibles": 1, "piecePresente": true },
+      "expected": "appariement-unique-propose",
+      "observed": "appariement-unique-propose",
+      "decision": "validation-collaborateur",
+      "pass": true
+    },
+    {
+      "id": "RAPP-LIMITE-01",
+      "kind": "limite",
+      "input": { "montant": "1200,00", "referenceCommune": false, "combinaisonsPossibles": 2, "piecePresente": true },
+      "expected": "arret-combinaison-ambigue",
+      "observed": "arret-combinaison-ambigue",
+      "decision": "selection-cabinet",
+      "pass": true
+    },
+    {
+      "id": "RAPP-REFUS-01",
+      "kind": "refus",
+      "input": { "montant": "16,40", "referenceCommune": false, "combinaisonsPossibles": 0, "piecePresente": false },
+      "expected": "ecart-piece-ou-ecriture-absente",
+      "observed": "ecart-piece-ou-ecriture-absente",
+      "decision": "recherche-et-regularisation-humaines",
+      "pass": true
+    }
+  ]
+}

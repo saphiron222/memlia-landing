@@ -42,7 +42,18 @@ const REQUETES_IA = [
   'cabinet comptable surcharge de travail',
 ];
 
-const moisCourant = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+export const dateParis = (d = new Date()) => d.toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
+export const repereParis = (d = new Date()) => {
+  const jour = dateParis(d);
+  const [annee, mois, numeroJour] = jour.split('-');
+  const moisReleve = `${annee}-${mois}`;
+  return {
+    mois: moisReleve,
+    jour,
+    jourFrancais: `${numeroJour}/${mois}/${annee}`,
+    chemin: `${DOSSIER}/mois-${moisReleve}-autorite.json`,
+  };
+};
 const moisEcoules = (depuis, jusqu) => {
   const [a1, m1] = depuis.split('-').map(Number);
   const [a2, m2] = jusqu.split('-').map(Number);
@@ -67,7 +78,10 @@ function autorise(endpoint, nombre, budget, depenses, exclusions) {
   return { ok: false, porte: porte.statut, couvertPar: null };
 }
 
-export async function relever(root, { mois = moisCourant(), sansIa = false, budget = 0.6 } = {}) {
+export async function relever(root, { mois, sansIa = false, budget = 0.6, instant = new Date() } = {}) {
+  const repere = repereParis(instant);
+  const moisReleve = mois ?? repere.mois;
+  const cheminReleve = mois ? `${DOSSIER}/mois-${moisReleve}-autorite.json` : repere.chemin;
   mkdirSync(join(root, DOSSIER), { recursive: true });
   const exclusions = [];
   const depenses = { total: 0, parEndpoint: {} };
@@ -132,13 +146,13 @@ export async function relever(root, { mois = moisCourant(), sansIa = false, budg
 
   // Sans recherche web, la citation n'est pas mesurée : on l'écrit au lieu de compter un zéro.
   if (!sansIa && ia.requetes > 0 && ia.avecRecherche === 0) {
-    exclusions.push(`citations IA non mesurées : l'interface a répondu sans recherche web sur les ${ia.requetes} requêtes (relevé du 19/09/2026 : web_search rendu à false quel que soit le paramètre) ; seul « la marque est nommée » est mesuré`);
+    exclusions.push(`citations IA non mesurées : l'interface a répondu sans recherche web sur les ${ia.requetes} requêtes (relevé du ${repere.jourFrancais} : web_search rendu à false quel que soit le paramètre) ; seul « la marque est nommée » est mesuré`);
   }
 
   // 4. Audience : d'où viennent les visites, et notamment celles envoyées par un assistant.
   // Gratuit, mais il faut le jeton ; sans lui, on l'écrit au lieu de compter zéro visite.
   let audience = { ok: false, erreur: 'non relevée', visites: null, directes: null, assistants: [], visitesAssistants: null, hotes: [] };
-  const finMois = new Date();
+  const finMois = new Date(instant);
   const debutMois = new Date(finMois.getTime() - 30 * 24 * 3600 * 1000);
   const ref = await referentsCloudflare({ compte: COMPTE_CLOUDFLARE, depuis: debutMois.toISOString(), jusqu: finMois.toISOString() });
   if (!ref.ok) {
@@ -149,17 +163,17 @@ export async function relever(root, { mois = moisCourant(), sansIa = false, budg
     if (!audience.ok) exclusions.push(`référents d'audience non lus : ${audience.erreur}`);
   }
 
-  const precedent = lireJson(join(root, DOSSIER, `mois-${moisPrecedent(mois)}-autorite.json`), null);
-  const detection = detecterAutorite({ mois, autorite, entite, ia, precedent, moisDepuisDepart: moisEcoules(DEPART, mois) });
-  const releve = { mois, jour: new Date().toISOString().slice(0, 10), autorite, entite, ia, audience, depenses, budget, portes: { liens: porteLiens, serp: porteSerp }, exclusions, ...detection };
-  ecrireJson(join(root, DOSSIER, `mois-${mois}-autorite.json`), releve);
+  const precedent = lireJson(join(root, DOSSIER, `mois-${moisPrecedent(moisReleve)}-autorite.json`), null);
+  const detection = detecterAutorite({ mois: moisReleve, autorite, entite, ia, precedent, moisDepuisDepart: moisEcoules(DEPART, moisReleve) });
+  const releve = { mois: moisReleve, jour: repere.jour, autorite, entite, ia, audience, depenses, budget, portes: { liens: porteLiens, serp: porteSerp }, exclusions, ...detection };
+  ecrireJson(join(root, cheminReleve), releve);
   return releve;
 }
 
 const estPrincipal = process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href;
 if (estPrincipal) {
   const argv = process.argv.slice(2);
-  const o = { sansIa: argv.includes('--sans-ia'), budget: 0.6, mois: moisCourant() };
+  const o = { sansIa: argv.includes('--sans-ia'), budget: 0.6 };
   for (let i = 0; i < argv.length; i += 1) {
     if (argv[i] === '--budget') o.budget = Number(argv[++i]);
     else if (argv[i] === '--mois') o.mois = argv[++i];

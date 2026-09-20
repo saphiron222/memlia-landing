@@ -1,0 +1,94 @@
+---
+import Base from './Base.astro';
+import ServiceHero from '@/components/sections/ServiceHero.astro';
+import ServiceBody from '@/components/sections/ServiceBody.astro';
+import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
+import AppelFinal from '@/components/sections/AppelFinal.astro';
+import { SITE } from '@/data/site.mjs';
+import { organizationNode } from '@/data/schema.mjs';
+import { serviceDesignFor } from '@/data/service-design';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entree: CollectionEntry<'services'>;
+}
+
+const { entree } = Astro.props;
+const { data } = entree;
+const chemin = `/automatisation/${entree.id}`;
+const url = `${SITE.url}${chemin}`;
+const noindex = data.status !== 'publie';
+const design = serviceDesignFor(entree.id);
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: data.headline,
+      headline: data.headline,
+      description: data.description,
+      inLanguage: SITE.langue,
+      isPartOf: { '@id': `${SITE.url}/#website` },
+      about: { '@id': `${url}#service` },
+      breadcrumb: { '@id': `${url}#breadcrumb` },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${url}#service`,
+      name: data.headline,
+      serviceType: data.primaryQuery,
+      description: data.description,
+      url,
+      areaServed: 'FR',
+      provider: { '@id': `${SITE.url}/#organization` },
+      audience: { '@type': 'Audience', audienceType: "Cabinets d'expertise comptable" },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` },
+        { '@type': 'ListItem', position: 2, name: 'Automatisation', item: `${SITE.url}/automatisation-cabinet-comptable` },
+        { '@type': 'ListItem', position: 3, name: data.headline, item: url },
+      ],
+    },
+    organizationNode(),
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.url}/#website`,
+      url: `${SITE.url}/`,
+      name: SITE.nom,
+      inLanguage: SITE.langue,
+      publisher: { '@id': `${SITE.url}/#organization` },
+    },
+  ],
+};
+---
+
+<Base titre={data.tabTitle} titreSocial={data.ogTitle} description={data.description} chemin={chemin} noindex={noindex} base="/">
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+  <meta slot="head" name="memlia-candidate" content={data.candidateFingerprint} />
+
+  <div class="feuille">
+    <article data-service={entree.id} data-service-layout="da-v1">
+      <ServiceHero headline={data.headline} hero={data.hero} cta={data.cta} proof={design.heroProof} preview={noindex} />
+      <ServiceBody proof={design.bodyProof}>
+        <slot />
+      </ServiceBody>
+      <ServicePrinciples />
+      <AppelFinal
+        id="confier"
+        titre="Décrivez le geste qui revient."
+        texte="Une description suffit pour le premier échange. Aucun fichier ne vous est demandé à ce stade."
+        points={[
+          'Le geste : ce qui revient et dans quel outil.',
+          'La limite : le cas qui doit arrêter le traitement.',
+          'Le résultat : ce que votre équipe doit pouvoir valider.',
+        ]}
+        action={{ libelle: data.cta.label, href: data.cta.destination }}
+      />
+    </article>
+  </div>
+</Base>

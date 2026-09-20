@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-09-20",
+  "rule": "Une pièce lisible et couverte produit une écriture proposée ; une période incohérente ou une lecture incertaine arrête la proposition.",
+  "cases": [
+    {
+      "id": "SAISIE-COURANT-01",
+      "kind": "courant",
+      "input": { "piece": "lisible", "fournisseur": "recurrent", "periode": "attendue", "doublonProbable": false },
+      "expected": "ecriture-proposee",
+      "observed": "ecriture-proposee",
+      "decision": "validation-collaborateur",
+      "pass": true
+    },
+    {
+      "id": "SAISIE-LIMITE-01",
+      "kind": "limite",
+      "input": { "piece": "lisible", "fournisseur": "recurrent", "periode": "precedente", "doublonProbable": false },
+      "expected": "arret-periode-incoherente",
+      "observed": "arret-periode-incoherente",
+      "decision": "choix-cabinet",
+      "pass": true
+    },
+    {
+      "id": "SAISIE-REFUS-01",
+      "kind": "refus",
+      "input": { "piece": "illisible", "fournisseur": "inconnu", "periode": "inconnue", "doublonProbable": false },
+      "expected": "arret-piece-illisible",
+      "observed": "arret-piece-illisible",
+      "decision": "nouvelle-piece-ou-saisie-humaine",
+      "pass": true
+    }
+  ]
+}

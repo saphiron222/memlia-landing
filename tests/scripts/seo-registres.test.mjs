@@ -58,6 +58,31 @@ test('ajouter une entrée sans requête est refusé', () => {
   assert.throws(() => ajouterAuRegistre(registreVide(), entree('a', { requete: '' })), /requete/);
 });
 
+test('une requête primaire ne peut appartenir à deux URL indexables, même de types différents', () => {
+  const blog = entree('article', { type: 'blog', requete: 'automatisation saisie comptable' });
+  const registre = ajouterAuRegistre(registreVide(), blog);
+  assert.throws(
+    () => ajouterAuRegistre(registre, entree('service', {
+      type: 'service',
+      url: 'https://memlia.fr/automatisation/saisie-comptable',
+      requete: ' Automatisation   saisie comptable ',
+    })),
+    /requête primaire.*déjà.*article/i,
+  );
+});
+
+test('un même slug sur deux types ne remplace pas une autre URL', () => {
+  const blog = entree('paie', { type: 'blog', requete: 'comprendre la paie' });
+  let registre = ajouterAuRegistre(registreVide(), blog);
+  registre = ajouterAuRegistre(registre, entree('paie', {
+    type: 'service',
+    url: 'https://memlia.fr/automatisation/paie',
+    requete: 'automatisation paie',
+  }));
+  assert.equal(registre.articles.length, 2);
+  assert.deepEqual(registre.articles.map((item) => item.type), ['blog', 'service']);
+});
+
 test('réconcilier ajoute les articles publiés absents et rend leurs slugs', () => {
   const registre = ajouterAuRegistre(registreVide(), entree('a'));
   const { registre: apres, ajoutes } = reconcilierRegistre(registre, [entree('a'), entree('b')]);

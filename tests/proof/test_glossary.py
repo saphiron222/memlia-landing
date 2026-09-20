@@ -115,9 +115,18 @@ class GlossaryProof(unittest.TestCase):
         self.assertFalse(any(url.startswith(f'{GLOSSARY_URL}/') for url in urls))
 
     def test_internal_links_only_target_rendered_routes_or_fragments(self):
+        # Le plan du site du footer inclut désormais les collections dynamiques. Dériver les
+        # routes de tout le rendu plutôt que de maintenir une liste spéciale pour le blog : une
+        # nouvelle famille de pages doit être reconnue si, et seulement si, Astro l'a construite.
         paths = {'/'}
-        paths.update(f'/{page.stem}' for page in DIST.glob('*.html') if page.stem not in {'index', '404'})
-        paths.update(f'/blog/{page.stem}' for page in (DIST / 'blog').glob('*.html'))
+        for page in DIST.rglob('*.html'):
+            relatif = page.relative_to(DIST).with_suffix('').as_posix()
+            if relatif == '404':
+                continue
+            route = f'/{relatif}'
+            if route.endswith('/index'):
+                route = route[:-len('index')].rstrip('/') or '/'
+            paths.add(route)
         ids = {attrs['id'] for _, attrs in self.doc.tags if attrs.get('id')}
         for anchor in self.doc.select('a'):
             href = anchor.get('href', '')

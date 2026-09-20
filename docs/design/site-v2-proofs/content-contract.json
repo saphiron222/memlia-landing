@@ -70,5 +70,25 @@
   {
     "id": "hero-contact",
     "centralText": "Premier échange · 30 minutes Jeu fictif Le geste Recopier chaque mois les montants de l’export de paie dans le classeur de suivi du pôle social. Les outils Logiciel de paie, export CSV, classeur Excel partagé par l’équipe. Le résultat attendu Un classeur à jour, les écarts signalés avant la DSN. Fichiers transmis Aucun. La description a suffi pour savoir si le geste se cadre. Reste à qualifier Deux cas limites et le mois de reprise, sur vos fichiers, au cadrage. Prochaine étape Un cadrage planifié avec le cabinet, avant tout développement et tout devis. Issue de l’échange Cadrage proposé La règle s’énonce, les formats sont connus, deux cas limites restent à écrire. ✓ Aucun fichier client demandé ✓ Aucune donnée de paie ✓ Aucun engagement à ce stade Dans tous les cas Vous repartez avec une lecture plus nette de votre propre geste, cadrage ou non."
+  },
+  {
+    "id": "service-paie",
+    "centralText": "Contrôle des variables de paie · cycle fictif Pôle social Entrée Variables de paie reçues Prime, absence, avenant, période Règle écrite Présence et seuils Contrôles définis par le pôle social Proposition Bulletins à contrôler Deux cas attendent le gestionnaire Bulletin Contrôle de paie Sortie État Fictif A Prime de nuit présente Prêt pour relecture À valider Fictif B Prime d’ancienneté absente Bulletin bloqué Arrêt Fictif C Net + 8 %, sans avenant Écart isolé Examen Décision conservée Le pôle social tranche. La règle prépare le contrôle. Elle ne corrige pas un bulletin et ne décide jamais d’une situation individuelle. ✗ Ajouter une prime absente ✗ Interpréter la variation du net Examiner l’écart Documenter la décision Jeu d’essai fictif · aucune donnée réelle 1 bulletin à valider · 2 décisions humaines"
+  },
+  {
+    "id": "service-saisie-comptable",
+    "centralText": "Préparation de saisie · pièces fictives Validation comptable Lecture Champs extraits Date, total, fournisseur Contrôles Période et doublon Imputation connue seulement Sortie Écriture proposée Jamais saisie définitivement Pièce Compte proposé Montant fictif État FAC-021 606300 · entretien 1 248,00 € À valider FAC-022 606300 · période passée 384,00 € Suspendu IMG-023 Aucun compte proposé Total illisible Refus File d’examen · FAC-021 Une écriture attend le collaborateur. La pièce, le compte proposé et le montant restent visibles avant la saisie définitive. ✗ Créer un fournisseur inconnu ✗ Deviner un total illisible Voir la pièce Valider l’écriture Règle fictive · proposition traçable 1 écriture proposée · 2 arrêts"
+  },
+  {
+    "id": "service-rapprochement-bancaire",
+    "centralText": "Rapprochement · compte fictif Écarts visibles Banque Mouvements reçus Montant, référence, période Comptabilité Écritures comparées Clés dans l’ordre du cabinet Rapprochement Appariements proposés Ambiguïtés laissées ouvertes Mouvement Clé trouvée Correspondance État VIR-104 Référence + montant Écriture 401-18 Proposé VIR-105 Deux combinaisons Aucune choisie Ambigu FRAIS-03 Aucune pièce Écart ouvert À expliquer Exception ouverte Un même total ne suffit pas. Si plusieurs combinaisons conviennent, la règle montre les options et attend le cabinet. ✗ Forcer un paiement groupé ✗ Créer une régularisation Comparaison fictive · aucune écriture créée 1 appariement · 2 écarts ouverts"
+  },
+  {
+    "id": "service-notes-de-frais",
+    "centralText": "Notes de frais · lot fictif Règle du cabinet Note reçue Champs présents Date, montant, motif, dossier Justificatif Pièce et doublon Contrôles écrits du cabinet Préparation État proposé Acceptation toujours humaine Note Justificatif Contrôle État NDF-031 Lisible et lié Champs préparés À valider NDF-032 Déjà reçu Doublon probable Examen NDF-033 Absent Aucun état final Refus Motif fermé La pièce manque : la note s’arrête. La préparation nomme ce qui manque. Elle n’accepte pas la dépense et ne complète rien par supposition. ✗ Accepter une dépense ✗ Ignorer un doublon probable Trois notes fictives · aucune donnée nominative 1 prête · 2 à décider"
+  },
+  {
+    "id": "service-factures-fournisseurs",
+    "centralText": "Factures fournisseurs · flux fictif Exceptions visibles Réception Pièces reconnues Fournisseur, numéro, montant Règle écrite Contrôles du flux Doublon, avoir, données absentes Proposition Classement préparé Paiement hors du périmètre Document Contrôle Sortie État FAC-440 Fournisseur connu Proposition liée À valider FAC-441 N° et montant déjà reçus Aucun second flux Doublon AVO-078 Origine introuvable Aucun rattachement Arrêt Traitement conservé L’exception ne disparaît pas. Le collaborateur garde l’imputation nouvelle, le rattachement d’un avoir et toute décision de paiement. ✗ Rattacher un avoir par analogie ✗ Décider d’un paiement Documents fictifs · circuit vérifiable 1 proposition · 2 exceptions"
   }
 ]

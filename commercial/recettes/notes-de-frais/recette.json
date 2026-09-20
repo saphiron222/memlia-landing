@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "notes-de-frais",
+  "path": "/automatisation/notes-de-frais",
+  "title": "Automatisation notes de frais : la règle reste au cabinet",
+  "tabTitle": "Automatisation notes de frais | Memlia",
+  "ogTitle": "Automatisation notes de frais : la règle reste au cabinet",
+  "description": "Confiez le traitement répétitif des notes de frais : règle écrite, cas fictifs, exceptions visibles et validation conservée par le cabinet.",
+  "hero": "Nous écrivons la règle de traitement de vos notes de frais, puis nous automatisons la préparation dans vos outils. Chaque justificatif lisible suit le circuit prévu. Un doublon, une pièce absente ou un cas hors règle arrête le traitement et remonte au collaborateur. Le cabinet garde la validation et toute décision qui engage le dossier.",
+  "primaryQuery": "automatisation notes de frais",
+  "secondaryQueries": [
+    "automatisation note de frais",
+    "automatisation de la gestion des notes de frais"
+  ],
+  "intent": "evaluer-service",
+  "family": "notes-de-frais",
+  "verifiedAt": "2026-09-20",
+  "author": "kevin",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact"
+  },
+  "schema": {
+    "headline": "Automatisation notes de frais : la règle reste au cabinet",
+    "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
+  },
+  "proof": {
+    "replayedAt": "2026-09-20",
+    "evidencePath": "preuves/rejeu.json"
+  },
+  "incomingLinks": [
+    {
+      "url": "/automatisation-cabinet-comptable",
+      "sourcePath": "src/pages/automatisation-cabinet-comptable.astro",
+      "anchor": "confier le traitement répétitif des notes de frais"
+    },
+    {
+      "url": "/methode",
+      "sourcePath": "src/pages/methode.astro",
+      "anchor": "rejouer une règle de notes de frais"
+    },
+    {
+      "url": "/garanties",
+      "sourcePath": "src/pages/garanties.astro",
+      "anchor": "éprouver le traitement des notes de frais"
+    }
+  ]
+}

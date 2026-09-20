@@ -115,10 +115,15 @@ class BuildProof(unittest.TestCase):
             for url in subtree.findall('.//s:url', ns):
                 pages[url.find('s:loc', ns).text] = url.find('s:lastmod', ns).text
         published_articles = [a for a in articles() if not is_preview_article(a)]
-        # Les pages legales restent hors sitemap ; les cinq pages commerciales y entrent.
+        # Les pages légales et les candidats service noindex restent hors sitemap. Une page de
+        # service n'y entre qu'après le passage de la forge au statut `publie`.
+        services_publies = set()
+        for service in (ROOT / 'src/content/services').glob('*.md'):
+            if re.search(r'^status:\s*publie\s*$', service.read_text(), re.MULTILINE):
+                services_publies.add(f'{SITE}/automatisation/{service.stem}')
         attendues = {f'{SITE}/', f'{SITE}/blog', f'{SITE}/glossaire',
                      f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
-                     f'{SITE}/a-propos', f'{SITE}/contact'} | {f'{SITE}/blog/{a.stem}' for a in published_articles}
+                     f'{SITE}/a-propos', f'{SITE}/contact'} | {f'{SITE}/blog/{a.stem}' for a in published_articles} | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
         # lastmod d'un article publié = dateModified de son schéma (une seule source : le frontmatter).
@@ -190,8 +195,9 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 3 * len(publies))
         self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 4 * len(publies))
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
-        # Série v2 : treize preuves de section, cinq preuves de tête, et l'image sociale de chaque tête.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 18)
+        # Série v2 : treize preuves de section, cinq preuves de tête et cinq scènes propres
+        # aux pages de service ; les cinq images sociales restent sous og/.
+        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 23)
         self.assertEqual(sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')), sorted(f'{n}-hero-{s}.webp' for n, s in [(14, 'service'), (15, 'methode'), (16, 'garanties'), (17, 'apropos'), (18, 'contact')]))
 
     def test_five_generic_examples_no_product_statuses(self):

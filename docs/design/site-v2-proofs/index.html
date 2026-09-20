@@ -397,6 +397,77 @@
       </article>
     </section>
 
+    <!-- ---- Pages de service : cinq scènes nouvelles, chacune liée à une tâche précise. ---- -->
+    <section class="frame hero-frame" id="service-paie" aria-label="Contrôle fictif de variables de paie : un dossier conforme est préparé, une variable absente et une variation hors règle restent au pôle social">
+      <article class="window hero-window rows-3">
+        <div class="window-bar"><span class="dot green"></span><span>Contrôle des variables de paie · cycle fictif</span><small>Pôle social</small></div>
+        <div class="service-scene">
+          <div class="service-flow"><div class="step"><small>Entrée</small><b>Variables de paie reçues</b><span>Prime, absence, avenant, période</span></div><i></i><div class="step"><small>Règle écrite</small><b>Présence et seuils</b><span>Contrôles définis par le pôle social</span></div><i></i><div class="step accent"><small>Proposition</small><b>Bulletins à contrôler</b><span>Deux cas attendent le gestionnaire</span></div></div>
+          <div class="service-work">
+            <div class="service-list"><div class="head"><span>Bulletin</span><span>Contrôle de paie</span><span>Sortie</span><span>État</span></div><div><span>Fictif A</span><span>Prime de nuit présente</span><span>Prêt pour relecture</span><span class="ok">À valider</span></div><div class="row-stop"><span>Fictif B</span><span>Prime d’ancienneté absente</span><span>Bulletin bloqué</span><span class="status-block">Arrêt</span></div><div class="row-stop"><span>Fictif C</span><span>Net + 8 %, sans avenant</span><span>Écart isolé</span><span class="status-block">Examen</span></div></div>
+            <aside class="service-review"><span class="eyebrow">Décision conservée</span><b>Le pôle social tranche.</b><p>La règle prépare le contrôle. Elle ne corrige pas un bulletin et ne décide jamais d’une situation individuelle.</p><ul><li><i>✗</i><span>Ajouter une prime absente</span></li><li><i>✗</i><span>Interpréter la variation du net</span></li></ul><div class="service-actions"><button class="ghost">Examiner l’écart</button><button>Documenter la décision</button></div></aside>
+          </div>
+        </div>
+        <div class="service-foot"><span>Jeu d’essai fictif · aucune donnée réelle</span><strong>1 bulletin à valider · 2 décisions humaines</strong></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="service-saisie-comptable" aria-label="Préparation fictive de saisie comptable : une facture récurrente produit une écriture proposée, une période incohérente et une pièce illisible sont bloquées">
+      <article class="window hero-window rows-3">
+        <div class="window-bar"><span class="dot green"></span><span>Préparation de saisie · pièces fictives</span><small>Validation comptable</small></div>
+        <div class="service-scene">
+          <div class="service-flow"><div class="step"><small>Lecture</small><b>Champs extraits</b><span>Date, total, fournisseur</span></div><i></i><div class="step"><small>Contrôles</small><b>Période et doublon</b><span>Imputation connue seulement</span></div><i></i><div class="step accent"><small>Sortie</small><b>Écriture proposée</b><span>Jamais saisie définitivement</span></div></div>
+          <div class="service-work">
+            <div class="service-list"><div class="head"><span>Pièce</span><span>Compte proposé</span><span>Montant fictif</span><span>État</span></div><div><span>FAC-021</span><span>606300 · entretien</span><span>1 248,00 €</span><span class="ok">À valider</span></div><div class="row-stop"><span>FAC-022</span><span>606300 · période passée</span><span>384,00 €</span><span class="status-block">Suspendu</span></div><div class="row-stop"><span>IMG-023</span><span>Aucun compte proposé</span><span>Total illisible</span><span class="status-block">Refus</span></div></div>
+            <aside class="service-review"><span class="eyebrow">File d’examen · FAC-021</span><b>Une écriture attend le collaborateur.</b><p>La pièce, le compte proposé et le montant restent visibles avant la saisie définitive.</p><ul><li><i>✗</i><span>Créer un fournisseur inconnu</span></li><li><i>✗</i><span>Deviner un total illisible</span></li></ul><div class="service-actions"><button class="ghost">Voir la pièce</button><button>Valider l’écriture</button></div></aside>
+          </div>
+        </div>
+        <div class="service-foot"><span>Règle fictive · proposition traçable</span><strong>1 écriture proposée · 2 arrêts</strong></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="service-rapprochement-bancaire" aria-label="Rapprochement bancaire fictif : un règlement exact est apparié, un paiement groupé ambigu et un mouvement sans pièce restent ouverts">
+      <article class="window hero-window rows-3">
+        <div class="window-bar"><span class="dot green"></span><span>Rapprochement · compte fictif</span><small>Écarts visibles</small></div>
+        <div class="service-scene">
+          <div class="service-flow"><div class="step"><small>Banque</small><b>Mouvements reçus</b><span>Montant, référence, période</span></div><i></i><div class="step"><small>Comptabilité</small><b>Écritures comparées</b><span>Clés dans l’ordre du cabinet</span></div><i></i><div class="step accent"><small>Rapprochement</small><b>Appariements proposés</b><span>Ambiguïtés laissées ouvertes</span></div></div>
+          <div class="service-work">
+            <div class="service-list"><div class="head"><span>Mouvement</span><span>Clé trouvée</span><span>Correspondance</span><span>État</span></div><div><span>VIR-104</span><span>Référence + montant</span><span>Écriture 401-18</span><span class="ok">Proposé</span></div><div class="row-stop"><span>VIR-105</span><span>Deux combinaisons</span><span>Aucune choisie</span><span class="status-block">Ambigu</span></div><div class="row-stop"><span>FRAIS-03</span><span>Aucune pièce</span><span>Écart ouvert</span><span class="status-block">À expliquer</span></div></div>
+            <aside class="service-review"><span class="eyebrow">Exception ouverte</span><b>Un même total ne suffit pas.</b><p>Si plusieurs combinaisons conviennent, la règle montre les options et attend le cabinet.</p><ul><li><i>✗</i><span>Forcer un paiement groupé</span></li><li><i>✗</i><span>Créer une régularisation</span></li></ul></aside>
+          </div>
+        </div>
+        <div class="service-foot"><span>Comparaison fictive · aucune écriture créée</span><strong>1 appariement · 2 écarts ouverts</strong></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="service-notes-de-frais" aria-label="Traitement fictif de notes de frais : une note complète est préparée, un doublon probable et un justificatif absent sont isolés pour décision">
+      <article class="window hero-window rows-3">
+        <div class="window-bar"><span class="dot green"></span><span>Notes de frais · lot fictif</span><small>Règle du cabinet</small></div>
+        <div class="service-scene">
+          <div class="service-flow"><div class="step"><small>Note reçue</small><b>Champs présents</b><span>Date, montant, motif, dossier</span></div><i></i><div class="step"><small>Justificatif</small><b>Pièce et doublon</b><span>Contrôles écrits du cabinet</span></div><i></i><div class="step accent"><small>Préparation</small><b>État proposé</b><span>Acceptation toujours humaine</span></div></div>
+          <div class="service-work">
+            <div class="service-list"><div class="head"><span>Note</span><span>Justificatif</span><span>Contrôle</span><span>État</span></div><div><span>NDF-031</span><span>Lisible et lié</span><span>Champs préparés</span><span class="ok">À valider</span></div><div class="row-stop"><span>NDF-032</span><span>Déjà reçu</span><span>Doublon probable</span><span class="status-block">Examen</span></div><div class="row-stop"><span>NDF-033</span><span>Absent</span><span>Aucun état final</span><span class="status-block">Refus</span></div></div>
+            <aside class="service-review"><span class="eyebrow">Motif fermé</span><b>La pièce manque : la note s’arrête.</b><p>La préparation nomme ce qui manque. Elle n’accepte pas la dépense et ne complète rien par supposition.</p><ul><li><i>✗</i><span>Accepter une dépense</span></li><li><i>✗</i><span>Ignorer un doublon probable</span></li></ul></aside>
+          </div>
+        </div>
+        <div class="service-foot"><span>Trois notes fictives · aucune donnée nominative</span><strong>1 prête · 2 à décider</strong></div>
+      </article>
+    </section>
+
+    <section class="frame hero-frame" id="service-factures-fournisseurs" aria-label="Flux fictif de factures fournisseurs : une facture connue avance, un doublon probable et un avoir non rattaché restent visibles">
+      <article class="window hero-window rows-3">
+        <div class="window-bar"><span class="dot green"></span><span>Factures fournisseurs · flux fictif</span><small>Exceptions visibles</small></div>
+        <div class="service-scene">
+          <div class="service-flow"><div class="step"><small>Réception</small><b>Pièces reconnues</b><span>Fournisseur, numéro, montant</span></div><i></i><div class="step"><small>Règle écrite</small><b>Contrôles du flux</b><span>Doublon, avoir, données absentes</span></div><i></i><div class="step accent"><small>Proposition</small><b>Classement préparé</b><span>Paiement hors du périmètre</span></div></div>
+          <div class="service-work">
+            <div class="service-list"><div class="head"><span>Document</span><span>Contrôle</span><span>Sortie</span><span>État</span></div><div><span>FAC-440</span><span>Fournisseur connu</span><span>Proposition liée</span><span class="ok">À valider</span></div><div class="row-stop"><span>FAC-441</span><span>N° et montant déjà reçus</span><span>Aucun second flux</span><span class="status-block">Doublon</span></div><div class="row-stop"><span>AVO-078</span><span>Origine introuvable</span><span>Aucun rattachement</span><span class="status-block">Arrêt</span></div></div>
+            <aside class="service-review"><span class="eyebrow">Traitement conservé</span><b>L’exception ne disparaît pas.</b><p>Le collaborateur garde l’imputation nouvelle, le rattachement d’un avoir et toute décision de paiement.</p><ul><li><i>✗</i><span>Rattacher un avoir par analogie</span></li><li><i>✗</i><span>Décider d’un paiement</span></li></ul></aside>
+          </div>
+        </div>
+        <div class="service-foot"><span>Documents fictifs · circuit vérifiable</span><strong>1 proposition · 2 exceptions</strong></div>
+      </article>
+    </section>
+
   </main>
 </body>
 </html>

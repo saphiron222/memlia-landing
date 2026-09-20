@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "paie",
+  "path": "/automatisation/paie",
+  "status": "publie",
+  "publishedOn": "2026-09-20",
+  "publishedAt": "2026-09-20T04:49:24.923Z",
+  "servedObservation": {
+    "url": "https://6f8d7f8d.memlia.pages.dev/automatisation/paie",
+    "status": 200,
+    "canonical": "https://memlia.fr/automatisation/paie",
+    "canonicalCount": 1,
+    "h1": "Automatisation paie : les contrôles restent au pôle social",
+    "h1Count": 1,
+    "candidateFingerprint": "b4ab3ada19111d5c19bf5adc7583b3cf2638a6874244fe624a2e22562eb8dca9",
+    "candidateFingerprintCount": 1,
+    "bodySha256": "d6cbf70f29fbcecedc64f09763080e0e31bb3ddf827d8e19985b19409b20f0cd",
+    "observedAt": "2026-09-20T04:49:24.916Z",
+    "cacheControl": "public, max-age=0, must-revalidate",
+    "cfCacheStatus": null,
+    "age": null,
+    "xRobotsTag": "noindex",
+    "metaRobots": [
+      "noindex, follow"
+    ],
+    "indexable": false
+  },
+  "page": {
+    "path": "src/content/services/paie.md",
+    "bytes": 5532,
+    "sha256": "122ef7d629c29a06c4771e30cc904ca70be703bef03fbe6fab71611f46bd5678"
+  },
+  "manifest": {
+    "path": "commercial/services/paie/manifest.json",
+    "bytes": 2233,
+    "sha256": "cee81105ec7f0a4e1048c3c4ef18172aec1baf25b79e658c354b412a3b7d1e3d"
+  }
+}

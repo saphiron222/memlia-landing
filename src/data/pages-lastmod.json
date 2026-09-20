@@ -3,36 +3,56 @@
   "regle": "lastmod = jour où le HTML rendu de la page a changé. Mis à jour par scripts/sync-lastmod.mjs, jamais par le build.",
   "pages": {
     "/": {
-      "sha256": "820f17e596d53e39c41aea0d12ac6a9e1b75ae087c880b93c38b42dcb4994151",
-      "lastmod": "2026-09-17T19:03:44.116Z"
+      "sha256": "cec49a2d52a99089cfc137a59dad29e7fe415a4baa6fc9b0431c588bac1b1af2",
+      "lastmod": "2026-09-20T14:20:03.774Z"
     },
     "/a-propos": {
-      "sha256": "82b25f9c70c5d4e68eb4a7001002050ed99d306128250cd7f3bf696aa33ba9de",
-      "lastmod": "2026-09-17T17:23:26.278Z"
+      "sha256": "a34f719fbebd7429e69276c41e1b8ccb45b9415dc71f1552260b8d304de0a281",
+      "lastmod": "2026-09-20T12:45:25.406Z"
     },
     "/automatisation-cabinet-comptable": {
-      "sha256": "2046ccecb83551849dece67cae5252b95b313b538d814d102508b1048b547d8c",
-      "lastmod": "2026-09-19T10:11:42.676Z"
+      "sha256": "d3105f8b8a1f1799ed9de5cf33a19ed4f1aa6786228deec2e6cb1b325ba09985",
+      "lastmod": "2026-09-20T12:45:25.406Z"
+    },
+    "/automatisation/factures-fournisseurs": {
+      "sha256": "b9c8103d1b0205f3afcce11f09e620b30880099834f0d2241f882819f520e6b8",
+      "lastmod": "2026-09-20T14:19:33.398Z"
+    },
+    "/automatisation/notes-de-frais": {
+      "sha256": "64a7d678510316d723d7722c6318ab087567afcdb7350b4f5525558010704f2e",
+      "lastmod": "2026-09-20T14:19:33.398Z"
+    },
+    "/automatisation/paie": {
+      "sha256": "ff724b506eb86aac0a662fe0e22444e608450c7228c2f30182317259b8165006",
+      "lastmod": "2026-09-20T14:19:33.398Z"
+    },
+    "/automatisation/rapprochement-bancaire": {
+      "sha256": "9380b285b81c7604e1ed2007aa652b6875e1a8c8c6bd39988ef1ad86f5fc8af0",
+      "lastmod": "2026-09-20T14:19:33.398Z"
+    },
+    "/automatisation/saisie-comptable": {
+      "sha256": "5841189fec3ebfb6533f609c0ff9efff5e97902415006a4cf8f4703553b2f06a",
+      "lastmod": "2026-09-20T14:19:33.398Z"
     },
     "/blog": {
-      "sha256": "5d6712b0904bc5c509a6d1d0b3968482bc940015343770d522def2cae6fe14b9",
-      "lastmod": "2026-09-19T19:37:40.525Z"
+      "sha256": "5b58a50f15c32ef6a035bcd76743d3702214332c3cbf92b9d284ef911cba8c0d",
+      "lastmod": "2026-09-20T12:45:25.406Z"
     },
     "/contact": {
-      "sha256": "81f5b68a0fef9944cceed9fe37640de38e3208791f3aaf68433ba01db822379b",
-      "lastmod": "2026-09-19T13:38:03.926Z"
+      "sha256": "e3d0210a21912f597b6690635856de0b5df1674be1a8144f16353cead4b6518c",
+      "lastmod": "2026-09-20T12:45:25.406Z"
     },
     "/garanties": {
-      "sha256": "13e2c70c83ad482ca25d76acae8b094a46b7836c6cb5e79d508680dd9a2d68c6",
-      "lastmod": "2026-09-19T10:11:42.676Z"
+      "sha256": "b47204655b28e46d90b18098b6f3e2ba5c88e86e857264ab01131f34fbc83665",
+      "lastmod": "2026-09-20T12:45:25.406Z"
     },
     "/glossaire": {
-      "sha256": "a11ae80ef5ca5f14c452c51e7bda07e700e4d790d5362ae9f8831d8ad4dda8a2",
-      "lastmod": "2026-09-19T14:00:42.397Z"
+      "sha256": "1bdcd3127aed0da64a04b8266649f2833e35194c9ff339062bff9e9b677fdfc3",
+      "lastmod": "2026-09-20T12:45:25.406Z"
     },
     "/methode": {
-      "sha256": "e298de28d5779e5b9aa6848ac3073b98362e83e055a1ffbebd7568685cff0625",
-      "lastmod": "2026-09-19T10:11:42.676Z"
+      "sha256": "0c979978ac54c628053b396e2ea11adc8ff9af330e4ccaee1a83ee28784686bf",
+      "lastmod": "2026-09-20T12:45:25.406Z"
     }
   }
 }

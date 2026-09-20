@@ -1,4 +1,5 @@
 """Identité publique autorisée : oracle sur le HTML livré, sans accès au dossier privé."""
+from datetime import date, timedelta
 from html.parser import HTMLParser
 from pathlib import Path
 import json
@@ -8,6 +9,12 @@ import unittest
 DIST = Path(__file__).resolve().parents[2] / 'dist'
 SITE = 'https://memlia.fr'
 ORGANIZATION_ID = f'{SITE}/#organization'
+CLOUDFLARE_PHONE = '+1 (888) 99 FLARE'
+CLOUDFLARE_PHONE_NUMERIC = '+1 888 993 5273'
+CLOUDFLARE_PHONE_URI = 'tel:+18889935273'
+CLOUDFLARE_TERMS_UPDATED = '12 septembre 2025'
+CLOUDFLARE_PHONE_CHECKED_AT = date(2026, 9, 20)
+CLOUDFLARE_PHONE_EXPIRES_AT = CLOUDFLARE_PHONE_CHECKED_AT + timedelta(days=30)
 FICHES_PUBLIQUES = [
     'https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541',
     'https://www.pappers.fr/entreprise/memlia-108621541',
@@ -62,16 +69,26 @@ class LegalIdentityProof(unittest.TestCase):
                 self.assertIn(expected, self.text)
         self.assertIn('mailto:contact@memlia.fr', self.doc.links)
 
-    def test_host_identity_and_contact_are_in_legal_body(self):
+    def test_host_identity_contact_and_source_are_in_legal_body(self):
         for expected in [
             'Cloudflare Pages', 'Cloudflare, Inc.',
             '101 Townsend St., San Francisco, CA 94107, États-Unis',
-            '+1 888 993 5273',
+            CLOUDFLARE_PHONE, CLOUDFLARE_PHONE_NUMERIC,
+            f'mises à jour le {CLOUDFLARE_TERMS_UPDATED}',
+            'consultées le 20 septembre 2026',
         ]:
             with self.subTest(expected=expected):
                 self.assertIn(expected, self.text)
-        self.assertIn('tel:+18889935273', self.doc.links)
+        self.assertIn(CLOUDFLARE_PHONE_URI, self.doc.links)
+        self.assertIn('https://www.cloudflare.com/', self.doc.links)
         self.assertIn('https://www.cloudflare.com/terms/', self.doc.links)
+
+    def test_host_phone_source_is_not_expired(self):
+        self.assertLessEqual(
+            date.today(),
+            CLOUDFLARE_PHONE_EXPIRES_AT,
+            'le téléphone de l’hébergeur doit être revérifié sur les conditions Cloudflare',
+        )
 
 
 def noeuds_editeur():

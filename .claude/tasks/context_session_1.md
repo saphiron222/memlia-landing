@@ -1,5 +1,11 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Hermes — 2026-09-20 — téléphone officiel de l’hébergeur
+
+- Les conditions Cloudflare, relues en HTTP 200 le 20/09/2026, publient `+1 (888) 99 FLARE`, le lien `tel:18889935273` et la date « Last Updated September 12, 2025 ». Les mentions légales transcrivent désormais ce numéro sous ses formes officielle et numérique, avec source et date de consultation visibles.
+- L’oracle légal conserve `PublisherEntityProof` et `AboutPageLocationProof`, exige le numéro, le lien et les deux dates, puis expire le relevé après 30 jours. Mutation d’expiration : 1/1 rouge ; suite légale 9/9, preuves 75/75, Node 256/256, Playwright 123/123, Astro 0 erreur et build PASS.
+- Commit candidat `7e7ad46`, sans push, preview ni production. Cron hebdomadaire marketing `ff37f9a32948`, lundi 8 h 15, relit Cloudflare et la page servie puis alerte fail-closed sur divergence, panne ou consultation âgée de 30 jours ; l’ancien job dev `bdc591af6362` a été retiré.
+
 ## Hermes — 2026-09-19 — sources de la forge : encodage et contexte
 
 - `verifySource` décode désormais les octets avec le `charset` déclaré par `Content-Type`, UTF-8 par défaut, et refuse une séquence invalide au lieu d'écrire une copie corrompue.
@@ -400,3 +406,19 @@ after Kevin adds the two records to confirm green.
 - Rien d'autre touché : aucun fichier produit, aucune copy/design, aucun commit, aucun push, aucun
   déploiement, aucune écriture Cloudflare/DNS.
 - Restent deux gestes humains : `git push origin main` et libération des deux enfants SEO précréés.
+
+## Hermes — 2026-09-20 — C2, forge des pages service
+
+- Carte `t_9149e763`, branche `wt/t_9149e763` : forge dédiée `scripts/service-forge.mjs`, collection Astro `services`, route `/automatisation/<tache>`, rendu commercial et registre SEO partagé avec les autres types. Aucun article ni plafond de cadence blog n’est lu ou réécrit.
+- Portes fail-closed : mesure d’intention fraîche, requête primaire unique inter-types, contenu borné, vocabulaire public, quatre surfaces alignées, cinq schémas exacts, jeu fictif, trois liens entrants réellement présents et rattachés à leur URL, revue indépendante avant scellement, empreintes et preuve de publication.
+- Preuves : Node 263/263 dans le build, Playwright 167/167, Python 120/120, Astro check 0 erreur/0 avertissement, build complet PASS. Recette visuelle synthétique Chromium 375 et 1440 : un H1, cinq types JSON-LD, zéro débordement ; fixture retirée avant le build final.
+- Revue indépendante finale : zéro défaut Critical/Important. Deux défauts trouvés puis corrigés : URL entrante non rapprochée de son fichier source et suppression d’un fichier scellé non détectée.
+- Piège : Astro conserve les entrées supprimées dans `node_modules/.astro/data-store.json`; après une fixture temporaire, nettoyer `node_modules/.astro`, `.astro` et `dist` avant la preuve finale.
+- Suite : `t_343871c3` peut produire et éprouver la première page manuelle avec les commandes documentées dans `ARCHITECTURE-ACCES-COMMERCIAUX.md`. Aucun push ni déploiement exécuté.
+
+## Hermes — 2026-09-20 — C2 reprise après revue marketing
+
+- Les cinq défauts de revue sont fermés : liens réels exigés seulement à `publier`, constat HTTP 200 du candidat servi avant toute écriture publiée, audit bidirectionnel registre↔dossiers et cohérence du reçu, date `Europe/Paris`, barrière TOCTOU terminale.
+- L’identité servie ne repose plus sur le seul H1 : la forge calcule `candidateFingerprint`, Astro le rend dans `<meta name="memlia-candidate">`, et `service:publier` rapproche URL servie, canonical, H1 et empreinte exacte. Une preview immuable noindex peut servir de constat via `MEMLIA_SERVICE_CANDIDATE_ORIGIN` avant la matérialisation `publie`.
+- Vérifications fraîches : tests ciblés 32/32 ; Playwright 123/123 ; Astro 166 fichiers, 0 erreur/0 avertissement et 11 hints hérités ; build PASS avec Python 74/74 et Node 266/266. Revue indépendante R2 : zéro défaut Critical/Important.
+- Aucun service réel, push ou déploiement. Suite : revue marketing de la même carte, puis C4 si elle approuve.

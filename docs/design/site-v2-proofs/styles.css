@@ -212,3 +212,34 @@
 .checks-foot b{color:var(--green-dark);font-size:15px}.checks-foot span{color:var(--muted);font-size:13px}
 .cr-note{padding:18px 20px;border:1px solid var(--line-soft);border-radius:12px;background:var(--paper);display:grid;gap:6px}
 .cr-note b{font:600 18px Fraunces,Georgia,serif}.cr-note p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+
+/* ---- Cinq scènes propres aux pages de service. ----
+   Une scène montre le geste couvert, l'exception qui arrête la préparation et la
+   décision qui reste au cabinet. Les données sont fictives et non nominatives. */
+.service-scene{padding:26px 30px 0;display:grid;grid-template-rows:auto minmax(0,1fr);gap:20px;min-height:0}
+.service-flow{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr;gap:14px;align-items:center}
+.service-flow .step{padding:16px 18px;border:1px solid var(--line-soft);border-radius:11px;background:white;display:grid;gap:4px;min-height:96px;align-content:center}
+.service-flow .step.accent{background:var(--green-pale);border-color:#cfeeda}
+.service-flow small{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.service-flow b{font:600 20px Fraunces,Georgia,serif}
+.service-flow span{color:var(--muted);font-size:13px;line-height:1.35}
+.service-flow i{height:1px;background:var(--green);position:relative}
+.service-flow i:after{content:"";position:absolute;right:0;top:-4px;width:8px;height:8px;border-top:1px solid var(--green);border-right:1px solid var(--green);transform:rotate(45deg)}
+.service-work{display:grid;grid-template-columns:1.32fr .68fr;gap:22px;min-height:0}
+.service-list{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;align-self:start;background:white}
+.service-list>div{display:grid;grid-template-columns:.7fr 1.25fr 1fr .65fr;align-items:center}
+.service-list span{padding:14px 15px;border-bottom:1px solid var(--line-soft);font-size:14px}
+.service-list>div:last-child span{border-bottom:0}
+.service-list .head span{background:var(--paper);color:var(--muted);font-size:12px;font-weight:600}
+.service-list .ok,.service-list .status-block{justify-self:start;margin:8px 14px;padding:5px 9px;border-bottom:0}
+.service-list .row-stop{background:var(--amber-pale)}
+.service-review{border:1px solid var(--line-soft);border-radius:12px;background:var(--paper);padding:22px;display:grid;gap:12px;align-content:start}
+.service-review b{font:600 25px/1.14 Fraunces,Georgia,serif}
+.service-review p{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+.service-review ul{list-style:none;margin:2px 0 0;padding:0;display:grid;gap:8px}
+.service-review li{padding:10px 11px;border:1px solid var(--line-soft);border-radius:8px;background:white;display:grid;grid-template-columns:24px 1fr;gap:8px;font-size:13px;color:var(--muted)}
+.service-review li i{font-style:normal;color:var(--amber);font-weight:600}
+.service-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:2px}
+.service-actions button{padding:9px 12px;font-size:12px}
+.service-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 30px 22px;border-top:1px solid var(--line-soft);color:var(--muted);font-size:14px}
+.service-foot strong{color:var(--green-dark)}

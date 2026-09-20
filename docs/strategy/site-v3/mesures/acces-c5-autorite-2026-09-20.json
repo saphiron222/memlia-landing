@@ -1,0 +1,1061 @@
+{
+  "measured_at": "2026-09-20T00:52:00Z",
+  "instrument": "fresh HTTP crawl of production sitemap with a unique query probe and no-cache headers",
+  "origin": "https://memlia.fr",
+  "sitemap": {
+    "url": "https://memlia.fr/sitemap-0.xml",
+    "status": 200,
+    "cf_cache_status": "DYNAMIC",
+    "url_count": 15,
+    "urls": [
+      "https://memlia.fr/",
+      "https://memlia.fr/a-propos",
+      "https://memlia.fr/automatisation-cabinet-comptable",
+      "https://memlia.fr/blog",
+      "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+      "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "https://memlia.fr/blog/la-plateforme-que-personne-n-a-achetee",
+      "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+      "https://memlia.fr/contact",
+      "https://memlia.fr/garanties",
+      "https://memlia.fr/glossaire",
+      "https://memlia.fr/methode"
+    ]
+  },
+  "indexability_http": {
+    "pages_200": 15,
+    "pages_without_x_robots_noindex": 15,
+    "pages_without_meta_noindex": 15,
+    "pages_self_canonical": 15
+  },
+  "internal_links": {
+    "occurrences": 995,
+    "main_occurrences": 461,
+    "unique_source_destination_pairs": 202,
+    "destination_counts": {
+      "/glossaire": 249,
+      "/": 170,
+      "/methode": 81,
+      "/contact": 80,
+      "/blog": 75,
+      "/garanties": 70,
+      "/automatisation-cabinet-comptable": 66,
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches": 36,
+      "/politique-de-confidentialite": 33,
+      "/a-propos": 31,
+      "/mentions-legales": 31,
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn": 16,
+      "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier": 16,
+      "/blog/suivre-la-production-sociale-dans-excel": 14,
+      "/blog/automatiser-la-relance-des-pieces-clients": 12,
+      "/blog/la-plateforme-que-personne-n-a-achetee": 9,
+      "/blog/comprendre-les-comptes-rendus-metier-dsn": 6
+    },
+    "commercial_paths": [
+      "/",
+      "/automatisation-cabinet-comptable",
+      "/contact",
+      "/garanties",
+      "/methode"
+    ],
+    "commercial_occurrences": 467,
+    "main_commercial_occurrences": 128,
+    "unique_commercial_source_destination_pairs": 75,
+    "commercial_destination_counts": {
+      "/": 170,
+      "/methode": 81,
+      "/contact": 80,
+      "/garanties": 70,
+      "/automatisation-cabinet-comptable": 66
+    }
+  },
+  "entity": {
+    "pages_with_organization_definition": 15,
+    "organization_definition_variants": [
+      "{\"@id\": \"https://memlia.fr/#organization\", \"@type\": \"Organization\", \"address\": {\"@type\": \"PostalAddress\", \"addressCountry\": \"FR\", \"addressLocality\": \"Paris\", \"postalCode\": \"75008\", \"streetAddress\": \"Bureau 326, 59 rue de Ponthieu\"}, \"contactPoint\": {\"@type\": \"ContactPoint\", \"areaServed\": \"FR\", \"availableLanguage\": \"French\", \"contactType\": \"customer support\", \"email\": \"contact@memlia.fr\"}, \"description\": \"Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.\", \"email\": \"contact@memlia.fr\", \"identifier\": [{\"@type\": \"PropertyValue\", \"propertyID\": \"SIREN\", \"value\": \"108621541\"}, {\"@type\": \"PropertyValue\", \"propertyID\": \"SIRET\", \"value\": \"10862154100011\"}], \"legalName\": \"MEMLIA\", \"logo\": \"https://memlia.fr/apple-touch-icon.png\", \"name\": \"Memlia\", \"sameAs\": [\"https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541\", \"https://www.pappers.fr/entreprise/memlia-108621541\", \"https://www.societe.com/societe/memlia-108621541.html\"], \"slogan\": \"Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.\", \"url\": \"https://memlia.fr/\"}"
+    ],
+    "pages_referencing_organization_id": 15,
+    "pages_with_memlia_in_title": 15,
+    "pages_with_memlia_in_h1": 0
+  },
+  "pages": [
+    {
+      "url": "https://memlia.fr/",
+      "status": 200,
+      "final_url": "https://memlia.fr/?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/"
+      ],
+      "title": "Automatisation IA pour cabinets comptables | Memlia",
+      "h1": "Votre cabinet tourne sur un savoir-faire que personne n’a écrit.",
+      "internal_link_occurrences": 37,
+      "main_internal_link_occurrences": 7,
+      "commercial_link_occurrences": 23,
+      "main_commercial_link_occurrences": 6,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 3
+    },
+    {
+      "url": "https://memlia.fr/a-propos",
+      "status": 200,
+      "final_url": "https://memlia.fr/a-propos?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/a-propos"
+      ],
+      "title": "À propos de Memlia : le savoir-faire des cabinets, écrit et automatisé",
+      "h1": "Nous écrivons ce que votre cabinet sait faire. Puis nous le faisons tourner.",
+      "internal_link_occurrences": 44,
+      "main_internal_link_occurrences": 8,
+      "commercial_link_occurrences": 28,
+      "main_commercial_link_occurrences": 5,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 3
+    },
+    {
+      "url": "https://memlia.fr/automatisation-cabinet-comptable",
+      "status": 200,
+      "final_url": "https://memlia.fr/automatisation-cabinet-comptable?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/automatisation-cabinet-comptable"
+      ],
+      "title": "Automatisation sur mesure pour cabinet comptable | Memlia",
+      "h1": "Toute tâche répétitive de votre cabinet, écrite puis automatisée.",
+      "internal_link_occurrences": 47,
+      "main_internal_link_occurrences": 11,
+      "commercial_link_occurrences": 28,
+      "main_commercial_link_occurrences": 5,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 3
+    },
+    {
+      "url": "https://memlia.fr/blog",
+      "status": 200,
+      "final_url": "https://memlia.fr/blog?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/blog"
+      ],
+      "title": "Blog Memlia : vérifier et automatiser le travail du cabinet",
+      "h1": "Ce qui se vérifie, ce qui s’automatise, ce qui se décide.",
+      "internal_link_occurrences": 55,
+      "main_internal_link_occurrences": 19,
+      "commercial_link_occurrences": 26,
+      "main_commercial_link_occurrences": 3,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 4
+    },
+    {
+      "url": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+      "status": 200,
+      "final_url": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients"
+      ],
+      "title": "Relance des pièces manquantes en cabinet comptable | Memlia",
+      "h1": "Automatiser la relance des pièces clients manquantes",
+      "internal_link_occurrences": 52,
+      "main_internal_link_occurrences": 16,
+      "commercial_link_occurrences": 28,
+      "main_commercial_link_occurrences": 5,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 4
+    },
+    {
+      "url": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "status": 200,
+      "final_url": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier"
+      ],
+      "title": "Automatisation saisie comptable : les 6 contrôles | Memlia",
+      "h1": "Automatiser la saisie comptable : ce qui reste à vérifier",
+      "internal_link_occurrences": 52,
+      "main_internal_link_occurrences": 16,
+      "commercial_link_occurrences": 28,
+      "main_commercial_link_occurrences": 5,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 4
+    },
+    {
+      "url": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "status": 200,
+      "final_url": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+      ],
+      "title": "Automatisation cabinet comptable : carte des tâches | Memlia",
+      "h1": "Automatiser un cabinet comptable : la carte des tâches",
+      "internal_link_occurrences": 63,
+      "main_internal_link_occurrences": 27,
+      "commercial_link_occurrences": 29,
+      "main_commercial_link_occurrences": 6,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 4
+    },
+    {
+      "url": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "status": 200,
+      "final_url": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn"
+      ],
+      "title": "CRM DSN : lire le compte rendu et ses anomalies | Memlia",
+      "h1": "Comprendre les comptes rendus métier DSN : méthode de lecture",
+      "internal_link_occurrences": 54,
+      "main_internal_link_occurrences": 18,
+      "commercial_link_occurrences": 28,
+      "main_commercial_link_occurrences": 5,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 4
+    },
+    {
+      "url": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "status": 200,
+      "final_url": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+      ],
+      "title": "Contrôle bulletin de paie en cabinet : avant la DSN | Memlia",
+      "h1": "Comment contrôler les bulletins de paie avant la DSN ?",
+      "internal_link_occurrences": 53,
+      "main_internal_link_occurrences": 17,
+      "commercial_link_occurrences": 28,
+      "main_commercial_link_occurrences": 5,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 4
+    },
+    {
+      "url": "https://memlia.fr/blog/la-plateforme-que-personne-n-a-achetee",
+      "status": 200,
+      "final_url": "https://memlia.fr/blog/la-plateforme-que-personne-n-a-achetee?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/blog/la-plateforme-que-personne-n-a-achetee"
+      ],
+      "title": "Pourquoi un cabinet n’adopte pas un nouvel outil | Memlia",
+      "h1": "Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec",
+      "internal_link_occurrences": 53,
+      "main_internal_link_occurrences": 17,
+      "commercial_link_occurrences": 28,
+      "main_commercial_link_occurrences": 5,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 4
+    },
+    {
+      "url": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+      "status": 200,
+      "final_url": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel"
+      ],
+      "title": "Tableau de bord paie Excel : suivre sans surveiller | Memlia",
+      "h1": "Suivre la production sociale dans Excel : modèle, règles et limites",
+      "internal_link_occurrences": 52,
+      "main_internal_link_occurrences": 16,
+      "commercial_link_occurrences": 28,
+      "main_commercial_link_occurrences": 5,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 4
+    },
+    {
+      "url": "https://memlia.fr/contact",
+      "status": 200,
+      "final_url": "https://memlia.fr/contact?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/contact"
+      ],
+      "title": "Confier une première tâche | Contact Memlia",
+      "h1": "Quelle tâche vos collaborateurs refont-ils encore à la main ?",
+      "internal_link_occurrences": 42,
+      "main_internal_link_occurrences": 6,
+      "commercial_link_occurrences": 27,
+      "main_commercial_link_occurrences": 4,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 2
+    },
+    {
+      "url": "https://memlia.fr/garanties",
+      "status": 200,
+      "final_url": "https://memlia.fr/garanties?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/garanties"
+      ],
+      "title": "Ce que Memlia garantit | Garanties",
+      "h1": "Ce que nous garantissons, avant même de commencer.",
+      "internal_link_occurrences": 43,
+      "main_internal_link_occurrences": 7,
+      "commercial_link_occurrences": 27,
+      "main_commercial_link_occurrences": 4,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 2
+    },
+    {
+      "url": "https://memlia.fr/glossaire",
+      "status": 200,
+      "final_url": "https://memlia.fr/glossaire?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/glossaire"
+      ],
+      "title": "Glossaire des tâches et contrôles du cabinet | Memlia",
+      "h1": "Glossaire des tâches et contrôles du cabinet.",
+      "internal_link_occurrences": 304,
+      "main_internal_link_occurrences": 268,
+      "commercial_link_occurrences": 82,
+      "main_commercial_link_occurrences": 59,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 2
+    },
+    {
+      "url": "https://memlia.fr/methode",
+      "status": 200,
+      "final_url": "https://memlia.fr/methode?__memlia_probe=1789865520879",
+      "cf_cache_status": "DYNAMIC",
+      "age": null,
+      "x_robots_tag": null,
+      "meta_robots": [
+        "index, follow, max-image-preview:large"
+      ],
+      "canonical": [
+        "https://memlia.fr/methode"
+      ],
+      "title": "Comment se déroule une mission Memlia | Méthode",
+      "h1": "Observer. Écrire. Éprouver. Livrer.",
+      "internal_link_occurrences": 44,
+      "main_internal_link_occurrences": 8,
+      "commercial_link_occurrences": 29,
+      "main_commercial_link_occurrences": 6,
+      "organization_definitions": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        }
+      ],
+      "organization_reference_count": 2
+    }
+  ]
+}

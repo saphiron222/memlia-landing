@@ -3,11 +3,11 @@
   "sources": [
     {
       "path": "docs/design/site-v2-proofs/index.html",
-      "sha256": "6141a1639c23a301319917e2d22742c227c608782aa5933c5eb1baf14345486c"
+      "sha256": "ca36f1f5fee750885815c112df36df99b9319afd0a7fcba60796f45b536ab24b"
     },
     {
       "path": "docs/design/site-v2-proofs/styles.css",
-      "sha256": "788066cc6b3ee95720d42825ceebab8adeb97e7c0d4be4326b36e53f25ef72a5"
+      "sha256": "5863db73b7a1f4fd601d7c3edbbdf91bf140513b78835d954828c1dcd13a888a"
     },
     {
       "path": "docs/design/m4-r1-functional-proofs/styles.css",
@@ -15,7 +15,7 @@
     },
     {
       "path": "docs/design/site-v2-proofs/content-contract.json",
-      "sha256": "1431b79c1d5cf0f31b388a7ca69dad5ca951c60d08f8427dc5f748876bd50f93"
+      "sha256": "7abfb7594940eecb6cb69d84e7e72471152e552c03cba2d5a52cc30735343016"
     },
     {
       "path": "scripts/render-proofs-v2.mjs",
@@ -161,6 +161,36 @@
       "target": "public/proofs/v2/og/18-hero-contact.webp",
       "bytes": 32198,
       "sha256": "ddb98130c56203301b134f24ca72e3e02eba45050e003cca7230e5d559c837fe"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#service-paie",
+      "target": "public/proofs/v2/19-service-paie.webp",
+      "bytes": 44422,
+      "sha256": "586592a4af309d04203a53ea5c347052d1c25b09f8bf129b868d150e28944930"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#service-saisie-comptable",
+      "target": "public/proofs/v2/20-service-saisie-comptable.webp",
+      "bytes": 42284,
+      "sha256": "7efee382a5e4ee8e1abbe623d17736e81b13dc0b87acf27e51f0aac6af21a699"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#service-rapprochement-bancaire",
+      "target": "public/proofs/v2/21-service-rapprochement-bancaire.webp",
+      "bytes": 40792,
+      "sha256": "5d66c25f1c6c31fbca03d3f831b479ab0bd93119aac64ffa9161ae7678adf88e"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#service-notes-de-frais",
+      "target": "public/proofs/v2/22-service-notes-de-frais.webp",
+      "bytes": 37972,
+      "sha256": "b0122165987e9360319c727fdad6ad089f1140f943c961c274807d88732049f8"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#service-factures-fournisseurs",
+      "target": "public/proofs/v2/23-service-factures-fournisseurs.webp",
+      "bytes": 40478,
+      "sha256": "92e9fb553c9185dc33806841dd43bef80dbee63aa0394ba082d096efce2af9ca"
     }
   ]
 }

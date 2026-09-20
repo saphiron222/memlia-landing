@@ -1,0 +1,168 @@
+---
+import Button from '@/components/Button.astro';
+import ProofMedia from '@/components/ProofMedia.astro';
+import type { ProofId } from '@/data/proofs';
+
+interface Props {
+  headline: string;
+  hero: string;
+  cta: { label: string; destination: string };
+  proof: ProofId;
+  preview?: boolean;
+}
+
+const { headline, hero, cta, proof, preview = false } = Astro.props;
+---
+
+<section class="service-hero" data-service-section="hero" data-service-hero aria-labelledby="service-title">
+  <div class="service-hero-inner conteneur">
+    {preview && <p class="preview-temoin" role="status">Page de service en prévisualisation — non indexable</p>}
+    <nav class="ariane" aria-label="Fil d’Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/automatisation-cabinet-comptable">Automatisation</a></li>
+        <li aria-current="page">{headline}</li>
+      </ol>
+    </nav>
+
+    <div class="service-hero-grid">
+      <header class="service-hero-copy">
+        <span class="pastille service-hero-label">Une tâche prise en charge de bout en bout</span>
+        <h1 id="service-title">{headline}</h1>
+        <p class="service-hero-lead">{hero}</p>
+        <div class="service-hero-action">
+          <Button href={cta.destination} variante="principal" picto="fleche">{cta.label}</Button>
+        </div>
+      </header>
+
+      <div class="service-hero-visual coins" data-service-media>
+        <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+        <div class="service-hero-frame">
+          <ProofMedia id={proof} />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-hero {
+    border-bottom: 1px solid var(--ligne-douce);
+    background: var(--surface-feuille);
+  }
+  .service-hero-inner {
+    padding-top: 28px;
+    padding-bottom: 64px;
+  }
+  .preview-temoin {
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    border: 2px solid var(--accent-appui);
+    border-radius: var(--r-boite);
+    color: var(--texte-fort);
+    font-weight: 600;
+    background: var(--accent-voile);
+  }
+  .ariane ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+  }
+  .ariane li + li::before {
+    content: '›';
+    margin-right: 6px;
+    color: var(--picto-repos);
+  }
+  .ariane a {
+    color: var(--texte-2);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .ariane [aria-current] {
+    min-width: 0;
+    color: var(--texte);
+    overflow-wrap: anywhere;
+  }
+  .service-hero-grid {
+    display: grid;
+    gap: 48px;
+    align-items: center;
+    padding-top: 48px;
+  }
+  .service-hero-copy {
+    display: grid;
+    justify-items: start;
+    gap: 20px;
+    min-width: 0;
+  }
+  .service-hero-copy h1 {
+    max-width: 18ch;
+    font-size: var(--t-5xl);
+    line-height: 1.08;
+    animation: service-hero-entry var(--duree-entree) var(--courbe-sortie) both;
+  }
+  .service-hero-label {
+    animation: service-hero-label var(--duree-etiquette) var(--courbe-etiquette) 200ms both;
+  }
+  .service-hero-lead {
+    max-width: 66ch;
+    color: var(--texte-2);
+    font-size: var(--t-lg);
+    line-height: 1.55;
+    animation: service-hero-entry var(--duree-entree) var(--courbe-sortie) 100ms both;
+  }
+  .service-hero-action {
+    animation: service-hero-action var(--duree-entree) var(--courbe-sortie) 200ms both;
+  }
+  .service-hero-visual {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-cadre);
+    background: var(--surface-page);
+    box-shadow: var(--ombre-xs);
+    animation: service-proof-reveal var(--duree-revelation) var(--courbe-douce) both;
+  }
+  .service-hero-frame {
+    overflow: hidden;
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-ecran);
+    background: var(--surface-feuille);
+  }
+  .service-hero-frame :global(figure),
+  .service-hero-frame :global(img) {
+    width: 100%;
+  }
+  @keyframes service-hero-entry {
+    from { opacity: 0; transform: translateY(15px) scale(0.98); filter: blur(7px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+  @keyframes service-hero-label {
+    from { opacity: 0; transform: translateY(-8px) scale(0.8); filter: blur(4px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+  @keyframes service-hero-action {
+    from { opacity: 0; transform: translateY(20px); filter: blur(3px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+  @keyframes service-proof-reveal {
+    from { opacity: 0; transform: scale(0.98); filter: blur(6px) grayscale(1); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+  @media (min-width: 64rem) {
+    .service-hero-inner {
+      padding-top: 32px;
+      padding-bottom: 96px;
+    }
+    .service-hero-grid {
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: 64px;
+      padding-top: 64px;
+    }
+  }
+</style>
