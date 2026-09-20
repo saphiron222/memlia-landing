@@ -235,10 +235,18 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 3 * len(publies))
         self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 4 * len(publies))
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
-        # Série v2 : treize preuves de section, cinq preuves de tête et cinq scènes propres
-        # aux pages de service ; les cinq images sociales restent sous og/.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 23)
-        self.assertEqual(sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')), sorted(f'{n}-hero-{s}.webp' for n, s in [(14, 'service'), (15, 'methode'), (16, 'garanties'), (17, 'apropos'), (18, 'contact')]))
+        # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
+        # aux pages de service et quatre scènes propres aux outils. Les neuf images sociales
+        # correspondantes restent sous og/.
+        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 27)
+        self.assertEqual(
+            sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')),
+            sorted([
+                '14-hero-service.webp', '15-hero-methode.webp', '16-hero-garanties.webp',
+                '17-hero-apropos.webp', '18-hero-contact.webp', '24-outils-hub.webp',
+                '25-outil-marge.webp', '26-outil-echeance.webp', '27-outil-rapprochement.webp',
+            ]),
+        )
 
     def test_five_generic_examples_no_product_statuses(self):
         html = (DIST / 'index.html').read_text()
