@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "kind": "facturation-electronique-fe05-fe06-maintenance-seal",
+  "sealedAt": "2026-09-20T17:01:00+01:00",
+  "files": {
+    "docs/strategy/site-v3/mesures/facturation-electronique-fe05-fe06-2026-09-20.json": "d995eaef0a921236921cd8e6d6c4c37340d84575ad6161a04948b9d8e92e4519"
+  },
+  "claims": {
+    "FE-05": {
+      "statement": "Service-Public recommande une procédure qui vérifie chaque facture à réception, la valide si elle est conforme et signale sur la plateforme toute anomalie.",
+      "sha256": "406d676f8471b65f20c6fa0d5ae679b8da4587d1371862ff3b62ef7bee67db6e"
+    },
+    "FE-06": {
+      "statement": "L’annuaire AIFE permet de rechercher une structure afin d’accéder à ses adresses de facturation électronique en cours de validité.",
+      "sha256": "e52b773250d13d6593a5144b7db62d5545e9391397cd11959866023b91a952d4"
+    }
+  }
+}

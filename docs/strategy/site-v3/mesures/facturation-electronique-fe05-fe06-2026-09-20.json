@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "kind": "facturation-electronique-fe05-fe06-maintenance",
+  "measuredAt": "2026-09-20T17:00:06+01:00",
+  "requestPolicy": {
+    "cache": "no-store",
+    "headers": {
+      "accept": "text/html,application/xhtml+xml",
+      "accept-language": "fr-FR,fr;q=0.9",
+      "cache-control": "no-cache, no-store",
+      "pragma": "no-cache",
+      "user-agent": "Mozilla/5.0 (compatible; MemliaRegulatoryWatch/1.0; +https://memlia.fr) AppleWebKit/537.36 Chrome/140 Safari/537.36"
+    },
+    "transportDecision": "Le serveur Urssaf réinitialise la connexion du user-agent MemliaRegulatoryWatch nu mais répond HTTP 200 au même robot identifié sous une signature navigateur compatible ; la veille conserve le nom et l'URL de contact dans cette signature.",
+    "cacheBusterUsedForMeasurement": true
+  },
+  "claimSources": [
+    {
+      "id": "service-public-f39785",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
+      "sourceDate": "2026-08-07",
+      "sourceDateEvidence": "meta[name=date]: modified 2026-08-07",
+      "consultedAt": "2026-09-20T17:00:03+01:00",
+      "httpStatus": 200,
+      "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
+      "rawBodySha256": "037f3a2be0bb87e515f348898e0d3ae3f220d00b965461efc2ed7c7b7935630c",
+      "canonicalSha256": "5d2b82fb9d6142d668c5af21e02d8d4161e6ee480b526fc95781cc2cd808e4b6",
+      "rawHashStatus": "dynamic body includes request-specific values; evidence fragments are the strict baseline",
+      "evidenceScope": "document-text",
+      "claimFragments": [
+        "de vérifier chaque facture dès sa réception",
+        "de la valider lorsqu'elle est conforme",
+        "de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)"
+      ],
+      "evidenceSha256": "d20bc325527c9b913531a41714a156ca02df45c9a027f90122369e57e0874930",
+      "evidencePresent": true
+    },
+    {
+      "id": "aife-annuaire",
+      "url": "https://facturation.chorus-pro.gouv.fr/annuaire/",
+      "sourceDate": "2026-06-18T12:40:50Z",
+      "sourceDateEvidence": "Last-Modified",
+      "consultedAt": "2026-09-20T17:00:04+01:00",
+      "httpStatus": 200,
+      "finalUrl": "https://facturation.chorus-pro.gouv.fr/annuaire/",
+      "rawBodySha256": "2f42ac0b644bd4dcf38608fb1253daf5992baa491b333ac29aa58e6c4b5783df",
+      "canonicalSha256": "8bbdc69920c1dbf9ca75bf3e5825c36c555001217beaa236893de176e6c600b1",
+      "rawHashStatus": "strict",
+      "evidenceScope": "document-source-including-meta-description",
+      "claimFragments": [
+        "L'annuaire de la facturation électronique - Rechercher une structure afin d'accéder à ses adresses de facturation électronique en cours de validité."
+      ],
+      "evidenceSha256": "a24577cd9e2f640bd0e81afb5e48f9a8c267b55258d60db2783ff0848f6255b9",
+      "evidencePresent": true,
+      "interactiveUiStatus": "Le rendu automatisé ne produit pas de texte dans le body ; la métadonnée descriptive officielle du document porte exactement le claim borné."
+    }
+  ],
+  "discoverySources": [
+    {
+      "id": "urssaf-actualites",
+      "url": "https://www.urssaf.fr/accueil/actualites.html",
+      "kind": "primary-news",
+      "cacheBuster": true,
+      "consultedAt": "2026-09-20T17:00:06+01:00",
+      "httpStatus": 200,
+      "finalUrl": "https://www.urssaf.fr/accueil/actualites.html",
+      "rawBodySha256": "59ad03aeb87826a4a21fbcbcf8400418351ab2797250bc24aea6e7762ab66615",
+      "canonicalSha256": "983bf9536aecae2a32300ea22b6b3eab352022fd6fb83dacf6eb13cfda188850",
+      "rawHashStatus": "dynamic news index; HTTP status and required title are the availability baseline",
+      "requiredFragments": [
+        "Actualités - Urssaf.fr"
+      ],
+      "evidenceSha256": "00203d5e6343e9740f37faaf8f9408f3122b557c983eadbac44d8fe62ca4ad93",
+      "previousFailure": "TypeError/ECONNRESET with the bare MemliaRegulatoryWatch user-agent",
+      "officialAlternative": "Same official URL fetched with the identified browser-compatible request profile declared above"
+    }
+  ],
+  "claimMatrix": [
+    {
+      "id": "FE-05",
+      "statement": "Service-Public recommande une procédure qui vérifie chaque facture à réception, la valide si elle est conforme et signale sur la plateforme toute anomalie.",
+      "sourceIds": [
+        "service-public-f39785"
+      ],
+      "verdict": "SOUTIENT",
+      "publicationEligible": true,
+      "condition": "Attribution explicite à Service-Public ; ne jamais présenter cette procédure comme une obligation légale exhaustive.",
+      "reviewStatus": "source-reconciled-non-attested"
+    },
+    {
+      "id": "FE-06",
+      "statement": "L’annuaire AIFE permet de rechercher une structure afin d’accéder à ses adresses de facturation électronique en cours de validité.",
+      "sourceIds": [
+        "aife-annuaire"
+      ],
+      "verdict": "SOUTIENT",
+      "publicationEligible": true,
+      "condition": "Limiter le claim à une structure présente dans l’annuaire ; ne pas ajouter d’exclusion que l’interface AIFE n’affiche pas.",
+      "reviewStatus": "source-reconciled-non-attested"
+    }
+  ],
+  "watchBaseline": {
+    "status": "PASS",
+    "claimSources": 2,
+    "supportedClaims": 2,
+    "closedClaims": 0,
+    "discoverySourcesRecovered": 1,
+    "professionalAttestation": "absent; non-attested is reported and is not a gate",
+    "productionImpact": "Aucun claim FE-05 ou FE-06 n'est devenu faux ; aucune suspension de page n'est requise."
+  }
+}
