@@ -6,9 +6,9 @@ Périmètre : calculateur de marge commerciale, calculateur de date d’échéan
 
 ## Verdict
 
-**PASS technique local.** Les trois outils sont indexables dans le candidat, présents dans le hub, reliés depuis trois contextes rendus, calculés entièrement dans le navigateur et couverts par un témoin réseau/storage qui rougit lorsqu’une requête est injectée.
+**PASS technique local et preview.** Les trois outils sont indexables dans le candidat, présents dans le hub, reliés depuis trois contextes rendus, calculés entièrement dans le navigateur et couverts par un témoin réseau/storage qui rougit lorsqu’une requête est injectée.
 
-Ce verdict ne publie rien et ne vaut pas attestation métier. La prévisualisation Cloudflare et la production restent hors de cette recette.
+Ce verdict ne publie rien en production et ne vaut pas attestation métier. La preview Cloudflare est volontairement protégée par `noindex, nofollow` dans la meta et l’en-tête HTTP.
 
 ## Sources officielles contrôlées
 
@@ -61,10 +61,14 @@ Résultat attendu et observé : **1/1 test en échec, exit 1** après injection 
 ## Commandes de clôture rejouées
 
 ```bash
+npm ci
 npm run check
 npm run lastmod:sync
 npm run build
-QA_URL=http://127.0.0.1:8789 npx playwright test tests/browser/outils.spec.ts --reporter=line
+QA_URL=http://127.0.0.1:8789 npm run test
+NETWORK_GUARD_RED=1 QA_URL=http://127.0.0.1:8789 npx playwright test tests/browser/outils.spec.ts --grep 'le garde détecte' --reporter=line
+npm run preview:prepare
+env -u CLOUDFLARE_API_TOKEN npx wrangler pages deploy .qa/preview-dist --project-name memlia --branch preview-outils-o3
 git diff --check
 ```
 
@@ -73,10 +77,32 @@ git diff --check
 | `npm run check` | 178 fichiers, 0 erreur, 0 avertissement, 12 hints hérités |
 | `npm run lastmod:sync` | 17 pages au registre, 3 pages d’outils redatées |
 | `npm run build` | exit 0 ; 30 pages construites ; 77 tests de preuve Python et 269 tests de scripts verts ; audit ressource QA `PASS` |
-| Playwright ciblé | 17/17 verts |
+| Playwright complet | 140/140 verts, dont 17/17 tests outils |
 | Témoin réseau rouge | 1/1 rouge attendu, exit 1 |
 | `git diff --check` | exit 0 |
 
 Inspection d’écran : captures desktop du hub et des trois outils après action dans `.qa/outils-vague-1/screens/`. Aucun chevauchement, texte tronqué, débordement ou élément masqué observé sur les captures finales ; l’outil de rapprochement reste contenu à 320 px. Les champs HTML natifs `type="date"` conservent la présentation imposée par le navigateur et son système d’exploitation, sans modifier la valeur ISO contrôlée par le moteur.
 
-Les comptes et le commit exact sont consignés dans la passation Kanban ; ce document ne prétend pas prouver un build différent du candidat testé.
+## Preview distante et empreintes
+
+- alias : `https://preview-outils-o3.memlia.pages.dev` ;
+- preview immuable vérifiée : `https://8a75a08e.memlia.pages.dev` ;
+- les quatre routes (hub + trois outils) répondent HTTP 200 sur les deux origines avec une requête `Cache-Control: no-cache`, un canonical `https://memlia.fr/...`, une meta `noindex, nofollow` et `X-Robots-Tag: noindex, nofollow` ;
+- aucun déploiement `main` n’a été exécuté.
+
+| Route | SHA-256 candidat indexable `dist` | SHA-256 preview protégée |
+|---|---|---|
+| Hub | `9fbd86a1032ad1bdb8783911abf05d899184e52214314e83e689ea831d0ae3a2` | `4eb37a357eb84ba9c041a88c2424c2f50f8c8e1e33e25d539473ebac1af74abe` |
+| Marge | `c343bf1a61068bd099c49aa853d9ec93635ebc347ea46f98e9153734891e301f` | `7173630ab3c9e55cca5fe6e006877e527a50ef91470332583b683842591ec0d6` |
+| Échéance | `99385f710e730790e23b3db14adb72151b1378afa34d691c813dcbd7ced3775f` | `ac8ec7cb2c1ffc4d6ab696fefeee251b08504858156692bada15a1cb5048f385` |
+| Rapprochement | `127fb3935b436fab3889fe231e448a32b8dddc4f6d6f87078868898e9698471b` | `2dcfcf0530f885085b9c8ab6bab454587fdcd7f2ed856b289402c0176b92903d` |
+
+La différence d’empreinte entre les deux colonnes est bornée par `npm run preview:prepare` : il remplace la meta robots unique et ajoute l’en-tête de preview, sans modifier `dist`.
+
+Suppression de la preview finale :
+
+```bash
+env -u CLOUDFLARE_API_TOKEN npx wrangler pages deployment delete 8a75a08e-66aa-4dae-a083-b002048aece6 --project-name memlia --force
+```
+
+Le commit exact est consigné dans la passation Kanban ; les empreintes ci-dessus portent le candidat réellement construit et la copie de preview réellement déployée.
