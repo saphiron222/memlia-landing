@@ -1,0 +1,455 @@
+{
+  "schemaVersion": 1,
+  "releveLe": "2026-09-20",
+  "regleFigeeAvantLecture": "docs/strategy/site-v3/OUTILS-BOUCLE.md",
+  "fenetreSearchConsole": {
+    "debut": "2026-08-21",
+    "fin": "2026-09-17",
+    "dimensions": [
+      "page"
+    ]
+  },
+  "contexte": {
+    "outilsPubliesLe": "2026-09-20",
+    "finFenetreSearchConsoleAnterieureALaPublication": true,
+    "maillageFooter": "correction t_424e8e25 non présente dans origin/main au moment du relevé"
+  },
+  "instruments": {
+    "searchConsole": {
+      "ok": true,
+      "propriete": "sc-domain:memlia.fr",
+      "ligneAbsenteVautZero": true
+    },
+    "urlInspection": {
+      "ok": true,
+      "summary": {
+        "pass": 0,
+        "fail": 0,
+        "neutral": 3,
+        "error": 0
+      }
+    },
+    "d1Contacts": {
+      "ok": true,
+      "rowsRead": 5
+    },
+    "dataForSeoBacklinks": {
+      "ok": true,
+      "coutUsd": 0.4086,
+      "appels": 17,
+      "coutJournalise": true
+    },
+    "cloudflareEntrees": {
+      "ok": false,
+      "statut": "ND",
+      "motif": "aucun jeton ni export Web Analytics exploitable dans le socle O2"
+    }
+  },
+  "pages": [
+    {
+      "groupe": "outil",
+      "route": "/outils-comptables-gratuits/calculateur-marge-commerciale",
+      "publieeLe": "2026-09-20",
+      "ageJours": 0,
+      "searchConsole": {
+        "mesure": "absence-sur-appel-reussi",
+        "impressions": 0,
+        "clics": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": {
+        "mesure": "requete-d1-reussie",
+        "envois": 0
+      },
+      "entreeCloudflare": {
+        "mesure": "ND",
+        "motif": "aucun jeton ni export Web Analytics exploitable dans le socle O2"
+      },
+      "indexation": {
+        "verdict": "NEUTRAL",
+        "couverture": "URL is unknown to Google",
+        "dernierCrawl": null
+      }
+    },
+    {
+      "groupe": "outil",
+      "route": "/outils-comptables-gratuits/calculateur-date-echeance-facture",
+      "publieeLe": "2026-09-20",
+      "ageJours": 0,
+      "searchConsole": {
+        "mesure": "absence-sur-appel-reussi",
+        "impressions": 0,
+        "clics": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": {
+        "mesure": "requete-d1-reussie",
+        "envois": 0
+      },
+      "entreeCloudflare": {
+        "mesure": "ND",
+        "motif": "aucun jeton ni export Web Analytics exploitable dans le socle O2"
+      },
+      "indexation": {
+        "verdict": "NEUTRAL",
+        "couverture": "URL is unknown to Google",
+        "dernierCrawl": null
+      }
+    },
+    {
+      "groupe": "outil",
+      "route": "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit",
+      "publieeLe": "2026-09-20",
+      "ageJours": 0,
+      "searchConsole": {
+        "mesure": "absence-sur-appel-reussi",
+        "impressions": 0,
+        "clics": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": {
+        "mesure": "requete-d1-reussie",
+        "envois": 0
+      },
+      "entreeCloudflare": {
+        "mesure": "ND",
+        "motif": "aucun jeton ni export Web Analytics exploitable dans le socle O2"
+      },
+      "indexation": {
+        "verdict": "NEUTRAL",
+        "couverture": "URL is unknown to Google",
+        "dernierCrawl": null
+      }
+    },
+    {
+      "groupe": "service",
+      "route": "/automatisation-cabinet-comptable",
+      "publieeLe": "2026-09-16",
+      "ageJours": 4,
+      "searchConsole": {
+        "mesure": "ligne",
+        "impressions": 1,
+        "clics": 0,
+        "ctr": 0,
+        "position": 6
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "service",
+      "route": "/automatisation/factures-fournisseurs",
+      "publieeLe": "2026-09-20",
+      "ageJours": 0,
+      "searchConsole": {
+        "mesure": "absence-sur-appel-reussi",
+        "impressions": 0,
+        "clics": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "service",
+      "route": "/automatisation/notes-de-frais",
+      "publieeLe": "2026-09-20",
+      "ageJours": 0,
+      "searchConsole": {
+        "mesure": "absence-sur-appel-reussi",
+        "impressions": 0,
+        "clics": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "service",
+      "route": "/automatisation/paie",
+      "publieeLe": "2026-09-20",
+      "ageJours": 0,
+      "searchConsole": {
+        "mesure": "absence-sur-appel-reussi",
+        "impressions": 0,
+        "clics": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "service",
+      "route": "/automatisation/rapprochement-bancaire",
+      "publieeLe": "2026-09-20",
+      "ageJours": 0,
+      "searchConsole": {
+        "mesure": "absence-sur-appel-reussi",
+        "impressions": 0,
+        "clics": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "service",
+      "route": "/automatisation/saisie-comptable",
+      "publieeLe": "2026-09-20",
+      "ageJours": 0,
+      "searchConsole": {
+        "mesure": "absence-sur-appel-reussi",
+        "impressions": 0,
+        "clics": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "article",
+      "route": "/blog/automatiser-la-relance-des-pieces-clients",
+      "publieeLe": "2026-09-16",
+      "ageJours": 4,
+      "searchConsole": {
+        "mesure": "ligne",
+        "impressions": 1,
+        "clics": 0,
+        "ctr": 0,
+        "position": 12
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "article",
+      "route": "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "publieeLe": "2026-09-17",
+      "ageJours": 3,
+      "searchConsole": {
+        "mesure": "ligne",
+        "impressions": 1,
+        "clics": 0,
+        "ctr": 0,
+        "position": 28
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "article",
+      "route": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "publieeLe": "2026-09-16",
+      "ageJours": 4,
+      "searchConsole": {
+        "mesure": "ligne",
+        "impressions": 1,
+        "clics": 0,
+        "ctr": 0,
+        "position": 9
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "article",
+      "route": "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "publieeLe": "2026-09-15",
+      "ageJours": 5,
+      "searchConsole": {
+        "mesure": "ligne",
+        "impressions": 9,
+        "clics": 1,
+        "ctr": 11.11,
+        "position": 6.3
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "article",
+      "route": "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "publieeLe": "2026-09-09",
+      "ageJours": 11,
+      "searchConsole": {
+        "mesure": "ligne",
+        "impressions": 18,
+        "clics": 0,
+        "ctr": 0,
+        "position": 3.9
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "article",
+      "route": "/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+      "publieeLe": "2026-09-19",
+      "ageJours": 1,
+      "searchConsole": {
+        "mesure": "absence-sur-appel-reussi",
+        "impressions": 0,
+        "clics": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    },
+    {
+      "groupe": "article",
+      "route": "/blog/suivre-la-production-sociale-dans-excel",
+      "publieeLe": "2026-09-09",
+      "ageJours": 11,
+      "searchConsole": {
+        "mesure": "ligne",
+        "impressions": 4,
+        "clics": 0,
+        "ctr": 0,
+        "position": 4.8
+      },
+      "backlinks": {
+        "mesure": "aucun-resultat-dans-index",
+        "domainesReferents": 0,
+        "liens": 0
+      },
+      "contact": null,
+      "entreeCloudflare": null,
+      "indexation": null
+    }
+  ],
+  "groupes": {
+    "outil": {
+      "pages": 3,
+      "pagesAvecSignalSearch": 0,
+      "impressions": 0,
+      "clics": 0,
+      "medianeImpressionsParPage": 0,
+      "domainesReferents": 0,
+      "pagesAvecDomaine": 0,
+      "medianeDomainesParPage": 0
+    },
+    "service": {
+      "pages": 6,
+      "pagesAvecSignalSearch": 1,
+      "impressions": 1,
+      "clics": 0,
+      "medianeImpressionsParPage": 0,
+      "domainesReferents": 0,
+      "pagesAvecDomaine": 0,
+      "medianeDomainesParPage": 0
+    },
+    "article": {
+      "pages": 7,
+      "pagesAvecSignalSearch": 6,
+      "impressions": 34,
+      "clics": 1,
+      "medianeImpressionsParPage": 1,
+      "domainesReferents": 0,
+      "pagesAvecDomaine": 0,
+      "medianeDomainesParPage": 0
+    }
+  },
+  "verdict": {
+    "vagueSuivante": "interdite-avant-2026-10-21",
+    "outilsRapportentCeQuiEtaitEspere": "NON-MESURABLE",
+    "raison": "Les trois outils ont été publiés après la fin de la fenêtre Search Console et restent inconnus de Google ; zéro domaine et zéro contact forment le point zéro, pas un verdict d’intérêt.",
+    "autorite": "0 domaine référent sur 3 outils, 0 sur 6 services et 0 sur 7 articles dans l’index DataForSEO interrogé.",
+    "lacune": "La page d’entrée Cloudflare reste ND : le socle O2 ne rend aucune donnée exploitable."
+  }
+}

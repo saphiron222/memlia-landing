@@ -9,7 +9,7 @@ export const OUTIL_CATEGORIES = [
 ] as const;
 
 export type OutilCategory = (typeof OUTIL_CATEGORIES)[number]['id'];
-export type OutilStatus = 'temoin' | 'disponible';
+export type OutilStatus = 'temoin' | 'disponible' | 'suspendu';
 export type OutilServicePage = '/automatisation-cabinet-comptable' | '/automatisation/factures-fournisseurs' | '/automatisation/rapprochement-bancaire' | '/methode';
 
 export interface OutilDefinition {
@@ -22,6 +22,7 @@ export interface OutilDefinition {
   promesse: { entree: string; resultat: string };
   limites: readonly string[];
   mentionLocale: string;
+  suspension?: { motif: string; date: string };
   proof?: ProofId;
   source: {
     nom: string;

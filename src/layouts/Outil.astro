@@ -44,7 +44,7 @@ const graph = {
 };
 ---
 
-<Base titre={outil.title} titreSocial={outil.h1} description={outil.description} chemin={path} noindex={outil.statut === 'temoin'} base="/" csp={csp} socialImage={socialImage}>
+<Base titre={outil.title} titreSocial={outil.h1} description={outil.description} chemin={path} noindex={outil.statut !== 'disponible'} base="/" csp={csp} socialImage={socialImage}>
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
 
   <div class="feuille">
@@ -55,7 +55,7 @@ const graph = {
       eyebrow={outil.proof ? undefined : 'Démonstration technique'}
       titleId="outil-titre"
       ctaHref="#outil-calcul"
-      ctaLabel="Utiliser l’outil"
+      ctaLabel={outil.statut === 'suspendu' ? 'Voir la suspension' : 'Utiliser l’outil'}
       breadcrumbs={[
         { label: 'Accueil', href: '/' },
         { label: 'Outils comptables gratuits', href: OUTILS_HUB_PATH },
@@ -63,8 +63,8 @@ const graph = {
       ]}
     />
     <OutilPromesse entree={outil.promesse.entree} resultat={outil.promesse.resultat} />
-    <OutilZone mentionLocale={outil.mentionLocale} limites={outil.limites}>
-      <slot />
+    <OutilZone mentionLocale={outil.mentionLocale} limites={outil.limites} suspension={outil.suspension}>
+      {outil.statut !== 'suspendu' && <slot />}
     </OutilZone>
     <OutilPreuves source={outil.source} mentionLocale={outil.mentionLocale} refus={outil.limites.at(-1) ?? outil.limites[0]} />
     <OutilGaranties />
