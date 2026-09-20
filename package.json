@@ -19,6 +19,7 @@
     "render:proofs": "node scripts/render-proof-images.mjs",
     "test:proof": "python3 -m unittest discover -s tests/proof -v",
     "test:preview-export": "node --test tests/scripts/prepare-preview.test.mjs",
+    "test:c3-r1": "node --test tests/scripts/c3-r1-validator.test.mjs",
     "test:scripts": "node scripts/test-scripts.mjs",
     "test:indexability": "node scripts/verify-production-indexability.mjs",
     "test:blog-pipeline": "npm run test:blog-pipeline:unit && npm run test:blog-pipeline:render",
