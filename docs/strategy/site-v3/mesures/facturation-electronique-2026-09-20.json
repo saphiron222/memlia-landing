@@ -1,0 +1,271 @@
+{
+  "version": 1,
+  "measuredAt": "2026-09-20",
+  "market": {
+    "locationCode": 2250,
+    "languageCode": "fr",
+    "device": "desktop"
+  },
+  "instruments": {
+    "autocomplete": "Google Suggest via scripts/lib/seo-instruments.mjs::autocompleterGoogle",
+    "serp": "DataForSEO serp_organic_live_advanced",
+    "officialSources": "live HTTP with MemliaBlogSourceVerifier/1.0; SHA-256 on fetched body"
+  },
+  "coverage": {
+    "autocompleteProbes": 42,
+    "autocompleteResponses": 42,
+    "autocompleteFailures": 0,
+    "probesWithSuggestions": 16,
+    "probesWithoutSuggestions": 26,
+    "newSerps": 4,
+    "newSerpFailures": 0
+  },
+  "costsUsd": {
+    "newSerpsEstimated": 0.008,
+    "newSerpsActual": 0.014,
+    "gateStatus": "approved",
+    "c1InheritedTotal": 0.70014
+  },
+  "volumeSignals": [
+    {
+      "query": "facturation électronique expert comptable",
+      "monthlyAverageFrance": 50,
+      "peak": {"year": 2026, "month": 3, "volume": 110},
+      "latest": {"year": 2026, "month": 8, "volume": 40},
+      "autocompleteCount": 5,
+      "source": "C1 registre-demande-2026-09-20.json"
+    },
+    {
+      "query": "simulateur facturation électronique",
+      "monthlyAverageFrance": 170,
+      "peak": {"year": 2026, "month": 6, "volume": 1000},
+      "latest": {"year": 2026, "month": 8, "volume": 320},
+      "autocompleteCount": 3,
+      "source": "C1 registre-demande-2026-09-20.json"
+    },
+    {
+      "query": "automatisation factures fournisseurs",
+      "monthlyAverageFrance": 30,
+      "source": "C1 registre-demande-2026-09-20.json"
+    },
+    {
+      "query": "facturation électronique cabinet comptable",
+      "monthlyAverageFrance": null,
+      "volumeStatus": "sous le seuil DataForSEO",
+      "autocompleteCount": 5,
+      "source": "C1 registre-demande-2026-09-20.json"
+    },
+    {
+      "query": "automatisation facturation électronique cabinet comptable",
+      "monthlyAverageFrance": null,
+      "volumeStatus": "sous le seuil DataForSEO",
+      "autocompleteCount": 0,
+      "source": "C1 registre-demande-2026-09-20.json"
+    }
+  ],
+  "autocomplete": {
+    "positive": [
+      {"query": "facturation électronique", "count": 10},
+      {"query": "facturation électronique 2026", "count": 10},
+      {"query": "calendrier facturation électronique", "count": 10},
+      {"query": "obligation facturation électronique", "count": 10},
+      {"query": "facturation électronique cabinet comptable", "count": 3},
+      {"query": "facturation électronique expert comptable", "count": 5},
+      {"query": "plateforme facturation électronique expert comptable", "count": 3},
+      {"query": "plateforme agréée facturation électronique", "count": 10},
+      {"query": "liste plateforme agréée facturation électronique", "count": 7},
+      {"query": "annuaire facturation électronique", "count": 10},
+      {"query": "choisir plateforme agréée facturation électronique", "count": 3},
+      {"query": "facturation électronique petit cabinet comptable", "count": 1, "collapsedTo": "facturation électronique cabinet comptable"},
+      {"query": "facturation électronique collaborateur comptable", "count": 5, "collapsedTo": "facturation électronique expert comptable"},
+      {"query": "convertisseur facture pdf factur-x", "count": 1},
+      {"query": "simulateur facturation électronique", "count": 3},
+      {"query": "checklist facturation électronique", "count": 6, "topSuggestion": "guide facturation électronique"}
+    ],
+    "zero": [
+      "brancher plateforme facturation électronique cabinet comptable",
+      "connecter plateforme facturation électronique logiciel comptable",
+      "facturation électronique pennylane expert comptable",
+      "facturation électronique sage expert comptable",
+      "facturation électronique cegid expert comptable",
+      "facturation électronique acd expert comptable",
+      "facturation électronique myunisoft expert comptable",
+      "facturation électronique quadra expert comptable",
+      "facturation électronique tpe expert comptable",
+      "facturation électronique pme expert comptable",
+      "facturation électronique micro entreprise expert comptable",
+      "facturation électronique grand cabinet",
+      "facturation électronique responsable production",
+      "facturation électronique dirigeant cabinet",
+      "facturation électronique chef de mission",
+      "réception facture électronique cabinet comptable automatisation",
+      "automatiser traitement factures électroniques",
+      "flux facture électronique cabinet comptable",
+      "workflow facturation électronique cabinet comptable",
+      "suivi statuts facture électronique cabinet comptable",
+      "e-reporting cabinet comptable",
+      "factur-x cabinet comptable",
+      "préparer facturation électronique cabinet comptable",
+      "facturation électronique étapes cabinet comptable",
+      "facturation électronique que doit faire cabinet comptable",
+      "plan action facturation électronique cabinet comptable"
+    ]
+  },
+  "serpSignals": {
+    "facturation électronique 2026": {
+      "peopleAlsoAsk": [
+        "Quand la facturation électronique sera-t-elle obligatoire en 2026 ?",
+        "Quelle est la nouvelle loi sur la facturation électronique ?",
+        "Quel est le coût de la facturation électronique en 2026 ?",
+        "Qui n'est pas concerné par la facturation électronique ?"
+      ],
+      "topDomains": ["economie.gouv.fr", "impots.gouv.fr", "entreprendre.service-public.gouv.fr", "urssaf.fr", "bpifrance-creation.fr"],
+      "aiOverview": true
+    },
+    "calendrier facturation électronique": {
+      "peopleAlsoAsk": [
+        "Qui est obligé de facturer électronique en 2026 ?",
+        "Quand la dématérialisation des factures sera-t-elle obligatoire ?",
+        "Quel est le calendrier de facturation électronique pour les TPE ?",
+        "Quelle est la date limite pour la réception des factures électroniques ?"
+      ],
+      "topDomains": ["economie.gouv.fr", "entreprendre.service-public.gouv.fr", "cegid.com", "impots.gouv.fr", "kolecto.fr"],
+      "aiOverview": true
+    },
+    "plateforme agréée facturation électronique": {
+      "peopleAlsoAsk": [
+        "Quelle plateforme est agréée pour la facturation électronique gratuite ?",
+        "Quelles sont les plateformes agréées pour la facturation électronique ?",
+        "Quelle plateforme choisir pour la facturation électronique ?",
+        "Quel est le tarif d'une plateforme agréée ?"
+      ],
+      "topDomains": ["impots.gouv.fr", "entreprendre.service-public.gouv.fr", "kolecto.fr", "blog.tiime.fr", "docaposte.com"],
+      "aiOverview": true
+    },
+    "choisir plateforme agréée facturation électronique": {
+      "peopleAlsoAsk": [
+        "Quelle est la meilleure plateforme de facturation électronique ?",
+        "Quelle plateforme est agréée pour la facturation électronique gratuite ?",
+        "Est-il possible de changer de plateforme agréée ?",
+        "Quelle est la liste des plateformes agréées pour la facturation électronique ?"
+      ],
+      "topDomains": ["entreprendre.service-public.gouv.fr", "impots.gouv.fr", "fiducial.fr", "kolecto.fr", "bpifrance-creation.fr"],
+      "aiOverview": true
+    }
+  },
+  "serpOverlap": [
+    {"a": "facturation électronique expert comptable", "b": "facturation électronique cabinet comptable", "sharedTop10Urls": 6, "decision": "une page pilier, seconde requête secondaire"},
+    {"a": "facturation électronique 2026", "b": "calendrier facturation électronique", "sharedTop10Urls": 2, "decision": "satellite calendrier distinct, lié au pilier"},
+    {"a": "plateforme agréée facturation électronique", "b": "choisir plateforme agréée facturation électronique", "sharedTop10Urls": 2, "decision": "une page de choix ; la liste officielle reste externe"}
+  ],
+  "pagePlan": [
+    {"order": 1, "type": "service", "route": "/automatisation/factures-fournisseurs", "primaryQuery": "automatisation factures fournisseurs", "signal": "30/mois", "intent": "deleguer"},
+    {"order": 2, "type": "blog-pillar", "route": "/blog/facturation-electronique-expert-comptable", "primaryQuery": "facturation électronique expert comptable", "signal": "50/mois, 5 suggestions", "intent": "comprendre-role-cabinet"},
+    {"order": 3, "type": "blog-spoke", "route": "/blog/calendrier-facturation-electronique", "primaryQuery": "calendrier facturation électronique", "signal": "10 suggestions", "intent": "comprendre-calendrier"},
+    {"order": 4, "type": "blog-spoke", "route": "/blog/checklist-de-conformite-avant-le-passage-a-la-facture-electronique", "primaryQuery": "mentions obligatoires facture électronique", "signal": "7 suggestions dans le relevé du 19/09", "intent": "controler"},
+    {"order": 5, "type": "comparatif", "route": "/comparatifs/plateforme-agreee-facturation-electronique", "primaryQuery": "choisir plateforme agréée facturation électronique", "signal": "3 suggestions", "intent": "choisir-brancher"}
+  ],
+  "excludedPages": [
+    {"candidate": "simulateur facturation électronique", "reason": "outil officiel Service-Public en tête ; Memlia le lie au lieu de le dupliquer"},
+    {"candidate": "page par logiciel", "reason": "6/6 sondes logiciel expert-comptable sans suggestion"},
+    {"candidate": "page par rôle", "reason": "les formulations retombent sur expert-comptable ou restent vides"},
+    {"candidate": "page par taille", "reason": "aucune formulation cabinet autonome"},
+    {"candidate": "/automatisation/facturation-electronique", "reason": "requête dédiée sous le seuil et zéro suggestion ; la tâche mesurée est factures fournisseurs"}
+  ],
+  "sourceSnapshots": [
+    {
+      "id": "service-public-f39785",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F39785",
+      "sourceDate": "2026-08-07",
+      "consultedAt": "2026-09-20T02:01:36+01:00",
+      "httpStatus": 200,
+      "rawBodySha256": "6ec2b638a39d7f2b6201e45d8fc611af316a040db8837c16044e0cf344391e09",
+      "previousManifestSha256": "9d38956b2d9633ed8b5f2e25373690aeb361fe8ee9936b5a60c1a6920d26c854",
+      "rawHashStatus": "updated-after-live-read; dynamic body includes request-specific values",
+      "claimExcerptSha256": "415a57f03a39753021830e314efb7e394434444816f62ebde4967d279dfa5d29",
+      "claimExcerpt": "Il convient notamment de mettre en place une procédure permettant : de vérifier chaque facture dès sa réception ; de la valider lorsqu'elle est conforme ; de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)."
+    },
+    {"id": "impots-situation", "url": "https://www.impots.gouv.fr/facturation-electronique-qu-est-ce-que-ca-change-pour-moi", "sourceDate": "2026-09-14", "sourceDateEvidence": "Last-Modified", "consultedAt": "2026-09-20", "httpStatus": 200, "sha256": "0ada8cd241db7607cb2d247fcef62bc62027899b9808e40414fdeb31d7487b05"},
+    {"id": "impots-pa-list", "url": "https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees", "sourceDate": "2026-09-17", "consultedAt": "2026-09-20T02:01:47+01:00", "httpStatus": 200, "sha256": "0d2d755ca534c0d99253c4da0bab9a2b210e86b660ae7c1419101b586f61adc7"},
+    {"id": "impots-pa-guide", "url": "https://www.impots.gouv.fr/facturation-electronique-et-plateformes-agreees", "sourceDate": "2026-09-14", "sourceDateEvidence": "Last-Modified", "consultedAt": "2026-09-20T02:01:48+01:00", "httpStatus": 200, "sha256": "72158f2ea041e9d7c7992c07f4f55f7792d1fe9508be22918ba4f4dee4ef569a"},
+    {"id": "service-public-r74145", "url": "https://entreprendre.service-public.gouv.fr/vosdroits/R74145", "sourceDate": "2026-08-04", "consultedAt": "2026-09-20", "httpStatus": 200, "sha256": "36d17d2be8edc6a0ff6fc626ab78490ea4e002d81687a608dc50cd07011843ce"},
+    {
+      "id": "service-public-r74135",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/R74135",
+      "sourceDate": "2025-10-22",
+      "consultedAt": "2026-09-20T02:01:45+01:00",
+      "httpStatus": 200,
+      "rawBodySha256": "c03ef021656ab210e1e7fabc8518acc618639a491983feb34fe332b0831d955c",
+      "previousManifestSha256": "9e527cb660e4248977dc3be24270b857e3d08b795b8e2faaff87660577ef0d65",
+      "role": "secondary pointer to AIFE; not the claim-bearing primary source"
+    },
+    {
+      "id": "aife-annuaire",
+      "url": "https://facturation.chorus-pro.gouv.fr/annuaire/",
+      "sourceDate": "2026-06-18T12:40:50Z",
+      "sourceDateEvidence": "Last-Modified",
+      "consultedAt": "2026-09-20T02:02:38+01:00",
+      "httpStatus": 200,
+      "rawBodySha256": "2f42ac0b644bd4dcf38608fb1253daf5992baa491b333ac29aa58e6c4b5783df",
+      "claimExcerptSha256": "a24577cd9e2f640bd0e81afb5e48f9a8c267b55258d60db2783ff0848f6255b9",
+      "claimExcerpt": "L'annuaire de la facturation électronique - Rechercher une structure afin d'accéder à ses adresses de facturation électronique en cours de validité.",
+      "population": "structures présentes dans l'annuaire",
+      "displayedExclusions": []
+    },
+    {"id": "impots-simulator-news", "url": "https://www.impots.gouv.fr/actualite/facturation-electronique-mise-disposition-dun-outil-pour-connaitre-vos-futures", "sourceDate": "2025-10-27", "consultedAt": "2026-09-20", "httpStatus": 200, "sha256": "afbc4137665e9f6320b10d00790b88c6066e6992926c0f9589e9f083e72edcfd"},
+    {
+      "id": "dila-legi-20260729-cgi-289-bis",
+      "url": "https://echanges.dila.gouv.fr/OPENDATA/LEGI/LEGI_20260729-223923.tar.gz",
+      "sourceDate": "2026-07-29",
+      "consultedAt": "2026-09-20",
+      "httpStatus": 200,
+      "archiveSha256": "33e0da5a4d086acd2d95b2fbff24eba39db2b3576ba73f91c2fc8e60231309a0",
+      "xmlPath": "20260729-223923/legi/global/code_et_TNC_en_vigueur/code_en_vigueur/LEGI/TEXT/00/00/06/06/95/LEGITEXT000006069577/article/LEGI/ARTI/00/00/53/54/66/LEGIARTI000053546660.xml",
+      "xmlSha256": "b750a0436d418acb28581a5f4ca3300fd5cf879081b20a90080172196a7538ec",
+      "articleId": "LEGIARTI000053546660",
+      "articleNumber": "289 bis",
+      "articleState": "ABROGE_DIFF",
+      "effectiveFrom": "2026-02-21",
+      "effectiveTo": "2222-02-22",
+      "applicabilityNote": "Maintained until reprise by the regulatory measures named in the XML note; independent reviewer must confirm current applicability before publication.",
+      "claimExcerptSha256": "9f8a61b9ab546a11f69a67263bb55d8fda66189ecfdb3717746a79f5f9d0c874",
+      "claimExcerpt": "L'émission, la transmission et la réception des factures électroniques s'effectuent en recourant à une plateforme agréée."
+    },
+    {"id": "legifrance-cgi-289-bis-obsolete-url", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195635", "consultedAt": "2026-09-20", "httpStatus": 403, "contentVerifiedViaCanonical": false, "dilaVersionEnd": "2026-02-21", "publicationEligible": false},
+    {"id": "legifrance-loi-2023-1322-art-91", "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048727444", "consultedAt": "2026-09-20", "httpStatus": 403, "contentVerified": false, "publicationEligible": false},
+    {"id": "legifrance-decret-2026-677", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054499487", "consultedAt": "2026-09-20", "httpStatus": 403, "contentVerified": false, "publicationEligible": false}
+  ],
+  "freshnessRule": {
+    "prePublishTtlHours": 24,
+    "primaryWatch": "weekdays 07:05 Europe/Paris",
+    "secondaryWatch": "weekly Monday",
+    "criticalFields": ["date", "population", "obligation", "threshold", "platformStatus"],
+    "onCriticalChange": "suspend: 503 maintenance, noindex, remove from sitemap until source+review+seal pass",
+    "onFailure": "fail closed",
+    "silenceWithoutChange": true
+  },
+  "review": {
+    "requiredProfile": "metier",
+    "status": "awaiting-independent-review",
+    "claimSourcePairs": ["FE-01", "FE-02", "FE-03", "FE-04", "FE-05", "FE-06"],
+    "professionalAttestation": "absent; report as non-attested, not as a gate",
+    "candidateCounts": {
+      "claims": 6,
+      "SOUTIENT": 4,
+      "SOUTIENT_PARTIELLEMENT": 0,
+      "SOURCE_INACCESSIBLE": 2,
+      "publicationEligible": 4,
+      "publicationIneligible": 2
+    },
+    "legalTextStatus": "partial-primary-route: FE-03 has a DILA XML candidate; FE-01 and FE-02 remain closed because the applicable article 91 was not opened",
+    "aiReviewPass": false,
+    "claims": [
+      {"id": "FE-01", "statement": "la généralisation est effective depuis la date affichée par la DGFiP", "sourceIds": ["impots-situation", "legifrance-loi-2023-1322-art-91"], "verdict": "SOURCE_INACCESSIBLE", "severity": "P1", "publicationEligible": false, "reason": "The doctrine page is open but the applicable primary article 91 remains unreadable; the absolute wording also collapses distinct obligations and populations."},
+      {"id": "FE-02", "statement": "les échéances diffèrent selon la situation de l’entreprise", "sourceIds": ["impots-situation", "legifrance-loi-2023-1322-art-91"], "verdict": "SOURCE_INACCESSIBLE", "severity": "P1", "publicationEligible": false, "reason": "Official doctrine supports the idea, but the applicable primary schedule was not opened in the bounded DILA collection."},
+      {"id": "FE-03", "statement": "L’émission, la transmission et la réception des factures électroniques s’effectuent en recourant à une plateforme agréée.", "sourceIds": ["dila-legi-20260729-cgi-289-bis", "impots-pa-guide"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Independent review must confirm the transitional applicability note before any publication."},
+      {"id": "FE-04", "statement": "la liste officielle en vigueur est celle de la DGFiP, modifiée le 17/09/2026", "sourceIds": ["impots-pa-list"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Link the live DGFiP page, do not copy the list, and distinguish definitive approval from pending interoperability tests."},
+      {"id": "FE-05", "statement": "Service-Public recommande une procédure qui vérifie chaque facture à réception, la valide si elle est conforme et signale sur la plateforme toute anomalie.", "sourceIds": ["service-public-f39785"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Keep explicit attribution to Service-Public; do not describe the procedure as an exhaustive legal obligation."},
+      {"id": "FE-06", "statement": "L’annuaire AIFE permet de rechercher une structure afin d’accéder à ses adresses de facturation électronique en cours de validité.", "sourceIds": ["aife-annuaire", "service-public-r74135"], "verdict": "SOUTIENT", "severity": null, "publicationEligible": true, "condition": "Limit the claim to a structure present in the directory; do not add an exclusion not displayed by the current AIFE interface."}
+    ]
+  }
+}
