@@ -1,5 +1,5 @@
 // @ts-check
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
@@ -11,6 +11,20 @@ import { BLOG, lireArticlesPublies } from './src/data/blog.mjs';
 import { parseBlogPreviewSlugs } from './src/data/blog-visibility.mjs';
 
 const BLOG_PREVIEW_SLUGS = new Set(parseBlogPreviewSlugs(process.env.BLOG_PREVIEW_SLUGS ?? process.env.BLOG_PREVIEW_SLUG));
+
+/**
+ * Une page de service préparée existe dans le rendu pour la preview, mais reste `noindex` et
+ * ne doit pas être découverte par le sitemap. La publication forge seule passe son statut à
+ * `publie`; le filtre lit donc la même source que le layout au lieu d'inférer depuis la route.
+ */
+const SERVICES_PUBLIES = new Set((() => {
+  const dossier = './src/content/services';
+  if (!existsSync(dossier)) return [];
+  return readdirSync(dossier)
+    .filter((nom) => nom.endsWith('.md'))
+    .filter((nom) => /^status:\s*publie\s*$/m.test(readFileSync(`${dossier}/${nom}`, 'utf8')))
+    .map((nom) => `/automatisation/${nom.slice(0, -3)}`);
+})());
 
 /** lastmod par article (dateMiseAJour ou datePublication) : une seule source, le frontmatter. */
 const LASTMOD_BLOG = new Map(lireArticlesPublies().map((a) => [`${SITE.url}${BLOG.chemin}/${a.slug}`, a.lastmod]));
@@ -49,6 +63,7 @@ export default defineConfig({
         const path = new URL(page).pathname.replace(/\/$/, '') || '/';
         if (PAGES_NOINDEX.includes(path)) return false;
         if (BLOG_PREVIEW_SLUGS.has(path.slice(`${BLOG.chemin}/`.length))) return false;
+        if (path.startsWith('/automatisation/') && !SERVICES_PUBLIES.has(path)) return false;
 
         return true;
       },

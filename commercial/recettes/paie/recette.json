@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "paie",
+  "path": "/automatisation/paie",
+  "title": "Automatisation paie : les contrôles restent au pôle social",
+  "tabTitle": "Automatisation paie pour cabinet comptable | Memlia",
+  "ogTitle": "Automatisation paie : les contrôles restent au pôle social",
+  "description": "Confiez la mécanique répétitive autour de la paie : règle écrite, contrôles préparés, écarts visibles et décisions conservées par le pôle social.",
+  "hero": "Nous écrivons avec votre pôle social la règle d’un geste répétitif autour de la paie, puis nous l’automatisons dans ses outils. Les éléments conformes avancent jusqu’à une proposition contrôlable. Une donnée absente, une variation hors règle ou un écart inexpliqué arrête le traitement. Les gestionnaires gardent la correction, la validation et toute décision sur un salarié.",
+  "primaryQuery": "automatisation paie",
+  "secondaryQueries": [
+    "automatiser paie cabinet comptable",
+    "automatisation contrôle paie"
+  ],
+  "intent": "evaluer-service",
+  "family": "paie-social",
+  "verifiedAt": "2026-09-20",
+  "author": "kevin",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact"
+  },
+  "schema": {
+    "headline": "Automatisation paie : les contrôles restent au pôle social",
+    "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
+  },
+  "proof": {
+    "replayedAt": "2026-09-20",
+    "evidencePath": "preuves/rejeu.json"
+  },
+  "incomingLinks": [
+    {
+      "url": "/automatisation-cabinet-comptable",
+      "sourcePath": "src/pages/automatisation-cabinet-comptable.astro",
+      "anchor": "confier un geste répétitif autour de la paie"
+    },
+    {
+      "url": "/methode",
+      "sourcePath": "src/pages/methode.astro",
+      "anchor": "faire recetter un contrôle de paie"
+    },
+    {
+      "url": "/a-propos",
+      "sourcePath": "src/pages/a-propos.astro",
+      "anchor": "confier la mécanique répétitive de la paie"
+    }
+  ]
+}

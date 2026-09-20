@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-09-20",
+  "rule": "Un contrôle couvert et complet produit un état préparé ; une donnée absente ou une variation hors règle arrête le traitement.",
+  "cases": [
+    {
+      "id": "PAIE-COURANT-01",
+      "kind": "courant",
+      "input": { "variablesPresentes": true, "variationDansRegle": true, "situationCouverte": true },
+      "expected": "controle-prepare-sans-ecart",
+      "observed": "controle-prepare-sans-ecart",
+      "decision": "validation-gestionnaire",
+      "pass": true
+    },
+    {
+      "id": "PAIE-LIMITE-01",
+      "kind": "limite",
+      "input": { "variablesPresentes": false, "variationDansRegle": true, "situationCouverte": true },
+      "expected": "arret-donnee-manquante",
+      "observed": "arret-donnee-manquante",
+      "decision": "collecte-ou-decision-humaine",
+      "pass": true
+    },
+    {
+      "id": "PAIE-REFUS-01",
+      "kind": "refus",
+      "input": { "variablesPresentes": true, "variationDansRegle": false, "situationCouverte": true },
+      "expected": "arret-variation-hors-regle",
+      "observed": "arret-variation-hors-regle",
+      "decision": "examen-pole-social",
+      "pass": true
+    }
+  ]
+}

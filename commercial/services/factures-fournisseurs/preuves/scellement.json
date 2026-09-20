@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "kind": "service-publication-scellee",
+  "slug": "factures-fournisseurs",
+  "sealedAt": "2026-09-20T04:49:23.049Z",
+  "files": {
+    "page": {
+      "path": "src/content/services/factures-fournisseurs.md",
+      "bytes": 5474,
+      "sha256": "92eeff6037dedbdb90a975b6f1cfefa8e8db7fdb43bed250fb122dde7684b52e"
+    },
+    "manifest": {
+      "path": "commercial/services/factures-fournisseurs/manifest.json",
+      "bytes": 2321,
+      "sha256": "cca05f654fcd1a8ad354ab9ae5484a2c0c76cf33172d4c138b97a3a8bdb48487"
+    },
+    "recipe": {
+      "path": "commercial/recettes/factures-fournisseurs/recette.json",
+      "bytes": 2124,
+      "sha256": "6958fcc3a8f8ec87fb5ae4b45f716d14450e631eb32a4c776644c58afb734ae1"
+    },
+    "body": {
+      "path": "commercial/recettes/factures-fournisseurs/corps.md",
+      "bytes": 4035,
+      "sha256": "eba04746bf701d79f1a9e0440a03f4d0dd38ba196a6338e86b72cc61f04ae82c"
+    },
+    "review": {
+      "path": "commercial/recettes/factures-fournisseurs/revues.json",
+      "bytes": 467,
+      "sha256": "1851c6da19096eabf08afafbe7f2a9cc02d6dbbcc20bd0c68d09b64090a782f8"
+    },
+    "publication": {
+      "path": "commercial/services/factures-fournisseurs/preuves/publication.json",
+      "bytes": 1399,
+      "sha256": "2456c4265b0083830fe61f971bceebced219eac34618d188aa872b5249bab548"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "kind": "service-publication-scellee",
+  "slug": "saisie-comptable",
+  "sealedAt": "2026-09-20T04:49:22.725Z",
+  "files": {
+    "page": {
+      "path": "src/content/services/saisie-comptable.md",
+      "bytes": 5453,
+      "sha256": "f1bef3194078d0d71101757cefccb798facb11964dbe8b644194134cb7da580a"
+    },
+    "manifest": {
+      "path": "commercial/services/saisie-comptable/manifest.json",
+      "bytes": 2270,
+      "sha256": "751313a72c8b84cd0d22dffc3318f36aaec323d870df68893a44d353b16ef3d0"
+    },
+    "recipe": {
+      "path": "commercial/recettes/saisie-comptable/recette.json",
+      "bytes": 2073,
+      "sha256": "811ae9821ab5c7473c8cc447b99a3ef9c0344fffffedb8b9d38175779b5e9c40"
+    },
+    "body": {
+      "path": "commercial/recettes/saisie-comptable/corps.md",
+      "bytes": 4073,
+      "sha256": "949d1c8932ebd6fb6effcdd2c31aed978a89a54a94ceb2b30e8eabd84149e361"
+    },
+    "review": {
+      "path": "commercial/recettes/saisie-comptable/revues.json",
+      "bytes": 418,
+      "sha256": "87f4b7cf1282a8187a1a8c3d76f762d0462d2c223c0d853d0be4b367e77f4229"
+    },
+    "publication": {
+      "path": "commercial/services/saisie-comptable/preuves/publication.json",
+      "bytes": 1367,
+      "sha256": "42a487b08a8cb1b2b6c27528e1b7936c355e4b7cf473c982f814e598d2e15d46"
+    }
+  }
+}

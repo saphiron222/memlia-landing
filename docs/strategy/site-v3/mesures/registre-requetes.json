@@ -123,6 +123,71 @@
       "publieLe": "2026-09-19",
       "titreOnglet": "Pourquoi un cabinet n’adopte pas un nouvel outil | Memlia",
       "source": "frontmatter"
+    },
+    {
+      "slug": "notes-de-frais",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/notes-de-frais",
+      "requete": "automatisation notes de frais",
+      "secondaires": [
+        "automatisation note de frais",
+        "automatisation de la gestion des notes de frais"
+      ],
+      "famille": "notes-de-frais",
+      "publieLe": "2026-09-20",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "saisie-comptable",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/saisie-comptable",
+      "requete": "saisie automatique comptabilité",
+      "secondaires": [
+        "automatisation saisie comptable OCR",
+        "pré-comptabilisation automatique pièces"
+      ],
+      "famille": "saisie-ocr",
+      "publieLe": "2026-09-20",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "factures-fournisseurs",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/factures-fournisseurs",
+      "requete": "automatisation factures fournisseurs",
+      "secondaires": [
+        "automatiser factures fournisseurs cabinet comptable",
+        "gestion factures d'achat automatique cabinet"
+      ],
+      "famille": "achats-fournisseurs",
+      "publieLe": "2026-09-20",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "rapprochement-bancaire",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/rapprochement-bancaire",
+      "requete": "rapprochement bancaire automatique",
+      "secondaires": [
+        "logiciel rapprochement bancaire cabinet comptable",
+        "vérification relevé bancaire comptabilité automatique"
+      ],
+      "famille": "banque-rapprochement",
+      "publieLe": "2026-09-20",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "paie",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/paie",
+      "requete": "automatisation paie",
+      "secondaires": [
+        "automatiser paie cabinet comptable",
+        "automatisation contrôle paie"
+      ],
+      "famille": "paie-social",
+      "publieLe": "2026-09-20",
+      "source": "recette-service-publiee"
     }
   ]
 }

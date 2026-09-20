@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "notes-de-frais",
+  "path": "/automatisation/notes-de-frais",
+  "status": "publie",
+  "candidateFingerprint": "506c7fbfc7e365d318a4d38ae83183a458fb4c7c6810c19201b5fc0c85c0a75d",
+  "title": "Automatisation notes de frais : la règle reste au cabinet",
+  "tabTitle": "Automatisation notes de frais | Memlia",
+  "ogTitle": "Automatisation notes de frais : la règle reste au cabinet",
+  "headline": "Automatisation notes de frais : la règle reste au cabinet",
+  "description": "Confiez le traitement répétitif des notes de frais : règle écrite, cas fictifs, exceptions visibles et validation conservée par le cabinet.",
+  "hero": "Nous écrivons la règle de traitement de vos notes de frais, puis nous automatisons la préparation dans vos outils. Chaque justificatif lisible suit le circuit prévu. Un doublon, une pièce absente ou un cas hors règle arrête le traitement et remonte au collaborateur. Le cabinet garde la validation et toute décision qui engage le dossier.",
+  "primaryQuery": "automatisation notes de frais",
+  "secondaryQueries": [
+    "automatisation note de frais",
+    "automatisation de la gestion des notes de frais"
+  ],
+  "family": "notes-de-frais",
+  "verifiedAt": "2026-09-20",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact"
+  },
+  "schemaTypes": [
+    "WebPage",
+    "Service",
+    "BreadcrumbList",
+    "Organization",
+    "WebSite"
+  ],
+  "incomingLinks": [
+    {
+      "url": "/automatisation-cabinet-comptable",
+      "sourcePath": "src/pages/automatisation-cabinet-comptable.astro",
+      "anchor": "confier le traitement répétitif des notes de frais"
+    },
+    {
+      "url": "/methode",
+      "sourcePath": "src/pages/methode.astro",
+      "anchor": "rejouer une règle de notes de frais"
+    },
+    {
+      "url": "/garanties",
+      "sourcePath": "src/pages/garanties.astro",
+      "anchor": "éprouver le traitement des notes de frais"
+    }
+  ],
+  "review": {
+    "reviewer": "dev",
+    "reviewedAt": "2026-09-20",
+    "status": "PASS"
+  },
+  "pageSha256": "06c17aa61047f286ded441c04b726fad73539723e4096f359b501e29f5e19116",
+  "seal": "preuves/scellement.json"
+}

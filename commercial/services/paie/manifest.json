@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "paie",
+  "path": "/automatisation/paie",
+  "status": "publie",
+  "candidateFingerprint": "b4ab3ada19111d5c19bf5adc7583b3cf2638a6874244fe624a2e22562eb8dca9",
+  "title": "Automatisation paie : les contrôles restent au pôle social",
+  "tabTitle": "Automatisation paie pour cabinet comptable | Memlia",
+  "ogTitle": "Automatisation paie : les contrôles restent au pôle social",
+  "headline": "Automatisation paie : les contrôles restent au pôle social",
+  "description": "Confiez la mécanique répétitive autour de la paie : règle écrite, contrôles préparés, écarts visibles et décisions conservées par le pôle social.",
+  "hero": "Nous écrivons avec votre pôle social la règle d’un geste répétitif autour de la paie, puis nous l’automatisons dans ses outils. Les éléments conformes avancent jusqu’à une proposition contrôlable. Une donnée absente, une variation hors règle ou un écart inexpliqué arrête le traitement. Les gestionnaires gardent la correction, la validation et toute décision sur un salarié.",
+  "primaryQuery": "automatisation paie",
+  "secondaryQueries": [
+    "automatiser paie cabinet comptable",
+    "automatisation contrôle paie"
+  ],
+  "family": "paie-social",
+  "verifiedAt": "2026-09-20",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact"
+  },
+  "schemaTypes": [
+    "WebPage",
+    "Service",
+    "BreadcrumbList",
+    "Organization",
+    "WebSite"
+  ],
+  "incomingLinks": [
+    {
+      "url": "/automatisation-cabinet-comptable",
+      "sourcePath": "src/pages/automatisation-cabinet-comptable.astro",
+      "anchor": "confier un geste répétitif autour de la paie"
+    },
+    {
+      "url": "/methode",
+      "sourcePath": "src/pages/methode.astro",
+      "anchor": "faire recetter un contrôle de paie"
+    },
+    {
+      "url": "/a-propos",
+      "sourcePath": "src/pages/a-propos.astro",
+      "anchor": "confier la mécanique répétitive de la paie"
+    }
+  ],
+  "review": {
+    "reviewer": "dev",
+    "reviewedAt": "2026-09-20",
+    "status": "PASS"
+  },
+  "pageSha256": "122ef7d629c29a06c4771e30cc904ca70be703bef03fbe6fab71611f46bd5678",
+  "seal": "preuves/scellement.json"
+}

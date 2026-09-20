@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "rapprochement-bancaire",
+  "path": "/automatisation/rapprochement-bancaire",
+  "title": "Rapprochement bancaire automatique : chaque écart reste à décider",
+  "tabTitle": "Rapprochement bancaire automatique | Memlia",
+  "ogTitle": "Rapprochement bancaire automatique : chaque écart reste à décider",
+  "description": "Confiez la préparation du rapprochement bancaire : règles d’appariement écrites, propositions traçables, écarts typés et validation humaine.",
+  "hero": "Nous écrivons vos règles d’appariement puis nous préparons le rapprochement dans vos outils. Un montant, une référence et une période cohérents produisent une proposition. Un paiement groupé, des frais non identifiés ou un écart inexpliqué restent ouverts avec leur motif. Le collaborateur garde la validation, les écritures de régularisation et le jugement sur chaque exception.",
+  "primaryQuery": "rapprochement bancaire automatique",
+  "secondaryQueries": [
+    "logiciel rapprochement bancaire cabinet comptable",
+    "vérification relevé bancaire comptabilité automatique"
+  ],
+  "intent": "evaluer-service",
+  "family": "banque-rapprochement",
+  "verifiedAt": "2026-09-20",
+  "author": "kevin",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact"
+  },
+  "schema": {
+    "headline": "Rapprochement bancaire automatique : chaque écart reste à décider",
+    "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
+  },
+  "proof": {
+    "replayedAt": "2026-09-20",
+    "evidencePath": "preuves/rejeu.json"
+  },
+  "incomingLinks": [
+    {
+      "url": "/automatisation-cabinet-comptable",
+      "sourcePath": "src/pages/automatisation-cabinet-comptable.astro",
+      "anchor": "confier la préparation du rapprochement bancaire"
+    },
+    {
+      "url": "/garanties",
+      "sourcePath": "src/pages/garanties.astro",
+      "anchor": "recetter le rapprochement bancaire"
+    },
+    {
+      "url": "/a-propos",
+      "sourcePath": "src/pages/a-propos.astro",
+      "anchor": "confier le rapprochement bancaire"
+    }
+  ]
+}

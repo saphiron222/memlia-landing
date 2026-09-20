@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-09-20",
+  "rule": "Une note complète produit une proposition ; un doublon probable ou un justificatif absent arrête le traitement.",
+  "cases": [
+    {
+      "id": "NDF-COURANT-01",
+      "kind": "courant",
+      "input": { "justificatif": "lisible", "date": "2026-08-12", "montant": "24,80", "doublonProbable": false },
+      "expected": "proposition-preparee",
+      "observed": "proposition-preparee",
+      "decision": "validation-collaborateur",
+      "pass": true
+    },
+    {
+      "id": "NDF-LIMITE-01",
+      "kind": "limite",
+      "input": { "justificatif": "lisible", "date": "2026-08-12", "montant": "24,80", "doublonProbable": true },
+      "expected": "arret-doublon-probable",
+      "observed": "arret-doublon-probable",
+      "decision": "examen-cabinet",
+      "pass": true
+    },
+    {
+      "id": "NDF-REFUS-01",
+      "kind": "refus",
+      "input": { "justificatif": "absent", "date": "2026-08-18", "montant": "18,40", "doublonProbable": false },
+      "expected": "arret-justificatif-absent",
+      "observed": "arret-justificatif-absent",
+      "decision": "decision-humaine",
+      "pass": true
+    }
+  ]
+}

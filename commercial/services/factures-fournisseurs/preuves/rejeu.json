@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-09-20",
+  "rule": "Une facture lisible couverte produit une proposition ; un doublon probable ou un avoir sans rattachement arrête le flux.",
+  "cases": [
+    {
+      "id": "FOURN-COURANT-01",
+      "kind": "courant",
+      "input": { "type": "facture", "piece": "lisible", "fournisseur": "connu", "doublonProbable": false, "rattachement": "n-a" },
+      "expected": "proposition-preparee",
+      "observed": "proposition-preparee",
+      "decision": "validation-collaborateur",
+      "pass": true
+    },
+    {
+      "id": "FOURN-LIMITE-01",
+      "kind": "limite",
+      "input": { "type": "facture", "piece": "lisible", "fournisseur": "connu", "doublonProbable": true, "rattachement": "n-a" },
+      "expected": "arret-doublon-probable",
+      "observed": "arret-doublon-probable",
+      "decision": "examen-cabinet",
+      "pass": true
+    },
+    {
+      "id": "FOURN-REFUS-01",
+      "kind": "refus",
+      "input": { "type": "avoir", "piece": "lisible", "fournisseur": "connu", "doublonProbable": false, "rattachement": "absent" },
+      "expected": "arret-rattachement-absent",
+      "observed": "arret-rattachement-absent",
+      "decision": "rattachement-humain",
+      "pass": true
+    }
+  ]
+}
