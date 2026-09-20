@@ -104,6 +104,11 @@ Microsoft indique qu’une plage de données liées peut être convertie en [tab
 
 Donnez un nom explicite à la table, par exemple `t_production_sociale`. Les formules peuvent alors référencer `t_production_sociale[etat]` plutôt qu’une plage fixe comme `H2:H500`.
 
+<figure data-blog-proof="social-dictionnaire">
+  <img src="/proofs/blog/social-dictionnaire.webp" alt="Dictionnaire fictif des colonnes de production avec types, exemples et règles de saisie." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif et dictionnaire de colonnes décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
+
 ## Définir des états fermés et leurs transitions
 
 Une colonne d’état libre finit par contenir `OK`, `fait`, `terminé`, `déposé` ou des variantes typographiques qui désignent parfois la même chose. Une liste fermée évite cette ambiguïté.
@@ -153,6 +158,11 @@ La [protection d’une feuille Excel](https://support.microsoft.com/en-us/excel/
 Elle agrège les dossiers par état, période ou échéance. Elle répond à des questions de flux : combien de dossiers attendent des pièces, combien présentent une exception ouverte, combien sont contrôlés mais non déposés ?
 
 La vue n’expose pas un classement par gestionnaire. Une affectation peut être nécessaire dans la saisie pour organiser le travail, mais sa présence ne justifie pas un palmarès individuel.
+
+<figure data-blog-proof="social-vue-agregee">
+  <img src="/proofs/blog/social-vue-agregee.webp" alt="Vue agrégée fictive des dossiers par état et des exceptions, sans donnée nominative." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif de cinq dossiers décrit dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
 
 ## Les indicateurs utiles au flux
 

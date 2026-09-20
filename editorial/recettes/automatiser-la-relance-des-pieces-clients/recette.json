@@ -52,6 +52,22 @@
     "destination": "/contact",
     "outcome": "Nous écrivons la règle de relance de votre cabinet dans vos mots, nous l’automatisons dans votre messagerie et votre classeur de suivi, et vos équipes la recettent sur vos dossiers. Chaque envoi reste validé par une personne. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
   },
+  "inlineProofs": [
+    {
+      "id": "relance-checklist",
+      "insertBeforeHeading": "Brique 2 : le contrôle de complétude",
+      "alt": "Checklist conditionnelle fictive qui déduit les pièces attendues des conditions du dossier.",
+      "source": "jeu d’essai fictif et checklist conditionnelle décrits dans cet article",
+      "capturedAt": "2026-09-20"
+    },
+    {
+      "id": "relance-quatre-etats",
+      "insertBeforeHeading": "Brique 3 : la cadence qui cesse à réception",
+      "alt": "Les quatre états fermés d’une pièce fictive : attendue, reçue, lisible et hors période.",
+      "source": "jeu d’essai fictif et contrôle de complétude décrits dans cet article",
+      "capturedAt": "2026-09-20"
+    }
+  ],
   "image": {
     "heroId": "img-art-relance-des-pieces",
     "alt": "Relance des pièces en diorama 3D : plateau à moitié rempli, checklist cochée, enveloppe devant un portique, dossier à l’écart",

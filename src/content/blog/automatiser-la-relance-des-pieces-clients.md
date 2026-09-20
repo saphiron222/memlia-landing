@@ -94,11 +94,21 @@ La checklist s’écrit une fois par condition, pas une fois par dossier. Quand 
 | Caisse | Journal de caisse de la période | Comptage de fin d’exercice |
 | Emprunt ou immobilisations | Échéance du mois | Tableau d’amortissement, actes d’acquisition |
 
+<figure data-blog-proof="relance-checklist">
+  <img src="/proofs/blog/relance-checklist.webp" alt="Checklist conditionnelle fictive qui déduit les pièces attendues des conditions du dossier." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif et checklist conditionnelle décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
+
 ## Brique 2 : le contrôle de complétude
 
 Une pièce attendue passe par quatre états, et pas trois : attendue, reçue, lisible, hors période. « Reçue » ne suffit pas : un relevé scanné de travers, une facture tronquée, un fichier vide sont reçus et inutilisables. « Hors période » évite l’erreur la plus courante : une pièce d’un autre mois, classée comme reçue, qui laisse croire que la période est complète. Le contrôle de complétude compare, pour chaque dossier et chaque période, la liste attendue et l’état de chaque pièce, et produit une seule chose : la liste de ce qui manque encore.
 
 Ce contrôle est purement déterministe. Il ne juge pas, il compare. C’est ce qui le rend automatisable en toute sécurité : s’il se trompe, c’est que la checklist ou l’état a été mal renseigné, et l’erreur est visible. Il ne déclare jamais un dossier complet de lui-même : la complétude d’une période se valide par une personne, parce que c’est elle qui engage la suite du travail.
+
+<figure data-blog-proof="relance-quatre-etats">
+  <img src="/proofs/blog/relance-quatre-etats.webp" alt="Les quatre états fermés d’une pièce fictive : attendue, reçue, lisible et hors période." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif et contrôle de complétude décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
 
 ## Brique 3 : la cadence qui cesse à réception
 

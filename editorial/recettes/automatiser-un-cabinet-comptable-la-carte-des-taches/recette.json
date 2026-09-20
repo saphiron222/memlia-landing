@@ -53,6 +53,22 @@
     "destination": "/contact",
     "outcome": "Nous écrivons la règle de la tâche que vous choisissez dans vos mots, nous l’automatisons dans les outils que vos équipes utilisent déjà, et elles la recettent sur vos dossiers. La décision reste à vos équipes, à chaque endroit où elle engage le cabinet. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
   },
+  "inlineProofs": [
+    {
+      "id": "carte-douze-poles",
+      "insertBeforeHeading": "Production comptable : de la pièce reçue au bilan livré",
+      "alt": "Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert.",
+      "source": "taxonomie éditoriale versionnée src/data/familles.ts",
+      "capturedAt": "2026-09-20"
+    },
+    {
+      "id": "carte-test-regle",
+      "insertBeforeHeading": "Que ne contient pas cette carte ?",
+      "alt": "Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables.",
+      "source": "test de maturité décrit dans cet article sur la carte des tâches",
+      "capturedAt": "2026-09-20"
+    }
+  ],
   "image": {
     "heroId": "img-art-carte-des-taches",
     "alt": "Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation",

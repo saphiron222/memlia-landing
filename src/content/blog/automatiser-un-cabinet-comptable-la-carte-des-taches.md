@@ -101,6 +101,11 @@ Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. L
 | Méthode et décision humaine | 4 | choisir, écrire la règle, recetter, mesurer | tout ce qui précède |
 | Audit légal | 1 | commissariat aux comptes : famille listée, aucune tâche ouverte | tout |
 
+<figure data-blog-proof="carte-douze-poles">
+  <img src="/proofs/blog/carte-douze-poles.webp" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : taxonomie éditoriale versionnée src/data/familles.ts ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
+
 ## Production comptable : de la pièce reçue au bilan livré
 
 C’est le pôle le plus large, treize familles, parce que c’est là que la répétition est la plus dense. La [collecte et la relance des pièces](/blog/automatiser-la-relance-des-pieces-clients) ouvrent la chaîne : chaque dossier attend, pour chaque période, une liste de pièces qui dépend de son régime. La règle typique tient en trois états, attendu, reçu, lisible, et une cadence de relance qui cesse à réception. [La saisie et la pré-comptabilité](/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier) suivent : lecture des pièces, extraction des champs, pré-imputation, avec un reliquat d’exceptions que la lecture n’a pas su traiter et qui doit remonter plutôt que d’être forcé.
@@ -214,6 +219,11 @@ Quatre familles qui ne produisent rien mais qui décident de tout. Choisir et ca
 |---|---|---|
 | Le jeu d’essai fictif rejoué à chaque changement de règle | La règle écrite, avant son premier passage en recette | Le choix de la tâche par laquelle commencer |
 | La mesure du temps avant et après, sur le même jeu d’essai | La place de chaque validation humaine, écrite dans la règle | La décision d’interrompre ou d’étendre une automatisation |
+
+<figure data-blog-proof="carte-test-regle">
+  <img src="/proofs/blog/carte-test-regle.webp" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : test de maturité décrit dans cet article sur la carte des tâches ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
 
 ## Que ne contient pas cette carte ?
 

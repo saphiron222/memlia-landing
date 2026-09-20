@@ -157,6 +157,11 @@ La recette de cette règle comporte trois cas : pièce cohérente, pièce absent
 
 Un résultat technique sans anomalie bloquante ne prouve pas qu’une absence a été saisie, qu’un maintien est correct ou qu’une régularisation a été décidée sur la bonne période. Si une correction modifie la paie ou le fichier, l’ancien résultat ne couvre plus le candidat : régénérez et retestez.
 
+<figure data-blog-proof="controle-dsn-val">
+  <img src="/proofs/blog/controle-dsn-val.webp" alt="Reconstitution d’un résultat Dsn-Val sur un fichier fictif, avec anomalie bloquante et nouveau test attendu." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif décrit dans cet article, d’après Net-entreprises (<a href="https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/" rel="noopener">https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/</a>) ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
+
 ## Après le dépôt : transformer chaque CRM en action
 
 Cette section ferme la boucle du contrôle avant transmission. Pour distinguer accusé, certificat, bilan et retours des organismes, puis qualifier chaque message, lisez la [méthode de lecture des comptes rendus métier DSN](/blog/comprendre-les-comptes-rendus-metier-dsn).
@@ -178,6 +183,11 @@ Ne confondez pas l’état du workflow avec la gravité du signalement. `Dépos�
 La page officielle sur [la fiabilisation des données de la DSN](https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/) distingue les contrôles avant dépôt et la consultation mensuelle des CRM après dépôt. Elle indique qu’une erreur signalée se corrige en paie, en transmettant une DSN « annule et remplace » « avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant ». En cas d’incompréhension, la même page invite le déclarant à « contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel ».
 
 Cette fenêtre ne suffit pas à décider tous les cas. Son applicabilité dépend du moment, du type de correction et des instructions du retour ou de l’organisme. Le présent guide traite la DSN mensuelle ; il ne transpose pas cette fenêtre aux signalements d’événement ni à d’autres canaux. Dans le doute, gardez l’état bloquant et consultez la documentation ou l’interlocuteur officiel adapté.
+
+<figure data-blog-proof="bulletins-crm">
+  <img src="/proofs/blog/bulletins-crm.webp" alt="Retour CRM fictif relié à son dépôt, sa preuve et une décision humaine à arbitrer." width="1600" height="900" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif décrit dans cet article, d’après Net-entreprises (<a href="https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/" rel="noopener">https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/</a>) ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+</figure>
 
 ## Comment traiter un écart inexpliqué ?
 
