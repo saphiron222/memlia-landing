@@ -7,6 +7,7 @@ import ArticleJsonLd from '@/components/ArticleJsonLd.astro';
 import { SITE, CTA, OG_IMAGE } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { rubriquePourArticle } from '@/data/blog-rubriques.mjs';
+import { lienCommercialPourArticle } from '@/data/blog-commercial-links.mjs';
 import { IMAGES, cheminImage, hauteurPour } from '@/data/images.mjs';
 import { auteurPar, identiteAuteur } from '@/data/auteurs';
 import { isPreviewEntry } from '@/data/blog-visibility.mjs';
@@ -82,6 +83,7 @@ const articleCta = {
   destination: destinationArticle,
   outcome: ctaArticle?.outcome ?? 'Memlia écrit le savoir-faire des cabinets d’expertise comptable et automatise, avec l’IA, la part répétitive du travail : la règle est écrite avec vous, l’automatisation prépare et signale, votre équipe décide. Le premier échange sert à cadrer la tâche, sans rien nous envoyer.',
 };
+const lienCommercial = lienCommercialPourArticle(entree.id);
 ---
 
 <Base titre={data.titreOnglet ?? `${data.titre} | Memlia`} titreSocial={data.titre} description={description} chemin={chemin} noindex={candidatPreview} ogType="article" socialImage={socialImage} base="/">
@@ -181,7 +183,7 @@ const articleCta = {
         <p class="texte-2" data-cta-outcome>{articleCta.outcome}</p>
         <p class="article-pont-actions">
           <Button href={articleCta.destination} variante="principal" picto="fleche">{articleCta.label}</Button>
-          <Button href="/methode" variante="lien">Comprendre notre méthode</Button>
+          <Button href={lienCommercial.href} variante="lien">{lienCommercial.label}</Button>
         </p>
       </aside>
 
