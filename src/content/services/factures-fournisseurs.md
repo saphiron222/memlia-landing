@@ -1,21 +1,25 @@
 ---
-title: "Automatisation factures fournisseurs : les exceptions restent visibles"
-tabTitle: "Automatisation factures fournisseurs | Memlia"
-ogTitle: "Automatisation factures fournisseurs : les exceptions restent visibles"
-description: "Confiez le flux répétitif des factures fournisseurs : règle écrite, doublons et avoirs isolés, propositions contrôlables, validation humaine."
-hero: "Nous écrivons la règle qui relie réception, lecture, contrôle et proposition d’imputation des factures fournisseurs. Les pièces conformes suivent le circuit prévu. Un doublon probable, un avoir, une pièce illisible ou une information manquante est isolé avec son motif. Le cabinet garde l’imputation définitive, le traitement du litige et toute décision de paiement."
-primaryQuery: "automatisation factures fournisseurs"
-secondaryQueries: ["automatiser factures fournisseurs cabinet comptable", "gestion factures d'achat automatique cabinet"]
+title: "Factures fournisseurs des dossiers clients : les exceptions restent visibles"
+tabTitle: "Factures fournisseurs des dossiers clients | Memlia"
+ogTitle: "Factures fournisseurs des dossiers clients : les exceptions restent visibles"
+description: "Confiez les factures fournisseurs des dossiers clients : règle écrite, doublons et avoirs isolés, propositions contrôlables, validation humaine."
+hero: "Nous écrivons la règle qui relie réception, lecture, contrôle et proposition d’imputation des factures fournisseurs de vos dossiers clients. Les pièces conformes suivent le circuit prévu. Un doublon probable, un avoir, une pièce illisible ou une information manquante est isolé avec son motif. Le cabinet garde l’imputation définitive, le traitement du litige et toute décision de paiement."
+primaryQuery: "factures fournisseurs des dossiers clients"
+secondaryQueries: ["automatisation factures fournisseurs", "automatiser factures fournisseurs cabinet comptable"]
+audience:
+  mode: "qualified"
+  qualifier: "dossiers clients"
+  reason: "La tâche reste au premier plan et les dossiers clients distinguent le service du pilier générique comme des équipes comptables d’entreprise."
 intent: evaluer-service
 family: achats-fournisseurs
 verifiedAt: 2026-09-20
 status: publie
-candidateFingerprint: "6773c2d2e287bda3a9d4f6949207f248d0cae25fc68ad6e862ecbe44970eef7a"
+candidateFingerprint: "cd9df3cb053c3136fec02deac5dafa04554d187c5901c63316da0ea30de818bd"
 cta:
   label: "Confier une première tâche"
   destination: "/contact"
 schemaTypes: ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
-headline: "Automatisation factures fournisseurs : les exceptions restent visibles"
+headline: "Factures fournisseurs des dossiers clients : les exceptions restent visibles"
 proof:
   replayedAt: 2026-09-20
   evidencePath: "preuves/rejeu.json"

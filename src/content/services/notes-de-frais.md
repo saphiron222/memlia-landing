@@ -1,21 +1,25 @@
 ---
-title: "Automatisation notes de frais : la règle reste au cabinet"
-tabTitle: "Automatisation notes de frais | Memlia"
-ogTitle: "Automatisation notes de frais : la règle reste au cabinet"
-description: "Confiez le traitement répétitif des notes de frais : règle écrite, cas fictifs, exceptions visibles et validation conservée par le cabinet."
-hero: "Nous écrivons la règle de traitement de vos notes de frais, puis nous automatisons la préparation dans vos outils. Chaque justificatif lisible suit le circuit prévu. Un doublon, une pièce absente ou un cas hors règle arrête le traitement et remonte au collaborateur. Le cabinet garde la validation et toute décision qui engage le dossier."
-primaryQuery: "automatisation notes de frais"
-secondaryQueries: ["automatisation note de frais", "automatisation de la gestion des notes de frais"]
+title: "Notes de frais des clients en cabinet : la validation reste humaine"
+tabTitle: "Notes de frais des clients en cabinet | Memlia"
+ogTitle: "Notes de frais des clients en cabinet : la validation reste humaine"
+description: "Confiez les notes de frais des clients en cabinet : règle écrite, cas fictifs, exceptions visibles et validation conservée par vos équipes."
+hero: "Nous écrivons la règle de traitement des notes de frais de vos clients, puis nous automatisons la préparation dans vos outils. Chaque justificatif lisible suit le circuit prévu. Un doublon, une pièce absente ou un cas hors règle arrête le traitement et remonte au collaborateur. Le cabinet garde la validation et toute décision qui engage le dossier."
+primaryQuery: "notes de frais des clients en cabinet"
+secondaryQueries: ["automatisation notes de frais", "automatisation notes de frais cabinet comptable"]
+audience:
+  mode: "qualified"
+  qualifier: "clients en cabinet"
+  reason: "La mention des clients en cabinet écarte la recherche salariée et distingue cette page du pilier de catégorie."
 intent: evaluer-service
 family: notes-de-frais
 verifiedAt: 2026-09-20
 status: publie
-candidateFingerprint: "506c7fbfc7e365d318a4d38ae83183a458fb4c7c6810c19201b5fc0c85c0a75d"
+candidateFingerprint: "ddf80c583035664d1e89dc1654e3fb1d8450afe4674810bc05b7baaccae4da98"
 cta:
   label: "Confier une première tâche"
   destination: "/contact"
 schemaTypes: ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
-headline: "Automatisation notes de frais : la règle reste au cabinet"
+headline: "Notes de frais des clients en cabinet : la validation reste humaine"
 proof:
   replayedAt: 2026-09-20
   evidencePath: "preuves/rejeu.json"

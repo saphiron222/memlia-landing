@@ -1,10 +1,10 @@
 ---
-titre: "Comment contrôler les bulletins de paie avant la DSN ?"
+titre: "Contrôle bulletin de paie en cabinet : que vérifier avant la DSN ?"
 titreOnglet: "Contrôle bulletin de paie en cabinet : avant la DSN | Memlia"
 resume: "Trois revues à clore sur le fichier exact qui sera transmis : pièces et variables, écarts du bulletin, contrôle technique du fichier. Chaque écart est expliqué, corrigé puis retesté, ou confié à une personne désignée, et la trace se rattache au dernier fichier. Rien ne part sans validation."
 description: "Méthode en trois revues pour contrôler variables, bulletins et fichier DSN, qualifier les écarts et conserver les preuves avant le dépôt."
 datePublication: 2026-09-09
-dateMiseAJour: 2026-09-17
+dateMiseAJour: 2026-09-20
 auteur: kevin
 sujets: [paie, dsn, cabinet, methode]
 motsCles: ["contrôler bulletin de paie avant DSN", "contrôle DSN", "DSN-Val", "compte rendu métier", "checklist paie"]
@@ -23,7 +23,7 @@ tache: "Exécuter et clôturer une revue reproductible des bulletins et du fichi
 preuveRole:
   niveau: hypothese
   source: "preuves/role.json"
-  date: 2026-09-18
+  date: 2026-09-20
 funnel: TOFU
 contentType: searchable
 format: how-to-guide
@@ -33,7 +33,7 @@ proofStatus: verifiee
 proofRequired: "Trois revues décrites avec leur responsable, leur moment, leur critère de blocage et leur preuve ; jeu fictif à trois cas (pièce cohérente, absente, contradictoire) ; tableau à trois colonnes de la frontière ; huit affirmations DSN et paie citées mot pour mot depuis Service-Public et Net-entreprises, ouvertes le jour de la republication."
 reviewRule: "Réviser à chaque changement de version de Dsn-Val ou du cahier technique DSN cité par Net-entreprises, et à la publication de l’article sur la collecte des variables de paie ; relecture des sources à six mois."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-18
+sourcesVerifieesLe: 2026-09-20
 cta:
   label: "Confier cette tâche"
   destination: "/contact"
@@ -45,19 +45,19 @@ sources:
   - editeur: "Service Public"
     titre: "Déclaration sociale nominative (DSN)"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F34059"
-    consulte: 2026-09-18
+    consulte: 2026-09-20
   - editeur: "Net-entreprises"
     titre: "Outils d’auto-contrôle Dsn-Val et brique de contrôle"
     url: "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/"
-    consulte: 2026-09-18
+    consulte: 2026-09-20
   - editeur: "Net-entreprises"
     titre: "Les comptes rendus métiers DSN"
     url: "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/"
-    consulte: 2026-09-18
+    consulte: 2026-09-20
   - editeur: "Net-entreprises"
     titre: "La fiabilisation des données de la DSN"
     url: "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/"
-    consulte: 2026-09-18
+    consulte: 2026-09-20
 ---
 
 ## Réponse directe

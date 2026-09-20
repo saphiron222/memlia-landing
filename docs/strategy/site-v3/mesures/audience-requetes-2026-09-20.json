@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "measuredAt": "2026-09-20T14:19:21.059Z",
+  "market": {
+    "location": "France",
+    "language": "fr",
+    "device": "desktop"
+  },
+  "sources": {
+    "autocomplete": "Google Suggest via scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+    "serp": "DataForSEO /v3/serp/google/organic/live/advanced",
+    "volume": "DataForSEO /v3/keywords_data/google_ads/search_volume/live",
+    "costGate": "approved",
+    "actualCostUsd": 0.28,
+    "costJournal": "docs/strategy/site-v3/mesures/couts-seo.jsonl"
+  },
+  "interpretation": "Une autocomplétion vide et un volume null sont des mesures sous seuil, non une preuve d’absence de lecteur. La sélection arbitre d’abord la bonne audience et l’absence de collision avec le pilier.",
+  "services": [
+    {
+      "slug": "factures-fournisseurs",
+      "variants": [
+        {
+          "family": "naked",
+          "query": "automatisation factures fournisseurs",
+          "autocompleteCount": 1,
+          "monthlyVolume": 30,
+          "serpHolders": ["Ecodocs", "ABBYY", "Yooz", "Flowie", "DIMO Dématérialisation"],
+          "dominantAudience": "directions financières et équipes comptables d’entreprise"
+        },
+        {
+          "family": "category",
+          "query": "automatiser factures fournisseurs cabinet comptable",
+          "autocompleteCount": 0,
+          "monthlyVolume": null,
+          "serpHolders": ["Digitim", "SAP", "Capgemini", "Esker"],
+          "dominantAudience": "entreprises ; le qualificatif générique n’est pas respecté par la SERP"
+        },
+        {
+          "family": "task-qualified",
+          "query": "factures fournisseurs des dossiers clients",
+          "autocompleteCount": 0,
+          "monthlyVolume": null,
+          "serpHolders": ["Regate", "Lexware", "Pennylane", "Hubdoc", "Visma"],
+          "dominantAudience": "mixte, avec logiciels cabinet et entreprise"
+        }
+      ],
+      "selected": "factures fournisseurs des dossiers clients",
+      "decision": "La tâche ouvre le titre ; dossiers clients qualifie le lecteur sans réutiliser la catégorie du pilier."
+    },
+    {
+      "slug": "notes-de-frais",
+      "variants": [
+        {
+          "family": "naked",
+          "query": "automatisation notes de frais",
+          "autocompleteCount": 2,
+          "monthlyVolume": 70,
+          "serpHolders": ["Cleemy", "Factorial", "Spendesk", "Orcarh", "Dext"],
+          "dominantAudience": "RH, salariés et directions financières d’entreprise"
+        },
+        {
+          "family": "category",
+          "query": "automatisation notes de frais cabinet comptable",
+          "autocompleteCount": 0,
+          "monthlyVolume": null,
+          "serpHolders": ["Excilys", "Factorial", "AlloReview", "Ordre des experts-comptables Paris IDF"],
+          "dominantAudience": "mixte ; la catégorie reste peu discriminante"
+        },
+        {
+          "family": "task-qualified",
+          "query": "notes de frais des clients en cabinet",
+          "autocompleteCount": 0,
+          "monthlyVolume": null,
+          "serpHolders": ["Dext", "ClearTax", "Sage Advice", "Je Pilote Mon Entreprise"],
+          "dominantAudience": "mixte, mais les premiers résultats incluent les cabinets"
+        }
+      ],
+      "selected": "notes de frais des clients en cabinet",
+      "decision": "Clients en cabinet exclut la recherche d’un salarié qui cherche à gérer ses propres frais."
+    },
+    {
+      "slug": "rapprochement-bancaire",
+      "variants": [
+        {
+          "family": "naked",
+          "query": "rapprochement bancaire automatique",
+          "autocompleteCount": 6,
+          "monthlyVolume": 20,
+          "serpHolders": ["Axonaut", "Stack", "Agicap", "Sage", "Cegid"],
+          "dominantAudience": "trésorerie et comptabilité d’entreprise"
+        },
+        {
+          "family": "category",
+          "query": "rapprochement bancaire automatique cabinet comptable",
+          "autocompleteCount": 0,
+          "monthlyVolume": null,
+          "serpHolders": ["Sage", "Dougs", "Macompta.fr", "Fulll", "Gest4U"],
+          "dominantAudience": "cabinet et TPE, mieux qualifiée mais collision lexicale avec le pilier"
+        },
+        {
+          "family": "task-qualified",
+          "query": "rapprochement bancaire en cabinet",
+          "autocompleteCount": 0,
+          "monthlyVolume": null,
+          "serpHolders": ["Sage", "Agicap", "Memsoft", "Bench", "Indy"],
+          "dominantAudience": "mixte avec présence de cabinets"
+        }
+      ],
+      "selected": "rapprochement bancaire en cabinet",
+      "decision": "En cabinet garde la tâche intacte et évite de répéter cabinet comptable."
+    },
+    {
+      "slug": "saisie-comptable",
+      "variants": [
+        {
+          "family": "naked",
+          "query": "saisie automatique comptabilité",
+          "autocompleteCount": 1,
+          "monthlyVolume": null,
+          "serpHolders": ["Sage", "Cegid", "ACD", "Pennylane", "Fulll"],
+          "dominantAudience": "mixte entreprise et cabinet"
+        },
+        {
+          "family": "category",
+          "query": "saisie automatique comptabilité cabinet comptable",
+          "autocompleteCount": 0,
+          "monthlyVolume": null,
+          "serpHolders": ["Apogea", "Implid", "Sage"],
+          "dominantAudience": "cabinet, mais la formulation répète la catégorie du pilier"
+        },
+        {
+          "family": "task-qualified",
+          "query": "saisie comptable en cabinet",
+          "autocompleteCount": 0,
+          "monthlyVolume": null,
+          "serpHolders": ["Implid", "ISCA", "Pennylane", "Sage"],
+          "dominantAudience": "cabinet ; Implid tient la première position organique"
+        }
+      ],
+      "selected": "saisie comptable en cabinet",
+      "decision": "La SERP confirme directement l’intention cabinet sans cannibaliser le pilier."
+    },
+    {
+      "slug": "paie",
+      "variants": [
+        {
+          "family": "naked",
+          "query": "automatisation paie",
+          "autocompleteCount": 2,
+          "monthlyVolume": 10,
+          "serpHolders": ["Sage", "Culture RH", "ADP", "Deloitte"],
+          "dominantAudience": "employeurs et directions RH"
+        },
+        {
+          "family": "category",
+          "query": "automatisation paie cabinet comptable",
+          "autocompleteCount": 0,
+          "monthlyVolume": null,
+          "serpHolders": ["La Revue Française de Comptabilité", "La Malle à la Compta", "Sage", "MyUnisoft", "Implid"],
+          "dominantAudience": "cabinet, mais concurrence lexicale avec le pilier"
+        },
+        {
+          "family": "task-qualified",
+          "query": "automatisation paie pôle social",
+          "autocompleteCount": 0,
+          "monthlyVolume": null,
+          "serpHolders": ["Academy Compta", "Afigec", "MyFiteco", "Factorial"],
+          "dominantAudience": "pôles sociaux de cabinets ; Academy Compta tient la première position organique"
+        }
+      ],
+      "selected": "automatisation paie pôle social",
+      "decision": "Pôle social est le bon rôle métier et supprime la concurrence partielle créée par l’ancien onglet « pour cabinet comptable »."
+    }
+  ]
+}
