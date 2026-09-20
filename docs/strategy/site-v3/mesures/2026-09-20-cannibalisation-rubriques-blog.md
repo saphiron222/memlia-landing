@@ -32,7 +32,7 @@ Une liste vide est enregistrée comme mesure ; elle n’est pas interprétée co
 | A-S | `automatiser-la-saisie-comptable-ce-qui-reste-a-verifier` | `automatisation saisie comptable` | distinguer extraction, contrôles et anomalies de saisie |
 | A-R | `automatiser-la-relance-des-pieces-clients` | `relance pièces manquantes cabinet comptable` | organiser la collecte et l’arrêt des relances |
 | A-M | `automatiser-un-cabinet-comptable-la-carte-des-taches` | `automatisation cabinet comptable` | cartographier transversalement les tâches du cabinet |
-| A-E | `la-plateforme-que-personne-n-a-achetee` | `pourquoi les cabinets comptables n’adoptent pas les nouveaux outils` | comprendre un échec d’adoption et sa leçon de cadrage |
+| A-E | `pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils` | `pourquoi les cabinets comptables n’adoptent pas les nouveaux outils` | comprendre un échec d’adoption et sa leçon de cadrage |
 
 ## Analyse de chaque paire
 

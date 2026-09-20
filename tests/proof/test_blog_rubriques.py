@@ -29,7 +29,7 @@ RUBRIQUES = {
 }
 HORS_RUBRIQUE = {
     "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "la-plateforme-que-personne-n-a-achetee",
+    "pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
 }
 
 

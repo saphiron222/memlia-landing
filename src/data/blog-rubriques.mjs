@@ -50,7 +50,7 @@ export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
     date: '2026-09-20',
     raison: 'Article de référence transversal : il relie les familles de tâches de tout le cabinet et ne doit pas être réduit à la paie, à la DSN, à la saisie ou aux pièces.',
   }),
-  'la-plateforme-que-personne-n-a-achetee': Object.freeze({
+  'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils': Object.freeze({
     date: '2026-09-20',
     raison: 'Cicatrice transversale : elle raconte une décision de cadrage et la règle qui en est sortie, pas une tâche appartenant à l’une des deux rubriques.',
   }),

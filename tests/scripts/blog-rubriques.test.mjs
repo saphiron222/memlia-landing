@@ -17,7 +17,7 @@ const ATTACHES = [
 
 const HORS_RUBRIQUE = [
   'automatiser-un-cabinet-comptable-la-carte-des-taches',
-  'la-plateforme-que-personne-n-a-achetee',
+  'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
 ];
 
 const entree = (id, date = '2026-09-20') => ({
@@ -43,7 +43,7 @@ test('la liste de chaque hub vient des entrées visibles et ignore un article ab
     entree('automatiser-la-saisie-comptable-ce-qui-reste-a-verifier', '2026-09-17'),
     entree('automatiser-la-relance-des-pieces-clients', '2026-09-16'),
     entree('automatiser-un-cabinet-comptable-la-carte-des-taches'),
-    entree('la-plateforme-que-personne-n-a-achetee'),
+    entree('pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils'),
   ];
   const rubriques = construireRubriques(visibles);
   assert.equal(rubriques.length, 2);
