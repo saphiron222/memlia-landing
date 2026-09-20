@@ -33,6 +33,8 @@ function routeFromHtml(dist, path) {
 function sourceForRoute(root, route) {
   if (route === '/') return join(root, 'src/pages/index.astro');
   if (route.startsWith('/automatisation/')) return join(root, 'src/pages/automatisation/[slug].astro');
+  if (route.startsWith('/integrations/')) return join(root, 'src/pages/integrations/[slug].astro');
+  if (route === '/integrations') return join(root, 'src/pages/integrations/index.astro');
   if (route.startsWith('/blog/rubrique/')) return join(root, 'src/pages/blog/rubrique/[slug].astro');
   if (route.startsWith('/blog/')) return join(root, 'src/pages/blog/[slug].astro');
   return join(root, 'src/pages', `${route.slice(1)}.astro`);
@@ -241,6 +243,8 @@ function mediaIsOwned(root, provenance, asset, route, references) {
 
 function expectedSchema(route) {
   if (/^\/automatisation\/[^/]+$/.test(route)) return ['WebPage', 'Service', 'Audience', 'BreadcrumbList'];
+  if (/^\/integrations\/[^/]+$/.test(route)) return ['TechArticle', 'WebPage', 'BreadcrumbList'];
+  if (route === '/integrations') return ['CollectionPage', 'ItemList'];
   if (/^\/outils-comptables-gratuits\/[^/]+$/.test(route)) return ['WebPage', 'WebApplication', 'BreadcrumbList'];
   if (route === '/outils-comptables-gratuits') return ['CollectionPage', 'ItemList', 'BreadcrumbList'];
   if (/^\/blog\/rubrique\/[^/]+$/.test(route)) return ['WebPage', 'CollectionPage', 'BreadcrumbList'];
