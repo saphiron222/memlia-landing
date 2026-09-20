@@ -91,20 +91,25 @@ function recette() {
     type: 'service',
     slug: SLUG,
     path: `/automatisation/${SLUG}`,
-    title: 'Automatisation tâche de test : la règle reste au cabinet',
-    tabTitle: 'Automatisation tâche de test | Memlia',
-    ogTitle: 'Automatisation tâche de test : la règle reste au cabinet',
+    title: 'Automatisation tâche de test en cabinet : la règle reste humaine',
+    tabTitle: 'Automatisation tâche de test en cabinet | Memlia',
+    ogTitle: 'Automatisation tâche de test en cabinet : la règle reste humaine',
     description: 'Automatisation d’une tâche de test avec une règle écrite, un rejeu fictif et une validation qui reste au cabinet.',
     hero: 'Nous écrivons avec le cabinet la règle de cette tâche répétitive, puis nous la rejouons sur un jeu fictif. L’automatisation prépare une proposition et signale les cas hors règle ; le collaborateur garde la saisie, la validation et le jugement avant toute écriture dans ses outils.',
-    primaryQuery: 'automatisation tâche de test',
+    primaryQuery: 'automatisation tâche de test en cabinet',
     secondaryQueries: ['tâche de test automatique'],
+    audience: {
+      mode: 'qualified',
+      qualifier: 'en cabinet',
+      reason: 'Le qualificatif filtre les entreprises tout en gardant la tâche au premier plan.',
+    },
     intent: 'evaluer-service',
     family: 'choisir-cadrer',
     verifiedAt: JOUR,
     author: 'kevin',
     cta: { label: 'Confier une première tâche', destination: '/contact' },
     schema: {
-      headline: 'Automatisation tâche de test : la règle reste au cabinet',
+      headline: 'Automatisation tâche de test en cabinet : la règle reste humaine',
       types: ['WebPage', 'Service', 'BreadcrumbList', 'Organization', 'WebSite'],
     },
     proof: { replayedAt: JOUR, evidencePath: 'preuves/rejeu.json' },
@@ -145,7 +150,7 @@ function racineDeTest() {
   writeFileSync(join(root, `docs/strategy/site-v3/mesures/questions-${JOUR}.json`), `${JSON.stringify({
     jour: JOUR,
     autocompletion: {
-      'automatisation tâche de test': [],
+      'automatisation tâche de test en cabinet': [],
       'tâche de test automatique': [],
       'requête déjà prise': [],
     },
@@ -207,6 +212,7 @@ test('chaque porte service refuse son témoin négatif observable', () => {
       ['route', { ...valide, path: '/services/test' }, /automatisation\/.*un seul niveau/i],
       ['quatre surfaces', { ...valide, ogTitle: 'Un autre titre' }, /H1.*og:title.*headline/i],
       ['réponse commerciale', { ...valide, hero: 'Trop court.' }, /réponse commerciale.*40 à 80 mots/i],
+      ['audience', { ...valide, audience: undefined }, /Clause audience.*audience\.mode/i],
       ['sections', valide, /La règle écrite/],
       ['CTA', { ...valide, cta: { label: 'Réserver', destination: '/agenda' } }, /Confier une première tâche.*contact/i],
       ['schéma', { ...valide, schema: { ...valide.schema, types: [...valide.schema.types, 'SoftwareApplication'] } }, /schéma.*SoftwareApplication/i],
@@ -223,6 +229,27 @@ test('chaque porte service refuse son témoin négatif observable', () => {
       const errors = verifierRecetteService({ root, recipe: candidate, body, review: { reviewer: 'marketing', reviewedAt: JOUR, status: 'PASS' }, today: JOUR });
       assert.ok(errors.some((error) => attendu.test(error)), `${nom}:\n${errors.join('\n')}`);
     }
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la clause audience est rouge sur un H1 non qualifié puis verte sur la tâche qualifiée', () => {
+  const root = racineDeTest();
+  try {
+    const valide = recette();
+    const nonQualifie = {
+      ...valide,
+      title: 'Automatisation tâche de test : la règle reste humaine',
+      tabTitle: 'Automatisation tâche de test | Memlia',
+      ogTitle: 'Automatisation tâche de test : la règle reste humaine',
+      schema: { ...valide.schema, headline: 'Automatisation tâche de test : la règle reste humaine' },
+    };
+    const rouge = verifierRecetteService({ root, recipe: nonQualifie, body: CORPS, review: { reviewer: 'marketing', reviewedAt: JOUR, status: 'PASS', observations: ['témoin'] }, today: JOUR });
+    assert.ok(rouge.some((error) => /Clause audience : H1 non qualifié par « en cabinet »/.test(error)), rouge.join('\n'));
+
+    const vert = verifierRecetteService({ root, recipe: valide, body: CORPS, review: { reviewer: 'marketing', reviewedAt: JOUR, status: 'PASS', observations: ['témoin'] }, today: JOUR });
+    assert.equal(vert.some((error) => /Clause audience/.test(error)), false, vert.join('\n'));
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

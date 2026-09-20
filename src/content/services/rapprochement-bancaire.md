@@ -1,21 +1,25 @@
 ---
-title: "Rapprochement bancaire automatique : chaque écart reste à décider"
-tabTitle: "Rapprochement bancaire automatique | Memlia"
-ogTitle: "Rapprochement bancaire automatique : chaque écart reste à décider"
+title: "Rapprochement bancaire en cabinet : chaque écart reste à décider"
+tabTitle: "Rapprochement bancaire en cabinet | Memlia"
+ogTitle: "Rapprochement bancaire en cabinet : chaque écart reste à décider"
 description: "Confiez la préparation du rapprochement bancaire : règles d’appariement écrites, propositions traçables, écarts typés et validation humaine."
 hero: "Nous écrivons vos règles d’appariement puis nous préparons le rapprochement dans vos outils. Un montant, une référence et une période cohérents produisent une proposition. Un paiement groupé, des frais non identifiés ou un écart inexpliqué restent ouverts avec leur motif. Le collaborateur garde la validation, les écritures de régularisation et le jugement sur chaque exception."
-primaryQuery: "rapprochement bancaire automatique"
-secondaryQueries: ["logiciel rapprochement bancaire cabinet comptable", "vérification relevé bancaire comptabilité automatique"]
+primaryQuery: "rapprochement bancaire en cabinet"
+secondaryQueries: ["rapprochement bancaire automatique", "rapprochement bancaire automatique cabinet comptable"]
+audience:
+  mode: "qualified"
+  qualifier: "en cabinet"
+  reason: "En cabinet filtre la recherche de trésorerie d’entreprise sans reprendre la requête générique du pilier."
 intent: evaluer-service
 family: banque-rapprochement
 verifiedAt: 2026-09-20
 status: publie
-candidateFingerprint: "a55922090d78417d0def1e4742a9c3db6f4ab39b1ec4f5fc21beb30fc6fac43b"
+candidateFingerprint: "597d6ed1ea079102545e6c7f74147245c11a85f93f09c24b1f7e603e443a92cc"
 cta:
   label: "Confier une première tâche"
   destination: "/contact"
 schemaTypes: ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
-headline: "Rapprochement bancaire automatique : chaque écart reste à décider"
+headline: "Rapprochement bancaire en cabinet : chaque écart reste à décider"
 proof:
   replayedAt: 2026-09-20
   evidencePath: "preuves/rejeu.json"

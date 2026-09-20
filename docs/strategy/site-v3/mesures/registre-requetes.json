@@ -128,10 +128,12 @@
       "slug": "notes-de-frais",
       "type": "service",
       "url": "https://memlia.fr/automatisation/notes-de-frais",
-      "requete": "automatisation notes de frais",
+      "requete": "notes de frais des clients en cabinet",
       "secondaires": [
         "automatisation note de frais",
-        "automatisation de la gestion des notes de frais"
+        "automatisation de la gestion des notes de frais",
+        "automatisation notes de frais",
+        "automatisation notes de frais cabinet comptable"
       ],
       "famille": "notes-de-frais",
       "publieLe": "2026-09-20",
@@ -141,10 +143,12 @@
       "slug": "saisie-comptable",
       "type": "service",
       "url": "https://memlia.fr/automatisation/saisie-comptable",
-      "requete": "saisie automatique comptabilité",
+      "requete": "saisie comptable en cabinet",
       "secondaires": [
         "automatisation saisie comptable OCR",
-        "pré-comptabilisation automatique pièces"
+        "pré-comptabilisation automatique pièces",
+        "saisie automatique comptabilité",
+        "saisie automatique comptabilité cabinet comptable"
       ],
       "famille": "saisie-ocr",
       "publieLe": "2026-09-20",
@@ -154,10 +158,11 @@
       "slug": "factures-fournisseurs",
       "type": "service",
       "url": "https://memlia.fr/automatisation/factures-fournisseurs",
-      "requete": "automatisation factures fournisseurs",
+      "requete": "factures fournisseurs des dossiers clients",
       "secondaires": [
         "automatiser factures fournisseurs cabinet comptable",
-        "gestion factures d'achat automatique cabinet"
+        "gestion factures d'achat automatique cabinet",
+        "automatisation factures fournisseurs"
       ],
       "famille": "achats-fournisseurs",
       "publieLe": "2026-09-20",
@@ -167,10 +172,12 @@
       "slug": "rapprochement-bancaire",
       "type": "service",
       "url": "https://memlia.fr/automatisation/rapprochement-bancaire",
-      "requete": "rapprochement bancaire automatique",
+      "requete": "rapprochement bancaire en cabinet",
       "secondaires": [
         "logiciel rapprochement bancaire cabinet comptable",
-        "vérification relevé bancaire comptabilité automatique"
+        "vérification relevé bancaire comptabilité automatique",
+        "rapprochement bancaire automatique",
+        "rapprochement bancaire automatique cabinet comptable"
       ],
       "famille": "banque-rapprochement",
       "publieLe": "2026-09-20",
@@ -180,10 +187,12 @@
       "slug": "paie",
       "type": "service",
       "url": "https://memlia.fr/automatisation/paie",
-      "requete": "automatisation paie",
+      "requete": "automatisation paie pôle social",
       "secondaires": [
         "automatiser paie cabinet comptable",
-        "automatisation contrôle paie"
+        "automatisation contrôle paie",
+        "automatisation paie",
+        "automatisation paie cabinet comptable"
       ],
       "famille": "paie-social",
       "publieLe": "2026-09-20",

@@ -3,16 +3,21 @@
   "type": "service",
   "slug": "saisie-comptable",
   "path": "/automatisation/saisie-comptable",
-  "title": "Saisie automatique comptabilité : chaque écriture reste à valider",
-  "tabTitle": "Saisie automatique comptabilité | Memlia",
-  "ogTitle": "Saisie automatique comptabilité : chaque écriture reste à valider",
+  "title": "Saisie comptable en cabinet : chaque écriture reste à valider",
+  "tabTitle": "Saisie comptable en cabinet | Memlia",
+  "ogTitle": "Saisie comptable en cabinet : chaque écriture reste à valider",
   "description": "Confiez la préparation répétitive de la saisie comptable : règle écrite, écritures proposées, anomalies nommées et validation humaine.",
   "hero": "Nous écrivons vos règles d’extraction, d’imputation habituelle et de refus, puis nous préparons les écritures dans vos outils. Une pièce conforme produit une proposition traçable. Une période incohérente, un doublon ou une lecture incertaine rejoint une file d’examen. Le collaborateur garde la saisie définitive, la correction et le jugement comptable.",
-  "primaryQuery": "saisie automatique comptabilité",
+  "primaryQuery": "saisie comptable en cabinet",
   "secondaryQueries": [
-    "automatisation saisie comptable OCR",
-    "pré-comptabilisation automatique pièces"
+    "saisie automatique comptabilité",
+    "saisie automatique comptabilité cabinet comptable"
   ],
+  "audience": {
+    "mode": "qualified",
+    "qualifier": "en cabinet",
+    "reason": "En cabinet qualifie la tâche pour les collaborateurs et sépare la page de la recherche de saisie d’une entreprise."
+  },
   "intent": "evaluer-service",
   "family": "saisie-ocr",
   "verifiedAt": "2026-09-20",
@@ -22,7 +27,7 @@
     "destination": "/contact"
   },
   "schema": {
-    "headline": "Saisie automatique comptabilité : chaque écriture reste à valider",
+    "headline": "Saisie comptable en cabinet : chaque écriture reste à valider",
     "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
   },
   "proof": {
