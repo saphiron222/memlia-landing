@@ -86,7 +86,7 @@ Inspection d’écran : captures desktop du hub et des trois outils après actio
 ## Preview distante et empreintes
 
 - alias : `https://preview-outils-o3.memlia.pages.dev` ;
-- preview immuable vérifiée : `https://8a75a08e.memlia.pages.dev` ;
+- la preview immuable et son identifiant de suppression sont consignés dans la passation Kanban, car Cloudflare ne les attribue qu’après le commit ;
 - les quatre routes (hub + trois outils) répondent HTTP 200 sur les deux origines avec une requête `Cache-Control: no-cache`, un canonical `https://memlia.fr/...`, une meta `noindex, nofollow` et `X-Robots-Tag: noindex, nofollow` ;
 - aucun déploiement `main` n’a été exécuté.
 
@@ -98,11 +98,5 @@ Inspection d’écran : captures desktop du hub et des trois outils après actio
 | Rapprochement | `127fb3935b436fab3889fe231e448a32b8dddc4f6d6f87078868898e9698471b` | `2dcfcf0530f885085b9c8ab6bab454587fdcd7f2ed856b289402c0176b92903d` |
 
 La différence d’empreinte entre les deux colonnes est bornée par `npm run preview:prepare` : il remplace la meta robots unique et ajoute l’en-tête de preview, sans modifier `dist`.
-
-Suppression de la preview finale :
-
-```bash
-env -u CLOUDFLARE_API_TOKEN npx wrangler pages deployment delete 8a75a08e-66aa-4dae-a083-b002048aece6 --project-name memlia --force
-```
 
 Le commit exact est consigné dans la passation Kanban ; les empreintes ci-dessus portent le candidat réellement construit et la copie de preview réellement déployée.
