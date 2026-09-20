@@ -2,7 +2,7 @@
 titre: "Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec"
 titreOnglet: "Pourquoi un cabinet n’adopte pas un nouvel outil | Memlia"
 resume: "J’ai construit une application complète pour remplacer les classeurs d’un cabinet. La personne qui allait s’en servir a dit non, pas au prix mais à l’idée d’abandonner son fichier : j’avais ajouté un outil de plus, et choisi les tâches sans les mesurer."
-description: "Une application finie, évaluée, jamais adoptée : pourquoi ajouter un outil est une erreur de cadrage, et la règle de relevé qui en est sortie."
+description: "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils : un échec réel et la règle de cadrage qui en est sortie."
 datePublication: 2026-09-19
 dateMiseAJour: 2026-09-19
 auteur: kevin

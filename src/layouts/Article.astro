@@ -20,9 +20,12 @@ import type { CollectionEntry } from 'astro:content';
 interface Props {
   entree: CollectionEntry<'blog'>;
   suivants: CollectionEntry<'blog'>[];
+  headings: Array<{ depth: number; slug: string; text: string }>;
 }
-const { entree, suivants } = Astro.props;
+const { entree, suivants, headings } = Astro.props;
 const { data } = entree;
+const sections = headings.filter(({ depth }) => depth === 2);
+const afficherSommaire = sections.length >= 6;
 const chemin = `${BLOG.chemin}/${entree.id}`;
 const auteur = auteurPar(data.auteur);
 const dateMiseAJour = data.dateMiseAJour ?? data.datePublication;
@@ -135,6 +138,16 @@ const articleCta = {
           <span id="en-bref-titre" class="eyebrow">En bref</span>
           <p>{data.resume}</p>
         </aside>
+        {afficherSommaire && (
+          <nav class="article-sommaire" aria-labelledby="sommaire-titre" data-blog-toc>
+            <h2 id="sommaire-titre">Dans cet article</h2>
+            <ol>
+              {sections.map((section) => (
+                <li><a href={`#${section.slug}`}>{section.text}</a></li>
+              ))}
+            </ol>
+          </nav>
+        )}
       </header>
 
       <Picture id={image} sizes="(min-width: 48rem) 720px, 100vw" loading="eager" fetchpriority="high" class="article-couverture" />
@@ -221,6 +234,14 @@ const articleCta = {
     border-radius: var(--r-boite); background: var(--accent-voile);
   }
   .en-bref p { font-size: var(--t-lg); color: var(--texte-fort); line-height: 1.5; }
+  .article-sommaire {
+    display: grid; gap: 14px; padding: 20px 24px; margin-top: 8px;
+    border: 1px solid var(--ligne); border-radius: var(--r-boite); background: var(--surface-page);
+  }
+  .article-sommaire h2 { font-size: var(--t-xl); }
+  .article-sommaire ol { display: grid; gap: 8px; padding-left: 1.25em; list-style: decimal; }
+  .article-sommaire li { padding-left: 4px; color: var(--texte-2); }
+  .article-sommaire a { color: var(--texte-fort); text-decoration: underline; text-decoration-color: var(--ligne-forte); text-underline-offset: 3px; }
   .article-couverture { margin-top: 32px; border-radius: var(--r-carte); overflow: hidden; border: 1px solid var(--ligne-douce); }
   .article-corps { margin-top: 40px; max-width: none; }
   .article-corps :global(h2) { font-size: var(--t-3xl); margin: 2.2em 0 0.6em; }
@@ -279,6 +300,7 @@ const articleCta = {
   .suite-resume { font-size: var(--t-sm); }
   .article-retour { margin-top: 32px; }
   @media (hover: hover) {
+    .article-sommaire a:hover { color: var(--accent-texte); text-decoration-color: currentColor; }
     .suite-lien:hover { border-color: var(--ligne-forte); background: var(--surface-page); }
   }
   @media (min-width: 48rem) {
