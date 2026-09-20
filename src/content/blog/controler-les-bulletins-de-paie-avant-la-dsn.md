@@ -159,7 +159,7 @@ Un résultat technique sans anomalie bloquante ne prouve pas qu’une absence a 
 
 <figure data-blog-proof="controle-dsn-val">
   <img src="/proofs/blog/controle-dsn-val.webp" alt="Reconstitution d’un résultat Dsn-Val sur un fichier fictif, avec anomalie bloquante et nouveau test attendu." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption>Source : jeu d’essai fictif décrit dans cet article, d’après Net-entreprises (<a href="https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/" rel="noopener">https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/</a>) ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+  <figcaption><a href="/proofs/blog/controle-dsn-val.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : jeu d’essai fictif décrit dans cet article, d’après Net-entreprises (<a href="https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/" rel="noopener">https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/</a>) ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Après le dépôt : transformer chaque CRM en action
@@ -186,7 +186,7 @@ Cette fenêtre ne suffit pas à décider tous les cas. Son applicabilité dépen
 
 <figure data-blog-proof="bulletins-crm">
   <img src="/proofs/blog/bulletins-crm.webp" alt="Retour CRM fictif relié à son dépôt, sa preuve et une décision humaine à arbitrer." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption>Source : jeu d’essai fictif décrit dans cet article, d’après Net-entreprises (<a href="https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/" rel="noopener">https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/</a>) ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
+  <figcaption><a href="/proofs/blog/bulletins-crm.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : jeu d’essai fictif décrit dans cet article, d’après Net-entreprises (<a href="https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/" rel="noopener">https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/</a>) ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Comment traiter un écart inexpliqué ?

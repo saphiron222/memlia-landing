@@ -179,6 +179,7 @@ test('les preuves inline sont datées, sourcées et ancrées sans modifier les p
   assert.ok(rendu.includes('Phrase scellée.'));
   assert.ok(rendu.includes('Suite scellée.'));
   assert.match(rendu, /<figure data-blog-proof="preuve-fictive">/);
+  assert.match(rendu, /href="\/proofs\/blog\/preuve-fictive\.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand<\/a>/);
   assert.match(rendu, /Source : jeu d’essai fictif décrit dans l’article ; capture du <time datetime="2026-09-20">20 septembre 2026<\/time>\./);
   assert.ok(rendu.indexOf('data-blog-proof') < rendu.indexOf('## Section cible'));
   assert.deepEqual(unitesRendues(rendu), unitesRendues(corps), 'une figure sourcée est une preuve visuelle, pas une affirmation éditoriale');
