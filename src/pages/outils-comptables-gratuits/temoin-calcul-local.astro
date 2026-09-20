@@ -1,0 +1,11 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import AdditionLocale from '@/components/outils/AdditionLocale.astro';
+import { getOutil } from '@/data/outils';
+
+const outil = getOutil('temoin-calcul-local');
+---
+
+<Outil outil={outil}>
+  <AdditionLocale />
+</Outil>

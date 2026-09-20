@@ -1,0 +1,113 @@
+<form class="addition" data-local-addition novalidate>
+  <div class="addition-champs">
+    <div class="addition-champ">
+      <label for="nombre-a">Premier nombre</label>
+      <input id="nombre-a" name="nombre-a" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex. 10,5" required />
+    </div>
+    <span class="addition-operateur" aria-hidden="true">+</span>
+    <div class="addition-champ">
+      <label for="nombre-b">Deuxième nombre</label>
+      <input id="nombre-b" name="nombre-b" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex. 2,25" required />
+    </div>
+  </div>
+  <button class="btn btn-principal" type="submit">Calculer</button>
+  <p class="addition-erreur" data-error role="alert" hidden></p>
+  <div class="addition-sortie" aria-live="polite" aria-atomic="true">
+    <span>Résultat</span>
+    <strong data-result>En attente du calcul.</strong>
+  </div>
+  <div class="addition-actions">
+    <button class="btn btn-contour" type="button" data-copy disabled>Copier le résultat</button>
+    <button class="btn btn-contour" type="button" data-download disabled>Télécharger le résultat</button>
+  </div>
+  <p class="addition-statut texte-2" data-copy-status aria-live="polite"></p>
+</form>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-local-addition]');
+  const inputA = document.querySelector<HTMLInputElement>('#nombre-a');
+  const inputB = document.querySelector<HTMLInputElement>('#nombre-b');
+  const result = document.querySelector<HTMLElement>('[data-result]');
+  const error = document.querySelector<HTMLElement>('[data-error]');
+  const copy = document.querySelector<HTMLButtonElement>('[data-copy]');
+  const download = document.querySelector<HTMLButtonElement>('[data-download]');
+  const copyStatus = document.querySelector<HTMLElement>('[data-copy-status]');
+  let renderedResult = '';
+
+  const parseLocalNumber = (value: string) => {
+    const normalized = value.trim().replace(/\s/g, '').replace(',', '.');
+    if (!normalized || !/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(normalized)) return null;
+    const number = Number(normalized);
+    return Number.isFinite(number) ? number : null;
+  };
+
+  const resetOutput = () => {
+    renderedResult = '';
+    if (result) result.textContent = 'En attente du calcul.';
+    if (copy) copy.disabled = true;
+    if (download) download.disabled = true;
+    if (copyStatus) copyStatus.textContent = '';
+  };
+
+  if (form && inputA && inputB && result && error && copy && download && copyStatus) {
+    inputA.addEventListener('input', resetOutput);
+    inputB.addEventListener('input', resetOutput);
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const a = parseLocalNumber(inputA.value);
+      const b = parseLocalNumber(inputB.value);
+      if (a === null || b === null) {
+        error.textContent = 'Saisissez deux nombres lisibles, avec une virgule ou un point pour les décimales.';
+        error.hidden = false;
+        resetOutput();
+        return;
+      }
+      error.hidden = true;
+      renderedResult = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 12 }).format(a + b);
+      result.textContent = renderedResult;
+      copy.disabled = false;
+      download.disabled = false;
+    });
+
+    copy.addEventListener('click', async () => {
+      if (!renderedResult) return;
+      try {
+        await navigator.clipboard.writeText(renderedResult);
+        copyStatus.textContent = 'Résultat copié.';
+      } catch {
+        copyStatus.textContent = 'La copie est bloquée par le navigateur. Le résultat reste sélectionnable.';
+      }
+    });
+
+    download.addEventListener('click', () => {
+      if (!renderedResult) return;
+      const blob = new Blob([`Démonstration technique — résultat fictif : ${renderedResult}\n`], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'temoin-calcul-local.txt';
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 0);
+    });
+  }
+</script>
+
+<style>
+  .addition { display: grid; gap: 20px; }
+  .addition-champs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; align-items: end; }
+  .addition-champ { display: grid; gap: 8px; }
+  .addition-champ label { color: var(--texte-fort); font-weight: 600; }
+  .addition-champ input { width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid var(--ligne-forte); border-radius: var(--r-bouton); background: var(--surface-feuille); color: var(--texte-fort); font: inherit; }
+  .addition-operateur { display: none; color: var(--texte-2); font-family: var(--police-display), 'Fraunces Fallback'; font-size: var(--t-3xl); }
+  .addition > .btn-principal { justify-self: start; }
+  .addition-erreur { margin: 0; padding: 12px 14px; border-left: 3px solid var(--rouge); background: var(--rouge-voile); color: var(--rouge); }
+  .addition-sortie { display: grid; gap: 4px; padding: 20px; border: 1px solid var(--ligne); border-radius: var(--r-boite); background: var(--surface-page); }
+  .addition-sortie span { color: var(--texte-2); font-size: var(--t-sm); }
+  .addition-sortie strong { color: var(--texte-fort); font-family: var(--police-chiffres), 'Fraunces Fallback'; font-size: var(--t-3xl); }
+  .addition-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+  .addition-statut { min-height: 1.5em; margin: 0; font-size: var(--t-sm); }
+  @media (min-width: 40rem) {
+    .addition-champs { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+    .addition-operateur { display: block; padding-bottom: 7px; }
+  }
+</style>
