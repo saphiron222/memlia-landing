@@ -115,6 +115,22 @@ def planifier(entrees, publies):
             candidat += timedelta(days=7)
         reserver_cicatrice(e, candidat)
 
+    # Une décision éditoriale peut fixer quelques créneaux ordinaires sans figer tout le calendrier.
+    # Ils sont réservés avant l'ordonnancement automatique afin que la cadence reste fail-closed.
+    for e in entrees:
+        valeur = e.get('datePlanifiee')
+        if not valeur or e.get('serie') == 'cicatrices' or e['slug'] in publies:
+            continue
+        candidat = date.fromisoformat(valeur)
+        if candidat < PREMIER_JOUR or candidat.weekday() not in JOURS_DE_PUBLICATION:
+            raise SystemExit(f"date planifiée hors fenêtre lundi-jeudi : {e['slug']} ({valeur})")
+        if par_jour[candidat] >= PAR_JOUR_MAX or par_semaine[semaine_iso(candidat)] >= PAR_SEMAINE_MAX:
+            raise SystemExit(f"date planifiée au-delà de la cadence : {e['slug']} ({valeur})")
+        e['date'] = valeur
+        e['statut'] = 'planned'
+        par_jour[candidat] += 1
+        par_semaine[semaine_iso(candidat)] += 1
+
     jour = PREMIER_JOUR
     for e in entrees:
         if e.get('serie') == 'cicatrices':
@@ -122,6 +138,8 @@ def planifier(entrees, publies):
         if e['slug'] in publies:
             e['date'] = publies[e['slug']]['date']
             e['statut'] = 'published'
+            continue
+        if e.get('datePlanifiee'):
             continue
         while not (jour.weekday() in JOURS_DE_PUBLICATION and par_jour[jour] < PAR_JOUR_MAX and par_semaine[semaine_iso(jour)] < PAR_SEMAINE_MAX):
             jour += timedelta(days=1)
@@ -143,7 +161,9 @@ def construire():
     backlog = json.loads(BACKLOG.read_text(encoding='utf-8'))
     for i, e in enumerate(backlog):
         e['rang_famille'] = sum(1 for x in backlog[:i] if x['famille'] == e['famille'])
-    pilier = next(e for e in backlog if e['format'] == 'pillar-page')
+    # Le pilier transversal est désigné par son slug : des grappes spécialisées peuvent aussi
+    # employer le gabarit pillar-page sans remplacer le hub éditorial de tout le cabinet.
+    pilier = next(e for e in backlog if e['slug'] == 'automatiser-un-cabinet-comptable-la-carte-des-taches')
     satellites = [e for e in backlog if e is not pilier]
     for slug, famille in FAMILLE_HISTORIQUE.items():
         p = publies.get(slug)
@@ -205,7 +225,9 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         # La série « Cicatrices » (charte §7 ter) prend un créneau mais n'est pas un angle de famille :
         # elle vise la marque, pas une requête, et n'entre donc pas dans le compte des quatre.
         angles = [e for e in membres if not e.get('historique') and not e.get('serie')]
-        attendu = 3 if fid == pilier['famille'] else 4  # le pilier est le quatrième angle de sa famille
+        # La grappe IA est bornée aux trois pages arbitrées le 20/09/2026 : preuve ChatGPT,
+        # catégorie logicielle puis hub. Les déclinaisons outil × pôle/rôle restent des sections.
+        attendu = 3 if fid in {pilier['famille'], 'ia-generative-agents'} else 4
         if len(angles) != attendu:
             erreurs.append(f'{fid} : {len(angles)} angles au lieu de {attendu}')
     for slug in publies:
@@ -222,6 +244,8 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     par_jour, par_semaine = Counter(), Counter()
     for e in ordinaires:
         d = date.fromisoformat(e['date'])
+        if e.get('datePlanifiee') and e['date'] != e['datePlanifiee']:
+            erreurs.append(f"date planifiée non respectée : {e['slug']} ({e['date']} != {e['datePlanifiee']})")
         par_jour[d] += 1
         par_semaine[semaine_iso(d)] += 1
         if d >= PREMIER_JOUR and d.weekday() not in JOURS_DE_PUBLICATION:
