@@ -529,7 +529,8 @@ export function injecterPreuvesInline(corps, preuves = []) {
       const source = preuve.sourceUrl
         ? `${echapperHtml(preuve.source)} (<a href="${echapperHtml(preuve.sourceUrl)}" rel="noopener">${echapperHtml(preuve.sourceUrl)}</a>)`
         : echapperHtml(preuve.source);
-      return `<figure data-blog-proof="${preuve.id}">\n  <img src="/proofs/blog/${preuve.id}.webp" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n  <figcaption>Source : ${source} ; capture du <time datetime="${preuve.capturedAt}">${dateFrLongue(preuve.capturedAt)}</time>.</figcaption>\n</figure>`;
+      const imagePath = `/proofs/blog/${preuve.id}.webp`;
+      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n  <figcaption><a href="${imagePath}" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : ${source} ; capture du <time datetime="${preuve.capturedAt}">${dateFrLongue(preuve.capturedAt)}</time>.</figcaption>\n</figure>`;
     }).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }
