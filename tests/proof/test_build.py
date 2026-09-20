@@ -280,7 +280,7 @@ class BuildProof(unittest.TestCase):
         scripts = re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html)
         self.assertEqual(len(scripts), 1)
         graph = json.loads(scripts[0])['@graph']
-        self.assertEqual([node['@type'] for node in graph], ['Organization', 'WebSite', 'Service', 'FAQPage'])
+        self.assertEqual([node['@type'] for node in graph], ['Organization', 'WebSite', 'WebPage', 'Service', 'FAQPage'])
         service = next(node for node in graph if node['@type'] == 'Service')
         self.assertNotIn('featureList', service)
         self.assertNotIn('offers', service)

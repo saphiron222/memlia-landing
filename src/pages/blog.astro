@@ -34,6 +34,7 @@ const minutes = (corps: string | undefined) => Math.max(1, Math.ceil(compterMots
 const u = `${SITE.url}/`;
 const url = `${SITE.url}${BLOG.chemin}`;
 const auteurs = Object.values(AUTEURS);
+const headline = 'Ce qui se vérifie, ce qui s’automatise, ce qui se décide.';
 
 const graph = {
   '@context': 'https://schema.org',
@@ -45,6 +46,7 @@ const graph = {
       '@id': `${url}#page`,
       url,
       name: BLOG.titre,
+      headline,
       description: BLOG.description,
       inLanguage: SITE.langue,
       isPartOf: { '@id': `${u}#website` },
@@ -75,7 +77,7 @@ const graph = {
 };
 ---
 
-<Base titre={BLOG.titre} description={BLOG.description} chemin={BLOG.chemin} base="/">
+<Base titre={BLOG.titre} titreSocial={headline} description={BLOG.description} chemin={BLOG.chemin} base="/">
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
 
   <div class="feuille blog-feuille">
@@ -87,7 +89,7 @@ const graph = {
         </ol>
       </nav>
       <span class="eyebrow">Blog</span>
-      <h1 id="blog-titre">Ce qui se vérifie, ce qui s’automatise, ce qui se décide.</h1>
+      <h1 id="blog-titre">{headline}</h1>
       <p class="texte-2 lecture blog-intro">
         Le savoir-faire d’un cabinet tient dans des règles que personne n’a écrites. Ces méthodes les écrivent,
         une tâche à la fois : contrôler les bulletins avant la DSN, relancer les pièces, suivre la production
