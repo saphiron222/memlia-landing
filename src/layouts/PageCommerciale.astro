@@ -43,12 +43,18 @@ const actionPrincipale = page.chemin === CTA.principal.href ? CTA.rendezVous : C
 const url = `${SITE.url}${page.chemin}`;
 const preuve = PROOFS[hero];
 const heroSrc = `/proofs/${hero}.webp`;
+const noeudsAvecHeadline = noeuds.map((noeud: any) => {
+  const types = Array.isArray(noeud?.['@type']) ? noeud['@type'] : [noeud?.['@type']];
+  return types.some((type: unknown) => typeof type === 'string' && type.endsWith('Page')) && !noeud.headline
+    ? { ...noeud, headline: page.h1 }
+    : noeud;
+});
 // Le recadrage social 1200 × 630 du même cadre vit sous og/, produit par le même rendu.
 const socialImage = { url: `${SITE.url}/proofs/${hero.replace('v2/', 'v2/og/')}.webp`, width: 1200, height: 630, alt: preuve.alt };
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
-    ...noeuds,
+    ...noeudsAvecHeadline,
     {
       '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`,
       itemListElement: [

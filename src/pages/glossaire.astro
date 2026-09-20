@@ -8,6 +8,7 @@ import { GLOSSARY_BY_ID, GLOSSARY_ENTRIES, GLOSSARY_SOURCES } from '@/data/gloss
 const title = 'Glossaire des tâches et contrôles du cabinet | Memlia';
 const description = 'Des définitions directes, leur contexte d’usage et la limite entre préparation automatisable et décision professionnelle.';
 const path = '/glossaire';
+const headline = 'Glossaire des tâches et contrôles du cabinet.';
 const url = `${SITE.url}${path}`;
 const byLetter = new Map<string, typeof GLOSSARY_ENTRIES>();
 for (const entry of GLOSSARY_ENTRIES) {
@@ -19,7 +20,7 @@ const graph = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'CollectionPage', '@id': `${url}#page`, url, name: title.replace(' | Memlia', ''), description,
+      '@type': 'CollectionPage', '@id': `${url}#page`, url, name: title.replace(' | Memlia', ''), headline, description,
       inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': `${url}#term-set` },
     },
     {
@@ -43,7 +44,7 @@ const graph = {
 };
 ---
 
-<Base titre={title} description={description} chemin={path} base="/">
+<Base titre={title} titreSocial={headline} description={description} chemin={path} base="/">
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
 
   <div class="feuille glossaire-feuille">
@@ -54,7 +55,7 @@ const graph = {
           <li aria-current="page">Glossaire</li>
         </ol>
       </nav>
-      <h1 id="glossaire-titre">Glossaire des tâches et contrôles du cabinet.</h1>
+      <h1 id="glossaire-titre">{headline}</h1>
       <p class="texte-2 lecture glossaire-intro">{description}</p>
     </section>
 

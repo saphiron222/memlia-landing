@@ -18,12 +18,13 @@ import AppelFinal from '@/components/sections/AppelFinal.astro';
  * contrôle humain et garanties. Aucun catalogue public.
  */
 const titre = 'Automatisation IA pour cabinets comptables | Memlia';
+const headline = 'Votre cabinet tourne sur un savoir-faire que personne n’a écrit.';
 const description =
   'Votre cabinet tourne sur un savoir-faire que personne n’a écrit. Memlia l’écrit et en automatise la part répétitive dans vos outils, avec validation humaine.';
 ---
 
-<Base titre={titre} description={description} chemin="/">
-  <JsonLd slot="head" description={description} />
+<Base titre={titre} titreSocial={headline} description={description} chemin="/">
+  <JsonLd slot="head" description={description} headline={headline} />
   <link slot="head" rel="preload" as="image" href="/media/r9/hero-poster-1200.webp" fetchpriority="high" />
 
   <div class="feuille">
