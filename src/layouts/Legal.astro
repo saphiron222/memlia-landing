@@ -12,7 +12,7 @@ interface Props {
 const { titre, description, chemin, h1, miseAJour } = Astro.props;
 ---
 
-<Base titre={titre} description={description} chemin={chemin} noindex base="/">
+<Base titre={titre} titreSocial={h1} description={description} chemin={chemin} noindex base="/">
   <div class="feuille legal-feuille">
     <article class="legal conteneur">
       <a class="btn btn-lien legal-retour" href="/">← Retour à l’accueil</a>

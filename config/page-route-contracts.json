@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "routes": {
+    "/404": {
+      "indexing": "noindex",
+      "role": "technical",
+      "mediaRequired": false,
+      "measuredIntentRequired": false,
+      "schemaTypes": [],
+      "incomingLinkRequired": false
+    },
+    "/contact/erreur": {
+      "indexing": "noindex",
+      "role": "transactional",
+      "mediaRequired": false,
+      "measuredIntentRequired": false,
+      "schemaTypes": [],
+      "incomingLinkRequired": false
+    },
+    "/contact/merci": {
+      "indexing": "noindex",
+      "role": "transactional",
+      "mediaRequired": false,
+      "measuredIntentRequired": false,
+      "schemaTypes": [],
+      "incomingLinkRequired": false
+    },
+    "/mentions-legales": {
+      "indexing": "noindex",
+      "role": "legal",
+      "mediaRequired": false,
+      "measuredIntentRequired": false,
+      "schemaTypes": [],
+      "incomingLinkRequired": true
+    },
+    "/politique-de-confidentialite": {
+      "indexing": "noindex",
+      "role": "legal",
+      "mediaRequired": false,
+      "measuredIntentRequired": false,
+      "schemaTypes": [],
+      "incomingLinkRequired": true
+    },
+    "/outils-comptables-gratuits/temoin-calcul-local": {
+      "indexing": "noindex",
+      "role": "technical",
+      "mediaRequired": false,
+      "measuredIntentRequired": false,
+      "schemaTypes": ["WebPage", "WebApplication", "BreadcrumbList"],
+      "incomingLinkRequired": false
+    }
+  }
+}

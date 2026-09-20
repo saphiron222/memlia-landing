@@ -292,6 +292,12 @@ export function contratsIntention(root) {
   return contrats;
 }
 
+export function contratsRoute(root) {
+  const path = join(root, 'config/page-route-contracts.json');
+  const routes = existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')).routes ?? {} : {};
+  return new Map(Object.entries(routes));
+}
+
 function literalTokenErrors(root) {
   const tokensPath = join(root, 'src/styles/tokens.css');
   if (!existsSync(tokensPath)) return [];
@@ -423,6 +429,7 @@ export function auditerContratPages({
   root = process.cwd(), dist = join(root, 'dist'), exemptions = [], copyVerifier = () => ({ pass: true, errors: [] }),
   intentRoutes = routesAvecIntentionMesuree(root),
   intentContracts = contratsIntention(root),
+  routeContracts = contratsRoute(root),
 } = {}) {
   const paths = walk(dist, (path) => path.endsWith('.html'));
   const pages = paths.map((path) => pageSnapshot(routeFromHtml(dist, path), path)).sort((a, b) => a.route.localeCompare(b.route, 'fr'));
@@ -430,6 +437,13 @@ export function auditerContratPages({
   const erreurs = [];
   const invalidExemptions = validateExemptions(exemptions, routes);
   for (const item of invalidExemptions) erreurs.push({ route: item?.route ?? '/*', clause: 0, message: `${item?.route ?? '/*'} : exemption invalide — route exacte, clauses, date ISO et raison d’au moins 60 caractères requises` });
+  for (const [route, contract] of routeContracts) {
+    const valid = routes.has(route) && contract?.indexing === 'noindex' &&
+      ['technical', 'transactional', 'legal'].includes(contract?.role) &&
+      ['mediaRequired', 'measuredIntentRequired', 'incomingLinkRequired'].every((key) => typeof contract?.[key] === 'boolean') &&
+      Array.isArray(contract?.schemaTypes) && contract.schemaTypes.every((type) => typeof type === 'string' && type.length > 0);
+    if (!valid) erreurs.push({ route, clause: 0, message: `${route} : contrat de route invalide — route servie, noindex, rôle connu, décisions booléennes et schemaTypes requis` });
+  }
 
   for (const detail of literalTokenErrors(root)) erreurs.push(error('/*', 1, detail));
   for (const detail of auditerNavigationMobile({ root }).errors) erreurs.push(error('/*', 1, detail));
@@ -445,6 +459,7 @@ export function auditerContratPages({
   }
 
   for (const page of pages) {
+    const routeContract = routeContracts.get(page.route);
     const sourcePath = sourceForRoute(root, page.route);
     if (!existsSync(sourcePath)) erreurs.push(error(page.route, 1, `source Astro introuvable : ${relative(root, sourcePath)}`));
     else {
@@ -454,7 +469,8 @@ export function auditerContratPages({
     if (!page.main || page.main.childNodes?.length === 0) erreurs.push(error(page.route, 1, 'contenu principal absent ou vide'));
 
     const ownedManifested = page.media.filter((asset) => mediaIsOwned(root, provenance, asset, page.route, mediaOwners));
-    if (ownedManifested.length === 0) {
+    const mediaRequired = routeContract?.mediaRequired ?? true;
+    if (mediaRequired && ownedManifested.length === 0) {
       const shared = page.media.filter((asset) => (mediaOwners.get(asset)?.length ?? 0) > 1);
       const detail = page.media.length === 0
         ? 'aucun média dans le contenu principal'
@@ -464,32 +480,35 @@ export function auditerContratPages({
       erreurs.push(error(page.route, 2, detail));
     }
     const minimumMedia = intentContracts.get(page.route)?.minMedia ?? 1;
-    if (ownedManifested.length > 0 && ownedManifested.length < minimumMedia) {
+    if (mediaRequired && ownedManifested.length > 0 && ownedManifested.length < minimumMedia) {
       erreurs.push(error(page.route, 2, `${ownedManifested.length} média(s) propre(s) manifesté(s), ${minimumMedia} requis par le contrat de cette page`));
     }
 
     const h1 = page.h1s[0];
     const indexable = !page.robots.toLowerCase().includes('noindex');
-    if (!intentRoutes.has(page.route)) erreurs.push(error(page.route, 3, 'aucune requête mesurée ni décision d’intention écrite pour cette route'));
+    if (routeContract?.indexing === 'noindex' && indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige noindex'));
+    const measuredIntentRequired = routeContract?.measuredIntentRequired ?? true;
+    if (measuredIntentRequired && !intentRoutes.has(page.route)) erreurs.push(error(page.route, 3, 'aucune requête mesurée ni décision d’intention écrite pour cette route'));
     if (!page.title) erreurs.push(error(page.route, 3, 'title d’onglet absent'));
     if (page.descriptions.length !== 1 || !page.descriptions[0]) erreurs.push(error(page.route, 3, `${page.descriptions.length} description(s), une description non vide requise`));
     if (page.descriptions.length === 1 && (descriptionOwners.get(page.descriptions[0])?.length ?? 0) > 1) {
       erreurs.push(error(page.route, 3, `description dupliquée avec ${descriptionOwners.get(page.descriptions[0]).filter((route) => route !== page.route).join(', ')}`));
     }
     const intentContract = intentContracts.get(page.route);
-    if (indexable && !isBlogArticle(page.route) && !intentContract) erreurs.push(error(page.route, 3, 'contrat de requête et d’ouverture de description absent'));
-    if (indexable && intentContract && page.descriptions.length === 1 &&
+    if (measuredIntentRequired && indexable && !isBlogArticle(page.route) && !intentContract) erreurs.push(error(page.route, 3, 'contrat de requête et d’ouverture de description absent'));
+    if (measuredIntentRequired && indexable && !isBlogArticle(page.route) && intentContract && page.descriptions.length === 1 &&
         !page.descriptions[0].toLocaleLowerCase('fr').startsWith(String(intentContract.descriptionLead).toLocaleLowerCase('fr'))) {
       erreurs.push(error(page.route, 3, `la description doit ouvrir sur ${JSON.stringify(intentContract.descriptionLead)} pour la requête ${JSON.stringify(intentContract.query)}`));
     }
     if (page.h1s.length !== 1) erreurs.push(error(page.route, 3, `${page.h1s.length} H1, un seul requis`));
     if (page.ogTitles.length !== 1 || !h1 || page.ogTitles[0] !== h1) erreurs.push(error(page.route, 3, `og:title doit être identique au H1 ; H1=${JSON.stringify(h1 ?? null)}, og:title=${JSON.stringify(page.ogTitles[0] ?? null)}`));
     if (page.jsonLd.some((value) => value?.__invalid)) erreurs.push(error(page.route, 3, 'JSON-LD invalide'));
-    if (!h1 || !page.schema.headlines.includes(h1)) erreurs.push(error(page.route, 3, 'headline JSON-LD doit être identique au H1'));
-    if (page.schema.authors === 0) erreurs.push(error(page.route, 3, 'author absent du JSON-LD'));
-    if (page.schema.datesPublished.length === 0) erreurs.push(error(page.route, 3, 'datePublished absente du JSON-LD'));
-    if (page.schema.datesModified.length === 0) erreurs.push(error(page.route, 3, 'dateModified absente du JSON-LD'));
-    for (const type of expectedSchema(page.route)) {
+    const schemaTypes = routeContract?.schemaTypes ?? expectedSchema(page.route);
+    if (schemaTypes.length > 0 && (!h1 || !page.schema.headlines.includes(h1))) erreurs.push(error(page.route, 3, 'headline JSON-LD doit être identique au H1'));
+    if (schemaTypes.length > 0 && page.schema.authors === 0) erreurs.push(error(page.route, 3, 'author absent du JSON-LD'));
+    if (schemaTypes.length > 0 && page.schema.datesPublished.length === 0) erreurs.push(error(page.route, 3, 'datePublished absente du JSON-LD'));
+    if (schemaTypes.length > 0 && page.schema.datesModified.length === 0) erreurs.push(error(page.route, 3, 'dateModified absente du JSON-LD'));
+    for (const type of schemaTypes) {
       if (!page.schema.types.has(type)) erreurs.push(error(page.route, 3, `schéma ${type} absent ou incohérent avec le type de page`));
     }
   }
@@ -502,6 +521,7 @@ export function auditerContratPages({
   }
 
   for (const target of pages) {
+    if (routeContracts.get(target.route)?.incomingLinkRequired === false) continue;
     const incoming = pages.filter((source) => source.route !== target.route && source.hrefs.includes(target.route));
     if (incoming.length === 0) erreurs.push(error(target.route, 5, 'aucune page servie ne pointe vers elle'));
   }
