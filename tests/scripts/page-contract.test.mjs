@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { auditerContratPages, auditerNavigationMobile } from '../../scripts/verify-page-contract.mjs';
+import { auditerComposition, auditerContratPages, auditerNavigationMobile } from '../../scripts/verify-page-contract.mjs';
 
-function html({ route, h1, media, href, ogTitle = h1, headline = h1, description }) {
+function html({ route, h1, media, href, ogTitle = h1, headline = h1, description, attribution = true, footerOutils = true }) {
   const url = `https://memlia.fr${route}`;
   return `<!doctype html><html lang="fr"><head>
     <title>${h1} | Memlia</title>
@@ -14,15 +14,17 @@ function html({ route, h1, media, href, ogTitle = h1, headline = h1, description
     <meta property="og:title" content="${ogTitle}">
     <link rel="canonical" href="${url}">
     <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': [
-      { '@type': 'WebPage', url, name: h1, headline, description },
+      { '@type': 'WebPage', url, name: h1, headline, description,
+        ...(attribution ? { author: { '@id': 'https://memlia.fr/a-propos#kevin-kitanga' }, datePublished: '2026-09-20', dateModified: '2026-09-20' } : {}) },
     ] })}</script>
   </head><body><nav aria-label="Navigation principale"><a href="/contact">Contact</a></nav>
-  <main id="main"><section><h1>${h1}</h1><img src="${media}" alt="Preuve propre à ${route}"><a href="${href}">Continuer</a></section></main></body></html>`;
+  <main id="main"><section><h1>${h1}</h1><img src="${media}" alt="Preuve propre à ${route}"><a href="${href}">Continuer</a></section></main>
+  <footer>${footerOutils ? '<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>' : ''}</footer></body></html>`;
 }
 
 function fixture() {
   const root = mkdtempSync(join(tmpdir(), 'memlia-page-contract-'));
-  for (const path of ['src/pages', 'src/components/sections', 'src/styles', 'dist', 'public/proofs', 'docs/qa/site-v2']) {
+  for (const path of ['src/pages', 'src/layouts', 'src/components/sections', 'src/styles', 'dist', 'public/proofs', 'docs/qa/site-v2']) {
     mkdirSync(join(root, path), { recursive: true });
   }
   writeFileSync(join(root, 'src/styles/tokens.css'), ':root { --surface-feuille: #fffefb; --r-carte: 16px; }');
@@ -47,8 +49,19 @@ function fixture() {
   return { root, pages };
 }
 
+const intentContracts = (alphaMinMedia = 1) => new Map([
+  ['/alpha', { query: 'automatisation alpha', descriptionLead: 'Description alpha', minMedia: alphaMinMedia }],
+  ['/source', { query: 'automatisation source', descriptionLead: 'Description source' }],
+]);
+
 function audit(root, copyVerifier = () => ({ pass: true, errors: [] })) {
-  return auditerContratPages({ root, copyVerifier, exemptions: [], intentRoutes: new Set(['/alpha', '/source']) });
+  return auditerContratPages({
+    root,
+    copyVerifier,
+    exemptions: [],
+    intentRoutes: new Set(['/alpha', '/source']),
+    intentContracts: intentContracts(),
+  });
 }
 
 function afficherTemoin(resultat, clause) {
@@ -82,6 +95,7 @@ test('les cinq clauses rougissent avec la page et la clause, puis la fixture res
       copyVerifier: () => ({ pass: true, errors: [] }),
       exemptions: [],
       intentRoutes: new Set(['/source']),
+      intentContracts: intentContracts(),
     });
     assert.match(afficherTemoin(rouge, 3), /\/alpha : clause 3 \(SEO\).*aucune requête mesurée/);
 
@@ -118,6 +132,7 @@ test('une exemption doit être exacte, datée et motivée', () => {
       root,
       copyVerifier: () => ({ pass: true, errors: [] }),
       intentRoutes: new Set(['/alpha', '/source']),
+      intentContracts: intentContracts(),
       exemptions: [{
         route: '/alpha', clauses: [2], date: '2026-09-20',
         reason: 'Page textuelle explicitement bornée : aucun média fonctionnel n’est nécessaire à sa compréhension.',
@@ -145,6 +160,78 @@ test('la clause DA refuse une navigation mobile cachée ou des cibles sous 44 px
 
     writeFileSync(nav, '<nav data-mobile-visible></nav><style>.nav-principal { min-height: 44px; } .nav-mobile-visible a { min-height: 44px; }</style>');
     assert.deepEqual(auditerNavigationMobile({ root }), { pass: true, errors: [] });
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la clause SEO exige l’ouverture de description, l’auteur et les deux dates', () => {
+  const { root } = fixture();
+  try {
+    writeFileSync(join(root, 'dist/alpha.html'), html({
+      route: '/alpha', h1: 'Automatisation alpha en cabinet', media: '/proofs/alpha.webp', href: '/source',
+      description: 'Une ouverture qui masque la requête primaire.', attribution: false,
+    }));
+    const sortie = afficherTemoin(audit(root), 3);
+    assert.match(sortie, /description doit ouvrir sur "Description alpha"/);
+    assert.match(sortie, /author absent/);
+    assert.match(sortie, /datePublished absente/);
+    assert.match(sortie, /dateModified absente/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la clause liens exige le hub outils dans le footer généré', () => {
+  const { root } = fixture();
+  try {
+    writeFileSync(join(root, 'dist/alpha.html'), html({
+      route: '/alpha', h1: 'Automatisation alpha en cabinet', media: '/proofs/alpha.webp', href: '/source',
+      description: 'Description alpha propre et suffisamment distincte pour le contrat universel.', footerOutils: false,
+    }));
+    assert.match(afficherTemoin(audit(root), 5), /footer généré.*outils-comptables-gratuits/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la clause images applique le minimum propre déclaré par page', () => {
+  const { root } = fixture();
+  try {
+    const rouge = auditerContratPages({
+      root,
+      copyVerifier: () => ({ pass: true, errors: [] }),
+      intentRoutes: new Set(['/alpha', '/source']),
+      intentContracts: intentContracts(2),
+      exemptions: [],
+    });
+    const sortie = afficherTemoin(rouge, 2);
+    assert.match(sortie, /\/alpha : clause 2 \(IMAGES\).*1 média\(s\) propre\(s\).*2 requis/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la clause DA suit le gabarit Outil et refuse une section avec trop de CSS local', () => {
+  const { root } = fixture();
+  try {
+    const sourcePath = join(root, 'src/pages/alpha.astro');
+    writeFileSync(sourcePath, "import Outil from '@/layouts/Outil.astro';\n<Outil />\n");
+    writeFileSync(join(root, 'src/layouts/Outil.astro'), `---\nimport TestSection from '@/components/sections/TestSection.astro';\n---\n<TestSection />\n<style>\n${Array.from({ length: 11 }, (_, index) => `.a-${index} { padding: ${index}px; }`).join('\n')}\n</style>`);
+    const rouge = auditerComposition({ root, sourcePath });
+    console.log(`TÉMOIN ROUGE CLAUSE 1 GABARIT\n${rouge.errors.join('\n')}`);
+    assert.equal(rouge.pass, false);
+    assert.deepEqual(rouge.sections, ['TestSection']);
+    assert.match(rouge.errors.join('\n'), /1 section\(s\).*3 requises/);
+    assert.match(rouge.errors.join('\n'), /11 ligne\(s\) CSS locale\(s\).*10 tolérées/);
+
+    for (const section of ['Preuves', 'Garanties']) {
+      writeFileSync(join(root, `src/components/sections/${section}.astro`), '<section><slot /></section>');
+    }
+    writeFileSync(join(root, 'src/layouts/Outil.astro'), `---\nimport TestSection from '@/components/sections/TestSection.astro';\nimport Preuves from '@/components/sections/Preuves.astro';\nimport Garanties from '@/components/sections/Garanties.astro';\n---\n<TestSection /><Preuves /><Garanties />\n<style>.outil { display: grid; }</style>`);
+    const vert = auditerComposition({ root, sourcePath });
+    assert.equal(vert.pass, true);
+    assert.deepEqual(vert.sections, ['Garanties', 'Preuves', 'TestSection']);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

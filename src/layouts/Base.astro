@@ -5,6 +5,8 @@ import Nav from '@/components/Nav.astro';
 import Footer from '@/components/Footer.astro';
 import { SITE, OG_IMAGE } from '@/data/site.mjs';
 import { BLOG } from '@/data/blog.mjs';
+import { AUTEURS, identiteAuteur } from '@/data/auteurs';
+import pageLastmod from '@/data/pages-lastmod.json';
 
 /**
  * Gabarit commun : head SEO complet (title, description, canonical, robots, OG, Twitter),
@@ -41,6 +43,20 @@ const {
 const canonical = chemin === '/' ? `${SITE.url}/` : `${SITE.url}${chemin}`;
 const articles = await getCollection('blog', ({ data }) => !data.brouillon);
 const blogActif = articles.length > 0;
+const auteur = AUTEURS.kevin;
+const auteurId = `${SITE.url}${identiteAuteur(auteur)}`;
+const publication = chemin.startsWith('/automatisation/') || chemin.startsWith('/outils-comptables-gratuits')
+  ? '2026-09-20'
+  : '2026-09-16';
+const modifications = (pageLastmod as { pages: Record<string, { lastmod: string }> }).pages;
+const modification = modifications[chemin]?.lastmod ?? publication;
+const attribution = {
+  '@context': 'https://schema.org',
+  '@id': `${canonical}#page`,
+  author: { '@id': auteurId },
+  datePublished: publication,
+  dateModified: modification,
+};
 ---
 
 <!doctype html>
@@ -50,6 +66,7 @@ const blogActif = articles.length > 0;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{titre}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={auteur.nom} />
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
     <meta name="theme-color" content={SITE.couleurTheme} />
     {csp && <meta http-equiv="Content-Security-Policy" content={csp} />}
@@ -78,6 +95,7 @@ const blogActif = articles.length > 0;
     <meta name="twitter:title" content={titreSocial} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage.url} />
+    {ogType !== 'article' && <script is:inline type="application/ld+json" set:html={JSON.stringify(attribution).replace(/</g, '\\u003c')} />}
 
     <slot name="head" />
   </head>

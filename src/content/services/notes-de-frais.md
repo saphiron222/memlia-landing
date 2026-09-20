@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: notes-de-frais
 verifiedAt: 2026-09-20
-status: publie
+status: pret-preview
 candidateFingerprint: "ddf80c583035664d1e89dc1654e3fb1d8450afe4674810bc05b7baaccae4da98"
 cta:
   label: "Confier une première tâche"

@@ -3,6 +3,7 @@ import Lockup from './Lockup.astro';
 import { getCollection } from 'astro:content';
 import { SITE } from '@/data/site.mjs';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
+import { OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
 
 /** Pied de page (spec §4.14) : 4 colonnes, ligne © en --texte-2, emblème « M » en filigrane. */
 interface Props {
@@ -17,6 +18,7 @@ const services = (await getCollection('services', ({ data }) => data.status === 
     libelle: entree.data.primaryQuery.charAt(0).toUpperCase() + entree.data.primaryQuery.slice(1),
     href: `/automatisation/${entree.id}`,
   }));
+const outils = OUTILS_DISPONIBLES.map((outil) => ({ libelle: outil.h1, href: outilPath(outil) }));
 
 const colonnes = [
   {
@@ -25,6 +27,13 @@ const colonnes = [
       ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
       { libelle: 'Glossaire', href: '/glossaire' },
       { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
+    ],
+  },
+  {
+    titre: 'Outils gratuits',
+    liens: [
+      { libelle: 'Tous les outils comptables', href: OUTILS_HUB_PATH },
+      ...outils,
     ],
   },
   {
@@ -198,7 +207,7 @@ const colonnes = [
       padding: 144px 0 56px;
     }
     .pied-colonnes {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 48px 32px;
     }
     .pied-bas {

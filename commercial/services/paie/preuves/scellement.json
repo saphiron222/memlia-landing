@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "kind": "service-publication-scellee",
+  "kind": "service-candidat-scelle",
   "slug": "paie",
-  "sealedAt": "2026-09-20T14:51:21.594Z",
+  "sealedAt": "2026-09-20T18:07:06.313Z",
   "files": {
     "page": {
       "path": "src/content/services/paie.md",
-      "bytes": 5773,
-      "sha256": "94d014bc80e9328a030cad4befbee8848b5be7cbcf1a3a9b9e95b4e81a4c3ba2"
+      "bytes": 5779,
+      "sha256": "c343def0530c5327c19e447f71390d67a063fac927c95afba3b53059191f4277"
     },
     "manifest": {
       "path": "commercial/services/paie/manifest.json",
-      "bytes": 2505,
-      "sha256": "c9cb49b32ca364bff3e12e748daea5231e01f5d7d90f06b421ce705fb4a54252"
+      "bytes": 2511,
+      "sha256": "a328f34720fb35b95e3b45d57b4c5070089bab88f70c6ea3370e56c3980e2eb6"
     },
     "recipe": {
       "path": "commercial/recettes/paie/recette.json",
@@ -28,11 +28,6 @@
       "path": "commercial/recettes/paie/revues.json",
       "bytes": 383,
       "sha256": "c73acd9493045633c9ad49200b31fce044c445503f86374c3116ada844ed2e92"
-    },
-    "publication": {
-      "path": "commercial/services/paie/preuves/publication.json",
-      "bytes": 1315,
-      "sha256": "dc35c1edf63f1c5fe5b9a2a7407f0064f7d4b3f3937bac297a8ea370c8f699f1"
     }
   }
 }
