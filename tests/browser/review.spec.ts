@@ -12,17 +12,17 @@ for (const [width, height] of [[320,740],[375,812],[1024,768],[1366,768]]) {
   });
 }
 
-test('menu mobile contient le focus puis libère le fond par Échap', async ({ page }) => {
+test('navigation mobile visible reste au clavier sans verrouiller le fond', async ({ page }) => {
   await page.setViewportSize({width:375,height:812});
   await page.goto('/');
-  await page.locator('[data-burger]').click();
-  await page.locator('#menu-mobile a').last().focus();
+  const liens = page.locator('[data-mobile-visible] a');
+  await liens.first().focus();
   await page.keyboard.press('Tab');
-  await expect(page.locator('[data-burger]')).toBeFocused();
-  await expect(page.locator('#main')).toHaveAttribute('inert', '');
+  await expect(liens.nth(1)).toBeFocused();
+  await expect(page.locator('#main')).not.toHaveAttribute('inert');
   await page.keyboard.press('Escape');
   await expect(page.locator('#menu-mobile')).toBeHidden();
-  await expect(page.locator('body')).not.toHaveCSS('overflow','hidden');
+  await expect(page.locator('body')).not.toHaveCSS('position','fixed');
 });
 
 test('garanties cohérentes avec les limites et les données', async ({ page }) => {
