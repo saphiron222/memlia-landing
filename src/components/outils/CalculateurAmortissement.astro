@@ -31,8 +31,9 @@
   </label>
 
   <div class="actions">
-    <button class="bouton bouton-primaire" type="submit">Calculer le plan</button>
-    <p class="note-locale">Calcul local. Aucune valeur n’est envoyée ou conservée.</p>
+    <button class="btn btn-contour" type="reset" data-outil-action="exemple">Recharger l’exemple fictif</button>
+    <button class="btn btn-principal" type="submit">Calculer le plan</button>
+    <p class="note-locale">Exemple fictif préchargé. Calcul local : aucune valeur n’est envoyée ou conservée.</p>
   </div>
   <p class="erreur" id="amortissement-erreur" data-error role="alert" aria-live="assertive" hidden></p>
 </form>
@@ -51,7 +52,8 @@
     </dl>
   </div>
 
-  <div class="table-wrap" tabindex="0" role="region" aria-label="Plan d’amortissement, défilement horizontal possible">
+  <p class="table-hint" id="amortissement-table-aide">↔ Sur petit écran, faites défiler le tableau horizontalement pour lire les six colonnes.</p>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Plan d’amortissement, défilement horizontal possible" aria-describedby="amortissement-table-aide">
     <table>
       <thead>
         <tr><th>Exercice</th><th>Base d’ouverture</th><th>Règle et prorata</th><th>Dotation</th><th>Cumul</th><th>Valeur nette</th></tr>
@@ -61,6 +63,11 @@
     </table>
   </div>
   <p class="trace"><strong>Trace de calcul :</strong> chaque ligne montre sa base, son taux ou son quotient, et son prorata. Le dernier centime est ajusté sur la dernière ligne pour que le total reste égal à la valeur amortissable.</p>
+  <div class="resultat-actions">
+    <button class="btn btn-contour" type="button" data-copy data-outil-action="copie">Copier le résumé</button>
+    <button class="btn btn-contour" type="button" data-download data-outil-action="export">Télécharger le plan en CSV</button>
+  </div>
+  <p class="statut" data-status aria-live="polite"></p>
 </section>
 
 <script>
@@ -71,6 +78,9 @@
   const error = form?.querySelector('[data-error]');
   const method = form?.querySelector('[name="methode"]');
   const confirmation = form?.querySelector('[data-declining-confirmation]');
+  const copy = result?.querySelector('[data-copy]');
+  const download = result?.querySelector('[data-download]');
+  const status = result?.querySelector('[data-status]');
   const money = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });
   const percent = new Intl.NumberFormat('fr-FR', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 4 });
   const descriptions = new Map([
@@ -81,6 +91,8 @@
   ]);
 
   const parseFrenchNumber = (value: string) => Number(value.trim().replace(/\s/g, '').replace(',', '.'));
+  let csv = '';
+  let summary = '';
 
   const updateConfirmation = () => {
     if (!(method instanceof HTMLSelectElement) || !(confirmation instanceof HTMLElement)) return;
@@ -98,6 +110,22 @@
   }
 
   if (form instanceof HTMLFormElement && result instanceof HTMLElement && error instanceof HTMLElement) {
+    const clearState = () => {
+      result.hidden = true;
+      error.hidden = true;
+      csv = '';
+      summary = '';
+      if (status instanceof HTMLElement) status.textContent = '';
+      for (const field of form.querySelectorAll<HTMLElement>('input, select')) {
+        field.removeAttribute('aria-invalid');
+        const description = field instanceof HTMLInputElement || field instanceof HTMLSelectElement ? descriptions.get(field.name) : undefined;
+        if (description) field.setAttribute('aria-describedby', description);
+        else field.removeAttribute('aria-describedby');
+      }
+    };
+    form.addEventListener('input', clearState);
+    form.addEventListener('change', clearState);
+    form.addEventListener('reset', () => queueMicrotask(() => { clearState(); updateConfirmation(); }));
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       error.hidden = true;
@@ -177,6 +205,25 @@
             return tr;
           }));
         }
+        const quote = (value: string) => `"${value.replace(/"/g, '""')}"`;
+        csv = '\uFEFF' + [
+          ['Exercice', 'Base d’ouverture', 'Règle et prorata', 'Dotation', 'Cumul', 'Valeur nette'],
+          ...schedule.rows.map((row) => [
+            String(row.year),
+            money.format(row.opening),
+            `${row.rule} (${row.formula})`,
+            money.format(row.amount),
+            money.format(row.accumulated),
+            money.format(row.closing),
+          ]),
+        ].map((row) => row.map(quote).join(';')).join('\r\n');
+        summary = [
+          schedule.method,
+          schedule.convention,
+          `Taux annuel : ${percent.format(schedule.annualRate)}.`,
+          `Total amorti : ${money.format(schedule.total)}.`,
+          `${schedule.rows.length} exercice(s) affiché(s).`,
+        ].join('\n');
         result.hidden = false;
         if (methodNode instanceof HTMLElement) methodNode.focus({ preventScroll: true });
         result.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' });
@@ -192,6 +239,28 @@
         invalidField?.focus();
       }
     });
+    if (copy instanceof HTMLButtonElement && status instanceof HTMLElement) {
+      copy.addEventListener('click', async () => {
+        if (!summary) return;
+        try {
+          await navigator.clipboard.writeText(summary);
+          status.textContent = 'Résumé copié.';
+        } catch {
+          status.textContent = 'La copie est bloquée par le navigateur. Le résumé reste sélectionnable.';
+        }
+      });
+    }
+    if (download instanceof HTMLButtonElement) {
+      download.addEventListener('click', () => {
+        if (!csv) return;
+        const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'plan-amortissement-comptable-fictif.csv';
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 0);
+      });
+    }
   }
 </script>
 
@@ -278,6 +347,12 @@
     align-items: center;
     gap: 16px;
   }
+  .resultat-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .note-locale {
     max-width: 48ch;
     font-size: var(--t-sm);
@@ -339,6 +414,12 @@
     border: 1px solid var(--ligne);
     border-radius: var(--r-boite);
   }
+  .table-hint {
+    margin: 0;
+    color: var(--ink);
+    font-size: var(--t-sm);
+    font-weight: 700;
+  }
   table {
     width: 100%;
     min-width: 920px;
@@ -371,6 +452,11 @@
   }
   .trace {
     max-width: 78ch;
+    font-size: var(--t-sm);
+  }
+  .statut {
+    min-height: 1.5em;
+    color: var(--texte-2);
     font-size: var(--t-sm);
   }
   @media (min-width: 48rem) {

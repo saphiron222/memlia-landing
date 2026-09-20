@@ -11,6 +11,10 @@
     <label>Date de facture <input type="date" name="invoiceDate" /></label>
     <label>Date de réception ou d’exécution <input type="date" name="receiptDate" /></label>
   </div>
+  <div class="secondary-actions">
+    <button class="btn btn-contour" type="button" data-example data-outil-action="exemple">Charger un exemple fictif</button>
+    <button class="btn btn-contour" type="reset" data-outil-action="effacer">Effacer</button>
+  </div>
   <fieldset data-convention hidden>
     <legend>Convention « 45 jours fin de mois »</legend>
     <label><input type="radio" name="convention" value="add45ThenEom" /> Ajouter 45 jours, puis aller à la fin du mois</label>
@@ -18,10 +22,15 @@
   </fieldset>
   <label class="check"><input type="checkbox" name="generalCase" /> Je confirme qu’il s’agit d’un cas général, sans règle sectorielle ni accord particulier.</label>
   <button class="btn btn-principal" type="submit">Calculer l’échéance</button>
-  <p class="error" data-error role="alert" hidden></p>
+  <p class="error" id="echeance-erreur" data-error role="alert" aria-live="assertive" hidden></p>
   <section class="result" data-output aria-live="polite" hidden>
-    <h2>Résultat et trace</h2>
+    <h2 tabindex="-1">Résultat et trace</h2>
     <p class="date" data-result></p><ol data-trace></ol>
+    <div class="result-actions">
+      <button class="btn btn-contour" type="button" data-copy data-outil-action="copie">Copier la date et la trace</button>
+      <button class="btn btn-contour" type="button" data-calendar data-outil-action="export">Ajouter au calendrier (.ics)</button>
+    </div>
+    <p class="status" data-status aria-live="polite"></p>
     <p class="proof"><strong>Preuve de refus :</strong> sans point de départ, convention explicite ou confirmation du cas général, aucune date n’est proposée.</p>
   </section>
 </form>
@@ -35,36 +44,99 @@
   const addDays = (date: Date, days: number) => new Date(date.getTime() + days * 86400000);
   const endOfMonth = (date: Date) => new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth()+1, 0));
   const display = (date: Date) => new Intl.DateTimeFormat('fr-FR', { day:'2-digit', month:'long', year:'numeric', timeZone:'UTC' }).format(date);
+  const icsDate = (date: Date) => `${date.getUTCFullYear()}${String(date.getUTCMonth()+1).padStart(2,'0')}${String(date.getUTCDate()).padStart(2,'0')}`;
   if (form) {
     const rule = form.elements.namedItem('rule') as HTMLSelectElement;
+    const invoiceDate = form.elements.namedItem('invoiceDate') as HTMLInputElement;
+    const receiptDate = form.elements.namedItem('receiptDate') as HTMLInputElement;
+    const generalCase = form.elements.namedItem('generalCase') as HTMLInputElement;
     const convention = form.querySelector<HTMLElement>('[data-convention]')!;
-    rule.addEventListener('change', () => { convention.hidden = rule.value !== 'eom45'; });
-    form.addEventListener('submit', (event) => {
-      event.preventDefault(); const data = new FormData(form); const error = form.querySelector<HTMLElement>('[data-error]')!; const output = form.querySelector<HTMLElement>('[data-output]')!;
+    const error = form.querySelector<HTMLElement>('[data-error]')!;
+    const output = form.querySelector<HTMLElement>('[data-output]')!;
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    let result: Date | null = null;
+    let steps: string[] = [];
+    const fields = [rule, invoiceDate, receiptDate, generalCase, ...form.querySelectorAll<HTMLInputElement>('[name="convention"]')];
+    const clearState = () => {
       output.hidden = true;
-      if (data.get('generalCase') !== 'on') { error.textContent = 'Refus : cet outil couvre uniquement les cas généraux confirmés.'; error.hidden = false; return; }
-      let result: Date | null = null; let steps: string[] = [];
+      error.hidden = true;
+      status.textContent = '';
+      result = null;
+      steps = [];
+      fields.forEach((field) => {
+        field.removeAttribute('aria-invalid');
+        field.removeAttribute('aria-describedby');
+      });
+    };
+    const refuse = (message: string, field: HTMLElement) => {
+      error.textContent = message;
+      error.hidden = false;
+      field.setAttribute('aria-invalid', 'true');
+      field.setAttribute('aria-describedby', 'echeance-erreur');
+      field.focus();
+    };
+    const updateConvention = () => { convention.hidden = rule.value !== 'eom45'; };
+    rule.addEventListener('change', updateConvention);
+    form.addEventListener('input', clearState);
+    form.addEventListener('change', clearState);
+    form.addEventListener('reset', () => queueMicrotask(() => { clearState(); updateConvention(); }));
+    form.querySelector<HTMLButtonElement>('[data-example]')!.addEventListener('click', () => {
+      rule.value = 'eom45';
+      invoiceDate.value = '2026-01-20';
+      receiptDate.value = '';
+      generalCase.checked = true;
+      const choice = form.querySelector<HTMLInputElement>('[name="convention"][value="add45ThenEom"]')!;
+      choice.checked = true;
+      updateConvention();
+      clearState();
+      rule.focus();
+    });
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); const data = new FormData(form);
+      output.hidden = true;
+      status.textContent = '';
+      if (data.get('generalCase') !== 'on') { refuse('Refus : cet outil couvre uniquement les cas généraux confirmés.', generalCase); return; }
+      result = null; steps = [];
       if (data.get('rule') === 'default30') {
         const start = parseDate(String(data.get('receiptDate') ?? ''));
-        if (!start) { error.textContent = 'Refus : renseignez une date de réception ou d’exécution valide pour le délai supplétif.'; error.hidden = false; return; }
+        if (!start) { refuse('Refus : renseignez une date de réception ou d’exécution valide pour le délai supplétif.', receiptDate); return; }
         result = addDays(start, 30); steps = [`Point de départ : réception ou exécution le ${display(start)}.`, `Ajout de 30 jours calendaires : ${display(result)}.`];
       } else if (data.get('rule') === 'invoice60') {
         const start = parseDate(String(data.get('invoiceDate') ?? ''));
-        if (!start) { error.textContent = 'Refus : renseignez une date de facture valide pour le délai de 60 jours.'; error.hidden = false; return; }
+        if (!start) { refuse('Refus : renseignez une date de facture valide pour le délai de 60 jours.', invoiceDate); return; }
         result = addDays(start, 60); steps = [`Point de départ : facture du ${display(start)}.`, `Ajout de 60 jours calendaires : ${display(result)}.`];
       } else if (data.get('rule') === 'eom45') {
         const start = parseDate(String(data.get('invoiceDate') ?? '')); const choice = String(data.get('convention') ?? '');
-        if (!start) { error.textContent = 'Refus : renseignez une date de facture valide.'; error.hidden = false; return; }
-        if (!choice) { error.textContent = 'Refus : choisissez explicitement l’une des deux conventions de calcul des 45 jours fin de mois.'; error.hidden = false; return; }
+        if (!start) { refuse('Refus : renseignez une date de facture valide.', invoiceDate); return; }
+        if (!choice) { refuse('Refus : choisissez explicitement l’une des deux conventions de calcul des 45 jours fin de mois.', form.querySelector<HTMLInputElement>('[name="convention"]')!); return; }
         if (choice === 'add45ThenEom') { const intermediate = addDays(start,45); result = endOfMonth(intermediate); steps = [`Facture du ${display(start)}.`, `Ajout de 45 jours : ${display(intermediate)}.`, `Fin de ce mois : ${display(result)}.`]; }
         else { const intermediate = endOfMonth(start); result = addDays(intermediate,45); steps = [`Facture du ${display(start)}.`, `Fin du mois de facturation : ${display(intermediate)}.`, `Ajout de 45 jours : ${display(result)}.`]; }
-      } else { error.textContent = 'Refus : choisissez une règle de délai.'; error.hidden = false; return; }
+      } else { refuse('Refus : choisissez une règle de délai.', rule); return; }
       error.hidden = true; form.querySelector<HTMLElement>('[data-result]')!.textContent = `Échéance calculée : ${display(result!)}.`;
-      form.querySelector<HTMLOListElement>('[data-trace]')!.innerHTML = steps.map((step) => `<li>${step}</li>`).join(''); output.hidden = false;
+      form.querySelector<HTMLOListElement>('[data-trace]')!.replaceChildren(...steps.map((step) => { const item=document.createElement('li');item.textContent=step;return item; }));
+      output.hidden = false;
+      output.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
+    });
+    form.querySelector<HTMLButtonElement>('[data-copy]')!.addEventListener('click', async () => {
+      if (!result) return;
+      try {
+        await navigator.clipboard.writeText([`Échéance calculée : ${display(result)}.`, ...steps].join('\n'));
+        status.textContent = 'Date et trace copiées.';
+      } catch {
+        status.textContent = 'La copie est bloquée par le navigateur. La date reste sélectionnable.';
+      }
+    });
+    form.querySelector<HTMLButtonElement>('[data-calendar]')!.addEventListener('click', () => {
+      if (!result) return;
+      const next = addDays(result, 1);
+      const body = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Memlia//Echeance facture fictive//FR','BEGIN:VEVENT',`DTSTART;VALUE=DATE:${icsDate(result)}`,`DTEND;VALUE=DATE:${icsDate(next)}`,'SUMMARY:Échéance de facture à vérifier','DESCRIPTION:Date calculée sur un cas général fictif. Vérifier le contrat et les règles applicables.','END:VEVENT','END:VCALENDAR'].join('\r\n');
+      const url = URL.createObjectURL(new Blob([body], { type: 'text/calendar;charset=utf-8' }));
+      const link = document.createElement('a'); link.href = url; link.download = 'echeance-facture-fictive.ics'; link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 0);
     });
   }
 </script>
 <style>
   .outil-form,.fields,label,fieldset,.result { display:grid; gap:12px; }
-  .fields.two{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px} select,input[type=date]{width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);background:var(--surface-feuille);color:var(--texte-fort);font:inherit} label,legend{font-weight:600;color:var(--texte-fort)} fieldset{padding:16px;border:1px solid var(--ligne);border-radius:var(--r-boite)} fieldset label,.check{grid-template-columns:auto 1fr;align-items:start;font-weight:400}.btn{justify-self:start}.error{margin:0;padding:12px 14px;border-left:3px solid var(--rouge);background:var(--rouge-voile);color:var(--rouge)}.result{box-sizing:border-box;width:100%;min-width:0;padding:20px;border:1px solid var(--ligne);border-radius:var(--r-boite);background:var(--surface-page)}.result h2{font-size:var(--t-2xl)}.date{font-size:var(--t-xl);font-weight:700}.result ol{display:grid;gap:8px;padding-left:20px}.proof{margin:0;color:var(--texte-2)}.outil-form [hidden]{display:none!important}@media(max-width:40rem){.fields.two{grid-template-columns:1fr}}
+  .fields.two{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.secondary-actions,.result-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}select,input[type=date]{width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);background:var(--surface-feuille);color:var(--texte-fort);font:inherit}label,legend{font-weight:600;color:var(--texte-fort)}fieldset{padding:16px;border:1px solid var(--ligne);border-radius:var(--r-boite)}fieldset label,.check{grid-template-columns:auto 1fr;align-items:start;font-weight:400}.btn{justify-self:start}.error{margin:0;padding:12px 14px;border-left:3px solid var(--rouge);background:var(--rouge-voile);color:var(--rouge)}.result{box-sizing:border-box;width:100%;min-width:0;padding:20px;border:1px solid var(--ligne);border-radius:var(--r-boite);background:var(--surface-page)}.result h2{font-size:var(--t-2xl)}.date{font-size:var(--t-xl);font-weight:700}.result ol{display:grid;gap:8px;padding-left:20px}.proof,.status{margin:0;color:var(--texte-2)}.outil-form [hidden]{display:none!important}@media(max-width:40rem){.fields.two{grid-template-columns:1fr}}
 </style>

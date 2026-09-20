@@ -5,7 +5,6 @@ export const OUTILS_HUB_PATH = '/outils-comptables-gratuits' as const;
 export const OUTIL_CATEGORIES = [
   { id: 'calculer', label: 'Calculer' },
   { id: 'verifier', label: 'Vérifier' },
-  { id: 'convertir', label: 'Convertir' },
 ] as const;
 
 export type OutilCategory = (typeof OUTIL_CATEGORIES)[number]['id'];

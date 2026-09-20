@@ -10,12 +10,20 @@
     <label>Éléments inexpliqués <input name="unexplained" inputmode="decimal" value="0,00" required /></label>
   </div>
   <p class="hint">Montants signés autorisés, deux décimales au maximum, valeur absolue bornée à 999 999 999,99 €. Utilisez uniquement des données fictives.</p>
-  <button class="btn btn-principal" type="submit">Contrôler les soldes</button>
-  <p class="error" data-error role="alert" hidden></p>
+  <div class="actions">
+    <button class="btn btn-contour" type="button" data-example data-outil-action="exemple">Charger un exemple fictif</button>
+    <button class="btn btn-contour" type="reset" data-outil-action="effacer">Effacer</button>
+    <button class="btn btn-principal" type="submit">Contrôler les soldes</button>
+  </div>
+  <p class="error" id="rapprochement-erreur" data-error role="alert" aria-live="assertive" hidden></p>
   <section class="result" data-output aria-live="polite" hidden>
-    <h2>Contrôle et trace</h2><dl><div><dt>Solde bancaire ajusté</dt><dd data-bank-adjusted></dd></div><div><dt>Solde comptable ajusté</dt><dd data-ledger-adjusted></dd></div><div><dt>Différence</dt><dd data-difference></dd></div></dl>
+    <h2 tabindex="-1">Contrôle et trace</h2><dl><div><dt>Solde bancaire ajusté</dt><dd data-bank-adjusted></dd></div><div><dt>Solde comptable ajusté</dt><dd data-ledger-adjusted></dd></div><div><dt>Différence</dt><dd data-difference></dd></div></dl>
     <ol data-trace></ol>
-    <button class="btn btn-contour" type="button" data-download disabled>Télécharger le CSV ouvrable dans Excel</button>
+    <div class="result-actions">
+      <button class="btn btn-contour" type="button" data-copy data-outil-action="copie" disabled>Copier le contrôle</button>
+      <button class="btn btn-contour" type="button" data-download data-outil-action="export" disabled>Télécharger le CSV ouvrable dans Excel</button>
+    </div>
+    <p class="status" data-status aria-live="polite"></p>
     <p class="proof"><strong>Preuve de refus :</strong> une période inversée, un élément inexpliqué ou une différence non nulle bloque le téléchargement.</p>
   </section>
 </form>
@@ -25,22 +33,38 @@
   const money=(c:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).format(c/100);
   const csvMoney=(c:number)=>(c/100).toFixed(2).replace('.',',');
   const validDate=(value:string)=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;const [y,m,d]=value.split('-').map(Number);const date=new Date(Date.UTC(y,m-1,d));return date.getUTCFullYear()===y&&date.getUTCMonth()===m-1&&date.getUTCDate()===d;};
-  let csv='';
+  let csv='',summary='';
   if(form){
     const download=form.querySelector<HTMLButtonElement>('[data-download]')!;
-    for(const input of form.querySelectorAll('input')) input.addEventListener('input',()=>{download.disabled=true;csv='';});
+    const copy=form.querySelector<HTMLButtonElement>('[data-copy]')!;
+    const output=form.querySelector<HTMLElement>('[data-output]')!;
+    const error=form.querySelector<HTMLElement>('[data-error]')!;
+    const status=form.querySelector<HTMLElement>('[data-status]')!;
+    const inputs=[...form.querySelectorAll<HTMLInputElement>('input')];
+    const clearState=()=>{download.disabled=true;copy.disabled=true;csv='';summary='';output.hidden=true;error.hidden=true;status.textContent='';inputs.forEach((input)=>{input.removeAttribute('aria-invalid');input.removeAttribute('aria-describedby');});};
+    const refuse=(message:string,input:HTMLInputElement)=>{error.textContent=message;error.hidden=false;input.setAttribute('aria-invalid','true');input.setAttribute('aria-describedby','rapprochement-erreur');input.focus();};
+    inputs.forEach((input)=>input.addEventListener('input',clearState));
+    form.addEventListener('reset',()=>queueMicrotask(clearState));
+    form.querySelector<HTMLButtonElement>('[data-example]')!.addEventListener('click',()=>{
+      const example={start:'2026-01-01',end:'2026-01-31',bank:'1000,00',ledger:'950,00',deposits:'0,00',payments:'0,00',fees:'0,00',interest:'50,00',unexplained:'0,00'};
+      for(const [name,value] of Object.entries(example)){const input=form.elements.namedItem(name);if(input instanceof HTMLInputElement)input.value=value;}
+      clearState();(form.elements.namedItem('start') as HTMLInputElement).focus();
+    });
     form.addEventListener('submit',(event)=>{event.preventDefault();const data=new FormData(form);const error=form.querySelector<HTMLElement>('[data-error]')!;const output=form.querySelector<HTMLElement>('[data-output]')!; output.hidden=true;download.disabled=true;csv='';
-      const start=String(data.get('start')??''),end=String(data.get('end')??''); if(!validDate(start)||!validDate(end)||start>end){error.textContent='Refus : renseignez une période valide, dont le début ne dépasse pas la fin.';error.hidden=false;return;}
-      const names=['bank','ledger','deposits','payments','fees','interest','unexplained'] as const; const values={} as Record<typeof names[number],number>; for(const name of names){const parsed=parseCents(String(data.get(name)??''));if(parsed===null){error.textContent=`Refus : le montant « ${name} » est vide, ambigu ou hors borne.`;error.hidden=false;return;} values[name]=parsed;}
+      copy.disabled=true;summary='';status.textContent='';
+      const start=String(data.get('start')??''),end=String(data.get('end')??''); if(!validDate(start)||!validDate(end)||start>end){refuse('Refus : renseignez une période valide, dont le début ne dépasse pas la fin.',form.elements.namedItem(!validDate(start)||start>end?'start':'end') as HTMLInputElement);return;}
+      const names=['bank','ledger','deposits','payments','fees','interest','unexplained'] as const; const values={} as Record<typeof names[number],number>; for(const name of names){const parsed=parseCents(String(data.get(name)??''));if(parsed===null){refuse(`Refus : le montant « ${name} » est vide, ambigu ou hors borne.`,form.elements.namedItem(name) as HTMLInputElement);return;} values[name]=parsed;}
       const bankAdjusted=values.bank+values.deposits-values.payments; const ledgerAdjusted=values.ledger-values.fees+values.interest; const difference=bankAdjusted-ledgerAdjusted;
       form.querySelector<HTMLElement>('[data-bank-adjusted]')!.textContent=money(bankAdjusted);form.querySelector<HTMLElement>('[data-ledger-adjusted]')!.textContent=money(ledgerAdjusted);form.querySelector<HTMLElement>('[data-difference]')!.textContent=money(difference);
       form.querySelector<HTMLOListElement>('[data-trace]')!.innerHTML=[`Solde bancaire ajusté = ${money(values.bank)} + ${money(values.deposits)} − ${money(values.payments)} = ${money(bankAdjusted)}.`,`Solde comptable ajusté = ${money(values.ledger)} − ${money(values.fees)} + ${money(values.interest)} = ${money(ledgerAdjusted)}.`,`Différence = ${money(bankAdjusted)} − ${money(ledgerAdjusted)} = ${money(difference)}.`].map(x=>`<li>${x}</li>`).join('');output.hidden=false;
-      if(values.unexplained!==0){error.textContent='Refus : un élément inexpliqué subsiste. Identifiez-le avant de produire le modèle.';error.hidden=false;return;} if(difference!==0){error.textContent='Refus : les soldes ajustés ne concordent pas. Le téléchargement reste bloqué.';error.hidden=false;return;}
+      if(values.unexplained!==0){refuse('Refus : un élément inexpliqué subsiste. Identifiez-le avant de produire le modèle.',form.elements.namedItem('unexplained') as HTMLInputElement);return;} if(difference!==0){refuse('Refus : les soldes ajustés ne concordent pas. Le téléchargement reste bloqué.',form.elements.namedItem('ledger') as HTMLInputElement);return;}
       error.hidden=true; const rows=[['MODÈLE DE RAPPROCHEMENT BANCAIRE — DONNÉES FICTIVES'],['Format','CSV UTF-8 BOM, séparateur point-virgule, ouvrable dans Excel'],['Période',start,end],[],['Contrôle','Montant'],['Solde du relevé bancaire',csvMoney(values.bank)],['Remises en circulation',csvMoney(values.deposits)],['Paiements en circulation',csvMoney(values.payments)],['Solde bancaire ajusté',csvMoney(bankAdjusted)],['Solde du compte 512',csvMoney(values.ledger)],['Frais bancaires à comptabiliser',csvMoney(values.fees)],['Intérêts à comptabiliser',csvMoney(values.interest)],['Éléments inexpliqués',csvMoney(values.unexplained)],['Solde comptable ajusté',csvMoney(ledgerAdjusted)],['Différence',csvMoney(difference)],[],['LIGNES EN CIRCULATION À DÉTAILLER'],['Date','Libellé fictif','Type : remise ou paiement','Montant'],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],[],['Conclusion','À valider par le collaborateur — aucune écriture produite']]; const quote=(v:string)=>`"${v.replace(/"/g,'""')}"`; csv='\uFEFF'+rows.map(row=>row.map(quote).join(';')).join('\r\n');download.disabled=false;
+      summary=[`Période : ${start} au ${end}.`,`Solde bancaire ajusté : ${money(bankAdjusted)}.`,`Solde comptable ajusté : ${money(ledgerAdjusted)}.`,`Différence : ${money(difference)}.`].join('\n');copy.disabled=false;output.querySelector<HTMLElement>('h2')?.focus({preventScroll:true});
     });
+    copy.addEventListener('click',async()=>{if(!summary)return;try{await navigator.clipboard.writeText(summary);status.textContent='Contrôle copié.';}catch{status.textContent='La copie est bloquée par le navigateur. Le contrôle reste sélectionnable.';}});
     download.addEventListener('click',()=>{if(!csv||download.disabled)return;const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='modele-rapprochement-bancaire-fictif.csv';link.click();setTimeout(()=>URL.revokeObjectURL(url),0);});
   }
 </script>
 <style>
-  .outil-form,.fields,label,.result,.result dl,.result dl div{display:grid;gap:12px}.outil-form{grid-template-columns:minmax(0,1fr)}.outil-form [hidden]{display:none!important}.fields,label,input{min-width:0}.fields.two{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}label{font-weight:600;color:var(--texte-fort)}input{width:100%;max-width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);background:var(--surface-feuille);color:var(--texte-fort);font:inherit}.hint{margin:0;color:var(--texte-2);font-size:var(--t-sm)}.btn{justify-self:start}.error{margin:0;padding:12px 14px;border-left:3px solid var(--rouge);background:var(--rouge-voile);color:var(--rouge)}.result{box-sizing:border-box;width:100%;min-width:0;padding:20px;border:1px solid var(--ligne);border-radius:var(--r-boite);background:var(--surface-page)}.result h2{font-size:var(--t-2xl)}.result dl{grid-template-columns:repeat(3,minmax(0,1fr))}.result dl div{padding:12px;border-left:3px solid var(--accent-appui)}dt{color:var(--texte-2);font-size:var(--t-sm)}dd{margin:0;font-weight:700;font-size:var(--t-lg)}.result ol{display:grid;gap:8px;padding-left:20px}.proof{margin:0;color:var(--texte-2)}@media(max-width:40rem){.fields.two,.result dl{grid-template-columns:1fr}}
+  .outil-form,.fields,label,.result,.result dl,.result dl div{display:grid;gap:12px}.outil-form{grid-template-columns:minmax(0,1fr)}.outil-form [hidden]{display:none!important}.fields,label,input{min-width:0}.fields.two{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.actions,.result-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}label{font-weight:600;color:var(--texte-fort)}input{width:100%;max-width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);background:var(--surface-feuille);color:var(--texte-fort);font:inherit}.hint{margin:0;color:var(--texte-2);font-size:var(--t-sm)}.btn{justify-self:start}.error{margin:0;padding:12px 14px;border-left:3px solid var(--rouge);background:var(--rouge-voile);color:var(--rouge)}.result{box-sizing:border-box;width:100%;min-width:0;padding:20px;border:1px solid var(--ligne);border-radius:var(--r-boite);background:var(--surface-page)}.result h2{font-size:var(--t-2xl)}.result dl{grid-template-columns:repeat(3,minmax(0,1fr))}.result dl div{padding:12px;border-left:3px solid var(--accent-appui)}dt{color:var(--texte-2);font-size:var(--t-sm)}dd{margin:0;font-weight:700;font-size:var(--t-lg)}.result ol{display:grid;gap:8px;padding-left:20px}.proof,.status{margin:0;color:var(--texte-2)}@media(max-width:40rem){.fields.two,.result dl{grid-template-columns:1fr}}
 </style>

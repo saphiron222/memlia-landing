@@ -56,8 +56,13 @@ const graph = {
           <ul>
             {category.tools.map((outil) => (
               <li data-outil-card>
-                <h3><a href={outilPath(outil)}>{outil.h1}</a></h3>
+                <h3>{outil.h1}</h3>
                 <p>{outil.description}</p>
+                <dl>
+                  <div><dt>Entrée</dt><dd>{outil.promesse.entree}</dd></div>
+                  <div><dt>Résultat</dt><dd>{outil.promesse.resultat}</dd></div>
+                </dl>
+                <a class="outil-carte-action" href={outilPath(outil)}>Utiliser sans compte <span aria-hidden="true">→</span></a>
               </li>
             ))}
           </ul>
@@ -73,10 +78,15 @@ const graph = {
   .outils-categorie { display: grid; gap: 20px; padding: 32px 0; border-bottom: 1px solid var(--ligne); }
   .outils-categorie h2 { font-size: var(--t-3xl); }
   .outils-categorie ul { display: grid; gap: 16px; }
-  .outils-categorie li { display: grid; gap: 8px; padding: 24px; border: 1px solid var(--ligne); border-radius: var(--r-boite); background: var(--surface-page); }
+  .outils-categorie li { display: grid; gap: 16px; padding: 24px; border: 1px solid var(--ligne); border-radius: var(--r-boite); background: var(--surface-page); }
   .outils-categorie h3 { font-size: var(--t-2xl); }
-  .outils-categorie h3 a { color: var(--texte-fort); text-decoration: underline; text-decoration-color: var(--ligne-forte); text-underline-offset: 4px; }
+  .outils-categorie h3 { color: var(--texte-fort); }
   .outils-categorie p { margin: 0; color: var(--texte-2); }
+  .outils-categorie dl { display: grid; gap: 10px; margin: 0; padding-top: 16px; border-top: 1px solid var(--ligne-douce); }
+  .outils-categorie dl div { display: grid; gap: 2px; }
+  .outils-categorie dt { color: var(--texte-2); font-size: var(--t-sm); font-weight: 600; }
+  .outils-categorie dd { margin: 0; color: var(--texte-fort); }
+  .outil-carte-action { display: inline-flex; align-items: center; gap: 8px; justify-self: start; min-height: 44px; color: var(--accent-texte); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
   @media (min-width: 48rem) {
     .outils-categorie { grid-template-columns: minmax(180px, 1fr) minmax(0, 3fr); gap: 40px; padding: 40px 0; }

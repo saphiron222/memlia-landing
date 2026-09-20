@@ -58,10 +58,44 @@ test('marge : calcul exact, marge négative et refus visibles', async ({ page })
   await page.getByLabel('Prix d’achat HT').fill('0');
   await page.getByRole('button', { name: 'Calculer la marge' }).click();
   await expect(page.locator('[data-error]')).toContainText('supérieurs à zéro');
+  await expect(page.getByLabel('Prix d’achat HT')).toBeFocused();
 });
 
-test('échéance : les deux conventions divergent et l’absence de convention est refusée', async ({ page }) => {
+test('marge : exemple, copie, export, effacement et événements de mesure', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await page.addInitScript(() => {
+    (window as unknown as { outilEvents: string[] }).outilEvents = [];
+    window.addEventListener('memlia:outil', (event) => {
+      const detail = (event as CustomEvent<{ action: string }>).detail;
+      (window as unknown as { outilEvents: string[] }).outilEvents.push(detail.action);
+    });
+  });
+  await page.goto(`${HUB}/calculateur-marge-commerciale`);
+  await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
+  await expect(page.getByLabel('Prix d’achat HT')).toHaveValue('80,00');
+  await page.getByRole('button', { name: 'Calculer la marge' }).click();
+  await page.getByRole('button', { name: 'Copier le résultat et la trace' }).click();
+  await expect(page.locator('[data-status]')).toHaveText('Résultat et trace copiés.');
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toContain('Taux de marge');
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Télécharger le CSV' }).click();
+  expect((await download).suggestedFilename()).toBe('calcul-marge-commerciale.csv');
+  await page.getByLabel('Prix d’achat HT').fill('81');
+  await expect(page.locator('[data-output]')).toBeHidden();
+  await page.getByRole('button', { name: 'Effacer' }).click();
+  await expect(page.getByLabel('Prix d’achat HT')).toHaveValue('');
+  expect(await page.evaluate(() => (window as unknown as { outilEvents: string[] }).outilEvents)).toEqual([
+    'demarrage', 'exemple', 'reussite', 'copie', 'export', 'effacer',
+  ]);
+});
+
+test('échéance : les deux conventions divergent et l’absence de convention est refusée', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto(`${HUB}/calculateur-date-echeance-facture`);
+  await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
+  await expect(page.getByLabel('Date de facture', { exact: true })).toHaveValue('2026-01-20');
+  await page.getByRole('button', { name: 'Effacer' }).click();
+  await expect(page.getByLabel('Règle générale')).toHaveValue('');
   await page.getByLabel('Règle générale').selectOption('eom45');
   await page.getByLabel('Date de facture', { exact: true }).fill('2026-01-20');
   await page.getByLabel(/Je confirme/).check();
@@ -81,10 +115,18 @@ test('échéance : les deux conventions divergent et l’absence de convention e
   await page.getByLabel('Date de facture', { exact: true }).fill('2026-01-20');
   await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
   await expect(page.locator('[data-result]')).toContainText('21 mars 2026');
+  await page.getByRole('button', { name: 'Copier la date et la trace' }).click();
+  await expect(page.locator('[data-status]')).toHaveText('Date et trace copiées.');
+  const calendar = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Ajouter au calendrier (.ics)' }).click();
+  expect((await calendar).suggestedFilename()).toBe('echeance-facture-fictive.ics');
 });
 
-test('amortissement : plan linéaire tracé, dégressif confirmé et entrées incohérentes refusées', async ({ page }) => {
+test('amortissement : plan linéaire tracé, dégressif confirmé et entrées incohérentes refusées', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto(`${HUB}/calculateur-amortissement-comptable`);
+  await page.getByRole('button', { name: 'Recharger l’exemple fictif' }).click();
+  await expect(page.getByLabel('Valeur amortissable')).toHaveValue('10000');
   const result = page.locator('[data-amortization-result]');
   const confirmation = page.locator('[data-declining-confirmation]');
   const value = page.getByLabel('Valeur amortissable');
@@ -107,6 +149,9 @@ test('amortissement : plan linéaire tracé, dégressif confirmé et entrées in
   await expect(page.locator('[data-result-rows] tr').first()).toContainText('1 506,85 €');
   await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
   await expect(page.locator('[data-result-rows] tr')).toHaveCount(6);
+  const csvDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Télécharger le plan en CSV' }).click();
+  expect((await csvDownload).suggestedFilename()).toBe('plan-amortissement-comptable-fictif.csv');
 
   await duration.fill('0');
   await page.getByRole('button', { name: 'Calculer le plan' }).click();
@@ -148,20 +193,29 @@ test('amortissement : plan linéaire tracé, dégressif confirmé et entrées in
   await expect(page.locator('[data-result-coefficient]')).toHaveText('1,75');
   await expect(page.locator('[data-result-rows] tr').first()).toContainText('2 625,00 €');
   await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
+  await page.getByRole('button', { name: 'Copier le résumé' }).click();
+  await expect(page.locator('[data-status]')).toHaveText('Résumé copié.');
 });
 
-test('rapprochement : CSV exact et refus d’une différence', async ({ page }) => {
+test('rapprochement : CSV exact et refus d’une différence', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.addInitScript(() => {
     const original = URL.revokeObjectURL.bind(URL);
     (window as unknown as { revokedUrls?: string[] }).revokedUrls = [];
     URL.revokeObjectURL = (url) => { (window as unknown as { revokedUrls: string[] }).revokedUrls.push(url); original(url); };
   });
   await page.goto(`${HUB}/modele-rapprochement-bancaire-excel-gratuit`);
+  await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
+  await expect(page.getByLabel('Solde du relevé bancaire')).toHaveValue('1000,00');
+  await page.getByRole('button', { name: 'Effacer' }).click();
+  await expect(page.getByLabel('Solde du relevé bancaire')).toHaveValue('');
   await page.getByLabel('Début de période').fill('2026-01-01'); await page.getByLabel('Fin de période').fill('2026-01-31');
   await page.getByLabel('Solde du relevé bancaire').fill('1000'); await page.getByLabel('Solde du compte 512').fill('950');
   await page.getByLabel('Frais bancaires à comptabiliser').fill('0'); await page.getByLabel('Intérêts à comptabiliser').fill('50');
   await page.getByRole('button', { name: 'Contrôler les soldes' }).click();
   await expect(page.locator('[data-difference]')).toHaveText('0,00 €');
+  await page.getByRole('button', { name: 'Copier le contrôle' }).click();
+  await expect(page.locator('[data-status]')).toHaveText('Contrôle copié.');
   const download = page.waitForEvent('download'); await page.getByRole('button', { name: /Télécharger le CSV/ }).click();
   const downloaded = await download;
   expect(downloaded.suggestedFilename()).toBe('modele-rapprochement-bancaire-fictif.csv');
