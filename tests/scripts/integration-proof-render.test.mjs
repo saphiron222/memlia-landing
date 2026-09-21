@@ -13,6 +13,15 @@ const files = [
   ...manifest.entries.map(({ target }) => target),
 ];
 
+test('les scènes montrent le geste sans chrome promotionnel ni mentions de coin', () => {
+  const html = readFileSync(join(project, 'docs/design/integration-proofs/index.html'), 'utf8');
+  assert.doesNotMatch(html, /class="brand"|class="foot"|<h1\b/i);
+  assert.doesNotMatch(html, /Jeu fictif|aucun partenariat|aucune donnée client|Memlia/i);
+  assert.equal((html.match(/class="frame(?:\s|\")/g) ?? []).length, 10);
+  assert.equal((html.match(/class="workspace"/g) ?? []).length, 10);
+  assert.equal((html.match(/class="exception"/g) ?? []).length, 10);
+});
+
 function fixture(t) {
   const root = mkdtempSync(join(tmpdir(), 'memlia-integration-proof-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));

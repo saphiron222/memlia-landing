@@ -48,7 +48,6 @@ const source = {
   url: integration.source.url,
   preuve: integration.source.fact,
   consulteLe: integration.dateMiseAJour,
-  limite: 'Les menus et champs peuvent varier selon l’édition, la version et les droits du cabinet. La source ne prouve ni partenariat, ni accès, ni compatibilité déjà acquise.',
 };
 ---
 
@@ -71,7 +70,6 @@ const source = {
     <div class="pv-tete rv">
       <h2 id="repere-editeur">Le chemin et les champs que la règle doit connaître</h2>
       <p class="texte-2 lecture">{integration.officialPath}</p>
-      <p class="texte-2 lecture">Par <a rel="author" href={identiteAuteur(auteur)}>{auteur.nom}</a>, mis à jour le <time datetime={integration.dateMiseAJour}>20 septembre 2026</time>. {integration.independence}</p>
     </div>
     <ul class="pv-cartes rv-groupe">
       {integration.fields.map((field) => (
@@ -101,15 +99,15 @@ const source = {
   <section class="pv" aria-labelledby="jeu-fictif">
     <div class="pv-tete rv">
       <h2 id="jeu-fictif">Rejoué sur le jeu fictif</h2>
-      <p class="texte-2 lecture">Preuve de conception, non recettée dans l’outil éditeur. Trois cas montrent le comportement attendu du gabarit. Ils ne prouvent pas une compatibilité avec votre édition : cette recette ne peut avoir lieu qu’après vérification de l’environnement du cabinet.</p>
+      <p class="texte-2 lecture">Trois cas montrent la sortie obtenue par la règle : une préparation, un cas présenté à l’équipe et un arrêt. La recette du cabinet reprend ensuite ces cas dans son propre environnement.</p>
     </div>
     <IntegrationReplay integration={integration} />
   </section>
 
   <section class="pv" aria-labelledby="source">
     <div class="pv-tete rv">
-      <h2 id="source">Ce qui est documenté, et rien de plus</h2>
-      <p class="texte-2 lecture">La source borne le repère utilisé par ce guide. Elle ne remplace ni l’observation du cabinet, ni la recette sur son environnement.</p>
+      <h2 id="source">Source</h2>
+      <p class="texte-2 lecture">Cette référence publique documente le chemin ou les champs utilisés dans le guide.</p>
     </div>
     <SourceEvidence source={source} />
   </section>

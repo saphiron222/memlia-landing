@@ -95,14 +95,8 @@ export interface IntegrationDefinition {
   boundary: { prepared: string; validation: string; human: string };
   replay: readonly IntegrationReplayCase[];
   source: IntegrationSource;
-  independence: string;
   tool?: { href: string; label: string };
 }
-
-const sageIndependence =
-  'Memlia est indépendante de Sage. Cette page documente une méthode de cadrage et ne suppose ni partenariat, ni certification, ni compatibilité déjà acquise.';
-const silaeIndependence =
-  'Memlia est indépendante de Silae. Cette page ne vaut ni partenariat, ni certification, ni validation d’un accès à votre environnement.';
 
 export const INTEGRATIONS: readonly IntegrationDefinition[] = [
   {
@@ -141,7 +135,6 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
       checkedAt: '20 septembre 2026',
       fact: 'La fiche décrit la reprise des écritures non rapprochées et le rapprochement bancaire dans Sage 100 Comptabilité.',
     },
-    independence: sageIndependence,
     tool: { href: '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit', label: 'Rejouer la règle avec le modèle gratuit' },
   },
   {
@@ -180,7 +173,6 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
       checkedAt: '20 septembre 2026',
       fact: 'La fiche Sage nomme les deux parcours de lettrage depuis les journaux de saisie et la gestion des comptes tiers.',
     },
-    independence: sageIndependence,
   },
   {
     slug: 'dsn-sage',
@@ -218,7 +210,6 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
       checkedAt: '20 septembre 2026',
       fact: 'La fiche Sage documente les organismes retraite, leur périodicité et leur mode de paiement pour la remontée DSN.',
     },
-    independence: sageIndependence,
   },
   {
     slug: 'bulletin-de-paie-sage',
@@ -256,7 +247,6 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
       checkedAt: '20 septembre 2026',
       fact: 'La fiche Sage documente le recalcul après modification et la possibilité de verrouiller la période après édition.',
     },
-    independence: sageIndependence,
   },
   {
     slug: 'saisie-comptable-sage',
@@ -294,7 +284,6 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
       checkedAt: '20 septembre 2026',
       fact: 'La fiche Sage décrit l’accès à la saisie par lot et les informations du dossier qui n’y sont pas visibles.',
     },
-    independence: sageIndependence,
   },
   {
     slug: 'cloture-sage',
@@ -332,7 +321,6 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
       checkedAt: '20 septembre 2026',
       fact: 'La fiche Sage rassemble les étapes et questions fréquentes d’une clôture dans Sage 100 Comptabilité.',
     },
-    independence: sageIndependence,
   },
   {
     slug: 'lettrage-cegid',
@@ -370,7 +358,6 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
       checkedAt: '20 septembre 2026',
       fact: 'La référence Cegid documente les conditions de compte lettrable, de code et d’équilibre pour le lettrage importé.',
     },
-    independence: 'Memlia est indépendante de Cegid. La présence de champs publics dans la documentation ne vaut ni partenariat, ni accès API, ni compatibilité avec votre édition.',
   },
   {
     slug: 'dsn-silae',
@@ -408,7 +395,6 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
       checkedAt: '20 septembre 2026',
       fact: 'Silae décrit la génération depuis les bulletins, le parcours des télédéclarations et les CRM de validation ou d’anomalies.',
     },
-    independence: silaeIndependence,
   },
   {
     slug: 'bulletin-de-paie-silae',
@@ -446,7 +432,6 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
       checkedAt: '20 septembre 2026',
       fact: 'Silae décrit la collecte des variables, la production, le contrôle, la validation et la distribution des bulletins.',
     },
-    independence: silaeIndependence,
   },
 ] as const;
 

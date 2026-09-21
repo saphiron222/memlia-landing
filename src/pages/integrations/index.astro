@@ -14,7 +14,7 @@ const page = {
   titre: 'Guides par environnement comptable | Memlia',
   description: 'Des repères factuels par logiciel et par tâche, reliés aux moyeux de service Memlia et limités aux requêtes dont la demande a été mesurée.',
   h1: 'Guides par environnement comptable',
-  chapeau: 'Une tâche se décrit avec les mots du cabinet, puis se rattache à l’environnement qui la porte. Ces guides ajoutent les menus, champs et pièges propres à cet environnement, sans transformer un nom d’éditeur en promesse de compatibilité.',
+  chapeau: 'Une tâche se décrit avec les mots du cabinet, puis se rattache à l’environnement qui la porte. Neuf guides montrent les menus, les champs, le geste préparé et le cas qui doit s’arrêter.',
   ariane: 'Guides par environnement',
   secondaire: { libelle: 'Comprendre le service Memlia', href: '/automatisation-cabinet-comptable' },
 };
@@ -48,14 +48,13 @@ const noeuds = [
     <div class="pv-tete rv">
       <h2 id="publication">Mesurer, publier peu, puis entretenir</h2>
       <p class="texte-2 lecture">Nous ouvrons un guide quand la demande est mesurée et que l’environnement apporte un repère propre. Une page sans signal est consolidée vers son moyeu de service au lieu de rester comme contenu maigre.</p>
-      <p class="texte-2 lecture">Par <a rel="author" href={identiteAuteur(auteur)}>{auteur.nom}</a>, mis à jour le <time datetime="2026-09-21">21 septembre 2026</time>.</p>
     </div>
     <div class="pv-bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
       <ol class="pv-bande-liste rv-groupe">
         <li class="pv-cellule rv"><h3>Demande mesurée</h3><p>La première vague retient neuf couples tâche–logiciel dont la formulation revient réellement.</p></li>
         <li class="pv-cellule rv"><h3>Repère propre</h3><p>Chaque guide porte un chemin, des champs, un piège et une source propres à l’environnement.</p></li>
-        <li class="pv-cellule rv"><h3>Limite écrite</h3><p>La documentation publique ne prouve ni l’édition, ni les droits, ni les formats du cabinet.</p></li>
+        <li class="pv-cellule rv"><h3>Frontière de décision</h3><p>Chaque guide sépare la préparation, la validation de l’équipe et le cas d’arrêt.</p></li>
         <li class="pv-cellule rv"><h3>Entretien prévu</h3><p>Le signal d’indexation et la source sont relus ; une page sans utilité n’est pas conservée par inertie.</p></li>
       </ol>
     </div>
@@ -75,10 +74,10 @@ const noeuds = [
     );
   })}
 
-  <section class="pv" aria-labelledby="pas-catalogue">
+  <section class="pv" aria-labelledby="passage-tache">
     <div class="pv-tete rv">
-      <h2 id="pas-catalogue">Ce n’est pas un catalogue de compatibilités</h2>
-      <p class="texte-2 lecture">Un menu documenté publiquement ne prouve ni l’édition du cabinet, ni ses droits, ni le format qu’il produit. L’engagement naît seulement après observation, règle écrite et recette sur un jeu fictif. Jusque-là, chaque page reste un guide de cadrage.</p>
+      <h2 id="passage-tache">Du guide à la tâche confiée</h2>
+      <p class="texte-2 lecture">Le guide donne un repère de départ. La prise en charge commence par le geste réel, les accès disponibles et les exceptions du cabinet, puis se termine par une recette menée avec l’équipe.</p>
     </div>
   </section>
 </PageCommerciale>
