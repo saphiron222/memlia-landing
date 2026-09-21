@@ -8,15 +8,15 @@ const AUTHOR_ID = 'https://memlia.fr/a-propos#kevin-kitanga';
 const ORGANIZATION_ID = 'https://memlia.fr/#organization';
 
 const pages = [
-  { route: '/automatisation/paie', sources: 1, experience: false },
-  { route: '/automatisation/saisie-comptable', sources: 1, experience: false },
-  { route: '/automatisation/rapprochement-bancaire', sources: 1, experience: false },
-  { route: '/automatisation/notes-de-frais', sources: 1, experience: false },
-  { route: '/automatisation/factures-fournisseurs', sources: 1, experience: false },
-  { route: '/automatisation-cabinet-comptable', sources: 1, experience: true },
-  { route: '/methode', sources: 0, experience: true },
-  { route: '/garanties', sources: 1, experience: false },
-  { route: '/a-propos', sources: 1, experience: false },
+  { route: '/automatisation/paie', sources: 1, experience: false, modified: '2026-09-20' },
+  { route: '/automatisation/saisie-comptable', sources: 1, experience: false, modified: '2026-09-20' },
+  { route: '/automatisation/rapprochement-bancaire', sources: 1, experience: false, modified: '2026-09-20' },
+  { route: '/automatisation/notes-de-frais', sources: 1, experience: false, modified: '2026-09-20' },
+  { route: '/automatisation/factures-fournisseurs', sources: 1, experience: false, modified: '2026-09-20' },
+  { route: '/automatisation-cabinet-comptable', sources: 1, experience: true, modified: '2026-09-20' },
+  { route: '/methode', sources: 0, experience: true, modified: '2026-09-20' },
+  { route: '/garanties', sources: 1, experience: false, modified: '2026-09-20' },
+  { route: '/a-propos', sources: 0, experience: false, modified: '2026-09-21' },
 ];
 
 function htmlFor(route) {
@@ -35,7 +35,7 @@ test('les neuf pages E-E-A-T rendent une attribution vraie, un Person relié et 
     assert.match(html, /data-page-byline/, `${page.route} : byline visible`);
     assert.match(html, /rel="author"/, `${page.route} : lien auteur visible`);
     assert.match(html, /publié le <time datetime="2026-09-(?:16|20)"/, `${page.route} : publication visible`);
-    assert.match(html, /mis à jour le <time datetime="2026-09-20"/, `${page.route} : modification visible`);
+    assert.match(html, new RegExp(`mis à jour le <time datetime="${page.modified}"`), `${page.route} : modification visible`);
     assert.equal((html.match(/data-primary-source/g) ?? []).length, page.sources, `${page.route} : sources primaires`);
     assert.equal(html.includes('data-first-hand-experience'), page.experience, `${page.route} : expérience de première main`);
 
@@ -49,6 +49,6 @@ test('les neuf pages E-E-A-T rendent une attribution vraie, un Person relié et 
     });
     assert.equal(pageNode?.author?.['@id'], AUTHOR_ID, `${page.route} : author canonique`);
     assert.match(pageNode?.datePublished ?? '', /^2026-09-(?:16|20)$/, `${page.route} : datePublished réelle`);
-    assert.equal(pageNode?.dateModified, '2026-09-20', `${page.route} : dateModified réelle`);
+    assert.equal(pageNode?.dateModified, page.modified, `${page.route} : dateModified réelle`);
   }
 });

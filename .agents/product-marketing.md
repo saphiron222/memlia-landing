@@ -1,6 +1,6 @@
 # Charte de message et contexte marketing Memlia
 
-Document version : v3 — 17 septembre 2026 (la v2 du 15/09/2026 reste lisible dans git). **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
+Document version : v4 — 21 septembre 2026 (les versions antérieures restent lisibles dans git). **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
 
 ## 1. L'angle : ce qui fait la différence
 
@@ -37,7 +37,7 @@ Ce que le nom ne dit jamais : un chiffre de gain, une promesse d'autonomie, une 
 
 - « un service porté par Kevin Kitanga » en titre, et le « je » sur les pages commerciales : le site parle en **nous**. Le fondateur a une section (« Qui est derrière Memlia »), pas le titre.
 - « Ce que je ne suis pas » : une limite se dit comme un engagement (« Vous restez l'expert. Nous écrivons, et nous faisons tourner »), jamais comme un aveu.
-- Le boilerplate d'entité (SASU, RCS, arrondissement) hors mentions légales. Sur À propos, une seule ligne discrète : « société établie à Paris, immatriculée au RCS de Paris » (signal d'entité, exigé par `tests/proof/test_legal_identity.py`).
+- Le boilerplate d'entité (forme sociale, siège, RCS, SIREN, SIRET, registre) hors mentions légales. **L'identité juridique vit dans les mentions légales et le schéma Organization ; le corps public explique la valeur produit et la tâche du lecteur.** À propos n'est pas une exception : elle explique ce que nous automatisons, dans quels outils, où la mécanique s'arrête et ce que l'équipe garde.
 - Le mantra « sans fichier client, sans donnée de paie » répété à chaque page : il se dit une fois, au formulaire, et positivement (« Rien à envoyer : la description suffit »).
 - « nous étudions », « sans promettre », « pas par principe », « non contractuel » en réflexe défensif : on dit ce qu'on fait, on garde les réserves pour la page Garanties où elles sont une preuve.
 - « Identifier une tâche à automatiser » comme appel principal : remplacé par **« Confier une première tâche »**, qui dit la délégation.
@@ -125,7 +125,12 @@ Nous, vouvoiement, français professionnel, concret, calme et confiant. Phrases 
 
 Illustrations fonctionnelles fictives (`src/data/proofs.ts`), méthodes publiées et sourcées, glossaire sourcé et daté, la méthode elle-même. Aucun logo client, témoignage, nombre de cabinets, pourcentage de gain ni donnée client réelle, aucun téléphone public, aucune certification. Kevin Kitanga est le fondateur et l'auteur des articles ; il n'est pas expert-comptable et le site ne le laisse pas croire (la règle est celle du cabinet, le jugement professionnel reste au cabinet). Le siège légal est à Paris (mentions légales, JSON-LD Organization).
 
-Tests qui verrouillent la copy : `tests/proof/test_positioning.py` (hero, titre d'accueil, mots interdits), `test_integrated_media.py` (tagline), `test_legal_identity.py` (identité, « RCS de Paris » sur À propos), `test_build.py` (FAQ = 11, usages = 5, mots de processus, `pages-lastmod.json`), `tests/browser/positioning.spec.ts`, `sections-redesign.spec.ts` (cinq titres d'usages), `site.spec.ts` (navigation). Toute modification de copy rejoue `npm run lastmod:sync`, la chaîne Ressources (`resource:seal-surfaces` + `reaffirmer`) et `npm run build`.
+Tests qui verrouillent la copy : `tests/proof/test_positioning.py` (hero, titre d'accueil, mots interdits), `test_integrated_media.py` (tagline), `test_legal_identity.py` (séparation entre texte visible, mentions légales et Organization), `test_build.py` (FAQ = 11, usages = 5, mots de processus, `pages-lastmod.json`), `tests/browser/positioning.spec.ts`, `sections-redesign.spec.ts` (cinq titres d'usages), `site.spec.ts` (navigation). Toute modification de copy rejoue `npm run lastmod:sync`, la chaîne Ressources (`resource:seal-surfaces` + `reaffirmer`) et `npm run build`.
+
+## Changelog
+
+- v4 (2026-09-21) — Réservé l'identité juridique aux mentions légales et au schéma Organization ; À propos revient à la valeur produit après mesure du bloc registre hors contexte.
+- v3 (2026-09-17) — Repositionné Memlia sur le savoir-faire non écrit du cabinet, la règle écrite et la prise en charge entière d'une tâche répétitive.
 
 ## 11. Objectif et conversion
 
