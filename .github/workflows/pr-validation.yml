@@ -46,3 +46,5 @@ jobs:
 
       - name: Run browser contracts on Linux
         run: npm run test
+        env:
+          CF_PAGES: "1"
