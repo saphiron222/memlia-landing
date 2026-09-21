@@ -15,6 +15,10 @@ export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
     href: '/automatisation-cabinet-comptable',
     label: 'Voir le service d’automatisation',
   }),
+  'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir le service d’automatisation',
+  }),
   'comprendre-les-comptes-rendus-metier-dsn': Object.freeze({
     href: '/automatisation/paie',
     label: 'Voir la prise en charge autour de la paie',
@@ -22,6 +26,10 @@ export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
   'controler-les-bulletins-de-paie-avant-la-dsn': Object.freeze({
     href: '/automatisation/paie',
     label: 'Voir la prise en charge autour de la paie',
+  }),
+  'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir le service d’automatisation',
   }),
   'suivre-la-production-sociale-dans-excel': Object.freeze({
     href: '/automatisation/paie',

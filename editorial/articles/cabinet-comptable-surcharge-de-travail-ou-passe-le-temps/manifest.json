@@ -2,7 +2,7 @@
   "version": 1,
   "slug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
   "action": "creation",
-  "editorialStatus": "pret-preview",
+  "editorialStatus": "publie",
   "title": "Charge de travail en cabinet comptable : où passe le temps ?",
   "tabTitle": "Charge de travail en cabinet comptable : diagnostic | Memlia",
   "summary": "Une surcharge ne se lit pas dans une liste de tâches. Le journal fictif sépare répétition, attente, exception et décision, puis aide à choisir une première règle sans surveiller les personnes.",
@@ -159,11 +159,13 @@
   "contradictions": [],
   "kevin": {
     "briefApproved": true,
-    "previewApproved": false,
-    "productionApproved": false,
+    "previewApproved": true,
+    "productionApproved": true,
     "delegation": {
       "date": "2026-09-16",
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
-  }
+  },
+  "publishedAt": "2026-09-21",
+  "publicationEvidence": "preuves/publication.json"
 }

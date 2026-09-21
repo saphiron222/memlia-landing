@@ -44,7 +44,7 @@ export const BLOG_RUBRIQUES = Object.freeze([
 ]);
 
 /**
- * Deux articles transversaux restent hors rubrique par décision explicite. Chaque exemption est
+ * Les articles transversaux restent hors rubrique par décision explicite. Chaque exemption est
  * datée et motivée : le garde du contrat blog peut ainsi la rendre visible sans liste parallèle.
  */
 export const ARTICLES_HORS_RUBRIQUE = Object.freeze({

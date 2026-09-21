@@ -7,7 +7,7 @@ datePublication: 2026-09-21
 auteur: kevin
 sujets: [cabinet, pilotage, automatisation]
 motsCles: ["charge de travail cabinet comptable", "surcharge cabinet comptable", "organisation cabinet comptable", "plan de charge"]
-brouillon: true
+brouillon: false
 image: img-art-charge-travail-cabinet-comptable
 pipelineVersion: 1
 primaryQuery: "charge de travail cabinet comptable"
@@ -39,7 +39,7 @@ cta:
   outcome: "Nous observons la répétition avec votre équipe, écrivons sa règle dans vos mots, l’automatisons dans vos outils et la faisons recetter. Votre cabinet garde la décision. Rien à envoyer : décrivez seulement la tâche."
 imageOg: "/images/img-art-charge-travail-cabinet-comptable-og.webp"
 imageAlt: "Semaine fictive répartie entre répétition, attente, exception et décision humaine"
-statutEditorial: pret-preview
+statutEditorial: publie
 sources:
   - editeur: "OEC Paris — Le Francilien"
     titre: "Comment attirer et fidéliser des collaborateurs"

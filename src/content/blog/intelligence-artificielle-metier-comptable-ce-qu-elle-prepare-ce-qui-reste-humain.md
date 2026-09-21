@@ -7,7 +7,7 @@ datePublication: 2026-09-21
 auteur: kevin
 sujets: [ia, cabinet, automatisation]
 motsCles: ["métier comptable intelligence artificielle compétences", "intelligence artificielle cabinet comptable", "compétences comptables", "validation humaine"]
-brouillon: true
+brouillon: false
 image: img-art-intelligence-artificielle-metier-comptable
 pipelineVersion: 1
 primaryQuery: "métier comptable intelligence artificielle compétences"
@@ -39,7 +39,7 @@ cta:
   outcome: "Nous observons la répétition choisie par votre cabinet, écrivons sa règle dans vos mots, l’automatisons dans vos outils et la faisons recetter par vos équipes. Votre cabinet garde la décision. Rien à envoyer : décrivez seulement la tâche."
 imageOg: "/images/img-art-intelligence-artificielle-metier-comptable-og.webp"
 imageAlt: "Frontière en trois colonnes entre préparation automatisée, validation et décision humaine"
-statutEditorial: pret-preview
+statutEditorial: publie
 sources:
   - editeur: "OPCO Atlas"
     titre: "Experts-comptables, Commissaires aux comptes et Audit"
