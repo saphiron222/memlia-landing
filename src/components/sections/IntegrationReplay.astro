@@ -1,0 +1,40 @@
+---
+import type { IntegrationDefinition } from '@/data/integrations';
+interface Props { integration: IntegrationDefinition; }
+const { integration } = Astro.props;
+---
+
+<div class="replay-wrap" tabindex="0" aria-label="Résultats du jeu fictif, défilement horizontal possible">
+  <table>
+    <thead><tr><th>Entrée fictive</th><th>Règle appliquée</th><th>Verdict</th><th>Trace produite</th></tr></thead>
+    <tbody>
+      {integration.replay.map((replay) => (
+        <tr>
+          <td data-label="Entrée">{replay.input}</td>
+          <td data-label="Règle">{replay.rule}</td>
+          <td data-label="Verdict"><span class="verdict">{replay.outcome}</span></td>
+          <td data-label="Trace">{replay.detail}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .replay-wrap { width: 100%; min-width: 0; overflow-x: auto; margin-top: 36px; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-feuille); }
+  table { width: 100%; min-width: 760px; border-collapse: collapse; }
+  th, td { padding: 18px; border-bottom: 1px solid var(--ligne-douce); text-align: left; vertical-align: top; }
+  th { background: var(--surface-hover); color: var(--texte-fort); font-size: var(--t-sm); }
+  td { color: var(--texte-2); }
+  tr:last-child td { border-bottom: 0; }
+  .verdict { display: inline-flex; padding: 6px 9px; border-radius: 999px; white-space: nowrap; background: var(--accent-voile); color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; }
+  @media (max-width: 47.99rem) {
+    table { min-width: 0; }
+    thead { display: none; }
+    tbody, tr, td { display: block; width: 100%; }
+    tr { padding: 12px 0; border-bottom: 1px solid var(--ligne-douce); }
+    tr:last-child { border-bottom: 0; }
+    td { display: grid; grid-template-columns: minmax(6rem, .75fr) minmax(0, 1.25fr); gap: 12px; padding: 10px 14px; border: 0; }
+    td::before { content: attr(data-label); color: var(--texte-fort); font-size: var(--t-sm); font-weight: 600; }
+  }
+</style>

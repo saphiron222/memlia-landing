@@ -29,7 +29,10 @@ PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-pr
                    # v3, 17/09/2026 : deuxième satellite, famille « Saisie, OCR et pré-comptabilité ».
                    'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
                    # v3, 19/09/2026 : première cicatrice, relue et validée par Kevin.
-                   'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils'}
+                   'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
+                   # v3, 21/09/2026 : première vague talents, charge et compétences.
+                   'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps',
+                   'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'}
 BLOG_RUBRIQUES = {
     'controler-les-bulletins-de-paie-avant-la-dsn': 'paie-dsn-cabinet-comptable',
     'comprendre-les-comptes-rendus-metier-dsn': 'paie-dsn-cabinet-comptable',

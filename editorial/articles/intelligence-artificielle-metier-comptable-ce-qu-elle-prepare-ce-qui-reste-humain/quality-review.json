@@ -5,15 +5,15 @@
   "reviewer": "relecteur-qualite-ia-memlia",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 95,
+  "score": 94,
   "p0": 0,
   "categories": {
     "contentQuality": {
-      "score": 29,
+      "score": 28,
       "max": 30
     },
     "seoOptimization": {
-      "score": 24,
+      "score": 23,
       "max": 25
     },
     "eeatSignals": {
@@ -25,25 +25,25 @@
       "max": 15
     },
     "aiCitationReadiness": {
-      "score": 14,
+      "score": 15,
       "max": 15
     }
   },
   "evidence": [
-    "Le texte sépare préparation, validation et décision, décrit les capacités Memlia dans une règle explicite et fournit trois cas fictifs avec arrêts attendus.",
-    "Les bornes métier sont visibles : Apec datée du 9 décembre 2021, OEC intersectoriel 2023, Atlas non daté/qualitatif/prospectif, hypothèse de réaffectation du temps et absence de gains mesurés.",
-    "La conversion respecte la charte avec « confier cette tâche », prise en charge complète et décision conservée par le cabinet.",
-    "L'image inspectée correspond visuellement aux trois étapes et ne contient ni texte, ni donnée réelle, ni logo ; quelques transparences et contours sont légèrement ambigus mais sans défaut bloquant.",
-    "Les dérivés master, OG et héros AVIF/WebP existent aux dimensions déclarées ; la palette mesurée franchit tous les seuils de la forge."
+    "Le HTML rendu compte environ 2 159 mots, un H1 unique, un sommaire, deux tableaux, une couverture et deux preuves fonctionnelles.",
+    "Les trois sorties de l’oracle figurent bit pour bit dans le corps et le rejeu frais passe sur IA-01, IA-02 et IA-03.",
+    "Les cinq claims sont liés inline et retrouvés mot pour mot sur des pages HTTP 200 le 21 septembre 2026.",
+    "La clôture « La règle à retenir » précède « Pour aller plus loin » et le CTA respecte le libellé et la destination de la charte.",
+    "Le canonical, Open Graph, les schémas structurés, le maillage et les dérivés image sont présents sur le candidat exact."
   ],
   "reservations": [
-    "La vérification du HTML public, de Lighthouse et du comportement mobile relève du gate après scellement ; cette revue porte sur le candidat figé avant publication.",
-    "Quelques transparences et contours de la couverture restent volontairement abstraits, sans gêner la lecture préparation-validation-décision."
+    "Le visuel competences-refus résume les statuts et messages au lieu d’afficher les décisions complètes ; le tableau HTML porte toutefois bit pour bit les trois sorties et décisions de l’oracle.",
+    "La couverture reste volontairement abstraite, mais son alt et la preuve en trois colonnes lèvent l’ambiguïté sans ajouter de promesse."
   ],
-  "verdict": "95/100, PASS : article éditorialement robuste, correctement borné, dérivés techniques présents et couverture cohérente avec la frontière en trois étapes. Le gate après scellement doit encore vérifier le HTML final, le build et les surfaces techniques avant toute publication.",
+  "verdict": "94/100, PASS : sources inline exactes, oracle exécutable et sorties obtenues, clôture requise, frontière opérationnelle concentrée, images conformes et surfaces techniques présentes. Le candidat peut être scellé hors production.",
   "subject": {
     "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-    "articleSha256": "d7e7cd05983ecf816935fd149ee0b48f1dc37e97ecbb2a0e7a6a9477c0b1cea5",
-    "manifestSha256": "befb3bdde7ac77b6c7465122a9deeee90656d09df05d6dc6bf761337a47c3403"
+    "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
+    "manifestSha256": "d0b176ea64ba9efab023c24f259bb447abe58753dd4153b4ee9409b43a99b9d8"
   }
 }

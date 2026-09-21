@@ -4,8 +4,8 @@
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-09-21",
-  "articleSha256": "d7e7cd05983ecf816935fd149ee0b48f1dc37e97ecbb2a0e7a6a9477c0b1cea5",
-  "manifestSha256": "befb3bdde7ac77b6c7465122a9deeee90656d09df05d6dc6bf761337a47c3403",
+  "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
+  "manifestSha256": "d0b176ea64ba9efab023c24f259bb447abe58753dd4153b4ee9409b43a99b9d8",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
   ],
@@ -49,48 +49,48 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "L'image inspectée montre trois plateformes reliées de gauche à droite, une zone de préparation, un point de contrôle central et une main sculpturale gardant la troisième plateforme, ce qui correspond visuellement à la frontière en trois étapes du cadre.",
-        "Les textes du cadre ne sont pas rendus dans l'image, conformément au brief sans texte lisible ; leur présence est documentée dans recette.json."
+        "La couverture montre trois plateformes reliées : préparation d’entrées, point de contrôle et décision protégée par une main abstraite.",
+        "La composition horizontale, isométrique et mate respecte le sujet, la composition, le style, la palette, les interdits et l’alt du brief."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "L'image est une composition horizontale 3D aérée, sans texte lisible, logo, visage, fausse interface, donnée client ni alerte rouge.",
-        "image-source.json documente une sortie retouchée 1920×1080 issue d'un master 16:9 et les seuils de palette."
+        "L’inspection indépendante ne montre aucun texte, logo, visage, personnage complet, donnée client, fausse interface ou alerte rouge.",
+        "Le master est horizontal 1920×1080 et la palette mesurée crème, vert, vert profond et graphite dépasse les seuils déclarés."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "L'inspection directe ne montre aucun nom, dossier, nombre, donnée personnelle ou donnée client.",
-        "Le cadre porte « jeu d'essai fictif » et la provenance générée/retouchée est documentée dans image-source.json."
+        "Aucun nom, dossier, valeur client ou information personnelle n’est visible sur la couverture ni sur les deux preuves inline.",
+        "La preuve des sorties indique explicitement « jeu fictif » et « Oracle exécuté · 3 cas joués »."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Les trois plateformes et le chemin de gauche à droite rendent reconnaissables une préparation, un checkpoint de validation et une décision gardée par une main abstraite.",
-        "La pièce arrêtée avant le checkpoint et le dispositif central matérialisent le doute et la validation sans présenter un opérateur ou une interface produit."
+        "Le chemin gauche-droite, le checkpoint central et la main abstraite rendent reconnaissables préparation, validation et décision humaine.",
+        "La pièce arrêtée avant le contrôle matérialise le doute sans suggérer une autonomie ou une action automatique."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Les dérivés ont été lus sur disque : master PNG 1920×1080, OG WebP 1200×630, héros AVIF/WebP 768×432 et variantes publiques AVIF/WebP en 768, 1200 et 1600 px.",
-        "image-source.json relie le master retouché à son entrée et documente les hashes, dimensions et mesures de palette."
+        "Les fichiers contrôlés comprennent le master PNG 1920×1080, l’OG WebP 1200×630, les héros 768×432 AVIF/WebP et les variantes publiques 768/1200/1600 AVIF/WebP.",
+        "Le manifeste des preuves scelle les deux WebP inline à 1600×900 et le test de rendu confirme quatre preuves recrutement conformes."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L'alt de couverture décrit précisément la frontière en trois colonnes entre préparation automatisée, validation et décision humaine.",
-        "Les alts inline décrivent la frontière puis les trois cas fictifs ; ils n'attribuent pas à l'image un résultat mesuré."
+        "L’alt de couverture décrit précisément la frontière entre préparation automatisée, validation et décision humaine.",
+        "Les alts inline décrivent la frontière puis une proposition et deux refus motivés ; ils correspondent aux images inspectées sans annoncer de gain."
       ]
     }
   ]

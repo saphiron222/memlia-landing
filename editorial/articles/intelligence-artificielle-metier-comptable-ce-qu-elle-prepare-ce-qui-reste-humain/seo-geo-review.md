@@ -1,29 +1,29 @@
-# SEO et préparation aux citations IA — Intelligence artificielle et métier comptable : ce qu’elle prépare, ce qui reste humain
+# SEO et préparation aux citations IA — Intelligence artificielle et métier comptable : compétences humaines
 
-Verdict : PASS — 95/100, 0 P0 (revue indépendante du 2026-09-21, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
+Verdict : PASS — 94/100, 0 P0 (revue indépendante du 2026-09-21, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
 | Catégorie | Score |
 | --- | ---: |
-| Qualité du contenu | 29/30 |
-| SEO | 24/25 |
+| Qualité du contenu | 28/30 |
+| SEO | 23/25 |
 | E-E-A-T | 14/15 |
 | Technique | 14/15 |
-| Préparation aux citations IA | 14/15 |
-| Total | 95/100 |
+| Préparation aux citations IA | 15/15 |
+| Total | 94/100 |
 
 ## SEO
 
-- Le title, la description, les requêtes, le maillage interne et les sources sont cohérents dans recette.json et corps.md.
-- La recette configure H1, title, description, canonical, OG et BlogPosting via le gabarit Article ; le gate final doit confirmer leur rendu après scellement.
-- Le sujet est différencié de la page service et du pilier cartographique par son angle compétences/frontière.
+- H1, title, description, canonical, OG et maillage sont cohérents avec la requête métier comptable, intelligence artificielle et compétences.
+- Les cinq liens externes inline pointent vers les pages exactes et la bibliographie porte date et portée.
+- Le candidat reste noindex avant scellement, conformément au statut de preview.
 
 ## Préparation aux citations
 
-- La réponse directe, la règle écrite et le tableau des trois cas forment des blocs autonomes citables.
-- La terminologie préparer-valider-décider est stable et les limites sont explicites.
-- Les affirmations externes sont accompagnées de bornes temporelles, sectorielles et méthodologiques ; l'image renforce la frontière sans ajouter de promesse.
+- La réponse directe, la frontière en trois colonnes et le tableau des sorties forment des blocs autonomes citables.
+- Les citations institutionnelles sont bornées pour éviter de transformer un contexte historique ou prospectif en résultat actuel.
+- La terminologie préparer-valider-décider reste stable et le rejeu fournit une proposition et deux refus nommés.
 
 ## Réserves mesurées
 
-- La vérification du HTML public, de Lighthouse et du comportement mobile relève du gate après scellement ; cette revue porte sur le candidat figé avant publication.
-- Quelques transparences et contours de la couverture restent volontairement abstraits, sans gêner la lecture préparation-validation-décision.
+- Le visuel competences-refus résume les statuts et messages au lieu d’afficher les décisions complètes ; le tableau HTML porte toutefois bit pour bit les trois sorties et décisions de l’oracle.
+- La couverture reste volontairement abstraite, mais son alt et la preuve en trois colonnes lèvent l’ambiguïté sans ajouter de promesse.

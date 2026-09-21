@@ -538,6 +538,10 @@ export function auditerContratPages({
     if (!page.footerHrefs.includes('/outils-comptables-gratuits')) {
       erreurs.push(error(page.route, 5, 'le footer généré ne porte pas le hub /outils-comptables-gratuits'));
     }
+    for (const legalRoute of ['/mentions-legales', '/politique-de-confidentialite']) {
+      const occurrences = page.footerHrefs.filter((href) => href === legalRoute).length;
+      if (occurrences !== 1) erreurs.push(error(page.route, 5, `le footer porte ${legalRoute} ${occurrences} occurrence(s), exactement 1 requise`));
+    }
   }
 
   const servicesPublics = auditerServicesPublics({ root, dist, pages });

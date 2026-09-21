@@ -17,6 +17,8 @@ const ATTACHES = [
 
 const HORS_RUBRIQUE = [
   'automatiser-un-cabinet-comptable-la-carte-des-taches',
+  'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps',
+  'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain',
   'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
 ];
 
@@ -25,7 +27,7 @@ const entree = (id, date = '2026-09-20') => ({
   data: { datePublication: new Date(`${date}T00:00:00.000Z`), titre: id, resume: `Résumé substantiel de ${id}` },
 });
 
-test('le contrat central porte deux rubriques, cinq articles rattachés et deux exclusions motivées', () => {
+test('le contrat central porte deux rubriques, cinq articles rattachés et quatre exclusions motivées', () => {
   assert.equal(BLOG_RUBRIQUES.length, 2);
   const attaches = BLOG_RUBRIQUES.flatMap((rubrique) => rubrique.articleIds);
   assert.deepEqual([...attaches].sort(), [...ATTACHES].sort());

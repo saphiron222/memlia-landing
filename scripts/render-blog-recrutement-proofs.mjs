@@ -14,6 +14,12 @@ const output = `.qa/annotations/blog-recrutement-${mode}`;
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 mkdirSync(output, { recursive: true });
 const contract = existsSync(contractPath) ? JSON.parse(readFileSync(contractPath, 'utf8')) : [];
+const replayPath = 'docs/qa/blog-recrutement-replay.json';
+const replay = JSON.parse(readFileSync(replayPath, 'utf8'));
+assert.equal(replay.status, 'PASS', 'L’oracle de rejeu doit être PASS avant le rendu des preuves');
+assert.equal(replay.fictitious, true, 'L’oracle de rejeu doit porter uniquement sur des cas fictifs');
+assert.equal(replay.articles.length, 2, 'L’oracle doit couvrir les deux articles du lot');
+assert.ok(replay.articles.every((article) => article.status === 'PASS' && article.cases.length >= 3 && article.cases.every((entry) => entry.passed)), 'Tous les cas de rejeu doivent être PASS');
 const proofRecipes = new Map();
 for (const recipeDir of readdirSync('editorial/recettes', { withFileTypes: true }).filter((entry) => entry.isDirectory())) {
   const recipePath = `editorial/recettes/${recipeDir.name}/recette.json`;
@@ -48,13 +54,13 @@ try {
   const fonts = await page.evaluate(() => [...document.fonts].map((f) => ({ family: f.family, status: f.status })));
   assert.ok(fonts.length >= 3 && fonts.every((f) => f.status === 'loaded'), 'Polices non chargées');
   const ids = await page.locator('.frame').evaluateAll((els) => els.map((el) => el.id));
-  assert.equal(ids.length, 6, 'Six preuves attendues');
+  assert.equal(ids.length, 4, 'Quatre preuves attendues');
   assert.ok(ids.every((id) => proofRecipes.has(id)), 'Chaque cadre doit correspondre à une preuve déclarée dans une recette');
   if (mode !== 'adopt') assert.deepEqual(ids, contract.map((c) => c.id), 'Cadres hors contrat');
   if (mode !== 'adopt') {
     assert.ok(contract.every((entry) => entry.article && entry.alt && entry.source && /^\d{4}-\d{2}-\d{2}$/.test(entry.capturedAt)), 'Métadonnées de preuve incomplètes');
     const articles = Map.groupBy(contract, (entry) => entry.article);
-    assert.equal(articles.size, 3, 'Trois articles distincts sont attendus');
+    assert.equal(articles.size, 2, 'Deux articles distincts sont attendus');
     for (const [article, proofs] of articles) assert.equal(proofs.length, 2, `${article} doit porter exactement deux preuves`);
   }
   await page.addStyleTag({ content: 'body{padding:0}main{display:block}.frame{display:none}.frame[data-render]{display:grid}' });
@@ -107,7 +113,7 @@ try {
   }
   assert.equal(new Set(records.map((r) => r.sha256)).size, records.length, 'Deux preuves identiques');
   if (mode === 'adopt') writeFileSync(contractPath, JSON.stringify(adopted, null, 2) + '\n');
-  const manifest = { schemaVersion: 1, browser: browser.version(), sources: [`${source}/index.html`, `${source}/styles.css`, contractPath, 'scripts/render-blog-recrutement-proofs.mjs'].map((path) => ({ path, sha256: hash(readFileSync(path)) })), entries: records.map(({ buffer, ...r }) => r) };
+  const manifest = { schemaVersion: 1, browser: browser.version(), sources: [`${source}/index.html`, `${source}/styles.css`, contractPath, `${source}/replay-fixtures.json`, replayPath, 'scripts/replay-blog-recrutement-cases.mjs', 'scripts/render-blog-recrutement-proofs.mjs'].map((path) => ({ path, sha256: hash(readFileSync(path)) })), entries: records.map(({ buffer, ...r }) => r) };
   if (mode === 'check') {
     const prior = JSON.parse(readFileSync(manifestPath, 'utf8'));
     assert.deepEqual(prior, manifest, 'Manifeste périmé');

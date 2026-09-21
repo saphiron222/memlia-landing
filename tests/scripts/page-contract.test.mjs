@@ -19,7 +19,7 @@ function html({ route, h1, media, href, ogTitle = h1, headline = h1, description
     ] })}</script>` : ''}
   </head><body><nav aria-label="Navigation principale"><a href="/contact">Contact</a></nav>
   <main id="main"><section><h1>${h1}</h1><img src="${media}" alt="Preuve propre à ${route}"><a href="${href}">Continuer</a></section></main>
-  <footer>${footerOutils ? '<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>' : ''}</footer></body></html>`;
+  <footer>${footerOutils ? '<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>' : ''}<a href="/mentions-legales">Mentions légales</a><a href="/politique-de-confidentialite">Confidentialité</a></footer></body></html>`;
 }
 
 function fixture() {
@@ -344,6 +344,19 @@ test('la clause liens exige le hub outils dans le footer généré', () => {
       description: 'Description alpha propre et suffisamment distincte pour le contrat universel.', footerOutils: false,
     }));
     assert.match(afficherTemoin(audit(root), 5), /footer généré.*outils-comptables-gratuits/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la clause liens refuse les destinations légales dupliquées dans le footer', () => {
+  const { root, pages } = fixture();
+  try {
+    const legal = '<a href="/mentions-legales">Mentions légales</a><a href="/politique-de-confidentialite">Confidentialité</a>';
+    writeFileSync(join(root, 'dist/alpha.html'), pages.alpha.replace('</footer>', `${legal}</footer>`));
+    const sortie = afficherTemoin(audit(root), 5);
+    assert.match(sortie, /footer.*mentions-legales.*2 occurrence/i);
+    assert.match(sortie, /footer.*politique-de-confidentialite.*2 occurrence/i);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

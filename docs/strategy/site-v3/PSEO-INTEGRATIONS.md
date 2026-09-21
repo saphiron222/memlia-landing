@@ -25,7 +25,7 @@ DÉCISION · Une page d’intégration reste un rayon d’un moyeu de service ·
 | dsn silae | 10 | `/integrations/dsn-silae` | `/automatisation/paie` |
 | bulletin de paie silae | 10 | `/integrations/bulletin-de-paie-silae` | `/automatisation/paie` |
 
-Chaque entrée possède ses propres repères éditeur, champs, piège, source officielle et cas fictifs. Le gabarit affiche explicitement que ces cas ne sont pas une recette dans le logiciel éditeur.
+Chaque entrée possède ses propres repères éditeur, champs, piège, source officielle et cas fictifs. Le gabarit présente ces cas comme un rejeu fictif et réserve la recette à l’environnement propre du cabinet, sans ajouter un avertissement défensif répétitif.
 
 ## Vague 2 — dix variations moyennes, fermées
 

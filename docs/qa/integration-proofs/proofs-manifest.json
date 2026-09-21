@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/integration-proofs/index.html",
+      "sha256": "309c69bcb0d00feb70d657c1ea273f3051fb46fa8cf4d34ed816964a1cfbd2ca"
+    },
+    {
+      "path": "docs/design/integration-proofs/styles.css",
+      "sha256": "9b4efd6d6a8d2a6a502913b86bcb47e628e45a2cc6106a178ad55aafce741c6e"
+    },
+    {
+      "path": "docs/design/integration-proofs/content-contract.json",
+      "sha256": "ce982e8d52822e6879d1dcd3b1c9cea926bd5e79af5742288ed46640a2d87f69"
+    },
+    {
+      "path": "scripts/render-integration-proofs.mjs",
+      "sha256": "6be7d0fe1a419e980d1fee5c45e7b4a49efe403a8b5b88ee18aa7a83c10fa009"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/integration-proofs/index.html#hub",
+      "target": "public/proofs/integrations/hub.webp",
+      "bytes": 46170,
+      "sha256": "4d744d3e1113e63e578b18325b6b47f5396390e54c33bc27b3d25735c581d2f4"
+    },
+    {
+      "source": "docs/design/integration-proofs/index.html#rapprochement-bancaire-sage",
+      "target": "public/proofs/integrations/rapprochement-bancaire-sage.webp",
+      "bytes": 37108,
+      "sha256": "c35b5e319c5c54a62d26ad29607bd0c11f83b02cfb87f711bd63a26e95ca01a0"
+    },
+    {
+      "source": "docs/design/integration-proofs/index.html#lettrage-sage",
+      "target": "public/proofs/integrations/lettrage-sage.webp",
+      "bytes": 34260,
+      "sha256": "e24c9fda872363aca13b36c0e00395bc9c2d47923b7106c16abc3c3a301c2f9a"
+    },
+    {
+      "source": "docs/design/integration-proofs/index.html#dsn-sage",
+      "target": "public/proofs/integrations/dsn-sage.webp",
+      "bytes": 32620,
+      "sha256": "7ee9f8d436ffd58990be84f7477e9f5957e88ddcc177433daceebd61933324ef"
+    },
+    {
+      "source": "docs/design/integration-proofs/index.html#bulletin-de-paie-sage",
+      "target": "public/proofs/integrations/bulletin-de-paie-sage.webp",
+      "bytes": 34680,
+      "sha256": "2d03dacfedbdb4fbce78f2e30c248adc85dae810c61ba32bfdf74796ee3e9d3c"
+    },
+    {
+      "source": "docs/design/integration-proofs/index.html#saisie-comptable-sage",
+      "target": "public/proofs/integrations/saisie-comptable-sage.webp",
+      "bytes": 35414,
+      "sha256": "42351e3f51888c1efac0c7ce03c5be4fcb2328dd9ef34c05ada59d499d0455e8"
+    },
+    {
+      "source": "docs/design/integration-proofs/index.html#cloture-sage",
+      "target": "public/proofs/integrations/cloture-sage.webp",
+      "bytes": 36274,
+      "sha256": "e41f8cc3e949802602f1610a3a2d638c2f2cf1a45d7f42219e5c8a97f0f2ada2"
+    },
+    {
+      "source": "docs/design/integration-proofs/index.html#lettrage-cegid",
+      "target": "public/proofs/integrations/lettrage-cegid.webp",
+      "bytes": 31870,
+      "sha256": "cf2ece6230623c7adb18e7b2c0e2979f869dec9f331cd36abcc48b3c30a148ad"
+    },
+    {
+      "source": "docs/design/integration-proofs/index.html#dsn-silae",
+      "target": "public/proofs/integrations/dsn-silae.webp",
+      "bytes": 31798,
+      "sha256": "86f97cb51bd35229c937900e10d7aa9c7fca611a7f4b542192a0984fa8302d7d"
+    },
+    {
+      "source": "docs/design/integration-proofs/index.html#bulletin-de-paie-silae",
+      "target": "public/proofs/integrations/bulletin-de-paie-silae.webp",
+      "bytes": 34198,
+      "sha256": "0afe9804c76e256b16b657472e01f2b0d6eab9f9d63630f4fac305c188e2363f"
+    }
+  ]
+}

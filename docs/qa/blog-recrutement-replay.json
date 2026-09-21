@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-09-21",
+  "fixturePath": "docs/design/blog-recrutement-proofs/replay-fixtures.json",
+  "fixtureSha256": "9b4e3776e99d679899c87556ae14450ded5ec44483916d63313cf34fcbe3a91c",
+  "articles": [
+    {
+      "slug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "status": "PASS",
+      "bodyPath": "editorial/recettes/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps/corps.md",
+      "bodySha256": "d5fe843e46e8c62cc7b622713d636f88eacdc9cf281ea0014506b93d65300e90",
+      "cases": [
+        {
+          "id": "FLUX-01",
+          "input": {
+            "repeated": true,
+            "stable": true,
+            "missingField": null,
+            "contradictory": false,
+            "requiresJudgment": false
+          },
+          "status": "REPETITION",
+          "message": "Règle candidate RC-01",
+          "decision": "Faire relire la règle avant de la tester",
+          "passed": true
+        },
+        {
+          "id": "FLUX-02",
+          "input": {
+            "repeated": false,
+            "stable": false,
+            "missingField": "période",
+            "contradictory": false,
+            "requiresJudgment": false
+          },
+          "status": "ATTENTE",
+          "message": "Entrée manquante : période",
+          "decision": "Afficher le motif et suspendre la suite",
+          "passed": true
+        },
+        {
+          "id": "FLUX-03",
+          "input": {
+            "repeated": false,
+            "stable": false,
+            "missingField": null,
+            "contradictory": true,
+            "requiresJudgment": false
+          },
+          "status": "EXCEPTION",
+          "message": "Conditions contradictoires",
+          "decision": "Sortir du circuit et présenter le cas",
+          "passed": true
+        },
+        {
+          "id": "FLUX-04",
+          "input": {
+            "repeated": false,
+            "stable": false,
+            "missingField": null,
+            "contradictory": false,
+            "requiresJudgment": true
+          },
+          "status": "DECISION_HUMAINE",
+          "message": "Préparation disponible",
+          "decision": "Présenter les éléments pour arbitrage",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "status": "PASS",
+      "bodyPath": "editorial/recettes/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain/corps.md",
+      "bodySha256": "e101521c22c0f1dc310d28e38a551191de69040d1d33a5fa975fd668bd8ffdbb",
+      "cases": [
+        {
+          "id": "IA-01",
+          "input": {
+            "complete": true,
+            "periodRecognized": true,
+            "interpretations": 1,
+            "ruleExists": true
+          },
+          "status": "PROPOSITION",
+          "message": "Proposition PR-001 préparée ; source et période jointes",
+          "decision": "Attendre la validation du collaborateur",
+          "passed": true
+        },
+        {
+          "id": "IA-02",
+          "input": {
+            "complete": true,
+            "periodRecognized": true,
+            "interpretations": 2,
+            "ruleExists": true
+          },
+          "status": "REFUS_AMBIGUITE",
+          "message": "Deux interprétations possibles",
+          "decision": "Présenter l’ambiguïté au collaborateur",
+          "passed": true
+        },
+        {
+          "id": "IA-03",
+          "input": {
+            "complete": true,
+            "periodRecognized": true,
+            "interpretations": 1,
+            "ruleExists": false
+          },
+          "status": "REFUS_REGLE_ABSENTE",
+          "message": "Aucune règle écrite pour ce cas",
+          "decision": "Retour au cabinet pour écrire la règle",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

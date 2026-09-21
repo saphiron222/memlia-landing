@@ -1,0 +1,42 @@
+[
+  {
+    "id": "hub",
+    "centralText": "Guides par environnement 9 gestes documentés dans 3 environnements 9 guides ouverts Entrée 35 formulations mesurées Tâche + environnement Règle 6 suggestions ou plus Un repère public propre à la tâche Sortie 9 guides reliés 26 variations non ouvertes Sage 100 Comptabilité 6 guides Rapprochement bancaire Lettrage DSN Bulletin de paie Saisie comptable Clôture Cegid Loop 1 guide Lettrage Silae Paie 2 guides DSN Bulletin de paie Exception 26 variations restent fermées Une formulation peu demandée ou sans repère propre retourne vers la page de tâche au lieu de créer une page maigre. Non publiée"
+  },
+  {
+    "id": "rapprochement-bancaire-sage",
+    "centralText": "Sage 100 Comptabilité · Rapprochement État de rapprochement · mars 3 mouvements lus Entrée Relevé reçu Date, montant, référence Règle Clé exacte Compte, sens, période Sortie 1 proposition 2 cas à décider Mouvement Contrôle obtenu Décision Virement ALPHA · 480,00 € Référence unique sur la période Proposé Paiement groupé · 960,00 € Deux combinaisons possibles À vérifier Exception Mouvement 1842 · pièce absente La règle ne trouve aucune origine vérifiable. Le mouvement reste ouvert. Arrêt"
+  },
+  {
+    "id": "lettrage-sage",
+    "centralText": "Sage 100 Comptabilité · Lettrage Compte tiers 411ALPHA 0,00 € solde proposé Entrée 4 lignes ouvertes Même compte tiers Règle Référence + équilibre Une seule paire certaine Sortie Code L-0241 Proposition à valider Écriture Montant Décision Facture FAC-0241 1 248,00 € Incluse Règlement FAC-0241 −1 248,00 € Inclus Exception Règlement sans référence · −312,00 € Aucune paire certaine : la ligne reste ouverte et ne reçoit pas de code. Non inclus"
+  },
+  {
+    "id": "dsn-sage",
+    "centralText": "Sage 100 Paie & RH · DSN Préparation DSN · mars 18 dossiers lus Entrée État de paie Période et établissements Règle 8 contrôles Identité, organismes, totaux Sortie Liste de contrôle Dépôt au pôle social Dossier Contrôle obtenu Décision Dossier 14 Période cohérente Préparé Dossier 15 Organismes et totaux concordants Préparé Exception Dossier 16 · SIRET absent L’identifiant requis manque. La préparation s’arrête avant transmission. Bloqué"
+  },
+  {
+    "id": "bulletin-de-paie-sage",
+    "centralText": "Sage 100 Paie & RH · Bulletins Contrôle des bulletins · mars 42 bulletins lus Entrée Bulletins recalculés Version courante Règle Seuil du cabinet Net, rubriques, absences Sortie 2 exceptions Présentées au gestionnaire Bulletin Contrôle obtenu Décision Dossier fictif A Net à payer · écart +1,2 % Préparé Dossier fictif B Net à payer · écart +9,4 % À vérifier Exception Dossier fictif C · absence non rapprochée La source de l’absence n’est pas reliée au bulletin recalculé. Arrêt"
+  },
+  {
+    "id": "saisie-comptable-sage",
+    "centralText": "Sage 100 Comptabilité · Saisie par lot Journal ACH · préparation 12 pièces lues Entrée Pièces fournisseurs Date, tiers, HT, TVA, TTC Règle Champs + équilibre Contexte du lot seulement Sortie Écriture proposée Intégration séparée Pièce Contrôle obtenu Décision Facture récurrente Champs complets · lot équilibré Proposée Facture datée avril Période du lot : mars Suspendue Exception Pièce 0038 · montant illisible Le TTC ne peut pas être relu : aucune écriture n’est préparée. Refusée"
+  },
+  {
+    "id": "cloture-sage",
+    "centralText": "Sage 100 Comptabilité · Pré-clôture Exercice N · contrôles préparatoires 7 contrôles rejoués Entrée Journaux et balance Exercice N Règle Checklist écrite Chaque alerte conservée Sortie Dossier de contrôle Décision à l’expert-comptable Contrôle Résultat obtenu Décision Journal des achats Centralisé Conforme Journal d’OD Encore ouvert À vérifier Exception Balance générale · écart de 12,00 € L’écart reste visible et empêche tout feu vert de clôture. À arbitrer"
+  },
+  {
+    "id": "lettrage-cegid",
+    "centralText": "Cegid Loop · Lettrage Paquet 411BETA 0,00 € solde du paquet Entrée 3 écritures ouvertes Compte, journal, pièce Règle Même compte lettrable Paquet équilibré Sortie Code LB018 proposé 2 lignes à valider Écriture Montant Décision Facture B-018 2 400,00 € Incluse Règlement B-018 −2 400,00 € Inclus Exception Avoir sans origine · −120,00 € La référence de pièce manque. L’écriture reste hors paquet et sans code. Non inclus"
+  },
+  {
+    "id": "dsn-silae",
+    "centralText": "Silae Paie · DSN Retours DSN · mars 6 retours reçus Entrée Comptes rendus métier Code et libellé Règle Dossier + période Contexte rapproché Sortie File de traitement Réponse au gestionnaire Retour Classement obtenu Décision Retour 01 Accusé de réception Classé Retour 02 Identifiant incohérent À traiter Exception Retour 03 · contexte incomplet Le dossier ou la période ne peut pas être établi. Aucune réponse n’est préparée. Arrêt"
+  },
+  {
+    "id": "bulletin-de-paie-silae",
+    "centralText": "Silae Paie · Bulletins Portefeuille social · mars 31 bulletins contrôlés Entrée Bulletins calculés Variables et absences Règle Contrôles du pôle Origine, rubrique, seuil Sortie Vue d’exceptions Correction au gestionnaire Dossier Contrôle obtenu Décision Dossier fictif A Variable reliée à sa source Préparé Dossier fictif B Prime attendue absente À vérifier Exception Dossier fictif C · variation hors seuil Le net ne suffit pas à expliquer la rubrique. Le pôle social décide. À décider"
+  }
+]

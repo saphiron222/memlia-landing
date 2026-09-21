@@ -12,13 +12,13 @@ const slugs = [
   'bulletin-de-paie-silae',
 ] as const;
 
-for (const width of [320, 1440]) {
+for (const width of [320, 375, 768, 1024, 1440, 1920]) {
   test(`les neuf pages intégrations restent lisibles à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     for (const slug of slugs) {
       await page.goto(`/integrations/${slug}`);
       await expect(page.locator('h1')).toHaveCount(1);
-      await expect(page.locator('[data-media]')).toHaveAttribute('data-media', slug);
+      await expect(page.locator('[data-proof]')).toHaveAttribute('data-proof', `integrations/${slug}`);
       await expect(page.locator('.source-lien')).toHaveAttribute('href', /^https:\/\//);
       await expect(page.locator('h2', { hasText: 'La règle écrite' })).toBeVisible();
       await expect(page.locator('#jeu-fictif')).toHaveText('Rejoué sur le jeu fictif');
@@ -51,6 +51,26 @@ test('le hub, les moyeux et le footer relient la vague forte', async ({ page }) 
   }
 });
 
+test('les dix pages gardent leurs repères accessibles essentiels', async ({ page }) => {
+  for (const path of ['/integrations', ...slugs.map((slug) => `/integrations/${slug}`)]) {
+    await page.goto(path);
+    await expect(page.locator('main')).toHaveCount(1);
+    await expect(page.locator('nav[aria-label="Navigation principale"]')).toHaveCount(1);
+    await expect(page.locator('footer')).toHaveCount(1);
+    await expect(page.locator('img:not([alt])')).toHaveCount(0);
+    await expect(page.locator('a[href=""]')).toHaveCount(0);
+    const structure = await page.evaluate(() => {
+      const ids = [...document.querySelectorAll<HTMLElement>('[id]')].map((element) => element.id);
+      const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
+      const levels = [...document.querySelectorAll('main h1, main h2, main h3')].map((heading) => Number(heading.tagName[1]));
+      const skipped = levels.some((level, index) => index > 0 && level > levels[index - 1] + 1);
+      return { duplicateIds, skipped };
+    });
+    expect(structure.duplicateIds, `${path}: identifiants dupliqués`).toEqual([]);
+    expect(structure.skipped, `${path}: niveau de titre sauté`).toBe(false);
+  }
+});
+
 test('sans JavaScript, le contenu, la preuve et le retour au moyeu restent servis', async ({ browser }) => {
   const context = await browser.newContext({
     baseURL: process.env.QA_URL ?? 'http://127.0.0.1:4321',
@@ -60,7 +80,7 @@ test('sans JavaScript, le contenu, la preuve et le retour au moyeu restent servi
   const page = await context.newPage();
   await page.goto('/integrations/lettrage-cegid');
   await expect(page.locator('h1')).toBeVisible();
-  await expect(page.locator('[data-media="lettrage-cegid"]')).toBeVisible();
+  await expect(page.locator('[data-proof="integrations/lettrage-cegid"]')).toBeVisible();
   await expect(page.locator('main a[href="/automatisation/saisie-comptable"]')).toBeVisible();
   await context.close();
 });

@@ -1,29 +1,28 @@
 # SEO et préparation aux citations IA — Charge de travail en cabinet comptable : où passe le temps ?
 
-Verdict : PASS — 92/100, 0 P0 (revue indépendante du 2026-09-21, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
+Verdict : PASS — 94/100, 0 P0 (revue indépendante du 2026-09-21, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
 | Catégorie | Score |
 | --- | ---: |
 | Qualité du contenu | 28/30 |
-| SEO | 23/25 |
-| E-E-A-T | 13/15 |
+| SEO | 24/25 |
+| E-E-A-T | 14/15 |
 | Technique | 14/15 |
 | Préparation aux citations IA | 14/15 |
-| Total | 92/100 |
+| Total | 94/100 |
 
 ## SEO
 
-- Le title, la description, les requêtes secondaires, le maillage et les sources sont cohérents dans recette.json et corps.md.
-- La recette configure H1, title, description, canonical, OG et BlogPosting via le gabarit Article ; le gate final doit confirmer leur rendu après scellement.
-- La couverture et son alt sont cohérents : cinq cartes reliées matérialisent quatre états de flux, sans texte ni donnée réelle.
+- Le title de 60 caractères, le H1 intent-first, la description, le canonical et l’Open Graph décrivent la même intention de diagnostic.
+- Le maillage contextuel relie le pilier, l’article frère, la méthode, l’offre d’automatisation et deux définitions du glossaire.
+- Le noindex, follow du rendu est cohérent avec un candidat de preview et doit être levé par la matérialisation de production, pas par la revue.
 
 ## Préparation aux citations
 
-- Les blocs Réponse directe, définitions, règle et rejeu sont autonomes et facilement extractibles.
-- Les claims externes sont correctement bornés par leurs dates et niveaux de preuve.
-- Les bornes temporelles et méthodologiques rendent les citations réutilisables sans transformer un contexte historique en situation actuelle.
+- La réponse directe et les tableaux exposent des unités autonomes, stables et faciles à extraire sans dépendre d’un contexte implicite.
+- Les affirmations externes sont citées inline et immédiatement bornées par leur date, leur corpus ou l’absence de protocole affiché.
+- L’oracle exécutable et les deux preuves fonctionnelles donnent une provenance transparente aux sorties du jeu fictif.
 
 ## Réserves mesurées
 
-- La vérification du HTML public, de Lighthouse et du comportement mobile relève du gate après scellement ; cette revue porte sur le candidat figé avant publication.
-- La couverture reste abstraite par contrainte du brief sans texte ; l'alt fournit l'information complémentaire sans surinterpréter un résultat.
+- Les sources externes donnent un contexte qualitatif plutôt qu’une mesure directe de la charge ; le corps l’annonce explicitement et fonde sa méthode sur le rejeu fictif vérifiable.

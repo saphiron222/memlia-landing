@@ -1,16 +1,16 @@
 ## Réponse directe
 
-L’IA ne remplace pas un métier en bloc. Dans le dispositif décrit ici, l’automatisation conçue selon la méthode Memlia peut préparer une information, appliquer une règle explicite et proposer une sortie soumise à validation. Cette conception ne garantit ni que la règle était la bonne, ni que l’exception a été comprise, ni que la décision doit partir. La frontière utile sépare ce qui se prépare seul, ce qui attend une validation et ce qui reste une décision humaine.
+L’IA traite une règle écrite, pas un métier en bloc. Dans la méthode Memlia, elle reconnaît une entrée, applique une condition explicite et prépare une proposition traçable. Le collaborateur vérifie la source et la période, valide l’action, arbitre l’exception et garde la décision. Une entrée ambiguë ou une règle absente produit un refus motivé.
 
-Cette réponse ne suppose aucun changement de logiciel. Elle commence par une tâche réelle, décrite dans les mots du cabinet, puis par une règle écrite et un jeu d’essai fictif. L’automatisation vient après. Elle s’arrête quand la règle manque.
+Cette frontière commence par une tâche réelle, décrite dans les mots du cabinet, puis par une règle écrite et un jeu d’essai fictif. Le véhicule vient après : l’automatisation prend place dans les outils déjà utilisés et cesse quand la règle manque.
 
 ## Pourquoi « remplacer » est la mauvaise unité de mesure
 
 Un métier de cabinet assemble plusieurs natures de travail. Il faut comprendre une situation, repérer des informations, appliquer des conventions, gérer une relation, expliquer un écart et assumer une décision. Parler de remplacement additionne tout cela comme si chaque geste avait la même frontière.
 
-La branche professionnelle décrit une évolution plus précise. Sur sa page non datée, OPCO Atlas présente la transition numérique comme un facteur qui « impacte fortement les métiers des cabinets d’expertise-comptable ». La même page identifie un « Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation ». Ces énoncés sont qualitatifs : ils ne mesurent ni un effet propre à l’IA ni un effet sur l’emploi.
+La branche professionnelle décrit une évolution plus précise. Sur sa page non datée, OPCO Atlas présente la transition numérique comme un facteur qui [« impacte fortement les métiers des cabinets d’expertise-comptable »](https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html). La même page identifie un [« Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation »](https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html). Ces énoncés sont qualitatifs : ils ne mesurent ni un effet propre à l’IA ni un effet sur l’emploi.
 
-Le 9 décembre 2021, l’Apec et le Conseil supérieur de l’Ordre situaient leur partenariat « dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable ». Ce communiqué ne décrit pas la situation de 2026. La transmission apparaît aussi dans un livre blanc intersectoriel résumé par l’OEC Paris en 2023 : « Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance. » Ce corpus n’est pas une étude propre aux cabinets.
+Le 9 décembre 2021, l’Apec et le Conseil supérieur de l’Ordre situaient leur partenariat [« dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable »](https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html). Ce communiqué ne décrit pas la situation de 2026. La transmission apparaît aussi dans un livre blanc intersectoriel résumé par l’OEC Paris en 2023 : [« Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance. »](https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/) Ce corpus n’est pas une étude propre aux cabinets.
 
 L’unité utile est donc la règle. Une règle peut être stable, observable et testable. Un jugement professionnel ne l’est pas toujours. Une automatisation sérieuse prend la première en charge et rend le second visible au lieu de le masquer.
 
@@ -30,13 +30,13 @@ Une condition claire peut produire une action préparatoire claire : classer, ca
 
 Un bon système ne cherche pas à faire disparaître l’incertitude. Il la nomme. Une valeur hors période, une pièce ambiguë ou une règle absente déclenche un arrêt. Cet arrêt fait partie du résultat attendu.
 
-## Ce qu’elle ne garantit pas
+## Où placer la décision humaine
 
-Une sortie bien formulée peut rester fausse. Une règle historique peut être devenue inadaptée. Une donnée peut être complète techniquement mais insuffisante pour décider. C’est pourquoi la qualité du texte produit ne doit jamais devenir la preuve de sa justesse.
+Une sortie bien formulée reste une proposition à vérifier. Le collaborateur contrôle la source, la période et la condition appliquée avant toute action. Une règle historique, une donnée techniquement complète ou un texte convaincant ne suffisent pas à décider.
 
 Le cabinet fixe le périmètre de la règle, les entrées qu’elle accepte, la période couverte et le rôle chargé de valider. Le jeu d’essai utilise des cas fictifs pour éprouver la logique sans exposer de dossier client.
 
-Enfin, elle ne garantit pas l’acceptabilité d’une décision. Informer un client, interpréter une situation ou assumer un arbitrage engage une relation et une responsabilité. Une proposition peut préparer cette décision ; elle ne la prend pas à la place de la personne compétente.
+Informer un client, interpréter une situation ou assumer un arbitrage engage une relation et une responsabilité. La préparation rassemble les éléments utiles ; la personne compétente choisit et assume l’action.
 
 ## La règle écrite
 
@@ -46,7 +46,7 @@ Enfin, elle ne garantit pas l’acceptabilité d’une décision. Informer un cl
 
 **Conditions** : son format, sa période, le rôle attendu et les exceptions connues sont explicites.
 
-**Action** : le système prépare ou propose une sortie traçable ; il ne décide pas silencieusement.
+**Action** : le système prépare une sortie traçable et la soumet au rôle chargé de valider.
 
 **Cas de refus** : une ambiguïté, une information manquante, une règle absente ou une entrée hors du périmètre convenu arrête le traitement.
 
@@ -56,27 +56,27 @@ Enfin, elle ne garantit pas l’acceptabilité d’une décision. Informer un cl
 | Appliquer une condition déjà écrite | Vérifier la source et la période | Arbitrer une exception |
 | Signaler un cas hors cadre | Autoriser une action qui engage | Assumer la décision et la relation |
 
-**La proposition.** Le système prépare une sortie traçable et la présente avec sa source, sa période et la condition appliquée. Il n’agit pas silencieusement à la place du cabinet.
+**La proposition.** Le système prépare une sortie traçable et la présente avec sa source, sa période et la condition appliquée. Le cabinet valide l’action et garde la décision.
 
 **L’arrêt.** Cette frontière est plus exigeante qu’un simple contrôle final. Une ambiguïté, une règle absente ou une entrée hors du périmètre convenu arrête le traitement. « Refuser » et « demander une information » sont des résultats normaux.
 
-**Le jeu d’essai.** Avant toute recette, les trois sorties sont rejouées sur des cas fictifs : proposition, attente de validation et arrêt motivé.
+**Le jeu d’essai.** La même règle a été exécutée sur trois entrées fictives : une entrée complète, une pièce à deux interprétations et une entrée sans règle applicable. Le rejeu a produit une proposition et deux refus motivés.
 
 ## Rejoué sur le jeu fictif
 
-Le jeu d’essai contient trois cas inventés. Il ne reproduit aucun client ni aucun collaborateur réel.
+Le rejeu exécutable du 21 septembre 2026 contient trois cas inventés. Il ne reproduit aucun client ni aucun collaborateur réel. Chaque ligne ci-dessous rapporte le statut et le message effectivement produits par la règle.
 
-| Cas fictif | Ce que la règle observe | Sortie attendue |
+| Cas joué | Sortie obtenue | Décision |
 |---|---|---|
-| Entrée complète, période reconnue | Toutes les conditions sont présentes | Proposition préparée, en attente de validation |
-| Pièce lisible mais ambiguë | Deux interprétations restent possibles | Arrêt dans le doute, motif visible |
-| Entrée connue, règle absente | Aucun cas écrit ne couvre la situation | Retour au cabinet pour écrire la règle |
+| IA-01 · entrée complète, période reconnue | `PROPOSITION` · « Proposition PR-001 préparée ; source et période jointes » | Attendre la validation du collaborateur |
+| IA-02 · pièce lisible, deux interprétations | `REFUS_AMBIGUITE` · « Deux interprétations possibles » | Présenter l’ambiguïté au collaborateur |
+| IA-03 · entrée reconnue, règle absente | `REFUS_REGLE_ABSENTE` · « Aucune règle écrite pour ce cas » | Retour au cabinet pour écrire la règle |
 
 Le troisième cas est le plus important. Forcer une sortie donnerait l’impression que l’automatisation « sait ». L’arrêt montre au contraire où le savoir-faire du cabinet doit être formulé.
 
 ## Ce que cela change pour les compétences
 
-OPCO Atlas écrit, dans un passage prospectif non daté, qu’« Une partie des activités actuelles des cabinets sera automatisée à l’avenir ». La page ne donne ni horizon, ni proportion, ni mesure d’effet sur l’emploi. Dans la méthode Memlia, l’automatisation est traitée comme une question d’exécution et de frontière : la règle, l’exception et la décision doivent rester lisibles.
+OPCO Atlas écrit, dans un passage prospectif non daté, qu’[« Une partie des activités actuelles des cabinets sera automatisée à l’avenir »](https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html). La page ne donne ni horizon, ni proportion, ni mesure d’effet sur l’emploi. Dans la méthode Memlia, l’automatisation est traitée comme une question d’exécution et de frontière : la règle, l’exception et la décision doivent rester lisibles.
 
 Hypothèse à vérifier sur chaque tâche : si une préparation répétitive est effectivement retirée du flux, le temps libéré peut être réaffecté aux cas qui dépassent la règle. Aucun effet n’est présumé avant la recette puis la mesure sur le périmètre réel.
 
@@ -100,15 +100,19 @@ Une démo réussie sur un cas courant ne prouve pas la tenue dans l’exception.
 
 Le contrôle porte sur le flux et la règle, jamais sur un classement nominatif des collaborateurs. Memlia travaille avec des agrégats et n’installe pas de surveillance individuelle.
 
-### Promettre un résultat non mesuré
+### Présenter une hypothèse comme un résultat
 
-Ni un poste supprimé, ni un délai, ni un pourcentage de temps gagné ne découle automatiquement de la méthode. La recette teste la justesse de la règle avant toute mesure d’effet.
+La recette teste la justesse de la règle avant toute mesure d’effet. Un poste, un délai ou un pourcentage de temps gagné demande une mesure propre au périmètre réel.
+
+## La règle à retenir
+
+L’intelligence artificielle prépare ce qu’une règle écrite permet de vérifier et refuse le reste avec un motif visible. Le collaborateur valide la proposition, arbitre l’exception et garde la décision.
 
 ## Pour aller plus loin
 
 [La carte des tâches répétitives d’un cabinet](/blog/automatiser-un-cabinet-comptable-la-carte-des-taches) replace cette frontière dans une famille de gestes sans en faire un catalogue. La méthode Memlia consiste à observer une tâche répétitive, écrire sa [règle de cabinet](/glossaire#regle-de-cabinet) dans les mots du cabinet, construire l’automatisation dans les outils déjà utilisés, l’éprouver sur un jeu fictif, la faire recetter puis la maintenir. [Voir la méthode](/methode) permet de comprendre ce cycle. [Les garanties](/garanties) détaillent l’arrêt dans le doute et la [validation humaine](/glossaire#validation-humaine). [L’automatisation d’un cabinet comptable](/automatisation-cabinet-comptable) présente la prise en charge entière d’une tâche.
 
-La question « où passe le temps ? » est traitée dans [le diagnostic de surcharge](/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps). La question de la transmission du savoir-faire est traitée dans [l’article sur la fidélisation](/blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire).
+La question « où passe le temps ? » est traitée dans [le diagnostic de surcharge](/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps).
 
 Si une répétition est déjà choisie, [confier cette tâche](/contact) ouvre sa prise en charge entière. Nous écrivons sa règle dans vos mots, l’automatisons dans vos outils et la faisons recetter par vos équipes. Votre cabinet garde la décision. Rien à envoyer : décrivez seulement la tâche.
 

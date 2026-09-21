@@ -4,8 +4,8 @@
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-09-21",
-  "articleSha256": "0d1a708b36f2436f06a68bac8d79ce80542b03b71aed24f714544db6b2a2c206",
-  "manifestSha256": "058d7e76280217bacbefe3b39a338ea0ef4ee2666a18d6426239a964b810cd6a",
+  "articleSha256": "6b31cabadd97572d132441ab35f8340bb19baf85ea3da8412573f45fe3db8320",
+  "manifestSha256": "4d373c03a2b800dc7f25894d57f3e928bdf614a03b93765d076e86f5dcae714a",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact cabinet-comptable-surcharge-de-travail-ou-passe-le-temps."
   ],
@@ -49,48 +49,48 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "L'image retouchée montre bien cinq cartes reliées : boucle de répétition, deux barres séparées pour l'attente, branche divergente pour l'exception, jonction équilibrée pour la décision et cinquième carte de liaison sans nouvelle catégorie.",
-        "La composition est un diorama 3D mat horizontal, aéré, sans texte ; elle correspond au brief généré dans prompt.json plutôt qu'au cadre HTML de preuve inline."
+        "La couverture représente cinq cartes reliées dans une composition horizontale, avec boucle, attente, divergence et jonction pour les quatre états annoncés.",
+        "Le sujet, la composition, le diorama 3D mat, la palette épinglée, les interdits et l’alt sont tous contrôlables dans le brief et le master."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "L'image inspectée est horizontale, sans texte lisible, logo, visage, interface, horloge, classement ou alerte rouge, et utilise une composition 3D aérée conforme aux interdits du brief.",
-        "image-source.json documente une sortie retouchée 1920×1080 issue d'un master 16:9."
+        "L’inspection du master ne montre aucun texte, chiffre, logo, personnage, donnée client, fausse interface, alerte rouge ou symbole d’envoi automatique.",
+        "Le master est net, horizontal et sans troncature ; la mesure de palette scellée est PASS pour le crème, le vert, le vert profond et le graphite."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Aucun nom, dossier, nombre, donnée client ou information personnelle n'est visible dans l'image inspectée.",
-        "Le cadre prévu porte « semaine fictive sans donnée nominative » et la source est documentée comme générée puis retouchée."
+        "La couverture reste entièrement abstraite et ne contient aucun nom, dossier, montant, identifiant ou information personnelle.",
+        "Les preuves inline indiquent explicitement le jeu d’essai fictif et l’absence de nom ou de donnée client."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Une inspection visuelle indépendante relit sans texte les quatre états demandés : boucle, écart suspendu, divergence et jonction ; la flèche finale relie la séquence sans ajouter de catégorie.",
-        "Le sujet reste une semaine abstraite de flux et ne dérive ni vers un tableau de bord, ni vers une surveillance individuelle."
+        "Les symboles différencient visuellement la répétition, l’attente, l’exception et le point de décision sans simuler une interface produit.",
+        "La semaine et la matrice renforcent le même diagnostic de flux et rendent le sujet reconnaissable sans classement individuel."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Les dérivés ont été lus sur disque : master PNG 1920×1080, OG WebP 1200×630, héros AVIF/WebP 768×432 et variantes publiques AVIF/WebP en 768, 1200 et 1600 px.",
-        "image-source.json relie le master retouché à son entrée et documente les hashes, dimensions et mesures de palette."
+        "Les dimensions contrôlées sont 1920×1080 pour le master, 1200×630 pour l’OG et 768×432 pour le héros de référence.",
+        "Les deux preuves fonctionnelles mesurent 1600×900, leurs empreintes sont scellées et le contrôle de rendu confirme les quatre preuves du lot."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L'alt « Semaine fictive répartie entre répétition, attente, exception et décision humaine » décrit fidèlement les quatre symboles de flux portés par les cinq cartes.",
-        "L'alt reste informatif sans annoncer de gain, de donnée client ni de résultat mesuré."
+        "L’alt de couverture décrit une semaine fictive répartie entre les quatre états sans annoncer un résultat ou un gain.",
+        "Les deux alts inline décrivent respectivement le journal fictif et la matrice fréquence-stabilité-coût du doute, conformément aux images inspectées."
       ]
     }
   ]

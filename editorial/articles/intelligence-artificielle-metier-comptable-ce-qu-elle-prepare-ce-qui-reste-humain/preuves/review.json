@@ -4,8 +4,8 @@
   "kind": "editorial-review",
   "status": "PASS",
   "checkedAt": "2026-09-21",
-  "articleSha256": "d7e7cd05983ecf816935fd149ee0b48f1dc37e97ecbb2a0e7a6a9477c0b1cea5",
-  "manifestSha256": "befb3bdde7ac77b6c7465122a9deeee90656d09df05d6dc6bf761337a47c3403",
+  "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
+  "manifestSha256": "d0b176ea64ba9efab023c24f259bb447abe58753dd4153b4ee9409b43a99b9d8",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
   ],
@@ -16,9 +16,9 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "La réponse directe distingue clairement préparation automatisée, validation et décision humaine.",
-        "L'article propose une règle écrite, un arrêt dans le doute et trois cas fictifs adaptés à une direction de cabinet.",
-        "La réaffectation du temps est explicitement formulée comme une hypothèse à vérifier, sans gain présumé."
+        "La réponse directe répond immédiatement à la requête en séparant préparation automatisée, validation du collaborateur et décision humaine.",
+        "Le corps couvre les compétences, la règle écrite, les arrêts dans le doute et les responsabilités de la direction sans transformer l’article en catalogue de cas d’usage.",
+        "L’hypothèse de temps réaffecté est explicitement laissée à la recette et à la mesure du périmètre réel."
       ]
     },
     {
@@ -26,9 +26,9 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Le format thought-leadership est tenu : frontière, capacités bornées, règle, rejeu, compétences et erreurs à éviter.",
-        "Le titre et le corps couvrent l'intelligence artificielle, le métier comptable et les compétences sans catalogue de tâches.",
-        "Les tableaux Markdown fournissent des unités comparables, mais aucun rendu HTML local n'est disponible pour confirmer le balisage final."
+        "Le HTML rendu porte un H1 unique, un sommaire, une progression H2/H3 cohérente, deux tableaux et trois images dont deux preuves fonctionnelles.",
+        "Le titre d’onglet, le H1 et la description traitent tous l’intelligence artificielle, le métier comptable et les compétences humaines.",
+        "Le canonical auto-référent est exact et l’aperçu conserve volontairement robots noindex, follow avant publication."
       ]
     },
     {
@@ -36,9 +36,9 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Les cinq claims déclarés sont attribués à Atlas, Apec/OEC ou OEC Paris et le corps borne leur portée.",
-        "L'Apec est strictement datée du 9 décembre 2021 et n'est pas utilisée comme constat 2026.",
-        "Atlas est explicitement décrit comme non daté, qualitatif et prospectif, sans preuve d'effet propre à l'IA ou à l'emploi ; l'OEC 2023 est borné à un corpus intersectoriel."
+        "Les cinq affirmations externes sont liées inline vers la page exacte et reprises dans une bibliographie datée du 21 septembre 2026.",
+        "Les trois URL ont répondu HTTP 200 le 21 septembre 2026 et les cinq citations OPCO Atlas, Apec et OEC Paris ont été retrouvées mot pour mot dans les pages servies.",
+        "Le texte borne leur portée : Atlas est non daté, qualitatif et prospectif, Apec reste un communiqué de 2021 et le matériau OEC Paris est intersectoriel."
       ]
     },
     {
@@ -46,9 +46,9 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "La frontière préparer-valider-décider est opérationnalisée par déclencheur, conditions, action et refus.",
-        "Le jeu fictif couvre une proposition, une ambiguïté arrêtée et une règle absente renvoyée au cabinet.",
-        "Les capacités sont bornées au dispositif Memlia : règle explicite, proposition traçable, arrêt et validation humaine, sans prétention de remplacement global."
+        "L’oracle exécutable rejoue trois cas fictifs et le check retrouve bit pour bit chaque identifiant, statut, message et décision dans corps.md.",
+        "Le tableau « Cas joué | Sortie obtenue | Décision » rapporte PROPOSITION, REFUS_AMBIGUITE et REFUS_REGLE_ABSENTE comme sorties effectivement obtenues.",
+        "Les preuves inline competences-frontiere et competences-refus sont lisibles, non tronquées, fictives et cohérentes avec la frontière et le rejeu ; l’image de refus résume les statuts tandis que le tableau porte les messages et décisions exacts."
       ]
     },
     {
@@ -56,9 +56,9 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Le paquet de revue fournit un H1 unique, un title distinct, une description, les requêtes, liens internes et alts ; le gabarit Article émet canonical, Open Graph et BlogPosting au scellement.",
-        "Les fichiers image du candidat existent réellement : master 1920×1080, OG 1200×630, variantes 768×432 AVIF/WebP et variantes publiques 768/1200/1600 AVIF/WebP.",
-        "Le noindex appartient au candidat avant publication ; le gate de scellement vérifiera le HTML final et aucune preview privée n'est confondue avec la surface publiée."
+        "Le rendu figé contient un seul H1, le canonical attendu, og:title identique au H1, une image OG et les schémas BlogPosting, Person, Organization, WebSite, WebPage et BreadcrumbList.",
+        "La couverture est chargée eager avec fetchpriority high ; les deux preuves inline sont des WebP 1600×900 chargés en lazy avec des alts descriptifs.",
+        "Le title compte 67 caractères, le H1 68 caractères et le maillage inclut le pilier, l’article frère, /methode, /garanties, /automatisation-cabinet-comptable et deux entrées du glossaire."
       ]
     },
     {
@@ -66,9 +66,9 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "La réponse directe est autonome et pose immédiatement la frontière préparer-valider-décider.",
-        "Les termes préparation, règle explicite, validation, exception, arrêt et décision restent stables dans tout le corps.",
-        "Les tableaux et les trois sorties fictives sont citables ; leur conversion HTML finale reste à vérifier faute de rendu."
+        "La réponse directe, la frontière en trois colonnes et le tableau des trois sorties forment des blocs autonomes et extractibles.",
+        "Les claims externes sont immédiatement reliés à leur source et accompagnés de leurs limites temporelles, sectorielles ou méthodologiques.",
+        "La terminologie préparation, règle écrite, validation, exception, arrêt et décision reste stable sur toute la page."
       ]
     },
     {
@@ -76,9 +76,9 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "La clôture emploie « confier cette tâche », pointe vers /contact et décrit une prise en charge entière dans les outils existants.",
-        "Le texte rappelle que le cabinet garde la décision et n'exige rien à envoyer.",
-        "Le CTA reste cohérent avec un article qui explique la frontière plutôt qu'une promesse de remplacement."
+        "La frontière opérationnelle est concentrée dans « La règle écrite » avec les quatre libellés requis et un tableau préparer-valider-rester humain.",
+        "Le corps formule positivement ce que le système prépare et ce que le cabinet décide ; les négations restantes servent les conditions d’arrêt ou bornent précisément la portée des sources.",
+        "Le CTA final emploie « confier cette tâche », pointe vers /contact et décrit écriture, automatisation, recette, décision conservée et absence de fichier à envoyer."
       ]
     }
   ]

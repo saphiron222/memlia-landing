@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
-  "articleSha256": "0d1a708b36f2436f06a68bac8d79ce80542b03b71aed24f714544db6b2a2c206",
+  "articleSha256": "6b31cabadd97572d132441ab35f8340bb19baf85ea3da8412573f45fe3db8320",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -14,8 +14,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-44e7cf44a340",
-      "text": "Cette lecture ne mesure pas la productivité d’une personne. Elle agrège des événements de flux, sans nom ni donnée client. Elle ne promet pas de réduire la charge. Elle aide le cabinet à choisir une première répétition à examiner et à écrire la règle avant de l’automatiser.",
+      "id": "unit-58e3773bdb13",
+      "text": "Cette lecture agrège des événements de flux, sans nom ni donnée client. Elle aide le cabinet à choisir une première répétition à examiner, à écrire sa règle et à définir la mesure qui permettra d’en suivre l’effet après la recette.",
       "claimIds": []
     },
     {
@@ -34,8 +34,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-3c97698ce1c1",
-      "text": "Le diagnostic utile décrit donc des états. Il ne dit pas que toute répétition doit être automatisée. Il montre où la répétition est suffisamment stable pour être écrite et où l’incertitude doit rester visible.",
+      "id": "unit-17dff1cde8f9",
+      "text": "Le diagnostic utile décrit donc des états. Une répétition devient candidate lorsque sa règle est suffisamment stable pour être écrite ; l’incertitude, elle, reste visible et sort du circuit courant.",
       "claimIds": []
     },
     {
@@ -106,10 +106,10 @@
       "claimIds": []
     },
     {
-      "id": "unit-bdecfa8aae1e",
-      "text": "Un article de l’OEC Paris publié en 2023 résume un livre blanc intersectoriel et rapporte que « La plupart des entrepreneurs rencontrés par Pierre Deheunynck font des conditions de travail et d’emploi un élément distinctif de leur promesse employeur. » Ce corpus réunit des entreprises de tailles et secteurs variés, pas un échantillon de cabinets. Il ne démontre aucun effet de l’automatisation ; il invite seulement à rendre l’organisation du travail lisible sans installer de surveillance.",
+      "id": "unit-0ff95419512e",
+      "text": "Un article de l’OEC Paris publié en 2023 résume un livre blanc intersectoriel et rapporte que « La plupart des entrepreneurs rencontrés par Pierre Deheunynck font des conditions de travail et d’emploi un élément distinctif de leur promesse employeur. » Ce corpus réunit des entreprises de tailles et secteurs variés. Son apport ici est de rendre l’organisation du travail lisible, à l’échelle du flux et avec des agrégats.",
       "claimIds": [
-        "claim-unit-bdecfa8aae1e-1"
+        "claim-unit-0ff95419512e-1"
       ]
     },
     {
@@ -153,13 +153,13 @@
       "claimIds": []
     },
     {
-      "id": "unit-de6b9d880bcd",
-      "text": "L’arrêt. La règle refuse toute donnée personnelle, tout jugement de performance, toute cause non observée et toute règle contradictoire. Elle ne prétend pas diagnostiquer la santé au travail.",
+      "id": "unit-f8ee20396fb6",
+      "text": "L’arrêt. La règle refuse toute donnée personnelle, tout jugement de performance, toute cause non observée et toute règle contradictoire. Le diagnostic reste limité aux états du flux fictif et à leurs conditions observables.",
       "claimIds": []
     },
     {
-      "id": "unit-d67a7bb75e4c",
-      "text": "Le jeu d’essai. Une semaine fictive rejoue les quatre états. Toute question de risque psychosocial ou de droit du travail demande les compétences appropriées et ne se délègue pas à ce dispositif.",
+      "id": "unit-1eebb546086b",
+      "text": "Le jeu d’essai. La règle a été exécutée sur quatre événements d’une semaine fictive : une répétition stable, une entrée absente, deux conditions incompatibles et un choix engageant. Le rejeu a produit quatre états distincts et les actions associées.",
       "claimIds": []
     },
     {
@@ -168,13 +168,13 @@
       "claimIds": []
     },
     {
-      "id": "unit-2d7c2905c328",
-      "text": "Le scénario invente une semaine sans nom, sans dossier réel et sans durée présentée comme une moyenne sectorielle.",
+      "id": "unit-0d87b9b0f902",
+      "text": "Le rejeu exécutable du 21 septembre 2026 invente une semaine sans nom, sans dossier réel et sans durée présentée comme une moyenne sectorielle. Chaque ligne rapporte la sortie effectivement produite par la règle.",
       "claimIds": []
     },
     {
-      "id": "unit-8fda20304a50",
-      "text": "| Cas fictif | État retenu | Sortie attendue | |---|---|---| | Même préparation répétée avec les mêmes conditions | Répétition | Règle candidate à écrire | | Entrée attendue mais absente | Attente | Motif visible, aucune étape suivante | | Deux conditions incompatibles | Exception | Sortie du circuit, retour humain | | Source complète mais choix engageant | Décision | Préparation présentée, arbitrage humain |",
+      "id": "unit-6f8138547fe3",
+      "text": "| Cas joué | Sortie obtenue | Décision | |---|---|---| | FLUX-01 · même préparation, mêmes conditions | REPETITION · « Règle candidate RC-01 » | Faire relire la règle avant de la tester | | FLUX-02 · entrée attendue, valeur absente | ATTENTE · « Entrée manquante : période » | Afficher le motif et suspendre la suite | | FLUX-03 · deux conditions incompatibles | EXCEPTION · « Conditions contradictoires » | Sortir du circuit et présenter le cas | | FLUX-04 · source complète, choix engageant | DECISIONHUMAINE · « Préparation disponible » | Présenter les éléments pour arbitrage |",
       "claimIds": []
     },
     {
@@ -203,25 +203,25 @@
       "claimIds": []
     },
     {
-      "id": "unit-226647752429",
-      "text": "Cette grille ne donne aucun score universel. Le cabinet tranche avec son vocabulaire, ses outils et ses limites. Le résultat est un périmètre fermé, pas une transformation générale.",
+      "id": "unit-92b792ba9659",
+      "text": "Cette grille sert à comparer les candidats dans le contexte propre au cabinet. Le cabinet tranche avec son vocabulaire, ses outils et ses limites, puis ferme le périmètre de la première règle à éprouver.",
       "claimIds": []
     },
     {
-      "id": "unit-256a6c796fb4",
-      "text": "Ce que l’automatisation ne résout pas",
+      "id": "unit-7fcc633dd95e",
+      "text": "Ce qui reste au cabinet",
       "claimIds": []
     },
     {
-      "id": "unit-027dffaedb28",
-      "text": "Elle ne crée pas une entrée qui n’existe pas. Elle ne remplace pas une décision de management. Elle ne règle pas une charge causée par une demande exceptionnelle, un sous-effectif ou une priorité contradictoire. Elle ne transforme pas non plus une consigne orale instable en règle fiable sans travail métier.",
+      "id": "unit-fc81567bff13",
+      "text": "Le cabinet fournit les entrées, arbitre les priorités et traite les décisions de management. Une demande exceptionnelle, un sous-effectif ou une consigne orale instable sortent du diagnostic de flux : ils demandent une décision ou un travail métier avant toute automatisation.",
       "claimIds": []
     },
     {
-      "id": "unit-41a463acb6ee",
-      "text": "Sur une page de branche non datée et qualitative, OPCO Atlas décrit la transition numérique comme un facteur d’évolution et nomme un « Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation ». La source ne mesure ni un effet propre à l’IA ni un effet sur l’emploi. Dans la méthode Memlia, une préparation répétitive n’a de valeur que si le cabinet garde la capacité de comprendre, valider et faire évoluer la règle.",
+      "id": "unit-cf8f1a177621",
+      "text": "Sur une page de branche non datée et qualitative, OPCO Atlas décrit la transition numérique comme un facteur d’évolution et nomme un « Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation ». Cette source porte sur les compétences liées à la numérisation. Dans la méthode Memlia, une préparation répétitive a de la valeur lorsque le cabinet garde la capacité de comprendre, valider et faire évoluer la règle.",
       "claimIds": [
-        "claim-unit-41a463acb6ee-1"
+        "claim-unit-cf8f1a177621-1"
       ]
     },
     {
@@ -235,8 +235,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-1100911b009c",
-      "text": "Une mesure nominative change le diagnostic en surveillance. Memlia utilise des agrégats et refuse la mesure individuelle de productivité.",
+      "id": "unit-980422856f70",
+      "text": "Une mesure nominative change le diagnostic en surveillance. La méthode Memlia travaille exclusivement sur des événements agrégés et sur leurs états dans le flux.",
       "claimIds": []
     },
     {
@@ -265,8 +265,18 @@
       "claimIds": []
     },
     {
-      "id": "unit-1e3099923b34",
-      "text": "Le jeu fictif vérifie la logique, pas le résultat économique. Tout gain éventuel doit être mesuré après recette, sur le périmètre réel, sans extrapolation.",
+      "id": "unit-c6a3e7482799",
+      "text": "Le jeu fictif vérifie la logique. Le résultat économique se mesure après recette, sur le périmètre réel, à partir d’un état initial et d’un indicateur convenu avec le cabinet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e80dbe67a171",
+      "text": "La surcharge se diagnostique par les états du flux, jamais par le classement des personnes. Une répétition stable devient un candidat seulement après écriture de sa règle, rejeu des exceptions et validation du cabinet.",
       "claimIds": []
     },
     {
@@ -280,8 +290,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-79a344364a04",
-      "text": "Pour comprendre ce que cette frontière change au métier, lire ce que l’intelligence artificielle prépare et ce qui reste humain. Pour rendre la règle transmissible, lire écrire le savoir-faire avant de l’automatiser.",
+      "id": "unit-a4e9c595dbb4",
+      "text": "Pour comprendre ce que cette frontière change au métier, lire ce que l’intelligence artificielle prépare et ce qui reste humain.",
       "claimIds": []
     },
     {
@@ -364,8 +374,8 @@
       }
     },
     {
-      "id": "claim-unit-bdecfa8aae1e-1",
-      "unitId": "unit-bdecfa8aae1e",
+      "id": "claim-unit-0ff95419512e-1",
+      "unitId": "unit-0ff95419512e",
       "claim": "d’emploi un élément distinctif de leur promesse employeur",
       "type": "information",
       "sourceIds": [
@@ -423,8 +433,8 @@
       }
     },
     {
-      "id": "claim-unit-41a463acb6ee-1",
-      "unitId": "unit-41a463acb6ee",
+      "id": "claim-unit-cf8f1a177621-1",
+      "unitId": "unit-cf8f1a177621",
       "claim": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation",
       "type": "information",
       "sourceIds": [

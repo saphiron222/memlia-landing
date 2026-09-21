@@ -46,7 +46,7 @@ const graph = {
 
 <Base titre={outil.title} titreSocial={outil.h1} description={outil.description} chemin={path} noindex={outil.statut !== 'disponible'} base="/" csp={csp} socialImage={socialImage} schema={graph}>
 
-  <div class="feuille">
+  <div class="feuille" data-outil={outil.slug}>
     <OutilHero
       title={outil.h1}
       description={outil.description}
@@ -82,3 +82,47 @@ const graph = {
     />
   </div>
 </Base>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-outil]');
+  if (root) {
+    const outil = root.dataset.outil ?? 'inconnu';
+    const form = root.querySelector<HTMLFormElement>('[data-tool-section="calcul"] form');
+    let started = false;
+    let submits = 0;
+    const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', {
+      detail: { action, outil },
+    }));
+    const start = () => {
+      if (started) return;
+      started = true;
+      emit('demarrage');
+    };
+
+    form?.addEventListener('input', start);
+    form?.addEventListener('change', start);
+    form?.addEventListener('submit', () => {
+      start();
+      submits += 1;
+      queueMicrotask(() => {
+        const erreur = form.querySelector<HTMLElement>('[data-error]');
+        const refuse = Boolean(erreur && !erreur.hidden && erreur.textContent?.trim());
+        emit(refuse ? 'erreur' : 'reussite');
+        if (submits > 1) emit('recalcul');
+      });
+    });
+    root.addEventListener('click', (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const action = target?.closest<HTMLElement>('[data-outil-action]')?.dataset.outilAction;
+      if (action) {
+        if (action === 'exemple') start();
+        emit(action);
+      }
+      if (target?.closest('a[href="/contact"]')) emit('cta');
+    });
+    window.addEventListener('pageshow', (event) => {
+      const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+      if (event.persisted || navigation?.type === 'back_forward' || navigation?.type === 'reload') emit('retour');
+    }, { once: true });
+  }
+</script>

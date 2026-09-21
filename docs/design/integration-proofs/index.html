@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+  <title>Preuves fonctionnelles des guides par environnement</title>
+</head>
+<body>
+<main>
+  <section class="frame hub" id="hub" aria-label="Carte fictive des neuf guides publiés et des variations laissées en attente faute de demande suffisante">
+    <div class="workspace">
+      <header class="workspace-head">
+        <div><p class="context">Guides par environnement</p><h2>9 gestes documentés dans 3 environnements</h2></div>
+        <div class="counter"><strong>9</strong><span>guides ouverts</span></div>
+      </header>
+      <div class="flow" aria-label="Entrée, règle et sortie de publication">
+        <div><small>Entrée</small><strong>35 formulations mesurées</strong><span>Tâche + environnement</span></div>
+        <div><small>Règle</small><strong>6 suggestions ou plus</strong><span>Un repère public propre à la tâche</span></div>
+        <div><small>Sortie</small><strong>9 guides reliés</strong><span>26 variations non ouvertes</span></div>
+      </div>
+      <div class="guide-grid">
+        <article><p class="label">Sage 100 Comptabilité</p><strong>6 guides</strong><ul><li>Rapprochement bancaire</li><li>Lettrage</li><li>DSN</li><li>Bulletin de paie</li><li>Saisie comptable</li><li>Clôture</li></ul></article>
+        <article><p class="label">Cegid Loop</p><strong>1 guide</strong><ul><li>Lettrage</li></ul></article>
+        <article><p class="label">Silae Paie</p><strong>2 guides</strong><ul><li>DSN</li><li>Bulletin de paie</li></ul></article>
+      </div>
+      <aside class="exception"><div><small>Exception</small><strong>26 variations restent fermées</strong></div><p>Une formulation peu demandée ou sans repère propre retourne vers la page de tâche au lieu de créer une page maigre.</p><span class="state warning">Non publiée</span></aside>
+    </div>
+  </section>
+
+  <section class="frame" id="rapprochement-bancaire-sage" aria-label="Rapprochement bancaire Sage fictif : un mouvement proposé, un paiement groupé et une pièce absente laissés à vérifier">
+    <div class="workspace">
+      <header class="workspace-head"><div><p class="context">Sage 100 Comptabilité · Rapprochement</p><h2>État de rapprochement · mars</h2></div><div class="counter"><strong>3</strong><span>mouvements lus</span></div></header>
+      <div class="flow"><div><small>Entrée</small><strong>Relevé reçu</strong><span>Date, montant, référence</span></div><div><small>Règle</small><strong>Clé exacte</strong><span>Compte, sens, période</span></div><div><small>Sortie</small><strong>1 proposition</strong><span>2 cas à décider</span></div></div>
+      <div class="list-head"><span>Mouvement</span><span>Contrôle obtenu</span><span>Décision</span></div>
+      <div class="rows">
+        <div class="row"><strong>Virement ALPHA · 480,00 €</strong><span>Référence unique sur la période</span><span class="state success">Proposé</span></div>
+        <div class="row"><strong>Paiement groupé · 960,00 €</strong><span>Deux combinaisons possibles</span><span class="state warning">À vérifier</span></div>
+      </div>
+      <aside class="exception"><div><small>Exception</small><strong>Mouvement 1842 · pièce absente</strong></div><p>La règle ne trouve aucune origine vérifiable. Le mouvement reste ouvert.</p><span class="state blocked">Arrêt</span></aside>
+    </div>
+  </section>
+
+  <section class="frame" id="lettrage-sage" aria-label="Lettrage Sage fictif : deux écritures proposées ensemble et une différence de montant laissée ouverte">
+    <div class="workspace">
+      <header class="workspace-head"><div><p class="context">Sage 100 Comptabilité · Lettrage</p><h2>Compte tiers 411ALPHA</h2></div><div class="counter"><strong>0,00 €</strong><span>solde proposé</span></div></header>
+      <div class="flow"><div><small>Entrée</small><strong>4 lignes ouvertes</strong><span>Même compte tiers</span></div><div><small>Règle</small><strong>Référence + équilibre</strong><span>Une seule paire certaine</span></div><div><small>Sortie</small><strong>Code L-0241</strong><span>Proposition à valider</span></div></div>
+      <div class="list-head"><span>Écriture</span><span>Montant</span><span>Décision</span></div>
+      <div class="rows">
+        <div class="row"><strong>Facture FAC-0241</strong><span>1 248,00 €</span><span class="state success">Incluse</span></div>
+        <div class="row"><strong>Règlement FAC-0241</strong><span>−1 248,00 €</span><span class="state success">Inclus</span></div>
+      </div>
+      <aside class="exception"><div><small>Exception</small><strong>Règlement sans référence · −312,00 €</strong></div><p>Aucune paire certaine : la ligne reste ouverte et ne reçoit pas de code.</p><span class="state blocked">Non inclus</span></aside>
+    </div>
+  </section>
+
+  <section class="frame" id="dsn-sage" aria-label="Préparation DSN Sage fictive : contrôles d'identité et de période, anomalie SIRET isolée avant validation">
+    <div class="workspace">
+      <header class="workspace-head"><div><p class="context">Sage 100 Paie & RH · DSN</p><h2>Préparation DSN · mars</h2></div><div class="counter"><strong>18</strong><span>dossiers lus</span></div></header>
+      <div class="flow"><div><small>Entrée</small><strong>État de paie</strong><span>Période et établissements</span></div><div><small>Règle</small><strong>8 contrôles</strong><span>Identité, organismes, totaux</span></div><div><small>Sortie</small><strong>Liste de contrôle</strong><span>Dépôt au pôle social</span></div></div>
+      <div class="list-head"><span>Dossier</span><span>Contrôle obtenu</span><span>Décision</span></div>
+      <div class="rows"><div class="row"><strong>Dossier 14</strong><span>Période cohérente</span><span class="state success">Préparé</span></div><div class="row"><strong>Dossier 15</strong><span>Organismes et totaux concordants</span><span class="state success">Préparé</span></div></div>
+      <aside class="exception"><div><small>Exception</small><strong>Dossier 16 · SIRET absent</strong></div><p>L’identifiant requis manque. La préparation s’arrête avant transmission.</p><span class="state blocked">Bloqué</span></aside>
+    </div>
+  </section>
+
+  <section class="frame" id="bulletin-de-paie-sage" aria-label="Contrôle fictif de bulletins Sage : variation habituelle préparée, variation forte et absence laissées au gestionnaire">
+    <div class="workspace">
+      <header class="workspace-head"><div><p class="context">Sage 100 Paie & RH · Bulletins</p><h2>Contrôle des bulletins · mars</h2></div><div class="counter"><strong>42</strong><span>bulletins lus</span></div></header>
+      <div class="flow"><div><small>Entrée</small><strong>Bulletins recalculés</strong><span>Version courante</span></div><div><small>Règle</small><strong>Seuil du cabinet</strong><span>Net, rubriques, absences</span></div><div><small>Sortie</small><strong>2 exceptions</strong><span>Présentées au gestionnaire</span></div></div>
+      <div class="list-head"><span>Bulletin</span><span>Contrôle obtenu</span><span>Décision</span></div>
+      <div class="rows"><div class="row"><strong>Dossier fictif A</strong><span>Net à payer · écart +1,2 %</span><span class="state success">Préparé</span></div><div class="row"><strong>Dossier fictif B</strong><span>Net à payer · écart +9,4 %</span><span class="state warning">À vérifier</span></div></div>
+      <aside class="exception"><div><small>Exception</small><strong>Dossier fictif C · absence non rapprochée</strong></div><p>La source de l’absence n’est pas reliée au bulletin recalculé.</p><span class="state blocked">Arrêt</span></aside>
+    </div>
+  </section>
+
+  <section class="frame" id="saisie-comptable-sage" aria-label="Saisie comptable Sage fictive : facture lisible proposée, période incohérente et pièce illisible refusées">
+    <div class="workspace">
+      <header class="workspace-head"><div><p class="context">Sage 100 Comptabilité · Saisie par lot</p><h2>Journal ACH · préparation</h2></div><div class="counter"><strong>12</strong><span>pièces lues</span></div></header>
+      <div class="flow"><div><small>Entrée</small><strong>Pièces fournisseurs</strong><span>Date, tiers, HT, TVA, TTC</span></div><div><small>Règle</small><strong>Champs + équilibre</strong><span>Contexte du lot seulement</span></div><div><small>Sortie</small><strong>Écriture proposée</strong><span>Intégration séparée</span></div></div>
+      <div class="list-head"><span>Pièce</span><span>Contrôle obtenu</span><span>Décision</span></div>
+      <div class="rows"><div class="row"><strong>Facture récurrente</strong><span>Champs complets · lot équilibré</span><span class="state success">Proposée</span></div><div class="row"><strong>Facture datée avril</strong><span>Période du lot : mars</span><span class="state warning">Suspendue</span></div></div>
+      <aside class="exception"><div><small>Exception</small><strong>Pièce 0038 · montant illisible</strong></div><p>Le TTC ne peut pas être relu : aucune écriture n’est préparée.</p><span class="state blocked">Refusée</span></aside>
+    </div>
+  </section>
+
+  <section class="frame" id="cloture-sage" aria-label="Clôture Sage fictive : contrôles de période et de journaux, écart de balance laissé à arbitrer">
+    <div class="workspace">
+      <header class="workspace-head"><div><p class="context">Sage 100 Comptabilité · Pré-clôture</p><h2>Exercice N · contrôles préparatoires</h2></div><div class="counter"><strong>7</strong><span>contrôles rejoués</span></div></header>
+      <div class="flow"><div><small>Entrée</small><strong>Journaux et balance</strong><span>Exercice N</span></div><div><small>Règle</small><strong>Checklist écrite</strong><span>Chaque alerte conservée</span></div><div><small>Sortie</small><strong>Dossier de contrôle</strong><span>Décision à l’expert-comptable</span></div></div>
+      <div class="list-head"><span>Contrôle</span><span>Résultat obtenu</span><span>Décision</span></div>
+      <div class="rows"><div class="row"><strong>Journal des achats</strong><span>Centralisé</span><span class="state success">Conforme</span></div><div class="row"><strong>Journal d’OD</strong><span>Encore ouvert</span><span class="state warning">À vérifier</span></div></div>
+      <aside class="exception"><div><small>Exception</small><strong>Balance générale · écart de 12,00 €</strong></div><p>L’écart reste visible et empêche tout feu vert de clôture.</p><span class="state blocked">À arbitrer</span></aside>
+    </div>
+  </section>
+
+  <section class="frame" id="lettrage-cegid" aria-label="Lettrage Cegid Loop fictif : paquet équilibré sur le même compte et écriture sans origine laissée hors paquet">
+    <div class="workspace">
+      <header class="workspace-head"><div><p class="context">Cegid Loop · Lettrage</p><h2>Paquet 411BETA</h2></div><div class="counter"><strong>0,00 €</strong><span>solde du paquet</span></div></header>
+      <div class="flow"><div><small>Entrée</small><strong>3 écritures ouvertes</strong><span>Compte, journal, pièce</span></div><div><small>Règle</small><strong>Même compte lettrable</strong><span>Paquet équilibré</span></div><div><small>Sortie</small><strong>Code LB018 proposé</strong><span>2 lignes à valider</span></div></div>
+      <div class="list-head"><span>Écriture</span><span>Montant</span><span>Décision</span></div>
+      <div class="rows"><div class="row"><strong>Facture B-018</strong><span>2 400,00 €</span><span class="state success">Incluse</span></div><div class="row"><strong>Règlement B-018</strong><span>−2 400,00 €</span><span class="state success">Inclus</span></div></div>
+      <aside class="exception"><div><small>Exception</small><strong>Avoir sans origine · −120,00 €</strong></div><p>La référence de pièce manque. L’écriture reste hors paquet et sans code.</p><span class="state blocked">Non inclus</span></aside>
+    </div>
+  </section>
+
+  <section class="frame" id="dsn-silae" aria-label="Préparation DSN Silae fictive : retours classés et anomalie métier présentée au gestionnaire avant action">
+    <div class="workspace">
+      <header class="workspace-head"><div><p class="context">Silae Paie · DSN</p><h2>Retours DSN · mars</h2></div><div class="counter"><strong>6</strong><span>retours reçus</span></div></header>
+      <div class="flow"><div><small>Entrée</small><strong>Comptes rendus métier</strong><span>Code et libellé</span></div><div><small>Règle</small><strong>Dossier + période</strong><span>Contexte rapproché</span></div><div><small>Sortie</small><strong>File de traitement</strong><span>Réponse au gestionnaire</span></div></div>
+      <div class="list-head"><span>Retour</span><span>Classement obtenu</span><span>Décision</span></div>
+      <div class="rows"><div class="row"><strong>Retour 01</strong><span>Accusé de réception</span><span class="state success">Classé</span></div><div class="row"><strong>Retour 02</strong><span>Identifiant incohérent</span><span class="state warning">À traiter</span></div></div>
+      <aside class="exception"><div><small>Exception</small><strong>Retour 03 · contexte incomplet</strong></div><p>Le dossier ou la période ne peut pas être établi. Aucune réponse n’est préparée.</p><span class="state blocked">Arrêt</span></aside>
+    </div>
+  </section>
+
+  <section class="frame" id="bulletin-de-paie-silae" aria-label="Contrôle fictif de bulletins Silae : variable habituelle préparée et deux exceptions soumises au pôle social">
+    <div class="workspace">
+      <header class="workspace-head"><div><p class="context">Silae Paie · Bulletins</p><h2>Portefeuille social · mars</h2></div><div class="counter"><strong>31</strong><span>bulletins contrôlés</span></div></header>
+      <div class="flow"><div><small>Entrée</small><strong>Bulletins calculés</strong><span>Variables et absences</span></div><div><small>Règle</small><strong>Contrôles du pôle</strong><span>Origine, rubrique, seuil</span></div><div><small>Sortie</small><strong>Vue d’exceptions</strong><span>Correction au gestionnaire</span></div></div>
+      <div class="list-head"><span>Dossier</span><span>Contrôle obtenu</span><span>Décision</span></div>
+      <div class="rows"><div class="row"><strong>Dossier fictif A</strong><span>Variable reliée à sa source</span><span class="state success">Préparé</span></div><div class="row"><strong>Dossier fictif B</strong><span>Prime attendue absente</span><span class="state warning">À vérifier</span></div></div>
+      <aside class="exception"><div><small>Exception</small><strong>Dossier fictif C · variation hors seuil</strong></div><p>Le net ne suffit pas à expliquer la rubrique. Le pôle social décide.</p><span class="state blocked">À décider</span></aside>
+    </div>
+  </section>
+</main>
+</body>
+</html>

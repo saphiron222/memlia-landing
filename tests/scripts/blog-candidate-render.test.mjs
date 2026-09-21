@@ -114,6 +114,15 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
       `${horsRubriqueMarker}\n  '${slug}': Object.freeze({ date: '${fixture.manifest.publicationDate}', raison: 'Fixture transversale du pipeline, sans route de rubrique dédiée.' }),`,
     ));
 
+    const rubriquesPath = join(project, 'src/data/blog-rubriques.mjs');
+    const rubriques = readFileSync(rubriquesPath, 'utf8');
+    const horsRubriqueMarker = 'export const ARTICLES_HORS_RUBRIQUE = Object.freeze({';
+    assert.ok(rubriques.includes(horsRubriqueMarker), 'registre des articles hors rubrique introuvable');
+    writeFileSync(rubriquesPath, rubriques.replace(
+      horsRubriqueMarker,
+      `${horsRubriqueMarker}\n  '${slug}': Object.freeze({ date: '${fixture.manifest.publicationDate}', raison: 'Fixture transversale du pipeline, sans route de rubrique dédiée.' }),`,
+    ));
+
     const blogPath = join(project, 'src/pages/blog.astro');
     const blogSource = readFileSync(blogPath, 'utf8');
     const distSentinel = join(project, 'dist', 'sentinel.txt');

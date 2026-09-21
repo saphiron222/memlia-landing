@@ -45,11 +45,22 @@ function textContent(html) {
 }
 
 test('la grille ferme les 10 variations moyennes et les 16 refusées', () => {
-  const statuses = [...source.matchAll(/status: '(forte|moyenne|refusee)'/g)].map((match) => match[1]);
+  const candidates = [...source.matchAll(/suggestions: (\d+), status: '(forte|moyenne|refusee)'/g)]
+    .map((match) => ({ suggestions: Number(match[1]), status: match[2] }));
+  const statuses = candidates.map(({ status }) => status);
   assert.equal(statuses.filter((status) => status === 'forte').length, 9);
   assert.equal(statuses.filter((status) => status === 'moyenne').length, 10);
   assert.equal(statuses.filter((status) => status === 'refusee').length, 16);
   assert.equal(statuses.length, 35);
+
+  const proof = readFileSync(join(root, 'docs/design/integration-proofs/index.html'), 'utf8');
+  const open = candidates.filter(({ status }) => status === 'forte').length;
+  const closed = candidates.length - open;
+  const threshold = Math.min(...candidates.filter(({ status }) => status === 'forte').map(({ suggestions }) => suggestions));
+  assert.match(proof, new RegExp(`<strong>${candidates.length} formulations mesurées</strong>`));
+  assert.match(proof, new RegExp(`<strong>${threshold} suggestions ou plus</strong>`));
+  assert.match(proof, new RegExp(`<strong>${open} guides reliés</strong>`));
+  assert.match(proof, new RegExp(`<span>${closed} variations non ouvertes</span>`));
 });
 
 test('seules les neuf variations fortes produisent une page', () => {
@@ -76,13 +87,14 @@ test('chaque page porte une intention, une source, un auteur et une preuve propr
     assert.match(html, /Kevin Kitanga/, `${slug}: auteur`);
     assert.match(html, /id="regle-ecrite"/, `${slug}: règle écrite`);
     assert.match(html, /id="jeu-fictif"/, `${slug}: jeu fictif`);
-    assert.match(html, /non recettée dans l’outil éditeur/, `${slug}: non-attestation`);
-    assert.match(html, /Memlia est indépendante de/, `${slug}: indépendance`);
+    assert.doesNotMatch(html, /Par Kevin Kitanga, mis à jour/, `${slug}: pas de signature dans le corps`);
+    assert.doesNotMatch(html, /Memlia est indépendante de|ni partenariat|compatibilité déjà acquise/, `${slug}: pas d’avertissement défensif répété`);
+    assert.doesNotMatch(html, /Source primaire|Ce qu’elle établit\.|<strong>Limite\.<\/strong>/, `${slug}: source éditoriale compacte`);
 
-    const mediaId = html.match(/data-media="([^"]+)"/)?.[1];
-    assert.equal(mediaId, slug, `${slug}: média HTML propre`);
-    assert.ok(!mediaIds.has(mediaId), `${slug}: média unique`);
-    mediaIds.add(mediaId);
+    const media = html.match(/<img\b[^>]*src="(\/proofs\/integrations\/[^\"]+\.webp)"[^>]*>/)?.[1];
+    assert.equal(media, `/proofs/integrations/${slug}.webp`, `${slug}: média figé propre`);
+    assert.ok(!mediaIds.has(media), `${slug}: média unique`);
+    mediaIds.add(media);
 
     const sourceUrl = html.match(/class="source-lien" href="([^"]+)"/)?.[1];
     assert.ok(sourceUrl?.startsWith('https://'), `${slug}: source éditeur`);
@@ -92,6 +104,37 @@ test('chaque page porte une intention, une source, un auteur et une preuve propr
     const words = textContent(html).split(/\s+/).filter(Boolean).length;
     assert.ok(words >= 650, `${slug}: ${words} mots, contenu trop mince`);
   }
+});
+
+test('le hub et les guides suivent la coque commerciale canonique sans CSS de page parallèle', () => {
+  const hub = readFileSync(join(root, 'src/pages/integrations/index.astro'), 'utf8');
+  const guide = readFileSync(join(root, 'src/pages/integrations/[slug].astro'), 'utf8');
+  for (const [label, contenu] of [['hub', hub], ['guide', guide]]) {
+    assert.match(contenu, /import PageCommerciale from '@\/layouts\/PageCommerciale\.astro'/, `${label}: coque canonique`);
+    assert.doesNotMatch(contenu, /<style>/, `${label}: pas de grammaire CSS locale`);
+  }
+});
+
+test('les guides conservent auteur et dates dans le schéma sans signature éditoriale', () => {
+  const guide = readFileSync(join(root, 'src/pages/integrations/[slug].astro'), 'utf8');
+  const hub = readFileSync(join(root, 'src/pages/integrations/index.astro'), 'utf8');
+  const data = readFileSync(join(root, 'src/data/integrations.ts'), 'utf8');
+  assert.match(guide, /datePublished: integration\.datePublication/);
+  assert.match(guide, /dateModified: integration\.dateMiseAJour/);
+  assert.match(guide, /author: \{ '@id': authorUrl \}/);
+  assert.doesNotMatch(guide, /Par <a rel="author"|integration\.independence|ni partenariat|compatibilité déjà acquise/);
+  assert.doesNotMatch(hub, /Par <a rel="author"/);
+  assert.doesNotMatch(data, /independence:|Independence\s*=/);
+});
+
+test('les dix routes intégrations ont chacune une preuve figée manifestée', () => {
+  const manifest = JSON.parse(readFileSync(join(root, 'docs/qa/integration-proofs/proofs-manifest.json'), 'utf8'));
+  const targets = manifest.entries.map((entry) => entry.target);
+  assert.deepEqual(targets.sort(), [
+    'public/proofs/integrations/hub.webp',
+    ...slugs.map((slug) => `public/proofs/integrations/${slug}.webp`),
+  ].sort());
+  for (const target of targets) assert.ok(readFileSync(join(root, target)).length < 150_000, `${target}: moins de 150 Ko`);
 });
 
 test('les moyeux listent tous leurs rayons et le footer expose le hub', () => {
@@ -107,4 +150,12 @@ test('les moyeux listent tous leurs rayons et le footer expose le hub', () => {
   }
   const home = readFileSync(join(dist, 'index.html'), 'utf8');
   assert.match(home, /href="\/integrations"[^>]*>Guides par environnement<\/a>/);
+});
+
+test('le footer ne rend chaque destination légale qu’une seule fois', () => {
+  const home = readFileSync(join(dist, 'index.html'), 'utf8');
+  for (const href of ['/mentions-legales', '/politique-de-confidentialite']) {
+    assert.equal([...home.matchAll(new RegExp(`href="${href}"`, 'g'))].length, 1, href);
+  }
+  assert.doesNotMatch(home, /<h2 class="pied-titre">Légal<\/h2>/);
 });

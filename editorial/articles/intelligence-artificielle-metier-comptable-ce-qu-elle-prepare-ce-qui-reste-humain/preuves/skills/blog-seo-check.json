@@ -4,13 +4,13 @@
   "kind": "skill",
   "status": "PASS",
   "checkedAt": "2026-09-21",
-  "articleSha256": "d7e7cd05983ecf816935fd149ee0b48f1dc37e97ecbb2a0e7a6a9477c0b1cea5",
-  "manifestSha256": "befb3bdde7ac77b6c7465122a9deeee90656d09df05d6dc6bf761337a47c3403",
+  "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
+  "manifestSha256": "d0b176ea64ba9efab023c24f259bb447abe58753dd4153b4ee9409b43a99b9d8",
   "observations": [
-    "Titre 87 caractères, onglet 67, description 144 ; 9 lien(s) interne(s) : /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /glossaire#regle-de-cabinet, /methode, /garanties, /glossaire#validation-humaine, /automatisation-cabinet-comptable, /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps, /blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire, /contact ; 3 lien(s) externe(s) dans le corps.",
-    "Le title, la description, les requêtes, le maillage interne et les sources sont cohérents dans recette.json et corps.md.",
-    "La recette configure H1, title, description, canonical, OG et BlogPosting via le gabarit Article ; le gate final doit confirmer leur rendu après scellement.",
-    "Le sujet est différencié de la page service et du pilier cartographique par son angle compétences/frontière."
+    "Titre 68 caractères, onglet 67, description 144 ; 8 lien(s) interne(s) : /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /glossaire#regle-de-cabinet, /methode, /garanties, /glossaire#validation-humaine, /automatisation-cabinet-comptable, /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps, /contact ; 8 lien(s) externe(s) dans le corps.",
+    "H1, title, description, canonical, OG et maillage sont cohérents avec la requête métier comptable, intelligence artificielle et compétences.",
+    "Les cinq liens externes inline pointent vers les pages exactes et la bibliographie porte date et portée.",
+    "Le candidat reste noindex avant scellement, conformément au statut de preview."
   ],
   "skill": "blog-seo-check"
 }
