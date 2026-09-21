@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "0d1a708b36f2436f06a68bac8d79ce80542b03b71aed24f714544db6b2a2c206",
+  "manifestSha256": "058d7e76280217bacbefe3b39a338ea0ef4ee2666a18d6426239a964b810cd6a",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact cabinet-comptable-surcharge-de-travail-ou-passe-le-temps."
+  ],
+  "reviewer": "marketing",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "La réponse directe répond à la surcharge par l'observation des états du flux, et non par le classement des personnes.",
+        "Le corps définit répétition, attente, exception et décision, puis fournit une règle écrite, un jeu fictif et une matrice de choix.",
+        "La portée est bornée : aucune réduction de charge ni réaffectation du temps n'est présentée comme mesurée."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Le format how-to-guide est effectivement tenu avec réponse directe, étapes, règle, rejeu fictif, critères et erreurs à éviter.",
+        "La requête principale figure dans le titre de paquet et le contenu traite explicitement la charge de travail en cabinet comptable.",
+        "Les tableaux Markdown du corps rendent les quatre états et les sorties attendues lisibles, mais aucun rendu HTML local n'est disponible pour vérifier leur balisage."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Les trois sources du paquet sont citées avec URL et date ou qualification de portée dans la section Sources.",
+        "L'Apec est strictement datée du 9 décembre 2021 et le texte précise qu'elle ne décrit pas 2026.",
+        "L'OEC 2023 est explicitement borné à un corpus intersectoriel ; Atlas est présenté comme non daté, qualitatif et sans preuve d'effet IA ou emploi."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "La grille répétition-attente-exception-décision dépasse une simple liste de tâches et donne des conditions d'observation.",
+        "Le rejeu fictif contient quatre cas avec état et sortie attendue, dont arrêt, retour humain et arbitrage.",
+        "La méthode refuse les données nominatives, les jugements de performance et les gains non mesurés."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Le paquet de revue fournit un H1 unique, un title distinct, une description, une requête primaire, les liens internes et les alts ; le gabarit Article émet le canonical, Open Graph et BlogPosting au scellement.",
+        "Les fichiers image du candidat existent réellement : master 1920×1080, OG 1200×630, variantes 768×432 AVIF/WebP et variantes publiques 768/1200/1600 AVIF/WebP.",
+        "Le noindex appartient au candidat avant publication ; le gate de scellement vérifiera le HTML final et aucune preview privée n'est présentée comme une surface publiée."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "La réponse directe et les définitions des quatre états sont autonomes et citables.",
+        "La terminologie répétition, attente, exception, décision, règle, arrêt et agrégat non nominatif reste stable.",
+        "Le corps Markdown est structuré en sections courtes, tableaux et listes ; la citabilité HTML finale reste à vérifier faute de rendu."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "La clôture utilise bien « confier cette tâche », pointe vers /contact et décrit observation, écriture, automatisation, recette et décision conservée par le cabinet.",
+        "Le CTA est cohérent avec l'article consacré au choix d'une première répétition.",
+        "Aucune promesse de gain ou de résultat économique n'est associée à la conversion."
+      ]
+    }
+  ]
+}

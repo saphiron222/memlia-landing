@@ -1,0 +1,592 @@
+{
+  "version": 1,
+  "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+  "articleSha256": "d7e7cd05983ecf816935fd149ee0b48f1dc37e97ecbb2a0e7a6a9477c0b1cea5",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-dbcb96c6cc1b",
+      "text": "L’IA ne remplace pas un métier en bloc. Dans le dispositif décrit ici, l’automatisation conçue selon la méthode Memlia peut préparer une information, appliquer une règle explicite et proposer une sortie soumise à validation. Cette conception ne garantit ni que la règle était la bonne, ni que l’exception a été comprise, ni que la décision doit partir. La frontière utile sépare ce qui se prépare seul, ce qui attend une validation et ce qui reste une décision humaine.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6d7f8dc86aa1",
+      "text": "Cette réponse ne suppose aucun changement de logiciel. Elle commence par une tâche réelle, décrite dans les mots du cabinet, puis par une règle écrite et un jeu d’essai fictif. L’automatisation vient après. Elle s’arrête quand la règle manque.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-58644f271a92",
+      "text": "Pourquoi « remplacer » est la mauvaise unité de mesure",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2b953925134d",
+      "text": "Un métier de cabinet assemble plusieurs natures de travail. Il faut comprendre une situation, repérer des informations, appliquer des conventions, gérer une relation, expliquer un écart et assumer une décision. Parler de remplacement additionne tout cela comme si chaque geste avait la même frontière.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-098396eb1aa8",
+      "text": "La branche professionnelle décrit une évolution plus précise. Sur sa page non datée, OPCO Atlas présente la transition numérique comme un facteur qui « impacte fortement les métiers des cabinets d’expertise-comptable ». La même page identifie un « Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation ». Ces énoncés sont qualitatifs : ils ne mesurent ni un effet propre à l’IA ni un effet sur l’emploi.",
+      "claimIds": [
+        "claim-unit-098396eb1aa8-1",
+        "claim-unit-098396eb1aa8-2"
+      ]
+    },
+    {
+      "id": "unit-d3bd83d68184",
+      "text": "Le 9 décembre 2021, l’Apec et le Conseil supérieur de l’Ordre situaient leur partenariat « dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable ». Ce communiqué ne décrit pas la situation de 2026. La transmission apparaît aussi dans un livre blanc intersectoriel résumé par l’OEC Paris en 2023 : « Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance. » Ce corpus n’est pas une étude propre aux cabinets.",
+      "claimIds": [
+        "claim-unit-d3bd83d68184-1",
+        "claim-unit-d3bd83d68184-2"
+      ]
+    },
+    {
+      "id": "unit-cef4e6793353",
+      "text": "L’unité utile est donc la règle. Une règle peut être stable, observable et testable. Un jugement professionnel ne l’est pas toujours. Une automatisation sérieuse prend la première en charge et rend le second visible au lieu de le masquer.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4961af92e40c",
+      "text": "Ce que l’automatisation peut préparer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-15c20d6f0ea5",
+      "text": "Trois familles suffisent pour poser la frontière sans dresser un catalogue de tâches.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b10b2bebc2b0",
+      "text": "Reconnaître une entrée attendue",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0ab74497a6c5",
+      "text": "Quand le format, la période et le rôle de l’entrée sont connus, un système peut vérifier qu’elle correspond au cadre prévu. Il peut constater une présence, lire un état explicite ou rapprocher deux identifiants fictifs. Il ne transforme pas une ressemblance en certitude.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-75a284ed734f",
+      "text": "Appliquer une règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e2f3fffcffc7",
+      "text": "Une condition claire peut produire une action préparatoire claire : classer, calculer, rapprocher ou formuler une proposition. La règle doit être lisible par le cabinet. Si elle tient seulement dans la mémoire de la personne qui a construit l’automatisation, elle n’est pas transmissible.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4d098c29ccfb",
+      "text": "Signaler une exception",
+      "claimIds": []
+    },
+    {
+      "id": "unit-54805798962a",
+      "text": "Un bon système ne cherche pas à faire disparaître l’incertitude. Il la nomme. Une valeur hors période, une pièce ambiguë ou une règle absente déclenche un arrêt. Cet arrêt fait partie du résultat attendu.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9ffd4e714322",
+      "text": "Ce qu’elle ne garantit pas",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c8c853e94be1",
+      "text": "Une sortie bien formulée peut rester fausse. Une règle historique peut être devenue inadaptée. Une donnée peut être complète techniquement mais insuffisante pour décider. C’est pourquoi la qualité du texte produit ne doit jamais devenir la preuve de sa justesse.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-39171c7d6b93",
+      "text": "Le cabinet fixe le périmètre de la règle, les entrées qu’elle accepte, la période couverte et le rôle chargé de valider. Le jeu d’essai utilise des cas fictifs pour éprouver la logique sans exposer de dossier client.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7d5201fc1b80",
+      "text": "Enfin, elle ne garantit pas l’acceptabilité d’une décision. Informer un client, interpréter une situation ou assumer un arbitrage engage une relation et une responsabilité. Une proposition peut préparer cette décision ; elle ne la prend pas à la place de la personne compétente.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b0f6d03380a3",
+      "text": "La frontière. La règle écrite transforme une intention vague en frontière vérifiable.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1a3e71fc8c9a",
+      "text": "Déclencheur : une entrée complète et reconnue arrive dans le périmètre convenu.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d7b39b06a232",
+      "text": "Conditions : son format, sa période, le rôle attendu et les exceptions connues sont explicites.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3b5c56b8c749",
+      "text": "Action : le système prépare ou propose une sortie traçable ; il ne décide pas silencieusement.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b2569e320fa3",
+      "text": "Cas de refus : une ambiguïté, une information manquante, une règle absente ou une entrée hors du périmètre convenu arrête le traitement.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f2ca64b5bf16",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Reconnaître une entrée conforme au cadre | Accepter la proposition préparée | Définir la règle et ses limites | | Appliquer une condition déjà écrite | Vérifier la source et la période | Arbitrer une exception | | Signaler un cas hors cadre | Autoriser une action qui engage | Assumer la décision et la relation |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2d0d03aa6400",
+      "text": "La proposition. Le système prépare une sortie traçable et la présente avec sa source, sa période et la condition appliquée. Il n’agit pas silencieusement à la place du cabinet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-69d19a99c628",
+      "text": "L’arrêt. Cette frontière est plus exigeante qu’un simple contrôle final. Une ambiguïté, une règle absente ou une entrée hors du périmètre convenu arrête le traitement. « Refuser » et « demander une information » sont des résultats normaux.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-31293da3ef5d",
+      "text": "Le jeu d’essai. Avant toute recette, les trois sorties sont rejouées sur des cas fictifs : proposition, attente de validation et arrêt motivé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e01a2d6cebfe",
+      "text": "Le jeu d’essai contient trois cas inventés. Il ne reproduit aucun client ni aucun collaborateur réel.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2e3864d2f9e2",
+      "text": "| Cas fictif | Ce que la règle observe | Sortie attendue | |---|---|---| | Entrée complète, période reconnue | Toutes les conditions sont présentes | Proposition préparée, en attente de validation | | Pièce lisible mais ambiguë | Deux interprétations restent possibles | Arrêt dans le doute, motif visible | | Entrée connue, règle absente | Aucun cas écrit ne couvre la situation | Retour au cabinet pour écrire la règle |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e1a4d5ab1ab9",
+      "text": "Le troisième cas est le plus important. Forcer une sortie donnerait l’impression que l’automatisation « sait ». L’arrêt montre au contraire où le savoir-faire du cabinet doit être formulé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c835a990b7c2",
+      "text": "Ce que cela change pour les compétences",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9e8d17c0c94b",
+      "text": "OPCO Atlas écrit, dans un passage prospectif non daté, qu’« Une partie des activités actuelles des cabinets sera automatisée à l’avenir ». La page ne donne ni horizon, ni proportion, ni mesure d’effet sur l’emploi. Dans la méthode Memlia, l’automatisation est traitée comme une question d’exécution et de frontière : la règle, l’exception et la décision doivent rester lisibles.",
+      "claimIds": [
+        "claim-unit-9e8d17c0c94b-1"
+      ]
+    },
+    {
+      "id": "unit-48bbe97a247f",
+      "text": "Hypothèse à vérifier sur chaque tâche : si une préparation répétitive est effectivement retirée du flux, le temps libéré peut être réaffecté aux cas qui dépassent la règle. Aucun effet n’est présumé avant la recette puis la mesure sur le périmètre réel.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-bc1fa6bbc48f",
+      "text": "Pour la direction, cela crée une nouvelle responsabilité. Elle doit décider quelles règles méritent d’être écrites, qui les valide et comment elles sont maintenues. Une automatisation sans propriétaire métier vieillit en silence.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-76e164db3450",
+      "text": "Les erreurs à éviter",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2e2dbcae0994",
+      "text": "Partir d’un outil",
+      "claimIds": []
+    },
+    {
+      "id": "unit-00d8bf922e14",
+      "text": "Choisir un véhicule avant d’avoir décrit la tâche conduit à adapter le cabinet à la démonstration. Le véhicule se choisit après la règle : panneau dans un outil existant, application de bureau ou autre intégration utile.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-428450619acd",
+      "text": "Confondre exemple et preuve",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5d1dacd66c75",
+      "text": "Une démo réussie sur un cas courant ne prouve pas la tenue dans l’exception. Le jeu d’essai doit comporter un cas limite et un refus attendu.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3501974104c8",
+      "text": "Mettre la validation partout sans la définir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9b2d27c4fd13",
+      "text": "« Validation humaine » ne suffit pas. Il faut savoir ce qui est présenté, à qui, avec quelle source et quelles actions possibles.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-53664d1a4095",
+      "text": "Mesurer les personnes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-17e744888e77",
+      "text": "Le contrôle porte sur le flux et la règle, jamais sur un classement nominatif des collaborateurs. Memlia travaille avec des agrégats et n’installe pas de surveillance individuelle.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-084158d2d6bd",
+      "text": "Promettre un résultat non mesuré",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ce7ea569222a",
+      "text": "Ni un poste supprimé, ni un délai, ni un pourcentage de temps gagné ne découle automatiquement de la méthode. La recette teste la justesse de la règle avant toute mesure d’effet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2d2e593eb0c9",
+      "text": "La carte des tâches répétitives d’un cabinet replace cette frontière dans une famille de gestes sans en faire un catalogue. La méthode Memlia consiste à observer une tâche répétitive, écrire sa règle de cabinet dans les mots du cabinet, construire l’automatisation dans les outils déjà utilisés, l’éprouver sur un jeu fictif, la faire recetter puis la maintenir. Voir la méthode permet de comprendre ce cycle. Les garanties détaillent l’arrêt dans le doute et la validation humaine. L’automatisation d’un cabinet comptable présente la prise en charge entière d’une tâche.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5576fee70e9f",
+      "text": "La question « où passe le temps ? » est traitée dans le diagnostic de surcharge. La question de la transmission du savoir-faire est traitée dans l’article sur la fidélisation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6a549774d023",
+      "text": "Si une répétition est déjà choisie, confier cette tâche ouvre sa prise en charge entière. Nous écrivons sa règle dans vos mots, l’automatisons dans vos outils et la faisons recetter par vos équipes. Votre cabinet garde la décision. Rien à envoyer : décrivez seulement la tâche.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-caf85b0888d7",
+      "text": "Sources",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7ba08eb64e74",
+      "text": "- OPCO Atlas — branche Expertise comptable, Commissariat aux comptes et Audit, consulté le 21 septembre 2026. - Apec et Conseil supérieur de l’Ordre — mobilisation au service de l’emploi, publié le 9 décembre 2021, consulté le 21 septembre 2026. - OEC Paris / Le Francilien — Comment attirer et fidéliser des collaborateurs, publié le 11 janvier 2023, consulté le 21 septembre 2026. - Méthode Memlia, pour le mécanisme de règle écrite, le jeu d’essai fictif et la recette humaine.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-098396eb1aa8-1",
+      "unitId": "unit-098396eb1aa8",
+      "claim": "impacte fortement les métiers des cabinets d’expertise-comptable",
+      "type": "information",
+      "sourceIds": [
+        "atlas-branche"
+      ],
+      "sourceExcerpts": {
+        "atlas-branche": "impacte fortement les métiers des cabinets d’expertise-comptable :"
+      },
+      "checkedAt": "2026-09-21",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-21",
+        "sourceResults": [
+          {
+            "sourceId": "atlas-branche",
+            "sourceUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+            "verifiedUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+            "excerpt": "impacte fortement les métiers des cabinets d’expertise-comptable :",
+            "context": "La transition numérique impacte fortement les métiers des cabinets d’expertise-comptable :",
+            "contextSha256": "e076585a4cc76517d1844f9902a6af8ea3656647523f2b2e1fa063d61a3da89d",
+            "citation": {
+              "text": "impacte fortement les métiers des cabinets d’expertise-comptable :",
+              "sha256": "4c5944522803220f5e9c2d82237e45ccb2b697cefed1e3904d0c524080823276",
+              "sourceContentSha256": "5be9d102a4c08a8ee5e11035bd821dbd794585dc5ef51e2a2f035867deb988fc",
+              "coordinates": {
+                "finalUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+                "checkedAt": "2026-09-21",
+                "title": "Experts-comptables, Commissaires aux comptes et Audit",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 3688,
+                  "endLine": 3688
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "impacte",
+                "fortement",
+                "metiers",
+                "cabinets",
+                "expertise",
+                "comptable"
+              ],
+              "reasoning": "La citation, relevée à la ligne 3688 de la copie locale de OPCO Atlas, porte les mêmes entités que le claim (impacte, fortement, metiers, cabinets, expertise, comptable) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La page de branche formule qualitativement l’impact du numérique sur les métiers, sans mesurer un effet propre à l’IA ou à l’emploi.",
+            "checkedAt": "2026-09-21"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-098396eb1aa8-2",
+      "unitId": "unit-098396eb1aa8",
+      "claim": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation",
+      "type": "information",
+      "sourceIds": [
+        "atlas-branche"
+      ],
+      "sourceExcerpts": {
+        "atlas-branche": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation."
+      },
+      "checkedAt": "2026-09-21",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-21",
+        "sourceResults": [
+          {
+            "sourceId": "atlas-branche",
+            "sourceUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+            "verifiedUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+            "excerpt": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation.",
+            "context": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation.",
+            "contextSha256": "f41cbca50dcef23f91cccdce7eb323be90224b6d51ad90f3b38350c6228adaeb",
+            "citation": {
+              "text": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation.",
+              "sha256": "f41cbca50dcef23f91cccdce7eb323be90224b6d51ad90f3b38350c6228adaeb",
+              "sourceContentSha256": "5be9d102a4c08a8ee5e11035bd821dbd794585dc5ef51e2a2f035867deb988fc",
+              "coordinates": {
+                "finalUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+                "checkedAt": "2026-09-21",
+                "title": "Experts-comptables, Commissaires aux comptes et Audit",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 3688,
+                  "endLine": 3688
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "enjeu",
+                "montee",
+                "competences",
+                "collaborateurs",
+                "accompagner",
+                "numerisation"
+              ],
+              "reasoning": "La citation, relevée à la ligne 3688 de la copie locale de OPCO Atlas, porte les mêmes entités que le claim (enjeu, montee, competences, collaborateurs, accompagner, numerisation) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La source associe directement la transition numérique à la montée en compétences.",
+            "checkedAt": "2026-09-21"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-d3bd83d68184-1",
+      "unitId": "unit-d3bd83d68184",
+      "claim": "dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable",
+      "type": "information",
+      "sourceIds": [
+        "apec-oec"
+      ],
+      "sourceExcerpts": {
+        "apec-oec": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable"
+      },
+      "checkedAt": "2026-09-21",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-21",
+        "sourceResults": [
+          {
+            "sourceId": "apec-oec",
+            "sourceUrl": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html",
+            "verifiedUrl": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html",
+            "excerpt": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable",
+            "context": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable, les deux institutions se mobilisent pour la relance et renouvellent leur relation partenariale.",
+            "contextSha256": "13b7fd761ee3800a5bb74167ff730901b0d2a05a9a08a98df84534833fccf118",
+            "citation": {
+              "text": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable",
+              "sha256": "09c34682b6e5554c55a9c9e1385f62a24f1d064658e6b97f3efbf96a1da3a9b0",
+              "sourceContentSha256": "811a484897c99752ec186b2826c8f47a127fb85eeeea575abd7e39ef9f3bcdbc",
+              "coordinates": {
+                "finalUrl": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html",
+                "checkedAt": "2026-09-21",
+                "title": "L’Apec et le Conseil supérieur de l’ordre des experts-comptables se mobilisent au service de l’emploi",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1003,
+                  "endLine": 1003
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "contexte",
+                "tensions",
+                "marche",
+                "emploi",
+                "cadre",
+                "particulier",
+                "fonctions",
+                "expertise",
+                "comptable"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1003 de la copie locale de Apec, porte les mêmes entités que le claim (contexte, tensions, marche, emploi, cadre, particulier, fonctions, expertise, comptable) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Le communiqué daté du 9 décembre 2021 porte cette formulation sur l’emploi cadre ; elle n’est pas actualisée en constat 2026.",
+            "checkedAt": "2026-09-21"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-d3bd83d68184-2",
+      "unitId": "unit-d3bd83d68184",
+      "claim": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance",
+      "type": "information",
+      "sourceIds": [
+        "oec-attractivite"
+      ],
+      "sourceExcerpts": {
+        "oec-attractivite": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance."
+      },
+      "checkedAt": "2026-09-21",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-21",
+        "sourceResults": [
+          {
+            "sourceId": "oec-attractivite",
+            "sourceUrl": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
+            "verifiedUrl": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
+            "excerpt": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance.",
+            "context": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance.",
+            "contextSha256": "8b8c4608ce35e2d72375d9f778ae12528874d5ec944eb0bdbdb194eafa1863dc",
+            "citation": {
+              "text": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance.",
+              "sha256": "8b8c4608ce35e2d72375d9f778ae12528874d5ec944eb0bdbdb194eafa1863dc",
+              "sourceContentSha256": "9422f79c7748a209a574b25e9f142d9e3057fe1e32c7ecb82b627a5492527d62",
+              "coordinates": {
+                "finalUrl": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
+                "checkedAt": "2026-09-21",
+                "title": "Comment attirer et fidéliser des collaborateurs",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 480,
+                  "endLine": 480
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "metiers",
+                "savoir",
+                "evoluent",
+                "permanence",
+                "accompagner",
+                "strategies",
+                "croissance"
+              ],
+              "reasoning": "La citation, relevée à la ligne 480 de la copie locale de OEC Paris — Le Francilien, porte les mêmes entités que le claim (metiers, savoir, evoluent, permanence, accompagner, strategies, croissance) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "L’article rapporte cette phrase issue d’un corpus intersectoriel, sans la présenter comme une étude propre aux cabinets.",
+            "checkedAt": "2026-09-21"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-9e8d17c0c94b-1",
+      "unitId": "unit-9e8d17c0c94b",
+      "claim": "Une partie des activités actuelles des cabinets sera automatisée à l’avenir",
+      "type": "information",
+      "sourceIds": [
+        "atlas-branche"
+      ],
+      "sourceExcerpts": {
+        "atlas-branche": "Une partie des activités actuelles des cabinets sera automatisée à l’avenir"
+      },
+      "checkedAt": "2026-09-21",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-21",
+        "sourceResults": [
+          {
+            "sourceId": "atlas-branche",
+            "sourceUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+            "verifiedUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+            "excerpt": "Une partie des activités actuelles des cabinets sera automatisée à l’avenir",
+            "context": "Une partie des activités actuelles des cabinets sera automatisée à l’avenir",
+            "contextSha256": "34f395da1a2a50173514d2173fd9e43151d5fe49b392d4293cfb858daeb9ccce",
+            "citation": {
+              "text": "Une partie des activités actuelles des cabinets sera automatisée à l’avenir",
+              "sha256": "34f395da1a2a50173514d2173fd9e43151d5fe49b392d4293cfb858daeb9ccce",
+              "sourceContentSha256": "5be9d102a4c08a8ee5e11035bd821dbd794585dc5ef51e2a2f035867deb988fc",
+              "coordinates": {
+                "finalUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+                "checkedAt": "2026-09-21",
+                "title": "Experts-comptables, Commissaires aux comptes et Audit",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 3688,
+                  "endLine": 3688
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "partie",
+                "activites",
+                "actuelles",
+                "cabinets",
+                "sera",
+                "automatisee",
+                "avenir"
+              ],
+              "reasoning": "La citation, relevée à la ligne 3688 de la copie locale de OPCO Atlas, porte les mêmes entités que le claim (partie, activites, actuelles, cabinets, sera, automatisee, avenir) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La phrase est attribuée à un passage prospectif non daté, sans horizon, proportion ni effet sur l’emploi.",
+            "checkedAt": "2026-09-21"
+          }
+        ]
+      }
+    }
+  ]
+}

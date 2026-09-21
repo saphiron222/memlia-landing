@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "candidateSlug": "fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire",
+  "articleSha256": "2cb5bf7f302816abdceb74a35550942b9c63e7dd6ee75cf4d3919dd1f036968c",
+  "manifestSha256": "df729eb5278ef6c4cd1784e43a4dfb4ff080f9045d2b4a6d14e0bf2ade1f5da2",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Consigne orale fictive transformée en règle écrite avec validation et arrêt dans le doute",
+  "score": null,
+  "directionArt": null,
+  "semanticRelevance": null,
+  "p0": [
+    "Revue image non exécutée"
+  ],
+  "kevinApproved": true,
+  "palette": null
+}

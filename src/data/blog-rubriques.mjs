@@ -56,6 +56,14 @@ export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
     date: '2026-09-20',
     raison: 'Cicatrice transversale : elle raconte une décision de cadrage et la règle qui en est sortie, pas une tâche appartenant à l’une des deux rubriques.',
   }),
+  'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps': Object.freeze({
+    date: '2026-09-21',
+    raison: 'Diagnostic transversal de la charge et des états du flux : il concerne plusieurs familles de production et ne relève exclusivement ni de la paie-DSN ni de la gestion des pièces.',
+  }),
+  'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain': Object.freeze({
+    date: '2026-09-21',
+    raison: 'Article transversal sur les compétences, la préparation et la décision humaine : il ne correspond pas à une chaîne de tâches propre aux deux rubriques existantes.',
+  }),
 });
 
 const PAR_ARTICLE = new Map();

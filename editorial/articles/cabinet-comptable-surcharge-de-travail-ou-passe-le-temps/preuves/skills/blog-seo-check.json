@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+  "kind": "skill",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "0d1a708b36f2436f06a68bac8d79ce80542b03b71aed24f714544db6b2a2c206",
+  "manifestSha256": "058d7e76280217bacbefe3b39a338ea0ef4ee2666a18d6426239a964b810cd6a",
+  "observations": [
+    "Titre 60 caractères, onglet 60, description 139 ; 8 lien(s) interne(s) : /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /methode, /glossaire#regle-de-cabinet, /glossaire#agregat-non-nominatif, /automatisation-cabinet-comptable, /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain, /blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire, /contact ; 3 lien(s) externe(s) dans le corps.",
+    "Le title, la description, les requêtes secondaires, le maillage et les sources sont cohérents dans recette.json et corps.md.",
+    "La recette configure H1, title, description, canonical, OG et BlogPosting via le gabarit Article ; le gate final doit confirmer leur rendu après scellement.",
+    "La couverture et son alt sont cohérents : cinq cartes reliées matérialisent quatre états de flux, sans texte ni donnée réelle."
+  ],
+  "skill": "blog-seo-check"
+}

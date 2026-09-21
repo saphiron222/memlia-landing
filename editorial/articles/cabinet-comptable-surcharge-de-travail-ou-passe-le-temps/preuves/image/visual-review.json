@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "0d1a708b36f2436f06a68bac8d79ce80542b03b71aed24f714544db6b2a2c206",
+  "manifestSha256": "058d7e76280217bacbefe3b39a338ea0ef4ee2666a18d6426239a964b810cd6a",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact cabinet-comptable-surcharge-de-travail-ou-passe-le-temps."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "presente"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.8105555555555556,
+      "#27b657": 0.0134375,
+      "#1c8a41": 0.014010416666666666,
+      "#231f20": 0.0061805555555555555
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "L'image retouchée montre bien cinq cartes reliées : boucle de répétition, deux barres séparées pour l'attente, branche divergente pour l'exception, jonction équilibrée pour la décision et cinquième carte de liaison sans nouvelle catégorie.",
+        "La composition est un diorama 3D mat horizontal, aéré, sans texte ; elle correspond au brief généré dans prompt.json plutôt qu'au cadre HTML de preuve inline."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "L'image inspectée est horizontale, sans texte lisible, logo, visage, interface, horloge, classement ou alerte rouge, et utilise une composition 3D aérée conforme aux interdits du brief.",
+        "image-source.json documente une sortie retouchée 1920×1080 issue d'un master 16:9."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Aucun nom, dossier, nombre, donnée client ou information personnelle n'est visible dans l'image inspectée.",
+        "Le cadre prévu porte « semaine fictive sans donnée nominative » et la source est documentée comme générée puis retouchée."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Une inspection visuelle indépendante relit sans texte les quatre états demandés : boucle, écart suspendu, divergence et jonction ; la flèche finale relie la séquence sans ajouter de catégorie.",
+        "Le sujet reste une semaine abstraite de flux et ne dérive ni vers un tableau de bord, ni vers une surveillance individuelle."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Les dérivés ont été lus sur disque : master PNG 1920×1080, OG WebP 1200×630, héros AVIF/WebP 768×432 et variantes publiques AVIF/WebP en 768, 1200 et 1600 px.",
+        "image-source.json relie le master retouché à son entrée et documente les hashes, dimensions et mesures de palette."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "L'alt « Semaine fictive répartie entre répétition, attente, exception et décision humaine » décrit fidèlement les quatre symboles de flux portés par les cinq cartes.",
+        "L'alt reste informatif sans annoncer de gain, de donnée client ni de résultat mesuré."
+      ]
+    }
+  ]
+}

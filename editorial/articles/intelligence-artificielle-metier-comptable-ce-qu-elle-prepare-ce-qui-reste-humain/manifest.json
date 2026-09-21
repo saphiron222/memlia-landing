@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+  "action": "creation",
+  "editorialStatus": "pret-preview",
+  "title": "Intelligence artificielle et métier comptable : ce qu’elle prépare, ce qui reste humain",
+  "tabTitle": "Intelligence artificielle, métier comptable et compétences | Memlia",
+  "summary": "L’intelligence artificielle ne remplace pas un métier en bloc. Elle prépare une information, applique une règle écrite et signale le doute ; le cabinet valide, arbitre et fait évoluer la règle.",
+  "description": "Métier comptable intelligence artificielle compétences : distinguer préparation automatisée, validation et décision humaine sur des cas fictifs.",
+  "publicationDate": "2026-09-21",
+  "updatedAt": null,
+  "topics": [
+    "ia",
+    "cabinet",
+    "automatisation"
+  ],
+  "keywords": [
+    "métier comptable intelligence artificielle compétences",
+    "intelligence artificielle cabinet comptable",
+    "compétences comptables",
+    "validation humaine"
+  ],
+  "primaryQuery": "métier comptable intelligence artificielle compétences",
+  "secondaryQueries": [
+    "intelligence artificielle cabinet comptable",
+    "compétences métier comptable automatisation"
+  ],
+  "intent": "comprendre",
+  "fanOut": [
+    "ce que l’intelligence artificielle prépare",
+    "où placer la validation humaine",
+    "comment les compétences évoluent"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "profils-formation",
+      "numerique-it-data"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-09-21"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "direction-associes",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "TOFU",
+  "cluster": "rh-formation",
+  "famille": "formation-ia-competences",
+  "contentType": "searchable",
+  "format": "thought-leadership",
+  "task": "Comprendre ce que l’intelligence artificielle peut préparer dans un cabinet et où la décision humaine doit rester visible.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Frontière en trois colonnes et trois cas fictifs, dont une ambiguïté et une règle absente ; aucune liste de tâches ni donnée réelle.",
+  "sourcesVerifiedAt": "2026-09-21",
+  "sources": [
+    {
+      "id": "atlas-branche",
+      "publisher": "OPCO Atlas",
+      "title": "Experts-comptables, Commissaires aux comptes et Audit",
+      "url": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+      "checkedAt": "2026-09-21",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+      "classificationReason": "Page de branche qualitative et non datée, sans protocole affiché ; ses passages sur l’automatisation sont prospectifs et ne mesurent aucun effet propre à l’IA ou à l’emploi.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/atlas-branche.classification.json",
+      "verificationEvidence": "preuves/sources/atlas-branche.json"
+    },
+    {
+      "id": "apec-oec",
+      "publisher": "Apec",
+      "title": "L’Apec et le Conseil supérieur de l’ordre des experts-comptables se mobilisent au service de l’emploi",
+      "url": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html",
+      "checkedAt": "2026-09-21",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html",
+      "classificationReason": "Communiqué institutionnel daté du 9 décembre 2021 ; contexte d’emploi cadre, sans mesure de la situation en 2026.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/apec-oec.classification.json",
+      "verificationEvidence": "preuves/sources/apec-oec.json"
+    },
+    {
+      "id": "oec-attractivite",
+      "publisher": "OEC Paris — Le Francilien",
+      "title": "Comment attirer et fidéliser des collaborateurs",
+      "url": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
+      "checkedAt": "2026-09-21",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
+      "classificationReason": "Article du 11 janvier 2023 résumant un livre blanc intersectoriel ; contexte qualitatif non spécifique aux cabinets.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/oec-attractivite.classification.json",
+      "verificationEvidence": "preuves/sources/oec-attractivite.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "marketing",
+  "reviewRule": "Relire la source OPCO Atlas à six mois et à toute modification de la page de branche.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous observons la répétition choisie par votre cabinet, écrivons sa règle dans vos mots, l’automatisons dans vos outils et la faisons recetter par vos équipes. Votre cabinet garde la décision. Rien à envoyer : décrivez seulement la tâche."
+  },
+  "image": {
+    "heroId": "img-art-intelligence-artificielle-metier-comptable",
+    "alt": "Frontière en trois colonnes entre préparation automatisée, validation et décision humaine",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-09-21"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-09-21"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/methode",
+      "/garanties",
+      "/automatisation-cabinet-comptable",
+      "/glossaire#regle-de-cabinet",
+      "/glossaire#validation-humaine",
+      "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "/blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "/blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/automatisation-cabinet-comptable",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ],
+    "decision": "La page service présente l’offre ; le pilier cartographie ; cet article répond à l’intention métier et compétences sans catalogue de tâches."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": false,
+    "productionApproved": false,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  }
+}

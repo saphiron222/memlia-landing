@@ -12,6 +12,8 @@ Une liste de tâches pose un autre problème : elle transforme vite l’automati
 
 Le diagnostic utile décrit donc des états. Il ne dit pas que toute répétition doit être automatisée. Il montre où la répétition est suffisamment stable pour être écrite et où l’incertitude doit rester visible.
 
+Le 9 décembre 2021, l’Apec et le Conseil supérieur de l’Ordre écrivaient agir « dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable ». Ce communiqué daté ne décrit ni la situation de 2026 ni la charge d’un cabinet. Il rappelle seulement l’intérêt de distinguer ce qui relève d’une répétition, d’une attente ou d’une décision avant de choisir une action.
+
 ## Quatre endroits où le temps disparaît
 
 ### La répétition
@@ -36,7 +38,7 @@ L’unité de mesure est l’événement, pas le collaborateur. Dans le jeu fict
 
 Cette discipline protège aussi la qualité du diagnostic. Un tableau nominatif incite à comparer des portefeuilles et des situations qui ne sont pas équivalents. Un flux agrégé permet au contraire de discuter la règle : pourquoi attend-on ? quelle condition manque ? quel cas devrait sortir ?
 
-L’OEC Paris rapporte que « La plupart des entrepreneurs rencontrés par Pierre Deheunynck font des conditions de travail et d’emploi un élément distinctif de leur promesse employeur. » L’article ne transforme pas ce constat en lien causal avec une automatisation. Il en déduit une exigence plus modeste : l’organisation du travail mérite d’être rendue lisible sans installer de surveillance.
+Un article de l’OEC Paris publié en 2023 résume un livre blanc intersectoriel et rapporte que « La plupart des entrepreneurs rencontrés par Pierre Deheunynck font des conditions de travail et d’emploi un élément distinctif de leur promesse employeur. » Ce corpus réunit des entreprises de tailles et secteurs variés, pas un échantillon de cabinets. Il ne démontre aucun effet de l’automatisation ; il invite seulement à rendre l’organisation du travail lisible sans installer de surveillance.
 
 ## La règle écrite
 
@@ -91,7 +93,7 @@ Cette grille ne donne aucun score universel. Le cabinet tranche avec son vocabul
 
 Elle ne crée pas une entrée qui n’existe pas. Elle ne remplace pas une décision de management. Elle ne règle pas une charge causée par une demande exceptionnelle, un sous-effectif ou une priorité contradictoire. Elle ne transforme pas non plus une consigne orale instable en règle fiable sans travail métier.
 
-OPCO Atlas décrit la transition numérique comme un facteur d’évolution de la branche et souligne la montée en compétences nécessaire. C’est un rappel utile : réduire un geste répétitif n’a de valeur que si le cabinet garde la capacité de comprendre, valider et faire évoluer la règle.
+Sur une page de branche non datée et qualitative, OPCO Atlas décrit la transition numérique comme un facteur d’évolution et nomme un « Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation ». La source ne mesure ni un effet propre à l’IA ni un effet sur l’emploi. Dans la méthode Memlia, une préparation répétitive n’a de valeur que si le cabinet garde la capacité de comprendre, valider et faire évoluer la règle.
 
 ## Les erreurs à éviter
 
@@ -113,13 +115,14 @@ Le jeu fictif vérifie la logique, pas le résultat économique. Tout gain éven
 
 ## Pour aller plus loin
 
-[La méthode Memlia](/methode) détaille l’observation, la règle écrite, le jeu fictif et la recette. [L’automatisation d’un cabinet comptable](/automatisation-cabinet-comptable) présente le service sans imposer un logiciel.
+[La carte des tâches répétitives d’un cabinet](/blog/automatiser-un-cabinet-comptable-la-carte-des-taches) replace ce diagnostic dans une famille de gestes sans en faire un catalogue. [La méthode Memlia](/methode) détaille l’observation, la [règle de cabinet](/glossaire#regle-de-cabinet), le jeu fictif et la recette. Notre lecture utilise un [agrégat non nominatif](/glossaire#agregat-non-nominatif) : elle regroupe les événements du flux, jamais la performance d’une personne. [L’automatisation d’un cabinet comptable](/automatisation-cabinet-comptable) présente le service dans les outils déjà utilisés.
 
 Pour comprendre ce que cette frontière change au métier, lire [ce que l’intelligence artificielle prépare et ce qui reste humain](/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain). Pour rendre la règle transmissible, lire [écrire le savoir-faire avant de l’automatiser](/blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire).
 
-Une fois une répétition choisie, [confier une première tâche](/contact) consiste à décrire le déclencheur, les conditions, l’action attendue et les cas de refus. Nous pouvons alors dire ce qu’il faut pour la prendre en charge, sans annoncer un délai ou un gain avant mesure.
+Une fois une répétition choisie, [confier cette tâche](/contact) ouvre sa prise en charge entière. Nous écrivons sa règle dans vos mots, l’automatisons dans vos outils et la faisons recetter par vos équipes. Votre cabinet garde la décision. Rien à envoyer : décrivez seulement la tâche.
 
 ## Sources
 
 - [OEC Paris / Le Francilien — Comment attirer et fidéliser des collaborateurs](https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/), publié le 11 janvier 2023, consulté le 21 septembre 2026.
+- [Apec et Conseil supérieur de l’Ordre — mobilisation au service de l’emploi](https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html), publié le 9 décembre 2021, consulté le 21 septembre 2026.
 - [OPCO Atlas — branche Expertise comptable, Commissariat aux comptes et Audit](https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html), consulté le 21 septembre 2026.

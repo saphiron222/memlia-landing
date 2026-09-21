@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "slug": "fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire",
+  "action": "creation",
+  "editorialStatus": "a-valider",
+  "title": "Fidéliser en cabinet comptable : ce qu’une règle écrite ne prouve pas",
+  "tabTitle": "Fidéliser en cabinet comptable : limites d’une règle | Memlia",
+  "summary": "Écrire une règle ne permet pas, à lui seul, de conclure à un effet sur la fidélisation. Cela rend une consigne visible, transmissible et rejouable, sans mesure individuelle.",
+  "description": "Fidéliser collaborateurs cabinet comptable : ce qu’une règle écrite rend transmissible, sans prouver un effet sur les départs ni la rétention.",
+  "publicationDate": "2026-09-23",
+  "updatedAt": null,
+  "topics": [
+    "cabinet",
+    "methode",
+    "automatisation"
+  ],
+  "keywords": [
+    "fidéliser collaborateurs cabinet comptable",
+    "transmission savoir-faire cabinet",
+    "compétences collaborateurs comptables",
+    "règle écrite"
+  ],
+  "primaryQuery": "fidéliser collaborateurs cabinet comptable",
+  "secondaryQueries": [
+    "transmission savoir cabinet comptable",
+    "marque employeur cabinet comptable"
+  ],
+  "intent": "comprendre",
+  "fanOut": [
+    "transmettre une consigne orale",
+    "écrire les cas de refus",
+    "ce qui reste humain"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "profils-formation",
+      "chefs-mission-portefeuille"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-09-21"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "relecteur-metier-rh-cabinet",
+    "role": "direction-associes",
+    "status": "FAIL",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "TOFU",
+  "cluster": "rh-formation",
+  "famille": "rh-interne-cabinet",
+  "contentType": "searchable",
+  "format": "thought-leadership",
+  "task": "Rendre une consigne de cabinet transmissible sans rigidifier le jugement ni surveiller les collaborateurs.",
+  "rankability": "plausible",
+  "businessRelevance": "adjacente",
+  "proofStatus": "verifiee",
+  "proofRequired": "Consigne orale fictive transformée en déclencheur, conditions, proposition, validation et refus ; quatre cas joués sans donnée réelle.",
+  "sourcesVerifiedAt": "2026-09-21",
+  "sources": [
+    {
+      "id": "apec-oec",
+      "publisher": "Apec",
+      "title": "L’Apec et le Conseil supérieur de l’ordre des experts-comptables se mobilisent au service de l’emploi",
+      "url": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html",
+      "checkedAt": "2026-09-21",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html",
+      "classificationReason": "Communiqué institutionnel daté du 9 décembre 2021 ; contexte d’emploi cadre, sans mesure de la situation en 2026.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/apec-oec.classification.json",
+      "verificationEvidence": "preuves/sources/apec-oec.json"
+    },
+    {
+      "id": "oec-attractivite",
+      "publisher": "OEC Paris — Le Francilien",
+      "title": "Comment attirer et fidéliser des collaborateurs",
+      "url": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
+      "checkedAt": "2026-09-21",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
+      "classificationReason": "Article du 11 janvier 2023 résumant un livre blanc intersectoriel ; contexte qualitatif non spécifique aux cabinets et sans causalité établie.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/oec-attractivite.classification.json",
+      "verificationEvidence": "preuves/sources/oec-attractivite.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "marketing",
+  "reviewRule": "Relire les sources Apec et OEC Paris à six mois ; conserver l’interdiction de promettre un effet sur le turnover.",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact",
+    "outcome": "Nous partons d’une consigne réelle, l’écrivons avec le cabinet et la rejouons sur un jeu fictif. Aucun résultat RH n’est promis."
+  },
+  "image": {
+    "heroId": "img-art-fideliser-collaborateurs-regle-ecrite",
+    "alt": "Consigne orale fictive transformée en règle écrite avec validation et arrêt dans le doute",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-09-21"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-09-21"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/methode",
+      "/garanties",
+      "/automatisation-cabinet-comptable",
+      "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ],
+    "decision": "Le pilier cartographie ; cet article traite la transmission d’une seule règle et borne explicitement toute promesse RH."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": false,
+    "productionApproved": false,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  }
+}

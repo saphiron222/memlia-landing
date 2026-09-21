@@ -1,0 +1,169 @@
+{
+  "editorial": {
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "La réponse directe répond à la surcharge par l'observation des états du flux, et non par le classement des personnes.",
+          "Le corps définit répétition, attente, exception et décision, puis fournit une règle écrite, un jeu fictif et une matrice de choix.",
+          "La portée est bornée : aucune réduction de charge ni réaffectation du temps n'est présentée comme mesurée."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Le format how-to-guide est effectivement tenu avec réponse directe, étapes, règle, rejeu fictif, critères et erreurs à éviter.",
+          "La requête principale figure dans le titre de paquet et le contenu traite explicitement la charge de travail en cabinet comptable.",
+          "Les tableaux Markdown du corps rendent les quatre états et les sorties attendues lisibles, mais aucun rendu HTML local n'est disponible pour vérifier leur balisage."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Les trois sources du paquet sont citées avec URL et date ou qualification de portée dans la section Sources.",
+          "L'Apec est strictement datée du 9 décembre 2021 et le texte précise qu'elle ne décrit pas 2026.",
+          "L'OEC 2023 est explicitement borné à un corpus intersectoriel ; Atlas est présenté comme non daté, qualitatif et sans preuve d'effet IA ou emploi."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "La grille répétition-attente-exception-décision dépasse une simple liste de tâches et donne des conditions d'observation.",
+          "Le rejeu fictif contient quatre cas avec état et sortie attendue, dont arrêt, retour humain et arbitrage.",
+          "La méthode refuse les données nominatives, les jugements de performance et les gains non mesurés."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Le paquet de revue fournit un H1 unique, un title distinct, une description, une requête primaire, les liens internes et les alts ; le gabarit Article émet le canonical, Open Graph et BlogPosting au scellement.",
+          "Les fichiers image du candidat existent réellement : master 1920×1080, OG 1200×630, variantes 768×432 AVIF/WebP et variantes publiques 768/1200/1600 AVIF/WebP.",
+          "Le noindex appartient au candidat avant publication ; le gate de scellement vérifiera le HTML final et aucune preview privée n'est présentée comme une surface publiée."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "La réponse directe et les définitions des quatre états sont autonomes et citables.",
+          "La terminologie répétition, attente, exception, décision, règle, arrêt et agrégat non nominatif reste stable.",
+          "Le corps Markdown est structuré en sections courtes, tableaux et listes ; la citabilité HTML finale reste à vérifier faute de rendu."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "La clôture utilise bien « confier cette tâche », pointe vers /contact et décrit observation, écriture, automatisation, recette et décision conservée par le cabinet.",
+          "Le CTA est cohérent avec l'article consacré au choix d'une première répétition.",
+          "Aucune promesse de gain ou de résultat économique n'est associée à la conversion."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "image": {
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "L'image retouchée montre bien cinq cartes reliées : boucle de répétition, deux barres séparées pour l'attente, branche divergente pour l'exception, jonction équilibrée pour la décision et cinquième carte de liaison sans nouvelle catégorie.",
+          "La composition est un diorama 3D mat horizontal, aéré, sans texte ; elle correspond au brief généré dans prompt.json plutôt qu'au cadre HTML de preuve inline."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "L'image inspectée est horizontale, sans texte lisible, logo, visage, interface, horloge, classement ou alerte rouge, et utilise une composition 3D aérée conforme aux interdits du brief.",
+          "image-source.json documente une sortie retouchée 1920×1080 issue d'un master 16:9."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Aucun nom, dossier, nombre, donnée client ou information personnelle n'est visible dans l'image inspectée.",
+          "Le cadre prévu porte « semaine fictive sans donnée nominative » et la source est documentée comme générée puis retouchée."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Une inspection visuelle indépendante relit sans texte les quatre états demandés : boucle, écart suspendu, divergence et jonction ; la flèche finale relie la séquence sans ajouter de catégorie.",
+          "Le sujet reste une semaine abstraite de flux et ne dérive ni vers un tableau de bord, ni vers une surveillance individuelle."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Les dérivés ont été lus sur disque : master PNG 1920×1080, OG WebP 1200×630, héros AVIF/WebP 768×432 et variantes publiques AVIF/WebP en 768, 1200 et 1600 px.",
+          "image-source.json relie le master retouché à son entrée et documente les hashes, dimensions et mesures de palette."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "L'alt « Semaine fictive répartie entre répétition, attente, exception et décision humaine » décrit fidèlement les quatre symboles de flux portés par les cinq cartes.",
+          "L'alt reste informatif sans annoncer de gain, de donnée client ni de résultat mesuré."
+        ]
+      }
+    },
+    "directionArt": 20,
+    "semanticRelevance": 24
+  },
+  "business": {
+    "claims": {
+      "claim-unit-9e95cf103475-1": {
+        "verdict": "soutient",
+        "reasoning": "La copie locale Apec contient mot pour mot la citation sur les tensions de l’emploi cadre. Le corps l’attribue au communiqué daté du 9 décembre 2021, précise qu’il ne décrit ni 2026 ni la charge d’un cabinet et ne l’utilise comme preuve d’aucun gain."
+      },
+      "claim-unit-bdecfa8aae1e-1": {
+        "verdict": "soutient",
+        "reasoning": "La copie locale OEC/Le Francilien contient la citation sur les conditions de travail et la promesse employeur. Le corps précise que l’article de 2023 résume un livre blanc intersectoriel et n’en tire ni mesure propre aux cabinets ni causalité Memlia."
+      },
+      "claim-unit-41a463acb6ee-1": {
+        "verdict": "soutient",
+        "reasoning": "La copie locale OPCO Atlas contient exactement l’enjeu de montée en compétences. Le corps qualifie cette page de non datée et qualitative et dit explicitement qu’elle ne mesure ni effet propre à l’IA ni effet sur l’emploi."
+      }
+    }
+  },
+  "sources": {
+    "reviewedBy": "relecteur-metier-production-cabinet",
+    "observations": {
+      "apec-oec": "Communiqué institutionnel du 9 décembre 2021 : la citation est exacte et strictement maintenue dans son horizon historique ; aucun état 2026 n’est revendiqué.",
+      "oec-attractivite": "Article OEC Paris du 11 janvier 2023 résumant un corpus intersectoriel : utile pour un contexte qualitatif, non pour mesurer la charge ou un effet Memlia.",
+      "atlas-branche": "Page de branche non datée et qualitative : la citation sur les compétences est exacte, sans protocole ni preuve d’effet propre à l’IA ou à l’emploi."
+    }
+  },
+  "qualite": {
+    "reviewer": "relecteur-qualite-ia-memlia",
+    "score": 92,
+    "p0": [],
+    "categories": {
+      "contentQuality": {"score": 28, "max": 30},
+      "seoOptimization": {"score": 23, "max": 25},
+      "eeatSignals": {"score": 13, "max": 15},
+      "technicalElements": {"score": 14, "max": 15},
+      "aiCitationReadiness": {"score": 14, "max": 15}
+    },
+    "evidence": [
+      "Le corps fournit une méthode originale et concrète, quatre états fermés, quatre cas fictifs et une matrice sans score universel.",
+      "Les bornes métier demandées sont présentes : Apec datée du 9 décembre 2021, OEC 2023 intersectoriel, Atlas non daté et qualitatif, agrégats non nominatifs et absence de gains mesurés.",
+      "La conversion est alignée sur la charte avec « confier cette tâche » et une prise en charge complète.",
+      "L'image directement inspectée matérialise les quatre états par une boucle, un écart, une divergence et une jonction, sur cinq cartes reliées sans texte ni données réelles.",
+      "Les dérivés master, OG et héros AVIF/WebP existent aux dimensions déclarées ; la palette mesurée franchit tous les seuils de la forge."
+    ],
+    "reservations": [
+      "La vérification du HTML public, de Lighthouse et du comportement mobile relève du gate après scellement ; cette revue porte sur le candidat figé avant publication.",
+      "La couverture reste abstraite par contrainte du brief sans texte ; l'alt fournit l'information complémentaire sans surinterpréter un résultat."
+    ],
+    "seo": [
+      "Le title, la description, les requêtes secondaires, le maillage et les sources sont cohérents dans recette.json et corps.md.",
+      "La recette configure H1, title, description, canonical, OG et BlogPosting via le gabarit Article ; le gate final doit confirmer leur rendu après scellement.",
+      "La couverture et son alt sont cohérents : cinq cartes reliées matérialisent quatre états de flux, sans texte ni donnée réelle."
+    ],
+    "geo": [
+      "Les blocs Réponse directe, définitions, règle et rejeu sont autonomes et facilement extractibles.",
+      "Les claims externes sont correctement bornés par leurs dates et niveaux de preuve.",
+      "Les bornes temporelles et méthodologiques rendent les citations réutilisables sans transformer un contexte historique en situation actuelle."
+    ],
+    "verdict": "92/100, PASS : contenu utile et borné, réponse directement exploitable, sources correctement qualifiées et couverture cohérente avec les quatre états. Le gate après scellement doit encore vérifier le HTML final, le build et les surfaces techniques avant toute publication."
+  }
+}

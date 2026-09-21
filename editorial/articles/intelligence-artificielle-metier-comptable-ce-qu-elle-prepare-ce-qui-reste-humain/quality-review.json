@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+  "reviewedAt": "2026-09-21",
+  "reviewer": "relecteur-qualite-ia-memlia",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 95,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 29,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 24,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 14,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 14,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 14,
+      "max": 15
+    }
+  },
+  "evidence": [
+    "Le texte sépare préparation, validation et décision, décrit les capacités Memlia dans une règle explicite et fournit trois cas fictifs avec arrêts attendus.",
+    "Les bornes métier sont visibles : Apec datée du 9 décembre 2021, OEC intersectoriel 2023, Atlas non daté/qualitatif/prospectif, hypothèse de réaffectation du temps et absence de gains mesurés.",
+    "La conversion respecte la charte avec « confier cette tâche », prise en charge complète et décision conservée par le cabinet.",
+    "L'image inspectée correspond visuellement aux trois étapes et ne contient ni texte, ni donnée réelle, ni logo ; quelques transparences et contours sont légèrement ambigus mais sans défaut bloquant.",
+    "Les dérivés master, OG et héros AVIF/WebP existent aux dimensions déclarées ; la palette mesurée franchit tous les seuils de la forge."
+  ],
+  "reservations": [
+    "La vérification du HTML public, de Lighthouse et du comportement mobile relève du gate après scellement ; cette revue porte sur le candidat figé avant publication.",
+    "Quelques transparences et contours de la couverture restent volontairement abstraits, sans gêner la lecture préparation-validation-décision."
+  ],
+  "verdict": "95/100, PASS : article éditorialement robuste, correctement borné, dérivés techniques présents et couverture cohérente avec la frontière en trois étapes. Le gate après scellement doit encore vérifier le HTML final, le build et les surfaces techniques avant toute publication.",
+  "subject": {
+    "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+    "articleSha256": "d7e7cd05983ecf816935fd149ee0b48f1dc37e97ecbb2a0e7a6a9477c0b1cea5",
+    "manifestSha256": "befb3bdde7ac77b6c7465122a9deeee90656d09df05d6dc6bf761337a47c3403"
+  }
+}

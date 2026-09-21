@@ -1,0 +1,177 @@
+{
+  "editorial": {
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "La réponse directe distingue clairement préparation automatisée, validation et décision humaine.",
+          "L'article propose une règle écrite, un arrêt dans le doute et trois cas fictifs adaptés à une direction de cabinet.",
+          "La réaffectation du temps est explicitement formulée comme une hypothèse à vérifier, sans gain présumé."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Le format thought-leadership est tenu : frontière, capacités bornées, règle, rejeu, compétences et erreurs à éviter.",
+          "Le titre et le corps couvrent l'intelligence artificielle, le métier comptable et les compétences sans catalogue de tâches.",
+          "Les tableaux Markdown fournissent des unités comparables, mais aucun rendu HTML local n'est disponible pour confirmer le balisage final."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Les cinq claims déclarés sont attribués à Atlas, Apec/OEC ou OEC Paris et le corps borne leur portée.",
+          "L'Apec est strictement datée du 9 décembre 2021 et n'est pas utilisée comme constat 2026.",
+          "Atlas est explicitement décrit comme non daté, qualitatif et prospectif, sans preuve d'effet propre à l'IA ou à l'emploi ; l'OEC 2023 est borné à un corpus intersectoriel."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "La frontière préparer-valider-décider est opérationnalisée par déclencheur, conditions, action et refus.",
+          "Le jeu fictif couvre une proposition, une ambiguïté arrêtée et une règle absente renvoyée au cabinet.",
+          "Les capacités sont bornées au dispositif Memlia : règle explicite, proposition traçable, arrêt et validation humaine, sans prétention de remplacement global."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Le paquet de revue fournit un H1 unique, un title distinct, une description, les requêtes, liens internes et alts ; le gabarit Article émet canonical, Open Graph et BlogPosting au scellement.",
+          "Les fichiers image du candidat existent réellement : master 1920×1080, OG 1200×630, variantes 768×432 AVIF/WebP et variantes publiques 768/1200/1600 AVIF/WebP.",
+          "Le noindex appartient au candidat avant publication ; le gate de scellement vérifiera le HTML final et aucune preview privée n'est confondue avec la surface publiée."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "La réponse directe est autonome et pose immédiatement la frontière préparer-valider-décider.",
+          "Les termes préparation, règle explicite, validation, exception, arrêt et décision restent stables dans tout le corps.",
+          "Les tableaux et les trois sorties fictives sont citables ; leur conversion HTML finale reste à vérifier faute de rendu."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "La clôture emploie « confier cette tâche », pointe vers /contact et décrit une prise en charge entière dans les outils existants.",
+          "Le texte rappelle que le cabinet garde la décision et n'exige rien à envoyer.",
+          "Le CTA reste cohérent avec un article qui explique la frontière plutôt qu'une promesse de remplacement."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "image": {
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "L'image inspectée montre trois plateformes reliées de gauche à droite, une zone de préparation, un point de contrôle central et une main sculpturale gardant la troisième plateforme, ce qui correspond visuellement à la frontière en trois étapes du cadre.",
+          "Les textes du cadre ne sont pas rendus dans l'image, conformément au brief sans texte lisible ; leur présence est documentée dans recette.json."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "L'image est une composition horizontale 3D aérée, sans texte lisible, logo, visage, fausse interface, donnée client ni alerte rouge.",
+          "image-source.json documente une sortie retouchée 1920×1080 issue d'un master 16:9 et les seuils de palette."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "L'inspection directe ne montre aucun nom, dossier, nombre, donnée personnelle ou donnée client.",
+          "Le cadre porte « jeu d'essai fictif » et la provenance générée/retouchée est documentée dans image-source.json."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Les trois plateformes et le chemin de gauche à droite rendent reconnaissables une préparation, un checkpoint de validation et une décision gardée par une main abstraite.",
+          "La pièce arrêtée avant le checkpoint et le dispositif central matérialisent le doute et la validation sans présenter un opérateur ou une interface produit."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Les dérivés ont été lus sur disque : master PNG 1920×1080, OG WebP 1200×630, héros AVIF/WebP 768×432 et variantes publiques AVIF/WebP en 768, 1200 et 1600 px.",
+          "image-source.json relie le master retouché à son entrée et documente les hashes, dimensions et mesures de palette."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "L'alt de couverture décrit précisément la frontière en trois colonnes entre préparation automatisée, validation et décision humaine.",
+          "Les alts inline décrivent la frontière puis les trois cas fictifs ; ils n'attribuent pas à l'image un résultat mesuré."
+        ]
+      }
+    },
+    "directionArt": 20,
+    "semanticRelevance": 24
+  },
+  "business": {
+    "claims": {
+      "claim-unit-098396eb1aa8-1": {
+        "verdict": "soutient",
+        "reasoning": "La copie locale OPCO Atlas contient mot pour mot l’impact déclaré de la transition numérique sur les métiers. Le corps présente la page comme non datée et qualitative et refuse d’en déduire un effet propre à l’IA ou à l’emploi."
+      },
+      "claim-unit-098396eb1aa8-2": {
+        "verdict": "soutient",
+        "reasoning": "La même copie locale contient exactement l’enjeu de montée en compétences. Le corps conserve la portée qualitative de branche, sans chiffre ni causalité."
+      },
+      "claim-unit-d3bd83d68184-1": {
+        "verdict": "soutient",
+        "reasoning": "La copie locale Apec contient mot pour mot la citation sur les tensions de l’emploi cadre. Le corps l’attribue au 9 décembre 2021 et indique explicitement que ce communiqué ne décrit pas 2026."
+      },
+      "claim-unit-d3bd83d68184-2": {
+        "verdict": "soutient",
+        "reasoning": "La copie locale OEC/Le Francilien contient exactement la phrase sur l’évolution des métiers et savoir-faire. Le corps borne le matériau à un livre blanc intersectoriel résumé en 2023 et ne le présente pas comme une étude propre aux cabinets."
+      },
+      "claim-unit-9e8d17c0c94b-1": {
+        "verdict": "soutient",
+        "reasoning": "La copie locale OPCO Atlas contient exactement la phrase prospective sur une partie des activités automatisée à l’avenir. Le corps la qualifie de prospective et non datée, sans horizon, proportion ni preuve d’effet IA ou emploi ; la réaffectation du temps reste une hypothèse à vérifier tâche par tâche."
+      }
+    }
+  },
+  "sources": {
+    "reviewedBy": "relecteur-metier-ia-memlia",
+    "observations": {
+      "atlas-branche": "Page de branche non datée, qualitative et prospective : les trois citations sont exactes, sans protocole, horizon ou mesure d’effet propre à l’IA ou à l’emploi.",
+      "apec-oec": "Communiqué institutionnel du 9 décembre 2021 : la citation est exacte et reste strictement historique ; aucun état 2026 n’est revendiqué.",
+      "oec-attractivite": "Article OEC Paris du 11 janvier 2023 résumant un corpus intersectoriel : la citation est exacte et ne vaut pas étude propre aux cabinets."
+    }
+  },
+  "qualite": {
+    "reviewer": "relecteur-qualite-ia-memlia",
+    "score": 95,
+    "p0": [],
+    "categories": {
+      "contentQuality": {"score": 29, "max": 30},
+      "seoOptimization": {"score": 24, "max": 25},
+      "eeatSignals": {"score": 14, "max": 15},
+      "technicalElements": {"score": 14, "max": 15},
+      "aiCitationReadiness": {"score": 14, "max": 15}
+    },
+    "evidence": [
+      "Le texte sépare préparation, validation et décision, décrit les capacités Memlia dans une règle explicite et fournit trois cas fictifs avec arrêts attendus.",
+      "Les bornes métier sont visibles : Apec datée du 9 décembre 2021, OEC intersectoriel 2023, Atlas non daté/qualitatif/prospectif, hypothèse de réaffectation du temps et absence de gains mesurés.",
+      "La conversion respecte la charte avec « confier cette tâche », prise en charge complète et décision conservée par le cabinet.",
+      "L'image inspectée correspond visuellement aux trois étapes et ne contient ni texte, ni donnée réelle, ni logo ; quelques transparences et contours sont légèrement ambigus mais sans défaut bloquant.",
+      "Les dérivés master, OG et héros AVIF/WebP existent aux dimensions déclarées ; la palette mesurée franchit tous les seuils de la forge."
+    ],
+    "reservations": [
+      "La vérification du HTML public, de Lighthouse et du comportement mobile relève du gate après scellement ; cette revue porte sur le candidat figé avant publication.",
+      "Quelques transparences et contours de la couverture restent volontairement abstraits, sans gêner la lecture préparation-validation-décision."
+    ],
+    "seo": [
+      "Le title, la description, les requêtes, le maillage interne et les sources sont cohérents dans recette.json et corps.md.",
+      "La recette configure H1, title, description, canonical, OG et BlogPosting via le gabarit Article ; le gate final doit confirmer leur rendu après scellement.",
+      "Le sujet est différencié de la page service et du pilier cartographique par son angle compétences/frontière."
+    ],
+    "geo": [
+      "La réponse directe, la règle écrite et le tableau des trois cas forment des blocs autonomes citables.",
+      "La terminologie préparer-valider-décider est stable et les limites sont explicites.",
+      "Les affirmations externes sont accompagnées de bornes temporelles, sectorielles et méthodologiques ; l'image renforce la frontière sans ajouter de promesse."
+    ],
+    "verdict": "95/100, PASS : article éditorialement robuste, correctement borné, dérivés techniques présents et couverture cohérente avec la frontière en trois étapes. Le gate après scellement doit encore vérifier le HTML final, le build et les surfaces techniques avant toute publication."
+  }
+}

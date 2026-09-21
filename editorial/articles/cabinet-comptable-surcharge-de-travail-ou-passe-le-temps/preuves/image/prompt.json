@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "0d1a708b36f2436f06a68bac8d79ce80542b03b71aed24f714544db6b2a2c206",
+  "manifestSha256": "058d7e76280217bacbefe3b39a338ea0ef4ee2666a18d6426239a964b810cd6a",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact cabinet-comptable-surcharge-de-travail-ou-passe-le-temps."
+  ],
+  "engine": "image_generate",
+  "prompt": "Original 3D editorial cover with no text: an abstract work week represented by five connected day cards in a clear horizontal 16:9 composition. Each matte card carries only a distinct geometric state, never words or numbers: a repeating loop for repetition, a suspended gap for waiting, a divergent piece for exception, and a balanced junction for human decision; the fifth card connects the sequence without adding a new category. Airy isometric diorama, simplified geometric forms, matte and softly translucent materials, paper-cream background, soft light from the upper left. Use the Memlia palette visibly and faithfully: cream #fcfbf7 as the dominant field, green #27b657, deep green #1c8a41, and ink #231f20 as accents. No readable text, letters, numbers, logo, faces, people, client data, clock, stopwatch, ranking, dashboard, interface, red alert, or automatic-send symbol.",
+  "brief": {
+    "sujet": "Une semaine abstraite découpée en quatre états de flux.",
+    "composition": "Cinq cartes de jours reliées, avec un état de flux par carte.",
+    "style": "Diorama éditorial 3D mat, composition aérée.",
+    "palette": "Crème #fcfbf7, vert #27b657, vert profond #1c8a41, encre #231f20.",
+    "interdits": "Aucun texte lisible, logo, visage, donnée client, chronomètre ou classement individuel.",
+    "alt": "Semaine fictive répartie entre répétition, attente, exception et décision humaine"
+  },
+  "reviewCriteria": [
+    "quatre états distincts",
+    "aucun nom",
+    "aucune promesse",
+    "palette Memlia",
+    "format horizontal",
+    "alt informatif"
+  ]
+}

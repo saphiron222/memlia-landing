@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "d7e7cd05983ecf816935fd149ee0b48f1dc37e97ecbb2a0e7a6a9477c0b1cea5",
+  "manifestSha256": "befb3bdde7ac77b6c7465122a9deeee90656d09df05d6dc6bf761337a47c3403",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
+  ],
+  "reviewer": "marketing",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "La réponse directe distingue clairement préparation automatisée, validation et décision humaine.",
+        "L'article propose une règle écrite, un arrêt dans le doute et trois cas fictifs adaptés à une direction de cabinet.",
+        "La réaffectation du temps est explicitement formulée comme une hypothèse à vérifier, sans gain présumé."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Le format thought-leadership est tenu : frontière, capacités bornées, règle, rejeu, compétences et erreurs à éviter.",
+        "Le titre et le corps couvrent l'intelligence artificielle, le métier comptable et les compétences sans catalogue de tâches.",
+        "Les tableaux Markdown fournissent des unités comparables, mais aucun rendu HTML local n'est disponible pour confirmer le balisage final."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Les cinq claims déclarés sont attribués à Atlas, Apec/OEC ou OEC Paris et le corps borne leur portée.",
+        "L'Apec est strictement datée du 9 décembre 2021 et n'est pas utilisée comme constat 2026.",
+        "Atlas est explicitement décrit comme non daté, qualitatif et prospectif, sans preuve d'effet propre à l'IA ou à l'emploi ; l'OEC 2023 est borné à un corpus intersectoriel."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "La frontière préparer-valider-décider est opérationnalisée par déclencheur, conditions, action et refus.",
+        "Le jeu fictif couvre une proposition, une ambiguïté arrêtée et une règle absente renvoyée au cabinet.",
+        "Les capacités sont bornées au dispositif Memlia : règle explicite, proposition traçable, arrêt et validation humaine, sans prétention de remplacement global."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Le paquet de revue fournit un H1 unique, un title distinct, une description, les requêtes, liens internes et alts ; le gabarit Article émet canonical, Open Graph et BlogPosting au scellement.",
+        "Les fichiers image du candidat existent réellement : master 1920×1080, OG 1200×630, variantes 768×432 AVIF/WebP et variantes publiques 768/1200/1600 AVIF/WebP.",
+        "Le noindex appartient au candidat avant publication ; le gate de scellement vérifiera le HTML final et aucune preview privée n'est confondue avec la surface publiée."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "La réponse directe est autonome et pose immédiatement la frontière préparer-valider-décider.",
+        "Les termes préparation, règle explicite, validation, exception, arrêt et décision restent stables dans tout le corps.",
+        "Les tableaux et les trois sorties fictives sont citables ; leur conversion HTML finale reste à vérifier faute de rendu."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "La clôture emploie « confier cette tâche », pointe vers /contact et décrit une prise en charge entière dans les outils existants.",
+        "Le texte rappelle que le cabinet garde la décision et n'exige rien à envoyer.",
+        "Le CTA reste cohérent avec un article qui explique la frontière plutôt qu'une promesse de remplacement."
+      ]
+    }
+  ]
+}

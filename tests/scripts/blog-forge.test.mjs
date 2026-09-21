@@ -215,6 +215,30 @@ test('la forge refuse un H1 narratif avant de créer le candidat', async () => {
   }
 });
 
+test('la forge rafraîchit la preuve source quand sa classification change le même jour', async () => {
+  const root = racineDeTest();
+  let appels = 0;
+  const fetcherCompte = async () => {
+    appels += 1;
+    return new Response(PAGE_SOURCE, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'content-length': String(Buffer.byteLength(PAGE_SOURCE)) } });
+  };
+  try {
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: fetcherCompte, rendreImage, jour });
+    const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+    const courante = JSON.parse(readFileSync(recettePath, 'utf8'));
+    courante.sources[0].classificationReason = 'Source officielle primaire, requalifiée après une nouvelle lecture de sa portée.';
+    writeFileSync(recettePath, JSON.stringify(courante, null, 2));
+
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: fetcherCompte, rendreImage, jour });
+
+    const preuve = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'preuves/sources/cnil-durees.json'), 'utf8'));
+    assert.equal(preuve.classificationReason, courante.sources[0].classificationReason);
+    assert.equal(appels, 4, 'seule la source dont la classification change doit être relue');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('la forge produit un dossier que le gate accepte, puis un dossier publié scellé sur ses octets', async () => {
   const root = racineDeTest();
   try {

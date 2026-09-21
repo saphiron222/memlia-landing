@@ -1,6 +1,6 @@
 ## Réponse directe
 
-L’IA ne remplace pas un métier en bloc. Dans un cabinet, elle peut préparer une information, appliquer une règle explicite et proposer une sortie. Elle ne garantit ni que la règle était la bonne, ni que l’exception a été comprise, ni que la décision doit partir. La frontière utile n’oppose donc pas « humain » et « machine » : elle sépare ce qui se prépare seul, ce qui attend une validation et ce qui reste une décision humaine.
+L’IA ne remplace pas un métier en bloc. Dans le dispositif décrit ici, l’automatisation conçue selon la méthode Memlia peut préparer une information, appliquer une règle explicite et proposer une sortie soumise à validation. Cette conception ne garantit ni que la règle était la bonne, ni que l’exception a été comprise, ni que la décision doit partir. La frontière utile sépare ce qui se prépare seul, ce qui attend une validation et ce qui reste une décision humaine.
 
 Cette réponse ne suppose aucun changement de logiciel. Elle commence par une tâche réelle, décrite dans les mots du cabinet, puis par une règle écrite et un jeu d’essai fictif. L’automatisation vient après. Elle s’arrête quand la règle manque.
 
@@ -8,7 +8,9 @@ Cette réponse ne suppose aucun changement de logiciel. Elle commence par une t�
 
 Un métier de cabinet assemble plusieurs natures de travail. Il faut comprendre une situation, repérer des informations, appliquer des conventions, gérer une relation, expliquer un écart et assumer une décision. Parler de remplacement additionne tout cela comme si chaque geste avait la même frontière.
 
-La branche professionnelle décrit une évolution plus précise. Selon OPCO Atlas, « La transition numérique impacte fortement les métiers des cabinets d’expertise-comptable ». La même source identifie un « Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation ». Elle n’annonce pas la disparition d’un métier ; elle décrit une transformation du contenu du travail.
+La branche professionnelle décrit une évolution plus précise. Sur sa page non datée, OPCO Atlas présente la transition numérique comme un facteur qui « impacte fortement les métiers des cabinets d’expertise-comptable ». La même page identifie un « Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation ». Ces énoncés sont qualitatifs : ils ne mesurent ni un effet propre à l’IA ni un effet sur l’emploi.
+
+Le 9 décembre 2021, l’Apec et le Conseil supérieur de l’Ordre situaient leur partenariat « dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable ». Ce communiqué ne décrit pas la situation de 2026. La transmission apparaît aussi dans un livre blanc intersectoriel résumé par l’OEC Paris en 2023 : « Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance. » Ce corpus n’est pas une étude propre aux cabinets.
 
 L’unité utile est donc la règle. Une règle peut être stable, observable et testable. Un jugement professionnel ne l’est pas toujours. Une automatisation sérieuse prend la première en charge et rend le second visible au lieu de le masquer.
 
@@ -32,7 +34,7 @@ Un bon système ne cherche pas à faire disparaître l’incertitude. Il la nomm
 
 Une sortie bien formulée peut rester fausse. Une règle historique peut être devenue inadaptée. Une donnée peut être complète techniquement mais insuffisante pour décider. C’est pourquoi la qualité du texte produit ne doit jamais devenir la preuve de sa justesse.
 
-L’automatisation ne garantit pas non plus la légitimité d’un traitement. Le cabinet conserve le choix du périmètre, des accès, de la durée de conservation et des personnes habilitées à valider. Le jeu d’essai utilise des données fictives pour éprouver la logique sans exposer de dossier client.
+Le cabinet fixe le périmètre de la règle, les entrées qu’elle accepte, la période couverte et le rôle chargé de valider. Le jeu d’essai utilise des cas fictifs pour éprouver la logique sans exposer de dossier client.
 
 Enfin, elle ne garantit pas l’acceptabilité d’une décision. Informer un client, interpréter une situation ou assumer un arbitrage engage une relation et une responsabilité. Une proposition peut préparer cette décision ; elle ne la prend pas à la place de la personne compétente.
 
@@ -46,7 +48,7 @@ Enfin, elle ne garantit pas l’acceptabilité d’une décision. Informer un cl
 
 **Action** : le système prépare ou propose une sortie traçable ; il ne décide pas silencieusement.
 
-**Cas de refus** : une ambiguïté, une information manquante, une règle absente ou une donnée non autorisée arrête le traitement.
+**Cas de refus** : une ambiguïté, une information manquante, une règle absente ou une entrée hors du périmètre convenu arrête le traitement.
 
 | Se prépare seul | Attend une validation | Reste humain |
 |---|---|---|
@@ -56,7 +58,7 @@ Enfin, elle ne garantit pas l’acceptabilité d’une décision. Informer un cl
 
 **La proposition.** Le système prépare une sortie traçable et la présente avec sa source, sa période et la condition appliquée. Il n’agit pas silencieusement à la place du cabinet.
 
-**L’arrêt.** Cette frontière est plus exigeante qu’un simple contrôle final. Une ambiguïté, une règle absente ou une donnée non autorisée arrête le traitement. « Refuser » et « demander une information » sont des résultats normaux.
+**L’arrêt.** Cette frontière est plus exigeante qu’un simple contrôle final. Une ambiguïté, une règle absente ou une entrée hors du périmètre convenu arrête le traitement. « Refuser » et « demander une information » sont des résultats normaux.
 
 **Le jeu d’essai.** Avant toute recette, les trois sorties sont rejouées sur des cas fictifs : proposition, attente de validation et arrêt motivé.
 
@@ -74,9 +76,9 @@ Le troisième cas est le plus important. Forcer une sortie donnerait l’impress
 
 ## Ce que cela change pour les compétences
 
-OPCO Atlas indique aussi qu’« Une partie des activités actuelles des cabinets sera automatisée à l’avenir ». La phrase est immédiatement reliée à une montée en compétences et à une diversification des activités vers le conseil. L’automatisation n’est donc pas seulement une question d’exécution ; elle déplace l’attention vers l’écriture des règles, la lecture des exceptions et la qualité de la décision.
+OPCO Atlas écrit, dans un passage prospectif non daté, qu’« Une partie des activités actuelles des cabinets sera automatisée à l’avenir ». La page ne donne ni horizon, ni proportion, ni mesure d’effet sur l’emploi. Dans la méthode Memlia, l’automatisation est traitée comme une question d’exécution et de frontière : la règle, l’exception et la décision doivent rester lisibles.
 
-Pour le collaborateur, cela peut signifier moins de temps consacré à reproduire une règle stable et davantage de temps consacré à comprendre les cas qui la dépassent. Ce n’est pas une promesse de gain mesuré. C’est la conséquence logique de la frontière choisie : ce qui est répétitif se prépare ; ce qui engage reste visible.
+Hypothèse à vérifier sur chaque tâche : si une préparation répétitive est effectivement retirée du flux, le temps libéré peut être réaffecté aux cas qui dépassent la règle. Aucun effet n’est présumé avant la recette puis la mesure sur le périmètre réel.
 
 Pour la direction, cela crée une nouvelle responsabilité. Elle doit décider quelles règles méritent d’être écrites, qui les valide et comment elles sont maintenues. Une automatisation sans propriétaire métier vieillit en silence.
 
@@ -104,13 +106,15 @@ Ni un poste supprimé, ni un délai, ni un pourcentage de temps gagné ne décou
 
 ## Pour aller plus loin
 
-La méthode Memlia consiste à observer une tâche répétitive, écrire sa règle dans les mots du cabinet, construire l’automatisation dans les outils déjà utilisés, l’éprouver sur un jeu fictif, la faire recetter puis la maintenir. [Voir la méthode](/methode) permet de comprendre ce cycle. [Les garanties](/garanties) détaillent l’arrêt dans le doute, la validation et la traçabilité.
+[La carte des tâches répétitives d’un cabinet](/blog/automatiser-un-cabinet-comptable-la-carte-des-taches) replace cette frontière dans une famille de gestes sans en faire un catalogue. La méthode Memlia consiste à observer une tâche répétitive, écrire sa [règle de cabinet](/glossaire#regle-de-cabinet) dans les mots du cabinet, construire l’automatisation dans les outils déjà utilisés, l’éprouver sur un jeu fictif, la faire recetter puis la maintenir. [Voir la méthode](/methode) permet de comprendre ce cycle. [Les garanties](/garanties) détaillent l’arrêt dans le doute et la [validation humaine](/glossaire#validation-humaine). [L’automatisation d’un cabinet comptable](/automatisation-cabinet-comptable) présente la prise en charge entière d’une tâche.
 
 La question « où passe le temps ? » est traitée dans [le diagnostic de surcharge](/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps). La question de la transmission du savoir-faire est traitée dans [l’article sur la fidélisation](/blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire).
 
-Si une répétition est déjà choisie, [confier une première tâche](/contact) sert à décrire le déclencheur, les conditions, l’action attendue et les cas de refus. Nous disons ensuite ce qu’il faut pour la prendre en charge. L’IA prépare, l’humain décide.
+Si une répétition est déjà choisie, [confier cette tâche](/contact) ouvre sa prise en charge entière. Nous écrivons sa règle dans vos mots, l’automatisons dans vos outils et la faisons recetter par vos équipes. Votre cabinet garde la décision. Rien à envoyer : décrivez seulement la tâche.
 
 ## Sources
 
 - [OPCO Atlas — branche Expertise comptable, Commissariat aux comptes et Audit](https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html), consulté le 21 septembre 2026.
+- [Apec et Conseil supérieur de l’Ordre — mobilisation au service de l’emploi](https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html), publié le 9 décembre 2021, consulté le 21 septembre 2026.
+- [OEC Paris / Le Francilien — Comment attirer et fidéliser des collaborateurs](https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/), publié le 11 janvier 2023, consulté le 21 septembre 2026.
 - [Méthode Memlia](/methode), pour le mécanisme de règle écrite, le jeu d’essai fictif et la recette humaine.

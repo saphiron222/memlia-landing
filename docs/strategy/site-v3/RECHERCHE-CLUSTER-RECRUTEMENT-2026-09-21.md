@@ -146,7 +146,7 @@ Pilier futur : Organiser un cabinet comptable quand les compétences sont rares
 | fidélisation | compétences | « faire évoluer le travail plutôt que remplacer le métier » |
 | les trois candidats | `/methode` | « la règle écrite » |
 | les trois candidats | `/automatisation-cabinet-comptable` | « automatisation de tâches répétitives en cabinet » |
-| les trois candidats | `/contact` | CTA après la valeur : « Confier une première tâche » |
+| les trois candidats | `/contact` | CTA après la valeur : « Confier cette tâche » |
 
 ## Les trois candidats retenus
 

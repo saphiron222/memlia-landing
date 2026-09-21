@@ -1,0 +1,47 @@
+{
+  "generationId": "0d25ee44-f2da-4390-997d-d12a77de00b1",
+  "model": "gpt_image_2_5",
+  "provider": "higgsfield",
+  "quality": "high",
+  "resolution": "2k",
+  "aspectRatio": "16:9",
+  "width": 2688,
+  "height": 1520,
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_340edDKgz49ubvQTIJPiYr6YSC6/hf_20260921_095713_0d25ee44-f2da-4390-997d-d12a77de00b1.png",
+  "createdAt": "2026-09-21T09:57:13.0236Z",
+  "credits": 3,
+  "retouch": {
+    "taskId": "t_14e7a6cc",
+    "authorizedAt": "2026-09-21",
+    "purpose": "Franchir le plancher de 0,5 % de #231f20 sans nouvelle génération, sans changement de composition ni de sujet.",
+    "tool": {
+      "node": "v22.22.3",
+      "sharp": "0.35.4",
+      "libvips": "8.18.6"
+    },
+    "method": "Dilatation locale minimale de 3 px autour des surfaces déjà classées #231f20 ; pixels voisins limités à une luminance de 130, projetés dans un rayon RGB de 32 autour de la cible.",
+    "inputPath": "image-source.png",
+    "inputSha256": "f7d86379006152f6394568b496fbd76449d93fa1d9a7037bcb751fb3e4ba8d90",
+    "outputPath": "image-source-retouched.png",
+    "outputSha256": "c52b907905a7e1f7b884653e4b0ab463b34a75f75667a68a615c14234c737606",
+    "outputWidth": 1920,
+    "outputHeight": 1080,
+    "paletteToleranceRgb": 45,
+    "forgeThreshold": 0.005,
+    "targetThreshold": 0.0055,
+    "pixelsModified": 6862,
+    "modifiedPart": 0.003309220679012346,
+    "measurementsBefore": {
+      "#27b657": 0.013489583333333333,
+      "#1c8a41": 0.014670138888888889,
+      "#fcfbf7": 0.8105381944444444,
+      "#231f20": 0.004288194444444444
+    },
+    "measurementsAfter": {
+      "#27b657": 0.0134375,
+      "#1c8a41": 0.014010416666666666,
+      "#fcfbf7": 0.8105555555555556,
+      "#231f20": 0.0061805555555555555
+    }
+  }
+}

@@ -1,14 +1,14 @@
 ## Réponse directe
 
-Écrire le savoir-faire d’un cabinet ne fidélise pas mécaniquement ses collaborateurs. Cela peut cependant rendre une consigne plus transmissible, éviter que les exceptions restent dans la tête de quelques personnes et réserver le temps d’accompagnement au jugement qui compte. La méthode consiste à transformer une consigne orale en déclencheur, conditions, proposition, validation et cas de refus.
+Écrire le savoir-faire ne permet pas, à lui seul, de conclure à un effet sur la fidélisation. Cela peut rendre une consigne plus transmissible et éviter que les exceptions restent dans la tête de quelques personnes. La méthode consiste à transformer une consigne orale en déclencheur, conditions, proposition, validation et cas de refus.
 
 Cette approche ne mesure personne et ne promet aucun taux de rétention. Elle traite un problème d’organisation précis : une règle importante existe, mais elle n’est ni visible, ni rejouable, ni maintenable. L’automatisation n’intervient qu’après son écriture et son essai sur des cas fictifs.
 
 ## Ce que « fidéliser » veut dire ici
 
-La fidélisation dépend de nombreux facteurs : rémunération, management, conditions de travail, perspectives, collectif, territoire et contenu du métier. Memlia ne vend aucun de ces leviers et ne peut pas promettre leur résultat.
+Les sources contrôlées ne permettent pas d’isoler l’effet d’un levier sur la fidélisation. Elles évoquent plusieurs dimensions, dont les compétences, la rémunération, l’autonomie et les conditions de travail, dans des périmètres différents. Memlia ne promet aucun résultat RH.
 
-La profession nomme pourtant directement le problème. L’Apec et le Conseil supérieur de l’Ordre se sont mobilisés « dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable ». L’article de l’OEC Paris demande aussi « comment recruter, éviter la fuite des talents, fidéliser ses équipes ? ». Il rapporte des pratiques de développement des compétences, de transmission des savoir-faire et d’attention aux conditions d’emploi.
+Le 9 décembre 2021, l’Apec et le Conseil supérieur de l’Ordre se sont mobilisés « dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable ». Ce communiqué ne décrit pas la situation de 2026. L’article de l’OEC Paris publié en 2023 résume un livre blanc intersectoriel et demande « comment recruter, éviter la fuite des talents, fidéliser ses équipes ? ». Il ne mesure aucun effet propre aux cabinets.
 
 Le lien avec Memlia est donc borné. Nous ne prétendons pas agir sur la fidélisation elle-même. Nous pouvons aider un cabinet à rendre une règle de production transmissible et à déplacer une répétition stable vers une préparation automatisée, avec validation humaine.
 
@@ -26,7 +26,7 @@ Une règle écrite n’est pas une procédure infinie. Elle peut tenir sur une f
 
 L’expérience reste indispensable pour décider où placer la frontière. Une personne expérimentée repère souvent qu’une condition apparemment secondaire change le sens du cas. L’écriture rend cette condition visible ; elle ne la remplace pas.
 
-L’OEC Paris souligne « la place et le rôle des dispositifs de développement des compétences et de transmission des savoir-faire dans la dynamique globale de création de valeur ». La même publication précise : « Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance. » Cet énoncé ne prouve aucun effet de Memlia. Il confirme en revanche que la transmission est un sujet de direction, pas une simple formalité d’onboarding.
+Dans le livre blanc intersectoriel résumé par l’OEC Paris en 2023, les auteurs soulignent « la place et le rôle des dispositifs de développement des compétences et de transmission des savoir-faire dans la dynamique globale de création de valeur ». La même publication précise : « Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance. » Ce corpus ne prouve ni un effet de Memlia ni un résultat de fidélisation ; il traite la transmission comme un sujet de direction dans les entreprises rencontrées.
 
 ## La règle écrite
 
@@ -77,7 +77,7 @@ La maintenance devient enfin un objet collectif. Lorsqu’une pratique change, l
 
 Choisir la bonne règle, interpréter une exception, accompagner une personne et assumer une action ne sont pas des sorties mécaniques. L’automatisation peut présenter les éléments ; elle ne remplace pas le rôle de la personne compétente.
 
-Les conditions de travail et d’emploi sont décrites par l’OEC Paris comme un élément distinctif de la promesse employeur. Là encore, aucune causalité automatique ne doit être affirmée. Une règle plus lisible n’efface ni une charge mal répartie ni un problème de management. Elle rend seulement une partie du fonctionnement plus explicite.
+Le livre blanc intersectoriel résumé par l’OEC Paris décrit les conditions de travail et d’emploi comme un élément distinctif de la promesse employeur des entreprises rencontrées. Ce constat n’est ni une mesure propre aux cabinets ni une causalité. Une règle plus lisible n’efface ni une charge mal répartie ni un problème de management. Elle rend seulement une partie du fonctionnement plus explicite.
 
 ## Les erreurs à éviter
 
@@ -108,4 +108,4 @@ Si une consigne orale mérite d’être rendue transmissible, [confier une premi
 ## Sources
 
 - [OEC Paris / Le Francilien — Comment attirer et fidéliser des collaborateurs](https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/), publié le 11 janvier 2023, consulté le 21 septembre 2026.
-- [OPCO Atlas — branche Expertise comptable, Commissariat aux comptes et Audit](https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html), consulté le 21 septembre 2026.
+- [Apec et Conseil supérieur de l’Ordre — mobilisation au service de l’emploi](https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html), publié le 9 décembre 2021, consulté le 21 septembre 2026.

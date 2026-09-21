@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "0d1a708b36f2436f06a68bac8d79ce80542b03b71aed24f714544db6b2a2c206",
+  "manifestSha256": "058d7e76280217bacbefe3b39a338ea0ef4ee2666a18d6426239a964b810cd6a",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact cabinet-comptable-surcharge-de-travail-ou-passe-le-temps."
+  ],
+  "reviewerId": "relecteur-metier-production-cabinet",
+  "role": "direction-associes",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-9e95cf103475-1-apec-oec",
+      "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "articleSha256": "0d1a708b36f2436f06a68bac8d79ce80542b03b71aed24f714544db6b2a2c206",
+      "claimId": "claim-unit-9e95cf103475-1",
+      "claimSha256": "105cde098241963f4b7e1c26fae266cf17fe98edb795069bef7a1533a10ec7da",
+      "sourceId": "apec-oec",
+      "sourceContentSha256": "811a484897c99752ec186b2826c8f47a127fb85eeeea575abd7e39ef9f3bcdbc",
+      "citationSha256": "09c34682b6e5554c55a9c9e1385f62a24f1d064658e6b97f3efbf96a1da3a9b0",
+      "reviewerId": "relecteur-metier-production-cabinet",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-21",
+      "reasoning": "La copie locale Apec contient mot pour mot la citation sur les tensions de l’emploi cadre. Le corps l’attribue au communiqué daté du 9 décembre 2021, précise qu’il ne décrit ni 2026 ni la charge d’un cabinet et ne l’utilise comme preuve d’aucun gain."
+    },
+    {
+      "id": "review-claim-unit-bdecfa8aae1e-1-oec-attractivite",
+      "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "articleSha256": "0d1a708b36f2436f06a68bac8d79ce80542b03b71aed24f714544db6b2a2c206",
+      "claimId": "claim-unit-bdecfa8aae1e-1",
+      "claimSha256": "2a3261392d7382f30dabc7685f7104e317582c70a13c41ab38a0d95557bef967",
+      "sourceId": "oec-attractivite",
+      "sourceContentSha256": "63d656eef4c999ed813b3ed3f3bdaca51980e9ff894a8a904c4a0b6bc3606e55",
+      "citationSha256": "35361d1a02e5d2b1e4ad40baab8f412b08d3a97d115cf94a53c956e7a1f34bb3",
+      "reviewerId": "relecteur-metier-production-cabinet",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-21",
+      "reasoning": "La copie locale OEC/Le Francilien contient la citation sur les conditions de travail et la promesse employeur. Le corps précise que l’article de 2023 résume un livre blanc intersectoriel et n’en tire ni mesure propre aux cabinets ni causalité Memlia."
+    },
+    {
+      "id": "review-claim-unit-41a463acb6ee-1-atlas-branche",
+      "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "articleSha256": "0d1a708b36f2436f06a68bac8d79ce80542b03b71aed24f714544db6b2a2c206",
+      "claimId": "claim-unit-41a463acb6ee-1",
+      "claimSha256": "7860c2c95ecc4e16befea606aded933183ed43627d703e9bec378fbf6da6dc7b",
+      "sourceId": "atlas-branche",
+      "sourceContentSha256": "fb1bc8270b241c23bd18b3dd59f9e005bb937b675ae0adc9f72a1e86fabf789a",
+      "citationSha256": "f41cbca50dcef23f91cccdce7eb323be90224b6d51ad90f3b38350c6228adaeb",
+      "reviewerId": "relecteur-metier-production-cabinet",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-21",
+      "reasoning": "La copie locale OPCO Atlas contient exactement l’enjeu de montée en compétences. Le corps qualifie cette page de non datée et qualitative et dit explicitement qu’elle ne mesure ni effet propre à l’IA ni effet sur l’emploi."
+    }
+  ]
+}

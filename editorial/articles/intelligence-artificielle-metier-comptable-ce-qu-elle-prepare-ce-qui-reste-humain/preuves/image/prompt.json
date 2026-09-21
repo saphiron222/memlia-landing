@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "d7e7cd05983ecf816935fd149ee0b48f1dc37e97ecbb2a0e7a6a9477c0b1cea5",
+  "manifestSha256": "befb3bdde7ac77b6c7465122a9deeee90656d09df05d6dc6bf761337a47c3403",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
+  ],
+  "engine": "image_generate",
+  "prompt": "Original 3D editorial cover with no text: three connected isometric platforms form a clear left-to-right boundary between automated preparation, human validation, and human decision. The first platform assembles clean geometric inputs, the second pauses a proposed piece at a visible checkpoint, and the third is protected by a single abstract hand-shaped guard that is symbolic and sculptural, not a person or face. Make uncertainty visible through one piece that stops before the checkpoint rather than crossing it. Airy horizontal 16:9 composition, simplified geometric forms, matte and softly translucent materials, paper-cream background, soft light from the upper left. Use the Memlia palette visibly and faithfully: cream #fcfbf7 as the dominant field, green #27b657, deep green #1c8a41, and ink #231f20 as accents. No readable text, letters, numbers, logo, face, character, client data, dashboard, false interface, red alert, or automatic-send symbol.",
+  "brief": {
+    "sujet": "Une frontière abstraite en trois plateaux pour préparation, validation et décision.",
+    "composition": "Vue isométrique, trois plateaux reliés, le dernier gardé par une main symbolique non humaine.",
+    "style": "Diorama éditorial 3D mat, composition aérée.",
+    "palette": "Crème #fcfbf7, vert #27b657, vert profond #1c8a41, encre #231f20.",
+    "interdits": "Aucun texte lisible, logo, visage, donnée client ou fausse interface.",
+    "alt": "Frontière en trois colonnes entre préparation automatisée, validation et décision humaine"
+  },
+  "reviewCriteria": [
+    "frontière lisible",
+    "doute visible",
+    "aucune donnée",
+    "palette Memlia",
+    "format horizontal",
+    "alt informatif"
+  ]
+}
