@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import { SITE } from '@/data/site.mjs';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
+import { INTEGRATIONS_HUB_PATH } from '@/data/integrations';
 
 /** Pied de page (spec §4.14) : colonnes générées, ligne © en --texte-2, emblème « M » en filigrane. */
 interface Props {
@@ -31,6 +32,7 @@ const colonnes = [
       ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
       ...rubriques.map((rubrique) => ({ libelle: rubrique.libelle, href: rubrique.chemin })),
       { libelle: 'Glossaire', href: '/glossaire' },
+      { libelle: 'Guides par environnement', href: INTEGRATIONS_HUB_PATH },
       { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
     ],
   },

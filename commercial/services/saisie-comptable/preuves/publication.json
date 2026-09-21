@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "saisie-comptable",
+  "path": "/automatisation/saisie-comptable",
+  "status": "publie",
+  "publishedOn": "2026-09-21",
+  "publishedAt": "2026-09-20T22:53:41.673Z",
+  "servedObservation": {
+    "url": "https://localhost:4443/automatisation/saisie-comptable",
+    "status": 200,
+    "canonical": "https://memlia.fr/automatisation/saisie-comptable",
+    "canonicalCount": 1,
+    "h1": "Saisie comptable en cabinet : chaque écriture reste à valider",
+    "h1Count": 1,
+    "candidateFingerprint": "88c0a2f5a3ef448452663fd80423109b6ce2188d5a87b6bb2955144f969f467f",
+    "candidateFingerprintCount": 1,
+    "bodySha256": "a136cc61d681a89e9eacfb62259c7ff263006edb67f8c1a8bad7a898d7edbd25",
+    "observedAt": "2026-09-20T22:53:41.667Z",
+    "cacheControl": null,
+    "cfCacheStatus": null,
+    "age": null,
+    "xRobotsTag": null,
+    "metaRobots": [
+      "noindex, follow"
+    ],
+    "indexable": false
+  },
+  "page": {
+    "path": "src/content/services/saisie-comptable.md",
+    "bytes": 5589,
+    "sha256": "d98bd8bb70955a71daeef5da04792f58df9622c3595e780a511a271cccddd86b"
+  },
+  "manifest": {
+    "path": "commercial/services/saisie-comptable/manifest.json",
+    "bytes": 2437,
+    "sha256": "e9de17ed928f1555529f405eaa53eb7f7f37a516e9169a4fe555bf1c673ccb3e"
+  }
+}

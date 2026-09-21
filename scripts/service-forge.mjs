@@ -7,6 +7,7 @@
  *   node scripts/service-forge.mjs preparer <slug>
  *   node scripts/service-forge.mjs sceller <slug>
  *   node scripts/service-forge.mjs publier <slug>
+ *   node scripts/service-forge.mjs depublier <slug> <declaration.json>
  *   node scripts/service-forge.mjs auditer
  */
 import { createHash } from 'node:crypto';
@@ -311,6 +312,8 @@ function subjectFiles(root, slug) {
   };
   const publication = join(dossier, 'preuves/publication.json');
   if (existsSync(publication)) files.publication = publication;
+  const depublication = join(dossier, 'preuves/depublication.json');
+  if (existsSync(depublication)) files.depublication = depublication;
   return files;
 }
 
@@ -322,11 +325,23 @@ function hashesFor(root, slug) {
   }));
 }
 
-export function materialiserService({ root = process.cwd(), slug, status = 'a-valider', today = todayIso(), snapshot = null }) {
+function serviceEstPublie(root, slug) {
+  const dossier = join(root, 'commercial/services', slug);
+  if (existsSync(join(dossier, 'preuves/publication.json'))) return true;
+  const manifestPath = join(dossier, 'manifest.json');
+  if (existsSync(manifestPath) && readJson(manifestPath).status === 'publie') return true;
+  const pagePath = join(root, 'src/content/services', `${slug}.md`);
+  return existsSync(pagePath) && /^status:\s*publie\s*$/m.test(readFileSync(pagePath, 'utf8'));
+}
+
+export function materialiserService({ root = process.cwd(), slug, status = 'a-valider', today = todayIso(), snapshot = null, allowDepublish = false }) {
   const { recipe, body, review } = snapshot ?? loadRecipe(root, slug);
   const errors = verifierRecetteService({ root, recipe, body, review, today, requireReview: false });
   const dossier = join(root, 'commercial/services', slug);
   const pagePath = join(root, 'src/content/services', `${slug}.md`);
+  if (status !== 'publie' && !allowDepublish && serviceEstPublie(root, slug)) {
+    errors.unshift(`${slug} est déjà publié : préparer ou sceller ne peut pas le rétrograder ; une dépublication explicite et autorisée est requise.`);
+  }
   if (errors.length) return { errors, recipe, manifest: null, dossier, pagePath };
   mkdirSync(dirname(pagePath), { recursive: true });
   mkdirSync(join(dossier, 'preuves'), { recursive: true });
@@ -558,6 +573,51 @@ export async function publierService({ root = process.cwd(), slug, today = today
   return { pass: true, errors: [], dossier: result.dossier };
 }
 
+export function depublierService({ root = process.cwd(), slug, declaration, today = todayIso() }) {
+  const errors = [];
+  const route = `/automatisation/${slug}`;
+  const destinations = [declaration?.replacement, declaration?.redirect]
+    .filter((value) => typeof value === 'string' && value.startsWith('/') && value !== route);
+  if (declaration?.slug !== slug || declaration?.route !== route) errors.push('La déclaration doit nommer exactement le slug et la route du service.');
+  if (declaration?.authorizedBy !== 'Kevin Kitanga') errors.push('La dépublication exige l’autorisation explicite de Kevin Kitanga.');
+  if (!DATE_RE.test(declaration?.depublishedOn ?? '') || declaration.depublishedOn > today) errors.push('La date de dépublication doit être une date ISO non future.');
+  if (String(declaration?.reason ?? '').trim().length < 60) errors.push('La raison durable de dépublication doit contenir au moins 60 caractères.');
+  if (destinations.length !== 1) errors.push('La dépublication exige exactement un remplacement ou une redirection interne distincte.');
+
+  const receiptPath = join(root, 'commercial/services', slug, 'preuves/publication.json');
+  if (!serviceEstPublie(root, slug) || !existsSync(receiptPath)) errors.push('Seul un service publié avec sa preuve peut être dépublié.');
+  const ledgerPath = join(root, 'config/service-publication-ledger.json');
+  let ledger;
+  try {
+    ledger = readJson(ledgerPath);
+    const authority = ledger.services?.find((service) => service.slug === slug && service.route === route);
+    if (!authority || authority.status !== 'publie') errors.push('Le registre durable ne reconnaît pas ce service comme publié.');
+  } catch (error) {
+    errors.push(`Le registre durable des services publics est absent ou illisible : ${error.message}.`);
+  }
+  if (errors.length) return { pass: false, errors: [...new Set(errors)] };
+
+  const snapshot = loadRecipe(root, slug);
+  const result = materialiserService({ root, slug, status: 'a-valider', today, snapshot, allowDepublish: true });
+  if (result.errors.length) return { pass: false, errors: result.errors };
+  const depubPath = join(result.dossier, 'preuves/depublication.json');
+  writeJson(depubPath, declaration);
+  rmSync(receiptPath);
+  const authority = ledger.services.find((service) => service.slug === slug && service.route === route);
+  authority.status = 'depublie';
+  authority.depublicationPath = relative(root, depubPath);
+  writeJson(ledgerPath, ledger);
+  const registry = chargerRegistre(root);
+  const entry = (registry.articles ?? []).find((item) => item.type === 'service' && item.slug === slug);
+  if (entry) {
+    entry.publieLe = null;
+    entry.source = 'recette-service-depubliee';
+  }
+  sauverRegistre(root, registry);
+  writeSeal(root, slug, 'service-depublication-scellee', new Date().toISOString());
+  return { pass: true, errors: [], dossier: result.dossier, depubPath };
+}
+
 export function auditerServices({ root = process.cwd(), today = todayIso() } = {}) {
   const base = join(root, 'commercial/services');
   const slugs = existsSync(base)
@@ -567,6 +627,18 @@ export function auditerServices({ root = process.cwd(), today = todayIso() } = {
   const registryServices = (chargerRegistre(root).articles ?? []).filter((entry) => entry.type === 'service');
   const folders = new Set(slugs);
   const registeredSlugs = new Set(registryServices.map((entry) => entry.slug));
+  const ledgerPath = join(root, 'config/service-publication-ledger.json');
+  let publicationAuthority = new Map();
+  const ledgerEnabled = existsSync(ledgerPath);
+  if (ledgerEnabled) {
+    try {
+      const ledger = readJson(ledgerPath);
+      if (ledger.version !== 1 || !Array.isArray(ledger.services)) errors.push('Registre durable des services publics invalide.');
+      else publicationAuthority = new Map(ledger.services.map((service) => [service.slug, service]));
+    } catch (error) {
+      errors.push(`Registre durable des services publics illisible (${error.message}).`);
+    }
+  }
   for (const entry of registryServices) {
     if (!folders.has(entry.slug)) errors.push(`Registre service sans dossier commercial/services/${entry.slug}.`);
   }
@@ -587,6 +659,9 @@ export function auditerServices({ root = process.cwd(), today = todayIso() } = {
         errors.push(`${slug} : divergence URL ou requête entre registre et manifeste.`);
       }
       if (manifest.slug !== slug || manifest.type !== 'service') errors.push(`${slug} : divergence de slug ou type dans le manifeste.`);
+      const authority = publicationAuthority.get(slug);
+      if (ledgerEnabled && manifest.status === 'publie' && authority?.status !== 'publie') errors.push(`${slug} : service publié absent de l’autorité durable.`);
+      if (authority?.status === 'publie' && manifest.status !== 'publie') errors.push(`${slug} : l’autorité durable exige le statut publié ; une dépublication explicite est requise.`);
       if (manifest.candidateFingerprint !== expectedFingerprint) errors.push(`${slug} : l’empreinte du candidat diverge entre recette et manifeste.`);
       const publicationPath = join(base, slug, 'preuves/publication.json');
       if (manifest.status === 'publie') {
@@ -614,15 +689,19 @@ export function auditerServices({ root = process.cwd(), today = todayIso() } = {
 }
 
 export async function commande(argv, root = process.cwd()) {
-  const [action, slug] = argv;
+  const [action, slug, declarationPath] = argv;
   let result;
   if (action === 'auditer') result = auditerServices({ root });
-  else if (!slug) throw new Error('Usage : service-forge <preparer|sceller|publier> <slug> | auditer');
+  else if (!slug) throw new Error('Usage : service-forge <preparer|sceller|publier> <slug> | depublier <slug> <declaration.json> | auditer');
   else if (action === 'preparer') {
     const prepared = materialiserService({ root, slug, status: 'a-valider' });
     result = { pass: prepared.errors.length === 0, slug, dossier: relative(root, prepared.dossier), errors: prepared.errors, suite: prepared.errors.length ? 'corriger la recette' : 'faire relire puis sceller' };
   } else if (action === 'sceller') result = scellerService({ root, slug });
   else if (action === 'publier') result = await publierService({ root, slug });
+  else if (action === 'depublier') {
+    if (!declarationPath) throw new Error('Usage : service-forge depublier <slug> <declaration.json>');
+    result = depublierService({ root, slug, declaration: readJson(resolve(root, declarationPath)) });
+  }
   else throw new Error(`Action inconnue : ${action}`);
   console.log(JSON.stringify(result, null, 2));
   if (!result.pass) process.exitCode = 1;

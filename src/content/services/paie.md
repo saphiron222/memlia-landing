@@ -2,7 +2,7 @@
 title: "Automatisation paie du pôle social : chaque contrôle reste à valider"
 tabTitle: "Automatisation paie du pôle social | Memlia"
 ogTitle: "Automatisation paie du pôle social : chaque contrôle reste à valider"
-description: "Confiez la mécanique répétitive autour de la paie : règle écrite, contrôles préparés, écarts visibles et décisions conservées par le pôle social."
+description: "Automatisation paie pôle social : règle écrite, contrôles préparés, écarts visibles et décisions conservées par les gestionnaires."
 hero: "Nous écrivons avec votre pôle social la règle d’un geste répétitif autour de la paie, puis nous l’automatisons dans ses outils. Les éléments conformes avancent jusqu’à une proposition contrôlable. Une donnée absente, une variation hors règle ou un écart inexpliqué arrête le traitement. Les gestionnaires gardent la correction, la validation et toute décision sur un salarié."
 primaryQuery: "automatisation paie pôle social"
 secondaryQueries: ["automatisation paie", "automatisation paie cabinet comptable"]
@@ -13,8 +13,8 @@ audience:
 intent: evaluer-service
 family: paie-social
 verifiedAt: 2026-09-20
-status: pret-preview
-candidateFingerprint: "784426c19bf20c7f374a6d51960dd6649306d6727892214507bd69eef7cebc1b"
+status: publie
+candidateFingerprint: "ab45407c7d956a1a892696d5c72d622602039f7bf2e41f79e213cbd337f02977"
 cta:
   label: "Confier une première tâche"
   destination: "/contact"

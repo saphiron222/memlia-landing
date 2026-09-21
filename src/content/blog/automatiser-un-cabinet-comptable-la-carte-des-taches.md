@@ -103,7 +103,6 @@ Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. L
 
 <figure data-blog-proof="carte-douze-poles">
   <img src="/proofs/blog/carte-douze-poles.webp" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/carte-douze-poles.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : taxonomie éditoriale versionnée src/data/familles.ts ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Production comptable : de la pièce reçue au bilan livré
@@ -222,7 +221,6 @@ Quatre familles qui ne produisent rien mais qui décident de tout. Choisir et ca
 
 <figure data-blog-proof="carte-test-regle">
   <img src="/proofs/blog/carte-test-regle.webp" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/carte-test-regle.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : test de maturité décrit dans cet article sur la carte des tâches ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Que ne contient pas cette carte ?

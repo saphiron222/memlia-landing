@@ -61,8 +61,7 @@ test('contenu et navigation sans JavaScript', async ({ browser }) => {
   await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.faq-r').first()).toBeVisible();
-  // Sans JavaScript le panneau ne s'ouvre pas : la navigation de repli porte les destinations.
-  await expect(page.locator('.nav-sans-js a[href="/methode"]')).toBeVisible();
+  await expect(page.locator('[data-mobile-visible] a[href="/#methode"]')).toBeVisible();
   await context.close();
 });
 
@@ -73,26 +72,18 @@ test('reduced-motion garde les étapes lisibles', async ({ page }) => {
   for (const step of await page.locator('[data-etape]').all()) await expect(step).toHaveCSS('opacity', '1');
 });
 
-test('menu desktop : cinq destinations atteignables au clavier, groupe Ressources et CTA unique', async ({ page }) => {
+test('navigation desktop : quatre destinations atteignables au clavier et CTA unique', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   const links = page.locator('.nav-centre a');
-  // « Ressources » est un bouton de groupe ; ses destinations (blog, glossaire) restent dans l'ordre du clavier.
-  await expect(page.locator('.nav-centre .nav-groupe-bouton')).toHaveText('Ressources');
-  await expect(page.locator('.nav-centre .nav-groupe-bouton')).toHaveAttribute('aria-expanded', 'false');
-  await expect(links).toHaveText(['Automatisation', 'Méthode', 'Garanties', 'Blog', 'Glossaire']);
-  await page.locator('.nav-centre .nav-groupe-bouton').click();
-  await expect(page.locator('.nav-centre .nav-groupe-bouton')).toHaveAttribute('aria-expanded', 'true');
-  await expect(page.locator('.nav-sous-menu a[href="/glossaire"]')).toBeVisible();
-  await page.keyboard.press('Escape');
-  await expect(page.locator('.nav-centre .nav-groupe-bouton')).toHaveAttribute('aria-expanded', 'false');
-  for (const route of ['/automatisation-cabinet-comptable', '/methode', '/garanties', '/blog', '/glossaire']) {
+  await expect(links).toHaveText(['Tâches', 'Méthode', 'Contrôle humain', 'Questions']);
+  for (const fragment of ['usages', 'methode', 'preuves', 'questions']) {
     await page.goto('/');
-    const link = page.locator(`.nav-centre a[href="${route}"]`);
+    const link = page.locator(`.nav-centre a[href="/#${fragment}"]`);
     await link.focus();
     await link.press('Enter');
-    await expect(page).toHaveURL(new RegExp(`${route}/?$`));
-    await expect(page.locator('h1')).toBeVisible();
+    await expect(page).toHaveURL(new RegExp(`#${fragment}$`));
+    await expect(page.locator(`#${fragment}`)).toBeVisible();
   }
   await page.goto('/');
   await expect(page.locator('.nav-principal')).toHaveText(CTA.nav.libelle);
@@ -128,10 +119,8 @@ test('fragment malformé toléré, navigation intacte et sans erreur', async ({ 
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/#%');
-  // Trois pages et le bouton du groupe Ressources : quatre entrées dans le bandeau.
-  await expect(page.locator('.nav-entree')).toHaveCount(4);
-  await expect(page.locator('[data-burger]')).toBeVisible();
-  await expect(page.locator('.burger-ouvrir')).toBeVisible();
-  await expect(page.locator('.burger-fermer')).toBeHidden();
+  await expect(page.locator('[data-mobile-visible] a')).toHaveCount(4);
+  await expect(page.locator('[data-burger]')).toBeHidden();
+  await expect(page.locator('#menu-mobile')).toBeHidden();
   expect(errors).toEqual([]);
 });

@@ -1,22 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { auditerComposition, auditerContratPages, auditerNavigationMobile, contratsIntention } from '../../scripts/verify-page-contract.mjs';
+import { auditerComposition, auditerContratPages, auditerNavigationMobile, auditerServicesPublics, contratsIntention, contratsRoute } from '../../scripts/verify-page-contract.mjs';
 
-function html({ route, h1, media, href, ogTitle = h1, headline = h1, description, attribution = true, footerOutils = true }) {
+function html({ route, h1, media, href, ogTitle = h1, headline = h1, description, attribution = true, footerOutils = true, noindex = false, schema = true }) {
   const url = `https://memlia.fr${route}`;
   return `<!doctype html><html lang="fr"><head>
     <title>${h1} | Memlia</title>
     <meta name="description" content="${description}">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow'}">
     <meta property="og:title" content="${ogTitle}">
     <link rel="canonical" href="${url}">
-    <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': [
+    ${schema ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': [
       { '@type': 'WebPage', url, name: h1, headline, description,
         ...(attribution ? { author: { '@id': 'https://memlia.fr/a-propos#kevin-kitanga' }, datePublished: '2026-09-20', dateModified: '2026-09-20' } : {}) },
-    ] })}</script>
+    ] })}</script>` : ''}
   </head><body><nav aria-label="Navigation principale"><a href="/contact">Contact</a></nav>
   <main id="main"><section><h1>${h1}</h1><img src="${media}" alt="Preuve propre à ${route}"><a href="${href}">Continuer</a></section></main>
   <footer>${footerOutils ? '<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>' : ''}</footer></body></html>`;
@@ -70,6 +70,35 @@ function afficherTemoin(resultat, clause) {
   return sortie;
 }
 
+test('la surface publique attendue refuse exactement la dépublication silencieuse de l’incident', () => {
+  const { root, pages } = fixture();
+  try {
+    mkdirSync(join(root, 'config'), { recursive: true });
+    writeFileSync(join(root, 'config/service-publication-ledger.json'), `${JSON.stringify({
+      version: 1,
+      services: [{ slug: 'alpha', route: '/alpha', status: 'publie', publishedOn: '2026-09-20', testFixture: true }],
+    }, null, 2)}\n`);
+    const footer = '<a href="/alpha">Automatisation alpha</a><a href="/outils-comptables-gratuits">Outils comptables gratuits</a>';
+    writeFileSync(join(root, 'dist/alpha.html'), pages.alpha.replace('<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>', footer));
+    writeFileSync(join(root, 'dist/source.html'), pages.source.replace('<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>', footer));
+    writeFileSync(join(root, 'dist/sitemap-0.xml'), '<urlset><url><loc>https://memlia.fr/alpha</loc></url></urlset>');
+
+    assert.deepEqual(auditerServicesPublics({ root }).errors, []);
+
+    writeFileSync(join(root, 'dist/alpha.html'), pages.alpha.replace('index, follow', 'noindex, follow'));
+    writeFileSync(join(root, 'dist/source.html'), pages.source);
+    writeFileSync(join(root, 'dist/sitemap-0.xml'), '<urlset></urlset>');
+
+    const rouge = auditerServicesPublics({ root });
+    assert.equal(rouge.pass, false);
+    assert.match(rouge.errors.join('\n'), /\/alpha.*noindex/i);
+    assert.match(rouge.errors.join('\n'), /\/alpha.*footer/i);
+    assert.match(rouge.errors.join('\n'), /\/alpha.*sitemap/i);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('les cinq clauses rougissent avec la page et la clause, puis la fixture restaurée repasse au vert', () => {
   const { root, pages } = fixture();
   try {
@@ -114,6 +143,131 @@ test('les cinq clauses rougissent avec la page et la clause, puis la fixture res
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('une page manuelle noindex échoue sans contrat explicite puis respecte son contrat transactionnel', () => {
+  const { root } = fixture();
+  try {
+    writeFileSync(join(root, 'dist/alpha.html'), html({
+      route: '/alpha', h1: 'Message traité', media: '', href: '/source',
+      description: 'État transactionnel explicite après le traitement du formulaire.',
+      noindex: true, schema: false,
+    }));
+
+    const sansContrat = auditerContratPages({
+      root,
+      copyVerifier: () => ({ pass: true, errors: [] }),
+      exemptions: [],
+      intentRoutes: new Set(['/source']),
+      intentContracts: intentContracts(),
+      routeContracts: new Map(),
+    });
+    const temoin = sansContrat.erreurs.filter((erreur) => erreur.route === '/alpha').map((erreur) => erreur.message).join('\n');
+    console.log(`TÉMOIN ROUGE PAGE MANUELLE SANS CONTRAT\n${temoin}`);
+    assert.match(temoin, /clause 2 \(IMAGES\).*aucun média/);
+    assert.match(temoin, /clause 3 \(SEO\).*aucune requête mesurée/);
+
+    const routeContracts = new Map([['/alpha', {
+      indexing: 'noindex', role: 'transactional', mediaRequired: false,
+      measuredIntentRequired: false, schemaTypes: [], incomingLinkRequired: false,
+    }]]);
+    writeFileSync(join(root, 'dist/alpha.html'), html({
+      route: '/alpha', h1: 'Message traité', media: '', href: '/source',
+      description: 'État transactionnel explicite après le traitement du formulaire.',
+      noindex: false, schema: false,
+    }));
+    const indexableInterdit = auditerContratPages({
+      root, copyVerifier: () => ({ pass: true, errors: [] }), exemptions: [],
+      intentRoutes: new Set(['/source']), intentContracts: intentContracts(), routeContracts,
+    });
+    assert.match(indexableInterdit.erreurs.map((erreur) => erreur.message).join('\n'), /contrat de route exige noindex/);
+
+    writeFileSync(join(root, 'dist/alpha.html'), html({
+      route: '/alpha', h1: 'Message traité', media: '', href: '/source',
+      description: 'État transactionnel explicite après le traitement du formulaire.',
+      noindex: true, schema: false,
+    }));
+    const avecContrat = auditerContratPages({
+      root,
+      copyVerifier: () => ({ pass: true, errors: [] }),
+      exemptions: [],
+      intentRoutes: new Set(['/source']),
+      intentContracts: intentContracts(),
+      routeContracts,
+    });
+    assert.deepEqual(avecContrat.erreurs.filter((erreur) => erreur.route === '/alpha'), []);
+    assert.equal(avecContrat.pass, true);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('une collection indexable peut manifester qu’aucun média fonctionnel ne sert son intention', () => {
+  const { root } = fixture();
+  try {
+    writeFileSync(join(root, 'dist/alpha.html'), html({
+      route: '/alpha', h1: 'Automatisation alpha en cabinet', media: '', href: '/source',
+      description: 'Description alpha propre et suffisamment distincte pour le contrat universel.',
+    }));
+    const routeContracts = new Map([['/alpha', {
+      indexing: 'index', role: 'collection', mediaRequired: false,
+      measuredIntentRequired: true, schemaTypes: ['WebPage'], incomingLinkRequired: true,
+      assetDecision: {
+        kind: 'no-functional-media',
+        reason: 'La collection sert une recherche textuelle et une image décorative ne prouverait aucune tâche au lecteur.',
+      },
+    }]]);
+
+    const resultat = auditerContratPages({
+      root, copyVerifier: () => ({ pass: true, errors: [] }), exemptions: [],
+      intentRoutes: new Set(['/alpha', '/source']), intentContracts: intentContracts(), routeContracts,
+    });
+    assert.deepEqual(resultat.erreurs.filter((erreur) => erreur.route === '/alpha'), []);
+    assert.equal(resultat.pass, true);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('les contrats explicites couvrent six routes noindex et deux collections indexables', () => {
+  const contrats = contratsRoute(process.cwd());
+  assert.deepEqual([...contrats.keys()].sort(), [
+    '/404',
+    '/blog',
+    '/contact/erreur',
+    '/contact/merci',
+    '/glossaire',
+    '/mentions-legales',
+    '/outils-comptables-gratuits/temoin-calcul-local',
+    '/politique-de-confidentialite',
+  ]);
+  assert.equal(contrats.get('/404').role, 'technical');
+  assert.equal(contrats.get('/contact/erreur').role, 'transactional');
+  assert.equal(contrats.get('/contact/merci').role, 'transactional');
+  assert.equal(contrats.get('/mentions-legales').role, 'legal');
+  assert.equal(contrats.get('/politique-de-confidentialite').role, 'legal');
+  assert.equal(contrats.get('/outils-comptables-gratuits/temoin-calcul-local').role, 'technical');
+  for (const route of ['/404', '/contact/erreur', '/contact/merci', '/mentions-legales', '/outils-comptables-gratuits/temoin-calcul-local', '/politique-de-confidentialite']) {
+    assert.equal(contrats.get(route).indexing, 'noindex');
+  }
+  for (const route of ['/blog', '/glossaire']) {
+    assert.equal(contrats.get(route).indexing, 'index');
+    assert.equal(contrats.get(route).role, 'collection');
+    assert.equal(contrats.get(route).assetDecision.kind, 'no-functional-media');
+  }
+});
+
+test('les six routes indexables ciblées ne portent plus aucune exemption', () => {
+  const cible = new Set([
+    '/blog',
+    '/glossaire',
+    '/outils-comptables-gratuits',
+    '/outils-comptables-gratuits/calculateur-date-echeance-facture',
+    '/outils-comptables-gratuits/calculateur-marge-commerciale',
+    '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit',
+  ]);
+  const exemptions = JSON.parse(readFileSync(join(process.cwd(), 'config/page-contract-exemptions.json'), 'utf8')).exemptions;
+  assert.deepEqual(exemptions.filter((item) => cible.has(item.route)), []);
 });
 
 test('une exemption doit être exacte, datée et motivée', () => {
@@ -261,6 +415,40 @@ test('les articles délèguent leur intention au contrat blog au lieu de la reco
     });
     const erreursArticle = resultat.erreurs.filter((erreur) => erreur.route === '/blog/article' && erreur.clause === 3);
     assert.doesNotMatch(erreursArticle.map((erreur) => erreur.message).join('\n'), /contrat de requête et d’ouverture de description absent/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('un article explicitement inscrit au contrat universel y verrouille aussi son amorce', () => {
+  const { root } = fixture();
+  try {
+    mkdirSync(join(root, 'src/pages/blog'), { recursive: true });
+    mkdirSync(join(root, 'dist/blog'), { recursive: true });
+    writeFileSync(join(root, 'src/pages/blog/[slug].astro'), "import TestSection from '@/components/sections/TestSection.astro';\n<TestSection />\n");
+    writeFileSync(join(root, 'dist/blog/article.html'), html({
+      route: '/blog/article', h1: 'Article mesuré', media: '/proofs/alpha.webp', href: '/alpha',
+      description: 'Une méthode qui masque la requête primaire.',
+    }));
+    writeFileSync(join(root, 'dist/alpha.html'), html({
+      route: '/alpha', h1: 'Automatisation alpha en cabinet', media: '/proofs/alpha.webp', href: '/blog/article',
+      description: 'Description alpha propre et suffisamment distincte pour le contrat universel.',
+    }));
+
+    const resultat = auditerContratPages({
+      root,
+      copyVerifier: () => ({ pass: true, errors: [] }),
+      exemptions: [],
+      intentRoutes: new Set(['/alpha', '/source', '/blog/article']),
+      intentContracts: new Map([...intentContracts(), ['/blog/article', {
+        query: 'requête article',
+        descriptionLead: 'Requête article',
+      }]]),
+    });
+    assert.match(
+      resultat.erreurs.filter((erreur) => erreur.route === '/blog/article' && erreur.clause === 3).map((erreur) => erreur.message).join('\n'),
+      /description doit ouvrir sur "Requête article"/,
+    );
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

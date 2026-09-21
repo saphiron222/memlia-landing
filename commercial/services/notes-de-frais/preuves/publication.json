@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "notes-de-frais",
+  "path": "/automatisation/notes-de-frais",
+  "status": "publie",
+  "publishedOn": "2026-09-21",
+  "publishedAt": "2026-09-20T22:53:40.906Z",
+  "servedObservation": {
+    "url": "https://localhost:4443/automatisation/notes-de-frais",
+    "status": 200,
+    "canonical": "https://memlia.fr/automatisation/notes-de-frais",
+    "canonicalCount": 1,
+    "h1": "Notes de frais des clients en cabinet : la validation reste humaine",
+    "h1Count": 1,
+    "candidateFingerprint": "7c724698a7b3be117c32da8f144fc0edeb3f7c2bd9bace0bbb3576ee3285a7ff",
+    "candidateFingerprintCount": 1,
+    "bodySha256": "6f35ba947af27385a9a32cc9ee7e32f0f5d346017dffcbeddd3dd5ec2427a9e4",
+    "observedAt": "2026-09-20T22:53:40.900Z",
+    "cacheControl": null,
+    "cfCacheStatus": null,
+    "age": null,
+    "xRobotsTag": null,
+    "metaRobots": [
+      "noindex, follow"
+    ],
+    "indexable": false
+  },
+  "page": {
+    "path": "src/content/services/notes-de-frais.md",
+    "bytes": 5670,
+    "sha256": "b3e9146c1a167d37576456fa0a5d2a583a173fab68e44687f3fedda13505ea1d"
+  },
+  "manifest": {
+    "path": "commercial/services/notes-de-frais/manifest.json",
+    "bytes": 2465,
+    "sha256": "682608f78ea945a7ac45d647b0bcd7dbb5b2cb3f20ae81d95560e46b7d836b52"
+  }
+}

@@ -1,7 +1,13 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { decodeHtml, isRelevantQuestion, isWithinWindow, normalizeQuestion, qualifiesSignal } from '../../scripts/veille/questions.mjs';
-import { canonicalText, evaluateClaimSource, normalizedIncludes, sha256 } from '../../scripts/veille/reglementaire.mjs';
+import {
+  canonicalText,
+  evaluateClaimSource,
+  metaDescription,
+  normalizedIncludes,
+  sha256,
+} from '../../scripts/veille/reglementaire.mjs';
 
 test('la veille questions normalise sans conserver une identité', () => {
   assert.equal(normalizeQuestion('Comment gérez-vous les pièces manquantes ?'), 'comment gerez vous les pieces manquantes');
@@ -46,4 +52,57 @@ test('une source dynamique exige la citation mais pas le hash du corps', () => {
   const verdict = evaluateClaimSource({ id: 'x', requestedUrl: 'x', finalUrl: 'x', httpStatus: 200, bodySha256: sha256('nouveau'), body: '<p>règle attendue</p>' }, source);
   assert.equal(verdict.hashMatches, false);
   assert.equal(verdict.critical, false);
+});
+
+test('la veille peut borner une preuve à la description officielle du document', () => {
+  const claim = "L'annuaire permet de rechercher une structure";
+  const body = `<html><head><meta content="${claim}" name="description"></head><body></body></html>`;
+  const source = {
+    rawBodySha256: sha256(body),
+    evidenceScope: 'document-source-including-meta-description',
+    claimFragments: [claim],
+    evidenceSha256: sha256(claim),
+  };
+  const verdict = evaluateClaimSource({
+    id: 'aife',
+    requestedUrl: 'https://example.test',
+    finalUrl: 'https://example.test',
+    httpStatus: 200,
+    bodySha256: sha256(body),
+    body,
+  }, source);
+
+  assert.equal(metaDescription(body), claim);
+  assert.equal(verdict.excerptPresent, true);
+  assert.equal(verdict.evidenceHashMatches, true);
+  assert.equal(verdict.critical, false);
+});
+
+test('une preuve fragmentée ferme si son manifeste ou un fragment dérive', () => {
+  const fragments = ['vérifier à réception', 'valider si conforme'];
+  const snapshot = {
+    id: 'service-public',
+    requestedUrl: 'https://example.test',
+    finalUrl: 'https://example.test',
+    httpStatus: 200,
+    bodySha256: sha256('vérifier à réception seulement'),
+    body: '<main>vérifier à réception seulement</main>',
+  };
+
+  const missingFragment = evaluateClaimSource(snapshot, {
+    rawHashStatus: 'dynamic body includes request-specific values',
+    claimFragments: fragments,
+    evidenceSha256: sha256(fragments.join('\n')),
+  });
+  assert.equal(missingFragment.excerptPresent, false);
+  assert.equal(missingFragment.critical, true);
+
+  const staleManifest = evaluateClaimSource({ ...snapshot, body: fragments.join(' ') }, {
+    rawHashStatus: 'dynamic body includes request-specific values',
+    claimFragments: fragments,
+    evidenceSha256: sha256('ancienne preuve'),
+  });
+  assert.equal(staleManifest.excerptPresent, true);
+  assert.equal(staleManifest.evidenceHashMatches, false);
+  assert.equal(staleManifest.critical, true);
 });

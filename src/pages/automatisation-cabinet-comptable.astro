@@ -3,6 +3,7 @@ import PageCommerciale from '@/layouts/PageCommerciale.astro';
 import Renvois from '@/components/Renvois.astro';
 import ProofRow from '@/components/ProofRow.astro';
 import Picto, { type NomPicto } from '@/components/Picto.astro';
+import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { serviceNode, SERVICE_ID } from '@/data/schema.mjs';
@@ -134,6 +135,10 @@ const appel = {
         <p class="texte-2">La même vérification précède le choix de <a href="/automatisation/factures-fournisseurs">confier le flux des factures fournisseurs</a> : réception, proposition et exceptions doivent rester lisibles dans le circuit existant.</p>
       </div>
     </ProofRow>
+  </section>
+
+  <section class="pv" aria-label="Guides par environnement">
+    <RelatedIntegrations servicePath="/automatisation-cabinet-comptable" />
   </section>
 
   <section class="pv" aria-labelledby="avant">

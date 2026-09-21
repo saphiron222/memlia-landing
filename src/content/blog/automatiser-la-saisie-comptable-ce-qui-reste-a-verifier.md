@@ -112,7 +112,6 @@ Quatre de ces six contrôles sont purement déterministes : ils comparent, ils n
 
 <figure data-blog-proof="saisie-six-controles">
   <img src="/proofs/blog/saisie-six-controles.webp" alt="Six contrôles de saisie dans leur ordre fixe, arrêtés sur un écart de montants fictif." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/saisie-six-controles.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : jeu d’essai fictif et règle écrite décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Brique 3 : la file d’anomalies, et le reliquat qui se compte
@@ -123,7 +122,6 @@ Le reliquat, c’est la part des pièces qui termine dans cette file. Il se comp
 
 <figure data-blog-proof="saisie-file-anomalies">
   <img src="/proofs/blog/saisie-file-anomalies.webp" alt="File d’anomalies fictive avec six motifs fermés et un écart de montants à traiter." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/saisie-file-anomalies.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : jeu d’essai fictif et règle écrite décrits dans cet article ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## La règle dans les mots du cabinet

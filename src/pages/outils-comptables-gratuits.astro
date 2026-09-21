@@ -4,10 +4,14 @@ import OutilHero from '@/components/sections/OutilHero.astro';
 import { SITE } from '@/data/site.mjs';
 import { OUTIL_CATEGORIES, OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
 
-const h1 = 'Outils comptables gratuits : calculer, vérifier, convertir';
+const h1 = 'Outils comptables gratuits : calculer et vérifier';
 const title = `${h1} | Memlia`;
 const description = 'Des outils gratuits conçus pour rendre une règle lisible, garder les valeurs dans le navigateur et s’arrêter plutôt que deviner.';
 const url = `${SITE.url}${OUTILS_HUB_PATH}`;
+const categoriesPubliees = OUTIL_CATEGORIES.map((category) => ({
+  ...category,
+  tools: OUTILS_DISPONIBLES.filter((outil) => outil.categorie === category.id),
+})).filter((category) => category.tools.length > 0);
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -46,24 +50,19 @@ const graph = {
     />
 
     <div class="conteneur outils-categories">
-      {OUTIL_CATEGORIES.map((category) => {
-        const tools = OUTILS_DISPONIBLES.filter((outil) => outil.categorie === category.id);
-        return (
-          <section class="outils-categorie" aria-labelledby={`categorie-${category.id}`}>
-            <h2 id={`categorie-${category.id}`}>{category.label}</h2>
-            {tools.length > 0 ? (
-              <ul>
-                {tools.map((outil) => (
-                  <li data-outil-card>
-                    <h3><a href={outilPath(outil)}>{outil.h1}</a></h3>
-                    <p>{outil.description}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </section>
-        );
-      })}
+      {categoriesPubliees.map((category) => (
+        <section class="outils-categorie" aria-labelledby={`categorie-${category.id}`}>
+          <h2 id={`categorie-${category.id}`}>{category.label}</h2>
+          <ul>
+            {category.tools.map((outil) => (
+              <li data-outil-card>
+                <h3><a href={outilPath(outil)}>{outil.h1}</a></h3>
+                <p>{outil.description}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </div>
   </div>
 </Base>

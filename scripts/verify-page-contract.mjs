@@ -33,6 +33,8 @@ function routeFromHtml(dist, path) {
 function sourceForRoute(root, route) {
   if (route === '/') return join(root, 'src/pages/index.astro');
   if (route.startsWith('/automatisation/')) return join(root, 'src/pages/automatisation/[slug].astro');
+  if (route.startsWith('/integrations/')) return join(root, 'src/pages/integrations/[slug].astro');
+  if (route === '/integrations') return join(root, 'src/pages/integrations/index.astro');
   if (route.startsWith('/blog/rubrique/')) return join(root, 'src/pages/blog/rubrique/[slug].astro');
   if (route.startsWith('/blog/')) return join(root, 'src/pages/blog/[slug].astro');
   return join(root, 'src/pages', `${route.slice(1)}.astro`);
@@ -148,6 +150,7 @@ function pageSnapshot(route, path) {
   const headings = [];
   const descriptions = [];
   const ogTitles = [];
+  const canonicals = [];
   const hrefs = [];
   const footerHrefs = [];
   const media = [];
@@ -160,6 +163,7 @@ function pageSnapshot(route, path) {
     if (node.nodeName === 'meta' && attr(node, 'name') === 'description') descriptions.push(normalizedText(attr(node, 'content')));
     if (node.nodeName === 'meta' && attr(node, 'name') === 'robots') robots = normalizedText(attr(node, 'content'));
     if (node.nodeName === 'meta' && attr(node, 'property') === 'og:title') ogTitles.push(normalizedText(attr(node, 'content')));
+    if (node.nodeName === 'link' && (attr(node, 'rel') ?? '').split(/\s+/).includes('canonical')) canonicals.push(attr(node, 'href'));
     if (node.nodeName === 'a') {
       const href = normalizeRoute(attr(node, 'href'));
       if (href) hrefs.push(href);
@@ -185,7 +189,7 @@ function pageSnapshot(route, path) {
   const jsonLd = collectJsonLd(document);
   const schema = collectSchema(jsonLd);
   return {
-    route, path, document, main, h1s: headings, title, descriptions, ogTitles, hrefs, footerHrefs,
+    route, path, document, main, h1s: headings, title, descriptions, ogTitles, canonicals, hrefs, footerHrefs,
     media: [...new Set(media.filter((item) => item.startsWith('/')))], robots, jsonLd, schema,
   };
 }
@@ -241,6 +245,8 @@ function mediaIsOwned(root, provenance, asset, route, references) {
 
 function expectedSchema(route) {
   if (/^\/automatisation\/[^/]+$/.test(route)) return ['WebPage', 'Service', 'Audience', 'BreadcrumbList'];
+  if (/^\/integrations\/[^/]+$/.test(route)) return ['TechArticle', 'WebPage', 'BreadcrumbList'];
+  if (route === '/integrations') return ['CollectionPage', 'ItemList'];
   if (/^\/outils-comptables-gratuits\/[^/]+$/.test(route)) return ['WebPage', 'WebApplication', 'BreadcrumbList'];
   if (route === '/outils-comptables-gratuits') return ['CollectionPage', 'ItemList', 'BreadcrumbList'];
   if (/^\/blog\/rubrique\/[^/]+$/.test(route)) return ['WebPage', 'CollectionPage', 'BreadcrumbList'];
@@ -284,6 +290,12 @@ export function contratsIntention(root) {
     });
   }
   return contrats;
+}
+
+export function contratsRoute(root) {
+  const path = join(root, 'config/page-route-contracts.json');
+  const routes = existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')).routes ?? {} : {};
+  return new Map(Object.entries(routes));
 }
 
 function literalTokenErrors(root) {
@@ -338,6 +350,77 @@ function error(route, clause, detail) {
   return { route, clause, message: `${route} : clause ${clause} (${CLAUSES[clause]}) — ${detail}` };
 }
 
+export function auditerServicesPublics({ root = process.cwd(), dist = join(root, 'dist'), pages = null } = {}) {
+  const ledgerPath = join(root, 'config/service-publication-ledger.json');
+  if (!existsSync(ledgerPath)) return { pass: true, errors: [], expected: [] };
+  const errors = [];
+  let ledger;
+  try {
+    ledger = JSON.parse(readFileSync(ledgerPath, 'utf8'));
+  } catch (cause) {
+    return { pass: false, errors: [`registre des services publics illisible : ${cause.message}`], expected: [] };
+  }
+  if (ledger.version !== 1 || !Array.isArray(ledger.services)) {
+    return { pass: false, errors: ['registre des services publics invalide : version 1 et liste services requises'], expected: [] };
+  }
+  const seen = new Set();
+  const expected = [];
+  for (const service of ledger.services) {
+    const prefix = service?.route ?? service?.slug ?? 'service inconnu';
+    const fixtureRoute = service?.testFixture === true && service?.route === `/${service.slug}`;
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(service?.slug ?? '') || (service?.route !== `/automatisation/${service.slug}` && !fixtureRoute)) {
+      errors.push(`${prefix} : entrée de publication invalide (slug et route canonique requis)`);
+      continue;
+    }
+    if (seen.has(service.route)) errors.push(`${prefix} : route dupliquée dans le registre des services publics`);
+    seen.add(service.route);
+    if (!DATE_ISO.test(service.publishedOn ?? '')) errors.push(`${prefix} : publishedOn ISO requis`);
+    if (service.status === 'publie') {
+      expected.push(service.route);
+      continue;
+    }
+    if (service.status !== 'depublie') {
+      errors.push(`${prefix} : status doit valoir publie ou depublie`);
+      continue;
+    }
+    const proofPath = join(root, service.depublicationPath ?? `commercial/services/${service.slug}/preuves/depublication.json`);
+    try {
+      const proof = JSON.parse(readFileSync(proofPath, 'utf8'));
+      const destination = [proof.replacement, proof.redirect].filter((value) => typeof value === 'string' && value.startsWith('/'));
+      if (proof.route !== service.route || proof.slug !== service.slug || proof.authorizedBy !== 'Kevin Kitanga' ||
+          !DATE_ISO.test(proof.depublishedOn ?? '') || String(proof.reason ?? '').trim().length < 60 || destination.length !== 1) {
+        errors.push(`${prefix} : preuve de dépublication invalide ; route, raison, date, remplacement ou redirection et autorisation de Kevin sont requis`);
+      }
+    } catch (cause) {
+      errors.push(`${prefix} : preuve de dépublication absente ou illisible (${cause.message})`);
+    }
+  }
+
+  const snapshots = pages ?? walk(dist, (path) => path.endsWith('.html'))
+    .map((path) => pageSnapshot(routeFromHtml(dist, path), path));
+  const byRoute = new Map(snapshots.map((page) => [page.route, page]));
+  const sitemapLocations = new Set();
+  for (const path of walk(dist, (item) => /sitemap(?:-[^/]+)?\.xml$/.test(item))) {
+    for (const match of readFileSync(path, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)) sitemapLocations.add(match[1]);
+  }
+  for (const route of expected) {
+    const page = byRoute.get(route);
+    if (!page) {
+      errors.push(`${route} : HTML public attendu absent du build`);
+      continue;
+    }
+    if (/\bnoindex\b/i.test(page.robots) || !/\bindex\b/i.test(page.robots) || !/\bfollow\b/i.test(page.robots)) {
+      errors.push(`${route} : robots doit rester index, follow sans noindex (reçu : ${page.robots || 'absent'})`);
+    }
+    if (page.canonicals.length !== 1 || page.canonicals[0] !== `https://memlia.fr${route}`) errors.push(`${route} : canonical public exact absent`);
+    if (!sitemapLocations.has(`https://memlia.fr${route}`)) errors.push(`${route} : absent du sitemap public`);
+    for (const source of snapshots) {
+      if (!source.footerHrefs.includes(route)) errors.push(`${route} : absent du footer rendu sur ${source.route}`);
+    }
+  }
+  return { pass: errors.length === 0, errors, expected };
+}
+
 function isExempt(exemptions, route, clause) {
   return exemptions.some((item) => item.route === route && item.clauses.includes(clause));
 }
@@ -346,6 +429,7 @@ export function auditerContratPages({
   root = process.cwd(), dist = join(root, 'dist'), exemptions = [], copyVerifier = () => ({ pass: true, errors: [] }),
   intentRoutes = routesAvecIntentionMesuree(root),
   intentContracts = contratsIntention(root),
+  routeContracts = contratsRoute(root),
 } = {}) {
   const paths = walk(dist, (path) => path.endsWith('.html'));
   const pages = paths.map((path) => pageSnapshot(routeFromHtml(dist, path), path)).sort((a, b) => a.route.localeCompare(b.route, 'fr'));
@@ -353,6 +437,21 @@ export function auditerContratPages({
   const erreurs = [];
   const invalidExemptions = validateExemptions(exemptions, routes);
   for (const item of invalidExemptions) erreurs.push({ route: item?.route ?? '/*', clause: 0, message: `${item?.route ?? '/*'} : exemption invalide — route exacte, clauses, date ISO et raison d’au moins 60 caractères requises` });
+  for (const [route, contract] of routeContracts) {
+    const commonValid = routes.has(route) &&
+      ['mediaRequired', 'measuredIntentRequired', 'incomingLinkRequired'].every((key) => typeof contract?.[key] === 'boolean') &&
+      Array.isArray(contract?.schemaTypes) && contract.schemaTypes.every((type) => typeof type === 'string' && type.length > 0);
+    const noindexValid = contract?.indexing === 'noindex' &&
+      ['technical', 'transactional', 'legal'].includes(contract?.role);
+    const assetDecision = contract?.assetDecision;
+    const indexableCollectionValid = contract?.indexing === 'index' && contract?.role === 'collection' &&
+      contract.mediaRequired === false && contract.measuredIntentRequired === true && contract.incomingLinkRequired === true &&
+      Array.isArray(contract.schemaTypes) && contract.schemaTypes.length > 0 && assetDecision?.kind === 'no-functional-media' &&
+      typeof assetDecision?.reason === 'string' && assetDecision.reason.trim().length >= 60;
+    if (!commonValid || (!noindexValid && !indexableCollectionValid)) {
+      erreurs.push({ route, clause: 0, message: `${route} : contrat de route invalide — route servie, indexation et rôle cohérents, décisions booléennes, schemaTypes et décision asset motivée si indexable requis` });
+    }
+  }
 
   for (const detail of literalTokenErrors(root)) erreurs.push(error('/*', 1, detail));
   for (const detail of auditerNavigationMobile({ root }).errors) erreurs.push(error('/*', 1, detail));
@@ -368,6 +467,7 @@ export function auditerContratPages({
   }
 
   for (const page of pages) {
+    const routeContract = routeContracts.get(page.route);
     const sourcePath = sourceForRoute(root, page.route);
     if (!existsSync(sourcePath)) erreurs.push(error(page.route, 1, `source Astro introuvable : ${relative(root, sourcePath)}`));
     else {
@@ -377,7 +477,8 @@ export function auditerContratPages({
     if (!page.main || page.main.childNodes?.length === 0) erreurs.push(error(page.route, 1, 'contenu principal absent ou vide'));
 
     const ownedManifested = page.media.filter((asset) => mediaIsOwned(root, provenance, asset, page.route, mediaOwners));
-    if (ownedManifested.length === 0) {
+    const mediaRequired = routeContract?.mediaRequired ?? true;
+    if (mediaRequired && ownedManifested.length === 0) {
       const shared = page.media.filter((asset) => (mediaOwners.get(asset)?.length ?? 0) > 1);
       const detail = page.media.length === 0
         ? 'aucun média dans le contenu principal'
@@ -387,32 +488,36 @@ export function auditerContratPages({
       erreurs.push(error(page.route, 2, detail));
     }
     const minimumMedia = intentContracts.get(page.route)?.minMedia ?? 1;
-    if (ownedManifested.length > 0 && ownedManifested.length < minimumMedia) {
+    if (mediaRequired && ownedManifested.length > 0 && ownedManifested.length < minimumMedia) {
       erreurs.push(error(page.route, 2, `${ownedManifested.length} média(s) propre(s) manifesté(s), ${minimumMedia} requis par le contrat de cette page`));
     }
 
     const h1 = page.h1s[0];
     const indexable = !page.robots.toLowerCase().includes('noindex');
-    if (!intentRoutes.has(page.route)) erreurs.push(error(page.route, 3, 'aucune requête mesurée ni décision d’intention écrite pour cette route'));
+    if (routeContract?.indexing === 'noindex' && indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige noindex'));
+    if (routeContract?.indexing === 'index' && !indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige une page indexable'));
+    const measuredIntentRequired = routeContract?.measuredIntentRequired ?? true;
+    if (measuredIntentRequired && !intentRoutes.has(page.route)) erreurs.push(error(page.route, 3, 'aucune requête mesurée ni décision d’intention écrite pour cette route'));
     if (!page.title) erreurs.push(error(page.route, 3, 'title d’onglet absent'));
     if (page.descriptions.length !== 1 || !page.descriptions[0]) erreurs.push(error(page.route, 3, `${page.descriptions.length} description(s), une description non vide requise`));
     if (page.descriptions.length === 1 && (descriptionOwners.get(page.descriptions[0])?.length ?? 0) > 1) {
       erreurs.push(error(page.route, 3, `description dupliquée avec ${descriptionOwners.get(page.descriptions[0]).filter((route) => route !== page.route).join(', ')}`));
     }
     const intentContract = intentContracts.get(page.route);
-    if (indexable && !isBlogArticle(page.route) && !intentContract) erreurs.push(error(page.route, 3, 'contrat de requête et d’ouverture de description absent'));
-    if (indexable && !isBlogArticle(page.route) && intentContract && page.descriptions.length === 1 &&
+    if (measuredIntentRequired && indexable && !isBlogArticle(page.route) && !intentContract) erreurs.push(error(page.route, 3, 'contrat de requête et d’ouverture de description absent'));
+    if (measuredIntentRequired && indexable && intentContract && page.descriptions.length === 1 &&
         !page.descriptions[0].toLocaleLowerCase('fr').startsWith(String(intentContract.descriptionLead).toLocaleLowerCase('fr'))) {
       erreurs.push(error(page.route, 3, `la description doit ouvrir sur ${JSON.stringify(intentContract.descriptionLead)} pour la requête ${JSON.stringify(intentContract.query)}`));
     }
     if (page.h1s.length !== 1) erreurs.push(error(page.route, 3, `${page.h1s.length} H1, un seul requis`));
     if (page.ogTitles.length !== 1 || !h1 || page.ogTitles[0] !== h1) erreurs.push(error(page.route, 3, `og:title doit être identique au H1 ; H1=${JSON.stringify(h1 ?? null)}, og:title=${JSON.stringify(page.ogTitles[0] ?? null)}`));
     if (page.jsonLd.some((value) => value?.__invalid)) erreurs.push(error(page.route, 3, 'JSON-LD invalide'));
-    if (!h1 || !page.schema.headlines.includes(h1)) erreurs.push(error(page.route, 3, 'headline JSON-LD doit être identique au H1'));
-    if (page.schema.authors === 0) erreurs.push(error(page.route, 3, 'author absent du JSON-LD'));
-    if (page.schema.datesPublished.length === 0) erreurs.push(error(page.route, 3, 'datePublished absente du JSON-LD'));
-    if (page.schema.datesModified.length === 0) erreurs.push(error(page.route, 3, 'dateModified absente du JSON-LD'));
-    for (const type of expectedSchema(page.route)) {
+    const schemaTypes = routeContract?.schemaTypes ?? expectedSchema(page.route);
+    if (schemaTypes.length > 0 && (!h1 || !page.schema.headlines.includes(h1))) erreurs.push(error(page.route, 3, 'headline JSON-LD doit être identique au H1'));
+    if (schemaTypes.length > 0 && page.schema.authors === 0) erreurs.push(error(page.route, 3, 'author absent du JSON-LD'));
+    if (schemaTypes.length > 0 && page.schema.datesPublished.length === 0) erreurs.push(error(page.route, 3, 'datePublished absente du JSON-LD'));
+    if (schemaTypes.length > 0 && page.schema.datesModified.length === 0) erreurs.push(error(page.route, 3, 'dateModified absente du JSON-LD'));
+    for (const type of schemaTypes) {
       if (!page.schema.types.has(type)) erreurs.push(error(page.route, 3, `schéma ${type} absent ou incohérent avec le type de page`));
     }
   }
@@ -425,6 +530,7 @@ export function auditerContratPages({
   }
 
   for (const target of pages) {
+    if (routeContracts.get(target.route)?.incomingLinkRequired === false) continue;
     const incoming = pages.filter((source) => source.route !== target.route && source.hrefs.includes(target.route));
     if (incoming.length === 0) erreurs.push(error(target.route, 5, 'aucune page servie ne pointe vers elle'));
   }
@@ -432,6 +538,12 @@ export function auditerContratPages({
     if (!page.footerHrefs.includes('/outils-comptables-gratuits')) {
       erreurs.push(error(page.route, 5, 'le footer généré ne porte pas le hub /outils-comptables-gratuits'));
     }
+  }
+
+  const servicesPublics = auditerServicesPublics({ root, dist, pages });
+  for (const detail of servicesPublics.errors) {
+    const route = detail.match(/^(\/[^ ]+)/)?.[1] ?? '/*';
+    erreurs.push(error(route, /footer|sitemap|HTML public/.test(detail) ? 5 : 3, detail));
   }
 
   const validExemptions = exemptions.filter((item) => !invalidExemptions.includes(item));

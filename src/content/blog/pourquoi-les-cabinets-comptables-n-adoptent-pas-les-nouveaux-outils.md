@@ -94,12 +94,10 @@ Une semaine après, j’ai remplacé le questionnaire par un formulaire qui calc
 
 <figure data-blog-proof="cicatrice-questionnaire-vide">
   <img src="/proofs/blog/cicatrice-questionnaire-vide.webp" alt="Reconstitution du questionnaire de cadrage revenu vide, sans signal automatique sur les manques." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/cicatrice-questionnaire-vide.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : reconstitution fidèle au récit et à la preuve exigée dans la recette scellée ; aucune capture de l’écran refusé n’est conservée dans le dépôt ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 <figure data-blog-proof="cicatrice-formulaire-manques">
   <img src="/proofs/blog/cicatrice-formulaire-manques.webp" alt="Reconstitution du formulaire fictif qui remonte deux champs manquants avant tout engagement." width="1600" height="900" loading="lazy" decoding="async">
-  <figcaption><a href="/proofs/blog/cicatrice-formulaire-manques.webp" target="_blank" rel="noopener">Ouvrir la preuve en grand</a>. Source : reconstitution fidèle au récit et à la preuve exigée dans la recette scellée ; capture du <time datetime="2026-09-20">20 septembre 2026</time>.</figcaption>
 </figure>
 
 ## Ce que cela a coûté

@@ -28,10 +28,8 @@ test('liste du blog : articles, auteur, flux et navigation courante', async ({ p
   if (PREVIEW_SLUGS.size) await expect(rssLink).toHaveCount(0);
   else await expect(rssLink).toHaveAttribute('href', '/blog/rss.xml');
   await page.setViewportSize({ width: 1440, height: 900 });
-  // Le Blog est une destination du groupe Ressources : parmi les liens, lui seul porte la marque
-  // (le bouton du groupe porte la sienne, mais ce n'est pas un lien).
-  await expect(page.locator('.nav-centre a[aria-current="page"]')).toHaveText('Blog');
-  await expect(page.locator('.nav-centre a[aria-current="true"]')).toHaveCount(0);
+  // Le bandeau publié pointe les quatre sections de l'accueil ; le fil d'Ariane porte la page courante.
+  await expect(page.locator('.nav-centre a[aria-current]')).toHaveCount(0);
   for (const text of await textesPublics(page)) expect(text).not.toMatch(CATALOGUE);
   expect(errors).toEqual([]);
 });
@@ -79,10 +77,7 @@ test('article : en-tête, fil d’Ariane, schéma, sources et retour à la liste
     return { types, headline: posting.headline, url: posting.url, canonical, broken, h1 };
   });
   expect(report.types).toEqual(['BlogPosting', 'BreadcrumbList', 'Person', 'Organization', 'WebSite']);
-  // Le Blog est une destination du groupe Ressources : parmi les liens, lui seul porte la marque
-  // (le bouton du groupe porte la sienne, mais ce n'est pas un lien).
-  await expect(page.locator('.nav-centre a[aria-current="true"]')).toHaveText('Blog');
-  await expect(page.locator('.nav-centre a[aria-current="page"]')).toHaveCount(0);
+  await expect(page.locator('.nav-centre a[aria-current]')).toHaveCount(0);
   expect(report.headline).toBe(report.h1);
   expect(report.canonical).toBe(report.url);
   expect(report.broken).toEqual([]);
@@ -115,8 +110,7 @@ test('article sans JavaScript : contenu et navigation visibles', async ({ browse
   await page.goto(`${process.env.QA_URL ?? 'http://127.0.0.1:4321'}/blog`);
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('[data-article]').first()).toBeVisible();
-  // Sans JavaScript, le panneau ne s'ouvrirait pas : le repli sert les mêmes destinations.
-  await expect(page.locator('.nav-sans-js a[href="/blog"]')).toBeVisible();
+  await expect(page.locator('[data-mobile-visible] a[href="/#methode"]')).toBeVisible();
   await context.close();
 });
 

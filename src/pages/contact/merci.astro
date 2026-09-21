@@ -5,14 +5,14 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
 /** Page de réponse du formulaire, servie sans JavaScript : noindex, hors sitemap. */
 ---
 
-<Base titre="Message envoyé | Memlia" description="Votre message est bien arrivé. Nous vous répondons par courriel." chemin="/contact/merci" noindex base="/">
+<Base titre="Message envoyé | Memlia" titreSocial="Message envoyé." description="Votre message est bien arrivé. Nous vous répondons par courriel." chemin="/contact/merci" noindex base="/">
   <div class="feuille retour">
     <div class="retour-int coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
       <h1>Message envoyé.</h1>
       <p class="texte-2">Nous vous répondons par courriel, sans envoi automatique. Si la tâche se cadre, nous proposerons un échange d’une trentaine de minutes.</p>
       <div class="retour-boutons">
-        <Button href="/methode" variante="principal" picto="fleche">Comprendre la méthode en attendant</Button>
+        <Button href="/methode" variante="principal" picto="fleche">Comprendre la méthode</Button>
         <Button href={PAGES_V2.contact.chemin} variante="lien">Retour au formulaire</Button>
       </div>
     </div>

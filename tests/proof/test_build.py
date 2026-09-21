@@ -14,8 +14,13 @@ DIST = ROOT / 'dist'
 SITE = 'https://memlia.fr'
 # Les cinq pages commerciales du site v2 ont rejoint le site le 16/09/2026.
 PAGES_FIXES = ['404', 'a-propos', 'automatisation-cabinet-comptable', 'blog', 'contact', 'garanties',
-               'glossaire', 'index', 'mentions-legales', 'methode', 'outils-comptables-gratuits',
+               'glossaire', 'index', 'integrations', 'mentions-legales', 'methode', 'outils-comptables-gratuits',
                'politique-de-confidentialite']
+INTEGRATION_PAGES = {
+    'rapprochement-bancaire-sage', 'lettrage-sage', 'dsn-sage', 'bulletin-de-paie-sage',
+    'saisie-comptable-sage', 'cloture-sage', 'lettrage-cegid', 'dsn-silae',
+    'bulletin-de-paie-silae',
+}
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
 PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
                    'comprendre-les-comptes-rendus-metier-dsn',
@@ -82,7 +87,9 @@ class BuildProof(unittest.TestCase):
         pages = sorted(DIST.glob('*.html'))
         self.assertEqual([p.stem for p in pages], PAGES_FIXES)
         self.assertEqual({article.stem for article in articles()}, PUBLIC_ARTICLES | PREVIEW_ARTICLES)
-        for page in pages + articles():
+        integrations = sorted((DIST / 'integrations').glob('*.html'))
+        self.assertEqual({page.stem for page in integrations}, INTEGRATION_PAGES)
+        for page in pages + articles() + integrations:
             doc = Document(page)
             self.assertEqual(len(doc.select('h1')), 1, page.name)
             self.assertEqual(doc.select('html')[0]['lang'], 'fr')
@@ -132,13 +139,16 @@ class BuildProof(unittest.TestCase):
                 services_publies.add(f'{SITE}/automatisation/{service.stem}')
         attendues = {f'{SITE}/', f'{SITE}/blog', f'{SITE}/glossaire',
                      f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
-                     f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/outils-comptables-gratuits',
+                     f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/integrations',
+                     f'{SITE}/outils-comptables-gratuits',
                      f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
                      f'{SITE}/outils-comptables-gratuits/calculateur-date-echeance-facture',
                      f'{SITE}/outils-comptables-gratuits/calculateur-amortissement-comptable',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
-                     } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | services_publies
+                     } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
+                         f'{SITE}/integrations/{slug}' for slug in INTEGRATION_PAGES
+                     } | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
         self.assertNotIn(f'{SITE}/outils-comptables-gratuits/temoin-calcul-local', pages)

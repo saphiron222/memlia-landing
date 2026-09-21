@@ -6,6 +6,7 @@ import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
 import PageAttribution from '@/components/PageAttribution.astro';
 import PageEvidence from '@/components/PageEvidence.astro';
+import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 import { serviceDesignFor } from '@/data/service-design';
@@ -100,6 +101,7 @@ const graph = {
           </aside>
         )}
       </ServiceBody>
+      <RelatedIntegrations servicePath={chemin} />
       <ServicePrinciples />
       <PageEvidence eeat={eeat} />
       <AppelFinal

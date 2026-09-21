@@ -3,7 +3,7 @@ import { OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
 
 const HUB = '/outils-comptables-gratuits';
 const TEMOIN = `${HUB}/temoin-calcul-local`;
-const H1_HUB = 'Outils comptables gratuits : calculer, vérifier, convertir';
+const H1_HUB = 'Outils comptables gratuits : calculer et vérifier';
 const H1_TEMOIN = 'Témoin de calcul local';
 
 async function graphFrom(page: Page) {
@@ -185,10 +185,36 @@ test('contrat de liens : le registre borne les outils publiés et leurs sorties'
     await page.goto(HUB);
     await expect(page.locator(`main a[href="${path}"]`)).toHaveCount(1);
     await page.goto(path);
-    const expectedLinks = [HUB, ...(outil.articleExact ? [outil.articleExact] : []), outil.pageService, outil.cta];
+    const expectedLinks = [HUB, outil.pageService, ...(outil.articleExact ? [outil.articleExact] : []), outil.cta];
     expect(await page.locator('[data-tool-links] a').evaluateAll((links) => links.map((link) => link.getAttribute('href')))).toEqual(expectedLinks);
     await expect(page.locator('[data-tool-links] a[href="/contact"]')).toHaveCount(1);
     await expect(page.locator('[data-tool-links] a[href^="/contact?"]')).toHaveCount(0);
+  }
+});
+
+test('pour continuer : trois niveaux lisibles, clavier et responsive sans débordement', async ({ page }) => {
+  const path = `${HUB}/calculateur-date-echeance-facture`;
+  for (const width of [375, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(path);
+    const suite = page.locator('[data-tool-section="suite"]');
+    const links = suite.locator('[data-tool-links] a');
+
+    await expect(suite.getByRole('heading', { name: 'Choisissez la suite qui vous est utile.' })).toBeVisible();
+    await expect(suite.getByText('Explorer', { exact: true })).toBeVisible();
+    await expect(suite.getByText('Comprendre', { exact: true })).toBeVisible();
+    await expect(suite.getByText('Passer à votre tâche', { exact: true })).toBeVisible();
+    await expect(suite.getByRole('link', { name: 'Confier une première tâche' })).toHaveClass(/btn-principal/);
+    await expect(suite.getByRole('link', { name: /Voir le cadrage des factures fournisseurs/ })).toHaveAttribute('href', '/automatisation/factures-fournisseurs');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+
+    await links.nth(0).focus();
+    await expect(links.nth(0)).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(links.nth(1)).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(links.nth(2)).toBeFocused();
+    await expect(links.nth(2)).not.toHaveCSS('box-shadow', 'none');
   }
 });
 

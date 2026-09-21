@@ -8,6 +8,7 @@ import { join } from 'node:path';
 import {
   auditerServices,
   dateServiceParis,
+  depublierService,
   materialiserService,
   publierService,
   scellerService,
@@ -421,6 +422,87 @@ test('publier refuse une mutation entre le contrôle du sceau et la matérialisa
     assert.ok(publication.errors.some((error) => /empreinte divergente.*recipe/i.test(error)), publication.errors.join('\n'));
     assert.equal(existsSync(join(root, 'commercial/services', SLUG, 'preuves/publication.json')), false);
     assert.doesNotMatch(readFileSync(join(root, 'src/content/services', `${SLUG}.md`), 'utf8'), /status: publie/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('préparer refuse de rétrograder un service publié et préserve sa preuve', async () => {
+  const root = racineDeTest();
+  try {
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    assert.equal((await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie() })).pass, true);
+    const pagePath = join(root, 'src/content/services', `${SLUG}.md`);
+    const receiptPath = join(root, 'commercial/services', SLUG, 'preuves/publication.json');
+    const pageAvant = sha256(readFileSync(pagePath));
+    const preuveAvant = sha256(readFileSync(receiptPath));
+
+    const prepare = materialiserService({ root, slug: SLUG, status: 'a-valider', today: JOUR });
+
+    assert.ok(prepare.errors.some((error) => /déjà publié.*dépublication explicite/i.test(error)), prepare.errors.join('\n'));
+    assert.equal(sha256(readFileSync(pagePath)), pageAvant, 'préparer ne modifie pas la page publiée');
+    assert.equal(sha256(readFileSync(receiptPath)), preuveAvant, 'préparer ne supprime pas la preuve de publication');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('le scénario de l’incident reste rouge : sceller ne peut ni rétrograder ni effacer la preuve', async () => {
+  const root = racineDeTest();
+  try {
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    assert.equal((await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie() })).pass, true);
+    const pagePath = join(root, 'src/content/services', `${SLUG}.md`);
+    const receiptPath = join(root, 'commercial/services', SLUG, 'preuves/publication.json');
+    const pageAvant = sha256(readFileSync(pagePath));
+    const preuveAvant = sha256(readFileSync(receiptPath));
+
+    const seal = scellerService({ root, slug: SLUG, today: JOUR });
+
+    assert.equal(seal.pass, false);
+    assert.ok(seal.errors.some((error) => /déjà publié.*dépublication explicite/i.test(error)), seal.errors.join('\n'));
+    assert.equal(sha256(readFileSync(pagePath)), pageAvant, 'sceller ne rétrograde pas le frontmatter publié');
+    assert.equal(sha256(readFileSync(receiptPath)), preuveAvant, 'sceller ne supprime pas la preuve de publication');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('dépublier exige la décision durable autorisée puis écrit sa preuve', async () => {
+  const root = racineDeTest();
+  try {
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    assert.equal((await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie() })).pass, true);
+    mkdirSync(join(root, 'config'), { recursive: true });
+    writeFileSync(join(root, 'config/service-publication-ledger.json'), `${JSON.stringify({
+      version: 1,
+      services: [{ slug: SLUG, route: `/automatisation/${SLUG}`, status: 'publie', publishedOn: JOUR }],
+    }, null, 2)}\n`);
+    const receiptPath = join(root, 'commercial/services', SLUG, 'preuves/publication.json');
+    const preuveAvant = sha256(readFileSync(receiptPath));
+
+    const refuse = depublierService({ root, slug: SLUG, today: JOUR, declaration: { reason: 'trop court' } });
+    assert.equal(refuse.pass, false);
+    assert.match(refuse.errors.join('\n'), /autorisation de Kevin|raison/i);
+    assert.equal(sha256(readFileSync(receiptPath)), preuveAvant, 'un refus ne touche pas la preuve de publication');
+
+    const declaration = {
+      slug: SLUG,
+      route: `/automatisation/${SLUG}`,
+      reason: 'La page doit être retirée parce que son périmètre a été remplacé par une route canonique plus précise et désormais maintenue.',
+      depublishedOn: JOUR,
+      replacement: '/automatisation/remplacement-test',
+      authorizedBy: 'Kevin Kitanga',
+    };
+    const result = depublierService({ root, slug: SLUG, today: JOUR, declaration });
+    assert.equal(result.pass, true, result.errors.join('\n'));
+    assert.equal(existsSync(receiptPath), false);
+    const depubPath = join(root, 'commercial/services', SLUG, 'preuves/depublication.json');
+    assert.deepEqual(JSON.parse(readFileSync(depubPath, 'utf8')), declaration);
+    assert.match(readFileSync(join(root, 'src/content/services', `${SLUG}.md`), 'utf8'), /^status: a-valider$/m);
+    const ledger = JSON.parse(readFileSync(join(root, 'config/service-publication-ledger.json'), 'utf8'));
+    assert.equal(ledger.services[0].status, 'depublie');
+    assert.equal(ledger.services[0].depublicationPath, `commercial/services/${SLUG}/preuves/depublication.json`);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

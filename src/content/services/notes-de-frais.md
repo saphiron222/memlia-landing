@@ -2,7 +2,7 @@
 title: "Notes de frais des clients en cabinet : la validation reste humaine"
 tabTitle: "Notes de frais des clients en cabinet | Memlia"
 ogTitle: "Notes de frais des clients en cabinet : la validation reste humaine"
-description: "Confiez les notes de frais des clients en cabinet : règle écrite, cas fictifs, exceptions visibles et validation conservée par vos équipes."
+description: "Notes de frais des clients en cabinet : règle écrite, cas fictifs, exceptions visibles et validation conservée par vos équipes."
 hero: "Nous écrivons la règle de traitement des notes de frais de vos clients, puis nous automatisons la préparation dans vos outils. Chaque justificatif lisible suit le circuit prévu. Un doublon, une pièce absente ou un cas hors règle arrête le traitement et remonte au collaborateur. Le cabinet garde la validation et toute décision qui engage le dossier."
 primaryQuery: "notes de frais des clients en cabinet"
 secondaryQueries: ["automatisation notes de frais", "automatisation notes de frais cabinet comptable"]
@@ -13,8 +13,8 @@ audience:
 intent: evaluer-service
 family: notes-de-frais
 verifiedAt: 2026-09-20
-status: pret-preview
-candidateFingerprint: "ddf80c583035664d1e89dc1654e3fb1d8450afe4674810bc05b7baaccae4da98"
+status: publie
+candidateFingerprint: "7c724698a7b3be117c32da8f144fc0edeb3f7c2bd9bace0bbb3576ee3285a7ff"
 cta:
   label: "Confier une première tâche"
   destination: "/contact"

@@ -12,8 +12,7 @@ import {
   rubriquePourArticle,
 } from '../src/data/blog-rubriques.mjs';
 
-const MEDIA_TAGS = new Set(['img', 'picture', 'svg', 'video']);
-const DATE_VISIBLE = /\b(?:\d{4}-\d{2}-\d{2}|\d{1,2}\s+(?:janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+\d{4})\b/i;
+const LEGENDE_TECHNIQUE_INTERDITE = /Ouvrir la preuve en grand|reconstitution fidèle[^.]{0,240}recette scellée|Source\s*:[^.]{0,320}capture du/is;
 
 function parcourir(node, visite) {
   visite(node);
@@ -95,21 +94,15 @@ function descriptionCommenceParRequete(description, frontmatter, mesure) {
   return requetesMesurees(frontmatter, mesure).find((requete) => debut.startsWith(normaliser(requete))) ?? null;
 }
 
-function mediaLegendes(articleCorps) {
+function mediasPreuve(articleCorps) {
   if (!articleCorps) return [];
-  return elements(articleCorps, (node) => node.tagName === 'figure')
+  return elements(articleCorps, (node) => node.tagName === 'figure' && attribut(node, 'data-blog-proof') !== null)
     .map((figure) => {
-      const media = premier(figure, (node) => MEDIA_TAGS.has(node.tagName));
-      const legende = premier(figure, (node) => node.tagName === 'figcaption');
-      const contenu = texte(legende).replace(/\s+/g, ' ').trim();
-      const temps = legende ? premier(legende, (node) => node.tagName === 'time') : null;
-      const date = attribut(temps, 'datetime') ?? '';
-      const source = /\bsource\b/i.test(contenu);
-      const capture = /\bcaptur(?:e|é|ee|ée|es|ées|é le|ée le)\b/i.test(contenu);
-      const dateCapture = /^\d{4}-\d{2}-\d{2}/.test(date) || DATE_VISIBLE.test(contenu);
-      return { figure, conforme: Boolean(media && legende && source && capture && dateCapture), contenu };
+      const image = premier(figure, (node) => node.tagName === 'img');
+      const alt = attribut(image, 'alt') ?? '';
+      return { figure, conforme: Boolean(image && alt.trim()), alt };
     })
-    .filter(({ figure }) => premier(figure, (node) => MEDIA_TAGS.has(node.tagName)));
+    .filter(({ figure }) => premier(figure, (node) => node.tagName === 'img'));
 }
 
 function estSommaire(node) {
@@ -188,10 +181,14 @@ function auditerArticle({ dist, slug, path, mesure }) {
   const document = parseHtml(readFileSync(page, 'utf8'));
   const articleCorps = premier(document, (node) => node.tagName === 'div' && classes(node).has('article-corps'));
 
-  const medias = mediaLegendes(articleCorps);
+  const medias = mediasPreuve(articleCorps);
   const conformes = medias.filter((media) => media.conforme);
   if (conformes.length < 2) {
-    erreurs.push(`${slug} : clause 1, ${medias.length} média(s) de preuve en plus de la couverture, ${conformes.length} légendé(s) avec source et date de capture ; 2 requis`);
+    erreurs.push(`${slug} : clause 1, ${medias.length} image(s) de preuve en plus de la couverture, ${conformes.length} avec alternative accessible ; 2 requises`);
+  }
+  const contenuPublic = texte(articleCorps).replace(/\s+/g, ' ').trim();
+  if (LEGENDE_TECHNIQUE_INTERDITE.test(contenuPublic)) {
+    erreurs.push(`${slug} : clause 1, une légende technique publique de preuve est interdite ; la source et la date restent dans la recette interne`);
   }
 
   const h2 = articleCorps ? elements(articleCorps, (node) => node.tagName === 'h2') : [];
