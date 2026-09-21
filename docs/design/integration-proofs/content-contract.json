@@ -1,0 +1,42 @@
+[
+  {
+    "id": "hub",
+    "centralText": "M emlia Guides par environnement 9 guides · 3 environnements La tâche avant le logiciel Un guide situe les menus et les champs. L’engagement commence seulement après observation de l’environnement réel du cabinet. Sage · 6 guides Sage 100 Comptabilité Six repères documentés, de la saisie à la clôture. Rapprochement et lettrage DSN et bulletins Saisie et clôture Cegid · 1 guide Cegid Loop Un repère précis sur l’équilibre du paquet lettré. Lettrage du compte Silae · 2 guides Silae Paie Deux repères autour du bulletin et de la DSN. Contrôle bulletin Préparation DSN Documenter n’est pas promettre une compatibilité. Jeu fictif · aucune donnée client"
+  },
+  {
+    "id": "rapprochement-bancaire-sage",
+    "centralText": "M emlia Sage 100 Comptabilité · rapprochement Rapprochement bancaire Sage L’écart reste ouvert La clé écrite propose le cas certain. Plusieurs combinaisons ou une pièce absente arrêtent le rapprochement. État de rapprochement · mars 3 mouvements lus Entrée Relevé reçu Date, montant et référence Règle Clé exacte Compte, sens et référence Sortie 1 proposition 2 écarts à examiner Virement ALPHA Référence unique Proposé Paiement groupé Deux combinaisons À vérifier Mouvement 1842 Pièce absente À vérifier Aucun écart n’est soldé sans décision. Jeu fictif · zéro écriture"
+  },
+  {
+    "id": "lettrage-sage",
+    "centralText": "M emlia Sage 100 Comptabilité · lettrage Lettrage Sage Une paire certaine, sinon rien Le montant, le compte et la référence concordent. La moindre divergence garde les lignes ouvertes pour le cabinet. Compte 411ALPHA 4 lignes rapprochées Compte 411ALPHA Même compte lettrable Référence FAC-0241 Référence commune Somme 0,00 € Équilibre exact Facture FAC-0241 1 248,00 € Proposé Règlement FAC-0241 −1 248,00 € Proposé Règlement sans référence −312,00 € Ouvert Le lettrage proposé attend la validation. Jeu fictif · source préservée"
+  },
+  {
+    "id": "dsn-sage",
+    "centralText": "M emlia Sage Paie · DSN DSN Sage Le contrôle prépare, il ne dépose pas La période et les identifiants sont rapprochés. Une donnée absente suspend le dossier avant toute décision du pôle social. Préparation DSN · mars 18 dossiers lus Entrée État de paie Période et établissements Contrôles 8 règles Identité, période, totaux Décision Pôle social Dépôt hors périmètre Dossier 14 Période cohérente Préparé Dossier 15 Totaux concordants Préparé Dossier 16 SIRET absent Bloqué Aucun dépôt automatique. Jeu fictif · validation humaine"
+  },
+  {
+    "id": "bulletin-de-paie-sage",
+    "centralText": "M emlia Sage Paie · bulletins Bulletin de paie Sage La variation est montrée, jamais corrigée Les contrôles rejouent la règle du cabinet. Une variation hors seuil devient une exception lisible. Contrôle des bulletins 42 bulletins lus Variable Net à payer Comparaison au mois précédent Seuil Règle du cabinet Écart attendu documenté Sortie 2 exceptions Présentées au gestionnaire Salarié fictif A Écart +1,2 % Préparé Salarié fictif B Écart +9,4 % À vérifier Salarié fictif C Absence non rapprochée À vérifier Aucune correction de paie n’est décidée. Jeu fictif · noms anonymisés"
+  },
+  {
+    "id": "saisie-comptable-sage",
+    "centralText": "M emlia Sage 100 Comptabilité · saisie Saisie comptable Sage Une écriture proposée, jamais imposée Les champs lisibles et l’imputation connue préparent une proposition. Une période incohérente ou une pièce illisible bloque. Journal ACH · préparation 12 pièces lues Lecture Champs requis Date, tiers, HT, TVA, TTC Règle Imputation connue Selon le dossier fictif Sortie Proposition À relire avant saisie Facture récurrente Champs complets Proposé Facture datée avril Période mars Suspendu Pièce 0038 Montant illisible Refusé Le cabinet valide avant toute saisie. Jeu fictif · pièce source intacte"
+  },
+  {
+    "id": "cloture-sage",
+    "centralText": "M emlia Sage 100 Comptabilité · clôture Clôture Sage Les contrôles avancent, la clôture reste humaine La préparation rassemble les points attendus. Un journal ouvert ou un écart de balance empêche de conclure. Pré-clôture · exercice N 7 contrôles rejoués Période Exercice N Bornes vérifiées Journaux État de saisie Ouverts ou centralisés Décision Expert-comptable Clôture hors périmètre Journal des achats Centralisé Conforme Journal d’OD Encore ouvert À vérifier Balance générale Écart de 12,00 € À arbitrer La décision de clôturer n’est jamais automatisée. Jeu fictif · contrôle préparatoire"
+  },
+  {
+    "id": "lettrage-cegid",
+    "centralText": "M emlia Cegid Loop · lettrage Lettrage Cegid Le paquet doit s’équilibrer sur le bon compte Code, journal, pièce et compte forment la règle. Une écriture sans origine reste hors paquet et ne reçoit aucun code de lettrage. Paquet de lettrage · 411BETA Équilibre contrôlé Compte 411BETA Même compte lettrable Paquet 2 écritures Référence de pièce commune Solde du paquet 0,00 € Avant proposition Facture B-018 2 400,00 € Incluse Règlement B-018 −2 400,00 € Inclus Avoir sans origine −120,00 € · hors paquet Ouvert Une écriture sans origine reste ouverte. Jeu fictif · aucun partenariat revendiqué"
+  },
+  {
+    "id": "dsn-silae",
+    "centralText": "M emlia Silae · DSN DSN Silae Le retour est classé, la réponse reste au gestionnaire La règle rapproche le retour du dossier et prépare son contexte. Elle ne corrige ni ne redépose la déclaration. Retours DSN · mars 6 retours classés Réception Compte rendu Code et libellé du retour Rapprochement Dossier et période Contexte préparé Décision Gestionnaire Correction hors périmètre Retour 01 Accusé de réception Classé Retour 02 Identifiant incohérent À traiter Retour 03 Contexte incomplet À vérifier Aucune correction ni redépôt automatique. Jeu fictif · responsabilité conservée"
+  },
+  {
+    "id": "bulletin-de-paie-silae",
+    "centralText": "M emlia Silae · bulletins Bulletin de paie Silae Le bulletin est contrôlé, pas corrigé Les valeurs couvertes par la règle sont préparées. Une variable absente ou une variation hors seuil attend le pôle social. Portefeuille social · mars 31 bulletins contrôlés Entrée Bulletins calculés Jeu d’essai fictif Règles Contrôles du pôle Seuils et présences Sortie Vue d’exceptions Aucune modification Dossier fictif A Variable habituelle Préparé Dossier fictif B Prime absente À vérifier Dossier fictif C Variation hors seuil À décider Le pôle social garde chaque correction. Jeu fictif · aucune donnée nominative"
+  }
+]

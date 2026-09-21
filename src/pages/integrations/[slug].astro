@@ -1,289 +1,128 @@
 ---
-import Base from '@/layouts/Base.astro';
-import AppelFinal from '@/components/sections/AppelFinal.astro';
+import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import IntegrationReplay from '@/components/sections/IntegrationReplay.astro';
+import SourceEvidence from '@/components/sections/SourceEvidence.astro';
+import Renvois from '@/components/Renvois.astro';
 import { auteurPar, identiteAuteur } from '@/data/auteurs';
 import { INTEGRATIONS_INDEXABLES, integrationPath, type IntegrationDefinition } from '@/data/integrations';
 import { SITE } from '@/data/site.mjs';
-import { organizationNode } from '@/data/schema.mjs';
+import { PROOFS, type ProofId } from '@/data/proofs';
 
 export function getStaticPaths() {
-  return INTEGRATIONS_INDEXABLES.map((integration) => ({
-    params: { slug: integration.slug },
-    props: { integration },
-  }));
+  return INTEGRATIONS_INDEXABLES.map((integration) => ({ params: { slug: integration.slug }, props: { integration } }));
 }
-
-interface Props {
-  integration: IntegrationDefinition;
-}
-
+interface Props { integration: IntegrationDefinition; }
 const { integration } = Astro.props;
 const chemin = integrationPath(integration);
+const hero = `integrations/${integration.slug}` as ProofId;
+if (!(hero in PROOFS)) throw new Error(`Preuve absente pour ${integration.slug}`);
 const url = `${SITE.url}${chemin}`;
 const auteur = auteurPar(integration.auteur);
 const authorUrl = `${SITE.url}${identiteAuteur(auteur)}`;
-const graph = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'TechArticle',
-      '@id': `${url}#article`,
-      url,
-      headline: integration.h1,
-      name: integration.h1,
-      description: integration.description,
-      datePublished: integration.datePublication,
-      dateModified: integration.dateMiseAJour,
-      inLanguage: SITE.langue,
-      author: { '@id': authorUrl },
-      publisher: { '@id': `${SITE.url}/#organization` },
-      citation: integration.source.url,
-      mainEntityOfPage: { '@id': `${url}#webpage` },
-    },
-    {
-      '@type': 'WebPage',
-      '@id': `${url}#webpage`,
-      url,
-      name: integration.h1,
-      headline: integration.h1,
-      description: integration.description,
-      inLanguage: SITE.langue,
-      isPartOf: { '@id': `${SITE.url}/#website` },
-      breadcrumb: { '@id': `${url}#breadcrumb` },
-    },
-    {
-      '@type': 'Person',
-      '@id': authorUrl,
-      name: auteur.nom,
-      url: authorUrl,
-      jobTitle: auteur.role,
-      worksFor: { '@id': `${SITE.url}/#organization` },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      '@id': `${url}#breadcrumb`,
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` },
-        { '@type': 'ListItem', position: 2, name: 'Guides par environnement', item: `${SITE.url}/integrations` },
-        { '@type': 'ListItem', position: 3, name: integration.h1, item: url },
-      ],
-    },
-    organizationNode(),
-    {
-      '@type': 'WebSite',
-      '@id': `${SITE.url}/#website`,
-      url: `${SITE.url}/`,
-      name: SITE.nom,
-      inLanguage: SITE.langue,
-      publisher: { '@id': `${SITE.url}/#organization` },
-    },
-  ],
+const page = {
+  chemin,
+  titre: integration.tabTitle,
+  description: integration.description,
+  h1: integration.h1,
+  chapeau: integration.intro,
+  ariane: `${integration.vendor} · ${integration.task}`,
+  secondaire: { libelle: 'Voir les neuf guides', href: '/integrations' },
+};
+const noeuds = [
+  {
+    '@type': 'TechArticle', '@id': `${url}#article`, url, headline: integration.h1, name: integration.h1,
+    description: integration.description, datePublished: integration.datePublication, dateModified: integration.dateMiseAJour,
+    inLanguage: SITE.langue, author: { '@id': authorUrl }, publisher: { '@id': `${SITE.url}/#organization` },
+    citation: integration.source.url, mainEntityOfPage: { '@id': `${url}#webpage` },
+  },
+  {
+    '@type': 'WebPage', '@id': `${url}#webpage`, url, name: integration.h1, headline: integration.h1,
+    description: integration.description, datePublished: integration.datePublication, dateModified: integration.dateMiseAJour,
+    author: { '@id': authorUrl }, inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` },
+  },
+  { '@type': 'Person', '@id': authorUrl, name: auteur.nom, url: authorUrl, jobTitle: auteur.role, worksFor: { '@id': `${SITE.url}/#organization` } },
+];
+const source = {
+  editeur: integration.vendor,
+  titre: integration.source.title,
+  url: integration.source.url,
+  preuve: integration.source.fact,
+  consulteLe: integration.dateMiseAJour,
+  limite: 'Les menus et champs peuvent varier selon l’édition, la version et les droits du cabinet. La source ne prouve ni partenariat, ni accès, ni compatibilité déjà acquise.',
 };
 ---
 
-<Base
-  titre={integration.tabTitle}
-  titreSocial={integration.h1}
-  description={integration.description}
-  chemin={chemin}
-  ogType="article"
-  base="/"
+<PageCommerciale
+  page={page}
+  noeuds={noeuds}
+  eyebrow={`${integration.product} · guide documenté`}
+  hero={hero}
+  appel={{
+    titre: 'Décrivez le geste dans votre environnement.',
+    texte: 'Une description suffit pour le premier échange. Aucun fichier réel ne vous est demandé à ce stade.',
+    points: [
+      `Le geste : ${integration.task}, avec les mots de votre équipe.`,
+      `L’environnement : ${integration.product}, son édition et les droits disponibles.`,
+      'La limite : le cas qui doit arrêter la préparation.',
+    ],
+  }}
 >
-  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
-  <meta slot="head" property="article:published_time" content={integration.datePublication} />
-  <meta slot="head" property="article:modified_time" content={integration.dateMiseAJour} />
-  <meta slot="head" name="author" content={auteur.nom} />
-
-  <article class="integration" data-integration={integration.slug}>
-    <header class="integration-hero">
-      <div class="conteneur integration-hero-interieur">
-        <nav class="fil" aria-label="Fil d’Ariane">
-          <a href="/integrations">Guides par environnement</a>
-          <span aria-hidden="true">/</span>
-          <span>{integration.vendor}</span>
-        </nav>
-        <p class="surtitre">{integration.product} · {integration.suggestions} suggestions mesurées</p>
-        <h1>{integration.h1}</h1>
-        <p class="chapeau">{integration.intro}</p>
-        <div class="signature">
-          <a rel="author" href={identiteAuteur(auteur)}>{auteur.nom}</a>
-          <span aria-hidden="true">·</span>
-          <time datetime={integration.dateMiseAJour}>Mis à jour le 20 septembre 2026</time>
-        </div>
-        <p class="independance">{integration.independence}</p>
-      </div>
-    </header>
-
-    <div class="conteneur integration-corps">
-      <section aria-labelledby="repere-editeur" class="bloc rv">
-        <div class="bloc-tete">
-          <p class="surtitre">Repère propre à {integration.product}</p>
-          <h2 id="repere-editeur">Le chemin et les champs que la règle doit connaître</h2>
-        </div>
-        <figure class="media-propre" data-media={integration.slug}>
-          <figcaption>{integration.officialPath}</figcaption>
-          <ol aria-label="Champs suivis dans le jeu fictif">
-            {integration.fields.map((field, index) => (
-              <li><span>{String(index + 1).padStart(2, '0')}</span><strong>{field}</strong></li>
-            ))}
-          </ol>
-          <div class="media-legende">
-            <span>Source officielle vérifiée</span>
-            <span>Jeu fictif uniquement</span>
-            <span>Aucune écriture dans l’outil</span>
-          </div>
-        </figure>
-        <p class="alerte"><strong>Le piège connu.</strong> {integration.knownTrap}</p>
-      </section>
-
-      <section aria-labelledby="regle-ecrite" class="bloc bloc-inverse rv">
-        <div class="bloc-tete">
-          <p class="surtitre">Le mécanisme Memlia</p>
-          <h2 id="regle-ecrite">La règle écrite</h2>
-          <p>{integration.writtenRule}</p>
-        </div>
-        <div class="frontiere">
-          <article>
-            <span>01</span>
-            <h3>Préparé</h3>
-            <p>{integration.boundary.prepared}</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>À valider</h3>
-            <p>{integration.boundary.validation}</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Reste humain</h3>
-            <p>{integration.boundary.human}</p>
-          </article>
-        </div>
-      </section>
-
-      <section aria-labelledby="jeu-fictif" class="bloc rv">
-        <div class="bloc-tete">
-          <p class="surtitre">Preuve de conception · non recettée dans l’outil éditeur</p>
-          <h2 id="jeu-fictif">Rejoué sur le jeu fictif</h2>
-          <p>Trois cas montrent le comportement attendu du gabarit. Ils ne prouvent pas une compatibilité avec votre édition : cette recette ne peut avoir lieu qu’après vérification de l’environnement du cabinet.</p>
-        </div>
-        <div class="table-wrap" tabindex="0" aria-label="Résultats du jeu fictif, défilement horizontal possible">
-          <table>
-            <thead>
-              <tr><th>Entrée fictive</th><th>Règle appliquée</th><th>Verdict</th><th>Trace produite</th></tr>
-            </thead>
-            <tbody>
-              {integration.replay.map((replay) => (
-                <tr>
-                  <td>{replay.input}</td>
-                  <td>{replay.rule}</td>
-                  <td><span class:list={['verdict', `verdict-${replay.outcome.toLowerCase().replace('à ', '').replace('ê', 'e')}`]}>{replay.outcome}</span></td>
-                  <td>{replay.detail}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section aria-labelledby="source" class="bloc source rv">
-        <div>
-          <p class="surtitre">Source primaire éditeur</p>
-          <h2 id="source">Ce qui est documenté, et rien de plus</h2>
-          <p>{integration.source.fact}</p>
-          <p class="texte-2">Vérifiée le {integration.source.checkedAt}. Les menus et champs peuvent varier selon l’édition, la version et les droits du cabinet.</p>
-        </div>
-        <a class="source-lien" href={integration.source.url} rel="noreferrer">{integration.source.title}<span aria-hidden="true"> ↗</span></a>
-      </section>
-
-      <section aria-labelledby="maillage" class="bloc maillage rv">
-        <div>
-          <p class="surtitre">Le moyeu de service</p>
-          <h2 id="maillage">La tâche avant le nom du logiciel</h2>
-          <p>Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette.</p>
-        </div>
-        <div class="liens">
-          <a href={integration.service.href}>{integration.service.label}</a>
-          {integration.tool && <a href={integration.tool.href}>{integration.tool.label}</a>}
-          <a href="/integrations">Voir le cadre de publication de ces guides</a>
-        </div>
-      </section>
+  <section class="pv" aria-labelledby="repere-editeur">
+    <div class="pv-tete rv">
+      <h2 id="repere-editeur">Le chemin et les champs que la règle doit connaître</h2>
+      <p class="texte-2 lecture">{integration.officialPath}</p>
+      <p class="texte-2 lecture">Par <a rel="author" href={identiteAuteur(auteur)}>{auteur.nom}</a>, mis à jour le <time datetime={integration.dateMiseAJour}>20 septembre 2026</time>. {integration.independence}</p>
     </div>
+    <ul class="pv-cartes rv-groupe">
+      {integration.fields.map((field) => (
+        <li class="pv-carte rv"><div class="pv-carte-corps"><h3>{field}</h3><p>Champ observé dans le jeu fictif et relu avant toute proposition.</p></div></li>
+      ))}
+    </ul>
+    <div class="pv-tete rv">
+      <p class="texte-2 lecture"><strong>Le piège connu.</strong> {integration.knownTrap}</p>
+    </div>
+  </section>
 
-    <AppelFinal
-      id="confier"
-      titre="Décrivez le geste dans votre environnement."
-      texte="Une description suffit pour le premier échange. Aucun fichier réel ne vous est demandé à ce stade."
-      points={[
-        `Le geste : ${integration.task}, avec les mots de votre équipe.`,
-        `L’environnement : ${integration.product}, son édition et les droits disponibles.`,
-        'La limite : le cas qui doit arrêter la préparation.',
-      ]}
-      action={{ libelle: 'Confier une première tâche', href: '/contact' }}
-    />
-  </article>
-</Base>
+  <section class="pv" aria-labelledby="regle-ecrite">
+    <div class="pv-tete rv">
+      <h2 id="regle-ecrite">La règle écrite</h2>
+      <p class="texte-2 lecture">{integration.writtenRule}</p>
+    </div>
+    <div class="pv-bande coins">
+      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+      <ol class="pv-bande-liste rv-groupe" data-colonnes="3">
+        <li class="pv-cellule rv"><h3>Préparé</h3><p>{integration.boundary.prepared}</p></li>
+        <li class="pv-cellule rv"><h3>À valider</h3><p>{integration.boundary.validation}</p></li>
+        <li class="pv-cellule rv"><h3>Reste humain</h3><p>{integration.boundary.human}</p></li>
+      </ol>
+    </div>
+  </section>
 
-<style>
-  .integration { background: var(--surface-page); }
-  .integration-hero { padding: clamp(88px, 13vw, 168px) 0 72px; border-bottom: 1px solid var(--ligne-douce); }
-  .integration-hero-interieur { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 22px; max-width: 1040px; }
-  .fil { display: flex; flex-wrap: wrap; min-width: 0; gap: 8px; color: var(--texte-2); font-size: var(--t-sm); }
-  .fil a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 3px; }
-  .surtitre { color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-  h1 { max-width: 18ch; overflow-wrap: break-word; font-size: clamp(2.35rem, 7vw, 5.8rem); line-height: .98; }
-  .chapeau { max-width: 72ch; font-size: clamp(1.12rem, 2vw, 1.35rem); line-height: 1.6; color: var(--texte-2); }
-  .signature { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--texte-2); font-size: var(--t-sm); }
-  .signature a { color: var(--texte-fort); font-weight: 600; }
-  .independance { max-width: 78ch; padding: 16px 18px; border-left: 3px solid var(--accent-appui); background: var(--accent-voile); color: var(--texte-2); }
-  .integration-corps { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 24px; padding-block: clamp(64px, 10vw, 120px); }
-  .bloc { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: clamp(28px, 5vw, 56px); padding: clamp(24px, 6vw, 64px); border: 1px solid var(--ligne-douce); background: var(--surface-feuille); }
-  .bloc-inverse { color: var(--surface-feuille); background: var(--texte-fort); }
-  .bloc-inverse .surtitre { color: var(--accent-voile); }
-  .bloc-tete { display: grid; gap: 14px; max-width: 75ch; }
-  .bloc-tete h2, .source h2, .maillage h2 { font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.08; }
-  .bloc-tete > p:last-child, .source p, .maillage p { color: var(--texte-2); }
-  .bloc-inverse .bloc-tete > p:last-child, .bloc-inverse article p { color: var(--surface-feuille); }
-  .media-propre { display: grid; gap: 22px; padding: clamp(22px, 4vw, 36px); border: 1px solid var(--ligne); background: var(--surface-page); box-shadow: 10px 10px 0 var(--accent-voile); }
-  .media-propre figcaption { max-width: 68ch; font-family: var(--police-display); font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: var(--texte-fort); }
-  .media-propre ol { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-  .media-propre li { display: grid; gap: 6px; min-height: 92px; padding: 14px; border: 1px solid var(--ligne-douce); background: var(--surface-feuille); }
-  .media-propre li span { color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; }
-  .media-legende { display: flex; flex-wrap: wrap; gap: 8px; }
-  .media-legende span { padding: 7px 10px; border-radius: 999px; background: var(--accent-voile); color: var(--accent-texte); font-size: var(--t-sm); }
-  .alerte { padding: 18px 20px; border-left: 3px solid var(--texte-fort); background: var(--surface-hover); }
-  .frontiere { display: grid; gap: 1px; background: var(--accent-appui); }
-  .frontiere article { display: grid; align-content: start; gap: 10px; padding: 24px; background: var(--texte-fort); }
-  .frontiere article span { color: var(--accent-voile); font-size: var(--t-sm); font-weight: 600; }
-  .frontiere h3 { color: var(--surface-feuille); font-size: 1.2rem; }
-  .table-wrap { width: 100%; min-width: 0; max-width: 100%; overflow-x: auto; border: 1px solid var(--ligne-douce); }
-  table { width: 100%; min-width: 760px; border-collapse: collapse; }
-  th, td { padding: 18px; border-bottom: 1px solid var(--ligne-douce); text-align: left; vertical-align: top; }
-  th { background: var(--surface-hover); font-size: var(--t-sm); color: var(--texte-fort); }
-  td { color: var(--texte-2); }
-  .verdict { display: inline-flex; padding: 6px 9px; border-radius: 999px; white-space: nowrap; background: var(--accent-voile); color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; }
-  .source, .maillage { align-items: start; }
-  .source > div, .maillage > div { display: grid; gap: 12px; }
-  .source-lien, .liens a { display: inline-flex; min-height: 48px; align-items: center; padding: 13px 16px; border: 1px solid var(--ligne); color: var(--texte-fort); font-weight: 600; }
-  .liens { display: grid; gap: 10px; }
-  @media (max-width: 47.99rem) {
-    table { min-width: 0; }
-    thead { display: none; }
-    tbody, tr, td { display: block; width: 100%; }
-    tr { padding: 12px 0; border-bottom: 1px solid var(--ligne-douce); }
-    tr:last-child { border-bottom: 0; }
-    td { display: grid; grid-template-columns: minmax(6rem, .75fr) minmax(0, 1.25fr); gap: 12px; padding: 10px 14px; border: 0; }
-    td::before { color: var(--texte-fort); font-size: var(--t-sm); font-weight: 600; }
-    td:nth-child(1)::before { content: 'Entrée'; }
-    td:nth-child(2)::before { content: 'Règle'; }
-    td:nth-child(3)::before { content: 'Verdict'; }
-    td:nth-child(4)::before { content: 'Trace'; }
-  }
-  @media (min-width: 48rem) {
-    .frontiere { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .source, .maillage { grid-template-columns: minmax(0, 1.5fr) minmax(260px, .8fr); }
-  }
-  @media (hover: hover) {
-    .source-lien:hover, .liens a:hover { border-color: var(--accent-appui); background: var(--accent-voile); }
-  }
-</style>
+  <section class="pv" aria-labelledby="jeu-fictif">
+    <div class="pv-tete rv">
+      <h2 id="jeu-fictif">Rejoué sur le jeu fictif</h2>
+      <p class="texte-2 lecture">Preuve de conception, non recettée dans l’outil éditeur. Trois cas montrent le comportement attendu du gabarit. Ils ne prouvent pas une compatibilité avec votre édition : cette recette ne peut avoir lieu qu’après vérification de l’environnement du cabinet.</p>
+    </div>
+    <IntegrationReplay integration={integration} />
+  </section>
+
+  <section class="pv" aria-labelledby="source">
+    <div class="pv-tete rv">
+      <h2 id="source">Ce qui est documenté, et rien de plus</h2>
+      <p class="texte-2 lecture">La source borne le repère utilisé par ce guide. Elle ne remplace ni l’observation du cabinet, ni la recette sur son environnement.</p>
+    </div>
+    <SourceEvidence source={source} />
+  </section>
+
+  <section class="pv" aria-labelledby="maillage">
+    <div class="pv-tete rv">
+      <h2 id="maillage">La tâche avant le nom du logiciel</h2>
+      <p class="texte-2 lecture">Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette.</p>
+    </div>
+    <Renvois items={[
+      { texte: 'Le service correspondant décrit la tâche sans la réduire à un éditeur.', libelle: integration.service.label, href: integration.service.href },
+      ...(integration.tool ? [{ texte: 'Un outil local permet de rejouer une partie de la règle sur des données fictives.', libelle: integration.tool.label, href: integration.tool.href }] : []),
+      { texte: 'Le hub explique pourquoi seuls neuf guides sont publiés.', libelle: 'Voir le cadre de publication des guides', href: '/integrations' },
+    ]} colonnes={2} />
+  </section>
+</PageCommerciale>

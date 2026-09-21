@@ -64,7 +64,8 @@ const noeudsAvecHeadline = noeuds.map((noeud: any) => {
   };
 });
 // Le recadrage social 1200 × 630 du même cadre vit sous og/, produit par le même rendu.
-const socialImage = { url: `${SITE.url}/proofs/${hero.replace('v2/', 'v2/og/')}.webp`, width: 1200, height: 630, alt: preuve.alt };
+const heroSocial = hero.startsWith('v2/') ? hero.replace('v2/', 'v2/og/') : hero;
+const socialImage = { url: `${SITE.url}/proofs/${heroSocial}.webp`, width: hero.startsWith('v2/') ? 1200 : 1600, height: hero.startsWith('v2/') ? 630 : 900, alt: preuve.alt };
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -106,7 +107,7 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
       </div>
       <div class="page-cadre">
         <div class="page-verre">
-          <img src={heroSrc} alt={preuve.alt} width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" class="page-ecran" />
+          <img src={heroSrc} alt={preuve.alt} width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" class="page-ecran" data-proof={hero} />
         </div>
       </div>
     </section>

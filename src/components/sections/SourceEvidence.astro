@@ -1,0 +1,41 @@
+---
+interface Source {
+  editeur: string;
+  titre: string;
+  url: string;
+  preuve: string;
+  consulteLe: string;
+  limite?: string;
+}
+interface Props { source: Source; }
+const { source } = Astro.props;
+const format = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${source.consulteLe}T00:00:00Z`));
+---
+
+<article class="source-evidence" data-primary-source>
+  <div class="source-identity">
+    <span>Source primaire</span>
+    <strong>{source.editeur}</strong>
+  </div>
+  <div class="source-body">
+    <h3><a class="source-lien" href={source.url} rel="noopener noreferrer">{source.titre}<span aria-hidden="true"> ↗</span></a></h3>
+    <p><strong>Ce qu’elle établit.</strong> {source.preuve}</p>
+    <p class="source-limit"><strong>Limite.</strong> {source.limite ?? 'Cette source décrit un repère public ; elle ne prouve ni l’édition, ni les droits, ni les formats du cabinet.'}</p>
+    <p class="source-date">Consultée le <time datetime={source.consulteLe}>{format}</time>.</p>
+  </div>
+</article>
+
+<style>
+  .source-evidence { display: grid; gap: 20px; padding: 28px; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-feuille); }
+  .source-identity { display: grid; align-content: start; gap: 6px; }
+  .source-identity span { color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; }
+  .source-identity strong { color: var(--texte-fort); }
+  .source-body { display: grid; gap: 12px; }
+  h3 { font-size: var(--t-2xl); line-height: 1.2; }
+  a { color: var(--texte-fort); text-decoration: underline; text-decoration-color: var(--accent-appui); text-underline-offset: 4px; }
+  p { max-width: 68ch; margin: 0; color: var(--texte-2); text-wrap: pretty; }
+  p strong { color: var(--texte-fort); }
+  .source-limit { padding-left: 16px; border-left: 2px solid var(--ligne); }
+  .source-date { font-size: var(--t-sm); }
+  @media (min-width: 48rem) { .source-evidence { grid-template-columns: minmax(10rem, .5fr) minmax(0, 1.5fr); padding: 36px; } }
+</style>

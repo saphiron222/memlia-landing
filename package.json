@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa",
-    "build:site": "astro build && npm run test:blog-contract && npm run test:service-design && node scripts/strip-briefs.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts",
+    "build:site": "astro build && npm run test:blog-contract && npm run test:service-design && node scripts/strip-briefs.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:integration-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts",
     "preview": "astro preview",
     "preview:prepare": "node scripts/prepare-preview.mjs",
     "check": "astro check",
@@ -16,6 +16,7 @@
     "lastmod:sync": "node scripts/sync-lastmod.mjs",
     "test:lastmod": "node scripts/sync-lastmod.mjs --check",
     "test:proof-render": "node scripts/render-proof-images.mjs --check",
+    "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check",
     "render:proofs": "node scripts/render-proof-images.mjs",
     "render:blog-proofs": "node scripts/render-blog-article-proofs.mjs",
     "test:blog-proof-render": "node scripts/render-blog-article-proofs.mjs --check",

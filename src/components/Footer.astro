@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import { SITE } from '@/data/site.mjs';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
-import { INTEGRATIONS_HUB_PATH } from '@/data/integrations';
+import { INTEGRATIONS_HUB_PATH, INTEGRATIONS_INDEXABLES, integrationPath } from '@/data/integrations';
 
 /** Pied de page (spec §4.14) : colonnes générées, ligne © en --texte-2, emblème « M » en filigrane. */
 interface Props {
@@ -24,6 +24,10 @@ const outils = OUTILS_DISPONIBLES.map((outil) => ({
   libelle: outil.h1,
   href: outilPath(outil),
 }));
+const integrations = INTEGRATIONS_INDEXABLES.map((integration) => ({
+  libelle: `${integration.task.charAt(0).toUpperCase()}${integration.task.slice(1)} · ${integration.vendor}`,
+  href: integrationPath(integration),
+}));
 
 const colonnes = [
   {
@@ -35,6 +39,10 @@ const colonnes = [
       { libelle: 'Guides par environnement', href: INTEGRATIONS_HUB_PATH },
       { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
     ],
+  },
+  {
+    titre: 'Environnements',
+    liens: integrations,
   },
   {
     titre: 'Outils gratuits',
@@ -49,13 +57,6 @@ const colonnes = [
       { libelle: 'À propos', href: PAGES_V2.apropos.chemin },
       { libelle: 'Nos garanties', href: PAGES_V2.garanties.chemin },
       { libelle: 'Confier une première tâche', href: PAGES_V2.contact.chemin },
-    ],
-  },
-  {
-    titre: 'Légal',
-    liens: [
-      { libelle: 'Mentions légales', href: '/mentions-legales' },
-      { libelle: 'Confidentialité', href: '/politique-de-confidentialite' },
     ],
   },
 ];
