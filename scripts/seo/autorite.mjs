@@ -19,28 +19,32 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { autocompleterGoogle, backlinksDataForSeo, chatGptDataForSeo, journaliserCout, porteDeCout, referentsCloudflare, serpDataForSeo } from '../lib/seo-instruments.mjs';
+import { ORIGINE, autocompleterGoogle, backlinksDataForSeo, chatGptRechercheDataForSeo, chercherPage, journaliserCout, porteDeCout, referentsCloudflare, serpDataForSeo } from '../lib/seo-instruments.mjs';
 import { analyserSerp } from '../lib/seo-regles.mjs';
-import { detecterAutorite, lireBacklinks, lireReferents, lireTacheIa } from '../lib/seo-autorite.mjs';
+import { conserverMesureValide, detecterAutorite, estRefusPaiementDataForSeo, lireAccesRobots, lireBacklinks, lireReferents, lireTacheIaAncree, validerEchantillonIa } from '../lib/seo-autorite.mjs';
 
 const DOMAINE = 'memlia.fr';
 const MARQUE = 'memlia';
 const DEPART = '2026-09';
 const COMPTE_CLOUDFLARE = '063970336833bc239dbe83778a7fea26'; // Premier relevé : l'âge du site sert à juger un zéro.
 const DOSSIER = 'docs/strategy/site-v3/mesures';
+const ECHANTILLON_IA = `${DOSSIER}/echantillon-ia.json`;
 const ENDPOINT_BACKLINKS = 'backlinks_summary';
 const ENDPOINT_IA = 'ai_optimization_chat_gpt_scraper';
-/** Le modèle interrogé ; sans lui l'interface refuse l'appel (mesuré le 19/09/2026 : 40501). */
-const MODELE_IA = 'gpt-4o-mini';
 const ENDPOINT_SERP = 'serp_organic_live_advanced';
-const REQUETES_IA = [
-  'automatisation cabinet comptable',
-  'ia expert comptable',
-  'manuel de procédures cabinet expertise comptable',
-  'crm dsn',
-  'automatisation saisie comptable',
-  'cabinet comptable surcharge de travail',
-];
+const CRAWLERS_IA = Object.freeze([
+  { userAgent: 'OAI-SearchBot', capacite: 'citation ChatGPT Search' },
+  { userAgent: 'GPTBot', capacite: 'entraînement OpenAI' },
+  { userAgent: 'Claude-SearchBot', capacite: 'citation Claude Search' },
+  { userAgent: 'ClaudeBot', capacite: 'entraînement Anthropic' },
+  { userAgent: 'PerplexityBot', capacite: 'citation Perplexity' },
+  { userAgent: 'Googlebot', capacite: 'Google Search et AI Overviews' },
+  { userAgent: 'Google-Extended', capacite: 'entraînement et grounding Gemini, pas Google Search' },
+  { userAgent: 'Applebot', capacite: 'Siri, Spotlight et Safari' },
+  { userAgent: 'Applebot-Extended', capacite: 'préférence d’entraînement Apple Intelligence' },
+  { userAgent: 'CCBot', capacite: 'jeu Common Crawl' },
+  { userAgent: 'Bytespider', capacite: 'entraînement ByteDance' },
+]);
 
 export const dateParis = (d = new Date()) => d.toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' });
 export const repereParis = (d = new Date()) => {
@@ -83,6 +87,7 @@ export async function relever(root, { mois, sansIa = false, budget = 0.6, instan
   const moisReleve = mois ?? repere.mois;
   const cheminReleve = mois ? `${DOSSIER}/mois-${moisReleve}-autorite.json` : repere.chemin;
   mkdirSync(join(root, DOSSIER), { recursive: true });
+  const releveExistant = lireJson(join(root, cheminReleve), null);
   const exclusions = [];
   const depenses = { total: 0, parEndpoint: {} };
   const compter = (endpoint, cout) => {
@@ -106,6 +111,11 @@ export async function relever(root, { mois, sansIa = false, budget = 0.6, instan
       else { autorite.erreur = lu.erreur; exclusions.push(`profil de liens refusé : ${lu.erreur}`); }
     }
   }
+  if (autorite.erreur && releveExistant?.autorite && !releveExistant.autorite.erreur) {
+    const erreurDerniereTentative = autorite.erreur;
+    autorite = conserverMesureValide(autorite, releveExistant.autorite, releveExistant.jour);
+    exclusions.push(`profil de liens conservé au ${autorite.mesureeLe} : la tentative courante a échoué (${erreurDerniereTentative})`);
+  }
 
   // 2. Entité
   const entite = { spell: null, rangMarque: null, suggestions: 0, erreur: null };
@@ -122,34 +132,135 @@ export async function relever(root, { mois, sansIa = false, budget = 0.6, instan
       entite.rangMarque = s.rangMemlia;
     } else { entite.erreur = r.erreur; exclusions.push(`page de résultats de la marque non relevée : ${r.erreur}`); }
   }
+  if (entite.erreur && releveExistant?.entite && !releveExistant.entite.erreur) {
+    const erreurDerniereTentative = entite.erreur;
+    Object.assign(entite, conserverMesureValide(entite, releveExistant.entite, releveExistant.jour));
+    exclusions.push(`entité conservée au ${entite.mesureeLe} : la tentative courante a échoué (${erreurDerniereTentative})`);
+  }
 
-  // 3. Visibilité IA
-  const ia = { requetes: 0, avecRecherche: 0, citations: 0, nomme: 0, detail: [], erreur: null };
+  // 3. Visibilité IA ancrée. La notoriété non ancrée du 19/09 reste dans le relevé comme témoin
+  // historique, mais ne partage ni le dénominateur ni le verdict de cette vraie recherche.
+  const historiqueNonAncre = releveExistant?.ia?.historiqueNonAncre
+    ?? (releveExistant?.ia?.avecRecherche === 0 ? {
+      mesureeLe: releveExistant.jour,
+      instrument: 'chatgpt-llm-responses-sans-recherche',
+      requetes: releveExistant.ia.requetes,
+      nomme: releveExistant.ia.nomme,
+      citations: null,
+      detail: releveExistant.ia.detail,
+      lecture: "notoriété seulement : l'absence de citation n'était pas mesurée",
+    } : null);
+  const ia = {
+    instrument: 'dataforseo-chatgpt-search-scraper-force-web-search',
+    typeMesure: 'citation-ancree',
+    echantillon: ECHANTILLON_IA,
+    requetes: 0,
+    avecRecherche: 0,
+    citations: 0,
+    nomme: 0,
+    domainesCites: [],
+    detail: [],
+    erreur: null,
+    historiqueNonAncre,
+  };
+  let porteIa = { ok: false, porte: sansIa ? 'desactivee' : 'non-demandee', couvertPar: null };
   if (sansIa) exclusions.push('visibilité IA non relevée : désactivée par option');
   else {
-    const porteIa = autorise(ENDPOINT_IA, REQUETES_IA.length, budget, depenses, exclusions);
+    const documentEchantillon = lireJson(join(root, ECHANTILLON_IA), null);
+    const echantillon = validerEchantillonIa(documentEchantillon, { date: repere.jour });
+    if (!echantillon.ok) {
+      ia.erreur = echantillon.erreur;
+      exclusions.push(`citations IA non relevées : ${echantillon.erreur} (${ECHANTILLON_IA})`);
+    }
+    porteIa = echantillon.ok ? autorise(ENDPOINT_IA, echantillon.questions.length, budget, depenses, exclusions) : porteIa;
     if (porteIa.ok) {
-      for (const requete of REQUETES_IA) {
-        const r = await chatGptDataForSeo(requete, { modele: MODELE_IA });
-        if (!r.ok) { ia.detail.push({ requete, erreur: r.erreur }); continue; }
-        const lu = lireTacheIa(r.reponse?.tasks?.[0], { domaine: DOMAINE });
+      for (const item of echantillon.questions) {
+        const requete = item.question;
+        const r = await chatGptRechercheDataForSeo(requete);
+        if (!r.ok) {
+          ia.detail.push({ requete, origine: item.origine, source: item.source, routeCandidate: item.routeCandidate, intention: item.intention ?? null, erreur: r.erreur });
+          if (estRefusPaiementDataForSeo(r.erreur)) {
+            ia.erreur = `DataForSEO refuse la mesure : ${r.erreur}`;
+            exclusions.push('citations IA non relevées : DataForSEO refuse le paiement, arrêt après le premier refus pour ne pas multiplier les appels inutiles');
+            break;
+          }
+          continue;
+        }
+        const lu = lireTacheIaAncree(r.reponse?.tasks?.[0], { domaine: DOMAINE });
         compter(ENDPOINT_IA, lu.cout);
-        if (!lu.ok) { ia.detail.push({ requete, erreur: lu.erreur }); continue; }
+        if (!lu.ok) {
+          ia.detail.push({ requete, origine: item.origine, source: item.source, routeCandidate: item.routeCandidate, intention: item.intention ?? null, erreur: lu.erreur });
+          if (estRefusPaiementDataForSeo(lu.erreur)) {
+            ia.erreur = `DataForSEO refuse la mesure : ${lu.erreur}`;
+            exclusions.push('citations IA non relevées : DataForSEO refuse le paiement dans la tâche, arrêt après le premier refus pour ne pas multiplier les appels inutiles');
+            break;
+          }
+          continue;
+        }
         ia.requetes += 1;
         if (lu.lecture.rechercheWeb) ia.avecRecherche += 1;
         if (lu.lecture.cite === true) ia.citations += 1;
         if (lu.lecture.nomme) ia.nomme += 1;
-        ia.detail.push({ requete, rechercheWeb: lu.lecture.rechercheWeb, cite: lu.lecture.cite, nomme: lu.lecture.nomme, domainesCites: lu.lecture.domainesCites.slice(0, 8) });
+        for (const domaine of lu.lecture.domainesCites) {
+          const ligne = ia.domainesCites.find((d) => d.domaine === domaine);
+          if (ligne) ligne.citations += 1;
+          else ia.domainesCites.push({ domaine, citations: 1 });
+        }
+        ia.detail.push({
+          requete,
+          origine: item.origine,
+          source: item.source,
+          routeCandidate: item.routeCandidate,
+          intention: item.intention ?? null,
+          rechercheWeb: lu.lecture.rechercheWeb,
+          cite: lu.lecture.cite,
+          nomme: lu.lecture.nomme,
+          domainesCites: lu.lecture.domainesCites,
+          pagesCitees: lu.lecture.pagesCitees,
+        });
       }
+      ia.domainesCites.sort((a, b) => b.citations - a.citations || a.domaine.localeCompare(b.domaine, 'fr'));
     }
   }
 
-  // Sans recherche web, la citation n'est pas mesurée : on l'écrit au lieu de compter un zéro.
+  // L'endpoint forcé qui n'aboutit jamais n'est pas transformé en zéro de visibilité.
   if (!sansIa && ia.requetes > 0 && ia.avecRecherche === 0) {
-    exclusions.push(`citations IA non mesurées : l'interface a répondu sans recherche web sur les ${ia.requetes} requêtes (relevé du ${repere.jourFrancais} : web_search rendu à false quel que soit le paramètre) ; seul « la marque est nommée » est mesuré`);
+    exclusions.push(`citations IA non mesurées : aucune des ${ia.requetes} réponses n'a prouvé une recherche web forcée`);
   }
 
-  // 4. Audience : d'où viennent les visites, et notamment celles envoyées par un assistant.
+  // 4. Lisibilité machine : règles robots réellement servies et indexabilité HTTP, par capacité.
+  const lisibiliteMachine = { mesureeLe: instant.toISOString(), crawlers: [], llmsTxt: null };
+  for (const crawler of CRAWLERS_IA) {
+    const suffixe = `${moisReleve}-${crawler.userAgent.toLowerCase()}`;
+    const [robots, page] = await Promise.all([
+      chercherPage(`${ORIGINE}/robots.txt?mesure-ia=${suffixe}`, { ua: crawler.userAgent, timeoutMs: 20_000 }),
+      chercherPage(`${ORIGINE}/?mesure-ia=${suffixe}`, { ua: crawler.userAgent, timeoutMs: 20_000 }),
+    ]);
+    const acces = robots.ok ? lireAccesRobots(robots.corps, { userAgent: crawler.userAgent, chemin: '/' }) : { autorise: null, groupe: null, regle: null };
+    lisibiliteMachine.crawlers.push({
+      ...crawler,
+      robotsHttp: robots.status,
+      pageHttp: page.status,
+      autoriseRobots: acces.autorise,
+      groupeRobots: acces.groupe,
+      regleRobots: acces.regle,
+      xRobotsTag: page.xRobotsTag,
+      indexableHttp: page.status === 200 && !/\bnoindex\b/i.test(page.xRobotsTag ?? ''),
+      erreur: robots.erreur || page.erreur || null,
+    });
+  }
+  const llms = await chercherPage(`${ORIGINE}/llms.txt?mesure-ia=${moisReleve}`, { timeoutMs: 20_000 });
+  lisibiliteMachine.llmsTxt = {
+    existe: llms.status === 200,
+    http: llms.status,
+    octets: Buffer.byteLength(llms.corps ?? '', 'utf8'),
+    xRobotsTag: llms.xRobotsTag,
+    effetCitationMesure: null,
+    conclusion: 'présence mesurée seulement : aucun effet de citation attribuable ; Google Search ignore llms.txt',
+    erreur: llms.erreur,
+  };
+
+  // 5. Audience : d'où viennent les visites, et notamment celles envoyées par un assistant.
   // Gratuit, mais il faut le jeton ; sans lui, on l'écrit au lieu de compter zéro visite.
   let audience = { ok: false, erreur: 'non relevée', visites: null, directes: null, assistants: [], visitesAssistants: null, hotes: [] };
   const finMois = new Date(instant);
@@ -165,7 +276,7 @@ export async function relever(root, { mois, sansIa = false, budget = 0.6, instan
 
   const precedent = lireJson(join(root, DOSSIER, `mois-${moisPrecedent(moisReleve)}-autorite.json`), null);
   const detection = detecterAutorite({ mois: moisReleve, autorite, entite, ia, precedent, moisDepuisDepart: moisEcoules(DEPART, moisReleve) });
-  const releve = { mois: moisReleve, jour: repere.jour, autorite, entite, ia, audience, depenses, budget, portes: { liens: porteLiens, serp: porteSerp }, exclusions, ...detection };
+  const releve = { mois: moisReleve, jour: repere.jour, autorite, entite, ia, lisibiliteMachine, audience, depenses, budget, portes: { liens: porteLiens, serp: porteSerp, ia: porteIa }, exclusions, ...detection };
   ecrireJson(join(root, cheminReleve), releve);
   return releve;
 }

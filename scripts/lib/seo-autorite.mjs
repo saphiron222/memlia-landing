@@ -27,6 +27,102 @@ export const SEUILS_AUTORITE = Object.freeze({
 
 const sansWww = (d) => String(d ?? '').toLowerCase().replace(/^www\./, '');
 
+/**
+ * Lit robots.txt pour un agent et un chemin donnés. Le groupe le plus spécifique gagne ; à
+ * longueur égale, Allow gagne. Ce lecteur suffit au contrat mensuel (règles de chemin simples)
+ * sans transformer un HTTP 200 du fichier robots en faux verdict d'autorisation.
+ */
+export function lireAccesRobots(texte, { userAgent, chemin = '/' }) {
+  const groupes = [];
+  let agents = [];
+  let regles = [];
+  const fermer = () => {
+    if (agents.length > 0) groupes.push({ agents, regles });
+    agents = [];
+    regles = [];
+  };
+  for (const brute of String(texte ?? '').split(/\r?\n/)) {
+    const ligne = brute.replace(/#.*$/, '').trim();
+    if (!ligne) continue;
+    const separation = ligne.indexOf(':');
+    if (separation < 0) continue;
+    const cle = ligne.slice(0, separation).trim().toLowerCase();
+    const valeur = ligne.slice(separation + 1).trim();
+    if (cle === 'user-agent') {
+      if (regles.length > 0) fermer();
+      agents.push(valeur.toLowerCase());
+    } else if ((cle === 'allow' || cle === 'disallow') && agents.length > 0) {
+      regles.push({ type: cle, chemin: valeur });
+    }
+  }
+  fermer();
+
+  const cible = String(userAgent ?? '').toLowerCase();
+  const correspondances = groupes.flatMap((groupe) => groupe.agents
+    .filter((agent) => agent === '*' || cible.startsWith(agent))
+    .map((agent) => ({ agent, specificite: agent === '*' ? 0 : agent.length, regles: groupe.regles })));
+  if (correspondances.length === 0) return { autorise: true, groupe: null, regle: null };
+  const specificite = Math.max(...correspondances.map((groupe) => groupe.specificite));
+  const groupesRetenus = correspondances.filter((groupe) => groupe.specificite === specificite);
+  const applicables = groupesRetenus.flatMap((groupe) => groupe.regles
+    .filter((regle) => regle.chemin && chemin.startsWith(regle.chemin))
+    .map((regle) => ({ ...regle, groupe: groupe.agent })));
+  if (applicables.length === 0) return { autorise: true, groupe: groupesRetenus[0].agent, regle: null };
+  applicables.sort((a, b) => b.chemin.length - a.chemin.length || (a.type === 'allow' ? -1 : 1));
+  const retenue = applicables[0];
+  return { autorise: retenue.type === 'allow', groupe: retenue.groupe, regle: `${retenue.type}: ${retenue.chemin}` };
+}
+
+/**
+ * Un échantillon de visibilité IA n'est recevable que s'il mêle la demande mesurée de C1 et les
+ * questions réellement observées par C6. On refuse les listes choisies à la main, les doublons et
+ * une veille C6 vieille de plus de 31 jours : sans cela, la série mensuelle changerait de sens.
+ */
+export function validerEchantillonIa(document, { date = new Date().toISOString().slice(0, 10) } = {}) {
+  const questions = Array.isArray(document?.questions) ? document.questions : [];
+  if (questions.length < 8) return { ok: false, questions: [], erreur: `échantillon trop petit : ${questions.length}/8 questions` };
+  const textes = new Set();
+  const comptes = { C1: 0, C6: 0, GLOSSAIRE: 0 };
+  for (const [index, item] of questions.entries()) {
+    const question = String(item?.question ?? '').trim();
+    const origine = String(item?.origine ?? '').toUpperCase();
+    if (question.length < 12) return { ok: false, questions: [], erreur: `question ${index + 1} absente ou trop courte` };
+    if (!['C1', 'C6', 'GLOSSAIRE'].includes(origine)) return { ok: false, questions: [], erreur: `question ${index + 1} sans origine C1, C6 ou GLOSSAIRE` };
+    if (!item?.source || !item?.mesureeLe) return { ok: false, questions: [], erreur: `question ${index + 1} sans source datée` };
+    if (!item?.routeCandidate) return { ok: false, questions: [], erreur: `question ${index + 1} sans page candidate` };
+    const cle = question.toLocaleLowerCase('fr');
+    if (textes.has(cle)) return { ok: false, questions: [], erreur: `question dupliquée : ${question}` };
+    textes.add(cle);
+    comptes[origine] += 1;
+    if (origine === 'C6') {
+      const ageJours = Math.floor((Date.parse(`${date}T00:00:00Z`) - Date.parse(`${item.mesureeLe}T00:00:00Z`)) / 86_400_000);
+      if (!Number.isFinite(ageJours) || ageJours < 0 || ageJours > 31) {
+        return { ok: false, questions: [], erreur: `question C6 périmée ou datée dans le futur : ${item.mesureeLe}` };
+      }
+    }
+  }
+  if (comptes.C1 < 4 || comptes.C6 < 4) {
+    return { ok: false, questions: [], erreur: `échantillon déséquilibré : C1 ${comptes.C1}/4, C6 ${comptes.C6}/4` };
+  }
+  if (comptes.GLOSSAIRE < 3) {
+    return { ok: false, questions: [], erreur: `glossaire sous-représenté : ${comptes.GLOSSAIRE}/3 définitions` };
+  }
+  return { ok: true, questions, erreur: null };
+}
+
+/** Conserve une dernière mesure valide sans antidater sa fraîcheur lors d'une relance en erreur. */
+export function conserverMesureValide(courante, precedente, jourPrecedent) {
+  if (!courante?.erreur || !precedente || precedente.erreur) return courante;
+  return {
+    ...precedente,
+    mesureeLe: precedente.mesureeLe ?? jourPrecedent ?? null,
+    erreurDerniereTentative: courante.erreur,
+  };
+}
+
+/** Les deux formes observées du refus de paiement : HTTP 402 ou tâche DataForSEO 40200. */
+export const estRefusPaiementDataForSeo = (erreur) => /^(?:HTTP\s+402\b|40200\b|payment required\b)/i.test(String(erreur ?? '').trim());
+
 /** Le résumé de profil de liens d'une réponse DataForSEO, avec son coût, ou l'erreur qui la nomme. */
 export function lireBacklinks(reponse) {
   const tache = reponse?.tasks?.[0];
@@ -88,6 +184,41 @@ export function lireCitationsIa(resultat, { domaine }) {
 }
 
 /**
+ * Les citations d'une réponse réellement ancrée sur ChatGPT Search. Le scraper expose les sources
+ * retenues à la racine et peut les répéter dans les blocs de réponse : on fusionne les deux sans
+ * compter deux fois une page. Cette fonction ne décide pas seule que la recherche a été forcée ;
+ * `lireTacheIaAncree` vérifie le paramètre de la tâche avant de l'appeler.
+ */
+export function lireCitationsIaAncrees(resultat, { domaine }) {
+  const cible = sansWww(domaine);
+  const sources = [
+    ...(Array.isArray(resultat?.sources) ? resultat.sources : []),
+    ...(Array.isArray(resultat?.items)
+      ? resultat.items.flatMap((item) => (Array.isArray(item?.sources) ? item.sources : []))
+      : []),
+  ];
+  const domaines = [];
+  const pages = [];
+  for (const source of sources) {
+    try {
+      const url = String(source?.url ?? '');
+      const d = sansWww(source?.domain || new URL(url).hostname);
+      if (d && !domaines.includes(d)) domaines.push(d);
+      if (url && !pages.some((page) => page.url === url)) pages.push({ domaine: d, url, titre: source?.title ?? null });
+    } catch { /* une source sans URL ni domaine lisible n'est pas une citation */ }
+  }
+  const texte = String(resultat?.markdown ?? '');
+  return {
+    rechercheWeb: true,
+    cite: domaines.includes(cible),
+    nomme: texte.toLowerCase().includes(cible) || texte.toLowerCase().includes(cible.split('.')[0]),
+    domainesCites: domaines,
+    pagesCitees: pages,
+    extrait: texte ? texte.slice(0, 400) : null,
+  };
+}
+
+/**
  * La tâche d'une réponse d'assistant : réussie, refusée, ou absente. Une tâche refusée est une
  * ERREUR et n'a pas de lecture — elle ne doit jamais se compter comme « aucune citation ».
  * Le 19/09/2026, un premier câblage sans `model_name` recevait 40501 et écrivait « 0 citation
@@ -99,6 +230,20 @@ export function lireTacheIa(tache, { domaine }) {
     return { ok: false, cout: Number(tache.cost ?? 0), lecture: null, erreur: `${tache.status_code} ${tache.status_message ?? ''}`.trim() };
   }
   return { ok: true, cout: Number(tache.cost ?? 0), lecture: lireCitationsIa(tache.result?.[0] ?? null, { domaine }), erreur: null };
+}
+
+/** Une tâche du scraper ne vaut mesure ancrée que si l'appel prouve `force_web_search: true`. */
+export function lireTacheIaAncree(tache, { domaine }) {
+  if (!tache) return { ok: false, cout: 0, lecture: null, erreur: 'réponse sans tâche' };
+  if (Number(tache.status_code) !== 20000) {
+    return { ok: false, cout: Number(tache.cost ?? 0), lecture: null, erreur: `${tache.status_code} ${tache.status_message ?? ''}`.trim() };
+  }
+  if (tache.data?.force_web_search !== true) {
+    return { ok: false, cout: Number(tache.cost ?? 0), lecture: null, erreur: 'recherche non forcée : ce résultat ne mesure pas la citation ancrée' };
+  }
+  const resultat = tache.result?.[0];
+  if (!resultat) return { ok: false, cout: Number(tache.cost ?? 0), lecture: null, erreur: 'tâche réussie sans résultat' };
+  return { ok: true, cout: Number(tache.cost ?? 0), lecture: lireCitationsIaAncrees(resultat, { domaine }), erreur: null };
 }
 
 /**

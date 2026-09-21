@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "mesureeLe": "2026-09-21T01:05:30+01:00",
+  "instrument": "dataforseo-chatgpt-search-scraper-force-web-search",
+  "endpoint": "/v3/ai_optimization/chat_gpt/llm_scraper/live/advanced",
+  "forceWebSearch": true,
+  "echantillon": "docs/strategy/site-v3/mesures/echantillon-ia.json",
+  "questionsPrevues": 11,
+  "composition": {
+    "C1": 4,
+    "C6": 4,
+    "GLOSSAIRE": 3
+  },
+  "verdict": "NON_MESUREE",
+  "motif": "DataForSEO a refusé les appels avec HTTP 402 Payment Required ; aucune réponse ancrée n'a été produite.",
+  "preuves": {
+    "appelsDirectsRefuses": 11,
+    "appelConnecteurRefuse": 1,
+    "statusConnecteur": 40200,
+    "messageConnecteur": "Payment Required.",
+    "soldeCompteUsd": -0.003632,
+    "coutFactureUsd": 0
+  },
+  "conclusionsInterdites": [
+    "Aucun taux de citation n'est calculé.",
+    "Aucun domaine concurrent n'est attribué à ces onze questions.",
+    "Aucun manque page par page n'est déduit de réponses qui n'existent pas."
+  ],
+  "historiqueNonAncre": {
+    "questions": 6,
+    "rechercheWeb": 0,
+    "citations": null,
+    "lecture": "notoriété seulement ; l'absence de citation n'était pas mesurée"
+  },
+  "conditionDeReprise": "Solde DataForSEO strictement positif et suffisant pour onze tâches du scraper, puis relance unique de `node scripts/seo/autorite.mjs relever --budget 0.60 --mois 2026-09`."
+}

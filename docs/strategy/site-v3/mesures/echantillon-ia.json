@@ -1,33 +1,102 @@
 {
-  "version": 1,
-  "statut": "partiel-c6",
+  "version": 2,
+  "statut": "ligne-de-base-c7",
   "mesureLe": "2026-09-20",
+  "composition": {
+    "C1": 4,
+    "C6": 4,
+    "GLOSSAIRE": 3
+  },
   "questions": [
+    {
+      "question": "Quel calculateur utiliser pour calculer une marge commerciale ?",
+      "origine": "C1",
+      "source": "registre-demande-2026-09-20 · requête « calculateur marge commerciale » · 1 900 recherches mensuelles moyennes France",
+      "mesureeLe": "2026-09-20",
+      "routeCandidate": "/outils-comptables-gratuits/calculateur-marge-commerciale",
+      "intention": "outil-gratuit"
+    },
+    {
+      "question": "Comment calculer la date d'échéance d'une facture ?",
+      "origine": "C1",
+      "source": "registre-demande-2026-09-20 · requête « calculateur date échéance facture » · 50 recherches mensuelles moyennes France",
+      "mesureeLe": "2026-09-20",
+      "routeCandidate": "/outils-comptables-gratuits/calculateur-date-echeance-facture",
+      "intention": "outil-gratuit"
+    },
+    {
+      "question": "Qu'est-ce que la DSN de substitution en 2026 ?",
+      "origine": "C1",
+      "source": "registre-demande-2026-09-20 · requête « dsn de substitution 2026 » · 170 recherches mensuelles moyennes France",
+      "mesureeLe": "2026-09-20",
+      "routeCandidate": "/glossaire#dsn",
+      "intention": "actualité-réglementaire"
+    },
+    {
+      "question": "Comment automatiser les tâches répétitives d'un cabinet comptable ?",
+      "origine": "C1",
+      "source": "registre-demande-2026-09-20 · requête « automatisation cabinet comptable » · 10 recherches mensuelles moyennes France",
+      "mesureeLe": "2026-09-20",
+      "routeCandidate": "/automatisation-cabinet-comptable",
+      "intention": "prestataire"
+    },
     {
       "question": "Cut-off en révision : votre méthode ?",
       "origine": "C6",
       "source": "Compta Online · fil 74756",
-      "mesureeLe": "2026-09-17"
+      "mesureeLe": "2026-09-17",
+      "routeCandidate": "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "intention": "question-réelle"
     },
     {
       "question": "Comment gérez-vous les documents manquants de vos clients ?",
       "origine": "C6",
       "source": "Compta Online · fil 74739",
-      "mesureeLe": "2026-09-01"
+      "mesureeLe": "2026-09-01",
+      "routeCandidate": "/blog/automatiser-la-relance-des-pieces-clients",
+      "intention": "question-réelle"
     },
     {
       "question": "Comment éviter les erreurs de facturation qui coûtent cher ?",
       "origine": "C6",
       "source": "Compta Online · fil 74738",
-      "mesureeLe": "2026-08-26"
+      "mesureeLe": "2026-08-26",
+      "routeCandidate": "/automatisation/controle-factures-fournisseurs",
+      "intention": "question-réelle"
     },
     {
       "question": "Dans quel ordre reprendre une comptabilité désorganisée pour éviter de refaire le travail ?",
       "origine": "C6",
       "source": "last30days · Reddit r/Bookkeeping · fil 1wa59w7",
-      "mesureeLe": "2026-09-07"
+      "mesureeLe": "2026-09-07",
+      "routeCandidate": "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "intention": "question-réelle"
+    },
+    {
+      "question": "Qu'est-ce qu'un compte rendu métier DSN ?",
+      "origine": "GLOSSAIRE",
+      "source": "glossaire Memlia · entrée « Compte rendu métier DSN » · source Net-entreprises contrôlée le 2026-09-14",
+      "mesureeLe": "2026-09-20",
+      "routeCandidate": "/glossaire#compte-rendu-metier-dsn",
+      "intention": "définition-métier"
+    },
+    {
+      "question": "Qu'est-ce qu'une DSN annule et remplace ?",
+      "origine": "GLOSSAIRE",
+      "source": "glossaire Memlia · entrée « Annule et remplace DSN » · source Net-entreprises contrôlée le 2026-09-14",
+      "mesureeLe": "2026-09-20",
+      "routeCandidate": "/glossaire#annule-et-remplace-dsn",
+      "intention": "définition-métier"
+    },
+    {
+      "question": "Qu'est-ce qu'une règle de cabinet en expertise comptable ?",
+      "origine": "GLOSSAIRE",
+      "source": "glossaire Memlia · entrée « Règle de cabinet » · définition éditoriale contrôlée le 2026-09-20",
+      "mesureeLe": "2026-09-20",
+      "routeCandidate": "/glossaire#regle-de-cabinet",
+      "intention": "définition-métier"
     }
   ],
   "privacy": "Questions reformulées ou titres de fils seulement ; aucun nom, pseudonyme, commentaire ni profil conservé.",
-  "attenteC7": "Ajouter au moins quatre questions C1 avant la mesure ancrée ; ce fichier partiel ne constitue pas encore l’échantillon final de huit questions."
+  "selection": "Quatre accès C1 couvrent outil, réglementation et service ; quatre questions C6 viennent d'observations réelles et fraîches ; trois définitions testent le glossaire, actif structuré DefinedTermSet. Les pages candidates sont fixées avant la mesure pour éviter une analyse rétrospective accommodante."
 }

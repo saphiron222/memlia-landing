@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { lireBacklinks, lireCitationsIa, detecterAutorite, SEUILS_AUTORITE } from '../../scripts/lib/seo-autorite.mjs';
+import { conserverMesureValide, detecterAutorite, estRefusPaiementDataForSeo, lireAccesRobots, lireBacklinks, lireCitationsIa, lireCitationsIaAncrees, lireTacheIaAncree, SEUILS_AUTORITE, validerEchantillonIa } from '../../scripts/lib/seo-autorite.mjs';
 import * as autoriteScript from '../../scripts/seo/autorite.mjs';
 
 test('dateParis attribue un relevé après minuit à la date civile de Paris', () => {
@@ -15,6 +15,13 @@ test('le repère Paris garde le mois, le jour, le libellé et le chemin cohéren
     jourFrancais: '01/10/2026',
     chemin: 'docs/strategy/site-v3/mesures/mois-2026-10-autorite.json',
   });
+});
+
+test('lireAccesRobots mesure le groupe spécifique au lieu de déduire une autorisation du HTTP 200', () => {
+  const robots = `User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: Bytespider\nDisallow: /\n`;
+  assert.deepEqual(lireAccesRobots(robots, { userAgent: 'OAI-SearchBot' }), { autorise: true, groupe: 'oai-searchbot', regle: 'allow: /' });
+  assert.deepEqual(lireAccesRobots(robots, { userAgent: 'Bytespider' }), { autorise: false, groupe: 'bytespider', regle: 'disallow: /' });
+  assert.deepEqual(lireAccesRobots(robots, { userAgent: 'GPTBot' }), { autorise: true, groupe: '*', regle: 'allow: /' });
 });
 
 test('lireBacklinks sépare une réponse utile de son coût et nomme une tâche refusée', () => {
@@ -51,6 +58,38 @@ test('lireCitationsIa lit la vraie forme, et ne conclut à aucune citation que s
   assert.equal(sansRecherche.nomme, false);
   assert.ok(sansRecherche.extrait.startsWith('Un expert-comptable'));
   assert.deepEqual(lireCitationsIa(null, { domaine: 'memlia.fr' }), { rechercheWeb: false, cite: null, nomme: false, domainesCites: [], extrait: null });
+});
+
+test('validerEchantillonIa exige quatre C1, quatre C6, trois définitions, des pages candidates et une veille C6 fraîche', () => {
+  const questions = Array.from({ length: 11 }, (_, index) => ({
+    question: `Comment traiter la question représentative numéro ${index + 1} ?`,
+    origine: index < 4 ? 'C1' : index < 8 ? 'C6' : 'GLOSSAIRE',
+    source: index < 4 ? 'registre-demande' : index < 8 ? 'veille-questions' : 'glossaire',
+    mesureeLe: '2026-09-20',
+    routeCandidate: '/page-candidate',
+  }));
+  assert.equal(validerEchantillonIa({ questions }, { date: '2026-09-20' }).ok, true);
+  assert.match(validerEchantillonIa({ questions: questions.slice(0, 4) }, { date: '2026-09-20' }).erreur, /trop petit/);
+  const sansC6 = questions.map((item) => ({ ...item, origine: 'C1' }));
+  assert.match(validerEchantillonIa({ questions: sansC6 }, { date: '2026-09-20' }).erreur, /déséquilibré/);
+  const sansGlossaire = questions.map((item) => item.origine === 'GLOSSAIRE' ? { ...item, origine: 'C1' } : item);
+  assert.match(validerEchantillonIa({ questions: sansGlossaire }, { date: '2026-09-20' }).erreur, /glossaire sous-représenté/);
+  const sansPage = questions.map((item, index) => index === 0 ? { ...item, routeCandidate: '' } : item);
+  assert.match(validerEchantillonIa({ questions: sansPage }, { date: '2026-09-20' }).erreur, /sans page candidate/);
+  const perime = questions.map((item) => item.origine === 'C6' ? { ...item, mesureeLe: '2026-07-01' } : item);
+  assert.match(validerEchantillonIa({ questions: perime }, { date: '2026-09-20' }).erreur, /périmée/);
+});
+
+test('conserverMesureValide garde la date source et reconnaît les deux refus de paiement', () => {
+  const conservee = conserverMesureValide(
+    { rang: null, erreur: 'HTTP 402' },
+    { rang: 4, erreur: null, mesureeLe: '2026-09-19' },
+    '2026-09-21',
+  );
+  assert.deepEqual(conservee, { rang: 4, erreur: null, mesureeLe: '2026-09-19', erreurDerniereTentative: 'HTTP 402' });
+  assert.equal(estRefusPaiementDataForSeo('HTTP 402'), true);
+  assert.equal(estRefusPaiementDataForSeo('40200 Payment Required.'), true);
+  assert.equal(estRefusPaiementDataForSeo('40501 model_name required'), false);
 });
 
 test('detecterAutorite : un recul d’autorité, une marque toujours réécrite et zéro citation sont des rouges nommés', () => {
@@ -107,6 +146,38 @@ test('lireTacheIa : une tâche refusée par l’interface est une ERREUR, jamais
   assert.equal(ok.ok, true);
   assert.equal(ok.cout, 0.000657);
   assert.equal(ok.lecture.cite, true);
+});
+
+test('lireTacheIaAncree exige la recherche forcée et lit les sources du vrai scraper', () => {
+  const resultat = {
+    markdown: 'Memlia n’est pas retenu dans cette réponse.',
+    sources: [
+      { domain: 'www.cnil.fr', url: 'https://www.cnil.fr/fr/ia', title: 'CNIL' },
+      { domain: 'memlia.fr', url: 'https://memlia.fr/blog/x', title: 'Memlia' },
+    ],
+    items: [{ type: 'chat_gpt_text', sources: [{ domain: 'www.cnil.fr', url: 'https://www.cnil.fr/fr/ia', title: 'CNIL' }] }],
+  };
+  const ancree = lireTacheIaAncree({
+    status_code: 20000,
+    cost: 0.004,
+    data: { force_web_search: true },
+    result: [resultat],
+  }, { domaine: 'memlia.fr' });
+  assert.equal(ancree.ok, true);
+  assert.equal(ancree.lecture.rechercheWeb, true);
+  assert.equal(ancree.lecture.cite, true);
+  assert.deepEqual(ancree.lecture.domainesCites, ['cnil.fr', 'memlia.fr']);
+  assert.equal(ancree.lecture.pagesCitees.length, 2, 'une source répétée dans un bloc ne se recompte pas');
+
+  const nonForcee = lireTacheIaAncree({ status_code: 20000, cost: 0.004, data: { force_web_search: false }, result: [resultat] }, { domaine: 'memlia.fr' });
+  assert.equal(nonForcee.ok, false);
+  assert.match(nonForcee.erreur, /non forcée/);
+  assert.equal(nonForcee.lecture, null, 'un appel non forcé ne devient jamais un faux zéro de citation');
+
+  const vide = lireCitationsIaAncrees({ markdown: 'Réponse sans source.', sources: [] }, { domaine: 'memlia.fr' });
+  assert.equal(vide.rechercheWeb, true);
+  assert.equal(vide.cite, false, 'le scraper forcé sans source rend un vrai zéro, pas une absence de mesure');
+  assert.deepEqual(vide.domainesCites, []);
 });
 
 test('lireReferents : sépare les assistants, la navigation interne et les visites directes', async () => {

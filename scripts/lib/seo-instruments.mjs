@@ -244,14 +244,14 @@ export async function chercherPage(url, { ua = UA_NAVIGATEUR, timeoutMs = 25_000
       const contentType = r.headers.get('content-type');
       if (!estTexte(contentType)) {
         await r.body?.cancel?.();
-        return { ok: r.status === 200, status: r.status, location, finalUrl: courante, redirections, corps: '', corpsIgnore: true, dureeMs: Date.now() - debut, erreur: null, contentType };
+        return { ok: r.status === 200, status: r.status, location, finalUrl: courante, redirections, corps: '', corpsIgnore: true, dureeMs: Date.now() - debut, erreur: null, contentType, xRobotsTag: r.headers.get('x-robots-tag'), cacheStatus: r.headers.get('cf-cache-status') };
       }
       const corps = await r.text();
-      return { ok: r.status === 200, status: r.status, location, finalUrl: courante, redirections, corps, corpsIgnore: false, dureeMs: Date.now() - debut, erreur: null, contentType };
+      return { ok: r.status === 200, status: r.status, location, finalUrl: courante, redirections, corps, corpsIgnore: false, dureeMs: Date.now() - debut, erreur: null, contentType, xRobotsTag: r.headers.get('x-robots-tag'), cacheStatus: r.headers.get('cf-cache-status') };
     }
   } catch (e) {
     const erreur = e?.name === 'TimeoutError' ? `délai dépassé (${timeoutMs} ms)` : (e?.cause?.message ?? e?.message ?? String(e));
-    return { ok: false, status: 0, location: null, finalUrl: courante, redirections, corps: '', dureeMs: Date.now() - debut, erreur, contentType: null };
+    return { ok: false, status: 0, location: null, finalUrl: courante, redirections, corps: '', dureeMs: Date.now() - debut, erreur, contentType: null, xRobotsTag: null, cacheStatus: null };
   }
 }
 
@@ -338,9 +338,21 @@ export async function dataForSeoPost(chemin, corps, { timeoutMs = 120_000 } = {}
 /** Le profil de liens entrants d'un domaine (DataForSEO backlinks summary). */
 export const backlinksDataForSeo = (domaine) => dataForSeoPost('backlinks/summary/live', [{ target: domaine, internal_list_limit: 1, backlinks_status_type: 'live' }]);
 
-/** Ce qu'un assistant répond à une requête, avec ses sources (DataForSEO ChatGPT scraper). */
-export const chatGptDataForSeo = (requete, { locationCode = 2250, languageCode = 'fr', modele = 'gpt-4o-mini' } = {}) =>
-  dataForSeoPost('ai_optimization/chat_gpt/llm_responses/live', [{ user_prompt: requete, model_name: modele, location_code: locationCode, language_code: languageCode, web_search: true }]);
+/**
+ * Ce que ChatGPT sait déjà, sans recherche. Cette mesure est une mesure de NOTORIÉTÉ : elle ne
+ * doit jamais être présentée comme une mesure de citation ou de visibilité dans la recherche IA.
+ */
+export const chatGptMemoireDataForSeo = (requete, { locationCode = 2250, languageCode = 'fr', modele = 'gpt-4o-mini' } = {}) =>
+  dataForSeoPost('ai_optimization/chat_gpt/llm_responses/live', [{ user_prompt: requete, model_name: modele, location_code: locationCode, language_code: languageCode, web_search: false }]);
+
+/**
+ * Une vraie réponse ChatGPT Search, localisée en France et forcée à chercher. L'endpoint scraper
+ * rend les sources effectivement utilisées dans `result[].sources`; c'est cet instrument, et lui
+ * seul, qui mesure la citation ancrée. `force_web_search` ne garantit pas une source, donc une
+ * réponse valide avec `sources: []` reste un vrai zéro — contrairement à une réponse de mémoire.
+ */
+export const chatGptRechercheDataForSeo = (requete, { locationCode = 2250, languageCode = 'fr' } = {}) =>
+  dataForSeoPost('ai_optimization/chat_gpt/llm_scraper/live/advanced', [{ keyword: requete, location_code: locationCode, language_code: languageCode, force_web_search: true }]);
 
 /**
  * Les référents d'audience de Cloudflare Web Analytics, par l'interface GraphQL.
