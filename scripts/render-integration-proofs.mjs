@@ -12,9 +12,34 @@ const contractPath = `${source}/content-contract.json`;
 const manifestPath = 'docs/qa/integration-proofs/proofs-manifest.json';
 const output = `.qa/annotations/integration-proofs-${mode}`;
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
-mkdirSync(output, { recursive: true });
-
 const contract = existsSync(contractPath) ? JSON.parse(readFileSync(contractPath, 'utf8')) : [];
+const sourcePaths = [`${source}/index.html`, `${source}/styles.css`, contractPath, 'scripts/render-integration-proofs.mjs'];
+
+// Cloudflare Pages ne fournit pas Chromium. Le rendu pixel complet reste
+// obligatoire en recette locale ; le build distant vérifie le sceau portable
+// des sources, du contrat, du manifeste et des WebP déjà revus.
+if (mode === 'check' && process.env.CF_PAGES === '1') {
+  const previous = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  assert.equal(previous.schemaVersion, 1, 'Version de manifeste inconnue');
+  assert.equal(contract.length, 10, 'Dix scènes sont requises');
+  const ids = contract.map(({ id }) => id);
+  assert.equal(new Set(ids).size, 10, 'Chaque scène porte un identifiant unique');
+  assert.deepEqual(previous.sources, sourcePaths.map((path) => ({ path, sha256: sha256(readFileSync(path)) })), 'Sources ou contrat de rendu périmés');
+  assert.equal(previous.entries.length, 10, 'Le manifeste ne couvre pas les dix scènes');
+  assert.deepEqual(previous.entries.map(({ source: path }) => path), ids.map((id) => `${source}/index.html#${id}`), 'Ordre ou source des scènes divergent du contrat');
+  assert.equal(new Set(previous.entries.map(({ target }) => target)).size, 10, 'Deux scènes partagent le même actif');
+  for (const [index, entry] of previous.entries.entries()) {
+    assert.equal(entry.target, `public/proofs/integrations/${ids[index]}.webp`, `Cible inattendue : ${entry.target}`);
+    const bytes = readFileSync(entry.target);
+    assert.equal(bytes.length, entry.bytes, `Taille périmée : ${entry.target}`);
+    assert.ok(bytes.length < 150_000, `Actif trop lourd : ${entry.target}`);
+    assert.equal(sha256(bytes), entry.sha256, `Actif périmé : ${entry.target}`);
+  }
+  console.log('check Cloudflare : 10 preuves intégrations scellées, sources et actifs intègres.');
+  process.exit(0);
+}
+
+mkdirSync(output, { recursive: true });
 const browser = await chromium.launch({ channel: 'chromium' });
 try {
   const page = await browser.newPage({ viewport: { width: 1720, height: 1000 }, deviceScaleFactor: 1 });
@@ -79,7 +104,7 @@ try {
 
   const manifest = {
     schemaVersion: 1,
-    sources: [`${source}/index.html`, `${source}/styles.css`, contractPath, 'scripts/render-integration-proofs.mjs'].map((path) => ({ path, sha256: sha256(readFileSync(path)) })),
+    sources: sourcePaths.map((path) => ({ path, sha256: sha256(readFileSync(path)) })),
     browser: browser.version(),
     entries: candidates.map(({ source, target, bytes, sha256 }) => ({ source, target, bytes, sha256 })),
   };
