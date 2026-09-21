@@ -74,13 +74,6 @@ const sources = {
     consulteLe,
     preuve: 'Cette source étaye la limite anti-surveillance. La garantie Memlia reste plus étroite : des vues agrégées, jamais un classement nominatif.',
   },
-  annuaireMemlia: {
-    editeur: 'Annuaire des Entreprises',
-    titre: 'MEMLIA — unité légale 108 621 541',
-    url: 'https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541',
-    consulteLe,
-    preuve: 'Cette fiche officielle confirme l’identité de la société. Elle ne constitue ni une recommandation ni une preuve de résultat client.',
-  },
 } satisfies Record<string, SourcePrimaire>;
 
 const cicatriceCadrage: ExperiencePremiereMain = {
@@ -108,7 +101,7 @@ export const COMMERCIAL_EEAT = {
     auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-09-20', sources: [sources.controleSalaries],
   },
   '/a-propos': {
-    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-09-20', sources: [sources.annuaireMemlia],
+    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-09-21', sources: [],
   },
 } satisfies Record<string, PageEeat>;
 

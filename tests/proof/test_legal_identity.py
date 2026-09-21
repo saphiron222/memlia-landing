@@ -52,6 +52,35 @@ class LegalText(HTMLParser):
             self.parts.append(data)
 
 
+class VisibleText(HTMLParser):
+    """Texte rendu d'une page, à l'exclusion des données structurées et des styles."""
+
+    IGNORED_TAGS = {'script', 'style', 'template'}
+
+    def __init__(self):
+        super().__init__()
+        self.ignored_depth = 0
+        self.parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.IGNORED_TAGS:
+            self.ignored_depth += 1
+
+    def handle_endtag(self, tag):
+        if tag in self.IGNORED_TAGS and self.ignored_depth:
+            self.ignored_depth -= 1
+
+    def handle_data(self, data):
+        if not self.ignored_depth:
+            self.parts.append(data)
+
+
+def texte_visible(page):
+    doc = VisibleText()
+    doc.feed(page.read_text())
+    return re.sub(r'\s+', ' ', ' '.join(doc.parts)).strip()
+
+
 class LegalIdentityProof(unittest.TestCase):
     def setUp(self):
         self.doc = LegalText()
@@ -170,13 +199,46 @@ class PublisherEntityProof(unittest.TestCase):
         self.assertIn(f'{siren[:3]} {siren[3:6]} {siren[6:]}', texte)
 
 
-class AboutPageLocationProof(unittest.TestCase):
-    """La page « À propos » situe l'entité là où elle est immatriculée, et nulle part ailleurs."""
+class LegalSurfaceSeparationProof(unittest.TestCase):
+    """L'identité juridique reste légale ou structurée ; le corps public explique la valeur."""
 
-    def test_about_page_states_paris_and_never_a_second_place(self):
-        texte = (DIST / 'a-propos.html').read_text()
-        self.assertIn('RCS de Paris', texte)
-        self.assertNotIn('Plérin', texte)
+    ALLOWLIST = {'mentions-legales.html'}
+    LEGAL_IDENTITY_PATTERNS = {
+        'RCS': r'\bRCS\b',
+        'immatriculation': r'\bimmatricul(?:ée|e|ation)\b',
+        'unité légale': r'\bunité légale\b',
+        'Annuaire des Entreprises': r'\bAnnuaire des Entreprises\b',
+        'identifiant SIREN': r'\b108[ .]?621[ .]?541\b',
+        'identifiant SIRET': r'\b10862154100011\b',
+    }
+    REFERENCE_COPY = (
+        'Memlia livre l’automatisation IA des tâches répétitives d’un cabinet '
+        'd’expertise comptable, dans les outils que ses équipes utilisent déjà.'
+    )
+
+    def test_legal_identity_is_absent_from_visible_non_legal_pages(self):
+        infractions = []
+        for page in sorted(DIST.rglob('*.html')):
+            route = page.relative_to(DIST).as_posix()
+            if route in self.ALLOWLIST:
+                continue
+            visible = texte_visible(page)
+            for label, pattern in self.LEGAL_IDENTITY_PATTERNS.items():
+                if re.search(pattern, visible, re.I):
+                    infractions.append(f'{route}: {label}')
+        self.assertEqual(infractions, [], 'identité juridique visible hors surface légale : ' + ', '.join(infractions))
+
+    def test_registry_source_is_not_rendered_as_page_evidence(self):
+        visible = texte_visible(DIST / 'a-propos.html')
+        self.assertNotIn('Annuaire des Entreprises', visible)
+        self.assertNotIn('unité légale 108 621 541', visible)
+
+    def test_reference_copy_is_not_repeated_verbatim(self):
+        routes = []
+        for page in sorted(DIST.rglob('*.html')):
+            if self.REFERENCE_COPY in texte_visible(page):
+                routes.append(page.relative_to(DIST).as_posix())
+        self.assertLessEqual(len(routes), 1, f'copy de référence répétée telle quelle : {routes}')
 
 
 if __name__ == '__main__':

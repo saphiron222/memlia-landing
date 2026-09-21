@@ -1,5 +1,13 @@
 # E-E-A-T des pages hors blog — mesure et correction du 20 septembre 2026
 
+> **Abrogation ciblée du 21 septembre 2026.** L'attribution, les dates, le nœud Person et les
+> sources métier restent en vigueur. La ligne de preuve juridique de `/a-propos`, ajoutée par la
+> carte `t_3d3ea7a4` au commit `3e2e5c1`, est retirée du corps public : elle prouvait l'existence
+> de la société, pas la valeur livrée au cabinet. L'identité demeure dans `/mentions-legales` et
+> dans le nœud `Organization`, contrôlé séparément par `test_legal_identity.py`. Les lignes
+> historiques ci-dessous sont conservées comme état de la décision du 20 septembre, pas comme
+> instruction de rendu.
+
 ## Périmètre et règle de preuve
 
 Cette mesure couvre les cinq pages de service, le pilier `/automatisation-cabinet-comptable`, `/methode`, `/garanties` et `/a-propos`.
