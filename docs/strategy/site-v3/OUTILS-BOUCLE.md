@@ -75,3 +75,18 @@ Un outil devient candidat au retrait pour absence d’usage uniquement si, penda
 - Ne jamais conclure qu’un outil « convertit » parce qu’une visite a ensuite ouvert `/contact` : seul l’envoi D1 est un contact mesuré.
 - Ne jamais comparer les trois outils âgés de quelques jours à un article plus ancien sans afficher l’âge.
 - Ne jamais réécrire ces seuils dans le relevé qui les évalue.
+
+## Addendum du 21 septembre 2026 — quatrième outil
+
+Le calculateur d’amortissement comptable rejoint l’observation à compter de sa publication en production. Cet ajout ne modifie ni la population historique de la vague 1, ni ses seuils, ni ses dates du 27 septembre, 21 octobre et 19 décembre 2026. Les relevés continuent donc d’afficher séparément les trois outils publiés le 20 septembre et le calculateur d’amortissement, plus jeune d’un jour.
+
+Pour le calculateur d’amortissement :
+
+- contrôle technique le **28 septembre 2026** ;
+- première fenêtre de 28 jours du **21 septembre au 18 octobre 2026 inclus**, lisible après les trois jours de délai Search Console le **22 octobre 2026** ;
+- lecture J+90 le **20 décembre 2026** ;
+- mêmes instruments et mêmes seuils que la vague 1, sans créer une deuxième place : si plusieurs outils franchissent un seuil, la règle d’une seule construction reste inchangée.
+
+Le suivi rapproche quatre grandeurs sans les additionner : Search Console pour la demande qualifiée, Cloudflare Web Analytics pour les pages d’entrée, D1 `memlia-contact` pour l’envoi volontaire attribué à la route exacte, et les événements `memlia:outil` pour le parcours dans l’outil. Au jour de l’addendum, ces événements restent locaux : démarrage, réussite, refus, recalcul, retour, copie, export et clic CTA sont **ND** en production tant qu’aucun collecteur n’est approuvé et branché.
+
+La collecte personnalisée n’est pas ajoutée dans cette livraison. Elle exigerait d’ouvrir le `connect-src 'none'`, de remplacer la promesse publique « aucune valeur n’est envoyée », d’ajouter une surface serveur et sa politique de conservation, alors que Cloudflare Web Analytics et D1 couvrent déjà l’entrée et la conversion engagée. La décision à prendre avant tout collecteur est donc explicite : autoriser ou non une requête agrégée après interaction, avec liste fermée `{ action, outil }`, aucune valeur saisie, aucun identifiant applicatif, aucune persistance côté navigateur et une durée de conservation définie. Sans cette décision, le contrat local est conservé et n’est jamais présenté comme une télémétrie observée.

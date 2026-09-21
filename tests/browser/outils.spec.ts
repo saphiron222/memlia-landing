@@ -64,10 +64,10 @@ test('marge : calcul exact, marge négative et refus visibles', async ({ page })
 test('marge : exemple, copie, export, effacement et événements de mesure', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.addInitScript(() => {
-    (window as unknown as { outilEvents: string[] }).outilEvents = [];
+    (window as unknown as { outilEvents: Array<Record<string, string>> }).outilEvents = [];
     window.addEventListener('memlia:outil', (event) => {
-      const detail = (event as CustomEvent<{ action: string }>).detail;
-      (window as unknown as { outilEvents: string[] }).outilEvents.push(detail.action);
+      const detail = (event as CustomEvent<Record<string, string>>).detail;
+      (window as unknown as { outilEvents: Array<Record<string, string>> }).outilEvents.push(detail);
     });
   });
   await page.goto(`${HUB}/calculateur-marge-commerciale`);
@@ -84,8 +84,13 @@ test('marge : exemple, copie, export, effacement et événements de mesure', asy
   await expect(page.locator('[data-output]')).toBeHidden();
   await page.getByRole('button', { name: 'Effacer' }).click();
   await expect(page.getByLabel('Prix d’achat HT')).toHaveValue('');
-  expect(await page.evaluate(() => (window as unknown as { outilEvents: string[] }).outilEvents)).toEqual([
-    'demarrage', 'exemple', 'reussite', 'copie', 'export', 'effacer',
+  expect(await page.evaluate(() => (window as unknown as { outilEvents: Array<Record<string, string>> }).outilEvents)).toEqual([
+    { action: 'demarrage', outil: 'calculateur-marge-commerciale' },
+    { action: 'exemple', outil: 'calculateur-marge-commerciale' },
+    { action: 'reussite', outil: 'calculateur-marge-commerciale' },
+    { action: 'copie', outil: 'calculateur-marge-commerciale' },
+    { action: 'export', outil: 'calculateur-marge-commerciale' },
+    { action: 'effacer', outil: 'calculateur-marge-commerciale' },
   ]);
 });
 

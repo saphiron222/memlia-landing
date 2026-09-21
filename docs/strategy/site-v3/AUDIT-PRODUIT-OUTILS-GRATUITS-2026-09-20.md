@@ -4,6 +4,12 @@ Date du relevé : 20 septembre 2026, 23:11 WAT
 Périmètre : hub, quatre outils indexables et témoin technique non indexable.  
 Branche : `wt/outils-product-growth`.
 
+## Addendum d’intégration — 21 septembre 2026
+
+Le candidat `5ca506c1a0becf2a4ba84c241d5091a81d3e3d38` a été rejoué sur un `origin/main` frais. Deux conflits ont été résolus explicitement : le hub conserve le filtrage des seules catégories publiées ajouté sur `main` tout en affichant l’entrée, le résultat et l’action de chaque outil ; le registre `pages-lastmod` est régénéré depuis le rendu intégré, jamais repris depuis l’ancienne base du candidat.
+
+La mesure personnalisée n’est pas branchée dans cette livraison. Le détail des événements est désormais contrôlé comme une liste fermée de deux champs, `action` et `outil`, sans valeur saisie ; il reste un événement navigateur local. L’ouverture d’un endpoint contredirait la CSP `connect-src 'none'` et la promesse publique d’absence d’envoi tant qu’une décision de politique, de conservation et d’exploitation n’est pas prise. Search Console, Cloudflare Web Analytics et l’attribution D1 restent les trois instruments de production ; toute donnée absente est notée `ND`. Les dates propres au quatrième outil sont ajoutées sans déplacer la vague 1 dans `OUTILS-BOUCLE.md`.
+
 ## Verdict
 
 Les quatre outils indexables rendaient déjà un résultat juste sur les cas couverts, localement et sans inscription. Leur faiblesse commune était située après et autour du calcul : démarrage sans exemple sur trois parcours, résultat périmé encore visible après une modification, erreurs peu orientantes sur trois outils, et presque aucune sortie réutilisable hors du rapprochement.
