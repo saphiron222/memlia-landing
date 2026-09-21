@@ -148,6 +148,13 @@ export const IMAGES = {
     alt: "Frontière en trois colonnes entre préparation automatisée, validation et décision humaine",
     generee: true,
   },
+  'img-art-fideliser-collaborateurs-regle-ecrite': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Consigne orale fictive transformée en règle écrite avec validation et arrêt dans le doute",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -155,6 +162,7 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-fideliser-collaborateurs-regle-ecrite',
   'img-art-intelligence-artificielle-metier-comptable',
   'img-art-charge-travail-cabinet-comptable',
   'img-art-pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',

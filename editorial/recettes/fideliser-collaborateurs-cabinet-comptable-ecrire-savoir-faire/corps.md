@@ -1,10 +1,10 @@
 ## Réponse directe
 
-Écrire le savoir-faire ne permet pas, à lui seul, de conclure à un effet sur la fidélisation. Cela peut rendre une consigne plus transmissible et éviter que les exceptions restent dans la tête de quelques personnes. La méthode consiste à transformer une consigne orale en déclencheur, conditions, proposition, validation et cas de refus.
+La transmission du savoir-faire en cabinet comptable commence par une règle que quelqu’un d’autre peut lire, rejouer et faire valider. La méthode consiste à transformer une consigne orale en déclencheur, conditions, proposition, validation et cas de refus. Écrire cette règle ne permet pas, à lui seul, de conclure à un effet sur la fidélisation.
 
 Cette approche ne mesure personne et ne promet aucun taux de rétention. Elle traite un problème d’organisation précis : une règle importante existe, mais elle n’est ni visible, ni rejouable, ni maintenable. L’automatisation n’intervient qu’après son écriture et son essai sur des cas fictifs.
 
-## Ce que « fidéliser » veut dire ici
+## Ce que la transmission ne permet pas de promettre
 
 Les sources contrôlées ne permettent pas d’isoler l’effet d’un levier sur la fidélisation. Elles évoquent plusieurs dimensions, dont les compétences, la rémunération, l’autonomie et les conditions de travail, dans des périmètres différents. Memlia ne promet aucun résultat RH.
 
@@ -72,6 +72,36 @@ Le déclencheur devient nommable. Les entrées nécessaires sont visibles. Les e
 Cette visibilité permet aussi de distinguer l’apprentissage du métier et l’apprentissage d’un geste répétitif. Le premier demande du contexte, des échanges et du jugement. Le second peut parfois être préparé par le système une fois la règle éprouvée.
 
 La maintenance devient enfin un objet collectif. Lorsqu’une pratique change, le cabinet peut modifier la règle, rejouer les cas fictifs et faire recetter la nouvelle version. Il n’a pas besoin d’attendre qu’une erreur révèle que deux personnes n’appliquaient plus la même convention.
+
+## Comment choisir la première règle à transmettre
+
+La première règle n’est pas nécessairement la tâche la plus longue ni la plus visible. C’est une tâche répétitive dont le cabinet reconnaît déjà le cas courant, les entrées nécessaires et la personne qui décide. Une consigne encore débattue ou différente à chaque dossier doit d’abord être clarifiée par le cabinet ; l’automatisation ne tranche pas ce débat.
+
+Un bon point de départ tient dans une phrase concrète : « Quand ces éléments sont présents, nous préparons cette proposition, puis cette personne la valide. » Cette phrase fait apparaître cinq questions à traiter avant toute construction :
+
+1. quel événement déclenche la préparation ;
+2. quelles informations sont obligatoires ;
+3. quelle sortie peut être préparée sans engager le cabinet ;
+4. qui peut accepter, corriger ou refuser cette sortie ;
+5. quels cas doivent arrêter le traitement.
+
+La règle est assez précise lorsqu’une seconde personne peut expliquer le même déclencheur et retrouver les mêmes cas d’arrêt sur le jeu fictif. Elle n’est pas terminée si l’un des tests exige encore « demande à la personne qui sait » sans indiquer le point d’arbitrage. Dans ce cas, il faut soit ajouter la condition manquante, soit déclarer ce cas hors périmètre et le garder humain.
+
+Le cabinet peut ensuite choisir le niveau d’assistance utile. Parfois, rendre la règle visible suffit. Parfois, le système peut rassembler les éléments, signaler une information manquante et préparer une proposition. L’action engageante reste soumise à validation. Le véhicule technique vient après ce choix : l’objectif public reste la prise en charge d’une tâche répétitive dans les outils existants, pas l’installation d’une catégorie de logiciel.
+
+## Comment vérifier que le savoir-faire est transmissible
+
+La preuve n’est pas une déclaration générale sur la documentation du cabinet. Elle se construit sur une règle précise, avec un jeu d’essai fictif et des sorties observables.
+
+| Point vérifié | Question de recette | Signe que la règle doit être reprise |
+|---|---|---|
+| Déclencheur | Deux personnes commencent-elles au même moment ? | Le début dépend d’une habitude non écrite |
+| Conditions | Les mêmes informations sont-elles exigées ? | Une pièce manque mais le traitement continue |
+| Proposition | La sortie montre-t-elle la règle appliquée ? | La personne ne peut pas expliquer le résultat |
+| Validation | Le décideur et ses choix sont-ils explicites ? | Une action engageante part sans accord |
+| Arrêt | Les exceptions connues provoquent-elles un refus lisible ? | Le système improvise ou masque le doute |
+
+Cette recette ne cherche pas à évaluer le collaborateur. Elle vérifie la règle et ses limites. Si une personne corrige la proposition, la correction sert à améliorer la règle après arbitrage du cabinet ; elle ne devient pas un score individuel. La maintenance porte sur le fonctionnement collectif, jamais sur une mesure nominative de productivité.
 
 ## Ce qui reste une décision humaine
 
