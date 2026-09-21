@@ -30,6 +30,9 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
+      - name: Install the Playwright browser used by render gates
+        run: npx playwright install --with-deps chromium
+
       - name: Check Astro and content
         run: npm run check
 
