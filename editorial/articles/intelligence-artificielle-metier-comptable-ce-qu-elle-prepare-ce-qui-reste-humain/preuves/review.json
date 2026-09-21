@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "e7d36f3fce78108cf69f0fee6567a440a13a286984e783bac0447813f0328555",
+  "manifestSha256": "3f61917ac2bd5e94c351dd88bb2281139449658f0465db8914452d1638db0072",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
+  ],
+  "reviewer": "marketing",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "La réponse directe répond immédiatement à la requête en séparant préparation automatisée, validation du collaborateur et décision humaine.",
+        "Le corps couvre les compétences, la règle écrite, les arrêts dans le doute et les responsabilités de la direction sans transformer l’article en catalogue de cas d’usage.",
+        "L’hypothèse de temps réaffecté est explicitement laissée à la recette et à la mesure du périmètre réel."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Le HTML rendu porte un H1 unique, un sommaire, une progression H2/H3 cohérente, deux tableaux et trois images dont deux preuves fonctionnelles.",
+        "Le titre d’onglet, le H1 et la description traitent tous l’intelligence artificielle, le métier comptable et les compétences humaines.",
+        "Le canonical auto-référent est exact et l’aperçu conserve volontairement robots noindex, follow avant publication."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Les cinq affirmations externes sont liées inline vers la page exacte et reprises dans une bibliographie datée du 21 septembre 2026.",
+        "Les trois URL ont répondu HTTP 200 le 21 septembre 2026 et les cinq citations OPCO Atlas, Apec et OEC Paris ont été retrouvées mot pour mot dans les pages servies.",
+        "Le texte borne leur portée : Atlas est non daté, qualitatif et prospectif, Apec reste un communiqué de 2021 et le matériau OEC Paris est intersectoriel."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "L’oracle exécutable rejoue trois cas fictifs et le check retrouve bit pour bit chaque identifiant, statut, message et décision dans corps.md.",
+        "Le tableau « Cas joué | Sortie obtenue | Décision » rapporte PROPOSITION, REFUS_AMBIGUITE et REFUS_REGLE_ABSENTE comme sorties effectivement obtenues.",
+        "Les preuves inline competences-frontiere et competences-refus sont lisibles, non tronquées, fictives et cohérentes avec la frontière et le rejeu ; l’image de refus résume les statuts tandis que le tableau porte les messages et décisions exacts."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Le rendu figé contient un seul H1, le canonical attendu, og:title identique au H1, une image OG et les schémas BlogPosting, Person, Organization, WebSite, WebPage et BreadcrumbList.",
+        "La couverture est chargée eager avec fetchpriority high ; les deux preuves inline sont des WebP 1600×900 chargés en lazy avec des alts descriptifs.",
+        "Le title compte 67 caractères, le H1 68 caractères et le maillage inclut le pilier, l’article frère, /methode, /garanties, /automatisation-cabinet-comptable et deux entrées du glossaire."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "La réponse directe, la frontière en trois colonnes et le tableau des trois sorties forment des blocs autonomes et extractibles.",
+        "Les claims externes sont immédiatement reliés à leur source et accompagnés de leurs limites temporelles, sectorielles ou méthodologiques.",
+        "La terminologie préparation, règle écrite, validation, exception, arrêt et décision reste stable sur toute la page."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "La frontière opérationnelle est concentrée dans « La règle écrite » avec les quatre libellés requis et un tableau préparer-valider-rester humain.",
+        "Le corps formule positivement ce que le système prépare et ce que le cabinet décide ; les négations restantes servent les conditions d’arrêt ou bornent précisément la portée des sources.",
+        "Le CTA final emploie « confier cette tâche », pointe vers /contact et décrit écriture, automatisation, recette, décision conservée et absence de fichier à envoyer."
+      ]
+    }
+  ]
+}

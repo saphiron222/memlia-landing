@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+  "articleSha256": "e7d36f3fce78108cf69f0fee6567a440a13a286984e783bac0447813f0328555",
+  "manifestSha256": "3f61917ac2bd5e94c351dd88bb2281139449658f0465db8914452d1638db0072",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Frontière en trois colonnes entre préparation automatisée, validation et décision humaine",
+  "score": 100,
+  "directionArt": 19,
+  "semanticRelevance": 24,
+  "p0": [],
+  "kevinApproved": true,
+  "palette": {
+    "statut": "PASS",
+    "parts": {
+      "#fcfbf7": 0.8030902777777778,
+      "#27b657": 0.005572916666666667,
+      "#1c8a41": 0.048211805555555556,
+      "#231f20": 0.006128472222222223
+    },
+    "ecarts": []
+  }
+}

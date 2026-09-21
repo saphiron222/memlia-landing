@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+  "reviewedAt": "2026-09-21",
+  "reviewer": "relecteur-qualite-ia-memlia",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 94,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 28,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 23,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 14,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 14,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 15,
+      "max": 15
+    }
+  },
+  "evidence": [
+    "Le HTML rendu compte environ 2 159 mots, un H1 unique, un sommaire, deux tableaux, une couverture et deux preuves fonctionnelles.",
+    "Les trois sorties de l’oracle figurent bit pour bit dans le corps et le rejeu frais passe sur IA-01, IA-02 et IA-03.",
+    "Les cinq claims sont liés inline et retrouvés mot pour mot sur des pages HTTP 200 le 21 septembre 2026.",
+    "La clôture « La règle à retenir » précède « Pour aller plus loin » et le CTA respecte le libellé et la destination de la charte.",
+    "Le canonical, Open Graph, les schémas structurés, le maillage et les dérivés image sont présents sur le candidat exact."
+  ],
+  "reservations": [
+    "Le visuel competences-refus résume les statuts et messages au lieu d’afficher les décisions complètes ; le tableau HTML porte toutefois bit pour bit les trois sorties et décisions de l’oracle.",
+    "La couverture reste volontairement abstraite, mais son alt et la preuve en trois colonnes lèvent l’ambiguïté sans ajouter de promesse."
+  ],
+  "verdict": "94/100, PASS : sources inline exactes, oracle exécutable et sorties obtenues, clôture requise, frontière opérationnelle concentrée, images conformes et surfaces techniques présentes. Le candidat peut être scellé hors production.",
+  "subject": {
+    "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+    "articleSha256": "e7d36f3fce78108cf69f0fee6567a440a13a286984e783bac0447813f0328555",
+    "manifestSha256": "3f61917ac2bd5e94c351dd88bb2281139449658f0465db8914452d1638db0072"
+  }
+}

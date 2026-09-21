@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "8faa1796ccf7979224d4544769b6c5d4de410a9f0ddc828f30f03dbfb7e962d1",
+  "manifestSha256": "63d293b2f7959380546a13658a891134fccd4c28bf66d617187768b7744047b3",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact cabinet-comptable-surcharge-de-travail-ou-passe-le-temps."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "presente"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.8105555555555556,
+      "#27b657": 0.0134375,
+      "#1c8a41": 0.014010416666666666,
+      "#231f20": 0.0061805555555555555
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "La couverture représente cinq cartes reliées dans une composition horizontale, avec boucle, attente, divergence et jonction pour les quatre états annoncés.",
+        "Le sujet, la composition, le diorama 3D mat, la palette épinglée, les interdits et l’alt sont tous contrôlables dans le brief et le master."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "L’inspection du master ne montre aucun texte, chiffre, logo, personnage, donnée client, fausse interface, alerte rouge ou symbole d’envoi automatique.",
+        "Le master est net, horizontal et sans troncature ; la mesure de palette scellée est PASS pour le crème, le vert, le vert profond et le graphite."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "La couverture reste entièrement abstraite et ne contient aucun nom, dossier, montant, identifiant ou information personnelle.",
+        "Les preuves inline indiquent explicitement le jeu d’essai fictif et l’absence de nom ou de donnée client."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Les symboles différencient visuellement la répétition, l’attente, l’exception et le point de décision sans simuler une interface produit.",
+        "La semaine et la matrice renforcent le même diagnostic de flux et rendent le sujet reconnaissable sans classement individuel."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Les dimensions contrôlées sont 1920×1080 pour le master, 1200×630 pour l’OG et 768×432 pour le héros de référence.",
+        "Les deux preuves fonctionnelles mesurent 1600×900, leurs empreintes sont scellées et le contrôle de rendu confirme les quatre preuves du lot."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "L’alt de couverture décrit une semaine fictive répartie entre les quatre états sans annoncer un résultat ou un gain.",
+        "Les deux alts inline décrivent respectivement le journal fictif et la matrice fréquence-stabilité-coût du doute, conformément aux images inspectées."
+      ]
+    }
+  ]
+}

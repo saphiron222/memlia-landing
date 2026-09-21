@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "8faa1796ccf7979224d4544769b6c5d4de410a9f0ddc828f30f03dbfb7e962d1",
+  "manifestSha256": "63d293b2f7959380546a13658a891134fccd4c28bf66d617187768b7744047b3",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact cabinet-comptable-surcharge-de-travail-ou-passe-le-temps."
+  ],
+  "reviewer": "marketing",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "La réponse directe répond immédiatement à la charge de travail en cabinet en remplaçant le classement des personnes par l’observation de quatre états du flux.",
+        "Le développement mène à une décision exploitable : choisir une répétition stable, écrire sa règle puis prévoir ses conditions d’arrêt et de validation.",
+        "Le contenu reste adapté à une direction de cabinet et évite toute moyenne sectorielle, donnée client ou promesse de temps gagné."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Le candidat rendu compte un H1 unique, une réponse directe, un sommaire, des H2 et H3 descriptifs, deux tableaux et trois visuels utiles.",
+        "Le title de 60 caractères et le H1 portent la même intention de diagnostic de la charge de travail en cabinet comptable.",
+        "La structure how-to différencie nettement l’article des offres de renfort et des contenus juridiques observés dans la SERP documentée."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Les trois citations sensibles sont liées dans le corps vers leur page exacte et retrouvées mot pour mot dans les copies locales scellées.",
+        "Une ouverture indépendante le 21 septembre 2026 a rendu HTTP 200 pour Apec, OEC Paris et OPCO Atlas, avec les trois extraits toujours présents.",
+        "Le texte conserve les limites de portée : communiqué Apec de 2021, synthèse intersectorielle OEC Paris de 2023 et page Atlas qualitative non datée."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "L’oracle rejoué contrôle quatre cas fictifs et vérifie dans le corps chaque identifiant, statut, message produit et décision associée.",
+        "Le tableau de rejeu expose les sorties obtenues REPETITION, ATTENTE, EXCEPTION et DECISION_HUMAINE, et non des résultats seulement attendus.",
+        "Les deux preuves fonctionnelles 1600×900 montrent la semaine fictive et la matrice fréquence-stabilité-doute sans nom, donnée client, troncature ou chevauchement."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Le HTML exact porte un canonical auto-référent, og:title identique au H1, une image OG 1200×630 et les schémas BlogPosting, BreadcrumbList, Person, Organization et WebSite.",
+        "La couverture est chargée en eager avec fetchpriority high ; les deux preuves sont en WebP, disposent d’alts descriptifs et se chargent en différé.",
+        "Le rendu desktop et mobile garde la largeur de page, place les tableaux en défilement horizontal interne et rend le CTA vers /contact sans débordement global."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "La réponse directe, les quatre définitions d’état, le tableau de frontière et le tableau de rejeu forment des blocs autonomes et extractibles.",
+        "Chaque citation institutionnelle est accompagnée dans le même paragraphe de sa date, de sa portée et de la limite d’interprétation retenue.",
+        "Les entités répétition, attente, exception, décision humaine, règle écrite et agrégat non nominatif restent nommées de façon stable."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "La frontière opérationnelle est concentrée dans « La règle écrite » : préparation, validation, décision humaine et arrêts y sont présentés une fois sous forme de méthode.",
+        "Les anciennes réserves défensives ont disparu ; les autres négations bornent précisément une source historique, le jeu fictif ou la doctrine anti-surveillance sans répéter un avertissement commercial.",
+        "La clôture « Confier cette tâche » mène à /contact et décrit la règle écrite, l’automatisation dans les outils, la recette par l’équipe et la décision conservée par le cabinet."
+      ]
+    }
+  ]
+}

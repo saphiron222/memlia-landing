@@ -1,0 +1,168 @@
+{
+  "editorial": {
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "La réponse directe répond immédiatement à la charge de travail en cabinet en remplaçant le classement des personnes par l’observation de quatre états du flux.",
+          "Le développement mène à une décision exploitable : choisir une répétition stable, écrire sa règle puis prévoir ses conditions d’arrêt et de validation.",
+          "Le contenu reste adapté à une direction de cabinet et évite toute moyenne sectorielle, donnée client ou promesse de temps gagné."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Le candidat rendu compte un H1 unique, une réponse directe, un sommaire, des H2 et H3 descriptifs, deux tableaux et trois visuels utiles.",
+          "Le title de 60 caractères et le H1 portent la même intention de diagnostic de la charge de travail en cabinet comptable.",
+          "La structure how-to différencie nettement l’article des offres de renfort et des contenus juridiques observés dans la SERP documentée."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Les trois citations sensibles sont liées dans le corps vers leur page exacte et retrouvées mot pour mot dans les copies locales scellées.",
+          "Une ouverture indépendante le 21 septembre 2026 a rendu HTTP 200 pour Apec, OEC Paris et OPCO Atlas, avec les trois extraits toujours présents.",
+          "Le texte conserve les limites de portée : communiqué Apec de 2021, synthèse intersectorielle OEC Paris de 2023 et page Atlas qualitative non datée."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "L’oracle rejoué contrôle quatre cas fictifs et vérifie dans le corps chaque identifiant, statut, message produit et décision associée.",
+          "Le tableau de rejeu expose les sorties obtenues REPETITION, ATTENTE, EXCEPTION et DECISION_HUMAINE, et non des résultats seulement attendus.",
+          "Les deux preuves fonctionnelles 1600×900 montrent la semaine fictive et la matrice fréquence-stabilité-doute sans nom, donnée client, troncature ou chevauchement."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Le HTML exact porte un canonical auto-référent, og:title identique au H1, une image OG 1200×630 et les schémas BlogPosting, BreadcrumbList, Person, Organization et WebSite.",
+          "La couverture est chargée en eager avec fetchpriority high ; les deux preuves sont en WebP, disposent d’alts descriptifs et se chargent en différé.",
+          "Le rendu desktop et mobile garde la largeur de page, place les tableaux en défilement horizontal interne et rend le CTA vers /contact sans débordement global."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "La réponse directe, les quatre définitions d’état, le tableau de frontière et le tableau de rejeu forment des blocs autonomes et extractibles.",
+          "Chaque citation institutionnelle est accompagnée dans le même paragraphe de sa date, de sa portée et de la limite d’interprétation retenue.",
+          "Les entités répétition, attente, exception, décision humaine, règle écrite et agrégat non nominatif restent nommées de façon stable."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "La frontière opérationnelle est concentrée dans « La règle écrite » : préparation, validation, décision humaine et arrêts y sont présentés une fois sous forme de méthode.",
+          "Les anciennes réserves défensives ont disparu ; les autres négations bornent précisément une source historique, le jeu fictif ou la doctrine anti-surveillance sans répéter un avertissement commercial.",
+          "La clôture « Confier cette tâche » mène à /contact et décrit la règle écrite, l’automatisation dans les outils, la recette par l’équipe et la décision conservée par le cabinet."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "business": {
+    "claims": {
+      "claim-unit-9e95cf103475-1": {
+        "verdict": "soutient",
+        "reasoning": "Le communiqué Apec contient exactement la citation sur les tensions de l’emploi cadre dans les fonctions d’expertise comptable. L’article la date du 9 décembre 2021 et précise qu’elle ne mesure ni la charge ni la situation de 2026."
+      },
+      "claim-unit-0ff95419512e-1": {
+        "verdict": "soutient",
+        "reasoning": "La page OEC Paris contient exactement le passage sur les conditions de travail et d’emploi comme élément distinctif de la promesse employeur. Le corps le présente comme une synthèse intersectorielle et n’en déduit aucune causalité propre aux cabinets."
+      },
+      "claim-unit-cf8f1a177621-1": {
+        "verdict": "soutient",
+        "reasoning": "La page de branche OPCO Atlas contient mot pour mot l’enjeu de montée en compétences pour accompagner la numérisation. Le corps conserve sa portée qualitative et n’en fait ni une mesure de charge ni un effet démontré de l’IA."
+      }
+    }
+  },
+  "image": {
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "La couverture représente cinq cartes reliées dans une composition horizontale, avec boucle, attente, divergence et jonction pour les quatre états annoncés.",
+          "Le sujet, la composition, le diorama 3D mat, la palette épinglée, les interdits et l’alt sont tous contrôlables dans le brief et le master."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "L’inspection du master ne montre aucun texte, chiffre, logo, personnage, donnée client, fausse interface, alerte rouge ou symbole d’envoi automatique.",
+          "Le master est net, horizontal et sans troncature ; la mesure de palette scellée est PASS pour le crème, le vert, le vert profond et le graphite."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "La couverture reste entièrement abstraite et ne contient aucun nom, dossier, montant, identifiant ou information personnelle.",
+          "Les preuves inline indiquent explicitement le jeu d’essai fictif et l’absence de nom ou de donnée client."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Les symboles différencient visuellement la répétition, l’attente, l’exception et le point de décision sans simuler une interface produit.",
+          "La semaine et la matrice renforcent le même diagnostic de flux et rendent le sujet reconnaissable sans classement individuel."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Les dimensions contrôlées sont 1920×1080 pour le master, 1200×630 pour l’OG et 768×432 pour le héros de référence.",
+          "Les deux preuves fonctionnelles mesurent 1600×900, leurs empreintes sont scellées et le contrôle de rendu confirme les quatre preuves du lot."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "L’alt de couverture décrit une semaine fictive répartie entre les quatre états sans annoncer un résultat ou un gain.",
+          "Les deux alts inline décrivent respectivement le journal fictif et la matrice fréquence-stabilité-coût du doute, conformément aux images inspectées."
+        ]
+      }
+    },
+    "directionArt": 18,
+    "semanticRelevance": 22
+  },
+  "sources": {
+    "reviewedBy": "relecteur-metier-production-cabinet",
+    "observations": {
+      "oec-attractivite": "Article OEC Paris du 11 janvier 2023, secondaire au livre blanc intersectoriel qu’il résume : extrait exact retrouvé dans la copie et sur la page HTTP 200 du 21 septembre 2026.",
+      "apec-oec": "Communiqué institutionnel Apec et Conseil supérieur de l’Ordre daté du 9 décembre 2021 : extrait historique exact retrouvé dans la copie et sur la page HTTP 200 du 21 septembre 2026.",
+      "atlas-branche": "Page de branche OPCO Atlas qualitative et non datée : extrait exact sur les compétences retrouvé dans la copie et sur la page HTTP 200 du 21 septembre 2026."
+    }
+  },
+  "qualite": {
+    "reviewer": "relecteur-qualite-ia-memlia",
+    "score": 94,
+    "p0": [],
+    "categories": {
+      "contentQuality": {"score": 28, "max": 30},
+      "seoOptimization": {"score": 24, "max": 25},
+      "eeatSignals": {"score": 14, "max": 15},
+      "technicalElements": {"score": 14, "max": 15},
+      "aiCitationReadiness": {"score": 14, "max": 15}
+    },
+    "evidence": [
+      "Le candidat exact contient environ 2 140 mots visibles, un H1, une réponse directe, un sommaire, deux tableaux et trois images informatives.",
+      "Le rejeu frais passe sur deux articles et sept cas ; les quatre cas FLUX sont reliés aux sorties et décisions affichées dans ce corps.",
+      "Les trois sources rendent HTTP 200 le 21 septembre 2026 et les trois citations exactes restent présentes sur les pages servies.",
+      "Le rendu ciblé passe sans débordement de page en desktop ou mobile ; les images se chargent et les tableaux restent parcourables dans leur zone.",
+      "Le title, le canonical, Open Graph, les cinq types JSON-LD, le maillage et le CTA sont présents sur le HTML d’empreinte c23f9e6b9ceaca22f3890d05d7d3dadf4215da1b6eea4e77df90f28406afd0a0."
+    ],
+    "reservations": [
+      "Les sources externes donnent un contexte qualitatif plutôt qu’une mesure directe de la charge ; le corps l’annonce explicitement et fonde sa méthode sur le rejeu fictif vérifiable."
+    ],
+    "seo": [
+      "Le title de 60 caractères, le H1 intent-first, la description, le canonical et l’Open Graph décrivent la même intention de diagnostic.",
+      "Le maillage contextuel relie le pilier, l’article frère, la méthode, l’offre d’automatisation et deux définitions du glossaire.",
+      "Le noindex, follow du rendu est cohérent avec un candidat de preview et doit être levé par la matérialisation de production, pas par la revue."
+    ],
+    "geo": [
+      "La réponse directe et les tableaux exposent des unités autonomes, stables et faciles à extraire sans dépendre d’un contexte implicite.",
+      "Les affirmations externes sont citées inline et immédiatement bornées par leur date, leur corpus ou l’absence de protocole affiché.",
+      "L’oracle exécutable et les deux preuves fonctionnelles donnent une provenance transparente aux sorties du jeu fictif."
+    ],
+    "verdict": "94/100, PASS : zéro P0, sept critères éditoriaux PASS, trois verdicts métier soutient et six critères image PASS. La frontière est désormais positive et concentrée ; le candidat peut être scellé."
+  }
+}

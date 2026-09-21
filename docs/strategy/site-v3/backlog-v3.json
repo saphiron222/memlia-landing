@@ -2254,17 +2254,17 @@
     }
   },
   {
-    "slug": "cabinet-comptable-en-surcharge-de-travail-ou-passe-le-temps-et-ce-qui-s-ecrit",
-    "titre": "Cabinet comptable en surcharge de travail : où passe le temps, et ce qui s'écrit",
-    "requete": "cabinet comptable surcharge de travail",
+    "slug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+    "titre": "Charge de travail en cabinet comptable : où passe le temps ?",
+    "requete": "charge de travail cabinet comptable",
     "secondaires": [
       "expert comptable charge de travail",
       "définition plan de charge cabinet comptable"
     ],
     "famille": "planification-charge",
     "role": "direction-associes",
-    "intent": "diagnostiquer",
-    "funnel": "TOFU",
+    "intent": "comprendre",
+    "funnel": "MOFU",
     "format": "how-to-guide",
     "preuve": "le relevé d'une semaine de tâches répétitives sur un portefeuille fictif de vingt dossiers : ce qui s'écrit en règle, ce qui reste au jugement",
     "sourcesOfficielles": [
@@ -5529,29 +5529,27 @@
     }
   },
   {
-    "slug": "l-ia-va-t-elle-remplacer-les-comptables-ce-qu-elle-prend-ce-qui-reste",
-    "titre": "L'IA va-t-elle remplacer les comptables ? Ce qu'elle prend, ce qui reste",
-    "requete": "l'ia va-t-elle remplacer les comptables",
+    "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+    "titre": "Intelligence artificielle et métier comptable : compétences humaines",
+    "requete": "métier comptable intelligence artificielle compétences",
     "secondaires": [
-      "est-ce que l'ia va remplacer les comptables",
-      "quelle ia pour comptable",
-      "formation ia expert-comptable",
-      "obligation formation IA salarié entreprise"
+      "intelligence artificielle cabinet comptable",
+      "compétences métier comptable automatisation"
     ],
     "famille": "formation-ia-competences",
-    "role": "rh-recrutement-formation",
+    "role": "direction-associes",
     "intent": "comprendre",
     "funnel": "TOFU",
-    "format": "faq-knowledge",
-    "preuve": "la frontière en trois colonnes appliquée aux dix tâches les plus répétitives d'un dossier fictif",
+    "format": "thought-leadership",
+    "preuve": "frontière en trois colonnes et trois cas fictifs, dont une ambiguïté et une règle absente ; aucune liste de tâches ni donnée réelle",
     "sourcesOfficielles": [
       "aucune"
     ],
     "priorite": 1,
     "demande": {
-      "mesureeLe": "2026-09-19",
-      "requete": 2,
-      "secondaires": 3,
+      "mesureeLe": "2026-09-21",
+      "requete": 0,
+      "secondaires": 0,
       "questions": [
         "Quelle IA pour comptable ?",
         "Est-ce que l'IA va remplacer les comptables ?",

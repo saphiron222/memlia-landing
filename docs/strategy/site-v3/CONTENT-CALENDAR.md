@@ -1,6 +1,6 @@
 # Calendrier éditorial v3 — quatre articles et une Cicatrice par semaine
 
-Généré le 20/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).
+Généré le 21/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).
 
 ## Règles
 
@@ -13,7 +13,7 @@ Généré le 20/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 
 ## Volume
 
-- 245 satellites + 1 pilier ; 6 satellite(s) publié(s) au 16/09/2026 ; dernier créneau planifié : 2027-10-28.
+- 245 satellites + 1 pilier ; 7 satellite(s) publié(s) au 16/09/2026 ; dernier créneau planifié : 2027-10-28.
 
 ## Semaine par semaine
 
@@ -38,9 +38,9 @@ Généré le 20/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 
 | Date | Article | Famille | Pôle | Format | P | Statut |
 |---|---|---|---|---|---|---|
+| 2026-09-21 | [Charge de travail en cabinet comptable : où passe le temps ?](/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps) | Plan de charge et affectation | Portefeuille et échéances | how-to-guide | 1 | published |
 | 2026-09-21 | [Rapprochement bancaire automatisé : les écarts à remonter](/blog/rapprochement-bancaire-automatise-les-ecarts-a-remonter) | Relevés bancaires et rapprochement | Production comptable | how-to-guide | 1 | planned |
 | 2026-09-22 | [Prompt ChatGPT expert comptable : écrire des consignes qui tiennent sur les dossiers](/blog/prompt-chatgpt-expert-comptable) | IA générative et agents | Numérique, IT et data | how-to-guide | 1 | planned |
-| 2026-09-22 | [Calendrier fiscal d'un cabinet comptable : suivre les échéances d'un portefeuille](/blog/suivre-les-echeances-fiscales-d-un-portefeuille) | Calendrier et échéances fiscales du portefeuille | Portefeuille et échéances | how-to-guide | 1 | planned |
 | 2026-09-24 | [Logiciel IA comptabilité : comparer l’outil à la tâche du cabinet](/blog/logiciel-ia-comptabilite) | IA générative et agents | Numérique, IT et data | faq-knowledge | 1 | planned |
 | 2026-09-26 | [Pourquoi des tests verts manquent des défauts : la règle des trois passes](/blog/trois-bugs-que-des-tests-verts-n-ont-pas-vus) | Règle, jeu d’essai et recette | Méthode et décision humaine | thought-leadership | 3 | planned |
 
@@ -48,39 +48,39 @@ Généré le 20/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 
 | Date | Article | Famille | Pôle | Format | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-09-28 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | Entrée en relation et onboarding client | Administration et secrétariat | listicle-checklist | 1 | planned |
+| 2026-09-28 | [Calendrier fiscal d'un cabinet comptable : suivre les échéances d'un portefeuille](/blog/suivre-les-echeances-fiscales-d-un-portefeuille) | Calendrier et échéances fiscales du portefeuille | Portefeuille et échéances | how-to-guide | 1 | planned |
+| 2026-09-29 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | Entrée en relation et onboarding client | Administration et secrétariat | listicle-checklist | 1 | planned |
 | 2026-09-29 | [IA cabinet comptable : ce qu’elle prépare, ce que vous décidez](/blog/ia-cabinet-comptable) | IA générative et agents | Numérique, IT et data | pillar-page | 1 | planned |
-| 2026-09-29 | [Manuel de procédures d'un cabinet d'expertise comptable : écrire les règles qui tournent](/blog/manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent) | Règle, jeu d’essai et recette | Méthode et décision humaine | how-to-guide | 1 | planned |
-| 2026-09-30 | [Mentions obligatoires de la facture électronique : la checklist avant le passage](/blog/checklist-de-conformite-avant-le-passage-a-la-facture-electronique) | Facture électronique et e-reporting | Production comptable | listicle-checklist | 1 | planned |
+| 2026-09-30 | [Manuel de procédures d'un cabinet d'expertise comptable : écrire les règles qui tournent](/blog/manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent) | Règle, jeu d’essai et recette | Méthode et décision humaine | how-to-guide | 1 | planned |
 | 2026-10-03 | [Pourquoi une installation logicielle échoue en cabinet : le test qui a tranché](/blog/l-outil-qui-ne-se-chargeait-jamais) | Connecteurs, imports et synchronisation | Numérique, IT et data | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W41
 
 | Date | Article | Famille | Pôle | Format | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-05 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | DSN et comptes rendus métier | Paie et social | listicle-checklist | 1 | planned |
-| 2026-10-06 | [Documents obligatoires en fin de contrat : la checklist de sortie d'un salarié](/blog/checklist-de-sortie-d-un-salarie-documents-et-delais) | Entrées, sorties et attestations | Paie et social | listicle-checklist | 1 | planned |
-| 2026-10-07 | [Avenant à la lettre de mission : ce qui se prépare seul, ce qui attend la signature](/blog/checklist-avant-le-renouvellement-d-une-lettre-de-mission) | Lettre de mission et vigilance | Juridique et fiscal | listicle-checklist | 1 | planned |
-| 2026-10-08 | [Mise au rebut d'une immobilisation : ce qu'un tableau d'amortissement ne tranche pas](/blog/cession-et-mise-au-rebut-ce-qu-un-tableau-d-amortissement-automatique-ne-tranche-pas) | Immobilisations, amortissements et emprunts | Production comptable | how-to-guide | 1 | planned |
+| 2026-10-05 | [Mentions obligatoires de la facture électronique : la checklist avant le passage](/blog/checklist-de-conformite-avant-le-passage-a-la-facture-electronique) | Facture électronique et e-reporting | Production comptable | listicle-checklist | 1 | planned |
+| 2026-10-06 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | DSN et comptes rendus métier | Paie et social | listicle-checklist | 1 | planned |
+| 2026-10-07 | [Documents obligatoires en fin de contrat : la checklist de sortie d'un salarié](/blog/checklist-de-sortie-d-un-salarie-documents-et-delais) | Entrées, sorties et attestations | Paie et social | listicle-checklist | 1 | planned |
+| 2026-10-08 | [Avenant à la lettre de mission : ce qui se prépare seul, ce qui attend la signature](/blog/checklist-avant-le-renouvellement-d-une-lettre-de-mission) | Lettre de mission et vigilance | Juridique et fiscal | listicle-checklist | 1 | planned |
 | 2026-10-10 | [Pourquoi un build réussi ne prouve pas qu’une application démarre](/blog/build-reussi-application-ne-demarre-pas) | Connecteurs, imports et synchronisation | Numérique, IT et data | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W42
 
 | Date | Article | Famille | Pôle | Format | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-12 | [Rupture conventionnelle : délai d'homologation, ce qu'un générateur ne boucle pas seul](/blog/les-ruptures-de-contrat-qu-un-generateur-automatique-de-documents-ne-doit-pas-boucler-seul) | Entrées, sorties et attestations | Paie et social | how-to-guide | 1 | planned |
-| 2026-10-13 | [Majoration de retard Urssaf : le calcul, et ce qu'un suivi automatique doit signaler](/blog/retard-ou-erreur-de-cotisation-ce-qu-un-suivi-automatique-doit-toujours-signaler) | Charges sociales et échéances | Paie et social | how-to-guide | 1 | planned |
-| 2026-10-14 | [Changement de bénéficiaire effectif : ce qu'une mise à jour ne déclare pas seule](/blog/changement-de-beneficiaire-effectif-ce-qu-une-mise-a-jour-automatique-ne-declare-pas-seule) | Registres et obligations périodiques | Juridique et fiscal | how-to-guide | 1 | planned |
-| 2026-10-15 | [Déclaration de soupçon Tracfin : ce qu'un suivi de mission ne décide jamais seul](/blog/vigilance-lcb-ft-ce-qu-un-suivi-automatique-de-mission-ne-decide-jamais-seul) | Lettre de mission et vigilance | Juridique et fiscal | how-to-guide | 1 | planned |
+| 2026-10-12 | [Mise au rebut d'une immobilisation : ce qu'un tableau d'amortissement ne tranche pas](/blog/cession-et-mise-au-rebut-ce-qu-un-tableau-d-amortissement-automatique-ne-tranche-pas) | Immobilisations, amortissements et emprunts | Production comptable | how-to-guide | 1 | planned |
+| 2026-10-13 | [Rupture conventionnelle : délai d'homologation, ce qu'un générateur ne boucle pas seul](/blog/les-ruptures-de-contrat-qu-un-generateur-automatique-de-documents-ne-doit-pas-boucler-seul) | Entrées, sorties et attestations | Paie et social | how-to-guide | 1 | planned |
+| 2026-10-14 | [Majoration de retard Urssaf : le calcul, et ce qu'un suivi automatique doit signaler](/blog/retard-ou-erreur-de-cotisation-ce-qu-un-suivi-automatique-doit-toujours-signaler) | Charges sociales et échéances | Paie et social | how-to-guide | 1 | planned |
+| 2026-10-15 | [Changement de bénéficiaire effectif : ce qu'une mise à jour ne déclare pas seule](/blog/changement-de-beneficiaire-effectif-ce-qu-une-mise-a-jour-automatique-ne-declare-pas-seule) | Registres et obligations périodiques | Juridique et fiscal | how-to-guide | 1 | planned |
 | 2026-10-17 | [Pourquoi zéro erreur ne prouve pas une collecte complète : sept pages manquaient](/blog/zero-erreur-collecte-incomplete) | Règle, jeu d’essai et recette | Méthode et décision humaine | thought-leadership | 3 | planned |
 
 ### Semaine 2026-W43
 
 | Date | Article | Famille | Pôle | Format | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-19 | [Proposer un échéancier de paiement à un client : la proposition, puis la validation](/blog/les-echeanciers-de-regularisation-qu-un-outil-ne-doit-jamais-proposer-sans-validation) | Prélèvements, encaissements et rejets | Facturation et recouvrement du cabinet | how-to-guide | 1 | planned |
-| 2026-10-20 | [Qu'est-ce que le rapprochement bancaire, en comptabilité ?](/blog/qu-est-ce-que-le-rapprochement-bancaire-en-comptabilite) | Relevés bancaires et rapprochement | Production comptable | faq-knowledge | 1 | planned |
-| 2026-10-21 | [Cabinet comptable en surcharge de travail : où passe le temps, et ce qui s'écrit](/blog/cabinet-comptable-en-surcharge-de-travail-ou-passe-le-temps-et-ce-qui-s-ecrit) | Plan de charge et affectation | Portefeuille et échéances | how-to-guide | 1 | planned |
+| 2026-10-19 | [Déclaration de soupçon Tracfin : ce qu'un suivi de mission ne décide jamais seul](/blog/vigilance-lcb-ft-ce-qu-un-suivi-automatique-de-mission-ne-decide-jamais-seul) | Lettre de mission et vigilance | Juridique et fiscal | how-to-guide | 1 | planned |
+| 2026-10-20 | [Proposer un échéancier de paiement à un client : la proposition, puis la validation](/blog/les-echeanciers-de-regularisation-qu-un-outil-ne-doit-jamais-proposer-sans-validation) | Prélèvements, encaissements et rejets | Facturation et recouvrement du cabinet | how-to-guide | 1 | planned |
+| 2026-10-21 | [Qu'est-ce que le rapprochement bancaire, en comptabilité ?](/blog/qu-est-ce-que-le-rapprochement-bancaire-en-comptabilite) | Relevés bancaires et rapprochement | Production comptable | faq-knowledge | 1 | planned |
 | 2026-10-22 | [CRM DSN de substitution : ce que le compte rendu remplace, et ce qu'il faut refaire](/blog/crm-dsn-de-substitution-ce-que-le-compte-rendu-remplace-et-ce-qu-il-faut-refaire) | DSN et comptes rendus métier | Paie et social | faq-knowledge | 1 | planned |
 | 2026-10-24 | [Pourquoi un rapport analytics peut mesurer le mauvais site](/blog/rapport-analytics-mauvais-site) | Mesurer le temps gagné | Méthode et décision humaine | thought-leadership | 3 | planned |
 
@@ -110,7 +110,7 @@ Généré le 20/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 |---|---|---|---|---|---|---|
 | 2026-11-09 | [Codes motifs de rejet de prélèvement SEPA : les lire, puis proposer l'échéancier](/blog/qu-est-ce-qu-un-rejet-de-prelevement-et-quels-sont-ses-motifs-courants) | Prélèvements, encaissements et rejets | Facturation et recouvrement du cabinet | faq-knowledge | 1 | planned |
 | 2026-11-10 | [Modèles de courrier d'un cabinet comptable : les fiabiliser sans les figer](/blog/qu-est-ce-qu-un-courrier-type-et-comment-le-fiabiliser-au-cabinet) | Boîte mail, tri et courriers types | Administration et secrétariat | faq-knowledge | 1 | planned |
-| 2026-11-11 | [L'IA va-t-elle remplacer les comptables ? Ce qu'elle prend, ce qui reste](/blog/l-ia-va-t-elle-remplacer-les-comptables-ce-qu-elle-prend-ce-qui-reste) | Formation et maîtrise de l’IA | RH et formation | faq-knowledge | 1 | planned |
+| 2026-11-11 | [Intelligence artificielle et métier comptable : compétences humaines](/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain) | Formation et maîtrise de l’IA | RH et formation | thought-leadership | 1 | planned |
 | 2026-11-12 | [Compte de résultat prévisionnel : définition, hypothèses, et ce que le cabinet valide](/blog/qu-est-ce-qu-un-previsionnel-financier-et-quelles-hypotheses-le-composent) | Prévisionnel et business plan | Conseil et missions spéciales | faq-knowledge | 1 | planned |
 
 ### Semaine 2026-W47

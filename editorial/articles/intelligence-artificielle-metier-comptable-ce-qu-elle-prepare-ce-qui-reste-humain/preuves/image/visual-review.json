@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-21",
+  "articleSha256": "e7d36f3fce78108cf69f0fee6567a440a13a286984e783bac0447813f0328555",
+  "manifestSha256": "3f61917ac2bd5e94c351dd88bb2281139449658f0465db8914452d1638db0072",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "presente"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.8030902777777778,
+      "#27b657": 0.005572916666666667,
+      "#1c8a41": 0.048211805555555556,
+      "#231f20": 0.006128472222222223
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "La couverture montre trois plateformes reliées : préparation d’entrées, point de contrôle et décision protégée par une main abstraite.",
+        "La composition horizontale, isométrique et mate respecte le sujet, la composition, le style, la palette, les interdits et l’alt du brief."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "L’inspection indépendante ne montre aucun texte, logo, visage, personnage complet, donnée client, fausse interface ou alerte rouge.",
+        "Le master est horizontal 1920×1080 et la palette mesurée crème, vert, vert profond et graphite dépasse les seuils déclarés."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Aucun nom, dossier, valeur client ou information personnelle n’est visible sur la couverture ni sur les deux preuves inline.",
+        "La preuve des sorties indique explicitement « jeu fictif » et « Oracle exécuté · 3 cas joués »."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Le chemin gauche-droite, le checkpoint central et la main abstraite rendent reconnaissables préparation, validation et décision humaine.",
+        "La pièce arrêtée avant le contrôle matérialise le doute sans suggérer une autonomie ou une action automatique."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Les fichiers contrôlés comprennent le master PNG 1920×1080, l’OG WebP 1200×630, les héros 768×432 AVIF/WebP et les variantes publiques 768/1200/1600 AVIF/WebP.",
+        "Le manifeste des preuves scelle les deux WebP inline à 1600×900 et le test de rendu confirme quatre preuves recrutement conformes."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "L’alt de couverture décrit précisément la frontière entre préparation automatisée, validation et décision humaine.",
+        "Les alts inline décrivent la frontière puis une proposition et deux refus motivés ; ils correspondent aux images inspectées sans annoncer de gain."
+      ]
+    }
+  ]
+}

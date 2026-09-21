@@ -1,0 +1,53 @@
+{
+  "generationId": "a0e2b0f3-0305-481d-900f-a35ae65b685f",
+  "model": "gpt_image_2_5",
+  "provider": "higgsfield",
+  "quality": "high",
+  "resolution": "2k",
+  "aspectRatio": "16:9",
+  "width": 2688,
+  "height": 1520,
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_340edDKgz49ubvQTIJPiYr6YSC6/hf_20260921_095751_a0e2b0f3-0305-481d-900f-a35ae65b685f.png",
+  "createdAt": "2026-09-21T09:57:51.172942Z",
+  "credits": 3,
+  "retouch": {
+    "taskId": "t_14e7a6cc",
+    "authorizedAt": "2026-09-21",
+    "purpose": "Franchir les planchers de 0,5 % de #27b657 et #231f20 sans nouvelle génération, sans changement de composition ni de sujet.",
+    "tool": {
+      "node": "v22.22.3",
+      "sharp": "0.35.4",
+      "libvips": "8.18.6"
+    },
+    "method": "Projection des pixels dont #27b657 est la couleur Memlia la plus proche, avec rayon de sélection minimal 55 et rayon final 32 ; puis dilatation locale minimale de 3 px autour des surfaces #231f20, luminance limitée à 130 et rayon final 32.",
+    "inputPath": "image-source.png",
+    "inputSha256": "cc08111c60a65dd05375adb80f2556f58c846da0bb45285c8c2fd33fb4fbfcb9",
+    "outputPath": "image-source-retouched.png",
+    "outputSha256": "fa876f8fe0c2d7fc1bc67a32a12d6be78a3b0a89734d60ac64690ebba7055138",
+    "outputWidth": 1920,
+    "outputHeight": 1080,
+    "paletteToleranceRgb": 45,
+    "forgeThreshold": 0.005,
+    "targetThreshold": 0.0055,
+    "pixelsModified": {
+      "#27b657": 11160,
+      "#231f20": 8578
+    },
+    "modifiedPart": {
+      "#27b657": 0.005381944444444444,
+      "#231f20": 0.004136766975308642
+    },
+    "measurementsBefore": {
+      "#27b657": 0.0018229166666666667,
+      "#1c8a41": 0.049114583333333336,
+      "#fcfbf7": 0.8031076388888889,
+      "#231f20": 0.0035069444444444445
+    },
+    "measurementsAfter": {
+      "#27b657": 0.005572916666666667,
+      "#1c8a41": 0.048211805555555556,
+      "#fcfbf7": 0.8030902777777778,
+      "#231f20": 0.006128472222222223
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "fictitious": true,
+  "replayedAt": "2026-09-21",
+  "articles": [
+    {
+      "slug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "cases": [
+        {
+          "id": "FLUX-01",
+          "input": { "repeated": true, "stable": true, "missingField": null, "contradictory": false, "requiresJudgment": false },
+          "expected": { "status": "REPETITION", "message": "Règle candidate RC-01", "decision": "Faire relire la règle avant de la tester" }
+        },
+        {
+          "id": "FLUX-02",
+          "input": { "repeated": false, "stable": false, "missingField": "période", "contradictory": false, "requiresJudgment": false },
+          "expected": { "status": "ATTENTE", "message": "Entrée manquante : période", "decision": "Afficher le motif et suspendre la suite" }
+        },
+        {
+          "id": "FLUX-03",
+          "input": { "repeated": false, "stable": false, "missingField": null, "contradictory": true, "requiresJudgment": false },
+          "expected": { "status": "EXCEPTION", "message": "Conditions contradictoires", "decision": "Sortir du circuit et présenter le cas" }
+        },
+        {
+          "id": "FLUX-04",
+          "input": { "repeated": false, "stable": false, "missingField": null, "contradictory": false, "requiresJudgment": true },
+          "expected": { "status": "DECISION_HUMAINE", "message": "Préparation disponible", "decision": "Présenter les éléments pour arbitrage" }
+        }
+      ]
+    },
+    {
+      "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "cases": [
+        {
+          "id": "IA-01",
+          "input": { "complete": true, "periodRecognized": true, "interpretations": 1, "ruleExists": true },
+          "expected": { "status": "PROPOSITION", "message": "Proposition PR-001 préparée ; source et période jointes", "decision": "Attendre la validation du collaborateur" }
+        },
+        {
+          "id": "IA-02",
+          "input": { "complete": true, "periodRecognized": true, "interpretations": 2, "ruleExists": true },
+          "expected": { "status": "REFUS_AMBIGUITE", "message": "Deux interprétations possibles", "decision": "Présenter l’ambiguïté au collaborateur" }
+        },
+        {
+          "id": "IA-03",
+          "input": { "complete": true, "periodRecognized": true, "interpretations": 1, "ruleExists": false },
+          "expected": { "status": "REFUS_REGLE_ABSENTE", "message": "Aucune règle écrite pour ce cas", "decision": "Retour au cabinet pour écrire la règle" }
+        }
+      ]
+    }
+  ]
+}

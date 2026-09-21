@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+  "articleSha256": "8faa1796ccf7979224d4544769b6c5d4de410a9f0ddc828f30f03dbfb7e962d1",
+  "manifestSha256": "63d293b2f7959380546a13658a891134fccd4c28bf66d617187768b7744047b3",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Semaine fictive répartie entre répétition, attente, exception et décision humaine",
+  "score": 100,
+  "directionArt": 18,
+  "semanticRelevance": 22,
+  "p0": [],
+  "kevinApproved": true,
+  "palette": {
+    "statut": "PASS",
+    "parts": {
+      "#fcfbf7": 0.8105555555555556,
+      "#27b657": 0.0134375,
+      "#1c8a41": 0.014010416666666666,
+      "#231f20": 0.0061805555555555555
+    },
+    "ecarts": []
+  }
+}

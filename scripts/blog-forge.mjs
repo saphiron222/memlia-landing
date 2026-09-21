@@ -229,7 +229,18 @@ export async function verifierSources({ root, slug, recette, dossierRecette, jou
     for (let tentative = 0; tentative < 2; tentative += 1) {
       const evidencePath = join(dossier, `preuves/sources/${source.id}.json`);
       const existante = existsSync(evidencePath) ? lireJson(evidencePath) : null;
-      if (existante && existante.checkedAt === jour && existante.requestedUrl === source.url && existante.finalUrl === source.url && existante.excerpt === source.excerpt) break;
+      const preuveCourante = existante
+        && existante.checkedAt === jour
+        && existante.requestedUrl === source.url
+        && existante.finalUrl === source.url
+        && existante.excerpt === source.excerpt
+        && existante.level === source.level
+        && existante.provenance === 'primary'
+        && existante.official === (source.official === true)
+        && existante.upstreamUrl === source.url
+        && existante.classificationReason === source.classificationReason
+        && existante.method === null;
+      if (preuveCourante) break;
       await verifySource({ root, slug, sourceId: source.id, excerpt: source.excerpt, ...(fetcher ? { fetcher } : {}) });
       const preuve = lireJson(evidencePath);
       if (preuve.finalUrl === source.url) break;
