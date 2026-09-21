@@ -57,10 +57,10 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
   });
 }
 
-test('glossaire sans JavaScript : toutes les entrées et les ancres restent utilisables', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
+test('glossaire sans JavaScript : toutes les entrées et les ancres restent utilisables', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
-  await page.goto(`${process.env.QA_URL ?? 'http://127.0.0.1:4321'}/glossaire`);
+  await page.goto('/glossaire');
   await expect(page.getByLabel('Rechercher un terme')).toBeHidden();
   await expect(page.locator('.glossaire-entree')).toHaveCount(EXPECTED_TERMS);
   await expect(page.locator('.glossaire-entree').last()).toBeVisible();
