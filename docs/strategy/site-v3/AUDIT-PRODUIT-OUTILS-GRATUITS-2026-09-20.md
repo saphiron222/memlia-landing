@@ -1,7 +1,7 @@
 # Audit produit et croissance — outils gratuits
 
-Date du relevé : 20 septembre 2026, 23:11 WAT  
-Périmètre : hub, quatre outils indexables et témoin technique non indexable.  
+Date du relevé : 20 septembre 2026, 23:11 WAT
+Périmètre : hub, quatre outils indexables et témoin technique non indexable.
 Branche : `wt/outils-product-growth`.
 
 ## Addendum d’intégration — 21 septembre 2026
