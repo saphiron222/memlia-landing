@@ -1,6 +1,6 @@
 {
   "mois": "2026-09",
-  "jour": "2026-09-20",
+  "jour": "2026-09-21",
   "autorite": {
     "instrument": "dataforseo-backlinks-summary",
     "domaine": "memlia.fr",
@@ -9,7 +9,9 @@
     "domainesReferents": 6,
     "domainesPrincipaux": 6,
     "liensCasses": 0,
-    "erreur": null
+    "erreur": null,
+    "mesureeLe": "2026-09-20",
+    "erreurDerniereTentative": "HTTP 402"
   },
   "entite": {
     "spell": {
@@ -18,58 +20,228 @@
     },
     "rangMarque": null,
     "suggestions": 0,
-    "erreur": null
+    "erreur": null,
+    "mesureeLe": "2026-09-20",
+    "erreurDerniereTentative": "HTTP 402"
   },
   "ia": {
-    "requetes": 6,
+    "instrument": "dataforseo-chatgpt-search-scraper-force-web-search",
+    "typeMesure": "citation-ancree",
+    "echantillon": "docs/strategy/site-v3/mesures/echantillon-ia.json",
+    "requetes": 0,
     "avecRecherche": 0,
     "citations": 0,
     "nomme": 0,
+    "domainesCites": [],
     "detail": [
       {
-        "requete": "automatisation cabinet comptable",
-        "rechercheWeb": false,
-        "cite": null,
-        "nomme": false,
-        "domainesCites": []
-      },
-      {
-        "requete": "ia expert comptable",
-        "rechercheWeb": false,
-        "cite": null,
-        "nomme": false,
-        "domainesCites": []
-      },
-      {
-        "requete": "manuel de procédures cabinet expertise comptable",
-        "rechercheWeb": false,
-        "cite": null,
-        "nomme": false,
-        "domainesCites": []
-      },
-      {
-        "requete": "crm dsn",
-        "rechercheWeb": false,
-        "cite": null,
-        "nomme": false,
-        "domainesCites": []
-      },
-      {
-        "requete": "automatisation saisie comptable",
-        "rechercheWeb": false,
-        "cite": null,
-        "nomme": false,
-        "domainesCites": []
-      },
-      {
-        "requete": "cabinet comptable surcharge de travail",
-        "rechercheWeb": false,
-        "cite": null,
-        "nomme": false,
-        "domainesCites": []
+        "requete": "Quel calculateur utiliser pour calculer une marge commerciale ?",
+        "origine": "C1",
+        "source": "registre-demande-2026-09-20 · requête « calculateur marge commerciale » · 1 900 recherches mensuelles moyennes France",
+        "routeCandidate": "/outils-comptables-gratuits/calculateur-marge-commerciale",
+        "intention": "outil-gratuit",
+        "erreur": "HTTP 402"
       }
     ],
-    "erreur": null
+    "erreur": "DataForSEO refuse la mesure : HTTP 402",
+    "historiqueNonAncre": {
+      "mesureeLe": "2026-09-20",
+      "instrument": "chatgpt-llm-responses-sans-recherche",
+      "requetes": 6,
+      "nomme": 0,
+      "citations": null,
+      "detail": [
+        {
+          "requete": "automatisation cabinet comptable",
+          "rechercheWeb": false,
+          "cite": null,
+          "nomme": false,
+          "domainesCites": []
+        },
+        {
+          "requete": "ia expert comptable",
+          "rechercheWeb": false,
+          "cite": null,
+          "nomme": false,
+          "domainesCites": []
+        },
+        {
+          "requete": "manuel de procédures cabinet expertise comptable",
+          "rechercheWeb": false,
+          "cite": null,
+          "nomme": false,
+          "domainesCites": []
+        },
+        {
+          "requete": "crm dsn",
+          "rechercheWeb": false,
+          "cite": null,
+          "nomme": false,
+          "domainesCites": []
+        },
+        {
+          "requete": "automatisation saisie comptable",
+          "rechercheWeb": false,
+          "cite": null,
+          "nomme": false,
+          "domainesCites": []
+        },
+        {
+          "requete": "cabinet comptable surcharge de travail",
+          "rechercheWeb": false,
+          "cite": null,
+          "nomme": false,
+          "domainesCites": []
+        }
+      ],
+      "lecture": "notoriété seulement : l'absence de citation n'était pas mesurée"
+    }
+  },
+  "lisibiliteMachine": {
+    "mesureeLe": "2026-09-21T00:21:42.381Z",
+    "crawlers": [
+      {
+        "userAgent": "OAI-SearchBot",
+        "capacite": "citation ChatGPT Search",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "oai-searchbot",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "GPTBot",
+        "capacite": "entraînement OpenAI",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Claude-SearchBot",
+        "capacite": "citation Claude Search",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "claude-searchbot",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "ClaudeBot",
+        "capacite": "entraînement Anthropic",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "PerplexityBot",
+        "capacite": "citation Perplexity",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "perplexitybot",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Googlebot",
+        "capacite": "Google Search et AI Overviews",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Google-Extended",
+        "capacite": "entraînement et grounding Gemini, pas Google Search",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Applebot",
+        "capacite": "Siri, Spotlight et Safari",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Applebot-Extended",
+        "capacite": "préférence d’entraînement Apple Intelligence",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "CCBot",
+        "capacite": "jeu Common Crawl",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Bytespider",
+        "capacite": "entraînement ByteDance",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": false,
+        "groupeRobots": "bytespider",
+        "regleRobots": "disallow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      }
+    ],
+    "llmsTxt": {
+      "existe": true,
+      "http": 200,
+      "octets": 7542,
+      "xRobotsTag": null,
+      "effetCitationMesure": null,
+      "conclusion": "présence mesurée seulement : aucun effet de citation attribuable ; Google Search ignore llms.txt",
+      "erreur": null
+    }
   },
   "audience": {
     "ok": false,
@@ -81,12 +253,8 @@
     "hotes": []
   },
   "depenses": {
-    "total": 0.0327,
-    "parEndpoint": {
-      "backlinks_summary": 0.024,
-      "serp_organic_live_advanced": 0.0035,
-      "ai_optimization_chat_gpt_scraper": 0.0052
-    }
+    "total": 0,
+    "parEndpoint": {}
   },
   "budget": 0.6,
   "portes": {
@@ -99,10 +267,19 @@
       "ok": true,
       "porte": "approved",
       "couvertPar": "porte"
+    },
+    "ia": {
+      "ok": true,
+      "porte": "needs_approval",
+      "couvertPar": "budget explicite (0.6 $, décision D2 du 19/09/2026)"
     }
   },
   "exclusions": [
-    "citations IA non mesurées : l'interface a répondu sans recherche web sur les 6 requêtes (relevé du 20/09/2026 : web_search rendu à false quel que soit le paramètre) ; seul « la marque est nommée » est mesuré",
+    "profil de liens non relevé : HTTP 402",
+    "profil de liens conservé au 2026-09-20 : la tentative courante a échoué (HTTP 402)",
+    "page de résultats de la marque non relevée : HTTP 402",
+    "entité conservée au 2026-09-20 : la tentative courante a échoué (HTTP 402)",
+    "citations IA non relevées : DataForSEO refuse le paiement, arrêt après le premier refus pour ne pas multiplier les appels inutiles",
     "référents d'audience non relevés : CLOUDFLARE_ANALYTICS_TOKEN absent de l’environnement"
   ],
   "rouges": [],
@@ -113,14 +290,13 @@
       "mesure": "« mellia »"
     },
     {
-      "code": "citations-ia-non-mesurees",
-      "motif": "le modèle a répondu sans recherche web : les citations ne sont pas mesurées ce mois-ci",
-      "mesure": "6 requêtes, 0 avec recherche"
+      "code": "visibilite-ia-non-mesuree",
+      "motif": "aucune requête n'a abouti : la visibilité IA n'est pas mesurée ce mois-ci",
+      "mesure": "1 refus"
     }
   ],
   "infos": [
     "Aucun mois précédent au registre : aucun recul n'est conclu, ce relevé pose le point de départ.",
-    "La marque est nommée dans 0 réponse(s) sur 6, de mémoire du modèle et sans source.",
     "L'autocomplétion ne propose rien sur la marque : elle est sous le seuil de volume, ce qui est attendu pour une marque jeune."
   ]
 }
