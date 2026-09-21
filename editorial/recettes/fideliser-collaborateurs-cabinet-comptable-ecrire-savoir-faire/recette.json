@@ -1,0 +1,49 @@
+{
+  "slug": "fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire",
+  "title": "Fidéliser les collaborateurs en cabinet comptable : écrire le savoir-faire",
+  "tabTitle": "Fidéliser les collaborateurs en cabinet comptable | Memlia",
+  "summary": "Écrire une règle ne garantit pas la fidélisation. Cela rend une consigne transmissible, montre les exceptions et réserve l’accompagnement au jugement qui compte, sans mesure individuelle.",
+  "description": "Fidéliser les collaborateurs en cabinet comptable : rendre le savoir-faire transmissible avec une règle écrite, un jeu fictif et une validation humaine.",
+  "date": "2026-09-23",
+  "topics": ["cabinet", "methode", "automatisation"],
+  "keywords": ["fidéliser collaborateurs cabinet comptable", "transmission savoir-faire cabinet", "compétences collaborateurs comptables", "règle écrite"],
+  "primaryQuery": "fidéliser collaborateurs cabinet comptable",
+  "secondaryQueries": ["transmission savoir cabinet comptable", "marque employeur cabinet comptable"],
+  "intent": "comprendre",
+  "fanOut": ["transmettre une consigne orale", "écrire les cas de refus", "ce qui reste humain"],
+  "role": {"primary": "direction-associes", "secondary": ["profils-formation", "chefs-mission-portefeuille"], "proofLevel": "indirect", "proofNote": "Le problème RH est documenté par l’Apec et l’OEC Paris ; l’effet de la règle sur la fidélisation n’est pas affirmé."},
+  "funnel": "TOFU",
+  "cluster": "rh-formation",
+  "famille": "rh-interne-cabinet",
+  "contentType": "searchable",
+  "format": "thought-leadership",
+  "task": "Rendre une consigne de cabinet transmissible sans rigidifier le jugement ni surveiller les collaborateurs.",
+  "rankability": "plausible",
+  "businessRelevance": "adjacente",
+  "proofRequired": "Consigne orale fictive transformée en déclencheur, conditions, proposition, validation et refus ; quatre cas joués sans donnée réelle.",
+  "reviewRule": "Relire les sources Apec et OEC Paris à six mois ; conserver l’interdiction de promettre un effet sur le turnover.",
+  "cta": {"label": "Confier une première tâche", "destination": "/contact", "outcome": "Nous partons d’une consigne réelle, l’écrivons avec le cabinet et la rejouons sur un jeu fictif. Aucun résultat RH n’est promis."},
+  "inlineProofs": [
+    {"id": "fidelisation-avant-apres", "insertBeforeHeading": "Écrire sans rigidifier le métier", "alt": "Transformation fictive d’une consigne orale en règle écrite transmissible.", "source": "cadre HTML et consigne fictive décrits dans l’article", "capturedAt": "2026-09-21"},
+    {"id": "fidelisation-transmission", "insertBeforeHeading": "Rejoué sur le jeu fictif", "alt": "Parcours fictif de transmission avec préparation, validation et refus.", "source": "cadre HTML et jeu fictif décrits dans l’article", "capturedAt": "2026-09-21"}
+  ],
+  "image": {
+    "heroId": "img-art-fideliser-collaborateurs-regle-ecrite",
+    "alt": "Consigne orale fictive transformée en règle écrite avec validation et arrêt dans le doute",
+    "cadre": {"titre": "Fidéliser les collaborateurs en cabinet comptable", "sousTitre": "Écrire le savoir-faire avant de l’automatiser", "famille": "RH et formation · RH interne du cabinet", "colonnes": [{"titre": "Rendre visible", "items": ["Déclencheur", "Conditions", "Source"]}, {"titre": "Rendre transmissible", "items": ["Proposition", "Validation", "Refus"]}, {"titre": "Garder humain", "items": ["Contexte", "Accompagnement", "Décision"]}], "pied": "memlia.fr · aucun score individuel"},
+    "brief": {"sujet": "Une consigne orale se transforme en frontière écrite et transmissible.", "composition": "Deux plateaux avant-après reliés par un passage vert et un arrêt visible.", "style": "Diorama éditorial 3D mat, composition aérée.", "palette": "Crème #fcfbf7, vert #27b657, vert profond #1c8a41, encre #231f20.", "interdits": "Aucun texte lisible, logo, visage, donnée salarié, score ou surveillance.", "alt": "Consigne orale fictive transformée en règle écrite avec validation et arrêt dans le doute", "reviewCriteria": ["avant-après lisible", "arrêt visible", "aucune donnée", "palette Memlia", "format horizontal", "alt informatif"], "prompt": "Couverture éditoriale 3D originale sans texte : une consigne orale abstraite devient une règle écrite en trois étapes, palette Memlia."}
+  },
+  "sources": [
+    {"id": "apec-oec", "publisher": "Apec", "title": "L’Apec et le Conseil supérieur de l’ordre des experts-comptables se mobilisent au service de l’emploi", "url": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html", "level": "tier-1", "official": false, "classificationReason": "Communiqué de l’Apec et du Conseil supérieur de l’Ordre sur les tensions de recrutement de la profession.", "excerpt": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable"},
+    {"id": "oec-attractivite", "publisher": "OEC Paris — Le Francilien", "title": "Comment attirer et fidéliser des collaborateurs", "url": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/", "level": "tier-2", "official": false, "classificationReason": "Publication du Conseil régional de l’Ordre sur l’attractivité, la transmission et les conditions de travail.", "excerpt": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance."}
+  ],
+  "links": {"outgoing": ["/methode", "/garanties", "/automatisation-cabinet-comptable", "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps", "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain"], "incoming": ["/blog", "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps", "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain"]},
+  "cannibalization": {"risk": "faible", "comparedWith": ["/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"], "decision": "Le pilier cartographie ; cet article traite la transmission d’une seule règle et borne explicitement toute promesse RH."},
+  "serp": {"requete": "fidéliser collaborateurs cabinet comptable", "date": "2026-09-21", "volume": "ND", "acteurs": ["OEC Paris", "Apec", "conseils RH"], "formats": "articles d’attractivité, conditions de travail et management", "note": "Autocomplete France : aucune suggestion exacte ; SERP ponctuelle, positions non revendiquées."},
+  "gsc": {"requete": "fidéliser collaborateurs cabinet comptable", "date": "2026-09-21", "periode": "2026-08-22 au 2026-09-18", "impressions": 0, "clics": 0, "note": "Search Console du site neuf : aucune ligne dans la fenêtre ; aucun crédit métrique revendiqué."},
+  "claims": [
+    {"unite": "La profession nomme pourtant directement le problème", "claim": "dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable", "type": "information", "sourceId": "apec-oec", "excerpt": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable", "explanation": "Le communiqué Apec/OEC situe explicitement la profession dans un contexte de tensions de recrutement cadre."},
+    {"unite": "L’OEC Paris souligne", "claim": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance", "type": "information", "sourceId": "oec-attractivite", "excerpt": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance.", "explanation": "La publication sectorielle affirme que métiers et savoir-faire évoluent avec les stratégies de croissance."}
+  ],
+  "businessReview": {"reviewerId": "relecteur-metier-rh-cabinet", "role": "direction-associes"}
+}

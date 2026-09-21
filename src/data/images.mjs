@@ -134,6 +134,27 @@ export const IMAGES = {
     alt: "Diorama 3D isométrique : un bâtiment neuf et fermé à côté d’un établi ouvert où le travail se fait, fond crème",
     generee: true,
   },
+  'img-art-intelligence-artificielle-metier-comptable': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Frontière en trois colonnes entre préparation automatisée, validation et décision humaine",
+    generee: true,
+  },
+  'img-art-charge-travail-cabinet-comptable': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Semaine fictive répartie entre répétition, attente, exception et décision humaine",
+    generee: true,
+  },
+  'img-art-fideliser-collaborateurs-regle-ecrite': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Consigne orale fictive transformée en règle écrite avec validation et arrêt dans le doute",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -141,6 +162,9 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-fideliser-collaborateurs-regle-ecrite',
+  'img-art-charge-travail-cabinet-comptable',
+  'img-art-intelligence-artificielle-metier-comptable',
   'img-art-pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
   'img-art-saisie-comptable',
   'img-art-relance-des-pieces',

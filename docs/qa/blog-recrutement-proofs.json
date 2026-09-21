@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "browser": "153.0.8010.12",
+  "sources": [
+    {
+      "path": "docs/design/blog-recrutement-proofs/index.html",
+      "sha256": "2fba36f166761a02970b805e6b5bf776c05ce95ebd281d6ff0a6339cc4fced7f"
+    },
+    {
+      "path": "docs/design/blog-recrutement-proofs/styles.css",
+      "sha256": "a157dfb9bc7a1df51842e5eb0345de80eb56a533e0bdd8694b4ba720a0cebd72"
+    },
+    {
+      "path": "docs/design/blog-recrutement-proofs/content-contract.json",
+      "sha256": "4d2a053eb0795abb37f30abd3d8dc942a7ea13ae125a181981927176452936d8"
+    },
+    {
+      "path": "scripts/render-blog-recrutement-proofs.mjs",
+      "sha256": "df3d075635762b6c9ad616372833742e53995f18460fb8da467582c23395cfe5"
+    }
+  ],
+  "entries": [
+    {
+      "id": "surcharge-semaine",
+      "source": "docs/design/blog-recrutement-proofs/index.html#surcharge-semaine",
+      "target": "public/proofs/blog/surcharge-semaine.webp",
+      "bytes": 32980,
+      "sha256": "8cf121cc843205fb01cca2e3e81818ff54df0e61134aca7f6baeb207b1970956"
+    },
+    {
+      "id": "surcharge-matrice",
+      "source": "docs/design/blog-recrutement-proofs/index.html#surcharge-matrice",
+      "target": "public/proofs/blog/surcharge-matrice.webp",
+      "bytes": 32710,
+      "sha256": "6f4613d9e9a582fed4bdc3e3cf55a9215c62d7441144496637587de0a3590e74"
+    },
+    {
+      "id": "competences-frontiere",
+      "source": "docs/design/blog-recrutement-proofs/index.html#competences-frontiere",
+      "target": "public/proofs/blog/competences-frontiere.webp",
+      "bytes": 38760,
+      "sha256": "b69c8c443a4d0732bcadcdffa5fa022dd7a0852500dcb899e7470aabf9341524"
+    },
+    {
+      "id": "competences-refus",
+      "source": "docs/design/blog-recrutement-proofs/index.html#competences-refus",
+      "target": "public/proofs/blog/competences-refus.webp",
+      "bytes": 32632,
+      "sha256": "a3b05cbf10e4178f56049b743409796f692651eb1b889e78bb0000d6142140b3"
+    },
+    {
+      "id": "fidelisation-avant-apres",
+      "source": "docs/design/blog-recrutement-proofs/index.html#fidelisation-avant-apres",
+      "target": "public/proofs/blog/fidelisation-avant-apres.webp",
+      "bytes": 39742,
+      "sha256": "36c8356187dec1e7ae80cae433375d56c5cf5e66143a665aadd6d28e989a2332"
+    },
+    {
+      "id": "fidelisation-transmission",
+      "source": "docs/design/blog-recrutement-proofs/index.html#fidelisation-transmission",
+      "target": "public/proofs/blog/fidelisation-transmission.webp",
+      "bytes": 32548,
+      "sha256": "91ade8729a4be5d06bd03800cc6aefde9a7f7f11c322d8e101cd009143146a2e"
+    }
+  ]
+}

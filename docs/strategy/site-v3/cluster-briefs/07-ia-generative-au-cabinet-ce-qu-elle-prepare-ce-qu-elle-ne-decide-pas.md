@@ -1,45 +1,68 @@
-# Brief éditorial — L'IA générative au cabinet : ce qu'elle prépare, ce qu'elle ne décide pas
+# Brief éditorial — Intelligence artificielle et métier comptable : ce qu’elle prépare, ce qui reste humain
 
-Statut : a-prioriser
-Décideur : Kevin
+Statut : candidat
 Action : création
-Slug : `ia-generative-au-cabinet-ce-qu-elle-prepare-ce-qu-elle-ne-decide-pas`
-Date : 2026-09-16
+Slug : `intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain`
+Date cible : 2026-09-21
 
 ## Lecteur et tâche
 
-- Rôle principal : direction-associes (secondaires : numerique-it-data, profils-formation).
-- Preuve du rôle, source et date : hypothèse ; la SERP « IA cabinet expertise comptable » est classée commerciale (DataForSEO, 12/09/2026, 0,927), donc dirigeant.
-- Déclencheur : l'associé a testé un assistant conversationnel, a vu une erreur formulée avec assurance, et ne sait pas où placer l'IA dans le cabinet.
-- Tâche : comprendre ce que l'IA générative fait bien (préparer, résumer, proposer), ce qu'elle ne garantit pas (exactitude, secret), et où mettre la validation.
-- Résultat utile : définitions sourcées (système d'IA, IA générative, grand modèle de langage, hallucination), le tableau « prépare / attend une validation / reste humain » par tâche du cabinet, et la liste des questions à poser à un fournisseur.
+- Rôle principal : direction et associés ; secondaires : responsables de production, responsables formation.
+- Déclencheur : une démonstration d’IA semble convaincante, mais le cabinet ne sait ni ce qu’il peut lui confier ni où placer la validation.
+- Tâche : distinguer la préparation automatisable, la proposition à relire et la décision qui reste humaine.
+- Résultat utile : une frontière fermée en trois colonnes et trois familles d’activité rejouées sur données fictives.
 
-## Intention et SERP
+## Intention et mesure
 
-- Requête primaire : IA cabinet expertise comptable (volume ND).
-- Fan-out : intelligence artificielle expert-comptable ; IA générative cabinet comptable limites ; cas d'usage IA cabinet comptable.
-- SERP France/fr desktop et mobile, date/heure : relevé WebSearch 16/09/2026 (Compta Online, Daf-Mag, Productiv·IA, Nymphar, Tandem, Studeria, Intelligence Academy, Cegid) ; à refaire.
-- Types, formats, sources, fraîcheur, PAA et surfaces visibles : « guide complet », « N cas d'usage », statistiques d'adoption non sourcées ; aucune page ne pose la frontière par tâche ni ne définit les termes avec une source institutionnelle.
-- Rankability : faible à plausible (SERP générique et concurrentielle) ; l'angle « limites » est libre ; l'article sert aussi de socle au glossaire vague 1.
-- Business relevance : directe.
+- H1 / requête primaire : `métier comptable intelligence artificielle compétences`.
+- Mesure : aucune suggestion Google Autocomplete France le 2026-09-21 ; cette absence est consignée et le volume n’est pas inventé.
+- Intent : informationnel, avec anxiété métier.
+- SERP : guides IA, formations, outils et listes de cas d’usage. Différenciation : aucune liste publique de tâches ; l’article démontre une méthode de frontière.
+- Rankability : plausible sur la longue traîne ; business relevance directe.
 
-## Preuve et vérité
+## Sources et claims prévus
 
-- Information gain : définitions extractibles sourcées CNIL et EUR-Lex ; le tableau par tâche ; « hallucination » expliquée comme propriété du procédé, pas comme bug.
-- Preuve distinctive : trois exemples fictifs (un résumé de courriel juste, une relance préparée à valider, une réponse fiscale plausible et fausse) ; le tableau « prépare / valide / humain » sur dix tâches du cabinet.
-- Cas courant / limite / refus : courant = préparer un brouillon ; limite = résumer un document long (perte possible) ; refus = décider d'un envoi ou d'un traitement fiscal.
-- Sources officielles : CNIL (fiches IA générative, LLM, développement d'un système d'IA), règlement (UE) 2024/1689 article 3 (EUR-Lex), datés du jour de la rédaction ; aucune statistique d'adoption reprise sans source primaire.
-- Relecteur métier : revue métier IA.
+1. OPCO Atlas, branche Expertise comptable : « La transition numérique impacte fortement les métiers des cabinets d’expertise-comptable » et « Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation ».
+2. OPCO Atlas : « Une partie des activités actuelles des cabinets sera automatisée à l’avenir » ; à citer avec la phrase suivante sur montée en compétences et diversification, sans extrapoler vers la suppression d’emplois.
+3. CNIL, principes RGPD : minimisation des données, seulement si l’article détaille les données d’essai.
 
-## Structure et maillage
+Aucune statistique d’adoption, aucun taux de remplacement, aucun horizon temporel inventé.
 
-- Plan H1/H2/H3 : H1 ; H2 « Réponse directe » ; H2 « Quatre mots à fixer » (H3 système d'IA, IA générative, grand modèle de langage, hallucination) ; H2 « Ce qu'elle prépare bien » ; H2 « Ce qu'elle ne garantit pas » ; H2 « Le tableau par tâche » ; H2 « Où va la validation » ; H2 « Dix questions à un fournisseur » ; H2 « Sources ».
-- Liens sortants : pilier ; n° 17, n° 26, n° 30 (à leur publication) ; glossaire : Système d'IA, IA générative, Grand modèle de langage, Hallucination ; `/garanties`.
-- Deux liens entrants : pilier ; n° 10 saisie (inter-familles).
-- Risque de cannibalisation : n° 17 (agent vs assistant) et n° 30 (AI Act) : requêtes et angles distincts, chacun renvoie ici pour les définitions.
+## Information gain et preuve
 
-## CTA et maintenance
+- Trois familles, pas un catalogue : préparer une information ; signaler une exception ; proposer une action.
+- Preuve HTML figée 1 : frontière `Prépare / Attend une validation / Reste humain`.
+- Preuve HTML figée 2 : même entrée, deux sorties possibles ; l’ambiguïté déclenche l’arrêt.
+- Jeu fictif : une demande complète, une pièce ambiguë, une règle absente.
 
-- CTA, destination et résultat : « Lire nos garanties » → `/garanties` → puis contact.
-- Déclencheur de révision : toute mise à jour des fiches CNIL ou du calendrier AI Act ; relecture trimestrielle.
-- Décision attendue de Kevin : valider pour M3 ; valider que les définitions du glossaire vague 1 s'alignent sur cet article.
+## Structure
+
+1. `## Réponse directe`
+2. `## Pourquoi “remplacer” est la mauvaise unité de mesure`
+3. `## Ce que l’automatisation peut préparer`
+4. `## Ce qu’elle ne garantit pas`
+5. `## La règle écrite`
+6. `## Rejoué sur le jeu fictif`
+7. `## Ce que cela change pour les compétences`
+8. `## Les erreurs à éviter`
+9. `## Pour aller plus loin`
+10. `## Sources`
+
+## Règle écrite obligatoire
+
+- **Déclencheur** : une entrée complète et reconnue arrive dans le périmètre convenu.
+- **Conditions** : format, période, rôle et exceptions sont explicites.
+- **Action** : préparer ou proposer, jamais décider silencieusement.
+- **Cas de refus** : ambiguïté, règle absente, donnée réelle non autorisée.
+
+Tableau obligatoire à trois colonnes : `Prépare seul | Attend une validation | Reste humain`.
+
+## Maillage et cannibalisation
+
+- Sortants : `/methode`, `/garanties`, `/automatisation-cabinet-comptable`, article surcharge, article fidélisation.
+- Entrants futurs : hub du cluster et article surcharge.
+- Différence avec le pilier automatisation : le pilier explique le service ; cet article répond à la crainte de remplacement et traite l’évolution du travail.
+
+## CTA
+
+Après la valeur : `Confier une première tâche` vers `/contact`. Promesse : observer une tâche, écrire sa règle et l’éprouver sur un jeu fictif ; aucune promesse de poste supprimé, de temps gagné ou de fidélisation.

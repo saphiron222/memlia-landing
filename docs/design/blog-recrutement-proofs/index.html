@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Preuves du cluster charge, compétences et fidélisation</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main>
+  <section class="frame" id="surcharge-semaine" aria-label="Journal fictif d’une semaine classé par état de flux">
+    <header><p>JEU D’ESSAI FICTIF · SEMAINE</p><h1>Où le flux attend-il ?</h1></header>
+    <div class="week">
+      <article><span>LUN</span><b>Répétition</b><small>règle stable</small></article>
+      <article><span>MAR</span><b>Attente</b><small>entrée absente</small></article>
+      <article><span>MER</span><b>Exception</b><small>cas hors cadre</small></article>
+      <article><span>JEU</span><b>Répétition</b><small>règle stable</small></article>
+      <article><span>VEN</span><b>Décision</b><small>arbitrage humain</small></article>
+    </div>
+    <footer>Mesure agrégée · aucun nom · aucune donnée client</footer>
+  </section>
+
+  <section class="frame" id="surcharge-matrice" aria-label="Matrice fictive de sélection d’une première répétition à observer">
+    <header><p>CHOISIR UNE PREMIÈRE RÈGLE</p><h1>Fréquence × stabilité × doute</h1></header>
+    <div class="matrix">
+      <div class="axis y">Règle stable</div><div class="axis x">Fréquence</div>
+      <div class="dot a"><b>Observer</b><small>fréquent · stable</small></div>
+      <div class="dot b"><b>Écrire d’abord</b><small>fréquent · variable</small></div>
+      <div class="dot c"><b>Garder humain</b><small>doute élevé</small></div>
+    </div>
+    <footer>Un bon premier périmètre s’arrête dès que la règle manque</footer>
+  </section>
+
+  <section class="frame" id="competences-frontiere" aria-label="Frontière fictive entre préparation automatisée, validation et décision humaine">
+    <header><p>FRONTIÈRE DE DÉCISION</p><h1>L’IA prépare, l’humain décide</h1></header>
+    <div class="columns">
+      <article><h2>Prépare seul</h2><p>Classer l’entrée reconnue</p><p>Appliquer la règle écrite</p></article>
+      <article><h2>Attend une validation</h2><p>Proposer une sortie</p><p>Montrer la source</p></article>
+      <article><h2>Reste humain</h2><p>Arbitrer l’exception</p><p>Assumer la décision</p></article>
+    </div>
+    <footer>Trois familles d’activité · aucun catalogue de tâches</footer>
+  </section>
+
+  <section class="frame" id="competences-refus" aria-label="Trois cas fictifs dont un arrêt dans le doute">
+    <header><p>REJOUER AVANT DE LIVRER</p><h1>La même règle, trois sorties</h1></header>
+    <div class="cases">
+      <article><i>01</i><h2>Entrée complète</h2><strong>Proposition prête</strong></article>
+      <article><i>02</i><h2>Pièce ambiguë</h2><strong>Arrêt dans le doute</strong></article>
+      <article><i>03</i><h2>Règle absente</h2><strong>Retour au cabinet</strong></article>
+    </div>
+    <footer>Le refus est une sortie attendue, pas une panne</footer>
+  </section>
+
+  <section class="frame" id="fidelisation-avant-apres" aria-label="Transformation fictive d’une consigne orale en règle écrite transmissible">
+    <header><p>TRANSMETTRE LE SAVOIR-FAIRE</p><h1>De la consigne orale à la règle écrite</h1></header>
+    <div class="before-after">
+      <article class="before"><h2>Avant</h2><p>« Tu verras selon le dossier »</p><small>conditions implicites · exceptions dans les têtes</small></article>
+      <div class="arrow">→</div>
+      <article class="after"><h2>Après</h2><p>Déclencheur · conditions · proposition · refus</p><small>frontière visible · validation assignée</small></article>
+    </div>
+    <footer>Écrire la règle sans rigidifier le jugement</footer>
+  </section>
+
+  <section class="frame" id="fidelisation-transmission" aria-label="Parcours fictif de transmission avec proposition, validation et refus">
+    <header><p>PARCOURS FICTIF</p><h1>Transmettre sans surveiller</h1></header>
+    <div class="flow">
+      <article><b>1</b><h2>Reconnaître</h2><p>la situation</p></article><span>›</span>
+      <article><b>2</b><h2>Préparer</h2><p>une proposition</p></article><span>›</span>
+      <article><b>3</b><h2>Valider</h2><p>ou refuser</p></article>
+    </div>
+    <div class="stop">Information manquante ? La chaîne s’arrête.</div>
+    <footer>Aucun score individuel · aucun temps par personne</footer>
+  </section>
+</main>
+</body>
+</html>

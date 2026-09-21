@@ -1,0 +1,49 @@
+{
+  "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+  "title": "Intelligence artificielle et métier comptable : ce qu’elle prépare, ce qui reste humain",
+  "tabTitle": "Intelligence artificielle, métier comptable et compétences | Memlia",
+  "summary": "L’intelligence artificielle ne remplace pas un métier en bloc. Elle prépare une information, applique une règle écrite et signale le doute ; le cabinet valide, arbitre et fait évoluer la règle.",
+  "description": "Intelligence artificielle et métier comptable : la frontière entre préparation automatisée, validation et décision humaine, rejouée sur cas fictifs.",
+  "date": "2026-09-21",
+  "topics": ["ia", "cabinet", "automatisation"],
+  "keywords": ["métier comptable intelligence artificielle compétences", "intelligence artificielle cabinet comptable", "compétences comptables", "validation humaine"],
+  "primaryQuery": "métier comptable intelligence artificielle compétences",
+  "secondaryQueries": ["intelligence artificielle cabinet comptable", "compétences métier comptable automatisation"],
+  "intent": "comprendre",
+  "fanOut": ["ce que l’intelligence artificielle prépare", "où placer la validation humaine", "comment les compétences évoluent"],
+  "role": {"primary": "direction-associes", "secondary": ["profils-formation", "numerique-it-data"], "proofLevel": "indirect", "proofNote": "Sujet documenté par la page de branche OPCO Atlas ; le besoin précis doit être confirmé en entretien de cabinet."},
+  "funnel": "TOFU",
+  "cluster": "rh-formation",
+  "famille": "formation-ia-competences",
+  "contentType": "searchable",
+  "format": "thought-leadership",
+  "task": "Comprendre ce que l’intelligence artificielle peut préparer dans un cabinet et où la décision humaine doit rester visible.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Frontière en trois colonnes et trois cas fictifs, dont une ambiguïté et une règle absente ; aucune liste de tâches ni donnée réelle.",
+  "reviewRule": "Relire la source OPCO Atlas à six mois et à toute modification de la page de branche.",
+  "cta": {"label": "Confier une première tâche", "destination": "/contact", "outcome": "Nous observons une répétition choisie par le cabinet, écrivons sa règle et l’éprouvons sur un jeu fictif avant recette humaine. Aucun délai ou gain n’est promis avant mesure."},
+  "inlineProofs": [
+    {"id": "competences-frontiere", "insertBeforeHeading": "La règle écrite", "alt": "Frontière fictive entre préparation automatisée, validation et décision humaine.", "source": "cadre HTML et jeu fictif décrits dans l’article", "capturedAt": "2026-09-21"},
+    {"id": "competences-refus", "insertBeforeHeading": "Rejoué sur le jeu fictif", "alt": "Trois cas fictifs : proposition, arrêt dans le doute et retour au cabinet.", "source": "cadre HTML et jeu fictif décrits dans l’article", "capturedAt": "2026-09-21"}
+  ],
+  "image": {
+    "heroId": "img-art-intelligence-artificielle-metier-comptable",
+    "alt": "Frontière en trois colonnes entre préparation automatisée, validation et décision humaine",
+    "cadre": {"titre": "Intelligence artificielle et métier comptable", "sousTitre": "Préparer, valider, décider : une frontière rejouable", "famille": "RH et formation · Compétences et maîtrise de l’IA", "colonnes": [{"titre": "Prépare seul", "items": ["Entrée reconnue", "Règle explicite", "Source visible"]}, {"titre": "Attend une validation", "items": ["Proposition relue", "Période confirmée", "Action autorisée"]}, {"titre": "Reste humain", "items": ["Exception arbitrée", "Règle définie", "Décision assumée"]}], "pied": "memlia.fr · jeu d’essai fictif"},
+    "brief": {"sujet": "Une frontière abstraite en trois plateaux pour préparation, validation et décision.", "composition": "Vue isométrique, trois plateaux reliés, le dernier gardé par une main symbolique non humaine.", "style": "Diorama éditorial 3D mat, composition aérée.", "palette": "Crème #fcfbf7, vert #27b657, vert profond #1c8a41, encre #231f20.", "interdits": "Aucun texte lisible, logo, visage, donnée client ou fausse interface.", "alt": "Frontière en trois colonnes entre préparation automatisée, validation et décision humaine", "reviewCriteria": ["frontière lisible", "doute visible", "aucune donnée", "palette Memlia", "format horizontal", "alt informatif"], "prompt": "Couverture éditoriale 3D originale, sans texte : trois plateaux reliés représentant préparation, validation et décision, palette Memlia crème et verte."}
+  },
+  "sources": [
+    {"id": "atlas-branche", "publisher": "OPCO Atlas", "title": "Experts-comptables, Commissaires aux comptes et Audit", "url": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html", "level": "tier-1", "official": false, "classificationReason": "Page de la branche professionnelle publiée par son opérateur de compétences.", "excerpt": "impacte fortement les métiers des cabinets d’expertise-comptable :"}
+  ],
+  "links": {"outgoing": ["/methode", "/garanties", "/automatisation-cabinet-comptable", "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps", "/blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire"], "incoming": ["/blog", "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps", "/blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire"]},
+  "cannibalization": {"risk": "faible", "comparedWith": ["/automatisation-cabinet-comptable", "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"], "decision": "La page service présente l’offre ; le pilier cartographie ; cet article répond à l’intention métier et compétences sans catalogue de tâches."},
+  "serp": {"requete": "métier comptable intelligence artificielle compétences", "date": "2026-09-21", "volume": "ND", "acteurs": ["OPCO Atlas", "formations", "éditeurs"], "formats": "guides IA, formations et listes de cas d’usage", "note": "Autocomplete France : aucune suggestion exacte ; SERP observée ponctuellement, positions non revendiquées."},
+  "gsc": {"requete": "métier comptable intelligence artificielle compétences", "date": "2026-09-21", "periode": "2026-08-22 au 2026-09-18", "impressions": 0, "clics": 0, "note": "Search Console du site neuf : aucune ligne dans la fenêtre ; aucun crédit métrique revendiqué."},
+  "claims": [
+    {"unite": "La branche professionnelle décrit une évolution plus précise", "claim": "La transition numérique impacte fortement les métiers des cabinets d’expertise-comptable", "type": "information", "sourceId": "atlas-branche", "excerpt": "impacte fortement les métiers des cabinets d’expertise-comptable :", "explanation": "La page de branche formule explicitement l’impact du numérique sur les métiers."},
+    {"unite": "La branche professionnelle décrit une évolution plus précise", "claim": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation", "type": "information", "sourceId": "atlas-branche", "excerpt": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation.", "explanation": "La source associe directement la transition numérique à la montée en compétences."},
+    {"unite": "OPCO Atlas indique aussi", "claim": "Une partie des activités actuelles des cabinets sera automatisée à l’avenir", "type": "information", "sourceId": "atlas-branche", "excerpt": "Une partie des activités actuelles des cabinets sera automatisée à l’avenir", "explanation": "La phrase est reprise sans la transformer en prédiction de suppression d’emplois."}
+  ],
+  "businessReview": {"reviewerId": "relecteur-metier-ia-memlia", "role": "direction-associes"}
+}

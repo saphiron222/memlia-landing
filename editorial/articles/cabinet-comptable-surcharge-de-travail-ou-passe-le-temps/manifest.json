@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "slug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+  "action": "creation",
+  "editorialStatus": "a-valider",
+  "title": "Charge de travail en cabinet comptable : où passe le temps ?",
+  "tabTitle": "Charge de travail en cabinet comptable : diagnostic | Memlia",
+  "summary": "Une surcharge ne se lit pas dans une liste de tâches. Le journal fictif sépare répétition, attente, exception et décision, puis aide à choisir une première règle sans surveiller les personnes.",
+  "description": "Charge de travail en cabinet comptable : observer répétition, attente, exception et décision sans surveillance nominative ni promesse de gain.",
+  "publicationDate": "2026-09-22",
+  "updatedAt": null,
+  "topics": [
+    "cabinet",
+    "pilotage",
+    "automatisation"
+  ],
+  "keywords": [
+    "charge de travail cabinet comptable",
+    "surcharge cabinet comptable",
+    "organisation cabinet comptable",
+    "plan de charge"
+  ],
+  "primaryQuery": "charge de travail cabinet comptable",
+  "secondaryQueries": [
+    "organisation cabinet expertise comptable",
+    "plan de charge cabinet comptable"
+  ],
+  "intent": "comprendre",
+  "fanOut": [
+    "où passe le temps au cabinet",
+    "mesurer le flux sans surveillance",
+    "choisir une première répétition"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "chefs-mission-portefeuille"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-09-21"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "relecteur-metier-production-cabinet",
+    "role": "direction-associes",
+    "status": "FAIL",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "portefeuille-echeances",
+  "famille": "planification-charge",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Observer les états d’un flux de production afin de choisir une première répétition à écrire sans classer les personnes.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Journal fictif d’une semaine, quatre états fermés et matrice fréquence-stabilité-doute ; aucune moyenne sectorielle ni donnée nominative.",
+  "sourcesVerifiedAt": "2026-09-21",
+  "sources": [
+    {
+      "id": "oec-attractivite",
+      "publisher": "OEC Paris — Le Francilien",
+      "title": "Comment attirer et fidéliser des collaborateurs",
+      "url": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
+      "checkedAt": "2026-09-21",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
+      "classificationReason": "Publication du Conseil régional de l’Ordre sur l’attractivité et les conditions de travail.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/oec-attractivite.classification.json",
+      "verificationEvidence": "preuves/sources/oec-attractivite.json"
+    },
+    {
+      "id": "atlas-branche",
+      "publisher": "OPCO Atlas",
+      "title": "Experts-comptables, Commissaires aux comptes et Audit",
+      "url": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+      "checkedAt": "2026-09-21",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+      "classificationReason": "Page de la branche professionnelle publiée par son opérateur de compétences.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/atlas-branche.classification.json",
+      "verificationEvidence": "preuves/sources/atlas-branche.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "marketing",
+  "reviewRule": "Relire les sources à six mois et à toute modification de la doctrine anti-surveillance Memlia.",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact",
+    "outcome": "Nous observons une répétition choisie, écrivons sa règle et la rejouons sur un jeu fictif. Aucun gain ni délai n’est promis avant mesure."
+  },
+  "image": {
+    "heroId": "img-art-charge-travail-cabinet-comptable",
+    "alt": "Semaine fictive répartie entre répétition, attente, exception et décision humaine",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-09-21"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-09-21"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/methode",
+      "/automatisation-cabinet-comptable",
+      "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "/blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "/blog/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/automatisation-cabinet-comptable"
+    ],
+    "decision": "Cet article diagnostique des états de flux et ne cartographie ni les tâches ni l’offre."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": false,
+    "productionApproved": false,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  }
+}
