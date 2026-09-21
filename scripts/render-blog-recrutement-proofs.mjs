@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { chromium } from '@playwright/test';
 import sharp from 'sharp';
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -14,6 +14,27 @@ const output = `.qa/annotations/blog-recrutement-${mode}`;
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 mkdirSync(output, { recursive: true });
 const contract = existsSync(contractPath) ? JSON.parse(readFileSync(contractPath, 'utf8')) : [];
+const proofRecipes = new Map();
+for (const recipeDir of readdirSync('editorial/recettes', { withFileTypes: true }).filter((entry) => entry.isDirectory())) {
+  const recipePath = `editorial/recettes/${recipeDir.name}/recette.json`;
+  if (!existsSync(recipePath)) continue;
+  const recipe = JSON.parse(readFileSync(recipePath, 'utf8'));
+  for (const proof of recipe.inlineProofs ?? []) proofRecipes.set(proof.id, { article: recipe.slug, ...proof });
+}
+
+if (mode === 'check' && process.env.CF_PAGES === '1') {
+  const prior = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  const sources = prior.sources.map(({ path }) => ({ path, sha256: hash(readFileSync(path)) }));
+  assert.deepEqual(prior.sources, sources, 'Sources ou contrat de rendu périmés');
+  assert.equal(prior.entries.length, contract.length, 'Le manifeste ne couvre pas toutes les preuves');
+  for (const entry of prior.entries) {
+    assert.ok(existsSync(entry.target), `Actif absent : ${entry.target}`);
+    assert.equal(hash(readFileSync(entry.target)), entry.sha256, `Actif périmé : ${entry.target}`);
+  }
+  console.log(`check Cloudflare : ${prior.entries.length} preuves du cluster scellées.`);
+  process.exit(0);
+}
+
 const browser = await chromium.launch({ channel: 'chromium' });
 const records = [];
 try {
@@ -28,7 +49,14 @@ try {
   assert.ok(fonts.length >= 3 && fonts.every((f) => f.status === 'loaded'), 'Polices non chargées');
   const ids = await page.locator('.frame').evaluateAll((els) => els.map((el) => el.id));
   assert.equal(ids.length, 6, 'Six preuves attendues');
+  assert.ok(ids.every((id) => proofRecipes.has(id)), 'Chaque cadre doit correspondre à une preuve déclarée dans une recette');
   if (mode !== 'adopt') assert.deepEqual(ids, contract.map((c) => c.id), 'Cadres hors contrat');
+  if (mode !== 'adopt') {
+    assert.ok(contract.every((entry) => entry.article && entry.alt && entry.source && /^\d{4}-\d{2}-\d{2}$/.test(entry.capturedAt)), 'Métadonnées de preuve incomplètes');
+    const articles = Map.groupBy(contract, (entry) => entry.article);
+    assert.equal(articles.size, 3, 'Trois articles distincts sont attendus');
+    for (const [article, proofs] of articles) assert.equal(proofs.length, 2, `${article} doit porter exactement deux preuves`);
+  }
   await page.addStyleTag({ content: 'body{padding:0}main{display:block}.frame{display:none}.frame[data-render]{display:grid}' });
   const adopted = [];
   for (const id of ids) {
@@ -70,7 +98,7 @@ try {
     assert.deepEqual(measured.hidden, [], `Texte masqué : ${id}`);
     const expected = contract.find((c) => c.id === id)?.centralText;
     if (mode !== 'adopt') assert.equal(measured.text, expected, `Contenu divergent : ${id}`);
-    adopted.push({ id, centralText: measured.text });
+    adopted.push({ ...proofRecipes.get(id), centralText: measured.text });
     const png = await element.screenshot({ animations: 'disabled', path: `${output}/${id}.png` });
     const webp = await sharp(png).webp({ quality: 88, effort: 6 }).toBuffer();
     assert.ok(webp.length < 150_000, `Preuve trop lourde : ${id}`);

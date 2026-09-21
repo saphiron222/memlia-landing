@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
 import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS } from '../../scripts/lib/blog-pipeline.mjs';
+import { retirerPreuvesInline } from '../../scripts/lib/blog-proof-figures.mjs';
 
 export const fixtureDate = new Date().toISOString().slice(0, 10);
 const sha256 = (content) => createHash('sha256').update(content).digest('hex');
@@ -10,7 +11,7 @@ const writeJson = (path, value) => writeFileSync(path, `${JSON.stringify(value, 
 const FIXTURE_STOP_WORDS = new Set(['alors', 'avec', 'avoir', 'cette', 'comme', 'dans', 'depuis', 'elle', 'elles', 'entre', 'etre', 'faire', 'leurs', 'mais', 'meme', 'pour', 'sans', 'selon', 'sont', 'sous', 'toute', 'toutes', 'toujours', 'tout', 'tous', 'une', 'vers', 'votre']);
 const keyTerms = (value) => [...new Set(value.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').split(/\s+/).filter((token) => token.length >= 4 && !FIXTURE_STOP_WORDS.has(token)))];
 
-const DEFAULT_BODY = `## Réponse directe
+export const DEFAULT_BODY = `## Réponse directe
 
 Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.
 
@@ -59,7 +60,7 @@ export function candidateManifest(slug = 'article-de-test', heroId = `img-${slug
     title: 'Comment contrôler un processus métier dans Excel ?',
     tabTitle: 'Contrôler un processus métier dans Excel | Memlia',
     summary: 'Une méthode bornée pour contrôler une tâche métier dans Excel sans automatiser la décision humaine.',
-    description: 'Une méthode concrète pour contrôler un processus métier dans Excel, documenter les exceptions et laisser la décision au cabinet.',
+    description: 'Contrôle processus métier Excel : documenter les exceptions et laisser la décision finale au cabinet.',
     publicationDate: fixtureDate,
     updatedAt: null,
     topics: ['methode', 'excel'],
@@ -238,7 +239,7 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
   const manifestPath = join(dossier, 'manifest.json');
   writeFileSync(articlePath, markdown);
   writeJson(manifestPath, manifest);
-  const articleHash = sha256(markdown);
+  const articleHash = sha256(retirerPreuvesInline(markdown));
   const manifestHash = sha256(readFileSync(manifestPath));
 
   writeJson(join(preuves, 'role.json'), subjectArtifact({ slug, kind: 'role', articleHash, manifestHash, extra: { level: manifest.role.proof.level } }));

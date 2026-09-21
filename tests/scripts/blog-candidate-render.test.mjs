@@ -9,7 +9,7 @@ import { test as nodeTest } from 'node:test';
 import sharp from 'sharp';
 import { chromium } from '@playwright/test';
 import { preparePreview } from '../../scripts/prepare-preview.mjs';
-import { createCompleteDossier } from './blog-fixture.mjs';
+import { createCompleteDossier, DEFAULT_BODY } from './blog-fixture.mjs';
 
 const test = (name, run) => nodeTest(name, { timeout: 180_000 }, run);
 const REPO = resolve(import.meta.dirname, '../..');
@@ -66,7 +66,16 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
     }
     symlinkSync(DEPENDENCIES, join(project, 'node_modules'), 'dir');
 
-    const fixture = await createCompleteDossier(staging, { slug, heroId });
+    const fixtureBody = `${DEFAULT_BODY}
+
+<figure data-blog-proof="fixture-frontiere">
+  <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="640" height="360" loading="lazy" decoding="async">
+</figure>
+
+<figure data-blog-proof="fixture-refus">
+  <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="640" height="360" loading="lazy" decoding="async">
+</figure>`;
+    const fixture = await createCompleteDossier(staging, { slug, heroId, body: fixtureBody, claimsBody: DEFAULT_BODY });
     copyFile(fixture.articlePath, join(project, 'src/content/blog', `${slug}.md`));
     copyFile(fixture.dossier, join(project, 'editorial/articles', slug));
     copyFile(join(staging, 'docs/strategy/site-v3/mesures'), join(project, 'docs/strategy/site-v3/mesures'));
@@ -74,6 +83,18 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
       copyFile(join(staging, `public/images/${heroId}-768.${extension}`), join(project, `public/images/${heroId}-768.${extension}`));
     }
     copyFile(join(staging, `public/images/${heroId}-og.webp`), join(project, `public/images/${heroId}-og.webp`));
+    for (const proofId of ['fixture-frontiere', 'fixture-refus']) {
+      const proofPath = join(project, `public/proofs/blog/${proofId}.webp`);
+      mkdirSync(dirname(proofPath), { recursive: true });
+      await sharp({
+        create: {
+          width: 640,
+          height: 360,
+          channels: 3,
+          background: proofId === 'fixture-frontiere' ? '#dff5e6' : '#f3efe3',
+        },
+      }).webp().toFile(proofPath);
+    }
 
     const imagesPath = join(project, 'src/data/images.mjs');
     const images = readFileSync(imagesPath, 'utf8');
@@ -84,6 +105,14 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
       .replace("export const PUBLISHED_IMAGE_IDS = [", `export const PUBLISHED_IMAGE_IDS = ['${heroId}', `));
     const indexPath = join(project, 'src/pages/index.astro');
     writeFileSync(indexPath, `${readFileSync(indexPath, 'utf8')}\n<a data-fixture-link href="/blog/${slug}">Fixture candidat</a>\n`);
+    const rubriquesPath = join(project, 'src/data/blog-rubriques.mjs');
+    const rubriques = readFileSync(rubriquesPath, 'utf8');
+    const horsRubriqueMarker = 'export const ARTICLES_HORS_RUBRIQUE = Object.freeze({';
+    assert.ok(rubriques.includes(horsRubriqueMarker), 'registre des articles hors rubrique introuvable');
+    writeFileSync(rubriquesPath, rubriques.replace(
+      horsRubriqueMarker,
+      `${horsRubriqueMarker}\n  '${slug}': Object.freeze({ date: '${fixture.manifest.publicationDate}', raison: 'Fixture transversale du pipeline, sans route de rubrique dédiée.' }),`,
+    ));
 
     const blogPath = join(project, 'src/pages/blog.astro');
     const blogSource = readFileSync(blogPath, 'utf8');
