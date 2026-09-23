@@ -55,10 +55,10 @@ test('FAQ DOM et JSON-LD identiques, ancres locales complètes', async ({ page }
   expect(errors).toEqual([]);
 });
 
-test('contenu et navigation sans JavaScript', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
+test('contenu et navigation sans JavaScript', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
-  await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
+  await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.faq-r').first()).toBeVisible();
   await expect(page.locator('[data-mobile-visible] a[href="/#methode"]')).toBeVisible();

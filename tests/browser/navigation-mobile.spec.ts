@@ -82,10 +82,10 @@ test('bandeau : aucune réservation externe, l’action mène à /contact', asyn
   await expect(page.locator(`a[href="${CTA.rendezVous.href}"]`).first()).toBeVisible();
 });
 
-test('sans JavaScript : les quatre entrées visibles et l’action restent servies', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
+test('sans JavaScript : les quatre entrées visibles et l’action restent servies', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
-  await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
+  await page.goto('/');
   const navigation = page.locator('[data-mobile-visible]');
   await expect(navigation).toBeVisible();
   await expect(navigation.locator('a')).toHaveText(DESTINATIONS);

@@ -104,10 +104,10 @@ for (const width of [320, 375, 768, 1024, 1440]) {
   });
 }
 
-test('article sans JavaScript : contenu et navigation visibles', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
+test('article sans JavaScript : contenu et navigation visibles', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
-  await page.goto(`${process.env.QA_URL ?? 'http://127.0.0.1:4321'}/blog`);
+  await page.goto('/blog');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('[data-article]').first()).toBeVisible();
   await expect(page.locator('[data-mobile-visible] a[href="/#methode"]')).toBeVisible();
