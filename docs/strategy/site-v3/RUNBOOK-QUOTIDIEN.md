@@ -13,13 +13,14 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 - **Un test n'est jamais modifié pour passer**, sauf un compte qui change légitimement avec la publication (nombre d'articles publics dans `tests/proof/test_build.py`, `PUBLIC_ARTICLES`), documenté dans le commit.
 - **Échec** : deux tentatives de correction au plus sur une recette ; ensuite, ne rien pousser, consigner la cause dans `JOURNAL.md`, et s'arrêter. Kevin lit le journal.
 
-## 1. Se mettre à jour
+## 1. Préflight commun des crons (avant toute écriture)
 
 ```bash
-cd /Users/kevinkitanga/dev/interne/memlia-landing && git pull --ff-only origin main && git status --short
+cd /Users/kevinkitanga/dev/interne/memlia-landing
+node scripts/cron-preflight.mjs --root /Users/kevinkitanga/dev/interne/memlia-landing --job forge
 ```
 
-Si des fichiers sont modifiés par une autre session, ne pas y toucher ; travailler par chemins précis.
+Le script vérifie le répertoire courant et la racine Git, la branche `main`, l'arbre propre, les runbooks requis, `git fetch origin main` et l'égalité des SHA. Sortie JSON `ok: false` ou code non nul : arrêt sans écriture, sans pull ni push, avec alerte contenant les valeurs observées. Ne pas remplacer ce contrôle par une affirmation de l'agent ; relancer avant tout commit/push. Les autres crons appellent le même script avec `--job sentinelle|demande|integrite|autorite`. Son déploiement et son branchement dans les cinq prompts planifiés relèvent d'une release séparée ; ce document local seul ne modifie pas les crons actifs.
 
 ## 2. Lire le créneau du jour
 
