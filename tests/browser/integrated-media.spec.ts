@@ -157,10 +157,10 @@ test('une erreur média affiche un fallback téléchargeable sans faux état de 
   await expect(player.locator('video')).not.toHaveAttribute('controls', '');
 });
 
-test('fallback et sous-titres restent disponibles sans JavaScript', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
+test('fallback et sous-titres restent disponibles sans JavaScript', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
-  await page.goto(process.env.QA_URL ?? 'http://127.0.0.1:4321');
+  await page.goto('/');
   await expect(page.locator('video')).not.toHaveAttribute('controls', '');
   await expect(page.locator('video track')).toHaveAttribute('src', '/media/r9/explainer.vtt');
   await expect(page.locator('.hero-video-noscript')).toContainText('Votre navigateur ne peut pas lancer le lecteur interactif.');

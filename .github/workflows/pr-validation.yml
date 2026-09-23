@@ -30,7 +30,7 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
-      - name: Install the Playwright browser used by render gates
+      - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
       - name: Check Astro and content
@@ -41,5 +41,10 @@ jobs:
 
       - name: Build and run deterministic gates
         run: npm run build
+        env:
+          CF_PAGES: "1"
+
+      - name: Run browser contracts on Linux
+        run: npm run test
         env:
           CF_PAGES: "1"
