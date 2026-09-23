@@ -47,6 +47,36 @@
           "expected": { "status": "REFUS_REGLE_ABSENTE", "message": "Aucune règle écrite pour ce cas", "decision": "Retour au cabinet pour écrire la règle" }
         }
       ]
+    },
+    {
+      "slug": "fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire",
+      "cases": [
+        {
+          "id": "TRANS-01",
+          "input": { "ruleExists": true, "period": "août 2026", "journal": { "amount": 1200 }, "export": { "amount": 1200 }, "validator": "la responsable de mission" },
+          "expected": { "status": "PROPOSITION", "message": "Contrôle août 2026 préparé : journal des ventes et export de contrôle concordent à 1200 €", "decision": "Soumettre la proposition à la responsable de mission pour validation" }
+        },
+        {
+          "id": "TRANS-02",
+          "input": { "ruleExists": true, "period": null, "journal": { "amount": 1200 }, "export": { "amount": 1200 }, "validator": "la responsable de mission" },
+          "expected": { "status": "ATTENTE", "message": "Entrée manquante : période", "decision": "Demander l’information manquante avant toute préparation" }
+        },
+        {
+          "id": "TRANS-03",
+          "input": { "ruleExists": true, "period": "août 2026", "journal": { "amount": 1200 }, "export": { "amount": 1100 }, "validator": "la responsable de mission" },
+          "expected": { "status": "REFUS_CONTRADICTION", "message": "Écart août 2026 : journal des ventes 1200 € / export de contrôle 1100 €", "decision": "Présenter les deux sources à la responsable de mission pour arbitrage humain" }
+        },
+        {
+          "id": "TRANS-04",
+          "input": { "ruleExists": false, "period": "août 2026", "journal": { "amount": 1200 }, "export": { "amount": 1200 }, "validator": "la responsable de mission" },
+          "expected": { "status": "REFUS_REGLE_ABSENTE", "message": "Aucune règle écrite pour ce cas", "decision": "Retour au cabinet pour écrire la règle" }
+        },
+        {
+          "id": "TRANS-05",
+          "input": { "ruleExists": true, "period": "septembre 2026", "journal": { "amount": 950 }, "export": { "amount": 950 }, "validator": "la responsable de mission" },
+          "expected": { "status": "PROPOSITION", "message": "Contrôle septembre 2026 préparé : journal des ventes et export de contrôle concordent à 950 €", "decision": "Soumettre la proposition à la responsable de mission pour validation" }
+        }
+      ]
     }
   ]
 }

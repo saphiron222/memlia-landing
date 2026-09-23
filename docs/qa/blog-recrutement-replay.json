@@ -4,7 +4,7 @@
   "fictitious": true,
   "replayedAt": "2026-09-21",
   "fixturePath": "docs/design/blog-recrutement-proofs/replay-fixtures.json",
-  "fixtureSha256": "9b4e3776e99d679899c87556ae14450ded5ec44483916d63313cf34fcbe3a91c",
+  "fixtureSha256": "03f16b5a78a82b7015813ae262bb9461c49b6fa7dfa7f3c18b24285d3af513be",
   "articles": [
     {
       "slug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
@@ -113,6 +113,104 @@
           "status": "REFUS_REGLE_ABSENTE",
           "message": "Aucune règle écrite pour ce cas",
           "decision": "Retour au cabinet pour écrire la règle",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "slug": "fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire",
+      "status": "PASS",
+      "bodyPath": "editorial/recettes/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire/corps.md",
+      "bodySha256": "386e7a2a37dc34d853c64aa386379222e875b4483f80a48934b1d373c632934f",
+      "cases": [
+        {
+          "id": "TRANS-01",
+          "input": {
+            "ruleExists": true,
+            "period": "août 2026",
+            "journal": {
+              "amount": 1200
+            },
+            "export": {
+              "amount": 1200
+            },
+            "validator": "la responsable de mission"
+          },
+          "status": "PROPOSITION",
+          "message": "Contrôle août 2026 préparé : journal des ventes et export de contrôle concordent à 1200 €",
+          "decision": "Soumettre la proposition à la responsable de mission pour validation",
+          "passed": true
+        },
+        {
+          "id": "TRANS-02",
+          "input": {
+            "ruleExists": true,
+            "period": null,
+            "journal": {
+              "amount": 1200
+            },
+            "export": {
+              "amount": 1200
+            },
+            "validator": "la responsable de mission"
+          },
+          "status": "ATTENTE",
+          "message": "Entrée manquante : période",
+          "decision": "Demander l’information manquante avant toute préparation",
+          "passed": true
+        },
+        {
+          "id": "TRANS-03",
+          "input": {
+            "ruleExists": true,
+            "period": "août 2026",
+            "journal": {
+              "amount": 1200
+            },
+            "export": {
+              "amount": 1100
+            },
+            "validator": "la responsable de mission"
+          },
+          "status": "REFUS_CONTRADICTION",
+          "message": "Écart août 2026 : journal des ventes 1200 € / export de contrôle 1100 €",
+          "decision": "Présenter les deux sources à la responsable de mission pour arbitrage humain",
+          "passed": true
+        },
+        {
+          "id": "TRANS-04",
+          "input": {
+            "ruleExists": false,
+            "period": "août 2026",
+            "journal": {
+              "amount": 1200
+            },
+            "export": {
+              "amount": 1200
+            },
+            "validator": "la responsable de mission"
+          },
+          "status": "REFUS_REGLE_ABSENTE",
+          "message": "Aucune règle écrite pour ce cas",
+          "decision": "Retour au cabinet pour écrire la règle",
+          "passed": true
+        },
+        {
+          "id": "TRANS-05",
+          "input": {
+            "ruleExists": true,
+            "period": "septembre 2026",
+            "journal": {
+              "amount": 950
+            },
+            "export": {
+              "amount": 950
+            },
+            "validator": "la responsable de mission"
+          },
+          "status": "PROPOSITION",
+          "message": "Contrôle septembre 2026 préparé : journal des ventes et export de contrôle concordent à 950 €",
+          "decision": "Soumettre la proposition à la responsable de mission pour validation",
           "passed": true
         }
       ]

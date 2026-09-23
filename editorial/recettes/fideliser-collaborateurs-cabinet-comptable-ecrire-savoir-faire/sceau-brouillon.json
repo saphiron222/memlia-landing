@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "status": "SEALED_DRAFT_NOT_PUBLISHABLE",
+  "slug": "fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire",
+  "cover": "absente-volontairement",
+  "packetSha256": "b1f1bf1396c5c6352ba6c1f4a243c1e888868d35afd70d8b1a16f5e7b67c13f9",
+  "previewSha256": "46d0b8e7738dff4730c35e1168361be2bebd8f13d4e14fb12f6ae478d4506a39",
+  "reviewsSha256": "0e1a8f3f3dff43e648ee03bc5baa5f03b43f73d3c76d50ca25854ae2563713f1",
+  "fingerprint": {
+    "recipe": {
+      "path": "editorial/recettes/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire/recette.json",
+      "sha256": "7df050479e986054674fd7a78780010ed05f928c2f0966443d64426566cf596c"
+    },
+    "body": {
+      "path": "editorial/recettes/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire/corps.md",
+      "sha256": "386e7a2a37dc34d853c64aa386379222e875b4483f80a48934b1d373c632934f"
+    },
+    "replay": {
+      "path": "docs/qa/blog-recrutement-replay.json",
+      "sha256": "3d32f76ecbcd2019d442a95dbc18269cfcb414ac64c7caa75957faaa049855f6"
+    },
+    "fixture": {
+      "path": "docs/design/blog-recrutement-proofs/replay-fixtures.json",
+      "sha256": "03f16b5a78a82b7015813ae262bb9461c49b6fa7dfa7f3c18b24285d3af513be"
+    },
+    "queue": {
+      "path": "editorial/queue.json",
+      "sha256": "ecaf2df397b367e6164ac282528bec77d229034bb08380126ab3c05535f5de54"
+    }
+  },
+  "publication": false
+}

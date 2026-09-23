@@ -1,0 +1,55 @@
+{
+  "verdict": "PASS",
+  "review": {
+    "task": "t_429bcc5e",
+    "role": "qa-independante-lecture-seule",
+    "scope": "Brouillon privé seulement ; ni publication ni validation de la PR distante",
+    "score": 92,
+    "evidence": "Revue R9 indépendante sur les quatre SHA exacts, cinq claims et navigation clavier autonome jusqu'au bord droit à 375 et 320 px."
+  },
+  "subject": {
+    "recipeSha256": "7df050479e986054674fd7a78780010ed05f928c2f0966443d64426566cf596c",
+    "bodySha256": "386e7a2a37dc34d853c64aa386379222e875b4483f80a48934b1d373c632934f",
+    "packetSha256": "b1f1bf1396c5c6352ba6c1f4a243c1e888868d35afd70d8b1a16f5e7b67c13f9",
+    "previewSha256": "46d0b8e7738dff4730c35e1168361be2bebd8f13d4e14fb12f6ae478d4506a39"
+  },
+  "editorial": {
+    "p0": [],
+    "criteria": {
+      "intent-satisfaction": {"result": "PASS", "observation": "Réponse directe et méthode concrète de transmission d'une consigne orale en règle vérifiable."},
+      "serp-format-rankability": {"result": "PASS", "observation": "H1 et description alignés ; volume ND et rankability seulement plausible."},
+      "eeat-sources": {"result": "PASS", "observation": "Cinq claims retrouvés dans les pages institutionnelles Apec, OEC Paris et Atlas, avec contexte 2021/2023 et liens inline."},
+      "information-gain-proof": {"result": "PASS", "observation": "Cinq cas TRANS et douze cas au total rejoués sur données fictives avec oracle et sorties calculées ; aucune automatisation livrée n'est revendiquée."},
+      "technical-onpage-seo": {"result": "PASS", "observation": "Prévisualisation privée noindex,nofollow, H1 unique et trois tableaux focalisables ; dernière cellule atteinte au clavier à 375 et 320 px sans débordement."},
+      "ai-citability": {"result": "PASS", "observation": "Réponse directe, sorties fictives extractibles et provenance inline, sans inférence de résultat RH."},
+      "contextual-conversion": {"result": "PASS", "observation": "Une seule frontière RH, CTA Confier cette tâche et validation humaine dans les outils du cabinet."}
+    }
+  },
+  "business": {
+    "claims": {
+      "claim-1": {"verdict": "soutient", "reasoning": "Apec, communiqué du 9 décembre 2021, passage exact sur les tensions de l'emploi cadre ; non extrapolé à 2026."},
+      "claim-2": {"verdict": "soutient", "reasoning": "Question sur la fuite des talents présente dans le HTML OEC Paris de 2023 ; aucune causalité de la règle écrite n'est inférée."},
+      "claim-3": {"verdict": "soutient", "reasoning": "Extrait littéral OEC Paris sur la transmission des savoir-faire, cité comme propos intersectoriel rapporté."},
+      "claim-4": {"verdict": "soutient", "reasoning": "Phrase sur l'évolution des métiers retrouvée chez OEC Paris, sans effet RH propre aux cabinets."},
+      "claim-5": {"verdict": "soutient", "reasoning": "OPCO Atlas décrit la montée en compétences liée à la numérisation ; aucun résultat chiffré ni causalité revendiquée."}
+    }
+  },
+  "quality": {
+    "score": 92,
+    "p0": [],
+    "categories": {
+      "contentQuality": {"score": 27, "max": 30},
+      "seoOptimization": {"score": 23, "max": 25},
+      "eeatSignals": {"score": 15, "max": 15},
+      "technicalElements": {"score": 14, "max": 15},
+      "aiCitationReadiness": {"score": 13, "max": 15}
+    },
+    "reservation": "Le score porte sur un brouillon privé sans couverture, non sur une page publiable. La PR #1 et son check distant valident un ancien head."
+  },
+  "visual": {
+    "desktop": "Capture 1440 inspectée, sans défaut bloquant.",
+    "mobile375": {"scrollLeft": 285, "max": 285, "lastCellVisible": true, "documentWidth": 375, "pageErrors": 0},
+    "mobile320": {"scrollLeft": 340, "max": 340, "lastCellVisible": true, "documentWidth": 320, "pageErrors": 0},
+    "cover": "absente-volontairement"
+  }
+}

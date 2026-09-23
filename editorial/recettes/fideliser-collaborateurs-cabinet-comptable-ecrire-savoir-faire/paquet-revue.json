@@ -1,28 +1,140 @@
 {
+  "version": 2,
   "slug": "fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire",
+  "status": "BROUILLON_HORS_PUBLICATION",
+  "cover": {
+    "status": "absente-volontairement",
+    "creditsHiggsfield": 0,
+    "image": null
+  },
+  "publication": {
+    "queue": false,
+    "materialized": false
+  },
+  "fingerprint": {
+    "recipe": {
+      "path": "editorial/recettes/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire/recette.json",
+      "sha256": "7df050479e986054674fd7a78780010ed05f928c2f0966443d64426566cf596c"
+    },
+    "body": {
+      "path": "editorial/recettes/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire/corps.md",
+      "sha256": "386e7a2a37dc34d853c64aa386379222e875b4483f80a48934b1d373c632934f"
+    },
+    "replay": {
+      "path": "docs/qa/blog-recrutement-replay.json",
+      "sha256": "3d32f76ecbcd2019d442a95dbc18269cfcb414ac64c7caa75957faaa049855f6"
+    },
+    "fixture": {
+      "path": "docs/design/blog-recrutement-proofs/replay-fixtures.json",
+      "sha256": "03f16b5a78a82b7015813ae262bb9461c49b6fa7dfa7f3c18b24285d3af513be"
+    },
+    "queue": {
+      "path": "editorial/queue.json",
+      "sha256": "ecaf2df397b367e6164ac282528bec77d229034bb08380126ab3c05535f5de54"
+    }
+  },
   "title": "Transmission du savoir-faire en cabinet comptable : de l’oral à la règle écrite",
   "primaryQuery": "transmission savoir cabinet comptable",
-  "intent": "comprendre",
   "role": "direction-associes",
-  "format": "thought-leadership",
-  "task": "Rendre une consigne de cabinet transmissible sans rigidifier le jugement ni surveiller les collaborateurs.",
-  "corps": "## Réponse directe\n\nLa transmission du savoir-faire en cabinet comptable commence par une règle que quelqu’un d’autre peut lire, rejouer et faire valider. La méthode consiste à transformer une consigne orale en déclencheur, conditions, proposition, validation et cas de refus. Écrire cette règle ne permet pas, à lui seul, de conclure à un effet sur la fidélisation.\n\nCette approche ne mesure personne et ne promet aucun taux de rétention. Elle traite un problème d’organisation précis : une règle importante existe, mais elle n’est ni visible, ni rejouable, ni maintenable. L’automatisation n’intervient qu’après son écriture et son essai sur des cas fictifs.\n\n## Ce que la transmission ne permet pas de promettre\n\nLes sources contrôlées ne permettent pas d’isoler l’effet d’un levier sur la fidélisation. Elles évoquent plusieurs dimensions, dont les compétences, la rémunération, l’autonomie et les conditions de travail, dans des périmètres différents. Memlia ne promet aucun résultat RH.\n\nLe 9 décembre 2021, l’Apec et le Conseil supérieur de l’Ordre se sont mobilisés « dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable ». Ce communiqué ne décrit pas la situation de 2026. L’article de l’OEC Paris publié en 2023 résume un livre blanc intersectoriel et demande « comment recruter, éviter la fuite des talents, fidéliser ses équipes ? ». Il ne mesure aucun effet propre aux cabinets.\n\nLe lien avec Memlia est donc borné. Nous ne prétendons pas agir sur la fidélisation elle-même. Nous pouvons aider un cabinet à rendre une règle de production transmissible et à déplacer une répétition stable vers une préparation automatisée, avec validation humaine.\n\n## Le risque du savoir-faire seulement oral\n\nUne consigne orale peut fonctionner longtemps. La personne expérimentée sait quelles pièces regarder, quelles exceptions reconnaître et quand demander un arbitrage. Le problème apparaît quand la consigne doit être transmise.\n\n« Tu verras selon le dossier » résume une expérience, mais ne dit pas ce qui déclenche l’action. « Fais comme d’habitude » ne décrit ni les conditions ni les refus. La personne qui apprend doit alors reconstruire la règle à partir d’exemples, parfois sans savoir quel détail était décisif.\n\nCe flou a deux effets. Il consomme du temps d’accompagnement sur les cas courants et rend les variantes difficiles à détecter. Surtout, il peut donner l’impression qu’une automatisation est impossible, alors que la partie répétitive n’a simplement jamais été isolée.\n\n## Écrire sans rigidifier le métier\n\nUne règle écrite n’est pas une procédure infinie. Elle peut tenir sur une frontière courte : quand commencer, ce qu’il faut vérifier, ce que le système prépare, qui valide et quand s’arrêter.\n\nL’expérience reste indispensable pour décider où placer la frontière. Une personne expérimentée repère souvent qu’une condition apparemment secondaire change le sens du cas. L’écriture rend cette condition visible ; elle ne la remplace pas.\n\nDans le livre blanc intersectoriel résumé par l’OEC Paris en 2023, les auteurs soulignent « la place et le rôle des dispositifs de développement des compétences et de transmission des savoir-faire dans la dynamique globale de création de valeur ». La même publication précise : « Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance. » Ce corpus ne prouve ni un effet de Memlia ni un résultat de fidélisation ; il traite la transmission comme un sujet de direction dans les entreprises rencontrées.\n\n## La règle écrite\n\n**Déclencheur** : une situation reconnue appelle une préparation définie par le cabinet.\n\n**La frontière.** La consigne devient un déclencheur, des conditions, une proposition, une validation et des cas de refus. Le courant peut se préparer ; le contexte et la décision restent humains.\n\n**Conditions** : les entrées nécessaires, la période, le rôle et les limites sont explicites.\n\n**Action** : produire une proposition traçable, avec les éléments qui permettent de la vérifier.\n\n**Cas de refus** : exception, information manquante, désaccord entre sources ou règle absente.\n\n| Se prépare seul | Attend une validation | Reste humain |\n|---|---|---|\n| Reconnaître le cas courant | Confirmer la proposition | Définir la règle et ses exceptions |\n| Rassembler les éléments prévus | Choisir entre accepter, corriger ou refuser | Expliquer le contexte au nouvel arrivant |\n| Montrer la condition appliquée | Autoriser une action engageante | Faire évoluer la règle avec l’expérience |\n\n**La proposition.** Le système produit une sortie traçable avec les éléments nécessaires à sa vérification. La personne compétente choisit de l’accepter, de la corriger ou de la refuser.\n\n**L’arrêt.** Une information manquante, un désaccord entre sources, une exception ou une règle absente arrête le traitement. Le refus doit être lisible et transmissible.\n\n**Le jeu d’essai.** Quatre cas fictifs protègent contre deux excès : tout documenter jusqu’à rendre le travail illisible, ou tout laisser implicite au nom de la souplesse. La règle couvre le courant et nomme le doute ; l’humain garde le cas qui exige du contexte.\n\n## Rejoué sur le jeu fictif\n\nLe scénario invente une consigne de préparation sans reprendre une tâche ou une donnée client réelle.\n\n| Cas fictif | Ce que la règle trouve | Sortie attendue |\n|---|---|---|\n| Toutes les conditions sont présentes | Cas courant reconnu | Proposition prête à relire |\n| Une information obligatoire manque | Condition non satisfaite | Arrêt et demande ciblée |\n| Deux sources se contredisent | Exception explicite | Refus, arbitrage humain |\n| Le cas ressemble au courant mais la règle ne le couvre pas | Règle absente | Retour au cabinet, aucun contournement |\n\nLe quatrième cas sert de test de transmission. Une nouvelle personne doit pouvoir voir non seulement quoi faire, mais aussi pourquoi le système refuse. Si le refus dépend encore d’une explication orale inaccessible, la règle n’est pas terminée.\n\n## Ce qui devient plus facile à transmettre\n\nLe déclencheur devient nommable. Les entrées nécessaires sont visibles. Les exceptions connues ne sont plus découvertes au hasard. Une proposition montre la condition qu’elle a appliquée, ce qui facilite la relecture et la correction.\n\nCette visibilité permet aussi de distinguer l’apprentissage du métier et l’apprentissage d’un geste répétitif. Le premier demande du contexte, des échanges et du jugement. Le second peut parfois être préparé par le système une fois la règle éprouvée.\n\nLa maintenance devient enfin un objet collectif. Lorsqu’une pratique change, le cabinet peut modifier la règle, rejouer les cas fictifs et faire recetter la nouvelle version. Il n’a pas besoin d’attendre qu’une erreur révèle que deux personnes n’appliquaient plus la même convention.\n\n## Comment choisir la première règle à transmettre\n\nLa première règle n’est pas nécessairement la tâche la plus longue ni la plus visible. C’est une tâche répétitive dont le cabinet reconnaît déjà le cas courant, les entrées nécessaires et la personne qui décide. Une consigne encore débattue ou différente à chaque dossier doit d’abord être clarifiée par le cabinet ; l’automatisation ne tranche pas ce débat.\n\nUn bon point de départ tient dans une phrase concrète : « Quand ces éléments sont présents, nous préparons cette proposition, puis cette personne la valide. » Cette phrase fait apparaître cinq questions à traiter avant toute construction :\n\n1. quel événement déclenche la préparation ;\n2. quelles informations sont obligatoires ;\n3. quelle sortie peut être préparée sans engager le cabinet ;\n4. qui peut accepter, corriger ou refuser cette sortie ;\n5. quels cas doivent arrêter le traitement.\n\nLa règle est assez précise lorsqu’une seconde personne peut expliquer le même déclencheur et retrouver les mêmes cas d’arrêt sur le jeu fictif. Elle n’est pas terminée si l’un des tests exige encore « demande à la personne qui sait » sans indiquer le point d’arbitrage. Dans ce cas, il faut soit ajouter la condition manquante, soit déclarer ce cas hors périmètre et le garder humain.\n\nLe cabinet peut ensuite choisir le niveau d’assistance utile. Parfois, rendre la règle visible suffit. Parfois, le système peut rassembler les éléments, signaler une information manquante et préparer une proposition. L’action engageante reste soumise à validation. Le véhicule technique vient après ce choix : l’objectif public reste la prise en charge d’une tâche répétitive dans les outils existants, pas l’installation d’une catégorie de logiciel.\n\n## Comment vérifier que le savoir-faire est transmissible\n\nLa preuve n’est pas une déclaration générale sur la documentation du cabinet. Elle se construit sur une règle précise, avec un jeu d’essai fictif et des sorties observables.\n\n| Point vérifié | Question de recette | Signe que la règle doit être reprise |\n|---|---|---|\n| Déclencheur | Deux personnes commencent-elles au même moment ? | Le début dépend d’une habitude non écrite |\n| Conditions | Les mêmes informations sont-elles exigées ? | Une pièce manque mais le traitement continue |\n| Proposition | La sortie montre-t-elle la règle appliquée ? | La personne ne peut pas expliquer le résultat |\n| Validation | Le décideur et ses choix sont-ils explicites ? | Une action engageante part sans accord |\n| Arrêt | Les exceptions connues provoquent-elles un refus lisible ? | Le système improvise ou masque le doute |\n\nCette recette ne cherche pas à évaluer le collaborateur. Elle vérifie la règle et ses limites. Si une personne corrige la proposition, la correction sert à améliorer la règle après arbitrage du cabinet ; elle ne devient pas un score individuel. La maintenance porte sur le fonctionnement collectif, jamais sur une mesure nominative de productivité.\n\n## Ce qui reste une décision humaine\n\nChoisir la bonne règle, interpréter une exception, accompagner une personne et assumer une action ne sont pas des sorties mécaniques. L’automatisation peut présenter les éléments ; elle ne remplace pas le rôle de la personne compétente.\n\nLe livre blanc intersectoriel résumé par l’OEC Paris décrit les conditions de travail et d’emploi comme un élément distinctif de la promesse employeur des entreprises rencontrées. Ce constat n’est ni une mesure propre aux cabinets ni une causalité. Une règle plus lisible n’efface ni une charge mal répartie ni un problème de management. Elle rend seulement une partie du fonctionnement plus explicite.\n\n## Les erreurs à éviter\n\n### Transformer le savoir-faire en catalogue\n\nÉnumérer tout ce que le cabinet fait produit un inventaire difficile à maintenir et expose un faux périmètre commercial. On choisit une tâche, puis une règle.\n\n### Confondre documentation et contrôle\n\nLa règle décrit le flux. Elle ne sert pas à noter la personne qui l’applique. Aucun score individuel, aucun chronométrage nominatif et aucune surveillance ne sont nécessaires.\n\n### Automatiser avant d’avoir appris\n\nUne consigne orale variable ne devient pas stable parce qu’elle est codée. Elle devient seulement plus difficile à corriger. Le jeu fictif doit d’abord faire apparaître les cas manquants.\n\n### Promettre la fidélisation\n\nAucun article ni aucun système ne peut isoler un lien causal entre cette méthode et le départ ou le maintien d’un collaborateur. Le résultat livré par Memlia est la règle automatisée et recettée, pas un indicateur RH.\n\n## Pour aller plus loin\n\n[La méthode Memlia](/methode) présente le cycle complet : observation, règle écrite, jeu fictif, recette et maintenance. [Les garanties](/garanties) décrivent le refus et la validation humaine. [L’automatisation pour cabinet comptable](/automatisation-cabinet-comptable) explique le service sans imposer un outil.\n\nPour diagnostiquer les états du flux, lire [où passe le temps dans un cabinet en surcharge](/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps). Pour comprendre la frontière du métier, lire [ce que l’intelligence artificielle prépare et ce qui reste humain](/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain).\n\nSi une consigne orale mérite d’être rendue transmissible, [confier une première tâche](/contact) permet de la décrire. Nous l’écrivons avec le cabinet, l’éprouvons sur un jeu fictif et la construisons dans les outils existants. La validation reste humaine.\n\n## Sources\n\n- [OEC Paris / Le Francilien — Comment attirer et fidéliser des collaborateurs](https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/), publié le 11 janvier 2023, consulté le 21 septembre 2026.\n- [Apec et Conseil supérieur de l’Ordre — mobilisation au service de l’emploi](https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html), publié le 9 décembre 2021, consulté le 21 septembre 2026.",
-  "preuvesInline": [
-    {
-      "id": "fidelisation-avant-apres",
-      "insertBeforeHeading": "Écrire sans rigidifier le métier",
-      "alt": "Transformation fictive d’une consigne orale en règle écrite transmissible.",
-      "source": "cadre HTML et consigne fictive décrits dans l’article",
-      "capturedAt": "2026-09-21"
-    },
-    {
-      "id": "fidelisation-transmission",
-      "insertBeforeHeading": "Rejoué sur le jeu fictif",
-      "alt": "Parcours fictif de transmission avec préparation, validation et refus.",
-      "source": "cadre HTML et jeu fictif décrits dans l’article",
-      "capturedAt": "2026-09-21"
-    }
-  ],
+  "body": "## Réponse directe\n\nLa transmission du savoir-faire en cabinet comptable commence par une règle qu’une autre personne peut lire, rejouer et faire valider. Une consigne orale devient un déclencheur, des conditions, une proposition, une validation et des cas d’arrêt. Le jugement ne disparaît pas : la règle montre précisément où il intervient.\n\nNous partons d’une tâche répétitive reconnue par le cabinet. Nous écrivons son cas courant et ses limites dans les mots de l’équipe, puis nous éprouvons cette frontière sur un jeu fictif. L’automatisation ne vient qu’après, dans les outils déjà utilisés par le cabinet.\n\nDans cet article :\n\n- la frontière RH de cette méthode ;\n- le passage d’une consigne orale à une règle écrite ;\n- les sorties réellement obtenues sur cinq cas fictifs ;\n- les critères qui permettent de transmettre puis maintenir la règle.\n\n## La frontière RH, dite une fois\n\nCette méthode traite la transmission d’une règle de production. Elle ne mesure pas la fidélisation et ne permet pas d’attribuer un recrutement, un départ ou le maintien d’une personne à l’automatisation. Le contexte sectoriel est seulement documenté par le communiqué Apec et Conseil supérieur de l’Ordre du 9 décembre 2021, qui évoque [« un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable »](https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html), et par [l’OEC Paris, qui pose la question du recrutement, de la fuite des talents et de la fidélisation des équipes](https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/). Le résultat pris en charge ici reste borné : une règle écrite, automatisée, recettée et maintenable, sans indicateur RH.\n\n## Le risque du savoir-faire seulement oral\n\nUne consigne orale peut fonctionner longtemps. La personne expérimentée sait quelles pièces regarder, quelles exceptions reconnaître et quand demander un arbitrage. Le problème apparaît quand une autre personne doit reprendre le geste.\n\n« Tu verras selon le dossier » résume une expérience, mais ne dit pas ce qui déclenche l’action. « Fais comme d’habitude » ne décrit ni les conditions nécessaires ni les motifs de refus. La personne qui apprend doit reconstruire la règle à partir d’exemples, parfois sans savoir quel détail était décisif.\n\nCe flou consomme du temps d’accompagnement sur les cas courants et rend les variantes difficiles à détecter. Il peut aussi donner l’impression qu’une automatisation est impossible, alors que la partie répétitive n’a simplement jamais été isolée du jugement métier.\n\n## Écrire sans rigidifier le métier\n\nUne règle écrite n’est pas une procédure infinie. Elle tient sur une frontière courte : quand commencer, ce qu’il faut vérifier, ce que le système prépare, qui valide et quand s’arrêter.\n\nL’expérience reste indispensable pour placer cette frontière. Une personne expérimentée repère qu’une condition apparemment secondaire change le sens du cas. L’écriture rend cette condition visible ; elle ne décide pas à sa place.\n\nLe livre blanc intersectoriel résumé par l’OEC Paris souligne [la place des dispositifs de développement des compétences et de transmission des savoir-faire dans la création de valeur](https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/). La même publication précise que [« les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance »](https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/). Pour le cabinet, cela conduit à traiter la règle comme un objet maintenu : elle peut être relue, corrigée et rejouée lorsque la pratique change.\n\nLa [page de branche d’OPCO Atlas décrit un « enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation »](https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html). Ce constat ne mesure ni l’effet de cette règle fictive ni la fidélisation : il situe seulement l’enjeu de transmission dans les cabinets.\n\n## La règle écrite\n\n**La frontière.** Exemple entièrement inventé : à la clôture d’un mois, préparer un contrôle entre le montant du journal des ventes et celui d’un export de contrôle de la même période. Ce n’est ni une règle comptable universelle ni une automatisation Memlia livrée. Pour cet essai seulement, le cabinet fictif décide que la période, les deux montants et la responsable de mission sont requis ; des montants égaux permettent une proposition de contrôle, un écart exige un arbitrage. Rien n’est comptabilisé ni envoyé automatiquement.\n\n**Déclencheur** : les deux sources du mois sont disponibles pour contrôle.\n\n**Conditions** : période, montant du journal, montant de l’export et responsable de mission sont renseignés.\n\n**Proposition** : si les montants sont égaux, la sortie nomme la période, les deux sources et le montant comparé, sans engager le cabinet.\n\n**Validation** : la responsable de mission accepte, corrige ou refuse la proposition après avoir consulté les sources.\n\n**Arrêt** : période ou source absente, montants différents ou règle absente suspendent la proposition avec un motif lisible.\n\n**La proposition.** L’essai calcule une proposition de contrôle, pas une écriture : il montre la période, les deux sources et leur montant commun. La responsable de mission garde la validation.\n\n**L’arrêt.** Sans période, avec deux montants différents ou sans règle écrite, l’essai refuse de proposer et affiche un motif explicite.\n\n**Le jeu d’essai.** Cinq cas fictifs éprouvent le cas courant, l’entrée manquante, la contradiction, l’absence de règle et une seconde période au montant différent. Le script ne prend aucune décision comptable : il compare uniquement les entrées fictives selon cette règle d’essai.\n\n| Se prépare seul | Attend une validation | Reste humain |\n|---|---|---|\n| Reconnaître le cas courant | Confirmer la proposition | Définir la règle et ses exceptions |\n| Rassembler les éléments prévus | Accepter, corriger ou refuser | Expliquer le contexte à la personne qui reprend |\n| Montrer la condition appliquée | Autoriser une action engageante | Faire évoluer la règle avec l’expérience |\n\nCette frontière n’est pas un catalogue de tâches. Elle décrit une seule répétition stable et les cas qui doivent en sortir.\n\n## Rejoué sur le jeu fictif\n\nLe scénario invente une consigne de préparation. Il ne reprend aucune tâche, règle ou donnée client. Le script `scripts/replay-blog-recrutement-cases.mjs` a exécuté les cinq entrées ci-dessous contre les sorties attendues consignées séparément dans `replay-fixtures.json`. La table consigne les sorties calculées. Ce rejeu illustre la logique de la règle fictive, pas une validation en cabinet ni une preuve d’efficacité RH.\n\n| Cas exécuté | Entrée fictive | Statut obtenu | Message obtenu | Décision issue de l’exécution |\n|---|---|---|---|---|\n| `TRANS-01` | Août 2026 ; journal des ventes 1200 €, export de contrôle 1200 € | `PROPOSITION` | Contrôle août 2026 préparé : journal des ventes et export de contrôle concordent à 1200 € | Soumettre la proposition à la responsable de mission pour validation |\n| `TRANS-02` | La période manque | `ATTENTE` | Entrée manquante : période | Demander l’information manquante avant toute préparation |\n| `TRANS-03` | Août 2026 ; journal 1200 €, export 1100 € | `REFUS_CONTRADICTION` | Écart août 2026 : journal des ventes 1200 € / export de contrôle 1100 € | Présenter les deux sources à la responsable de mission pour arbitrage humain |\n| `TRANS-04` | Le cas n’a pas de règle écrite | `REFUS_REGLE_ABSENTE` | Aucune règle écrite pour ce cas | Retour au cabinet pour écrire la règle |\n| `TRANS-05` | Septembre 2026 ; journal et export 950 € | `PROPOSITION` | Contrôle septembre 2026 préparé : journal des ventes et export de contrôle concordent à 950 € | Soumettre la proposition à la responsable de mission pour validation |\n\nLe rapport de rejeu conserve l’entrée exacte de chaque cas, la sortie calculée et le verdict de comparaison avec les attentes écrites. Le cinquième cas vérifie que la proposition change avec les données d’une autre période. Le quatrième montre pourquoi l’essai refuse en l’absence de règle ; faire appliquer la règle par une seconde personne reste une étape de recette, non un résultat déjà observé.\n\n## Ce qui devient transmissible\n\nLe déclencheur devient nommable. Les entrées nécessaires sont visibles. Les exceptions connues ne sont plus découvertes au hasard. Une proposition montre la condition appliquée, ce qui facilite sa relecture et sa correction.\n\nCette visibilité sépare deux apprentissages. Comprendre le métier demande du contexte, des échanges et du jugement. Reprendre un geste répétitif demande une règle stable, un exemple et un motif d’arrêt. Le système peut préparer le second sans prétendre absorber le premier.\n\nLa maintenance devient un objet collectif. Lorsqu’une pratique change, le cabinet modifie la règle, rejoue les cas fictifs et fait recetter la nouvelle version. La divergence est traitée avant qu’une habitude implicite ne produise deux manières de faire.\n\n## Choisir la première règle à transmettre\n\nLa première règle n’est pas nécessairement la tâche la plus longue. C’est une répétition dont le cabinet reconnaît déjà le cas courant, les entrées nécessaires et la personne qui décide. Une consigne encore débattue ou différente à chaque dossier doit d’abord être clarifiée par le cabinet.\n\nUn bon point de départ tient dans une phrase : « Quand ces éléments sont présents, nous préparons cette proposition, puis cette personne la valide. » Cette phrase fait apparaître cinq questions :\n\n1. quel événement déclenche la préparation ;\n2. quelles informations sont obligatoires ;\n3. quelle sortie peut être préparée sans engager le cabinet ;\n4. qui peut accepter, corriger ou refuser cette sortie ;\n5. quels cas doivent arrêter le traitement.\n\nLa règle est assez précise lorsqu’une seconde personne retrouve le même déclencheur et les mêmes arrêts sur le jeu fictif. Si un test exige encore « demande à la personne qui sait » sans nommer le point d’arbitrage, il faut ajouter la condition manquante ou garder ce cas humain.\n\nL’écriture d’une règle appartient à la famille transversale de [la carte des tâches automatisables d’un cabinet comptable](/blog/automatiser-un-cabinet-comptable-la-carte-des-taches). Le véhicule technique vient ensuite : l’objectif reste la prise en charge d’une tâche répétitive dans les outils existants.\n\n## Vérifier que la règle est transmissible\n\nLa preuve se construit sur une règle précise, un jeu d’essai fictif et des sorties observables.\n\n| Point vérifié | Question de recette | Signe que la règle doit être reprise |\n|---|---|---|\n| Déclencheur | Deux personnes commencent-elles au même moment ? | Le début dépend d’une habitude non écrite |\n| Conditions | Les mêmes informations sont-elles exigées ? | Une pièce manque mais le traitement continue |\n| Proposition | La sortie montre-t-elle la règle appliquée ? | La personne ne peut pas expliquer le résultat |\n| Validation | Le décideur et ses choix sont-ils explicites ? | Une action engageante part sans accord |\n| Arrêt | Les exceptions connues provoquent-elles un refus lisible ? | Le système improvise ou masque le doute |\n\nCette recette vérifie la règle et ses limites. Une correction ne devient pas un score individuel : elle retourne dans la règle après arbitrage du cabinet. La maintenance porte sur le fonctionnement collectif, jamais sur une mesure nominative de productivité.\n\n## Ce qui reste une décision humaine\n\nChoisir la règle, interpréter une exception, accompagner une personne et assumer une action ne sont pas des sorties mécaniques. L’automatisation présente les éléments et prépare le cas courant ; la personne compétente garde l’arbitrage et l’autorisation.\n\nCette répartition doit rester lisible dans l’outil. Le statut, le motif et la prochaine décision apparaissent ensemble. Un refus sans motif recrée une consigne orale ; une proposition sans responsable de validation transforme une préparation en décision cachée.\n\n## Les erreurs à éviter\n\n### Transformer le savoir-faire en catalogue\n\nÉnumérer tout ce que le cabinet fait produit un inventaire difficile à maintenir. On choisit une tâche, puis une règle.\n\n### Confondre documentation et contrôle\n\nLa règle décrit le flux. Elle ne sert pas à noter la personne qui l’applique. Aucun score individuel, aucun chronométrage nominatif et aucune surveillance ne sont nécessaires.\n\n### Automatiser avant d’avoir appris\n\nUne consigne variable ne devient pas stable parce qu’elle est codée. Le jeu fictif doit d’abord faire apparaître les conditions et les arrêts manquants.\n\n## La règle à retenir\n\nUne consigne devient transmissible lorsqu’une seconde personne peut reconnaître le même déclencheur, obtenir la même proposition et comprendre les mêmes refus. Le système prépare le courant ; le cabinet écrit la limite, valide la sortie et fait évoluer la règle.\n\n## Pour aller plus loin\n\n[La méthode Memlia](/methode) présente le cycle complet : observation, règle écrite, jeu fictif, recette et maintenance. [Les garanties](/garanties) décrivent le refus et la validation humaine. Pour diagnostiquer les états du flux, lire [où passe le temps dans un cabinet en surcharge](/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps), puis [ce que l’intelligence artificielle prépare et ce qui reste humain](/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain).\n\nNous écrivons la règle de cette tâche dans vos mots, nous l’automatisons dans les outils que vos équipes utilisent déjà et elles la recettent sur un jeu fictif puis sur vos dossiers. Votre cabinet garde l’accompagnement, les exceptions et chaque décision engageante. [Confier cette tâche](/contact) ne demande aucun document : rien à envoyer, décrivez la tâche et nous vous disons ce qu’il faut pour la prendre en charge.",
+  "replay": {
+    "slug": "fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire",
+    "status": "PASS",
+    "bodyPath": "editorial/recettes/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire/corps.md",
+    "bodySha256": "386e7a2a37dc34d853c64aa386379222e875b4483f80a48934b1d373c632934f",
+    "cases": [
+      {
+        "id": "TRANS-01",
+        "input": {
+          "ruleExists": true,
+          "period": "août 2026",
+          "journal": {
+            "amount": 1200
+          },
+          "export": {
+            "amount": 1200
+          },
+          "validator": "la responsable de mission"
+        },
+        "status": "PROPOSITION",
+        "message": "Contrôle août 2026 préparé : journal des ventes et export de contrôle concordent à 1200 €",
+        "decision": "Soumettre la proposition à la responsable de mission pour validation",
+        "passed": true
+      },
+      {
+        "id": "TRANS-02",
+        "input": {
+          "ruleExists": true,
+          "period": null,
+          "journal": {
+            "amount": 1200
+          },
+          "export": {
+            "amount": 1200
+          },
+          "validator": "la responsable de mission"
+        },
+        "status": "ATTENTE",
+        "message": "Entrée manquante : période",
+        "decision": "Demander l’information manquante avant toute préparation",
+        "passed": true
+      },
+      {
+        "id": "TRANS-03",
+        "input": {
+          "ruleExists": true,
+          "period": "août 2026",
+          "journal": {
+            "amount": 1200
+          },
+          "export": {
+            "amount": 1100
+          },
+          "validator": "la responsable de mission"
+        },
+        "status": "REFUS_CONTRADICTION",
+        "message": "Écart août 2026 : journal des ventes 1200 € / export de contrôle 1100 €",
+        "decision": "Présenter les deux sources à la responsable de mission pour arbitrage humain",
+        "passed": true
+      },
+      {
+        "id": "TRANS-04",
+        "input": {
+          "ruleExists": false,
+          "period": "août 2026",
+          "journal": {
+            "amount": 1200
+          },
+          "export": {
+            "amount": 1200
+          },
+          "validator": "la responsable de mission"
+        },
+        "status": "REFUS_REGLE_ABSENTE",
+        "message": "Aucune règle écrite pour ce cas",
+        "decision": "Retour au cabinet pour écrire la règle",
+        "passed": true
+      },
+      {
+        "id": "TRANS-05",
+        "input": {
+          "ruleExists": true,
+          "period": "septembre 2026",
+          "journal": {
+            "amount": 950
+          },
+          "export": {
+            "amount": 950
+          },
+          "validator": "la responsable de mission"
+        },
+        "status": "PROPOSITION",
+        "message": "Contrôle septembre 2026 préparé : journal des ventes et export de contrôle concordent à 950 €",
+        "decision": "Soumettre la proposition à la responsable de mission pour validation",
+        "passed": true
+      }
+    ]
+  },
   "sources": [
     {
       "id": "apec-oec",
@@ -30,7 +142,9 @@
       "title": "L’Apec et le Conseil supérieur de l’ordre des experts-comptables se mobilisent au service de l’emploi",
       "url": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html",
       "level": "tier-1",
-      "official": false
+      "official": false,
+      "classificationReason": "Communiqué institutionnel daté du 9 décembre 2021 ; contexte d’emploi cadre, sans mesure de la situation en 2026.",
+      "excerpt": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable"
     },
     {
       "id": "oec-attractivite",
@@ -38,28 +152,74 @@
       "title": "Comment attirer et fidéliser des collaborateurs",
       "url": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
       "level": "tier-2",
-      "official": false
+      "official": false,
+      "classificationReason": "Article du 11 janvier 2023 résumant un livre blanc intersectoriel ; contexte qualitatif non spécifique aux cabinets et sans causalité établie.",
+      "excerpt": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance."
+    },
+    {
+      "id": "atlas-branche",
+      "publisher": "OPCO Atlas",
+      "title": "Experts-comptables, Commissaires aux comptes et Audit",
+      "url": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
+      "level": "tier-1",
+      "official": false,
+      "classificationReason": "Page institutionnelle de branche qualitative et non datée, relue HTTP 200 le 23 septembre 2026 ; aucun effet RH ou résultat de l’automatisation n’en est inféré.",
+      "excerpt": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation."
     }
   ],
   "claims": [
     {
-      "id": "claim-unit-249803ada288-1",
-      "claim": "dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable",
+      "id": "claim-1",
+      "unite": "La frontière RH, dite une fois",
+      "claim": "un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable",
       "type": "information",
       "sourceId": "apec-oec",
-      "citation": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable",
-      "contexte": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable, les deux institutions se mobilisent pour la relance et renouvellent leur relation partenariale."
+      "excerpt": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable",
+      "explanation": "Le communiqué daté du 9 décembre 2021 porte cette formulation sur l’emploi cadre ; elle n’est pas actualisée en constat 2026.",
+      "url": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html"
     },
     {
-      "id": "claim-unit-0cd64f29ab9c-1",
+      "id": "claim-2",
+      "unite": "La frontière RH, dite une fois",
+      "claim": "fuite des talents",
+      "type": "information",
+      "sourceId": "oec-attractivite",
+      "excerpt": "<strong>comment recruter</strong>, éviter la fuite des talents, <strong>fidéliser ses équipes</strong> ?",
+      "explanation": "Extrait littéral du HTML OEC Paris, balises et ponctuation comprises ; l’article ne le transforme ni en mesure sectorielle ni en effet attribué à Memlia.",
+      "url": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/"
+    },
+    {
+      "id": "claim-3",
+      "unite": "Écrire sans rigidifier le métier",
+      "claim": "transmission des savoir-faire",
+      "type": "information",
+      "sourceId": "oec-attractivite",
+      "excerpt": " et de transmission des savoir-faire dans la dynamique globale de <strong style=\"font-weight:400;\">création de valeur</strong>.",
+      "explanation": "Extrait littéral du HTML du livre blanc intersectoriel rapporté par l’OEC Paris, sans extrapolation propre aux cabinets.",
+      "url": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/"
+    },
+    {
+      "id": "claim-4",
+      "unite": "Écrire sans rigidifier le métier",
       "claim": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance",
       "type": "information",
       "sourceId": "oec-attractivite",
-      "citation": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance.",
-      "contexte": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance."
+      "excerpt": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance.",
+      "explanation": "La publication rapporte cette phrase issue d’un corpus intersectoriel, sans en déduire un résultat RH propre aux cabinets.",
+      "url": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/"
+    },
+    {
+      "id": "claim-5",
+      "unite": "Écrire sans rigidifier le métier",
+      "claim": "montée en compétences des collaborateurs pour accompagner cette numérisation",
+      "type": "information",
+      "sourceId": "atlas-branche",
+      "excerpt": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation.",
+      "explanation": "La page de branche OPCO Atlas décrit qualitativement l’enjeu de compétences ; aucun effet causal ou chiffre n’est revendiqué.",
+      "url": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html"
     }
   ],
-  "criteresEditoriaux": [
+  "editorialCriteria": [
     {
       "id": "intent-satisfaction",
       "weight": 20
@@ -89,54 +249,6 @@
       "weight": 5
     }
   ],
-  "criteresImage": [
-    "brief-six-components",
-    "generation-constraints",
-    "fictive-provenance",
-    "recognizable-subject",
-    "technical-derivatives",
-    "alt-information"
-  ],
-  "image": {
-    "alt": "Consigne orale fictive transformée en règle écrite avec validation et arrêt dans le doute",
-    "cadre": {
-      "titre": "Transmission du savoir-faire en cabinet comptable",
-      "sousTitre": "Écrire le savoir-faire avant de l’automatiser",
-      "famille": "RH et formation · RH interne du cabinet",
-      "colonnes": [
-        {
-          "titre": "Rendre visible",
-          "items": [
-            "Déclencheur",
-            "Conditions",
-            "Source"
-          ]
-        },
-        {
-          "titre": "Rendre transmissible",
-          "items": [
-            "Proposition",
-            "Validation",
-            "Refus"
-          ]
-        },
-        {
-          "titre": "Garder humain",
-          "items": [
-            "Contexte",
-            "Accompagnement",
-            "Décision"
-          ]
-        }
-      ],
-      "pied": "memlia.fr · aucun score individuel"
-    },
-    "master": "editorial/articles/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire/preuves/image/master.png"
-  },
-  "identites": {
-    "auteur": "kevin",
-    "reviewerEditorial": "marketing",
-    "reviewerMetier": "relecteur-metier-rh-cabinet",
-    "roleMetier": "direction-associes"
-  }
+  "preview": "editorial/recettes/fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire/preview-privee.html",
+  "errors": []
 }
