@@ -54,3 +54,41 @@ test('cron refuses a dirty checkout and accepts only clean synced main with requ
     assert.ok(JSON.parse(dirty.stdout).errors.some((e) => e.includes('arbre')));
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
+
+test('cron refuses wrong checkout, failed fetch, stale SHA and never claims publication', () => {
+  const root = mkdtempSync(join(tmpdir(), 'memlia-cron-'));
+  const other = mkdtempSync(join(tmpdir(), 'memlia-cron-other-'));
+  try {
+    git(root, 'init', '-q', '-b', 'main');
+    git(root, 'config', 'user.email', 'test@example.invalid');
+    git(root, 'config', 'user.name', 'Test');
+    mkdirSync(join(root, 'docs/strategy/site-v3'), { recursive: true });
+    for (const name of ['RUNBOOK-QUOTIDIEN.md', 'RUNBOOK-SEO.md', 'CRONS-SEO.md']) writeFileSync(join(root, 'docs/strategy/site-v3', name), 'test');
+    writeFileSync(join(root, 'CLAUDE.md'), 'test');
+    git(root, 'add', '.');
+    git(root, 'commit', '-qm', 'init');
+    const args = [script, '--root', root, '--job', 'forge'];
+    const run = (cwd = root) => spawnSync(process.execPath, args, { cwd, encoding: 'utf8' });
+    const wrong = run(other);
+    assert.notEqual(wrong.status, 0);
+    assert.ok(JSON.parse(wrong.stdout).errors.some((e) => e.includes('workdir')));
+    const noRemote = run();
+    assert.notEqual(noRemote.status, 0);
+    assert.ok(JSON.parse(noRemote.stdout).errors.some((e) => e.includes('fetch')));
+    git(root, 'clone', '-q', '--bare', root, other);
+    git(root, 'remote', 'add', 'origin', other);
+    git(root, 'fetch', '-q', 'origin', 'main');
+    const valid = run();
+    assert.equal(valid.status, 0);
+    assert.deepEqual(Object.keys(JSON.parse(valid.stdout)).sort(), ['branch', 'cwd', 'errors', 'head', 'job', 'ok', 'originMain', 'root'].sort());
+    writeFileSync(join(root, 'CLAUDE.md'), 'changed');
+    git(root, 'add', '.');
+    git(root, 'commit', '-qm', 'advance without remote');
+    const stale = run();
+    assert.notEqual(stale.status, 0);
+    assert.ok(JSON.parse(stale.stdout).errors.some((e) => e.includes('désynchronisé')));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+    rmSync(other, { recursive: true, force: true });
+  }
+});
