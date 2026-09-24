@@ -4,6 +4,7 @@ import Button from '@/components/Button.astro';
 import { CTA, SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 import { GLOSSARY_BY_ID, GLOSSARY_ENTRIES, GLOSSARY_SOURCES } from '@/data/glossary';
+import { isSuspendedBlogPath } from '@/data/blog-visibility.mjs';
 
 const title = 'Glossaire des tâches et contrôles du cabinet | Memlia';
 const description = 'Glossaire comptable : des définitions directes, leur contexte d’usage et la limite entre préparation automatisable et décision professionnelle.';
@@ -114,7 +115,7 @@ const graph = {
                     <div>
                       <strong>Pour aller plus loin</strong>
                       <ul class="liens-liste">
-                        {entry.internalLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+                        {entry.internalLinks.filter((link) => !isSuspendedBlogPath(link.href)).map((link) => <li><a href={link.href}>{link.label}</a></li>)}
                       </ul>
                     </div>
                   </div>

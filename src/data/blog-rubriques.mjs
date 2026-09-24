@@ -5,6 +5,8 @@
  * page lisent la même décision. Les articles restent une collection Astro ; cette table ne
  * contient ni titre ni résumé d’article et ne peut donc pas devenir une seconde liste éditoriale.
  */
+import { SUSPENDED_BLOG_SLUGS } from './blog-visibility.mjs';
+
 export const BLOG_RUBRIQUES = Object.freeze([
   Object.freeze({
     slug: 'paie-dsn-cabinet-comptable',
@@ -35,7 +37,7 @@ export const BLOG_RUBRIQUES = Object.freeze([
     description: 'Gestion des pièces comptables : organiser les pièces manquantes puis vérifier les écritures proposées sous le contrôle du cabinet.',
     chapeau: 'Une pièce absente bloque la production ; une pièce lue trop vite déplace le risque dans la saisie. Cette rubrique suit la même matière de la collecte à la proposition d’écriture, en séparant la relance, la complétude, l’extraction et les contrôles que le cabinet garde.',
     roleTitre: 'De la pièce attendue à l’écriture proposée',
-    role: 'Le premier article écrit la règle qui détermine quelles pièces manquent, quand préparer une relance et quand cesser. Le second commence lorsque la pièce est là : il distingue les champs extraits, les contrôles déterministes et les anomalies qui attendent une personne. Le hub relie ces deux moments sans viser la requête propre à la saisie automatisée.',
+    role: 'L’article écrit la règle qui détermine quelles pièces manquent, quand préparer une relance et quand cesser. Pour la saisie, la page dédiée décrit ce qui se prépare et ce que le cabinet garde à valider. Le hub relie ces deux moments sans viser la requête propre à la saisie automatisée.',
     articleIds: Object.freeze([
       'automatiser-la-relance-des-pieces-clients',
       'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
@@ -95,8 +97,9 @@ export function construireRubriques(entrees, { minimum = 2 } = {}) {
       .map((articleId) => visibles.get(articleId))
       .filter(Boolean)
       .sort((a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime());
-    if (articles.length < minimum) {
-      throw new Error(`[blog-rubriques] ${rubrique.slug} : ${articles.length} article visible, minimum ${minimum}`);
+    const requis = Math.max(1, minimum - rubrique.articleIds.filter((id) => SUSPENDED_BLOG_SLUGS.includes(id)).length);
+    if (articles.length < requis) {
+      throw new Error(`[blog-rubriques] ${rubrique.slug} : ${articles.length} article visible, minimum ${requis}`);
     }
     return Object.freeze({ ...rubrique, articles: Object.freeze(articles) });
   });

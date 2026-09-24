@@ -22,6 +22,7 @@ INTEGRATION_PAGES = {
     'bulletin-de-paie-silae',
 }
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
+SUSPENDED_ARTICLES = {'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'}
 PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
                    'comprendre-les-comptes-rendus-metier-dsn',
                    # v3, 16/09/2026 : le pilier et le premier satellite publiés par la forge.
@@ -133,7 +134,7 @@ class BuildProof(unittest.TestCase):
             subtree = ET.parse(DIST / urlsplit(link).path.lstrip('/'))
             for url in subtree.findall('.//s:url', ns):
                 pages[url.find('s:loc', ns).text] = url.find('s:lastmod', ns).text
-        published_articles = [a for a in articles() if not is_preview_article(a)]
+        published_articles = [a for a in articles() if not is_preview_article(a) and a.stem not in SUSPENDED_ARTICLES]
         # Les pages légales et les candidats service noindex restent hors sitemap. Une page de
         # service n'y entre qu'après le passage de la forge au statut `publie`.
         services_publies = set()
@@ -306,7 +307,7 @@ class BuildProof(unittest.TestCase):
     def test_blog_index_lists_every_article(self):
         doc = Document(DIST / 'blog.html')
         listed = re.findall(r'data-article="([^"]+)"', (DIST / 'blog.html').read_text())
-        self.assertEqual(sorted(listed), [a.stem for a in articles()])
+        self.assertEqual(sorted(listed), [a.stem for a in articles() if a.stem not in SUSPENDED_ARTICLES])
         canonical = next(m['href'] for m in doc.select('link') if m.get('rel') == 'canonical')
         self.assertEqual(canonical, f'{SITE}/blog')
         robots = next(m['content'] for m in doc.select('meta') if m.get('name') == 'robots')
@@ -320,7 +321,7 @@ class BuildProof(unittest.TestCase):
         # aucun noeud de page a cette route.
         self.assertEqual(types, [['CollectionPage', 'Blog'], 'BreadcrumbList', 'Person', 'Organization', 'WebSite'])
         blog = graph['@graph'][0]
-        self.assertEqual(sorted(p['@id'] for p in blog['blogPost']), [f'{SITE}/blog/{a.stem}#article' for a in articles()])
+        self.assertEqual(sorted(p['@id'] for p in blog['blogPost']), [f'{SITE}/blog/{a.stem}#article' for a in articles() if a.stem not in SUSPENDED_ARTICLES])
         # Règle réelle depuis la v3 (16/09/2026, commit d992cec) : le pilier ouvre la liste quand
         # il est publié, puis les autres du plus récent au plus ancien, dans la liste HTML comme
         # dans le graphe (égalité des dates tolérée). L'assertion précédente n'exigeait qu'une
@@ -397,7 +398,7 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(channel.find('language').text, 'fr-fr')
         self.assertEqual(channel.find('{http://www.w3.org/2005/Atom}link').get('href'), f'{SITE}/blog/rss.xml')
         items = channel.findall('item')
-        published_articles = [a for a in articles() if not is_preview_article(a)]
+        published_articles = [a for a in articles() if not is_preview_article(a) and a.stem not in SUSPENDED_ARTICLES]
         self.assertEqual(sorted(i.find('link').text for i in items), [f'{SITE}/blog/{a.stem}' for a in published_articles])
         # Même ordre que la partie publiée de la liste HTML ; un candidat preview reste exclu du flux.
         listed = re.findall(r'data-article="([^"]+)"', (DIST / 'blog.html').read_text())

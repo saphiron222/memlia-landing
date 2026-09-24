@@ -4,11 +4,12 @@ import { defineConfig } from 'astro/config';
 import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import ancresTitres from './src/lib/ancres-titres.mjs';
+import liensBlogSuspendus from './src/lib/liens-blog-suspendus.mjs';
 
 
 import { SITE, PAGES_NOINDEX } from './src/data/site.mjs';
 import { BLOG, lireArticlesPublies } from './src/data/blog.mjs';
-import { parseBlogPreviewSlugs } from './src/data/blog-visibility.mjs';
+import { parseBlogPreviewSlugs, isSuspendedBlogPath } from './src/data/blog-visibility.mjs';
 
 const BLOG_PREVIEW_SLUGS = new Set(parseBlogPreviewSlugs(process.env.BLOG_PREVIEW_SLUGS ?? process.env.BLOG_PREVIEW_SLUG));
 
@@ -54,7 +55,7 @@ export default defineConfig({
   compressHTML: true,
   // Processeur Markdown d'Astro 7 : les ancres des titres d'articles sont posées en ASCII
   // avant le plugin d'identifiants d'Astro, qui conserve un `id` déjà présent.
-  markdown: { processor: satteri({ hastPlugins: [ancresTitres()] }) },
+  markdown: { processor: satteri({ hastPlugins: [ancresTitres(), liensBlogSuspendus()] }) },
   integrations: [
     sitemap({
       // Astro génère un index et ses sous-sitemaps ; alias historique créé au post-build.
@@ -62,6 +63,7 @@ export default defineConfig({
       filter: (page) => {
         const path = new URL(page).pathname.replace(/\/$/, '') || '/';
         if (PAGES_NOINDEX.includes(path)) return false;
+        if (isSuspendedBlogPath(path)) return false;
         if (BLOG_PREVIEW_SLUGS.has(path.slice(`${BLOG.chemin}/`.length))) return false;
         if (path.startsWith('/automatisation/') && !SERVICES_PUBLIES.has(path)) return false;
 

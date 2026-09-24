@@ -10,6 +10,7 @@ import { parse as parseYaml } from 'yaml';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
 import { retirerPreuvesInline } from './blog-proof-figures.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
+import { isSuspendedBlogPath } from '../../src/data/blog-visibility.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
   'blog-strategy', 'blog-brand', 'blog-persona', 'blog-discourse', 'blog-google', 'blog-calendar',
@@ -1730,6 +1731,8 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     }
     for (const sourceUrl of manifest.links?.incoming ?? []) {
       const expectedLink = `/blog/${slug}`;
+      // Une suspension retire volontairement les liens entrants, sans invalider le dossier scellé.
+      if (isSuspendedBlogPath(expectedLink)) continue;
       if (!incomingSourceContainsLink(absoluteRoot, sourceUrl, slug, renderedBlogHtml)) {
         errors.push(`Le lien entrant depuis ${sourceUrl} vers ${expectedLink} est absent.`);
       }

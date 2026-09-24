@@ -6,7 +6,7 @@ import Picto from '@/components/Picto.astro';
 import { SITE } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { construireRubriques } from '@/data/blog-rubriques.mjs';
-import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
+import { isBlogEntryDiscoverable } from '@/data/blog-visibility.mjs';
 import { IMAGES } from '@/data/images.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 
@@ -15,7 +15,7 @@ import { organizationNode } from '@/data/schema.mjs';
  * Cette ligne est le contrat : aucun tableau de cartes n’est écrit dans le gabarit.
  */
 export async function getStaticPaths() {
-  const articles = await getCollection('blog', isBlogEntryVisible);
+  const articles = await getCollection('blog', isBlogEntryDiscoverable);
   return construireRubriques(articles).map((rubrique) => ({ params: { slug: rubrique.slug }, props: { rubrique } }));
 }
 

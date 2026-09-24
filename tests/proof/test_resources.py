@@ -97,7 +97,7 @@ class ResourceProof(unittest.TestCase):
     def test_historical_rss_remains_blog_only(self):
         channel = ET.parse(DIST / 'blog/rss.xml')
         links = [link for item in channel.findall('./channel/item') if (link := item.findtext('link')) is not None]
-        expected = {f'{SITE}/blog/{slug}' for slug in published_blog_slugs()}
+        expected = {f'{SITE}/blog/{slug}' for slug in published_blog_slugs() if slug != 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'}
         self.assertEqual(set(links), expected)
         self.assertFalse(any('/ressources' in link or '/glossaire' in link for link in links))
 

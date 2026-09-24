@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { parse as parseHtml } from 'parse5';
 import { auditerServiceDesign } from './verify-service-design.mjs';
 import { BLOG_RUBRIQUES } from '../src/data/blog-rubriques.mjs';
+import { isSuspendedBlogPath } from '../src/data/blog-visibility.mjs';
 
 const CLAUSES = Object.freeze({ 1: 'DA', 2: 'IMAGES', 3: 'SEO', 4: 'COPIE', 5: 'LIENS' });
 const DATE_ISO = /^\d{4}-\d{2}-\d{2}$/;
@@ -530,6 +531,8 @@ export function auditerContratPages({
   }
 
   for (const target of pages) {
+    // L'URL suspendue conserve sa route, sans demander de lien entrant aux pages indexables.
+    if (isSuspendedBlogPath(target.route)) continue;
     if (routeContracts.get(target.route)?.incomingLinkRequired === false) continue;
     const incoming = pages.filter((source) => source.route !== target.route && source.hrefs.includes(target.route));
     if (incoming.length === 0) erreurs.push(error(target.route, 5, 'aucune page servie ne pointe vers elle'));

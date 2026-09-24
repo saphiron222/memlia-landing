@@ -22,7 +22,6 @@ RUBRIQUES = {
     "gestion-pieces-comptables": {
         "label": "Saisie et pièces",
         "articles": {
-            "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
             "automatiser-la-relance-des-pieces-clients",
         },
     },
