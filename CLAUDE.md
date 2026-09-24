@@ -49,9 +49,14 @@ rédigé, en WebP/AVIF ; les captures produit viennent du banc Windows, sur le j
 
 ## Règles non négociables
 
-- **Rien n'est publié sans Kevin.** Tu travailles sur une branche `site/<sujet>`, tu déploies une
+- **Distinguer push et publication.** Décision Kevin du 24/09/2026 : l'agent peut pousser sans
+  nouveau « go » une branche de travail non destructive pour ouvrir ou actualiser une PR, après
+  vérification du diff, du dépôt et du SHA ciblés. Le push forcé et la suppression de branches
+  distantes restent interdits. Tu travailles sur une branche `site/<sujet>`, tu déploies une
   **prévisualisation** (`npx wrangler pages deploy dist --project-name memlia --branch preview-<sujet>`)
-  et tu donnes l'URL. La production (`--branch main`) et `git push` sont **interdits** : Kevin s'en charge.
+  et tu donnes l'URL. La fusion d'une PR, le push vers `main`, le déploiement de production
+  (`--branch main`) et la publication de contenu suivent le contrat explicite de la carte et leurs
+  contrôles propres ; l'autorisation d'un push de branche ne les approuve pas automatiquement.
 - **Le SEO acquis ne régresse pas** : `title`, `description`, canonical, Open Graph, JSON-LD (Organization,
   WebSite, Service, FAQPage), `robots.txt`, sitemap, `llms.txt`, pages légales en `noindex`,
   `lang="fr"`, un seul `h1`. Lighthouse ≥ 95 sur les quatre axes.
