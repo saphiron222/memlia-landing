@@ -288,9 +288,10 @@ class BuildProof(unittest.TestCase):
         anchors = re.findall(r'https://memlia.fr/#([a-z0-9-]+)', llms)
         self.assertGreaterEqual(len(anchors), 4)
         self.assertEqual(set(anchors) - ids, set())
-        # Chaque article publié est déclaré dans llms.txt, et rien d'autre ne l'est.
+        # Chaque article accessible est déclaré, sauf la publication suspendue (HTTP 503).
         declares = set(re.findall(r'https://memlia.fr/blog/([a-z0-9-]+)\)', llms))
-        self.assertEqual(declares, {a.stem for a in articles()})
+        suspended = 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'
+        self.assertEqual(declares, {a.stem for a in articles()} - {suspended})
 
     def test_structured_data_no_unreleased_features(self):
         html = (DIST / 'index.html').read_text()

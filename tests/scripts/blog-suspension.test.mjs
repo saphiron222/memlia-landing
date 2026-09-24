@@ -17,6 +17,7 @@ test('la suspension retire la publication des listes et du sitemap sans effacer 
 });
 
 test('aucune des sept pages indexables ne renvoie un lien vers la publication suspendue', () => {
+  assert.ok(!readFileSync('public/llms.txt', 'utf8').includes(path), 'llms.txt');
   const pages = [
     'src/pages/automatisation-cabinet-comptable.astro',
     'src/pages/garanties.astro',
