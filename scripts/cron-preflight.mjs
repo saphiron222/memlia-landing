@@ -12,9 +12,13 @@ const required = {
   autorite: ['RUNBOOK-SEO.md', 'CRONS-SEO.md'],
 };
 const args = process.argv.slice(2);
-const option = (key) => args[args.indexOf(key) + 1];
+const option = (key) => args.includes(key) ? args[args.indexOf(key) + 1] : undefined;
 const root = resolve(option('--root') ?? '');
 const job = option('--job');
+const phase = option('--phase') ?? 'initial';
+const base = option('--base');
+const commit = option('--commit');
+const sha = (value) => typeof value === 'string' && /^[0-9a-f]{40}$|^[0-9a-f]{64}$/.test(value);
 const errors = [];
 const report = { ok: false, job, root, cwd: process.cwd(), branch: null, head: null, originMain: null, errors };
 const git = (...argv) => {
@@ -24,18 +28,29 @@ const git = (...argv) => {
 };
 try {
   if (!required[job] || !args.includes('--root')) throw new Error('Usage : cron-preflight --root <checkout> --job <forge|sentinelle|demande|integrite|autorite>');
+  if (!['initial', 'before-commit', 'before-push'].includes(phase) ||
+      (phase === 'initial' && (base || commit)) ||
+      (phase !== 'initial' && !sha(base)) ||
+      (phase === 'before-commit' && commit) ||
+      (phase === 'before-push' && !sha(commit))) throw new Error('phase/base/commit invalides');
   if (realpathSync(root) !== realpathSync(process.cwd())) errors.push(`workdir incorrect : ${process.cwd()} != ${root}`);
   if (realpathSync(git('rev-parse', '--show-toplevel')) !== realpathSync(root)) errors.push('checkout incorrect : root doit être la racine Git');
   report.branch = git('branch', '--show-current');
   if (report.branch !== 'main') errors.push(`branche incorrecte : ${report.branch || '(detached)'} != main`);
-  if (git('status', '--porcelain=v1')) errors.push('arbre Git non propre');
+  if (phase !== 'before-commit' && git('status', '--porcelain=v1')) errors.push('arbre Git non propre');
   for (const path of ['CLAUDE.md', ...required[job].map((name) => `docs/strategy/site-v3/${name}`)]) {
     if (!existsSync(join(root, path))) errors.push(`fichier requis absent : ${path}`);
   }
   git('fetch', 'origin', 'main');
   report.head = git('rev-parse', 'HEAD');
-  report.originMain = git('rev-parse', 'refs/remotes/origin/main');
-  if (report.head !== report.originMain) errors.push(`HEAD désynchronisé : ${report.head} != ${report.originMain}`);
+  report.originMain = git('rev-parse', 'FETCH_HEAD');
+  if (phase !== 'initial' && base !== report.originMain) errors.push(`base désynchronisée : ${base} != ${report.originMain}`);
+  if (phase === 'before-push') {
+    if (report.head !== commit) errors.push(`commit inattendu : ${report.head} != ${commit}`);
+    if (git('rev-parse', 'HEAD^') !== base) errors.push(`parent du commit inattendu : ${base}`);
+  } else if (report.head !== (base ?? report.originMain)) {
+    errors.push(`HEAD désynchronisé : ${report.head} != ${base ?? report.originMain}`);
+  }
 } catch (error) {
   errors.push(error.message);
 }

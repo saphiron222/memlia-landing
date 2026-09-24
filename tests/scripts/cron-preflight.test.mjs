@@ -92,3 +92,50 @@ test('cron refuses wrong checkout, failed fetch, stale SHA and never claims publ
     rmSync(other, { recursive: true, force: true });
   }
 });
+
+test('cron publication guard accepts prepared changes then exact commit, and rejects concurrent main', () => {
+  const root = mkdtempSync(join(tmpdir(), 'memlia-cron-'));
+  const remote = mkdtempSync(join(tmpdir(), 'memlia-cron-remote-'));
+  const competitor = mkdtempSync(join(tmpdir(), 'memlia-cron-competitor-'));
+  try {
+    git(root, 'init', '-q', '-b', 'main');
+    git(root, 'config', 'user.email', 'test@example.invalid');
+    git(root, 'config', 'user.name', 'Test');
+    mkdirSync(join(root, 'docs/strategy/site-v3'), { recursive: true });
+    for (const name of ['RUNBOOK-QUOTIDIEN.md', 'RUNBOOK-SEO.md']) writeFileSync(join(root, 'docs/strategy/site-v3', name), 'test');
+    writeFileSync(join(root, 'CLAUDE.md'), 'test');
+    git(root, 'add', '.');
+    git(root, 'commit', '-qm', 'base');
+    git(remote, 'init', '-q', '--bare', '-b', 'main');
+    git(root, 'remote', 'add', 'origin', remote);
+    git(root, 'push', '-q', '-u', 'origin', 'main');
+    const base = git(root, 'rev-parse', 'HEAD');
+    const run = (...extra) => spawnSync(process.execPath, [script, '--root', root, '--job', 'forge', ...extra], { cwd: root, encoding: 'utf8' });
+    assert.equal(run().status, 0);
+    writeFileSync(join(root, 'CLAUDE.md'), 'prepared');
+    assert.equal(run().status, 1);
+    assert.equal(run('--phase', 'before-commit', '--base', base).status, 0);
+    assert.equal(run('--phase', 'before-commit', '--base', '0'.repeat(40)).status, 1);
+    git(root, 'add', 'CLAUDE.md');
+    git(root, 'commit', '-qm', 'prepared');
+    const head = git(root, 'rev-parse', 'HEAD');
+    assert.equal(run('--phase', 'before-push', '--base', base, '--commit', head).status, 0);
+    assert.equal(run('--phase', 'before-push', '--base', base, '--commit', base).status, 1);
+    writeFileSync(join(root, 'CLAUDE.md'), 'uncommitted');
+    assert.equal(run('--phase', 'before-push', '--base', base, '--commit', head).status, 1);
+    writeFileSync(join(root, 'CLAUDE.md'), 'prepared');
+    git(competitor, 'clone', '-q', remote, '.');
+    git(competitor, 'config', 'user.email', 'test@example.invalid');
+    git(competitor, 'config', 'user.name', 'Test');
+    writeFileSync(join(competitor, 'CLAUDE.md'), 'competitor');
+    git(competitor, 'add', '.');
+    git(competitor, 'commit', '-qm', 'concurrent');
+    git(competitor, 'push', '-q', 'origin', 'main');
+    const concurrent = run('--phase', 'before-push', '--base', base, '--commit', head);
+    assert.equal(concurrent.status, 1);
+    assert.ok(JSON.parse(concurrent.stdout).errors.some((e) => e.includes('désynchronisé')));
+    assert.equal(run('--phase', 'before-commit', '--base', base).status, 1);
+  } finally {
+    for (const path of [root, remote, competitor]) rmSync(path, { recursive: true, force: true });
+  }
+});

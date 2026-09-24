@@ -17,10 +17,11 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 
 ```bash
 cd /Users/kevinkitanga/dev/interne/memlia-landing
-node scripts/cron-preflight.mjs --root /Users/kevinkitanga/dev/interne/memlia-landing --job forge
+PREFLIGHT=$(node scripts/cron-preflight.mjs --root "$PWD" --job forge) || { printf '%s\n' "$PREFLIGHT"; exit 1; }
+BASE_SHA=$(printf '%s' "$PREFLIGHT" | node -e 'let s="";process.stdin.on("data",c=>s+=c).on("end",()=>{const r=JSON.parse(s);if(!r.ok)process.exit(1);console.log(r.head)})') || exit 1
 ```
 
-Le script vérifie le répertoire courant et la racine Git, la branche `main`, l'arbre propre, les runbooks requis, `git fetch origin main` et l'égalité des SHA. Sortie JSON `ok: false` ou code non nul : arrêt sans écriture, sans pull ni push, avec alerte contenant les valeurs observées. Ne pas remplacer ce contrôle par une affirmation de l'agent ; relancer avant tout commit/push. Les autres crons appellent le même script avec `--job sentinelle|demande|integrite|autorite`. Son déploiement et son branchement dans les cinq prompts planifiés relèvent d'une release séparée ; ce document local seul ne modifie pas les crons actifs.
+Le mode initial vérifie le répertoire courant et la racine Git, la branche `main`, l'arbre propre, les runbooks requis, `git fetch origin main` et l'égalité des SHA. Conserver le `head` du JSON `ok:true` comme `BASE_SHA` pour cette exécution (ne jamais le recalculer depuis `origin/main` après des écritures). Avant le commit, `--phase before-commit --base "$BASE_SHA"` accepte les fichiers préparés, mais exige que HEAD et le main distant fraîchement récupéré soient toujours cette base. Après le commit, `--phase before-push --base "$BASE_SHA" --commit "$COMMIT_SHA"` exige un arbre propre, le commit exact, son parent égal à la base et le main distant inchangé. Pour les cinq jobs, utiliser leur `--job forge|sentinelle|demande|integrite|autorite` respectif. Toute sortie `ok:false` ou tout code non nul : arrêt sans commit/push, alerte avec les valeurs observées ; jamais de pull ou rebase automatique. Un `ok:true` n'est pas une preuve de publication. Ce protocole est préparé ici mais le branchement des cinq prompts planifiés relève d'une release séparée ; le document seul ne les modifie pas.
 
 ## 2. Lire le créneau du jour
 
@@ -136,8 +137,13 @@ Si `publier` échoue sur `test_build.py` à cause du compte d'articles publics, 
 ```bash
 npm run build
 git add -- editorial/recettes/<slug> editorial/articles/<slug> src/content/blog/<slug>.md public/images/img-art-<court-slug>-*
+node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-commit --base "$BASE_SHA" || exit 1
 git commit -m "feat(blog): <titre de l'article>" -- editorial public/images public/llms.txt src tests docs/qa docs/strategy/site-v3/CONTENT-CALENDAR.md docs/strategy/site-v3/cluster-plan.json docs/strategy/site-v3/cluster-plan.md docs/strategy/site-v3/cluster-map.html docs/strategy/site-v3/JOURNAL.md
-git push origin main
+COMMIT_SHA=$(git rev-parse HEAD)
+node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-push --base "$BASE_SHA" --commit "$COMMIT_SHA" || exit 1
+# Push uniquement après autorisation humaine de Kevin ; non fast-forward refusé si main a avancé entre le contrôle et le push.
+git push origin HEAD:main
+git fetch origin main && test "$(git rev-parse FETCH_HEAD)" = "$COMMIT_SHA" || exit 1
 ```
 
 Le message de commit suit la convention du dépôt, sans attribution à un runtime ou à un modèle. Puis attendre le déploiement : `npx wrangler pages deployment list --project-name memlia --json` donne l'identifiant du déploiement du commit poussé (`Source`), mais son statut `Active` s'affiche dès le push, avant la fin du build ; la preuve que le build est fini est l'URL propre du déploiement `https://<id>.memlia.pages.dev/<page>` (en-tête User-Agent de navigateur, `pages.dev` refuse curl nu) qui sert un marqueur du contenu poussé (nouveau titre, nombre de termes, texte ajouté), en général cinq à dix minutes après le push. Ensuite contrôler en ligne :
