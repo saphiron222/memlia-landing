@@ -4,14 +4,15 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 
 ## 0. Rails non négociables
 
-- **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`, branche `main`. Le push publie (Cloudflare Pages construit `main`).
+- **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`. `main` est la base de lecture ; travailler ensuite sur `site/<sujet>` et ouvrir une PR. Un push sur `main` déclenche Cloudflare Pages, mais un push direct n'est pas une livraison recevable.
+- **Fusion sous garde** : pour les articles ordinaires, l'autonomie autorisée par Kevin ne dispense ni de la revue indépendante, ni de la CI sur le HEAD exact, ni d'une protection GitHub effectivement applicable. Le 24/09/2026, l'API de protection de la branche du dépôt privé répond 403 (« Upgrade to GitHub Pro or make this repository public ») : CI verte ≠ protection enforced. Tant que ces preuves ne sont pas réunies, laisser la PR ouverte, ne pas pousser `main` et ne pas déployer la production. Ne rien acheter et ne pas rendre le dépôt public sans décision Kevin.
 - **Cadence** : au plus 2 articles ordinaires par jour et 4 par semaine ISO, du lundi au jeudi, puis exactement 1 Cicatrice le samedi en sus ; le pipeline refuse le dépassement, une Cicatrice hors samedi et une deuxième Cicatrice dans la même semaine (`verifierPlafonds`). Le vendredi reste un jour de maintenance (§6).
 - **Aucun chiffre de gain non mesuré, aucune donnée client, aucune promesse de fonction, aucun mot de catalogue** (« module », « complément Excel/Memlia ») sur une surface publique. L'IA prépare, l'humain décide ; agrégats, jamais nominatif. Fact-check daté pour toute matière paie, sociale, fiscale, juridique ou données.
 - **Sources** : uniquement des pages officielles que le vérificateur ouvre réellement (`verifySource`, agent `MemliaBlogSourceVerifier/1.0`). Ouvertes le 16/09 : `entreprendre.service-public.gouv.fr`, `www.cnil.fr`, `www.impots.gouv.fr` (calendrier fiscal), `bofip.impots.gouv.fr`, `www.net-entreprises.fr`. Bloquées : `legifrance.gouv.fr` (403), `urssaf.fr` (connexion coupée). Tester chaque URL avec `curl -sS -L -A 'MemliaBlogSourceVerifier/1.0 (+https://memlia.fr)' -o /tmp/s.html -w '%{http_code} %{url_effective}\n' <url>` et prendre l'URL finale.
 - **Rien ne se pousse à moitié** : un candidat préparé mais non scellé fait échouer `blog:audit`, donc le build. Soit l'article est publié et scellé, soit ses fichiers ne sont pas commités.
 - **Sessions parallèles** : toujours `git add -- <chemins>` puis `git commit -m "…" -- <chemins>` ; jamais `git commit -a`, jamais `--amend`, jamais `--force`, pas de backtick dans un message de commit.
 - **Un test n'est jamais modifié pour passer**, sauf un compte qui change légitimement avec la publication (nombre d'articles publics dans `tests/proof/test_build.py`, `PUBLIC_ARTICLES`), documenté dans le commit.
-- **Échec** : deux tentatives de correction au plus sur une recette ; ensuite, ne rien pousser, consigner la cause dans `JOURNAL.md`, et s'arrêter. Kevin lit le journal.
+- **Échec** : deux tentatives de correction au plus sur une recette ; ensuite, ne rien publier, consigner la cause dans `JOURNAL.md`, et s'arrêter. Kevin lit le journal.
 
 ## 1. Se mettre à jour
 
@@ -19,7 +20,7 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 cd /Users/kevinkitanga/dev/interne/memlia-landing && git pull --ff-only origin main && git status --short
 ```
 
-Si des fichiers sont modifiés par une autre session, ne pas y toucher ; travailler par chemins précis.
+Si des fichiers sont modifiés par une autre session, ne pas y toucher ; travailler par chemins précis. Ne pas exécuter la suite sur `main` : créer une branche `site/<sujet>` à partir du SHA vérifié et isoler les changements d'une autre session.
 
 ## 2. Lire le créneau du jour
 
@@ -136,10 +137,10 @@ Si `publier` échoue sur `test_build.py` à cause du compte d'articles publics, 
 npm run build
 git add -- editorial/recettes/<slug> editorial/articles/<slug> src/content/blog/<slug>.md public/images/img-art-<court-slug>-*
 git commit -m "feat(blog): <titre de l'article>" -- editorial public/images public/llms.txt src tests docs/qa docs/strategy/site-v3/CONTENT-CALENDAR.md docs/strategy/site-v3/cluster-plan.json docs/strategy/site-v3/cluster-plan.md docs/strategy/site-v3/cluster-map.html docs/strategy/site-v3/JOURNAL.md
-git push origin main
+git push origin site/<sujet>
 ```
 
-Le message de commit suit la convention du dépôt, sans attribution à un runtime ou à un modèle. Puis attendre le déploiement : `npx wrangler pages deployment list --project-name memlia --json` donne l'identifiant du déploiement du commit poussé (`Source`), mais son statut `Active` s'affiche dès le push, avant la fin du build ; la preuve que le build est fini est l'URL propre du déploiement `https://<id>.memlia.pages.dev/<page>` (en-tête User-Agent de navigateur, `pages.dev` refuse curl nu) qui sert un marqueur du contenu poussé (nouveau titre, nombre de termes, texte ajouté), en général cinq à dix minutes après le push. Ensuite contrôler en ligne :
+Le message de commit suit la convention du dépôt, sans attribution à un runtime ou à un modèle. Ouvrir la PR et vérifier une revue indépendante, la CI du HEAD exact et une protection effectivement applicable avant toute fusion ; en l'absence d'une de ces preuves, s'arrêter sans publication. Une fois la fusion autorisée et effectuée, vérifier l'ascendance du SHA fusionné depuis le HEAD relu, puis attendre le déploiement : `npx wrangler pages deployment list --project-name memlia --json` donne l'identifiant du déploiement du commit fusionné (`Source`), mais son statut `Active` s'affiche avant la fin du build ; la preuve que le build est fini est l'URL propre du déploiement `https://<id>.memlia.pages.dev/<page>` (en-tête User-Agent de navigateur, `pages.dev` refuse curl nu) qui sert le marqueur du contenu fusionné. Ensuite contrôler en ligne :
 
 ```bash
 curl -s -o /dev/null -w '%{http_code}\n' https://memlia.fr/blog/<slug>

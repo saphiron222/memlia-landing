@@ -117,10 +117,10 @@ La ligne de base C7, son échantillon figé, la distinction des instruments et l
 ```bash
 git add -- docs/strategy/site-v3/mesures docs/strategy/site-v3/JOURNAL.md editorial/maintenance.json
 git commit -m "chore(seo): <sentinelle|releve de demande|integrite> du <AAAA-MM-JJ>" -- docs/strategy/site-v3/mesures docs/strategy/site-v3/JOURNAL.md editorial/maintenance.json
-git push origin main
+git push origin site/<sujet>
 ```
 
-Le message de commit suit la convention du dépôt, sans attribution à un runtime ou à un modèle. Format de la ligne de journal, dans le tableau existant : `| <date> | <cron> | <commit> | — | — | — | — | <résumé : chiffres, rouges, tâches, ce qui est écarté> |`.
+Le message de commit suit la convention du dépôt, sans attribution à un runtime ou à un modèle. Les mesures passent par branche et PR ; aucune fusion tant que revue indépendante, CI sur HEAD exact et protection GitHub effectivement applicable ne sont prouvées (le dépôt privé répond 403 pour la protection au 24/09/2026). Ne pas confondre la réussite du push de branche avec une publication. Format de la ligne de journal, dans le tableau existant : `| <date> | <cron> | <commit> | — | — | — | — | <résumé : chiffres, rouges, tâches, ce qui est écarté> |`.
 
 ## 6. F1 — après une publication (forge, `RUNBOOK-QUOTIDIEN.md` §5)
 
