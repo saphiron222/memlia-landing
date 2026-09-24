@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import { isBlogEntryDiscoverable } from '@/data/blog-visibility.mjs';
+import { SUSPENDED_BLOG_SLUGS } from '@/data/blog-visibility.mjs';
 import type { APIContext } from 'astro';
 import { SITE } from '@/data/site.mjs';
 import { BLOG } from '@/data/blog.mjs';
@@ -12,7 +12,9 @@ const xml = (texte: string) =>
 
 /** Flux RSS 2.0 du blog : articles publiés, du plus récent au plus ancien. */
 export async function GET(context: APIContext) {
-  const publies = (await getCollection('blog', isBlogEntryDiscoverable)).sort(
+  const publies = (await getCollection('blog', ({ id, data }) =>
+    !data.brouillon && !SUSPENDED_BLOG_SLUGS.includes(id)
+  )).sort(
     (a, b) => Number(b.data.format === 'pillar-page') - Number(a.data.format === 'pillar-page')
       || b.data.datePublication.getTime() - a.data.datePublication.getTime()
   );
