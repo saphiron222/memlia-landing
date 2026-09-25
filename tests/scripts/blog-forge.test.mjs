@@ -4,6 +4,7 @@ import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
 import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
@@ -12,6 +13,24 @@ import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH } 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const SLUG = 'automatiser-une-tache-de-test';
 const jour = new Date().toISOString().slice(0, 10);
+
+test('publier refuse main et une branche indéterminée avant toute matérialisation', () => {
+  assert.throws(() => forge.verifierBranchePublication(RACINE, 'main'), /branche.*main/i);
+  assert.throws(() => forge.verifierBranchePublication(RACINE, ''), /branche/i);
+  assert.doesNotThrow(() => forge.verifierBranchePublication(RACINE, 'site/article'));
+});
+
+test('la commande publier sur main échoue avant de créer un dossier candidat', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'memlia-forge-branch-'));
+  try {
+    const init = spawnSync('git', ['init', '-q', '-b', 'main'], { cwd: root });
+    assert.equal(init.status, 0);
+    await assert.rejects(forge.commande(['publier', SLUG], root), /branche.*main/i);
+    assert.equal(existsSync(join(root, 'editorial/articles', SLUG)), false);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
 
 const CORPS_REGLE = `## La règle écrite
 

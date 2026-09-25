@@ -15,6 +15,7 @@ import { join } from 'node:path';
 
 import { CHEMINS, ecrireJson, lireJson } from '../lib/seo-registres.mjs';
 import { SEUILS, fenetres, jugerIndexation } from '../lib/seo-regles.mjs';
+import { publicationAlerts } from '../lib/blog-publication-watch.mjs';
 import {
   ORIGINE,
   chercherPage,
@@ -80,6 +81,9 @@ export async function sentinelle({ root = process.cwd(), date = dateLocale(), sa
     return { ok: false, code: 1, message: `sitemap de production illisible (HTTP ${sitemap.status}${sitemap.erreur ? `, ${sitemap.erreur}` : ''})` };
   }
   const urls = sitemap.urls;
+  const calendrier = readFileSync(join(root, 'docs/strategy/site-v3/CONTENT-CALENDAR.md'), 'utf8');
+  const heureParis = new Date().toLocaleTimeString('en-GB', { timeZone: 'Europe/Paris', hour12: false });
+  const publication = publicationAlerts({ calendar: calendrier, date, urls, previous: etat.publicationMissing ?? [], afterSlot: date === dateLocale() && heureParis >= '18:30' });
 
   const inspectionBrute = gscPy(root, 'inspect', ['--urls', ...urls]);
   const inspections = inspectionBrute.json?.inspections
@@ -145,6 +149,7 @@ export async function sentinelle({ root = process.cwd(), date = dateLocale(), sa
 
   etat.premieresVues = verdict.premieresVues;
   etat.etat = verdict.etat;
+  etat.publicationMissing = publication.current;
   ecrireJson(etatChemin, etat);
 
   const brut = {
@@ -157,6 +162,7 @@ export async function sentinelle({ root = process.cwd(), date = dateLocale(), sa
     derive,
     indexabilite: { passed: indexabilite.passed, message: indexabilite.message },
     verdict,
+    publication,
     baselinesPosees,
     indexnow: envoiIndexNow,
     messages,
@@ -167,18 +173,20 @@ export async function sentinelle({ root = process.cwd(), date = dateLocale(), sa
   const anciennes = lignesRegistre(registreChemin).filter((l) => l.date !== date);
   const precedente = anciennes.length ? anciennes[anciennes.length - 1] : null;
   const ligne = ligneCompacte(verdict, { baselinesPosees: baselinesPosees.length, indexnow: envoiIndexNow.statut, commit: commitDeploye });
+  ligne.publicationMissing = publication.current.map((x) => x.slug);
   mkdirSync(join(root, CHEMINS.mesures), { recursive: true });
   writeFileSync(registreChemin, [...anciennes, ligne].map((l) => JSON.stringify(l)).join('\n') + '\n');
   const sansDate = ({ date: _d, commit: _c, baselinesPosees: _b, ...reste }) => JSON.stringify(reste);
-  const aCommiter = verdict.rouges.length > 0 || !precedente || sansDate(precedente) !== sansDate(ligne);
+  const aCommiter = verdict.rouges.length > 0 || publication.newAlerts.length > 0 || !precedente || sansDate(precedente) !== sansDate(ligne);
 
   return {
     ok: true,
-    code: verdict.rouges.length ? 2 : 0,
+    code: verdict.rouges.length || publication.newAlerts.length ? 2 : 0,
     date,
     commitDeploye,
     resume: verdict.resume,
     rouges: verdict.rouges,
+    publication,
     avertissements: verdict.avertissements,
     infos: verdict.infos,
     actions: { ...verdict.actions, baselinesPosees, indexnow: envoiIndexNow },
@@ -200,6 +208,7 @@ function afficher(resultat, json) {
   const r = resultat.resume;
   console.log(`SENTINELLE ${resultat.date} · ${r.urls} URL · ${r.indexees} indexées · ${r.enAttente} en attente · ${resultat.rouges.length} rouge(s) · ${resultat.avertissements.length} avertissement(s) · commit ${resultat.commitDeploye ?? '?'}`);
   for (const x of resultat.rouges) console.log(`  ROUGE ${x.code} ${x.url ?? ''} : ${x.message}`);
+  for (const x of resultat.publication.newAlerts) console.log(`  [CRON_FAILURE] publication à vérifier : ${x.message}`);
   for (const x of resultat.avertissements) console.log(`  avertissement ${x.code} ${x.url ?? ''} : ${x.message}`);
   for (const x of resultat.infos) console.log(`  info ${x.code} ${x.url ?? ''} : ${x.message}`);
   if (resultat.actions.demanderIndexation.length) console.log(`  À DEMANDER dans Search Console (action de Kevin) : ${resultat.actions.demanderIndexation.join(', ')}`);

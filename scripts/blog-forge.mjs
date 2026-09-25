@@ -704,6 +704,16 @@ function lancer(root, args) {
   return result.status === 0;
 }
 
+export function verifierBranchePublication(root, branche) {
+  const resultat = branche === undefined
+    ? spawnSync('git', ['branch', '--show-current'], { cwd: root, encoding: 'utf8' })
+    : { status: 0, stdout: branche };
+  const nom = resultat.stdout?.trim();
+  if (resultat.status !== 0 || !nom || nom === 'main') {
+    throw new Error('Publication refusée : branche de travail obligatoire, jamais main ni HEAD détaché. Ouvrir une PR et vérifier les gardes avant fusion.');
+  }
+}
+
 export async function commande(argv, root = process.cwd()) {
   const [action, slug] = argv;
   if (!slug) throw new Error('Usage : blog-forge <preparer|sceller|publier> <slug>');
@@ -720,6 +730,7 @@ export async function commande(argv, root = process.cwd()) {
     return;
   }
   if (action === 'publier') {
+    verifierBranchePublication(root);
     const { erreurs } = await materialiser({ root, slug, statut: 'go-production' });
     if (erreurs.length) { console.error(JSON.stringify({ slug, erreurs }, null, 2)); process.exitCode = 1; return; }
     if (!lancer(root, ['production-check', slug])) { process.exitCode = 1; return; }
