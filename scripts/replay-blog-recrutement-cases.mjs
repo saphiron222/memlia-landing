@@ -74,15 +74,47 @@ function evaluateIa(input) {
   };
 }
 
+function evaluateTransmission(input) {
+  if (!input.ruleExists) {
+    return {
+      status: 'REFUS_REGLE_ABSENTE',
+      message: 'Aucune règle écrite pour ce cas',
+      decision: 'Retour au cabinet pour écrire la règle',
+    };
+  }
+  if (!input.period || !Number.isFinite(input.journal?.amount) || !Number.isFinite(input.export?.amount) || !input.validator) {
+    const missing = !input.period ? 'période' : !Number.isFinite(input.journal?.amount) ? 'montant du journal des ventes' : !Number.isFinite(input.export?.amount) ? 'montant de l’export de contrôle' : 'responsable de mission';
+    return {
+      status: 'ATTENTE',
+      message: `Entrée manquante : ${missing}`,
+      decision: 'Demander l’information manquante avant toute préparation',
+    };
+  }
+  // Fictional rule: compare the two supplied amounts, never authorize an accounting entry.
+  if (input.journal.amount !== input.export.amount) {
+    return {
+      status: 'REFUS_CONTRADICTION',
+      message: `Écart ${input.period} : journal des ventes ${input.journal.amount} € / export de contrôle ${input.export.amount} €`,
+      decision: `Présenter les deux sources à ${input.validator} pour arbitrage humain`,
+    };
+  }
+  return {
+    status: 'PROPOSITION',
+    message: `Contrôle ${input.period} préparé : journal des ventes et export de contrôle concordent à ${input.journal.amount} €`,
+    decision: `Soumettre la proposition à ${input.validator} pour validation`,
+  };
+}
+
 const evaluators = new Map([
   ['cabinet-comptable-surcharge-de-travail-ou-passe-le-temps', evaluateFlux],
   ['intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain', evaluateIa],
+  ['fideliser-collaborateurs-cabinet-comptable-ecrire-savoir-faire', evaluateTransmission],
 ]);
 
 assert.equal(fixture.schemaVersion, 1);
 assert.equal(fixture.fictitious, true);
 assert.match(fixture.replayedAt, /^\d{4}-\d{2}-\d{2}$/);
-assert.equal(fixture.articles.length, 2);
+assert.equal(fixture.articles.length, 3);
 
 const articles = fixture.articles.map((article) => {
   const evaluate = evaluators.get(article.slug);

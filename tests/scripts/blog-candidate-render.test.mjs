@@ -105,7 +105,6 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
       .replace("export const PUBLISHED_IMAGE_IDS = [", `export const PUBLISHED_IMAGE_IDS = ['${heroId}', `));
     const indexPath = join(project, 'src/pages/index.astro');
     writeFileSync(indexPath, `${readFileSync(indexPath, 'utf8')}\n<a data-fixture-link href="/blog/${slug}">Fixture candidat</a>\n`);
-
     const rubriquesPath = join(project, 'src/data/blog-rubriques.mjs');
     const rubriques = readFileSync(rubriquesPath, 'utf8');
     const horsRubriqueMarker = 'export const ARTICLES_HORS_RUBRIQUE = Object.freeze({';

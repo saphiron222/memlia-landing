@@ -18,8 +18,9 @@ const replayPath = 'docs/qa/blog-recrutement-replay.json';
 const replay = JSON.parse(readFileSync(replayPath, 'utf8'));
 assert.equal(replay.status, 'PASS', 'L’oracle de rejeu doit être PASS avant le rendu des preuves');
 assert.equal(replay.fictitious, true, 'L’oracle de rejeu doit porter uniquement sur des cas fictifs');
-assert.equal(replay.articles.length, 2, 'L’oracle doit couvrir les deux articles du lot');
-assert.ok(replay.articles.every((article) => article.status === 'PASS' && article.cases.length >= 3 && article.cases.every((entry) => entry.passed)), 'Tous les cas de rejeu doivent être PASS');
+const proofArticles = new Set(contract.map((entry) => entry.article));
+assert.equal(proofArticles.size, 2, 'Le contrat visuel doit couvrir les deux articles du lot');
+assert.ok([...proofArticles].every((slug) => replay.articles.some((article) => article.slug === slug && article.status === 'PASS' && article.cases.length >= 3 && article.cases.every((entry) => entry.passed))), 'Les cas des articles illustrés doivent être rejoués et PASS');
 const proofRecipes = new Map();
 for (const recipeDir of readdirSync('editorial/recettes', { withFileTypes: true }).filter((entry) => entry.isDirectory())) {
   const recipePath = `editorial/recettes/${recipeDir.name}/recette.json`;
