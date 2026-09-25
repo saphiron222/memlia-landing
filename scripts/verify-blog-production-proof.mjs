@@ -7,11 +7,38 @@ import { execFileSync } from 'node:child_process';
 
 const refuse = (reason) => { throw new Error(`Déclaration de production refusée : ${reason}`); };
 
-export async function verifierPreuveProduction(evidence, { fetchPage = fetch } = {}) {
+export async function verifierPreuveProduction(evidence, {
+  fetchPage = fetch, fetchApi = fetch,
+  accountId = process.env.CLOUDFLARE_ACCOUNT_ID, apiToken = process.env.CLOUDFLARE_API_TOKEN,
+} = {}) {
   const { mergedSha, mainSha, deployment, slug, marker } = evidence ?? {};
   if (!/^[0-9a-f]{40}$/.test(mergedSha ?? '') || mainSha !== mergedSha || deployment?.sourceSha !== mergedSha) refuse('SHA fusionné, main et Source Cloudflare doivent être identiques (40 caractères).');
   if (deployment.environment !== 'production' || deployment.status !== 'success' || !/^[a-zA-Z0-9-]+$/.test(deployment.id ?? '')) refuse('déploiement de production réussi et identifiant immuable requis.');
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug ?? '') || typeof marker !== 'string' || marker.trim().length < 12) refuse('slug et marqueur distinctif requis.');
+  if (!/^[a-zA-Z0-9_-]+$/.test(accountId ?? '') || !apiToken) refuse('compte Cloudflare et jeton Pages en lecture requis.');
+  let response;
+  try {
+    response = await fetchApi(`https://api.cloudflare.com/client/v4/accounts/${accountId}/pages/projects/memlia`, {
+      headers: { Authorization: `Bearer ${apiToken}` }, redirect: 'error',
+    });
+  } catch { refuse('lecture du projet Cloudflare impossible.'); }
+  if (!response.ok || response.status !== 200) refuse('projet Cloudflare inaccessible.');
+  let project;
+  try { project = await response.json(); } catch { refuse('réponse Cloudflare illisible.'); }
+  const live = project?.result?.canonical_deployment;
+  const source = live?.deployment_trigger;
+  const stage = live?.latest_stage;
+  if (project.success !== true || project.result?.name !== 'memlia' ||
+    !project.result?.domains?.includes('memlia.fr') || project.result?.production_branch !== 'main' ||
+    project.result?.source?.type !== 'github' || project.result?.source?.config?.owner !== 'saphiron222' ||
+    project.result?.source?.config?.repo_name !== 'memlia-landing' ||
+    live?.short_id !== deployment.id || live?.url !== `https://${deployment.id}.memlia.pages.dev` ||
+    live?.environment !== 'production' || live?.is_skipped !== false ||
+    source?.type !== 'github:push' || source?.metadata?.branch !== 'main' ||
+    source?.metadata?.commit_dirty !== false || source?.metadata?.commit_hash !== mergedSha ||
+    stage?.name !== 'deploy' || stage?.status !== 'success' || !stage?.ended_on) {
+    refuse('déploiement canonique Cloudflare, Source, branche ou état final divergent.');
+  }
   const url = `https://memlia.fr/blog/${slug}`;
   const immutable = `https://${deployment.id}.memlia.pages.dev/blog/${slug}`;
   const bodies = [];
