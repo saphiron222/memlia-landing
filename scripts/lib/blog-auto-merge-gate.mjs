@@ -20,8 +20,8 @@ function blogPathAllowed(file) {
   return typeof file === 'string' && file.split('/').every(part => part !== '.' && part !== '..') &&
     (BLOG_FILES.has(file) || BLOG_OWNED.test(file));
 }
-// One-time reviewed preflight migration; never grant arbitrary PRs permission to edit repository policy.
-const PREFLIGHT_POLICY_HEAD = 'e024882b1c1048eadff8835e20313292087a2145';
+// One-time reviewed policy content; a main sync changes the PR head, not this blob.
+const PREFLIGHT_POLICY_BLOB = 'b3b1d575a4405d9288ff8d2f1842d8faa2950535';
 
 export function verifyMergeCheckout({ call, cwd, scriptPath, expectedMain }) {
   const root = call('git', ['rev-parse', '--show-toplevel'])?.trim();
@@ -47,7 +47,8 @@ export function collectCheckRuns(pages) {
   return { total_count: check_runs.length, check_runs };
 }
 
-export function evaluateBlogAutoMerge({ pr, qa, checks, changedPaths, expectedHead, expectedMain, remoteMain }) {
+export function evaluateBlogAutoMerge({ pr, qa, checks, changedPaths, policyBlobSha,
+  expectedHead, expectedMain, remoteMain }) {
   const errors = [];
   if (!SHA.test(expectedHead ?? '') || !SHA.test(expectedMain ?? '')) {
     errors.push('expected head and main must be exact 40-character SHAs');
@@ -63,7 +64,7 @@ export function evaluateBlogAutoMerge({ pr, qa, checks, changedPaths, expectedHe
   }
   if (!Array.isArray(changedPaths) || changedPaths.length === 0 ||
       changedPaths.some(path => !blogPathAllowed(path) &&
-        !(pr?.number === 3 && expectedHead === PREFLIGHT_POLICY_HEAD && path === 'CLAUDE.md'))) {
+        !(pr?.number === 3 && policyBlobSha === PREFLIGHT_POLICY_BLOB && path === 'CLAUDE.md'))) {
     errors.push('PR contains an empty or out-of-blog diff');
   }
   const run = qa?.runs?.at(-1);

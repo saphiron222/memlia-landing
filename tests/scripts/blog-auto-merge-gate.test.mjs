@@ -45,17 +45,20 @@ test('all check-run pages are counted, including a failed earlier run', () => {
   assert.throws(() => collectCheckRuns([{ ...pages[0], total_count: 3 }, pages[1]]), /incomplete/);
 });
 
-test('repository policy exception is pinned to the preflight PR and its reviewed head', () => {
+test('repository policy exception requires PR #3 and the reviewed policy blob after rebasing', () => {
   const p = proof();
   p.changedPaths.push('CLAUDE.md');
   assert.equal(evaluateBlogAutoMerge(p).pass, false);
   p.pr.number = 3;
   assert.equal(evaluateBlogAutoMerge(p).pass, false);
-  p.expectedHead = p.pr.headRefOid = p.qa.runs[0].metadata.pr_head =
-    p.checks.check_runs[0].head_sha = 'e024882b1c1048eadff8835e20313292087a2145';
   p.qa.runs[0].metadata.pr = 3;
-  p.qa.runs[0].metadata.ci.head = p.expectedHead;
+  p.policyBlobSha = 'b3b1d575a4405d9288ff8d2f1842d8faa2950535';
   assert.equal(evaluateBlogAutoMerge(p).pass, true);
+  p.policyBlobSha = 'c'.repeat(40);
+  assert.equal(evaluateBlogAutoMerge(p).pass, false);
+  p.policyBlobSha = 'b3b1d575a4405d9288ff8d2f1842d8faa2950535';
+  p.pr.number = p.qa.runs[0].metadata.pr = 4;
+  assert.equal(evaluateBlogAutoMerge(p).pass, false);
 });
 
 test('merge requires a pristine installed main checkout at the expected base', () => {
@@ -79,15 +82,16 @@ test('merge requires a pristine installed main checkout at the expected base', (
   assert.equal(verifyMergeCheckout({ call, cwd: '/repo', scriptPath: '/other/scripts/blog-auto-merge.mjs', expectedMain: main }), false);
 });
 
-test('CLI refuses to merge from a candidate checkout even when all remote evidence passes', () => {
+test('CLI validates the PR #3 policy blob and refuses merge from a candidate checkout', () => {
   const dir = mkdtempSync(path.join(tmpdir(), 'blog-merge-refusal-'));
   try {
     const bin = path.join(dir, 'bin');
     mkdirSync(bin);
     const payload = proof();
-    payload.pr.number = 6;
-    payload.qa.runs[0].metadata.pr = 6;
-    payload.changedPaths = ['scripts/blog-auto-merge.mjs'];
+    payload.pr.number = 3;
+    payload.qa.runs[0].metadata.pr = 3;
+    payload.changedPaths = ['CLAUDE.md'];
+    payload.policyBlobSha = 'c'.repeat(40);
     writeFileSync(path.join(dir, 'evidence.json'), JSON.stringify(payload));
     for (const name of ['gh', 'hermes', 'git']) {
       writeFileSync(path.join(bin, name), `#!/usr/bin/env node
@@ -97,8 +101,9 @@ const a = process.argv.slice(2).join(' ');
 if (${JSON.stringify(name)} === 'gh') {
   if (a.startsWith('pr view ')) console.log(JSON.stringify(p.pr));
   else if (a.startsWith('api ')) {
-    if (!a.includes('filter=all') || !a.includes('--paginate --slurp')) process.exit(8);
-    console.log(JSON.stringify([p.checks]));
+    if (a.includes('/contents/CLAUDE.md?ref=')) console.log(JSON.stringify({ type: 'file', sha: p.policyBlobSha }));
+    else if (a.includes('filter=all') && a.includes('--paginate --slurp')) console.log(JSON.stringify([p.checks]));
+    else process.exit(8);
   }
   else if (a.startsWith('pr diff ')) console.log(p.changedPaths.join('\\n'));
   else if (a.startsWith('pr merge ')) fs.writeFileSync(process.env.GATE_MERGED, 'yes');
@@ -110,10 +115,16 @@ else if (a === 'branch --show-current') console.log('candidate');
 else process.exit(7);
 `, { mode: 0o755 });
     }
-    const run = spawnSync(process.execPath, [path.resolve('scripts/blog-auto-merge.mjs'),
-      '--pr', '6', '--qa-task', 't_aaaaaaaa', '--expected-head', head, '--expected-main', main, '--merge'],
+    const runGate = (merge = false) => spawnSync(process.execPath, [path.resolve('scripts/blog-auto-merge.mjs'),
+      '--pr', '3', '--qa-task', 't_aaaaaaaa', '--expected-head', head, '--expected-main', main,
+      ...(merge ? ['--merge'] : [])],
     { cwd: dir, encoding: 'utf8', env: { ...process.env, PATH: `${bin}:${process.env.PATH}`,
       GATE_EVIDENCE: path.join(dir, 'evidence.json'), GATE_MERGED: path.join(dir, 'merged') } });
+    assert.equal(runGate().status, 2);
+    payload.policyBlobSha = 'b3b1d575a4405d9288ff8d2f1842d8faa2950535';
+    writeFileSync(path.join(dir, 'evidence.json'), JSON.stringify(payload));
+    assert.equal(runGate().status, 0);
+    const run = runGate(true);
     assert.equal(run.status, 2, run.stderr);
     assert.match(run.stderr, /clean, current main checkout/);
     assert.throws(() => readFileSync(path.join(dir, 'merged')));

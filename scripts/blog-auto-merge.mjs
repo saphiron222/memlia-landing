@@ -35,8 +35,14 @@ function readEvidence() {
     '--paginate', '--slurp'])));
   const changedPaths = call('gh', ['pr', 'diff', prNumber, '--repo', REPO, '--name-only'])
     .split('\n').map(line => line.trim()).filter(Boolean);
+  const policyBlobSha = Number(prNumber) === 3 && changedPaths.includes('CLAUDE.md')
+    ? (() => {
+      const policy = JSON.parse(call('gh', ['api',
+        `repos/${REPO}/contents/CLAUDE.md?ref=${expectedHead}`]));
+      return policy.type === 'file' ? policy.sha : undefined;
+    })() : undefined;
   const remoteMain = call('git', ['ls-remote', 'origin', 'refs/heads/main']).split(/\s+/)[0];
-  const result = evaluateBlogAutoMerge({ pr, qa, checks, changedPaths,
+  const result = evaluateBlogAutoMerge({ pr, qa, checks, changedPaths, policyBlobSha,
     expectedHead, expectedMain, remoteMain });
   return { result, changedPaths };
 }
