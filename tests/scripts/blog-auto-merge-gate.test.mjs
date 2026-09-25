@@ -149,6 +149,14 @@ for (const [name, change] of [
   ['unrelated page', p => { p.changedPaths.push('src/pages/pricing.astro'); }],
   ['glossary manifest outside blog', p => { p.changedPaths.push('editorial/resources/glossaire/manifest.json'); }],
   ['sitewide SEO integrity script', p => { p.changedPaths.push('scripts/seo/integrite.mjs'); }],
+  ['global image asset', p => { p.changedPaths.push('public/images/hero-768.webp'); }],
+  ['global image registry', p => { p.changedPaths.push('src/data/images.mjs'); }],
+  ['global llms policy', p => { p.changedPaths.push('public/llms.txt'); }],
+  ['push policy', p => { p.changedPaths.push('scripts/agent-push-policy.mjs'); }],
+  ['push policy test', p => { p.changedPaths.push('tests/scripts/agent-push-policy.test.mjs'); }],
+  ['global script disguised as blog', p => { p.changedPaths.push('scripts/blog-global-policy.mjs'); }],
+  ['global script test disguised as blog', p => { p.changedPaths.push('tests/scripts/blog-global-policy.test.mjs'); }],
+  ['blog prefix directory traversal', p => { p.changedPaths.push('src/content/blog/../../pages/pricing.astro'); }],
   ['blog-like sibling script', p => { p.changedPaths.push('scripts/blogevil/backdoor.mjs'); }],
 ]) test(`refuses ${name}`, () => {
   const p = proof();

@@ -2,7 +2,24 @@ import path from 'node:path';
 
 const SHA = /^[0-9a-f]{40}$/;
 
-const BLOG_PATH = /^(?:docs\/strategy\/site-v3\/(?:RUNBOOK-QUOTIDIEN|DIAGNOSTIC-CRONS-2026-09-23|DIAGNOSTIC-PUBLICATION-2026-09-24)\.md$|docs\/qa\/blog\/|editorial\/(?:articles|recettes)\/|src\/content\/blog\/|src\/data\/images\.mjs$|public\/(?:images\/|llms\.txt$)|scripts\/(?:blog[^/]*|cron-preflight|agent-push-policy|verify-blog[^/]*|render-blog[^/]*)(?:\.[^/]+)?$|scripts\/lib\/blog\/|tests\/scripts\/(?:blog[^/]*|cron-preflight|agent-push-policy)(?:\.[^/]+)?$|tests\/proof\/test_blog)/;
+// Exact infrastructure files and article-owned directories only. Global image, SEO,
+// publication-policy and generated assets need a separate review/authorization.
+const BLOG_FILES = new Set([
+  'docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md',
+  'docs/strategy/site-v3/DIAGNOSTIC-CRONS-2026-09-23.md',
+  'docs/strategy/site-v3/DIAGNOSTIC-PUBLICATION-2026-09-24.md',
+  'docs/strategy/site-v3/BLOG-AUTO-MERGE-GATE.md',
+  'scripts/blog-auto-merge.mjs', 'scripts/lib/blog-auto-merge-gate.mjs',
+  'tests/scripts/blog-auto-merge-gate.test.mjs',
+  'scripts/blog-pipeline.mjs', 'scripts/blog-forge.mjs',
+  'scripts/lib/blog-pipeline.mjs', 'scripts/lib/blog-published-authority.mjs',
+  'scripts/cron-preflight.mjs', 'tests/scripts/cron-preflight.test.mjs',
+]);
+const BLOG_OWNED = /^(?:editorial\/(?:articles|recettes)\/[a-z0-9-]+\/|src\/content\/blog\/)[^/]+(?:\/[^/]+)*$/;
+function blogPathAllowed(file) {
+  return typeof file === 'string' && file.split('/').every(part => part !== '.' && part !== '..') &&
+    (BLOG_FILES.has(file) || BLOG_OWNED.test(file));
+}
 // One-time reviewed preflight migration; never grant arbitrary PRs permission to edit repository policy.
 const PREFLIGHT_POLICY_HEAD = 'e024882b1c1048eadff8835e20313292087a2145';
 
@@ -45,7 +62,7 @@ export function evaluateBlogAutoMerge({ pr, qa, checks, changedPaths, expectedHe
     errors.push('PR has a conflict or is not cleanly mergeable');
   }
   if (!Array.isArray(changedPaths) || changedPaths.length === 0 ||
-      changedPaths.some(path => !BLOG_PATH.test(path) &&
+      changedPaths.some(path => !blogPathAllowed(path) &&
         !(pr?.number === 3 && expectedHead === PREFLIGHT_POLICY_HEAD && path === 'CLAUDE.md'))) {
     errors.push('PR contains an empty or out-of-blog diff');
   }
