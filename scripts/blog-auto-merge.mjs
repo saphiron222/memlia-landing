@@ -2,7 +2,7 @@
 // Narrow procedural release gate for the private GitHub Free blog repository.
 // It does not claim that GitHub branch protection is enabled.
 import { execFileSync } from 'node:child_process';
-import { evaluateBlogAutoMerge, verifyMergeCheckout } from './lib/blog-auto-merge-gate.mjs';
+import { collectCheckRuns, evaluateBlogAutoMerge, verifyMergeCheckout } from './lib/blog-auto-merge-gate.mjs';
 
 const REPO = 'saphiron222/memlia-landing';
 const args = process.argv.slice(2);
@@ -30,7 +30,9 @@ function readEvidence() {
   const pr = JSON.parse(call('gh', ['pr', 'view', prNumber, '--repo', REPO, '--json',
     'number,state,isDraft,baseRefName,baseRefOid,headRefOid,mergeable,mergeStateStatus']));
   const qa = JSON.parse(call('hermes', ['kanban', 'show', qaTask, '--json']));
-  const checks = JSON.parse(call('gh', ['api', `repos/${REPO}/commits/${expectedHead}/check-runs?per_page=100`]));
+  const checks = collectCheckRuns(JSON.parse(call('gh', ['api',
+    `repos/${REPO}/commits/${expectedHead}/check-runs?filter=all&per_page=100`,
+    '--paginate', '--slurp'])));
   const changedPaths = call('gh', ['pr', 'diff', prNumber, '--repo', REPO, '--name-only'])
     .split('\n').map(line => line.trim()).filter(Boolean);
   const remoteMain = call('git', ['ls-remote', 'origin', 'refs/heads/main']).split(/\s+/)[0];

@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process';
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { evaluateBlogAutoMerge, verifyMergeCheckout } from '../../scripts/lib/blog-auto-merge-gate.mjs';
+import { collectCheckRuns, evaluateBlogAutoMerge, verifyMergeCheckout } from '../../scripts/lib/blog-auto-merge-gate.mjs';
 
 const head = 'a'.repeat(40);
 const main = 'b'.repeat(40);
@@ -13,8 +13,8 @@ const proof = () => ({
   pr: { number: 8, state: 'OPEN', isDraft: false, baseRefName: 'main', baseRefOid: main,
     headRefOid: head, mergeable: 'MERGEABLE', mergeStateStatus: 'CLEAN' },
   qa: { task: { assignee: 'qa', status: 'done' }, runs: [{ outcome: 'completed',
-    summary: 'PASS', metadata: { verdict: 'PASS', pr_head: head,
-      ci: { exact_head: true } } }] },
+    summary: 'PASS', metadata: { verdict: 'PASS', pr: 8, pr_head: head,
+      ci: { exact_head: true, head, success_verified: true } } }] },
   checks: { total_count: 1, check_runs: [{ name: 'Repository gates', head_sha: head,
     status: 'completed', conclusion: 'success' }] },
   changedPaths: ['docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md',
@@ -25,6 +25,19 @@ test('exact-head independent QA and CI allow a procedural blog PR', () => {
   assert.equal(evaluateBlogAutoMerge(proof()).pass, true);
 });
 
+test('all check-run pages are counted, including a failed earlier run', () => {
+  const p = proof();
+  const failed = { ...p.checks.check_runs[0], conclusion: 'failure' };
+  const pages = [
+    { total_count: 2, check_runs: [failed] },
+    { total_count: 2, check_runs: p.checks.check_runs },
+  ];
+  p.checks = collectCheckRuns(pages);
+  assert.equal(evaluateBlogAutoMerge(p).pass, false);
+  assert.throws(() => collectCheckRuns(pages.slice(1)), /incomplete/);
+  assert.throws(() => collectCheckRuns([{ ...pages[0], total_count: 3 }, pages[1]]), /incomplete/);
+});
+
 test('repository policy exception is pinned to the preflight PR and its reviewed head', () => {
   const p = proof();
   p.changedPaths.push('CLAUDE.md');
@@ -33,6 +46,8 @@ test('repository policy exception is pinned to the preflight PR and its reviewed
   assert.equal(evaluateBlogAutoMerge(p).pass, false);
   p.expectedHead = p.pr.headRefOid = p.qa.runs[0].metadata.pr_head =
     p.checks.check_runs[0].head_sha = 'e024882b1c1048eadff8835e20313292087a2145';
+  p.qa.runs[0].metadata.pr = 3;
+  p.qa.runs[0].metadata.ci.head = p.expectedHead;
   assert.equal(evaluateBlogAutoMerge(p).pass, true);
 });
 
@@ -64,6 +79,7 @@ test('CLI refuses to merge from a candidate checkout even when all remote eviden
     mkdirSync(bin);
     const payload = proof();
     payload.pr.number = 6;
+    payload.qa.runs[0].metadata.pr = 6;
     payload.changedPaths = ['scripts/blog-auto-merge.mjs'];
     writeFileSync(path.join(dir, 'evidence.json'), JSON.stringify(payload));
     for (const name of ['gh', 'hermes', 'git']) {
@@ -73,7 +89,10 @@ const p = JSON.parse(fs.readFileSync(process.env.GATE_EVIDENCE, 'utf8'));
 const a = process.argv.slice(2).join(' ');
 if (${JSON.stringify(name)} === 'gh') {
   if (a.startsWith('pr view ')) console.log(JSON.stringify(p.pr));
-  else if (a.startsWith('api ')) console.log(JSON.stringify(p.checks));
+  else if (a.startsWith('api ')) {
+    if (!a.includes('filter=all') || !a.includes('--paginate --slurp')) process.exit(8);
+    console.log(JSON.stringify([p.checks]));
+  }
   else if (a.startsWith('pr diff ')) console.log(p.changedPaths.join('\\n'));
   else if (a.startsWith('pr merge ')) fs.writeFileSync(process.env.GATE_MERGED, 'yes');
   else process.exit(7);
@@ -105,6 +124,10 @@ for (const [name, change] of [
   ['failed QA', p => { p.qa.runs[0].summary = 'FAIL'; }],
   ['conditional QA', p => { p.qa.runs[0].metadata.verdict = 'PASS AVEC RÉSERVES'; }],
   ['conditional QA summary', p => { p.qa.runs[0].summary = 'PASS AVEC RÉSERVES'; }],
+  ['qualified QA summary', p => { p.qa.runs[0].summary = 'PASS technique, réserves de release'; }],
+  ['QA for another PR', p => { p.qa.runs[0].metadata.pr = 3; }],
+  ['contradictory CI head', p => { p.qa.runs[0].metadata.ci.head = main; }],
+  ['CI not verified', p => { p.qa.runs[0].metadata.ci.success_verified = false; }],
   ['non-independent QA', p => { p.qa.task.assignee = 'dev'; }],
   ['wrong check SHA', p => { p.checks.check_runs[0].head_sha = 'c'.repeat(40); }],
   ['failed check', p => { p.checks.check_runs[0].conclusion = 'failure'; }],

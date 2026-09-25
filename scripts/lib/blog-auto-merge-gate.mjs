@@ -16,6 +16,20 @@ export function verifyMergeCheckout({ call, cwd, scriptPath, expectedMain }) {
     call('git', ['ls-remote', 'origin', 'refs/heads/main'])?.split(/\s+/)[0] === expectedMain;
 }
 
+export function collectCheckRuns(pages) {
+  if (!Array.isArray(pages) || pages.length === 0 ||
+      !Number.isSafeInteger(pages[0]?.total_count) || pages[0].total_count < 0 ||
+      pages.some(page => page?.total_count !== pages[0].total_count ||
+        !Array.isArray(page.check_runs) || page.check_runs.length > 100)) {
+    throw new Error('incomplete check runs pagination');
+  }
+  const check_runs = pages.flatMap(page => page.check_runs);
+  if (check_runs.length !== pages[0].total_count) {
+    throw new Error('incomplete check runs pagination');
+  }
+  return { total_count: check_runs.length, check_runs };
+}
+
 export function evaluateBlogAutoMerge({ pr, qa, checks, changedPaths, expectedHead, expectedMain, remoteMain }) {
   const errors = [];
   if (!SHA.test(expectedHead ?? '') || !SHA.test(expectedMain ?? '')) {
@@ -38,9 +52,11 @@ export function evaluateBlogAutoMerge({ pr, qa, checks, changedPaths, expectedHe
   const run = qa?.runs?.at(-1);
   if (qa?.task?.assignee !== 'qa' || qa?.task?.status !== 'done' ||
       run?.outcome !== 'completed' || !/^PASS(?:\s|$)/.test(run?.summary ?? '') ||
-      /^PASS\s+AVEC\s+RÉSERVES/i.test(run?.summary ?? '') ||
+      /r[ée]serv|condition|\bFAIL\b|\bBLOCKED\b/i.test(run?.summary ?? '') ||
       run?.metadata?.verdict !== 'PASS' ||
-      run?.metadata?.pr_head !== expectedHead || run?.metadata?.ci?.exact_head !== true) {
+      run?.metadata?.pr !== pr?.number || run?.metadata?.pr_head !== expectedHead ||
+      run?.metadata?.ci?.exact_head !== true || run?.metadata?.ci?.head !== expectedHead ||
+      run?.metadata?.ci?.success_verified !== true) {
     errors.push('independent QA PASS on the exact PR head is missing');
   }
   const runs = checks?.check_runs;
