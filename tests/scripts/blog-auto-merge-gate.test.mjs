@@ -125,6 +125,7 @@ for (const [name, change] of [
   ['conditional QA', p => { p.qa.runs[0].metadata.verdict = 'PASS AVEC RÉSERVES'; }],
   ['conditional QA summary', p => { p.qa.runs[0].summary = 'PASS AVEC RÉSERVES'; }],
   ['qualified QA summary', p => { p.qa.runs[0].summary = 'PASS technique, réserves de release'; }],
+  ['implicit QA caveat', p => { p.qa.runs[0].summary = 'PASS pending release validation'; }],
   ['QA for another PR', p => { p.qa.runs[0].metadata.pr = 3; }],
   ['contradictory CI head', p => { p.qa.runs[0].metadata.ci.head = main; }],
   ['CI not verified', p => { p.qa.runs[0].metadata.ci.success_verified = false; }],

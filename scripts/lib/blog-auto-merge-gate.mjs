@@ -51,8 +51,7 @@ export function evaluateBlogAutoMerge({ pr, qa, checks, changedPaths, expectedHe
   }
   const run = qa?.runs?.at(-1);
   if (qa?.task?.assignee !== 'qa' || qa?.task?.status !== 'done' ||
-      run?.outcome !== 'completed' || !/^PASS(?:\s|$)/.test(run?.summary ?? '') ||
-      /r[ée]serv|condition|\bFAIL\b|\bBLOCKED\b/i.test(run?.summary ?? '') ||
+      run?.outcome !== 'completed' || run?.summary?.trim() !== 'PASS' ||
       run?.metadata?.verdict !== 'PASS' ||
       run?.metadata?.pr !== pr?.number || run?.metadata?.pr_head !== expectedHead ||
       run?.metadata?.ci?.exact_head !== true || run?.metadata?.ci?.head !== expectedHead ||
