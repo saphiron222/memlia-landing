@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { evaluateBlogAutoMerge } from '../../scripts/lib/blog-auto-merge-gate.mjs';
+import { spawnSync } from 'node:child_process';
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { evaluateBlogAutoMerge, verifyMergeCheckout } from '../../scripts/lib/blog-auto-merge-gate.mjs';
 
 const head = 'a'.repeat(40);
 const main = 'b'.repeat(40);
@@ -9,9 +13,9 @@ const proof = () => ({
   pr: { number: 8, state: 'OPEN', isDraft: false, baseRefName: 'main', baseRefOid: main,
     headRefOid: head, mergeable: 'MERGEABLE', mergeStateStatus: 'CLEAN' },
   qa: { task: { assignee: 'qa', status: 'done' }, runs: [{ outcome: 'completed',
-    summary: 'PASS technical', metadata: { verdict: 'PASS technical', pr_head: head,
+    summary: 'PASS', metadata: { verdict: 'PASS', pr_head: head,
       ci: { exact_head: true } } }] },
-  checks: { check_runs: [{ name: 'Repository gates', head_sha: head,
+  checks: { total_count: 1, check_runs: [{ name: 'Repository gates', head_sha: head,
     status: 'completed', conclusion: 'success' }] },
   changedPaths: ['docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md',
     'scripts/cron-preflight.mjs', 'tests/scripts/cron-preflight.test.mjs'],
@@ -32,6 +36,66 @@ test('repository policy exception is pinned to the preflight PR and its reviewed
   assert.equal(evaluateBlogAutoMerge(p).pass, true);
 });
 
+test('merge requires a pristine installed main checkout at the expected base', () => {
+  const values = new Map([
+    ['rev-parse --show-toplevel', '/repo'], ['branch --show-current', 'main'],
+    ['rev-parse HEAD', main], ['status --porcelain', ''],
+    ['ls-remote origin refs/heads/main', `${main}\trefs/heads/main`],
+  ]);
+  const call = (...args) => values.get(args[1].join(' '));
+  const verify = () => verifyMergeCheckout({ call, cwd: '/repo', scriptPath: '/repo/scripts/blog-auto-merge.mjs', expectedMain: main });
+  assert.equal(verify(), true);
+  values.set('rev-parse HEAD', head);
+  assert.equal(verify(), false);
+  values.set('rev-parse HEAD', main);
+  values.set('status --porcelain', ' M scripts/blog-auto-merge.mjs');
+  assert.equal(verify(), false);
+  values.set('status --porcelain', '');
+  values.set('ls-remote origin refs/heads/main', `${head}\trefs/heads/main`);
+  assert.equal(verify(), false);
+  values.set('ls-remote origin refs/heads/main', `${main}\trefs/heads/main`);
+  assert.equal(verifyMergeCheckout({ call, cwd: '/repo', scriptPath: '/other/scripts/blog-auto-merge.mjs', expectedMain: main }), false);
+});
+
+test('CLI refuses to merge from a candidate checkout even when all remote evidence passes', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'blog-merge-refusal-'));
+  try {
+    const bin = path.join(dir, 'bin');
+    mkdirSync(bin);
+    const payload = proof();
+    payload.pr.number = 6;
+    payload.changedPaths = ['scripts/blog-auto-merge.mjs'];
+    writeFileSync(path.join(dir, 'evidence.json'), JSON.stringify(payload));
+    for (const name of ['gh', 'hermes', 'git']) {
+      writeFileSync(path.join(bin, name), `#!/usr/bin/env node
+const fs = require('node:fs');
+const p = JSON.parse(fs.readFileSync(process.env.GATE_EVIDENCE, 'utf8'));
+const a = process.argv.slice(2).join(' ');
+if (${JSON.stringify(name)} === 'gh') {
+  if (a.startsWith('pr view ')) console.log(JSON.stringify(p.pr));
+  else if (a.startsWith('api ')) console.log(JSON.stringify(p.checks));
+  else if (a.startsWith('pr diff ')) console.log(p.changedPaths.join('\\n'));
+  else if (a.startsWith('pr merge ')) fs.writeFileSync(process.env.GATE_MERGED, 'yes');
+  else process.exit(7);
+} else if (${JSON.stringify(name)} === 'hermes') console.log(JSON.stringify(p.qa));
+else if (a === 'ls-remote origin refs/heads/main') console.log('${main}\\trefs/heads/main');
+else if (a === 'rev-parse --show-toplevel') console.log(process.cwd());
+else if (a === 'branch --show-current') console.log('candidate');
+else process.exit(7);
+`, { mode: 0o755 });
+    }
+    const run = spawnSync(process.execPath, [path.resolve('scripts/blog-auto-merge.mjs'),
+      '--pr', '6', '--qa-task', 't_aaaaaaaa', '--expected-head', head, '--expected-main', main, '--merge'],
+    { cwd: dir, encoding: 'utf8', env: { ...process.env, PATH: `${bin}:${process.env.PATH}`,
+      GATE_EVIDENCE: path.join(dir, 'evidence.json'), GATE_MERGED: path.join(dir, 'merged') } });
+    assert.equal(run.status, 2, run.stderr);
+    assert.match(run.stderr, /clean, current main checkout/);
+    assert.throws(() => readFileSync(path.join(dir, 'merged')));
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 for (const [name, change] of [
   ['draft', p => { p.pr.isDraft = true; }],
   ['moved head', p => { p.pr.headRefOid = 'c'.repeat(40); }],
@@ -39,9 +103,14 @@ for (const [name, change] of [
   ['conflict', p => { p.pr.mergeStateStatus = 'DIRTY'; }],
   ['stale QA', p => { p.qa.runs[0].metadata.pr_head = 'c'.repeat(40); }],
   ['failed QA', p => { p.qa.runs[0].summary = 'FAIL'; }],
+  ['conditional QA', p => { p.qa.runs[0].metadata.verdict = 'PASS AVEC RÉSERVES'; }],
+  ['conditional QA summary', p => { p.qa.runs[0].summary = 'PASS AVEC RÉSERVES'; }],
   ['non-independent QA', p => { p.qa.task.assignee = 'dev'; }],
   ['wrong check SHA', p => { p.checks.check_runs[0].head_sha = 'c'.repeat(40); }],
   ['failed check', p => { p.checks.check_runs[0].conclusion = 'failure'; }],
+  ['concurrent failed check', p => { p.checks.check_runs.push({ name: 'Repository gates', head_sha: head, status: 'completed', conclusion: 'failure' }); p.checks.total_count++; }],
+  ['concurrent pending check', p => { p.checks.check_runs.push({ name: 'Repository gates', head_sha: head, status: 'in_progress', conclusion: null }); p.checks.total_count++; }],
+  ['truncated check response', p => { p.checks.total_count++; }],
   ['CI workflow modification', p => { p.changedPaths.push('.github/workflows/pr-validation.yml'); }],
   ['unreviewed policy modification', p => { p.changedPaths.push('.agents/product-marketing.md'); }],
   ['unrelated page', p => { p.changedPaths.push('src/pages/pricing.astro'); }],
