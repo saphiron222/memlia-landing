@@ -12,7 +12,7 @@ const proof = () => ({
   expectedHead: head, expectedMain: main, remoteMain: main,
   pr: { number: 8, state: 'OPEN', isDraft: false, baseRefName: 'main', baseRefOid: main,
     headRefOid: head, mergeable: 'MERGEABLE', mergeStateStatus: 'CLEAN' },
-  qa: { task: { assignee: 'qa', status: 'done' }, runs: [{ outcome: 'completed',
+  qa: { task: { assignee: 'qa', status: 'done' }, runs: [{ profile: 'qa', outcome: 'completed',
     summary: 'PASS', metadata: { verdict: 'PASS', pr: 8, pr_head: head,
       ci: { exact_head: true, head, success_verified: true } } }] },
   checks: { total_count: 1, check_runs: [{ name: 'Repository gates', head_sha: head,
@@ -23,6 +23,13 @@ const proof = () => ({
 
 test('exact-head independent QA and CI allow a procedural blog PR', () => {
   assert.equal(evaluateBlogAutoMerge(proof()).pass, true);
+});
+
+test('blog article and recipe paths remain eligible', () => {
+  const p = proof();
+  p.changedPaths = ['editorial/articles/exemple/manifest.json',
+    'editorial/recettes/exemple/recette.json', 'src/content/blog/exemple.md'];
+  assert.equal(evaluateBlogAutoMerge(p).pass, true);
 });
 
 test('all check-run pages are counted, including a failed earlier run', () => {
@@ -130,6 +137,8 @@ for (const [name, change] of [
   ['contradictory CI head', p => { p.qa.runs[0].metadata.ci.head = main; }],
   ['CI not verified', p => { p.qa.runs[0].metadata.ci.success_verified = false; }],
   ['non-independent QA', p => { p.qa.task.assignee = 'dev'; }],
+  ['QA completed by a different profile', p => { p.qa.runs[0].profile = 'platform'; }],
+  ['QA run without a profile', p => { delete p.qa.runs[0].profile; }],
   ['wrong check SHA', p => { p.checks.check_runs[0].head_sha = 'c'.repeat(40); }],
   ['failed check', p => { p.checks.check_runs[0].conclusion = 'failure'; }],
   ['concurrent failed check', p => { p.checks.check_runs.push({ name: 'Repository gates', head_sha: head, status: 'completed', conclusion: 'failure' }); p.checks.total_count++; }],
@@ -138,6 +147,8 @@ for (const [name, change] of [
   ['CI workflow modification', p => { p.changedPaths.push('.github/workflows/pr-validation.yml'); }],
   ['unreviewed policy modification', p => { p.changedPaths.push('.agents/product-marketing.md'); }],
   ['unrelated page', p => { p.changedPaths.push('src/pages/pricing.astro'); }],
+  ['glossary manifest outside blog', p => { p.changedPaths.push('editorial/resources/glossaire/manifest.json'); }],
+  ['sitewide SEO integrity script', p => { p.changedPaths.push('scripts/seo/integrite.mjs'); }],
   ['blog-like sibling script', p => { p.changedPaths.push('scripts/blogevil/backdoor.mjs'); }],
 ]) test(`refuses ${name}`, () => {
   const p = proof();

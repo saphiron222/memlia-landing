@@ -2,7 +2,7 @@ import path from 'node:path';
 
 const SHA = /^[0-9a-f]{40}$/;
 
-const BLOG_PATH = /^(?:docs\/strategy\/site-v3\/(?:RUNBOOK-QUOTIDIEN|DIAGNOSTIC-CRONS-2026-09-23|DIAGNOSTIC-PUBLICATION-2026-09-24)\.md$|docs\/qa\/blog\/|editorial\/|src\/content\/blog\/|src\/data\/images\.mjs$|public\/(?:images\/|llms\.txt$)|scripts\/(?:blog[^/]*|cron-preflight|agent-push-policy|verify-blog[^/]*|render-blog[^/]*)(?:\.[^/]+)?$|scripts\/(?:seo|lib\/blog)\/|tests\/scripts\/(?:blog[^/]*|cron-preflight|agent-push-policy)(?:\.[^/]+)?$|tests\/proof\/test_blog)/;
+const BLOG_PATH = /^(?:docs\/strategy\/site-v3\/(?:RUNBOOK-QUOTIDIEN|DIAGNOSTIC-CRONS-2026-09-23|DIAGNOSTIC-PUBLICATION-2026-09-24)\.md$|docs\/qa\/blog\/|editorial\/(?:articles|recettes)\/|src\/content\/blog\/|src\/data\/images\.mjs$|public\/(?:images\/|llms\.txt$)|scripts\/(?:blog[^/]*|cron-preflight|agent-push-policy|verify-blog[^/]*|render-blog[^/]*)(?:\.[^/]+)?$|scripts\/lib\/blog\/|tests\/scripts\/(?:blog[^/]*|cron-preflight|agent-push-policy)(?:\.[^/]+)?$|tests\/proof\/test_blog)/;
 // One-time reviewed preflight migration; never grant arbitrary PRs permission to edit repository policy.
 const PREFLIGHT_POLICY_HEAD = 'e024882b1c1048eadff8835e20313292087a2145';
 
@@ -51,7 +51,7 @@ export function evaluateBlogAutoMerge({ pr, qa, checks, changedPaths, expectedHe
   }
   const run = qa?.runs?.at(-1);
   if (qa?.task?.assignee !== 'qa' || qa?.task?.status !== 'done' ||
-      run?.outcome !== 'completed' || run?.summary?.trim() !== 'PASS' ||
+      run?.profile !== 'qa' || run?.outcome !== 'completed' || run?.summary?.trim() !== 'PASS' ||
       run?.metadata?.verdict !== 'PASS' ||
       run?.metadata?.pr !== pr?.number || run?.metadata?.pr_head !== expectedHead ||
       run?.metadata?.ci?.exact_head !== true || run?.metadata?.ci?.head !== expectedHead ||
