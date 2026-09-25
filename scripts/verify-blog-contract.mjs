@@ -3,6 +3,7 @@ import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseHtml } from 'parse5';
 import { parse as parseYaml } from 'yaml';
+import { isSuspendedBlogPath } from '../src/data/blog-visibility.mjs';
 import {
   chargerAutocompletionMesuree,
   titrePorteUneRequeteMesuree,
@@ -239,7 +240,7 @@ function auditerArticle({ dist, slug, path, mesure }) {
       } else {
         const documentRubrique = parseHtml(readFileSync(pageRubrique, 'utf8'));
         const retour = elements(documentRubrique, (node) => node.tagName === 'a' && memeRoute(attribut(node, 'href'), routeArticle));
-        if (retour.length === 0) erreurs.push(`${slug} : clause 4, ${routeRubrique} ne pointe pas vers ${routeArticle}`);
+        if (retour.length === 0 && !isSuspendedBlogPath(routeArticle)) erreurs.push(`${slug} : clause 4, ${routeRubrique} ne pointe pas vers ${routeArticle}`);
       }
     }
   }

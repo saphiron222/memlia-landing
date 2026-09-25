@@ -22,5 +22,12 @@ export const isBlogEntryVisibleForSlug = (entry, previewSlug, previewAll = false
 
 export const isBlogEntryVisible = (entry) => isBlogEntryVisibleForSlugs(entry, BLOG_PREVIEW_SLUGS, BLOG_PREVIEW_ALL);
 
+// La route reste dans le build : la suspension HTTP 503 est gérée en production en amont.
+// Ne jamais la proposer comme destination publique tant que cette suspension est active.
+export const SUSPENDED_BLOG_SLUGS = Object.freeze(['automatiser-la-saisie-comptable-ce-qui-reste-a-verifier']);
+export const isSuspendedBlogPath = (path) => SUSPENDED_BLOG_SLUGS.some((slug) => path === `/blog/${slug}`);
+export const isBlogEntryDiscoverable = (entry) =>
+  isBlogEntryVisible(entry) && !SUSPENDED_BLOG_SLUGS.includes(entry.id);
+
 export const isPreviewEntry = (entry) =>
   entry.data.brouillon === true && (BLOG_PREVIEW_ALL || BLOG_PREVIEW_SLUGS.includes(entry.id));

@@ -10,7 +10,7 @@ import { organizationNode } from '@/data/schema.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { IMAGES } from '@/data/images.mjs';
 import { AUTEURS, identiteAuteur } from '@/data/auteurs';
-import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
+import { isBlogEntryDiscoverable } from '@/data/blog-visibility.mjs';
 
 /**
  * Route /blog : le pilier en point de départ, puis la liste des autres articles du plus récent au plus ancien, ligne
@@ -21,7 +21,7 @@ import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
 // Le pilier (format pillar-page) SORT de la liste : il ouvre la page comme point de départ, et la
 // liste qui suit se lit alors strictement du plus récent au plus ancien. Épinglé dans la liste, il
 // donnait à lire un ordre faux dès qu'un satellite portait une date postérieure.
-const parDate = (await getCollection('blog', isBlogEntryVisible)).sort(
+const parDate = (await getCollection('blog', isBlogEntryDiscoverable)).sort(
   (a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime()
 );
 const pilier = parDate.find((a) => a.data.format === 'pillar-page');

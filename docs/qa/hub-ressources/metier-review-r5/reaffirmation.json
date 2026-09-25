@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r5",
-  "reaffirmeLe": "2026-09-20T23:13:39.919Z",
+  "reaffirmeLe": "2026-09-25T19:39:55.394Z",
   "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
-  "registreSha256": "803a206f8a01f841aaf978cba9e09bbf54a34028d00b8d6427decb897ba64343",
+  "registreSha256": "ef7b8d3bfffe1ba0a85ba4872d5a930713bd3511a82a5058047a80e8004c978a",
   "declarationRef": "docs/qa/hub-ressources/metier-review-r5/reaffirmation-declaration.json",
-  "declarationSha256": "b4f2208576ddb9672c312ce3601b5c59015ead6dd86cd420013be01a3937a4c5",
+  "declarationSha256": "e284dadbb922531261cf4b57a4b38cde02cbd60da50ca189a1014439f7e343ce",
   "ancreRef": "docs/qa/hub-ressources/metier-review-r5/sujet-ancre.json",
   "ancreSha256": "9c0439e2cf6ef93dd34d1a3c3e5725a1eae17a5942ab2197ffe3aa19d86147d6",
   "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
@@ -13,7 +13,7 @@
     "T": {
       "action": "réaffirmée",
       "sujetAncre": "c2f26c231873c8b268900800936485e24a38005dbef202ff789d426b0f2dad3f",
-      "sujetReaffirme": "bc13196198fe7114b37eb56d13557faa18e31c442742dcb721b8d0bf4d31293b",
+      "sujetReaffirme": "b267b3fd053ef13b2bf6fd60cbc1dafeb6f764c66f95d4b85ba038966fd30779",
       "feuillesEcartees": 687,
       "feuillesParChamp": {
         "assetBundleDigest.assetBundleDigest": 1,
@@ -53,7 +53,7 @@
       },
       "justifications": {
         "assetBundleDigest": "Le lot d'actifs suit le rendu : il n'entre ni image ni média dans cette vague, mais son empreinte est dérivée du build qui vient de changer. Aucun actif n'est ajouté, retiré ni remplacé.",
-        "buildOutputDigest": "Le contrat de page universel ajoute au HTML rendu de /glossaire le schéma WebPage et le chrome de navigation accessible, sans modifier sa matière éditoriale. Le script revérifie que chacune des affirmations revues par R5 est encore rendue mot pour mot dans ce HTML.",
+        "buildOutputDigest": "Le contrat de page universel ajoute au HTML rendu de /glossaire le schéma WebPage et le chrome de navigation accessible ; la suspension de l'article saisie remplace maintenant cinq liens entrants du glossaire rendu par des renvois contextuels vers des pages publiées. La matière éditoriale et les affirmations sensibles restent inchangées ; le script revérifie que chacune des affirmations revues par R5 est encore rendue mot pour mot dans ce HTML.",
         "candidate": "Le rayonnement interne du glossaire gagne les dix ancres de la vague 2 ; aucun autre champ du candidat ne bouge.",
         "claimsEvidence": "La vague 2 ajoute treize affirmations — dix définitions et trois champs « confusion fréquente » — et sept sources, toutes de type non sensible (dix « information », trois « methode-memlia »). Mesure du jour : aucune affirmation ni unité conservée n'a bougé d'un octet ; les vingt-sept affirmations sensibles de R5 sont identiques une à une ; les seules lignes conservées à changer sont les trente citations adossées à source-glossary-memlia et cette source elle-même, dont la copie EST src/data/glossary.ts : seuls contentSha256, sourceContentSha256 et claimIds y bougent. Cette source n'est officielle pour aucune affirmation sensible, donc aucun verdict R5 ne s'y appuie. Le reste des écarts est positionnel : les tableaux sont comparés par rang, et insérer treize lignes décale les suivantes.",
         "configBundleDigest": "Le lot de configuration suit src/data/glossary.ts, qui gagne sept sources et dix entrées, et les deux modules de preuve, dont les planchers passent de 43 à 53 définitions et de 63 à 76 unités. Aucune spécification d'une affirmation sensible n'est modifiée.",
@@ -65,11 +65,11 @@
       },
       "affirmationsRenduesVerifiees": 77,
       "verdictsConserves": 27,
-      "candidateHash": "6671a05dce2c0ee9b51a55f1f6a7b311f28fc550d4e7eed113b676be489f8b30",
-      "auditHash": "bc5c306d914bbf2b8a1df2dbe3fc3afde78b02912459110d4720b036837f5009",
-      "manifestSha256": "c27626468512d5b5ce39cab162d5fc41232873a72a47a3c4b29c732a7aa4d81d",
+      "candidateHash": "d46f86661ce91c5a22c4e66253bf79324cfc627810318cd4a080a25add9c8ab3",
+      "auditHash": "369be662a7523081f3ade772048a076ade73bba1c521192e25aef605aba03daa",
+      "manifestSha256": "eade6e08e5ba1cac17022b0e43d3cacb76219a5320fefc0fd2d40bb37e0758e4",
       "preuveRef": "docs/qa/hub-ressources/metier-review-r5/preuve-glossaire.json",
-      "preuveSha256": "b50af6797023fce4d296e4ddf251108189eb5e269f28d9936a1b2d43533495cd"
+      "preuveSha256": "13d2ed0ca6fc63e650a7be257728f8e12a98a50ab375c84bbad44cf37f65f285"
     }
   }
 }
