@@ -89,6 +89,7 @@ const graph = {
       <div>
         <h2 id="rubrique-role-titre">{rubrique.roleTitre}</h2>
         <p class="texte-2">{rubrique.role}</p>
+        {rubrique.suite && <a class="rubrique-suite" href={rubrique.suite.chemin}>{rubrique.suite.libelle} <Picto nom="fleche" taille={14} /></a>}
       </div>
     </section>
 
@@ -140,6 +141,7 @@ const graph = {
   }
   .rubrique-role h2 { max-width: 24ch; font-size: var(--t-3xl); }
   .rubrique-role p { max-width: 68ch; margin-top: 12px; }
+  .rubrique-suite { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--accent-texte); text-decoration: underline; text-underline-offset: 3px; }
   .rubrique-repere {
     font-family: var(--police-display), 'Fraunces Fallback'; font-size: var(--t-3xl); color: var(--accent-texte);
   }

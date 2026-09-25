@@ -64,6 +64,18 @@ test('la page saisie ne promet pas un guide absent ni ne renvoie vers elle-même
   }
 });
 
+test('la rubrique pièces mène à la saisie publiée et conserve la relance', () => {
+  const document = parse(readFileSync('dist/blog/rubrique/gestion-pieces-comptables.html', 'utf8'));
+  const main = elements(document, 'main')[0];
+  assert.ok(main, 'contenu principal absent');
+  const links = elements(main, 'a');
+  const saisie = links.find((link) => href(link) === '/automatisation/saisie-comptable');
+  assert.ok(saisie, 'destination saisie absente du contenu principal');
+  assert.match(text(saisie).trim(), /saisie comptable/i, 'libellé de destination explicite');
+  assert.ok(links.some((link) => href(link) === '/blog/automatiser-la-relance-des-pieces-clients'), 'article relance absent');
+  assert.ok(links.every((link) => href(link) !== path), 'publication suspendue liée');
+});
+
 test('les cinq termes du glossaire conservent un renvoi contextuel publié', () => {
   const document = parse(readFileSync('dist/glossaire.html', 'utf8'));
   const destinations = {

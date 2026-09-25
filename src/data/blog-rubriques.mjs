@@ -20,6 +20,7 @@ export const BLOG_RUBRIQUES = Object.freeze([
     chapeau: 'Le cycle social ne s’arrête ni au calcul du bulletin ni au dépôt de la DSN. Cette rubrique relie les contrôles avant transmission, la lecture des retours métier et le suivi des dossiers, avec une frontière claire entre ce qui se prépare, ce qui attend une validation et ce qui reste au pôle social.',
     roleTitre: 'Une chaîne de contrôle, trois décisions distinctes',
     role: 'Le hub donne le chemin d’ensemble sans réduire ces tâches à une checklist unique. Le contrôle du bulletin prépare un fichier vérifié, les comptes rendus métier expliquent ce qui revient après le dépôt, et le suivi de production situe chaque dossier dans le cycle. Chaque article garde sa requête et son geste propres ; la rubrique montre seulement comment les enchaîner sans confondre contrôle technique, interprétation métier et pilotage.',
+    suite: null,
     articleIds: Object.freeze([
       'controler-les-bulletins-de-paie-avant-la-dsn',
       'comprendre-les-comptes-rendus-metier-dsn',
@@ -38,6 +39,7 @@ export const BLOG_RUBRIQUES = Object.freeze([
     chapeau: 'Une pièce absente bloque la production ; une pièce lue trop vite déplace le risque dans la saisie. Cette rubrique suit la même matière de la collecte à la proposition d’écriture, en séparant la relance, la complétude, l’extraction et les contrôles que le cabinet garde.',
     roleTitre: 'De la pièce attendue à l’écriture proposée',
     role: 'L’article écrit la règle qui détermine quelles pièces manquent, quand préparer une relance et quand cesser. Pour la saisie, la page dédiée décrit ce qui se prépare et ce que le cabinet garde à valider. Le hub relie ces deux moments sans viser la requête propre à la saisie automatisée.',
+    suite: Object.freeze({ chemin: '/automatisation/saisie-comptable', libelle: 'Voir la page sur la saisie comptable' }),
     articleIds: Object.freeze([
       'automatiser-la-relance-des-pieces-clients',
       'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
