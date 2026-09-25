@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { parse } from 'parse5';
 import { isBlogEntryDiscoverable, isSuspendedBlogPath } from '../../src/data/blog-visibility.mjs';
 import { lireArticlesPublies } from '../../src/data/blog.mjs';
 import liensBlogSuspendus from '../../src/lib/liens-blog-suspendus.mjs';
@@ -35,4 +36,49 @@ test('aucune des sept pages indexables ne renvoie un lien vers la publication su
   const link = { properties: { href: path } };
   liensBlogSuspendus().element.visit(link, { setProperty(node, key, value) { node.properties[key] = value; } });
   assert.equal(link.properties.href, '/automatisation/saisie-comptable');
+});
+
+function elements(node, tagName) {
+  return [
+    ...(node.tagName === tagName ? [node] : []),
+    ...(node.childNodes ?? []).flatMap((child) => elements(child, tagName)),
+  ];
+}
+
+function text(node) {
+  return node.value ?? (node.childNodes ?? []).map(text).join('');
+}
+
+function href(node) {
+  return node.attrs?.find((attr) => attr.name === 'href')?.value;
+}
+
+test('la page saisie ne promet pas un guide absent ni ne renvoie vers elle-même', () => {
+  const document = parse(readFileSync('dist/automatisation/saisie-comptable.html', 'utf8'));
+  const main = elements(document, 'main')[0];
+  assert.ok(main);
+  assert.ok(!text(main).includes('Le détail des six contrôles est publié'), 'promesse de guide suspendu');
+  for (const link of elements(main, 'a')) {
+    assert.notEqual(href(link), '/automatisation/saisie-comptable', `auto-renvoi : ${text(link)}`);
+    assert.ok(!text(link).includes('notre guide sur l’automatisation de la saisie comptable'), 'libellé de guide absent');
+  }
+});
+
+test('les cinq termes du glossaire conservent un renvoi contextuel publié', () => {
+  const document = parse(readFileSync('dist/glossaire.html', 'utf8'));
+  const destinations = {
+    idempotence: '/methode',
+    'generation-augmentee-par-recuperation': '/garanties',
+    'connecteur-et-api': '/integrations',
+    'export-logiciel-et-import-csv': '/integrations',
+    'cle-de-rapprochement': '/automatisation/rapprochement-bancaire',
+  };
+  for (const [id, destination] of Object.entries(destinations)) {
+    const entry = elements(document, 'div').find((node) => node.attrs?.some((attr) => attr.name === 'id' && attr.value === id));
+    assert.ok(entry, id);
+    const links = elements(entry, 'a').filter((node) => href(node) === destination);
+    assert.equal(links.length, 1, `${id} : alternative contextuelle absente`);
+    assert.ok(text(links[0]).trim().length > 0, `${id} : libellé absent`);
+    assert.ok(!text(links[0]).includes('ce qui reste à vérifier après une saisie automatisée'), `${id} : ancien libellé`);
+  }
 });

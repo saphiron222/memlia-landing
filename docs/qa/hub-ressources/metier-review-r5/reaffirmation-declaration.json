@@ -5,7 +5,7 @@
   "declarePar": "Hermes marketing, contrat de page universel t_fff91050 ; déclaration du 19/09/2026 reprise et amendée",
   "regle": "Seules les clés listées ici peuvent bouger sans refaire la revue métier. Toute autre clé du sujet ferme la réaffirmation. La revue R5 porte sur les affirmations de type sensible : la déclaration n'est recevable que si aucune d'elles n'a bougé, ce que la mesure ci-dessous établit et que le gate resource:audit:qa revérifie en exigeant un verdict par couple affirmation/source sensible.",
   "deltasAutorises": {
-    "buildOutputDigest": "Le contrat de page universel ajoute au HTML rendu de /glossaire le schéma WebPage et le chrome de navigation accessible ; la suspension de l'article saisie retire ensuite uniquement son lien entrant du glossaire rendu, sans modifier la matière éditoriale ni les affirmations sensibles. Le script revérifie que chacune des affirmations revues par R5 est encore rendue mot pour mot dans ce HTML.",
+    "buildOutputDigest": "Le contrat de page universel ajoute au HTML rendu de /glossaire le schéma WebPage et le chrome de navigation accessible ; la suspension de l'article saisie remplace maintenant cinq liens entrants du glossaire rendu par des renvois contextuels vers des pages publiées. La matière éditoriale et les affirmations sensibles restent inchangées ; le script revérifie que chacune des affirmations revues par R5 est encore rendue mot pour mot dans ce HTML.",
     "configBundleDigest": "Le lot de configuration suit src/data/glossary.ts, qui gagne sept sources et dix entrées, et les deux modules de preuve, dont les planchers passent de 43 à 53 définitions et de 63 à 76 unités. Aucune spécification d'une affirmation sensible n'est modifiée.",
     "assetBundleDigest": "Le lot d'actifs suit le rendu : il n'entre ni image ni média dans cette vague, mais son empreinte est dérivée du build qui vient de changer. Aucun actif n'est ajouté, retiré ni remplacé.",
     "sourceBundleDigest": "Le lot d'intégrité des copies de source gagne les sept copies de la vague 2 (docs/qa/hub-ressources/glossaire-vague-2-sources), ouvertes le 19/09/2026, et suit la copie de src/data/glossary.ts. Aucune des vingt copies jugées par R5 n'est modifiée : les vingt-sept verdicts portent encore sur des octets identiques.",
@@ -48,6 +48,16 @@
         "checkedAt"
       ]
     }
+  },
+  "mesureCorrectionLiens": {
+    "date": "2026-09-25",
+    "comparaison": "manifeste T de HEAD avant correction contre manifeste T rescellé après correction des liens rendus",
+    "claimsEvidenceIdentique": true,
+    "affirmations": 77,
+    "unitesRendues": 76,
+    "citations": 90,
+    "sources": 27,
+    "champsDuManifesteModifies": ["skills", "gates", "integrity", "build", "audit"]
   },
   "mesureDuJour": {
     "date": "2026-09-19",

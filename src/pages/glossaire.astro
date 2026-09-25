@@ -17,6 +17,14 @@ for (const entry of GLOSSARY_ENTRIES) {
   byLetter.set(letter, [...(byLetter.get(letter) ?? []), entry]);
 }
 const letters = [...byLetter.keys()];
+// Ces renvois remplacent uniquement les liens vers l'article suspendu ; le registre approuvé reste intact.
+const saisieReferences: Record<string, { href: string; label: string }> = {
+  'idempotence': { href: '/methode', label: 'la méthode d’essai des règles' },
+  'generation-augmentee-par-recuperation': { href: '/garanties', label: 'les garanties de contrôle et de validation' },
+  'connecteur-et-api': { href: '/integrations', label: 'les voies d’intégration aux outils' },
+  'export-logiciel-et-import-csv': { href: '/integrations', label: 'les voies d’intégration aux outils' },
+  'cle-de-rapprochement': { href: '/automatisation/rapprochement-bancaire', label: 'le rapprochement bancaire et ses contrôles' },
+};
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -115,7 +123,10 @@ const graph = {
                     <div>
                       <strong>Pour aller plus loin</strong>
                       <ul class="liens-liste">
-                        {entry.internalLinks.filter((link) => !isSuspendedBlogPath(link.href)).map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+                        {entry.internalLinks.map((link) => {
+                          const reference = isSuspendedBlogPath(link.href) ? saisieReferences[entry.id] : link;
+                          return reference && <li><a href={reference.href}>{reference.label}</a></li>;
+                        })}
                       </ul>
                     </div>
                   </div>
