@@ -49,9 +49,22 @@ try {
   } else if (report.head !== (base ?? report.originMain)) errors.push('HEAD désynchronisé');
   if (phase !== 'initial') {
     const changed = phase === 'before-commit'
-      ? git('diff', '--cached', '--name-only', '--diff-filter=ACDMRT')
-      : git('diff', '--name-only', base, 'HEAD');
-    const paths = changed.split('\n').filter(Boolean);
+      ? git('diff', '--cached', '--name-status', '-z', '--diff-filter=ACDMRT')
+      : git('diff', '--name-status', '-z', base, 'HEAD');
+    const entries = changed ? changed.split('\0') : [];
+    const paths = [];
+    while (entries.length) {
+      const status = entries.shift();
+      if (!status) break;
+      if (!/^[ACDMRT][0-9]*$/.test(status)) throw new Error('statut Git inattendu');
+      const count = /^[RC]/.test(status) ? 2 : 1;
+      for (let i = 0; i < count; i++) {
+        const path = entries.shift();
+        if (!path) throw new Error('chemin Git manquant');
+        paths.push(path);
+      }
+    }
+    if (entries.length) throw new Error('sortie Git inattendue');
     if (!paths.length || paths.some(path => !scoped(path))) errors.push('périmètre SEO incorrect');
   }
 } catch (error) {

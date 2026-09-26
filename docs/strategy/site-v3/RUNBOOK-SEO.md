@@ -144,6 +144,9 @@ node scripts/seo-release-gate.mjs --pr <N> --qa-task <t_ID> --authorization-task
 
 La garde refuse tout fichier hors `docs/strategy/site-v3/mesures/`,
 `docs/strategy/site-v3/JOURNAL.md` et `editorial/maintenance.json`. Elle ne
+prévalide pas un renommage depuis le blog vers les mesures : le préflight vérifie
+les deux chemins (origine et destination) du diff indexé et du commit candidat.
+Un renommage interne aux mesures reste autorisé. Elle ne
 fusionne rien et n'autorise pas le blog ; `blog-auto-merge.mjs` ne donne aucune
 autorité SEO. Après le verdict positif, revalider les refs juste avant la fusion
 humaine, puis vérifier le SHA de `main`, les checks et la production avant toute

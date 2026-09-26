@@ -48,3 +48,38 @@ test('four SEO jobs use separate branches and scoped commits, never blog or main
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+test('rename checks both source and destination before commit and push', () => {
+  const root = mkdtempSync(path.join(tmpdir(), 'seo-rename-'));
+  try {
+    git(root, 'init', '-q', '-b', 'main');
+    git(root, 'config', 'user.email', 'test@example.invalid');
+    git(root, 'config', 'user.name', 'Test');
+    mkdirSync(path.join(root, 'docs/strategy/site-v3/mesures'), { recursive: true });
+    mkdirSync(path.join(root, 'src/content/blog'), { recursive: true });
+    for (const file of ['CLAUDE.md', 'docs/strategy/site-v3/RUNBOOK-SEO.md',
+      'docs/strategy/site-v3/CRONS-SEO.md']) writeFileSync(path.join(root, file), 'fixture');
+    writeFileSync(path.join(root, 'src/content/blog/old.md'), 'same contents');
+    writeFileSync(path.join(root, 'docs/strategy/site-v3/mesures/inside.md'), 'same contents');
+    git(root, 'add', '.');
+    git(root, 'commit', '-qm', 'base');
+    git(root, 'remote', 'add', 'origin', root);
+    const base = git(root, 'rev-parse', 'HEAD');
+    const run = (phase, commit) => spawnSync(process.execPath,
+      [script, '--root', root, '--job', 'demande', '--phase', phase, '--base', base,
+        ...(commit ? ['--commit', commit] : [])], { cwd: root, encoding: 'utf8' });
+    git(root, 'switch', '-q', '-c', 'site/seo-mesures-demande-20260926');
+    git(root, 'mv', 'src/content/blog/old.md', 'docs/strategy/site-v3/mesures/old.md');
+    assert.match(git(root, 'diff', '--cached', '--name-status'), /R100\s+src\/content\/blog\/old.md/);
+    assert.notEqual(run('before-commit').status, 0);
+    git(root, 'commit', '-qm', 'cross-scope rename');
+    assert.notEqual(run('before-push', git(root, 'rev-parse', 'HEAD')).status, 0);
+    git(root, 'reset', '--hard', base);
+    git(root, 'mv', 'docs/strategy/site-v3/mesures/inside.md', 'docs/strategy/site-v3/mesures/renamed.md');
+    assert.equal(run('before-commit').status, 0);
+    git(root, 'commit', '-qm', 'internal rename');
+    assert.equal(run('before-push', git(root, 'rev-parse', 'HEAD')).status, 0);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
