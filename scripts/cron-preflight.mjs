@@ -19,6 +19,8 @@ const phase = option('--phase') ?? 'initial';
 const base = option('--base');
 const commit = option('--commit');
 const sha = (value) => typeof value === 'string' && /^[0-9a-f]{40}$|^[0-9a-f]{64}$/.test(value);
+const seoMeasurePath = (path) => path.startsWith('docs/strategy/site-v3/mesures/') ||
+  path === 'docs/strategy/site-v3/JOURNAL.md' || path === 'editorial/maintenance.json';
 const errors = [];
 const report = { ok: false, job, root, cwd: process.cwd(), branch: null, head: null, originMain: null, errors };
 const git = (...argv) => {
@@ -36,10 +38,11 @@ try {
   if (realpathSync(root) !== realpathSync(process.cwd())) errors.push(`workdir incorrect : ${process.cwd()} != ${root}`);
   if (realpathSync(git('rev-parse', '--show-toplevel')) !== realpathSync(root)) errors.push('checkout incorrect : root doit être la racine Git');
   report.branch = git('branch', '--show-current');
-  // A prepared blog commit may be checked on its PR branch, never pushed to main.
-  const publicationBranch = job === 'forge' && phase === 'before-push' &&
+  const blogBranch = job === 'forge' && phase === 'before-push' &&
     /^site\/blog-[a-z0-9][a-z0-9-]*$/.test(report.branch);
-  if (phase === 'before-push' ? !publicationBranch : report.branch !== 'main') {
+  const seoBranch = job !== 'forge' && phase !== 'initial' &&
+    new RegExp(`^site/seo-mesures-${job}-[0-9]{8}(?:-[a-z0-9]+)*$`).test(report.branch);
+  if (phase === 'initial' ? report.branch !== 'main' : !(blogBranch || seoBranch || (job === 'forge' && phase === 'before-commit' && report.branch === 'main'))) {
     errors.push(`branche incorrecte : ${report.branch || '(detached)'} pour ${phase}`);
   }
   if (phase !== 'before-commit' && git('status', '--porcelain=v1')) errors.push('arbre Git non propre');
@@ -55,6 +58,15 @@ try {
     if (git('rev-parse', 'HEAD^') !== base) errors.push(`parent du commit inattendu : ${base}`);
   } else if (report.head !== (base ?? report.originMain)) {
     errors.push(`HEAD désynchronisé : ${report.head} != ${base ?? report.originMain}`);
+  }
+  if (job !== 'forge' && phase !== 'initial') {
+    const changed = phase === 'before-commit'
+      ? git('diff', '--cached', '--name-only', '--diff-filter=ACDMRT')
+      : git('diff', '--name-only', base, 'HEAD');
+    const paths = changed.split('\n').filter(Boolean);
+    if (!paths.length || paths.some((path) => !seoMeasurePath(path))) {
+      errors.push(`périmètre SEO incorrect : ${paths.filter((path) => !seoMeasurePath(path)).join(', ') || '(aucune mesure)'}`);
+    }
   }
 } catch (error) {
   errors.push(error.message);

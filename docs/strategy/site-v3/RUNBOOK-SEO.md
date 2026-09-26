@@ -4,7 +4,7 @@ Construit le 17 septembre 2026 sur le go de Kevin (« go, construis C1, C2, C3 e
 
 ## 0. Rails non négociables
 
-- **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`, branche `main`. Toujours `git add -- <chemins>` puis `git commit -m "…" -- <chemins>` ; jamais `git commit -a`, jamais `--amend`, jamais `--force`, aucun accent grave dans un message de commit. Le push publie (Cloudflare Pages construit `main`) : un commit de mesures ne change pas le site.
+- **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`. Partir de `main` propre et synchronisé, puis créer une branche neuve `site/seo-mesures-<job>-<date>` avant toute écriture. Le push d'une branche n'est pas une publication ; `main` déclenche Cloudflare. Toujours `git add -- <chemins>` puis `git commit -m "…" -- <chemins>` ; jamais `git commit -a`, jamais `--amend`, jamais `--force`, aucun accent grave dans un message de commit. Aucun des quatre jobs SEO ne pousse sur `main` ou ne fusionne sa propre PR.
 - **Search Console en lecture seule.** `scripts/seo/gsc.py` n'appelle aucune méthode d'écriture. Le renvoi du sitemap reste `scripts/gsc-resubmit-sitemap.py` (seule écriture autorisée par Kevin) ; le bouton « Demander l'indexation » reste à Kevin : la sentinelle **liste** les URL, elle ne clique pas.
 - **Aucun article n'est modifié par un cron.** Les crons déposent des tâches dans `editorial/maintenance.json` ; la forge les traite le vendredi par republication scellée (§6). Un cron ne corrige jamais un titre, un lien ou une source.
 - **DataForSEO** derrière la porte de coût, déjà dans le script : si la porte refuse, la SERP est écartée et le relevé le dit. Ne jamais imprimer un identifiant (DataForSEO, Google, Cloudflare).
@@ -15,10 +15,17 @@ Construit le 17 septembre 2026 sur le go de Kevin (« go, construis C1, C2, C3 e
 ## 1. Se mettre à jour
 
 ```bash
-cd /Users/kevinkitanga/dev/interne/memlia-landing && git pull --ff-only origin main && git status --short
+cd /Users/kevinkitanga/dev/interne/memlia-landing
+git switch main && git pull --ff-only origin main && git status --short
+JOB=demande # adapter : sentinelle, demande, integrite ou autorite
+node scripts/cron-preflight.mjs --root "$PWD" --job "$JOB" || exit 1
+BASE_SHA=$(git rev-parse HEAD)
+PR_BRANCH="site/seo-mesures-$JOB-$(date +%Y%m%d)" # nom neuf, jamais une branche distante existante
+test -z "$(git ls-remote --heads origin "$PR_BRANCH")" || exit 1
+git switch -c "$PR_BRANCH" || exit 1
 ```
 
-Des fichiers modifiés par une autre session ne se touchent pas ; on travaille par chemins précis.
+Des fichiers modifiés par une autre session ne se touchent pas : le préflight exige un arbre propre, sinon arrêter et ouvrir un checkout isolé propre. Les commandes de mesure ci-dessous s'exécutent sur la branche neuve. Si aucun changement à versionner, ne pas ouvrir de PR.
 
 ## 2. C1 — la sentinelle d'indexation et de dérive (tous les jours, 18 h 30)
 
@@ -112,13 +119,20 @@ La ligne de base C7, son échantillon figé, la distinction des instruments et l
 
 ⚠ `autorite.rang` est le **rang de domaine de DataForSEO**, pas l'autorité de domaine de Moz : deux échelles, jamais comparées entre elles. Un relevé se compare au relevé du mois précédent **par le même instrument**.
 
-## 5. Commit et push d'une session de cron
+## 5. Commit de mesures et PR d'une session de cron
 
 ```bash
 git add -- docs/strategy/site-v3/mesures docs/strategy/site-v3/JOURNAL.md editorial/maintenance.json
-git commit -m "chore(seo): <sentinelle|releve de demande|integrite> du <AAAA-MM-JJ>" -- docs/strategy/site-v3/mesures docs/strategy/site-v3/JOURNAL.md editorial/maintenance.json
-git push origin main
+node scripts/cron-preflight.mjs --root "$PWD" --job "$JOB" --phase before-commit --base "$BASE_SHA" || exit 1
+git commit -m "chore(seo): $JOB du $(date +%F)" -- docs/strategy/site-v3/mesures docs/strategy/site-v3/JOURNAL.md editorial/maintenance.json
+COMMIT_SHA=$(git rev-parse HEAD)
+node scripts/cron-preflight.mjs --root "$PWD" --job "$JOB" --phase before-push --base "$BASE_SHA" --commit "$COMMIT_SHA" || exit 1
+git push origin "HEAD:refs/heads/$PR_BRANCH" || exit 1
+test "$(git ls-remote origin "refs/heads/$PR_BRANCH" | cut -f1)" = "$COMMIT_SHA" || exit 1
+gh pr create --base main --head "$PR_BRANCH" --title "chore(seo): mesures $JOB $(date +%F)" --body "Mesures SEO hors périmètre blog-only ; QA indépendante et CI exact-head requises avant toute fusion" || exit 1
 ```
+
+Le préflight refuse les chemins hors `mesures/`, `JOURNAL.md` et `editorial/maintenance.json`, et refuse le push depuis `main` ; ce n'est pas une protection GitHub enforced contre une commande Git qui le contourne. Une mesure qui change `public/`, un article, un script ou un fichier global est arrêtée et routée vers une carte distincte. Une PR de mesures attend une QA indépendante portant sur son numéro, sa base et son HEAD exact, et `Repository gates` terminé en succès sur le même HEAD (toutes les occurrences, pas un check vert parmi des rouges). Une carte release non-blog vérifie ensuite diff/base/ascendance, autorisation applicable et source Cloudflare du merge avant de clore ; aucun de ces crons ne fusionne sa PR. La garde `blog-auto-merge.mjs` ne s'applique jamais aux mesures SEO ; ne pas élargir son allowlist. Tant qu'aucune carte release appropriée n'est disponible, laisser la PR ouverte et le job suspendu plutôt que publier directement.
 
 Le message de commit suit la convention du dépôt, sans attribution à un runtime ou à un modèle. Format de la ligne de journal, dans le tableau existant : `| <date> | <cron> | <commit> | — | — | — | — | <résumé : chiffres, rouges, tâches, ce qui est écarté> |`.
 

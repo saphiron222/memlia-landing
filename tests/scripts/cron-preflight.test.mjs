@@ -148,3 +148,47 @@ test('cron publication guard accepts prepared changes then exact commit, and rej
     for (const path of [root, remote, competitor]) rmSync(path, { recursive: true, force: true });
   }
 });
+
+test('SEO measurement push requires a scoped PR branch and rejects site changes', () => {
+  const root = mkdtempSync(join(tmpdir(), 'memlia-seo-cron-'));
+  try {
+    git(root, 'init', '-q', '-b', 'main');
+    git(root, 'config', 'user.email', 'test@example.invalid');
+    git(root, 'config', 'user.name', 'Test');
+    mkdirSync(join(root, 'docs/strategy/site-v3/mesures'), { recursive: true });
+    for (const name of ['RUNBOOK-SEO.md', 'CRONS-SEO.md']) writeFileSync(join(root, 'docs/strategy/site-v3', name), 'test');
+    writeFileSync(join(root, 'CLAUDE.md'), 'test');
+    git(root, 'add', '.');
+    git(root, 'commit', '-qm', 'base');
+    git(root, 'remote', 'add', 'origin', root);
+    const base = git(root, 'rev-parse', 'HEAD');
+    const run = (job, phase, extra = []) => spawnSync(process.execPath,
+      [script, '--root', root, '--job', job, '--phase', phase, ...extra],
+      { cwd: root, encoding: 'utf8' });
+    for (const job of ['sentinelle', 'demande', 'integrite', 'autorite']) {
+      assert.equal(run(job, 'initial').status, 0);
+    }
+    git(root, 'switch', '-q', '-c', 'site/seo-mesures-demande-20260926');
+    writeFileSync(join(root, 'docs/strategy/site-v3/mesures/rapport.json'), '{}');
+    git(root, 'add', 'docs/strategy/site-v3/mesures/rapport.json');
+    assert.equal(run('demande', 'before-commit', ['--base', base]).status, 0);
+    for (const job of ['sentinelle', 'integrite', 'autorite']) {
+      assert.notEqual(run(job, 'before-commit', ['--base', base]).status, 0);
+    }
+    git(root, 'commit', '-qm', 'mesures');
+    const commit = git(root, 'rev-parse', 'HEAD');
+    const exact = ['--base', base, '--commit', commit];
+    assert.equal(run('demande', 'before-push', exact).status, 0);
+    for (const job of ['sentinelle', 'integrite', 'autorite']) {
+      assert.notEqual(run(job, 'before-push', exact).status, 0);
+    }
+    git(root, 'switch', '-q', '-c', 'site/blog-faux-seo');
+    assert.notEqual(run('demande', 'before-push', exact).status, 0);
+    git(root, 'switch', '-q', '-c', 'site/seo-mesures-globale');
+    writeFileSync(join(root, 'public.txt'), 'site change');
+    git(root, 'add', 'public.txt');
+    assert.notEqual(run('demande', 'before-commit', ['--base', base]).status, 0);
+    git(root, 'commit', '-qm', 'site change');
+    assert.notEqual(run('demande', 'before-push', ['--base', base, '--commit', git(root, 'rev-parse', 'HEAD')]).status, 0);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
