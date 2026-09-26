@@ -13,7 +13,7 @@ const git = (cwd, ...args) => {
   return r.stdout.trim();
 };
 
-test('cron refuses a wrong branch and missing runbooks instead of reporting ok', () => {
+test('cron refuses a wrong branch and missing runbook instead of reporting ok', () => {
   const root = mkdtempSync(join(tmpdir(), 'memlia-cron-'));
   try {
     git(root, 'init', '-q', '-b', 'site/stale');
@@ -38,7 +38,7 @@ test('cron refuses a dirty checkout and accepts only clean synced main with requ
     git(root, 'config', 'user.email', 'test@example.invalid');
     git(root, 'config', 'user.name', 'Test');
     mkdirSync(join(root, 'docs/strategy/site-v3'), { recursive: true });
-    for (const name of ['RUNBOOK-QUOTIDIEN.md', 'RUNBOOK-SEO.md', 'CRONS-SEO.md']) writeFileSync(join(root, 'docs/strategy/site-v3', name), 'test');
+    writeFileSync(join(root, 'docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md'), 'test');
     writeFileSync(join(root, 'CLAUDE.md'), 'test');
     git(root, 'add', '.');
     git(root, 'commit', '-qm', 'init');
@@ -63,7 +63,7 @@ test('cron refuses wrong checkout, failed fetch, stale SHA and never claims publ
     git(root, 'config', 'user.email', 'test@example.invalid');
     git(root, 'config', 'user.name', 'Test');
     mkdirSync(join(root, 'docs/strategy/site-v3'), { recursive: true });
-    for (const name of ['RUNBOOK-QUOTIDIEN.md', 'RUNBOOK-SEO.md', 'CRONS-SEO.md']) writeFileSync(join(root, 'docs/strategy/site-v3', name), 'test');
+    writeFileSync(join(root, 'docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md'), 'test');
     writeFileSync(join(root, 'CLAUDE.md'), 'test');
     git(root, 'add', '.');
     git(root, 'commit', '-qm', 'init');
@@ -102,7 +102,7 @@ test('cron publication guard accepts prepared changes then exact commit, and rej
     git(root, 'config', 'user.email', 'test@example.invalid');
     git(root, 'config', 'user.name', 'Test');
     mkdirSync(join(root, 'docs/strategy/site-v3'), { recursive: true });
-    for (const name of ['RUNBOOK-QUOTIDIEN.md', 'RUNBOOK-SEO.md']) writeFileSync(join(root, 'docs/strategy/site-v3', name), 'test');
+    writeFileSync(join(root, 'docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md'), 'test');
     writeFileSync(join(root, 'CLAUDE.md'), 'test');
     git(root, 'add', '.');
     git(root, 'commit', '-qm', 'base');
@@ -126,9 +126,6 @@ test('cron publication guard accepts prepared changes then exact commit, and rej
     assert.equal(run('--phase', 'before-push', '--base', base, '--commit', head).status, 1);
     git(root, 'switch', '-q', '-c', 'site/blog-article-test');
     assert.equal(run('--phase', 'before-push', '--base', base, '--commit', head).status, 0);
-    const otherJob = spawnSync(process.execPath, [script, '--root', root, '--job', 'sentinelle',
-      '--phase', 'before-push', '--base', base, '--commit', head], { cwd: root, encoding: 'utf8' });
-    assert.equal(otherJob.status, 1);
     assert.equal(run('--phase', 'before-push', '--base', base, '--commit', base).status, 1);
     writeFileSync(join(root, 'CLAUDE.md'), 'uncommitted');
     assert.equal(run('--phase', 'before-push', '--base', base, '--commit', head).status, 1);
@@ -149,46 +146,14 @@ test('cron publication guard accepts prepared changes then exact commit, and rej
   }
 });
 
-test('SEO measurement push requires a scoped PR branch and rejects site changes', () => {
-  const root = mkdtempSync(join(tmpdir(), 'memlia-seo-cron-'));
-  try {
-    git(root, 'init', '-q', '-b', 'main');
-    git(root, 'config', 'user.email', 'test@example.invalid');
-    git(root, 'config', 'user.name', 'Test');
-    mkdirSync(join(root, 'docs/strategy/site-v3/mesures'), { recursive: true });
-    for (const name of ['RUNBOOK-SEO.md', 'CRONS-SEO.md']) writeFileSync(join(root, 'docs/strategy/site-v3', name), 'test');
-    writeFileSync(join(root, 'CLAUDE.md'), 'test');
-    git(root, 'add', '.');
-    git(root, 'commit', '-qm', 'base');
-    git(root, 'remote', 'add', 'origin', root);
-    const base = git(root, 'rev-parse', 'HEAD');
-    const run = (job, phase, extra = []) => spawnSync(process.execPath,
-      [script, '--root', root, '--job', job, '--phase', phase, ...extra],
-      { cwd: root, encoding: 'utf8' });
-    for (const job of ['sentinelle', 'demande', 'integrite', 'autorite']) {
-      assert.equal(run(job, 'initial').status, 0);
+test('SEO jobs remain unsupported in every phase of the blog-only preflight', () => {
+  for (const job of ['sentinelle', 'demande', 'integrite', 'autorite']) {
+    for (const phase of ['initial', 'before-commit', 'before-push']) {
+      const result = spawnSync(process.execPath, [script, '--root', process.cwd(),
+        '--job', job, '--phase', phase], { encoding: 'utf8' });
+      assert.equal(result.status, 1);
+      assert.equal(JSON.parse(result.stdout).ok, false);
+      assert.match(result.stdout, /SEO non autorisé/);
     }
-    git(root, 'switch', '-q', '-c', 'site/seo-mesures-demande-20260926');
-    writeFileSync(join(root, 'docs/strategy/site-v3/mesures/rapport.json'), '{}');
-    git(root, 'add', 'docs/strategy/site-v3/mesures/rapport.json');
-    assert.equal(run('demande', 'before-commit', ['--base', base]).status, 0);
-    for (const job of ['sentinelle', 'integrite', 'autorite']) {
-      assert.notEqual(run(job, 'before-commit', ['--base', base]).status, 0);
-    }
-    git(root, 'commit', '-qm', 'mesures');
-    const commit = git(root, 'rev-parse', 'HEAD');
-    const exact = ['--base', base, '--commit', commit];
-    assert.equal(run('demande', 'before-push', exact).status, 0);
-    for (const job of ['sentinelle', 'integrite', 'autorite']) {
-      assert.notEqual(run(job, 'before-push', exact).status, 0);
-    }
-    git(root, 'switch', '-q', '-c', 'site/blog-faux-seo');
-    assert.notEqual(run('demande', 'before-push', exact).status, 0);
-    git(root, 'switch', '-q', '-c', 'site/seo-mesures-globale');
-    writeFileSync(join(root, 'public.txt'), 'site change');
-    git(root, 'add', 'public.txt');
-    assert.notEqual(run('demande', 'before-commit', ['--base', base]).status, 0);
-    git(root, 'commit', '-qm', 'site change');
-    assert.notEqual(run('demande', 'before-push', ['--base', base, '--commit', git(root, 'rev-parse', 'HEAD')]).status, 0);
-  } finally { rmSync(root, { recursive: true, force: true }); }
+  }
 });

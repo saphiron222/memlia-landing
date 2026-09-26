@@ -13,7 +13,7 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 - **Un test n'est jamais modifié pour passer**, sauf un compte qui change légitimement avec la publication (nombre d'articles publics dans `tests/proof/test_build.py`, `PUBLIC_ARTICLES`), documenté dans le commit.
 - **Échec** : deux tentatives de correction au plus sur une recette ; ensuite, ne rien pousser, consigner la cause dans `JOURNAL.md`, et s'arrêter. Kevin lit le journal.
 
-## 1. Préflight commun des crons (avant toute écriture)
+## 1. Préflight de la forge (avant toute écriture)
 
 ```bash
 cd /Users/kevinkitanga/dev/interne/memlia-landing
@@ -21,7 +21,7 @@ PREFLIGHT=$(node scripts/cron-preflight.mjs --root "$PWD" --job forge) || { prin
 BASE_SHA=$(printf '%s' "$PREFLIGHT" | node -e 'let s="";process.stdin.on("data",c=>s+=c).on("end",()=>{const r=JSON.parse(s);if(!r.ok)process.exit(1);console.log(r.head)})') || exit 1
 ```
 
-Le mode initial vérifie le répertoire courant et la racine Git, la branche `main`, l'arbre propre, les runbooks requis, `git fetch origin main` et l'égalité des SHA. Conserver le `head` du JSON `ok:true` comme `BASE_SHA` pour cette exécution (ne jamais le recalculer depuis `origin/main` après des écritures). Avant le commit, `--phase before-commit --base "$BASE_SHA"` accepte les fichiers préparés sur `main`, mais exige que HEAD et le main distant fraîchement récupéré soient toujours cette base. Créer ensuite la branche PR avant le commit. Après le commit, `--phase before-push --base "$BASE_SHA" --commit "$COMMIT_SHA"` exige un arbre propre, un nom de branche `site/blog-*` pour `forge` (refuse `main`), le commit exact, son parent égal à la base et le main distant inchangé. Pour les cinq jobs, utiliser leur `--job forge|sentinelle|demande|integrite|autorite` respectif ; les autres jobs n'obtiennent pas de permission de push par ce contrôle. Toute sortie `ok:false` ou tout code non nul : arrêt sans commit/push, alerte avec les valeurs observées ; jamais de pull ou rebase automatique. Un `ok:true` n'est ni une revue QA, ni une CI, ni une preuve de publication. Le branchement des cinq prompts planifiés relève d'une release séparée ; le document seul ne les modifie pas.
+Le mode initial vérifie le répertoire courant et la racine Git, la branche `main`, l'arbre propre, le runbook de la forge, `git fetch origin main` et l'égalité des SHA. Conserver le `head` du JSON `ok:true` comme `BASE_SHA` pour cette exécution (ne jamais le recalculer depuis `origin/main` après des écritures). Avant le commit, `--phase before-commit --base "$BASE_SHA"` accepte les fichiers préparés sur `main`, mais exige que HEAD et le main distant fraîchement récupéré soient toujours cette base. Créer ensuite la branche PR avant le commit. Après le commit, `--phase before-push --base "$BASE_SHA" --commit "$COMMIT_SHA"` exige un arbre propre, un nom de branche `site/blog-*` pour `forge` (refuse `main`), le commit exact, son parent égal à la base et le main distant inchangé. Ce script n'autorise que `--job forge` : les quatre jobs SEO restent suspendus et leur procédure de publication est différée sous garde distincte. Toute sortie `ok:false` ou tout code non nul : arrêt sans commit/push, alerte avec les valeurs observées ; jamais de pull ou rebase automatique. Un `ok:true` n'est ni une revue QA, ni une CI, ni une preuve de publication. Le branchement des prompts planifiés relève d'une release séparée ; le document seul ne les modifie pas.
 
 ## 2. Lire le créneau du jour
 

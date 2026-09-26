@@ -1,16 +1,10 @@
 #!/usr/bin/env node
-// Shared fail-closed entry point for the five editorial/SEO scheduled jobs.
+// Fail-closed entry point for the blog forge only; SEO jobs await a separate release.
 import { existsSync, realpathSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-const required = {
-  forge: ['RUNBOOK-QUOTIDIEN.md', 'RUNBOOK-SEO.md'],
-  sentinelle: ['RUNBOOK-SEO.md', 'CRONS-SEO.md'],
-  demande: ['RUNBOOK-SEO.md', 'CRONS-SEO.md'],
-  integrite: ['RUNBOOK-SEO.md', 'CRONS-SEO.md'],
-  autorite: ['RUNBOOK-SEO.md', 'CRONS-SEO.md'],
-};
+const required = ['RUNBOOK-QUOTIDIEN.md'];
 const args = process.argv.slice(2);
 const option = (key) => args.includes(key) ? args[args.indexOf(key) + 1] : undefined;
 const root = resolve(option('--root') ?? '');
@@ -19,8 +13,7 @@ const phase = option('--phase') ?? 'initial';
 const base = option('--base');
 const commit = option('--commit');
 const sha = (value) => typeof value === 'string' && /^[0-9a-f]{40}$|^[0-9a-f]{64}$/.test(value);
-const seoMeasurePath = (path) => path.startsWith('docs/strategy/site-v3/mesures/') ||
-  path === 'docs/strategy/site-v3/JOURNAL.md' || path === 'editorial/maintenance.json';
+
 const errors = [];
 const report = { ok: false, job, root, cwd: process.cwd(), branch: null, head: null, originMain: null, errors };
 const git = (...argv) => {
@@ -29,7 +22,7 @@ const git = (...argv) => {
   return r.stdout.trim();
 };
 try {
-  if (!required[job] || !args.includes('--root')) throw new Error('Usage : cron-preflight --root <checkout> --job <forge|sentinelle|demande|integrite|autorite>');
+  if (job !== 'forge' || !args.includes('--root')) throw new Error('Usage : cron-preflight --root <checkout> --job forge (SEO non autorisé)');
   if (!['initial', 'before-commit', 'before-push'].includes(phase) ||
       (phase === 'initial' && (base || commit)) ||
       (phase !== 'initial' && !sha(base)) ||
@@ -38,15 +31,13 @@ try {
   if (realpathSync(root) !== realpathSync(process.cwd())) errors.push(`workdir incorrect : ${process.cwd()} != ${root}`);
   if (realpathSync(git('rev-parse', '--show-toplevel')) !== realpathSync(root)) errors.push('checkout incorrect : root doit être la racine Git');
   report.branch = git('branch', '--show-current');
-  const blogBranch = job === 'forge' && phase === 'before-push' &&
+  const blogBranch = phase === 'before-push' &&
     /^site\/blog-[a-z0-9][a-z0-9-]*$/.test(report.branch);
-  const seoBranch = job !== 'forge' && phase !== 'initial' &&
-    new RegExp(`^site/seo-mesures-${job}-[0-9]{8}(?:-[a-z0-9]+)*$`).test(report.branch);
-  if (phase === 'initial' ? report.branch !== 'main' : !(blogBranch || seoBranch || (job === 'forge' && phase === 'before-commit' && report.branch === 'main'))) {
+  if (phase === 'initial' ? report.branch !== 'main' : !(blogBranch || (phase === 'before-commit' && report.branch === 'main'))) {
     errors.push(`branche incorrecte : ${report.branch || '(detached)'} pour ${phase}`);
   }
   if (phase !== 'before-commit' && git('status', '--porcelain=v1')) errors.push('arbre Git non propre');
-  for (const path of ['CLAUDE.md', ...required[job].map((name) => `docs/strategy/site-v3/${name}`)]) {
+  for (const path of ['CLAUDE.md', ...required.map((name) => `docs/strategy/site-v3/${name}`)]) {
     if (!existsSync(join(root, path))) errors.push(`fichier requis absent : ${path}`);
   }
   git('fetch', 'origin', 'main');
@@ -59,15 +50,7 @@ try {
   } else if (report.head !== (base ?? report.originMain)) {
     errors.push(`HEAD désynchronisé : ${report.head} != ${base ?? report.originMain}`);
   }
-  if (job !== 'forge' && phase !== 'initial') {
-    const changed = phase === 'before-commit'
-      ? git('diff', '--cached', '--name-only', '--diff-filter=ACDMRT')
-      : git('diff', '--name-only', base, 'HEAD');
-    const paths = changed.split('\n').filter(Boolean);
-    if (!paths.length || paths.some((path) => !seoMeasurePath(path))) {
-      errors.push(`périmètre SEO incorrect : ${paths.filter((path) => !seoMeasurePath(path)).join(', ') || '(aucune mesure)'}`);
-    }
-  }
+
 } catch (error) {
   errors.push(error.message);
 }
