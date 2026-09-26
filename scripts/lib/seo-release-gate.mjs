@@ -1,4 +1,5 @@
 // Separate, read-only SEO measurement release decision. Never reuse the blog allowlist.
+import { verify } from 'node:crypto';
 const SHA = /^[0-9a-f]{40}$/;
 const PREFIX = 'docs/strategy/site-v3/mesures/';
 const MEASURE_FILES = new Set(['docs/strategy/site-v3/JOURNAL.md', 'editorial/maintenance.json']);
@@ -8,8 +9,22 @@ function scoped(path) {
     (MEASURE_FILES.has(path) || (path.startsWith(PREFIX) && path.length > PREFIX.length));
 }
 
+function signedAuthorization(metadata, trustedKey, expected) {
+  const decision = metadata?.signed_decision;
+  if (!trustedKey || !decision || Object.keys(decision).length !== Object.keys(expected).length ||
+      Object.entries(expected).some(([key, value]) => decision[key] !== value) ||
+      typeof metadata.signature !== 'string' ||
+      !/^[A-Za-z0-9+/]{86}==$/.test(metadata.signature)) return false;
+  try {
+    return verify(null, Buffer.from(JSON.stringify(decision)), trustedKey,
+      Buffer.from(metadata.signature, 'base64'));
+  } catch {
+    return false;
+  }
+}
+
 export function evaluateSeoRelease({ pr, qa, authorization, checks, changedPaths,
-  expectedHead, expectedMain, remoteMain }) {
+  expectedHead, expectedMain, remoteMain, trustedKey }) {
   const errors = [];
   if (!SHA.test(expectedHead ?? '') || !SHA.test(expectedMain ?? '') ||
       pr?.state !== 'OPEN' || pr?.isDraft !== false || pr?.baseRefName !== 'main' ||
@@ -36,7 +51,9 @@ export function evaluateSeoRelease({ pr, qa, authorization, checks, changedPaths
       authorization.task.status !== 'done' || a?.outcome !== 'completed' ||
       a?.metadata?.scope !== 'seo-measures' || a?.metadata?.decision !== 'AUTHORIZE' ||
       a?.metadata?.pr !== pr?.number || a?.metadata?.pr_head !== expectedHead ||
-      a?.metadata?.main_sha !== expectedMain || a?.metadata?.qa_task !== qa?.task?.id) {
+      a?.metadata?.main_sha !== expectedMain || a?.metadata?.qa_task !== qa?.task?.id ||
+      !signedAuthorization(a?.metadata, trustedKey, { scope: 'seo-measures', decision: 'AUTHORIZE',
+        pr: pr?.number, pr_head: expectedHead, main_sha: expectedMain, qa_task: qa?.task?.id })) {
     errors.push('autorisation SEO explicite et distincte absente');
   }
   const runs = checks?.check_runs;

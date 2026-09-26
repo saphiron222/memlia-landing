@@ -32,8 +32,11 @@ try {
   const changedPaths = filePages.flatMap(page => page.map(file => ({
     filename: file.filename, status: file.status, previous_filename: file.previous_filename })));
   const remoteMain = call('git', ['ls-remote', 'origin', 'refs/heads/main']).split(/\s+/)[0];
+  // The operator's public key must already be in the reviewed main commit, never the candidate PR.
+  // A missing key fails closed; no CLI flag or environment variable can inject a trust anchor.
+  const trustedKey = call('git', ['show', `${expectedMain}:config/seo-release-authority.pem`]);
   const verdict = evaluateSeoRelease({ pr, qa, authorization, checks, changedPaths,
-    expectedHead, expectedMain, remoteMain });
+    expectedHead, expectedMain, remoteMain, trustedKey });
   console.log(JSON.stringify({ ...verdict, pr: Number(prNumber), head: expectedHead,
     main: expectedMain, qaTask, authorizationTask, publicationPerformed: false }));
   if (!verdict.pass) process.exitCode = 2;

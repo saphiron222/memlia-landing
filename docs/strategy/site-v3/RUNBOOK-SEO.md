@@ -125,6 +125,19 @@ Une autre carte, distincte de QA, doit enregistrer la décision humaine autorisa
 `qa_task` dans les métadonnées du dernier run terminé). Sans ces preuves,
 ne pas fusionner ni activer les crons. La garde en lecture seule est :
 
+**Identité de l'autorisation.** Les métadonnées de la carte ne prouvent pas qui
+les a écrites : un profil `dev` peut y inscrire `AUTHORIZE`. La garde exige en
+plus `signed_decision` contenant exactement ces six champs et `signature` (base64
+d'une signature Ed25519 sur les octets UTF-8 de `JSON.stringify(signed_decision)`).
+La clé publique de vérification `config/seo-release-authority.pem` est lue dans
+le commit de `main` attendu, jamais dans la PR candidate. Kevin doit générer et
+conserver sa clé privée hors du poste accessible aux agents, vérifier l'empreinte
+de la clé publique avant son ajout sur `main`, puis signer lui-même la décision
+exacte. Ne jamais déposer la clé privée ni une signature fabriquée par un agent.
+Sans clé publique approuvée sur `main` ou sans signature humaine valide, la garde
+refuse la release ; une carte remplie par `dev` ne suffit pas. L'ajout de la clé
+sur `main` déplace la base : refaire QA et décision sur les SHA exacts.
+
 ```bash
 node scripts/seo-release-gate.mjs --pr <N> --qa-task <t_ID> --authorization-task <t_ID> --expected-head <SHA_PR> --expected-main <SHA_MAIN>
 ```
