@@ -4,7 +4,7 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 
 ## 0. Rails non négociables
 
-- **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`, branche `main`. Le push publie (Cloudflare Pages construit `main`).
+- **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`. Le préflight initial part de `main` ; les modifications d'article passent par une branche `site/blog-<sujet>` et une PR. Seule la fusion contrôlée sur `main` déclenche la publication Cloudflare ; jamais de push direct sur `main`.
 - **Cadence** : au plus 2 articles ordinaires par jour et 4 par semaine ISO, du lundi au jeudi, puis exactement 1 Cicatrice le samedi en sus ; le pipeline refuse le dépassement, une Cicatrice hors samedi et une deuxième Cicatrice dans la même semaine (`verifierPlafonds`). Le vendredi reste un jour de maintenance (§6).
 - **Aucun chiffre de gain non mesuré, aucune donnée client, aucune promesse de fonction, aucun mot de catalogue** (« module », « complément Excel/Memlia ») sur une surface publique. L'IA prépare, l'humain décide ; agrégats, jamais nominatif. Fact-check daté pour toute matière paie, sociale, fiscale, juridique ou données.
 - **Sources** : uniquement des pages officielles que le vérificateur ouvre réellement (`verifySource`, agent `MemliaBlogSourceVerifier/1.0`). Ouvertes le 16/09 : `entreprendre.service-public.gouv.fr`, `www.cnil.fr`, `www.impots.gouv.fr` (calendrier fiscal), `bofip.impots.gouv.fr`, `www.net-entreprises.fr`. Bloquées : `legifrance.gouv.fr` (403), `urssaf.fr` (connexion coupée). Tester chaque URL avec `curl -sS -L -A 'MemliaBlogSourceVerifier/1.0 (+https://memlia.fr)' -o /tmp/s.html -w '%{http_code} %{url_effective}\n' <url>` et prendre l'URL finale.
@@ -21,7 +21,7 @@ PREFLIGHT=$(node scripts/cron-preflight.mjs --root "$PWD" --job forge) || { prin
 BASE_SHA=$(printf '%s' "$PREFLIGHT" | node -e 'let s="";process.stdin.on("data",c=>s+=c).on("end",()=>{const r=JSON.parse(s);if(!r.ok)process.exit(1);console.log(r.head)})') || exit 1
 ```
 
-Le mode initial vérifie le répertoire courant et la racine Git, la branche `main`, l'arbre propre, les runbooks requis, `git fetch origin main` et l'égalité des SHA. Conserver le `head` du JSON `ok:true` comme `BASE_SHA` pour cette exécution (ne jamais le recalculer depuis `origin/main` après des écritures). Avant le commit, `--phase before-commit --base "$BASE_SHA"` accepte les fichiers préparés, mais exige que HEAD et le main distant fraîchement récupéré soient toujours cette base. Après le commit, `--phase before-push --base "$BASE_SHA" --commit "$COMMIT_SHA"` exige un arbre propre, le commit exact, son parent égal à la base et le main distant inchangé. Pour les cinq jobs, utiliser leur `--job forge|sentinelle|demande|integrite|autorite` respectif. Toute sortie `ok:false` ou tout code non nul : arrêt sans commit/push, alerte avec les valeurs observées ; jamais de pull ou rebase automatique. Un `ok:true` n'est pas une preuve de publication. Ce protocole est préparé ici mais le branchement des cinq prompts planifiés relève d'une release séparée ; le document seul ne les modifie pas.
+Le mode initial vérifie le répertoire courant et la racine Git, la branche `main`, l'arbre propre, les runbooks requis, `git fetch origin main` et l'égalité des SHA. Conserver le `head` du JSON `ok:true` comme `BASE_SHA` pour cette exécution (ne jamais le recalculer depuis `origin/main` après des écritures). Avant le commit, `--phase before-commit --base "$BASE_SHA"` accepte les fichiers préparés sur `main`, mais exige que HEAD et le main distant fraîchement récupéré soient toujours cette base. Créer ensuite la branche PR avant le commit. Après le commit, `--phase before-push --base "$BASE_SHA" --commit "$COMMIT_SHA"` exige un arbre propre, un nom de branche `site/blog-*` pour `forge` (refuse `main`), le commit exact, son parent égal à la base et le main distant inchangé. Pour les cinq jobs, utiliser leur `--job forge|sentinelle|demande|integrite|autorite` respectif ; les autres jobs n'obtiennent pas de permission de push par ce contrôle. Toute sortie `ok:false` ou tout code non nul : arrêt sans commit/push, alerte avec les valeurs observées ; jamais de pull ou rebase automatique. Un `ok:true` n'est ni une revue QA, ni une CI, ni une preuve de publication. Le branchement des cinq prompts planifiés relève d'une release séparée ; le document seul ne les modifie pas.
 
 ## 2. Lire le créneau du jour
 
@@ -82,7 +82,7 @@ Jamais un cadre HTML pour la **couverture** d'un article publié ; les deux preu
 node scripts/mesurer-palette.mjs <image.png> "#27b657,#1c8a41,#fcfbf7,#231f20"
 ```
 
-⚠ Annoncer le coût avant toute génération Higgsfield (3 crédits par passe, `gpt_image_2_5` 16:9 2K) et attendre le go de Kevin : c'est une dépense.
+⚠ Avant toute génération Higgsfield, contrôler le coût et réserver atomiquement dans le budget global via `~/hermes/scripts/higgsfield-credit-budget.py` ; l'enveloppe engagée doit rester strictement sous 40 crédits. Réconcilier la réservation après exécution ; en cas de budget ou de preuve indisponible, arrêter sans dépenser. La décision blog-only du 25/09/2026 retire le go individuel de Kevin pour la couverture, pas cette limite de dépense.
 
 ```bash
 higgsfield generate cost gpt_image_2_5 --prompt "<prompt du brief>" --aspect_ratio 16:9 --quality high --resolution 2k
@@ -116,7 +116,7 @@ Le gate doit rendre `"pass": true`. Sinon lire les `errors`, corriger la recette
 
 Le calendrier place exactement un article portant `serie: "cicatrices"` chaque samedi, en sus des quatre articles ordinaires (charte §7 ter). Il est **signé Kevin, à la première personne**, et raconte une chose qui a cassé dans la construction de Memlia, ce qu'elle a coûté, et la règle qui en est sortie.
 
-**Tu ne l'inventes pas et tu ne le publies pas sans son go nominatif.** La forge le prépare et le scelle si sa recette existe déjà (`editorial/recettes/<slug>/`), puis attend le go de Kevin, parce que l'article porte sa signature et son expérience. Une Cicatrice déjà relue et autorisée se publie le samedi par la chaîne du §5. Écris dans `JOURNAL.md` si l'article reste scellé en attente ; son absence ne libère jamais un second article ordinaire.
+**Tu ne l'inventes pas.** La forge le prépare et le scelle seulement si une recette fondée sur les faits vécus fournis par Kevin existe déjà (`editorial/recettes/<slug>/`). La décision blog-only du 25/09/2026 retire l'approbation individuelle avant fusion et déploiement ; elle ne permet pas de fabriquer une expérience ni de lui attribuer des propos inconnus. Si les faits manquent, consigner le créneau vide dans `JOURNAL.md` et s'arrêter, sans second article ordinaire.
 
 Si la recette n'existe pas, ne l'invente pas : une cicatrice est un fait vécu, pas un sujet. Note dans `JOURNAL.md` que le créneau est vide faute de recette, et arrête-toi.
 
@@ -138,15 +138,19 @@ Si `publier` échoue sur `test_build.py` à cause du compte d'articles publics, 
 npm run build
 git add -- editorial/recettes/<slug> editorial/articles/<slug> src/content/blog/<slug>.md public/images/img-art-<court-slug>-*
 node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-commit --base "$BASE_SHA" || exit 1
+PR_BRANCH="site/blog-<sujet-unique>" # nom neuf ; ne pas réutiliser une branche distante existante
+git switch -c "$PR_BRANCH" || exit 1
 git commit -m "feat(blog): <titre de l'article>" -- editorial public/images public/llms.txt src tests docs/qa docs/strategy/site-v3/CONTENT-CALENDAR.md docs/strategy/site-v3/cluster-plan.json docs/strategy/site-v3/cluster-plan.md docs/strategy/site-v3/cluster-map.html docs/strategy/site-v3/JOURNAL.md
 COMMIT_SHA=$(git rev-parse HEAD)
 node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-push --base "$BASE_SHA" --commit "$COMMIT_SHA" || exit 1
-# Push uniquement après autorisation humaine de Kevin ; non fast-forward refusé si main a avancé entre le contrôle et le push.
-git push origin HEAD:main
-git fetch origin main && test "$(git rev-parse FETCH_HEAD)" = "$COMMIT_SHA" || exit 1
+git push origin "HEAD:refs/heads/$PR_BRANCH" || exit 1
+test "$(git ls-remote origin "refs/heads/$PR_BRANCH" | cut -f1)" = "$COMMIT_SHA" || exit 1
+gh pr create --base main --head "$PR_BRANCH" --title "feat(blog): <titre de l'article>" --body "Article candidat ; QA et CI requises avant fusion" || exit 1
 ```
 
-Le message de commit suit la convention du dépôt, sans attribution à un runtime ou à un modèle. Puis attendre le déploiement : `npx wrangler pages deployment list --project-name memlia --json` donne l'identifiant du déploiement du commit poussé (`Source`), mais son statut `Active` s'affiche dès le push, avant la fin du build ; la preuve que le build est fini est l'URL propre du déploiement `https://<id>.memlia.pages.dev/<page>` (en-tête User-Agent de navigateur, `pages.dev` refuse curl nu) qui sert un marqueur du contenu poussé (nouveau titre, nombre de termes, texte ajouté), en général cinq à dix minutes après le push. Ensuite contrôler en ligne :
+Le message de commit suit la convention du dépôt, sans attribution à un runtime ou à un modèle. Le push de branche n'est pas une publication. Obtenir une QA Kanban indépendante `qa`, terminée avec verdict canonique `PASS` sans réserve, sur le numéro et le HEAD exacts de cette PR, ainsi que la preuve CI `Repository gates` complète et réussie sur ce HEAD. Depuis un checkout propre de `main` à jour, exécuter `node scripts/blog-auto-merge.mjs --pr N --qa-task t_ID --expected-head "$COMMIT_SHA" --expected-main "$BASE_SHA"` en lecture seule, puis la même commande avec `--merge` seulement si la première rend `pass:true` et si les références/QA/CI sont encore exactes. La garde refuse tout chemin hors blog, notamment `public/images/`, `public/llms.txt`, `src/data/images.mjs` et les autres fichiers globaux : leur présence exige un circuit de revue et d'autorisation adapté, **pas** une extension opportuniste de l'allowlist ni un push direct. Si la recette produit de tels fichiers, arrêter cette publication autonome. La garde ne verrouille pas atomiquement la base sur GitHub Free privé : après la demande de fusion, lire le retour GitHub, la PR et `origin/main`, vérifier l'ascendance et le SHA fusionné ; une réponse de commande seule ne suffit pas.
+
+Puis attendre le déploiement : `npx wrangler pages deployment list --project-name memlia --json` donne l'identifiant du déploiement du commit fusionné (`Source`), mais son statut `Active` s'affiche dès le push, avant la fin du build ; la preuve que le build est fini est l'URL propre du déploiement `https://<id>.memlia.pages.dev/<page>` (en-tête User-Agent de navigateur, `pages.dev` refuse curl nu) qui sert un marqueur du contenu fusionné (nouveau titre, nombre de termes, texte ajouté). Ensuite contrôler en ligne :
 
 ```bash
 curl -s -o /dev/null -w '%{http_code}\n' https://memlia.fr/blog/<slug>
@@ -168,7 +172,7 @@ Dans l'ordre, sans publier d'article :
 2. Relever l'indexation des URL publiées depuis sept jours (Search Console : `~/hermes/packs/claude-seo/.venv/bin/python scripts/gsc-resubmit-sitemap.py` affiche le sitemap ; l'inspection d'URL unitaire reste manuelle, Kevin la fait dans la propriété).
 3. Glossaire : la vague 1 (vingt termes) est intégrée depuis le 16/09/2026 par la chaîne Ressources (revue métier R5 : `docs/qa/hub-ressources/metier-review-r5/`, rapport de sources : `docs/qa/hub-ressources/glossaire-vague-1.md`). Pour une vague suivante, rejouer la même chaîne et jamais un simple ajout dans le fichier : entrées dans `src/data/glossary.ts` (une seule apostrophe typographique, jamais droite, dans les textes) ; copies de source datées dans `docs/qa/hub-ressources/<vague>-sources/` (curl avec en-tête de navigateur ; Légifrance et l'assistance Net-entreprises exigent un navigateur) ; spécifications de preuve et planchers `DEFINITIONS_ATTENDUES` / `UNITES_ATTENDUES` dans `scripts/lib/resource-metier-evidence.mjs` ; champs à portée juridique déclarés dans `ADDITIONAL_UNITS` de `resource-metier-v3.mjs` ; compteurs des tests (`tests/proof/test_glossary.py`, `tests/browser/glossary.spec.ts`, totaux de `test_resource_v3_traceability.py`) ; `npm run resource:seal-surfaces` ; revue métier par un agent distinct sous une carte kanban `t_…` (verdict par couple affirmation/source sur les types sensibles) ; injection de la revue dans les deux manifestes puis `node scripts/reaffirm-resource-review.mjs ancrer` ; `npm run resource:audit:qa` vert.
 4. Maintenance SEO, l'extension F2 (`RUNBOOK-SEO.md` §7) : `node scripts/seo/forge-seo.mjs maintenance lister` donne les tâches déposées par les crons ; en traiter deux au plus, par gravité, chacune par republication scellée par la forge (depuis le 17/09/2026 au soir, les six articles ont une recette dans `editorial/recettes/` ; `scripts/migrate-published-blog.mjs` ne sert plus qu'à un article qui serait publié hors forge), puis `node scripts/seo/forge-seo.mjs maintenance cloturer <id> --commit <sha>` ; une tâche jugée fausse s'écarte avec `ecarter <id> --motif "…"` et son motif dans le journal.
-5. Consigner dans `JOURNAL.md` ce qui a été fait, et pousser.
+5. Consigner dans `JOURNAL.md` ce qui a été fait ; tout changement suit le circuit branche/PR/QA/CI/garde du §5, jamais un push direct sur `main`.
 
 ## 7. Prompt du sous-agent relecteur (version complète)
 

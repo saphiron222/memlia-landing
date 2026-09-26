@@ -36,7 +36,12 @@ try {
   if (realpathSync(root) !== realpathSync(process.cwd())) errors.push(`workdir incorrect : ${process.cwd()} != ${root}`);
   if (realpathSync(git('rev-parse', '--show-toplevel')) !== realpathSync(root)) errors.push('checkout incorrect : root doit être la racine Git');
   report.branch = git('branch', '--show-current');
-  if (report.branch !== 'main') errors.push(`branche incorrecte : ${report.branch || '(detached)'} != main`);
+  // A prepared blog commit may be checked on its PR branch, never pushed to main.
+  const publicationBranch = job === 'forge' && phase === 'before-push' &&
+    /^site\/blog-[a-z0-9][a-z0-9-]*$/.test(report.branch);
+  if (phase === 'before-push' ? !publicationBranch : report.branch !== 'main') {
+    errors.push(`branche incorrecte : ${report.branch || '(detached)'} pour ${phase}`);
+  }
   if (phase !== 'before-commit' && git('status', '--porcelain=v1')) errors.push('arbre Git non propre');
   for (const path of ['CLAUDE.md', ...required[job].map((name) => `docs/strategy/site-v3/${name}`)]) {
     if (!existsSync(join(root, path))) errors.push(`fichier requis absent : ${path}`);

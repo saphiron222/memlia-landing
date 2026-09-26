@@ -119,7 +119,16 @@ test('cron publication guard accepts prepared changes then exact commit, and rej
     git(root, 'add', 'CLAUDE.md');
     git(root, 'commit', '-qm', 'prepared');
     const head = git(root, 'rev-parse', 'HEAD');
+    const directMain = run('--phase', 'before-push', '--base', base, '--commit', head);
+    assert.equal(directMain.status, 1);
+    assert.ok(JSON.parse(directMain.stdout).errors.some((e) => e.includes('branche')));
+    git(root, 'switch', '-q', '-c', 'site/other-release');
+    assert.equal(run('--phase', 'before-push', '--base', base, '--commit', head).status, 1);
+    git(root, 'switch', '-q', '-c', 'site/blog-article-test');
     assert.equal(run('--phase', 'before-push', '--base', base, '--commit', head).status, 0);
+    const otherJob = spawnSync(process.execPath, [script, '--root', root, '--job', 'sentinelle',
+      '--phase', 'before-push', '--base', base, '--commit', head], { cwd: root, encoding: 'utf8' });
+    assert.equal(otherJob.status, 1);
     assert.equal(run('--phase', 'before-push', '--base', base, '--commit', base).status, 1);
     writeFileSync(join(root, 'CLAUDE.md'), 'uncommitted');
     assert.equal(run('--phase', 'before-push', '--base', base, '--commit', head).status, 1);
