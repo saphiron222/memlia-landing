@@ -154,6 +154,7 @@ const appel = {
         if (!widget || !turnstile) return;
         turnstile.render(widget, {
           sitekey, action: 'contact', language: 'fr',
+          size: widget.getBoundingClientRect().width < 300 ? 'compact' : 'normal',
           callback: () => document.dispatchEvent(new Event('contact:verifie')),
           'expired-callback': () => document.dispatchEvent(new Event('contact:expire')),
           'error-callback': () => document.dispatchEvent(new Event('contact:erreur')),

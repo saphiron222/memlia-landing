@@ -100,6 +100,28 @@ test('contact : expiration et champs préservés sur mobile', async ({ page }) =
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
+for (const [viewport, expectedSize, expectedWidth] of [[320, 'compact', 150], [375, 'compact', 150], [768, 'normal', 300]] as const) {
+  test(`contact : widget Turnstile atteignable sans débordement à ${viewport} px`, async ({ page }) => {
+    await page.setViewportSize({ width: viewport, height: 700 });
+    await page.route('**/api/contact', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{"sitekey":"cle-test"}' }));
+    await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', (route) => route.fulfill({
+      status: 200, contentType: 'application/javascript',
+      body: `window.turnstile={render:(node,options)=>{window.beforeWidgetScrollWidth=document.documentElement.scrollWidth;node.dataset.size=options.size||'normal';const control=document.createElement('button');control.type='button';control.textContent='Vérification fictive';control.style.width=(options.size==='compact'?'150px':'300px');control.style.height='65px';node.append(control)},reset:()=>{}}`,
+    }));
+    await page.goto('/contact');
+    const widget = page.locator('[data-turnstile]');
+    const control = widget.getByRole('button', { name: 'Vérification fictive' });
+    await expect(widget).toHaveAttribute('data-size', expectedSize);
+    await expect(control).toHaveCSS('width', `${expectedWidth}px`);
+    expect(await page.evaluate(() => (window as typeof window & { beforeWidgetScrollWidth: number }).beforeWidgetScrollWidth <= window.innerWidth)).toBe(true);
+    await control.scrollIntoViewIfNeeded();
+    await expect(control).toBeInViewport({ ratio: 1 });
+    await control.focus();
+    await expect(control).toBeFocused();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  });
+}
+
 test('contact : échec de chargement du widget, aucun envoi et alternative courriel', async ({ page }) => {
   await page.route('**/api/contact', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{"sitekey":"cle-test"}' }));
   await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', (route) => route.abort());
