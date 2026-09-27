@@ -22,6 +22,7 @@ INTEGRATION_PAGES = {
     'bulletin-de-paie-silae',
 }
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
+SUSPENDED_ARTICLE = 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'
 PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
                    'comprendre-les-comptes-rendus-metier-dsn',
                    # v3, 16/09/2026 : le pilier et le premier satellite publiés par la forge.
@@ -133,7 +134,8 @@ class BuildProof(unittest.TestCase):
             subtree = ET.parse(DIST / urlsplit(link).path.lstrip('/'))
             for url in subtree.findall('.//s:url', ns):
                 pages[url.find('s:loc', ns).text] = url.find('s:lastmod', ns).text
-        published_articles = [a for a in articles() if not is_preview_article(a)]
+        published_articles = [a for a in articles() if not is_preview_article(a)
+                              and a.stem != SUSPENDED_ARTICLE]
         # Les pages légales et les candidats service noindex restent hors sitemap. Une page de
         # service n'y entre qu'après le passage de la forge au statut `publie`.
         services_publies = set()
@@ -154,6 +156,7 @@ class BuildProof(unittest.TestCase):
                      } | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
+        self.assertNotIn(f'{SITE}/blog/{SUSPENDED_ARTICLE}', pages)
         self.assertNotIn(f'{SITE}/outils-comptables-gratuits/temoin-calcul-local', pages)
         # lastmod d'un article publié = dateModified de son schéma (une seule source : le frontmatter).
         for article in published_articles:
