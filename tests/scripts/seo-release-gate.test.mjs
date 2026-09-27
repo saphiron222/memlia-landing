@@ -4,7 +4,6 @@ import { spawnSync } from 'node:child_process';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { generateKeyPairSync, sign } from 'node:crypto';
 import { collectCheckRuns } from '../../scripts/lib/blog-auto-merge-gate.mjs';
 import { evaluateSeoRelease } from '../../scripts/lib/seo-release-gate.mjs';
 
@@ -21,51 +20,50 @@ const evidence = () => ({
       ci: { exact_head: true, head, success_verified: true } } }] },
   checks: collectCheckRuns([{ total_count: 1, check_runs: [{ name: 'Repository gates', head_sha: head,
     status: 'completed', conclusion: 'success' }] }]),
-  authorization: { task: { id: 't_release123', status: 'done' }, runs: [{ outcome: 'completed',
-    metadata: { scope: 'seo-measures', decision: 'AUTHORIZE', pr: 12, pr_head: head,
-      main_sha: base, qa_task: 't_qa123' } }] },
+  privateRepository: true,
 });
 
-const { privateKey, publicKey } = generateKeyPairSync('ed25519');
-const trustedKey = publicKey.export({ format: 'pem', type: 'spki' });
 function authorizedEvidence() {
   const p = evidence();
-  const decision = { scope: 'seo-measures', decision: 'AUTHORIZE', pr: p.pr.number,
-    pr_head: head, main_sha: base, qa_task: p.qa.task.id };
-  p.authorization.runs[0].metadata.signed_decision = decision;
-  p.authorization.runs[0].metadata.signature = sign(null, Buffer.from(JSON.stringify(decision)), privateKey).toString('base64');
-  return { ...p, trustedKey };
+  p.receipt = { verified: true, repo: 'saphiron222/memlia-landing', scope: 'seo-measures',
+    decision: 'AUTHORIZE', channel: 'telegram', pr: 12, pr_head: head, main_sha: base,
+    qa_task: p.qa.task.id, authorization_task: 't_release123' };
+  return p;
 }
 
-test('SEO gate rejects self-declared dev authorization without a signed decision', () => {
+test('SEO gate rejects self-declared dev authorization without a gateway receipt', () => {
   assert.equal(evaluateSeoRelease(evidence()).pass, false);
+  assert.equal(evaluateSeoRelease({ ...evidence(), authorization: { runs: [{ metadata: {
+    decision: 'AUTHORIZE', author: 'Kevin' } }] } }).pass, false);
 });
 
-test('SEO gate accepts signed exact-scope proof and does not confer blog permission', () => {
+test('SEO gate accepts a verified receipt and does not confer blog permission', () => {
   const p = authorizedEvidence();
   assert.equal(evaluateSeoRelease(p).pass, true);
   p.changedPaths = [{ filename: 'src/content/blog/example.md', status: 'added' }];
   assert.equal(evaluateSeoRelease(p).pass, false);
 });
 
-test('SEO gate refuses a tampered or unsigned human decision', () => {
+test('SEO gate refuses unverified, foreign or public-repository decisions', () => {
   const p = authorizedEvidence();
-  const otherKey = generateKeyPairSync('ed25519').publicKey.export({ format: 'pem', type: 'spki' });
-  assert.equal(evaluateSeoRelease({ ...p, trustedKey: otherKey }).pass, false);
-  assert.equal(evaluateSeoRelease({ ...p, trustedKey: undefined }).pass, false);
-  p.authorization.runs[0].metadata.signed_decision.scope = 'blog';
+  assert.equal(evaluateSeoRelease({ ...p, privateRepository: false }).pass, false);
+  p.receipt.verified = false;
   assert.equal(evaluateSeoRelease(p).pass, false);
-  p.authorization.runs[0].metadata.signed_decision.scope = 'seo-measures';
-  p.authorization.runs[0].metadata.signature = 'AAAA';
+  p.receipt.verified = true;
+  p.receipt.repo = 'other/repo';
   assert.equal(evaluateSeoRelease(p).pass, false);
 });
 
 for (const [name, mutate] of [
-  ['missing authorization', p => { delete p.authorization; }],
-  ['blog authorization', p => { p.authorization.runs[0].metadata.scope = 'blog'; }],
-  ['other PR authorization', p => { p.authorization.runs[0].metadata.pr = 3; }],
-  ['stale authorization', p => { p.authorization.runs[0].metadata.main_sha = head; }],
-  ['non-independent authorization', p => { p.authorization.task.id = p.qa.task.id; }],
+  ['missing authorization', p => { delete p.receipt; }],
+  ['blog authorization', p => { p.receipt.scope = 'blog'; }],
+  ['other PR authorization', p => { p.receipt.pr = 3; }],
+  ['stale authorization', p => { p.receipt.main_sha = head; }],
+  ['non-independent authorization', p => { p.receipt.authorization_task = p.qa.task.id; }],
+  ['other channel', p => { p.receipt.channel = 'cli'; }],
+  ['refusal', p => { p.receipt.decision = 'REFUSE'; }],
+  ['changed QA', p => { p.receipt.qa_task = 't_other'; }],
+  ['changed head in receipt', p => { p.receipt.pr_head = base; }],
   ['stale head', p => { p.pr.headRefOid = base; }],
   ['moved main', p => { p.remoteMain = head; }],
   ['draft', p => { p.pr.isDraft = true; }],
