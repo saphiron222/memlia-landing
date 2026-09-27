@@ -459,12 +459,20 @@ test('témoin : le garde détecte toute requête après armement, puis exige zé
   expect(requests).toEqual([]);
 });
 
-test('outil vers contact : origine attribuée sans requête avant l’envoi volontaire', async ({ page }) => {
+test('outil vers contact : origine attribuée sans envoi avant validation volontaire', async ({ page }) => {
   const apiRequests: string[] = [];
   await page.route('**/api/contact', async (route) => {
+    if (route.request().method() === 'GET') {
+      await route.fulfill({ status: 200, contentType: 'application/json', body: '{"sitekey":"cle-test"}' });
+      return;
+    }
     apiRequests.push(route.request().postData() ?? '');
     await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true }) });
   });
+  await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', (route) => route.fulfill({
+    status: 200, contentType: 'application/javascript',
+    body: 'window.turnstile={render:()=>{const input=document.createElement("input");input.type="hidden";input.name="cf-turnstile-response";input.value="jeton-test";document.querySelector("[data-contact]").append(input)},reset:()=>{}}',
+  }));
 
   await page.goto(TEMOIN);
   await page.locator('[data-tool-links] a[href="/contact"]').click();

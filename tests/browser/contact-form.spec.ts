@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * Le formulaire de contact tient deux régimes : sans JavaScript, un envoi HTML classique vers
- * la fonction ; avec JavaScript, un envoi en place qui dit ce qui s'est passé sans quitter la
+ * Sans JavaScript le courriel reste proposé ; avec JavaScript, l’envoi en place exige un jeton
+ * de vérification et dit ce qui s'est passé sans quitter la
  * page. La fonction elle-même est éprouvée par tests/scripts/contact-function.test.mjs ; ici,
  * la route est interceptée pour jouer ses réponses.
  */
-test('contact : le formulaire est complet et poste vers la fonction sans JavaScript', async ({ browser }) => {
+test('contact : sans JavaScript, le formulaire reste bloqué et le courriel reste disponible', async ({ browser }) => {
   const contexte = await browser.newContext({ javaScriptEnabled: false });
   const page = await contexte.newPage();
   await page.goto('/contact');
@@ -21,24 +21,40 @@ test('contact : le formulaire est complet et poste vers la fonction sans JavaScr
   await expect(piege).toHaveAttribute('tabindex', '-1');
   await expect(piege).not.toBeInViewport();
   await expect(page.locator('h1')).toHaveCount(1);
+  await expect(form.locator('button[type="submit"]')).toBeDisabled();
+  await expect(page.locator('a[href^="mailto:"]').first()).toBeVisible();
   await contexte.close();
 });
 
 test('contact : avec JavaScript, l’envoi reste en place et affiche le résultat', async ({ page }) => {
-  // L'envoi en place part en multipart (FormData) : on garde le corps brut et on y lit les champs.
-  const corps: string[] = [];
-  const champ = (brut: string, nom: string) => brut.match(new RegExp(`name="${nom}"\\r\\n\\r\\n([^\\r]*)\\r\\n`))?.[1];
   await page.route('**/api/contact', async (route) => {
+    if (route.request().method() === 'GET') {
+      await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ sitekey: 'cle-test' }) });
+      return;
+    }
     corps.push(route.request().postData() ?? '');
     const code = corps.length === 1 ? { status: 400, body: { ok: false, code: 'message' } } : { status: 200, body: { ok: true } };
     await route.fulfill({ status: code.status, contentType: 'application/json', body: JSON.stringify(code.body) });
   });
+  await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', (route) => route.fulfill({ status: 200, contentType: 'application/javascript', body: 'window.turnstile={render:()=>{},reset:()=>document.querySelector("[name=cf-turnstile-response]")?.remove()}' }));
+  // L'envoi en place part en multipart (FormData) : on garde le corps brut et on y lit les champs.
+  const corps: string[] = [];
+  const champ = (brut: string, nom: string) => brut.match(new RegExp(`name="${nom}"\\r\\n\\r\\n([^\\r]*)\\r\\n`))?.[1];
   await page.goto('/contact');
+  await expect(page.locator('form[data-contact] button[type="submit"]')).toBeEnabled();
   await page.fill('#nom', 'Élodie Fictive');
   await page.fill('#cabinet', 'Cabinet Témoin');
   await page.fill('#courriel', 'elodie@exemple.test');
   await page.fill('#message', 'Chaque mois je recopie les montants de paie dans un classeur de suivi.');
   await page.check('#consentement');
+  await page.click('form[data-contact] button[type="submit"]');
+  await expect(page.locator('[data-etat]')).toContainText('Terminez la vérification');
+  expect(corps).toHaveLength(0);
+  await page.evaluate(() => {
+    const jeton = document.createElement('input');
+    jeton.type = 'hidden'; jeton.name = 'cf-turnstile-response'; jeton.value = 'jeton-test';
+    document.querySelector('form[data-contact]')?.appendChild(jeton);
+  });
   await page.click('form[data-contact] button[type="submit"]');
   const etat = page.locator('[data-etat]');
   await expect(etat).toBeVisible();
@@ -46,6 +62,14 @@ test('contact : avec JavaScript, l’envoi reste en place et affiche le résulta
   await expect(etat).toContainText('vingt caractères');
   // Le champ reste rempli après un refus : rien n'est perdu, on corrige et on renvoie.
   await expect(page.locator('#message')).toHaveValue(/recopie/);
+  await expect(page.locator('[name="cf-turnstile-response"]')).toHaveCount(0);
+  await page.click('form[data-contact] button[type="submit"]');
+  expect(corps).toHaveLength(1);
+  await page.evaluate(() => {
+    const jeton = document.createElement('input');
+    jeton.type = 'hidden'; jeton.name = 'cf-turnstile-response'; jeton.value = 'nouveau-jeton';
+    document.querySelector('form[data-contact]')?.appendChild(jeton);
+  });
   await page.click('form[data-contact] button[type="submit"]');
   await expect(etat).toHaveAttribute('data-ok', 'oui');
   await expect(etat).toContainText('Message envoyé');
@@ -57,6 +81,34 @@ test('contact : avec JavaScript, l’envoi reste en place et affiche le résulta
   expect(champ(corps[1], 'consentement')).toBe('on');
   expect(champ(corps[1], 'site_web')).toBe('');
   expect(corps[1]).not.toContain('filename=');
+});
+
+test('contact : expiration et champs préservés sur mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 700 });
+  await page.route('**/api/contact', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{"sitekey":"cle-test"}' }));
+  await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', (route) => route.fulfill({
+    status: 200, contentType: 'application/javascript',
+    body: 'window.turnstile={render:(_node,options)=>{window.challenge=options; const input=document.createElement("input"); input.name="cf-turnstile-response"; input.value="jeton"; input.type="hidden"; document.querySelector("[data-contact]").append(input)},reset:()=>document.querySelector("[name=cf-turnstile-response]")?.remove()}',
+  }));
+  await page.goto('/contact');
+  await page.fill('#nom', 'Camille Fictive');
+  await page.evaluate(() => (window as typeof window & { challenge: { 'expired-callback': () => void } }).challenge['expired-callback']());
+  await expect(page.locator('[data-etat]')).toContainText('expiré');
+  await expect(page.locator('[name="cf-turnstile-response"]')).toHaveCount(0);
+  await expect(page.locator('#nom')).toHaveValue('Camille Fictive');
+  await expect(page.locator('a[href^="mailto:"]').first()).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
+
+test('contact : échec de chargement du widget, aucun envoi et alternative courriel', async ({ page }) => {
+  await page.route('**/api/contact', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{"sitekey":"cle-test"}' }));
+  await page.route('https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', (route) => route.abort());
+  await page.goto('/contact');
+  await page.fill('#nom', 'Camille Fictive');
+  await expect(page.locator('form[data-contact] button[type="submit"]')).toBeDisabled();
+  await expect(page.locator('[data-etat]')).toContainText('ne se charge pas');
+  await expect(page.locator('#nom')).toHaveValue('Camille Fictive');
+  await expect(page.locator('a[href^="mailto:"]').first()).toBeVisible();
 });
 
 test('contact : la page d’erreur nomme le champ refusé quand la fonction le lui dit, et reste juste sans lui', async ({ page }) => {
