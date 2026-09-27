@@ -61,7 +61,9 @@ async function validateWithRenderedBlog(slug, previewSlug = slug, gateMode = 'pr
     run(process.execPath, [astroCli, 'build', '--root', root, '--outDir', outputRoot], { ...process.env, BLOG_PREVIEW_SLUG: previewSlug });
     const blogPath = renderedPagePath(outputRoot, '/blog');
     const renderedBlogHtml = existsSync(blogPath) ? readFileSync(blogPath, 'utf8') : undefined;
-    const dossier = await validateDossier({ root, slug, renderedBlogHtml, gateMode });
+    const articlePath = renderedPagePath(outputRoot, `/blog/${slug}`);
+    const renderedArticleHtml = existsSync(articlePath) ? readFileSync(articlePath, 'utf8') : '';
+    const dossier = await validateDossier({ root, slug, renderedBlogHtml, renderedArticleHtml, gateMode });
     const contrat = auditerContratBlog({ root, dist: outputRoot, slugs: [slug] });
     return {
       ...dossier,

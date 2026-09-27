@@ -29,6 +29,7 @@ import {
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
 import { retirerPreuvesInline } from './lib/blog-proof-figures.mjs';
+import { reviewBindingErrors, reviewSha256, renderedBodySha256 } from './lib/blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
 
@@ -578,18 +579,23 @@ export function verifierRegleEcrite(corps, { date }) {
 
 export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour = aujourdhui() }) {
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
+  const recettePath = join(dossierRecette, 'recette.json');
+  let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  let revuesValides = revueErreurs.length ? null : revues;
   const requetes = [recette.primaryQuery, ...(recette.secondaryQueries ?? [])];
   verifierTitreIntentMesure({ root, titre: recette.title, requetes, au: jour, surface: `${slug} : H1` });
   verifierTitreIntentMesure({ root, titre: recette.tabTitle, requetes, au: jour, surface: `${slug} : titre d’onglet` });
   const dossier = join(root, 'editorial/articles', slug);
   mkdirSync(join(dossier, 'preuves/sources'), { recursive: true });
   mkdirSync(join(dossier, 'preuves/skills'), { recursive: true });
-  const manifest = construireManifest(recette, statut, jour, revues);
+  const manifest = construireManifest(recette, statut, jour, revuesValides);
   const manifestPath = join(dossier, 'manifest.json');
   ecrireJson(manifestPath, manifest);
   await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher });
   // Les URL finales ont pu réécrire la recette : le manifeste est reconstruit depuis la recette à jour.
-  const manifestFinal = construireManifest(recette, statut, jour, revues);
+  revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  revuesValides = revueErreurs.length ? null : revues;
+  const manifestFinal = construireManifest(recette, statut, jour, revuesValides);
   ecrireJson(manifestPath, manifestFinal);
   const articlePath = join(root, 'src/content/blog', `${slug}.md`);
   mkdirSync(dirname(articlePath), { recursive: true });
@@ -614,13 +620,14 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
     ecrireJson(join(dossier, source.classificationEvidence), {
       version: 1, candidateSlug: slug, kind: 'source-classification', status: 'PASS', checkedAt: jour, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash,
       sourceId: source.id, sourceUrl: source.url, finalUrl: preuve.finalUrl, publisher: source.publisher, level: source.level, provenance: source.provenance, official: source.official, upstreamUrl: source.upstreamUrl,
-      classifiedBy: 'kevin', reviewedBy: revues?.sources?.reviewedBy ?? 'marketing',
-      observations: [source.classificationReason, ...(revues?.sources?.observations?.[source.id] ? [revues.sources.observations[source.id]] : [])],
+      classifiedBy: 'kevin', reviewedBy: revuesValides?.sources?.reviewedBy ?? 'marketing',
+      observations: [source.classificationReason, ...(revuesValides?.sources?.observations?.[source.id] ? [revuesValides.sources.observations[source.id]] : [])],
     });
   }
   // Les figures sont des attestations visuelles, pas de nouvelles affirmations éditoriales :
   // unitesRendues les ignore et conserve le registre des phrases scellées inchangé.
   const { erreurs, claims } = construireClaims({ recette, corps: corpsPublie, dossier, sujet, jour });
+  erreurs.push(...revueErreurs);
   if (erreurPreuveInline) erreurs.push(erreurPreuveInline);
   ecrireJson(join(dossier, 'claims.json'), claims);
   erreurs.push(...verifierRegleEcrite(corps, { date: recette.date }));
@@ -628,7 +635,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const { obs, collisions } = evidencesSkills({ manifest: manifestFinal, corps, sujet, jour, claims, root });
   const generee = recette.image.source;
   if (collisions.length) erreurs.push(`Cannibalisation de requête primaire avec : ${collisions.join(', ')}.`);
-  const qualite = revues?.qualite;
+  const qualite = revuesValides?.qualite;
   if (qualite) {
     ecrireJson(join(dossier, 'quality-review.json'), {
       version: 1, candidateSlug: slug, reviewedAt: jour, reviewer: qualite.reviewer ?? 'relecteur-qualite-ia-memlia', rubric: 'blog-analyze-100',
@@ -656,14 +663,14 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   for (const row of [...skills.blog, ...skills.seo]) if (row.status === 'RUN') ecrireJson(join(dossier, row.evidence), artefact(sujet, 'skill', jour, { skill: row.skill, observations: preuvesRecette[row.skill] ?? obs[row.skill] }));
   ecrireJson(join(dossier, 'skills.json'), skills);
 
-  const editorial = revues?.editorial;
+  const editorial = revuesValides?.editorial;
   ecrireJson(join(dossier, 'preuves/review.json'), artefact(sujet, 'editorial-review', jour, {
     reviewer: 'marketing', status: editorial ? 'PASS' : 'FAIL',
     criteria: REVIEW_CRITERIA.map(({ id, weight }) => { const r = editorial?.criteria?.[id]; const result = r?.result ?? 'FAIL'; return { id, result, earned: result === 'PASS' ? weight : 0, observations: r?.observations ?? ['Revue éditoriale non exécutée.'] }; }),
   }));
   ecrireJson(join(dossier, 'review.json'), { version: 1, reviewer: 'marketing', checkedAt: jour, subject: { slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash }, rubricEvidence: 'preuves/review.json', p0: editorial ? (editorial.p0 ?? []) : ['Revue éditoriale non exécutée'], blocking: !editorial, decision: editorial ? 'pret-preview' : 'corriger' });
 
-  const business = revues?.business;
+  const business = revuesValides?.business;
   const preuvesSources = new Map(manifestFinal.sources.map((s) => [s.id, lireJson(join(dossier, s.verificationEvidence))]));
   ecrireJson(join(dossier, 'preuves/business-review.json'), artefact(sujet, 'business-review', jour, {
     status: business ? 'PASS' : 'FAIL', reviewerId: recette.businessReview.reviewerId, role: recette.businessReview.role,
@@ -674,13 +681,14 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
     })),
   }));
 
-  erreurs.push(...(await materialiserImage({ root, recette, dossier, sujet, jour, revues, rendreImage })));
+  erreurs.push(...(await materialiserImage({ root, recette, dossier, sujet, jour, revues: revuesValides, rendreImage })));
   declarerImage(root, recette.image.heroId, recette.image.alt);
   const briefStrategie = existsSync(join(root, 'docs/strategy/site-v3/cluster-briefs')) ? readdirSync(join(root, 'docs/strategy/site-v3/cluster-briefs')).find((f) => f.endsWith(`-${slug}.md`)) : null;
   writeFileSync(join(dossier, 'brief.md'), briefStrategie ? readFileSync(join(root, 'docs/strategy/site-v3/cluster-briefs', briefStrategie), 'utf8') : `# Brief — ${recette.title}\n\nRequête primaire : ${recette.primaryQuery}\nTâche : ${recette.task}\n`);
   inscrireFile(root, slug, recette.date, statut, recette.serie ?? null);
   ecrireJson(join(dossierRecette, 'paquet-revue.json'), {
     slug, title: recette.title, primaryQuery: recette.primaryQuery, intent: recette.intent, role: recette.role.primary, format: recette.format, task: recette.task,
+    bodySha256: reviewSha256(corps), recipeSha256: reviewSha256(readFileSync(recettePath)),
     corps, preuvesInline: recette.inlineProofs ?? [], sources: manifestFinal.sources.map((s) => ({ id: s.id, publisher: s.publisher, title: s.title, url: s.url, level: s.level, official: s.official })),
     claims: claims.claims.map((c) => ({ id: c.id, claim: c.claim, type: c.type, sourceId: c.sourceIds[0], citation: c.sourceExcerpts[c.sourceIds[0]], contexte: c.factCheck.sourceResults[0].context.slice(0, 1200) })),
     criteresEditoriaux: REVIEW_CRITERIA, criteresImage: IMAGE_REVIEW_CRITERIA, image: { alt: recette.image.alt, cadre: recette.image.cadre, master: relative(root, join(dossier, 'preuves/image/master.png')) },
@@ -705,8 +713,16 @@ function lancer(root, args) {
 }
 
 export async function commande(argv, root = process.cwd()) {
-  const [action, slug] = argv;
+  const [action, slug, htmlPath] = argv;
   if (!slug) throw new Error('Usage : blog-forge <preparer|sceller|publier> <slug>');
+  if (action === 'empreinte') {
+    if (!htmlPath) throw new Error('Usage : blog-forge empreinte <slug> <html-rendu>');
+    const { corps } = chargerRecette(root, slug);
+    const renderedSha256 = renderedBodySha256(readFileSync(resolve(root, htmlPath), 'utf8'));
+    if (!renderedSha256) throw new Error('Le rendu HTML ne contient pas de .article-corps.');
+    console.log(JSON.stringify({ slug, bodySha256: reviewSha256(corps), recipeSha256: reviewSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), renderedSha256, notice: 'Empreintes techniques seulement : aucune approbation ou revue générée.' }, null, 2));
+    return;
+  }
   if (action === 'preparer') {
     const { erreurs, dossier } = await materialiser({ root, slug, statut: 'a-valider' });
     console.log(JSON.stringify({ slug, dossier: relative(root, dossier), erreurs, suite: erreurs.length ? 'corriger la recette' : 'produire editorial/recettes/<slug>/revues.json puis sceller' }, null, 2));

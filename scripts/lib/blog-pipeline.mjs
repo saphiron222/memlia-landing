@@ -9,6 +9,7 @@ import { Agent, fetch as fetchUndici } from 'undici';
 import { parse as parseYaml } from 'yaml';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
 import { retirerPreuvesInline } from './blog-proof-figures.mjs';
+import { reviewBindingErrors, reviewSha256 } from './blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
@@ -1653,7 +1654,7 @@ function validateIntentCannibalization(manifest, dossier, root, subject) {
   return errors;
 }
 
-export async function validateDossier({ root = process.cwd(), slug, renderedBlogHtml, gateMode = 'production' }) {
+export async function validateDossier({ root = process.cwd(), slug, renderedBlogHtml, renderedArticleHtml, gateMode = 'production' }) {
   const absoluteRoot = resolve(root);
   const dossier = join(absoluteRoot, 'editorial/articles', slug);
   const articlePath = join(absoluteRoot, 'src/content/blog', `${slug}.md`);
@@ -1675,6 +1676,32 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     ...subject,
     articleHash: markdown ? sha256(retirerPreuvesInline(markdown)) : null,
   };
+  const recipeBodyPath = join(absoluteRoot, 'editorial/recettes', slug, 'corps.md');
+  const recipePath = join(absoluteRoot, 'editorial/recettes', slug, 'recette.json');
+  const independentReviewPath = join(absoluteRoot, 'editorial/recettes', slug, 'revues.json');
+  if (existsSync(recipeBodyPath)) {
+    const recipeBody = readFileSync(recipeBodyPath, 'utf8').trim();
+    const articleBody = retirerPreuvesInline(markdownBody(markdown));
+    const bodiesMatch = reviewSha256(recipeBody) === reviewSha256(articleBody);
+    if (!bodiesMatch) errors.push('Recette et article divergent : empreinte du corps non conforme.');
+    const independentReview = existsSync(independentReviewPath) ? readJson(independentReviewPath, errors, 'revues.json') : null;
+    const legacyBaselinePath = join(absoluteRoot, 'editorial/legacy-review-baseline.json');
+    const legacyBaseline = manifest?.editorialStatus === 'publie' && !independentReview?.subject
+      ? readJson(legacyBaselinePath, errors, 'inventaire historique de revue') : null;
+    const legacyHashes = legacyBaseline?.version === 1 ? legacyBaseline.articles?.[slug] : null;
+    const legacyRecipeMatches = legacyHashes && existsSync(recipePath) && existsSync(independentReviewPath)
+      && legacyHashes.recipeSha256 === reviewSha256(readFileSync(recipePath))
+      && legacyHashes.reviewSha256 === reviewSha256(readFileSync(independentReviewPath));
+    if (manifest?.editorialStatus === 'publie' && !independentReview?.subject && !legacyRecipeMatches) {
+      errors.push('recette publiée divergente : une republication exige une nouvelle revue indépendante.');
+    }
+    const preservedPublished = manifest?.editorialStatus === 'publie' && !independentReview?.subject
+      && validatePublicationSeal(dossier, manifest, subject).length === 0 && bodiesMatch && legacyRecipeMatches;
+    if (!preservedPublished) {
+      if (!independentReview) errors.push('revues.json absent : nouvelle revue indépendante requise.');
+      errors.push(...reviewBindingErrors(independentReview, slug, recipeBody, existsSync(recipePath) ? readFileSync(recipePath) : '', renderedArticleHtml));
+    }
+  }
   const sensitiveMatter = detectSensitiveMatter(manifest, claims, markdown);
   if (gateMode === 'published-audit') errors.push(...validatePublishedAdoption(dossier, manifest, subject.articleHash));
   if (gateMode === 'publication-scellee') errors.push(...validatePublicationSeal(dossier, manifest, subject));
