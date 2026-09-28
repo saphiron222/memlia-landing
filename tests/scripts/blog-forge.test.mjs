@@ -292,6 +292,28 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     const preview = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
     assert.deepEqual(preview.errors, []);
     assert.equal(preview.pass, true);
+    const avisPath = join(root, 'editorial/recettes', SLUG, 'revues.json');
+    const avis = JSON.parse(readFileSync(avisPath, 'utf8'));
+    avis.editorial.reviewer = 'qa:t_93191b88';
+    writeFileSync(avisPath, JSON.stringify(avis));
+    await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
+    const candidateDir = join(root, 'editorial/articles', SLUG);
+    for (const name of ['manifest.json', 'review.json', 'preuves/review.json']) {
+      assert.equal(JSON.parse(readFileSync(join(candidateDir, name))).reviewer, avis.editorial.reviewer, name);
+    }
+    const attributed = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.equal(attributed.pass, true, attributed.errors.join('\n'));
+    writeFileSync(avisPath, JSON.stringify({ ...avis, editorial: { ...avis.editorial, reviewer: 'marketing' } }));
+    const mismatchedSource = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.match(mismatchedSource.errors.join('\n'), /Identité du reviewer éditorial divergente/);
+    writeFileSync(avisPath, JSON.stringify(avis));
+    const falseAttribution = JSON.parse(readFileSync(join(candidateDir, 'review.json')));
+    falseAttribution.reviewer = 'marketing';
+    writeFileSync(join(candidateDir, 'review.json'), JSON.stringify(falseAttribution));
+    const refused = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.equal(refused.pass, false);
+    assert.match(refused.errors.join('\n'), /review\.reviewer/);
+    writeFileSync(join(candidateDir, 'review.json'), JSON.stringify({ ...falseAttribution, reviewer: avis.editorial.reviewer }));
     const htmlConforme = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, renderedArticleHtml: HTML_RELUT, gateMode: 'protected-preview' });
     assert.equal(htmlConforme.pass, true, htmlConforme.errors.join('\n'));
     const htmlModifie = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, renderedArticleHtml: HTML_RELUT.replace('Texte rendu relu.', 'Texte rendu modifié.'), gateMode: 'protected-preview' });

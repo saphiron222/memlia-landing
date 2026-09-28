@@ -147,7 +147,7 @@ export function construireManifest(recette, statut, jour, revues) {
       classificationReason: s.classificationReason, method: null,
       classificationEvidence: `preuves/sources/${s.id}.classification.json`, verificationEvidence: `preuves/sources/${s.id}.json`,
     })),
-    author: 'kevin', reviewer: 'marketing', reviewRule: recette.reviewRule, cta: recette.cta,
+    author: 'kevin', reviewer: revues?.editorial?.reviewer ?? 'marketing', reviewRule: recette.reviewRule, cta: recette.cta,
     image: { heroId: recette.image.heroId, alt: recette.image.alt, master: 'preuves/image/master.png', og: 'preuves/image/og.webp', engine: 'image_generate' },
     research: {
       serp: { status: 'PASS', evidence: 'preuves/research-serp.json', checkedAt: jour },
@@ -667,10 +667,10 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
 
   const editorial = revuesValides?.editorial;
   ecrireJson(join(dossier, 'preuves/review.json'), artefact(sujet, 'editorial-review', jour, {
-    reviewer: 'marketing', status: editorial ? 'PASS' : 'FAIL',
+    reviewer: manifestFinal.reviewer, status: editorial ? 'PASS' : 'FAIL',
     criteria: REVIEW_CRITERIA.map(({ id, weight }) => { const r = editorial?.criteria?.[id]; const result = r?.result ?? 'FAIL'; return { id, result, earned: result === 'PASS' ? weight : 0, observations: r?.observations ?? ['Revue éditoriale non exécutée.'] }; }),
   }));
-  ecrireJson(join(dossier, 'review.json'), { version: 1, reviewer: 'marketing', checkedAt: jour, subject: { slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash }, rubricEvidence: 'preuves/review.json', p0: editorial ? (editorial.p0 ?? []) : ['Revue éditoriale non exécutée'], blocking: !editorial, decision: editorial ? 'pret-preview' : 'corriger' });
+  ecrireJson(join(dossier, 'review.json'), { version: 1, reviewer: manifestFinal.reviewer, checkedAt: jour, subject: { slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash }, rubricEvidence: 'preuves/review.json', p0: editorial ? (editorial.p0 ?? []) : ['Revue éditoriale non exécutée'], blocking: !editorial, decision: editorial ? 'pret-preview' : 'corriger' });
 
   const business = revuesValides?.business;
   const preuvesSources = new Map(manifestFinal.sources.map((s) => [s.id, lireJson(join(dossier, s.verificationEvidence))]));
@@ -694,7 +694,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
     corps, preuvesInline: recette.inlineProofs ?? [], sources: manifestFinal.sources.map((s) => ({ id: s.id, publisher: s.publisher, title: s.title, url: s.url, level: s.level, official: s.official })),
     claims: claims.claims.map((c) => ({ id: c.id, claim: c.claim, type: c.type, sourceId: c.sourceIds[0], citation: c.sourceExcerpts[c.sourceIds[0]], contexte: c.factCheck.sourceResults[0].context.slice(0, 1200) })),
     criteresEditoriaux: REVIEW_CRITERIA, criteresImage: IMAGE_REVIEW_CRITERIA, image: { alt: recette.image.alt, cadre: recette.image.cadre, master: relative(root, join(dossier, 'preuves/image/master.png')) },
-    identites: { auteur: 'kevin', reviewerEditorial: 'marketing', reviewerMetier: recette.businessReview.reviewerId, roleMetier: recette.businessReview.role },
+    identites: { auteur: 'kevin', reviewerEditorial: manifestFinal.reviewer, reviewerMetier: recette.businessReview.reviewerId, roleMetier: recette.businessReview.role },
   });
   return { erreurs, manifest: manifestFinal, sujet, dossier };
 }
