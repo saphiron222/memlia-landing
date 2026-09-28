@@ -487,7 +487,7 @@ function inscrireFile(root, slug, date, statut, serie = null) {
   const existant = queue.candidates.find((c) => c.slug === slug);
   if (existant) { existant.status = statut; existant.date = date; if (serie) existant.serie = serie; else delete existant.serie; }
   else {
-    verifierPlafonds(queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)), date, { serie });
+    verifierPlafonds(queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)), date, { serie, slug });
     queue.candidates.push({ slug, date, status: statut, ...(serie ? { serie } : {}) });
   }
   ecrireJson(path, queue);
