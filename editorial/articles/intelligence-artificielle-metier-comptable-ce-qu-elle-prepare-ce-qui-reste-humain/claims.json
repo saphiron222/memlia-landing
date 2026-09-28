@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-  "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
+  "articleSha256": "0f430afbe0ddbe1d4d8436bcc7c4fec13f4eff2c4a6eb15ebf3f2224a36859f2",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -202,6 +202,11 @@
       "claimIds": []
     },
     {
+      "id": "unit-caf4ce3e8189",
+      "text": "Pour préparer cette décision, prenez une proposition déjà produite sur le jeu fictif et demandez au collaborateur de retrouver l’entrée, la période et la condition qui l’ont déclenchée. Demandez-lui ensuite ce qu’il ferait si la pièce admettait deux lectures, puis qui pourrait modifier la règle après sa recette. Si ces réponses ne sont pas visibles, le travail à transmettre n’est pas seulement le geste de contrôle : c’est aussi la manière de reconnaître une exception et de faire remonter une règle manquante. Le cabinet peut alors désigner qui écrit, qui vérifie et qui autorise sa nouvelle version.",
+      "claimIds": []
+    },
+    {
       "id": "unit-76e164db3450",
       "text": "Les erreurs à éviter",
       "claimIds": []
@@ -309,11 +314,11 @@
       "sourceExcerpts": {
         "atlas-branche": "impacte fortement les métiers des cabinets d’expertise-comptable :"
       },
-      "checkedAt": "2026-09-21",
+      "checkedAt": "2026-09-28",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-21",
+        "checkedAt": "2026-09-28",
         "sourceResults": [
           {
             "sourceId": "atlas-branche",
@@ -325,10 +330,10 @@
             "citation": {
               "text": "impacte fortement les métiers des cabinets d’expertise-comptable :",
               "sha256": "4c5944522803220f5e9c2d82237e45ccb2b697cefed1e3904d0c524080823276",
-              "sourceContentSha256": "5be9d102a4c08a8ee5e11035bd821dbd794585dc5ef51e2a2f035867deb988fc",
+              "sourceContentSha256": "463b192f5442e8d3e24d53a90024111d0a3f26695433d33cfabda0af9a343d9f",
               "coordinates": {
                 "finalUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
-                "checkedAt": "2026-09-21",
+                "checkedAt": "2026-09-28",
                 "title": "Experts-comptables, Commissaires aux comptes et Audit",
                 "locator": {
                   "kind": "line-range",
@@ -352,7 +357,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La page de branche formule qualitativement l’impact du numérique sur les métiers, sans mesurer un effet propre à l’IA ou à l’emploi.",
-            "checkedAt": "2026-09-21"
+            "checkedAt": "2026-09-28"
           }
         ]
       }
@@ -368,11 +373,11 @@
       "sourceExcerpts": {
         "atlas-branche": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation."
       },
-      "checkedAt": "2026-09-21",
+      "checkedAt": "2026-09-28",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-21",
+        "checkedAt": "2026-09-28",
         "sourceResults": [
           {
             "sourceId": "atlas-branche",
@@ -384,10 +389,10 @@
             "citation": {
               "text": "Enjeu de montée en compétences des collaborateurs pour accompagner cette numérisation.",
               "sha256": "f41cbca50dcef23f91cccdce7eb323be90224b6d51ad90f3b38350c6228adaeb",
-              "sourceContentSha256": "5be9d102a4c08a8ee5e11035bd821dbd794585dc5ef51e2a2f035867deb988fc",
+              "sourceContentSha256": "463b192f5442e8d3e24d53a90024111d0a3f26695433d33cfabda0af9a343d9f",
               "coordinates": {
                 "finalUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
-                "checkedAt": "2026-09-21",
+                "checkedAt": "2026-09-28",
                 "title": "Experts-comptables, Commissaires aux comptes et Audit",
                 "locator": {
                   "kind": "line-range",
@@ -411,7 +416,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La source associe directement la transition numérique à la montée en compétences.",
-            "checkedAt": "2026-09-21"
+            "checkedAt": "2026-09-28"
           }
         ]
       }
@@ -427,11 +432,11 @@
       "sourceExcerpts": {
         "apec-oec": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable"
       },
-      "checkedAt": "2026-09-21",
+      "checkedAt": "2026-09-28",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-21",
+        "checkedAt": "2026-09-28",
         "sourceResults": [
           {
             "sourceId": "apec-oec",
@@ -443,10 +448,10 @@
             "citation": {
               "text": "Dans un contexte de tensions sur le marché de l’emploi cadre, en particulier sur les fonctions d’expertise comptable",
               "sha256": "09c34682b6e5554c55a9c9e1385f62a24f1d064658e6b97f3efbf96a1da3a9b0",
-              "sourceContentSha256": "811a484897c99752ec186b2826c8f47a127fb85eeeea575abd7e39ef9f3bcdbc",
+              "sourceContentSha256": "47f8be8a0f91c38256b8ac1c6a0a3af4922235931e5840cebebbba713e4024ad",
               "coordinates": {
                 "finalUrl": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html",
-                "checkedAt": "2026-09-21",
+                "checkedAt": "2026-09-28",
                 "title": "L’Apec et le Conseil supérieur de l’ordre des experts-comptables se mobilisent au service de l’emploi",
                 "locator": {
                   "kind": "line-range",
@@ -473,7 +478,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Le communiqué daté du 9 décembre 2021 porte cette formulation sur l’emploi cadre ; elle n’est pas actualisée en constat 2026.",
-            "checkedAt": "2026-09-21"
+            "checkedAt": "2026-09-28"
           }
         ]
       }
@@ -489,11 +494,11 @@
       "sourceExcerpts": {
         "oec-attractivite": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance."
       },
-      "checkedAt": "2026-09-21",
+      "checkedAt": "2026-09-28",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-21",
+        "checkedAt": "2026-09-28",
         "sourceResults": [
           {
             "sourceId": "oec-attractivite",
@@ -505,10 +510,10 @@
             "citation": {
               "text": "Les métiers et les savoir-faire évoluent en permanence pour accompagner les stratégies de croissance.",
               "sha256": "8b8c4608ce35e2d72375d9f778ae12528874d5ec944eb0bdbdb194eafa1863dc",
-              "sourceContentSha256": "9422f79c7748a209a574b25e9f142d9e3057fe1e32c7ecb82b627a5492527d62",
+              "sourceContentSha256": "540f726e36690258ef6394027b092495b5accd7dc398921cc488335bf030d324",
               "coordinates": {
                 "finalUrl": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
-                "checkedAt": "2026-09-21",
+                "checkedAt": "2026-09-28",
                 "title": "Comment attirer et fidéliser des collaborateurs",
                 "locator": {
                   "kind": "line-range",
@@ -533,7 +538,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "L’article rapporte cette phrase issue d’un corpus intersectoriel, sans la présenter comme une étude propre aux cabinets.",
-            "checkedAt": "2026-09-21"
+            "checkedAt": "2026-09-28"
           }
         ]
       }
@@ -549,11 +554,11 @@
       "sourceExcerpts": {
         "atlas-branche": "Une partie des activités actuelles des cabinets sera automatisée à l’avenir"
       },
-      "checkedAt": "2026-09-21",
+      "checkedAt": "2026-09-28",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-21",
+        "checkedAt": "2026-09-28",
         "sourceResults": [
           {
             "sourceId": "atlas-branche",
@@ -565,10 +570,10 @@
             "citation": {
               "text": "Une partie des activités actuelles des cabinets sera automatisée à l’avenir",
               "sha256": "34f395da1a2a50173514d2173fd9e43151d5fe49b392d4293cfb858daeb9ccce",
-              "sourceContentSha256": "5be9d102a4c08a8ee5e11035bd821dbd794585dc5ef51e2a2f035867deb988fc",
+              "sourceContentSha256": "463b192f5442e8d3e24d53a90024111d0a3f26695433d33cfabda0af9a343d9f",
               "coordinates": {
                 "finalUrl": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
-                "checkedAt": "2026-09-21",
+                "checkedAt": "2026-09-28",
                 "title": "Experts-comptables, Commissaires aux comptes et Audit",
                 "locator": {
                   "kind": "line-range",
@@ -593,7 +598,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La phrase est attribuée à un passage prospectif non daté, sans horizon, proportion ni effet sur l’emploi.",
-            "checkedAt": "2026-09-21"
+            "checkedAt": "2026-09-28"
           }
         ]
       }
