@@ -130,6 +130,67 @@ class EditorialCadenceProof(unittest.TestCase):
                 path.write_text(json.dumps(backlog))
                 with patch.object(PLAN, "BACKLOG", path), patch.object(PLAN, "etat_publie", return_value={}):
                     PLAN.construire()
+    def test_dates_figees_et_priorites_du_backlog_sont_inchangees(self):
+        import json
+        backlog = json.loads(PLAN.BACKLOG.read_text(encoding='utf-8'))
+        donnees, erreurs, _, _ = construire_et_verifier()
+        self.assertEqual(erreurs, [])
+        plan = {e['slug']: e for e in [donnees[3]] + donnees[4]}
+        for entry in backlog:
+            if entry.get('datePlanifiee'):
+                self.assertEqual(plan[entry['slug']]['date'], entry['datePlanifiee'])
+            self.assertEqual(plan[entry['slug']]['priorite'], entry['priorite'])
+        for slug, published in donnees[2].items():
+            self.assertEqual(plan[slug]['date'], published['date'])
+
+    def test_alternance_sur_creneaux_non_figes(self):
+        entries = [dict(slug=str(i), famille='f', pole=p, format=f, priorite=1, rang_famille=i)
+                   for i, (p, f) in enumerate([('a', 'how-to-guide'), ('a', 'how-to-guide'),
+                                                 ('b', 'faq-knowledge'), ('b', 'listicle-checklist')])]
+        with patch.object(PLAN, 'PREMIER_JOUR', date(2026, 9, 28)):
+            PLAN.planifier(entries, {})
+        ordered = sorted(entries, key=lambda e: (e['date'], e['slug']))
+        for before, after in zip(ordered, ordered[1:]):
+            self.assertNotEqual(before['pole'], after['pole'])
+            self.assertNotEqual(before['format'], after['format'])
+
+    def test_exception_non_ancree_est_acceptee_par_le_planificateur_et_le_verificateur(self):
+        for field, values in (('pole', [('a', 'how-to-guide'), ('a', 'faq-knowledge')]),
+                              ('format', [('a', 'how-to-guide'), ('b', 'how-to-guide')])):
+            with self.subTest(field=field):
+                entries = [dict(slug=str(i), famille='f', pole=p, format=f, priorite=1, rang_famille=i)
+                           for i, (p, f) in enumerate(values)]
+                entries[1]['exceptionAlternance'] = {field: {'date': '2026-09-29', 'raison': 'stock factuel borné'}}
+                with patch.object(PLAN, 'PREMIER_JOUR', date(2026, 9, 28)):
+                    PLAN.planifier(entries, {})
+                self.assertEqual(entries[1]['date'], '2026-09-29')
+                self.assertEqual(PLAN.verifier_alternance(entries), [])
+
+    def test_exception_invalide_ne_passe_pas(self):
+        for exception in ({'pole': {'raison': 'preuve'}},
+                          {'pole': {'date': '2026-09-18'}},
+                          {'autre': {'date': '2026-09-18', 'raison': 'preuve'}},
+                          {'format': {'date': '2026-09-19', 'raison': 'preuve'}}):
+            with self.subTest(exception=exception):
+                entries = [dict(slug='0', famille='f', pole='a', format='how-to-guide', priorite=1, rang_famille=0),
+                           dict(slug='1', famille='f', pole='a', format='faq-knowledge', priorite=1,
+                                rang_famille=1, exceptionAlternance=exception)]
+                with self.assertRaises(SystemExit):
+                    PLAN.planifier(entries, {})
+
+    def test_cicatrice_ne_justifie_pas_une_exception_sans_stock(self):
+        entries = [dict(slug='c', serie='cicatrices', priorite=1, rang_famille=0,
+                        exceptionAlternance={'pole': {'date': '2026-09-19', 'raison': 'stock absent'}})]
+        with self.assertRaises(SystemExit):
+            PLAN.planifier(entries, {})
+
+    def test_exception_sur_mauvais_champ_ne_couvre_pas_une_rupture_de_pole(self):
+        entries = [dict(slug=str(i), famille='f', pole=p, format=f, priorite=1, rang_famille=i)
+                   for i, (p, f) in enumerate([('a', 'how-to-guide'), ('a', 'faq-knowledge')])]
+        entries[1]['exceptionAlternance'] = {'format': {'date': '2026-09-29', 'raison': 'motif'}}
+        with patch.object(PLAN, 'PREMIER_JOUR', date(2026, 9, 28)):
+            with self.assertRaises(SystemExit):
+                PLAN.planifier(entries, {})
 
     def test_cicatrice_du_samedi_ne_consomme_pas_le_plafond_des_quatre(self):
         donnees, erreurs, _, par_semaine = construire_et_verifier()

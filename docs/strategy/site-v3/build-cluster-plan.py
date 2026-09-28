@@ -83,6 +83,124 @@ def semaine_iso(jour):
     return jour.isocalendar()[:2]
 
 
+def exception_autorisee(e, champ, jour):
+    exemption = e.get('exceptionAlternance', {}).get(champ)
+    return bool(exemption and exemption['date'] == jour)
+
+
+def verifier_alternance(entrees):
+    ordinaires = sorted((e for e in entrees if e.get('serie') != 'cicatrices'),
+                        key=lambda e: (e['date'], e.get('_ordre_calendrier', e['slug'])))
+    erreurs = []
+    for e in entrees:
+        exception = e.get('exceptionAlternance')
+        if exception is None:
+            continue
+        if e.get('serie') == 'cicatrices' or not isinstance(exception, dict) or not exception or set(exception) - {'pole', 'format'}:
+            erreurs.append(f"exception d'alternance invalide : {e['slug']}")
+            continue
+        for champ, preuve in exception.items():
+            if (not isinstance(preuve, dict) or set(preuve) != {'date', 'raison'}
+                    or not isinstance(preuve['raison'], str) or not preuve['raison'].strip()
+                    or preuve['date'] != e['date']):
+                erreurs.append(f"exception {champ} sans date/raison concordante : {e['slug']}")
+    for precedent, e in zip(ordinaires, ordinaires[1:]):
+        if e.get('statut') == 'published':
+            continue  # archives intouchables, y compris les doublons historiques
+        for champ in ('pole', 'format'):
+            if e[champ] == precedent[champ] and not exception_autorisee(e, champ, e['date']):
+                erreurs.append(f"alternance {champ} rompue : {precedent['slug']} -> {e['slug']}")
+    for index, e in enumerate(ordinaires):
+        for champ in e.get('exceptionAlternance', {}):
+            if index == 0 or e.get('statut') == 'published' or ordinaires[index - 1][champ] != e[champ]:
+                erreurs.append(f"exception {champ} non utilisée : {e['slug']}")
+    return erreurs
+
+
+def alterner(entrees):
+    """Réattribue uniquement les créneaux libres, sans changer la priorité des candidats compatibles."""
+    for e in entrees:
+        exception = e.get('exceptionAlternance')
+        if exception is None:
+            continue
+        if (e.get('serie') == 'cicatrices' or not isinstance(exception, dict) or not exception
+                or set(exception) - {'pole', 'format'}):
+            raise SystemExit(f"exception d'alternance invalide : {e['slug']}")
+        for champ, preuve in exception.items():
+            if (not isinstance(preuve, dict) or set(preuve) != {'date', 'raison'}
+                    or not isinstance(preuve['date'], str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', preuve['date'])
+                    or not isinstance(preuve['raison'], str) or not preuve['raison'].strip()):
+                raise SystemExit(f"exception {champ} sans date/raison : {e['slug']}")
+            try:
+                date.fromisoformat(preuve['date'])
+            except ValueError as exc:
+                raise SystemExit(f"date d'exception invalide : {e['slug']}") from exc
+    ordinaires = sorted((e for e in entrees if e.get('serie') != 'cicatrices'),
+                        key=lambda e: (e['date'], e['slug']))
+    dates = [e['date'] for e in ordinaires]
+    fixes = {i: e for i, e in enumerate(ordinaires) if e.get('statut') == 'published' or e.get('datePlanifiee')}
+    libres = [e for e in entrees if e.get('serie') != 'cicatrices' and e.get('statut') != 'published' and not e.get('datePlanifiee')]
+    # Les exceptions datées sont réservées à leur créneau : elles ne créent pas de date nouvelle.
+    for e in libres:
+        for preuve in e.get('exceptionAlternance', {}).values():
+            if preuve['date'] not in dates:
+                raise SystemExit(f"exception hors calendrier : {e['slug']}")
+    essais = 0
+
+    def compatible(precedent, e, jour):
+        return precedent is None or e.get('statut') == 'published' or all(
+            precedent[champ] != e[champ] or exception_autorisee(e, champ, jour)
+            for champ in ('pole', 'format'))
+
+    def chercher(i, disponibles, precedent):
+        nonlocal essais
+        essais += 1
+        if essais > 200000:
+            raise SystemExit('alternance : recherche épuisée (stock ou exceptions à revoir)')
+        if i == len(dates):
+            return []
+        # Une majorité stricte d'un format ou d'un pôle ne pourra plus être séparée.
+        for champ in ('format', 'pole'):
+            comptes = Counter(e[champ] for e in disponibles)
+            if comptes and max(comptes.values()) > len(disponibles) - max(comptes.values()) + 1 + sum(
+                    1 for e in disponibles if champ in e.get('exceptionAlternance', {})):
+                return None
+        jour = dates[i]
+        if i in fixes:
+            e = fixes[i]
+            if compatible(precedent, e, jour):
+                suite = chercher(i + 1, disponibles, e)
+                if suite is not None:
+                    return [(i, e)] + suite
+            return None
+        # Un seul représentant par signature suffit, sauf exception portée par une entrée précise.
+        vus = set()
+        ordre = sorted(range(len(disponibles)), key=lambda index: (
+            -sum(x['format'] == disponibles[index]['format'] for x in disponibles), index))
+        for index in ordre:
+            e = disponibles[index]
+            signature = (e['pole'], e['format'], json.dumps(e.get('exceptionAlternance'), sort_keys=True))
+            if signature in vus:
+                continue
+            vus.add(signature)
+            if any(preuve['date'] != jour for preuve in e.get('exceptionAlternance', {}).values()):
+                continue
+            if not compatible(precedent, e, jour):
+                continue
+            suite = chercher(i + 1, disponibles[:index] + disponibles[index + 1:], e)
+            if suite is not None:
+                return [(i, e)] + suite
+        return None
+
+    solution = chercher(0, libres, None)
+    if solution is None:
+        raise SystemExit('alternance impossible sans déplacer une date figée ou inventer une exception')
+    for i, e in solution:
+        e['date'] = dates[i]
+    for i, e in sorted(solution + list(fixes.items())):
+        e['_ordre_calendrier'] = i
+
+
 def planifier(entrees, publies):
     """Planifie 4 articles ordinaires lun-jeu et 1 cicatrice le samedi, par semaine ISO."""
     par_jour, par_semaine = Counter(), Counter()
@@ -171,6 +289,15 @@ def planifier(entrees, publies):
             jour += timedelta(days=1)
         elif par_semaine[semaine_iso(jour)] >= PAR_SEMAINE_MAX:
             jour += timedelta(days=1)
+    # Le pôle vient de la famille ; les dates figées et le stock Cicatrices restent hors permutation.
+    familles = taxonomie()[1] if any('pole' not in e for e in entrees if e.get('serie') != 'cicatrices') else {}
+    for e in entrees:
+        if e.get('serie') != 'cicatrices' and 'pole' not in e:
+            e['pole'] = familles[e['famille']]['pole']
+    alterner(entrees)
+    erreurs = verifier_alternance(entrees)
+    if erreurs:
+        raise SystemExit('; '.join(erreurs))
 
 
 def construire():
@@ -212,6 +339,8 @@ def construire():
             satellites.append({'slug': slug, 'titre': p['titre'], 'requete': p['requete'], 'secondaires': [], 'famille': famille, 'role': 'paie-responsables-sociaux', 'intent': 'executer', 'funnel': 'MOFU', 'format': p['format'] or 'how-to-guide', 'preuve': 'article historique conservé (dossier scellé sur ses octets)', 'sourcesOfficielles': ['net-entreprises.fr', 'urssaf.fr'], 'priorite': 1, 'rang_famille': 4, 'historique': True})
     # Ordre de production : publiés d'abord, puis priorité, puis angle (méthode avant checklist, exceptions, définition), puis rang de la famille.
     satellites.sort(key=lambda e: (0 if e['slug'] in publies else 1, e['priorite'], e['rang_famille'], familles[e['famille']]['rang']))
+    for e in [pilier] + satellites:
+        e['pole'] = familles[e['famille']]['pole']
     planifier([pilier] + satellites, publies)
     for e in [pilier] + satellites:
         e['pole'] = familles[e['famille']]['pole']
@@ -302,6 +431,7 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         erreurs.append('plus de deux articles le même jour')
     if any(n > PAR_SEMAINE_MAX for n in par_semaine.values()):
         erreurs.append('plus de quatre articles la même semaine')
+    erreurs.extend(verifier_alternance(tous))
     cicatrices_par_semaine = Counter()
     dates_cicatrices = []
     for e in cicatrices:
@@ -368,12 +498,13 @@ def ecrire_md(data, familles):
 
 
 def ecrire_calendrier(pilier, satellites, familles, poles):
-    tous = sorted([pilier] + satellites, key=lambda e: (e['date'], e['slug']))
+    tous = sorted([pilier] + satellites, key=lambda e: (e['date'], e.get('_ordre_calendrier', 0)))
     L = ['# Calendrier éditorial v3 — quatre articles et une Cicatrice par semaine', '',
          f"Généré le {date.today().strftime('%d/%m/%Y')} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
          '## Règles', '',
-         "- Ordre de production : les articles publiés d'abord, puis la priorité mesurée 1 → 3 (1 : la requête primaire a des suggestions d'autocomplétion Google ; 2 : seule une requête secondaire en a ; 3 : aucune demande mesurée — relevé `scripts/seo/questions.mjs`, bloc `demande` de chaque angle), puis l'angle (méthode, contrôle ou checklist, exceptions et refus, définition), puis l'ordre des familles dans la taxonomie.",
-         '- Chaque famille active compte quatre angles ; aucune famille n’est épuisée avant que toutes n’aient leur méthode.',
+         "- Les priorités mesurées 1 → 3 restent celles du backlog (1 : la requête primaire a des suggestions d'autocomplétion Google ; 2 : seule une requête secondaire en a ; 3 : aucune demande mesurée — relevé `scripts/seo/questions.mjs`). Elles guident l'ordre des candidats compatibles avec l'alternance ; l'équilibre du stock de formats peut différer une priorité 1 sans changer sa mesure ni son angle.",
+         '- Les créneaux ordinaires non figés alternent pôle et format entre deux articles successifs ; les dates publiées et `datePlanifiee` ne bougent jamais. Si un conflit daté est inévitable, `exceptionAlternance` dans le backlog désigne séparément `pole` ou `format`, chacun avec `date` (YYYY-MM-DD) et `raison` non vide ; seul le champ effectivement en conflit à cette date est dispensé. La série factuelle Cicatrices ne peut pas porter cette exception.',
+         '- Chaque famille active conserve ses quatre angles (méthode, contrôle ou checklist, exceptions et refus, définition) ; leur ordre de sortie dépend des contraintes de calendrier et du stock disponible.',
          '- Une requête primaire par article, unique ; sources officielles obligatoires pour toute matière paie, sociale, fiscale, juridique ou données.',
          '- Le pilier reçoit un lien à chaque publication (republication scellée par la forge).', '',
          '- La série « Cicatrices » paraît le samedi, exactement une fois par semaine ISO, en sus du plafond des quatre articles ordinaires.', '',
@@ -384,7 +515,7 @@ def ecrire_calendrier(pilier, satellites, familles, poles):
         par_sem[semaine_iso(date.fromisoformat(e['date']))].append(e)
     for (annee, sem), entrees in sorted(par_sem.items()):
         L += [f'### Semaine {annee}-W{sem:02d}', '', '| Date | Article | Famille | Pôle | Format | P | Statut |', '|---|---|---|---|---|---|---|']
-        for e in sorted(entrees, key=lambda e: (e['date'], e['slug'])):
+        for e in sorted(entrees, key=lambda e: (e['date'], e.get('_ordre_calendrier', 0))):
             L.append(f"| {e['date']} | [{e['titre']}]({e['url']}) | {familles[e['famille']]['libelle']} | {poles[e['pole']]['libelle']} | {e['format']} | {e['priorite']} | {e['statut']} |")
         L.append('')
     (ICI / 'CONTENT-CALENDAR.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
