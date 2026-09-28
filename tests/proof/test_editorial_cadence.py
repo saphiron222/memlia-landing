@@ -130,6 +130,29 @@ class EditorialCadenceProof(unittest.TestCase):
                 path.write_text(json.dumps(backlog))
                 with patch.object(PLAN, "BACKLOG", path), patch.object(PLAN, "etat_publie", return_value={}):
                     PLAN.construire()
+    def test_planifier_repartit_les_creneaux_autour_d_une_date_fixe(self):
+        entries = [dict(slug=str(i), famille='f', pole=p, format=p, priorite=1, rang_famille=i)
+                   for i, p in enumerate(('a', 'a', 'a', 'b', 'b'))]
+        entries[3]['datePlanifiee'] = '2026-09-29'
+        # Oracle indépendant : les mêmes cinq créneaux, plafonds respectés,
+        # alternance valide sans déplacer la date fixée ni ajouter d'exception.
+        oracle = deepcopy(entries)
+        for entry, day in zip(oracle, ('2026-09-28', '2026-09-29', '2026-10-05',
+                                       '2026-09-29', '2026-09-30')):
+            entry['date'] = day
+            entry['statut'] = 'planned'
+        for index, entry in enumerate(sorted(oracle, key=lambda e: (e['date'], e['pole'] == 'a'))):
+            entry['_ordre_calendrier'] = index
+        self.assertEqual(PLAN.verifier_alternance(oracle), [])
+        self.assertEqual(oracle[3]['date'], '2026-09-29')
+
+        PLAN.planifier(entries, {}, aujourd_hui=date(2026, 9, 28))
+        ordered = sorted(entries, key=lambda e: (e['date'], e['_ordre_calendrier']))
+        self.assertEqual([e['pole'] for e in ordered], ['a', 'b', 'a', 'b', 'a'])
+        self.assertEqual(entries[3]['date'], '2026-09-29')
+        self.assertEqual(PLAN.verifier_alternance(entries), [])
+        self.assertEqual(sorted(e['date'] for e in entries), sorted(e['date'] for e in oracle))
+
     def test_date_fixe_intercalee_ne_rejette_pas_stock_alternable(self):
         entries = [dict(slug=str(i), famille='f', pole=p, format=p, priorite=1, rang_famille=i)
                    for i, p in enumerate(('a', 'a', 'a', 'b', 'b'))]

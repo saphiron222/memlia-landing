@@ -153,6 +153,35 @@ def alterner(entrees):
             for champ in ('pole', 'format'))
 
     def chercher(i, disponibles, precedent):
+        # Deux créneaux le même jour n'ont pas d'ordre éditorial imposé. Essayer
+        # les deux places d'une date figée avant de déclarer le stock impossible.
+        # Le budget d'essais est partagé entre les branches.
+        solution = chercher_position(i, disponibles, precedent)
+        if solution is not None or i + 1 >= len(dates) or dates[i] != dates[i + 1]:
+            return solution
+        premier, second = fixes.get(i), fixes.get(i + 1)
+        if (premier is None and second is None) or (premier is not None and second is not None
+                                                   and premier.get('statut') == second.get('statut') == 'published'):
+            return None
+        if second is None:
+            fixes[i + 1] = fixes.pop(i)
+        elif premier is None:
+            fixes[i] = fixes.pop(i + 1)
+        else:
+            fixes[i], fixes[i + 1] = second, premier
+        try:
+            return chercher_position(i, disponibles, precedent)
+        finally:
+            if premier is None:
+                fixes.pop(i, None)
+            else:
+                fixes[i] = premier
+            if second is None:
+                fixes.pop(i + 1, None)
+            else:
+                fixes[i + 1] = second
+
+    def chercher_position(i, disponibles, precedent):
         nonlocal essais
         essais += 1
         if essais > 200000:
@@ -192,8 +221,9 @@ def alterner(entrees):
     if solution is None:
         raise SystemExit('alternance impossible sans déplacer une date figée ou inventer une exception')
     for i, e in solution:
-        e['date'] = dates[i]
-    for i, e in sorted(solution + list(fixes.items())):
+        if e.get('statut') != 'published' and not e.get('datePlanifiee'):
+            e['date'] = dates[i]
+    for i, e in solution:
         e['_ordre_calendrier'] = i
 
 
