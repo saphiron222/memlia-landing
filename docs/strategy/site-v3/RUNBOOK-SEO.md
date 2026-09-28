@@ -52,7 +52,7 @@ La session écrit une ligne de journal avec : les totaux (semaine, 28 jours, 28 
 
 Depuis le 19/09/2026, le backlog éditorial se construit **de l'extérieur** : depuis ce que le lecteur tape, pas depuis notre taxonomie. Deux instruments, deux propriétés à ne pas confondre :
 
-- **L'autocomplétion Google** (gratuite, `client=firefox`, `hl=fr&gl=fr`) ne propose que des requêtes au-dessus d'un seuil de volume : **une liste vide est une mesure**, un angle que personne ne tape. Une panne de l'instrument (HTTP 429, délai) n'est jamais comptée comme zéro : l'amorce reste « non mesurée » et la priorité de l'angle ne bouge pas.
+- **L'autocomplétion Google** (gratuite, `client=firefox`, `hl=fr&gl=fr`) fournit un signal de suggestions sur les amorces testées, sans quantifier leur volume de recherche. **Une liste vide est un résultat du relevé**, pas la preuve qu'aucun lecteur ne tape la requête : lire aussi la SERP, l'intention cabinet et Search Console avant d'écarter un angle. Une panne de l'instrument (HTTP 429, délai) n'est jamais comptée comme zéro : l'amorce reste « non mesurée » et la priorité de l'angle ne bouge pas.
 - **La page de résultats DataForSEO** (`serp_organic_live_advanced`, 0,002 $ l'appel, porte de coût obligatoire) porte les questions « Autres questions », les recherches associées et les domaines qui gagnent : quand la moitié du haut de page est tenue par des éditeurs de logiciel (`DOMAINES_LOGICIEL`), l'intention est « logiciel », ce que Memlia refuse de vendre — l'angle se corrige, la priorité ne bouge pas toute seule.
 
 ```bash

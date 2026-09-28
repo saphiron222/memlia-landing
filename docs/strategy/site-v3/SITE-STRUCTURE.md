@@ -32,15 +32,15 @@ chiffres d'indexation du 18/09 ci-dessous sont historiques, non un relevé de pr
 La mesure « 14 URL au sitemap, 14 indexées » est le dernier relevé du **18/09**, non le compte
 actuel. Ne pas en déduire l'indexation des routes nouvelles : compter le sitemap construit et
 mesurer Search Console séparément. Neuf fichiers d'article sont publiés au HEAD du 28/09.
-**Incident FE :** `src/data/site.mjs` exclut l'article de saisie du sitemap mais ne commande
-pas ses robots HTML. Au candidat local du 28/09, `Article.astro` produit encore `index, follow`
-avec canonical propre ; la fonction Pages `functions/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.js`
-est conçue pour servir 503 avec `X-Robots-Tag: noindex, nofollow` sur cette route, sans prouver
-la réponse effectivement servie en production. Décision avant livraison : garder la suspension
-ciblée, **ajouter aussi `noindex` au HTML statique de cette seule route** tant que les affirmations
-FE ne sont pas revues, tester le `dist` et la réponse GET/HEAD du déploiement exact (statut,
-en-tête robots, sitemap). La carte dev suivante implémente ce noindex et son test ; ne pas
-prétendre qu'il existe déjà ni retirer la route/canonical par un pansement.
+**Incident FE :** au candidat local du 28/09, `src/data/site.mjs` exclut l'article de saisie
+du sitemap et `Article.astro` applique aussi `noindex` au HTML statique de cette route :
+le test du `dist` (`tests/proof/test_build.py`) constate `noindex, follow`, avec canonical
+propre. La fonction Pages `functions/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.js`
+est conçue pour servir 503 avec `X-Robots-Tag: noindex, nofollow` sur GET et HEAD ; ni le
+HTML local ni ce code ne prouvent la réponse effectivement servie en production. La suspension
+ciblée reste à maintenir, sans réouverture de l'article ni retrait de sa route/canonical par
+un pansement. Avant de déclarer la suspension effective, contrôler GET/HEAD du déploiement
+exact (statut, en-têtes robots), le HTML rendu et le sitemap ; sans ce contrôle, état servi inconnu.
 `Footer.astro` tire les services publiés de la collection, les outils disponibles de `outils.ts`,
 les intégrations indexables de `integrations.ts` et les rubriques de `blog-rubriques.mjs` ; un
 fichier présent ne prouve ni publication, ni entrée au sitemap. `Nav.astro` garde l'accès lisible

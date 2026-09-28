@@ -84,12 +84,14 @@ dont le pilier : 33 P1, 9 P2 et 201 P3 (`backlog-v3.json`, 28/09). Ne pas additi
 priorités à celles du plan, qui réintroduit les trois historiques P1. La ligne Méthode du tableau
 compte 21 satellites et signale à part le pilier publié.
 
-Deux lectures à ne pas confondre. **Priorité 1 ne veut pas dire famille importante** : elle dit
-seulement que la requête primaire de l'angle a des suggestions d'autocomplétion, donc qu'elle passe
-un seuil de volume. Le juridique et fiscal domine la colonne P1 parce que ses requêtes sont des
-questions de définition largement tapées, pas parce qu'un cabinet y souffre plus qu'ailleurs.
-**Priorité 3 ne veut pas dire sujet mort** : elle dit qu'aucune demande n'est mesurable sur la
-formulation actuelle de l'angle, ce qui appelle une réécriture de l'angle avant un abandon.
+Deux lectures à ne pas confondre. **Priorité 1 ne veut pas dire famille importante** : elle indique
+un signal d'autocomplétion mesuré sur la formulation de l'angle, pas un seuil de volume de recherche.
+Le lot blog du 19/09 n'a pas mesuré les volumes Ads des amorces (§5) ; la présence de suggestions
+ne chiffre ni le lectorat ni la douleur d'un cabinet. Le juridique et fiscal domine la colonne P1
+par ses formulations de questions de définition avec suggestions dans ce lot, pas par une mesure
+comparative de la souffrance des cabinets. **Priorité 3 ne veut pas dire sujet mort** : aucun signal
+d'autocomplétion n'a été relevé sur la formulation actuelle de l'angle dans ce lot ; cela appelle
+une lecture de la SERP et de l'intention cabinet, puis une réécriture éventuelle, non un abandon.
 
 ## 5. Ce que la page de résultats dit (relevés des 17 et 19/09)
 
@@ -207,7 +209,7 @@ réécrite en « mellia ».
 | chaque lundi (C2) | impressions par page et par famille | la ligne s'écrit même à zéro : zéro est une mesure, et la série commence au jour un. Aucune réallocation de créneau avant la première lecture utile |
 | chaque mercredi (C3) | liens entrants (≥ 3), ancres, sources, vitesse (plancher 95) | un rouge se corrige le vendredi suivant par republication scellée, **avant** d'écrire un article de plus |
 | **mi-octobre 2026**, première lecture Search Console utile | requêtes avec impressions, par page, sur les articles publiés depuis au moins 28 jours | si aucun article n'a d'impression, le défaut est d'indexation ou de demande, pas de rédaction : on relit la requête visée et le titre avant de toucher au corps. C'est aussi la date à partir de laquelle les six articles peuvent être réécrits (`JOURNAL.md`, « Tranché » du 19/09) |
-| **fin novembre 2026** (le calendrier y place 47 articles, 6 publiés et 41 planifiés) | familles ayant trois satellites publiés | une famille à zéro impression sur ses requêtes après trois satellites ne reçoit pas de quatrième créneau ; ils vont à une famille qui en a. Le cron propose, Kevin décide |
+| **fin novembre 2026** (photographie du `cluster-plan.json` candidat du 28/09 : 8 satellites `published` + 1 pilier `published`, 41 satellites `planned` datés au plus tard le 30/11, soit 50 articles publiés/planifiés ; hors 2 `a-replanifier` et 1 `manque`, qui ne sont pas des publications autorisées) | familles ayant trois satellites effectivement publiés | une famille à zéro impression sur ses requêtes après trois satellites ne reçoit pas de quatrième créneau ; ils vont à une famille qui en a. Le cron propose, Kevin décide ; les créneaux planifiés ne prouvent pas des publications futures |
 | **31 décembre 2026** | le champ `spell` sur la requête de marque | encore actif, il déclenche un plan d'entité (annuaires, mentions, page publique) avant tout effort éditorial supplémentaire sur la marque (`CRONS-SEO.md` §3, C4) |
 | **31 décembre 2026** | trois mois de série C2 | seuil d'armement de C5, décroissance et cannibalisation : sans série, il n'a rien à comparer |
 | **31 mars 2027** | demandes de contact citant une tâche ou un article | tant que D4 n'est pas tranché, cela ne se mesure que sur le texte du message : la famille citée monte en priorité de production, une famille jamais citée et sans impression descend |

@@ -128,7 +128,7 @@ les deux requêtes chiffrées le 12/09 étaient des repères antérieurs, pas un
 Le relevé commercial DataForSEO du **20/09** (`mesures/audience-requetes-2026-09-20.json`)
 chiffre aussi des variantes nues, dont notes de frais et factures fournisseurs, mais ne chiffre
 pas les cinq requêtes de tâche qualifiées retenues : ne jamais transférer leur volume aux pages.
-L'autocomplétion est un signal de seuil, pas un compte : une liste vide ou un volume `null` ne
+L'autocomplétion est un signal de suggestions, pas une mesure de volume : une liste vide ou un volume `null` ne
 prouvent pas l'absence de lecteur, et une panne de l'instrument n'est jamais comptée comme un zéro
 (`RUNBOOK-SEO.md` §3 bis). Les rangs de memlia.fr viennent des pages de résultats, pas de Search
 Console, qui n'a encore aucune ligne de requête sur les articles. Le recouvrement entre familles

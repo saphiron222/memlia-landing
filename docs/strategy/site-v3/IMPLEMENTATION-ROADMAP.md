@@ -59,7 +59,7 @@ angles sans demande ou d'intention adverse, et seulement ensuite `recaler` et `-
 | lundi 21/09/2026 | reprise de la cadence : quatre créneaux en semaine W39 (21, 22, 23 et 24/09), le premier planifié du calendrier | premiers articles à porter `## La règle écrite` et `## Rejoué sur le jeu fictif` ; c'est la première mise à l'épreuve réelle de `verifierRegleEcrite` |
 | vendredi 02/10/2026 | premier relevé mensuel des questions après le recalage | les angles de priorité 3 dont la formulation est le seul obstacle sont réécrits avant d'être abandonnés |
 | mi-octobre 2026 | première lecture Search Console utile (les articles du 09 au 17/09 auront 28 jours) | décision sur la réécriture des six articles publiés, gelée jusque-là (`JOURNAL.md`, « Tranché » du 19/09) |
-| fin novembre 2026 | le calendrier place 47 articles (6 publiés, 41 planifiés) | seuil « famille à zéro impression après trois satellites » applicable pour la première fois |
+| fin novembre 2026 | photographie du plan candidat du 28/09 : 8 satellites et 1 pilier `published`, 41 satellites `planned` jusqu'au 30/11, soit 50 publiés/planifiés ; 2 `a-replanifier` et 1 `manque` hors compte | seuil « famille à zéro impression après trois satellites effectivement publiés » à examiner ; le plan n'est pas une promesse de publication |
 | décembre 2026 | armement de C5 (décroissance et cannibalisation) | trois mois de série C2, sans quoi il n'a rien à comparer |
 | sans date, attend Kevin | vague 2 du glossaire (14 termes, `GLOSSARY-PLAN.md` §3) | validation de la liste et du moment |
 | sans date, attend Kevin | C4 autorité, entité et visibilité IA (décision D2), Bing Webmaster Tools et jeton Cloudflare Analytics (D3), champ « page d'origine » du formulaire (D4) | `CRONS-SEO.md` §7 |
