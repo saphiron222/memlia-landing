@@ -60,6 +60,18 @@ def jsonld(path):
     scripts = re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', path.read_text())
     return [json.loads(s) for s in scripts]
 
+def article_headline_identity(article):
+    """Compare les trois surfaces rendues sans confondre H1 et titre d'onglet."""
+    doc = Document(article)
+    h1 = re.findall(r'<h1[^>]*>(.*?)</h1>', article.read_text(), re.S)
+    if len(h1) != 1:
+        return False
+    from html import unescape
+    headline = unescape(re.sub(r'<[^>]+>', '', h1[0])).strip()
+    og = [m.get('content') for m in doc.select('meta') if m.get('property') == 'og:title']
+    postings = [n for g in jsonld(article) for n in g.get('@graph', []) if n.get('@type') == 'BlogPosting']
+    return len(og) == len(postings) == 1 and headline == og[0] == postings[0].get('headline')
+
 
 def articles():
     return sorted((DIST / 'blog').glob('*.html'))
@@ -87,6 +99,34 @@ def pillar_slugs():
 
 
 class BuildProof(unittest.TestCase):
+    def test_headline_identity_refuse_une_mutation_og(self):
+        from tempfile import TemporaryDirectory
+        source = next((a for a in articles() if 'og:title' in a.read_text()), None)
+        self.assertIsNotNone(source)
+        assert source is not None
+        self.assertTrue(article_headline_identity(source))
+        with TemporaryDirectory() as directory:
+            altered = Path(directory) / 'article.html'
+            original = source.read_text()
+            altered.write_text(re.sub(r'(<meta property="og:title" content=")[^"]+', r'\1Titre tronqué', original, count=1))
+            self.assertNotEqual(altered.read_text(), original)
+            self.assertFalse(article_headline_identity(altered))
+            altered.write_text(original.replace('"headline":', '"headline": "Titre différent", "originalHeadline":', 1))
+            self.assertNotEqual(altered.read_text(), original)
+            self.assertFalse(article_headline_identity(altered))
+
+    def test_h1_long_reste_identique_au_graphe_et_a_og(self):
+        from tempfile import TemporaryDirectory
+        from html import escape
+        headline = 'Pourquoi des tests verts manquent des défauts : la règle des trois passes'
+        self.assertGreater(len(headline), 70)
+        with TemporaryDirectory() as directory:
+            article = Path(directory) / 'long.html'
+            article.write_text(f'<title>Titre court | Memlia</title><h1>{escape(headline)}</h1>'
+                               f'<meta property="og:title" content="{escape(headline, quote=True)}">'
+                               f'<script type="application/ld+json">{json.dumps({"@graph": [{"@type": "BlogPosting", "headline": headline}]}, ensure_ascii=False)}</script>')
+            self.assertTrue(article_headline_identity(article))
+
     def test_pages_one_h1_french(self):
         pages = sorted(DIST.glob('*.html'))
         self.assertEqual([p.stem for p in pages], PAGES_FIXES)
@@ -372,7 +412,7 @@ class BuildProof(unittest.TestCase):
                 self.assertLessEqual(len(metas['description']), 160)
                 titre = re.search(r'<title>(.*?)</title>', article.read_text()).group(1)
                 self.assertLessEqual(len(titre), 70, titre)
-                self.assertLessEqual(len(metas['og:title']), 70, metas['og:title'])
+                self.assertTrue(article_headline_identity(article), article.name)
                 (graph,) = jsonld(article)
                 nodes = {n['@type']: n for n in graph['@graph']}
                 self.assertEqual(set(nodes), {'BlogPosting', 'BreadcrumbList', 'Person', 'Organization', 'WebSite'})

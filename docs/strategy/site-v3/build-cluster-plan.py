@@ -33,6 +33,15 @@ PAR_JOUR_MAX = 2
 PAR_SEMAINE_MAX = 4
 JOURS_DE_PUBLICATION = (0, 1, 2, 3)  # lundi à jeudi ; la semaine 38 (deux articles le 16/09) se complète le jeudi 17/09
 PREMIER_JOUR = date(2026, 9, 17)
+RATTRAPAGE_W39 = {'prompt-chatgpt-expert-comptable': '2026-09-22', 'logiciel-ia-comptabilite': '2026-09-24', 'tests-verts-et-regle-des-trois-passes': '2026-09-26'}
+DATE_RATTRAPAGE = '2026-09-28'
+TITRE_CICATRICE_W39 = 'Pourquoi des tests verts manquent des défauts : la règle des trois passes'
+
+def creneau(e):
+    """Le 28/09 réel ne change pas les trois créneaux éditoriaux W39 désignés."""
+    if e.get('statut') == 'published' and e['date'] == DATE_RATTRAPAGE:
+        return RATTRAPAGE_W39.get(e['slug'], e['date'])
+    return e['date']
 GABARIT_PAR_FORMAT = {'pillar-page': 'ultimate-guide', 'how-to-guide': 'how-to', 'faq-knowledge': 'explainer', 'listicle-checklist': 'listicle', 'tutorial': 'how-to', 'resource-template': 'landing-page', 'thought-leadership': 'essai'}
 MOTS_PAR_FORMAT = {'pillar-page': 3200, 'how-to-guide': 1500, 'faq-knowledge': 1300, 'listicle-checklist': 1400, 'tutorial': 1500, 'resource-template': 1200, 'thought-leadership': 1400}
 
@@ -76,12 +85,14 @@ def semaine_iso(jour):
 def planifier(entrees, publies):
     """Planifie 4 articles ordinaires lun-jeu et 1 cicatrice le samedi, par semaine ISO."""
     par_jour, par_semaine = Counter(), Counter()
+    if any(p['date'] == DATE_RATTRAPAGE and slug not in RATTRAPAGE_W39 for slug, p in publies.items()):
+        raise SystemExit('rattrapage W39 réservé aux trois sujets désignés')
     slugs_cicatrices = {e['slug'] for e in entrees if e.get('serie') == 'cicatrices'}
     for slug, p in publies.items():
         if slug in slugs_cicatrices:
             continue
         if p['date']:
-            d = date.fromisoformat(p['date'])
+            d = date.fromisoformat(RATTRAPAGE_W39.get(slug, p['date']) if p['date'] == DATE_RATTRAPAGE else p['date'])
             par_jour[d] += 1
             par_semaine[semaine_iso(d)] += 1
     # La série « Cicatrices » (charte §7 ter) a sa propre cadence : un samedi par semaine ISO,
@@ -91,8 +102,9 @@ def planifier(entrees, publies):
     semaines_reservees = set()
 
     def reserver_cicatrice(e, candidat):
-        cle_semaine = semaine_iso(candidat)
-        if candidat.weekday() != 5:
+        rattrapage = e['slug'] == 'tests-verts-et-regle-des-trois-passes' and e['slug'] in publies and candidat.isoformat() == DATE_RATTRAPAGE
+        cle_semaine = semaine_iso(date.fromisoformat(RATTRAPAGE_W39[e['slug']])) if rattrapage else semaine_iso(candidat)
+        if candidat.weekday() != 5 and not rattrapage:
             raise SystemExit(f"une cicatrice paraît le samedi : {e['slug']} ({candidat.isoformat()})")
         if cle_semaine in semaines_reservees:
             raise SystemExit(f"deux cicatrices la même semaine ISO : {e['slug']} ({candidat.isoformat()})")
@@ -102,17 +114,20 @@ def planifier(entrees, publies):
 
     # Une date publiée fait foi. Une date explicite du backlog doit lui être identique et ne bouge
     # jamais au gré d'une régénération.
-    for e in [x for x in series if x.get('date') or x['slug'] in publies]:
+    for e in [x for x in series if x['slug'] in publies]:
         date_publiee = publies.get(e['slug'], {}).get('date')
-        if date_publiee and e.get('date') and date_publiee != e['date']:
+        if date_publiee and e.get('date') and date_publiee != e['date'] and not (e['slug'] == 'tests-verts-et-regle-des-trois-passes' and date_publiee == DATE_RATTRAPAGE and e['date'] == RATTRAPAGE_W39[e['slug']]):
             raise SystemExit(f"date publiée divergente du backlog : {e['slug']} ({date_publiee} != {e['date']})")
         reserver_cicatrice(e, date.fromisoformat(date_publiee or e['date']))
 
+    # Les dates explicites du backlog restent des décisions, pas des indications de tri :
+    # seul un créneau non daté peut avancer jusqu'au prochain samedi libre.
     premier_samedi = PREMIER_JOUR + timedelta(days=(5 - PREMIER_JOUR.weekday()) % 7)
-    for e in sorted([x for x in series if not x.get('date') and x['slug'] not in publies], key=lambda x: (x['priorite'], x['rang_famille'])):
-        candidat = premier_samedi
-        while semaine_iso(candidat) in semaines_reservees:
-            candidat += timedelta(days=7)
+    for e in sorted([x for x in series if x['slug'] not in publies], key=lambda x: (x.get('date') or '', x['priorite'], x['rang_famille'])):
+        candidat = date.fromisoformat(e['date']) if e.get('date') else premier_samedi
+        if not e.get('date'):
+            while semaine_iso(candidat) in semaines_reservees:
+                candidat += timedelta(days=7)
         reserver_cicatrice(e, candidat)
 
     # Une décision éditoriale peut fixer quelques créneaux ordinaires sans figer tout le calendrier.
@@ -159,6 +174,29 @@ def construire():
     poles, familles = taxonomie()
     publies = etat_publie()
     backlog = json.loads(BACKLOG.read_text(encoding='utf-8'))
+    slug_w39 = 'tests-verts-et-regle-des-trois-passes'
+    if slug_w39 in publies:
+        p = publies[slug_w39]
+        if p['titre'] != TITRE_CICATRICE_W39:
+            raise SystemExit('titre signé W39 divergent')
+        if p['date'] != DATE_RATTRAPAGE or p['format'] != 'thought-leadership' or p['famille'] != 'ia-generative-agents':
+            raise SystemExit(f'cicatrice W39 hors contrat : {slug_w39}')
+        # Le créneau du 26/09 porte le même titre et la même requête : remplacer le
+        # sujet planifié par la Cicatrice réellement publiée, sans créer un doublon.
+        ancien = next((e for e in backlog if e['slug'] == 'trois-bugs-que-des-tests-verts-n-ont-pas-vus'), None)
+        inscrit = next((e for e in backlog if e['slug'] == slug_w39), None)
+        if ancien is not None:
+            if ancien['titre'] != TITRE_CICATRICE_W39:
+                raise SystemExit('titre signé W39 du backlog divergent')
+            if inscrit or ancien['requete'] != p['requete'] or ancien.get('date') != '2026-09-26' or ancien.get('serie') != 'cicatrices' or ancien['slug'] in publies:
+                raise SystemExit('cicatrice W39 planifiée divergente ou déjà publiée')
+            backlog.remove(ancien)
+        if inscrit is not None and inscrit['titre'] != TITRE_CICATRICE_W39:
+            raise SystemExit('titre signé W39 du backlog divergent')
+        if inscrit is not None and (inscrit['requete'] != p['requete'] or inscrit.get('date') != RATTRAPAGE_W39[slug_w39] or inscrit.get('serie') != 'cicatrices'):
+            raise SystemExit('cicatrice W39 inscrite hors contrat')
+        if inscrit is None:
+            backlog.append({'slug': slug_w39, 'titre': TITRE_CICATRICE_W39, 'requete': p['requete'], 'secondaires': [], 'famille': p['famille'], 'role': 'direction-associes', 'intent': 'diagnostiquer', 'funnel': 'MOFU', 'format': p['format'], 'preuve': 'cicatrice W39 signée, publiée le 28/09', 'sourcesOfficielles': [], 'priorite': 1, 'serie': 'cicatrices', 'date': DATE_RATTRAPAGE})
     for i, e in enumerate(backlog):
         e['rang_famille'] = sum(1 for x in backlog[:i] if x['famille'] == e['famille'])
     # Le pilier transversal est désigné par son slug : des grappes spécialisées peuvent aussi
@@ -233,6 +271,11 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     for slug in publies:
         if slug not in slugs:
             erreurs.append(f'article publié absent du backlog et de la table historique : {slug}')
+    for e in tous:
+        if e['slug'] in publies and (e['date'] != publies[e['slug']]['date'] or e.get('statut') != 'published'):
+            erreurs.append(f"date ou statut publié divergents : {e['slug']}")
+        if e.get('statut') == 'published' and e['slug'] not in publies:
+            erreurs.append(f"statut publié sans article source : {e['slug']}")
     # Depuis le 19/09/2026, une priorité 1 se mérite par une mesure : autocomplétion ou page de résultats datée (scripts/seo/questions.mjs).
     for e in satellites:
         if e.get('historique') or e.get('serie') or e['slug'] in publies:
@@ -243,12 +286,14 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     cicatrices = [e for e in tous if e.get('serie') == 'cicatrices']
     par_jour, par_semaine = Counter(), Counter()
     for e in ordinaires:
-        d = date.fromisoformat(e['date'])
-        if e.get('datePlanifiee') and e['date'] != e['datePlanifiee']:
+        if e['date'] == DATE_RATTRAPAGE and e.get('statut') == 'published' and e['slug'] not in RATTRAPAGE_W39:
+            erreurs.append(f"rattrapage W39 hors périmètre : {e['slug']}")
+        if e.get('datePlanifiee') and creneau(e) != e['datePlanifiee']:
             erreurs.append(f"date planifiée non respectée : {e['slug']} ({e['date']} != {e['datePlanifiee']})")
-        par_jour[d] += 1
-        par_semaine[semaine_iso(d)] += 1
-        if d >= PREMIER_JOUR and d.weekday() not in JOURS_DE_PUBLICATION:
+        slot = date.fromisoformat(creneau(e))
+        par_jour[slot] += 1
+        par_semaine[semaine_iso(slot)] += 1
+        if slot >= PREMIER_JOUR and slot.weekday() not in JOURS_DE_PUBLICATION:
             erreurs.append(f"article ordinaire hors lundi-jeudi : {e['slug']} ({e['date']})")
     if any(n > PAR_JOUR_MAX for n in par_jour.values()):
         erreurs.append('plus de deux articles le même jour')
@@ -257,7 +302,9 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     cicatrices_par_semaine = Counter()
     dates_cicatrices = []
     for e in cicatrices:
-        d = date.fromisoformat(e['date'])
+        if e['date'] == DATE_RATTRAPAGE and (e['slug'] != 'tests-verts-et-regle-des-trois-passes' or e.get('statut') != 'published'):
+            erreurs.append(f"rattrapage W39 hors périmètre : {e['slug']}")
+        d = date.fromisoformat(creneau(e))
         dates_cicatrices.append(d)
         cicatrices_par_semaine[semaine_iso(d)] += 1
         if d.weekday() != 5:
