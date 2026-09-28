@@ -9,7 +9,7 @@ Trois sources font foi et ne sont pas redéfinies ici :
 
 - `.agents/product-marketing.md` : la charte de message **v4 du 21/09/2026** (angle v3 du 17/09 et §2 bis « la règle écrite » du 19/09), pour toute surface publique ; §7 ter garde le go individuel d'un récit signé.
 - `src/data/familles.ts` : la taxonomie, 60 familles en 12 pôles, `audit-legal` listée et non ouverte (comptées dans le fichier).
-- `backlog-v3.json` : les angles et leur demande mesurée, 243 entrées dont le pilier (comptées dans le fichier) ; le plan ajoute trois articles historiques hors backlog.
+- `backlog-v3.json` : les angles et les suggestions relevées sur leurs formulations testées, 243 entrées dont le pilier (comptées dans le fichier) ; le plan ajoute trois articles historiques hors backlog. Le champ `demande.mesureeLe` date un relevé, non une demande quantifiée.
 
 La catégorie commerciale est l'automatisation, avec IA, des tâches répétitives d'un cabinet
 d'expertise comptable, vendue comme un service et non comme un logiciel (charte §4). Excel est
@@ -19,7 +19,7 @@ désigner l'offre.
 
 ## À lire, dans l'ordre
 
-1. [Stratégie](SEO-STRATEGY.md) : le constat, la thèse, la carte des 60 familles en 12 pôles, ce que la demande mesurée du 19/09 a changé, les seuils de décision datés.
+1. [Stratégie](SEO-STRATEGY.md) : le constat, la thèse, la carte des 60 familles en 12 pôles taxonomiques (59 familles et 11 pôles actifs dans le plan), ce que les suggestions relevées le 19/09 ont changé, les seuils de décision datés.
 2. [Autorité commerciale](SEO-AUTORITE-COMMERCIALE-2026-09-20.md) : décision d'architecture accueil → pilier → routes filles, verdict SERP par requête, profondeur 12/30/90, E-E-A-T, backlinks et procédure d'indexation.
 3. [Concurrents](COMPETITOR-ANALYSIS.md) : qui occupe chaque famille, en quel format, et l'espace libre. Relevé du 16/09, non remesuré depuis : à lire comme daté.
 4. [Architecture](SITE-STRUCTURE.md) : l'arbre du site en ligne, les règles d'URL, le maillage tel que le cron d'intégrité le contrôle, ce que le code fait déjà.
@@ -28,10 +28,10 @@ désigner l'offre.
    [Boucle des outils](OUTILS-BOUCLE.md) : seuils J+28/J+90 préenregistrés, quatrième outil suivi à part et télémétrie locale non collectée.
 7. [Exécution](IMPLEMENTATION-ROADMAP.md) : l'état au 19/09, le cycle réel d'un article aujourd'hui, ce qui reste et à quelle échéance.
 8. [Crons SEO](CRONS-SEO.md) : pourquoi chaque instrument existe, ce qu'il ne mesure pas, le point zéro du 17/09.
-9. [Mode opératoire des crons](RUNBOOK-SEO.md) : sentinelle quotidienne, relevé de demande du lundi, intégrité du mercredi, relevé des questions, extensions de la forge.
+9. [Mode opératoire des crons](RUNBOOK-SEO.md) : sentinelle quotidienne, relevé des signaux du lundi, intégrité du mercredi, relevé des questions, extensions de la forge.
 10. [Mode opératoire quotidien](RUNBOOK-QUOTIDIEN.md) : la forge éditoriale, de la recette au contrôle en ligne. C'est le document qu'une session de production lit en premier.
 11. [Journal](JOURNAL.md) : une ligne par exécution, et les sections « Tranché » qui portent les décisions (l'ordre de la liste du blog le 17/09, la stratégie blog le 19/09).
-12. [Mesures](mesures/) : les relevés commités. `questions-2026-09-19.md` et `.json` (la demande), `semaine-2026-W38-demande.json`, `semaine-2026-W38-integrite.json`, `sentinelle.jsonl`, `registre-requetes.json`, `amorces-marche.json`.
+12. [Mesures](mesures/) : les relevés commités. `questions-2026-09-19.md` et `.json` (suggestions par formulation, SERP par famille), `semaine-2026-W38-demande.json`, `semaine-2026-W38-integrite.json`, `sentinelle.jsonl`, `registre-requetes.json`, `amorces-marche.json`.
 13. [Calendrier](CONTENT-CALENDAR.md), [plan de cluster](cluster-plan.md), [données](cluster-plan.json), [carte interactive](cluster-map.html) : générés par `build-cluster-plan.py`. Ne pas les éditer à la main ; corriger `backlog-v3.json` ou la taxonomie, puis régénérer. `manque` et `a-replanifier` ne sont pas des créneaux de publication.
 14. [Briefs du 16/09](cluster-briefs/) : périmés (voir plus bas). Ne pas s'en servir comme source d'un article.
 
@@ -111,7 +111,7 @@ ligne du backlog**, pas ces briefs. Ils restent au dépôt comme trace de la vag
 # orpheline, plafond de cadence dépassé, angle de priorité 1 sans date de relevé
 python3 docs/strategy/site-v3/build-cluster-plan.py --check
 
-# la demande : autocomplétion Google (gratuite) puis pages de résultats DataForSEO (porte de coût)
+# suggestions sur les formulations : autocomplétion Google ; SERP par famille : DataForSEO (porte de coût)
 node scripts/seo/questions.mjs relever && node scripts/seo/questions.mjs rapport
 
 npm run blog:audit   # les dossiers scellés : un candidat préparé et non scellé fait échouer le build

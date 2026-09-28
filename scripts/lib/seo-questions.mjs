@@ -1,14 +1,16 @@
 /**
- * Les questions que se pose vraiment le lecteur : le backlog éditorial recalé sur la demande mesurée.
+ * Suggestions et SERP relevées : le backlog éditorial recalé sur les formulations testées.
  *
- * Deux instruments, deux propriétés : l'autocomplétion Google ne propose que des requêtes au-dessus
- * d'un seuil de volume (une liste vide est une mesure, pas un silence) ; la page de résultats porte
- * les questions « Autres questions », les recherches associées et les domaines qui gagnent, d'où se
- * lit l'intention dominante (un haut de page tenu par des éditeurs de logiciel cherche un logiciel).
+ * Deux instruments, deux portées : l'autocomplétion Google relève des suggestions sur les
+ * formulations testées, sans volume Ads ni preuve de demande ou d'audience ; une liste vide
+ * signifie aucune suggestion relevée, pas zéro recherche. Une SERP est relevée par famille,
+ * pas par angle : questions « Autres questions », recherches associées et domaines du haut de page
+ * éclairent l'intention à vérifier manuellement, sans trancher celle de chaque angle.
  *
  * Règle de priorité, écrite pour être relue : 1 si la requête primaire a des suggestions, 2 si seule
- * une requête secondaire en a, 3 si rien n'en a. Le pilier n'est jamais recalé. L'intention adverse
- * n'abaisse pas la priorité toute seule : elle est affichée, et c'est l'angle qui se corrige.
+ * une requête secondaire en a, 3 si aucune suggestion n'est relevée sur les formulations testées.
+ * Le pilier n'est jamais recalé. L'intention adverse n'abaisse pas la priorité toute seule :
+ * confronter SERP, intention cabinet et Search Console avant de décider une correction d'angle.
  * Fonctions pures : aucune lecture de fichier, aucune mutation des objets reçus.
  */
 

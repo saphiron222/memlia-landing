@@ -4,7 +4,7 @@ Généré le 2026-09-28 par `build-cluster-plan.py` (source unique : `backlog-v3
 
 ## Méthode
 
-backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 59 familles actives en 12 pôles ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorité posée depuis la demande mesurée par angle (autocomplétion Google et pages de résultats DataForSEO, scripts/seo/questions.mjs, depuis le 19/09/2026 ; un angle de priorité 1 sans mesure datée fait échouer --check).
+backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 59 familles et 11 pôles actifs dans ce plan (12 pôles dans la taxonomie) ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. Une priorité 1 sans date de relevé fait échouer --check.
 
 Recouvrement SERP entre familles (relevés WebSearch des 10/09 et 16/09/2026) : au plus deux domaines partagés, jamais quatre ; chaque famille est donc un cluster distinct, interlié par le pilier, et les quatre angles d’une même famille se lient entre eux.
 

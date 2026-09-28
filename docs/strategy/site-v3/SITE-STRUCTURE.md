@@ -88,7 +88,8 @@ la décision est écrite dans `JOURNAL.md`, « Tranché » du 17/09.
 Deux contrôles, deux moments. **Au `--check`**, avant chaque vague : unicité des slugs et des
 requêtes primaires, appartenance aux énumérations du schéma, lien obligatoire satellite vers pilier,
 minimum de trois liens entrants par article, aucune orpheline, plafonds de cadence, et depuis le
-19/09 l'invariant « angle de priorité 1 implique demande mesurée ». **Chaque mercredi**, le cron C3
+19/09 l'invariant « angle de priorité 1 implique une date de relevé » (la complétude de la mesure
+reste à durcir après le FAIL QA t_a98b8bf3). **Chaque mercredi**, le cron C3
 mesure sur la production (`RUNBOOK-SEO.md` §4) :
 
 - **liens entrants par article**, plancher 3. Dernier relevé, le 17/09 : pilier 5, relance 7, saisie 6, compte rendu métier DSN 3, bulletins 7, production sociale 6 (`mesures/semaine-2026-W38-integrite.json`). Le compte rendu métier DSN est au plancher.

@@ -22,7 +22,7 @@ déploiement, puis la production).
 | « La règle écrite » exigée des articles nouveaux | `DEBUT_REGLE_ECRITE = '2026-09-19'`, `verifierRegleEcrite` (`scripts/blog-forge.mjs`) | testé, témoin de mutation joué (`JOURNAL.md`, « Tranché » du 19/09) |
 | Glossaire vague 1 intégrée : 43 termes rendus | `src/data/glossary.ts`, manifeste T, revue R5 ancrée | `test_glossary.py` (43), `resource:audit:qa` PASS |
 | Identité d'entité : un `@id`, une définition, cinq surfaces | `src/data/schema.mjs` | six preuves dédiées, dont l'invariant (`JOURNAL.md`, 17/09) |
-| Backlog recalé sur la demande mesurée | `scripts/seo/questions.mjs`, `scripts/lib/seo-questions.mjs`, `backlog-v3.json` | invariant « priorité 1 implique demande mesurée » dans `build-cluster-plan.py --check` ; relevé `mesures/questions-2026-09-19.json` |
+| Backlog ordonné selon les suggestions relevées sur les formulations testées (pannes partielles de recalage encore à corriger) | `scripts/seo/questions.mjs`, `scripts/lib/seo-questions.mjs`, `backlog-v3.json` | invariant « priorité 1 implique une date de relevé » dans `build-cluster-plan.py --check`, qui ne vérifie pas encore la complétude du relevé ; `mesures/questions-2026-09-19.json` |
 | Mesure en place : C1, C2, C3, F1, F2, F3 | `scripts/seo/`, `scripts/lib/seo-*` | `RUNBOOK-SEO.md` ; trois tâches planifiées ; relevés commités dans `mesures/` |
 
 ## 2. Le cycle d'un article, tel qu'il tourne
@@ -48,8 +48,10 @@ refusé par la forge ; un article publié ne se modifie que par republication sc
 Le calendrier n'attribue de créneau que du lundi au jeudi. Le vendredi, et toute journée sans ligne :
 régénérer le plan et vérifier les statuts, relever l'indexation, traiter au plus deux tâches de la
 file de maintenance par republication scellée (F2), consigner, pousser. Le **premier vendredi du
-mois**, avant tout le reste : `questions.mjs relever`, `rapport`, puis correction à la main des
-angles sans demande ou d'intention adverse, et seulement ensuite `recaler` et `--check`. Environ
+mois**, avant tout le reste : `questions.mjs relever`, `rapport`, puis examiner les formulations
+testées sans suggestion et les intentions potentiellement adverses : aucune suggestion n'établit
+ni absence de demande ni volume nul. Confronter SERP, intention cabinet et Search Console avant
+de décider une réécriture ou un écart, puis seulement `recaler` et `--check`. Environ
 0,13 $ derrière la porte de coût (`RUNBOOK-QUOTIDIEN.md` §6).
 
 ## 4. Ce qui reste, daté
@@ -57,7 +59,7 @@ angles sans demande ou d'intention adverse, et seulement ensuite `recaler` et `-
 | Quand | Quoi | Condition de sortie |
 |---|---|---|
 | lundi 21/09/2026 | reprise de la cadence : quatre créneaux en semaine W39 (21, 22, 23 et 24/09), le premier planifié du calendrier | premiers articles à porter `## La règle écrite` et `## Rejoué sur le jeu fictif` ; c'est la première mise à l'épreuve réelle de `verifierRegleEcrite` |
-| vendredi 02/10/2026 | premier relevé mensuel des questions après le recalage | les angles de priorité 3 dont la formulation est le seul obstacle sont réécrits avant d'être abandonnés |
+| vendredi 02/10/2026 | premier relevé mensuel des questions après le recalage | examiner les formulations P3 sans suggestion relevée ; décider une éventuelle réécriture ou un écart seulement après SERP, intention cabinet et Search Console, sans déduire une absence de demande |
 | mi-octobre 2026 | première lecture Search Console utile (les articles du 09 au 17/09 auront 28 jours) | décision sur la réécriture des six articles publiés, gelée jusque-là (`JOURNAL.md`, « Tranché » du 19/09) |
 | fin novembre 2026 | photographie du plan candidat du 28/09 : 8 satellites et 1 pilier `published`, 41 satellites `planned` jusqu'au 30/11, soit 50 publiés/planifiés ; 2 `a-replanifier` et 1 `manque` hors compte | seuil « famille à zéro impression après trois satellites effectivement publiés » à examiner ; le plan n'est pas une promesse de publication |
 | décembre 2026 | armement de C5 (décroissance et cannibalisation) | trois mois de série C2, sans quoi il n'a rien à comparer |

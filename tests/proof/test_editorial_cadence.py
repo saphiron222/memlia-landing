@@ -130,6 +130,41 @@ class EditorialCadenceProof(unittest.TestCase):
                 path.write_text(json.dumps(backlog))
                 with patch.object(PLAN, "BACKLOG", path), patch.object(PLAN, "etat_publie", return_value={}):
                     PLAN.construire()
+    def test_methode_generee_borne_les_signaux_et_compte_les_poles_actifs(self):
+        donnees, erreurs, entrants, _ = construire_et_verifier()
+        self.assertEqual(erreurs, [])
+        with TemporaryDirectory() as dossier, patch.object(PLAN, 'ICI', Path(dossier)):
+            data = PLAN.ecrire_json(donnees[0], donnees[1], donnees[3], donnees[4], donnees[5], entrants)
+            PLAN.ecrire_md(data, donnees[1])
+            import json
+            relu = json.loads((Path(dossier) / 'cluster-plan.json').read_text(encoding='utf-8'))
+            texte = (Path(dossier) / 'cluster-plan.md').read_text(encoding='utf-8')
+        methode = relu['methode']
+        self.assertIn(f"{relu['meta']['totalFamilies']} familles et {relu['meta']['totalClusters']} pôles actifs", methode)
+        self.assertIn('12 pôles dans la taxonomie', methode)
+        self.assertIn('704 amorces', methode)
+        self.assertIn('59 pages de résultats DataForSEO ont été relevées par famille, pas par angle', methode)
+        self.assertIn('sans mesurer la demande ni le volume de chaque angle', methode)
+        self.assertIn('Aucune suggestion relevée ne prouve une absence de demande', methode)
+        self.assertNotIn('demande mesurée par angle', methode)
+        self.assertIn(methode, texte)
+
+    def test_exemple_crm_dsn_et_consigne_restent_bornes_au_releve(self):
+        import json
+        releve = json.loads((PLAN.ICI / 'mesures/questions-2026-09-19.json').read_text(encoding='utf-8'))
+        suggestions = releve['autocompletion']['crm dsn']
+        strategie = (PLAN.ICI / 'SEO-STRATEGY.md').read_text(encoding='utf-8')
+        exemple = next(ligne for ligne in strategie.splitlines() if ligne.startswith('4. **Certaines formulations de métier'))
+        self.assertEqual(len(suggestions), 10)
+        for code in ('120', '119', '124', '121', '34'):
+            self.assertIn(f'dsn crm {code}', suggestions)
+            self.assertIn(code, exemple)
+        self.assertNotIn('114', exemple)
+        self.assertIn('non une mesure de volume Ads, de demande ou d\'audience cabinet', exemple)
+        roadmap = (PLAN.ICI / 'IMPLEMENTATION-ROADMAP.md').read_text(encoding='utf-8')
+        self.assertNotIn('angles sans demande', roadmap)
+        self.assertIn('Confronter SERP, intention cabinet et Search Console avant', roadmap)
+
     def test_calendrier_p3_mesures_ne_conclut_pas_a_une_absence_de_demande(self):
         import json
         backlog = json.loads(PLAN.BACKLOG.read_text(encoding='utf-8'))
