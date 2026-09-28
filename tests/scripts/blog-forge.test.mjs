@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
@@ -8,10 +9,12 @@ import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
 import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH } from '../../scripts/lib/blog-pipeline.mjs';
+import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const SLUG = 'automatiser-une-tache-de-test';
 const jour = new Date().toISOString().slice(0, 10);
+const HTML_RELUT = '<html><body><div class="article-corps lecture"><p>Texte rendu relu.</p></div></body></html>';
 
 const CORPS_REGLE = `## La règle écrite
 
@@ -89,10 +92,11 @@ function recette() {
   };
 }
 
-function revues(claimId) {
+function revues(claimId, root) {
   const criteres = Object.fromEntries(['intent-satisfaction', 'serp-format-rankability', 'eeat-sources', 'information-gain-proof', 'technical-onpage-seo', 'ai-citability', 'contextual-conversion'].map((id) => [id, { result: 'PASS', observations: [`${id} vérifié sur le contenu rendu du candidat de test.`] }]));
   const criteresImage = Object.fromEntries(['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'].map((id) => [id, { result: 'PASS', observations: [`${id} observé dans le rendu du cadre de preuve.`] }]));
   return {
+    subject: { slug: SLUG, bodySha256: createHash('sha256').update(CORPS.trim()).digest('hex'), recipeSha256: createHash('sha256').update(readFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'))).digest('hex'), renderedSha256: renderedBodySha256(HTML_RELUT) },
     editorial: { criteria: criteres, p0: [] },
     business: { claims: { [claimId]: { verdict: 'soutient', reasoning: 'Le reviewer métier a comparé le claim et la citation exacte de la CNIL dans la copie locale.' } } },
     image: { criteria: criteresImage, directionArt: 18, semanticRelevance: 22 },
@@ -253,12 +257,33 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     assert.ok(sansRevue.errors.every((e) => /revue|review|P0|score|image|visuel|business|pret-preview|blocking|soutient|editorialStatus/i.test(e)), sansRevue.errors.join('\n'));
 
     // 2. Avec les revues : le gate passe en preview protégée.
-    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(claimId), null, 2));
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(claimId, root), null, 2));
     const scellement = await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
     assert.deepEqual(scellement.erreurs, []);
     const preview = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
     assert.deepEqual(preview.errors, []);
     assert.equal(preview.pass, true);
+    const htmlConforme = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, renderedArticleHtml: HTML_RELUT, gateMode: 'protected-preview' });
+    assert.equal(htmlConforme.pass, true, htmlConforme.errors.join('\n'));
+    const htmlModifie = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, renderedArticleHtml: HTML_RELUT.replace('Texte rendu relu.', 'Texte rendu modifié.'), gateMode: 'protected-preview' });
+    assert.ok(htmlModifie.errors.some((e) => /empreinte du rendu HTML divergente/.test(e)), htmlModifie.errors.join('\n'));
+    const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+    const recetteInitiale = readFileSync(recettePath, 'utf8');
+    writeFileSync(recettePath, JSON.stringify({ ...JSON.parse(recetteInitiale), updatedAt: jour }));
+    const dateModifiee = await materialiser({ root, slug: SLUG, statut: 'go-production', fetcher, rendreImage });
+    assert.ok(dateModifiee.erreurs.some((e) => /empreinte de la recette/.test(e)), dateModifiee.erreurs.join('\n'));
+    writeFileSync(recettePath, recetteInitiale);
+    await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
+    // Une nouvelle version ne peut pas hériter des verdicts de la version précédente.
+    const corpsPath = join(root, 'editorial/recettes', SLUG, 'corps.md');
+    writeFileSync(corpsPath, `${CORPS}\n\nUn nouveau paragraphe de méthode soumis à une revue distincte.`);
+    const mutation = await materialiser({ root, slug: SLUG, statut: 'go-production', fetcher, rendreImage });
+    assert.ok(mutation.erreurs.some((e) => /revues\.json.*empreinte|revue.*corps/i.test(e)), mutation.erreurs.join('\n'));
+    const refuse = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'production' });
+    assert.equal(refuse.pass, false, 'le gate ne se fie pas à la preuve métier réestampillée');
+    assert.ok(refuse.errors.some((e) => /revues\.json.*empreinte|revue.*corps/i.test(e)), refuse.errors.join('\n'));
+    writeFileSync(corpsPath, CORPS);
+    await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
     assert.equal((readFileSync(join(root, 'src/content/blog', `${SLUG}.md`), 'utf8').match(/data-blog-proof=/g) ?? []).length, 2, 'les deux preuves sont dans le candidat exact');
     const images = readFileSync(join(root, 'src/data/images.mjs'), 'utf8');
     assert.ok(images.includes(`'img-art-${SLUG}'`) && images.includes('Trois colonnes'), 'hero déclaré avec son alt');
@@ -279,6 +304,42 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     const sceau = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, PUBLICATION_SEAL_PATH), 'utf8'));
     assert.equal(sceau.kind, 'publication-scellee');
     assert.ok(sceau.files.length > 20 && sceau.files.every((f) => /^[a-f0-9]{64}$/.test(f.sha256)));
+
+    writeFileSync(corpsPath, `${CORPS}\n\nUne nouvelle orientation éditoriale non relue.`);
+    const republieSansRevue = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
+    assert.ok(republieSansRevue.errors.some((e) => /empreinte du corps/.test(e)), republieSansRevue.errors.join('\n'));
+    writeFileSync(corpsPath, CORPS);
+
+    const revuesPath = join(root, 'editorial/recettes', SLUG, 'revues.json');
+    const revuesActuelles = readFileSync(revuesPath, 'utf8');
+    const revuesAnciennes = JSON.parse(revuesActuelles);
+    delete revuesAnciennes.subject;
+    writeFileSync(revuesPath, JSON.stringify(revuesAnciennes));
+    writeFileSync(join(root, 'editorial/legacy-review-baseline.json'), JSON.stringify({ version: 1, articles: {
+      [SLUG]: {
+        recipeSha256: createHash('sha256').update(readFileSync(recettePath)).digest('hex'),
+        reviewSha256: createHash('sha256').update(readFileSync(revuesPath)).digest('hex'),
+      },
+    } }));
+    const legacyIntact = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
+    assert.equal(legacyIntact.pass, true, legacyIntact.errors.join('\n'));
+    // Le sceau ne porte pas les fichiers de recette : leur retrait ne doit jamais désactiver la revue.
+    for (const missing of [[corpsPath], [corpsPath, revuesPath], [revuesPath], [recettePath]]) {
+      const originals = missing.map((path) => [path, readFileSync(path)]);
+      try {
+        for (const [path] of originals) rmSync(path);
+        const result = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
+        assert.equal(result.pass, false, `Absence de ${missing.join(', ')} acceptée`);
+        for (const path of missing) assert.ok(result.errors.some((error) => error.includes(path.split('/').at(-1))), result.errors.join('\n'));
+      } finally {
+        for (const [path, bytes] of originals) writeFileSync(path, bytes);
+      }
+    }
+    writeFileSync(recettePath, JSON.stringify({ ...JSON.parse(recetteInitiale), updatedAt: jour }));
+    const legacyModifie = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
+    assert.ok(legacyModifie.errors.some((e) => /recette publiée.*divergente/.test(e)), legacyModifie.errors.join('\n'));
+    writeFileSync(recettePath, recetteInitiale);
+    writeFileSync(revuesPath, revuesActuelles);
 
     // 4. Un octet modifié après publication casse le sceau.
     const claimsPath = join(root, 'editorial/articles', SLUG, 'claims.json');
@@ -328,7 +389,7 @@ test('le contexte d’une source HTML monoligne avec balise inline reste borné 
     assert.ok(!contexte.includes('.carte'));
     assert.ok(contexte.length < 300);
 
-    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(claims.claims[0].id), null, 2));
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(claims.claims[0].id, root), null, 2));
     const scellement = await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher: fetcherMonoligne, rendreImage });
     assert.deepEqual(scellement.erreurs, []);
     const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
