@@ -130,6 +130,38 @@ class EditorialCadenceProof(unittest.TestCase):
                 path.write_text(json.dumps(backlog))
                 with patch.object(PLAN, "BACKLOG", path), patch.object(PLAN, "etat_publie", return_value={}):
                     PLAN.construire()
+    def test_date_fixe_intercalee_ne_rejette_pas_stock_alternable(self):
+        entries = [dict(slug=str(i), famille='f', pole=p, format=p, priorite=1, rang_famille=i)
+                   for i, p in enumerate(('a', 'a', 'a', 'b', 'b'))]
+        entries[1]['slug'], entries[3]['slug'] = entries[3]['slug'], entries[1]['slug']
+        entries[3]['datePlanifiee'] = '2026-09-29'
+        for i, day in enumerate(('2026-09-28', '2026-09-30', '2026-09-29', '2026-09-29', '2026-10-05')):
+            entries[i]['date'] = day
+            entries[i]['statut'] = 'planned'
+        PLAN.alterner(entries)
+        ordered = sorted(entries, key=lambda e: e['_ordre_calendrier'])
+        self.assertEqual([e['pole'] for e in ordered], ['a', 'b', 'a', 'b', 'a'])
+        self.assertEqual(entries[3]['date'], '2026-09-29')
+        self.assertEqual(PLAN.verifier_alternance(entries), [])
+
+    def test_creneaux_echus_sont_traces_sans_rester_planifies(self):
+        entries = [dict(slug='ancien', famille='f', pole='a', format='how-to-guide', priorite=1,
+                        rang_famille=0, dateManquee='2026-09-22'),
+                   dict(slug='nouveau', famille='f', pole='b', format='faq-knowledge', priorite=1,
+                        rang_famille=1)]
+        with patch.object(PLAN, 'PREMIER_JOUR', date(2026, 9, 17)):
+            PLAN.planifier(entries, {}, aujourd_hui=date(2026, 9, 28))
+        self.assertTrue(all(str(e['date']) >= '2026-09-28' for e in entries))
+        self.assertEqual(entries[0]['dateManquee'], '2026-09-22')
+        self.assertEqual(entries[0]['statut'], 'a-replanifier')
+        self.assertEqual(PLAN.verifier_alternance(entries), [])
+
+    def test_date_figee_echue_est_refusee_avant_planification(self):
+        entries = [dict(slug='ancien', famille='f', pole='a', format='how-to-guide', priorite=1,
+                        rang_famille=0, datePlanifiee='2026-09-22')]
+        with self.assertRaisesRegex(SystemExit, 'date planifiée échue'):
+            PLAN.planifier(entries, {}, aujourd_hui=date(2026, 9, 28))
+
     def test_dates_figees_et_priorites_du_backlog_sont_inchangees(self):
         import json
         backlog = json.loads(PLAN.BACKLOG.read_text(encoding='utf-8'))
@@ -206,7 +238,7 @@ class EditorialCadenceProof(unittest.TestCase):
         if "tests-verts-et-regle-des-trois-passes" in {e["slug"] for e in cicatrices}:
             self.assertIn(date(2026, 9, 28), dates)
         self.assertEqual(cicatrices[0]["statut"], "published")
-        self.assertTrue(all(e["statut"] == ("published" if e["slug"] == "tests-verts-et-regle-des-trois-passes" else "planned") for e in cicatrices[1:]), cicatrices)
+        self.assertTrue(all(e["statut"] == ("published" if e["slug"] == "tests-verts-et-regle-des-trois-passes" else "manque" if e['date'] < date.today().isoformat() else "planned") for e in cicatrices[1:]), cicatrices)
 
     def test_cicatrice_hors_samedi_rougit(self):
         donnees, _, _, _ = construire_et_verifier()

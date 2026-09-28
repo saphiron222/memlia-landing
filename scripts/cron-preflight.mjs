@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Fail-closed entry point for the blog forge only; SEO jobs await a separate release.
-import { existsSync, realpathSync } from 'node:fs';
+import { existsSync, realpathSync, readFileSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
@@ -39,6 +39,19 @@ try {
   if (phase !== 'before-commit' && git('status', '--porcelain=v1')) errors.push('arbre Git non propre');
   for (const path of ['CLAUDE.md', ...required.map((name) => `docs/strategy/site-v3/${name}`)]) {
     if (!existsSync(join(root, path))) errors.push(`fichier requis absent : ${path}`);
+  }
+  // A missed slot is a historical trace, never a publication candidate. Check the
+  // materialized calendar and explicit backlog reservations on every release phase.
+  const calendar = JSON.parse(readFileSync(join(root, 'docs/strategy/site-v3/cluster-plan.json'), 'utf8'));
+  const backlog = JSON.parse(readFileSync(join(root, 'docs/strategy/site-v3/backlog-v3.json'), 'utf8'));
+  if (!Array.isArray(calendar.clusters) || !Array.isArray(backlog)) throw new Error('calendrier éditorial illisible');
+  const today = new Intl.DateTimeFormat('sv-SE', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  const posts = [calendar.pillar, ...calendar.clusters.flatMap((cluster) => cluster.posts)];
+  for (const post of posts) {
+    if (post?.status === 'planned' && post.date < today) errors.push(`créneau planned échu : ${post.slug} (${post.date})`);
+  }
+  for (const entry of backlog) {
+    if (entry.datePlanifiee && entry.datePlanifiee < today) errors.push(`datePlanifiee échue : ${entry.slug} (${entry.datePlanifiee})`);
   }
   git('fetch', 'origin', 'main');
   report.head = git('rev-parse', 'HEAD');

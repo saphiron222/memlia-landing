@@ -159,12 +159,8 @@ def alterner(entrees):
             raise SystemExit('alternance : recherche épuisée (stock ou exceptions à revoir)')
         if i == len(dates):
             return []
-        # Une majorité stricte d'un format ou d'un pôle ne pourra plus être séparée.
-        for champ in ('format', 'pole'):
-            comptes = Counter(e[champ] for e in disponibles)
-            if comptes and max(comptes.values()) > len(disponibles) - max(comptes.values()) + 1 + sum(
-                    1 for e in disponibles if champ in e.get('exceptionAlternance', {})):
-                return None
+        # Les dates fixes restantes peuvent séparer une majorité du stock libre ;
+        # ne pas élaguer sur les seuls disponibles (borne fausse avec une date intercalée).
         jour = dates[i]
         if i in fixes:
             e = fixes[i]
@@ -201,8 +197,9 @@ def alterner(entrees):
         e['_ordre_calendrier'] = i
 
 
-def planifier(entrees, publies):
+def planifier(entrees, publies, aujourd_hui=None):
     """Planifie 4 articles ordinaires lun-jeu et 1 cicatrice le samedi, par semaine ISO."""
+    aujourd_hui = aujourd_hui or date.today()
     par_jour, par_semaine = Counter(), Counter()
     if any(p['date'] == DATE_RATTRAPAGE and slug not in RATTRAPAGE_W39 for slug, p in publies.items()):
         raise SystemExit('rattrapage W39 réservé aux trois sujets désignés')
@@ -230,7 +227,7 @@ def planifier(entrees, publies):
         if cle_semaine in semaines_reservees:
             raise SystemExit(f"deux cicatrices la même semaine ISO : {e['slug']} ({candidat.isoformat()})")
         e['date'] = candidat.isoformat()
-        e['statut'] = 'published' if e['slug'] in publies else 'planned'
+        e['statut'] = 'published' if e['slug'] in publies else 'manque' if candidat < aujourd_hui else 'planned'
         semaines_reservees.add(cle_semaine)
 
     # Une date publiée fait foi. Une date explicite du backlog doit lui être identique et ne bouge
@@ -243,7 +240,8 @@ def planifier(entrees, publies):
 
     # Les dates explicites du backlog restent des décisions, pas des indications de tri :
     # seul un créneau non daté peut avancer jusqu'au prochain samedi libre.
-    premier_samedi = PREMIER_JOUR + timedelta(days=(5 - PREMIER_JOUR.weekday()) % 7)
+    depart_cicatrice = max(PREMIER_JOUR, aujourd_hui)
+    premier_samedi = depart_cicatrice + timedelta(days=(5 - depart_cicatrice.weekday()) % 7)
     for e in sorted([x for x in series if x['slug'] not in publies], key=lambda x: (x.get('date') or '', x['priorite'], x['rang_famille'])):
         candidat = date.fromisoformat(e['date']) if e.get('date') else premier_samedi
         if not e.get('date'):
@@ -258,6 +256,8 @@ def planifier(entrees, publies):
         if not valeur or e.get('serie') == 'cicatrices' or e['slug'] in publies:
             continue
         candidat = date.fromisoformat(valeur)
+        if candidat < aujourd_hui:
+            raise SystemExit(f"date planifiée échue : {e['slug']} ({valeur}) ; replanifier sans antidater")
         if candidat < PREMIER_JOUR or candidat.weekday() not in JOURS_DE_PUBLICATION:
             raise SystemExit(f"date planifiée hors fenêtre lundi-jeudi : {e['slug']} ({valeur})")
         if par_jour[candidat] >= PAR_JOUR_MAX or par_semaine[semaine_iso(candidat)] >= PAR_SEMAINE_MAX:
@@ -267,7 +267,7 @@ def planifier(entrees, publies):
         par_jour[candidat] += 1
         par_semaine[semaine_iso(candidat)] += 1
 
-    jour = PREMIER_JOUR
+    jour = max(PREMIER_JOUR, aujourd_hui)
     for e in entrees:
         if e.get('serie') == 'cicatrices':
             continue
@@ -280,7 +280,8 @@ def planifier(entrees, publies):
         while not (jour.weekday() in JOURS_DE_PUBLICATION and par_jour[jour] < PAR_JOUR_MAX and par_semaine[semaine_iso(jour)] < PAR_SEMAINE_MAX):
             jour += timedelta(days=1)
         e['date'] = jour.isoformat()
-        e['statut'] = 'planned'
+        # Une date proposée après un créneau manqué n'est pas une nouvelle décision éditoriale.
+        e['statut'] = 'a-replanifier' if e.get('dateManquee') else 'planned'
         par_jour[jour] += 1
         par_semaine[semaine_iso(jour)] += 1
         # En régime : un article par jour ouvré ; le même jour ne reçoit un second article que pour finir une semaine entamée.
@@ -466,7 +467,7 @@ def ecrire_json(poles, familles, pilier, satellites, liens, entrants):
         if not posts:
             continue
         clusters.append({'id': pid, 'name': pole['libelle'], 'color': pole['couleur'], 'families': sorted({e['famille'] for e in posts}, key=lambda f: familles[f]['rang']), 'posts': [
-            {'title': e['titre'], 'keyword': e['requete'], 'volume': None, 'template': e['gabarit'], 'format': e['format'], 'wordCount': e['mots'], 'url': e['url'], 'slug': e['slug'], 'family': e['famille'], 'role': e['role'], 'intent': e['intent'], 'funnel': e['funnel'], 'priority': e['priorite'], 'date': e['date'], 'secondaryKeywords': e['secondaires'], 'proof': e['preuve'], 'officialSources': e['sourcesOfficielles'], 'status': e['statut'], 'incomingLinks': entrants[e['slug']]}
+            {'title': e['titre'], 'keyword': e['requete'], 'volume': None, 'template': e['gabarit'], 'format': e['format'], 'wordCount': e['mots'], 'url': e['url'], 'slug': e['slug'], 'family': e['famille'], 'role': e['role'], 'intent': e['intent'], 'funnel': e['funnel'], 'priority': e['priorite'], 'date': e['date'], 'missedDate': e.get('dateManquee'), 'secondaryKeywords': e['secondaires'], 'proof': e['preuve'], 'officialSources': e['sourcesOfficielles'], 'status': e['statut'], 'incomingLinks': entrants[e['slug']]}
             for e in sorted(posts, key=lambda e: (familles[e['famille']]['rang'], e['rang_famille']))]})
     data = {
         'version': 2, 'date': date.today().isoformat(), 'seed': 'automatisation cabinet comptable',
@@ -507,16 +508,24 @@ def ecrire_calendrier(pilier, satellites, familles, poles):
          '- Chaque famille active conserve ses quatre angles (méthode, contrôle ou checklist, exceptions et refus, définition) ; leur ordre de sortie dépend des contraintes de calendrier et du stock disponible.',
          '- Une requête primaire par article, unique ; sources officielles obligatoires pour toute matière paie, sociale, fiscale, juridique ou données.',
          '- Le pilier reçoit un lien à chaque publication (republication scellée par la forge).', '',
-         '- Une Cicatrice factuelle peut paraître le samedi, au plus une par semaine ISO, en sus du plafond des quatre articles ordinaires ; sans faits signés ni recette, le créneau reste vide.', '',
+         '- Une Cicatrice factuelle peut paraître le samedi, au plus une par semaine ISO, en sus du plafond des quatre articles ordinaires ; sans faits signés ni recette, le créneau reste vide. `manque` désigne une date échue conservée en trace, pas une publication.', '',
+         '- Les anciennes réservations ordinaires manquées restent dans `dateManquee` du backlog ; leur date proposée au statut `a-replanifier` n’est pas actionnable. Une décision humaine fixe une nouvelle `datePlanifiee`, soumise aux portes de qualité et au quota du jour réel.', '',
          '## Volume', '', f"- {len(satellites)} satellites + 1 pilier ; {sum(1 for e in satellites if e['statut'] == 'published')} satellite(s) publié(s) dans le registre au {date.today().strftime('%d/%m/%Y')} ; dernier créneau planifié : {tous[-1]['date']}.", '',
          '## Semaine par semaine', '']
     par_sem = defaultdict(list)
     for e in tous:
         par_sem[semaine_iso(date.fromisoformat(e['date']))].append(e)
+        if e.get('dateManquee'):
+            par_sem[semaine_iso(date.fromisoformat(e['dateManquee']))].append({
+                **e, 'date': e['dateManquee'], 'statut': 'manque', '_trace_manquee': True,
+            })
     for (annee, sem), entrees in sorted(par_sem.items()):
         L += [f'### Semaine {annee}-W{sem:02d}', '', '| Date | Article | Famille | Pôle | Format | P | Statut |', '|---|---|---|---|---|---|---|']
         for e in sorted(entrees, key=lambda e: (e['date'], e.get('_ordre_calendrier', 0))):
-            L.append(f"| {e['date']} | [{e['titre']}]({e['url']}) | {familles[e['famille']]['libelle']} | {poles[e['pole']]['libelle']} | {e['format']} | {e['priorite']} | {e['statut']} |")
+            if e.get('_trace_manquee'):
+                L.append(f"| {e['date']} | Ancien créneau manqué de « {e['titre']} » — trace, non actionnable | — | — | — | — | manque |")
+            else:
+                L.append(f"| {e['date']} | [{e['titre']}]({e['url']}) | {familles[e['famille']]['libelle']} | {poles[e['pole']]['libelle']} | {e['format']} | {e['priorite']} | {e['statut']} |")
         L.append('')
     (ICI / 'CONTENT-CALENDAR.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
 
