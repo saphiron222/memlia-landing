@@ -5547,9 +5547,14 @@
     ],
     "priorite": 1,
     "demande": {
-      "mesureeLe": "2026-09-19",
+      "mesureeLe": "2026-09-21",
       "requete": 0,
-      "secondaires": 0,
+      "secondaires": null,
+      "serpFamille": {
+        "mesureeLe": "2026-09-19",
+        "amorce": "former l'équipe à l'IA cabinet comptable",
+        "famille": "formation-ia-competences"
+      },
       "questions": [
         "Quelle IA pour comptable ?",
         "Est-ce que l'IA va remplacer les comptables ?",

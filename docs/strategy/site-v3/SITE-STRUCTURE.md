@@ -88,7 +88,7 @@ la décision est écrite dans `JOURNAL.md`, « Tranché » du 17/09.
 Deux contrôles, deux moments. **Au `--check`**, avant chaque vague : unicité des slugs et des
 requêtes primaires, appartenance aux énumérations du schéma, lien obligatoire satellite vers pilier,
 minimum de trois liens entrants par article, aucune orpheline, plafonds de cadence, et depuis le
-19/09 l'invariant « P1 du backlog, publiée comprise : date et signal primaire positif, sauf l'angle IA publié dont les deux formulations à zéro et les questions correspondent à la SERP par famille du 19/09 » (la date seule ne certifie pas la complétude ; trois historiques synthétiques et série hors gate ; aucun article publié réécrit). **Chaque mercredi**, le cron C3
+19/09 l'invariant « P1 du backlog, publiée comprise : date et signal primaire positif, sauf l'angle IA publié : primaire exact sans suggestion mesurée le 21/09 dans `mesures/titres-intent-2026-09-21.json` ; quatre questions et aperçu IA sur la SERP de la famille `formation-ia-competences` interrogée autrement le 19/09 dans `mesures/questions-2026-09-19.json` ». Ses secondaires ne figurent dans aucun de ces deux relevés : `null` signifie non mesurées, non zéro. Cette exception conserve un publié, sans inférer de volume ou d'absence de demande ; les deux dates et périmètres doivent être vérifiés séparément (trois historiques synthétiques et série hors gate ; aucun article publié réécrit). **Chaque mercredi**, le cron C3
 mesure sur la production (`RUNBOOK-SEO.md` §4) :
 
 - **liens entrants par article**, plancher 3. Dernier relevé, le 17/09 : pilier 5, relance 7, saisie 6, compte rendu métier DSN 3, bulletins 7, production sociale 6 (`mesures/semaine-2026-W38-integrite.json`). Le compte rendu métier DSN est au plancher.
