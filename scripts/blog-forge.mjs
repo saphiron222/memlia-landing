@@ -485,7 +485,12 @@ function inscrireFile(root, slug, date, statut, serie = null) {
   const path = join(root, 'editorial/queue.json');
   const queue = lireJson(path);
   const existant = queue.candidates.find((c) => c.slug === slug);
-  if (existant) { existant.status = statut; existant.date = date; if (serie) existant.serie = serie; else delete existant.serie; }
+  if (existant) {
+    if (existant.date !== date || existant.serie !== (serie ?? undefined)) {
+      verifierPlafonds(queue.candidates.filter((c) => c !== existant && !['archive', 'bloque'].includes(c.status)), date, { serie, slug });
+    }
+    existant.status = statut; existant.date = date; if (serie) existant.serie = serie; else delete existant.serie;
+  }
   else {
     verifierPlafonds(queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)), date, { serie, slug });
     queue.candidates.push({ slug, date, status: statut, ...(serie ? { serie } : {}) });

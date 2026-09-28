@@ -264,6 +264,26 @@ test('la forge rafraîchit la preuve source quand sa classification change le m�
   }
 });
 
+test('la réinscription d’un candidat existant ne contourne pas le plafond des Cicatrices', async () => {
+  const root = racineDeTest();
+  try {
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour });
+    const queuePath = join(root, 'editorial/queue.json');
+    const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
+    queue.candidates.push({ slug: 'cicatrice-w39-existante', date: '2026-09-26', serie: 'cicatrices', status: 'a-valider' });
+    writeFileSync(queuePath, JSON.stringify(queue));
+    const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+    const initiale = JSON.parse(readFileSync(recettePath, 'utf8'));
+    writeFileSync(recettePath, JSON.stringify({ ...initiale, date: '2026-09-26', serie: 'cicatrices' }));
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour }),
+      /déjà planifiée la semaine 2026-W39/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('le gate compare le corps signé après retrait du seul H1 identique au titre, sans masquer une phrase modifiée', async () => {
   const root = racineDeTest();
   const corpsPath = join(root, 'editorial/recettes', SLUG, 'corps.md');
