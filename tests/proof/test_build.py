@@ -253,13 +253,24 @@ class BuildProof(unittest.TestCase):
         briefs = ROOT / 'public/images'
         self.assertEqual(len(list(briefs.glob('brief-img-1[6-9]-*.md'))) + len(list(briefs.glob('brief-img-2[0-4]-*.md'))), 9)
         self.assertEqual(len(list((DIST / 'images').glob('brief-*.md'))), 0)
-        # Trois couvertures publiées : 3 largeurs x 2 formats chacune, plus une image
-        # sociale webp par article (imageOg, exigée par le contrat de la collection).
+        # Couvertures publiées et trois couvertures W39 préchargées avant les articles :
+        # 3 largeurs x 2 formats chacune, plus une image sociale webp par couverture.
         # Les pages commerciales n'ajoutent rien ici : leur visuel de tête est une preuve
         # fonctionnelle rendue sous public/proofs/v2, avec son image sociale sous og/.
         publies = [a for a in articles() if not is_preview_article(a)]
-        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 3 * len(publies))
-        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 4 * len(publies))
+        w39 = {
+            'logiciel-ia-comptabilite': 'img-art-logiciel-ia-comptabilite',
+            'prompt-chatgpt-expert-comptable': 'img-art-prompt-chatgpt-expert-comptable',
+            'tests-verts-et-regle-des-trois-passes': 'img-art-tests-verts-trois-passes',
+        }
+        for image_id in w39.values():
+            for largeur in [768, 1200, 1600]:
+                for format in ['avif', 'webp']:
+                    self.assertTrue((DIST / 'images' / f'{image_id}-{largeur}.{format}').is_file())
+            self.assertTrue((DIST / 'images' / f'{image_id}-og.webp').is_file())
+        precharges = sum(slug not in {article.stem for article in publies} for slug in w39)
+        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 3 * (len(publies) + precharges))
+        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 4 * (len(publies) + precharges))
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
         # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
         # aux pages de service et cinq scènes propres aux outils. Les dix images sociales
