@@ -170,7 +170,7 @@ test('une fixture service passe préparer, sceller et auditer sans toucher au bl
 
     const seal = scellerService({ root, slug: SLUG, today: JOUR });
     assert.equal(seal.pass, true, seal.errors.join('\n'));
-    const audit = auditerServices({ root });
+    const audit = auditerServices({ root, today: JOUR });
     assert.equal(audit.pass, true, audit.errors.join('\n'));
     assert.equal(audit.services, 1);
 

@@ -385,6 +385,14 @@ MEMLIA_SERVICE_CANDIDATE_ORIGIN=https://DEPLOIEMENT.memlia.pages.dev npm run ser
 npm run service:audit               # relit toutes les recettes, mesures fraîches, liens et empreintes
 ```
 
+Entretien des intentions : `node scripts/seo/relever-titres-services.mjs` mesure via
+`autocompleterGoogle` les quinze requêtes déclarées par les cinq recettes, puis ajoute le relevé
+`docs/strategy/site-v3/mesures/titres-intent-AAAA-MM-JJ.json` (jour UTC). Chaque appel doit réussir ;
+une liste vide reste une mesure valide, une panne interdit toute écriture. Les entrées déjà présentes
+le même jour sont conservées et les nouvelles portent leur heure et URL de capture. Relancer
+`node --test tests/scripts/service-intent-fresh.test.mjs` et `npm run service:audit` après mesure.
+Le gate conserve sa limite de huit jours : renouveler la mesure à échéance, ne pas antidater.
+
 `service:publier` interroge l’URL exacte sans query string, avec `Cache-Control: no-cache`, et
 refuse d’écrire le statut, la date ou le reçu si le HTTP 200, le canonical, le H1 et l’empreinte
 `memlia-candidate` du HTML servi ne désignent pas le candidat scellé. Le reçu distingue le constat
