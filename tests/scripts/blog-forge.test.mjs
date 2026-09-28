@@ -164,6 +164,22 @@ test('les Cicatrices ont leur samedi hebdomadaire en sus des quatre articles ord
   assert.throws(() => verifierPlafonds(avecCicatrice, '2026-09-17'), /4 candidats sont déjà planifiés la semaine 2026-W38/);
 });
 
+test('le rattrapage W39 est limité au slug signé les 27 et 28 septembre sans seconde Cicatrice W39', () => {
+  const slug = 'tests-verts-et-regle-des-trois-passes';
+  verifierPlafonds([], '2026-09-27', { serie: 'cicatrices', slug });
+  verifierPlafonds([], '2026-09-28', { serie: 'cicatrices', slug });
+  verifierPlafonds([], '2026-09-26', { serie: 'cicatrices', slug: 'une-autre-cicatrice' });
+  for (const date of ['2026-09-29', '2026-10-04']) {
+    assert.throws(() => verifierPlafonds([], date, { serie: 'cicatrices', slug }), /paraît le samedi/);
+  }
+  assert.throws(() => verifierPlafonds([], '2026-09-27', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /paraît le samedi/);
+  assert.throws(() => verifierPlafonds([{ date: '2026-09-26', serie: 'cicatrices' }], '2026-09-27', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  assert.throws(() => verifierPlafonds([{ date: '2026-09-27', serie: 'cicatrices', slug }], '2026-09-28', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  const tardive = [{ slug, date: '2026-09-28', serie: 'cicatrices', status: 'pret-preview' }];
+  assert.throws(() => verifierPlafonds(tardive, '2026-09-26', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /déjà planifiée la semaine 2026-W39/);
+  assert.throws(() => verifierPlafonds(tardive, '2026-09-27', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+});
+
 test('le découpage en unités et les jetons suivent le pipeline', () => {
   const unites = unitesRendues('## Titre **gras**\n\nUn [lien](/x) et du `code`.\n\n\nDernier.');
   assert.deepEqual(unites.map((u) => u.text), ['Titre gras', 'Un lien et du code.', 'Dernier.']);
@@ -251,6 +267,55 @@ test('la forge rafraîchit la preuve source quand sa classification change le m�
   }
 });
 
+test('la réinscription d’un candidat existant ne contourne pas le plafond des Cicatrices', async () => {
+  const root = racineDeTest();
+  try {
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour });
+    const queuePath = join(root, 'editorial/queue.json');
+    const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
+    queue.candidates.push({ slug: 'cicatrice-w39-existante', date: '2026-09-26', serie: 'cicatrices', status: 'a-valider' });
+    writeFileSync(queuePath, JSON.stringify(queue));
+    const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+    const initiale = JSON.parse(readFileSync(recettePath, 'utf8'));
+    writeFileSync(recettePath, JSON.stringify({ ...initiale, date: '2026-09-26', serie: 'cicatrices' }));
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour }),
+      /déjà planifiée la semaine 2026-W39/,
+    );
+    queue.candidates[1] = { slug: 'tests-verts-et-regle-des-trois-passes', date: '2026-09-28', serie: 'cicatrices', status: 'pret-preview' };
+    writeFileSync(queuePath, JSON.stringify(queue));
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour }),
+      /déjà planifiée la semaine 2026-W39/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la réactivation d’une Cicatrice archivée ou bloquée recontrôle le plafond W39', async () => {
+  for (const status of ['archive', 'bloque']) {
+    const root = racineDeTest();
+    try {
+      const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+      const initiale = JSON.parse(readFileSync(recettePath, 'utf8'));
+      writeFileSync(recettePath, JSON.stringify({ ...initiale, date: '2026-09-26', serie: 'cicatrices' }));
+      await materialiser({ root, slug: SLUG, statut: status, fetcher, rendreImage, jour });
+      const queuePath = join(root, 'editorial/queue.json');
+      const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
+      queue.candidates.push({ slug: 'tests-verts-et-regle-des-trois-passes', date: '2026-09-28', serie: 'cicatrices', status: 'pret-preview' });
+      writeFileSync(queuePath, JSON.stringify(queue));
+      await assert.rejects(
+        materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage, jour }),
+        /déjà planifiée la semaine 2026-W39/,
+        `réactivation depuis ${status}`,
+      );
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
 test('le gate compare le corps signé après retrait du seul H1 identique au titre, sans masquer une phrase modifiée', async () => {
   const root = racineDeTest();
   const corpsPath = join(root, 'editorial/recettes', SLUG, 'corps.md');
@@ -313,6 +378,7 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     assert.equal(attributed.pass, true, attributed.errors.join('\n'));
     writeFileSync(avisPath, JSON.stringify({ ...avis, editorial: { ...avis.editorial, reviewer: 'marketing' } }));
     const mismatchedSource = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.equal(mismatchedSource.pass, false);
     assert.match(mismatchedSource.errors.join('\n'), /Identité du reviewer éditorial divergente/);
     writeFileSync(avisPath, JSON.stringify(avis));
     const falseAttribution = JSON.parse(readFileSync(join(candidateDir, 'review.json')));

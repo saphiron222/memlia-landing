@@ -73,14 +73,20 @@ export function semaineIso(value) {
   return `${date.getUTCFullYear()}-W${String(numero).padStart(2, '0')}`;
 }
 /** Refuse une date qui ferait dépasser la cadence propre à chaque flux éditorial. */
-export function verifierPlafonds(actifs, date, { serie = null } = {}) {
+export function verifierPlafonds(actifs, date, { serie = null, slug = null } = {}) {
   const semaine = semaineIso(date);
   if (serie === 'cicatrices') {
-    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6) {
+    // Rattrapage signé W39 uniquement : le 28 est en W40, mais ne doit pas doubler la W39.
+    const rattrapageW39 = slug === 'tests-verts-et-regle-des-trois-passes'
+      && (date === '2026-09-27' || date === '2026-09-28');
+    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !rattrapageW39) {
       throw new Error(`Une cicatrice paraît le samedi ; ${date} n’est pas un samedi.`);
     }
-    if (actifs.some((candidate) => candidate.serie === 'cicatrices' && isDate(candidate.date) && semaineIso(candidate.date) === semaine)) {
-      throw new Error(`Une cicatrice est déjà planifiée la semaine ${semaine} ; le plafond est d’une cicatrice par semaine ISO.`);
+    const semaineControlee = rattrapageW39 ? '2026-W39' : semaine;
+    if (actifs.some((candidate) => candidate.serie === 'cicatrices' && isDate(candidate.date)
+      && (candidate.slug === 'tests-verts-et-regle-des-trois-passes' && candidate.date === '2026-09-28'
+        ? '2026-W39' : semaineIso(candidate.date)) === semaineControlee)) {
+      throw new Error(`Une cicatrice est déjà planifiée la semaine ${semaineControlee} ; le plafond est d’une cicatrice par semaine ISO.`);
     }
     return;
   }
