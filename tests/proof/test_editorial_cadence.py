@@ -130,6 +130,20 @@ class EditorialCadenceProof(unittest.TestCase):
                 path.write_text(json.dumps(backlog))
                 with patch.object(PLAN, "BACKLOG", path), patch.object(PLAN, "etat_publie", return_value={}):
                     PLAN.construire()
+    def test_calendrier_p3_mesures_ne_conclut_pas_a_une_absence_de_demande(self):
+        import json
+        backlog = json.loads(PLAN.BACKLOG.read_text(encoding='utf-8'))
+        p3 = [e for e in backlog if e['priorite'] == 3 and e.get('demande', {}).get('mesureeLe')]
+        self.assertEqual(len(p3), 201)
+        donnees, erreurs, _, _ = construire_et_verifier()
+        self.assertEqual(erreurs, [])
+        with TemporaryDirectory() as dossier, patch.object(PLAN, 'ICI', Path(dossier)):
+            PLAN.ecrire_calendrier(donnees[3], donnees[4], donnees[1], donnees[0])
+            regle = (Path(dossier) / 'CONTENT-CALENDAR.md').read_text(encoding='utf-8').splitlines()[6]
+        self.assertIn('3 : aucune suggestion relevée sur les formulations testées', regle)
+        self.assertIn('ne permet de conclure ni au volume de recherche, ni à la demande, ni à l’audience', regle)
+        self.assertNotIn('aucune demande mesurée', regle)
+
     def test_planifier_repartit_les_creneaux_autour_d_une_date_fixe(self):
         entries = [dict(slug=str(i), famille='f', pole=p, format=p, priorite=1, rang_famille=i)
                    for i, p in enumerate(('a', 'a', 'a', 'b', 'b'))]

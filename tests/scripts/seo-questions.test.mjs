@@ -35,7 +35,7 @@ test('recalerBacklog : la priorité suit la demande mesurée, le pilier ne bouge
   assert.equal(par.pilier.demande, undefined, 'le pilier n’est pas recalé');
   assert.equal(par.a.priorite, 1, 'la requête a des suggestions : priorité 1');
   assert.equal(par.b.priorite, 2, 'seule une secondaire a des suggestions : priorité 2');
-  assert.equal(par.c.priorite, 3, 'aucune demande mesurée : priorité 3');
+  assert.equal(par.c.priorite, 3, 'aucune suggestion relevée sur les formulations testées : priorité 3');
   assert.deepEqual(par.a.demande, { mesureeLe: '2026-09-19', requete: 2, secondaires: 1, questions: ['Comment automatiser un rapprochement bancaire ?'], intention: 'logiciel', apercuIa: true });
   assert.deepEqual(par.c.demande, { mesureeLe: '2026-09-19', requete: 0, secondaires: 0, questions: [], intention: null, apercuIa: null });
   assert.equal(par.d.priorite, 2, 'une amorce non mesurée (instrument en panne) ne vaut pas zéro : la priorité ne bouge pas');
