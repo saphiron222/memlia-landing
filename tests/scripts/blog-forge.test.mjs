@@ -171,7 +171,7 @@ test('le découpage en unités et les jetons suivent le pipeline', () => {
   assert.deepEqual(jetons('Les données personnelles ne peuvent pas être conservées'), ['donnees', 'personnelles', 'peuvent', 'conservees']);
 });
 
-test('les preuves inline gardent leur traçabilité interne sans légende technique publique', () => {
+test('les preuves inline portent source, date et région défilante accessible', () => {
   const corps = '## Première section\n\nPhrase scellée.\n\n## Section cible\n\nSuite scellée.\n';
   const rendu = injecterPreuvesInline(corps, [{
     id: 'preuve-fictive',
@@ -184,12 +184,17 @@ test('les preuves inline gardent leur traçabilité interne sans légende techni
   assert.ok(rendu.includes('Suite scellée.'));
   assert.match(rendu, /<figure data-blog-proof="preuve-fictive">/);
   assert.match(rendu, /<img src="\/proofs\/blog\/preuve-fictive\.webp" alt="Une preuve fictive correctement décrite\."/);
-  assert.doesNotMatch(rendu, /Ouvrir la preuve en grand|<figcaption>|Source\s*:|capture du/i);
+  assert.match(rendu, /role="region" aria-label="Preuve visuelle défilante : Une preuve fictive correctement décrite\." tabindex="0"/);
+  assert.match(rendu, /<figcaption>Source : jeu d’essai fictif décrit dans l’article · capture du 2026-09-20<\/figcaption>/);
+  assert.doesNotMatch(rendu, /Ouvrir la preuve en grand/);
   assert.ok(rendu.indexOf('data-blog-proof') < rendu.indexOf('## Section cible'));
   assert.deepEqual(unitesRendues(rendu), unitesRendues(corps), 'une figure sourcée est une preuve visuelle, pas une affirmation éditoriale');
   assert.throws(() => injecterPreuvesInline(corps, [{
     id: 'preuve-fictive', insertBeforeHeading: 'Section absente', alt: 'Preuve fictive.', source: 'jeu fictif', capturedAt: '2026-09-20',
   }]), /H2 d’ancrage absent/);
+  assert.throws(() => injecterPreuvesInline(corps, [{
+    id: 'preuve-fictive', insertBeforeHeading: 'Section cible', alt: 'Preuve fictive.', source: '  ', capturedAt: '2026-09-20',
+  }]), /source ou date de capture invalide/);
 });
 
 test('le frontmatter reproduit le manifeste champ pour champ', () => {

@@ -12,7 +12,21 @@ import {
   rubriquePourArticle,
 } from '../src/data/blog-rubriques.mjs';
 
-const LEGENDE_TECHNIQUE_INTERDITE = /Ouvrir la preuve en grand|reconstitution fidèle[^.]{0,240}recette scellée|Source\s*:[^.]{0,320}capture du/is;
+const LEGENDE_TECHNIQUE_INTERDITE = /Ouvrir la preuve en grand|reconstitution fidèle[^.]{0,240}recette scellée|recette scellée/i;
+
+function legendePreuveValide(figure) {
+  const captions = elements(figure, (node) => node.tagName === 'figcaption');
+  // Les preuves déjà publiées sans légende restent lisibles ; toute nouvelle légende
+  // doit être attribuable et datée, et ne peut servir d'attestation de recette.
+  if (captions.length === 0) return true;
+  if (captions.length !== 1) return false;
+  const contenu = texte(captions[0]).replace(/\s+/g, ' ').trim();
+  const match = /^Source\s*:\s*(.+?)\s*·\s*capture du (\d{4}-\d{2}-\d{2})$/i.exec(contenu);
+  if (!match || !match[1].trim() || LEGENDE_TECHNIQUE_INTERDITE.test(contenu)) return false;
+  const date = new Date(`${match[2]}T00:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === match[2]
+    && date.getTime() <= Date.now();
+}
 
 function parcourir(node, visite) {
   visite(node);
@@ -46,6 +60,11 @@ function classes(node) {
 function texte(node) {
   if (!node) return '';
   return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texte).join('');
+}
+
+function texteSansLegendes(node) {
+  if (!node || node.tagName === 'figcaption') return '';
+  return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texteSansLegendes).join(' ');
 }
 
 function normaliser(value) {
@@ -187,8 +206,11 @@ function auditerArticle({ dist, slug, path, mesure }) {
     erreurs.push(`${slug} : clause 1, ${medias.length} image(s) de preuve en plus de la couverture, ${conformes.length} avec alternative accessible ; 2 requises`);
   }
   const contenuPublic = texte(articleCorps).replace(/\s+/g, ' ').trim();
-  if (LEGENDE_TECHNIQUE_INTERDITE.test(contenuPublic)) {
-    erreurs.push(`${slug} : clause 1, une légende technique publique de preuve est interdite ; la source et la date restent dans la recette interne`);
+  const horsLegendes = texteSansLegendes(articleCorps);
+  if (LEGENDE_TECHNIQUE_INTERDITE.test(contenuPublic)
+      || /Source\s*:[^.]{0,320}capture du/i.test(horsLegendes)
+      || medias.some(({ figure }) => !legendePreuveValide(figure))) {
+    erreurs.push(`${slug} : clause 1, légende de preuve invalide ou consigne technique publique (source et date de capture requises dans une légende informative)`);
   }
 
   const h2 = articleCorps ? elements(articleCorps, (node) => node.tagName === 'h2') : [];

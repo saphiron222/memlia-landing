@@ -512,8 +512,7 @@ const echapperHtml = (texte) => String(texte)
 
 /**
  * Ajoute les preuves visuelles déclarées par la recette sans modifier son corps éditorial.
- * La source et la date restent dans la recette et le manifeste internes : la page publique
- * ne rend que l'image et son alternative accessible, sans légende technique de fabrication.
+ * La source et la date de capture de la recette accompagnent la preuve sur la page publique.
  * Chaque insertion échoue fermée si le H2 d'ancrage a disparu : une preuve ne doit jamais
  * glisser silencieusement vers une section sans rapport après une réécriture.
  */
@@ -527,7 +526,10 @@ export function injecterPreuvesInline(corps, preuves = []) {
     ids.add(preuve.id);
     if (!preuve.insertBeforeHeading) throw new Error(`Preuve inline ${preuve.id} : insertBeforeHeading manquant.`);
     if (!preuve.alt || [...preuve.alt].length > 125) throw new Error(`Preuve inline ${preuve.id} : alt absent ou supérieur à 125 caractères.`);
-    if (!preuve.source || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')) throw new Error(`Preuve inline ${preuve.id} : source ou date de capture invalide.`);
+    const capture = new Date(`${preuve.capturedAt}T00:00:00Z`);
+    if (!preuve.source?.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')
+      || Number.isNaN(capture.getTime()) || capture.toISOString().slice(0, 10) !== preuve.capturedAt
+      || capture.getTime() > Date.now()) throw new Error(`Preuve inline ${preuve.id} : source ou date de capture invalide.`);
     if (preuve.sourceUrl && !/^https:\/\//.test(preuve.sourceUrl)) throw new Error(`Preuve inline ${preuve.id} : sourceUrl doit être une URL HTTPS.`);
     const liste = groupes.get(preuve.insertBeforeHeading) ?? [];
     liste.push(preuve);
@@ -539,7 +541,7 @@ export function injecterPreuvesInline(corps, preuves = []) {
     if (!resultat.includes(ancre)) throw new Error(`Preuves inline : H2 d’ancrage absent « ${titre} ».`);
     const figures = groupe.map((preuve) => {
       const imagePath = `/proofs/blog/${preuve.id}.webp`;
-      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`;
+      return `<figure data-blog-proof="${preuve.id}">\n  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : ${echapperHtml(preuve.alt)}" tabindex="0"><img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async"></div>\n  <figcaption>Source : ${echapperHtml(preuve.source)} · capture du ${preuve.capturedAt}</figcaption>\n</figure>`;
     }).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }
