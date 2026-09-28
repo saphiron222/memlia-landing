@@ -444,8 +444,9 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     # deux formulations testées vides conserve sa P1 grâce aux questions SERP datées.
     # Contrôler aussi les entrées publiées du backlog sans modifier leurs fichiers :
     # seuls les trois historiques synthétiques sans mesure et la série sont hors gate.
-    # La SERP du 19/09 est relevée par famille, pas sur la requête de cet angle IA.
-    questions_ia = json.loads((ICI / 'mesures/questions-2026-09-19.json').read_text(encoding='utf-8'))['serp']["former l'équipe à l'IA cabinet comptable"]['questions']
+    # Deux captures distinctes : primaire du 21/09, SERP familiale du 19/09.
+    source_serp = json.loads((ICI / 'mesures/questions-2026-09-19.json').read_text(encoding='utf-8'))
+    source_primaire = json.loads((ICI / 'mesures/titres-intent-2026-09-21.json').read_text(encoding='utf-8'))
     cache = json.loads((ICI / 'mesures/autocompletion-cache.json').read_text(encoding='utf-8'))
     for e in tous:
         if e.get('historique') or e.get('serie'):
@@ -453,12 +454,27 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         demande = e.get('demande') or {}
         signal_primaire = isinstance(demande.get('requete'), int) and demande['requete'] > 0
         if e['slug'] == 'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain':
-            # Cette P1 publiée n'a pas de primaire positif : aucune valeur ajoutée au backlog
-            # ne doit court-circuiter la seule preuve SERP historique admissible.
+            # Cette P1 publiée n'a pas de primaire positif. Ne pas attribuer la SERP
+            # de l'amorce familiale à sa requête, ni inventer zéro sur ses secondaires.
+            amorce = "former l'équipe à l'IA cabinet comptable"
+            serp = source_serp.get('serp', {}).get(amorce, {})
+            primaire = source_primaire.get('autocompletion', {}).get(e['requete'])
+            secondaires = e['secondaires']
             signal = (e['slug'] in publies and e['statut'] == 'published'
-                      and demande.get('mesureeLe') == '2026-09-19'
-                      and demande.get('requete') == 0 and demande.get('secondaires') == 0
-                      and demande.get('questions') == questions_ia and bool(questions_ia))
+                      and isinstance(source_primaire.get('measuredAt'), str)
+                      and source_primaire['measuredAt'][:10] == '2026-09-21'
+                      and demande.get('mesureeLe') == '2026-09-21'
+                      and primaire == [] and type(demande.get('requete')) is int and demande['requete'] == 0
+                      and demande.get('secondaires', 1) is None
+                      and all(s not in source_primaire.get('autocompletion', {})
+                              and s not in source_serp.get('autocompletion', {}) for s in secondaires)
+                      and source_serp.get('jour') == '2026-09-19'
+                      and serp.get('famille') == e['famille'] == 'formation-ia-competences'
+                      and demande.get('serpFamille') == {
+                          'mesureeLe': '2026-09-19', 'amorce': amorce, 'famille': e['famille']}
+                      and bool(serp.get('questions'))
+                      and demande.get('questions') == serp['questions']
+                      and demande.get('apercuIa') == serp.get('apercuIa'))
         elif e is pilier:
             source = cache.get(e['requete'], {})
             signal = (signal_primaire and demande.get('mesureeLe') == source.get('le')
@@ -523,7 +539,7 @@ def ecrire_json(poles, familles, pilier, satellites, liens, entrants):
             for e in sorted(posts, key=lambda e: (familles[e['famille']]['rang'], e['rang_famille']))]})
     data = {
         'version': 2, 'date': date.today().isoformat(), 'seed': 'automatisation cabinet comptable',
-        'methode': f"backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), {len({e['famille'] for e in satellites})} familles et {len(clusters)} pôles actifs dans ce plan (12 pôles dans la taxonomie) ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec deux formulations à zéro et questions identiques à la SERP par famille du 19/09 ; les trois articles historiques synthétiques et la série restent hors gate",
+        'methode': f"backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), {len({e['famille'] for e in satellites})} familles et {len(clusters)} pôles actifs dans ce plan (12 pôles dans la taxonomie) ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec requête primaire à zéro le 21/09 (titres-intent), secondaires non mesurées et questions identiques à la SERP par famille du 19/09 (questions) ; les trois articles historiques synthétiques et la série restent hors gate",
         'pillar': {'title': pilier['titre'], 'keyword': pilier['requete'], 'volume': 10, 'template': pilier['gabarit'], 'wordCount': pilier['mots'], 'url': pilier['url'], 'slug': pilier['slug'], 'family': pilier['famille'], 'status': pilier['statut'], 'date': pilier['date']},
         'clusters': clusters,
         'links': [{'from': l['de'], 'to': l['vers'], 'type': l['type'], 'anchor': l['ancre']} for l in liens],
@@ -555,7 +571,7 @@ def ecrire_calendrier(pilier, satellites, familles, poles):
     L = ['# Calendrier éditorial v3 — quatre articles et une Cicatrice par semaine', '',
          f"Généré le {date.today().strftime('%d/%m/%Y')} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
          '## Règles', '',
-         "- Les priorités 1 → 3 restent celles du backlog (1 : la requête primaire a des suggestions d'autocomplétion Google, sauf l'angle IA publié conservé en P1 sur les questions de la SERP par famille du 19/09 malgré deux formulations à zéro ; 2 : seule une requête secondaire en a ; 3 : aucune suggestion relevée sur les formulations testées — relevé `scripts/seo/questions.mjs`). --check contrôle aussi les P1 publiées du backlog sans réécrire les publications ; les trois historiques synthétiques et la série sont hors gate. Ce signal ne permet de conclure ni au volume de recherche, ni à la demande, ni à l’audience ; une formulation non mesurée ne vaut pas zéro suggestion. Ces priorités guident l'ordre des candidats compatibles avec l'alternance ; l'équilibre du stock de formats peut différer une priorité 1 sans changer sa mesure ni son angle.",
+         "- Les priorités 1 → 3 restent celles du backlog (1 : la requête primaire a des suggestions d'autocomplétion Google, sauf l'angle IA publié conservé en P1 : primaire à zéro le 21/09 dans `titres-intent-2026-09-21.json`, secondaires non mesurées, questions de la SERP par famille du 19/09 dans `questions-2026-09-19.json` ; 2 : seule une requête secondaire en a ; 3 : aucune suggestion relevée sur les formulations testées — relevé `scripts/seo/questions.mjs`). --check contrôle aussi les P1 publiées du backlog sans réécrire les publications ; les trois historiques synthétiques et la série sont hors gate. Ce signal ne permet de conclure ni au volume de recherche, ni à la demande, ni à l’audience ; une formulation non mesurée ne vaut pas zéro suggestion. Ces priorités guident l'ordre des candidats compatibles avec l'alternance ; l'équilibre du stock de formats peut différer une priorité 1 sans changer sa mesure ni son angle.",
          '- Les créneaux ordinaires non figés alternent pôle et format entre deux articles successifs ; les dates publiées et `datePlanifiee` ne bougent jamais. Si un conflit daté est inévitable, `exceptionAlternance` dans le backlog désigne séparément `pole` ou `format`, chacun avec `date` (YYYY-MM-DD) et `raison` non vide ; seul le champ effectivement en conflit à cette date est dispensé. La série factuelle Cicatrices ne peut pas porter cette exception.',
          '- Chaque famille active conserve ses quatre angles (méthode, contrôle ou checklist, exceptions et refus, définition) ; leur ordre de sortie dépend des contraintes de calendrier et du stock disponible.',
          '- Une requête primaire par article, unique ; sources officielles obligatoires pour toute matière paie, sociale, fiscale, juridique ou données.',

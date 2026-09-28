@@ -149,6 +149,9 @@ class EditorialCadenceProof(unittest.TestCase):
         self.assertNotIn('demande mesurée par angle', methode)
         self.assertIn('P1 du backlog, publiées comprises', methode)
         self.assertIn('questions identiques à la SERP par famille du 19/09', methode)
+        self.assertIn('requête primaire à zéro le 21/09', methode)
+        self.assertIn('secondaires non mesurées', methode)
+        self.assertNotIn('deux formulations à zéro', methode)
         self.assertIn(methode, texte)
 
     def test_exemple_crm_dsn_et_consigne_restent_bornes_au_releve(self):
@@ -205,22 +208,32 @@ class EditorialCadenceProof(unittest.TestCase):
         self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
 
     def test_ia_publiee_exige_sa_serp_historique_exacte_sans_modifier_la_publication(self):
-        import json
         donnees, erreurs, _, _ = construire_et_verifier()
         self.assertEqual(erreurs, [])
         slug = 'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'
         original = next(e for e in donnees[4] if e['slug'] == slug)
         self.assertEqual(original['statut'], 'published')
         mesure = json.loads((PLAN.ICI / 'mesures/questions-2026-09-19.json').read_text(encoding='utf-8'))
-        questions = mesure['serp']["former l'équipe à l'IA cabinet comptable"]['questions']
+        primaire = json.loads((PLAN.ICI / 'mesures/titres-intent-2026-09-21.json').read_text(encoding='utf-8'))
+        serp = mesure['serp']["former l'équipe à l'IA cabinet comptable"]
+        questions = serp['questions']
         self.assertEqual(original['demande']['questions'], questions)
-        self.assertEqual(original['demande']['mesureeLe'], '2026-09-19')
-        for mutation in ({'mesureeLe': None}, {'mesureeLe': '2026-09-21'},
+        self.assertEqual(original['demande']['mesureeLe'], primaire['measuredAt'][:10])
+        self.assertEqual(original['demande']['requete'], len(primaire['autocompletion'][original['requete']]))
+        self.assertIsNone(original['demande']['secondaires'])
+        self.assertEqual(original['demande']['serpFamille'], {
+            'mesureeLe': mesure['jour'], 'amorce': "former l'équipe à l'IA cabinet comptable",
+            'famille': serp['famille']})
+        self.assertEqual(original['demande']['apercuIa'], serp['apercuIa'])
+        for mutation in ({'mesureeLe': None}, {'mesureeLe': '2026-09-19'},
                          {'questions': []}, {'questions': ['question inventée']},
-                         {'requete': None}, {'secondaires': None},
+                         {'requete': None}, {'secondaires': 0},
                          {'requete': 2}, {'requete': 2, 'questions': []},
                          {'requete': 2, 'questions': ['question inventée']},
-                         {'requete': 2, 'mesureeLe': '2026-09-21'}):
+                         {'requete': 2, 'mesureeLe': '2026-09-19'},
+                         {'serpFamille': None},
+                         {'serpFamille': {'mesureeLe': '2026-09-19', 'amorce': 'autre amorce', 'famille': serp['famille']}},
+                         {'apercuIa': False}):
             essai = deepcopy(donnees)
             angle = next(e for e in essai[4] if e['slug'] == slug)
             angle['demande'].update(mutation)
@@ -243,6 +256,42 @@ class EditorialCadenceProof(unittest.TestCase):
         angle['demande']['requete'] = None
         erreurs, _, _ = PLAN.verifier(*essai)
         self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
+
+    def test_ia_sources_mutantes_sont_refusees_sans_changer_le_backlog(self):
+        donnees, erreurs, _, _ = construire_et_verifier()
+        self.assertEqual(erreurs, [])
+        original_read = Path.read_text
+        amorce = "former l'équipe à l'IA cabinet comptable"
+        requete = 'métier comptable intelligence artificielle compétences'
+        for nom, champ, valeur in (
+            ('questions-2026-09-19.json', 'jour', '2026-09-21'),
+            ('questions-2026-09-19.json', 'famille', 'autre-famille'),
+            ('questions-2026-09-19.json', 'apercuIa', False),
+            ('titres-intent-2026-09-21.json', 'measuredAt', '2026-09-19T00:39:45.351Z'),
+            ('titres-intent-2026-09-21.json', 'suggestions', ['faux primaire']),
+            ('titres-intent-2026-09-21.json', 'absence', None),
+            ('titres-intent-2026-09-21.json', 'secondaire', ['suggestion secondaire']),
+        ):
+            source = PLAN.ICI / 'mesures' / nom
+            mesure = json.loads(original_read(source, encoding='utf-8'))
+            if champ in ('jour', 'measuredAt'):
+                mesure[champ] = valeur
+            elif champ in ('famille', 'apercuIa'):
+                mesure['serp'][amorce][champ] = valeur
+            elif champ == 'suggestions':
+                mesure['autocompletion'][requete] = valeur
+            elif champ == 'secondaire':
+                mesure['autocompletion']['intelligence artificielle cabinet comptable'] = valeur
+            else:
+                del mesure['autocompletion'][requete]
+
+            def lire(chemin, *args, **kwargs):
+                return (json.dumps(mesure, ensure_ascii=False) if chemin == source
+                        else original_read(chemin, *args, **kwargs))
+
+            with self.subTest(source=nom, mutation=champ), patch.object(Path, 'read_text', autospec=True, side_effect=lire):
+                erreurs, _, _ = PLAN.verifier(*donnees)
+                self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
 
     def test_pilier_publie_exige_sa_mesure_primaire_source(self):
         import json
