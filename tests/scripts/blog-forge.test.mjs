@@ -293,6 +293,29 @@ test('la réinscription d’un candidat existant ne contourne pas le plafond des
   }
 });
 
+test('la réactivation d’une Cicatrice archivée ou bloquée recontrôle le plafond W39', async () => {
+  for (const status of ['archive', 'bloque']) {
+    const root = racineDeTest();
+    try {
+      const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+      const initiale = JSON.parse(readFileSync(recettePath, 'utf8'));
+      writeFileSync(recettePath, JSON.stringify({ ...initiale, date: '2026-09-26', serie: 'cicatrices' }));
+      await materialiser({ root, slug: SLUG, statut: status, fetcher, rendreImage, jour });
+      const queuePath = join(root, 'editorial/queue.json');
+      const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
+      queue.candidates.push({ slug: 'tests-verts-et-regle-des-trois-passes', date: '2026-09-28', serie: 'cicatrices', status: 'pret-preview' });
+      writeFileSync(queuePath, JSON.stringify(queue));
+      await assert.rejects(
+        materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage, jour }),
+        /déjà planifiée la semaine 2026-W39/,
+        `réactivation depuis ${status}`,
+      );
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
 test('le gate compare le corps signé après retrait du seul H1 identique au titre, sans masquer une phrase modifiée', async () => {
   const root = racineDeTest();
   const corpsPath = join(root, 'editorial/recettes', SLUG, 'corps.md');
