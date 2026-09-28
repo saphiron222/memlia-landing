@@ -2,13 +2,13 @@
   "version": 1,
   "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
   "action": "creation",
-  "editorialStatus": "publie",
+  "editorialStatus": "a-valider",
   "title": "Intelligence artificielle et métier comptable : compétences humaines",
   "tabTitle": "Intelligence artificielle, métier comptable et compétences | Memlia",
   "summary": "L’intelligence artificielle ne remplace pas un métier en bloc. Elle prépare une information, applique une règle écrite et signale le doute ; le cabinet valide, arbitre et fait évoluer la règle.",
   "description": "Métier comptable intelligence artificielle compétences : distinguer préparation automatisée, validation et décision humaine sur des cas fictifs.",
   "publicationDate": "2026-09-21",
-  "updatedAt": null,
+  "updatedAt": "2026-09-28",
   "topics": [
     "ia",
     "cabinet",
@@ -40,14 +40,14 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-21"
+      "verifiedAt": "2026-09-28"
     }
   },
   "businessReview": {
     "required": true,
     "reviewerId": "relecteur-metier-ia-memlia",
     "role": "direction-associes",
-    "status": "PASS",
+    "status": "FAIL",
     "evidence": "preuves/business-review.json"
   },
   "funnel": "TOFU",
@@ -60,14 +60,14 @@
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
   "proofRequired": "Frontière en trois colonnes et trois cas fictifs, dont une ambiguïté et une règle absente ; aucune liste de tâches ni donnée réelle.",
-  "sourcesVerifiedAt": "2026-09-21",
+  "sourcesVerifiedAt": "2026-09-28",
   "sources": [
     {
       "id": "atlas-branche",
       "publisher": "OPCO Atlas",
       "title": "Experts-comptables, Commissaires aux comptes et Audit",
       "url": "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html",
-      "checkedAt": "2026-09-21",
+      "checkedAt": "2026-09-28",
       "level": "tier-1",
       "provenance": "primary",
       "official": false,
@@ -82,7 +82,7 @@
       "publisher": "Apec",
       "title": "L’Apec et le Conseil supérieur de l’ordre des experts-comptables se mobilisent au service de l’emploi",
       "url": "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html",
-      "checkedAt": "2026-09-21",
+      "checkedAt": "2026-09-28",
       "level": "tier-1",
       "provenance": "primary",
       "official": false,
@@ -97,7 +97,7 @@
       "publisher": "OEC Paris — Le Francilien",
       "title": "Comment attirer et fidéliser des collaborateurs",
       "url": "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/",
-      "checkedAt": "2026-09-21",
+      "checkedAt": "2026-09-28",
       "level": "tier-2",
       "provenance": "primary",
       "official": false,
@@ -127,12 +127,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-21"
+      "checkedAt": "2026-09-28"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-21"
+      "checkedAt": "2026-09-28"
     }
   },
   "links": {
@@ -161,13 +161,11 @@
   "contradictions": [],
   "kevin": {
     "briefApproved": true,
-    "previewApproved": true,
-    "productionApproved": true,
+    "previewApproved": false,
+    "productionApproved": false,
     "delegation": {
       "date": "2026-09-16",
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
-  },
-  "publishedAt": "2026-09-21",
-  "publicationEvidence": "preuves/publication.json"
+  }
 }

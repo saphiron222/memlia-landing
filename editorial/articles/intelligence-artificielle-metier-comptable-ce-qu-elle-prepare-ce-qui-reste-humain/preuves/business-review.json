@@ -2,10 +2,10 @@
   "version": 1,
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
   "kind": "business-review",
-  "status": "PASS",
-  "checkedAt": "2026-09-21",
-  "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
-  "manifestSha256": "d0b176ea64ba9efab023c24f259bb447abe58753dd4153b4ee9409b43a99b9d8",
+  "status": "FAIL",
+  "checkedAt": "2026-09-28",
+  "articleSha256": "0f430afbe0ddbe1d4d8436bcc7c4fec13f4eff2c4a6eb15ebf3f2224a36859f2",
+  "manifestSha256": "f8ca319ade43ac42fd877cb6688868e6adc5b9093337b808a3bd8c7d5ad1820f",
   "observations": [
     "Contrôle business-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
   ],
@@ -15,72 +15,72 @@
     {
       "id": "review-claim-unit-098396eb1aa8-1-atlas-branche",
       "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
+      "articleSha256": "0f430afbe0ddbe1d4d8436bcc7c4fec13f4eff2c4a6eb15ebf3f2224a36859f2",
       "claimId": "claim-unit-098396eb1aa8-1",
       "claimSha256": "5e4033cd8c3e7824cae5af5c042feebfa86fa5e2cba54477e309d2dc7dbbd566",
       "sourceId": "atlas-branche",
-      "sourceContentSha256": "5be9d102a4c08a8ee5e11035bd821dbd794585dc5ef51e2a2f035867deb988fc",
+      "sourceContentSha256": "463b192f5442e8d3e24d53a90024111d0a3f26695433d33cfabda0af9a343d9f",
       "citationSha256": "4c5944522803220f5e9c2d82237e45ccb2b697cefed1e3904d0c524080823276",
       "reviewerId": "relecteur-metier-ia-memlia",
-      "verdict": "soutient",
-      "checkedAt": "2026-09-21",
-      "reasoning": "La page OPCO Atlas servie le 21 septembre 2026 contient mot pour mot l’affirmation selon laquelle la transition numérique impacte fortement les métiers des cabinets. Le corps conserve une portée qualitative et n’attribue pas cet effet à l’IA seule."
+      "verdict": "hors_sujet",
+      "checkedAt": "2026-09-28",
+      "reasoning": "Revue métier non exécutée."
     },
     {
       "id": "review-claim-unit-098396eb1aa8-2-atlas-branche",
       "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
+      "articleSha256": "0f430afbe0ddbe1d4d8436bcc7c4fec13f4eff2c4a6eb15ebf3f2224a36859f2",
       "claimId": "claim-unit-098396eb1aa8-2",
       "claimSha256": "7860c2c95ecc4e16befea606aded933183ed43627d703e9bec378fbf6da6dc7b",
       "sourceId": "atlas-branche",
-      "sourceContentSha256": "5be9d102a4c08a8ee5e11035bd821dbd794585dc5ef51e2a2f035867deb988fc",
+      "sourceContentSha256": "463b192f5442e8d3e24d53a90024111d0a3f26695433d33cfabda0af9a343d9f",
       "citationSha256": "f41cbca50dcef23f91cccdce7eb323be90224b6d51ad90f3b38350c6228adaeb",
       "reviewerId": "relecteur-metier-ia-memlia",
-      "verdict": "soutient",
-      "checkedAt": "2026-09-21",
-      "reasoning": "La même page OPCO Atlas contient exactement l’enjeu de montée en compétences des collaborateurs pour accompagner la numérisation. Le corps ne transforme pas cette formulation qualitative en mesure d’emploi ou de performance."
+      "verdict": "hors_sujet",
+      "checkedAt": "2026-09-28",
+      "reasoning": "Revue métier non exécutée."
     },
     {
       "id": "review-claim-unit-d3bd83d68184-1-apec-oec",
       "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
+      "articleSha256": "0f430afbe0ddbe1d4d8436bcc7c4fec13f4eff2c4a6eb15ebf3f2224a36859f2",
       "claimId": "claim-unit-d3bd83d68184-1",
       "claimSha256": "105cde098241963f4b7e1c26fae266cf17fe98edb795069bef7a1533a10ec7da",
       "sourceId": "apec-oec",
-      "sourceContentSha256": "811a484897c99752ec186b2826c8f47a127fb85eeeea575abd7e39ef9f3bcdbc",
+      "sourceContentSha256": "47f8be8a0f91c38256b8ac1c6a0a3af4922235931e5840cebebbba713e4024ad",
       "citationSha256": "09c34682b6e5554c55a9c9e1385f62a24f1d064658e6b97f3efbf96a1da3a9b0",
       "reviewerId": "relecteur-metier-ia-memlia",
-      "verdict": "soutient",
-      "checkedAt": "2026-09-21",
-      "reasoning": "La page Apec servie le 21 septembre 2026 contient mot pour mot la citation sur les tensions de l’emploi cadre. Le corps la rattache au communiqué du 9 décembre 2021 et précise qu’elle ne décrit pas la situation de 2026."
+      "verdict": "hors_sujet",
+      "checkedAt": "2026-09-28",
+      "reasoning": "Revue métier non exécutée."
     },
     {
       "id": "review-claim-unit-d3bd83d68184-2-oec-attractivite",
       "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
+      "articleSha256": "0f430afbe0ddbe1d4d8436bcc7c4fec13f4eff2c4a6eb15ebf3f2224a36859f2",
       "claimId": "claim-unit-d3bd83d68184-2",
       "claimSha256": "8252964c8b96ef97e2023b2df68914b80d593a6fd9c99d938f0798a0a8233c9a",
       "sourceId": "oec-attractivite",
-      "sourceContentSha256": "9422f79c7748a209a574b25e9f142d9e3057fe1e32c7ecb82b627a5492527d62",
+      "sourceContentSha256": "540f726e36690258ef6394027b092495b5accd7dc398921cc488335bf030d324",
       "citationSha256": "8b8c4608ce35e2d72375d9f778ae12528874d5ec944eb0bdbdb194eafa1863dc",
       "reviewerId": "relecteur-metier-ia-memlia",
-      "verdict": "soutient",
-      "checkedAt": "2026-09-21",
-      "reasoning": "La page OEC Paris servie le 21 septembre 2026 contient exactement la phrase sur l’évolution permanente des métiers et savoir-faire. Le corps la borne à un livre blanc intersectoriel résumé en 2023."
+      "verdict": "hors_sujet",
+      "checkedAt": "2026-09-28",
+      "reasoning": "Revue métier non exécutée."
     },
     {
       "id": "review-claim-unit-9e8d17c0c94b-1-atlas-branche",
       "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
+      "articleSha256": "0f430afbe0ddbe1d4d8436bcc7c4fec13f4eff2c4a6eb15ebf3f2224a36859f2",
       "claimId": "claim-unit-9e8d17c0c94b-1",
       "claimSha256": "34f395da1a2a50173514d2173fd9e43151d5fe49b392d4293cfb858daeb9ccce",
       "sourceId": "atlas-branche",
-      "sourceContentSha256": "5be9d102a4c08a8ee5e11035bd821dbd794585dc5ef51e2a2f035867deb988fc",
+      "sourceContentSha256": "463b192f5442e8d3e24d53a90024111d0a3f26695433d33cfabda0af9a343d9f",
       "citationSha256": "34f395da1a2a50173514d2173fd9e43151d5fe49b392d4293cfb858daeb9ccce",
       "reviewerId": "relecteur-metier-ia-memlia",
-      "verdict": "soutient",
-      "checkedAt": "2026-09-21",
-      "reasoning": "La page OPCO Atlas servie le 21 septembre 2026 contient exactement la phrase prospective sur l’automatisation future d’une partie des activités. Le corps précise l’absence d’horizon, de proportion et de mesure d’effet sur l’emploi."
+      "verdict": "hors_sujet",
+      "checkedAt": "2026-09-28",
+      "reasoning": "Revue métier non exécutée."
     }
   ]
 }

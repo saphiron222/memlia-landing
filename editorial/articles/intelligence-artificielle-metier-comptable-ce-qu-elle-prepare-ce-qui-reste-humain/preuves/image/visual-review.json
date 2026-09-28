@@ -2,10 +2,10 @@
   "version": 1,
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
   "kind": "image-visual-review",
-  "status": "PASS",
-  "checkedAt": "2026-09-21",
-  "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
-  "manifestSha256": "d0b176ea64ba9efab023c24f259bb447abe58753dd4153b4ee9409b43a99b9d8",
+  "status": "FAIL",
+  "checkedAt": "2026-09-28",
+  "articleSha256": "0f430afbe0ddbe1d4d8436bcc7c4fec13f4eff2c4a6eb15ebf3f2224a36859f2",
+  "manifestSha256": "f8ca319ade43ac42fd877cb6688868e6adc5b9093337b808a3bd8c7d5ad1820f",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
   ],
@@ -47,50 +47,44 @@
   "criteria": [
     {
       "id": "brief-six-components",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "La couverture montre trois plateformes reliées : préparation d’entrées, point de contrôle et décision protégée par une main abstraite.",
-        "La composition horizontale, isométrique et mate respecte le sujet, la composition, le style, la palette, les interdits et l’alt du brief."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "generation-constraints",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "L’inspection indépendante ne montre aucun texte, logo, visage, personnage complet, donnée client, fausse interface ou alerte rouge.",
-        "Le master est horizontal 1920×1080 et la palette mesurée crème, vert, vert profond et graphite dépasse les seuils déclarés."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "fictive-provenance",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Aucun nom, dossier, valeur client ou information personnelle n’est visible sur la couverture ni sur les deux preuves inline.",
-        "La preuve des sorties indique explicitement « jeu fictif » et « Oracle exécuté · 3 cas joués »."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "recognizable-subject",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Le chemin gauche-droite, le checkpoint central et la main abstraite rendent reconnaissables préparation, validation et décision humaine.",
-        "La pièce arrêtée avant le contrôle matérialise le doute sans suggérer une autonomie ou une action automatique."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "technical-derivatives",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Les fichiers contrôlés comprennent le master PNG 1920×1080, l’OG WebP 1200×630, les héros 768×432 AVIF/WebP et les variantes publiques 768/1200/1600 AVIF/WebP.",
-        "Le manifeste des preuves scelle les deux WebP inline à 1600×900 et le test de rendu confirme quatre preuves recrutement conformes."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "alt-information",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "L’alt de couverture décrit précisément la frontière entre préparation automatisée, validation et décision humaine.",
-        "Les alts inline décrivent la frontière puis une proposition et deux refus motivés ; ils correspondent aux images inspectées sans annoncer de gain."
+        "Revue image non exécutée."
       ]
     }
   ]
