@@ -32,7 +32,7 @@ désigner l'offre.
 10. [Mode opératoire quotidien](RUNBOOK-QUOTIDIEN.md) : la forge éditoriale, de la recette au contrôle en ligne. C'est le document qu'une session de production lit en premier.
 11. [Journal](JOURNAL.md) : une ligne par exécution, et les sections « Tranché » qui portent les décisions (l'ordre de la liste du blog le 17/09, la stratégie blog le 19/09).
 12. [Mesures](mesures/) : les relevés commités. `questions-2026-09-19.md` et `.json` (la demande), `semaine-2026-W38-demande.json`, `semaine-2026-W38-integrite.json`, `sentinelle.jsonl`, `registre-requetes.json`, `amorces-marche.json`.
-13. [Calendrier](CONTENT-CALENDAR.md), [plan de cluster](cluster-plan.md), [données](cluster-plan.json), [carte interactive](cluster-map.html) : générés par `build-cluster-plan.py`. Ne pas les éditer à la main ; corriger `backlog-v3.json` ou la taxonomie, puis régénérer.
+13. [Calendrier](CONTENT-CALENDAR.md), [plan de cluster](cluster-plan.md), [données](cluster-plan.json), [carte interactive](cluster-map.html) : générés par `build-cluster-plan.py`. Ne pas les éditer à la main ; corriger `backlog-v3.json` ou la taxonomie, puis régénérer. `manque` et `a-replanifier` ne sont pas des créneaux de publication.
 14. [Briefs du 16/09](cluster-briefs/) : périmés (voir plus bas). Ne pas s'en servir comme source d'un article.
 
 ## Gouvernance des faits vivants (réconciliation du 28/09)
@@ -58,7 +58,7 @@ relevé historique par une valeur reconstruite aujourd'hui.
 ## Ce qui est fait
 
 - **Le site est en ligne** et sert la copy v3 ; les cinq routes de tâche actuellement publiées sont distinctes des routes service encore candidates, exclues du sitemap tant que leur statut n'est pas `publie`.
-- **Neuf fichiers d'articles publiés** sont présents dans `src/content/blog/` au HEAD du 28/09. Présence au dépôt, exclusion du sitemap et indexabilité du HTML sont trois faits distincts : l'article de saisie FE est exclu du sitemap, mais son HTML statique est encore `index, follow` sur le candidat local ; la suspension documentée dans `INCIDENT-FE-2026-09-27.md` repose sur une fonction de bord et ne prouve pas l'état servi en production. Voir `SITE-STRUCTURE.md` pour la décision de correction avant livraison.
+- **Neuf fichiers d'articles publiés** sont présents dans `src/content/blog/` au candidat local du 28/09. Présence au dépôt, exclusion du sitemap et indexabilité du HTML sont trois faits distincts : l'article de saisie FE est exclu du sitemap et son HTML statique porte désormais `noindex, follow` (test dist) ; la fonction de bord vise toujours un 503 avec `X-Robots-Tag`. Aucun état GET/HEAD servi en production n'est attesté : voir `SITE-STRUCTURE.md` avant toute allégation de suspension effective.
 - **La cadence est codée** : 4 par semaine ISO, 2 par jour au plus, du lundi au jeudi (`CANDIDATS_PAR_SEMAINE_MAX`, `CANDIDATS_PAR_JOUR_MAX` dans `scripts/lib/blog-pipeline.mjs`).
 - **Le mécanisme est nommé** : « la règle écrite » (charte §2 bis). La forge refuse de matérialiser un article daté à partir du 19/09/2026 qui ne porte pas `## La règle écrite` et `## Rejoué sur le jeu fictif` (`DEBUT_REGLE_ECRITE` et `verifierRegleEcrite`, `scripts/blog-forge.mjs`).
 - **Le glossaire porte 53 termes** (comptés dans `src/data/glossary.ts` ; `tests/proof/test_glossary.py` en exige exactement 53) : 23 historiques, 20 de la vague 1 et 10 de la vague 2.
