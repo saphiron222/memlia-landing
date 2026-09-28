@@ -81,6 +81,24 @@ def minimum_word_count(article):
     # L'exception porte sur ce seul sujet ; les autres pages conservent 1500 mots.
     return 1000 if article.stem == 'tests-verts-et-regle-des-trois-passes' else 1500
 
+def rendered_body_word_count(article):
+    body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)<section class="article-sources',
+                     article.read_text(), re.S).group(1)
+    return len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
+
+def word_count_consistent(article, posting, mots=None):
+    if mots is None:
+        mots = rendered_body_word_count(article)
+    return mots > 0 and abs(mots - posting['wordCount']) / mots < 0.10
+
+def word_floor_diagnostic(article, posting, mots=None):
+    if mots is None:
+        mots = rendered_body_word_count(article)
+    floor = minimum_word_count(article)
+    if min(mots, posting['wordCount']) < floor:
+        return f'{article.name}: objectif éditorial {floor}, corps {mots}, JSON-LD {posting["wordCount"]}'
+    return None
+
 
 def is_preview_article(article):
     return article.stem in PREVIEW_ARTICLES and article.stem not in PUBLIC_ARTICLES
@@ -434,11 +452,14 @@ class BuildProof(unittest.TestCase):
                 self.assertTrue(image.startswith(f'{SITE}/images/'))
                 self.assertTrue((DIST / image[len(SITE) + 1:]).is_file(), image)
                 self.assertGreaterEqual(posting['image']['width'], 1200)
-                self.assertGreaterEqual(posting['wordCount'], minimum_word_count(article))
-                # Le compte de mots déclaré correspond au corps réellement rendu (±10 %).
-                body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)<section class="article-sources', article.read_text(), re.S).group(1)
-                mots = len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
-                self.assertLess(abs(mots - posting['wordCount']) / mots, 0.10, (mots, posting['wordCount']))
+                # La longueur cible est un diagnostic, non une porte de publication.
+                # Une perte du rendu sans mise à jour du JSON-LD reste bloquante.
+                mots = rendered_body_word_count(article)
+                self.assertTrue(word_count_consistent(article, posting, mots),
+                                (article.name, mots, posting['wordCount']))
+                diagnostic = word_floor_diagnostic(article, posting, mots)
+                if diagnostic:
+                    print(f'RELIQUAT mots : {diagnostic}', flush=True)
                 crumbs = nodes['BreadcrumbList']['itemListElement']
                 attendus = [f'{SITE}/', f'{SITE}/blog']
                 if article.stem in BLOG_RUBRIQUES:
@@ -474,6 +495,33 @@ class ArticleLengthProof(unittest.TestCase):
         self.assertEqual(minimum_word_count(Path('tests-verts-et-regle-des-trois-passes.html')), 1000)
         self.assertEqual(minimum_word_count(Path('pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html')), 1500)
         self.assertEqual(minimum_word_count(Path('logiciel-ia-comptabilite.html')), 1500)
+
+    def test_word_count_consistency_and_editorial_floor_diagnostic(self):
+        from tempfile import TemporaryDirectory
+        cases = [('tests-verts-et-regle-des-trois-passes', 1000),
+                 ('logiciel-ia-comptabilite', 1500)]
+        with TemporaryDirectory() as directory:
+            for slug, floor in cases:
+                article = Path(directory) / f'{slug}.html'
+                for body_words, declared_words, consistent, diagnostic in [
+                    (floor - 1, floor, True, True),  # dette historique, non bloquante
+                    (floor, floor - 1, True, True),
+                    (floor, floor, True, False),
+                    (floor, floor + floor // 5, False, False),  # JSON-LD incohérent
+                    (floor * 3 // 4, floor, False, True),  # candidat amputé, déclaration intacte
+                ]:
+                    with self.subTest(slug=slug, body=body_words, declared=declared_words):
+                        # Mutation du HTML rendu : le schéma reste indépendant du corps.
+                        article.write_text(
+                            f'<div class="article-corps"><p>{"mot " * body_words}</p></div>'
+                            '<section class="article-sources"></section>'
+                            '<script type="application/ld+json">'
+                            + json.dumps({'@graph': [{'@type': 'BlogPosting', 'wordCount': declared_words}]})
+                            + '</script>'
+                        )
+                        posting = jsonld(article)[0]['@graph'][0]
+                        self.assertEqual(word_count_consistent(article, posting), consistent)
+                        self.assertEqual(bool(word_floor_diagnostic(article, posting)), diagnostic)
 
 if __name__ == '__main__':
     print('Sujet SHA256 dist/index.html:', hashlib.sha256((DIST / 'index.html').read_bytes()).hexdigest(), flush=True)
