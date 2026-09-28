@@ -148,6 +148,27 @@ export const IMAGES = {
     alt: "Frontière en trois colonnes entre préparation automatisée, validation et décision humaine",
     generee: true,
   },
+  'img-art-prompt-chatgpt-expert-comptable': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Feuille vierge et enveloppe séparées par une grille fermée, pour figurer le contrôle humain avant une demande de pièce",
+    generee: true,
+  },
+  'img-art-logiciel-ia-comptabilite': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Trois feuilles blanches près d'un bac de tri et d'un portique vide ; aucune issue de contrôle n'est visible",
+    generee: true,
+  },
+  'img-art-tests-verts-trois-passes': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Trois postes de vérification distincts en diorama, pour les suites, la chaîne de preuve et la lecture humaine",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -155,6 +176,9 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-tests-verts-trois-passes',
+  'img-art-logiciel-ia-comptabilite',
+  'img-art-prompt-chatgpt-expert-comptable',
   'img-art-intelligence-artificielle-metier-comptable',
   'img-art-charge-travail-cabinet-comptable',
   'img-art-pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
