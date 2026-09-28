@@ -530,6 +530,9 @@ export function injecterPreuvesInline(corps, preuves = []) {
     if (!preuve.source?.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')
       || Number.isNaN(capture.getTime()) || capture.toISOString().slice(0, 10) !== preuve.capturedAt
       || capture.getTime() > Date.now()) throw new Error(`Preuve inline ${preuve.id} : source ou date de capture invalide.`);
+    if (/recette scellée|Ouvrir la preuve en grand/i.test(preuve.source)) {
+      throw new Error(`Preuve inline ${preuve.id} : source de preuve technique impropre à une légende publique ; corriger la recette avant matérialisation.`);
+    }
     if (preuve.sourceUrl && !/^https:\/\//.test(preuve.sourceUrl)) throw new Error(`Preuve inline ${preuve.id} : sourceUrl doit être une URL HTTPS.`);
     const liste = groupes.get(preuve.insertBeforeHeading) ?? [];
     liste.push(preuve);

@@ -195,6 +195,9 @@ test('les preuves inline portent source, date et région défilante accessible',
   assert.throws(() => injecterPreuvesInline(corps, [{
     id: 'preuve-fictive', insertBeforeHeading: 'Section cible', alt: 'Preuve fictive.', source: '  ', capturedAt: '2026-09-20',
   }]), /source ou date de capture invalide/);
+  assert.throws(() => injecterPreuvesInline(corps, [{
+    id: 'preuve-fictive', insertBeforeHeading: 'Section cible', alt: 'Preuve fictive.', source: 'reconstitution fidèle à la recette scellée', capturedAt: '2026-09-20',
+  }]), /source de preuve technique/);
 });
 
 test('le frontmatter reproduit le manifeste champ pour champ', () => {
