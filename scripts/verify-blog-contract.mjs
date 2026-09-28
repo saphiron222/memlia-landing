@@ -272,7 +272,8 @@ export function auditerContratBlog({
     : [];
   // La route Astro exclut les brouillons du build public. Si une preview les rend,
   // ils sont soumis aux cinq mêmes clauses ; un article public manquant reste rouge.
-  const selection = slugs ? tous.filter((slug) => new Set(slugs).has(slug)) : tous.filter((slug) => {
+  const demandes = slugs === null ? null : new Set(slugs);
+  const selection = demandes ? tous.filter((slug) => demandes.has(slug)) : tous.filter((slug) => {
     const { frontmatter } = lireFrontmatter(join(dossier, `${slug}.md`));
     return frontmatter?.brouillon !== true || Boolean(cheminRendu(dist, `/blog/${slug}`));
   });
@@ -286,7 +287,9 @@ export function auditerContratBlog({
       mesureChargee = { autocompletion: {} };
     }
   }
-  const erreurs = [];
+  const erreurs = demandes
+    ? [...demandes].filter((slug) => !tous.includes(slug)).map((slug) => `${slug} : source article absente`)
+    : [];
   const exemptions = [];
   for (const slug of selection) {
     const exemption = exemptionRubrique(slug);

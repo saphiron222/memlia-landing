@@ -94,6 +94,17 @@ test('le build public ignore seulement les brouillons absents ; leur preview res
   }
 });
 
+test('un slug explicitement demandé mais absent des sources échoue au lieu de valider zéro article', () => {
+  const root = fixture();
+  try {
+    const resultat = auditerContratBlog({ root, dist: join(root, 'dist'), mesure: MESURE, slugs: ['absent-test'] });
+    assert.equal(resultat.pass, false);
+    assert.match(resultat.erreurs.join('\n'), /absent-test : source article absente/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('clause 1 — deux images de preuve avec alternative accessible en plus de la couverture', () => {
   temoinClause(1, { preuves: 1 });
 });
