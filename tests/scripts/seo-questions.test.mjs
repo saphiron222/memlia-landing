@@ -40,6 +40,30 @@ test('recalerBacklog : la priorité suit la demande mesurée, le pilier ne bouge
   assert.deepEqual(par.c.demande, { mesureeLe: '2026-09-19', requete: 0, secondaires: 0, questions: [], intention: null, apercuIa: null });
   assert.equal(par.d.priorite, 2, 'une amorce non mesurée (instrument en panne) ne vaut pas zéro : la priorité ne bouge pas');
   assert.equal(par.d.demande.requete, null);
+  assert.equal(par.d.demande.secondaires, 0, 'aucune secondaire à tester');
+  assert.equal(par.d.demande.mesureeLe, null);
+});
+
+test('recalerBacklog : panne partielle, mesure complète et priorité P1/P2/P3', () => {
+  const entree = { slug: 'angle', format: 'how-to-guide', famille: 'f', requete: 'primaire', secondaires: ['secondaire'], priorite: 1 };
+  const recalage = (autocompletion, priorite = 1) => recalerBacklog([{ ...entree, priorite }], { jour: '2026-09-28', autocompletion, serp: {} })[0];
+  const panne = recalage({});
+  assert.equal(panne.priorite, 1);
+  assert.deepEqual([panne.demande.mesureeLe, panne.demande.requete, panne.demande.secondaires], [null, null, null]);
+  const secondaireInconnue = recalage({ primaire: [] }, 2);
+  assert.equal(secondaireInconnue.priorite, 2, 'pas de P3 sans la mesure secondaire');
+  assert.deepEqual([secondaireInconnue.demande.requete, secondaireInconnue.demande.secondaires], [0, null]);
+  assert.equal(secondaireInconnue.demande.mesureeLe, '2026-09-28');
+  const primaireInconnue = recalage({ secondaire: ['suggestion'] }, 3);
+  assert.equal(primaireInconnue.priorite, 3, 'pas de rétrogradation ni promotion depuis une primaire inconnue');
+  assert.deepEqual([primaireInconnue.demande.requete, primaireInconnue.demande.secondaires], [null, 1]);
+  assert.equal(recalage({ primaire: ['suggestion'] }, 3).priorite, 1);
+  assert.equal(recalage({ primaire: [], secondaire: ['suggestion'] }).priorite, 2);
+  assert.equal(recalage({ primaire: [], secondaire: [] }).priorite, 3);
+  const plusieurs = { ...entree, secondaires: ['secondaire', 'autre'] };
+  const partiel = recalerBacklog([plusieurs], { jour: '2026-09-28', autocompletion: { primaire: [], secondaire: ['suggestion'] } })[0];
+  assert.equal(partiel.priorite, 2, 'une secondaire positive suffit malgré une autre secondaire en panne');
+  assert.equal(partiel.demande.secondaires, null, 'le maximum incomplet reste inconnu');
 });
 
 test('intentionDesDomaines nomme « logiciel » quand les éditeurs dominent le haut de page, sinon null', () => {

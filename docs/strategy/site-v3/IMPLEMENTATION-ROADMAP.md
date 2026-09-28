@@ -22,7 +22,7 @@ déploiement, puis la production).
 | « La règle écrite » exigée des articles nouveaux | `DEBUT_REGLE_ECRITE = '2026-09-19'`, `verifierRegleEcrite` (`scripts/blog-forge.mjs`) | testé, témoin de mutation joué (`JOURNAL.md`, « Tranché » du 19/09) |
 | Glossaire vague 1 intégrée : 43 termes rendus | `src/data/glossary.ts`, manifeste T, revue R5 ancrée | `test_glossary.py` (43), `resource:audit:qa` PASS |
 | Identité d'entité : un `@id`, une définition, cinq surfaces | `src/data/schema.mjs` | six preuves dédiées, dont l'invariant (`JOURNAL.md`, 17/09) |
-| Backlog ordonné selon les suggestions relevées sur les formulations testées (pannes partielles de recalage encore à corriger) | `scripts/seo/questions.mjs`, `scripts/lib/seo-questions.mjs`, `backlog-v3.json` | invariant « priorité 1 implique une date de relevé » dans `build-cluster-plan.py --check`, qui ne vérifie pas encore la complétude du relevé ; `mesures/questions-2026-09-19.json` |
+| Backlog ordonné selon les suggestions relevées sur les formulations testées (pannes partielles conservées comme inconnues) | `scripts/seo/questions.mjs`, `scripts/lib/seo-questions.mjs`, `backlog-v3.json` | invariant « priorité 1 exige un signal primaire ou SERP historique daté » dans `build-cluster-plan.py --check` ; la date seule ne certifie pas la complétude ; `mesures/questions-2026-09-19.json` |
 | Mesure en place : C1, C2, C3, F1, F2, F3 | `scripts/seo/`, `scripts/lib/seo-*` | `RUNBOOK-SEO.md` ; trois tâches planifiées ; relevés commités dans `mesures/` |
 
 ## 2. Le cycle d'un article, tel qu'il tourne

@@ -179,6 +179,28 @@ class EditorialCadenceProof(unittest.TestCase):
         self.assertIn('ne permet de conclure ni au volume de recherche, ni à la demande, ni à l’audience', regle)
         self.assertNotIn('aucune demande mesurée', regle)
 
+    def test_priorite_un_exige_un_signal_et_non_seulement_une_date(self):
+        donnees, erreurs, _, _ = construire_et_verifier()
+        self.assertEqual(erreurs, [])
+        slug = 'rapprochement-bancaire-automatise-les-ecarts-a-remonter'
+        for requete, secondaires in ((None, None), (0, None), (None, 1)):
+            essai = deepcopy(donnees)
+            angle = next(e for e in essai[4] if e['slug'] == slug)
+            angle['demande'] = {**angle['demande'], 'requete': requete, 'secondaires': secondaires}
+            with self.subTest(requete=requete, secondaires=secondaires):
+                erreurs, _, _ = PLAN.verifier(*essai)
+                self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
+        # La page historique datée avec SERP et primaire vide reste licite.
+        historique = next(e for e in donnees[4] if e['slug'] ==
+                         'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain')
+        self.assertEqual(historique['demande']['requete'], 0)
+        self.assertTrue(historique['demande']['questions'])
+        essai = deepcopy(donnees)
+        angle = next(e for e in essai[4] if e['slug'] == slug)
+        angle['demande'] = {**historique['demande']}
+        erreurs, _, _ = PLAN.verifier(*essai)
+        self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
+
     def test_planifier_repartit_les_creneaux_autour_d_une_date_fixe(self):
         entries = [dict(slug=str(i), famille='f', pole=p, format=p, priorite=1, rang_famille=i)
                    for i, p in enumerate(('a', 'a', 'a', 'b', 'b'))]

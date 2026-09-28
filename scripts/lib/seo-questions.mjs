@@ -49,13 +49,16 @@ export function recalerBacklog(backlog, mesures) {
     // Une amorce absente des mesures n'a pas été mesurée (instrument en panne) : ce n'est pas un zéro, la priorité ne bouge pas.
     const mesuree = Object.prototype.hasOwnProperty.call(autocompletion, entree.requete);
     const requete = mesuree ? nombre(autocompletion[entree.requete]) : null;
-    const secondaires = Math.max(0, ...(entree.secondaires ?? []).map((s) => nombre(autocompletion[s])));
+    const secondairesListe = entree.secondaires ?? [];
+    const secondairesMesurees = secondairesListe.every((s) => Object.prototype.hasOwnProperty.call(autocompletion, s));
+    const suggestionSecondaire = secondairesListe.some((s) => Object.prototype.hasOwnProperty.call(autocompletion, s) && nombre(autocompletion[s]) > 0);
+    const secondaires = secondairesMesurees ? Math.max(0, ...secondairesListe.map((s) => nombre(autocompletion[s]))) : null;
     const serp = serpParFamille.get(entree.famille) ?? null;
     return {
       ...entree,
-      priorite: mesuree ? prioriteMesuree(requete, secondaires) : entree.priorite,
+      priorite: requete > 0 ? 1 : mesuree && suggestionSecondaire ? 2 : mesuree && secondaires !== null ? prioriteMesuree(requete, secondaires) : entree.priorite,
       demande: {
-        mesureeLe: mesures.jour,
+        mesureeLe: mesuree || secondairesListe.some((s) => Object.prototype.hasOwnProperty.call(autocompletion, s)) ? mesures.jour : null,
         requete,
         secondaires,
         questions: serp ? [...(serp.questions ?? [])] : [],

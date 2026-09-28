@@ -120,9 +120,9 @@ Quatre enseignements, qui commandent la réécriture des angles :
 3. **« Manuel de procédures cabinet expertise comptable » est une formulation à tester pour écrire le savoir-faire.** L'amorce rend deux suggestions, ses secondaires jusqu'à sept, et le haut de page est tenu par des vendeurs de trames, pas par des méthodes (`mesures/questions-2026-09-19.md`). C'est une entrée lexicale possible pour l'angle de marque, déjà visée par un article de priorité 1 au calendrier ; confirmer l'intention cabinet avant d'en déduire une audience.
 4. **Certaines formulations de métier produisent des suggestions.** « crm dsn » en rend dix dans le relevé du 19/09, dont « crm dsn de substitution » et les codes 120, 119, 124, 121 et 34 (`mesures/questions-2026-09-19.json`, `autocompletion["crm dsn"]`). C'est un signal sur les formulations testées, non une mesure de volume Ads, de demande ou d'audience cabinet ; confronter la SERP, l'intention cabinet et Search Console avant d'en tirer une décision de page.
 
-Ce que cela change dans la mécanique : un angle de priorité 1 **sans date de relevé** (`demande.mesureeLe`)
+Ce que cela change dans la mécanique : un angle de priorité 1 **sans signal primaire ou SERP historique daté**
 fait échouer `build-cluster-plan.py --check`, et C2 signale chaque semaine une requête primaire
-testée sans suggestion relevée (`RUNBOOK-SEO.md` §3 bis). Une date de relevé n'implique pas
+testée sans suggestion relevée (`RUNBOOK-SEO.md` §3 bis). Une date de relevé seule n'implique pas
 une suggestion ; une liste vide ne prouve pas l'absence de demande. Ce que cela ne change pas : la cadence, confirmée à
 quatre par semaine le 19/09, et les six articles publiés, qui ne bougent pas avant une lecture
 Search Console utile.
@@ -226,7 +226,7 @@ délai entre le créneau du calendrier et la publication.
 | Écrire sur une tâche qu'un prospect demande et qui n'est pas encore prise en charge | l'article est une méthode ; la page de service et le formulaire cadrent : nous écrivons la règle du cabinet, prix à la complexité. Aucune fonction promise |
 | Faits fiscaux et sociaux mouvants (facture électronique, AI Act) | source officielle ouverte le jour même, citation verbatim vérifiée, réouverture hebdomadaire par C3 ; une citation disparue fait passer l'article en maintenance |
 | Cadence de quatre par semaine sans baisse de qualité | la forge est le seul chemin : gate, revue indépendante à 100 points avec 0 défaut bloquant, scellement sur les octets. Un article qui n'atteint pas le seuil attend le créneau suivant |
-| Écrire pour notre vocabulaire plutôt que pour l'intention cabinet | relevé mensuel des suggestions sur les formulations testées, invariant « priorité 1 implique une date de relevé », alerte hebdomadaire C2 ; absence de suggestion ≠ absence de demande ou volume nul. Décider après lecture de la SERP, de l'intention cabinet et de Search Console |
+| Écrire pour notre vocabulaire plutôt que pour l'intention cabinet | relevé mensuel des suggestions sur les formulations testées, invariant « priorité 1 exige un signal primaire ou SERP historique daté », alerte hebdomadaire C2 ; absence de suggestion ≠ absence de demande ou volume nul. Décider après lecture de la SERP, de l'intention cabinet et de Search Console |
 | L'aperçu IA capte la réponse | définition autonome en tête, tableaux extractibles, `llms.txt` à jour. L'effet n'est pas mesuré et ne doit pas être annoncé comme acquis |
 | Cannibalisation entre angles voisins | une requête primaire par article, unique sur tout le site, contrôlée au `--check` ; C5 en décembre pour le corpus qui grossit |
 | Le glossaire devient un catalogue de définitions génériques | chaque terme garde son contrat : exemple fictif, confusion courante, frontière d'automatisation, sources datées ; pas de terme sans article qui l'emploie |

@@ -440,11 +440,19 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         if e.get('statut') == 'published' and e['slug'] not in publies:
             erreurs.append(f"statut publié sans article source : {e['slug']}")
     # Depuis le 19/09/2026, une priorité 1 se mérite par une mesure : autocomplétion ou page de résultats datée (scripts/seo/questions.mjs).
+    # Une date seule ne prouve pas une mesure primaire. L'angle IA historique avec
+    # deux formulations testées vides conserve sa P1 grâce aux questions SERP datées.
     for e in satellites:
         if e.get('historique') or e.get('serie') or e['slug'] in publies:
             continue
-        if e['priorite'] == 1 and not (e.get('demande') or {}).get('mesureeLe'):
-            erreurs.append(f"angle de priorité 1 sans demande mesurée : {e['slug']}")
+        demande = e.get('demande') or {}
+        signal_primaire = isinstance(demande.get('requete'), int) and demande['requete'] > 0
+        serp_historique = (e['slug'] == 'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'
+                           and demande.get('mesureeLe') == '2026-09-21'
+                           and demande.get('requete') == 0 and demande.get('secondaires') == 0
+                           and bool(demande.get('questions')))
+        if e['priorite'] == 1 and not (demande.get('mesureeLe') and (signal_primaire or serp_historique)):
+            erreurs.append(f"angle de priorité 1 sans signal mesuré : {e['slug']}")
     ordinaires = [e for e in tous if e.get('serie') != 'cicatrices']
     cicatrices = [e for e in tous if e.get('serie') == 'cicatrices']
     par_jour, par_semaine = Counter(), Counter()
