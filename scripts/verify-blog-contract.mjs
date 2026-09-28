@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -14,11 +15,10 @@ import {
 
 const LEGENDE_TECHNIQUE_INTERDITE = /Ouvrir la preuve en grand|reconstitution fidèle[^.]{0,240}recette scellée|recette scellée/i;
 
-function legendePreuveValide(figure) {
+function legendePreuveValide(figure, historique) {
   const captions = elements(figure, (node) => node.tagName === 'figcaption');
-  // Les preuves déjà publiées sans légende restent lisibles ; toute nouvelle légende
-  // doit être attribuable et datée, et ne peut servir d'attestation de recette.
-  if (captions.length === 0) return true;
+  // L'exception sans légende ne vaut que pour les anciens dossiers épinglés.
+  if (captions.length === 0) return historique;
   if (captions.length !== 1) return false;
   const contenu = texte(captions[0]).replace(/\s+/g, ' ').trim();
   const match = /^Source\s*:\s*(.+?)\s*·\s*capture du (\d{4}-\d{2}-\d{2})$/i.exec(contenu);
@@ -26,6 +26,23 @@ function legendePreuveValide(figure) {
   const date = new Date(`${match[2]}T00:00:00Z`);
   return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === match[2]
     && date.getTime() <= Date.now();
+}
+
+function estPreuveHistorique(root, slug, path, frontmatter) {
+  if (frontmatter.brouillon !== false) return false;
+  try {
+    const baseline = JSON.parse(readFileSync(join(root, 'editorial/legacy-review-baseline.json'), 'utf8'));
+    const entree = baseline.articles?.[slug];
+    if (!entree?.recipeSha256 || !entree?.reviewSha256) return false;
+    const dossier = join(root, 'editorial/recettes', slug);
+    const hash = (nom) => createHash('sha256').update(readFileSync(join(dossier, nom))).digest('hex');
+    const publication = JSON.parse(readFileSync(join(root, 'editorial/articles', slug, 'preuves/publication.json'), 'utf8'));
+    return publication.kind === 'publication-scellee' && publication.candidateSlug === slug
+      && createHash('sha256').update(readFileSync(path)).digest('hex') === publication.articleSha256
+      && hash('recette.json') === entree.recipeSha256 && hash('revues.json') === entree.reviewSha256;
+  } catch {
+    return false;
+  }
 }
 
 function parcourir(node, visite) {
@@ -182,7 +199,7 @@ function exemptionRubrique(slug) {
   return { ...exemption, valide: dateValide && raisonValide };
 }
 
-function auditerArticle({ dist, slug, path, mesure }) {
+function auditerArticle({ root, dist, slug, path, mesure }) {
   const erreurs = [];
   const { frontmatter } = lireFrontmatter(path);
   if (!frontmatter) {
@@ -207,9 +224,11 @@ function auditerArticle({ dist, slug, path, mesure }) {
   }
   const contenuPublic = texte(articleCorps).replace(/\s+/g, ' ').trim();
   const horsLegendes = texteSansLegendes(articleCorps);
+  const historique = medias.some(({ figure }) => elements(figure, (node) => node.tagName === 'figcaption').length === 0)
+    && estPreuveHistorique(root, slug, path, frontmatter);
   if (LEGENDE_TECHNIQUE_INTERDITE.test(contenuPublic)
       || /Source\s*:[^.]{0,320}capture du/i.test(horsLegendes)
-      || medias.some(({ figure }) => !legendePreuveValide(figure))) {
+      || medias.some(({ figure }) => !legendePreuveValide(figure, historique))) {
     erreurs.push(`${slug} : clause 1, légende de preuve invalide ou consigne technique publique (source et date de capture requises dans une légende informative)`);
   }
 
@@ -317,7 +336,7 @@ export function auditerContratBlog({
     const exemption = exemptionRubrique(slug);
     if (exemption?.valide) exemptions.push({ slug, clause: 4, date: exemption.date, raison: exemption.raison });
     if (erreurMesure) erreurs.push(`${slug} : clauses 3 et 5, ${erreurMesure}`);
-    erreurs.push(...auditerArticle({ dist, slug, path: join(dossier, `${slug}.md`), mesure: mesureChargee }));
+    erreurs.push(...auditerArticle({ root, dist, slug, path: join(dossier, `${slug}.md`), mesure: mesureChargee }));
   }
   return { pass: erreurs.length === 0, articles: selection.length, exemptions, erreurs };
 }

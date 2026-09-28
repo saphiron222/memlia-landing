@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { auditerContratBlog } from '../../scripts/verify-blog-contract.mjs';
@@ -29,7 +30,7 @@ function pageArticle({
   title = TITRE_ONGLET,
   lienRubrique = true,
   legendeTechnique = false,
-  legendePreuve = null,
+  legendePreuve = 'Source : jeu d’essai fictif · capture du 2026-09-20',
 } = {}) {
   const sections = Array.from({ length: 6 }, (_, index) => `<h2 id="section-${index + 1}">Section ${index + 1}</h2><p>Contenu.</p>`).join('');
   const liens = Array.from({ length: 6 }, (_, index) => `<li><a href="#section-${index + 1}">Section ${index + 1}</a></li>`).join('');
@@ -132,6 +133,38 @@ test('clause 1 — la source et la date informatives sont permises, pas une atte
       writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), pageArticle({ legendePreuve: mutation }));
       assert.match(auditer(root).erreurs.join('\n'), /clause 1/, mutation);
     }
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('clause 1 — nouvelles figures sans légende refusées, ancien dossier épinglé conservé', () => {
+  const root = fixture({ brouillon: true, legendePreuve: null });
+  try {
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+    writeFileSync(join(root, 'src/content/blog', `${SLUG}.md`), sourceArticle());
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+    const recette = 'recette historique', revue = 'revue historique';
+    const hash = (value) => createHash('sha256').update(value).digest('hex');
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), recette);
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), revue);
+    mkdirSync(join(root, 'editorial'), { recursive: true });
+    writeFileSync(join(root, 'editorial/legacy-review-baseline.json'), JSON.stringify({ articles: {
+      [SLUG]: { recipeSha256: hash(recette), reviewSha256: hash(revue) },
+    } }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'baseline seule insuffisante');
+    mkdirSync(join(root, 'editorial/articles', SLUG, 'preuves'), { recursive: true });
+    const source = sourceArticle();
+    writeFileSync(join(root, 'editorial/articles', SLUG, 'preuves/publication.json'), JSON.stringify({
+      kind: 'publication-scellee', candidateSlug: SLUG, articleSha256: hash(source),
+    }));
+    assert.deepEqual(auditer(root).erreurs, []);
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), 'recette republiée');
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), recette);
+    writeFileSync(join(root, 'src/content/blog', `${SLUG}.md`), `${source}\nNouvelle version`);
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
