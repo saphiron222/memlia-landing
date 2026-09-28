@@ -29,6 +29,8 @@ import {
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
 import { retirerPreuvesInline } from './lib/blog-proof-figures.mjs';
+import { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
+export { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 import { reviewBindingErrors, reviewSha256, renderedBodySha256 } from './lib/blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
@@ -599,10 +601,10 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   ecrireJson(manifestPath, manifestFinal);
   const articlePath = join(root, 'src/content/blog', `${slug}.md`);
   mkdirSync(dirname(articlePath), { recursive: true });
-  let corpsPublie = corps;
+  let corpsPublie = corpsSansTitreDuplique(corps, recette.title);
   let erreurPreuveInline = null;
   try {
-    corpsPublie = injecterPreuvesInline(corps, recette.inlineProofs ?? []);
+    corpsPublie = injecterPreuvesInline(corpsPublie, recette.inlineProofs ?? []);
   } catch (error) {
     erreurPreuveInline = error.message;
   }

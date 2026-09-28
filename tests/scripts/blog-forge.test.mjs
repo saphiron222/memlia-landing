@@ -243,6 +243,35 @@ test('la forge rafraîchit la preuve source quand sa classification change le m�
   }
 });
 
+test('le gate compare le corps signé après retrait du seul H1 identique au titre, sans masquer une phrase modifiée', async () => {
+  const root = racineDeTest();
+  const corpsPath = join(root, 'editorial/recettes', SLUG, 'corps.md');
+  const articlePath = join(root, 'src/content/blog', `${SLUG}.md`);
+  try {
+    writeFileSync(corpsPath, `# ${recette().title}\n\n${CORPS}`);
+    const preparation = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour });
+    assert.deepEqual(preparation.erreurs, []);
+    const article = readFileSync(articlePath, 'utf8');
+    assert.ok(!article.includes(`# ${recette().title}\n`), 'le H1 est porté par le frontmatter');
+    const gate = () => validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    const attendu = await gate();
+    assert.equal(attendu.pass, false, 'les revues absentes restent bloquantes');
+    assert.ok(attendu.errors.some((e) => /revues\.json absent/.test(e)), attendu.errors.join('\n'));
+    assert.ok(!attendu.errors.some((e) => /Recette et article divergent/.test(e)), attendu.errors.join('\n'));
+
+    writeFileSync(articlePath, article.replace('La validation reste au cabinet.', 'La validation passe à la machine.'));
+    const phraseModifiee = await gate();
+    assert.ok(phraseModifiee.errors.some((e) => /Recette et article divergent/.test(e)), phraseModifiee.errors.join('\n'));
+
+    writeFileSync(articlePath, article);
+    writeFileSync(corpsPath, `# Titre divergent\n\n${CORPS}`);
+    const titreDivergent = await gate();
+    assert.ok(titreDivergent.errors.some((e) => /Recette et article divergent/.test(e)), titreDivergent.errors.join('\n'));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('la forge produit un dossier que le gate accepte, puis un dossier publié scellé sur ses octets', async () => {
   const root = racineDeTest();
   try {
