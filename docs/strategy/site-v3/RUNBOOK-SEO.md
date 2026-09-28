@@ -64,7 +64,7 @@ python3 docs/strategy/site-v3/build-cluster-plan.py --check   # calendrier rég�
 
 Règle de priorité (`scripts/lib/seo-questions.mjs`, testée) : **1** si la requête primaire a des suggestions, **2** si seule une secondaire en a, **3** si rien n'en a ; le pilier n'est jamais recalé. Le relevé complet coûte environ 0,13 $ et deux minutes ; il se rejoue le premier vendredi du mois (`RUNBOOK-QUOTIDIEN.md` §6) et chaque fois qu'un angle est réécrit. Ce que le relevé ne fait pas : il ne réécrit ni titre ni requête — c'est une lecture, la correction d'un angle reste une décision écrite dans le backlog, puis un `--check`.
 
-C2 porte depuis le même jour une alerte hebdomadaire : chaque requête primaire du registre est autocomplétée, et « requête primaire sans demande mesurée » sort dans `alertes` quand la liste est vide (`alertesDemande`, testée).
+C2 porte depuis le même jour une alerte hebdomadaire : chaque requête primaire du registre est testée par autocomplétion. Si le relevé réussit mais que la liste est vide, `alertesDemande` signale « aucune suggestion relevée pour la requête primaire testée » dans `alertes` ; cela ne conclut ni au volume, ni à la demande, ni à l'audience. Une requête non mesurée (panne) ne déclenche pas cette alerte (`scripts/lib/seo-regles.mjs`, testée).
 
 ## 4. C3 — l'intégrité éditoriale et technique (le mercredi, 7 h)
 

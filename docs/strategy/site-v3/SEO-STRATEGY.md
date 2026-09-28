@@ -107,7 +107,7 @@ notamment notes de frais et factures fournisseurs, mais retient des requêtes qu
 non chiffrées pour les cinq pages de tâche. Aucun transfert de volume de l'ancienne
 variante vers la requête propriétaire ; `null` n'est ni zéro demande ni zéro lecteur.
 
-## 5 bis. Ce que la demande mesurée a changé le 19/09
+## 5 bis. Ce que le relevé des suggestions a changé le 19/09
 
 Relevé de `scripts/seo/questions.mjs` : 704 amorces, 704 mesurées, **72 avec au moins une
 suggestion**, 59 pages de résultats, 0,2125 $, 0 panne (`mesures/questions-2026-09-19.json`). Les
@@ -117,12 +117,13 @@ Quatre enseignements, qui commandent la réécriture des angles :
 
 1. **Le langage du diagnostic est peu représenté dans cet échantillon d'autocomplétion.** Une amorce comme « cabinet comptable surcharge de travail » ne rendait que deux suggestions, dont la sienne, au relevé du 19/09. Cela ne mesure ni le volume Ads ni l'absence de lecteur ; tester la SERP, l'intention cabinet et Search Console avant de prioriser ou d'écarter un angle de diagnostic.
 2. **Les têtes de requête portent une autre intention que la nôtre** : chercher un logiciel (le haut de page des familles de production), la situation d'un salarié (les requêtes de bulletin et de contrat), ou un modèle de document à télécharger (les recherches associées en « PDF », « Excel », « exemple », « modèle »).
-3. **« Manuel de procédures cabinet expertise comptable » est le mot du marché pour ce que nous appelons écrire le savoir-faire.** L'amorce rend deux suggestions, ses secondaires jusqu'à sept, et le haut de page est tenu par des vendeurs de trames, pas par des méthodes (`mesures/questions-2026-09-19.md`). C'est la porte d'entrée lexicale de l'angle de marque, et un article de priorité 1 la vise déjà au calendrier.
-4. **Les requêtes de métier précises tiennent.** « crm dsn » rend dix suggestions, jusqu'à la question hyper-spécifique (où trouver le compte rendu dans Net-entreprises, les codes 120, 114, 124, la substitution). Là où le vocabulaire est celui du praticien, la demande existe.
+3. **« Manuel de procédures cabinet expertise comptable » est une formulation à tester pour écrire le savoir-faire.** L'amorce rend deux suggestions, ses secondaires jusqu'à sept, et le haut de page est tenu par des vendeurs de trames, pas par des méthodes (`mesures/questions-2026-09-19.md`). C'est une entrée lexicale possible pour l'angle de marque, déjà visée par un article de priorité 1 au calendrier ; confirmer l'intention cabinet avant d'en déduire une audience.
+4. **Certaines formulations de métier produisent des suggestions.** « crm dsn » en rend dix dans le relevé du 19/09, dont des questions précises (où trouver le compte rendu dans Net-entreprises, les codes 120, 114, 124, la substitution). C'est un signal sur les formulations testées, non une mesure de volume Ads, de demande ou d'audience cabinet ; confronter la SERP et les données Search Console avant d'en tirer une décision de page.
 
-Ce que cela change dans la mécanique : un angle de priorité 1 **sans demande mesurée datée** fait
-échouer `build-cluster-plan.py --check`, et C2 lève chaque semaine une alerte « requête primaire sans
-demande mesurée » (`RUNBOOK-SEO.md` §3 bis). Ce que cela ne change pas : la cadence, confirmée à
+Ce que cela change dans la mécanique : un angle de priorité 1 **sans date de relevé** (`demande.mesureeLe`)
+fait échouer `build-cluster-plan.py --check`, et C2 signale chaque semaine une requête primaire
+testée sans suggestion relevée (`RUNBOOK-SEO.md` §3 bis). Une date de relevé n'implique pas
+une suggestion ; une liste vide ne prouve pas l'absence de demande. Ce que cela ne change pas : la cadence, confirmée à
 quatre par semaine le 19/09, et les six articles publiés, qui ne bougent pas avant une lecture
 Search Console utile.
 
