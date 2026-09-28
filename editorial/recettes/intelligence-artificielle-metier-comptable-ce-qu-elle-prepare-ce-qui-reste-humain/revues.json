@@ -6,7 +6,7 @@
     "renderedSha256": "8e1ded7d31ab62d4024634431db54f0d97f3d3ab2173ed26b9651c3f3094fab7"
   },
   "editorial": {
-    "reviewer": "qa:t_95ff7313",
+    "reviewer": "qa:t_de67db5a",
     "criteria": {
       "intent-satisfaction": {
         "result": "PASS",
@@ -45,7 +45,7 @@
         "observations": [
           "Le rendu parse5 relie un H1 au headline BlogPosting, affiche les dates du 21 et du 28 septembre, un canonical inchangé, og:title et l’image OG 1200×630.",
           "Deux figures du corps ont alt et figcaption ; le chemin vers le pilier, le diagnostic de surcharge, la méthode, les garanties et le glossaire demeure contextualisé.",
-          "Comptage indépendant du texte de .article-corps : 1 606 tokens avec lettres contre wordCount JSON-LD 1 637 ; les deux dépassent 1 500 et leur écart est limité."
+          "Recomptage indépendant du texte de .article-corps dans la prévisualisation : 1 603 tokens avec lettres contre wordCount JSON-LD 1 637 ; les deux dépassent 1 500 et leur écart est limité."
         ]
       },
       "ai-citability": {
@@ -122,10 +122,10 @@
         ]
       },
       "technical-derivatives": {
-        "result": "FAIL",
+        "result": "PASS",
         "observations": [
-          "Le rendu référence un OG ImageObject déclaré 1200×630 et deux WebP fonctionnels déclarés 1600×900, avec région clavier et légende visible.",
-          "Les actifs de preuve ont été inspectés, mais le check global render-blog-recrutement-proofs --check échoue : la modification de docs/qa/blog-recrutement-replay.json n’est pas inscrite au manifeste. Le parent doit régénérer le manifeste hors de cette revue."
+          "Le rendu du sujet épinglé référence deux WebP de preuve 1600×900 avec alt et légende ; inspection indépendante des deux images : frontière en trois colonnes et cas IA-01/02/03 fictifs, sans donnée client.",
+          "Le manifeste réadopté scelle le replay à 6e12341b26f1d528292bdfc083d93d29dcf9ca43cd307da1628f71c5382a9801 ; sources et quatre WebP correspondent à leurs SHA-256 et octets. Le check navigateur frais confirme 4/4 actifs ; le check global confirme aussi 14 preuves d’article et 2 articles/7 cas fictifs."
         ]
       },
       "alt-information": {
@@ -148,22 +148,22 @@
     }
   },
   "qualite": {
-    "reviewer": "qa:t_95ff7313",
-    "score": 91,
-    "p0": ["La preuve de rendu des figures recrutement a un manifeste périmé après la mutation du replay fictif ; render-blog-recrutement-proofs --check échoue sur le hash de docs/qa/blog-recrutement-replay.json."],
+    "reviewer": "qa:t_de67db5a",
+    "score": 92,
+    "p0": [],
     "categories": {
       "contentQuality": {"score": 27, "max": 30},
       "seoOptimization": {"score": 23, "max": 25},
       "eeatSignals": {"score": 14, "max": 15},
-      "technicalElements": {"score": 13, "max": 15},
+      "technicalElements": {"score": 14, "max": 15},
       "aiCitationReadiness": {"score": 14, "max": 15}
     },
     "evidence": [
-      "Lecture parse5 du rendu exact : 1 606 mots à lettres dans .article-corps, 1 637 déclarés dans BlogPosting, un H1 et deux figures légendées ; aucun chiffre de gain non mesuré.",
+      "Lecture indépendante du rendu exact : 1 603 tokens à lettres dans .article-corps, 1 637 déclarés dans BlogPosting, deux figures légendées et cas IA-01/02/03 présents ; aucun chiffre de gain non mesuré.",
       "La modification du corps ajoute un scénario de transmission de règle au collaborateur et à la direction ; le rejeu local confirme 2 articles et 7 cas fictifs.",
       "Les cinq citations apparaissent sur trois pages primaires accessibles le 29 septembre (Atlas 3688, Apec 1003, OEC 480), sans extrapolation sectorielle ou temporelle.",
       "H1/headline et canonical concordent ; dateModified 28 septembre, image OG 1200×630 et figures WebP 1600×900 présentes dans l’aperçu noindex.",
-      "Le check render-blog-article-proofs passe 14 preuves d’article, mais render-blog-recrutement-proofs --check échoue sur le manifeste du replay changé dans ce commit."
+      "Sur HEAD c7b16c2054b08c35afd229ef35a5148e1ac8832a : manifeste réadopté, les sept fichiers d’entrée et les quatre WebP ont les empreintes annoncées ; npm run test:blog-proof-render passe 14 preuves d’article, 2 articles/7 cas et 4 preuves recrutement. Le sujet body/recipe/rendered reste identique à la revue FAIL antérieure."
     ],
     "reservations": [
       "Le visuel competences-refus raccourcit les statuts et ne porte pas la décision complète ; le tableau de l’article donne les sorties littérales.",
@@ -180,6 +180,6 @@
       "Les limites prospectives d’Atlas et historiques de l’Apec sont visibles au contact immédiat des citations.",
       "Le nouveau paragraphe distingue test de la proposition, gestion de l’exception et propriété de la règle ; aucun savoir client réel n’est invoqué."
     ],
-    "verdict": "91/100 sur le fond éditorial, mais FAIL livraison : P0 manifeste de preuve périmé (replay modifié sans réadoption du rendu). Régénérer le manifeste par la recette existante et refaire une revue indépendante de ce critère avant scellement ; aucune publication autorisée."
+    "verdict": "PASS revue indépendante du candidat, 92/100 et zéro P0 : le manifeste est réadopté sur le replay exact et ses quatre WebP reproductibles ; le corps rendu dépasse 1 500 mots et les trois empreintes du sujet demeurent inchangées. Ce verdict ne vaut ni scellement, ni build public, ni publication : le parent doit intégrer la revue, sceller et rétablir l’état publié, puis passer la QA finale distincte."
   }
 }

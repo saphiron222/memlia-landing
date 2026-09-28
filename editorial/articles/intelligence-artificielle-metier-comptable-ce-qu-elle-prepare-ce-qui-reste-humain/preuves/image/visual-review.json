@@ -2,10 +2,10 @@
   "version": 1,
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
   "kind": "image-visual-review",
-  "status": "FAIL",
+  "status": "PASS",
   "checkedAt": "2026-09-28",
-  "articleSha256": "0f430afbe0ddbe1d4d8436bcc7c4fec13f4eff2c4a6eb15ebf3f2224a36859f2",
-  "manifestSha256": "f8ca319ade43ac42fd877cb6688868e6adc5b9093337b808a3bd8c7d5ad1820f",
+  "articleSha256": "d55a5dfcd7d73d328fab8385ead6b3fdc47a78f9f441eab0b78669bd3ed5d3e0",
+  "manifestSha256": "2d058fa9b2ce0f39573440227989af4b42e589aedd23f6f2b1114e0ffaad5866",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
   ],
@@ -47,44 +47,50 @@
   "criteria": [
     {
       "id": "brief-six-components",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "Le master inspecté à 1920×1080 figure des entrées géométriques à gauche, un checkpoint central et une main sculptée à droite, conformément aux six composantes de recette.image.brief.",
+        "La palette chiffrée dans visual-review.json donne crème 80,31 %, vert vif 0,557 %, vert profond 4,82 % et encre 0,613 % : les quatre teintes dépassent leurs seuils déclarés."
       ]
     },
     {
       "id": "generation-constraints",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "Sur le master visualisé, ni caractère lisible, ni logo, visage, formulaire, alerte rouge ou document client : la main est symbolique, sans personnage.",
+        "Le fichier maître est horizontal ; la palette provient de la mesure de 57 600 pixels consignés, non de l’appréciation visuelle du reviewer."
       ]
     },
     {
       "id": "fictive-provenance",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "La couverture ne représente que des solides ; les deux WebP de preuve affichent des règles et cas IA-01/02/03 sans identité ni dossier de client.",
+        "Le visuel refus annonce « JEU FICTIF » et « Oracle exécuté · 3 cas joués » ; sa légende HTML nomme le cadre figé et sa capture du 21 septembre."
       ]
     },
     {
       "id": "recognizable-subject",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "Le trajet gauche-droite des solides s’interrompt au feu de contrôle avant le plateau protégé par une main abstraite, lecture cohérente avec l’arrêt dans le doute.",
+        "La preuve frontière rend cette interprétation explicite avec les colonnes Prépare seul, Attend une validation, Reste humain, sans promettre une action autonome."
       ]
     },
     {
       "id": "technical-derivatives",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "Le rendu du sujet épinglé référence deux WebP de preuve 1600×900 avec alt et légende ; inspection indépendante des deux images : frontière en trois colonnes et cas IA-01/02/03 fictifs, sans donnée client.",
+        "Le manifeste réadopté scelle le replay à 6e12341b26f1d528292bdfc083d93d29dcf9ca43cd307da1628f71c5382a9801 ; sources et quatre WebP correspondent à leurs SHA-256 et octets. Le check navigateur frais confirme 4/4 actifs ; le check global confirme aussi 14 preuves d’article et 2 articles/7 cas fictifs."
       ]
     },
     {
       "id": "alt-information",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "L’alt de tête nomme la frontière préparation, validation et décision ; la couverture demeure abstraite, donc l’alt ajoute un contexte utile.",
+        "Les deux alts de figures décrivent respectivement la frontière et une proposition avec deux refus ; les images inspectées contiennent bien ces repères, sans pourcentage ni nom propre."
       ]
     }
   ]

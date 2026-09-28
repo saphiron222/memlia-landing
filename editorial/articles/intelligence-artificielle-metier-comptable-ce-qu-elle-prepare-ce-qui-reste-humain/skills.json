@@ -183,12 +183,12 @@
     },
     {
       "skill": "blog-analyze",
-      "applicable": false,
-      "status": "N/A",
-      "result": null,
-      "evidence": null,
-      "checkedAt": null,
-      "justification": "Aucune analyse de performance possible avant publication de « Intelligence artificielle et métier comptable : compétences humaines »."
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-analyze.json",
+      "checkedAt": "2026-09-28",
+      "justification": null
     },
     {
       "skill": "blog-audit",

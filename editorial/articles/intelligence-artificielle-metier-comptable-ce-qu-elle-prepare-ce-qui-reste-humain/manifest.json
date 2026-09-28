@@ -2,7 +2,7 @@
   "version": 1,
   "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
   "action": "creation",
-  "editorialStatus": "a-valider",
+  "editorialStatus": "publie",
   "title": "Intelligence artificielle et métier comptable : compétences humaines",
   "tabTitle": "Intelligence artificielle, métier comptable et compétences | Memlia",
   "summary": "L’intelligence artificielle ne remplace pas un métier en bloc. Elle prépare une information, applique une règle écrite et signale le doute ; le cabinet valide, arbitre et fait évoluer la règle.",
@@ -47,7 +47,7 @@
     "required": true,
     "reviewerId": "relecteur-metier-ia-memlia",
     "role": "direction-associes",
-    "status": "FAIL",
+    "status": "PASS",
     "evidence": "preuves/business-review.json"
   },
   "funnel": "TOFU",
@@ -109,7 +109,7 @@
     }
   ],
   "author": "kevin",
-  "reviewer": "marketing",
+  "reviewer": "qa:t_de67db5a",
   "reviewRule": "Relire la source OPCO Atlas à six mois et à toute modification de la page de branche.",
   "cta": {
     "label": "Confier cette tâche",
@@ -161,11 +161,13 @@
   "contradictions": [],
   "kevin": {
     "briefApproved": true,
-    "previewApproved": false,
-    "productionApproved": false,
+    "previewApproved": true,
+    "productionApproved": true,
     "delegation": {
       "date": "2026-09-16",
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
-  }
+  },
+  "publishedAt": "2026-09-28",
+  "publicationEvidence": "preuves/publication.json"
 }

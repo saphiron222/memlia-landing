@@ -4,10 +4,13 @@
   "kind": "skill",
   "status": "PASS",
   "checkedAt": "2026-09-28",
-  "articleSha256": "0f430afbe0ddbe1d4d8436bcc7c4fec13f4eff2c4a6eb15ebf3f2224a36859f2",
-  "manifestSha256": "f8ca319ade43ac42fd877cb6688868e6adc5b9093337b808a3bd8c7d5ad1820f",
+  "articleSha256": "d55a5dfcd7d73d328fab8385ead6b3fdc47a78f9f441eab0b78669bd3ed5d3e0",
+  "manifestSha256": "2d058fa9b2ce0f39573440227989af4b42e589aedd23f6f2b1114e0ffaad5866",
   "observations": [
-    "Titre 68 caractères, onglet 67, description 144 ; 8 lien(s) interne(s) : /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /glossaire#regle-de-cabinet, /methode, /garanties, /glossaire#validation-humaine, /automatisation-cabinet-comptable, /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps, /contact ; 8 lien(s) externe(s) dans le corps."
+    "Titre 68 caractères, onglet 67, description 144 ; 8 lien(s) interne(s) : /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /glossaire#regle-de-cabinet, /methode, /garanties, /glossaire#validation-humaine, /automatisation-cabinet-comptable, /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps, /contact ; 8 lien(s) externe(s) dans le corps.",
+    "H1 et headline BlogPosting concordent ; onglet et description travaillent la requête métier comptable, IA et compétences sans renommer la route historique.",
+    "Les liens du corps couvrent pilier, diagnostic voisin, glossaire, méthode et garanties ; les cinq citations inline pointent aux trois documents primaires.",
+    "Le rendu preview porte noindex, follow ; aucun état publié ni indexation n’est déduit de ce rendu."
   ],
   "skill": "blog-seo-check"
 }
