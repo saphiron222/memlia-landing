@@ -110,6 +110,8 @@ Le relecteur calcule les empreintes **après avoir lu** le corps, le rendu et le
 
 Le gate vérifie séparément la présence de `corps.md`, `recette.json` et `revues.json` pour **chaque dossier pipeline**, avant de comparer les empreintes. Supprimer le corps seul, les deux fichiers corps/revue, ou la recette doit rendre `blog:audit` rouge, même si l'article déjà publié reste présent et scellé. La baseline historique n'autorise que la conservation des octets intacts et ne remplace jamais un fichier absent ; restaurer l'artefact manquant ou refaire une revue indépendante sur la version modifiée. Un article hors pipeline, conservé par son mécanisme d'inventaire historique, reste soumis à son propre contrat.
 
+L'identité effectivement portée par `revues.json` (`editorial.reviewer`, par exemple `qa:<id-de-carte>`) est projetée dans le manifeste, `review.json`, `preuves/review.json` et le paquet de revue. Le gate refuse une discordance ; en l'absence de ce champ sur une revue historique, l'identité préexistante `marketing` est conservée, sans attribuer rétroactivement une revue à QA. Le contrat HTML inspecte les pages publiques même si leur fichier construit manque (rouge), et les brouillons uniquement quand ils sont rendus en preview ; `--slug <brouillon>` exige sa page construite et contrôle toutes les clauses. Un build public ne doit jamais exposer un brouillon pour satisfaire le test.
+
 ```bash
 node scripts/blog-forge.mjs sceller <slug>
 ```

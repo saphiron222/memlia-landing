@@ -270,7 +270,12 @@ export function auditerContratBlog({
   const tous = existsSync(dossier)
     ? readdirSync(dossier).filter((nom) => nom.endsWith('.md')).map((nom) => nom.slice(0, -3)).sort()
     : [];
-  const selection = slugs ? tous.filter((slug) => new Set(slugs).has(slug)) : tous;
+  // La route Astro exclut les brouillons du build public. Si une preview les rend,
+  // ils sont soumis aux cinq mêmes clauses ; un article public manquant reste rouge.
+  const selection = slugs ? tous.filter((slug) => new Set(slugs).has(slug)) : tous.filter((slug) => {
+    const { frontmatter } = lireFrontmatter(join(dossier, `${slug}.md`));
+    return frontmatter?.brouillon !== true || Boolean(cheminRendu(dist, `/blog/${slug}`));
+  });
   let mesureChargee = mesure;
   let erreurMesure = null;
   if (!mesureChargee) {

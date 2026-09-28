@@ -1688,6 +1688,13 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   if (!existsSync(recipeBodyPath)) errors.push(`corps.md absent : ${recipeBodyPath}.`);
   readJson(recipePath, errors, 'recette.json');
   const independentReview = readJson(independentReviewPath, errors, 'revues.json');
+  // L'identité déclarée par la revue indépendante est l'autorité ; les projections ne peuvent la réattribuer.
+  if (independentReview?.editorial && Object.hasOwn(independentReview.editorial, 'reviewer')) {
+    requireText(errors, independentReview.editorial.reviewer, 'revues.json editorial.reviewer', 2);
+    if (manifest?.reviewer !== independentReview.editorial.reviewer || review?.reviewer !== independentReview.editorial.reviewer) {
+      errors.push('Identité du reviewer éditorial divergente entre revues.json, manifest.json et review.json.');
+    }
+  }
   if (existsSync(recipeBodyPath)) {
     const recipeBody = readFileSync(recipeBodyPath, 'utf8').trim();
     const articleBody = retirerPreuvesInline(markdownBody(markdown));

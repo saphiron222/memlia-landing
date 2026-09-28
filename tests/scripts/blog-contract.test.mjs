@@ -12,8 +12,8 @@ const TITRE_ONGLET = 'Contrôle bulletin de paie en cabinet | Memlia';
 const DESCRIPTION = 'Contrôle bulletin de paie : les étapes, les preuves et les arrêts à documenter avant la DSN.';
 const MESURE = { autocompletion: { [REQUETE]: [] } };
 
-function sourceArticle({ rubrique = true } = {}) {
-  return `---\ntitre: "${TITRE}"\ntitreOnglet: "${TITRE_ONGLET}"\ndescription: "${DESCRIPTION}"\nprimaryQuery: "${REQUETE}"\nsecondaryQueries: []\n${rubrique ? 'rubrique: paie-dsn\n' : ''}---\n\n## Section\n`;
+function sourceArticle({ rubrique = true, brouillon = false } = {}) {
+  return `---\ntitre: "${TITRE}"\ntitreOnglet: "${TITRE_ONGLET}"\ndescription: "${DESCRIPTION}"\nprimaryQuery: "${REQUETE}"\nsecondaryQueries: []\nbrouillon: ${brouillon}\n${rubrique ? 'rubrique: paie-dsn\n' : ''}---\n\n## Section\n`;
 }
 
 function preuve(numero) {
@@ -70,6 +70,25 @@ test('le contrat vert contrôle chaque article de la collection sans slug codé 
     writeFileSync(join(root, 'dist/blog', `${second}.html`), pageArticle());
     writeFileSync(join(root, 'dist/blog/paie-dsn.html'), `<h1>Paie / DSN</h1><a href="/blog/${SLUG}">Lire</a><a href="/blog/${second}">Lire</a>`);
     assert.deepEqual(auditer(root), { pass: true, articles: 2, exemptions: [], erreurs: [] });
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('le build public ignore seulement les brouillons absents ; leur preview reste contrôlée intégralement', () => {
+  const root = fixture();
+  const draft = 'brouillon-test';
+  try {
+    writeFileSync(join(root, 'src/content/blog', `${draft}.md`), sourceArticle({ brouillon: true }));
+    assert.deepEqual(auditer(root), { pass: true, articles: 1, exemptions: [], erreurs: [] });
+    assert.match(auditerContratBlog({ root, dist: join(root, 'dist'), mesure: MESURE, slugs: [draft] }).erreurs.join('\n'), /page construite absente/);
+    writeFileSync(join(root, 'dist/blog', `${draft}.html`), pageArticle({ preuves: 1 }));
+    assert.match(auditer(root).erreurs.join('\n'), /brouillon-test : clause 1/);
+    writeFileSync(join(root, 'dist/blog', `${draft}.html`), pageArticle());
+    writeFileSync(join(root, 'dist/blog/paie-dsn.html'), `<a href="/blog/${SLUG}">Lire</a><a href="/blog/${draft}">Lire</a>`);
+    assert.deepEqual(auditer(root), { pass: true, articles: 2, exemptions: [], erreurs: [] });
+    rmSync(join(root, 'dist/blog', `${SLUG}.html`));
+    assert.match(auditer(root).erreurs.join('\n'), /article-test : clause 1, page construite absente/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
