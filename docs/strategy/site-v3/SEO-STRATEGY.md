@@ -2,8 +2,8 @@
 
 Écrite le 16 septembre 2026, validée par Kevin le jour même avec deux amendements (quatre articles
 par semaine, territoire élargi à toute tâche automatisable du cabinet). **Remise à l'état réel le
-19 septembre 2026**, après la revue mesurée de la demande. La thèse et le constat tiennent ; la
-carte du territoire, les chiffres et les seuils sont ceux d'aujourd'hui.
+19 septembre 2026**, après la revue mesurée de la demande ; **réconciliée avec les sources du
+28 septembre 2026**. Les relevés du 17–19/09 restent des photographies datées, non des mesures actuelles.
 
 Ce dossier remplace, pour l'éditorial, la stratégie v2 (`../site-v2/SEO-STRATEGY.md`, trois piliers
 dont deux sur la production sociale) et les notes du coffre. Les pages commerciales suivent la
@@ -11,7 +11,7 @@ charte de message (`.agents/product-marketing.md` v3), pas ce document.
 
 ## 1. Le constat, relu le 19/09
 
-- **Le corpus est né du pôle social**, parce que c'est là que les premières tâches ont été prises en charge. Trois des six articles publiés portent la paie, le bulletin ou la DSN, et six des 43 termes du glossaire portent la DSN ou la production sociale (comptés dans `src/content/blog/` et `src/data/glossary.ts`).
+- **Le corpus est né du pôle social** : trois articles publiés portent la paie, le bulletin ou la DSN. Le corpus courant compte neuf fichiers publiés (`src/content/blog/`) et le glossaire 53 ancres (`src/data/glossary.ts`). Les six articles et 43 termes du relevé du 19/09 ne sont pas le stock actuel.
 - **Le contrat éditorial prévoyait déjà tout le cabinet** : le schéma du blog (`src/content.config.ts`) accepte douze pôles et les rôles de la taxonomie Ressources. La taxonomie complète existe désormais en source unique, `src/data/familles.ts`.
 - **Il n'y avait rien à perdre en élargissant, et il n'y a toujours rien à défendre** : sur 28 jours au 14/09, Search Console donne 4 clics et 17 impressions, tous sur l'accueil, sur des requêtes de marque mal orthographiées ; les six articles sont à zéro impression (`mesures/semaine-2026-W38-demande.json`). La base technique, elle, est propre : 14 URL au sitemap, 14 indexées, 0 rouge (`mesures/sentinelle.jsonl`, 18/09).
 
@@ -42,9 +42,9 @@ daté à partir du 19/09/2026 qui ne porte pas `## La règle écrite` et `## Rej
 | Pilier | aucun ; la page de service tenait lieu de hub | **un article pilier publié** le 16/09, plus la page de service |
 | Cadence | 1 à 2 articles par mois | **4 par semaine, 2 par jour au plus**, du lundi au jeudi ; plafonds codés et testés |
 | Chaîne de production | rédaction directe | **la forge** : recette, sources ouvertes le jour même, revue indépendante, gate, publication scellée sur les octets |
-| Glossaire | 23 termes, dont 6 sur la DSN et la production sociale | **43 termes rendus** depuis le 16/09 (23 + vague 1), vague 2 de 14 termes à faire |
+| Glossaire | 23 termes, dont 6 sur la DSN et la production sociale | **53 termes rendus** : 23 historiques, 20 en vague 1, 10 en vague 2 ; quatre réglementaires reportés (`GLOSSARY-PLAN.md`) |
 | Priorité des sujets | jugée de l'intérieur | **mesurée** depuis le 19/09 : autocomplétion Google et pages de résultats, invariant au `--check` |
-| Pages commerciales | 5 pages | **inchangées**. Aucune page par famille tant qu'une tâche n'est pas livrée et décrite (règle anti-catalogue) |
+| Pages commerciales | 5 pages | service général conservé et pages de tâche sous `/automatisation/<tache>` ; jamais une page par famille par défaut (`ARCHITECTURE-ACCES-COMMERCIAUX.md`) |
 
 Ce qui ne bouge pas, parce que ce sont des règles de maison : aucune donnée client, aucun chiffre non
 sourcé, fact-check daté sur la paie et le fiscal, validation humaine, anti-surveillance (agrégats,
@@ -65,21 +65,24 @@ chaque angle du backlog : elle n'est pas recopiée ici, pour qu'il n'y ait qu'un
 | Pôle (`cluster`) | Familles | Angles | Dont P1 | Publiés |
 |---|---|---|---|---|
 | Production comptable | 13 | 52 | 4 | 2 |
-| Paie et social | 7 | 28 | 6 | 3 |
+| Paie et social | 7 | 31 | 9 | 3 |
 | Juridique et fiscal | 7 | 28 | 10 | 0 |
-| Portefeuille et échéances | 5 | 20 | 2 | 0 |
+| Portefeuille et échéances | 5 | 20 | 2 | 1 |
 | Administration et secrétariat | 5 | 20 | 2 | 0 |
 | Facturation et recouvrement du cabinet | 4 | 16 | 2 | 0 |
-| Numérique, IT et data | 4 | 16 | 2 | 0 |
+| Numérique, IT et data | 4 | 17 | 3 | 0 |
 | Conseil et missions spéciales | 4 | 16 | 1 | 0 |
-| Méthode et décision humaine | 4 | 15 | 1 | 1 (le pilier) |
-| RH et formation | 3 | 12 | 1 | 0 |
+| Méthode et décision humaine | 4 | 21 | 1 | 1 satellite + 1 pilier |
+| RH et formation | 3 | 12 | 1 | 1 |
 | Excel et outils existants | 3 | 12 | 0 | 0 |
 | Audit et commissariat aux comptes | 1 | 0 | 0 | 0 |
-| **Total** | **60** | **235** | **31** | **6** |
+| **Total** | **60** | **245 satellites** | **35 satellites** | **8 satellites + 1 pilier** |
 
-Le pilier compte pour un angle de priorité 1 supplémentaire, hors satellites : 32 angles en priorité
-1 au total, 9 en priorité 2, 195 en priorité 3.
+Ce tableau lit le plan généré (`cluster-plan.json`) : 245 satellites dont trois articles historiques
+hors backlog et huit entrées de la série factuelle « Cicatrices ». Le backlog compte 243 entrées
+dont le pilier : 33 P1, 9 P2 et 201 P3 (`backlog-v3.json`, 28/09). Ne pas additionner ses
+priorités à celles du plan, qui réintroduit les trois historiques P1. La ligne Méthode du tableau
+compte 21 satellites et signale à part le pilier publié.
 
 Deux lectures à ne pas confondre. **Priorité 1 ne veut pas dire famille importante** : elle dit
 seulement que la requête primaire de l'angle a des suggestions d'autocomplétion, donc qu'elle passe
@@ -128,6 +131,15 @@ et les deux derniers sont vérifiés par la forge, pas par le relecteur seul.
 5. **`## La règle écrite`** : la frontière en trois colonnes, la proposition, l'arrêt, le jeu d'essai, pour cette tâche précise et non en formules générales.
 6. **`## Rejoué sur le jeu fictif`** : un tableau d'au moins trois lignes, cas joué, sortie obtenue, décision, avec des sorties réelles du rejeu.
 
+La couverture ne compte pas comme preuve dans le corps : deux figures fonctionnelles issues de
+cadres HTML figés sur un jeu fictif sont déclarées dans `inlineProofs`, ancrées avant des H2
+existants et vérifiées par la forge (`RUNBOOK-QUOTIDIEN.md` §3). Leur provenance et date de
+capture vivent dans la recette ; aucune interface cliente ni visuel IA n'est substitué à un rejeu.
+Les faits RGPD distinguent une obligation sourcée d'un conseil de la CNIL : classifier le second
+en `information`, sans inventer de force normative. Le H1 de la recette est émis par le gabarit ;
+si le corps source commence par un H1 identique, seule cette enveloppe est retirée ; un H1 divergent
+est refusé (`scripts/lib/blog-body-envelope.mjs`). La revue porte sur ce rendu exact.
+
 Formats privilégiés parce que la page de résultats les récompense et que les concurrents les écrivent
 en prose : checklist numérotée et datée, tableau anomalie, cause, action ; tableau de la frontière
 d'automatisation ; définition autonome de 40 à 60 mots en tête, extractible par les moteurs et les
@@ -136,8 +148,40 @@ assistants.
 ## 7. Le pilier et les satellites
 
 - **Pilier** : `/blog/automatiser-un-cabinet-comptable-la-carte-des-taches`, publié le 16/09, format `pillar-page`. Il porte la carte des 60 familles en 12 pôles, l'audit légal listé et non ouvert. Il reçoit un lien de chaque satellite et rend un lien vers chacun ; il est en tête de `/blog`, hors de la liste, et cette position est contrôlée côté Python et côté navigateur (`JOURNAL.md`, « Tranché » du 17/09).
-- **Satellites** : 1 800 à 2 500 mots, un par angle, `how-to-guide` par défaut, `faq-knowledge` pour les définitions, `listicle-checklist` pour les checklists. Le plan en compte **238** (les 235 angles satellites du backlog et les trois articles antérieurs à la v3, entrés dans la forge le 17/09), dont 5 publiés, plus le pilier (`cluster-plan.json`, champ `meta`).
+- **Satellites** : un angle propre par URL, `how-to-guide` pour la méthode, `faq-knowledge` pour une définition, `listicle-checklist` pour une checklist, `thought-leadership` pour une Cicatrice ou un essai fondé. Le plan en compte **245** (242 entrées du backlog hors pilier et trois articles historiques), dont huit publiés, plus le pilier (`cluster-plan.json`, champ `meta`, 28/09). Une Cicatrice ne se fabrique jamais pour remplir le samedi.
 - **Maillage** : satellite vers pilier et pilier vers satellite, obligatoires dans les deux sens ; 2 liens de famille ; 1 à 2 ancres de glossaire ; minimum trois liens entrants par article ; aucune orpheline. Contrôlé au `--check` avant chaque vague et chaque mercredi par C3.
+
+### Rubriques, talents et arbitrage des formats (28/09)
+
+`src/data/blog-rubriques.mjs` est le registre exécutable : deux hubs publiés, Paie et DSN
+(`/blog/rubrique/paie-dsn-cabinet-comptable`) et Saisie et pièces
+(`/blog/rubrique/gestion-pieces-comptables`). Ils ordonnent un geste commun, sans cannibaliser
+les requêtes d'articles ; le pilier, la Cicatrice, la charge et l'article sur les compétences
+restent explicitement hors rubrique. Pas de hub RH maigre à un seul article. Les pôles du backlog
+ne deviennent pas mécaniquement des rubriques ou des pages commerciales.
+
+| Idée | Décision | Destination et condition |
+|---|---|---|
+| Chaîne paie → DSN ; collecte → saisie | conservées | deux rubriques réelles, au moins deux articles visibles et des liens croisés |
+| Pénurie, recrutement, compétences du cabinet | conservé comme territoire, non comme rubrique | pôle RH et formation du backlog, méthodes sourcées et frontières de décision humaine ; mesurer une intention de hub distincte avant de créer une rubrique |
+| « logiciel de recrutement IA pour chaque pôle » | refusé | combinaison artificielle, ni service livré ni requête établie |
+| Charge de travail, pénurie et adoption des outils | contexte relié, pas fusion automatique | la charge porte les états du flux, les compétences portent ce qui reste humain ; fusionner seulement si la SERP révèle la même intention |
+| Calculateur, modèle, générateur de prompt | outil si autonome | `/outils-comptables-gratuits` ; besoin complet sans inscription, preuve du calcul, retour d'usage avant seconde vague (`OUTILS-BOUCLE.md`) |
+
+Le rythme est un plafond, non un quota à remplir : quatre articles ordinaires par semaine ISO,
+deux par jour au plus du lundi au jeudi ; une Cicatrice factuelle le samedi seulement si ses faits
+existent (`RUNBOOK-QUOTIDIEN.md`). Avant chaque créneau non fixé, alterner autant que possible le
+pôle et le format des derniers ordinaires pour éviter quatre déclinaisons de même geste ; ne jamais
+déplacer un article déjà publié ni une date explicitement réservée. Une exception exige dans le
+backlog une raison datée et vérifiable (urgence réglementaire sourcée, parcours d'une série dont
+les étapes dépendent, ou fenêtre métier), distincte pour le pôle et pour le format. Elle ne dispense
+ni de requête mesurée, ni de revue, ni du plafond. **État du candidat au 28/09** :
+`build-cluster-plan.py` vérifie l'alternance pôle/format sur les ordinaires non figés,
+préserve les dates publiées et `datePlanifiee`, et n'accepte qu'une exception datée et motivée
+pour le champ effectivement en conflit (`exceptionAlternance.pole` ou `.format`). Le stock
+peut différer un angle prioritaire sans changer sa mesure. Le contrôle `--check` et ses
+tests positifs et négatifs s'appliquent au candidat ; seule son intégration autorisée
+permettra de le dire effectif sur `origin/main`.
 
 ## 8. Mesure : des seuils de décision datés, pas des prévisions
 

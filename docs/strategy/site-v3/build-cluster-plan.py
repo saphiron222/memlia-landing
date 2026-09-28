@@ -507,8 +507,8 @@ def ecrire_calendrier(pilier, satellites, familles, poles):
          '- Chaque famille active conserve ses quatre angles (méthode, contrôle ou checklist, exceptions et refus, définition) ; leur ordre de sortie dépend des contraintes de calendrier et du stock disponible.',
          '- Une requête primaire par article, unique ; sources officielles obligatoires pour toute matière paie, sociale, fiscale, juridique ou données.',
          '- Le pilier reçoit un lien à chaque publication (republication scellée par la forge).', '',
-         '- La série « Cicatrices » paraît le samedi, exactement une fois par semaine ISO, en sus du plafond des quatre articles ordinaires.', '',
-         '## Volume', '', f"- {len(satellites)} satellites + 1 pilier ; {sum(1 for e in satellites if e['statut'] == 'published')} satellite(s) publié(s) au 16/09/2026 ; dernier créneau planifié : {tous[-1]['date']}.", '',
+         '- Une Cicatrice factuelle peut paraître le samedi, au plus une par semaine ISO, en sus du plafond des quatre articles ordinaires ; sans faits signés ni recette, le créneau reste vide.', '',
+         '## Volume', '', f"- {len(satellites)} satellites + 1 pilier ; {sum(1 for e in satellites if e['statut'] == 'published')} satellite(s) publié(s) dans le registre au {date.today().strftime('%d/%m/%Y')} ; dernier créneau planifié : {tous[-1]['date']}.", '',
          '## Semaine par semaine', '']
     par_sem = defaultdict(list)
     for e in tous:

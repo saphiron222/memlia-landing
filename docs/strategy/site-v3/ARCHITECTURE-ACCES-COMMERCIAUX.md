@@ -1,7 +1,9 @@
 # Architecture des accès commerciaux
 
 Décision du 20 septembre 2026 pour le chantier ACCÈS, carte C2 `t_2d42e66c`.
-Ce document définit les routes, les intentions, le gabarit et le maillage. Il ne crée aucune page.
+Ce document définit les routes, les intentions, le gabarit et le maillage. Sa décision du 20/09
+est conservée ; l'addendum final constate séparément l'état du code au 28/09, sans requalifier
+une hypothèse initiale en preuve de production.
 
 Sources de vérité lues avant décision :
 
@@ -423,3 +425,30 @@ type explicite, pas par exception manuelle.
 Chaque page reste non publiée tant qu’elle n’a pas : sa requête réservée, son jeu fictif réellement
 rejoué, trois liens entrants contextuels, sa revue indépendante, son sceau et sa preuve sur
 l’artefact servi.
+
+## Addendum de réconciliation — 28 septembre 2026
+
+Les cinq routes de tâche du §2 sont maintenant des entrées `status: publie` de
+`src/content/services/` ; le service général reste `/automatisation-cabinet-comptable`.
+`src/pages/automatisation/[slug].astro` ne matérialise que les entrées publiées ; `Footer.astro`
+les lit depuis la collection, sans catalogue de capacités. Les commandes du §9 sont donc une
+trace de la porte conçue **avant C4**, non la preuve qu'une nouvelle route est encore candidate.
+La source actuelle des statuts et des reçus est `commercial/services/<slug>/` et la collection ;
+pour juger une publication précise, relire son manifeste, sa revue et son reçu sur l'artefact servi.
+
+Deux autres accès servent des intentions différentes : `/integrations` explique comment une
+tâche s'insère dans un environnement existant, avec guides admis depuis `src/data/integrations.ts`
+(relevé d'autocomplétion du 20/09, filtrage `INTEGRATIONS_INDEXABLES`) ; ce n'est ni une promesse
+de compatibilité universelle ni une fiche de service par vendeur. `/outils-comptables-gratuits`
+donne un résultat local sans inscription depuis `src/data/outils.ts` ; la boucle d'usage et ses
+seuils sont possédés par `OUTILS-BOUCLE.md`. Chaque guide, outil, article et service garde sa
+propre requête et son canonical si son intention est distincte ; si deux pages visent réellement
+le même geste, la SERP et la preuve tranchent avant toute nouvelle route. `src/data/site.mjs`
+exclut provisoirement du sitemap l'article de saisie pour l'incident FE : ne pas lui retirer son
+URL ni faire d'un canonical croisé un pansement.
+
+Le design des services et guides vient de `docs/design/2026-09-08-design-navattic-memlia.md`,
+`src/styles/tokens.css`, et des sections canoniques `src/components/sections/`. La preuve visuelle
+d'un geste est un cadre HTML figé avec jeu fictif, jamais une image générée ni une capture réelle
+de client ; comparer desktop et mobile aux pages historiques (`memlia-site-design`). La couverture
+de blog est un autre circuit, détaillé dans `RUNBOOK-QUOTIDIEN.md`.

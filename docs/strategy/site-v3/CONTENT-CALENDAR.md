@@ -10,11 +10,11 @@ Généré le 28/09/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 - Une requête primaire par article, unique ; sources officielles obligatoires pour toute matière paie, sociale, fiscale, juridique ou données.
 - Le pilier reçoit un lien à chaque publication (republication scellée par la forge).
 
-- La série « Cicatrices » paraît le samedi, exactement une fois par semaine ISO, en sus du plafond des quatre articles ordinaires.
+- Une Cicatrice factuelle peut paraître le samedi, au plus une par semaine ISO, en sus du plafond des quatre articles ordinaires ; sans faits signés ni recette, le créneau reste vide.
 
 ## Volume
 
-- 245 satellites + 1 pilier ; 8 satellite(s) publié(s) au 16/09/2026 ; dernier créneau planifié : 2027-10-28.
+- 245 satellites + 1 pilier ; 8 satellite(s) publié(s) dans le registre au 28/09/2026 ; dernier créneau planifié : 2027-10-28.
 
 ## Semaine par semaine
 

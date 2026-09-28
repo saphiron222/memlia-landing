@@ -1,8 +1,8 @@
 # Architecture v3 : l'arbre du site en ligne
 
-Écrite le 16 septembre 2026, remise à l'état réel le 19 septembre 2026. Ce document décrit le site
-tel qu'il est servi, pas un projet d'arborescence. Profondeur maximale : 2 clics depuis l'accueil
-pour tout article.
+Écrite le 16 septembre 2026, remise à l'état réel le 19 septembre puis réconciliée le 28 septembre
+avec `src/pages/`, `src/components/Nav.astro`, `Footer.astro` et les registres de contenu. Les
+chiffres d'indexation du 18/09 ci-dessous sont historiques, non un relevé de production du 28/09.
 
 ## 1. L'arbre réel
 
@@ -16,14 +16,27 @@ pour tout article.
 │   ├── /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier
 │   ├── /blog/comprendre-les-comptes-rendus-metier-dsn
 │   ├── /blog/controler-les-bulletins-de-paie-avant-la-dsn
-│   └── /blog/suivre-la-production-sociale-dans-excel
-├── /glossaire                            43 ancres
+│   ├── /blog/suivre-la-production-sociale-dans-excel
+│   ├── /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils
+│   ├── /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps
+│   ├── /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain
+│   └── /blog/rubrique/{paie-dsn-cabinet-comptable,gestion-pieces-comptables}
+├── /automatisation/<tache>                pages de service publiées (collection services)
+├── /integrations                          hub et guides tâche × environnement, seulement candidats admis
+├── /outils-comptables-gratuits            hub et outils disponibles, témoin local non indexable
+├── /glossaire                            53 ancres
 ├── /blog/rss.xml                         flux
 └── /mentions-legales  /politique-de-confidentialite  /contact/merci  /contact/erreur   noindex
 ```
 
-Huit pages au registre `src/data/pages-lastmod.json` et six articles : **14 URL au sitemap**, 14
-indexées au dernier relevé de la sentinelle (`mesures/sentinelle.jsonl`, 18/09).
+La mesure « 14 URL au sitemap, 14 indexées » est le dernier relevé du **18/09**, non le compte
+actuel. Ne pas en déduire l'indexation des routes nouvelles : compter le sitemap construit et
+mesurer Search Console séparément. Neuf fichiers d'article sont publiés au HEAD du 28/09 ;
+`src/data/site.mjs` met temporairement la saisie comptable en `noindex` pour l'incident FE.
+`Footer.astro` tire les services publiés de la collection, les outils disponibles de `outils.ts`,
+les intégrations indexables de `integrations.ts` et les rubriques de `blog-rubriques.mjs` ; un
+fichier présent ne prouve ni publication, ni entrée au sitemap. `Nav.astro` garde l'accès lisible
+aux grands parcours, sans menu de tâches exhaustif.
 
 **`/ressources` n'existe plus.** La page a été retirée le 16/09/2026 au soir sur décision de Kevin
 et rend 404 (`JOURNAL.md`, ligne du 16/09). « Ressources » est devenu un **groupe de navigation**,
@@ -43,9 +56,14 @@ la décision est écrite dans `JOURNAL.md`, « Tranché » du 17/09.
 ## 2. Règles d'URL
 
 - Slug en français, **verbe à l'infinitif puis tâche** : `automatiser-la-relance-des-pieces-clients`. Pas de date, pas de catégorie, pas de mot vide.
-- **Une requête primaire par URL**, unique sur tout le site, contrôlée par `build-cluster-plan.py --check`. Deux articles qui viseraient la même requête fusionnent.
+- **Une requête primaire par URL** : `build-cluster-plan.py --check` refuse les doublons dans son plan blog ; les contrats inter-surfaces vivent aussi dans `config/page-intent-contract.json` et `config/page-route-contracts.json`. Deux articles sur la même intention fusionnent.
 - `cluster`, `famille` et `rolePrincipal` sont des champs du frontmatter, jamais des segments d'URL.
-- Aucune page de catégorie ni de tag : le pilier tient ce rôle.
+- Deux rubriques utiles sous `/blog/rubrique/`, créées à partir de `blog-rubriques.mjs` avec au
+  moins deux articles visibles chacune ; pas de page par tag ou par pôle vide. Le pilier reste
+  transversal et hors rubrique.
+- `/automatisation/` n'est pas un second hub ; les pages de tâche conservent leur canonical
+  propre, tout comme les guides `/integrations/<slug>` et les outils. Pas de canonical croisé
+  entre service, article, guide et outil tant que leurs intentions restent distinctes.
 - Une republication ne change jamais l'URL ni la date de publication ; elle porte `updatedAt` dans la recette et `dateMiseAJour` dans le frontmatter.
 
 ## 3. Le maillage, tel qu'il est contrôlé aujourd'hui
@@ -75,14 +93,15 @@ pilier, et une fiche Service-Public réécrite dont la citation avait disparu). 
 clos le 17/09 au soir sur `e651bb1` (`JOURNAL.md`). **Ils n'ont pas été remesurés depuis** : le
 prochain relevé d'intégrité est celui du mercredi.
 
-## 4. Le glossaire : 43 ancres
+## 4. Le glossaire : 53 ancres
 
-`src/data/glossary.ts` porte 43 termes, et `tests/proof/test_glossary.py` en exige exactement 43 :
+`src/data/glossary.ts` porte 53 termes, et `tests/proof/test_glossary.py` en exige exactement 53 :
 ancres, termes, définitions (uniques), exemples fictifs, confusions courantes, frontières
-d'automatisation, blocs de sources et `DefinedTerm` du `DefinedTermSet`, chacun compté à 43.
+d'automatisation, blocs de sources et `DefinedTerm` du `DefinedTermSet`, chacun compté à 53.
 Chaque terme garde son contrat d'entrée ; chaque
 satellite renvoie vers 1 à 2 ancres ; chaque terme cite au moins un article qui l'emploie. La vague
-2 (14 termes, cible 57) et la chaîne à rejouer sont dans `GLOSSARY-PLAN.md`.
+2 a intégré dix termes ; quatre termes réglementaires attendent une revue métier vérifiable,
+sans date de publication promise (`GLOSSARY-PLAN.md`).
 
 ## 5. Ce que le code fait déjà
 
@@ -91,17 +110,17 @@ satellite renvoie vers 1 à 2 ancres ; chaque terme cite au moins un article qui
 | Taxonomie en source unique, lue par le schéma, le plan et les tests | `src/data/familles.ts`, `famille` dans `src/content.config.ts` | fait : 60 familles, 12 pôles, `audit-legal` listée et non ouverte |
 | Sujets bornés au métier, étendus à la v3 | `src/content.config.ts` | fait : 19 valeurs, dont les 12 ajoutées (automatisation, pieces, saisie, lettrage, revision, fiscal, facturation, courriels, ia, donnees, juridique, pilotage) |
 | Cadence codée | `CANDIDATS_PAR_JOUR_MAX`, `CANDIDATS_PAR_SEMAINE_MAX`, `verifierPlafonds` | fait, testé |
-| Image de tête par article | brief à six composantes, génération payante, recadrage 1920x1080, OG 1200x630, dérivés 768/1200/1600 en AVIF et WebP, déclaration dans `src/data/images.mjs` | fait. Le cadre de preuve HTML ne sert plus pour un article publié (`RUNBOOK-QUOTIDIEN.md` §3) |
+| Image de tête par article | brief à six composantes, génération sous budget, recadrage 1920x1080, OG 1200x630, dérivés 768/1200/1600 en AVIF et WebP | couverture seulement ; deux preuves dans le corps viennent de cadres HTML figés (`RUNBOOK-QUOTIDIEN.md` §3) |
 | Pilier hors liste, en tête du blog | `src/pages/blog.astro` | fait, contrôlé côté Python et côté navigateur |
 | Groupe de navigation « Ressources » | `src/components/Nav.astro`, `src/components/Footer.astro` | fait ; la page `/ressources` est retirée |
-| Compteurs de tests | `tests/proof/test_glossary.py` (43), `test_build.py` (`PUBLIC_ARTICLES`, 6 slugs) | fait, à incrémenter à chaque publication et à chaque vague de glossaire |
-| Registre `lastmod` | `npm run lastmod:sync`, `src/data/pages-lastmod.json` | fait : 8 pages ; les articles portent leurs dates de frontmatter |
+| Compteurs de tests | `tests/proof/test_glossary.py` (53), `test_build.py` (`PUBLIC_ARTICLES`, 9 slugs) | fait, à revalider avec chaque publication et vague de glossaire |
+| Registre `lastmod` | `npm run lastmod:sync`, `src/data/pages-lastmod.json` | pages dans le registre, articles datés par frontmatter ; lire le registre plutôt que reprendre le compte du 19/09 |
 | Exigence « la règle écrite » | `DEBUT_REGLE_ECRITE`, `verifierRegleEcrite` (`scripts/blog-forge.mjs`) | fait le 19/09, témoin de mutation joué |
 
 Ce qui reste, et qui n'est pas urgent : aucune facette « par famille de tâches » n'existe, et elle
 n'a plus de page d'accueil depuis le retrait de `/ressources`. Si le besoin revient, il se pose sur
-`/blog`, pas sur un hub : une facette à 59 familles actives dont 6 ont un article serait une
-facette vide (familles lues dans le frontmatter `famille:` des six articles). À rouvrir quand
+`/blog`, pas sur un hub : une facette à 59 familles actives pour neuf articles serait une
+facette vide (familles lues dans le frontmatter `famille:` des articles publiés). À rouvrir quand
 plusieurs familles auront leurs quatre satellites publiés, pas avant.
 
 ## 6. Schéma et balisage
