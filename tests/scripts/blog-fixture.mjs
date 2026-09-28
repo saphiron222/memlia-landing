@@ -239,6 +239,16 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
   const manifestPath = join(dossier, 'manifest.json');
   writeFileSync(articlePath, markdown);
   writeJson(manifestPath, manifest);
+  const recipeDir = join(root, 'editorial/recettes', slug);
+  mkdirSync(recipeDir, { recursive: true });
+  const recipeBody = retirerPreuvesInline(body.trim());
+  writeFileSync(join(recipeDir, 'corps.md'), `${recipeBody}\n`);
+  const recipeBytes = JSON.stringify({ slug, fixture: true });
+  writeFileSync(join(recipeDir, 'recette.json'), recipeBytes);
+  // Témoin synthétique lié au corps et à la recette de CE fixture, sans verdict publié.
+  writeJson(join(recipeDir, 'revues.json'), {
+    subject: { slug, bodySha256: sha256(recipeBody), recipeSha256: sha256(recipeBytes), renderedSha256: sha256('fixture-rendered-body') },
+  });
   const articleHash = sha256(retirerPreuvesInline(markdown));
   const manifestHash = sha256(readFileSync(manifestPath));
 

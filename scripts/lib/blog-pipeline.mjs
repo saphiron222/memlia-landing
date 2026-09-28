@@ -1679,12 +1679,15 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   const recipeBodyPath = join(absoluteRoot, 'editorial/recettes', slug, 'corps.md');
   const recipePath = join(absoluteRoot, 'editorial/recettes', slug, 'recette.json');
   const independentReviewPath = join(absoluteRoot, 'editorial/recettes', slug, 'revues.json');
+  // L'inventaire a déjà identifié un dossier pipeline : retirer sa recette ne peut pas désactiver la liaison des revues.
+  if (!existsSync(recipeBodyPath)) errors.push(`corps.md absent : ${recipeBodyPath}.`);
+  readJson(recipePath, errors, 'recette.json');
+  const independentReview = readJson(independentReviewPath, errors, 'revues.json');
   if (existsSync(recipeBodyPath)) {
     const recipeBody = readFileSync(recipeBodyPath, 'utf8').trim();
     const articleBody = retirerPreuvesInline(markdownBody(markdown));
     const bodiesMatch = reviewSha256(recipeBody) === reviewSha256(articleBody);
     if (!bodiesMatch) errors.push('Recette et article divergent : empreinte du corps non conforme.');
-    const independentReview = existsSync(independentReviewPath) ? readJson(independentReviewPath, errors, 'revues.json') : null;
     const legacyBaselinePath = join(absoluteRoot, 'editorial/legacy-review-baseline.json');
     const legacyBaseline = manifest?.editorialStatus === 'publie' && !independentReview?.subject
       ? readJson(legacyBaselinePath, errors, 'inventaire historique de revue') : null;
@@ -1698,7 +1701,6 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     const preservedPublished = manifest?.editorialStatus === 'publie' && !independentReview?.subject
       && validatePublicationSeal(dossier, manifest, subject).length === 0 && bodiesMatch && legacyRecipeMatches;
     if (!preservedPublished) {
-      if (!independentReview) errors.push('revues.json absent : nouvelle revue indépendante requise.');
       errors.push(...reviewBindingErrors(independentReview, slug, recipeBody, existsSync(recipePath) ? readFileSync(recipePath) : '', renderedArticleHtml));
     }
   }

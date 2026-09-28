@@ -323,6 +323,18 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     } }));
     const legacyIntact = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
     assert.equal(legacyIntact.pass, true, legacyIntact.errors.join('\n'));
+    // Le sceau ne porte pas les fichiers de recette : leur retrait ne doit jamais désactiver la revue.
+    for (const missing of [[corpsPath], [corpsPath, revuesPath], [revuesPath], [recettePath]]) {
+      const originals = missing.map((path) => [path, readFileSync(path)]);
+      try {
+        for (const [path] of originals) rmSync(path);
+        const result = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
+        assert.equal(result.pass, false, `Absence de ${missing.join(', ')} acceptée`);
+        for (const path of missing) assert.ok(result.errors.some((error) => error.includes(path.split('/').at(-1))), result.errors.join('\n'));
+      } finally {
+        for (const [path, bytes] of originals) writeFileSync(path, bytes);
+      }
+    }
     writeFileSync(recettePath, JSON.stringify({ ...JSON.parse(recetteInitiale), updatedAt: jour }));
     const legacyModifie = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
     assert.ok(legacyModifie.errors.some((e) => /recette publiée.*divergente/.test(e)), legacyModifie.errors.join('\n'));
