@@ -35,6 +35,7 @@ JOURS_DE_PUBLICATION = (0, 1, 2, 3)  # lundi à jeudi ; la semaine 38 (deux arti
 PREMIER_JOUR = date(2026, 9, 17)
 RATTRAPAGE_W39 = {'prompt-chatgpt-expert-comptable': '2026-09-22', 'logiciel-ia-comptabilite': '2026-09-24', 'tests-verts-et-regle-des-trois-passes': '2026-09-26'}
 DATE_RATTRAPAGE = '2026-09-28'
+TITRE_CICATRICE_W39 = 'Pourquoi des tests verts manquent des défauts : la règle des trois passes'
 
 def creneau(e):
     """Le 28/09 réel ne change pas les trois créneaux éditoriaux W39 désignés."""
@@ -119,11 +120,14 @@ def planifier(entrees, publies):
             raise SystemExit(f"date publiée divergente du backlog : {e['slug']} ({date_publiee} != {e['date']})")
         reserver_cicatrice(e, date.fromisoformat(date_publiee or e['date']))
 
+    # Les dates explicites du backlog restent des décisions, pas des indications de tri :
+    # seul un créneau non daté peut avancer jusqu'au prochain samedi libre.
     premier_samedi = PREMIER_JOUR + timedelta(days=(5 - PREMIER_JOUR.weekday()) % 7)
     for e in sorted([x for x in series if x['slug'] not in publies], key=lambda x: (x.get('date') or '', x['priorite'], x['rang_famille'])):
-        candidat = premier_samedi
-        while semaine_iso(candidat) in semaines_reservees:
-            candidat += timedelta(days=7)
+        candidat = date.fromisoformat(e['date']) if e.get('date') else premier_samedi
+        if not e.get('date'):
+            while semaine_iso(candidat) in semaines_reservees:
+                candidat += timedelta(days=7)
         reserver_cicatrice(e, candidat)
 
     # Une décision éditoriale peut fixer quelques créneaux ordinaires sans figer tout le calendrier.
@@ -173,6 +177,8 @@ def construire():
     slug_w39 = 'tests-verts-et-regle-des-trois-passes'
     if slug_w39 in publies:
         p = publies[slug_w39]
+        if p['titre'] != TITRE_CICATRICE_W39:
+            raise SystemExit('titre signé W39 divergent')
         if p['date'] != DATE_RATTRAPAGE or p['format'] != 'thought-leadership' or p['famille'] != 'ia-generative-agents':
             raise SystemExit(f'cicatrice W39 hors contrat : {slug_w39}')
         # Le créneau du 26/09 porte le même titre et la même requête : remplacer le
@@ -180,13 +186,17 @@ def construire():
         ancien = next((e for e in backlog if e['slug'] == 'trois-bugs-que-des-tests-verts-n-ont-pas-vus'), None)
         inscrit = next((e for e in backlog if e['slug'] == slug_w39), None)
         if ancien is not None:
+            if ancien['titre'] != TITRE_CICATRICE_W39:
+                raise SystemExit('titre signé W39 du backlog divergent')
             if inscrit or ancien['requete'] != p['requete'] or ancien.get('date') != '2026-09-26' or ancien.get('serie') != 'cicatrices' or ancien['slug'] in publies:
                 raise SystemExit('cicatrice W39 planifiée divergente ou déjà publiée')
             backlog.remove(ancien)
-        if inscrit is not None and (inscrit['requete'] != p['requete'] or inscrit.get('date') != RATTRAPAGE_W39[slug_w39] or inscrit.get('serie') != 'cicatrices' or inscrit['titre'] != p['titre']):
+        if inscrit is not None and inscrit['titre'] != TITRE_CICATRICE_W39:
+            raise SystemExit('titre signé W39 du backlog divergent')
+        if inscrit is not None and (inscrit['requete'] != p['requete'] or inscrit.get('date') != RATTRAPAGE_W39[slug_w39] or inscrit.get('serie') != 'cicatrices'):
             raise SystemExit('cicatrice W39 inscrite hors contrat')
         if inscrit is None:
-            backlog.append({'slug': slug_w39, 'titre': p['titre'], 'requete': p['requete'], 'secondaires': [], 'famille': p['famille'], 'role': 'direction-associes', 'intent': 'diagnostiquer', 'funnel': 'MOFU', 'format': p['format'], 'preuve': 'cicatrice W39 signée, publiée le 28/09', 'sourcesOfficielles': [], 'priorite': 1, 'serie': 'cicatrices', 'date': DATE_RATTRAPAGE})
+            backlog.append({'slug': slug_w39, 'titre': TITRE_CICATRICE_W39, 'requete': p['requete'], 'secondaires': [], 'famille': p['famille'], 'role': 'direction-associes', 'intent': 'diagnostiquer', 'funnel': 'MOFU', 'format': p['format'], 'preuve': 'cicatrice W39 signée, publiée le 28/09', 'sourcesOfficielles': [], 'priorite': 1, 'serie': 'cicatrices', 'date': DATE_RATTRAPAGE})
     for i, e in enumerate(backlog):
         e['rang_famille'] = sum(1 for x in backlog[:i] if x['famille'] == e['famille'])
     # Le pilier transversal est désigné par son slug : des grappes spécialisées peuvent aussi
