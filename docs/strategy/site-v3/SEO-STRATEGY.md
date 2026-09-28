@@ -7,7 +7,7 @@ par semaine, territoire élargi à toute tâche automatisable du cabinet). **Rem
 
 Ce dossier remplace, pour l'éditorial, la stratégie v2 (`../site-v2/SEO-STRATEGY.md`, trois piliers
 dont deux sur la production sociale) et les notes du coffre. Les pages commerciales suivent la
-charte de message (`.agents/product-marketing.md` v3), pas ce document.
+charte de message (`.agents/product-marketing.md` v4, angle v3 conservé), pas ce document.
 
 ## 1. Le constat, relu le 19/09
 
@@ -22,9 +22,9 @@ automatise ce qu'il fait déjà, sans changer de logiciel, avec une règle écri
 d'essai fictif, et une validation humaine.** Le sujet n'est pas « la production sociale » : c'est
 **la tâche répétitive du cabinet**, où qu'elle se trouve.
 
-Le terme de catégorie mesuré reste **« automatisation cabinet comptable »** (10 recherches par mois,
-seule requête de catégorie chiffrée, relevé DataForSEO du 12/09/2026). La page de service
-`/automatisation-cabinet-comptable` le porte. Le pilier
+Le terme de catégorie mesuré reste **« automatisation cabinet comptable »** (10 recherches par mois
+au relevé DataForSEO du 12/09/2026, repère de catégorie et non inventaire des volumes mesurés).
+La page de service `/automatisation-cabinet-comptable` le porte. Le pilier
 `/blog/automatiser-un-cabinet-comptable-la-carte-des-taches` le porte côté éditorial et vise la même
 requête (`mesures/registre-requetes.json`).
 
@@ -98,7 +98,12 @@ formulation actuelle de l'angle, ce qui appelle une réécriture de l'angle avan
 - **Le haut de page appartient aux éditeurs de logiciel** sur les requêtes de production comptable (chaintrust, pennylane, sage, cegid, dext, qonto reviennent d'une famille à l'autre, `mesures/questions-2026-09-19.md`). Le détecteur automatique d'intention « logiciel » n'a pourtant rougi sur aucune des 59 pages : il exige que la moitié des cinq premiers domaines figure dans une liste fermée d'éditeurs (`DOMAINES_LOGICIEL`, `scripts/lib/seo-questions.mjs`), et cette liste ne connaît pas tous les acteurs rencontrés. **La lecture de l'intention reste donc humaine**, sur le rapport, pas sur le champ.
 - **Le recouvrement entre familles reste faible** : au plus deux domaines partagés, jamais quatre (`cluster-plan.md`). Une famille reste un cluster distinct, interlié par le pilier.
 
-Volumes : non mesurés, hors les deux requêtes chiffrées du 12/09. Ne pas en inventer.
+Ce lot **questions de blog du 19/09** n'a pas mesuré les volumes Ads des 704 amorces.
+Le relevé **commercial du 20/09** (`mesures/audience-requetes-2026-09-20.json`,
+`AUDIT-AUDIENCE-REQUETES-2026-09-20.md`) chiffre plusieurs anciennes variantes nues,
+notamment notes de frais et factures fournisseurs, mais retient des requêtes qualifiées
+non chiffrées pour les cinq pages de tâche. Aucun transfert de volume de l'ancienne
+variante vers la requête propriétaire ; `null` n'est ni zéro demande ni zéro lecteur.
 
 ## 5 bis. Ce que la demande mesurée a changé le 19/09
 
@@ -108,7 +113,7 @@ priorités du backlog sont passées de 124 / 60 / 52 à **32 / 9 / 195**.
 
 Quatre enseignements, qui commandent la réécriture des angles :
 
-1. **Le langage du diagnostic n'a aucun volume.** Les formulations par lesquelles nous décrivons le problème (le manque de collaborateurs, les tâches répétitives, le temps gagné) ne sont pas tapées. Une amorce comme « cabinet comptable surcharge de travail » ne rend que deux suggestions, dont la sienne. Écrire pour le diagnostic, c'est écrire pour personne.
+1. **Le langage du diagnostic est peu représenté dans cet échantillon d'autocomplétion.** Une amorce comme « cabinet comptable surcharge de travail » ne rendait que deux suggestions, dont la sienne, au relevé du 19/09. Cela ne mesure ni le volume Ads ni l'absence de lecteur ; tester la SERP, l'intention cabinet et Search Console avant de prioriser ou d'écarter un angle de diagnostic.
 2. **Les têtes de requête portent une autre intention que la nôtre** : chercher un logiciel (le haut de page des familles de production), la situation d'un salarié (les requêtes de bulletin et de contrat), ou un modèle de document à télécharger (les recherches associées en « PDF », « Excel », « exemple », « modèle »).
 3. **« Manuel de procédures cabinet expertise comptable » est le mot du marché pour ce que nous appelons écrire le savoir-faire.** L'amorce rend deux suggestions, ses secondaires jusqu'à sept, et le haut de page est tenu par des vendeurs de trames, pas par des méthodes (`mesures/questions-2026-09-19.md`). C'est la porte d'entrée lexicale de l'angle de marque, et un article de priorité 1 la vise déjà au calendrier.
 4. **Les requêtes de métier précises tiennent.** « crm dsn » rend dix suggestions, jusqu'à la question hyper-spécifique (où trouver le compte rendu dans Net-entreprises, les codes 120, 114, 124, la substitution). Là où le vocabulaire est celui du praticien, la demande existe.
@@ -177,11 +182,16 @@ backlog une raison datée et vérifiable (urgence réglementaire sourcée, parco
 les étapes dépendent, ou fenêtre métier), distincte pour le pôle et pour le format. Elle ne dispense
 ni de requête mesurée, ni de revue, ni du plafond. **État du candidat au 28/09** :
 `build-cluster-plan.py` vérifie l'alternance pôle/format sur les ordinaires non figés,
-préserve les dates publiées et `datePlanifiee`, et n'accepte qu'une exception datée et motivée
+préserve les dates publiées et `datePlanifiee` comme traces historiques, et n'accepte qu'une exception datée et motivée
 pour le champ effectivement en conflit (`exceptionAlternance.pole` ou `.format`). Le stock
 peut différer un angle prioritaire sans changer sa mesure. Le contrôle `--check` et ses
 tests positifs et négatifs s'appliquent au candidat ; seule son intégration autorisée
-permettra de le dire effectif sur `origin/main`.
+permettra de le dire effectif sur `origin/main`. Au 28/09, les créneaux `planned` du
+22, 24 et 26/09 sont **manqués, à replanifier**, non publiables avec leur ancienne date ;
+la correction code et la régénération des dérivés appartiennent à la carte dev suivante.
+On ne rattrape qu'après recette, source, revue et sceau valides, sur une nouvelle date autorisée
+et dans les plafonds de la semaine effective. Aucun report ne force quatre sorties ni ne crée
+une Cicatrice ; une date réservée échue reste dans l'historique, pas comme autorisation.
 
 ## 8. Mesure : des seuils de décision datés, pas des prévisions
 

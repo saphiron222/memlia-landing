@@ -7,7 +7,7 @@ depuis le 17/09 (`JOURNAL.md`, lignes des 16 et 17/09). Ce dossier décrit ce qu
 
 Trois sources font foi et ne sont pas redéfinies ici :
 
-- `.agents/product-marketing.md` : la charte de message (v3 du 17/09/2026, §2 bis « la règle écrite » du 19/09/2026), pour toute surface publique.
+- `.agents/product-marketing.md` : la charte de message **v4 du 21/09/2026** (angle v3 du 17/09 et §2 bis « la règle écrite » du 19/09), pour toute surface publique ; §7 ter garde le go individuel d'un récit signé.
 - `src/data/familles.ts` : la taxonomie, 60 familles en 12 pôles, `audit-legal` listée et non ouverte (comptées dans le fichier).
 - `backlog-v3.json` : les angles et leur demande mesurée, 243 entrées dont le pilier (comptées dans le fichier) ; le plan ajoute trois articles historiques hors backlog.
 
@@ -23,7 +23,7 @@ désigner l'offre.
 2. [Autorité commerciale](SEO-AUTORITE-COMMERCIALE-2026-09-20.md) : décision d'architecture accueil → pilier → routes filles, verdict SERP par requête, profondeur 12/30/90, E-E-A-T, backlinks et procédure d'indexation.
 3. [Concurrents](COMPETITOR-ANALYSIS.md) : qui occupe chaque famille, en quel format, et l'espace libre. Relevé du 16/09, non remesuré depuis : à lire comme daté.
 4. [Architecture](SITE-STRUCTURE.md) : l'arbre du site en ligne, les règles d'URL, le maillage tel que le cron d'intégrité le contrôle, ce que le code fait déjà.
-5. [Accès commerciaux](ARCHITECTURE-ACCES-COMMERCIAUX.md) : l'espace `/automatisation/`, les pages de service mesurées, le type comparatif, le gabarit, le contrat de lien et la règle anti-cannibalisation arrêtés le 20/09.
+5. [Accès commerciaux](ARCHITECTURE-ACCES-COMMERCIAUX.md) : l'espace `/automatisation/`, le gabarit et la règle anti-cannibalisation ; **les requêtes/volumes/ordres des §§2–3 et 10 sont historiques et supersédés**. Lire le contrat courant en addendum, les frontmatters des services et [l'audit d'audience du 20/09](AUDIT-AUDIENCE-REQUETES-2026-09-20.md).
 6. [Glossaire](GLOSSARY-PLAN.md) : 53 termes (23 historiques, vagues de 20 puis 10), quatre réglementaires reportés, déclencheur de revue et chaîne de preuve.
    [Boucle des outils](OUTILS-BOUCLE.md) : seuils J+28/J+90 préenregistrés, quatrième outil suivi à part et télémétrie locale non collectée.
 7. [Exécution](IMPLEMENTATION-ROADMAP.md) : l'état au 19/09, le cycle réel d'un article aujourd'hui, ce qui reste et à quelle échéance.
@@ -58,7 +58,7 @@ relevé historique par une valeur reconstruite aujourd'hui.
 ## Ce qui est fait
 
 - **Le site est en ligne** et sert la copy v3 ; les cinq routes de tâche actuellement publiées sont distinctes des routes service encore candidates, exclues du sitemap tant que leur statut n'est pas `publie`.
-- **Neuf fichiers d'articles publiés** sont présents dans `src/content/blog/` au HEAD du 28/09. Leur publication n'implique pas tous leur indexation : l'article de saisie est momentanément `noindex` (`src/data/site.mjs`, incident FE).
+- **Neuf fichiers d'articles publiés** sont présents dans `src/content/blog/` au HEAD du 28/09. Présence au dépôt, exclusion du sitemap et indexabilité du HTML sont trois faits distincts : l'article de saisie FE est exclu du sitemap, mais son HTML statique est encore `index, follow` sur le candidat local ; la suspension documentée dans `INCIDENT-FE-2026-09-27.md` repose sur une fonction de bord et ne prouve pas l'état servi en production. Voir `SITE-STRUCTURE.md` pour la décision de correction avant livraison.
 - **La cadence est codée** : 4 par semaine ISO, 2 par jour au plus, du lundi au jeudi (`CANDIDATS_PAR_SEMAINE_MAX`, `CANDIDATS_PAR_JOUR_MAX` dans `scripts/lib/blog-pipeline.mjs`).
 - **Le mécanisme est nommé** : « la règle écrite » (charte §2 bis). La forge refuse de matérialiser un article daté à partir du 19/09/2026 qui ne porte pas `## La règle écrite` et `## Rejoué sur le jeu fictif` (`DEBUT_REGLE_ECRITE` et `verifierRegleEcrite`, `scripts/blog-forge.mjs`).
 - **Le glossaire porte 53 termes** (comptés dans `src/data/glossary.ts` ; `tests/proof/test_glossary.py` en exige exactement 53) : 23 historiques, 20 de la vague 1 et 10 de la vague 2.
@@ -123,10 +123,13 @@ résultats (`mesures/questions-2026-09-19.json`).
 
 ## Limites de ce dossier
 
-Volumes de recherche : non mesurés, hors « automatisation cabinet comptable » et « compte rendu
-métier DSN » (10 par mois chacune, relevé DataForSEO du 12/09/2026, cité par `SEO-STRATEGY.md`).
-L'autocomplétion est un seuil, pas un compte : une liste vide dit qu'une requête est sous le seuil
-de volume, pas qu'elle vaut zéro, et une panne de l'instrument n'est jamais comptée comme un zéro
+Pour les **questions du blog relevées le 19/09**, aucun volume Ads n'a été mesuré dans ce lot ;
+les deux requêtes chiffrées le 12/09 étaient des repères antérieurs, pas un inventaire exhaustif.
+Le relevé commercial DataForSEO du **20/09** (`mesures/audience-requetes-2026-09-20.json`)
+chiffre aussi des variantes nues, dont notes de frais et factures fournisseurs, mais ne chiffre
+pas les cinq requêtes de tâche qualifiées retenues : ne jamais transférer leur volume aux pages.
+L'autocomplétion est un signal de seuil, pas un compte : une liste vide ou un volume `null` ne
+prouvent pas l'absence de lecteur, et une panne de l'instrument n'est jamais comptée comme un zéro
 (`RUNBOOK-SEO.md` §3 bis). Les rangs de memlia.fr viennent des pages de résultats, pas de Search
 Console, qui n'a encore aucune ligne de requête sur les articles. Le recouvrement entre familles
 est lu sur des relevés qualitatifs, pas sur un top 10 organique exact : les regroupements sont des
