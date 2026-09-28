@@ -9,6 +9,7 @@ import { Agent, fetch as fetchUndici } from 'undici';
 import { parse as parseYaml } from 'yaml';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
 import { retirerPreuvesInline } from './blog-proof-figures.mjs';
+import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
 import { reviewBindingErrors, reviewSha256 } from './blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
 
@@ -169,6 +170,7 @@ const SENSITIVE_TEXT_RULES = Object.freeze([
   ['rgpd', /\b(?:rgpd|reglement general sur la protection des donnees|donnees? personnelles?|cnil)\b/],
 ]);
 const NORMATIVE_LANGUAGE = /\b(?:doit|doivent|devra|devront|obligatoire|interdit(?:e|es|s)?|autorise(?:e|es|s)?|exige(?:e|es|s)?|tenu(?:e|es|s)? de|au plus tard|delai(?:s)? de|est due|sont dues)\b/;
+const RGPD_OBLIGATION_LANGUAGE = /\b(?:doit|doivent|devra|devront|obligatoir(?:e|es)|obligation(?:s)?|interdit(?:e|es|s)?|exige(?:e|es|s)?|tenu(?:e|es|s)? de)\b/;
 const NORMATIVE_PARTIES = /\b(?:employeurs?|salaries?|cotisants?|declarants?|contribuables?|assujettis?)\b/;
 const SUPPORT_STOP_WORDS = new Set([
   'alors', 'avec', 'avoir', 'cette', 'comme', 'dans', 'depuis', 'elle', 'elles', 'entre', 'etre',
@@ -1100,7 +1102,10 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
         errors.push(`claims.contentUnits.${unit?.id ?? 'sans-id'} doit relier au moins une affirmation vérifiée : cette unité contient une matière sensible visible.`);
       }
       const linkedClaims = (claims?.claims ?? []).filter((claim) => unit?.claimIds?.includes(claim?.id));
-      if (!linkedClaims.some((claim) => SENSITIVE_CLAIM_TYPES.has(claim?.type))) {
+      const unitSignals = sensitiveMatter.unitSignals.get(unit.id) ?? [];
+      const rgpdWithoutObligation = unitSignals.length === 1 && unitSignals[0] === 'rgpd'
+        && !RGPD_OBLIGATION_LANGUAGE.test(normalizedDetectionText(unit.text));
+      if (!rgpdWithoutObligation && !linkedClaims.some((claim) => SENSITIVE_CLAIM_TYPES.has(claim?.type))) {
         errors.push(`claims.contentUnits.${unit?.id ?? 'sans-id'} contient une matière sensible visible (${sensitiveMatter.unitSignals.get(unit.id).join(', ')}) mais aucun claim.type sensible canonique.`);
       }
     }
@@ -1686,7 +1691,12 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   if (existsSync(recipeBodyPath)) {
     const recipeBody = readFileSync(recipeBodyPath, 'utf8').trim();
     const articleBody = retirerPreuvesInline(markdownBody(markdown));
-    const bodiesMatch = reviewSha256(recipeBody) === reviewSha256(articleBody);
+    let bodiesMatch = false;
+    try {
+      bodiesMatch = reviewSha256(corpsSansTitreDuplique(recipeBody, manifest?.title)) === reviewSha256(articleBody);
+    } catch { // Un H1 différent du titre signé ne peut pas être ignoré.
+      bodiesMatch = false;
+    }
     if (!bodiesMatch) errors.push('Recette et article divergent : empreinte du corps non conforme.');
     const legacyBaselinePath = join(absoluteRoot, 'editorial/legacy-review-baseline.json');
     const legacyBaseline = manifest?.editorialStatus === 'publie' && !independentReview?.subject
