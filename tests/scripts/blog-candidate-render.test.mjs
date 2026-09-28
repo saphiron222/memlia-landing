@@ -70,10 +70,12 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
     const fixtureBody = DEFAULT_BODY.replace('Voir [la méthode]', `
 <figure data-blog-proof="fixture-frontiere">
   <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="640" height="360" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif · capture du 2026-09-20</figcaption>
 </figure>
 
 <figure data-blog-proof="fixture-refus">
   <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="640" height="360" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif · capture du 2026-09-20</figcaption>
 </figure>
 
 Voir [la méthode]`);

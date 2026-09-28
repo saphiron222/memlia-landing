@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { auditerContratBlog } from '../../scripts/verify-blog-contract.mjs';
@@ -29,11 +30,12 @@ function pageArticle({
   title = TITRE_ONGLET,
   lienRubrique = true,
   legendeTechnique = false,
+  legendePreuve = 'Source : jeu d’essai fictif · capture du 2026-09-20',
 } = {}) {
   const sections = Array.from({ length: 6 }, (_, index) => `<h2 id="section-${index + 1}">Section ${index + 1}</h2><p>Contenu.</p>`).join('');
   const liens = Array.from({ length: 6 }, (_, index) => `<li><a href="#section-${index + 1}">Section ${index + 1}</a></li>`).join('');
   const technique = legendeTechnique ? '<p>Ouvrir la preuve en grand. Source : recette scellée ; capture du 20 septembre 2026.</p>' : '';
-  return `<!doctype html><html><head><title>${title}</title><meta name="description" content="${description}"><meta property="og:title" content="${ogTitle}"><script type="application/ld+json">${JSON.stringify({ '@graph': [{ '@type': 'BlogPosting', headline }] })}</script></head><body><article><h1>${TITRE}</h1>${lienRubrique ? '<a data-blog-rubrique href="/blog/paie-dsn">Paie / DSN</a>' : ''}${sommaire ? `<nav data-blog-toc aria-label="Sommaire"><ol>${liens}</ol></nav>` : ''}<div class="article-corps">${Array.from({ length: preuves }, (_, index) => preuve(index + 1)).join('')}${technique}${sections}</div></article></body></html>`;
+  return `<!doctype html><html><head><title>${title}</title><meta name="description" content="${description}"><meta property="og:title" content="${ogTitle}"><script type="application/ld+json">${JSON.stringify({ '@graph': [{ '@type': 'BlogPosting', headline }] })}</script></head><body><article><h1>${TITRE}</h1>${lienRubrique ? '<a data-blog-rubrique href="/blog/paie-dsn">Paie / DSN</a>' : ''}${sommaire ? `<nav data-blog-toc aria-label="Sommaire"><ol>${liens}</ol></nav>` : ''}<div class="article-corps">${Array.from({ length: preuves }, (_, index) => legendePreuve === null ? preuve(index + 1) : preuve(index + 1).replace('</figure>', `<figcaption>${legendePreuve}</figcaption></figure>`)).join('')}${technique}${sections}</div></article></body></html>`;
 }
 
 function fixture(options = {}) {
@@ -111,6 +113,61 @@ test('clause 1 — deux images de preuve avec alternative accessible en plus de 
 
 test('clause 1 — une légende technique publique fait échouer le contrat', () => {
   temoinClause(1, { legendeTechnique: true });
+});
+
+test('clause 1 — la source et la date informatives sont permises, pas une attestation ou consigne', () => {
+  const valide = 'Source : jeu d’essai fictif · capture du 2026-09-20';
+  const root = fixture({ legendePreuve: valide });
+  try {
+    assert.deepEqual(auditer(root).erreurs, []);
+    for (const mutation of [
+      'Source : jeu d’essai fictif',
+      'Capture du 2026-09-20',
+      'Source : recette scellée · capture du 2026-09-20',
+      'Source : reconstitution fidèle de la recette scellée · capture du 2026-09-20',
+      'Ouvrir la preuve en grand. ' + valide,
+      'Source : jeu d’essai fictif · capture du 2026-13-90',
+      'Source : jeu d’essai fictif · capture du 2099-01-01',
+      'Source :   · capture du 2026-09-20',
+    ]) {
+      writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), pageArticle({ legendePreuve: mutation }));
+      assert.match(auditer(root).erreurs.join('\n'), /clause 1/, mutation);
+    }
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('clause 1 — nouvelles figures sans légende refusées, ancien dossier épinglé conservé', () => {
+  const root = fixture({ brouillon: true, legendePreuve: null });
+  try {
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+    writeFileSync(join(root, 'src/content/blog', `${SLUG}.md`), sourceArticle());
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+    const recette = 'recette historique', revue = 'revue historique';
+    const hash = (value) => createHash('sha256').update(value).digest('hex');
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), recette);
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), revue);
+    mkdirSync(join(root, 'editorial'), { recursive: true });
+    writeFileSync(join(root, 'editorial/legacy-review-baseline.json'), JSON.stringify({ articles: {
+      [SLUG]: { recipeSha256: hash(recette), reviewSha256: hash(revue) },
+    } }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'baseline seule insuffisante');
+    mkdirSync(join(root, 'editorial/articles', SLUG, 'preuves'), { recursive: true });
+    const source = sourceArticle();
+    writeFileSync(join(root, 'editorial/articles', SLUG, 'preuves/publication.json'), JSON.stringify({
+      kind: 'publication-scellee', candidateSlug: SLUG, articleSha256: hash(source),
+    }));
+    assert.deepEqual(auditer(root).erreurs, []);
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), 'recette republiée');
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), recette);
+    writeFileSync(join(root, 'src/content/blog', `${SLUG}.md`), `${source}\nNouvelle version`);
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('clause 2 — dès six H2, le sommaire porte toutes les ancres', () => {
