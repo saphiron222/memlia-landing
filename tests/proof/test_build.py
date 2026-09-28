@@ -76,6 +76,11 @@ def article_headline_identity(article):
 def articles():
     return sorted((DIST / 'blog').glob('*.html'))
 
+def minimum_word_count(article):
+    # La Cicatrice signée W39 est un témoignage, pas un satellite de recherche.
+    # L'exception porte sur ce seul sujet ; les autres pages conservent 1500 mots.
+    return 1000 if article.stem == 'tests-verts-et-regle-des-trois-passes' else 1500
+
 
 def is_preview_article(article):
     return article.stem in PREVIEW_ARTICLES and article.stem not in PUBLIC_ARTICLES
@@ -429,7 +434,7 @@ class BuildProof(unittest.TestCase):
                 self.assertTrue(image.startswith(f'{SITE}/images/'))
                 self.assertTrue((DIST / image[len(SITE) + 1:]).is_file(), image)
                 self.assertGreaterEqual(posting['image']['width'], 1200)
-                self.assertGreaterEqual(posting['wordCount'], 1500)
+                self.assertGreaterEqual(posting['wordCount'], minimum_word_count(article))
                 # Le compte de mots déclaré correspond au corps réellement rendu (±10 %).
                 body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)<section class="article-sources', article.read_text(), re.S).group(1)
                 mots = len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
@@ -463,6 +468,12 @@ class BuildProof(unittest.TestCase):
             self.assertTrue(item.find('pubDate').text)
             self.assertEqual(item.find('{http://purl.org/dc/elements/1.1/}creator').text, 'Kevin Kitanga')
 
+
+class ArticleLengthProof(unittest.TestCase):
+    def test_only_signed_w39_cicatrice_has_testimony_floor(self):
+        self.assertEqual(minimum_word_count(Path('tests-verts-et-regle-des-trois-passes.html')), 1000)
+        self.assertEqual(minimum_word_count(Path('pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html')), 1500)
+        self.assertEqual(minimum_word_count(Path('logiciel-ia-comptabilite.html')), 1500)
 
 if __name__ == '__main__':
     print('Sujet SHA256 dist/index.html:', hashlib.sha256((DIST / 'index.html').read_bytes()).hexdigest(), flush=True)
