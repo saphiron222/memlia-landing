@@ -175,6 +175,9 @@ test('le rattrapage W39 est limité au slug signé les 27 et 28 septembre sans s
   assert.throws(() => verifierPlafonds([], '2026-09-27', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /paraît le samedi/);
   assert.throws(() => verifierPlafonds([{ date: '2026-09-26', serie: 'cicatrices' }], '2026-09-27', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
   assert.throws(() => verifierPlafonds([{ date: '2026-09-27', serie: 'cicatrices', slug }], '2026-09-28', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  const tardive = [{ slug, date: '2026-09-28', serie: 'cicatrices', status: 'pret-preview' }];
+  assert.throws(() => verifierPlafonds(tardive, '2026-09-26', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /déjà planifiée la semaine 2026-W39/);
+  assert.throws(() => verifierPlafonds(tardive, '2026-09-27', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
 });
 
 test('le découpage en unités et les jetons suivent le pipeline', () => {
@@ -275,6 +278,12 @@ test('la réinscription d’un candidat existant ne contourne pas le plafond des
     const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
     const initiale = JSON.parse(readFileSync(recettePath, 'utf8'));
     writeFileSync(recettePath, JSON.stringify({ ...initiale, date: '2026-09-26', serie: 'cicatrices' }));
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour }),
+      /déjà planifiée la semaine 2026-W39/,
+    );
+    queue.candidates[1] = { slug: 'tests-verts-et-regle-des-trois-passes', date: '2026-09-28', serie: 'cicatrices', status: 'pret-preview' };
+    writeFileSync(queuePath, JSON.stringify(queue));
     await assert.rejects(
       materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour }),
       /déjà planifiée la semaine 2026-W39/,

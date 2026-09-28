@@ -83,7 +83,9 @@ export function verifierPlafonds(actifs, date, { serie = null, slug = null } = {
       throw new Error(`Une cicatrice paraît le samedi ; ${date} n’est pas un samedi.`);
     }
     const semaineControlee = rattrapageW39 ? '2026-W39' : semaine;
-    if (actifs.some((candidate) => candidate.serie === 'cicatrices' && isDate(candidate.date) && semaineIso(candidate.date) === semaineControlee)) {
+    if (actifs.some((candidate) => candidate.serie === 'cicatrices' && isDate(candidate.date)
+      && (candidate.slug === 'tests-verts-et-regle-des-trois-passes' && candidate.date === '2026-09-28'
+        ? '2026-W39' : semaineIso(candidate.date)) === semaineControlee)) {
       throw new Error(`Une cicatrice est déjà planifiée la semaine ${semaineControlee} ; le plafond est d’une cicatrice par semaine ISO.`);
     }
     return;
