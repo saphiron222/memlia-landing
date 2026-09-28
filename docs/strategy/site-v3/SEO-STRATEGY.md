@@ -182,13 +182,15 @@ backlog une raison datée et vérifiable (urgence réglementaire sourcée, parco
 les étapes dépendent, ou fenêtre métier), distincte pour le pôle et pour le format. Elle ne dispense
 ni de requête mesurée, ni de revue, ni du plafond. **État du candidat au 28/09** :
 `build-cluster-plan.py` vérifie l'alternance pôle/format sur les ordinaires non figés,
-préserve les dates publiées et `datePlanifiee` comme traces historiques, et n'accepte qu'une exception datée et motivée
+préserve les dates publiées et les réservations futures `datePlanifiee`, et n'accepte qu'une exception datée et motivée
 pour le champ effectivement en conflit (`exceptionAlternance.pole` ou `.format`). Le stock
 peut différer un angle prioritaire sans changer sa mesure. Le contrôle `--check` et ses
 tests positifs et négatifs s'appliquent au candidat ; seule son intégration autorisée
-permettra de le dire effectif sur `origin/main`. Au 28/09, les créneaux `planned` du
-22, 24 et 26/09 sont **manqués, à replanifier**, non publiables avec leur ancienne date ;
-la correction code et la régénération des dérivés appartiennent à la carte dev suivante.
+permettra de le dire effectif sur `origin/main`. Au 28/09, les créneaux du 22 et du 24/09
+restent tracés dans `dateManquee` : leurs dates proposées portent `a-replanifier`, jamais
+`planned` avant décision éditoriale. Le 26/09 (Cicatrice) reste à sa date historique au
+statut `manque`, sans rattrapage inventé. Le préflight refuse les `planned` échus et
+les réservations ordinaires expirées ; les quatre dérivés sont régénérés par le script.
 On ne rattrape qu'après recette, source, revue et sceau valides, sur une nouvelle date autorisée
 et dans les plafonds de la semaine effective. Aucun report ne force quatre sorties ni ne crée
 une Cicatrice ; une date réservée échue reste dans l'historique, pas comme autorisation.
