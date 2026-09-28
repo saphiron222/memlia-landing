@@ -120,11 +120,10 @@ Quatre enseignements, qui commandent la réécriture des angles :
 3. **« Manuel de procédures cabinet expertise comptable » est une formulation à tester pour écrire le savoir-faire.** L'amorce rend deux suggestions, ses secondaires jusqu'à sept, et le haut de page est tenu par des vendeurs de trames, pas par des méthodes (`mesures/questions-2026-09-19.md`). C'est une entrée lexicale possible pour l'angle de marque, déjà visée par un article de priorité 1 au calendrier ; confirmer l'intention cabinet avant d'en déduire une audience.
 4. **Certaines formulations de métier produisent des suggestions.** « crm dsn » en rend dix dans le relevé du 19/09, dont « crm dsn de substitution » et les codes 120, 119, 124, 121 et 34 (`mesures/questions-2026-09-19.json`, `autocompletion["crm dsn"]`). C'est un signal sur les formulations testées, non une mesure de volume Ads, de demande ou d'audience cabinet ; confronter la SERP, l'intention cabinet et Search Console avant d'en tirer une décision de page.
 
-Ce que cela change dans la mécanique : un angle de priorité 1 **sans signal primaire ou SERP historique daté**
-fait échouer `build-cluster-plan.py --check`, et C2 signale chaque semaine une requête primaire
+Ce que cela change dans la mécanique : `build-cluster-plan.py --check` contrôle aussi les P1 déjà publiées du backlog, sans réécrire leurs articles. Il exige une date et un signal primaire positif, sauf pour le seul angle IA publié « intelligence artificielle et métier comptable » : ses deux formulations à zéro et ses quatre questions doivent correspondre à la SERP par famille « former l'équipe à l'IA cabinet comptable » du 19/09 (`mesures/questions-2026-09-19.json`). La date 21/09 précédemment inscrite sur cet angle ne provenait pas de ce relevé et a été rectifiée ; les trois articles historiques synthétiques sans mesure et la série sont hors gate. C2 signale chaque semaine une requête primaire
 testée sans suggestion relevée (`RUNBOOK-SEO.md` §3 bis). Une date de relevé seule n'implique pas
 une suggestion ; une liste vide ne prouve pas l'absence de demande. Ce que cela ne change pas : la cadence, confirmée à
-quatre par semaine le 19/09, et les six articles publiés, qui ne bougent pas avant une lecture
+quatre par semaine le 19/09, et les articles publiés, qui ne bougent pas avant une lecture
 Search Console utile.
 
 ## 6. La différenciation, article par article

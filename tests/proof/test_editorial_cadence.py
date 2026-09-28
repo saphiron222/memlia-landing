@@ -147,6 +147,8 @@ class EditorialCadenceProof(unittest.TestCase):
         self.assertIn('sans mesurer la demande ni le volume de chaque angle', methode)
         self.assertIn('Aucune suggestion relevée ne prouve une absence de demande', methode)
         self.assertNotIn('demande mesurée par angle', methode)
+        self.assertIn('P1 du backlog, publiées comprises', methode)
+        self.assertIn('questions identiques à la SERP par famille du 19/09', methode)
         self.assertIn(methode, texte)
 
     def test_exemple_crm_dsn_et_consigne_restent_bornes_au_releve(self):
@@ -176,6 +178,7 @@ class EditorialCadenceProof(unittest.TestCase):
             PLAN.ecrire_calendrier(donnees[3], donnees[4], donnees[1], donnees[0])
             regle = (Path(dossier) / 'CONTENT-CALENDAR.md').read_text(encoding='utf-8').splitlines()[6]
         self.assertIn('3 : aucune suggestion relevée sur les formulations testées', regle)
+        self.assertIn("sauf l'angle IA publié conservé en P1", regle)
         self.assertIn('ne permet de conclure ni au volume de recherche, ni à la demande, ni à l’audience', regle)
         self.assertNotIn('aucune demande mesurée', regle)
 
@@ -198,6 +201,43 @@ class EditorialCadenceProof(unittest.TestCase):
         essai = deepcopy(donnees)
         angle = next(e for e in essai[4] if e['slug'] == slug)
         angle['demande'] = {**historique['demande']}
+        erreurs, _, _ = PLAN.verifier(*essai)
+        self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
+
+    def test_ia_publiee_exige_sa_serp_historique_exacte_sans_modifier_la_publication(self):
+        import json
+        donnees, erreurs, _, _ = construire_et_verifier()
+        self.assertEqual(erreurs, [])
+        slug = 'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'
+        original = next(e for e in donnees[4] if e['slug'] == slug)
+        self.assertEqual(original['statut'], 'published')
+        mesure = json.loads((PLAN.ICI / 'mesures/questions-2026-09-19.json').read_text(encoding='utf-8'))
+        questions = mesure['serp']["former l'équipe à l'IA cabinet comptable"]['questions']
+        self.assertEqual(original['demande']['questions'], questions)
+        self.assertEqual(original['demande']['mesureeLe'], '2026-09-19')
+        for mutation in ({'mesureeLe': None}, {'mesureeLe': '2026-09-21'},
+                         {'questions': []}, {'questions': ['question inventée']},
+                         {'requete': None}, {'secondaires': None}):
+            essai = deepcopy(donnees)
+            angle = next(e for e in essai[4] if e['slug'] == slug)
+            angle['demande'].update(mutation)
+            with self.subTest(mutation=mutation):
+                erreurs, _, _ = PLAN.verifier(*essai)
+                self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
+                self.assertEqual(angle['statut'], 'published')
+                self.assertEqual(angle['date'], original['date'])
+        essai = deepcopy(donnees)
+        angle = next(e for e in essai[4] if e['slug'] == slug)
+        angle['statut'] = 'planned'
+        erreurs, _, _ = PLAN.verifier(*essai)
+        self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
+
+        # Une autre P1 déjà publiée n'est pas dispensée par le court-circuit historique.
+        autre = next(e for e in donnees[4] if e['statut'] == 'published' and
+                     e['priorite'] == 1 and e['slug'] != slug and not e.get('historique') and e.get('demande'))
+        essai = deepcopy(donnees)
+        angle = next(e for e in essai[4] if e['slug'] == autre['slug'])
+        angle['demande']['requete'] = None
         erreurs, _, _ = PLAN.verifier(*essai)
         self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
 
