@@ -446,17 +446,26 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     # seuls les trois historiques synthétiques sans mesure et la série sont hors gate.
     # La SERP du 19/09 est relevée par famille, pas sur la requête de cet angle IA.
     questions_ia = json.loads((ICI / 'mesures/questions-2026-09-19.json').read_text(encoding='utf-8'))['serp']["former l'équipe à l'IA cabinet comptable"]['questions']
-    for e in satellites:
+    cache = json.loads((ICI / 'mesures/autocompletion-cache.json').read_text(encoding='utf-8'))
+    for e in tous:
         if e.get('historique') or e.get('serie'):
             continue
         demande = e.get('demande') or {}
         signal_primaire = isinstance(demande.get('requete'), int) and demande['requete'] > 0
-        serp_historique = (e['slug'] == 'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'
-                           and e['slug'] in publies and e['statut'] == 'published'
-                           and demande.get('mesureeLe') == '2026-09-19'
-                           and demande.get('requete') == 0 and demande.get('secondaires') == 0
-                           and demande.get('questions') == questions_ia and bool(questions_ia))
-        if e['priorite'] == 1 and not (demande.get('mesureeLe') and (signal_primaire or serp_historique)):
+        if e['slug'] == 'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain':
+            # Cette P1 publiée n'a pas de primaire positif : aucune valeur ajoutée au backlog
+            # ne doit court-circuiter la seule preuve SERP historique admissible.
+            signal = (e['slug'] in publies and e['statut'] == 'published'
+                      and demande.get('mesureeLe') == '2026-09-19'
+                      and demande.get('requete') == 0 and demande.get('secondaires') == 0
+                      and demande.get('questions') == questions_ia and bool(questions_ia))
+        elif e is pilier:
+            source = cache.get(e['requete'], {})
+            signal = (signal_primaire and demande.get('mesureeLe') == source.get('le')
+                      and demande.get('requete') == len(source.get('suggestions', [])))
+        else:
+            signal = bool(demande.get('mesureeLe') and signal_primaire)
+        if e['priorite'] == 1 and not signal:
             erreurs.append(f"angle de priorité 1 sans signal mesuré : {e['slug']}")
     ordinaires = [e for e in tous if e.get('serie') != 'cicatrices']
     cicatrices = [e for e in tous if e.get('serie') == 'cicatrices']

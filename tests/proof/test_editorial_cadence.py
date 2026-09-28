@@ -217,7 +217,10 @@ class EditorialCadenceProof(unittest.TestCase):
         self.assertEqual(original['demande']['mesureeLe'], '2026-09-19')
         for mutation in ({'mesureeLe': None}, {'mesureeLe': '2026-09-21'},
                          {'questions': []}, {'questions': ['question inventée']},
-                         {'requete': None}, {'secondaires': None}):
+                         {'requete': None}, {'secondaires': None},
+                         {'requete': 2}, {'requete': 2, 'questions': []},
+                         {'requete': 2, 'questions': ['question inventée']},
+                         {'requete': 2, 'mesureeLe': '2026-09-21'}):
             essai = deepcopy(donnees)
             angle = next(e for e in essai[4] if e['slug'] == slug)
             angle['demande'].update(mutation)
@@ -240,6 +243,24 @@ class EditorialCadenceProof(unittest.TestCase):
         angle['demande']['requete'] = None
         erreurs, _, _ = PLAN.verifier(*essai)
         self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
+
+    def test_pilier_publie_exige_sa_mesure_primaire_source(self):
+        import json
+        donnees, erreurs, _, _ = construire_et_verifier()
+        self.assertEqual(erreurs, [])
+        pilier = donnees[3]
+        self.assertEqual(pilier['statut'], 'published')
+        cache = json.loads((PLAN.ICI / 'mesures/autocompletion-cache.json').read_text(encoding='utf-8'))
+        source = cache[pilier['requete']]
+        self.assertEqual(pilier['demande']['requete'], len(source['suggestions']))
+        self.assertEqual(pilier['demande']['mesureeLe'], source['le'])
+        for mutation in (None, {'mesureeLe': None}, {'requete': None},
+                         {'requete': len(source['suggestions']) + 1}, {'mesureeLe': '2026-09-21'}):
+            essai = deepcopy(donnees)
+            essai[3]['demande'] = mutation
+            with self.subTest(mutation=mutation):
+                erreurs, _, _ = PLAN.verifier(*essai)
+                self.assertTrue(any('priorité 1 sans signal mesuré' in erreur for erreur in erreurs), erreurs)
 
     def test_planifier_repartit_les_creneaux_autour_d_une_date_fixe(self):
         entries = [dict(slug=str(i), famille='f', pole=p, format=p, priorite=1, rang_famille=i)
