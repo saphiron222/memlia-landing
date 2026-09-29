@@ -242,10 +242,19 @@ function auditerArticle({ root, dist, slug, path, mesure }) {
   const articleCorps = premier(document, (node) => node.tagName === 'div' && classes(node).has('article-corps'));
 
   const medias = mediasPreuve(articleCorps);
-  const conformes = medias.filter((media) => media.conforme);
+  const idsVus = new Set();
+  const doublons = medias.filter(({ figure }) => {
+    const id = attribut(figure, 'data-blog-proof');
+    if (!id) return false; // Les figures historiques à légende n'ont pas d'identifiant.
+    if (idsVus.has(id)) return true;
+    idsVus.add(id);
+    return false;
+  });
+  const conformes = medias.filter((media) => media.conforme && !doublons.includes(media));
   if (conformes.length < 2) {
     erreurs.push(`${slug} : clause 1, ${medias.length} image(s) de preuve en plus de la couverture, ${conformes.length} avec alternative accessible ; 2 requises`);
   }
+  if (doublons.length) erreurs.push(`${slug} : clause 1, identifiant data-blog-proof répété entre figures`);
   const contenuPublic = texte(articleCorps).replace(/\s+/g, ' ').trim();
   const horsLegendes = texteSansLegendes(articleCorps);
   const historique = medias.some(({ figure }) => elements(figure, (node) => node.tagName === 'figcaption').length === 0)

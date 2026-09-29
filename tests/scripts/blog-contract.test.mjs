@@ -210,6 +210,26 @@ test('clause 1 — image directe sans légende exige provenance liée à la rece
   }
 });
 
+test('clause 1 — deux figures avec le même identifiant ne comptent pas comme deux preuves', () => {
+  const root = fixture({ legendePreuve: null });
+  try {
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({
+      inlineProofs: [{ id: 'preuve-1', alt: 'Preuve 1', source: 'jeu fictif', capturedAt: '2026-09-20' }],
+    }));
+    const figure = '<figure data-blog-proof="preuve-1"><img src="/proofs/blog/preuve-1.webp" alt="Preuve 1"></figure>';
+    const page = pageArticle({ legendePreuve: null })
+      .replace('<figure data-blog-proof><img src="/preuves/1.webp" alt="Preuve 1"></figure>', figure)
+      .replace('<figure data-blog-proof><img src="/preuves/2.webp" alt="Preuve 2"></figure>', figure);
+    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), page);
+    const erreurs = auditer(root).erreurs.join('\n');
+    assert.match(erreurs, /clause 1, identifiant data-blog-proof répété entre figures/);
+    assert.match(erreurs, /1 avec alternative accessible ; 2 requises/, 'une seule preuve distincte');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('clause 2 — dès six H2, le sommaire porte toutes les ancres', () => {
   temoinClause(2, { sommaire: false });
 });
