@@ -190,7 +190,7 @@ const OFFICIAL_SOURCE_AUTHORITIES = Object.freeze([
 ]);
 // Documentation du projet, pas autorité publique ni preuve d'une obligation métier.
 const TECHNICAL_PRIMARY_DOCUMENTS = Object.freeze([
-  { id: 'python-doctest', host: 'docs.python.org', pathname: '/fr/3/library/doctest.html', publisher: 'python software foundation' },
+  { id: 'python-doctest', url: 'https://docs.python.org/fr/3/library/doctest.html', publisher: 'python software foundation' },
 ]);
 const IMAGE_REVIEW_CRITERIA = Object.freeze([
   'brief-six-components',
@@ -320,9 +320,7 @@ function sourceClassification(source, finalUrl, errors, label) {
 
   const publisher = normalizedPublisher(source?.publisher);
   const technical = TECHNICAL_PRIMARY_DOCUMENTS.find((document) => {
-    const url = new URL(finalUrl);
-    return url.hostname === document.host && url.pathname === document.pathname
-      && !url.search && !url.hash && publisher === document.publisher;
+    return finalUrl === document.url && publisher === document.publisher;
   });
   if (source?.level === 'technical-primary' && !technical) {
     errors.push(`${label} : documentation primaire technique non reconnue ou incohérence domaine↔éditeur (${hostname}, « ${source?.publisher} »).`);

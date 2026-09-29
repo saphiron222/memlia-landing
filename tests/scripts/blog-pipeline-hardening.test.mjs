@@ -281,6 +281,28 @@ test('la fixture de documentation primaire technique ouvre un claim methode sans
   assert.ok(falsified.errors.some((error) => /contentSha256.*copie locale/.test(error)), falsified.errors.join('\n'));
 });
 
+test('seule l’URL HTTPS doctest canonique ouvre la classification technique', async () => {
+  for (const [label, url] of [
+    ['port', 'https://docs.python.org:8443/fr/3/library/doctest.html'],
+    ['port-default', 'https://docs.python.org:443/fr/3/library/doctest.html'],
+    ['userinfo', 'https://a:b@docs.python.org/fr/3/library/doctest.html'],
+    ['query', 'https://docs.python.org/fr/3/library/doctest.html?lang=fr'],
+    ['fragment', 'https://docs.python.org/fr/3/library/doctest.html#example'],
+    ['parameter', 'https://docs.python.org/fr/3/library/doctest.html;v=3'],
+    ['trailing-slash', 'https://docs.python.org/fr/3/library/doctest.html/'],
+    ['encoded-path', 'https://docs.python.org/fr/3/library/./doctest.html'],
+    ['uppercase-host', 'https://DOCS.PYTHON.ORG/fr/3/library/doctest.html'],
+  ]) {
+    const fixture = await technicalDossier(`technical-url-${label}`, (source) => {
+      source.url = url;
+      source.upstreamUrl = url;
+    });
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(result.pass, false, `${label} accepté : ${url}`);
+    assert.ok(result.errors.some((error) => /documentation primaire technique/.test(error)), `${label}: ${result.errors.join('\n')}`);
+  }
+});
+
 test('la catégorie technique refuse éditeur et domaine incohérents, UGC, auto-officialité, provenance secondaire et claim sensible', async () => {
   for (const [label, mutate, type, expected] of [
     ['publisher', (source) => { source.publisher = 'Auteur personnel'; }, 'methode', /domaine↔éditeur/],
