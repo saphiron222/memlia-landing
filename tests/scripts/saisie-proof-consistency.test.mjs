@@ -8,6 +8,8 @@ const slug = 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier';
 const body = readFileSync(resolve(root, `editorial/recettes/${slug}/corps.md`), 'utf8');
 const html = readFileSync(resolve(root, 'docs/design/blog-article-proofs/index.html'), 'utf8');
 const contract = JSON.parse(readFileSync(resolve(root, 'docs/design/blog-article-proofs/content-contract.json'), 'utf8'));
+const recipe = JSON.parse(readFileSync(resolve(root, `editorial/recettes/${slug}/recette.json`), 'utf8'));
+const article = readFileSync(resolve(root, `src/content/blog/${slug}.md`), 'utf8');
 const proof = (id) => contract.find((entry) => entry.id === id);
 const frame = (id) => html.match(new RegExp(`<section class="frame" id="${id}"[\\s\\S]*?(?=<section class="frame"|</main>)`))?.[0];
 
@@ -27,4 +29,14 @@ test('les deux figures ne donnent ni compteurs inexpliqués ni écart arithméti
   }
   assert.match(frame('saisie-file-anomalies'), /Ticket coupé/);
   assert.match(proof('saisie-file-anomalies').centralText, /Ticket coupé/);
+});
+
+test('la republication date la mise à jour réelle et décrit les preuves actuelles', () => {
+  assert.equal(recipe.updatedAt, '2026-09-29');
+  assert.match(article, /^dateMiseAJour: 2026-09-29$/m);
+  assert.match(proof('saisie-six-controles').alt, /période précédente/i);
+  assert.match(proof('saisie-file-anomalies').alt, /ticket coupé/i);
+  for (const id of ['saisie-six-controles', 'saisie-file-anomalies']) {
+    assert.doesNotMatch(proof(id).alt, /écart de montants/i);
+  }
 });
