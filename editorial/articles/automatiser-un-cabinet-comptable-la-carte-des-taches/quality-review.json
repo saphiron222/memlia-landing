@@ -2,7 +2,7 @@
   "version": 1,
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "reviewedAt": "2026-09-29",
-  "reviewer": "qa:w39-final-independent",
+  "reviewer": "qa:t_e5c72326",
   "rubric": "blog-analyze-100",
   "status": "PASS",
   "score": 91,
@@ -30,21 +30,21 @@
     }
   },
   "evidence": [
-    "28/30 : douze pôles, onze frontières et deux liens ordinaires contextualisés ; retrait du lien Cicatrice constaté.",
-    "23/25 : intention pilier distincte des satellites, liens ciblés et destinations de préparation présentes.",
-    "14/15 : six claims recoupés avec les copies officielles, notamment qualification RGPD au cas par cas.",
-    "12/15 : empreintes forge finales exactes, HTML de préparation avec canonical et noindex ; pas de preuve Lighthouse ni de déploiement public final.",
-    "14/15 : tableau et frontières lisibles sans prétendre documenter l'audit légal."
+    "28/30 : réponse directe, grille complète de douze pôles et onze frontières, limites et décision humaine expliquées sans chiffres de gain.",
+    "23/25 : titre et description ajustés à l'intention comprendre ; deux renvois ordinaires pertinents et aucun renvoi Cicatrice.",
+    "14/15 : six citations rapprochées des copies officielles datées, provenance et limites de portée conservées.",
+    "12/15 : HTML de préparation indexation bloquée, canonical et métadonnées présents ; aucun Lighthouse mobile ni site de production contrôlé dans cette revue.",
+    "14/15 : définitions et tableaux extractibles, aucune tâche d'audit légal ouverte ni résultat de moteur IA revendiqué."
   ],
   "reservations": [
-    "Le brouillon de relance seul se prépare ; son envoi requiert une validation humaine. Cette distinction vaut aussi pour les variables de paie et l'image de couverture.",
-    "La règle de purge évoquée dépend de la finalité, du rôle qualifié, des délais de conservation et de l'archivage obligatoire ; elle ne vaut ni suppression automatique ni garantie RGPD.",
-    "Le HTML contrôlé est une préparation noindex ; remettre le pilier en état public et vérifier le rendu final après scellement par la forge. Cette revue n'atteste ni Lighthouse, ni CI, ni déploiement."
+    "Portée de la revue : le HTML .qa est un rendu de préparation noindex, pas la page publiée ; la matérialisation publique, la CI et la vérification de production incombent au propriétaire de la livraison.",
+    "Les relances de pièces et de variables restent des brouillons préparés seuls ; leur envoi est explicitement soumis à une validation humaine.",
+    "Les rôles RGPD, les durées et la purge se déterminent traitement par traitement selon les obligations de conservation et d'archivage ; aucune conformité automatique n'est attestée."
   ],
-  "verdict": "PASS indépendant sur le corps, la recette et le rendu de préparation portant les trois empreintes du sujet ; zéro P0. Scellement et contrôle public final restent au parent.",
+  "verdict": "PASS de contenu indépendant sur le triplet exact du rendu de préparation ; aucune approbation de CI, de fusion ou de production.",
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "articleSha256": "01691660923b31d0a5651800ab343573b63bf0c27945d5b4952e61b07638baaf",
-    "manifestSha256": "abcf6414af33a9451637c123c24ca41650d0df7becccd99d05a12e3fd2aa75bd"
+    "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+    "manifestSha256": "85dd7e9ddad6523f9a73d8c34587f1d8d9904bbdab1a6da774c1934285a30d6c"
   }
 }

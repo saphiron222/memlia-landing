@@ -4,19 +4,19 @@
   "kind": "editorial-review",
   "status": "PASS",
   "checkedAt": "2026-09-29",
-  "articleSha256": "01691660923b31d0a5651800ab343573b63bf0c27945d5b4952e61b07638baaf",
-  "manifestSha256": "abcf6414af33a9451637c123c24ca41650d0df7becccd99d05a12e3fd2aa75bd",
+  "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+  "manifestSha256": "85dd7e9ddad6523f9a73d8c34587f1d8d9904bbdab1a6da774c1934285a30d6c",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
-  "reviewer": "qa:w39-final-independent",
+  "reviewer": "qa:t_e5c72326",
   "criteria": [
     {
       "id": "intent-satisfaction",
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Réponse directe, carte de douze pôles et onze frontières des pôles ouverts ; audit légal seulement listé."
+        "La réponse directe expose la règle, les exceptions et les trois frontières ; le tableau recense douze pôles dont l'audit légal non ouvert, puis onze pôles décrits."
       ]
     },
     {
@@ -24,7 +24,7 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Le pilier conserve sa requête et son angle propres. Les deux liens ordinaires ajoutés visent le prompt de demande de pièce et la grille de comparaison des outils ; les deux destinations sont présentes dans le rendu de préparation et leurs sources portent brouillon: false. Aucun lien vers la Cicatrice tests-verts-et-regle-des-trois-passes dans le corps, la recette ni le HTML rendu."
+        "L'intention du pilier est de comprendre la carte, distincte des deux satellites : le patron de demande de pièce et la grille de comparaison d'outils. Les deux routes existent comme articles non brouillons au 29/09 ; aucun renvoi à tests-verts-et-regle-des-trois-passes dans le corps ou la recette."
       ]
     },
     {
@@ -32,7 +32,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Les six citations sensibles ont un extrait retrouvable dans les copies officielles : CNIL (rôles, minimisation, durée), Service-Public (conservation), DGFiP (TVA de septembre 2026) et Net-entreprises (CRM). Le rôle du cabinet est à qualifier par traitement, non inféré du client."
+        "Six claims sensibles sont reliés aux copies officielles datées du 29/09 : qualification RGPD au cas par cas, conservation documentaire, CRM DSN, fenêtre TVA, minimisation et durée des traitements ; les six SHA de copies concordent avec leurs métadonnées."
       ]
     },
     {
@@ -40,7 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Deux figures WebP : carte de douze pôles et soixante familles, puis test fictif d'une relance candidate au cadrage, sans gain revendiqué ni envoi prouvé."
+        "Le tableau, la figure des douze pôles et la figure de candidature fictive d'une relance rendent la méthode lisible ; cette dernière ne prétend ni exécution d'une automatisation ni résultat quantifié."
       ]
     },
     {
@@ -48,7 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Empreinte de la forge calculée sur le HTML de préparation ; titre, description, lang=fr, canonical et noindex de préparation visibles. L'article reste en brouillon de préparation en attendant le scellement et la remise en publication par le parent."
+        "HTML de préparation .qa relu : lang fr, titre et description spécifiques, canonical du pilier, noindex de preview, figures avec alt et légendes. Le hash .article-corps est celui calculé par empreinte ; aucune preuve de déploiement n'en découle."
       ]
     },
     {
@@ -56,7 +56,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Définitions, tableau de synthèse et onze tables à trois colonnes donnent des limites extractibles ; aucune capacité d'audit légal livrée n'est insinuée."
+        "Définitions autonomes de tâche, règle et frontière, synthèse par pôle et tables à trois colonnes ; la famille audit légal est explicitement listée sans tâche ouverte."
       ]
     },
     {
@@ -64,7 +64,7 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "Les liens vers les deux articles ordinaires sont contextualisés dans la production et le numérique ; la conclusion renvoie à la méthode, au service et aux garanties avec validation humaine."
+        "Les deux liens ordinaires sont placés près du geste de production et de l'usage de l'IA ; la conclusion lie méthode, service et garanties, avec décision humaine explicite."
       ]
     }
   ]

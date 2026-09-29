@@ -6,55 +6,55 @@
     "renderedSha256": "134be55635110a6db810c57a4adf3ab573bb5879717d7bc865e5b77ec3de5586"
   },
   "editorial": {
-    "reviewer": "qa:w39-final-independent",
+    "reviewer": "qa:t_e5c72326",
     "p0": [],
     "criteria": {
-      "intent-satisfaction": {"result": "PASS", "observations": ["Réponse directe, carte de douze pôles et onze frontières des pôles ouverts ; audit légal seulement listé."]},
-      "serp-format-rankability": {"result": "PASS", "observations": ["Le pilier conserve sa requête et son angle propres. Les deux liens ordinaires ajoutés visent le prompt de demande de pièce et la grille de comparaison des outils ; les deux destinations sont présentes dans le rendu de préparation et leurs sources portent brouillon: false. Aucun lien vers la Cicatrice tests-verts-et-regle-des-trois-passes dans le corps, la recette ni le HTML rendu."]},
-      "eeat-sources": {"result": "PASS", "observations": ["Les six citations sensibles ont un extrait retrouvable dans les copies officielles : CNIL (rôles, minimisation, durée), Service-Public (conservation), DGFiP (TVA de septembre 2026) et Net-entreprises (CRM). Le rôle du cabinet est à qualifier par traitement, non inféré du client."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["Deux figures WebP : carte de douze pôles et soixante familles, puis test fictif d'une relance candidate au cadrage, sans gain revendiqué ni envoi prouvé."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["Empreinte de la forge calculée sur le HTML de préparation ; titre, description, lang=fr, canonical et noindex de préparation visibles. L'article reste en brouillon de préparation en attendant le scellement et la remise en publication par le parent."]},
-      "ai-citability": {"result": "PASS", "observations": ["Définitions, tableau de synthèse et onze tables à trois colonnes donnent des limites extractibles ; aucune capacité d'audit légal livrée n'est insinuée."]},
-      "contextual-conversion": {"result": "PASS", "observations": ["Les liens vers les deux articles ordinaires sont contextualisés dans la production et le numérique ; la conclusion renvoie à la méthode, au service et aux garanties avec validation humaine."]}
+      "intent-satisfaction": {"result": "PASS", "observations": ["La réponse directe expose la règle, les exceptions et les trois frontières ; le tableau recense douze pôles dont l'audit légal non ouvert, puis onze pôles décrits."]},
+      "serp-format-rankability": {"result": "PASS", "observations": ["L'intention du pilier est de comprendre la carte, distincte des deux satellites : le patron de demande de pièce et la grille de comparaison d'outils. Les deux routes existent comme articles non brouillons au 29/09 ; aucun renvoi à tests-verts-et-regle-des-trois-passes dans le corps ou la recette."]},
+      "eeat-sources": {"result": "PASS", "observations": ["Six claims sensibles sont reliés aux copies officielles datées du 29/09 : qualification RGPD au cas par cas, conservation documentaire, CRM DSN, fenêtre TVA, minimisation et durée des traitements ; les six SHA de copies concordent avec leurs métadonnées."]},
+      "information-gain-proof": {"result": "PASS", "observations": ["Le tableau, la figure des douze pôles et la figure de candidature fictive d'une relance rendent la méthode lisible ; cette dernière ne prétend ni exécution d'une automatisation ni résultat quantifié."]},
+      "technical-onpage-seo": {"result": "PASS", "observations": ["HTML de préparation .qa relu : lang fr, titre et description spécifiques, canonical du pilier, noindex de preview, figures avec alt et légendes. Le hash .article-corps est celui calculé par empreinte ; aucune preuve de déploiement n'en découle."]},
+      "ai-citability": {"result": "PASS", "observations": ["Définitions autonomes de tâche, règle et frontière, synthèse par pôle et tables à trois colonnes ; la famille audit légal est explicitement listée sans tâche ouverte."]},
+      "contextual-conversion": {"result": "PASS", "observations": ["Les deux liens ordinaires sont placés près du geste de production et de l'usage de l'IA ; la conclusion lie méthode, service et garanties, avec décision humaine explicite."]}
     }
   },
   "business": {
-    "reviewerTaskId": "w39-final-independent",
+    "reviewerTaskId": "t_98bf2820",
     "claims": {
-      "claim-unit-1dc9c56e18bd-1": {"verdict": "soutient", "reasoning": "La copie CNIL demande de qualifier les acteurs au cas par cas ; le corps refuse d'attribuer un rôle unique au cabinet selon l'origine du fichier."},
-      "claim-unit-279d5bd8bf20-1": {"verdict": "soutient", "reasoning": "La copie Service-Public établit une durée minimale variable selon la nature du document ; le corps n'annonce pas de durée uniforme."},
-      "claim-unit-e8439da9f147-1": {"verdict": "soutient", "reasoning": "La définition du CRM après déclaration et en cas d'erreur ou soupçon se retrouve dans la copie Net-entreprises ; la décision de correction reste humaine."},
-      "claim-unit-ceb5c8df6333-1": {"verdict": "soutient", "reasoning": "Le calendrier DGFiP donne explicitement la fenêtre du 15 au 24 septembre 2026 et renvoie à la date de l'espace professionnel, comme le corps."},
-      "claim-unit-2614d7101a11-1": {"verdict": "soutient", "reasoning": "L'article 5 du RGPD dans la copie CNIL porte la minimisation citée ; le corps la présente parmi d'autres obligations, sans promettre de conformité."},
-      "claim-unit-2614d7101a11-2": {"verdict": "soutient", "reasoning": "La copie CNIL laisse au responsable l'analyse de la durée de conservation pour chaque traitement ; le corps n'attribue pas de durée concrète au cabinet. La purge doit respecter les obligations de conservation applicables."}
+      "claim-unit-1dc9c56e18bd-1": {"verdict": "soutient", "reasoning": "La fiche CNIL distingue les rôles selon les faits et le traitement ; l'article demande cette qualification sans attribuer un rôle unique au cabinet du seul fait que le fichier vient du client."},
+      "claim-unit-279d5bd8bf20-1": {"verdict": "soutient", "reasoning": "Service-Public indique une durée minimale et des délais variant selon la nature du document ; le pilier ne fixe pas de durée générale de conservation."},
+      "claim-unit-e8439da9f147-1": {"verdict": "soutient", "reasoning": "Net-entreprises définit le CRM comme retour après réception de déclaration lorsqu'une erreur ou suspicion est détectée ; la correction engageant les droits du salarié reste humaine."},
+      "claim-unit-ceb5c8df6333-1": {"verdict": "soutient", "reasoning": "Le calendrier DGFiP mentionne la fenêtre du 15 au 24 septembre 2026 pour la déclaration mensuelle de TVA et la date figurant dans l'espace professionnel ; l'article garde cette portée mensuelle."},
+      "claim-unit-2614d7101a11-1": {"verdict": "soutient", "reasoning": "Le texte RGPD publié par la CNIL contient la formule de minimisation citée ; le passage la situe parmi d'autres obligations à apprécier traitement par traitement."},
+      "claim-unit-2614d7101a11-2": {"verdict": "soutient", "reasoning": "La CNIL confie la définition de la durée à l'analyse de conformité du responsable pour chaque traitement ; la règle de purge citée ne dispense pas des durées et obligations d'archivage applicables."}
     }
   },
   "image": {
-    "reviewer": "qa:w39-final-independent",
+    "reviewer": "qa:t_e5c72326",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["La recette contient sujet, composition, style, palette, interdits et alt ; le master observé représente des îlots reliés et un jeton devant une bifurcation."]},
-      "generation-constraints": {"result": "PASS", "observations": ["Master observé sans texte exploitable, personne, logo, interface ou donnée client lisible."]},
-      "fictive-provenance": {"result": "PASS", "observations": ["La figure de test dit fictif et ne présente qu'une candidature au cadrage, pas une automatisation exécutée."]},
-      "recognizable-subject": {"result": "PASS", "observations": ["Diorama lisible comme réseau d'îlots ; la figure de carte nomme l'audit légal listé, non ouvert."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["image.json référence master PNG 1920×1080, OG WebP 1200×630 et variante WebP/AVIF 768×432 ; les deux preuves WebP sont présentes."]},
-      "alt-information": {"result": "PASS", "observations": ["Alt de couverture conforme aux îlots, chemins et jeton observés ; alt et légendes des preuves déclarés dans la recette et le paquet."]}
+      "brief-six-components": {"result": "PASS", "observations": ["Le brief de recette décrit sujet, composition, style, palette hexadécimale, interdits et alt ; le PNG montre effectivement une carte d'îlots reliés et un jeton vert au croisement."]},
+      "generation-constraints": {"result": "PASS", "observations": ["Inspection du master 1920 × 1080 : pas de personne, logo, interface, donnée client ou inscription exploitable ; la palette mesurée est PASS dans visual-review.json."]},
+      "fictive-provenance": {"result": "PASS", "observations": ["La seconde preuve porte « Jeu d'essai fictif » et conclut seulement « Candidate au cadrage » ; aucun envoi ni gain n'y est présenté comme réel."]},
+      "recognizable-subject": {"result": "PASS", "observations": ["Diorama avec îlots comptables connectés, jeton et bifurcation ; la première preuve nomme explicitement douze pôles, soixante familles et l'audit légal listé non ouvert."]},
+      "technical-derivatives": {"result": "PASS", "observations": ["Master PNG 1920 × 1080, OG WebP 1200 × 630, dérivés WebP et AVIF 768 × 432 constatés ; deux preuves WebP 1600 × 900 rendues dans le HTML."]},
+      "alt-information": {"result": "PASS", "observations": ["Alt de couverture fidèle aux îlots, chemins et jeton ; les deux figures ont un alt pertinent, leur source et leur date de capture 2026-09-20 visibles dans le rendu."]}
     },
     "directionArt": 18,
     "semanticRelevance": 22
   },
   "sources": {
-    "reviewedBy": "qa:w39-final-independent",
+    "reviewedBy": "qa:t_e5c72326",
     "observations": {
-      "cnil-roles": "La copie CNIL demande la qualification des acteurs au cas par cas ; aucune qualification contractuelle du cabinet déduite ici.",
-      "sp-conservation": "La copie Service-Public décrit la durée minimale et sa variation par nature de document.",
-      "cnil-principes": "La copie CNIL porte l'expression exacte de la minimisation des données.",
-      "cnil-durees": "La copie CNIL attribue la fixation de la durée à l'analyse du responsable du traitement.",
-      "impots-calendrier": "La copie DGFiP porte la fenêtre TVA du 15 au 24 septembre 2026 et sa date dans l'espace professionnel.",
-      "net-crm": "La copie Net-entreprises définit le CRM après déclaration en présence d'une erreur ou suspicion."
+      "cnil-roles": "La copie CNIL contient qualification au cas par cas et analyse factuelle, non un rôle fixe du cabinet.",
+      "sp-conservation": "La copie Service-Public prévoit une durée minimale dont le délai varie suivant la pièce et les obligations.",
+      "cnil-principes": "L'article 5 RGPD reproduit par la CNIL donne l'extrait de minimisation cité.",
+      "cnil-durees": "La fiche CNIL situe la détermination de durée dans l'analyse de chaque traitement.",
+      "impots-calendrier": "Le calendrier DGFiP mentionne 15–24 septembre 2026, déclaration mensuelle et date de l'espace professionnel.",
+      "net-crm": "La copie Net-entreprises décrit le CRM après réception de la déclaration en cas d'erreur ou de suspicion."
     }
   },
   "qualite": {
-    "reviewer": "qa:w39-final-independent",
+    "reviewer": "qa:t_e5c72326",
     "score": 91,
     "p0": [],
     "categories": {
@@ -64,10 +64,20 @@
       "technicalElements": {"score": 12, "max": 15},
       "aiCitationReadiness": {"score": 14, "max": 15}
     },
-    "evidence": ["28/30 : douze pôles, onze frontières et deux liens ordinaires contextualisés ; retrait du lien Cicatrice constaté.", "23/25 : intention pilier distincte des satellites, liens ciblés et destinations de préparation présentes.", "14/15 : six claims recoupés avec les copies officielles, notamment qualification RGPD au cas par cas.", "12/15 : empreintes forge finales exactes, HTML de préparation avec canonical et noindex ; pas de preuve Lighthouse ni de déploiement public final.", "14/15 : tableau et frontières lisibles sans prétendre documenter l'audit légal."],
-    "reservations": ["Le brouillon de relance seul se prépare ; son envoi requiert une validation humaine. Cette distinction vaut aussi pour les variables de paie et l'image de couverture.", "La règle de purge évoquée dépend de la finalité, du rôle qualifié, des délais de conservation et de l'archivage obligatoire ; elle ne vaut ni suppression automatique ni garantie RGPD.", "Le HTML contrôlé est une préparation noindex ; remettre le pilier en état public et vérifier le rendu final après scellement par la forge. Cette revue n'atteste ni Lighthouse, ni CI, ni déploiement."],
-    "seo": ["H1 et canonical du pilier conservés ; noindex propre au rendu de préparation."],
-    "geo": ["Carte et frontières citables, sans mesure de reprise par moteur IA."],
-    "verdict": "PASS indépendant sur le corps, la recette et le rendu de préparation portant les trois empreintes du sujet ; zéro P0. Scellement et contrôle public final restent au parent."
+    "evidence": [
+      "28/30 : réponse directe, grille complète de douze pôles et onze frontières, limites et décision humaine expliquées sans chiffres de gain.",
+      "23/25 : titre et description ajustés à l'intention comprendre ; deux renvois ordinaires pertinents et aucun renvoi Cicatrice.",
+      "14/15 : six citations rapprochées des copies officielles datées, provenance et limites de portée conservées.",
+      "12/15 : HTML de préparation indexation bloquée, canonical et métadonnées présents ; aucun Lighthouse mobile ni site de production contrôlé dans cette revue.",
+      "14/15 : définitions et tableaux extractibles, aucune tâche d'audit légal ouverte ni résultat de moteur IA revendiqué."
+    ],
+    "reservations": [
+      "Portée de la revue : le HTML .qa est un rendu de préparation noindex, pas la page publiée ; la matérialisation publique, la CI et la vérification de production incombent au propriétaire de la livraison.",
+      "Les relances de pièces et de variables restent des brouillons préparés seuls ; leur envoi est explicitement soumis à une validation humaine.",
+      "Les rôles RGPD, les durées et la purge se déterminent traitement par traitement selon les obligations de conservation et d'archivage ; aucune conformité automatique n'est attestée."
+    ],
+    "seo": ["Canonical absolu et H1 cohérents ; noindex concerne uniquement cette préparation."],
+    "geo": ["Carte et frontières structurées, sans mesure de citation par une IA."],
+    "verdict": "PASS de contenu indépendant sur le triplet exact du rendu de préparation ; aucune approbation de CI, de fusion ou de production."
   }
 }

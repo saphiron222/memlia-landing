@@ -13,14 +13,14 @@ Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-09-29, barème blog
 
 ## SEO
 
-- H1 et canonical du pilier conservés ; noindex propre au rendu de préparation.
+- Canonical absolu et H1 cohérents ; noindex concerne uniquement cette préparation.
 
 ## Préparation aux citations
 
-- Carte et frontières citables, sans mesure de reprise par moteur IA.
+- Carte et frontières structurées, sans mesure de citation par une IA.
 
 ## Réserves mesurées
 
-- Le brouillon de relance seul se prépare ; son envoi requiert une validation humaine. Cette distinction vaut aussi pour les variables de paie et l'image de couverture.
-- La règle de purge évoquée dépend de la finalité, du rôle qualifié, des délais de conservation et de l'archivage obligatoire ; elle ne vaut ni suppression automatique ni garantie RGPD.
-- Le HTML contrôlé est une préparation noindex ; remettre le pilier en état public et vérifier le rendu final après scellement par la forge. Cette revue n'atteste ni Lighthouse, ni CI, ni déploiement.
+- Portée de la revue : le HTML .qa est un rendu de préparation noindex, pas la page publiée ; la matérialisation publique, la CI et la vérification de production incombent au propriétaire de la livraison.
+- Les relances de pièces et de variables restent des brouillons préparés seuls ; leur envoi est explicitement soumis à une validation humaine.
+- Les rôles RGPD, les durées et la purge se déterminent traitement par traitement selon les obligations de conservation et d'archivage ; aucune conformité automatique n'est attestée.
