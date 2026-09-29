@@ -92,10 +92,10 @@ La commande recalcule le gate et écrit `.qa/blog/<slug>/review-package.md`, ave
 
 ## Vérifier un candidat autorisé pour la production
 
-Kevin reste le seul décideur. Après son go explicite sur le candidat exact :
+L'autorité blog-only du 25/09/2026 supprime le go individuel de Kevin pour un article de blog ; elle ne permet ni d'inventer ses propos ni de modifier sans preuve un corps signé. L'opérateur trace son identité réelle et un reçu de contrôle lié aux octets exacts, puis suit les gates automatiques et la QA indépendante au SHA final :
 
-1. passer `manifest.json` à `editorialStatus: "go-production"` et `kevin.productionApproved: true` ;
-2. aligner le frontmatter sur `statutEditorial: go-production` et `brouillon: false` ;
+1. utiliser la forge pour passer le candidat à `editorialStatus: "go-production"` sous cette autorité existante. Le champ historique `kevin.productionApproved: true` est généré par la forge à partir de la délégation du 16/09 (voir `construireManifest`), uniquement pour compatibilité avec les validateurs et sceaux existants : **il n'atteste ni clic ni nouvelle signature ni revue personnelle de Kevin**. Ne pas le fabriquer manuellement ; le reçu opérateur garde l'identité de l'exécutant et l'empreinte de l'article ;
+2. vérifier que le frontmatter émis par la forge porte `statutEditorial: go-production` et `brouillon: false` sans modifier manuellement l'article signé ;
 3. exécuter :
 
 ```bash
@@ -103,6 +103,17 @@ npm run blog:production-check -- <slug>
 ```
 
 Le contrôle reconstruit sans `BLOG_PREVIEW_SLUG`, refuse tout `noindex`, exige la canonical auto-référente et vérifie l’inclusion dans le sitemap et le RSS. Il ne pousse rien et ne déploie rien en production.
+
+### Lot de rattrapage (sans antidater)
+
+Pour publier plusieurs articles dans un **même commit de contenu**, ne pas appeler `blog-forge publier` sur le premier pendant que les autres restent brouillons : `production-check` exécute `build:site` sur le site entier, et les liens/sorties du lot ainsi que l'oracle de cadence exigent le lot complet. Dans une branche de contenu isolée, après les revues indépendantes et les reçus opérateur attachés aux octets exacts des candidats sous l'autorité blog-only existante :
+
+1. Matérialiser **tous** les candidats via la forge au statut `go-production` avec leur vraie `datePublication` (29/09/2026 pour le lot W39 du 29) et `brouillon: false` ; les champs de compatibilité hérités ne sont pas une nouvelle approbation personnelle. Ne pas toucher au corps signé si un gate éditorial le refuse.
+2. Faire `node scripts/seo/forge-seo.mjs registre reconcilier --date 2026-09-29` **dans cette branche seulement**. La commande lit les frontmatters localement non-brouillons, insère les requêtes manquantes, préserve les entrées existantes et refuse les collisions de requête ; vérifier le diff et la provenance avant de poursuivre. C'est une anticipation de registre **local**, pas une attestation de mise en ligne. Si un contrôle échoue, corriger le lot ou retirer ces entrées anticipées avant livraison. Ne pas committer ce registre dans une PR technique seule.
+3. Exécuter `npm run blog:production-check -- <slug-1> <slug-2> <slug-3>` : chaque candidat doit passer le gate `production` et satisfaire le champ de compatibilité issu de la forge, puis un **seul** `build:site` vérifie toutes les pages, canonical, sitemap et RSS. Un slug absent ou un autre gate du site rouge arrête la livraison ; ne pas neutraliser `build:site`.
+4. Seulement après succès, finaliser les dossiers par `blog-forge publier` pour chaque slug, recontrôler les trois sceaux, réconcilier le registre et `npm run lastmod:sync && npm run build`. La commande unitaire recontrôle le site entier ; l'état projeté des autres candidats doit rester intact. Relire le diff final : la présence de `publieLe` dans Git ne prouve pas un déploiement. PR, CI au SHA exact, puis contrôle HTTP du SHA déployé et des trois URL restent obligatoires.
+
+Le plan W39 garde les créneaux des 22, 24 et 26 septembre et affiche la date réelle du 28 ou du 29 septembre selon les frontmatters. Aucune entrée du 30 septembre ou d'un autre sujet ne bénéficie de l'exception. `tests/proof/test_build.py` dérive la liste des pages attendues des frontmatters non-brouillons plutôt que d'un inventaire historique figé ; cela n'autorise pas une page sans revue et sans reçu technique : les gates éditoriaux et le contrôle de production restent distincts.
 
 ## Garde-fou pSEO
 

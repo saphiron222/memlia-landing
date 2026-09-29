@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
-import { verifyCandidateBatchPreview } from '../../scripts/blog-pipeline.mjs';
+import { verifyCandidateBatchPreview, productionArtifactsErrors, reviewPackage } from '../../scripts/blog-pipeline.mjs';
 import { preparePreview } from '../../scripts/prepare-preview.mjs';
 import { isBlogEntryVisibleForSlugs, parseBlogPreviewSlugs } from '../../src/data/blog-visibility.mjs';
 
@@ -73,4 +73,29 @@ test('vérifie dans le paquet que chaque article lie l’autre et que les deux d
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('le contrôle de production exige toutes les pages du lot dans le même build', () => {
+  const { root, dist } = fixture();
+  try {
+    assert.ok(productionArtifactsErrors(root, slugs).some((e) => e.includes('sitemap')));
+    writeFileSync(join(dist, 'sitemap-0.xml'), slugs.map((slug) => `<loc>https://memlia.fr/blog/${slug}</loc>`).join(''));
+    writeFileSync(join(dist, 'blog', 'rss.xml'), slugs.map((slug) => `<link>https://memlia.fr/blog/${slug}</link>`).join(''));
+    assert.deepEqual(productionArtifactsErrors(root, slugs), []);
+    rmSync(join(dist, 'blog', `${slugs[1]}.html`));
+    assert.ok(productionArtifactsErrors(root, slugs).some((e) => e.includes(slugs[1])));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('le paquet de revue sollicite un reçu opérateur borné aux octets, non un go humain routinier', () => {
+  const { root } = fixture();
+  try {
+    const dossier = join(root, 'editorial', 'articles', slugs[0]);
+    mkdirSync(dossier, { recursive: true });
+    writeFileSync(join(dossier, 'manifest.json'), '{}');
+    const paquet = readFileSync(reviewPackage(slugs[0], { pass: true, errors: [] }, root), 'utf8');
+    assert.match(paquet, /SHA-256/);
+    assert.match(paquet, /opérateur.*octets/i);
+    assert.doesNotMatch(paquet, /décision explicite de Kevin|go individuel de Kevin/i);
+  } finally { rmSync(root, { recursive: true, force: true }); }
 });
