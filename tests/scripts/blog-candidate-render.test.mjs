@@ -67,15 +67,15 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
     }
     symlinkSync(DEPENDENCIES, join(project, 'node_modules'), 'dir');
 
+    // Le témoin positif suit le contrat public : provenance et date vivent dans la recette,
+    // jamais dans une légende technique visible de la preuve inline.
     const fixtureBody = DEFAULT_BODY.replace('Voir [la méthode]', `
 <figure data-blog-proof="fixture-frontiere">
   <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="640" height="360" loading="lazy" decoding="async">
-  <figcaption>Source : jeu d’essai fictif · capture du 2026-09-20</figcaption>
 </figure>
 
 <figure data-blog-proof="fixture-refus">
   <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="640" height="360" loading="lazy" decoding="async">
-  <figcaption>Source : jeu d’essai fictif · capture du 2026-09-20</figcaption>
 </figure>
 
 Voir [la méthode]`);
@@ -193,6 +193,7 @@ Voir [la méthode]`);
     const articlePath = join(preview, 'blog', `${slug}.html`);
     assert.ok(existsSync(articlePath), 'le candidat n’a pas été construit par Astro');
     const html = readFileSync(articlePath, 'utf8');
+    assert.ok(!html.includes('<figcaption>Source'), 'la preview ne doit pas réintroduire une légende technique publique');
     const ogUrl = `${previewOrigin}/images/${heroId}-og.webp`;
     assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
     assert.ok(html.includes(`<link rel="canonical" href="https://memlia.fr/blog/${slug}">`));
