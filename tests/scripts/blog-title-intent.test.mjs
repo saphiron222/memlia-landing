@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { resolve, join } from 'node:path';
 import { parse as parseHtml } from 'parse5';
 import { parse as parseYaml } from 'yaml';
@@ -12,6 +13,22 @@ const BLOG = join(ROOT, 'src/content/blog');
 function mesureArticle(slug) {
   return chargerAutocompletionMesuree(ROOT, { au: dateIntentionScellee(ROOT, slug) });
 }
+
+test('un relevé de la nuit Paris reste frais sans emprunter le jour UTC précédent', (t) => {
+  const root = mkdtempSync(join(tmpdir(), 'memlia-intent-paris-'));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const dossier = join(root, 'docs/strategy/site-v3/mesures');
+  mkdirSync(dossier, { recursive: true });
+  writeFileSync(join(dossier, 'questions-2026-09-30.json'), JSON.stringify({ autocompletion: { 'tests verts': [] } }));
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse('2026-09-29T23:22:00Z') });
+  try {
+    const mesure = chargerAutocompletionMesuree(root);
+    assert.equal(mesure.au, '2026-09-30');
+    assert.ok(Object.hasOwn(mesure.autocompletion, 'tests verts'));
+  } finally {
+    t.mock.timers.reset();
+  }
+});
 
 function frontmatter(path) {
   const source = readFileSync(path, 'utf8');

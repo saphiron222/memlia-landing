@@ -233,10 +233,6 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
     : { jour: fixtureDate, autocompletion: {} };
   for (const requete of [manifest.primaryQuery, ...(manifest.secondaryQueries ?? [])]) mesure.autocompletion[requete] = [];
   writeJson(mesurePath, mesure);
-  // Le relevé non scellé est recherché au jour UTC par l'oracle SEO ; la revue
-  // sensible, elle, est datée à Paris. Couvrir les deux jours au passage de minuit.
-  const utcDate = new Date().toISOString().slice(0, 10);
-  if (utcDate !== fixtureDate) writeJson(join(mesuresDir, `questions-${utcDate}.json`), mesure);
 
   const markdown = articleMarkdown(manifest, body);
   const articlePath = join(root, 'src/content/blog', `${slug}.md`);
