@@ -29,6 +29,29 @@ function legendePreuveValide(figure, historique) {
     && date.getTime() <= Date.now();
 }
 
+function preuveDirecteSourcee(root, slug, figure) {
+  const image = premier(figure, (node) => node.tagName === 'img');
+  const id = attribut(figure, 'data-blog-proof');
+  if (!id || !image || image.parentNode !== figure
+    || elements(figure, (node) => node.tagName === 'figcaption').length
+    || elements(figure, (node) => classes(node).has('preuve-defilante')).length) return false;
+  try {
+    const recette = JSON.parse(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
+    const preuves = recette.inlineProofs ?? [];
+    const preuve = preuves.find((item) => item.id === id);
+    const date = new Date(`${preuve?.capturedAt}T00:00:00Z`);
+    return preuves.filter((item) => item.id === id).length === 1
+      && preuve.alt === attribut(image, 'alt') && Boolean(preuve.alt?.trim())
+      && attribut(image, 'src') === `/proofs/blog/${id}.webp`
+      && Boolean(preuve.source?.trim())
+      && /^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')
+      && !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === preuve.capturedAt
+      && date.getTime() <= Date.now();
+  } catch {
+    return false;
+  }
+}
+
 function estPreuveHistorique(root, slug, path, frontmatter) {
   if (frontmatter.brouillon !== false) return false;
   try {
@@ -219,18 +242,28 @@ function auditerArticle({ root, dist, slug, path, mesure }) {
   const articleCorps = premier(document, (node) => node.tagName === 'div' && classes(node).has('article-corps'));
 
   const medias = mediasPreuve(articleCorps);
-  const conformes = medias.filter((media) => media.conforme);
+  const idsVus = new Set();
+  const doublons = medias.filter(({ figure }) => {
+    const id = attribut(figure, 'data-blog-proof');
+    if (!id) return false; // Les figures historiques à légende n'ont pas d'identifiant.
+    if (idsVus.has(id)) return true;
+    idsVus.add(id);
+    return false;
+  });
+  const conformes = medias.filter((media) => media.conforme && !doublons.includes(media));
   if (conformes.length < 2) {
     erreurs.push(`${slug} : clause 1, ${medias.length} image(s) de preuve en plus de la couverture, ${conformes.length} avec alternative accessible ; 2 requises`);
   }
+  if (doublons.length) erreurs.push(`${slug} : clause 1, identifiant data-blog-proof répété entre figures`);
   const contenuPublic = texte(articleCorps).replace(/\s+/g, ' ').trim();
   const horsLegendes = texteSansLegendes(articleCorps);
   const historique = medias.some(({ figure }) => elements(figure, (node) => node.tagName === 'figcaption').length === 0)
     && estPreuveHistorique(root, slug, path, frontmatter);
   if (LEGENDE_TECHNIQUE_INTERDITE.test(contenuPublic)
       || /Source\s*:[^.]{0,320}capture du/i.test(horsLegendes)
-      || medias.some(({ figure }) => !legendePreuveValide(figure, historique))) {
-    erreurs.push(`${slug} : clause 1, légende de preuve invalide ou consigne technique publique (source et date de capture requises dans une légende informative)`);
+      || medias.some(({ figure }) => !legendePreuveValide(figure, historique)
+        && !preuveDirecteSourcee(root, slug, figure))) {
+    erreurs.push(`${slug} : clause 1, légende de preuve invalide, provenance interne manquante ou consigne technique publique`);
   }
 
   const h2 = articleCorps ? elements(articleCorps, (node) => node.tagName === 'h2') : [];
