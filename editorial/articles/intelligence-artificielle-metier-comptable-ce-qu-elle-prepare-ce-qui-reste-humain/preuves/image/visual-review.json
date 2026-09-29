@@ -3,9 +3,9 @@
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-28",
-  "articleSha256": "d55a5dfcd7d73d328fab8385ead6b3fdc47a78f9f441eab0b78669bd3ed5d3e0",
-  "manifestSha256": "2d058fa9b2ce0f39573440227989af4b42e589aedd23f6f2b1114e0ffaad5866",
+  "checkedAt": "2026-09-29",
+  "articleSha256": "90b4762a80a6579ca34e00e316c11d7edddc141b27cffc5e077be29506103efb",
+  "manifestSha256": "85d5e23b10d30c76226043ebbfa1e6ad6f0ab46d6011b1d17c2b7ea5ece7560a",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
   ],
@@ -49,48 +49,42 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Le master inspecté à 1920×1080 figure des entrées géométriques à gauche, un checkpoint central et une main sculptée à droite, conformément aux six composantes de recette.image.brief.",
-        "La palette chiffrée dans visual-review.json donne crème 80,31 %, vert vif 0,557 %, vert profond 4,82 % et encre 0,613 % : les quatre teintes dépassent leurs seuils déclarés."
+        "Les deux preuves inline relèvent du contrat de cadre HTML et du jeu fictif, distincts de la couverture ; aucune nouvelle génération ici."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Sur le master visualisé, ni caractère lisible, ni logo, visage, formulaire, alerte rouge ou document client : la main est symbolique, sans personnage.",
-        "Le fichier maître est horizontal ; la palette provient de la mesure de 57 600 pixels consignés, non de l’appréciation visuelle du reviewer."
+        "WebP frontière/refus relus visuellement ; aucune donnée nominative ou interface client observée."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "La couverture ne représente que des solides ; les deux WebP de preuve affichent des règles et cas IA-01/02/03 sans identité ni dossier de client.",
-        "Le visuel refus annonce « JEU FICTIF » et « Oracle exécuté · 3 cas joués » ; sa légende HTML nomme le cadre figé et sa capture du 21 septembre."
+        "competences-refus mentionne jeu fictif, oracle exécuté, trois cas ; un run local replay --check confirme 2 articles et 7 cas au total, sans résultat d'emploi."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Le trajet gauche-droite des solides s’interrompt au feu de contrôle avant le plateau protégé par une main abstraite, lecture cohérente avec l’arrêt dans le doute.",
-        "La preuve frontière rend cette interprétation explicite avec les colonnes Prépare seul, Attend une validation, Reste humain, sans promettre une action autonome."
+        "Frontière : prépare seul/attend validation/reste humain ; refus : une proposition et deux arrêts motivés, conforme au corps.md:53-73."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Le rendu du sujet épinglé référence deux WebP de preuve 1600×900 avec alt et légende ; inspection indépendante des deux images : frontière en trois colonnes et cas IA-01/02/03 fictifs, sans donnée client.",
-        "Le manifeste réadopté scelle le replay à 6e12341b26f1d528292bdfc083d93d29dcf9ca43cd307da1628f71c5382a9801 ; sources et quatre WebP correspondent à leurs SHA-256 et octets. Le check navigateur frais confirme 4/4 actifs ; le check global confirme aussi 14 preuves d’article et 2 articles/7 cas fictifs."
+        "Empreintes actifs b69c8c443a4d0732bcadcdffa5fa022dd7a0852500dcb899e7470aabf9341524 et d77cdf5958394093ab74eb44348654f3147a1e22eb8ccfa265f9326488e0911e concordent avec docs/qa/blog-recrutement-proofs.json ; renderer --check 4/4 PASS."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L’alt de tête nomme la frontière préparation, validation et décision ; la couverture demeure abstraite, donc l’alt ajoute un contexte utile.",
-        "Les deux alts de figures décrivent respectivement la frontière et une proposition avec deux refus ; les images inspectées contiennent bien ces repères, sans pourcentage ni nom propre."
+        "Deux alts concordent avec les visuels ; source cadre HTML/oracle et date 21/09/2026 restent dans recette et contrat internes, pas dans une légende publique. Le commit d'adoption des WebP est daté du 21/09."
       ]
     }
   ]

@@ -4,8 +4,8 @@
   "kind": "business-review",
   "status": "PASS",
   "checkedAt": "2026-09-29",
-  "articleSha256": "9b4b454fcef2378508f24edf533c282467eb3ea4b3dd7cb4ad5ff2531a863254",
-  "manifestSha256": "41d687a8a01a7413731390ce19c1fad37d2e2bc3e5bb853871b92ddf3da91eef",
+  "articleSha256": "de7409d61ee72ab4e1a3b441143b0afb9c5e0b043aeef7d13c6bc0e45cd09167",
+  "manifestSha256": "4b64530d7d18783bede998de7e2ff125daa06caf8dc3def1f3d29506ab5a896d",
   "observations": [
     "Contrôle business-review relu sur le candidat exact logiciel-ia-comptabilite."
   ],
@@ -15,7 +15,7 @@
     {
       "id": "review-claim-unit-5d8def65a991-1-cnil-choix-ia",
       "candidateSlug": "logiciel-ia-comptabilite",
-      "articleSha256": "9b4b454fcef2378508f24edf533c282467eb3ea4b3dd7cb4ad5ff2531a863254",
+      "articleSha256": "de7409d61ee72ab4e1a3b441143b0afb9c5e0b043aeef7d13c6bc0e45cd09167",
       "claimId": "claim-unit-5d8def65a991-1",
       "claimSha256": "66f6d211d87b7830076cf51c7cc79d0ca476095ba12fd45a438e6771eb25bcf6",
       "sourceId": "cnil-choix-ia",
@@ -24,12 +24,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-29",
-      "reasoning": "La FAQ CNIL recommande de partir de besoins concrets pour choisir un système d'IA générative ; le corps dit conseille et n'étend pas la recommandation en obligation pour tous les logiciels comptables."
+      "reasoning": "CNIL, FAQ IA générative, copie vérifiée 29/09 : recommande de partir de besoins concrets pour choisir un système d'IA générative. corps.md:103 préserve ce champ et le caractère de conseil, non obligation générale."
     },
     {
       "id": "review-claim-unit-d18a00bf00fb-1-ordre-outils-ia",
       "candidateSlug": "logiciel-ia-comptabilite",
-      "articleSha256": "9b4b454fcef2378508f24edf533c282467eb3ea4b3dd7cb4ad5ff2531a863254",
+      "articleSha256": "de7409d61ee72ab4e1a3b441143b0afb9c5e0b043aeef7d13c6bc0e45cd09167",
       "claimId": "claim-unit-d18a00bf00fb-1",
       "claimSha256": "47cd4e7418a840fe857359b384628afc642b18235f0b3b858e383b47c9e5b72c",
       "sourceId": "ordre-outils-ia",
@@ -38,12 +38,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-29",
-      "reasoning": "La copie de l'Ordre annonce ses propres outils pratiques Data et IA ; la phrase visible se limite à ce programme sans attribuer un essai ou une certification à un éditeur."
+      "reasoning": "L'Ordre annonce ses propres ressources data et IA dans la copie vérifiée 29/09 ; corps.md:105 ne prétend pas qu'il a certifié un éditeur."
     },
     {
       "id": "review-claim-unit-d1a753e6d63c-1-service-public-pieces",
       "candidateSlug": "logiciel-ia-comptabilite",
-      "articleSha256": "9b4b454fcef2378508f24edf533c282467eb3ea4b3dd7cb4ad5ff2531a863254",
+      "articleSha256": "de7409d61ee72ab4e1a3b441143b0afb9c5e0b043aeef7d13c6bc0e45cd09167",
       "claimId": "claim-unit-d1a753e6d63c-1",
       "claimSha256": "0714f01af52799049dd8d9cd4920f8bf8f50ce2424eb342829c3ba5decb9fd52",
       "sourceId": "service-public-pieces",
@@ -52,7 +52,7 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-29",
-      "reasoning": "Service-Public indique une conservation minimale des documents de l'entreprise ; le corps renvoie à la nature des pièces et précise que la source ne certifie aucune fonction d'archivage d'un logiciel."
+      "reasoning": "Service-Public F10029, copie vérifiée 29/09 : conservation minimale des documents d'entreprise selon leur nature ; corps.md:107 et 138 en excluent explicitement une garantie d'archivage logiciel."
     }
   ]
 }

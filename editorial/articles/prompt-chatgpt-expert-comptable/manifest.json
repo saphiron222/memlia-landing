@@ -42,7 +42,7 @@
     "required": true,
     "reviewerId": "relecteur-metier-ia-memlia",
     "role": "direction-associes",
-    "status": "FAIL",
+    "status": "PASS",
     "evidence": "preuves/business-review.json"
   },
   "funnel": "MOFU",
@@ -104,7 +104,7 @@
     }
   ],
   "author": "kevin",
-  "reviewer": "marketing",
+  "reviewer": "metier:t_e511ee7c",
   "reviewRule": "Revoir les conditions d'utilisation de l'outil et les recommandations CNIL avant un usage réel ; réviser le contenu en cas d'évolution de la source.",
   "cta": {
     "label": "Confier cette tâche",

@@ -1,11 +1,11 @@
 {
   "version": 1,
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-  "reviewedAt": "2026-09-28",
-  "reviewer": "qa:t_de67db5a",
+  "reviewedAt": "2026-09-29",
+  "reviewer": "metier:t_1a9ed93d",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 92,
+  "score": 90,
   "p0": 0,
   "categories": {
     "contentQuality": {
@@ -13,7 +13,7 @@
       "max": 30
     },
     "seoOptimization": {
-      "score": 23,
+      "score": 22,
       "max": 25
     },
     "eeatSignals": {
@@ -21,7 +21,7 @@
       "max": 15
     },
     "technicalElements": {
-      "score": 14,
+      "score": 13,
       "max": 15
     },
     "aiCitationReadiness": {
@@ -30,21 +30,20 @@
     }
   },
   "evidence": [
-    "Lecture indépendante du rendu exact : 1 603 tokens à lettres dans .article-corps, 1 637 déclarés dans BlogPosting, deux figures légendées et cas IA-01/02/03 présents ; aucun chiffre de gain non mesuré.",
-    "La modification du corps ajoute un scénario de transmission de règle au collaborateur et à la direction ; le rejeu local confirme 2 articles et 7 cas fictifs.",
-    "Les cinq citations apparaissent sur trois pages primaires accessibles le 29 septembre (Atlas 3688, Apec 1003, OEC 480), sans extrapolation sectorielle ou temporelle.",
-    "H1/headline et canonical concordent ; dateModified 28 septembre, image OG 1200×630 et figures WebP 1600×900 présentes dans l’aperçu noindex.",
-    "Sur HEAD c7b16c2054b08c35afd229ef35a5148e1ac8832a : manifeste réadopté, les sept fichiers d’entrée et les quatre WebP ont les empreintes annoncées ; npm run test:blog-proof-render passe 14 preuves d’article, 2 articles/7 cas et 4 preuves recrutement. Le sujet body/recipe/rendered reste identique à la revue FAIL antérieure."
+    "27/30 : frontière opérationnelle, trois cas fictifs et limites de validité explicites.",
+    "22/25 : titres et structure cohérents ; aucun nouveau rang SERP prouvé.",
+    "14/15 : cinq claims confrontés à trois copies dont portée et ancienneté maintenues.",
+    "13/15 : HTML exact avec images directes et sans légende ; aucun Lighthouse ni HTML public revalidé.",
+    "14/15 : tableau et visuels citables seulement avec la qualification jeu fictif."
   ],
   "reservations": [
-    "Le visuel competences-refus raccourcit les statuts et ne porte pas la décision complète ; le tableau de l’article donne les sorties littérales.",
-    "La couverture abstraite nécessite son alt et la figure frontière pour rendre le trajet opérationnel intelligible.",
-    "La branche maintient temporairement l’article publié en a-valider/brouillon : le parent doit rétablir publie et contrôler l’URL, RSS et sitemap avant livraison, sans simuler un PASS production."
+    "La prospective Atlas ne prouve aucune évolution d'effectifs ni effet spécifique de l'IA ; le communiqué Apec de 2021 ne décrit pas 2026.",
+    "La revue du rendu local et de copies vérifiées dans le dépôt n'est ni un scellement ni une mesure sur un cabinet réel."
   ],
-  "verdict": "PASS revue indépendante du candidat, 92/100 et zéro P0 : le manifeste est réadopté sur le replay exact et ses quatre WebP reproductibles ; le corps rendu dépasse 1 500 mots et les trois empreintes du sujet demeurent inchangées. Ce verdict ne vaut ni scellement, ni build public, ni publication : le parent doit intégrer la revue, sceller et rétablir l’état publié, puis passer la QA finale distincte.",
+  "verdict": "AI_REVIEW_PASS sur le rendu 23c6016 et les preuves inline ; livrabilité, QA et production restent distinctes.",
   "subject": {
     "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-    "articleSha256": "d55a5dfcd7d73d328fab8385ead6b3fdc47a78f9f441eab0b78669bd3ed5d3e0",
-    "manifestSha256": "2d058fa9b2ce0f39573440227989af4b42e589aedd23f6f2b1114e0ffaad5866"
+    "articleSha256": "90b4762a80a6579ca34e00e316c11d7edddc141b27cffc5e077be29506103efb",
+    "manifestSha256": "85d5e23b10d30c76226043ebbfa1e6ad6f0ab46d6011b1d17c2b7ea5ece7560a"
   }
 }

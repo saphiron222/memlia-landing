@@ -4,19 +4,19 @@
   "kind": "editorial-review",
   "status": "PASS",
   "checkedAt": "2026-09-29",
-  "articleSha256": "9b4b454fcef2378508f24edf533c282467eb3ea4b3dd7cb4ad5ff2531a863254",
-  "manifestSha256": "41d687a8a01a7413731390ce19c1fad37d2e2bc3e5bb853871b92ddf3da91eef",
+  "articleSha256": "de7409d61ee72ab4e1a3b441143b0afb9c5e0b043aeef7d13c6bc0e45cd09167",
+  "manifestSha256": "4b64530d7d18783bede998de7e2ff125daa06caf8dc3def1f3d29506ab5a896d",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact logiciel-ia-comptabilite."
   ],
-  "reviewer": "qa:t_f7a52dd8",
+  "reviewer": "metier:t_1a9ed93d",
   "criteria": [
     {
       "id": "intent-satisfaction",
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le lecteur reçoit six questions de démonstration sur le chemin de la pièce, puis trois décisions possibles ; le premier choix est d'éprouver le logiciel existant, sans classement commercial inventé."
+        "Le corps propose un protocole de comparaison sur même jeu fictif avec trois états vérifié/à configurer/non vérifié ; aucun résultat d'essai d'éditeur n'est présenté."
       ]
     },
     {
@@ -24,7 +24,7 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "H1 et titre d'onglet répondent à logiciel IA comptabilité avec une grille de choix ; la description annonce un comparatif méthodologique et non un banc d'essai d'éditeurs."
+        "Titre, H1 et description restent centrés sur une grille de choix et non un comparatif commercial mesuré ; la route historique est conservée."
       ]
     },
     {
@@ -32,7 +32,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Les trois liens CNIL, Ordre et Service-Public du corps correspondent à des copies datées, les règles de conservation n'impliquent pas une fonction d'archivage ; le texte nie explicitement avoir testé Dext ou Pennylane."
+        "Copies CNIL, Ordre et Service-Public et leurs SHA/extraits vérifiés ; la recommandation CNIL concerne un système d'IA générative, et non tous les logiciels ; Service-Public ne prouve pas l'archivage d'un éditeur."
       ]
     },
     {
@@ -40,7 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "La règle écrite distingue proposition, validation et arrêt ; quatre sorties de la règle locale, dont doublon probable et période ambiguë, ont été rejouées et concordent avec journal-rejeu.json, sans écriture comptable."
+        "Deux figures : parcours fictif en six étapes jusqu'à proposition à valider et trois issues normal/doublon/période, avec zéro écriture ; journal-rejeu.json décrit en plus le quatrième arrêt donnée absente. Aucun éditeur testé, comme l'indiquent figures et article."
       ]
     },
     {
@@ -48,7 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Build local neuf : date visible et BlogPosting au 29 septembre 2026, canonical propre, un H1 et deux figures HTML avec légendes de source/date ; OG et noindex correspondent à la preview brouillon."
+        "HTML Astro au SHA 23c6016 : images enfants directs de deux figures, alt présents, zéro figcaption et panneau défilant ; CSS width/max-width 100 %, height auto ; article déjà publié, robots index, follow dans ce build local."
       ]
     },
     {
@@ -56,7 +56,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Les tableaux séparent questions à poser à un éditeur et résultats de la seule règle éditoriale ; les FAQ rappellent que la simulation ne mesure aucune capacité du produit envisagé."
+        "Grille, cas et FAQ ne permettent pas d'inférer une capacité de Dext, Pennylane ni d'un logiciel actuel ; les limites de la règle locale sont répétées."
       ]
     },
     {
@@ -64,7 +64,7 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "Lien vers le pilier, le prompt fictif, /methode et /contact ; Memlia est décrit comme service qui écrit la règle dans les outils existants, avec imputation et décision au cabinet."
+        "Le lien vers méthode et pilier garde le choix et la décision dans le cabinet, sans prétendre avoir livré la configuration illustrée."
       ]
     }
   ]

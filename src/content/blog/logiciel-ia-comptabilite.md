@@ -31,7 +31,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Quatre cas de tri par règle locale conservés dans cas-executes.json ; aucun éditeur ni intégration commerciale testé."
 reviewRule: "Réviser les conditions des éditeurs et la documentation officielle avant tout classement de produit ; la grille de méthode reste indépendante des marques."
-reviewer: qa:t_f7a52dd8
+reviewer: metier:t_1a9ed93d
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier cette tâche"

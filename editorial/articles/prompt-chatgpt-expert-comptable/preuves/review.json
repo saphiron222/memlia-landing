@@ -2,69 +2,69 @@
   "version": 1,
   "candidateSlug": "prompt-chatgpt-expert-comptable",
   "kind": "editorial-review",
-  "status": "FAIL",
+  "status": "PASS",
   "checkedAt": "2026-09-29",
-  "articleSha256": "7ac2f445538bae30faf76e677a77f578b953fb77ff6743ac8d1b68d6fd702351",
-  "manifestSha256": "259c9f9f942717850ebab0e7f9ff3dd869eb8e50eefe1a7dc990d3431832a6cb",
+  "articleSha256": "72dcd25a994d63fb40459a62b24c6d950d290b8682acea3e764a4bea0b20c20f",
+  "manifestSha256": "0d36b17a43c819fbd2ce08777c442072308dc88cfea50e186d284fb5aeb81f49",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact prompt-chatgpt-expert-comptable."
   ],
-  "reviewer": "marketing",
+  "reviewer": "metier:t_e511ee7c",
   "criteria": [
     {
       "id": "intent-satisfaction",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 20,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "La demande de facture fictive est préparée comme brouillon lorsque la pièce à demander est nommée mais pas reçue ; le champ Pièce attendue vide provoque l'arrêt du script local, pas l'absence du justificatif."
       ]
     },
     {
       "id": "serp-format-rankability",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 15,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Article borné au prompt de demande de pièce, sans promesse d'un résultat ChatGPT ni classement de fournisseurs ; cette revue ne mesure aucun rang SERP."
       ]
     },
     {
       "id": "eeat-sources",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 20,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Les citations CNIL relatives au partage autorisé et à l'identification par croisement, et la présentation par l'Ordre de ses ressources Data et IA, restent limitées à leur portée ; copies locales et SHA des reçus du 29/09 vérifiés. Aucune source ne prétend valider le comportement de ChatGPT."
       ]
     },
     {
       "id": "information-gain-proof",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 20,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "journal-rejeu.json:21-33 : piece vide, statut arret, motif contexte incomplet, message null, envoi false. WebP w39-prompt-arret : champ Pièce attendue vide et aucune demande préparée ; recette.json:29 et article matérialisé:133 portent maintenant le même fait. Le cas nominal porte une facture nommée mais non reçue et produit seulement un brouillon fictif."
       ]
     },
     {
       "id": "technical-onpage-seo",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 10,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Astro preview local au SHA ead22dc : 47 routes ; blog-forge empreinte sur le HTML produit confirme les trois SHA du subject. Le brouillon reste a-valider/noindex : aucun feu vert de publication ne résulte de ce critère."
       ]
     },
     {
       "id": "ai-citability",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 10,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Le texte attribue le refus au script déterministe et dit explicitement qu'aucun essai ChatGPT n'a été réalisé ; l'alt corrigé ne transforme pas la pièce justificative non reçue en raison d'arrêt."
       ]
     },
     {
       "id": "contextual-conversion",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 5,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "La décision de vérifier le destinataire puis d'envoyer reste humaine ; aucun courriel n'est présenté comme envoyé."
       ]
     }
   ]

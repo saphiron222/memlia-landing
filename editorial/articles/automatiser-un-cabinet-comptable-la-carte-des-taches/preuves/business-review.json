@@ -4,8 +4,8 @@
   "kind": "business-review",
   "status": "PASS",
   "checkedAt": "2026-09-29",
-  "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
-  "manifestSha256": "85dd7e9ddad6523f9a73d8c34587f1d8d9904bbdab1a6da774c1934285a30d6c",
+  "articleSha256": "c15ec8472aad451cdee27ff22a9dce08cbdbbfc686d3976b7d16f66576245436",
+  "manifestSha256": "a496cf6d19c50f5e4c09969242e6011bacde6ee15cb295e57cdbbfd1fef952c4",
   "observations": [
     "Contrôle business-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -15,7 +15,7 @@
     {
       "id": "review-claim-unit-1dc9c56e18bd-1-cnil-roles",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "c15ec8472aad451cdee27ff22a9dce08cbdbbfc686d3976b7d16f66576245436",
       "claimId": "claim-unit-1dc9c56e18bd-1",
       "claimSha256": "7a5503e934fb28817d41ddd7d69d73a11514cdff3fac3b07c0907ea52beb117e",
       "sourceId": "cnil-roles",
@@ -24,12 +24,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-29",
-      "reasoning": "La fiche CNIL distingue les rôles selon les faits et le traitement ; l'article demande cette qualification sans attribuer un rôle unique au cabinet du seul fait que le fichier vient du client."
+      "reasoning": "CNIL cnil-roles, copie vérifiée 29/09 : qualification des acteurs au cas par cas ; le corps ne fixe pas le rôle du cabinet à partir de l'origine du fichier."
     },
     {
       "id": "review-claim-unit-279d5bd8bf20-1-sp-conservation",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "c15ec8472aad451cdee27ff22a9dce08cbdbbfc686d3976b7d16f66576245436",
       "claimId": "claim-unit-279d5bd8bf20-1",
       "claimSha256": "2023ed4ccd60bb092bd263483469fa84f1d81e076bdd952bbb9861b5c67c41d2",
       "sourceId": "sp-conservation",
@@ -38,12 +38,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-29",
-      "reasoning": "Service-Public indique une durée minimale et des délais variant selon la nature du document ; le pilier ne fixe pas de durée générale de conservation."
+      "reasoning": "Service-Public F10029, copie vérifiée 29/09 : conservation minimale des documents d'entreprise, durée selon la nature ; aucune durée universelle n'est attribuée."
     },
     {
       "id": "review-claim-unit-e8439da9f147-1-net-crm",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "c15ec8472aad451cdee27ff22a9dce08cbdbbfc686d3976b7d16f66576245436",
       "claimId": "claim-unit-e8439da9f147-1",
       "claimSha256": "d7a7b4f575917e0b133ccb4b11688abaea9ae331ca801331de503548086fc8d4",
       "sourceId": "net-crm",
@@ -52,12 +52,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-29",
-      "reasoning": "Net-entreprises définit le CRM comme retour après réception de déclaration lorsqu'une erreur ou suspicion est détectée ; la correction engageant les droits du salarié reste humaine."
+      "reasoning": "Net-entreprises, copie vérifiée 29/09 : le CRM est un retour après déclaration en cas d'erreur ou suspicion ; la décision de correction reste au cabinet."
     },
     {
       "id": "review-claim-unit-ceb5c8df6333-1-impots-calendrier",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "c15ec8472aad451cdee27ff22a9dce08cbdbbfc686d3976b7d16f66576245436",
       "claimId": "claim-unit-ceb5c8df6333-1",
       "claimSha256": "82cce41ee2da94b0a2a13edf6c64faead1831a39e5e61725f67002a8a48a455b",
       "sourceId": "impots-calendrier",
@@ -66,12 +66,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-29",
-      "reasoning": "Le calendrier DGFiP mentionne la fenêtre du 15 au 24 septembre 2026 pour la déclaration mensuelle de TVA et la date figurant dans l'espace professionnel ; l'article garde cette portée mensuelle."
+      "reasoning": "Calendrier DGFiP vérifié 29/09 : fenêtre 15–24 septembre 2026 pour dépôt/paiement de la déclaration mensuelle de TVA, date propre à l'espace professionnel ; le texte maintient cette restriction."
     },
     {
       "id": "review-claim-unit-2614d7101a11-1-cnil-principes",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "c15ec8472aad451cdee27ff22a9dce08cbdbbfc686d3976b7d16f66576245436",
       "claimId": "claim-unit-2614d7101a11-1",
       "claimSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
       "sourceId": "cnil-principes",
@@ -80,12 +80,12 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-29",
-      "reasoning": "Le texte RGPD publié par la CNIL contient la formule de minimisation citée ; le passage la situe parmi d'autres obligations à apprécier traitement par traitement."
+      "reasoning": "Article 5 RGPD reproduit par CNIL, copie vérifiée 29/09 : minimisation des données au regard de la finalité ; le corps ne présente pas ce principe comme seule obligation."
     },
     {
       "id": "review-claim-unit-2614d7101a11-2-cnil-durees",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "c15ec8472aad451cdee27ff22a9dce08cbdbbfc686d3976b7d16f66576245436",
       "claimId": "claim-unit-2614d7101a11-2",
       "claimSha256": "425018890498eb4534d4a887a5f4e6049eed1c45e02941d48e2a844c25450e91",
       "sourceId": "cnil-durees",
@@ -94,7 +94,7 @@
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
       "checkedAt": "2026-09-29",
-      "reasoning": "La CNIL confie la définition de la durée à l'analyse de conformité du responsable pour chaque traitement ; la règle de purge citée ne dispense pas des durées et obligations d'archivage applicables."
+      "reasoning": "CNIL cnil-durees, copie vérifiée 29/09 : analyse de conformité par traitement et par responsable ; la purge évoquée est une méthode à cadrer, non une dispense de conservation documentaire."
     }
   ]
 }

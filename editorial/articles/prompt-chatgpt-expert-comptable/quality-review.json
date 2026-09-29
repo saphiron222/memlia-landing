@@ -2,18 +2,18 @@
   "version": 1,
   "candidateSlug": "prompt-chatgpt-expert-comptable",
   "reviewedAt": "2026-09-29",
-  "reviewer": "qa:t_f7a52dd8",
+  "reviewer": "metier:t_e511ee7c",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 91,
+  "score": 90,
   "p0": 0,
   "categories": {
     "contentQuality": {
-      "score": 28,
+      "score": 27,
       "max": 30
     },
     "seoOptimization": {
-      "score": 23,
+      "score": 22,
       "max": 25
     },
     "eeatSignals": {
@@ -21,7 +21,7 @@
       "max": 15
     },
     "technicalElements": {
-      "score": 12,
+      "score": 13,
       "max": 15
     },
     "aiCitationReadiness": {
@@ -30,20 +30,21 @@
     }
   },
   "evidence": [
-    "28/30 contenu : prompt réellement copiable, règle d'arrêt et trois cas du script vérifiés ; aucun essai du fournisseur n'est insinué.",
-    "23/25 SEO : H1/title/description adaptés, canonical et maillage réciproque au pilier, deux sources CNIL et une source institutionnelle.",
-    "14/15 confiance : source et extrait présents dans les copies 200, auteur identifié ; sortie simulée distincte d'une observation ChatGPT.",
-    "12/15 technique : dates visible et structurée concordantes, figures datées et OG 1200 × 630 ; pas de Lighthouse ni de mesure mobile interactive dans cette passe.",
-    "14/15 citabilité : tableau, FAQ et prompt autonomes, avec provenance explicite de la règle locale."
+    "27/30 : la condition d'arrêt et le cas nominal sont séparés dans texte, journal, WebP et alt.",
+    "22/25 : titre, tâche et liens inchangés ; aucun résultat de classement mesuré.",
+    "14/15 : trois copies de sources datées et liées, sans validation fictive de ChatGPT.",
+    "13/15 : preview local produit au triplet exact, sans mesure d'accessibilité en lecteur d'écran ni preuve publique.",
+    "14/15 : refus présenté comme sortie du script local uniquement."
   ],
   "reservations": [
-    "Aucun fournisseur ChatGPT interrogé : le comportement du prompt copiable reste non mesuré.",
-    "Ce score porte uniquement sur le brouillon construit ; son noindex est normal ici, sans attester publication ni vitesse réelle."
+    "Cette revue IA ciblée ne vaut ni scellement ni QA/CI exact-head ni feu vert de publication.",
+    "Aucun appel ChatGPT ou essai de lecteur d'écran effectué ; capture W39 déclarée au 27/09 sans horodatage autonome vérifié lors de cette passe.",
+    "Sources officielles évaluées à partir des copies et reçus du 29/09/2026 ; pas de nouvelle consultation HTTP en direct."
   ],
-  "verdict": "91/100, zéro P0 sur corps et prévisualisation exacts ; revue de contenu, pas feu vert pour une livraison sans scellement et QA finale.",
+  "verdict": "AI_REVIEW_PASS sur la correction d'alt et le triplet exact ead22dc, sous réserves de provenance et de livraison ; ni scellement ni publication.",
   "subject": {
     "slug": "prompt-chatgpt-expert-comptable",
-    "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
-    "manifestSha256": "b2cdbd292ffe24a190e872b7aa6e8772c8e60b0ba0e222ea16021cc1afbaccf3"
+    "articleSha256": "72dcd25a994d63fb40459a62b24c6d950d290b8682acea3e764a4bea0b20c20f",
+    "manifestSha256": "0d36b17a43c819fbd2ce08777c442072308dc88cfea50e186d284fb5aeb81f49"
   }
 }

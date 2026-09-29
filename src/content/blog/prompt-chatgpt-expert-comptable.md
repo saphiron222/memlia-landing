@@ -31,7 +31,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Trois cas fictifs exécutés par rejouer-cas.mjs, entrées et sorties dans journal-rejeu.json ; le refus demande déjà partie est propre au script local alimenté par le suivi et absent du prompt copiable ; deux consignes par pôle illustratives non exécutées ; aucune réponse ChatGPT mesurée."
 reviewRule: "Revoir les conditions d'utilisation de l'outil et les recommandations CNIL avant un usage réel ; réviser le contenu en cas d'évolution de la source."
-reviewer: marketing
+reviewer: metier:t_e511ee7c
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier cette tâche"

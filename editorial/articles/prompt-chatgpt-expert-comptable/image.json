@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "prompt-chatgpt-expert-comptable",
-  "articleSha256": "7ac2f445538bae30faf76e677a77f578b953fb77ff6743ac8d1b68d6fd702351",
-  "manifestSha256": "259c9f9f942717850ebab0e7f9ff3dd869eb8e50eefe1a7dc990d3431832a6cb",
+  "articleSha256": "72dcd25a994d63fb40459a62b24c6d950d290b8682acea3e764a4bea0b20c20f",
+  "manifestSha256": "0d36b17a43c819fbd2ce08777c442072308dc88cfea50e186d284fb5aeb81f49",
   "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
@@ -35,12 +35,10 @@
     }
   ],
   "alt": "Feuille vierge et enveloppe séparées par une grille fermée, pour figurer le contrôle humain avant une demande de pièce",
-  "score": null,
-  "directionArt": null,
-  "semanticRelevance": null,
-  "p0": [
-    "Revue image non exécutée"
-  ],
+  "score": 100,
+  "directionArt": 17,
+  "semanticRelevance": 22,
+  "p0": [],
   "kevinApproved": true,
   "palette": {
     "statut": "PASS",
