@@ -1,0 +1,67 @@
+{
+  "nature": "exécution locale déterministe sur données fictives, aucun éditeur interrogé",
+  "cas": [
+    {
+      "nom": "normal",
+      "entree": {
+        "dossier": "D-001",
+        "periode": "avril",
+        "periodeAttendue": "avril",
+        "empreinte": "A",
+        "empreintesConnues": []
+      },
+      "sortie": {
+        "statut": "proposition_a_valider",
+        "motif": "contrôles humains requis",
+        "ecriture": "aucune"
+      }
+    },
+    {
+      "nom": "doublon",
+      "entree": {
+        "dossier": "D-001",
+        "periode": "avril",
+        "periodeAttendue": "avril",
+        "empreinte": "A",
+        "empreintesConnues": [
+          "A"
+        ]
+      },
+      "sortie": {
+        "statut": "exception",
+        "motif": "doublon probable",
+        "ecriture": "aucune"
+      }
+    },
+    {
+      "nom": "periode_ambigue",
+      "entree": {
+        "dossier": "D-001",
+        "periode": "mars",
+        "periodeAttendue": "avril",
+        "empreinte": "B",
+        "empreintesConnues": []
+      },
+      "sortie": {
+        "statut": "exception",
+        "motif": "période ambiguë",
+        "ecriture": "aucune"
+      }
+    },
+    {
+      "nom": "contexte_absent",
+      "entree": {
+        "dossier": "D-001",
+        "periode": "avril",
+        "periodeAttendue": "avril",
+        "empreinte": "",
+        "empreintesConnues": []
+      },
+      "sortie": {
+        "statut": "arret",
+        "motif": "donnée absente",
+        "ecriture": "aucune"
+      }
+    }
+  ]
+}

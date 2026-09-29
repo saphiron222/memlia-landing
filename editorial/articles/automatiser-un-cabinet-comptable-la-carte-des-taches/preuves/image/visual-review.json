@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-20",
-  "articleSha256": "cc9f53d2370a59412bbcd7d2d2b35ba934d2f01e2730fa1e8c8b2504fd576c72",
-  "manifestSha256": "f74aef3774bdb2661093dd52fa99ee7ac2bdb00a46957fa023beec0ff26f6650",
+  "checkedAt": "2026-09-29",
+  "articleSha256": "01691660923b31d0a5651800ab343573b63bf0c27945d5b4952e61b07638baaf",
+  "manifestSha256": "abcf6414af33a9451637c123c24ca41650d0df7becccd99d05a12e3fd2aa75bd",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -49,42 +49,42 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Les six composantes du brief (sujet, composition, style, palette, interdits, alt) se retrouvent toutes dans master.png, observé directement : environ dix îlots (plaques vertes et graphite) reliés par de fins chemins clairs, un jeton vert cylindrique au centre devant une bifurcation à deux flèches divergentes, sur un fond crème neutre."
+        "La recette contient sujet, composition, style, palette, interdits et alt ; le master observé représente des îlots reliés et un jeton devant une bifurcation."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Observation directe de master.png : le calendrier (îlot du haut) montre une grille de cases vides sans aucun chiffre ni lettre, une seule case surlignée en vert ; aucun écran, logo, personnage, visage, alerte rouge ni symbole d'envoi automatique nulle part dans l'image de 1920x1080."
+        "Master observé sans texte exploitable, personne, logo, interface ou donnée client lisible."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Tous les objets visibles (pièces de monnaie empilées, classeurs, calendrier à grille vierge, engrenages, cubes géométriques, barres de graphique, piles de papier) sont des icônes génériques en matière mate ou translucide, sans document, nom ou chiffre identifiable : rien n'imite une capture d'écran ou une photographie réelle."
+        "La figure de test dit fictif et ne présente qu'une candidature au cadrage, pas une automatisation exécutée."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Le jeton vert et la bifurcation à deux flèches se lisent immédiatement comme un point de décision sur un chemin parmi d'autres, conforme au brief ; les îlots reliés autour restent cohérents avec une carte administrative une fois associés à l'alt et à la légende de l'article."
+        "Diorama lisible comme réseau d'îlots ; la figure de carte nomme l'audit légal listé, non ouvert."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Vérifié par lecture directe des fichiers (PIL), pas seulement par le JSON déclaratif : master.png mesure 1920x1080 (16:9 exact), og.webp mesure 1200x630, les variantes 768/1200/1600 en avif et webp sont présentes à la fois dans public/images et dist/images avec les dimensions attendues (768x432, 1200x675, 1600x900)."
+        "image.json référence master PNG 1920×1080, OG WebP 1200×630 et variante WebP/AVIF 768×432 ; les deux preuves WebP sont présentes."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Le texte alternatif (« Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation ») compte 117 caractères (calculé), sous la limite de 125, et reste identique entre l'attribut alt de l'image, og:image:alt et la légende ImageObject du JSON-LD."
+        "Alt de couverture conforme aux îlots, chemins et jeton observés ; alt et légendes des preuves déclarés dans la recette et le paquet."
       ]
     }
   ]

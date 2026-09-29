@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "kind": "source-classification",
   "status": "PASS",
-  "checkedAt": "2026-09-20",
-  "articleSha256": "cc9f53d2370a59412bbcd7d2d2b35ba934d2f01e2730fa1e8c8b2504fd576c72",
-  "manifestSha256": "f74aef3774bdb2661093dd52fa99ee7ac2bdb00a46957fa023beec0ff26f6650",
+  "checkedAt": "2026-09-29",
+  "articleSha256": "01691660923b31d0a5651800ab343573b63bf0c27945d5b4952e61b07638baaf",
+  "manifestSha256": "abcf6414af33a9451637c123c24ca41650d0df7becccd99d05a12e3fd2aa75bd",
   "sourceId": "impots-calendrier",
   "sourceUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
   "finalUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
@@ -15,9 +15,9 @@
   "official": true,
   "upstreamUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
   "classifiedBy": "kevin",
-  "reviewedBy": "relecteur-metier-ia-memlia",
+  "reviewedBy": "qa:w39-final-independent",
   "observations": [
     "Calendrier officiel publié par la direction générale des finances publiques, source primaire.",
-    "impots.gouv.fr, portail officiel de la DGFiP — source tier-1 par nature périssable (calendrier daté) ; citation revérifiée verbatim et resituée dans son contexte exact (carte « TVA régime réel normal d'imposition »), bornée à septembre 2026."
+    "La copie DGFiP porte la fenêtre TVA du 15 au 24 septembre 2026 et sa date dans l'espace professionnel."
   ]
 }

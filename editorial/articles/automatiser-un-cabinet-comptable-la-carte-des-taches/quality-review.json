@@ -1,11 +1,11 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-  "reviewedAt": "2026-09-20",
-  "reviewer": "relecteur-qualite-ia-memlia",
+  "reviewedAt": "2026-09-29",
+  "reviewer": "qa:w39-final-independent",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 97,
+  "score": 91,
   "p0": 0,
   "categories": {
     "contentQuality": {
@@ -13,44 +13,38 @@
       "max": 30
     },
     "seoOptimization": {
-      "score": 24,
+      "score": 23,
       "max": 25
     },
     "eeatSignals": {
-      "score": 15,
+      "score": 14,
       "max": 15
     },
     "technicalElements": {
-      "score": 15,
+      "score": 12,
       "max": 15
     },
     "aiCitationReadiness": {
-      "score": 15,
+      "score": 14,
       "max": 15
     }
   },
   "evidence": [
-    "Le tableau de synthèse totalise désormais exactement 60 familles sur douze pôles (13+5+7+7+4+5+3+4+3+4+4+1, recalculé), et cette répartition pôle par pôle reproduit à l'identique le compte de src/data/familles.ts (douze identifiants PoleId, soixante entrées FAMILLES) : le défaut bloquant de la revue précédente est corrigé et revérifié à la source.",
-    "Onze tableaux de frontière à trois colonnes (se prépare seul / attend une validation / reste humain) couvrent désormais les onze pôles ouverts un par un, contre sept sur onze dans la version précédemment revue ; seul le douzième pôle (audit légal) en est dépourvu, conformément à son statut listé-non-ouvert.",
-    "Les cinq citations de claims ont été revérifiées par recherche littérale normalisée dans les cinq copies locales *.source.txt : correspondance exacte dans les cinq cas, aucune extension de portée ni de polarité.",
-    "Recherche exhaustive sur le rendu entier : zéro occurrence du mot « onze », zéro tiret cadratin dans le corps de l'article (le seul du fichier appartient à la bannière du harnais de preview), zéro occurrence de « module », voix « nous » cohérente (sept occurrences).",
-    "Graphe JSON-LD complet et syntaxiquement valide (parsé programmatiquement) : BlogPosting, BreadcrumbList à trois niveaux, Person avec bio réelle, Organization avec SIREN/SIRET, WebSite.",
-    "Image de couverture vérifiée sur le disque, pas seulement dans image.json : master.png 1920x1080, dérivés 768/1200/1600 en avif/webp et og.webp 1200x630 tous présents dans public/images et dist/images.",
-    "Comptage direct sur le rendu : un seul H1, vingt H2 de contenu, cinq H3 tous dans la FAQ, sans saut de hiérarchie ; douze tableaux thead/tbody au total.",
-    "Le robots noindex de ce rendu est confirmé par lecture du code (Article.astro, Base.astro) comme conditionné par le même booléen `candidatPreview` que la bannière de preview : un artefact du harnais, pas un réglage de production."
+    "28/30 : douze pôles, onze frontières et deux liens ordinaires contextualisés ; retrait du lien Cicatrice constaté.",
+    "23/25 : intention pilier distincte des satellites, liens ciblés et destinations de préparation présentes.",
+    "14/15 : six claims recoupés avec les copies officielles, notamment qualification RGPD au cas par cas.",
+    "12/15 : empreintes forge finales exactes, HTML de préparation avec canonical et noindex ; pas de preuve Lighthouse ni de déploiement public final.",
+    "14/15 : tableau et frontières lisibles sans prétendre documenter l'audit légal."
   ],
   "reservations": [
-    "Aucune mesure Lighthouse/CrUX réelle n'a été exécutée ; les signaux de performance (préchargement des polices, fetchpriority, absence de CSS bloquant) sont lus dans le HTML statique du rendu QA, pas mesurés en conditions réelles.",
-    "La reprise effective de ce contenu par un moteur IA (AI Overviews, ChatGPT, Perplexity) n'est pas mesurable a priori ; seule la citabilité structurelle (format réponse directe, tableaux, FAQ) a été évaluée.",
-    "Le wordCount du JSON-LD (3702) et le temps de lecture affiché (19 min) sont cohérents entre eux, mais un comptage indépendant approximatif sur le seul corps rendu (hors CTA et sources) donne un ordre de grandeur proche sans être identique, faute de chronométrage réel.",
-    "L'ordre des pôles dans le tableau de l'article (…Excel, Conseil, Méthode, Audit) diffère de l'ordre de déclaration dans src/data/familles.ts (…Excel, Méthode, Conseil, Audit) ; les décomptes par pôle concordent malgré tout exactement, donc sans conséquence factuelle.",
-    "La densité de maillage interne (plus d'une quinzaine de liens contextuels dans le corps) dépasse largement la fourchette indicative de 3 à 10 liens du barème, attendu et cohérent pour un format pilier faisant fonction de hub, mais à surveiller si ce gabarit sert un format plus court.",
-    "Le titre de balise est à 60 caractères pile, donc sans marge restante : un allongement lors d'une prochaine évolution éditoriale le ferait sortir de la fourchette recommandée."
+    "Le brouillon de relance seul se prépare ; son envoi requiert une validation humaine. Cette distinction vaut aussi pour les variables de paie et l'image de couverture.",
+    "La règle de purge évoquée dépend de la finalité, du rôle qualifié, des délais de conservation et de l'archivage obligatoire ; elle ne vaut ni suppression automatique ni garantie RGPD.",
+    "Le HTML contrôlé est une préparation noindex ; remettre le pilier en état public et vérifier le rendu final après scellement par la forge. Cette revue n'atteste ni Lighthouse, ni CI, ni déploiement."
   ],
-  "verdict": "97/100 — le défaut bloquant de la revue précédente (soixante familles non vérifiables) est corrigé et revérifié à trois niveaux concordants (tableau du rendu, référentiel de code, section de cadrage), le format pilier est maintenant uniforme sur ses onze pôles ouverts, et aucun nouveau défaut critique n'a été trouvé : publication recommandée.",
+  "verdict": "PASS indépendant sur le corps, la recette et le rendu de préparation portant les trois empreintes du sujet ; zéro P0. Scellement et contrôle public final restent au parent.",
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "articleSha256": "cc9f53d2370a59412bbcd7d2d2b35ba934d2f01e2730fa1e8c8b2504fd576c72",
-    "manifestSha256": "f74aef3774bdb2661093dd52fa99ee7ac2bdb00a46957fa023beec0ff26f6650"
+    "articleSha256": "01691660923b31d0a5651800ab343573b63bf0c27945d5b4952e61b07638baaf",
+    "manifestSha256": "abcf6414af33a9451637c123c24ca41650d0df7becccd99d05a12e3fd2aa75bd"
   }
 }

@@ -3,17 +3,12 @@
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "kind": "skill",
   "status": "PASS",
-  "checkedAt": "2026-09-20",
-  "articleSha256": "cc9f53d2370a59412bbcd7d2d2b35ba934d2f01e2730fa1e8c8b2504fd576c72",
-  "manifestSha256": "f74aef3774bdb2661093dd52fa99ee7ac2bdb00a46957fa023beec0ff26f6650",
+  "checkedAt": "2026-09-29",
+  "articleSha256": "01691660923b31d0a5651800ab343573b63bf0c27945d5b4952e61b07638baaf",
+  "manifestSha256": "abcf6414af33a9451637c123c24ca41650d0df7becccd99d05a12e3fd2aa75bd",
   "observations": [
     "Réponse directe en tête (79 mots au premier paragraphe) ; définitions extractibles dans le corps.",
-    "Encart « En bref » puis H2 « Réponse directe » en tout premier bloc de contenu : format idéal pour une reprise par un AI Overview ou un assistant conversationnel, et le chiffre qu'il porte (« soixante familles réparties en douze pôles ») se vérifie maintenant par le reste de la page.",
-    "Trois définitions en gras (tâche automatisable, règle de cabinet, frontière d'automatisation) posent une terminologie d'entité stable, réutilisée sans dérive dans les onze sections de pôle qui suivent.",
-    "Douze tableaux structurés avec thead/tbody, dont onze tableaux de frontière à trois colonnes désormais présents pour chacun des onze pôles ouverts, offrent des blocs autonomes directement citables pour une requête du type « ce qui reste humain dans telle tâche ».",
-    "La section « Que ne contient pas cette carte ? » délimite explicitement le périmètre (pas de chiffre de gain non mesuré, pas d'audit légal documenté, pas de fonction livrée promise), ce qui réduit le risque qu'un moteur IA surinterprète la portée de l'article.",
-    "Cinq questions en H3 dans « Questions fréquentes », réponses autonomes en un paragraphe chacune, sans balisage FAQPage — sans bonus de score selon la grille, donc sans conséquence sur la note.",
-    "Le noindex de ce rendu QA limiterait un crawler IA déclaré s'il persistait en production ; vérifié dans le code comme un artefact du harnais de prévisualisation lié au statut candidat, pas la configuration de production."
+    "Carte et frontières citables, sans mesure de reprise par moteur IA."
   ],
   "skill": "blog-geo"
 }
