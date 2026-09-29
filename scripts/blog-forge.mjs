@@ -535,7 +535,8 @@ const echapperHtml = (texte) => String(texte)
 
 /**
  * Ajoute les preuves visuelles déclarées par la recette sans modifier son corps éditorial.
- * La source et la date de capture de la recette accompagnent la preuve sur la page publique.
+ * La source et la date restent traçables dans la recette et le manifeste internes. La page
+ * publique rend seulement une image fixe et responsive, comme les articles de référence.
  * Chaque insertion échoue fermée si le H2 d'ancrage a disparu : une preuve ne doit jamais
  * glisser silencieusement vers une section sans rapport après une réécriture.
  */
@@ -553,9 +554,6 @@ export function injecterPreuvesInline(corps, preuves = []) {
     if (!preuve.source?.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')
       || Number.isNaN(capture.getTime()) || capture.toISOString().slice(0, 10) !== preuve.capturedAt
       || capture.getTime() > Date.now()) throw new Error(`Preuve inline ${preuve.id} : source ou date de capture invalide.`);
-    if (/recette scellée|Ouvrir la preuve en grand/i.test(preuve.source)) {
-      throw new Error(`Preuve inline ${preuve.id} : source de preuve technique impropre à une légende publique ; corriger la recette avant matérialisation.`);
-    }
     if (preuve.sourceUrl && !/^https:\/\//.test(preuve.sourceUrl)) throw new Error(`Preuve inline ${preuve.id} : sourceUrl doit être une URL HTTPS.`);
     const liste = groupes.get(preuve.insertBeforeHeading) ?? [];
     liste.push(preuve);
@@ -567,7 +565,7 @@ export function injecterPreuvesInline(corps, preuves = []) {
     if (!resultat.includes(ancre)) throw new Error(`Preuves inline : H2 d’ancrage absent « ${titre} ».`);
     const figures = groupe.map((preuve) => {
       const imagePath = `/proofs/blog/${preuve.id}.webp`;
-      return `<figure data-blog-proof="${preuve.id}">\n  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : ${echapperHtml(preuve.alt)}" tabindex="0"><img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async"></div>\n  <figcaption>Source : ${echapperHtml(preuve.source)} · capture du ${preuve.capturedAt}</figcaption>\n</figure>`;
+      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`;
     }).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }

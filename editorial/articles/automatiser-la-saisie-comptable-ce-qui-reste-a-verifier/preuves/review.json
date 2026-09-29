@@ -2,10 +2,10 @@
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "editorial-review",
-  "status": "PASS",
-  "checkedAt": "2026-09-20",
-  "articleSha256": "b53e32e3210a41188f2a6569efe70e2f1070807e9841dd975ebfaf7d176fdc25",
-  "manifestSha256": "7c9318a7b271910bbde80e8bde6a724ba4fef42a1fd48dd87255af9ad005de77",
+  "status": "FAIL",
+  "checkedAt": "2026-09-29",
+  "articleSha256": "e70580d7ed9889b1229cf0f54e96d717ff1ddabe7352bcf5a779cbcbd8221eac",
+  "manifestSha256": "6fe6cb7cb59f290e871d5104e252a81971bc3fb08bddbdecf6c36f266a347b95",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
@@ -13,65 +13,58 @@
   "criteria": [
     {
       "id": "intent-satisfaction",
-      "result": "PASS",
-      "earned": 20,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Le brief demande de faire lire les pièces et proposer des écritures sans rien enregistrer seul, en faisant remonter ce que la lecture n'a pas su traiter ; les trois briques (extraction par champ, six contrôles ordonnés, file d'anomalies) et le tableau détaillé de la marche à suivre couvrent exactement cette tâche pour le rôle collaborateurs-comptables.",
-        "La checklist « Que faut-il avoir sous la main avant de commencer » (pièces d'une période complète, fournisseurs récurrents, plan de comptes, règle de TVA, personne désignée) rend le guide directement actionnable pour l'intent executer, sans détour commercial en tête d'article."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "serp-format-rankability",
-      "result": "PASS",
-      "earned": 15,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Format how-to-guide tenu de bout en bout : bloc En bref, Réponse directe en ouverture, six tableaux à en-têtes, cinq questions FAQ en h3 — un format scannable propice au featured snippet sur une requête informationnelle comme « automatisation saisie comptable OCR ».",
-        "Le title tag rendu, « Automatisation saisie comptable : les 6 contrôles | Memlia » (58 caractères), reprend la requête primaire et ajoute un chiffre concret distinctif, ce qui le différencie d'un intitulé générique sur l'OCR comptable."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "eeat-sources",
-      "result": "PASS",
-      "earned": 20,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Quatre sources tier-1 officielles (Service-Public x3, CNIL x1) sont citées avec URL et date de consultation identique (17 septembre 2026) dans une section « Sources consultées » dédiée, en plus des liens contextuels insérés dans le corps.",
-        "L'auteur Kevin Kitanga est nommé, lié en rel=author vers /a-propos#kevin-kitanga, avec une bio de fondateur qui ne revendique aucune qualification d'expert-comptable, conforme à la charte qui interdit de le faire passer pour tel."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "information-gain-proof",
-      "result": "PASS",
-      "earned": 20,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Le jeu fictif de cinquante pièces (32 récurrentes, 6 fournisseurs inconnus, 4 tickets dont 2 coupés, 3 hors période, 2 doublons reçus par deux canaux, 2 notes de frais, 1 avoir) rejoue la règle sur un cas chiffré et vérifiable plutôt que de l'affirmer dans l'abstrait.",
-        "Le concept de « reliquat » présenté comme instrument de réglage plutôt qu'argument commercial, et la liste des refus assumés de l'outil (ne crée pas de fiche, n'arrondit pas, ne réimpute pas, ne supprime jamais un doublon), apportent une synthèse distincte d'un article générique sur l'OCR."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "technical-onpage-seo",
-      "result": "PASS",
-      "earned": 10,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Canonical correct, JSON-LD complet (BlogPosting, Person, Organization, BreadcrumbList, WebSite), OG et Twitter Card avec image 1200x630 déclarée en largeur/hauteur, un seul h1, hiérarchie h2/h3 sans saut : le socle technique attendu par le barème est présent sur la page rendue.",
-        "La page porte <meta name=\"robots\" content=\"noindex, follow\"> et le bandeau « Candidat éditorial — preview privée, non publiable » ; ces deux éléments sont identiques sur les 6 fichiers de .qa/render-tous/blog/ (vérifié par grep), donc un artefact du harnais de rendu QA et non un réglage propre à cet article — à vérifier absent une fois l'article publié en production."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "ai-citability",
-      "result": "PASS",
-      "earned": 10,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "La Réponse directe (environ 72 mots) forme un paragraphe autonome et directement extractible, et chaque tableau (champs extraits, six contrôles, règle déclencheur/condition/action/exception, répartition automatisé/validé/humain) porte un <thead> qui facilite une citation structurée par un moteur génératif.",
-        "La terminologie d'entité reste stable sur tout l'article (saisie comptable automatisée, OCR, pré-comptabilité, file d'anomalies, reliquat), reliée aux ancres du glossaire, ce qui limite l'ambiguïté qu'un système IA pourrait mal résoudre."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "contextual-conversion",
-      "result": "PASS",
-      "earned": 5,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Le bloc de clôture « Cette tâche vit encore dans la tête de vos collaborateurs ? » dit en trois phrases ce que Memlia fait (écrire la règle, l'automatiser, la faire recetter), ce que le cabinet garde (la validation de chaque écriture) et qu'il n'y a rien à envoyer, avec un bouton « Confier cette tâche » vers /contact.",
-        "Aucun tiret cadratin ni formule défensive répétée (« ne remplace pas », « à adapter », « Memlia peut ») dans le corps de l'article (vérifié par grep) ; le lien vers le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches et deux liens vers /methode sont présents comme l'exige la charte §7 bis."
+        "Revue éditoriale non exécutée."
       ]
     }
   ]

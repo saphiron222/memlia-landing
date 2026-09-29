@@ -76,8 +76,7 @@ Constituez ensuite un petit dossier **entièrement fictif**, sans document clien
 Relevez par solution la version montrée, la sortie, les étapes manuelles et la trace après correction. Sans démonstration reproductible, inscrivez « non vérifié », pas « absent ».
 
 <figure data-blog-proof="w39-logiciel-parcours">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Parcours fictif d'une pièce du dépôt jusqu'à la proposition soumise au contrôle humain." tabindex="0"><img src="/proofs/blog/w39-logiciel-parcours.webp" alt="Parcours fictif d'une pièce du dépôt jusqu'à la proposition soumise au contrôle humain." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : Grille éditoriale W39 rejouée sur des données fictives ; aucun éditeur évalué · capture du 2026-09-27</figcaption>
+  <img src="/proofs/blog/w39-logiciel-parcours.webp" alt="Parcours fictif d'une pièce du dépôt jusqu'à la proposition soumise au contrôle humain." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Comparer ce qui compte vraiment
@@ -155,8 +154,7 @@ Un doublon probable n'est pas une pièce à effacer : deux fichiers identiques p
 Demandez à voir une exception **dans l'interface réelle**, puis faites-la traiter par la personne qui utiliserait l'outil. Si seule une vidéo du cas nominal est disponible, les exceptions restent non vérifiées, et non déclarées absentes.
 
 <figure data-blog-proof="w39-logiciel-exceptions">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Schéma fictif de trois issues de contrôle : proposition à vérifier, doublon probable et période ambiguë, sans écriture." tabindex="0"><img src="/proofs/blog/w39-logiciel-exceptions.webp" alt="Schéma fictif de trois issues de contrôle : proposition à vérifier, doublon probable et période ambiguë, sans écriture." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : Schéma HTML de la règle éditoriale W39 sur cas fictifs ; aucun éditeur évalué · capture du 2026-09-27</figcaption>
+  <img src="/proofs/blog/w39-logiciel-exceptions.webp" alt="Schéma fictif de trois issues de contrôle : proposition à vérifier, doublon probable et période ambiguë, sans écriture." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Trois choix possibles, pas un classement de marques

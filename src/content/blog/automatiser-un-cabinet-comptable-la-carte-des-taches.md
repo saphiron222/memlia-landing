@@ -106,8 +106,7 @@ Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. L
 | Audit légal | 1 | commissariat aux comptes : famille listée, aucune tâche ouverte | tout |
 
 <figure data-blog-proof="carte-douze-poles">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." tabindex="0"><img src="/proofs/blog/carte-douze-poles.webp" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : taxonomie éditoriale versionnée src/data/familles.ts · capture du 2026-09-20</figcaption>
+  <img src="/proofs/blog/carte-douze-poles.webp" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Production comptable : de la pièce reçue au bilan livré
@@ -227,8 +226,7 @@ Quatre familles qui ne produisent rien mais qui décident de tout. Choisir et ca
 | La mesure du temps avant et après, sur le même jeu d’essai | La place de chaque validation humaine, écrite dans la règle | La décision d’interrompre ou d’étendre une automatisation |
 
 <figure data-blog-proof="carte-test-regle">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." tabindex="0"><img src="/proofs/blog/carte-test-regle.webp" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : test de maturité décrit dans cet article sur la carte des tâches · capture du 2026-09-20</figcaption>
+  <img src="/proofs/blog/carte-test-regle.webp" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Que ne contient pas cette carte ?

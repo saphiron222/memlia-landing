@@ -64,8 +64,7 @@ Un prompt ChatGPT pour expert-comptable utile part d'une tâche précise : prép
 Une instruction copiée d'un collaborateur à l'autre ne dit pas où lire l'état de la pièce, si une demande est déjà partie ni quand cesser la relance. La règle de cabinet à écrire est celle du passage de « pièce absente » à « demande proposée », puis de « reçue » à « arrêt » ; le texte du prompt n'en est qu'une étape.
 
 <figure data-blog-proof="w39-prompt-brouillon">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Brouillon fictif de demande de facture non envoyé avec destinataire à confirmer." tabindex="0"><img src="/proofs/blog/w39-prompt-brouillon.webp" alt="Brouillon fictif de demande de facture non envoyé avec destinataire à confirmer." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : Reconstitution HTML fictive ; scène nominale vérifiable dans journal-rejeu.json, aucun modèle interrogé · capture du 2026-09-27</figcaption>
+  <img src="/proofs/blog/w39-prompt-brouillon.webp" alt="Brouillon fictif de demande de facture non envoyé avec destinataire à confirmer." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Exemple : préparer une demande de pièce manquante
@@ -131,8 +130,7 @@ Le gestionnaire reprend la liste dans son outil de paie et tranche l'écart. La 
 Le collaborateur vérifie la pièce et décide dans son logiciel comptable. Ce patron ne classe pas une dépense et ne mesure pas ChatGPT ; il aide seulement à formuler ce qui manque avant une décision.
 
 <figure data-blog-proof="w39-prompt-arret">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Refus fictif de préparer la demande de pièce en l'absence de la pièce attendue." tabindex="0"><img src="/proofs/blog/w39-prompt-arret.webp" alt="Refus fictif de préparer la demande de pièce en l'absence de la pièce attendue." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : Reconstitution HTML fictive ; arrêt vérifiable dans journal-rejeu.json, aucun modèle interrogé · capture du 2026-09-27</figcaption>
+  <img src="/proofs/blog/w39-prompt-arret.webp" alt="Refus fictif de préparer la demande de pièce en l'absence de la pièce attendue." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Les quatre éléments à conserver quand on adapte ce prompt

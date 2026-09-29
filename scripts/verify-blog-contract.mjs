@@ -1,4 +1,3 @@
-import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,37 +12,7 @@ import {
   rubriquePourArticle,
 } from '../src/data/blog-rubriques.mjs';
 
-const LEGENDE_TECHNIQUE_INTERDITE = /Ouvrir la preuve en grand|reconstitution fidèle[^.]{0,240}recette scellée|recette scellée/i;
-
-function legendePreuveValide(figure, historique) {
-  const captions = elements(figure, (node) => node.tagName === 'figcaption');
-  // L'exception sans légende ne vaut que pour les anciens dossiers épinglés.
-  if (captions.length === 0) return historique;
-  if (captions.length !== 1) return false;
-  const contenu = texte(captions[0]).replace(/\s+/g, ' ').trim();
-  const match = /^Source\s*:\s*(.+?)\s*·\s*capture du (\d{4}-\d{2}-\d{2})$/i.exec(contenu);
-  if (!match || !match[1].trim() || LEGENDE_TECHNIQUE_INTERDITE.test(contenu)) return false;
-  const date = new Date(`${match[2]}T00:00:00Z`);
-  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === match[2]
-    && date.getTime() <= Date.now();
-}
-
-function estPreuveHistorique(root, slug, path, frontmatter) {
-  if (frontmatter.brouillon !== false) return false;
-  try {
-    const baseline = JSON.parse(readFileSync(join(root, 'editorial/legacy-review-baseline.json'), 'utf8'));
-    const entree = baseline.articles?.[slug];
-    if (!entree?.recipeSha256 || !entree?.reviewSha256) return false;
-    const dossier = join(root, 'editorial/recettes', slug);
-    const hash = (nom) => createHash('sha256').update(readFileSync(join(dossier, nom))).digest('hex');
-    const publication = JSON.parse(readFileSync(join(root, 'editorial/articles', slug, 'preuves/publication.json'), 'utf8'));
-    return publication.kind === 'publication-scellee' && publication.candidateSlug === slug
-      && createHash('sha256').update(readFileSync(path)).digest('hex') === publication.articleSha256
-      && hash('recette.json') === entree.recipeSha256 && hash('revues.json') === entree.reviewSha256;
-  } catch {
-    return false;
-  }
-}
+const TEXTE_TECHNIQUE_PREUVE_INTERDIT = /Ouvrir la preuve en grand|Preuve visuelle défilante|reconstitution fidèle[^.]{0,240}recette scellée|recette scellée|Source\s*:[^.]{0,320}capture du/i;
 
 function parcourir(node, visite) {
   visite(node);
@@ -77,11 +46,6 @@ function classes(node) {
 function texte(node) {
   if (!node) return '';
   return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texte).join('');
-}
-
-function texteSansLegendes(node) {
-  if (!node || node.tagName === 'figcaption') return '';
-  return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texteSansLegendes).join(' ');
 }
 
 function normaliser(value) {
@@ -136,7 +100,14 @@ function mediasPreuve(articleCorps) {
     .map((figure) => {
       const image = premier(figure, (node) => node.tagName === 'img');
       const alt = attribut(image, 'alt') ?? '';
-      return { figure, conforme: Boolean(image && alt.trim()), alt };
+      const captions = elements(figure, (node) => node.tagName === 'figcaption');
+      const wrappersDefilants = elements(figure, (node) => classes(node).has('preuve-defilante'));
+      const imageDirecte = image?.parentNode === figure;
+      return {
+        figure,
+        conforme: Boolean(image && alt.trim() && imageDirecte && captions.length === 0 && wrappersDefilants.length === 0),
+        alt,
+      };
     })
     .filter(({ figure }) => premier(figure, (node) => node.tagName === 'img'));
 }
@@ -223,13 +194,8 @@ function auditerArticle({ root, dist, slug, path, mesure }) {
     erreurs.push(`${slug} : clause 1, ${medias.length} image(s) de preuve en plus de la couverture, ${conformes.length} avec alternative accessible ; 2 requises`);
   }
   const contenuPublic = texte(articleCorps).replace(/\s+/g, ' ').trim();
-  const horsLegendes = texteSansLegendes(articleCorps);
-  const historique = medias.some(({ figure }) => elements(figure, (node) => node.tagName === 'figcaption').length === 0)
-    && estPreuveHistorique(root, slug, path, frontmatter);
-  if (LEGENDE_TECHNIQUE_INTERDITE.test(contenuPublic)
-      || /Source\s*:[^.]{0,320}capture du/i.test(horsLegendes)
-      || medias.some(({ figure }) => !legendePreuveValide(figure, historique))) {
-    erreurs.push(`${slug} : clause 1, légende de preuve invalide ou consigne technique publique (source et date de capture requises dans une légende informative)`);
+  if (TEXTE_TECHNIQUE_PREUVE_INTERDIT.test(contenuPublic) || medias.some(({ conforme }) => !conforme)) {
+    erreurs.push(`${slug} : clause 1, chaque preuve doit être une image directe, fixe et responsive, sans panneau défilant ni légende technique publique`);
   }
 
   const h2 = articleCorps ? elements(articleCorps, (node) => node.tagName === 'h2') : [];

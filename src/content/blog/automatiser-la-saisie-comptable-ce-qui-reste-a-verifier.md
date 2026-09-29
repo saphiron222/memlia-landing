@@ -8,7 +8,7 @@ dateMiseAJour: 2026-09-20
 auteur: kevin
 sujets: [saisie, pieces, automatisation, ia]
 motsCles: ["saisie comptable automatisée", "OCR comptable", "pré-comptabilité", "contrôles de saisie", "file d’anomalies", "doublon de facture"]
-brouillon: false
+brouillon: true
 image: img-art-saisie-comptable
 pipelineVersion: 1
 primaryQuery: "automatisation saisie comptable"
@@ -23,7 +23,7 @@ tache: "Faire lire les pièces et proposer les écritures sans que rien ne s’e
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-20
+  date: 2026-09-29
 funnel: MOFU
 contentType: searchable
 format: how-to-guide
@@ -33,31 +33,31 @@ proofStatus: verifiee
 proofRequired: "Jeu fictif de cinquante pièces (trente-deux fournisseurs récurrents, six inconnus, quatre tickets dont deux coupés, trois hors période, un doublon reçu deux fois, deux notes de frais sans justificatif, un avoir) rejoué sur la règle ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées."
 reviewRule: "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-20
+sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier cette tâche"
   destination: "/contact"
   outcome: "Nous écrivons la règle de saisie de votre cabinet dans vos mots, fournisseurs récurrents et motifs de refus compris, nous l’automatisons dans les outils que vos équipes utilisent déjà, et elles la recettent sur un lot de pièces. Chaque écriture reste validée par une personne. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
 imageOg: "/images/img-art-saisie-comptable-og.webp"
 imageAlt: "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe"
-statutEditorial: publie
+statutEditorial: a-valider
 sources:
   - editeur: "Service Public"
     titre: "Mentions obligatoires sur une facture"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F31808"
-    consulte: 2026-09-20
+    consulte: 2026-09-29
   - editeur: "Service Public"
     titre: "Comment se mettre en conformité avec l’obligation de facturation électronique ?"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F39785"
-    consulte: 2026-09-20
+    consulte: 2026-09-29
   - editeur: "Service Public"
     titre: "Quels sont les délais de conservation des documents pour les entreprises ?"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F10029"
-    consulte: 2026-09-20
+    consulte: 2026-09-29
   - editeur: "CNIL"
     titre: "Définition : donnée personnelle"
     url: "https://www.cnil.fr/fr/definition/donnee-personnelle"
-    consulte: 2026-09-20
+    consulte: 2026-09-29
 ---
 
 ## Réponse directe
