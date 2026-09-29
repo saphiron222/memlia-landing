@@ -57,7 +57,8 @@ function ecartJours(debut, fin) {
  * Charge les relevés produits par l'autocomplétion Google de la forge. Une liste vide est une
  * mesure valide ; seule l'absence de la requête signifie « non mesurée ». La valeur la plus
  * récente de chaque requête gagne et une mesure future ou vieille de plus de huit jours est
- * ignorée, afin qu'une forge privée de son relevé hebdomadaire échoue fermée.
+ * ignorée. L'audit d'un dossier scellé peut fournir sa date de publication comme borne :
+ * les candidats non scellés restent soumis au relevé hebdomadaire frais.
  */
 export function chargerAutocompletionMesuree(root, { au = new Date().toISOString().slice(0, 10), ageMaxJours = 8 } = {}) {
   const dossier = join(root, DOSSIER_MESURES);

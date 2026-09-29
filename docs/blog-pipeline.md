@@ -32,6 +32,12 @@ Les deux articles du commit `939464c90ecee928bfd9d7f7be26ea028758cf8b` restent p
 
 Les gates `protected-preview` et `production` ne sont pas assouplis. Un rapport de conservation PASS n'est pas accepté par `prepare-preview`. Toute modification des octets, de la provenance, du reçu, de l'auteur, du statut ou des liens fait échouer l'audit. La revue technique et la revue métier aval restent distinctes de cette conservation locale.
 
+### Intention SEO des publications scellées
+
+Pour `editorialStatus: publie`, `blog:audit`, le contrat HTML du build et le test des titres relisent les relevés d'autocomplétion disponibles **à `publishedAt`**, avec la même fenêtre de huit jours, uniquement après validation complète du reçu `preuves/publication.json` (Markdown, manifeste et inventaire de tous les fichiers du dossier). Le simple vieillissement du relevé ne bloque donc pas une PR étrangère à ces articles. Un sceau rompu, un nouveau candidat ou un titre modifié reste contrôlé avec un relevé frais et échoue fermé ; sources, claims, revue métier et autres contrôles du dossier restent actifs. Cette conservation ne certifie pas une nouvelle mesure SEO ni un nouveau fact-check : rafraîchir réellement les relevés et revalider une republication reste une opération éditoriale distincte.
+
+Limite : les fichiers de relevé résident hors du reçu de publication ; le sceau garantit les octets de l'article et de son dossier, pas ceux du relevé historique. Modifier un relevé ancien peut modifier le résultat de ce contrôle sans casser le sceau. La preuve d'autocomplétion elle-même devra être liée cryptographiquement au reçu lors d'une évolution du format de publication, sans retoucher rétroactivement les articles publics.
+
 ```bash
 npm run blog:audit
 npm run blog:gate -- <slug>

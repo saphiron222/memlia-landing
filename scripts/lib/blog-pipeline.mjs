@@ -139,6 +139,23 @@ export function validatePublicationSeal(dossier, manifest, subject) {
   }
   return errors;
 }
+
+/** Le relevé au jour de publication ne survit au TTL que si le dossier entier reste scellé. */
+export function dateIntentionScellee(root, slug) {
+  try {
+    const dossier = join(root, 'editorial/articles', slug);
+    const manifestPath = join(dossier, 'manifest.json');
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+    const subject = {
+      slug,
+      articleHash: sha256(readFileSync(join(root, 'src/content/blog', `${slug}.md`))),
+      manifestHash: sha256(readFileSync(manifestPath)),
+    };
+    return validatePublicationSeal(dossier, manifest, subject).length === 0 ? manifest.publishedAt : null;
+  } catch {
+    return null;
+  }
+}
 const RESERVED_SOURCE_HOST = /(?:^|\.)(?:example|invalid|localhost|test)$/i;
 const MAX_SOURCE_BYTES = 2 * 1024 * 1024;
 const MAX_SOURCE_REDIRECTS = 4;
@@ -1689,7 +1706,7 @@ function validateIntentCannibalization(manifest, dossier, root, subject) {
   return errors;
 }
 
-export async function validateDossier({ root = process.cwd(), slug, renderedBlogHtml, renderedArticleHtml, gateMode = 'production' }) {
+export async function validateDossier({ root = process.cwd(), slug, renderedBlogHtml, renderedArticleHtml, gateMode = 'production', au }) {
   const absoluteRoot = resolve(root);
   const dossier = join(absoluteRoot, 'editorial/articles', slug);
   const articlePath = join(absoluteRoot, 'src/content/blog', `${slug}.md`);
@@ -1753,13 +1770,16 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   }
   const sensitiveMatter = detectSensitiveMatter(manifest, claims, markdown);
   if (gateMode === 'published-audit') errors.push(...validatePublishedAdoption(dossier, manifest, subject.articleHash));
-  if (gateMode === 'publication-scellee') errors.push(...validatePublicationSeal(dossier, manifest, subject));
+  const sealErrors = gateMode === 'publication-scellee' ? validatePublicationSeal(dossier, manifest, subject) : [];
+  errors.push(...sealErrors);
   if (manifest) {
     errors.push(...validateCandidate(manifest, { gateMode }));
     const requetes = [manifest.primaryQuery, ...(manifest.secondaryQueries ?? [])];
+    const dateMesure = gateMode === 'publication-scellee' && sealErrors.length === 0
+      ? manifest.publishedAt : au;
     for (const [surface, titre] of [['H1', manifest.title], ['titre d’onglet', manifest.tabTitle]]) {
       try {
-        verifierTitreIntentMesure({ root: absoluteRoot, titre, requetes, surface: `${slug} : ${surface}` });
+        verifierTitreIntentMesure({ root: absoluteRoot, titre, requetes, surface: `${slug} : ${surface}`, au: dateMesure });
       } catch (error) {
         errors.push(`Intention SEO : ${error.message}`);
       }
