@@ -40,7 +40,7 @@ cta:
   outcome: "Nous écrivons la règle de saisie de votre cabinet dans vos mots, fournisseurs récurrents et motifs de refus compris, nous l’automatisons dans les outils que vos équipes utilisent déjà, et elles la recettent sur un lot de pièces. Chaque écriture reste validée par une personne. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
 imageOg: "/images/img-art-saisie-comptable-og.webp"
 imageAlt: "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe"
-statutEditorial: go-production
+statutEditorial: publie
 sources:
   - editeur: "Service Public"
     titre: "Mentions obligatoires sur une facture"

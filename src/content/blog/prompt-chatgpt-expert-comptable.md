@@ -7,7 +7,7 @@ datePublication: 2026-09-29
 auteur: kevin
 sujets: [ia, pieces, automatisation]
 motsCles: ["prompt chatgpt expert comptable", "demande de pièce", "confidentialité des données"]
-brouillon: true
+brouillon: false
 image: img-art-prompt-chatgpt-expert-comptable
 pipelineVersion: 1
 primaryQuery: "prompt chatgpt expert comptable"
@@ -39,7 +39,7 @@ cta:
   outcome: "Nous écrivons votre règle de demande de pièces, l'automatisons dans vos outils et la recettons avec votre équipe. Vous gardez la décision d'envoyer. Rien à envoyer : décrivez simplement la tâche."
 imageOg: "/images/img-art-prompt-chatgpt-expert-comptable-og.webp"
 imageAlt: "Feuille vierge et enveloppe séparées par une grille fermée, pour figurer le contrôle humain avant une demande de pièce"
-statutEditorial: a-valider
+statutEditorial: publie
 sources:
   - editeur: "CNIL"
     titre: "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative"

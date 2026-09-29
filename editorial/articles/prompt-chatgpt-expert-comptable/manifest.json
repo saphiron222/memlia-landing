@@ -2,7 +2,7 @@
   "version": 1,
   "slug": "prompt-chatgpt-expert-comptable",
   "action": "creation",
-  "editorialStatus": "a-valider",
+  "editorialStatus": "publie",
   "title": "Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique",
   "tabTitle": "Prompt ChatGPT expert comptable : demande de pièce | Memlia",
   "summary": "Un prompt pour préparer une demande de pièce fictive : contexte autorisé, brouillon, arrêt si la pièce manque, destinataire et envoi validés par une personne.",
@@ -154,11 +154,13 @@
   "contradictions": [],
   "kevin": {
     "briefApproved": true,
-    "previewApproved": false,
-    "productionApproved": false,
+    "previewApproved": true,
+    "productionApproved": true,
     "delegation": {
       "date": "2026-09-16",
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
-  }
+  },
+  "publishedAt": "2026-09-29",
+  "publicationEvidence": "preuves/publication.json"
 }
