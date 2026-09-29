@@ -5,7 +5,7 @@ import sharp from 'sharp';
 import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS } from '../../scripts/lib/blog-pipeline.mjs';
 import { retirerPreuvesInline } from '../../scripts/lib/blog-proof-figures.mjs';
 
-const utcToday = () => new Date().toISOString().slice(0, 10);
+const parisToday = () => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 const sha256 = (content) => createHash('sha256').update(content).digest('hex');
 const writeJson = (path, value) => writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
 const FIXTURE_STOP_WORDS = new Set(['alors', 'avec', 'avoir', 'cette', 'comme', 'dans', 'depuis', 'elle', 'elles', 'entre', 'etre', 'faire', 'leurs', 'mais', 'meme', 'pour', 'sans', 'selon', 'sont', 'sous', 'toute', 'toutes', 'toujours', 'tout', 'tous', 'une', 'vers', 'votre']);
@@ -51,7 +51,7 @@ const informativeImage = (width, height) => Buffer.from(`<svg xmlns="http://www.
   <path d="M ${width * 0.46} ${height * 0.5} l ${width * 0.025} ${height * 0.04} l ${width * 0.07} ${-height * 0.09}" fill="none" stroke="#fffefb" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`);
 
-export function candidateManifest(slug = 'article-de-test', heroId = `img-${slug}`, fixtureDate = utcToday()) {
+export function candidateManifest(slug = 'article-de-test', heroId = `img-${slug}`, fixtureDate = parisToday()) {
   return {
     version: 1,
     slug,
@@ -198,9 +198,9 @@ ${body}
 `;
 }
 
-export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {} } = {}) {
-  // A single UTC day for every correlated fixture artifact, sampled at creation rather than import.
-  const fixtureDate = utcToday();
+export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {}, claimSourceForUnit = (manifest) => manifest.sources[0], claimTypeForUnit = () => 'paie' } = {}) {
+  // Un seul jour civil Paris pour toutes les preuves corrélées, échantillonné à la création.
+  const fixtureDate = parisToday();
   const subjectArtifact = ({ slug: candidateSlug, kind, articleHash, manifestHash, extra = {} }) => ({
     version: 1,
     candidateSlug,
@@ -277,7 +277,7 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
     const snapshotPath = join(preuves, 'sources', `${source.id}.txt`);
     const excerpt = `Passage vérifié pour ${source.id} : les données sont contrôlées avant leur transmission.`;
     const citations = contentUnits.map((unit, index) => ({
-      text: `La source officielle confirme la règle suivante dans son contexte : « ${unit.text} » Cette citation circonscrit le point contrôlé sans en étendre la portée.`,
+      text: `La source confirme la règle suivante dans son contexte : « ${unit.text} » Cette citation circonscrit le point contrôlé sans en étendre la portée.`,
       line: index + 3,
     }));
     const snapshot = `${source.title}\n${excerpt}\n${citations.map((citation) => citation.text).join('\n')}\n`;
@@ -318,7 +318,7 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
       finalUrl: source.url,
       httpStatus: 200,
       checkedAt: source.checkedAt,
-      retrievedAt: `${source.checkedAt}T00:00:00.000Z`,
+      retrievedAt: new Date().toISOString(),
       contentPath: `preuves/sources/${source.id}.txt`,
       contentSha256,
       excerpt,
@@ -336,14 +336,14 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
   writeJson(join(dossier, 'skills.json'), skills);
 
   const claimRows = contentUnits.map((unit, index) => {
-    const source = manifest.sources[0];
+    const source = claimSourceForUnit(manifest, unit, index);
     const snapshot = sourceSnapshots.get(source.id);
     const citation = snapshot.citations[index];
     return {
       id: `claim-${unit.id}`,
       unitId: unit.id,
       claim: unit.text,
-      type: 'paie',
+      type: claimTypeForUnit(unit, index),
       sourceIds: [source.id],
       sourceExcerpts: { [source.id]: citation.text },
       checkedAt: fixtureDate,

@@ -88,15 +88,19 @@ export function semaineIso(value) {
 export function verifierPlafonds(actifs, date, { serie = null, slug = null } = {}) {
   const semaine = semaineIso(date);
   if (serie === 'cicatrices') {
-    // Rattrapage signé W39 uniquement : le 28 est en W40, mais ne doit pas doubler la W39.
-    const rattrapageW39 = slug === 'tests-verts-et-regle-des-trois-passes'
-      && (date === '2026-09-27' || date === '2026-09-28');
-    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !rattrapageW39) {
+    // Rattrapage signé W39 uniquement : les 28 et 29 sont en W40, sans doubler la W39.
+    const slugW39 = 'tests-verts-et-regle-des-trois-passes';
+    const rattrapageW39 = (candidateSlug, candidateDate) => candidateSlug === slugW39
+      && ['2026-09-27', '2026-09-28', '2026-09-29'].includes(candidateDate);
+    if (slug === slugW39 && date > '2026-09-29') {
+      throw new Error(`Le rattrapage W39 de cette cicatrice s'arrête au 29/09/2026 ; nouveau cadrage requis pour ${date}.`);
+    }
+    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !rattrapageW39(slug, date)) {
       throw new Error(`Une cicatrice paraît le samedi ; ${date} n’est pas un samedi.`);
     }
-    const semaineControlee = rattrapageW39 ? '2026-W39' : semaine;
+    const semaineControlee = rattrapageW39(slug, date) ? '2026-W39' : semaine;
     if (actifs.some((candidate) => candidate.serie === 'cicatrices' && isDate(candidate.date)
-      && (candidate.slug === 'tests-verts-et-regle-des-trois-passes' && candidate.date === '2026-09-28'
+      && (rattrapageW39(candidate.slug, candidate.date)
         ? '2026-W39' : semaineIso(candidate.date)) === semaineControlee)) {
       throw new Error(`Une cicatrice est déjà planifiée la semaine ${semaineControlee} ; le plafond est d’une cicatrice par semaine ISO.`);
     }
@@ -161,9 +165,9 @@ const MAX_SOURCE_BYTES = 2 * 1024 * 1024;
 const MAX_SOURCE_REDIRECTS = 4;
 const MAX_PROTECTED_PREVIEW_EVIDENCE_AGE_DAYS = 7;
 const BUSINESS_CLAIM_VERDICTS = new Set(['soutient', 'soutient_partiellement', 'contredit', 'hors_sujet']);
-const SOURCE_LEVELS = Object.freeze(['tier-1', 'tier-2', 'tier-3', 'tier-4', 'tier-5', 'original-method']);
+const SOURCE_LEVELS = Object.freeze(['tier-1', 'tier-2', 'tier-3', 'tier-4', 'tier-5', 'original-method', 'technical-primary']);
 const SOURCE_PROVENANCE = Object.freeze(['primary', 'secondary', 'echo']);
-const ACCEPTED_SOURCE_LEVELS = new Set(['tier-1', 'tier-2', 'tier-3', 'original-method']);
+const ACCEPTED_SOURCE_LEVELS = new Set(['tier-1', 'tier-2', 'tier-3', 'original-method', 'technical-primary']);
 const OFFICIAL_PRIMARY_CLAIM_TYPES = new Set(['paie', 'social', 'dsn', 'fiscal', 'juridique', 'legal-reglementaire']);
 const OFFICIAL_PRIMARY_SIGNALS = new Set(['paie', 'social', 'dsn', 'fiscal', 'juridique', 'legal-reglementaire', 'rgpd', 'assertion-normative']);
 const DISALLOWED_SOURCE_PLATFORMS = Object.freeze([
@@ -183,6 +187,10 @@ const OFFICIAL_SOURCE_AUTHORITIES = Object.freeze([
   { id: 'impots', host: /(?:^|\.)(?:impots\.gouv\.fr|bofip\.impots\.gouv\.fr)$/i, publisher: /\b(?:impots|bofip|direction generale des finances publiques|dgfip)\b/i },
   { id: 'insee', host: /(?:^|\.)insee\.fr$/i, publisher: /\binsee\b/i },
   { id: 'travail-emploi', host: /(?:^|\.)travail-emploi\.gouv\.fr$/i, publisher: /\b(?:ministere du travail|travail emploi)\b/i },
+]);
+// Documentation du projet, pas autorité publique ni preuve d'une obligation métier.
+const TECHNICAL_PRIMARY_DOCUMENTS = Object.freeze([
+  { id: 'python-doctest', url: 'https://docs.python.org/fr/3/library/doctest.html', publisher: 'python software foundation' },
 ]);
 const IMAGE_REVIEW_CRITERIA = Object.freeze([
   'brief-six-components',
@@ -311,6 +319,12 @@ function sourceClassification(source, finalUrl, errors, label) {
   const platform = rejectDisallowedSourcePlatform(finalUrl, errors, `${label}.finalUrl`);
 
   const publisher = normalizedPublisher(source?.publisher);
+  const technical = TECHNICAL_PRIMARY_DOCUMENTS.find((document) => {
+    return finalUrl === document.url && publisher === document.publisher;
+  });
+  if (source?.level === 'technical-primary' && !technical) {
+    errors.push(`${label} : documentation primaire technique non reconnue ou incohérence domaine↔éditeur (${hostname}, « ${source?.publisher} »).`);
+  }
   const hostAuthority = OFFICIAL_SOURCE_AUTHORITIES.find((authority) => authority.host.test(hostname));
   const publisherAuthority = OFFICIAL_SOURCE_AUTHORITIES.find((authority) => authority.publisher.test(publisher));
   const coherentAuthority = hostAuthority && hostAuthority.publisher.test(publisher);
@@ -322,7 +336,8 @@ function sourceClassification(source, finalUrl, errors, label) {
   } else if (hostAuthority && !coherentAuthority) {
     errors.push(`${label} : incohérence domaine↔éditeur pour l’autorité ${hostAuthority.id}.`);
   }
-  return { officialAuthority: source?.official === true && Boolean(coherentAuthority) && !platform };
+  return { officialAuthority: source?.official === true && Boolean(coherentAuthority) && !platform,
+    technicalPrimary: source?.level === 'technical-primary' && Boolean(technical) && !platform };
 }
 
 function requireText(errors, value, path, minimum = 1) {
@@ -847,7 +862,7 @@ function validateSources(manifest, dossier, expected) {
     for (const field of ['level', 'provenance', 'official', 'upstreamUrl', 'classificationReason', 'method']) {
       if (!sameValue(proof[field], source[field])) errors.push(`${label}.${field} ne correspond pas à la classification du manifeste.`);
     }
-    if (!ACCEPTED_SOURCE_LEVELS.has(source.level)) errors.push(`${label} : les sources ${source.level ?? 'sans niveau'} sont refusées ; seuls tier-1, tier-2, tier-3 ou original-method sont admis.`);
+    if (!ACCEPTED_SOURCE_LEVELS.has(source.level)) errors.push(`${label} : les sources ${source.level ?? 'sans niveau'} sont refusées ; seuls tier-1, tier-2, tier-3, original-method ou technical-primary sont admis.`);
     if (source.provenance === 'echo') errors.push(`${label} : une source écho seule est refusée et doit être supprimée ou remplacée par sa source primaire.`);
     if (proof.requestedUrl !== source.url) errors.push(`${label}.requestedUrl n'est pas relié à l'URL du manifeste.`);
     rejectDisallowedSourcePlatform(source.url, errors, `${label}.requestedUrl`);
@@ -862,6 +877,11 @@ function validateSources(manifest, dossier, expected) {
     }
     if (!isPublicHttpsUrl(proof.upstreamUrl)) errors.push(`${label}.upstreamUrl doit tracer une source primaire amont publique.`);
     if (source.provenance === 'primary' && proof.upstreamUrl !== proof.finalUrl) errors.push(`${label}.upstreamUrl doit être l'URL finale vérifiée lorsque provenance vaut primary.`);
+    if (source.level === 'technical-primary') {
+      if (source.official !== false) errors.push(`${label} : official=false est obligatoire pour une source primaire technique.`);
+      if (source.provenance !== 'primary') errors.push(`${label} : provenance primary est obligatoire pour une source primaire technique.`);
+      if (source.url !== proof.finalUrl) errors.push(`${label} : une source primaire technique doit être ouverte directement, sans redirection depuis un domaine tiers.`);
+    }
     if (source.provenance === 'secondary' && proof.upstreamUrl === proof.finalUrl) errors.push(`${label}.upstreamUrl doit nommer une source primaire distincte pour une source secondary.`);
     if (proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
     if (proof.checkedAt !== source.checkedAt) errors.push(`${label}.checkedAt doit être identique à la date de la source.`);
@@ -1164,6 +1184,9 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
       const verified = verifiedSources.get(sourceId);
       if (!verified) errors.push(`${prefix} référence ${sourceId}, dont la vérification n’est pas prouvée.`);
       const unitSignals = sensitiveMatter.unitSignals.get(claim?.unitId) ?? [];
+      if (verified?.source?.level === 'technical-primary' && (claim?.type !== 'methode' || verified.deterministicClassification?.technicalPrimary !== true)) {
+        errors.push(`${prefix} : source primaire technique ${sourceId} réservée aux claims methode avec domaine et éditeur vérifiés.`);
+      }
       if (OFFICIAL_PRIMARY_CLAIM_TYPES.has(claim?.type) || unitSignals.some((signal) => OFFICIAL_PRIMARY_SIGNALS.has(signal))) {
         const source = verified?.source ?? (manifest?.sources ?? []).find((item) => item.id === sourceId);
         if (!['tier-1', 'tier-2', 'tier-3'].includes(source?.level) || source?.provenance !== 'primary' || source?.official !== true || verified?.deterministicClassification?.officialAuthority !== true) {

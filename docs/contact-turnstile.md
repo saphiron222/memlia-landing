@@ -1,0 +1,14 @@
+# Protection Turnstile du formulaire de contact
+
+La fonction Pages refuse tout envoi sans jeton Turnstile validé par Siteverify (`success === true`, `hostname === memlia.fr`, `action === contact`). Elle ne transmet au vérificateur que le jeton et le secret, jamais le contenu du message ou l'adresse IP. Le piège et les plafonds horaires restent actifs ; les lectures `SELECT` suivies de l'`INSERT` D1 ne forment pas une transaction atomique. Le widget ne garantit pas l'absence de spam.
+
+## Mise en service (production, par la livraison après QA)
+
+1. Dans le compte Cloudflare existant, vérifier les widgets avant toute création. Utiliser un seul widget gratuit dédié à `memlia.fr`, action `contact`, sans wildcard ni `localhost` en production. Ne jamais utiliser de clé de test en production. La clé publique est distincte du secret.
+2. Renseigner **sur le projet Pages `memlia` en production** `TURNSTILE_SITE_KEY` (clé publique), `TURNSTILE_SECRET` (secret Pages chiffré) ; conserver les bindings D1, `CONTACT_SALT` et Telegram existants. Ne jamais copier le secret dans Git, les journaux ou les cartes. Une preview nécessite son propre widget/jeu de clés pour son hostname, et `TURNSTILE_HOSTNAME` limité à ce hostname ; ne pas réutiliser le widget production sur une preview.
+3. Avant toute publication, vérifier les noms des bindings et la présence des deux clés, puis déployer le build et la fonction ensemble après QA. Ne jamais activer uniquement la validation serveur sur le formulaire actuellement publié : il refuserait tous les envois. Sur le site déployé, contrôler GET `/api/contact` (clé publique attendue), le chargement du widget et une soumission fictive unique autorisée ; contrôler le refus d'un jeton absent sans insertion D1. Ne pas lire ni supprimer de messages réels pour cette recette.
+4. En cas d'échec, revenir au déploiement Pages précédent du site **et de sa fonction** ; ne pas retirer seul le widget ou le secret si le nouveau code reste déployé. Vérifier que l'ancien parcours fonctionne après retour arrière. Les données D1 et leurs règles de purge ne changent pas.
+
+Si l'accès Cloudflare ne permet pas de lister/créer le widget ou de configurer Pages, arrêter avant publication : demander un accès ciblé Turnstile + Pages pour le compte existant, ou une configuration par l'administrateur directement dans Cloudflare. Aucune valeur de secret ne doit être transmise en conversation.
+
+Sources Cloudflare consultées le 27/09/2026 : [Siteverify](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/) (jetons à usage unique, cinq minutes, vérification obligatoire), [configuration du widget](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/), [plans](https://developers.cloudflare.com/turnstile/plans/). Les tests utilisent des doubles Siteverify/D1 ; ils ne prouvent pas la configuration en production.

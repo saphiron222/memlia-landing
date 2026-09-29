@@ -17,7 +17,16 @@ function sourceArticle({ rubrique = true, brouillon = false } = {}) {
 }
 
 function preuve(numero) {
-  return `<figure data-blog-proof><img src="/preuves/${numero}.webp" alt="Preuve ${numero}"></figure>`;
+  return `<figure data-blog-proof="preuve-${numero}"><img src="/proofs/blog/preuve-${numero}.webp" alt="Preuve ${numero}"></figure>`;
+}
+
+function recettePreuves(root, slug) {
+  mkdirSync(join(root, 'editorial/recettes', slug), { recursive: true });
+  writeFileSync(join(root, 'editorial/recettes', slug, 'recette.json'), JSON.stringify({
+    inlineProofs: [1, 2].map((numero) => ({
+      id: `preuve-${numero}`, alt: `Preuve ${numero}`, source: 'jeu fictif', capturedAt: '2026-09-20',
+    })),
+  }));
 }
 
 function pageArticle({
@@ -43,6 +52,7 @@ function fixture(options = {}) {
   mkdirSync(join(root, 'dist/blog'), { recursive: true });
   writeFileSync(join(root, 'src/content/blog', `${SLUG}.md`), sourceArticle(options));
   writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), pageArticle(options));
+  recettePreuves(root, SLUG);
   writeFileSync(join(root, 'dist/blog/paie-dsn.html'), `<h1>Paie / DSN</h1><a href="/blog/${SLUG}">Lire</a>`);
   return root;
 }
@@ -69,6 +79,7 @@ test('le contrat vert contrôle chaque article de la collection sans slug codé 
     const second = 'deuxieme-article-test';
     writeFileSync(join(root, 'src/content/blog', `${second}.md`), sourceArticle());
     writeFileSync(join(root, 'dist/blog', `${second}.html`), pageArticle());
+    recettePreuves(root, second);
     writeFileSync(join(root, 'dist/blog/paie-dsn.html'), `<h1>Paie / DSN</h1><a href="/blog/${SLUG}">Lire</a><a href="/blog/${second}">Lire</a>`);
     assert.deepEqual(auditer(root), { pass: true, articles: 2, exemptions: [], erreurs: [] });
   } finally {
@@ -81,6 +92,7 @@ test('le build public ignore seulement les brouillons absents ; leur preview res
   const draft = 'brouillon-test';
   try {
     writeFileSync(join(root, 'src/content/blog', `${draft}.md`), sourceArticle({ brouillon: true }));
+    recettePreuves(root, draft);
     assert.deepEqual(auditer(root), { pass: true, articles: 1, exemptions: [], erreurs: [] });
     assert.match(auditerContratBlog({ root, dist: join(root, 'dist'), mesure: MESURE, slugs: [draft] }).erreurs.join('\n'), /page construite absente/);
     writeFileSync(join(root, 'dist/blog', `${draft}.html`), pageArticle({ preuves: 1 }));
@@ -136,11 +148,64 @@ test('clause 1 — un panneau défilant ou une image non directe est refusé', (
   const root = fixture();
   try {
     const defilant = pageArticle().replace(
-      '<img src="/preuves/1.webp" alt="Preuve 1">',
-      '<div class="preuve-defilante" role="region"><img src="/preuves/1.webp" alt="Preuve 1"></div>',
+      '<img src="/proofs/blog/preuve-1.webp" alt="Preuve 1">',
+      '<div class="preuve-defilante" role="region"><img src="/proofs/blog/preuve-1.webp" alt="Preuve 1"></div>',
     );
     writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), defilant);
     assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('clause 1 — image directe sans légende exige provenance liée à la recette', () => {
+  const root = fixture({ legendePreuve: null });
+  try {
+    const recipePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    const preuves = [1, 2].map((numero) => ({
+      id: `preuve-${numero}`, alt: `Preuve ${numero}`,
+      source: 'jeu fictif', capturedAt: '2026-09-20',
+    }));
+    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), pageArticle({ legendePreuve: null }));
+    rmSync(recipePath);
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'aucune provenance : refus');
+    writeFileSync(recipePath, JSON.stringify({ inlineProofs: preuves }));
+    assert.deepEqual(auditer(root).erreurs, []);
+    writeFileSync(recipePath, JSON.stringify({ inlineProofs: [{ ...preuves[0], source: '' }, preuves[1]] }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'provenance absente : refus');
+    writeFileSync(recipePath, JSON.stringify({ inlineProofs: [{ ...preuves[0], alt: 'autre preuve' }, preuves[1]] }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'alt divergent : refus');
+    writeFileSync(recipePath, JSON.stringify({ inlineProofs: preuves }));
+    const page = pageArticle({ legendePreuve: null });
+    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), page.replace(
+      '<img src="/proofs/blog/preuve-1.webp"',
+      '<div class="preuve-defilante"><img src="/proofs/blog/preuve-1.webp"',
+    ).replace('alt="Preuve 1"></figure>', 'alt="Preuve 1"></div></figure>'));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'panneau défilant : refus');
+    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), page);
+    writeFileSync(recipePath, JSON.stringify({ inlineProofs: [{ ...preuves[0], capturedAt: '2099-01-01' }, preuves[1]] }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'date future : refus');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('clause 1 — deux figures avec le même identifiant ne comptent pas comme deux preuves', () => {
+  const root = fixture({ legendePreuve: null });
+  try {
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({
+      inlineProofs: [{ id: 'preuve-1', alt: 'Preuve 1', source: 'jeu fictif', capturedAt: '2026-09-20' }],
+    }));
+    const figure = '<figure data-blog-proof="preuve-1"><img src="/proofs/blog/preuve-1.webp" alt="Preuve 1"></figure>';
+    const page = pageArticle({ legendePreuve: null })
+      .replace(preuve(1), figure)
+      .replace(preuve(2), figure);
+    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), page);
+    const erreurs = auditer(root).erreurs.join('\n');
+    assert.match(erreurs, /clause 1, identifiant data-blog-proof répété entre figures/);
+    assert.match(erreurs, /1 avec alternative accessible ; 2 requises/, 'une seule preuve distincte');
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

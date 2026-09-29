@@ -4,6 +4,7 @@ import { createServer } from 'node:http';
 
 import { dirname, join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { test as nodeTest } from 'node:test';
 import sharp from 'sharp';
@@ -83,6 +84,18 @@ Voir [la méthode]`);
     copyFile(fixture.articlePath, join(project, 'src/content/blog', `${slug}.md`));
     copyFile(fixture.dossier, join(project, 'editorial/articles', slug));
     copyFile(join(staging, 'editorial/recettes', slug), join(project, 'editorial/recettes', slug));
+    const recipePath = join(project, 'editorial/recettes', slug, 'recette.json');
+    const recipe = JSON.parse(readFileSync(recipePath, 'utf8'));
+    recipe.inlineProofs = [
+      { id: 'fixture-frontiere', alt: 'Frontière fictive entre proposition automatisée et validation humaine.', source: 'jeu fictif', capturedAt: '2026-09-20' },
+      { id: 'fixture-refus', alt: 'Cas fictif refusé lorsque la règle métier manque.', source: 'jeu fictif', capturedAt: '2026-09-20' },
+    ];
+    const recipeBytes = JSON.stringify(recipe);
+    writeFileSync(recipePath, recipeBytes);
+    const reviewPath = join(project, 'editorial/recettes', slug, 'revues.json');
+    const review = JSON.parse(readFileSync(reviewPath, 'utf8'));
+    review.subject.recipeSha256 = createHash('sha256').update(recipeBytes).digest('hex');
+    writeFileSync(reviewPath, `${JSON.stringify(review, null, 2)}\n`);
     copyFile(join(staging, 'docs/strategy/site-v3/mesures'), join(project, 'docs/strategy/site-v3/mesures'));
     for (const extension of ['avif', 'webp']) {
       copyFile(join(staging, `public/images/${heroId}-768.${extension}`), join(project, `public/images/${heroId}-768.${extension}`));
@@ -130,8 +143,6 @@ Voir [la méthode]`);
       timeout: 120_000,
     });
     assert.equal(subjectBuild.status, 0, `${subjectBuild.error?.message ?? ''}\n${subjectBuild.stderr ?? ''}`);
-    const reviewPath = join(project, 'editorial/recettes', slug, 'revues.json');
-    const review = JSON.parse(readFileSync(reviewPath, 'utf8'));
     review.subject.renderedSha256 = renderedBodySha256(readFileSync(pagePath(subjectRender, `/blog/${slug}`), 'utf8'));
     writeFileSync(reviewPath, `${JSON.stringify(review, null, 2)}\n`);
     const distSentinel = join(project, 'dist', 'sentinel.txt');
