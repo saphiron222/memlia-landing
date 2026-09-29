@@ -741,6 +741,7 @@ export async function verifySource({ root = process.cwd(), slug, sourceId, excer
     await dispatcher.close();
   }
   if (!body.includes(excerpt)) throw new Error('L’extrait fourni est absent de la réponse ouverte ; aucune preuve n’a été écrite.');
+  const retrievedAt = new Date().toISOString();
   const evidencePath = isSafeRelativePath(dossier, source.verificationEvidence);
   if (!evidencePath) throw new Error('verificationEvidence doit rester dans le dossier éditorial.');
   const contentPath = join(dirname(evidencePath), `${source.id}.source.txt`);
@@ -759,8 +760,8 @@ export async function verifySource({ root = process.cwd(), slug, sourceId, excer
     requestedUrl: source.url,
     finalUrl: response.url || currentUrl.href,
     httpStatus: response.status,
-    checkedAt: source.checkedAt,
-    retrievedAt: new Date().toISOString(),
+    checkedAt: jourRecuperationParis(retrievedAt),
+    retrievedAt,
     contentType: response.headers.get('content-type') ?? 'inconnu',
     contentPath: relative(dossier, contentPath),
     contentSha256: sha256(body),
@@ -1205,7 +1206,7 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
 function validateSensitiveFreshness(manifest, claims, review, skills, verifiedSources, dossier, sensitiveMatter, gateMode = 'production') {
   const errors = [];
   const reviewDay = review?.checkedAt;
-  const today = new Date().toISOString().slice(0, 10);
+  const today = jourRecuperationParis(new Date().toISOString());
   if (gateMode === 'published-audit') {
     // Audit de conservation borné par validatePublishedAdoption, jamais fact-check frais.
     if (manifest.evidenceVerifiedAt !== reviewDay) errors.push('La date historique du dossier publié doit correspondre à sa revue conservée.');

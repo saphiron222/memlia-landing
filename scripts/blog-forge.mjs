@@ -98,7 +98,7 @@ const JUSTIFICATIONS_NA = {
 const sha256 = (content) => createHash('sha256').update(content).digest('hex');
 const ecrireJson = (path, value) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`); };
 const lireJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
-export const aujourdhui = () => new Date().toISOString().slice(0, 10);
+export const aujourdhui = () => jourRecuperationParis(new Date().toISOString());
 const ageSource = (date, jour) => (Date.parse(`${jour}T00:00:00Z`) - Date.parse(`${date}T00:00:00Z`)) / 86_400_000;
 
 /** Copie exacte du découpage en unités du pipeline (claims.contentUnits doit le reproduire au caractère près). */

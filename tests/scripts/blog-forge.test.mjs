@@ -267,7 +267,7 @@ test('la forge rafraîchit la preuve source quand sa classification change le m�
   }
 });
 
-test('le report conserve les copies vérifiées mais date les claims et les revues du candidat', async () => {
+test('le report conserve les copies vérifiées mais date les claims et les revues du candidat', async (t) => {
   const root = racineDeTest();
   const veille = new Date(Date.parse(`${jour}T00:00:00Z`) - 86_400_000).toISOString().slice(0, 10);
   let appels = 0;
@@ -275,15 +275,12 @@ test('le report conserve les copies vérifiées mais date les claims et les revu
   try {
     const mesures = join(root, 'docs/strategy/site-v3/mesures');
     writeFileSync(join(mesures, `questions-${veille}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, veille));
+    t.mock.timers.enable({ apis: ['Date'], now: Date.parse(`${veille}T12:00:00Z`) });
     await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour: veille });
     const dossier = join(root, 'editorial/articles', SLUG);
     const preuvePath = join(dossier, 'preuves/sources/cnil-durees.json');
-    for (const source of recette().sources) {
-      const path = join(dossier, `preuves/sources/${source.id}.json`);
-      const evidence = JSON.parse(readFileSync(path));
-      writeFileSync(path, JSON.stringify({ ...evidence, retrievedAt: `${veille}T12:00:00.000Z` }));
-    }
     const preuveAvant = readFileSync(preuvePath, 'utf8');
+    t.mock.timers.setTime(Date.parse(`${jour}T12:00:00Z`));
     const resultat = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
     assert.equal(appels, 3, 'aucun nouvel appel réseau sur les trois sources');
     assert.equal(readFileSync(preuvePath, 'utf8'), preuveAvant, 'la date de récupération reste authentique');
@@ -296,7 +293,35 @@ test('le report conserve les copies vérifiées mais date les claims et les revu
     assert.equal(declassification.checkedAt, jour, 'la classification est revue sur le nouveau candidat');
     const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
     assert.ok(!gate.errors.some((error) => /Fraîcheur sensible/.test(error)), gate.errors.join('\n'));
-  } finally { rmSync(root, { recursive: true, force: true }); }
+  } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
+});
+
+test('une ouverture neuve à 22h UTC porte la date Paris jusque dans le gate', async (t) => {
+  const root = racineDeTest();
+  const candidat = '2026-09-29';
+  const mesures = join(root, 'docs/strategy/site-v3/mesures');
+  writeFileSync(join(mesures, `questions-${candidat}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, candidat));
+  const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+  const contenu = JSON.parse(readFileSync(recettePath));
+  contenu.date = candidat;
+  contenu.serp.date = candidat;
+  contenu.gsc.date = candidat;
+  writeFileSync(recettePath, JSON.stringify(contenu, null, 2));
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse('2026-09-28T22:22:17.185Z') });
+  try {
+    assert.equal(forge.aujourdhui(), '2026-09-29');
+    const resultat = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
+    const preuve = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'preuves/sources/cnil-durees.json')));
+    assert.equal(preuve.retrievedAt, '2026-09-28T22:22:17.185Z');
+    assert.equal(preuve.checkedAt, '2026-09-29');
+    assert.equal(resultat.manifest.sources[0].checkedAt, '2026-09-29');
+    assert.equal(resultat.manifest.sourcesVerifiedAt, '2026-09-29');
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(!gate.errors.some((error) => /retrievedAt.*Europe\/Paris|Fraîcheur sensible/.test(error)), gate.errors.join('\n'));
+  } finally {
+    t.mock.timers.reset();
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification', async () => {
