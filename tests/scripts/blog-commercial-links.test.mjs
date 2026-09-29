@@ -20,13 +20,30 @@ const pontsW39 = new Map([
   ['tests-verts-et-regle-des-trois-passes', { href: '/automatisation-cabinet-comptable', label: 'Voir le service d’automatisation et sa recette' }],
 ]);
 
+function verifierCardinalite(articlesPublies) {
+  const slugsAttendus = new Set([...articlesPublies.map(({ slug }) => slug), ...pontsW39.keys()]);
+  assert.equal(Object.keys(LIENS_COMMERCIAUX_BLOG).length, slugsAttendus.size);
+}
+
 test('chaque article publié reçoit un pont commercial explicite après le corps éditorial', () => {
-  assert.equal(Object.keys(LIENS_COMMERCIAUX_BLOG).length, articles.length + pontsW39.size);
+  verifierCardinalite(articles);
   for (const entree of articles) {
     const lien = lienCommercialPourArticle(entree.slug);
     assert.match(lien.href, /^\/automatisation(?:-cabinet-comptable|\/[a-z0-9-]+)$/);
     assert.ok(lien.label.trim(), `${entree.slug} : libellé commercial vide`);
     assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, entree.slug), `${entree.slug} : repli non autorisé pour un article publié`);
+  }
+});
+
+test('le passage de 9 à 12 articles publiés ne double-compte pas les trois ponts W39', () => {
+  const articlesHistoriques = articles.filter(({ slug }) => !pontsW39.has(slug));
+  assert.equal(articlesHistoriques.length, 9);
+  verifierCardinalite(articlesHistoriques);
+  const articlesPublies = [...articlesHistoriques, ...[...pontsW39.keys()].map((slug) => ({ type: 'blog', slug }))];
+  assert.equal(articlesPublies.length, 12);
+  verifierCardinalite(articlesPublies);
+  for (const { slug } of articlesPublies) {
+    assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, slug), `${slug} : pont explicite absent après publication`);
   }
 });
 
