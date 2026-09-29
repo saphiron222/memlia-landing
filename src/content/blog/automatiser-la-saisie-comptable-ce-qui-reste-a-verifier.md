@@ -101,7 +101,7 @@ Les contrôles se passent dans un ordre fixe, du plus grossier au plus fin, parc
 
 | Contrôle | Condition qui le rend concluant | Sortie quand la condition manque |
 |---|---|---|
-| Nature du document | Une mention de facture et un numéro sont lus | Pièce écartée, motif « document non facturé » |
+| Nature du document | Facture identifiable, ou justificatif de dépense à qualifier séparément | Devis ou relevé : motif « document non facturé » ; ticket ou note de frais : qualification humaine avant toute proposition |
 | Émetteur | Le nom lu correspond à un fournisseur du dossier | Fiche fournisseur à créer, par une personne |
 | Mentions de la pièce | Numéro, date, identité des parties et montants présents | Pièce incomplète, demande au client |
 | Cohérence des montants | HT et TVA reconstituent le TTC lu | Écart typé, jamais arrondi d’office |
@@ -111,7 +111,7 @@ Les contrôles se passent dans un ordre fixe, du plus grossier au plus fin, parc
 Ces six contrôles peuvent préparer des comparaisons et des alertes ; aucun ne supprime le contrôle humain. Une nature ambiguë, un émetteur inconnu ou un doublon probable demandent une décision. L’imputation d’un achat inhabituel intervient ensuite, une fois ces six contrôles passés, et reste elle aussi une décision du cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre une comparaison reproductible et une appréciation qui engage le dossier.
 
 <figure data-blog-proof="saisie-six-controles">
-  <img src="/proofs/blog/saisie-six-controles.webp" alt="Six contrôles de saisie dans leur ordre fixe, arrêtés sur un écart de montants fictif." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/saisie-six-controles.webp" alt="Six contrôles de saisie illustratifs, arrêtés sur une facture fictive de la période précédente." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Brique 3 : la file d’anomalies, et le reliquat qui se compte
@@ -121,7 +121,7 @@ Tout ce qui ne franchit pas un contrôle tombe dans une [file d’anomalies](/gl
 Le reliquat, c’est la part des pièces qui termine dans cette file. Il se compte, période par période, et il n’a de sens que rapporté au jeu de pièces sur lequel il a été compté : un dossier de commerce avec beaucoup de tickets ne produit pas le même reliquat qu’un dossier de prestations à dix factures par mois. Ce chiffre n’est pas un argument de vente, c’est un instrument de réglage : quand un motif domine la file, c’est la règle qu’il faut corriger, pas la personne qui relit.
 
 <figure data-blog-proof="saisie-file-anomalies">
-  <img src="/proofs/blog/saisie-file-anomalies.webp" alt="File d’anomalies fictive avec six motifs fermés et un écart de montants à traiter." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/saisie-file-anomalies.webp" alt="Six motifs possibles sans décompte mesuré et ticket coupé fictif à qualifier par une personne." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## La règle dans les mots du cabinet
@@ -150,9 +150,9 @@ Ces refus ont un coût visible, des lignes dans une file, et c’est exactement 
 
 ## Le scénario fictif : cinquante pièces inventées
 
-Cinquante pièces inventées décrivent ici un scénario de recette avant qu’une règle ne touche un dossier réel. Ce scénario contient ses propres pièges : trente-deux factures de fournisseurs récurrents, six factures de fournisseurs jamais vus, quatre photos de tickets dont deux coupées, trois factures datées de la période précédente, deux exemplaires de la même facture reçus par deux canaux, deux notes de frais sans justificatif lisible, et un avoir. Les visuels ci-dessus montrent les sorties attendues de la règle ; ils ne constituent ni un logiciel exécuté ni une mesure obtenue sur cinquante fichiers.
+Cinquante pièces inventées décrivent ici un scénario de recette avant qu’une règle ne touche un dossier réel. Ce scénario contient ses propres pièges : trente-deux factures de fournisseurs récurrents, six factures de fournisseurs jamais vus, quatre photos de tickets dont deux coupées, trois factures datées de la période précédente, deux exemplaires de la même facture reçus par deux canaux, deux notes de frais sans justificatif lisible, et un avoir. Ces catégories décrivent des entrées, pas des sorties exclusives : une facture peut cumuler un fournisseur inconnu et une mauvaise période, et « deux exemplaires » ne dit pas lequel est déjà au journal. Les visuels ci-dessus illustrent des sorties attendues de la règle ; ils ne constituent ni un logiciel exécuté ni une mesure obtenue sur cinquante fichiers.
 
-Le résultat attendu s’écrit avant le test : les trente-deux récurrentes doivent ressortir en écritures proposées, dont une signalée parce que le montant sort de l’ordinaire chez ce fournisseur. Les six inconnues doivent attendre une création de fiche par une personne. Les deux tickets coupés doivent partir en pièce incomplète, les deux autres passer. Les trois factures de la période précédente doivent rester affectées à leur période. Le doublon doit être proposé au rapprochement, jamais supprimé. Les deux notes de frais et l’avoir doivent remonter avec leur motif. Lors d’une mise en œuvre réelle, ces attentes deviennent des cas reproductibles, exécutés ligne par ligne ; le reliquat mesuré appartient alors uniquement au lot rejoué.
+Le résultat attendu s’écrit avant le test, sans aucun décompte mesuré : les factures récurrentes complètes peuvent devenir des écritures proposées après les six contrôles, mais le montant inhabituel est une appréciation humaine pour l’imputation, pas un écart HT + TVA. Les fournisseurs inconnus attendent la création d’une fiche par une personne ; cette décision précède les contrôles suivants. Les deux tickets coupés et les deux notes de frais sans justificatif lisible vont au motif « pièce incomplète », sous réserve de qualification humaine de leur nature ; les deux autres tickets restent à qualifier, et « passer » ne signifie pas enregistrer. Les factures de la période précédente restent affectées à leur période si aucun motif prioritaire ne les arrête ; un exemplaire éventuellement déjà enregistré est proposé au rapprochement, jamais supprimé. L’avoir est orienté vers une décision humaine sur sa nature et sa facture d’origine avant toute imputation : il n’est pas forcé dans le motif « document non facturé ». Si plusieurs contrôles échouent, la file garde la première sortie selon l’ordre du tableau, les autres restant à vérifier après décision ; ces entrées ne permettent pas de calculer le reliquat. Lors d’une mise en œuvre réelle, ces attentes deviennent des cas reproductibles, exécutés ligne par ligne ; le reliquat mesuré appartient alors uniquement au lot rejoué.
 
 ## Quel cadre pour les pièces, la facture électronique et les données ?
 
