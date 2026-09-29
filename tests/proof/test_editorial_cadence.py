@@ -61,7 +61,7 @@ class EditorialCadenceProof(unittest.TestCase):
         for slug in ("prompt-chatgpt-expert-comptable", "logiciel-ia-comptabilite", "tests-verts-et-regle-des-trois-passes"):
             with self.subTest(slug=slug):
                 mutant = deepcopy(donnees)
-                next(e for e in mutant[4] if e["slug"] == slug)["date"] = "2026-09-29"
+                next(e for e in mutant[4] if e["slug"] == slug)["date"] = "2026-09-30"
                 self.assertTrue(PLAN.verifier(*mutant)[0])
         mutant = deepcopy(donnees)
         cicatrice_suivante = next(e for e in mutant[4] if e.get("serie") == "cicatrices" and e["date"] == "2026-10-03")
@@ -71,6 +71,29 @@ class EditorialCadenceProof(unittest.TestCase):
         ordinaire_suivant = next(e for e in mutant[4] if e.get("serie") != "cicatrices" and e["date"] == "2026-09-29" and e.get("statut") == "planned")
         ordinaire_suivant["date"] = "2026-09-23"
         self.assertTrue(any("plus de quatre articles" in e for e in PLAN.verifier(*mutant)[0]))
+
+    def test_rattrapage_reel_du_29_conserve_les_creneaux_w39(self):
+        donnees = self.lot_w39(dates={slug: "2026-09-29" for slug in (
+            "prompt-chatgpt-expert-comptable", "logiciel-ia-comptabilite",
+            "tests-verts-et-regle-des-trois-passes")}, deja_inscrite=True)
+        erreurs, _, semaine = PLAN.verifier(*donnees)
+        self.assertEqual(erreurs, [])
+        self.assertEqual(semaine[(2026, 39)], 4)
+        self.assertEqual({e['date'] for e in donnees[4] if e['slug'] in PLAN.RATTRAPAGE_W39}, {'2026-09-29'})
+        for mauvaise_date in ('2026-09-25', '2026-09-30'):
+            with self.subTest(date=mauvaise_date):
+                with self.assertRaises(SystemExit):
+                    self.lot_w39(dates={slug: mauvaise_date for slug in PLAN.RATTRAPAGE_W39}, deja_inscrite=True)
+
+    def test_une_publication_w40_sur_son_creneau_du_29_reste_possible(self):
+        donnees = self.lot_w39(deja_inscrite=True)
+        article = next(e for e in donnees[4] if e.get('serie') != 'cicatrices'
+                       and e.get('statut') == 'planned' and e['date'] == '2026-09-29')
+        dates = {slug: '2026-09-29' for slug in PLAN.RATTRAPAGE_W39}
+        dates[article['slug']] = '2026-09-29'
+        scenario = self.lot_w39(dates=dates, deja_inscrite=True)
+        self.assertEqual(PLAN.verifier(*scenario)[0], [])
+        self.assertEqual(next(e for e in scenario[4] if e['slug'] == article['slug'])['date'], '2026-09-29')
 
     def test_rattrapage_refuse_autre_sujet_et_deuxieme_cicatrice(self):
         for dates in ({"prompt-chatgpt-expert-comptable": "2026-09-28", "logiciel-ia-comptabilite": "2026-09-28", "tests-verts-et-regle-des-trois-passes": "2026-09-28", "trois-bugs-que-des-tests-verts-n-ont-pas-vus": "2026-09-28"},

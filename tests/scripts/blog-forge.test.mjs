@@ -226,6 +226,17 @@ test('le frontmatter reproduit le manifeste champ pour champ', () => {
   assert.match(publie, /^brouillon: false$/m);
 });
 
+test('l’autorité blog déléguée ouvre le statut production sans nouvelle saisie de go personnel', () => {
+  const preview = construireManifest(recette(), 'pret-preview', jour, null);
+  const production = construireManifest(recette(), 'go-production', jour, null);
+  assert.equal(preview.kevin.productionApproved, false);
+  assert.equal(production.kevin.productionApproved, true);
+  assert.deepEqual(production.kevin.delegation, preview.kevin.delegation);
+  assert.match(production.kevin.delegation.basis, /sans go/);
+  assert.match(frontmatter(production), /^brouillon: false$/m);
+  assert.equal(production.author, 'kevin'); // attribution du texte, pas identité de l'opérateur
+});
+
 test('la forge refuse un H1 narratif avant de créer le candidat', async () => {
   const root = racineDeTest();
   try {

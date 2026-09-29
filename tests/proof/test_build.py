@@ -6,6 +6,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 import re
 import unittest
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 
@@ -23,17 +25,22 @@ INTEGRATION_PAGES = {
 }
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
 SUSPENDED_ARTICLE = 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'
-PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
-                   'comprendre-les-comptes-rendus-metier-dsn',
-                   # v3, 16/09/2026 : le pilier et le premier satellite publiés par la forge.
-                   'automatiser-un-cabinet-comptable-la-carte-des-taches', 'automatiser-la-relance-des-pieces-clients',
-                   # v3, 17/09/2026 : deuxième satellite, famille « Saisie, OCR et pré-comptabilité ».
-                   'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
-                   # v3, 19/09/2026 : première cicatrice, relue et validée par Kevin.
-                   'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
-                   # v3, 21/09/2026 : première vague talents, charge et compétences.
-                   'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps',
-                   'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'}
+def public_articles():
+    """Une source non-brouillon est attendue dans dist ; aucun nouveau slug n'est implicitement autorisé."""
+    return {path.stem for path in (ROOT / 'src/content/blog').glob('*.md')
+            if re.search(r'^brouillon:\s*false\s*$', path.read_text().split('---', 2)[1], re.MULTILINE)}
+
+class PublicArticleInventoryProof(unittest.TestCase):
+    def test_attente_du_rendu_derive_des_sources_non_brouillon(self):
+        with TemporaryDirectory() as directory:
+            source = Path(directory) / 'src/content/blog'
+            source.mkdir(parents=True)
+            (source / 'autorise.md').write_text('---\nbrouillon: false\n---\nArticle')
+            (source / 'preview.md').write_text('---\nbrouillon: true\n---\nBrouillon')
+            with patch.dict(globals(), ROOT=Path(directory)):
+                self.assertEqual(public_articles(), {'autorise'})
+                (source / 'autorise.md').write_text('---\nbrouillon: true\n---\nArticle')
+                self.assertEqual(public_articles(), set())
 BLOG_RUBRIQUES = {
     'controler-les-bulletins-de-paie-avant-la-dsn': 'paie-dsn-cabinet-comptable',
     'comprendre-les-comptes-rendus-metier-dsn': 'paie-dsn-cabinet-comptable',
@@ -101,7 +108,7 @@ def word_floor_diagnostic(article, posting, mots=None):
 
 
 def is_preview_article(article):
-    return article.stem in PREVIEW_ARTICLES and article.stem not in PUBLIC_ARTICLES
+    return article.stem in PREVIEW_ARTICLES and article.stem not in public_articles()
 
 
 def pillar_slugs():
@@ -153,7 +160,7 @@ class BuildProof(unittest.TestCase):
     def test_pages_one_h1_french(self):
         pages = sorted(DIST.glob('*.html'))
         self.assertEqual([p.stem for p in pages], PAGES_FIXES)
-        self.assertEqual({article.stem for article in articles()}, PUBLIC_ARTICLES | PREVIEW_ARTICLES)
+        self.assertEqual({article.stem for article in articles()}, public_articles() | PREVIEW_ARTICLES)
         integrations = sorted((DIST / 'integrations').glob('*.html'))
         self.assertEqual({page.stem for page in integrations}, INTEGRATION_PAGES)
         for page in pages + articles() + integrations:
