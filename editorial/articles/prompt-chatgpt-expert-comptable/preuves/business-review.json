@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "candidateSlug": "prompt-chatgpt-expert-comptable",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-29",
+  "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
+  "manifestSha256": "b2cdbd292ffe24a190e872b7aa6e8772c8e60b0ba0e222ea16021cc1afbaccf3",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact prompt-chatgpt-expert-comptable."
+  ],
+  "reviewerId": "relecteur-metier-ia-memlia",
+  "role": "direction-associes",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-668540d969d0-1-cnil-ia-generative",
+      "candidateSlug": "prompt-chatgpt-expert-comptable",
+      "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
+      "claimId": "claim-unit-668540d969d0-1",
+      "claimSha256": "a546ae3eb06661f25120157eb710c3865f1264cbd0550f6225cb6c6b1c9d8060",
+      "sourceId": "cnil-ia-generative",
+      "sourceContentSha256": "63f9767046b4d9b962a999b9533d230fc0f6175410a8c83424da6df48740726e",
+      "citationSha256": "a546ae3eb06661f25120157eb710c3865f1264cbd0550f6225cb6c6b1c9d8060",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-29",
+      "reasoning": "Copie CNIL cnil-ia-generative, passage des invites : ne partager que les informations autorisées. Le corps le cite comme conseil, non comme autorisation universelle d'utiliser un dossier réel."
+    },
+    {
+      "id": "review-claim-unit-668540d969d0-2-cnil-donnee-personnelle",
+      "candidateSlug": "prompt-chatgpt-expert-comptable",
+      "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
+      "claimId": "claim-unit-668540d969d0-2",
+      "claimSha256": "173ec2acc10364557413860ae5b0737c53fda156dc390d69318a1b41eae0eb34",
+      "sourceId": "cnil-donnee-personnelle",
+      "sourceContentSha256": "b610e932fc37be69d66a056c21b2dca1f0262d952c56a3bc9c707e7d2491786d",
+      "citationSha256": "ddfba444f96ae235a1461e5eda66fa15be7e87030616939137770cc411e46283",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-29",
+      "reasoning": "La définition CNIL cnil-donnee-personnelle mentionne l'identification par croisement ; le corps se limite à dire que remplacer le nom ne suffit pas toujours, sans prétendre qu'un cas fictif identifie une personne."
+    },
+    {
+      "id": "review-claim-unit-3ea838c700eb-1-ordre-ia",
+      "candidateSlug": "prompt-chatgpt-expert-comptable",
+      "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
+      "claimId": "claim-unit-3ea838c700eb-1",
+      "claimSha256": "4c40f38b5eca11fd4caf34ba3d328b123e340dcde2c4f24f5ebcb7157e7a12bd",
+      "sourceId": "ordre-ia",
+      "sourceContentSha256": "1b650c10a7f081d705a617a8bddb4ddc6873fb83593b4914e3ad2827ba9c64d2",
+      "citationSha256": "3dab1d88021341f7c4c67dbd0a6aba6479f24afe1e27accfa41fb5f24f8bbd3f",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-09-29",
+      "reasoning": "La copie primaire de l'Ordre annonce cas d'usage, précautions et techniques pour prompter ; le corps ne lui attribue ni contrôle du prompt donné ni approbation d'un fournisseur."
+    }
+  ]
+}

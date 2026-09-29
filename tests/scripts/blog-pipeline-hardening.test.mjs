@@ -14,7 +14,7 @@ import {
   validateDossier as validateDossierRaw,
   verifySource,
 } from '../../scripts/lib/blog-pipeline.mjs';
-import { articleMarkdown, createCompleteDossier } from './blog-fixture.mjs';
+import { DEFAULT_BODY, articleMarkdown, createCompleteDossier } from './blog-fixture.mjs';
 
 // 120 s : l'image de construction de Cloudflare Pages est plusieurs fois plus lente que la machine
 // de développement ; à 20 s, « chaque famille sensible visible… » y expirait (déploiement 8e89cc5e, 16/09/2026).
@@ -611,6 +611,32 @@ test('une matière sensible cohérente et vérifiée aujourd’hui conserve le c
   assert.equal(result.pass, true);
 });
 
+test('une recommandation CNIL sourcée reste information, une obligation RGPD exige un type sensible', async () => {
+  const cases = [
+    ['conseil-partage', 'La CNIL conseille : les utilisateurs ne devraient soumettre que des informations qu’ils sont autorisés à partager.', false],
+    ['conseil-choix', 'La CNIL recommande de partir de besoins concrets pour choisir un outil.', false],
+    ['obligation', 'Selon le RGPD, le responsable du traitement doit protéger les données personnelles.', true],
+  ];
+  for (const [label, witness, requiresSensitiveType] of cases) {
+    const fixture = await createCompleteDossier(root(`rgpd-${label}`), {
+      body: `${DEFAULT_BODY}\n\n${witness} [Source](https://www.cnil.fr/fr/ia-generative).`,
+    });
+    const claimsPath = join(fixture.dossier, 'claims.json');
+    const claims = readJson(claimsPath);
+    const claim = claims.claims.find((item) => item.claim.startsWith(witness));
+    claim.type = 'information';
+    writeJson(claimsPath, claims);
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(result.errors.some((error) => error.includes(`claims.contentUnits.${claim.unitId} contient une matière sensible visible`) && error.includes('claim.type sensible canonique')), requiresSensitiveType, `${label}: ${result.errors.join('\n')}`);
+    if (label === 'conseil-partage') {
+      claims.contentUnits.find((unit) => unit.id === claim.unitId).claimIds = [];
+      writeJson(claimsPath, claims);
+      const missingClaim = await validateDossier({ root: fixture.root, slug: fixture.slug });
+      assert.ok(missingClaim.errors.some((error) => error.includes(`claims.contentUnits.${claim.unitId} doit relier au moins une affirmation vérifiée`)), missingClaim.errors.join('\n'));
+    }
+  }
+});
+
 test('le contenu paie fiscal et juridique impose fact-check et revue malgré des métadonnées génériques', async () => {
   const baseline = await createCompleteDossier(root('sensitive-content-baseline'));
   const witness = 'Le Code du travail autorise toujours ce traitement, le prélèvement à la source ne doit jamais être contrôlé et la déclaration sociale nominative peut être transmise sans validation.';
@@ -1018,24 +1044,30 @@ test('même requête primaire et même intention bloquent deux candidats malgré
   assert.ok(result.errors.some((error) => /requête primaire.*intention.*premier-candidat|cannibalisation.*premier-candidat/i.test(error)), result.errors.join('\n'));
 });
 
-test('un arbitrage structuré relié aux deux URL autorise la différenciation explicitement vérifiée', async () => {
-  const corpusRoot = root('query-resolution');
-  await createCompleteDossier(corpusRoot, { slug: 'premier-candidat', heroId: 'img-premier-resolution' });
-  const second = await createCompleteDossier(corpusRoot, {
-    slug: 'second-candidat',
-    heroId: 'img-second-resolution',
-    body: DISTINCT_BODY,
-    manifestMutator: (manifest) => {
-      manifest.cannibalization.resolutions = [{
-        action: 'differentiate',
-        urls: ['/blog/premier-candidat', '/blog/second-candidat'],
-        evidence: 'preuves/cannibalization-premier.json',
-      }];
-    },
-  });
-  writeFileSync(join(corpusRoot, 'src/pages/index.astro'), '<a href="/blog/premier-candidat">A</a><a href="/blog/second-candidat">B</a>');
-  const result = await validateDossier({ root: corpusRoot, slug: second.slug });
-  assert.deepEqual(result.errors, []);
+test('un arbitrage structuré relié aux deux URL autorise la différenciation explicitement vérifiée', async (t) => {
+  // This assertion tests cannibalization, not freshness: keep its gate on the fixture's UTC day.
+  t.mock.timers.enable({ apis: ['Date'], now: Date.now() });
+  try {
+    const corpusRoot = root('query-resolution');
+    await createCompleteDossier(corpusRoot, { slug: 'premier-candidat', heroId: 'img-premier-resolution' });
+    const second = await createCompleteDossier(corpusRoot, {
+      slug: 'second-candidat',
+      heroId: 'img-second-resolution',
+      body: DISTINCT_BODY,
+      manifestMutator: (manifest) => {
+        manifest.cannibalization.resolutions = [{
+          action: 'differentiate',
+          urls: ['/blog/premier-candidat', '/blog/second-candidat'],
+          evidence: 'preuves/cannibalization-premier.json',
+        }];
+      },
+    });
+    writeFileSync(join(corpusRoot, 'src/pages/index.astro'), '<a href="/blog/premier-candidat">A</a><a href="/blog/second-candidat">B</a>');
+    const result = await validateDossier({ root: corpusRoot, slug: second.slug });
+    assert.deepEqual(result.errors, []);
+  } finally {
+    t.mock.timers.reset();
+  }
 });
 
 test('une image uniforme auto-déclarée est refusée', async () => {

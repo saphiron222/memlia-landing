@@ -5,10 +5,13 @@ import { resolve, join } from 'node:path';
 import { parse as parseHtml } from 'parse5';
 import { parse as parseYaml } from 'yaml';
 import { chargerAutocompletionMesuree, titrePorteUneRequeteMesuree } from '../../scripts/lib/blog-title-intent.mjs';
+import { dateIntentionScellee } from '../../scripts/lib/blog-pipeline.mjs';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const BLOG = join(ROOT, 'src/content/blog');
-const mesure = chargerAutocompletionMesuree(ROOT);
+function mesureArticle(slug) {
+  return chargerAutocompletionMesuree(ROOT, { au: dateIntentionScellee(ROOT, slug) });
+}
 
 function frontmatter(path) {
   const source = readFileSync(path, 'utf8');
@@ -61,6 +64,7 @@ test('chaque H1 publié porte une requête mesurée, y compris une mesure sans s
   const articles = articlesPublies();
   assert.ok(articles.length >= 7, `corpus publié anormalement vide : ${articles.length} article(s)`);
   for (const { slug, fm } of articles) {
+    const mesure = mesureArticle(slug);
     const requetes = [fm.primaryQuery, ...(fm.secondaryQueries ?? [])];
     const mesurees = requetes.filter((requete) => Object.hasOwn(mesure.autocompletion, requete));
     assert.ok(mesurees.length > 0, `${slug} : aucune requête du frontmatter n'a de relevé d'autocomplétion`);
@@ -74,6 +78,7 @@ test('le gardien rejette un H1 narratif fabriqué', () => {
     'adoption outil cabinet comptable',
     'changement de logiciel cabinet comptable resistance',
   ];
+  const mesure = chargerAutocompletionMesuree(ROOT, { au: '2026-09-28' });
   assert.equal(
     titrePorteUneRequeteMesuree("La plateforme que personne n'a achetée, et ce que le refus m'a appris", requetes, mesure.autocompletion),
     false,
@@ -82,6 +87,7 @@ test('le gardien rejette un H1 narratif fabriqué', () => {
 
 test('H1, Open Graph et JSON-LD portent le même titre intent-first ; l’onglet garde la même intention', () => {
   for (const { slug, fm } of articlesPublies()) {
+    const mesure = mesureArticle(slug);
     const surfaces = surfacesArticle(slug);
     assert.equal(surfaces.h1, fm.titre, `${slug} : H1`);
     assert.equal(surfaces.ogTitle, fm.titre, `${slug} : og:title`);

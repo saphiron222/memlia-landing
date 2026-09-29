@@ -1,0 +1,52 @@
+{
+  "nature": "exécution locale déterministe, sans modèle ni données client",
+  "cas": [
+    {
+      "nom": "nominal",
+      "entree": {
+        "societe": "Atelier Fictif",
+        "periode": "avril 2026",
+        "piece": "facture d’achat de matériel",
+        "destinataire": null
+      },
+      "sortie": {
+        "statut": "proposition_a_valider",
+        "objet": "Pièce manquante · avril 2026",
+        "message": "Bonjour, pouvez-vous nous transmettre la facture d’achat de matériel pour Atelier Fictif, période avril 2026 ? Si elle n’est pas disponible, indiquez-nous pourquoi. Merci.",
+        "destinataire": "à confirmer",
+        "envoi": false
+      }
+    },
+    {
+      "nom": "piece_absente",
+      "entree": {
+        "societe": "Atelier Fictif",
+        "periode": "avril 2026",
+        "piece": "",
+        "destinataire": null
+      },
+      "sortie": {
+        "statut": "arret",
+        "motif": "contexte incomplet",
+        "message": null,
+        "envoi": false
+      }
+    },
+    {
+      "nom": "demande_deja_partie",
+      "entree": {
+        "societe": "Atelier Fictif",
+        "periode": "avril 2026",
+        "piece": "facture d’achat de matériel",
+        "destinataire": null,
+        "dejaDemandee": true
+      },
+      "sortie": {
+        "statut": "arret",
+        "motif": "demande déjà partie",
+        "message": null,
+        "envoi": false
+      }
+    }
+  ]
+}

@@ -10,6 +10,7 @@ import sharp from 'sharp';
 import { chromium } from '@playwright/test';
 import { preparePreview } from '../../scripts/prepare-preview.mjs';
 import { createCompleteDossier, DEFAULT_BODY } from './blog-fixture.mjs';
+import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const test = (name, run) => nodeTest(name, { timeout: 180_000 }, run);
 const REPO = resolve(import.meta.dirname, '../..');
@@ -66,18 +67,22 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
     }
     symlinkSync(DEPENDENCIES, join(project, 'node_modules'), 'dir');
 
-    const fixtureBody = `${DEFAULT_BODY}
-
+    const fixtureBody = DEFAULT_BODY.replace('Voir [la méthode]', `
 <figure data-blog-proof="fixture-frontiere">
   <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="640" height="360" loading="lazy" decoding="async">
+  <figcaption>Source : jeu d’essai fictif · capture du 2026-09-20</figcaption>
 </figure>
 
 <figure data-blog-proof="fixture-refus">
   <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="640" height="360" loading="lazy" decoding="async">
-</figure>`;
+  <figcaption>Source : jeu d’essai fictif · capture du 2026-09-20</figcaption>
+</figure>
+
+Voir [la méthode]`);
     const fixture = await createCompleteDossier(staging, { slug, heroId, body: fixtureBody, claimsBody: DEFAULT_BODY });
     copyFile(fixture.articlePath, join(project, 'src/content/blog', `${slug}.md`));
     copyFile(fixture.dossier, join(project, 'editorial/articles', slug));
+    copyFile(join(staging, 'editorial/recettes', slug), join(project, 'editorial/recettes', slug));
     copyFile(join(staging, 'docs/strategy/site-v3/mesures'), join(project, 'docs/strategy/site-v3/mesures'));
     for (const extension of ['avif', 'webp']) {
       copyFile(join(staging, `public/images/${heroId}-768.${extension}`), join(project, `public/images/${heroId}-768.${extension}`));
@@ -117,6 +122,18 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
 
     const blogPath = join(project, 'src/pages/blog.astro');
     const blogSource = readFileSync(blogPath, 'utf8');
+    const subjectRender = join(workspace, 'subject-render');
+    const subjectBuild = spawnSync(process.execPath, [ASTRO_CLI, 'build', '--root', project, '--outDir', subjectRender], {
+      cwd: project,
+      env: { ...process.env, BLOG_PREVIEW_SLUG: slug, BLOG_PREVIEW_SLUGS: slug },
+      encoding: 'utf8',
+      timeout: 120_000,
+    });
+    assert.equal(subjectBuild.status, 0, `${subjectBuild.error?.message ?? ''}\n${subjectBuild.stderr ?? ''}`);
+    const reviewPath = join(project, 'editorial/recettes', slug, 'revues.json');
+    const review = JSON.parse(readFileSync(reviewPath, 'utf8'));
+    review.subject.renderedSha256 = renderedBodySha256(readFileSync(pagePath(subjectRender, `/blog/${slug}`), 'utf8'));
+    writeFileSync(reviewPath, `${JSON.stringify(review, null, 2)}\n`);
     const distSentinel = join(project, 'dist', 'sentinel.txt');
     mkdirSync(dirname(distSentinel), { recursive: true });
     writeFileSync(distSentinel, 'artefact préexistant');

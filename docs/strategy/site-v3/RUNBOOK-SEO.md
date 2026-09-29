@@ -114,10 +114,60 @@ La ligne de base C7, son échantillon figé, la distinction des instruments et l
 
 ## 5. Commit et push d'une session de cron
 
+**Release des mesures (séparée de la forge blog).** `main` ne reçoit pas de push direct
+depuis ces crons. Partir d'un `origin/main` propre sur une branche dédiée
+`site/seo-mesures-<job>-<AAAAMMJJ>` ; ne versionner que les mesures, le journal et les
+propositions de maintenance. Conserver le SHA du commit candidat et celui de
+`origin/main` dans la carte de release. Une tâche QA indépendante doit rendre
+`PASS` sans réserve sur le SHA exact de la PR et ses checks `Repository gates`.
+Une autre carte, distincte de QA, doit enregistrer la décision humaine autorisant explicitement cette release
+(`scope=seo-measures`, `decision=AUTHORIZE`, `pr`, `pr_head`, `main_sha`,
+`qa_task` dans les métadonnées du dernier run terminé). Sans ces preuves,
+ne pas fusionner ni activer les crons. La garde en lecture seule est :
+
+**Identité de l'autorisation.** Les métadonnées de la carte ne prouvent pas qui
+les a écrites : un profil `dev` peut y inscrire `AUTHORIZE`. La garde exige en
+plus `signed_decision` contenant exactement ces six champs et `signature` (base64
+d'une signature Ed25519 sur les octets UTF-8 de `JSON.stringify(signed_decision)`).
+La clé publique de vérification `config/seo-release-authority.pem` est lue dans
+le commit de `main` attendu, jamais dans la PR candidate. Kevin doit générer et
+conserver sa clé privée hors du poste accessible aux agents, vérifier l'empreinte
+de la clé publique avant son ajout sur `main`, puis signer lui-même la décision
+exacte. Ne jamais déposer la clé privée ni une signature fabriquée par un agent.
+Sans clé publique approuvée sur `main` ou sans signature humaine valide, la garde
+refuse la release ; une carte remplie par `dev` ne suffit pas. L'ajout de la clé
+sur `main` déplace la base : refaire QA et décision sur les SHA exacts.
+
 ```bash
+node scripts/seo-release-gate.mjs --pr <N> --qa-task <t_ID> --authorization-task <t_ID> --expected-head <SHA_PR> --expected-main <SHA_MAIN>
+```
+
+La garde refuse tout fichier hors `docs/strategy/site-v3/mesures/`,
+`docs/strategy/site-v3/JOURNAL.md` et `editorial/maintenance.json`. Elle ne
+prévalide pas un renommage depuis le blog vers les mesures : le préflight vérifie
+les deux chemins (origine et destination) du diff indexé et du commit candidat.
+Un renommage interne aux mesures reste autorisé. Elle ne
+fusionne rien et n'autorise pas le blog ; `blog-auto-merge.mjs` ne donne aucune
+autorité SEO. Après le verdict positif, revalider les refs juste avant la fusion
+humaine, puis vérifier le SHA de `main`, les checks et la production avant toute
+activation. Si la branche, QA, CI ou base change, redemander QA et autorisation.
+Avant toute future activation, enregistrer une copie des quatre prompts et
+leurs identifiants/révisions dans le dossier de release ; modifier un seul
+prompt à la fois, relire exactement son contenu et son état par identifiant
+après sauvegarde, puis vérifier le suivant. En cas d'écart, arrêter la série,
+désactiver le prompt concerné et restaurer sa révision depuis la copie,
+avec readback de la restauration. En cas d'incident Git : suspendre les crons
+SEO, conserver les mesures datées et proposer une PR de revert soumise aux
+mêmes contrôles ; ne pas écraser les données saisies par l'humain.
+
+```bash
+node scripts/seo-cron-preflight.mjs --root "$(pwd)" --job <job> --phase initial
+git switch -c site/seo-mesures-<job>-<AAAAMMJJ> origin/main
 git add -- docs/strategy/site-v3/mesures docs/strategy/site-v3/JOURNAL.md editorial/maintenance.json
-git commit -m "chore(seo): <sentinelle|releve de demande|integrite> du <AAAA-MM-JJ>" -- docs/strategy/site-v3/mesures docs/strategy/site-v3/JOURNAL.md editorial/maintenance.json
-git push origin main
+node scripts/seo-cron-preflight.mjs --root "$(pwd)" --job <job> --phase before-commit --base <SHA_MAIN>
+git commit -m "chore(seo): <job> du <AAAA-MM-JJ>"
+node scripts/seo-cron-preflight.mjs --root "$(pwd)" --job <job> --phase before-push --base <SHA_MAIN> --commit "$(git rev-parse HEAD)"
+git push origin HEAD
 ```
 
 Le message de commit suit la convention du dépôt, sans attribution à un runtime ou à un modèle. Format de la ligne de journal, dans le tableau existant : `| <date> | <cron> | <commit> | — | — | — | — | <résumé : chiffres, rouges, tâches, ce qui est écarté> |`.

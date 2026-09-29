@@ -5,7 +5,7 @@ import sharp from 'sharp';
 import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS } from '../../scripts/lib/blog-pipeline.mjs';
 import { retirerPreuvesInline } from '../../scripts/lib/blog-proof-figures.mjs';
 
-export const fixtureDate = new Date().toISOString().slice(0, 10);
+const utcToday = () => new Date().toISOString().slice(0, 10);
 const sha256 = (content) => createHash('sha256').update(content).digest('hex');
 const writeJson = (path, value) => writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
 const FIXTURE_STOP_WORDS = new Set(['alors', 'avec', 'avoir', 'cette', 'comme', 'dans', 'depuis', 'elle', 'elles', 'entre', 'etre', 'faire', 'leurs', 'mais', 'meme', 'pour', 'sans', 'selon', 'sont', 'sous', 'toute', 'toutes', 'toujours', 'tout', 'tous', 'une', 'vers', 'votre']);
@@ -51,7 +51,7 @@ const informativeImage = (width, height) => Buffer.from(`<svg xmlns="http://www.
   <path d="M ${width * 0.46} ${height * 0.5} l ${width * 0.025} ${height * 0.04} l ${width * 0.07} ${-height * 0.09}" fill="none" stroke="#fffefb" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`);
 
-export function candidateManifest(slug = 'article-de-test', heroId = `img-${slug}`) {
+export function candidateManifest(slug = 'article-de-test', heroId = `img-${slug}`, fixtureDate = utcToday()) {
   return {
     version: 1,
     slug,
@@ -198,10 +198,12 @@ ${body}
 `;
 }
 
-function subjectArtifact({ slug, kind, articleHash, manifestHash, extra = {} }) {
-  return {
+export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {} } = {}) {
+  // A single UTC day for every correlated fixture artifact, sampled at creation rather than import.
+  const fixtureDate = utcToday();
+  const subjectArtifact = ({ slug: candidateSlug, kind, articleHash, manifestHash, extra = {} }) => ({
     version: 1,
-    candidateSlug: slug,
+    candidateSlug,
     kind,
     status: 'PASS',
     checkedAt: fixtureDate,
@@ -209,11 +211,8 @@ function subjectArtifact({ slug, kind, articleHash, manifestHash, extra = {} }) 
     manifestSha256: manifestHash,
     observations: [`Contrôle ${kind} relu sur le candidat exact.`],
     ...extra,
-  };
-}
-
-export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {} } = {}) {
-  const manifest = candidateManifest(slug, heroId);
+  });
+  const manifest = candidateManifest(slug, heroId, fixtureDate);
   manifestMutator(manifest);
   const dossier = join(root, 'editorial/articles', slug);
   const preuves = join(dossier, 'preuves');
@@ -239,6 +238,16 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
   const manifestPath = join(dossier, 'manifest.json');
   writeFileSync(articlePath, markdown);
   writeJson(manifestPath, manifest);
+  const recipeDir = join(root, 'editorial/recettes', slug);
+  mkdirSync(recipeDir, { recursive: true });
+  const recipeBody = retirerPreuvesInline(body.trim());
+  writeFileSync(join(recipeDir, 'corps.md'), `${recipeBody}\n`);
+  const recipeBytes = JSON.stringify({ slug, fixture: true });
+  writeFileSync(join(recipeDir, 'recette.json'), recipeBytes);
+  // Témoin synthétique lié au corps et à la recette de CE fixture, sans verdict publié.
+  writeJson(join(recipeDir, 'revues.json'), {
+    subject: { slug, bodySha256: sha256(recipeBody), recipeSha256: sha256(recipeBytes), renderedSha256: sha256('fixture-rendered-body') },
+  });
   const articleHash = sha256(retirerPreuvesInline(markdown));
   const manifestHash = sha256(readFileSync(manifestPath));
 
@@ -309,6 +318,7 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
       finalUrl: source.url,
       httpStatus: 200,
       checkedAt: source.checkedAt,
+      retrievedAt: `${source.checkedAt}T00:00:00.000Z`,
       contentPath: `preuves/sources/${source.id}.txt`,
       contentSha256,
       excerpt,

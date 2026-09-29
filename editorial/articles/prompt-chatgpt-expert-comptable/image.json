@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "candidateSlug": "prompt-chatgpt-expert-comptable",
+  "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
+  "manifestSha256": "b2cdbd292ffe24a190e872b7aa6e8772c8e60b0ba0e222ea16021cc1afbaccf3",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Feuille vierge et enveloppe séparées par une grille fermée, pour figurer le contrôle humain avant une demande de pièce",
+  "score": 100,
+  "directionArt": 17,
+  "semanticRelevance": 21,
+  "p0": [],
+  "kevinApproved": true,
+  "palette": {
+    "statut": "PASS",
+    "parts": {
+      "#fcfbf7": 0.6776041666666667,
+      "#27b657": 0.014895833333333334,
+      "#1c8a41": 0.035729166666666666,
+      "#231f20": 0.07534722222222222
+    },
+    "ecarts": []
+  }
+}
