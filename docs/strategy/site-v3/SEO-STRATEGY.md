@@ -3,7 +3,9 @@
 Écrite le 16 septembre 2026, validée par Kevin le jour même avec deux amendements (quatre articles
 par semaine, territoire élargi à toute tâche automatisable du cabinet). **Remise à l'état réel le
 19 septembre 2026**, après la revue mesurée de la demande ; **réconciliée avec les sources du
-28 septembre 2026**. Les relevés du 17–19/09 restent des photographies datées, non des mesures actuelles.
+28 septembre 2026**, puis relue avec les deux articles ordinaires W39 publiés le 29/09 et
+la charte §7 ter : l'authentification d'un récit signé n'est pas un go individuel de publication.
+Les relevés du 17–19/09 restent des photographies datées, non des mesures actuelles.
 
 Ce dossier remplace, pour l'éditorial, la stratégie v2 (`../site-v2/SEO-STRATEGY.md`, trois piliers
 dont deux sur la production sociale) et les notes du coffre. Les pages commerciales suivent la
@@ -11,7 +13,7 @@ charte de message (`.agents/product-marketing.md` v4, angle v3 conservé), pas c
 
 ## 1. Le constat, relu le 19/09
 
-- **Le corpus est né du pôle social** : trois articles publiés portent la paie, le bulletin ou la DSN. Le corpus courant compte neuf fichiers publiés (`src/content/blog/`) et le glossaire 53 ancres (`src/data/glossary.ts`). Les six articles et 43 termes du relevé du 19/09 ne sont pas le stock actuel.
+- **Le corpus est né du pôle social** : trois articles publiés portent la paie, le bulletin ou la DSN. Le corpus courant compte 11 fichiers publiés (`src/content/blog/`), dont le Prompt et le Logiciel IA W39, et le glossaire 53 ancres (`src/data/glossary.ts`). Les six articles et 43 termes du relevé du 19/09 ne sont pas le stock actuel.
 - **Le contrat éditorial prévoyait déjà tout le cabinet** : le schéma du blog (`src/content.config.ts`) accepte douze pôles et les rôles de la taxonomie Ressources. La taxonomie complète existe désormais en source unique, `src/data/familles.ts`.
 - **Il n'y avait rien à perdre en élargissant, et il n'y a toujours rien à défendre** : sur 28 jours au 14/09, Search Console donne 4 clics et 17 impressions, tous sur l'accueil, sur des requêtes de marque mal orthographiées ; les six articles sont à zéro impression (`mesures/semaine-2026-W38-demande.json`). La base technique, elle, est propre : 14 URL au sitemap, 14 indexées, 0 rouge (`mesures/sentinelle.jsonl`, 18/09).
 

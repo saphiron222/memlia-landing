@@ -20,6 +20,8 @@ chiffres d'indexation du 18/09 ci-dessous sont historiques, non un relevé de pr
 │   ├── /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils
 │   ├── /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps
 │   ├── /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain
+│   ├── /blog/logiciel-ia-comptabilite
+│   ├── /blog/prompt-chatgpt-expert-comptable
 │   └── /blog/rubrique/{paie-dsn-cabinet-comptable,gestion-pieces-comptables}
 ├── /automatisation/<tache>                pages de service publiées (collection services)
 ├── /integrations                          hub et guides tâche × environnement, seulement candidats admis
@@ -31,7 +33,9 @@ chiffres d'indexation du 18/09 ci-dessous sont historiques, non un relevé de pr
 
 La mesure « 14 URL au sitemap, 14 indexées » est le dernier relevé du **18/09**, non le compte
 actuel. Ne pas en déduire l'indexation des routes nouvelles : compter le sitemap construit et
-mesurer Search Console séparément. Neuf fichiers d'article sont publiés au HEAD du 28/09.
+mesurer Search Console séparément. Les 11 fichiers d'article scellés de `src/content/blog/`
+comprennent les deux articles ordinaires W39 publiés le 29/09 ; ce compte de fichiers ne
+prouve ni indexation ni réponse effectivement servie.
 **Incident FE :** au candidat local du 28/09, `src/data/site.mjs` exclut l'article de saisie
 du sitemap et `Article.astro` applique aussi `noindex` au HTML statique de cette route :
 le test du `dist` (`tests/proof/test_build.py`) constate `noindex, follow`, avec canonical
@@ -121,13 +125,13 @@ sans date de publication promise (`GLOSSARY-PLAN.md`).
 | Image de tête par article | brief à six composantes, génération sous budget, recadrage 1920x1080, OG 1200x630, dérivés 768/1200/1600 en AVIF et WebP | couverture seulement ; deux preuves dans le corps viennent de cadres HTML figés (`RUNBOOK-QUOTIDIEN.md` §3) |
 | Pilier hors liste, en tête du blog | `src/pages/blog.astro` | fait, contrôlé côté Python et côté navigateur |
 | Groupe de navigation « Ressources » | `src/components/Nav.astro`, `src/components/Footer.astro` | fait ; la page `/ressources` est retirée |
-| Compteurs de tests | `tests/proof/test_glossary.py` (53), `test_build.py` (`PUBLIC_ARTICLES`, 9 slugs) | fait, à revalider avec chaque publication et vague de glossaire |
+| Compteurs de tests | `tests/proof/test_glossary.py` (53), `test_build.py` (inventaire dynamique des articles publics) | fait, à revalider avec chaque publication et vague de glossaire |
 | Registre `lastmod` | `npm run lastmod:sync`, `src/data/pages-lastmod.json` | pages dans le registre, articles datés par frontmatter ; lire le registre plutôt que reprendre le compte du 19/09 |
 | Exigence « la règle écrite » | `DEBUT_REGLE_ECRITE`, `verifierRegleEcrite` (`scripts/blog-forge.mjs`) | fait le 19/09, témoin de mutation joué |
 
 Ce qui reste, et qui n'est pas urgent : aucune facette « par famille de tâches » n'existe, et elle
 n'a plus de page d'accueil depuis le retrait de `/ressources`. Si le besoin revient, il se pose sur
-`/blog`, pas sur un hub : une facette à 59 familles actives pour neuf articles serait une
+`/blog`, pas sur un hub : une facette à 59 familles actives pour 11 articles serait une
 facette vide (familles lues dans le frontmatter `famille:` des articles publiés). À rouvrir quand
 plusieurs familles auront leurs quatre satellites publiés, pas avant.
 
