@@ -117,9 +117,12 @@ class EditorialCadenceProof(unittest.TestCase):
         dates = [date.fromisoformat(e["date"]) for e in cicatrices]
         self.assertGreaterEqual(len(dates), 8)
         self.assertEqual(dates[0].isoformat(), "2026-09-19")
-        self.assertTrue(all((b - a).days == 7 for a, b in zip(dates, dates[1:])), dates)
+        creneaux = [date.fromisoformat(PLAN.creneau(e)) for e in cicatrices]
+        self.assertTrue(all((b - a).days == 7 for a, b in zip(creneaux, creneaux[1:])), creneaux)
+        if "tests-verts-et-regle-des-trois-passes" in {e["slug"] for e in cicatrices}:
+            self.assertIn(date(2026, 9, 28), dates)
         self.assertEqual(cicatrices[0]["statut"], "published")
-        self.assertTrue(all(e["statut"] == "planned" for e in cicatrices[1:]), cicatrices)
+        self.assertTrue(all(e["statut"] == ("published" if e["slug"] == "tests-verts-et-regle-des-trois-passes" else "planned") for e in cicatrices[1:]), cicatrices)
 
     def test_cicatrice_hors_samedi_rougit(self):
         donnees, _, _, _ = construire_et_verifier()
@@ -133,9 +136,17 @@ class EditorialCadenceProof(unittest.TestCase):
         donnees, _, _, _ = construire_et_verifier()
         donnees = deepcopy(donnees)
         cicatrices = [e for e in donnees[4] if e.get("serie") == "cicatrices"]
-        cicatrices[1]["date"] = "2026-09-19"
+        cicatrices[1]["date"] = "2026-09-26"
         erreurs, _, _ = PLAN.verifier(*donnees)
         self.assertTrue(any("plus d’une cicatrice" in erreur for erreur in erreurs), erreurs)
+
+    def test_une_cicatrice_future_manquante_rougit_la_cadence(self):
+        donnees, _, _, _ = construire_et_verifier()
+        donnees = deepcopy(donnees)
+        cicatrices = sorted((e for e in donnees[4] if e.get("serie") == "cicatrices"), key=lambda e: PLAN.creneau(e))
+        cicatrices[2]["date"] = "2026-10-10"
+        erreurs, _, _ = PLAN.verifier(*donnees)
+        self.assertTrue(any("cadence hebdomadaire" in erreur for erreur in erreurs), erreurs)
 
 
 if __name__ == "__main__":
