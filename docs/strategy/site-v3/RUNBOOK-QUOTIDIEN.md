@@ -16,6 +16,14 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 
 ## 1. Préflight de la forge (avant toute écriture)
 
+Quota réel : les créneaux W39 des 22/24 restent visibles en historique, mais les deux
+articles ordinaires effectivement publiés le 29/09 occupent aussi les deux places de ce
+jour et deux places de W40. Le hub IA conserve sa réservation humaine `datePlanifiee` au
+29/09 dans le backlog ; le calendrier le marque `a-replanifier`, non actionnable tant
+qu'une personne n'a pas fixé une nouvelle date. Une date `manque` ou `a-replanifier` ne
+crée aucune capacité réelle. Le générateur `--check` et le préflight comptent ensemble
+`published` réel et `planned` actionnable, sans redater une publication.
+
 ```bash
 cd /Users/kevinkitanga/dev/interne/memlia-landing
 PREFLIGHT=$(node scripts/cron-preflight.mjs --root "$PWD" --job forge) || { printf '%s\n' "$PREFLIGHT"; exit 1; }

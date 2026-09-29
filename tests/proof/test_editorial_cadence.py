@@ -80,19 +80,24 @@ class EditorialCadenceProof(unittest.TestCase):
         self.assertEqual(erreurs, [])
         self.assertEqual(semaine[(2026, 39)], 4)
         self.assertEqual({e['date'] for e in donnees[4] if e['slug'] in PLAN.RATTRAPAGE_W39}, {'2026-09-29'})
+        self.assertFalse([e for e in [donnees[3]] + donnees[4] if e.get('statut') == 'planned' and e['date'] == '2026-09-29'])
+        mutant = deepcopy(donnees)
+        suivant = next(e for e in mutant[4] if e.get('statut') == 'planned')
+        suivant['date'] = '2026-09-29'
+        self.assertTrue(any('jour réel' in erreur for erreur in PLAN.verifier(*mutant)[0]))
         for mauvaise_date in ('2026-09-25', '2026-09-30'):
             with self.subTest(date=mauvaise_date):
                 with self.assertRaises(SystemExit):
                     self.lot_w39(dates={slug: mauvaise_date for slug in PLAN.RATTRAPAGE_W39}, deja_inscrite=True)
 
-    def test_une_publication_w40_sur_son_creneau_du_29_reste_possible(self):
+    def test_une_publication_w40_sur_son_creneau_du_29_depasse_le_quota_reel(self):
         donnees = self.lot_w39(deja_inscrite=True)
         article = next(e for e in donnees[4] if e.get('serie') != 'cicatrices'
                        and e.get('statut') == 'planned' and e['date'] == '2026-09-29')
         dates = {slug: '2026-09-29' for slug in PLAN.RATTRAPAGE_W39}
         dates[article['slug']] = '2026-09-29'
         scenario = self.lot_w39(dates=dates, deja_inscrite=True)
-        self.assertEqual(PLAN.verifier(*scenario)[0], [])
+        self.assertTrue(any('jour réel' in erreur for erreur in PLAN.verifier(*scenario)[0]))
         self.assertEqual(next(e for e in scenario[4] if e['slug'] == article['slug'])['date'], '2026-09-29')
 
     def test_rattrapage_refuse_autre_sujet_et_deuxieme_cicatrice(self):

@@ -243,6 +243,11 @@ def planifier(entrees, publies, aujourd_hui=None):
             d = date.fromisoformat(RATTRAPAGE_W39.get(slug, p['date']) if p['date'] in DATES_RATTRAPAGE else p['date'])
             par_jour[d] += 1
             par_semaine[semaine_iso(d)] += 1
+            # La trace W39 ne libère pas la capacité du jour réellement publié.
+            if d.isoformat() != p['date']:
+                reel = date.fromisoformat(p['date'])
+                par_jour[reel] += 1
+                par_semaine[semaine_iso(reel)] += 1
     # La série « Cicatrices » (charte §7 ter) a sa propre cadence : un samedi par semaine ISO,
     # en sus des quatre articles ordinaires. Son stock reste factuel ; le planificateur place les
     # entrées existantes mais n'en invente jamais pour combler une semaine future.
@@ -286,10 +291,17 @@ def planifier(entrees, publies, aujourd_hui=None):
         if not valeur or e.get('serie') == 'cicatrices' or e['slug'] in publies:
             continue
         candidat = date.fromisoformat(valeur)
+        if par_jour[candidat] >= PAR_JOUR_MAX and sum(p['date'] == valeur for slug, p in publies.items() if slug not in slugs_cicatrices) >= PAR_JOUR_MAX:
+            # Créneau supplanté par les publications réelles ; conserver la décision
+            # datée, sans la transformer en promesse ni déplacer la date du backlog.
+            e['date'] = valeur
+            e['statut'] = 'a-replanifier'
+            continue
         if candidat < aujourd_hui:
             raise SystemExit(f"date planifiée échue : {e['slug']} ({valeur}) ; replanifier sans antidater")
         if candidat < PREMIER_JOUR or candidat.weekday() not in JOURS_DE_PUBLICATION:
             raise SystemExit(f"date planifiée hors fenêtre lundi-jeudi : {e['slug']} ({valeur})")
+
         if par_jour[candidat] >= PAR_JOUR_MAX or par_semaine[semaine_iso(candidat)] >= PAR_SEMAINE_MAX:
             raise SystemExit(f"date planifiée au-delà de la cadence : {e['slug']} ({valeur})")
         e['date'] = valeur
@@ -485,21 +497,30 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
             erreurs.append(f"angle de priorité 1 sans signal mesuré : {e['slug']}")
     ordinaires = [e for e in tous if e.get('serie') != 'cicatrices']
     cicatrices = [e for e in tous if e.get('serie') == 'cicatrices']
-    par_jour, par_semaine = Counter(), Counter()
+    par_jour, par_semaine, par_jour_reel, par_semaine_reelle = Counter(), Counter(), Counter(), Counter()
     for e in ordinaires:
         if e['date'] == DATE_RATTRAPAGE and e.get('statut') == 'published' and e['slug'] not in RATTRAPAGE_W39:
             erreurs.append(f"rattrapage W39 hors périmètre : {e['slug']}")
         if e.get('datePlanifiee') and creneau(e) != e['datePlanifiee']:
             erreurs.append(f"date planifiée non respectée : {e['slug']} ({e['date']} != {e['datePlanifiee']})")
         slot = date.fromisoformat(creneau(e))
-        par_jour[slot] += 1
-        par_semaine[semaine_iso(slot)] += 1
-        if slot >= PREMIER_JOUR and slot.weekday() not in JOURS_DE_PUBLICATION:
+        if e.get('statut') != 'a-replanifier':
+            par_jour[slot] += 1
+            par_semaine[semaine_iso(slot)] += 1
+        if e.get('statut') in ('published', 'planned'):
+            reel = date.fromisoformat(e['date'])
+            par_jour_reel[reel] += 1
+            par_semaine_reelle[semaine_iso(reel)] += 1
+        if slot >= PREMIER_JOUR and slot.weekday() not in JOURS_DE_PUBLICATION and e.get('statut') != 'a-replanifier':
             erreurs.append(f"article ordinaire hors lundi-jeudi : {e['slug']} ({e['date']})")
     if any(n > PAR_JOUR_MAX for n in par_jour.values()):
         erreurs.append('plus de deux articles le même jour')
     if any(n > PAR_SEMAINE_MAX for n in par_semaine.values()):
         erreurs.append('plus de quatre articles la même semaine')
+    if any(n > PAR_JOUR_MAX for n in par_jour_reel.values()):
+        erreurs.append('jour réel : plus de deux articles publiés ou planifiés')
+    if any(n > PAR_SEMAINE_MAX for n in par_semaine_reelle.values()):
+        erreurs.append('semaine réelle : plus de quatre articles publiés ou planifiés')
     erreurs.extend(verifier_alternance(tous))
     cicatrices_par_semaine = Counter()
     dates_cicatrices = []
