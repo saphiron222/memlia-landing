@@ -14,14 +14,26 @@ const liensAttendus = new Map([
   ['controler-les-bulletins-de-paie-avant-la-dsn', '/automatisation/paie'],
   ['suivre-la-production-sociale-dans-excel', '/automatisation/paie'],
 ]);
+const pontsW39 = new Map([
+  ['logiciel-ia-comptabilite', { href: '/automatisation-cabinet-comptable', label: 'Voir le service d’automatisation sur mesure' }],
+  ['prompt-chatgpt-expert-comptable', { href: '/automatisation-cabinet-comptable', label: 'Voir comment automatiser une règle de cabinet' }],
+  ['tests-verts-et-regle-des-trois-passes', { href: '/automatisation-cabinet-comptable', label: 'Voir le service d’automatisation et sa recette' }],
+]);
 
 test('chaque article publié reçoit un pont commercial explicite après le corps éditorial', () => {
-  assert.equal(Object.keys(LIENS_COMMERCIAUX_BLOG).length, articles.length);
+  assert.equal(Object.keys(LIENS_COMMERCIAUX_BLOG).length, articles.length + pontsW39.size);
   for (const entree of articles) {
     const lien = lienCommercialPourArticle(entree.slug);
     assert.match(lien.href, /^\/automatisation(?:-cabinet-comptable|\/[a-z0-9-]+)$/);
     assert.ok(lien.label.trim(), `${entree.slug} : libellé commercial vide`);
     assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, entree.slug), `${entree.slug} : repli non autorisé pour un article publié`);
+  }
+});
+
+test('les trois articles W39 ont un pont explicite avant leur publication, sans repli générique', () => {
+  for (const [slug, lien] of pontsW39) {
+    assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, slug), `${slug} : pont explicite absent`);
+    assert.deepEqual(lienCommercialPourArticle(slug), lien);
   }
 });
 
