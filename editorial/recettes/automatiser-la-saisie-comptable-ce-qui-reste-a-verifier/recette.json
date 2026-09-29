@@ -66,7 +66,7 @@
   "task": "Faire lire les pièces et proposer les écritures sans que rien ne s’enregistre sans contrôle, et faire remonter ce que la lecture n’a pas su traiter.",
   "rankability": "plausible",
   "businessRelevance": "directe",
-  "proofRequired": "Jeu fictif de cinquante pièces (trente-deux fournisseurs récurrents, six inconnus, quatre tickets dont deux coupés, trois hors période, un doublon reçu deux fois, deux notes de frais sans justificatif, un avoir) rejoué sur la règle ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées.",
+  "proofRequired": "Scénario fictif explicite de cinquante pièces avec sorties attendues, sans prétendre à une exécution ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées.",
   "reviewRule": "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois.",
   "cta": {
     "label": "Confier cette tâche",
@@ -222,7 +222,7 @@
       "explanation": "La phrase de la fiche Service-Public sur les mentions obligatoires d’une facture est reprise à l’identique, sans élargir sa portée."
     },
     {
-      "unite": "La bascule vers la facture électronique déplace ce travail",
+      "unite": "Pour les flux concernés, la facture électronique déplace ce travail",
       "claim": "la facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie",
       "type": "fiscal",
       "sourceId": "sp-facture-electronique",
@@ -246,7 +246,7 @@
       "explanation": "Phrase de la fiche Service-Public sur la conservation des documents reprise à l’identique ; seule l’apostrophe typographique diffère, et aucune durée n’est affirmée."
     },
     {
-      "unite": "Enfin, une facture porte presque toujours des données personnelles",
+      "unite": "Enfin, une facture peut porter des données personnelles",
       "claim": "une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable",
       "type": "legal-reglementaire",
       "sourceId": "cnil-donnee-personnelle",
@@ -260,7 +260,7 @@
   },
   "preuvesSkills": {
     "blog-brief": [
-      "Brief pris dans docs/strategy/site-v3/backlog-v3.json (famille saisie-ocr, lecteur collaborateurs-comptables, requête « automatisation saisie comptable OCR », preuve attendue : reliquat d’exceptions mesuré sur un jeu fictif de cinquante pièces, avec la file d’anomalies qui en sort)."
+      "Brief pris dans docs/strategy/site-v3/backlog-v3.json (famille saisie-ocr, lecteur collaborateurs-comptables, requête « automatisation saisie comptable OCR »). Le candidat décrit un scénario fictif et ses sorties attendues ; une mesure de reliquat n’est revendiquée qu’après un rejeu réel, ligne par ligne, dans une mise en œuvre."
     ],
     "blog-outline": [
       "Plan calqué sur le gabarit how-to-guide du skill blog : réponse directe, définitions, avant de commencer, trois briques, tableau déclencheur/condition/action/exception, refus, frontière en trois colonnes, jeu fictif, cadre sourcé, erreurs, questions fréquentes, règle à retenir, pour aller plus loin."

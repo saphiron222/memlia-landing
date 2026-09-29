@@ -30,7 +30,7 @@ format: how-to-guide
 rankability: plausible
 businessRelevance: directe
 proofStatus: verifiee
-proofRequired: "Jeu fictif de cinquante pièces (trente-deux fournisseurs récurrents, six inconnus, quatre tickets dont deux coupés, trois hors période, un doublon reçu deux fois, deux notes de frais sans justificatif, un avoir) rejoué sur la règle ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées."
+proofRequired: "Scénario fictif explicite de cinquante pièces avec sorties attendues, sans prétendre à une exécution ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées."
 reviewRule: "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois."
 reviewer: marketing
 sourcesVerifieesLe: 2026-09-29
@@ -108,7 +108,7 @@ Les contrôles se passent dans un ordre fixe, du plus grossier au plus fin, parc
 | Période | La date de la pièce tombe dans la période traitée | Pièce hors période, conservée pour la bonne période |
 | Doublon | Le couple fournisseur et numéro est absent du journal | Rapprochement proposé, aucune écriture créée |
 
-Quatre de ces six contrôles sont purement déterministes : ils comparent, ils ne jugent pas. C’est ce qui les rend automatisables sans risque. Les deux autres, l’émetteur inconnu et l’imputation d’un achat inhabituel, demandent une décision, et cette décision appartient au cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre ce qui se prouve par comparaison et ce qui s’apprécie.
+Ces six contrôles peuvent préparer des comparaisons et des alertes ; aucun ne supprime le contrôle humain. Une nature ambiguë, un émetteur inconnu ou un doublon probable demandent une décision. L’imputation d’un achat inhabituel intervient ensuite, une fois ces six contrôles passés, et reste elle aussi une décision du cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre une comparaison reproductible et une appréciation qui engage le dossier.
 
 <figure data-blog-proof="saisie-six-controles">
   <img src="/proofs/blog/saisie-six-controles.webp" alt="Six contrôles de saisie dans leur ordre fixe, arrêtés sur un écart de montants fictif." width="1600" height="900" loading="lazy" decoding="async">
@@ -148,23 +148,23 @@ Ces refus ont un coût visible, des lignes dans une file, et c’est exactement 
 | Les contrôles de cohérence, de période et de doublon | La création d’une fiche fournisseur | Le choix d’imputation d’un achat inhabituel |
 | Le classement des anomalies par motif | La clôture d’un lot dont la file est vide | La relation avec le client pour une pièce manquante |
 
-## Le jeu fictif : cinquante pièces inventées
+## Le scénario fictif : cinquante pièces inventées
 
-Cinquante pièces inventées suffisent à éprouver la règle avant qu’elle ne touche un dossier réel. Le jeu est construit pour contenir ses propres pièges : trente-deux factures de fournisseurs récurrents, six factures de fournisseurs jamais vus, quatre photos de tickets dont deux coupées, trois factures datées de la période précédente, deux exemplaires de la même facture reçus par deux canaux, deux notes de frais sans justificatif lisible, et un avoir.
+Cinquante pièces inventées décrivent ici un scénario de recette avant qu’une règle ne touche un dossier réel. Ce scénario contient ses propres pièges : trente-deux factures de fournisseurs récurrents, six factures de fournisseurs jamais vus, quatre photos de tickets dont deux coupées, trois factures datées de la période précédente, deux exemplaires de la même facture reçus par deux canaux, deux notes de frais sans justificatif lisible, et un avoir. Les visuels ci-dessus montrent les sorties attendues de la règle ; ils ne constituent ni un logiciel exécuté ni une mesure obtenue sur cinquante fichiers.
 
-Sur ce jeu, la règle produit ce qu’on attend d’elle. Les trente-deux récurrentes ressortent en écritures proposées, imputation habituelle comprise, dont une signalée parce que le montant sort de l’ordinaire chez ce fournisseur. Les six inconnues attendent une fiche, qu’aucun automatisme ne crée. Les deux tickets coupés partent en pièce incomplète, les deux autres passent. Les trois factures de la période précédente sont conservées pour leur période, et non rejetées. Le doublon est proposé au rapprochement, jamais supprimé. Les deux notes de frais et l’avoir remontent avec leur motif. Le reliquat de ce lot appartient à ce lot : il ne dit rien du dossier d’à côté, et c’est pour cela qu’on le recompte à chaque période.
+Le résultat attendu s’écrit avant le test : les trente-deux récurrentes doivent ressortir en écritures proposées, dont une signalée parce que le montant sort de l’ordinaire chez ce fournisseur. Les six inconnues doivent attendre une création de fiche par une personne. Les deux tickets coupés doivent partir en pièce incomplète, les deux autres passer. Les trois factures de la période précédente doivent rester affectées à leur période. Le doublon doit être proposé au rapprochement, jamais supprimé. Les deux notes de frais et l’avoir doivent remonter avec leur motif. Lors d’une mise en œuvre réelle, ces attentes deviennent des cas reproductibles, exécutés ligne par ligne ; le reliquat mesuré appartient alors uniquement au lot rejoué.
 
 ## Quel cadre pour les pièces, la facture électronique et les données ?
 
 Une pièce lue n’est pas une pièce valable. Une facture reste un document dont le contenu est encadré : selon Service-Public, pour être conforme aux règles de facturation, une facture doit obligatoirement [comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique](https://entreprendre.service-public.gouv.fr/vosdroits/F31808). Une lecture automatique peut constater l’absence d’un numéro ou d’une date ; elle ne peut pas décider que la pièce est régulière. Le contrôle des mentions se conçoit donc comme un signalement, jamais comme un verdict.
 
-La bascule vers la facture électronique déplace ce travail sans le supprimer. La même administration note que [la facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie](https://entreprendre.service-public.gouv.fr/vosdroits/F39785) : une facture n’est plus seulement reçue, elle porte des états qui se suivent. Ce suivi est précisément le genre de tâche qu’un cabinet gagne à écrire comme une règle, avec ses déclencheurs et ses exceptions, plutôt qu’à tenir de mémoire.
+Pour les flux concernés, la facture électronique déplace ce travail sans le supprimer. La même administration note que [la facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie](https://entreprendre.service-public.gouv.fr/vosdroits/F39785). La fiche distingue l’obligation de réception au 1er septembre 2026 du calendrier d’émission, qui dépend de la taille de l’entreprise et des opérations concernées. Avant d’automatiser, le cabinet détermine donc quels flux et quelles échéances s’appliquent au dossier ; la règle suit ensuite les états de ces seules factures.
 
-Le traitement des anomalies change lui aussi de nature. La même fiche décrit la possibilité, pour l’entreprise, [de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)](https://entreprendre.service-public.gouv.fr/vosdroits/F39785). La file interne du cabinet et ce signalement ne se confondent pas : la première sert à trier ce que la lecture n’a pas su traiter, le second engage la relation avec le fournisseur. Les deux gagnent à partager les mêmes motifs, pour qu’une anomalie interne devienne, le cas échéant, un signalement documenté.
+Le traitement des anomalies change lui aussi de nature. La même fiche décrit la possibilité, pour l’entreprise, [de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)](https://entreprendre.service-public.gouv.fr/vosdroits/F39785). La file interne du cabinet et ce signalement ne se confondent pas : la première sert à trier ce que la lecture n’a pas su traiter, le second engage la relation avec le fournisseur. Une règle peut préparer le motif et les pièces utiles, mais une personne décide si l’anomalie devient un signalement externe.
 
-La pièce, elle, se conserve. Service-Public rappelle que les livres, registres, [documents ou pièces sur lesquels peuvent s’exercer les droits de communication, d’enquête et de contrôle de l’administration doivent être conservés](https://entreprendre.service-public.gouv.fr/vosdroits/F10029) pendant une durée déterminée. Une chaîne de saisie automatisée précise donc où vit l’original, où vit l’image lue, et lequel des deux fait foi : la question se tranche au cadrage, pas au moment d’un contrôle.
+La pièce, elle, se conserve. Service-Public rappelle que les livres, registres, [documents ou pièces sur lesquels peuvent s’exercer les droits de communication, d’enquête et de contrôle de l’administration doivent être conservés](https://entreprendre.service-public.gouv.fr/vosdroits/F10029). La même fiche distingue notamment les pièces justificatives comptables, conservées dix ans à compter de la clôture de l’exercice, et certains documents relevant du contrôle fiscal, conservés six ans selon leur propre point de départ. Une chaîne de saisie ne remplace pas cette qualification : elle associe chaque catégorie à sa durée, garde l’accès au document requis et documente séparément les copies de travail.
 
-Enfin, une facture porte presque toujours des données personnelles : un nom de contact, une adresse, parfois un identifiant bancaire. La CNIL le pose simplement : [une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable](https://www.cnil.fr/fr/definition/donnee-personnelle). Un service de lecture hébergé chez un tiers traite donc ces données pour le compte du cabinet, ce qui suppose un contrat, une durée de conservation écrite et un périmètre réduit à ce que la lecture exige. C’est à ces limites qu’on reconnaît une automatisation que le cabinet peut assumer devant ses clients.
+Enfin, une facture peut porter des données personnelles : un nom de contact, une adresse, parfois un identifiant bancaire. La CNIL le pose simplement : [une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable](https://www.cnil.fr/fr/definition/donnee-personnelle). La présence de ces données ne suffit pas à qualifier automatiquement les rôles du cabinet, de son client et du service de lecture. Avant le branchement, ils sont déterminés traitement par traitement selon les finalités et les moyens ; les accès, la durée de conservation et le périmètre transmis sont ensuite écrits dans le cadre contractuel applicable.
 
 ## Les erreurs fréquentes
 
@@ -183,7 +183,7 @@ Non, et pas pour une raison de qualité de lecture : pour une raison de responsa
 
 ### Comment traiter une facture reçue en double par deux canaux ?
 
-En la rapprochant, jamais en la supprimant d’office. Le couple fournisseur et numéro suffit à détecter le cas ; la décision d’écarter l’un des deux exemplaires appartient à une personne, parce qu’un même numéro peut aussi désigner deux pièces réellement différentes.
+En la signalant comme doublon probable, jamais en la supprimant d’office. Le couple fournisseur et numéro constitue un premier indice ; la date, le montant, le contenu et l’identifiant de la pièce complètent la comparaison. Une personne décide ensuite d’écarter ou non un exemplaire, car un numéro identique peut aussi désigner deux pièces réellement différentes.
 
 ### Que faire d’une pièce datée de la période précédente ?
 
@@ -199,7 +199,7 @@ Elle en réduit le périmètre là où elle s’applique, puisque les données a
 
 ## La règle à retenir
 
-Une extraction n’est pas une vérification. Six contrôles dans un ordre fixe, quatre déterministes et deux qui demandent une décision, une file d’anomalies à motifs fermés, une validation avant chaque enregistrement, et un reliquat qu’on recompte à chaque période plutôt qu’on ne l’affiche.
+Une extraction n’est pas une vérification. Six contrôles dans un ordre fixe préparent des alertes, les cas ambigus et l’imputation restent décidés par une personne, chaque enregistrement attend une validation, et le reliquat n’est mesuré qu’après le rejeu effectif d’un lot reproductible.
 
 ## Pour aller plus loin
 
