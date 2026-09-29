@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
-import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH } from '../../scripts/lib/blog-pipeline.mjs';
+import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
 import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -341,6 +341,17 @@ test('la forge ne réutilise que des copies intègres, âgées de sept jours au 
     assert.equal(appels - avant, 1, 'la copie locale divergente impose une nouvelle lecture');
     const dates = new Map([[recette().sources[0].id, hier], [recette().sources[1].id, jour], [recette().sources[2].id, jour]]);
     assert.equal(construireManifest(recette(), 'pret-preview', jour, null, dates).sourcesVerifiedAt, hier, 'la date du manifeste borne la source la plus ancienne');
+    assert.equal(jourRecuperationParis('2026-02-30T12:00:00.000Z'), null, 'le 30 février ne se normalise pas en date de preuve');
+    modifierPreuve({ checkedAt: '2026-03-02', retrievedAt: '2026-02-30T12:00:00.000Z' });
+    const fauxGate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(fauxGate.errors.some((error) => /retrievedAt.*Europe\/Paris/.test(error)), fauxGate.errors.join('\n'));
+    for (const source of recette().sources.slice(1)) {
+      const path = join(dossier, `${source.id}.json`);
+      writeFileSync(path, JSON.stringify({ ...JSON.parse(readFileSync(path)), checkedAt: '2026-03-02', retrievedAt: '2026-03-02T12:00:00.000Z' }));
+    }
+    const appelsAvantFaux = appels;
+    await forge.verifierSources({ root, slug: SLUG, recette: recette(), dossierRecette: join(root, 'editorial/recettes', SLUG), jour: '2026-03-03', fetcher: compter });
+    assert.equal(appels - appelsAvantFaux, 1, 'une date impossible impose une nouvelle ouverture');
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 

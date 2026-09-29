@@ -65,9 +65,11 @@ export const CANDIDATS_PAR_SEMAINE_MAX = 4;
 export const PUBLICATION_SEAL_PATH = 'preuves/publication.json';
 /** La date déclarée est celle du calendrier de publication en Europe/Paris, pas la date UTC du fetch. */
 export function jourRecuperationParis(retrievedAt) {
-  if (typeof retrievedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/.test(retrievedAt)) return null;
+  if (typeof retrievedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(retrievedAt)) return null;
   const instant = Date.parse(retrievedAt);
   if (!Number.isFinite(instant) || instant > Date.now()) return null;
+  const canonique = new Date(instant).toISOString();
+  if (retrievedAt !== canonique && retrievedAt !== canonique.replace('.000Z', 'Z')) return null;
   const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
     timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit',
   }).formatToParts(instant).map(({ type, value }) => [type, value]));
