@@ -25,7 +25,7 @@ import { couleursDuBrief, verifierBriefPalette, verifierParts, SEUILS_PALETTE } 
 import { mesurerPalette } from './mesurer-palette.mjs';
 import {
   BLOG_SKILLS, SEO_SKILLS, CORE_BLOG_SKILLS, CORE_SEO_SKILLS, REVIEW_CRITERIA, CLAIM_TYPES,
-  PUBLICATION_SEAL_PATH, contexteDeCitation, verifierPlafonds, verifySource,
+  PUBLICATION_SEAL_PATH, contexteDeCitation, verifierPlafonds, verifySource, jourRecuperationParis,
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
 import { retirerPreuvesInline } from './lib/blog-proof-figures.mjs';
@@ -235,8 +235,7 @@ function preuveSourceReutilisable(preuve, source, dossier, slug, jour) {
     || preuve.method !== null || !Number.isInteger(preuve.httpStatus) || preuve.httpStatus < 200 || preuve.httpStatus >= 300
     || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.checkedAt ?? '')
     || !Number.isInteger(ageSource(preuve.checkedAt, jour)) || ageSource(preuve.checkedAt, jour) < 0 || ageSource(preuve.checkedAt, jour) > 7
-    || !Number.isFinite(Date.parse(preuve.retrievedAt)) || Date.parse(preuve.retrievedAt) > Date.now()
-    || ![0, 1].includes(ageSource(new Date(preuve.retrievedAt).toISOString().slice(0, 10), preuve.checkedAt))
+    || jourRecuperationParis(preuve.retrievedAt) !== preuve.checkedAt
     || preuve.contentPath !== `preuves/sources/${source.id}.source.txt`) return false;
   const copiePath = join(dossier, preuve.contentPath);
   if (!existsSync(copiePath)) return false;

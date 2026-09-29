@@ -313,6 +313,13 @@ test('la forge ne réutilise que des copies intègres, âgées de sept jours au 
     modifierPreuve({ retrievedAt: `${hier}T22:22:17Z` });
     await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
     assert.equal(appels, 3, '22h22 UTC la veille est le même jour civil à Paris, pas un second fetch');
+    const borne = new Date(Date.parse(`${jour}T00:00:00Z`) - 7 * 86_400_000).toISOString().slice(0, 10);
+    const avantBorne = new Date(Date.parse(`${jour}T00:00:00Z`) - 8 * 86_400_000).toISOString().slice(0, 10);
+    modifierPreuve({ checkedAt: borne, retrievedAt: `${avantBorne}T00:00:00.000Z` });
+    const gateFalsifie = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(gateFalsifie.errors.some((error) => /retrievedAt.*Europe\/Paris/.test(error)), gateFalsifie.errors.join('\n'));
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels, 4, 'une date UTC antérieure sans correspondance Paris ne prolonge pas la fraîcheur réelle');
     for (const age of [7, 8, -1]) {
       const date = new Date(Date.parse(`${jour}T00:00:00Z`) - age * 86_400_000).toISOString().slice(0, 10);
       modifierPreuve({ checkedAt: date, retrievedAt: `${date}T12:00:00.000Z` });

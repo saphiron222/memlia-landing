@@ -63,6 +63,16 @@ export const CANDIDATS_PAR_JOUR_MAX = 2;
 export const CANDIDATS_PAR_SEMAINE_MAX = 4;
 /** Reçu de publication : le dossier est scellé sur ses octets le jour de la mise en ligne. */
 export const PUBLICATION_SEAL_PATH = 'preuves/publication.json';
+/** La date déclarée est celle du calendrier de publication en Europe/Paris, pas la date UTC du fetch. */
+export function jourRecuperationParis(retrievedAt) {
+  if (typeof retrievedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/.test(retrievedAt)) return null;
+  const instant = Date.parse(retrievedAt);
+  if (!Number.isFinite(instant) || instant > Date.now()) return null;
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(instant).map(({ type, value }) => [type, value]));
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
 /** Semaine ISO 8601 d'une date AAAA-MM-JJ, sous la forme AAAA-Wnn. */
 export function semaineIso(value) {
   const date = new Date(`${value}T00:00:00Z`);
@@ -835,10 +845,8 @@ function validateSources(manifest, dossier, expected) {
     if (source.provenance === 'secondary' && proof.upstreamUrl === proof.finalUrl) errors.push(`${label}.upstreamUrl doit nommer une source primaire distincte pour une source secondary.`);
     if (proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
     if (proof.checkedAt !== source.checkedAt) errors.push(`${label}.checkedAt doit être identique à la date de la source.`);
-    const retrieved = Date.parse(proof.retrievedAt);
-    const civilGap = (Date.parse(`${proof.checkedAt}T00:00:00Z`) - Date.parse(`${new Date(Number.isFinite(retrieved) ? retrieved : 0).toISOString().slice(0, 10)}T00:00:00Z`)) / 86_400_000;
-    if (!Number.isFinite(retrieved) || retrieved > Date.now() || ![0, 1].includes(civilGap)) {
-      errors.push(`${label}.retrievedAt doit dater l'ouverture réelle, non future (décalage UTC/civil de 0 à 1 jour).`);
+    if (jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
+      errors.push(`${label}.retrievedAt doit dater l'ouverture réelle, non future, au jour civil Europe/Paris de checkedAt.`);
     }
     const snapshotPath = isSafeRelativePath(dossier, proof.contentPath);
     if (!snapshotPath || !existsSync(snapshotPath)) {
