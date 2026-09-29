@@ -1,54 +1,49 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "reviewedAt": "2026-09-20",
-  "reviewer": "relecteur-qualite-ia-memlia",
+  "reviewedAt": "2026-09-29",
+  "reviewer": "metier:t_14797d6b",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 98,
+  "score": 92,
   "p0": 0,
   "categories": {
     "contentQuality": {
-      "score": 28,
+      "score": 27,
       "max": 30
     },
     "seoOptimization": {
-      "score": 25,
+      "score": 23,
       "max": 25
     },
     "eeatSignals": {
-      "score": 15,
+      "score": 14,
       "max": 15
     },
     "technicalElements": {
-      "score": 15,
+      "score": 14,
       "max": 15
     },
     "aiCitationReadiness": {
-      "score": 15,
+      "score": 14,
       "max": 15
     }
   },
   "evidence": [
-    "Schema JSON-LD complet sur la page rendue : BlogPosting, Person (Kevin Kitanga, avec bio et lien /a-propos), Organization (Memlia, SIREN 108621541, adresse Paris 8e), BreadcrumbList et WebSite.",
-    "Les cinq claims sourcés du paquet de revue sont vérifiés mot pour mot dans les copies locales (.source.txt) des quatre sources tier-1 citées, sans écart de portée ni de polarité.",
-    "Hiérarchie de titres propre sur toute la page : un seul h1, puis des h2, avec des h3 réservés à la FAQ — aucun saut de niveau relevé.",
-    "9 liens internes contextuels au total (7 dans le corps : glossaire x3, article frère, article pilier, /methode, /automatisation-cabinet-comptable ; 2 dans le bloc de clôture) et 4 liens externes tier-1, dans les fourchettes recommandées par le barème.",
-    "Image de couverture servie en AVIF/WebP avec srcset 768/1200/1600w, loading=\"eager\" et fetchpriority=\"high\" sur l'image LCP (pas de lazy-loading fautif), alt de 121 caractères.",
-    "Maillage bidirectionnel vérifié par grep : l'article pilier (automatiser-un-cabinet-comptable-la-carte-des-taches.html) et l'article frère (automatiser-la-relance-des-pieces-clients.html) renvoient tous deux vers cet article, et réciproquement.",
-    "Zéro tiret cadratin, zéro chiffre de gain, zéro mention de donnée client et zéro occurrence du mot « module » dans le corps de l'article ; le jeu de test est explicitement qualifié de « fictif ».",
-    "Plusieurs phrases s'enchaînent par point-virgule sur cinq ou six propositions (ex. l'ouverture de Brique 2 : « On vérifie d'abord que... puis que... puis que... »), ce qui allonge la longueur moyenne de phrase au-delà des ~22 mots recommandés pour la lisibilité."
+    "Cinq couples citation/source vérifiés dans leur portée sur quatre pages officielles ouvertes le 29/09/2026 et leurs copies locales SHA concordants.",
+    "Scénario TEST-050 attendu non exécuté et visuels indiquant explicitement l’absence de mesure ; date de mise à jour 29/09/2026 dans recette, frontmatter et preview.",
+    "Deux figures statiques dans le corps, sans défilement horizontal ni légende technique ; renderer --check 14/14 conforme."
   ],
   "reservations": [
-    "Le score Lighthouse (LCP/INP/CLS réels) n'a pas été mesuré : seule la présence de signaux favorables dans le code (CSS inliné, polices préchargées, fetchpriority sur le hero) a été vérifiée, pas leur effet chiffré.",
-    "La citabilité IA réelle (apparition effective dans une réponse Google AI Overviews, ChatGPT ou Perplexity) n'a pas été testée ; seule la structure extractible du HTML a été évaluée.",
-    "La page porte <meta name=\"robots\" content=\"noindex, follow\"> et le bandeau « Candidat éditorial — preview privée, non publiable » : identiques sur les 6 fichiers de .qa/render-tous/blog/, donc un artefact du harnais de rendu QA plutôt qu'un réglage propre à cet article — à confirmer absent une fois l'URL publiée en production.",
-    "La lisibilité (Flesch ou équivalent français) n'a pas été calculée par un outil ; l'appréciation de densité de phrase reste qualitative."
+    "La prévisualisation est encore un brouillon noindex ; indexabilité et contenu effectivement servis restent à constater après scellement, CI exacte et livraison.",
+    "Le jeu fictif de cinquante pièces est un scénario attendu, sans trace de rejeu logiciel ni reliquat observé : ne jamais en tirer un résultat mesuré.",
+    "Les reçus dérivés business-review et publication historique sont encore FAIL/obsolètes tant que le responsable n’a pas rematérialisé puis scellé le candidat ; cet avis ne les valide pas rétroactivement.",
+    "Le score est une appréciation éditoriale de cette revue IA, ni un Lighthouse mesuré ni une prédiction de classement ou de citation."
   ],
-  "verdict": "Article rigoureusement sourcé (5/5 claims vérifiées soutient) et structuré pour l'extraction humaine et IA (98/100) ; publiable tel quel sous la seule réserve de confirmer, hors de cet artefact de preview QA, que la page finale ne sera pas en noindex.",
+  "verdict": "Revue IA indépendante favorable au candidat exact, sous portes techniques distinctes de scellement, QA, CI et constat de production.",
   "subject": {
     "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "articleSha256": "b53e32e3210a41188f2a6569efe70e2f1070807e9841dd975ebfaf7d176fdc25",
-    "manifestSha256": "7c9318a7b271910bbde80e8bde6a724ba4fef42a1fd48dd87255af9ad005de77"
+    "articleSha256": "4ef877440ccd0d6d8c794f5566c08194e93379903279196cfab527d7b15972ba",
+    "manifestSha256": "79974ae8b236a0b81ee0eb1f9bda2e92d88e99ed9a042850ea966512e9c8a25f"
   }
 }

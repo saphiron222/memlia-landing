@@ -2,10 +2,10 @@
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "image-visual-review",
-  "status": "FAIL",
+  "status": "PASS",
   "checkedAt": "2026-09-29",
-  "articleSha256": "d3d363b8e0b3d4d6df2aa7fd78202e41626c69ddf1e86a3567ad41a747817bf4",
-  "manifestSha256": "22b98ba8815f495ce0bc6c77fbe45686020dd7a19fff6ec692bd3397a3c95864",
+  "articleSha256": "4ef877440ccd0d6d8c794f5566c08194e93379903279196cfab527d7b15972ba",
+  "manifestSha256": "79974ae8b236a0b81ee0eb1f9bda2e92d88e99ed9a042850ea966512e9c8a25f",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
@@ -47,44 +47,44 @@
   "criteria": [
     {
       "id": "brief-six-components",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "Brief de couverture à sujet, composition, style, palette, interdits et alt dans recette.json ; les deux figures ont une recette HTML figée distincte."
       ]
     },
     {
       "id": "generation-constraints",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "Couverture inspectée : diorama sans texte lisible, personne, données client ni faux écran ; les figures HTML ne prétendent pas être des captures d’un logiciel opérationnel."
       ]
     },
     {
       "id": "fictive-provenance",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "Les figures affichent TEST-050, scénario fictif, sortie attendue et non exécutée ; contrat et recette donnent source fictive et date de capture au 29/09/2026."
       ]
     },
     {
       "id": "recognizable-subject",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "Couverture montrant lecture de feuilles et tri en deux plateaux ; figures lisibles : contrôle arrêté sur période précédente et ticket coupé à qualifier."
       ]
     },
     {
       "id": "technical-derivatives",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "Les deux WebP présents correspondent aux SHA du manifeste et le renderer --check a confirmé quatorze preuves conformes ; images inline directes 1600×900 dans la preview."
       ]
     },
     {
       "id": "alt-information",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Revue image non exécutée."
+        "Les deux alt dans recette, contrat et HTML décrivent facture de période précédente et ticket coupé, sans ancien écart arithmétique ; alt de la couverture décrit les objets visibles."
       ]
     }
   ]
