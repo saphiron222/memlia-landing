@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
-import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH } from '../../scripts/lib/blog-pipeline.mjs';
+import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
 import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -265,6 +265,186 @@ test('la forge rafraîchit la preuve source quand sa classification change le m�
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('le report conserve les copies vérifiées mais date les claims et les revues du candidat', async (t) => {
+  const root = racineDeTest();
+  const veille = new Date(Date.parse(`${jour}T00:00:00Z`) - 86_400_000).toISOString().slice(0, 10);
+  let appels = 0;
+  const compter = async (...args) => { appels += 1; return fetcher(...args); };
+  try {
+    const mesures = join(root, 'docs/strategy/site-v3/mesures');
+    writeFileSync(join(mesures, `questions-${veille}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, veille));
+    t.mock.timers.enable({ apis: ['Date'], now: Date.parse(`${veille}T12:00:00Z`) });
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour: veille });
+    const dossier = join(root, 'editorial/articles', SLUG);
+    const preuvePath = join(dossier, 'preuves/sources/cnil-durees.json');
+    const preuveAvant = readFileSync(preuvePath, 'utf8');
+    t.mock.timers.setTime(Date.parse(`${jour}T12:00:00Z`));
+    const resultat = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels, 3, 'aucun nouvel appel réseau sur les trois sources');
+    assert.equal(readFileSync(preuvePath, 'utf8'), preuveAvant, 'la date de récupération reste authentique');
+    assert.equal(resultat.manifest.sourcesVerifiedAt, veille);
+    assert.ok(resultat.manifest.sources.every((source) => source.checkedAt === veille));
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'claims.json'))).claims[0].checkedAt, jour);
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'review.json'))).checkedAt, jour);
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'preuves/business-review.json'))).checkedAt, jour);
+    const declassification = JSON.parse(readFileSync(join(dossier, 'preuves/sources/cnil-durees.classification.json')));
+    assert.equal(declassification.checkedAt, jour, 'la classification est revue sur le nouveau candidat');
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(!gate.errors.some((error) => /Fraîcheur sensible/.test(error)), gate.errors.join('\n'));
+  } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
+});
+
+test('une ouverture neuve à 22h UTC porte la date Paris jusque dans le gate', async (t) => {
+  const root = racineDeTest();
+  const candidat = '2026-09-29';
+  const mesures = join(root, 'docs/strategy/site-v3/mesures');
+  writeFileSync(join(mesures, `questions-${candidat}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, candidat));
+  const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+  const contenu = JSON.parse(readFileSync(recettePath));
+  contenu.date = candidat;
+  contenu.serp.date = candidat;
+  contenu.gsc.date = candidat;
+  writeFileSync(recettePath, JSON.stringify(contenu, null, 2));
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse('2026-09-28T22:22:17.185Z') });
+  try {
+    assert.equal(forge.aujourdhui(), '2026-09-29');
+    const resultat = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
+    const preuve = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'preuves/sources/cnil-durees.json')));
+    assert.equal(preuve.retrievedAt, '2026-09-28T22:22:17.185Z');
+    assert.equal(preuve.checkedAt, '2026-09-29');
+    assert.equal(resultat.manifest.sources[0].checkedAt, '2026-09-29');
+    assert.equal(resultat.manifest.sourcesVerifiedAt, '2026-09-29');
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(!gate.errors.some((error) => /retrievedAt.*Europe\/Paris|Fraîcheur sensible/.test(error)), gate.errors.join('\n'));
+  } finally {
+    t.mock.timers.reset();
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('une ouverture qui franchit minuit Paris interrompt la préparation avant les revues et reprend au jour réel', async (t) => {
+  const root = racineDeTest();
+  const veille = '2026-09-28';
+  const candidat = '2026-09-29';
+  const mesures = join(root, 'docs/strategy/site-v3/mesures');
+  writeFileSync(join(mesures, `questions-${veille}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, veille));
+  writeFileSync(join(mesures, `questions-${candidat}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, candidat));
+  const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+  const recetteInitiale = JSON.parse(readFileSync(recettePath));
+  writeFileSync(recettePath, JSON.stringify({ ...recetteInitiale, date: candidat, serp: { ...recetteInitiale.serp, date: candidat }, gsc: { ...recetteInitiale.gsc, date: candidat } }));
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse('2026-09-28T21:59:59.000Z') });
+  let appels = 0;
+  const fetchAuPassage = async (...args) => {
+    appels += 1;
+    t.mock.timers.setTime(Date.parse('2026-09-28T22:00:01.000Z'));
+    return fetcher(...args);
+  };
+  try {
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: fetchAuPassage, rendreImage }),
+      /jour civil Europe\/Paris.*nouvelle préparation.*revue/i,
+    );
+    const dossier = join(root, 'editorial/articles', SLUG);
+    assert.equal(appels, 1);
+    assert.equal(existsSync(join(dossier, 'review.json')), false, 'aucune revue datée de la veille ne doit être émise');
+    assert.equal(existsSync(join(dossier, 'claims.json')), false, 'aucun claim daté de la veille ne doit être émis');
+    const preuve = JSON.parse(readFileSync(join(dossier, 'preuves/sources/cnil-durees.json')));
+    assert.equal(preuve.checkedAt, candidat);
+    assert.equal(preuve.retrievedAt, '2026-09-28T22:00:01.000Z');
+    const resultat = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: fetchAuPassage, rendreImage });
+    assert.equal(appels, 3, 'la source déjà ouverte au nouveau jour conserve sa copie ; deux autres sources sont ouvertes');
+    assert.equal(resultat.manifest.sourcesVerifiedAt, candidat);
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'review.json'))).checkedAt, candidat);
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'claims.json'))).claims[0].checkedAt, candidat);
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(!gate.errors.some((error) => /Fraîcheur sensible|retrievedAt.*Europe\/Paris/.test(error)), gate.errors.join('\n'));
+  } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
+});
+
+test('minuit Paris entre le jour implicite et la garde interrompt sans produire de revue de la veille', async () => {
+  const root = racineDeTest();
+  const veille = '2026-09-28';
+  const mesures = join(root, 'docs/strategy/site-v3/mesures');
+  writeFileSync(join(mesures, `questions-${veille}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, veille));
+  const NativeDate = Date;
+  let lectures = 0;
+  try {
+    globalThis.Date = class HorlogeFrontiere extends NativeDate {
+      constructor(...args) {
+        super(...(args.length ? args : [++lectures === 1 ? '2026-09-28T21:59:59Z' : '2026-09-28T22:00:01Z']));
+      }
+      static now() { return NativeDate.parse('2026-09-28T22:00:01Z'); }
+    };
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage }),
+      /jour civil Europe\/Paris.*nouvelle préparation.*revue/i,
+    );
+    assert.ok(lectures >= 2, 'la barrière a réellement vu les deux jours Paris');
+    const dossier = join(root, 'editorial/articles', SLUG);
+    assert.equal(existsSync(join(dossier, 'review.json')), false);
+    assert.equal(existsSync(join(dossier, 'claims.json')), false);
+  } finally {
+    globalThis.Date = NativeDate;
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification', async () => {
+  const root = racineDeTest();
+  let appels = 0;
+  const compter = async (...args) => { appels += 1; return fetcher(...args); };
+  const dossier = join(root, 'editorial/articles', SLUG, 'preuves/sources');
+  const preuvePath = join(dossier, 'cnil-durees.json');
+  try {
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    const originale = JSON.parse(readFileSync(preuvePath));
+    const modifierPreuve = (values) => writeFileSync(preuvePath, JSON.stringify({ ...originale, ...values }));
+    const hier = new Date(Date.parse(`${jour}T00:00:00Z`) - 86_400_000).toISOString().slice(0, 10);
+    modifierPreuve({ retrievedAt: `${hier}T22:22:17Z` });
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels, 3, '22h22 UTC la veille est le même jour civil à Paris, pas un second fetch');
+    const borne = new Date(Date.parse(`${jour}T00:00:00Z`) - 7 * 86_400_000).toISOString().slice(0, 10);
+    const avantBorne = new Date(Date.parse(`${jour}T00:00:00Z`) - 8 * 86_400_000).toISOString().slice(0, 10);
+    modifierPreuve({ checkedAt: borne, retrievedAt: `${avantBorne}T00:00:00.000Z` });
+    const gateFalsifie = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(gateFalsifie.errors.some((error) => /retrievedAt.*Europe\/Paris/.test(error)), gateFalsifie.errors.join('\n'));
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels, 4, 'une date UTC antérieure sans correspondance Paris ne prolonge pas la fraîcheur réelle');
+    for (const age of [7, 8, -1]) {
+      const date = new Date(Date.parse(`${jour}T00:00:00Z`) - age * 86_400_000).toISOString().slice(0, 10);
+      modifierPreuve({ checkedAt: date, retrievedAt: `${date}T12:00:00.000Z` });
+      const avant = appels;
+      await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+      assert.equal(appels - avant, age === 7 ? 0 : 1, `âge ${age}`);
+    }
+    for (const values of [{ contentSha256: '0'.repeat(64) }, { httpStatus: 429 }, { excerpt: 'autre extrait' }, { finalUrl: 'https://www.cnil.fr/fr/autre' }, { classificationReason: 'autre classement' }, { retrievedAt: null }]) {
+      modifierPreuve(values);
+      const avant = appels;
+      await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+      assert.equal(appels - avant, 1, JSON.stringify(values));
+    }
+    const copie = join(dossier, 'cnil-durees.source.txt');
+    modifierPreuve({});
+    writeFileSync(copie, 'copie falsifiée');
+    const avant = appels;
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels - avant, 1, 'la copie locale divergente impose une nouvelle lecture');
+    const dates = new Map([[recette().sources[0].id, hier], [recette().sources[1].id, jour], [recette().sources[2].id, jour]]);
+    assert.equal(construireManifest(recette(), 'pret-preview', jour, null, dates).sourcesVerifiedAt, hier, 'la date du manifeste borne la source la plus ancienne');
+    assert.equal(jourRecuperationParis('2026-02-30T12:00:00.000Z'), null, 'le 30 février ne se normalise pas en date de preuve');
+    modifierPreuve({ checkedAt: '2026-03-02', retrievedAt: '2026-02-30T12:00:00.000Z' });
+    const fauxGate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(fauxGate.errors.some((error) => /retrievedAt.*Europe\/Paris/.test(error)), fauxGate.errors.join('\n'));
+    for (const source of recette().sources.slice(1)) {
+      const path = join(dossier, `${source.id}.json`);
+      writeFileSync(path, JSON.stringify({ ...JSON.parse(readFileSync(path)), checkedAt: '2026-03-02', retrievedAt: '2026-03-02T12:00:00.000Z' }));
+    }
+    const appelsAvantFaux = appels;
+    await forge.verifierSources({ root, slug: SLUG, recette: recette(), dossierRecette: join(root, 'editorial/recettes', SLUG), jour: '2026-03-03', fetcher: compter });
+    assert.equal(appels - appelsAvantFaux, 1, 'une date impossible impose une nouvelle ouverture');
+  } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
 test('la réinscription d’un candidat existant ne contourne pas le plafond des Cicatrices', async () => {

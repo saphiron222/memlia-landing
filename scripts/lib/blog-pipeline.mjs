@@ -63,6 +63,18 @@ export const CANDIDATS_PAR_JOUR_MAX = 2;
 export const CANDIDATS_PAR_SEMAINE_MAX = 4;
 /** Reçu de publication : le dossier est scellé sur ses octets le jour de la mise en ligne. */
 export const PUBLICATION_SEAL_PATH = 'preuves/publication.json';
+/** La date déclarée est celle du calendrier de publication en Europe/Paris, pas la date UTC du fetch. */
+export function jourRecuperationParis(retrievedAt) {
+  if (typeof retrievedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(retrievedAt)) return null;
+  const instant = Date.parse(retrievedAt);
+  if (!Number.isFinite(instant) || instant > Date.now()) return null;
+  const canonique = new Date(instant).toISOString();
+  if (retrievedAt !== canonique && retrievedAt !== canonique.replace('.000Z', 'Z')) return null;
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(instant).map(({ type, value }) => [type, value]));
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
 /** Semaine ISO 8601 d'une date AAAA-MM-JJ, sous la forme AAAA-Wnn. */
 export function semaineIso(value) {
   const date = new Date(`${value}T00:00:00Z`);
@@ -729,6 +741,7 @@ export async function verifySource({ root = process.cwd(), slug, sourceId, excer
     await dispatcher.close();
   }
   if (!body.includes(excerpt)) throw new Error('L’extrait fourni est absent de la réponse ouverte ; aucune preuve n’a été écrite.');
+  const retrievedAt = new Date().toISOString();
   const evidencePath = isSafeRelativePath(dossier, source.verificationEvidence);
   if (!evidencePath) throw new Error('verificationEvidence doit rester dans le dossier éditorial.');
   const contentPath = join(dirname(evidencePath), `${source.id}.source.txt`);
@@ -747,8 +760,8 @@ export async function verifySource({ root = process.cwd(), slug, sourceId, excer
     requestedUrl: source.url,
     finalUrl: response.url || currentUrl.href,
     httpStatus: response.status,
-    checkedAt: source.checkedAt,
-    retrievedAt: new Date().toISOString(),
+    checkedAt: jourRecuperationParis(retrievedAt),
+    retrievedAt,
     contentType: response.headers.get('content-type') ?? 'inconnu',
     contentPath: relative(dossier, contentPath),
     contentSha256: sha256(body),
@@ -835,6 +848,9 @@ function validateSources(manifest, dossier, expected) {
     if (source.provenance === 'secondary' && proof.upstreamUrl === proof.finalUrl) errors.push(`${label}.upstreamUrl doit nommer une source primaire distincte pour une source secondary.`);
     if (proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
     if (proof.checkedAt !== source.checkedAt) errors.push(`${label}.checkedAt doit être identique à la date de la source.`);
+    if (jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
+      errors.push(`${label}.retrievedAt doit dater l'ouverture réelle, non future, au jour civil Europe/Paris de checkedAt.`);
+    }
     const snapshotPath = isSafeRelativePath(dossier, proof.contentPath);
     if (!snapshotPath || !existsSync(snapshotPath)) {
       errors.push(`${label}.contentPath doit pointer vers une copie locale vérifiée de la source.`);
@@ -1188,10 +1204,9 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
 }
 
 function validateSensitiveFreshness(manifest, claims, review, skills, verifiedSources, dossier, sensitiveMatter, gateMode = 'production') {
-  if (!sensitiveMatter.sensitive) return [];
   const errors = [];
   const reviewDay = review?.checkedAt;
-  const today = new Date().toISOString().slice(0, 10);
+  const today = jourRecuperationParis(new Date().toISOString());
   if (gateMode === 'published-audit') {
     // Audit de conservation borné par validatePublishedAdoption, jamais fact-check frais.
     if (manifest.evidenceVerifiedAt !== reviewDay) errors.push('La date historique du dossier publié doit correspondre à sa revue conservée.');
@@ -1208,11 +1223,20 @@ function validateSensitiveFreshness(manifest, claims, review, skills, verifiedSo
   const requireReviewDay = (value, label) => {
     if (value !== reviewDay) errors.push(`Fraîcheur sensible : ${label} doit être vérifié le jour de la revue éditoriale (${reviewDay ?? 'absent'}), reçu ${value ?? 'absent'}.`);
   };
-  requireReviewDay(gateMode === 'published-audit' ? manifest?.evidenceVerifiedAt : manifest?.sourcesVerifiedAt, 'manifest.sourcesVerifiedAt');
-  for (const source of manifest?.sources ?? []) {
-    requireReviewDay(source?.checkedAt, `source ${source?.id ?? 'sans-id'}.checkedAt`);
-    requireReviewDay(verifiedSources.get(source?.id)?.proof?.checkedAt, `preuve source ${source?.id ?? 'sans-id'}.checkedAt`);
+  const sourceDates = (manifest?.sources ?? []).map((source) => source?.checkedAt);
+  if (gateMode === 'published-audit') {
+    requireReviewDay(manifest?.evidenceVerifiedAt, 'manifest.evidenceVerifiedAt');
+  } else if (manifest?.sourcesVerifiedAt !== [...sourceDates].sort()[0]) {
+    errors.push('Fraîcheur sensible : manifest.sourcesVerifiedAt doit dater la plus ancienne récupération source.');
   }
+  for (const source of manifest?.sources ?? []) {
+    if (gateMode !== 'published-audit') {
+      const age = (Date.parse(`${reviewDay}T00:00:00Z`) - Date.parse(`${source?.checkedAt}T00:00:00Z`)) / 86_400_000;
+      if (!Number.isInteger(age) || age < 0 || age > 7) errors.push(`Fraîcheur sensible : source ${source?.id ?? 'sans-id'} doit dater de 0 à 7 jours avant la revue (${reviewDay ?? 'absent'}).`);
+    }
+    if (verifiedSources.get(source?.id)?.proof?.checkedAt !== source?.checkedAt) errors.push(`Fraîcheur sensible : preuve source ${source?.id ?? 'sans-id'} doit dater de la récupération déclarée.`);
+  }
+  if (!sensitiveMatter.sensitive) return errors;
   for (const claim of Array.isArray(claims?.claims) ? claims.claims : []) {
     requireReviewDay(claim?.checkedAt, `claim ${claim?.id ?? 'sans-id'}.checkedAt`);
     requireReviewDay(claim?.factCheck?.checkedAt, `fact-check ${claim?.id ?? 'sans-id'}.checkedAt`);
