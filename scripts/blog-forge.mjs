@@ -244,7 +244,7 @@ function preuveSourceReutilisable(preuve, source, dossier, slug, jour) {
 }
 
 /** Vérifie chaque source par le vérificateur du pipeline (copie locale + empreinte), en suivant l'URL finale. */
-export async function verifierSources({ root, slug, recette, dossierRecette, jour, fetcher }) {
+export async function verifierSources({ root, slug, recette, dossierRecette, jour, fetcher, verifierJour }) {
   const dossier = join(root, 'editorial/articles', slug);
   let recetteModifiee = false;
   const datesSources = new Map();
@@ -260,6 +260,7 @@ export async function verifierSources({ root, slug, recette, dossierRecette, jou
         break;
       }
       await verifySource({ root, slug, sourceId: source.id, excerpt: source.excerpt, ...(fetcher ? { fetcher } : {}) });
+      verifierJour?.();
       const preuve = lireJson(evidencePath);
       if (preuve.finalUrl === source.url) { datesSources.set(source.id, preuve.checkedAt); break; }
       if (tentative === 1) throw new Error(`${source.id} : l'URL finale ${preuve.finalUrl} diverge encore après réécriture.`);
@@ -607,6 +608,10 @@ export function verifierRegleEcrite(corps, { date }) {
 }
 
 export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour = aujourdhui() }) {
+  const jourDebut = aujourdhui();
+  const refuserChangementDeJour = () => {
+    if (aujourdhui() !== jourDebut) throw new Error(`Le jour civil Europe/Paris a changé pendant la matérialisation (${jourDebut} → ${aujourdhui()}) : arrêter, reprendre une nouvelle préparation et obtenir une revue du candidat au jour réel. Ne pas sceller les fichiers partiels.`);
+  };
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
   const recettePath = join(dossierRecette, 'recette.json');
   let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
@@ -620,7 +625,8 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const manifest = construireManifest(recette, statut, jour, revuesValides);
   const manifestPath = join(dossier, 'manifest.json');
   ecrireJson(manifestPath, manifest);
-  const datesSources = await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher });
+  const datesSources = await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher, verifierJour: refuserChangementDeJour });
+  refuserChangementDeJour();
   // Les URL finales ont pu réécrire la recette : le manifeste est reconstruit depuis la recette à jour.
   revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
   revuesValides = revueErreurs.length ? null : revues;
@@ -723,6 +729,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
     criteresEditoriaux: REVIEW_CRITERIA, criteresImage: IMAGE_REVIEW_CRITERIA, image: { alt: recette.image.alt, cadre: recette.image.cadre, master: relative(root, join(dossier, 'preuves/image/master.png')) },
     identites: { auteur: 'kevin', reviewerEditorial: manifestFinal.reviewer, reviewerMetier: recette.businessReview.reviewerId, roleMetier: recette.businessReview.role },
   });
+  refuserChangementDeJour();
   return { erreurs, manifest: manifestFinal, sujet, dossier };
 }
 
