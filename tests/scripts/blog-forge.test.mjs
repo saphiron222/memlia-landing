@@ -195,7 +195,7 @@ test('le découpage en unités et les jetons suivent le pipeline', () => {
   assert.deepEqual(jetons('Les données personnelles ne peuvent pas être conservées'), ['donnees', 'personnelles', 'peuvent', 'conservees']);
 });
 
-test('les preuves inline portent source, date et région défilante accessible', () => {
+test('les nouvelles preuves inline gardent la provenance en recette et rendent une image directe', () => {
   const corps = '## Première section\n\nPhrase scellée.\n\n## Section cible\n\nSuite scellée.\n';
   const rendu = injecterPreuvesInline(corps, [{
     id: 'preuve-fictive',
@@ -208,8 +208,8 @@ test('les preuves inline portent source, date et région défilante accessible',
   assert.ok(rendu.includes('Suite scellée.'));
   assert.match(rendu, /<figure data-blog-proof="preuve-fictive">/);
   assert.match(rendu, /<img src="\/proofs\/blog\/preuve-fictive\.webp" alt="Une preuve fictive correctement décrite\."/);
-  assert.match(rendu, /role="region" aria-label="Preuve visuelle défilante : Une preuve fictive correctement décrite\." tabindex="0"/);
-  assert.match(rendu, /<figcaption>Source : jeu d’essai fictif décrit dans l’article · capture du 2026-09-20<\/figcaption>/);
+  assert.match(rendu, /<figure data-blog-proof="preuve-fictive">\s*<img/);
+  assert.doesNotMatch(rendu, /preuve-defilante|figcaption|Preuve visuelle défilante/);
   assert.doesNotMatch(rendu, /Ouvrir la preuve en grand/);
   assert.ok(rendu.indexOf('data-blog-proof') < rendu.indexOf('## Section cible'));
   assert.deepEqual(unitesRendues(rendu), unitesRendues(corps), 'une figure sourcée est une preuve visuelle, pas une affirmation éditoriale');

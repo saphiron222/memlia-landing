@@ -170,6 +170,46 @@ test('clause 1 — nouvelles figures sans légende refusées, ancien dossier ép
   }
 });
 
+test('clause 1 — image directe sans légende exige provenance liée à la recette', () => {
+  const root = fixture({ legendePreuve: null });
+  try {
+    const recipePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    const preuves = [1, 2].map((numero) => ({
+      id: `preuve-${numero}`, alt: `Preuve ${numero}`,
+      source: 'jeu fictif', capturedAt: '2026-09-20',
+    }));
+    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), pageArticle({ legendePreuve: null })
+      .replace('data-blog-proof>', 'data-blog-proof="preuve-1">')
+      .replace('data-blog-proof>', 'data-blog-proof="preuve-2">')
+      .replace('/preuves/1.webp', '/proofs/blog/preuve-1.webp')
+      .replace('/preuves/2.webp', '/proofs/blog/preuve-2.webp'));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'aucune provenance : refus');
+    writeFileSync(recipePath, JSON.stringify({ inlineProofs: preuves }));
+    assert.deepEqual(auditer(root).erreurs, []);
+    writeFileSync(recipePath, JSON.stringify({ inlineProofs: [{ ...preuves[0], source: '' }, preuves[1]] }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'provenance absente : refus');
+    writeFileSync(recipePath, JSON.stringify({ inlineProofs: [{ ...preuves[0], alt: 'autre preuve' }, preuves[1]] }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'alt divergent : refus');
+    writeFileSync(recipePath, JSON.stringify({ inlineProofs: preuves }));
+    const page = pageArticle({ legendePreuve: null })
+      .replace('data-blog-proof>', 'data-blog-proof="preuve-1">')
+      .replace('data-blog-proof>', 'data-blog-proof="preuve-2">')
+      .replace('/preuves/1.webp', '/proofs/blog/preuve-1.webp')
+      .replace('/preuves/2.webp', '/proofs/blog/preuve-2.webp');
+    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), page.replace(
+      '<img src="/proofs/blog/preuve-1.webp"',
+      '<div class="preuve-defilante"><img src="/proofs/blog/preuve-1.webp"',
+    ).replace('alt="Preuve 1"></figure>', 'alt="Preuve 1"></div></figure>'));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'panneau défilant : refus');
+    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), page);
+    writeFileSync(recipePath, JSON.stringify({ inlineProofs: [{ ...preuves[0], capturedAt: '2099-01-01' }, preuves[1]] }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'date future : refus');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('clause 2 — dès six H2, le sommaire porte toutes les ancres', () => {
   temoinClause(2, { sommaire: false });
 });

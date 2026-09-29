@@ -535,7 +535,7 @@ const echapperHtml = (texte) => String(texte)
 
 /**
  * Ajoute les preuves visuelles déclarées par la recette sans modifier son corps éditorial.
- * La source et la date de capture de la recette accompagnent la preuve sur la page publique.
+ * Source et date restent dans la recette ; la page expose l'image fixe sans légende technique.
  * Chaque insertion échoue fermée si le H2 d'ancrage a disparu : une preuve ne doit jamais
  * glisser silencieusement vers une section sans rapport après une réécriture.
  */
@@ -567,7 +567,7 @@ export function injecterPreuvesInline(corps, preuves = []) {
     if (!resultat.includes(ancre)) throw new Error(`Preuves inline : H2 d’ancrage absent « ${titre} ».`);
     const figures = groupe.map((preuve) => {
       const imagePath = `/proofs/blog/${preuve.id}.webp`;
-      return `<figure data-blog-proof="${preuve.id}">\n  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : ${echapperHtml(preuve.alt)}" tabindex="0"><img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async"></div>\n  <figcaption>Source : ${echapperHtml(preuve.source)} · capture du ${preuve.capturedAt}</figcaption>\n</figure>`;
+      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`;
     }).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }
