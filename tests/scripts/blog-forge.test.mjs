@@ -363,6 +363,34 @@ test('une ouverture qui franchit minuit Paris interrompt la préparation avant l
   } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
 });
 
+test('minuit Paris entre le jour implicite et la garde interrompt sans produire de revue de la veille', async () => {
+  const root = racineDeTest();
+  const veille = '2026-09-28';
+  const mesures = join(root, 'docs/strategy/site-v3/mesures');
+  writeFileSync(join(mesures, `questions-${veille}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, veille));
+  const NativeDate = Date;
+  let lectures = 0;
+  try {
+    globalThis.Date = class HorlogeFrontiere extends NativeDate {
+      constructor(...args) {
+        super(...(args.length ? args : [++lectures === 1 ? '2026-09-28T21:59:59Z' : '2026-09-28T22:00:01Z']));
+      }
+      static now() { return NativeDate.parse('2026-09-28T22:00:01Z'); }
+    };
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage }),
+      /jour civil Europe\/Paris.*nouvelle préparation.*revue/i,
+    );
+    assert.ok(lectures >= 2, 'la barrière a réellement vu les deux jours Paris');
+    const dossier = join(root, 'editorial/articles', SLUG);
+    assert.equal(existsSync(join(dossier, 'review.json')), false);
+    assert.equal(existsSync(join(dossier, 'claims.json')), false);
+  } finally {
+    globalThis.Date = NativeDate;
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification', async () => {
   const root = racineDeTest();
   let appels = 0;

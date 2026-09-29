@@ -607,8 +607,9 @@ export function verifierRegleEcrite(corps, { date }) {
   return erreurs;
 }
 
-export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour = aujourdhui() }) {
+export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour }) {
   const jourDebut = aujourdhui();
+  jour ??= jourDebut;
   const refuserChangementDeJour = () => {
     if (aujourdhui() !== jourDebut) throw new Error(`Le jour civil Europe/Paris a changé pendant la matérialisation (${jourDebut} → ${aujourdhui()}) : arrêter, reprendre une nouvelle préparation et obtenir une revue du candidat au jour réel. Ne pas sceller les fichiers partiels.`);
   };
