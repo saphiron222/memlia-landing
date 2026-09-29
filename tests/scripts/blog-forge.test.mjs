@@ -170,9 +170,10 @@ test('le rattrapage W39 est limité au slug signé du 27 au 29 septembre sans se
   verifierPlafonds([], '2026-09-28', { serie: 'cicatrices', slug });
   verifierPlafonds([], '2026-09-29', { serie: 'cicatrices', slug });
   verifierPlafonds([], '2026-09-26', { serie: 'cicatrices', slug: 'une-autre-cicatrice' });
-  for (const date of ['2026-09-30', '2026-10-04']) {
-    assert.throws(() => verifierPlafonds([], date, { serie: 'cicatrices', slug }), /paraît le samedi/);
+  for (const date of ['2026-10-03', '2026-10-10', '2026-09-30', '2026-10-04']) {
+    assert.throws(() => verifierPlafonds([], date, { serie: 'cicatrices', slug }), /rattrapage W39.*29\/09\/2026/);
   }
+  verifierPlafonds([], '2026-10-03', { serie: 'cicatrices', slug: 'une-autre-cicatrice' });
   assert.throws(() => verifierPlafonds([], '2026-09-27', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /paraît le samedi/);
   assert.throws(() => verifierPlafonds([], '2026-09-29', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /paraît le samedi/);
   assert.throws(() => verifierPlafonds([{ date: '2026-09-26', serie: 'cicatrices' }], '2026-09-27', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);

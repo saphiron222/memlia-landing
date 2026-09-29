@@ -89,8 +89,12 @@ export function verifierPlafonds(actifs, date, { serie = null, slug = null } = {
   const semaine = semaineIso(date);
   if (serie === 'cicatrices') {
     // Rattrapage signé W39 uniquement : les 28 et 29 sont en W40, sans doubler la W39.
-    const rattrapageW39 = (candidateSlug, candidateDate) => candidateSlug === 'tests-verts-et-regle-des-trois-passes'
+    const slugW39 = 'tests-verts-et-regle-des-trois-passes';
+    const rattrapageW39 = (candidateSlug, candidateDate) => candidateSlug === slugW39
       && ['2026-09-27', '2026-09-28', '2026-09-29'].includes(candidateDate);
+    if (slug === slugW39 && date > '2026-09-29') {
+      throw new Error(`Le rattrapage W39 de cette cicatrice s'arrête au 29/09/2026 ; nouveau cadrage requis pour ${date}.`);
+    }
     if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !rattrapageW39(slug, date)) {
       throw new Error(`Une cicatrice paraît le samedi ; ${date} n’est pas un samedi.`);
     }
