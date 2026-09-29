@@ -198,7 +198,7 @@ ${body}
 `;
 }
 
-export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {} } = {}) {
+export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {}, claimSourceForUnit = (manifest) => manifest.sources[0], claimTypeForUnit = () => 'paie' } = {}) {
   // A single UTC day for every correlated fixture artifact, sampled at creation rather than import.
   const fixtureDate = utcToday();
   const subjectArtifact = ({ slug: candidateSlug, kind, articleHash, manifestHash, extra = {} }) => ({
@@ -277,7 +277,7 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
     const snapshotPath = join(preuves, 'sources', `${source.id}.txt`);
     const excerpt = `Passage vérifié pour ${source.id} : les données sont contrôlées avant leur transmission.`;
     const citations = contentUnits.map((unit, index) => ({
-      text: `La source officielle confirme la règle suivante dans son contexte : « ${unit.text} » Cette citation circonscrit le point contrôlé sans en étendre la portée.`,
+      text: `La source confirme la règle suivante dans son contexte : « ${unit.text} » Cette citation circonscrit le point contrôlé sans en étendre la portée.`,
       line: index + 3,
     }));
     const snapshot = `${source.title}\n${excerpt}\n${citations.map((citation) => citation.text).join('\n')}\n`;
@@ -336,14 +336,14 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
   writeJson(join(dossier, 'skills.json'), skills);
 
   const claimRows = contentUnits.map((unit, index) => {
-    const source = manifest.sources[0];
+    const source = claimSourceForUnit(manifest, unit, index);
     const snapshot = sourceSnapshots.get(source.id);
     const citation = snapshot.citations[index];
     return {
       id: `claim-${unit.id}`,
       unitId: unit.id,
       claim: unit.text,
-      type: 'paie',
+      type: claimTypeForUnit(unit, index),
       sourceIds: [source.id],
       sourceExcerpts: { [source.id]: citation.text },
       checkedAt: fixtureDate,

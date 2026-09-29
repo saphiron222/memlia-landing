@@ -252,6 +252,53 @@ test('un éditeur officiel déclaré sur le domaine d’une autre autorité est 
   assert.ok(result.errors.some((error) => /incohérence domaine↔éditeur/i.test(error)), result.errors.join('\n'));
 });
 
+const DOCTEST_URL = 'https://docs.python.org/fr/3/library/doctest.html';
+const technicalDossier = (label, mutate = () => {}, claimType = 'methode') => createCompleteDossier(root(label), {
+  manifestMutator: (manifest) => {
+    Object.assign(manifest.sources[1], {
+      publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+      level: 'technical-primary', provenance: 'primary', official: false,
+      classificationReason: 'Documentation du projet Python, publiée par la Python Software Foundation, sur la portée des tests doctest.',
+      method: null,
+    });
+    mutate(manifest.sources[1]);
+  },
+  claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+  claimTypeForUnit: (_unit, index) => index === 1 ? claimType : 'paie',
+});
+
+test('la fixture de documentation primaire technique ouvre un claim methode sans officialité publique et ferme sur copie altérée', async () => {
+  const fixture = await technicalDossier('primary-technical');
+  const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+  assert.deepEqual(result.errors, []);
+  assert.equal(result.pass, true);
+
+  const { proofPath, proof } = sourceState(fixture, 'source-net-entreprises');
+  proof.contentSha256 = sha256('copie inventée');
+  writeJson(proofPath, proof);
+  const falsified = await validateDossier({ root: fixture.root, slug: fixture.slug });
+  assert.equal(falsified.pass, false);
+  assert.ok(falsified.errors.some((error) => /contentSha256.*copie locale/.test(error)), falsified.errors.join('\n'));
+});
+
+test('la catégorie technique refuse éditeur et domaine incohérents, UGC, auto-officialité, provenance secondaire et claim sensible', async () => {
+  for (const [label, mutate, type, expected] of [
+    ['publisher', (source) => { source.publisher = 'Auteur personnel'; }, 'methode', /domaine↔éditeur/],
+    ['domain', (source) => { source.url = 'https://example.org/fr/3/library/doctest.html'; source.upstreamUrl = source.url; }, 'methode', /documentation primaire technique/],
+    ['path', (source) => { source.url = 'https://docs.python.org/fr/3/library/unittest.html'; source.upstreamUrl = source.url; }, 'methode', /documentation primaire technique/],
+    ['ugc', (source) => { source.url = 'https://medium.com/@auteur/doctest'; source.upstreamUrl = source.url; }, 'methode', /Medium|documentation primaire technique/],
+    ['official', (source) => { source.official = true; }, 'methode', /official=true|official=false/],
+    ['secondary', (source) => { source.provenance = 'secondary'; source.upstreamUrl = 'https://www.python.org/'; }, 'methode', /provenance primary|source primaire technique/],
+    ['legal', () => {}, 'juridique', /primaire officielle/],
+    ['information', () => {}, 'information', /réservée aux claims methode/],
+  ]) {
+    const fixture = await technicalDossier(`technical-${label}`, mutate, type);
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(result.pass, false, `${label} accepté`);
+    assert.ok(result.errors.some((error) => expected.test(error)), `${label}: ${result.errors.join('\n')}`);
+  }
+});
+
 test('une source non officielle ou secondaire ne soutient pas un claim paie sensible', async () => {
   const fixture = await createCompleteDossier(root('sensitive-source-quality'), {
     manifestMutator: (manifest) => {
