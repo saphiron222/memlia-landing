@@ -164,20 +164,28 @@ test('les Cicatrices ont leur samedi hebdomadaire en sus des quatre articles ord
   assert.throws(() => verifierPlafonds(avecCicatrice, '2026-09-17'), /4 candidats sont déjà planifiés la semaine 2026-W38/);
 });
 
-test('le rattrapage W39 est limité au slug signé les 27 et 28 septembre sans seconde Cicatrice W39', () => {
+test('le rattrapage W39 est limité au slug signé du 27 au 29 septembre sans seconde Cicatrice W39', () => {
   const slug = 'tests-verts-et-regle-des-trois-passes';
   verifierPlafonds([], '2026-09-27', { serie: 'cicatrices', slug });
   verifierPlafonds([], '2026-09-28', { serie: 'cicatrices', slug });
+  verifierPlafonds([], '2026-09-29', { serie: 'cicatrices', slug });
   verifierPlafonds([], '2026-09-26', { serie: 'cicatrices', slug: 'une-autre-cicatrice' });
-  for (const date of ['2026-09-29', '2026-10-04']) {
-    assert.throws(() => verifierPlafonds([], date, { serie: 'cicatrices', slug }), /paraît le samedi/);
+  for (const date of ['2026-10-03', '2026-10-10', '2026-09-30', '2026-10-04']) {
+    assert.throws(() => verifierPlafonds([], date, { serie: 'cicatrices', slug }), /rattrapage W39.*29\/09\/2026/);
   }
+  verifierPlafonds([], '2026-10-03', { serie: 'cicatrices', slug: 'une-autre-cicatrice' });
   assert.throws(() => verifierPlafonds([], '2026-09-27', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /paraît le samedi/);
+  assert.throws(() => verifierPlafonds([], '2026-09-29', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /paraît le samedi/);
   assert.throws(() => verifierPlafonds([{ date: '2026-09-26', serie: 'cicatrices' }], '2026-09-27', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  assert.throws(() => verifierPlafonds([{ date: '2026-09-26', serie: 'cicatrices' }], '2026-09-29', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
   assert.throws(() => verifierPlafonds([{ date: '2026-09-27', serie: 'cicatrices', slug }], '2026-09-28', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
   const tardive = [{ slug, date: '2026-09-28', serie: 'cicatrices', status: 'pret-preview' }];
   assert.throws(() => verifierPlafonds(tardive, '2026-09-26', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /déjà planifiée la semaine 2026-W39/);
   assert.throws(() => verifierPlafonds(tardive, '2026-09-27', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  assert.throws(() => verifierPlafonds(tardive, '2026-09-29', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  const nouvelle = [{ slug, date: '2026-09-29', serie: 'cicatrices', status: 'pret-preview' }];
+  assert.throws(() => verifierPlafonds(nouvelle, '2026-09-26', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /déjà planifiée la semaine 2026-W39/);
+  verifierPlafonds(nouvelle, '2026-10-03', { serie: 'cicatrices', slug: 'une-autre-cicatrice' });
 });
 
 test('le découpage en unités et les jetons suivent le pipeline', () => {
