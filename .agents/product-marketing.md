@@ -109,7 +109,7 @@ Les articles ordinaires parlent en **nous** et décrivent une tâche. Une fois p
 
 **Cadence et place** : exactement une Cicatrice par semaine ISO, le samedi, en sus des quatre articles ordinaires du lundi au jeudi ; elle ne consomme jamais leur plafond. Format `thought-leadership`, rôle `direction-associes`. Sa valeur vient du récit réel, mais son titre reste intent-first : la requête mesurée ouvre le H1 et la cicatrice vient en seconde proposition. Les entrées portent `serie: "cicatrices"` dans le backlog et sortent du compte des quatre angles par famille. Le planificateur refuse une Cicatrice hors samedi, une deuxième dans la même semaine ou un trou entre deux entrées déjà approvisionnées ; il ne fabrique jamais un récit pour combler le stock.
 
-**Ces articles sont les seuls que Kevin relit avant publication** : ils portent sa signature et son expérience. La forge les prépare et les scelle ; elle ne les publie pas sans son go.
+**Attribution d'un récit signé** : une Cicatrice à la première personne exige l'authentification par Kevin du corps personnel exact placé sous son nom. Cette authentification n'est pas un go individuel de fusion ou de publication : l'autonomie blog-only du 25/09/2026 reste soumise aux portes de sources, revue indépendante, scellement, CI exacte et preuve en production. Pour W39, l'authentification du corps est bornée au SHA-256 `76ffb89670b44fa9acecc86b709546f3044b10e8bf3e9288a1b0e9e0fa5e5e3b` ; si ces octets changent, réauthentifier le corps avant attribution, sans redemander un go de publication. Sans expérience authentifiée, laisser le créneau vide et poursuivre les articles ordinaires.
 
 ## 8. Voix
 

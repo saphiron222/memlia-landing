@@ -56,7 +56,7 @@ class EditorialCadenceProof(unittest.TestCase):
         erreurs, _, par_semaine = PLAN.verifier(*donnees)
         self.assertEqual(erreurs, [])
         self.assertEqual(par_semaine[(2026, 39)], 4)
-        self.assertEqual({e["slug"]: e["datePlanifiee"] for e in donnees[4] if e["slug"] in {"prompt-chatgpt-expert-comptable", "logiciel-ia-comptabilite"}}, {"prompt-chatgpt-expert-comptable": "2026-09-22", "logiciel-ia-comptabilite": "2026-09-24"})
+        self.assertEqual({e["slug"]: e["dateManquee"] for e in donnees[4] if e["slug"] in {"prompt-chatgpt-expert-comptable", "logiciel-ia-comptabilite"}}, {"prompt-chatgpt-expert-comptable": "2026-09-22", "logiciel-ia-comptabilite": "2026-09-24"})
         self.assertEqual(next(e for e in donnees[4] if e["slug"] == "tests-verts-et-regle-des-trois-passes")["date"], "2026-09-28")
         for slug in ("prompt-chatgpt-expert-comptable", "logiciel-ia-comptabilite", "tests-verts-et-regle-des-trois-passes"):
             with self.subTest(slug=slug):
