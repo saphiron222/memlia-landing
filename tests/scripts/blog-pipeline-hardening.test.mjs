@@ -281,6 +281,62 @@ test('la fixture de documentation primaire technique ouvre un claim methode sans
   assert.ok(falsified.errors.some((error) => /contentSha256.*copie locale/.test(error)), falsified.errors.join('\n'));
 });
 
+test('un claim doctest méthodologique reste borné à sa phrase même dans un paragraphe évoquant le pôle social', async () => {
+  const claimText = "Ils confirment seulement les cas qu'ils exercent.";
+  const paragraph = `Des tests verts ne garantissent pas que le collaborateur voit le bon total ni le bon périmètre. ${claimText} Dans une réalisation pour le pôle social, j'ai vu deux défauts échapper aux suites vertes : une référence de coût déplacée, puis un cumul sur plusieurs exercices. Un autre test a rougi à raison. Depuis, je passe par les suites, la chaîne de preuve et l'écran.`;
+  const fixture = await createCompleteDossier(root('doctest-social-context'), {
+    body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', paragraph),
+    manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+      publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+      level: 'tier-2', provenance: 'primary', official: false,
+      classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+    }),
+    claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+    claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+  });
+  const claimsPath = join(fixture.dossier, 'claims.json');
+  const claims = readJson(claimsPath);
+  const claim = claims.claims.find((item) => item.claim === paragraph);
+  claim.claim = claimText;
+  claim.factCheck.sourceResults[0].justification.sharedTerms = keyTermsForTest(claimText).slice(0, 3);
+  writeJson(claimsPath, claims);
+  const reviewPath = join(fixture.dossier, fixture.manifest.businessReview.evidence);
+  const review = readJson(reviewPath);
+  review.claimReviews.find((item) => item.claimId === claim.id).claimSha256 = sha256(claimText);
+  writeJson(reviewPath, review);
+
+  const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode: 'protected-preview' });
+  assert.deepEqual(result.errors, []);
+  assert.equal(result.pass, true);
+
+  claim.claim = 'Dans une réalisation pour le pôle social';
+  claim.type = 'methode';
+  writeJson(claimsPath, claims);
+  const relabel = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode: 'protected-preview' });
+  assert.ok(relabel.errors.some((error) => /primaire officielle/.test(error)), relabel.errors.join('\n'));
+});
+
+test('relabel methode ne fait pas accepter doctest sur une obligation sociale, de paie ou réglementaire', async () => {
+  for (const [label, sentence] of [
+    ['social', 'Les cotisations sociales doivent être déclarées par le pôle social.'],
+    ['paie', 'Le bulletin de paie doit comporter le montant net versé au salarié.'],
+    ['reglementaire', 'Le décret impose cette obligation réglementaire.'],
+  ]) {
+    const fixture = await createCompleteDossier(root(`doctest-relabel-${label}`), {
+      body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', sentence),
+      manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+        publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+        level: 'tier-2', provenance: 'primary', official: false,
+        classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+      }),
+      claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+      claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+    });
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode: 'protected-preview' });
+    assert.ok(result.errors.some((error) => /claims\[1\].*primaire officielle/.test(error)), `${label}: ${result.errors.join('\n')}`);
+  }
+});
+
 test('seule l’URL HTTPS doctest canonique ouvre la classification technique', async () => {
   for (const [label, url] of [
     ['port', 'https://docs.python.org:8443/fr/3/library/doctest.html'],
