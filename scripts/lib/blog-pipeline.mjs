@@ -835,6 +835,11 @@ function validateSources(manifest, dossier, expected) {
     if (source.provenance === 'secondary' && proof.upstreamUrl === proof.finalUrl) errors.push(`${label}.upstreamUrl doit nommer une source primaire distincte pour une source secondary.`);
     if (proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
     if (proof.checkedAt !== source.checkedAt) errors.push(`${label}.checkedAt doit être identique à la date de la source.`);
+    const retrieved = Date.parse(proof.retrievedAt);
+    const civilGap = (Date.parse(`${proof.checkedAt}T00:00:00Z`) - Date.parse(`${new Date(Number.isFinite(retrieved) ? retrieved : 0).toISOString().slice(0, 10)}T00:00:00Z`)) / 86_400_000;
+    if (!Number.isFinite(retrieved) || retrieved > Date.now() || ![0, 1].includes(civilGap)) {
+      errors.push(`${label}.retrievedAt doit dater l'ouverture réelle, non future (décalage UTC/civil de 0 à 1 jour).`);
+    }
     const snapshotPath = isSafeRelativePath(dossier, proof.contentPath);
     if (!snapshotPath || !existsSync(snapshotPath)) {
       errors.push(`${label}.contentPath doit pointer vers une copie locale vérifiée de la source.`);
@@ -1188,7 +1193,6 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
 }
 
 function validateSensitiveFreshness(manifest, claims, review, skills, verifiedSources, dossier, sensitiveMatter, gateMode = 'production') {
-  if (!sensitiveMatter.sensitive) return [];
   const errors = [];
   const reviewDay = review?.checkedAt;
   const today = new Date().toISOString().slice(0, 10);
@@ -1208,11 +1212,20 @@ function validateSensitiveFreshness(manifest, claims, review, skills, verifiedSo
   const requireReviewDay = (value, label) => {
     if (value !== reviewDay) errors.push(`Fraîcheur sensible : ${label} doit être vérifié le jour de la revue éditoriale (${reviewDay ?? 'absent'}), reçu ${value ?? 'absent'}.`);
   };
-  requireReviewDay(gateMode === 'published-audit' ? manifest?.evidenceVerifiedAt : manifest?.sourcesVerifiedAt, 'manifest.sourcesVerifiedAt');
-  for (const source of manifest?.sources ?? []) {
-    requireReviewDay(source?.checkedAt, `source ${source?.id ?? 'sans-id'}.checkedAt`);
-    requireReviewDay(verifiedSources.get(source?.id)?.proof?.checkedAt, `preuve source ${source?.id ?? 'sans-id'}.checkedAt`);
+  const sourceDates = (manifest?.sources ?? []).map((source) => source?.checkedAt);
+  if (gateMode === 'published-audit') {
+    requireReviewDay(manifest?.evidenceVerifiedAt, 'manifest.evidenceVerifiedAt');
+  } else if (manifest?.sourcesVerifiedAt !== [...sourceDates].sort()[0]) {
+    errors.push('Fraîcheur sensible : manifest.sourcesVerifiedAt doit dater la plus ancienne récupération source.');
   }
+  for (const source of manifest?.sources ?? []) {
+    if (gateMode !== 'published-audit') {
+      const age = (Date.parse(`${reviewDay}T00:00:00Z`) - Date.parse(`${source?.checkedAt}T00:00:00Z`)) / 86_400_000;
+      if (!Number.isInteger(age) || age < 0 || age > 7) errors.push(`Fraîcheur sensible : source ${source?.id ?? 'sans-id'} doit dater de 0 à 7 jours avant la revue (${reviewDay ?? 'absent'}).`);
+    }
+    if (verifiedSources.get(source?.id)?.proof?.checkedAt !== source?.checkedAt) errors.push(`Fraîcheur sensible : preuve source ${source?.id ?? 'sans-id'} doit dater de la récupération déclarée.`);
+  }
+  if (!sensitiveMatter.sensitive) return errors;
   for (const claim of Array.isArray(claims?.claims) ? claims.claims : []) {
     requireReviewDay(claim?.checkedAt, `claim ${claim?.id ?? 'sans-id'}.checkedAt`);
     requireReviewDay(claim?.factCheck?.checkedAt, `fact-check ${claim?.id ?? 'sans-id'}.checkedAt`);

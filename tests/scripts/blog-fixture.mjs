@@ -319,6 +319,7 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
       finalUrl: source.url,
       httpStatus: 200,
       checkedAt: source.checkedAt,
+      retrievedAt: `${source.checkedAt}T00:00:00.000Z`,
       contentPath: `preuves/sources/${source.id}.txt`,
       contentSha256,
       excerpt,

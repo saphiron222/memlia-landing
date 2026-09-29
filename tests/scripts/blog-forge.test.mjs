@@ -267,6 +267,76 @@ test('la forge rafraîchit la preuve source quand sa classification change le m�
   }
 });
 
+test('le report conserve les copies vérifiées mais date les claims et les revues du candidat', async () => {
+  const root = racineDeTest();
+  const veille = new Date(Date.parse(`${jour}T00:00:00Z`) - 86_400_000).toISOString().slice(0, 10);
+  let appels = 0;
+  const compter = async (...args) => { appels += 1; return fetcher(...args); };
+  try {
+    const mesures = join(root, 'docs/strategy/site-v3/mesures');
+    writeFileSync(join(mesures, `questions-${veille}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, veille));
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour: veille });
+    const dossier = join(root, 'editorial/articles', SLUG);
+    const preuvePath = join(dossier, 'preuves/sources/cnil-durees.json');
+    for (const source of recette().sources) {
+      const path = join(dossier, `preuves/sources/${source.id}.json`);
+      const evidence = JSON.parse(readFileSync(path));
+      writeFileSync(path, JSON.stringify({ ...evidence, retrievedAt: `${veille}T12:00:00.000Z` }));
+    }
+    const preuveAvant = readFileSync(preuvePath, 'utf8');
+    const resultat = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels, 3, 'aucun nouvel appel réseau sur les trois sources');
+    assert.equal(readFileSync(preuvePath, 'utf8'), preuveAvant, 'la date de récupération reste authentique');
+    assert.equal(resultat.manifest.sourcesVerifiedAt, veille);
+    assert.ok(resultat.manifest.sources.every((source) => source.checkedAt === veille));
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'claims.json'))).claims[0].checkedAt, jour);
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'review.json'))).checkedAt, jour);
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'preuves/business-review.json'))).checkedAt, jour);
+    const declassification = JSON.parse(readFileSync(join(dossier, 'preuves/sources/cnil-durees.classification.json')));
+    assert.equal(declassification.checkedAt, jour, 'la classification est revue sur le nouveau candidat');
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(!gate.errors.some((error) => /Fraîcheur sensible/.test(error)), gate.errors.join('\n'));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification', async () => {
+  const root = racineDeTest();
+  let appels = 0;
+  const compter = async (...args) => { appels += 1; return fetcher(...args); };
+  const dossier = join(root, 'editorial/articles', SLUG, 'preuves/sources');
+  const preuvePath = join(dossier, 'cnil-durees.json');
+  try {
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    const originale = JSON.parse(readFileSync(preuvePath));
+    const modifierPreuve = (values) => writeFileSync(preuvePath, JSON.stringify({ ...originale, ...values }));
+    const hier = new Date(Date.parse(`${jour}T00:00:00Z`) - 86_400_000).toISOString().slice(0, 10);
+    modifierPreuve({ retrievedAt: `${hier}T22:22:17Z` });
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels, 3, '22h22 UTC la veille est le même jour civil à Paris, pas un second fetch');
+    for (const age of [7, 8, -1]) {
+      const date = new Date(Date.parse(`${jour}T00:00:00Z`) - age * 86_400_000).toISOString().slice(0, 10);
+      modifierPreuve({ checkedAt: date, retrievedAt: `${date}T12:00:00.000Z` });
+      const avant = appels;
+      await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+      assert.equal(appels - avant, age === 7 ? 0 : 1, `âge ${age}`);
+    }
+    for (const values of [{ contentSha256: '0'.repeat(64) }, { httpStatus: 429 }, { excerpt: 'autre extrait' }, { finalUrl: 'https://www.cnil.fr/fr/autre' }, { classificationReason: 'autre classement' }, { retrievedAt: null }]) {
+      modifierPreuve(values);
+      const avant = appels;
+      await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+      assert.equal(appels - avant, 1, JSON.stringify(values));
+    }
+    const copie = join(dossier, 'cnil-durees.source.txt');
+    modifierPreuve({});
+    writeFileSync(copie, 'copie falsifiée');
+    const avant = appels;
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels - avant, 1, 'la copie locale divergente impose une nouvelle lecture');
+    const dates = new Map([[recette().sources[0].id, hier], [recette().sources[1].id, jour], [recette().sources[2].id, jour]]);
+    assert.equal(construireManifest(recette(), 'pret-preview', jour, null, dates).sourcesVerifiedAt, hier, 'la date du manifeste borne la source la plus ancienne');
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
 test('la réinscription d’un candidat existant ne contourne pas le plafond des Cicatrices', async () => {
   const root = racineDeTest();
   try {

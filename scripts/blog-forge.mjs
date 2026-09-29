@@ -99,6 +99,7 @@ const sha256 = (content) => createHash('sha256').update(content).digest('hex');
 const ecrireJson = (path, value) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`); };
 const lireJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
 export const aujourdhui = () => new Date().toISOString().slice(0, 10);
+const ageSource = (date, jour) => (Date.parse(`${jour}T00:00:00Z`) - Date.parse(`${date}T00:00:00Z`)) / 86_400_000;
 
 /** Copie exacte du découpage en unités du pipeline (claims.contentUnits doit le reproduire au caractère près). */
 export function unitesRendues(body) {
@@ -128,7 +129,7 @@ export function chargerRecette(root, slug) {
   return { dossierRecette, recette, corps, revues };
 }
 
-export function construireManifest(recette, statut, jour, revues) {
+export function construireManifest(recette, statut, jour, revues, datesSources = new Map()) {
   const publie = statut === 'publie';
   const approuve = ['go-production', 'publie'].includes(statut);
   return {
@@ -140,9 +141,10 @@ export function construireManifest(recette, statut, jour, revues) {
     businessReview: { required: true, reviewerId: recette.businessReview.reviewerId, role: recette.businessReview.role, status: revues?.business ? 'PASS' : 'FAIL', evidence: 'preuves/business-review.json' },
     funnel: recette.funnel, cluster: recette.cluster, famille: recette.famille, contentType: recette.contentType, format: recette.format,
     task: recette.task, rankability: recette.rankability, businessRelevance: recette.businessRelevance,
-    proofStatus: 'verifiee', proofRequired: recette.proofRequired, sourcesVerifiedAt: jour,
+    proofStatus: 'verifiee', proofRequired: recette.proofRequired,
+    sourcesVerifiedAt: [...datesSources.values()].sort()[0] ?? jour,
     sources: recette.sources.map((s) => ({
-      id: s.id, publisher: s.publisher, title: s.title, url: s.url, checkedAt: jour,
+      id: s.id, publisher: s.publisher, title: s.title, url: s.url, checkedAt: datesSources.get(s.id) ?? jour,
       level: s.level, provenance: 'primary', official: s.official === true, upstreamUrl: s.url,
       classificationReason: s.classificationReason, method: null,
       classificationEvidence: `preuves/sources/${s.id}.classification.json`, verificationEvidence: `preuves/sources/${s.id}.json`,
@@ -224,29 +226,43 @@ function autoriteDe(url, publisher) {
   return a && a.publisher.test(normaliser(publisher).replace(/[^a-z0-9]+/g, ' ')) ? a.id : null;
 }
 
+/** Une preuve réseau n'est réutilisable que si ses octets et sa classification restent ceux de la recette. */
+function preuveSourceReutilisable(preuve, source, dossier, slug, jour) {
+  if (!preuve || preuve.version !== 1 || preuve.candidateSlug !== slug || preuve.sourceId !== source.id
+    || preuve.requestedUrl !== source.url || preuve.finalUrl !== source.url || preuve.upstreamUrl !== source.url
+    || preuve.excerpt !== source.excerpt || preuve.level !== source.level || preuve.provenance !== 'primary'
+    || preuve.official !== (source.official === true) || preuve.classificationReason !== source.classificationReason
+    || preuve.method !== null || !Number.isInteger(preuve.httpStatus) || preuve.httpStatus < 200 || preuve.httpStatus >= 300
+    || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.checkedAt ?? '')
+    || !Number.isInteger(ageSource(preuve.checkedAt, jour)) || ageSource(preuve.checkedAt, jour) < 0 || ageSource(preuve.checkedAt, jour) > 7
+    || !Number.isFinite(Date.parse(preuve.retrievedAt)) || Date.parse(preuve.retrievedAt) > Date.now()
+    || ![0, 1].includes(ageSource(new Date(preuve.retrievedAt).toISOString().slice(0, 10), preuve.checkedAt))
+    || preuve.contentPath !== `preuves/sources/${source.id}.source.txt`) return false;
+  const copiePath = join(dossier, preuve.contentPath);
+  if (!existsSync(copiePath)) return false;
+  const copie = readFileSync(copiePath, 'utf8');
+  return /^[a-f0-9]{64}$/.test(preuve.contentSha256 ?? '') && sha256(copie) === preuve.contentSha256 && copie.includes(source.excerpt);
+}
+
 /** Vérifie chaque source par le vérificateur du pipeline (copie locale + empreinte), en suivant l'URL finale. */
 export async function verifierSources({ root, slug, recette, dossierRecette, jour, fetcher }) {
   const dossier = join(root, 'editorial/articles', slug);
   let recetteModifiee = false;
+  const datesSources = new Map();
   for (const source of recette.sources) {
     for (let tentative = 0; tentative < 2; tentative += 1) {
       const evidencePath = join(dossier, `preuves/sources/${source.id}.json`);
-      const existante = existsSync(evidencePath) ? lireJson(evidencePath) : null;
-      const preuveCourante = existante
-        && existante.checkedAt === jour
-        && existante.requestedUrl === source.url
-        && existante.finalUrl === source.url
-        && existante.excerpt === source.excerpt
-        && existante.level === source.level
-        && existante.provenance === 'primary'
-        && existante.official === (source.official === true)
-        && existante.upstreamUrl === source.url
-        && existante.classificationReason === source.classificationReason
-        && existante.method === null;
-      if (preuveCourante) break;
+      let existante = null;
+      if (existsSync(evidencePath)) {
+        try { existante = lireJson(evidencePath); } catch { /* Preuve incomplète : rouvrir la source, sans l'adopter. */ }
+      }
+      if (preuveSourceReutilisable(existante, source, dossier, slug, jour)) {
+        datesSources.set(source.id, existante.checkedAt);
+        break;
+      }
       await verifySource({ root, slug, sourceId: source.id, excerpt: source.excerpt, ...(fetcher ? { fetcher } : {}) });
       const preuve = lireJson(evidencePath);
-      if (preuve.finalUrl === source.url) break;
+      if (preuve.finalUrl === source.url) { datesSources.set(source.id, preuve.checkedAt); break; }
       if (tentative === 1) throw new Error(`${source.id} : l'URL finale ${preuve.finalUrl} diverge encore après réécriture.`);
       source.url = preuve.finalUrl;
       recetteModifiee = true;
@@ -258,6 +274,7 @@ export async function verifierSources({ root, slug, recette, dossierRecette, jou
     }
   }
   if (recetteModifiee) ecrireJson(join(dossierRecette, 'recette.json'), recette);
+  return datesSources;
 }
 
 /** Construit le registre des affirmations depuis la recette et les copies locales vérifiées. */
@@ -340,7 +357,7 @@ function evidencesSkills({ manifest, corps, sujet, jour, claims, root }) {
     'blog-factcheck': [`${claims.claims.length} affirmation(s) reliée(s) à ${manifest.sources.length} source(s) vérifiée(s) par copie locale et empreinte ; verdicts SUPPORTED, extraits situés par ligne.`],
     'blog-seo-check': [`Titre ${m.titreLongueur} caractères, onglet ${m.ongletLongueur}, description ${m.descriptionLongueur} ; ${m.liensInternes.length} lien(s) interne(s) : ${m.liensInternes.join(', ')} ; ${m.liensExternes.length} lien(s) externe(s) dans le corps.`],
     'blog-geo': [`${m.commenceParReponseDirecte ? 'Réponse directe en tête' : 'Réponse directe absente en tête'} (${m.motsReponseDirecte} mots au premier paragraphe) ; définitions extractibles dans le corps.`],
-    'blog-audit': [`${manifest.sources.length} sources datées du ${jour}, ${claims.claims.length} claims, aucun H1 dans le corps, ${m.mots} mots.`],
+    'blog-audit': [`${manifest.sources.length} sources récupérées au plus tôt le ${manifest.sourcesVerifiedAt}, ${claims.claims.length} claims revus le ${jour}, aucun H1 dans le corps, ${m.mots} mots.`],
     'blog-cannibalization': [`Requête « ${manifest.primaryQuery} » comparée à ${corpus.length} article(s) du corpus : ${collisions.length} collision(s) de requête primaire.`],
     'seo-content-brief': [`Brief : intention ${manifest.intent}, entonnoir ${manifest.funnel}, fan-out ${manifest.fanOut.join(' ; ')}.`],
     'seo-page': [`Métadonnées : title « ${manifest.tabTitle} », description ${m.descriptionLongueur} caractères, canonical auto-référent émis par le gabarit Article.`],
@@ -604,11 +621,11 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const manifest = construireManifest(recette, statut, jour, revuesValides);
   const manifestPath = join(dossier, 'manifest.json');
   ecrireJson(manifestPath, manifest);
-  await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher });
+  const datesSources = await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher });
   // Les URL finales ont pu réécrire la recette : le manifeste est reconstruit depuis la recette à jour.
   revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
   revuesValides = revueErreurs.length ? null : revues;
-  const manifestFinal = construireManifest(recette, statut, jour, revuesValides);
+  const manifestFinal = construireManifest(recette, statut, jour, revuesValides, datesSources);
   ecrireJson(manifestPath, manifestFinal);
   const articlePath = join(root, 'src/content/blog', `${slug}.md`);
   mkdirSync(dirname(articlePath), { recursive: true });
