@@ -1044,24 +1044,30 @@ test('même requête primaire et même intention bloquent deux candidats malgré
   assert.ok(result.errors.some((error) => /requête primaire.*intention.*premier-candidat|cannibalisation.*premier-candidat/i.test(error)), result.errors.join('\n'));
 });
 
-test('un arbitrage structuré relié aux deux URL autorise la différenciation explicitement vérifiée', async () => {
-  const corpusRoot = root('query-resolution');
-  await createCompleteDossier(corpusRoot, { slug: 'premier-candidat', heroId: 'img-premier-resolution' });
-  const second = await createCompleteDossier(corpusRoot, {
-    slug: 'second-candidat',
-    heroId: 'img-second-resolution',
-    body: DISTINCT_BODY,
-    manifestMutator: (manifest) => {
-      manifest.cannibalization.resolutions = [{
-        action: 'differentiate',
-        urls: ['/blog/premier-candidat', '/blog/second-candidat'],
-        evidence: 'preuves/cannibalization-premier.json',
-      }];
-    },
-  });
-  writeFileSync(join(corpusRoot, 'src/pages/index.astro'), '<a href="/blog/premier-candidat">A</a><a href="/blog/second-candidat">B</a>');
-  const result = await validateDossier({ root: corpusRoot, slug: second.slug });
-  assert.deepEqual(result.errors, []);
+test('un arbitrage structuré relié aux deux URL autorise la différenciation explicitement vérifiée', async (t) => {
+  // This assertion tests cannibalization, not freshness: keep its gate on the fixture's UTC day.
+  t.mock.timers.enable({ apis: ['Date'], now: Date.now() });
+  try {
+    const corpusRoot = root('query-resolution');
+    await createCompleteDossier(corpusRoot, { slug: 'premier-candidat', heroId: 'img-premier-resolution' });
+    const second = await createCompleteDossier(corpusRoot, {
+      slug: 'second-candidat',
+      heroId: 'img-second-resolution',
+      body: DISTINCT_BODY,
+      manifestMutator: (manifest) => {
+        manifest.cannibalization.resolutions = [{
+          action: 'differentiate',
+          urls: ['/blog/premier-candidat', '/blog/second-candidat'],
+          evidence: 'preuves/cannibalization-premier.json',
+        }];
+      },
+    });
+    writeFileSync(join(corpusRoot, 'src/pages/index.astro'), '<a href="/blog/premier-candidat">A</a><a href="/blog/second-candidat">B</a>');
+    const result = await validateDossier({ root: corpusRoot, slug: second.slug });
+    assert.deepEqual(result.errors, []);
+  } finally {
+    t.mock.timers.reset();
+  }
 });
 
 test('une image uniforme auto-déclarée est refusée', async () => {
