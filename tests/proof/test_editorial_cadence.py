@@ -23,6 +23,13 @@ def construire_et_verifier():
 
 
 class EditorialCadenceProof(unittest.TestCase):
+    def test_oracle_w39_documente_le_quota_reel_du_29(self):
+        oracle = (PLAN.ICI / 'W39-ORACLES.md').read_text(encoding='utf-8')
+        self.assertIn('deux places ordinaires du 29/09', oracle)
+        self.assertIn('aucune publication ordinaire W40 supplémentaire', oracle)
+        self.assertIn('`a-replanifier`', oracle)
+        self.assertNotIn('reste ouvert aux publications ordinaires W40', oracle)
+
     def lot_w39(self, dates=None, cicatrice="tests-verts-et-regle-des-trois-passes", deja_inscrite=False, ancien_modifications=None, titre_publie=None, titre_inscrit=None):
         dates = dates or {"prompt-chatgpt-expert-comptable": "2026-09-28", "logiciel-ia-comptabilite": "2026-09-28", cicatrice: "2026-09-28"}
         with TemporaryDirectory() as directory:
@@ -48,7 +55,9 @@ class EditorialCadenceProof(unittest.TestCase):
                 publies[slug] = {"date": value, "titre": original_entry["titre"], "requete": original_entry["requete"], "famille": original_entry["famille"], "format": original_entry["format"]}
             if titre_publie is not None:
                 publies["tests-verts-et-regle-des-trois-passes"]["titre"] = titre_publie
-            with patch.object(PLAN, "BACKLOG", path), patch.object(PLAN, "etat_publie", return_value=publies):
+            planifier = PLAN.planifier
+            with patch.object(PLAN, "BACKLOG", path), patch.object(PLAN, "etat_publie", return_value=publies), \
+                    patch.object(PLAN, "planifier", side_effect=lambda entries, published: planifier(entries, published, aujourd_hui=date(2026, 9, 28))):
                 return PLAN.construire()
 
     def test_rattrapage_w39_ne_deplace_pas_le_plan_et_est_borne(self):
@@ -73,9 +82,15 @@ class EditorialCadenceProof(unittest.TestCase):
         self.assertTrue(any("plus de quatre articles" in e for e in PLAN.verifier(*mutant)[0]))
 
     def test_rattrapage_reel_du_29_conserve_les_creneaux_w39(self):
-        donnees = self.lot_w39(dates={slug: "2026-09-29" for slug in (
-            "prompt-chatgpt-expert-comptable", "logiciel-ia-comptabilite",
-            "tests-verts-et-regle-des-trois-passes")}, deja_inscrite=True)
+        # Le contre-factuel ne replanifie pas les entrées W40 : leurs places du
+        # 29 cessent simplement d'être actionnables face aux publications réelles.
+        donnees = self.lot_w39(deja_inscrite=True)
+        for e in donnees[4]:
+            if e['slug'] in PLAN.RATTRAPAGE_W39:
+                e['date'] = '2026-09-29'
+                donnees[2][e['slug']]['date'] = '2026-09-29'
+            elif e['date'] == '2026-09-29' and e['statut'] == 'planned':
+                e['statut'] = 'a-replanifier'
         erreurs, _, semaine = PLAN.verifier(*donnees)
         self.assertEqual(erreurs, [])
         self.assertEqual(semaine[(2026, 39)], 4)
@@ -403,7 +418,7 @@ class EditorialCadenceProof(unittest.TestCase):
                            for i, (p, f) in enumerate(values)]
                 entries[1]['exceptionAlternance'] = {field: {'date': '2026-09-29', 'raison': 'stock factuel borné'}}
                 with patch.object(PLAN, 'PREMIER_JOUR', date(2026, 9, 28)):
-                    PLAN.planifier(entries, {})
+                    PLAN.planifier(entries, {}, aujourd_hui=date(2026, 9, 28))
                 self.assertEqual(entries[1]['date'], '2026-09-29')
                 self.assertEqual(PLAN.verifier_alternance(entries), [])
 
