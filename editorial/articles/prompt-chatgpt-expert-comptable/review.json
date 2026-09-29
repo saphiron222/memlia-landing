@@ -1,14 +1,16 @@
 {
   "version": 1,
-  "reviewer": "qa:t_f7a52dd8",
+  "reviewer": "marketing",
   "checkedAt": "2026-09-29",
   "subject": {
     "slug": "prompt-chatgpt-expert-comptable",
-    "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
-    "manifestSha256": "b2cdbd292ffe24a190e872b7aa6e8772c8e60b0ba0e222ea16021cc1afbaccf3"
+    "articleSha256": "7ac2f445538bae30faf76e677a77f578b953fb77ff6743ac8d1b68d6fd702351",
+    "manifestSha256": "259c9f9f942717850ebab0e7f9ff3dd869eb8e50eefe1a7dc990d3431832a6cb"
   },
   "rubricEvidence": "preuves/review.json",
-  "p0": [],
-  "blocking": false,
-  "decision": "pret-preview"
+  "p0": [
+    "Revue éditoriale non exécutée"
+  ],
+  "blocking": true,
+  "decision": "corriger"
 }

@@ -2,7 +2,7 @@
   "version": 1,
   "slug": "prompt-chatgpt-expert-comptable",
   "action": "creation",
-  "editorialStatus": "publie",
+  "editorialStatus": "a-valider",
   "title": "Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique",
   "tabTitle": "Prompt ChatGPT expert comptable : demande de pièce | Memlia",
   "summary": "Un prompt pour préparer une demande de pièce fictive : contexte autorisé, brouillon, arrêt si la pièce manque, destinataire et envoi validés par une personne.",
@@ -42,7 +42,7 @@
     "required": true,
     "reviewerId": "relecteur-metier-ia-memlia",
     "role": "direction-associes",
-    "status": "PASS",
+    "status": "FAIL",
     "evidence": "preuves/business-review.json"
   },
   "funnel": "MOFU",
@@ -104,7 +104,7 @@
     }
   ],
   "author": "kevin",
-  "reviewer": "qa:t_f7a52dd8",
+  "reviewer": "marketing",
   "reviewRule": "Revoir les conditions d'utilisation de l'outil et les recommandations CNIL avant un usage réel ; réviser le contenu en cas d'évolution de la source.",
   "cta": {
     "label": "Confier cette tâche",
@@ -154,13 +154,11 @@
   "contradictions": [],
   "kevin": {
     "briefApproved": true,
-    "previewApproved": true,
-    "productionApproved": true,
+    "previewApproved": false,
+    "productionApproved": false,
     "delegation": {
       "date": "2026-09-16",
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
-  },
-  "publishedAt": "2026-09-29",
-  "publicationEvidence": "preuves/publication.json"
+  }
 }

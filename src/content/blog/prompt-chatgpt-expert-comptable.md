@@ -7,7 +7,7 @@ datePublication: 2026-09-29
 auteur: kevin
 sujets: [ia, pieces, automatisation]
 motsCles: ["prompt chatgpt expert comptable", "demande de pièce", "confidentialité des données"]
-brouillon: false
+brouillon: true
 image: img-art-prompt-chatgpt-expert-comptable
 pipelineVersion: 1
 primaryQuery: "prompt chatgpt expert comptable"
@@ -31,7 +31,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Trois cas fictifs exécutés par rejouer-cas.mjs, entrées et sorties dans journal-rejeu.json ; le refus demande déjà partie est propre au script local alimenté par le suivi et absent du prompt copiable ; deux consignes par pôle illustratives non exécutées ; aucune réponse ChatGPT mesurée."
 reviewRule: "Revoir les conditions d'utilisation de l'outil et les recommandations CNIL avant un usage réel ; réviser le contenu en cas d'évolution de la source."
-reviewer: qa:t_f7a52dd8
+reviewer: marketing
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier cette tâche"
@@ -39,7 +39,7 @@ cta:
   outcome: "Nous écrivons votre règle de demande de pièces, l'automatisons dans vos outils et la recettons avec votre équipe. Vous gardez la décision d'envoyer. Rien à envoyer : décrivez simplement la tâche."
 imageOg: "/images/img-art-prompt-chatgpt-expert-comptable-og.webp"
 imageAlt: "Feuille vierge et enveloppe séparées par une grille fermée, pour figurer le contrôle humain avant une demande de pièce"
-statutEditorial: publie
+statutEditorial: a-valider
 sources:
   - editeur: "CNIL"
     titre: "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative"
@@ -130,7 +130,7 @@ Le gestionnaire reprend la liste dans son outil de paie et tranche l'écart. La 
 Le collaborateur vérifie la pièce et décide dans son logiciel comptable. Ce patron ne classe pas une dépense et ne mesure pas ChatGPT ; il aide seulement à formuler ce qui manque avant une décision.
 
 <figure data-blog-proof="w39-prompt-arret">
-  <img src="/proofs/blog/w39-prompt-arret.webp" alt="Refus fictif de préparer la demande de pièce en l'absence de la pièce attendue." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/w39-prompt-arret.webp" alt="Refus fictif de préparer la demande quand le champ « Pièce attendue » n’est pas renseigné." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Les quatre éléments à conserver quand on adapte ce prompt
