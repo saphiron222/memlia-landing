@@ -1,13 +1,13 @@
 # Site v3 : l'éditorial de memlia.fr, de la stratégie à la mesure
 
 Porte d'entrée du dossier. Écrit le 16 septembre 2026, remis à l'état réel le 20 septembre puis
-réconcilié avec les sources le 28 septembre 2026.
+réconcilié avec les sources le 28 septembre, puis avec l'inventaire et la charte le 29 septembre 2026.
 Le site est en ligne depuis le 16/09 et sert la copy v3 « un savoir-faire que personne n'a écrit »
 depuis le 17/09 (`JOURNAL.md`, lignes des 16 et 17/09). Ce dossier décrit ce qui tourne, pas un projet.
 
 Trois sources font foi et ne sont pas redéfinies ici :
 
-- `.agents/product-marketing.md` : la charte de message **v4 du 21/09/2026** (angle v3 du 17/09 et §2 bis « la règle écrite » du 19/09), pour toute surface publique ; §7 ter garde le go individuel d'un récit signé.
+- `.agents/product-marketing.md` : la charte de message **v4 du 21/09/2026** (angle v3 du 17/09 et §2 bis « la règle écrite » du 19/09), pour toute surface publique ; §7 ter exige l'authentification du corps personnel exact d'une Cicatrice signée, sans go individuel de publication blog.
 - `src/data/familles.ts` : la taxonomie, 60 familles en 12 pôles, `audit-legal` listée et non ouverte (comptées dans le fichier).
 - `backlog-v3.json` : les angles et les suggestions relevées sur leurs formulations testées, 243 entrées dont le pilier (comptées dans le fichier) ; le plan ajoute trois articles historiques hors backlog. Le champ `demande.mesureeLe` date un relevé, non une demande quantifiée.
 
@@ -58,7 +58,7 @@ relevé historique par une valeur reconstruite aujourd'hui.
 ## Ce qui est fait
 
 - **Le site est en ligne** et sert la copy v3 ; les cinq routes de tâche actuellement publiées sont distinctes des routes service encore candidates, exclues du sitemap tant que leur statut n'est pas `publie`.
-- **Neuf fichiers d'articles publiés** sont présents dans `src/content/blog/` au candidat local du 28/09. Présence au dépôt, exclusion du sitemap et indexabilité du HTML sont trois faits distincts : l'article de saisie FE est exclu du sitemap et son HTML statique porte désormais `noindex, follow` (test dist) ; la fonction de bord vise toujours un 503 avec `X-Robots-Tag`. Aucun état GET/HEAD servi en production n'est attesté : voir `SITE-STRUCTURE.md` avant toute allégation de suspension effective.
+- **Onze fichiers d'articles publiés** sont présents dans `src/content/blog/` après les deux articles ordinaires W39. Présence au dépôt, exclusion du sitemap et indexabilité du HTML sont trois faits distincts : l'article de saisie FE est exclu du sitemap et son HTML statique porte `noindex, follow` (test dist) ; la fonction de bord vise toujours un 503 avec `X-Robots-Tag`. Aucun état GET/HEAD servi en production n'est attesté ici : voir `SITE-STRUCTURE.md` avant toute allégation de suspension effective.
 - **La cadence est codée** : 4 par semaine ISO, 2 par jour au plus, du lundi au jeudi (`CANDIDATS_PAR_SEMAINE_MAX`, `CANDIDATS_PAR_JOUR_MAX` dans `scripts/lib/blog-pipeline.mjs`).
 - **Le mécanisme est nommé** : « la règle écrite » (charte §2 bis). La forge refuse de matérialiser un article daté à partir du 19/09/2026 qui ne porte pas `## La règle écrite` et `## Rejoué sur le jeu fictif` (`DEBUT_REGLE_ECRITE` et `verifierRegleEcrite`, `scripts/blog-forge.mjs`).
 - **Le glossaire porte 53 termes** (comptés dans `src/data/glossary.ts` ; `tests/proof/test_glossary.py` en exige exactement 53) : 23 historiques, 20 de la vague 1 et 10 de la vague 2.
