@@ -141,6 +141,12 @@ export function reviewPackage(slug, gateReport, siteRoot = root) {
   return reportPath;
 }
 
+function indexedBlogUrl(xml, file, slug) {
+  const tag = file.endsWith('rss.xml') ? 'link' : 'loc';
+  const urls = xml.matchAll(new RegExp(`<${tag}\\b[^>]*>\\s*([^<]+?)\\s*</${tag}>`, 'gi'));
+  return [...urls].some((match) => match[1].trim() === `https://memlia.fr/blog/${slug}`);
+}
+
 function verifyCandidatePreview(slug, previewDirectory, previewOrigin) {
   const errors = [];
   const articlePath = join(previewDirectory, 'blog', `${slug}.html`);
@@ -170,7 +176,7 @@ function verifyCandidatePreview(slug, previewDirectory, previewOrigin) {
   if (!/X-Robots-Tag:\s*noindex, nofollow/i.test(headers)) errors.push('L’en-tête X-Robots-Tag noindex, nofollow manque.');
   for (const file of ['sitemap-0.xml', 'blog/rss.xml']) {
     const path = join(previewDirectory, file);
-    if (existsSync(path) && readFileSync(path, 'utf8').includes(`/blog/${slug}`)) errors.push(`Le candidat ne doit pas apparaître dans ${file}.`);
+    if (existsSync(path) && indexedBlogUrl(readFileSync(path, 'utf8'), file, slug)) errors.push(`Le candidat ne doit pas apparaître dans ${file}.`);
   }
   return errors;
 }
@@ -252,7 +258,7 @@ export function productionArtifactsErrors(siteRoot, slugs) {
       if (!html.includes(`<link rel="canonical" href="https://memlia.fr/blog/${slug}"`)) errors.push(`${slug}: canonical auto-référent absent.`);
     }
     for (const file of ['dist/sitemap-0.xml', 'dist/blog/rss.xml']) {
-      if (!existsSync(join(siteRoot, file)) || !readFileSync(join(siteRoot, file), 'utf8').includes(`/blog/${slug}`)) errors.push(`${slug}: ${file} ne référence pas le candidat autorisé.`);
+      if (!existsSync(join(siteRoot, file)) || !indexedBlogUrl(readFileSync(join(siteRoot, file), 'utf8'), file, slug)) errors.push(`${slug}: ${file} ne référence pas le candidat autorisé.`);
     }
   }
   return errors;
