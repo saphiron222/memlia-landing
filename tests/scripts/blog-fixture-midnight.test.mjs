@@ -5,11 +5,11 @@ import { join } from 'node:path';
 import { test } from 'node:test';
 import { validateDossier } from '../../scripts/lib/blog-pipeline.mjs';
 
-const beforeMidnight = Date.parse('2026-09-28T23:59:59Z');
-const afterMidnight = Date.parse('2026-09-29T00:00:00Z');
+const beforeMidnight = Date.parse('2026-09-28T21:59:59Z');
+const afterMidnight = Date.parse('2026-09-28T22:00:00Z');
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
 
-test('une fixture importée avant minuit prend une date cohérente à sa création après minuit, sans accepter une revue réellement périmée', async (t) => {
+test('une fixture importée avant minuit Paris prend une date cohérente à sa création après minuit Paris, sans accepter une revue réellement périmée', async (t) => {
   const root = mkdtempSync(join(tmpdir(), 'memlia-blog-midnight-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
   t.mock.timers.enable({ apis: ['Date'], now: beforeMidnight });
