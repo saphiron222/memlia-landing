@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "candidateSlug": "logiciel-ia-comptabilite",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-29",
+  "articleSha256": "9b4b454fcef2378508f24edf533c282467eb3ea4b3dd7cb4ad5ff2531a863254",
+  "manifestSha256": "41d687a8a01a7413731390ce19c1fad37d2e2bc3e5bb853871b92ddf3da91eef",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact logiciel-ia-comptabilite."
+  ],
+  "reviewer": "qa:t_f7a52dd8",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Le lecteur reçoit six questions de démonstration sur le chemin de la pièce, puis trois décisions possibles ; le premier choix est d'éprouver le logiciel existant, sans classement commercial inventé."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "H1 et titre d'onglet répondent à logiciel IA comptabilité avec une grille de choix ; la description annonce un comparatif méthodologique et non un banc d'essai d'éditeurs."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Les trois liens CNIL, Ordre et Service-Public du corps correspondent à des copies datées, les règles de conservation n'impliquent pas une fonction d'archivage ; le texte nie explicitement avoir testé Dext ou Pennylane."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "La règle écrite distingue proposition, validation et arrêt ; quatre sorties de la règle locale, dont doublon probable et période ambiguë, ont été rejouées et concordent avec journal-rejeu.json, sans écriture comptable."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Build local neuf : date visible et BlogPosting au 29 septembre 2026, canonical propre, un H1 et deux figures HTML avec légendes de source/date ; OG et noindex correspondent à la preview brouillon."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Les tableaux séparent questions à poser à un éditeur et résultats de la seule règle éditoriale ; les FAQ rappellent que la simulation ne mesure aucune capacité du produit envisagé."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "Lien vers le pilier, le prompt fictif, /methode et /contact ; Memlia est décrit comme service qui écrit la règle dans les outils existants, avec imputation et décision au cabinet."
+      ]
+    }
+  ]
+}

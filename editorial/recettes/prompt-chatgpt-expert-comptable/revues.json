@@ -1,0 +1,67 @@
+{
+  "subject": {
+    "slug": "prompt-chatgpt-expert-comptable",
+    "bodySha256": "588b9ff39b4164e1e748f140b6c9bc12652b7f0a40de1b6a59bad04c3d086548",
+    "recipeSha256": "5220c43ec3d00bfb34c359c2c811384a1235e018924c0754f3ed289551855853",
+    "renderedSha256": "f0d9a862b47710c70ad2768e397b83a58569c686a1faa7d8b105a72530b73ce5"
+  },
+  "editorial": {
+    "reviewer": "qa:t_f7a52dd8",
+    "p0": [],
+    "criteria": {
+      "intent-satisfaction": {"result": "PASS", "observations": ["Le prompt copiable part d'une facture fictive d'avril 2026, exige pièce et période, laisse le destinataire à confirmer et ne déclenche aucun envoi ; la réponse directe expose précisément ce geste."]},
+      "serp-format-rankability": {"result": "PASS", "observations": ["H1, titre d'onglet et description portent l'intention prompt ChatGPT expert-comptable ; le lecteur trouve une consigne utilisable, les quatre éléments à conserver et une FAQ plutôt qu'une liste de formules magiques."]},
+      "eeat-sources": {"result": "PASS", "observations": ["Deux citations CNIL dans le corps bornent partage autorisé et identification par croisement ; la page de l'Ordre ne prouve que l'existence de ses ressources. Le texte répète qu'aucune réponse ChatGPT n'a été mesurée."]},
+      "information-gain-proof": {"result": "PASS", "observations": ["Les quatre parties de La règle écrite précisent l'arrêt ; les trois sorties du journal local concordent avec le tableau rendu. Le refus demande déjà partie vient du suivi fourni au script, absent du prompt copiable, limite explicitée deux fois."]},
+      "technical-onpage-seo": {"result": "PASS", "observations": ["Build Astro ciblé neuf : un H1, canonical de ce slug, date visible et BlogPosting au 29 septembre 2026, deux figures avec source et date, OG et noindex propre au brouillon."]},
+      "ai-citability": {"result": "PASS", "observations": ["La consigne autonome, le tableau de trois sorties et les quatre FAQ sont extractibles ; l'attribution au script fictif accompagne les sorties et interdit de les présenter comme résultats de ChatGPT."]},
+      "contextual-conversion": {"result": "PASS", "observations": ["La clôture relie le pilier, la relance des pièces, /methode et /contact ; elle propose écriture, recette et maintenance dans les outils existants et maintient l'envoi humain."]}
+    }
+  },
+  "business": {
+    "reviewerTaskId": "t_5d50b3f0",
+    "claims": {
+      "claim-unit-668540d969d0-1": {"verdict": "soutient", "reasoning": "Copie CNIL cnil-ia-generative, passage des invites : ne partager que les informations autorisées. Le corps le cite comme conseil, non comme autorisation universelle d'utiliser un dossier réel."},
+      "claim-unit-668540d969d0-2": {"verdict": "soutient", "reasoning": "La définition CNIL cnil-donnee-personnelle mentionne l'identification par croisement ; le corps se limite à dire que remplacer le nom ne suffit pas toujours, sans prétendre qu'un cas fictif identifie une personne."},
+      "claim-unit-3ea838c700eb-1": {"verdict": "soutient", "reasoning": "La copie primaire de l'Ordre annonce cas d'usage, précautions et techniques pour prompter ; le corps ne lui attribue ni contrôle du prompt donné ni approbation d'un fournisseur."}
+    }
+  },
+  "image": {
+    "reviewer": "qa:t_f7a52dd8",
+    "criteria": {
+      "brief-six-components": {"result": "PASS", "observations": ["Le master observé montre une feuille vierge avant une enveloppe non adressée derrière une grille fermée ; sujet, composition, diorama, hex, interdits et alt sont décrits dans la recette."]},
+      "generation-constraints": {"result": "PASS", "observations": ["Aucun mot, logo, personne, adresse ou interface de ChatGPT sur le master ; ni flèche ni coche ne simulent un envoi effectué."]},
+      "fictive-provenance": {"result": "PASS", "observations": ["Le cadre w39-prompt-brouillon annonce Atelier Fictif et Brouillon, non envoyé ; w39-prompt-arret montre une pièce vide et Contexte incomplet, et leurs légendes indiquent une reconstitution sans modèle interrogé."]},
+      "recognizable-subject": {"result": "PASS", "observations": ["La grille fermée sépare clairement le papier et l'enveloppe ; le contrôle préalable à la demande est identifiable avec l'alt sans imaginer une interaction avec un client réel."]},
+      "technical-derivatives": {"result": "PASS", "observations": ["Master mesuré à 1920 × 1080, OG à 1200 × 630 ; deux preuves WebP réelles sous 150 Ko, image et alt présents dans la prévisualisation construite."]},
+      "alt-information": {"result": "PASS", "observations": ["L'alt décrit les objets du master et non une sortie du modèle ; chaque preuve inline dispose d'un alt et d'une légende Source et capture du 2026-09-27."]}
+    },
+    "directionArt": 17,
+    "semanticRelevance": 21
+  },
+  "sources": {
+    "reviewedBy": "qa:t_f7a52dd8",
+    "observations": {
+      "cnil-ia-generative": "Copie CNIL 63f97670… vérifiée contre reçu 200 du 29/09 ; recommandation de partage autorisé dans le contexte des invites, non preuve de performance ChatGPT.",
+      "cnil-donnee-personnelle": "Copie CNIL b610e932… et extrait sur l'identification par croisement vérifiés ; portée limitée à une possibilité d'identification.",
+      "ordre-ia": "Copie institutionnelle 1b650c10… et extrait retrouvés ; simple présentation de ressources Data et IA, sans essai de ce prompt."
+    }
+  },
+  "qualite": {
+    "reviewer": "qa:t_f7a52dd8",
+    "score": 91,
+    "p0": [],
+    "categories": {
+      "contentQuality": {"score": 28, "max": 30},
+      "seoOptimization": {"score": 23, "max": 25},
+      "eeatSignals": {"score": 14, "max": 15},
+      "technicalElements": {"score": 12, "max": 15},
+      "aiCitationReadiness": {"score": 14, "max": 15}
+    },
+    "evidence": ["28/30 contenu : prompt réellement copiable, règle d'arrêt et trois cas du script vérifiés ; aucun essai du fournisseur n'est insinué.", "23/25 SEO : H1/title/description adaptés, canonical et maillage réciproque au pilier, deux sources CNIL et une source institutionnelle.", "14/15 confiance : source et extrait présents dans les copies 200, auteur identifié ; sortie simulée distincte d'une observation ChatGPT.", "12/15 technique : dates visible et structurée concordantes, figures datées et OG 1200 × 630 ; pas de Lighthouse ni de mesure mobile interactive dans cette passe.", "14/15 citabilité : tableau, FAQ et prompt autonomes, avec provenance explicite de la règle locale."],
+    "reservations": ["Aucun fournisseur ChatGPT interrogé : le comportement du prompt copiable reste non mesuré.", "Ce score porte uniquement sur le brouillon construit ; son noindex est normal ici, sans attester publication ni vitesse réelle."],
+    "seo": ["Réponse directe, lien vers le pilier et canonical cohérents ; sommaire et deux preuves accessibles dans le rendu local."],
+    "geo": ["Le tableau cite les sorties du script local et non celles du modèle ; conserver cette attribution si la page est extraite."],
+    "verdict": "91/100, zéro P0 sur corps et prévisualisation exacts ; revue de contenu, pas feu vert pour une livraison sans scellement et QA finale."
+  }
+}

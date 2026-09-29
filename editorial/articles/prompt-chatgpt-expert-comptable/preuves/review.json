@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "candidateSlug": "prompt-chatgpt-expert-comptable",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-29",
+  "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
+  "manifestSha256": "b2cdbd292ffe24a190e872b7aa6e8772c8e60b0ba0e222ea16021cc1afbaccf3",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact prompt-chatgpt-expert-comptable."
+  ],
+  "reviewer": "qa:t_f7a52dd8",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Le prompt copiable part d'une facture fictive d'avril 2026, exige pièce et période, laisse le destinataire à confirmer et ne déclenche aucun envoi ; la réponse directe expose précisément ce geste."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "H1, titre d'onglet et description portent l'intention prompt ChatGPT expert-comptable ; le lecteur trouve une consigne utilisable, les quatre éléments à conserver et une FAQ plutôt qu'une liste de formules magiques."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Deux citations CNIL dans le corps bornent partage autorisé et identification par croisement ; la page de l'Ordre ne prouve que l'existence de ses ressources. Le texte répète qu'aucune réponse ChatGPT n'a été mesurée."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Les quatre parties de La règle écrite précisent l'arrêt ; les trois sorties du journal local concordent avec le tableau rendu. Le refus demande déjà partie vient du suivi fourni au script, absent du prompt copiable, limite explicitée deux fois."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Build Astro ciblé neuf : un H1, canonical de ce slug, date visible et BlogPosting au 29 septembre 2026, deux figures avec source et date, OG et noindex propre au brouillon."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "La consigne autonome, le tableau de trois sorties et les quatre FAQ sont extractibles ; l'attribution au script fictif accompagne les sorties et interdit de les présenter comme résultats de ChatGPT."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "La clôture relie le pilier, la relance des pièces, /methode et /contact ; elle propose écriture, recette et maintenance dans les outils existants et maintient l'envoi humain."
+      ]
+    }
+  ]
+}

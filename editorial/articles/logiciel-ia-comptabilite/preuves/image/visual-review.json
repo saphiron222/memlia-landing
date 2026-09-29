@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "candidateSlug": "logiciel-ia-comptabilite",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-29",
+  "articleSha256": "9b4b454fcef2378508f24edf533c282467eb3ea4b3dd7cb4ad5ff2531a863254",
+  "manifestSha256": "41d687a8a01a7413731390ce19c1fad37d2e2bc3e5bb853871b92ddf3da91eef",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact logiciel-ia-comptabilite."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.7391493055555556,
+      "#27b657": 0.005381944444444444,
+      "#1c8a41": 0.0103125,
+      "#231f20": 0.14206597222222223
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Le master montre un bac de tri à trois compartiments, trois feuilles blanches et un portique vide ; brief avec sujet, composition, style, hex, interdits et alt relu."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Aucun texte, logo, personnage, coche automatique ou écran de logiciel observé sur le master 1920 × 1080 ; les feuilles n'ont pas de données."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "La figure parcours dit Grille fictive · aucun éditeur évalué ; la figure exceptions dit Aucun éditeur testé, et ni l'une ni l'autre n'exhibe de dossier réel."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Le bac, les feuilles et le portique évoquent le parcours à éprouver ; le nominal, le doublon et la période ne sont pas discernables sur le master seul, contrairement aux tableaux de preuve explicitement légendés."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Master vérifié 1920 × 1080 et OG 1200 × 630 ; deux preuves WebP dans le rendu avec alt et légendes de capture, sans tronquage visible dans les fichiers relus."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alt du master décrit ce qui est visible, sans inventer le résultat des feuilles ; les deux figures annoncent un protocole fictif et datent leur capture du 2026-09-27."
+      ]
+    }
+  ]
+}

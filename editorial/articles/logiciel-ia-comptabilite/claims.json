@@ -1,0 +1,491 @@
+{
+  "version": 1,
+  "candidateSlug": "logiciel-ia-comptabilite",
+  "articleSha256": "9b4b454fcef2378508f24edf533c282467eb3ea4b3dd7cb4ad5ff2531a863254",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5390b1ba2d8b",
+      "text": "Pour choisir un logiciel IA de comptabilité, partez d'une tâche complète plutôt que d'une liste de fonctions : entrée de la pièce, exception, reprise par le collaborateur et trace de la décision. Comparez d'abord ce que couvre votre outil actuel. Testez les solutions envisagées sur le même jeu fictif, puis vérifiez leur intégration, les accès et la maintenance. La grille ci-dessous est une méthode de choix, pas un classement d'éditeurs.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-40231b037b7f",
+      "text": "Pourquoi une liste de fonctions ne tranche pas",
+      "claimIds": []
+    },
+    {
+      "id": "unit-29248e38e490",
+      "text": "Deux tâches chronophages ne suivent pas le même chemin : récupérer une facture, rapprocher une écriture, expliquer un écart ou préparer un message. La règle souvent non écrite est de savoir quel cas doit sortir du flux nominal et qui reprend ce cas. Sans elle, une démonstration de saisie rapide ne prouve pas que l'équipe sait traiter un doublon.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-22b594f6dcc1",
+      "text": "Décrire un seul parcours avant de comparer les outils",
+      "claimIds": []
+    },
+    {
+      "id": "unit-cf977c349c2a",
+      "text": "Prenez une tâche récurrente et suivez-la de l'entrée à la validation. Exemple fictif : une pièce arrive pour un dossier ; l'équipe doit la retrouver, vérifier son rattachement à la période, relever une anomalie éventuelle, puis valider le traitement. Notez à chaque étape : source des données, outil ouvert, personne responsable, condition d'arrêt et trace laissée. Si deux collaborateurs ne donnent pas la même réponse sur la pièce manquante ou la mauvaise période, le problème n'est pas encore un problème de modèle d'IA : c'est une règle à clarifier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-674bcaeb516f",
+      "text": "Avant de commencer : préparer une comparaison équitable",
+      "claimIds": []
+    },
+    {
+      "id": "unit-75ec70b350cc",
+      "text": "Choisissez une seule famille de pièces et un seul parcours. Une facture reçue, par exemple, ne suit pas nécessairement le même chemin qu'un justificatif transmis après relance. Écrivez ce que votre équipe appelle « reçu », « prêt à contrôler » et « traité ». Désignez la personne qui tranche lorsqu'une pièce est illisible, en double ou rattachée à une période contestée. Ce vocabulaire commun évite de comparer une extraction de données dans un outil avec un traitement complet dans un autre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b4dea31d30b6",
+      "text": "Constituez ensuite un petit dossier entièrement fictif, sans document client : une pièce nominale, sa copie reconnaissable comme doublon, une pièce dont la période ne correspond pas à celle attendue et un cas sans identifiant exploitable. Gardez la même entrée et les mêmes décisions attendues pour tous les essais. Les quatre sorties ci-dessous viennent uniquement d'une règle locale ; elles ne sont pas des observations d'un logiciel du marché. Pour comparer des produits, faites exécuter ces entrées dans chaque environnement candidat et consignez séparément les sorties observées.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-30ddda422ef0",
+      "text": "Relevez par solution la version montrée, la sortie, les étapes manuelles et la trace après correction. Sans démonstration reproductible, inscrivez « non vérifié », pas « absent ».",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4b3a0b336937",
+      "text": "Comparer ce qui compte vraiment",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c8759a5b9e06",
+      "text": "| Question à poser pendant une démonstration | Essai vérifiable sur jeu fictif | Signal d'alerte | | --- | --- | --- | | La tâche entière est-elle couverte ? | Suivre une pièce, une exception puis une reprise dans le même scénario | La démo ne montre que l'extraction ou la génération du texte | | Dans quels outils l'équipe reprend-elle ? | Ouvrir le résultat depuis le flux actuel, sans double saisie supposée | Export manuel indispensable mais absent du coût d'usage | | Comment une proposition devient-elle une décision ? | Refuser la proposition, corriger le motif, vérifier la trace | Validation automatique opaque ou contrôle impossible | | Que se passe-t-il pour une pièce ambiguë ? | Tester deux dates, un doublon et une pièce absente | Le cas douteux prend silencieusement la voie nominale | | Qui maintient les règles ? | Modifier une règle fictive, puis rejouer un ancien cas | Aucun propriétaire, aucune procédure de retour arrière | | Où vont les données ? | Faire préciser accès, hébergement, conservation, sous-traitants et export | Réponse générique sans conditions contractuelles vérifiables |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e453d7b6572f",
+      "text": "Cette grille n'est pas une note universelle. Nous avons rejoué sa logique de tri sur le jeu fictif présenté plus bas. Ce n'est pas un test de Dext, Pennylane ou de tout autre éditeur. Il reste à faire le même essai dans les outils que le cabinet utilise déjà, puis avec la solution envisagée. Mesurez alors le geste complet, y compris la préparation du dossier et le contrôle humain, plutôt que le seul temps mis à produire une suggestion.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-03e030fb4507",
+      "text": "Transformer la démonstration en décision de cabinet",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2af10fc17128",
+      "text": "Préparez une feuille par solution, y compris le logiciel déjà utilisé. Pour chacune des questions du tableau, inscrivez le cas fictif présenté, l'étape réellement montrée, la personne qui reprend la main et la trace consultable après sa décision. Employez trois états : « vérifié sur le cas », « à configurer puis rejouer », « non vérifié ». Une fonction annoncée dans une fiche commerciale reste « non vérifiée » tant que le parcours complet n'a pas été montré.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d7f351a23bef",
+      "text": "| Cas à refaire à l'identique | À observer par l'équipe | Si la démonstration s'arrête trop tôt | | --- | --- | --- | | Pièce nominale reçue | La proposition, puis la validation distincte du collaborateur | Noter « non vérifié » pour la validation, même si l'extraction fonctionne | | Même pièce reçue deux fois | Une exception, son motif, sa reprise et l'état final du dossier | Demander un rejeu du doublon ; ne pas supposer que le produit le reconnaît | | Période différente de la période attendue | La période lue, le motif d'écart et la correction humaine tracée | Suspendre le choix sur ce parcours tant que la correction n'est pas visible | | Pièce sans donnée exploitable | Un arrêt lisible sans écriture, puis le chemin de reprise | Noter le cas « non vérifié » si l'écran ne montre que le nominal |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f630e102cb81",
+      "text": "Avant de choisir, faites rejouer les cases « à configurer » sur la configuration réellement proposée. Si une case décisive reste « non vérifiée », ne la convertissez ni en échec du vendeur ni en succès présumé : demandez une démonstration complémentaire. Comparez ensuite le parcours avec les accès, l'export des pièces et motifs et la personne chargée de maintenir la règle. La décision n'est pas la somme de coches : elle dépend des exceptions que votre équipe doit effectivement traiter.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a6e21236d0f3",
+      "text": "Relever la sortie, pas seulement la démonstration",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e6f456ef7f9e",
+      "text": "Pour chaque ligne, notez « montré », « à configurer » ou « non vérifié ». Demandez qui voit l'exception et où : dans une file de travail, dans le dossier ou seulement dans un courriel ? Faites corriger une proposition par le collaborateur, puis revenez au dossier : la correction est-elle visible et attribuable au bon traitement ? Si la démonstration saute directement à l'écriture finale, demandez le chemin inverse, depuis l'anomalie jusqu'à la décision. Ne supposez ni l'existence ni l'absence d'une fonction à partir de cette seule grille.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9627ada11ba3",
+      "text": "Quand la pièce revient corrigée, peut-on la relier à la demande initiale et reconnaître ce qui a déjà été validé ? Comparez le dossier après l'exception, pas seulement le champ extrait à l'entrée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-efd3953f9715",
+      "text": "La frontière. Une règle locale peut trier un cas fictif et proposer un statut ; la pièce et son rattachement attendent vérification. L'imputation, le choix du logiciel et la décision de traiter l'exception restent humains.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2f34a8edd1d4",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | | --- | --- | --- | | Proposition de statut et motif sur un jeu fictif | Vérification de la pièce et de la période | Choix de l'outil, correction de l'imputation et reprise d'un dossier ambigu |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8b5dbbacc30a",
+      "text": "La proposition. Dans une mission, nous écrivons le parcours et sa règle d'arrêt à partir des outils du cabinet ; le collaborateur confirme ou corrige la proposition avant toute intégration. La grille ci-dessous demande une démonstration des cas à l'éditeur, sans présumer qu'il les couvre ni prétendre qu'une intégration a été livrée pour ce jeu fictif.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7f5ed46fa95f",
+      "text": "L'arrêt. Empreinte absente, doublon possible ou période ambiguë : aucune écriture automatique, un motif lisible et un cas à reprendre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5807ffad9930",
+      "text": "Le jeu d'essai. Quatre cas fictifs ont été rejoués par une règle locale : nominal, doublon, période ambiguë et donnée absente. Aucun produit commercial n'a été testé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ef23f64f878a",
+      "text": "| Cas joué | Sortie obtenue par notre règle éditoriale | Décision encore humaine | | --- | --- | --- | | D-001, période avril, empreinte nouvelle | propositionavalider ; aucune écriture | Vérifier la pièce et l'imputation | | Même empreinte déjà vue | exception ; motif doublon probable ; aucune écriture | Comparer avec la pièce reçue précédemment | | Pièce datée de mars pour une période attendue en avril | exception ; motif période ambiguë ; aucune écriture | Confirmer la période correcte | | Empreinte absente | arret ; motif donnée absente ; aucune écriture | Obtenir une pièce exploitable |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1df2f860e0f2",
+      "text": "Ces états décrivent le protocole à exiger lors d'une démonstration, non la sortie mesurée d'un logiciel commercial.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-104cfb75264f",
+      "text": "La règle dans les mots du cabinet",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c5e342407b24",
+      "text": "La table suivante traduit le protocole fictif local, pas la configuration d'un éditeur. « Empreinte » désigne ici l'identifiant de comparaison utilisé dans nos cas fictifs ; elle ne garantit pas qu'un logiciel détecte tous les doublons. Un changement de nom ou de format de fichier, par exemple, demanderait un essai distinct. La règle ne produit ni imputation ni écriture comptable.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d21aa0ebd4b9",
+      "text": "| Déclencheur | Condition vérifiée dans le jeu fictif | Proposition ou arrêt | Reprise par l'équipe | | --- | --- | --- | --- | | Pièce reçue | Empreinte présente, nouvelle et période attendue | propositionavalider | Vérifier pièce et imputation avant toute décision | | Pièce reçue à nouveau | Empreinte déjà rencontrée | exception : doublon probable | Comparer les deux pièces, ne pas supprimer par automatisme | | Pièce d'une autre période | Période reçue différente de la période attendue | exception : période ambiguë | Confirmer la période et documenter le choix | | Pièce incomplète | Empreinte absente | arret : donnée absente | Réclamer un élément exploitable avant de poursuivre |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f9c89d1c59a0",
+      "text": "Ce que la proposition refuse",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6974472899ed",
+      "text": "Un doublon probable n'est pas une pièce à effacer : deux fichiers identiques peuvent demander un examen du dossier et de leur provenance. Une période différente n'est pas une erreur à corriger sans contexte : la date portée sur la pièce et la période de travail ne répondent pas à la même question. Une donnée absente ne s'invente pas pour alimenter le flux. Dans ces trois situations, le motif d'exception doit être lisible par la personne qui reprend le dossier ; la règle locale cesse le traitement sans écriture.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4e5c91edf437",
+      "text": "Demandez à voir une exception dans l'interface réelle, puis faites-la traiter par la personne qui utiliserait l'outil. Si seule une vidéo du cas nominal est disponible, les exceptions restent non vérifiées, et non déclarées absentes.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0536301825ac",
+      "text": "Trois choix possibles, pas un classement de marques",
+      "claimIds": []
+    },
+    {
+      "id": "unit-906fea69ff34",
+      "text": "Mieux utiliser le logiciel déjà présent. Si une fonction couvre le cas nominal et que les exceptions sont visibles et traitables, configurer la règle et former l'équipe peut suffire. Vérifiez sur une période fictive avant de changer le processus réel.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-41157b772e8c",
+      "text": "Ajouter une automatisation ciblée dans le parcours existant. Si le point de friction est le passage entre deux outils ou la vérification répétitive d'un état, une automatisation peut préparer le rapprochement ou signaler une divergence sans déplacer toute l'équipe vers une nouvelle interface. Il faut décrire la source de vérité, les cas d'arrêt, le droit de corriger et la maintenance.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-19f3129b0953",
+      "text": "Changer de logiciel. Si le flux existant ne permet pas d'obtenir les données nécessaires ou ne laisse aucune trace de contrôle, un autre outil peut être justifié. Mais comptez la migration, la cohabitation, la formation, la reprise des exceptions et la possibilité de ressortir les données, pas seulement le prix affiché.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5d8def65a991",
+      "text": "Les comparatifs de Dext et de Pennylane peuvent aider à dresser des questions ; ils décrivent aussi leurs propres offres. Testez directement les capacités et conditions contractuelles du produit effectivement envisagé. La CNIL conseille de « partir de besoins concrets » pour choisir un système d'IA générative.",
+      "claimIds": [
+        "claim-unit-5d8def65a991-1"
+      ]
+    },
+    {
+      "id": "unit-d18a00bf00fb",
+      "text": "L'Ordre des experts-comptables propose des outils concrets et pratiques sur la data et l'IA pour cadrer l'usage en cabinet.",
+      "claimIds": [
+        "claim-unit-d18a00bf00fb-1"
+      ]
+    },
+    {
+      "id": "unit-d1a753e6d63c",
+      "text": "Lors de l'essai, demandez où reste la pièce : Service Public indique qu'« une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale ». Cette exigence sur les documents n'établit aucune capacité d'archivage d'un logiciel candidat : contrôlez sa documentation et le contrat applicable.",
+      "claimIds": [
+        "claim-unit-d1a753e6d63c-1"
+      ]
+    },
+    {
+      "id": "unit-59fa2e92419a",
+      "text": "Une décision simple à prendre maintenant : choisissez une tâche, construisez un jeu fictif avec le cas normal, un doublon et une exception ; demandez aux solutions comparées de montrer ces trois résultats, la reprise par un collaborateur et leur trace. Le choix devient une décision de travail, pas un concours de démonstrations.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-52e5203f89c2",
+      "text": "Erreurs fréquentes pendant la comparaison",
+      "claimIds": []
+    },
+    {
+      "id": "unit-92014f7e9467",
+      "text": "- Comparer des étapes différentes. Si une solution reçoit un dossier préparé et l'autre des pièces brutes, le temps et le résultat ne décrivent pas le même travail. Reprenez le parcours depuis l'entrée commune. - Prendre une proposition pour une validation. Relevez le moment précis où un collaborateur accepte, corrige ou refuse, puis vérifiez l'état du dossier après ce geste. - Noter « non » quand rien n'a été montré. Une fonction non démontrée est « non vérifiée » ; demandez un essai et ses conditions avant de l'écarter. - Oublier la sortie des données. Demandez comment récupérer pièces, motifs et décisions pour reprendre le travail si le cabinet change d'outil. Une exportation annoncée ne prouve pas que les éléments utiles seront lisibles dans votre parcours.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6cacf8b23eef",
+      "text": "Un logiciel IA peut-il traiter nos pièces sans validation ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ae7cfc3dcf4d",
+      "text": "La réponse dépend du parcours, du paramétrage et de la décision que le cabinet entend garder. Dans la grille proposée ici, une suggestion n'est jamais une écriture : même le cas nominal attend la vérification de la pièce et de l'imputation. Demandez à l'éditeur de montrer l'étape de validation et la possibilité de refuser une proposition, sur un dossier fictif.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c95ec00d1352",
+      "text": "Faut-il remplacer le logiciel comptable déjà en place ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-45ebe2bab258",
+      "text": "Commencez par rejouer le parcours dans l'outil existant. S'il couvre l'entrée et laisse les exceptions visibles, une règle plus claire ou une automatisation ciblée entre les outils peut suffire. Un changement se justifie sur les blocages constatés et sur le coût de reprise du travail, pas sur la présence du mot « IA » dans une fiche produit.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-be8c795fca49",
+      "text": "Comment comparer deux démonstrations sans classement artificiel ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-db3cb4f0828e",
+      "text": "Donnez le même jeu fictif et les mêmes décisions attendues aux deux interlocuteurs. Consignez pour chacun les étapes réellement montrées, celles réalisées à la main et celles restées non vérifiées ; ne transformez pas ce relevé en note générale pour tous les cabinets. Revenez avec votre équipe sur les exceptions et la trace après correction : c'est là que les parcours deviennent comparables.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6d34ce172d47",
+      "text": "Que faire si la pièce est en double ou rattachée à la mauvaise période ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3c77e5cf257b",
+      "text": "Dans notre simulation locale, le doublon probable et la période ambiguë sortent en exception sans écriture. Le collaborateur compare les pièces ou confirme la période avant de poursuivre. Pour un produit envisagé, demandez à voir ces mêmes cas dans le produit : la sortie de notre règle fictive ne dit rien de sa capacité à les reconnaître.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7ba8c7bd9738",
+      "text": "Quelles questions poser sur les données et leur conservation ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-056ebe126f50",
+      "text": "Demandez où se trouvent les pièces, qui y accède, ce qui est conservé et comment les récupérer avec les décisions associées. Une durée générique affichée par un éditeur ne suffit pas à qualifier votre propre dossier : la fiche de Service Public sur la conservation des documents d'entreprise distingue les documents et leurs durées. Faites vérifier le cadre applicable à vos pièces avant de retenir une configuration.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5ca52e3ce2f0",
+      "text": "Avant de comparer deux logiciels, faites décrire puis rejouer la même tâche entière, y compris la pièce absente, le doublon et la reprise par une personne. Un résultat produit par notre règle fictive ne prouve aucune capacité d'un éditeur : demandez à voir la sortie de chaque solution testée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5b980ba59915",
+      "text": "Pour préciser le parcours à comparer, commencez par la carte des tâches du cabinet. Si l'enjeu est d'abord de produire une demande de pièce, le patron de prompt sur un cas fictif aide à écrire les conditions d'arrêt sans présumer d'une sortie de ChatGPT. Notre méthode décrit la recette dans les outils existants. Chez Memlia, nous partons de la tâche et de sa règle ; l'IA prépare, l'humain décide. Confiez-nous cette tâche si vous voulez éprouver le parcours avant de changer d'outil.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-5d8def65a991-1",
+      "unitId": "unit-5d8def65a991",
+      "claim": "partir de besoins concrets",
+      "type": "information",
+      "sourceIds": [
+        "cnil-choix-ia"
+      ],
+      "sourceExcerpts": {
+        "cnil-choix-ia": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté"
+      },
+      "checkedAt": "2026-09-29",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-29",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-choix-ia",
+            "sourceUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "verifiedUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "excerpt": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté",
+            "context": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté",
+            "contextSha256": "472839e4b576f21efe9c699389c76e7d7858eca4ecc1e9abbc85c95b617a1ebc",
+            "citation": {
+              "text": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté",
+              "sha256": "472839e4b576f21efe9c699389c76e7d7858eca4ecc1e9abbc85c95b617a1ebc",
+              "sourceContentSha256": "63f9767046b4d9b962a999b9533d230fc0f6175410a8c83424da6df48740726e",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+                "checkedAt": "2026-09-29",
+                "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 836,
+                  "endLine": 836
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "partir",
+                "besoins",
+                "concrets"
+              ],
+              "reasoning": "La citation, relevée à la ligne 836 de la copie locale de CNIL, porte les mêmes entités que le claim (partir, besoins, concrets) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Conseil de choix d'un système d'IA générative, non obligation réglementaire : la CNIL recommande explicitement de partir de besoins concrets.",
+            "checkedAt": "2026-09-29"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-d18a00bf00fb-1",
+      "unitId": "unit-d18a00bf00fb",
+      "claim": "des outils concrets et pratiques sur la data et l'IA",
+      "type": "information",
+      "sourceIds": [
+        "ordre-outils-ia"
+      ],
+      "sourceExcerpts": {
+        "ordre-outils-ia": "le CNOEC vous propose des outils concrets et pratiques pour passer à l’action dès aujourd’hui"
+      },
+      "checkedAt": "2026-09-29",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-29",
+        "sourceResults": [
+          {
+            "sourceId": "ordre-outils-ia",
+            "sourceUrl": "https://www.experts-comptables.fr/travaux-data-et-ia",
+            "verifiedUrl": "https://www.experts-comptables.fr/travaux-data-et-ia",
+            "excerpt": "le CNOEC vous propose des outils concrets et pratiques pour passer à l’action dès aujourd’hui",
+            "context": "Pleinement engagé dans cette mutation technologique, le CNOEC vous propose des outils concrets et pratiques pour passer à l’action dès aujourd’hui.",
+            "contextSha256": "eb01e3ad357ece4890b7e1da18b385daaf2fce279298d26f7d039accc044a3e3",
+            "citation": {
+              "text": "le CNOEC vous propose des outils concrets et pratiques pour passer à l’action dès aujourd’hui",
+              "sha256": "f687f5172e80df17bd85e8753e6e03bd2580e947442e1067c11d7216f60d7d2a",
+              "sourceContentSha256": "1b650c10a7f081d705a617a8bddb4ddc6873fb83593b4914e3ad2827ba9c64d2",
+              "coordinates": {
+                "finalUrl": "https://www.experts-comptables.fr/travaux-data-et-ia",
+                "checkedAt": "2026-09-29",
+                "title": "Travaux Data et IA",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 380,
+                  "endLine": 380
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "outils",
+                "concrets",
+                "pratiques"
+              ],
+              "reasoning": "La citation, relevée à la ligne 380 de la copie locale de Conseil national de l’Ordre des experts-comptables, porte les mêmes entités que le claim (outils, concrets, pratiques) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Le site de l’Ordre annonce ses propres outils, sans certifier un produit particulier.",
+            "checkedAt": "2026-09-29"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-d1a753e6d63c-1",
+      "unitId": "unit-d1a753e6d63c",
+      "claim": "une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "service-public-pieces"
+      ],
+      "sourceExcerpts": {
+        "service-public-pieces": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
+      },
+      "checkedAt": "2026-09-29",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-29",
+        "sourceResults": [
+          {
+            "sourceId": "service-public-pieces",
+            "sourceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+            "verifiedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+            "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+            "context": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+            "contextSha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
+            "citation": {
+              "text": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+              "sha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
+              "sourceContentSha256": "5096184c2544e1a9a98cf8662e413398b367941160fa566a738d08429decfbc9",
+              "coordinates": {
+                "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+                "checkedAt": "2026-09-29",
+                "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 307,
+                  "endLine": 307
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "entreprise",
+                "doit",
+                "conserver",
+                "document",
+                "emis",
+                "recu",
+                "exercice",
+                "activite",
+                "pendant",
+                "duree",
+                "minimale"
+              ],
+              "reasoning": "La citation, relevée à la ligne 307 de la copie locale de Service Public, porte les mêmes entités que le claim (entreprise, doit, conserver, document, emis, recu, exercice, activite, pendant, duree, minimale) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation exacte de Service Public ; aucune durée spécifique attribuée au logiciel.",
+            "checkedAt": "2026-09-29"
+          }
+        ]
+      }
+    }
+  ]
+}

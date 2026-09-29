@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-  "articleSha256": "cc9f53d2370a59412bbcd7d2d2b35ba934d2f01e2730fa1e8c8b2504fd576c72",
+  "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -44,8 +44,8 @@
       "claimIds": []
     },
     {
-      "id": "unit-a66730602ec3",
-      "text": "Chaque famille ci-dessous est décrite par sa règle typique, puis par sa frontière, en trois colonnes. Ce qui se prépare seul : l’outil calcule, trie, relance, contrôle, sans que personne n’intervienne. Ce qui attend une validation : l’outil propose, une personne du cabinet valide avant que quoi que ce soit ne parte ou ne s’écrive. Ce qui reste humain : le jugement professionnel, la relation, la décision engageante. Cette frontière n’est pas un aveu de faiblesse de l’outil, c’est la règle de cabinet elle-même. Ce classement est une méthode Memlia, née d’un cabinet observé de près et de deux postes documentés ; il se corrige à chaque cabinet rencontré.",
+      "id": "unit-49b56e323029",
+      "text": "Chaque famille ci-dessous est décrite par sa règle typique, puis par sa frontière, en trois colonnes. Ce qui se prépare seul : l’outil calcule, trie, prépare une relance, contrôle, sans que personne n’intervienne. Ce qui attend une validation : l’outil propose, une personne du cabinet valide avant que quoi que ce soit ne parte ou ne s’écrive. Ce qui reste humain : le jugement professionnel, la relation, la décision engageante. Cette frontière n’est pas un aveu de faiblesse de l’outil, c’est la règle de cabinet elle-même. Ce classement est une méthode Memlia, née d’un cabinet observé de près et de deux postes documentés ; il se corrige à chaque cabinet rencontré.",
       "claimIds": []
     },
     {
@@ -74,6 +74,11 @@
       "claimIds": []
     },
     {
+      "id": "unit-1bfcd6015667",
+      "text": "Pour rédiger la première demande de pièce sans perdre la décision d'envoi, voyez le patron de prompt sur cas fictif. Si vous comparez des outils plutôt que des formulations, la grille de choix d'un logiciel IA comptable fait rejouer la pièce, l'exception et la reprise par l'équipe, sans classement de marques.",
+      "claimIds": []
+    },
+    {
       "id": "unit-57d0aa128c64",
       "text": "Le lettrage et le rapprochement bancaire obéissent à des règles d’appariement que le cabinet connaît par cœur mais écrit rarement : montant identique, référence présente, tolérance de quelques centimes, délai entre facture et règlement. Écrites, ces règles deviennent une proposition d’écriture et une liste d’écarts typés. Les factures d’achat, les ventes importées d’une caisse ou d’une boutique en ligne, les notes de frais, les tableaux d’amortissement et d’emprunt suivent la même logique : un import sans ressaisie, un contrôle de schéma, une écriture récurrente générée puis validée.",
       "claimIds": []
@@ -91,8 +96,8 @@
       ]
     },
     {
-      "id": "unit-3ddf711ef37e",
-      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | La relance d’une pièce manquante, à cadence, jusqu’à réception | L’écriture proposée par le lettrage ou le rapprochement | La qualification d’une pièce ambiguë | | L’import d’un export de caisse ou de facturation, avec contrôle de schéma | La checklist de révision remplie, avant la revue du réviseur | L’écriture d’inventaire qui engage un jugement | | Le nommage et le classement d’une pièce reçue | La liste des écarts à traiter avant clôture | La décision de clôturer |",
+      "id": "unit-2ef5820a09ac",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Le brouillon de relance d’une pièce manquante, à cadence, jusqu’à réception | L’envoi de cette relance et l’écriture proposée par le lettrage ou le rapprochement | La qualification d’une pièce ambiguë | | L’import d’un export de caisse ou de facturation, avec contrôle de schéma | La checklist de révision remplie, avant la revue du réviseur | L’écriture d’inventaire qui engage un jugement | | Le nommage et le classement d’une pièce reçue | La liste des écarts à traiter avant clôture | La décision de clôturer |",
       "claimIds": []
     },
     {
@@ -133,8 +138,8 @@
       ]
     },
     {
-      "id": "unit-df3baa4f421c",
-      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | La relance des variables de paie manquantes | Le contrôle de cohérence d’un bulletin, écarts listés | La décision de déposer | | Le statut de chaque dossier du pôle social, par étape | La qualification d’un retour après dépôt | La correction qui engage les droits d’un salarié |",
+      "id": "unit-52a3f08ea17d",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Le brouillon de relance des variables de paie manquantes | L’envoi de cette relance et le contrôle de cohérence d’un bulletin, écarts listés | La décision de déposer | | Le statut de chaque dossier du pôle social, par étape | La qualification d’un retour après dépôt | La correction qui engage les droits d’un salarié |",
       "claimIds": []
     },
     {
@@ -210,16 +215,18 @@
       "claimIds": []
     },
     {
-      "id": "unit-9c875b69f4de",
-      "text": "Quatre familles qui ne sont pas des tâches de production mais qui les conditionnent toutes. L’IA générative et les agents préparent des brouillons, des résumés, des propositions ; ils ne décident pas. Les connecteurs, les imports et la synchronisation relient les logiciels par interface quand elle existe, par fichiers sinon. Le règlement européen sur l’IA fixe des obligations à l’utilisateur, à relire sur le texte et non sur un billet. Et les données personnelles encadrent tout : le cabinet est responsable de traitement pour ses propres fichiers et sous-traitant pour ceux de ses clients.",
-      "claimIds": []
+      "id": "unit-1dc9c56e18bd",
+      "text": "Quatre familles qui ne sont pas des tâches de production mais qui les conditionnent toutes. L’IA générative et les agents préparent des brouillons, des résumés, des propositions ; ils ne décident pas. Pour rédiger une demande de pièce, voyez le prompt sur un cas fictif et ses conditions d’arrêt. Les connecteurs, les imports et la synchronisation relient les logiciels par interface quand elle existe, par fichiers sinon. Les données personnelles encadrent tout : avant de brancher une règle, il faut identifier la finalité, les accès et le rôle de chaque partie pour le traitement concerné. Ce rôle ne se déduit pas du seul fait que le fichier vient d’un client. La CNIL rappelle que les acteurs doivent déterminer leur qualification au cas par cas : qui décide de la finalité et des moyens essentiels, qui agit sur instruction ? Un cabinet peut avoir des rôles différents selon le traitement ; il faut les qualifier et les documenter, non décréter un rôle unique à partir de l’origine du fichier.",
+      "claimIds": [
+        "claim-unit-1dc9c56e18bd-1"
+      ]
     },
     {
-      "id": "unit-f047a1270724",
-      "text": "Deux règles de la CNIL suffisent à borner la plupart des automatisations. La première est la minimisation : les données traitées doivent être adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées. Un outil qui relance des pièces n’a pas besoin des bulletins de paie. La seconde porte sur la durée : selon la fiche de la CNIL sur les durées de conservation, la définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement. Une règle de purge fait donc partie de toute automatisation qui garde des données, et la minimisation se vérifie avant d’écrire la première ligne.",
+      "id": "unit-2614d7101a11",
+      "text": "Deux principes de la CNIL sont à examiner pour chaque traitement, parmi d’autres obligations RGPD. Le premier est la minimisation : les données traitées doivent être adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées. Un outil qui relance des pièces n’a pas besoin des bulletins de paie. La seconde porte sur la durée : selon la fiche de la CNIL sur les durées de conservation, la définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement. Une règle de purge fait donc partie de toute automatisation qui garde des données, et la minimisation se vérifie avant d’écrire la première ligne.",
       "claimIds": [
-        "claim-unit-f047a1270724-1",
-        "claim-unit-f047a1270724-2"
+        "claim-unit-2614d7101a11-1",
+        "claim-unit-2614d7101a11-2"
       ]
     },
     {
@@ -370,6 +377,64 @@
   ],
   "claims": [
     {
+      "id": "claim-unit-1dc9c56e18bd-1",
+      "unitId": "unit-1dc9c56e18bd",
+      "claim": "les acteurs doivent déterminer leur qualification au cas par cas",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-roles"
+      ],
+      "sourceExcerpts": {
+        "cnil-roles": "les acteurs doivent déterminer leur qualification au cas par cas."
+      },
+      "checkedAt": "2026-09-29",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-29",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-roles",
+            "sourceUrl": "https://cnil.fr/fr/rgpd-comment-bien-identifier-son-role",
+            "verifiedUrl": "https://cnil.fr/fr/rgpd-comment-bien-identifier-son-role",
+            "excerpt": "les acteurs doivent déterminer leur qualification au cas par cas.",
+            "context": "Responsable du traitement, seul ou conjointement avec d’autres organismes ou sous-traitant , les acteurs doivent déterminer leur qualification au cas par cas.",
+            "contextSha256": "6b3a3925e2df43ac01c36b3f6e0d747f3ee6aff11124d7a9b34c53f15f86d308",
+            "citation": {
+              "text": "les acteurs doivent déterminer leur qualification au cas par cas.",
+              "sha256": "a7e399081ad228603e3ae4114c792128f007d85020258128621a0271f566fe1a",
+              "sourceContentSha256": "0aa8bb40f50528952782ebbf7cd9515e5e2a33b17bc2b4a0c862b75bec98ce11",
+              "coordinates": {
+                "finalUrl": "https://cnil.fr/fr/rgpd-comment-bien-identifier-son-role",
+                "checkedAt": "2026-09-29",
+                "title": "Responsable du traitement, sous-traitants : comment bien identifier son rôle ?",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 7,
+                  "endLine": 7
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "acteurs",
+                "doivent",
+                "determiner",
+                "leur",
+                "qualification"
+              ],
+              "reasoning": "La citation, relevée à la ligne 7 de la copie locale de CNIL, porte les mêmes entités que le claim (acteurs, doivent, determiner, leur, qualification) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La fiche générale de la CNIL demande une qualification factuelle au cas par cas ; l'article ne déduit aucun rôle juridique de la provenance du fichier.",
+            "checkedAt": "2026-09-29"
+          }
+        ]
+      }
+    },
+    {
       "id": "claim-unit-279d5bd8bf20-1",
       "unitId": "unit-279d5bd8bf20",
       "claim": "une entreprise doit conserver tout document émis ou reçu dans l’exercice de son activité pendant une durée minimale",
@@ -380,11 +445,11 @@
       "sourceExcerpts": {
         "sp-conservation": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-09-29",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-09-29",
         "sourceResults": [
           {
             "sourceId": "sp-conservation",
@@ -396,10 +461,10 @@
             "citation": {
               "text": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
               "sha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
-              "sourceContentSha256": "29da0e6ec839a0d63b7cf4f20889cf372f2de7daac5d596b7d0fec6050d08d17",
+              "sourceContentSha256": "fffbe0ab21c00944167fe668fe08deca5ef83ceac9dc697d7f61d67cedd332b1",
               "coordinates": {
                 "finalUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-09-29",
                 "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
                 "locator": {
                   "kind": "line-range",
@@ -428,7 +493,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La phrase de Service-Public est reprise à l’identique, seule l’apostrophe typographique diffère.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-09-29"
           }
         ]
       }
@@ -444,11 +509,11 @@
       "sourceExcerpts": {
         "net-crm": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-09-29",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-09-29",
         "sourceResults": [
           {
             "sourceId": "net-crm",
@@ -460,10 +525,10 @@
             "citation": {
               "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
               "sha256": "ef509c5e2bb80ff3b9aebd039458d169e786ca17dbb00478b7c5774d8192c754",
-              "sourceContentSha256": "ae8e495b153d8948a88031af88740f2ae502e49ca052c5fbcd2b2aa2082dd214",
+              "sourceContentSha256": "9a6b8de31b36259329bdf8c110680cee10c1127166e1c47c22801f09ebbb653f",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-09-29",
                 "title": "Les comptes rendus métiers DSN",
                 "locator": {
                   "kind": "line-range",
@@ -498,7 +563,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition officielle du compte rendu métier reprise à l’identique depuis Net-entreprises.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-09-29"
           }
         ]
       }
@@ -514,11 +579,11 @@
       "sourceExcerpts": {
         "impots-calendrier": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel."
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-09-29",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-09-29",
         "sourceResults": [
           {
             "sourceId": "impots-calendrier",
@@ -530,10 +595,10 @@
             "citation": {
               "text": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel.",
               "sha256": "9ac9ef6b56935e495b65b71a3269d4f8e3cf5c7386eb8cca7a1686ca5c7d0fc8",
-              "sourceContentSha256": "4dfb72a30f6375ccee31b39678d77e85af50129caf36378b596164c5c4850522",
+              "sourceContentSha256": "15c908d3ce9a54af55fd1c9cdc96d0d1b477eb2e4f1968471322a3a189c4bc7b",
               "coordinates": {
                 "finalUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-09-29",
                 "title": "Calendrier fiscal des professionnels",
                 "locator": {
                   "kind": "line-range",
@@ -557,14 +622,14 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Fenêtre de dépôt et de paiement de la TVA mensuelle de septembre 2026 telle que publiée par le calendrier fiscal officiel.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-09-29"
           }
         ]
       }
     },
     {
-      "id": "claim-unit-f047a1270724-1",
-      "unitId": "unit-f047a1270724",
+      "id": "claim-unit-2614d7101a11-1",
+      "unitId": "unit-2614d7101a11",
       "claim": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
       "type": "legal-reglementaire",
       "sourceIds": [
@@ -573,11 +638,11 @@
       "sourceExcerpts": {
         "cnil-principes": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-09-29",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-09-29",
         "sourceResults": [
           {
             "sourceId": "cnil-principes",
@@ -589,10 +654,10 @@
             "citation": {
               "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
               "sha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
-              "sourceContentSha256": "3b02aa776fd69392b051e713f3a002fa252d7be63ffd19ae32781093fed2af42",
+              "sourceContentSha256": "1c73164bc14a3174abe3737f4551cdab68ee530893619a286ad9f60bf8259c7b",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-09-29",
                 "title": "Règlement européen sur la protection des données, chapitre 2 : principes",
                 "locator": {
                   "kind": "line-range",
@@ -618,14 +683,14 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Principe de minimisation, article 5 du RGPD, cité mot pour mot depuis le texte publié par la CNIL.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-09-29"
           }
         ]
       }
     },
     {
-      "id": "claim-unit-f047a1270724-2",
-      "unitId": "unit-f047a1270724",
+      "id": "claim-unit-2614d7101a11-2",
+      "unitId": "unit-2614d7101a11",
       "claim": "la définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement",
       "type": "legal-reglementaire",
       "sourceIds": [
@@ -634,11 +699,11 @@
       "sourceExcerpts": {
         "cnil-durees": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement."
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-09-29",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-09-29",
         "sourceResults": [
           {
             "sourceId": "cnil-durees",
@@ -650,10 +715,10 @@
             "citation": {
               "text": "La définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement.",
               "sha256": "461c2f50a632e8d85d7fdbd75beaa13bb871fc5651adb58ce1d46fd441da28ee",
-              "sourceContentSha256": "67697218a91859f6a1272197c83f05d986227c77c53cd58f69f20b4a3634e3f1",
+              "sourceContentSha256": "392f8e1800d89961a4286ff0542eb2fc8e5b046bfcd250118ad78e2b0c2dde74",
               "coordinates": {
                 "finalUrl": "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-09-29",
                 "title": "Les durées de conservation des données",
                 "locator": {
                   "kind": "line-range",
@@ -681,7 +746,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Règle de la CNIL sur la fixation de la durée de conservation, reprise à l’identique.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-09-29"
           }
         ]
       }
