@@ -3,6 +3,7 @@ import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseHtml } from 'parse5';
 import { parse as parseYaml } from 'yaml';
+import { dateIntentionScellee } from './lib/blog-pipeline.mjs';
 import {
   chargerAutocompletionMesuree,
   titrePorteUneRequeteMesuree,
@@ -272,6 +273,7 @@ export function auditerContratBlog({
   dist = join(root, 'dist'),
   slugs = null,
   mesure = null,
+  au,
 } = {}) {
   const dossier = join(root, 'src/content/blog');
   const tous = existsSync(dossier)
@@ -284,21 +286,21 @@ export function auditerContratBlog({
     const { frontmatter } = lireFrontmatter(join(dossier, `${slug}.md`));
     return frontmatter?.brouillon !== true || Boolean(cheminRendu(dist, `/blog/${slug}`));
   });
-  let mesureChargee = mesure;
-  let erreurMesure = null;
-  if (!mesureChargee) {
-    try {
-      mesureChargee = chargerAutocompletionMesuree(root);
-    } catch (error) {
-      erreurMesure = error.message;
-      mesureChargee = { autocompletion: {} };
-    }
-  }
   const erreurs = demandes
     ? [...demandes].filter((slug) => !tous.includes(slug)).map((slug) => `${slug} : source article absente`)
     : [];
   const exemptions = [];
   for (const slug of selection) {
+    let mesureChargee = mesure;
+    let erreurMesure = null;
+    if (!mesureChargee) {
+      try {
+        mesureChargee = chargerAutocompletionMesuree(root, { au: dateIntentionScellee(root, slug) ?? au });
+      } catch (error) {
+        erreurMesure = error.message;
+        mesureChargee = { autocompletion: {} };
+      }
+    }
     const exemption = exemptionRubrique(slug);
     if (exemption?.valide) exemptions.push({ slug, clause: 4, date: exemption.date, raison: exemption.raison });
     if (erreurMesure) erreurs.push(`${slug} : clauses 3 et 5, ${erreurMesure}`);

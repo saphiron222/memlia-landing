@@ -35,7 +35,7 @@
     "test:blog-pipeline:unit": "node --test tests/scripts/blog-pipeline.test.mjs tests/scripts/blog-pipeline-hardening.test.mjs tests/scripts/blog-published-authority.test.mjs",
     "test:blog-pipeline:render": "node --test tests/scripts/blog-candidate-render.test.mjs",
     "test:blog-title-intent": "node --test tests/scripts/blog-title-intent.test.mjs",
-    "test:blog-contract": "node --test tests/scripts/blog-contract.test.mjs && node scripts/verify-blog-contract.mjs",
+    "test:blog-contract": "node --test tests/scripts/blog-contract.test.mjs tests/scripts/blog-intent-preservation.test.mjs && node scripts/verify-blog-contract.mjs",
     "test:resource-pipeline:unit": "node --test tests/scripts/resource-pipeline.test.mjs",
     "blog:audit": "node scripts/blog-pipeline.mjs audit",
     "service:audit": "node scripts/service-forge.mjs auditer",
