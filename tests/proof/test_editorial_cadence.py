@@ -25,6 +25,70 @@ def construire_et_verifier():
 
 
 class EditorialCadenceProof(unittest.TestCase):
+    def test_selection_refuse_toute_derive_editoriale_sans_ecrire(self):
+        jour = date(2026, 9, 30)
+        slug = 'automatiser-l-entree-en-relation-d-un-nouveau-client'
+        class JourFige(date):
+            @classmethod
+            def today(cls):
+                return jour
+
+        with patch.object(PLAN, 'date', JourFige):
+            donnees, erreurs, entrants, _ = construire_et_verifier()
+            self.assertEqual(erreurs, [])
+            with TemporaryDirectory() as dossier, patch.object(PLAN, 'ICI', Path(dossier)):
+                PLAN.ecrire_json(donnees[0], donnees[1], donnees[3], donnees[4], donnees[5], entrants)
+                PLAN.ecrire_calendrier(donnees[3], donnees[4], donnees[1], donnees[0])
+                calendrier = Path(dossier) / 'CONTENT-CALENDAR.md'
+                texte = calendrier.read_text()
+                autre = next(e for e in donnees[4] if e['slug'] != slug and e['statut'] == 'planned')
+                calendrier.write_text('\n'.join(
+                    row.replace('| planned |', '| published |') if autre['url'] in row else row
+                    for row in texte.split('\n')))
+                with patch.object(Path, 'write_text', side_effect=AssertionError('le garde écrit')):
+                    with self.assertRaisesRegex(SystemExit, 'désaligné'):
+                        PLAN.verifier_creneau(slug, jour, donnees)
+                calendrier.write_text(texte)
+                for champ, valeur in [('role', 'direction-associes'), ('intent', 'comprendre'),
+                                      ('preuve', 'Preuve modifiée'), ('secondaires', ['nouvelle requête'])]:
+                    mutant = deepcopy(donnees)
+                    next(e for e in mutant[4] if e['slug'] == slug)[champ] = valeur
+                    with self.subTest(champ=champ), patch.object(Path, 'write_text', side_effect=AssertionError('le garde écrit')):
+                        with self.assertRaisesRegex(SystemExit, 'désaligné'):
+                            PLAN.verifier_creneau(slug, jour, mutant)
+                with patch.object(Path, 'write_text', side_effect=AssertionError('le garde écrit')):
+                    PLAN.verifier_creneau(slug, jour, donnees)
+                    PLAN.verifier_creneau(next(iter(donnees[2])), jour, donnees)
+
+    def test_selection_refuse_calendrier_perime_puis_accepte_edition_du_jour(self):
+        jour = date(2026, 9, 30)
+        slug = 'automatiser-l-entree-en-relation-d-un-nouveau-client'
+        class JourFige(date):
+            @classmethod
+            def today(cls):
+                return jour
+
+        with patch.object(PLAN, 'date', JourFige):
+            donnees, erreurs, entrants, _ = construire_et_verifier()
+            self.assertEqual(erreurs, [])
+            with self.assertRaisesRegex(SystemExit, 'calendrier.*rééditer'):
+                PLAN.verifier_creneau(slug, jour, donnees)
+            with TemporaryDirectory() as dossier, patch.object(PLAN, 'ICI', Path(dossier)):
+                PLAN.ecrire_json(donnees[0], donnees[1], donnees[3], donnees[4], donnees[5], entrants)
+                PLAN.ecrire_calendrier(donnees[3], donnees[4], donnees[1], donnees[0])
+                PLAN.verifier_creneau(slug, jour, donnees)
+                plan = json.loads((Path(dossier) / 'cluster-plan.json').read_text())
+                cible = next(p for c in plan['clusters'] for p in c['posts'] if p['slug'] == slug)
+                cible['date'] = '2026-10-01'
+                (Path(dossier) / 'cluster-plan.json').write_text(json.dumps(plan))
+                with self.assertRaisesRegex(SystemExit, 'désaligné'):
+                    PLAN.verifier_creneau(slug, jour, donnees)
+                cible['date'] = jour.isoformat()
+                (Path(dossier) / 'cluster-plan.json').write_text(json.dumps(plan))
+                donnees[4][next(i for i, e in enumerate(donnees[4]) if e['slug'] == slug)]['titre'] = 'Titre source modifié après édition'
+                with self.assertRaisesRegex(SystemExit, 'désaligné'):
+                    PLAN.verifier_creneau(slug, jour, donnees)
+
     def test_check_necrit_aucun_derive_quel_que_soit_le_jour(self):
         class JourFige(date):
             jour = date(2026, 9, 29)

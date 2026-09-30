@@ -549,7 +549,7 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     return erreurs, entrants, par_semaine
 
 
-def ecrire_json(poles, familles, pilier, satellites, liens, entrants):
+def construire_json(poles, familles, pilier, satellites, liens, entrants):
     clusters = []
     for pid, pole in poles.items():
         posts = [e for e in satellites if e['pole'] == pid]
@@ -566,6 +566,11 @@ def ecrire_json(poles, familles, pilier, satellites, liens, entrants):
         'links': [{'from': l['de'], 'to': l['vers'], 'type': l['type'], 'anchor': l['ancre']} for l in liens],
         'meta': {'totalPosts': len(satellites), 'plannedPosts': sum(1 for e in satellites if e['statut'] == 'planned'), 'publishedPosts': sum(1 for e in satellites if e['statut'] == 'published'), 'totalClusters': len(clusters), 'totalFamilies': len({e['famille'] for e in satellites}), 'totalLinks': len(liens), 'estimatedWords': pilier['mots'] + sum(e['mots'] for e in satellites)},
     }
+    return data
+
+
+def ecrire_json(poles, familles, pilier, satellites, liens, entrants):
+    data = construire_json(poles, familles, pilier, satellites, liens, entrants)
     (ICI / 'cluster-plan.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     return data
 
@@ -587,10 +592,11 @@ def ecrire_md(data, familles):
     (ICI / 'cluster-plan.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
 
 
-def ecrire_calendrier(pilier, satellites, familles, poles):
+def construire_calendrier(pilier, satellites, familles, poles, jour=None):
+    jour = jour or date.today()
     tous = sorted([pilier] + satellites, key=lambda e: (e['date'], e.get('_ordre_calendrier', 0)))
     L = ['# Calendrier éditorial v3 — quatre articles et une Cicatrice par semaine', '',
-         f"Généré le {date.today().strftime('%d/%m/%Y')} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
+         f"Généré le {jour.strftime('%d/%m/%Y')} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
          '## Règles', '',
          "- Les priorités 1 → 3 restent celles du backlog (1 : la requête primaire a des suggestions d'autocomplétion Google, sauf l'angle IA publié conservé en P1 : primaire à zéro le 21/09 dans `titres-intent-2026-09-21.json`, secondaires non mesurées, questions de la SERP par famille du 19/09 dans `questions-2026-09-19.json` ; 2 : seule une requête secondaire en a ; 3 : aucune suggestion relevée sur les formulations testées — relevé `scripts/seo/questions.mjs`). --check contrôle aussi les P1 publiées du backlog sans réécrire les publications ; les trois historiques synthétiques et la série sont hors gate. Ce signal ne permet de conclure ni au volume de recherche, ni à la demande, ni à l’audience ; une formulation non mesurée ne vaut pas zéro suggestion. Ces priorités guident l'ordre des candidats compatibles avec l'alternance ; l'équilibre du stock de formats peut différer une priorité 1 sans changer sa mesure ni son angle.",
          '- Les créneaux ordinaires non figés alternent pôle et format entre deux articles successifs ; les dates publiées et `datePlanifiee` ne bougent jamais. Si un conflit daté est inévitable, `exceptionAlternance` dans le backlog désigne séparément `pole` ou `format`, chacun avec `date` (YYYY-MM-DD) et `raison` non vide ; seul le champ effectivement en conflit à cette date est dispensé. La série factuelle Cicatrices ne peut pas porter cette exception.',
@@ -616,7 +622,11 @@ def ecrire_calendrier(pilier, satellites, familles, poles):
             else:
                 L.append(f"| {e['date']} | [{e['titre']}]({e['url']}) | {familles[e['famille']]['libelle']} | {poles[e['pole']]['libelle']} | {e['format']} | {e['priorite']} | {e['statut']} |")
         L.append('')
-    (ICI / 'CONTENT-CALENDAR.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
+    return '\n'.join(L) + '\n'
+
+
+def ecrire_calendrier(pilier, satellites, familles, poles):
+    (ICI / 'CONTENT-CALENDAR.md').write_text(construire_calendrier(pilier, satellites, familles, poles), encoding='utf-8')
 
 
 def ecrire_html(data):
@@ -629,9 +639,48 @@ def ecrire_html(data):
     (ICI / 'cluster-map.html').write_text(html, encoding='utf-8')
 
 
+def verifier_creneau(slug, jour, donnees):
+    """Refuse un planned sans édition du jour alignée sur les sources."""
+    poles, familles, publies, pilier, satellites, liens, _ = donnees
+    if slug in publies:
+        return  # Une republication tient sa date du fichier publié.
+    tous = [pilier] + satellites
+    cible = next((e for e in tous if e['slug'] == slug), None)
+    if cible is None or (cible['date'], cible['statut']) != (jour.isoformat(), 'planned'):
+        raise SystemExit(f'créneau planned non actionnable : {slug} ({jour})')
+    try:
+        plan = json.loads((ICI / 'cluster-plan.json').read_text(encoding='utf-8'))
+        calendrier = (ICI / 'CONTENT-CALENDAR.md').read_text(encoding='utf-8')
+        if not isinstance(plan, dict):
+            raise ValueError('plan JSON non objet')
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        raise SystemExit('calendrier absent ou illisible : rééditer depuis les sources') from exc
+    if plan.get('date') != jour.isoformat() or not any(
+            line.startswith(f"Généré le {jour.strftime('%d/%m/%Y')} ") for line in calendrier.splitlines()[:4]):
+        raise SystemExit('calendrier périmé : rééditer depuis les sources avant la forge')
+    # Réutiliser les rendus de l'édition sans écrire : aucun champ éditorial,
+    # lien, compteur ou autre ligne du calendrier ne peut dériver silencieusement.
+    entrants = Counter(l['vers'] for l in liens)
+    attendu = construire_json(poles, familles, pilier, satellites, liens, entrants)
+    attendu['date'] = jour.isoformat()
+    if plan != attendu:
+        raise SystemExit('calendrier désaligné des sources : rééditer depuis le backlog et les publications')
+    if calendrier != construire_calendrier(pilier, satellites, familles, poles, jour):
+        raise SystemExit('calendrier désaligné : rééditer le calendrier complet depuis les sources')
+
 if __name__ == '__main__':
     poles, familles, publies, pilier, satellites, liens, par_famille = construire()
     erreurs, entrants, par_semaine = verifier(poles, familles, publies, pilier, satellites, liens, par_famille)
+    if '--slot' in sys.argv:
+        if erreurs:
+            raise SystemExit('plan source invalide : ' + '; '.join(erreurs))
+        index = sys.argv.index('--slot')
+        if len(sys.argv) != index + 3:
+            raise SystemExit('Usage : build-cluster-plan.py --slot <slug> <jour-Paris>')
+        verifier_creneau(sys.argv[index + 1], date.fromisoformat(sys.argv[index + 2]),
+                         (poles, familles, publies, pilier, satellites, liens, par_famille))
+        print('créneau : OK')
+        sys.exit(0)
     # Le contrôle valide le plan en mémoire ; seule la régénération explicite date les dérivés.
     if '--check' not in sys.argv:
         data = ecrire_json(poles, familles, pilier, satellites, liens, entrants)
