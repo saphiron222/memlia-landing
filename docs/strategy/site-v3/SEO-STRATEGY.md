@@ -94,6 +94,14 @@ dont le pilier : 33 P1, 9 P2 et 201 P3 (`backlog-v3.json`, 28/09). Ne pas additi
 priorités à celles du plan, qui réintroduit les trois historiques P1. La ligne Méthode du tableau
 compte 21 satellites et signale à part le pilier publié.
 
+La distribution par pôle ci-dessus est celle du plan et du calendrier, pas un comptage brut
+du champ `cluster` des frontmatters historiques. Le générateur rattache
+`suivre-la-production-sociale-dans-excel` à la famille `suivi-production-sociale`, donc au pôle
+Paie et social (`build-cluster-plan.py`, `FAMILLE_HISTORIQUE`) ; son frontmatter conserve
+`excel-outils-existants`. Au même SHA source, le comptage brut donne donc Paie = 2 et Excel = 1,
+contre Paie = 3 et Excel = 0 dans le plan. Les 11 slugs, dates et formats concordent ; aucun
+article historique n'est réécrit pour aligner cette classification éditoriale.
+
 Deux lectures à ne pas confondre. **Priorité 1 ne veut pas dire famille importante** : elle indique
 un signal d'autocomplétion mesuré sur la formulation de l'angle, pas un seuil de volume de recherche.
 Le lot blog du 19/09 n'a pas mesuré les volumes Ads des amorces (§5) ; la présence de suggestions
