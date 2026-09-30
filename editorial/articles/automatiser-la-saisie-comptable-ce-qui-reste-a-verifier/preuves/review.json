@@ -2,69 +2,69 @@
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "editorial-review",
-  "status": "PASS",
+  "status": "FAIL",
   "checkedAt": "2026-09-30",
-  "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
-  "manifestSha256": "dbd96a016437f179bdb023f1ef7725b0c629fa2727e10c0cd431b37d02ea882e",
+  "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
+  "manifestSha256": "316c97bea24cf9fed3e70678c7e41f8c9a80ac9aef9ccfaeacb583268fa79184",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
-  "reviewer": "metier:t_303e7c6d",
+  "reviewer": "marketing",
   "criteria": [
     {
       "id": "intent-satisfaction",
-      "result": "PASS",
-      "earned": 20,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Le texte décrit extraction, proposition, six alertes ordonnées, file de traitement et validation humaine ; le scénario TEST-050 est expressément annoncé comme attendu et non exécuté."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "serp-format-rankability",
-      "result": "PASS",
-      "earned": 15,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Le titre et la description du rendu reprennent la saisie comptable ; sections de méthode, tableaux et questions répondent à une intention de guide, sans promesse de mesure SEO."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "eeat-sources",
-      "result": "PASS",
-      "earned": 20,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "F31808 (version du 11/08/2026), F39785 (07/08/2026), F10029 (01/07/2024) et la définition CNIL ont été rouvertes le 29/09/2026 ; copies locales datées du 29/09 et empreintes vérifiées. La population et les échéanciers de F39785 sont bornés dans le corps."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "information-gain-proof",
-      "result": "PASS",
-      "earned": 20,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Le texte définit des sorties attendues pour les tickets coupés, les notes sans justificatif, les fournisseurs inconnus, les pièces hors période, le doublon éventuel et l’avoir ; aucune fréquence ou performance mesurée n’est attribuée à ces cinquante entrées inventées. Les deux figures se déclarent illustratives et non exécutées."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "technical-onpage-seo",
-      "result": "PASS",
-      "earned": 10,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Rendu local a4e597b : canonical du slug, un h1, deux figures avec img portrait enfants directs, alt et largeur déclarée ; pas de figcaption ni de panneau défilant. Les captures à 320, 375 et 1440 px rendent lisibles la sortie attendue non exécutée et le doublon non joué. Le robots index du HTML local n'atteste pas une indexation ni une livraison."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "ai-citability",
-      "result": "PASS",
-      "earned": 10,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "Réponse directe et tableaux structurés dans le HTML statique ; les citations d’autorités ont des liens contextuels et le scénario non exécuté ne peut pas être cité comme un résultat observé."
+        "Revue éditoriale non exécutée."
       ]
     },
     {
       "id": "contextual-conversion",
-      "result": "PASS",
-      "earned": 5,
+      "result": "FAIL",
+      "earned": 0,
       "observations": [
-        "La clôture décrit l’écriture de la règle, l’automatisation dans les outils existants, la recette humaine et la maintenance ; chaque écriture reste validée par une personne, sans promettre un logiciel ou un taux de gain."
+        "Revue éditoriale non exécutée."
       ]
     }
   ]

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
+  "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -175,10 +175,11 @@
       ]
     },
     {
-      "id": "unit-b1e8e3904991",
-      "text": "La pièce, elle, se conserve. Service-Public rappelle que les livres, registres, documents ou pièces sur lesquels peuvent s’exercer les droits de communication, d’enquête et de contrôle de l’administration doivent être conservés. La même fiche distingue notamment les pièces justificatives comptables, conservées dix ans à compter de la clôture de l’exercice, et certains documents relevant du contrôle fiscal, conservés six ans selon leur propre point de départ. Une chaîne de saisie ne remplace pas cette qualification : elle associe chaque catégorie à sa durée, garde l’accès au document requis et documente séparément les copies de travail.",
+      "id": "unit-a6d8fe642843",
+      "text": "La pièce, elle, se conserve. Service-Public rappelle que les livres, registres, documents ou pièces sur lesquels peuvent s’exercer les droits de communication, d’enquête et de contrôle de l’administration doivent être conservés. La même fiche distingue les pièces justificatives comptables, conservées dix ans à compter de la clôture de l’exercice (article L. 123-22 du code de commerce), des documents et pièces soumis à l’article L. 102 B du livre des procédures fiscales : l’ancien délai fiscal de six ans part de la dernière opération sur les livres ou registres, ou de la date d’établissement des documents ou pièces. Service-Public précise que l’article 36 de la loi n° 2026-534 porte ce délai fiscal à dix ans lorsque l’ancien délai expire après le 1er janvier 2027. Une échéance de l’ancien délai au 1er janvier 2027 n’entre pas dans la condition « après », tandis qu’une échéance au 2 janvier 2027 y entre : ce sont des témoins de seuil, pas des dates de purge. Une chaîne de saisie ne remplace pas la qualification de chaque document ni l’examen des autres obligations applicables : une personne fixe la durée et son point de départ, garde l’accès au document requis et documente séparément les copies de travail ; aucune purge automatique ne découle de ces exemples.",
       "claimIds": [
-        "claim-unit-b1e8e3904991-1"
+        "claim-unit-a6d8fe642843-1",
+        "claim-unit-a6d8fe642843-2"
       ]
     },
     {
@@ -461,8 +462,8 @@
       }
     },
     {
-      "id": "claim-unit-b1e8e3904991-1",
-      "unitId": "unit-b1e8e3904991",
+      "id": "claim-unit-a6d8fe642843-1",
+      "unitId": "unit-a6d8fe642843",
       "claim": "documents ou pièces sur lesquels peuvent s’exercer les droits de communication, d’enquête et de contrôle de l’administration doivent être conservés",
       "type": "juridique",
       "sourceIds": [
@@ -519,7 +520,65 @@
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
-            "explanation": "Phrase de la fiche Service-Public sur la conservation des documents reprise à l’identique ; seule l’apostrophe typographique diffère, et aucune durée n’est affirmée.",
+            "explanation": "Phrase de F10029 reprise à l’identique ; seule l’apostrophe typographique diffère. Cette fiche de 2024 ne suffit pas à établir les durées après la réforme de 2026.",
+            "checkedAt": "2026-09-30"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-a6d8fe642843-2",
+      "unitId": "unit-a6d8fe642843",
+      "claim": "l’ancien délai expire après le 1er janvier 2027",
+      "type": "juridique",
+      "sourceIds": [
+        "sp-reforme-conservation"
+      ],
+      "sourceExcerpts": {
+        "sp-reforme-conservation": "Cette mesure sera applicable aux documents et aux pièces dont le délai de conservation expire après le 1<sup>er</sup> janvier 2027."
+      },
+      "checkedAt": "2026-09-30",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-09-30",
+        "sourceResults": [
+          {
+            "sourceId": "sp-reforme-conservation",
+            "sourceUrl": "https://entreprendre.service-public.gouv.fr/actualites/A18906",
+            "verifiedUrl": "https://entreprendre.service-public.gouv.fr/actualites/A18906",
+            "excerpt": "Cette mesure sera applicable aux documents et aux pièces dont le délai de conservation expire après le 1<sup>er</sup> janvier 2027.",
+            "context": "Cette mesure sera applicable aux documents et aux pièces dont le délai de conservation expire après le 1<sup>er</sup> janvier 2027.",
+            "contextSha256": "81d5533d997bab56bb632ff124b98c1f4add1cdf4a0d95b7b862978bfee9de0d",
+            "citation": {
+              "text": "Cette mesure sera applicable aux documents et aux pièces dont le délai de conservation expire après le 1<sup>er</sup> janvier 2027.",
+              "sha256": "69fc1bd40b8b510eae41c4217ba5590984fd0bbd25a92bfaa4f1aa44b59bd35c",
+              "sourceContentSha256": "9e3d8c0825857f8e4edd4c911a4c3636027bce2c6aab07a6cffb6376a437e199",
+              "coordinates": {
+                "finalUrl": "https://entreprendre.service-public.gouv.fr/actualites/A18906",
+                "checkedAt": "2026-09-30",
+                "title": "Modification de la durée de conservation des documents fiscaux",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 270,
+                  "endLine": 270
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "delai",
+                "expire",
+                "apres",
+                "janvier",
+                "2027"
+              ],
+              "reasoning": "La citation, relevée à la ligne 270 de la copie locale de Service Public, porte les mêmes entités que le claim (delai, expire, apres, janvier, 2027) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Synthèse DILA du 26 juin 2026 renvoyant à l'article 36 I et II : le délai fiscal passe de six à dix ans, avec condition transitoire strictement après le seuil. Aucun délai universel ni purge automatique n'en découle.",
             "checkedAt": "2026-09-30"
           }
         ]

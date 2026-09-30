@@ -2,10 +2,10 @@
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "image-visual-review",
-  "status": "PASS",
+  "status": "FAIL",
   "checkedAt": "2026-09-30",
-  "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
-  "manifestSha256": "dbd96a016437f179bdb023f1ef7725b0c629fa2727e10c0cd431b37d02ea882e",
+  "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
+  "manifestSha256": "316c97bea24cf9fed3e70678c7e41f8c9a80ac9aef9ccfaeacb583268fa79184",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
@@ -47,44 +47,44 @@
   "criteria": [
     {
       "id": "brief-six-components",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Brief de couverture à sujet, composition, style, palette, interdits et alt dans recette.json ; les deux figures ont une recette HTML figée distincte."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "generation-constraints",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Couverture inspectée : diorama sans texte lisible, personne, données client ni faux écran ; les figures HTML ne prétendent pas être des captures d’un logiciel opérationnel."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "fictive-provenance",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Les figures affichent TEST-050, scénario fictif, sortie attendue et non exécutée ; contrat et recette donnent source fictive et date de capture au 29/09/2026."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "recognizable-subject",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Couverture montrant lecture de feuilles et tri en deux plateaux ; figures lisibles : contrôle arrêté sur période précédente et ticket coupé à qualifier."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "technical-derivatives",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Les deux figures du rendu a4e597b emploient les portraits -mobile.webp aussi à 1440 px ; leurs captures haut/bas à 320, 375 et 1440 px montrent la sortie attendue, « Non joué » et le ticket coupé lisibles. Aucun nouveau renderer --check exécuté dans cette revue."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "alt-information",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Les deux alt dans recette, contrat et HTML décrivent facture de période précédente et ticket coupé, sans ancien écart arithmétique ; alt de la couverture décrit les objets visibles."
+        "Revue image non exécutée."
       ]
     }
   ]

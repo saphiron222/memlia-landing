@@ -8,7 +8,7 @@ dateMiseAJour: 2026-09-29
 auteur: kevin
 sujets: [saisie, pieces, automatisation, ia]
 motsCles: ["saisie comptable automatisée", "OCR comptable", "pré-comptabilité", "contrôles de saisie", "file d’anomalies", "doublon de facture"]
-brouillon: false
+brouillon: true
 image: img-art-saisie-comptable
 pipelineVersion: 1
 primaryQuery: "automatisation saisie comptable"
@@ -32,7 +32,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Scénario fictif explicite de cinquante pièces avec sorties attendues, sans prétendre à une exécution ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées."
 reviewRule: "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois."
-reviewer: metier:t_303e7c6d
+reviewer: marketing
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier cette tâche"
@@ -40,7 +40,7 @@ cta:
   outcome: "Nous écrivons la règle de saisie de votre cabinet dans vos mots, fournisseurs récurrents et motifs de refus compris, nous l’automatisons dans les outils que vos équipes utilisent déjà, et elles la recettent sur un lot de pièces. Chaque écriture reste validée par une personne. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
 imageOg: "/images/img-art-saisie-comptable-og.webp"
 imageAlt: "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe"
-statutEditorial: publie
+statutEditorial: a-valider
 sources:
   - editeur: "Service Public"
     titre: "Mentions obligatoires sur une facture"
@@ -54,6 +54,10 @@ sources:
     titre: "Quels sont les délais de conservation des documents pour les entreprises ?"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F10029"
     consulte: 2026-09-29
+  - editeur: "Service Public"
+    titre: "Modification de la durée de conservation des documents fiscaux"
+    url: "https://entreprendre.service-public.gouv.fr/actualites/A18906"
+    consulte: 2026-09-30
   - editeur: "CNIL"
     titre: "Définition : donnée personnelle"
     url: "https://www.cnil.fr/fr/definition/donnee-personnelle"
@@ -162,7 +166,7 @@ Pour les flux concernés, la facture électronique déplace ce travail sans le s
 
 Le traitement des anomalies change lui aussi de nature. La même fiche décrit la possibilité, pour l’entreprise, [de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)](https://entreprendre.service-public.gouv.fr/vosdroits/F39785). La file interne du cabinet et ce signalement ne se confondent pas : la première sert à trier ce que la lecture n’a pas su traiter, le second engage la relation avec le fournisseur. Une règle peut préparer le motif et les pièces utiles, mais une personne décide si l’anomalie devient un signalement externe.
 
-La pièce, elle, se conserve. Service-Public rappelle que les livres, registres, [documents ou pièces sur lesquels peuvent s’exercer les droits de communication, d’enquête et de contrôle de l’administration doivent être conservés](https://entreprendre.service-public.gouv.fr/vosdroits/F10029). La même fiche distingue notamment les pièces justificatives comptables, conservées dix ans à compter de la clôture de l’exercice, et certains documents relevant du contrôle fiscal, conservés six ans selon leur propre point de départ. Une chaîne de saisie ne remplace pas cette qualification : elle associe chaque catégorie à sa durée, garde l’accès au document requis et documente séparément les copies de travail.
+La pièce, elle, se conserve. Service-Public rappelle que les livres, registres, [documents ou pièces sur lesquels peuvent s’exercer les droits de communication, d’enquête et de contrôle de l’administration doivent être conservés](https://entreprendre.service-public.gouv.fr/vosdroits/F10029). La même fiche distingue les pièces justificatives comptables, conservées dix ans à compter de la clôture de l’exercice (article L. 123-22 du code de commerce), des documents et pièces soumis à l’article L. 102 B du livre des procédures fiscales : l’ancien délai fiscal de six ans part de la dernière opération sur les livres ou registres, ou de la date d’établissement des documents ou pièces. [Service-Public précise que l’article 36 de la loi n° 2026-534](https://entreprendre.service-public.gouv.fr/actualites/A18906) porte ce délai fiscal à dix ans lorsque l’ancien délai expire après le 1er janvier 2027. Une échéance de l’ancien délai au 1er janvier 2027 n’entre pas dans la condition « après », tandis qu’une échéance au 2 janvier 2027 y entre : ce sont des témoins de seuil, pas des dates de purge. Une chaîne de saisie ne remplace pas la qualification de chaque document ni l’examen des autres obligations applicables : une personne fixe la durée et son point de départ, garde l’accès au document requis et documente séparément les copies de travail ; aucune purge automatique ne découle de ces exemples.
 
 Enfin, une facture peut porter des données personnelles : un nom de contact, une adresse, parfois un identifiant bancaire. La CNIL le pose simplement : [une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable](https://www.cnil.fr/fr/definition/donnee-personnelle). La présence de ces données ne suffit pas à qualifier automatiquement les rôles du cabinet, de son client et du service de lecture. Avant le branchement, ils sont déterminés traitement par traitement selon les finalités et les moyens ; les accès, la durée de conservation et le périmètre transmis sont ensuite écrits dans le cadre contractuel applicable.
 

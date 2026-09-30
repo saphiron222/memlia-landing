@@ -2,7 +2,7 @@
   "version": 1,
   "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "action": "creation",
-  "editorialStatus": "publie",
+  "editorialStatus": "a-valider",
   "title": "Automatiser la saisie comptable : ce qui reste à vérifier",
   "tabTitle": "Automatisation saisie comptable : les 6 contrôles | Memlia",
   "summary": "La lecture extrait, une personne vérifie. Six contrôles dans un ordre fixe : nature, émetteur, mentions, montants, période, doublon. Puis une file d’anomalies à motifs fermés. Rien ne s’enregistre sans validation, et le reliquat se recompte à chaque période.",
@@ -51,7 +51,7 @@
     "required": true,
     "reviewerId": "relecteur-metier-ia-memlia",
     "role": "collaborateurs-comptables",
-    "status": "PASS",
+    "status": "FAIL",
     "evidence": "preuves/business-review.json"
   },
   "funnel": "MOFU",
@@ -112,6 +112,21 @@
       "verificationEvidence": "preuves/sources/sp-conservation-pieces.json"
     },
     {
+      "id": "sp-reforme-conservation",
+      "publisher": "Service Public",
+      "title": "Modification de la durée de conservation des documents fiscaux",
+      "url": "https://entreprendre.service-public.gouv.fr/actualites/A18906",
+      "checkedAt": "2026-09-30",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://entreprendre.service-public.gouv.fr/actualites/A18906",
+      "classificationReason": "Synthèse officielle du délai fiscal et de ses points de départ, publiée le 26 juin 2026.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/sp-reforme-conservation.classification.json",
+      "verificationEvidence": "preuves/sources/sp-reforme-conservation.json"
+    },
+    {
       "id": "cnil-donnee-personnelle",
       "publisher": "CNIL",
       "title": "Définition : donnée personnelle",
@@ -128,7 +143,7 @@
     }
   ],
   "author": "kevin",
-  "reviewer": "metier:t_303e7c6d",
+  "reviewer": "marketing",
   "reviewRule": "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois.",
   "cta": {
     "label": "Confier cette tâche",
@@ -180,13 +195,11 @@
   "contradictions": [],
   "kevin": {
     "briefApproved": true,
-    "previewApproved": true,
-    "productionApproved": true,
+    "previewApproved": false,
+    "productionApproved": false,
     "delegation": {
       "date": "2026-09-16",
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
-  },
-  "publishedAt": "2026-09-30",
-  "publicationEvidence": "preuves/publication.json"
+  }
 }

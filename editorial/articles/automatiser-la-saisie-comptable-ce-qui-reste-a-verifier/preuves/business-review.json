@@ -2,10 +2,10 @@
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "business-review",
-  "status": "PASS",
+  "status": "FAIL",
   "checkedAt": "2026-09-30",
-  "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
-  "manifestSha256": "dbd96a016437f179bdb023f1ef7725b0c629fa2727e10c0cd431b37d02ea882e",
+  "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
+  "manifestSha256": "316c97bea24cf9fed3e70678c7e41f8c9a80ac9aef9ccfaeacb583268fa79184",
   "observations": [
     "Contrôle business-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
@@ -15,72 +15,86 @@
     {
       "id": "review-claim-unit-750912b300a9-1-sp-mentions-facture",
       "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
+      "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
       "claimId": "claim-unit-750912b300a9-1",
       "claimSha256": "a72dc227ddf1ee2aed9d18974e3f0dc5372d1a237540c1e9e8f7b18ee518865f",
       "sourceId": "sp-mentions-facture",
       "sourceContentSha256": "6dc9aab3f1ce75d67172bbd3ba0b933abafca90acceeba9d5e62ba09c29a44ed",
       "citationSha256": "a72dc227ddf1ee2aed9d18974e3f0dc5372d1a237540c1e9e8f7b18ee518865f",
       "reviewerId": "relecteur-metier-ia-memlia",
-      "verdict": "soutient",
+      "verdict": "hors_sujet",
       "checkedAt": "2026-09-30",
-      "reasoning": "F31808, Service-Public, vérifié le 11/08/2026 et consulté le 29/09/2026 : la citation figure textuellement dans la section des mentions obligatoires. Elle concerne la facture et ses mentions, pas la régularité de chaque justificatif ; l’article refuse expressément de conclure à cette régularité à partir de l’OCR. La fiche exclut son profil micro-entrepreneur : ne pas extrapoler sa liste à ce profil."
+      "reasoning": "Revue métier non exécutée."
     },
     {
       "id": "review-claim-unit-73e4bb260d23-1-sp-facture-electronique",
       "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
+      "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
       "claimId": "claim-unit-73e4bb260d23-1",
       "claimSha256": "8d2c932884f0c123d6bf3daaee2ee68949403fa0fe5b90ee0d9b9122767daa81",
       "sourceId": "sp-facture-electronique",
       "sourceContentSha256": "3cd954d895b3de561340c4af9f635aec0edf6409e0319a6706497cdd2ddad272",
       "citationSha256": "2f0d3b50ec4fbf8e596e2cf11e31ea2486ee93daa2ca6988b05c1aef83b130f7",
       "reviewerId": "relecteur-metier-ia-memlia",
-      "verdict": "soutient",
+      "verdict": "hors_sujet",
       "checkedAt": "2026-09-30",
-      "reasoning": "F39785, Service-Public, vérifié le 07/08/2026 et consulté le 29/09/2026 : phrase sur le suivi des factures reçues reprise à l’identique. Le paragraphe limite le suivi aux flux concernés, distingue réception au 01/09/2026 et émission suivant taille et opérations ; aucun calendrier universel d’émission n’est déduit."
+      "reasoning": "Revue métier non exécutée."
     },
     {
       "id": "review-claim-unit-d4324ad3b50e-1-sp-facture-electronique",
       "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
+      "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
       "claimId": "claim-unit-d4324ad3b50e-1",
       "claimSha256": "1ae1e12a01631eda63072a90881bfe166bc334dd047eb5bf17c759ef8f555794",
       "sourceId": "sp-facture-electronique",
       "sourceContentSha256": "3cd954d895b3de561340c4af9f635aec0edf6409e0319a6706497cdd2ddad272",
       "citationSha256": "1ae1e12a01631eda63072a90881bfe166bc334dd047eb5bf17c759ef8f555794",
       "reviewerId": "relecteur-metier-ia-memlia",
-      "verdict": "soutient",
+      "verdict": "hors_sujet",
       "checkedAt": "2026-09-30",
-      "reasoning": "F39785, section suivi des factures reçues, consultée le 29/09/2026 : possibilité de signaler sur la plateforme une erreur, une non-conformité ou un désaccord ; l’article sépare la file interne de ce signalement externe et réserve la décision à une personne pour les factures et flux concernés."
+      "reasoning": "Revue métier non exécutée."
     },
     {
-      "id": "review-claim-unit-b1e8e3904991-1-sp-conservation-pieces",
+      "id": "review-claim-unit-a6d8fe642843-1-sp-conservation-pieces",
       "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
-      "claimId": "claim-unit-b1e8e3904991-1",
+      "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
+      "claimId": "claim-unit-a6d8fe642843-1",
       "claimSha256": "28682d7e20774397dccd1d080dabca63c8c8317746230ccac28844ff715c360d",
       "sourceId": "sp-conservation-pieces",
       "sourceContentSha256": "bb779a3f75e3e4a32f506c7001fe920ee54c734700e7006719d115290971735e",
       "citationSha256": "2dd5eff7a2e0a76255fb0246b4e0465bf43a558fe57608c894de50149156f8a2",
       "reviewerId": "relecteur-metier-ia-memlia",
-      "verdict": "soutient",
+      "verdict": "hors_sujet",
       "checkedAt": "2026-09-30",
-      "reasoning": "F10029, Service-Public, vérifié le 01/07/2024 et consulté le 29/09/2026 : la citation des documents fiscaux existe ; la même fiche précise distinctement dix ans après clôture pour les pièces justificatives comptables et six ans avec un autre point de départ pour les documents fiscaux. Le texte de l’article les distingue et ne fixe pas une durée unique à tous les fichiers."
+      "reasoning": "Revue métier non exécutée."
+    },
+    {
+      "id": "review-claim-unit-a6d8fe642843-2-sp-reforme-conservation",
+      "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
+      "claimId": "claim-unit-a6d8fe642843-2",
+      "claimSha256": "cfaed684729756526dabdabbdad680bff7c3bfe82a954943fc61d42941462bae",
+      "sourceId": "sp-reforme-conservation",
+      "sourceContentSha256": "9e3d8c0825857f8e4edd4c911a4c3636027bce2c6aab07a6cffb6376a437e199",
+      "citationSha256": "69fc1bd40b8b510eae41c4217ba5590984fd0bbd25a92bfaa4f1aa44b59bd35c",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "hors_sujet",
+      "checkedAt": "2026-09-30",
+      "reasoning": "Revue métier non exécutée."
     },
     {
       "id": "review-claim-unit-7995baec19ca-1-cnil-donnee-personnelle",
       "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-      "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
+      "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
       "claimId": "claim-unit-7995baec19ca-1",
       "claimSha256": "58918f5c37a0757221a0d0d4e6d4fb32780dfa119beba59db4f9cf7a8f788393",
       "sourceId": "cnil-donnee-personnelle",
       "sourceContentSha256": "9404a78c2371750e085121489bb4316956296da037c85f7f6d42db3d3d38b00b",
       "citationSha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
       "reviewerId": "relecteur-metier-ia-memlia",
-      "verdict": "soutient",
+      "verdict": "hors_sujet",
       "checkedAt": "2026-09-30",
-      "reasoning": "CNIL, définition Donnée personnelle, relue le 29/09/2026 : définition citée textuellement pour les personnes physiques identifiées ou identifiables. L’article ne présume pas les rôles RGPD à partir de cette seule définition et impose leur qualification traitement par traitement avant branchement."
+      "reasoning": "Revue métier non exécutée."
     }
   ]
 }
