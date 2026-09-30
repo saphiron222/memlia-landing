@@ -1,92 +1,58 @@
 {
   "subject": {
     "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "bodySha256": "cfd64108890185270b436d220758857286adb896b8e5a6a770612ac62a9fc39b",
-    "recipeSha256": "b8ac56151adcd6a0d174750734fed297683da8f6d63b3d076aca631cba589232",
-    "renderedSha256": "b7a0ebfc1d65597b06b278c6d04f0d512edb0ca45541aeda9f095d3049dbb5ea"
+    "bodySha256": "16e0d12316c47bf51027df8f722082b00920c1b9de548e4146d7c0ea929e72fd",
+    "recipeSha256": "7ce669f10b3f31b4fade4565944d1df677c89904947769e4d32bfe75b3eb2a66",
+    "renderedSha256": "255fa3a598bc3d0d2e3a0ca737c9d10cec14248a6c07145c18145a3eb298cb7c"
   },
   "editorial": {
-    "reviewer": "metier:t_303e7c6d",
+    "reviewer": "metier:t_66b48f1f",
     "criteria": {
-      "intent-satisfaction": {
-        "result": "PASS",
-        "observations": ["Le texte décrit extraction, proposition, six alertes ordonnées, file de traitement et validation humaine ; le scénario TEST-050 est expressément annoncé comme attendu et non exécuté."]
-      },
-      "serp-format-rankability": {
-        "result": "PASS",
-        "observations": ["Le titre et la description du rendu reprennent la saisie comptable ; sections de méthode, tableaux et questions répondent à une intention de guide, sans promesse de mesure SEO."]
-      },
-      "eeat-sources": {
-        "result": "PASS",
-        "observations": ["F31808 (version du 11/08/2026), F39785 (07/08/2026), F10029 (01/07/2024) et la définition CNIL ont été rouvertes le 29/09/2026 ; copies locales datées du 29/09 et empreintes vérifiées. La population et les échéanciers de F39785 sont bornés dans le corps."]
-      },
-      "information-gain-proof": {
-        "result": "PASS",
-        "observations": ["Le texte définit des sorties attendues pour les tickets coupés, les notes sans justificatif, les fournisseurs inconnus, les pièces hors période, le doublon éventuel et l’avoir ; aucune fréquence ou performance mesurée n’est attribuée à ces cinquante entrées inventées. Les deux figures se déclarent illustratives et non exécutées."]
-      },
-      "technical-onpage-seo": {
-        "result": "PASS",
-        "observations": ["Rendu local a4e597b : canonical du slug, un h1, deux figures avec img portrait enfants directs, alt et largeur déclarée ; pas de figcaption ni de panneau défilant. Les captures à 320, 375 et 1440 px rendent lisibles la sortie attendue non exécutée et le doublon non joué. Le robots index du HTML local n'atteste pas une indexation ni une livraison."]
-      },
-      "ai-citability": {
-        "result": "PASS",
-        "observations": ["Réponse directe et tableaux structurés dans le HTML statique ; les citations d’autorités ont des liens contextuels et le scénario non exécuté ne peut pas être cité comme un résultat observé."]
-      },
-      "contextual-conversion": {
-        "result": "PASS",
-        "observations": ["La clôture décrit l’écriture de la règle, l’automatisation dans les outils existants, la recette humaine et la maintenance ; chaque écriture reste validée par une personne, sans promettre un logiciel ou un taux de gain."]
-      }
+      "intent-satisfaction": {"result": "PASS", "observations": ["Six contrôles, validation humaine, file d’anomalies et scénario TEST-050 attendu, non mesuré ; correction fiscale visible dans le rendu Astro neuf."]},
+      "serp-format-rankability": {"result": "PASS", "observations": ["Guide structuré pour la requête saisie comptable ; aucune promesse SEO mesurée."]},
+      "eeat-sources": {"result": "PASS", "observations": ["Article 36 de la loi 2026-534 lu sur Légifrance le 30/09/2026 ; A18906 DILA du 26/06/2026 lu le même jour et copie brute HTTP 200 hachée ; L.102 B ancien et L.123-22 distingués ; F10029 de 2024 ne porte pas seule la réforme. Les quatre autres citations inchangées restent aux sources de la revue antérieure."]},
+      "information-gain-proof": {"result": "PASS", "observations": ["Deux témoins abstraits du seuil d’expiration de l’ancien délai (01/01 exclu, 02/01 inclus) ; aucune purge automatique ; figures TEST-050 fictives et non exécutées."]},
+      "technical-onpage-seo": {"result": "PASS", "observations": ["HTML Astro construit en preview isolée au commit exact avec BLOG_PREVIEW_SLUG(S) ; .article-corps :194 contient le paragraphe corrigé et son lien A18906 ; le vieux dist du checkout n'est pas le rendu de ce candidat et ne doit pas être réutilisé."]},
+      "ai-citability": {"result": "PASS", "observations": ["Citation officielle A18906 contextualisée dans le HTML ; la réponse et les témoins ne prétendent ni mesurer un rendement ni déterminer le délai de tout dossier."]},
+      "contextual-conversion": {"result": "PASS", "observations": ["Service proposé dans les outils existants ; enregistrement toujours soumis à une personne, sans promesse de logiciel universel."]}
     },
     "p0": []
   },
   "business": {
     "claims": {
-      "claim-unit-750912b300a9-1": {
-        "verdict": "soutient",
-        "reasoning": "F31808, Service-Public, vérifié le 11/08/2026 et consulté le 29/09/2026 : la citation figure textuellement dans la section des mentions obligatoires. Elle concerne la facture et ses mentions, pas la régularité de chaque justificatif ; l’article refuse expressément de conclure à cette régularité à partir de l’OCR. La fiche exclut son profil micro-entrepreneur : ne pas extrapoler sa liste à ce profil."
-      },
-      "claim-unit-73e4bb260d23-1": {
-        "verdict": "soutient",
-        "reasoning": "F39785, Service-Public, vérifié le 07/08/2026 et consulté le 29/09/2026 : phrase sur le suivi des factures reçues reprise à l’identique. Le paragraphe limite le suivi aux flux concernés, distingue réception au 01/09/2026 et émission suivant taille et opérations ; aucun calendrier universel d’émission n’est déduit."
-      },
-      "claim-unit-d4324ad3b50e-1": {
-        "verdict": "soutient",
-        "reasoning": "F39785, section suivi des factures reçues, consultée le 29/09/2026 : possibilité de signaler sur la plateforme une erreur, une non-conformité ou un désaccord ; l’article sépare la file interne de ce signalement externe et réserve la décision à une personne pour les factures et flux concernés."
-      },
-      "claim-unit-b1e8e3904991-1": {
-        "verdict": "soutient",
-        "reasoning": "F10029, Service-Public, vérifié le 01/07/2024 et consulté le 29/09/2026 : la citation des documents fiscaux existe ; la même fiche précise distinctement dix ans après clôture pour les pièces justificatives comptables et six ans avec un autre point de départ pour les documents fiscaux. Le texte de l’article les distingue et ne fixe pas une durée unique à tous les fichiers."
-      },
-      "claim-unit-7995baec19ca-1": {
-        "verdict": "soutient",
-        "reasoning": "CNIL, définition Donnée personnelle, relue le 29/09/2026 : définition citée textuellement pour les personnes physiques identifiées ou identifiables. L’article ne présume pas les rôles RGPD à partir de cette seule définition et impose leur qualification traitement par traitement avant branchement."
-      }
+      "claim-unit-750912b300a9-1": {"verdict": "soutient", "reasoning": "F31808, Service-Public, citation des mentions de la facture conservée à l’identique ; ne pas extrapoler au profil micro-entrepreneur de cette fiche ni déduire la régularité de la facture de l'OCR. Revue antérieure du claim inchangé reconfirmée par comparaison du corps et de la recette."},
+      "claim-unit-73e4bb260d23-1": {"verdict": "soutient", "reasoning": "F39785, Service-Public, suivi des factures reçues pour flux concernés, non obligation universelle d'émission ; claim inchangé de la revue antérieure."},
+      "claim-unit-d4324ad3b50e-1": {"verdict": "soutient", "reasoning": "F39785, Service-Public, signalement externe décrit comme possibilité, distinct de la file interne et décidé par une personne ; claim inchangé de la revue antérieure."},
+      "claim-unit-a6d8fe642843-1": {"verdict": "soutient", "reasoning": "F10029, DILA vérifiée en 2024 : citation exacte de l'obligation de conservation des documents pouvant relever du contrôle fiscal, mais son tableau de six ans ne peut seul soutenir la durée à partir de la réforme 2026 ; voir le claim transition indépendant et l'article 36."},
+      "claim-unit-a6d8fe642843-2": {"verdict": "soutient", "reasoning": "Article 36 I 1° a) et II de la loi 2026-534, Légifrance JORF du 26/06/2026, contrôlé le 30/09/2026 ; A18906 DILA du 26/06/2026, HTTP 200 et copie SHA-256 9e3d8c0825857f8e4edd4c911a4c3636027bce2c6aab07a6cffb6376a437e199 : dix ans pour documents et pièces L.102 B visés lorsque l'ancien délai expire STRICTEMENT après 01/01/2027. 01/01 exclu, 02/01 inclus : comparateurs, jamais dates de purge. Ancien I L.102 B : dernière opération ou établissement ; L.123-22 comptable dix ans séparé. Les dispositions spéciales et les autres obligations restent à qualifier par document."},
+      "claim-unit-7995baec19ca-1": {"verdict": "soutient", "reasoning": "CNIL, définition de donnée personnelle reprise sans attribuer automatiquement les rôles RGPD ; claim inchangé de la revue antérieure."}
     }
   },
   "image": {
-    "reviewer": "metier:t_303e7c6d",
+    "reviewer": "metier:t_66b48f1f",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["Brief de couverture à sujet, composition, style, palette, interdits et alt dans recette.json ; les deux figures ont une recette HTML figée distincte."]},
-      "generation-constraints": {"result": "PASS", "observations": ["Couverture inspectée : diorama sans texte lisible, personne, données client ni faux écran ; les figures HTML ne prétendent pas être des captures d’un logiciel opérationnel."]},
-      "fictive-provenance": {"result": "PASS", "observations": ["Les figures affichent TEST-050, scénario fictif, sortie attendue et non exécutée ; contrat et recette donnent source fictive et date de capture au 29/09/2026."]},
-      "recognizable-subject": {"result": "PASS", "observations": ["Couverture montrant lecture de feuilles et tri en deux plateaux ; figures lisibles : contrôle arrêté sur période précédente et ticket coupé à qualifier."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Les deux figures du rendu a4e597b emploient les portraits -mobile.webp aussi à 1440 px ; leurs captures haut/bas à 320, 375 et 1440 px montrent la sortie attendue, « Non joué » et le ticket coupé lisibles. Aucun nouveau renderer --check exécuté dans cette revue."]},
-      "alt-information": {"result": "PASS", "observations": ["Les deux alt dans recette, contrat et HTML décrivent facture de période précédente et ticket coupé, sans ancien écart arithmétique ; alt de la couverture décrit les objets visibles."]}
+      "brief-six-components": {"result": "PASS", "observations": ["Brief de couverture à six composantes et recette des deux figures inchangés depuis la revue portrait antérieure."]},
+      "generation-constraints": {"result": "PASS", "observations": ["Figures fictives sans résultat d'un logiciel exécuté ; preuve portrait antérieure non retamponnée."]},
+      "fictive-provenance": {"result": "PASS", "observations": ["TEST-050 est présenté comme scénario de recette inventé ; la capture et la provenance restent dans la recette."]},
+      "recognizable-subject": {"result": "PASS", "observations": ["Les deux figures inline concernent six contrôles et file d'anomalies, hors modification du paragraphe fiscal."]},
+      "technical-derivatives": {"result": "PASS", "observations": ["Rendu HTML neuf contient deux figures inline ; lisibilité 320/375/1440 héritée de la revue portrait t_303e7c6d pour les mêmes actifs, non re-mesurée dans cette passe fiscale."]},
+      "alt-information": {"result": "PASS", "observations": ["Alt descriptifs des deux figures inchangés ; aucun ancien résultat mesuré revendiqué."]}
     },
     "directionArt": 17,
     "semanticRelevance": 22
   },
   "sources": {
-    "reviewedBy": "metier:t_14797d6b",
+    "reviewedBy": "metier:t_66b48f1f",
     "observations": {
-      "sp-mentions-facture": "Service-Public F31808, version 11/08/2026 ; citation contrôlée, réserve de population micro-entrepreneur propre à cette fiche.",
-      "sp-facture-electronique": "Service-Public F39785, version 07/08/2026 ; émission différée suivant taille et opérations, réception au 01/09/2026, suivi/signalement bornés aux flux concernés.",
-      "sp-conservation-pieces": "Service-Public F10029, version 01/07/2024 ; distinguer pièces comptables dix ans après clôture et fiscal six ans selon le départ applicable.",
-      "cnil-donnee-personnelle": "CNIL, définition de donnée personnelle relue le 29/09/2026 ; elle ne qualifie pas à elle seule les responsabilités des acteurs."
+      "sp-mentions-facture": "F31808, citation inchangée de la revue précédente ; fiche à portée population bornée.",
+      "sp-facture-electronique": "F39785, citations inchangées ; flux concernés uniquement.",
+      "sp-conservation-pieces": "F10029, vérifiée le 01/07/2024, tableau fiscal six ans périmé pour la transition 2026 ; n'établit que la citation de conservation et la distinction comptable.",
+      "sp-reforme-conservation": "DILA A18906 publiée le 26/06/2026, lue le 30/09/2026 ; copie source brute HTTP 200 SHA-256 9e3d8c0825857f8e4edd4c911a4c3636027bce2c6aab07a6cffb6376a437e199 ; article 36 JORF contrôlé via Légifrance web_extract.",
+      "cnil-donnee-personnelle": "Définition CNIL inchangée ; n'attribue pas les rôles des acteurs."
     }
   },
   "qualite": {
-    "reviewer": "metier:t_303e7c6d",
+    "reviewer": "metier:t_66b48f1f",
     "score": 92,
     "p0": [],
     "categories": {
@@ -96,10 +62,10 @@
       "technicalElements": {"score": 14, "max": 15},
       "aiCitationReadiness": {"score": 14, "max": 15}
     },
-    "evidence": ["Cinq claims et quatre sources officielles datées contrôlés dans la revue antérieure ; corps et recette inchangés selon l'empreinte canonique. Aucun nouveau relevé HTTP dans cette passe.", "TEST-050 reste une sortie attendue non exécutée : facture de période précédente, doublon non joué ; ticket coupé sans écriture, reliquat non mesuré et aucun classement individuel visibles sur les deux portraits aux trois largeurs 320/375/1440.", "Deux figures directes avec alt concordants, sans légende technique ni défilement dans le HTML lu au SHA a4e597b ; score technique 14/15 conservé, sans mesure Lighthouse."],
-    "reservations": ["Le rendu local affiche robots index ; l'indexabilité effective et le contenu servi restent à constater après scellement, CI exacte et livraison.", "Le jeu fictif de cinquante pièces est un scénario attendu, sans trace de rejeu logiciel ni reliquat observé : ne jamais en tirer un résultat mesuré.", "Les reçus dérivés et le sceau antérieurs ne sont pas retamponnés par cette revue ; le responsable doit rematérialiser et sceller le candidat, puis obtenir QA et CI distinctes.", "Le score est une appréciation éditoriale de cette revue IA, ni un Lighthouse mesuré ni une prédiction de classement ou de citation."],
-    "seo": ["Canonical du slug et dateModified 29/09/2026 dans le rendu de prévisualisation ; sources datées et alt descriptifs des deux preuves."],
-    "geo": ["Réponse directe et six contrôles dans des tableaux HTML ; le scénario non exécuté est qualifié sans ambiguïté."],
-    "verdict": "AI_REVIEW_PASS sur ce rendu local au SHA a4e597b ; ni scellement, ni QA/CI, ni autorisation de publication."
+    "evidence": ["Corps fiscal corrigé et A18906 officielle du 26/06/2026 ; tests du seuil dans texte et HTML neuf.", "Deux preuves fictives non exécutées inchangées et HTML Astro candidat construit depuis le SHA 6c401898.", "Score éditorial recalculé comme 27+23+14+14+14=92, ni mesure SEO ni résultat Lighthouse."],
+    "reservations": ["Le dist ancien du checkout conserve la phrase erronée de six ans : ne jamais le pousser ; seul le rendu preview recalculé est signé ici.", "Le rendu local ne démontre ni publication ni indexation ; rematérialisation, scellement, QA et CI exact-head restent à dev.", "Autres documents et régimes spéciaux L.102 B, données personnelles et durée de chaque pièce : qualification par dossier, aucune purge automatique.", "Quatre autres articles et leurs revues restent liés à leur triplet existant ; aucun nouveau tampon transférable."],
+    "seo": ["Lien officiel A18906 dans le HTML neuf ; la vérification publique reste à faire après livraison."],
+    "geo": ["La condition transitoire est contextualisée et son exemple ne constitue pas une règle de purge."],
+    "verdict": "AI_REVIEW_PASS sur le triplet exact du rendu Astro preview isolé au commit 6c401898 ; ni scellement, ni QA/CI, ni publication."
   }
 }

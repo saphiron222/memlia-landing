@@ -2,7 +2,7 @@
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "reviewedAt": "2026-09-30",
-  "reviewer": "metier:t_303e7c6d",
+  "reviewer": "metier:t_66b48f1f",
   "rubric": "blog-analyze-100",
   "status": "PASS",
   "score": 92,
@@ -30,20 +30,20 @@
     }
   },
   "evidence": [
-    "Cinq claims et quatre sources officielles datées contrôlés dans la revue antérieure ; corps et recette inchangés selon l'empreinte canonique. Aucun nouveau relevé HTTP dans cette passe.",
-    "TEST-050 reste une sortie attendue non exécutée : facture de période précédente, doublon non joué ; ticket coupé sans écriture, reliquat non mesuré et aucun classement individuel visibles sur les deux portraits aux trois largeurs 320/375/1440.",
-    "Deux figures directes avec alt concordants, sans légende technique ni défilement dans le HTML lu au SHA a4e597b ; score technique 14/15 conservé, sans mesure Lighthouse."
+    "Corps fiscal corrigé et A18906 officielle du 26/06/2026 ; tests du seuil dans texte et HTML neuf.",
+    "Deux preuves fictives non exécutées inchangées et HTML Astro candidat construit depuis le SHA 6c401898.",
+    "Score éditorial recalculé comme 27+23+14+14+14=92, ni mesure SEO ni résultat Lighthouse."
   ],
   "reservations": [
-    "Le rendu local affiche robots index ; l'indexabilité effective et le contenu servi restent à constater après scellement, CI exacte et livraison.",
-    "Le jeu fictif de cinquante pièces est un scénario attendu, sans trace de rejeu logiciel ni reliquat observé : ne jamais en tirer un résultat mesuré.",
-    "Les reçus dérivés et le sceau antérieurs ne sont pas retamponnés par cette revue ; le responsable doit rematérialiser et sceller le candidat, puis obtenir QA et CI distinctes.",
-    "Le score est une appréciation éditoriale de cette revue IA, ni un Lighthouse mesuré ni une prédiction de classement ou de citation."
+    "Le dist ancien du checkout conserve la phrase erronée de six ans : ne jamais le pousser ; seul le rendu preview recalculé est signé ici.",
+    "Le rendu local ne démontre ni publication ni indexation ; rematérialisation, scellement, QA et CI exact-head restent à dev.",
+    "Autres documents et régimes spéciaux L.102 B, données personnelles et durée de chaque pièce : qualification par dossier, aucune purge automatique.",
+    "Quatre autres articles et leurs revues restent liés à leur triplet existant ; aucun nouveau tampon transférable."
   ],
-  "verdict": "AI_REVIEW_PASS sur ce rendu local au SHA a4e597b ; ni scellement, ni QA/CI, ni autorisation de publication.",
+  "verdict": "AI_REVIEW_PASS sur le triplet exact du rendu Astro preview isolé au commit 6c401898 ; ni scellement, ni QA/CI, ni publication.",
   "subject": {
     "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
-    "manifestSha256": "dbd96a016437f179bdb023f1ef7725b0c629fa2727e10c0cd431b37d02ea882e"
+    "articleSha256": "7e346752da23df49e2c0a5613bb57915dc6f5908a871c5169e06c59b4a4cbd37",
+    "manifestSha256": "e487ce23f421d3452734ec5a76f6e3367aad444c0d3ec8889f218a1135a1947d"
   }
 }

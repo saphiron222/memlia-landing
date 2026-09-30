@@ -2,69 +2,69 @@
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "editorial-review",
-  "status": "FAIL",
+  "status": "PASS",
   "checkedAt": "2026-09-30",
-  "articleSha256": "489759c19d6c61d4874657f137ed10e54b1ca8f894ad5bef1cd1aef91f889f9f",
-  "manifestSha256": "316c97bea24cf9fed3e70678c7e41f8c9a80ac9aef9ccfaeacb583268fa79184",
+  "articleSha256": "7e346752da23df49e2c0a5613bb57915dc6f5908a871c5169e06c59b4a4cbd37",
+  "manifestSha256": "e487ce23f421d3452734ec5a76f6e3367aad444c0d3ec8889f218a1135a1947d",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
-  "reviewer": "marketing",
+  "reviewer": "metier:t_66b48f1f",
   "criteria": [
     {
       "id": "intent-satisfaction",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 20,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Six contrôles, validation humaine, file d’anomalies et scénario TEST-050 attendu, non mesuré ; correction fiscale visible dans le rendu Astro neuf."
       ]
     },
     {
       "id": "serp-format-rankability",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 15,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Guide structuré pour la requête saisie comptable ; aucune promesse SEO mesurée."
       ]
     },
     {
       "id": "eeat-sources",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 20,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Article 36 de la loi 2026-534 lu sur Légifrance le 30/09/2026 ; A18906 DILA du 26/06/2026 lu le même jour et copie brute HTTP 200 hachée ; L.102 B ancien et L.123-22 distingués ; F10029 de 2024 ne porte pas seule la réforme. Les quatre autres citations inchangées restent aux sources de la revue antérieure."
       ]
     },
     {
       "id": "information-gain-proof",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 20,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Deux témoins abstraits du seuil d’expiration de l’ancien délai (01/01 exclu, 02/01 inclus) ; aucune purge automatique ; figures TEST-050 fictives et non exécutées."
       ]
     },
     {
       "id": "technical-onpage-seo",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 10,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "HTML Astro construit en preview isolée au commit exact avec BLOG_PREVIEW_SLUG(S) ; .article-corps :194 contient le paragraphe corrigé et son lien A18906 ; le vieux dist du checkout n'est pas le rendu de ce candidat et ne doit pas être réutilisé."
       ]
     },
     {
       "id": "ai-citability",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 10,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Citation officielle A18906 contextualisée dans le HTML ; la réponse et les témoins ne prétendent ni mesurer un rendement ni déterminer le délai de tout dossier."
       ]
     },
     {
       "id": "contextual-conversion",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 5,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Service proposé dans les outils existants ; enregistrement toujours soumis à une personne, sans promesse de logiciel universel."
       ]
     }
   ]

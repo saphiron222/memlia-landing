@@ -13,15 +13,15 @@ Verdict : PASS — 92/100, 0 P0 (revue indépendante du 2026-09-30, barème blog
 
 ## SEO
 
-- Canonical du slug et dateModified 29/09/2026 dans le rendu de prévisualisation ; sources datées et alt descriptifs des deux preuves.
+- Lien officiel A18906 dans le HTML neuf ; la vérification publique reste à faire après livraison.
 
 ## Préparation aux citations
 
-- Réponse directe et six contrôles dans des tableaux HTML ; le scénario non exécuté est qualifié sans ambiguïté.
+- La condition transitoire est contextualisée et son exemple ne constitue pas une règle de purge.
 
 ## Réserves mesurées
 
-- Le rendu local affiche robots index ; l'indexabilité effective et le contenu servi restent à constater après scellement, CI exacte et livraison.
-- Le jeu fictif de cinquante pièces est un scénario attendu, sans trace de rejeu logiciel ni reliquat observé : ne jamais en tirer un résultat mesuré.
-- Les reçus dérivés et le sceau antérieurs ne sont pas retamponnés par cette revue ; le responsable doit rematérialiser et sceller le candidat, puis obtenir QA et CI distinctes.
-- Le score est une appréciation éditoriale de cette revue IA, ni un Lighthouse mesuré ni une prédiction de classement ou de citation.
+- Le dist ancien du checkout conserve la phrase erronée de six ans : ne jamais le pousser ; seul le rendu preview recalculé est signé ici.
+- Le rendu local ne démontre ni publication ni indexation ; rematérialisation, scellement, QA et CI exact-head restent à dev.
+- Autres documents et régimes spéciaux L.102 B, données personnelles et durée de chaque pièce : qualification par dossier, aucune purge automatique.
+- Quatre autres articles et leurs revues restent liés à leur triplet existant ; aucun nouveau tampon transférable.

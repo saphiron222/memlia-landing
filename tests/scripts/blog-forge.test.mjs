@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
-import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
+import { contexteDeCitation, validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
 import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -720,6 +720,14 @@ test('le contexte d’une source HTML monoligne avec balise inline reste borné 
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('le contexte garde les espaces insécables exacts de la citation HTML', () => {
+  const extrait = 'expire après le 1<sup>er</sup> janvier 2027.';
+  const source = `<html><body><p>Cette mesure ${extrait} Autre phrase.</p></body></html>`;
+  const contexte = contexteDeCitation(source, extrait);
+  assert.ok(contexte.includes(extrait), 'le gate compare les octets exacts de la citation');
+  assert.ok(source.includes(contexte), 'le contexte reste présent dans la copie source');
 });
 
 test('la recette porte sa date de mise à jour jusqu’au frontmatter, et son absence ne l’invente pas', () => {

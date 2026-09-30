@@ -954,6 +954,8 @@ function visibleSourceBlocks(source) {
 
 export function contexteDeCitation(source, excerpt) {
   const citation = excerpt.replace(/\s+/g, ' ').trim();
+  // Le gate exige l'extrait exact dans son contexte : ne pas normaliser ses espaces insécables.
+  if (citation !== excerpt.trim()) return excerpt.trim();
   const visible = visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
   const position = visible.indexOf(citation);
   if (position < 0) return citation;
