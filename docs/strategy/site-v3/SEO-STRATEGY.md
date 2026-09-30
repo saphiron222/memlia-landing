@@ -60,7 +60,15 @@ ouverte** : aucune tâche documentée, aucun angle au backlog. Le backlog porte 
 actives, quatre angles par famille, ce que le plan généré compte comme 11 pôles.
 
 Colonnes mesurées : « angles » et « P1 » sont comptés dans `backlog-v3.json` après le recalage du
-19/09 ; « publiés » est compté dans `CONTENT-CALENDAR.md`. La preuve terrain de chaque famille vit
+19/09 ; « publiés » est compté dans `CONTENT-CALENDAR.md`. **Photographie du registre au
+29/09/2026**, relue le 30/09 dans les blobs de `cluster-plan.json`, `CONTENT-CALENDAR.md` et les
+frontmatters non-brouillons au SHA source `bf9bd175d43f640abaeced9346f31ad35d689596` :
+10 satellites et 1 pilier, dont 2 satellites Numérique publiés le 29/09
+(`logiciel-ia-comptabilite` et `prompt-chatgpt-expert-comptable`). Ces statuts source ne sont
+pas une nouvelle vérification des URL servies en production. À chaque publication ou
+régénération du plan, le propriétaire éditorial recontrôle cette colonne et son total contre
+les trois sources au même SHA ; les photographies historiques du 28/09 (§7 et §8) restent datées.
+La preuve terrain de chaque famille vit
 dans le référentiel des besoins (`~/dev/produit/referentiel-besoins/`) et dans le champ `preuve` de
 chaque angle du backlog : elle n'est pas recopiée ici, pour qu'il n'y ait qu'un endroit à corriger.
 
@@ -72,13 +80,13 @@ chaque angle du backlog : elle n'est pas recopiée ici, pour qu'il n'y ait qu'un
 | Portefeuille et échéances | 5 | 20 | 2 | 1 |
 | Administration et secrétariat | 5 | 20 | 2 | 0 |
 | Facturation et recouvrement du cabinet | 4 | 16 | 2 | 0 |
-| Numérique, IT et data | 4 | 17 | 3 | 0 |
+| Numérique, IT et data | 4 | 17 | 3 | 2 |
 | Conseil et missions spéciales | 4 | 16 | 1 | 0 |
 | Méthode et décision humaine | 4 | 21 | 1 | 1 satellite + 1 pilier |
 | RH et formation | 3 | 12 | 1 | 1 |
 | Excel et outils existants | 3 | 12 | 0 | 0 |
 | Audit et commissariat aux comptes | 1 | 0 | 0 | 0 |
-| **Total** | **60** | **245 satellites** | **35 satellites** | **8 satellites + 1 pilier** |
+| **Total** | **60** | **245 satellites** | **35 satellites** | **10 satellites + 1 pilier** |
 
 Ce tableau lit le plan généré (`cluster-plan.json`) : 245 satellites dont trois articles historiques
 hors backlog et huit entrées de la série factuelle « Cicatrices ». Le backlog compte 243 entrées
