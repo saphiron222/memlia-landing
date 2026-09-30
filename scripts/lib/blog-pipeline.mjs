@@ -1183,11 +1183,20 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
       if (!sourceIds.has(sourceId)) errors.push(`${prefix}.sourceIds référence une source absente du manifeste : ${sourceId}.`);
       const verified = verifiedSources.get(sourceId);
       if (!verified) errors.push(`${prefix} référence ${sourceId}, dont la vérification n’est pas prouvée.`);
-      const unitSignals = sensitiveMatter.unitSignals.get(claim?.unitId) ?? [];
+      // Seul un claim methode non normatif peut être borné à son fragment.
+      // Une obligation anaphorique conserve le référent sensible du paragraphe,
+      // même sans employeur/salarié nommé dans la phrase du claim.
+      const claimSignals = sensitiveTextSignals(claim?.claim);
+      const normalizedClaim = normalizedDetectionText(claim?.claim);
+      const scopedMethod = claim?.type === 'methode'
+        && !NORMATIVE_LANGUAGE.test(normalizedClaim)
+        && !RGPD_OBLIGATION_LANGUAGE.test(normalizedClaim);
+      const sourceSignals = scopedMethod ? claimSignals
+        : [...claimSignals, ...(sensitiveMatter.unitSignals.get(claim?.unitId) ?? [])];
       if (verified?.source?.level === 'technical-primary' && (claim?.type !== 'methode' || verified.deterministicClassification?.technicalPrimary !== true)) {
         errors.push(`${prefix} : source primaire technique ${sourceId} réservée aux claims methode avec domaine et éditeur vérifiés.`);
       }
-      if (OFFICIAL_PRIMARY_CLAIM_TYPES.has(claim?.type) || unitSignals.some((signal) => OFFICIAL_PRIMARY_SIGNALS.has(signal))) {
+      if (OFFICIAL_PRIMARY_CLAIM_TYPES.has(claim?.type) || sourceSignals.some((signal) => OFFICIAL_PRIMARY_SIGNALS.has(signal))) {
         const source = verified?.source ?? (manifest?.sources ?? []).find((item) => item.id === sourceId);
         if (!['tier-1', 'tier-2', 'tier-3'].includes(source?.level) || source?.provenance !== 'primary' || source?.official !== true || verified?.deterministicClassification?.officialAuthority !== true) {
           errors.push(`${prefix} de type ${claim.type} exige une source primaire officielle tier-1 à tier-3 ; ${sourceId} ne satisfait pas ce contrat.`);
