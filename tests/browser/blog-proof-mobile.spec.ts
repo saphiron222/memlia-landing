@@ -42,7 +42,16 @@ for (const width of [320, 375, 1440]) {
         expect(measured.legacy, slug).toBe(false);
         // Deux anciens articles débordent déjà à 320 px dans leur CTA, hors figures.
         if (width > 320) expect(measured.horizontalOverflow, slug).toBe(false);
-        await figure.screenshot({ path: `.qa/annotations/blog-proof-mobile/${slug}-${width}-${index + 1}.png` });
+        const navBottom = await page.locator('header').first().evaluate(el => el.getBoundingClientRect().bottom);
+        await figure.evaluate((el, clearance) => window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top - clearance, behavior: 'instant' }), navBottom + 24);
+        await image.evaluate((img: HTMLImageElement) => img.decode());
+        const captureTop = await figure.evaluate(el => el.getBoundingClientRect().top);
+        expect(captureTop, `${slug}: la nav ne doit pas masquer le début de la preuve`).toBeGreaterThan(navBottom);
+        await page.screenshot({ path: `.qa/annotations/blog-proof-mobile/${slug}-${width}-${index + 1}-top.png`, animations: 'disabled' });
+        await figure.evaluate(el => window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().bottom - window.innerHeight + 80, behavior: 'instant' }));
+        const captureBottom = await figure.evaluate(el => el.getBoundingClientRect().bottom);
+        expect(captureBottom, `${slug}: la fin de la preuve doit apparaître dans la capture basse`).toBeLessThan(page.viewportSize()!.height);
+        await page.screenshot({ path: `.qa/annotations/blog-proof-mobile/${slug}-${width}-${index + 1}-bottom.png`, animations: 'disabled' });
       }
     }
   });
