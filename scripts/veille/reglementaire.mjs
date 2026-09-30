@@ -134,7 +134,7 @@ export function evaluateClaimSource(snapshot, source) {
   };
 }
 
-function evaluateDiscoverySource(snapshot, source) {
+export function evaluateDiscoverySource(snapshot, source) {
   const fragments = source.requiredFragments ?? [];
   const corpus = canonicalText(snapshot.body);
   const fragmentResults = fragments.map((fragment) => ({
@@ -142,6 +142,12 @@ function evaluateDiscoverySource(snapshot, source) {
     present: normalizedIncludes(corpus, fragment),
   }));
   const evidencePresent = fragmentResults.length > 0 ? fragmentResults.every((fragment) => fragment.present) : null;
+  // Une maintenance sous HTTP 200 n'est pas un index d'archives exploitable.
+  const latestDilaPackage = snapshot.id === 'legifrance-dila-index'
+    ? [...snapshot.body.matchAll(/<a\b[^>]*\bhref\s*=\s*["'](?:[^"']*\/)?LEGI_(\d{8}-\d{6})\.tar\.gz["'][^>]*>/gi)]
+      .map((match) => match[1]).sort().at(-1) ?? null
+    : undefined;
+  const dilaUnavailable = snapshot.id === 'legifrance-dila-index' && latestDilaPackage === null;
   return {
     id: snapshot.id,
     kind: snapshot.kind,
@@ -152,9 +158,9 @@ function evaluateDiscoverySource(snapshot, source) {
     canonicalSha256: snapshot.canonicalSha256 ?? null,
     evidencePresent,
     fragmentResults,
-    latestDilaPackage: snapshot.latestDilaPackage,
-    critical: snapshot.httpStatus !== 200 || evidencePresent === false,
-    error: snapshot.error ?? null,
+    ...(latestDilaPackage === undefined ? {} : { latestDilaPackage }),
+    critical: snapshot.httpStatus !== 200 || evidencePresent === false || dilaUnavailable,
+    error: snapshot.error ?? (dilaUnavailable ? 'DilaIndexUnavailable' : null),
   };
 }
 
@@ -185,15 +191,10 @@ export async function inspectRegulatorySources({ root = ROOT } = {}) {
   ));
   const discoveryDefinitions = [...DISCOVERY_SOURCES, ...maintenance.discoverySources];
   const discoverySnapshots = await Promise.all(discoveryDefinitions.map(fetchSnapshot));
-  const discoverySources = discoverySnapshots.map((snapshot) => {
-    const latestDilaPackage = snapshot.id === 'legifrance-dila-index'
-      ? [...snapshot.body.matchAll(/LEGI_(\d{8}-\d{6})\.tar\.gz/g)].map((match) => match[1]).sort().at(-1) ?? null
-      : undefined;
-    return evaluateDiscoverySource(
-      { ...snapshot, ...(latestDilaPackage === undefined ? {} : { latestDilaPackage }) },
-      discoveryDefinitions.find((source) => source.id === snapshot.id),
-    );
-  });
+  const discoverySources = discoverySnapshots.map((snapshot) => evaluateDiscoverySource(
+    snapshot,
+    discoveryDefinitions.find((source) => source.id === snapshot.id),
+  ));
   const closedClaims = measure.review.claims
     .filter((claim) => claim.verdict === 'SOURCE_INACCESSIBLE')
     .map(({ id, verdict, severity, publicationEligible }) => ({ id, verdict, severity, publicationEligible }));

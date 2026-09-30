@@ -1,0 +1,7 @@
+# Veille DILA — intégration en attente du main distant
+
+Le cron marketing `174bf40ad474` exécute `~/.hermes/profiles/marketing/scripts/memlia-veille-reglementaire.sh` : fetch `origin/main`, export `git archive origin/main`, puis exécution de `scripts/veille/reglementaire.mjs` dans cet export. Le checkout de la carte et les branches locales ne modifient pas le cron.
+
+Base vérifiée : `origin/main@714859e5e72a87e384b5125bd8d84ab4170dde76`. Le correctif de détection HTTP 200 sans archive liée est proposé sur `site/veille-dila-canary-t_c45a7da9`. Avant intégration distante, effectuer la revue, autoriser le push/merge par Kevin, re-fetch `origin/main` et comparer le SHA et le blob de `scripts/veille/reglementaire.mjs` à la version revue. Seulement ensuite effectuer le canari sur un `git archive origin/main` isolé, sans exécuter le collecteur ni écrire `reglementaire-YYYY-MM-DD.json` ; vérifier maintenance 200 → `latestDilaPackage=null`, `critical=true`, `error=DilaIndexUnavailable`, et HTTP 0 → `latestDilaPackage=null`, `critical=true`, `error=TypeError`. Si `origin/main` bouge, revalider le candidat avant intégration.
+
+La collecte pré-run du 30/09 reste une preuve d'indisponibilité (`TypeError`, HTTP 0), non une preuve de nouvelle norme. FE-01/02/03 restent `SOURCE_INACCESSIBLE` P1 et `aiReviewPass=false` jusqu'à source primaire française datée, paquet identifiable, revue de chaque claim et nouveau sceau. Ne pas annoncer le cron réparé sur la seule branche locale ; aucun snapshot quotidien ne doit être écrasé pour un test.
