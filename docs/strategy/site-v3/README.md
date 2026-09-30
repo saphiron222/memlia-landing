@@ -82,6 +82,15 @@ n'est revendiqué. Les inventaires courants se calculent depuis les sources, les
 19–21/09 restent historiques. Le moniteur ne vérifie pas toute la doctrine : son PASS n'efface
 pas les refus éditoriaux historiques signalés dans le runbook §3.
 
+Relecture éditoriale du 30/09 après correction F1 de `SEO-STRATEGY.md` §4 au SHA
+`b99f5925699ad717205bd33c39fd048000f883e3` : les comptes du registre du 29/09 sont
+10 satellites + 1 pilier, dont 2 Numérique. Le rattachement historique du suivi social à Paie
+dans le plan est distingué du champ Excel conservé dans son frontmatter ; aucun corps ni dérivé
+n'a changé. Revue sans changement de thèse, de cadence ou de seuil : seule la photographie et
+sa convention de classement ont été corrigées. C'est une relecture par l'implémenter, pas un
+avis indépendant métier/QA ni une vérification de production ; ces avis doivent porter sur
+le nouveau candidat exact, sans transfert des anciens PASS.
+
 ## Ce qui est fait
 
 - **Le site est en ligne** et sert la copy v3 ; les cinq routes de tâche actuellement publiées sont distinctes des routes service encore candidates, exclues du sitemap tant que leur statut n'est pas `publie`.
