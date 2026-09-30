@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-29",
-  "articleSha256": "c15ec8472aad451cdee27ff22a9dce08cbdbbfc686d3976b7d16f66576245436",
-  "manifestSha256": "a496cf6d19c50f5e4c09969242e6011bacde6ee15cb295e57cdbbfd1fef952c4",
+  "checkedAt": "2026-09-30",
+  "articleSha256": "6888aa2cf341c44c50b6210cc408f179b955a7e78e587f7414fbc98248f88b39",
+  "manifestSha256": "fb2099b83517d21fa1898d5cd1874a1304ee136faf85b39d65807e40719c8f6e",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -77,14 +77,14 @@
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Deux WebP relus ; empreintes actifs 1c0a0ad7367851946bd23567a85f6a719e1e1b9cc1487f7ef75b7ace0143600d et 9710f1db9693f2378694a26df3a963b3cae7ea5d464b2779f690e8278937590e ; renderer --check 14/14 PASS."
+        "Deux portraits -mobile.webp utilisés y compris à 1440 px ; captures 320/375/1440 haut/bas relues : bas de la carte et décision humaine restent lisibles sans défilement dans la figure. Les anciennes empreintes de paysages restent historiques ; pas de nouveau renderer --check exécuté."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Alt image/recette concordants ; source taxonomie/test et capturedAt 20/09/2026 conservés en interne, absents du HTML public. Les actifs du 20/09 précèdent cette revue et n'ont pas changé dans le diff 676fc33..23c6016."
+        "Les deux alt du HTML et de la recette décrivent la carte et le test effectivement visibles ; sources taxonomie/test et capturedAt 20/09/2026 déclarés dans la recette, sans légende publique. Cette date historique ne date pas la fabrication des nouveaux portraits."
       ]
     }
   ]

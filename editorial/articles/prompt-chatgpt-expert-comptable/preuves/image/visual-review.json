@@ -3,9 +3,9 @@
   "candidateSlug": "prompt-chatgpt-expert-comptable",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-29",
-  "articleSha256": "ea44336c4c545d5b1c816d5db5c6b613c2460e39f8258e379016c1cc6b36ae59",
-  "manifestSha256": "3384badb92b56194d389d93b9b0bb233955dc11581043ec6f29a4d46e2576f77",
+  "checkedAt": "2026-09-30",
+  "articleSha256": "9cf569f381d3c1535ecc313f3f3590b13da87bc4aaa9a6baaad841587e185c6b",
+  "manifestSha256": "edcc91e5d5102e113a5ce58d8dd06371f8ee89d5aec42f32e5c91fd9f2cf5463",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact prompt-chatgpt-expert-comptable."
   ],
@@ -49,7 +49,7 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Périmètre de cette passe : preuve inline w39-prompt-arret ; source reconstitution HTML fictive, date de capture 2026-09-27 déclarée dans la recette, non vérifiée par horodatage autonome."
+        "Les deux preuves inline sont des reconstitutions HTML fictives distinctes de la couverture ; source et capturedAt 2026-09-27 déclarés dans la recette, sans horodatage autonome de fabrication vérifié."
       ]
     },
     {
@@ -77,14 +77,14 @@
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "w39-prompt-arret.webp SHA-256 451905e3535e499e417c58472c3c4826a2837a426d04124269be748a5b7ad7af ; rendu .article-corps SHA-256 175113c829b4c4365b7801738a57a7a3f0d4e546208a60a39303bae4814ca894."
+        "Portraits -mobile.webp utilisés aussi à 1440 px dans ce rendu ; les captures haut/bas à 320/375/1440 montrent le brouillon non envoyé et le champ « Pièce attendue » vide. L'ancienne empreinte de paysage ne lie pas ces portraits ; la nouvelle empreinte de rendu est dans subject."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Alt de recette et article matérialisé identiques : Refus fictif de préparer la demande quand le champ « Pièce attendue » n’est pas renseigné. L'ancien alt disait absence de la pièce attendue et inversait la condition métier pour la lecture sans image ; le témoin de cohérence est GREEN 1/1. Ne pas confondre ce témoin avec un test du fournisseur IA."
+        "Les deux alt du HTML concordent avec la recette et les portraits : brouillon non envoyé et refus quand le champ « Pièce attendue » n’est pas renseigné. Il ne s'agit pas d'un justificatif identifié non reçu ; aucun essai ChatGPT n'a été effectué."
       ]
     }
   ]

@@ -23,7 +23,7 @@ tache: "Faire lire les pièces et proposer les écritures sans que rien ne s’e
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-29
+  date: 2026-09-30
 funnel: MOFU
 contentType: searchable
 format: how-to-guide
@@ -32,7 +32,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Scénario fictif explicite de cinquante pièces avec sorties attendues, sans prétendre à une exécution ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées."
 reviewRule: "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois."
-reviewer: metier:t_14797d6b
+reviewer: metier:t_303e7c6d
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier cette tâche"

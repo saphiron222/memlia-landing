@@ -3,9 +3,9 @@
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-29",
-  "articleSha256": "90b4762a80a6579ca34e00e316c11d7edddc141b27cffc5e077be29506103efb",
-  "manifestSha256": "85d5e23b10d30c76226043ebbfa1e6ad6f0ab46d6011b1d17c2b7ea5ece7560a",
+  "checkedAt": "2026-09-30",
+  "articleSha256": "33cb68255727de64ac02b1a9d07e7c6ef60b1149b7d8be0f7edff779d6c9fdd1",
+  "manifestSha256": "a487bc3dbdc358a29993caed9125efc60e2499d7b71c07a9482f51b5b9d16627",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
   ],
@@ -63,7 +63,7 @@
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "competences-refus mentionne jeu fictif, oracle exécuté, trois cas ; un run local replay --check confirme 2 articles et 7 cas au total, sans résultat d'emploi."
+        "competences-refus mentionne jeu fictif, oracle exécuté, trois cas ; le corps limite le rejeu à ces entrées fictives sans résultat d'emploi. Le replay --check de l'ancienne revue n'a pas été relancé lors de cette passe."
       ]
     },
     {
@@ -77,14 +77,14 @@
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Empreintes actifs b69c8c443a4d0732bcadcdffa5fa022dd7a0852500dcb899e7470aabf9341524 et d77cdf5958394093ab74eb44348654f3147a1e22eb8ccfa265f9326488e0911e concordent avec docs/qa/blog-recrutement-proofs.json ; renderer --check 4/4 PASS."
+        "Les deux portraits -mobile.webp apparaissent aussi sur bureau dans le HTML a4e597b ; les captures 320/375/1440 montrent la frontière, une proposition et deux refus lisibles. Les empreintes des anciens paysages ne prouvent pas l'état des portraits et le renderer n'a pas été relancé ici."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Deux alts concordent avec les visuels ; source cadre HTML/oracle et date 21/09/2026 restent dans recette et contrat internes, pas dans une légende publique. Le commit d'adoption des WebP est daté du 21/09."
+        "Deux alts du HTML et de la recette concordent avec la frontière et les refus visibles ; source cadre HTML/oracle et date 21/09/2026 restent dans la recette interne, sans légende publique. Cette date historique ne date pas la fabrication des portraits."
       ]
     }
   ]

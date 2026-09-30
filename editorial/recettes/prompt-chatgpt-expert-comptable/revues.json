@@ -3,17 +3,17 @@
     "slug": "prompt-chatgpt-expert-comptable",
     "bodySha256": "588b9ff39b4164e1e748f140b6c9bc12652b7f0a40de1b6a59bad04c3d086548",
     "recipeSha256": "b1600868b0a1e167f9752b9ddbfbeac6f90eb0d0b6737a6a411ace2ed97f2520",
-    "renderedSha256": "175113c829b4c4365b7801738a57a7a3f0d4e546208a60a39303bae4814ca894"
+    "renderedSha256": "939c2df525e6e0165cd7eaaef565c33c071e56d7b6b7816c4ff0017d41b30376"
   },
   "editorial": {
-    "reviewer": "metier:t_e511ee7c",
+    "reviewer": "metier:t_303e7c6d",
     "p0": [],
     "criteria": {
       "intent-satisfaction": {"result": "PASS", "observations": ["La demande de facture fictive est préparée comme brouillon lorsque la pièce à demander est nommée mais pas reçue ; le champ Pièce attendue vide provoque l'arrêt du script local, pas l'absence du justificatif."]},
       "serp-format-rankability": {"result": "PASS", "observations": ["Article borné au prompt de demande de pièce, sans promesse d'un résultat ChatGPT ni classement de fournisseurs ; cette revue ne mesure aucun rang SERP."]},
       "eeat-sources": {"result": "PASS", "observations": ["Les citations CNIL relatives au partage autorisé et à l'identification par croisement, et la présentation par l'Ordre de ses ressources Data et IA, restent limitées à leur portée ; copies locales et SHA des reçus du 29/09 vérifiés. Aucune source ne prétend valider le comportement de ChatGPT."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["journal-rejeu.json:21-33 : piece vide, statut arret, motif contexte incomplet, message null, envoi false. WebP w39-prompt-arret : champ Pièce attendue vide et aucune demande préparée ; recette.json:29 et article matérialisé:133 portent maintenant le même fait. Le cas nominal porte une facture nommée mais non reçue et produit seulement un brouillon fictif."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["Astro preview local au SHA ead22dc : 47 routes ; blog-forge empreinte sur le HTML produit confirme les trois SHA du subject. Le brouillon reste a-valider/noindex : aucun feu vert de publication ne résulte de ce critère."]},
+      "information-gain-proof": {"result": "PASS", "observations": ["Le journal du script local consigne pièce attendue vide, statut arrêt, motif contexte incomplet, message absent et aucun envoi. Le portrait de refus et l'alt dans le HTML local montrent le champ « Pièce attendue » non renseigné ; le cas nominal porte une facture nommée mais non reçue et produit seulement un brouillon fictif non envoyé."]},
+      "technical-onpage-seo": {"result": "PASS", "observations": ["HTML local a4e597b : deux portraits enfants directs de figure, alts concordants, aucune légende ni wrapper défilant ; captures haut/bas 320/375/1440 lisibles. La page locale affiche robots index ; cela ne prouve pas que le brouillon soit publié ou indexé, ni la QA/CI du candidat."]},
       "ai-citability": {"result": "PASS", "observations": ["Le texte attribue le refus au script déterministe et dit explicitement qu'aucun essai ChatGPT n'a été réalisé ; l'alt corrigé ne transforme pas la pièce justificative non reçue en raison d'arrêt."]},
       "contextual-conversion": {"result": "PASS", "observations": ["La décision de vérifier le destinataire puis d'envoyer reste humaine ; aucun courriel n'est présenté comme envoyé."]}
     }
@@ -27,14 +27,14 @@
     }
   },
   "image": {
-    "reviewer": "metier:t_e511ee7c",
+    "reviewer": "metier:t_303e7c6d",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["Périmètre de cette passe : preuve inline w39-prompt-arret ; source reconstitution HTML fictive, date de capture 2026-09-27 déclarée dans la recette, non vérifiée par horodatage autonome."]},
+      "brief-six-components": {"result": "PASS", "observations": ["Les deux preuves inline sont des reconstitutions HTML fictives distinctes de la couverture ; source et capturedAt 2026-09-27 déclarés dans la recette, sans horodatage autonome de fabrication vérifié."]},
       "generation-constraints": {"result": "PASS", "observations": ["Inspection du WebP : Atelier Fictif, période avril 2026, Pièce attendue vide et sortie Contexte incomplet ; aucune donnée client réelle ni interface ChatGPT."]},
       "fictive-provenance": {"result": "PASS", "observations": ["L'image affiche Jeu fictif et aucun message envoyé. L'article précise que les figures sont des reconstitutions HTML et non des captures ChatGPT."]},
       "recognizable-subject": {"result": "PASS", "observations": ["Le refus visible dépend de l'identification de la pièce à demander, pas de la présence physique de la facture. Le WebP nominal distinct représente une facture nommée mais non reçue et un brouillon non envoyé."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["w39-prompt-arret.webp SHA-256 451905e3535e499e417c58472c3c4826a2837a426d04124269be748a5b7ad7af ; rendu .article-corps SHA-256 175113c829b4c4365b7801738a57a7a3f0d4e546208a60a39303bae4814ca894."]},
-      "alt-information": {"result": "PASS", "observations": ["Alt de recette et article matérialisé identiques : Refus fictif de préparer la demande quand le champ « Pièce attendue » n’est pas renseigné. L'ancien alt disait absence de la pièce attendue et inversait la condition métier pour la lecture sans image ; le témoin de cohérence est GREEN 1/1. Ne pas confondre ce témoin avec un test du fournisseur IA."]}
+      "technical-derivatives": {"result": "PASS", "observations": ["Portraits -mobile.webp utilisés aussi à 1440 px dans ce rendu ; les captures haut/bas à 320/375/1440 montrent le brouillon non envoyé et le champ « Pièce attendue » vide. L'ancienne empreinte de paysage ne lie pas ces portraits ; la nouvelle empreinte de rendu est dans subject."]},
+      "alt-information": {"result": "PASS", "observations": ["Les deux alt du HTML concordent avec la recette et les portraits : brouillon non envoyé et refus quand le champ « Pièce attendue » n’est pas renseigné. Il ne s'agit pas d'un justificatif identifié non reçu ; aucun essai ChatGPT n'a été effectué."]}
     },
     "directionArt": 17,
     "semanticRelevance": 22
@@ -48,20 +48,20 @@
     }
   },
   "qualite": {
-    "reviewer": "metier:t_e511ee7c",
-    "score": 90,
+    "reviewer": "metier:t_303e7c6d",
+    "score": 91,
     "p0": [],
     "categories": {
       "contentQuality": {"score": 27, "max": 30},
       "seoOptimization": {"score": 22, "max": 25},
       "eeatSignals": {"score": 14, "max": 15},
-      "technicalElements": {"score": 13, "max": 15},
+      "technicalElements": {"score": 14, "max": 15},
       "aiCitationReadiness": {"score": 14, "max": 15}
     },
-    "evidence": ["27/30 : la condition d'arrêt et le cas nominal sont séparés dans texte, journal, WebP et alt.", "22/25 : titre, tâche et liens inchangés ; aucun résultat de classement mesuré.", "14/15 : trois copies de sources datées et liées, sans validation fictive de ChatGPT.", "13/15 : preview local produit au triplet exact, sans mesure d'accessibilité en lecteur d'écran ni preuve publique.", "14/15 : refus présenté comme sortie du script local uniquement."],
-    "reservations": ["Cette revue IA ciblée ne vaut ni scellement ni QA/CI exact-head ni feu vert de publication.", "Aucun appel ChatGPT ou essai de lecteur d'écran effectué ; capture W39 déclarée au 27/09 sans horodatage autonome vérifié lors de cette passe.", "Sources officielles évaluées à partir des copies et reçus du 29/09/2026 ; pas de nouvelle consultation HTTP en direct."],
-    "seo": ["La revue porte sur la concordance de la preuve et du HTML preview local ; l'article reste en brouillon."],
+    "evidence": ["27/30 : condition d'arrêt et cas nominal séparés dans le texte, le journal et les portraits, sans refus attribué à ChatGPT.", "22/25 : titre, tâche et liens inchangés ; aucun résultat de classement mesuré.", "14/15 : trois copies de sources datées et liées dans la revue antérieure, sans validation fictive de ChatGPT.", "14/15 : deux preuves directes sans caption ni scroll, lisibles dans les captures 320/375/1440 ; pas de test de lecteur d'écran ni preuve publique.", "14/15 : refus présenté comme sortie du script local uniquement."],
+    "reservations": ["Cette revue IA ciblée ne vaut ni scellement ni QA/CI exact-head ni feu vert de publication.", "Aucun appel ChatGPT ou essai de lecteur d'écran effectué ; capturedAt W39 déclaré au 27/09 sans horodatage autonome vérifié lors de cette passe.", "Sources officielles évaluées à partir des copies et reçus du 29/09/2026 ; pas de nouvelle consultation HTTP en direct.", "Le rendu local affiche robots index, sans preuve d'une mise en ligne ou d'une indexation effective."],
+    "seo": ["La revue porte sur la concordance de la preuve et du HTML local ; la matérialisation, le scellement et l'indexabilité publique restent à vérifier."],
     "geo": ["Ne jamais attribuer à ChatGPT le refus du script éditorial déterministe."],
-    "verdict": "AI_REVIEW_PASS sur la correction d'alt et le triplet exact ead22dc, sous réserves de provenance et de livraison ; ni scellement ni publication."
+    "verdict": "AI_REVIEW_PASS sur les portraits et le rendu local a4e597b, sous réserves de provenance historique et de livraison ; ni scellement ni publication."
   }
 }

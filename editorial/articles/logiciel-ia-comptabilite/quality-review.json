@@ -1,11 +1,11 @@
 {
   "version": 1,
   "candidateSlug": "logiciel-ia-comptabilite",
-  "reviewedAt": "2026-09-29",
-  "reviewer": "metier:t_1a9ed93d",
+  "reviewedAt": "2026-09-30",
+  "reviewer": "metier:t_303e7c6d",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 90,
+  "score": 91,
   "p0": 0,
   "categories": {
     "contentQuality": {
@@ -21,7 +21,7 @@
       "max": 15
     },
     "technicalElements": {
-      "score": 13,
+      "score": 14,
       "max": 15
     },
     "aiCitationReadiness": {
@@ -30,20 +30,20 @@
     }
   },
   "evidence": [
-    "27/30 : protocole de comparaison reproductible à faire chez le vendeur ; quatre cas de règle locale, dont seuls trois figurent dans le WebP des exceptions.",
-    "22/25 : grille de choix et maillage cohérents, classement ni performance commerciale mesurés.",
-    "14/15 : trois claims confrontés aux copies, contexte CNIL limité à l'IA générative.",
-    "13/15 : deux figures directes sans légende ni défilement ; pas de mesure de performance mobile ni de production.",
-    "14/15 : tableaux citables avec mention impérative qu'aucun éditeur n'a été évalué."
+    "27/30 : protocole de comparaison à faire chez le vendeur ; quatre cas de règle locale, dont trois figurent dans la preuve des exceptions.",
+    "22/25 : grille de choix et maillage cohérents, sans classement ni performance commerciale mesurés.",
+    "14/15 : trois claims déjà confrontés aux copies, contexte CNIL limité à l'IA générative ; aucune nouvelle consultation HTTP.",
+    "14/15 : deux portraits directs et sans légende ni scroll effectivement lisibles à 320/375/1440 ; aucune mesure Lighthouse ou de production.",
+    "14/15 : tableaux citables seulement avec la mention qu'aucun éditeur n'a été évalué."
   ],
   "reservations": [
-    "Le contrat interne est la recette ; aucune trace horodatée indépendante de capture à la journée du 27/09 n'a été retrouvée dans les fichiers consultés. Le commit qui introduit ces actifs date du 28/09 et n'infirme pas une capture antérieure. Ne pas affirmer une capture Playwright rejouée par cette revue.",
-    "Article déjà publié et indexable dans le build local ; QA/CI, scellement et HTML de production après intégration restent à prouver."
+    "Le contrat interne déclare capturedAt 27/09 mais ne prouve pas l'horodatage autonome de fabrication des nouveaux portraits ; les captures de viewport relues ici attestent leur lisibilité, non leur date de création.",
+    "Robots index dans le build local ; QA/CI, scellement et contenu HTML effectivement servi après intégration restent à prouver."
   ],
-  "verdict": "AI_REVIEW_PASS sur le contenu des preuves inline et ce rendu exact, sous réserve de la traçabilité historique de capture ; aucune publication autorisée par cette seule revue.",
+  "verdict": "AI_REVIEW_PASS sur les preuves inline et le rendu local a4e597b, sous réserve de la traçabilité historique de capture ; ni scellement ni publication.",
   "subject": {
     "slug": "logiciel-ia-comptabilite",
-    "articleSha256": "de7409d61ee72ab4e1a3b441143b0afb9c5e0b043aeef7d13c6bc0e45cd09167",
-    "manifestSha256": "4b64530d7d18783bede998de7e2ff125daa06caf8dc3def1f3d29506ab5a896d"
+    "articleSha256": "b73f32e043031385949566e7441c12971db756fc8b03f0b45b2ba64d77d315f0",
+    "manifestSha256": "b0e16a4c765669e65dc5c56b0f57b4fee335fd1e4758e61b326a71cf390c7801"
   }
 }

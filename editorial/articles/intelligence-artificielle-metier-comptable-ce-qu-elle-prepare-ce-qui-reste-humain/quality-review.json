@@ -1,11 +1,11 @@
 {
   "version": 1,
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-  "reviewedAt": "2026-09-29",
-  "reviewer": "metier:t_1a9ed93d",
+  "reviewedAt": "2026-09-30",
+  "reviewer": "metier:t_303e7c6d",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 90,
+  "score": 91,
   "p0": 0,
   "categories": {
     "contentQuality": {
@@ -21,7 +21,7 @@
       "max": 15
     },
     "technicalElements": {
-      "score": 13,
+      "score": 14,
       "max": 15
     },
     "aiCitationReadiness": {
@@ -32,18 +32,18 @@
   "evidence": [
     "27/30 : frontière opérationnelle, trois cas fictifs et limites de validité explicites.",
     "22/25 : titres et structure cohérents ; aucun nouveau rang SERP prouvé.",
-    "14/15 : cinq claims confrontés à trois copies dont portée et ancienneté maintenues.",
-    "13/15 : HTML exact avec images directes et sans légende ; aucun Lighthouse ni HTML public revalidé.",
+    "14/15 : cinq claims contrôlés sur trois copies dans la revue antérieure, dont portée et ancienneté maintenues ; pas de nouvelle requête HTTP.",
+    "14/15 : portraits lisibles dans les captures 320/375/1440 ; deux images directes et sans légende, aucun Lighthouse ni HTML public revalidé.",
     "14/15 : tableau et visuels citables seulement avec la qualification jeu fictif."
   ],
   "reservations": [
     "La prospective Atlas ne prouve aucune évolution d'effectifs ni effet spécifique de l'IA ; le communiqué Apec de 2021 ne décrit pas 2026.",
-    "La revue du rendu local et de copies vérifiées dans le dépôt n'est ni un scellement ni une mesure sur un cabinet réel."
+    "La revue du rendu local et de copies vérifiées dans le dépôt n'est ni un scellement, ni une QA/CI de livraison, ni une mesure sur un cabinet réel."
   ],
-  "verdict": "AI_REVIEW_PASS sur le rendu 23c6016 et les preuves inline ; livrabilité, QA et production restent distinctes.",
+  "verdict": "AI_REVIEW_PASS sur le rendu local a4e597b et les preuves inline ; livrabilité, QA et production restent distinctes.",
   "subject": {
     "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-    "articleSha256": "90b4762a80a6579ca34e00e316c11d7edddc141b27cffc5e077be29506103efb",
-    "manifestSha256": "85d5e23b10d30c76226043ebbfa1e6ad6f0ab46d6011b1d17c2b7ea5ece7560a"
+    "articleSha256": "33cb68255727de64ac02b1a9d07e7c6ef60b1149b7d8be0f7edff779d6c9fdd1",
+    "manifestSha256": "a487bc3dbdc358a29993caed9125efc60e2499d7b71c07a9482f51b5b9d16627"
   }
 }

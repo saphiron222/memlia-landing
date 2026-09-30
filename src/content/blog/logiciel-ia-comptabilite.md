@@ -22,7 +22,7 @@ tache: "Comparer sur une pièce fictive les capacités du logiciel existant et d
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-29
+  date: 2026-09-30
 funnel: MOFU
 contentType: searchable
 format: faq-knowledge
@@ -31,7 +31,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Quatre cas de tri par règle locale conservés dans cas-executes.json ; aucun éditeur ni intégration commerciale testé."
 reviewRule: "Réviser les conditions des éditeurs et la documentation officielle avant tout classement de produit ; la grille de méthode reste indépendante des marques."
-reviewer: metier:t_1a9ed93d
+reviewer: metier:t_303e7c6d
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier cette tâche"

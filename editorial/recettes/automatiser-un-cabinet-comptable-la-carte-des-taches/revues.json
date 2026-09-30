@@ -3,17 +3,17 @@
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
     "bodySha256": "bd49741fe651f83304118b07268f93430ec3cf7e3c9dfd0a42cb38369e49bc71",
     "recipeSha256": "e74a3b06cebd86a0c68e8ca806fec4bd6dde53b261b1725c637687dde68a3573",
-    "renderedSha256": "5475499a8b5e1663b37898c316aded687c56bf0759c7f4eacb16ad667b083e2a"
+    "renderedSha256": "997069bac6660fe1f00287100933648f3795bff8f2550e00fa04455bd20d2652"
   },
   "editorial": {
-    "reviewer": "metier:t_1a9ed93d",
+    "reviewer": "metier:t_303e7c6d",
     "p0": [],
     "criteria": {
       "intent-satisfaction": {"result": "PASS", "observations": ["Le corps présente onze pôles développés et un douzième, audit légal, listé sans tâche ouverte ; les deux figures montrent cette carte et un test fictif de candidature, non des capacités livrées."]},
       "serp-format-rankability": {"result": "PASS", "observations": ["H1, onglet et canonical restent ceux du pilier ; la lecture transversale et les renvois vers prompt et grille logiciel n'en font pas un classement de produits."]},
       "eeat-sources": {"result": "PASS", "observations": ["Six copies locales de sources institutionnelles ont été rapprochées de leurs SHA déclarés et de chaque extrait de recette ; dates checkedAt 29/09/2026 ; la fenêtre TVA est bornée à la déclaration mensuelle de septembre 2026 et à la date de l'espace professionnel."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["Le WebP carte-douze-poles affiche 12 pôles, 60 familles et audit légal non ouvert ; carte-test-regle conclut candidate au cadrage sur un jeu fictif, sans gain chiffré ni déclenchement autonome."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["HTML Astro reconstruit au SHA 23c6016 : deux figures data-blog-proof avec img enfants directs, alt concordants, aucun figcaption ni wrapper défilant ; style figure > img width/max-width 100 % et height auto. Robots de ce pilier publié : index, follow ; aucun test de production réseau."]},
+      "information-gain-proof": {"result": "PASS", "observations": ["Portraits lus dans les captures haut/bas à 320, 375 et 1440 px : 12 pôles, 60 familles, audit légal listé mais non ouvert ; la relance de pièces est seulement candidate au cadrage, le test ne lance rien. Aucune performance mesurée."]},
+      "technical-onpage-seo": {"result": "PASS", "observations": ["Rendu local a4e597b : deux figures data-blog-proof, img portrait enfants directs, alt concordants, sans figcaption ni wrapper défilant ; style figure > img width/max-width 100 % et height auto. Robots index, follow dans le HTML local ; aucune vérification de production réseau."]},
       "ai-citability": {"result": "PASS", "observations": ["Les définitions et le tableau des pôles restent extractibles ; la carte de candidature est explicitement fictive et ne démontre pas la maturité d'un cabinet donné."]},
       "contextual-conversion": {"result": "PASS", "observations": ["Le lien vers la méthode et le service conserve validation et recette par les équipes, sans promettre l'automatisation de l'audit légal."]}
     }
@@ -30,14 +30,14 @@
     }
   },
   "image": {
-    "reviewer": "metier:t_1a9ed93d",
+    "reviewer": "metier:t_303e7c6d",
     "criteria": {
       "brief-six-components": {"result": "PASS", "observations": ["Périmètre ici limité aux deux preuves inline ; sources déclarées en recette, non des captures d'un logiciel client."]},
       "generation-constraints": {"result": "PASS", "observations": ["Inspection des WebP : carte typologique et test fictif uniquement, aucun nom de dossier client."]},
       "fictive-provenance": {"result": "PASS", "observations": ["carte-test-regle dit Jeu d'essai fictif et Candidate au cadrage, sans la présenter comme une mesure de performance."]},
       "recognizable-subject": {"result": "PASS", "observations": ["Les chiffres et libellés visibles de carte-douze-poles correspondent au tableau du corps et au contrat interne ; audit légal non ouvert."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Deux WebP relus ; empreintes actifs 1c0a0ad7367851946bd23567a85f6a719e1e1b9cc1487f7ef75b7ace0143600d et 9710f1db9693f2378694a26df3a963b3cae7ea5d464b2779f690e8278937590e ; renderer --check 14/14 PASS."]},
-      "alt-information": {"result": "PASS", "observations": ["Alt image/recette concordants ; source taxonomie/test et capturedAt 20/09/2026 conservés en interne, absents du HTML public. Les actifs du 20/09 précèdent cette revue et n'ont pas changé dans le diff 676fc33..23c6016."]}
+      "technical-derivatives": {"result": "PASS", "observations": ["Deux portraits -mobile.webp utilisés y compris à 1440 px ; captures 320/375/1440 haut/bas relues : bas de la carte et décision humaine restent lisibles sans défilement dans la figure. Les anciennes empreintes de paysages restent historiques ; pas de nouveau renderer --check exécuté."]},
+      "alt-information": {"result": "PASS", "observations": ["Les deux alt du HTML et de la recette décrivent la carte et le test effectivement visibles ; sources taxonomie/test et capturedAt 20/09/2026 déclarés dans la recette, sans légende publique. Cette date historique ne date pas la fabrication des nouveaux portraits."]}
     },
     "directionArt": 18,
     "semanticRelevance": 22
@@ -54,14 +54,14 @@
     }
   },
   "qualite": {
-    "reviewer": "metier:t_1a9ed93d",
-    "score": 90,
+    "reviewer": "metier:t_303e7c6d",
+    "score": 91,
     "p0": [],
-    "categories": {"contentQuality": {"score": 27, "max": 30}, "seoOptimization": {"score": 22, "max": 25}, "eeatSignals": {"score": 14, "max": 15}, "technicalElements": {"score": 13, "max": 15}, "aiCitationReadiness": {"score": 14, "max": 15}},
-    "evidence": ["27/30 : carte complète et test fictif sans métrique de gain.", "22/25 : intention pilier et liens contextuels maintenus ; pas de résultat SERP nouveau démontré.", "14/15 : six claims confrontés aux copies et à leur champ, pas de validation juridique universelle.", "13/15 : HTML reconstruit, deux preuves directes sans légende ; performance mobile et production non mesurées.", "14/15 : définitions et tableau récupérables avec la restriction audit légal."],
-    "reservations": ["Revue IA sur rendu local et sources archivées contrôlées le 29/09 ; pas de nouvelle requête HTTP ni de garantie d'applicabilité à un cabinet précis.", "Le nouveau rendu n'est ni scellé ni validé par la QA/CI de livraison."],
+    "categories": {"contentQuality": {"score": 27, "max": 30}, "seoOptimization": {"score": 22, "max": 25}, "eeatSignals": {"score": 14, "max": 15}, "technicalElements": {"score": 14, "max": 15}, "aiCitationReadiness": {"score": 14, "max": 15}},
+    "evidence": ["27/30 : carte et test fictif lisibles, sans chiffre de gain ou promesse sur l'audit légal.", "22/25 : intention pilier et liens contextuels maintenus ; pas de résultat SERP mesuré.", "14/15 : six claims vérifiés sur copies datées du 29/09 dans la revue antérieure ; corps et recette inchangés.", "14/15 : portraits directs et sans légende ni scroll, effectivement lisibles dans les captures 320/375/1440 ; pas de Lighthouse ni de test de production.", "14/15 : définitions et tableau récupérables avec la restriction audit légal."],
+    "reservations": ["Revue IA sur rendu local et sources archivées contrôlées le 29/09 ; pas de nouvelle requête HTTP ni de garantie d'applicabilité à un cabinet précis.", "Le nouveau rendu n'est ni scellé ni validé par la QA/CI de livraison ; indexabilité en production non prouvée."],
     "seo": ["Titre, H1 et canonical conservés dans l'HTML reconstruit ; robots index, follow pour le pilier existant."],
     "geo": ["Carte illustrative ; aucune statistique de gains ni faculté d'audit légal induite."],
-    "verdict": "AI_REVIEW_PASS sur les preuves inline et le rendu exact 23c6016 ; ni scellement, ni livraison."
+    "verdict": "AI_REVIEW_PASS sur les preuves inline et le rendu local a4e597b ; ni scellement, ni livraison."
   }
 }

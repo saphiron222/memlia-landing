@@ -23,7 +23,7 @@ tache: "Comprendre ce que l’intelligence artificielle peut préparer dans un c
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-29
+  date: 2026-09-30
 funnel: TOFU
 contentType: searchable
 format: thought-leadership
@@ -32,7 +32,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Frontière en trois colonnes et trois cas fictifs, dont une ambiguïté et une règle absente ; aucune liste de tâches ni donnée réelle."
 reviewRule: "Relire la source OPCO Atlas à six mois et à toute modification de la page de branche."
-reviewer: metier:t_1a9ed93d
+reviewer: metier:t_303e7c6d
 sourcesVerifieesLe: 2026-09-28
 cta:
   label: "Confier cette tâche"

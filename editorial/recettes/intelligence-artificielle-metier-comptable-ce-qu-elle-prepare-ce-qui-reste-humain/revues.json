@@ -3,16 +3,16 @@
     "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
     "bodySha256": "e27d63abcaf5e173b7f7399bd52129ae1790d61988ff5f6183487a1d2c378288",
     "recipeSha256": "986e32e6f64e5f6ae2c5165cac5c675f26efc08e7466023114df8e64fbbcccb6",
-    "renderedSha256": "854a3d2da6838e1b68c9a0eac57611fc59b8b9a7f78cb3de9ac69c5bf0ebfded"
+    "renderedSha256": "a0abc96adfdedf06c2579a24901a59e4c10fa8d1a4093a7e33aa8626d94696f3"
   },
   "editorial": {
-    "reviewer": "metier:t_1a9ed93d", "p0": [],
+    "reviewer": "metier:t_303e7c6d", "p0": [],
     "criteria": {
       "intent-satisfaction": {"result": "PASS", "observations": ["Le corps oppose règle écrite et décision humaine, puis distingue entrée reconnue, ambiguïté et règle absente sur trois cas fictifs ; aucun effet de l'IA sur l'emploi n'est annoncé comme mesuré."]},
       "serp-format-rankability": {"result": "PASS", "observations": ["H1 et onglet gardent l'intention métier/compétences ; les visuels restent un schéma de frontière et un relevé de sorties locales, pas une liste de produits."]},
       "eeat-sources": {"result": "PASS", "observations": ["Copies Atlas, Apec et Le Francilien vérifiées contre leurs trois SHA et cinq extraits ; Atlas est qualitatif/non daté, Apec daté de 2021 et le livre blanc repris en 2023 est intersectoriel. Le texte porte ces limites au contact des citations."]},
       "information-gain-proof": {"result": "PASS", "observations": ["Visuel competences-refus : IA-01 proposition PR-001, IA-02 refus pour deux interprétations, IA-03 refus règle à écrire ; tableau du corps précise les sorties sans attribution à des dossiers client."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["HTML Astro du SHA 23c6016 : deux figures avec images enfants directs, alts descriptifs, zéro figcaption ou wrapper défilant ; style width/max-width 100 %, height auto ; robots index, follow sur l'article publié."]},
+      "technical-onpage-seo": {"result": "PASS", "observations": ["Rendu local a4e597b : deux figures avec portraits enfants directs, alt descriptifs, sans figcaption ni wrapper défilant ; style width/max-width 100 %, height auto. Les trois cas et la frontière restent lisibles dans les captures haut/bas 320/375/1440 ; robots index, follow sur ce HTML local, sans contrôle du site servi."]},
       "ai-citability": {"result": "PASS", "observations": ["Schéma et texte renvoient à la frontière préparation/validation/décision ; la prospective Atlas est explicitement distincte d'une projection chiffrée de l'emploi."]},
       "contextual-conversion": {"result": "PASS", "observations": ["Les renvois vers le pilier, méthode et garanties gardent la validation et la modification de règle sous contrôle du cabinet."]}
     }
@@ -28,14 +28,14 @@
     }
   },
   "image": {
-    "reviewer": "metier:t_1a9ed93d",
+    "reviewer": "metier:t_303e7c6d",
     "criteria": {
       "brief-six-components": {"result": "PASS", "observations": ["Les deux preuves inline relèvent du contrat de cadre HTML et du jeu fictif, distincts de la couverture ; aucune nouvelle génération ici."]},
       "generation-constraints": {"result": "PASS", "observations": ["WebP frontière/refus relus visuellement ; aucune donnée nominative ou interface client observée."]},
-      "fictive-provenance": {"result": "PASS", "observations": ["competences-refus mentionne jeu fictif, oracle exécuté, trois cas ; un run local replay --check confirme 2 articles et 7 cas au total, sans résultat d'emploi."]},
+      "fictive-provenance": {"result": "PASS", "observations": ["competences-refus mentionne jeu fictif, oracle exécuté, trois cas ; le corps limite le rejeu à ces entrées fictives sans résultat d'emploi. Le replay --check de l'ancienne revue n'a pas été relancé lors de cette passe."]},
       "recognizable-subject": {"result": "PASS", "observations": ["Frontière : prépare seul/attend validation/reste humain ; refus : une proposition et deux arrêts motivés, conforme au corps.md:53-73."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Empreintes actifs b69c8c443a4d0732bcadcdffa5fa022dd7a0852500dcb899e7470aabf9341524 et d77cdf5958394093ab74eb44348654f3147a1e22eb8ccfa265f9326488e0911e concordent avec docs/qa/blog-recrutement-proofs.json ; renderer --check 4/4 PASS."]},
-      "alt-information": {"result": "PASS", "observations": ["Deux alts concordent avec les visuels ; source cadre HTML/oracle et date 21/09/2026 restent dans recette et contrat internes, pas dans une légende publique. Le commit d'adoption des WebP est daté du 21/09."]}
+      "technical-derivatives": {"result": "PASS", "observations": ["Les deux portraits -mobile.webp apparaissent aussi sur bureau dans le HTML a4e597b ; les captures 320/375/1440 montrent la frontière, une proposition et deux refus lisibles. Les empreintes des anciens paysages ne prouvent pas l'état des portraits et le renderer n'a pas été relancé ici."]},
+      "alt-information": {"result": "PASS", "observations": ["Deux alts du HTML et de la recette concordent avec la frontière et les refus visibles ; source cadre HTML/oracle et date 21/09/2026 restent dans la recette interne, sans légende publique. Cette date historique ne date pas la fabrication des portraits."]}
     }, "directionArt": 18, "semanticRelevance": 23
   },
   "sources": {
@@ -47,12 +47,12 @@
     }
   },
   "qualite": {
-    "reviewer": "metier:t_1a9ed93d", "score": 90, "p0": [],
-    "categories": {"contentQuality": {"score": 27, "max": 30}, "seoOptimization": {"score": 22, "max": 25}, "eeatSignals": {"score": 14, "max": 15}, "technicalElements": {"score": 13, "max": 15}, "aiCitationReadiness": {"score": 14, "max": 15}},
-    "evidence": ["27/30 : frontière opérationnelle, trois cas fictifs et limites de validité explicites.", "22/25 : titres et structure cohérents ; aucun nouveau rang SERP prouvé.", "14/15 : cinq claims confrontés à trois copies dont portée et ancienneté maintenues.", "13/15 : HTML exact avec images directes et sans légende ; aucun Lighthouse ni HTML public revalidé.", "14/15 : tableau et visuels citables seulement avec la qualification jeu fictif."],
-    "reservations": ["La prospective Atlas ne prouve aucune évolution d'effectifs ni effet spécifique de l'IA ; le communiqué Apec de 2021 ne décrit pas 2026.", "La revue du rendu local et de copies vérifiées dans le dépôt n'est ni un scellement ni une mesure sur un cabinet réel."],
+    "reviewer": "metier:t_303e7c6d", "score": 91, "p0": [],
+    "categories": {"contentQuality": {"score": 27, "max": 30}, "seoOptimization": {"score": 22, "max": 25}, "eeatSignals": {"score": 14, "max": 15}, "technicalElements": {"score": 14, "max": 15}, "aiCitationReadiness": {"score": 14, "max": 15}},
+    "evidence": ["27/30 : frontière opérationnelle, trois cas fictifs et limites de validité explicites.", "22/25 : titres et structure cohérents ; aucun nouveau rang SERP prouvé.", "14/15 : cinq claims contrôlés sur trois copies dans la revue antérieure, dont portée et ancienneté maintenues ; pas de nouvelle requête HTTP.", "14/15 : portraits lisibles dans les captures 320/375/1440 ; deux images directes et sans légende, aucun Lighthouse ni HTML public revalidé.", "14/15 : tableau et visuels citables seulement avec la qualification jeu fictif."],
+    "reservations": ["La prospective Atlas ne prouve aucune évolution d'effectifs ni effet spécifique de l'IA ; le communiqué Apec de 2021 ne décrit pas 2026.", "La revue du rendu local et de copies vérifiées dans le dépôt n'est ni un scellement, ni une QA/CI de livraison, ni une mesure sur un cabinet réel."],
     "seo": ["Canonical conservé, robots index, follow observé dans le HTML local."],
     "geo": ["Une proposition et deux refus du jeu fictif, sans taux de performance externe."],
-    "verdict": "AI_REVIEW_PASS sur le rendu 23c6016 et les preuves inline ; livrabilité, QA et production restent distinctes."
+    "verdict": "AI_REVIEW_PASS sur le rendu local a4e597b et les preuves inline ; livrabilité, QA et production restent distinctes."
   }
 }

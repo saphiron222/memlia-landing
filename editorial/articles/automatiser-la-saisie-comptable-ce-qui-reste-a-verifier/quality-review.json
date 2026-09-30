@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "reviewedAt": "2026-09-29",
-  "reviewer": "metier:t_14797d6b",
+  "reviewedAt": "2026-09-30",
+  "reviewer": "metier:t_303e7c6d",
   "rubric": "blog-analyze-100",
   "status": "PASS",
   "score": 92,
@@ -30,20 +30,20 @@
     }
   },
   "evidence": [
-    "Cinq couples citation/source vérifiés dans leur portée sur quatre pages officielles ouvertes le 29/09/2026 et leurs copies locales SHA concordants.",
-    "Scénario TEST-050 attendu non exécuté et visuels indiquant explicitement l’absence de mesure ; date de mise à jour 29/09/2026 dans recette, frontmatter et preview.",
-    "Deux figures statiques dans le corps, sans défilement horizontal ni légende technique ; renderer --check 14/14 conforme."
+    "Cinq claims et quatre sources officielles datées contrôlés dans la revue antérieure ; corps et recette inchangés selon l'empreinte canonique. Aucun nouveau relevé HTTP dans cette passe.",
+    "TEST-050 reste une sortie attendue non exécutée : facture de période précédente, doublon non joué ; ticket coupé sans écriture, reliquat non mesuré et aucun classement individuel visibles sur les deux portraits aux trois largeurs 320/375/1440.",
+    "Deux figures directes avec alt concordants, sans légende technique ni défilement dans le HTML lu au SHA a4e597b ; score technique 14/15 conservé, sans mesure Lighthouse."
   ],
   "reservations": [
-    "La prévisualisation est encore un brouillon noindex ; indexabilité et contenu effectivement servis restent à constater après scellement, CI exacte et livraison.",
+    "Le rendu local affiche robots index ; l'indexabilité effective et le contenu servi restent à constater après scellement, CI exacte et livraison.",
     "Le jeu fictif de cinquante pièces est un scénario attendu, sans trace de rejeu logiciel ni reliquat observé : ne jamais en tirer un résultat mesuré.",
-    "Les reçus dérivés business-review et publication historique sont encore FAIL/obsolètes tant que le responsable n’a pas rematérialisé puis scellé le candidat ; cet avis ne les valide pas rétroactivement.",
+    "Les reçus dérivés et le sceau antérieurs ne sont pas retamponnés par cette revue ; le responsable doit rematérialiser et sceller le candidat, puis obtenir QA et CI distinctes.",
     "Le score est une appréciation éditoriale de cette revue IA, ni un Lighthouse mesuré ni une prédiction de classement ou de citation."
   ],
-  "verdict": "Revue IA indépendante favorable au candidat exact, sous portes techniques distinctes de scellement, QA, CI et constat de production.",
+  "verdict": "AI_REVIEW_PASS sur ce rendu local au SHA a4e597b ; ni scellement, ni QA/CI, ni autorisation de publication.",
   "subject": {
     "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "articleSha256": "1ce33196f93a15b1583f660ad32123692c191396356c5fb7bdb3611209be9887",
-    "manifestSha256": "5f98d29b5515f2b83137235a379816b6304be95af8301a8ca3e05054f0172974"
+    "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
+    "manifestSha256": "dbd96a016437f179bdb023f1ef7725b0c629fa2727e10c0cd431b37d02ea882e"
   }
 }

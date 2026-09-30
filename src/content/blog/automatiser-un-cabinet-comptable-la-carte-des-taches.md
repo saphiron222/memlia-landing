@@ -23,7 +23,7 @@ tache: "Dresser la carte des tâches automatisables du cabinet et repérer celle
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-29
+  date: 2026-09-30
 funnel: TOFU
 contentType: searchable
 format: pillar-page
@@ -32,7 +32,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Douze pôles et soixante familles listés depuis src/data/familles.ts ; pour chacun des onze pôles ouverts, un tableau se-prépare-seul / attend-une-validation / reste-humain ; le douzième (audit légal) listé et non ouvert ; six affirmations sourcées sur des pages officielles ouvertes le jour de la publication."
 reviewRule: "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données."
-reviewer: metier:t_1a9ed93d
+reviewer: metier:t_303e7c6d
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier une première tâche"

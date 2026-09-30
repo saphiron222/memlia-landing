@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "articleSha256": "1ce33196f93a15b1583f660ad32123692c191396356c5fb7bdb3611209be9887",
+  "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -286,11 +286,11 @@
       "sourceExcerpts": {
         "sp-mentions-facture": "comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique"
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-09-30",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-09-30",
         "sourceResults": [
           {
             "sourceId": "sp-mentions-facture",
@@ -332,7 +332,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La phrase de la fiche Service-Public sur les mentions obligatoires d’une facture est reprise à l’identique, sans élargir sa portée.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-09-30"
           }
         ]
       }
@@ -348,11 +348,11 @@
       "sourceExcerpts": {
         "sp-facture-electronique": "La facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie."
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-09-30",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-09-30",
         "sourceResults": [
           {
             "sourceId": "sp-facture-electronique",
@@ -394,7 +394,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Constat de la fiche Service-Public sur la facturation électronique, repris mot pour mot, sans y ajouter de date ni d’obligation.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-09-30"
           }
         ]
       }
@@ -410,11 +410,11 @@
       "sourceExcerpts": {
         "sp-facture-electronique": "de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)"
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-09-30",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-09-30",
         "sourceResults": [
           {
             "sourceId": "sp-facture-electronique",
@@ -455,7 +455,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Possibilité de signalement décrite par la fiche Service-Public, citée à l’identique et présentée comme une possibilité, non comme une obligation.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-09-30"
           }
         ]
       }
@@ -471,11 +471,11 @@
       "sourceExcerpts": {
         "sp-conservation-pieces": "documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés"
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-09-30",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-09-30",
         "sourceResults": [
           {
             "sourceId": "sp-conservation-pieces",
@@ -520,7 +520,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Phrase de la fiche Service-Public sur la conservation des documents reprise à l’identique ; seule l’apostrophe typographique diffère, et aucune durée n’est affirmée.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-09-30"
           }
         ]
       }
@@ -536,11 +536,11 @@
       "sourceExcerpts": {
         "cnil-donnee-personnelle": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable."
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-09-30",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-09-30",
         "sourceResults": [
           {
             "sourceId": "cnil-donnee-personnelle",
@@ -581,7 +581,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition officielle de la donnée personnelle publiée par la CNIL, reprise à l’identique.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-09-30"
           }
         ]
       }

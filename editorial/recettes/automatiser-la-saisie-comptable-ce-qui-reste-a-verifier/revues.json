@@ -3,10 +3,10 @@
     "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
     "bodySha256": "cfd64108890185270b436d220758857286adb896b8e5a6a770612ac62a9fc39b",
     "recipeSha256": "b8ac56151adcd6a0d174750734fed297683da8f6d63b3d076aca631cba589232",
-    "renderedSha256": "cd4bf9576b39fa516dad6b295ec081214547e5ccaeb85f3e2c52fb4c8bb0b3f5"
+    "renderedSha256": "b7a0ebfc1d65597b06b278c6d04f0d512edb0ca45541aeda9f095d3049dbb5ea"
   },
   "editorial": {
-    "reviewer": "metier:t_14797d6b",
+    "reviewer": "metier:t_303e7c6d",
     "criteria": {
       "intent-satisfaction": {
         "result": "PASS",
@@ -26,7 +26,7 @@
       },
       "technical-onpage-seo": {
         "result": "PASS",
-        "observations": ["Le HTML de preview possède un canonical sur le slug, un h1, deux images directes dans figure avec alt et dimensions, des sources datées et dateModified au 29/09/2026 ; le noindex est celui du brouillon et doit disparaître uniquement après publication scellée."]
+        "observations": ["Rendu local a4e597b : canonical du slug, un h1, deux figures avec img portrait enfants directs, alt et largeur déclarée ; pas de figcaption ni de panneau défilant. Les captures à 320, 375 et 1440 px rendent lisibles la sortie attendue non exécutée et le doublon non joué. Le robots index du HTML local n'atteste pas une indexation ni une livraison."]
       },
       "ai-citability": {
         "result": "PASS",
@@ -64,12 +64,13 @@
     }
   },
   "image": {
+    "reviewer": "metier:t_303e7c6d",
     "criteria": {
       "brief-six-components": {"result": "PASS", "observations": ["Brief de couverture à sujet, composition, style, palette, interdits et alt dans recette.json ; les deux figures ont une recette HTML figée distincte."]},
       "generation-constraints": {"result": "PASS", "observations": ["Couverture inspectée : diorama sans texte lisible, personne, données client ni faux écran ; les figures HTML ne prétendent pas être des captures d’un logiciel opérationnel."]},
       "fictive-provenance": {"result": "PASS", "observations": ["Les figures affichent TEST-050, scénario fictif, sortie attendue et non exécutée ; contrat et recette donnent source fictive et date de capture au 29/09/2026."]},
       "recognizable-subject": {"result": "PASS", "observations": ["Couverture montrant lecture de feuilles et tri en deux plateaux ; figures lisibles : contrôle arrêté sur période précédente et ticket coupé à qualifier."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Les deux WebP présents correspondent aux SHA du manifeste et le renderer --check a confirmé quatorze preuves conformes ; images inline directes 1600×900 dans la preview."]},
+      "technical-derivatives": {"result": "PASS", "observations": ["Les deux figures du rendu a4e597b emploient les portraits -mobile.webp aussi à 1440 px ; leurs captures haut/bas à 320, 375 et 1440 px montrent la sortie attendue, « Non joué » et le ticket coupé lisibles. Aucun nouveau renderer --check exécuté dans cette revue."]},
       "alt-information": {"result": "PASS", "observations": ["Les deux alt dans recette, contrat et HTML décrivent facture de période précédente et ticket coupé, sans ancien écart arithmétique ; alt de la couverture décrit les objets visibles."]}
     },
     "directionArt": 17,
@@ -85,7 +86,7 @@
     }
   },
   "qualite": {
-    "reviewer": "metier:t_14797d6b",
+    "reviewer": "metier:t_303e7c6d",
     "score": 92,
     "p0": [],
     "categories": {
@@ -95,10 +96,10 @@
       "technicalElements": {"score": 14, "max": 15},
       "aiCitationReadiness": {"score": 14, "max": 15}
     },
-    "evidence": ["Cinq couples citation/source vérifiés dans leur portée sur quatre pages officielles ouvertes le 29/09/2026 et leurs copies locales SHA concordants.", "Scénario TEST-050 attendu non exécuté et visuels indiquant explicitement l’absence de mesure ; date de mise à jour 29/09/2026 dans recette, frontmatter et preview.", "Deux figures statiques dans le corps, sans défilement horizontal ni légende technique ; renderer --check 14/14 conforme."],
-    "reservations": ["La prévisualisation est encore un brouillon noindex ; indexabilité et contenu effectivement servis restent à constater après scellement, CI exacte et livraison.", "Le jeu fictif de cinquante pièces est un scénario attendu, sans trace de rejeu logiciel ni reliquat observé : ne jamais en tirer un résultat mesuré.", "Les reçus dérivés business-review et publication historique sont encore FAIL/obsolètes tant que le responsable n’a pas rematérialisé puis scellé le candidat ; cet avis ne les valide pas rétroactivement.", "Le score est une appréciation éditoriale de cette revue IA, ni un Lighthouse mesuré ni une prédiction de classement ou de citation."],
+    "evidence": ["Cinq claims et quatre sources officielles datées contrôlés dans la revue antérieure ; corps et recette inchangés selon l'empreinte canonique. Aucun nouveau relevé HTTP dans cette passe.", "TEST-050 reste une sortie attendue non exécutée : facture de période précédente, doublon non joué ; ticket coupé sans écriture, reliquat non mesuré et aucun classement individuel visibles sur les deux portraits aux trois largeurs 320/375/1440.", "Deux figures directes avec alt concordants, sans légende technique ni défilement dans le HTML lu au SHA a4e597b ; score technique 14/15 conservé, sans mesure Lighthouse."],
+    "reservations": ["Le rendu local affiche robots index ; l'indexabilité effective et le contenu servi restent à constater après scellement, CI exacte et livraison.", "Le jeu fictif de cinquante pièces est un scénario attendu, sans trace de rejeu logiciel ni reliquat observé : ne jamais en tirer un résultat mesuré.", "Les reçus dérivés et le sceau antérieurs ne sont pas retamponnés par cette revue ; le responsable doit rematérialiser et sceller le candidat, puis obtenir QA et CI distinctes.", "Le score est une appréciation éditoriale de cette revue IA, ni un Lighthouse mesuré ni une prédiction de classement ou de citation."],
     "seo": ["Canonical du slug et dateModified 29/09/2026 dans le rendu de prévisualisation ; sources datées et alt descriptifs des deux preuves."],
     "geo": ["Réponse directe et six contrôles dans des tableaux HTML ; le scénario non exécuté est qualifié sans ambiguïté."],
-    "verdict": "Revue IA indépendante favorable au candidat exact, sous portes techniques distinctes de scellement, QA, CI et constat de production."
+    "verdict": "AI_REVIEW_PASS sur ce rendu local au SHA a4e597b ; ni scellement, ni QA/CI, ni autorisation de publication."
   }
 }

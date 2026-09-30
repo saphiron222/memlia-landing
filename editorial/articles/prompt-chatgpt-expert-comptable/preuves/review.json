@@ -3,13 +3,13 @@
   "candidateSlug": "prompt-chatgpt-expert-comptable",
   "kind": "editorial-review",
   "status": "PASS",
-  "checkedAt": "2026-09-29",
-  "articleSha256": "ea44336c4c545d5b1c816d5db5c6b613c2460e39f8258e379016c1cc6b36ae59",
-  "manifestSha256": "3384badb92b56194d389d93b9b0bb233955dc11581043ec6f29a4d46e2576f77",
+  "checkedAt": "2026-09-30",
+  "articleSha256": "9cf569f381d3c1535ecc313f3f3590b13da87bc4aaa9a6baaad841587e185c6b",
+  "manifestSha256": "edcc91e5d5102e113a5ce58d8dd06371f8ee89d5aec42f32e5c91fd9f2cf5463",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact prompt-chatgpt-expert-comptable."
   ],
-  "reviewer": "metier:t_e511ee7c",
+  "reviewer": "metier:t_303e7c6d",
   "criteria": [
     {
       "id": "intent-satisfaction",
@@ -40,7 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "journal-rejeu.json:21-33 : piece vide, statut arret, motif contexte incomplet, message null, envoi false. WebP w39-prompt-arret : champ Pièce attendue vide et aucune demande préparée ; recette.json:29 et article matérialisé:133 portent maintenant le même fait. Le cas nominal porte une facture nommée mais non reçue et produit seulement un brouillon fictif."
+        "Le journal du script local consigne pièce attendue vide, statut arrêt, motif contexte incomplet, message absent et aucun envoi. Le portrait de refus et l'alt dans le HTML local montrent le champ « Pièce attendue » non renseigné ; le cas nominal porte une facture nommée mais non reçue et produit seulement un brouillon fictif non envoyé."
       ]
     },
     {
@@ -48,7 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Astro preview local au SHA ead22dc : 47 routes ; blog-forge empreinte sur le HTML produit confirme les trois SHA du subject. Le brouillon reste a-valider/noindex : aucun feu vert de publication ne résulte de ce critère."
+        "HTML local a4e597b : deux portraits enfants directs de figure, alts concordants, aucune légende ni wrapper défilant ; captures haut/bas 320/375/1440 lisibles. La page locale affiche robots index ; cela ne prouve pas que le brouillon soit publié ou indexé, ni la QA/CI du candidat."
       ]
     },
     {

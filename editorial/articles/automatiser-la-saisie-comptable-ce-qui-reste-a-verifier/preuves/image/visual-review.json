@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-29",
-  "articleSha256": "1ce33196f93a15b1583f660ad32123692c191396356c5fb7bdb3611209be9887",
-  "manifestSha256": "5f98d29b5515f2b83137235a379816b6304be95af8301a8ca3e05054f0172974",
+  "checkedAt": "2026-09-30",
+  "articleSha256": "113e49080b9d17b2de9b90460d81354d38e9e5e053a25a8920412568ba48b6a3",
+  "manifestSha256": "dbd96a016437f179bdb023f1ef7725b0c629fa2727e10c0cd431b37d02ea882e",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
@@ -77,7 +77,7 @@
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Les deux WebP présents correspondent aux SHA du manifeste et le renderer --check a confirmé quatorze preuves conformes ; images inline directes 1600×900 dans la preview."
+        "Les deux figures du rendu a4e597b emploient les portraits -mobile.webp aussi à 1440 px ; leurs captures haut/bas à 320, 375 et 1440 px montrent la sortie attendue, « Non joué » et le ticket coupé lisibles. Aucun nouveau renderer --check exécuté dans cette revue."
       ]
     },
     {

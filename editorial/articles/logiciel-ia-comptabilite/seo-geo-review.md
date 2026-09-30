@@ -1,15 +1,15 @@
 # SEO et préparation aux citations IA — Logiciel IA pour la comptabilité : la grille de choix d'un cabinet
 
-Verdict : PASS — 90/100, 0 P0 (revue indépendante du 2026-09-29, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
+Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-09-30, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
 | Catégorie | Score |
 | --- | ---: |
 | Qualité du contenu | 27/30 |
 | SEO | 22/25 |
 | E-E-A-T | 14/15 |
-| Technique | 13/15 |
+| Technique | 14/15 |
 | Préparation aux citations IA | 14/15 |
-| Total | 90/100 |
+| Total | 91/100 |
 
 ## SEO
 
@@ -21,5 +21,5 @@ Verdict : PASS — 90/100, 0 P0 (revue indépendante du 2026-09-29, barème blog
 
 ## Réserves mesurées
 
-- Le contrat interne est la recette ; aucune trace horodatée indépendante de capture à la journée du 27/09 n'a été retrouvée dans les fichiers consultés. Le commit qui introduit ces actifs date du 28/09 et n'infirme pas une capture antérieure. Ne pas affirmer une capture Playwright rejouée par cette revue.
-- Article déjà publié et indexable dans le build local ; QA/CI, scellement et HTML de production après intégration restent à prouver.
+- Le contrat interne déclare capturedAt 27/09 mais ne prouve pas l'horodatage autonome de fabrication des nouveaux portraits ; les captures de viewport relues ici attestent leur lisibilité, non leur date de création.
+- Robots index dans le build local ; QA/CI, scellement et contenu HTML effectivement servi après intégration restent à prouver.

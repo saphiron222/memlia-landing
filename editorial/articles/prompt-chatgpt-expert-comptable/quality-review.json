@@ -1,11 +1,11 @@
 {
   "version": 1,
   "candidateSlug": "prompt-chatgpt-expert-comptable",
-  "reviewedAt": "2026-09-29",
-  "reviewer": "metier:t_e511ee7c",
+  "reviewedAt": "2026-09-30",
+  "reviewer": "metier:t_303e7c6d",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 90,
+  "score": 91,
   "p0": 0,
   "categories": {
     "contentQuality": {
@@ -21,7 +21,7 @@
       "max": 15
     },
     "technicalElements": {
-      "score": 13,
+      "score": 14,
       "max": 15
     },
     "aiCitationReadiness": {
@@ -30,21 +30,22 @@
     }
   },
   "evidence": [
-    "27/30 : la condition d'arrêt et le cas nominal sont séparés dans texte, journal, WebP et alt.",
+    "27/30 : condition d'arrêt et cas nominal séparés dans le texte, le journal et les portraits, sans refus attribué à ChatGPT.",
     "22/25 : titre, tâche et liens inchangés ; aucun résultat de classement mesuré.",
-    "14/15 : trois copies de sources datées et liées, sans validation fictive de ChatGPT.",
-    "13/15 : preview local produit au triplet exact, sans mesure d'accessibilité en lecteur d'écran ni preuve publique.",
+    "14/15 : trois copies de sources datées et liées dans la revue antérieure, sans validation fictive de ChatGPT.",
+    "14/15 : deux preuves directes sans caption ni scroll, lisibles dans les captures 320/375/1440 ; pas de test de lecteur d'écran ni preuve publique.",
     "14/15 : refus présenté comme sortie du script local uniquement."
   ],
   "reservations": [
     "Cette revue IA ciblée ne vaut ni scellement ni QA/CI exact-head ni feu vert de publication.",
-    "Aucun appel ChatGPT ou essai de lecteur d'écran effectué ; capture W39 déclarée au 27/09 sans horodatage autonome vérifié lors de cette passe.",
-    "Sources officielles évaluées à partir des copies et reçus du 29/09/2026 ; pas de nouvelle consultation HTTP en direct."
+    "Aucun appel ChatGPT ou essai de lecteur d'écran effectué ; capturedAt W39 déclaré au 27/09 sans horodatage autonome vérifié lors de cette passe.",
+    "Sources officielles évaluées à partir des copies et reçus du 29/09/2026 ; pas de nouvelle consultation HTTP en direct.",
+    "Le rendu local affiche robots index, sans preuve d'une mise en ligne ou d'une indexation effective."
   ],
-  "verdict": "AI_REVIEW_PASS sur la correction d'alt et le triplet exact ead22dc, sous réserves de provenance et de livraison ; ni scellement ni publication.",
+  "verdict": "AI_REVIEW_PASS sur les portraits et le rendu local a4e597b, sous réserves de provenance historique et de livraison ; ni scellement ni publication.",
   "subject": {
     "slug": "prompt-chatgpt-expert-comptable",
-    "articleSha256": "ea44336c4c545d5b1c816d5db5c6b613c2460e39f8258e379016c1cc6b36ae59",
-    "manifestSha256": "3384badb92b56194d389d93b9b0bb233955dc11581043ec6f29a4d46e2576f77"
+    "articleSha256": "9cf569f381d3c1535ecc313f3f3590b13da87bc4aaa9a6baaad841587e185c6b",
+    "manifestSha256": "edcc91e5d5102e113a5ce58d8dd06371f8ee89d5aec42f32e5c91fd9f2cf5463"
   }
 }
