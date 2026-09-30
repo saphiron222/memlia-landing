@@ -36,6 +36,7 @@
   .steps,.steps.six{grid-template-columns:1fr;padding:8px 16px;gap:8px}
   .steps li{min-height:0;grid-template-columns:36px 1fr;grid-template-rows:auto auto;padding:10px;gap:4px}
   .steps li span{grid-column:2;font-size:15px}.steps b{font-size:18px}
+  .steps .waiting{opacity:1;background:var(--paper)}
   .outcome-band,.contract-band,.loop{margin:12px 16px;padding:12px;flex-wrap:wrap;font-size:15px}
   .motifs{grid-template-columns:1fr}.motifs span{padding:10px;font-size:15px}
   .case dl div{display:grid}.case p{font-size:15px}

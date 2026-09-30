@@ -76,7 +76,7 @@ Constituez ensuite un petit dossier **entièrement fictif**, sans document clien
 Relevez par solution la version montrée, la sortie, les étapes manuelles et la trace après correction. Sans démonstration reproductible, inscrivez « non vérifié », pas « absent ».
 
 <figure data-blog-proof="w39-logiciel-parcours">
-  <img src="/proofs/blog/w39-logiciel-parcours.webp" srcset="/proofs/blog/w39-logiciel-parcours-mobile.webp 1200w, /proofs/blog/w39-logiciel-parcours.webp 1600w" sizes="(max-width: 600px) 375px, 1600px" alt="Parcours fictif d'une pièce du dépôt jusqu'à la proposition soumise au contrôle humain." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/w39-logiciel-parcours-mobile.webp" alt="Parcours fictif d'une pièce du dépôt jusqu'à la proposition soumise au contrôle humain." width="1200" loading="lazy" decoding="async">
 </figure>
 
 ## Comparer ce qui compte vraiment
@@ -154,7 +154,7 @@ Un doublon probable n'est pas une pièce à effacer : deux fichiers identiques p
 Demandez à voir une exception **dans l'interface réelle**, puis faites-la traiter par la personne qui utiliserait l'outil. Si seule une vidéo du cas nominal est disponible, les exceptions restent non vérifiées, et non déclarées absentes.
 
 <figure data-blog-proof="w39-logiciel-exceptions">
-  <img src="/proofs/blog/w39-logiciel-exceptions.webp" srcset="/proofs/blog/w39-logiciel-exceptions-mobile.webp 1200w, /proofs/blog/w39-logiciel-exceptions.webp 1600w" sizes="(max-width: 600px) 375px, 1600px" alt="Schéma fictif de trois issues de contrôle : proposition à vérifier, doublon probable et période ambiguë, sans écriture." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/w39-logiciel-exceptions-mobile.webp" alt="Schéma fictif de trois issues de contrôle : proposition à vérifier, doublon probable et période ambiguë, sans écriture." width="1200" loading="lazy" decoding="async">
 </figure>
 
 ## Trois choix possibles, pas un classement de marques

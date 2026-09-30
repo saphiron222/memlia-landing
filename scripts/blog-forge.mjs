@@ -566,10 +566,10 @@ export function injecterPreuvesInline(corps, preuves = [], root = process.cwd())
     const figures = groupe.map((preuve) => {
       const imagePath = `/proofs/blog/${preuve.id}.webp`;
       const mobilePath = `/proofs/blog/${preuve.id}-mobile.webp`;
-      const responsive = existsSync(join(root, 'public', mobilePath))
-        ? ` srcset="${mobilePath} 1200w, ${imagePath} 1600w" sizes="(max-width: 600px) 375px, 1600px"`
-        : '';
-      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}"${responsive} alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`;
+      const portrait = existsSync(join(root, 'public', mobilePath));
+      // La colonne bureau ne mesure que 656 px : le paysage 1600 × 900 y réduit
+      // les réserves à quelques pixels. Garder le portrait reflué aux deux tailles.
+      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${portrait ? mobilePath : imagePath}" alt="${echapperHtml(preuve.alt)}" width="${portrait ? 1200 : 1600}"${portrait ? '' : ' height="900"'} loading="lazy" decoding="async">\n</figure>`;
     }).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }

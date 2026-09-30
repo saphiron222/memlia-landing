@@ -106,7 +106,7 @@ Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. L
 | Audit légal | 1 | commissariat aux comptes : famille listée, aucune tâche ouverte | tout |
 
 <figure data-blog-proof="carte-douze-poles">
-  <img src="/proofs/blog/carte-douze-poles.webp" srcset="/proofs/blog/carte-douze-poles-mobile.webp 1200w, /proofs/blog/carte-douze-poles.webp 1600w" sizes="(max-width: 600px) 375px, 1600px" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/carte-douze-poles-mobile.webp" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1200" loading="lazy" decoding="async">
 </figure>
 
 ## Production comptable : de la pièce reçue au bilan livré
@@ -226,7 +226,7 @@ Quatre familles qui ne produisent rien mais qui décident de tout. Choisir et ca
 | La mesure du temps avant et après, sur le même jeu d’essai | La place de chaque validation humaine, écrite dans la règle | La décision d’interrompre ou d’étendre une automatisation |
 
 <figure data-blog-proof="carte-test-regle">
-  <img src="/proofs/blog/carte-test-regle.webp" srcset="/proofs/blog/carte-test-regle-mobile.webp 1200w, /proofs/blog/carte-test-regle.webp 1600w" sizes="(max-width: 600px) 375px, 1600px" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/carte-test-regle-mobile.webp" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1200" loading="lazy" decoding="async">
 </figure>
 
 ## Que ne contient pas cette carte ?

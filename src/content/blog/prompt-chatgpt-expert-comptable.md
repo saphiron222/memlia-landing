@@ -64,7 +64,7 @@ Un prompt ChatGPT pour expert-comptable utile part d'une tâche précise : prép
 Une instruction copiée d'un collaborateur à l'autre ne dit pas où lire l'état de la pièce, si une demande est déjà partie ni quand cesser la relance. La règle de cabinet à écrire est celle du passage de « pièce absente » à « demande proposée », puis de « reçue » à « arrêt » ; le texte du prompt n'en est qu'une étape.
 
 <figure data-blog-proof="w39-prompt-brouillon">
-  <img src="/proofs/blog/w39-prompt-brouillon.webp" srcset="/proofs/blog/w39-prompt-brouillon-mobile.webp 1200w, /proofs/blog/w39-prompt-brouillon.webp 1600w" sizes="(max-width: 600px) 375px, 1600px" alt="Brouillon fictif de demande de facture non envoyé avec destinataire à confirmer." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/w39-prompt-brouillon-mobile.webp" alt="Brouillon fictif de demande de facture non envoyé avec destinataire à confirmer." width="1200" loading="lazy" decoding="async">
 </figure>
 
 ## Exemple : préparer une demande de pièce manquante
@@ -130,7 +130,7 @@ Le gestionnaire reprend la liste dans son outil de paie et tranche l'écart. La 
 Le collaborateur vérifie la pièce et décide dans son logiciel comptable. Ce patron ne classe pas une dépense et ne mesure pas ChatGPT ; il aide seulement à formuler ce qui manque avant une décision.
 
 <figure data-blog-proof="w39-prompt-arret">
-  <img src="/proofs/blog/w39-prompt-arret.webp" srcset="/proofs/blog/w39-prompt-arret-mobile.webp 1200w, /proofs/blog/w39-prompt-arret.webp 1600w" sizes="(max-width: 600px) 375px, 1600px" alt="Refus fictif de préparer la demande quand le champ « Pièce attendue » n’est pas renseigné." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/w39-prompt-arret-mobile.webp" alt="Refus fictif de préparer la demande quand le champ « Pièce attendue » n’est pas renseigné." width="1200" loading="lazy" decoding="async">
 </figure>
 
 ## Les quatre éléments à conserver quand on adapte ce prompt

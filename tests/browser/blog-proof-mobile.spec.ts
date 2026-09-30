@@ -36,9 +36,9 @@ for (const width of [320, 375, 1440]) {
           };
         });
         expect(measured.loaded, slug).toBe(true);
-        expect(measured.selected, slug).toMatch(width < 600 ? /-mobile\.webp$/ : /(?<!-mobile)\.webp$/);
+        expect(measured.selected, slug).toMatch(/-mobile\.webp$/);
         expect(measured.width, slug).toBeLessThanOrEqual(measured.figureWidth);
-        expect(measured.height, slug).toBeGreaterThan(width < 600 ? 400 : 100);
+        expect(measured.height, slug).toBeGreaterThan(width < 600 ? 400 : 800);
         expect(measured.legacy, slug).toBe(false);
         // Deux anciens articles débordent déjà à 320 px dans leur CTA, hors figures.
         if (width > 320) expect(measured.horizontalOverflow, slug).toBe(false);
