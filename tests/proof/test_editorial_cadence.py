@@ -6,6 +6,8 @@ from pathlib import Path
 from unittest.mock import patch
 from tempfile import TemporaryDirectory
 import json
+import runpy
+import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -23,6 +25,43 @@ def construire_et_verifier():
 
 
 class EditorialCadenceProof(unittest.TestCase):
+    def test_check_necrit_aucun_derive_quel_que_soit_le_jour(self):
+        class JourFige(date):
+            jour = date(2026, 9, 29)
+
+            @classmethod
+            def today(cls):
+                return cls.jour
+
+        sorties = [PLAN.ICI / nom for nom in
+                   ('CONTENT-CALENDAR.md', 'cluster-plan.json', 'cluster-plan.md', 'cluster-map.html')]
+        avant = {chemin: chemin.read_bytes() for chemin in sorties}
+        for jour in (date(2026, 9, 29), date(2026, 9, 30)):
+            JourFige.jour = jour
+            with self.subTest(jour=jour), patch('datetime.date', JourFige), \
+                    patch.object(sys, 'argv', [str(SCRIPT), '--check']), \
+                    patch.object(Path, 'write_text', side_effect=AssertionError('--check écrit un fichier')):
+                runpy.run_path(str(SCRIPT), run_name='__main__')
+            self.assertEqual({chemin: chemin.read_bytes() for chemin in sorties}, avant)
+
+    def test_check_refuse_une_source_invalide_sans_ecriture(self):
+        backlog = json.loads(PLAN.BACKLOG.read_text(encoding='utf-8'))
+        angle = next(e for e in backlog if e['slug'] == 'rapprochement-bancaire-automatise-les-ecarts-a-remonter')
+        angle['demande']['requete'] = None
+        lire = Path.read_text
+
+        def lire_source(chemin, *args, **kwargs):
+            if chemin == PLAN.BACKLOG:
+                return json.dumps(backlog, ensure_ascii=False)
+            return lire(chemin, *args, **kwargs)
+
+        with patch.object(sys, 'argv', [str(SCRIPT), '--check']), \
+                patch.object(Path, 'read_text', autospec=True, side_effect=lire_source), \
+                patch.object(Path, 'write_text', side_effect=AssertionError('--check écrit un fichier')):
+            with self.assertRaises(SystemExit) as sortie:
+                runpy.run_path(str(SCRIPT), run_name='__main__')
+        self.assertEqual(sortie.exception.code, 1)
+
     def test_oracle_w39_documente_le_quota_reel_du_29(self):
         oracle = (PLAN.ICI / 'W39-ORACLES.md').read_text(encoding='utf-8')
         self.assertIn('deux places ordinaires du 29/09', oracle)

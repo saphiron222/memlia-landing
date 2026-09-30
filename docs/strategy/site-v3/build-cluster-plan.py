@@ -6,7 +6,7 @@ invariants (unicité, appartenance aux énumérations du schéma, maillage, cade
 
 Usage, depuis la racine du dépôt :
     python3 docs/strategy/site-v3/build-cluster-plan.py            # régénère
-    python3 docs/strategy/site-v3/build-cluster-plan.py --check    # régénère et échoue si un invariant casse
+    python3 docs/strategy/site-v3/build-cluster-plan.py --check    # vérifie sans écrire de dérivé
 """
 import json
 import re
@@ -632,11 +632,13 @@ def ecrire_html(data):
 if __name__ == '__main__':
     poles, familles, publies, pilier, satellites, liens, par_famille = construire()
     erreurs, entrants, par_semaine = verifier(poles, familles, publies, pilier, satellites, liens, par_famille)
-    data = ecrire_json(poles, familles, pilier, satellites, liens, entrants)
-    ecrire_md(data, familles)
-    ecrire_calendrier(pilier, satellites, familles, poles)
-    ecrire_html(data)
-    print(f"cluster-plan : {data['meta']['totalPosts']} satellites ({data['meta']['publishedPosts']} publiés), {data['meta']['totalFamilies']} familles, {data['meta']['totalClusters']} pôles, {data['meta']['totalLinks']} liens ; entrants min = {min(entrants[e['slug']] for e in satellites)} ; semaines planifiées = {len(par_semaine)} ; dernier créneau = {max(e['date'] for e in satellites)}")
+    # Le contrôle valide le plan en mémoire ; seule la régénération explicite date les dérivés.
+    if '--check' not in sys.argv:
+        data = ecrire_json(poles, familles, pilier, satellites, liens, entrants)
+        ecrire_md(data, familles)
+        ecrire_calendrier(pilier, satellites, familles, poles)
+        ecrire_html(data)
+    print(f"cluster-plan : {len(satellites)} satellites ({sum(e['statut'] == 'published' for e in satellites)} publiés), {len({e['famille'] for e in satellites})} familles, {len({e['pole'] for e in satellites})} pôles, {len(liens)} liens ; entrants min = {min(entrants[e['slug']] for e in satellites)} ; semaines planifiées = {len(par_semaine)} ; dernier créneau = {max(e['date'] for e in satellites)}")
     for e in erreurs:
         print('ERREUR :', e)
     if erreurs and '--check' in sys.argv:

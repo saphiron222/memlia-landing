@@ -106,10 +106,14 @@ ligne du backlog**, pas ces briefs. Ils restent au dépôt comme trace de la vag
 ## Vérification
 
 ```bash
-# régénère plan, calendrier et carte, puis refuse : slug ou requête primaire en double, cluster
+# vérifie le plan en mémoire sans modifier les dérivés, puis refuse : slug ou requête primaire en double, cluster
 # ou format hors énumération, satellite sans lien vers le pilier, moins de trois liens entrants,
 # orpheline, plafond de cadence dépassé, angle de priorité 1 sans signal mesuré daté
 python3 docs/strategy/site-v3/build-cluster-plan.py --check
+
+# après décision éditoriale ou publication avérée : régénère plan, calendrier et carte ;
+# la date « Généré le » est celle de cette édition, non celle du dernier --check
+python3 docs/strategy/site-v3/build-cluster-plan.py
 
 # suggestions sur les formulations : autocomplétion Google ; SERP par famille : DataForSEO (porte de coût)
 node scripts/seo/questions.mjs relever && node scripts/seo/questions.mjs rapport
