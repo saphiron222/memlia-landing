@@ -130,8 +130,10 @@ Search Console utile.
 
 ## 6. La différenciation, article par article
 
-Chaque article porte les marqueurs suivants ; un article qui n'en porte pas trois n'est pas publié,
-et les deux derniers sont vérifiés par la forge, pas par le relecteur seul.
+Chaque article vise les marqueurs suivants. Depuis la décision Kevin du 29/09, un nombre de
+marqueurs ou un score ne constitue pas à lui seul une porte universelle : on juge le besoin
+résolu et les défauts critiques réels. Les deux sections finales restent vérifiées par la forge,
+pas par le relecteur seul ; aucune preuve, donnée ou expérience ne se fabrique pour passer.
 
 1. **Rejouable sans Memlia** : le lecteur peut exécuter la méthode avec ses outils. Sinon c'est une plaquette.
 2. **La règle dans les mots du cabinet** : chaque tâche est décrite par sa règle (déclencheur, condition, action, exception), pas par un outil.
@@ -140,10 +142,13 @@ et les deux derniers sont vérifiés par la forge, pas par le relecteur seul.
 5. **`## La règle écrite`** : la frontière en trois colonnes, la proposition, l'arrêt, le jeu d'essai, pour cette tâche précise et non en formules générales.
 6. **`## Rejoué sur le jeu fictif`** : un tableau d'au moins trois lignes, cas joué, sortie obtenue, décision, avec des sorties réelles du rejeu.
 
-La couverture ne compte pas comme preuve dans le corps : deux figures fonctionnelles issues de
-cadres HTML figés sur un jeu fictif sont déclarées dans `inlineProofs`, ancrées avant des H2
+La couverture ne compte pas comme preuve dans le corps : l'objectif de deux figures fonctionnelles issues de
+cadres HTML figés sur un jeu fictif n'est pas un quota bloquant universel. Les figures utiles sont déclarées dans `inlineProofs`, ancrées avant des H2
 existants et vérifiées par la forge (`RUNBOOK-QUOTIDIEN.md` §3). Leur provenance et date de
 capture vivent dans la recette ; aucune interface cliente ni visuel IA n'est substitué à un rejeu.
+Le refus général de moins de deux preuves reste codé dans `verify-blog-contract.mjs` au candidat
+relu le 30/09 ; c'est une divergence à transmettre à la voie technique existante, pas à blanchir
+dans cette réconciliation documentaire (`RUNBOOK-QUOTIDIEN.md` §3).
 Les faits RGPD distinguent une obligation sourcée d'un conseil de la CNIL : classifier le second
 en `information`, sans inventer de force normative. Le H1 de la recette est émis par le gabarit ;
 si le corps source commence par un H1 identique, seule cette enveloppe est retirée ; un H1 divergent
@@ -209,7 +214,7 @@ réécrite en « mellia ».
 | Échéance | Ce qu'on regarde | Seuil de décision |
 |---|---|---|
 | chaque lundi (C2) | impressions par page et par famille | la ligne s'écrit même à zéro : zéro est une mesure, et la série commence au jour un. Aucune réallocation de créneau avant la première lecture utile |
-| chaque mercredi (C3) | liens entrants (≥ 3), ancres, sources, vitesse (plancher 95) | un rouge se corrige le vendredi suivant par republication scellée, **avant** d'écrire un article de plus |
+| chaque mercredi (C3) | liens entrants (objectif ≥ 3), ancres, sources, vitesse (objectif 95) | un défaut critique de source ou de route se traite en priorité ; un score, un nombre de liens ou une réserve cosmétique seuls rejoignent la maintenance du vendredi sans bloquer tous les autres articles |
 | **mi-octobre 2026**, première lecture Search Console utile | requêtes avec impressions, par page, sur les articles publiés depuis au moins 28 jours | si aucun article n'a d'impression, le défaut est d'indexation ou de demande, pas de rédaction : on relit la requête visée et le titre avant de toucher au corps. C'est aussi la date à partir de laquelle les six articles peuvent être réécrits (`JOURNAL.md`, « Tranché » du 19/09) |
 | **fin novembre 2026** (photographie du `cluster-plan.json` candidat du 28/09 : 8 satellites `published` + 1 pilier `published`, 41 satellites `planned` datés au plus tard le 30/11, soit 50 articles publiés/planifiés ; hors 2 `a-replanifier` et 1 `manque`, qui ne sont pas des publications autorisées) | familles ayant trois satellites effectivement publiés | une famille à zéro impression sur ses requêtes après trois satellites ne reçoit pas de quatrième créneau ; ils vont à une famille qui en a. Le cron propose, Kevin décide ; les créneaux planifiés ne prouvent pas des publications futures |
 | **31 décembre 2026** | le champ `spell` sur la requête de marque | encore actif, il déclenche un plan d'entité (annuaires, mentions, page publique) avant tout effort éditorial supplémentaire sur la marque (`CRONS-SEO.md` §3, C4) |
@@ -226,7 +231,7 @@ délai entre le créneau du calendrier et la publication.
 |---|---|
 | Écrire sur une tâche qu'un prospect demande et qui n'est pas encore prise en charge | l'article est une méthode ; la page de service et le formulaire cadrent : nous écrivons la règle du cabinet, prix à la complexité. Aucune fonction promise |
 | Faits fiscaux et sociaux mouvants (facture électronique, AI Act) | source officielle ouverte le jour même, citation verbatim vérifiée, réouverture hebdomadaire par C3 ; une citation disparue fait passer l'article en maintenance |
-| Cadence de quatre par semaine sans baisse de qualité | la forge est le seul chemin : gate, revue indépendante à 100 points avec 0 défaut bloquant, scellement sur les octets. Un article qui n'atteint pas le seuil attend le créneau suivant |
+| Cadence de quatre par semaine sans baisse de qualité | la forge reste le chemin : sources, revue indépendante, 0 défaut critique et scellement sur les octets. Cadence, longueur, score et quota de visuels sont des objectifs, non des portes universelles ; consigner l'amélioration et faire requalifier les refus historiques par leur propriétaire technique sans contourner le code |
 | Écrire pour notre vocabulaire plutôt que pour l'intention cabinet | relevé mensuel des suggestions sur les formulations testées, invariant « priorité 1 exige un signal primaire ou SERP historique daté », alerte hebdomadaire C2 ; absence de suggestion ≠ absence de demande ou volume nul. Décider après lecture de la SERP, de l'intention cabinet et de Search Console |
 | L'aperçu IA capte la réponse | définition autonome en tête, tableaux extractibles, `llms.txt` à jour. L'effet n'est pas mesuré et ne doit pas être annoncé comme acquis |
 | Cannibalisation entre angles voisins | une requête primaire par article, unique sur tout le site, contrôlée au `--check` ; C5 en décembre pour le corpus qui grossit |

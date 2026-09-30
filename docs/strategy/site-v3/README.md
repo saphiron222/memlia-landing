@@ -55,6 +55,33 @@ Une assertion du moniteur n'est qu'une alerte : vérifier la source et le rendu 
 puis obtenir revue indépendante avant de dire que le site servi a changé. Ne jamais remplacer un
 relevé historique par une valeur reconstruite aujourd'hui.
 
+## Registre de revue par surface — 30/09/2026, candidat local
+
+Ce registre fixe les responsabilités et moments de revue, pas l'existence d'un cron actif ni
+un nouveau quota de pages. La base distante observée est `714859e5e72a87e384b5125bd8d84ab4170dde76` ;
+les corrections du candidat parent `b63ce5345734fbab3cbbb2add47a1c826d93a238` restent locales.
+Un PASS du moniteur local n'actualise ni `origin/main` ni la production.
+
+| Surface / source de vérité | Propriétaire | Déclencheur et cadence de revue | Preuve attendue |
+|---|---|---|---|
+| Blog : `backlog-v3.json`, recettes et `src/content/blog/` ; règles §7 de la stratégie | marketing ; métier pour faits sensibles ; QA indépendante | avant chaque candidat, maintenance vendredi ; objectifs de quatre ordinaires/semaine et alternance pôle/format, jamais remplissage forcé | recette, sources datées, revue et sceau exacts ; `--check` non mutant ; reçu servi séparé |
+| Glossaire : `src/data/glossary.ts`, `GLOSSARY-PLAN.md` §6 | marketing ; métier pour définition sensible ; QA Ressources | besoin d'un terme dans une surface publiée, revue vendredi ; aucun quota de termes | compteur calculé des ancres, source réellement rouverte, chaîne Ressources ; quatre réglementaires toujours reportés |
+| Guides : `src/data/integrations.ts`, pages `/integrations/` | marketing ; dev si geste ou intégration change ; métier si sensible ; QA | avant ajout ou évolution d'un guide ; revue mensuelle des liens et changements de documentation éditeur, immédiate sur erreur signalée ; aucune cadence de création | intention distincte, geste et résultat fictifs, cadre HTML propre, tests et canonical conservés ; réponse servie attestée après livraison |
+| Outils gratuits : `src/data/outils.ts`, `OUTILS-BOUCLE.md` | marketing pour demande/source ; dev pour règle/calcul ; QA | contrôle de justesse quotidien prévu par la boucle, incident immédiat ; lectures J+28/J+90 aux dates préenregistrées, aucune nouvelle vague pour remplir un calendrier | cas courant/limite/refus, besoin complet sans inscription ; relevés par route, `ND` si instrument absent, seuils historiques inchangés |
+| Automatisation : `src/content/services/`, `commercial/`, contrat d'accès commercial | marketing ; dev pour fonction promise ; métier pour faits sensibles ; QA | avant chaque candidat, changement de tâche livrée ou source ; revue mensuelle du parcours et du maillage, sans quota de nouvelles routes | intention cabinet distincte, aucune promesse non livrée, cadre HTML propre, revue/sceau ; dist et HTTP servi distingués |
+
+Choisir Comment pour un geste à exécuter, Pourquoi pour une décision à comprendre et checklist
+pour un contrôle complet : le format suit l'intention, pas une variante à publier. La DA reste
+celle du recueil canonique et de `tokens.css`, avec preuves HTML figées ; aucun nouveau gabarit
+ni changement de route/canonical/sitemap n'est requis par cette revue. Les cadences mensuelles
+ci-dessus sont des règles de maintenance, pas une allégation d'exécution ou d'usage mesuré.
+
+Revue sans changement : les seuils et populations d'`OUTILS-BOUCLE.md` restent préenregistrés ;
+le quatrième outil et la télémétrie locale restent séparés, aucun résultat d'acquisition nouveau
+n'est revendiqué. Les inventaires courants se calculent depuis les sources, les relevés W38 et
+19–21/09 restent historiques. Le moniteur ne vérifie pas toute la doctrine : son PASS n'efface
+pas les refus éditoriaux historiques signalés dans le runbook §3.
+
 ## Ce qui est fait
 
 - **Le site est en ligne** et sert la copy v3 ; les cinq routes de tâche actuellement publiées sont distinctes des routes service encore candidates, exclues du sitemap tant que leur statut n'est pas `publie`.
