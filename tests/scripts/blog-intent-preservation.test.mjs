@@ -1,13 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { validateDossier } from '../../scripts/lib/blog-pipeline.mjs';
 import { auditerContratBlog } from '../../scripts/verify-blog-contract.mjs';
 
 const root = resolve(import.meta.dirname, '../..');
 const slug = 'prompt-chatgpt-expert-comptable';
-const au = '2026-10-08'; // Les relevés du 28/09 ont vieilli sans changer l'article.
+const dernierReleve = readdirSync(join(root, 'docs/strategy/site-v3/mesures'))
+  .filter((nom) => /^(questions|titres-intent)-\d{4}-\d{2}-\d{2}\.json$/.test(nom))
+  .map((nom) => nom.match(/\d{4}-\d{2}-\d{2}/)[0])
+  .sort().at(-1);
+const au = new Date(Date.parse(`${dernierReleve}T00:00:00Z`) + 9 * 86_400_000).toISOString().slice(0, 10);
 const renderedBlogHtml = `<li data-article="${slug}"><a href="/blog/${slug}">Article</a></li>`;
 
 // Le build:site exerce le contrat HTML ; blog:audit exerce également le dossier scellé.
