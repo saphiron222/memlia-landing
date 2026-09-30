@@ -1,0 +1,59 @@
+{
+  "capturedAt": "2026-09-30",
+  "sources": [
+    {
+      "path": "docs/design/blog-w39-mobile-proofs/index.html",
+      "sha256": "1306107f687d4f1a383e10ba393f99bee997b979ab908355decfc7ecb50b8d1b"
+    },
+    {
+      "path": "scripts/render-blog-w39-mobile-proofs.mjs",
+      "sha256": "d13c4104e4c19bfcfcc7ac0b4209f64c20bcc174797fb731e6853948b1bf6514"
+    },
+    {
+      "path": "public/proofs/blog/w39-prompt-brouillon.webp",
+      "sha256": "b6abf7b8eeeb154fbdc3db217b907dc350a43240adbcbf887e9dec4ec5560d3e"
+    },
+    {
+      "path": "public/proofs/blog/w39-prompt-arret.webp",
+      "sha256": "451905e3535e499e417c58472c3c4826a2837a426d04124269be748a5b7ad7af"
+    },
+    {
+      "path": "public/proofs/blog/w39-logiciel-parcours.webp",
+      "sha256": "d85aec5fd4369a362b5b79b3d1f891f9a3d4cf834c6e5f6cba4f1a6b690d49a5"
+    },
+    {
+      "path": "public/proofs/blog/w39-logiciel-exceptions.webp",
+      "sha256": "4f7ff61867e012c266cda1d08608955a054c762333f8a610749672a7295014c6"
+    }
+  ],
+  "entries": [
+    {
+      "id": "w39-prompt-brouillon",
+      "target": "public/proofs/blog/w39-prompt-brouillon-mobile.webp",
+      "sha256": "999bdfa5834cfd5c6e6ed4b2b806226b2f29edd15f10c41a94f9cd794407d81e",
+      "bytes": 114934,
+      "text": "Brouillon à valider · destinataire inconnu Jeu fictif · aucune IA ni messagerie interrogée Entrées autorisées Atelier Fictif Période avril 2026 Pièce Facture d’achat de matériel Destinataire Non fourni Sortie de la règle éditoriale Brouillon, non envoyé Bonjour, pouvez-vous nous transmettre la facture d’achat de matériel pour Atelier Fictif, période avril 2026 ? Si elle n’est pas disponible, indiquez-nous pourquoi. Merci. Destinataire : à confirmer. Le collaborateur relit la période, la pièce et le ton avant tout envoi."
+    },
+    {
+      "id": "w39-prompt-arret",
+      "target": "public/proofs/blog/w39-prompt-arret-mobile.webp",
+      "sha256": "a8cf49a167287d73197e827d05eacf9d4540a8353efc2425121771f39214a3ea",
+      "bytes": 83222,
+      "text": "Contrôle de contexte Jeu fictif · aucun message envoyé Entrée incomplète La pièce n’est pas précisée. Société Atelier Fictif Période avril 2026 Pièce attendue Sortie du rejeu Contexte incomplet Aucune demande n’est préparée tant que la pièce à demander n’est pas identifiée. Arrêt de la règle"
+    },
+    {
+      "id": "w39-logiciel-parcours",
+      "target": "public/proofs/blog/w39-logiciel-parcours-mobile.webp",
+      "sha256": "335ce03d33c291d6013e54c318a90a6f22daee92ecd868d27c05cfa5be4b2d98",
+      "bytes": 96900,
+      "text": "Parcours à éprouver Grille fictive · aucun éditeur évalué Une tâche entière Du document à la décision, sans écrire seul. 1 · Entrée Pièce fictive reçue 2 · Dossier D-001 identifié 3 · Période avril attendu 4 · Doublon Empreinte contrôlée 5 · Proposition À valider 6 · Écriture Aucune sans décision Cas fictif normal Proposition à valider. La grille n’atteste aucune capacité d’un logiciel commercial."
+    },
+    {
+      "id": "w39-logiciel-exceptions",
+      "target": "public/proofs/blog/w39-logiciel-exceptions-mobile.webp",
+      "sha256": "bd6687ae8566a071877f55506da40613ed50666c35da436170240a8552a32e48",
+      "bytes": 117938,
+      "text": "Trois cas de contrôle Règle éditoriale rejouée · aucune écriture enregistrée Normal Entrée D-001 · avril Résultat Proposition · contrôles requis Décision À valider Écriture Aucune Doublon Entrée Empreinte déjà vue Résultat Exception · doublon probable Décision Revoir Écriture Aucune Période Entrée mars pour avril Résultat Exception · période ambiguë Décision Revoir Écriture Aucune Source Jeu entièrement fictif Portée Aucun éditeur testé Choix À éprouver en démonstration"
+    }
+  ]
+}

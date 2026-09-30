@@ -19,7 +19,7 @@
     "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check",
     "render:proofs": "node scripts/render-proof-images.mjs",
     "render:blog-proofs": "node scripts/render-blog-article-proofs.mjs",
-    "test:blog-proof-render": "node scripts/render-blog-article-proofs.mjs --check && node scripts/replay-blog-recrutement-cases.mjs --check && node scripts/render-blog-recrutement-proofs.mjs --check",
+    "test:blog-proof-render": "node scripts/render-blog-article-proofs.mjs --check && node scripts/replay-blog-recrutement-cases.mjs --check && node scripts/render-blog-recrutement-proofs.mjs --check && node scripts/render-blog-w39-mobile-proofs.mjs --check",
     "test:proof": "python3 -m unittest discover -s tests/proof -v",
     "test:preview-export": "node --test tests/scripts/prepare-preview.test.mjs",
     "test:service-design": "node scripts/verify-service-design.mjs && node --test tests/scripts/service-design.test.mjs",

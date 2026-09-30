@@ -111,7 +111,7 @@ Les contrôles se passent dans un ordre fixe, du plus grossier au plus fin, parc
 Ces six contrôles peuvent préparer des comparaisons et des alertes ; aucun ne supprime le contrôle humain. Une nature ambiguë, un émetteur inconnu ou un doublon probable demandent une décision. L’imputation d’un achat inhabituel intervient ensuite, une fois ces six contrôles passés, et reste elle aussi une décision du cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre une comparaison reproductible et une appréciation qui engage le dossier.
 
 <figure data-blog-proof="saisie-six-controles">
-  <img src="/proofs/blog/saisie-six-controles.webp" alt="Six contrôles de saisie illustratifs, arrêtés sur une facture fictive de la période précédente." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/saisie-six-controles.webp" srcset="/proofs/blog/saisie-six-controles-mobile.webp 1200w, /proofs/blog/saisie-six-controles.webp 1600w" sizes="(max-width: 600px) 375px, 1600px" alt="Six contrôles de saisie illustratifs, arrêtés sur une facture fictive de la période précédente." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Brique 3 : la file d’anomalies, et le reliquat qui se compte
@@ -121,7 +121,7 @@ Tout ce qui ne franchit pas un contrôle tombe dans une [file d’anomalies](/gl
 Le reliquat, c’est la part des pièces qui termine dans cette file. Il se compte, période par période, et il n’a de sens que rapporté au jeu de pièces sur lequel il a été compté : un dossier de commerce avec beaucoup de tickets ne produit pas le même reliquat qu’un dossier de prestations à dix factures par mois. Ce chiffre n’est pas un argument de vente, c’est un instrument de réglage : quand un motif domine la file, c’est la règle qu’il faut corriger, pas la personne qui relit.
 
 <figure data-blog-proof="saisie-file-anomalies">
-  <img src="/proofs/blog/saisie-file-anomalies.webp" alt="Six motifs possibles sans décompte mesuré et ticket coupé fictif à qualifier par une personne." width="1600" height="900" loading="lazy" decoding="async">
+  <img src="/proofs/blog/saisie-file-anomalies.webp" srcset="/proofs/blog/saisie-file-anomalies-mobile.webp 1200w, /proofs/blog/saisie-file-anomalies.webp 1600w" sizes="(max-width: 600px) 375px, 1600px" alt="Six motifs possibles sans décompte mesuré et ticket coupé fictif à qualifier par une personne." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## La règle dans les mots du cabinet

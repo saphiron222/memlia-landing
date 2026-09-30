@@ -540,7 +540,7 @@ const echapperHtml = (texte) => String(texte)
  * Chaque insertion échoue fermée si le H2 d'ancrage a disparu : une preuve ne doit jamais
  * glisser silencieusement vers une section sans rapport après une réécriture.
  */
-export function injecterPreuvesInline(corps, preuves = []) {
+export function injecterPreuvesInline(corps, preuves = [], root = process.cwd()) {
   if (!preuves.length) return corps;
   const ids = new Set();
   const groupes = new Map();
@@ -565,7 +565,11 @@ export function injecterPreuvesInline(corps, preuves = []) {
     if (!resultat.includes(ancre)) throw new Error(`Preuves inline : H2 d’ancrage absent « ${titre} ».`);
     const figures = groupe.map((preuve) => {
       const imagePath = `/proofs/blog/${preuve.id}.webp`;
-      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`;
+      const mobilePath = `/proofs/blog/${preuve.id}-mobile.webp`;
+      const responsive = existsSync(join(root, 'public', mobilePath))
+        ? ` srcset="${mobilePath} 1200w, ${imagePath} 1600w" sizes="(max-width: 600px) 375px, 1600px"`
+        : '';
+      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}"${responsive} alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`;
     }).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }
@@ -636,7 +640,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   let corpsPublie = corpsSansTitreDuplique(corps, recette.title);
   let erreurPreuveInline = null;
   try {
-    corpsPublie = injecterPreuvesInline(corpsPublie, recette.inlineProofs ?? []);
+    corpsPublie = injecterPreuvesInline(corpsPublie, recette.inlineProofs ?? [], root);
   } catch (error) {
     erreurPreuveInline = error.message;
   }

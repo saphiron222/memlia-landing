@@ -7,7 +7,7 @@
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
-      "sha256": "0197bc648ea058bc80a2e5a37b3810a60e554e88a6689dd25beb2a49289bdbab"
+      "sha256": "af82f9d7ab6c84ef63150442e3c7de44acd2ac374394ec8a3aabe29a9e1f2cba"
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
@@ -15,7 +15,7 @@
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
-      "sha256": "4ffa0086ee5d0464fb5df8c509d4bdb1662271dc32e19b8e5ca72511494fe87d"
+      "sha256": "422a42eb724575752f2df4b00d9ff2637797dbca6c3251d91edb94c1d69c18b9"
     }
   ],
   "browser": "153.0.8010.12",
@@ -103,6 +103,30 @@
       "target": "public/proofs/blog/cicatrice-formulaire-manques.webp",
       "bytes": 26866,
       "sha256": "007508ace04052abadbeb764d539be855f628c3aad3613068cd7b714abd0b6e9"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#saisie-six-controles",
+      "target": "public/proofs/blog/saisie-six-controles-mobile.webp",
+      "bytes": 102212,
+      "sha256": "774d55dd65d12c2d6eef5a692c49edfaf962266d801679f77db05c40aee35df3"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#saisie-file-anomalies",
+      "target": "public/proofs/blog/saisie-file-anomalies-mobile.webp",
+      "bytes": 119750,
+      "sha256": "75713bf336c9e58df1e28766cda9f807e414763b863aba083b2fb40470c06885"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#carte-douze-poles",
+      "target": "public/proofs/blog/carte-douze-poles-mobile.webp",
+      "bytes": 112172,
+      "sha256": "838a4ae630ead909ef9856ac3107415836a25f6eecbb82f499593882f3d56e12"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#carte-test-regle",
+      "target": "public/proofs/blog/carte-test-regle-mobile.webp",
+      "bytes": 106952,
+      "sha256": "b281850d83148b31c4d1bf9139591eba26bf5d3c72e386905c9b99578955a91a"
     }
   ]
 }
