@@ -13,7 +13,8 @@ import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const SLUG = 'automatiser-une-tache-de-test';
-const jour = jourRecuperationParis(new Date().toISOString());
+// Même calendrier que le gate et la forge : un jour UTC peut encore être la veille à Paris (ou inversement).
+const jour = forge.aujourdhui();
 const HTML_RELUT = '<html><body><div class="article-corps lecture"><p>Texte rendu relu.</p></div></body></html>';
 
 const CORPS_REGLE = `## La règle écrite
