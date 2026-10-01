@@ -143,13 +143,20 @@ test('clause 1 — zéro figure ne permet pas un corps rendu vide et n’impose 
   try {
     mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
     writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({ inlineProofs: [] }));
-    for (const contenu of ['', ' \n\t ', '<!-- contenu perdu -->', '<p> &nbsp; </p><!-- contenu perdu -->']) {
+    for (const contenu of [
+      '', ' \n\t ', '<!-- contenu perdu -->', '<p> &nbsp; </p><!-- contenu perdu -->',
+      '<style>.article-corps p { color: black; }</style>',
+      '<script type="application/json">{"status":"ready"}</script>',
+      '<p hidden>Méthode perdue au rendu</p>',
+      '<section hidden="false"><p>Méthode perdue au rendu</p></section>',
+      '<noscript>Méthode non rendue avec JavaScript actif</noscript>',
+    ]) {
       writeFileSync(page, remplacerCorps(contenu));
       const resultat = auditer(root);
       assert.equal(resultat.pass, false, `corps sans contenu : ${JSON.stringify(contenu)}`);
       assert.match(resultat.erreurs.join('\n'), /clause 1.*corps.*vide/);
     }
-    writeFileSync(page, remplacerCorps('<p>X</p>'));
+    writeFileSync(page, remplacerCorps('<p>X</p><style>p { color: black; }</style><script type="application/json">{}</script><p hidden>Texte masqué</p>'));
     assert.deepEqual(auditer(root).erreurs, [], 'aucun seuil de longueur ni quota de figures');
   } finally {
     rmSync(root, { recursive: true, force: true });

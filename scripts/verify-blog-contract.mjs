@@ -108,6 +108,13 @@ function texteSansLegendes(node) {
   return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texteSansLegendes).join(' ');
 }
 
+function texteEditorialRendu(node) {
+  // Le JSON-LD utilise texte() : conserver l'extraction brute des métadonnées.
+  if (!node || ['script', 'style', 'template', 'noscript'].includes(node.tagName)
+    || aAttribut(node, 'hidden')) return '';
+  return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texteEditorialRendu).join(' ');
+}
+
 function normaliser(value) {
   return String(value ?? '')
     .normalize('NFD')
@@ -268,7 +275,7 @@ function auditerArticle({ root, dist, slug, path, mesure }) {
     }
   }
   const contenuPublic = texte(articleCorps).replace(/\s+/g, ' ').trim();
-  if (!contenuPublic) erreurs.push(`${slug} : clause 1, corps d'article vide dans le rendu`);
+  if (!texteEditorialRendu(articleCorps).trim()) erreurs.push(`${slug} : clause 1, corps d'article vide dans le rendu`);
   const horsLegendes = texteSansLegendes(articleCorps);
   const historique = medias.some(({ figure }) => elements(figure, (node) => node.tagName === 'figcaption').length === 0)
     && estPreuveHistorique(root, slug, path, frontmatter);

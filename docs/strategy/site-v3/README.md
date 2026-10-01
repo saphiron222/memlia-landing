@@ -105,6 +105,9 @@ Relecture technique du 01/10/2026 après le retour QA sur `f52f7f93f4043fd1a5903
 le runbook précise maintenant que le corps présent mais vide reste un défaut critique, même
 sans figure déclarée. Le contrat vérifie le texte du corps rendu, sans minimum de longueur ;
 les témoins refusent vide, blancs, commentaires et balises vides, et acceptent un texte court.
+Après le second retour QA sur `250936d`, l'extraction éditoriale exclut aussi `script`,
+`style`, `template`, `noscript` et les sous-arbres `hidden`, sans altérer le JSON-LD.
+Elle ne calcule pas la cascade CSS : la QA navigateur conserve la vérification de visibilité.
 Ce correctif ne change aucun article ni recette et attend un nouvel avis indépendant au SHA exact.
 La CI distante, le moniteur live et la production ne sont pas attestés par cette relecture.
 
