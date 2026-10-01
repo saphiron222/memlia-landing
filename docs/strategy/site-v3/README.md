@@ -91,6 +91,16 @@ sa convention de classement ont été corrigées. C'est une relecture par l'impl
 avis indépendant métier/QA ni une vérification de production ; ces avis doivent porter sur
 le nouveau candidat exact, sans transfert des anciens PASS.
 
+Relecture technique du 01/10/2026 après `5c9cf24266816ddf9079c448402423143c6e38ce` :
+`SEO-STRATEGY.md` §6 et `RUNBOOK-QUOTIDIEN.md` §3 distinguent désormais le nombre cible de
+figures des défauts critiques contrôlés dans `verify-blog-contract.mjs`. Corps absent,
+image/alternative absente, provenance/date invalide, doublon et preuve déclarée absente
+restent des refus ; une preuve essentielle non déclarée reste à juger en revue indépendante.
+Les renderers historiques conservent leurs contrats d'actifs scellés. Les compteurs, la
+thèse, les cadences et les seuils des outils ne changent pas. Le moniteur requalifié est
+encore une copie locale non installée ; sa revue et la CI au SHA final précèdent la livraison.
+Cette relecture de l'index ne certifie ni mise en ligne ni nouvelle mesure éditoriale.
+
 ## Ce qui est fait
 
 - **Le site est en ligne** et sert la copy v3 ; les cinq routes de tâche actuellement publiées sont distinctes des routes service encore candidates, exclues du sitemap tant que leur statut n'est pas `publie`.
