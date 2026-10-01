@@ -12,6 +12,7 @@ import { retirerPreuvesInline } from './blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
 import { reviewBindingErrors, reviewSha256 } from './blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
+import { estReliquatW39, lireCadrageW39, jourCadrageParis, verifierIdentiteW39 } from './blog-w39-framing.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
   'blog-strategy', 'blog-brand', 'blog-persona', 'blog-discourse', 'blog-google', 'blog-calendar',
@@ -85,27 +86,23 @@ export function semaineIso(value) {
   return `${date.getUTCFullYear()}-W${String(numero).padStart(2, '0')}`;
 }
 /** Refuse une date qui ferait dépasser la cadence propre à chaque flux éditorial. */
-export function verifierPlafonds(actifs, date, { serie = null, slug = null } = {}) {
+export function verifierPlafonds(actifs, date, { serie = null, slug = null, root = null, now = new Date() } = {}) {
+  if (estReliquatW39(slug) && !isDate(date)) throw new Error('Cadrage W39 : date invalide.');
   const semaine = semaineIso(date);
   if (serie === 'cicatrices') {
-    // Rattrapage signé W39 uniquement : les 28 et 29 sont en W40, sans doubler la W39.
-    const slugW39 = 'tests-verts-et-regle-des-trois-passes';
-    const rattrapageW39 = (candidateSlug, candidateDate) => candidateSlug === slugW39
-      && ['2026-09-27', '2026-09-28', '2026-09-29'].includes(candidateDate);
-    if (slug === slugW39 && date > '2026-09-29') {
-      throw new Error(`Le rattrapage W39 de cette cicatrice s'arrête au 29/09/2026 ; nouveau cadrage requis pour ${date}.`);
-    }
-    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !rattrapageW39(slug, date)) {
+    const historique = estReliquatW39(slug) && date >= '2026-09-27' && date <= '2026-09-29';
+    const cadre = estReliquatW39(slug) && !historique ? lireCadrageW39(root, date, now) : null;
+    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !historique && !cadre) {
       throw new Error(`Une cicatrice paraît le samedi ; ${date} n’est pas un samedi.`);
     }
-    const semaineControlee = rattrapageW39(slug, date) ? '2026-W39' : semaine;
-    if (actifs.some((candidate) => candidate.serie === 'cicatrices' && isDate(candidate.date)
-      && (rattrapageW39(candidate.slug, candidate.date)
-        ? '2026-W39' : semaineIso(candidate.date)) === semaineControlee)) {
+    const semaineControlee = estReliquatW39(slug) ? '2026-W39' : semaine;
+    if (actifs.some((candidate) => (candidate.serie === 'cicatrices' || estReliquatW39(candidate.slug))
+      && (estReliquatW39(candidate.slug) ? '2026-W39' : isDate(candidate.date) ? semaineIso(candidate.date) : null) === semaineControlee)) {
       throw new Error(`Une cicatrice est déjà planifiée la semaine ${semaineControlee} ; le plafond est d’une cicatrice par semaine ISO.`);
     }
     return;
   }
+  if (estReliquatW39(slug)) throw new Error('Le reliquat W39 ne peut pas devenir un article ordinaire.');
   const ordinaires = actifs.filter((candidate) => candidate.serie !== 'cicatrices');
   if (ordinaires.filter((candidate) => candidate.date === date).length >= CANDIDATS_PAR_JOUR_MAX) {
     throw new Error(`${CANDIDATS_PAR_JOUR_MAX} candidats sont déjà planifiés le ${date} ; le plafond est de ${CANDIDATS_PAR_JOUR_MAX} candidats par jour.`);
@@ -589,7 +586,7 @@ export function createCandidate({ root = process.cwd(), slug, title, primaryQuer
   const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
   if (!Array.isArray(queue.candidates)) throw new Error('editorial/queue.json doit contenir une liste candidates.');
   const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status));
-  verifierPlafonds(actifs, date);
+  verifierPlafonds(actifs, date, { slug });
   if (queue.candidates.some((candidate) => candidate.slug === slug)) throw new Error(`Le candidat ${slug} existe déjà dans la file.`);
 
   const articlePath = join(absoluteRoot, 'src/content/blog', `${slug}.md`);
@@ -1745,6 +1742,20 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   const manifestPath = join(dossier, 'manifest.json');
   const errors = [];
   const manifest = readJson(manifestPath, errors, 'manifest.json');
+  if (estReliquatW39(slug) && !['publication-scellee', 'published-audit'].includes(gateMode)) {
+    try {
+      const queue = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/queue.json'), 'utf8'));
+      const current = queue.candidates.find((candidate) => candidate.slug === slug);
+      const recette = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
+      verifierIdentiteW39(recette, current, manifest?.publicationDate);
+      const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status)
+        && (candidate !== current || candidate.status === 'publie'));
+      if (manifest?.publicationDate !== jourCadrageParis()) throw new Error('W39 exige la date réelle Europe/Paris.');
+      verifierPlafonds(actifs, manifest?.publicationDate, { root: absoluteRoot, slug, serie: recette.serie });
+    } catch (error) {
+      errors.push(`Cadrage W39 : ${error.message}`);
+    }
+  }
   const skills = readJson(join(dossier, 'skills.json'), errors, 'skills.json');
   const claims = readJson(join(dossier, 'claims.json'), errors, 'claims.json');
   const review = readJson(join(dossier, 'review.json'), errors, 'review.json');
