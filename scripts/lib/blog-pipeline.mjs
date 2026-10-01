@@ -1819,7 +1819,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     errors.push(...validateCandidate(manifest, { gateMode }));
     const requetes = [manifest.primaryQuery, ...(manifest.secondaryQueries ?? [])];
     const dateMesure = gateMode === 'publication-scellee' && sealErrors.length === 0
-      ? manifest.publishedAt : au;
+      ? manifest.publishedAt : (au ?? jourRecuperationParis(new Date().toISOString()));
     for (const [surface, titre] of [['H1', manifest.title], ['titre d’onglet', manifest.tabTitle]]) {
       try {
         verifierTitreIntentMesure({ root: absoluteRoot, titre, requetes, surface: `${slug} : ${surface}`, au: dateMesure });

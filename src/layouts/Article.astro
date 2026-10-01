@@ -4,7 +4,7 @@ import Picture from '@/components/Picture.astro';
 import Picto from '@/components/Picto.astro';
 import Button from '@/components/Button.astro';
 import ArticleJsonLd from '@/components/ArticleJsonLd.astro';
-import { SITE, CTA, OG_IMAGE } from '@/data/site.mjs';
+import { SITE, CTA, OG_IMAGE, PAGES_NOINDEX } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { rubriquePourArticle } from '@/data/blog-rubriques.mjs';
 import { lienCommercialPourArticle } from '@/data/blog-commercial-links.mjs';
@@ -86,7 +86,7 @@ const articleCta = {
 const lienCommercial = lienCommercialPourArticle(entree.id);
 ---
 
-<Base titre={data.titreOnglet ?? `${data.titre} | Memlia`} titreSocial={data.titre} description={description} chemin={chemin} noindex={candidatPreview} ogType="article" socialImage={socialImage} base="/">
+<Base titre={data.titreOnglet ?? `${data.titre} | Memlia`} titreSocial={data.titre} description={description} chemin={chemin} noindex={candidatPreview || PAGES_NOINDEX.includes(chemin)} ogType="article" socialImage={socialImage} base="/">
   <Fragment slot="head">
     <meta property="article:published_time" content={isoComplet(data.datePublication)} />
     <meta property="article:modified_time" content={isoComplet(dateMiseAJour)} />

@@ -108,6 +108,13 @@ function texteSansLegendes(node) {
   return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texteSansLegendes).join(' ');
 }
 
+function texteEditorialRendu(node) {
+  // Le JSON-LD utilise texte() : conserver l'extraction brute des métadonnées.
+  if (!node || ['script', 'style', 'template', 'noscript'].includes(node.tagName)
+    || aAttribut(node, 'hidden')) return '';
+  return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texteEditorialRendu).join(' ');
+}
+
 function normaliser(value) {
   return String(value ?? '')
     .normalize('NFD')
@@ -161,8 +168,7 @@ function mediasPreuve(articleCorps) {
       const image = premier(figure, (node) => node.tagName === 'img');
       const alt = attribut(image, 'alt') ?? '';
       return { figure, conforme: Boolean(image && alt.trim()), alt };
-    })
-    .filter(({ figure }) => premier(figure, (node) => node.tagName === 'img'));
+    });
 }
 
 function estSommaire(node) {
@@ -240,6 +246,7 @@ function auditerArticle({ root, dist, slug, path, mesure }) {
 
   const document = parseHtml(readFileSync(page, 'utf8'));
   const articleCorps = premier(document, (node) => node.tagName === 'div' && classes(node).has('article-corps'));
+  if (!articleCorps) return [`${slug} : clause 1, corps d'article absent du rendu`];
 
   const medias = mediasPreuve(articleCorps);
   const idsVus = new Set();
@@ -250,12 +257,25 @@ function auditerArticle({ root, dist, slug, path, mesure }) {
     idsVus.add(id);
     return false;
   });
-  const conformes = medias.filter((media) => media.conforme && !doublons.includes(media));
-  if (conformes.length < 2) {
-    erreurs.push(`${slug} : clause 1, ${medias.length} image(s) de preuve en plus de la couverture, ${conformes.length} avec alternative accessible ; 2 requises`);
+  if (medias.some((media) => !media.conforme)) {
+    erreurs.push(`${slug} : clause 1, figure de preuve sans image ou alternative accessible`);
   }
   if (doublons.length) erreurs.push(`${slug} : clause 1, identifiant data-blog-proof répété entre figures`);
+  const recettePath = join(root, 'editorial/recettes', slug, 'recette.json');
+  if (existsSync(recettePath)) {
+    try {
+      const recette = JSON.parse(readFileSync(recettePath, 'utf8'));
+      for (const preuve of recette.inlineProofs ?? []) {
+        if (!preuve.id || !idsVus.has(preuve.id)) {
+          erreurs.push(`${slug} : clause 1, preuve déclarée ${preuve.id ?? '(sans id)'} absente du rendu`);
+        }
+      }
+    } catch {
+      erreurs.push(`${slug} : clause 1, recette de preuve illisible`);
+    }
+  }
   const contenuPublic = texte(articleCorps).replace(/\s+/g, ' ').trim();
+  if (!texteEditorialRendu(articleCorps).trim()) erreurs.push(`${slug} : clause 1, corps d'article vide dans le rendu`);
   const horsLegendes = texteSansLegendes(articleCorps);
   const historique = medias.some(({ figure }) => elements(figure, (node) => node.tagName === 'figcaption').length === 0)
     && estPreuveHistorique(root, slug, path, frontmatter);

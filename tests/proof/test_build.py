@@ -156,6 +156,10 @@ class BuildProof(unittest.TestCase):
                                f'<meta property="og:title" content="{escape(headline, quote=True)}">'
                                f'<script type="application/ld+json">{json.dumps({"@graph": [{"@type": "BlogPosting", "headline": headline}]}, ensure_ascii=False)}</script>')
             self.assertTrue(article_headline_identity(article))
+    def test_suspended_article_static_html_is_noindex(self):
+        doc = Document(DIST / 'blog' / f'{SUSPENDED_ARTICLE}.html')
+        robots = [m['content'] for m in doc.select('meta') if m.get('name') == 'robots']
+        self.assertEqual(robots, ['noindex, follow'])
 
     def test_pages_one_h1_french(self):
         pages = sorted(DIST.glob('*.html'))
@@ -429,7 +433,7 @@ class BuildProof(unittest.TestCase):
                 metas = {m.get('property') or m.get('name'): m['content'] for m in doc.select('meta') if m.get('content')}
                 self.assertEqual(metas['og:type'], 'article')
                 self.assertEqual(metas['og:url'], url)
-                if is_preview_article(article):
+                if is_preview_article(article) or article.stem == SUSPENDED_ARTICLE:
                     self.assertIn('noindex', metas['robots'])
                 else:
                     self.assertNotIn('noindex', metas['robots'])

@@ -621,6 +621,14 @@ export function verifierRegleEcrite(corps, { date }) {
 export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour }) {
   const jourDebut = aujourdhui();
   jour ??= jourDebut;
+  // Le calendrier matérialisé n'est pas une autorité : comparer au plan recalculé
+  // avant toute écriture, y compris pour les appels programmatiques à materialiser.
+  const planificateur = join(root, 'docs/strategy/site-v3/build-cluster-plan.py');
+  if (existsSync(planificateur)) {
+    const controle = spawnSync('python3', [planificateur, '--slot', slug, jourDebut],
+      { cwd: root, encoding: 'utf8', timeout: 30_000 });
+    if (controle.status !== 0) throw new Error(`Créneau éditorial refusé : ${controle.error?.message || controle.stderr?.trim() || controle.stdout?.trim() || 'contrôle indisponible'}`);
+  }
   const refuserChangementDeJour = () => {
     if (aujourdhui() !== jourDebut) throw new Error(`Le jour civil Europe/Paris a changé pendant la matérialisation (${jourDebut} → ${aujourdhui()}) : arrêter, reprendre une nouvelle préparation et obtenir une revue du candidat au jour réel. Ne pas sceller les fichiers partiels.`);
   };

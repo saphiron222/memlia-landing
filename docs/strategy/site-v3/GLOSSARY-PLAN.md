@@ -94,7 +94,7 @@ en voici l'ossature, dans l'ordre :
 1. **Rédiger les entrées** dans `src/data/glossary.ts` (apostrophe typographique, jamais droite, dans les textes).
 2. **Copier et dater les sources** dans `docs/qa/hub-ressources/<vague>-sources/`, avec un en-tête de navigateur : Légifrance et l'assistance Net-entreprises refusent un agent nu.
 3. **Déclarer les preuves attendues** : planchers `DEFINITIONS_ATTENDUES` et `UNITES_ATTENDUES` (`scripts/lib/resource-metier-evidence.mjs`), champs à portée juridique dans `ADDITIONAL_UNITS` (`resource-metier-v3.mjs`).
-4. **Monter les compteurs** : `tests/proof/test_glossary.py` (43 vers 57), `tests/browser/glossary.spec.ts`, totaux de `test_resource_v3_traceability.py`.
+4. **Monter les compteurs** depuis les 53 termes actuels vers le total réellement revu, pas vers une cible supposée : `tests/proof/test_glossary.py`, `tests/browser/glossary.spec.ts`, totaux de `test_resource_v3_traceability.py`.
 5. `npm run build`, puis **`npm run resource:seal-surfaces`** : la surface scellée est le glossaire seul depuis le retrait de `/ressources`.
 6. **Revue métier par un agent distinct de l'auteur**, sous une carte de suivi, avec un verdict par couple affirmation et source sur tous les types sensibles.
 7. **Injecter la revue** dans les manifestes, puis `node scripts/reaffirm-resource-review.mjs ancrer` : l'ancre enregistre le sujet complet de la revue après avoir vérifié qu'il reproduit l'empreinte épinglée.
@@ -127,3 +127,14 @@ Second piège, du même genre : une réaffirmation n'est pas un rescellement. Re
 revue serait la perte silencieuse ; re-épingler automatiquement serait pire, une revue qui suit
 n'importe quel contenu ne revoit plus rien. Le script tient la troisième voie, explicite et
 fail-closed, et refuse d'écrire dès qu'une vérification manque.
+
+## 6. Cadence et déclencheur (arbitrage du 28/09/2026)
+
+Pas de quota hebdomadaire de termes : un mot n'entre que lorsqu'un article, un outil ou une
+page de service publié(e) en a besoin pour lever une ambiguïté de métier, et qu'une source et
+une preuve fictive sont disponibles. À chaque vendredi de maintenance de la forge, relever les
+termes employés mais non définis, les liens cassés et les confusions de Search Console ; proposer
+une vague seulement si au moins un terme satisfait ce besoin, sans forcer la vague de quatre
+réglementaires reportés. Avant une publication, vérifier la source à la date de revue et le contrat
+de la chaîne Ressources (§4) ; si elle bloque, garder l'entrée candidate hors du glossaire public.
+Les 53 ancres ne sont pas une cible de croissance mais le stock de `src/data/glossary.ts`.

@@ -1,7 +1,8 @@
 import { test } from 'node:test';
+import { spawnSync } from 'node:child_process';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,7 +14,8 @@ import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const SLUG = 'automatiser-une-tache-de-test';
-const jour = jourRecuperationParis(new Date().toISOString());
+// Même calendrier que le gate et la forge : un jour UTC peut encore être la veille à Paris (ou inversement).
+const jour = forge.aujourdhui();
 const HTML_RELUT = '<html><body><div class="article-corps lecture"><p>Texte rendu relu.</p></div></body></html>';
 
 const CORPS_REGLE = `## La règle écrite
@@ -137,6 +139,56 @@ function racineDeTest() {
   return root;
 }
 const blogRendu = `<li data-article="${SLUG}"><a href="/blog/${SLUG}"></a></li>`;
+
+test('materialiser appelle le vrai garde : calendrier périmé refusé sans écriture, édition fraîche utilisable', async (t) => {
+  const root = racineDeTest();
+  const RealDate = Date;
+  t.mock.method(globalThis, 'Date', class extends RealDate {
+    constructor(...args) { super(...(args.length ? args : ['2026-09-30T10:00:00Z'])); }
+  });
+  try {
+    const planDir = join(root, 'docs/strategy/site-v3');
+    rmSync(join(root, 'src/content/blog'), { recursive: true });
+    for (const path of ['src/content.config.ts', 'src/data/familles.ts', 'src/content/blog',
+      'docs/strategy/site-v3/mesures', 'docs/strategy/site-v3/backlog-v3.json']) {
+      cpSync(join(RACINE, path), join(root, path), { recursive: true });
+    }
+    const backlogPath = join(planDir, 'backlog-v3.json');
+    const backlog = JSON.parse(readFileSync(backlogPath));
+    const cible = backlog.find((e) => e.slug === 'automatiser-l-entree-en-relation-d-un-nouveau-client');
+    cible.slug = SLUG;
+    writeFileSync(backlogPath, JSON.stringify(backlog));
+    const moteur = join(planDir, 'plan-engine.py');
+    cpSync(join(RACINE, 'docs/strategy/site-v3/build-cluster-plan.py'), moteur);
+    // L'horloge du sous-processus est figée ; le garde lui-même reste le code réel.
+    writeFileSync(join(planDir, 'build-cluster-plan.py'), `import datetime, runpy\nclass FixedDate(datetime.date):\n    @classmethod\n    def today(cls): return cls(2026, 9, 30)\ndatetime.date = FixedDate\nrunpy.run_path(${JSON.stringify(moteur)}, run_name='__main__')\n`);
+    const editer = (day) => {
+      const code = `import importlib.util\ns=importlib.util.spec_from_file_location('plan', ${JSON.stringify(moteur)})\np=importlib.util.module_from_spec(s)\ns.loader.exec_module(p)\nclass FixedDate(p.date):\n    @classmethod\n    def today(cls): return cls(2026, 9, ${day})\np.date=FixedDate\nd=p.construire()\ne, entrants, _=p.verifier(*d)\nassert not e, e\np.ecrire_json(d[0],d[1],d[3],d[4],d[5],entrants)\np.ecrire_calendrier(d[3],d[4],d[1],d[0])\n`;
+      const result = spawnSync('python3', ['-c', code], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+    };
+    const options = { root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage };
+    editer(29);
+    const calendrierPath = join(planDir, 'CONTENT-CALENDAR.md');
+    const avant = readFileSync(calendrierPath);
+    await assert.rejects(materialiser(options), /Créneau éditorial refusé.*calendrier périmé/s);
+    assert.deepEqual(readFileSync(calendrierPath), avant);
+    assert.equal(existsSync(join(root, 'editorial/articles', SLUG)), false);
+    assert.equal(existsSync(join(root, 'src/content/blog', `${SLUG}.md`)), false);
+    editer(30);
+    const r = recette();
+    r.date = '2026-09-30';
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r));
+    writeFileSync(join(planDir, 'mesures/questions-2026-09-30.json'), JSON.stringify({
+      jour: '2026-09-30', autocompletion: Object.fromEntries([r.primaryQuery, ...r.secondaryQueries].map((q) => [q, []])),
+    }));
+    const resultat = await materialiser(options);
+    assert.equal(resultat.manifest.slug, SLUG);
+    assert.ok(existsSync(join(root, 'editorial/articles', SLUG, 'manifest.json')));
+    assert.ok(existsSync(join(root, 'src/content/blog', `${SLUG}.md`)));
+    // Préparer n'est ni sceller ni publier : les autres portes restent distinctes.
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 
 test('semaineIso et les plafonds de cadence : deux par jour, quatre par semaine ISO', () => {
   assert.equal(semaineIso('2026-09-16'), '2026-W38');

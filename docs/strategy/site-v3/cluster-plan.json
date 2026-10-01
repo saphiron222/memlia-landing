@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "date": "2026-09-21",
+  "date": "2026-09-29",
   "seed": "automatisation cabinet comptable",
-  "methode": "backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 59 familles actives en 12 pôles ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorité posée depuis la demande mesurée par angle (autocomplétion Google et pages de résultats DataForSEO, scripts/seo/questions.mjs, depuis le 19/09/2026 ; un angle de priorité 1 sans mesure datée fait échouer --check)",
+  "methode": "backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 59 familles et 11 pôles actifs dans ce plan (12 pôles dans la taxonomie) ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec requête primaire à zéro le 21/09 (titres-intent), secondaires non mesurées et questions identiques à la SERP par famille du 19/09 (questions) ; les trois articles historiques synthétiques et la série restent hors gate",
   "pillar": {
     "title": "Automatiser un cabinet comptable : la carte des tâches",
     "keyword": "automatisation cabinet comptable",
@@ -51,6 +51,7 @@
           "funnel": "MOFU",
           "priority": 3,
           "date": "2026-09-16",
+          "missedDate": null,
           "secondaryKeywords": [
             "checklist pièces comptables à réclamer au client",
             "logiciel de relance automatique cabinet comptable"
@@ -76,7 +77,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-02-24",
+          "date": "2026-12-21",
+          "missedDate": null,
           "secondaryKeywords": [
             "checklist complétude dossier client comptabilité",
             "règle attendu reçu lisible pièces comptables"
@@ -102,7 +104,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-05-26",
+          "date": "2027-05-06",
+          "missedDate": null,
           "secondaryKeywords": [
             "quand ne pas automatiser une relance client comptable",
             "relance pièces comptables litige client"
@@ -128,7 +131,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-08-25",
+          "date": "2027-02-15",
+          "missedDate": null,
           "secondaryKeywords": [
             "différence pièce attendue et pièce reçue comptabilité",
             "pièce justificative obligatoire cabinet comptable"
@@ -155,6 +159,7 @@
           "funnel": "MOFU",
           "priority": 3,
           "date": "2026-09-17",
+          "missedDate": null,
           "secondaryKeywords": [
             "pré-comptabilisation automatique pièces",
             "extraction automatique facture comptabilité"
@@ -180,7 +185,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-02-25",
+          "date": "2026-12-28",
+          "missedDate": null,
           "secondaryKeywords": [
             "vérifier une écriture pré-imputée par OCR",
             "contrôle qualité saisie automatique comptabilité"
@@ -206,7 +212,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-05-27",
+          "date": "2027-05-11",
+          "missedDate": null,
           "secondaryKeywords": [
             "pièce illisible extraction automatique comptabilité",
             "taux de confiance OCR comptable seuil"
@@ -232,7 +239,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 2,
-          "date": "2026-11-23",
+          "date": "2027-01-06",
+          "missedDate": null,
           "secondaryKeywords": [
             "OCR comptable définition",
             "intelligence artificielle saisie comptable"
@@ -258,7 +266,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 1,
-          "date": "2026-09-21",
+          "date": "2026-10-01",
+          "missedDate": null,
           "secondaryKeywords": [
             "clé de rapprochement bancaire comptabilité",
             "logiciel rapprochement bancaire cabinet comptable"
@@ -284,7 +293,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-01",
+          "date": "2027-01-04",
+          "missedDate": null,
           "secondaryKeywords": [
             "contrôler un rapprochement bancaire avant clôture",
             "vérification relevé bancaire comptabilité automatique"
@@ -310,7 +320,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-05-31",
+          "date": "2027-05-13",
+          "missedDate": null,
           "secondaryKeywords": [
             "frais bancaires non identifiés comptabilité",
             "virement multi-factures rapprochement comptable"
@@ -336,7 +347,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-21",
+          "date": "2026-10-12",
+          "missedDate": null,
           "secondaryKeywords": [
             "clé de rapprochement bancaire définition",
             "à quoi sert le rapprochement bancaire cabinet"
@@ -362,7 +374,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-01",
+          "date": "2026-11-05",
+          "missedDate": null,
           "secondaryKeywords": [
             "règles de lettrage comptes tiers",
             "tolérance d'écart lettrage comptabilité"
@@ -388,7 +401,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-02",
+          "date": "2027-01-11",
+          "missedDate": null,
           "secondaryKeywords": [
             "vérifier un lettrage automatique comptabilité",
             "comptes non lettrés avant bilan"
@@ -414,7 +428,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-01",
+          "date": "2027-05-18",
+          "missedDate": null,
           "secondaryKeywords": [
             "tolérance d'écart lettrage comptable",
             "lettrage manuel comptes tiers cas particuliers"
@@ -440,7 +455,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-08-26",
+          "date": "2027-02-22",
+          "missedDate": null,
           "secondaryKeywords": [
             "lettrage comptable obligatoire ou non",
             "logiciel de lettrage comptable définition"
@@ -466,7 +482,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-02",
+          "date": "2026-11-10",
+          "missedDate": null,
           "secondaryKeywords": [
             "suivi échéances fournisseurs comptabilité",
             "gestion factures d'achat automatique cabinet"
@@ -492,7 +509,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-03",
+          "date": "2027-01-18",
+          "missedDate": null,
           "secondaryKeywords": [
             "checklist contrôle factures d'achat avant paiement",
             "facture fournisseur payée deux fois comptabilité"
@@ -518,7 +536,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-02",
+          "date": "2027-05-20",
+          "missedDate": null,
           "secondaryKeywords": [
             "avoir partiel facture fournisseur comptabilité",
             "litige fournisseur facture non conforme"
@@ -544,7 +563,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-08-30",
+          "date": "2027-03-01",
+          "missedDate": null,
           "secondaryKeywords": [
             "facture d'achat définition comptable",
             "traitement comptable achat professionnel"
@@ -570,7 +590,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-03",
+          "date": "2026-11-12",
+          "missedDate": null,
           "secondaryKeywords": [
             "automatiser journal des ventes cabinet comptable",
             "import ventes e-commerce comptabilité cabinet"
@@ -596,7 +617,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-04",
+          "date": "2027-01-25",
+          "missedDate": null,
           "secondaryKeywords": [
             "vérifier un import de ventes comptabilité",
             "écart caisse comptabilité contrôle"
@@ -622,7 +644,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-03",
+          "date": "2027-05-25",
+          "missedDate": null,
           "secondaryKeywords": [
             "différence caisse théorique caisse réelle comptable",
             "TVA sur encaissement caisse anomalie"
@@ -648,7 +671,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-08-31",
+          "date": "2027-03-08",
+          "missedDate": null,
           "secondaryKeywords": [
             "journal de ventes obligatoire comptabilité",
             "alimenter la comptabilité depuis un logiciel de caisse"
@@ -674,7 +698,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-07",
+          "date": "2026-11-19",
+          "missedDate": null,
           "secondaryKeywords": [
             "extraction automatique note de frais",
             "traitement note de frais cabinet comptable"
@@ -700,7 +725,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-08",
+          "date": "2027-02-01",
+          "missedDate": null,
           "secondaryKeywords": [
             "justificatif obligatoire note de frais entreprise",
             "plafond frais professionnels vérification"
@@ -726,7 +752,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-07",
+          "date": "2027-05-27",
+          "missedDate": null,
           "secondaryKeywords": [
             "frais professionnels sans justificatif que faire",
             "dépassement barème frais kilométriques traitement"
@@ -752,7 +779,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-01",
+          "date": "2027-03-15",
+          "missedDate": null,
           "secondaryKeywords": [
             "barème kilométrique urssaf en vigueur",
             "définition frais professionnels urssaf"
@@ -778,7 +806,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-08",
+          "date": "2026-11-24",
+          "missedDate": null,
           "secondaryKeywords": [
             "générer les écritures d'amortissement automatiquement",
             "tableau d'emprunt automatique comptabilité"
@@ -804,7 +833,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-09",
+          "date": "2027-02-08",
+          "missedDate": null,
           "secondaryKeywords": [
             "vérifier une valeur nette comptable avant bilan",
             "tableau d'amortissement erreur de solde"
@@ -830,7 +860,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 1,
-          "date": "2026-10-12",
+          "date": "2026-10-15",
+          "missedDate": null,
           "secondaryKeywords": [
             "sortie d'immobilisation comptabilité cession automatique"
           ],
@@ -855,7 +886,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-02",
+          "date": "2027-03-22",
+          "missedDate": null,
           "secondaryKeywords": [
             "durée d'amortissement immobilisation règle",
             "immobilisation ou charge comptabilité seuil"
@@ -881,7 +913,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-09",
+          "date": "2026-11-26",
+          "missedDate": null,
           "secondaryKeywords": [
             "révision par cycles méthode cabinet comptable",
             "justifier un solde de bilan automatiquement"
@@ -907,7 +940,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-10",
+          "date": "2027-02-10",
+          "missedDate": null,
           "secondaryKeywords": [
             "checklist de révision comptable par cycle",
             "norme professionnelle révision comptable OEC"
@@ -933,7 +967,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-08",
+          "date": "2027-06-01",
+          "missedDate": null,
           "secondaryKeywords": [
             "anomalie de révision comptable jugement professionnel",
             "solde ancien non apuré comptabilité"
@@ -959,7 +994,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-06",
+          "date": "2027-03-29",
+          "missedDate": null,
           "secondaryKeywords": [
             "cycles de révision comptable liste",
             "norme professionnelle révision comptable OEC"
@@ -985,7 +1021,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-10",
+          "date": "2026-12-01",
+          "missedDate": null,
           "secondaryKeywords": [
             "générer les états financiers automatiquement cabinet",
             "produire un bilan sans ressaisie cabinet comptable"
@@ -1011,7 +1048,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-11",
+          "date": "2027-02-17",
+          "missedDate": null,
           "secondaryKeywords": [
             "checklist de clôture comptable annuelle",
             "contrôles avant bilan cabinet comptable"
@@ -1037,7 +1075,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-09",
+          "date": "2027-06-03",
+          "missedDate": null,
           "secondaryKeywords": [
             "écritures d'inventaire décision humaine",
             "provisions clôture comptable jugement"
@@ -1063,7 +1102,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-07",
+          "date": "2027-04-05",
+          "missedDate": null,
           "secondaryKeywords": [
             "calendrier de clôture comptable cabinet",
             "ordre des travaux de clôture comptabilité"
@@ -1089,7 +1129,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-14",
+          "date": "2026-12-03",
+          "missedDate": null,
           "secondaryKeywords": [
             "tableau de bord client automatique cabinet comptable",
             "reporting mensuel client cabinet comptable"
@@ -1115,7 +1156,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-15",
+          "date": "2027-02-24",
+          "missedDate": null,
           "secondaryKeywords": [
             "vérifier un reporting client avant diffusion",
             "cohérence situation intermédiaire comptabilité"
@@ -1141,7 +1183,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-10",
+          "date": "2027-06-08",
+          "missedDate": null,
           "secondaryKeywords": [
             "interprétation ratio financier reporting client",
             "situation intermédiaire dégradée que dire au client"
@@ -1167,7 +1210,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-08",
+          "date": "2027-04-12",
+          "missedDate": null,
           "secondaryKeywords": [
             "définition situation comptable intermédiaire",
             "reporting client cabinet comptable définition"
@@ -1193,7 +1237,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-15",
+          "date": "2026-12-08",
+          "missedDate": null,
           "secondaryKeywords": [
             "plateforme de dématérialisation facture électronique",
             "flux facture électronique cabinet comptable"
@@ -1220,7 +1265,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-05",
+          "date": "2026-10-07",
+          "missedDate": null,
           "secondaryKeywords": [
             "checklist conformité facture électronique entreprise",
             "mentions obligatoires facture électronique 2026"
@@ -1247,7 +1293,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-14",
+          "date": "2027-06-10",
+          "missedDate": null,
           "secondaryKeywords": [
             "opérations exclues de la facture électronique",
             "e-reporting international entreprise obligation"
@@ -1274,7 +1321,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-09",
+          "date": "2027-04-19",
+          "missedDate": null,
           "secondaryKeywords": [
             "dates facture électronique 2026 2027",
             "e-reporting définition cabinet comptable"
@@ -1301,7 +1349,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-16",
+          "date": "2026-12-10",
+          "missedDate": null,
           "secondaryKeywords": [
             "nommage automatique des pièces cabinet comptable",
             "organiser un dossier permanent client automatiquement"
@@ -1327,7 +1376,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-16",
+          "date": "2027-03-03",
+          "missedDate": null,
           "secondaryKeywords": [
             "pièces obligatoires dossier permanent client",
             "contrôle complétude dossier permanent"
@@ -1354,6 +1404,7 @@
           "funnel": "BOFU",
           "priority": 3,
           "date": "2027-06-15",
+          "missedDate": null,
           "secondaryKeywords": [
             "secret professionnel classement de pièces cabinet",
             "accès restreint dossier client GED"
@@ -1379,7 +1430,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-13",
+          "date": "2027-04-26",
+          "missedDate": null,
           "secondaryKeywords": [
             "contenu obligatoire dossier permanent client",
             "GED cabinet comptable définition"
@@ -1419,7 +1471,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 1,
-          "date": "2026-09-28",
+          "date": "2026-10-06",
+          "missedDate": null,
           "secondaryKeywords": [
             "suivi échéances fiscales cabinet comptable"
           ],
@@ -1444,7 +1497,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-17",
+          "date": "2026-11-16",
+          "missedDate": null,
           "secondaryKeywords": [
             "calendrier fiscal cabinet comptable mensuel",
             "alerte échéance fiscale dossier client"
@@ -1470,7 +1524,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-16",
+          "date": "2027-06-17",
+          "missedDate": null,
           "secondaryKeywords": [
             "délai de paiement impôt entreprise demande",
             "échéance fiscale suspendue redressement"
@@ -1496,7 +1551,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-14",
+          "date": "2027-05-03",
+          "missedDate": null,
           "secondaryKeywords": [
             "liste des échéances fiscales entreprise",
             "portefeuille de dossiers cabinet comptable définition"
@@ -1523,6 +1579,7 @@
           "funnel": "MOFU",
           "priority": 3,
           "date": "2026-12-17",
+          "missedDate": null,
           "secondaryKeywords": [
             "statut télétransmission liasse fiscale",
             "code erreur EDI-TDFC signification"
@@ -1548,7 +1605,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-18",
+          "date": "2026-11-23",
+          "missedDate": null,
           "secondaryKeywords": [
             "contrôle avant envoi liasse fiscale EDI",
             "accusé de réception télédéclaration vérification"
@@ -1574,7 +1632,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-17",
+          "date": "2027-06-22",
+          "missedDate": null,
           "secondaryKeywords": [
             "code erreur EDI-TDFC signification",
             "télédéclaration refusée correction manuelle"
@@ -1600,7 +1659,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-15",
+          "date": "2027-05-10",
+          "missedDate": null,
           "secondaryKeywords": [
             "différence EDI et EFI télédéclaration",
             "liasse fiscale télétransmission définition"
@@ -1626,7 +1686,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-21",
+          "date": "2026-12-22",
+          "missedDate": null,
           "secondaryKeywords": [
             "classeur de suivi dossiers cabinet comptable",
             "état d'avancement dossier client comptabilité"
@@ -1652,7 +1713,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-22",
+          "date": "2026-11-30",
+          "missedDate": null,
           "secondaryKeywords": [
             "état de dossier obsolète cabinet comptable",
             "contrôle cohérence classeur de suivi"
@@ -1678,7 +1740,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-21",
+          "date": "2027-06-24",
+          "missedDate": null,
           "secondaryKeywords": [
             "dossier en souffrance cabinet comptable détection",
             "relance interne dossier bloqué comptabilité"
@@ -1704,7 +1767,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-16",
+          "date": "2027-05-17",
+          "missedDate": null,
           "secondaryKeywords": [
             "cycle de vie d'un dossier client cabinet",
             "nomenclature des états de dossier comptabilité"
@@ -1730,7 +1794,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-22",
+          "date": "2026-12-24",
+          "missedDate": null,
           "secondaryKeywords": [
             "indicateurs tableau de bord cabinet expertise comptable",
             "suivi de charge cabinet comptable indicateur"
@@ -1756,7 +1821,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-23",
+          "date": "2026-12-07",
+          "missedDate": null,
           "secondaryKeywords": [
             "KPI production cabinet expertise comptable",
             "suivi de charge cabinet comptable indicateur"
@@ -1782,7 +1848,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-22",
+          "date": "2027-06-29",
+          "missedDate": null,
           "secondaryKeywords": [
             "indicateur RH nominatif cabinet comptable risque",
             "CNIL surveillance des salariés cabinet"
@@ -1808,7 +1875,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-20",
+          "date": "2027-05-24",
+          "missedDate": null,
           "secondaryKeywords": [
             "différence tableau de bord client et de production",
             "pilotage de la production cabinet comptable"
@@ -1834,7 +1902,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-23",
+          "date": "2026-12-29",
+          "missedDate": null,
           "secondaryKeywords": [
             "affectation des dossiers cabinet comptable",
             "répartir la charge de travail cabinet comptable"
@@ -1860,7 +1929,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-24",
+          "date": "2026-12-14",
+          "missedDate": null,
           "secondaryKeywords": [
             "préparer la saison fiscale cabinet comptable",
             "surcharge de dossiers cabinet comptable détection"
@@ -1886,7 +1956,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-23",
+          "date": "2027-07-01",
+          "missedDate": null,
           "secondaryKeywords": [
             "compétence collaborateur affectation dossier",
             "surcharge collaborateur cabinet comptable"
@@ -1913,6 +1984,7 @@
           "funnel": "MOFU",
           "priority": 1,
           "date": "2026-09-21",
+          "missedDate": null,
           "secondaryKeywords": [
             "expert comptable charge de travail",
             "définition plan de charge cabinet comptable"
@@ -1954,7 +2026,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-24",
+          "date": "2026-12-15",
+          "missedDate": null,
           "secondaryKeywords": [
             "formulaire de variables de paie client",
             "relance variables de paie automatique"
@@ -1980,7 +2053,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-25",
+          "date": "2027-03-10",
+          "missedDate": null,
           "secondaryKeywords": [
             "vérifier les variables de paie reçues du client",
             "erreur de saisie variable de paie contrôle"
@@ -2006,7 +2080,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-24",
+          "date": "2027-07-06",
+          "missedDate": null,
           "secondaryKeywords": [
             "heures supplémentaires déclaration incohérente paie",
             "absence non justifiée variable de paie"
@@ -2032,7 +2107,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-21",
+          "date": "2027-05-31",
+          "missedDate": null,
           "secondaryKeywords": [
             "liste des variables de paie mensuelles",
             "délai de transmission des variables de paie"
@@ -2058,7 +2134,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-28",
+          "date": "2026-12-31",
+          "missedDate": null,
           "secondaryKeywords": [
             "vérification post-paie bulletin de salaire",
             "contrôle N N-1 bulletin de paie"
@@ -2084,7 +2161,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-29",
+          "date": "2027-03-17",
+          "missedDate": null,
           "secondaryKeywords": [
             "heures supplémentaires bulletin de paie vérification",
             "prime variable bulletin de paie contrôle"
@@ -2110,7 +2188,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-28",
+          "date": "2027-07-08",
+          "missedDate": null,
           "secondaryKeywords": [
             "rupture conventionnelle bulletin de paie contrôle",
             "arrêt de travail bulletin de paie vérification"
@@ -2136,7 +2215,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 2,
-          "date": "2026-11-24",
+          "date": "2027-01-27",
+          "missedDate": null,
           "secondaryKeywords": [
             "bulletin de paie définition cabinet comptable",
             "mentions interdites bulletin de paie"
@@ -2163,6 +2243,7 @@
           "funnel": "MOFU",
           "priority": 1,
           "date": "2026-09-09",
+          "missedDate": null,
           "secondaryKeywords": [],
           "proof": "article historique conservé (dossier scellé sur ses octets)",
           "officialSources": [
@@ -2186,7 +2267,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-29",
+          "date": "2027-01-05",
+          "missedDate": null,
           "secondaryKeywords": [
             "contrôle DSN avant envoi net-entreprises",
             "dépôt automatique déclaration sociale nominative"
@@ -2212,7 +2294,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-06",
+          "date": "2026-10-05",
+          "missedDate": null,
           "secondaryKeywords": [
             "checklist dépôt DSN mensuelle cabinet",
             "dsn au 5 ou au 15"
@@ -2238,7 +2321,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-29",
+          "date": "2027-07-13",
+          "missedDate": null,
           "secondaryKeywords": [
             "DSN anomalie bloquante procédure de correction",
             "erreur DSN correction avant échéance"
@@ -2264,7 +2348,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-22",
+          "date": "2026-10-19",
+          "missedDate": null,
           "secondaryKeywords": [
             "crm dsn substitution net entreprise",
             "crm dsn urssaf",
@@ -2293,6 +2378,7 @@
           "funnel": "MOFU",
           "priority": 1,
           "date": "2026-09-15",
+          "missedDate": null,
           "secondaryKeywords": [],
           "proof": "article historique conservé (dossier scellé sur ses octets)",
           "officialSources": [
@@ -2316,7 +2402,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-30",
+          "date": "2027-01-07",
+          "missedDate": null,
           "secondaryKeywords": [
             "préparer un contrat de travail sans ressaisie",
             "attestation employeur automatique cabinet"
@@ -2343,7 +2430,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-07",
+          "date": "2026-10-21",
+          "missedDate": null,
           "secondaryKeywords": [
             "checklist sortie salarié documents obligatoires",
             "délai remise solde de tout compte"
@@ -2370,6 +2458,7 @@
           "funnel": "BOFU",
           "priority": 1,
           "date": "2026-10-13",
+          "missedDate": null,
           "secondaryKeywords": [
             "rupture de contrat document généré vérification humaine",
             "délai homologation rupture conventionnelle salarié protégé"
@@ -2396,7 +2485,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 2,
-          "date": "2026-11-25",
+          "date": "2027-02-03",
+          "missedDate": null,
           "secondaryKeywords": [
             "DPAE définition délai",
             "attestation employeur France Travail définition"
@@ -2422,7 +2512,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-12-31",
+          "date": "2027-01-12",
+          "missedDate": null,
           "secondaryKeywords": [
             "automatiser la subrogation IJSS",
             "suivi des arrêts maladie salarié automatique"
@@ -2448,7 +2539,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-03-30",
+          "date": "2027-03-24",
+          "missedDate": null,
           "secondaryKeywords": [
             "pièces obligatoires arrêt maladie salarié",
             "vérifier une attestation de salaire avant envoi"
@@ -2474,7 +2566,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-06-30",
+          "date": "2027-07-15",
+          "missedDate": null,
           "secondaryKeywords": [
             "écart indemnité journalière versée et attendue",
             "subrogation IJSS litige salarié"
@@ -2500,7 +2593,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-22",
+          "date": "2027-06-07",
+          "missedDate": null,
           "secondaryKeywords": [
             "subrogation employeur arrêt de travail définition",
             "maintien de salaire et IJSS différence"
@@ -2526,7 +2620,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-04",
+          "date": "2027-01-14",
+          "missedDate": null,
           "secondaryKeywords": [
             "calendrier cotisations sociales cabinet comptable",
             "échéances caisses de retraite complémentaire suivi"
@@ -2553,6 +2648,7 @@
           "funnel": "TOFU",
           "priority": 3,
           "date": "2027-03-31",
+          "missedDate": null,
           "secondaryKeywords": [
             "préparer le paiement urssaf mensuel",
             "contrôle avant virement cotisations sociales"
@@ -2578,7 +2674,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 1,
-          "date": "2026-10-14",
+          "date": "2026-10-29",
+          "missedDate": null,
           "secondaryKeywords": [
             "retard cotisation urssaf majoration que faire",
             "calcul majoration de retard urssaf"
@@ -2605,6 +2702,7 @@
           "funnel": "TOFU",
           "priority": 1,
           "date": "2026-10-26",
+          "missedDate": null,
           "secondaryKeywords": [
             "liste charges sociales entreprise cabinet comptable",
             "régime de retraite complémentaire obligatoire"
@@ -2630,7 +2728,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-05",
+          "date": "2027-01-19",
+          "missedDate": null,
           "secondaryKeywords": [
             "indicateurs pôle social cabinet comptable",
             "suivi de production paie par étape"
@@ -2656,7 +2755,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-01",
+          "date": "2027-04-07",
+          "missedDate": null,
           "secondaryKeywords": [
             "tableau de bord pôle paie cabinet comptable",
             "KPI production sociale cabinet comptable"
@@ -2682,7 +2782,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-01",
+          "date": "2027-07-20",
+          "missedDate": null,
           "secondaryKeywords": [
             "surveillance des salariés cabinet comptable CNIL",
             "indicateur de production anonymisé paie"
@@ -2708,7 +2809,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-23",
+          "date": "2027-06-14",
+          "missedDate": null,
           "secondaryKeywords": [
             "pôle social cabinet comptable définition",
             "production sociale et paie différence"
@@ -2735,6 +2837,7 @@
           "funnel": "MOFU",
           "priority": 1,
           "date": "2026-09-09",
+          "missedDate": null,
           "secondaryKeywords": [],
           "proof": "article historique conservé (dossier scellé sur ses octets)",
           "officialSources": [
@@ -2774,7 +2877,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-06",
+          "date": "2027-01-21",
+          "missedDate": null,
           "secondaryKeywords": [
             "checklist CA3 avant télétransmission",
             "cohérence déclaration TVA contrôle"
@@ -2801,7 +2905,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-05",
+          "date": "2027-04-14",
+          "missedDate": null,
           "secondaryKeywords": [
             "contrôle de cohérence CA3 avant envoi",
             "erreur de déclaration TVA détection"
@@ -2828,7 +2933,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-05",
+          "date": "2027-07-22",
+          "missedDate": null,
           "secondaryKeywords": [
             "TVA intracommunautaire anomalie déclaration",
             "régularisation de TVA déductible cas particulier"
@@ -2854,7 +2960,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-27",
+          "date": "2026-10-28",
+          "missedDate": null,
           "secondaryKeywords": [
             "définition TVA à payer entreprise",
             "calcul TVA due CA3 définition"
@@ -2881,7 +2988,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-07",
+          "date": "2027-01-26",
+          "missedDate": null,
           "secondaryKeywords": [
             "calcul acompte IS cabinet comptable",
             "calendrier acomptes IS entreprise"
@@ -2908,7 +3016,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 2,
-          "date": "2026-11-18",
+          "date": "2026-11-02",
+          "missedDate": null,
           "secondaryKeywords": [
             "date limite acompte IS entreprise",
             "contrôle avant paiement impôt sur les sociétés"
@@ -2934,7 +3043,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-06",
+          "date": "2027-07-27",
+          "missedDate": null,
           "secondaryKeywords": [
             "majoration acompte IS insuffisant",
             "régularisation IS solde de liquidation"
@@ -2960,7 +3070,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-28",
+          "date": "2026-11-04",
+          "missedDate": null,
           "secondaryKeywords": [
             "taux IS applicable entreprise",
             "exonération acompte IS première année"
@@ -2987,7 +3098,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-11",
+          "date": "2027-01-28",
+          "missedDate": null,
           "secondaryKeywords": [
             "calendrier CFE CVAE DAS2 cabinet comptable",
             "suivi déclaration IFU automatique"
@@ -3013,7 +3125,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-06",
+          "date": "2027-04-21",
+          "missedDate": null,
           "secondaryKeywords": [
             "liste des déclarations fiscales annexes entreprise",
             "date limite CFE CVAE DAS2"
@@ -3039,7 +3152,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-07",
+          "date": "2027-07-29",
+          "missedDate": null,
           "secondaryKeywords": [
             "cession véhicule de société déclaration taxe",
             "seuil d'exonération CVAE entreprise"
@@ -3066,7 +3180,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-29",
+          "date": "2026-11-11",
+          "missedDate": null,
           "secondaryKeywords": [
             "définition CFE CVAE DAS2 IFU entreprise",
             "qui doit déclarer la 1330 cvae"
@@ -3092,7 +3207,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-12",
+          "date": "2027-02-02",
+          "missedDate": null,
           "secondaryKeywords": [
             "jalons légaux approbation des comptes",
             "documents type assemblée générale annuelle"
@@ -3118,7 +3234,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-07",
+          "date": "2027-04-28",
+          "missedDate": null,
           "secondaryKeywords": [
             "pièces obligatoires AG approbation des comptes",
             "procès-verbal AG modèle vérification"
@@ -3145,7 +3262,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-08",
+          "date": "2027-08-03",
+          "missedDate": null,
           "secondaryKeywords": [
             "convention réglementée AG approbation",
             "affectation du résultat AG décision"
@@ -3171,7 +3289,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-11-02",
+          "date": "2026-11-25",
+          "missedDate": null,
           "secondaryKeywords": [
             "délai légal approbation comptes annuels société",
             "date limite dépôt des comptes annuels 2026 au greffe"
@@ -3198,7 +3317,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-13",
+          "date": "2027-02-04",
+          "missedDate": null,
           "secondaryKeywords": [
             "dossier de formalité modification statutaire",
             "guichet unique formalités entreprise cabinet"
@@ -3224,7 +3344,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-08",
+          "date": "2027-05-05",
+          "missedDate": null,
           "secondaryKeywords": [
             "pièces obligatoires immatriculation société",
             "dossier modification statutaire pièces requises"
@@ -3250,7 +3371,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-12",
+          "date": "2027-08-05",
+          "missedDate": null,
           "secondaryKeywords": [
             "formalité entreprise pièce manquante rejet",
             "modification statutaire erreur de dossier"
@@ -3276,7 +3398,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-11-03",
+          "date": "2026-12-02",
+          "missedDate": null,
           "secondaryKeywords": [
             "formalités modification statutaire société liste",
             "transfert de siège social formalités infogreffe"
@@ -3302,7 +3425,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 2,
-          "date": "2026-11-16",
+          "date": "2026-11-17",
+          "missedDate": null,
           "secondaryKeywords": [
             "tenue automatique registre des mouvements de titres",
             "mise à jour registre bénéficiaires effectifs"
@@ -3328,7 +3452,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 2,
-          "date": "2026-11-19",
+          "date": "2026-11-09",
+          "missedDate": null,
           "secondaryKeywords": [
             "liste des registres légaux obligatoires société",
             "registre des bénéficiaires effectifs obligation"
@@ -3354,7 +3479,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 1,
-          "date": "2026-10-15",
+          "date": "2026-10-20",
+          "missedDate": null,
           "secondaryKeywords": [
             "délai déclaration bénéficiaire effectif greffe",
             "sanction défaut de déclaration bénéficiaire effectif"
@@ -3381,7 +3507,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-11-04",
+          "date": "2026-12-09",
+          "missedDate": null,
           "secondaryKeywords": [
             "qui est un bénéficiaire effectif société",
             "obligation LCB-FT registre bénéficiaires"
@@ -3407,7 +3534,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-14",
+          "date": "2027-02-09",
+          "missedDate": null,
           "secondaryKeywords": [
             "échéancier lettre de mission cabinet comptable",
             "avenant lettre de mission modification"
@@ -3433,7 +3561,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-08",
+          "date": "2026-10-14",
+          "missedDate": null,
           "secondaryKeywords": [
             "checklist renouvellement lettre de mission cabinet comptable",
             "modèle avenant lettre de mission expert comptable"
@@ -3459,7 +3588,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 1,
-          "date": "2026-10-19",
+          "date": "2026-10-22",
+          "missedDate": null,
           "secondaryKeywords": [
             "vigilance LCB-FT cabinet comptable obligation"
           ],
@@ -3484,7 +3614,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-11-05",
+          "date": "2026-12-16",
+          "missedDate": null,
           "secondaryKeywords": [
             "lettre de mission obligatoire ou non",
             "renouvellement tacite lettre de mission"
@@ -3523,7 +3654,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-18",
+          "date": "2027-02-11",
+          "missedDate": null,
           "secondaryKeywords": [
             "règle d'unicité facturation cabinet comptable",
             "idempotence facturation acte hors forfait"
@@ -3549,7 +3681,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-12",
+          "date": "2027-05-12",
+          "missedDate": null,
           "secondaryKeywords": [
             "contrôle avant émission facture honoraires",
             "facturation mensualisée cabinet comptable vérification"
@@ -3575,7 +3708,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-13",
+          "date": "2027-08-10",
+          "missedDate": null,
           "secondaryKeywords": [
             "acte exceptionnel facturation cabinet comptable",
             "devis préalable acte hors forfait cabinet"
@@ -3601,7 +3735,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-27",
+          "date": "2027-06-21",
+          "missedDate": null,
           "secondaryKeywords": [
             "facturation cabinet comptable définition",
             "forfait de mission expert-comptable définition"
@@ -3627,7 +3762,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 2,
-          "date": "2026-11-17",
+          "date": "2026-11-03",
+          "missedDate": null,
           "secondaryKeywords": [
             "codes motifs rejet prélèvement SEPA",
             "échéancier proposé après rejet de prélèvement"
@@ -3653,7 +3789,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-13",
+          "date": "2027-05-19",
+          "missedDate": null,
           "secondaryKeywords": [
             "constituer un lot de prélèvement honoraires",
             "mandat SEPA cabinet comptable vérification"
@@ -3679,7 +3816,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 1,
-          "date": "2026-10-20",
+          "date": "2026-10-27",
+          "missedDate": null,
           "secondaryKeywords": [
             "échéancier client impayé validation avant envoi"
           ],
@@ -3704,7 +3842,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-11-09",
+          "date": "2026-11-18",
+          "missedDate": null,
           "secondaryKeywords": [
             "définition rejet de prélèvement motifs",
             "codes motifs rejet prélèvement SEPA"
@@ -3730,7 +3869,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-19",
+          "date": "2027-02-16",
+          "missedDate": null,
           "secondaryKeywords": [
             "messages types relance impayé cabinet comptable",
             "cadence de relance client impayé"
@@ -3756,7 +3896,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-14",
+          "date": "2027-05-26",
+          "missedDate": null,
           "secondaryKeywords": [
             "messages types relance impayé cabinet comptable",
             "fréquence de relance client impayé"
@@ -3782,7 +3923,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-14",
+          "date": "2027-08-12",
+          "missedDate": null,
           "secondaryKeywords": [
             "client en litige relance suspendue",
             "client en procédure collective relance impayé"
@@ -3808,7 +3950,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-28",
+          "date": "2027-06-28",
+          "missedDate": null,
           "secondaryKeywords": [
             "délai de paiement honoraires expert-comptable",
             "relance amiable avant contentieux définition"
@@ -3834,7 +3977,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-20",
+          "date": "2027-02-18",
+          "missedDate": null,
           "secondaryKeywords": [
             "écart tarif affiché encaissé cabinet comptable",
             "dossier sous-facturé détection cabinet comptable"
@@ -3860,7 +4004,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-15",
+          "date": "2027-06-02",
+          "missedDate": null,
           "secondaryKeywords": [
             "mesurer le temps passé par dossier cabinet comptable",
             "coût de production dossier client comptabilité"
@@ -3886,7 +4031,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-15",
+          "date": "2027-08-17",
+          "missedDate": null,
           "secondaryKeywords": [
             "dossier sous-facturé décision associé",
             "revalorisation honoraires client cabinet comptable"
@@ -3912,7 +4058,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-29",
+          "date": "2027-07-05",
+          "missedDate": null,
           "secondaryKeywords": [
             "temps passé et tarif affiché écart calcul",
             "marge par dossier cabinet comptable définition"
@@ -3952,7 +4099,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-21",
+          "date": "2027-02-23",
+          "missedDate": null,
           "secondaryKeywords": [
             "règles de tri boîte mail cabinet comptable",
             "assainir une boîte mail professionnelle cabinet"
@@ -3978,7 +4126,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-19",
+          "date": "2027-06-09",
+          "missedDate": null,
           "secondaryKeywords": [
             "règles de tri boîte mail cabinet comptable",
             "organiser boîte mail partagée cabinet"
@@ -4004,7 +4153,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-19",
+          "date": "2027-08-19",
+          "missedDate": null,
           "secondaryKeywords": [
             "secret professionnel courriel cabinet comptable",
             "réclamation client courriel traitement"
@@ -4030,7 +4180,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-11-10",
+          "date": "2026-12-23",
+          "missedDate": null,
           "secondaryKeywords": [
             "définition courrier type cabinet comptable",
             "modele lettre de mission cabinet comptable"
@@ -4056,7 +4207,8 @@
           "intent": "executer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-09-29",
+          "date": "2026-09-30",
+          "missedDate": null,
           "secondaryKeywords": [
             "pièces d'entrée en relation cabinet comptable",
             "jalons onboarding client cabinet comptable"
@@ -4082,7 +4234,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-04-20",
+          "date": "2027-04-29",
+          "missedDate": null,
           "secondaryKeywords": [
             "dossier d'entrée en relation cabinet comptable",
             "collecte pièces nouveau client automatique"
@@ -4108,7 +4261,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-20",
+          "date": "2027-08-24",
+          "missedDate": null,
           "secondaryKeywords": [
             "lettre de mission signature avant démarrage",
             "vigilance LCB-FT nouveau client cabinet"
@@ -4134,7 +4288,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-09-30",
+          "date": "2027-07-12",
+          "missedDate": null,
           "secondaryKeywords": [
             "obligations avant d'accepter une mission cabinet comptable",
             "lettre d'acceptation de mission définition"
@@ -4160,7 +4315,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-25",
+          "date": "2027-02-25",
+          "missedDate": null,
           "secondaryKeywords": [
             "fin de mission cabinet comptable procédure",
             "lettre de confrère transfert de dossier"
@@ -4186,7 +4342,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-21",
+          "date": "2027-06-16",
+          "missedDate": null,
           "secondaryKeywords": [
             "pièces à remettre en fin de mission cabinet comptable",
             "solde de compte client fin de mission"
@@ -4212,7 +4369,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-21",
+          "date": "2027-08-26",
+          "missedDate": null,
           "secondaryKeywords": [
             "lettre de confrère avant reprise de dossier",
             "honoraires impayés transfert de dossier"
@@ -4238,7 +4396,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-04",
+          "date": "2027-07-19",
+          "missedDate": null,
           "secondaryKeywords": [
             "obligation confraternelle changement d'expert-comptable",
             "procédure de reprise de dossier cabinet comptable"
@@ -4264,7 +4423,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-26",
+          "date": "2027-03-02",
+          "missedDate": null,
           "secondaryKeywords": [
             "jalons envoi plaquette de bilan cabinet comptable",
             "relance client document non retourné"
@@ -4290,7 +4450,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-22",
+          "date": "2027-06-23",
+          "missedDate": null,
           "secondaryKeywords": [
             "suivi envoi attestations clients cabinet comptable",
             "relance client document non retourné"
@@ -4316,7 +4477,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-22",
+          "date": "2027-08-31",
+          "missedDate": null,
           "secondaryKeywords": [
             "relecture plaquette de bilan avant diffusion",
             "erreur plaquette de bilan client cabinet comptable"
@@ -4342,7 +4504,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-05",
+          "date": "2027-07-26",
+          "missedDate": null,
           "secondaryKeywords": [
             "plaquette de bilan définition cabinet comptable",
             "attestations périodiques cabinet comptable"
@@ -4368,7 +4531,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-27",
+          "date": "2027-03-04",
+          "missedDate": null,
           "secondaryKeywords": [
             "agenda partagé cabinet comptable",
             "pièces à préparer avant rendez-vous client"
@@ -4394,7 +4558,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-26",
+          "date": "2027-06-30",
+          "missedDate": null,
           "secondaryKeywords": [
             "ordre du jour rendez-vous bilan client",
             "documents à apporter rendez-vous comptable"
@@ -4420,7 +4585,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-26",
+          "date": "2027-09-02",
+          "missedDate": null,
           "secondaryKeywords": [
             "annulation rendez-vous client cabinet comptable",
             "double réservation agenda cabinet comptable"
@@ -4446,7 +4612,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-06",
+          "date": "2027-08-02",
+          "missedDate": null,
           "secondaryKeywords": [
             "organiser l'agenda d'un cabinet comptable",
             "rendez-vous récurrents cabinet comptable définition"
@@ -4484,7 +4651,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-01-28",
+          "date": "2027-03-09",
+          "missedDate": null,
           "secondaryKeywords": [
             "intégration collaborateur cabinet comptable",
             "préparer un contrat de travail interne cabinet"
@@ -4510,7 +4678,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-27",
+          "date": "2027-07-07",
+          "missedDate": null,
           "secondaryKeywords": [
             "parcours d'intégration cabinet comptable",
             "documents RH arrivée salarié cabinet"
@@ -4536,7 +4705,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-27",
+          "date": "2027-09-07",
+          "missedDate": null,
           "secondaryKeywords": [
             "entretien d'embauche cabinet comptable étapes",
             "sélection candidat cabinet comptable critère"
@@ -4562,7 +4732,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-07",
+          "date": "2027-08-09",
+          "missedDate": null,
           "secondaryKeywords": [
             "gestion des collaborateurs cabinet comptable",
             "processus RH cabinet comptable définition"
@@ -4588,7 +4759,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-01",
+          "date": "2027-03-11",
+          "missedDate": null,
           "secondaryKeywords": [
             "synthèse rémunération annuelle salarié cabinet",
             "récapitulatif annuel de rémunération salarié"
@@ -4614,7 +4786,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-28",
+          "date": "2027-07-14",
+          "missedDate": null,
           "secondaryKeywords": [
             "vérifier une synthèse de rémunération avant remise",
             "cohérence synthèse rémunération et bulletins"
@@ -4640,7 +4813,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-28",
+          "date": "2027-09-09",
+          "missedDate": null,
           "secondaryKeywords": [
             "intéressement participation synthèse rémunération",
             "avantage en nature synthèse salarié"
@@ -4666,7 +4840,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-11",
+          "date": "2027-08-16",
+          "missedDate": null,
           "secondaryKeywords": [
             "bulletin récapitulatif annuel définition",
             "synthèse rémunération RH interne cabinet"
@@ -4692,7 +4867,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-02",
+          "date": "2027-03-16",
+          "missedDate": null,
           "secondaryKeywords": [
             "plan de formation IA cabinet comptable",
             "sensibilisation IA générative collaborateurs"
@@ -4718,7 +4894,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-04-29",
+          "date": "2027-07-21",
+          "missedDate": null,
           "secondaryKeywords": [
             "attestation de formation IA collaborateur",
             "obligation de formation IA AI Act cabinet"
@@ -4744,7 +4921,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-07-29",
+          "date": "2027-09-14",
+          "missedDate": null,
           "secondaryKeywords": [
             "charte d'usage de l'IA cabinet comptable",
             "donnée client IA générative interdiction"
@@ -4770,7 +4948,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-11-11",
+          "date": "2026-09-21",
+          "missedDate": null,
           "secondaryKeywords": [
             "intelligence artificielle cabinet comptable",
             "compétences métier comptable automatisation"
@@ -4779,7 +4958,7 @@
           "officialSources": [
             "aucune"
           ],
-          "status": "planned",
+          "status": "published",
           "incomingLinks": 3
         }
       ]
@@ -4810,6 +4989,7 @@
           "funnel": "TOFU",
           "priority": 1,
           "date": "2026-09-29",
+          "missedDate": null,
           "secondaryKeywords": [
             "ia expert comptable",
             "ia expertise comptable",
@@ -4819,7 +4999,7 @@
           "officialSources": [
             "cnil.fr"
           ],
-          "status": "planned",
+          "status": "a-replanifier",
           "incomingLinks": 3
         },
         {
@@ -4836,7 +5016,8 @@
           "intent": "comparer-approches",
           "funnel": "MOFU",
           "priority": 1,
-          "date": "2026-09-24",
+          "date": "2026-09-29",
+          "missedDate": "2026-09-24",
           "secondaryKeywords": [
             "logiciel ia comptabilite gratuit"
           ],
@@ -4844,7 +5025,7 @@
           "officialSources": [
             "cnil.fr"
           ],
-          "status": "planned",
+          "status": "published",
           "incomingLinks": 3
         },
         {
@@ -4861,7 +5042,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 1,
-          "date": "2026-09-22",
+          "date": "2026-09-29",
+          "missedDate": "2026-09-22",
           "secondaryKeywords": [
             "chatgpt expert comptable",
             "formation chatgpt expert comptable"
@@ -4871,7 +5053,7 @@
             "openai.com — documentation officielle datée à ouvrir le jour de la recette",
             "cnil.fr"
           ],
-          "status": "planned",
+          "status": "published",
           "incomingLinks": 3
         },
         {
@@ -4888,7 +5070,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-03",
+          "date": "2027-03-18",
+          "missedDate": null,
           "secondaryKeywords": [
             "hébergement des données cabinet comptable RGPD",
             "sous-traitant IA cabinet comptable contrat"
@@ -4914,7 +5097,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-03",
+          "date": "2027-07-28",
+          "missedDate": null,
           "secondaryKeywords": [
             "registre des traitements cabinet comptable IA",
             "analyse d'impact RGPD outil IA"
@@ -4940,7 +5124,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-02",
+          "date": "2027-09-16",
+          "missedDate": null,
           "secondaryKeywords": [
             "transfert de données hors UE IA cabinet comptable",
             "anonymisation données avant IA cabinet"
@@ -4966,7 +5151,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-12",
+          "date": "2027-08-23",
+          "missedDate": null,
           "secondaryKeywords": [
             "sous-traitant RGPD IA définition",
             "secret professionnel expert-comptable et IA"
@@ -4992,7 +5178,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-04",
+          "date": "2027-03-23",
+          "missedDate": null,
           "secondaryKeywords": [
             "synchronisation logiciels cabinet comptable sans ressaisie",
             "API cabinet comptable intégration"
@@ -5018,7 +5205,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-04",
+          "date": "2027-08-04",
+          "missedDate": null,
           "secondaryKeywords": [
             "tester un connecteur avant mise en production",
             "schéma de données connecteur cabinet comptable"
@@ -5044,7 +5232,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-03",
+          "date": "2027-09-21",
+          "missedDate": null,
           "secondaryKeywords": [
             "doublon après synchronisation logiciels",
             "connecteur en panne cabinet comptable procédure"
@@ -5070,7 +5259,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-13",
+          "date": "2027-08-30",
+          "missedDate": null,
           "secondaryKeywords": [
             "API définition cabinet comptable",
             "import fichier ou connecteur différence"
@@ -5097,6 +5287,7 @@
           "funnel": "TOFU",
           "priority": 3,
           "date": "2026-10-03",
+          "missedDate": null,
           "secondaryKeywords": [
             "droits administrateur installation cabinet comptable",
             "deploiement outil poste de travail cabinet"
@@ -5123,6 +5314,7 @@
           "funnel": "TOFU",
           "priority": 3,
           "date": "2026-10-10",
+          "missedDate": null,
           "secondaryKeywords": [
             "application installée ne démarre pas",
             "test de démarrage application de bureau"
@@ -5148,7 +5340,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-08",
+          "date": "2027-03-25",
+          "missedDate": null,
           "secondaryKeywords": [
             "obligations AI Act entreprise utilisatrice",
             "registre des outils IA cabinet comptable"
@@ -5174,7 +5367,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-05",
+          "date": "2027-08-11",
+          "missedDate": null,
           "secondaryKeywords": [
             "obligations article 4 AI Act",
             "outils IA à haut risque cabinet comptable"
@@ -5200,7 +5394,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-04",
+          "date": "2027-09-23",
+          "missedDate": null,
           "secondaryKeywords": [
             "pratiques interdites AI Act liste",
             "notation sociale IA interdiction"
@@ -5226,7 +5421,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-14",
+          "date": "2027-09-06",
+          "missedDate": null,
           "secondaryKeywords": [
             "calendrier d'application AI Act entreprise",
             "articles 4 et 14 AI Act obligations"
@@ -5264,7 +5460,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-09",
+          "date": "2027-03-30",
+          "missedDate": null,
           "secondaryKeywords": [
             "dictionnaire de données classeur Excel cabinet",
             "classeur de suivi partagé cabinet comptable"
@@ -5290,7 +5487,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-06",
+          "date": "2027-08-18",
+          "missedDate": null,
           "secondaryKeywords": [
             "contrôle de cohérence classeur Excel cabinet",
             "verrouillage des cellules classeur partagé"
@@ -5316,7 +5514,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-05",
+          "date": "2027-09-30",
+          "missedDate": null,
           "secondaryKeywords": [
             "désalignement formule Excel après modification",
             "verrouiller une feuille Excel partagée"
@@ -5342,7 +5541,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-18",
+          "date": "2027-09-13",
+          "missedDate": null,
           "secondaryKeywords": [
             "quand Excel devient trop lent cabinet comptable",
             "seuils de lignes Excel documentés"
@@ -5368,7 +5568,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-10",
+          "date": "2027-04-01",
+          "missedDate": null,
           "secondaryKeywords": [
             "complément Excel Office.js cabinet comptable",
             "connecteur ou export import cabinet comptable"
@@ -5394,7 +5595,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-10",
+          "date": "2027-08-25",
+          "missedDate": null,
           "secondaryKeywords": [
             "sécurité complément Office.js cabinet comptable",
             "installer un complément Office.js sur Excel"
@@ -5420,7 +5622,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-09",
+          "date": "2027-10-05",
+          "missedDate": null,
           "secondaryKeywords": [
             "complément Excel proposition vs saisie",
             "panneau latéral Excel validation humaine"
@@ -5446,7 +5649,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-19",
+          "date": "2027-09-20",
+          "missedDate": null,
           "secondaryKeywords": [
             "complément Office.js définition",
             "panneau latéral Excel définition"
@@ -5472,7 +5676,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-11",
+          "date": "2027-04-06",
+          "missedDate": null,
           "secondaryKeywords": [
             "schéma de colonnes export logiciel comptabilité",
             "importer un export sans doublon cabinet comptable"
@@ -5498,7 +5703,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-11",
+          "date": "2027-09-01",
+          "missedDate": null,
           "secondaryKeywords": [
             "schéma de colonnes export logiciel comptabilité",
             "vérifier un import avant de l'exploiter"
@@ -5524,7 +5730,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-10",
+          "date": "2027-10-07",
+          "missedDate": null,
           "secondaryKeywords": [
             "export logiciel colonnes modifiées cabinet comptable",
             "rejouer un import comptable sans doublon"
@@ -5550,7 +5757,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-20",
+          "date": "2027-09-27",
+          "missedDate": null,
           "secondaryKeywords": [
             "format CSV export comptabilité définition",
             "schéma de données export logiciel cabinet"
@@ -5589,7 +5797,8 @@
           "intent": "decider",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-05-12",
+          "date": "2027-05-04",
+          "missedDate": null,
           "secondaryKeywords": [
             "grille de cadrage automatisation cabinet comptable",
             "critères pour choisir une tâche à automatiser"
@@ -5615,7 +5824,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-08-11",
+          "date": "2027-10-26",
+          "missedDate": null,
           "secondaryKeywords": [
             "grille de cadrage automatisation cabinet comptable",
             "tâche non automatisable signal d'alerte"
@@ -5641,7 +5851,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-21",
+          "date": "2027-10-19",
+          "missedDate": null,
           "secondaryKeywords": [
             "répétitivité règle écrite volume automatisation",
             "tâche candidate à l'automatisation critères"
@@ -5668,6 +5879,7 @@
           "funnel": "TOFU",
           "priority": 3,
           "date": "2026-09-19",
+          "missedDate": null,
           "secondaryKeywords": [
             "adoption outil cabinet comptable",
             "changement de logiciel cabinet comptable resistance"
@@ -5693,7 +5905,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 1,
-          "date": "2026-09-30",
+          "date": "2026-10-08",
+          "missedDate": null,
           "secondaryKeywords": [
             "manuel de procédure cabinet comptable",
             "comment rédiger un manuel de procédure",
@@ -5721,7 +5934,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-13",
+          "date": "2027-09-08",
+          "missedDate": null,
           "secondaryKeywords": [
             "recetter une automatisation avant mise en service",
             "jeu d'essai fictif cabinet comptable méthode"
@@ -5747,7 +5961,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-12",
+          "date": "2027-09-28",
+          "missedDate": null,
           "secondaryKeywords": [
             "cas de refus automatisation cabinet comptable",
             "cas limite jeu de test comptabilité"
@@ -5773,7 +5988,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 2,
-          "date": "2026-11-26",
+          "date": "2027-01-13",
+          "missedDate": null,
           "secondaryKeywords": [
             "manuel de procédure expert comptable",
             "manuel des procédures comptables exemple"
@@ -5800,6 +6016,7 @@
           "funnel": "TOFU",
           "priority": 3,
           "date": "2026-09-26",
+          "missedDate": null,
           "secondaryKeywords": [
             "tests verts faux positifs",
             "controle automatique qui ne detecte rien"
@@ -5808,7 +6025,7 @@
           "officialSources": [
             "aucune"
           ],
-          "status": "planned",
+          "status": "manque",
           "incomingLinks": 3
         },
         {
@@ -5826,6 +6043,7 @@
           "funnel": "TOFU",
           "priority": 3,
           "date": "2026-10-17",
+          "missedDate": null,
           "secondaryKeywords": [
             "vérifier la couverture d'une collecte automatique",
             "zéro échec données manquantes"
@@ -5852,6 +6070,7 @@
           "funnel": "TOFU",
           "priority": 3,
           "date": "2026-10-31",
+          "missedDate": null,
           "secondaryKeywords": [
             "critères mesurables revue design",
             "validation visuelle palette de marque"
@@ -5878,6 +6097,7 @@
           "funnel": "TOFU",
           "priority": 3,
           "date": "2026-11-07",
+          "missedDate": null,
           "secondaryKeywords": [
             "faux positif test automatisé",
             "vérifier un instrument de recette"
@@ -5903,7 +6123,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-15",
+          "date": "2027-04-08",
+          "missedDate": null,
           "secondaryKeywords": [
             "où va la validation dans une automatisation",
             "proposition vs saisie cabinet comptable"
@@ -5929,7 +6150,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-17",
+          "date": "2027-09-15",
+          "missedDate": null,
           "secondaryKeywords": [
             "cas de refus automatisation critères",
             "remontée d'anomalie automatisation cabinet"
@@ -5955,7 +6177,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-16",
+          "date": "2027-10-12",
+          "missedDate": null,
           "secondaryKeywords": [
             "décision réglementée expert-comptable automatisation",
             "supervision humaine automatisation cabinet"
@@ -5981,7 +6204,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-25",
+          "date": "2027-10-21",
+          "missedDate": null,
           "secondaryKeywords": [
             "jugement professionnel automatisation limite",
             "supervision humaine AI Act article 14"
@@ -6007,7 +6231,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-16",
+          "date": "2027-04-13",
+          "missedDate": null,
           "secondaryKeywords": [
             "protocole avant après automatisation cabinet comptable",
             "gain de temps automatisation mesure"
@@ -6033,7 +6258,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-18",
+          "date": "2027-09-22",
+          "missedDate": null,
           "secondaryKeywords": [
             "protocole de mesure temps gagné cabinet comptable",
             "mesurer un gain de temps sur jeu fictif"
@@ -6059,7 +6285,8 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-17",
+          "date": "2027-10-14",
+          "missedDate": null,
           "secondaryKeywords": [
             "gain de temps non mesuré automatisation risque",
             "généraliser un chiffre de gain automatisation"
@@ -6085,7 +6312,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-26",
+          "date": "2027-10-28",
+          "missedDate": null,
           "secondaryKeywords": [
             "mesure avant après définition automatisation",
             "temps gagné automatisation cabinet comptable calcul"
@@ -6112,6 +6340,7 @@
           "funnel": "TOFU",
           "priority": 3,
           "date": "2026-10-24",
+          "missedDate": null,
           "secondaryKeywords": [
             "vérifier la propriété d'un rapport analytics",
             "rapport audience mauvais domaine"
@@ -6150,7 +6379,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-17",
+          "date": "2027-04-15",
+          "missedDate": null,
           "secondaryKeywords": [
             "business plan cabinet comptable automatisation",
             "hypothèses prévisionnel tracées cabinet"
@@ -6176,7 +6406,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-19",
+          "date": "2027-09-29",
+          "missedDate": null,
           "secondaryKeywords": [
             "cohérence business plan avant remise",
             "hypothèses prévisionnel vérification"
@@ -6202,7 +6433,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-18",
+          "date": "2027-10-20",
+          "missedDate": null,
           "secondaryKeywords": [
             "taux de croissance hypothèse prévisionnel",
             "hypothèse sectorielle business plan"
@@ -6228,7 +6460,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-11-12",
+          "date": "2026-12-30",
+          "missedDate": null,
           "secondaryKeywords": [
             "définition prévisionnel financier hypothèses",
             "compte de résultat prévisionnel exemple"
@@ -6254,7 +6487,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-18",
+          "date": "2027-04-20",
+          "missedDate": null,
           "secondaryKeywords": [
             "projeter la trésorerie client cabinet comptable",
             "tension de trésorerie signal automatique"
@@ -6280,7 +6514,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-20",
+          "date": "2027-10-06",
+          "missedDate": null,
           "secondaryKeywords": [
             "contrôle cohérence trésorerie prévisionnelle",
             "hypothèses de trésorerie prévisionnelle vérification"
@@ -6306,7 +6541,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-19",
+          "date": "2027-10-25",
+          "missedDate": null,
           "secondaryKeywords": [
             "alerte trésorerie négative client cabinet",
             "décision de financement trésorerie tendue"
@@ -6332,7 +6568,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-27",
+          "date": "2027-10-04",
+          "missedDate": null,
           "secondaryKeywords": [
             "plan de trésorerie définition cabinet comptable",
             "trésorerie à treize semaines définition"
@@ -6358,7 +6595,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-22",
+          "date": "2027-04-22",
+          "missedDate": null,
           "secondaryKeywords": [
             "dossier de demande d'aide entreprise cabinet",
             "constituer un dossier de prêt depuis le dossier permanent"
@@ -6384,7 +6622,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-24",
+          "date": "2027-10-13",
+          "missedDate": null,
           "secondaryKeywords": [
             "pièces obligatoires demande de prêt professionnel",
             "dossier d'aide entreprise pièces requises"
@@ -6410,7 +6649,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-23",
+          "date": "2027-10-27",
+          "missedDate": null,
           "secondaryKeywords": [
             "garantie personnelle dossier de financement",
             "montant emprunté décision associé cabinet"
@@ -6436,7 +6676,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-10-28",
+          "date": "2027-10-11",
+          "missedDate": null,
           "secondaryKeywords": [
             "dispositifs d'aide aux entreprises définition",
             "prêt garanti entreprise définition"
@@ -6462,7 +6703,8 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2027-02-23",
+          "date": "2027-04-27",
+          "missedDate": null,
           "secondaryKeywords": [
             "éléments chiffrés transmission entreprise cabinet",
             "dossier de cession préparation cabinet comptable"
@@ -6488,7 +6730,8 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 3,
-          "date": "2027-05-25",
+          "date": "2027-10-18",
+          "missedDate": null,
           "secondaryKeywords": [
             "documents nécessaires évaluation d'entreprise",
             "retraitements comptables évaluation entreprise"
@@ -6514,7 +6757,8 @@
           "intent": "decider",
           "funnel": "BOFU",
           "priority": 3,
-          "date": "2027-08-24",
+          "date": "2027-11-01",
+          "missedDate": null,
           "secondaryKeywords": [
             "méthode patrimoniale ou de rendement évaluation",
             "retraitement exceptionnel évaluation entreprise"
@@ -6540,7 +6784,8 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 2,
-          "date": "2026-11-30",
+          "date": "2027-01-20",
+          "missedDate": null,
           "secondaryKeywords": [
             "évaluation patrimoniale définition",
             "multiple de résultat évaluation entreprise"
@@ -6557,6 +6802,30 @@
   ],
   "links": [
     {
+      "from": "logiciel-ia-comptabilite",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "logiciel-ia-comptabilite",
+      "type": "pilier",
+      "anchor": "Logiciel IA comptabilité : comparer l’outil à la tâche du cabinet"
+    },
+    {
+      "from": "prompt-chatgpt-expert-comptable",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "prompt-chatgpt-expert-comptable",
+      "type": "pilier",
+      "anchor": "Prompt ChatGPT expert comptable : écrire des consignes qui tiennent sur les dossiers"
+    },
+    {
       "from": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
       "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
       "type": "pilier",
@@ -6567,6 +6836,18 @@
       "to": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
       "type": "pilier",
       "anchor": "Charge de travail en cabinet comptable : où passe le temps ?"
+    },
+    {
+      "from": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "type": "pilier",
+      "anchor": "Intelligence artificielle et métier comptable : compétences humaines"
     },
     {
       "from": "controler-les-bulletins-de-paie-avant-la-dsn",
@@ -6749,18 +7030,6 @@
       "anchor": "Avenant à la lettre de mission : ce qui se prépare seul, ce qui attend la signature"
     },
     {
-      "from": "logiciel-ia-comptabilite",
-      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "type": "pilier",
-      "anchor": "automatiser une tâche du cabinet"
-    },
-    {
-      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "to": "logiciel-ia-comptabilite",
-      "type": "pilier",
-      "anchor": "Logiciel IA comptabilité : comparer l’outil à la tâche du cabinet"
-    },
-    {
       "from": "cession-et-mise-au-rebut-ce-qu-un-tableau-d-amortissement-automatique-ne-tranche-pas",
       "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
       "type": "pilier",
@@ -6831,18 +7100,6 @@
       "to": "les-echeanciers-de-regularisation-qu-un-outil-ne-doit-jamais-proposer-sans-validation",
       "type": "pilier",
       "anchor": "Proposer un échéancier de paiement à un client : la proposition, puis la validation"
-    },
-    {
-      "from": "prompt-chatgpt-expert-comptable",
-      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "type": "pilier",
-      "anchor": "automatiser une tâche du cabinet"
-    },
-    {
-      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "to": "prompt-chatgpt-expert-comptable",
-      "type": "pilier",
-      "anchor": "Prompt ChatGPT expert comptable : écrire des consignes qui tiennent sur les dossiers"
     },
     {
       "from": "qu-est-ce-que-le-rapprochement-bancaire-en-comptabilite",
@@ -6987,18 +7244,6 @@
       "to": "qu-est-ce-qu-un-courrier-type-et-comment-le-fiabiliser-au-cabinet",
       "type": "pilier",
       "anchor": "Modèles de courrier d'un cabinet comptable : les fiabiliser sans les figer"
-    },
-    {
-      "from": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "type": "pilier",
-      "anchor": "automatiser une tâche du cabinet"
-    },
-    {
-      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "to": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "type": "pilier",
-      "anchor": "Intelligence artificielle et métier comptable : compétences humaines"
     },
     {
       "from": "qu-est-ce-qu-un-previsionnel-financier-et-quelles-hypotheses-le-composent",
@@ -9497,6 +9742,42 @@
       "anchor": "Pourquoi un test automatisé peut accuser le mauvais système"
     },
     {
+      "from": "ia-cabinet-comptable",
+      "to": "logiciel-ia-comptabilite",
+      "type": "famille",
+      "anchor": "logiciel ia comptabilite"
+    },
+    {
+      "from": "ia-cabinet-comptable",
+      "to": "prompt-chatgpt-expert-comptable",
+      "type": "famille",
+      "anchor": "prompt chatgpt expert comptable"
+    },
+    {
+      "from": "logiciel-ia-comptabilite",
+      "to": "prompt-chatgpt-expert-comptable",
+      "type": "famille",
+      "anchor": "prompt chatgpt expert comptable"
+    },
+    {
+      "from": "logiciel-ia-comptabilite",
+      "to": "ia-cabinet-comptable",
+      "type": "famille",
+      "anchor": "ia cabinet comptable"
+    },
+    {
+      "from": "prompt-chatgpt-expert-comptable",
+      "to": "ia-cabinet-comptable",
+      "type": "famille",
+      "anchor": "ia cabinet comptable"
+    },
+    {
+      "from": "prompt-chatgpt-expert-comptable",
+      "to": "logiciel-ia-comptabilite",
+      "type": "famille",
+      "anchor": "logiciel ia comptabilite"
+    },
+    {
       "from": "automatiser-le-plan-de-charge-et-l-affectation-des-dossiers",
       "to": "checklist-pour-verifier-un-plan-de-charge-avant-une-periode-de-pointe",
       "type": "famille",
@@ -9543,6 +9824,54 @@
       "to": "checklist-pour-verifier-un-plan-de-charge-avant-une-periode-de-pointe",
       "type": "famille",
       "anchor": "checklist plan de charge cabinet comptable période de pointe"
+    },
+    {
+      "from": "organiser-la-formation-de-l-equipe-a-l-ia-et-a-ses-limites",
+      "to": "checklist-pour-tenir-la-preuve-de-formation-a-l-ia-au-cabinet",
+      "type": "famille",
+      "anchor": "preuve de formation IA obligation cabinet comptable"
+    },
+    {
+      "from": "organiser-la-formation-de-l-equipe-a-l-ia-et-a-ses-limites",
+      "to": "les-usages-de-l-ia-qu-une-formation-doit-toujours-signaler-comme-interdits",
+      "type": "famille",
+      "anchor": "usage interdit IA cabinet comptable formation"
+    },
+    {
+      "from": "checklist-pour-tenir-la-preuve-de-formation-a-l-ia-au-cabinet",
+      "to": "les-usages-de-l-ia-qu-une-formation-doit-toujours-signaler-comme-interdits",
+      "type": "famille",
+      "anchor": "usage interdit IA cabinet comptable formation"
+    },
+    {
+      "from": "checklist-pour-tenir-la-preuve-de-formation-a-l-ia-au-cabinet",
+      "to": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "type": "famille",
+      "anchor": "métier comptable intelligence artificielle compétences"
+    },
+    {
+      "from": "les-usages-de-l-ia-qu-une-formation-doit-toujours-signaler-comme-interdits",
+      "to": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "type": "famille",
+      "anchor": "métier comptable intelligence artificielle compétences"
+    },
+    {
+      "from": "les-usages-de-l-ia-qu-une-formation-doit-toujours-signaler-comme-interdits",
+      "to": "organiser-la-formation-de-l-equipe-a-l-ia-et-a-ses-limites",
+      "type": "famille",
+      "anchor": "former l'équipe à l'IA cabinet comptable"
+    },
+    {
+      "from": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "to": "organiser-la-formation-de-l-equipe-a-l-ia-et-a-ses-limites",
+      "type": "famille",
+      "anchor": "former l'équipe à l'IA cabinet comptable"
+    },
+    {
+      "from": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "to": "checklist-pour-tenir-la-preuve-de-formation-a-l-ia-au-cabinet",
+      "type": "famille",
+      "anchor": "preuve de formation IA obligation cabinet comptable"
     },
     {
       "from": "automatiser-les-controles-de-bulletins-apres-le-calcul-de-la-paie",
@@ -10011,42 +10340,6 @@
       "to": "automatiser-la-collecte-des-pieces-d-entree-en-relation",
       "type": "famille",
       "anchor": "pièces entrée en relation client cabinet comptable"
-    },
-    {
-      "from": "ia-cabinet-comptable",
-      "to": "logiciel-ia-comptabilite",
-      "type": "famille",
-      "anchor": "logiciel ia comptabilite"
-    },
-    {
-      "from": "ia-cabinet-comptable",
-      "to": "prompt-chatgpt-expert-comptable",
-      "type": "famille",
-      "anchor": "prompt chatgpt expert comptable"
-    },
-    {
-      "from": "logiciel-ia-comptabilite",
-      "to": "prompt-chatgpt-expert-comptable",
-      "type": "famille",
-      "anchor": "prompt chatgpt expert comptable"
-    },
-    {
-      "from": "logiciel-ia-comptabilite",
-      "to": "ia-cabinet-comptable",
-      "type": "famille",
-      "anchor": "ia cabinet comptable"
-    },
-    {
-      "from": "prompt-chatgpt-expert-comptable",
-      "to": "ia-cabinet-comptable",
-      "type": "famille",
-      "anchor": "ia cabinet comptable"
-    },
-    {
-      "from": "prompt-chatgpt-expert-comptable",
-      "to": "logiciel-ia-comptabilite",
-      "type": "famille",
-      "anchor": "logiciel ia comptabilite"
     },
     {
       "from": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
@@ -10767,54 +11060,6 @@
       "to": "checklist-pour-assainir-une-boite-mail-de-cabinet-saturee",
       "type": "famille",
       "anchor": "checklist assainir boîte mail cabinet comptable"
-    },
-    {
-      "from": "organiser-la-formation-de-l-equipe-a-l-ia-et-a-ses-limites",
-      "to": "checklist-pour-tenir-la-preuve-de-formation-a-l-ia-au-cabinet",
-      "type": "famille",
-      "anchor": "preuve de formation IA obligation cabinet comptable"
-    },
-    {
-      "from": "organiser-la-formation-de-l-equipe-a-l-ia-et-a-ses-limites",
-      "to": "les-usages-de-l-ia-qu-une-formation-doit-toujours-signaler-comme-interdits",
-      "type": "famille",
-      "anchor": "usage interdit IA cabinet comptable formation"
-    },
-    {
-      "from": "checklist-pour-tenir-la-preuve-de-formation-a-l-ia-au-cabinet",
-      "to": "les-usages-de-l-ia-qu-une-formation-doit-toujours-signaler-comme-interdits",
-      "type": "famille",
-      "anchor": "usage interdit IA cabinet comptable formation"
-    },
-    {
-      "from": "checklist-pour-tenir-la-preuve-de-formation-a-l-ia-au-cabinet",
-      "to": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "type": "famille",
-      "anchor": "métier comptable intelligence artificielle compétences"
-    },
-    {
-      "from": "les-usages-de-l-ia-qu-une-formation-doit-toujours-signaler-comme-interdits",
-      "to": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "type": "famille",
-      "anchor": "métier comptable intelligence artificielle compétences"
-    },
-    {
-      "from": "les-usages-de-l-ia-qu-une-formation-doit-toujours-signaler-comme-interdits",
-      "to": "organiser-la-formation-de-l-equipe-a-l-ia-et-a-ses-limites",
-      "type": "famille",
-      "anchor": "former l'équipe à l'IA cabinet comptable"
-    },
-    {
-      "from": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "to": "organiser-la-formation-de-l-equipe-a-l-ia-et-a-ses-limites",
-      "type": "famille",
-      "anchor": "former l'équipe à l'IA cabinet comptable"
-    },
-    {
-      "from": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-      "to": "checklist-pour-tenir-la-preuve-de-formation-a-l-ia-au-cabinet",
-      "type": "famille",
-      "anchor": "preuve de formation IA obligation cabinet comptable"
     },
     {
       "from": "automatiser-la-production-d-un-previsionnel-a-partir-des-donnees-tenues",
@@ -12439,8 +12684,8 @@
   ],
   "meta": {
     "totalPosts": 245,
-    "plannedPosts": 238,
-    "publishedPosts": 7,
+    "plannedPosts": 233,
+    "publishedPosts": 10,
     "totalClusters": 11,
     "totalFamilies": 59,
     "totalLinks": 980,
