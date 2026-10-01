@@ -275,7 +275,10 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
   .article-corps :global(th), .article-corps :global(td) { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--ligne-douce); }
   .article-corps :global(th) { font-weight: 600; color: var(--texte-fort); border-bottom-color: var(--ligne-forte); }
   .article-corps :global(figure) { margin: 1.8em 0; }
-
+  .article-corps :global(.preuve-defilante) { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); }
+  .article-corps :global(.preuve-defilante:focus-visible) { outline: 3px solid var(--accent-texte); outline-offset: 3px; }
+  /* Conserver les 1600 pixels natifs du cadre pour lire ses petits libellés. */
+  .article-corps :global(.preuve-defilante img) { display: block; width: 1600px; max-width: none; height: auto; }
   .article-corps :global(figure[data-blog-proof] > img) { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); }
   .article-corps :global(figure svg) { width: 100%; height: auto; display: block; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-page); }
   .article-corps :global(figcaption) { margin-top: 8px; font-size: var(--t-sm); color: var(--texte-2); }
