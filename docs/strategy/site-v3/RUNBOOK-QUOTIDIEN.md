@@ -121,6 +121,8 @@ higgsfield generate list --json   # result_url (PNG pleine résolution, pas min_
 
 Télécharger le PNG `result_url` dans `editorial/recettes/<slug>/image-source.png`, écrire `image-source.json` (generationId, model, provider, quality, resolution, url, createdAt, credits) et renseigner `recette.image.source` (path, generationId, model, provider, generatedAt, credits) et `recette.image.brief` (les six composantes, `prompt`, `reviewCriteria`). Regarder l'image (outil Read) avant de continuer : si elle contient du texte, un personnage, une fausse interface ou s'éloigne de la charte, régénérer (3 crédits) plutôt que publier. La forge recadre à 1920×1080, produit l'OG 1200×630 et les dérivés 768/1200/1600 AVIF et WebP, et déclare le hero dans `src/data/images.mjs`.
 
+Le contrat de rendu refuse aussi un `.article-corps` présent mais vide : blancs, commentaires et balises sans texte ne remplacent pas le contenu. Ce contrôle ne fixe aucune longueur minimale et n'exige aucune figure ; une recette lisible avec `inlineProofs: []` ne dispense pas de rendre le corps. Les témoins de `tests/scripts/blog-contract.test.mjs` couvrent la disparition du texte ainsi qu'un corps court sans figure accepté.
+
 ## 4. Préparer, faire relire, sceller
 
 ```bash

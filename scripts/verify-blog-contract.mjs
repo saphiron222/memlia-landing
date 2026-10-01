@@ -268,6 +268,7 @@ function auditerArticle({ root, dist, slug, path, mesure }) {
     }
   }
   const contenuPublic = texte(articleCorps).replace(/\s+/g, ' ').trim();
+  if (!contenuPublic) erreurs.push(`${slug} : clause 1, corps d'article vide dans le rendu`);
   const horsLegendes = texteSansLegendes(articleCorps);
   const historique = medias.some(({ figure }) => elements(figure, (node) => node.tagName === 'figcaption').length === 0)
     && estPreuveHistorique(root, slug, path, frontmatter);

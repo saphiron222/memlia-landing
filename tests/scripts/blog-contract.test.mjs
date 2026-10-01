@@ -135,6 +135,27 @@ test('clause 1 — le nombre seul ne refuse pas, chaque figure et preuve déclar
   }
 });
 
+test('clause 1 — zéro figure ne permet pas un corps rendu vide et n’impose aucune longueur', () => {
+  const root = fixture({ preuves: 0 });
+  const page = join(root, 'dist/blog', `${SLUG}.html`);
+  const remplacerCorps = (contenu) => pageArticle({ preuves: 0 })
+    .replace(/<div class="article-corps">[\s\S]*?<\/div>/, `<div class="article-corps">${contenu}</div>`);
+  try {
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({ inlineProofs: [] }));
+    for (const contenu of ['', ' \n\t ', '<!-- contenu perdu -->', '<p> &nbsp; </p><!-- contenu perdu -->']) {
+      writeFileSync(page, remplacerCorps(contenu));
+      const resultat = auditer(root);
+      assert.equal(resultat.pass, false, `corps sans contenu : ${JSON.stringify(contenu)}`);
+      assert.match(resultat.erreurs.join('\n'), /clause 1.*corps.*vide/);
+    }
+    writeFileSync(page, remplacerCorps('<p>X</p>'));
+    assert.deepEqual(auditer(root).erreurs, [], 'aucun seuil de longueur ni quota de figures');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('clause 1 — une légende technique publique fait échouer le contrat', () => {
   temoinClause(1, { legendeTechnique: true });
 });

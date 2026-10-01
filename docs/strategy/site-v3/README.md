@@ -101,6 +101,13 @@ thèse, les cadences et les seuils des outils ne changent pas. Le moniteur requa
 encore une copie locale non installée ; sa revue et la CI au SHA final précèdent la livraison.
 Cette relecture de l'index ne certifie ni mise en ligne ni nouvelle mesure éditoriale.
 
+Relecture technique du 01/10/2026 après le retour QA sur `f52f7f93f4043fd1a59037c315da72680fec4ca8` :
+le runbook précise maintenant que le corps présent mais vide reste un défaut critique, même
+sans figure déclarée. Le contrat vérifie le texte du corps rendu, sans minimum de longueur ;
+les témoins refusent vide, blancs, commentaires et balises vides, et acceptent un texte court.
+Ce correctif ne change aucun article ni recette et attend un nouvel avis indépendant au SHA exact.
+La CI distante, le moniteur live et la production ne sont pas attestés par cette relecture.
+
 ## Ce qui est fait
 
 - **Le site est en ligne** et sert la copy v3 ; les cinq routes de tâche actuellement publiées sont distinctes des routes service encore candidates, exclues du sitemap tant que leur statut n'est pas `publie`.
