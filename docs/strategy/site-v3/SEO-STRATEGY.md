@@ -162,9 +162,10 @@ La couverture ne compte pas comme preuve dans le corps : l'objectif de deux figu
 cadres HTML figés sur un jeu fictif n'est pas un quota bloquant universel. Les figures utiles sont déclarées dans `inlineProofs`, ancrées avant des H2
 existants et vérifiées par la forge (`RUNBOOK-QUOTIDIEN.md` §3). Leur provenance et date de
 capture vivent dans la recette ; aucune interface cliente ni visuel IA n'est substitué à un rejeu.
-Le refus général de moins de deux preuves reste codé dans `verify-blog-contract.mjs` au candidat
-relu le 30/09 ; c'est une divergence à transmettre à la voie technique existante, pas à blanchir
-dans cette réconciliation documentaire (`RUNBOOK-QUOTIDIEN.md` §3).
+`verify-blog-contract.mjs` contrôle chaque figure retenue (image, alternative accessible,
+provenance, date valide non future, absence de doublon) et refuse une preuve déclarée dans
+`inlineProofs` mais absente du rendu. Le nombre seul n'est pas un refus ; l'avis indépendant
+reste nécessaire pour juger si une preuve essentielle au propos manque (`RUNBOOK-QUOTIDIEN.md` §3).
 Les faits RGPD distinguent une obligation sourcée d'un conseil de la CNIL : classifier le second
 en `information`, sans inventer de force normative. Le H1 de la recette est émis par le gabarit ;
 si le corps source commence par un H1 identique, seule cette enveloppe est retirée ; un H1 divergent
