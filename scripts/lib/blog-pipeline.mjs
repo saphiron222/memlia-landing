@@ -12,7 +12,7 @@ import { retirerPreuvesInline } from './blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
 import { reviewBindingErrors, reviewSha256 } from './blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
-import { estReliquatW39, lireCadrageW39, jourCadrageParis } from './blog-w39-framing.mjs';
+import { estReliquatW39, lireCadrageW39, jourCadrageParis, verifierIdentiteW39 } from './blog-w39-framing.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
   'blog-strategy', 'blog-brand', 'blog-persona', 'blog-discourse', 'blog-google', 'blog-calendar',
@@ -1746,10 +1746,12 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     try {
       const queue = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/queue.json'), 'utf8'));
       const current = queue.candidates.find((candidate) => candidate.slug === slug);
+      const recette = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
+      verifierIdentiteW39(recette, current, manifest?.publicationDate);
       const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status)
         && (candidate !== current || candidate.status === 'publie'));
       if (manifest?.publicationDate !== jourCadrageParis()) throw new Error('W39 exige la date réelle Europe/Paris.');
-      verifierPlafonds(actifs, manifest?.publicationDate, { root: absoluteRoot, slug, serie: 'cicatrices' });
+      verifierPlafonds(actifs, manifest?.publicationDate, { root: absoluteRoot, slug, serie: recette.serie });
     } catch (error) {
       errors.push(`Cadrage W39 : ${error.message}`);
     }

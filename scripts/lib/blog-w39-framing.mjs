@@ -54,3 +54,13 @@ export function lireCadrageW39(root, date, now = new Date()) {
 export function estReliquatW39(slug) {
   return slug === W39_SLUG;
 }
+
+/** Exclure l'entrée courante du comptage ne doit pas masquer son identité divergente. */
+export function verifierIdentiteW39(recette, current, date) {
+  if (recette?.slug !== W39_SLUG || recette?.serie !== 'cicatrices' || recette?.date !== date) {
+    throw new Error('W39 exige la recette du slug exact, série cicatrices et date cohérente.');
+  }
+  if (current && (current.slug !== recette.slug || current.serie !== recette.serie || current.date !== recette.date)) {
+    throw new Error('W39 exige une entrée de file cohérente avec la recette (slug, série, date).');
+  }
+}

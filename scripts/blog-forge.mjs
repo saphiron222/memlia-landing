@@ -33,7 +33,7 @@ import { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 export { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 import { reviewBindingErrors, reviewSha256, renderedBodySha256 } from './lib/blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
-import { estReliquatW39 } from './lib/blog-w39-framing.mjs';
+import { estReliquatW39, verifierIdentiteW39 } from './lib/blog-w39-framing.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
 
 export const IMAGE_REVIEW_CRITERIA = ['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'];
@@ -502,6 +502,7 @@ export function declarerImage(root, heroId, alt) {
 function verifierFile(root, slug, date, statut, serie, queue) {
   const existant = queue.candidates.find((c) => c.slug === slug);
   const w39 = estReliquatW39(slug);
+  if (w39) verifierIdentiteW39({ slug, serie, date }, existant, date);
   const actifs = queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)
     && (c !== existant || (w39 && c.status === 'publie')));
   if (w39 && existant?.status === 'publie') throw new Error('La Cicatrice W39 est déjà publiée ; aucun nouvel exemplaire ni édition.');
