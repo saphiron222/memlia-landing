@@ -4,6 +4,12 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
 import { PAGES_NOINDEX } from '../src/data/site.mjs';
+import { onRequest as suspendedArticleResponse } from '../functions/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.js';
+
+// Liste explicite : le contrat HTTP vient de la fonction Pages, pas du nom des pages noindex.
+const SUSPENDED_PAGES = new Map([
+  ['/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier', suspendedArticleResponse],
+]);
 
 const PRODUCTION_ORIGIN = 'https://memlia.fr';
 const ROBOTS_META = /<meta\b[^>]*\bname=["']robots["'][^>]*>/gi;
@@ -43,12 +49,13 @@ export function analyzeHomeResponse({ status, xRobotsTag, html }) {
   return { metaRobots: content, xRobotsTag };
 }
 
-async function fetchFresh(url, fetchImpl) {
+async function fetchFresh(url, fetchImpl, method = 'GET') {
   const probeUrl = buildProbeUrl(url);
   let lastError;
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     try {
       const response = await fetchImpl(probeUrl, {
+        method,
         redirect: 'manual',
         headers: { 'Cache-Control': 'no-cache', Pragma: 'no-cache' },
         signal: AbortSignal.timeout(20_000),
@@ -56,11 +63,13 @@ async function fetchFresh(url, fetchImpl) {
       const body = await response.text();
       return {
         url,
+        method,
         probeUrl,
         status: response.status,
         age: response.headers.get('age'),
         cacheStatus: response.headers.get('cf-cache-status'),
         cacheControl: response.headers.get('cache-control'),
+        retryAfter: response.headers.get('retry-after'),
         xRobotsTag: response.headers.get('x-robots-tag'),
         body,
       };
@@ -115,13 +124,31 @@ export async function verifyProductionIndexability({ fetchImpl = fetch } = {}) {
   report.checks.home.analysis = analyzeHomeResponse({ ...home, html: home.body });
 
   const legalPages = [];
+  const suspendedPages = [];
+  for (const path of SUSPENDED_PAGES.keys()) {
+    assert.ok(PAGES_NOINDEX.includes(path), `${path} suspendue doit rester dans PAGES_NOINDEX.`);
+  }
   for (const path of PAGES_NOINDEX.filter((entry) => entry !== '/404')) {
-    const response = await fetchFresh(`${PRODUCTION_ORIGIN}${path}`, fetchImpl);
-    assert.equal(response.status, 200, `${path} doit répondre HTTP 200 (reçu : ${response.status}).`);
-    const { content } = analyzeMetaRobots(response.body, 'noindex');
-    legalPages.push({ ...response, body: undefined, metaRobots: content });
+    const suspension = SUSPENDED_PAGES.get(path);
+    for (const method of ['GET', 'HEAD']) {
+      const response = await fetchFresh(`${PRODUCTION_ORIGIN}${path}`, fetchImpl, method);
+      const expected = suspension?.({ request: new Request(response.url, { method }) });
+      if (expected) assert.equal(expected.status, 503, `${path} : le contrat de suspension doit rester HTTP 503.`);
+      const status = expected?.status ?? 200;
+      assert.equal(response.status, status, `${method} ${path} doit répondre HTTP ${status} (reçu : ${response.status}).`);
+      if (expected) {
+        assert.equal(response.cacheControl, expected.headers.get('cache-control'), `${method} ${path} : Cache-Control de suspension manquant ou divergent.`);
+        assert.equal(response.retryAfter, expected.headers.get('retry-after'), `${method} ${path} : Retry-After de suspension manquant ou divergent.`);
+        assert.deepEqual(parseDirectives(response.xRobotsTag), parseDirectives(expected.headers.get('x-robots-tag')), `${method} ${path} : X-Robots-Tag de suspension manquant ou divergent.`);
+      }
+      const meta = method === 'GET' ? analyzeMetaRobots(response.body, 'noindex') : null;
+      if (expected && meta) assert.ok(meta.directives.has('nofollow'), `${path} : la meta robots de suspension doit contenir nofollow.`);
+      if (method === 'HEAD') assert.equal(response.body, '', `${path} : HEAD doit rester sans corps.`);
+      (suspension ? suspendedPages : legalPages).push({ ...response, body: undefined, metaRobots: meta?.content });
+    }
   }
   report.checks.legalPages = legalPages;
+  report.checks.suspendedPages = suspendedPages;
 
   const robots = await fetchFresh(`${PRODUCTION_ORIGIN}/robots.txt`, fetchImpl);
   assert.equal(robots.status, 200, `robots.txt doit répondre HTTP 200 (reçu : ${robots.status}).`);

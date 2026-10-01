@@ -9,10 +9,13 @@ test('la suspension cible GET et HEAD sans servir le contenu litigieux', async (
   for (const method of ['GET', 'HEAD']) {
     const response = onRequest({ request: new Request(`https://memlia.fr${slug}?source=search`, { method }) });
     assert.equal(response.status, 503);
-    assert.match(response.headers.get('x-robots-tag') ?? '', /noindex/);
+    assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow');
     assert.equal(response.headers.get('retry-after'), '86400');
-    assert.match(response.headers.get('cache-control') ?? '', /no-store/);
-    assert.doesNotMatch(await response.text(), /cycle de vie|signaler directement/);
+    assert.equal(response.headers.get('cache-control'), 'no-store');
+    const body = await response.text();
+    assert.doesNotMatch(body, /cycle de vie|signaler directement/);
+    if (method === 'HEAD') assert.equal(body, '');
+    else assert.match(body, /<meta name="robots" content="noindex, nofollow">/);
   }
 });
 
