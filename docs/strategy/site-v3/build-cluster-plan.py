@@ -10,6 +10,7 @@ Usage, depuis la racine du dépôt :
 """
 import json
 import re
+import subprocess
 import sys
 from collections import Counter, defaultdict
 from datetime import date, timedelta
@@ -640,13 +641,27 @@ def ecrire_html(data):
 
 
 def verifier_creneau(slug, jour, donnees):
-    """Refuse un planned sans édition du jour alignée sur les sources."""
+    """Exige une édition fraîche ; W39 tient son autorité du cadrage borné, pas du créneau manqué."""
     poles, familles, publies, pilier, satellites, liens, _ = donnees
-    if slug in publies:
+    w39 = slug == 'tests-verts-et-regle-des-trois-passes'
+    if w39:
+        if slug in publies:
+            raise SystemExit('La Cicatrice W39 est déjà publiée ; aucun nouvel exemplaire ni édition.')
+        # Réutiliser le garde effectif de la forge, sans reproduire le reçu/RAW/quota
+        # en Python ni convertir une trace historique en réservation ordinaire.
+        try:
+            controle = subprocess.run(
+                ['node', str(RACINE / 'scripts/blog-forge.mjs'), 'verifier-creneau-w39', slug, jour.isoformat()],
+                cwd=RACINE, capture_output=True, text=True, timeout=30, check=False)
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            raise SystemExit('préflight W39 indisponible : arrêt sans écriture') from exc
+        if controle.returncode != 0:
+            raise SystemExit('cadrage W39 refusé : ' + (controle.stderr.strip() or controle.stdout.strip()))
+    elif slug in publies:
         return  # Une republication tient sa date du fichier publié.
     tous = [pilier] + satellites
     cible = next((e for e in tous if e['slug'] == slug), None)
-    if cible is None or (cible['date'], cible['statut']) != (jour.isoformat(), 'planned'):
+    if not w39 and (cible is None or (cible['date'], cible['statut']) != (jour.isoformat(), 'planned')):
         raise SystemExit(f'créneau planned non actionnable : {slug} ({jour})')
     try:
         plan = json.loads((ICI / 'cluster-plan.json').read_text(encoding='utf-8'))

@@ -9,6 +9,18 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 
 ### Reçu opérateur W39 — ponctuel, non renouvelable
 
+Le préflight `build-cluster-plan.py --slot <slug> <jour-Paris>` utilise pour ce seul reliquat
+le contrôle en lecture seule `blog-forge.mjs verifier-creneau-w39 <slug> <jour-Paris>` :
+identité recette/file, jour réel, reçu exact, RAW signé et quota sont ceux du garde de la forge.
+Une publication déjà présente dans les sources ou la file reste un refus, pas une republication.
+L'édition du calendrier doit toujours être fraîche et intégralement conforme aux sources ;
+la trace historique du 26/09 n'est ni déplacée ni transformée en `planned` du jour réel.
+Les autres slugs conservent le contrôle ordinaire `planned` au jour courant. Aucun drapeau
+de bypass, aucun nouveau cadrage, aucune reconduction : en cas de reçu absent/divergent,
+horloge expirée ou sous-processus indisponible, arrêt avant écriture. Les deux tests
+`tests/scripts/blog-w39-slot.test.mjs` exercent Python → Node et la forge → Python → Node,
+avec horloges figées uniquement dans les fixtures, sans réseau, rendu ou publication.
+
 Le propriétaire `default`, carte `t_73628f94`, a cadré le 01/10/2026 la seule préparation `t_f94d562f`, slug `tests-verts-et-regle-des-trois-passes`, semaine éditoriale `2026-W39`. Autorités existantes : mandat/Clarification du 27/09, autonomie technique du 28/09 et décision directe du 29/09, conservées dans le dépôt privé Hermes (`docs/MEMLIA-BLOG-RATTRAPAGE-W39-2026-09-27.md` et `AGENTS.md`). Les références du JSON désignent ces sources externes à ce dépôt, pas des fichiers publics ni des signatures nouvelles. Un avis QA, un booléen de recette ou un commentaire ne remplace pas le reçu.
 
 `docs/strategy/site-v3/w39-cadrage-operateur.json` porte le schéma v1 exact. `scripts/lib/blog-w39-framing.mjs` vérifie toutes ses clés/valeurs, y compris tâches, autorités et plafond 1 ; la fenêtre civile Europe/Paris du 01/10 au 04/10 inclus (fin 04/10 à 23:59:59) doit couvrir la date proposée ET le jour courant. Le lecteur calcule SHA-256 sur les octets bruts de `editorial/recettes/<slug>/corps.md`, sans trim : `76ffb89670b44fa9acecc86b709546f3044b10e8bf3e9288a1b0e9e0fa5e5e3b`. La fixture privée `tests/fixtures/w39-signed-body.md` est une copie de test de ces octets, jamais un article candidat ni une surface publiée.
