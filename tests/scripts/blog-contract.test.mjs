@@ -52,6 +52,30 @@ function auditer(root) {
   return auditerContratBlog({ root, dist: join(root, 'dist'), mesure: MESURE });
 }
 
+test('clause 1 — portrait direct lié à la recette, sans invalider le paysage déjà publié', () => {
+  const root = fixture({ preuves: 1, legendePreuve: null });
+  try {
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    mkdirSync(join(root, 'public/proofs/blog'), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({ inlineProofs: [{
+      id: 'preuve-1', alt: 'Preuve 1', source: 'Jeu fictif', capturedAt: '2026-09-20',
+    }] }));
+    const page = pageArticle({ preuves: 1, legendePreuve: null }).replace(
+      '<figure data-blog-proof><img src="/preuves/1.webp"',
+      '<figure data-blog-proof="preuve-1"><img src="/proofs/blog/preuve-1-mobile.webp"',
+    );
+    const path = join(root, 'dist/blog', `${SLUG}.html`);
+    writeFileSync(path, page);
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'portrait absent refusé');
+    writeFileSync(join(root, 'public/proofs/blog/preuve-1-mobile.webp'), 'actif de fixture');
+    assert.deepEqual(auditer(root).erreurs, []);
+    writeFileSync(path, page.replace('preuve-1-mobile.webp', 'preuve-1.webp'));
+    assert.deepEqual(auditer(root).erreurs, [], 'le contrat historique continue de lire le paysage');
+    writeFileSync(path, page.replace('alt="Preuve 1"', 'alt="Preuve 1" srcset="/autre.webp 1600w"'));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'sélection alternative non liée refusée');
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
 function temoinClause(clause, options) {
   const root = fixture(options);
   try {

@@ -923,9 +923,9 @@ function normalizedDetectionText(value) {
   return String(value ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 }
 
-function visibleSourceBlocks(source) {
+function visibleSourceBlocks(source, { raw = false } = {}) {
   if (!/<(?:html|body|main|article|section|p|div|h[1-6])\b/i.test(source)) return [source.replace(/\s+/g, ' ').trim()];
-  const document = parseHtml(source);
+  const document = parseHtml(source, { sourceCodeLocationInfo: raw });
   const ignoredTags = new Set(['head', 'style', 'script', 'noscript', 'template']);
   const blockTags = new Set(['p', 'li', 'blockquote', 'figcaption', 'td', 'th', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
   const nodeText = (node, hidden = false) => {
@@ -938,7 +938,10 @@ function visibleSourceBlocks(source) {
   const visit = (node, hidden = false) => {
     const ignored = hidden || ignoredTags.has(node.tagName);
     if (!ignored && blockTags.has(node.tagName)) {
-      const text = nodeText(node).replace(/\s+/g, ' ').trim();
+      const location = node.sourceCodeLocation;
+      const text = raw && location?.startTag && location?.endTag
+        ? source.slice(location.startTag.endOffset, location.endTag.startOffset).trim()
+        : nodeText(node).replace(/\s+/g, ' ').trim();
       if (text) blocks.push(text);
       return;
     }
@@ -950,8 +953,14 @@ function visibleSourceBlocks(source) {
 }
 
 export function contexteDeCitation(source, excerpt) {
-  const citation = excerpt.replace(/\s+/g, ' ').trim();
-  const visible = visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
+  // Une citation brute (NBSP, <sup>…) doit garder ses octets ET la réserve de sa phrase.
+  const exact = excerpt.trim();
+  const needsRaw = exact !== exact.replace(/\s+/g, ' ') || /<[^>]+>/.test(exact);
+  const rawBlock = needsRaw
+    ? visibleSourceBlocks(source, { raw: true }).find((block) => block.includes(exact))
+    : null;
+  const citation = rawBlock ? exact : excerpt.replace(/\s+/g, ' ').trim();
+  const visible = rawBlock ?? visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
   const position = visible.indexOf(citation);
   if (position < 0) return citation;
   const end = position + citation.length;

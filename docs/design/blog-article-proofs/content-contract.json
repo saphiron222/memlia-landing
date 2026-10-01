@@ -20,20 +20,20 @@
   {
     "id": "saisie-six-controles",
     "article": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "alt": "Six contrôles de saisie dans leur ordre fixe, arrêtés sur un écart de montants fictif.",
+    "alt": "Six contrôles de saisie illustratifs, arrêtés sur une facture fictive de la période précédente.",
     "source": "Jeu d’essai fictif et règle écrite décrits dans l’article",
     "sourceUrl": null,
-    "capturedAt": "2026-09-20",
-    "centralText": "Lecture d’une pièce fictive Lot TEST-050 · aucune écriture enregistrée Ordre fixe Une étape qui échoue arrête les suivantes. 1 Nature Facture identifiée 2 Émetteur Fournisseur connu 3 Mentions Champs attendus présents 4 Montants Écart détecté 5 Période Non joué 6 Doublon Non joué Refus attendu Aucune correction d’office. La pièce rejoint la file avec le motif « écart de montants »."
+    "capturedAt": "2026-09-29",
+    "centralText": "Lecture d’une facture fictive Scénario TEST-050 · sortie attendue, non exécutée Ordre fixe Une étape qui échoue arrête les suivantes. 1 Nature Facture identifiée 2 Émetteur Fournisseur connu 3 Mentions Champs attendus présents 4 Montants Cohérents 5 Période Période précédente 6 Doublon Non joué Sortie attendue Aucune écriture enregistrée. La facture reste affectée à sa période ; doublon à vérifier ensuite."
   },
   {
     "id": "saisie-file-anomalies",
     "article": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "alt": "File d’anomalies fictive avec six motifs fermés et un écart de montants à traiter.",
+    "alt": "Six motifs possibles sans décompte mesuré et ticket coupé fictif à qualifier par une personne.",
     "source": "Jeu d’essai fictif et règle écrite décrits dans l’article",
     "sourceUrl": null,
-    "capturedAt": "2026-09-20",
-    "centralText": "File d’anomalies Jeu fictif · lot TEST-050 Motifs fermés Chaque refus nomme la règle qui s’est arrêtée. Document non facturé 1 Fournisseur inconnu 6 Pièce incomplète 2 Écart de montants 1 Hors période 3 Doublon probable 1 Cas sélectionné TEST-023 · écart de montants Contrôle HT + TVA ≠ TTC lu Action automatique Aucune Décision attendue Relire la pièce État À traiter Le reliquat se recompte pour ce lot. Il ne classe aucune personne."
+    "capturedAt": "2026-09-29",
+    "centralText": "File d’anomalies Scénario TEST-050 · motifs possibles, non mesurés Motifs fermés Première sortie selon l’ordre des contrôles. Document non facturé Fournisseur inconnu Pièce incomplète Écart de montants Hors période Doublon probable Cas illustré · sortie attendue Ticket coupé · pièce incomplète Contrôle Informations illisibles Action automatique Aucune écriture Décision attendue Qualifier et demander le justificatif État À traiter Le reliquat ne se mesure qu’après rejeu du lot. Aucun classement individuel."
   },
   {
     "id": "social-dictionnaire",

@@ -546,11 +546,12 @@ const echapperHtml = (texte) => String(texte)
 
 /**
  * Ajoute les preuves visuelles déclarées par la recette sans modifier son corps éditorial.
- * Source et date restent dans la recette ; la page expose l'image fixe sans légende technique.
+ * La source et la date restent traçables dans la recette et le manifeste internes. La page
+ * publique rend seulement une image fixe et responsive, comme les articles de référence.
  * Chaque insertion échoue fermée si le H2 d'ancrage a disparu : une preuve ne doit jamais
  * glisser silencieusement vers une section sans rapport après une réécriture.
  */
-export function injecterPreuvesInline(corps, preuves = []) {
+export function injecterPreuvesInline(corps, preuves = [], root = process.cwd()) {
   if (!preuves.length) return corps;
   const ids = new Set();
   const groupes = new Map();
@@ -578,7 +579,11 @@ export function injecterPreuvesInline(corps, preuves = []) {
     if (!resultat.includes(ancre)) throw new Error(`Preuves inline : H2 d’ancrage absent « ${titre} ».`);
     const figures = groupe.map((preuve) => {
       const imagePath = `/proofs/blog/${preuve.id}.webp`;
-      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`;
+      const mobilePath = `/proofs/blog/${preuve.id}-mobile.webp`;
+      const portrait = existsSync(join(root, 'public', mobilePath));
+      // La colonne bureau ne mesure que 656 px : le paysage 1600 × 900 y réduit
+      // les réserves à quelques pixels. Garder le portrait reflué aux deux tailles.
+      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${portrait ? mobilePath : imagePath}" alt="${echapperHtml(preuve.alt)}" width="${portrait ? 1200 : 1600}"${portrait ? '' : ' height="900"'} loading="lazy" decoding="async">\n</figure>`;
     }).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }
@@ -658,7 +663,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   let corpsPublie = corpsSansTitreDuplique(corps, recette.title);
   let erreurPreuveInline = null;
   try {
-    corpsPublie = injecterPreuvesInline(corpsPublie, recette.inlineProofs ?? []);
+    corpsPublie = injecterPreuvesInline(corpsPublie, recette.inlineProofs ?? [], root);
   } catch (error) {
     erreurPreuveInline = error.message;
   }
