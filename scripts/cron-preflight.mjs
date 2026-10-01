@@ -45,7 +45,8 @@ try {
   const calendar = JSON.parse(readFileSync(join(root, 'docs/strategy/site-v3/cluster-plan.json'), 'utf8'));
   const backlog = JSON.parse(readFileSync(join(root, 'docs/strategy/site-v3/backlog-v3.json'), 'utf8'));
   if (!Array.isArray(calendar.clusters) || !Array.isArray(backlog)) throw new Error('calendrier éditorial illisible');
-  const today = new Intl.DateTimeFormat('sv-SE', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  // Match the forge's civil publication day, independent of the host/CI zone.
+  const today = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   const posts = [calendar.pillar, ...calendar.clusters.flatMap((cluster) => cluster.posts)];
   const cicatrices = new Set(backlog.filter((entry) => entry.serie === 'cicatrices').map((entry) => entry.slug));
   cicatrices.add('tests-verts-et-regle-des-trois-passes'); // W39 published replaces the old backlog slug.
