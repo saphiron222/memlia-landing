@@ -772,6 +772,15 @@ function lancer(root, args) {
 export async function commande(argv, root = process.cwd()) {
   const [action, slug, htmlPath] = argv;
   if (!slug) throw new Error('Usage : blog-forge <preparer|sceller|publier> <slug>');
+  if (action === 'verifier-creneau-w39') {
+    if (argv.length !== 3 || !estReliquatW39(slug) || htmlPath !== aujourdhui()) {
+      throw new Error('Le préflight W39 exige le slug exact et le jour réel Europe/Paris.');
+    }
+    const { recette } = chargerRecette(root, slug);
+    verifierFile(root, slug, recette.date, 'a-valider', recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
+    console.log('cadrage W39 : OK (ni revue ni publication)');
+    return;
+  }
   if (action === 'empreinte') {
     if (!htmlPath) throw new Error('Usage : blog-forge empreinte <slug> <html-rendu>');
     const { corps } = chargerRecette(root, slug);
