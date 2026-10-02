@@ -9,6 +9,7 @@ Usage, depuis la racine du dépôt :
     python3 docs/strategy/site-v3/build-cluster-plan.py --check    # vérifie sans écrire de dérivé
 """
 import json
+import os
 import re
 import subprocess
 import sys
@@ -77,16 +78,76 @@ def taxonomie():
     return poles, familles
 
 
+def metadonnees_publication(texte):
+    morceaux = texte.split('---', 2)
+    if len(morceaux) != 3 or morceaux[0].strip():
+        raise SystemExit('frontmatter de publication illisible')
+    fm = morceaux[1]
+
+    def champ(nom):
+        m = re.search(rf'^{nom}:\s*"?([^"\n]+?)"?\s*$', fm, re.M)
+        return m.group(1) if m else None
+    return champ('brouillon'), {
+        'date': champ('datePublication'), 'famille': champ('famille'),
+        'format': champ('format'), 'requete': champ('primaryQuery'), 'titre': champ('titre'),
+    }
+
+
+def git_publication(*arguments):
+    # Every read is confined to this checkout, not inherited GIT_DIR/worktree.
+    try:
+        resultat = subprocess.run(['git', '-C', str(RACINE), *arguments],
+            env={k: v for k, v in os.environ.items() if not k.startswith('GIT_')},
+            capture_output=True, text=True, timeout=10, check=False)
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise SystemExit('base de publication origin/main indisponible : arrêt sans écriture') from exc
+    if resultat.returncode:
+        raise SystemExit('base de publication origin/main illisible ou non intégrée au candidat')
+    return resultat.stdout
+
+
 def etat_publie():
+    """Calendar state, not a production receipt or approval of draft bytes.
+
+    Preparing an already integrated article makes its candidate a draft. Read
+    the previous publication from one pinned origin/main commit, not from that
+    draft or a feature commit. The final public build still excludes the draft.
+    """
+    base = None
+    fichiers_base = set()
+    git_dir = RACINE / '.git'
+    # Non-Git fixtures retain their source-only behaviour. A real checkout with
+    # a missing/corrupt remote ref must never silently acquire that behaviour.
+    if os.path.lexists(git_dir):
+        if git_dir.is_symlink():
+            raise SystemExit('base de publication origin/main : .git symbolique refusé')
+        base = git_publication('rev-parse', '--verify', 'refs/remotes/origin/main^{commit}').strip()
+        if not re.fullmatch(r'[0-9a-f]{40,64}', base):
+            raise SystemExit('base de publication origin/main invalide')
+        git_publication('merge-base', '--is-ancestor', base, 'HEAD')
+        for ligne in git_publication('ls-tree', '-r', '-z', '--name-only', base,
+                                    '--', 'src/content/blog').split('\0'):
+            if ligne:
+                fichiers_base.add(ligne)
     publies = {}
     for fichier in sorted(BLOG.glob('*.md')):
-        fm = fichier.read_text(encoding='utf-8').split('---', 2)[1]
-
-        def champ(nom):
-            m = re.search(rf'^{nom}:\s*"?([^"\n]+?)"?\s*$', fm, re.M)
-            return m.group(1) if m else None
-        if champ('brouillon') == 'false':
-            publies[fichier.stem] = {'date': champ('datePublication'), 'famille': champ('famille'), 'format': champ('format'), 'requete': champ('primaryQuery'), 'titre': champ('titre')}
+        if fichier.is_symlink():
+            raise SystemExit(f'article symbolique refusé : {fichier.name}')
+        brouillon, courant = metadonnees_publication(fichier.read_text(encoding='utf-8'))
+        chemin = fichier.relative_to(RACINE).as_posix()
+        integre = None
+        if base and chemin in fichiers_base:
+            ancien_brouillon, ancien = metadonnees_publication(git_publication('show', f'{base}:{chemin}'))
+            if ancien_brouillon == 'false':
+                if ancien['date'] != courant['date']:
+                    raise SystemExit(f'date de publication historique modifiée : {fichier.stem}')
+                integre = ancien
+        if brouillon == 'false':
+            publies[fichier.stem] = courant
+        elif brouillon == 'true' and integre is not None:
+            publies[fichier.stem] = integre
+    if base and git_publication('rev-parse', '--verify', 'refs/remotes/origin/main^{commit}').strip() != base:
+        raise SystemExit('base de publication origin/main a changé pendant la lecture')
     return publies
 
 
