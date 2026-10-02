@@ -13,6 +13,17 @@ Le préflight `build-cluster-plan.py --slot <slug> <jour-Paris>` utilise pour ce
 le contrôle en lecture seule `blog-forge.mjs verifier-creneau-w39 <slug> <jour-Paris>` :
 identité recette/file, jour réel, reçu exact, RAW signé et quota sont ceux du garde de la forge.
 Une publication déjà présente dans les sources ou la file reste un refus, pas une republication.
+
+**État publié et brouillon de republication sont distincts.** Dans un vrai checkout
+Git, le planificateur lit une seule base `origin/main`, intégrée à HEAD, pour
+reconnaître un article antérieurement non-brouillon dont la forge prépare maintenant
+la nouvelle version en `brouillon:true`. Il conserve les métadonnées de cette base
+pour le calendrier, sans modifier le candidat ni le considérer comme revu ou servi.
+Une date historique changée, une base absente/non intégrée ou une référence qui
+change pendant la lecture arrêtent ce contrôle. Un nouveau brouillon ou un commit
+de branche seul ne créent pas de publication antérieure. Le préflight doit toujours
+avoir vérifié `main` frais ; cette lecture Git n'est pas une preuve HTTP. Le build
+public final, les revues liées aux octets et les autres portes restent inchangés.
 L'édition du calendrier doit toujours être fraîche et intégralement conforme aux sources ;
 la trace historique du 26/09 n'est ni déplacée ni transformée en `planned` du jour réel.
 Les autres slugs conservent le contrôle ordinaire `planned` au jour courant. Aucun drapeau
