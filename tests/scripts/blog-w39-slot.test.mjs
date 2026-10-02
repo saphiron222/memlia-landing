@@ -117,3 +117,28 @@ test('le préflight W39 réel conserve refus de dates, identité, reçu, RAW et 
     assert.equal(existsSync(join(f.root, 'editorial/articles', slug)), false);
   }
 });
+
+test('le calendrier conserve la Cicatrice publiée aux dates cadrées, même après expiration', (t) => {
+  const f = fixture(t);
+  for (const day of ['2026-10-01', '2026-10-02', '2026-10-03', '2026-10-04']) {
+    const article = `---\nbrouillon: false\ndatePublication: ${day}\nfamille: ia-generative-agents\nformat: thought-leadership\nprimaryQuery: pourquoi des tests verts peuvent manquer des défauts\ntitre: Pourquoi des tests verts manquent des défauts : la règle des trois passes\n---\n`;
+    writeFileSync(join(f.root, 'src/content/blog', `${slug}.md`), article);
+    writeFileSync(f.clock, JSON.stringify('2026-10-05'));
+    f.edition();
+    const plan = readFileSync(join(f.planDir, 'cluster-plan.json'), 'utf8');
+    assert.match(plan, new RegExp(`"date": "${day}"`));
+    assert.match(plan, new RegExp(slug));
+    // Le doublon est refusé même pendant la fenêtre, calendrier frais :
+    // le refus ne doit pas seulement provenir de l'expiration du reçu.
+    writeFileSync(f.clock, JSON.stringify(day));
+    writeFileSync(f.recipePath, JSON.stringify({ ...f.recipe, date: day }));
+    f.edition();
+    const duplicate = f.slot(slug, day);
+    assert.notEqual(duplicate.status, 0, duplicate.stdout);
+    assert.match(duplicate.stderr, /déjà publiée/);
+    writeFileSync(f.clock, JSON.stringify('2026-10-05'));
+    f.edition();
+    // L'archive ne renouvelle pas le droit de préparer une seconde publication.
+    assert.notEqual(f.slot(slug, '2026-10-05').status, 0);
+  }
+});

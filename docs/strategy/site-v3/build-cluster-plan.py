@@ -37,11 +37,21 @@ PREMIER_JOUR = date(2026, 9, 17)
 RATTRAPAGE_W39 = {'prompt-chatgpt-expert-comptable': '2026-09-22', 'logiciel-ia-comptabilite': '2026-09-24', 'tests-verts-et-regle-des-trois-passes': '2026-09-26'}
 DATE_RATTRAPAGE = '2026-09-28'
 DATES_RATTRAPAGE = {DATE_RATTRAPAGE, '2026-09-29'}
+SLUG_CICATRICE_W39 = 'tests-verts-et-regle-des-trois-passes'
+# Dates d'archive du reçu existant, pas autorité de préparation/publication.
+# Le gate Node continue à vérifier reçu, jour courant et octets signés.
+DATES_ARCHIVE_CICATRICE_W39 = DATES_RATTRAPAGE | {
+    '2026-10-01', '2026-10-02', '2026-10-03', '2026-10-04',
+}
 TITRE_CICATRICE_W39 = 'Pourquoi des tests verts manquent des défauts : la règle des trois passes'
 
+def date_archive_rattrapage(slug, jour):
+    dates = DATES_ARCHIVE_CICATRICE_W39 if slug == SLUG_CICATRICE_W39 else DATES_RATTRAPAGE
+    return jour in dates
+
 def creneau(e):
-    """La date réelle du 28 ou 29/09 ne déplace pas les créneaux W39 désignés."""
-    if e.get('statut') == 'published' and e['date'] in DATES_RATTRAPAGE:
+    """Une publication cadrée conserve son créneau W39, même dans l'archive."""
+    if e.get('statut') == 'published' and date_archive_rattrapage(e['slug'], e['date']):
         return RATTRAPAGE_W39.get(e['slug'], e['date'])
     return e['date']
 GABARIT_PAR_FORMAT = {'pillar-page': 'ultimate-guide', 'how-to-guide': 'how-to', 'faq-knowledge': 'explainer', 'listicle-checklist': 'listicle', 'tutorial': 'how-to', 'resource-template': 'landing-page', 'thought-leadership': 'essai'}
@@ -234,7 +244,8 @@ def planifier(entrees, publies, aujourd_hui=None):
     par_jour, par_semaine = Counter(), Counter()
     if any(p['date'] == DATE_RATTRAPAGE and slug not in RATTRAPAGE_W39 for slug, p in publies.items()):
         raise SystemExit('rattrapage W39 réservé aux trois sujets désignés')
-    if any(slug in RATTRAPAGE_W39 and p['date'] not in DATES_RATTRAPAGE | {RATTRAPAGE_W39[slug]} for slug, p in publies.items()):
+    if any(slug in RATTRAPAGE_W39 and not date_archive_rattrapage(slug, p['date'])
+           and p['date'] != RATTRAPAGE_W39[slug] for slug, p in publies.items()):
         raise SystemExit('rattrapage W39 hors dates réelles autorisées')
     slugs_cicatrices = {e['slug'] for e in entrees if e.get('serie') == 'cicatrices'}
     for slug, p in publies.items():
@@ -256,7 +267,7 @@ def planifier(entrees, publies, aujourd_hui=None):
     semaines_reservees = set()
 
     def reserver_cicatrice(e, candidat):
-        rattrapage = e['slug'] == 'tests-verts-et-regle-des-trois-passes' and e['slug'] in publies and candidat.isoformat() in DATES_RATTRAPAGE
+        rattrapage = e['slug'] == SLUG_CICATRICE_W39 and e['slug'] in publies and date_archive_rattrapage(e['slug'], candidat.isoformat())
         cle_semaine = semaine_iso(date.fromisoformat(RATTRAPAGE_W39[e['slug']])) if rattrapage else semaine_iso(candidat)
         if candidat.weekday() != 5 and not rattrapage:
             raise SystemExit(f"une cicatrice paraît le samedi : {e['slug']} ({candidat.isoformat()})")
@@ -270,7 +281,7 @@ def planifier(entrees, publies, aujourd_hui=None):
     # jamais au gré d'une régénération.
     for e in [x for x in series if x['slug'] in publies]:
         date_publiee = publies.get(e['slug'], {}).get('date')
-        if date_publiee and e.get('date') and date_publiee != e['date'] and not (e['slug'] == 'tests-verts-et-regle-des-trois-passes' and date_publiee in DATES_RATTRAPAGE and e['date'] == RATTRAPAGE_W39[e['slug']]):
+        if date_publiee and e.get('date') and date_publiee != e['date'] and not (e['slug'] == SLUG_CICATRICE_W39 and date_archive_rattrapage(e['slug'], date_publiee) and e['date'] == RATTRAPAGE_W39[e['slug']]):
             raise SystemExit(f"date publiée divergente du backlog : {e['slug']} ({date_publiee} != {e['date']})")
         reserver_cicatrice(e, date.fromisoformat(date_publiee or e['date']))
 
@@ -353,7 +364,7 @@ def construire():
         p = publies[slug_w39]
         if p['titre'] != TITRE_CICATRICE_W39:
             raise SystemExit('titre signé W39 divergent')
-        if p['date'] not in DATES_RATTRAPAGE or p['format'] != 'thought-leadership' or p['famille'] != 'ia-generative-agents':
+        if not date_archive_rattrapage(slug_w39, p['date']) or p['format'] != 'thought-leadership' or p['famille'] != 'ia-generative-agents':
             raise SystemExit(f'cicatrice W39 hors contrat : {slug_w39}')
         # Le créneau du 26/09 porte le même titre et la même requête : remplacer le
         # sujet planifié par la Cicatrice réellement publiée, sans créer un doublon.
