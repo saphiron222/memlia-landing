@@ -924,10 +924,42 @@ function normalizedDetectionText(value) {
 }
 
 function visibleSourceBlocks(source, { raw = false } = {}) {
-  if (!/<(?:html|body|main|article|section|p|div|h[1-6])\b/i.test(source)) return [source.replace(/\s+/g, ' ').trim()];
+  if (!/<\/?[a-z][^>]*>|<!--/i.test(source)) return [raw ? source.trim() : source.replace(/\s+/g, ' ').trim()];
   const document = parseHtml(source, { sourceCodeLocationInfo: raw });
   const ignoredTags = new Set(['head', 'style', 'script', 'noscript', 'template']);
   const blockTags = new Set(['p', 'li', 'blockquote', 'figcaption', 'td', 'th', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
+  // Les offsets gardent NBSP/balises inline à l'identique, mais une tranche
+  // innerHTML complète réintroduirait les descendants ignorés par nodeText.
+  const omittedRanges = [];
+  if (raw) {
+    const collectOmitted = (node) => {
+      if (ignoredTags.has(node.tagName) || node.nodeName === '#comment') {
+        const location = node.sourceCodeLocation;
+        if (location) {
+          omittedRanges.push([location.startOffset, location.endOffset]);
+          return;
+        }
+      }
+      for (const child of node.childNodes ?? []) collectOmitted(child);
+    };
+    collectOmitted(document);
+    omittedRanges.sort((left, right) => left[0] - right[0]);
+  }
+  const visibleRawInnerHTML = (node) => {
+    const location = node.sourceCodeLocation;
+    if (!location?.startTag) return null;
+    const start = location.startTag.endOffset;
+    const end = location.endTag?.startOffset ?? location.endOffset;
+    let cursor = start;
+    const parts = [];
+    for (const [hiddenStart, hiddenEnd] of omittedRanges) {
+      if (hiddenEnd <= cursor || hiddenStart >= end) continue;
+      parts.push(source.slice(cursor, Math.max(cursor, hiddenStart)));
+      cursor = Math.min(end, Math.max(cursor, hiddenEnd));
+    }
+    parts.push(source.slice(cursor, end));
+    return parts.join('').trim();
+  };
   const nodeText = (node, hidden = false) => {
     const ignored = hidden || ignoredTags.has(node.tagName);
     if (ignored) return '';
@@ -938,10 +970,8 @@ function visibleSourceBlocks(source, { raw = false } = {}) {
   const visit = (node, hidden = false) => {
     const ignored = hidden || ignoredTags.has(node.tagName);
     if (!ignored && blockTags.has(node.tagName)) {
-      const location = node.sourceCodeLocation;
-      const text = raw && location?.startTag && location?.endTag
-        ? source.slice(location.startTag.endOffset, location.endTag.startOffset).trim()
-        : nodeText(node).replace(/\s+/g, ' ').trim();
+      const text = (raw ? visibleRawInnerHTML(node) : null)
+        ?? nodeText(node).replace(/\s+/g, ' ').trim();
       if (text) blocks.push(text);
       return;
     }
@@ -971,7 +1001,8 @@ export function contexteDeCitation(source, excerpt) {
 }
 
 function sourceContainsContext(source, context) {
-  return source.includes(context) || visibleSourceBlocks(source).some((block) => block.includes(context));
+  return visibleSourceBlocks(source, { raw: true }).some((block) => block.includes(context))
+    || visibleSourceBlocks(source).some((block) => block.includes(context));
 }
 
 function sensitiveTextSignals(value) {
