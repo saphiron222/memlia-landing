@@ -12,6 +12,7 @@ import { retirerPreuvesInline } from './blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
 import { reviewBindingErrors, reviewSha256 } from './blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
+import { estReliquatW39, lireCadrageW39, jourCadrageParis, verifierIdentiteW39 } from './blog-w39-framing.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
   'blog-strategy', 'blog-brand', 'blog-persona', 'blog-discourse', 'blog-google', 'blog-calendar',
@@ -85,27 +86,23 @@ export function semaineIso(value) {
   return `${date.getUTCFullYear()}-W${String(numero).padStart(2, '0')}`;
 }
 /** Refuse une date qui ferait dépasser la cadence propre à chaque flux éditorial. */
-export function verifierPlafonds(actifs, date, { serie = null, slug = null } = {}) {
+export function verifierPlafonds(actifs, date, { serie = null, slug = null, root = null, now = new Date() } = {}) {
+  if (estReliquatW39(slug) && !isDate(date)) throw new Error('Cadrage W39 : date invalide.');
   const semaine = semaineIso(date);
   if (serie === 'cicatrices') {
-    // Rattrapage signé W39 uniquement : les 28 et 29 sont en W40, sans doubler la W39.
-    const slugW39 = 'tests-verts-et-regle-des-trois-passes';
-    const rattrapageW39 = (candidateSlug, candidateDate) => candidateSlug === slugW39
-      && ['2026-09-27', '2026-09-28', '2026-09-29'].includes(candidateDate);
-    if (slug === slugW39 && date > '2026-09-29') {
-      throw new Error(`Le rattrapage W39 de cette cicatrice s'arrête au 29/09/2026 ; nouveau cadrage requis pour ${date}.`);
-    }
-    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !rattrapageW39(slug, date)) {
+    const historique = estReliquatW39(slug) && date >= '2026-09-27' && date <= '2026-09-29';
+    const cadre = estReliquatW39(slug) && !historique ? lireCadrageW39(root, date, now) : null;
+    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !historique && !cadre) {
       throw new Error(`Une cicatrice paraît le samedi ; ${date} n’est pas un samedi.`);
     }
-    const semaineControlee = rattrapageW39(slug, date) ? '2026-W39' : semaine;
-    if (actifs.some((candidate) => candidate.serie === 'cicatrices' && isDate(candidate.date)
-      && (rattrapageW39(candidate.slug, candidate.date)
-        ? '2026-W39' : semaineIso(candidate.date)) === semaineControlee)) {
+    const semaineControlee = estReliquatW39(slug) ? '2026-W39' : semaine;
+    if (actifs.some((candidate) => (candidate.serie === 'cicatrices' || estReliquatW39(candidate.slug))
+      && (estReliquatW39(candidate.slug) ? '2026-W39' : isDate(candidate.date) ? semaineIso(candidate.date) : null) === semaineControlee)) {
       throw new Error(`Une cicatrice est déjà planifiée la semaine ${semaineControlee} ; le plafond est d’une cicatrice par semaine ISO.`);
     }
     return;
   }
+  if (estReliquatW39(slug)) throw new Error('Le reliquat W39 ne peut pas devenir un article ordinaire.');
   const ordinaires = actifs.filter((candidate) => candidate.serie !== 'cicatrices');
   if (ordinaires.filter((candidate) => candidate.date === date).length >= CANDIDATS_PAR_JOUR_MAX) {
     throw new Error(`${CANDIDATS_PAR_JOUR_MAX} candidats sont déjà planifiés le ${date} ; le plafond est de ${CANDIDATS_PAR_JOUR_MAX} candidats par jour.`);
@@ -589,7 +586,7 @@ export function createCandidate({ root = process.cwd(), slug, title, primaryQuer
   const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
   if (!Array.isArray(queue.candidates)) throw new Error('editorial/queue.json doit contenir une liste candidates.');
   const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status));
-  verifierPlafonds(actifs, date);
+  verifierPlafonds(actifs, date, { slug });
   if (queue.candidates.some((candidate) => candidate.slug === slug)) throw new Error(`Le candidat ${slug} existe déjà dans la file.`);
 
   const articlePath = join(absoluteRoot, 'src/content/blog', `${slug}.md`);
@@ -926,11 +923,43 @@ function normalizedDetectionText(value) {
   return String(value ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 }
 
-function visibleSourceBlocks(source) {
-  if (!/<(?:html|body|main|article|section|p|div|h[1-6])\b/i.test(source)) return [source.replace(/\s+/g, ' ').trim()];
-  const document = parseHtml(source);
+function visibleSourceBlocks(source, { raw = false } = {}) {
+  if (!/<\/?[a-z][^>]*>|<!--/i.test(source)) return [raw ? source.trim() : source.replace(/\s+/g, ' ').trim()];
+  const document = parseHtml(source, { sourceCodeLocationInfo: raw });
   const ignoredTags = new Set(['head', 'style', 'script', 'noscript', 'template']);
   const blockTags = new Set(['p', 'li', 'blockquote', 'figcaption', 'td', 'th', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
+  // Les offsets gardent NBSP/balises inline à l'identique, mais une tranche
+  // innerHTML complète réintroduirait les descendants ignorés par nodeText.
+  const omittedRanges = [];
+  if (raw) {
+    const collectOmitted = (node) => {
+      if (ignoredTags.has(node.tagName) || node.nodeName === '#comment') {
+        const location = node.sourceCodeLocation;
+        if (location) {
+          omittedRanges.push([location.startOffset, location.endOffset]);
+          return;
+        }
+      }
+      for (const child of node.childNodes ?? []) collectOmitted(child);
+    };
+    collectOmitted(document);
+    omittedRanges.sort((left, right) => left[0] - right[0]);
+  }
+  const visibleRawInnerHTML = (node) => {
+    const location = node.sourceCodeLocation;
+    if (!location?.startTag) return null;
+    const start = location.startTag.endOffset;
+    const end = location.endTag?.startOffset ?? location.endOffset;
+    let cursor = start;
+    const parts = [];
+    for (const [hiddenStart, hiddenEnd] of omittedRanges) {
+      if (hiddenEnd <= cursor || hiddenStart >= end) continue;
+      parts.push(source.slice(cursor, Math.max(cursor, hiddenStart)));
+      cursor = Math.min(end, Math.max(cursor, hiddenEnd));
+    }
+    parts.push(source.slice(cursor, end));
+    return parts.join('').trim();
+  };
   const nodeText = (node, hidden = false) => {
     const ignored = hidden || ignoredTags.has(node.tagName);
     if (ignored) return '';
@@ -941,7 +970,8 @@ function visibleSourceBlocks(source) {
   const visit = (node, hidden = false) => {
     const ignored = hidden || ignoredTags.has(node.tagName);
     if (!ignored && blockTags.has(node.tagName)) {
-      const text = nodeText(node).replace(/\s+/g, ' ').trim();
+      const text = (raw ? visibleRawInnerHTML(node) : null)
+        ?? nodeText(node).replace(/\s+/g, ' ').trim();
       if (text) blocks.push(text);
       return;
     }
@@ -953,10 +983,14 @@ function visibleSourceBlocks(source) {
 }
 
 export function contexteDeCitation(source, excerpt) {
-  const citation = excerpt.replace(/\s+/g, ' ').trim();
-  // Le gate exige l'extrait exact dans son contexte : ne pas normaliser ses espaces insécables.
-  if (citation !== excerpt.trim()) return excerpt.trim();
-  const visible = visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
+  // Une citation brute (NBSP, <sup>…) doit garder ses octets ET la réserve de sa phrase.
+  const exact = excerpt.trim();
+  const needsRaw = exact !== exact.replace(/\s+/g, ' ') || /<[^>]+>/.test(exact);
+  const rawBlock = needsRaw
+    ? visibleSourceBlocks(source, { raw: true }).find((block) => block.includes(exact))
+    : null;
+  const citation = rawBlock ? exact : excerpt.replace(/\s+/g, ' ').trim();
+  const visible = rawBlock ?? visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
   const position = visible.indexOf(citation);
   if (position < 0) return citation;
   const end = position + citation.length;
@@ -967,7 +1001,8 @@ export function contexteDeCitation(source, excerpt) {
 }
 
 function sourceContainsContext(source, context) {
-  return source.includes(context) || visibleSourceBlocks(source).some((block) => block.includes(context));
+  return visibleSourceBlocks(source, { raw: true }).some((block) => block.includes(context))
+    || visibleSourceBlocks(source).some((block) => block.includes(context));
 }
 
 function sensitiveTextSignals(value) {
@@ -1185,11 +1220,20 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
       if (!sourceIds.has(sourceId)) errors.push(`${prefix}.sourceIds référence une source absente du manifeste : ${sourceId}.`);
       const verified = verifiedSources.get(sourceId);
       if (!verified) errors.push(`${prefix} référence ${sourceId}, dont la vérification n’est pas prouvée.`);
-      const unitSignals = sensitiveMatter.unitSignals.get(claim?.unitId) ?? [];
+      // Seul un claim methode non normatif peut être borné à son fragment.
+      // Une obligation anaphorique conserve le référent sensible du paragraphe,
+      // même sans employeur/salarié nommé dans la phrase du claim.
+      const claimSignals = sensitiveTextSignals(claim?.claim);
+      const normalizedClaim = normalizedDetectionText(claim?.claim);
+      const scopedMethod = claim?.type === 'methode'
+        && !NORMATIVE_LANGUAGE.test(normalizedClaim)
+        && !RGPD_OBLIGATION_LANGUAGE.test(normalizedClaim);
+      const sourceSignals = scopedMethod ? claimSignals
+        : [...claimSignals, ...(sensitiveMatter.unitSignals.get(claim?.unitId) ?? [])];
       if (verified?.source?.level === 'technical-primary' && (claim?.type !== 'methode' || verified.deterministicClassification?.technicalPrimary !== true)) {
         errors.push(`${prefix} : source primaire technique ${sourceId} réservée aux claims methode avec domaine et éditeur vérifiés.`);
       }
-      if (OFFICIAL_PRIMARY_CLAIM_TYPES.has(claim?.type) || unitSignals.some((signal) => OFFICIAL_PRIMARY_SIGNALS.has(signal))) {
+      if (OFFICIAL_PRIMARY_CLAIM_TYPES.has(claim?.type) || sourceSignals.some((signal) => OFFICIAL_PRIMARY_SIGNALS.has(signal))) {
         const source = verified?.source ?? (manifest?.sources ?? []).find((item) => item.id === sourceId);
         if (!['tier-1', 'tier-2', 'tier-3'].includes(source?.level) || source?.provenance !== 'primary' || source?.official !== true || verified?.deterministicClassification?.officialAuthority !== true) {
           errors.push(`${prefix} de type ${claim.type} exige une source primaire officielle tier-1 à tier-3 ; ${sourceId} ne satisfait pas ce contrat.`);
@@ -1738,6 +1782,20 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   const manifestPath = join(dossier, 'manifest.json');
   const errors = [];
   const manifest = readJson(manifestPath, errors, 'manifest.json');
+  if (estReliquatW39(slug) && !['publication-scellee', 'published-audit'].includes(gateMode)) {
+    try {
+      const queue = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/queue.json'), 'utf8'));
+      const current = queue.candidates.find((candidate) => candidate.slug === slug);
+      const recette = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
+      verifierIdentiteW39(recette, current, manifest?.publicationDate);
+      const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status)
+        && (candidate !== current || candidate.status === 'publie'));
+      if (manifest?.publicationDate !== jourCadrageParis()) throw new Error('W39 exige la date réelle Europe/Paris.');
+      verifierPlafonds(actifs, manifest?.publicationDate, { root: absoluteRoot, slug, serie: recette.serie });
+    } catch (error) {
+      errors.push(`Cadrage W39 : ${error.message}`);
+    }
+  }
   const skills = readJson(join(dossier, 'skills.json'), errors, 'skills.json');
   const claims = readJson(join(dossier, 'claims.json'), errors, 'claims.json');
   const review = readJson(join(dossier, 'review.json'), errors, 'review.json');
@@ -1801,7 +1859,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     errors.push(...validateCandidate(manifest, { gateMode }));
     const requetes = [manifest.primaryQuery, ...(manifest.secondaryQueries ?? [])];
     const dateMesure = gateMode === 'publication-scellee' && sealErrors.length === 0
-      ? manifest.publishedAt : au;
+      ? manifest.publishedAt : (au ?? jourRecuperationParis(new Date().toISOString()));
     for (const [surface, titre] of [['H1', manifest.title], ['titre d’onglet', manifest.tabTitle]]) {
       try {
         verifierTitreIntentMesure({ root: absoluteRoot, titre, requetes, surface: `${slug} : ${surface}`, au: dateMesure });

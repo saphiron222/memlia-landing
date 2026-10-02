@@ -60,7 +60,7 @@ function ecartJours(debut, fin) {
  * ignorée. L'audit d'un dossier scellé peut fournir sa date de publication comme borne :
  * les candidats non scellés restent soumis au relevé hebdomadaire frais.
  */
-export function chargerAutocompletionMesuree(root, { au = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()), ageMaxJours = 8 } = {}) {
+export function chargerAutocompletionMesuree(root, { au = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()), ageMaxJours = 8 } = {}) {
   const dossier = join(root, DOSSIER_MESURES);
   if (!existsSync(dossier)) throw new Error(`relevés d’autocomplétion absents : ${DOSSIER_MESURES}`);
   const fichiers = readdirSync(dossier)

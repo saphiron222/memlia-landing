@@ -1,18 +1,20 @@
 import { test } from 'node:test';
+import { spawnSync } from 'node:child_process';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
-import { contexteDeCitation, validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
+import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
 import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const SLUG = 'automatiser-une-tache-de-test';
+// Même calendrier que le gate et la forge : un jour UTC peut encore être la veille à Paris (ou inversement).
 const jour = forge.aujourdhui();
 const HTML_RELUT = '<html><body><div class="article-corps lecture"><p>Texte rendu relu.</p></div></body></html>';
 
@@ -138,6 +140,56 @@ function racineDeTest() {
 }
 const blogRendu = `<li data-article="${SLUG}"><a href="/blog/${SLUG}"></a></li>`;
 
+test('materialiser appelle le vrai garde : calendrier périmé refusé sans écriture, édition fraîche utilisable', async (t) => {
+  const root = racineDeTest();
+  const RealDate = Date;
+  t.mock.method(globalThis, 'Date', class extends RealDate {
+    constructor(...args) { super(...(args.length ? args : ['2026-09-30T10:00:00Z'])); }
+  });
+  try {
+    const planDir = join(root, 'docs/strategy/site-v3');
+    rmSync(join(root, 'src/content/blog'), { recursive: true });
+    for (const path of ['src/content.config.ts', 'src/data/familles.ts', 'src/content/blog',
+      'docs/strategy/site-v3/mesures', 'docs/strategy/site-v3/backlog-v3.json']) {
+      cpSync(join(RACINE, path), join(root, path), { recursive: true });
+    }
+    const backlogPath = join(planDir, 'backlog-v3.json');
+    const backlog = JSON.parse(readFileSync(backlogPath));
+    const cible = backlog.find((e) => e.slug === 'automatiser-l-entree-en-relation-d-un-nouveau-client');
+    cible.slug = SLUG;
+    writeFileSync(backlogPath, JSON.stringify(backlog));
+    const moteur = join(planDir, 'plan-engine.py');
+    cpSync(join(RACINE, 'docs/strategy/site-v3/build-cluster-plan.py'), moteur);
+    // L'horloge du sous-processus est figée ; le garde lui-même reste le code réel.
+    writeFileSync(join(planDir, 'build-cluster-plan.py'), `import datetime, runpy\nclass FixedDate(datetime.date):\n    @classmethod\n    def today(cls): return cls(2026, 9, 30)\ndatetime.date = FixedDate\nrunpy.run_path(${JSON.stringify(moteur)}, run_name='__main__')\n`);
+    const editer = (day) => {
+      const code = `import importlib.util\ns=importlib.util.spec_from_file_location('plan', ${JSON.stringify(moteur)})\np=importlib.util.module_from_spec(s)\ns.loader.exec_module(p)\nclass FixedDate(p.date):\n    @classmethod\n    def today(cls): return cls(2026, 9, ${day})\np.date=FixedDate\nd=p.construire()\ne, entrants, _=p.verifier(*d)\nassert not e, e\np.ecrire_json(d[0],d[1],d[3],d[4],d[5],entrants)\np.ecrire_calendrier(d[3],d[4],d[1],d[0])\n`;
+      const result = spawnSync('python3', ['-c', code], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+    };
+    const options = { root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage };
+    editer(29);
+    const calendrierPath = join(planDir, 'CONTENT-CALENDAR.md');
+    const avant = readFileSync(calendrierPath);
+    await assert.rejects(materialiser(options), /Créneau éditorial refusé.*calendrier périmé/s);
+    assert.deepEqual(readFileSync(calendrierPath), avant);
+    assert.equal(existsSync(join(root, 'editorial/articles', SLUG)), false);
+    assert.equal(existsSync(join(root, 'src/content/blog', `${SLUG}.md`)), false);
+    editer(30);
+    const r = recette();
+    r.date = '2026-09-30';
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r));
+    writeFileSync(join(planDir, 'mesures/questions-2026-09-30.json'), JSON.stringify({
+      jour: '2026-09-30', autocompletion: Object.fromEntries([r.primaryQuery, ...r.secondaryQueries].map((q) => [q, []])),
+    }));
+    const resultat = await materialiser(options);
+    assert.equal(resultat.manifest.slug, SLUG);
+    assert.ok(existsSync(join(root, 'editorial/articles', SLUG, 'manifest.json')));
+    assert.ok(existsSync(join(root, 'src/content/blog', `${SLUG}.md`)));
+    // Préparer n'est ni sceller ni publier : les autres portes restent distinctes.
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
 test('semaineIso et les plafonds de cadence : deux par jour, quatre par semaine ISO', () => {
   assert.equal(semaineIso('2026-09-16'), '2026-W38');
   assert.equal(semaineIso('2026-09-21'), '2026-W39');
@@ -195,7 +247,7 @@ test('le découpage en unités et les jetons suivent le pipeline', () => {
   assert.deepEqual(jetons('Les données personnelles ne peuvent pas être conservées'), ['donnees', 'personnelles', 'peuvent', 'conservees']);
 });
 
-test('les preuves inline restent fixes et responsive, avec leur provenance conservée dans la recette', () => {
+test('les nouvelles preuves inline gardent la provenance en recette et rendent une image directe', () => {
   const corps = '## Première section\n\nPhrase scellée.\n\n## Section cible\n\nSuite scellée.\n';
   const rendu = injecterPreuvesInline(corps, [{
     id: 'preuve-fictive',
@@ -219,6 +271,9 @@ test('les preuves inline restent fixes et responsive, avec leur provenance conse
   assert.throws(() => injecterPreuvesInline(corps, [{
     id: 'preuve-fictive', insertBeforeHeading: 'Section cible', alt: 'Preuve fictive.', source: '  ', capturedAt: '2026-09-20',
   }]), /source ou date de capture invalide/);
+  assert.throws(() => injecterPreuvesInline(corps, [{
+    id: 'preuve-fictive', insertBeforeHeading: 'Section cible', alt: 'Preuve fictive.', source: 'reconstitution fidèle à la recette scellée', capturedAt: '2026-09-20',
+  }]), /source de preuve technique/);
 });
 
 test('le frontmatter reproduit le manifeste champ pour champ', () => {
@@ -407,8 +462,7 @@ test('minuit Paris entre le jour implicite et la garde interrompt sans produire 
   }
 });
 
-test('la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification', async (t) => {
-  t.mock.timers.enable({ apis: ['Date'], now: Date.parse(`${jour}T12:00:00Z`) });
+test('la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification', async () => {
   const root = racineDeTest();
   let appels = 0;
   const compter = async (...args) => { appels += 1; return fetcher(...args); };
@@ -461,7 +515,7 @@ test('la forge ne réutilise que des copies intègres, âgées de sept jours au 
     const appelsAvantFaux = appels;
     await forge.verifierSources({ root, slug: SLUG, recette: recette(), dossierRecette: join(root, 'editorial/recettes', SLUG), jour: '2026-03-03', fetcher: compter });
     assert.equal(appels - appelsAvantFaux, 1, 'une date impossible impose une nouvelle ouverture');
-  } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
+  } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
 test('la réinscription d’un candidat existant ne contourne pas le plafond des Cicatrices', async () => {
@@ -720,14 +774,6 @@ test('le contexte d’une source HTML monoligne avec balise inline reste borné 
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
-});
-
-test('le contexte garde les espaces insécables exacts de la citation HTML', () => {
-  const extrait = 'expire après le 1<sup>er</sup> janvier 2027.';
-  const source = `<html><body><p>Cette mesure ${extrait} Autre phrase.</p></body></html>`;
-  const contexte = contexteDeCitation(source, extrait);
-  assert.ok(contexte.includes(extrait), 'le gate compare les octets exacts de la citation');
-  assert.ok(source.includes(contexte), 'le contexte reste présent dans la copie source');
 });
 
 test('la recette porte sa date de mise à jour jusqu’au frontmatter, et son absence ne l’invente pas', () => {

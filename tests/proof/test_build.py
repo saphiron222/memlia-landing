@@ -155,6 +155,13 @@ class BuildProof(unittest.TestCase):
                                f'<meta property="og:title" content="{escape(headline, quote=True)}">'
                                f'<script type="application/ld+json">{json.dumps({"@graph": [{"@type": "BlogPosting", "headline": headline}]}, ensure_ascii=False)}</script>')
             self.assertTrue(article_headline_identity(article))
+    def test_requalified_article_static_html_is_indexable(self):
+        # Le candidat livre la correction FE et retire ensemble l'interception
+        # HTTP et l'exclusion du sitemap (test article-maintenance indépendant).
+        # Garder une assertion positive sur le rendu, pas supprimer la recette.
+        doc = Document(DIST / 'blog' / 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html')
+        robots = [m['content'] for m in doc.select('meta') if m.get('name') == 'robots']
+        self.assertEqual(robots, ['index, follow, max-image-preview:large'])
 
     def test_pages_one_h1_french(self):
         pages = sorted(DIST.glob('*.html'))
@@ -548,4 +555,3 @@ class FamillesDesArticles(unittest.TestCase):
             verifies += 1
         # Le compte affiché dit ce que le test a réellement contrôlé : zéro article pipeline n'est pas un succès silencieux.
         print(f'familles vérifiées : {verifies} article(s) pipeline')
-

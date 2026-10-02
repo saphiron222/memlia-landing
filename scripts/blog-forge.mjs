@@ -33,6 +33,7 @@ import { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 export { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 import { reviewBindingErrors, reviewSha256, renderedBodySha256 } from './lib/blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
+import { estReliquatW39, verifierIdentiteW39 } from './lib/blog-w39-framing.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
 
 export const IMAGE_REVIEW_CRITERIA = ['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'];
@@ -498,19 +499,29 @@ export function declarerImage(root, heroId, alt) {
   writeFileSync(path, texte);
 }
 
+function verifierFile(root, slug, date, statut, serie, queue) {
+  const existant = queue.candidates.find((c) => c.slug === slug);
+  const w39 = estReliquatW39(slug);
+  if (w39) verifierIdentiteW39({ slug, serie, date }, existant, date);
+  const actifs = queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)
+    && (c !== existant || (w39 && c.status === 'publie')));
+  if (w39 && existant?.status === 'publie') throw new Error('La Cicatrice W39 est déjà publiée ; aucun nouvel exemplaire ni édition.');
+  if (w39 && date !== aujourdhui()) throw new Error('Le cadrage W39 exige la date réelle Europe/Paris, jamais antidatée.');
+  if (w39 || !existant || existant.date !== date || existant.serie !== (serie ?? undefined)
+    || (['archive', 'bloque'].includes(existant.status) && !['archive', 'bloque'].includes(statut))) {
+    verifierPlafonds(actifs, date, { serie, slug, root });
+  }
+}
+
 function inscrireFile(root, slug, date, statut, serie = null) {
   const path = join(root, 'editorial/queue.json');
   const queue = lireJson(path);
+  verifierFile(root, slug, date, statut, serie, queue);
   const existant = queue.candidates.find((c) => c.slug === slug);
   if (existant) {
-    if (existant.date !== date || existant.serie !== (serie ?? undefined)
-      || (['archive', 'bloque'].includes(existant.status) && !['archive', 'bloque'].includes(statut))) {
-      verifierPlafonds(queue.candidates.filter((c) => c !== existant && !['archive', 'bloque'].includes(c.status)), date, { serie, slug });
-    }
     existant.status = statut; existant.date = date; if (serie) existant.serie = serie; else delete existant.serie;
   }
   else {
-    verifierPlafonds(queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)), date, { serie, slug });
     queue.candidates.push({ slug, date, status: statut, ...(serie ? { serie } : {}) });
   }
   ecrireJson(path, queue);
@@ -554,6 +565,9 @@ export function injecterPreuvesInline(corps, preuves = [], root = process.cwd())
     if (!preuve.source?.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')
       || Number.isNaN(capture.getTime()) || capture.toISOString().slice(0, 10) !== preuve.capturedAt
       || capture.getTime() > Date.now()) throw new Error(`Preuve inline ${preuve.id} : source ou date de capture invalide.`);
+    if (/recette scellée|Ouvrir la preuve en grand/i.test(preuve.source)) {
+      throw new Error(`Preuve inline ${preuve.id} : source de preuve technique impropre à une légende publique ; corriger la recette avant matérialisation.`);
+    }
     if (preuve.sourceUrl && !/^https:\/\//.test(preuve.sourceUrl)) throw new Error(`Preuve inline ${preuve.id} : sourceUrl doit être une URL HTTPS.`);
     const liste = groupes.get(preuve.insertBeforeHeading) ?? [];
     liste.push(preuve);
@@ -612,10 +626,19 @@ export function verifierRegleEcrite(corps, { date }) {
 export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour }) {
   const jourDebut = aujourdhui();
   jour ??= jourDebut;
+  // Le calendrier matérialisé n'est pas une autorité : comparer au plan recalculé
+  // avant toute écriture, y compris pour les appels programmatiques à materialiser.
+  const planificateur = join(root, 'docs/strategy/site-v3/build-cluster-plan.py');
+  if (existsSync(planificateur)) {
+    const controle = spawnSync('python3', [planificateur, '--slot', slug, jourDebut],
+      { cwd: root, encoding: 'utf8', timeout: 30_000 });
+    if (controle.status !== 0) throw new Error(`Créneau éditorial refusé : ${controle.error?.message || controle.stderr?.trim() || controle.stdout?.trim() || 'contrôle indisponible'}`);
+  }
   const refuserChangementDeJour = () => {
     if (aujourdhui() !== jourDebut) throw new Error(`Le jour civil Europe/Paris a changé pendant la matérialisation (${jourDebut} → ${aujourdhui()}) : arrêter, reprendre une nouvelle préparation et obtenir une revue du candidat au jour réel. Ne pas sceller les fichiers partiels.`);
   };
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
+  if (estReliquatW39(slug)) verifierFile(root, slug, recette.date, statut, recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
   const recettePath = join(dossierRecette, 'recette.json');
   let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
   let revuesValides = revueErreurs.length ? null : revues;
@@ -754,6 +777,15 @@ function lancer(root, args) {
 export async function commande(argv, root = process.cwd()) {
   const [action, slug, htmlPath] = argv;
   if (!slug) throw new Error('Usage : blog-forge <preparer|sceller|publier> <slug>');
+  if (action === 'verifier-creneau-w39') {
+    if (argv.length !== 3 || !estReliquatW39(slug) || htmlPath !== aujourdhui()) {
+      throw new Error('Le préflight W39 exige le slug exact et le jour réel Europe/Paris.');
+    }
+    const { recette } = chargerRecette(root, slug);
+    verifierFile(root, slug, recette.date, 'a-valider', recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
+    console.log('cadrage W39 : OK (ni revue ni publication)');
+    return;
+  }
   if (action === 'empreinte') {
     if (!htmlPath) throw new Error('Usage : blog-forge empreinte <slug> <html-rendu>');
     const { corps } = chargerRecette(root, slug);

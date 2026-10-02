@@ -281,6 +281,100 @@ test('la fixture de documentation primaire technique ouvre un claim methode sans
   assert.ok(falsified.errors.some((error) => /contentSha256.*copie locale/.test(error)), falsified.errors.join('\n'));
 });
 
+test('un claim doctest méthodologique reste borné à sa phrase même dans un paragraphe évoquant le pôle social', async () => {
+  const claimText = "Ils confirment seulement les cas qu'ils exercent.";
+  const paragraph = `Des tests verts ne garantissent pas que le collaborateur voit le bon total ni le bon périmètre. ${claimText} Dans une réalisation pour le pôle social, j'ai vu deux défauts échapper aux suites vertes : une référence de coût déplacée, puis un cumul sur plusieurs exercices. Un autre test a rougi à raison. Depuis, je passe par les suites, la chaîne de preuve et l'écran.`;
+  const fixture = await createCompleteDossier(root('doctest-social-context'), {
+    body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', paragraph),
+    manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+      publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+      level: 'tier-2', provenance: 'primary', official: false,
+      classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+    }),
+    claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+    claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+  });
+  const claimsPath = join(fixture.dossier, 'claims.json');
+  const claims = readJson(claimsPath);
+  const claim = claims.claims.find((item) => item.claim === paragraph);
+  claim.claim = claimText;
+  claim.factCheck.sourceResults[0].justification.sharedTerms = keyTermsForTest(claimText).slice(0, 3);
+  writeJson(claimsPath, claims);
+  const reviewPath = join(fixture.dossier, fixture.manifest.businessReview.evidence);
+  const review = readJson(reviewPath);
+  review.claimReviews.find((item) => item.claimId === claim.id).claimSha256 = sha256(claimText);
+  writeJson(reviewPath, review);
+
+  for (const gateMode of ['protected-preview', 'production']) {
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode });
+    assert.deepEqual(result.errors, []);
+    assert.equal(result.pass, true);
+  }
+
+  claim.claim = 'Dans une réalisation pour le pôle social';
+  claim.type = 'methode';
+  writeJson(claimsPath, claims);
+  const relabel = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode: 'protected-preview' });
+  assert.ok(relabel.errors.some((error) => /primaire officielle/.test(error)), relabel.errors.join('\n'));
+});
+
+test('relabel methode ne fait pas accepter doctest sur une obligation sociale, de paie ou réglementaire', async () => {
+  for (const [label, sentence] of [
+    ['social', 'Les cotisations sociales doivent être déclarées par le pôle social.'],
+    ['paie', 'Le bulletin de paie doit comporter le montant net versé au salarié.'],
+    ['reglementaire', 'Le décret impose cette obligation réglementaire.'],
+  ]) {
+    const fixture = await createCompleteDossier(root(`doctest-relabel-${label}`), {
+      body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', sentence),
+      manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+        publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+        level: 'tier-2', provenance: 'primary', official: false,
+        classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+      }),
+      claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+      claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+    });
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode: 'protected-preview' });
+    assert.ok(result.errors.some((error) => /claims\[1\].*primaire officielle/.test(error)), `${label}: ${result.errors.join('\n')}`);
+  }
+});
+
+for (const [label, paragraph, claimText] of [
+  ['paie', 'La remise du bulletin de paie est le geste concerné. Cette remise est obligatoire.', 'Cette remise est obligatoire.'],
+  ['social', 'Les cotisations sociales font l’objet de cette déclaration. Leur déclaration est obligatoire.', 'Leur déclaration est obligatoire.'],
+  ['fiscal', 'La déclaration de TVA est le geste concerné. Cette déclaration est obligatoire.', 'Cette déclaration est obligatoire.'],
+  ['pluriel', 'Les cotisations sociales font l’objet de ces déclarations. Ces déclarations sont obligatoires.', 'Ces déclarations sont obligatoires.'],
+]) {
+  test(`relabel methode conserve le contexte sensible de l’anaphore normative ${label} en preview et production`, async () => {
+    const fixture = await createCompleteDossier(root(`doctest-anaphore-${label}`), {
+      body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', paragraph),
+      manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+        publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+        level: 'tier-2', provenance: 'primary', official: false,
+        classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+      }),
+      claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+      claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+    });
+    const claimsPath = join(fixture.dossier, 'claims.json');
+    const claims = readJson(claimsPath);
+    const claim = claims.claims.find((item) => item.claim === paragraph);
+    claim.claim = claimText;
+    claim.factCheck.sourceResults[0].justification.sharedTerms = keyTermsForTest(claimText).filter((term) => !['cette', 'sont'].includes(term)).slice(0, 3);
+    writeJson(claimsPath, claims);
+    const reviewPath = join(fixture.dossier, fixture.manifest.businessReview.evidence);
+    const review = readJson(reviewPath);
+    review.claimReviews.find((item) => item.claimId === claim.id).claimSha256 = sha256(claimText);
+    writeJson(reviewPath, review);
+
+    for (const gateMode of ['protected-preview', 'production']) {
+      const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode });
+      assert.equal(result.pass, false, `${label}/${gateMode} accepté`);
+      assert.ok(result.errors.some((error) => /claims\[1\].*primaire officielle/.test(error)), `${label}/${gateMode}: ${result.errors.join('\n')}`);
+    }
+  });
+}
+
 test('seule l’URL HTTPS doctest canonique ouvre la classification technique', async () => {
   for (const [label, url] of [
     ['port', 'https://docs.python.org:8443/fr/3/library/doctest.html'],
@@ -468,6 +562,35 @@ test('une assertion juridique fausse reliée à un extrait hors sujet ferme le g
   const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
   assert.equal(result.pass, false);
   assert.ok(result.errors.some((error) => /hors contexte|ne soutient pas|support sémantique/i.test(error)), result.errors.join('\n'));
+});
+
+test('un contexte uniquement dans du code ou un commentaire ferme le gate des claims', async () => {
+  for (const wrap of [
+    (text) => `<html><body><script>${text}</script></body></html>`,
+    (text) => `<!-- ${text} -->`,
+  ]) {
+    const fixture = await createCompleteDossier(root('hidden-source-context'));
+    const before = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.deepEqual(before.errors, []);
+    const state = sourceState(fixture);
+    const updated = replaceSourceSnapshot(fixture, wrap(readFileSync(state.snapshotPath, 'utf8')));
+    const claimsPath = join(fixture.dossier, 'claims.json');
+    const claims = readJson(claimsPath);
+    const reviews = [];
+    for (const claim of claims.claims) {
+      for (const result of claim.factCheck.sourceResults) {
+        if (result.sourceId === 'source-urssaf') {
+          result.citation.sourceContentSha256 = updated.contentSha256;
+          reviews.push(claimReview(fixture, claim, result.sourceId, result.excerpt, updated.contentSha256));
+        }
+      }
+    }
+    writeJson(claimsPath, claims);
+    writeClaimReviews(fixture, reviews);
+    const after = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(after.pass, false);
+    assert.ok(after.errors.some((error) => /\.context est absent, hors de la copie vérifiée/.test(error)), after.errors.join('\n'));
+  }
 });
 
 test('une contradiction à fort recouvrement lexical ferme le gate malgré des attestations de support forcées', async () => {

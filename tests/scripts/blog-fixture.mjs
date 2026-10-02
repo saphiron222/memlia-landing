@@ -2,10 +2,11 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
-import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS } from '../../scripts/lib/blog-pipeline.mjs';
+import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
 import { retirerPreuvesInline } from '../../scripts/lib/blog-proof-figures.mjs';
 
-const parisToday = () => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+// Le gate compare la fraîcheur au jour de Paris, y compris pendant le décalage UTC à minuit.
+const fixtureToday = () => jourRecuperationParis(new Date().toISOString());
 const sha256 = (content) => createHash('sha256').update(content).digest('hex');
 const writeJson = (path, value) => writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
 const FIXTURE_STOP_WORDS = new Set(['alors', 'avec', 'avoir', 'cette', 'comme', 'dans', 'depuis', 'elle', 'elles', 'entre', 'etre', 'faire', 'leurs', 'mais', 'meme', 'pour', 'sans', 'selon', 'sont', 'sous', 'toute', 'toutes', 'toujours', 'tout', 'tous', 'une', 'vers', 'votre']);
@@ -51,7 +52,7 @@ const informativeImage = (width, height) => Buffer.from(`<svg xmlns="http://www.
   <path d="M ${width * 0.46} ${height * 0.5} l ${width * 0.025} ${height * 0.04} l ${width * 0.07} ${-height * 0.09}" fill="none" stroke="#fffefb" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`);
 
-export function candidateManifest(slug = 'article-de-test', heroId = `img-${slug}`, fixtureDate = parisToday()) {
+export function candidateManifest(slug = 'article-de-test', heroId = `img-${slug}`, fixtureDate = fixtureToday()) {
   return {
     version: 1,
     slug,
@@ -199,8 +200,9 @@ ${body}
 }
 
 export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {}, claimSourceForUnit = (manifest) => manifest.sources[0], claimTypeForUnit = () => 'paie' } = {}) {
-  // Un seul jour civil Paris pour toutes les preuves corrélées, échantillonné à la création.
-  const fixtureDate = parisToday();
+  // Un seul jour Paris pour les preuves corrélées, prélevé à la création (pas à l'import).
+  const fixtureInstant = new Date().toISOString();
+  const fixtureDate = jourRecuperationParis(fixtureInstant);
   const subjectArtifact = ({ slug: candidateSlug, kind, articleHash, manifestHash, extra = {} }) => ({
     version: 1,
     candidateSlug,
@@ -318,7 +320,7 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
       finalUrl: source.url,
       httpStatus: 200,
       checkedAt: source.checkedAt,
-      retrievedAt: new Date().toISOString(),
+      retrievedAt: fixtureInstant,
       contentPath: `preuves/sources/${source.id}.txt`,
       contentSha256,
       excerpt,

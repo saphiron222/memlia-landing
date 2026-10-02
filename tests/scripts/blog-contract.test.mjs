@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { auditerContratBlog } from '../../scripts/verify-blog-contract.mjs';
@@ -17,16 +18,7 @@ function sourceArticle({ rubrique = true, brouillon = false } = {}) {
 }
 
 function preuve(numero) {
-  return `<figure data-blog-proof="preuve-${numero}"><img src="/proofs/blog/preuve-${numero}.webp" alt="Preuve ${numero}"></figure>`;
-}
-
-function recettePreuves(root, slug) {
-  mkdirSync(join(root, 'editorial/recettes', slug), { recursive: true });
-  writeFileSync(join(root, 'editorial/recettes', slug, 'recette.json'), JSON.stringify({
-    inlineProofs: [1, 2].map((numero) => ({
-      id: `preuve-${numero}`, alt: `Preuve ${numero}`, source: 'jeu fictif', capturedAt: '2026-09-20',
-    })),
-  }));
+  return `<figure data-blog-proof><img src="/preuves/${numero}.webp" alt="Preuve ${numero}"></figure>`;
 }
 
 function pageArticle({
@@ -38,7 +30,7 @@ function pageArticle({
   title = TITRE_ONGLET,
   lienRubrique = true,
   legendeTechnique = false,
-  legendePreuve = null,
+  legendePreuve = 'Source : jeu d’essai fictif · capture du 2026-09-20',
 } = {}) {
   const sections = Array.from({ length: 6 }, (_, index) => `<h2 id="section-${index + 1}">Section ${index + 1}</h2><p>Contenu.</p>`).join('');
   const liens = Array.from({ length: 6 }, (_, index) => `<li><a href="#section-${index + 1}">Section ${index + 1}</a></li>`).join('');
@@ -52,7 +44,6 @@ function fixture(options = {}) {
   mkdirSync(join(root, 'dist/blog'), { recursive: true });
   writeFileSync(join(root, 'src/content/blog', `${SLUG}.md`), sourceArticle(options));
   writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), pageArticle(options));
-  recettePreuves(root, SLUG);
   writeFileSync(join(root, 'dist/blog/paie-dsn.html'), `<h1>Paie / DSN</h1><a href="/blog/${SLUG}">Lire</a>`);
   return root;
 }
@@ -60,6 +51,30 @@ function fixture(options = {}) {
 function auditer(root) {
   return auditerContratBlog({ root, dist: join(root, 'dist'), mesure: MESURE });
 }
+
+test('clause 1 — portrait direct lié à la recette, sans invalider le paysage déjà publié', () => {
+  const root = fixture({ preuves: 1, legendePreuve: null });
+  try {
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    mkdirSync(join(root, 'public/proofs/blog'), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({ inlineProofs: [{
+      id: 'preuve-1', alt: 'Preuve 1', source: 'Jeu fictif', capturedAt: '2026-09-20',
+    }] }));
+    const page = pageArticle({ preuves: 1, legendePreuve: null }).replace(
+      '<figure data-blog-proof><img src="/preuves/1.webp"',
+      '<figure data-blog-proof="preuve-1"><img src="/proofs/blog/preuve-1-mobile.webp"',
+    );
+    const path = join(root, 'dist/blog', `${SLUG}.html`);
+    writeFileSync(path, page);
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'portrait absent refusé');
+    writeFileSync(join(root, 'public/proofs/blog/preuve-1-mobile.webp'), 'actif de fixture');
+    assert.deepEqual(auditer(root).erreurs, []);
+    writeFileSync(path, page.replace('preuve-1-mobile.webp', 'preuve-1.webp'));
+    assert.deepEqual(auditer(root).erreurs, [], 'le contrat historique continue de lire le paysage');
+    writeFileSync(path, page.replace('alt="Preuve 1"', 'alt="Preuve 1" srcset="/autre.webp 1600w"'));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'sélection alternative non liée refusée');
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 
 function temoinClause(clause, options) {
   const root = fixture(options);
@@ -79,7 +94,6 @@ test('le contrat vert contrôle chaque article de la collection sans slug codé 
     const second = 'deuxieme-article-test';
     writeFileSync(join(root, 'src/content/blog', `${second}.md`), sourceArticle());
     writeFileSync(join(root, 'dist/blog', `${second}.html`), pageArticle());
-    recettePreuves(root, second);
     writeFileSync(join(root, 'dist/blog/paie-dsn.html'), `<h1>Paie / DSN</h1><a href="/blog/${SLUG}">Lire</a><a href="/blog/${second}">Lire</a>`);
     assert.deepEqual(auditer(root), { pass: true, articles: 2, exemptions: [], erreurs: [] });
   } finally {
@@ -92,10 +106,9 @@ test('le build public ignore seulement les brouillons absents ; leur preview res
   const draft = 'brouillon-test';
   try {
     writeFileSync(join(root, 'src/content/blog', `${draft}.md`), sourceArticle({ brouillon: true }));
-    recettePreuves(root, draft);
     assert.deepEqual(auditer(root), { pass: true, articles: 1, exemptions: [], erreurs: [] });
     assert.match(auditerContratBlog({ root, dist: join(root, 'dist'), mesure: MESURE, slugs: [draft] }).erreurs.join('\n'), /page construite absente/);
-    writeFileSync(join(root, 'dist/blog', `${draft}.html`), pageArticle({ preuves: 1 }));
+    writeFileSync(join(root, 'dist/blog', `${draft}.html`), pageArticle({ legendeTechnique: true }));
     assert.match(auditer(root).erreurs.join('\n'), /brouillon-test : clause 1/);
     writeFileSync(join(root, 'dist/blog', `${draft}.html`), pageArticle());
     writeFileSync(join(root, 'dist/blog/paie-dsn.html'), `<a href="/blog/${SLUG}">Lire</a><a href="/blog/${draft}">Lire</a>`);
@@ -118,23 +131,80 @@ test('un slug explicitement demandé mais absent des sources échoue au lieu de 
   }
 });
 
-test('clause 1 — deux images de preuve avec alternative accessible en plus de la couverture', () => {
-  temoinClause(1, { preuves: 1 });
+test('clause 1 — le nombre seul ne refuse pas, chaque figure et preuve déclarée reste contrôlée', () => {
+  const root = fixture();
+  const page = join(root, 'dist/blog', `${SLUG}.html`);
+  try {
+    for (const preuves of [0, 1, 2, 3]) {
+      writeFileSync(page, pageArticle({ preuves }));
+      assert.deepEqual(auditer(root).erreurs, [], `quota seul : ${preuves}`);
+    }
+    writeFileSync(page, pageArticle({ preuves: 0 }).replace(/<div class="article-corps">[\s\S]*?<\/div>/, ''));
+    assert.match(auditer(root).erreurs.join('\n'), /corps.*absent/);
+    for (const mutation of [
+      pageArticle().replace('alt="Preuve 1"', 'alt=""'),
+      pageArticle().replace('<img src="/preuves/1.webp" alt="Preuve 1">', ''),
+    ]) {
+      writeFileSync(page, mutation);
+      assert.match(auditer(root).erreurs.join('\n'), /clause 1.*alternative accessible/);
+    }
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({
+      inlineProofs: [{ id: 'requise', alt: 'Preuve requise', source: 'jeu fictif', capturedAt: '2026-09-20' }],
+    }));
+    writeFileSync(page, pageArticle({ preuves: 0 }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1.*preuve déclarée.*requise.*absente/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('clause 1 — zéro figure ne permet pas un corps rendu vide et n’impose aucune longueur', () => {
+  const root = fixture({ preuves: 0 });
+  const page = join(root, 'dist/blog', `${SLUG}.html`);
+  const remplacerCorps = (contenu) => pageArticle({ preuves: 0 })
+    .replace(/<div class="article-corps">[\s\S]*?<\/div>/, `<div class="article-corps">${contenu}</div>`);
+  try {
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({ inlineProofs: [] }));
+    for (const contenu of [
+      '', ' \n\t ', '<!-- contenu perdu -->', '<p> &nbsp; </p><!-- contenu perdu -->',
+      '<style>.article-corps p { color: black; }</style>',
+      '<script type="application/json">{"status":"ready"}</script>',
+      '<p hidden>Méthode perdue au rendu</p>',
+      '<section hidden="false"><p>Méthode perdue au rendu</p></section>',
+      '<noscript>Méthode non rendue avec JavaScript actif</noscript>',
+    ]) {
+      writeFileSync(page, remplacerCorps(contenu));
+      const resultat = auditer(root);
+      assert.equal(resultat.pass, false, `corps sans contenu : ${JSON.stringify(contenu)}`);
+      assert.match(resultat.erreurs.join('\n'), /clause 1.*corps.*vide/);
+    }
+    writeFileSync(page, remplacerCorps('<p>X</p><style>p { color: black; }</style><script type="application/json">{}</script><p hidden>Texte masqué</p>'));
+    assert.deepEqual(auditer(root).erreurs, [], 'aucun seuil de longueur ni quota de figures');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('clause 1 — une légende technique publique fait échouer le contrat', () => {
   temoinClause(1, { legendeTechnique: true });
 });
 
-test('clause 1 — aucune légende technique de provenance n’est exposée au lecteur', () => {
-  const root = fixture();
+test('clause 1 — la source et la date informatives sont permises, pas une attestation ou consigne', () => {
+  const valide = 'Source : jeu d’essai fictif · capture du 2026-09-20';
+  const root = fixture({ legendePreuve: valide });
   try {
     assert.deepEqual(auditer(root).erreurs, []);
     for (const mutation of [
-      'Source : jeu d’essai fictif · capture du 2026-09-20',
+      'Source : jeu d’essai fictif',
+      'Capture du 2026-09-20',
       'Source : recette scellée · capture du 2026-09-20',
       'Source : reconstitution fidèle de la recette scellée · capture du 2026-09-20',
-      'Ouvrir la preuve en grand. Source : jeu d’essai fictif · capture du 2026-09-20',
+      'Ouvrir la preuve en grand. ' + valide,
+      'Source : jeu d’essai fictif · capture du 2026-13-90',
+      'Source : jeu d’essai fictif · capture du 2099-01-01',
+      'Source :   · capture du 2026-09-20',
     ]) {
       writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), pageArticle({ legendePreuve: mutation }));
       assert.match(auditer(root).erreurs.join('\n'), /clause 1/, mutation);
@@ -144,14 +214,32 @@ test('clause 1 — aucune légende technique de provenance n’est exposée au l
   }
 });
 
-test('clause 1 — un panneau défilant ou une image non directe est refusé', () => {
-  const root = fixture();
+test('clause 1 — nouvelles figures sans légende refusées, ancien dossier épinglé conservé', () => {
+  const root = fixture({ brouillon: true, legendePreuve: null });
   try {
-    const defilant = pageArticle().replace(
-      '<img src="/proofs/blog/preuve-1.webp" alt="Preuve 1">',
-      '<div class="preuve-defilante" role="region"><img src="/proofs/blog/preuve-1.webp" alt="Preuve 1"></div>',
-    );
-    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), defilant);
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+    writeFileSync(join(root, 'src/content/blog', `${SLUG}.md`), sourceArticle());
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+    const recette = '{"historique":true}', revue = 'revue historique';
+    const hash = (value) => createHash('sha256').update(value).digest('hex');
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), recette);
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), revue);
+    mkdirSync(join(root, 'editorial'), { recursive: true });
+    writeFileSync(join(root, 'editorial/legacy-review-baseline.json'), JSON.stringify({ articles: {
+      [SLUG]: { recipeSha256: hash(recette), reviewSha256: hash(revue) },
+    } }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'baseline seule insuffisante');
+    mkdirSync(join(root, 'editorial/articles', SLUG, 'preuves'), { recursive: true });
+    const source = sourceArticle();
+    writeFileSync(join(root, 'editorial/articles', SLUG, 'preuves/publication.json'), JSON.stringify({
+      kind: 'publication-scellee', candidateSlug: SLUG, articleSha256: hash(source),
+    }));
+    assert.deepEqual(auditer(root).erreurs, []);
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), 'recette republiée');
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), recette);
+    writeFileSync(join(root, 'src/content/blog', `${SLUG}.md`), `${source}\nNouvelle version`);
     assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -167,8 +255,11 @@ test('clause 1 — image directe sans légende exige provenance liée à la rece
       id: `preuve-${numero}`, alt: `Preuve ${numero}`,
       source: 'jeu fictif', capturedAt: '2026-09-20',
     }));
-    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), pageArticle({ legendePreuve: null }));
-    rmSync(recipePath);
+    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), pageArticle({ legendePreuve: null })
+      .replace('data-blog-proof>', 'data-blog-proof="preuve-1">')
+      .replace('data-blog-proof>', 'data-blog-proof="preuve-2">')
+      .replace('/preuves/1.webp', '/proofs/blog/preuve-1.webp')
+      .replace('/preuves/2.webp', '/proofs/blog/preuve-2.webp'));
     assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'aucune provenance : refus');
     writeFileSync(recipePath, JSON.stringify({ inlineProofs: preuves }));
     assert.deepEqual(auditer(root).erreurs, []);
@@ -177,7 +268,11 @@ test('clause 1 — image directe sans légende exige provenance liée à la rece
     writeFileSync(recipePath, JSON.stringify({ inlineProofs: [{ ...preuves[0], alt: 'autre preuve' }, preuves[1]] }));
     assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'alt divergent : refus');
     writeFileSync(recipePath, JSON.stringify({ inlineProofs: preuves }));
-    const page = pageArticle({ legendePreuve: null });
+    const page = pageArticle({ legendePreuve: null })
+      .replace('data-blog-proof>', 'data-blog-proof="preuve-1">')
+      .replace('data-blog-proof>', 'data-blog-proof="preuve-2">')
+      .replace('/preuves/1.webp', '/proofs/blog/preuve-1.webp')
+      .replace('/preuves/2.webp', '/proofs/blog/preuve-2.webp');
     writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), page.replace(
       '<img src="/proofs/blog/preuve-1.webp"',
       '<div class="preuve-defilante"><img src="/proofs/blog/preuve-1.webp"',
@@ -200,12 +295,12 @@ test('clause 1 — deux figures avec le même identifiant ne comptent pas comme 
     }));
     const figure = '<figure data-blog-proof="preuve-1"><img src="/proofs/blog/preuve-1.webp" alt="Preuve 1"></figure>';
     const page = pageArticle({ legendePreuve: null })
-      .replace(preuve(1), figure)
-      .replace(preuve(2), figure);
+      .replace('<figure data-blog-proof><img src="/preuves/1.webp" alt="Preuve 1"></figure>', figure)
+      .replace('<figure data-blog-proof><img src="/preuves/2.webp" alt="Preuve 2"></figure>', figure);
     writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), page);
     const erreurs = auditer(root).erreurs.join('\n');
     assert.match(erreurs, /clause 1, identifiant data-blog-proof répété entre figures/);
-    assert.match(erreurs, /1 avec alternative accessible ; 2 requises/, 'une seule preuve distincte');
+    assert.doesNotMatch(erreurs, /2 requises/, 'le doublon est critique, pas le quota');
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
