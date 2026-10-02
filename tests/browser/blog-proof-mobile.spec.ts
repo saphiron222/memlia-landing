@@ -51,8 +51,8 @@ for (const width of [320, 375, 1440]) {
         expect(measured.width, slug).toBeLessThanOrEqual(measured.figureWidth);
         expect(measured.height, slug).toBeGreaterThan(width < 600 ? 400 : 800);
         expect(measured.legacy, slug).toBe(false);
-        // Deux anciens articles débordent déjà à 320 px dans leur CTA, hors figures.
-        if (width > 320) expect(measured.horizontalOverflow, slug).toBe(false);
+        // Le CTA et les figures doivent maintenant tenir aussi sur téléphone étroit.
+        expect(measured.horizontalOverflow, slug).toBe(false);
         const navBottom = await page.locator('header').first().evaluate(el => el.getBoundingClientRect().bottom);
         await figure.evaluate((el, clearance) => window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top - clearance, behavior: 'instant' }), navBottom + 24);
         await image.evaluate((img: HTMLImageElement) => img.decode());

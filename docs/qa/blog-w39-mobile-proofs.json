@@ -1,13 +1,13 @@
 {
-  "capturedAt": "2026-09-30",
+  "capturedAt": "2026-10-02T07:23:08.348Z",
   "sources": [
     {
       "path": "docs/design/blog-w39-mobile-proofs/index.html",
-      "sha256": "1306107f687d4f1a383e10ba393f99bee997b979ab908355decfc7ecb50b8d1b"
+      "sha256": "fb4f1ebdb3035d8f75e1d8b11fe76228a0898ac3527081dcdfc9c701637a78de"
     },
     {
       "path": "scripts/render-blog-w39-mobile-proofs.mjs",
-      "sha256": "d13c4104e4c19bfcfcc7ac0b4209f64c20bcc174797fb731e6853948b1bf6514"
+      "sha256": "a6c3a4c340d3129edaa0051a030a65c3a09c242f9b2711b2388f3825e9241838"
     },
     {
       "path": "public/proofs/blog/w39-prompt-brouillon.webp",
@@ -24,6 +24,14 @@
     {
       "path": "public/proofs/blog/w39-logiciel-exceptions.webp",
       "sha256": "4f7ff61867e012c266cda1d08608955a054c762333f8a610749672a7295014c6"
+    },
+    {
+      "path": "public/proofs/blog/w39-trois-passes.webp",
+      "sha256": "3d619ad6a4f7c5da4fa6bbf546dd9fbb96d3643dc5a37144e58856b718c14d68"
+    },
+    {
+      "path": "public/proofs/blog/w39-reference-decalee.webp",
+      "sha256": "8ba4a5c9c98948d1e7327183d030b34f554c4cb284272c75bd0f8d0ba7f7271a"
     }
   ],
   "entries": [
@@ -54,6 +62,20 @@
       "sha256": "bd6687ae8566a071877f55506da40613ed50666c35da436170240a8552a32e48",
       "bytes": 117938,
       "text": "Trois cas de contrôle Règle éditoriale rejouée · aucune écriture enregistrée Normal Entrée D-001 · avril Résultat Proposition · contrôles requis Décision À valider Écriture Aucune Doublon Entrée Empreinte déjà vue Résultat Exception · doublon probable Décision Revoir Écriture Aucune Période Entrée mars pour avril Résultat Exception · période ambiguë Décision Revoir Écriture Aucune Source Jeu entièrement fictif Portée Aucun éditeur testé Choix À éprouver en démonstration"
+    },
+    {
+      "id": "w39-trois-passes",
+      "target": "public/proofs/blog/w39-trois-passes-mobile.webp",
+      "sha256": "71e301d365058d3f0060616c064600a9c6f7cd5aaf1181c489ad6991bd5824e2",
+      "bytes": 116390,
+      "text": "Vérifier une sortie Reconstitution fictive · pas une capture produit Trois instruments, trois objets Un vert ne couvre que ce qu’il mesure. 1 Suites Le test des bornes après Z rougit : le contrôle lisait une seule lettre. Corriger le test et le rejouer 2 Chaîne de preuve Après insertion d’une colonne, rapprocher les références des cellules sources. Un décalage est visible dans la sortie 3 Écran Le montant affiché doit porter l’exercice choisi, et non le cumul de deux années. Rejouer le geste utilisateur"
+    },
+    {
+      "id": "w39-reference-decalee",
+      "target": "public/proofs/blog/w39-reference-decalee-mobile.webp",
+      "sha256": "19a0695b51f1bcf9bd50eb84dd9b2e5298f4e18ffce111363804aaf989327514",
+      "bytes": 111638,
+      "text": "Chaîne de preuve Illustration fictive · aucun classeur client Contrôle Coût source Avant insertion Colonne Z Après insertion Colonne AA Décision Suivre le déplacement Contrôle Référence conservée Avant insertion Colonne Z Après insertion Colonne Z Décision Refuser le total Contrôle Test des bornes Avant insertion Z = 26 Après insertion AB = 28 Décision Comparer les indices Chaîne : attendu 55 · lu 50 Écran : période N 12 · total 20 Portée : jeu fictif, pas produit"
     }
   ]
 }
