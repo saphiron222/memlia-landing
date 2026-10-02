@@ -147,3 +147,29 @@ Le plan W39 garde les créneaux des 22, 24 et 26 septembre et affiche la date r�
 ## Garde-fou pSEO
 
 Aucune page programmatique n’est générée par ce pipeline. Une extension future exige avant code : dataset fiable, intention distincte par page, valeur unique, contrôle du contenu mince et lancement par lots soumis à validation humaine.
+
+## Recette mobile Cicatrice — correction technique du 02/10/2026
+
+Le rendu joint de la préparation a trouvé deux vrais défauts, indépendants
+des previews Cloudflare : les paysages `w39-trois-passes` et
+`w39-reference-decalee` étaient trop petits sur téléphone, et le lien
+« Voir le service d’automatisation et sa recette » dépassait à 320 px.
+
+Les deux cadres HTML portrait conservent les données fictives des paysages,
+avec du texte de 18 px minimum à 360 px. Le renderer existant produit désormais
+les six portraits W39 et scelle leurs sources, actifs, texte et date réelle de
+capture. Les quatre portraits antérieurs restent octet-identiques. Ce sont
+des illustrations, pas des captures d’un produit ou des résultats client.
+La forge sélectionne automatiquement le portrait lorsqu’il existe ; aucun
+nouveau défilement, figcaption public ou fournisseur de génération n’est ajouté.
+
+Le CTA utilise une colonne réductible et des boutons à hauteur adaptative :
+le texte reste entier et se replie, sans crop, police réduite ou overflow caché.
+`tests/browser/blog-cicatrice-mobile.spec.ts` exerce le vrai layout/forge/actifs
+avec deux figures fictives et le libellé exact, à 320/375/1440 px. Sa fixture
+ne remplace pas la recette du récit signé et du pilier réunis. Le témoin des
+cinq articles vérifie maintenant aussi l’absence de débordement à 320 px.
+
+Le récit signé, les candidats, leurs revues et la preuve de production restent
+sur leurs voies existantes. Cette livraison technique ne publie pas la Cicatrice,
+n’ajoute aucun consentement et ne qualifie pas un déploiement Cloudflare.

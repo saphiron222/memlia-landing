@@ -8,7 +8,7 @@ const proof = (id) => ({ id, insertBeforeHeading: 'Suite', alt: 'Preuve fictive'
 
 // A fluid desktop canvas alone shrinks 12px labels to roughly 3px on a phone.
 test('inline proofs offer a portrait mobile asset without a scrolling wrapper', () => {
-  for (const id of ['saisie-six-controles', 'saisie-file-anomalies', 'carte-douze-poles', 'carte-test-regle', 'competences-frontiere', 'competences-refus', 'w39-prompt-brouillon', 'w39-prompt-arret', 'w39-logiciel-parcours', 'w39-logiciel-exceptions']) {
+  for (const id of ['saisie-six-controles', 'saisie-file-anomalies', 'carte-douze-poles', 'carte-test-regle', 'competences-frontiere', 'competences-refus', 'w39-prompt-brouillon', 'w39-prompt-arret', 'w39-logiciel-parcours', 'w39-logiciel-exceptions', 'w39-trois-passes', 'w39-reference-decalee']) {
     assert.ok(existsSync(`${root}/public/proofs/blog/${id}-mobile.webp`), `Portrait manquant : ${id}`);
     const rendered = injecterPreuvesInline('Intro\n\n## Suite\n', [proof(id)], root);
     assert.match(rendered, new RegExp(`<img src="/proofs/blog/${id}-mobile\\.webp"`));
