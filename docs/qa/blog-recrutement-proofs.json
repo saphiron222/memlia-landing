@@ -8,7 +8,7 @@
     },
     {
       "path": "docs/design/blog-recrutement-proofs/styles.css",
-      "sha256": "a157dfb9bc7a1df51842e5eb0345de80eb56a533e0bdd8694b4ba720a0cebd72"
+      "sha256": "7982e7af4cd102c4789acf6a68bd4d385284a8d597d80bc2d3e25a15adb5b1aa"
     },
     {
       "path": "docs/design/blog-recrutement-proofs/content-contract.json",
@@ -28,7 +28,7 @@
     },
     {
       "path": "scripts/render-blog-recrutement-proofs.mjs",
-      "sha256": "4e68612eab882ae5797966a48c5f1b9624e9559e314894d6f2cf00a6c6d95641"
+      "sha256": "5e995b2e6391ea3c759e9cca15b19edb7cd832193e0882914d7dffcefdf84bf7"
     }
   ],
   "entries": [
@@ -59,6 +59,20 @@
       "target": "public/proofs/blog/competences-refus.webp",
       "bytes": 36748,
       "sha256": "d77cdf5958394093ab74eb44348654f3147a1e22eb8ccfa265f9326488e0911e"
+    },
+    {
+      "id": "competences-frontiere-mobile",
+      "source": "docs/design/blog-recrutement-proofs/index.html#competences-frontiere",
+      "target": "public/proofs/blog/competences-frontiere-mobile.webp",
+      "bytes": 80706,
+      "sha256": "2f01531f82ef860dd07e6749bc56aedfd0cdd9cc5e9849d962baaa990d1606cd"
+    },
+    {
+      "id": "competences-refus-mobile",
+      "source": "docs/design/blog-recrutement-proofs/index.html#competences-refus",
+      "target": "public/proofs/blog/competences-refus-mobile.webp",
+      "bytes": 75596,
+      "sha256": "833bf0e3ab15dbb717c44f413c46f333d3b95ddb5da205ffb2a0407f355465ba"
     }
   ]
 }

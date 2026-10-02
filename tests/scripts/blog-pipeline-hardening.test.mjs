@@ -564,6 +564,35 @@ test('une assertion juridique fausse reliée à un extrait hors sujet ferme le g
   assert.ok(result.errors.some((error) => /hors contexte|ne soutient pas|support sémantique/i.test(error)), result.errors.join('\n'));
 });
 
+test('un contexte uniquement dans du code ou un commentaire ferme le gate des claims', async () => {
+  for (const wrap of [
+    (text) => `<html><body><script>${text}</script></body></html>`,
+    (text) => `<!-- ${text} -->`,
+  ]) {
+    const fixture = await createCompleteDossier(root('hidden-source-context'));
+    const before = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.deepEqual(before.errors, []);
+    const state = sourceState(fixture);
+    const updated = replaceSourceSnapshot(fixture, wrap(readFileSync(state.snapshotPath, 'utf8')));
+    const claimsPath = join(fixture.dossier, 'claims.json');
+    const claims = readJson(claimsPath);
+    const reviews = [];
+    for (const claim of claims.claims) {
+      for (const result of claim.factCheck.sourceResults) {
+        if (result.sourceId === 'source-urssaf') {
+          result.citation.sourceContentSha256 = updated.contentSha256;
+          reviews.push(claimReview(fixture, claim, result.sourceId, result.excerpt, updated.contentSha256));
+        }
+      }
+    }
+    writeJson(claimsPath, claims);
+    writeClaimReviews(fixture, reviews);
+    const after = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(after.pass, false);
+    assert.ok(after.errors.some((error) => /\.context est absent, hors de la copie vérifiée/.test(error)), after.errors.join('\n'));
+  }
+});
+
 test('une contradiction à fort recouvrement lexical ferme le gate malgré des attestations de support forcées', async () => {
   const witness = 'Le Code du travail autorise toujours ce traitement sans consultation du comité social et économique.';
   const contradiction = 'Le Code du travail n’autorise jamais ce traitement sans consultation du comité social et économique.';

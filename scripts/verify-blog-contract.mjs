@@ -40,9 +40,14 @@ function preuveDirecteSourcee(root, slug, figure) {
     const preuves = recette.inlineProofs ?? [];
     const preuve = preuves.find((item) => item.id === id);
     const date = new Date(`${preuve?.capturedAt}T00:00:00Z`);
+    const mobile = `/proofs/blog/${id}-mobile.webp`;
+    const portrait = existsSync(join(root, 'public', mobile));
     return preuves.filter((item) => item.id === id).length === 1
       && preuve.alt === attribut(image, 'alt') && Boolean(preuve.alt?.trim())
-      && attribut(image, 'src') === `/proofs/blog/${id}.webp`
+      && (attribut(image, 'src') === `/proofs/blog/${id}.webp`
+        || (portrait && attribut(image, 'src') === mobile))
+      && attribut(image, 'srcset') === null
+      && attribut(image, 'sizes') === null
       && Boolean(preuve.source?.trim())
       && /^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')
       && !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === preuve.capturedAt
