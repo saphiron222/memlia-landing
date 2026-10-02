@@ -85,3 +85,36 @@ test('une date historique modifiée ou une base Git absente ne crée pas une aut
     assert.match(missing.stderr, /base.*origin\/main/i);
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
+
+test('un checkout CI partiel refuse la base manquante ; récupérer son historique conserve le candidat exact', () => {
+  const { root, blog, base } = fixture();
+  const cloneParent = mkdtempSync(join(tmpdir(), 'memlia-publication-checkout-'));
+  const clone = join(cloneParent, 'candidate');
+  try {
+    const candidate = article('2026-09-21', true, 'Titre candidat non revu');
+    writeFileSync(join(blog, 'pilier.md'), candidate);
+    git(root, 'add', '--', 'src');
+    git(root, 'commit', '-m', 'Candidat CI non publié');
+    const head = git(root, 'rev-parse', 'HEAD');
+    git(cloneParent, 'clone', '--depth=1', '--single-branch', '--branch=fixture-candidate',
+      `file://${root}`, clone);
+    assert.equal(git(clone, 'rev-parse', 'HEAD'), head);
+    const shallow = state(clone);
+    assert.notEqual(shallow.status, 0);
+    assert.match(shallow.stderr, /base.*origin\/main/i);
+
+    // Full history and branch refs, as required by checkout fetch-depth: 0.
+    git(clone, 'fetch', '--unshallow', 'origin', '+refs/heads/*:refs/remotes/origin/*');
+    const complete = state(clone);
+    assert.equal(complete.status, 0, complete.stderr);
+    assert.deepEqual(Object.keys(JSON.parse(complete.stdout)), ['pilier']);
+    assert.equal(JSON.parse(complete.stdout).pilier.titre, 'Titre intégré');
+    assert.equal(JSON.parse(complete.stdout).pilier.date, '2026-09-21');
+    assert.equal(git(clone, 'rev-parse', 'HEAD'), head);
+    assert.equal(git(clone, 'rev-parse', 'refs/remotes/origin/main'), base);
+    assert.equal(readFileSync(join(clone, 'src/content/blog/pilier.md'), 'utf8'), candidate);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+    rmSync(cloneParent, { recursive: true, force: true });
+  }
+});

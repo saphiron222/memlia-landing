@@ -24,6 +24,10 @@ change pendant la lecture arrêtent ce contrôle. Un nouveau brouillon ou un com
 de branche seul ne créent pas de publication antérieure. Le préflight doit toujours
 avoir vérifié `main` frais ; cette lecture Git n'est pas une preuve HTTP. Le build
 public final, les revues liées aux octets et les autres portes restent inchangés.
+La CI sélectionne explicitement le SHA de tête de la PR (pas son merge synthétique)
+et récupère l'historique Git complet
+(`fetch-depth: 0`) pour fournir cette base intégrée, y compris sur une PR. Une
+copie de test privée de `origin/main` reste un refus explicite, pas un repli silencieux.
 L'édition du calendrier doit toujours être fraîche et intégralement conforme aux sources ;
 la trace historique du 26/09 n'est ni déplacée ni transformée en `planned` du jour réel.
 Les autres slugs conservent le contrôle ordinaire `planned` au jour courant. Aucun drapeau

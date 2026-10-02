@@ -23,6 +23,11 @@ jobs:
     steps:
       - name: Check out the exact candidate
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          # The planner reads the integrated publication base, never a draft
+          # feature commit. A shallow PR checkout omits origin/main.
+          fetch-depth: 0
 
       - name: Use Node.js 22
         uses: actions/setup-node@v4
