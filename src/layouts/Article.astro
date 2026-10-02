@@ -287,7 +287,7 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
   .article-sources ol { padding-left: 1.3em; list-style: decimal; font-size: var(--t-sm); color: var(--texte-2); display: grid; gap: 6px; }
   .article-sources a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
   .article-pont {
-    display: grid; gap: 12px; justify-items: start; margin-top: 48px; padding: 32px 24px;
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; justify-items: start; margin-top: 48px; padding: 32px 24px;
     border: 1px solid var(--ligne); border-radius: var(--r-carte); background: rgba(255, 254, 251, 0.92); box-shadow: var(--ombre-xs);
   }
   .article-pont h2 { font-size: var(--t-3xl); max-width: 24ch; }
@@ -295,7 +295,12 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
   /* Le lien vers la méthode était une ligne nue en fin de page, sans style ni marge, là où
      l'attention est la plus faible. Il devient l'action secondaire du bloc d'appel, au moment
      où la décision se pose, sur le motif déjà employé par la sortie de la page blog. */
-  .article-pont-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 4px; }
+  .article-pont-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 4px; min-width: 0; max-width: 100%; }
+  /* Les libellés restent entiers : retour à la ligne, pas de crop ni de police réduite. */
+  .article-pont-actions :global(.btn) {
+    max-width: 100%; min-width: 0; white-space: normal; height: auto; min-height: var(--bouton-h);
+    padding-top: 8px; padding-bottom: 8px; line-height: 1.3; text-align: center; overflow-wrap: anywhere;
+  }
   .article-auteur { display: flex; gap: 16px; align-items: flex-start; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--ligne-douce); }
   .auteur-initiale {
     display: grid; place-items: center; flex: 0 0 auto; width: 48px; height: 48px; border-radius: 12px;

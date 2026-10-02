@@ -11,6 +11,10 @@ export default defineConfig({
   use: { baseURL, channel: 'chromium', screenshot: 'only-on-failure' },
   webServer: remoteUrl ? undefined : {
     command: `npm run build:site && npm run preview -- --host 127.0.0.1 --port ${localPort}`,
+    // Astro 7 otherwise auto-detaches in an agent environment. This is its
+    // child-server marker: keep the exact process owned by Playwright alive.
+    // No --ignore-lock, server reuse or simulated approval/human presence.
+    env: { ASTRO_PREVIEW_BACKGROUND: '1' },
     url: baseURL,
     reuseExistingServer: false,
     timeout: 600_000,

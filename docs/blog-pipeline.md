@@ -78,7 +78,30 @@ La commande rejoue le gate, construit uniquement le brouillon ciblé via `BLOG_P
 - l’en-tête `X-Robots-Tag: noindex, nofollow` ;
 - l’absence du candidat dans le sitemap et le RSS.
 
-Déploiement Cloudflare distinct, après succès local :
+### Recette navigateur locale sous agent
+
+Les previews Cloudflare sont désactivées dans le fonctionnement actuel. Leur
+absence n'empêche pas la recette du candidat local : Playwright construit le
+site puis possède son propre serveur Astro sur `127.0.0.1`, sans réutiliser un
+serveur déjà ouvert. Astro 7 détecte les agents et détache sinon son serveur,
+ce qui produit « Process from config.webServer exited early » avant tout test.
+`playwright.config.ts` fournit son marqueur interne de serveur enfant
+`ASTRO_PREVIEW_BACKGROUND=1` pour conserver ce processus au premier plan. Ce
+marqueur ne modifie aucune approbation ou présence humaine ; ne pas lui
+substituer `--ignore-lock`, un serveur réutilisé ou un changement d'outil.
+
+`node --test tests/scripts/playwright-foreground.test.mjs` éprouve le vrai
+serveur Astro temporaire et sa durée de vie. Pour les cinq corps republiés,
+la recette réelle est
+`QA_BLOG_REPUBLICATION_REQUIRED=1 npx playwright test tests/browser/blog-proof-mobile.spec.ts`
+sans `QA_URL`. Ses captures ne sont ni une publication ni une preuve des
+en-têtes, alias ou contenu servis par Cloudflare. Un refus HTTP de production
+ne se rejoue pas par cette recette locale ou un autre client.
+
+### Ancienne option de preview Cloudflare — non activée
+
+La voie ci-dessous est distincte, seulement si ce mode est explicitement
+réactivé ; ne pas la lancer ou l'exiger dans le mode local actuel :
 
 ```bash
 npx wrangler pages deploy .qa/preview-dist/<slug> \
@@ -94,7 +117,7 @@ Après déploiement, relire l’URL exacte et ses en-têtes avant de produire le
 npm run blog:review -- <slug>
 ```
 
-La commande recalcule le gate et écrit `.qa/blog/<slug>/review-package.md`, avec la taille et le SHA-256 de chaque artefact. L’URL Cloudflare, les preuves HTML/HTTP, les captures et les résultats de tests restent à joindre au rapport.
+La commande recalcule le gate et écrit `.qa/blog/<slug>/review-package.md`, avec la taille et le SHA-256 de chaque artefact. Joindre les preuves HTML, les captures et les résultats de tests du rendu local exact. Une URL et des preuves HTTP Cloudflare ne sont requises ici que si ce mode de preview est réellement utilisé ; la preuve de production demeure distincte et obligatoire à la livraison.
 
 ## Vérifier un candidat autorisé pour la production
 
@@ -124,3 +147,29 @@ Le plan W39 garde les créneaux des 22, 24 et 26 septembre et affiche la date r�
 ## Garde-fou pSEO
 
 Aucune page programmatique n’est générée par ce pipeline. Une extension future exige avant code : dataset fiable, intention distincte par page, valeur unique, contrôle du contenu mince et lancement par lots soumis à validation humaine.
+
+## Recette mobile Cicatrice — correction technique du 02/10/2026
+
+Le rendu joint de la préparation a trouvé deux vrais défauts, indépendants
+des previews Cloudflare : les paysages `w39-trois-passes` et
+`w39-reference-decalee` étaient trop petits sur téléphone, et le lien
+« Voir le service d’automatisation et sa recette » dépassait à 320 px.
+
+Les deux cadres HTML portrait conservent les données fictives des paysages,
+avec du texte de 18 px minimum à 360 px. Le renderer existant produit désormais
+les six portraits W39 et scelle leurs sources, actifs, texte et date réelle de
+capture. Les quatre portraits antérieurs restent octet-identiques. Ce sont
+des illustrations, pas des captures d’un produit ou des résultats client.
+La forge sélectionne automatiquement le portrait lorsqu’il existe ; aucun
+nouveau défilement, figcaption public ou fournisseur de génération n’est ajouté.
+
+Le CTA utilise une colonne réductible et des boutons à hauteur adaptative :
+le texte reste entier et se replie, sans crop, police réduite ou overflow caché.
+`tests/browser/blog-cicatrice-mobile.spec.ts` exerce le vrai layout/forge/actifs
+avec deux figures fictives et le libellé exact, à 320/375/1440 px. Sa fixture
+ne remplace pas la recette du récit signé et du pilier réunis. Le témoin des
+cinq articles vérifie maintenant aussi l’absence de débordement à 320 px.
+
+Le récit signé, les candidats, leurs revues et la preuve de production restent
+sur leurs voies existantes. Cette livraison technique ne publie pas la Cicatrice,
+n’ajoute aucun consentement et ne qualifie pas un déploiement Cloudflare.

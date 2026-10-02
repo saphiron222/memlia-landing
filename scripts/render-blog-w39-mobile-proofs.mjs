@@ -6,11 +6,12 @@ import { pathToFileURL } from 'node:url';
 import { chromium } from '@playwright/test';
 import sharp from 'sharp';
 
-// Portrait transcriptions of the four W39 landscape proofs. Their wording is
+// Portrait transcriptions of the W39 landscape proofs. Their wording is
 // reviewed against the original WebP; never substitute these for a product test.
 const source = 'docs/design/blog-w39-mobile-proofs/index.html';
 const manifestPath = 'docs/qa/blog-w39-mobile-proofs.json';
-const ids = ['w39-prompt-brouillon', 'w39-prompt-arret', 'w39-logiciel-parcours', 'w39-logiciel-exceptions'];
+const ids = ['w39-prompt-brouillon', 'w39-prompt-arret', 'w39-logiciel-parcours', 'w39-logiciel-exceptions',
+  'w39-trois-passes', 'w39-reference-decalee'];
 const check = process.argv.includes('--check');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const sources = [source, 'scripts/render-blog-w39-mobile-proofs.mjs', ...ids.map((id) => `public/proofs/blog/${id}.webp`)]
@@ -25,7 +26,7 @@ if (check) {
   }
 }
 if (check && process.env.CF_PAGES === '1') {
-  console.log('check Cloudflare : 4 transcriptions W39 et actifs portrait scellés.');
+  console.log(`check Cloudflare : ${ids.length} transcriptions W39 et actifs portrait scellés.`);
   process.exit(0);
 }
 const browser = await chromium.launch({ channel: 'chromium' });
@@ -69,7 +70,7 @@ try {
     else writeFileSync(target, webp);
     entries.push({ id, target, sha256: sha256(webp), bytes: webp.length, text: measured.text });
   }
-  if (!check) writeFileSync(manifestPath, `${JSON.stringify({ capturedAt: '2026-09-30', sources, entries }, null, 2)}\n`);
+  if (!check) writeFileSync(manifestPath, `${JSON.stringify({ capturedAt: new Date().toISOString(), sources, entries }, null, 2)}\n`);
   console.log(`${check ? 'check' : 'render'} : ${entries.length} preuves W39 portrait conformes.`);
 } finally {
   await browser.close();
