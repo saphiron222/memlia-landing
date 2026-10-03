@@ -88,7 +88,8 @@ try {
     const parts = bar ? [...bar.children] : [];
     return {
       id: frame.id,
-      children: frame.children.length,
+      children: [...frame.childNodes].filter((node) => node.nodeType === Node.ELEMENT_NODE
+        || (node.nodeType === Node.TEXT_NODE && node.textContent.trim())).length,
       windows: windows.length,
       dot: parts[0]?.classList.contains('dot') ?? false,
       name: parts[1]?.tagName === 'B' ? parts[1].textContent.trim() : '',
