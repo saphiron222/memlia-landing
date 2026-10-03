@@ -105,7 +105,7 @@ La dernière ligne est la plus trompeuse. Une proposition d’imputation fondée
 
 ## Brique 2 : les contrôles qui restent, et dans quel ordre les passer
 
-Les contrôles se passent dans un ordre fixe, du plus grossier au plus fin, parce qu’un contrôle raté en amont rend inutiles ceux d’après. On vérifie d’abord que le document est bien une facture et non un devis, un bon de livraison ou un relevé ; puis que l’émetteur est le fournisseur attendu ; puis que les mentions attendues sur la pièce sont présentes ; puis que les montants s’additionnent ; puis que la pièce appartient à la période ; puis qu’elle n’est pas déjà enregistrée. L’imputation ne se juge qu’en dernier, quand tout le reste tient.
+Les contrôles se passent dans un ordre fixe, du plus grossier au plus fin, parce qu’un contrôle raté en amont rend inutiles ceux d’après. On vérifie d’abord que le document est bien une facture et non un devis, un bon de livraison ou un relevé ; puis que l’émetteur est le fournisseur attendu ; puis que les mentions attendues sur la pièce sont présentes ; puis que les montants s’additionnent ; puis qu’une personne a qualifié les périodes comptable et fiscale ; puis que la pièce n’est pas déjà enregistrée. L’imputation ne se juge qu’en dernier, quand tout le reste tient.
 
 | Contrôle | Condition qui le rend concluant | Sortie quand la condition manque |
 |---|---|---|
