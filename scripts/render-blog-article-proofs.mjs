@@ -88,6 +88,7 @@ try {
     const parts = bar ? [...bar.children] : [];
     return {
       id: frame.id,
+      children: frame.children.length,
       windows: windows.length,
       dot: parts[0]?.classList.contains('dot') ?? false,
       name: parts[1]?.tagName === 'B' ? parts[1].textContent.trim() : '',
@@ -96,6 +97,8 @@ try {
   }));
   for (const chrome of chromes) {
     assert.equal(chrome.windows, 1, `Une seule fenêtre attendue : ${chrome.id}`);
+    // Rien à côté de la fenêtre : une explication ajoutée hors de l'écran serait figée par --adopt.
+    assert.equal(chrome.children, 1, `Le cadre ne contient que sa fenêtre : ${chrome.id}`);
     assert.ok(chrome.dot && chrome.name, `En-tête de fenêtre incomplet : ${chrome.id}`);
     assert.match(chrome.context, /^(Jeu d’essai fictif|Reconstitution) · \S/, `Provenance fictive absente de l’en-tête : ${chrome.id}`);
   }
