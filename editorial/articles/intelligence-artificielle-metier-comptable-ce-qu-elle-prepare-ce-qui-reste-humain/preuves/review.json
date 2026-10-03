@@ -3,22 +3,22 @@
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
   "kind": "editorial-review",
   "status": "PASS",
-  "checkedAt": "2026-09-21",
-  "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
-  "manifestSha256": "d0b176ea64ba9efab023c24f259bb447abe58753dd4153b4ee9409b43a99b9d8",
+  "checkedAt": "2026-09-28",
+  "articleSha256": "d55a5dfcd7d73d328fab8385ead6b3fdc47a78f9f441eab0b78669bd3ed5d3e0",
+  "manifestSha256": "2d058fa9b2ce0f39573440227989af4b42e589aedd23f6f2b1114e0ffaad5866",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
   ],
-  "reviewer": "marketing",
+  "reviewer": "qa:t_de67db5a",
   "criteria": [
     {
       "id": "intent-satisfaction",
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "La réponse directe répond immédiatement à la requête en séparant préparation automatisée, validation du collaborateur et décision humaine.",
-        "Le corps couvre les compétences, la règle écrite, les arrêts dans le doute et les responsabilités de la direction sans transformer l’article en catalogue de cas d’usage.",
-        "L’hypothèse de temps réaffecté est explicitement laissée à la recette et à la mesure du périmètre réel."
+        "Au rendu du 29 septembre, la réponse directe ouvre sur reconnaître une entrée, appliquer une condition et soumettre une proposition ; le collaborateur conserve source, période et décision.",
+        "Le nouveau paragraphe sous « Ce que cela change pour les compétences » fait retrouver l’entrée, la période, la condition et le propriétaire de la règle ; il sert la direction plutôt qu’un remplissage lexical.",
+        "La possible réaffectation du temps est formulée en hypothèse conditionnelle, sans rendement ni résultat attribué à un cabinet."
       ]
     },
     {
@@ -26,9 +26,9 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Le HTML rendu porte un H1 unique, un sommaire, une progression H2/H3 cohérente, deux tableaux et trois images dont deux preuves fonctionnelles.",
-        "Le titre d’onglet, le H1 et la description traitent tous l’intelligence artificielle, le métier comptable et les compétences humaines.",
-        "Le canonical auto-référent est exact et l’aperçu conserve volontairement robots noindex, follow avant publication."
+        "Parse5 sur la prévisualisation a relevé un H1, un sommaire et des H2/H3 ordonnés ; les figures frontière/refus portent chacune une légende avec source et capture du 21 septembre.",
+        "L’onglet associe IA, métier comptable et compétences ; le H1 précise les compétences humaines, sans bifurcation vers une liste d’outils.",
+        "Canonical sur le slug historique ; la prévisualisation a robots noindex, follow car la branche est encore a-valider, et ne prouve pas l’indexation publique."
       ]
     },
     {
@@ -36,9 +36,9 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Les cinq affirmations externes sont liées inline vers la page exacte et reprises dans une bibliographie datée du 21 septembre 2026.",
-        "Les trois URL ont répondu HTTP 200 le 21 septembre 2026 et les cinq citations OPCO Atlas, Apec et OEC Paris ont été retrouvées mot pour mot dans les pages servies.",
-        "Le texte borne leur portée : Atlas est non daté, qualitatif et prospectif, Apec reste un communiqué de 2021 et le matériau OEC Paris est intersectoriel."
+        "Les cinq citations vérifiées dans le corps pointent vers trois URL de première main ; leur attribution et leur limite sont dans le paragraphe même.",
+        "Requête indépendante du 29 septembre : HTTP 200 sur OPCO Atlas, Apec et Le Francilien ; les passages figurent dans les HTML récupérés (Atlas ligne 3688, Apec ligne 1003, OEC ligne 480).",
+        "La prospective Atlas n’est pas un chiffre d’emploi, l’Apec porte le contexte de 2021 et Le Francilien résume une enquête intersectorielle, non un échantillon de cabinets."
       ]
     },
     {
@@ -46,9 +46,9 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "L’oracle exécutable rejoue trois cas fictifs et le check retrouve bit pour bit chaque identifiant, statut, message et décision dans corps.md.",
-        "Le tableau « Cas joué | Sortie obtenue | Décision » rapporte PROPOSITION, REFUS_AMBIGUITE et REFUS_REGLE_ABSENTE comme sorties effectivement obtenues.",
-        "Les preuves inline competences-frontiere et competences-refus sont lisibles, non tronquées, fictives et cohérentes avec la frontière et le rejeu ; l’image de refus résume les statuts tandis que le tableau porte les messages et décisions exacts."
+        "Le rejeu local --check passe 2 articles et 7 cas ; IA-01/02/03 exposent dans le tableau une proposition et deux refus motivés, sans identifiant client.",
+        "Le nouveau paragraphe ajoute un test de transmission : retrouver condition et période puis nommer qui peut faire évoluer la règle après recette.",
+        "Les deux WebP inspectés séparent tâches, validation et arbitrage ; le visuel refus résume les issues, alors que les messages et décisions précis figurent dans le tableau HTML."
       ]
     },
     {
@@ -56,9 +56,9 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Le rendu figé contient un seul H1, le canonical attendu, og:title identique au H1, une image OG et les schémas BlogPosting, Person, Organization, WebSite, WebPage et BreadcrumbList.",
-        "La couverture est chargée eager avec fetchpriority high ; les deux preuves inline sont des WebP 1600×900 chargés en lazy avec des alts descriptifs.",
-        "Le title compte 67 caractères, le H1 68 caractères et le maillage inclut le pilier, l’article frère, /methode, /garanties, /automatisation-cabinet-comptable et deux entrées du glossaire."
+        "Le rendu parse5 relie un H1 au headline BlogPosting, affiche les dates du 21 et du 28 septembre, un canonical inchangé, og:title et l’image OG 1200×630.",
+        "Deux figures du corps ont alt et figcaption ; le chemin vers le pilier, le diagnostic de surcharge, la méthode, les garanties et le glossaire demeure contextualisé.",
+        "Recomptage indépendant du texte de .article-corps dans la prévisualisation : 1 603 tokens avec lettres contre wordCount JSON-LD 1 637 ; les deux dépassent 1 500 et leur écart est limité."
       ]
     },
     {
@@ -66,9 +66,9 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "La réponse directe, la frontière en trois colonnes et le tableau des trois sorties forment des blocs autonomes et extractibles.",
-        "Les claims externes sont immédiatement reliés à leur source et accompagnés de leurs limites temporelles, sectorielles ou méthodologiques.",
-        "La terminologie préparation, règle écrite, validation, exception, arrêt et décision reste stable sur toute la page."
+        "Réponse directe, tableau à trois colonnes et trois sorties de l’oracle se lisent indépendamment du chrome de la page.",
+        "La ligne sur la montée en compétences est reliée à Atlas ; l’allusion à l’emploi Apec est datée 2021 dans la même section.",
+        "Le paragraphe nouveau situe l’exception et la modification de la règle dans le circuit de décision au lieu de présenter une faculté autonome de l’IA."
       ]
     },
     {
@@ -76,9 +76,9 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "La frontière opérationnelle est concentrée dans « La règle écrite » avec les quatre libellés requis et un tableau préparer-valider-rester humain.",
-        "Le corps formule positivement ce que le système prépare et ce que le cabinet décide ; les négations restantes servent les conditions d’arrêt ou bornent précisément la portée des sources.",
-        "Le CTA final emploie « confier cette tâche », pointe vers /contact et décrit écriture, automatisation, recette, décision conservée et absence de fichier à envoyer."
+        "La règle écrite couvre frontière, proposition, arrêt et jeu d’essai ; les cas d’ambiguïté et de règle absente interdisent de confondre sortie et décision.",
+        "Le paragraphe ajouté se termine par les rôles écrire, vérifier et autoriser, sans chiffre de gain ni compétence prêtée à Kevin.",
+        "En clôture, « confier cette tâche » mène à /contact ; la mission promet écriture, automatisation et recette, avec décision laissée au cabinet."
       ]
     }
   ]

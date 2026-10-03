@@ -4,7 +4,7 @@ titreOnglet: "Automatisation cabinet comptable : carte des tâches | Memlia"
 resume: "Soixante familles de tâches réparties en douze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel."
 description: "Automatisation cabinet comptable : une carte pour choisir une tâche, écrire sa règle et fixer ce qui se prépare, se valide ou reste humain."
 datePublication: 2026-09-16
-dateMiseAJour: 2026-09-20
+dateMiseAJour: 2026-09-29
 auteur: kevin
 sujets: [automatisation, methode, cabinet]
 motsCles: ["automatisation cabinet comptable", "tâches répétitives", "validation humaine", "règle de cabinet", "familles de tâches"]
@@ -23,17 +23,17 @@ tache: "Dresser la carte des tâches automatisables du cabinet et repérer celle
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-20
+  date: 2026-09-29
 funnel: TOFU
 contentType: searchable
 format: pillar-page
 rankability: plausible
 businessRelevance: directe
 proofStatus: verifiee
-proofRequired: "Douze pôles et soixante familles listés depuis src/data/familles.ts ; pour chacun des onze pôles ouverts, un tableau se-prépare-seul / attend-une-validation / reste-humain ; le douzième (audit légal) listé et non ouvert ; cinq affirmations sourcées sur des pages officielles ouvertes le jour de la publication."
+proofRequired: "Douze pôles et soixante familles listés depuis src/data/familles.ts ; pour chacun des onze pôles ouverts, un tableau se-prépare-seul / attend-une-validation / reste-humain ; le douzième (audit légal) listé et non ouvert ; six affirmations sourcées sur des pages officielles ouvertes le jour de la publication."
 reviewRule: "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données."
-reviewer: marketing
-sourcesVerifieesLe: 2026-09-20
+reviewer: qa:t_e5c72326
+sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier une première tâche"
   destination: "/contact"
@@ -42,26 +42,30 @@ imageOg: "/images/img-art-carte-des-taches-og.webp"
 imageAlt: "Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation"
 statutEditorial: publie
 sources:
+  - editeur: "CNIL"
+    titre: "Responsable du traitement, sous-traitants : comment bien identifier son rôle ?"
+    url: "https://cnil.fr/fr/rgpd-comment-bien-identifier-son-role"
+    consulte: 2026-09-29
   - editeur: "Service Public"
     titre: "Quels sont les délais de conservation des documents pour les entreprises ?"
     url: "https://entreprendre.service-public.gouv.fr/vosdroits/F10029"
-    consulte: 2026-09-20
+    consulte: 2026-09-29
   - editeur: "CNIL"
     titre: "Règlement européen sur la protection des données, chapitre 2 : principes"
     url: "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2"
-    consulte: 2026-09-20
+    consulte: 2026-09-29
   - editeur: "CNIL"
     titre: "Les durées de conservation des données"
     url: "https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees"
-    consulte: 2026-09-20
+    consulte: 2026-09-29
   - editeur: "impots.gouv.fr"
     titre: "Calendrier fiscal des professionnels"
     url: "https://www.impots.gouv.fr/professionnel/calendrier-fiscal"
-    consulte: 2026-09-20
+    consulte: 2026-09-29
   - editeur: "Net-entreprises"
     titre: "Les comptes rendus métiers DSN"
     url: "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/"
-    consulte: 2026-09-20
+    consulte: 2026-09-29
 ---
 
 ## Réponse directe
@@ -80,7 +84,7 @@ Une tâche se prête à l’automatisation quand trois conditions tiennent ensem
 
 La plupart de ces règles existent déjà dans votre cabinet. Elles ne sont écrites nulle part : elles vivent dans la tête des collaborateurs qui les appliquent chaque mois, entre deux dossiers qui demandent leur jugement, et elles partent avec eux. Cette carte sert d’abord à cela : repérer, pôle par pôle, le savoir-faire que personne n’a écrit, et décider par quelle règle commencer.
 
-Chaque famille ci-dessous est décrite par sa règle typique, puis par sa frontière, en trois colonnes. Ce qui se prépare seul : l’outil calcule, trie, relance, contrôle, sans que personne n’intervienne. Ce qui attend une validation : l’outil propose, une personne du cabinet valide avant que quoi que ce soit ne parte ou ne s’écrive. Ce qui reste humain : le jugement professionnel, la relation, la décision engageante. Cette frontière n’est pas un aveu de faiblesse de l’outil, c’est la règle de cabinet elle-même. Ce classement est une méthode Memlia, née d’un cabinet observé de près et de deux postes documentés ; il se corrige à chaque cabinet rencontré.
+Chaque famille ci-dessous est décrite par sa règle typique, puis par sa frontière, en trois colonnes. Ce qui se prépare seul : l’outil calcule, trie, prépare une relance, contrôle, sans que personne n’intervienne. Ce qui attend une validation : l’outil propose, une personne du cabinet valide avant que quoi que ce soit ne parte ou ne s’écrive. Ce qui reste humain : le jugement professionnel, la relation, la décision engageante. Cette frontière n’est pas un aveu de faiblesse de l’outil, c’est la règle de cabinet elle-même. Ce classement est une méthode Memlia, née d’un cabinet observé de près et de deux postes documentés ; il se corrige à chaque cabinet rencontré.
 
 Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. Les règles décrites se posent sur les classeurs, les messageries et les logiciels de production que le cabinet utilise déjà. [La plateforme que personne n’a achetée](/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils) raconte pourquoi cette règle existe. Quand une famille est déjà documentée par un article détaillé, le lien y mène ; les autres articles viennent semaine après semaine, la carte se complète.
 
@@ -102,12 +106,15 @@ Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. L
 | Audit légal | 1 | commissariat aux comptes : famille listée, aucune tâche ouverte | tout |
 
 <figure data-blog-proof="carte-douze-poles">
-  <img src="/proofs/blog/carte-douze-poles.webp" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1600" height="900" loading="lazy" decoding="async">
+  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." tabindex="0"><img src="/proofs/blog/carte-douze-poles.webp" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1600" height="900" loading="lazy" decoding="async"></div>
+  <figcaption>Source : taxonomie éditoriale versionnée src/data/familles.ts · capture du 2026-09-20</figcaption>
 </figure>
 
 ## Production comptable : de la pièce reçue au bilan livré
 
 C’est le pôle le plus large, treize familles, parce que c’est là que la répétition est la plus dense. La [collecte et la relance des pièces](/blog/automatiser-la-relance-des-pieces-clients) ouvrent la chaîne : chaque dossier attend, pour chaque période, une liste de pièces qui dépend de son régime. La règle typique tient en trois états, attendu, reçu, lisible, et une cadence de relance qui cesse à réception. [La saisie et la pré-comptabilité](/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier) suivent : lecture des pièces, extraction des champs, pré-imputation, avec un reliquat d’exceptions que la lecture n’a pas su traiter et qui doit remonter plutôt que d’être forcé.
+
+Pour rédiger la première demande de pièce sans perdre la décision d'envoi, voyez le [patron de prompt sur cas fictif](/blog/prompt-chatgpt-expert-comptable). Si vous comparez des outils plutôt que des formulations, la [grille de choix d'un logiciel IA comptable](/blog/logiciel-ia-comptabilite) fait rejouer la pièce, l'exception et la reprise par l'équipe, sans classement de marques.
 
 Le [lettrage](/glossaire#lettrage-comptable) et le [rapprochement bancaire](/glossaire#rapprochement-bancaire) obéissent à des règles d’appariement que le cabinet connaît par cœur mais écrit rarement : montant identique, référence présente, tolérance de quelques centimes, délai entre facture et règlement. Écrites, ces règles deviennent une proposition d’écriture et une liste d’écarts typés. Les factures d’achat, les ventes importées d’une caisse ou d’une boutique en ligne, les notes de frais, les tableaux d’amortissement et d’emprunt suivent la même logique : un import sans ressaisie, un contrôle de schéma, une écriture récurrente générée puis validée.
 
@@ -117,7 +124,7 @@ Sur la conservation des pièces, le cadre est clair et il borne la règle de cla
 
 | Se prépare seul | Attend une validation | Reste humain |
 |---|---|---|
-| La relance d’une pièce manquante, à cadence, jusqu’à réception | L’écriture proposée par le lettrage ou le rapprochement | La qualification d’une pièce ambiguë |
+| Le brouillon de relance d’une pièce manquante, à cadence, jusqu’à réception | L’envoi de cette relance et l’écriture proposée par le lettrage ou le rapprochement | La qualification d’une pièce ambiguë |
 | L’import d’un export de caisse ou de facturation, avec contrôle de schéma | La checklist de révision remplie, avant la revue du réviseur | L’écriture d’inventaire qui engage un jugement |
 | Le nommage et le classement d’une pièce reçue | La liste des écarts à traiter avant clôture | La décision de clôturer |
 
@@ -140,7 +147,7 @@ Les retours après dépôt ont leur propre famille. [Net-entreprises](https://ww
 
 | Se prépare seul | Attend une validation | Reste humain |
 |---|---|---|
-| La relance des variables de paie manquantes | Le contrôle de cohérence d’un bulletin, écarts listés | La décision de déposer |
+| Le brouillon de relance des variables de paie manquantes | L’envoi de cette relance et le contrôle de cohérence d’un bulletin, écarts listés | La décision de déposer |
 | Le statut de chaque dossier du pôle social, par étape | La qualification d’un retour après dépôt | La correction qui engage les droits d’un salarié |
 
 ## Juridique et fiscal : préparer, contrôler, ne jamais décider seul
@@ -183,9 +190,9 @@ Trois familles, tournées vers l’intérieur. L’arrivée d’un collaborateur
 
 ## Numérique, IT et data : le cadre de toute automatisation
 
-Quatre familles qui ne sont pas des tâches de production mais qui les conditionnent toutes. L’IA générative et les agents préparent des brouillons, des résumés, des propositions ; ils ne décident pas. Les connecteurs, les imports et la synchronisation relient les logiciels par interface quand elle existe, par fichiers sinon. Le règlement européen sur l’IA fixe des obligations à l’utilisateur, à relire sur le texte et non sur un billet. Et les données personnelles encadrent tout : le cabinet est responsable de traitement pour ses propres fichiers et sous-traitant pour ceux de ses clients.
+Quatre familles qui ne sont pas des tâches de production mais qui les conditionnent toutes. L’IA générative et les agents préparent des brouillons, des résumés, des propositions ; ils ne décident pas. Pour rédiger une demande de pièce, voyez [le prompt sur un cas fictif et ses conditions d’arrêt](/blog/prompt-chatgpt-expert-comptable). Les connecteurs, les imports et la synchronisation relient les logiciels par interface quand elle existe, par fichiers sinon. Les données personnelles encadrent tout : avant de brancher une règle, il faut identifier la finalité, les accès et le rôle de chaque partie pour le traitement concerné. Ce rôle ne se déduit pas du seul fait que le fichier vient d’un client. [La CNIL rappelle](https://cnil.fr/fr/rgpd-comment-bien-identifier-son-role) que les acteurs doivent déterminer leur qualification au cas par cas : qui décide de la finalité et des moyens essentiels, qui agit sur instruction ? Un cabinet peut avoir des rôles différents selon le traitement ; il faut les qualifier et les documenter, non décréter un rôle unique à partir de l’origine du fichier.
 
-Deux règles de la CNIL suffisent à borner la plupart des automatisations. La première est la [minimisation](https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2) : les données traitées doivent être adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées. Un outil qui relance des pièces n’a pas besoin des bulletins de paie. La seconde porte sur la durée : selon la [fiche de la CNIL sur les durées de conservation](https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees), la définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement. Une règle de purge fait donc partie de toute automatisation qui garde des données, et [la minimisation](/glossaire#minimisation-des-donnees) se vérifie avant d’écrire la première ligne.
+Deux principes de la CNIL sont à examiner pour chaque traitement, parmi d’autres obligations RGPD. Le premier est la [minimisation](https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2) : les données traitées doivent être adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées. Un outil qui relance des pièces n’a pas besoin des bulletins de paie. La seconde porte sur la durée : selon la [fiche de la CNIL sur les durées de conservation](https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees), la définition de la durée de conservation relève de l’analyse de conformité que le responsable doit mener pour son traitement. Une règle de purge fait donc partie de toute automatisation qui garde des données, et [la minimisation](/glossaire#minimisation-des-donnees) se vérifie avant d’écrire la première ligne.
 
 | Se prépare seul | Attend une validation | Reste humain |
 |---|---|---|
@@ -220,7 +227,8 @@ Quatre familles qui ne produisent rien mais qui décident de tout. Choisir et ca
 | La mesure du temps avant et après, sur le même jeu d’essai | La place de chaque validation humaine, écrite dans la règle | La décision d’interrompre ou d’étendre une automatisation |
 
 <figure data-blog-proof="carte-test-regle">
-  <img src="/proofs/blog/carte-test-regle.webp" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1600" height="900" loading="lazy" decoding="async">
+  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." tabindex="0"><img src="/proofs/blog/carte-test-regle.webp" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1600" height="900" loading="lazy" decoding="async"></div>
+  <figcaption>Source : test de maturité décrit dans cet article sur la carte des tâches · capture du 2026-09-20</figcaption>
 </figure>
 
 ## Que ne contient pas cette carte ?

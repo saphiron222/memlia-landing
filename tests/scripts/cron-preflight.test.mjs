@@ -12,6 +12,11 @@ const git = (cwd, ...args) => {
   assert.equal(r.status, 0, r.stderr);
   return r.stdout.trim();
 };
+const calendar = (root, posts = []) => {
+  writeFileSync(join(root, 'docs/strategy/site-v3/cluster-plan.json'),
+    JSON.stringify({ pillar: { date: '2026-09-16', status: 'published' }, clusters: [{ posts }] }));
+  writeFileSync(join(root, 'docs/strategy/site-v3/backlog-v3.json'), '[]');
+};
 
 test('cron refuses a wrong branch and missing runbook instead of reporting ok', () => {
   const root = mkdtempSync(join(tmpdir(), 'memlia-cron-'));
@@ -40,6 +45,7 @@ test('cron refuses a dirty checkout and accepts only clean synced main with requ
     mkdirSync(join(root, 'docs/strategy/site-v3'), { recursive: true });
     writeFileSync(join(root, 'docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md'), 'test');
     writeFileSync(join(root, 'CLAUDE.md'), 'test');
+    calendar(root);
     git(root, 'add', '.');
     git(root, 'commit', '-qm', 'init');
     git(root, 'remote', 'add', 'origin', root);
@@ -65,6 +71,7 @@ test('cron refuses wrong checkout, failed fetch, stale SHA and never claims publ
     mkdirSync(join(root, 'docs/strategy/site-v3'), { recursive: true });
     writeFileSync(join(root, 'docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md'), 'test');
     writeFileSync(join(root, 'CLAUDE.md'), 'test');
+    calendar(root);
     git(root, 'add', '.');
     git(root, 'commit', '-qm', 'init');
     const args = [script, '--root', root, '--job', 'forge'];
@@ -104,6 +111,7 @@ test('cron publication guard accepts prepared changes then exact commit, and rej
     mkdirSync(join(root, 'docs/strategy/site-v3'), { recursive: true });
     writeFileSync(join(root, 'docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md'), 'test');
     writeFileSync(join(root, 'CLAUDE.md'), 'test');
+    calendar(root);
     git(root, 'add', '.');
     git(root, 'commit', '-qm', 'base');
     git(remote, 'init', '-q', '--bare', '-b', 'main');

@@ -3,19 +3,19 @@
   "sources": [
     {
       "path": "docs/design/blog-article-proofs/index.html",
-      "sha256": "7ae865cc0eff8f9d0ef7e1d478099a822ad56144eecd8a66f1648dc093ae63cf"
+      "sha256": "3de942e827d72a343f359534c20d6797df3ee84c9e18c19f67e19ae8b4cd5cd1"
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
-      "sha256": "0197bc648ea058bc80a2e5a37b3810a60e554e88a6689dd25beb2a49289bdbab"
+      "sha256": "e50e0e4597194c2604e3e39aa46046c8d7e9f5a3509c7627cc91d139b137586d"
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
-      "sha256": "d4625a39e888ab715284248e50e9698a21b5a4c609801c617aee4be4c8d0ee14"
+      "sha256": "05a831b54d9240f9e0776b6ff58e7922a672cd0c57fd946e18a2e56b4829385d"
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
-      "sha256": "4ffa0086ee5d0464fb5df8c509d4bdb1662271dc32e19b8e5ca72511494fe87d"
+      "sha256": "422a42eb724575752f2df4b00d9ff2637797dbca6c3251d91edb94c1d69c18b9"
     }
   ],
   "browser": "153.0.8010.12",
@@ -35,14 +35,14 @@
     {
       "source": "docs/design/blog-article-proofs/index.html#saisie-six-controles",
       "target": "public/proofs/blog/saisie-six-controles.webp",
-      "bytes": 30430,
-      "sha256": "b4463918ea2803438e475e236389ce01a223973da80507429f88d7d6e77465be"
+      "bytes": 31834,
+      "sha256": "4a538152e561f81a4dc271504f1947979770a6c04810a12ccd4af8ba31eb1159"
     },
     {
       "source": "docs/design/blog-article-proofs/index.html#saisie-file-anomalies",
       "target": "public/proofs/blog/saisie-file-anomalies.webp",
-      "bytes": 33334,
-      "sha256": "a1f89bbe975ab8e7847f6162eb38e0aa4b6af68c87fd1d847bcc22d1975c9dbc"
+      "bytes": 36202,
+      "sha256": "348ed88c896f5ec6e7785b74167a6f9cd9b474e64844d9bff4feecab43068c0a"
     },
     {
       "source": "docs/design/blog-article-proofs/index.html#social-dictionnaire",
@@ -103,6 +103,30 @@
       "target": "public/proofs/blog/cicatrice-formulaire-manques.webp",
       "bytes": 26866,
       "sha256": "007508ace04052abadbeb764d539be855f628c3aad3613068cd7b714abd0b6e9"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#saisie-six-controles",
+      "target": "public/proofs/blog/saisie-six-controles-mobile.webp",
+      "bytes": 103328,
+      "sha256": "ff2a0b0aaeca6f56056d18a1385abc900b8a2c9bdd3c9a9aa193249a9a4e0851"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#saisie-file-anomalies",
+      "target": "public/proofs/blog/saisie-file-anomalies-mobile.webp",
+      "bytes": 119750,
+      "sha256": "75713bf336c9e58df1e28766cda9f807e414763b863aba083b2fb40470c06885"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#carte-douze-poles",
+      "target": "public/proofs/blog/carte-douze-poles-mobile.webp",
+      "bytes": 112172,
+      "sha256": "838a4ae630ead909ef9856ac3107415836a25f6eecbb82f499593882f3d56e12"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#carte-test-regle",
+      "target": "public/proofs/blog/carte-test-regle-mobile.webp",
+      "bytes": 106952,
+      "sha256": "b281850d83148b31c4d1bf9139591eba26bf5d3c72e386905c9b99578955a91a"
     }
   ]
 }

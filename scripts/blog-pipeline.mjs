@@ -61,7 +61,9 @@ async function validateWithRenderedBlog(slug, previewSlug = slug, gateMode = 'pr
     run(process.execPath, [astroCli, 'build', '--root', root, '--outDir', outputRoot], { ...process.env, BLOG_PREVIEW_SLUG: previewSlug });
     const blogPath = renderedPagePath(outputRoot, '/blog');
     const renderedBlogHtml = existsSync(blogPath) ? readFileSync(blogPath, 'utf8') : undefined;
-    const dossier = await validateDossier({ root, slug, renderedBlogHtml, gateMode });
+    const articlePath = renderedPagePath(outputRoot, `/blog/${slug}`);
+    const renderedArticleHtml = existsSync(articlePath) ? readFileSync(articlePath, 'utf8') : '';
+    const dossier = await validateDossier({ root, slug, renderedBlogHtml, renderedArticleHtml, gateMode });
     const contrat = auditerContratBlog({ root, dist: outputRoot, slugs: [slug] });
     return {
       ...dossier,
@@ -109,10 +111,10 @@ async function gate(slug) {
   return { report, path };
 }
 
-function reviewPackage(slug, gateReport) {
-  const dossier = join(root, 'editorial', 'articles', slug);
-  const files = listFiles(dossier).map((path) => ({ path: relative(root, path), bytes: statSync(path).size, sha256: sha256(path) }));
-  const reportPath = join(qaRoot, slug, 'review-package.md');
+export function reviewPackage(slug, gateReport, siteRoot = root) {
+  const dossier = join(siteRoot, 'editorial', 'articles', slug);
+  const files = listFiles(dossier).map((path) => ({ path: relative(siteRoot, path), bytes: statSync(path).size, sha256: sha256(path) }));
+  const reportPath = join(siteRoot, '.qa', 'blog', slug, 'review-package.md');
   const lines = [
     `# Dossier de revue — ${slug}`,
     '',
@@ -131,12 +133,18 @@ function reviewPackage(slug, gateReport) {
     '- URL exacte de preview et preuve HTML + HTTP `noindex, nofollow` ;',
     '- captures 320, 375, 768, 1024, 1440 et 1920 px ;',
     '- résultat Astro check/build/tests ;',
-    '- limites, réserves et décision explicite de Kevin.',
+    '- reçu opérateur : identité réelle, rôle, date, SHA-256 des octets, résultat des portes et limites ; sous autorité blog-only (25/09), sans nouveau go personnel de Kevin ;',
     '',
   ];
   mkdirSync(resolve(reportPath, '..'), { recursive: true });
   writeFileSync(reportPath, lines.join('\n'));
   return reportPath;
+}
+
+function indexedBlogUrl(xml, file, slug) {
+  const tag = file.endsWith('rss.xml') ? 'link' : 'loc';
+  const urls = xml.matchAll(new RegExp(`<${tag}\\b[^>]*>\\s*([^<]+?)\\s*</${tag}>`, 'gi'));
+  return [...urls].some((match) => match[1].trim() === `https://memlia.fr/blog/${slug}`);
 }
 
 function verifyCandidatePreview(slug, previewDirectory, previewOrigin) {
@@ -168,7 +176,7 @@ function verifyCandidatePreview(slug, previewDirectory, previewOrigin) {
   if (!/X-Robots-Tag:\s*noindex, nofollow/i.test(headers)) errors.push('L’en-tête X-Robots-Tag noindex, nofollow manque.');
   for (const file of ['sitemap-0.xml', 'blog/rss.xml']) {
     const path = join(previewDirectory, file);
-    if (existsSync(path) && readFileSync(path, 'utf8').includes(`/blog/${slug}`)) errors.push(`Le candidat ne doit pas apparaître dans ${file}.`);
+    if (existsSync(path) && indexedBlogUrl(readFileSync(path, 'utf8'), file, slug)) errors.push(`Le candidat ne doit pas apparaître dans ${file}.`);
   }
   return errors;
 }
@@ -239,29 +247,43 @@ async function preview(slugs) {
   printReport({ ...report, reviewPackages });
 }
 
-async function productionCheck(slug) {
-  const result = await validateWithRenderedBlog(slug, '', 'production');
-  const manifestPath = join(root, 'editorial', 'articles', slug, 'manifest.json');
-  const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
-  const errors = [...result.errors];
-  if (manifest.editorialStatus !== 'go-production' || manifest.kevin?.productionApproved !== true) {
-    errors.push('La production exige editorialStatus=go-production et kevin.productionApproved=true pour ce candidat exact.');
-  }
-  if (errors.length === 0) {
-    run('npm', ['run', 'build:site'], { ...process.env, BLOG_PREVIEW_SLUG: '' });
-    const htmlPath = join(root, 'dist', 'blog', `${slug}.html`);
-    if (!existsSync(htmlPath)) errors.push('La page production n’est pas construite ; vérifier brouillon:false après go Kevin.');
+export function productionArtifactsErrors(siteRoot, slugs) {
+  const errors = [];
+  for (const slug of slugs) {
+    const htmlPath = join(siteRoot, 'dist', 'blog', `${slug}.html`);
+    if (!existsSync(htmlPath)) errors.push(`${slug}: la page production n’est pas construite ; vérifier brouillon:false après reçu opérateur et gates blog.`);
     else {
       const html = readFileSync(htmlPath, 'utf8');
-      if (/noindex/i.test(html)) errors.push('La page production contient encore noindex.');
-      if (!html.includes(`<link rel="canonical" href="https://memlia.fr/blog/${slug}"`)) errors.push('Canonical auto-référent absent.');
+      if (/noindex/i.test(html)) errors.push(`${slug}: la page production contient encore noindex.`);
+      if (!html.includes(`<link rel="canonical" href="https://memlia.fr/blog/${slug}"`)) errors.push(`${slug}: canonical auto-référent absent.`);
     }
     for (const file of ['dist/sitemap-0.xml', 'dist/blog/rss.xml']) {
-      if (!existsSync(join(root, file)) || !readFileSync(join(root, file), 'utf8').includes(`/blog/${slug}`)) errors.push(`${file} ne référence pas le candidat autorisé.`);
+      if (!existsSync(join(siteRoot, file)) || !indexedBlogUrl(readFileSync(join(siteRoot, file), 'utf8'), file, slug)) errors.push(`${slug}: ${file} ne référence pas le candidat autorisé.`);
     }
   }
-  const report = { generatedAt: new Date().toISOString(), slug, pass: errors.length === 0, errors };
-  writeReport(join(qaRoot, slug, 'gate-production.json'), report);
+  return errors;
+}
+
+async function productionCheck(slugs) {
+  if (!slugs.length || slugs.some((slug) => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) || new Set(slugs).size !== slugs.length) {
+    throw new Error('production-check attend des slugs distincts et valides.');
+  }
+  const errors = [];
+  for (const slug of slugs) {
+    const result = await validateWithRenderedBlog(slug, '', 'production');
+    const manifestPath = join(root, 'editorial', 'articles', slug, 'manifest.json');
+    const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
+    errors.push(...result.errors.map((error) => `${slug}: ${error}`));
+    if (manifest.editorialStatus !== 'go-production' || manifest.kevin?.productionApproved !== true) {
+      errors.push(`${slug}: la production exige editorialStatus=go-production et le champ de compatibilité kevin.productionApproved=true dérivé par la forge pour ce candidat exact (pas de nouveau go personnel).`);
+    }
+  }
+  if (errors.length === 0) {
+    run('npm', ['run', 'build:site'], { ...process.env, BLOG_PREVIEW_SLUG: '', BLOG_PREVIEW_SLUGS: '' });
+    errors.push(...productionArtifactsErrors(root, slugs));
+  }
+  const report = { generatedAt: new Date().toISOString(), slugs, pass: errors.length === 0, errors };
+  for (const slug of slugs) writeReport(join(qaRoot, slug, 'gate-production.json'), { ...report, slug });
   printReport(report);
 }
 
@@ -276,7 +298,7 @@ export async function main(argv = process.argv.slice(2)) {
     return;
   }
   if (command === 'preview') return preview(args);
-  if (command === 'production-check') return productionCheck(args[0]);
+  if (command === 'production-check') return productionCheck(args);
   if (command === 'verify-source') {
     const [slug, sourceId, excerpt] = args;
     if (!slug || !sourceId || !excerpt) throw new Error('Usage : verify-source <slug> <source-id> <extrait exact>.');

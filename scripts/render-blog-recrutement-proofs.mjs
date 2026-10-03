@@ -32,7 +32,7 @@ if (mode === 'check' && process.env.CF_PAGES === '1') {
   const prior = JSON.parse(readFileSync(manifestPath, 'utf8'));
   const sources = prior.sources.map(({ path }) => ({ path, sha256: hash(readFileSync(path)) }));
   assert.deepEqual(prior.sources, sources, 'Sources ou contrat de rendu périmés');
-  assert.equal(prior.entries.length, contract.length, 'Le manifeste ne couvre pas toutes les preuves');
+  assert.equal(prior.entries.length, contract.length + 2, 'Le manifeste ne couvre pas toutes les variantes');
   for (const entry of prior.entries) {
     assert.ok(existsSync(entry.target), `Actif absent : ${entry.target}`);
     assert.equal(hash(readFileSync(entry.target)), entry.sha256, `Actif périmé : ${entry.target}`);
@@ -112,6 +112,44 @@ try {
     records.push({ id, source: `${source}/index.html#${id}`, target, bytes: webp.length, sha256: hash(webp), buffer: webp });
   }
   assert.equal(new Set(records.map((r) => r.sha256)).size, records.length, 'Deux preuves identiques');
+  const portrait = await browser.newPage({ viewport: { width: 360, height: 900 }, deviceScaleFactor: 3 });
+  try {
+    await portrait.goto(pathToFileURL(resolve(source, 'index.html')).href);
+    await portrait.evaluate(() => document.fonts.ready);
+    await portrait.addStyleTag({ content: 'main{display:block}.frame{display:none}.frame[data-render]{display:grid}' });
+    for (const entry of contract.filter((item) => item.article === 'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain')) {
+      await portrait.evaluate((id) => {
+        document.querySelector('[data-render]')?.removeAttribute('data-render');
+        document.getElementById(id)?.setAttribute('data-render', '');
+      }, entry.id);
+      const element = portrait.locator(`#${entry.id}`);
+      const measured = await element.evaluate((root) => {
+        const nodes = [];
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) if (walker.currentNode.textContent.trim()) nodes.push(walker.currentNode);
+        const box = root.getBoundingClientRect();
+        const clipped = nodes.filter((node) => {
+          const range = document.createRange(); range.selectNodeContents(node);
+          return [...range.getClientRects()].some((rect) => rect.left < box.left - 1 || rect.right > box.right + 1 || rect.bottom > box.bottom + 1);
+        }).map((node) => node.textContent.trim());
+        return { width: box.width, overflow: root.scrollWidth > root.clientWidth, clipped,
+          fontSize: Math.min(...nodes.map((node) => parseFloat(getComputedStyle(node.parentElement).fontSize))),
+          text: nodes.flatMap((node) => node.textContent.trim().split(/\s+/)).join(' ') };
+      });
+      assert.equal(measured.width, 360, `Portrait ${entry.id}`);
+      assert.equal(measured.overflow, false, `Débordement portrait ${entry.id}`);
+      assert.deepEqual(measured.clipped, [], `Texte coupé portrait ${entry.id}`);
+      assert.ok(measured.fontSize >= 18, `Texte trop petit portrait ${entry.id}`);
+      assert.equal(measured.text, entry.centralText, `Texte divergent portrait ${entry.id}`);
+      const png = await element.screenshot({ animations: 'disabled', path: `${output}/${entry.id}-mobile.png` });
+      const buffer = await sharp(png).resize({ width: 1200 }).webp({ quality: 86, effort: 6 }).toBuffer();
+      assert.ok(buffer.length < 250_000, `Preuve portrait trop lourde : ${entry.id}`);
+      const target = `public/proofs/blog/${entry.id}-mobile.webp`;
+      records.push({ id: `${entry.id}-mobile`, source: `${source}/index.html#${entry.id}`, target, bytes: buffer.length, sha256: hash(buffer), buffer });
+    }
+  } finally {
+    await portrait.close();
+  }
   if (mode === 'adopt') writeFileSync(contractPath, JSON.stringify(adopted, null, 2) + '\n');
   const manifest = { schemaVersion: 1, browser: browser.version(), sources: [`${source}/index.html`, `${source}/styles.css`, contractPath, `${source}/replay-fixtures.json`, replayPath, 'scripts/replay-blog-recrutement-cases.mjs', 'scripts/render-blog-recrutement-proofs.mjs'].map((path) => ({ path, sha256: hash(readFileSync(path)) })), entries: records.map(({ buffer, ...r }) => r) };
   if (mode === 'check') {

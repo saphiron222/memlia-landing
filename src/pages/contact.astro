@@ -61,9 +61,11 @@ const appel = {
           <input id="consentement" name="consentement" type="checkbox" required />
           <label for="consentement">J’accepte que Memlia utilise ces informations pour me répondre. Elles ne servent à rien d’autre (<a href="/politique-de-confidentialite">politique de confidentialité</a>).</label>
         </div>
+        <div data-turnstile></div>
+        <p class="texte-2">Cette vérification anti-abus peut nécessiter JavaScript. Si elle ne s’affiche pas, <a href={`mailto:${SITE.email}`}>écrivez-nous par courriel</a> ; vos champs restent ici.</p>
         <p class="contact-etat" data-etat role="status" aria-live="polite" hidden></p>
         <div class="contact-envoi">
-          <Button type="submit" variante="principal" picto="fleche">Envoyer le message</Button>
+          <Button type="submit" variante="principal" picto="fleche" disabled>Envoyer le message</Button>
         </div>
       </form>
 
@@ -126,6 +128,43 @@ const appel = {
    */
   const formulaire = document.querySelector<HTMLFormElement>('[data-contact]');
   const etat = document.querySelector<HTMLElement>('[data-etat]');
+  const afficherEtat = (texte: string, ok: boolean) => {
+    if (!etat) return;
+    etat.textContent = texte; etat.hidden = false; etat.dataset.ok = ok ? 'oui' : 'non';
+  };
+  const renouvelerVerification = () => (window as Window & { turnstile?: { reset: () => void } }).turnstile?.reset();
+  document.addEventListener('contact:verifie', () => afficherEtat('Vérification terminée. Vous pouvez envoyer votre message.', true));
+  document.addEventListener('contact:expire', () => {
+    afficherEtat('La vérification a expiré. Recommencez-la avant l’envoi ; vos champs sont conservés.', false);
+    renouvelerVerification();
+  });
+  document.addEventListener('contact:erreur', () => afficherEtat('La vérification n’a pas pu charger. Réessayez, ou écrivez-nous par courriel.', false));
+
+  // La clé publique est lue au runtime : le rendu statique reste identique entre environnements.
+  const boutonEnvoi = formulaire?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  fetch('/api/contact', { cache: 'no-store' })
+    .then((reponse) => { if (!reponse.ok) throw new Error('config'); return reponse.json(); })
+    .then(({ sitekey }) => {
+      if (!sitekey) throw new Error('config');
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.onload = () => {
+        const widget = document.querySelector<HTMLElement>('[data-turnstile]');
+        const turnstile = (window as Window & { turnstile?: { render: (element: HTMLElement, options: object) => void } }).turnstile;
+        if (!widget || !turnstile) return;
+        turnstile.render(widget, {
+          sitekey, action: 'contact', language: 'fr',
+          size: widget.getBoundingClientRect().width < 300 ? 'compact' : 'normal',
+          callback: () => document.dispatchEvent(new Event('contact:verifie')),
+          'expired-callback': () => document.dispatchEvent(new Event('contact:expire')),
+          'error-callback': () => document.dispatchEvent(new Event('contact:erreur')),
+        });
+        if (boutonEnvoi) boutonEnvoi.disabled = false;
+      };
+      script.onerror = () => afficherEtat('La vérification ne se charge pas. Écrivez-nous par courriel.', false);
+      document.head.appendChild(script);
+    })
+    .catch(() => afficherEtat('Le formulaire est indisponible. Écrivez-nous par courriel.', false));
 
   /**
    * D4 — la page d'origine : d'où vient la personne qui écrit, pour savoir quel article amène
@@ -150,7 +189,11 @@ const appel = {
       if (!formulaire.checkValidity()) return; // Le navigateur signale lui-même le champ manquant.
       evenement.preventDefault();
       const bouton = formulaire.querySelector<HTMLButtonElement>('button[type="submit"]');
-      const afficher = (texte: string, ok: boolean) => { etat.textContent = texte; etat.hidden = false; etat.dataset.ok = ok ? 'oui' : 'non'; };
+      const afficher = afficherEtat;
+      if (!new FormData(formulaire).get('cf-turnstile-response')) {
+        afficher('Terminez la vérification anti-abus avant l’envoi, ou écrivez-nous par courriel.', false);
+        return;
+      }
       if (bouton) bouton.disabled = true;
       try {
         const reponse = await fetch(formulaire.action, {
@@ -162,10 +205,12 @@ const appel = {
           afficher('Message envoyé. Nous vous répondons par courriel, sans envoi automatique.', true);
         } else {
           afficher((MESSAGES_CONTACT as Record<string, string>)[corps.code] ?? MESSAGE_CONTACT_DEFAUT, false);
+          renouvelerVerification();
           if (bouton) bouton.disabled = false;
         }
       } catch {
         afficher('Le réseau n’a pas répondu. Réessayez, ou écrivez-nous par courriel.', false);
+        renouvelerVerification();
         if (bouton) bouton.disabled = false;
       }
     });

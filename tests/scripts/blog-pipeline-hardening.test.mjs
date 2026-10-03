@@ -14,7 +14,7 @@ import {
   validateDossier as validateDossierRaw,
   verifySource,
 } from '../../scripts/lib/blog-pipeline.mjs';
-import { articleMarkdown, createCompleteDossier } from './blog-fixture.mjs';
+import { DEFAULT_BODY, articleMarkdown, createCompleteDossier } from './blog-fixture.mjs';
 
 // 120 s : l'image de construction de Cloudflare Pages est plusieurs fois plus lente que la machine
 // de développement ; à 20 s, « chaque famille sensible visible… » y expirait (déploiement 8e89cc5e, 16/09/2026).
@@ -252,6 +252,169 @@ test('un éditeur officiel déclaré sur le domaine d’une autre autorité est 
   assert.ok(result.errors.some((error) => /incohérence domaine↔éditeur/i.test(error)), result.errors.join('\n'));
 });
 
+const DOCTEST_URL = 'https://docs.python.org/fr/3/library/doctest.html';
+const technicalDossier = (label, mutate = () => {}, claimType = 'methode') => createCompleteDossier(root(label), {
+  manifestMutator: (manifest) => {
+    Object.assign(manifest.sources[1], {
+      publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+      level: 'technical-primary', provenance: 'primary', official: false,
+      classificationReason: 'Documentation du projet Python, publiée par la Python Software Foundation, sur la portée des tests doctest.',
+      method: null,
+    });
+    mutate(manifest.sources[1]);
+  },
+  claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+  claimTypeForUnit: (_unit, index) => index === 1 ? claimType : 'paie',
+});
+
+test('la fixture de documentation primaire technique ouvre un claim methode sans officialité publique et ferme sur copie altérée', async () => {
+  const fixture = await technicalDossier('primary-technical');
+  const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+  assert.deepEqual(result.errors, []);
+  assert.equal(result.pass, true);
+
+  const { proofPath, proof } = sourceState(fixture, 'source-net-entreprises');
+  proof.contentSha256 = sha256('copie inventée');
+  writeJson(proofPath, proof);
+  const falsified = await validateDossier({ root: fixture.root, slug: fixture.slug });
+  assert.equal(falsified.pass, false);
+  assert.ok(falsified.errors.some((error) => /contentSha256.*copie locale/.test(error)), falsified.errors.join('\n'));
+});
+
+test('un claim doctest méthodologique reste borné à sa phrase même dans un paragraphe évoquant le pôle social', async () => {
+  const claimText = "Ils confirment seulement les cas qu'ils exercent.";
+  const paragraph = `Des tests verts ne garantissent pas que le collaborateur voit le bon total ni le bon périmètre. ${claimText} Dans une réalisation pour le pôle social, j'ai vu deux défauts échapper aux suites vertes : une référence de coût déplacée, puis un cumul sur plusieurs exercices. Un autre test a rougi à raison. Depuis, je passe par les suites, la chaîne de preuve et l'écran.`;
+  const fixture = await createCompleteDossier(root('doctest-social-context'), {
+    body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', paragraph),
+    manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+      publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+      level: 'tier-2', provenance: 'primary', official: false,
+      classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+    }),
+    claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+    claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+  });
+  const claimsPath = join(fixture.dossier, 'claims.json');
+  const claims = readJson(claimsPath);
+  const claim = claims.claims.find((item) => item.claim === paragraph);
+  claim.claim = claimText;
+  claim.factCheck.sourceResults[0].justification.sharedTerms = keyTermsForTest(claimText).slice(0, 3);
+  writeJson(claimsPath, claims);
+  const reviewPath = join(fixture.dossier, fixture.manifest.businessReview.evidence);
+  const review = readJson(reviewPath);
+  review.claimReviews.find((item) => item.claimId === claim.id).claimSha256 = sha256(claimText);
+  writeJson(reviewPath, review);
+
+  for (const gateMode of ['protected-preview', 'production']) {
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode });
+    assert.deepEqual(result.errors, []);
+    assert.equal(result.pass, true);
+  }
+
+  claim.claim = 'Dans une réalisation pour le pôle social';
+  claim.type = 'methode';
+  writeJson(claimsPath, claims);
+  const relabel = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode: 'protected-preview' });
+  assert.ok(relabel.errors.some((error) => /primaire officielle/.test(error)), relabel.errors.join('\n'));
+});
+
+test('relabel methode ne fait pas accepter doctest sur une obligation sociale, de paie ou réglementaire', async () => {
+  for (const [label, sentence] of [
+    ['social', 'Les cotisations sociales doivent être déclarées par le pôle social.'],
+    ['paie', 'Le bulletin de paie doit comporter le montant net versé au salarié.'],
+    ['reglementaire', 'Le décret impose cette obligation réglementaire.'],
+  ]) {
+    const fixture = await createCompleteDossier(root(`doctest-relabel-${label}`), {
+      body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', sentence),
+      manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+        publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+        level: 'tier-2', provenance: 'primary', official: false,
+        classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+      }),
+      claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+      claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+    });
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode: 'protected-preview' });
+    assert.ok(result.errors.some((error) => /claims\[1\].*primaire officielle/.test(error)), `${label}: ${result.errors.join('\n')}`);
+  }
+});
+
+for (const [label, paragraph, claimText] of [
+  ['paie', 'La remise du bulletin de paie est le geste concerné. Cette remise est obligatoire.', 'Cette remise est obligatoire.'],
+  ['social', 'Les cotisations sociales font l’objet de cette déclaration. Leur déclaration est obligatoire.', 'Leur déclaration est obligatoire.'],
+  ['fiscal', 'La déclaration de TVA est le geste concerné. Cette déclaration est obligatoire.', 'Cette déclaration est obligatoire.'],
+  ['pluriel', 'Les cotisations sociales font l’objet de ces déclarations. Ces déclarations sont obligatoires.', 'Ces déclarations sont obligatoires.'],
+]) {
+  test(`relabel methode conserve le contexte sensible de l’anaphore normative ${label} en preview et production`, async () => {
+    const fixture = await createCompleteDossier(root(`doctest-anaphore-${label}`), {
+      body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', paragraph),
+      manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+        publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+        level: 'tier-2', provenance: 'primary', official: false,
+        classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+      }),
+      claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+      claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+    });
+    const claimsPath = join(fixture.dossier, 'claims.json');
+    const claims = readJson(claimsPath);
+    const claim = claims.claims.find((item) => item.claim === paragraph);
+    claim.claim = claimText;
+    claim.factCheck.sourceResults[0].justification.sharedTerms = keyTermsForTest(claimText).filter((term) => !['cette', 'sont'].includes(term)).slice(0, 3);
+    writeJson(claimsPath, claims);
+    const reviewPath = join(fixture.dossier, fixture.manifest.businessReview.evidence);
+    const review = readJson(reviewPath);
+    review.claimReviews.find((item) => item.claimId === claim.id).claimSha256 = sha256(claimText);
+    writeJson(reviewPath, review);
+
+    for (const gateMode of ['protected-preview', 'production']) {
+      const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode });
+      assert.equal(result.pass, false, `${label}/${gateMode} accepté`);
+      assert.ok(result.errors.some((error) => /claims\[1\].*primaire officielle/.test(error)), `${label}/${gateMode}: ${result.errors.join('\n')}`);
+    }
+  });
+}
+
+test('seule l’URL HTTPS doctest canonique ouvre la classification technique', async () => {
+  for (const [label, url] of [
+    ['port', 'https://docs.python.org:8443/fr/3/library/doctest.html'],
+    ['port-default', 'https://docs.python.org:443/fr/3/library/doctest.html'],
+    ['userinfo', 'https://a:b@docs.python.org/fr/3/library/doctest.html'],
+    ['query', 'https://docs.python.org/fr/3/library/doctest.html?lang=fr'],
+    ['fragment', 'https://docs.python.org/fr/3/library/doctest.html#example'],
+    ['parameter', 'https://docs.python.org/fr/3/library/doctest.html;v=3'],
+    ['trailing-slash', 'https://docs.python.org/fr/3/library/doctest.html/'],
+    ['encoded-path', 'https://docs.python.org/fr/3/library/./doctest.html'],
+    ['uppercase-host', 'https://DOCS.PYTHON.ORG/fr/3/library/doctest.html'],
+  ]) {
+    const fixture = await technicalDossier(`technical-url-${label}`, (source) => {
+      source.url = url;
+      source.upstreamUrl = url;
+    });
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(result.pass, false, `${label} accepté : ${url}`);
+    assert.ok(result.errors.some((error) => /documentation primaire technique/.test(error)), `${label}: ${result.errors.join('\n')}`);
+  }
+});
+
+test('la catégorie technique refuse éditeur et domaine incohérents, UGC, auto-officialité, provenance secondaire et claim sensible', async () => {
+  for (const [label, mutate, type, expected] of [
+    ['publisher', (source) => { source.publisher = 'Auteur personnel'; }, 'methode', /domaine↔éditeur/],
+    ['domain', (source) => { source.url = 'https://example.org/fr/3/library/doctest.html'; source.upstreamUrl = source.url; }, 'methode', /documentation primaire technique/],
+    ['path', (source) => { source.url = 'https://docs.python.org/fr/3/library/unittest.html'; source.upstreamUrl = source.url; }, 'methode', /documentation primaire technique/],
+    ['ugc', (source) => { source.url = 'https://medium.com/@auteur/doctest'; source.upstreamUrl = source.url; }, 'methode', /Medium|documentation primaire technique/],
+    ['official', (source) => { source.official = true; }, 'methode', /official=true|official=false/],
+    ['secondary', (source) => { source.provenance = 'secondary'; source.upstreamUrl = 'https://www.python.org/'; }, 'methode', /provenance primary|source primaire technique/],
+    ['legal', () => {}, 'juridique', /primaire officielle/],
+    ['information', () => {}, 'information', /réservée aux claims methode/],
+  ]) {
+    const fixture = await technicalDossier(`technical-${label}`, mutate, type);
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(result.pass, false, `${label} accepté`);
+    assert.ok(result.errors.some((error) => expected.test(error)), `${label}: ${result.errors.join('\n')}`);
+  }
+});
+
 test('une source non officielle ou secondaire ne soutient pas un claim paie sensible', async () => {
   const fixture = await createCompleteDossier(root('sensitive-source-quality'), {
     manifestMutator: (manifest) => {
@@ -399,6 +562,35 @@ test('une assertion juridique fausse reliée à un extrait hors sujet ferme le g
   const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
   assert.equal(result.pass, false);
   assert.ok(result.errors.some((error) => /hors contexte|ne soutient pas|support sémantique/i.test(error)), result.errors.join('\n'));
+});
+
+test('un contexte uniquement dans du code ou un commentaire ferme le gate des claims', async () => {
+  for (const wrap of [
+    (text) => `<html><body><script>${text}</script></body></html>`,
+    (text) => `<!-- ${text} -->`,
+  ]) {
+    const fixture = await createCompleteDossier(root('hidden-source-context'));
+    const before = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.deepEqual(before.errors, []);
+    const state = sourceState(fixture);
+    const updated = replaceSourceSnapshot(fixture, wrap(readFileSync(state.snapshotPath, 'utf8')));
+    const claimsPath = join(fixture.dossier, 'claims.json');
+    const claims = readJson(claimsPath);
+    const reviews = [];
+    for (const claim of claims.claims) {
+      for (const result of claim.factCheck.sourceResults) {
+        if (result.sourceId === 'source-urssaf') {
+          result.citation.sourceContentSha256 = updated.contentSha256;
+          reviews.push(claimReview(fixture, claim, result.sourceId, result.excerpt, updated.contentSha256));
+        }
+      }
+    }
+    writeJson(claimsPath, claims);
+    writeClaimReviews(fixture, reviews);
+    const after = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(after.pass, false);
+    assert.ok(after.errors.some((error) => /\.context est absent, hors de la copie vérifiée/.test(error)), after.errors.join('\n'));
+  }
 });
 
 test('une contradiction à fort recouvrement lexical ferme le gate malgré des attestations de support forcées', async () => {
@@ -609,6 +801,32 @@ test('une matière sensible cohérente et vérifiée aujourd’hui conserve le c
   const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
   assert.deepEqual(result.errors, []);
   assert.equal(result.pass, true);
+});
+
+test('une recommandation CNIL sourcée reste information, une obligation RGPD exige un type sensible', async () => {
+  const cases = [
+    ['conseil-partage', 'La CNIL conseille : les utilisateurs ne devraient soumettre que des informations qu’ils sont autorisés à partager.', false],
+    ['conseil-choix', 'La CNIL recommande de partir de besoins concrets pour choisir un outil.', false],
+    ['obligation', 'Selon le RGPD, le responsable du traitement doit protéger les données personnelles.', true],
+  ];
+  for (const [label, witness, requiresSensitiveType] of cases) {
+    const fixture = await createCompleteDossier(root(`rgpd-${label}`), {
+      body: `${DEFAULT_BODY}\n\n${witness} [Source](https://www.cnil.fr/fr/ia-generative).`,
+    });
+    const claimsPath = join(fixture.dossier, 'claims.json');
+    const claims = readJson(claimsPath);
+    const claim = claims.claims.find((item) => item.claim.startsWith(witness));
+    claim.type = 'information';
+    writeJson(claimsPath, claims);
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(result.errors.some((error) => error.includes(`claims.contentUnits.${claim.unitId} contient une matière sensible visible`) && error.includes('claim.type sensible canonique')), requiresSensitiveType, `${label}: ${result.errors.join('\n')}`);
+    if (label === 'conseil-partage') {
+      claims.contentUnits.find((unit) => unit.id === claim.unitId).claimIds = [];
+      writeJson(claimsPath, claims);
+      const missingClaim = await validateDossier({ root: fixture.root, slug: fixture.slug });
+      assert.ok(missingClaim.errors.some((error) => error.includes(`claims.contentUnits.${claim.unitId} doit relier au moins une affirmation vérifiée`)), missingClaim.errors.join('\n'));
+    }
+  }
 });
 
 test('le contenu paie fiscal et juridique impose fact-check et revue malgré des métadonnées génériques', async () => {
@@ -1018,24 +1236,30 @@ test('même requête primaire et même intention bloquent deux candidats malgré
   assert.ok(result.errors.some((error) => /requête primaire.*intention.*premier-candidat|cannibalisation.*premier-candidat/i.test(error)), result.errors.join('\n'));
 });
 
-test('un arbitrage structuré relié aux deux URL autorise la différenciation explicitement vérifiée', async () => {
-  const corpusRoot = root('query-resolution');
-  await createCompleteDossier(corpusRoot, { slug: 'premier-candidat', heroId: 'img-premier-resolution' });
-  const second = await createCompleteDossier(corpusRoot, {
-    slug: 'second-candidat',
-    heroId: 'img-second-resolution',
-    body: DISTINCT_BODY,
-    manifestMutator: (manifest) => {
-      manifest.cannibalization.resolutions = [{
-        action: 'differentiate',
-        urls: ['/blog/premier-candidat', '/blog/second-candidat'],
-        evidence: 'preuves/cannibalization-premier.json',
-      }];
-    },
-  });
-  writeFileSync(join(corpusRoot, 'src/pages/index.astro'), '<a href="/blog/premier-candidat">A</a><a href="/blog/second-candidat">B</a>');
-  const result = await validateDossier({ root: corpusRoot, slug: second.slug });
-  assert.deepEqual(result.errors, []);
+test('un arbitrage structuré relié aux deux URL autorise la différenciation explicitement vérifiée', async (t) => {
+  // This assertion tests cannibalization, not freshness: keep its gate on the fixture's UTC day.
+  t.mock.timers.enable({ apis: ['Date'], now: Date.now() });
+  try {
+    const corpusRoot = root('query-resolution');
+    await createCompleteDossier(corpusRoot, { slug: 'premier-candidat', heroId: 'img-premier-resolution' });
+    const second = await createCompleteDossier(corpusRoot, {
+      slug: 'second-candidat',
+      heroId: 'img-second-resolution',
+      body: DISTINCT_BODY,
+      manifestMutator: (manifest) => {
+        manifest.cannibalization.resolutions = [{
+          action: 'differentiate',
+          urls: ['/blog/premier-candidat', '/blog/second-candidat'],
+          evidence: 'preuves/cannibalization-premier.json',
+        }];
+      },
+    });
+    writeFileSync(join(corpusRoot, 'src/pages/index.astro'), '<a href="/blog/premier-candidat">A</a><a href="/blog/second-candidat">B</a>');
+    const result = await validateDossier({ root: corpusRoot, slug: second.slug });
+    assert.deepEqual(result.errors, []);
+  } finally {
+    t.mock.timers.reset();
+  }
 });
 
 test('une image uniforme auto-déclarée est refusée', async () => {

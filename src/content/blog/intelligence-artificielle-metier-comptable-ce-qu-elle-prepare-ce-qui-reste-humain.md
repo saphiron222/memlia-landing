@@ -4,6 +4,7 @@ titreOnglet: "Intelligence artificielle, métier comptable et compétences | Mem
 resume: "L’intelligence artificielle ne remplace pas un métier en bloc. Elle prépare une information, applique une règle écrite et signale le doute ; le cabinet valide, arbitre et fait évoluer la règle."
 description: "Métier comptable intelligence artificielle compétences : distinguer préparation automatisée, validation et décision humaine sur des cas fictifs."
 datePublication: 2026-09-21
+dateMiseAJour: 2026-09-28
 auteur: kevin
 sujets: [ia, cabinet, automatisation]
 motsCles: ["métier comptable intelligence artificielle compétences", "intelligence artificielle cabinet comptable", "compétences comptables", "validation humaine"]
@@ -22,7 +23,7 @@ tache: "Comprendre ce que l’intelligence artificielle peut préparer dans un c
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-21
+  date: 2026-09-28
 funnel: TOFU
 contentType: searchable
 format: thought-leadership
@@ -31,8 +32,8 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Frontière en trois colonnes et trois cas fictifs, dont une ambiguïté et une règle absente ; aucune liste de tâches ni donnée réelle."
 reviewRule: "Relire la source OPCO Atlas à six mois et à toute modification de la page de branche."
-reviewer: marketing
-sourcesVerifieesLe: 2026-09-21
+reviewer: qa:t_de67db5a
+sourcesVerifieesLe: 2026-09-28
 cta:
   label: "Confier cette tâche"
   destination: "/contact"
@@ -44,15 +45,15 @@ sources:
   - editeur: "OPCO Atlas"
     titre: "Experts-comptables, Commissaires aux comptes et Audit"
     url: "https://www.opco-atlas.fr/atlas/experts-comptables-commissaires-aux-comptes.html"
-    consulte: 2026-09-21
+    consulte: 2026-09-28
   - editeur: "Apec"
     titre: "L’Apec et le Conseil supérieur de l’ordre des experts-comptables se mobilisent au service de l’emploi"
     url: "https://corporate.apec.fr/home/actus-medias/toutes-nos-actualites/lapec-et-le-conseil-superieur-de.html"
-    consulte: 2026-09-21
+    consulte: 2026-09-28
   - editeur: "OEC Paris — Le Francilien"
     titre: "Comment attirer et fidéliser des collaborateurs"
     url: "https://lefrancilien.oec-paris.fr/attractivite/comment-recruter-et-fideliser-collaborateurs-cabinet-expert-comptable/"
-    consulte: 2026-09-21
+    consulte: 2026-09-28
 ---
 
 ## Réponse directe
@@ -96,7 +97,8 @@ Le cabinet fixe le périmètre de la règle, les entrées qu’elle accepte, la 
 Informer un client, interpréter une situation ou assumer un arbitrage engage une relation et une responsabilité. La préparation rassemble les éléments utiles ; la personne compétente choisit et assume l’action.
 
 <figure data-blog-proof="competences-frontiere">
-  <img src="/proofs/blog/competences-frontiere.webp" alt="Frontière fictive entre préparation automatisée, validation et décision humaine." width="1600" height="900" loading="lazy" decoding="async">
+  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Frontière fictive entre préparation automatisée, validation et décision humaine." tabindex="0"><img src="/proofs/blog/competences-frontiere.webp" alt="Frontière fictive entre préparation automatisée, validation et décision humaine." width="1600" height="900" loading="lazy" decoding="async"></div>
+  <figcaption>Source : cadre HTML et jeu fictif décrits dans l’article · capture du 2026-09-21</figcaption>
 </figure>
 
 ## La règle écrite
@@ -124,7 +126,8 @@ Informer un client, interpréter une situation ou assumer un arbitrage engage un
 **Le jeu d’essai.** La même règle a été exécutée sur trois entrées fictives : une entrée complète, une pièce à deux interprétations et une entrée sans règle applicable. Le rejeu a produit une proposition et deux refus motivés.
 
 <figure data-blog-proof="competences-refus">
-  <img src="/proofs/blog/competences-refus.webp" alt="Résultats du rejeu fictif : une proposition et deux refus motivés." width="1600" height="900" loading="lazy" decoding="async">
+  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Résultats du rejeu fictif : une proposition et deux refus motivés." tabindex="0"><img src="/proofs/blog/competences-refus.webp" alt="Résultats du rejeu fictif : une proposition et deux refus motivés." width="1600" height="900" loading="lazy" decoding="async"></div>
+  <figcaption>Source : oracle exécutable sur le jeu fictif, rendu dans un cadre HTML figé · capture du 2026-09-21</figcaption>
 </figure>
 
 ## Rejoué sur le jeu fictif
@@ -146,6 +149,8 @@ OPCO Atlas écrit, dans un passage prospectif non daté, qu’[« Une partie des
 Hypothèse à vérifier sur chaque tâche : si une préparation répétitive est effectivement retirée du flux, le temps libéré peut être réaffecté aux cas qui dépassent la règle. Aucun effet n’est présumé avant la recette puis la mesure sur le périmètre réel.
 
 Pour la direction, cela crée une nouvelle responsabilité. Elle doit décider quelles règles méritent d’être écrites, qui les valide et comment elles sont maintenues. Une automatisation sans propriétaire métier vieillit en silence.
+
+Pour préparer cette décision, prenez une proposition déjà produite sur le jeu fictif et demandez au collaborateur de retrouver l’entrée, la période et la condition qui l’ont déclenchée. Demandez-lui ensuite ce qu’il ferait si la pièce admettait deux lectures, puis qui pourrait modifier la règle après sa recette. Si ces réponses ne sont pas visibles, le travail à transmettre n’est pas seulement le geste de contrôle : c’est aussi la manière de reconnaître une exception et de faire remonter une règle manquante. Le cabinet peut alors désigner qui écrit, qui vérifie et qui autorise sa nouvelle version.
 
 ## Les erreurs à éviter
 

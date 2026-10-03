@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "candidateSlug": "prompt-chatgpt-expert-comptable",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-09-29",
+  "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
+  "manifestSha256": "b2cdbd292ffe24a190e872b7aa6e8772c8e60b0ba0e222ea16021cc1afbaccf3",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact prompt-chatgpt-expert-comptable."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.6776041666666667,
+      "#27b657": 0.014895833333333334,
+      "#1c8a41": 0.035729166666666666,
+      "#231f20": 0.07534722222222222
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Le master observé montre une feuille vierge avant une enveloppe non adressée derrière une grille fermée ; sujet, composition, diorama, hex, interdits et alt sont décrits dans la recette."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Aucun mot, logo, personne, adresse ou interface de ChatGPT sur le master ; ni flèche ni coche ne simulent un envoi effectué."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Le cadre w39-prompt-brouillon annonce Atelier Fictif et Brouillon, non envoyé ; w39-prompt-arret montre une pièce vide et Contexte incomplet, et leurs légendes indiquent une reconstitution sans modèle interrogé."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "La grille fermée sépare clairement le papier et l'enveloppe ; le contrôle préalable à la demande est identifiable avec l'alt sans imaginer une interaction avec un client réel."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Master mesuré à 1920 × 1080, OG à 1200 × 630 ; deux preuves WebP réelles sous 150 Ko, image et alt présents dans la prévisualisation construite."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "L'alt décrit les objets du master et non une sortie du modèle ; chaque preuve inline dispose d'un alt et d'une légende Source et capture du 2026-09-27."
+      ]
+    }
+  ]
+}

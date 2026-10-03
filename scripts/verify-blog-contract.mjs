@@ -1,8 +1,10 @@
+import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseHtml } from 'parse5';
 import { parse as parseYaml } from 'yaml';
+import { dateIntentionScellee } from './lib/blog-pipeline.mjs';
 import {
   chargerAutocompletionMesuree,
   titrePorteUneRequeteMesuree,
@@ -12,7 +14,65 @@ import {
   rubriquePourArticle,
 } from '../src/data/blog-rubriques.mjs';
 
-const LEGENDE_TECHNIQUE_INTERDITE = /Ouvrir la preuve en grand|reconstitution fidèle[^.]{0,240}recette scellée|Source\s*:[^.]{0,320}capture du/is;
+const LEGENDE_TECHNIQUE_INTERDITE = /Ouvrir la preuve en grand|reconstitution fidèle[^.]{0,240}recette scellée|recette scellée/i;
+
+function legendePreuveValide(figure, historique) {
+  const captions = elements(figure, (node) => node.tagName === 'figcaption');
+  // L'exception sans légende ne vaut que pour les anciens dossiers épinglés.
+  if (captions.length === 0) return historique;
+  if (captions.length !== 1) return false;
+  const contenu = texte(captions[0]).replace(/\s+/g, ' ').trim();
+  const match = /^Source\s*:\s*(.+?)\s*·\s*capture du (\d{4}-\d{2}-\d{2})$/i.exec(contenu);
+  if (!match || !match[1].trim() || LEGENDE_TECHNIQUE_INTERDITE.test(contenu)) return false;
+  const date = new Date(`${match[2]}T00:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === match[2]
+    && date.getTime() <= Date.now();
+}
+
+function preuveDirecteSourcee(root, slug, figure) {
+  const image = premier(figure, (node) => node.tagName === 'img');
+  const id = attribut(figure, 'data-blog-proof');
+  if (!id || !image || image.parentNode !== figure
+    || elements(figure, (node) => node.tagName === 'figcaption').length
+    || elements(figure, (node) => classes(node).has('preuve-defilante')).length) return false;
+  try {
+    const recette = JSON.parse(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
+    const preuves = recette.inlineProofs ?? [];
+    const preuve = preuves.find((item) => item.id === id);
+    const date = new Date(`${preuve?.capturedAt}T00:00:00Z`);
+    const mobile = `/proofs/blog/${id}-mobile.webp`;
+    const portrait = existsSync(join(root, 'public', mobile));
+    return preuves.filter((item) => item.id === id).length === 1
+      && preuve.alt === attribut(image, 'alt') && Boolean(preuve.alt?.trim())
+      && (attribut(image, 'src') === `/proofs/blog/${id}.webp`
+        || (portrait && attribut(image, 'src') === mobile))
+      && attribut(image, 'srcset') === null
+      && attribut(image, 'sizes') === null
+      && Boolean(preuve.source?.trim())
+      && /^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')
+      && !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === preuve.capturedAt
+      && date.getTime() <= Date.now();
+  } catch {
+    return false;
+  }
+}
+
+function estPreuveHistorique(root, slug, path, frontmatter) {
+  if (frontmatter.brouillon !== false) return false;
+  try {
+    const baseline = JSON.parse(readFileSync(join(root, 'editorial/legacy-review-baseline.json'), 'utf8'));
+    const entree = baseline.articles?.[slug];
+    if (!entree?.recipeSha256 || !entree?.reviewSha256) return false;
+    const dossier = join(root, 'editorial/recettes', slug);
+    const hash = (nom) => createHash('sha256').update(readFileSync(join(dossier, nom))).digest('hex');
+    const publication = JSON.parse(readFileSync(join(root, 'editorial/articles', slug, 'preuves/publication.json'), 'utf8'));
+    return publication.kind === 'publication-scellee' && publication.candidateSlug === slug
+      && createHash('sha256').update(readFileSync(path)).digest('hex') === publication.articleSha256
+      && hash('recette.json') === entree.recipeSha256 && hash('revues.json') === entree.reviewSha256;
+  } catch {
+    return false;
+  }
+}
 
 function parcourir(node, visite) {
   visite(node);
@@ -46,6 +106,18 @@ function classes(node) {
 function texte(node) {
   if (!node) return '';
   return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texte).join('');
+}
+
+function texteSansLegendes(node) {
+  if (!node || node.tagName === 'figcaption') return '';
+  return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texteSansLegendes).join(' ');
+}
+
+function texteEditorialRendu(node) {
+  // Le JSON-LD utilise texte() : conserver l'extraction brute des métadonnées.
+  if (!node || ['script', 'style', 'template', 'noscript'].includes(node.tagName)
+    || aAttribut(node, 'hidden')) return '';
+  return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(texteEditorialRendu).join(' ');
 }
 
 function normaliser(value) {
@@ -101,8 +173,7 @@ function mediasPreuve(articleCorps) {
       const image = premier(figure, (node) => node.tagName === 'img');
       const alt = attribut(image, 'alt') ?? '';
       return { figure, conforme: Boolean(image && alt.trim()), alt };
-    })
-    .filter(({ figure }) => premier(figure, (node) => node.tagName === 'img'));
+    });
 }
 
 function estSommaire(node) {
@@ -163,7 +234,7 @@ function exemptionRubrique(slug) {
   return { ...exemption, valide: dateValide && raisonValide };
 }
 
-function auditerArticle({ dist, slug, path, mesure }) {
+function auditerArticle({ root, dist, slug, path, mesure }) {
   const erreurs = [];
   const { frontmatter } = lireFrontmatter(path);
   if (!frontmatter) {
@@ -180,15 +251,44 @@ function auditerArticle({ dist, slug, path, mesure }) {
 
   const document = parseHtml(readFileSync(page, 'utf8'));
   const articleCorps = premier(document, (node) => node.tagName === 'div' && classes(node).has('article-corps'));
+  if (!articleCorps) return [`${slug} : clause 1, corps d'article absent du rendu`];
 
   const medias = mediasPreuve(articleCorps);
-  const conformes = medias.filter((media) => media.conforme);
-  if (conformes.length < 2) {
-    erreurs.push(`${slug} : clause 1, ${medias.length} image(s) de preuve en plus de la couverture, ${conformes.length} avec alternative accessible ; 2 requises`);
+  const idsVus = new Set();
+  const doublons = medias.filter(({ figure }) => {
+    const id = attribut(figure, 'data-blog-proof');
+    if (!id) return false; // Les figures historiques à légende n'ont pas d'identifiant.
+    if (idsVus.has(id)) return true;
+    idsVus.add(id);
+    return false;
+  });
+  if (medias.some((media) => !media.conforme)) {
+    erreurs.push(`${slug} : clause 1, figure de preuve sans image ou alternative accessible`);
+  }
+  if (doublons.length) erreurs.push(`${slug} : clause 1, identifiant data-blog-proof répété entre figures`);
+  const recettePath = join(root, 'editorial/recettes', slug, 'recette.json');
+  if (existsSync(recettePath)) {
+    try {
+      const recette = JSON.parse(readFileSync(recettePath, 'utf8'));
+      for (const preuve of recette.inlineProofs ?? []) {
+        if (!preuve.id || !idsVus.has(preuve.id)) {
+          erreurs.push(`${slug} : clause 1, preuve déclarée ${preuve.id ?? '(sans id)'} absente du rendu`);
+        }
+      }
+    } catch {
+      erreurs.push(`${slug} : clause 1, recette de preuve illisible`);
+    }
   }
   const contenuPublic = texte(articleCorps).replace(/\s+/g, ' ').trim();
-  if (LEGENDE_TECHNIQUE_INTERDITE.test(contenuPublic)) {
-    erreurs.push(`${slug} : clause 1, une légende technique publique de preuve est interdite ; la source et la date restent dans la recette interne`);
+  if (!texteEditorialRendu(articleCorps).trim()) erreurs.push(`${slug} : clause 1, corps d'article vide dans le rendu`);
+  const horsLegendes = texteSansLegendes(articleCorps);
+  const historique = medias.some(({ figure }) => elements(figure, (node) => node.tagName === 'figcaption').length === 0)
+    && estPreuveHistorique(root, slug, path, frontmatter);
+  if (LEGENDE_TECHNIQUE_INTERDITE.test(contenuPublic)
+      || /Source\s*:[^.]{0,320}capture du/i.test(horsLegendes)
+      || medias.some(({ figure }) => !legendePreuveValide(figure, historique)
+        && !preuveDirecteSourcee(root, slug, figure))) {
+    erreurs.push(`${slug} : clause 1, légende de preuve invalide, provenance interne manquante ou consigne technique publique`);
   }
 
   const h2 = articleCorps ? elements(articleCorps, (node) => node.tagName === 'h2') : [];
@@ -265,29 +365,38 @@ export function auditerContratBlog({
   dist = join(root, 'dist'),
   slugs = null,
   mesure = null,
+  au,
 } = {}) {
   const dossier = join(root, 'src/content/blog');
   const tous = existsSync(dossier)
     ? readdirSync(dossier).filter((nom) => nom.endsWith('.md')).map((nom) => nom.slice(0, -3)).sort()
     : [];
-  const selection = slugs ? tous.filter((slug) => new Set(slugs).has(slug)) : tous;
-  let mesureChargee = mesure;
-  let erreurMesure = null;
-  if (!mesureChargee) {
-    try {
-      mesureChargee = chargerAutocompletionMesuree(root);
-    } catch (error) {
-      erreurMesure = error.message;
-      mesureChargee = { autocompletion: {} };
-    }
-  }
-  const erreurs = [];
+  // La route Astro exclut les brouillons du build public. Si une preview les rend,
+  // ils sont soumis aux cinq mêmes clauses ; un article public manquant reste rouge.
+  const demandes = slugs === null ? null : new Set(slugs);
+  const selection = demandes ? tous.filter((slug) => demandes.has(slug)) : tous.filter((slug) => {
+    const { frontmatter } = lireFrontmatter(join(dossier, `${slug}.md`));
+    return frontmatter?.brouillon !== true || Boolean(cheminRendu(dist, `/blog/${slug}`));
+  });
+  const erreurs = demandes
+    ? [...demandes].filter((slug) => !tous.includes(slug)).map((slug) => `${slug} : source article absente`)
+    : [];
   const exemptions = [];
   for (const slug of selection) {
+    let mesureChargee = mesure;
+    let erreurMesure = null;
+    if (!mesureChargee) {
+      try {
+        mesureChargee = chargerAutocompletionMesuree(root, { au: dateIntentionScellee(root, slug) ?? au });
+      } catch (error) {
+        erreurMesure = error.message;
+        mesureChargee = { autocompletion: {} };
+      }
+    }
     const exemption = exemptionRubrique(slug);
     if (exemption?.valide) exemptions.push({ slug, clause: 4, date: exemption.date, raison: exemption.raison });
     if (erreurMesure) erreurs.push(`${slug} : clauses 3 et 5, ${erreurMesure}`);
-    erreurs.push(...auditerArticle({ dist, slug, path: join(dossier, `${slug}.md`), mesure: mesureChargee }));
+    erreurs.push(...auditerArticle({ root, dist, slug, path: join(dossier, `${slug}.md`), mesure: mesureChargee }));
   }
   return { pass: erreurs.length === 0, articles: selection.length, exemptions, erreurs };
 }

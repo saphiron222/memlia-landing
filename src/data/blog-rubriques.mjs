@@ -64,6 +64,18 @@ export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
     date: '2026-09-21',
     raison: 'Article transversal sur les compétences, la préparation et la décision humaine : il ne correspond pas à une chaîne de tâches propre aux deux rubriques existantes.',
   }),
+  'prompt-chatgpt-expert-comptable': Object.freeze({
+    date: '2026-09-28',
+    raison: 'Guide transversal sur l’usage prudent d’un prompt ChatGPT en cabinet : la demande de pièce est un exemple fictif, pas une étape de la chaîne Saisie et pièces ni du cycle Paie et DSN.',
+  }),
+  'logiciel-ia-comptabilite': Object.freeze({
+    date: '2026-09-28',
+    raison: 'Grille de choix transversale entre logiciel existant et solutions envisagées : le parcours fictif d’une pièce sert à comparer les exceptions, sans transformer ce guide en étape de la chaîne Saisie et pièces.',
+  }),
+  'tests-verts-et-regle-des-trois-passes': Object.freeze({
+    date: '2026-09-28',
+    raison: 'Cicatrice de méthode transversale sur les suites, la chaîne de preuve et l’écran : elle concerne la recette de toute tâche, non une étape propre aux rubriques Paie et DSN ou Saisie et pièces.',
+  }),
 });
 
 const PAR_ARTICLE = new Map();

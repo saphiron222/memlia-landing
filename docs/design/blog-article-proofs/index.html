@@ -32,19 +32,19 @@
 
   <section class="frame" id="saisie-six-controles" aria-label="Six contrôles de saisie comptable dans leur ordre fixe">
     <article class="window full">
-      <header class="window-bar"><span class="dot green"></span><b>Lecture d’une pièce fictive</b><span>Lot TEST-050 · aucune écriture enregistrée</span></header>
+      <header class="window-bar"><span class="dot green"></span><b>Lecture d’une facture fictive</b><span>Scénario TEST-050 · sortie attendue, non exécutée</span></header>
       <div class="flow-title"><small>Ordre fixe</small><h2>Une étape qui échoue arrête les suivantes.</h2></div>
-      <ol class="steps six"><li><i>1</i><b>Nature</b><span>Facture identifiée</span></li><li><i>2</i><b>Émetteur</b><span>Fournisseur connu</span></li><li><i>3</i><b>Mentions</b><span>Champs attendus présents</span></li><li class="blocked"><i>4</i><b>Montants</b><span>Écart détecté</span></li><li class="waiting"><i>5</i><b>Période</b><span>Non joué</span></li><li class="waiting"><i>6</i><b>Doublon</b><span>Non joué</span></li></ol>
-      <div class="outcome-band"><span class="pill amber">Refus attendu</span><b>Aucune correction d’office.</b><span>La pièce rejoint la file avec le motif « écart de montants ».</span></div>
+      <ol class="steps six"><li><i>1</i><b>Nature</b><span>Facture identifiée</span></li><li><i>2</i><b>Émetteur</b><span>Fournisseur connu</span></li><li><i>3</i><b>Mentions</b><span>Champs attendus présents</span></li><li><i>4</i><b>Montants</b><span>Cohérents</span></li><li class="blocked"><i>5</i><b>Période</b><span>Période précédente</span></li><li class="waiting"><i>6</i><b>Doublon</b><span>Non joué</span></li></ol>
+      <div class="outcome-band"><span class="pill amber">Sortie attendue</span><b>Aucune écriture enregistrée.</b><span>La facture reste affectée à sa période ; doublon à vérifier ensuite.</span></div>
     </article>
   </section>
 
   <section class="frame" id="saisie-file-anomalies" aria-label="File d’anomalies comptables à six motifs fermés">
     <article class="window full">
-      <header class="window-bar"><span class="dot amber"></span><b>File d’anomalies</b><span>Jeu fictif · lot TEST-050</span></header>
+      <header class="window-bar"><span class="dot amber"></span><b>File d’anomalies</b><span>Scénario TEST-050 · motifs possibles, non mesurés</span></header>
       <div class="queue-layout">
-        <section><small>Motifs fermés</small><h2>Chaque refus nomme la règle qui s’est arrêtée.</h2><div class="motifs"><span>Document non facturé <b>1</b></span><span>Fournisseur inconnu <b>6</b></span><span>Pièce incomplète <b>2</b></span><span class="active">Écart de montants <b>1</b></span><span>Hors période <b>3</b></span><span>Doublon probable <b>1</b></span></div></section>
-        <section class="case"><small>Cas sélectionné</small><h3>TEST-023 · écart de montants</h3><dl><div><dt>Contrôle</dt><dd>HT + TVA ≠ TTC lu</dd></div><div><dt>Action automatique</dt><dd>Aucune</dd></div><div><dt>Décision attendue</dt><dd>Relire la pièce</dd></div><div><dt>État</dt><dd><span class="pill amber">À traiter</span></dd></div></dl><p>Le reliquat se recompte pour ce lot. Il ne classe aucune personne.</p></section>
+        <section><small>Motifs fermés</small><h2>Première sortie selon l’ordre des contrôles.</h2><div class="motifs"><span>Document non facturé</span><span>Fournisseur inconnu</span><span class="active">Pièce incomplète</span><span>Écart de montants</span><span>Hors période</span><span>Doublon probable</span></div></section>
+        <section class="case"><small>Cas illustré · sortie attendue</small><h3>Ticket coupé · pièce incomplète</h3><dl><div><dt>Contrôle</dt><dd>Informations illisibles</dd></div><div><dt>Action automatique</dt><dd>Aucune écriture</dd></div><div><dt>Décision attendue</dt><dd>Qualifier et demander le justificatif</dd></div><div><dt>État</dt><dd><span class="pill amber">À traiter</span></dd></div></dl><p>Le reliquat ne se mesure qu’après rejeu du lot. Aucun classement individuel.</p></section>
       </div>
     </article>
   </section>

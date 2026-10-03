@@ -14,14 +14,43 @@ const liensAttendus = new Map([
   ['controler-les-bulletins-de-paie-avant-la-dsn', '/automatisation/paie'],
   ['suivre-la-production-sociale-dans-excel', '/automatisation/paie'],
 ]);
+const pontsW39 = new Map([
+  ['logiciel-ia-comptabilite', { href: '/automatisation-cabinet-comptable', label: 'Voir le service d’automatisation sur mesure' }],
+  ['prompt-chatgpt-expert-comptable', { href: '/automatisation-cabinet-comptable', label: 'Voir comment automatiser une règle de cabinet' }],
+  ['tests-verts-et-regle-des-trois-passes', { href: '/automatisation-cabinet-comptable', label: 'Voir le service d’automatisation et sa recette' }],
+]);
+
+function verifierCardinalite(articlesPublies) {
+  const slugsAttendus = new Set([...articlesPublies.map(({ slug }) => slug), ...pontsW39.keys()]);
+  assert.equal(Object.keys(LIENS_COMMERCIAUX_BLOG).length, slugsAttendus.size);
+}
 
 test('chaque article publié reçoit un pont commercial explicite après le corps éditorial', () => {
-  assert.equal(Object.keys(LIENS_COMMERCIAUX_BLOG).length, articles.length);
+  verifierCardinalite(articles);
   for (const entree of articles) {
     const lien = lienCommercialPourArticle(entree.slug);
     assert.match(lien.href, /^\/automatisation(?:-cabinet-comptable|\/[a-z0-9-]+)$/);
     assert.ok(lien.label.trim(), `${entree.slug} : libellé commercial vide`);
     assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, entree.slug), `${entree.slug} : repli non autorisé pour un article publié`);
+  }
+});
+
+test('le passage de 9 à 12 articles publiés ne double-compte pas les trois ponts W39', () => {
+  const articlesHistoriques = articles.filter(({ slug }) => !pontsW39.has(slug));
+  assert.equal(articlesHistoriques.length, 9);
+  verifierCardinalite(articlesHistoriques);
+  const articlesPublies = [...articlesHistoriques, ...[...pontsW39.keys()].map((slug) => ({ type: 'blog', slug }))];
+  assert.equal(articlesPublies.length, 12);
+  verifierCardinalite(articlesPublies);
+  for (const { slug } of articlesPublies) {
+    assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, slug), `${slug} : pont explicite absent après publication`);
+  }
+});
+
+test('les trois articles W39 ont un pont explicite avant leur publication, sans repli générique', () => {
+  for (const [slug, lien] of pontsW39) {
+    assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, slug), `${slug} : pont explicite absent`);
+    assert.deepEqual(lienCommercialPourArticle(slug), lien);
   }
 });
 
