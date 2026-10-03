@@ -25,6 +25,23 @@ def construire_et_verifier():
 
 
 class EditorialCadenceProof(unittest.TestCase):
+    def etats_publication_w39(self):
+        # Rejouer les deux côtés de l'intégration, même après fusion sur main.
+        publies = PLAN.etat_publie()
+        yield 'base integree', publies
+        avant = deepcopy(publies)
+        avant.pop('tests-verts-et-regle-des-trois-passes', None)
+        yield 'avant integration', avant
+        for jour in ('2026-09-28', '2026-10-02'):
+            archive = deepcopy(avant)
+            archive['tests-verts-et-regle-des-trois-passes'] = {
+                'date': jour,
+                'titre': 'Pourquoi des tests verts manquent des défauts : la règle des trois passes',
+                'requete': 'pourquoi des tests verts peuvent manquer des défauts',
+                'famille': 'ia-generative-agents', 'format': 'thought-leadership',
+            }
+            yield f'archive {jour}', archive
+
     def test_selection_refuse_toute_derive_editoriale_sans_ecrire(self):
         jour = date(2026, 9, 30)
         slug = 'automatiser-l-entree-en-relation-d-un-nouveau-client'
@@ -492,15 +509,29 @@ class EditorialCadenceProof(unittest.TestCase):
     def test_dates_figees_et_priorites_du_backlog_sont_inchangees(self):
         import json
         backlog = json.loads(PLAN.BACKLOG.read_text(encoding='utf-8'))
-        donnees, erreurs, _, _ = construire_et_verifier()
-        self.assertEqual(erreurs, [])
-        plan = {e['slug']: e for e in [donnees[3]] + donnees[4]}
-        for entry in backlog:
-            if entry.get('datePlanifiee'):
-                self.assertEqual(plan[entry['slug']]['date'], entry['datePlanifiee'])
-            self.assertEqual(plan[entry['slug']]['priorite'], entry['priorite'])
-        for slug, published in donnees[2].items():
-            self.assertEqual(plan[slug]['date'], published['date'])
+        for scenario, publies in self.etats_publication_w39():
+            with self.subTest(scenario=scenario), patch.object(PLAN, 'etat_publie', return_value=publies):
+                donnees, erreurs, _, _ = construire_et_verifier()
+                self.assertEqual(erreurs, [])
+                plan = {e['slug']: e for e in [donnees[3]] + donnees[4]}
+                for entry in backlog:
+                    slug = entry['slug']
+                    priorite = entry['priorite']
+                    if slug == 'trois-bugs-que-des-tests-verts-n-ont-pas-vus' and 'tests-verts-et-regle-des-trois-passes' in publies:
+                        self.assertNotIn(slug, plan)
+                        slug = 'tests-verts-et-regle-des-trois-passes'
+                        # Le sujet P3 est remplacé par l'archive signée P1,
+                        # pas promu dans le backlog source.
+                        priorite = 1
+                        self.assertEqual(PLAN.creneau(plan[slug]), entry['date'])
+                        self.assertEqual(plan[slug]['requete'], entry['requete'])
+                        self.assertEqual(plan[slug]['titre'], entry['titre'])
+                    if entry.get('datePlanifiee'):
+                        self.assertEqual(PLAN.creneau(plan[slug]), entry['datePlanifiee'])
+                    self.assertEqual(plan[slug]['priorite'], priorite)
+                for slug, published in donnees[2].items():
+                    self.assertEqual(plan[slug]['date'], published['date'])
+                    self.assertEqual(plan[slug]['statut'], 'published')
 
     def test_alternance_sur_creneaux_non_figes(self):
         entries = [dict(slug=str(i), famille='f', pole=p, format=f, priorite=1, rang_famille=i)
@@ -552,20 +583,29 @@ class EditorialCadenceProof(unittest.TestCase):
                 PLAN.planifier(entries, {})
 
     def test_cicatrice_du_samedi_ne_consomme_pas_le_plafond_des_quatre(self):
-        donnees, erreurs, _, par_semaine = construire_et_verifier()
-        self.assertEqual(erreurs, [])
-        self.assertEqual(par_semaine[(2026, 38)], 4)
-        satellites = donnees[4]
-        cicatrices = sorted((e for e in satellites if e.get("serie") == "cicatrices"), key=lambda e: e["date"])
-        dates = [date.fromisoformat(e["date"]) for e in cicatrices]
-        self.assertGreaterEqual(len(dates), 8)
-        self.assertEqual(dates[0].isoformat(), "2026-09-19")
-        creneaux = [date.fromisoformat(PLAN.creneau(e)) for e in cicatrices]
-        self.assertTrue(all((b - a).days == 7 for a, b in zip(creneaux, creneaux[1:])), creneaux)
-        if "tests-verts-et-regle-des-trois-passes" in {e["slug"] for e in cicatrices}:
-            self.assertIn(date(2026, 9, 28), dates)
-        self.assertEqual(cicatrices[0]["statut"], "published")
-        self.assertTrue(all(e["statut"] == ("published" if e["slug"] == "tests-verts-et-regle-des-trois-passes" else "manque" if e['date'] < date.today().isoformat() else "planned") for e in cicatrices[1:]), cicatrices)
+        for scenario, publies in self.etats_publication_w39():
+            with self.subTest(scenario=scenario), patch.object(PLAN, 'etat_publie', return_value=publies):
+                donnees, erreurs, _, par_semaine = construire_et_verifier()
+                self.assertEqual(erreurs, [])
+                self.assertEqual(par_semaine[(2026, 38)], 4)
+                self.assertEqual(par_semaine[(2026, 39)], 4)
+                cicatrices = sorted((e for e in donnees[4] if e.get('serie') == 'cicatrices'), key=PLAN.creneau)
+                creneaux = [date.fromisoformat(PLAN.creneau(e)) for e in cicatrices]
+                self.assertGreaterEqual(len(creneaux), 8)
+                self.assertEqual(creneaux[0].isoformat(), '2026-09-19')
+                self.assertTrue(all((b - a).days == 7 for a, b in zip(creneaux, creneaux[1:])), creneaux)
+                w39 = cicatrices[1]
+                self.assertEqual(PLAN.creneau(w39), '2026-09-26')
+                if 'tests-verts-et-regle-des-trois-passes' in publies:
+                    self.assertEqual(w39['slug'], 'tests-verts-et-regle-des-trois-passes')
+                    self.assertEqual(w39['date'], publies[w39['slug']]['date'])
+                else:
+                    self.assertEqual(w39['slug'], 'trois-bugs-que-des-tests-verts-n-ont-pas-vus')
+                    self.assertEqual(w39['date'], '2026-09-26')
+                for e in cicatrices:
+                    statut = ('published' if e['slug'] in publies else
+                              'manque' if e['date'] < date.today().isoformat() else 'planned')
+                    self.assertEqual(e['statut'], statut, e)
 
     def test_cicatrice_hors_samedi_rougit(self):
         donnees, _, _, _ = construire_et_verifier()
