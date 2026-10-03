@@ -30,17 +30,17 @@
     }
   },
   "evidence": [
-    "27/30 : protocole de comparaison à faire chez le vendeur ; quatre cas de règle locale, dont trois figurent dans la preuve des exceptions.",
+    "27/30 : protocole de comparaison à faire chez le vendeur ; quatre cas de règle locale, tous visibles dans la file de contrôle fictive (proposition, doublon probable, période ambiguë, donnée absente), sans écriture.",
     "22/25 : grille de choix et maillage cohérents, sans classement ni performance commerciale mesurés.",
     "14/15 : trois claims déjà confrontés aux copies, contexte CNIL limité à l'IA générative ; aucune nouvelle consultation HTTP.",
-    "14/15 : deux portraits directs et sans légende ni scroll effectivement lisibles à 320/375/1440 ; aucune mesure Lighthouse ou de production.",
+    "14/15 : deux images 1600 × 900 directes, sans légende ni défilement, qui tiennent dans la colonne à 1280 et 390 px et restent lisibles dans leurs grandes masses sur téléphone ; aucune mesure Lighthouse ou de production.",
     "14/15 : tableaux citables seulement avec la mention qu'aucun éditeur n'a été évalué."
   ],
   "reservations": [
-    "Le contrat interne déclare capturedAt 27/09 mais ne prouve pas l'horodatage autonome de fabrication des nouveaux portraits ; les captures de viewport relues ici attestent leur lisibilité, non leur date de création.",
+    "Le contrat interne déclare capturedAt 2026-10-03 pour les deux nouvelles figures, sans horodatage autonome de fabrication ; les captures à 1280 et 390 px relues ici attestent leur rendu, non leur date de création.",
     "Robots index dans le build local ; QA/CI, scellement et contenu HTML effectivement servi après intégration restent à prouver."
   ],
-  "verdict": "AI_REVIEW_PASS sur les preuves inline et le rendu local a4e597b, sous réserve de la traçabilité historique de capture ; ni scellement ni publication.",
+  "verdict": "AI_REVIEW_PASS sur les deux nouvelles figures 1600 × 900 et leur rendu local relu à 1280 et 390 px, sous réserve de la traçabilité de fabrication ; ni scellement ni publication.",
   "subject": {
     "slug": "logiciel-ia-comptabilite",
     "articleSha256": "bb2554d5aa5cd76e0239d7388cdaa4310b7710e33589aad117057f73d00c8c42",

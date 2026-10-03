@@ -96,8 +96,8 @@ Le cabinet fixe le périmètre de la règle, les entrées qu’elle accepte, la 
 
 Informer un client, interpréter une situation ou assumer un arbitrage engage une relation et une responsabilité. La préparation rassemble les éléments utiles ; la personne compétente choisit et assume l’action.
 
-<figure data-blog-proof="competences-frontiere">
-  <img src="/proofs/blog/competences-frontiere-mobile.webp" alt="Frontière fictive entre préparation automatisée, validation et décision humaine." width="1200" loading="lazy" decoding="async">
+<figure data-blog-proof="competences-tableau-dossier">
+  <img src="/proofs/blog/competences-tableau-dossier.webp" alt="Tableau fictif du dossier D-008 : travaux préparés, propositions à valider et décisions du collaborateur." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## La règle écrite
@@ -124,8 +124,8 @@ Informer un client, interpréter une situation ou assumer un arbitrage engage un
 
 **Le jeu d’essai.** La même règle a été exécutée sur trois entrées fictives : une entrée complète, une pièce à deux interprétations et une entrée sans règle applicable. Le rejeu a produit une proposition et deux refus motivés.
 
-<figure data-blog-proof="competences-refus">
-  <img src="/proofs/blog/competences-refus-mobile.webp" alt="Résultats du rejeu fictif : une proposition et deux refus motivés." width="1200" loading="lazy" decoding="async">
+<figure data-blog-proof="competences-journal-rejeu">
+  <img src="/proofs/blog/competences-journal-rejeu.webp" alt="Journal fictif du rejeu : une proposition et deux refus motivés, avec le détail du cas à deux interprétations." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Rejoué sur le jeu fictif

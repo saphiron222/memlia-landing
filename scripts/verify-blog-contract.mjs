@@ -40,12 +40,11 @@ function preuveDirecteSourcee(root, slug, figure) {
     const preuves = recette.inlineProofs ?? [];
     const preuve = preuves.find((item) => item.id === id);
     const date = new Date(`${preuve?.capturedAt}T00:00:00Z`);
-    const mobile = `/proofs/blog/${id}-mobile.webp`;
-    const portrait = existsSync(join(root, 'public', mobile));
+    // Recette de référence : l'image directe est l'unique /proofs/blog/<id>.webp (1600 × 900) ;
+    // une variante portrait « -mobile » est refusée, même si le fichier existe.
     return preuves.filter((item) => item.id === id).length === 1
       && preuve.alt === attribut(image, 'alt') && Boolean(preuve.alt?.trim())
-      && (attribut(image, 'src') === `/proofs/blog/${id}.webp`
-        || (portrait && attribut(image, 'src') === mobile))
+      && attribut(image, 'src') === `/proofs/blog/${id}.webp`
       && attribut(image, 'srcset') === null
       && attribut(image, 'sizes') === null
       && Boolean(preuve.source?.trim())

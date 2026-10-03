@@ -22,6 +22,6 @@ Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-10-03, barème blog
 ## Réserves mesurées
 
 - Cette revue IA ciblée ne vaut ni scellement ni QA/CI exact-head ni feu vert de publication.
-- Aucun appel ChatGPT ou essai de lecteur d'écran effectué ; capturedAt W39 déclaré au 27/09 sans horodatage autonome vérifié lors de cette passe.
+- Aucun appel ChatGPT ou essai de lecteur d’écran effectué ; les deux nouvelles figures déclarent capturedAt 2026-10-03 dans la recette et le contrat interne, sans horodatage autonome de fabrication vérifié lors de cette passe.
 - Sources officielles évaluées à partir des copies et reçus du 29/09/2026 ; pas de nouvelle consultation HTTP en direct.
 - Le rendu local affiche robots index, sans preuve d'une mise en ligne ou d'une indexation effective.

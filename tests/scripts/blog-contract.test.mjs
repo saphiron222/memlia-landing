@@ -52,7 +52,8 @@ function auditer(root) {
   return auditerContratBlog({ root, dist: join(root, 'dist'), mesure: MESURE });
 }
 
-test('clause 1 — portrait direct lié à la recette, sans invalider le paysage déjà publié', () => {
+// Recette de référence (03/10/2026) : la figure directe est l'unique image 1600 × 900 de la preuve.
+test('clause 1 — image directe liée à la recette ; une variante portrait est refusée', () => {
   const root = fixture({ preuves: 1, legendePreuve: null });
   try {
     mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
@@ -62,15 +63,14 @@ test('clause 1 — portrait direct lié à la recette, sans invalider le paysage
     }] }));
     const page = pageArticle({ preuves: 1, legendePreuve: null }).replace(
       '<figure data-blog-proof><img src="/preuves/1.webp"',
-      '<figure data-blog-proof="preuve-1"><img src="/proofs/blog/preuve-1-mobile.webp"',
+      '<figure data-blog-proof="preuve-1"><img src="/proofs/blog/preuve-1.webp"',
     );
     const path = join(root, 'dist/blog', `${SLUG}.html`);
     writeFileSync(path, page);
-    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'portrait absent refusé');
+    assert.deepEqual(auditer(root).erreurs, [], 'image directe de la recette acceptée');
     writeFileSync(join(root, 'public/proofs/blog/preuve-1-mobile.webp'), 'actif de fixture');
-    assert.deepEqual(auditer(root).erreurs, []);
-    writeFileSync(path, page.replace('preuve-1-mobile.webp', 'preuve-1.webp'));
-    assert.deepEqual(auditer(root).erreurs, [], 'le contrat historique continue de lire le paysage');
+    writeFileSync(path, page.replace('preuve-1.webp', 'preuve-1-mobile.webp'));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'portrait refusé même si le fichier existe');
     writeFileSync(path, page.replace('alt="Preuve 1"', 'alt="Preuve 1" srcset="/autre.webp 1600w"'));
     assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'sélection alternative non liée refusée');
   } finally { rmSync(root, { recursive: true, force: true }); }

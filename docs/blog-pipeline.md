@@ -173,3 +173,8 @@ cinq articles vérifie maintenant aussi l’absence de débordement à 320 px.
 Le récit signé, les candidats, leurs revues et la preuve de production restent
 sur leurs voies existantes. Cette livraison technique ne publie pas la Cicatrice,
 n’ajoute aucun consentement et ne qualifie pas un déploiement Cloudflare.
+
+Le 03/10/2026, la recette de référence a remplacé les six portraits W39, dont
+ces deux-là, par des images 1600 × 900 rendues par `render-blog-article-proofs.mjs` ;
+le renderer `render-blog-w39-mobile-proofs.mjs` et ses sources sont retirés et la
+forge ne sert plus aucune variante `-mobile`.

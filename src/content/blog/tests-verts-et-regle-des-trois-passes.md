@@ -73,8 +73,8 @@ Je prends une entrée fictive, conserve le résultat attendu calculé séparéme
 
 La question utile n'est pas « le fichier s'ouvre-t-il ? », mais « peut-on remonter de ce total à chacune de ses entrées sans saut ni référence décalée ? ». Sur une sortie tabulaire, contrôlez les formules réellement livrées, les cellules sources et les filtres appliqués. Sur un export, rapprochez le total exporté et le total de l'outil de référence sur un jeu fictif stable.
 
-<figure data-blog-proof="w39-reference-decalee">
-  <img src="/proofs/blog/w39-reference-decalee-mobile.webp" alt="Exemple fictif d'une cellule de coût décalée de Z vers AA après insertion d'une colonne." width="1200" loading="lazy" decoding="async">
+<figure data-blog-proof="trois-passes-chaine-preuve">
+  <img src="/proofs/blog/trois-passes-chaine-preuve.webp" alt="Chaîne de preuve fictive : trois coûts rapprochés de leurs cellules, une référence restée en Z, total 50 pour 55 attendu." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Troisième passe : l'écran, pour refaire le geste humain
@@ -107,8 +107,8 @@ La recette doit prévoir au moins un scénario où la décision change si le pé
 
 Ces trois lignes sont des sorties d'une règle locale sur jeu fictif ; elles ne reproduisent ni les chiffres ni les captures de la réalisation historique.
 
-<figure data-blog-proof="w39-trois-passes">
-  <img src="/proofs/blog/w39-trois-passes-mobile.webp" alt="Trois passes fictives : test rouge des bornes, preuve des références et lecture du périmètre à l'écran." width="1200" loading="lazy" decoding="async">
+<figure data-blog-proof="trois-passes-journal-recette">
+  <img src="/proofs/blog/trois-passes-journal-recette.webp" alt="Journal de recette fictif : bornes mal lues, total des coûts divergent et exercice agrégé à l’écran, trois arrêts." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Une fiche de recette que le cabinet peut reprendre

@@ -49,42 +49,47 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Périmètre ici limité aux deux preuves inline ; sources déclarées en recette, non des captures d'un logiciel client."
+        "Couverture inchangée, relue : diorama 3D d’îlots verts et graphite reliés par des chemins, jeton vert devant une bifurcation, sans texte, conforme à son alt.",
+        "Les deux figures suivent le gabarit des références : une fenêtre sur fond quadrillé, en-tête à pastille et « Jeu d’essai fictif · … », écran d’outil, palette vert/orange/gris ; sujet, composition, interdits et alt sont contrôlables."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Inspection des WebP : carte typologique et test fictif uniquement, aucun nom de dossier client."
+        "Cadre, fond et bandeau d’en-tête identiques au pixel près à la référence social-dictionnaire hors zone de contenu ; textes nets, aucun libellé tronqué, aucun logo, aucune personne.",
+        "Aucun chiffre de résultat : 60 et 2 sont des comptes de l’inventaire fictif et la mesure de la fiche reste « à relever » ; la couverture ne porte ni texte ni chiffre."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "carte-test-regle dit Jeu d'essai fictif et Candidate au cadrage, sans la présenter comme une mesure de performance."
+        "Les deux en-têtes affichent « Jeu d’essai fictif » (cabinet de démonstration, règle R-01) ; dossiers D-004, D-007 et D-009 inventés, aucun client ni collaborateur nommé.",
+        "Recette et contrat interne déclarent les sources (taxonomie src/data/familles.ts, règle décrite dans l’article) et capturedAt 2026-10-03, sans légende publique."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Les chiffres et libellés visibles de carte-douze-poles correspondent au tableau du corps et au contrat interne ; audit légal non ouvert."
+        "L’inventaire reprend la carte du corps (12 pôles, 60 familles, audit légal listé non ouvert) et la fiche montre une règle de relance avec ses cas courant, limite et refus, comme la section méthode."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Deux portraits -mobile.webp utilisés y compris à 1440 px ; captures 320/375/1440 haut/bas relues : bas de la carte et décision humaine restent lisibles sans défilement dans la figure. Les anciennes empreintes de paysages restent historiques ; pas de nouveau renderer --check exécuté."
+        "Les deux WebP servis font 1600 × 900, une seule image pour bureau et téléphone, et correspondent aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile n’est référencé par la page.",
+        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents ; captures 1280 et 390 px sans débordement."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Les deux alt du HTML et de la recette décrivent la carte et le test effectivement visibles ; sources taxonomie/test et capturedAt 20/09/2026 déclarés dans la recette, sans légende publique. Cette date historique ne date pas la fabrication des nouveaux portraits."
+        "Alts de 103 et 114 caractères, identiques dans la source, le HTML construit et la recette, décrivant l’inventaire de six familles et la fiche de règle visibles.",
+        "L’alt de couverture correspond à l’image : îlots en diorama, chemins, jeton vert devant une bifurcation."
       ]
     }
   ]

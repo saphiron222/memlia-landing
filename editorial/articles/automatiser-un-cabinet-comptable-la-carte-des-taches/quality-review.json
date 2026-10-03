@@ -30,17 +30,17 @@
     }
   },
   "evidence": [
-    "27/30 : carte et test fictif lisibles, sans chiffre de gain ou promesse sur l'audit légal.",
+    "27/30 : inventaire fictif de la carte (12 pôles, 60 familles) et fiche fictive de la règle de relance lisibles, sans chiffre de gain ni promesse sur l’audit légal, affiché « Listé, non ouvert ».",
     "22/25 : intention pilier et liens contextuels maintenus ; pas de résultat SERP mesuré.",
     "14/15 : six claims vérifiés sur copies datées du 29/09 dans la revue antérieure ; corps et recette inchangés.",
-    "14/15 : portraits directs et sans légende ni scroll, effectivement lisibles dans les captures 320/375/1440 ; pas de Lighthouse ni de test de production.",
+    "14/15 : deux images 1600 × 900 directes, sans légende ni défilement, qui tiennent dans la colonne dans les captures à 1280 et 390 px et restent lisibles dans leurs grandes masses sur téléphone ; pas de Lighthouse ni de test de production.",
     "14/15 : définitions et tableau récupérables avec la restriction audit légal."
   ],
   "reservations": [
     "Revue IA sur rendu local et sources archivées contrôlées le 29/09 ; pas de nouvelle requête HTTP ni de garantie d'applicabilité à un cabinet précis.",
     "Le nouveau rendu n'est ni scellé ni validé par la QA/CI de livraison ; indexabilité en production non prouvée."
   ],
-  "verdict": "AI_REVIEW_PASS sur les preuves inline et le rendu local a4e597b ; ni scellement, ni livraison.",
+  "verdict": "AI_REVIEW_PASS sur les deux nouvelles figures 1600 × 900 et leur rendu local relu à 1280 et 390 px ; ni scellement, ni livraison.",
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
     "articleSha256": "78060c52295ff76473df782c4c7133b2ac5dcefa02aada10251c51cf7cf7e91f",

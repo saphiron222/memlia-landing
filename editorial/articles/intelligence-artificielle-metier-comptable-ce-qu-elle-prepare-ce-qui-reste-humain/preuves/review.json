@@ -24,7 +24,7 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "H1 et onglet gardent l'intention métier/compétences ; les visuels restent un schéma de frontière et un relevé de sorties locales, pas une liste de produits."
+        "H1 et onglet gardent l’intention métier/compétences ; les visuels sont un tableau fictif de dossier rangé selon la frontière (préparé, à valider, décision du collaborateur) et un journal des sorties locales du rejeu, pas une liste de produits."
       ]
     },
     {
@@ -40,7 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Visuel competences-refus : IA-01 proposition PR-001, IA-02 refus pour deux interprétations, IA-03 refus règle à écrire ; tableau du corps précise les sorties sans attribution à des dossiers client."
+        "Visuel competences-journal-rejeu : IA-01 proposition PR-001, IA-02 refus pour deux interprétations (REFUS_AMBIGUITE, aucune proposition), IA-03 refus règle à écrire ; tableau du corps précise les sorties sans attribution à des dossiers client."
       ]
     },
     {
@@ -48,7 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Rendu local a4e597b : deux figures avec portraits enfants directs, alt descriptifs, sans figcaption ni wrapper défilant ; style width/max-width 100 %, height auto. Les trois cas et la frontière restent lisibles dans les captures haut/bas 320/375/1440 ; robots index, follow sur ce HTML local, sans contrôle du site servi."
+        "HTML construit localement : deux figures data-blog-proof à une seule img WebP 1600 × 900 servie au bureau comme au téléphone, alts descriptifs, sans figcaption ni wrapper défilant ; style width/max-width 100 %, height auto. Les trois colonnes et les trois cas sont lisibles à 1280 px et reconnaissables par leurs pastilles à 390 px ; robots index, follow sur ce HTML local, sans contrôle du site servi."
       ]
     },
     {
@@ -56,7 +56,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Schéma et texte renvoient à la frontière préparation/validation/décision ; la prospective Atlas est explicitement distincte d'une projection chiffrée de l'emploi."
+        "Le tableau de dossier et le texte renvoient à la frontière préparation/validation/décision ; la prospective Atlas est explicitement distincte d’une projection chiffrée de l’emploi."
       ]
     },
     {

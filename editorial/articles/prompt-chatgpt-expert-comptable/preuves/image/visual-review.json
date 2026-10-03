@@ -49,42 +49,47 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Les deux preuves inline sont des reconstitutions HTML fictives distinctes de la couverture ; source et capturedAt 2026-09-27 déclarés dans la recette, sans horodatage autonome de fabrication vérifié."
+        "Couverture inchangée, relue : feuille vierge, plateau sombre, grille fermée devant une enveloppe et deux cubes verts, sans texte, conforme à son alt.",
+        "Les deux figures sont des écrans HTML fictifs au gabarit des références (fenêtre unique, en-tête à pastille, « Jeu d’essai fictif · … ») : une fenêtre d’assistant générique et un suivi de demandes."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Inspection du WebP : Atelier Fictif, période avril 2026, Pièce attendue vide et sortie Contexte incomplet ; aucune donnée client réelle ni interface ChatGPT."
+        "Cadre et fond identiques au pixel près aux références hors zone de contenu ; aucune interface ni logo ChatGPT ou OpenAI, fenêtre nommée « Assistant » ; aucun texte tronqué, aucune personne nommée.",
+        "Les chiffres visibles sont des dates, numéros et compteurs fictifs (5 demandes, 14/04, 16/04, n° 118), sans résultat mesuré ni réponse de modèle."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "L'image affiche Jeu fictif et aucun message envoyé. L'article précise que les figures sont des reconstitutions HTML et non des captures ChatGPT."
+        "Atelier Fictif, Studio Fictif, Commerce Fictif et Démo Social sous en-têtes « Jeu d’essai fictif » ; le brouillon et l’arrêt reproduisent journal-rejeu.json, aucun modèle interrogé.",
+        "Recette et contrat interne : reconstitutions HTML fictives, capturedAt 2026-10-03, sans légende publique."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Le refus visible dépend de l'identification de la pièce à demander, pas de la présence physique de la facture. Le WebP nominal distinct représente une facture nommée mais non reçue et un brouillon non envoyé."
+        "Fenêtre d’assistant : facture nommée non reçue, brouillon non envoyé, destinataire à confirmer ; suivi : pièce non renseignée en arrêt, relevé de mars déjà demandé à ne pas relancer, pièce reçue qui arrête la relance."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Portraits -mobile.webp utilisés aussi à 1440 px dans ce rendu ; les captures haut/bas à 320/375/1440 montrent le brouillon non envoyé et le champ « Pièce attendue » vide. L'ancienne empreinte de paysage ne lie pas ces portraits ; la nouvelle empreinte de rendu est dans subject."
+        "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Les deux alt du HTML concordent avec la recette et les portraits : brouillon non envoyé et refus quand le champ « Pièce attendue » n’est pas renseigné. Il ne s'agit pas d'un justificatif identifié non reçu ; aucun essai ChatGPT n'a été effectué."
+        "Alts de 103 et 116 caractères, identiques dans le HTML construit et la recette : brouillon non envoyé, puis brouillon à relire, relance arrêtée et champ « Pièce attendue » non renseigné.",
+        "L’alt de couverture correspond à l’image : feuille vierge et enveloppe séparées par une grille fermée."
       ]
     }
   ]

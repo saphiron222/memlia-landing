@@ -1,4 +1,10 @@
 {
+  "subject": {
+    "slug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+    "bodySha256": "e400ef052380944007e468cb84a82a9f34590799b40b991ea880c92decc58225",
+    "recipeSha256": "f23cb958637cbdbb52fcff23b1e4d6231443b2ce32131995077ef62d1f89e754",
+    "renderedSha256": "b7aa27a39a01eb9953e98b4599dd8b588e832efd7a9195d8b9e70747d5412000"
+  },
   "editorial": {
     "criteria": {
       "intent-satisfaction": {
@@ -77,52 +83,54 @@
     }
   },
   "image": {
+    "reviewer": "claude:revue-figures-20261003",
     "criteria": {
       "brief-six-components": {
         "result": "PASS",
         "observations": [
           "La couverture représente cinq cartes reliées dans une composition horizontale, avec boucle, attente, divergence et jonction pour les quatre états annoncés.",
-          "Le sujet, la composition, le diorama 3D mat, la palette épinglée, les interdits et l’alt sont tous contrôlables dans le brief et le master."
+          "Les deux figures suivent le gabarit des références : fenêtre unique sur fond quadrillé, en-tête à pastille et « Jeu d’essai fictif · semaine du 13 avril », écran d’outil, palette vert/orange/gris."
         ]
       },
       "generation-constraints": {
         "result": "PASS",
         "observations": [
           "L’inspection du master ne montre aucun texte, chiffre, logo, personnage, donnée client, fausse interface, alerte rouge ou symbole d’envoi automatique.",
-          "Le master est net, horizontal et sans troncature ; la mesure de palette scellée est PASS pour le crème, le vert, le vert profond et le graphite."
+          "Figures : cadre et fond identiques au pixel près aux références hors zone de contenu, textes nets sans troncature, aucun logo ni nom ; les durées sont celles d’événements fictifs, sans moyenne ni temps gagné."
         ]
       },
       "fictive-provenance": {
         "result": "PASS",
         "observations": [
           "La couverture reste entièrement abstraite et ne contient aucun nom, dossier, montant, identifiant ou information personnelle.",
-          "Les preuves inline indiquent explicitement le jeu d’essai fictif et l’absence de nom ou de donnée client."
+          "Les deux figures affichent « Jeu d’essai fictif · semaine du 13 avril », n’emploient que des codes de dossier et aucun nom ; le panneau RC-01 reprend la sortie FLUX-01 du rejeu du 21/09/2026."
         ]
       },
       "recognizable-subject": {
         "result": "PASS",
         "observations": [
           "Les symboles différencient visuellement la répétition, l’attente, l’exception et le point de décision sans simuler une interface produit.",
-          "La semaine et la matrice renforcent le même diagnostic de flux et rendent le sujet reconnaissable sans classement individuel."
+          "Le journal classe chaque événement en répétition, attente, exception ou décision (3/2/1/1) ; la grille trie cinq candidats par fréquence, stabilité et coût du doute, avec « Règle à clarifier » pour le candidat fréquent mais variable, comme la matrice du corps."
         ]
       },
       "technical-derivatives": {
         "result": "PASS",
         "observations": [
           "Les dimensions contrôlées sont 1920×1080 pour le master, 1200×630 pour l’OG et 768×432 pour le héros de référence.",
-          "Les deux preuves fonctionnelles mesurent 1600×900, leurs empreintes sont scellées et le contrôle de rendu confirme les quatre preuves du lot."
+          "Les deux figures sont servies en WebP 1600 × 900, une seule image pour bureau et téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; captures 1280 et 390 px sans débordement."
         ]
       },
       "alt-information": {
         "result": "PASS",
         "observations": [
           "L’alt de couverture décrit une semaine fictive répartie entre les quatre états sans annoncer un résultat ou un gain.",
-          "Les deux alts inline décrivent respectivement le journal fictif et la matrice fréquence-stabilité-coût du doute, conformément aux images inspectées."
+          "Alts de 119 et 110 caractères, identiques dans le HTML construit et la recette, fidèles au journal classé par état et à la grille fréquence, stabilité, coût du doute."
         ]
       }
     },
     "directionArt": 18,
-    "semanticRelevance": 22
+    "semanticRelevance": 22,
+    "scoreProvenance": "Notes conservées : couverture inchangée, nouvelles figures conformes au gabarit des références ; aucune nouvelle mesure."
   },
   "sources": {
     "reviewedBy": "relecteur-metier-production-cabinet",
@@ -164,5 +172,28 @@
       "L’oracle exécutable et les deux preuves fonctionnelles donnent une provenance transparente aux sorties du jeu fictif."
     ],
     "verdict": "94/100, PASS : zéro P0, sept critères éditoriaux PASS, trois verdicts métier soutient et six critères image PASS. La frontière est désormais positive et concentrée ; le candidat peut être scellé."
+  },
+  "technicalBindingMaintenance": {
+    "maintainedBy": "claude:recette-images-20261003",
+    "maintainedAt": "2026-10-03",
+    "reason": "Figures de corps remplacées selon la recette de référence (décision Kevin du 03/10/2026) : deux écrans d’outil fictifs 1600 × 900, mêmes ancrages, nouveaux identifiants et alts dans la recette. Corps, sources, affirmations et règles inchangés (bodySha256 identique) ; les constats éditoriaux, métier et qualité sur le texte sont maintenus ; les critères image et les constats qui décrivaient les anciennes figures sont reformulés par la revue indépendante des nouvelles figures. Dossier rescellé sans rematérialisation : sources ouvertes le 21/09, hors de la fenêtre de réutilisation de sept jours, et aucune réouverture réseau dans ce lot ; seules la revue image, le paquet de revue et le sceau sont mis à jour.",
+    "figureReview": {
+      "reviewer": "claude:revue-figures-20261003",
+      "reviewedAt": "2026-10-03",
+      "figures": [
+        {
+          "id": "surcharge-journal-semaine",
+          "result": "PASS",
+          "constat": "Journal au gabarit des références (pastille verte, « Jeu d’essai fictif · semaine du 13 avril », lundi 13 à vendredi 17 cohérents avec 2026) : compteurs 3 répétitions, 2 attentes, 1 exception, 1 décision qui correspondent aux sept lignes, chaque événement avec dossier, durée ou attente et état. Les attentes portent sur une entrée manquante et une validation indisponible, l’exception sur une facture hors période, la décision sur un écart à arbitrer, comme dans la section ; aucun nom de personne, durées par événement et non moyennes, aucun temps gagné. Alt fidèle (119 caractères). Tient dans la colonne à 1280 et 390 px."
+        },
+        {
+          "id": "surcharge-grille-priorisation",
+          "result": "PASS",
+          "constat": "Grille au gabarit des références (pastille verte, même semaine fictive, titre « 5 tâches de la semaine ») : fréquence, règle stable, coût du doute et décision pour cinq candidats — « Écrire d’abord » pour les répétitions stables, « Règle à clarifier » pour la saisie des factures récurrentes fréquente mais variable, « Garder humain » pour les cas à doute élevé — plus le panneau « Règle candidate RC-01 » (arrêt prévu, suite « Faire relire la règle avant de la tester ») repris de FLUX-01. Libellés conformes au corps (« demande d’abord un travail de règle », « reste humain ») ; les attentes du journal ne figurent pas parmi les candidats ; aucun nom, aucun gain. Alt fidèle (110 caractères). Tient dans la colonne à 1280 et 390 px."
+        }
+      ]
+    },
+    "previousSubject": null,
+    "previousMaintenance": null
   }
 }

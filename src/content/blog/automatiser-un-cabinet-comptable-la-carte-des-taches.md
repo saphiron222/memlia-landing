@@ -105,8 +105,8 @@ Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. L
 | Méthode et décision humaine | 4 | choisir, écrire la règle, recetter, mesurer | tout ce qui précède |
 | Audit légal | 1 | commissariat aux comptes : famille listée, aucune tâche ouverte | tout |
 
-<figure data-blog-proof="carte-douze-poles">
-  <img src="/proofs/blog/carte-douze-poles-mobile.webp" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1200" loading="lazy" decoding="async">
+<figure data-blog-proof="carte-inventaire-taches">
+  <img src="/proofs/blog/carte-inventaire-taches.webp" alt="Inventaire fictif des tâches d’un cabinet par pôle : fréquence, règle écrite et statut de six familles." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Production comptable : de la pièce reçue au bilan livré
@@ -227,8 +227,8 @@ Pour vérifier une sortie malgré des tests verts, voyez [la règle des trois pa
 | Le jeu d’essai fictif rejoué à chaque changement de règle | La règle écrite, avant son premier passage en recette | Le choix de la tâche par laquelle commencer |
 | La mesure du temps avant et après, sur le même jeu d’essai | La place de chaque validation humaine, écrite dans la règle | La décision d’interrompre ou d’étendre une automatisation |
 
-<figure data-blog-proof="carte-test-regle">
-  <img src="/proofs/blog/carte-test-regle-mobile.webp" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1200" loading="lazy" decoding="async">
+<figure data-blog-proof="carte-fiche-regle-relance">
+  <img src="/proofs/blog/carte-fiche-regle-relance.webp" alt="Fiche fictive de la règle de relance des pièces : déclencheur, condition, action, exception et validation humaine." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Que ne contient pas cette carte ?

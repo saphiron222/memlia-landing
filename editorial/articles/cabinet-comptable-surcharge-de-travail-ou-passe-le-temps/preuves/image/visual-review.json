@@ -3,7 +3,7 @@
   "candidateSlug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-21",
+  "checkedAt": "2026-10-03",
   "articleSha256": "6b31cabadd97572d132441ab35f8340bb19baf85ea3da8412573f45fe3db8320",
   "manifestSha256": "4d373c03a2b800dc7f25894d57f3e928bdf614a03b93765d076e86f5dcae714a",
   "observations": [
@@ -50,7 +50,7 @@
       "result": "PASS",
       "observations": [
         "La couverture représente cinq cartes reliées dans une composition horizontale, avec boucle, attente, divergence et jonction pour les quatre états annoncés.",
-        "Le sujet, la composition, le diorama 3D mat, la palette épinglée, les interdits et l’alt sont tous contrôlables dans le brief et le master."
+        "Les deux figures suivent le gabarit des références : fenêtre unique sur fond quadrillé, en-tête à pastille et « Jeu d’essai fictif · semaine du 13 avril », écran d’outil, palette vert/orange/gris."
       ]
     },
     {
@@ -58,7 +58,7 @@
       "result": "PASS",
       "observations": [
         "L’inspection du master ne montre aucun texte, chiffre, logo, personnage, donnée client, fausse interface, alerte rouge ou symbole d’envoi automatique.",
-        "Le master est net, horizontal et sans troncature ; la mesure de palette scellée est PASS pour le crème, le vert, le vert profond et le graphite."
+        "Figures : cadre et fond identiques au pixel près aux références hors zone de contenu, textes nets sans troncature, aucun logo ni nom ; les durées sont celles d’événements fictifs, sans moyenne ni temps gagné."
       ]
     },
     {
@@ -66,7 +66,7 @@
       "result": "PASS",
       "observations": [
         "La couverture reste entièrement abstraite et ne contient aucun nom, dossier, montant, identifiant ou information personnelle.",
-        "Les preuves inline indiquent explicitement le jeu d’essai fictif et l’absence de nom ou de donnée client."
+        "Les deux figures affichent « Jeu d’essai fictif · semaine du 13 avril », n’emploient que des codes de dossier et aucun nom ; le panneau RC-01 reprend la sortie FLUX-01 du rejeu du 21/09/2026."
       ]
     },
     {
@@ -74,7 +74,7 @@
       "result": "PASS",
       "observations": [
         "Les symboles différencient visuellement la répétition, l’attente, l’exception et le point de décision sans simuler une interface produit.",
-        "La semaine et la matrice renforcent le même diagnostic de flux et rendent le sujet reconnaissable sans classement individuel."
+        "Le journal classe chaque événement en répétition, attente, exception ou décision (3/2/1/1) ; la grille trie cinq candidats par fréquence, stabilité et coût du doute, avec « Règle à clarifier » pour le candidat fréquent mais variable, comme la matrice du corps."
       ]
     },
     {
@@ -82,7 +82,7 @@
       "result": "PASS",
       "observations": [
         "Les dimensions contrôlées sont 1920×1080 pour le master, 1200×630 pour l’OG et 768×432 pour le héros de référence.",
-        "Les deux preuves fonctionnelles mesurent 1600×900, leurs empreintes sont scellées et le contrôle de rendu confirme les quatre preuves du lot."
+        "Les deux figures sont servies en WebP 1600 × 900, une seule image pour bureau et téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; captures 1280 et 390 px sans débordement."
       ]
     },
     {
@@ -90,7 +90,7 @@
       "result": "PASS",
       "observations": [
         "L’alt de couverture décrit une semaine fictive répartie entre les quatre états sans annoncer un résultat ou un gain.",
-        "Les deux alts inline décrivent respectivement le journal fictif et la matrice fréquence-stabilité-coût du doute, conformément aux images inspectées."
+        "Alts de 119 et 110 caractères, identiques dans le HTML construit et la recette, fidèles au journal classé par état et à la grille fréquence, stabilité, coût du doute."
       ]
     }
   ]

@@ -49,42 +49,46 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Couverture et son brief inchangés : revue antérieure maintenue, pas de nouvelle génération."
+        "Couverture et son brief inchangés, relus : pile de feuilles, barre de lecture verte, plateau vert rangé, plateau graphite de côté et loupe, sans texte.",
+        "Les deux figures suivent le gabarit des références : fenêtre unique, en-tête à pastille, « Jeu d’essai fictif · lot de … », écran d’outil, palette et typographie communes."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Les deux variantes corrigées de saisie-six-controles ont été ouvertes : scénario fictif, sortie attendue non exécutée et aucune écriture explicites."
+        "Cadre et fond identiques au pixel près aux références hors zone de contenu ; aucun texte tronqué, aucun logo, aucune personne ; plus d’étapes numérotées ni de slogan.",
+        "Aucun taux de reliquat ni décompte mesuré : la file affiche six pièces d’un lot fictif et aucune écriture ; les montants sont ceux d’une facture fictive."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "TEST-050 conserve son statut de scénario fictif ; aucune mesure sur cinquante fichiers revendiquée."
+        "Fournisseur Fictif, Atelier Fictif et pièces numérotées inventées sous en-têtes « Jeu d’essai fictif » ; capturedAt 2026-10-03 dans la recette ; aucune mesure sur cinquante fichiers revendiquée."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Étape5 Période à qualifier et décision humaine documentée ; pièce reçue conservée ; le portrait ne donne plus d'affectation certaine."
+        "Contrôle de pièce : facture de biens aux dates de PERIODE-DATES, six contrôles dans l’ordre fixe, période à qualifier, doublon non joué, aucune écriture ; file : six motifs fermés avec contrôle échoué et date, lot ouvert."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Deux WebP corrigés ouverts, aucun texte final tronqué ; renderer --check confirme18preuves ; empreintes contrôlées. Ce contrôle d'actifs ne constitue pas une QA navigateur finale ou une preuve d'images servies en production."
+        "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Alt corrigé concordant avec l'image et le corps ; autre figure inchangée."
+        "Alts de 123 et 115 caractères, identiques dans le HTML construit et la recette, fidèles au contrôle de FA-2026-0412 et à la file d’avril.",
+        "L’alt de couverture correspond à la pile, la barre de lecture, les deux plateaux et la loupe visibles."
       ]
     }
   ]
