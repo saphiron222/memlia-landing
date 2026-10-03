@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: un registre vide porte la marque et aucun article
+ok 1 - un registre vide porte la marque et aucun article
+  ---
+  duration_ms: 0.977
+  type: 'test'
+  ...
+# Subtest: ajouter un article ne mute pas le registre reçu
+ok 2 - ajouter un article ne mute pas le registre reçu
+  ---
+  duration_ms: 0.458958
+  type: 'test'
+  ...
+# Subtest: ajouter deux fois le même slug remplace la requête et unit les secondaires
+ok 3 - ajouter deux fois le même slug remplace la requête et unit les secondaires
+  ---
+  duration_ms: 0.187667
+  type: 'test'
+  ...
+# Subtest: ajouter une entrée sans requête est refusé
+ok 4 - ajouter une entrée sans requête est refusé
+  ---
+  duration_ms: 0.2765
+  type: 'test'
+  ...
+# Subtest: une requête primaire ne peut appartenir à deux URL indexables, même de types différents
+ok 5 - une requête primaire ne peut appartenir à deux URL indexables, même de types différents
+  ---
+  duration_ms: 0.173792
+  type: 'test'
+  ...
+# Subtest: un même slug sur deux types ne remplace pas une autre URL
+ok 6 - un même slug sur deux types ne remplace pas une autre URL
+  ---
+  duration_ms: 0.09475
+  type: 'test'
+  ...
+# Subtest: réconcilier ajoute les articles publiés absents et rend leurs slugs
+ok 7 - réconcilier ajoute les articles publiés absents et rend leurs slugs
+  ---
+  duration_ms: 0.209583
+  type: 'test'
+  ...
+# Subtest: réconcilier ne réécrit pas la requête d’un article déjà inscrit
+ok 8 - réconcilier ne réécrit pas la requête d’un article déjà inscrit
+  ---
+  duration_ms: 0.304167
+  type: 'test'
+  ...
+# Subtest: ajouter une tâche lui donne un identifiant daté et le statut à faire
+ok 9 - ajouter une tâche lui donne un identifiant daté et le statut à faire
+  ---
+  duration_ms: 0.57675
+  type: 'test'
+  ...
+# Subtest: une tâche à faire de même slug, type et clé n’est pas dupliquée, sa mesure est mise à jour
+ok 10 - une tâche à faire de même slug, type et clé n’est pas dupliquée, sa mesure est mise à jour
+  ---
+  duration_ms: 0.442
+  type: 'test'
+  ...
+# Subtest: une tâche faite ne bloque pas la création d’une nouvelle tâche de même clé
+ok 11 - une tâche faite ne bloque pas la création d’une nouvelle tâche de même clé
+  ---
+  duration_ms: 0.207458
+  type: 'test'
+  ...
+# Subtest: une tâche invalide est refusée : type inconnu, gravité inconnue, slug absent
+ok 12 - une tâche invalide est refusée : type inconnu, gravité inconnue, slug absent
+  ---
+  duration_ms: 0.126875
+  type: 'test'
+  ...
+# Subtest: clôturer enregistre la date, le commit et le statut fait sans muter la file reçue
+ok 13 - clôturer enregistre la date, le commit et le statut fait sans muter la file reçue
+  ---
+  duration_ms: 0.063
+  type: 'test'
+  ...
+# Subtest: clôturer une tâche inconnue ou déjà close est une erreur
+ok 14 - clôturer une tâche inconnue ou déjà close est une erreur
+  ---
+  duration_ms: 0.09225
+  type: 'test'
+  ...
+# Subtest: écarter exige un motif et garde la trace
+ok 15 - écarter exige un motif et garde la trace
+  ---
+  duration_ms: 0.092166
+  type: 'test'
+  ...
+# Subtest: les tâches à faire sortent par gravité puis par date de création
+ok 16 - les tâches à faire sortent par gravité puis par date de création
+  ---
+  duration_ms: 8.913959
+  type: 'test'
+  ...
+# Subtest: marquer les requêtes vues rend les nouvelles et conserve la première date
+ok 17 - marquer les requêtes vues rend les nouvelles et conserve la première date
+  ---
+  duration_ms: 0.218958
+  type: 'test'
+  ...
+# Subtest: inscrireArticle (F1) inscrit un article publié depuis son frontmatter, refuse un brouillon, et reste idempotent
+ok 18 - inscrireArticle (F1) inscrit un article publié depuis son frontmatter, refuse un brouillon, et reste idempotent
+  ---
+  duration_ms: 4.059042
+  type: 'test'
+  ...
+# Subtest: la phase après-publication admet un article futur uniquement quand sa publication exacte est scellée
+ok 19 - la phase après-publication admet un article futur uniquement quand sa publication exacte est scellée
+  ---
+  duration_ms: 3.650458
+  type: 'test'
+  ...
+# Subtest: après-publication reste sans effet quand un article futur scellé échoue au contrôle HTTP
+ok 20 - après-publication reste sans effet quand un article futur scellé échoue au contrôle HTTP
+  ---
+  duration_ms: 9.116125
+  type: 'test'
+  ...
+# Subtest: liensCandidats (F3) : propose le lien là où la requête est déjà nommée, dans les deux sens, et écarte ce qui est déjà lié
+ok 21 - liensCandidats (F3) : propose le lien là où la requête est déjà nommée, dans les deux sens, et écarte ce qui est déjà lié
+  ---
+  duration_ms: 4.933917
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 293.541625
