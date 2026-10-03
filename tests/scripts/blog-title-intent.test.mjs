@@ -11,7 +11,9 @@ import { dateIntentionScellee } from '../../scripts/lib/blog-pipeline.mjs';
 const ROOT = resolve(import.meta.dirname, '../..');
 const BLOG = join(ROOT, 'src/content/blog');
 function mesureArticle(slug) {
-  return chargerAutocompletionMesuree(ROOT, { au: dateIntentionScellee(ROOT, slug) });
+  // Pendant production-check, go-production expose déjà la route mais le sceau
+  // n'est écrit qu'après le build. Sans sceau, exiger le relevé frais du jour.
+  return chargerAutocompletionMesuree(ROOT, { au: dateIntentionScellee(ROOT, slug) ?? undefined });
 }
 
 test('un relevé de la nuit Paris reste frais sans emprunter le jour UTC précédent', (t) => {

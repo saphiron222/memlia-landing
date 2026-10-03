@@ -131,7 +131,7 @@ L'autorité blog-only du 25/09/2026 supprime le go individuel de Kevin pour un a
 npm run blog:production-check -- <slug>
 ```
 
-Le contrôle reconstruit sans `BLOG_PREVIEW_SLUG`, refuse tout `noindex`, exige la canonical auto-référente et vérifie l’inclusion dans le sitemap et le RSS. Il ne pousse rien et ne déploie rien en production.
+Le contrôle reconstruit sans `BLOG_PREVIEW_SLUG`, refuse tout `noindex`, exige la canonical auto-référente et vérifie l’inclusion dans le sitemap et le RSS. Pendant ce contrôle, la route est publique dans le build local mais le sceau de publication n'existe pas encore : le test d'intention exige alors un relevé frais du jour, sans prétendre que le candidat est déjà scellé. Après `publier`, il compare la date du sceau et ses octets. Il ne pousse rien et ne déploie rien en production.
 
 ### Lot de rattrapage (sans antidater)
 

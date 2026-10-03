@@ -4,6 +4,7 @@ import { createServer } from 'node:http';
 
 import { dirname, join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { test as nodeTest } from 'node:test';
 import sharp from 'sharp';
@@ -67,15 +68,15 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
     }
     symlinkSync(DEPENDENCIES, join(project, 'node_modules'), 'dir');
 
+    // Le témoin positif suit le contrat public : provenance et date vivent dans la recette,
+    // jamais dans une légende technique visible de la preuve inline.
     const fixtureBody = DEFAULT_BODY.replace('Voir [la méthode]', `
 <figure data-blog-proof="fixture-frontiere">
   <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="640" height="360" loading="lazy" decoding="async">
-  <figcaption>Source : jeu d’essai fictif · capture du 2026-09-20</figcaption>
 </figure>
 
 <figure data-blog-proof="fixture-refus">
   <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="640" height="360" loading="lazy" decoding="async">
-  <figcaption>Source : jeu d’essai fictif · capture du 2026-09-20</figcaption>
 </figure>
 
 Voir [la méthode]`);
@@ -83,6 +84,18 @@ Voir [la méthode]`);
     copyFile(fixture.articlePath, join(project, 'src/content/blog', `${slug}.md`));
     copyFile(fixture.dossier, join(project, 'editorial/articles', slug));
     copyFile(join(staging, 'editorial/recettes', slug), join(project, 'editorial/recettes', slug));
+    const recipePath = join(project, 'editorial/recettes', slug, 'recette.json');
+    const recipe = JSON.parse(readFileSync(recipePath, 'utf8'));
+    recipe.inlineProofs = [
+      { id: 'fixture-frontiere', alt: 'Frontière fictive entre proposition automatisée et validation humaine.', source: 'jeu fictif', capturedAt: '2026-09-20' },
+      { id: 'fixture-refus', alt: 'Cas fictif refusé lorsque la règle métier manque.', source: 'jeu fictif', capturedAt: '2026-09-20' },
+    ];
+    const recipeBytes = JSON.stringify(recipe);
+    writeFileSync(recipePath, recipeBytes);
+    const reviewPath = join(project, 'editorial/recettes', slug, 'revues.json');
+    const review = JSON.parse(readFileSync(reviewPath, 'utf8'));
+    review.subject.recipeSha256 = createHash('sha256').update(recipeBytes).digest('hex');
+    writeFileSync(reviewPath, `${JSON.stringify(review, null, 2)}\n`);
     copyFile(join(staging, 'docs/strategy/site-v3/mesures'), join(project, 'docs/strategy/site-v3/mesures'));
     for (const extension of ['avif', 'webp']) {
       copyFile(join(staging, `public/images/${heroId}-768.${extension}`), join(project, `public/images/${heroId}-768.${extension}`));
@@ -130,8 +143,6 @@ Voir [la méthode]`);
       timeout: 120_000,
     });
     assert.equal(subjectBuild.status, 0, `${subjectBuild.error?.message ?? ''}\n${subjectBuild.stderr ?? ''}`);
-    const reviewPath = join(project, 'editorial/recettes', slug, 'revues.json');
-    const review = JSON.parse(readFileSync(reviewPath, 'utf8'));
     review.subject.renderedSha256 = renderedBodySha256(readFileSync(pagePath(subjectRender, `/blog/${slug}`), 'utf8'));
     writeFileSync(reviewPath, `${JSON.stringify(review, null, 2)}\n`);
     const distSentinel = join(project, 'dist', 'sentinel.txt');
@@ -193,6 +204,7 @@ Voir [la méthode]`);
     const articlePath = join(preview, 'blog', `${slug}.html`);
     assert.ok(existsSync(articlePath), 'le candidat n’a pas été construit par Astro');
     const html = readFileSync(articlePath, 'utf8');
+    assert.ok(!html.includes('<figcaption>Source'), 'la preview ne doit pas réintroduire une légende technique publique');
     const ogUrl = `${previewOrigin}/images/${heroId}-og.webp`;
     assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
     assert.ok(html.includes(`<link rel="canonical" href="https://memlia.fr/blog/${slug}">`));
