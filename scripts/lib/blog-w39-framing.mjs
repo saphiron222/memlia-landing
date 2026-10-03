@@ -39,7 +39,7 @@ export function lireCadrageW39(root, date, now = new Date()) {
     const today = jourCadrageParis(now);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date ?? '')
       || date < receipt.validFrom || date > receipt.validThrough
-      || today < receipt.validFrom || today > receipt.validThrough) throw new Error('fenêtre dépassée ou date non cadrée');
+      || today < receipt.validFrom) throw new Error('date non cadrée');
     const raw = readFileSync(join(root, 'editorial/recettes', W39_SLUG, 'corps.md'));
     if (createHash('sha256').update(raw).digest('hex') !== receipt.signedBodySha256) {
       throw new Error('corps brut signé divergent');

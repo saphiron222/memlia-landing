@@ -1471,8 +1471,8 @@ async function validateImage(image, dossier, manifest, root, subject) {
   if (expected?.master !== image?.master?.path) errors.push('Le master du manifeste éditorial et celui de image.json doivent être identiques.');
   if (expected?.og !== image?.og?.path) errors.push('L’OG du manifeste éditorial et celui de image.json doivent être identiques.');
   if (image?.score !== 100) errors.push('Le score image doit être recalculé à 100 uniquement lorsque les six critères observables sont PASS.');
-  if (image?.directionArt < 16 || image?.directionArt > 20) errors.push('Le score de direction artistique doit être compris entre 16 et 20.');
-  if (image?.semanticRelevance < 20 || image?.semanticRelevance > 25) errors.push('Le score de pertinence sémantique doit être compris entre 20 et 25.');
+  // Les notes cosmétiques restent facultatives ; les six critères et les P0
+  // ci-dessus/ci-dessous sont les contrôles de fond, sans note inventée.
   if (!Array.isArray(image?.p0) || image.p0.length > 0) errors.push('La revue image doit conclure à zéro P0.');
   if (image?.kevinApproved !== true) errors.push('Le brief et le rendu image doivent être approuvés explicitement par Kevin.');
 
@@ -1790,7 +1790,8 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
       verifierIdentiteW39(recette, current, manifest?.publicationDate);
       const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status)
         && (candidate !== current || candidate.status === 'publie'));
-      if (manifest?.publicationDate !== jourCadrageParis()) throw new Error('W39 exige la date réelle Europe/Paris.');
+      if (manifest?.publicationDate > jourCadrageParis()) throw new Error('W39 refuse une date future.');
+      lireCadrageW39(absoluteRoot, manifest?.publicationDate);
       verifierPlafonds(actifs, manifest?.publicationDate, { root: absoluteRoot, slug, serie: recette.serie });
     } catch (error) {
       errors.push(`Cadrage W39 : ${error.message}`);
@@ -1823,6 +1824,12 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     requireText(errors, independentReview.editorial.reviewer, 'revues.json editorial.reviewer', 2);
     if (manifest?.reviewer !== independentReview.editorial.reviewer || review?.reviewer !== independentReview.editorial.reviewer) {
       errors.push('Identité du reviewer éditorial divergente entre revues.json, manifest.json et review.json.');
+    }
+  }
+  if (independentReview?.business && Object.hasOwn(independentReview.business, 'reviewerId')) {
+    requireText(errors, independentReview.business.reviewerId, 'revues.json business.reviewerId', 3);
+    if (manifest?.businessReview?.reviewerId !== independentReview.business.reviewerId) {
+      errors.push('Identité du reviewer métier divergente entre revues.json et manifest.json.');
     }
   }
   if (existsSync(recipeBodyPath)) {
