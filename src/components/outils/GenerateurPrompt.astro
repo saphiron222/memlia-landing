@@ -1,0 +1,160 @@
+---
+import { AMORCES, TASKS, INPUTS, FORMATS, VALIDATORS, STOPS } from '@/lib/prompt-comptable.mjs';
+const choices = [
+  { name: 'task', label: 'Tâche à préparer', options: TASKS },
+  { name: 'input', label: 'Entrées autorisées', options: INPUTS },
+  { name: 'format', label: 'Format attendu', options: FORMATS },
+  { name: 'validator', label: 'Qui valide le résultat ?', options: VALIDATORS },
+  { name: 'stop', label: 'Condition d’arrêt choisie', options: STOPS },
+];
+---
+<div class="prompt-tool" data-prompt-tool>
+  <noscript><p>Activez JavaScript pour assembler la consigne localement. Aucun modèle d’IA n’est appelé.</p></noscript>
+  <div class="library">
+    <h2>Bibliothèque d’amorces</h2>
+    <p>Choisissez une préparation. Chaque amorce remplit les contraintes ; vous pouvez ensuite les adapter.</p>
+    <div class="actions">{AMORCES.map((seed) => <button class="btn btn-contour" type="button" data-seed={seed.task}>{seed.label}</button>)}</div>
+  </div>
+  <form class="prompt-form" data-own-telemetry novalidate autocomplete="off">
+    <h2 id="outil-calcul">Votre consigne, dans vos mots</h2>
+    <p class="hint" id="prompt-privacy">Décrivez seulement un geste abstrait : aucun nom, identifiant, montant, contenu de pièce ni fichier. Le filtre repère quelques signaux explicites ; il ne détecte pas tous les noms et n’anonymise rien.</p>
+    {choices.map((choice) => <label>{choice.label}<select name={choice.name} required><option value="">Choisir…</option>{choice.options.map((option) => <option value={option.id}>{option.label}</option>)}</select></label>)}
+    <label>Description abstraite de la tâche<textarea name="description" minlength="20" maxlength="300" rows="4" required aria-describedby="prompt-privacy" placeholder="Préparer une demande générique de pièces manquantes."></textarea></label>
+    <label class="confirmation"><input type="checkbox" name="confirmed" required />Je confirme que cette description ne contient aucune donnée réelle.</label>
+    <div class="actions">
+      <button class="btn btn-principal" type="submit">Assembler le prompt</button>
+      <button class="btn btn-contour" type="button" data-clear>Effacer</button>
+    </div>
+    <p id="prompt-error" class="error" data-error role="alert" hidden></p>
+  </form>
+  <section class="result" data-output hidden aria-labelledby="prompt-result-title">
+    <h2 id="prompt-result-title" tabindex="-1">Prompt à relire et à adapter</h2>
+    <p>Assemblage de blocs écrits, pas une réponse d’IA. Ce prompt ne garantit ni la qualité d’une réponse future, ni la confidentialité de l’outil où vous le collerez. Avant tout usage réel, le cabinet choisit l’outil et les données qu’il autorise.</p>
+    <label>Prompt éditable<textarea data-editor rows="18" maxlength="12000" spellcheck="false" aria-describedby="prompt-check-help"></textarea></label>
+    <div class="check">
+      <h3>Contrôle des contraintes</h3>
+      <p id="prompt-check-help">Contrôle structurel local, après chaque édition : rubriques remplies, gardes inchangés, quelques signaux sensibles. Il ne comprend pas le sens, ne vérifie aucune règle comptable et ne certifie pas un prompt sûr.</p>
+      <ul data-checks></ul>
+      <p data-check-status aria-live="polite"></p>
+    </div>
+    <div class="actions">
+      <button class="btn btn-contour" type="button" data-copy disabled>Copier le prompt</button>
+      <button class="btn btn-contour" type="button" data-download disabled>Exporter en texte (.txt)</button>
+    </div>
+    <h3>Frontière de la dernière génération</h3>
+    <p class="hint">Ces repères viennent des choix du formulaire, pas d’une analyse de vos éditions.</p>
+    <dl data-boundary></dl>
+    <h3>Jeu d’essai fictif à rejouer dans votre outil autorisé</h3>
+    <p>Ces cas sont des attentes à tester, pas des réponses déjà obtenues d’un modèle.</p>
+    <ul data-cases></ul>
+  </section>
+  <p class="status" data-status aria-live="polite"></p>
+</div>
+<script>
+  import { AMORCES, assemblePrompt, checkPrompt } from '@/lib/prompt-comptable.mjs';
+  const root = document.querySelector<HTMLElement>('[data-prompt-tool]');
+  if (root) {
+    const form = root.querySelector<HTMLFormElement>('form')!;
+    const editor = root.querySelector<HTMLTextAreaElement>('[data-editor]')!;
+    const output = root.querySelector<HTMLElement>('[data-output]')!;
+    const error = root.querySelector<HTMLElement>('[data-error]')!;
+    const status = root.querySelector<HTMLElement>('[data-status]')!;
+    const copy = root.querySelector<HTMLButtonElement>('[data-copy]')!;
+    const download = root.querySelector<HTMLButtonElement>('[data-download]')!;
+    let generated = '';
+    let generations = 0;
+    const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+    const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', { detail: { action, outil: 'generateur-prompt-expert-comptable' } }));
+    const clearError = () => {
+      error.hidden = true;
+      form.querySelectorAll('[aria-invalid]').forEach((element) => {
+        element.removeAttribute('aria-invalid');
+        element.setAttribute('aria-describedby', 'prompt-privacy');
+      });
+    };
+    const control = () => {
+      const result = checkPrompt(editor.value);
+      root.querySelector('[data-checks]')!.replaceChildren(...result.items.map((item) => {
+        const li = document.createElement('li'); li.textContent = `${item.ok ? 'Présent' : 'À corriger'} : ${item.label}`; return li;
+      }));
+      root.querySelector('[data-check-status]')!.textContent = result.ok ? 'Structure complète. Le fond reste à relire par une personne.' : 'Contraintes manquantes ou signal sensible : copie et export bloqués. Votre texte est conservé.';
+      copy.disabled = download.disabled = !result.ok;
+      return result.ok;
+    };
+    const hasContent = () => editor.value.length > 0 || Boolean(field('description').value);
+    root.querySelectorAll<HTMLButtonElement>('[data-seed]').forEach((button) => button.addEventListener('click', () => {
+      if (hasContent() && !window.confirm('Remplacer les choix du formulaire par cette amorce ? Votre prompt édité sera conservé.')) return;
+      const seed = AMORCES.find((entry) => entry.task === button.dataset.seed)!;
+      for (const name of ['task', 'input', 'format', 'validator', 'stop', 'description'] as const) field(name).value = seed[name];
+      (field('confirmed') as HTMLInputElement).checked = false;
+      clearError();
+      form.dispatchEvent(new Event('input', { bubbles: true }));
+      emit('exemple');
+      field('description').focus();
+      status.textContent = 'Amorce chargée. Confirmez la description puis assemblez ; tout prompt existant reste inchangé.';
+    }));
+    form.addEventListener('input', () => { clearError(); if (editor.value) status.textContent = 'Choix modifiés. Le prompt précédent est conservé ; assemblez pour le remplacer.'; });
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); clearError();
+      const result = assemblePrompt({ ...Object.fromEntries(new FormData(form)), confirmed: (field('confirmed') as HTMLInputElement).checked });
+      if (!result.ok) {
+        emit('erreur');
+        error.textContent = result.error; error.hidden = false;
+        const input = field(result.field); input.setAttribute('aria-invalid', 'true'); input.setAttribute('aria-describedby', 'prompt-error prompt-privacy'); input.focus(); return;
+      }
+      if (editor.value && editor.value !== generated && !window.confirm('Remplacer votre prompt édité par une nouvelle génération ? Copiez-le auparavant si vous souhaitez le garder.')) { status.textContent = 'Génération annulée. Votre texte est conservé.'; emit('annulation'); return; }
+      editor.value = generated = result.text;
+      editor.scrollTop = 0;
+      root.querySelector('[data-boundary]')!.replaceChildren(...result.boundary.map((row) => {
+        const div = document.createElement('div'); const dt = document.createElement('dt'); const dd = document.createElement('dd'); dt.textContent = row.label; dd.textContent = row.value; div.append(dt, dd); return div;
+      }));
+      root.querySelector('[data-cases]')!.replaceChildren(...result.cases.map((row) => {
+        const li = document.createElement('li'); li.textContent = `${row.label} : ${row.input} Attendu : ${row.expected}`; return li;
+      }));
+      output.hidden = false; control(); status.textContent = 'Prompt assemblé localement. Aucun appel d’IA effectué.';
+      emit('reussite');
+      if (++generations > 1) emit('recalcul');
+      root.querySelector<HTMLElement>('#prompt-result-title')!.focus();
+    });
+    editor.addEventListener('input', () => { control(); status.textContent = 'Édition conservée ; contrôle structurel actualisé.'; });
+    root.querySelector('[data-clear]')!.addEventListener('click', () => {
+      if (hasContent() && !window.confirm('Effacer les choix et le prompt dans ce navigateur ?')) return;
+      form.reset(); editor.value = generated = ''; output.hidden = true; clearError(); status.textContent = 'Choix et prompt effacés.'; field('task').focus();
+      emit('effacer');
+    });
+    copy.addEventListener('click', async () => {
+      if (!control()) return;
+      try { await navigator.clipboard.writeText(editor.value); status.textContent = 'Prompt copié.'; emit('copie'); }
+      catch { status.textContent = 'Copie bloquée par le navigateur. Sélectionnez le texte ou exportez-le.'; }
+    });
+    download.addEventListener('click', () => {
+      if (!control()) return;
+      const url = URL.createObjectURL(new Blob([editor.value], { type: 'text/plain;charset=utf-8' }));
+      try { const link = document.createElement('a'); link.href = url; link.download = 'prompt-expert-comptable.txt'; link.click(); emit('export'); }
+      finally { setTimeout(() => URL.revokeObjectURL(url), 0); }
+    });
+  }
+</script>
+<style>
+  .prompt-tool,.prompt-form,.library,.result,label,.check { display:grid; gap:16px; min-width:0; }
+  .prompt-tool h2 { font-size:var(--t-2xl); }
+  .prompt-tool h3 { font-size:var(--t-xl); }
+  .prompt-tool p { color:var(--texte-2); }
+  .prompt-form { padding-top:24px; border-top:1px solid var(--ligne); }
+  label { color:var(--texte-fort); font-weight:600; gap:8px; }
+  textarea,select { width:100%; min-width:0; min-height:48px; padding:12px; border:1px solid var(--ligne-forte); border-radius:var(--r-bouton); color:var(--texte-fort); background:var(--surface-feuille); font:inherit; }
+  textarea { resize:vertical; line-height:1.6; }
+  [data-editor] { font-weight:400; }
+  .confirmation { display:flex; align-items:flex-start; gap:12px; font-size:var(--t-sm); }
+  .confirmation input { width:20px; height:20px; flex-shrink:0; margin-top:2px; accent-color:var(--accent-appui); }
+  .actions { display:flex; flex-wrap:wrap; gap:12px; }
+  .actions .btn { min-height:44px; white-space:normal; text-align:left; }
+  .hint { font-size:var(--t-sm); font-weight:400; }
+  .error { padding:12px; border-left:3px solid var(--rouge); background:var(--rouge-voile); color:var(--rouge); }
+  .result { padding-top:24px; border-top:1px solid var(--ligne-forte); }
+  .check { padding:16px; border:1px solid var(--ligne); border-radius:var(--r-boite); background:var(--surface-page); }
+  ul,dl { display:grid; gap:12px; }
+  li,dl div { padding-top:12px; border-top:1px solid var(--ligne-douce); overflow-wrap:anywhere; }
+  dt { font-weight:700; } dd { margin:4px 0 0; color:var(--texte-2); }
+  [hidden] { display:none !important; }
+</style>

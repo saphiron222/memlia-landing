@@ -5,6 +5,7 @@ export const OUTILS_HUB_PATH = '/outils-comptables-gratuits' as const;
 export const OUTIL_CATEGORIES = [
   { id: 'calculer', label: 'Calculer' },
   { id: 'verifier', label: 'Vérifier' },
+  { id: 'ecrire', label: 'Écrire' },
 ] as const;
 
 export type OutilCategory = (typeof OUTIL_CATEGORIES)[number]['id'];
@@ -36,6 +37,32 @@ export interface OutilDefinition {
 }
 
 export const OUTILS: readonly OutilDefinition[] = [
+  {
+    slug: 'generateur-prompt-expert-comptable',
+    categorie: 'ecrire',
+    statut: 'disponible',
+    h1: 'Générateur de prompt pour expert-comptable',
+    title: 'Générateur de prompt expert-comptable gratuit | Memlia',
+    description: 'Générateur de prompt pour expert-comptable gratuit : assemblez les entrées autorisées, le format, la validation et les arrêts. Éditez, copiez ou exportez localement.',
+    promesse: { entree: 'Tâche abstraite et contraintes choisies', resultat: 'Prompt éditable, frontière et cas fictifs à rejouer' },
+    limites: [
+      'Cet outil assemble des blocs écrits dans le navigateur ; il n’appelle aucun modèle et ne fournit aucune réponse comptable.',
+      'Le contrôle porte sur la structure et quelques signaux explicites. Il ne comprend pas le sens, ne détecte pas tous les noms et ne garantit ni sécurité, ni conformité, ni anonymisation.',
+      'Le cabinet choisit un outil autorisé avant de réutiliser un prompt. Aucun fichier ni contenu de pièce ne doit être saisi ici.',
+      'Une description hors bornes, un signal sensible ou une demande de décision automatique est refusé. Un prompt édité incomplet reste conservé, mais sa copie et son export sont bloqués.',
+    ],
+    mentionLocale: 'Vos choix et votre prompt restent dans ce navigateur, sans envoi ni stockage. Recharger la page les efface. La copie et le fichier texte sont produits seulement à votre demande.',
+    proof: 'v2/29-outil-prompt',
+    source: {
+      nom: 'CNIL — Questions-réponses sur l’utilisation d’un système d’IA générative',
+      url: 'https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative',
+      extrait: 'La CNIL recommande de définir les usages autorisés et les données qui peuvent être partagées. Cette source éclaire la précaution de saisie ; elle ne certifie pas ce générateur.',
+      verifieeLe: '3 octobre 2026',
+    },
+    articleExact: '/blog/prompt-chatgpt-expert-comptable',
+    pageService: '/methode',
+    cta: '/contact',
+  },
   {
     slug: 'calculateur-marge-commerciale',
     categorie: 'calculer',

@@ -5,20 +5,21 @@ interface Props {
   source: OutilDefinition['source'];
   mentionLocale: string;
   refus: string;
+  assemblage?: boolean;
 }
 
-const { source, mentionLocale, refus } = Astro.props;
+const { source, mentionLocale, refus, assemblage = false } = Astro.props;
 ---
 
 <section class="outil-preuves" data-tool-section="preuves" aria-labelledby="outil-preuves-titre">
   <div class="conteneur outil-preuves-inner">
     <div class="outil-preuves-heading rv">
       <span class="eyebrow">La règle reste lisible</span>
-      <h2 id="outil-preuves-titre">Le calcul, sa source et son refus sont visibles.</h2>
+      <h2 id="outil-preuves-titre">{assemblage ? 'L’assemblage, sa source et son refus sont visibles.' : 'Le calcul, sa source et son refus sont visibles.'}</h2>
     </div>
     <div class="outil-preuves-grid rv-groupe">
       <article class="outil-preuve rv">
-        <h3>Calcul local</h3>
+        <h3>{assemblage ? 'Assemblage local' : 'Calcul local'}</h3>
         <p>{mentionLocale}</p>
       </article>
       <article class="outil-preuve rv">

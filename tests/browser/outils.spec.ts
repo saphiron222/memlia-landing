@@ -11,13 +11,13 @@ async function graphFrom(page: Page) {
   return payloads.map((text) => JSON.parse(text)).find((payload) => Array.isArray(payload['@graph']))?.['@graph'] ?? [];
 }
 
-test('hub : quatre outils disponibles et schéma de collection', async ({ page }) => {
+test('hub : outils disponibles et schéma de collection', async ({ page }) => {
   const response = await page.goto(HUB);
   expect(response?.status()).toBe(200);
   await expect(page.locator('main h1')).toHaveText(H1_HUB);
   await expect(page.locator('main h1')).toHaveCount(1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${HUB}`);
-  await expect(page.locator('[data-outil-card]')).toHaveCount(4);
+  await expect(page.locator('[data-outil-card]')).toHaveCount(OUTILS_DISPONIBLES.length);
   await expect(page.locator('[data-empty-category]')).toHaveCount(0);
   await expect(page.locator('[data-tool-media]')).toHaveCount(1);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', '/proofs/v2/og/24-outils-hub.webp');
@@ -29,7 +29,7 @@ test('hub : quatre outils disponibles et schéma de collection', async ({ page }
     'CollectionPage', 'ItemList', 'BreadcrumbList',
   ]);
   expect(graph.find((node: { '@type': string }) => node['@type'] === 'CollectionPage').headline).toBe(H1_HUB);
-  expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(4);
+  expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(OUTILS_DISPONIBLES.length);
 });
 
 test('footer : le hub et les outils publiés sont générés, le témoin reste absent', async ({ page }) => {
@@ -367,6 +367,11 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByLabel('Durée d’utilisation').fill('5');
       await page.getByRole('button', { name: 'Calculer le plan' }).click();
       await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
+    } else if (outil.slug === 'generateur-prompt-expert-comptable') {
+      await page.getByRole('button', { name: 'Demande de pièces', exact: true }).click();
+      await page.getByLabel(/Je confirme que cette description/).check();
+      await page.getByRole('button', { name: 'Assembler le prompt' }).click();
+      await expect(page.locator('[data-output]')).toBeVisible();
     } else {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');

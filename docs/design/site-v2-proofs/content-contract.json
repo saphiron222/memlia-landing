@@ -110,5 +110,9 @@
   {
     "id": "outil-amortissement",
     "centralText": "Calculateur d’amortissement comptable Cas fictif Règle saisie Valeur amortissable 10 000,00 € Mise en service 1er avril 2026 Durée et méthode 5 ans · linéaire Premières lignes du plan Exercice Prorata Dotation Valeur nette 2026 275 / 365 1 506,85 € 8 493,15 € 2027 365 / 365 2 000,00 € 6 493,15 € 2028 366 / 366 2 000,00 € 4 493,15 € Taux 20,00 % · total final 10 000,00 € Autre entrée testée · durée incohérente → refus avant calcul"
+  },
+  {
+    "id": "outil-prompt",
+    "centralText": "Demande de pièces Brouillon à relire Consigne préparée But Préparer une demande générique Entrée Liste fictive de points attendus Sortie Brouillon et questions ouvertes Arrêt Une information requise manque Frontière écrite Préparer Un brouillon générique Valider Relire avec le collaborateur Humain Choisir les pièces et l’envoi Essai Point absent : arrêter et demander Aucune saisie existante ne doit être écrasée Ne jamais inventer une donnée absente"
   }
 ]
