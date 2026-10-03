@@ -65,6 +65,22 @@ Les rapports sont écrits sous `.qa/blog/` et restent des artefacts locaux.
 
 Limites assumées : le registre domaine↔éditeur est volontairement borné et doit être étendu par code et tests avant d’admettre une nouvelle autorité ; un domaine officiel légitime absent est donc refusé en matière sensible plutôt qu’accepté par déclaration. La preuve de classification impose une seconde identité mais reste une attestation locale non signée : elle ne prouve pas l’identité civile du relecteur. Le garde déterministe peut aussi refuser une citation légitime courte ou un passage unique qui soutient plusieurs formulations ; il faut alors citer des passages distincts ou consolider les claims. Il ne détecte qu’un sous-ensemble explicite des contradictions lexicales : le verdict du reviewer métier distinct reste obligatoire et seul décisionnaire du support. De même, le garde d’alt ne juge pas la sémantique complète d’une image et ne remplace pas une analyse linguistique : le critère humain `alt-information` reste obligatoire pour vérifier le sujet et le mécanisme. Les revues métier, la provenance image et leurs scores restent des attestations locales déclaratives, non signées cryptographiquement. La fixture de rendu fabrique avec Sharp une image abstraite portant une coche pour éprouver le pipeline ; elle ne constitue ni une sortie réelle de `image_generate`, ni une preuve de conformité à la direction artistique Memlia.
 
+## Oracle temporel du cache de sources
+
+Le test d'intégrité et de fraîcheur du cache utilise un jour de fixture fixe
+et une horloge `Date` figée à midi, remise à zéro à la sortie du test.
+Le jour passé à la forge ne remplace pas l'instant réel du vérificateur :
+`retrievedAt` doit être passé et son jour Europe/Paris doit égaler `checkedAt`.
+À 00h01 Paris en été, une fixture de la veille à 22h22 UTC est encore future ;
+en hiver, 22h22 UTC appartient encore à la veille Paris. Mélanger ces valeurs
+avec l'horloge de la machine rendait l'oracle rouge à minuit, à raison côté cache.
+
+`node --test tests/scripts/blog-forge.test.mjs` couvre les deux côtés de minuit
+Paris et UTC en été et en hiver, la réutilisation des copies passées et le refus
+d'un instant futur, même du même jour civil. Les bornes 0–7 jours, le refus de
+8 jours ou d'une date future et les contrôles d'intégrité restent inchangés.
+Cette correction des fixtures ne change ni la forge publique ni les sources.
+
 ## Construire la preview privée
 
 ```bash
