@@ -146,6 +146,8 @@ Quatre familles adjacentes : prévisionnel et business plan, trésorerie prévis
 
 Quatre familles qui ne produisent rien mais qui décident de tout. Choisir et cadrer une automatisation, en commençant par une tâche qui a une règle écrite plutôt que par la plus douloureuse. Écrire la règle dans les mots du cabinet, la rejouer sur un jeu d’essai fictif qui couvre le cas courant, le cas limite et le cas de refus, puis la recetter sur les fichiers du cabinet. Placer la validation humaine là où une action engage le cabinet ou un client. Mesurer le temps réellement gagné, avant et après, plutôt que de reprendre un chiffre lu ailleurs.
 
+Pour vérifier une sortie malgré des tests verts, voyez [la règle des trois passes : suites, chaîne de preuve et écran](/blog/tests-verts-et-regle-des-trois-passes).
+
 | Se prépare seul | Attend une validation | Reste humain |
 |---|---|---|
 | Le jeu d’essai fictif rejoué à chaque changement de règle | La règle écrite, avant son premier passage en recette | Le choix de la tâche par laquelle commencer |

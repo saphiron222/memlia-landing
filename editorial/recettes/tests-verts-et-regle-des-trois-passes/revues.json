@@ -1,0 +1,114 @@
+{
+  "subject": {
+    "slug": "tests-verts-et-regle-des-trois-passes",
+    "bodySha256": "403dcfbd6aaf35496c1900d10899c39b84d9c2cd00324f4b7b49980c618071e2",
+    "recipeSha256": "15316f6f5b88c1e693dd1f78a6b3b2f68adb92f9fd69081275f1bb9cfd9e1f22",
+    "renderedSha256": "eb9ff5dca2e675284e749db8db2dbad83aa059d457b23052e590f2f4f15d3274"
+  },
+  "editorial": {
+    "reviewer": "qa:t_c9dd7b40",
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Réponse directe et deux angles morts séparés du test rouge, règle applicable corps.md:5/13/17/23/59."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "H1/onglet/description et format narratif cohérents ; aucun rang, volume ou réussite SEO revendiqués."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "RAW exact et attribution autorisée ; copies/extraits primaires conformes, âges4/4/5jours et portée méthode seulement ; métier frais lu."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Trois cas fictifs réellement exécutés, contre-oracle et mutant rouge ; illustrations distinctes du produit historique."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Un H1/langfr/canonical/OG/schema conformes, huit clics avec destination exacte et HTTP200, ancres présentes, aucun débordement320/375/768/1440."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Frontière/tableaux/cas extractibles et visibles, quinze paragraphes personnels préservés ; aucun score citation inventé."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "Pilier réciproque et méthode/contact servis ; Confier cette tâche atteint contact au clavier, décision gardée au cabinet."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "business": {
+    "reviewerId": "metier:t_3a224b17",
+    "claims": {
+      "claim-unit-f2ed6077a390-1": {
+        "verdict": "soutient",
+        "reasoning": "Extrait exact dans le texte visible, source hashée conforme. La documentation décrit la vérification des exemples exécutés. Le candidat exclut explicitement tout lien probant entre cette annexe et les incidents historiques."
+      }
+    }
+  },
+  "image": {
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Recette:69–84, sujet/composition/style/palette hex/interdits/alt présents et confrontés à la couverture."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Master/OG préexistants relus : trois stations, pas texte/logo/personne/donnée/UI/approbation implicite ; aucune génération."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Statut fictif et pas produit lisibles dans les pixels mobiles ; source/date27/09 conservées en recette, pas nouvelle capture."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Trois instruments différenciés et décisions du cadre de référence lisibles ; pas simulation de capture historique."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Quatorze variantes/OG hashées et dimensionnées, palette mesurée conforme ; seize figures chargées sans panneau/clipping/débordement, captures natives début/fin."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Alternatives descriptives correspondant aux figures directes src76–78/110–112, aucune légende technique publique."
+        ]
+      }
+    }
+  },
+  "sources": {
+    "reviewedBy": "metier:t_3a224b17"
+  },
+  "provenance": {
+    "qaTask": "t_c9dd7b40",
+    "businessReviewer": "metier:t_3a224b17",
+    "qaDate": "2026-10-03",
+    "businessDate": "2026-10-02"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "candidateSlug": "tests-verts-et-regle-des-trois-passes",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "a4d4115948909570dce6df9538143a2cafee3e68400513e7beaf127dabb1d82a",
+  "manifestSha256": "7ba35869a2811f1054ad23328da36e8b14d982fdcc3ce7064aeb1b156bf2ef51",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact tests-verts-et-regle-des-trois-passes."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.5997916666666666,
+      "#27b657": 0.030625,
+      "#1c8a41": 0.06911458333333333,
+      "#231f20": 0.12088541666666666
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Recette:69–84, sujet/composition/style/palette hex/interdits/alt présents et confrontés à la couverture."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Master/OG préexistants relus : trois stations, pas texte/logo/personne/donnée/UI/approbation implicite ; aucune génération."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Statut fictif et pas produit lisibles dans les pixels mobiles ; source/date27/09 conservées en recette, pas nouvelle capture."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Trois instruments différenciés et décisions du cadre de référence lisibles ; pas simulation de capture historique."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Quatorze variantes/OG hashées et dimensionnées, palette mesurée conforme ; seize figures chargées sans panneau/clipping/débordement, captures natives début/fin."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alternatives descriptives correspondant aux figures directes src76–78/110–112, aucune légende technique publique."
+      ]
+    }
+  ]
+}
