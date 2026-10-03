@@ -95,13 +95,20 @@ class ReceiptTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.ingest(event=1)
         for key, value in (("repo", "outsider/site"), ("scope", "blog"), ("qa_task", "t_bb")):
-            with self.subTest(key=key):
-                with closing(sqlite3.connect(self.db)) as db, db:
-                    db.execute("DELETE FROM task_events")
-                self.propose({**RELEASE, key: value})
-                with self.assertRaises(ValueError):
-                    self.ingest()
-                self.assertIsNone(receipts.verified_receipt("t_bb"))
+            for audit in (False, True):
+                with self.subTest(key=key, audit=audit):
+                    with closing(sqlite3.connect(self.db)) as db, db:
+                        db.execute("DELETE FROM task_events")
+                    self.propose({**RELEASE, key: value})
+                    if audit:
+                        with closing(sqlite3.connect(self.db)) as db, db:
+                            db.execute("INSERT INTO task_events VALUES (43,'t_bb','commented','{}')")
+                    with self.assertRaises(ValueError):
+                        self.ingest()
+                    self.assertIsNone(receipts.verified_receipt("t_bb"))
+                    with closing(sqlite3.connect(self.db)) as db:
+                        self.assertEqual(db.execute("SELECT name FROM sqlite_master WHERE "
+                                                    "name='seo_release_receipts'").fetchall(), [])
 
     def test_self_declared_comment_and_metadata_are_not_a_receipt(self):
         with closing(sqlite3.connect(self.db)) as db, db:

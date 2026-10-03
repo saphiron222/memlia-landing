@@ -79,10 +79,13 @@ def ingest_telegram_choice(task_id, event_id, option, chat_id, user_id, callback
         with conn:
             found = _request(conn, task_id, event_id)
             if not found:
-                latest = conn.execute("SELECT payload FROM task_events WHERE task_id=? "
-                                      "ORDER BY id DESC LIMIT 1", (task_id,)).fetchone()
+                event = conn.execute("SELECT payload FROM task_events WHERE task_id=? AND id=? "
+                                     "AND kind IN ('blocked','block_loop_detected','gave_up')",
+                                     (task_id, event_id)).fetchone()
+                if not event:
+                    raise ValueError("SEO decision: unknown request event")
                 try:
-                    reason = json.loads(latest[0] or "{}").get("reason", "") if latest else ""
+                    reason = json.loads(event[0] or "{}").get("reason", "")
                 except (ValueError, TypeError):
                     reason = ""
                 if '"seo_release"' in reason:

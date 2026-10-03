@@ -139,7 +139,11 @@ commentaire et `unblock` dans `_accept`, avec `query.id` et
 `query.message.message_id` reçus par le callback. Cette intégration du plugin
 hors dépôt fait partie de la qualification `t_a67dba57` ; ne pas présenter le
 lecteur seul comme un circuit actif. Si l'ingestion échoue, le callback arrête
-sans débloquer. L'ingestion revalide l'événement, l'abonnement et la livraison
+sans débloquer. Son retour doit être exactement `True` avant toute provenance,
+commentaire ou déblocage ; `False` n'est pas un reçu SEO. En cas de demande
+invalide, le refus lit l'événement bloquant exact du callback, jamais le dernier
+événement d'audit : un commentaire ultérieur ne peut neutraliser le refus.
+L'ingestion revalide l'événement, l'abonnement et la livraison
 depuis `~/.hermes/kanban.db` et `~/.hermes/state/block-resolver.json`. La lecture
 ultérieure vérifie le reçu persistant et l'abonnement ; elle ne requiert plus
 `waiting_decision`, qui disparaît normalement après le déblocage. L'option
