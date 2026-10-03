@@ -1,51 +1,141 @@
 {
+  "subject": {
+    "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+    "bodySha256": "3364e1908670905fcdcc9905b5d69070d6e9437f425b64065dfabf0dffd10f1b",
+    "recipeSha256": "6b31e25029141a038270ebf9ca39df6e3685d3b305fc2e6ad0979a7ddac3f548",
+    "renderedSha256": "4a67ca1a5833e967a207efe7e1d94811b7db756b7d951df2df54c6ddfdf86513"
+  },
   "reviewedAt": "2026-10-03",
   "reviewScope": "Correction de fond de la règle de période Saisie ; continuité des constats inchangés de la revue métier précédente. Ni QA finale ni publication.",
   "businessOutcome": "PASS",
   "publication_completed": false,
-  "subject": {
-    "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "bodySha256": "3364e1908670905fcdcc9905b5d69070d6e9437f425b64065dfabf0dffd10f1b",
-    "recipeSha256": "1c1b5801723eb85b760d62d0a5d4b9eb893a2a9dd572b9d1183981359350fae3",
-    "renderedSha256": "02bf78964a2339c6e94892020ccbc348408025fdd1243e2956c8ffa97ad3fff4"
-  },
   "editorial": {
     "reviewer": "metier:t_30243835",
     "criteria": {
-      "intent-satisfaction": {"result": "PASS", "observations": ["Réserve de période levée : tableau, scénario et FAQ attendent une décision humaine ; réception conservée, aucune affectation d'office. PERIODE-DATES et PERIODE-CLOSE distinguent les états et la clôture."]},
-      "serp-format-rankability": {"result": "PASS", "observations": ["Structure de guide de saisie inchangée ; constat éditorial antérieur maintenu, aucun nouveau relevé SERP ni résultat de classement."]},
-      "eeat-sources": {"result": "PASS", "observations": ["BOI-TVA-DED-40-20, version du 08/01/2025, §25 relu directement le 03/10/2026 : biens meubles, périodicité mensuelle, exigibilité en avril et détention à la date de dépôt ; pas règle universelle de pièce tardive. Article 271 version depuis le 21/02/2026, article 208 annexe II et L123-13 relus. Conservation et autres citations inchangées : revue précédente maintenue."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["Deux cas de période sont des attentes fictives, ni moteur exécuté ni résultats mesurés. Total TEST-050 reste 50 ; illustrations corrigées et provenance explicite."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["HTML Astro de preview reconstruit indépendamment, 47 pages ; corps rendu et liaison vérifiés par verify-period-metier.mjs. Ce contrôle ne prouve pas l'indexabilité publique ni un build de publication vert."]},
-      "ai-citability": {"result": "PASS", "observations": ["FAQ rendue cite le §25 et borne sa portée ; aucun droit à déduction universel ni certitude de citation par un moteur IA."]},
-      "contextual-conversion": {"result": "PASS", "observations": ["Service dans les outils existants et validation de chaque écriture conservés ; aucun nouveau catalogue ni promesse produit."]}
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Réserve de période levée : tableau, scénario et FAQ attendent une décision humaine ; réception conservée, aucune affectation d'office. PERIODE-DATES et PERIODE-CLOSE distinguent les états et la clôture."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Structure de guide de saisie inchangée ; constat éditorial antérieur maintenu, aucun nouveau relevé SERP ni résultat de classement."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "BOI-TVA-DED-40-20, version du 08/01/2025, §25 relu directement le 03/10/2026 : biens meubles, périodicité mensuelle, exigibilité en avril et détention à la date de dépôt ; pas règle universelle de pièce tardive. Article 271 version depuis le 21/02/2026, article 208 annexe II et L123-13 relus. Conservation et autres citations inchangées : revue précédente maintenue."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Deux cas de période sont des attentes fictives, ni moteur exécuté ni résultats mesurés. Total TEST-050 reste 50 ; illustrations corrigées et provenance explicite."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "HTML Astro de preview reconstruit indépendamment, 47 pages ; corps rendu et liaison vérifiés par verify-period-metier.mjs. Ce contrôle ne prouve pas l'indexabilité publique ni un build de publication vert."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "FAQ rendue cite le §25 et borne sa portée ; aucun droit à déduction universel ni certitude de citation par un moteur IA."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "Service dans les outils existants et validation de chaque écriture conservés ; aucun nouveau catalogue ni promesse produit."
+        ]
+      }
     },
     "p0": []
   },
   "business": {
     "claims": {
-      "claim-unit-5545751fb901-1": {"verdict": "soutient", "reasoning": "DGFiP BOI-TVA-DED-40-20 du 08/01/2025, §25, relu le 03/10/2026 et copie locale contrôlée : pour une livraison de biens meubles corporels avec déclarations mensuelles, exigibilité le 30 avril et facture délivrée le 5 mai, le droit peut être exercé sur la déclaration déposée en mai au titre d'avril si le document est détenu à la date de dépôt. L'article cite cet exemple sous conditions et exclut son universalisation. Le cas réception le 6 mai n'attribue aucune période automatiquement : régime, conditions et clôture restent à qualifier. CGI art.271 en vigueur depuis le 21/02/2026 confirme naissance à l'exigibilité et nécessité des pièces ; CGI ann.II art.208 permet une déduction omise ultérieure sous conditions. Réserve précédente levée."},
-      "claim-unit-750912b300a9-1": {"verdict": "soutient", "reasoning": "F31808, citation et contexte inchangés de la revue métier du 03/10/2026 consignée dans revue-metier-20261003.md ; pas de certification de régularité par OCR ni extension à toute population."},
-      "claim-unit-73e4bb260d23-1": {"verdict": "soutient", "reasoning": "F39785, constat inchangé déjà contrôlé dans la revue métier précédente : suivi pour les flux concernés ; réception et calendrier d'émission distingués."},
-      "claim-unit-d4324ad3b50e-1": {"verdict": "soutient", "reasoning": "F39785, possibilité de signalement inchangée de la revue précédente, distincte de la file interne et soumise à décision humaine ; pas obligation de signalement automatique."},
-      "claim-unit-a6d8fe642843-1": {"verdict": "soutient", "reasoning": "F10029, citation inchangée déjà contrôlée : obligation de conserver les pièces susceptibles de contrôle fiscal. Son tableau daté de 2024 ne soutient pas seul la réforme de durée de 2026."},
-      "claim-unit-a6d8fe642843-2": {"verdict": "soutient", "reasoning": "A18906 du 26/06/2026 et article36 I/II loi2026-534, directement relus dans la revue précédente du 03/10 : passage à dix ans pour les pièces visées lorsque l'ancien délai expire strictement après le 01/01/2027. Paragraphe inchangé ; témoins de seuil, aucune date de purge ; L123-22 comptable distingué et qualification par document maintenue."},
-      "claim-unit-7995baec19ca-1": {"verdict": "soutient", "reasoning": "Définition CNIL et contexte inchangés de la revue métier précédente ; pas d'attribution automatique des rôles RGPD aux acteurs."}
+      "claim-unit-5545751fb901-1": {
+        "verdict": "soutient",
+        "reasoning": "DGFiP BOI-TVA-DED-40-20 du 08/01/2025, §25, relu le 03/10/2026 et copie locale contrôlée : pour une livraison de biens meubles corporels avec déclarations mensuelles, exigibilité le 30 avril et facture délivrée le 5 mai, le droit peut être exercé sur la déclaration déposée en mai au titre d'avril si le document est détenu à la date de dépôt. L'article cite cet exemple sous conditions et exclut son universalisation. Le cas réception le 6 mai n'attribue aucune période automatiquement : régime, conditions et clôture restent à qualifier. CGI art.271 en vigueur depuis le 21/02/2026 confirme naissance à l'exigibilité et nécessité des pièces ; CGI ann.II art.208 permet une déduction omise ultérieure sous conditions. Réserve précédente levée."
+      },
+      "claim-unit-750912b300a9-1": {
+        "verdict": "soutient",
+        "reasoning": "F31808, citation et contexte inchangés de la revue métier du 03/10/2026 consignée dans revue-metier-20261003.md ; pas de certification de régularité par OCR ni extension à toute population."
+      },
+      "claim-unit-73e4bb260d23-1": {
+        "verdict": "soutient",
+        "reasoning": "F39785, constat inchangé déjà contrôlé dans la revue métier précédente : suivi pour les flux concernés ; réception et calendrier d'émission distingués."
+      },
+      "claim-unit-d4324ad3b50e-1": {
+        "verdict": "soutient",
+        "reasoning": "F39785, possibilité de signalement inchangée de la revue précédente, distincte de la file interne et soumise à décision humaine ; pas obligation de signalement automatique."
+      },
+      "claim-unit-a6d8fe642843-1": {
+        "verdict": "soutient",
+        "reasoning": "F10029, citation inchangée déjà contrôlée : obligation de conserver les pièces susceptibles de contrôle fiscal. Son tableau daté de 2024 ne soutient pas seul la réforme de durée de 2026."
+      },
+      "claim-unit-a6d8fe642843-2": {
+        "verdict": "soutient",
+        "reasoning": "A18906 du 26/06/2026 et article36 I/II loi2026-534, directement relus dans la revue précédente du 03/10 : passage à dix ans pour les pièces visées lorsque l'ancien délai expire strictement après le 01/01/2027. Paragraphe inchangé ; témoins de seuil, aucune date de purge ; L123-22 comptable distingué et qualification par document maintenue."
+      },
+      "claim-unit-7995baec19ca-1": {
+        "verdict": "soutient",
+        "reasoning": "Définition CNIL et contexte inchangés de la revue métier précédente ; pas d'attribution automatique des rôles RGPD aux acteurs."
+      }
     }
   },
   "image": {
-    "reviewer": "metier:t_30243835",
+    "reviewer": "claude:revue-figures-20261003",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["Couverture et son brief inchangés : revue antérieure maintenue, pas de nouvelle génération."]},
-      "generation-constraints": {"result": "PASS", "observations": ["Les deux variantes corrigées de saisie-six-controles ont été ouvertes : scénario fictif, sortie attendue non exécutée et aucune écriture explicites."]},
-      "fictive-provenance": {"result": "PASS", "observations": ["TEST-050 conserve son statut de scénario fictif ; aucune mesure sur cinquante fichiers revendiquée."]},
-      "recognizable-subject": {"result": "PASS", "observations": ["Étape5 Période à qualifier et décision humaine documentée ; pièce reçue conservée ; le portrait ne donne plus d'affectation certaine."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Deux WebP corrigés ouverts, aucun texte final tronqué ; renderer --check confirme18preuves ; empreintes contrôlées. Ce contrôle d'actifs ne constitue pas une QA navigateur finale ou une preuve d'images servies en production."]},
-      "alt-information": {"result": "PASS", "observations": ["Alt corrigé concordant avec l'image et le corps ; autre figure inchangée."]}
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Couverture et son brief inchangés, relus : pile de feuilles, barre de lecture verte, plateau vert rangé, plateau graphite de côté et loupe, sans texte.",
+          "Les deux figures suivent le gabarit des références : fenêtre unique, en-tête à pastille, « Jeu d’essai fictif · lot de … », écran d’outil, palette et typographie communes."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Cadre et fond identiques au pixel près aux références hors zone de contenu ; aucun texte tronqué, aucun logo, aucune personne ; plus d’étapes numérotées ni de slogan.",
+          "Aucun taux de reliquat ni décompte mesuré : la file affiche six pièces d’un lot fictif et aucune écriture ; les montants sont ceux d’une facture fictive."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Fournisseur Fictif, Atelier Fictif et pièces numérotées inventées sous en-têtes « Jeu d’essai fictif » ; capturedAt 2026-10-03 dans la recette ; aucune mesure sur cinquante fichiers revendiquée."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Contrôle de pièce : facture de biens aux dates de PERIODE-DATES, six contrôles dans l’ordre fixe, période à qualifier, doublon non joué, aucune écriture ; file : six motifs fermés avec contrôle échoué et date, lot ouvert."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+          "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Alts de 123 et 115 caractères, identiques dans le HTML construit et la recette, fidèles au contrôle de FA-2026-0412 et à la file d’avril.",
+          "L’alt de couverture correspond à la pile, la barre de lecture, les deux plateaux et la loupe visibles."
+        ]
+      }
     },
     "directionArt": 17,
     "semanticRelevance": 22,
-    "scoreProvenance": "Notes heuristiques de la revue antérieure conservées, ni nouvelle mesure ni motif de republication ; correction du texte du portrait contrôlée dans cette passe."
+    "scoreProvenance": "Notes heuristiques conservées : couverture inchangée, nouvelles figures conformes au gabarit des références ; aucune nouvelle mesure."
   },
   "sources": {
     "reviewedBy": "metier:t_30243835",
@@ -63,16 +153,72 @@
     "score": 92,
     "p0": [],
     "categories": {
-      "contentQuality": {"score": 27, "max": 30},
-      "seoOptimization": {"score": 23, "max": 25},
-      "eeatSignals": {"score": 14, "max": 15},
-      "technicalElements": {"score": 14, "max": 15},
-      "aiCitationReadiness": {"score": 14, "max": 15}
+      "contentQuality": {
+        "score": 27,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 23,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 14,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 14,
+        "max": 15
+      }
     },
-    "evidence": ["Notes heuristiques du dossier antérieur maintenues : aucune nouvelle performance SEO ni mesure Lighthouse.", "Réserve métier sur la période levée par tableaux/FAQ/cas fictifs/portrait ; sources officielles relues, HTML preview reconstruit et cohérence exécutée.", "525testsNodePASS sans FAIL/SKIP ;5testsSaisiePASS ; ceci ne remplace pas le build de publication."],
-    "reservations": ["npm run build reproduit un échec de rubrique : Saisie est encore brouillon. Dev doit installer cet avis, rematérialiser et finaliser la livraison coordonnée.", "Ni QA finale, ni CI du candidat local, ni publication publique vérifiées dans cette passe ; publication_completed=false.", "Les deux cas Saisie décrivent des attentes fictives, pas un moteur de saisie exécuté.", "Quatre autres corps/recettes inchangés : validation de fond antérieure maintenue, sans nouvelle revue pour une date, un lien ou une empreinte seule."],
-    "seo": ["Lien officiel et FAQ bornée vérifiés dans HTML local neuf ; constat public réservé à la livraison."],
-    "geo": ["Exemple fiscal contextualisé, non universel ; pas de résultat de moteur IA mesuré."],
+    "evidence": [
+      "Notes heuristiques du dossier antérieur maintenues : aucune nouvelle performance SEO ni mesure Lighthouse.",
+      "Réserve métier sur la période levée par tableaux/FAQ/cas fictifs ; sources officielles relues, HTML preview reconstruit et cohérence exécutée lors de la passe antérieure. La nouvelle figure saisie-controle-piece reprend la livraison de biens et les dates du cas PERIODE-DATES et laisse la période « À qualifier », doublon non joué, aucune écriture.",
+      "525testsNodePASS sans FAIL/SKIP ;5testsSaisiePASS ; ceci ne remplace pas le build de publication."
+    ],
+    "reservations": [
+      "npm run build reproduit un échec de rubrique : Saisie est encore brouillon. Dev doit installer cet avis, rematérialiser et finaliser la livraison coordonnée.",
+      "Ni QA finale, ni CI du candidat local, ni publication publique vérifiées dans cette passe ; publication_completed=false.",
+      "Les deux cas Saisie décrivent des attentes fictives, pas un moteur de saisie exécuté.",
+      "Quatre autres corps/recettes inchangés : validation de fond antérieure maintenue, sans nouvelle revue pour une date, un lien ou une empreinte seule."
+    ],
+    "seo": [
+      "Lien officiel et FAQ bornée vérifiés dans HTML local neuf ; constat public réservé à la livraison."
+    ],
+    "geo": [
+      "Exemple fiscal contextualisé, non universel ; pas de résultat de moteur IA mesuré."
+    ],
     "verdict": "PASS métier sur la correction de période ; réserve de fond levée. Avis pour rematérialisation du candidat, non clôture de republication."
+  },
+  "technicalBindingMaintenance": {
+    "maintainedBy": "claude:recette-images-20261003",
+    "maintainedAt": "2026-10-03",
+    "reason": "Figures de corps remplacées selon la recette de référence (décision Kevin du 03/10/2026) : deux écrans d’outil fictifs 1600 × 900, mêmes ancrages, nouveaux identifiants et alts dans la recette. Corps, sources, affirmations et règles inchangés (bodySha256 identique) ; les constats éditoriaux, métier et qualité sur le texte sont maintenus ; les critères image et les constats qui décrivaient les anciennes figures sont reformulés par la revue indépendante des nouvelles figures.",
+    "figureReview": {
+      "reviewer": "claude:revue-figures-20261003",
+      "reviewedAt": "2026-10-03",
+      "figures": [
+        {
+          "id": "saisie-controle-piece",
+          "result": "PASS",
+          "constat": "Écran de contrôle au gabarit des références (pastille verte, « Jeu d’essai fictif · lot de mai 2026 ») : facture fictive FA-2026-0412 de biens (imprimante multifonction, cartouches d’encre) et checklist à statuts sans numérotation, dans l’ordre du corps — nature, émetteur, mentions et montants concluants, période « À qualifier » (livraison en avril, émission en mai), doublon « Non joué » — puis « Aucune écriture enregistrée » et décision humaine documentée attendue. Livraison de biens et dates du cas PERIODE-DATES (30/04, 05/05, 06/05, lot de mai), montants justes (450 + 120 = 570, TVA 114, TTC 684), numéro de pièce désormais propre à l’article ; l’ancienne bande à étapes numérotées et son slogan ont disparu. Aucune marque ni personne. Alt fidèle (123 caractères). Tient dans la colonne à 1280 et 390 px."
+        },
+        {
+          "id": "saisie-file-anomalies-avril",
+          "result": "PASS",
+          "constat": "File unique au gabarit des références (pastille orange, « Jeu d’essai fictif · lot d’avril 2026 », « relue à 9 h et à 14 h », titre « 6 pièces à qualifier ») : une ligne par motif fermé du corps (pièce incomplète pour le ticket coupé, hors période pour la facture de mars, doublon probable reçu par deux canaux, fournisseur inconnu, écart de montants, document non facturé pour le devis), avec contrôle échoué, date et statut « À qualifier » ; lot « Ouvert » et « Écritures créées par la file : aucune ». Seule la taille de la file apparaît, aucun taux de reliquat. Aucune marque ni personne. Alt fidèle (115 caractères). Tient dans la colonne à 1280 et 390 px."
+        }
+      ]
+    },
+    "previousSubject": {
+      "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "bodySha256": "3364e1908670905fcdcc9905b5d69070d6e9437f425b64065dfabf0dffd10f1b",
+      "recipeSha256": "1c1b5801723eb85b760d62d0a5d4b9eb893a2a9dd572b9d1183981359350fae3",
+      "renderedSha256": "02bf78964a2339c6e94892020ccbc348408025fdd1243e2956c8ffa97ad3fff4"
+    },
+    "previousMaintenance": null
   }
 }

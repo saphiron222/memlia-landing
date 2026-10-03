@@ -21,5 +21,5 @@ Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-10-03, barème blog
 
 ## Réserves mesurées
 
-- Le contrat interne déclare capturedAt 27/09 mais ne prouve pas l'horodatage autonome de fabrication des nouveaux portraits ; les captures de viewport relues ici attestent leur lisibilité, non leur date de création.
+- Le contrat interne déclare capturedAt 2026-10-03 pour les deux nouvelles figures, sans horodatage autonome de fabrication ; les captures à 1280 et 390 px relues ici attestent leur rendu, non leur date de création.
 - Robots index dans le build local ; QA/CI, scellement et contenu HTML effectivement servi après intégration restent à prouver.

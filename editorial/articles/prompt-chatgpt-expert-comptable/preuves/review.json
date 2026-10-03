@@ -40,7 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le journal du script local consigne pièce attendue vide, statut arrêt, motif contexte incomplet, message absent et aucun envoi. Le portrait de refus et l'alt dans le HTML local montrent le champ « Pièce attendue » non renseigné ; le cas nominal porte une facture nommée mais non reçue et produit seulement un brouillon fictif non envoyé."
+        "Le journal du script local consigne pièce attendue vide, statut arrêt, motif contexte incomplet, message absent et aucun envoi. La figure de suivi et son alt montrent la ligne « Champ non renseigné » en « Arrêt · contexte incomplet » ; la fenêtre d’assistant porte une facture nommée, suivi « Non reçue », et produit seulement un brouillon fictif « non envoyé », destinataire à confirmer."
       ]
     },
     {
@@ -48,7 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "HTML local a4e597b : deux portraits enfants directs de figure, alts concordants, aucune légende ni wrapper défilant ; captures haut/bas 320/375/1440 lisibles. La page locale affiche robots index ; cela ne prouve pas que le brouillon soit publié ou indexé, ni la QA/CI du candidat."
+        "HTML construit localement : deux figures data-blog-proof à une seule img WebP 1600 × 900 servie au bureau comme au téléphone, alts concordants, aucune légende ni wrapper défilant ; captures 1280 et 390 px sans débordement. La page locale affiche robots index ; cela ne prouve pas que le brouillon soit publié ou indexé, ni la QA/CI du candidat."
       ]
     },
     {

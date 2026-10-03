@@ -5,6 +5,12 @@
  * des nombres exacts d’actifs. Ici, chaque cadre mesure 1600 × 900, son texte est
  * figé dans content-contract.json, et son WebP reste sous 150 Ko.
  *
+ * Recette de référence (décision Kevin du 03/10/2026) : une figure de corps est UNE
+ * image 1600 × 900, servie telle quelle sur bureau comme sur téléphone, jamais une
+ * variante portrait « -mobile ». Elle montre l’écran d’un outil fictif dans la fenêtre
+ * de référence (pastille, nom de l’écran, « Jeu d’essai fictif · contexte ») : elle
+ * illustre, elle n’explique pas l’article.
+ *
  *   --adopt  fige le texte après revue visuelle et publie les actifs
  *   (sans option) rend et publie contre le contrat existant
  *   --check  refuse toute dérive sans écrire dans public/ ni dans le manifeste
@@ -37,7 +43,8 @@ if (mode === 'check' && process.env.CF_PAGES === '1') {
   const previous = JSON.parse(readFileSync(manifestPath, 'utf8'));
   const currentSources = previous.sources.map(({ path }) => ({ path, sha256: hash(readFileSync(path)) }));
   assert.deepEqual(previous.sources, currentSources, 'Sources ou contrat de rendu périmés');
-  assert.equal(previous.entries.length, contract.length + 4, 'Le manifeste ne couvre pas toutes les variantes');
+  assert.equal(previous.entries.length, contract.length, 'Le manifeste doit couvrir une image et une seule par preuve');
+  assert.ok(previous.entries.every((entry) => !/-mobile\.webp$/.test(entry.target)), 'Aucune variante portrait n’est attendue');
   for (const entry of previous.entries) {
     assert.ok(existsSync(entry.target), `Actif absent : ${entry.target}`);
     assert.equal(hash(readFileSync(entry.target)), entry.sha256, `Actif périmé : ${entry.target}`);
@@ -58,19 +65,42 @@ try {
   const fonts = await page.evaluate(() => [...document.fonts].map((font) => ({ family: font.family, status: font.status })));
   assert.ok(fonts.length >= 3 && fonts.every((font) => font.status === 'loaded'), 'Polices non chargées');
   const ids = await page.locator('.frame').evaluateAll((elements) => elements.map((element) => element.id));
-  assert.equal(ids.length, 14, 'Quatorze preuves sont attendues, deux par article');
+  assert.equal(ids.length, 24, 'Vingt-quatre preuves sont attendues, deux par article');
   assert.deepEqual(ids, contract.map((entry) => entry.id), 'Les cadres ne correspondent pas au contrat');
   assert.ok(contract.every((entry) => entry.article && entry.alt && entry.source && entry.capturedAt), 'Métadonnées de preuve incomplètes');
   assert.ok(contract.every((entry) => /^\d{4}-\d{2}-\d{2}$/.test(entry.capturedAt)
     && !Number.isNaN(Date.parse(`${entry.capturedAt}T00:00:00Z`))), 'Date de capture invalide');
   const articles = Map.groupBy(contract, (entry) => entry.article);
-  assert.equal(articles.size, 7, 'Sept articles distincts sont attendus');
+  assert.equal(articles.size, 12, 'Douze articles distincts sont attendus');
   for (const [article, preuves] of articles) {
     assert.equal(preuves.length, 2, `${article} doit porter exactement deux preuves`);
     const recettePath = `editorial/recettes/${article}/recette.json`;
     assert.ok(existsSync(recettePath), `Recette absente : ${article}`);
     const recette = JSON.parse(readFileSync(recettePath, 'utf8'));
     assert.deepEqual(recette.inlineProofs?.map(({ id }) => id), preuves.map(({ id }) => id), `Recette et contrat divergent : ${article}`);
+  }
+
+  // Recette : chaque cadre est une seule fenêtre de référence dont l’en-tête nomme l’écran
+  // et se déclare jeu d’essai fictif (ou reconstitution).
+  const chromes = await page.locator('.frame').evaluateAll((frames) => frames.map((frame) => {
+    const windows = frame.querySelectorAll(':scope > .window.full');
+    const bar = windows[0]?.querySelector(':scope > header.window-bar');
+    const parts = bar ? [...bar.children] : [];
+    return {
+      id: frame.id,
+      children: frame.children.length,
+      windows: windows.length,
+      dot: parts[0]?.classList.contains('dot') ?? false,
+      name: parts[1]?.tagName === 'B' ? parts[1].textContent.trim() : '',
+      context: parts.at(-1)?.tagName === 'SPAN' ? parts.at(-1).textContent.trim() : '',
+    };
+  }));
+  for (const chrome of chromes) {
+    assert.equal(chrome.windows, 1, `Une seule fenêtre attendue : ${chrome.id}`);
+    // Rien à côté de la fenêtre : une explication ajoutée hors de l'écran serait figée par --adopt.
+    assert.equal(chrome.children, 1, `Le cadre ne contient que sa fenêtre : ${chrome.id}`);
+    assert.ok(chrome.dot && chrome.name, `En-tête de fenêtre incomplet : ${chrome.id}`);
+    assert.match(chrome.context, /^(Jeu d’essai fictif|Reconstitution) · \S/, `Provenance fictive absente de l’en-tête : ${chrome.id}`);
   }
 
   await page.addStyleTag({ content: 'body{padding:0}main{display:block}.frame{display:none}.frame[data-render]{display:grid}' });
@@ -133,56 +163,6 @@ try {
     records.push({ id: entry.id, article: entry.article, checkedTextNodes: measured.checkedTextNodes, pngSha256: hash(png), webpSha256: hash(webp), bytes: webp.length });
   }
   assert.equal(new Set(records.map((record) => record.webpSha256)).size, records.length, 'Deux preuves rendent la même image');
-
-  // The landscape frame is unreadable when scaled into a phone's article column.
-  // Keep the desktop proof untouched; render a reflowed portrait from the same DOM.
-  const mobileArticles = new Set([
-    'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
-    'automatiser-un-cabinet-comptable-la-carte-des-taches',
-  ]);
-  const portrait = await browser.newPage({ viewport: { width: 360, height: 900 }, deviceScaleFactor: 3 });
-  try {
-    await portrait.goto(pathToFileURL(resolve(source, 'index.html')).href);
-    await portrait.evaluate(() => document.fonts.ready);
-    await portrait.addStyleTag({ content: 'main{display:block}.frame{display:none}.frame[data-render]{display:grid}' });
-    for (const entry of contract.filter((item) => mobileArticles.has(item.article))) {
-      await portrait.evaluate((id) => {
-        document.querySelector('[data-render]')?.removeAttribute('data-render');
-        document.getElementById(id)?.setAttribute('data-render', '');
-      }, entry.id);
-      const element = portrait.locator(`#${entry.id}`);
-      const measured = await element.evaluate((root) => {
-        const nodes = [];
-        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-        while (walker.nextNode()) if (walker.currentNode.textContent.trim()) nodes.push(walker.currentNode);
-        const clipped = nodes.filter((node) => {
-          const bounds = document.createRange(); bounds.selectNodeContents(node);
-          const box = root.getBoundingClientRect();
-          return [...bounds.getClientRects()].some((rect) => rect.left < box.left - 1 || rect.right > box.right + 1 || rect.bottom > box.bottom + 1);
-        }).map((node) => node.textContent.trim());
-        return {
-          width: root.getBoundingClientRect().width,
-          overflow: root.scrollWidth > root.clientWidth,
-          clipped,
-          fontSize: Math.min(...nodes.map((node) => parseFloat(getComputedStyle(node.parentElement).fontSize))),
-          text: nodes.flatMap((node) => node.textContent.trim().split(/\s+/)).join(' '),
-        };
-      });
-      assert.equal(measured.width, 360, `Largeur portrait ${entry.id}`);
-      assert.equal(measured.overflow, false, `Débordement portrait ${entry.id}`);
-      assert.deepEqual(measured.clipped, [], `Texte coupé portrait ${entry.id}`);
-      assert.ok(measured.fontSize >= 18, `Texte trop petit portrait ${entry.id}`);
-      assert.equal(measured.text, entry.centralText, `Texte divergent portrait ${entry.id}`);
-      const png = await element.screenshot({ animations: 'disabled', path: `${output}/${entry.id}-mobile.png` });
-      const webp = await sharp(png).resize({ width: 1200 }).webp({ quality: 86, effort: 6 }).toBuffer();
-      assert.ok(webp.length < 250_000, `Preuve portrait trop lourde : ${entry.id}`);
-      const target = `public/proofs/blog/${entry.id}-mobile.webp`;
-      candidates.push({ target, source: `${source}/index.html#${entry.id}`, bytes: webp });
-      records.push({ id: `${entry.id}-mobile`, article: entry.article, checkedTextNodes: 0, pngSha256: hash(png), webpSha256: hash(webp), bytes: webp.length });
-    }
-  } finally {
-    await portrait.close();
-  }
 
   if (mode === 'adopt') writeFileSync(contractPath, `${JSON.stringify(adopted, null, 2)}\n`);
   const manifest = {

@@ -30,21 +30,23 @@
     </article>
   </section>
 
-  <section class="frame" id="saisie-six-controles" aria-label="Six contrôles de saisie comptable dans leur ordre fixe">
+  <section class="frame" id="saisie-controle-piece" aria-label="Contrôle fictif d’une facture fournisseur avant toute écriture">
     <article class="window full">
-      <header class="window-bar"><span class="dot green"></span><b>Lecture d’une facture fictive</b><span>Scénario TEST-050 · sortie attendue, non exécutée</span></header>
-      <div class="flow-title"><small>Ordre fixe</small><h2>Une étape qui échoue arrête les suivantes.</h2></div>
-      <ol class="steps six"><li><i>1</i><b>Nature</b><span>Facture identifiée</span></li><li><i>2</i><b>Émetteur</b><span>Fournisseur connu</span></li><li><i>3</i><b>Mentions</b><span>Champs attendus présents</span></li><li><i>4</i><b>Montants</b><span>Cohérents</span></li><li class="blocked"><i>5</i><b>Période</b><span>Période à qualifier</span></li><li class="waiting"><i>6</i><b>Doublon</b><span>Non joué</span></li></ol>
-      <div class="outcome-band"><span class="pill amber">Sortie attendue</span><b>Aucune écriture enregistrée.</b><span>Pièce reçue conservée. Décision humaine documentée ; doublon à vérifier ensuite.</span></div>
+      <header class="window-bar"><span class="dot green"></span><b>Contrôle de la pièce FA-2026-0412</b><span>Jeu d’essai fictif · lot de mai 2026</span></header>
+      <div class="doc-check">
+        <section class="invoice"><div class="invoice-head"><div><small>Facture reçue le 06/05/2026</small><h3>Fournisseur Fictif</h3><span>Client : Atelier Fictif</span></div><b>FA-2026-0412</b></div><dl class="invoice-meta"><div><dt>Émise le</dt><dd>05/05/2026</dd></div><div><dt>Livraison</dt><dd>30/04/2026</dd></div><div><dt>Échéance</dt><dd>04/06/2026</dd></div></dl><div class="invoice-lines"><div class="table-head"><span>Désignation</span><span>Qté</span><span>Montant HT</span></div><div><span>Imprimante multifonction</span><span>1</span><span>450,00</span></div><div><span>Cartouches d’encre</span><span>2</span><span>120,00</span></div></div><dl class="invoice-total"><div><dt>Total HT</dt><dd>570,00 €</dd></div><div><dt>TVA 20 %</dt><dd>114,00 €</dd></div><div><dt>Total TTC</dt><dd>684,00 €</dd></div></dl></section>
+        <section class="check-panel"><small>Contrôles · ordre fixe</small><ol><li><i>✓</i><span><b>Nature</b><small>Facture identifiée</small></span><em class="pill green">Concluant</em></li><li><i>✓</i><span><b>Émetteur</b><small>Fournisseur du dossier</small></span><em class="pill green">Concluant</em></li><li><i>✓</i><span><b>Mentions</b><small>Numéro, date, parties, montants</small></span><em class="pill green">Concluant</em></li><li><i>✓</i><span><b>Montants</b><small>HT + TVA = TTC</small></span><em class="pill green">Concluant</em></li><li class="warn"><i>!</i><span><b>Période</b><small>Livraison en avril, émission en mai</small></span><em class="pill amber">À qualifier</em></li><li class="wait"><i>·</i><span><b>Doublon</b><small>Après la décision sur la période</small></span><em class="pill grey">Non joué</em></li></ol><div class="state-bar"><span>Période à qualifier · décision humaine documentée attendue</span><b>Aucune écriture enregistrée</b></div></section>
+      </div>
     </article>
   </section>
 
-  <section class="frame" id="saisie-file-anomalies" aria-label="File d’anomalies comptables à six motifs fermés">
+  <section class="frame" id="saisie-file-anomalies-avril" aria-label="File d’anomalies fictive d’un lot de pièces d’avril">
     <article class="window full">
-      <header class="window-bar"><span class="dot amber"></span><b>File d’anomalies</b><span>Scénario TEST-050 · motifs possibles, non mesurés</span></header>
-      <div class="queue-layout">
-        <section><small>Motifs fermés</small><h2>Première sortie selon l’ordre des contrôles.</h2><div class="motifs"><span>Document non facturé</span><span>Fournisseur inconnu</span><span class="active">Pièce incomplète</span><span>Écart de montants</span><span>Hors période</span><span>Doublon probable</span></div></section>
-        <section class="case"><small>Cas illustré · sortie attendue</small><h3>Ticket coupé · pièce incomplète</h3><dl><div><dt>Contrôle</dt><dd>Informations illisibles</dd></div><div><dt>Action automatique</dt><dd>Aucune écriture</dd></div><div><dt>Décision attendue</dt><dd>Qualifier et demander le justificatif</dd></div><div><dt>État</dt><dd><span class="pill amber">À traiter</span></dd></div></dl><p>Le reliquat ne se mesure qu’après rejeu du lot. Aucun classement individuel.</p></section>
+      <header class="window-bar"><span class="dot amber"></span><b>File d’anomalies · avril 2026</b><span>Jeu d’essai fictif · lot d’avril 2026</span></header>
+      <div class="screen">
+        <div class="toolbar"><div><small>File unique · relue à 9 h et à 14 h</small><b>6 pièces à qualifier</b></div><nav class="tabs"><span class="on">Tous les motifs</span><span>Pièce incomplète</span><span>Hors période</span><span>Doublon probable</span></nav></div>
+        <div class="data-table" style="--cols:1fr .7fr .95fr 1.2fr .8fr"><div class="table-head"><span>Pièce</span><span>Reçue le</span><span>Contrôle échoué</span><span>Motif</span><span>Statut</span></div><div><span class="two-line"><b>TK-2026-0107</b><small>Ticket coupé</small></span><span>03/04</span><span>Mentions</span><span><em class="pill line">Pièce incomplète</em></span><span><em class="pill amber">À qualifier</em></span></div><div><span class="two-line"><b>FA-2026-0371</b><small>Facture de mars</small></span><span>04/04</span><span>Période</span><span><em class="pill line">Hors période</em></span><span><em class="pill amber">À qualifier</em></span></div><div><span class="two-line"><b>FA-2026-0386</b><small>Reçue par deux canaux</small></span><span>08/04</span><span>Doublon</span><span><em class="pill line">Doublon probable</em></span><span><em class="pill amber">À qualifier</em></span></div><div><span class="two-line"><b>FA-2026-0390</b><small>Fournisseur jamais vu</small></span><span>09/04</span><span>Émetteur</span><span><em class="pill line">Fournisseur inconnu</em></span><span><em class="pill amber">À qualifier</em></span></div><div><span class="two-line"><b>FA-2026-0397</b><small>Facture d’entretien</small></span><span>11/04</span><span>Montants</span><span><em class="pill line">Écart de montants</em></span><span><em class="pill amber">À qualifier</em></span></div><div><span class="two-line"><b>DV-2026-0044</b><small>Devis transmis</small></span><span>12/04</span><span>Nature</span><span><em class="pill line">Document non facturé</em></span><span><em class="pill amber">À qualifier</em></span></div></div>
+        <div class="footer-band"><b>Lot d’avril</b><em class="pill amber">Ouvert</em><span>Écritures créées par la file : aucune</span></div>
       </div>
     </article>
   </section>
@@ -95,18 +97,24 @@
     </article>
   </section>
 
-  <section class="frame" id="carte-douze-poles" aria-label="Carte des douze pôles du cabinet et de leurs familles">
+  <section class="frame" id="carte-inventaire-taches" aria-label="Inventaire fictif des tâches d’un cabinet par pôle">
     <article class="window full">
-      <header class="window-bar"><span class="dot green"></span><b>Carte du cabinet</b><span>12 pôles · 60 familles · source de vérité éditoriale</span></header>
-      <div class="pole-grid"><article><b>13</b><span>Production comptable</span></article><article><b>5</b><span>Portefeuille et échéances</span></article><article><b>7</b><span>Paie et social</span></article><article><b>7</b><span>Juridique et fiscal</span></article><article><b>4</b><span>Facturation et recouvrement</span></article><article><b>5</b><span>Administration et secrétariat</span></article><article><b>3</b><span>RH et formation</span></article><article><b>4</b><span>Numérique, IT et data</span></article><article><b>3</b><span>Excel et outils existants</span></article><article class="active"><b>4</b><span>Méthode et décision humaine</span></article><article><b>4</b><span>Conseil et missions spéciales</span></article><article class="closed"><b>1</b><span>Audit légal · listé, non ouvert</span></article></div>
-      <p class="map-note">Chaque famille décrit une tâche et sa frontière. La carte ne promet aucune fonction et n’ouvre pas l’audit légal.</p>
+      <header class="window-bar"><span class="dot green"></span><b>Inventaire des tâches</b><span>Jeu d’essai fictif · cabinet de démonstration</span></header>
+      <div class="screen">
+        <div class="toolbar"><div><small>Relevé de cadrage</small><b>Carte du cabinet · 12 pôles</b></div><nav class="tabs"><span class="on">Tous les pôles</span><span>Candidates</span><span>À observer</span><span>Non ouvert</span></nav></div>
+        <div class="data-table" style="--cols:1.15fr 1.55fr .8fr .7fr .85fr"><div class="table-head"><span>Pôle</span><span>Famille de tâches</span><span>Fréquence</span><span>Règle écrite</span><span>Statut</span></div><div><span>Production comptable</span><span>Relance des pièces manquantes</span><span>Mensuelle</span><span>Oui</span><span><em class="pill green">Candidate</em></span></div><div><span>Production comptable</span><span>Saisie des factures fournisseurs</span><span>À chaque pièce</span><span>En cours</span><span><em class="pill amber">À observer</em></span></div><div><span>Paie et social</span><span>Contrôle des bulletins avant DSN</span><span>Mensuelle</span><span>Oui</span><span><em class="pill green">Candidate</em></span></div><div><span>Juridique et fiscal</span><span>Préparation des déclarations de TVA</span><span>Mensuelle</span><span>Partielle</span><span><em class="pill amber">À observer</em></span></div><div><span>Facturation et recouvrement</span><span>Relance des honoraires impayés</span><span>Mensuelle</span><span>Non</span><span><em class="pill grey">Règle à écrire</em></span></div><div class="off"><span>Audit légal</span><span>Commissariat aux comptes</span><span>—</span><span>—</span><span><em class="pill grey">Non ouvert</em></span></div></div>
+        <div class="stat-row"><div><small>Familles relevées</small><b>60</b></div><div><small>Candidates au cadrage</small><b>2</b></div><div><small>Audit légal</small><b>Listé, non ouvert</b></div></div>
+      </div>
     </article>
   </section>
 
-  <section class="frame" id="carte-test-regle" aria-label="Test de maturité d’une règle de cabinet">
+  <section class="frame" id="carte-fiche-regle-relance" aria-label="Fiche fictive d’une règle de relance des pièces">
     <article class="window full">
-      <header class="window-bar"><span class="dot green"></span><b>Choisir par quelle règle commencer</b><span>Jeu d’essai fictif</span></header>
-      <div class="maturity"><section><small>Tâche candidate</small><h2>Relance de pièces</h2><p>Déclencheur, condition, action et exception sont écrits sur une page.</p></section><div class="checks-list"><div><i>✓</i><span><b>Se répète</b><small>Chaque dossier, chaque période</small></span><em class="ok">Oui</em></div><div><i>✓</i><span><b>La règle s’écrit</b><small>Aucun « ça dépend » non borné</small></span><em class="ok">Oui</em></div><div><i>✓</i><span><b>Les exceptions se comptent</b><small>Illisible, litige, hors période</small></span><em class="ok">Oui</em></div></div><aside><small>Décision humaine</small><h3>Candidate au cadrage</h3><p>Le test ne lance rien. Le cabinet choisit la première tâche et valide sa frontière.</p><span class="pill green">Règle reproductible</span></aside></div>
+      <header class="window-bar"><span class="dot green"></span><b>Fiche règle · Relance des pièces</b><span>Jeu d’essai fictif · règle R-01</span></header>
+      <div class="record-layout">
+        <section><div class="record-head"><div><small>Règle de cabinet · production comptable</small><h2>Relance des pièces manquantes</h2></div><em class="pill amber">Brouillon de règle</em></div><dl class="fields"><div><dt>Déclencheur</dt><dd>Le 5 du mois, pour chaque dossier en tenue mensuelle</dd></div><div><dt>Condition</dt><dd>Une pièce de la checklist reste « attendue »</dd></div><div><dt>Action</dt><dd>Préparer une relance qui nomme les seules pièces attendues</dd></div><div><dt>Exception</dt><dd>Client en litige, pièce illisible, période close</dd></div><div><dt>Validation humaine</dt><dd>Le collaborateur relit la relance, puis l’envoie</dd></div><div><dt>Mesure</dt><dd>Temps avant et après, sur le même jeu d’essai · à relever</dd></div></dl></section>
+        <aside class="side-panel"><small>Jeu d’essai de la règle</small><ul class="cases"><li><span><b>Cas courant</b><small>D-004 · deux pièces attendues</small></span><em class="pill green">Relance préparée</em></li><li><span><b>Cas limite</b><small>D-007 · pièce reçue hors période</small></span><em class="pill amber">À relire</em></li><li><span><b>Cas de refus</b><small>D-009 · client en litige</small></span><em class="pill grey">Aucune relance</em></li></ul><dl><div><dt>Recette réelle</dt><dd>Non commencée</dd></div><div><dt>Propriétaire</dt><dd>Pôle production</dd></div></dl></aside>
+      </div>
     </article>
   </section>
 
@@ -121,6 +129,109 @@
     <article class="window full">
       <header class="window-bar"><span class="dot green"></span><b>Relevé de tâche</b><span>Jeu d’essai fictif · contrôle de complétude</span></header>
       <div class="form-check"><section><small>Réponses du relevé</small><div class="answer"><b>Tâche</b><span>Rapprocher l’export et le classeur</span><em class="ok">Renseigné</em></div><div class="answer"><b>Durée</b><span>20 minutes</span><em class="ok">Renseigné</em></div><div class="answer missing"><b>Fréquence</b><span>Champ vide</span><em class="stop">Manquant</em></div><div class="answer missing"><b>Source</b><span>Champ vide</span><em class="stop">Manquant</em></div></section><aside><small>Bloc calculé</small><h2>2 éléments manquent</h2><ul><li>Fréquence de la tâche</li><li>Emplacement de la donnée</li></ul><p>Aucun engagement tant que le relevé est incomplet.</p><button type="button" disabled>Terminer le cadrage</button></aside></div>
+    </article>
+  </section>
+
+  <section class="frame" id="logiciel-grille-demonstration" aria-label="Grille fictive de démonstration de trois solutions sur une même pièce">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Grille de démonstration</b><span>Jeu d’essai fictif · dossier D-001 · avril 2026</span></header>
+      <div class="screen">
+        <div class="toolbar"><div><small>Cas rejoué à l’identique</small><b>Pièce nominale reçue</b></div><nav class="tabs"><span class="on">Pièce nominale</span><span>Doublon</span><span>Période ambiguë</span><span>Donnée absente</span></nav></div>
+        <div class="data-table" style="--cols:1fr 1fr 1fr 1fr"><div class="table-head"><span>Relevé</span><span>Logiciel actuel</span><span>Solution A</span><span>Solution B</span></div><div><span>Version montrée</span><span>Version en place</span><span>Démonstration v. 4.2</span><span>Non communiquée</span></div><div><span>Sortie</span><span>Proposition à valider</span><span>Écriture proposée</span><span>Extraction seule</span></div><div><span>Étapes manuelles</span><span>Export, puis contrôle</span><span>Contrôle seul</span><span>Non montrées</span></div><div><span>Trace après correction</span><span>Motif conservé</span><span>Non montrée</span><span>Non montrée</span></div><div class="off"><span>État</span><span><em class="pill green">Vérifié sur le cas</em></span><span><em class="pill amber">À configurer</em></span><span><em class="pill grey">Non vérifié</em></span></div></div>
+        <div class="footer-band"><b>Cas suivant</b><span>Doublon · même pièce reçue deux fois</span><span>1 cas sur 4 relevé</span></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="logiciel-file-controle" aria-label="File de contrôle fictive de quatre pièces sans écriture">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>File de contrôle</b><span>Jeu d’essai fictif · dossier D-001 · avril 2026</span></header>
+      <div class="queue-split">
+        <section><div class="toolbar"><div><small>Pièces reçues</small><b>4 pièces · aucune écriture</b></div></div><div class="data-table" style="--cols:1.05fr 1.15fr .8fr 1.15fr .62fr"><div class="table-head"><span>Pièce</span><span>Fournisseur</span><span>Période lue</span><span>Sortie</span><span>Suite</span></div><div><span>FA-2026-0321</span><span>Fournisseur Fictif</span><span>avril 2026</span><span><em class="pill green">Proposition</em></span><span>À valider</span></div><div class="sel"><span>FA-2026-0321</span><span>Fournisseur Fictif</span><span>avril 2026</span><span><em class="pill amber">Doublon probable</em></span><span>Revoir</span></div><div><span>FA-2026-0398</span><span>Fournisseur Fictif B</span><span>mars 2026</span><span><em class="pill amber">Période ambiguë</em></span><span>Revoir</span></div><div><span>Sans référence</span><span>Non lu</span><span>—</span><span><em class="pill grey">Donnée absente</em></span><span>Arrêt</span></div></div><div class="footer-band"><b>Règle locale</b><span>Empreinte, période, doublon</span><span>Dernier passage le 08/04 à 10 h 12</span></div></section>
+        <aside class="side-panel"><small>Exception sélectionnée</small><h3>Doublon probable</h3><dl><div><dt>Pièce</dt><dd>FA-2026-0321, reçue le 08/04</dd></div><div><dt>Déjà reçue</dt><dd>Le 03/04, par courriel</dd></div><div><dt>Écriture</dt><dd>Aucune</dd></div><div><dt>Reprise</dt><dd>Comparer les deux pièces</dd></div></dl><em class="pill amber">À reprendre</em></aside>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="prompt-assistant-brouillon" aria-label="Fenêtre d’assistant fictive avec un brouillon de demande de pièce">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Assistant · demande de pièce</b><span>Jeu d’essai fictif · Atelier Fictif · avril 2026</span></header>
+      <div class="chat-layout">
+        <aside class="side-panel"><small>Contexte autorisé</small><dl><div><dt>Société</dt><dd>Atelier Fictif</dd></div><div><dt>Période</dt><dd>avril 2026</dd></div><div><dt>Pièce attendue</dt><dd>Facture d’achat de matériel</dd></div><div><dt>Suivi</dt><dd>Non reçue</dd></div><div><dt>Destinataire</dt><dd class="amber-text">À confirmer</dd></div></dl></aside>
+        <section class="chat"><div class="msg user"><small>Collaborateur</small><p>Prépare un brouillon de demande de pièce pour Atelier Fictif : facture d’achat de matériel, avril 2026. N’invente ni montant, ni échéance, ni adresse.</p></div><div class="msg bot"><small>Assistant · brouillon</small><p><b>Objet :</b> Pièce manquante · avril 2026</p><p>Bonjour, pouvez-vous nous transmettre la facture d’achat de matériel pour Atelier Fictif, période avril 2026 ? Si elle n’est pas disponible, indiquez-nous pourquoi. Merci.</p><div class="msg-check"><span>À vérifier avant envoi</span><i>Pièce</i><i>Période</i><i>Destinataire</i><i>Ton</i></div><div class="msg-foot"><em class="pill amber">Brouillon · non envoyé</em><span>Destinataire : à confirmer</span></div></div><div class="composer"><span>Écrire une consigne…</span><b aria-hidden="true">→</b></div></section>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="prompt-suivi-demandes" aria-label="Suivi fictif des demandes de pièces et de leur prochaine action">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Suivi des demandes de pièces</b><span>Jeu d’essai fictif · avril 2026</span></header>
+      <div class="screen">
+        <div class="toolbar"><div><small>Pièces à obtenir</small><b>5 demandes · avril 2026</b></div><nav class="tabs"><span class="on">Toutes</span><span>À relire</span><span>Envoyées</span><span>Reçues</span></nav></div>
+        <div class="data-table" style="--cols:1.15fr 1.3fr 1.15fr 1fr"><div class="table-head"><span>Dossier</span><span>Pièce attendue</span><span>État</span><span>Prochaine action</span></div><div><span>D-012 · Atelier Fictif</span><span>Facture d’achat de matériel</span><span><em class="pill amber">Demande proposée</em></span><span>Relire le brouillon</span></div><div class="sel"><span>D-012 · Atelier Fictif</span><span>Champ non renseigné</span><span><em class="pill grey">Arrêt · contexte incomplet</em></span><span>Préciser la pièce</span></div><div><span>D-015 · Studio Fictif</span><span>Relevé bancaire de mars</span><span><em class="pill line">Envoyée le 14/04</em></span><span>Ne pas relancer</span></div><div><span>D-019 · Commerce Fictif</span><span>Facture de vente n° 118</span><span><em class="pill green">Reçue le 16/04</em></span><span>Arrêter la relance</span></div><div><span>D-021 · Démo Social</span><span>Justificatif de variable</span><span><em class="pill grey">Absente</em></span><span>Préparer la demande</span></div></div>
+        <div class="footer-band"><b>Source des états</b><span>Suivi du cabinet</span><span>Mis à jour le 16/04 à 9 h 30</span></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="competences-tableau-dossier" aria-label="Tableau fictif d’un dossier en clôture, du préparé à la décision">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Dossier D-008 · clôture d’avril</b><span>Jeu d’essai fictif · période 2026-04</span></header>
+      <div class="board">
+        <section><div class="col-head"><b>Préparé</b><em>3</em></div><article class="card"><small>Banque · compte 512</small><b>Rapprochement bancaire proposé</b><span>14 lignes rapprochées, 1 en suspens</span><em class="pill green">Prêt</em></article><article class="card"><small>Fournisseurs</small><b>Lettrage proposé</b><span>9 écritures, source jointe</span><em class="pill green">Prêt</em></article><article class="card"><small>TVA · avril 2026</small><b>Tableau de TVA préparé</b><span>Montants repris des journaux</span><em class="pill green">Prêt</em></article></section>
+        <section><div class="col-head"><b>À valider</b><em>2</em></div><article class="card"><small>FA-2026-0467 · Fournisseur Fictif</small><b>Écriture proposée</b><span>Période et source jointes</span><em class="pill amber">À valider</em></article><article class="card"><small>Pièces attendues</small><b>Relance préparée</b><span>2 pièces nommées, destinataire à confirmer</span><em class="pill amber">À relire</em></article></section>
+        <section class="human"><div class="col-head"><b>Décision du collaborateur</b><em>2</em></div><article class="card"><small>Avoir AV-2026-0031</small><b>Exception à arbitrer</b><span>Facture d’origine introuvable</span><em class="pill grey">À arbitrer</em></article><article class="card"><small>Client · Atelier Fictif</small><b>Information du client</b><span>Écart de TVA à expliquer</span><em class="pill grey">Collaborateur</em></article></section>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="competences-journal-rejeu" aria-label="Journal fictif du rejeu d’une règle sur trois entrées">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Journal de rejeu · 21/09/2026</b><span>Jeu d’essai fictif · trois entrées</span></header>
+      <div class="queue-split">
+        <section><div class="toolbar"><div><small>Même règle, trois entrées</small><b>3 cas rejoués</b></div></div><div class="data-table" style="--cols:.62fr .5fr 1.45fr 1.2fr"><div class="table-head"><span>Heure</span><span>Cas</span><span>Entrée fictive</span><span>Sortie</span></div><div><span>10:42:01</span><span>IA-01</span><span class="two-line"><b>Entrée complète, période reconnue</b><small>1 interprétation · règle écrite</small></span><span><em class="pill green">Proposition · PR-001</em></span></div><div class="sel"><span>10:42:01</span><span>IA-02</span><span class="two-line"><b>Pièce lisible, deux interprétations</b><small>2 interprétations · règle écrite</small></span><span><em class="pill amber">Refus · 2 interprétations</em></span></div><div><span>10:42:02</span><span>IA-03</span><span class="two-line"><b>Entrée reconnue, règle absente</b><small>1 interprétation · aucune règle</small></span><span><em class="pill grey">Refus · règle à écrire</em></span></div></div><div class="footer-band"><b>Contrôle du rejeu</b><span>3 cas sur 3 conformes à l’attendu</span><span>Règle R-IA · version du 21/09</span></div></section>
+        <aside class="side-panel"><small>Ligne sélectionnée · IA-02</small><h3>Deux interprétations possibles</h3><dl><div><dt>Statut</dt><dd>REFUS_AMBIGUITE</dd></div><div><dt>Proposition</dt><dd>Aucune</dd></div><div><dt>Décision</dt><dd>Présenter l’ambiguïté au collaborateur</dd></div></dl><em class="pill amber">À présenter</em></aside>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="surcharge-journal-semaine" aria-label="Journal fictif d’une semaine classé par état du flux">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Journal de la semaine · pôle production</b><span>Jeu d’essai fictif · semaine du 13 avril</span></header>
+      <div class="screen">
+        <div class="counters"><div class="c-green"><b>3</b><span>Répétition</span></div><div class="c-amber"><b>2</b><span>Attente</span></div><div class="c-line"><b>1</b><span>Exception</span></div><div class="c-grey"><b>1</b><span>Décision</span></div></div>
+        <div class="data-table" style="--cols:.55fr 1.65fr .6fr .95fr .8fr"><div class="table-head"><span>Jour</span><span>Événement</span><span>Dossier</span><span>Durée ou attente</span><span>État</span></div><div><span>Lun 13</span><span>Saisie des relevés bancaires</span><span>D-004</span><span>45 min</span><span><em class="pill green">Répétition</em></span></div><div><span>Lun 13</span><span>Préparation des relances de pièces</span><span>D-011</span><span>30 min</span><span><em class="pill green">Répétition</em></span></div><div><span>Mar 14</span><span>Facture d’achat manquante</span><span>D-012</span><span>2 j d’attente</span><span><em class="pill amber">Attente</em></span></div><div><span>Mer 15</span><span>Facture datée hors période</span><span>D-007</span><span>20 min</span><span><em class="pill line">Exception</em></span></div><div><span>Jeu 16</span><span>Validation de révision indisponible</span><span>D-009</span><span>1 j d’attente</span><span><em class="pill amber">Attente</em></span></div><div><span>Jeu 16</span><span>Saisie des factures récurrentes</span><span>D-004</span><span>40 min</span><span><em class="pill green">Répétition</em></span></div><div><span>Ven 17</span><span>Écart à arbitrer</span><span>D-009</span><span>25 min</span><span><em class="pill grey">Décision</em></span></div></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="surcharge-grille-priorisation" aria-label="Grille fictive de priorisation de tâches candidates">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Grille de priorisation</b><span>Jeu d’essai fictif · semaine du 13 avril</span></header>
+      <div class="queue-split">
+        <section><div class="toolbar"><div><small>Candidats relevés</small><b>5 tâches de la semaine</b></div></div><div class="data-table" style="--cols:1.55fr .95fr .72fr .78fr 1fr"><div class="table-head"><span>Candidat</span><span>Fréquence</span><span>Règle stable</span><span>Coût du doute</span><span>Décision</span></div><div class="pick"><span>Saisie des relevés bancaires</span><span>Hebdomadaire</span><span>Oui</span><span>Faible</span><span><em class="pill green">Écrire d’abord</em></span></div><div><span>Préparation des relances</span><span>Mensuelle</span><span>Oui</span><span>Faible</span><span><em class="pill green">Écrire d’abord</em></span></div><div><span>Saisie des factures récurrentes</span><span>Hebdomadaire</span><span>Non</span><span>Faible</span><span><em class="pill amber">Règle à clarifier</em></span></div><div><span>Facture hors période</span><span>Mensuelle</span><span>Non</span><span>Élevé</span><span><em class="pill grey">Garder humain</em></span></div><div><span>Écart à arbitrer</span><span>Mensuelle</span><span>Non</span><span>Élevé</span><span><em class="pill grey">Garder humain</em></span></div></div></section>
+        <aside class="side-panel"><small>Premier candidat</small><h3>Règle candidate RC-01</h3><dl><div><dt>Tâche</dt><dd>Saisie des relevés bancaires</dd></div><div><dt>Arrêt prévu</dt><dd>Relevé illisible ou incomplet</dd></div><div><dt>Suite</dt><dd>Faire relire la règle avant de la tester</dd></div></dl><em class="pill amber">À relire</em></aside>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="trois-passes-journal-recette" aria-label="Journal fictif de recette avec trois arrêts avant validation">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Journal de recette · simulateur de démonstration</b><span>Jeu d’essai fictif · trois cas rejoués</span></header>
+      <div class="queue-split">
+        <section><div class="toolbar"><div><small>Recette avant validation</small><b>3 arrêts à corriger</b></div></div><div class="data-table" style="--cols:.95fr 1.3fr .62fr .62fr 1.05fr"><div class="table-head"><span>Passe</span><span>Cas fictif</span><span>Attendu</span><span>Obtenu</span><span>Statut</span></div><div><span>Suites</span><span class="two-line"><b>Bornes de colonnes Z à AB</b><small>Lecteur de bornes · une lettre</small></span><span>AB = 28</span><span>AB = 1</span><span><em class="pill line">Rouge à raison</em></span></div><div><span>Chaîne de preuve</span><span class="two-line"><b>Coûts 40 + 10 + 5</b><small>Total après insertion de colonne</small></span><span>55</span><span>50</span><span><em class="pill amber">Divergence</em></span></div><div class="sel"><span>Écran</span><span class="two-line"><b>Dossier D-021 · exercice N</b><small>Vue du simulateur</small></span><span>12</span><span>20</span><span><em class="pill amber">Périmètre à revoir</em></span></div></div><div class="footer-band"><b>Validation du cabinet</b><em class="pill grey">En attente</em><span>Livrable de démonstration · version 2</span></div></section>
+        <aside class="side-panel"><small>Cas sélectionné · écran</small><h3>Dossier D-021, exercice N</h3><dl><div><dt>Montant N</dt><dd>12</dd></div><div><dt>Montant N−1</dt><dd>8</dd></div><div><dt>Total affiché</dt><dd>20, sans filtre d’exercice</dd></div><div><dt>Suite</dt><dd>Corriger le filtre, puis rejouer</dd></div></dl><em class="pill amber">Validation suspendue</em></aside>
+      </div>
+    </article>
+  </section>
+
+  <section class="frame" id="trois-passes-chaine-preuve" aria-label="Chaîne de preuve fictive d’un total de coûts avec une référence décalée">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Chaîne de preuve · total des coûts</b><span>Jeu d’essai fictif · classeur de démonstration</span></header>
+      <div class="queue-split">
+        <section><div class="toolbar"><div><small>Rapprochement entrée → total affiché</small><b>1 référence décalée</b></div><nav class="tabs"><span class="on">Formules livrées</span><span>Cellules sources</span><span>Filtres</span></nav></div><div class="data-table" style="--cols:1.05fr .7fr .75fr .75fr .62fr 1.02fr"><div class="table-head"><span>Poste</span><span>Attendu</span><span>Cellule visée</span><span>Cellule lue</span><span>Lu</span><span>État</span></div><div><span>Coût A</span><span>40</span><span>AA12</span><span>AA12</span><span>40</span><span><em class="pill green">Concordant</em></span></div><div><span>Coût B</span><span>10</span><span>AA13</span><span>AA13</span><span>10</span><span><em class="pill green">Concordant</em></span></div><div class="sel"><span>Coût C</span><span>5</span><span>AA14</span><span>Z14</span><span>vide</span><span><em class="pill amber">Référence décalée</em></span></div><div class="off"><span><b>Total des coûts</b></span><span>55</span><span>AA15</span><span>AA15</span><span>50</span><span><em class="pill amber">Divergence</em></span></div></div><div class="footer-band"><b>Colonne insérée</b><span>avant la colonne Z</span><span>Attendu calculé hors du classeur</span></div></section>
+        <aside class="side-panel"><small>Référence sélectionnée</small><h3>Coût C</h3><dl><div><dt>Avant insertion</dt><dd>Z14</dd></div><div><dt>Après insertion</dt><dd>AA14 attendu</dd></div><div><dt>Formule livrée</dt><dd>lit encore Z14</dd></div><div><dt>Effet</dt><dd>total 50 au lieu de 55</dd></div></dl><em class="pill amber">Total refusé</em></aside>
+      </div>
     </article>
   </section>
 </main>

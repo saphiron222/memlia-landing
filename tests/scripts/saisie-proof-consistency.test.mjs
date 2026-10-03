@@ -19,9 +19,10 @@ test('la période exige une qualification humaine, jamais la seule date de factu
     assert.match(text, /dates d’émission et de réception, l’opération, les règles applicables et une éventuelle clôture/);
     assert.match(text, /reste reçue.*à qualifier/s);
   }
-  for (const text of [frame('saisie-six-controles'), proof('saisie-six-controles').centralText]) {
+  for (const text of [frame('saisie-controle-piece'), proof('saisie-controle-piece').centralText]) {
     assert.match(text, /Période à qualifier/);
-    assert.match(text, /Décision humaine documentée/);
+    assert.match(text, /décision humaine documentée/i);
+    assert.match(text, /Aucune écriture enregistrée/);
     assert.doesNotMatch(text, /reste affectée à sa période/);
   }
 });
@@ -46,22 +47,22 @@ test('TEST-050 distingue attentes par type, contrôles et appréciation humaine'
 });
 
 test('les deux figures ne donnent ni compteurs inexpliqués ni écart arithmétique inventé', () => {
-  for (const id of ['saisie-six-controles', 'saisie-file-anomalies']) {
+  for (const id of ['saisie-controle-piece', 'saisie-file-anomalies-avril']) {
     assert.ok(frame(id), `Figure absente : ${id}`);
     assert.ok(proof(id), `Contrat absent : ${id}`);
     assert.doesNotMatch(frame(id), /TEST-023|HT \+ TVA ≠ TTC lu|<b>[1-9]<\/b><\/span>/);
     assert.doesNotMatch(proof(id).centralText, /TEST-023|HT \+ TVA ≠ TTC lu/);
   }
-  assert.match(frame('saisie-file-anomalies'), /Ticket coupé/);
-  assert.match(proof('saisie-file-anomalies').centralText, /Ticket coupé/);
+  assert.match(frame('saisie-file-anomalies-avril'), /Ticket coupé/);
+  assert.match(proof('saisie-file-anomalies-avril').centralText, /Ticket coupé/);
 });
 
 test('la republication date la mise à jour réelle et décrit les preuves actuelles', () => {
   assert.equal(recipe.updatedAt, '2026-10-03');
   assert.match(article, /^dateMiseAJour: 2026-10-03$/m);
-  assert.match(proof('saisie-six-controles').alt, /période à qualifier/i);
-  assert.match(proof('saisie-file-anomalies').alt, /ticket coupé/i);
-  for (const id of ['saisie-six-controles', 'saisie-file-anomalies']) {
+  assert.match(proof('saisie-controle-piece').alt, /période à qualifier/i);
+  assert.match(proof('saisie-file-anomalies-avril').alt, /ticket coupé/i);
+  for (const id of ['saisie-controle-piece', 'saisie-file-anomalies-avril']) {
     assert.doesNotMatch(proof(id).alt, /écart de montants/i);
   }
 });

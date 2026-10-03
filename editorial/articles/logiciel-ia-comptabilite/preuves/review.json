@@ -40,7 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Deux figures : parcours fictif en six étapes jusqu'à proposition à valider et trois issues normal/doublon/période, avec zéro écriture ; journal-rejeu.json décrit en plus le quatrième arrêt donnée absente. Aucun éditeur testé, comme l'indiquent figures et article."
+        "Deux figures : grille fictive de démonstration (logiciel actuel et solutions A et B anonymes relevés sur la pièce nominale, états vérifié / à configurer / non vérifié) et file de contrôle fictive montrant les quatre sorties de journal-rejeu.json, proposition à valider, doublon probable, période ambiguë et donnée absente, sans écriture. Aucun éditeur nommé ni testé, comme l’indiquent figures et article."
       ]
     },
     {
@@ -48,7 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "HTML local a4e597b : portraits enfants directs des deux figures, alt présents, zéro figcaption et panneau défilant ; CSS width/max-width 100 %, height auto ; captures 320/375/1440 lisibles. Robots index, follow sur le build local uniquement, sans constat de production."
+        "HTML construit localement : deux figures data-blog-proof à une seule img WebP 1600 × 900 (lazy, async) servie au bureau comme au téléphone, alts présents et identiques à la recette, zéro figcaption et aucun panneau défilant ; CSS width/max-width 100 %, height auto ; captures 1280 et 390 px sans débordement. Robots index, follow sur ce build local uniquement, sans constat de production."
       ]
     },
     {

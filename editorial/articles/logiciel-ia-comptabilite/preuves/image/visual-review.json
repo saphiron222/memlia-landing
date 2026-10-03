@@ -49,42 +49,47 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Revue bornée aux deux preuves inline HTML figées et leurs alts ; couverture hors diff."
+        "Couverture inchangée, relue : bac de tri graphite à trois compartiments, feuilles blanches, deux cubes verts et portique vide, sans texte, conforme à son alt.",
+        "Les deux figures reprennent le gabarit des références : fenêtre unique, en-tête à pastille, « Jeu d’essai fictif · dossier D-001 · avril 2026 », écran d’outil, palette et typographie communes."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Deux WebP visualisés sans identité réelle ni capacité de marque revendiquée."
+        "Cadre et fond identiques au pixel près aux références hors zone de contenu ; textes nets, aucun libellé tronqué ; aucun logo ni éditeur, solutions désignées A et B, fournisseurs « Fictif ».",
+        "Aucun résultat mesuré : « 1 cas sur 4 relevé » et « 4 pièces » sont des compteurs de l’écran fictif ; la couverture ne porte ni texte ni marque."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "w39-logiciel-parcours dit grille fictive, aucun éditeur évalué ; w39-logiciel-exceptions dit jeu entièrement fictif, aucune écriture enregistrée."
+        "Les deux en-têtes affichent « Jeu d’essai fictif » ; la file reproduit les quatre cas de journal-rejeu.json (D-001, avril, aucune écriture) avec des numéros de pièce propres à l’article, et la grille n’évalue aucun éditeur.",
+        "Recette et contrat interne déclarent des sources fictives et capturedAt 2026-10-03, sans légende publique."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Parcours : pièce reçue, D-001, avril, contrôle doublon, proposition à valider, aucune écriture ; exceptions : normal, doublon probable et période ambiguë ; aucun résultat commercial."
+        "Grille : version montrée, sortie, étapes manuelles, trace après correction et trois états, comme la section de préparation ; file : nominal, doublon, période ambiguë et donnée absente, comme le rejeu du corps."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Portraits -mobile.webp montés aussi sur bureau au SHA a4e597b ; les captures haut/bas à 320/375/1440 montrent les étapes et les trois cas lisibles. Les SHA précédemment cités concernaient des actifs antérieurs et ne sont pas réutilisés comme preuve des portraits."
+        "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Les deux alt de la recette concordent avec le parcours et les trois cas visibles dans le HTML ; source fictive et capturedAt 27/09/2026 restent dans la recette et non en légende publique. L'horodatage autonome de cette capture historique n'a pas été établi."
+        "Alts de 103 et 117 caractères, identiques dans le HTML construit et la recette, fidèles à la grille et à la file visibles.",
+        "L’alt de couverture correspond à l’image : trois feuilles, bac de tri, portique vide, aucune issue de contrôle visible."
       ]
     }
   ]

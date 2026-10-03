@@ -3,18 +3,18 @@
   "preparationStatus": "NON_PUBLIABLE_attend_authentification_metier_du_recit_et_revue",
   "inlineProofs": [
     {
-      "id": "w39-trois-passes",
+      "id": "trois-passes-journal-recette",
       "insertBeforeHeading": "Une fiche de recette que le cabinet peut reprendre",
-      "alt": "Trois passes fictives : test rouge des bornes, preuve des références et lecture du périmètre à l'écran.",
-      "source": "Reconstitution fictive à partir de la note interne du pôle social, pas une capture historique",
-      "capturedAt": "2026-09-27"
+      "alt": "Journal de recette fictif : bornes mal lues, total des coûts divergent et exercice agrégé à l’écran, trois arrêts.",
+      "source": "écran fictif des trois cas de journal-rejeu.json ; reconstitution, pas une capture historique",
+      "capturedAt": "2026-10-03"
     },
     {
-      "id": "w39-reference-decalee",
+      "id": "trois-passes-chaine-preuve",
       "insertBeforeHeading": "Troisième passe : l'écran, pour refaire le geste humain",
-      "alt": "Exemple fictif d'une cellule de coût décalée de Z vers AA après insertion d'une colonne.",
-      "source": "Reconstitution fictive à partir de la note interne du pôle social, pas une capture historique",
-      "capturedAt": "2026-09-27"
+      "alt": "Chaîne de preuve fictive : trois coûts rapprochés de leurs cellules, une référence restée en Z, total 50 pour 55 attendu.",
+      "source": "écran fictif du cas « chaîne » de journal-rejeu.json ; reconstitution, pas une capture historique",
+      "capturedAt": "2026-10-03"
     }
   ],
   "title": "Pourquoi des tests verts manquent des défauts : la règle des trois passes",

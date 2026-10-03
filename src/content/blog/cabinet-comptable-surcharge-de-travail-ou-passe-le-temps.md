@@ -89,8 +89,8 @@ Le cas ressemble au courant, mais une condition change : période, statut, forma
 
 Une personne doit arbitrer, expliquer ou assumer une action. Réduire cette étape à un clic de validation déplace le problème sans le résoudre. La préparation peut être automatisée ; la décision doit garder ses sources et ses options.
 
-<figure data-blog-proof="surcharge-semaine">
-  <img src="/proofs/blog/surcharge-semaine.webp" alt="Journal fictif d’une semaine classé en répétition, attente, exception et décision." width="1600" height="900" loading="lazy" decoding="async">
+<figure data-blog-proof="surcharge-journal-semaine">
+  <img src="/proofs/blog/surcharge-journal-semaine.webp" alt="Journal fictif d’une semaine du pôle production, chaque événement classé en répétition, attente, exception ou décision." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Mesurer le flux sans surveiller les personnes
@@ -138,8 +138,8 @@ Le rejeu exécutable du 21 septembre 2026 invente une semaine sans nom, sans dos
 
 Le premier cas n’est pas automatiquement « à automatiser ». Il passe encore trois questions : la fréquence est-elle suffisante ? la règle est-elle stable ? le coût du doute est-il acceptable avec un arrêt prévu ?
 
-<figure data-blog-proof="surcharge-matrice">
-  <img src="/proofs/blog/surcharge-matrice.webp" alt="Matrice fictive fréquence, stabilité de la règle et coût du doute." width="1600" height="900" loading="lazy" decoding="async">
+<figure data-blog-proof="surcharge-grille-priorisation">
+  <img src="/proofs/blog/surcharge-grille-priorisation.webp" alt="Grille fictive de priorisation : fréquence, stabilité de la règle, coût du doute et décision pour cinq tâches." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Choisir la première répétition à observer

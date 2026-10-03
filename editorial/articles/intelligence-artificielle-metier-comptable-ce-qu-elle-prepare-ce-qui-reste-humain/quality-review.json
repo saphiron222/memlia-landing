@@ -33,14 +33,14 @@
     "27/30 : frontière opérationnelle, trois cas fictifs et limites de validité explicites.",
     "22/25 : titres et structure cohérents ; aucun nouveau rang SERP prouvé.",
     "14/15 : cinq claims contrôlés sur trois copies dans la revue antérieure, dont portée et ancienneté maintenues ; pas de nouvelle requête HTTP.",
-    "14/15 : portraits lisibles dans les captures 320/375/1440 ; deux images directes et sans légende, aucun Lighthouse ni HTML public revalidé.",
+    "14/15 : deux images 1600 × 900 directes et sans légende, qui tiennent dans la colonne à 1280 et 390 px et restent lisibles dans leurs grandes masses ; aucun Lighthouse ni HTML public revalidé.",
     "14/15 : tableau et visuels citables seulement avec la qualification jeu fictif."
   ],
   "reservations": [
     "La prospective Atlas ne prouve aucune évolution d'effectifs ni effet spécifique de l'IA ; le communiqué Apec de 2021 ne décrit pas 2026.",
     "La revue du rendu local et de copies vérifiées dans le dépôt n'est ni un scellement, ni une QA/CI de livraison, ni une mesure sur un cabinet réel."
   ],
-  "verdict": "AI_REVIEW_PASS sur le rendu local a4e597b et les preuves inline ; livrabilité, QA et production restent distinctes.",
+  "verdict": "AI_REVIEW_PASS sur le rendu local des deux nouvelles figures 1600 × 900, relu à 1280 et 390 px, et sur les preuves inline ; livrabilité, QA et production restent distinctes.",
   "subject": {
     "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
     "articleSha256": "84959382a98dd376a036190af0051ce84e8891979acd09171807148d06f6cfd2",

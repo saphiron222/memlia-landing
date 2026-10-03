@@ -49,42 +49,47 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Les deux preuves inline relèvent du contrat de cadre HTML et du jeu fictif, distincts de la couverture ; aucune nouvelle génération ici."
+        "Couverture inchangée, relue : trois plateaux, formes traversant un bloc translucide, borne de contrôle puis main verte stylisée sur le troisième, sans texte, conforme à son alt de frontière en trois temps.",
+        "Les deux figures sont des écrans HTML fictifs au gabarit des références, distincts de la couverture : tableau de dossier en trois colonnes et journal de rejeu."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "WebP frontière/refus relus visuellement ; aucune donnée nominative ou interface client observée."
+        "Cadre et fond identiques au pixel près aux références hors zone de contenu ; textes nets, aucun libellé tronqué, aucun logo, aucune personne ni donnée nominative.",
+        "Les nombres visibles (14 lignes, 9 écritures, 3 cas) sont des données de l’écran fictif ; aucun gain ni effet sur l’emploi."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "competences-refus mentionne jeu fictif, oracle exécuté, trois cas ; le corps limite le rejeu à ces entrées fictives sans résultat d'emploi. Le replay --check de l'ancienne revue n'a pas été relancé lors de cette passe."
+        "En-têtes « Jeu d’essai fictif » ; journal daté du 21/09/2026 conforme au rejeu exécuté sur trois entrées fictives (docs/qa/blog-recrutement-replay.json, trois cas « passed »).",
+        "Dossier D-008, FA-2026-0467, Atelier Fictif et Fournisseur Fictif inventés ; capturedAt 2026-10-03 déclaré dans la recette et le contrat interne, sans légende publique."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Frontière : prépare seul/attend validation/reste humain ; refus : une proposition et deux arrêts motivés, conforme au corps.md:53-73."
+        "Tableau : préparé / à valider / décision du collaborateur, calqué sur les trois colonnes du corps ; journal : une proposition et deux refus motivés, conforme au corps."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Les deux portraits -mobile.webp apparaissent aussi sur bureau dans le HTML a4e597b ; les captures 320/375/1440 montrent la frontière, une proposition et deux refus lisibles. Les empreintes des anciens paysages ne prouvent pas l'état des portraits et le renderer n'a pas été relancé ici."
+        "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Deux alts du HTML et de la recette concordent avec la frontière et les refus visibles ; source cadre HTML/oracle et date 21/09/2026 restent dans la recette interne, sans légende publique. Cette date historique ne date pas la fabrication des portraits."
+        "Alts de 105 et 110 caractères, identiques dans le HTML construit et la recette, fidèles au tableau D-008 et au journal avec le détail d’IA-02.",
+        "L’alt de couverture (frontière en trois colonnes) correspond aux trois plateaux visibles."
       ]
     }
   ]

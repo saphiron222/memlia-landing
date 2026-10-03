@@ -7,10 +7,12 @@ const finalRequired = requiresRepublicationGate(
   articles.map(slug => readFileSync(`src/content/blog/${slug}.md`, 'utf8')),
   { remoteUrl: process.env.QA_URL, required: process.env.QA_BLOG_REPUBLICATION_REQUIRED });
 
+// Recette de référence (03/10/2026) : chaque figure de corps est UNE image 1600 × 900, la même
+// sur bureau et sur téléphone ; elle remplit la colonne de lecture en 16:9, sans variante portrait.
 for (const width of [320, 375, 1440]) {
   for (const technical of [true, false]) {
-  test(`${technical ? 'fixture technique forge/CSS (non publiée)' : 'republication réelle des cinq articles'} à ${width}px`, async ({ page }) => {
-    test.skip(!technical && !finalRequired, 'PR technique : corps historiques inchangés ; aucune qualification de republication. Le premier portrait réel ou QA_URL force ce gate complet.');
+  test(`${technical ? 'fixture technique forge/CSS (non publiée)' : 'republication réelle des sept articles'} à ${width}px`, async ({ page }) => {
+    test.skip(!technical && !finalRequired, 'PR technique : corps historiques inchangés ; aucune qualification de republication. La première figure directe réelle ou QA_URL force ce gate complet.');
     await page.setViewportSize({ width, height: 900 });
     const captureDir = `.qa/annotations/blog-proof-mobile/${technical ? 'technical-fixture' : 'republication'}`;
     mkdirSync(captureDir, { recursive: true });
@@ -34,11 +36,13 @@ for (const width of [320, 375, 1440]) {
         const image = figure.locator(':scope > img');
         await expect(image).toHaveCount(1);
         await expect.poll(() => image.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+        const id = await figure.getAttribute('data-blog-proof');
         const measured = await image.evaluate((img: HTMLImageElement) => {
           const rect = img.getBoundingClientRect();
           return {
             loaded: img.complete && img.naturalWidth > 0,
             selected: new URL(img.currentSrc).pathname,
+            natural: [img.naturalWidth, img.naturalHeight],
             width: rect.width,
             height: rect.height,
             figureWidth: img.parentElement!.getBoundingClientRect().width,
@@ -47,9 +51,12 @@ for (const width of [320, 375, 1440]) {
           };
         });
         expect(measured.loaded, slug).toBe(true);
-        expect(measured.selected, slug).toMatch(/-mobile\.webp$/);
+        expect(measured.selected, slug).toBe(`/proofs/blog/${id}.webp`);
+        expect(measured.natural, slug).toEqual([1600, 900]);
+        // L’image remplit la colonne, en 16:9, sur téléphone comme sur bureau.
         expect(measured.width, slug).toBeLessThanOrEqual(measured.figureWidth);
-        expect(measured.height, slug).toBeGreaterThan(width < 600 ? 400 : 800);
+        expect(measured.width, slug).toBeGreaterThanOrEqual(measured.figureWidth - 2);
+        expect(Math.abs(measured.height - measured.width * 9 / 16), slug).toBeLessThanOrEqual(2);
         expect(measured.legacy, slug).toBe(false);
         // Le CTA et les figures doivent maintenant tenir aussi sur téléphone étroit.
         expect(measured.horizontalOverflow, slug).toBe(false);

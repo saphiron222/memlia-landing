@@ -578,14 +578,10 @@ export function injecterPreuvesInline(corps, preuves = [], root = process.cwd())
   for (const [titre, groupe] of groupes) {
     const ancre = `\n## ${titre}\n`;
     if (!resultat.includes(ancre)) throw new Error(`Preuves inline : H2 d’ancrage absent « ${titre} ».`);
-    const figures = groupe.map((preuve) => {
-      const imagePath = `/proofs/blog/${preuve.id}.webp`;
-      const mobilePath = `/proofs/blog/${preuve.id}-mobile.webp`;
-      const portrait = existsSync(join(root, 'public', mobilePath));
-      // La colonne bureau ne mesure que 656 px : le paysage 1600 × 900 y réduit
-      // les réserves à quelques pixels. Garder le portrait reflué aux deux tailles.
-      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${portrait ? mobilePath : imagePath}" alt="${echapperHtml(preuve.alt)}" width="${portrait ? 1200 : 1600}"${portrait ? '' : ' height="900"'} loading="lazy" decoding="async">\n</figure>`;
-    }).join('\n\n');
+    // Recette de référence (décision Kevin du 03/10/2026) : une seule image 1600 × 900 par
+    // figure, la même sur bureau et sur téléphone. Une variante portrait « -mobile » n'est
+    // jamais servie, même si un tel fichier existe : la figure illustre, elle n'explique pas.
+    const figures = groupe.map((preuve) => `<figure data-blog-proof="${preuve.id}">\n  <img src="/proofs/blog/${preuve.id}.webp" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }
   return resultat;
