@@ -34,7 +34,7 @@ test('les preuves de corps des sept articles sont une image 1600 × 900, sans va
     const { format, width, height } = await sharp(path).metadata();
     assert.deepEqual([format, width, height], ['webp', 1600, 900], `Format de la recette : ${id}`);
     assert.ok(!existsSync(`${root}/public/proofs/blog/${id}-mobile.webp`), `Variante portrait interdite : ${id}`);
-    const rendered = injecterPreuvesInline('Intro\n\n## Suite\n', [proof(id)], root);
+    const rendered = injecterPreuvesInline('Intro\n\n## Suite\n', [proof(id)]);
     assert.ok(rendered.includes(figureAttendue(proof(id))), `Figure de la forge hors recette : ${id}`);
     assert.doesNotMatch(rendered, /srcset=|sizes=|figcaption|preuve-defilante|-mobile\.webp/);
   }
@@ -60,13 +60,16 @@ test('les corps publiés portent exactement la figure de référence, avant le H
 test('aucun portrait « -mobile » n’est publié ni servi par la forge', () => {
   assert.deepEqual(readdirSync(`${root}/public/proofs/blog`).filter((name) => /-mobile\.webp$/.test(name)), []);
   const temporaire = mkdtempSync(join(tmpdir(), 'preuve-portrait-'));
+  const cwd = process.cwd();
   try {
     mkdirSync(join(temporaire, 'public/proofs/blog'), { recursive: true });
     writeFileSync(join(temporaire, 'public/proofs/blog/preuve-test-mobile.webp'), 'portrait de fixture');
-    const rendered = injecterPreuvesInline('Intro\n\n## Suite\n', [proof('preuve-test')], temporaire);
+    process.chdir(temporaire);
+    const rendered = injecterPreuvesInline('Intro\n\n## Suite\n', [proof('preuve-test')]);
     assert.ok(rendered.includes(figureAttendue(proof('preuve-test'))));
     assert.doesNotMatch(rendered, /-mobile\.webp|width="1200"/);
   } finally {
+    process.chdir(cwd);
     rmSync(temporaire, { recursive: true, force: true });
   }
 });

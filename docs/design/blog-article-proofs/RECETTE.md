@@ -57,6 +57,11 @@ dossier : on part toujours d'un cadre existant.
 
 - Le renderer refuse un cadre sans la fenêtre de référence (pastille, nom de l'écran, « Jeu d'essai
   fictif · … » ou « Reconstitution · … ») et toute dimension autre que 1600 × 900.
+- Il refuse également tout élément ou texte non blanc hors de cette fenêtre, même avec `--adopt`.
+  Les espaces de mise en forme et les commentaires HTML restent permis.
+- `node --test tests/scripts/blog-proof-frame-render.test.mjs` éprouve ce refus dans Chromium.
+  `tests/scripts/blog-proof-render.test.mjs` éprouve la vérification `CF_PAGES=1` sans navigateur :
+  cas conforme, source modifiée, WebP altéré, variante `-mobile` et entrée manquante.
 - `scripts/verify-blog-contract.mjs` refuse une source `-mobile`, même si le fichier existe ; la forge
   n'émet que `/proofs/blog/<id>.webp` en 1600 × 900.
 - `tests/scripts/blog-proof-mobile.test.mjs` et `tests/browser/blog-proof-mobile.spec.ts` vérifient

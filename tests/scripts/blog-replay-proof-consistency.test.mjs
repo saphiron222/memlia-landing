@@ -9,8 +9,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 
-const fixtures = JSON.parse(readFileSync('docs/design/blog-recrutement-proofs/replay-fixtures.json', 'utf8'));
-const contract = JSON.parse(readFileSync('docs/design/blog-article-proofs/content-contract.json', 'utf8'));
+const fixtures = JSON.parse(readFileSync(new URL('../../docs/design/blog-recrutement-proofs/replay-fixtures.json', import.meta.url), 'utf8'));
+const contract = JSON.parse(readFileSync(new URL('../../docs/design/blog-article-proofs/content-contract.json', import.meta.url), 'utf8'));
 
 const cas = new Map(fixtures.articles.flatMap((article) => article.cases.map((c) => [c.id, c])));
 const ecran = new Map(contract.map((entry) => [entry.id, entry.centralText]));

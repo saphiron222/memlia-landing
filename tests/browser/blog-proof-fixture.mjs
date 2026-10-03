@@ -21,7 +21,7 @@ export function technicalProofFixtures(root) {
     const recipe = JSON.parse(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
     const headings = [...new Set(recipe.inlineProofs.map(proof => proof.insertBeforeHeading))];
     const body = 'Fixture technique non publiée.\n' + headings.map(heading => `\n## ${heading}\n`).join('');
-    return { slug, html: injecterPreuvesInline(body, recipe.inlineProofs, root) };
+    return { slug, html: injecterPreuvesInline(body, recipe.inlineProofs) };
   });
 }
 

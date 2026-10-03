@@ -47,6 +47,9 @@ jobs:
       - name: Exercise the blog forge
         run: npm run test:blog-pipeline
 
+      - name: Exercise blog frame guards in Chromium
+        run: node --test tests/scripts/blog-proof-frame-render.test.mjs
+
       - name: Build and run deterministic gates
         run: npm run build
         env:

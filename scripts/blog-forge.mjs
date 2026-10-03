@@ -552,7 +552,7 @@ const echapperHtml = (texte) => String(texte)
  * Chaque insertion échoue fermée si le H2 d'ancrage a disparu : une preuve ne doit jamais
  * glisser silencieusement vers une section sans rapport après une réécriture.
  */
-export function injecterPreuvesInline(corps, preuves = [], root = process.cwd()) {
+export function injecterPreuvesInline(corps, preuves = []) {
   if (!preuves.length) return corps;
   const ids = new Set();
   const groupes = new Map();
@@ -660,7 +660,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   let corpsPublie = corpsSansTitreDuplique(corps, recette.title);
   let erreurPreuveInline = null;
   try {
-    corpsPublie = injecterPreuvesInline(corpsPublie, recette.inlineProofs ?? [], root);
+    corpsPublie = injecterPreuvesInline(corpsPublie, recette.inlineProofs ?? []);
   } catch (error) {
     erreurPreuveInline = error.message;
   }
