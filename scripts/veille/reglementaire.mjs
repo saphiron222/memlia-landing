@@ -134,6 +134,25 @@ export function evaluateClaimSource(snapshot, source) {
   };
 }
 
+function latestDilaArchive(html) {
+  const packages = [];
+  // Consommer les commentaires et les blocs de texte brut avant les balises.
+  // Les valeurs entre guillemets restent entières, même si elles contiennent du HTML.
+  const tokens = /<!--[\s\S]*?(?:-->|$)|<(script|style|textarea|title)\b(?:"[^"]*"|'[^']*'|[^'">])*?>[\s\S]*?(?:<\/\1\s*>|$)|<([a-z][\w:-]*)\b((?:"[^"]*"|'[^']*'|[^'">])*)>/gi;
+  for (const token of html.matchAll(tokens)) {
+    if (token[2]?.toLowerCase() !== 'a') continue;
+    const attributes = /([^\s=/'"<>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g;
+    for (const attribute of token[3].matchAll(attributes)) {
+      if (attribute[1].toLowerCase() !== 'href') continue;
+      const href = attribute[2] ?? attribute[3] ?? attribute[4] ?? '';
+      const packageId = href.match(/^(?:[^\s]*\/)?LEGI_(\d{8}-\d{6})\.tar\.gz$/i)?.[1];
+      if (packageId) packages.push(packageId);
+      break;
+    }
+  }
+  return packages.sort().at(-1) ?? null;
+}
+
 export function evaluateDiscoverySource(snapshot, source) {
   const fragments = source.requiredFragments ?? [];
   const corpus = canonicalText(snapshot.body);
@@ -144,8 +163,7 @@ export function evaluateDiscoverySource(snapshot, source) {
   const evidencePresent = fragmentResults.length > 0 ? fragmentResults.every((fragment) => fragment.present) : null;
   // Une maintenance sous HTTP 200 n'est pas un index d'archives exploitable.
   const latestDilaPackage = snapshot.id === 'legifrance-dila-index'
-    ? [...snapshot.body.matchAll(/<a\b[^>]*\bhref\s*=\s*["'](?:[^"']*\/)?LEGI_(\d{8}-\d{6})\.tar\.gz["'][^>]*>/gi)]
-      .map((match) => match[1]).sort().at(-1) ?? null
+    ? latestDilaArchive(snapshot.body)
     : undefined;
   const dilaUnavailable = snapshot.id === 'legifrance-dila-index' && latestDilaPackage === null;
   return {

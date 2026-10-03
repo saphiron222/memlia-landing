@@ -5,6 +5,7 @@ import {
   canonicalText,
   evaluateClaimSource,
   evaluateDiscoverySource,
+  inspectRegulatorySources,
   metaDescription,
   normalizedIncludes,
   sha256,
@@ -132,3 +133,35 @@ test('index DILA : seul un lien d’archive sur HTTP 200 établit une disponibil
   assert.equal(verdict.critical, false);
   assert.equal(evaluateDiscoverySource({ id: source.id, httpStatus: 503, body: '<a href="LEGI_20260929-204937.tar.gz">archive</a>', error: null }, source).critical, true);
 });
+
+for (const [name, body] of [
+  ['data-href', '<html><p>Maintenance</p><a data-href="LEGI_20260929-204937.tar.gz">archive indisponible</a></html>'],
+  ['commentaire HTML', '<html><p>Maintenance</p><!-- <a href="LEGI_20260929-204937.tar.gz">archive</a> --></html>'],
+  ['script text/plain', '<html><p>Maintenance</p><script type="text/plain"><a href="LEGI_20260929-204937.tar.gz">archive</a></script></html>'],
+]) {
+  test(`index DILA : ${name} sans lien actif reste indisponible dans la chaîne réelle`, async (t) => {
+    const calls = [];
+    t.mock.method(globalThis, 'fetch', async (request) => {
+      const url = String(request);
+      calls.push(url);
+      return {
+        status: 200,
+        url,
+        text: async () => new URL(url).hostname === 'echanges.dila.gouv.fr'
+          ? body : '<html>FIXTURE OFFLINE — aucune preuve réglementaire</html>',
+      };
+    });
+    const result = await inspectRegulatorySources();
+    const source = result.discoverySources.find((item) => item.id === 'legifrance-dila-index');
+    assert.equal(calls.filter((url) => new URL(url).hostname === 'echanges.dila.gouv.fr').length, 1);
+    assert.equal(result.candidate.matchesSeal, true);
+    assert.equal(result.maintenanceBaseline.matchesSeal, true);
+    assert.equal(result.review.aiReviewPass, false);
+    assert.deepEqual(result.review.closedClaims.map(({ id, verdict, severity }) => [id, verdict, severity]).sort(), [
+      ['FE-01', 'SOURCE_INACCESSIBLE', 'P1'],
+      ['FE-02', 'SOURCE_INACCESSIBLE', 'P1'],
+      ['FE-03', 'SOURCE_INACCESSIBLE', 'P1'],
+    ]);
+    assert.deepEqual([source.latestDilaPackage, source.critical, source.error], [null, true, 'DilaIndexUnavailable']);
+  });
+}
