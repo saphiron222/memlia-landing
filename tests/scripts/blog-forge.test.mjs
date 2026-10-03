@@ -604,6 +604,7 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     assert.deepEqual(preparation.erreurs, []);
     const paquet = JSON.parse(readFileSync(join(root, 'editorial/recettes', SLUG, 'paquet-revue.json'), 'utf8'));
     assert.equal(paquet.claims.length, 1);
+    assert.equal(paquet.identites.reviewerMetier, preparation.manifest.businessReview.reviewerId);
     const claimId = paquet.claims[0].id;
     const sansRevue = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
     assert.equal(sansRevue.pass, false);
@@ -627,6 +628,9 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     const businessProof = JSON.parse(readFileSync(join(candidateDir, 'preuves/business-review.json')));
     assert.equal(businessProof.reviewerId, avis.business.reviewerId);
     assert.ok(businessProof.claimReviews.every((row) => row.reviewerId === avis.business.reviewerId));
+    const paquetAttribue = JSON.parse(readFileSync(join(root, 'editorial/recettes', SLUG, 'paquet-revue.json')));
+    assert.equal(paquetAttribue.identites.reviewerMetier, avis.business.reviewerId);
+    assert.equal(paquetAttribue.identites.reviewerEditorial, avis.editorial.reviewer);
     for (const name of ['manifest.json', 'review.json', 'preuves/review.json']) {
       assert.equal(JSON.parse(readFileSync(join(candidateDir, name))).reviewer, avis.editorial.reviewer, name);
     }

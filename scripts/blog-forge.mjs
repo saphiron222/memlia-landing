@@ -754,7 +754,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
     corps, preuvesInline: recette.inlineProofs ?? [], sources: manifestFinal.sources.map((s) => ({ id: s.id, publisher: s.publisher, title: s.title, url: s.url, level: s.level, official: s.official })),
     claims: claims.claims.map((c) => ({ id: c.id, claim: c.claim, type: c.type, sourceId: c.sourceIds[0], citation: c.sourceExcerpts[c.sourceIds[0]], contexte: c.factCheck.sourceResults[0].context.slice(0, 1200) })),
     criteresEditoriaux: REVIEW_CRITERIA, criteresImage: IMAGE_REVIEW_CRITERIA, image: { alt: recette.image.alt, cadre: recette.image.cadre, master: relative(root, join(dossier, 'preuves/image/master.png')) },
-    identites: { auteur: 'kevin', reviewerEditorial: manifestFinal.reviewer, reviewerMetier: recette.businessReview.reviewerId, roleMetier: recette.businessReview.role },
+    identites: { auteur: 'kevin', reviewerEditorial: manifestFinal.reviewer, reviewerMetier: manifestFinal.businessReview.reviewerId, roleMetier: recette.businessReview.role },
   });
   refuserChangementDeJour();
   return { erreurs, manifest: manifestFinal, sujet, dossier };
