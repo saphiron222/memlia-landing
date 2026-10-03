@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "kind": "publication-scellee",
+  "candidateSlug": "tests-verts-et-regle-des-trois-passes",
+  "articleSha256": "1cdc4abac789a807732116b5b67bbcda2fb21d013ac4d9a3eb922daf85cbea3d",
+  "manifestSha256": "7ba35869a2811f1054ad23328da36e8b14d982fdcc3ce7064aeb1b156bf2ef51",
+  "publishedAt": "2026-10-03",
+  "sealedAt": "2026-10-03T12:32:48.089Z",
+  "files": [
+    {
+      "path": "brief.md",
+      "bytes": 297,
+      "sha256": "ce9ef1076102777c16da2ac9c8864d75a7bc306437ccab0e66195e9fc1a6c489"
+    },
+    {
+      "path": "claims.json",
+      "bytes": 12564,
+      "sha256": "8a63116b4672333132331d682394c15c14fcbb8f49b1c54647fbbe458ee54cfe"
+    },
+    {
+      "path": "image.json",
+      "bytes": 1424,
+      "sha256": "b2978d2b517bc3c7a93b15a585d7a0ceb6f99201d411d61bf36c9f250944181b"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 6622,
+      "sha256": "7ba35869a2811f1054ad23328da36e8b14d982fdcc3ce7064aeb1b156bf2ef51"
+    },
+    {
+      "path": "preuves/business-review.json",
+      "bytes": 1492,
+      "sha256": "99f7733034cac949e53153cf1e8367ba8b0d2e0a77361d399572fcf10b07f9bd"
+    },
+    {
+      "path": "preuves/image/cadre.sha256",
+      "bytes": 65,
+      "sha256": "0bb1b04148f0c156b949761e4077db13d14de048b676d1bd0a47db5b2dc9b582"
+    },
+    {
+      "path": "preuves/image/generation.json",
+      "bytes": 859,
+      "sha256": "08028deecd60868bdba9beae775c883edcc2f27f60c84370aaa75517d6f7261c"
+    },
+    {
+      "path": "preuves/image/hero-768.avif",
+      "bytes": 8096,
+      "sha256": "318476818e18a1a82e1d8edac8bedbd65a17f8e368e5c60ada852a11e7f16618"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "bytes": 13444,
+      "sha256": "cbd14946b3a77a170b27bed1d07270f0923a432ddabe84fe28bee2dfff029725"
+    },
+    {
+      "path": "preuves/image/master.png",
+      "bytes": 2463569,
+      "sha256": "8c9497486054344754ad21ca62ed9aa3341ca8b27cfa81a30f6ce702aac0491e"
+    },
+    {
+      "path": "preuves/image/og.webp",
+      "bytes": 35064,
+      "sha256": "ae321a5268c020a089f566e5119a48ca91993dd352c352cc6a18320edbf7e0ba"
+    },
+    {
+      "path": "preuves/image/prompt.json",
+      "bytes": 2054,
+      "sha256": "fce9579cfc3b9503c3d2bf7affe9c12a0bdfddedb5d3be88baeb44009eedcfc1"
+    },
+    {
+      "path": "preuves/image/visual-review.json",
+      "bytes": 2608,
+      "sha256": "87332c7097b1ac678a1fd8307a3d8fedda1fdf27e59708c4f22007312c87832d"
+    },
+    {
+      "path": "preuves/research-gsc.json",
+      "bytes": 698,
+      "sha256": "fc96bb26f95b07d17919cf092b3ba2fbadcf2a167c3bc4a8a1dba1eff283904a"
+    },
+    {
+      "path": "preuves/research-serp.json",
+      "bytes": 800,
+      "sha256": "e735076abb1b193bcd15dae57721b191b89a2a51562b6bc203e023734f673254"
+    },
+    {
+      "path": "preuves/review.json",
+      "bytes": 2312,
+      "sha256": "c8cc93345093c8fa35d847c3b91faea917770963e7f2872642cf8fdb84a7525f"
+    },
+    {
+      "path": "preuves/role.json",
+      "bytes": 848,
+      "sha256": "551789a3332eba0b7508894478b79b309ab9ad4350b12afcf2730ba638d86284"
+    },
+    {
+      "path": "preuves/skills/blog-audit.json",
+      "bytes": 495,
+      "sha256": "7d6d4146a6e2fd0555f96f004b9adf6d38bbe9e1888d4dc2d4d117000e0c35d1"
+    },
+    {
+      "path": "preuves/skills/blog-brief.json",
+      "bytes": 661,
+      "sha256": "b62285ba49c0a57c46f7ca2d67ee7179f53de3d130b1f84c1d0c5170ad9a42c9"
+    },
+    {
+      "path": "preuves/skills/blog-cannibalization.json",
+      "bytes": 533,
+      "sha256": "94a47d3399d59ecacef989fc5f3ebfcd4a3cf7400520e9d30e7ea095a92b8c34"
+    },
+    {
+      "path": "preuves/skills/blog-factcheck.json",
+      "bytes": 519,
+      "sha256": "b3be51c93da45c32e09c6a8115bb62f98be5902e1c30ec6818fd80cc1004f097"
+    },
+    {
+      "path": "preuves/skills/blog-geo.json",
+      "bytes": 485,
+      "sha256": "4a03457e05af3ae42ab39b29f5020adac219ee14e17cfc3c39a54f0de61777cc"
+    },
+    {
+      "path": "preuves/skills/blog-image.json",
+      "bytes": 532,
+      "sha256": "b97e4ddd89fef082917bf3b601728694854b35ccee7cb99d9a8f907457febd43"
+    },
+    {
+      "path": "preuves/skills/blog-seo-check.json",
+      "bytes": 573,
+      "sha256": "33d3cb15c685836d185cf16e5734b54f5cd6aa1af96dd7232332fd241a4abc3e"
+    },
+    {
+      "path": "preuves/skills/blog-write.json",
+      "bytes": 448,
+      "sha256": "a27e3b306d54fd72bed0210847903f598ef4d57c4e6f3b41d43ca45a01a78ba1"
+    },
+    {
+      "path": "preuves/skills/seo-audit.json",
+      "bytes": 467,
+      "sha256": "135d7a6bd6ec3b0e91968ecb9de509b40ad325db1211ceac4f453c79eed81af8"
+    },
+    {
+      "path": "preuves/skills/seo-content-brief.json",
+      "bytes": 501,
+      "sha256": "bf3b25e57ad9a45f5b3fcbcc3dcc69b0e23dbd98f4e23a4a0b160030799f6be5"
+    },
+    {
+      "path": "preuves/skills/seo-content.json",
+      "bytes": 492,
+      "sha256": "5ab295f4833f3ade4ddce6639f0518e8d741085f764aad0c868aea88c14bb48f"
+    },
+    {
+      "path": "preuves/skills/seo-images.json",
+      "bytes": 527,
+      "sha256": "b0bb5f86cb94ad6d44549f98a33fbdf4650b1afec969d2a25640f428aabe9867"
+    },
+    {
+      "path": "preuves/skills/seo-page.json",
+      "bytes": 549,
+      "sha256": "631aa1832e72cb9c0aef1f14ecae037453f3062c5d4ad2bf52a7f60d3178d6ca"
+    },
+    {
+      "path": "preuves/skills/seo-schema.json",
+      "bytes": 486,
+      "sha256": "c978a392f43f9ac75dd678d62d167a70b0a87bbe798d90b35c122bd13726bfd7"
+    },
+    {
+      "path": "preuves/skills/seo-technical.json",
+      "bytes": 536,
+      "sha256": "b46ce2e13cf7af2dd8f5256e3e9fdad54b4c8bbac24355209ec8083081741fa6"
+    },
+    {
+      "path": "preuves/sources/pytest-assert.classification.json",
+      "bytes": 884,
+      "sha256": "0565f830185717a8b73a8a1c63a17708c033216467e284b5f9415eff9a3e0998"
+    },
+    {
+      "path": "preuves/sources/pytest-assert.json",
+      "bytes": 911,
+      "sha256": "6f21a2e10101d66681a280a0048d1d5b32e7631a6606f12dbac3bda9b8530303"
+    },
+    {
+      "path": "preuves/sources/pytest-assert.source.txt",
+      "bytes": 88148,
+      "sha256": "fbff5c287e514c3334a0f8ad1a7f784082dde4d10842f19504a88c1d5926c4f3"
+    },
+    {
+      "path": "preuves/sources/python-doctest.classification.json",
+      "bytes": 882,
+      "sha256": "91ebd9b53a40e79c17b4b466defb40d7fa6be6a32b1f75c2977be7966a341f49"
+    },
+    {
+      "path": "preuves/sources/python-doctest.json",
+      "bytes": 979,
+      "sha256": "044a60aabd27a9b1477d3d2919aa2f3c35aae2276e5f43bfddb342c64ce26e12"
+    },
+    {
+      "path": "preuves/sources/python-doctest.source.txt",
+      "bytes": 231126,
+      "sha256": "39efd9d1012a1e81abc96586cf5ca459f5d32a4557f63e65a942fce10a74880b"
+    },
+    {
+      "path": "preuves/sources/python-unittest.classification.json",
+      "bytes": 882,
+      "sha256": "76d85bcdd490b3012d4700b9d429aaecc8f5fe5692c25aba7152ab4486dd4351"
+    },
+    {
+      "path": "preuves/sources/python-unittest.json",
+      "bytes": 921,
+      "sha256": "f4f104b75a428787e562ec4e82861500ee41203c0fd52b83bd3eb5a608fd01cc"
+    },
+    {
+      "path": "preuves/sources/python-unittest.source.txt",
+      "bytes": 360730,
+      "sha256": "9fa27b55a09486337a79a6b47daac558860778b288e6593edac9fedba3a68cb3"
+    },
+    {
+      "path": "review.json",
+      "bytes": 436,
+      "sha256": "730d416ba97e345d07bd0bb96810a168499bef945d37cb36010024f22889dabb"
+    },
+    {
+      "path": "skills.json",
+      "bytes": 17053,
+      "sha256": "7198f7ebf6ee5aab37a5c7ecccafc6d4d8bd20431cea330d29cde4eb8e8d5541"
+    }
+  ]
+}

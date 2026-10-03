@@ -1,0 +1,22 @@
+{
+  "nature": "reconstitution_fictive_non_historique",
+  "protocole": "exécution locale déterministe, sans modèle ni produit historique",
+  "fixtureSha256": "df7f46200b6ebee9a66668c755bb5267aa101e7a8d98ac9ed1138438470b9f62",
+  "scriptSha256": "7422653f3ed829551c306233a0e1f0633f2c581a6949736ef2d022d6fbb69df2",
+  "sorties": {
+    "chaine": {
+      "attendu": 55,
+      "totalReferenceDecalee": 50,
+      "statut": "divergence"
+    },
+    "ecran": {
+      "totalAfficheSansFiltre": 20,
+      "totalExerciceChoisi": 12
+    },
+    "suites": {
+      "borneZ": 26,
+      "borneAB": 28,
+      "lecteurMonoLettreAB": 1
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "jeu": "entièrement fictif",
+  "protocole": "règles éditoriales déterministes ; aucun modèle, logiciel commercial ni produit historique interrogé",
+  "demande": {
+    "statut": "brouillon_non_envoye",
+    "objet": "Pièce manquante · avril 2026",
+    "message": "Bonjour, pouvez-vous nous transmettre la facture d’achat de matériel pour Atelier Fictif, période avril 2026 ? Si elle n’est pas disponible, indiquez-nous pourquoi. Merci.",
+    "destinataire": "à confirmer",
+    "controles": [
+      "destinataire autorisé",
+      "bonne période",
+      "pièce attendue",
+      "ton du message"
+    ]
+  },
+  "sansPiece": {
+    "statut": "arret",
+    "motif": "contexte incomplet"
+  },
+  "cas": [
+    {
+      "nom": "normal",
+      "resultat": {
+        "statut": "proposition_a_valider",
+        "motif": "contrôles humains requis",
+        "ecriture": "aucune"
+      }
+    },
+    {
+      "nom": "doublon",
+      "resultat": {
+        "statut": "exception",
+        "motif": "doublon probable",
+        "ecriture": "aucune"
+      }
+    },
+    {
+      "nom": "periode_ambigue",
+      "resultat": {
+        "statut": "exception",
+        "motif": "période ambiguë",
+        "ecriture": "aucune"
+      }
+    },
+    {
+      "nom": "contexte_absent",
+      "resultat": {
+        "statut": "arret",
+        "motif": "donnée absente",
+        "ecriture": "aucune"
+      }
+    }
+  ],
+  "troisPasses": {
+    "statut": "reconstitution_fictive_non_historique",
+    "chaine": {
+      "attendu": 55,
+      "totalReferenceDecalee": 50,
+      "statut": "divergence"
+    },
+    "ecran": {
+      "totalAfficheSansFiltre": 20,
+      "totalExerciceChoisi": 12
+    },
+    "suites": {
+      "borneZ": 26,
+      "borneAB": 28,
+      "lecteurMonoLettreAB": 1
+    }
+  }
+}

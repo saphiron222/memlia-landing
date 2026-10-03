@@ -17,6 +17,8 @@ function fixture(t) {
     cpSync(join(repo, path), join(root, path), { recursive: true });
   }
   symlinkSync(join(repo, 'node_modules'), join(root, 'node_modules'), 'dir');
+  // La publication réelle du lot ne doit pas devenir un doublon dans la fixture vierge.
+  rmSync(join(root, 'src/content/blog', `${slug}.md`), { force: true });
   const planDir = join(root, 'docs/strategy/site-v3');
   cpSync(join(repo, 'docs/strategy/site-v3/build-cluster-plan.py'), join(planDir, 'engine.py'));
   const clock = join(root, 'clock.json');

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "candidateSlug": "tests-verts-et-regle-des-trois-passes",
+  "articleSha256": "a4d4115948909570dce6df9538143a2cafee3e68400513e7beaf127dabb1d82a",
+  "manifestSha256": "7ba35869a2811f1054ad23328da36e8b14d982fdcc3ce7064aeb1b156bf2ef51",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Trois postes de vérification distincts en diorama, pour les suites, la chaîne de preuve et la lecture humaine",
+  "score": 100,
+  "directionArt": null,
+  "semanticRelevance": null,
+  "p0": [],
+  "kevinApproved": true,
+  "palette": {
+    "statut": "PASS",
+    "parts": {
+      "#fcfbf7": 0.5997916666666666,
+      "#27b657": 0.030625,
+      "#1c8a41": 0.06911458333333333,
+      "#231f20": 0.12088541666666666
+    },
+    "ecarts": []
+  }
+}

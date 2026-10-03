@@ -1,54 +1,54 @@
 {
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "bodySha256": "bd49741fe651f83304118b07268f93430ec3cf7e3c9dfd0a42cb38369e49bc71",
-    "recipeSha256": "c13b28cf3eab42d8971e04604d745a1c535f70936343285100d9914c7ced2892",
-    "renderedSha256": "997069bac6660fe1f00287100933648f3795bff8f2550e00fa04455bd20d2652"
+    "bodySha256": "7fbcfeccb739200625ea03f0edc7ad1549c9a230e3a87eaae75862d8794c07d4",
+    "recipeSha256": "d76da253720c619935e491e3f826abdd39dab0013c74ff6fa3a2793c58932098",
+    "renderedSha256": "6da420aa2b4fa93b2cac421b7222cdf9b09da5788f5ab565cca7e304b8e0fee7"
   },
   "editorial": {
-    "reviewer": "metier:t_303e7c6d",
+    "reviewer": "qa:t_c9dd7b40",
     "p0": [],
     "criteria": {
       "intent-satisfaction": {
         "result": "PASS",
         "observations": [
-          "Le corps présente onze pôles développés et un douzième, audit légal, listé sans tâche ouverte ; les deux figures montrent cette carte et un test fictif de candidature, non des capacités livrées."
+          "Réponse directe et deux angles morts séparés du test rouge, règle applicable corps.md:5/13/17/23/59."
         ]
       },
       "serp-format-rankability": {
         "result": "PASS",
         "observations": [
-          "H1, onglet et canonical restent ceux du pilier ; la lecture transversale et les renvois vers prompt et grille logiciel n'en font pas un classement de produits."
+          "H1/onglet/description et format narratif cohérents ; aucun rang, volume ou réussite SEO revendiqués."
         ]
       },
       "eeat-sources": {
         "result": "PASS",
         "observations": [
-          "Six copies locales de sources institutionnelles ont été rapprochées de leurs SHA déclarés et de chaque extrait de recette ; dates checkedAt 29/09/2026 ; la fenêtre TVA est bornée à la déclaration mensuelle de septembre 2026 et à la date de l'espace professionnel."
+          "RAW exact et attribution autorisée ; copies/extraits primaires conformes, âges4/4/5jours et portée méthode seulement ; métier frais lu."
         ]
       },
       "information-gain-proof": {
         "result": "PASS",
         "observations": [
-          "Portraits lus dans les captures haut/bas à 320, 375 et 1440 px : 12 pôles, 60 familles, audit légal listé mais non ouvert ; la relance de pièces est seulement candidate au cadrage, le test ne lance rien. Aucune performance mesurée."
+          "Trois cas fictifs réellement exécutés, contre-oracle et mutant rouge ; illustrations distinctes du produit historique."
         ]
       },
       "technical-onpage-seo": {
         "result": "PASS",
         "observations": [
-          "Rendu local a4e597b : deux figures data-blog-proof, img portrait enfants directs, alt concordants, sans figcaption ni wrapper défilant ; style figure > img width/max-width 100 % et height auto. Robots index, follow dans le HTML local ; aucune vérification de production réseau."
+          "Un H1/langfr/canonical/OG/schema conformes, huit clics avec destination exacte et HTTP200, ancres présentes, aucun débordement320/375/768/1440."
         ]
       },
       "ai-citability": {
         "result": "PASS",
         "observations": [
-          "Les définitions et le tableau des pôles restent extractibles ; la carte de candidature est explicitement fictive et ne démontre pas la maturité d'un cabinet donné."
+          "Frontière/tableaux/cas extractibles et visibles, quinze paragraphes personnels préservés ; aucun score citation inventé."
         ]
       },
       "contextual-conversion": {
         "result": "PASS",
         "observations": [
-          "Le lien vers la méthode et le service conserve validation et recette par les équipes, sans promettre l'automatisation de l'audit légal."
+          "Pilier réciproque et méthode/contact servis ; Confier cette tâche atteint contact au clavier, décision gardée au cabinet."
         ]
       }
     }
@@ -191,5 +191,11 @@
       "recipeSha256": "e74a3b06cebd86a0c68e8ca806fec4bd6dde53b261b1725c637687dde68a3573",
       "renderedSha256": "997069bac6660fe1f00287100933648f3795bff8f2550e00fa04455bd20d2652"
     }
+  },
+  "provenance": {
+    "qaTask": "t_c9dd7b40",
+    "businessClaimsRetainedFrom": "t_1a9ed93d",
+    "newLinkReviewedBy": "metier:t_3a224b17 (C12)",
+    "scope": "QA du lot et lien Cicatrice ; six verdicts métier historiques conservés sans nouvel avis."
   }
 }
