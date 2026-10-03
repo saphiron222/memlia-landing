@@ -12,6 +12,7 @@ const job = option('--job');
 const phase = option('--phase') ?? 'initial';
 const base = option('--base');
 const commit = option('--commit');
+const entryPhase = phase === 'initial' || phase === 'maintenance';
 const sha = (value) => typeof value === 'string' && /^[0-9a-f]{40}$|^[0-9a-f]{64}$/.test(value);
 
 const errors = [];
@@ -23,20 +24,27 @@ const git = (...argv) => {
 };
 try {
   if (job !== 'forge' || !args.includes('--root')) throw new Error('Usage : cron-preflight --root <checkout> --job forge (SEO non autorisé)');
-  if (!['initial', 'before-commit', 'before-push'].includes(phase) ||
-      (phase === 'initial' && (base || commit)) ||
-      (phase !== 'initial' && !sha(base)) ||
-      (phase === 'before-commit' && commit) ||
+  if (!['initial', 'maintenance', 'before-selection', 'before-commit', 'before-push'].includes(phase) ||
+      (entryPhase && (base || commit)) ||
+      (!entryPhase && !sha(base)) ||
+      (['before-selection', 'before-commit'].includes(phase) && commit) ||
       (phase === 'before-push' && !sha(commit))) throw new Error('phase/base/commit invalides');
   if (realpathSync(root) !== realpathSync(process.cwd())) errors.push(`workdir incorrect : ${process.cwd()} != ${root}`);
   if (realpathSync(git('rev-parse', '--show-toplevel')) !== realpathSync(root)) errors.push('checkout incorrect : root doit être la racine Git');
   report.branch = git('branch', '--show-current');
-  const blogBranch = phase === 'before-push' &&
-    /^site\/blog-[a-z0-9][a-z0-9-]*$/.test(report.branch);
-  if (phase === 'initial' ? report.branch !== 'main' : !(blogBranch || (phase === 'before-commit' && report.branch === 'main'))) {
+  const blogBranch = /^site\/blog-[a-z0-9][a-z0-9-]*$/.test(report.branch);
+  if (phase === 'initial' ? report.branch !== 'main' : !(blogBranch || (phase !== 'before-push' && report.branch === 'main'))) {
     errors.push(`branche incorrecte : ${report.branch || '(detached)'} pour ${phase}`);
   }
-  if (phase !== 'before-commit' && git('status', '--porcelain=v1')) errors.push('arbre Git non propre');
+  if (phase === 'before-selection') {
+    // Only calendar maintenance may precede selection; never article preparation.
+    const allowed = new Set(['backlog-v3.json', 'cluster-plan.json', 'cluster-plan.md',
+      'CONTENT-CALENDAR.md', 'cluster-map.html'].map(name => `docs/strategy/site-v3/${name}`));
+    const changed = new Set([...git('diff', '--name-only').split('\n'),
+      ...git('diff', '--cached', '--name-only').split('\n'),
+      ...git('ls-files', '--others', '--exclude-standard').split('\n')].filter(Boolean));
+    for (const path of changed) if (!allowed.has(path)) errors.push(`écriture avant sélection non autorisée : ${path}`);
+  } else if (phase !== 'before-commit' && git('status', '--porcelain=v1')) errors.push('arbre Git non propre');
   for (const path of ['CLAUDE.md', ...required.map((name) => `docs/strategy/site-v3/${name}`)]) {
     if (!existsSync(join(root, path))) errors.push(`fichier requis absent : ${path}`);
   }
@@ -52,15 +60,24 @@ try {
   cicatrices.add('tests-verts-et-regle-des-trois-passes'); // W39 published replaces the old backlog slug.
   const realDays = new Map();
   const realWeeks = new Map();
+  const overdue = [];
+  if (phase === 'maintenance') report.maintenanceRequired = overdue;
   for (const post of posts) {
-    if (post?.status === 'planned' && post.date < today) errors.push(`créneau planned échu : ${post.slug} (${post.date})`);
+    if (post?.status === 'published' || post?.status === 'planned') {
+      const parsed = new Date(`${post.date}T12:00:00Z`);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(post.date) || Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== post.date) {
+        errors.push(`date réelle invalide : ${post.slug} (${post.date})`);
+        continue;
+      }
+    }
+    if (post?.status === 'planned' && post.date < today) {
+      const message = `créneau planned échu : ${post.slug} (${post.date})`;
+      (phase === 'maintenance' ? overdue : errors).push(message);
+      if (phase === 'maintenance') continue; // Historical slots never reserve today's capacity.
+    }
     if ((post?.status === 'published' || post?.status === 'planned') && !cicatrices.has(post.slug)) {
       const day = post.date;
       const parsed = new Date(`${day}T12:00:00Z`);
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== day) {
-        errors.push(`date réelle invalide : ${post.slug} (${day})`);
-        continue;
-      }
       const monday = new Date(parsed);
       monday.setUTCDate(parsed.getUTCDate() - (parsed.getUTCDay() + 6) % 7);
       const week = monday.toISOString().slice(0, 10);
@@ -72,12 +89,14 @@ try {
   for (const [week, count] of realWeeks) if (count > 4) errors.push(`semaine réelle ${week} : plus de quatre articles publiés ou planned (${count})`);
   const statusBySlug = new Map(posts.map((post) => [post.slug, post.status]));
   for (const entry of backlog) {
-    if (entry.datePlanifiee && entry.datePlanifiee < today && statusBySlug.get(entry.slug) !== 'a-replanifier') errors.push(`datePlanifiee échue : ${entry.slug} (${entry.datePlanifiee})`);
+    if (entry.datePlanifiee && entry.datePlanifiee < today && statusBySlug.get(entry.slug) !== 'a-replanifier') {
+      (phase === 'maintenance' ? overdue : errors).push(`datePlanifiee échue : ${entry.slug} (${entry.datePlanifiee})`);
+    }
   }
   git('fetch', 'origin', 'main');
   report.head = git('rev-parse', 'HEAD');
   report.originMain = git('rev-parse', 'FETCH_HEAD');
-  if (phase !== 'initial' && base !== report.originMain) errors.push(`base désynchronisée : ${base} != ${report.originMain}`);
+  if (!entryPhase && base !== report.originMain) errors.push(`base désynchronisée : ${base} != ${report.originMain}`);
   if (phase === 'before-push') {
     if (report.head !== commit) errors.push(`commit inattendu : ${report.head} != ${commit}`);
     if (git('rev-parse', 'HEAD^') !== base) errors.push(`parent du commit inattendu : ${base}`);
