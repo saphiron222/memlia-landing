@@ -86,6 +86,38 @@ test('une date historique modifiée ou une base Git absente ne crée pas une aut
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
+test('go-production local ne devient une publication qu’après intégration dans main', () => {
+  const { root, blog } = fixture();
+  const slug = 'tests-verts-et-regle-des-trois-passes';
+  try {
+    for (const status of ['pret-preview', 'go-production', 'publie']) {
+      writeFileSync(join(blog, `${slug}.md`), article('2026-10-02', status === 'pret-preview')
+        .replace('---\nCorps', `statutEditorial: ${status}\n---\nCorps`));
+      const result = state(root);
+      assert.equal(result.status, 0, result.stderr);
+      assert.equal(JSON.parse(result.stdout)[slug], undefined, status);
+    }
+    git(root, 'add', '--', 'src');
+    git(root, 'commit', '-m', 'Publication candidate');
+    assert.equal(JSON.parse(state(root).stdout)[slug], undefined, 'un commit de branche ne suffit pas');
+    git(root, 'update-ref', 'refs/remotes/origin/main', git(root, 'rev-parse', 'HEAD'));
+    const integrated = state(root);
+    assert.equal(integrated.status, 0, integrated.stderr);
+    assert.equal(JSON.parse(integrated.stdout)[slug].date, '2026-10-02');
+    const duplicate = spawnSync('python3', ['-B', '-c', `
+import importlib.util, sys
+from pathlib import Path
+from datetime import date
+spec = importlib.util.spec_from_file_location('planner', sys.argv[1])
+p = importlib.util.module_from_spec(spec); spec.loader.exec_module(p)
+p.RACINE = Path(sys.argv[2]); p.BLOG = p.RACINE/'src/content/blog'
+p.verifier_creneau(sys.argv[3], date(2026, 10, 2), ({}, {}, p.etat_publie(), {}, [], [], {}))
+`, planner, root, slug], { encoding: 'utf8' });
+    assert.notEqual(duplicate.status, 0);
+    assert.match(duplicate.stderr, /déjà publiée/);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
 test('un checkout CI partiel refuse la base manquante ; récupérer son historique conserve le candidat exact', () => {
   const { root, blog, base } = fixture();
   const cloneParent = mkdtempSync(join(tmpdir(), 'memlia-publication-checkout-'));
