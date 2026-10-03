@@ -515,8 +515,11 @@ export function auditerContratPages({
     const schemaTypes = routeContract?.schemaTypes ?? expectedSchema(page.route);
     if (schemaTypes.length > 0 && (!h1 || !page.schema.headlines.includes(h1))) erreurs.push(error(page.route, 3, 'headline JSON-LD doit être identique au H1'));
     if (schemaTypes.length > 0 && page.schema.authors === 0) erreurs.push(error(page.route, 3, 'author absent du JSON-LD'));
-    if (schemaTypes.length > 0 && page.schema.datesPublished.length === 0) erreurs.push(error(page.route, 3, 'datePublished absente du JSON-LD'));
-    if (schemaTypes.length > 0 && page.schema.datesModified.length === 0) erreurs.push(error(page.route, 3, 'dateModified absente du JSON-LD'));
+    // Les articles ont une source éditoriale datée. Une WebPage générique n'en a
+    // pas forcément : exiger des dates partout encouragerait des replis inventés.
+    const articleDate = schemaTypes.some((type) => ['BlogPosting', 'TechArticle', 'Article'].includes(type));
+    if (articleDate && page.schema.datesPublished.length === 0) erreurs.push(error(page.route, 3, 'datePublished absente du JSON-LD'));
+    if (articleDate && page.schema.datesModified.length === 0) erreurs.push(error(page.route, 3, 'dateModified absente du JSON-LD'));
     for (const type of schemaTypes) {
       if (!page.schema.types.has(type)) erreurs.push(error(page.route, 3, `schéma ${type} absent ou incohérent avec le type de page`));
     }

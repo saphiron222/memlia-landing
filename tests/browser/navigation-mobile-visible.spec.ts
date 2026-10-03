@@ -35,7 +35,6 @@ for (const width of [320, 375, 390, 430, 768]) {
       await expect(links).toHaveText(DESTINATIONS);
       const states = [];
       for (const link of await links.all()) {
-        await link.scrollIntoViewIfNeeded();
         states.push(await expectTouchable(link));
       }
       await expect(page.locator('[data-burger]')).toBeHidden();
@@ -57,13 +56,15 @@ test('navigation visible : chaque destination atteint son fragment', async ({ pa
   }
 });
 
-test('navigation visible : le défilement horizontal ne crée aucun débordement de page', async ({ page }) => {
+test('navigation visible : deux lignes à 320 px sans défilement horizontal', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 });
   await page.goto('/');
+  await page.evaluate(() => document.fonts.ready);
   const navigation = page.locator('[data-mobile-visible]');
-  const before = await navigation.evaluate((element) => element.scrollLeft);
-  await navigation.locator('a').last().scrollIntoViewIfNeeded();
-  const after = await navigation.evaluate((element) => element.scrollLeft);
-  expect(after).toBeGreaterThan(before);
+  const rows = await navigation.locator('a').evaluateAll((links) => [...new Set(links.map((link) => link.getBoundingClientRect().top))]);
+  expect(rows).toHaveLength(2);
+  expect(await navigation.evaluate((element) => element.scrollWidth)).toBe(320);
+  expect(await navigation.evaluate((element) => element.scrollLeft)).toBe(0);
+  await expectTouchable(navigation.locator('a').last());
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(0);
 });
