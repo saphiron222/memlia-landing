@@ -8,7 +8,7 @@ dateMiseAJour: 2026-10-03
 auteur: kevin
 sujets: [saisie, pieces, automatisation, ia]
 motsCles: ["saisie comptable automatisée", "OCR comptable", "pré-comptabilité", "contrôles de saisie", "file d’anomalies", "doublon de facture"]
-brouillon: true
+brouillon: false
 image: img-art-saisie-comptable
 pipelineVersion: 1
 primaryQuery: "automatisation saisie comptable"
@@ -32,7 +32,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Scénario fictif explicite de cinquante pièces avec sorties attendues, sans prétendre à une exécution ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées."
 reviewRule: "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois."
-reviewer: marketing
+reviewer: metier:t_30243835
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier cette tâche"
@@ -40,7 +40,7 @@ cta:
   outcome: "Nous écrivons la règle de saisie de votre cabinet dans vos mots, fournisseurs récurrents et motifs de refus compris, nous l’automatisons dans les outils que vos équipes utilisent déjà, et elles la recettent sur un lot de pièces. Chaque écriture reste validée par une personne. Rien à envoyer : décrivez la tâche, nous vous disons ce qu’il faut pour la prendre en charge."
 imageOg: "/images/img-art-saisie-comptable-og.webp"
 imageAlt: "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe"
-statutEditorial: a-valider
+statutEditorial: publie
 sources:
   - editeur: "DGFiP"
     titre: "BOI-TVA-DED-40-20 du 08/01/2025 — Conditions de temps et date de la déduction, §25"

@@ -4,6 +4,7 @@ titreOnglet: "Logiciel IA comptabilité : grille de choix | Memlia"
 resume: "Comparer le parcours entier d'une pièce : réception, exception, reprise, validation et trace. Quatre cas fictifs rejoués, aucun éditeur testé."
 description: "Logiciel IA comptabilité : une grille pour comparer le traitement des pièces et des exceptions, sans confondre démonstration et résultat mesuré."
 datePublication: 2026-09-29
+dateMiseAJour: 2026-10-03
 auteur: kevin
 sujets: [ia, saisie, automatisation]
 motsCles: ["logiciel ia comptabilite", "choix logiciel comptable", "exceptions comptables"]
@@ -22,7 +23,7 @@ tache: "Comparer sur une pièce fictive les capacités du logiciel existant et d
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-30
+  date: 2026-10-03
 funnel: MOFU
 contentType: searchable
 format: faq-knowledge

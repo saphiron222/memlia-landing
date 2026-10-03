@@ -4,6 +4,7 @@ titreOnglet: "Prompt ChatGPT expert comptable : demande de pièce | Memlia"
 resume: "Un prompt pour préparer une demande de pièce fictive : contexte autorisé, brouillon, arrêt si la pièce manque, destinataire et envoi validés par une personne."
 description: "Prompt ChatGPT expert comptable : préparer une demande de pièce sur cas fictif, savoir quand s'arrêter et garder la validation humaine."
 datePublication: 2026-09-29
+dateMiseAJour: 2026-10-03
 auteur: kevin
 sujets: [ia, pieces, automatisation]
 motsCles: ["prompt chatgpt expert comptable", "demande de pièce", "confidentialité des données"]
@@ -22,7 +23,7 @@ tache: "Préparer une demande de pièce manquante sans envoyer avant contrôle d
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-30
+  date: 2026-10-03
 funnel: MOFU
 contentType: searchable
 format: how-to-guide

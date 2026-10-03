@@ -2,69 +2,69 @@
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "editorial-review",
-  "status": "FAIL",
+  "status": "PASS",
   "checkedAt": "2026-10-03",
-  "articleSha256": "627a883093e383093dde657fd668004b0498dcbbb0491dffda0a26083f58823c",
-  "manifestSha256": "67d0cb1580a11d51fb9f7a58ebda65647b58ade3eb9fa9b5cbdd3e7e7787c5de",
+  "articleSha256": "49f7120165a90a904be38db9229922d26e230b551de4dce06c2ae1832cbd266a",
+  "manifestSha256": "67a9558ce0aa1d51a8fac8956eb1faa49e952b8330eeaf147c032621cc6582cc",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
-  "reviewer": "marketing",
+  "reviewer": "metier:t_30243835",
   "criteria": [
     {
       "id": "intent-satisfaction",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 20,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Réserve de période levée : tableau, scénario et FAQ attendent une décision humaine ; réception conservée, aucune affectation d'office. PERIODE-DATES et PERIODE-CLOSE distinguent les états et la clôture."
       ]
     },
     {
       "id": "serp-format-rankability",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 15,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Structure de guide de saisie inchangée ; constat éditorial antérieur maintenu, aucun nouveau relevé SERP ni résultat de classement."
       ]
     },
     {
       "id": "eeat-sources",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 20,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "BOI-TVA-DED-40-20, version du 08/01/2025, §25 relu directement le 03/10/2026 : biens meubles, périodicité mensuelle, exigibilité en avril et détention à la date de dépôt ; pas règle universelle de pièce tardive. Article 271 version depuis le 21/02/2026, article 208 annexe II et L123-13 relus. Conservation et autres citations inchangées : revue précédente maintenue."
       ]
     },
     {
       "id": "information-gain-proof",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 20,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Deux cas de période sont des attentes fictives, ni moteur exécuté ni résultats mesurés. Total TEST-050 reste 50 ; illustrations corrigées et provenance explicite."
       ]
     },
     {
       "id": "technical-onpage-seo",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 10,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "HTML Astro de preview reconstruit indépendamment, 47 pages ; corps rendu et liaison vérifiés par verify-period-metier.mjs. Ce contrôle ne prouve pas l'indexabilité publique ni un build de publication vert."
       ]
     },
     {
       "id": "ai-citability",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 10,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "FAQ rendue cite le §25 et borne sa portée ; aucun droit à déduction universel ni certitude de citation par un moteur IA."
       ]
     },
     {
       "id": "contextual-conversion",
-      "result": "FAIL",
-      "earned": 0,
+      "result": "PASS",
+      "earned": 5,
       "observations": [
-        "Revue éditoriale non exécutée."
+        "Service dans les outils existants et validation de chaque écriture conservés ; aucun nouveau catalogue ni promesse produit."
       ]
     }
   ]

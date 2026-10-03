@@ -37,3 +37,24 @@ Après fusion autorisée : vérifier source SHA complet, build et déploiement C
 GET/HEAD 200, canonical, robots HTML et en-têtes sans noindex, sitemap, corps fiscal corrigé
 et empreintes des images servies. Ne jamais rejouer un HTTP effectivement refusé.
 Tant que ces preuves manquent : `publication_completed=false` ; aucune remise en ligne déclarée.
+
+## Qualification finale locale — 03/10/2026
+
+La revue métier a levé la réserve de période : réception conservée, aucune écriture et
+qualification humaine documentée des dates, de l'exercice, de la TVA et d'une éventuelle clôture.
+Les quatre autres contenus sont inchangés sur le fond ; leurs avis sont conservés. Les dates
+de republication sont rematérialisées au jour réel, sans renouvellement artificiel des avis.
+Les cinq dossiers ont passé ensemble `production-check`, puis sont scellés ; build complet,
+contrôles de contenu et navigateur réel passent. La revue QA indépendante confirme le couplage
+de la levée ciblée avec le nouveau corps et le maintien des gardes.
+
+Le test de conservation de l'intention SEO utilisait le vrai Prompt comme dossier nécessairement
+publié : il empêchait son état intermédiaire `go-production`. Il matérialise désormais une fixture
+scellée dans une copie temporaire, sans modifier le candidat ni produire une preuve publique.
+Ses témoins négatifs restent exigés. Ce résultat ne qualifie aucune publication de la fixture.
+
+Circuit retenu : livraison technique coordonnée de PR29 sous la constitution du 03/10,
+avec revue métier de fond, revue QA du delta technique et CI verte avant fusion normale.
+La garde automatisée blog-only n'est ni élargie ni utilisée pour ce diff global ; aucun retrait
+de protection n'est livré séparément. La vérification publique et Cloudflare reste requise
+après fusion ; à ce point local, `publication_completed=false`.

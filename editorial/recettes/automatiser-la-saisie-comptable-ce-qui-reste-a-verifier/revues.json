@@ -1,58 +1,65 @@
 {
+  "reviewedAt": "2026-10-03",
+  "reviewScope": "Correction de fond de la règle de période Saisie ; continuité des constats inchangés de la revue métier précédente. Ni QA finale ni publication.",
+  "businessOutcome": "PASS",
+  "publication_completed": false,
   "subject": {
     "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "bodySha256": "16e0d12316c47bf51027df8f722082b00920c1b9de548e4146d7c0ea929e72fd",
-    "recipeSha256": "7ce669f10b3f31b4fade4565944d1df677c89904947769e4d32bfe75b3eb2a66",
-    "renderedSha256": "255fa3a598bc3d0d2e3a0ca737c9d10cec14248a6c07145c18145a3eb298cb7c"
+    "bodySha256": "3364e1908670905fcdcc9905b5d69070d6e9437f425b64065dfabf0dffd10f1b",
+    "recipeSha256": "1c1b5801723eb85b760d62d0a5d4b9eb893a2a9dd572b9d1183981359350fae3",
+    "renderedSha256": "02bf78964a2339c6e94892020ccbc348408025fdd1243e2956c8ffa97ad3fff4"
   },
   "editorial": {
-    "reviewer": "metier:t_66b48f1f",
+    "reviewer": "metier:t_30243835",
     "criteria": {
-      "intent-satisfaction": {"result": "PASS", "observations": ["Six contrôles, validation humaine, file d’anomalies et scénario TEST-050 attendu, non mesuré ; correction fiscale visible dans le rendu Astro neuf."]},
-      "serp-format-rankability": {"result": "PASS", "observations": ["Guide structuré pour la requête saisie comptable ; aucune promesse SEO mesurée."]},
-      "eeat-sources": {"result": "PASS", "observations": ["Article 36 de la loi 2026-534 lu sur Légifrance le 30/09/2026 ; A18906 DILA du 26/06/2026 lu le même jour et copie brute HTTP 200 hachée ; L.102 B ancien et L.123-22 distingués ; F10029 de 2024 ne porte pas seule la réforme. Les quatre autres citations inchangées restent aux sources de la revue antérieure."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["Deux témoins abstraits du seuil d’expiration de l’ancien délai (01/01 exclu, 02/01 inclus) ; aucune purge automatique ; figures TEST-050 fictives et non exécutées."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["HTML Astro construit en preview isolée au commit exact avec BLOG_PREVIEW_SLUG(S) ; .article-corps :194 contient le paragraphe corrigé et son lien A18906 ; le vieux dist du checkout n'est pas le rendu de ce candidat et ne doit pas être réutilisé."]},
-      "ai-citability": {"result": "PASS", "observations": ["Citation officielle A18906 contextualisée dans le HTML ; la réponse et les témoins ne prétendent ni mesurer un rendement ni déterminer le délai de tout dossier."]},
-      "contextual-conversion": {"result": "PASS", "observations": ["Service proposé dans les outils existants ; enregistrement toujours soumis à une personne, sans promesse de logiciel universel."]}
+      "intent-satisfaction": {"result": "PASS", "observations": ["Réserve de période levée : tableau, scénario et FAQ attendent une décision humaine ; réception conservée, aucune affectation d'office. PERIODE-DATES et PERIODE-CLOSE distinguent les états et la clôture."]},
+      "serp-format-rankability": {"result": "PASS", "observations": ["Structure de guide de saisie inchangée ; constat éditorial antérieur maintenu, aucun nouveau relevé SERP ni résultat de classement."]},
+      "eeat-sources": {"result": "PASS", "observations": ["BOI-TVA-DED-40-20, version du 08/01/2025, §25 relu directement le 03/10/2026 : biens meubles, périodicité mensuelle, exigibilité en avril et détention à la date de dépôt ; pas règle universelle de pièce tardive. Article 271 version depuis le 21/02/2026, article 208 annexe II et L123-13 relus. Conservation et autres citations inchangées : revue précédente maintenue."]},
+      "information-gain-proof": {"result": "PASS", "observations": ["Deux cas de période sont des attentes fictives, ni moteur exécuté ni résultats mesurés. Total TEST-050 reste 50 ; illustrations corrigées et provenance explicite."]},
+      "technical-onpage-seo": {"result": "PASS", "observations": ["HTML Astro de preview reconstruit indépendamment, 47 pages ; corps rendu et liaison vérifiés par verify-period-metier.mjs. Ce contrôle ne prouve pas l'indexabilité publique ni un build de publication vert."]},
+      "ai-citability": {"result": "PASS", "observations": ["FAQ rendue cite le §25 et borne sa portée ; aucun droit à déduction universel ni certitude de citation par un moteur IA."]},
+      "contextual-conversion": {"result": "PASS", "observations": ["Service dans les outils existants et validation de chaque écriture conservés ; aucun nouveau catalogue ni promesse produit."]}
     },
     "p0": []
   },
   "business": {
     "claims": {
-      "claim-unit-750912b300a9-1": {"verdict": "soutient", "reasoning": "F31808, Service-Public, citation des mentions de la facture conservée à l’identique ; ne pas extrapoler au profil micro-entrepreneur de cette fiche ni déduire la régularité de la facture de l'OCR. Revue antérieure du claim inchangé reconfirmée par comparaison du corps et de la recette."},
-      "claim-unit-73e4bb260d23-1": {"verdict": "soutient", "reasoning": "F39785, Service-Public, suivi des factures reçues pour flux concernés, non obligation universelle d'émission ; claim inchangé de la revue antérieure."},
-      "claim-unit-d4324ad3b50e-1": {"verdict": "soutient", "reasoning": "F39785, Service-Public, signalement externe décrit comme possibilité, distinct de la file interne et décidé par une personne ; claim inchangé de la revue antérieure."},
-      "claim-unit-a6d8fe642843-1": {"verdict": "soutient", "reasoning": "F10029, DILA vérifiée en 2024 : citation exacte de l'obligation de conservation des documents pouvant relever du contrôle fiscal, mais son tableau de six ans ne peut seul soutenir la durée à partir de la réforme 2026 ; voir le claim transition indépendant et l'article 36."},
-      "claim-unit-a6d8fe642843-2": {"verdict": "soutient", "reasoning": "Article 36 I 1° a) et II de la loi 2026-534, Légifrance JORF du 26/06/2026, contrôlé le 30/09/2026 ; A18906 DILA du 26/06/2026, HTTP 200 et copie SHA-256 9e3d8c0825857f8e4edd4c911a4c3636027bce2c6aab07a6cffb6376a437e199 : dix ans pour documents et pièces L.102 B visés lorsque l'ancien délai expire STRICTEMENT après 01/01/2027. 01/01 exclu, 02/01 inclus : comparateurs, jamais dates de purge. Ancien I L.102 B : dernière opération ou établissement ; L.123-22 comptable dix ans séparé. Les dispositions spéciales et les autres obligations restent à qualifier par document."},
-      "claim-unit-7995baec19ca-1": {"verdict": "soutient", "reasoning": "CNIL, définition de donnée personnelle reprise sans attribuer automatiquement les rôles RGPD ; claim inchangé de la revue antérieure."}
+      "claim-unit-5545751fb901-1": {"verdict": "soutient", "reasoning": "DGFiP BOI-TVA-DED-40-20 du 08/01/2025, §25, relu le 03/10/2026 et copie locale contrôlée : pour une livraison de biens meubles corporels avec déclarations mensuelles, exigibilité le 30 avril et facture délivrée le 5 mai, le droit peut être exercé sur la déclaration déposée en mai au titre d'avril si le document est détenu à la date de dépôt. L'article cite cet exemple sous conditions et exclut son universalisation. Le cas réception le 6 mai n'attribue aucune période automatiquement : régime, conditions et clôture restent à qualifier. CGI art.271 en vigueur depuis le 21/02/2026 confirme naissance à l'exigibilité et nécessité des pièces ; CGI ann.II art.208 permet une déduction omise ultérieure sous conditions. Réserve précédente levée."},
+      "claim-unit-750912b300a9-1": {"verdict": "soutient", "reasoning": "F31808, citation et contexte inchangés de la revue métier du 03/10/2026 consignée dans revue-metier-20261003.md ; pas de certification de régularité par OCR ni extension à toute population."},
+      "claim-unit-73e4bb260d23-1": {"verdict": "soutient", "reasoning": "F39785, constat inchangé déjà contrôlé dans la revue métier précédente : suivi pour les flux concernés ; réception et calendrier d'émission distingués."},
+      "claim-unit-d4324ad3b50e-1": {"verdict": "soutient", "reasoning": "F39785, possibilité de signalement inchangée de la revue précédente, distincte de la file interne et soumise à décision humaine ; pas obligation de signalement automatique."},
+      "claim-unit-a6d8fe642843-1": {"verdict": "soutient", "reasoning": "F10029, citation inchangée déjà contrôlée : obligation de conserver les pièces susceptibles de contrôle fiscal. Son tableau daté de 2024 ne soutient pas seul la réforme de durée de 2026."},
+      "claim-unit-a6d8fe642843-2": {"verdict": "soutient", "reasoning": "A18906 du 26/06/2026 et article36 I/II loi2026-534, directement relus dans la revue précédente du 03/10 : passage à dix ans pour les pièces visées lorsque l'ancien délai expire strictement après le 01/01/2027. Paragraphe inchangé ; témoins de seuil, aucune date de purge ; L123-22 comptable distingué et qualification par document maintenue."},
+      "claim-unit-7995baec19ca-1": {"verdict": "soutient", "reasoning": "Définition CNIL et contexte inchangés de la revue métier précédente ; pas d'attribution automatique des rôles RGPD aux acteurs."}
     }
   },
   "image": {
-    "reviewer": "metier:t_66b48f1f",
+    "reviewer": "metier:t_30243835",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["Brief de couverture à six composantes et recette des deux figures inchangés depuis la revue portrait antérieure."]},
-      "generation-constraints": {"result": "PASS", "observations": ["Figures fictives sans résultat d'un logiciel exécuté ; preuve portrait antérieure non retamponnée."]},
-      "fictive-provenance": {"result": "PASS", "observations": ["TEST-050 est présenté comme scénario de recette inventé ; la capture et la provenance restent dans la recette."]},
-      "recognizable-subject": {"result": "PASS", "observations": ["Les deux figures inline concernent six contrôles et file d'anomalies, hors modification du paragraphe fiscal."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Rendu HTML neuf contient deux figures inline ; lisibilité 320/375/1440 héritée de la revue portrait t_303e7c6d pour les mêmes actifs, non re-mesurée dans cette passe fiscale."]},
-      "alt-information": {"result": "PASS", "observations": ["Alt descriptifs des deux figures inchangés ; aucun ancien résultat mesuré revendiqué."]}
+      "brief-six-components": {"result": "PASS", "observations": ["Couverture et son brief inchangés : revue antérieure maintenue, pas de nouvelle génération."]},
+      "generation-constraints": {"result": "PASS", "observations": ["Les deux variantes corrigées de saisie-six-controles ont été ouvertes : scénario fictif, sortie attendue non exécutée et aucune écriture explicites."]},
+      "fictive-provenance": {"result": "PASS", "observations": ["TEST-050 conserve son statut de scénario fictif ; aucune mesure sur cinquante fichiers revendiquée."]},
+      "recognizable-subject": {"result": "PASS", "observations": ["Étape5 Période à qualifier et décision humaine documentée ; pièce reçue conservée ; le portrait ne donne plus d'affectation certaine."]},
+      "technical-derivatives": {"result": "PASS", "observations": ["Deux WebP corrigés ouverts, aucun texte final tronqué ; renderer --check confirme18preuves ; empreintes contrôlées. Ce contrôle d'actifs ne constitue pas une QA navigateur finale ou une preuve d'images servies en production."]},
+      "alt-information": {"result": "PASS", "observations": ["Alt corrigé concordant avec l'image et le corps ; autre figure inchangée."]}
     },
     "directionArt": 17,
-    "semanticRelevance": 22
+    "semanticRelevance": 22,
+    "scoreProvenance": "Notes heuristiques de la revue antérieure conservées, ni nouvelle mesure ni motif de republication ; correction du texte du portrait contrôlée dans cette passe."
   },
   "sources": {
-    "reviewedBy": "metier:t_66b48f1f",
+    "reviewedBy": "metier:t_30243835",
     "observations": {
-      "sp-mentions-facture": "F31808, citation inchangée de la revue précédente ; fiche à portée population bornée.",
-      "sp-facture-electronique": "F39785, citations inchangées ; flux concernés uniquement.",
-      "sp-conservation-pieces": "F10029, vérifiée le 01/07/2024, tableau fiscal six ans périmé pour la transition 2026 ; n'établit que la citation de conservation et la distinction comptable.",
-      "sp-reforme-conservation": "DILA A18906 publiée le 26/06/2026, lue le 30/09/2026 ; copie source brute HTTP 200 SHA-256 9e3d8c0825857f8e4edd4c911a4c3636027bce2c6aab07a6cffb6376a437e199 ; article 36 JORF contrôlé via Légifrance web_extract.",
-      "cnil-donnee-personnelle": "Définition CNIL inchangée ; n'attribue pas les rôles des acteurs."
+      "bofip-periode-deduction": "Doctrine DGFiP du08/01/2025 §25 relue directement03/10/2026 ; copie locale et extrait complet contrôlés. Détention à la date de dépôt, biens meubles et périodicité mensuelle déterminants. Art271 version21/02/2026 relu en complément ; recodification annoncée2027 hors période de cette revue.",
+      "sp-mentions-facture": "Revue précédente conservée : source et citation inchangées.",
+      "sp-facture-electronique": "Revue précédente conservée : flux concernés, signalement possible et décision humaine.",
+      "sp-conservation-pieces": "Revue précédente conservée : fiche2024 ne démontre pas seule la réforme2026.",
+      "sp-reforme-conservation": "Revue précédente conservée : DILA A18906 et article36 de la loi2026-534, seuil strict et absence de purge.",
+      "cnil-donnee-personnelle": "Revue précédente conservée : définition sans affectation des rôles."
     }
   },
   "qualite": {
-    "reviewer": "metier:t_66b48f1f",
+    "reviewer": "metier:t_30243835",
     "score": 92,
     "p0": [],
     "categories": {
@@ -62,10 +69,10 @@
       "technicalElements": {"score": 14, "max": 15},
       "aiCitationReadiness": {"score": 14, "max": 15}
     },
-    "evidence": ["Corps fiscal corrigé et A18906 officielle du 26/06/2026 ; tests du seuil dans texte et HTML neuf.", "Deux preuves fictives non exécutées inchangées et HTML Astro candidat construit depuis le SHA 6c401898.", "Score éditorial recalculé comme 27+23+14+14+14=92, ni mesure SEO ni résultat Lighthouse."],
-    "reservations": ["Le dist ancien du checkout conserve la phrase erronée de six ans : ne jamais le pousser ; seul le rendu preview recalculé est signé ici.", "Le rendu local ne démontre ni publication ni indexation ; rematérialisation, scellement, QA et CI exact-head restent à dev.", "Autres documents et régimes spéciaux L.102 B, données personnelles et durée de chaque pièce : qualification par dossier, aucune purge automatique.", "Quatre autres articles et leurs revues restent liés à leur triplet existant ; aucun nouveau tampon transférable."],
-    "seo": ["Lien officiel A18906 dans le HTML neuf ; la vérification publique reste à faire après livraison."],
-    "geo": ["La condition transitoire est contextualisée et son exemple ne constitue pas une règle de purge."],
-    "verdict": "AI_REVIEW_PASS sur le triplet exact du rendu Astro preview isolé au commit 6c401898 ; ni scellement, ni QA/CI, ni publication."
+    "evidence": ["Notes heuristiques du dossier antérieur maintenues : aucune nouvelle performance SEO ni mesure Lighthouse.", "Réserve métier sur la période levée par tableaux/FAQ/cas fictifs/portrait ; sources officielles relues, HTML preview reconstruit et cohérence exécutée.", "525testsNodePASS sans FAIL/SKIP ;5testsSaisiePASS ; ceci ne remplace pas le build de publication."],
+    "reservations": ["npm run build reproduit un échec de rubrique : Saisie est encore brouillon. Dev doit installer cet avis, rematérialiser et finaliser la livraison coordonnée.", "Ni QA finale, ni CI du candidat local, ni publication publique vérifiées dans cette passe ; publication_completed=false.", "Les deux cas Saisie décrivent des attentes fictives, pas un moteur de saisie exécuté.", "Quatre autres corps/recettes inchangés : validation de fond antérieure maintenue, sans nouvelle revue pour une date, un lien ou une empreinte seule."],
+    "seo": ["Lien officiel et FAQ bornée vérifiés dans HTML local neuf ; constat public réservé à la livraison."],
+    "geo": ["Exemple fiscal contextualisé, non universel ; pas de résultat de moteur IA mesuré."],
+    "verdict": "PASS métier sur la correction de période ; réserve de fond levée. Avis pour rematérialisation du candidat, non clôture de republication."
   }
 }

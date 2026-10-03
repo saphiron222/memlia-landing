@@ -4,7 +4,7 @@ titreOnglet: "Intelligence artificielle, métier comptable et compétences | Mem
 resume: "L’intelligence artificielle ne remplace pas un métier en bloc. Elle prépare une information, applique une règle écrite et signale le doute ; le cabinet valide, arbitre et fait évoluer la règle."
 description: "Métier comptable intelligence artificielle compétences : distinguer préparation automatisée, validation et décision humaine sur des cas fictifs."
 datePublication: 2026-09-21
-dateMiseAJour: 2026-09-28
+dateMiseAJour: 2026-10-03
 auteur: kevin
 sujets: [ia, cabinet, automatisation]
 motsCles: ["métier comptable intelligence artificielle compétences", "intelligence artificielle cabinet comptable", "compétences comptables", "validation humaine"]
@@ -23,7 +23,7 @@ tache: "Comprendre ce que l’intelligence artificielle peut préparer dans un c
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-30
+  date: 2026-10-03
 funnel: TOFU
 contentType: searchable
 format: thought-leadership

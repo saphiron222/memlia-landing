@@ -1,6 +1,6 @@
 # SEO et préparation aux citations IA — Automatiser la saisie comptable : ce qui reste à vérifier
 
-Verdict : PASS — 92/100, 0 P0 (revue indépendante du 2026-09-30, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
+Verdict : PASS — 92/100, 0 P0 (revue indépendante du 2026-10-03, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
 | Catégorie | Score |
 | --- | ---: |
@@ -13,15 +13,15 @@ Verdict : PASS — 92/100, 0 P0 (revue indépendante du 2026-09-30, barème blog
 
 ## SEO
 
-- Lien officiel A18906 dans le HTML neuf ; la vérification publique reste à faire après livraison.
+- Lien officiel et FAQ bornée vérifiés dans HTML local neuf ; constat public réservé à la livraison.
 
 ## Préparation aux citations
 
-- La condition transitoire est contextualisée et son exemple ne constitue pas une règle de purge.
+- Exemple fiscal contextualisé, non universel ; pas de résultat de moteur IA mesuré.
 
 ## Réserves mesurées
 
-- Le dist ancien du checkout conserve la phrase erronée de six ans : ne jamais le pousser ; seul le rendu preview recalculé est signé ici.
-- Le rendu local ne démontre ni publication ni indexation ; rematérialisation, scellement, QA et CI exact-head restent à dev.
-- Autres documents et régimes spéciaux L.102 B, données personnelles et durée de chaque pièce : qualification par dossier, aucune purge automatique.
-- Quatre autres articles et leurs revues restent liés à leur triplet existant ; aucun nouveau tampon transférable.
+- npm run build reproduit un échec de rubrique : Saisie est encore brouillon. Dev doit installer cet avis, rematérialiser et finaliser la livraison coordonnée.
+- Ni QA finale, ni CI du candidat local, ni publication publique vérifiées dans cette passe ; publication_completed=false.
+- Les deux cas Saisie décrivent des attentes fictives, pas un moteur de saisie exécuté.
+- Quatre autres corps/recettes inchangés : validation de fond antérieure maintenue, sans nouvelle revue pour une date, un lien ou une empreinte seule.

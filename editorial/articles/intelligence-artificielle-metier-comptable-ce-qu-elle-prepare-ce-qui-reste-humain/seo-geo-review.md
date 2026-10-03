@@ -1,6 +1,6 @@
 # SEO et préparation aux citations IA — Intelligence artificielle et métier comptable : compétences humaines
 
-Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-09-30, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
+Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-10-03, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
 | Catégorie | Score |
 | --- | ---: |

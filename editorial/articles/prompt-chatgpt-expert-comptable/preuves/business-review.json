@@ -3,9 +3,9 @@
   "candidateSlug": "prompt-chatgpt-expert-comptable",
   "kind": "business-review",
   "status": "PASS",
-  "checkedAt": "2026-09-30",
-  "articleSha256": "9cf569f381d3c1535ecc313f3f3590b13da87bc4aaa9a6baaad841587e185c6b",
-  "manifestSha256": "edcc91e5d5102e113a5ce58d8dd06371f8ee89d5aec42f32e5c91fd9f2cf5463",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
+  "manifestSha256": "da19b3e5b7b2454f51c3d99f43694f7571ecb08a34d0a7a5abfcf512134e419f",
   "observations": [
     "Contrôle business-review relu sur le candidat exact prompt-chatgpt-expert-comptable."
   ],
@@ -15,7 +15,7 @@
     {
       "id": "review-claim-unit-668540d969d0-1-cnil-ia-generative",
       "candidateSlug": "prompt-chatgpt-expert-comptable",
-      "articleSha256": "9cf569f381d3c1535ecc313f3f3590b13da87bc4aaa9a6baaad841587e185c6b",
+      "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
       "claimId": "claim-unit-668540d969d0-1",
       "claimSha256": "a546ae3eb06661f25120157eb710c3865f1264cbd0550f6225cb6c6b1c9d8060",
       "sourceId": "cnil-ia-generative",
@@ -23,13 +23,13 @@
       "citationSha256": "a546ae3eb06661f25120157eb710c3865f1264cbd0550f6225cb6c6b1c9d8060",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-09-30",
+      "checkedAt": "2026-10-03",
       "reasoning": "FAQ CNIL sur l'entrée dans un système d'IA générative : ne soumettre que des informations autorisées à partager ; recommandation contextualisée, pas autorisation de verser un dossier réel. Copie locale contrôlée SHA 63f9767046b4d9b962a999b9533d230fc0f6175410a8c83424da6df48740726e, reçu du 29/09/2026."
     },
     {
       "id": "review-claim-unit-668540d969d0-2-cnil-donnee-personnelle",
       "candidateSlug": "prompt-chatgpt-expert-comptable",
-      "articleSha256": "9cf569f381d3c1535ecc313f3f3590b13da87bc4aaa9a6baaad841587e185c6b",
+      "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
       "claimId": "claim-unit-668540d969d0-2",
       "claimSha256": "173ec2acc10364557413860ae5b0737c53fda156dc390d69318a1b41eae0eb34",
       "sourceId": "cnil-donnee-personnelle",
@@ -37,13 +37,13 @@
       "citationSha256": "ddfba444f96ae235a1461e5eda66fa15be7e87030616939137770cc411e46283",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-09-30",
+      "checkedAt": "2026-10-03",
       "reasoning": "Définition CNIL : identification possible par croisement ; le texte dit seulement que retirer le nom ne suffit pas toujours. Copie locale contrôlée SHA b610e932fc37be69d66a056c21b2dca1f0262d952c56a3bc9c707e7d2491786d, reçu du 29/09/2026."
     },
     {
       "id": "review-claim-unit-3ea838c700eb-1-ordre-ia",
       "candidateSlug": "prompt-chatgpt-expert-comptable",
-      "articleSha256": "9cf569f381d3c1535ecc313f3f3590b13da87bc4aaa9a6baaad841587e185c6b",
+      "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
       "claimId": "claim-unit-3ea838c700eb-1",
       "claimSha256": "4c40f38b5eca11fd4caf34ba3d328b123e340dcde2c4f24f5ebcb7157e7a12bd",
       "sourceId": "ordre-ia",
@@ -51,7 +51,7 @@
       "citationSha256": "3dab1d88021341f7c4c67dbd0a6aba6479f24afe1e27accfa41fb5f24f8bbd3f",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-09-30",
+      "checkedAt": "2026-10-03",
       "reasoning": "La page de l'Ordre présente effectivement des cas d'usage, précautions et techniques de prompt ; aucune certification du prompt fictif ne lui est attribuée. Copie locale contrôlée SHA 1b650c10a7f081d705a617a8bddb4ddc6873fb83593b4914e3ad2827ba9c64d2, reçu du 29/09/2026."
     }
   ]

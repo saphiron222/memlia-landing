@@ -1,6 +1,6 @@
 # SEO et préparation aux citations IA — Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique
 
-Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-09-30, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
+Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-10-03, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
 | Catégorie | Score |
 | --- | ---: |

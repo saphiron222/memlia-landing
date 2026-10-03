@@ -2,42 +2,125 @@
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
     "bodySha256": "bd49741fe651f83304118b07268f93430ec3cf7e3c9dfd0a42cb38369e49bc71",
-    "recipeSha256": "e74a3b06cebd86a0c68e8ca806fec4bd6dde53b261b1725c637687dde68a3573",
+    "recipeSha256": "c13b28cf3eab42d8971e04604d745a1c535f70936343285100d9914c7ced2892",
     "renderedSha256": "997069bac6660fe1f00287100933648f3795bff8f2550e00fa04455bd20d2652"
   },
   "editorial": {
     "reviewer": "metier:t_303e7c6d",
     "p0": [],
     "criteria": {
-      "intent-satisfaction": {"result": "PASS", "observations": ["Le corps présente onze pôles développés et un douzième, audit légal, listé sans tâche ouverte ; les deux figures montrent cette carte et un test fictif de candidature, non des capacités livrées."]},
-      "serp-format-rankability": {"result": "PASS", "observations": ["H1, onglet et canonical restent ceux du pilier ; la lecture transversale et les renvois vers prompt et grille logiciel n'en font pas un classement de produits."]},
-      "eeat-sources": {"result": "PASS", "observations": ["Six copies locales de sources institutionnelles ont été rapprochées de leurs SHA déclarés et de chaque extrait de recette ; dates checkedAt 29/09/2026 ; la fenêtre TVA est bornée à la déclaration mensuelle de septembre 2026 et à la date de l'espace professionnel."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["Portraits lus dans les captures haut/bas à 320, 375 et 1440 px : 12 pôles, 60 familles, audit légal listé mais non ouvert ; la relance de pièces est seulement candidate au cadrage, le test ne lance rien. Aucune performance mesurée."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["Rendu local a4e597b : deux figures data-blog-proof, img portrait enfants directs, alt concordants, sans figcaption ni wrapper défilant ; style figure > img width/max-width 100 % et height auto. Robots index, follow dans le HTML local ; aucune vérification de production réseau."]},
-      "ai-citability": {"result": "PASS", "observations": ["Les définitions et le tableau des pôles restent extractibles ; la carte de candidature est explicitement fictive et ne démontre pas la maturité d'un cabinet donné."]},
-      "contextual-conversion": {"result": "PASS", "observations": ["Le lien vers la méthode et le service conserve validation et recette par les équipes, sans promettre l'automatisation de l'audit légal."]}
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Le corps présente onze pôles développés et un douzième, audit légal, listé sans tâche ouverte ; les deux figures montrent cette carte et un test fictif de candidature, non des capacités livrées."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "H1, onglet et canonical restent ceux du pilier ; la lecture transversale et les renvois vers prompt et grille logiciel n'en font pas un classement de produits."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Six copies locales de sources institutionnelles ont été rapprochées de leurs SHA déclarés et de chaque extrait de recette ; dates checkedAt 29/09/2026 ; la fenêtre TVA est bornée à la déclaration mensuelle de septembre 2026 et à la date de l'espace professionnel."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Portraits lus dans les captures haut/bas à 320, 375 et 1440 px : 12 pôles, 60 familles, audit légal listé mais non ouvert ; la relance de pièces est seulement candidate au cadrage, le test ne lance rien. Aucune performance mesurée."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Rendu local a4e597b : deux figures data-blog-proof, img portrait enfants directs, alt concordants, sans figcaption ni wrapper défilant ; style figure > img width/max-width 100 % et height auto. Robots index, follow dans le HTML local ; aucune vérification de production réseau."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Les définitions et le tableau des pôles restent extractibles ; la carte de candidature est explicitement fictive et ne démontre pas la maturité d'un cabinet donné."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "Le lien vers la méthode et le service conserve validation et recette par les équipes, sans promettre l'automatisation de l'audit légal."
+        ]
+      }
     }
   },
   "business": {
     "reviewerTaskId": "t_1a9ed93d",
     "claims": {
-      "claim-unit-1dc9c56e18bd-1": {"verdict": "soutient", "reasoning": "CNIL cnil-roles, copie vérifiée 29/09 : qualification des acteurs au cas par cas ; le corps ne fixe pas le rôle du cabinet à partir de l'origine du fichier."},
-      "claim-unit-279d5bd8bf20-1": {"verdict": "soutient", "reasoning": "Service-Public F10029, copie vérifiée 29/09 : conservation minimale des documents d'entreprise, durée selon la nature ; aucune durée universelle n'est attribuée."},
-      "claim-unit-e8439da9f147-1": {"verdict": "soutient", "reasoning": "Net-entreprises, copie vérifiée 29/09 : le CRM est un retour après déclaration en cas d'erreur ou suspicion ; la décision de correction reste au cabinet."},
-      "claim-unit-ceb5c8df6333-1": {"verdict": "soutient", "reasoning": "Calendrier DGFiP vérifié 29/09 : fenêtre 15–24 septembre 2026 pour dépôt/paiement de la déclaration mensuelle de TVA, date propre à l'espace professionnel ; le texte maintient cette restriction."},
-      "claim-unit-2614d7101a11-1": {"verdict": "soutient", "reasoning": "Article 5 RGPD reproduit par CNIL, copie vérifiée 29/09 : minimisation des données au regard de la finalité ; le corps ne présente pas ce principe comme seule obligation."},
-      "claim-unit-2614d7101a11-2": {"verdict": "soutient", "reasoning": "CNIL cnil-durees, copie vérifiée 29/09 : analyse de conformité par traitement et par responsable ; la purge évoquée est une méthode à cadrer, non une dispense de conservation documentaire."}
+      "claim-unit-1dc9c56e18bd-1": {
+        "verdict": "soutient",
+        "reasoning": "CNIL cnil-roles, copie vérifiée 29/09 : qualification des acteurs au cas par cas ; le corps ne fixe pas le rôle du cabinet à partir de l'origine du fichier."
+      },
+      "claim-unit-279d5bd8bf20-1": {
+        "verdict": "soutient",
+        "reasoning": "Service-Public F10029, copie vérifiée 29/09 : conservation minimale des documents d'entreprise, durée selon la nature ; aucune durée universelle n'est attribuée."
+      },
+      "claim-unit-e8439da9f147-1": {
+        "verdict": "soutient",
+        "reasoning": "Net-entreprises, copie vérifiée 29/09 : le CRM est un retour après déclaration en cas d'erreur ou suspicion ; la décision de correction reste au cabinet."
+      },
+      "claim-unit-ceb5c8df6333-1": {
+        "verdict": "soutient",
+        "reasoning": "Calendrier DGFiP vérifié 29/09 : fenêtre 15–24 septembre 2026 pour dépôt/paiement de la déclaration mensuelle de TVA, date propre à l'espace professionnel ; le texte maintient cette restriction."
+      },
+      "claim-unit-2614d7101a11-1": {
+        "verdict": "soutient",
+        "reasoning": "Article 5 RGPD reproduit par CNIL, copie vérifiée 29/09 : minimisation des données au regard de la finalité ; le corps ne présente pas ce principe comme seule obligation."
+      },
+      "claim-unit-2614d7101a11-2": {
+        "verdict": "soutient",
+        "reasoning": "CNIL cnil-durees, copie vérifiée 29/09 : analyse de conformité par traitement et par responsable ; la purge évoquée est une méthode à cadrer, non une dispense de conservation documentaire."
+      }
     }
   },
   "image": {
     "reviewer": "metier:t_303e7c6d",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["Périmètre ici limité aux deux preuves inline ; sources déclarées en recette, non des captures d'un logiciel client."]},
-      "generation-constraints": {"result": "PASS", "observations": ["Inspection des WebP : carte typologique et test fictif uniquement, aucun nom de dossier client."]},
-      "fictive-provenance": {"result": "PASS", "observations": ["carte-test-regle dit Jeu d'essai fictif et Candidate au cadrage, sans la présenter comme une mesure de performance."]},
-      "recognizable-subject": {"result": "PASS", "observations": ["Les chiffres et libellés visibles de carte-douze-poles correspondent au tableau du corps et au contrat interne ; audit légal non ouvert."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Deux portraits -mobile.webp utilisés y compris à 1440 px ; captures 320/375/1440 haut/bas relues : bas de la carte et décision humaine restent lisibles sans défilement dans la figure. Les anciennes empreintes de paysages restent historiques ; pas de nouveau renderer --check exécuté."]},
-      "alt-information": {"result": "PASS", "observations": ["Les deux alt du HTML et de la recette décrivent la carte et le test effectivement visibles ; sources taxonomie/test et capturedAt 20/09/2026 déclarés dans la recette, sans légende publique. Cette date historique ne date pas la fabrication des nouveaux portraits."]}
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Périmètre ici limité aux deux preuves inline ; sources déclarées en recette, non des captures d'un logiciel client."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Inspection des WebP : carte typologique et test fictif uniquement, aucun nom de dossier client."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "carte-test-regle dit Jeu d'essai fictif et Candidate au cadrage, sans la présenter comme une mesure de performance."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Les chiffres et libellés visibles de carte-douze-poles correspondent au tableau du corps et au contrat interne ; audit légal non ouvert."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Deux portraits -mobile.webp utilisés y compris à 1440 px ; captures 320/375/1440 haut/bas relues : bas de la carte et décision humaine restent lisibles sans défilement dans la figure. Les anciennes empreintes de paysages restent historiques ; pas de nouveau renderer --check exécuté."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Les deux alt du HTML et de la recette décrivent la carte et le test effectivement visibles ; sources taxonomie/test et capturedAt 20/09/2026 déclarés dans la recette, sans légende publique. Cette date historique ne date pas la fabrication des nouveaux portraits."
+        ]
+      }
     },
     "directionArt": 18,
     "semanticRelevance": 22
@@ -57,11 +140,56 @@
     "reviewer": "metier:t_303e7c6d",
     "score": 91,
     "p0": [],
-    "categories": {"contentQuality": {"score": 27, "max": 30}, "seoOptimization": {"score": 22, "max": 25}, "eeatSignals": {"score": 14, "max": 15}, "technicalElements": {"score": 14, "max": 15}, "aiCitationReadiness": {"score": 14, "max": 15}},
-    "evidence": ["27/30 : carte et test fictif lisibles, sans chiffre de gain ou promesse sur l'audit légal.", "22/25 : intention pilier et liens contextuels maintenus ; pas de résultat SERP mesuré.", "14/15 : six claims vérifiés sur copies datées du 29/09 dans la revue antérieure ; corps et recette inchangés.", "14/15 : portraits directs et sans légende ni scroll, effectivement lisibles dans les captures 320/375/1440 ; pas de Lighthouse ni de test de production.", "14/15 : définitions et tableau récupérables avec la restriction audit légal."],
-    "reservations": ["Revue IA sur rendu local et sources archivées contrôlées le 29/09 ; pas de nouvelle requête HTTP ni de garantie d'applicabilité à un cabinet précis.", "Le nouveau rendu n'est ni scellé ni validé par la QA/CI de livraison ; indexabilité en production non prouvée."],
-    "seo": ["Titre, H1 et canonical conservés dans l'HTML reconstruit ; robots index, follow pour le pilier existant."],
-    "geo": ["Carte illustrative ; aucune statistique de gains ni faculté d'audit légal induite."],
+    "categories": {
+      "contentQuality": {
+        "score": 27,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 22,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 14,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 14,
+        "max": 15
+      }
+    },
+    "evidence": [
+      "27/30 : carte et test fictif lisibles, sans chiffre de gain ou promesse sur l'audit légal.",
+      "22/25 : intention pilier et liens contextuels maintenus ; pas de résultat SERP mesuré.",
+      "14/15 : six claims vérifiés sur copies datées du 29/09 dans la revue antérieure ; corps et recette inchangés.",
+      "14/15 : portraits directs et sans légende ni scroll, effectivement lisibles dans les captures 320/375/1440 ; pas de Lighthouse ni de test de production.",
+      "14/15 : définitions et tableau récupérables avec la restriction audit légal."
+    ],
+    "reservations": [
+      "Revue IA sur rendu local et sources archivées contrôlées le 29/09 ; pas de nouvelle requête HTTP ni de garantie d'applicabilité à un cabinet précis.",
+      "Le nouveau rendu n'est ni scellé ni validé par la QA/CI de livraison ; indexabilité en production non prouvée."
+    ],
+    "seo": [
+      "Titre, H1 et canonical conservés dans l'HTML reconstruit ; robots index, follow pour le pilier existant."
+    ],
+    "geo": [
+      "Carte illustrative ; aucune statistique de gains ni faculté d'audit légal induite."
+    ],
     "verdict": "AI_REVIEW_PASS sur les preuves inline et le rendu local a4e597b ; ni scellement, ni livraison."
+  },
+  "technicalBindingMaintenance": {
+    "maintainedBy": "dev:t_30243835",
+    "maintainedAt": "2026-10-03",
+    "reason": "updatedAt de republication uniquement ; avis métier du 03/10 maintenu sur corps, sources, figures et règles inchangés. Ni nouvelle revue ni contrôle public.",
+    "previousSubject": {
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "bodySha256": "bd49741fe651f83304118b07268f93430ec3cf7e3c9dfd0a42cb38369e49bc71",
+      "recipeSha256": "e74a3b06cebd86a0c68e8ca806fec4bd6dde53b261b1725c637687dde68a3573",
+      "renderedSha256": "997069bac6660fe1f00287100933648f3795bff8f2550e00fa04455bd20d2652"
+    }
   }
 }

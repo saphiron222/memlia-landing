@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "reviewedAt": "2026-09-30",
-  "reviewer": "metier:t_66b48f1f",
+  "reviewedAt": "2026-10-03",
+  "reviewer": "metier:t_30243835",
   "rubric": "blog-analyze-100",
   "status": "PASS",
   "score": 92,
@@ -30,20 +30,20 @@
     }
   },
   "evidence": [
-    "Corps fiscal corrigé et A18906 officielle du 26/06/2026 ; tests du seuil dans texte et HTML neuf.",
-    "Deux preuves fictives non exécutées inchangées et HTML Astro candidat construit depuis le SHA 6c401898.",
-    "Score éditorial recalculé comme 27+23+14+14+14=92, ni mesure SEO ni résultat Lighthouse."
+    "Notes heuristiques du dossier antérieur maintenues : aucune nouvelle performance SEO ni mesure Lighthouse.",
+    "Réserve métier sur la période levée par tableaux/FAQ/cas fictifs/portrait ; sources officielles relues, HTML preview reconstruit et cohérence exécutée.",
+    "525testsNodePASS sans FAIL/SKIP ;5testsSaisiePASS ; ceci ne remplace pas le build de publication."
   ],
   "reservations": [
-    "Le dist ancien du checkout conserve la phrase erronée de six ans : ne jamais le pousser ; seul le rendu preview recalculé est signé ici.",
-    "Le rendu local ne démontre ni publication ni indexation ; rematérialisation, scellement, QA et CI exact-head restent à dev.",
-    "Autres documents et régimes spéciaux L.102 B, données personnelles et durée de chaque pièce : qualification par dossier, aucune purge automatique.",
-    "Quatre autres articles et leurs revues restent liés à leur triplet existant ; aucun nouveau tampon transférable."
+    "npm run build reproduit un échec de rubrique : Saisie est encore brouillon. Dev doit installer cet avis, rematérialiser et finaliser la livraison coordonnée.",
+    "Ni QA finale, ni CI du candidat local, ni publication publique vérifiées dans cette passe ; publication_completed=false.",
+    "Les deux cas Saisie décrivent des attentes fictives, pas un moteur de saisie exécuté.",
+    "Quatre autres corps/recettes inchangés : validation de fond antérieure maintenue, sans nouvelle revue pour une date, un lien ou une empreinte seule."
   ],
-  "verdict": "AI_REVIEW_PASS sur le triplet exact du rendu Astro preview isolé au commit 6c401898 ; ni scellement, ni QA/CI, ni publication.",
+  "verdict": "PASS métier sur la correction de période ; réserve de fond levée. Avis pour rematérialisation du candidat, non clôture de republication.",
   "subject": {
     "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "articleSha256": "7e346752da23df49e2c0a5613bb57915dc6f5908a871c5169e06c59b4a4cbd37",
-    "manifestSha256": "e487ce23f421d3452734ec5a76f6e3367aad444c0d3ec8889f218a1135a1947d"
+    "articleSha256": "49f7120165a90a904be38db9229922d26e230b551de4dce06c2ae1832cbd266a",
+    "manifestSha256": "67a9558ce0aa1d51a8fac8956eb1faa49e952b8330eeaf147c032621cc6582cc"
   }
 }

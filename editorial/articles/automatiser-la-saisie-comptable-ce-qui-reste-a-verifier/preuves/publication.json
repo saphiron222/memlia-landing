@@ -2,10 +2,10 @@
   "version": 1,
   "kind": "publication-scellee",
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "articleSha256": "8fc13d910e492c68d25a21ffaf6bc5b35fd4803cd9e435def0ab2fd6480d6259",
-  "manifestSha256": "e487ce23f421d3452734ec5a76f6e3367aad444c0d3ec8889f218a1135a1947d",
-  "publishedAt": "2026-09-30",
-  "sealedAt": "2026-09-30T04:52:34.645Z",
+  "articleSha256": "e6388fc3deb15871acca5f596ea0c4fc02338d558718627bf7819bfb12fed3f0",
+  "manifestSha256": "67a9558ce0aa1d51a8fac8956eb1faa49e952b8330eeaf147c032621cc6582cc",
+  "publishedAt": "2026-10-03",
+  "sealedAt": "2026-10-03T10:26:39.401Z",
   "files": [
     {
       "path": "brief.md",
@@ -14,23 +14,23 @@
     },
     {
       "path": "claims.json",
-      "bytes": 43540,
-      "sha256": "f9c3ae8619668e74a474ef112158700ce90e1087a51d8e6cad16979621e00c51"
+      "bytes": 50488,
+      "sha256": "a4f95adad51301c52db2054ef79b3f9a59bbf58810005ee2d43a488dcdda6a16"
     },
     {
       "path": "image.json",
       "bytes": 1463,
-      "sha256": "070797b6377be695d50be31d1b0f40904bbf7db7e9719bfe76b8d61fd571f728"
+      "sha256": "b4f1dddb6abe68197fdae966c2ac4502c08699b1d83a4f605a28975acf6c5346"
     },
     {
       "path": "manifest.json",
-      "bytes": 9222,
-      "sha256": "e487ce23f421d3452734ec5a76f6e3367aad444c0d3ec8889f218a1135a1947d"
+      "bytes": 10103,
+      "sha256": "67a9558ce0aa1d51a8fac8956eb1faa49e952b8330eeaf147c032621cc6582cc"
     },
     {
       "path": "preuves/business-review.json",
-      "bytes": 6780,
-      "sha256": "b097af06a13e483be277b69e724d922840d9c99f2b1e0c309c3f4844faf6aa45"
+      "bytes": 7909,
+      "sha256": "abd836b0ecb1a07bdb331dbc264b12bdf76b5eb056e862ee9257456200d4a37f"
     },
     {
       "path": "preuves/image/cadre.sha256",
@@ -40,7 +40,7 @@
     {
       "path": "preuves/image/generation.json",
       "bytes": 892,
-      "sha256": "e35c3b918a7f5cf67d72a68ca67e19b9d45f294b38f9cb39f9d208b31d2612bb"
+      "sha256": "38dabca438270f302a42ee73b66e19b32ae78052bb378e9a522fef96329d338b"
     },
     {
       "path": "preuves/image/hero-768.avif",
@@ -65,137 +65,152 @@
     {
       "path": "preuves/image/prompt.json",
       "bytes": 3723,
-      "sha256": "f9c7104ab05e35a928f42457c3be2d688825a9e98a5fcf3b50818e15503b5417"
+      "sha256": "ea64696e701f54d688286dcbe9b31607aa21afd86ed9cacd5c6aa4839ce95be4"
     },
     {
       "path": "preuves/image/visual-review.json",
-      "bytes": 2595,
-      "sha256": "9e20b8eb7a41917340c37bc13f0b6c400469e7a036d361f737745b7a0af7e423"
+      "bytes": 2681,
+      "sha256": "fa32caae17bdc0d7c5e904fb96bcb8c29b65d32d8489d26c6aaa46e159157f60"
     },
     {
       "path": "preuves/research-gsc.json",
       "bytes": 1127,
-      "sha256": "6ff941422577ed80ce943b02f2bb8669279659e35a80066a62e1b6724853ad26"
+      "sha256": "e2424336d59c4eff5ec525b8f1e79fca8336f63c016d2d26be5a498ac1f522d9"
     },
     {
       "path": "preuves/research-serp.json",
       "bytes": 1289,
-      "sha256": "08e23db81f8b73eaed0dda93874a07fb8b95d0ea7a7722d4802635f09cf598ef"
+      "sha256": "36ae49e5a983e9498e436445fe9f9e4943a6c55b4eb4133f372f2bb3604d87f0"
     },
     {
       "path": "preuves/review.json",
-      "bytes": 2753,
-      "sha256": "813c9ec5bf8cb11758b1e7a21a440d802b0c03702166c18a1faf227dc41c4428"
+      "bytes": 2843,
+      "sha256": "e9bd4285f300c48da0d344dfc9d9deb76842459ad41c6d342bef94a770eec203"
     },
     {
       "path": "preuves/role.json",
       "bytes": 625,
-      "sha256": "0f54490b98055453101f0613c4a1931b18103fb09b3582824920fc725e57980d"
+      "sha256": "7fdc00a9516150bd3c9811894c9aa340d9f121a18f0e79d4ce3b9ece3d325ebf"
     },
     {
       "path": "preuves/skills/blog-analyze.json",
       "bytes": 584,
-      "sha256": "9e83c4c1489db452ab6104c0e8451dd6a9ab682d455f8e6f1a701a727cbf9c6e"
+      "sha256": "ed30edbcd2b03d336b37961ffea4f798ee6dfd51bcb7b9fcd4fb96d72b73d836"
     },
     {
       "path": "preuves/skills/blog-audit.json",
       "bytes": 513,
-      "sha256": "d9ef131679f4575a403dff6af512eda8f85c1a3aae18b8cf7bef62d00b0095e9"
+      "sha256": "b4e15cbf3d61af0890d6bc12ed2e2243cf5f89a7b61cbda10665e3b5e3fe976d"
     },
     {
       "path": "preuves/skills/blog-brief.json",
       "bytes": 740,
-      "sha256": "b4f767ae9dc10d2f7eb050bf45337bcd4427c8619c6d6e87600b97a86dfc3e2d"
+      "sha256": "d0567ec1434819b3d4d049ae27f13eb9c45811832c19e982369fd17631bbcad8"
     },
     {
       "path": "preuves/skills/blog-cannibalization.json",
       "bytes": 529,
-      "sha256": "c27f9b5f3a182917f67266f15e1e66a421184efac2e038decf38c41f4f396802"
+      "sha256": "89a785f6da375ae7181d78780b41baaebe677e5b95074b86c24032f111146f68"
     },
     {
       "path": "preuves/skills/blog-factcheck.json",
       "bytes": 537,
-      "sha256": "af8249b6a26b5b4975fdc5165d4e9d42d40062923bb2b25cf94c87c4c6221589"
+      "sha256": "f6f4ecf3b38501c89d15c3c97345d9fb50c626301225e06c8cbee9a090d884f0"
     },
     {
       "path": "preuves/skills/blog-geo.json",
-      "bytes": 600,
-      "sha256": "b6dc9f8c1f967ec9bbb600d7c0455c1bfc7f629acd32317bb72b70cf9bd1d12a"
+      "bytes": 588,
+      "sha256": "3a9fac234f327aa64f5005328007673eec53431edd892e28f3eb28472a053168"
     },
     {
       "path": "preuves/skills/blog-image.json",
       "bytes": 649,
-      "sha256": "57e8c7fa3e52c59549fb277fbf0590287dac92b52c206b2251dea6aec3ec24b7"
+      "sha256": "ba3c534bfa89811e9047b0f9ac490a8f7c014680ba23c324dcae76480ab91dc2"
     },
     {
       "path": "preuves/skills/blog-outline.json",
       "bytes": 708,
-      "sha256": "f3c8a3b8bf63853e586c4d2e28fd754da967faa7dc1eb15cfc4f085e14720d6f"
+      "sha256": "bb06beeba9ebb2c3f1d5ddd40fbcef06099f36d8a64d1c5612b21956460816f2"
     },
     {
       "path": "preuves/skills/blog-rewrite.json",
       "bytes": 849,
-      "sha256": "23b6ba7685ab0e27c40d2d26ececde6700f720fa152e0ee6288c5b3ce838f9c0"
+      "sha256": "1410015bfa1618170ab2a15a4a407cae58b4a3e2214ddf0c8498f775a91da795"
     },
     {
       "path": "preuves/skills/blog-schema.json",
       "bytes": 579,
-      "sha256": "1a1c97762020f68ba676ac778cab477a7b598f948bace9d884b670de4541e2fa"
+      "sha256": "77d32e6000bd2612eff9f43543cbb1674212ec5d86cec68ae2a09f34a8d13468"
     },
     {
       "path": "preuves/skills/blog-seo-check.json",
-      "bytes": 879,
-      "sha256": "4b1529a28903da9307338380ea5969cf245358ff19427898098290e42dac4b69"
+      "bytes": 884,
+      "sha256": "eb43618aa245b18218dab450a30fe181379d4f4a61d894ff801fe2e810fdb9c0"
     },
     {
       "path": "preuves/skills/blog-style.json",
       "bytes": 579,
-      "sha256": "255bf9c70b37330065b7d4a3328b44dc6cdb7b518168374297c3ba0cce7b7043"
+      "sha256": "92d86e275cbd9134b0d7e6a18d8909a500bd87b5eac426451041ade5e73142ad"
     },
     {
       "path": "preuves/skills/blog-write.json",
       "bytes": 461,
-      "sha256": "fc15a36c75f6e81a72eef59b1bfec13a4ce79ee79302b521f31aa07d6b45a572"
+      "sha256": "bbe44b24713a3e4008f6c488aaf8f9c6256153566edd2edef1c128a813c6bfef"
     },
     {
       "path": "preuves/skills/seo-audit.json",
       "bytes": 485,
-      "sha256": "0e1c5421b8274ca6863d03e4df77e0113111b45d87bb7f69f9234d0f017f7c9a"
+      "sha256": "97128abdc305803ab2e00f9fe4c5b0c4f06c312c7edecfe8f659d77a965cadd7"
     },
     {
       "path": "preuves/skills/seo-content-brief.json",
       "bytes": 603,
-      "sha256": "5701e348bb3236d7d3e20c796a13c4d165bc67fd636cb7ae341de2304e3b915e"
+      "sha256": "d32393956b9110179a2f2c6cdfd172a61f4cc30bd371b5a5fcfc38a3116d293f"
     },
     {
       "path": "preuves/skills/seo-content.json",
       "bytes": 511,
-      "sha256": "4905c0216a695532d8583cb81e19d83e33ccc2a79f77548e0ed2cdf1c061b91d"
+      "sha256": "676282a2ddbb7b27eb376138fd15579c3b6a4c6679affbf4f6ed5c0b3df90ea7"
     },
     {
       "path": "preuves/skills/seo-images.json",
       "bytes": 537,
-      "sha256": "d1f928987646b2c1d0c193d4c0ada5323359d1cd6764fd7a2c00695a71b75cd4"
+      "sha256": "2f968b236ae5d118e2f2f6c553d042d85c96e0434fffdf7cd5dced0e42492ac8"
     },
     {
       "path": "preuves/skills/seo-page.json",
       "bytes": 568,
-      "sha256": "92cf89c3dd6823f332f0cd5358db014b1b185c62d1fe6758e9f4fd87551050d1"
+      "sha256": "d6ccab138582abbe73cab84dcb79c60ea415ddb6140d6bdf252a3c84445bf149"
     },
     {
       "path": "preuves/skills/seo-schema.json",
       "bytes": 504,
-      "sha256": "c0e80c27e62a13d11ba0605439ed6162c968463f8e11426d6cd271c7d7291c8a"
+      "sha256": "d15b190f727d3a81bfcc9ae5999a035faf525b797b701ac20dfebd0845dcd7b2"
     },
     {
       "path": "preuves/skills/seo-technical.json",
       "bytes": 572,
-      "sha256": "82609a441d74194bd1a61c857e1c3fb9ef40ce0d56892a69f6f8545cec6e6a98"
+      "sha256": "eb3158bcfacd294b02ca72944703cb345e922265c130695bca75e5a5b5fa8bff"
+    },
+    {
+      "path": "preuves/sources/bofip-periode-deduction.classification.json",
+      "bytes": 1356,
+      "sha256": "6465e521dd89f4a99e71539ef2fd19bc96cf1dddaf7c2d7593a14bc2f0bc1ee8"
+    },
+    {
+      "path": "preuves/sources/bofip-periode-deduction.json",
+      "bytes": 1549,
+      "sha256": "50c266e6063d55f8af35604f8bdad79f2b3111312c12514d368158f96831c040"
+    },
+    {
+      "path": "preuves/sources/bofip-periode-deduction.source.txt",
+      "bytes": 61997,
+      "sha256": "933ff8d3a1a290be207a5b19b8e6343d16ea4d4867cfac8c1b01d9e2dd7c913b"
     },
     {
       "path": "preuves/sources/cnil-donnee-personnelle.classification.json",
-      "bytes": 968,
-      "sha256": "4c7121dcdddcab10f4ba948f4c3b31d3ae233ed44223fb5329b4f14a1752403e"
+      "bytes": 972,
+      "sha256": "64f7f333bd7b4b3162bd986831512f088d3efd449b0064837308d8ca6f828d50"
     },
     {
       "path": "preuves/sources/cnil-donnee-personnelle.json",
@@ -209,8 +224,8 @@
     },
     {
       "path": "preuves/sources/sp-conservation-pieces.classification.json",
-      "bytes": 1118,
-      "sha256": "d14d92a33e39a822a38f7ae3b6ae99ad8523e3207ec6ad00cd9d6da3ac10e3e5"
+      "bytes": 1036,
+      "sha256": "7f7c60da19c551535c1fc834f69304a8a3c5f1d44ded94b8b559172d63cfb350"
     },
     {
       "path": "preuves/sources/sp-conservation-pieces.json",
@@ -224,8 +239,8 @@
     },
     {
       "path": "preuves/sources/sp-facture-electronique.classification.json",
-      "bytes": 999,
-      "sha256": "c299aae1f01bf65f95891b9e2a24ff82b76ada7f0b31e82a2f10e575a7857b2c"
+      "bytes": 1031,
+      "sha256": "8b77ca4e03d15949b89e59e50f8dfa534a576566264c9bce939a7cf745a2308a"
     },
     {
       "path": "preuves/sources/sp-facture-electronique.json",
@@ -239,8 +254,8 @@
     },
     {
       "path": "preuves/sources/sp-mentions-facture.classification.json",
-      "bytes": 1033,
-      "sha256": "5d41dacf9ef94405ed08f8bdd801a57c5a72aec80afefc37879f7ea91844e93c"
+      "bytes": 1005,
+      "sha256": "43ea678aa5e7414b8ccc74460a971b3a9c3971dd9616f86be00df45a3fcc481a"
     },
     {
       "path": "preuves/sources/sp-mentions-facture.json",
@@ -254,8 +269,8 @@
     },
     {
       "path": "preuves/sources/sp-reforme-conservation.classification.json",
-      "bytes": 1149,
-      "sha256": "4572be12c73e9781c0eef5e6af90fd4d981a554f865421085cf13e9aa52980b0"
+      "bytes": 1044,
+      "sha256": "1eb28aec97e529343129a69acc450dc9b57d43921e8f685c1ea43ee4dd5722b4"
     },
     {
       "path": "preuves/sources/sp-reforme-conservation.json",
@@ -269,23 +284,23 @@
     },
     {
       "path": "quality-review.json",
-      "bytes": 1937,
-      "sha256": "bec0e46945eb4dccfd1cbd32f0910779cdbda947022df0a456ec9ac811301d36"
+      "bytes": 2008,
+      "sha256": "0551837c5fb887792262b3f1244b47a59db8c21ceceb1c595148fd8bb9e79d12"
     },
     {
       "path": "review.json",
       "bytes": 458,
-      "sha256": "148bb342dcc09fe5b580bbd55b4d5f4d64f8c6da9b2e02a37cb8b3b50240b764"
+      "sha256": "8994565920ef945fab5df9048f006a6aa3996ef7562ea95ceeb302aea876ec3a"
     },
     {
       "path": "seo-geo-review.md",
-      "bytes": 1268,
-      "sha256": "4da1e9c68211dcf3c375262197254e899c07643ba5410a2f68007585b6a1931e"
+      "bytes": 1250,
+      "sha256": "70e5823b5bbe42a49d81c0896a9302a5ef9ab35092d3db7eca5d6dcc957ffff7"
     },
     {
       "path": "skills.json",
       "bytes": 15911,
-      "sha256": "93df5adcd635b4bcedf8ffa6f5eb8bdee5c560c9b121d0ccf9e850c10fa90372"
+      "sha256": "d6549cf05910588ada2844d60a39848e0336716f40f9815e99f25d01cffa0185"
     }
   ]
 }
