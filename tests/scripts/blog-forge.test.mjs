@@ -599,6 +599,26 @@ test('le gate compare le corps signé après retrait du seul H1 identique au tit
 test('la forge produit un dossier que le gate accepte, puis un dossier publié scellé sur ses octets', async () => {
   const root = racineDeTest();
   try {
+    const git = (...args) => {
+      const result = spawnSync('git', ['-C', root, ...args], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+      return result.stdout.trim();
+    };
+    git('init', '--initial-branch=main');
+    git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '--allow-empty', '-m', 'Base sans candidat');
+    git('update-ref', 'refs/remotes/origin/main', git('rev-parse', 'HEAD'));
+    const publicationsIntegrees = () => {
+      const result = spawnSync('python3', ['-B', '-c', `
+import importlib.util, json, sys
+from pathlib import Path
+spec = importlib.util.spec_from_file_location('planner', sys.argv[1])
+p = importlib.util.module_from_spec(spec); spec.loader.exec_module(p)
+p.RACINE = Path(sys.argv[2]); p.BLOG = p.RACINE/'src/content/blog'
+print(json.dumps(p.etat_publie()))
+`, join(RACINE, 'docs/strategy/site-v3/build-cluster-plan.py'), root], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+      return JSON.parse(result.stdout);
+    };
     // 1. Préparation sans revues : le dossier existe, le gate le refuse pour la seule raison des revues.
     const preparation = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
     assert.deepEqual(preparation.erreurs, []);
@@ -679,10 +699,12 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     // 3. Production puis publication scellée : l'audit en mode publication-scellee passe.
     const production = await materialiser({ root, slug: SLUG, statut: 'go-production', fetcher, rendreImage });
     assert.deepEqual(production.erreurs, []);
+    assert.equal(publicationsIntegrees()[SLUG], undefined, 'go-production ne ferme pas le créneau de première publication');
     const prod = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'production' });
     assert.deepEqual(prod.errors, []);
     assert.match(readFileSync(join(root, 'src/content/blog', `${SLUG}.md`), 'utf8'), /^brouillon: false$/m);
     await materialiser({ root, slug: SLUG, statut: 'publie', fetcher, rendreImage });
+    assert.equal(publicationsIntegrees()[SLUG], undefined, 'publie local attend encore son intégration');
     ecrireSceau(root, SLUG);
     const scelle = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
     assert.deepEqual(scelle.errors, []);

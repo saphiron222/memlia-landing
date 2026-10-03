@@ -109,9 +109,9 @@ def git_publication(*arguments):
 def etat_publie():
     """Calendar state, not a production receipt or approval of draft bytes.
 
-    Preparing an already integrated article makes its candidate a draft. Read
-    the previous publication from one pinned origin/main commit, not from that
-    draft or a feature commit. The final public build still excludes the draft.
+    A local go-production candidate is renderable, not integrated. Read the
+    publication from one pinned origin/main commit, never from candidate bytes
+    or a feature commit. Non-Git fixtures retain their source-only behaviour.
     """
     base = None
     fichiers_base = set()
@@ -142,10 +142,10 @@ def etat_publie():
                 if ancien['date'] != courant['date']:
                     raise SystemExit(f'date de publication historique modifiée : {fichier.stem}')
                 integre = ancien
-        if brouillon == 'false':
-            publies[fichier.stem] = courant
-        elif brouillon == 'true' and integre is not None:
+        if base is not None and integre is not None:
             publies[fichier.stem] = integre
+        elif base is None and brouillon == 'false':
+            publies[fichier.stem] = courant
     if base and git_publication('rev-parse', '--verify', 'refs/remotes/origin/main^{commit}').strip() != base:
         raise SystemExit('base de publication origin/main a changé pendant la lecture')
     return publies

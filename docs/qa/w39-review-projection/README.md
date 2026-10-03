@@ -18,8 +18,16 @@ La projection compare les empreintes canoniques de la recette, du corps et de `.
 
 Après QA technique et CI, intégrer cette correction puis reprendre t_73628f94 dans un checkout isolé. Le candidat source n'a pas été modifié. Adopter la projection Cicatrice, sceller et matérialiser le lot, puis vérifier le build public, la PR et la production. Le pilier doit conserver ses avis historiques sur les claims inchangés : le PASS métier Cicatrice n'approuve pas ces six claims. Le seul nouveau lien bénéficie de la revue existante C12. Ne pas adopter les modifications de calendrier qui déplacent les créneaux futurs ; régénérer uniquement les dérivés nécessaires au lot avec les commandes du dépôt. Cette PR technique ne publie aucun article.
 
+## Candidat local et publication intégrée
+
+Dans un checkout Git, le calendrier prend son état publié dans `origin/main` intégré au candidat. `brouillon: false` rend le candidat `go-production` contrôlable par le build, mais ne prouve pas sa livraison : la séquence sceller → go-production → publier garde donc le créneau de première publication ouvert jusqu'à l'intégration. Un commit de branche ou le statut local `publie` ne remplace pas cette base. Le doublon W39 déjà intégré reste refusé ; RAW signé, identité, date future, quota, file et calendrier frais restent contrôlés sans changement des avis.
+
+Une copie sans Git garde le comportement fondé sur ses fichiers pour les fixtures. Un vrai checkout dont la base Git manque ou diverge s'arrête, sans repli sur le candidat. Le registre SEO, les ancres llms et lastmod restent des préconditions distinctes à réconcilier sur le checkout de livraison, pas des raisons de retoucher la date ou les revues.
+
 ## Vérification
 
     node --test tests/scripts/blog-w39-framing.test.mjs tests/scripts/blog-forge.test.mjs tests/scripts/blog-review-projection.test.mjs
+
+    node --test tests/scripts/blog-published-baseline.test.mjs tests/scripts/blog-w39-slot.test.mjs
 
 Les témoins reproduisent le refus d'une date de recette de la veille et celui des notes visuelles absentes avant correction. La suite exerce aussi l'identité métier dans le manifeste et chaque claimReview, les mutations du RAW/file, le doublon et la date future. Les tests de projection utilisent les matrices réelles ci-jointes, pas des avis générés.
