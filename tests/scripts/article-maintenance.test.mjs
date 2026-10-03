@@ -26,3 +26,13 @@ test('la règle de conservation distingue la transition fiscale des pièces comp
   assert.ok(recette.sources.some(source => source.url === 'https://entreprendre.service-public.gouv.fr/actualites/A18906'));
   assert.ok(recette.claims.some(claim => claim.sourceId === 'sp-reforme-conservation' && corps.includes(claim.unite)));
 });
+
+test('la note de suspension décrit le candidat fiscal corrigé sans déclarer sa publication', () => {
+  const incident = readFileSync(resolve('docs/strategy/site-v3/INCIDENT-FE-2026-09-27.md'), 'utf8');
+  assert.match(incident, /loi n° 2026-534/);
+  assert.match(incident, /A18906/);
+  assert.match(incident, /strictement après le 1er janvier 2027/);
+  assert.match(incident, /livraison coordonnée/);
+  assert.match(incident, /publication_completed=false/);
+  assert.doesNotMatch(incident, /Le candidat retire donc/);
+});

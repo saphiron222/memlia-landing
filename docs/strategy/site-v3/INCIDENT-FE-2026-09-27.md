@@ -6,15 +6,34 @@ Mesure provisoire prévue par le code : une fonction Cloudflare Pages est conçu
 
 Avant levée : revalider la source primaire et les assertions, obtenir la revue indépendante et le nouveau sceau, retirer conjointement fonction, exclusion du sitemap et `noindex` HTML après décision de réouverture, puis vérifier le déploiement sur l'URL publique (GET et HEAD de la route ; robots HTML ; sitemap ; pages voisines). Ne pas fusionner ni déployer en production sans l'autorisation applicable de Kevin. Un retour local vert n'établit pas l'état servi par Cloudflare.
 
-## Levée préparée le 29/09/2026
+## Candidat corrigé, réouverture non livrée — point du 03/10/2026
 
-La forge a rouvert les quatre sources officielles le 29/09/2026. La fiche primaire F39785 répond 200,
-est toujours marquée « Vérifié le 07 août 2026 » et soutient encore les deux assertions de l'article :
-suivi des factures reçues pendant leur cycle de vie et signalement d'une anomalie sur la plateforme.
-Les copies locales, empreintes et dates de consultation ont été renouvelées ; le corps éditorial n'a
-pas été réécrit pour changer la portée de ces affirmations.
+La préparation du 29/09 ne suffisait pas : la fiche F39785 sur les flux de facturation
+électronique ne qualifie pas la durée de conservation fiscale. Le nouveau corps distingue
+la conservation comptable de dix ans et la transition fiscale de L. 102 B. L'article 36
+de la loi n° 2026-534 et l'actualité DILA A18906 du 26/06/2026, examinés par la revue métier
+du 30/09, portent la condition : l'ancien délai doit expirer strictement après le 1er janvier 2027.
+Les témoins du 1er janvier (exclu) et du 2 janvier (inclus) illustrent seulement ce seuil,
+jamais une autorisation de purge. Les régimes spéciaux et la durée de chaque pièce restent
+à qualifier par dossier ; F10029, vérifiée en 2024, ne soutient pas seule cette réforme.
 
-Le candidat retire donc la fonction 503 et l'entrée `PAGES_NOINDEX`. Cette préparation ne vaut pas
-preuve de remise en ligne : la levée ne devient effective qu'après revue indépendante des nouveaux
-octets et sources, scellement, CI au SHA exact, fusion, puis constat en production de GET/HEAD 200,
-présence dans le sitemap et absence d'en-tête `noindex`.
+La PR29 prépare une livraison coordonnée unique : corps fiscal corrigé, sources, recettes,
+revues et sceaux finaux avec retrait de la fonction 503 et de l'exclusion `PAGES_NOINDEX`.
+Ces retraits ne doivent jamais être intégrés seuls en amont. Les trois chemins préparatoires
+de PR42 ne lèvent aucune protection ; les quatre autres articles restent dans le lot existant.
+Le nettoyage CSS historique d'`Article.astro`, sans nécessité pour ces cinq articles, est différé.
+
+La revue du 30/09 reste liée à son triplet isolé, pas une QA finale du nouveau HEAD. Avant
+fusion : revue métier et QA indépendantes des octets finaux, scellement, build, CI exact-head,
+captures des cinq articles à 320/375/1440 et qualification du circuit technique applicable
+au diff global exact par le propriétaire de livraison existant. Ne pas élargir la garde blog-only
+ni substituer une commande manuelle à son refus. L'autonomie déjà autorisée ne dispense
+d'aucune de ces portes et ne demande pas un nouveau go routinier de Kevin.
+
+Le parent t_01260281 a constaté la suspension GET/HEAD 503 sur le déploiement PR39 ; son
+handoff du 03/10 rapporte aussi des builds Cloudflare en échec pour les main suivants.
+Ce constat historique ne prouve donc ni la livraison du main courant ni une réouverture.
+Après fusion autorisée : vérifier source SHA complet, build et déploiement Cloudflare exacts,
+GET/HEAD 200, canonical, robots HTML et en-têtes sans noindex, sitemap, corps fiscal corrigé
+et empreintes des images servies. Ne jamais rejouer un HTTP effectivement refusé.
+Tant que ces preuves manquent : `publication_completed=false` ; aucune remise en ligne déclarée.
