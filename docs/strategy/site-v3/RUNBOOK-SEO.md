@@ -120,23 +120,48 @@ depuis ces crons. Partir d'un `origin/main` propre sur une branche dédiée
 propositions de maintenance. Conserver le SHA du commit candidat et celui de
 `origin/main` dans la carte de release. Une tâche QA indépendante doit rendre
 `PASS` sans réserve sur le SHA exact de la PR et ses checks `Repository gates`.
-Une autre carte, distincte de QA, doit enregistrer la décision humaine autorisant explicitement cette release
-(`scope=seo-measures`, `decision=AUTHORIZE`, `pr`, `pr_head`, `main_sha`,
-`qa_task` dans les métadonnées du dernier run terminé). Sans ces preuves,
-ne pas fusionner ni activer les crons. La garde en lecture seule est :
+Une autre carte, distincte de QA, doit recevoir la décision de Kevin via le
+bouton du circuit Telegram authentifié. Son événement `blocked` en `needs_input`
+porte `DECISION_JSON:` (question, contexte, preuve, justification, recommandation
+et deux options avec impacts, selon `HERMES-BLOCKAGES-TELEGRAM.md`) et le champ
+supplémentaire exact `seo_release` :
 
-**Identité de l'autorisation.** Les métadonnées de la carte ne prouvent pas qui
-les a écrites : un profil `dev` peut y inscrire `AUTHORIZE`. La garde exige en
-plus `signed_decision` contenant exactement ces six champs et `signature` (base64
-d'une signature Ed25519 sur les octets UTF-8 de `JSON.stringify(signed_decision)`).
-La clé publique de vérification `config/seo-release-authority.pem` est lue dans
-le commit de `main` attendu, jamais dans la PR candidate. Kevin doit générer et
-conserver sa clé privée hors du poste accessible aux agents, vérifier l'empreinte
-de la clé publique avant son ajout sur `main`, puis signer lui-même la décision
-exacte. Ne jamais déposer la clé privée ni une signature fabriquée par un agent.
-Sans clé publique approuvée sur `main` ou sans signature humaine valide, la garde
-refuse la release ; une carte remplie par `dev` ne suffit pas. L'ajout de la clé
-sur `main` déplace la base : refaire QA et décision sur les SHA exacts.
+```json
+{"repo":"saphiron222/memlia-landing","pr":12,"pr_head":"<SHA_PR_40_HEX>","main_sha":"<SHA_MAIN_40_HEX>","scope":"seo-measures","qa_task":"t_<ID_QA>"}
+```
+
+Les deux labels sont exactement `Autoriser cette release SEO` et
+`Refuser cette release SEO`, dans cet ordre. Le résolveur livre le bouton ; le
+plugin Telegram doit appeler `ingest_telegram_choice` de
+`scripts/lib/seo-release-receipt.py` **après** validation de l'auteur et de la
+carte courante (`_callback_authorized` puis `_current_decision`), **avant** le
+commentaire et `unblock` dans `_accept`, avec `query.id` et
+`query.message.message_id` reçus par le callback. Cette intégration du plugin
+hors dépôt fait partie de la qualification `t_a67dba57` ; ne pas présenter le
+lecteur seul comme un circuit actif. Si l'ingestion échoue, le callback arrête
+sans débloquer. Son retour doit être exactement `True` avant toute provenance,
+commentaire ou déblocage ; `False` n'est pas un reçu SEO. En cas de demande
+invalide, le refus lit l'événement bloquant exact du callback, jamais le dernier
+événement d'audit : un commentaire ultérieur ne peut neutraliser le refus.
+L'ingestion revalide l'événement, l'abonnement et la livraison
+depuis `~/.hermes/kanban.db` et `~/.hermes/state/block-resolver.json`. La lecture
+ultérieure vérifie le reçu persistant et l'abonnement ; elle ne requiert plus
+`waiting_decision`, qui disparaît normalement après le déblocage. L'option
+de refus ne donne jamais un reçu autorisant. Le lecteur CLI n'accepte aucun
+chemin de reçu ni indicateur d'autorisation injecté par argument ou environnement.
+Le plugin charge le code d'ingestion installé à côté de lui, pas un chemin vers
+un worktree de livraison éphémère. Si le JSON de décision SEO de l'événement
+`blocked` est incomplet, le callback expire : aucun commentaire de secours ne
+peut réordonner les boutons de cet événement pour produire un reçu autorisant.
+**Tant que le plugin en production n'est pas intégré et vérifié sur ce chemin,
+aucune release ni activation SEO : la garde refuse en l'absence de reçu.**
+
+L'authenticité est procédurale : le gateway Telegram vérifie Kevin, pas une
+signature personnelle. Toute personne ou tout processus ayant l'écriture sur
+le gateway et la base locale pourrait falsifier un reçu ; un commentaire `Kevin`
+ou une métadonnée de worker ne l'est pas. Pas de PEM, mot de passe ou signature
+à créer par Kevin. Le dépôt reste privé ; la garde recontrôle cet état via GitHub.
+Les dépenses et les permissions hors `seo-measures` ne changent pas.
 
 ```bash
 node scripts/seo-release-gate.mjs --pr <N> --qa-task <t_ID> --authorization-task <t_ID> --expected-head <SHA_PR> --expected-main <SHA_MAIN>

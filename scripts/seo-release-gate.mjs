@@ -23,7 +23,10 @@ try {
   const pr = JSON.parse(call('gh', ['pr', 'view', prNumber, '--repo', REPO, '--json',
     'number,state,isDraft,baseRefName,baseRefOid,headRefOid,mergeable,mergeStateStatus']));
   const qa = JSON.parse(call('hermes', ['kanban', 'show', qaTask, '--json']));
-  const authorization = JSON.parse(call('hermes', ['kanban', 'show', authorizationTask, '--json']));
+  // No author=Kevin comment or worker metadata is an authentication source.
+  // The local gateway ledger is verified against the original blocked event.
+  const receipt = JSON.parse(call('python3', ['scripts/lib/seo-release-receipt.py', authorizationTask]));
+  const repository = JSON.parse(call('gh', ['api', `repos/${REPO}`]));
   const checks = collectCheckRuns(JSON.parse(call('gh', ['api',
     `repos/${REPO}/commits/${expectedHead}/check-runs?filter=all&per_page=100`,
     '--paginate', '--slurp'])));
@@ -32,11 +35,9 @@ try {
   const changedPaths = filePages.flatMap(page => page.map(file => ({
     filename: file.filename, status: file.status, previous_filename: file.previous_filename })));
   const remoteMain = call('git', ['ls-remote', 'origin', 'refs/heads/main']).split(/\s+/)[0];
-  // The operator's public key must already be in the reviewed main commit, never the candidate PR.
-  // A missing key fails closed; no CLI flag or environment variable can inject a trust anchor.
-  const trustedKey = call('git', ['show', `${expectedMain}:config/seo-release-authority.pem`]);
-  const verdict = evaluateSeoRelease({ pr, qa, authorization, checks, changedPaths,
-    expectedHead, expectedMain, remoteMain, trustedKey });
+  const verdict = evaluateSeoRelease({ pr, qa, receipt, checks, changedPaths,
+    expectedHead, expectedMain, remoteMain, privateRepository: repository.private === true &&
+      repository.full_name === REPO });
   console.log(JSON.stringify({ ...verdict, pr: Number(prNumber), head: expectedHead,
     main: expectedMain, qaTask, authorizationTask, publicationPerformed: false }));
   if (!verdict.pass) process.exitCode = 2;
