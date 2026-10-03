@@ -2,13 +2,13 @@
   "version": 1,
   "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "action": "creation",
-  "editorialStatus": "publie",
+  "editorialStatus": "a-valider",
   "title": "Automatiser la saisie comptable : ce qui reste à vérifier",
   "tabTitle": "Automatisation saisie comptable : les 6 contrôles | Memlia",
   "summary": "La lecture extrait, une personne vérifie. Six contrôles dans un ordre fixe : nature, émetteur, mentions, montants, période, doublon. Puis une file d’anomalies à motifs fermés. Rien ne s’enregistre sans validation, et le reliquat se recompte à chaque période.",
   "description": "Automatisation saisie comptable : six contrôles à garder, une file d’anomalies et ce qui exige encore une validation humaine.",
   "publicationDate": "2026-09-17",
-  "updatedAt": "2026-09-29",
+  "updatedAt": "2026-10-03",
   "topics": [
     "saisie",
     "pieces",
@@ -44,14 +44,14 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-30"
+      "verifiedAt": "2026-10-03"
     }
   },
   "businessReview": {
     "required": true,
     "reviewerId": "relecteur-metier-ia-memlia",
     "role": "collaborateurs-comptables",
-    "status": "PASS",
+    "status": "FAIL",
     "evidence": "preuves/business-review.json"
   },
   "funnel": "MOFU",
@@ -66,6 +66,21 @@
   "proofRequired": "Scénario fictif explicite de cinquante pièces avec sorties attendues, sans prétendre à une exécution ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées.",
   "sourcesVerifiedAt": "2026-09-29",
   "sources": [
+    {
+      "id": "bofip-periode-deduction",
+      "publisher": "DGFiP",
+      "title": "BOI-TVA-DED-40-20 du 08/01/2025 — Conditions de temps et date de la déduction, §25",
+      "url": "https://bofip.impots.gouv.fr/bofip/1133-PGP.html/identifiant%3DBOI-TVA-DED-40-20-20250108",
+      "checkedAt": "2026-10-03",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://bofip.impots.gouv.fr/bofip/1133-PGP.html/identifiant%3DBOI-TVA-DED-40-20-20250108",
+      "classificationReason": "Doctrine fiscale officielle DGFiP ; exemple du §25 limité à la livraison de biens et à ses conditions, pas à toute pièce tardive.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/bofip-periode-deduction.classification.json",
+      "verificationEvidence": "preuves/sources/bofip-periode-deduction.json"
+    },
     {
       "id": "sp-mentions-facture",
       "publisher": "Service Public",
@@ -143,7 +158,7 @@
     }
   ],
   "author": "kevin",
-  "reviewer": "metier:t_66b48f1f",
+  "reviewer": "marketing",
   "reviewRule": "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois.",
   "cta": {
     "label": "Confier cette tâche",
@@ -161,12 +176,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-30"
+      "checkedAt": "2026-10-03"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-30"
+      "checkedAt": "2026-10-03"
     }
   },
   "links": {
@@ -195,13 +210,11 @@
   "contradictions": [],
   "kevin": {
     "briefApproved": true,
-    "previewApproved": true,
-    "productionApproved": true,
+    "previewApproved": false,
+    "productionApproved": false,
     "delegation": {
       "date": "2026-09-16",
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
-  },
-  "publishedAt": "2026-09-30",
-  "publicationEvidence": "preuves/publication.json"
+  }
 }

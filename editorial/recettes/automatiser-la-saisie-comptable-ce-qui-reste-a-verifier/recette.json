@@ -22,7 +22,7 @@
   "summary": "La lecture extrait, une personne vérifie. Six contrôles dans un ordre fixe : nature, émetteur, mentions, montants, période, doublon. Puis une file d’anomalies à motifs fermés. Rien ne s’enregistre sans validation, et le reliquat se recompte à chaque période.",
   "description": "Automatisation saisie comptable : six contrôles à garder, une file d’anomalies et ce qui exige encore une validation humaine.",
   "date": "2026-09-17",
-  "updatedAt": "2026-09-29",
+  "updatedAt": "2026-10-03",
   "topics": [
     "saisie",
     "pieces",
@@ -77,9 +77,9 @@
     {
       "id": "saisie-six-controles",
       "insertBeforeHeading": "Brique 3 : la file d’anomalies, et le reliquat qui se compte",
-      "alt": "Six contrôles de saisie illustratifs, arrêtés sur une facture fictive de la période précédente.",
+      "alt": "Six contrôles fictifs : facture reçue, période à qualifier par une personne, aucune écriture enregistrée.",
       "source": "jeu d’essai fictif et règle écrite décrits dans cet article",
-      "capturedAt": "2026-09-29"
+      "capturedAt": "2026-10-03"
     },
     {
       "id": "saisie-file-anomalies",
@@ -122,6 +122,16 @@
     }
   },
   "sources": [
+    {
+      "id": "bofip-periode-deduction",
+      "publisher": "DGFiP",
+      "title": "BOI-TVA-DED-40-20 du 08/01/2025 — Conditions de temps et date de la déduction, §25",
+      "url": "https://bofip.impots.gouv.fr/bofip/1133-PGP.html/identifiant%3DBOI-TVA-DED-40-20-20250108",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Doctrine fiscale officielle DGFiP ; exemple du §25 limité à la livraison de biens et à ses conditions, pas à toute pièce tardive.",
+      "excerpt": "Dans le cadre d’une livraison de biens meubles corporels à un acquéreur déposant des déclarations de chiffre d’affaires selon une périodicité mensuelle, si l’exigibilité de la taxe est intervenue le 30 avril et que la facture n’a été délivrée à l’acquéreur que le 5 mai, celui-ci est fondé à exercer son droit à déduction en mentionnant la TVA correspondante sur la déclaration mensuelle de chiffre d’affaires qu’il dépose au mois de mai au titre de ses opérations du mois d’avril."
+    },
     {
       "id": "sp-mentions-facture",
       "publisher": "Service Public",
@@ -223,6 +233,14 @@
     "note": "Page nouvelle, créée le 17/09/2026 : aucune impression ne peut lui être attribuée. Dernier relevé de site lu le 16/09/2026 (52 impressions, 10 clics, 2 requêtes distinctes sur 90 jours pour l’ensemble du site). Aucune inspection d’URL demandée, aucun crédit métrique revendiqué."
   },
   "claims": [
+    {
+      "unite": "La conserver : elle reste reçue",
+      "claim": "une facture délivrée le 5 mai",
+      "type": "fiscal",
+      "sourceId": "bofip-periode-deduction",
+      "excerpt": "Dans le cadre d’une livraison de biens meubles corporels à un acquéreur déposant des déclarations de chiffre d’affaires selon une périodicité mensuelle, si l’exigibilité de la taxe est intervenue le 30 avril et que la facture n’a été délivrée à l’acquéreur que le 5 mai, celui-ci est fondé à exercer son droit à déduction en mentionnant la TVA correspondante sur la déclaration mensuelle de chiffre d’affaires qu’il dépose au mois de mai au titre de ses opérations du mois d’avril.",
+      "explanation": "Exemple du §25 : exigibilité le 30 avril, facture délivrée le 5 mai, déduction au titre d’avril sous conditions. Aucune affectation automatique par la seule date ; clôture et régime restent à qualifier humainement."
+    },
     {
       "unite": "Une pièce lue n’est pas une pièce valable",
       "claim": "comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique",

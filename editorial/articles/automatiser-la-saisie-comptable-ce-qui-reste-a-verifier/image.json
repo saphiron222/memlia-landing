@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "articleSha256": "7e346752da23df49e2c0a5613bb57915dc6f5908a871c5169e06c59b4a4cbd37",
-  "manifestSha256": "e487ce23f421d3452734ec5a76f6e3367aad444c0d3ec8889f218a1135a1947d",
+  "articleSha256": "1cce1c2fe88b45f5dd77ba599c1f8bceba2025d99a27ae9bf119be676feac0d3",
+  "manifestSha256": "67d0cb1580a11d51fb9f7a58ebda65647b58ade3eb9fa9b5cbdd3e7e7787c5de",
   "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
@@ -35,10 +35,12 @@
     }
   ],
   "alt": "Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe",
-  "score": 100,
-  "directionArt": 17,
-  "semanticRelevance": 22,
-  "p0": [],
+  "score": null,
+  "directionArt": null,
+  "semanticRelevance": null,
+  "p0": [
+    "Revue image non exécutée"
+  ],
   "kevinApproved": true,
   "palette": {
     "statut": "PASS",

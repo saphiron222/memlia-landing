@@ -2,10 +2,10 @@
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "image-visual-review",
-  "status": "PASS",
-  "checkedAt": "2026-09-30",
-  "articleSha256": "7e346752da23df49e2c0a5613bb57915dc6f5908a871c5169e06c59b4a4cbd37",
-  "manifestSha256": "e487ce23f421d3452734ec5a76f6e3367aad444c0d3ec8889f218a1135a1947d",
+  "status": "FAIL",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "1cce1c2fe88b45f5dd77ba599c1f8bceba2025d99a27ae9bf119be676feac0d3",
+  "manifestSha256": "67d0cb1580a11d51fb9f7a58ebda65647b58ade3eb9fa9b5cbdd3e7e7787c5de",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
@@ -47,44 +47,44 @@
   "criteria": [
     {
       "id": "brief-six-components",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Brief de couverture à six composantes et recette des deux figures inchangés depuis la revue portrait antérieure."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "generation-constraints",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Figures fictives sans résultat d'un logiciel exécuté ; preuve portrait antérieure non retamponnée."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "fictive-provenance",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "TEST-050 est présenté comme scénario de recette inventé ; la capture et la provenance restent dans la recette."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "recognizable-subject",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Les deux figures inline concernent six contrôles et file d'anomalies, hors modification du paragraphe fiscal."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "technical-derivatives",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Rendu HTML neuf contient deux figures inline ; lisibilité 320/375/1440 héritée de la revue portrait t_303e7c6d pour les mêmes actifs, non re-mesurée dans cette passe fiscale."
+        "Revue image non exécutée."
       ]
     },
     {
       "id": "alt-information",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Alt descriptifs des deux figures inchangés ; aucun ancien résultat mesuré revendiqué."
+        "Revue image non exécutée."
       ]
     }
   ]

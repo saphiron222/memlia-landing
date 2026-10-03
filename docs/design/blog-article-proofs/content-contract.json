@@ -20,11 +20,11 @@
   {
     "id": "saisie-six-controles",
     "article": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "alt": "Six contrôles de saisie illustratifs, arrêtés sur une facture fictive de la période précédente.",
+    "alt": "Six contrôles fictifs : facture reçue, période à qualifier par une personne, aucune écriture enregistrée.",
     "source": "Jeu d’essai fictif et règle écrite décrits dans l’article",
     "sourceUrl": null,
-    "capturedAt": "2026-09-29",
-    "centralText": "Lecture d’une facture fictive Scénario TEST-050 · sortie attendue, non exécutée Ordre fixe Une étape qui échoue arrête les suivantes. 1 Nature Facture identifiée 2 Émetteur Fournisseur connu 3 Mentions Champs attendus présents 4 Montants Cohérents 5 Période Période précédente 6 Doublon Non joué Sortie attendue Aucune écriture enregistrée. La facture reste affectée à sa période ; doublon à vérifier ensuite."
+    "capturedAt": "2026-10-03",
+    "centralText": "Lecture d’une facture fictive Scénario TEST-050 · sortie attendue, non exécutée Ordre fixe Une étape qui échoue arrête les suivantes. 1 Nature Facture identifiée 2 Émetteur Fournisseur connu 3 Mentions Champs attendus présents 4 Montants Cohérents 5 Période Période à qualifier 6 Doublon Non joué Sortie attendue Aucune écriture enregistrée. Pièce reçue conservée. Décision humaine documentée ; doublon à vérifier ensuite."
   },
   {
     "id": "saisie-file-anomalies",
