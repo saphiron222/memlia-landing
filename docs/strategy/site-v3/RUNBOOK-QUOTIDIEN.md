@@ -4,7 +4,7 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 
 ## 0. Rails non négociables
 
-- **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`. Le préflight initial part de `main` ; les modifications d'article passent par une branche `site/blog-<sujet>` et une PR. Seule la fusion contrôlée sur `main` déclenche la publication Cloudflare ; jamais de push direct sur `main`.
+- **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`. Chaque exécution utilise un worktree isolé, une branche neuve `site/blog-<sujet>` à la base fraîche de `main`, puis une PR. Le clone dédié du cron ne sert que de source propre synchronisée par `forge_checkout_gate.py` ; il ne reçoit aucune écriture éditoriale. D'autres workers peuvent tourner en parallèle. Seule la fusion contrôlée sur `main` déclenche la publication Cloudflare ; jamais de push direct sur `main`.
 - **Cadence** : au plus 2 articles ordinaires par jour et 4 par semaine ISO, du lundi au jeudi, puis exactement 1 Cicatrice le samedi en sus (`verifierPlafonds`). Le vendredi reste un jour de maintenance (§6). La décision du 29/09 distingue le retard seul des portes de sûreté : le reliquat déjà mandaté W39 n'exige pas une nouvelle signature Kevin à chaque jour de retard. Son seul cadrage opérateur courant est décrit ci-dessous ; aucun changement général de cadence, second slug ou second exemplaire W39 n'en découle. Le dossier éditorial et la production restent soumis à leurs gardes distincts.
 
 ### Reçu opérateur W39 — ponctuel, non renouvelable
@@ -71,12 +71,20 @@ crée aucune capacité réelle. Le générateur `--check` et le préflight compt
 `published` réel et `planned` actionnable, sans redater une publication.
 
 ```bash
-cd /Users/kevinkitanga/dev/interne/memlia-landing
-PREFLIGHT=$(node scripts/cron-preflight.mjs --root "$PWD" --job forge) || { printf '%s\n' "$PREFLIGHT"; exit 1; }
+cd /Users/kevinkitanga/dev/interne/memlia-forge-cron-checkout
+# Le monitor a synchronisé ce clone propre ; aucune écriture métier ici.
+RUN_ID=$(date -u +%Y%m%dt%H%M%Sz)-$$
+PR_BRANCH="site/blog-forge-$RUN_ID"
+FORGE_WORKTREE="/Users/kevinkitanga/dev/interne/memlia-forge-runs/$RUN_ID"
+git worktree add -b "$PR_BRANCH" "$FORGE_WORKTREE" HEAD || exit 1
+cd "$FORGE_WORKTREE" || exit 1
+PREFLIGHT=$(node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase maintenance) || { printf '%s\n' "$PREFLIGHT"; exit 1; }
 BASE_SHA=$(printf '%s' "$PREFLIGHT" | node -e 'let s="";process.stdin.on("data",c=>s+=c).on("end",()=>{const r=JSON.parse(s);if(!r.ok)process.exit(1);console.log(r.head)})') || exit 1
 ```
 
-Le mode initial vérifie le répertoire courant et la racine Git, la branche `main`, l'arbre propre, le runbook de la forge, `git fetch origin main` et l'égalité des SHA. Conserver le `head` du JSON `ok:true` comme `BASE_SHA` pour cette exécution (ne jamais le recalculer depuis `origin/main` après des écritures). Avant le commit, `--phase before-commit --base "$BASE_SHA"` accepte les fichiers préparés sur `main`, mais exige que HEAD et le main distant fraîchement récupéré soient toujours cette base. Créer ensuite la branche PR avant le commit. Après le commit, `--phase before-push --base "$BASE_SHA" --commit "$COMMIT_SHA"` exige un arbre propre, un nom de branche `site/blog-*` pour `forge` (refuse `main`), le commit exact, son parent égal à la base et le main distant inchangé. Ce script n'autorise que `--job forge` : les quatre jobs SEO restent suspendus et leur procédure de publication est différée sous garde distincte. Toute sortie `ok:false` ou tout code non nul : arrêt sans commit/push, alerte avec les valeurs observées ; jamais de pull ou rebase automatique. Un `ok:true` n'est ni une revue QA, ni une CI, ni une preuve de publication. Le branchement des prompts planifiés relève d'une release séparée ; le document seul ne les modifie pas.
+La phase `maintenance` vérifie racine/cwd, branche `main` ou `site/blog-*`, arbre propre, fichiers requis, fetch frais et HEAD identique au main récupéré. Elle liste les créneaux échus dans `maintenanceRequired` sans les rendre actionnables ni écrire un fichier ; les dates invalides et les dépassements de quotas réels restent rouges. Son `ok:true` permet uniquement la maintenance du calendrier (§2), jamais la préparation d'un article. Le mode historique `initial`, sans phase explicite, conserve son refus des créneaux échus sur `main`.
+
+Conserver le `head` comme `BASE_SHA` jusqu'à la fin. Après maintenance, `--phase before-selection --base "$BASE_SHA"` refuse encore les créneaux échus, les quotas excessifs et toute écriture hors des cinq fichiers calendrier/backlog. Il exige HEAD et main distant inchangés. Avant commit, `before-commit` accepte les fichiers préparés sur la branche isolée mais conserve les mêmes contrôles de calendrier/base. Après commit, `before-push --base "$BASE_SHA" --commit "$COMMIT_SHA"` exige arbre propre, branche `site/blog-*` (pas `main`), commit exact, parent égal à la base et main distant inchangé. Un refus arrête sans commit/push ni pull/rebase automatique ; aucun test des processus voisins. SEO reste non autorisé. Un `ok:true` ne prouve ni revue, ni article, ni CI, ni publication.
 
 ## 2. Lire le créneau du jour
 
@@ -87,7 +95,15 @@ grep -n "^| $(date +%Y-%m-%d) |" docs/strategy/site-v3/CONTENT-CALENDAR.md
 
 `--check` vérifie les invariants sans régénérer ni redater les fichiers ; la date « Généré le » du calendrier est celle de sa dernière édition, pas celle du contrôle du jour. La forge refuse avant toute écriture un slug inédit si son créneau source n'est pas `planned` au jour Paris, si les deux dérivés ne sont pas datés de ce jour, ou si le plan JSON complet et le calendrier complet diffèrent de leur reconstruction depuis les sources (`build-cluster-plan.py --slot <slug> <jour-Paris>`, lecture seule). La comparaison inclut les rôles, intentions, preuves, requêtes secondaires, liens, compteurs et toutes les lignes du calendrier, pas seulement la cible. Les republications conservent leur date publiée et ne dépendent pas de ce garde de sélection. Si le calendrier n'a pas été édité aujourd'hui, la ligne trouvée n'est qu'une trace. Revoir le backlog et les publications effectives, décider explicitement les créneaux puis régénérer sans `--check` avant d'utiliser une ligne `planned`. Cette édition n'invente aucune publication : seul le fichier source de l'article publié en fait foi.
 
-Avant de choisir le créneau du jour, relever les réservations `planned` échues ; ne pas les antidater. Replanifier explicitement après vérification du stock, de l'alternance, des plafonds et des portes de qualité. Une date déjà publiée ne bouge pas ; `datePlanifiee` échue reste une trace, pas une autorisation de publication future.
+Avant de choisir le créneau du jour, lire `maintenanceRequired` et confronter les anciens `planned` au backlog et aux publications effectives. Pour un ordinaire non publié, conserver l'ancienne date dans `dateManquee` du backlog (une trace divergente exige examen, pas écrasement) et retirer une `datePlanifiee` échue. Sans décision explicite de nouvelle réservation, le générateur le rend `a-replanifier` : sa proposition future n'autorise aucune publication. Pour une Cicatrice, conserver sa date historique explicite ; le générateur la rend `manque`. Ne déplacer ni date publiée, ni cadrage W39, ni corps personnel. Vérifier ensuite les invariants avec `--check`, régénérer sans `--check` et examiner le diff des dérivés avant toute sélection :
+
+```bash
+python3 docs/strategy/site-v3/build-cluster-plan.py --check || exit 1
+python3 docs/strategy/site-v3/build-cluster-plan.py || exit 1
+node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-selection --base "$BASE_SHA" || exit 1
+```
+
+Ce contrôle ne remplace pas `--slot` dans la forge : date Paris fraîche, reconstruction complète depuis les sources et authenticité du récit restent obligatoires. Aucun article disponible après maintenance : consigner le fait, conserver le worktree pour examen, arrêter sans fabrication ni publication. Le reliquat W39 reste sur ses cartes existantes. Le prompt versionné `FORGE-CRON-PROMPT.md` doit être installé sur le seul cron marketing `e4eaaf20655f`, en conservant son état paused ; sa réactivation appartient à la reprise éditoriale après intégration et revue.
 
 Chaque ligne de la date du jour au statut `planned` est un article à produire (une, parfois deux du lundi au jeudi ; une seule Cicatrice le samedi). Son slug donne l'entrée complète dans `docs/strategy/site-v3/backlog-v3.json` : titre, requête primaire, requêtes secondaires, famille, rôle, intention, entonnoir, format, preuve attendue, autorités à citer. Aucune ligne un jour ordinaire : aller au §6. Aucune ligne un samedi : ne pas inventer de récit ; consigner le stock vide dans `JOURNAL.md` et ouvrir une carte de réapprovisionnement depuis les leçons et faits mesurés.
 
@@ -219,8 +235,7 @@ Si `publier` ou le build échoue, relever la cause et arrêter sans retirer de p
 npm run build
 git add -- editorial/recettes/<slug-1> editorial/recettes/<slug-2> editorial/recettes/<slug-3> editorial/articles/<slug-1> editorial/articles/<slug-2> editorial/articles/<slug-3> src/content/blog/<slug-1>.md src/content/blog/<slug-2>.md src/content/blog/<slug-3>.md docs/strategy/site-v3/mesures/registre-requetes.json # inclure aussi explicitement les autres fichiers réellement modifiés du lot, dont le pilier s'il a été revu
 node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-commit --base "$BASE_SHA" || exit 1
-PR_BRANCH="site/blog-<sujet-unique>" # nom neuf ; ne pas réutiliser une branche distante existante
-git switch -c "$PR_BRANCH" || exit 1
+# PR_BRANCH est déjà la branche isolée créée au §1 ; ne pas changer de base.
 git commit -m "feat(blog): <lot revu>" -- editorial public/images public/llms.txt src tests docs/qa docs/strategy/site-v3/CONTENT-CALENDAR.md docs/strategy/site-v3/cluster-plan.json docs/strategy/site-v3/cluster-plan.md docs/strategy/site-v3/cluster-map.html docs/strategy/site-v3/JOURNAL.md docs/strategy/site-v3/mesures/registre-requetes.json
 COMMIT_SHA=$(git rev-parse HEAD)
 node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-push --base "$BASE_SHA" --commit "$COMMIT_SHA" || exit 1
