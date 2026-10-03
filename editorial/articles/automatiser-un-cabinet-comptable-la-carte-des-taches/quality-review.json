@@ -1,19 +1,19 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-  "reviewedAt": "2026-09-29",
-  "reviewer": "qa:t_e5c72326",
+  "reviewedAt": "2026-10-03",
+  "reviewer": "metier:t_303e7c6d",
   "rubric": "blog-analyze-100",
   "status": "PASS",
   "score": 91,
   "p0": 0,
   "categories": {
     "contentQuality": {
-      "score": 28,
+      "score": 27,
       "max": 30
     },
     "seoOptimization": {
-      "score": 23,
+      "score": 22,
       "max": 25
     },
     "eeatSignals": {
@@ -21,7 +21,7 @@
       "max": 15
     },
     "technicalElements": {
-      "score": 12,
+      "score": 14,
       "max": 15
     },
     "aiCitationReadiness": {
@@ -30,21 +30,20 @@
     }
   },
   "evidence": [
-    "28/30 : réponse directe, grille complète de douze pôles et onze frontières, limites et décision humaine expliquées sans chiffres de gain.",
-    "23/25 : titre et description ajustés à l'intention comprendre ; deux renvois ordinaires pertinents et aucun renvoi Cicatrice.",
-    "14/15 : six citations rapprochées des copies officielles datées, provenance et limites de portée conservées.",
-    "12/15 : HTML de préparation indexation bloquée, canonical et métadonnées présents ; aucun Lighthouse mobile ni site de production contrôlé dans cette revue.",
-    "14/15 : définitions et tableaux extractibles, aucune tâche d'audit légal ouverte ni résultat de moteur IA revendiqué."
+    "27/30 : carte et test fictif lisibles, sans chiffre de gain ou promesse sur l'audit légal.",
+    "22/25 : intention pilier et liens contextuels maintenus ; pas de résultat SERP mesuré.",
+    "14/15 : six claims vérifiés sur copies datées du 29/09 dans la revue antérieure ; corps et recette inchangés.",
+    "14/15 : portraits directs et sans légende ni scroll, effectivement lisibles dans les captures 320/375/1440 ; pas de Lighthouse ni de test de production.",
+    "14/15 : définitions et tableau récupérables avec la restriction audit légal."
   ],
   "reservations": [
-    "Portée de la revue : le HTML .qa est un rendu de préparation noindex, pas la page publiée ; la matérialisation publique, la CI et la vérification de production incombent au propriétaire de la livraison.",
-    "Les relances de pièces et de variables restent des brouillons préparés seuls ; leur envoi est explicitement soumis à une validation humaine.",
-    "Les rôles RGPD, les durées et la purge se déterminent traitement par traitement selon les obligations de conservation et d'archivage ; aucune conformité automatique n'est attestée."
+    "Revue IA sur rendu local et sources archivées contrôlées le 29/09 ; pas de nouvelle requête HTTP ni de garantie d'applicabilité à un cabinet précis.",
+    "Le nouveau rendu n'est ni scellé ni validé par la QA/CI de livraison ; indexabilité en production non prouvée."
   ],
-  "verdict": "PASS de contenu indépendant sur le triplet exact du rendu de préparation ; aucune approbation de CI, de fusion ou de production.",
+  "verdict": "AI_REVIEW_PASS sur les preuves inline et le rendu local a4e597b ; ni scellement, ni livraison.",
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
-    "manifestSha256": "85dd7e9ddad6523f9a73d8c34587f1d8d9904bbdab1a6da774c1934285a30d6c"
+    "articleSha256": "d017f350f9ebc536fb3e8f185046733dc64595c55f4c4141df06a189ace18941",
+    "manifestSha256": "b033fdc9151267040080d8327c7ba6328f1b6216031c00d1854e2ee358d52ee4"
   }
 }

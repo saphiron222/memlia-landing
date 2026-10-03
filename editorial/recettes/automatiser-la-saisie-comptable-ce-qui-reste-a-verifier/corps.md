@@ -25,7 +25,7 @@ Une lecture automatique produit des champs, et chaque champ n’a pas la même s
 | Champ | Ce que la lecture en fait | Ce qui reste à vérifier |
 |---|---|---|
 | Émetteur | Rapproche le nom lu d’un fournisseur connu du dossier | Homonymes, changement de raison sociale, facture d’un tiers |
-| Date et numéro | Extrait les deux quand ils sont typographiés | Date de la pièce contre période traitée, numéro déjà présent |
+| Date et numéro | Extrait les deux quand ils sont typographiés | Dates d’émission, de réception et d’opération à distinguer, période à qualifier, numéro déjà présent |
 | Montants | Lit HT, TVA et TTC quand ils sont étiquetés | Somme cohérente, arrondis, remises, acomptes déduits |
 | Taux et base de TVA | Propose le taux dominant de la pièce | Pièce à plusieurs taux, autoliquidation, exonération |
 | Devise et pays | Détecte le symbole ou le code | Facture étrangère, conversion, mentions particulières |
@@ -35,18 +35,18 @@ La dernière ligne est la plus trompeuse. Une proposition d’imputation fondée
 
 ## Brique 2 : les contrôles qui restent, et dans quel ordre les passer
 
-Les contrôles se passent dans un ordre fixe, du plus grossier au plus fin, parce qu’un contrôle raté en amont rend inutiles ceux d’après. On vérifie d’abord que le document est bien une facture et non un devis, un bon de livraison ou un relevé ; puis que l’émetteur est le fournisseur attendu ; puis que les mentions attendues sur la pièce sont présentes ; puis que les montants s’additionnent ; puis que la pièce appartient à la période ; puis qu’elle n’est pas déjà enregistrée. L’imputation ne se juge qu’en dernier, quand tout le reste tient.
+Les contrôles se passent dans un ordre fixe, du plus grossier au plus fin, parce qu’un contrôle raté en amont rend inutiles ceux d’après. On vérifie d’abord que le document est bien une facture et non un devis, un bon de livraison ou un relevé ; puis que l’émetteur est le fournisseur attendu ; puis que les mentions attendues sur la pièce sont présentes ; puis que les montants s’additionnent ; puis qu’une personne a qualifié les périodes comptable et fiscale ; puis que la pièce n’est pas déjà enregistrée. L’imputation ne se juge qu’en dernier, quand tout le reste tient.
 
 | Contrôle | Condition qui le rend concluant | Sortie quand la condition manque |
 |---|---|---|
-| Nature du document | Une mention de facture et un numéro sont lus | Pièce écartée, motif « document non facturé » |
+| Nature du document | Facture identifiable, ou justificatif de dépense à qualifier séparément | Devis ou relevé : motif « document non facturé » ; ticket ou note de frais : qualification humaine avant toute proposition |
 | Émetteur | Le nom lu correspond à un fournisseur du dossier | Fiche fournisseur à créer, par une personne |
 | Mentions de la pièce | Numéro, date, identité des parties et montants présents | Pièce incomplète, demande au client |
 | Cohérence des montants | HT et TVA reconstituent le TTC lu | Écart typé, jamais arrondi d’office |
-| Période | La date de la pièce tombe dans la période traitée | Pièce hors période, conservée pour la bonne période |
+| Période | Une personne a qualifié le rattachement comptable et fiscal selon les dates d’émission et de réception, l’opération, les règles applicables et une éventuelle clôture | Discordance ou période incertaine : pièce reçue conservée, période à qualifier, aucune écriture |
 | Doublon | Le couple fournisseur et numéro est absent du journal | Rapprochement proposé, aucune écriture créée |
 
-Quatre de ces six contrôles sont purement déterministes : ils comparent, ils ne jugent pas. C’est ce qui les rend automatisables sans risque. Les deux autres, l’émetteur inconnu et l’imputation d’un achat inhabituel, demandent une décision, et cette décision appartient au cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre ce qui se prouve par comparaison et ce qui s’apprécie.
+Ces six contrôles peuvent préparer des comparaisons et des alertes ; aucun ne supprime le contrôle humain. Une nature ambiguë, un émetteur inconnu ou un doublon probable demandent une décision. L’imputation d’un achat inhabituel intervient ensuite, une fois ces six contrôles passés, et reste elle aussi une décision du cabinet. La frontière n’est pas entre ce qui est facile et ce qui est difficile : elle passe entre une comparaison reproductible et une appréciation qui engage le dossier.
 
 ## Brique 3 : la file d’anomalies, et le reliquat qui se compte
 
@@ -60,7 +60,7 @@ Le reliquat, c’est la part des pièces qui termine dans cette file. Il se comp
 |---|---|---|---|
 | Une pièce arrive dans le dossier | Elle est lisible et porte les marques d’une facture | Les champs sont extraits, une écriture est proposée | Pièce illisible : file d’anomalies, aucune extraction |
 | Les champs sont extraits | L’émetteur correspond à un fournisseur connu | L’imputation habituelle du fournisseur est proposée | Fournisseur inconnu : file d’anomalies, aucune fiche créée |
-| Une écriture est proposée | Les montants s’additionnent et la période est la bonne | L’écriture attend la validation d’une personne | Écart de montants : écart typé, aucune correction d’office |
+| Une écriture est proposée | Les montants s’additionnent et les périodes comptable et fiscale ont été qualifiées par une personne | L’écriture attend la validation d’une personne | Écart de montants ou période incertaine : anomalie typée, aucune correction ni affectation d’office |
 | Une écriture est validée | Le couple fournisseur et numéro est absent du journal | L’écriture est enregistrée, la pièce est liée | Doublon probable : rapprochement proposé, rien d’enregistré |
 | La période est close | La file d’anomalies est vide | Le lot est déclaré traité | File non vide : le lot reste ouvert, motifs listés |
 
@@ -75,26 +75,33 @@ Ces refus ont un coût visible, des lignes dans une file, et c’est exactement 
 | Se prépare seul | Attend une validation | Reste humain |
 |---|---|---|
 | L’extraction des champs d’une pièce lisible | L’enregistrement de chaque écriture proposée | La qualification d’une pièce ambiguë |
-| Les contrôles de cohérence, de période et de doublon | La création d’une fiche fournisseur | Le choix d’imputation d’un achat inhabituel |
+| Les comparaisons de cohérence, de dates et de doublon | La création d’une fiche fournisseur | La qualification des périodes comptable et fiscale et le choix d’imputation d’un achat inhabituel |
 | Le classement des anomalies par motif | La clôture d’un lot dont la file est vide | La relation avec le client pour une pièce manquante |
 
-## Le jeu fictif : cinquante pièces inventées
+## Le scénario fictif : cinquante pièces inventées
 
-Cinquante pièces inventées suffisent à éprouver la règle avant qu’elle ne touche un dossier réel. Le jeu est construit pour contenir ses propres pièges : trente-deux factures de fournisseurs récurrents, six factures de fournisseurs jamais vus, quatre photos de tickets dont deux coupées, trois factures datées de la période précédente, deux exemplaires de la même facture reçus par deux canaux, deux notes de frais sans justificatif lisible, et un avoir.
+Cinquante pièces inventées décrivent ici un scénario de recette avant qu’une règle ne touche un dossier réel. Ce scénario contient ses propres pièges : trente-deux factures de fournisseurs récurrents, six factures de fournisseurs jamais vus, quatre photos de tickets dont deux coupées, trois factures datées de la période précédente, deux exemplaires de la même facture reçus par deux canaux, deux notes de frais sans justificatif lisible, et un avoir. Ces catégories décrivent des entrées, pas des sorties exclusives : une facture peut cumuler un fournisseur inconnu et une mauvaise période, et « deux exemplaires » ne dit pas lequel est déjà au journal. Les visuels ci-dessus illustrent des sorties attendues de la règle ; ils ne constituent ni un logiciel exécuté ni une mesure obtenue sur cinquante fichiers.
 
-Sur ce jeu, la règle produit ce qu’on attend d’elle. Les trente-deux récurrentes ressortent en écritures proposées, imputation habituelle comprise, dont une signalée parce que le montant sort de l’ordinaire chez ce fournisseur. Les six inconnues attendent une fiche, qu’aucun automatisme ne crée. Les deux tickets coupés partent en pièce incomplète, les deux autres passent. Les trois factures de la période précédente sont conservées pour leur période, et non rejetées. Le doublon est proposé au rapprochement, jamais supprimé. Les deux notes de frais et l’avoir remontent avec leur motif. Le reliquat de ce lot appartient à ce lot : il ne dit rien du dossier d’à côté, et c’est pour cela qu’on le recompte à chaque période.
+Le résultat attendu s’écrit avant le test, sans aucun décompte mesuré : les factures récurrentes complètes peuvent devenir des écritures proposées après les six contrôles, mais le montant inhabituel est une appréciation humaine pour l’imputation, pas un écart HT + TVA. Les fournisseurs inconnus attendent la création d’une fiche par une personne ; cette décision précède les contrôles suivants. Les deux tickets coupés et les deux notes de frais sans justificatif lisible vont au motif « pièce incomplète », sous réserve de qualification humaine de leur nature ; les deux autres tickets restent à qualifier, et « passer » ne signifie pas enregistrer. Les factures datées de la période précédente restent reçues, sans affectation automatique : si aucun motif prioritaire ne les arrête, leur rattachement comptable et fiscal attend une décision humaine documentée ; un exemplaire éventuellement déjà enregistré est proposé au rapprochement, jamais supprimé. L’avoir est orienté vers une décision humaine sur sa nature et sa facture d’origine avant toute imputation : il n’est pas forcé dans le motif « document non facturé ». Si plusieurs contrôles échouent, la file garde la première sortie selon l’ordre du tableau, les autres restant à vérifier après décision ; ces entrées ne permettent pas de calculer le reliquat. Lors d’une mise en œuvre réelle, ces attentes deviennent des cas reproductibles, exécutés ligne par ligne ; le reliquat mesuré appartient alors uniquement au lot rejoué.
+
+Deux cas fictifs précisent le contrôle de période ; ils n’ajoutent pas de pièces ni de résultat mesuré au scénario :
+
+| Cas de recette | Entrée fictive | Arrêt attendu | Critère de reprise |
+|---|---|---|---|
+| PERIODE-DATES | Livraison de biens : opération le 30 avril, émission le 5 mai, réception le 6 mai ; lot de mai | Pièce reçue conservée, période à qualifier, aucune écriture par la seule date de facture | Décision humaine documentée distinguant exercice comptable, période de TVA et lot, après vérification du régime et des conditions applicables |
+| PERIODE-CLOSE | Facture reçue après fermeture du lot et relative à une période déjà close | Pièce reçue conservée, période à qualifier, aucune écriture, aucune réouverture ni report automatiques | Décision humaine documentée sur le traitement autorisé compte tenu de la clôture et des règles applicables, avant reprise des contrôles et validation |
 
 ## Quel cadre pour les pièces, la facture électronique et les données ?
 
 Une pièce lue n’est pas une pièce valable. Une facture reste un document dont le contenu est encadré : selon Service-Public, pour être conforme aux règles de facturation, une facture doit obligatoirement [comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique](https://entreprendre.service-public.gouv.fr/vosdroits/F31808). Une lecture automatique peut constater l’absence d’un numéro ou d’une date ; elle ne peut pas décider que la pièce est régulière. Le contrôle des mentions se conçoit donc comme un signalement, jamais comme un verdict.
 
-La bascule vers la facture électronique déplace ce travail sans le supprimer. La même administration note que [la facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie](https://entreprendre.service-public.gouv.fr/vosdroits/F39785) : une facture n’est plus seulement reçue, elle porte des états qui se suivent. Ce suivi est précisément le genre de tâche qu’un cabinet gagne à écrire comme une règle, avec ses déclencheurs et ses exceptions, plutôt qu’à tenir de mémoire.
+Pour les flux concernés, la facture électronique déplace ce travail sans le supprimer. La même administration note que [la facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie](https://entreprendre.service-public.gouv.fr/vosdroits/F39785). La fiche distingue l’obligation de réception au 1er septembre 2026 du calendrier d’émission, qui dépend de la taille de l’entreprise et des opérations concernées. Avant d’automatiser, le cabinet détermine donc quels flux et quelles échéances s’appliquent au dossier ; la règle suit ensuite les états de ces seules factures.
 
-Le traitement des anomalies change lui aussi de nature. La même fiche décrit la possibilité, pour l’entreprise, [de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)](https://entreprendre.service-public.gouv.fr/vosdroits/F39785). La file interne du cabinet et ce signalement ne se confondent pas : la première sert à trier ce que la lecture n’a pas su traiter, le second engage la relation avec le fournisseur. Les deux gagnent à partager les mêmes motifs, pour qu’une anomalie interne devienne, le cas échéant, un signalement documenté.
+Le traitement des anomalies change lui aussi de nature. La même fiche décrit la possibilité, pour l’entreprise, [de signaler directement sur la plateforme toute anomalie (erreur, facture non conforme ou désaccord)](https://entreprendre.service-public.gouv.fr/vosdroits/F39785). La file interne du cabinet et ce signalement ne se confondent pas : la première sert à trier ce que la lecture n’a pas su traiter, le second engage la relation avec le fournisseur. Une règle peut préparer le motif et les pièces utiles, mais une personne décide si l’anomalie devient un signalement externe.
 
-La pièce, elle, se conserve. Service-Public rappelle que les livres, registres, [documents ou pièces sur lesquels peuvent s’exercer les droits de communication, d’enquête et de contrôle de l’administration doivent être conservés](https://entreprendre.service-public.gouv.fr/vosdroits/F10029) pendant une durée déterminée. Une chaîne de saisie automatisée précise donc où vit l’original, où vit l’image lue, et lequel des deux fait foi : la question se tranche au cadrage, pas au moment d’un contrôle.
+La pièce, elle, se conserve. Service-Public rappelle que les livres, registres, [documents ou pièces sur lesquels peuvent s’exercer les droits de communication, d’enquête et de contrôle de l’administration doivent être conservés](https://entreprendre.service-public.gouv.fr/vosdroits/F10029). La même fiche distingue les pièces justificatives comptables, conservées dix ans à compter de la clôture de l’exercice (article L. 123-22 du code de commerce), des documents et pièces soumis à l’article L. 102 B du livre des procédures fiscales : l’ancien délai fiscal de six ans part de la dernière opération sur les livres ou registres, ou de la date d’établissement des documents ou pièces. [Service-Public précise que l’article 36 de la loi n° 2026-534](https://entreprendre.service-public.gouv.fr/actualites/A18906) porte ce délai fiscal à dix ans lorsque l’ancien délai expire après le 1er janvier 2027. Une échéance de l’ancien délai au 1er janvier 2027 n’entre pas dans la condition « après », tandis qu’une échéance au 2 janvier 2027 y entre : ce sont des témoins de seuil, pas des dates de purge. Une chaîne de saisie ne remplace pas la qualification de chaque document ni l’examen des autres obligations applicables : une personne fixe la durée et son point de départ, garde l’accès au document requis et documente séparément les copies de travail ; aucune purge automatique ne découle de ces exemples.
 
-Enfin, une facture porte presque toujours des données personnelles : un nom de contact, une adresse, parfois un identifiant bancaire. La CNIL le pose simplement : [une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable](https://www.cnil.fr/fr/definition/donnee-personnelle). Un service de lecture hébergé chez un tiers traite donc ces données pour le compte du cabinet, ce qui suppose un contrat, une durée de conservation écrite et un périmètre réduit à ce que la lecture exige. C’est à ces limites qu’on reconnaît une automatisation que le cabinet peut assumer devant ses clients.
+Enfin, une facture peut porter des données personnelles : un nom de contact, une adresse, parfois un identifiant bancaire. La CNIL le pose simplement : [une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable](https://www.cnil.fr/fr/definition/donnee-personnelle). La présence de ces données ne suffit pas à qualifier automatiquement les rôles du cabinet, de son client et du service de lecture. Avant le branchement, ils sont déterminés traitement par traitement selon les finalités et les moyens ; les accès, la durée de conservation et le périmètre transmis sont ensuite écrits dans le cadre contractuel applicable.
 
 ## Les erreurs fréquentes
 
@@ -113,11 +120,11 @@ Non, et pas pour une raison de qualité de lecture : pour une raison de responsa
 
 ### Comment traiter une facture reçue en double par deux canaux ?
 
-En la rapprochant, jamais en la supprimant d’office. Le couple fournisseur et numéro suffit à détecter le cas ; la décision d’écarter l’un des deux exemplaires appartient à une personne, parce qu’un même numéro peut aussi désigner deux pièces réellement différentes.
+En la signalant comme doublon probable, jamais en la supprimant d’office. Le couple fournisseur et numéro constitue un premier indice ; la date, le montant, le contenu et l’identifiant de la pièce complètent la comparaison. Une personne décide ensuite d’écarter ou non un exemplaire, car un numéro identique peut aussi désigner deux pièces réellement différentes.
 
 ### Que faire d’une pièce datée de la période précédente ?
 
-La conserver pour sa période, avec un état dédié. La rejeter la fait disparaître ; la saisir dans la période en cours fausse deux périodes au lieu d’une. C’est le même principe que pour la [relance des pièces manquantes](/blog/automatiser-la-relance-des-pieces-clients) : une pièce hors période n’est ni reçue ni absente.
+La conserver : elle reste reçue, avec un état « période à qualifier », et aucune écriture n’est enregistrée tant que la discordance n’est pas résolue. La date de facture ne détermine pas seule la période comptable ou fiscale. Une personne examine les dates d’émission et de réception, l’opération, les règles applicables et une éventuelle clôture, puis documente la décision de rattachement et la suite autorisée. Le lot de travail, l’exercice comptable et la période de TVA ne se confondent pas. Le [BOFiP sur les conditions de temps de la déduction de TVA, §25](https://bofip.impots.gouv.fr/bofip/1133-PGP.html/identifiant%3DBOI-TVA-DED-40-20-20250108), illustre notamment une livraison du 30 avril avec une facture délivrée le 5 mai : sous ses conditions, la déduction peut relever d’avril. Ce n’est pas une règle universelle pour toute pièce tardive. Si la période est déjà close, la personne qualifie le traitement applicable ; l’outil ne rouvre rien et ne reporte rien d’office. Comme pour la [relance des pièces manquantes](/blog/automatiser-la-relance-des-pieces-clients), réception et exploitabilité restent deux états distincts.
 
 ### Faut-il commencer par les tickets ou par les factures fournisseurs ?
 
@@ -129,7 +136,7 @@ Elle en réduit le périmètre là où elle s’applique, puisque les données a
 
 ## La règle à retenir
 
-Une extraction n’est pas une vérification. Six contrôles dans un ordre fixe, quatre déterministes et deux qui demandent une décision, une file d’anomalies à motifs fermés, une validation avant chaque enregistrement, et un reliquat qu’on recompte à chaque période plutôt qu’on ne l’affiche.
+Une extraction n’est pas une vérification. Six contrôles dans un ordre fixe préparent des alertes, les cas ambigus et l’imputation restent décidés par une personne, chaque enregistrement attend une validation, et le reliquat n’est mesuré qu’après le rejeu effectif d’un lot reproductible.
 
 ## Pour aller plus loin
 

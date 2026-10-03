@@ -1,12 +1,23 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, mkdtempSync, cpSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { validateDossier } from '../../scripts/lib/blog-pipeline.mjs';
 import { auditerContratBlog } from '../../scripts/verify-blog-contract.mjs';
+import { materialiser, ecrireSceau } from '../../scripts/blog-forge.mjs';
 
-const root = resolve(import.meta.dirname, '../..');
+const sourceRoot = resolve(import.meta.dirname, '../..');
+// Fixture scellée isolée : le vrai candidat peut être en republication go-production.
+const root = mkdtempSync(join(process.env.TMPDIR || tmpdir(), 'blog-intent-fixture-'));
 const slug = 'prompt-chatgpt-expert-comptable';
+for (const path of ['editorial', 'src', 'docs', 'public', 'dist']) {
+  cpSync(join(sourceRoot, path), join(root, path), { recursive: true });
+}
+const fixture = await materialiser({ root, slug, statut: 'publie' });
+assert.deepEqual(fixture.erreurs, [], 'La fixture doit être réellement matérialisée.');
+ecrireSceau(root, slug);
+test.after(() => rmSync(root, { recursive: true, force: true }));
 const dernierReleve = readdirSync(join(root, 'docs/strategy/site-v3/mesures'))
   .filter((nom) => /^(questions|titres-intent)-\d{4}-\d{2}-\d{2}\.json$/.test(nom))
   .map((nom) => nom.match(/\d{4}-\d{2}-\d{2}/)[0])

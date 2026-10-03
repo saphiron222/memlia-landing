@@ -2,66 +2,181 @@
   "subject": {
     "slug": "prompt-chatgpt-expert-comptable",
     "bodySha256": "588b9ff39b4164e1e748f140b6c9bc12652b7f0a40de1b6a59bad04c3d086548",
-    "recipeSha256": "5220c43ec3d00bfb34c359c2c811384a1235e018924c0754f3ed289551855853",
-    "renderedSha256": "f0d9a862b47710c70ad2768e397b83a58569c686a1faa7d8b105a72530b73ce5"
+    "recipeSha256": "e950367e5295c4ca35f3d45d00b9c5973b644df8836be71c4d3015129fc36cad",
+    "renderedSha256": "939c2df525e6e0165cd7eaaef565c33c071e56d7b6b7816c4ff0017d41b30376"
   },
   "editorial": {
-    "reviewer": "qa:t_f7a52dd8",
+    "reviewer": "metier:t_303e7c6d",
     "p0": [],
     "criteria": {
-      "intent-satisfaction": {"result": "PASS", "observations": ["Le prompt copiable part d'une facture fictive d'avril 2026, exige pièce et période, laisse le destinataire à confirmer et ne déclenche aucun envoi ; la réponse directe expose précisément ce geste."]},
-      "serp-format-rankability": {"result": "PASS", "observations": ["H1, titre d'onglet et description portent l'intention prompt ChatGPT expert-comptable ; le lecteur trouve une consigne utilisable, les quatre éléments à conserver et une FAQ plutôt qu'une liste de formules magiques."]},
-      "eeat-sources": {"result": "PASS", "observations": ["Deux citations CNIL dans le corps bornent partage autorisé et identification par croisement ; la page de l'Ordre ne prouve que l'existence de ses ressources. Le texte répète qu'aucune réponse ChatGPT n'a été mesurée."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["Les quatre parties de La règle écrite précisent l'arrêt ; les trois sorties du journal local concordent avec le tableau rendu. Le refus demande déjà partie vient du suivi fourni au script, absent du prompt copiable, limite explicitée deux fois."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["Build Astro ciblé neuf : un H1, canonical de ce slug, date visible et BlogPosting au 29 septembre 2026, deux figures avec source et date, OG et noindex propre au brouillon."]},
-      "ai-citability": {"result": "PASS", "observations": ["La consigne autonome, le tableau de trois sorties et les quatre FAQ sont extractibles ; l'attribution au script fictif accompagne les sorties et interdit de les présenter comme résultats de ChatGPT."]},
-      "contextual-conversion": {"result": "PASS", "observations": ["La clôture relie le pilier, la relance des pièces, /methode et /contact ; elle propose écriture, recette et maintenance dans les outils existants et maintient l'envoi humain."]}
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "La demande de facture fictive est préparée comme brouillon lorsque la pièce à demander est nommée mais pas reçue ; le champ Pièce attendue vide provoque l'arrêt du script local, pas l'absence du justificatif."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Article borné au prompt de demande de pièce, sans promesse d'un résultat ChatGPT ni classement de fournisseurs ; cette revue ne mesure aucun rang SERP."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Les citations CNIL relatives au partage autorisé et à l'identification par croisement, et la présentation par l'Ordre de ses ressources Data et IA, restent limitées à leur portée ; copies locales et SHA des reçus du 29/09 vérifiés. Aucune source ne prétend valider le comportement de ChatGPT."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Le journal du script local consigne pièce attendue vide, statut arrêt, motif contexte incomplet, message absent et aucun envoi. Le portrait de refus et l'alt dans le HTML local montrent le champ « Pièce attendue » non renseigné ; le cas nominal porte une facture nommée mais non reçue et produit seulement un brouillon fictif non envoyé."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "HTML local a4e597b : deux portraits enfants directs de figure, alts concordants, aucune légende ni wrapper défilant ; captures haut/bas 320/375/1440 lisibles. La page locale affiche robots index ; cela ne prouve pas que le brouillon soit publié ou indexé, ni la QA/CI du candidat."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Le texte attribue le refus au script déterministe et dit explicitement qu'aucun essai ChatGPT n'a été réalisé ; l'alt corrigé ne transforme pas la pièce justificative non reçue en raison d'arrêt."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "La décision de vérifier le destinataire puis d'envoyer reste humaine ; aucun courriel n'est présenté comme envoyé."
+        ]
+      }
     }
   },
   "business": {
-    "reviewerTaskId": "t_5d50b3f0",
+    "reviewerTaskId": "t_e511ee7c",
     "claims": {
-      "claim-unit-668540d969d0-1": {"verdict": "soutient", "reasoning": "Copie CNIL cnil-ia-generative, passage des invites : ne partager que les informations autorisées. Le corps le cite comme conseil, non comme autorisation universelle d'utiliser un dossier réel."},
-      "claim-unit-668540d969d0-2": {"verdict": "soutient", "reasoning": "La définition CNIL cnil-donnee-personnelle mentionne l'identification par croisement ; le corps se limite à dire que remplacer le nom ne suffit pas toujours, sans prétendre qu'un cas fictif identifie une personne."},
-      "claim-unit-3ea838c700eb-1": {"verdict": "soutient", "reasoning": "La copie primaire de l'Ordre annonce cas d'usage, précautions et techniques pour prompter ; le corps ne lui attribue ni contrôle du prompt donné ni approbation d'un fournisseur."}
+      "claim-unit-668540d969d0-1": {
+        "verdict": "soutient",
+        "reasoning": "FAQ CNIL sur l'entrée dans un système d'IA générative : ne soumettre que des informations autorisées à partager ; recommandation contextualisée, pas autorisation de verser un dossier réel. Copie locale contrôlée SHA 63f9767046b4d9b962a999b9533d230fc0f6175410a8c83424da6df48740726e, reçu du 29/09/2026."
+      },
+      "claim-unit-668540d969d0-2": {
+        "verdict": "soutient",
+        "reasoning": "Définition CNIL : identification possible par croisement ; le texte dit seulement que retirer le nom ne suffit pas toujours. Copie locale contrôlée SHA b610e932fc37be69d66a056c21b2dca1f0262d952c56a3bc9c707e7d2491786d, reçu du 29/09/2026."
+      },
+      "claim-unit-3ea838c700eb-1": {
+        "verdict": "soutient",
+        "reasoning": "La page de l'Ordre présente effectivement des cas d'usage, précautions et techniques de prompt ; aucune certification du prompt fictif ne lui est attribuée. Copie locale contrôlée SHA 1b650c10a7f081d705a617a8bddb4ddc6873fb83593b4914e3ad2827ba9c64d2, reçu du 29/09/2026."
+      }
     }
   },
   "image": {
-    "reviewer": "qa:t_f7a52dd8",
+    "reviewer": "metier:t_303e7c6d",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["Le master observé montre une feuille vierge avant une enveloppe non adressée derrière une grille fermée ; sujet, composition, diorama, hex, interdits et alt sont décrits dans la recette."]},
-      "generation-constraints": {"result": "PASS", "observations": ["Aucun mot, logo, personne, adresse ou interface de ChatGPT sur le master ; ni flèche ni coche ne simulent un envoi effectué."]},
-      "fictive-provenance": {"result": "PASS", "observations": ["Le cadre w39-prompt-brouillon annonce Atelier Fictif et Brouillon, non envoyé ; w39-prompt-arret montre une pièce vide et Contexte incomplet, et leurs légendes indiquent une reconstitution sans modèle interrogé."]},
-      "recognizable-subject": {"result": "PASS", "observations": ["La grille fermée sépare clairement le papier et l'enveloppe ; le contrôle préalable à la demande est identifiable avec l'alt sans imaginer une interaction avec un client réel."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Master mesuré à 1920 × 1080, OG à 1200 × 630 ; deux preuves WebP réelles sous 150 Ko, image et alt présents dans la prévisualisation construite."]},
-      "alt-information": {"result": "PASS", "observations": ["L'alt décrit les objets du master et non une sortie du modèle ; chaque preuve inline dispose d'un alt et d'une légende Source et capture du 2026-09-27."]}
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Les deux preuves inline sont des reconstitutions HTML fictives distinctes de la couverture ; source et capturedAt 2026-09-27 déclarés dans la recette, sans horodatage autonome de fabrication vérifié."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Inspection du WebP : Atelier Fictif, période avril 2026, Pièce attendue vide et sortie Contexte incomplet ; aucune donnée client réelle ni interface ChatGPT."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "L'image affiche Jeu fictif et aucun message envoyé. L'article précise que les figures sont des reconstitutions HTML et non des captures ChatGPT."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Le refus visible dépend de l'identification de la pièce à demander, pas de la présence physique de la facture. Le WebP nominal distinct représente une facture nommée mais non reçue et un brouillon non envoyé."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Portraits -mobile.webp utilisés aussi à 1440 px dans ce rendu ; les captures haut/bas à 320/375/1440 montrent le brouillon non envoyé et le champ « Pièce attendue » vide. L'ancienne empreinte de paysage ne lie pas ces portraits ; la nouvelle empreinte de rendu est dans subject."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Les deux alt du HTML concordent avec la recette et les portraits : brouillon non envoyé et refus quand le champ « Pièce attendue » n’est pas renseigné. Il ne s'agit pas d'un justificatif identifié non reçu ; aucun essai ChatGPT n'a été effectué."
+        ]
+      }
     },
     "directionArt": 17,
-    "semanticRelevance": 21
+    "semanticRelevance": 22
   },
   "sources": {
-    "reviewedBy": "qa:t_f7a52dd8",
+    "reviewedBy": "metier:t_e511ee7c",
     "observations": {
-      "cnil-ia-generative": "Copie CNIL 63f97670… vérifiée contre reçu 200 du 29/09 ; recommandation de partage autorisé dans le contexte des invites, non preuve de performance ChatGPT.",
-      "cnil-donnee-personnelle": "Copie CNIL b610e932… et extrait sur l'identification par croisement vérifiés ; portée limitée à une possibilité d'identification.",
-      "ordre-ia": "Copie institutionnelle 1b650c10… et extrait retrouvés ; simple présentation de ressources Data et IA, sans essai de ce prompt."
+      "cnil-ia-generative": "FAQ CNIL, copie du reçu HTTP 200 daté 29/09/2026, SHA et extrait vérifiés ; recommandations pour l'entrée d'un système d'IA générative seulement.",
+      "cnil-donnee-personnelle": "Définition CNIL, copie du reçu HTTP 200 daté 29/09/2026, SHA et extrait vérifiés ; identification par croisement possible, non systématique.",
+      "ordre-ia": "Publication primaire de l'Ordre, copie du reçu HTTP 200 daté 29/09/2026, SHA et extrait vérifiés ; présentation de ressources, pas approbation du prompt."
     }
   },
   "qualite": {
-    "reviewer": "qa:t_f7a52dd8",
+    "reviewer": "metier:t_303e7c6d",
     "score": 91,
     "p0": [],
     "categories": {
-      "contentQuality": {"score": 28, "max": 30},
-      "seoOptimization": {"score": 23, "max": 25},
-      "eeatSignals": {"score": 14, "max": 15},
-      "technicalElements": {"score": 12, "max": 15},
-      "aiCitationReadiness": {"score": 14, "max": 15}
+      "contentQuality": {
+        "score": 27,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 22,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 14,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 14,
+        "max": 15
+      }
     },
-    "evidence": ["28/30 contenu : prompt réellement copiable, règle d'arrêt et trois cas du script vérifiés ; aucun essai du fournisseur n'est insinué.", "23/25 SEO : H1/title/description adaptés, canonical et maillage réciproque au pilier, deux sources CNIL et une source institutionnelle.", "14/15 confiance : source et extrait présents dans les copies 200, auteur identifié ; sortie simulée distincte d'une observation ChatGPT.", "12/15 technique : dates visible et structurée concordantes, figures datées et OG 1200 × 630 ; pas de Lighthouse ni de mesure mobile interactive dans cette passe.", "14/15 citabilité : tableau, FAQ et prompt autonomes, avec provenance explicite de la règle locale."],
-    "reservations": ["Aucun fournisseur ChatGPT interrogé : le comportement du prompt copiable reste non mesuré.", "Ce score porte uniquement sur le brouillon construit ; son noindex est normal ici, sans attester publication ni vitesse réelle."],
-    "seo": ["Réponse directe, lien vers le pilier et canonical cohérents ; sommaire et deux preuves accessibles dans le rendu local."],
-    "geo": ["Le tableau cite les sorties du script local et non celles du modèle ; conserver cette attribution si la page est extraite."],
-    "verdict": "91/100, zéro P0 sur corps et prévisualisation exacts ; revue de contenu, pas feu vert pour une livraison sans scellement et QA finale."
+    "evidence": [
+      "27/30 : condition d'arrêt et cas nominal séparés dans le texte, le journal et les portraits, sans refus attribué à ChatGPT.",
+      "22/25 : titre, tâche et liens inchangés ; aucun résultat de classement mesuré.",
+      "14/15 : trois copies de sources datées et liées dans la revue antérieure, sans validation fictive de ChatGPT.",
+      "14/15 : deux preuves directes sans caption ni scroll, lisibles dans les captures 320/375/1440 ; pas de test de lecteur d'écran ni preuve publique.",
+      "14/15 : refus présenté comme sortie du script local uniquement."
+    ],
+    "reservations": [
+      "Cette revue IA ciblée ne vaut ni scellement ni QA/CI exact-head ni feu vert de publication.",
+      "Aucun appel ChatGPT ou essai de lecteur d'écran effectué ; capturedAt W39 déclaré au 27/09 sans horodatage autonome vérifié lors de cette passe.",
+      "Sources officielles évaluées à partir des copies et reçus du 29/09/2026 ; pas de nouvelle consultation HTTP en direct.",
+      "Le rendu local affiche robots index, sans preuve d'une mise en ligne ou d'une indexation effective."
+    ],
+    "seo": [
+      "La revue porte sur la concordance de la preuve et du HTML local ; la matérialisation, le scellement et l'indexabilité publique restent à vérifier."
+    ],
+    "geo": [
+      "Ne jamais attribuer à ChatGPT le refus du script éditorial déterministe."
+    ],
+    "verdict": "AI_REVIEW_PASS sur les portraits et le rendu local a4e597b, sous réserves de provenance historique et de livraison ; ni scellement ni publication."
+  },
+  "technicalBindingMaintenance": {
+    "maintainedBy": "dev:t_30243835",
+    "maintainedAt": "2026-10-03",
+    "reason": "updatedAt de republication uniquement ; avis métier du 03/10 maintenu sur corps, sources, figures et règles inchangés. Ni nouvelle revue ni contrôle public.",
+    "previousSubject": {
+      "slug": "prompt-chatgpt-expert-comptable",
+      "bodySha256": "588b9ff39b4164e1e748f140b6c9bc12652b7f0a40de1b6a59bad04c3d086548",
+      "recipeSha256": "b1600868b0a1e167f9752b9ddbfbeac6f90eb0d0b6737a6a411ace2ed97f2520",
+      "renderedSha256": "939c2df525e6e0165cd7eaaef565c33c071e56d7b6b7816c4ff0017d41b30376"
+    }
   }
 }

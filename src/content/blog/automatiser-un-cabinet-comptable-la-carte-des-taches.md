@@ -4,7 +4,7 @@ titreOnglet: "Automatisation cabinet comptable : carte des tâches | Memlia"
 resume: "Soixante familles de tâches réparties en douze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel."
 description: "Automatisation cabinet comptable : une carte pour choisir une tâche, écrire sa règle et fixer ce qui se prépare, se valide ou reste humain."
 datePublication: 2026-09-16
-dateMiseAJour: 2026-09-29
+dateMiseAJour: 2026-10-03
 auteur: kevin
 sujets: [automatisation, methode, cabinet]
 motsCles: ["automatisation cabinet comptable", "tâches répétitives", "validation humaine", "règle de cabinet", "familles de tâches"]
@@ -23,7 +23,7 @@ tache: "Dresser la carte des tâches automatisables du cabinet et repérer celle
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-29
+  date: 2026-10-03
 funnel: TOFU
 contentType: searchable
 format: pillar-page
@@ -32,7 +32,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Douze pôles et soixante familles listés depuis src/data/familles.ts ; pour chacun des onze pôles ouverts, un tableau se-prépare-seul / attend-une-validation / reste-humain ; le douzième (audit légal) listé et non ouvert ; six affirmations sourcées sur des pages officielles ouvertes le jour de la publication."
 reviewRule: "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données."
-reviewer: qa:t_e5c72326
+reviewer: metier:t_303e7c6d
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier une première tâche"
@@ -106,8 +106,7 @@ Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. L
 | Audit légal | 1 | commissariat aux comptes : famille listée, aucune tâche ouverte | tout |
 
 <figure data-blog-proof="carte-douze-poles">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." tabindex="0"><img src="/proofs/blog/carte-douze-poles.webp" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : taxonomie éditoriale versionnée src/data/familles.ts · capture du 2026-09-20</figcaption>
+  <img src="/proofs/blog/carte-douze-poles-mobile.webp" alt="Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert." width="1200" loading="lazy" decoding="async">
 </figure>
 
 ## Production comptable : de la pièce reçue au bilan livré
@@ -227,8 +226,7 @@ Quatre familles qui ne produisent rien mais qui décident de tout. Choisir et ca
 | La mesure du temps avant et après, sur le même jeu d’essai | La place de chaque validation humaine, écrite dans la règle | La décision d’interrompre ou d’étendre une automatisation |
 
 <figure data-blog-proof="carte-test-regle">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." tabindex="0"><img src="/proofs/blog/carte-test-regle.webp" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : test de maturité décrit dans cet article sur la carte des tâches · capture du 2026-09-20</figcaption>
+  <img src="/proofs/blog/carte-test-regle-mobile.webp" alt="Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables." width="1200" loading="lazy" decoding="async">
 </figure>
 
 ## Que ne contient pas cette carte ?

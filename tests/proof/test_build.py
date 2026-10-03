@@ -24,7 +24,6 @@ INTEGRATION_PAGES = {
     'bulletin-de-paie-silae',
 }
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
-SUSPENDED_ARTICLE = 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'
 def public_articles():
     """Une source non-brouillon est attendue dans dist ; aucun nouveau slug n'est implicitement autorisé."""
     return {path.stem for path in (ROOT / 'src/content/blog').glob('*.md')
@@ -156,10 +155,13 @@ class BuildProof(unittest.TestCase):
                                f'<meta property="og:title" content="{escape(headline, quote=True)}">'
                                f'<script type="application/ld+json">{json.dumps({"@graph": [{"@type": "BlogPosting", "headline": headline}]}, ensure_ascii=False)}</script>')
             self.assertTrue(article_headline_identity(article))
-    def test_suspended_article_static_html_is_noindex(self):
-        doc = Document(DIST / 'blog' / f'{SUSPENDED_ARTICLE}.html')
+    def test_requalified_article_static_html_is_indexable(self):
+        # Le candidat livre la correction FE et retire ensemble l'interception
+        # HTTP et l'exclusion du sitemap (test article-maintenance indépendant).
+        # Garder une assertion positive sur le rendu, pas supprimer la recette.
+        doc = Document(DIST / 'blog' / 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html')
         robots = [m['content'] for m in doc.select('meta') if m.get('name') == 'robots']
-        self.assertEqual(robots, ['noindex, follow'])
+        self.assertEqual(robots, ['index, follow, max-image-preview:large'])
 
     def test_pages_one_h1_french(self):
         pages = sorted(DIST.glob('*.html'))
@@ -208,8 +210,7 @@ class BuildProof(unittest.TestCase):
             subtree = ET.parse(DIST / urlsplit(link).path.lstrip('/'))
             for url in subtree.findall('.//s:url', ns):
                 pages[url.find('s:loc', ns).text] = url.find('s:lastmod', ns).text
-        published_articles = [a for a in articles() if not is_preview_article(a)
-                              and a.stem != SUSPENDED_ARTICLE]
+        published_articles = [a for a in articles() if not is_preview_article(a)]
         # Les pages légales et les candidats service noindex restent hors sitemap. Une page de
         # service n'y entre qu'après le passage de la forge au statut `publie`.
         services_publies = set()
@@ -230,7 +231,6 @@ class BuildProof(unittest.TestCase):
                      } | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
-        self.assertNotIn(f'{SITE}/blog/{SUSPENDED_ARTICLE}', pages)
         self.assertNotIn(f'{SITE}/outils-comptables-gratuits/temoin-calcul-local', pages)
         # lastmod d'un article publié = dateModified de son schéma (une seule source : le frontmatter).
         for article in published_articles:
@@ -433,7 +433,7 @@ class BuildProof(unittest.TestCase):
                 metas = {m.get('property') or m.get('name'): m['content'] for m in doc.select('meta') if m.get('content')}
                 self.assertEqual(metas['og:type'], 'article')
                 self.assertEqual(metas['og:url'], url)
-                if is_preview_article(article) or article.stem == SUSPENDED_ARTICLE:
+                if is_preview_article(article):
                     self.assertIn('noindex', metas['robots'])
                 else:
                     self.assertNotIn('noindex', metas['robots'])
@@ -555,4 +555,3 @@ class FamillesDesArticles(unittest.TestCase):
             verifies += 1
         # Le compte affiché dit ce que le test a réellement contrôlé : zéro article pipeline n'est pas un succès silencieux.
         print(f'familles vérifiées : {verifies} article(s) pipeline')
-

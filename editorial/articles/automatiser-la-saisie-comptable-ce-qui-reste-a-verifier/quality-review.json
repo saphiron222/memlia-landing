@@ -1,54 +1,49 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-  "reviewedAt": "2026-09-20",
-  "reviewer": "relecteur-qualite-ia-memlia",
+  "reviewedAt": "2026-10-03",
+  "reviewer": "metier:t_30243835",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 98,
+  "score": 92,
   "p0": 0,
   "categories": {
     "contentQuality": {
-      "score": 28,
+      "score": 27,
       "max": 30
     },
     "seoOptimization": {
-      "score": 25,
+      "score": 23,
       "max": 25
     },
     "eeatSignals": {
-      "score": 15,
+      "score": 14,
       "max": 15
     },
     "technicalElements": {
-      "score": 15,
+      "score": 14,
       "max": 15
     },
     "aiCitationReadiness": {
-      "score": 15,
+      "score": 14,
       "max": 15
     }
   },
   "evidence": [
-    "Schema JSON-LD complet sur la page rendue : BlogPosting, Person (Kevin Kitanga, avec bio et lien /a-propos), Organization (Memlia, SIREN 108621541, adresse Paris 8e), BreadcrumbList et WebSite.",
-    "Les cinq claims sourcés du paquet de revue sont vérifiés mot pour mot dans les copies locales (.source.txt) des quatre sources tier-1 citées, sans écart de portée ni de polarité.",
-    "Hiérarchie de titres propre sur toute la page : un seul h1, puis des h2, avec des h3 réservés à la FAQ — aucun saut de niveau relevé.",
-    "9 liens internes contextuels au total (7 dans le corps : glossaire x3, article frère, article pilier, /methode, /automatisation-cabinet-comptable ; 2 dans le bloc de clôture) et 4 liens externes tier-1, dans les fourchettes recommandées par le barème.",
-    "Image de couverture servie en AVIF/WebP avec srcset 768/1200/1600w, loading=\"eager\" et fetchpriority=\"high\" sur l'image LCP (pas de lazy-loading fautif), alt de 121 caractères.",
-    "Maillage bidirectionnel vérifié par grep : l'article pilier (automatiser-un-cabinet-comptable-la-carte-des-taches.html) et l'article frère (automatiser-la-relance-des-pieces-clients.html) renvoient tous deux vers cet article, et réciproquement.",
-    "Zéro tiret cadratin, zéro chiffre de gain, zéro mention de donnée client et zéro occurrence du mot « module » dans le corps de l'article ; le jeu de test est explicitement qualifié de « fictif ».",
-    "Plusieurs phrases s'enchaînent par point-virgule sur cinq ou six propositions (ex. l'ouverture de Brique 2 : « On vérifie d'abord que... puis que... puis que... »), ce qui allonge la longueur moyenne de phrase au-delà des ~22 mots recommandés pour la lisibilité."
+    "Notes heuristiques du dossier antérieur maintenues : aucune nouvelle performance SEO ni mesure Lighthouse.",
+    "Réserve métier sur la période levée par tableaux/FAQ/cas fictifs/portrait ; sources officielles relues, HTML preview reconstruit et cohérence exécutée.",
+    "525testsNodePASS sans FAIL/SKIP ;5testsSaisiePASS ; ceci ne remplace pas le build de publication."
   ],
   "reservations": [
-    "Le score Lighthouse (LCP/INP/CLS réels) n'a pas été mesuré : seule la présence de signaux favorables dans le code (CSS inliné, polices préchargées, fetchpriority sur le hero) a été vérifiée, pas leur effet chiffré.",
-    "La citabilité IA réelle (apparition effective dans une réponse Google AI Overviews, ChatGPT ou Perplexity) n'a pas été testée ; seule la structure extractible du HTML a été évaluée.",
-    "La page porte <meta name=\"robots\" content=\"noindex, follow\"> et le bandeau « Candidat éditorial — preview privée, non publiable » : identiques sur les 6 fichiers de .qa/render-tous/blog/, donc un artefact du harnais de rendu QA plutôt qu'un réglage propre à cet article — à confirmer absent une fois l'URL publiée en production.",
-    "La lisibilité (Flesch ou équivalent français) n'a pas été calculée par un outil ; l'appréciation de densité de phrase reste qualitative."
+    "npm run build reproduit un échec de rubrique : Saisie est encore brouillon. Dev doit installer cet avis, rematérialiser et finaliser la livraison coordonnée.",
+    "Ni QA finale, ni CI du candidat local, ni publication publique vérifiées dans cette passe ; publication_completed=false.",
+    "Les deux cas Saisie décrivent des attentes fictives, pas un moteur de saisie exécuté.",
+    "Quatre autres corps/recettes inchangés : validation de fond antérieure maintenue, sans nouvelle revue pour une date, un lien ou une empreinte seule."
   ],
-  "verdict": "Article rigoureusement sourcé (5/5 claims vérifiées soutient) et structuré pour l'extraction humaine et IA (98/100) ; publiable tel quel sous la seule réserve de confirmer, hors de cet artefact de preview QA, que la page finale ne sera pas en noindex.",
+  "verdict": "PASS métier sur la correction de période ; réserve de fond levée. Avis pour rematérialisation du candidat, non clôture de republication.",
   "subject": {
     "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "articleSha256": "b53e32e3210a41188f2a6569efe70e2f1070807e9841dd975ebfaf7d176fdc25",
-    "manifestSha256": "7c9318a7b271910bbde80e8bde6a724ba4fef42a1fd48dd87255af9ad005de77"
+    "articleSha256": "49f7120165a90a904be38db9229922d26e230b551de4dce06c2ae1832cbd266a",
+    "manifestSha256": "67a9558ce0aa1d51a8fac8956eb1faa49e952b8330eeaf147c032621cc6582cc"
   }
 }

@@ -4,6 +4,7 @@ titreOnglet: "Logiciel IA comptabilité : grille de choix | Memlia"
 resume: "Comparer le parcours entier d'une pièce : réception, exception, reprise, validation et trace. Quatre cas fictifs rejoués, aucun éditeur testé."
 description: "Logiciel IA comptabilité : une grille pour comparer le traitement des pièces et des exceptions, sans confondre démonstration et résultat mesuré."
 datePublication: 2026-09-29
+dateMiseAJour: 2026-10-03
 auteur: kevin
 sujets: [ia, saisie, automatisation]
 motsCles: ["logiciel ia comptabilite", "choix logiciel comptable", "exceptions comptables"]
@@ -22,7 +23,7 @@ tache: "Comparer sur une pièce fictive les capacités du logiciel existant et d
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-29
+  date: 2026-10-03
 funnel: MOFU
 contentType: searchable
 format: faq-knowledge
@@ -31,7 +32,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Quatre cas de tri par règle locale conservés dans cas-executes.json ; aucun éditeur ni intégration commerciale testé."
 reviewRule: "Réviser les conditions des éditeurs et la documentation officielle avant tout classement de produit ; la grille de méthode reste indépendante des marques."
-reviewer: qa:t_f7a52dd8
+reviewer: metier:t_303e7c6d
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier cette tâche"
@@ -76,8 +77,7 @@ Constituez ensuite un petit dossier **entièrement fictif**, sans document clien
 Relevez par solution la version montrée, la sortie, les étapes manuelles et la trace après correction. Sans démonstration reproductible, inscrivez « non vérifié », pas « absent ».
 
 <figure data-blog-proof="w39-logiciel-parcours">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Parcours fictif d'une pièce du dépôt jusqu'à la proposition soumise au contrôle humain." tabindex="0"><img src="/proofs/blog/w39-logiciel-parcours.webp" alt="Parcours fictif d'une pièce du dépôt jusqu'à la proposition soumise au contrôle humain." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : Grille éditoriale W39 rejouée sur des données fictives ; aucun éditeur évalué · capture du 2026-09-27</figcaption>
+  <img src="/proofs/blog/w39-logiciel-parcours-mobile.webp" alt="Parcours fictif d'une pièce du dépôt jusqu'à la proposition soumise au contrôle humain." width="1200" loading="lazy" decoding="async">
 </figure>
 
 ## Comparer ce qui compte vraiment
@@ -155,8 +155,7 @@ Un doublon probable n'est pas une pièce à effacer : deux fichiers identiques p
 Demandez à voir une exception **dans l'interface réelle**, puis faites-la traiter par la personne qui utiliserait l'outil. Si seule une vidéo du cas nominal est disponible, les exceptions restent non vérifiées, et non déclarées absentes.
 
 <figure data-blog-proof="w39-logiciel-exceptions">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Schéma fictif de trois issues de contrôle : proposition à vérifier, doublon probable et période ambiguë, sans écriture." tabindex="0"><img src="/proofs/blog/w39-logiciel-exceptions.webp" alt="Schéma fictif de trois issues de contrôle : proposition à vérifier, doublon probable et période ambiguë, sans écriture." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : Schéma HTML de la règle éditoriale W39 sur cas fictifs ; aucun éditeur évalué · capture du 2026-09-27</figcaption>
+  <img src="/proofs/blog/w39-logiciel-exceptions-mobile.webp" alt="Schéma fictif de trois issues de contrôle : proposition à vérifier, doublon probable et période ambiguë, sans écriture." width="1200" loading="lazy" decoding="async">
 </figure>
 
 ## Trois choix possibles, pas un classement de marques

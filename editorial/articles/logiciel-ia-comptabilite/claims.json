@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "logiciel-ia-comptabilite",
-  "articleSha256": "9b4b454fcef2378508f24edf533c282467eb3ea4b3dd7cb4ad5ff2531a863254",
+  "articleSha256": "bb2554d5aa5cd76e0239d7388cdaa4310b7710e33589aad117057f73d00c8c42",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -322,19 +322,19 @@
       "sourceExcerpts": {
         "cnil-choix-ia": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté"
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-10-03",
         "sourceResults": [
           {
             "sourceId": "cnil-choix-ia",
             "sourceUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
             "verifiedUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
             "excerpt": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté",
-            "context": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté",
-            "contextSha256": "472839e4b576f21efe9c699389c76e7d7858eca4ecc1e9abbc85c95b617a1ebc",
+            "context": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté et de tenir compte des<strong> risques encourus,</strong> non seulement du fait des usages poursuivis mais aussi des limitations du système envisagé.",
+            "contextSha256": "9b4abc2933c42ddc30505c7f7659535756233604659e2eda2c433e12de396a39",
             "citation": {
               "text": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté",
               "sha256": "472839e4b576f21efe9c699389c76e7d7858eca4ecc1e9abbc85c95b617a1ebc",
@@ -362,7 +362,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Conseil de choix d'un système d'IA générative, non obligation réglementaire : la CNIL recommande explicitement de partir de besoins concrets.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-10-03"
           }
         ]
       }
@@ -378,11 +378,11 @@
       "sourceExcerpts": {
         "ordre-outils-ia": "le CNOEC vous propose des outils concrets et pratiques pour passer à l’action dès aujourd’hui"
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-10-03",
         "sourceResults": [
           {
             "sourceId": "ordre-outils-ia",
@@ -418,7 +418,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Le site de l’Ordre annonce ses propres outils, sans certifier un produit particulier.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-10-03"
           }
         ]
       }
@@ -434,11 +434,11 @@
       "sourceExcerpts": {
         "service-public-pieces": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-10-03",
         "sourceResults": [
           {
             "sourceId": "service-public-pieces",
@@ -482,7 +482,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Citation exacte de Service Public ; aucune durée spécifique attribuée au logiciel.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-10-03"
           }
         ]
       }

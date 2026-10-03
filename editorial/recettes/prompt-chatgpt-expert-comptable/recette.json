@@ -6,6 +6,7 @@
   "summary": "Un prompt pour préparer une demande de pièce fictive : contexte autorisé, brouillon, arrêt si la pièce manque, destinataire et envoi validés par une personne.",
   "description": "Prompt ChatGPT expert comptable : préparer une demande de pièce sur cas fictif, savoir quand s'arrêter et garder la validation humaine.",
   "date": "2026-09-29",
+  "updatedAt": "2026-10-03",
   "topics": ["ia", "pieces", "automatisation"],
   "keywords": ["prompt chatgpt expert comptable", "demande de pièce", "confidentialité des données"],
   "primaryQuery": "prompt chatgpt expert comptable",
@@ -26,7 +27,7 @@
   "cta": {"label": "Confier cette tâche", "destination": "/contact", "outcome": "Nous écrivons votre règle de demande de pièces, l'automatisons dans vos outils et la recettons avec votre équipe. Vous gardez la décision d'envoyer. Rien à envoyer : décrivez simplement la tâche."},
   "inlineProofs": [
     { "id": "w39-prompt-brouillon", "insertBeforeHeading": "Exemple : préparer une demande de pièce manquante", "alt": "Brouillon fictif de demande de facture non envoyé avec destinataire à confirmer.", "source": "Reconstitution HTML fictive ; scène nominale vérifiable dans journal-rejeu.json, aucun modèle interrogé", "capturedAt": "2026-09-27" },
-    { "id": "w39-prompt-arret", "insertBeforeHeading": "Les quatre éléments à conserver quand on adapte ce prompt", "alt": "Refus fictif de préparer la demande de pièce en l'absence de la pièce attendue.", "source": "Reconstitution HTML fictive ; arrêt vérifiable dans journal-rejeu.json, aucun modèle interrogé", "capturedAt": "2026-09-27" }
+    { "id": "w39-prompt-arret", "insertBeforeHeading": "Les quatre éléments à conserver quand on adapte ce prompt", "alt": "Refus fictif de préparer la demande quand le champ « Pièce attendue » n’est pas renseigné.", "source": "Reconstitution HTML fictive ; arrêt vérifiable dans journal-rejeu.json, aucun modèle interrogé", "capturedAt": "2026-09-27" }
   ],
   "image": {
     "heroId": "img-art-prompt-chatgpt-expert-comptable",

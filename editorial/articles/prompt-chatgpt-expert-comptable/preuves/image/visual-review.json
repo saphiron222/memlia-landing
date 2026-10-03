@@ -3,9 +3,9 @@
   "candidateSlug": "prompt-chatgpt-expert-comptable",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-29",
-  "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
-  "manifestSha256": "b2cdbd292ffe24a190e872b7aa6e8772c8e60b0ba0e222ea16021cc1afbaccf3",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
+  "manifestSha256": "da19b3e5b7b2454f51c3d99f43694f7571ecb08a34d0a7a5abfcf512134e419f",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact prompt-chatgpt-expert-comptable."
   ],
@@ -49,42 +49,42 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Le master observé montre une feuille vierge avant une enveloppe non adressée derrière une grille fermée ; sujet, composition, diorama, hex, interdits et alt sont décrits dans la recette."
+        "Les deux preuves inline sont des reconstitutions HTML fictives distinctes de la couverture ; source et capturedAt 2026-09-27 déclarés dans la recette, sans horodatage autonome de fabrication vérifié."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Aucun mot, logo, personne, adresse ou interface de ChatGPT sur le master ; ni flèche ni coche ne simulent un envoi effectué."
+        "Inspection du WebP : Atelier Fictif, période avril 2026, Pièce attendue vide et sortie Contexte incomplet ; aucune donnée client réelle ni interface ChatGPT."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Le cadre w39-prompt-brouillon annonce Atelier Fictif et Brouillon, non envoyé ; w39-prompt-arret montre une pièce vide et Contexte incomplet, et leurs légendes indiquent une reconstitution sans modèle interrogé."
+        "L'image affiche Jeu fictif et aucun message envoyé. L'article précise que les figures sont des reconstitutions HTML et non des captures ChatGPT."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "La grille fermée sépare clairement le papier et l'enveloppe ; le contrôle préalable à la demande est identifiable avec l'alt sans imaginer une interaction avec un client réel."
+        "Le refus visible dépend de l'identification de la pièce à demander, pas de la présence physique de la facture. Le WebP nominal distinct représente une facture nommée mais non reçue et un brouillon non envoyé."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Master mesuré à 1920 × 1080, OG à 1200 × 630 ; deux preuves WebP réelles sous 150 Ko, image et alt présents dans la prévisualisation construite."
+        "Portraits -mobile.webp utilisés aussi à 1440 px dans ce rendu ; les captures haut/bas à 320/375/1440 montrent le brouillon non envoyé et le champ « Pièce attendue » vide. L'ancienne empreinte de paysage ne lie pas ces portraits ; la nouvelle empreinte de rendu est dans subject."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L'alt décrit les objets du master et non une sortie du modèle ; chaque preuve inline dispose d'un alt et d'une légende Source et capture du 2026-09-27."
+        "Les deux alt du HTML concordent avec la recette et les portraits : brouillon non envoyé et refus quand le champ « Pièce attendue » n’est pas renseigné. Il ne s'agit pas d'un justificatif identifié non reçu ; aucun essai ChatGPT n'a été effectué."
       ]
     }
   ]

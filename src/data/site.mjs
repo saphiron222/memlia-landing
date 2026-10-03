@@ -29,8 +29,6 @@ export const CTA = {
 
 /** Pages servies mais hors index (noindex) : jamais dans le sitemap. */
 export const PAGES_NOINDEX = [
-  // Incident FE : suspension provisoire, maintien hors sitemap jusqu'à nouvelle revue scellée.
-  '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
   '/mentions-legales',
   '/politique-de-confidentialite',
   '/404',

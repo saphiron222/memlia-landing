@@ -8,7 +8,7 @@
   "summary": "Un prompt pour préparer une demande de pièce fictive : contexte autorisé, brouillon, arrêt si la pièce manque, destinataire et envoi validés par une personne.",
   "description": "Prompt ChatGPT expert comptable : préparer une demande de pièce sur cas fictif, savoir quand s'arrêter et garder la validation humaine.",
   "publicationDate": "2026-09-29",
-  "updatedAt": null,
+  "updatedAt": "2026-10-03",
   "topics": [
     "ia",
     "pieces",
@@ -35,7 +35,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-29"
+      "verifiedAt": "2026-10-03"
     }
   },
   "businessReview": {
@@ -104,7 +104,7 @@
     }
   ],
   "author": "kevin",
-  "reviewer": "qa:t_f7a52dd8",
+  "reviewer": "metier:t_303e7c6d",
   "reviewRule": "Revoir les conditions d'utilisation de l'outil et les recommandations CNIL avant un usage réel ; réviser le contenu en cas d'évolution de la source.",
   "cta": {
     "label": "Confier cette tâche",
@@ -122,12 +122,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-03"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-03"
     }
   },
   "links": {
@@ -161,6 +161,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-09-29",
+  "publishedAt": "2026-10-03",
   "publicationEvidence": "preuves/publication.json"
 }

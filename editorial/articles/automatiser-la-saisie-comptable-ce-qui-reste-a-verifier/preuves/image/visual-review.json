@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-20",
-  "articleSha256": "b53e32e3210a41188f2a6569efe70e2f1070807e9841dd975ebfaf7d176fdc25",
-  "manifestSha256": "7c9318a7b271910bbde80e8bde6a724ba4fef42a1fd48dd87255af9ad005de77",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "49f7120165a90a904be38db9229922d26e230b551de4dce06c2ae1832cbd266a",
+  "manifestSha256": "67a9558ce0aa1d51a8fac8956eb1faa49e952b8330eeaf147c032621cc6582cc",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
@@ -49,42 +49,42 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Le master.png (1920x1080) montre les objets décrits par la composition du brief : pile de feuilles pliées à gauche, portique vert à plan lumineux translucide avec une feuille qui glisse au centre, plateau vert à feuilles alignées et jeton vert, plateau graphite à feuilles de travers et jeton graphite, loupe mate posée près de ce second plateau, sur un bureau isométrique crème."
+        "Couverture et son brief inchangés : revue antérieure maintenue, pas de nouvelle génération."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Cadrage 16:9 exact (1920x1080), diorama 3D isométrique à formes simplifiées, matières mates et translucides, lumière douce venant du haut gauche, palette vert Memlia / vert profond / crème / graphite conforme à prompt.json ; aucun texte, chiffre, logo, personnage, écran ni fausse interface visible sur l'image."
+        "Les deux variantes corrigées de saisie-six-controles ont été ouvertes : scénario fictif, sortie attendue non exécutée et aucune écriture explicites."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Les objets représentés (feuilles, portique, plateaux, loupe) sont des formes génériques sans logo, marque ni identifiant réel : rien dans l'image ne se fait passer pour une capture d'un outil existant ni pour un document client réel."
+        "TEST-050 conserve son statut de scénario fictif ; aucune mesure sur cinquante fichiers revendiquée."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Le geste de lecture puis de tri en deux sorties distinctes (plateau vert rangé contre plateau graphite de travers) est lisible sans aucun texte ; la spécificité « comptable » du sujet s'appuie toutefois sur le titre et l'alt plutôt que sur des indices visuels du métier, cohérent avec le style abstrait déjà assumé par les couvertures du site."
+        "Étape5 Période à qualifier et décision humaine documentée ; pièce reçue conservée ; le portrait ne donne plus d'affectation certaine."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "image.json déclare master 1920x1080 (png), og 1200x630 (webp, crop 1200x630+0+22) et un variant hero-768 en avif/webp 768x432, conformes aux trois tailles demandées ; la page rendue sert bien un og:image 1200x630 avec largeur/hauteur explicites et un srcset 768/1200/1600w pour la couverture."
+        "Deux WebP corrigés ouverts, aucun texte final tronqué ; renderer --check confirme18preuves ; empreintes contrôlées. Ce contrôle d'actifs ne constitue pas une QA navigateur finale ou une preuve d'images servies en production."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L'alt « Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe » fait 121 caractères (sous la limite de 125) et décrit les objets visibles de l'image plutôt qu'un slogan ou un mot-clé isolé."
+        "Alt corrigé concordant avec l'image et le corps ; autre figure inchangée."
       ]
     }
   ]

@@ -2,66 +2,179 @@
   "subject": {
     "slug": "logiciel-ia-comptabilite",
     "bodySha256": "81f6827dbace394c2292b9006b3593a9b1861830c3dd2b21ca7124d27bd058bf",
-    "recipeSha256": "90e1ab2c79b42f1e0a6c3b58126637089035653d0b3a1849d94050158edf6b8e",
-    "renderedSha256": "f7b87f155afbfc85fd9e8722e7fb2a52435301e5365b0f428e66f2fedfd4312e"
+    "recipeSha256": "ab11a2afa75d574a21cb15f86f2884209d3914f876459a906eaebc00a91f4c1f",
+    "renderedSha256": "4f07160929357c98d49b15b7864f9d66776c6e42501a1264cd2b99a63ab99275"
   },
   "editorial": {
-    "reviewer": "qa:t_f7a52dd8",
+    "reviewer": "metier:t_303e7c6d",
     "p0": [],
     "criteria": {
-      "intent-satisfaction": {"result": "PASS", "observations": ["Le lecteur reçoit six questions de démonstration sur le chemin de la pièce, puis trois décisions possibles ; le premier choix est d'éprouver le logiciel existant, sans classement commercial inventé."]},
-      "serp-format-rankability": {"result": "PASS", "observations": ["H1 et titre d'onglet répondent à logiciel IA comptabilité avec une grille de choix ; la description annonce un comparatif méthodologique et non un banc d'essai d'éditeurs."]},
-      "eeat-sources": {"result": "PASS", "observations": ["Les trois liens CNIL, Ordre et Service-Public du corps correspondent à des copies datées, les règles de conservation n'impliquent pas une fonction d'archivage ; le texte nie explicitement avoir testé Dext ou Pennylane."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["La règle écrite distingue proposition, validation et arrêt ; quatre sorties de la règle locale, dont doublon probable et période ambiguë, ont été rejouées et concordent avec journal-rejeu.json, sans écriture comptable."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["Build local neuf : date visible et BlogPosting au 29 septembre 2026, canonical propre, un H1 et deux figures HTML avec légendes de source/date ; OG et noindex correspondent à la preview brouillon."]},
-      "ai-citability": {"result": "PASS", "observations": ["Les tableaux séparent questions à poser à un éditeur et résultats de la seule règle éditoriale ; les FAQ rappellent que la simulation ne mesure aucune capacité du produit envisagé."]},
-      "contextual-conversion": {"result": "PASS", "observations": ["Lien vers le pilier, le prompt fictif, /methode et /contact ; Memlia est décrit comme service qui écrit la règle dans les outils existants, avec imputation et décision au cabinet."]}
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Le corps propose un protocole de comparaison sur même jeu fictif avec trois états vérifié/à configurer/non vérifié ; aucun résultat d'essai d'éditeur n'est présenté."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Titre, H1 et description restent centrés sur une grille de choix et non un comparatif commercial mesuré ; la route historique est conservée."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Copies CNIL, Ordre et Service-Public et leurs SHA/extraits vérifiés ; la recommandation CNIL concerne un système d'IA générative, et non tous les logiciels ; Service-Public ne prouve pas l'archivage d'un éditeur."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Deux figures : parcours fictif en six étapes jusqu'à proposition à valider et trois issues normal/doublon/période, avec zéro écriture ; journal-rejeu.json décrit en plus le quatrième arrêt donnée absente. Aucun éditeur testé, comme l'indiquent figures et article."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "HTML local a4e597b : portraits enfants directs des deux figures, alt présents, zéro figcaption et panneau défilant ; CSS width/max-width 100 %, height auto ; captures 320/375/1440 lisibles. Robots index, follow sur le build local uniquement, sans constat de production."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Grille, cas et FAQ ne permettent pas d'inférer une capacité de Dext, Pennylane ni d'un logiciel actuel ; les limites de la règle locale sont répétées."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "Le lien vers méthode et pilier garde le choix et la décision dans le cabinet, sans prétendre avoir livré la configuration illustrée."
+        ]
+      }
     }
   },
   "business": {
-    "reviewerTaskId": "t_5d50b3f0",
+    "reviewerTaskId": "t_1a9ed93d",
     "claims": {
-      "claim-unit-5d8def65a991-1": {"verdict": "soutient", "reasoning": "La FAQ CNIL recommande de partir de besoins concrets pour choisir un système d'IA générative ; le corps dit conseille et n'étend pas la recommandation en obligation pour tous les logiciels comptables."},
-      "claim-unit-d18a00bf00fb-1": {"verdict": "soutient", "reasoning": "La copie de l'Ordre annonce ses propres outils pratiques Data et IA ; la phrase visible se limite à ce programme sans attribuer un essai ou une certification à un éditeur."},
-      "claim-unit-d1a753e6d63c-1": {"verdict": "soutient", "reasoning": "Service-Public indique une conservation minimale des documents de l'entreprise ; le corps renvoie à la nature des pièces et précise que la source ne certifie aucune fonction d'archivage d'un logiciel."}
+      "claim-unit-5d8def65a991-1": {
+        "verdict": "soutient",
+        "reasoning": "CNIL, FAQ IA générative, copie vérifiée 29/09 : recommande de partir de besoins concrets pour choisir un système d'IA générative. corps.md:103 préserve ce champ et le caractère de conseil, non obligation générale."
+      },
+      "claim-unit-d18a00bf00fb-1": {
+        "verdict": "soutient",
+        "reasoning": "L'Ordre annonce ses propres ressources data et IA dans la copie vérifiée 29/09 ; corps.md:105 ne prétend pas qu'il a certifié un éditeur."
+      },
+      "claim-unit-d1a753e6d63c-1": {
+        "verdict": "soutient",
+        "reasoning": "Service-Public F10029, copie vérifiée 29/09 : conservation minimale des documents d'entreprise selon leur nature ; corps.md:107 et 138 en excluent explicitement une garantie d'archivage logiciel."
+      }
     }
   },
   "image": {
-    "reviewer": "qa:t_f7a52dd8",
+    "reviewer": "metier:t_303e7c6d",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["Le master montre un bac de tri à trois compartiments, trois feuilles blanches et un portique vide ; brief avec sujet, composition, style, hex, interdits et alt relu."]},
-      "generation-constraints": {"result": "PASS", "observations": ["Aucun texte, logo, personnage, coche automatique ou écran de logiciel observé sur le master 1920 × 1080 ; les feuilles n'ont pas de données."]},
-      "fictive-provenance": {"result": "PASS", "observations": ["La figure parcours dit Grille fictive · aucun éditeur évalué ; la figure exceptions dit Aucun éditeur testé, et ni l'une ni l'autre n'exhibe de dossier réel."]},
-      "recognizable-subject": {"result": "PASS", "observations": ["Le bac, les feuilles et le portique évoquent le parcours à éprouver ; le nominal, le doublon et la période ne sont pas discernables sur le master seul, contrairement aux tableaux de preuve explicitement légendés."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Master vérifié 1920 × 1080 et OG 1200 × 630 ; deux preuves WebP dans le rendu avec alt et légendes de capture, sans tronquage visible dans les fichiers relus."]},
-      "alt-information": {"result": "PASS", "observations": ["Alt du master décrit ce qui est visible, sans inventer le résultat des feuilles ; les deux figures annoncent un protocole fictif et datent leur capture du 2026-09-27."]}
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Revue bornée aux deux preuves inline HTML figées et leurs alts ; couverture hors diff."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Deux WebP visualisés sans identité réelle ni capacité de marque revendiquée."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "w39-logiciel-parcours dit grille fictive, aucun éditeur évalué ; w39-logiciel-exceptions dit jeu entièrement fictif, aucune écriture enregistrée."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Parcours : pièce reçue, D-001, avril, contrôle doublon, proposition à valider, aucune écriture ; exceptions : normal, doublon probable et période ambiguë ; aucun résultat commercial."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Portraits -mobile.webp montés aussi sur bureau au SHA a4e597b ; les captures haut/bas à 320/375/1440 montrent les étapes et les trois cas lisibles. Les SHA précédemment cités concernaient des actifs antérieurs et ne sont pas réutilisés comme preuve des portraits."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Les deux alt de la recette concordent avec le parcours et les trois cas visibles dans le HTML ; source fictive et capturedAt 27/09/2026 restent dans la recette et non en légende publique. L'horodatage autonome de cette capture historique n'a pas été établi."
+        ]
+      }
     },
-    "directionArt": 18,
+    "directionArt": 17,
     "semanticRelevance": 21
   },
   "sources": {
-    "reviewedBy": "qa:t_f7a52dd8",
+    "reviewedBy": "metier:t_1a9ed93d",
     "observations": {
-      "cnil-choix-ia": "Copie CNIL 63f97670… et extrait sur besoins concrets vérifiés ; recommandation de choix, non comparaison empirique des éditeurs.",
-      "ordre-outils-ia": "Copie institutionnelle 1b650c10… et extrait sur les outils pratiques vérifiés ; aucune capacité produit établie.",
-      "service-public-pieces": "Copie Service-Public 5096184c… et phrase de conservation minimale vérifiées ; aucune durée universelle ni fonction logicielle déduite."
+      "cnil-choix-ia": "Extrait HTML et copie SHA 63f97670... vérifiés, conseil pour IA générative uniquement.",
+      "ordre-outils-ia": "Copie SHA 1b650c10... vérifiée, ressources propres de l'Ordre, pas certificat produit.",
+      "service-public-pieces": "Copie SHA 5096184c... vérifiée, conservation documentaire et durée selon la nature."
     }
   },
   "qualite": {
-    "reviewer": "qa:t_f7a52dd8",
+    "reviewer": "metier:t_303e7c6d",
     "score": 91,
     "p0": [],
     "categories": {
-      "contentQuality": {"score": 28, "max": 30},
-      "seoOptimization": {"score": 23, "max": 25},
-      "eeatSignals": {"score": 14, "max": 15},
-      "technicalElements": {"score": 12, "max": 15},
-      "aiCitationReadiness": {"score": 14, "max": 15}
+      "contentQuality": {
+        "score": 27,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 22,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 14,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 14,
+        "max": 15
+      }
     },
-    "evidence": ["28/30 contenu : six questions et trois voies concrètes avec quatre cas locaux exécutés ; une capacité d'éditeur non vue reste non vérifiée.", "23/25 SEO : intention logiciel IA lisible dans H1 et title, canonical et liens contextuels vers le pilier, le prompt et la méthode.", "14/15 confiance : CNIL, Ordre et Service-Public vérifiés par copies ; le guide ne simule pas des résultats produits par Dext ou Pennylane.", "12/15 technique : HTML statique, légendes des figures et OG 1200 × 630 ; aucun chiffre LCP ou parcours mobile interactif mesuré ici.", "14/15 citabilité : tableaux d'essai et FAQ réutilisables seulement en conservant la mention aucun éditeur évalué."],
-    "reservations": ["La règle locale sur quatre cas ne teste aucune intégration ni logiciel du marché.", "La prévisualisation noindex ne démontre ni indexabilité ni performances de la future page publiée."],
-    "seo": ["Grille de choix plutôt que comparatif de marques ; title, H1 et description concordants dans le HTML bâti."],
-    "geo": ["Tables structurées, quatre sorties locales et FAQ extractibles avec la limite aucune évaluation commerciale."],
-    "verdict": "91/100 et zéro P0 sur la prévisualisation exacte ; pas de GO publication sans scellement, CI et QA finale."
+    "evidence": [
+      "27/30 : protocole de comparaison à faire chez le vendeur ; quatre cas de règle locale, dont trois figurent dans la preuve des exceptions.",
+      "22/25 : grille de choix et maillage cohérents, sans classement ni performance commerciale mesurés.",
+      "14/15 : trois claims déjà confrontés aux copies, contexte CNIL limité à l'IA générative ; aucune nouvelle consultation HTTP.",
+      "14/15 : deux portraits directs et sans légende ni scroll effectivement lisibles à 320/375/1440 ; aucune mesure Lighthouse ou de production.",
+      "14/15 : tableaux citables seulement avec la mention qu'aucun éditeur n'a été évalué."
+    ],
+    "reservations": [
+      "Le contrat interne déclare capturedAt 27/09 mais ne prouve pas l'horodatage autonome de fabrication des nouveaux portraits ; les captures de viewport relues ici attestent leur lisibilité, non leur date de création.",
+      "Robots index dans le build local ; QA/CI, scellement et contenu HTML effectivement servi après intégration restent à prouver."
+    ],
+    "seo": [
+      "Titre/canonical cohérents dans le rendu local ; robots index, follow pour l'article déjà publié."
+    ],
+    "geo": [
+      "Ne pas attribuer les sorties de l'oracle à un éditeur."
+    ],
+    "verdict": "AI_REVIEW_PASS sur les preuves inline et le rendu local a4e597b, sous réserve de la traçabilité historique de capture ; ni scellement ni publication."
+  },
+  "technicalBindingMaintenance": {
+    "maintainedBy": "dev:t_30243835",
+    "maintainedAt": "2026-10-03",
+    "reason": "updatedAt de republication uniquement ; avis métier du 03/10 maintenu sur corps, sources, figures et règles inchangés. Ni nouvelle revue ni contrôle public.",
+    "previousSubject": {
+      "slug": "logiciel-ia-comptabilite",
+      "bodySha256": "81f6827dbace394c2292b9006b3593a9b1861830c3dd2b21ca7124d27bd058bf",
+      "recipeSha256": "90e1ab2c79b42f1e0a6c3b58126637089035653d0b3a1849d94050158edf6b8e",
+      "renderedSha256": "4f07160929357c98d49b15b7864f9d66776c6e42501a1264cd2b99a63ab99275"
+    }
   }
 }
