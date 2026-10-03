@@ -100,10 +100,10 @@ test('le préflight W39 réel conserve refus de dates, identité, reçu, RAW et 
     () => writeFileSync(f.queuePath, JSON.stringify({ candidates: [{ ...f.recipe, status: 'publie' }] })),
     () => writeFileSync(f.queuePath, JSON.stringify({ candidates: [{ ...f.recipe, serie: 'ordinary', status: 'a-valider' }] })),
     () => writeFileSync(f.queuePath, JSON.stringify({ candidates: [{ slug: 'autre', serie: 'cicatrices', date: '2026-09-26', status: 'a-valider' }] })),
-    () => writeFileSync(f.clock, JSON.stringify('2026-10-05')),
+    () => writeFileSync(f.clock, JSON.stringify('2026-09-30')),
     () => writeFileSync(join(f.root, 'src/content/blog', `${slug}.md`), '---\nbrouillon: false\ndatePublication: 2026-10-01\nfamille: ia-generative-agents\nformat: thought-leadership\nprimaryQuery: pourquoi des tests verts peuvent manquer des défauts\ntitre: Pourquoi des tests verts manquent des défauts : la règle des trois passes\n---\n'),
   ];
-  for (const mutate of mutations) {
+  for (const [index, mutate] of mutations.entries()) {
     writeFileSync(f.clock, JSON.stringify('2026-10-01'));
     writeFileSync(f.recipePath, JSON.stringify(f.recipe));
     writeFileSync(receiptPath, receipt);
@@ -112,7 +112,7 @@ test('le préflight W39 réel conserve refus de dates, identité, reçu, RAW et 
     mutate();
     const before = [f.recipePath, f.queuePath, bodyPath].map((p) => readFileSync(p));
     const result = f.slot();
-    assert.notEqual(result.status, 0, result.stdout);
+    assert.notEqual(result.status, 0, `mutation ${index}: ${result.stdout}`);
     assert.deepEqual([f.recipePath, f.queuePath, bodyPath].map((p) => readFileSync(p)), before);
     assert.equal(existsSync(join(f.root, 'editorial/articles', slug)), false);
   }

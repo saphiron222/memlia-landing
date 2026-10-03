@@ -51,9 +51,8 @@ test('W39: seul le reçu exact et le corps brut signé ouvrent la fenêtre, sans
   for (const date of ['2026-09-30', '2026-10-05', '2026-10-10', '2026-10-01suffix', '2026-09-28suffix']) {
     assert.throws(() => verifierPlafonds([], date, options));
   }
-  for (const now of ['2026-09-30T21:59:59Z', '2026-10-04T22:00:00Z']) {
-    assert.throws(() => verifierPlafonds([], '2026-10-01', { ...options, now: new Date(now) }));
-  }
+  assert.throws(() => verifierPlafonds([], '2026-10-01', { ...options, now: new Date('2026-09-30T21:59:59Z') }));
+  assert.doesNotThrow(() => verifierPlafonds([], '2026-10-02', { ...options, now: new Date('2026-10-05T08:00:00Z') }));
   assert.doesNotThrow(() => verifierPlafonds([], '2026-10-04', { ...options, now: new Date('2026-10-04T21:59:59Z') }));
   for (const [key, value] of Object.entries({
     version: 2, kind: 'qa-pass', owner: 'marketing', operatorTask: 't_a399cb4c',
@@ -82,6 +81,26 @@ test('W39: seul le reçu exact et le corps brut signé ouvrent la fenêtre, sans
   assert.throws(() => verifierPlafonds([], '2026-10-01', { ...options, slug: 'autre' }), /samedi/);
   assert.throws(() => verifierPlafonds([{ serie: 'cicatrices', slug, date: '2026-10-01' }], '2026-09-26', { serie: 'cicatrices', slug: 'autre' }), /déjà planifiée.*2026-W39/);
   assert.doesNotThrow(() => verifierPlafonds([{ serie: 'cicatrices', slug, date: '2026-10-01' }], '2026-10-03', { serie: 'cicatrices', slug: 'autre' }));
+});
+
+test('W39: une recette relue la veille reste livrable sans changer sa date', async (t) => {
+  t.mock.timers.enable({ apis: ['Date'], now: new Date('2026-10-03T08:00:00Z') });
+  const root = fixture(t);
+  const nominal = { slug, serie: 'cicatrices', date: '2026-10-02' };
+  mkdirSync(join(root, 'editorial/articles', slug), { recursive: true });
+  writeFileSync(join(root, 'editorial/articles', slug, 'manifest.json'), JSON.stringify({ publicationDate: nominal.date }));
+  writeFileSync(join(root, 'editorial/recettes', slug, 'recette.json'), JSON.stringify(nominal));
+  writeFileSync(join(root, 'editorial/queue.json'), JSON.stringify({ candidates: [{ ...nominal, status: 'a-valider' }] }));
+  const gate = await validateDossier({ root, slug });
+  assert.deepEqual(gate.errors.filter((error) => error.startsWith('Cadrage W39 :')), []);
+  await assert.rejects(materialiser({ root, slug, statut: 'a-valider' }), (error) => !/date réelle/.test(error.message));
+  const future = { ...nominal, date: '2026-10-04' };
+  writeFileSync(join(root, 'editorial/articles', slug, 'manifest.json'), JSON.stringify({ publicationDate: future.date }));
+  writeFileSync(join(root, 'editorial/recettes', slug, 'recette.json'), JSON.stringify(future));
+  writeFileSync(join(root, 'editorial/queue.json'), JSON.stringify({ candidates: [{ ...future, status: 'a-valider' }] }));
+  const refused = await validateDossier({ root, slug });
+  assert.ok(refused.errors.some((error) => /date future/.test(error)));
+  await assert.rejects(materialiser({ root, slug, statut: 'a-valider' }), /date future/);
 });
 
 test('W39: gate direct vérifie la série réelle et la cohérence recette/file sans réparer les données', async (t) => {

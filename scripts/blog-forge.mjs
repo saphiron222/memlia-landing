@@ -33,7 +33,7 @@ import { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 export { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 import { reviewBindingErrors, reviewSha256, renderedBodySha256 } from './lib/blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
-import { estReliquatW39, verifierIdentiteW39 } from './lib/blog-w39-framing.mjs';
+import { estReliquatW39, verifierIdentiteW39, lireCadrageW39 } from './lib/blog-w39-framing.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
 
 export const IMAGE_REVIEW_CRITERIA = ['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'];
@@ -139,7 +139,7 @@ export function construireManifest(recette, statut, jour, revues, datesSources =
     publicationDate: recette.date, updatedAt: recette.updatedAt ?? null, topics: recette.topics, keywords: recette.keywords,
     primaryQuery: recette.primaryQuery, secondaryQueries: recette.secondaryQueries, intent: recette.intent, fanOut: recette.fanOut,
     role: { primary: recette.role.primary, secondary: recette.role.secondary ?? [], proof: { level: recette.role.proofLevel, source: 'preuves/role.json', verifiedAt: jour } },
-    businessReview: { required: true, reviewerId: recette.businessReview.reviewerId, role: recette.businessReview.role, status: revues?.business ? 'PASS' : 'FAIL', evidence: 'preuves/business-review.json' },
+    businessReview: { required: true, reviewerId: revues?.business?.reviewerId ?? recette.businessReview.reviewerId, role: recette.businessReview.role, status: revues?.business ? 'PASS' : 'FAIL', evidence: 'preuves/business-review.json' },
     funnel: recette.funnel, cluster: recette.cluster, famille: recette.famille, contentType: recette.contentType, format: recette.format,
     task: recette.task, rankability: recette.rankability, businessRelevance: recette.businessRelevance,
     proofStatus: 'verifiee', proofRequired: recette.proofRequired,
@@ -506,7 +506,8 @@ function verifierFile(root, slug, date, statut, serie, queue) {
   const actifs = queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)
     && (c !== existant || (w39 && c.status === 'publie')));
   if (w39 && existant?.status === 'publie') throw new Error('La Cicatrice W39 est déjà publiée ; aucun nouvel exemplaire ni édition.');
-  if (w39 && date !== aujourdhui()) throw new Error('Le cadrage W39 exige la date réelle Europe/Paris, jamais antidatée.');
+  if (w39 && date > aujourdhui()) throw new Error('Le cadrage W39 refuse une date future.');
+  if (w39) lireCadrageW39(root, date);
   if (w39 || !existant || existant.date !== date || existant.serie !== (serie ?? undefined)
     || (['archive', 'bloque'].includes(existant.status) && !['archive', 'bloque'].includes(statut))) {
     verifierPlafonds(actifs, date, { serie, slug, root });
@@ -734,11 +735,11 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const business = revuesValides?.business;
   const preuvesSources = new Map(manifestFinal.sources.map((s) => [s.id, lireJson(join(dossier, s.verificationEvidence))]));
   ecrireJson(join(dossier, 'preuves/business-review.json'), artefact(sujet, 'business-review', jour, {
-    status: business ? 'PASS' : 'FAIL', reviewerId: recette.businessReview.reviewerId, role: recette.businessReview.role,
+    status: business ? 'PASS' : 'FAIL', reviewerId: manifestFinal.businessReview.reviewerId, role: recette.businessReview.role,
     claimReviews: claims.claims.flatMap((claim) => claim.sourceIds.map((sourceId) => {
       const verdict = business?.claims?.[claim.id];
       if (business && !verdict) erreurs.push(`Revue métier absente pour ${claim.id}.`);
-      return { id: `review-${claim.id}-${sourceId}`, candidateSlug: slug, articleSha256: sujet.articleHash, claimId: claim.id, claimSha256: sha256(claim.claim), sourceId, sourceContentSha256: preuvesSources.get(sourceId).contentSha256, citationSha256: sha256(claim.sourceExcerpts[sourceId]), reviewerId: recette.businessReview.reviewerId, verdict: verdict?.verdict ?? 'hors_sujet', checkedAt: jour, reasoning: verdict?.reasoning ?? 'Revue métier non exécutée.' };
+      return { id: `review-${claim.id}-${sourceId}`, candidateSlug: slug, articleSha256: sujet.articleHash, claimId: claim.id, claimSha256: sha256(claim.claim), sourceId, sourceContentSha256: preuvesSources.get(sourceId).contentSha256, citationSha256: sha256(claim.sourceExcerpts[sourceId]), reviewerId: manifestFinal.businessReview.reviewerId, verdict: verdict?.verdict ?? 'hors_sujet', checkedAt: jour, reasoning: verdict?.reasoning ?? 'Revue métier non exécutée.' };
     })),
   }));
 
