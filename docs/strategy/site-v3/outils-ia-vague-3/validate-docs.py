@@ -1,5 +1,6 @@
 """Contrôle documentaire reproductible, sans test de page future."""
 import json,pathlib,hashlib,unicodedata,collections,decimal
+from urllib.parse import urlsplit
 r=pathlib.Path(__file__).resolve().parent
 repo=r.parents[3]
 m=json.loads((r/'matrice-skills.json').read_text())
@@ -18,7 +19,11 @@ t=json.loads((r/'contrat-routes.json').read_text())['tools']; assert len(t)==10
 norm=lambda s:''.join(c for c in unicodedata.normalize('NFD',s.lower()) if unicodedata.category(c)!='Mn')
 assert len({x['route'] for x in t})==10 and len({norm(x['q']) for x in t})==10
 old=json.loads((repo/'docs/strategy/site-v3/mesures/registre-requetes.json').read_text())
-assert not ({norm(x['q']) for x in t}&{norm(x['requete']) for x in old['articles']})
+# Une requête peut déjà appartenir à cet outil ; seule une autre route concurrence le brief.
+for x in t:
+ for article in old['articles']:
+  if norm(x['q'])==norm(article['requete']):
+   assert urlsplit(article['url']).path==x['route'], f"Requête concurrente : {x['q']} — {article['url']}"
 for x in t:
  p=r/x['file']; assert p.exists() and x['route'] in p.read_text() and x['q'] in p.read_text()
  assert x['card'] and len(x['tests'])>=5 and len(x['inbound'])>=3
