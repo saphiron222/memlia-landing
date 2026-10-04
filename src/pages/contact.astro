@@ -212,6 +212,7 @@ const appel = {
         const corps = await reponse.json().catch(() => ({ ok: false, code: 'illisible' }));
         if (corps.ok) {
           formulaire.reset();
+          actualiserOrigine();
           afficher('Message envoyé. Nous vous répondons par courriel, sans envoi automatique.', true);
         } else {
           afficher((MESSAGES_CONTACT as Record<string, string>)[corps.code] ?? MESSAGE_CONTACT_DEFAUT, false);
