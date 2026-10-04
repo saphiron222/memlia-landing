@@ -221,6 +221,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
                      f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/integrations',
                      f'{SITE}/outils-comptables-gratuits',
+                     f'{SITE}/outils-comptables-gratuits/generateur-charte-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
                      f'{SITE}/outils-comptables-gratuits/calculateur-date-echeance-facture',
                      f'{SITE}/outils-comptables-gratuits/calculateur-amortissement-comptable',
@@ -350,7 +351,8 @@ class BuildProof(unittest.TestCase):
         # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
         # aux pages de service et cinq scènes propres aux outils. Les dix images sociales
         # correspondantes restent sous og/.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 29)
+
+        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 30)
         self.assertEqual(
             sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')),
             sorted([
@@ -358,6 +360,7 @@ class BuildProof(unittest.TestCase):
                 '17-hero-apropos.webp', '18-hero-contact.webp', '24-outils-hub.webp',
                 '25-outil-marge.webp', '26-outil-echeance.webp', '27-outil-rapprochement.webp',
                 '28-outil-amortissement.webp',
+                '01-outil-charte-ia.webp',
                 '29-outil-fec.webp',
             ]),
         )

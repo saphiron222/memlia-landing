@@ -16,7 +16,7 @@
     "lastmod:sync": "node scripts/sync-lastmod.mjs",
     "test:lastmod": "node scripts/sync-lastmod.mjs --check",
     "test:proof-render": "node scripts/render-proof-images.mjs --check",
-    "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check",
+    "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check && node scripts/render-charte-ia-proof.mjs --check",
     "render:proofs": "node scripts/render-proof-images.mjs",
     "render:blog-proofs": "node scripts/render-blog-article-proofs.mjs",
     "test:blog-proof-render": "node scripts/render-blog-article-proofs.mjs --check && node scripts/replay-blog-recrutement-cases.mjs --check",
