@@ -55,7 +55,7 @@ test('la liste de chaque hub vient des entrées visibles et ignore un article ab
   assert.deepEqual(rubriques.map((rubrique) => rubrique.articles.length), [3, 2]);
   assert.deepEqual(
     rubriques[0].articles.map((article) => article.id),
-    ['comprendre-les-comptes-rendus-metier-dsn', 'suivre-la-production-sociale-dans-excel', 'controler-les-bulletins-de-paie-avant-la-dsn'],
+    ['controler-les-bulletins-de-paie-avant-la-dsn', 'comprendre-les-comptes-rendus-metier-dsn', 'suivre-la-production-sociale-dans-excel'],
   );
   assert.equal(rubriquePourArticle(HORS_RUBRIQUE[0]), null);
   assert.equal(rubriquePourArticle(ATTACHES[0])?.slug, BLOG_RUBRIQUES[0].slug);

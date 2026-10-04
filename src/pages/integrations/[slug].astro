@@ -47,14 +47,14 @@ const source = {
   titre: integration.source.title,
   url: integration.source.url,
   preuve: integration.source.fact,
-  consulteLe: integration.dateMiseAJour,
+  consulteLe: integration.source.checkedAt,
 };
 ---
 
 <PageCommerciale
   page={page}
   noeuds={noeuds}
-  eyebrow={`${integration.product} · guide documenté`}
+  eyebrow={`${integration.product} · repères de contrôle`}
   hero={hero}
   appel={{
     titre: 'Décrivez le geste dans votre environnement.',
@@ -68,12 +68,13 @@ const source = {
 >
   <section class="pv" aria-labelledby="repere-editeur">
     <div class="pv-tete rv">
-      <h2 id="repere-editeur">Le chemin et les champs que la règle doit connaître</h2>
+      <h2 id="repere-editeur">Les repères et les champs que la règle doit connaître</h2>
+      <p class="texte-2 lecture">{integration.documentScope}</p>
       <p class="texte-2 lecture">{integration.officialPath}</p>
     </div>
     <ul class="pv-cartes rv-groupe">
       {integration.fields.map((field) => (
-        <li class="pv-carte rv"><div class="pv-carte-corps"><h3>{field}</h3><p>Champ observé dans le jeu fictif et relu avant toute proposition.</p></div></li>
+        <li class="pv-carte rv"><div class="pv-carte-corps"><h3>{field.label}</h3><p>{field.control}</p></div></li>
       ))}
     </ul>
     <div class="pv-tete rv">
@@ -98,8 +99,8 @@ const source = {
 
   <section class="pv" aria-labelledby="jeu-fictif">
     <div class="pv-tete rv">
-      <h2 id="jeu-fictif">Rejoué sur le jeu fictif</h2>
-      <p class="texte-2 lecture">Trois cas montrent la sortie obtenue par la règle : une préparation, un cas présenté à l’équipe et un arrêt. La recette du cabinet reprend ensuite ces cas dans son propre environnement.</p>
+      <h2 id="jeu-fictif">Cas illustratifs sur données fictives</h2>
+      <p class="texte-2 lecture">Ces trois cas décrivent les sorties attendues de la règle proposée, pas des résultats exécutés. Le visuel est une simulation locale de présentation ; aucun essai dans le logiciel éditeur n’est rapporté ici. La recette vérifie ensuite ces attentes dans l’environnement autorisé du cabinet.</p>
     </div>
     <IntegrationReplay integration={integration} />
   </section>
@@ -107,7 +108,7 @@ const source = {
   <section class="pv" aria-labelledby="source">
     <div class="pv-tete rv">
       <h2 id="source">Source</h2>
-      <p class="texte-2 lecture">Cette référence publique documente le chemin ou les champs utilisés dans le guide.</p>
+      <p class="texte-2 lecture">La portée de cette référence et les règles proposées par le cabinet sont distinguées ci-dessous.</p>
     </div>
     <SourceEvidence source={source} />
   </section>
@@ -119,8 +120,8 @@ const source = {
     </div>
     <Renvois items={[
       { texte: 'Le service correspondant décrit la tâche sans la réduire à un éditeur.', libelle: integration.service.label, href: integration.service.href },
-      ...(integration.tool ? [{ texte: 'Un outil local permet de rejouer une partie de la règle sur des données fictives.', libelle: integration.tool.label, href: integration.tool.href }] : []),
-      { texte: 'Le hub explique pourquoi seuls neuf guides sont publiés.', libelle: 'Voir le cadre de publication des guides', href: '/integrations' },
+      ...(integration.tool ? [{ texte: 'L’outil local contrôle des soldes fictifs et exporte un CSV ; il ne réalise pas l’appariement des mouvements.', libelle: integration.tool.label, href: integration.tool.href }] : []),
+      { texte: 'Choisissez un autre produit et le geste à contrôler.', libelle: 'Voir les neuf guides par environnement', href: '/integrations' },
     ]} colonnes={2} />
   </section>
 </PageCommerciale>

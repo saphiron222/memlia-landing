@@ -7,7 +7,6 @@ const REQUIRED_MARKERS = [
   ['data-service-hero', 'hero éditorial'],
   ['data-service-sections', 'sections structurées'],
   ['data-service-media', 'premier média fonctionnel'],
-  ['data-page-byline', 'signature visible'],
   ['data-primary-source', 'source primaire datée'],
 ];
 

@@ -59,7 +59,11 @@ const appel = {
         <input id="origine" name="origine" type="hidden" value="" />
         <div class="champ champ-consentement">
           <input id="consentement" name="consentement" type="checkbox" required />
-          <label for="consentement">J’accepte que Memlia utilise ces informations pour me répondre. Elles ne servent à rien d’autre (<a href="/politique-de-confidentialite">politique de confidentialité</a>).</label>
+          <label for="consentement">J’ai pris connaissance de la <a href="/politique-de-confidentialite">politique de confidentialité</a>. Memlia utilise ces informations pour me répondre sur la base de son intérêt légitime.</label>
+        </div>
+        <div class="champ champ-consentement">
+          <input id="consentement_origine" name="consentement_origine" type="checkbox" />
+          <label for="consentement_origine">J’accepte que Memlia associe à mon message le chemin interne disponible pour comprendre la page du site à l’origine de ma demande (facultatif). Je peux envoyer mon message sans cet accord et le retirer en écrivant à Memlia.</label>
         </div>
         <div data-turnstile></div>
         <p class="texte-2">Cette vérification anti-abus peut nécessiter JavaScript. Si elle ne s’affiche pas, <a href={`mailto:${SITE.email}`}>écrivez-nous par courriel</a> ; vos champs restent ici.</p>
@@ -80,7 +84,7 @@ const appel = {
             </li>
           ))}
         </ul>
-        <p class="texte-2 contact-astuce">Si vous ne savez pas encore quelle tâche choisir, venez avec celle qui agace le plus. C’est souvent la bonne.</p>
+        <p class="texte-2 contact-astuce">Pour commencer, décrivez une tâche récurrente, un cas courant et une exception. Nous regardons ensemble ce qui se prépare et ce que votre équipe garde à décider.</p>
       </aside>
     </div>
   </section>
@@ -168,13 +172,17 @@ const appel = {
 
   /**
    * D4 — la page d'origine : d'où vient la personne qui écrit, pour savoir quel article amène
-   * une demande. On ne retient que le CHEMIN d'une page du site : un référent externe, absent
+   * une demande, uniquement après un accord distinct. On ne retient que le CHEMIN d'une page du site : un référent externe, absent
    * ou illisible laisse le champ vide, et la fonction écarte de toute façon ce qui n'est pas une
    * route interne. Sans JavaScript, le champ reste vide : c'est une commodité de mesure, pas une
    * condition d'envoi.
    */
   const origine = document.querySelector<HTMLInputElement>('#origine');
-  if (origine) {
+  const accordOrigine = document.querySelector<HTMLInputElement>('#consentement_origine');
+  const actualiserOrigine = () => {
+    if (!origine) return;
+    origine.value = '';
+    if (!accordOrigine?.checked) return;
     try {
       const venant = new URL(document.referrer, window.location.href);
       if (document.referrer && venant.origin === window.location.origin && venant.pathname !== window.location.pathname) {
@@ -183,11 +191,15 @@ const appel = {
     } catch {
       /* Un référent illisible ne vaut pas une erreur pour le visiteur. */
     }
-  }
+  };
+  accordOrigine?.addEventListener('change', actualiserOrigine);
+  // Le formulaire est utilisable avant le téléchargement du script : relire le choix déjà saisi.
+  actualiserOrigine();
   if (formulaire && etat) {
     formulaire.addEventListener('submit', async (evenement) => {
       if (!formulaire.checkValidity()) return; // Le navigateur signale lui-même le champ manquant.
       evenement.preventDefault();
+      actualiserOrigine();
       const bouton = formulaire.querySelector<HTMLButtonElement>('button[type="submit"]');
       const afficher = afficherEtat;
       if (!new FormData(formulaire).get('cf-turnstile-response')) {
@@ -202,6 +214,7 @@ const appel = {
         const corps = await reponse.json().catch(() => ({ ok: false, code: 'illisible' }));
         if (corps.ok) {
           formulaire.reset();
+          actualiserOrigine();
           afficher('Message envoyé. Nous vous répondons par courriel, sans envoi automatique.', true);
         } else {
           afficher((MESSAGES_CONTACT as Record<string, string>)[corps.code] ?? MESSAGE_CONTACT_DEFAUT, false);

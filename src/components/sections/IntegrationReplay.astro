@@ -4,16 +4,16 @@ interface Props { integration: IntegrationDefinition; }
 const { integration } = Astro.props;
 ---
 
-<div class="replay-wrap" tabindex="0" aria-label="Résultats du jeu fictif, défilement horizontal possible">
+<div class="replay-wrap" tabindex="0" aria-label="Cas illustratifs fictifs, défilement horizontal possible">
   <table>
-    <thead><tr><th>Entrée fictive</th><th>Règle appliquée</th><th>Verdict</th><th>Trace produite</th></tr></thead>
+    <thead><tr><th>Entrée fictive</th><th>Condition proposée</th><th>État attendu</th><th>Trace attendue</th></tr></thead>
     <tbody>
       {integration.replay.map((replay) => (
         <tr>
           <td data-label="Entrée">{replay.input}</td>
-          <td data-label="Règle">{replay.rule}</td>
-          <td data-label="Verdict"><span class="verdict">{replay.outcome}</span></td>
-          <td data-label="Trace">{replay.detail}</td>
+          <td data-label="Condition">{replay.rule}</td>
+          <td data-label="État attendu"><span class="verdict">{replay.outcome}</span></td>
+          <td data-label="Trace attendue">{replay.detail}</td>
         </tr>
       ))}
     </tbody>

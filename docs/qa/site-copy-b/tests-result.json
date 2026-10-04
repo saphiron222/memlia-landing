@@ -1,0 +1,58 @@
+{
+  "python": [
+    "118"
+  ],
+  "node_groups": [
+    [
+      "20",
+      "20",
+      "0"
+    ],
+    [
+      "5",
+      "5",
+      "0"
+    ],
+    [
+      "17",
+      "17",
+      "0"
+    ],
+    [
+      "4",
+      "4",
+      "0"
+    ],
+    [
+      "4",
+      "4",
+      "0"
+    ],
+    [
+      "553",
+      "552",
+      "1"
+    ]
+  ],
+  "failures": [
+    "not ok 341 - la QA du candidat courant ne réclame ni preview, ni GO, ni release"
+  ],
+  "browser": {
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0,
+    "specs": [
+      "site-copy-b.spec.ts",
+      "contact-form.spec.ts",
+      "glossary.spec.ts"
+    ],
+    "baseURL": "http://127.0.0.1:43183"
+  },
+  "astro_check": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 8
+  },
+  "publication": "Pending independent metier review; no production merge",
+  "reason_for_failure": "The current glossary candidate has no independent metier verdict yet. All other final tests pass."
+}

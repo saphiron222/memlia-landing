@@ -3,15 +3,16 @@ interface Props {
   mentionLocale: string;
   limites: readonly string[];
   suspension?: { motif: string; date: string };
+  large?: boolean;
 }
 
-const { mentionLocale, limites, suspension } = Astro.props;
+const { mentionLocale, limites, suspension, large = false } = Astro.props;
 ---
 
-<section class="outil-zone-section" data-tool-section="calcul" aria-labelledby="outil-zone-titre">
+<section id="outil-calcul" class="outil-zone-section" data-tool-section="calcul" aria-labelledby="outil-zone-titre">
   <div class="conteneur outil-zone-inner">
     <h2 id="outil-zone-titre" class="sr-only">Utiliser l’outil</h2>
-    <div class="outil-zone">
+    <div class:list={['outil-zone', { 'outil-zone-large': large }]}>
       <div class="outil-calcul coins">
         <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
         {suspension ? (
@@ -155,5 +156,7 @@ const { mentionLocale, limites, suspension } = Astro.props;
       position: sticky;
       top: calc(var(--nav-h) + 32px);
     }
+    .outil-zone-large { grid-template-columns:minmax(0,1fr); }
+    .outil-zone-large .outil-local { position:static; }
   }
 </style>

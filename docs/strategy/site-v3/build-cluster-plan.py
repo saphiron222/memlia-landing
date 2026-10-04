@@ -58,6 +58,15 @@ def creneau(e):
 GABARIT_PAR_FORMAT = {'pillar-page': 'ultimate-guide', 'how-to-guide': 'how-to', 'faq-knowledge': 'explainer', 'listicle-checklist': 'listicle', 'tutorial': 'how-to', 'resource-template': 'landing-page', 'thought-leadership': 'essai'}
 MOTS_PAR_FORMAT = {'pillar-page': 3200, 'how-to-guide': 1500, 'faq-knowledge': 1300, 'listicle-checklist': 1400, 'tutorial': 1500, 'resource-template': 1200, 'thought-leadership': 1400}
 
+# Intentions distinctes mandatées le 03/10 ; inscription et mesures restent au backlog.
+# Ce registre étend le stock de base, jamais les quotas ou l'autorité de publication.
+BRIEFS_IA_MANDATES = {
+    'utiliser-chatgpt-cabinet-comptable': 'ia-generative-agents',
+    'verifier-reponse-ia-comptabilite': 'ia-generative-agents',
+    'ia-comptabilite-confidentialite-donnees': 'rgpd-secret-securite',
+    'automatiser-avec-ia-sans-changer-logiciel': 'ia-generative-agents',
+}
+
 
 def enum_du_schema(nom):
     texte = SCHEMA.read_text(encoding='utf-8')
@@ -184,7 +193,9 @@ def verifier_alternance(entrees):
                 erreurs.append(f"alternance {champ} rompue : {precedent['slug']} -> {e['slug']}")
     for index, e in enumerate(ordinaires):
         for champ in e.get('exceptionAlternance', {}):
-            if index == 0 or e.get('statut') == 'published' or ordinaires[index - 1][champ] != e[champ]:
+            # Une exception utilisée à la réservation reste la trace de la rupture
+            # après publication ; le statut ne la rend pas soudain superflue.
+            if index == 0 or ordinaires[index - 1][champ] != e[champ]:
                 erreurs.append(f"exception {champ} non utilisée : {e['slug']}")
     return erreurs
 
@@ -300,7 +311,7 @@ def alterner(entrees):
 
 
 def planifier(entrees, publies, aujourd_hui=None):
-    """Planifie 4 articles ordinaires lun-jeu et 1 cicatrice le samedi, par semaine ISO."""
+    """Réserve les dates explicites, puis planifie les ordinaires lun-jeu et les cicatrices le samedi."""
     aujourd_hui = aujourd_hui or date.today()
     par_jour, par_semaine = Counter(), Counter()
     if any(p['date'] == DATE_RATTRAPAGE and slug not in RATTRAPAGE_W39 for slug, p in publies.items()):
@@ -372,8 +383,8 @@ def planifier(entrees, publies, aujourd_hui=None):
             continue
         if candidat < aujourd_hui:
             raise SystemExit(f"date planifiée échue : {e['slug']} ({valeur}) ; replanifier sans antidater")
-        if candidat < PREMIER_JOUR or candidat.weekday() not in JOURS_DE_PUBLICATION:
-            raise SystemExit(f"date planifiée hors fenêtre lundi-jeudi : {e['slug']} ({valeur})")
+        if candidat < PREMIER_JOUR:
+            raise SystemExit(f"date planifiée avant le début du calendrier : {e['slug']} ({valeur})")
 
         if par_jour[candidat] >= PAR_JOUR_MAX or par_semaine[semaine_iso(candidat)] >= PAR_SEMAINE_MAX:
             raise SystemExit(f"date planifiée au-delà de la cadence : {e['slug']} ({valeur})")
@@ -493,6 +504,8 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         erreurs.append('requêtes primaires en double (cannibalisation)')
     roles_ok, formats_ok, intents_ok, funnels_ok = enum_du_schema('rolePrincipal'), enum_du_schema('format'), enum_du_schema('intent'), enum_du_schema('funnel')
     for e in tous:
+        if e['slug'] in BRIEFS_IA_MANDATES and e['famille'] != BRIEFS_IA_MANDATES[e['slug']]:
+            erreurs.append(f"famille du brief mandaté divergente : {e['slug']}")
         f = familles.get(e['famille'])
         if not f:
             erreurs.append(f"famille hors taxonomie : {e['famille']} ({e['slug']})")
@@ -511,9 +524,10 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         # La série « Cicatrices » (charte §7 ter) prend un créneau mais n'est pas un angle de famille :
         # elle vise la marque, pas une requête, et n'entre donc pas dans le compte des quatre.
         angles = [e for e in membres if not e.get('historique') and not e.get('serie')]
-        # La grappe IA est bornée aux trois pages arbitrées le 20/09/2026 : preuve ChatGPT,
-        # catégorie logicielle puis hub. Les déclinaisons outil × pôle/rôle restent des sections.
-        attendu = 3 if fid in {pilier['famille'], 'ia-generative-agents'} else 4
+        # Conserver le stock initial ; chaque intention mandatée effectivement inscrite
+        # dans sa famille ajoute une place, sans permettre un angle arbitraire.
+        attendu = (3 if fid in {pilier['famille'], 'ia-generative-agents'} else 4) + sum(
+            BRIEFS_IA_MANDATES.get(e['slug']) == fid for e in angles)
         if len(angles) != attendu:
             erreurs.append(f'{fid} : {len(angles)} angles au lieu de {attendu}')
     for slug in publies:
@@ -584,7 +598,11 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
             reel = date.fromisoformat(e['date'])
             par_jour_reel[reel] += 1
             par_semaine_reelle[semaine_iso(reel)] += 1
-        if slot >= PREMIER_JOUR and slot.weekday() not in JOURS_DE_PUBLICATION and e.get('statut') != 'a-replanifier':
+        # Les jours habituels régissent le seul ordonnancement automatique, pas
+        # une réservation explicite concordante ni une publication intégrée.
+        if (slot >= PREMIER_JOUR and slot.weekday() not in JOURS_DE_PUBLICATION
+                and e.get('statut') not in ('a-replanifier', 'published')
+                and e.get('datePlanifiee') != e['date']):
             erreurs.append(f"article ordinaire hors lundi-jeudi : {e['slug']} ({e['date']})")
     if any(n > PAR_JOUR_MAX for n in par_jour.values()):
         erreurs.append('plus de deux articles le même jour')

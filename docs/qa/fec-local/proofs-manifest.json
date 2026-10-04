@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/fec-local-proof/index.html",
+      "sha256": "71dfd5729d8f7bfb15e2d35d4376adffabff1a62b1db06ad68de97f9b9ee64b1"
+    },
+    {
+      "path": "docs/design/fec-local-proof/styles.css",
+      "sha256": "1d811a575c3f2378822b0304e058dbb2c9aff17282e14c905e1c4d35008e5af3"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/fec-local-proof/content-contract.json",
+      "sha256": "49e8e5e8fb67819c87d8e005205df8153d8a6dbb8027f4b1de57ef8645b2a5bc"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "4be8539dd654f9f24fb3275e892a6b060474b150898bc5828e17bffb36471d6d"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/fec-local-proof/index.html#outil-fec",
+      "target": "public/proofs/v2/29-outil-fec.webp",
+      "bytes": 39230,
+      "sha256": "cb922257e368ca7231b9e2ce5fa6608c3ec900c7024f9133d83f7d596463b04c"
+    },
+    {
+      "source": "docs/design/fec-local-proof/index.html#outil-fec",
+      "target": "public/proofs/v2/og/29-outil-fec.webp",
+      "bytes": 25536,
+      "sha256": "3ec2c784d4b68e2f7817390585572d99c7675150c2c89059b782efbe7d883f54"
+    }
+  ]
+}

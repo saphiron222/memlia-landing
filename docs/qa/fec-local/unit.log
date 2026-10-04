@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: nominal, zéros initiaux et accents sans mutation
+ok 1 - nominal, zéros initiaux et accents sans mutation
+  ---
+  duration_ms: 1.573916
+  type: 'test'
+  ...
+# Subtest: date impossible ligne 4, champ et règle
+ok 2 - date impossible ligne 4, champ et règle
+  ---
+  duration_ms: 0.623542
+  type: 'test'
+  ...
+# Subtest: en-tête déplacé : seulement en-tête évalué, pas interprétation de mauvaises colonnes
+ok 3 - en-tête déplacé : seulement en-tête évalué, pas interprétation de mauvaises colonnes
+  ---
+  duration_ms: 0.121333
+  type: 'test'
+  ...
+# Subtest: ligne courte et lignes blanches internes conservent leur index
+ok 4 - ligne courte et lignes blanches internes conservent leur index
+  ---
+  duration_ms: 0.1245
+  type: 'test'
+  ...
+# Subtest: dates calendrier, champs obligatoires et décimaux signés sans coercition
+ok 5 - dates calendrier, champs obligatoires et décimaux signés sans coercition
+  ---
+  duration_ms: 0.185458
+  type: 'test'
+  ...
+# Subtest: profils alternatifs et binaires non évalués
+ok 6 - profils alternatifs et binaires non évalués
+  ---
+  duration_ms: 0.08075
+  type: 'test'
+  ...
+# Subtest: limite avant lecture, encodage choisi explicite et BOM
+ok 7 - limite avant lecture, encodage choisi explicite et BOM
+  ---
+  duration_ms: 0.34075
+  type: 'test'
+  ...
+# Subtest: 300 anomalies : total/export complet, texte neutre contre les formules
+ok 8 - 300 anomalies : total/export complet, texte neutre contre les formules
+  ---
+  duration_ms: 3.621375
+  type: 'test'
+  ...
+# Subtest: exemple démontre réellement la date impossible ligne 4
+ok 9 - exemple démontre réellement la date impossible ligne 4
+  ---
+  duration_ms: 0.349292
+  type: 'test'
+  ...
+# Subtest: garde mémoire : refus explicite avant allocation d’un tableau massif de lignes
+ok 10 - garde mémoire : refus explicite avant allocation d’un tableau massif de lignes
+  ---
+  duration_ms: 8.60725
+  type: 'test'
+  ...
+# Subtest: contrôles conditionnels distincts : non applicable, exécuté ou non évalué
+ok 11 - contrôles conditionnels distincts : non applicable, exécuté ou non évalué
+  ---
+  duration_ms: 0.28125
+  type: 'test'
+  ...
+# Subtest: plus de 200 000 anomalies : refus, jamais rapport tronqué
+ok 12 - plus de 200 000 anomalies : refus, jamais rapport tronqué
+  ---
+  duration_ms: 44.53325
+  type: 'test'
+  ...
+# Subtest: type outil distinct du blog et collision primaire entre types refusée
+ok 13 - type outil distinct du blog et collision primaire entre types refusée
+  ---
+  duration_ms: 0.951625
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 231.742

@@ -70,7 +70,7 @@ function validerEntree(entree) {
   if (typeof entree.requete !== 'string' || !entree.requete.trim()) throw new Error(`registre : requete requise pour ${entree.slug}`);
   if (typeof entree.url !== 'string' || !/^https:\/\/memlia\.fr\//.test(entree.url)) throw new Error(`registre : url https://memlia.fr/… requise pour ${entree.slug}`);
   if (entree.secondaires !== undefined && !Array.isArray(entree.secondaires)) throw new Error(`registre : secondaires doit être une liste pour ${entree.slug}`);
-  if (entree.type !== undefined && !['blog', 'service', 'comparatif'].includes(entree.type)) throw new Error(`registre : type inconnu pour ${entree.slug}`);
+  if (entree.type !== undefined && !['blog', 'service', 'comparatif', 'outil'].includes(entree.type)) throw new Error(`registre : type inconnu pour ${entree.slug}`);
   if (entree.publieLe !== undefined && entree.publieLe !== null) exigerDate(entree.publieLe, `registre : publieLe de ${entree.slug}`);
 }
 

@@ -34,8 +34,17 @@ désigner l'offre.
 12. [Mesures](mesures/) : les relevés commités. `questions-2026-09-19.md` et `.json` (suggestions par formulation, SERP par famille), `titres-intent-2026-09-21.json` (test distinct du primaire IA), `semaine-2026-W38-demande.json`, `semaine-2026-W38-integrite.json`, `sentinelle.jsonl`, `registre-requetes.json`, `amorces-marche.json`.
 13. [Calendrier](CONTENT-CALENDAR.md), [plan de cluster](cluster-plan.md), [données](cluster-plan.json), [carte interactive](cluster-map.html) : générés par `build-cluster-plan.py`. Ne pas les éditer à la main ; corriger `backlog-v3.json` ou la taxonomie, puis régénérer. `manque` et `a-replanifier` ne sont pas des créneaux de publication.
 14. [Briefs du 16/09](cluster-briefs/) : périmés (voir plus bas). Ne pas s'en servir comme source d'un article.
+15. [Diagnostic Blog/SEO du 03/10](mesures/diagnostic-2026-10-03/DIAGNOSTIC.md), [quatre briefs IA finaux](mesures/diagnostic-2026-10-03/BRIEFS-QUATRE-ARTICLES.md), [couverture finale](mesures/diagnostic-2026-10-03/COUVERTURE-LIVRAISON.md) et [provenance](mesures/diagnostic-2026-10-03/LIVRAISON.md) : prolongement des deux articles IA du 29/09 ; anciens sujets DSN abandonnés. Lire l'[état d'intégration et la procédure de rejeu](mesures/diagnostic-2026-10-03/INTEGRATION.md), puis le runbook §3. Ces briefs ne publient aucun article et ne réservent aucune date.
 
 ## Gouvernance des faits vivants (réconciliation du 28/09)
+
+Relecture ciblée du 04/10 après l'intégration documentaire IA PR54 :
+[qualification des quatre signaux hérités](QUALIFICATION-SOCLES-2026-10-04.md).
+L'architecture compte désormais 12 fichiers d'article scellés, sans inférer leur indexation ;
+la suspension Saisie est historique, et le retour à la ligne de la navigation mobile est décrit.
+Les deux alertes forge/renderer sont déjà absorbées par la procédure du 03/10, conservée après
+comparaison. Une source plus récente appelle une qualification, pas une réécriture automatique.
+Ce relais ne restaure aucun ancien candidat et ne réactive aucune routine.
 
 | Fait | Propriétaire vérifiable | Socle à revoir quand il change |
 |---|---|---|
@@ -114,7 +123,7 @@ La CI distante, le moniteur live et la production ne sont pas attestés par cett
 ## Ce qui est fait
 
 - **Le site est en ligne** et sert la copy v3 ; les cinq routes de tâche actuellement publiées sont distinctes des routes service encore candidates, exclues du sitemap tant que leur statut n'est pas `publie`.
-- **Onze fichiers d'articles publiés** sont présents dans `src/content/blog/` après les deux articles ordinaires W39. Présence au dépôt, exclusion du sitemap et indexabilité du HTML sont trois faits distincts : l'article de saisie FE est exclu du sitemap et son HTML statique porte `noindex, follow` (test dist) ; la fonction de bord vise toujours un 503 avec `X-Robots-Tag`. Aucun état GET/HEAD servi en production n'est attesté ici : voir `SITE-STRUCTURE.md` avant toute allégation de suspension effective.
+- **Douze fichiers d'articles scellés** sont présents dans `src/content/blog/` au 04/10 : un pilier, neuf ordinaires et deux Cicatrices selon les recettes versionnées. La suspension Saisie du candidat du 28/09 est historique et supersédée par la republication intégrée `e9866dd8` : le dist rejoué porte `index, follow`, le canonical propre et une entrée sitemap ; la fonction de bord 503 a été supprimée. Présence au dépôt, sitemap construit et état GET/HEAD effectivement servi restent des faits distincts. Aucun commit déployé n'est attesté par ces contrôles : voir [le constat courant et l'historique conservé](SITE-STRUCTURE.md#1-larbre-réel) et [la qualification des quatre signaux](QUALIFICATION-SOCLES-2026-10-04.md).
 - **La cadence est codée** : 4 par semaine ISO, 2 par jour au plus, du lundi au jeudi (`CANDIDATS_PAR_SEMAINE_MAX`, `CANDIDATS_PAR_JOUR_MAX` dans `scripts/lib/blog-pipeline.mjs`).
 - **Le mécanisme est nommé** : « la règle écrite » (charte §2 bis). La forge refuse de matérialiser un article daté à partir du 19/09/2026 qui ne porte pas `## La règle écrite` et `## Rejoué sur le jeu fictif` (`DEBUT_REGLE_ECRITE` et `verifierRegleEcrite`, `scripts/blog-forge.mjs`).
 - **Le glossaire porte 53 termes** (comptés dans `src/data/glossary.ts` ; `tests/proof/test_glossary.py` en exige exactement 53) : 23 historiques, 20 de la vague 1 et 10 de la vague 2.

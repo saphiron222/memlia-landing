@@ -3,6 +3,8 @@
 Écrite le 16 septembre 2026, remise à l'état réel le 19 septembre puis réconciliée le 28 septembre
 avec `src/pages/`, `src/components/Nav.astro`, `Footer.astro` et les registres de contenu. Les
 chiffres d'indexation du 18/09 ci-dessous sont historiques, non un relevé de production du 28/09.
+Relecture ciblée du 04/10/2026 sur main après PR54 : inventaire scellé, fin de la suspension
+Saisie et navigation mobile ; [qualification et limites](QUALIFICATION-SOCLES-2026-10-04.md).
 
 ## 1. L'arbre réel
 
@@ -22,6 +24,7 @@ chiffres d'indexation du 18/09 ci-dessous sont historiques, non un relevé de pr
 │   ├── /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain
 │   ├── /blog/logiciel-ia-comptabilite
 │   ├── /blog/prompt-chatgpt-expert-comptable
+│   ├── /blog/tests-verts-et-regle-des-trois-passes
 │   └── /blog/rubrique/{paie-dsn-cabinet-comptable,gestion-pieces-comptables}
 ├── /automatisation/<tache>                pages de service publiées (collection services)
 ├── /integrations                          hub et guides tâche × environnement, seulement candidats admis
@@ -33,22 +36,24 @@ chiffres d'indexation du 18/09 ci-dessous sont historiques, non un relevé de pr
 
 La mesure « 14 URL au sitemap, 14 indexées » est le dernier relevé du **18/09**, non le compte
 actuel. Ne pas en déduire l'indexation des routes nouvelles : compter le sitemap construit et
-mesurer Search Console séparément. Les 11 fichiers d'article scellés de `src/content/blog/`
-comprennent les deux articles ordinaires W39 publiés le 29/09 ; ce compte de fichiers ne
-prouve ni indexation ni réponse effectivement servie.
-**Incident FE :** au candidat local du 28/09, `src/data/site.mjs` exclut l'article de saisie
-du sitemap et `Article.astro` applique aussi `noindex` au HTML statique de cette route :
-le test du `dist` (`tests/proof/test_build.py`) constate `noindex, follow`, avec canonical
-propre. La fonction Pages `functions/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.js`
-est conçue pour servir 503 avec `X-Robots-Tag: noindex, nofollow` sur GET et HEAD ; ni le
-HTML local ni ce code ne prouvent la réponse effectivement servie en production. La suspension
-ciblée reste à maintenir, sans réouverture de l'article ni retrait de sa route/canonical par
-un pansement. Avant de déclarer la suspension effective, contrôler GET/HEAD du déploiement
-exact (statut, en-têtes robots), le HTML rendu et le sitemap ; sans ce contrôle, état servi inconnu.
+mesurer Search Console séparément. Les 12 fichiers d'article scellés de `src/content/blog/`
+comprennent le pilier, neuf ordinaires (dont les deux IA publiés le 29/09) et deux Cicatrices,
+`pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils` et
+`tests-verts-et-regle-des-trois-passes`, selon le champ `serie` des recettes versionnées.
+`blog:audit` contrôle les douze dossiers et leurs sceaux ;
+ce compte de fichiers ne prouve ni indexation ni réponse effectivement servie.
+**Incident FE, historique clos côté sources :** le candidat du 28/09 suspendait Saisie
+(hors sitemap, HTML noindex et fonction Pages prévue en 503). La republication intégrée
+`e9866dd8` a retiré la route de `PAGES_NOINDEX` et supprimé cette fonction ; la route et son
+canonical sont conservés. Ne pas réintroduire la suspension à partir de l'ancien candidat.
+Le build contrôle désormais cette route publique. Pour qualifier la surface servie, contrôler
+GET/HEAD, robots, HTML et sitemap séparément ; un constat HTTP ne démontre pas le commit déployé.
 `Footer.astro` tire les services publiés de la collection, les outils disponibles de `outils.ts`,
 les intégrations indexables de `integrations.ts` et les rubriques de `blog-rubriques.mjs` ; un
 fichier présent ne prouve ni publication, ni entrée au sitemap. `Nav.astro` garde l'accès lisible
-aux grands parcours, sans menu de tâches exhaustif.
+aux grands parcours, sans menu de tâches exhaustif. La correction `bc62a28a` conserve les liens
+et les fait revenir à la ligne sur mobile (`flex-wrap: wrap`), sans défilement horizontal :
+navigation immédiatement visible, pas de changement d'arborescence ou de destination.
 
 **`/ressources` n'existe plus.** La page a été retirée le 16/09/2026 au soir sur décision de Kevin
 et rend 404 (`JOURNAL.md`, ligne du 16/09). « Ressources » est devenu un **groupe de navigation**,
@@ -131,7 +136,7 @@ sans date de publication promise (`GLOSSARY-PLAN.md`).
 
 Ce qui reste, et qui n'est pas urgent : aucune facette « par famille de tâches » n'existe, et elle
 n'a plus de page d'accueil depuis le retrait de `/ressources`. Si le besoin revient, il se pose sur
-`/blog`, pas sur un hub : une facette à 59 familles actives pour 11 articles serait une
+`/blog`, pas sur un hub : une facette à 59 familles actives pour 12 articles serait une
 facette vide (familles lues dans le frontmatter `famille:` des articles publiés). À rouvrir quand
 plusieurs familles auront leurs quatre satellites publiés, pas avant.
 

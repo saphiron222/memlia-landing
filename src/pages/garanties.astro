@@ -47,10 +47,10 @@ const appel = {
     <ProofRow id="v2/07-exception-visible">
       <div class="pv-copy rv">
         <h2 id="arret-titre">Dans le doute, l’automatisation s’arrête</h2>
-        <p>C’est notre règle la plus stricte, et elle a une conséquence désagréable : nos automatisations refusent plus souvent que d’autres.</p>
+        <p>Une donnée absente, une pièce illisible ou un cas hors règle arrête la préparation et présente le motif à votre équipe.</p>
         <p class="texte-2">Quand une donnée manque, quand deux règles s’appliquent et se contredisent, quand un format n’est pas celui prévu, le traitement s’interrompt et présente le cas. Il n’écrit pas une valeur par défaut, il ne choisit pas la lecture la plus probable, il ne complète pas silencieusement.</p>
         <p class="texte-2">Cette règle borne la décision de <a href="/automatisation/saisie-comptable">confier la préparation de la saisie comptable</a> : une pièce incertaine ne devient jamais une écriture certaine.</p>
-        <p class="texte-2">Nous assumons ce choix. Une exception visible se traite en quelques minutes. Une exception avalée se découvre des mois plus tard, et il faut alors reprendre tout ce qui en dépendait.</p>
+        <p class="texte-2">Une exception visible se présente avec son contexte et son motif. Votre équipe décide de la suite.</p>
       </div>
     </ProofRow>
   </section>
@@ -62,7 +62,7 @@ const appel = {
         <p>Les jeux d’essai que nous construisons sont <strong>entièrement fictifs</strong>. Ils reproduisent la forme de vos fichiers, jamais leur contenu.</p>
         <p class="texte-2">Nous pouvons ainsi <a href="/automatisation/notes-de-frais">éprouver le traitement des notes de frais</a> avec un justificatif fictif, un doublon et un refus attendu.</p>
         <p class="texte-2">Les fichiers réels que vous nous confiez pour le cadrage sont lus en place, jamais copiés dans nos dépôts, jamais utilisés pour construire. Pour le premier échange, la description du geste suffit : vous n’avez rien à nous envoyer.</p>
-        <p class="texte-2">Le détail de nos traitements figure dans la <a href="/politique-de-confidentialite">politique de confidentialité</a>.</p>
+        <p class="texte-2">La <a href="/politique-de-confidentialite">politique de confidentialité</a> décrit les données du site. Les flux du service sont documentés par mission avant la mise en service.</p>
       </div>
     </ProofRow>
   </section>
@@ -84,7 +84,7 @@ const appel = {
         <h2 id="recette-titre">La recette éprouve les refus autant que les résultats</h2>
         <p>Chaque mission passe par un jeu d’essai fictif qui contient les cas qui doivent aboutir et ceux qui doivent s’arrêter. Un arrêt attendu qui ne se produit pas est traité comme un résultat faux : corrigé avant la recette, jamais livré.</p>
         <p class="texte-2">Un paiement groupé ambigu sert alors à <a href="/automatisation/rapprochement-bancaire">recetter le rapprochement bancaire</a> autant qu’un appariement exact.</p>
-        <p class="texte-2">La recette se joue ensuite chez vous, sur vos fichiers, avec les personnes qui feront le travail. Le résultat n’est accepté que si elles lisent ce qu’elles attendent.</p>
+        <p class="texte-2">Après les essais fictifs, la recette se joue dans l’environnement autorisé du cabinet, sur les cas et fichiers convenus, avec les personnes qui feront le travail. Elles acceptent ou refusent le résultat selon les critères écrits.</p>
       </div>
     </ProofRow>
   </section>
@@ -95,6 +95,7 @@ const appel = {
         <h2 id="ecrit-titre">Ce qui est écrit avant de commencer</h2>
         <p>Avant la mise en service, un document fixe le périmètre, les accès, les points de validation et les critères de recette. Ce qui n’y figure pas ne fait pas partie de la mission.</p>
         <p class="texte-2">Ce périmètre est la condition pour <a href="/automatisation/factures-fournisseurs">cadrer le flux des factures fournisseurs</a> sans confondre préparation, litige et décision de paiement.</p>
+        <p class="texte-2">Pour organiser les usages et les rôles avant de choisir une automatisation, vous pouvez <a href="/outils-comptables-gratuits/generateur-charte-ia-cabinet">préparer une trame de charte IA du cabinet</a> : chaque arbitrage non décidé reste à compléter.</p>
       </div>
     </ProofRow>
   </section>
@@ -103,6 +104,7 @@ const appel = {
     <div class="pv-tete rv">
       <h2 id="refus-titre">Ce que nous ne promettons pas</h2>
       <p class="texte-2 lecture">Quatre choses que vous n’entendrez pas de notre part, parce que rien ne les soutiendrait. Ce que nous écrivons à la place, sur une tâche réelle : <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>.</p>
+      <p class="texte-2 lecture">Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</p>
     </div>
     <div class="pv-bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>

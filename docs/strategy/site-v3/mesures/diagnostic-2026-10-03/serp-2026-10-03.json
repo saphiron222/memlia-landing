@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-03",
+  "instrument": "Hermes web_search ; relevé final IA de la session commencée le 03/10",
+  "limites": "Sortie du moteur configuré, pas rank tracker Google France desktop/mobile. Ordre retourné seulement ; volumes/PAA/citations IA ND. Reprise francophone de la recherche vérification après premier résultat surtout anglophone. Recherche DSN conservée séparément, abandonnée par décision Kevin.",
+  "recherches": [
+    {"slug":"utiliser-chatgpt-cabinet-comptable","query":"utiliser ChatGPT cabinet comptable cas usage","resultats":[
+      {"ordre":1,"url":"https://revuefrancaisedecomptabilite.fr/chatgpt-quels-cas-dusage-pour-la-profession-comptable/","titre":"ChatGPT : quels cas d'usage pour la profession comptable","ouvert":false},
+      {"ordre":2,"url":"https://www.experts-comptables.fr/travaux-data-et-ia","titre":"Travaux Data et IA","ouvert":true},
+      {"ordre":3,"url":"https://www.liberall-conseil.com/contenus/chatgpt-x-pennylane","titre":"ChatGPT x Pennylane : 5 cas d'usage","ouvert":true},
+      {"ordre":4,"url":"https://www.just-use-ai.com/blog/chatgpt-expert-comptable","titre":"ChatGPT expert comptable : le guide pratique 2026","ouvert":false},
+      {"ordre":5,"url":"https://www.youtube.com/watch?v=htg4DTiXOi8","titre":"ChatGPT au service de l'expertise-comptable","ouvert":false}
+    ],"decision":"Premier usage et fiche de sélection, pas nouveau catalogue de prompts."},
+    {"slug":"verifier-reponse-ia-comptabilite","query":"comptabilité vérifier réponses ChatGPT hallucinations cabinet français","resultats":[
+      {"ordre":1,"url":"https://revuefrancaisedecomptabilite.fr/chatgpt-quels-cas-dusage-pour-la-profession-comptable/","titre":"ChatGPT : quels cas d'usage pour la profession comptable","ouvert":false},
+      {"ordre":2,"url":"https://www.youtube.com/watch?v=JLnE2ZgT3Ww","titre":"ChatGPT au service de l'expertise-comptable","ouvert":false},
+      {"ordre":3,"url":"https://tensoria.fr/blog/prompts-ia-comptabilite-gestion-financiere-pme","titre":"10 Prompts IA pour la Comptabilité (2026)","ouvert":false},
+      {"ordre":4,"url":"https://www.wolterskluwer.com/fr-be/expert-insights/accountant-trusting-ai","titre":"Pouvez-vous faire confiance à l'IA pour votre activité de comptable","ouvert":false},
+      {"ordre":5,"url":"https://www.cegid.com/fr/blog/expert-comptable-apprendre-a-prompter/","titre":"Experts-comptables, comment bien prompter","ouvert":false}
+    ],"source_technique_ouverte":"https://cloud.google.com/discover/what-are-ai-hallucinations","decision":"Checklist sortie/source/contexte, pas score automatique de vérité ni simple consigne."},
+    {"slug":"ia-comptabilite-confidentialite-donnees","query":"IA cabinet comptable confidentialité données ChatGPT CNIL","resultats":[
+      {"ordre":1,"url":"https://www.cnil.fr/fr/ia-comment-sopposer-la-reutilisation-de-ses-donnees-personnelles-entrainement-agent-conversationnel","titre":"IA et vie privée : réutilisation de ses données","ouvert":false},
+      {"ordre":2,"url":"https://www.instagram.com/p/DaV3gxqCmpe/?hl=fa","titre":"Un expert-comptable qui met ses dossiers dans ChatGPT","ouvert":false},
+      {"ordre":3,"url":"https://www.compta-online.com/chatgpt-experts-comptables-deontologie-ao6662","titre":"ChatGPT : quel impact sur la déontologie de l'expert-comptable","ouvert":true},
+      {"ordre":4,"url":"https://www.experts-comptables.fr/sites/default/files/assets/files/PARLONS%20DATA%20%26%20IA%20-%20A4_p%C3%A0p.pdf","titre":"Parlons data et IA","ouvert":false},
+      {"ordre":5,"url":"https://fr.linkedin.com/posts/fabriceheuvrard_ia-expertcomptable-chatgpt-activity-7467474445050368000-tDJp","titre":"Post de Fabrice Heuvrard","ouvert":false}
+    ],"source_officielle_ouverte":"https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative","decision":"Préparer données et autorisation, pas promesse d'anonymisation. Aucun scrape social ni engagement mesuré."},
+    {"slug":"automatiser-avec-ia-sans-changer-logiciel","query":"automatiser IA cabinet comptable sans changer logiciel outils existants","resultats":[
+      {"ordre":1,"url":"https://studioabis.com/blog/automatisation-ia-cabinet-liberal","titre":"Automatisation IA pour cabinet comptable","ouvert":true},
+      {"ordre":2,"url":"https://juwa.co/blog/actualites-tendances-ia/automatiser-la-comptabilite/","titre":"Guide pratique pour automatiser la comptabilité","ouvert":false},
+      {"ordre":3,"url":"https://www.datalis.ch/blog/ia-service-fiduciaires-automatisez-saisies-comptables","titre":"Automatisez vos tâches comptables avec l'IA","ouvert":false},
+      {"ordre":4,"url":"https://algos-ai.com/solution-ia-pour-comptables/","titre":"Solution IA pour comptables","ouvert":false},
+      {"ordre":5,"url":"https://www.francenum.gouv.fr/guides-et-conseils/intelligence-artificielle/comprendre-et-adopter-lia/ia-generative-pour-les","titre":"IA générative pour les cabinets d'expertise comptables","ouvert":false}
+    ],"decision":"Fiche du passage entre les outils, pas autre comparatif logiciel ; réutiliser intention du brief 08 existant sans doublon."}
+  ]
+}

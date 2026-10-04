@@ -13,9 +13,9 @@ const pages = [
   { route: '/automatisation/rapprochement-bancaire', sources: 1, experience: false, modified: '2026-09-20' },
   { route: '/automatisation/notes-de-frais', sources: 1, experience: false, modified: '2026-09-20' },
   { route: '/automatisation/factures-fournisseurs', sources: 1, experience: false, modified: '2026-09-20' },
-  { route: '/automatisation-cabinet-comptable', sources: 1, experience: true, modified: '2026-09-20' },
-  { route: '/methode', sources: 0, experience: true, modified: '2026-09-20' },
-  { route: '/garanties', sources: 1, experience: false, modified: '2026-09-20' },
+  { route: '/automatisation-cabinet-comptable', sources: 1, experience: true, modified: '2026-10-04' },
+  { route: '/methode', sources: 0, experience: true, modified: '2026-10-04' },
+  { route: '/garanties', sources: 1, experience: false, modified: '2026-10-04' },
   { route: '/a-propos', sources: 0, experience: false, modified: '2026-09-21' },
 ];
 
@@ -29,14 +29,16 @@ function graphFor(html) {
   return JSON.parse(scripts[0][1])['@graph'] ?? [];
 }
 
-test('les neuf pages E-E-A-T rendent une attribution vraie, un Person relié et uniquement les preuves disponibles', () => {
+// Décision de Kevin du 04/10/2026 : ces pages ne sont pas des articles ; ni signature ni dates visibles.
+test('les neuf pages hors blog gardent un Person relié et leurs preuves, sans signature ni dates visibles', () => {
   for (const page of pages) {
     const html = htmlFor(page.route);
-    assert.match(html, /data-page-byline/, `${page.route} : byline visible`);
-    assert.match(html, /rel="author"/, `${page.route} : lien auteur visible`);
-    assert.match(html, /publié le <time datetime="2026-09-(?:16|20)"/, `${page.route} : publication visible`);
-    assert.match(html, new RegExp(`mis à jour le <time datetime="${page.modified}"`), `${page.route} : modification visible`);
+    assert.doesNotMatch(html, /data-page-byline/, `${page.route} : aucune signature d’article`);
+    assert.doesNotMatch(html, /Par <a[^>]*rel="author"/, `${page.route} : aucun « Par Kevin Kitanga » visible`);
+    assert.doesNotMatch(html, /publié le <time/, `${page.route} : aucune date de publication visible`);
+    assert.doesNotMatch(html, /mis à jour le <time/, `${page.route} : aucune date de mise à jour visible`);
     assert.equal((html.match(/data-primary-source/g) ?? []).length, page.sources, `${page.route} : sources primaires`);
+    assert.equal(html.includes('id="page-evidence-title"'), page.sources > 0, `${page.route} : aucun titre Sources vide`);
     assert.equal(html.includes('data-first-hand-experience'), page.experience, `${page.route} : expérience de première main`);
 
     const graph = graphFor(html);

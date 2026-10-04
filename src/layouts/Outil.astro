@@ -19,7 +19,7 @@ const socialImage = outil.proof ? {
   url: `/proofs/v2/og/${outil.proof.slice(3)}.webp`, width: 1200, height: 630,
   alt: `Aperçu fictif — ${outil.h1}`,
 } : undefined;
-const csp = "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'";
+const csp = "default-src 'self'; base-uri 'self'; connect-src 'none'; worker-src 'self'; font-src 'self'; form-action 'self'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'";
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -62,7 +62,7 @@ const graph = {
       ]}
     />
     <OutilPromesse entree={outil.promesse.entree} resultat={outil.promesse.resultat} />
-    <OutilZone mentionLocale={outil.mentionLocale} limites={outil.limites} suspension={outil.suspension}>
+    <OutilZone mentionLocale={outil.mentionLocale} limites={outil.limites} suspension={outil.suspension} large={outil.zoneLarge}>
       {outil.statut !== 'suspendu' && <slot />}
     </OutilZone>
     <OutilPreuves source={outil.source} mentionLocale={outil.mentionLocale} refus={outil.limites.at(-1) ?? outil.limites[0]} assemblage={outil.categorie === 'ecrire'} />
@@ -105,6 +105,7 @@ const graph = {
       start();
       if (form.hasAttribute('data-own-telemetry')) return;
       submits += 1;
+      if (form.hasAttribute('data-async-tool')) return;
       queueMicrotask(() => {
         const erreur = form.querySelector<HTMLElement>('[data-error]');
         const refuse = Boolean(erreur && !erreur.hidden && erreur.textContent?.trim());

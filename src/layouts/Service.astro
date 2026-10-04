@@ -4,7 +4,6 @@ import ServiceHero from '@/components/sections/ServiceHero.astro';
 import ServiceBody from '@/components/sections/ServiceBody.astro';
 import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
-import PageAttribution from '@/components/PageAttribution.astro';
 import PageEvidence from '@/components/PageEvidence.astro';
 import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { SITE } from '@/data/site.mjs';
@@ -30,7 +29,7 @@ const auteurId = `${SITE.url}${identiteAuteur(auteur)}`;
 const toolLink = entree.id === 'factures-fournisseurs'
   ? { href: '/outils-comptables-gratuits/calculateur-date-echeance-facture', label: 'Calculer une date d’échéance de facture' }
   : entree.id === 'rapprochement-bancaire'
-    ? { href: '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit', label: 'Préparer un modèle de rapprochement bancaire fictif' }
+    ? { href: '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit', label: 'Contrôler des soldes fictifs et exporter le CSV' }
     : null;
 const graph = {
   '@context': 'https://schema.org',
@@ -90,13 +89,12 @@ const graph = {
   <div class="feuille">
     <article data-service={entree.id} data-service-layout="da-v1">
       <ServiceHero headline={data.headline} hero={data.hero} cta={data.cta} proof={design.heroProof} preview={noindex}>
-        <PageAttribution slot="attribution" eeat={eeat} align="start" />
       </ServiceHero>
       <ServiceBody proof={design.bodyProof}>
         <slot />
         {toolLink && (
           <aside class="service-outil" aria-label="Outil gratuit associé">
-            <strong>Rejouer la règle sur des données fictives</strong>
+            <strong>{entree.id === 'rapprochement-bancaire' ? 'Contrôle de soldes fictifs, pas l’appariement des mouvements' : 'Rejouer la règle sur des données fictives'}</strong>
             <a href={toolLink.href}>{toolLink.label}</a>
           </aside>
         )}
