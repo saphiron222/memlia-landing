@@ -619,6 +619,41 @@ class EditorialCadenceProof(unittest.TestCase):
                 self.assertEqual(entries[1]['date'], '2026-09-29')
                 self.assertEqual(PLAN.verifier_alternance(entries), [])
 
+    def test_exceptions_utilisees_survivent_a_la_publication(self):
+        entries = [dict(slug=str(i), famille='f', pole='a', format='how-to-guide',
+                        priorite=1, rang_famille=i) for i in range(2)]
+        entries[1]['datePlanifiee'] = '2026-10-04'
+        entries[1]['exceptionAlternance'] = {
+            champ: {'date': '2026-10-04', 'raison': 'continuité éditoriale mandatée'}
+            for champ in ('pole', 'format')}
+        publies = {'0': {'date': '2026-10-01'}}
+        PLAN.planifier(entries, publies, aujourd_hui=date(2026, 10, 4))
+        reservation = deepcopy(entries[1]['exceptionAlternance'])
+        publies['1'] = {'date': '2026-10-04'}
+        PLAN.planifier(entries, publies, aujourd_hui=date(2026, 10, 4))
+        self.assertEqual(PLAN.verifier_alternance(entries), [])
+        self.assertEqual(entries[1]['exceptionAlternance'], reservation)
+        self.assertEqual(entries[1]['statut'], 'published')
+
+    def test_exceptions_archivees_restent_datees_motivees_et_utilisees(self):
+        entries = [dict(slug=str(i), date=f'2026-10-0{i + 1}', statut='published',
+                        pole='a', format='how-to-guide') for i in range(2)]
+        for champ in ('pole', 'format'):
+            entries[1]['exceptionAlternance'] = {
+                champ: {'date': entries[1]['date'], 'raison': 'continuité mandatée'}}
+            for mutation in ('date', 'raison', 'non-utilisee', 'premier'):
+                with self.subTest(champ=champ, mutation=mutation):
+                    mutant = deepcopy(entries)
+                    if mutation == 'date':
+                        mutant[1]['exceptionAlternance'][champ]['date'] = '2026-10-03'
+                    elif mutation == 'raison':
+                        mutant[1]['exceptionAlternance'][champ]['raison'] = ' '
+                    elif mutation == 'non-utilisee':
+                        mutant[0][champ] = 'autre'
+                    else:
+                        mutant = mutant[1:]
+                    self.assertTrue(PLAN.verifier_alternance(mutant))
+
     def test_exception_invalide_ne_passe_pas(self):
         for exception in ({'pole': {'raison': 'preuve'}},
                           {'pole': {'date': '2026-09-18'}},
