@@ -1,5 +1,6 @@
 /** Matrice M4-R1 : références fonctionnelles fictives, jamais des captures produit. */
 export const PROOFS = {
+  'v2/29-outil-pseudonymisation': { title: 'Les noms changent, le risque reste visible', alt: 'Avant et après fictifs : Alice devient C1_000001, le libellé est supprimé, le montant rare 9876 reste conservé et le risque de réidentification est signalé.', detail: 'La copie supprime le libellé et remplace les noms par des alias cohérents. Les dates et montants conservés restent des quasi-identifiants ; la décision de partage appartient au cabinet.' },
 
   'v2/30-outil-maturite': { title: 'Clarifier avant d’élargir les usages', alt: 'Synthèse fictive : données à démarrer, validation incomplète, règle en essai ; définir les données autorisées puis clarifier la relecture et écrire une règle.', detail: 'La scène reprend un exemple fictif calculable : trois réponses données non commencées, trois réponses validation inconnues et trois réponses règles en essai. Les actions suivent cet ordre et citent les réponses.' },
 

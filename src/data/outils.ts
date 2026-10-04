@@ -5,7 +5,11 @@ export const OUTILS_HUB_PATH = '/outils-comptables-gratuits' as const;
 export const OUTIL_CATEGORIES = [
   { id: 'calculer', label: 'Calculer' },
   { id: 'verifier', label: 'Vérifier' },
+
   { id: 'se-situer', label: 'Se situer' },
+
+  { id: 'preparer', label: 'Préparer' },
+
   { id: 'ecrire', label: 'Écrire' },
 ] as const;
 
@@ -40,6 +44,27 @@ export interface OutilDefinition {
 }
 
 export const OUTILS: readonly OutilDefinition[] = [
+  {
+    slug: 'preparer-pseudonymiser-fichier-csv-fec', categorie: 'preparer', statut: 'disponible',
+    h1: 'Préparer et pseudonymiser un fichier comptable avant IA',
+    title: 'Préparer et pseudonymiser un fichier comptable avant IA | Memlia',
+    description: 'Supprimez ou remplacez des colonnes d’un fichier CSV ou FEC local et examinez les risques restants avant tout partage avec une IA.',
+    promesse: { entree: 'Copie CSV, TSV ou FEC texte et choix par colonne', resultat: 'Aperçu, copie CSV, rapport des risques et mapping séparé optionnel' },
+    limites: [
+      'Les alias ne garantissent pas l’anonymat : champs libres, dates, montants et combinaisons rares peuvent permettre une réidentification.',
+      'La copie transformée n’est pas un FEC fiscalement valide. Le cabinet garde la décision de partage ; rien n’est transmis à une IA.',
+      'L’import refuse un fichier supérieur à 20 Mo, binaire, illisible, sans en-têtes uniques ou de structure irrégulière ; les autres limites sont affichées au formulaire.',
+    ],
+    mentionLocale: 'La lecture, l’aperçu et les exports se font dans ce navigateur, sans envoi ni stockage du contenu. L’original n’est jamais modifié. Réinitialiser termine le Worker et retire le contenu et le mapping de la page ; les fichiers que vous avez téléchargés restent sur votre appareil.',
+    proof: 'v2/29-outil-pseudonymisation',
+    source: {
+      nom: 'CNIL — L’anonymisation de données personnelles',
+      url: 'https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles',
+      extrait: 'La CNIL distingue les alias de l’anonymisation irréversible : une pseudonymisation peut être réversible et les données peuvent conserver un caractère personnel.',
+      verifieeLe: '4 octobre 2026',
+    },
+    pageService: '/methode', cta: '/contact',
+  },
   {
 
     slug: 'diagnostic-maturite-ia-cabinet', categorie: 'se-situer', statut: 'disponible',
