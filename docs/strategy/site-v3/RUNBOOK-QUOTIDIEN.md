@@ -5,7 +5,7 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 ## 0. Rails non négociables
 
 - **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`. Chaque exécution utilise un worktree isolé, une branche neuve `site/blog-<sujet>` à la base fraîche de `main`, puis une PR. Le clone dédié du cron ne sert que de source propre synchronisée par `forge_checkout_gate.py` ; il ne reçoit aucune écriture éditoriale. D'autres workers peuvent tourner en parallèle. Seule la fusion contrôlée sur `main` déclenche la publication Cloudflare ; jamais de push direct sur `main`.
-- **Cadence** : au plus 2 articles ordinaires par jour et 4 par semaine ISO, du lundi au jeudi, puis exactement 1 Cicatrice le samedi en sus (`verifierPlafonds`). Le vendredi reste un jour de maintenance (§6). La décision du 29/09 distingue le retard seul des portes de sûreté : le reliquat déjà mandaté W39 n'exige pas une nouvelle signature Kevin à chaque jour de retard. Son seul cadrage opérateur courant est décrit ci-dessous ; aucun changement général de cadence, second slug ou second exemplaire W39 n'en découle. Le dossier éditorial et la production restent soumis à leurs gardes distincts.
+- **Cadence** : au plus 2 articles ordinaires par jour et 4 par semaine ISO ; planification automatique du lundi au jeudi, réservation explicite possible à la date réelle hors de ces jours (§2), puis exactement 1 Cicatrice le samedi en sus (`verifierPlafonds`). Le vendredi reste normalement un jour de maintenance (§6). La décision du 29/09 distingue le retard seul des portes de sûreté : le reliquat déjà mandaté W39 n'exige pas une nouvelle signature Kevin à chaque jour de retard. Son seul cadrage opérateur courant est décrit ci-dessous ; aucun second slug ou second exemplaire W39 n'en découle. Le dossier éditorial et la production restent soumis à leurs gardes distincts.
 
 ### Reçu opérateur W39 — ponctuel, non renouvelable
 
@@ -87,6 +87,20 @@ La phase `maintenance` vérifie racine/cwd, branche `main` ou `site/blog-*`, arb
 Conserver le `head` comme `BASE_SHA` jusqu'à la fin. Après maintenance, `--phase before-selection --base "$BASE_SHA"` refuse encore les créneaux échus, les quotas excessifs et toute écriture hors des cinq fichiers calendrier/backlog. Il exige HEAD et main distant inchangés. Avant commit, `before-commit` accepte les fichiers préparés sur la branche isolée mais conserve les mêmes contrôles de calendrier/base. Après commit, `before-push --base "$BASE_SHA" --commit "$COMMIT_SHA"` exige arbre propre, branche `site/blog-*` (pas `main`), commit exact, parent égal à la base et main distant inchangé. Un refus arrête sans commit/push ni pull/rebase automatique ; aucun test des processus voisins. SEO reste non autorisé. Un `ok:true` ne prouve ni revue, ni article, ni CI, ni publication.
 
 ## 2. Lire le créneau du jour
+
+Réservation mandatée d'un article ordinaire (constitution du 03/10, décision du
+29/09) : `datePlanifiee` dans le backlog peut fixer la date réelle, y compris
+vendredi, samedi ou dimanche. Ce champ existant est la décision éditoriale ; une
+recette, un brief ou une ligne de dérivé seuls ne réservent pas de créneau. Les
+jours lundi-jeudi restent ceux de la planification automatique, non une porte de
+sûreté. Les plafonds restent 2 ordinaires par jour et 4 par semaine ISO, en
+comptant les publications réelles et les réservations. Une date échue reste
+refusée ; un jour saturé par les publications devient `a-replanifier`. Marketing
+réserve le backlog et régénère les dérivés, puis passe le préflight natif
+`--slot <slug> <jour-Paris>` : fraîcheur et reconstruction complète restent
+obligatoires. Une publication intégrée conserve ensuite sa date hors lundi-jeudi
+sans nécessiter de réservation rétrospective. Aucun changement de la série
+Cicatrices, du reçu W39, des revues ou de la CI n'en découle.
 
 ```bash
 python3 docs/strategy/site-v3/build-cluster-plan.py --check
