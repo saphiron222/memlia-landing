@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { readFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 const route = '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet';
-test('impression exhaustive avec détails fermés, sans changer leur état écran', async ({ page }, testInfo) => {
+for (const mixed of [false, true]) test(`impression exhaustive avec détails ${mixed ? 'mixtes' : 'fermés'}, sans changer leur état écran`, async ({ page }, testInfo) => {
   await page.goto(route);
   await page.getByRole('button', { name: 'Essayer un exemple fictif' }).click();
   const details = page.locator('[data-result] details');
-  await details.first().evaluate((node: HTMLDetailsElement) => { node.open = true; });
+  if (mixed) await details.first().evaluate((node: HTMLDetailsElement) => { node.open = true; });
   const before = await details.evaluateAll(nodes => nodes.map(node => (node as HTMLDetailsElement).open));
   const responses = page.locator('[data-summary] .print-evidence li');
   const evidence = page.locator('[data-priorities] .print-evidence li');
@@ -15,6 +15,11 @@ test('impression exhaustive avec détails fermés, sans changer leur état écra
   expect(await evidence.count()).toBeGreaterThan(0);
   for (const li of await evidence.all()) await expect(li).toBeVisible();
   const pdf = testInfo.outputPath('diagnostic-complet.pdf');
+  writeFileSync(testInfo.outputPath('expected-print.json'), JSON.stringify({
+    responses: await responses.allTextContents(),
+    evidence: await evidence.allTextContents(),
+    actions: await page.locator('[data-priorities] > li > p').allTextContents(),
+  }, null, 2));
   await page.pdf({ path: pdf, format: 'A4', printBackground: true });
   await testInfo.attach('rapport imprimé', { path: pdf, contentType: 'application/pdf' });
   await page.emulateMedia({ media: 'screen' });

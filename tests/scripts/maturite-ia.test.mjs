@@ -6,7 +6,7 @@ test('trois actions distinctes et justifiées sur les 32 profils de dimensions',
   const order = ['donnees', 'validation', 'regles', 'mesure', 'usages'];
   for (let mask = 0; mask < 32; mask++) {
     const values = filled('formalise');
-    const gaps = order.filter((id, index) => mask & (1 << index));
+    const gaps = order.filter((_, index) => mask & (1 << index));
     for (const id of gaps) values[`${id}_1`] = 'non-commence';
     const before = { ...values };
     const result = diagnose(values);

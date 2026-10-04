@@ -1,0 +1,35 @@
+{
+  "responses": [
+    "Les tâches pour lesquelles l’IA est essayée sont-elles identifiées ? Formalisé",
+    "Les limites de chaque usage sont-elles décrites ? Formalisé",
+    "Les essais se font-ils sur des situations fictives avant un usage réel ? Formalisé",
+    "Les usages autorisés et les usages exclus sont-ils écrits ? En essai",
+    "Une personne est-elle désignée pour décider des évolutions de ces règles ? En essai",
+    "Les équipes disposent-elles d’une règle commune pour arrêter dans le doute ? En essai",
+    "Les données autorisées dans chaque outil IA sont-elles définies ? Non commencé",
+    "Les modalités de traitement des données par les outils choisis sont-elles connues ? Non commencé",
+    "Un contrôle existe-t-il avant de transmettre des informations à un outil IA ? Non commencé",
+    "Une personne doit-elle relire les résultats avant leur utilisation ? Je ne sais pas",
+    "Les critères de cette relecture sont-ils écrits ? Je ne sais pas",
+    "Les résultats incertains ou inattendus suivent-ils un circuit de décision défini ? Je ne sais pas",
+    "Une situation de départ est-elle décrite pour la tâche essayée ? Je ne sais pas",
+    "Les essais suivent-ils le résultat utile et les reprises nécessaires ? Je ne sais pas",
+    "Une décision de poursuivre ou d’arrêter s’appuie-t-elle sur ces observations ? Je ne sais pas"
+  ],
+  "evidence": [
+    "Justification : Les données autorisées dans chaque outil IA sont-elles définies ? Non commencé",
+    "Justification : Les modalités de traitement des données par les outils choisis sont-elles connues ? Non commencé",
+    "Justification : Un contrôle existe-t-il avant de transmettre des informations à un outil IA ? Non commencé",
+    "Justification : Une personne doit-elle relire les résultats avant leur utilisation ? Je ne sais pas",
+    "Justification : Les critères de cette relecture sont-ils écrits ? Je ne sais pas",
+    "Justification : Les résultats incertains ou inattendus suivent-ils un circuit de décision défini ? Je ne sais pas",
+    "Justification : Les usages autorisés et les usages exclus sont-ils écrits ? En essai",
+    "Justification : Une personne est-elle désignée pour décider des évolutions de ces règles ? En essai",
+    "Justification : Les équipes disposent-elles d’une règle commune pour arrêter dans le doute ? En essai"
+  ],
+  "actions": [
+    "Définir les données autorisées et vérifier leur traitement avant de poursuivre les usages.",
+    "Clarifier les réponses inconnues de la dimension validation, puis décider de la prochaine action.",
+    "Écrire une règle commune : usage permis, limite et condition d’arrêt."
+  ]
+}
