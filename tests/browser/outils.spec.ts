@@ -100,8 +100,8 @@ test('échéance : les deux conventions divergent et l’absence de convention e
   await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
   await expect(page.getByLabel('Date de facture', { exact: true })).toHaveValue('2026-01-20');
   await page.getByRole('button', { name: 'Effacer' }).click();
-  await expect(page.getByLabel('Règle générale')).toHaveValue('');
-  await page.getByLabel('Règle générale').selectOption('eom45');
+  await expect(page.getByLabel('Délai applicable ou convenu')).toHaveValue('');
+  await page.getByLabel('Délai applicable ou convenu').selectOption('eom45');
   await page.getByLabel('Date de facture', { exact: true }).fill('2026-01-20');
   await page.getByLabel(/Je confirme/).check();
   await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
@@ -112,11 +112,11 @@ test('échéance : les deux conventions divergent et l’absence de convention e
   await page.getByLabel(/Aller à la fin du mois/).check();
   await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
   await expect(page.locator('[data-result]')).toContainText('17 mars 2026');
-  await page.getByLabel('Règle générale').selectOption('default30');
+  await page.getByLabel('Délai applicable ou convenu').selectOption('default30');
   await page.getByLabel('Date de réception ou d’exécution', { exact: true }).fill('2026-02-01');
   await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
   await expect(page.locator('[data-result]')).toContainText('03 mars 2026');
-  await page.getByLabel('Règle générale').selectOption('invoice60');
+  await page.getByLabel('Délai applicable ou convenu').selectOption('invoice60');
   await page.getByLabel('Date de facture', { exact: true }).fill('2026-01-20');
   await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
   await expect(page.locator('[data-result]')).toContainText('21 mars 2026');
@@ -232,7 +232,11 @@ test('rapprochement : CSV exact et refus d’une différence', async ({ page, co
   await expect.poll(() => page.evaluate(() => (window as unknown as { revokedUrls?: string[] }).revokedUrls?.length ?? 0)).toBe(1);
   await page.getByLabel('Intérêts à comptabiliser').fill('0'); await page.getByRole('button', { name: 'Contrôler les soldes' }).click();
   await expect(page.locator('[data-error]')).toContainText('ne concordent pas');
-  await expect(page.getByRole('button', { name: /Télécharger le CSV/ })).toBeDisabled();
+  await expect(page.getByRole('button', { name: /Télécharger le CSV/ })).toBeEnabled();
+  const exceptionDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: /Télécharger le CSV/ }).click();
+  const exceptionBytes = await (await import('node:fs/promises')).readFile(await (await exceptionDownload).path() as string);
+  expect(exceptionBytes.toString('utf8')).toContain('NON VALIDÉ');
 });
 
 test('contrat de liens : le registre borne les outils publiés et leurs sorties', async ({ page }) => {
@@ -356,7 +360,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByRole('button', { name: 'Calculer la marge' }).click();
       await expect(page.locator('[data-margin]')).toHaveText('20,00 €');
     } else if (outil.slug === 'calculateur-date-echeance-facture') {
-      await page.getByLabel('Règle générale').selectOption('invoice60');
+      await page.getByLabel('Délai applicable ou convenu').selectOption('invoice60');
       await page.getByLabel('Date de facture', { exact: true }).fill('2026-01-20');
       await page.getByLabel(/Je confirme/).check();
       await page.getByRole('button', { name: 'Calculer l’échéance' }).click();

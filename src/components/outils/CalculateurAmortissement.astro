@@ -8,7 +8,12 @@
     <label class="champ" for="amortissement-date">
       <span>Date de mise en service</span>
       <input id="amortissement-date" name="date" type="date" value="2026-04-01" aria-describedby="amortissement-date-aide" required />
-      <small id="amortissement-date-aide">Point de départ du plan linéaire.</small>
+      <small id="amortissement-date-aide">Début usuel de consommation des avantages économiques, pour le linéaire comptable.</small>
+    </label>
+    <label class="champ" for="amortissement-acquisition" data-acquisition hidden>
+      <span>Date d’acquisition</span>
+      <input id="amortissement-acquisition" name="acquisition" type="date" value="2026-04-01" aria-describedby="amortissement-acquisition-aide" />
+      <small id="amortissement-acquisition-aide">Dégressif fiscal : premier jour du mois d’acquisition (ou d’achèvement pour un bien construit), pas de mise en service.</small>
     </label>
     <label class="champ" for="amortissement-duree">
       <span>Durée d’utilisation</span>
@@ -27,7 +32,7 @@
 
   <label class="confirmation" data-declining-confirmation hidden>
     <input type="checkbox" name="eligibilite" />
-    <span>Je confirme avoir vérifié que le bien entre dans le champ de l’article 39 A du CGI.</span>
+    <span>Je confirme avoir vérifié que le bien entre dans le champ de l’article 39 A du CGI. La simulation retient l’option de passage au linéaire lorsqu’il devient au moins égal au dégressif.</span>
   </label>
 
   <div class="actions">
@@ -86,6 +91,7 @@
   const descriptions = new Map([
     ['valeur', 'amortissement-valeur-aide'],
     ['date', 'amortissement-date-aide'],
+    ['acquisition', 'amortissement-acquisition-aide'],
     ['duree', 'amortissement-duree-aide'],
     ['methode', 'amortissement-methode-aide'],
   ]);
@@ -97,6 +103,8 @@
   const updateConfirmation = () => {
     if (!(method instanceof HTMLSelectElement) || !(confirmation instanceof HTMLElement)) return;
     confirmation.hidden = method.value !== 'declining';
+    const acquisition = form?.querySelector('[data-acquisition]');
+    if (acquisition instanceof HTMLElement) acquisition.hidden = method.value !== 'declining';
     const checkbox = confirmation.querySelector('input');
     if (checkbox instanceof HTMLInputElement) {
       checkbox.required = method.value === 'declining';
@@ -165,6 +173,7 @@
         const schedule = buildDepreciationSchedule({
           value: parseFrenchNumber(String(data.get('valeur') ?? '')),
           startDate: String(data.get('date') ?? ''),
+          acquisitionDate: String(data.get('acquisition') ?? ''),
           durationYears: Number(data.get('duree')),
           method: selectedMethod,
         });
@@ -234,6 +243,7 @@
         let invalidField = null;
         if (message.includes('valeur amortissable')) invalidField = markInvalid('valeur');
         else if (message.includes('date de mise en service')) invalidField = markInvalid('date');
+        else if (message.includes('date d’acquisition')) invalidField = markInvalid('acquisition');
         else if (message.includes('durée') || message.includes('Dégressif fiscal')) invalidField = markInvalid('duree');
         else if (message.includes('méthode')) invalidField = markInvalid('methode');
         invalidField?.focus();

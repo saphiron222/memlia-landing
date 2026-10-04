@@ -36,12 +36,12 @@ function previousDay(date) {
   return new Date(date.getTime() - DAY_MS);
 }
 
-function validateInput({ value, startDate, durationYears, method }) {
+function validateInput({ value, startDate, acquisitionDate, durationYears, method }) {
   if (!Number.isFinite(value) || value < 0.01 || value > 1_000_000_000 || !hasCentPrecision(value)) {
     throw new Error('La valeur amortissable doit être comprise entre 0,01 € et 1 milliard d’euros et saisie au centime, avec deux décimales au plus.');
   }
-  const start = parseIsoDate(startDate);
-  if (!start) throw new Error('La date de mise en service doit être une date valide.');
+  const start = parseIsoDate(method === 'declining' ? acquisitionDate ?? '' : startDate);
+  if (!start) throw new Error(method === 'declining' ? 'La date d’acquisition doit être une date valide.' : 'La date de mise en service doit être une date valide.');
   if (!Number.isInteger(durationYears) || durationYears < 1 || durationYears > 50) {
     throw new Error('La durée doit être un nombre entier compris entre 1 et 50 ans.');
   }
@@ -68,7 +68,8 @@ function linearSchedule(value, start, durationYears) {
     const denominator = daysInYear(year);
     const raw = value * annualRate * (days / denominator);
     const isLast = periodEnd.getTime() === end.getTime();
-    const amount = isLast ? roundCents(value - accumulated) : roundCents(raw);
+    // Une dotation arrondie ne peut consommer plus que la base restante.
+    const amount = Math.min(opening, Math.max(0, isLast ? roundCents(value - accumulated) : roundCents(raw)));
     const closing = roundCents(opening - amount);
 
     rows.push({
@@ -148,7 +149,7 @@ function decliningSchedule(value, start, durationYears) {
     method: 'Dégressif fiscal',
     annualRate,
     coefficient,
-    convention: `Coefficient ${coefficient.toFixed(2).replace('.', ',')} ; première annuité du premier jour du mois de mise en service à la clôture ; passage au quotient de la valeur résiduelle lorsque celui-ci devient supérieur.`,
+    convention: `Coefficient ${coefficient.toFixed(2).replace('.', ',')} ; première annuité du premier jour du mois d’acquisition à la clôture du 31 décembre ; option de passage au quotient de la valeur résiduelle lorsqu’il atteint ou dépasse l’annuité dégressive. L’exercice d’acquisition compte pour une année entière.`,
     rows,
   };
 }
@@ -161,7 +162,7 @@ export function buildDepreciationSchedule(input) {
   return {
     ...schedule,
     value: roundCents(input.value),
-    startDate: input.startDate,
+    startDate: input.method === 'declining' ? input.acquisitionDate : input.startDate,
     durationYears: input.durationYears,
     total: roundCents(schedule.rows.reduce((sum, row) => sum + row.amount, 0)),
   };

@@ -2,6 +2,26 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildDepreciationSchedule } from '../../src/lib/amortissement.mjs';
 
+test('arrondis : aucune dotation négative ni cumul au-delà de la base, y compris deux centimes', () => {
+  for (let durationYears = 1; durationYears <= 50; durationYears += 1) {
+    for (let month = 1; month <= 12; month += 1) {
+      for (const value of [0.01, 0.02, 0.03, 0.07, 1234.56, 1_000_000_000]) {
+        for (const method of ['linear', 'declining']) {
+          if (method === 'declining' && durationYears < 3) continue;
+          const date = `2024-${String(month).padStart(2, '0')}-15`;
+          const plan = buildDepreciationSchedule({ value, startDate: date, acquisitionDate: date, durationYears, method });
+          assert.equal(plan.total, value);
+          assert.equal(plan.rows.at(-1).closing, 0);
+          for (const row of plan.rows) {
+            assert.ok(row.amount >= 0 && row.amount <= row.opening, JSON.stringify({ value, method, durationYears, date, row }));
+            assert.ok(row.accumulated <= value);
+          }
+        }
+      }
+    }
+  }
+});
+
 test('linéaire : prorata quotidien, années civiles et total réconcilié au centime', () => {
   const plan = buildDepreciationSchedule({
     value: 10_000,
@@ -30,7 +50,7 @@ test('linéaire : prorata quotidien, années civiles et total réconcilié au ce
 test('dégressif : coefficient, prorata mensuel et bascule au quotient résiduel', () => {
   const plan = buildDepreciationSchedule({
     value: 10_000,
-    startDate: '2026-04-15',
+    acquisitionDate: '2026-04-15',
     durationYears: 5,
     method: 'declining',
   });
@@ -60,7 +80,7 @@ test('les entrées incohérentes sont refusées avant tout plan', () => {
     /date valide/,
   );
   assert.throws(
-    () => buildDepreciationSchedule({ value: 1000, startDate: '2026-01-01', durationYears: 2, method: 'declining' }),
+    () => buildDepreciationSchedule({ value: 1000, acquisitionDate: '2026-01-01', durationYears: 2, method: 'declining' }),
     /au moins 3 ans/,
   );
 });
