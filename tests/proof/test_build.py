@@ -557,3 +557,33 @@ class FamillesDesArticles(unittest.TestCase):
             verifies += 1
         # Le compte affiché dit ce que le test a réellement contrôlé : zéro article pipeline n'est pas un succès silencieux.
         print(f'familles vérifiées : {verifies} article(s) pipeline')
+
+
+class TraceurAudienceProof(unittest.TestCase):
+    """Les outils locaux et le contact ne chargent rien d'extérieur : Cloudflare ne doit pas y injecter son traceur.
+
+    D'après la documentation de Cloudflare Web Analytics, un Cache-Control `no-transform` empêche
+    l'injection automatique du traceur (beacon) ; le reste du site garde sa mesure d'audience."""
+
+    ROUTES = ('/contact', '/outils-comptables-gratuits', '/outils-comptables-gratuits/*')
+
+    def blocs(self):
+        blocs, route = {}, None
+        for ligne in (ROOT / 'public/_headers').read_text().splitlines():
+            if not ligne.strip() or ligne.lstrip().startswith('#'):
+                continue
+            if not ligne[0].isspace():
+                route = ligne.strip()
+                blocs.setdefault(route, [])
+            elif route:
+                blocs[route].append(ligne.strip())
+        return blocs
+
+    def test_outils_locaux_et_contact_refusent_l_injection_du_traceur(self):
+        blocs = self.blocs()
+        for route in self.ROUTES:
+            with self.subTest(route=route):
+                cache = [h for h in blocs.get(route, []) if h.lower().startswith('cache-control:')]
+                self.assertEqual(len(cache), 1, f'{route} : un seul Cache-Control attendu')
+                self.assertIn('no-transform', cache[0])
+                self.assertIn('max-age=0', cache[0])  # même fraîcheur que le HTML servi par défaut
