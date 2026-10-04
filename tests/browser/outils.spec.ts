@@ -3,7 +3,7 @@ import { OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
 
 const HUB = '/outils-comptables-gratuits';
 const TEMOIN = `${HUB}/temoin-calcul-local`;
-const H1_HUB = 'Outils comptables gratuits : calculer et vérifier';
+const H1_HUB = 'Outils comptables gratuits : calculer, vérifier et préparer';
 const H1_TEMOIN = 'Témoin de calcul local';
 
 async function graphFrom(page: Page) {
@@ -19,6 +19,9 @@ test('hub : outils disponibles et schéma de collection', async ({ page }) => {
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${HUB}`);
   await expect(page.locator('[data-outil-card]')).toHaveCount(OUTILS_DISPONIBLES.length);
   await expect(page.locator('[data-empty-category]')).toHaveCount(0);
+  for (const outil of OUTILS_DISPONIBLES) {
+    await expect(page.locator(`[data-outil-card] a[href="${outilPath(outil)}"]`)).toHaveCount(1);
+  }
   await expect(page.locator('[data-tool-media]')).toHaveCount(1);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', '/proofs/v2/og/24-outils-hub.webp');
   await expect(page.locator(`a[href="${TEMOIN}"]`)).toHaveCount(0);
@@ -370,6 +373,11 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByLabel('Durée d’utilisation').fill('5');
       await page.getByRole('button', { name: 'Calculer le plan' }).click();
       await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
+    } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
+      await page.locator('[data-example]').click();
+      await expect(page.locator('[data-selection]')).toBeVisible();
+      await page.locator('[data-preview]').click();
+      await expect(page.locator('[data-after]')).toContainText('C1_000001');
     } else if (outil.slug === 'calculateur-roi-automatisation') {
       await page.getByRole('button', { name: 'Charger trois exemples fictifs' }).click();
       await page.getByRole('button', { name: 'Comparer les trois scénarios' }).click();
@@ -397,6 +405,9 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     // Le Worker charge exclusivement son script statique local, sans donnée saisie ni query string.
     if (outil.slug === 'verificateur-fec-local') {
       const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/fec-worker-[a-zA-Z0-9_-]+\\.js$`);
+      expect(requests.filter(request => !asset.test(request))).toEqual([]);
+    } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
+      const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/pseudonymisation\\.worker-[a-zA-Z0-9_-]+\\.js$`);
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
     } else expect(requests).toEqual([]);
     page.off('request', listener);

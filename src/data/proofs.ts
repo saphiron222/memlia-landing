@@ -1,5 +1,6 @@
 /** Matrice M4-R1 : références fonctionnelles fictives, jamais des captures produit. */
 export const PROOFS = {
+  'v2/29-outil-pseudonymisation': { title: 'Les noms changent, le risque reste visible', alt: 'Avant et après fictifs : Alice devient C1_000001, le libellé est supprimé, le montant rare 9876 reste conservé et le risque de réidentification est signalé.', detail: 'La copie supprime le libellé et remplace les noms par des alias cohérents. Les dates et montants conservés restent des quasi-identifiants ; la décision de partage appartient au cabinet.' },
 
   'v2/30-outil-roi': { title: 'Capacité et trésorerie ne se confondent pas', alt: 'Deux scénarios fictifs : 6,67 heures et 1,60 heure de capacité mensuelle ; maintenance 50 euros par mois actif ; net cash 800 euros et moins 500 euros sur douze mois.', detail: 'Le premier scénario reprend l’oracle du calculateur. Le second réduit automatisation et adoption, ajoute deux mois de délai et diminue les dépenses évitables. Aucun résultat n’est une promesse de gain.' },
 

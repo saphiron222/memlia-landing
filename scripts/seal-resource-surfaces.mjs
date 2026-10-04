@@ -123,6 +123,7 @@ function createManifest(adapter) {
     if (revue && typeof revue.status === 'string' && revue.status !== 'PENDING') {
       revueReportee = {
         revue: structuredClone(revue),
+        checkedAt: precedent.claimsEvidence.sensitiveMatter.checkedAt,
         p0: [...(precedent.quality?.p0 ?? [])],
         p1: [...(precedent.quality?.p1 ?? [])],
         blocking: precedent.quality?.blocking ?? false,
@@ -251,7 +252,7 @@ function createManifest(adapter) {
   manifest.claimsEvidence.sensitiveMatter = {
     detected: true,
     signals: [...new Set(surfaceEntries.filter((entry) => ['dsn', 'legal-reglementaire'].includes(entry.type)).map((entry) => entry.type))],
-    checkedAt: revueCheckedAt,
+    checkedAt: revueReportee?.checkedAt ?? revueCheckedAt,
     businessReview: revueReportee ? revueReportee.revue : {
       required: true, reviewerId: null, reviewerType: null, reviewerProfile: null, reviewerRole: null,
       distinctFrom: ['author', 'editorialReviewer', 'sourceClassifier'], reviewedCandidateHash: null,
