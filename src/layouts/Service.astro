@@ -30,7 +30,7 @@ const auteurId = `${SITE.url}${identiteAuteur(auteur)}`;
 const toolLink = entree.id === 'factures-fournisseurs'
   ? { href: '/outils-comptables-gratuits/calculateur-date-echeance-facture', label: 'Calculer une date d’échéance de facture' }
   : entree.id === 'rapprochement-bancaire'
-    ? { href: '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit', label: 'Préparer un modèle de rapprochement bancaire fictif' }
+    ? { href: '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit', label: 'Contrôler des soldes fictifs et exporter le CSV' }
     : null;
 const graph = {
   '@context': 'https://schema.org',
@@ -96,7 +96,7 @@ const graph = {
         <slot />
         {toolLink && (
           <aside class="service-outil" aria-label="Outil gratuit associé">
-            <strong>Rejouer la règle sur des données fictives</strong>
+            <strong>{entree.id === 'rapprochement-bancaire' ? 'Contrôle de soldes fictifs, pas l’appariement des mouvements' : 'Rejouer la règle sur des données fictives'}</strong>
             <a href={toolLink.href}>{toolLink.label}</a>
           </aside>
         )}
