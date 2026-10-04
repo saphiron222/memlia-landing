@@ -369,13 +369,19 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     } else if (outil.slug === 'verificateur-fec-local') {
       await page.getByRole('button', { name: 'Analyser l’exemple fictif' }).click();
       await expect(page.locator('[data-summary]')).toContainText('1 anomalie');
-    } else {
+    } else if (outil.slug === 'diagnostic-maturite-ia-cabinet') {
+      await page.locator('#usages_1').selectOption('formalise');
+      await page.getByRole('button', { name: 'Voir ma synthèse' }).click();
+      await expect(page.locator('[data-summary]')).toContainText('Usages : Incomplet');
+    } else if (outil.slug === 'modele-rapprochement-bancaire-excel-gratuit') {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');
       await page.getByLabel('Solde du relevé bancaire').fill('1000');
       await page.getByLabel('Solde du compte 512').fill('1000');
       await page.getByRole('button', { name: 'Contrôler les soldes' }).click();
       await expect(page.locator('[data-difference]')).toHaveText('0,00 €');
+    } else {
+      throw new Error(`Scénario réseau à définir pour l’outil ${outil.slug}`);
     }
     expect(await page.evaluate(async () => ({
       localStorage: localStorage.length,
