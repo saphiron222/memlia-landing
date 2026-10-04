@@ -169,6 +169,13 @@ export const IMAGES = {
     alt: "Trois postes de vérification distincts en diorama, pour les suites, la chaîne de preuve et la lecture humaine",
     generee: true,
   },
+  'img-art-utiliser-chatgpt-cabinet-comptable': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Trois plateaux de tâches et des fiches vierges dans un diorama vert, graphite et crème",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -176,6 +183,7 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-utiliser-chatgpt-cabinet-comptable',
   'img-art-tests-verts-trois-passes',
   'img-art-logiciel-ia-comptabilite',
   'img-art-prompt-chatgpt-expert-comptable',

@@ -1,0 +1,69 @@
+# Couverture propre à l’article 1
+
+Les contrôles sont de phase, pas des PASS de workflows complets.
+
+| Skill | État | Motif et constat | Preuves |
+|---|---|---|---|
+| blog | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-analyze | a-executer | Phase suivante de la livraison, pas PASS anticipé. Revue indépendante et preuve publique restent futures. | CONTROLES.md |
+| blog-audio | N/A | Guide écrit français, aucune version audio demandée. Guide écrit français, aucune version audio demandée. | CONTROLES.md |
+| blog-audit | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Contrat ciblé, canonical/auteur/schema/maillage, sommaire, deux figures ; navigateur 390/1280, pas audit global du site. | verification-locale.json, CONTROLES.md |
+| blog-brand | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-brief | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-calendar | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-cannibalization | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Sélection de premier usage distincte de consigne et grille logiciel ; pas nouvelle liste de prompts. | recette.json, CONTROLES.md |
+| blog-chart | N/A | Pas série quantitative à représenter ; fiche et tableau de cas, pas graphique. Pas série quantitative à représenter ; fiche et tableau de cas, pas graphique. | CONTROLES.md |
+| blog-cluster | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-decay | N/A | Nouvelle page sans historique de déclin. Nouvelle page sans historique de déclin. | CONTROLES.md |
+| blog-discourse | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-factcheck | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Fiche complète, réponse directe, FAQ, citations vérifiées, règle et quatre cas fictifs ; pas succès IA prétendu. | corps.md, recette.json, CONTROLES.md |
+| blog-flow | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-geo | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Fiche complète, réponse directe, FAQ, citations vérifiées, règle et quatre cas fictifs ; pas succès IA prétendu. | corps.md, recette.json, CONTROLES.md |
+| blog-google | partiel | Demande mesurée et diagnostic GSC parent conservé ; nouvelle page sans données propres. Pas nouvelle requête GSC dans cette rédaction ; aucune performance page attribuée. | docs/strategy/site-v3/mesures/diagnostic-2026-10-03/DIAGNOSTIC.md, CONTROLES.md |
+| blog-image | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Couverture réelle Higgsfield inspectée et palette mesurée ; deux images fixes HTML sans troncature. | recette.json, CONTROLES.md, verification-locale.json |
+| blog-locale-audit | N/A | Aucune variante linguistique. Aucune variante linguistique. | CONTROLES.md |
+| blog-localize | N/A | Pas version localisée, un seul marché. Pas version localisée, un seul marché. | CONTROLES.md |
+| blog-multilingual | N/A | Public francophone, aucune déclinaison internationale. Public francophone, aucune déclinaison internationale. | CONTROLES.md |
+| blog-notebooklm | N/A | Sources primaires consultées directement, pas synthèse NotebookLM. Sources primaires consultées directement, pas synthèse NotebookLM. | CONTROLES.md |
+| blog-outline | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-persona | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-repurpose | N/A | Pas distribution externe autorisée ni réutilisation multicanal dans ce mandat. Pas distribution externe autorisée ni réutilisation multicanal dans ce mandat. | CONTROLES.md |
+| blog-rewrite | N/A | Nouvel article, pas réécriture. Nouvel article, pas réécriture. | CONTROLES.md |
+| blog-schema | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Contrat ciblé, canonical/auteur/schema/maillage, sommaire, deux figures ; navigateur 390/1280, pas audit global du site. | verification-locale.json, CONTROLES.md |
+| blog-seo-check | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Contrat ciblé, canonical/auteur/schema/maillage, sommaire, deux figures ; navigateur 390/1280, pas audit global du site. | verification-locale.json, CONTROLES.md |
+| blog-strategy | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-style | N/A | Apprentissage de voix non demandé ; charte fixée. Contrôle cognitif distinct exécuté et archivé. Apprentissage de voix non demandé ; charte fixée. Contrôle cognitif distinct exécuté et archivé. | CONTROLES.md |
+| blog-taxonomy | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| blog-translate | N/A | Aucune traduction, original français. Aucune traduction, original français. | CONTROLES.md |
+| blog-write | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Fiche complète, réponse directe, FAQ, citations vérifiées, règle et quatre cas fictifs ; pas succès IA prétendu. | corps.md, recette.json, CONTROLES.md |
+| seo | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| seo-ahrefs | N/A | Pas recherche de campagne backlinks ni comparaison de domaines dans cette rédaction. Pas recherche de campagne backlinks ni comparaison de domaines dans cette rédaction. | CONTROLES.md |
+| seo-audit | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Contrat ciblé, canonical/auteur/schema/maillage, sommaire, deux figures ; navigateur 390/1280, pas audit global du site. | verification-locale.json, CONTROLES.md |
+| seo-backlinks | indisponible | Aucune donnée de backlinks propre à cette URL neuve ; pas zéro inféré. Domaines/liens ND ; aucun chiffre. | CONTROLES.md |
+| seo-bing | N/A | Pas campagne Bing Webmaster dans ce mandat. Pas campagne Bing Webmaster dans ce mandat. | CONTROLES.md |
+| seo-cluster | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| seo-competitor-pages | N/A | Pas page comparative fournisseurs ; concurrence d’intention examinée dans brief. Pas page comparative fournisseurs ; concurrence d’intention examinée dans brief. | CONTROLES.md |
+| seo-content | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Fiche complète, réponse directe, FAQ, citations vérifiées, règle et quatre cas fictifs ; pas succès IA prétendu. | corps.md, recette.json, CONTROLES.md |
+| seo-content-brief | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| seo-dataforseo | N/A | Pas achat de volumes ou campagne SERP ; primaire mesurée par autocomplétion et recherche publique sans volume revendiqué. Pas achat de volumes ou campagne SERP ; primaire mesurée par autocomplétion et recherche publique sans volume revendiqué. | CONTROLES.md |
+| seo-drift | N/A | Aucune baseline de performance de cette URL avant publication. Aucune baseline de performance de cette URL avant publication. | CONTROLES.md |
+| seo-ecommerce | N/A | Aucun catalogue ou transaction de produit. Aucun catalogue ou transaction de produit. | CONTROLES.md |
+| seo-firecrawl | N/A | Aucun crawling profond nécessaire ; sources publiques ouvertes par la forge. Aucun crawling profond nécessaire ; sources publiques ouvertes par la forge. | CONTROLES.md |
+| seo-flow | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| seo-geo | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Fiche complète, réponse directe, FAQ, citations vérifiées, règle et quatre cas fictifs ; pas succès IA prétendu. | corps.md, recette.json, CONTROLES.md |
+| seo-google | partiel | Demande mesurée et diagnostic GSC parent conservé ; nouvelle page sans données propres. Pas nouvelle requête GSC dans cette rédaction ; aucune performance page attribuée. | docs/strategy/site-v3/mesures/diagnostic-2026-10-03/DIAGNOSTIC.md, CONTROLES.md |
+| seo-hreflang | N/A | Article français sans alternatives de langue. Article français sans alternatives de langue. | CONTROLES.md |
+| seo-image-gen | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Couverture réelle Higgsfield inspectée et palette mesurée ; deux images fixes HTML sans troncature. | recette.json, CONTROLES.md, verification-locale.json |
+| seo-images | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Couverture réelle Higgsfield inspectée et palette mesurée ; deux images fixes HTML sans troncature. | recette.json, CONTROLES.md, verification-locale.json |
+| seo-local | N/A | Pas intention géographique ni pages villes. Pas intention géographique ni pages villes. | CONTROLES.md |
+| seo-maps | N/A | Pas fiche établissement ou intention Maps. Pas fiche établissement ou intention Maps. | CONTROLES.md |
+| seo-page | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Contrat ciblé, canonical/auteur/schema/maillage, sommaire, deux figures ; navigateur 390/1280, pas audit global du site. | verification-locale.json, CONTROLES.md |
+| seo-plan | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Cadrage, lecteur et différence avec prompt/logiciel explicités ; plan et créneau propres au guide. | recette.json, corps.md, CONTROLES.md |
+| seo-profound | N/A | Pas campagne de visibilité IA ni nouvel abonnement. Pas campagne de visibilité IA ni nouvel abonnement. | CONTROLES.md |
+| seo-programmatic | N/A | Rédaction manuelle selon besoin distinct, pas lot programmatique. Rédaction manuelle selon besoin distinct, pas lot programmatique. | CONTROLES.md |
+| seo-schema | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Contrat ciblé, canonical/auteur/schema/maillage, sommaire, deux figures ; navigateur 390/1280, pas audit global du site. | verification-locale.json, CONTROLES.md |
+| seo-seranking | N/A | Pas campagne de suivi de rangs ou compte ajouté. Pas campagne de suivi de rangs ou compte ajouté. | CONTROLES.md |
+| seo-sitemap | a-executer | Phase suivante de la livraison, pas PASS anticipé. Revue indépendante et preuve publique restent futures. | CONTROLES.md |
+| seo-sxo | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Fiche complète, réponse directe, FAQ, citations vérifiées, règle et quatre cas fictifs ; pas succès IA prétendu. | corps.md, recette.json, CONTROLES.md |
+| seo-technical | execute | Contrôle de cette rédaction ; pas invocation complète de tous les scripts transitifs. Contrat ciblé, canonical/auteur/schema/maillage, sommaire, deux figures ; navigateur 390/1280, pas audit global du site. | verification-locale.json, CONTROLES.md |
+| seo-unlighthouse | N/A | Audit de site global hors livraison ; contrôle navigateur du candidat exécuté. Audit de site global hors livraison ; contrôle navigateur du candidat exécuté. | CONTROLES.md |

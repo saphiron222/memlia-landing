@@ -3,7 +3,7 @@
   "sources": [
     {
       "path": "docs/design/blog-article-proofs/index.html",
-      "sha256": "48e2f8066edea56258d8116882f31c72a27a9daa160b0b1b6f2d5133da5bb076"
+      "sha256": "e35e402a2ce0141ead38f3c4686bcb6a6e1f5144e68db1bb860531cb4e04a4ab"
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
-      "sha256": "397f1acebdd51fac40cadf4330f4b784bc21ad7e28875ca833c28cbb3930b485"
+      "sha256": "1e78e45130ce226a92ff196ec31544b02c40a5a9330dac7819015d6784d7c636"
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
@@ -163,6 +163,18 @@
       "target": "public/proofs/blog/trois-passes-chaine-preuve.webp",
       "bytes": 36178,
       "sha256": "80b3370da7d2ba1fd2d756056002e2f091091247fe9301f0c57fc65b58914a7f"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#usage-fiche-selection",
+      "target": "public/proofs/blog/usage-fiche-selection.webp",
+      "bytes": 33872,
+      "sha256": "55319b16c7d70aeb521d2f5978ec05fd0d8ec32f76fa290190929eb599b43e19"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#usage-file-essais",
+      "target": "public/proofs/blog/usage-file-essais.webp",
+      "bytes": 35020,
+      "sha256": "190524d823101a20cc3f8a55908aed8299b94c8675f4c2794564c3519569f495"
     }
   ]
 }

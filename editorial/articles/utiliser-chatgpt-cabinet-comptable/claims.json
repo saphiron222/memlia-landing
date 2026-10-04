@@ -1,0 +1,424 @@
+{
+  "version": 1,
+  "candidateSlug": "utiliser-chatgpt-cabinet-comptable",
+  "articleSha256": "aacb87994efdb05a07a10d3111fee64e1e75f13333991a04c0f1867c297a8879",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5ef040778f24",
+      "text": "Pour utiliser ChatGPT en cabinet comptable, commencez par une tâche préparatoire dont vous savez contrôler la sortie : reformuler une note, résumer un document fourni ou préparer des questions. Choisissez un seul geste, écrivez les informations nécessaires et les motifs de refus, puis essayez-le sur un dossier fictif. Votre premier résultat utile est un brouillon vérifiable, pas un dossier tenu par l'IA.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-770c1e398cf1",
+      "text": "Choisir un premier usage, plutôt qu'une liste de possibilités",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3b2ad3ddf4d6",
+      "text": "Un usage préparatoire est un geste qui produit une proposition à relire avant son utilisation. Un jeu d'essai fictif est un ensemble de situations inventées pour vérifier ce qui aboutit et ce qui reste bloqué. Ces deux notions permettent de démarrer sans confondre une réponse bien formulée avec une décision prête à appliquer.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9686585719ae",
+      "text": "Trois gestes peuvent servir de point de départ. Ce sont des candidats à éprouver, pas des capacités que nous avons mesurées dans ChatGPT pour cet article.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3d154aead01f",
+      "text": "| Geste candidat | Entrée pour un premier essai | Sortie à contrôler | Motif pour choisir autre chose | |---|---|---|---| | Reformuler | Une courte note entièrement fictive, avec son destinataire et son intention | Un brouillon qui conserve les faits et les réserves | Vous ne savez pas distinguer une reformulation d'un ajout | | Résumer | Un document fictif fourni intégralement | Une synthèse dont chaque point se retrouve dans le document | La source manque ou le résumé doit trancher un désaccord | | Préparer des questions | Un ordre du jour fictif et un objectif de rendez-vous | Une liste de questions sans réponses présumées | La demande vise déjà une conclusion professionnelle |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f480c65bf763",
+      "text": "Nous retenons ici la reformulation d'une courte note de préparation de rendez-vous. Le texte source est assez court pour comparer phrase par phrase. La sortie attendue est explicite. Un contexte manquant reste visible. Le cabinet peut donc juger l'essai sans avoir à démonter un raisonnement métier complexe.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ade1a5cf16d2",
+      "text": "Le premier usage n'a pas besoin d'être le plus impressionnant. Il a besoin d'être facile à accepter ou à refuser. Si trois collaborateurs ne s'accordent pas sur ce qui rend la sortie utilisable, commencez par écrire ce critère, avant de chercher une meilleure consigne.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-bf00ea87c54a",
+      "text": "Pourquoi l'essai se perd quand la règle reste dans une tête",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5530f14fe39a",
+      "text": "« Je relis avant d'utiliser » paraît suffisant. Mais que relit-on : le ton, les faits, la période, les réserves, la destination ? Une personne peut corriger seulement la formulation pendant qu'une autre recherche aussi les informations ajoutées. Elles utilisent le même outil sans appliquer la même règle.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5d3525ac109e",
+      "text": "Le savoir-faire à écrire est très concret : quelles phrases peuvent changer, quelles informations restent inchangées et à quel moment la préparation cesse. Une note indiquant « réunion jeudi, questions à préparer » ne donne ni une date précise ni des réponses aux questions. La reformulation conserve cette absence au lieu de la combler.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a9f974846b90",
+      "text": "Pour situer ce geste parmi les autres travaux, la carte des tâches d'un cabinet comptable distingue la mécanique répétitive des décisions. Ici, nous ne choisissons ni toute la production comptable ni un nouvel environnement logiciel. Nous sélectionnons un premier essai.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-11a1dd1ac7fc",
+      "text": "Avant de commencer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0a33d946b897",
+      "text": "Préparez une courte entrée fictive, une sortie attendue et une personne qui peut les comparer. Définissez aussi l'endroit où le brouillon restera tant qu'il n'est pas relu. Un premier essai n'a besoin ni d'un export de portefeuille ni d'une connexion à un dossier réel.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-02af313242b9",
+      "text": "Sur la page Travaux Data et IA, l'Ordre annonce des « Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter » ». Nous avons consulté cette présentation publique le 4 octobre 2026 ; le contenu complet du livret accessible en extranet n'est pas utilisé comme preuve dans ce guide.",
+      "claimIds": [
+        "claim-unit-02af313242b9-1"
+      ]
+    },
+    {
+      "id": "unit-6a7a27b37223",
+      "text": "La FAQ de la CNIL sur l'IA générative, publiée le 18 juillet 2024, recommande que « les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager ». Pour cet essai, toutes les informations sont inventées. Le passage à une donnée réelle demande une décision sur les informations et l'environnement autorisés, pas seulement une consigne plus détaillée.",
+      "claimIds": [
+        "claim-unit-6a7a27b37223-1"
+      ]
+    },
+    {
+      "id": "unit-72c8a554522f",
+      "text": "Une fiche copiable pour choisir votre essai",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b2619403eb85",
+      "text": "Copiez cette fiche dans votre document de travail. Remplissez chaque ligne avant d'ouvrir une conversation. Une réponse « à préciser » signifie que l'essai n'est pas encore choisi.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-765b624ab35a",
+      "text": "| Champ | Fiche remplie sur notre exemple fictif | Votre usage | |---|---|---| | Geste unique | Reformuler une note de préparation de rendez-vous | … | | Situation déclenchante | Une note brute est prête, mais sa formulation reste à clarifier | … | | Entrée nécessaire | Note fictive complète, objectif, lecteur du brouillon | … | | Entrée exclue de l'essai | Dossier réel, coordonnées, document de production | … | | Sortie attendue | Brouillon court, faits et incertitudes conservés | … | | Critère d'acceptation | Aucune information nouvelle ; aucune réserve perdue | … | | Motifs de refus | Contexte absent, décision demandée, geste différent | … | | Action exclue | Envoi ou saisie sans décision humaine | … | | Responsable du contrôle | Chef de mission désigné pour l'essai | … | | Trace conservée | Entrée, consigne, sortie brute, corrections et décision | … | | Mesure du geste complet | Préparer l'entrée + obtenir la sortie + vérifier + corriger | … | | Décision après essai | Conserver, modifier la fiche ou abandonner le candidat | … |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d1179eb88088",
+      "text": "La mesure porte sur le parcours complet. Une réponse obtenue rapidement peut demander davantage de correction que la rédaction initiale. Ne comparez donc pas seulement le temps passé devant la fenêtre de discussion. Notez les corrections qui changent le sens, les informations inventées et les passages impossibles à vérifier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b2bfacac29f2",
+      "text": "Vous n'avez pas besoin d'un score artificiel. Une règle qualitative suffit au départ : « nous conservons ce candidat seulement si le brouillon se contrôle depuis l'entrée, sans recherche supplémentaire nécessaire pour réparer un ajout ».",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9d809ad06a58",
+      "text": "Faire deux essais avant de généraliser",
+      "claimIds": []
+    },
+    {
+      "id": "unit-32efc8cba317",
+      "text": "Essai nominal : l'entrée est complète",
+      "claimIds": []
+    },
+    {
+      "id": "unit-15fb46c69549",
+      "text": "Utilisez cette note inventée : « D-012 : réunion jeudi ; liste de questions à préparer. » Ajoutez un objectif de formulation et un lecteur. Demandez un brouillon, sans compléter les informations absentes. Comparez ensuite la sortie avec l'entrée : le rendez-vous demeure-t-il jeudi ? Les questions restent-elles à préparer ? Une date ou une conclusion a-t-elle été inventée ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71f878089603",
+      "text": "Pour écrire la consigne une fois le geste choisi, utilisez le patron de prompt ChatGPT pour expert-comptable. Cet autre article traite la construction de la consigne. La fiche présente traite le choix de ce qui mérite un premier essai.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f4539a27059f",
+      "text": "Essai incomplet : le contexte est absent",
+      "claimIds": []
+    },
+    {
+      "id": "unit-065b857e46b8",
+      "text": "Retirez la note et conservez seulement « reformule ». Votre protocole d'essai attend alors une demande de précision, pas un texte produit malgré le vide. Si l'outil génère tout de même un brouillon, écartez-le et corrigez le dispositif avant de garder cet usage.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d55151a727a6",
+      "text": "Un troisième essai utile consiste à demander aussi l'envoi. Le résultat acceptable reste un brouillon à relire, sans envoi. Une instruction écrite dans un prompt décrit le comportement souhaité ; elle ne démontre pas à elle seule que l'outil respecte cette limite. Vérifiez la configuration réelle et le résultat observé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fa07bba9ee4c",
+      "text": "La frontière. La sélection du premier usage distingue trois destinations. La validation humaine se place avant l'utilisation du brouillon, pas après sa diffusion.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0036c162256f",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Vérifier que la fiche comporte un geste et un contexte | Accepter le candidat d'essai | Choisir la tâche et son responsable | | Classer les demandes selon les motifs écrits | Relire le brouillon et ses corrections | Trancher une conclusion professionnelle | | Présenter un statut et la suite attendue | Décider de garder ou non l'usage | Décider d'envoyer et à qui |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-43d1df99c75d",
+      "text": "La proposition. Dans notre démonstration, nous produisons une décision de sélection et un statut. Le collaborateur prépare son entrée, réalise l'essai dans l'environnement retenu et compare la réponse. Le cabinet garde sa fiche, ses critères et la décision finale. Le script de démonstration ne génère pas de reformulation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1a3377a3f2e3",
+      "text": "L'arrêt. Le protocole refuse une décision fiscale, signale un contexte absent et rejette un geste non prévu. Si la demande ajoute un envoi, le statut le signale et conserve la sortie à l'état de brouillon. Ces règles sont celles de notre démonstration locale, pas une garantie de comportement de ChatGPT.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-35fda7bb2ac5",
+      "text": "Le jeu d'essai. Quatre cas entièrement fictifs ont été exécutés le 4 octobre 2026 : sélection d'un geste préparatoire, demande de décision hors périmètre, contexte vide et demande d'envoi. Les résultats ci-dessous proviennent du script local de sélection. Aucun modèle ChatGPT n'a été interrogé pour ce rejeu.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-37dc19fd9267",
+      "text": "| Cas joué | Sortie obtenue | Décision | |---|---|---| | E-01 : reformulation avec contexte fictif | ESSAISELECTIONNE ; reformulation en brouillon à relire ; envoi false | Retenir le candidat pour un essai de rédaction | | E-02 : décision fiscale demandée | HORSPERIMETRE ; aucune préparation ; envoi false | Revenir au responsable du dossier | | E-03 : reformulation sans contexte | CONTEXTEABSENT ; contexte à préciser ; envoi false | Compléter la fiche avant l'essai | | E-04 : reformulation et envoi demandés | ENVOINONAUTORISE ; reformulation en brouillon à relire ; envoi false | Ne pas déclencher d'envoi |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3a27f2a08fb9",
+      "text": "Ce résultat démontre le classement des demandes par la règle locale. Il ne mesure ni la qualité rédactionnelle de ChatGPT ni le temps gagné. La ligne E-01 autorise un essai ultérieur ; elle ne prouve pas qu'un brouillon satisfaisant a déjà été obtenu. Conservez cette distinction lorsque vous présentez les résultats à l'équipe.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5feb9e9e1ce2",
+      "text": "Garder un usage ponctuel ou préparer une automatisation",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8b38d6c69766",
+      "text": "Gardez l'usage ponctuel lorsque les entrées varient beaucoup, que le besoin apparaît rarement ou que le contrôle humain reste plus simple qu'un parcours connecté. Une fiche bien remplie garde déjà une valeur : elle permet de recommencer avec le même critère d'acceptation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c4a55a00e0b",
+      "text": "Envisagez une automatisation quand le même geste revient, avec des entrées identifiables et des refus stables. La question suivante n'est alors plus « quel prompt ? », mais « où prendre l'information, où présenter la proposition et comment conserver la décision ? ».",
+      "claimIds": []
+    },
+    {
+      "id": "unit-715fe5dc1321",
+      "text": "La grille de choix d'un logiciel IA en comptabilité aide à comparer ce parcours. Notre méthode part de la tâche et de ses exceptions. Une automatisation se définit depuis ce que l'équipe veut obtenir, pas depuis une liste de fonctions à activer.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5f23419bd669",
+      "text": "Les erreurs fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8c6930fc96b2",
+      "text": "- Choisir cinq usages à la fois. Vous ne saurez plus quel geste explique une amélioration ou un défaut. Gardez un candidat et une sortie. - Noter seulement le ton. Un texte agréable peut perdre une réserve ou ajouter un fait. Comparez aussi les informations. - Confondre règle locale et résultat du modèle. Le statut de sélection prouve un classement, pas une bonne réponse ChatGPT. - Mesurer seulement la génération. La préparation et la correction appartiennent à la tâche complète. - Généraliser depuis le cas facile. Ajoutez une entrée incomplète et une demande hors périmètre avant de conserver l'usage.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-87ffe8f5c344",
+      "text": "Quelle première tâche choisir pour utiliser ChatGPT au cabinet ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f5a31601407c",
+      "text": "Une courte reformulation dont vous maîtrisez l'entrée et pouvez comparer chaque phrase. Un résumé ou une liste de questions sont aussi des candidats, si vous savez définir leur acceptation. Écartez du premier essai les demandes qui exigent déjà une conclusion professionnelle.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3525e4e8352d",
+      "text": "Faut-il commencer par acheter un nouvel outil ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-158952be18ab",
+      "text": "Commencez par écrire le geste, la sortie et le contrôle. Vous pourrez ensuite examiner l'environnement disponible et ses conditions. Cet article ne recommande ni abonnement ni offre précise et ne mesure pas de fonctionnalités fournisseur.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-dc968cdcd7c8",
+      "text": "Peut-on tester avec un vrai dossier pour gagner du temps ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-41855d67384a",
+      "text": "Le protocole décrit ici utilise exclusivement des données fictives. Un dossier réel change les questions d'information autorisée et d'environnement. La recommandation CNIL citée plus haut ne se remplace pas par le seul retrait d'un nom.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-12018ed2c99d",
+      "text": "Que faire si le brouillon contient un ajout ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6f0bd77eb60c",
+      "text": "Repérez l'ajout, comparez-le à l'entrée et écartez le passage non justifié. Conservez la sortie brute ainsi que la correction pour décider si l'usage vaut un nouvel essai. Ne demandez pas seulement au modèle de confirmer sa propre réponse.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-77413a257ce3",
+      "text": "Quand arrêter un premier essai ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3d80eb3ac566",
+      "text": "Lorsque la sortie ne se vérifie pas depuis l'entrée, que le contexte manque ou que la tâche dérive vers une décision hors de la fiche. Arrêter ce candidat est un résultat utile : vous savez ce qui reste à préciser avant une nouvelle tentative.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-759de8128c8d",
+      "text": "Choisissez un geste dont vous pouvez vérifier la sortie, puis écrivez ce qui le fait accepter ou refuser. Conservez l'usage seulement après avoir observé aussi un cas incomplet, pas seulement une réponse convaincante.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e93d31ca37a7",
+      "text": "Nous prenons en charge la mécanique répétitive d'une tâche, depuis sa règle dans les mots du cabinet jusqu'à son automatisation dans les outils existants et sa recette par l'équipe. Pour un geste de préparation, cela signifie relier l'entrée, le brouillon, les exceptions et la validation. Découvrez ce périmètre sur la page automatisation d'un cabinet comptable ; vous gardez le jugement et la décision d'utiliser la proposition.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-02af313242b9-1",
+      "unitId": "unit-02af313242b9",
+      "claim": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter »",
+      "type": "information",
+      "sourceIds": [
+        "ordre-ia"
+      ],
+      "sourceExcerpts": {
+        "ordre-ia": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter »"
+      },
+      "checkedAt": "2026-10-04",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-04",
+        "sourceResults": [
+          {
+            "sourceId": "ordre-ia",
+            "sourceUrl": "https://www.experts-comptables.fr/travaux-data-et-ia",
+            "verifiedUrl": "https://www.experts-comptables.fr/travaux-data-et-ia",
+            "excerpt": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter »",
+            "context": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter » et même une charte de l’utilisation de l’IA Générative en cabinet, vous trouverez tout pour débuter ou vous perfectionner dans notre notice !",
+            "contextSha256": "255c03c4bc556c8299055fd95e0efb3f534f0f6b063e16fb76202c82f5d78e66",
+            "citation": {
+              "text": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter »",
+              "sha256": "9dbe637234793cc584de9e418102439a447f115cb978df6c88234ec66edb6718",
+              "sourceContentSha256": "1b650c10a7f081d705a617a8bddb4ddc6873fb83593b4914e3ad2827ba9c64d2",
+              "coordinates": {
+                "finalUrl": "https://www.experts-comptables.fr/travaux-data-et-ia",
+                "checkedAt": "2026-10-04",
+                "title": "Travaux Data et IA",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 434,
+                  "endLine": 434
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "usage",
+                "applicables",
+                "cabinet",
+                "precautions",
+                "prendre",
+                "techniques",
+                "bien",
+                "prompter"
+              ],
+              "reasoning": "La citation, relevée à la ligne 434 de la copie locale de Conseil national de l’Ordre des experts-comptables, porte les mêmes entités que le claim (usage, applicables, cabinet, precautions, prendre, techniques, bien, prompter) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Présentation publique des ressources uniquement, pas lecture du livret en extranet.",
+            "checkedAt": "2026-10-04"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-6a7a27b37223-1",
+      "unitId": "unit-6a7a27b37223",
+      "claim": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager",
+      "type": "information",
+      "sourceIds": [
+        "cnil-ia-generative"
+      ],
+      "sourceExcerpts": {
+        "cnil-ia-generative": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager"
+      },
+      "checkedAt": "2026-10-04",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-04",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-ia-generative",
+            "sourceUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "verifiedUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "excerpt": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager",
+            "context": "S’agissant des données fournies en entrée du système (dans le prompt ou invite), les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager.",
+            "contextSha256": "3b3754195c4418f2b7aac609194c1c78b05e6c05b5640544b758a8e9317011cf",
+            "citation": {
+              "text": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager",
+              "sha256": "a546ae3eb06661f25120157eb710c3865f1264cbd0550f6225cb6c6b1c9d8060",
+              "sourceContentSha256": "feede37d3706833dfa4cb252229ea85928daf54f7551646564bbb853e4bf5d52",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+                "checkedAt": "2026-10-04",
+                "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 942,
+                  "endLine": 942
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "utilisateurs",
+                "finaux",
+                "devraient",
+                "soumettre",
+                "informations",
+                "autorises",
+                "partager"
+              ],
+              "reasoning": "La citation, relevée à la ligne 942 de la copie locale de CNIL, porte les mêmes entités que le claim (utilisateurs, finaux, devraient, soumettre, informations, autorises, partager) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Recommandation de la FAQ, pas obligation réglementaire nouvelle.",
+            "checkedAt": "2026-10-04"
+          }
+        ]
+      }
+    }
+  ]
+}

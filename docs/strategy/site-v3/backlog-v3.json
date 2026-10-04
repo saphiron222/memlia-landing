@@ -7713,5 +7713,22 @@
       "coutAtteste": "Deux diagnostics initiaux étaient faux et ont été démolis par une image ; aucun temps chiffré n'est attesté.",
       "regle": "Un instrument neuf doit d'abord rendre un vert attendu ; son premier rouge se tranche par capture ou bissection à une variable."
     }
+  },
+  {
+    "slug": "utiliser-chatgpt-cabinet-comptable",
+    "titre": "Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile",
+    "requete": "utiliser ChatGPT cabinet comptable",
+    "secondaires": ["cas usage ChatGPT expert comptable", "IA générative cabinet comptable"],
+    "famille": "ia-generative-agents",
+    "role": "direction-associes",
+    "intent": "executer",
+    "funnel": "MOFU",
+    "format": "how-to-guide",
+    "preuve": "Fiche de sélection d'un premier usage et quatre cas fictifs exécutés par une règle locale, sans réponse ChatGPT attribuée",
+    "sourcesOfficielles": ["CNIL"],
+    "priorite": 3,
+    "datePlanifiee": "2026-10-04",
+    "exceptionAlternance": {"format": {"date": "2026-10-04", "raison": "Premier guide de mise en pratique IA mandaté par Kevin ; fiche opérationnelle distincte, format how-to-guide adapté malgré le guide précédent."}, "pole": {"date": "2026-10-04", "raison": "Continuité IA demandée par Kevin après les deux articles du 29/09 ; sélection du premier usage, sans nouvelle liste de prompts ni comparatif logiciel."}},
+    "demande": {"mesureeLe": "2026-10-04", "statut": "SERP-Hermes-sans-volume", "preuve": "BRIEFS-QUATRE-ARTICLES.md §1 et relevé de concurrence propre à la recette"}
   }
 ]

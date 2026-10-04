@@ -1,0 +1,62 @@
+{
+  "executeAt": "2026-10-04T03:09:19.152Z",
+  "nature": "Règle déterministe locale de sélection, aucun modèle interrogé, aucune reformulation générée",
+  "resultats": [
+    {
+      "entree": {
+        "id": "E-01",
+        "geste": "reformuler",
+        "contexte": "D-012 : réunion jeudi ; liste de questions à préparer.",
+        "demandeEnvoi": false,
+        "attendu": "ESSAI_SELECTIONNE"
+      },
+      "obtenu": {
+        "statut": "ESSAI_SELECTIONNE",
+        "sortie": "Reformulation en brouillon à relire",
+        "envoi": false
+      }
+    },
+    {
+      "entree": {
+        "id": "E-02",
+        "geste": "decision-fiscale",
+        "contexte": "Dossier entièrement fictif",
+        "demandeEnvoi": false,
+        "attendu": "HORS_PERIMETRE"
+      },
+      "obtenu": {
+        "statut": "HORS_PERIMETRE",
+        "sortie": "Aucune préparation",
+        "envoi": false
+      }
+    },
+    {
+      "entree": {
+        "id": "E-03",
+        "geste": "reformuler",
+        "contexte": "",
+        "demandeEnvoi": false,
+        "attendu": "CONTEXTE_ABSENT"
+      },
+      "obtenu": {
+        "statut": "CONTEXTE_ABSENT",
+        "sortie": "Contexte à préciser",
+        "envoi": false
+      }
+    },
+    {
+      "entree": {
+        "id": "E-04",
+        "geste": "reformuler",
+        "contexte": "D-012 : réunion jeudi ; liste de questions à préparer.",
+        "demandeEnvoi": true,
+        "attendu": "ENVOI_NON_AUTORISE"
+      },
+      "obtenu": {
+        "statut": "ENVOI_NON_AUTORISE",
+        "sortie": "Reformulation en brouillon à relire",
+        "envoi": false
+      }
+    }
+  ]
+}

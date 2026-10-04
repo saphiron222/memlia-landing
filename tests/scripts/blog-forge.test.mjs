@@ -149,9 +149,15 @@ test('materialiser appelle le vrai garde : calendrier périmé refusé sans écr
   try {
     const planDir = join(root, 'docs/strategy/site-v3');
     rmSync(join(root, 'src/content/blog'), { recursive: true });
-    for (const path of ['src/content.config.ts', 'src/data/familles.ts', 'src/content/blog',
-      'docs/strategy/site-v3/mesures', 'docs/strategy/site-v3/backlog-v3.json']) {
+    for (const path of ['src/content.config.ts', 'src/data/familles.ts',
+      'docs/strategy/site-v3/mesures']) {
       cpSync(join(RACINE, path), join(root, path), { recursive: true });
+    }
+    cpSync(join(RACINE, 'tests/fixtures/editorial-w39-backlog.json'), join(planDir, 'backlog-v3.json'));
+    mkdirSync(join(root, 'src/content/blog'), { recursive: true });
+    const publiesW39 = JSON.parse(readFileSync(join(RACINE, 'tests/fixtures/editorial-w39-published.json')));
+    for (const slug of Object.keys(publiesW39)) {
+      cpSync(join(RACINE, 'src/content/blog', `${slug}.md`), join(root, 'src/content/blog', `${slug}.md`));
     }
     const backlogPath = join(planDir, 'backlog-v3.json');
     const backlog = JSON.parse(readFileSync(backlogPath));
