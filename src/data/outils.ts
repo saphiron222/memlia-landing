@@ -5,6 +5,7 @@ export const OUTILS_HUB_PATH = '/outils-comptables-gratuits' as const;
 export const OUTIL_CATEGORIES = [
   { id: 'calculer', label: 'Calculer' },
   { id: 'verifier', label: 'Vérifier' },
+  { id: 'ecrire', label: 'Écrire' },
 ] as const;
 
 export type OutilCategory = (typeof OUTIL_CATEGORIES)[number]['id'];
@@ -39,6 +40,7 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+
     slug: 'calculateur-roi-automatisation', categorie: 'calculer', statut: 'disponible',
     h1: 'Calculateur de ROI d’automatisation comptable',
     title: 'Calculateur de ROI d’automatisation comptable | Memlia',
@@ -54,6 +56,37 @@ export const OUTILS: readonly OutilDefinition[] = [
     zoneLarge: true,
     source: { titre: 'Formules documentées', nom: 'Conventions de calcul détaillées sur cette page', url: '#roi-formules', extrait: 'Le temps, les coûts et les dépenses réellement évitables sont des hypothèses indépendantes. Les formules visibles définissent le calcul, pas un taux de gain attendu.', verifieeLe: '4 octobre 2026' },
     pageService: '/methode', cta: '/contact',
+  },
+  {
+    slug: 'generateur-charte-ia-cabinet',
+    categorie: 'ecrire',
+    statut: 'disponible',
+    h1: 'Générateur de charte IA du cabinet',
+    title: 'Générateur de charte IA du cabinet | Memlia',
+    description: 'Préparez une trame de charte IA adaptée aux usages du cabinet, avec responsabilités, données autorisées et validation humaine.',
+    promesse: { entree: 'Usages, données sans dossiers clients, rôles et contrôles', resultat: 'Trame éditable, arbitrages visibles et export Markdown ou texte' },
+    limites: [
+      'Cette trame originale est non officielle : elle ne remplace pas les ressources de l’Ordre et ne certifie aucune conformité.',
+      'Elle organise uniquement des usages sans données personnelles ni clients. Un dossier réel nécessite un cadrage distinct.',
+      'Un rôle non décidé reste à compléter ; le cabinet relit les clauses, vérifie les outils et documente l’adoption.',
+      'L’envoi de fichiers clients à une IA publique est contradictoire avec ce périmètre et bloque la génération sans effacer les clauses.',
+    ],
+    mentionLocale: 'Le questionnaire, les clauses éditées, la copie et les exports sont traités dans votre navigateur. Ils ne sont ni envoyés ni enregistrés par cet outil ; fermez la page pour effacer les saisies ou exportez-les pour les conserver.',
+    proof: 'v2/01-outil-charte-ia',
+    source: {
+      nom: 'CNOEC — Travaux Data et IA',
+      url: 'https://www.experts-comptables.fr/travaux-data-et-ia',
+      extrait: 'L’Ordre propose un livret avec des cas d’usage, des précautions et une charte d’utilisation de l’IA générative en cabinet. Notre outil compose une trame distincte à partir de vos choix, sans reproduire ce modèle.',
+      verifieeLe: '4 octobre 2026',
+      complement: {
+        nom: 'CNIL — Comment déployer une IA générative ? (18 juillet 2024)',
+        url: 'https://cnil.fr/fr/comment-deployer-une-ia-generative-la-cnil-apporte-de-premieres-precisions',
+        extrait: 'La CNIL recommande d’identifier les usages, de les encadrer, d’examiner le déploiement et la réutilisation des données, de former les utilisateurs et d’organiser la gouvernance.',
+      },
+    },
+    pageService: '/methode',
+    cta: '/contact',
+
   },
   {
     slug: 'verificateur-fec-local', categorie: 'verifier', statut: 'disponible',

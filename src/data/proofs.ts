@@ -1,7 +1,14 @@
 /** Matrice M4-R1 : références fonctionnelles fictives, jamais des captures produit. */
 export const PROOFS = {
+
   'v2/30-outil-roi': { title: 'Capacité et trésorerie ne se confondent pas', alt: 'Deux scénarios fictifs : 6,67 heures et 1,60 heure de capacité mensuelle ; maintenance 50 euros par mois actif ; net cash 800 euros et moins 500 euros sur douze mois.', detail: 'Le premier scénario reprend l’oracle du calculateur. Le second réduit automatisation et adoption, ajoute deux mois de délai et diminue les dépenses évitables. Aucun résultat n’est une promesse de gain.' },
+
+
+  'v2/01-outil-charte-ia': { title: 'Des usages aux clauses et aux arbitrages', alt: 'Scène fictive : relance de pièces et synthèse sur données fictives vers trois clauses à relire, responsable des usages à compléter et prochaine relecture au 1er décembre 2026.', detail: 'L’exemple local retient deux usages, un contrôle de chaque résultat et une relecture mensuelle. Le rôle responsable manquant reste visible ; aucune adoption ni conformité n’est présumée.' },
+
+
   'v2/29-outil-fec': { title: 'La date impossible est localisée', alt: 'FEC fictif : date impossible 20260230 ligne 4, colonne EcritureDate ; règle date, retour au logiciel source, original inchangé.', detail: 'Trois lignes fictives sont examinées. La troisième ligne de données, ligne 4 du fichier, présente une date impossible. Le rapport localise et explique sans corriger le FEC.' },
+
   '01-flux': { title: 'De l’information à la décision', alt: 'Flux fictif : une information entrante passe par les règles du cabinet, une exception est isolée puis soumise à validation humaine.', detail: 'L’information entre dans un périmètre défini. La règle du cabinet prépare une proposition. Un champ requis absent isole le cas concerné : la validation reste bloquée tant que la vérification humaine n’a pas eu lieu.' },
   '02-repetition': { title: 'Une préparation, pas quatre ressaisies', alt: 'Quatre gestes manuels regroupés en une préparation : 47 propositions à relire et un cas fictif à vérifier.', detail: 'Sur 48 éléments fictifs analysés, 47 propositions sont prêtes à être relues et un cas reste à vérifier. Le total inclut l’exception : rien n’est écarté silencieusement et aucun résultat n’est appliqué automatiquement.' },
   '03-controle': { title: 'Le doute bloque le traitement', alt: 'Panneau de revue bloqué comparant un champ attendu à un champ vide, avant documentation de la décision humaine.', detail: 'Le champ attendu est comparé au champ reçu, ici vide. Le traitement concerné reste bloqué à l’étape Vérifier. Le cabinet documente sa décision avant toute reprise ; l’outil ne devine pas la donnée manquante.' },

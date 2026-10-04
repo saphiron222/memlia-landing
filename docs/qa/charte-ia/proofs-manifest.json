@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/charte-ia-proof/index.html",
+      "sha256": "b8e45b43e2506942e53d340d77a4a19e417d5fde7a5d05f876616f0ec1e50cc9"
+    },
+    {
+      "path": "docs/design/charte-ia-proof/styles.css",
+      "sha256": "93ef93a97fb04ddc8f4d2706bf6bcc750f0a5164c750fc2532e9fee2dbaa9d23"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/charte-ia-proof/content-contract.json",
+      "sha256": "d3a6d4be9af0cbe3809fe858d5ae413df2b67c732b8a6a4efcbc3b06877b8e62"
+    },
+    {
+      "path": "scripts/render-charte-ia-proof.mjs",
+      "sha256": "2dbcc0bf6a058491ef3d5550e87bdb9868422304e92533119ccba92cda8fac04"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/charte-ia-proof/index.html#outil-charte-ia",
+      "target": "public/proofs/v2/01-outil-charte-ia.webp",
+      "bytes": 66428,
+      "sha256": "fe6e69f7dd100245c6199a0de86bc1f824e54e18e985f1d748bf67bca0e9cfeb"
+    },
+    {
+      "source": "docs/design/charte-ia-proof/index.html#outil-charte-ia",
+      "target": "public/proofs/v2/og/01-outil-charte-ia.webp",
+      "bytes": 34872,
+      "sha256": "e414f01b3715dcae34a1bd94ee8f1de3e7ace131ac4de0050e39b2061d44642e"
+    }
+  ]
+}

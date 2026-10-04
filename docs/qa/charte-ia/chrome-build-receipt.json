@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "commands": [
+    {
+      "command": "npx astro build",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/strip-briefs.mjs",
+      "exitCode": 0
+    }
+  ],
+  "startedAt": "2026-10-04T00:13:14.257Z",
+  "endedAt": "2026-10-04T00:13:18.788Z",
+  "result": "PASS",
+  "verification": {
+    "commands": [
+      {
+        "command": "npx astro build",
+        "exitCode": 0
+      },
+      {
+        "command": "node scripts/strip-briefs.mjs",
+        "exitCode": 0
+      }
+    ],
+    "snapshotsIdentiques": true,
+    "regle": "Deux reconstructions réelles reproduisent le snapshot sans changement de matière du glossaire."
+  },
+  "surfaces": {
+    "T": {
+      "sourceBundleDigest": "c858dfb4df85a55ede57e06c48747fa3225247748182db16dfa3456e5fb1ad68",
+      "assetBundleDigest": "56408fe40b2d58ee2dac4bf598ac0e2fbe51e1d123de046dbe8f4331d4a6e3e3",
+      "configBundleDigest": "049a37f865c250da3a44665199b84dd8d2e6cbe42b526842976fdb28578c1bcb",
+      "outputDigest": "0b53b24b4c7c3654411276189dc0af4f37bc5ead2c39e9ea5cdb3567eff6b5d4"
+    }
+  }
+}
