@@ -471,9 +471,14 @@ de compatibilité universelle ni une fiche de service par vendeur. `/outils-comp
 donne un résultat local sans inscription depuis `src/data/outils.ts` ; la boucle d'usage et ses
 seuils sont possédés par `OUTILS-BOUCLE.md`. Chaque guide, outil, article et service garde sa
 propre requête et son canonical si son intention est distincte ; si deux pages visent réellement
-le même geste, la SERP et la preuve tranchent avant toute nouvelle route. `src/data/site.mjs`
-exclut provisoirement du sitemap l'article de saisie pour l'incident FE : ne pas lui retirer son
-URL ni faire d'un canonical croisé un pansement.
+le même geste, la SERP et la preuve tranchent avant toute nouvelle route.
+Relecture du 04/10/2026 : la suspension FE de Saisie décrite dans l'état du 28/09 est historique.
+La republication intégrée `e9866dd8` a retiré l'article de `PAGES_NOINDEX` dans
+`src/data/site.mjs` et supprimé sa fonction Pages 503. Son URL et son canonical sont conservés ;
+aucun changement de requête commerciale ni canonical croisé n'en découle. Le constat HTTP et
+le commit réellement déployé restent deux preuves différentes. Voir la
+[qualification des socles](QUALIFICATION-SOCLES-2026-10-04.md) ; les choix de routes, intentions,
+gabarit et maillage de cet addendum sont conservés après relecture, sans reprendre C1/C4.
 
 Le design des services et guides vient de `docs/design/2026-09-08-design-navattic-memlia.md`,
 `src/styles/tokens.css`, et des sections canoniques `src/components/sections/`. La preuve visuelle

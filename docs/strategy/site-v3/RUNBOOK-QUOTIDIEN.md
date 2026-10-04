@@ -135,6 +135,26 @@ Chaque ligne de la date du jour au statut `planned` est un article à produire (
 
 ## 3. Écrire la recette (la recette éditoriale Memlia, héritée de l'article 3)
 
+Constat historique de la relecture du 04/10/2026 après PR54 : les deux alertes de source plus récente du lot
+`t_b101bf53` sont déjà absorbées par les ajouts du 03/10 ci-dessous. Le diff entre la dernière
+édition de ce runbook et main est vide pour `scripts/blog-forge.mjs` et
+`scripts/render-blog-article-proofs.mjs` ; leur dernier changement est `2e8ea7c0`.
+Maintien motivé, pas réécriture de la procédure : la forge injecte une image directe 1600 × 900
+par figure, conserve les provenances et projette les identités de revue réellement présentes.
+Le renderer scellait alors 24 cadres pour 12 articles, deux par recette de cette série :
+ce contrat précis d'actifs historiques n'est pas un quota universel pour les prochains articles.
+Son `--check` local rend les pixels ; sur Pages (`CF_PAGES=1`), il compare sources, manifeste et
+actifs versionnés sans certifier un nouveau rendu visuel. Historique, avis acquis et intégration
+documentaire IA du §3 conservés. [Qualification et commandes](QUALIFICATION-SOCLES-2026-10-04.md).
+
+Qualification courante après PR60 (`e4929b8f`, intégrée sur main `92ee0c81`) : le renderer
+retire les constantes 24 cadres/12 articles et dérive l'inventaire de `content-contract.json`.
+Il vérifie un inventaire non vide, des identifiants uniques, la concordance des cadres et
+exactement deux preuves par recette de cette série. Le contrat actuel contient 24 cadres
+pour 12 articles : photographie vérifiée, ni plafond ni taille imposée aux lots suivants.
+La procédure d'inventaire ci-dessous issue de PR60, les modes local/Pages, les clauses de
+réservation PR57 et l'intégration IA sont conservés ; le constat PR54 ci-dessus reste historique.
+
 ### Couverture exhaustive Blog et SEO, automatique à chaque rédaction (décision Kevin du 03/10/2026)
 
 Cette règle s'applique à toute nouvelle rédaction, réécriture et republication, sans rappel de Kevin. Elle remplace la sélection usuelle de sous-skills décrite ci-dessous ; lire une liste ou recopier un ancien PASS n'est pas exécuter les contrôles.
