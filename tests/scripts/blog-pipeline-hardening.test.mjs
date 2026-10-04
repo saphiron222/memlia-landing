@@ -138,6 +138,37 @@ test('les sources T1, T2 et T3 correctement tracées ouvrent le gate', async () 
   assert.equal(result.pass, true);
 });
 
+test('les objectifs de quantité ne remplacent jamais les preuves des sources et des entrants déclarés', async () => {
+  const fixture = await createCompleteDossier(root('editorial-targets'), {
+    manifestMutator: (manifest) => {
+      manifest.sources = manifest.sources.slice(0, 2);
+      manifest.links.incoming = ['/blog'];
+    },
+  });
+  assert.deepEqual((await validateDossier({ root: fixture.root, slug: fixture.slug })).errors, []);
+  const original = readJson(fixture.manifestPath);
+  const mutations = [
+    [(value) => { value.sources[0].url = 'http://localhost/source'; }, /sources\[0\]\.url/],
+    [(value) => { value.sources[1].checkedAt = 'hier'; }, /sources\[1\]\.checkedAt/],
+    [(value) => { value.sources[0].verificationEvidence = 'preuves/absente.json'; }, /absente\.json/],
+    [(value) => { value.links.incoming = ['/blog/page-inventee']; }, /Le lien entrant depuis/],
+  ];
+  for (const [mutate, expected] of mutations) {
+    const changed = structuredClone(original);
+    mutate(changed);
+    writeJson(fixture.manifestPath, changed);
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(result.pass, false);
+    assert.match(result.errors.join('\n'), expected);
+  }
+  writeJson(fixture.manifestPath, original);
+  const state = sourceState(fixture);
+  writeFileSync(state.snapshotPath, 'Copie source altérée sans actualiser la preuve.');
+  const corrupted = await validateDossier({ root: fixture.root, slug: fixture.slug });
+  assert.equal(corrupted.pass, false);
+  assert.match(corrupted.errors.join('\n'), /empreinte|SHA|sha256/i);
+});
+
 test('Medium anonyme, Reddit et Substack personnel restent refusés même avec des preuves locales cohérentes', async () => {
   const replacements = [
     { publisher: 'Medium anonyme', url: 'https://medium.com/@anonyme/article', level: 'tier-4' },
