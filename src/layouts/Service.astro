@@ -4,7 +4,6 @@ import ServiceHero from '@/components/sections/ServiceHero.astro';
 import ServiceBody from '@/components/sections/ServiceBody.astro';
 import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
-import PageAttribution from '@/components/PageAttribution.astro';
 import PageEvidence from '@/components/PageEvidence.astro';
 import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { SITE } from '@/data/site.mjs';
@@ -90,7 +89,6 @@ const graph = {
   <div class="feuille">
     <article data-service={entree.id} data-service-layout="da-v1">
       <ServiceHero headline={data.headline} hero={data.hero} cta={data.cta} proof={design.heroProof} preview={noindex}>
-        <PageAttribution slot="attribution" eeat={eeat} align="start" />
       </ServiceHero>
       <ServiceBody proof={design.bodyProof}>
         <slot />
