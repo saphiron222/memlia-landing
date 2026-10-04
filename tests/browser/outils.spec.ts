@@ -406,6 +406,9 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     if (outil.slug === 'verificateur-fec-local') {
       const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/fec-worker-[a-zA-Z0-9_-]+\\.js$`);
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
+    } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
+      const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/pseudonymisation\\.worker-[a-zA-Z0-9_-]+\\.js$`);
+      expect(requests.filter(request => !asset.test(request))).toEqual([]);
     } else expect(requests).toEqual([]);
     page.off('request', listener);
   }
