@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-03",
+  "instrument": "Hermes web_search ; quatre recherches, cinq résultats par recherche",
+  "limites": "Relevé du moteur configuré, pas un rank-tracker Google géolocalisé. Positions ci-dessous = ordre de sortie, pas positions Google certifiées. Aucun volume, difficulté ou PAA revendiqué. Pages signalées ouvertes par web_extract dans ce run.",
+  "recherches": [
+    {"slug":"crm-dsn-rappel-annuel-et-substitution","query":"CRM DSN rappel annuel CRM substitution 2026 net entreprises","resultats":[
+      {"ordre":1,"url":"https://www.net-entreprises.fr/dsn-crm-de-rappel-annuel-et-dsn-de-substitution/","titre":"CRM de rappel annuel, et DSN de substitution - net-entreprises.fr","type":"actualité officielle", "ouvert":true},
+      {"ordre":2,"url":"https://www.net-entreprises.fr/media/documentation/neores/dsn-note-differentielle-CT2024.1-CT2026.1.pdf","titre":"Retours organismes DSN – NEOReS","type":"PDF technique", "ouvert":false},
+      {"ordre":3,"url":"https://corse.urssaf.fr/accueil/actualites/2026/declaration-sociale-nominative-q.html","titre":"Déclaration sociale nominative : que faire à réception du compte-rendu","type":"actualité officielle", "ouvert":false},
+      {"ordre":4,"url":"https://group-gac.com/en/infographic-crm-recall-124/","titre":"CRM 124: the last step before DSN substitution - G.A.C. Group","type":"infographie conseil", "ouvert":false},
+      {"ordre":5,"url":"https://www.silae.fr/crm-de-rappel-traitement/","titre":"CRM de rappel : comment les traiter efficacement ?","type":"guide éditeur", "ouvert":true}
+    ],"decision":"Guide ciblé CRM 124 et circuit de qualification annuel. Ne pas dupliquer le guide CRM général ni présenter mars 2026 comme une échéance future."},
+    {"slug":"echeance-dsn-5-ou-15","query":"échéance DSN 5 15 mois effectif 50 salariés net entreprises","resultats":[
+      {"ordre":1,"url":"https://www.urssaf.fr/accueil/employeur/gerer-entreprise/declaration-sociale-nominative.html","titre":"Déclarer en DSN - Urssaf.fr","type":"fiche officielle", "ouvert":true},
+      {"ordre":2,"url":"https://entreprendre.service-public.gouv.fr/vosdroits/F34059?lang=en","titre":"Déclaration sociale nominative (DSN) - Service Public Entreprendre","type":"fiche officielle", "ouvert":false,"variante_fr_ouverte":"https://entreprendre.service-public.gouv.fr/vosdroits/F34059"},
+      {"ordre":3,"url":"https://www.net-entreprises.fr/glossaire/dsn-mensuelle/","titre":"DSN mensuelle - net-entreprises.fr","type":"glossaire officiel", "ouvert":false},
+      {"ordre":4,"url":"https://hayot-expertise.fr/blog/dsn-2026-guide-complet-declaration-sociale-nominative","titre":"DSN 2026 : Guide complet de la déclaration sociale nominative","type":"guide cabinet", "ouvert":false},
+      {"ordre":5,"url":"https://www.alfred-gory.com/blog-echeances-dsn.html","titre":"Échéances DSN : le 5 ou le 15 du mois, qui est concerné ?","type":"guide formation", "ouvert":true}
+    ],"decision":"Réponse courte puis tableau de décision effectif/date de versement ; distinguer transmission, annule-et-remplace et paiement. URSSAF ouverte confirme le cas de 50 salariés et plus avec paie décalée."},
+    {"slug":"collecter-les-variables-de-paie","query":"collecte variables paie cabinet comptable tableau","resultats":[
+      {"ordre":1,"url":"https://www.agiris.fr/articles/paie/variables-de-paie-eviter-la-saisie-infernale-en-cabinet","titre":"Variables de paie : éviter la saisie infernale en cabinet","type":"guide éditeur", "ouvert":true},
+      {"ordre":2,"url":"https://independant.io/elements-variables-paie/","titre":"Guide | Tableau des Éléments Variables de Paie (Excel)","type":"guide et modèle", "ouvert":false},
+      {"ordre":3,"url":"https://www.flowzero.fr/blog/automatisation-collecte-variables-paie-cabinet","titre":"Automatiser la collecte des variables de paie : le chantier oublié des cabinets comptables","type":"guide automatisation", "ouvert":true},
+      {"ordre":4,"url":"https://www.eurecia.com/blog/collecter-elements-variables-paie/","titre":"Collecte des EVP : en finir avec le casse-tête des éléments variables","type":"guide et modèle", "ouvert":false},
+      {"ordre":5,"url":"https://ratioo.fr/fonctionnalites/collecte-des-elements-de-paie","titre":"Collecte des éléments de paie | Ratioo","type":"page produit", "ouvert":false}
+    ],"decision":"How-to avec tableau copiable sans inscription, états fermés et traitement de la version corrigée ; pas simple discours sur le gain. Les chiffres de FlowZero sont des allégations concurrentes non reprises comme preuves."},
+    {"slug":"manuel-de-procedures-cabinet-comptable","query":"manuel procédures cabinet expertise comptable exemple","resultats":[
+      {"ordre":1,"url":"https://www.monmanuelcabinet.fr/","titre":"Mon Manuel Cabinet – La synergie en action","type":"outil institutionnel", "ouvert":true},
+      {"ordre":2,"url":"https://fr.scribd.com/doc/190716164/Manuel-Organisation-Cabinet-Expertise","titre":"Manuel en ligne pour cabinets comptables | PDF - Scribd","type":"document hébergé", "ouvert":false},
+      {"ordre":3,"url":"https://www.bretagne.experts-comptables.fr/la-profession/controle-qualite/les-outils/","titre":"Les outils - Ordre des Experts-Comptables de Bretagne","type":"répertoire institutionnel", "ouvert":true},
+      {"ordre":4,"url":"https://www.compta-online.com/preparation-memoire-manuel-procedures-cabinet-t37201","titre":"Preparation memoire : manuel de procedures d'un cabinet ec","type":"forum historique", "ouvert":false},
+      {"ordre":5,"url":"https://www.capsurlaperformance.fr/","titre":"Cap Performance : des outils pratiques pour les experts","type":"ressources institutionnelles", "ouvert":false}
+    ],"decision":"Guide de mise en pratique + sommaire et fiche procédure copiables ; renvoi à l'outil institutionnel au lieu de prétendre remplacer un manuel professionnel complet."}
+  ]
+}

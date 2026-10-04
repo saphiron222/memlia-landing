@@ -34,6 +34,7 @@ désigner l'offre.
 12. [Mesures](mesures/) : les relevés commités. `questions-2026-09-19.md` et `.json` (suggestions par formulation, SERP par famille), `titres-intent-2026-09-21.json` (test distinct du primaire IA), `semaine-2026-W38-demande.json`, `semaine-2026-W38-integrite.json`, `sentinelle.jsonl`, `registre-requetes.json`, `amorces-marche.json`.
 13. [Calendrier](CONTENT-CALENDAR.md), [plan de cluster](cluster-plan.md), [données](cluster-plan.json), [carte interactive](cluster-map.html) : générés par `build-cluster-plan.py`. Ne pas les éditer à la main ; corriger `backlog-v3.json` ou la taxonomie, puis régénérer. `manque` et `a-replanifier` ne sont pas des créneaux de publication.
 14. [Briefs du 16/09](cluster-briefs/) : périmés (voir plus bas). Ne pas s'en servir comme source d'un article.
+15. [Diagnostic Blog/SEO du 03/10](mesures/diagnostic-2026-10-03/DIAGNOSTIC.md), [quatre briefs IA finaux](mesures/diagnostic-2026-10-03/BRIEFS-QUATRE-ARTICLES.md), [couverture finale](mesures/diagnostic-2026-10-03/COUVERTURE-LIVRAISON.md) et [provenance](mesures/diagnostic-2026-10-03/LIVRAISON.md) : prolongement des deux articles IA du 29/09 ; anciens sujets DSN abandonnés. Lire l'[état d'intégration et la procédure de rejeu](mesures/diagnostic-2026-10-03/INTEGRATION.md), puis le runbook §3. Ces briefs ne publient aucun article et ne réservent aucune date.
 
 ## Gouvernance des faits vivants (réconciliation du 28/09)
 

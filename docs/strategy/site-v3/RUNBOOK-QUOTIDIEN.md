@@ -5,7 +5,7 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 ## 0. Rails non négociables
 
 - **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`. Chaque exécution utilise un worktree isolé, une branche neuve `site/blog-<sujet>` à la base fraîche de `main`, puis une PR. Le clone dédié du cron ne sert que de source propre synchronisée par `forge_checkout_gate.py` ; il ne reçoit aucune écriture éditoriale. D'autres workers peuvent tourner en parallèle. Seule la fusion contrôlée sur `main` déclenche la publication Cloudflare ; jamais de push direct sur `main`.
-- **Cadence** : au plus 2 articles ordinaires par jour et 4 par semaine ISO, du lundi au jeudi, puis exactement 1 Cicatrice le samedi en sus (`verifierPlafonds`). Le vendredi reste un jour de maintenance (§6). La décision du 29/09 distingue le retard seul des portes de sûreté : le reliquat déjà mandaté W39 n'exige pas une nouvelle signature Kevin à chaque jour de retard. Son seul cadrage opérateur courant est décrit ci-dessous ; aucun changement général de cadence, second slug ou second exemplaire W39 n'en découle. Le dossier éditorial et la production restent soumis à leurs gardes distincts.
+- **Cadence** : au plus 2 articles ordinaires par jour et 4 par semaine ISO ; planification automatique du lundi au jeudi, réservation explicite possible à la date réelle hors de ces jours (§2), puis exactement 1 Cicatrice le samedi en sus (`verifierPlafonds`). Le vendredi reste normalement un jour de maintenance (§6). La décision du 29/09 distingue le retard seul des portes de sûreté : le reliquat déjà mandaté W39 n'exige pas une nouvelle signature Kevin à chaque jour de retard. Son seul cadrage opérateur courant est décrit ci-dessous ; aucun second slug ou second exemplaire W39 n'en découle. Le dossier éditorial et la production restent soumis à leurs gardes distincts.
 
 ### Reçu opérateur W39 — ponctuel, non renouvelable
 
@@ -88,6 +88,20 @@ Conserver le `head` comme `BASE_SHA` jusqu'à la fin. Après maintenance, `--pha
 
 ## 2. Lire le créneau du jour
 
+Réservation mandatée d'un article ordinaire (constitution du 03/10, décision du
+29/09) : `datePlanifiee` dans le backlog peut fixer la date réelle, y compris
+vendredi, samedi ou dimanche. Ce champ existant est la décision éditoriale ; une
+recette, un brief ou une ligne de dérivé seuls ne réservent pas de créneau. Les
+jours lundi-jeudi restent ceux de la planification automatique, non une porte de
+sûreté. Les plafonds restent 2 ordinaires par jour et 4 par semaine ISO, en
+comptant les publications réelles et les réservations. Une date échue reste
+refusée ; un jour saturé par les publications devient `a-replanifier`. Marketing
+réserve le backlog et régénère les dérivés, puis passe le préflight natif
+`--slot <slug> <jour-Paris>` : fraîcheur et reconstruction complète restent
+obligatoires. Une publication intégrée conserve ensuite sa date hors lundi-jeudi
+sans nécessiter de réservation rétrospective. Aucun changement de la série
+Cicatrices, du reçu W39, des revues ou de la CI n'en découle.
+
 ```bash
 python3 docs/strategy/site-v3/build-cluster-plan.py --check
 grep -n "^| $(date +%Y-%m-%d) |" docs/strategy/site-v3/CONTENT-CALENDAR.md
@@ -108,6 +122,29 @@ Ce contrôle ne remplace pas `--slot` dans la forge : date Paris fraîche, recon
 Chaque ligne de la date du jour au statut `planned` est un article à produire (une, parfois deux du lundi au jeudi ; une seule Cicatrice le samedi). Son slug donne l'entrée complète dans `docs/strategy/site-v3/backlog-v3.json` : titre, requête primaire, requêtes secondaires, famille, rôle, intention, entonnoir, format, preuve attendue, autorités à citer. Aucune ligne un jour ordinaire : aller au §6. Aucune ligne un samedi : ne pas inventer de récit ; consigner le stock vide dans `JOURNAL.md` et ouvrir une carte de réapprovisionnement depuis les leçons et faits mesurés.
 
 ## 3. Écrire la recette (la recette éditoriale Memlia, héritée de l'article 3)
+
+### Couverture exhaustive Blog et SEO, automatique à chaque rédaction (décision Kevin du 03/10/2026)
+
+Cette règle s'applique à toute nouvelle rédaction, réécriture et republication, sans rappel de Kevin. Elle remplace la sélection usuelle de sous-skills décrite ci-dessous ; lire une liste ou recopier un ancien PASS n'est pas exécuter les contrôles.
+
+1. **Inventorier à chaque lot.** Appeler `skills_list`, conserver sa sortie et confronter le catalogue courant au pack Hermes installé, à `editorial/templates/skills.json`, aux tableaux `BLOG_SKILLS` / `SEO_SKILLS` de `scripts/lib/blog-pipeline.mjs` et aux orchestrateurs `blog` / `seo`. Charger les deux racines et chaque sous-skill de l'union, y compris les extensions disponibles. Contrôle du 03/10 : 63 entrées uniques, soit 2 racines + 31 Blog + 30 SEO ; 56 sont exposées au catalogue, le registre technique conserve 31 Blog / 24 SEO. Les sept fichiers du pack absents du catalogue sont `blog-audio`, `blog-notebooklm`, `seo-ahrefs`, `seo-bing`, `seo-profound`, `seo-seranking` et `seo-unlighthouse` : lire et tracer cette différence, sans installation implicite. Les nombres sont une photographie, pas une constante à reconduire. Ne pas injecter les extensions hors registre dans le manifeste technique `skills.json`.
+2. **Matrice obligatoire par article.** Conserver `editorial/recettes/<slug>/couverture-skills.json` et sa vue Markdown, ou une matrice de lot dont chaque ligne nomme les slugs couverts. Champs : `skill`, chemin/version chargé, phase, `applicable` ou `N/A` motivé, état d'exécution, preuve/commande/artefact, constat, changement effectué (ou maintien justifié). Distinguer `lu`, `execute`, `partiel`, `indisponible`, `a-executer` et `N/A` ; ne jamais transformer `lu` en `RUN/PASS`. Les preuves partagées de lot restent reliées à chaque article.
+3. **Exécuter ce qui s'applique.** Analyse de l'existant, demande et fraîcheur GSC, SERP, intentions, maillage/cannibalisation, brief, plan, rédaction, sources, style, images, schémas, contrôle du rendu et preuve servie sont couverts selon leur phase. Au stade diagnostic, les contrôles de rédaction/rendu/publication restent explicitement `a-executer`, pas PASS anticipés. Pour une source/API absente, noter `indisponible`, jamais zéro. Les scores sont des heuristiques éditoriales, pas des données Google ; un analyseur anglais ou un parseur non adapté aux frontmatters français ne certifie pas la qualité du candidat.
+4. **N/A reste une décision documentée.** Lire et justifier les sous-skills sans intention correspondante (local/maps, ecommerce, hreflang, traduction/localisation, audio, NotebookLM, programmatic, comparaison d'éditeurs, réutilisation hors blog). Ne créer ni campagne, compte, dépense, besoin international ou nouvelle surface pour cocher une case. Les règles de la constitution sur les dépenses et l'arrêt LinkedIn/mail/CRM/plateforme produit priment.
+5. **Vérifier dans la revue normale.** L'unique revue indépendante applicable contrôle l'exhaustivité de la matrice, les justifications N/A, les preuves réellement exécutées et les omissions ; aucune deuxième revue dédiée aux skills. Les compétences applicables non exécutées ne disparaissent pas sous un N/A générique. Le `skills.json` v1 généré par la forge reste un manifeste technique ; ses RUN/PASS et observations synthétiques ne remplacent pas cette matrice sourcée.
+6. **Lire honnêtement l'historique.** Examiner `recette.preuvesSkills`, `editorial/articles/<slug>/skills.json`, `preuves/skills/*`, les revues qualité/SEO et les journaux avant de conclure. L'absence dans `preuvesSkills` ne prouve pas une absence d'exécution. Une attestation générée sans sortie spécifique prouve une trace déclarée, pas l'exécution complète du skill. Ne pas régénérer rétrospectivement des preuves ni requalifier un ancien verdict sous l'identité d'un reviewer.
+
+Critère de fini des prochaines cartes rédaction/publication : matrice exhaustive Blog/SEO sans omission, contrôles applicables exécutés avec preuves et N/A motivés, vérifiés dans la revue normale, en plus des sources et de la preuve de publication existantes.
+
+**Point de départ vérifié et contrôle reproductible.** Lire le [diagnostic du 03/10](mesures/diagnostic-2026-10-03/DIAGNOSTIC.md), les [quatre briefs IA](mesures/diagnostic-2026-10-03/BRIEFS-QUATRE-ARTICLES.md), la [matrice finale](mesures/diagnostic-2026-10-03/couverture-livraison.json) et sa [vue Markdown](mesures/diagnostic-2026-10-03/COUVERTURE-LIVRAISON.md), puis l'[état d'intégration et les limites du rejeu](mesures/diagnostic-2026-10-03/INTEGRATION.md). `couverture-skills.json` / `COUVERTURE-SKILLS.md` restent le checkpoint antérieur, pas l'état final. Le catalogue et les lectures sont archivés dans le même dossier. Le vérificateur local se rejoue avec :
+
+```bash
+node docs/strategy/site-v3/mesures/diagnostic-2026-10-03/verifier-livraison.mjs docs/strategy/site-v3/mesures/diagnostic-2026-10-03/couverture-livraison.json
+```
+
+Il contrôle l'union actuelle, les motifs/états, l'existence des preuves et les constats de ce lot ; quatre mutations testent omission, doublon, exécution sans preuve et motif vide. Ce contrôle est celui du diagnostic daté, **pas un garde universel intégré à la forge**, ni une certification de vérité métier. Pour un lot suivant, refaire l'inventaire et les mesures, adapter les preuves à ses slugs et exécuter le contrôle de couverture avant préparation ; ne pas relancer aveuglément le finaliseur du 03/10 pour attribuer des états aux futurs textes. Un contrôle hérité de fichiers suffit à prouver leur cohérence, jamais leur exécution nouvelle. La revue normale conserve la lecture du fond. Le catalogue peut croître sans modifier le registre technique ; une omission détectée se résout dans la matrice, pas par ajout artificiel de surface.
+
+**Constitution prioritaire pour l'autorité et les coûts.** Les mentions historiques de go individuel, de nouvelle signature de revue pour une date/lien/empreinte ou d'enveloppe Higgsfield globale ci-dessous ne priment pas sur `~/hermes/AGENTS.md` du 03/10 : une seule revue normale du fond, QA pour le code ou `metier` pour le contenu réglementé ; les corrections du même candidat suivent cette revue ; Higgsfield au plus 40 crédits par génération, sans plafond global. Les preuves techniques doivent rester cohérentes avec ce qui est rendu, sans fabriquer un verdict ni contourner une porte du code. Une divergence du code se rapporte avec sa cause, elle n'est pas réécrite dans le verdict. Le blog se publie sous l'autorité constitutionnelle après revue et CI ; ces quatre briefs ne réservent pas des dates et ne publient rien.
 
 Créer `editorial/recettes/<slug>/recette.json` et `corps.md` sur le modèle exact des recettes publiées : `editorial/recettes/automatiser-la-relance-des-pieces-clients/` (satellite, gabarit how-to-guide) et `editorial/recettes/automatiser-un-cabinet-comptable-la-carte-des-taches/` (pilier). Le contrat de la recette est décrit en tête de `scripts/blog-forge.mjs`. Le H1 `title` et le `tabTitle` portent dès cette recette la requête primaire ou une requête secondaire présente dans le dernier relevé frais `mesures/questions-AAAA-MM-JJ.json` ; une liste d’autocomplétion vide reste une mesure, une requête absente bloque `preparer`. La recette suit les skills blog du pack Hermes `~/hermes/packs/claude-blog/skills/` : `blog-brief` (le brief de la stratégie), `blog-outline` (les gabarits du pack), `blog-write` (les six piliers : réponse d'abord, définitions, preuves sourcées, maillage, structure extractible, FAQ), `blog-factcheck` (les claims du pipeline), `blog-style` (`cognitive_load.py`), `blog-seo-check`, `blog-geo`, `blog-schema`, `blog-image`, `blog-analyze` (revue indépendante à 100 points, §7).
 
