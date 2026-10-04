@@ -477,6 +477,38 @@ test('témoin : le garde détecte toute requête après armement, puis exige zé
   expect(requests).toEqual([]);
 });
 
+test('contact : accord saisi avant le chargement JavaScript conservé et appliqué', async ({ page, baseURL }) => {
+  let releaseScripts!: () => void;
+  const scriptsReady = new Promise<void>((resolve) => { releaseScripts = resolve; });
+  let delayedScripts = 0;
+  const posts: string[] = [];
+  await page.route('**/_astro/*.js', async (route) => {
+    delayedScripts += 1;
+    await scriptsReady;
+    await route.continue();
+  });
+  await page.route('**/api/contact', async (route) => {
+    if (route.request().method() === 'POST') posts.push(route.request().postData() ?? '');
+    await route.fulfill({ status: 503, body: '{}' });
+  });
+  await page.goto('/contact', { waitUntil: 'commit', referer: new URL(TEMOIN, baseURL).href });
+  try {
+    await page.locator('#nom').fill('Camille Fictive');
+    await page.check('#consentement_origine');
+    await expect(page.locator('#origine')).toHaveValue('');
+    expect(delayedScripts).toBeGreaterThan(0);
+  } finally {
+    releaseScripts();
+  }
+  await page.waitForLoadState('load');
+  await expect(page.locator('#consentement_origine')).toBeChecked();
+  await expect(page.locator('#origine')).toHaveValue(TEMOIN);
+  await expect(page.locator('#nom')).toHaveValue('Camille Fictive');
+  await page.uncheck('#consentement_origine');
+  await expect(page.locator('#origine')).toHaveValue('');
+  expect(posts).toEqual([]);
+});
+
 test('outil vers contact : origine attribuée après accord distinct, sans envoi avant validation volontaire', async ({ page }) => {
   const apiRequests: string[] = [];
   await page.route('**/api/contact', async (route) => {
