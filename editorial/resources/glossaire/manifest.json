@@ -4721,7 +4721,7 @@
         "dsn",
         "legal-reglementaire"
       ],
-      "checkedAt": "2026-09-16T21:09:13+01:00",
+      "checkedAt": "2026-10-04T02:49:45.632Z",
       "businessReview": {
         "required": true,
         "reviewerType": "ai-agent",
@@ -4733,7 +4733,7 @@
           "editorialReviewer",
           "sourceClassifier"
         ],
-        "reviewedCandidateHash": "2fced217c85740147525500597ab48f857a1a573f7411b18411fc95cb3ce86e6",
+        "reviewedCandidateHash": "b6a9a3090f4bdf9f84f15c400077318bab51edee00ede1749f864aa7d1333328",
         "status": "AI_REVIEW_PASS",
         "claimSourceVerdicts": [
           {
@@ -5047,7 +5047,7 @@
           }
         ],
         "evidenceRef": "docs/qa/site-copy-b/preuve-glossaire-metier.json",
-        "evidenceSha256": "71ead527fc67da1929f106d2fd619802510a469104253bf87b6ca52ea04c74b4"
+        "evidenceSha256": "eeb1de729e64cf4d5309cd1791f2d20d80ec6ab7687c27c20dd2744188c550a2"
       }
     }
   },
@@ -7247,7 +7247,7 @@
       "digest": "975ac941b01ff0dcc8e24c4ce67f7163507e8c110689085a0dd68593635cbad4"
     },
     "candidateHash": {
-      "value": "63f565bc6510cd062d6506a5048e7b8204dc2f16505019f6b25cc9ea28badf3b",
+      "value": "8ade5416e3c45540bcbeb6978a000ac430ddc5af8cdb86e112548794285d0dab",
       "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
     },
     "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
@@ -7287,7 +7287,7 @@
     "reportRef": null
   },
   "audit": {
-    "candidateHash": "63f565bc6510cd062d6506a5048e7b8204dc2f16505019f6b25cc9ea28badf3b",
+    "candidateHash": "8ade5416e3c45540bcbeb6978a000ac430ddc5af8cdb86e112548794285d0dab",
     "buildOutputDigest": "975ac941b01ff0dcc8e24c4ce67f7163507e8c110689085a0dd68593635cbad4",
     "gateReportRefs": [
       "fixture://audit/gates"
@@ -7300,7 +7300,7 @@
     "p0": [],
     "p1": [],
     "result": "PASS",
-    "auditHash": "07059da72fe3f37c72769f27da70e4f3494c0cc4ad86d4f725ecaefb4b59f59c"
+    "auditHash": "275bdd524c6639009bc91939859fb50cbf26c52c4ebdeec2726cda164bf403ed"
   },
   "approval": {
     "state": "pending",
