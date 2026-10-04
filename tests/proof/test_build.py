@@ -62,6 +62,43 @@ class Document(HTMLParser):
         return [attrs for name, attrs in self.tags if name == tag]
 
 
+def unsafe_external_links(article):
+    """Chaque navigation web externe ouvrant une fenêtre protège l'opener."""
+    dangereux = []
+    for lien in Document(article).select('a'):
+        href = lien.get('href', '')
+        url = urlsplit(href)
+        externe = bool(url.netloc) and url.netloc != urlsplit(SITE).netloc
+        if externe and lien.get('target', '').lower() == '_blank':
+            if 'noopener' not in lien.get('rel', '').lower().split():
+                dangereux.append(href)
+    return dangereux
+
+
+class ExternalLinkSafetyProof(unittest.TestCase):
+    def test_chaque_lien_externe_est_sur_meme_avec_deux_sources(self):
+        with TemporaryDirectory() as directory:
+            article = Path(directory) / 'article.html'
+            liens = '<a href="https://cnil.fr" target="_blank" rel="noopener">CNIL</a>'
+            liens += '<a href="https://exemple.fr" rel="noreferrer noopener" target="_blank">Source</a>'
+            article.write_text(liens)
+            self.assertEqual(unsafe_external_links(article), [])
+            # Trois liens sûrs ne doivent jamais masquer le quatrième dangereux.
+            for href in ('https://autre.fr', 'http://autre.fr', '//autre.fr'):
+                for rel in ('', 'rel="noreferrer"', 'rel="not-noopener"'):
+                    article.write_text(liens * 2 + f'<a href="{href}" target="_blank" {rel}>Danger</a>')
+                    self.assertEqual(unsafe_external_links(article), [href])
+
+    def test_navigation_locale_et_externe_restent_distinguees(self):
+        with TemporaryDirectory() as directory:
+            article = Path(directory) / 'article.html'
+            article.write_text('<a href="/blog" target="_blank">Local</a>'
+                               '<a href="https://memlia.fr/blog" target="_blank">Local absolu</a>'
+                               '<a href="https://cnil.fr">Même fenêtre</a>'
+                               '<a href="mailto:contact@exemple.fr">Courriel</a>')
+            self.assertEqual(unsafe_external_links(article), [])
+
+
 def jsonld(path):
     scripts = re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', path.read_text())
     return [json.loads(s) for s in scripts]
@@ -479,7 +516,7 @@ class BuildProof(unittest.TestCase):
                 self.assertEqual([c['item'] for c in crumbs], attendus)
                 self.assertNotIn('aggregateRating', article.read_text())
                 self.assertIn('Sources consultées', article.read_text())
-                self.assertGreaterEqual(article.read_text().count('rel="noopener"'), 3)
+                self.assertEqual(unsafe_external_links(article), [], article.name)
 
     def test_rss_feed_matches_articles(self):
         feed = ET.parse(DIST / 'blog' / 'rss.xml').getroot()
