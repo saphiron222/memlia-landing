@@ -1,0 +1,77 @@
+{
+  "version": "fec-structure-1",
+  "profile": "commercial-18",
+  "encoding": "utf-8",
+  "state": "complete",
+  "complete": true,
+  "reason": "",
+  "separator": "pipe",
+  "lines": 3,
+  "anomalies": [
+    {
+      "line": 4,
+      "column": "EcritureDate",
+      "columnIndex": 4,
+      "rule": "date",
+      "value": "20260230",
+      "message": "Date attendue : AAAAMMJJ, jour existant dans le calendrier."
+    }
+  ],
+  "rules": [
+    {
+      "id": "entete",
+      "description": "Noms et ordre des 18 colonnes du profil commercial Débit/Crédit.",
+      "status": "exécuté",
+      "checked": 1
+    },
+    {
+      "id": "largeur",
+      "description": "Chaque ligne contient exactement 18 champs.",
+      "status": "exécuté",
+      "checked": 3
+    },
+    {
+      "id": "presence",
+      "description": "Champs requis non vides ; auxiliaire, lettrage et devise peuvent rester vides si non utilisés.",
+      "status": "exécuté",
+      "checked": 3
+    },
+    {
+      "id": "date",
+      "description": "EcritureDate, PieceDate et ValidDate : AAAAMMJJ existant.",
+      "status": "exécuté",
+      "checked": 3
+    },
+    {
+      "id": "date-let",
+      "description": "DateLet : date existante si renseignée, non applicable si vide.",
+      "status": "non applicable",
+      "checked": 0
+    },
+    {
+      "id": "decimal",
+      "description": "Débit/Crédit numériques signés. Point ou virgule, sans milliers ni exposant.",
+      "status": "exécuté",
+      "checked": 3
+    },
+    {
+      "id": "devise",
+      "description": "Montantdevise numérique signé si renseigné, non applicable si vide ; identité et cohérence de la devise non évaluées.",
+      "status": "non applicable",
+      "checked": 0
+    },
+    {
+      "id": "equilibre",
+      "description": "Équilibre par écriture : non évalué.",
+      "status": "non évalué",
+      "checked": 0
+    },
+    {
+      "id": "fond",
+      "description": "Exhaustivité, chronologie, numérotation, nom du fichier, pièces, plan de comptes, encodage légal et traitement fiscal : non évalués.",
+      "status": "non évalué",
+      "checked": 0
+    }
+  ],
+  "notice": "Rapport de structure non certifiant. Le fichier original reste inchangé."
+}

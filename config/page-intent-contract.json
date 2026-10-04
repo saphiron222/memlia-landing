@@ -3,6 +3,8 @@
   "measuredAt": "2026-09-20",
   "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
   "pages": {
+    "/outils-comptables-gratuits/calculateur-roi-automatisation": { "query": "calculateur roi automatisation comptable", "descriptionLead": "Comparez des scénarios d’automatisation", "source": "Brief 09 vague 3 ; hypothèses économiques, aucune promesse de gain ou de volume" },
+    "/outils-comptables-gratuits/verificateur-fec-local": { "query": "vérificateur fec gratuit", "descriptionLead": "Contrôlez localement la structure", "source": "Brief 05 vague 3 ; sonde Google au cadrage, aucune promesse de volume" },
     "/": { "query": "automatisation IA cabinet comptable", "descriptionLead": "Votre cabinet" },
     "/a-propos": { "query": "marque / preuve d’identité", "descriptionLead": "À propos de Memlia" },
     "/automatisation-cabinet-comptable": { "query": "automatisation cabinet comptable", "descriptionLead": "Toute tâche répétitive" },
@@ -34,6 +36,7 @@
     "/integrations/bulletin-de-paie-silae": { "query": "bulletin de paie silae", "descriptionLead": "Cadrez le contrôle d’un bulletin Silae" },
     "/methode": { "query": "méthode automatisation cabinet comptable", "descriptionLead": "Observer le geste réel" },
     "/outils-comptables-gratuits": { "query": "outils comptables gratuits", "descriptionLead": "Des outils gratuits" },
+    "/outils-comptables-gratuits/generateur-charte-ia-cabinet": { "query": "générateur charte ia cabinet comptable", "descriptionLead": "Préparez une trame de charte IA", "measuredAt": "2026-10-04", "source": "docs/qa/charte-ia/demande-autocomplete.json" },
     "/outils-comptables-gratuits/calculateur-date-echeance-facture": { "query": "calculateur date échéance facture", "descriptionLead": "Calculez une date d’échéance" },
     "/outils-comptables-gratuits/calculateur-marge-commerciale": { "query": "calculateur marge commerciale", "descriptionLead": "Calculez une marge commerciale" },
     "/outils-comptables-gratuits/calculateur-amortissement-comptable": { "query": "calculateur amortissement comptable", "descriptionLead": "Calculez un plan d’amortissement" },

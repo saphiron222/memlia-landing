@@ -11,13 +11,13 @@ async function graphFrom(page: Page) {
   return payloads.map((text) => JSON.parse(text)).find((payload) => Array.isArray(payload['@graph']))?.['@graph'] ?? [];
 }
 
-test('hub : quatre outils disponibles et schéma de collection', async ({ page }) => {
+test('hub : outils disponibles et schéma de collection', async ({ page }) => {
   const response = await page.goto(HUB);
   expect(response?.status()).toBe(200);
   await expect(page.locator('main h1')).toHaveText(H1_HUB);
   await expect(page.locator('main h1')).toHaveCount(1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${HUB}`);
-  await expect(page.locator('[data-outil-card]')).toHaveCount(4);
+  await expect(page.locator('[data-outil-card]')).toHaveCount(OUTILS_DISPONIBLES.length);
   await expect(page.locator('[data-empty-category]')).toHaveCount(0);
   await expect(page.locator('[data-tool-media]')).toHaveCount(1);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', '/proofs/v2/og/24-outils-hub.webp');
@@ -29,7 +29,7 @@ test('hub : quatre outils disponibles et schéma de collection', async ({ page }
     'CollectionPage', 'ItemList', 'BreadcrumbList',
   ]);
   expect(graph.find((node: { '@type': string }) => node['@type'] === 'CollectionPage').headline).toBe(H1_HUB);
-  expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(4);
+  expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(OUTILS_DISPONIBLES.length);
 });
 
 test('footer : le hub et les outils publiés sont générés, le témoin reste absent', async ({ page }) => {
@@ -100,8 +100,8 @@ test('échéance : les deux conventions divergent et l’absence de convention e
   await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
   await expect(page.getByLabel('Date de facture', { exact: true })).toHaveValue('2026-01-20');
   await page.getByRole('button', { name: 'Effacer' }).click();
-  await expect(page.getByLabel('Règle générale')).toHaveValue('');
-  await page.getByLabel('Règle générale').selectOption('eom45');
+  await expect(page.getByLabel('Délai applicable ou convenu')).toHaveValue('');
+  await page.getByLabel('Délai applicable ou convenu').selectOption('eom45');
   await page.getByLabel('Date de facture', { exact: true }).fill('2026-01-20');
   await page.getByLabel(/Je confirme/).check();
   await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
@@ -112,11 +112,11 @@ test('échéance : les deux conventions divergent et l’absence de convention e
   await page.getByLabel(/Aller à la fin du mois/).check();
   await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
   await expect(page.locator('[data-result]')).toContainText('17 mars 2026');
-  await page.getByLabel('Règle générale').selectOption('default30');
+  await page.getByLabel('Délai applicable ou convenu').selectOption('default30');
   await page.getByLabel('Date de réception ou d’exécution', { exact: true }).fill('2026-02-01');
   await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
   await expect(page.locator('[data-result]')).toContainText('03 mars 2026');
-  await page.getByLabel('Règle générale').selectOption('invoice60');
+  await page.getByLabel('Délai applicable ou convenu').selectOption('invoice60');
   await page.getByLabel('Date de facture', { exact: true }).fill('2026-01-20');
   await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
   await expect(page.locator('[data-result]')).toContainText('21 mars 2026');
@@ -232,7 +232,11 @@ test('rapprochement : CSV exact et refus d’une différence', async ({ page, co
   await expect.poll(() => page.evaluate(() => (window as unknown as { revokedUrls?: string[] }).revokedUrls?.length ?? 0)).toBe(1);
   await page.getByLabel('Intérêts à comptabiliser').fill('0'); await page.getByRole('button', { name: 'Contrôler les soldes' }).click();
   await expect(page.locator('[data-error]')).toContainText('ne concordent pas');
-  await expect(page.getByRole('button', { name: /Télécharger le CSV/ })).toBeDisabled();
+  await expect(page.getByRole('button', { name: /Télécharger le CSV/ })).toBeEnabled();
+  const exceptionDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: /Télécharger le CSV/ }).click();
+  const exceptionBytes = await (await import('node:fs/promises')).readFile(await (await exceptionDownload).path() as string);
+  expect(exceptionBytes.toString('utf8')).toContain('NON VALIDÉ');
 });
 
 test('contrat de liens : le registre borne les outils publiés et leurs sorties', async ({ page }) => {
@@ -277,7 +281,7 @@ test('pour continuer : trois niveaux lisibles, clavier et responsive sans débor
   }
 });
 
-test('outils publiés : métadonnées, source datée et schémas concordent', async ({ page }) => {
+test('outils publiés : métadonnées, source liée et schémas concordent', async ({ page }) => {
   for (const outil of OUTILS_DISPONIBLES) {
     const path = outilPath(outil);
     const response = await page.goto(path);
@@ -287,9 +291,8 @@ test('outils publiés : métadonnées, source datée et schémas concordent', as
     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', outil.h1);
     await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', outil.h1);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${path}`);
-    await expect(page.locator('[data-official-source]')).toContainText(
-      new RegExp(`vérifiée le ${outil.source.verifieeLe}`, 'i'),
-    );
+    await expect(page.locator('[data-official-source]')).toContainText(outil.source.extrait);
+    await expect(page.locator('[data-official-source]')).not.toContainText(/vérifiée le|consultée le/i);
     await expect(page.locator(`[data-official-source] a[href="${outil.source.url}"]`)).toHaveCount(1);
     await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toBeVisible();
     await expect(page.locator(`[data-proof="${outil.proof}"] img`)).toBeVisible();
@@ -356,7 +359,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByRole('button', { name: 'Calculer la marge' }).click();
       await expect(page.locator('[data-margin]')).toHaveText('20,00 €');
     } else if (outil.slug === 'calculateur-date-echeance-facture') {
-      await page.getByLabel('Règle générale').selectOption('invoice60');
+      await page.getByLabel('Délai applicable ou convenu').selectOption('invoice60');
       await page.getByLabel('Date de facture', { exact: true }).fill('2026-01-20');
       await page.getByLabel(/Je confirme/).check();
       await page.getByRole('button', { name: 'Calculer l’échéance' }).click();
@@ -367,6 +370,17 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByLabel('Durée d’utilisation').fill('5');
       await page.getByRole('button', { name: 'Calculer le plan' }).click();
       await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
+    } else if (outil.slug === 'calculateur-roi-automatisation') {
+      await page.getByRole('button', { name: 'Charger trois exemples fictifs' }).click();
+      await page.getByRole('button', { name: 'Comparer les trois scénarios' }).click();
+      await expect(page.locator('[data-results]')).toContainText('266,67');
+    } else if (outil.slug === 'verificateur-fec-local') {
+      await page.getByRole('button', { name: 'Analyser l’exemple fictif' }).click();
+      await expect(page.locator('[data-summary]')).toContainText('1 anomalie');
+    } else if (outil.slug === 'generateur-charte-ia-cabinet') {
+      await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
+      await page.getByRole('button', { name: 'Préparer la charte', exact: true }).click();
+      await expect(page.locator('[data-editor]')).toHaveValue(/Relance de pièces/);
     } else {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');
@@ -380,7 +394,11 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       sessionStorage: sessionStorage.length,
       indexedDB: (await indexedDB.databases()).length,
     }))).toEqual({ localStorage: 0, sessionStorage: 0, indexedDB: 0 });
-    expect(requests).toEqual([]);
+    // Le Worker charge exclusivement son script statique local, sans donnée saisie ni query string.
+    if (outil.slug === 'verificateur-fec-local') {
+      const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/fec-worker-[a-zA-Z0-9_-]+\\.js$`);
+      expect(requests.filter(request => !asset.test(request))).toEqual([]);
+    } else expect(requests).toEqual([]);
     page.off('request', listener);
   }
 });
@@ -457,6 +475,38 @@ test('témoin : le garde détecte toute requête après armement, puis exige zé
     await page.evaluate(() => fetch('/robots.txt').catch(() => undefined));
   }
   expect(requests).toEqual([]);
+});
+
+test('contact : accord saisi avant le chargement JavaScript conservé et appliqué', async ({ page, baseURL }) => {
+  let releaseScripts!: () => void;
+  const scriptsReady = new Promise<void>((resolve) => { releaseScripts = resolve; });
+  let delayedScripts = 0;
+  const posts: string[] = [];
+  await page.route('**/_astro/*.js', async (route) => {
+    delayedScripts += 1;
+    await scriptsReady;
+    await route.continue();
+  });
+  await page.route('**/api/contact', async (route) => {
+    if (route.request().method() === 'POST') posts.push(route.request().postData() ?? '');
+    await route.fulfill({ status: 503, body: '{}' });
+  });
+  await page.goto('/contact', { waitUntil: 'commit', referer: new URL(TEMOIN, baseURL).href });
+  try {
+    await page.locator('#nom').fill('Camille Fictive');
+    await page.check('#consentement_origine');
+    await expect(page.locator('#origine')).toHaveValue('');
+    expect(delayedScripts).toBeGreaterThan(0);
+  } finally {
+    releaseScripts();
+  }
+  await page.waitForLoadState('load');
+  await expect(page.locator('#consentement_origine')).toBeChecked();
+  await expect(page.locator('#origine')).toHaveValue(TEMOIN);
+  await expect(page.locator('#nom')).toHaveValue('Camille Fictive');
+  await page.uncheck('#consentement_origine');
+  await expect(page.locator('#origine')).toHaveValue('');
+  expect(posts).toEqual([]);
 });
 
 test('outil vers contact : origine attribuée après accord distinct, sans envoi avant validation volontaire', async ({ page }) => {

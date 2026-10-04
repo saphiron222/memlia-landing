@@ -1,0 +1,601 @@
+{
+  "scope": "Colonne 09 : QA de fond acquise et publication PR74 constatée le 04/10/2026 ; réserves Lighthouse publiques conservées, seuil quatre axes non acquis",
+  "publication": {
+    "date": "2026-10-04",
+    "task": "t_8873d9b2",
+    "report": "publication-2026-10-04.md",
+    "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-roi-automatisation",
+    "deployment": "https://d6810551.memlia.pages.dev",
+    "browser": "13 parcours domaine et 13 parcours déploiement PASS",
+    "lighthouse_mobile": { "performance": 96, "accessibility": 100, "best_practices": 92, "seo": 92 },
+    "lighthouse_desktop": { "performance": 100, "accessibility": 100, "best_practices": 92, "seo": 92 },
+    "reserve": "Beacon Cloudflare injecté bloqué par CSP ; audit Lighthouse robots échoue sur CSP alors que GET public no-cache HTTP200 et robots/indexabilité PASS. Aucun score corrigé ni CSP affaiblie.",
+    "traffic": "ND", "positions": "ND", "backlinks": "ND"
+  },
+  "source": "strategy/outils-ia-t_6c7dba9d/docs/strategy/site-v3/outils-ia-vague-3/matrice-skills.json",
+  "cells": [
+    {
+      "skill": "blog",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-analyze",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-audit",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-brand",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-brief",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-calendar",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-cannibalization",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-chart",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "N/A motivé",
+      "evidence": "Graphique optionnel non retenu : trois listes de résultats et exports complets ; scène HTML propre vérifiée.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-cluster",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-decay",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "ND — mesures après publication",
+      "evidence": "Candidat non publié ; baseline puis J+7/J+28 à la livraison, aucun trafic, position ou backlink fabriqué.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-discourse",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-factcheck",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-flow",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-geo",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-google",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "ND — mesures après publication",
+      "evidence": "Candidat non publié ; baseline puis J+7/J+28 à la livraison, aucun trafic, position ou backlink fabriqué.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-image",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-locale-audit",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-localize",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-multilingual",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-outline",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-persona",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-repurpose",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-rewrite",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-schema",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-seo-check",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-strategy",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-style",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-taxonomy",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-translate",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-write",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-audit",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-backlinks",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "ND — mesures après publication",
+      "evidence": "Candidat non publié ; baseline puis J+7/J+28 à la livraison, aucun trafic, position ou backlink fabriqué.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-cluster",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-content",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-content-brief",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-dataforseo",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "N/A instrument — alternative locale exécutée",
+      "evidence": "Instrument spécialisé non nécessaire à cette page ; alternative : build, contrat de page, navigateur, HTML/sitemap et Lighthouse local. Pas de connexion SaaS ni dépense. SEO 92 lié au robots preview : production à rejouer.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-drift",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "ND — mesures après publication",
+      "evidence": "Candidat non publié ; baseline puis J+7/J+28 à la livraison, aucun trafic, position ou backlink fabriqué.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-ecommerce",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-firecrawl",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "N/A instrument — alternative locale exécutée",
+      "evidence": "Instrument spécialisé non nécessaire à cette page ; alternative : build, contrat de page, navigateur, HTML/sitemap et Lighthouse local. Pas de connexion SaaS ni dépense. SEO 92 lié au robots preview : production à rejouer.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-flow",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-geo",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-google",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "ND — mesures après publication",
+      "evidence": "Candidat non publié ; baseline puis J+7/J+28 à la livraison, aucun trafic, position ou backlink fabriqué.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-hreflang",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-image-gen",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-images",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-local",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-maps",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-page",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-plan",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-programmatic",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-schema",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-sitemap",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-sxo",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-technical",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "memlia-blog-strategie",
+      "tool_id": "09",
+      "code": "E",
+      "status": "applicable exécuté cadrage",
+      "implementation_status": "PASS local ciblé",
+      "evidence": "implementation.md ; tests moteur, 32 parcours navigateur, gardes positionnement/SEO/Blog, renderer --check. Application de méthode ciblée, pas exécution des commandes intégrales de chacun des skills.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-audio",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "blog-notebooklm",
+      "tool_id": "09",
+      "code": "N",
+      "status": "N/A motivé",
+      "implementation_status": "N/A motivé conservé",
+      "evidence": "Motif du cadrage conservé : outil local français, pas article, audio, traduction ou campagne.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-ahrefs",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "N/A instrument — alternative locale exécutée",
+      "evidence": "Instrument spécialisé non nécessaire à cette page ; alternative : build, contrat de page, navigateur, HTML/sitemap et Lighthouse local. Pas de connexion SaaS ni dépense. SEO 92 lié au robots preview : production à rejouer.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-bing",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "N/A instrument — alternative locale exécutée",
+      "evidence": "Instrument spécialisé non nécessaire à cette page ; alternative : build, contrat de page, navigateur, HTML/sitemap et Lighthouse local. Pas de connexion SaaS ni dépense. SEO 92 lié au robots preview : production à rejouer.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-profound",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "N/A instrument — alternative locale exécutée",
+      "evidence": "Instrument spécialisé non nécessaire à cette page ; alternative : build, contrat de page, navigateur, HTML/sitemap et Lighthouse local. Pas de connexion SaaS ni dépense. SEO 92 lié au robots preview : production à rejouer.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-seranking",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "N/A instrument — alternative locale exécutée",
+      "evidence": "Instrument spécialisé non nécessaire à cette page ; alternative : build, contrat de page, navigateur, HTML/sitemap et Lighthouse local. Pas de connexion SaaS ni dépense. SEO 92 lié au robots preview : production à rejouer.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    },
+    {
+      "skill": "seo-unlighthouse",
+      "tool_id": "09",
+      "code": "D",
+      "status": "applicable différé implémentation",
+      "implementation_status": "N/A instrument — alternative locale exécutée",
+      "evidence": "Instrument spécialisé non nécessaire à cette page ; alternative : build, contrat de page, navigateur, HTML/sitemap et Lighthouse local. Pas de connexion SaaS ni dépense. SEO 92 lié au robots preview : production à rejouer.",
+      "remaining_public": "QA unique, publication et mesures publiques ; données absentes ND."
+    }
+  ],
+  "counts": {
+    "N/A instrument — alternative locale exécutée": 7,
+    "ND — mesures après publication": 5,
+    "N/A motivé conservé": 21,
+    "PASS local ciblé": 30,
+    "N/A motivé": 1
+  }
+}
