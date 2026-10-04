@@ -1,9 +1,9 @@
 <form class="outil-form" data-fec-form data-async-tool>
-  <p id="fec-limites">Fichier texte uniquement, 20 Mo maximum (20 000 000 octets). Profil commercial à 18 colonnes Débit/Crédit ; tabulation ou pipe. XML, BNC/BA, Montant/Sens et colonnes supplémentaires : non évalués. Le choix Windows-1252 permet la lecture, sans valider l’encodage au regard du texte légal.</p>
+  <p id="fec-limites">Fichier texte uniquement, 20 Mo maximum (20 000 000 octets), 200 000 lignes de données et 200 000 anomalies maximum pour préserver la mémoire du navigateur ; au-delà, refus sans rapport partiel. Profil commercial à 18 colonnes Débit/Crédit ; tabulation ou pipe. XML, BNC/BA, Montant/Sens et colonnes supplémentaires : non évalués. Le choix Windows-1252 permet la lecture, sans valider l’encodage au regard du texte légal.</p>
   <div class="fields">
     <label for="fec-file">Fichier FEC local<input id="fec-file" name="file" type="file" aria-describedby="fec-limites fec-erreur" /></label>
     <label for="fec-encoding">Encodage de lecture<select id="fec-encoding" name="encoding"><option value="utf-8">UTF-8 (avec ou sans BOM)</option><option value="windows-1252">Windows-1252 (choix explicite)</option></select></label>
-    <label for="fec-profile">Profil à examiner<select id="fec-profile" name="profile"><option value="commercial-18">Commercial — 18 colonnes Débit/Crédit</option><option value="other">Autre profil (non évalué)</option></select></label>
+    <label for="fec-profile">Profil à examiner<select id="fec-profile" name="profile"><option value="commercial-18">Commercial — 18 colonnes</option><option value="other">Autre profil (non évalué)</option></select></label>
   </div>
   <div class="actions">
     <button class="btn btn-contour" type="button" data-example data-outil-action="exemple">Analyser l’exemple fictif</button>
@@ -43,6 +43,7 @@
 </section>
 <script>
   import { exampleFec, MAX_BYTES, reportCsv, type analyzeFec } from '@/lib/fec-local.mjs';
+  import FecWorker from '@/lib/fec-worker.mjs?worker';
   const form = document.querySelector<HTMLFormElement>('[data-fec-form]')!;
   if (form) {
     const file = form.elements.namedItem('file') as HTMLInputElement;
@@ -57,6 +58,7 @@
     let worker: Worker | undefined;
     let report: ReturnType<typeof analyzeFec> | undefined;
     let page = 0;
+    const anomalyCount = (count: number) => `${count} anomalie${count===1?'':'s'}`;
     const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', { detail: { action, outil: 'verificateur-fec-local' } }));
     const stop = () => { worker?.terminate(); worker=undefined; cancel.disabled=true; };
     const invalidate = () => { stop(); report=undefined; output.hidden=true; error.hidden=true; file.removeAttribute('aria-invalid'); };
@@ -71,32 +73,32 @@
         li.textContent=`Ligne ${a.line} · ${a.column} · règle ${a.rule} — ${a.message} Valeur : ${a.value.slice(0,200)}${a.value.length>200?'… (valeur entière dans l’export)':''}`;
         return li;
       }));
-      form.querySelector<HTMLElement>('[data-page]')!.textContent=`Page ${page+1} sur ${Math.max(1,Math.ceil(anomalies.length/100))} · ${anomalies.length} anomalies au total`;
+      form.querySelector<HTMLElement>('[data-page]')!.textContent=`Page ${page+1} sur ${Math.max(1,Math.ceil(anomalies.length/100))} · ${anomalyCount(anomalies.length)} au total`;
       prev.disabled=page===0; next.disabled=(page+1)*100>=anomalies.length;
     };
-    const start = (selected: File) => {
+    const start = (selected: File, fictional = false) => {
       invalidate();
       if(selected.size>MAX_BYTES) { fail('Refus : limite de 20 Mo (20 000 000 octets) dépassée avant lecture.'); return; }
       status.textContent='Analyse locale en cours. Vous pouvez l’annuler.';
       cancel.disabled=false;
       try {
-        worker=new Worker(new URL('../../lib/fec-worker.mjs',import.meta.url),{type:'module'});
+        worker=new FecWorker();
         worker.onerror=()=>fail('Analyse interrompue : le Worker local n’a pas pu terminer. Réessayez dans un navigateur récent.');
         worker.onmessage=({data})=>{
           stop();
           if(data.error) {fail(data.error); return;}
           report=data.report; page=0;
           const r=report!;
-          form.querySelector<HTMLElement>('[data-summary]')!.textContent=`${r.notice} Profil : ${r.profile} · version ${r.version} · lecture ${r.encoding} · ${r.lines} lignes de données examinées · ${r.anomalies.length} anomalies. ${r.reason??''}`;
+          form.querySelector<HTMLElement>('[data-summary]')!.textContent=`${fictional?'Résultat de l’exemple fictif. ':''}${r.notice} Profil : ${r.profile} · version ${r.version} · lecture ${r.encoding} · ${r.lines} lignes de données examinées · ${anomalyCount(r.anomalies.length)}. ${r.reason??''}`;
           form.querySelector<HTMLElement>('[data-rules]')!.replaceChildren(...r.rules.map(rule=>{
             const li=document.createElement('li'); li.textContent=`${rule.id} : ${rule.status} (${rule.checked}) — ${rule.description}`; return li;
           }));
           renderPage(); output.hidden=false;
           emit(r.state==='unsupported'?'erreur':'reussite');
-          status.textContent=r.state==='unsupported'?'Profil hors périmètre : non évalué.':`${r.anomalies.length} anomalies détectées ; rapport de structure terminé, non certifiant.`;
+          status.textContent=r.state==='unsupported'?'Profil hors périmètre : non évalué.':`${anomalyCount(r.anomalies.length)} détectée${r.anomalies.length===1?'':'s'} ; rapport de structure terminé, non certifiant.`;
           output.querySelector<HTMLElement>('h2')!.focus();
         };
-        worker.postMessage({file:selected,encoding:encoding.value,profile:profile.value});
+        worker.postMessage({file:selected,encoding:fictional?'utf-8':encoding.value,profile:fictional?'commercial-18':profile.value});
       } catch { fail('Le navigateur ne peut pas lancer le traitement local. Aucun rapport complet.'); }
     };
     form.addEventListener('submit',event=>{event.preventDefault(); const selected=file.files?.[0]; if(!selected){invalidate();fail('Choisissez un fichier texte local.');return;} start(selected);});
@@ -105,7 +107,7 @@
     cancel.addEventListener('click',()=>{invalidate();status.textContent='Analyse annulée : aucun rapport complet.';});
     form.querySelector('[data-example]')!.addEventListener('click',()=>{
       if(file.files?.length) { status.textContent='Effacez explicitement votre sélection avant de charger l’exemple fictif.'; return; }
-      encoding.value='utf-8'; profile.value='commercial-18'; start(new File([exampleFec()],'exemple-fictif.txt',{type:'text/plain'}));
+      start(new File([exampleFec()],'exemple-fictif.txt',{type:'text/plain'}),true);
     });
     prev.addEventListener('click',()=>{page--;renderPage();}); next.addEventListener('click',()=>{page++;renderPage();});
     for(const button of form.querySelectorAll<HTMLButtonElement>('[data-export]')) button.addEventListener('click',()=>{

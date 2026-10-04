@@ -8,7 +8,7 @@ test('Worker, exemple, CSV/JSON entier, CSP et zéro transmission/stockage',asyn
   await page.goto(route); await page.evaluate(()=>document.fonts.ready);
   const requests=[];page.on('request',r=>requests.push({url:r.url(),method:r.method(),body:r.postData()}));
   await page.getByRole('button',{name:'Analyser l’exemple fictif'}).click();
-  await expect(page.locator('[data-summary]')).toContainText('1 anomalies');
+  await expect(page.locator('[data-summary]')).toContainText('1 anomalie');
   await expect(page.locator('[data-anomalies]')).toContainText('Ligne 4 · EcritureDate · règle date');
   const dl=page.waitForEvent('download');await page.locator('[data-export="json"]').click();
   const file=await dl;const report=JSON.parse(await readFile(await file.path(),'utf8'));
@@ -16,6 +16,10 @@ test('Worker, exemple, CSV/JSON entier, CSP et zéro transmission/stockage',asyn
   await file.saveAs(testInfo.outputPath('exemple-rapport.json'));
   const csvDl=page.waitForEvent('download');await page.locator('[data-export="csv"]').click();
   expect(await readFile(await (await csvDl).path(),'utf8')).toContain('20260230');
+  await page.context().grantPermissions(['clipboard-read','clipboard-write']);
+  await page.locator('[data-copy]').click();
+  await expect(page.locator('[data-status]')).toContainText('copié');
+  expect(JSON.parse(await page.evaluate(()=>navigator.clipboard.readText())).anomalies).toHaveLength(1);
   expect(requests.filter(r=>r.method!=='GET'||r.body)).toEqual([]);
   expect(requests.every(r=>r.url.startsWith(new URL(page.url()).origin))).toBe(true);
   expect(await page.evaluate(()=>({local:localStorage.length,session:sessionStorage.length,cookie:document.cookie}))).toEqual({local:0,session:0,cookie:''});
@@ -49,12 +53,26 @@ test('refus 20 Mo, profil hors périmètre, calendrier et Windows-1252 réel',as
 });
 test('annulation interrompt le Worker sans rapport complet ni perte de sélection',async({page})=>{
   await page.goto(route);
-  // Un Worker retardé permet d'exercer le bouton de façon déterministe, sans remplacer le test du vrai Worker ci-dessus.
-  await page.evaluate(()=>{ window.Worker=class { terminate(){} postMessage(){} } });
   await page.locator('#fec-file').setInputFiles({name:'cancel.txt',mimeType:'text/plain',buffer:Buffer.from(exampleFec())});
-  await page.getByRole('button',{name:'Contrôler la structure',exact:true}).click();await page.locator('[data-cancel]').click();
+  // Annuler dans la même tâche JavaScript, avant toute livraison de message du vrai Worker.
+  await page.evaluate(()=>{ document.querySelector('[data-fec-form]').requestSubmit();document.querySelector('[data-cancel]').click(); });
   await expect(page.locator('[data-status]')).toContainText('Analyse annulée');await expect(page.locator('[data-output]')).toBeHidden();
   expect(await page.locator('#fec-file').evaluate(e=>e.files[0].name)).toBe('cancel.txt');
+});
+test('refus mémoire dans le vrai Worker sans export incomplet',async({page})=>{
+  await page.goto(route);
+  await upload(page,FIELDS.join('|')+'\n'+'\n'.repeat(200001));
+  await expect(page.locator('[data-error]')).toContainText('200 000');
+  await expect(page.locator('[data-output]')).toBeHidden();
+});
+test('exemple : les choix saisis restent intacts',async({page})=>{
+  await page.goto(route);
+  await page.locator('#fec-encoding').selectOption('windows-1252');
+  await page.locator('#fec-profile').selectOption('other');
+  await page.locator('[data-example]').click();
+  await expect(page.locator('[data-summary]')).toContainText('Résultat de l’exemple fictif');
+  await expect(page.locator('#fec-encoding')).toHaveValue('windows-1252');
+  await expect(page.locator('#fec-profile')).toHaveValue('other');
 });
 for(const width of [320,375,768,1024,1440,1920]) test(`SEO, reflow et capture ${width}`,async({page},testInfo)=>{
   await page.setViewportSize({width,height:900}); await page.emulateMedia({reducedMotion:'reduce'});await page.goto(route);await page.evaluate(()=>document.fonts.ready);

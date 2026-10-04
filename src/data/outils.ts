@@ -41,7 +41,7 @@ export const OUTILS: readonly OutilDefinition[] = [
     h1: 'Vérificateur FEC gratuit et local',
     title: 'Vérificateur FEC gratuit et local | Memlia',
     description: 'Contrôlez localement la structure d’un FEC et trouvez les lignes en anomalie, avec règles expliquées et rapport exportable non certifiant.',
-    promesse: { entree: 'FEC texte commercial, 18 colonnes Débit/Crédit, 20 Mo maximum', resultat: 'Anomalies par ligne, colonne et règle ; rapport CSV et JSON entier' },
+    promesse: { entree: 'FEC texte commercial, 18 colonnes Débit/Crédit, 20 Mo maximum', resultat: 'Anomalies par ligne, colonne et règle ; rapports complets aux formats CSV et JSON' },
     limites: [
       'Contrôle de structure non certifiant : aucune conclusion comptable ou fiscale, aucun fichier corrigé.',
       'Équilibre, exhaustivité, chronologie, nom du fichier et conformité de l’encodage ne sont pas évalués.',

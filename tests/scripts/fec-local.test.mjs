@@ -49,3 +49,16 @@ test('300 anomalies : total/export complet, texte neutre contre les formules', (
 test('exemple démontre réellement la date impossible ligne 4', () => {
   const r=analyzeFec(exampleFec()); assert.deepEqual(r.anomalies.map(x=>[x.line,x.column]),[[4,'EcritureDate']]);
 });
+test('garde mémoire : refus explicite avant allocation d’un tableau massif de lignes', () => {
+  assert.throws(()=>analyzeFec(FIELDS.join('|')+'\n'+'\n'.repeat(200001)),/200 000/);
+});
+test('contrôles conditionnels distincts : non applicable, exécuté ou non évalué', () => {
+  const nominal=analyzeFec(text(row()));
+  assert.equal(nominal.rules.find(r=>r.id==='date-let').status,'non applicable');
+  assert.equal(nominal.rules.find(r=>r.id==='devise').status,'non applicable');
+  const r=analyzeFec(text(row({14:'20260230',16:'1e3'})));
+  assert.deepEqual(r.anomalies.map(a=>a.rule),['date-let','devise']);
+});
+test('plus de 200 000 anomalies : refus, jamais rapport tronqué', () => {
+  assert.throws(()=>analyzeFec(text(...Array(17000).fill(Array(18).fill('').join('|')))),/200 000 anomalies/);
+});
