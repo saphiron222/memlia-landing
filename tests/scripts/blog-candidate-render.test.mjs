@@ -80,7 +80,13 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
 </figure>
 
 Voir [la méthode]`);
-    const fixture = await createCompleteDossier(staging, { slug, heroId, body: fixtureBody, claimsBody: DEFAULT_BODY });
+    const fixture = await createCompleteDossier(staging, {
+      slug, heroId, body: fixtureBody, claimsBody: DEFAULT_BODY,
+      manifestMutator: (manifest) => {
+        manifest.sources = manifest.sources.slice(0, 2);
+        manifest.links.incoming = ['/blog'];
+      },
+    });
     copyFile(fixture.articlePath, join(project, 'src/content/blog', `${slug}.md`));
     copyFile(fixture.dossier, join(project, 'editorial/articles', slug));
     copyFile(join(staging, 'editorial/recettes', slug), join(project, 'editorial/recettes', slug));
@@ -121,8 +127,7 @@ Voir [la méthode]`);
     writeFileSync(imagesPath, images
       .replace(marker, `\n  '${heroId}': {\n    brief: 'FIXTURE',\n    largeurs: [768],\n    ratio: [16, 9],\n    alt: '${fixture.manifest.image.alt}',\n    generee: true,\n  },${marker}`)
       .replace("export const PUBLISHED_IMAGE_IDS = [", `export const PUBLISHED_IMAGE_IDS = ['${heroId}', `));
-    const indexPath = join(project, 'src/pages/index.astro');
-    writeFileSync(indexPath, `${readFileSync(indexPath, 'utf8')}\n<a data-fixture-link href="/blog/${slug}">Fixture candidat</a>\n`);
+
 
     const rubriquesPath = join(project, 'src/data/blog-rubriques.mjs');
     const rubriques = readFileSync(rubriquesPath, 'utf8');
@@ -265,6 +270,20 @@ Voir [la méthode]`);
       await page.screenshot({ path: join(REPO, `.qa/blog/blog-sys-4r2-article-${width}.png`), fullPage: true });
       await page.close();
     }
+
+    // Le même dossier sous l'objectif doit aussi franchir le schéma public,
+    // pas seulement la collection en mode brouillon/preview.
+    const publicArticlePath = join(project, 'src/content/blog', `${slug}.md`);
+    writeFileSync(publicArticlePath, readFileSync(publicArticlePath, 'utf8').replace('brouillon: true', 'brouillon: false'));
+    const publicRender = join(workspace, 'public-render');
+    const publicBuild = spawnSync(process.execPath, [ASTRO_CLI, 'build', '--root', project, '--outDir', publicRender], {
+      cwd: project,
+      env: { ...process.env, BLOG_PREVIEW_SLUG: '', BLOG_PREVIEW_SLUGS: '' },
+      encoding: 'utf8', timeout: 120_000, maxBuffer: 10 * 1024 * 1024,
+    });
+    assert.equal(publicBuild.status, 0, `${publicBuild.error?.message ?? ''}\n${publicBuild.stdout ?? ''}\n${publicBuild.stderr ?? ''}`);
+    assert.ok(existsSync(pagePath(publicRender, `/blog/${slug}`)));
+    assert.ok(readFileSync(join(publicRender, 'sitemap-0.xml'), 'utf8').includes(`/blog/${slug}`));
   } finally {
     if (browser) await browser.close();
     if (server) await new Promise((resolveClose) => server.close(resolveClose));
