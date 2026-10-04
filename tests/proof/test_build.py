@@ -480,7 +480,7 @@ class BuildProof(unittest.TestCase):
                 attendus.append(url)
                 self.assertEqual([c['item'] for c in crumbs], attendus)
                 self.assertNotIn('aggregateRating', article.read_text())
-                self.assertIn('Sources consultées', article.read_text())
+                self.assertRegex(article.read_text(), r'<h2\b[^>]*id="sources-titre"[^>]*>Sources</h2>')
                 self.assertGreaterEqual(article.read_text().count('rel="noopener"'), 3)
 
     def test_rss_feed_matches_articles(self):

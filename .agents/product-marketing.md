@@ -86,6 +86,23 @@ Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête 
 
 ## 7 bis. Les articles du blog
 
+### Sources publiques, contrôles internes
+
+Sur toutes les pages publiques (guides, blog, glossaire, outils et pages légales), citer les sources
+utiles sous une forme éditoriale compacte : éditeur, titre et lien. Ne pas afficher les dates de
+consultation/vérification, les lignes administratives « source vérifiée »/« sources consultées »
+ni les mentions de capture datée. Les preuves, citations et dates de contrôle restent dans les
+données et dossiers internes ; leurs verdicts ne changent pas pour un retrait de présentation.
+Conserver les limites métier utiles, les dates réelles de publication/mise à jour et les dates
+réglementaires nécessaires. Ne pas masquer ces mentions en CSS : les retirer du texte rendu.
+Le test `tests/scripts/public-source-labels.test.mjs` parcourt toutes les pages construites,
+y compris les futurs outils/articles ; `scripts/verify-public-source-labels.mjs` rejoue le
+contrôle sur la production, sitemap et routes hors sitemap compris.
+Les corps d’articles scellés peuvent conserver les dates dans le corpus interne : le rendu final
+`scripts/render-public-source-text.mjs`, exécuté avant les tests du HTML publiable, retire ces
+seules dates des nœuds texte. Il ne change ni les attributs, ni le JSON-LD, ni les dossiers de preuve.
+Ne pas lancer `astro build` seul pour livrer : la chaîne publique est `npm run build`.
+
 Un article est une méthode publiée, pas une page de vente : il vaut par ce qu'il apprend au lecteur, et il convertit par la confiance qu'il installe. Il suit la même charte que les pages, appliquée ainsi (rejouée sur les six articles le 17/09/2026 ; tout article suivant sort de la forge avec ces règles, `docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md` §3) :
 
 - **La réponse d'abord.** Le corps ouvre sur `## Réponse directe` (40 à 80 mots) qui répond à la requête sans détour ; le résumé « En bref » et la description d'onglet disent la méthode, pas la promesse.

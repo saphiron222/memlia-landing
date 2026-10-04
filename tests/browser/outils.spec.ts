@@ -281,7 +281,7 @@ test('pour continuer : trois niveaux lisibles, clavier et responsive sans débor
   }
 });
 
-test('outils publiés : métadonnées, source datée et schémas concordent', async ({ page }) => {
+test('outils publiés : métadonnées, source liée et schémas concordent', async ({ page }) => {
   for (const outil of OUTILS_DISPONIBLES) {
     const path = outilPath(outil);
     const response = await page.goto(path);
@@ -291,9 +291,8 @@ test('outils publiés : métadonnées, source datée et schémas concordent', as
     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', outil.h1);
     await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', outil.h1);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${path}`);
-    await expect(page.locator('[data-official-source]')).toContainText(
-      new RegExp(`vérifiée le ${outil.source.verifieeLe}`, 'i'),
-    );
+    await expect(page.locator('[data-official-source]')).toContainText(outil.source.extrait);
+    await expect(page.locator('[data-official-source]')).not.toContainText(/vérifiée le|consultée le/i);
     await expect(page.locator(`[data-official-source] a[href="${outil.source.url}"]`)).toHaveCount(1);
     await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toBeVisible();
     await expect(page.locator(`[data-proof="${outil.proof}"] img`)).toBeVisible();

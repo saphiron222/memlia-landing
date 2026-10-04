@@ -104,7 +104,6 @@ class LegalIdentityProof(unittest.TestCase):
             '101 Townsend St., San Francisco, CA 94107, États-Unis',
             CLOUDFLARE_PHONE, CLOUDFLARE_PHONE_NUMERIC,
             f'mises à jour le {CLOUDFLARE_TERMS_UPDATED}',
-            'consultées le 20 septembre 2026',
         ]:
             with self.subTest(expected=expected):
                 self.assertIn(expected, self.text)
