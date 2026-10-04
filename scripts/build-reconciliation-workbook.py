@@ -35,7 +35,7 @@ def build():
         'Sans macro, sans connexion externe, sans inscription. Travaillez sur une copie locale.',
         'Exemple fictif : jeu illustratif. À remplir : saisies vides, formules conservées.',
         'Saisissez uniquement les cellules jaunes. Les cellules vertes contiennent les formules.',
-        'B5/B6 : période du contrôle. B8/B9 : soldes à la même date de fin.',
+        'B5/B6 : dates entières du 01/01/1900 au 31/12/9999 (système Excel 1900, faux 29/02/1900 exclu). B8/B9 : soldes à la même date de fin.',
         'Soldes : positif = avoir disponible / solde débiteur du 512 ; négatif = découvert / solde créditeur du 512.',
         'Remises : déjà au 512, pas encore au relevé. Elles augmentent le solde bancaire ajusté.',
         'Paiements : déjà au 512, pas encore au relevé. Ils diminuent le solde bancaire ajusté.',
@@ -81,7 +81,8 @@ def build():
             ws.cell(row, 2, formula)
             ws.cell(row, 2).number_format = '#,##0.00;[Red]-#,##0.00'
         invalid_money = ','.join(f'ABS(B{row})>999999999.99,ROUND(B{row},2)<>B{row}' for row in INPUTS[2:])
-        ws['B24'] = f'=IFERROR(IF(COUNT(B5:B6,B8:B9,B11:B12,B14:B15,B17)<>9,"NON VALIDÉ — saisie incomplète",IF(OR({invalid_money}),"NON VALIDÉ — montant hors borne ou précision",IF(B5>B6,"NON VALIDÉ — période inversée",IF(OR(B17<>0,B22<>0),"NON VALIDÉ — écart à expliquer","Soldes concordants — à valider")))),"NON VALIDÉ — saisie invalide")'
+        invalid_dates = ','.join(f'NOT(ISNUMBER(B{row})),B{row}<1,B{row}>2958465,INT(B{row})<>B{row},B{row}=60' for row in (5, 6))
+        ws['B24'] = f'=IFERROR(IF(OR({invalid_dates}),"NON VALIDÉ — date hors borne ou invalide",IF(COUNT(B5:B6,B8:B9,B11:B12,B14:B15,B17)<>9,"NON VALIDÉ — saisie incomplète",IF(OR({invalid_money}),"NON VALIDÉ — montant hors borne ou précision",IF(B5>B6,"NON VALIDÉ — période inversée",IF(OR(B17<>0,B22<>0),"NON VALIDÉ — écart à expliquer","Soldes concordants — à valider"))))),"NON VALIDÉ — saisie invalide")'
         ws.merge_cells('B24:D24')
         for row in (19, 20, 22, 24):
             ws.cell(row, 2).fill = PatternFill('solid', fgColor='E2F0D9')

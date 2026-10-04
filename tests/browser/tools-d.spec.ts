@@ -38,6 +38,24 @@ test('dégressif utilise acquisition novembre plutôt que mise en service décem
   await expect(page.locator('[data-result-rows] tr').first()).toContainText('17/365');
 });
 
+test('dégressif refuse 2009 et accepte la borne du 01/01/2010', async ({ page }) => {
+  await page.goto(`${HUB}/${slugs[2]}`);
+  await page.getByLabel('Méthode').selectOption('declining');
+  await expect(page.locator('#amortissement-acquisition-aide')).toContainText('01/01/2010');
+  await expect(page.getByLabel('Date d’acquisition')).toHaveAttribute('min', '2010-01-01');
+  await page.getByLabel(/Je confirme avoir vérifié/).check();
+  for (const date of ['2009-07-03', '2009-12-31']) {
+    await page.getByLabel('Date d’acquisition').fill(date);
+    await page.getByRole('button', { name: 'Calculer le plan' }).click();
+    await expect(page.locator('[data-amortization-result]')).toBeHidden();
+    await expect(page.locator('[data-error]')).toContainText('01/01/2010');
+  }
+  await page.getByLabel('Date d’acquisition').fill('2010-01-01');
+  await page.getByRole('button', { name: 'Calculer le plan' }).click();
+  await expect(page.locator('[data-result-rows] tr').first()).toContainText('12/12 mois');
+  await expect(page.locator('[data-result-rows] tr').first()).toContainText('3 500,00');
+});
+
 test('exceptions inexpliquées exportées sans annoncer de validation', async ({ page }) => {
   await page.goto(`${HUB}/${slugs[3]}`);
   await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();

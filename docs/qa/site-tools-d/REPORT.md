@@ -44,6 +44,14 @@ Le vrai moteur exercé est LibreOffice, pas Microsoft Excel (non installé sur c
 
 Le classeur est un téléchargement statique du site ; aucune valeur utilisateur ne part avec cette requête. Ses formules se calculent localement après téléchargement. Les saisies en ligne restent fictives et locales.
 
-Les dates de consultation encore visibles sur la base de ce lot relèvent de PR68/t_18b05dcb, déjà qualifiée indépendamment ; ne pas dupliquer ce retrait ni réintroduire ces mentions. Coordonner l’intégration du registre `src/data/pages-lastmod.json` (hotspot) et vérifier les quatre routes après les fusions. L’injection beacon Cloudflare non corrigée est une limite connue, chantier abandonné ; CSP inchangée.
+Main/PR68 est désormais intégré : retrait des dates de consultation conservé et vérifié dans le HTML des outils. Le registre `src/data/pages-lastmod.json` reste un hotspot partagé ; seules les routes dont le rendu a changé sont synchronisées. L’injection beacon Cloudflare est une limite acceptée par Kevin, pas un défaut à relancer ; CSP inchangée.
 
 Revue attendue : vérifier particulièrement départ fiscal, bascule facultative, dénominateurs, signes du contrôle et frontière NON VALIDÉ ; après PASS et CI verte, fusionner puis constater déploiement officiel, HTML des quatre routes et téléchargement .xlsx sur memlia.fr et URL Cloudflare. Transmettre ce constat à t_2caf75a7. Aucun candidat n’est déclaré publié dans ce rapport.
+
+## Correction des deux réserves métier — même revue
+
+- Test Node d’abord rouge (`Missing expected exception`) sur acquisition 03/07/2009. Décision marketing : pas de régimes historiques ; moteur et interface refusent toute acquisition antérieure au 01/01/2010. Bornes 31/12/2009 refusée / 01/01/2010 acceptée ; linéaire ancien inchangé, acquisition novembre / mise en service décembre conservée. BOFiP relu : § 120/150 coefficients 1,25/1,75/2,25 depuis 2010 ; § 160/370 majoration 2008–2009, explicitement hors portée.
+- Recette LibreOffice d’abord rouge : dates zéro malgré différence nulle = « Soldes concordants ». B24 contrôle désormais le type numérique, les bornes des numéros de série Excel 1900 (1 à 2 958 465), l’intégralité et le faux 29/02/1900 (60), dans les deux feuilles. Le statut reste NON VALIDÉ après import/collage invalide ; aucune saisie utilisateur n’est corrigée ni effacée.
+- Classeur régénéré et 18 cas PASS réellement recalculés : 17 copies avec contrôle des deux feuilles plus la feuille vide du modèle. Dates zéro/négatives/fractionnaires/hors borne/texte/fictive refusées, bornes exactes acceptées, cas monétaires préservés. Résultats : `workbook-recipe.json`. Excel Microsoft toujours non exercé.
+- Main intégré sans retour des dates internes ; build complet PASS : 125 Python et 612 Node. Astro : 0 erreur, 0 avertissement, huit hints préexistants. Recette Chromium : 50 PASS, dont refus 2009 / acceptation 2010, dates distinctes et téléchargement sans JS ni compte. Logs avant/après joints dans `corrections-execution-logs.zip`.
+- Retour à la revue métier existante pour constater ces deux corrections ; ni nouvelle lane QA, ni fusion/publication revendiquée par le développeur.

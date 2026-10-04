@@ -27,15 +27,27 @@ cases = [
     ('incomplet', {'B8': None}, None, 'NON VALIDÉ'),
     ('sous-centime', {'B8': 1000.001}, None, 'NON VALIDÉ'),
     ('hors-borne', {'B8': 1000000000}, None, 'NON VALIDÉ'),
+    ('date-zero', {'B5': 0, 'B6': 0}, None, 'NON VALIDÉ'),
+    ('date-negative', {'B5': -100, 'B6': -10}, None, 'NON VALIDÉ'),
+    ('date-fractionnaire', {'B5': 46023.5, 'B6': 46053.5}, None, 'NON VALIDÉ'),
+    ('date-hors-borne', {'B5': 4000000, 'B6': 4000000}, None, 'NON VALIDÉ'),
+    ('date-texte', {'B5': 'invalide'}, None, 'NON VALIDÉ'),
+    ('date-fictive-excel', {'B5': 60, 'B6': 60}, None, 'NON VALIDÉ'),
+    ('date-minimale', {'B5': 1, 'B6': 1}, None, 'Soldes concordants'),
+    ('date-maximale', {'B5': 2958465, 'B6': 2958465}, None, 'Soldes concordants'),
 ]
 for name, changes, expected, status in cases:
     wb = load_workbook(SOURCE)
-    ws = wb['Exemple fictif']
-    for cell, value in changes.items():
-        if cell == 'B5':
-            from datetime import date
-            value = date.fromisoformat(value)
-        ws[cell] = value
+    for sheet in ['Exemple fictif', 'À remplir']:
+        ws = wb[sheet]
+        if sheet == 'À remplir':
+            for row in (5, 6, 8, 9, 11, 12, 14, 15, 17):
+                ws.cell(row, 2, wb['Exemple fictif'].cell(row, 2).value)
+        for cell, value in changes.items():
+            if isinstance(value, str) and value == '2026-02-01':
+                from datetime import date
+                value = date.fromisoformat(value)
+            ws[cell] = value
     wb.save(INPUT / f'{name}.xlsx')
 shutil.copy2(SOURCE, INPUT / 'modele-rapprochement-bancaire.xlsx')
 command = ['soffice', f'-env:UserInstallation={ (WORK / "profile").as_uri() }', '--headless', '--convert-to', 'xlsx', '--outdir', str(OUTPUT), *map(str, INPUT.glob('*.xlsx'))]
@@ -47,10 +59,12 @@ for name, changes, expected, status in cases:
     actual = [ws[c].value for c in ('B19', 'B20', 'B22')]
     assert expected is None or actual == expected, (name, actual, expected)
     assert str(ws['B24'].value).startswith(status), (name, ws['B24'].value)
+    other = load_workbook(OUTPUT / f'{name}.xlsx', data_only=True)['À remplir']
+    assert str(other['B24'].value).startswith(status), (name, 'À remplir', other['B24'].value)
     formula_ws = load_workbook(OUTPUT / f'{name}.xlsx')['Exemple fictif']
     assert formula_ws['B22'].data_type == 'f'
     for cell, value in changes.items():
-        if cell != 'B5':
+        if cell not in ('B5', 'B6'):
             assert ws[cell].value == value, (name, cell, ws[cell].value, value)
     results.append({'case': name, 'values': actual, 'state': ws['B24'].value, 'pass': True})
 blank = load_workbook(OUTPUT / 'modele-rapprochement-bancaire.xlsx', data_only=True)['À remplir']

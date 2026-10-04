@@ -42,6 +42,9 @@ function validateInput({ value, startDate, acquisitionDate, durationYears, metho
   }
   const start = parseIsoDate(method === 'declining' ? acquisitionDate ?? '' : startDate);
   if (!start) throw new Error(method === 'declining' ? 'La date d’acquisition doit être une date valide.' : 'La date de mise en service doit être une date valide.');
+  if (method === 'declining' && start.getUTCFullYear() < 2010) {
+    throw new Error('Le dégressif fiscal couvre seulement les acquisitions depuis le 01/01/2010 ; les régimes historiques ne sont pas calculés.');
+  }
   if (!Number.isInteger(durationYears) || durationYears < 1 || durationYears > 50) {
     throw new Error('La durée doit être un nombre entier compris entre 1 et 50 ans.');
   }

@@ -92,8 +92,88 @@
       "pass": true
     },
     {
+      "case": "date-zero",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    },
+    {
+      "case": "date-negative",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    },
+    {
+      "case": "date-fractionnaire",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    },
+    {
+      "case": "date-hors-borne",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    },
+    {
+      "case": "date-texte",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — saisie invalide",
+      "pass": true
+    },
+    {
+      "case": "date-fictive-excel",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    },
+    {
+      "case": "date-minimale",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "Soldes concordants — à valider",
+      "pass": true
+    },
+    {
+      "case": "date-maximale",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "Soldes concordants — à valider",
+      "pass": true
+    },
+    {
       "case": "feuille-vide",
-      "state": "NON VALIDÉ — saisie incomplète",
+      "state": "NON VALIDÉ — date hors borne ou invalide",
       "pass": true
     }
   ]

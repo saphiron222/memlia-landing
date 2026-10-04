@@ -126,7 +126,7 @@ export const OUTILS: readonly OutilDefinition[] = [
     promesse: { entree: 'Valeur amortissable, date de mise en service ou d’acquisition, durée et méthode', resultat: 'Plan annuel, prorata, dotations, cumul et valeur nette' },
     limites: [
       'Le linéaire comptable commence au début de consommation des avantages économiques, généralement à la mise en service. Le prorata en jours réels et la clôture au 31 décembre sont les conventions de cette simulation, pas une règle fiscale universelle.',
-      'Le dégressif fiscal commence au premier jour du mois d’acquisition ou d’achèvement, avec l’option de passage au quotient résiduel. Le cabinet vérifie l’éligibilité au régime général de l’article 39 A du CGI ; les régimes particuliers sont exclus.',
+      'Le dégressif fiscal couvre uniquement les acquisitions ou achèvements depuis le 01/01/2010 et commence au premier jour de ce mois, avec l’option de passage au quotient résiduel. Le cabinet vérifie l’éligibilité au régime général de l’article 39 A du CGI ; les régimes historiques et particuliers sont exclus.',
       'Le calcul ne traite ni valeur résiduelle, ni cession, ni exercice décalé, ni composant séparé ; une entrée vide, incohérente ou hors bornes bloque le plan.',
     ],
     mentionLocale: 'La valeur, la date, la durée et le plan restent dans ce navigateur. Ils ne sont ni envoyés, ni enregistrés, ni réutilisés.',
@@ -139,7 +139,7 @@ export const OUTILS: readonly OutilDefinition[] = [
       complement: {
         nom: 'DGFiP — BOFiP, modalités de calcul de l’amortissement dégressif',
         url: 'https://bofip.impots.gouv.fr/bofip/4699-PGP.html',
-        extrait: 'Les § 190 à 220 précisent le prorata depuis le premier jour du mois d’acquisition. Les § 250 et 260 décrivent l’option de passage au quotient résiduel et le décompte de l’exercice d’acquisition pour une année entière.',
+        extrait: 'Les § 120 et 150 donnent les coefficients généraux applicables depuis le 01/01/2010 ; le § 160 distingue le régime majoré de 2008–2009, non calculé ici. Les § 190 à 220 précisent le prorata depuis le mois d’acquisition. Les § 250 et 260 décrivent l’option de passage au quotient résiduel et l’année d’acquisition entière.',
       },
     },
     pageService: '/automatisation-cabinet-comptable',

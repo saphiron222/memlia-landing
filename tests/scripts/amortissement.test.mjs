@@ -2,6 +2,20 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildDepreciationSchedule } from '../../src/lib/amortissement.mjs';
 
+test('dégressif : acquisitions depuis le 01/01/2010 seulement, sans restriction du linéaire', () => {
+  const input = { value: 1_500_000, durationYears: 10, method: 'declining' };
+  for (const acquisitionDate of ['2009-07-03', '2009-12-31']) {
+    assert.throws(() => buildDepreciationSchedule({ ...input, acquisitionDate }), /01\/01\/2010/);
+  }
+  const plan = buildDepreciationSchedule({ ...input, acquisitionDate: '2010-01-01' });
+  assert.equal(plan.coefficient, 2.25);
+  assert.equal(plan.rows[0].amount, 337500);
+  assert.equal(buildDepreciationSchedule({ ...input, method: 'linear', startDate: '2009-07-03' }).total, input.value);
+  const modern = buildDepreciationSchedule({ value: 10000, durationYears: 5, method: 'declining', acquisitionDate: '2026-11-15', startDate: '2026-12-15' });
+  assert.equal(modern.rows[0].amount, 583.33);
+  assert.equal(modern.rows[0].rule, 'Dégressif sur 2/12 mois');
+});
+
 test('arrondis : aucune dotation négative ni cumul au-delà de la base, y compris deux centimes', () => {
   const tiny = buildDepreciationSchedule({ value: 0.02, startDate: '2024-01-15', durationYears: 3, method: 'linear' });
   assert.match(tiny.rows[2].formula, /plafonnée/);
