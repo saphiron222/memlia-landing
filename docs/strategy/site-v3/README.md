@@ -38,6 +38,14 @@ désigner l'offre.
 
 ## Gouvernance des faits vivants (réconciliation du 28/09)
 
+Relecture ciblée du 04/10 après l'intégration documentaire IA PR54 :
+[qualification des quatre signaux hérités](QUALIFICATION-SOCLES-2026-10-04.md).
+L'architecture compte désormais 12 fichiers d'article scellés, sans inférer leur indexation ;
+la suspension Saisie est historique, et le retour à la ligne de la navigation mobile est décrit.
+Les deux alertes forge/renderer sont déjà absorbées par la procédure du 03/10, conservée après
+comparaison. Une source plus récente appelle une qualification, pas une réécriture automatique.
+Ce relais ne restaure aucun ancien candidat et ne réactive aucune routine.
+
 | Fait | Propriétaire vérifiable | Socle à revoir quand il change |
 |---|---|---|
 | Message, frontière humaine, vocabulaire | `.agents/product-marketing.md`, `tests/proof/test_positioning.py` | stratégie et runbook, sans dupliquer la charte |
