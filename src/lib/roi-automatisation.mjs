@@ -55,7 +55,12 @@ export function calculateRoi(inputs) {
   const paybackState = I === 0 ? 'non-applicable' : E === null ? 'inconnu' : E <= M ? 'impossible' : 'calculable';
   const payback = paybackState === 'calculable' ? I/(E-M) : null;
   const totalPayback = payback === null ? null : d+payback;
-  return { hours,capacity,activeMonths,cost,cashBenefit,net,roi,paybackState,payback,totalPayback,withinHorizon:totalPayback === null ? null : totalPayback <= n };
+  // Inputs have at most two decimals. Compare cash in integer cents × hundredths
+  // of months, not the floating division I/(E-M): equality belongs in the horizon.
+  // BigInt keeps this predicate exact even at the allowed billion-euro limit.
+  const cents = value => BigInt(Math.round(value*100));
+  const withinHorizon = payback === null ? null : cents(I)*100n <= BigInt(Math.max(0,Math.round(n*100)-Math.round(d*100)))*(cents(E)-cents(M));
+  return { hours,capacity,activeMonths,cost,cashBenefit,net,roi,paybackState,payback,totalPayback,withinHorizon };
 }
 const decimal = value => new Intl.NumberFormat('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(value);
 const formatted = (value,unit) => value === null ? 'ND (hypothèse inconnue ou ratio non défini)' : `${decimal(value)} ${unit}`;

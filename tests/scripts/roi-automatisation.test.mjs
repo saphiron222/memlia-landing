@@ -2,11 +2,35 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { calculateRoi, buildRoiReport, roiCsv, parseRoiValue, ROI_FIELDS } from '../../src/lib/roi-automatisation.mjs';
 const nominal = { V:100, t:12, p:50, a:80, c:1, H:40, I:1000, M:50, E:200, d:0, n:12 };
+test('borne cash exacte : avant, à et après dix mois, moteur et exports', () => {
+  // Integer cents × hundredths of months: independent of floating payback division.
+  const scenarios = [999,1000,1001].map(months => ({...nominal,I:1,M:0.9,E:1,d:0,n:months/100}));
+  const report = buildRoiReport(scenarios);
+  for (const [index,months] of [999,1000,1001].entries()) {
+    const expected = months*(100-90) >= 100*100;
+    const scenario = report.scenarios[index];
+    assert.equal(scenario.results.withinHorizon,expected);
+    assert.match(scenario.display.payback,expected ? /dans l’horizon/ : /hors l’horizon/);
+    assert.equal(JSON.parse(JSON.stringify(report)).scenarios[index].results.withinHorizon,expected);
+    assert.ok(roiCsv(report).includes(`"withinHorizon";"${expected}"`));
+  }
+});
 test('oracle nominal du brief, capacité distincte du cash', () => {
   const r = calculateRoi(nominal);
   assert.equal(r.hours, 400/60); assert.equal(r.capacity, 400/60*40);
   assert.equal(r.cost,1600); assert.equal(r.cashBenefit,2400); assert.equal(r.net,800);
   assert.equal(r.roi,50); assert.equal(r.payback,1000/150); assert.equal(r.withinHorizon,true);
+});
+test('classement exact avec délai décimal et montants aux limites', () => {
+  // Hand-computed integer cash oracles; no reuse of the production predicate.
+  for (const inputs of [
+    {...nominal,I:1,M:0.9,E:1,d:0.01,n:10.01},
+    {...nominal,I:1,M:999999999.99,E:1000000000,d:0.01,n:100.01},
+    {...nominal,I:1000000000,M:0,E:1000000000,d:1199,n:1200},
+  ]) {
+    assert.equal(calculateRoi(inputs).withinHorizon,true);
+    assert.equal(calculateRoi({...inputs,n:inputs.n-0.01}).withinHorizon,false);
+  }
 });
 test('E inconnu conserve capacité et coût sans inventer le cash', () => {
   const r = calculateRoi({...nominal,E:null});

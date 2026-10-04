@@ -30,3 +30,15 @@ L’ajout du footer change le HTML du glossaire sans changer ses affirmations, c
 Le candidat n’est pas encore publié. Une seule revue indépendante QA est requise ; la carte de livraison après QA porte intégration, Cloudflare SUCCESS, URL de déploiement et memlia.fr sans query string avec Cache-Control no-cache, parcours/export/refus, médias/maillage/robots et rapport public. Mettre à jour le registre de requêtes avec la date de publication réellement constatée. Retour arrière : revert du commit d’intégration, jamais suppression silencieuse des pages historiques.
 
 Hotspots : registres outils/requêtes/proofs/lastmod, renderer v2, OutilZone/OutilPreuves et test_build.py partagés avec les autres outils en cours ; intégrer leurs ajouts plutôt que les remplacer.
+
+## Corrections après retour de la revue QA unique
+
+Les deux défauts ont été reproduits avant correction : nouveau test moteur rouge à n=10 ; trois parcours navigateur rouges (GET et perte des 33 saisies avec JavaScript désactivé ou scripts bloqués, puis faux « hors horizon » à la borne exacte).
+
+- Confidentialité : le conteneur n’est plus un formulaire natif. Comparer et effacer sont des boutons locaux ; Entrée dans un champ déclenche le calcul seulement si le script est chargé. Sans scripts, aucun clic ni Entrée ne peut soumettre les hypothèses ; les 33 valeurs restent présentes. Aucun fallback inline dépendant du JavaScript.
+- Borne : le classement dans/hors horizon compare exactement les centimes et les centièmes de mois saisis, en entiers BigInt, plutôt que la division flottante du délai de récupération. Les résultats numériques et leur affichage conservent les formules initiales sans arrondi intermédiaire ; seul le prédicat de borne utilise ces unités exactes. E inconnu, investissement nul et récupération impossible restent inchangés.
+- Oracle indépendant aux horizons 9,99/10/10,01 : hors/dans/dans. Concordance vérifiée dans le moteur, l’interface, la copie, le JSON et le CSV. Couverture additionnelle du délai décimal et des montants maximum.
+- Oracle Decimal indépendant de la QA rejoué : 262 cas, 2 882 assertions, aucune divergence.
+- Reconstruction complète PASS après synchronisation du lastmod de cette seule route : 125 tests Python et 620 tests de la suite scripts Node ; ajout du test aux montants maximum, puis suite scripts rejouée : 621 PASS, dont 9 tests ROI. Astro check 0 erreur/0 warning, 8 hints préexistants. Les 35 parcours navigateur ROI et outils existants passent, dont les deux modes dégradés, la borne et les six largeurs.
+
+La PR74 reste candidate, pas une publication publique. Retour à la même QA pour vérifier ces corrections ; les constats réglementaires et le périmètre initial sont inchangés. La livraison Cloudflare et les contrôles de production restent à exécuter après son PASS.

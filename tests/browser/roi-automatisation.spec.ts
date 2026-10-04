@@ -3,6 +3,48 @@ import { readFileSync } from 'node:fs';
 import { ROI_EXAMPLES, buildRoiReport, roiCsv } from '../../src/lib/roi-automatisation.mjs';
 const route = '/outils-comptables-gratuits/calculateur-roi-automatisation';
 const compare = 'Comparer les trois scénarios';
+for (const mode of ['disabled','blocked'] as const) test(`ROI : scripts ${mode}, clic et Entrée ne transmettent ni ne perdent les saisies`, async ({browser,baseURL}) => {
+  const context = await browser.newContext({baseURL,javaScriptEnabled:mode !== 'disabled'});
+  if (mode === 'blocked') await context.route('**/*',route => route.request().resourceType() === 'script' ? route.abort() : route.continue());
+  const page = await context.newPage();
+  try {
+    await page.goto(route); await page.waitForLoadState('networkidle');
+    const originalUrl = page.url();
+    const inputs = page.locator('[data-roi-form] input');
+    const values = Array.from({length:33},(_,index)=>index === 6 ? '12345,67' : String(index+1));
+    for (const [index,value] of values.entries()) await inputs.nth(index).fill(value);
+    const requests:string[] = []; page.on('request',request=>requests.push(request.url()));
+    await page.getByRole('button',{name:compare}).click();
+    await inputs.first().press('Enter');
+    await page.waitForTimeout(300);
+    expect(requests).toEqual([]); expect(page.url()).toBe(originalUrl);
+    for (const [index,value] of values.entries()) await expect(inputs.nth(index)).toHaveValue(value);
+    await expect(page.locator('[data-output]')).toBeHidden();
+  } finally { await context.close(); }
+});
+test('ROI : borne exacte concordante dans interface, copie, JSON et CSV', async ({page,context}) => {
+  await context.grantPermissions(['clipboard-read','clipboard-write']);
+  await page.goto(route); await page.locator('[data-example]').click();
+  for (const [index,n] of ['9,99','10','10,01'].entries()) {
+    for (const [key,value] of Object.entries({I:'1',M:'0,90',E:'1',d:'0',n})) await page.locator(`#roi-${index}-${key}`).fill(value);
+  }
+  await page.locator('#roi-0-n').press('Enter');
+  const expected = [false,true,true];
+  const report = JSON.parse(await page.locator('[data-report]').textContent() ?? '{}');
+  expect(report.scenarios.map((scenario:any)=>scenario.results.withinHorizon)).toEqual(expected);
+  for (const [index,within] of expected.entries()) await expect(page.locator('[data-results] article').nth(index)).toContainText(within ? 'dans l’horizon' : 'hors l’horizon');
+  await page.locator('[data-copy]').click();
+  expect(JSON.parse(await page.evaluate(()=>navigator.clipboard.readText()))).toEqual(report);
+  for (const format of ['json','csv']) {
+    const promise = page.waitForEvent('download'); await page.locator(`[data-${format}]`).click();
+    const data = readFileSync((await (await promise).path())!,'utf8');
+    if (format === 'json') expect(JSON.parse(data).scenarios.map((scenario:any)=>scenario.results.withinHorizon)).toEqual(expected);
+    else for (const [index,within] of expected.entries()) {
+      expect(data).toContain(`"Scénario ${index+1}";"Calcul non arrondi";"withinHorizon";"${within}"`);
+      expect(data).toContain(within ? 'dans l’horizon' : 'hors l’horizon');
+    }
+  }
+});
 test('ROI : oracle, comparaison, copie et exports complets, zéro envoi ou stockage', async ({page,context}) => {
   await context.grantPermissions(['clipboard-read','clipboard-write']);
   await page.goto(route);
