@@ -1,0 +1,141 @@
+---
+import { ROI_FIELDS, ROI_FORMULAS, ROI_CONVENTION } from '@/lib/roi-automatisation.mjs';
+---
+<div class="roi-tool">
+  <h2>Tester des hypothèses économiques</h2>
+  <p>Décrivez une même tâche dans trois scénarios indépendants. Aucun pourcentage ni prix n’est proposé par défaut. Les temps libérés constituent une capacité, pas un encaissement : seules les dépenses réellement évitables que vous saisissez alimentent le ROI cash.</p>
+  <form data-roi-form novalidate>
+    <p id="roi-hint">Deux décimales au maximum, virgule ou point, sans séparateur de milliers. Volume entier, jusqu’à 1 000 000 tâches/mois ; pourcentages de 0 à 100 ; horizon supérieur à zéro, jusqu’à 1 200 mois. E vide signifie inconnu ; E = 0 signifie aucune dépense évitable.</p>
+    <div class="scenarios">
+      {[0,1,2].map(index => <fieldset>
+        <legend>Scénario {index+1}</legend>
+        {ROI_FIELDS.map(field => <label for={`roi-${index}-${field.key}`}>
+          {field.label}
+          <input id={`roi-${index}-${field.key}`} name={`${index}-${field.key}`} data-field={field.key} data-scenario={index} inputmode="decimal" autocomplete="off" required={!field.optional} aria-describedby="roi-hint roi-error" />
+        </label>)}
+      </fieldset>)}
+    </div>
+    <div class="actions">
+      <button class="btn btn-contour" type="button" data-example data-outil-action="exemple">Charger trois exemples fictifs</button>
+      <button class="btn btn-contour" type="reset" data-outil-action="effacer">Effacer les hypothèses</button>
+      <button class="btn btn-principal" type="submit">Comparer les trois scénarios</button>
+    </div>
+    <p id="roi-error" class="error" data-error role="alert" hidden></p>
+    <p data-state role="status">Saisissez vos hypothèses ou chargez les exemples fictifs.</p>
+    <section data-output hidden>
+      <h2 tabindex="-1">Capacité et trésorerie : résultats séparés</h2>
+      <p>Résultats hypothétiques, non garantis. Les hypothèses de chaque colonne restent visibles ci-dessus ; exportez-les avec les calculs pour conserver votre comparaison.</p>
+      <div class="results" data-results></div>
+      <div class="actions">
+        <button class="btn btn-contour" type="button" data-copy data-outil-action="copie">Copier le rapport complet</button>
+        <button class="btn btn-contour" type="button" data-csv data-outil-action="export">Télécharger le CSV</button>
+        <button class="btn btn-contour" type="button" data-json data-outil-action="export">Télécharger le JSON</button>
+      </div>
+      <p data-export-status role="status"></p>
+      <details><summary>Rapport complet sélectionnable</summary><pre data-report></pre></details>
+    </section>
+  </form>
+  <section class="formulas" aria-labelledby="roi-formules">
+    <h2 id="roi-formules">Formules et conventions</h2>
+    <p>V : volume ; t : temps manuel ; p : part automatisable ; a : adoption ; c : contrôle/reprise ; H : coût horaire ; I : investissement ; M : maintenance ; E : dépenses évitables ; d : délai ; n : horizon.</p>
+    <ul>{ROI_FORMULAS.map(formula => <li>{formula}</li>)}</ul>
+    <p>{ROI_CONVENTION}</p>
+    <h3>Exemple fictif, pas une prévision</h3>
+    <p>100 tâches/mois, 12 minutes manuelles, 50 % automatisables, 80 % d’adoption et 1 minute de contrôle donnent 6,67 heures de capacité par mois actif, valorisées à 266,67 € avec 40 €/heure. Sur 12 mois sans délai : investissement 1 000 €, maintenance 50 €/mois et dépenses évitables saisies de 200 €/mois donnent un coût de 1 600 €, un net cash de 800 € et un ROI de 50 %. La récupération continue est de 6,67 mois après démarrage.</p>
+    <h3>Et si le contrôle prend plus de temps ?</h3>
+    <p>La capacité peut être négative : elle n’est pas ramenée artificiellement à zéro. Sans dépense réellement évitable connue, la trésorerie et le ROI restent ND. Le résultat ne choisit ni un fournisseur ni une tâche rentable à votre place.</p>
+    <h3>Comment passer de l’hypothèse à une décision ?</h3>
+    <p>Mesurez la tâche et ses reprises sur un échantillon, puis vérifiez vos hypothèses avec votre équipe. Notre <a href="/methode">méthode de cadrage et de recette</a> part du geste répétitif, de ses cas limites et de la validation du cabinet, pas d’un gain promis.</p>
+  </section>
+</div>
+<script>
+  import { ROI_EXAMPLES, ROI_RESULT_LABELS, parseRoiValue, buildRoiReport, roiCsv } from '@/lib/roi-automatisation.mjs';
+  const form = document.querySelector<HTMLFormElement>('[data-roi-form]');
+  if (form) {
+    const inputs = [...form.querySelectorAll<HTMLInputElement>('input')];
+    const error = form.querySelector<HTMLElement>('[data-error]')!;
+    const state = form.querySelector<HTMLElement>('[data-state]')!;
+    const output = form.querySelector<HTMLElement>('[data-output]')!;
+    const status = form.querySelector<HTMLElement>('[data-export-status]')!;
+    let report: ReturnType<typeof buildRoiReport> | null = null;
+    let text = '';
+    const invalidate = () => {
+      report = null; text = ''; output.hidden = true; error.hidden = true; status.textContent = '';
+      form.querySelector<HTMLElement>('[data-results]')!.replaceChildren();
+      form.querySelector<HTMLElement>('[data-report]')!.textContent = '';
+      inputs.forEach(input => input.removeAttribute('aria-invalid'));
+      state.textContent = 'Hypothèses modifiées : comparez à nouveau avant toute copie ou export.';
+    };
+    form.addEventListener('input',invalidate);
+    form.addEventListener('reset',() => { invalidate(); state.textContent = 'Hypothèses effacées. Aucun résultat conservé.'; });
+    form.querySelector('[data-example]')!.addEventListener('click',() => {
+      if (inputs.some(input => input.value !== '') && !window.confirm('Remplacer toutes vos hypothèses par trois exemples fictifs ?')) return;
+      invalidate();
+      inputs.forEach(input => { const example = ROI_EXAMPLES[Number(input.dataset.scenario)]; const value = example[input.dataset.field as keyof typeof example]; input.value = value === null ? '' : String(value).replace('.',','); });
+      state.textContent = 'Trois exemples fictifs chargés. Modifiez-les librement ; aucun gain n’est garanti.';
+    });
+    form.addEventListener('submit',event => {
+      event.preventDefault(); invalidate();
+      const scenarios: Record<string,number|null>[] = [{},{},{}];
+      for (const input of inputs) {
+        try { scenarios[Number(input.dataset.scenario)][input.dataset.field!] = parseRoiValue(input.value,input.dataset.field!); }
+        catch (failure) {
+          error.textContent = `Scénario ${Number(input.dataset.scenario)+1} — ${failure instanceof Error ? failure.message : 'Entrée refusée.'}`;
+          error.hidden = false; input.setAttribute('aria-invalid','true'); input.focus(); state.textContent = 'Calcul refusé ; vos saisies restent intactes.'; return;
+        }
+      }
+      report = buildRoiReport(scenarios);
+      const results = form.querySelector<HTMLElement>('[data-results]')!;
+      results.replaceChildren(...report.scenarios.map(scenario => {
+        const card = document.createElement('article'); const h3 = document.createElement('h3'); h3.textContent = scenario.name; card.append(h3);
+        const dl = document.createElement('dl');
+        for (const [key,value] of Object.entries(scenario.display)) {
+          const row = document.createElement('div'); const dt = document.createElement('dt'); const dd = document.createElement('dd');
+          dt.textContent = ROI_RESULT_LABELS[key as keyof typeof ROI_RESULT_LABELS]; dd.textContent = String(value); row.append(dt,dd); dl.append(row);
+        }
+        card.append(dl); return card;
+      }));
+      text = JSON.stringify(report,null,2); form.querySelector<HTMLElement>('[data-report]')!.textContent = text;
+      output.hidden = false; state.textContent = 'Trois scénarios calculés. Capacité et trésorerie restent distinctes.';
+      output.querySelector<HTMLElement>('h2')!.focus();
+    });
+    form.querySelector('[data-copy]')!.addEventListener('click',async () => {
+      if (!report) return;
+      try { await navigator.clipboard.writeText(text); status.textContent = 'Rapport complet copié : hypothèses, résultats et formules.'; }
+      catch { status.textContent = 'Copie bloquée : ouvrez le rapport sélectionnable ou téléchargez le JSON.'; }
+    });
+    const download = (format:'csv'|'json') => {
+      if (!report) return;
+      const data = format === 'csv' ? roiCsv(report) : text;
+      const url = URL.createObjectURL(new Blob([data],{type:format === 'csv' ? 'text/csv;charset=utf-8' : 'application/json;charset=utf-8'}));
+      const link = document.createElement('a'); link.href = url; link.download = `scenarios-roi-automatisation.${format}`; link.click();
+      setTimeout(()=>URL.revokeObjectURL(url),0); status.textContent = `Rapport ${format.toUpperCase()} téléchargé localement.`;
+    };
+    form.querySelector('[data-csv]')!.addEventListener('click',()=>download('csv'));
+    form.querySelector('[data-json]')!.addEventListener('click',()=>download('json'));
+  }
+</script>
+<style>
+  .roi-tool,form,fieldset,label,.formulas { display:grid; gap:16px; min-width:0; }
+  .roi-tool h2 { font-size:var(--t-2xl); }
+  .roi-tool h3 { font-size:var(--t-xl); }
+  .scenarios,.results { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+  fieldset { margin:0; padding:16px; border:1px solid var(--ligne); border-radius:var(--r-boite); }
+  legend { font-weight:700; padding:0 8px; }
+  label { font-weight:600; font-size:var(--t-sm); }
+  input { width:100%; min-height:48px; padding:12px; border:1px solid var(--texte-2); border-radius:var(--r-bouton); background:var(--surface-feuille); color:var(--texte-fort); font:inherit; }
+  .actions { display:flex; flex-wrap:wrap; gap:12px; }
+  .actions button { min-height:44px; }
+  .error { border-left:3px solid var(--rouge); padding:12px; color:var(--rouge); background:var(--rouge-voile); }
+  [data-output],.formulas { border-top:1px solid var(--ligne); padding-top:24px; margin-top:16px; }
+  [data-output] { display:grid; gap:16px; }
+  .results :global(article) { min-width:0; padding:16px; border:1px solid var(--ligne); border-radius:var(--r-boite); background:var(--surface-page); }
+  .results :global(dl),.results :global(dl div) { display:grid; gap:12px; }
+  .results :global(dt) { font-size:var(--t-sm); color:var(--texte-2); }
+  .results :global(dd) { margin:0; font-weight:600; overflow-wrap:anywhere; }
+  pre { white-space:pre-wrap; overflow-wrap:anywhere; font-size:var(--t-sm); }
+  summary { cursor:pointer; min-height:44px; padding:12px 0; }
+  ul { padding-left:24px; display:grid; gap:12px; }
+  [hidden] { display:none !important; }
+  @media(max-width:64rem) { .scenarios,.results { grid-template-columns:1fr; } }
+</style>

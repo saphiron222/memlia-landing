@@ -21,10 +21,12 @@ import { pathToFileURL } from 'node:url';
 
 const mode = process.argv.includes('--check') ? 'check' : process.argv.includes('--adopt') ? 'adopt' : 'render';
 const fec = process.argv.includes('--series=fec');
-const source = fec ? 'docs/design/fec-local-proof' : 'docs/design/site-v2-proofs';
+const roi = process.argv.includes('--series=roi');
+assert.ok(!(fec && roi), 'Choisir une seule série');
+const source = roi ? 'docs/design/roi-automatisation-proof' : fec ? 'docs/design/fec-local-proof' : 'docs/design/site-v2-proofs';
 const contractPath = `${source}/content-contract.json`;
-const manifestPath = fec ? 'docs/qa/fec-local/proofs-manifest.json' : 'docs/qa/site-v2/proofs-manifest.json';
-const output = `.qa/annotations/${fec ? 'fec' : 'v2'}-${mode}`;
+const manifestPath = roi ? 'docs/qa/roi-automatisation/proofs-manifest.json' : fec ? 'docs/qa/fec-local/proofs-manifest.json' : 'docs/qa/site-v2/proofs-manifest.json';
+const output = `.qa/annotations/${roi ? 'roi' : fec ? 'fec' : 'v2'}-${mode}`;
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 mkdirSync(output, { recursive: true });
 
@@ -91,7 +93,7 @@ try {
     assert.deepEqual(measured.hidden, [], `Texte masqué : ${id}`);
     if (mode !== 'adopt') assert.equal(measured.text, contract[index].centralText, `Contenu divergent : ${id}`);
     adopted.push({ id, centralText: measured.text });
-    const name = `${String(index + (fec ? 29 : 1)).padStart(2, '0')}-${id}`;
+    const name = `${String(index + (roi ? 30 : fec ? 29 : 1)).padStart(2, '0')}-${id}`;
     const png = await element.screenshot({ animations: 'disabled', path: `${output}/${name}.png` });
     const webp = await sharp(png).webp({ quality: 90, effort: 6 }).toBuffer();
     assert.ok(webp.length < 150_000, `Preuve trop lourde : ${name} (${webp.length} octets)`);
@@ -129,7 +131,7 @@ try {
     console.log(`check : ${candidates.length} preuves v2 conformes à leur manifeste.`);
   } else {
     mkdirSync('public/proofs/v2/og', { recursive: true });
-    mkdirSync(fec ? 'docs/qa/fec-local' : 'docs/qa/site-v2', { recursive: true });
+    mkdirSync(roi ? 'docs/qa/roi-automatisation' : fec ? 'docs/qa/fec-local' : 'docs/qa/site-v2', { recursive: true });
     for (const candidate of candidates) writeFileSync(candidate.target, candidate.bytes);
     writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
     console.log(`${mode} : ${candidates.length} preuves v2 publiées dans public/proofs/v2, manifeste ${manifestPath}.`);

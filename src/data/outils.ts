@@ -21,9 +21,11 @@ export interface OutilDefinition {
   promesse: { entree: string; resultat: string };
   limites: readonly string[];
   mentionLocale: string;
+  zoneLarge?: boolean;
   suspension?: { motif: string; date: string };
   proof?: ProofId;
   source: {
+    titre?: string;
     nom: string;
     url: string;
     extrait: string;
@@ -36,6 +38,23 @@ export interface OutilDefinition {
 }
 
 export const OUTILS: readonly OutilDefinition[] = [
+  {
+    slug: 'calculateur-roi-automatisation', categorie: 'calculer', statut: 'disponible',
+    h1: 'Calculateur de ROI d’automatisation comptable',
+    title: 'Calculateur de ROI d’automatisation comptable | Memlia',
+    description: 'Comparez des scénarios d’automatisation avec vos volumes, temps, coûts et hypothèses, en séparant capacité libérée et économies de trésorerie.',
+    promesse: { entree: 'Trois scénarios de volumes, temps, adoption, coûts et dépenses évitables', resultat: 'Capacité, trésorerie, ROI cash et récupération ; hypothèses et calculs exportables en CSV ou JSON' },
+    limites: [
+      'Hypothèses constantes et mois continus : aucun gain garanti, aucune prévision ou tarification Memlia.',
+      'La capacité valorisée ne devient jamais automatiquement du cash. E inconnu laisse le ROI et la trésorerie ND.',
+      'Une entrée négative, ambiguë ou hors borne bloque le calcul sans effacer vos hypothèses ; un temps net négatif reste affiché.',
+    ],
+    mentionLocale: 'Vos hypothèses, calculs, copies et exports restent dans ce navigateur, sans envoi ni stockage persistant. Effacer retire les hypothèses et les résultats de la page.',
+    proof: 'v2/30-outil-roi',
+    zoneLarge: true,
+    source: { titre: 'Formules documentées', nom: 'Conventions de calcul détaillées sur cette page', url: '#roi-formules', extrait: 'Le temps, les coûts et les dépenses réellement évitables sont des hypothèses indépendantes. Les formules visibles définissent le calcul, pas un taux de gain attendu.', verifieeLe: '4 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
   {
     slug: 'verificateur-fec-local', categorie: 'verifier', statut: 'disponible',
     h1: 'Vérificateur FEC gratuit et local',

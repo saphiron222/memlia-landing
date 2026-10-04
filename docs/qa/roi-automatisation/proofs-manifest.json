@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/roi-automatisation-proof/index.html",
+      "sha256": "82cb8adfb90df5806abc83f391ff2635362b59ad5ff0679551a2b76fa28e8bb5"
+    },
+    {
+      "path": "docs/design/roi-automatisation-proof/styles.css",
+      "sha256": "352eaf1bd63fffbffacd7dbe3200991339010fa6d6d312f6114dc0f735b9674a"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/roi-automatisation-proof/content-contract.json",
+      "sha256": "35469c3941bfc32787b46c46bf173dc37ddcadc1183d2fe9755bcc13e56ed364"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "ab9e7fde7d1f8b3d02f501daa1a9990134ec7fcda2dbd7fa142e645b1a6457c8"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/roi-automatisation-proof/index.html#outil-roi",
+      "target": "public/proofs/v2/30-outil-roi.webp",
+      "bytes": 62356,
+      "sha256": "d482d0a24a27ad20ea12f4939e9a402a3fc9c52867627608ce2670f41a94eb89"
+    },
+    {
+      "source": "docs/design/roi-automatisation-proof/index.html#outil-roi",
+      "target": "public/proofs/v2/og/30-outil-roi.webp",
+      "bytes": 40246,
+      "sha256": "bb82020cb5d176e6e0b4d0fb82b974a11207d846b7cd7391788ba76b586bbbb2"
+    }
+  ]
+}
