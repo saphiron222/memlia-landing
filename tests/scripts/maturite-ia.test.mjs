@@ -2,6 +2,25 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DIMENSIONS, OPTIONS, diagnose, reportMarkdown } from '../../src/lib/maturite-ia.mjs';
 const filled = (value) => Object.fromEntries(DIMENSIONS.flatMap(d => d.questions.map(q => [q.id, value])));
+test('trois actions distinctes et justifiées sur les 32 profils de dimensions', () => {
+  const order = ['donnees', 'validation', 'regles', 'mesure', 'usages'];
+  for (let mask = 0; mask < 32; mask++) {
+    const values = filled('formalise');
+    const gaps = order.filter((id, index) => mask & (1 << index));
+    for (const id of gaps) values[`${id}_1`] = 'non-commence';
+    const before = { ...values };
+    const result = diagnose(values);
+    assert.equal(result.priorities.length, 3, `profil ${mask}`);
+    assert.equal(new Set(result.priorities.map(p => p.dimension)).size, 3);
+    assert.deepEqual(result.priorities.filter(p => p.kind !== 'suivi').map(p => p.dimension), gaps.slice(0, 3));
+    for (const p of result.priorities) {
+      assert.ok(p.evidence.length > 0);
+      for (const q of p.evidence) assert.equal(q.value, values[q.id]);
+      if (p.kind === 'suivi') assert.ok(p.evidence.every(q => q.value === 'formalise'));
+    }
+    assert.deepEqual(values, before);
+  }
+});
 test('quinze questions uniques, cinq dimensions, quatre réponses', () => {
   assert.equal(DIMENSIONS.length, 5);
   assert.equal(new Set(DIMENSIONS.flatMap(d => d.questions.map(q => q.id))).size, 15);

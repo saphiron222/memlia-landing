@@ -53,8 +53,10 @@ export function diagnose(input = {}) {
       action: unknown ? `Clarifier les réponses inconnues de la dimension ${d.label.toLowerCase()}, puis décider de la prochaine action.` : DIMENSIONS.find(item => item.id === d.id).action,
       evidence };
   });
-  if (!priorities.length) {
+  if (priorities.length < 3) {
     for (const id of ['validation', 'regles', 'mesure']) {
+      if (priorities.length === 3) break;
+      if (priorities.some(p => p.dimension === id)) continue;
       const d = dimensions.find(item => item.id === id);
       priorities.push({ dimension: id, kind: 'suivi', action: id === 'validation' ? 'Suivre les exceptions et rejouer les cas inattendus.' : id === 'regles' ? 'Relire la règle commune quand un usage ou un outil change.' : 'Comparer les observations de la tâche et décider de la suite.', evidence: d.answers });
     }
@@ -69,7 +71,7 @@ export function reportMarkdown(result) {
     ...result.dimensions.flatMap(d => [`\n## ${d.label} : ${STATES[d.state]}`, ...d.answers.map(q => `- ${q.text} ${answerLabel(q.value)}`)]),
     `\n## Inconnues : ${result.unknowns.length}`, ...result.unknowns.map(q => `- ${q.text}`),
     '\n## Prochaines actions proposées', ...result.priorities.flatMap((p, i) => [`\n${i + 1}. ${p.action}`, ...p.evidence.map(q => `   - Justification : ${q.text} ${answerLabel(q.value)}`)]),
-    '\nOrdre de travail Memlia : données, validation, règle, mesure, usage ; retenir les trois premières dimensions non formalisées. Une inconnue demande clarification, pas un jugement défavorable. Si tout est formalisé, suivre les exceptions, relire les règles et comparer les observations.',
+    '\nOrdre de travail Memlia : données, validation, règle, mesure, usage ; retenir jusqu’à trois dimensions non formalisées. Une inconnue demande clarification, pas un jugement défavorable. Compléter jusqu’à trois actions par le suivi des dimensions formalisées, sans doublon : exceptions de validation, règles puis observations de mesure.',
     'La décision et la vérification des pratiques restent au cabinet.',
   ].join('\n') + '\n';
 }

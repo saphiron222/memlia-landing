@@ -1,6 +1,26 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync, mkdirSync } from 'node:fs';
 const route = '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet';
+test('impression exhaustive avec détails fermés, sans changer leur état écran', async ({ page }, testInfo) => {
+  await page.goto(route);
+  await page.getByRole('button', { name: 'Essayer un exemple fictif' }).click();
+  const details = page.locator('[data-result] details');
+  await details.first().evaluate((node: HTMLDetailsElement) => { node.open = true; });
+  const before = await details.evaluateAll(nodes => nodes.map(node => (node as HTMLDetailsElement).open));
+  const responses = page.locator('[data-summary] .print-evidence li');
+  const evidence = page.locator('[data-priorities] .print-evidence li');
+  await page.emulateMedia({ media: 'print' });
+  await expect(responses).toHaveCount(15);
+  for (const li of await responses.all()) await expect(li).toBeVisible();
+  expect(await evidence.count()).toBeGreaterThan(0);
+  for (const li of await evidence.all()) await expect(li).toBeVisible();
+  const pdf = testInfo.outputPath('diagnostic-complet.pdf');
+  await page.pdf({ path: pdf, format: 'A4', printBackground: true });
+  await testInfo.attach('rapport imprimé', { path: pdf, contentType: 'application/pdf' });
+  await page.emulateMedia({ media: 'screen' });
+  expect(await details.evaluateAll(nodes => nodes.map(node => (node as HTMLDetailsElement).open))).toEqual(before);
+  for (const li of await responses.all()) await expect(li).toBeHidden();
+});
 test.beforeEach(async ({ page }) => { await page.goto(route, { waitUntil: 'networkidle' }); });
 test('inconnues : cinq incomplets, rapport et export exhaustif sans mail', async ({ page }) => {
   await page.getByRole('button', { name: 'Voir ma synthèse' }).click();
