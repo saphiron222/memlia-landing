@@ -1,0 +1,9 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import CharteIa from '@/components/outils/CharteIa.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('generateur-charte-ia-cabinet');
+---
+<Outil outil={outil}>
+  <CharteIa />
+</Outil>

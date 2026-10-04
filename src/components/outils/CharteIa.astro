@@ -1,0 +1,159 @@
+---
+import { CHARTER_NOTICE } from '@/lib/charte-ia.mjs';
+---
+<div class="charte" data-charter id="outil-calcul">
+  <form data-charter-form novalidate autocomplete="off">
+    <h2>Préparer une charte de travail</h2>
+    <p>Décrivez des rôles et des outils, pas des personnes ou des dossiers. Cette trame organise des usages sans données clients ; elle ne donne aucune autorisation pour un dossier réel.</p>
+    <p class="texte-2">Usages, données, validation et fréquence sont requis. Les autres champs peuvent rester vides : ils apparaîtront « à compléter ».</p>
+    <fieldset aria-describedby="charte-error">
+      <legend>Usages retenus</legend>
+      <label><input type="checkbox" name="usages" value="relance" /> Relance de pièces sur dossier fictif</label>
+      <label><input type="checkbox" name="usages" value="synthese" /> Synthèse de documents fictifs</label>
+      <label><input type="checkbox" name="usages" value="reformulation" /> Reformulation de texte</label>
+    </fieldset>
+    <label for="donnees">Données autorisées dans cette trame</label>
+    <select id="donnees" name="donnees" aria-describedby="charte-error"><option value="">Choisir une famille</option><option value="fictives">Fictives uniquement</option><option value="publiques">Publiques, sans donnée personnelle ni client</option><option value="internes">Processus internes, sans donnée personnelle ni client</option></select>
+    <label><input type="checkbox" name="publicFiles" aria-describedby="charte-error" /> Envoi de fichiers clients à une IA publique</label>
+    <p class="charte-hors-perimetre">Choix hors périmètre : cette option sert à détecter une contradiction, pas à autoriser un envoi. Elle bloque la génération.</p>
+    <label for="outils">Outils retenus (description générique)</label>
+    <textarea id="outils" name="outils" maxlength="400" rows="2" aria-describedby="charte-error" placeholder="Ex. environnement de démonstration validé par le cabinet"></textarea>
+    <label for="responsable">Rôle responsable des usages</label>
+    <input id="responsable" name="responsable" maxlength="160" aria-describedby="charte-error" placeholder="Ex. référent outils" />
+    <label for="validateur">Rôle de validation</label>
+    <input id="validateur" name="validateur" maxlength="160" aria-describedby="charte-error" placeholder="Ex. responsable de pôle" />
+    <label for="validation">Moment de validation humaine</label>
+    <select id="validation" name="validation" aria-describedby="charte-error"><option value="">Choisir un contrôle</option><option value="chaque-resultat">Chaque résultat, même en interne</option><option value="avant-diffusion">Avant diffusion ou intégration à un travail</option></select>
+    <label for="formation">Formation et jeu d’essai prévus</label>
+    <textarea id="formation" name="formation" maxlength="400" rows="2" aria-describedby="charte-error" placeholder="Ex. atelier sur les usages retenus et leurs cas d’arrêt"></textarea>
+    <label for="frequence">Fréquence de relecture</label>
+    <select id="frequence" name="frequence" aria-describedby="charte-error"><option value="">Choisir une fréquence</option><option value="mensuelle">Mensuelle</option><option value="trimestrielle">Trimestrielle</option><option value="avant chaque nouvel usage">Avant chaque nouvel usage</option></select>
+    <label for="revision">Prochaine date de relecture</label>
+    <input id="revision" name="revision" type="date" aria-describedby="charte-error" />
+    <p id="charte-error" data-error role="alert" hidden></p>
+    <div class="charte-actions"><button type="submit" class="btn btn-principal">Préparer la charte</button><button type="button" class="btn btn-contour" data-example data-outil-action="exemple">Charger un exemple fictif</button></div>
+  </form>
+  <p data-status role="status" aria-live="polite">Choisissez les usages et les contrôles pour préparer une première trame.</p>
+  <section data-output hidden aria-labelledby="charte-apercu">
+    <h2 id="charte-apercu">Aperçu éditable</h2>
+    <p>{CHARTER_NOTICE}</p>
+    <label for="charte-editor">Clauses à relire et à modifier</label>
+    <textarea id="charte-editor" data-editor rows="22" spellcheck="true" aria-describedby="charte-edit-help"></textarea>
+    <p id="charte-edit-help">Vos éditions sont conservées. Une nouvelle génération demande votre confirmation avant de les remplacer. La mention non officielle accompagne chaque export. Nous ne contrôlons pas le fond des clauses que vous ajoutez.</p>
+    <h3>Points restant à décider à la génération</h3>
+    <ul data-checklist></ul>
+    <p>Relisez aussi vos modifications et faites documenter l’adoption par le cabinet.</p>
+    <div class="charte-actions"><button type="button" class="btn btn-contour" data-copy data-export data-outil-action="copie">Copier la charte</button><button type="button" class="btn btn-contour" data-md data-export data-outil-action="telechargement">Exporter .md</button><button type="button" class="btn btn-contour" data-txt data-export data-outil-action="telechargement">Exporter .txt</button><button type="button" class="btn btn-contour" data-print-button data-export>Imprimer</button></div>
+  </section>
+  <button type="button" class="btn btn-contour" data-clear>Tout effacer</button>
+  <pre data-print hidden></pre>
+  <section aria-labelledby="charte-pratique">
+    <h2 id="charte-pratique">Mettre les choix en pratique</h2>
+    <p>Commencez par deux usages précis. Désignez les rôles, choisissez les données et le contrôle, puis relisez chaque clause. Exportez votre version pour la discuter avec l’équipe. La formation et le jeu d’essai viennent avant une décision d’adoption, pas après.</p>
+    <details open><summary>Est-ce la charte officielle de l’Ordre ?</summary><p>Non. Le CNOEC propose ses propres ressources, liées ci-dessous. Nous composons une trame originale qui rend vos usages, vos contrôles et vos arbitrages visibles ; nous ne reproduisons pas le modèle de l’Ordre.</p></details>
+    <details open><summary>Pourquoi un responsable reste-t-il « à compléter » ?</summary><p>Nous ne désignons personne à votre place. L’aperçu et la checklist signalent le rôle manquant. Le cabinet décide qui assume ce rôle avant de mettre la charte en pratique.</p></details>
+    <details open><summary>Puis-je autoriser un fichier client avec cette charte ?</summary><p>Non. Les familles de données proposées excluent les données personnelles et clients. Les usages sur dossiers réels nécessitent un cadrage distinct des outils, accès et traitements. Le choix d’envoi à une IA publique bloque la génération.</p></details>
+    <details open><summary>Comment conserver mes éditions ?</summary><p>Copiez ou exportez les clauses en Markdown ou texte. L’impression reprend la même version avec la mention non officielle. Rien n’est enregistré par l’outil ; fermez la page seulement après avoir conservé ce qui vous est utile.</p></details>
+  </section>
+  <noscript>La génération locale nécessite JavaScript. Vous pouvez consulter la ressource de l’Ordre ci-dessous sans l’activer.</noscript>
+</div>
+<script>
+  import { generateCharter, charterDocument } from '@/lib/charte-ia.mjs';
+  const root = document.querySelector<HTMLElement>('[data-charter]');
+  if (root) {
+    const form = root.querySelector<HTMLFormElement>('[data-charter-form]')!;
+    const editor = root.querySelector<HTMLTextAreaElement>('[data-editor]')!;
+    const output = root.querySelector<HTMLElement>('[data-output]')!;
+    const status = root.querySelector<HTMLElement>('[data-status]')!;
+    const error = root.querySelector<HTMLElement>('[data-error]')!;
+    const printable = root.querySelector<HTMLElement>('[data-print]')!;
+    const exports = root.querySelectorAll<HTMLButtonElement>('[data-export]');
+    let generated = '';
+    const updatePrint = () => { printable.textContent = charterDocument(editor.value); };
+    const enableExports = (enabled: boolean) => exports.forEach(button => { button.disabled = !enabled; });
+    const confirmReplacement = () => !editor.value || editor.value === generated || confirm('Remplacer vos clauses modifiées par une nouvelle trame ? Exportez-les d’abord pour les conserver.');
+    form.addEventListener('input', () => {
+      if (generated) { enableExports(false); status.textContent = 'Questionnaire modifié : l’aperçu précédent est conservé. Préparez à nouveau la charte avant export.'; }
+    });
+    editor.addEventListener('input', updatePrint);
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const result = generateCharter({
+        usages: data.getAll('usages'), donnees: data.get('donnees'), validation: data.get('validation'), frequence: data.get('frequence'),
+        responsable: data.get('responsable'), validateur: data.get('validateur'), outils: data.get('outils'), formation: data.get('formation'), revision: data.get('revision'), publicFiles: data.has('publicFiles'),
+      });
+      form.querySelectorAll('[aria-invalid]').forEach(field => field.removeAttribute('aria-invalid'));
+      if (!result.ok) {
+        error.hidden = false; error.textContent = result.error; enableExports(false);
+        const field = form.querySelector<HTMLElement>(`[name="${result.field}"]`);
+        field?.setAttribute('aria-invalid', 'true'); field?.focus(); return;
+      }
+      if (!confirmReplacement()) { error.hidden = false; error.textContent = 'Remplacement annulé. Vos clauses modifiées sont conservées.'; return; }
+      error.hidden = true;
+      generated = result.body; editor.value = generated; output.hidden = false; updatePrint(); enableExports(true);
+      const checklist = root.querySelector<HTMLElement>('[data-checklist]')!;
+      checklist.replaceChildren(...(result.checklist.length ? result.checklist : ['Faire relire les clauses, valider les outils et documenter l’adoption.']).map((item: string) => {
+        const li = document.createElement('li'); li.textContent = item; return li;
+      }));
+      status.textContent = 'Trame préparée. Relisez les clauses, complétez les arbitrages et exportez votre version.';
+    });
+    root.querySelector('[data-example]')!.addEventListener('click', () => {
+      if ([...new FormData(form).values()].some(value => Boolean(value)) || editor.value) {
+        if (!confirm('Remplacer le questionnaire par un exemple fictif ? Les clauses de l’aperçu restent conservées.')) return;
+      }
+      form.reset();
+      for (const value of ['relance', 'synthese']) form.querySelector<HTMLInputElement>(`[value="${value}"]`)!.checked = true;
+      for (const [name, value] of Object.entries({ donnees: 'fictives', validation: 'chaque-resultat', frequence: 'mensuelle', validateur: 'Responsable de pôle', outils: 'Environnement de démonstration', formation: 'Atelier sur cas fictif', revision: '2026-12-01' })) {
+        (form.elements.namedItem(name) as HTMLInputElement).value = value;
+      }
+      form.querySelectorAll('[aria-invalid]').forEach(field => field.removeAttribute('aria-invalid'));
+      error.hidden = true; enableExports(false); status.textContent = 'Exemple fictif chargé. Préparez la charte pour voir ses clauses.';
+    });
+    root.querySelector('[data-clear]')!.addEventListener('click', () => {
+      if (!confirm('Effacer le questionnaire et toutes vos clauses ? Cette action ne peut pas être annulée.')) return;
+      form.reset(); editor.value = ''; generated = ''; printable.textContent = ''; output.hidden = true; error.hidden = true;
+      form.querySelectorAll('[aria-invalid]').forEach(field => field.removeAttribute('aria-invalid'));
+      enableExports(false); status.textContent = 'Saisies et aperçu effacés.';
+    });
+    root.querySelector('[data-copy]')!.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(charterDocument(editor.value)); status.textContent = 'Charte copiée, avec sa mention non officielle.'; }
+      catch { status.textContent = 'Copie bloquée : sélectionnez les clauses et conservez la mention non officielle dans votre document.'; editor.focus(); editor.select(); }
+    });
+    const download = (extension: string) => {
+      const url = URL.createObjectURL(new Blob([charterDocument(editor.value)], { type: 'text/plain;charset=utf-8' }));
+      const link = document.createElement('a'); link.href = url; link.download = `charte-ia-cabinet.${extension}`; link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000); status.textContent = 'Export de la version affichée déclenché.';
+    };
+    root.querySelector('[data-md]')!.addEventListener('click', () => download('md'));
+    root.querySelector('[data-txt]')!.addEventListener('click', () => download('txt'));
+    root.querySelector('[data-print-button]')!.addEventListener('click', () => { updatePrint(); window.print(); });
+  }
+</script>
+<style>
+  .charte, .charte form, .charte section { display: grid; gap: 16px; min-width: 0; }
+  .charte h2 { font-size: var(--t-3xl); }
+  .charte label, .charte legend { font-weight: 600; }
+  .charte fieldset { display: grid; gap: 12px; border: 1px solid var(--ligne-forte); border-radius: var(--r-boite); padding: 16px; min-width: 0; }
+  .charte label:has(input[type=checkbox]) { display: flex; gap: 12px; align-items: center; min-height: 44px; }
+  .charte input[type=checkbox] { flex-shrink: 0; width: 24px; height: 24px; accent-color: var(--accent-texte); }
+  .charte input:not([type=checkbox]), .charte select, .charte textarea { width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px; border: 1px solid var(--texte-2); border-radius: var(--r-bouton); background: var(--surface-feuille); color: var(--texte-fort); font: inherit; }
+  .charte select { text-overflow: ellipsis; }
+  .charte textarea { resize: vertical; }
+  .charte-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .charte button { min-height: 44px; white-space: normal; text-align: center; }
+  .charte [data-clear] { justify-self: start; }
+  .charte-hors-perimetre { color: var(--rouge); border-left: 3px solid var(--rouge); padding-left: 12px; }
+  .charte section { border-top: 1px solid var(--ligne-forte); padding-top: 24px; }
+  .charte [data-error]:not([hidden]) { border-left: 3px solid var(--rouge); background: var(--rouge-voile); color: var(--rouge); padding: 12px; }
+  .charte [hidden] { display: none; }
+  .charte ul { padding-left: 20px; list-style: disc; }
+  .charte details { border-bottom: 1px solid var(--ligne); padding-bottom: 16px; }
+  .charte summary { min-height: 44px; padding: 12px 0; font-weight: 600; cursor: pointer; }
+  .charte details p { color: var(--texte-2); }
+  @media print {
+    :global(body *:not(:has([data-print])):not([data-print])) { display: none !important; }
+    :global(body *:has([data-print])) { display: block !important; margin: 0 !important; padding: 0 !important; border: 0 !important; box-shadow: none !important; min-height: 0 !important; background: white !important; }
+    .charte [data-print] { display: block; white-space: pre-wrap; overflow-wrap: anywhere; font: 12pt/1.5 sans-serif; color: black; background: white; }
+  }
+</style>

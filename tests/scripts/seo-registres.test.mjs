@@ -39,6 +39,13 @@ test('un registre vide porte la marque et aucun article', () => {
   assert.deepEqual(registre.articles, []);
 });
 
+test('un outil local garde son type et son intention propre', () => {
+  const tool = entree('charte-ia', { type: 'outil', url: 'https://memlia.fr/outils-comptables-gratuits/generateur-charte-ia-cabinet', requete: 'générateur charte ia cabinet comptable', publieLe: null });
+  const registre = ajouterAuRegistre(registreVide(), tool);
+  assert.equal(registre.articles[0].type, 'outil');
+  assert.throws(() => ajouterAuRegistre(registreVide(), { ...tool, type: 'inconnu' }), /type inconnu/);
+});
+
 test('ajouter un article ne mute pas le registre reçu', () => {
   const avant = registreVide();
   const apres = ajouterAuRegistre(avant, entree('a'));

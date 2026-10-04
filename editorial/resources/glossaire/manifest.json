@@ -4715,7 +4715,7 @@
           "editorialReviewer",
           "sourceClassifier"
         ],
-        "reviewedCandidateHash": "69c38874d155643cbd40dbe9f25ee2f306f67760d5d0b7bf1b72203b1e029702",
+        "reviewedCandidateHash": "426e24e8fd229094afc8e2164c200861552963144c35e65c147a9abf68688da3",
         "status": "AI_REVIEW_PASS",
         "claimSourceVerdicts": [
           {
@@ -5029,7 +5029,7 @@
           }
         ],
         "evidenceRef": "docs/qa/hub-ressources/metier-review-r5/preuve-glossaire.json",
-        "evidenceSha256": "ec6d6e0cb41e127b2f31580ed7dcd68937a14092a67f6d868c3dfd29afdb8274"
+        "evidenceSha256": "d833e5ff0c39227169d48f1a08e338d47395eeb47954e4177d60b1c85425d7eb"
       }
     }
   },
@@ -7217,14 +7217,14 @@
       "entries": [
         {
           "path": "dist/glossaire.html",
-          "bytes": 314734,
-          "sha256": "2dccf35c9704fd23857b76fa6408b9e8d1bf49d6018b7b3845b488a7710d07fc"
+          "bytes": 314916,
+          "sha256": "c5d2a78c78c850df72451090cbc8e65c86844b79a2d3a8a67bf67c53b64785ae"
         }
       ],
-      "digest": "1139392affdb2223dde2c32075b91f921c843d61f8ad7c188a711c01781d5cd1"
+      "digest": "0b53b24b4c7c3654411276189dc0af4f37bc5ead2c39e9ea5cdb3567eff6b5d4"
     },
     "candidateHash": {
-      "value": "f166756d8bff3cd9218a8c1f788b10e62bd00777080f62523dc82c66b23444ea",
+      "value": "506ef453986d2c2212c23391db07a9dd87f460b56f7d5abd456ff437573e0746",
       "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
     },
     "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
@@ -7235,18 +7235,18 @@
       "npx astro build",
       "node scripts/strip-briefs.mjs"
     ],
-    "startedAt": "2026-09-21T11:47:04.329Z",
-    "endedAt": "2026-09-21T11:47:08.842Z",
+    "startedAt": "2026-10-04T00:13:14.257Z",
+    "endedAt": "2026-10-04T00:13:18.788Z",
     "result": "PASS",
     "sourceBundleDigest": "c858dfb4df85a55ede57e06c48747fa3225247748182db16dfa3456e5fb1ad68",
     "assetBundleDigest": "56408fe40b2d58ee2dac4bf598ac0e2fbe51e1d123de046dbe8f4331d4a6e3e3",
     "configBundleDigest": "049a37f865c250da3a44665199b84dd8d2e6cbe42b526842976fdb28578c1bcb",
-    "outputDigest": "1139392affdb2223dde2c32075b91f921c843d61f8ad7c188a711c01781d5cd1",
+    "outputDigest": "0b53b24b4c7c3654411276189dc0af4f37bc5ead2c39e9ea5cdb3567eff6b5d4",
     "reportRefs": [
       "docs/qa/hub-ressources/freshness-r4-exec.md"
     ],
-    "receiptRef": "docs/qa/hub-ressources/metier-fix-c-build-receipt.json",
-    "receiptSha256": "20844b7ebb88709dd361c3b564dcd2ecc1e7d2889096cb3fb472a189da19c047"
+    "receiptRef": "docs/qa/charte-ia/chrome-build-receipt.json",
+    "receiptSha256": "f1c7ab4ce1031af6fd7f173520020eb62f1258ae078c04146df2b9f2a3833dd6"
   },
   "preview": {
     "branch": null,
@@ -7264,8 +7264,8 @@
     "reportRef": null
   },
   "audit": {
-    "candidateHash": "f166756d8bff3cd9218a8c1f788b10e62bd00777080f62523dc82c66b23444ea",
-    "buildOutputDigest": "1139392affdb2223dde2c32075b91f921c843d61f8ad7c188a711c01781d5cd1",
+    "candidateHash": "506ef453986d2c2212c23391db07a9dd87f460b56f7d5abd456ff437573e0746",
+    "buildOutputDigest": "0b53b24b4c7c3654411276189dc0af4f37bc5ead2c39e9ea5cdb3567eff6b5d4",
     "gateReportRefs": [
       "fixture://audit/gates"
     ],
@@ -7277,7 +7277,7 @@
     "p0": [],
     "p1": [],
     "result": "PASS",
-    "auditHash": "5404d7b3b19f623c1ae0007e663e99b0f53bc62748516a2d215b31146f77d05f"
+    "auditHash": "0d3bfb45bb9b5c70e7b82c9c85f457ad22039fdd5a8708c9d5531f654b998926"
   },
   "approval": {
     "state": "pending",
