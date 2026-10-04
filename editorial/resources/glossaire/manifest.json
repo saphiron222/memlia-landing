@@ -1,5 +1,5 @@
 {
-  "$comment": "CANDIDAT V3 : 76 unités R2 couvertes, résumés H atomisés. Contenu paie/social non attesté ; revue métier IA indépendante AI_REVIEW_PASS. SERP ND sans crédit SEO.",
+  "$comment": "CANDIDAT V3 : 76 unités R2 couvertes, résumés H atomisés. Contenu non attesté, aucune revue IA indépendante accordée. SERP ND sans crédit SEO.",
   "schemaVersion": "resource-manifest-v1",
   "contractRevision": 3,
   "templateState": "candidate",
@@ -543,8 +543,8 @@
       },
       {
         "id": "unit-t-ia-generative",
-        "text": "L’intelligence artificielle dite générative désigne les systèmes capables de créer des contenus — texte, code informatique, images, son ou vidéo — à partir d’une consigne, plutôt que de retrouver un contenu déjà existant. Le résultat produit est nouveau à chaque exécution, même pour une consigne proche d’une exécution précédente.",
-        "sha256": "6bc98c19047df460c1e4b601cd8b4fe5dfb9b6c3d9b89a45ac2174183f2781e9",
+        "text": "L’intelligence artificielle dite générative désigne les systèmes capables de produire des contenus — texte, code informatique, images, son ou vidéo — à partir d’une consigne. Ils peuvent aussi résumer, corriger ou traduire des contenus existants. Le résultat est généré, mais pas nécessairement inédit ni différent à chaque exécution.",
+        "sha256": "ef3ccb104f06765785e714c26d0b5a540e34ec0e29b01c43cf2489fe40aec037",
         "claimIds": [
           "claim-t-ia-generative"
         ]
@@ -575,8 +575,8 @@
       },
       {
         "id": "unit-t-extraction-de-donnees",
-        "text": "L’extraction de données est l’étape qui repère, dans le texte obtenu après lecture d’un document, les champs qui ont un sens métier — fournisseur, montant, taux de TVA, date d’échéance — pour les rendre exploitables par un traitement. Elle intervient après la lecture du document, jamais avant.",
-        "sha256": "7c614bbd6b6a4b8afd85ead27c5bdfd2bcd14c76091778ca04ae189d91d5889b",
+        "text": "L’extraction de données repère les champs utiles — fournisseur, montant, taux de TVA, date d’échéance — dans un document ou un flux pour les rendre exploitables. Elle peut partir d’une image, d’un texte natif ou de données structurées, sans passage obligatoire par un OCR séparé.",
+        "sha256": "11066d0da242affce11cf9a0bff8c71847bfb63ea484aefdc46bcddd6d1c91bf",
         "claimIds": [
           "claim-t-extraction-de-donnees"
         ]
@@ -591,8 +591,8 @@
       },
       {
         "id": "unit-t-pre-comptabilite",
-        "text": "La pré-comptabilité regroupe les tâches qui précèdent l’écriture comptable proprement dite : collecter les pièces, les trier par nature et par période, vérifier qu’elles sont lisibles et complètes, puis les préparer pour la saisie. Elle s’arrête avant l’imputation sur un compte, qui relève de la tenue comptable.",
-        "sha256": "c6887845013007b3690277b463dae90ceb28ded078b6e0b17870fcae677c1484",
+        "text": "La pré-comptabilité regroupe ici la collecte et le tri des pièces, leur lecture, l’extraction des champs et la préparation de propositions comptables, sans imputation définitive ni écriture validée. Les propositions sont présentées au cabinet pour contrôle.",
+        "sha256": "549fc46b249af83eeeba46ad499b0c1462830e6427887a5fa76c5162ff10a73a",
         "claimIds": [
           "claim-t-pre-comptabilite"
         ]
@@ -679,8 +679,8 @@
       },
       {
         "id": "unit-t-modele-local",
-        "text": "Un modèle local s’exécute sur une machine contrôlée par le cabinet : les documents soumis ne quittent pas son parc et aucun prestataire ne les reçoit. C’est le mode de déploiement, et non le pays d’hébergement, qui détermine qui peut lire les données.",
-        "sha256": "9f79631537004ee427b57c7183cb0c452f1ba9a98d47aace79336ed6a1657d26",
+        "text": "Un modèle local s’exécute sur une machine contrôlée par le cabinet. Ce lieu d’exécution ne garantit pas l’absence de connexions : l’application peut utiliser des connecteurs, une télémétrie ou des services distants. Les flux et les accès doivent être vérifiés pour le déploiement retenu.",
+        "sha256": "f1e7ddfadd85f014e5de927eb6d93aca1b372eb89208cf250d805ad4ec45f69c",
         "claimIds": [
           "claim-t-modele-local"
         ]
@@ -848,16 +848,16 @@
       },
       {
         "id": "unit-t-sous-traitant-rgpd-context",
-        "text": "Un cabinet, responsable du traitement de ses dossiers clients, qualifie chaque éditeur logiciel ou hébergeur qui traite ces données pour son compte : un outil d’IA hébergé par un tiers relève souvent de ce statut. Cette qualification impose d’inscrire dans le contrat les obligations du sous-traitant concernant les données personnelles.",
-        "sha256": "9bb5634192398d45efc620128acd8bea3d5c69704830f537c3aff2fbfc5c9ca5",
+        "text": "Les rôles se qualifient pour chaque traitement d’après les finalités, les moyens et les instructions : le cabinet n’est pas présumé responsable de traitement pour tous ses fichiers. Un prestataire qui traite des données pour le compte du responsable et selon ses instructions peut être sous-traitant ; les obligations correspondantes sont alors inscrites au contrat.",
+        "sha256": "730a281eab6a564bb58b0c4cd0d7533810263f7869dbe2913739b753dabbb49e",
         "claimIds": [
           "claim-t-sous-traitant-rgpd-context"
         ]
       },
       {
         "id": "unit-t-sous-traitant-rgpd-commonConfusion",
-        "text": "Un sous-traitant au sens du RGPD est parfois confondu avec un simple fournisseur ; un fournisseur qui ne touche jamais aux données personnelles n’a pas ce statut, tandis qu’un éditeur d’IA qui héberge des données de dossiers en a un.",
-        "sha256": "88b1ae5577134c269b996a7da03f9679858cafc1d52bc41bbf4c761080c1f714",
+        "text": "Le titre de fournisseur, d’éditeur ou de cabinet ne suffit pas à fixer un rôle RGPD. Recevoir des données ne fait pas automatiquement d’un organisme un sous-traitant : il faut examiner le traitement et qui en détermine les finalités et les moyens.",
+        "sha256": "4b7810ffe686155483d01161ee58372b91f3be1e930517ada6fea686a261dd52",
         "claimIds": [
           "claim-t-sous-traitant-rgpd-commonConfusion"
         ]
@@ -1668,8 +1668,8 @@
       {
         "id": "claim-t-ia-generative",
         "unitId": "unit-t-ia-generative",
-        "text": "L’intelligence artificielle dite générative désigne les systèmes capables de créer des contenus — texte, code informatique, images, son ou vidéo — à partir d’une consigne, plutôt que de retrouver un contenu déjà existant. Le résultat produit est nouveau à chaque exécution, même pour une consigne proche d’une exécution précédente.",
-        "sha256": "6bc98c19047df460c1e4b601cd8b4fe5dfb9b6c3d9b89a45ac2174183f2781e9",
+        "text": "L’intelligence artificielle dite générative désigne les systèmes capables de produire des contenus — texte, code informatique, images, son ou vidéo — à partir d’une consigne. Ils peuvent aussi résumer, corriger ou traduire des contenus existants. Le résultat est généré, mais pas nécessairement inédit ni différent à chaque exécution.",
+        "sha256": "ef3ccb104f06765785e714c26d0b5a540e34ec0e29b01c43cf2489fe40aec037",
         "type": "information",
         "sourceIds": [
           "source-cnil-ia-generative"
@@ -1683,7 +1683,7 @@
           "population": "Systèmes capables de créer des contenus, tels que décrits par la CNIL.",
           "regime": "Présentation par la CNIL de l’IA générative et des systèmes d’IA à usage général.",
           "validAsOf": "2026-09-16",
-          "exceptions": "La seconde phrase de la définition décrit le caractère non déterministe des sorties ; elle relève de la doctrine Memlia.",
+          "exceptions": "La génération ne garantit ni l’originalité ni une sortie différente à chaque exécution ; la définition ne promet aucun résultat particulier.",
           "sourceIds": [
             "source-cnil-ia-generative"
           ]
@@ -1764,8 +1764,8 @@
       {
         "id": "claim-t-extraction-de-donnees",
         "unitId": "unit-t-extraction-de-donnees",
-        "text": "L’extraction de données est l’étape qui repère, dans le texte obtenu après lecture d’un document, les champs qui ont un sens métier — fournisseur, montant, taux de TVA, date d’échéance — pour les rendre exploitables par un traitement. Elle intervient après la lecture du document, jamais avant.",
-        "sha256": "7c614bbd6b6a4b8afd85ead27c5bdfd2bcd14c76091778ca04ae189d91d5889b",
+        "text": "L’extraction de données repère les champs utiles — fournisseur, montant, taux de TVA, date d’échéance — dans un document ou un flux pour les rendre exploitables. Elle peut partir d’une image, d’un texte natif ou de données structurées, sans passage obligatoire par un OCR séparé.",
+        "sha256": "11066d0da242affce11cf9a0bff8c71847bfb63ea484aefdc46bcddd6d1c91bf",
         "type": "information",
         "sourceIds": [
           "source-microsoft-document-intelligence"
@@ -1780,7 +1780,7 @@
           "population": "Extraction de champs étiquetés, de texte, de structures et de paires clé-valeur à partir de documents.",
           "regime": "Documentation Microsoft Learn d’Azure Document Intelligence, description des modèles d’extraction.",
           "validAsOf": "2026-09-16",
-          "exceptions": "Documentation d’un éditeur : l’ordre « après la lecture, jamais avant » et les exemples de champs relèvent de la doctrine Memlia.",
+          "exceptions": "Documentation d’un éditeur : les formats et l’enchaînement lecture/extraction dépendent du traitement retenu ; aucun OCR séparé n’est imposé universellement.",
           "sourceIds": [
             "source-microsoft-document-intelligence"
           ]
@@ -1814,8 +1814,8 @@
       {
         "id": "claim-t-pre-comptabilite",
         "unitId": "unit-t-pre-comptabilite",
-        "text": "La pré-comptabilité regroupe les tâches qui précèdent l’écriture comptable proprement dite : collecter les pièces, les trier par nature et par période, vérifier qu’elles sont lisibles et complètes, puis les préparer pour la saisie. Elle s’arrête avant l’imputation sur un compte, qui relève de la tenue comptable.",
-        "sha256": "c6887845013007b3690277b463dae90ceb28ded078b6e0b17870fcae677c1484",
+        "text": "La pré-comptabilité regroupe ici la collecte et le tri des pièces, leur lecture, l’extraction des champs et la préparation de propositions comptables, sans imputation définitive ni écriture validée. Les propositions sont présentées au cabinet pour contrôle.",
+        "sha256": "549fc46b249af83eeeba46ad499b0c1462830e6427887a5fa76c5162ff10a73a",
         "type": "methode-memlia",
         "sourceIds": [
           "source-glossary-memlia"
@@ -2079,8 +2079,8 @@
       {
         "id": "claim-t-modele-local",
         "unitId": "unit-t-modele-local",
-        "text": "Un modèle local s’exécute sur une machine contrôlée par le cabinet : les documents soumis ne quittent pas son parc et aucun prestataire ne les reçoit. C’est le mode de déploiement, et non le pays d’hébergement, qui détermine qui peut lire les données.",
-        "sha256": "9f79631537004ee427b57c7183cb0c452f1ba9a98d47aace79336ed6a1657d26",
+        "text": "Un modèle local s’exécute sur une machine contrôlée par le cabinet. Ce lieu d’exécution ne garantit pas l’absence de connexions : l’application peut utiliser des connecteurs, une télémétrie ou des services distants. Les flux et les accès doivent être vérifiés pour le déploiement retenu.",
+        "sha256": "f1e7ddfadd85f014e5de927eb6d93aca1b372eb89208cf250d805ad4ec45f69c",
         "type": "information",
         "sourceIds": [
           "source-cnil-ia-generative-deploiement"
@@ -2614,50 +2614,50 @@
       {
         "id": "claim-t-sous-traitant-rgpd-context",
         "unitId": "unit-t-sous-traitant-rgpd-context",
-        "text": "Un cabinet, responsable du traitement de ses dossiers clients, qualifie chaque éditeur logiciel ou hébergeur qui traite ces données pour son compte : un outil d’IA hébergé par un tiers relève souvent de ce statut. Cette qualification impose d’inscrire dans le contrat les obligations du sous-traitant concernant les données personnelles.",
-        "sha256": "9bb5634192398d45efc620128acd8bea3d5c69704830f537c3aff2fbfc5c9ca5",
+        "text": "Les rôles se qualifient pour chaque traitement d’après les finalités, les moyens et les instructions : le cabinet n’est pas présumé responsable de traitement pour tous ses fichiers. Un prestataire qui traite des données pour le compte du responsable et selon ses instructions peut être sous-traitant ; les obligations correspondantes sont alors inscrites au contrat.",
+        "sha256": "730a281eab6a564bb58b0c4cd0d7533810263f7869dbe2913739b753dabbb49e",
         "type": "legal-reglementaire",
         "sourceIds": [
-          "source-cnil-sous-traitant"
+          "source-cnil-roles-rgpd"
         ],
         "citationIds": [
           "citation-t-sous-traitant-rgpd-context-1",
           "citation-t-sous-traitant-rgpd-context-2"
         ],
-        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "checkedAt": "2026-10-04T00:59:00Z",
         "status": "PASS",
         "applicability": {
-          "population": "Organismes qui traitent des données personnelles pour le compte d’un responsable de traitement.",
-          "regime": "Définition du sous-traitant au sens du RGPD et obligations à inscrire au contrat, telles que présentées par la CNIL.",
-          "validAsOf": "2026-09-16",
-          "exceptions": "La qualification d’un prestataire donné et le contenu exact des clauses relèvent d’une analyse juridique propre à chaque relation.",
+          "population": "Qualification par traitement des rôles de responsable et de sous-traitant.",
+          "regime": "RGPD, article 4, points 7 et 8.",
+          "validAsOf": "2026-10-04",
+          "exceptions": "La qualification concrète dépend du traitement et des instructions ; elle ne découle pas du titre de cabinet ou de fournisseur.",
           "sourceIds": [
-            "source-cnil-sous-traitant"
+            "source-cnil-roles-rgpd"
           ]
         }
       },
       {
         "id": "claim-t-sous-traitant-rgpd-commonConfusion",
         "unitId": "unit-t-sous-traitant-rgpd-commonConfusion",
-        "text": "Un sous-traitant au sens du RGPD est parfois confondu avec un simple fournisseur ; un fournisseur qui ne touche jamais aux données personnelles n’a pas ce statut, tandis qu’un éditeur d’IA qui héberge des données de dossiers en a un.",
-        "sha256": "88b1ae5577134c269b996a7da03f9679858cafc1d52bc41bbf4c761080c1f714",
+        "text": "Le titre de fournisseur, d’éditeur ou de cabinet ne suffit pas à fixer un rôle RGPD. Recevoir des données ne fait pas automatiquement d’un organisme un sous-traitant : il faut examiner le traitement et qui en détermine les finalités et les moyens.",
+        "sha256": "4b7810ffe686155483d01161ee58372b91f3be1e930517ada6fea686a261dd52",
         "type": "legal-reglementaire",
         "sourceIds": [
-          "source-cnil-sous-traitant"
+          "source-cnil-roles-rgpd"
         ],
         "citationIds": [
           "citation-t-sous-traitant-rgpd-commonConfusion-1",
           "citation-t-sous-traitant-rgpd-commonConfusion-2"
         ],
-        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "checkedAt": "2026-10-04T00:59:00Z",
         "status": "PASS",
         "applicability": {
-          "population": "Organismes qui traitent des données personnelles pour le compte d’un responsable de traitement.",
-          "regime": "Définition du sous-traitant au sens du RGPD et obligations à inscrire au contrat, telles que présentées par la CNIL.",
-          "validAsOf": "2026-09-16",
-          "exceptions": "La qualification d’un prestataire donné et le contenu exact des clauses relèvent d’une analyse juridique propre à chaque relation.",
+          "population": "Qualification par traitement des rôles de responsable et de sous-traitant.",
+          "regime": "RGPD, article 4, points 7 et 8.",
+          "validAsOf": "2026-10-04",
+          "exceptions": "La qualification concrète dépend du traitement et des instructions ; elle ne découle pas du titre de cabinet ou de fournisseur.",
           "sourceIds": [
-            "source-cnil-sous-traitant"
+            "source-cnil-roles-rgpd"
           ]
         }
       },
@@ -2842,7 +2842,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « contrôle avant DSN » l’ensemble des vérifications que le cabinet choisit de rejouer entre le calcul de la paie et le dépôt : pièces, variables, écarts, cohérences métier et conformité du fichier.",
         "sha256": "fca06fe42a7e25b4b05ae0efd1017cfec7f45341c7415d36b8c15070e4b34f46",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2857,7 +2857,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « production sociale » le cycle de travail retenu par le cabinet pour collecter les variables, établir et contrôler les bulletins, déposer les déclarations puis traiter les retours et documents.",
         "sha256": "acb724673cb90dace6ec722eb50a00f14ffd211298293d2d6367a4e5fd48cff6",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2932,7 +2932,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Résultat regroupant des dossiers, étapes ou périodes sans afficher un indicateur par personne.",
         "sha256": "1ebf26f16dd177c4b45395c3a3ccf7db7ed646d53df5f63457e3946d25e63095",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2947,7 +2947,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « lettrage comptable » le rapprochement d’écritures que le cabinet considère comme liées, par exemple une facture et son règlement, au moyen d’un repère commun.",
         "sha256": "5e251550804bff5c985f1977625f66a37ec867df5da9ba4a4bfbaf5018dd00fb",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2962,7 +2962,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « rapprochement bancaire » le contrôle qui compare les mouvements et le solde comptables d’un compte au relevé de la banque, puis prépare l’explication des écarts de date, d’omission ou d’erreur.",
         "sha256": "5d6711e4a86e86cd3a95ed9cb8b0d54d311f6dd578fcdfbf0c99b373cc772c48",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2977,7 +2977,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « révision comptable » l’ensemble de contrôles défini par la mission du cabinet pour examiner les comptes, documenter les anomalies et préparer leur validation.",
         "sha256": "1bb644f7358a3eb85955f013c6eb131b8722ee74487b4d597b735e4598bbb755",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2992,7 +2992,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « pièce justificative » le document ou la trace que le cabinet retient pour expliquer et étayer une opération enregistrée ou une décision de contrôle.",
         "sha256": "a765ba57657d449aef91e08dcac9bbf8e6ad6cba44930a214c16cbe21e9b50bb",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3022,7 +3022,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Instruction explicite qui décrit ce que le cabinet attend d’une entrée donnée, les exceptions admises et le résultat à préparer.",
         "sha256": "b94515f0319c8330469b0516ef1bc892a5793f7c70e44cefa4f542e17ad37528",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3037,7 +3037,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Situation prévue dans laquelle le traitement s’arrête et demande une intervention au lieu de produire un résultat incertain.",
         "sha256": "322fc7b6a29dc30567b72ea3d2b4c09191c9107ad81d3476e5822275d4dce4dd",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3052,7 +3052,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « contrôle de cohérence » une vérification qui compare des données entre elles ou à une règle du cabinet pour faire ressortir une anomalie possible.",
         "sha256": "c9692a450e9890e647cc0292233593ce074db032e72eda209524caeff4189c13",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3067,7 +3067,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans le contrat technique Memlia, le « schéma de données » décrit la structure attendue d’un jeu de données : champs, types, formats, valeurs admises et relations utiles au traitement.",
         "sha256": "f3a6538359f5ecac5b06ce359be2ad772d9e26cff576ab69631a41851c5aca3c",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3082,7 +3082,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans le contrat technique Memlia, la « traçabilité » permet de retrouver quelles entrées, quelle règle, quelle version et quel résultat ont conduit à une proposition ou à une décision.",
         "sha256": "b5e9e626feeb05bb79bf98dc5bfff437d28848865218681951503f66df53f36a",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3097,7 +3097,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Étape où une personne compétente accepte, corrige ou refuse la proposition préparée avant qu’elle produise un effet métier.",
         "sha256": "146f1957b12faf35ffd1ca6a168522cd48a56ca15ef3dd40c10acbb8fe972fab",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3112,7 +3112,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans le contrat technique Memlia, « fail-closed » désigne le comportement testé où une entrée inconnue, invalide ou ambiguë bloque le traitement au lieu d’autoriser une sortie par défaut.",
         "sha256": "7067305c1bf51ffbc2b0eadee41b25f9a61094299e322ab24906f0d4f91e610d",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3127,7 +3127,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "L’automatisation consiste à faire exécuter par un outil, sans intervention humaine à chaque occurrence, une règle explicite et stable : les mêmes conditions produisent toujours le même traitement. Ce qui sort de la règle — une donnée absente, un cas non prévu — doit être signalé plutôt que traité par approximation, pour rester fidèle à la règle écrite.",
         "sha256": "96230605db4208e81218a25489db246fc744765ec9c379abbe05c0e628419d06",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3142,7 +3142,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Un flux de travail est l’enchaînement ordonné des étapes qui transforment une demande en résultat : chacune a un responsable, une condition qui permet de la déclencher, et une sortie qui alimente l’étape suivante. Il existe indépendamment de tout logiciel ; un outil peut ensuite exécuter tout ou partie de ses étapes.",
         "sha256": "1bdb8ddbda00abca0aac6c891098fbfb07f4d2a56838ba7bfda939bc2b0e5351",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3172,7 +3172,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Une exception est une occurrence que la règle écrite ne couvre pas — une donnée absente, un format inattendu, une combinaison non prévue — et qui doit remonter à une personne plutôt qu’être traitée par une valeur par défaut. Une exception n’est pas une erreur : c’est le fonctionnement attendu d’une règle qui refuse de deviner.",
         "sha256": "850600a19b721cc4666597b435bd6cbd1b782d46c06c8a2dbc70aec2e4471a61",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3187,7 +3187,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Une file d’anomalies est la liste unique où se regroupent toutes les exceptions détectées par un traitement, chacune avec son motif et son statut, pour être reprise en une seule séance par une personne plutôt qu’au fil de l’eau. Elle transforme des interruptions dispersées en une revue périodique et maîtrisable.",
         "sha256": "b34be3463258ab375c19747720598d213b1184b6bed71f911fd067bd123347c3",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3202,7 +3202,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Proposition puis validation décrit un fonctionnement en deux temps : l’outil prépare une valeur, un texte ou une action à partir d’une règle, puis une personne l’accepte, la corrige ou la refuse avant qu’elle ne produise un effet. Ce que la personne saisit ou corrige n’est jamais réécrit ensuite par l’outil.",
         "sha256": "08b4932c54da12dd4c50b0232db3ab6d940d0ea995edca1cd82811f19efaa967",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3232,7 +3232,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Un jeu d’essai fictif est un ensemble de données entièrement inventées, plausibles, construites pour couvrir un cas courant, un cas limite et un cas de refus, utilisé pour construire et éprouver un traitement sans jamais exposer de dossier réel. Il se distingue de données anonymisées ou pseudonymisées, qui proviennent toujours de personnes réelles.",
         "sha256": "34921b975d981e6672063b19d9dff280ef814393071f1deff4dab2efe6e29dbb",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3380,9 +3380,9 @@
           "claim-t-pre-comptabilite"
         ],
         "sourceId": "source-glossary-memlia",
-        "text": "La pré-comptabilité regroupe les tâches qui précèdent l’écriture comptable proprement dite : collecter les pièces, les trier par nature et par période, vérifier qu’elles sont lisibles et complètes, puis les préparer pour la saisie. Elle s’arrête avant l’imputation sur un compte, qui relève de la tenue comptable.",
-        "sha256": "c6887845013007b3690277b463dae90ceb28ded078b6e0b17870fcae677c1484",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "text": "La pré-comptabilité regroupe ici la collecte et le tri des pièces, leur lecture, l’extraction des champs et la préparation de propositions comptables, sans imputation définitive ni écriture validée. Les propositions sont présentées au cabinet pour contrôle.",
+        "sha256": "549fc46b249af83eeeba46ad499b0c1462830e6427887a5fa76c5162ff10a73a",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3397,7 +3397,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "La complétude d’un dossier désigne l’état dans lequel toutes les pièces attendues pour une période donnée ont été reçues et sont lisibles, selon une liste définie à l’avance pour ce dossier. Elle se constate pièce par pièce, jamais par une impression générale que « le client a envoyé quelque chose ».",
         "sha256": "fa008e7bb0c97e1525e4015e0f22c9e9dc99128d3614f59913d48d3d471d95a5",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3412,7 +3412,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "La relance de pièces est la demande, adressée à un client selon une cadence définie à l’avance, des pièces manquantes pour compléter un dossier ; elle s’arrête dès leur réception. Elle porte sur des documents attendus dans une mission en cours, jamais sur une somme due.",
         "sha256": "3bba2a0d062afc8d31f3fc4febeb81f79b1e560b2ecf37a9a909f6ba75bd4a77",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3502,7 +3502,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Le reliquat d’exceptions est la part des occurrences qu’un traitement automatisé n’a pas su trancher et qu’il remonte à un collaborateur : cas hors règle, pièce illisible, écart inexpliqué. Il se compte à chaque passage et se suit dans le temps comme une charge de travail attendue.",
         "sha256": "0b6037679c7fb8707ee2d15f21ce5eb5b63c867ccae4d54c8f2b6857ecb79311",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3517,7 +3517,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Un seuil d’alerte est la valeur à partir de laquelle un écart cesse d’être ignoré et remonte pour examen : un montant, un pourcentage, un nombre de jours. Il est fixé par le cabinet et révisé par lui ; l’outil l’applique sans jamais le déduire des données.",
         "sha256": "04bbb8c42517a77373afda02502e1688a0a6ef97a576173879c86caa70f36d23",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3607,7 +3607,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Une clé de rapprochement est le champ, ou la combinaison de champs, qui permet d’affirmer que deux lignes venues de sources différentes désignent le même objet : un numéro de dossier, un identifiant de pièce, un montant associé à une date. Elle doit être stable et non ambiguë.",
         "sha256": "9ab553abee153f84eb06545ed910e74648c258a759fd419115cf3090e0979d94",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3622,7 +3622,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : un fichier accepté techniquement reste soumis à la revue de paie du cabinet.",
         "sha256": "fb32a084fc2aaddb38ba9b411e56bc77c48bf86c485227a6d7f0e33a6f30fc3d",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3637,7 +3637,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : la recherche des primes oubliées relève de la revue du bulletin, distincte du test DSN-Val.",
         "sha256": "79124f07e103528272a1e8e80fb96fac0ae9f912bd93e7b99fb28725f84e2e4d",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3652,7 +3652,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : même sans anomalie visible dans un retour, le cabinet conserve sa revue de paie.",
         "sha256": "5501e088db7b2a8b8a6f99eeb9aa5fd04442164687056363e87977c796ceee31",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3787,7 +3787,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : le suivi retient l’état du dossier, pas l’enregistrement de chaque geste individuel.",
         "sha256": "222d059682b72d7bf0e3943272e101e4715f5ff63d580c1568836c88a79c9935",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3817,7 +3817,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : nous réservons le mot « anonyme » à un résultat dont les possibilités de réidentification ont été examinées.",
         "sha256": "01e2938e867c247059b0df5f21dcb906616302f3422a997bf4313d8dcacfdd15",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3922,7 +3922,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : nous ne déclarons jamais un export anonyme ou conforme au seul motif que ses lignes sont regroupées.",
         "sha256": "26f1e6c921c980f01230d0330015443b1d0332a011a1c8df0c69d891f0ffe9db",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3937,7 +3937,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : un simple retard ne doit pas déclencher automatiquement un envoi.",
         "sha256": "8c8530126b2b75514260098e4107c50cb03e764b282c89231b723c0499e4b03a",
-        "sourceContentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "sourceContentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3994,13 +3994,13 @@
         "claimIds": [
           "claim-t-sous-traitant-rgpd-context"
         ],
-        "sourceId": "source-cnil-sous-traitant",
-        "text": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme (« le responsable de traitement »), dans le cadre d’un service ou d’une prestation.",
-        "sha256": "9ac521413a676aea6356a985cb7ea0488557001bfb09990e5b2ee85e67d92280",
-        "sourceContentSha256": "9a887425be3a8666586d4a858a6632f17f1237d8a1c9f7d779b4fa02b963532d",
-        "finalUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
-        "checkedAt": "2026-09-16T20:24:14+01:00",
-        "title": "Sous-traitant | CNIL",
+        "sourceId": "source-cnil-roles-rgpd",
+        "text": "détermine les finalités et les moyens du traitement",
+        "sha256": "696f13163b7189a742677a39361528e721fa36b16c5609ae177bf1fbf8412ea8",
+        "sourceContentSha256": "e0087456bdeba9c77f7fb4f5647a44037de911996e53e25697ddfa3518bf7a5a",
+        "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1",
+        "checkedAt": "2026-10-04T00:59:00Z",
+        "title": "RGPD, article 4 : responsable de traitement et sous-traitant",
         "locator": "sous-traitant-rgpd:context",
         "verdict": "soutient"
       },
@@ -4009,13 +4009,13 @@
         "claimIds": [
           "claim-t-sous-traitant-rgpd-context"
         ],
-        "sourceId": "source-cnil-sous-traitant",
-        "text": "Les sous-traitants ont des obligations concernant les données personnelles, qui doivent être présentes dans le contrat :",
-        "sha256": "02e71f591146f1ebb8ae94b0c95a1b101ce871c201ce9ce44370e9375a9c27ea",
-        "sourceContentSha256": "9a887425be3a8666586d4a858a6632f17f1237d8a1c9f7d779b4fa02b963532d",
-        "finalUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
-        "checkedAt": "2026-09-16T20:24:14+01:00",
-        "title": "Sous-traitant | CNIL",
+        "sourceId": "source-cnil-roles-rgpd",
+        "text": "qui traite des données à caractère personnel pour le compte du responsable du traitement",
+        "sha256": "d40966b869fcf1d97a676fa4f279344e821a2ba4e50156d12bec14557bdfd63b",
+        "sourceContentSha256": "e0087456bdeba9c77f7fb4f5647a44037de911996e53e25697ddfa3518bf7a5a",
+        "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1",
+        "checkedAt": "2026-10-04T00:59:00Z",
+        "title": "RGPD, article 4 : responsable de traitement et sous-traitant",
         "locator": "sous-traitant-rgpd:context",
         "verdict": "soutient"
       },
@@ -4024,13 +4024,13 @@
         "claimIds": [
           "claim-t-sous-traitant-rgpd-commonConfusion"
         ],
-        "sourceId": "source-cnil-sous-traitant",
-        "text": "Le sous-traitant est la personne physique ou morale (entreprise ou organisme public) qui traite des données pour le compte d’un autre organisme (« le responsable de traitement »), dans le cadre d’un service ou d’une prestation.",
-        "sha256": "9ac521413a676aea6356a985cb7ea0488557001bfb09990e5b2ee85e67d92280",
-        "sourceContentSha256": "9a887425be3a8666586d4a858a6632f17f1237d8a1c9f7d779b4fa02b963532d",
-        "finalUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
-        "checkedAt": "2026-09-16T20:24:14+01:00",
-        "title": "Sous-traitant | CNIL",
+        "sourceId": "source-cnil-roles-rgpd",
+        "text": "détermine les finalités et les moyens du traitement",
+        "sha256": "696f13163b7189a742677a39361528e721fa36b16c5609ae177bf1fbf8412ea8",
+        "sourceContentSha256": "e0087456bdeba9c77f7fb4f5647a44037de911996e53e25697ddfa3518bf7a5a",
+        "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1",
+        "checkedAt": "2026-10-04T00:59:00Z",
+        "title": "RGPD, article 4 : responsable de traitement et sous-traitant",
         "locator": "sous-traitant-rgpd:commonConfusion",
         "verdict": "soutient"
       },
@@ -4039,13 +4039,13 @@
         "claimIds": [
           "claim-t-sous-traitant-rgpd-commonConfusion"
         ],
-        "sourceId": "source-cnil-sous-traitant",
-        "text": "Les sous-traitants ont des obligations concernant les données personnelles, qui doivent être présentes dans le contrat :",
-        "sha256": "02e71f591146f1ebb8ae94b0c95a1b101ce871c201ce9ce44370e9375a9c27ea",
-        "sourceContentSha256": "9a887425be3a8666586d4a858a6632f17f1237d8a1c9f7d779b4fa02b963532d",
-        "finalUrl": "https://www.cnil.fr/fr/definition/sous-traitant",
-        "checkedAt": "2026-09-16T20:24:14+01:00",
-        "title": "Sous-traitant | CNIL",
+        "sourceId": "source-cnil-roles-rgpd",
+        "text": "qui traite des données à caractère personnel pour le compte du responsable du traitement",
+        "sha256": "d40966b869fcf1d97a676fa4f279344e821a2ba4e50156d12bec14557bdfd63b",
+        "sourceContentSha256": "e0087456bdeba9c77f7fb4f5647a44037de911996e53e25697ddfa3518bf7a5a",
+        "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1",
+        "checkedAt": "2026-10-04T00:59:00Z",
+        "title": "RGPD, article 4 : responsable de traitement et sous-traitant",
         "locator": "sous-traitant-rgpd:commonConfusion",
         "verdict": "soutient"
       },
@@ -4200,7 +4200,7 @@
         "official": false,
         "upstreamUrl": "file://src/data/glossary.ts",
         "snapshotPath": "src/data/glossary.ts",
-        "contentSha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1",
+        "contentSha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57",
         "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
         "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
         "claimIds": [
@@ -4495,9 +4495,7 @@
         "verificationEvidenceRef": "docs/qa/hub-ressources/glossaire-vague-1.md#verification-des-sources",
         "classificationEvidenceRef": "docs/qa/hub-ressources/glossaire-vague-1.md#classification-des-sources",
         "claimIds": [
-          "claim-t-sous-traitant-rgpd",
-          "claim-t-sous-traitant-rgpd-context",
-          "claim-t-sous-traitant-rgpd-commonConfusion"
+          "claim-t-sous-traitant-rgpd"
         ]
       },
       {
@@ -4673,6 +4671,26 @@
           "claim-t-export-logiciel-et-import-csv",
           "claim-t-export-logiciel-et-import-csv-commonConfusion"
         ]
+      },
+      {
+        "id": "source-cnil-roles-rgpd",
+        "publisher": "CNIL",
+        "title": "RGPD, article 4 : responsable de traitement et sous-traitant",
+        "requestedUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1",
+        "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1",
+        "checkedAt": "2026-10-04T00:59:00Z",
+        "level": "tier-1",
+        "provenance": "primary",
+        "official": true,
+        "upstreamUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1",
+        "snapshotPath": "docs/qa/site-copy-b/sources/cnil-roles-rgpd.md",
+        "contentSha256": "e0087456bdeba9c77f7fb4f5647a44037de911996e53e25697ddfa3518bf7a5a",
+        "verificationEvidenceRef": "docs/qa/site-copy-b/recette.md#verification-des-sources",
+        "classificationEvidenceRef": "docs/qa/site-copy-b/recette.md#classification-des-sources",
+        "claimIds": [
+          "claim-t-sous-traitant-rgpd-context",
+          "claim-t-sous-traitant-rgpd-commonConfusion"
+        ]
       }
     ],
     "requiredRelations": [
@@ -4703,333 +4721,23 @@
         "dsn",
         "legal-reglementaire"
       ],
-      "checkedAt": "2026-09-21T12:07:28Z",
+      "checkedAt": "2026-09-16T21:09:13+01:00",
       "businessReview": {
         "required": true,
-        "reviewerType": "ai-agent",
-        "reviewerProfile": "metier",
-        "reviewerId": "t_27d12a2f",
-        "reviewerRole": "reviewer-metier-memlia",
+        "reviewerId": null,
+        "reviewerType": null,
+        "reviewerProfile": null,
+        "reviewerRole": null,
         "distinctFrom": [
           "author",
           "editorialReviewer",
           "sourceClassifier"
         ],
-        "reviewedCandidateHash": "0a8a2c6f143cf23ddd3af5bb93886b779dd662bcf6c5b8660e66dccf91199d70",
-        "status": "AI_REVIEW_PASS",
-        "claimSourceVerdicts": [
-          {
-            "claimId": "claim-t-dsn",
-            "sourceId": "source-net-dsn-overview",
-            "citationIds": [
-              "citation-t-dsn-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "6501b347460ffc6f155702f53fe317b17d1df81cd10c8eebc8cec2448ee7d684",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source net-entreprises.fr rouverte par curl (HTTP 200) le 16 septembre 2026 ; la citation sur le caractère obligatoire de la DSN et son rôle de remplacement de formalités liées à la paie y figure mot pour mot une fois balises et espaces retirés. L'affirmation généralise « près de 80 procédures » en « des formalités », ce qui reste dans le sens de la source sans introduire de chiffre susceptible de devenir obsolète."
-          },
-          {
-            "claimId": "claim-t-dsn-val",
-            "sourceId": "source-net-dsn-val",
-            "citationIds": [
-              "citation-t-dsn-val-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200). La phrase sur DSN-Val, le cahier technique et le journal de maintenance de la norme (JMN) est retrouvée mot pour mot dans la page vivante et dans la copie locale. L'affirmation ne dit pas plus que la source."
-          },
-          {
-            "claimId": "claim-t-compte-rendu-metier-dsn",
-            "sourceId": "source-net-crm",
-            "citationIds": [
-              "citation-t-compte-rendu-metier-dsn-1",
-              "citation-t-compte-rendu-metier-dsn-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; les deux citations (nature du compte rendu métier, et confirmation de qualité ou signalement d'anomalies) sont retrouvées mot pour mot. L'affirmation synthétise fidèlement les deux passages sans en durcir le sens."
-          },
-          {
-            "claimId": "claim-t-annule-et-remplace-dsn",
-            "sourceId": "source-net-annule",
-            "citationIds": [
-              "citation-t-annule-et-remplace-dsn-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source inaccessible à curl (HTTP 401, net-entreprises.custhelp.com refuse la requête anonyme) ; jugement fondé sur la copie datée du 16 septembre 2026 au matin, dont le SHA-256 correspond exactement à celui enregistré dans le manifeste et au fichier réel (shasum vérifié). La citation y figure mot pour mot. L'affirmation reste générique (« la fenêtre autorisée pour ce type de déclaration ») sans reprendre la date-limite chiffrée « 5 ou 15 du mois suivant » propre à la DSN mensuelle, ce qui évite toute généralisation abusive aux signalements d'événement — traités séparément par le claim de confusion courante ci-dessous."
-          },
-          {
-            "claimId": "claim-t-donnee-personnelle",
-            "sourceId": "source-cnil-donnee",
-            "citationIds": [
-              "citation-t-donnee-personnelle-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "b40a155d3aba77d6b8c6a92391edaeab5861fe3b74327e564c90d0ec9cdf5a6e",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; la définition de la donnée personnelle est retrouvée mot pour mot. L'affirmation reprend fidèlement cette définition et y intègre la distinction directe/indirecte énoncée par la phrase suivante de la même page."
-          },
-          {
-            "claimId": "claim-t-minimisation-des-donnees",
-            "sourceId": "source-cnil-rgpd",
-            "citationIds": [
-              "citation-t-minimisation-des-donnees-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "fed6712016214922b4eb8c294bb96b7b9bc7a88b9943dccb6ea368b8f414a3ee",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200). Sur la page vivante, le mot « minimisation » est enveloppé dans une infobulle HTML (bouton + span de glossaire) ; une fois les balises retirées, le texte cité (« adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités... ») est retrouvé caractère pour caractère. L'affirmation paraphrase fidèlement ce principe sans l'étendre."
-          },
-          {
-            "claimId": "claim-t-anonymisation",
-            "sourceId": "source-cnil-anonymisation",
-            "citationIds": [
-              "citation-t-anonymisation-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
-            "checkedAt": "2026-09-16T21:06:16+01:00",
-            "reasoning": "Rejugement après correction : `src/data/glossary.ts` a été modifié et les deux manifestes rescellés (`npm run resource:seal-surfaces`) ; le texte du claim est désormais « Traitement visant à rendre impossible, en pratique, l'identification d'une personne par quelque moyen que ce soit et de manière irréversible » (nouveau sha256 08d753e86e5bb8c8389ce478536f0fe9e92f381c65586b4431a1c47c20a54918, vérifié dans le manifeste courant). La citation, le sourceContentSha256 et le fichier de copie locale sont inchangés (fc641877..., diff confirmé nul sur les 26 autres claims sensibles du glossaire). Copie locale : le SHA-256 recalculé du fichier (`shasum -a 256 docs/qa/hub-ressources/metier-fix-a-sources/cnil-anonymisation.txt`) redonne fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d et la citation « ...par quelque moyen que ce soit et de manière irréversible » y est présente mot pour mot. Page vivante : rouverte par curl (HTTP 200) le 16 septembre 2026 en soirée, la même citation y est retrouvée mot pour mot après retrait des balises et des espaces. Fond : le claim reprend désormais exactement le standard de la source (« quelque moyen que ce soit »), sans plus le reformuler en un critère de moyens raisonnables absent de cette page CNIL. La nuance précédemment relevée est résolue. Verdict soutient, sans réserve."
-          },
-          {
-            "claimId": "claim-t-pseudonymisation",
-            "sourceId": "source-cnil-anonymisation",
-            "citationIds": [
-              "citation-t-pseudonymisation-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; la définition de la pseudonymisation est retrouvée mot pour mot sur la page vivante et dans la copie locale. L'affirmation la reprend fidèlement, sans extension."
-          },
-          {
-            "claimId": "claim-t-recouvrement-amiable",
-            "sourceId": "source-service-public-recouvrement",
-            "citationIds": [
-              "citation-t-recouvrement-amiable-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "2c0a4012d8c3750f8054d7b17ee2f18b924670156119edc6752d6a4f3ce1274e",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; la citation sur la relance puis la mise en demeure est retrouvée mot pour mot. L'affirmation ne dit pas plus que la source."
-          },
-          {
-            "claimId": "claim-t-systeme-d-ia",
-            "sourceId": "source-eurlex-ai-act",
-            "citationIds": [
-              "citation-t-systeme-d-ia-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "c8084dc4b489ebbe3d100ef3d5982e7a01dfe4ecd6326671e6cac268d3695230",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source EUR-Lex rouverte par curl (HTTP 200, page de 1,3 Mo) ; la définition de l'article 3, point 1, du règlement (UE) 2024/1689 est retrouvée mot pour mot. L'affirmation omet la fin de la phrase (« pour des objectifs explicites ou implicites » et « qui peuvent influencer les environnements physiques ou virtuels ») mais n'affirme rien de plus que ce qui est repris ; l'omission ne change pas le sens de ce qui est cité."
-          },
-          {
-            "claimId": "claim-t-sous-traitant-rgpd",
-            "sourceId": "source-cnil-sous-traitant",
-            "citationIds": [
-              "citation-t-sous-traitant-rgpd-1",
-              "citation-t-sous-traitant-rgpd-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "9a887425be3a8666586d4a858a6632f17f1237d8a1c9f7d779b4fa02b963532d",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; les deux citations (définition du sous-traitant, obligations à inscrire au contrat) sont retrouvées mot pour mot. L'affirmation les combine fidèlement sans en durcir le sens."
-          },
-          {
-            "claimId": "claim-t-prelevement-sepa-et-rejet",
-            "sourceId": "source-banque-france-sepa",
-            "citationIds": [
-              "citation-t-prelevement-sepa-et-rejet-1",
-              "citation-t-prelevement-sepa-et-rejet-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "9c1cf92a313b863a22150a51948729a1becdbef1f77e75f6e91d3cdcc03058ea",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source Banque de France rouverte par curl (HTTP 200) ; les deux citations (consentement matérialisé par un mandat de prélèvement, notification motivée du rejet par la banque) sont retrouvées mot pour mot. La troisième phrase de l'affirmation (« un rejet n'est pas un impayé définitif : il appelle une nouvelle présentation ou un contact avec le client ») n'a pas d'équivalent dans cette FAQ ; applicability.exceptions du manifeste l'identifie explicitement comme doctrine Memlia et non comme un fait attribué à la Banque de France, ce qui évite toute usurpation d'autorité. Verdict soutient pour ce qui est effectivement attribué à la source ; réserve consignée sur le mélange, dans une même affirmation sensible de type juridique, d'un fait sourcé et d'une doctrine non sourcée."
-          },
-          {
-            "claimId": "claim-t-honoraires-mensualises-et-actes-hors-forfait",
-            "sourceId": "source-legifrance-deontologie-honoraires",
-            "citationIds": [
-              "citation-t-honoraires-mensualises-et-actes-hors-forfait-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "3857e998191e3e1c32d1f852b3195e33476a4524dc2cf87affe29980ee8bba3b",
-            "checkedAt": "2026-09-16T21:09:13+01:00",
-            "reasoning": "Rejugement après re-scellement : seul l'en-tête de la copie locale a changé (`docs/qa/hub-ressources/glossaire-vague-1-sources/legifrance-deontologie-honoraires.txt` porte désormais l'heure réelle de la capture Chrome au décalage machine, « 2026-09-16T20:36:00+01:00 (heure machine, à la minute) », au lieu d'une heure précédente) ; ce seul octet d'en-tête change le SHA-256 du fichier. `shasum -a 256` recalculé sur le fichier donne 3857e998191e3e1c32d1f852b3195e33476a4524dc2cf87affe29980ee8bba3b, identique au `contentSha256` désormais dans le manifeste et au `sourceContentSha256` de la citation : cohérence confirmée. Le passage cité (« Les honoraires sont fixés librement entre le client et les experts-comptables... ») est inchangé caractère pour caractère dans cette copie, et le claim (`sha256` 9a8929b79653f2fc686d7ddb784234d9f0d6f161b0b4787b8dd4248b1590978d, inchangé) comme la citation (texte inchangé) n'ont pas bougé. Source toujours inaccessible à curl (HTTP 403, défi anti-robot Cloudflare) ; aucune raison de penser que ce comportement a changé, la copie datée reste le fondement du jugement. Fond inchangé : la phrase sur les honoraires fixés librement correspond toujours au texte réel de l'article 158 du décret n° 2012-432 ; la phrase sur la mensualisation et les actes hors forfait reste hors du périmètre de cet article, comme le déclare `applicability.exceptions`. Verdict soutient, inchangé ; réserve sur le mélange fait sourcé / doctrine toujours consignée."
-          },
-          {
-            "claimId": "claim-t-annule-et-remplace-dsn-commonConfusion",
-            "sourceId": "source-net-annule",
-            "citationIds": [
-              "citation-t-annule-et-remplace-dsn-commonConfusion-1",
-              "citation-t-annule-et-remplace-dsn-commonConfusion-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source inaccessible à curl (HTTP 401) ; jugement sur la copie du matin, SHA-256 conforme. Les deux citations (délai de la DSN mensuelle, absence de délai pour un signalement d'événement) y figurent mot pour mot. L'affirmation généralise correctement le contraste entre les deux régimes sans rien y ajouter."
-          },
-          {
-            "claimId": "claim-t-donnee-personnelle-context",
-            "sourceId": "source-cnil-donnee",
-            "citationIds": [
-              "citation-t-donnee-personnelle-context-1",
-              "citation-t-donnee-personnelle-context-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "b40a155d3aba77d6b8c6a92391edaeab5861fe3b74327e564c90d0ec9cdf5a6e",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200). La première citation est retrouvée mot pour mot. La seconde, sur les exemples d'identification directe et indirecte, est présente verbatim dans la copie locale, mais tronque la phrase réelle de la page vivante : celle-ci énumère d'autres exemples (numéro de sécurité sociale, adresse postale ou courriel...) après « plaque d'immatriculation », avant sa vraie fin de phrase, alors que la citation referme par une parenthèse et un point qui ne se trouvent pas à cet endroit dans la page actuelle. Réserve consignée sur la fidélité de cet extrait (troncature sans marque d'ellipse). Sans conséquence sur le verdict : l'affirmation ne revendique que la distinction générale directe/indirecte, pleinement soutenue quelle que soit la longueur réelle de la liste d'exemples de la CNIL."
-          },
-          {
-            "claimId": "claim-t-donnee-personnelle-exampleFictitious",
-            "sourceId": "source-cnil-anonymisation",
-            "citationIds": [
-              "citation-t-donnee-personnelle-exampleFictitious-1",
-              "citation-t-donnee-personnelle-exampleFictitious-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; les deux citations sont retrouvées mot pour mot (à la capitalisation d'amorce près pour la seconde, qui poursuit sur la page vivante une phrase commençant plus haut par « ... : les données concernées conservent donc... », citée ici avec un « Les » capitalisé en tête d'extrait — aucun autre écart de caractère). L'exemple du tableau de correspondance est une illustration standard et fidèle du principe énoncé : des données pseudonymisées restent personnelles si une table séparée permet de retrouver la personne."
-          },
-          {
-            "claimId": "claim-t-donnee-personnelle-commonConfusion",
-            "sourceId": "source-cnil-anonymisation",
-            "citationIds": [
-              "citation-t-donnee-personnelle-commonConfusion-1",
-              "citation-t-donnee-personnelle-commonConfusion-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Mêmes citations et même constat de capitalisation d'amorce que pour claim-t-donnee-personnelle-exampleFictitious. L'affirmation, nuancée par « ne suffit pas toujours » (et non « jamais »), reste dans le sens de la source."
-          },
-          {
-            "claimId": "claim-t-minimisation-des-donnees-commonConfusion",
-            "sourceId": "source-cnil-rgpd",
-            "citationIds": [
-              "citation-t-minimisation-des-donnees-commonConfusion-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "fed6712016214922b4eb8c294bb96b7b9bc7a88b9943dccb6ea368b8f414a3ee",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; même citation que pour le claim principal de minimisation, retrouvée mot pour mot une fois l'infobulle HTML neutralisée. L'exemple de la colonne de tableur exclue est une application directe, non une extension, du principe de minimisation cité."
-          },
-          {
-            "claimId": "claim-t-anonymisation-commonConfusion",
-            "sourceId": "source-cnil-anonymisation",
-            "citationIds": [
-              "citation-t-anonymisation-commonConfusion-1",
-              "citation-t-anonymisation-commonConfusion-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200). La première citation (définition de la pseudonymisation) est retrouvée mot pour mot. La seconde (« conservent donc un caractère personnel... ») est retrouvée à l'identique, capitalisation d'amorce mise à part (la source poursuit une phrase antérieure avec un « les » minuscule ; la citation capitalise « Les » pour ouvrir l'extrait, sans autre écart). L'affirmation reprend fidèlement la réversibilité de la pseudonymisation par opposition à l'anonymisation, sans reprendre le point nuancé du claim-t-anonymisation ci-dessus."
-          },
-          {
-            "claimId": "claim-t-pseudonymisation-context",
-            "sourceId": "source-cnil-anonymisation",
-            "citationIds": [
-              "citation-t-pseudonymisation-context-1",
-              "citation-t-pseudonymisation-context-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Mêmes citations et même constat de capitalisation d'amorce que ci-dessus. L'affirmation (remplacer un nom par un identifiant limite l'exposition directe mais ne suffit pas si la personne reste retrouvable) est une reformulation fidèle, non une extension."
-          },
-          {
-            "claimId": "claim-t-pseudonymisation-commonConfusion",
-            "sourceId": "source-cnil-anonymisation",
-            "citationIds": [
-              "citation-t-pseudonymisation-commonConfusion-1",
-              "citation-t-pseudonymisation-commonConfusion-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Mêmes citations. L'affirmation (la pseudonymisation n'est ni une anonymisation ni une sortie du RGPD) est le corollaire direct des deux phrases citées (réversibilité, persistance du caractère personnel)."
-          },
-          {
-            "claimId": "claim-t-recouvrement-amiable-commonConfusion-sequence",
-            "sourceId": "source-service-public-recouvrement",
-            "citationIds": [
-              "citation-t-recouvrement-amiable-commonConfusion-sequence-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "2c0a4012d8c3750f8054d7b17ee2f18b924670156119edc6752d6a4f3ce1274e",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; citation identique à celle du claim principal, retrouvée mot pour mot. L'affirmation sur la séquence relance puis mise en demeure ne dit rien de plus que la source."
-          },
-          {
-            "claimId": "claim-t-systeme-d-ia-context",
-            "sourceId": "source-eurlex-ai-act",
-            "citationIds": [
-              "citation-t-systeme-d-ia-context-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "c8084dc4b489ebbe3d100ef3d5982e7a01dfe4ecd6326671e6cac268d3695230",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; la citation, tirée du considérant 12 du règlement (UE) 2024/1689, est retrouvée mot pour mot. L'affirmation applique ce considérant au contexte d'un cabinet évaluant un outil promu comme « IA » ; applicability précise qu'un considérant éclaire la définition sans créer d'obligation propre et que la qualification concrète reste un examen au cas par cas, ce qui borne correctement la portée de l'affirmation."
-          },
-          {
-            "claimId": "claim-t-systeme-d-ia-commonConfusion",
-            "sourceId": "source-eurlex-ai-act",
-            "citationIds": [
-              "citation-t-systeme-d-ia-commonConfusion-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "c8084dc4b489ebbe3d100ef3d5982e7a01dfe4ecd6326671e6cac268d3695230",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Même citation, même constat. L'affirmation restitue fidèlement la distinction du considérant 12 entre système d'IA et automatisation fondée sur des règles définies uniquement par des personnes physiques."
-          },
-          {
-            "claimId": "claim-t-sous-traitant-rgpd-context",
-            "sourceId": "source-cnil-sous-traitant",
-            "citationIds": [
-              "citation-t-sous-traitant-rgpd-context-1",
-              "citation-t-sous-traitant-rgpd-context-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "9a887425be3a8666586d4a858a6632f17f1237d8a1c9f7d779b4fa02b963532d",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; les deux citations sont retrouvées mot pour mot. L'application au cas d'un outil d'IA hébergé par un tiers est hedgée par « relève souvent de ce statut », et applicability rappelle que la qualification exacte d'un prestataire donné reste une analyse au cas par cas : pas d'extension abusive de la définition citée."
-          },
-          {
-            "claimId": "claim-t-sous-traitant-rgpd-commonConfusion",
-            "sourceId": "source-cnil-sous-traitant",
-            "citationIds": [
-              "citation-t-sous-traitant-rgpd-commonConfusion-1",
-              "citation-t-sous-traitant-rgpd-commonConfusion-2"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "9a887425be3a8666586d4a858a6632f17f1237d8a1c9f7d779b4fa02b963532d",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Mêmes citations. L'affirmation est un corollaire logique direct de la définition citée : traiter des données pour le compte d'autrui emporte le statut de sous-traitant, ne jamais y toucher ne l'emporte pas."
-          },
-          {
-            "claimId": "claim-t-jeu-d-essai-fictif-commonConfusion",
-            "sourceId": "source-cnil-anonymisation",
-            "citationIds": [
-              "citation-t-jeu-d-essai-fictif-commonConfusion-1"
-            ],
-            "verdict": "soutient",
-            "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
-            "checkedAt": "2026-09-16T21:00:59+01:00",
-            "reasoning": "Source rouverte par curl (HTTP 200) ; la citation (définition de l'anonymisation) est retrouvée mot pour mot. La distinction avec un jeu d'essai fictif, qui n'a jamais correspondu à une personne réelle, découle logiquement de cette définition, qui suppose un traitement appliqué à des données réelles ; applicability précise que le caractère inventé du jeu d'essai est une convention Memlia, non une notion CNIL."
-          }
-        ],
-        "evidenceRef": "docs/qa/hub-ressources/metier-review-r5/preuve-glossaire.json",
-        "evidenceSha256": "adc856cf623eba4e162d9cebcdfad2bb246e5968eb9e28f1741497d93807bcf8"
+        "reviewedCandidateHash": null,
+        "status": "PENDING",
+        "claimSourceVerdicts": [],
+        "evidenceRef": null,
+        "evidenceSha256": null
       }
     }
   },
@@ -5284,7 +4992,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-21T11:47:07.103Z",
+        "checkedAt": "2026-10-04T01:13:24.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5305,7 +5013,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-21T11:47:07.103Z",
+        "checkedAt": "2026-10-04T01:13:24.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5389,7 +5097,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-21T11:47:07.103Z",
+        "checkedAt": "2026-10-04T01:13:24.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5452,7 +5160,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-21T11:47:07.103Z",
+        "checkedAt": "2026-10-04T01:13:24.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5874,7 +5582,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-21T11:47:07.103Z",
+        "checkedAt": "2026-10-04T01:13:24.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5958,7 +5666,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-21T11:47:07.103Z",
+        "checkedAt": "2026-10-04T01:13:24.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5979,7 +5687,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-09-21T11:47:07.103Z",
+        "checkedAt": "2026-10-04T01:13:24.789Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -6792,7 +6500,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-21T11:47:07.103Z",
+      "checkedAt": "2026-10-04T01:13:24.789Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -6817,7 +6525,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-21T11:47:07.103Z",
+      "checkedAt": "2026-10-04T01:13:24.789Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -6840,7 +6548,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-21T11:47:07.103Z",
+      "checkedAt": "2026-10-04T01:13:24.789Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -6865,7 +6573,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-21T11:47:07.103Z",
+      "checkedAt": "2026-10-04T01:13:24.789Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -6888,7 +6596,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-09-21T11:47:07.103Z",
+      "checkedAt": "2026-10-04T01:13:24.789Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -7176,22 +6884,27 @@
           "sha256": "2c0a4012d8c3750f8054d7b17ee2f18b924670156119edc6752d6a4f3ce1274e"
         },
         {
+          "path": "docs/qa/site-copy-b/sources/cnil-roles-rgpd.md",
+          "bytes": 14323,
+          "sha256": "e0087456bdeba9c77f7fb4f5647a44037de911996e53e25697ddfa3518bf7a5a"
+        },
+        {
           "path": "src/data/glossary.ts",
-          "bytes": 96486,
-          "sha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1"
+          "bytes": 96742,
+          "sha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57"
         }
       ],
-      "digest": "c858dfb4df85a55ede57e06c48747fa3225247748182db16dfa3456e5fb1ad68"
+      "digest": "93df36ac744c453d5c676931a5d21a897d687229dff6a5fc2ce891b2766c625e"
     },
     "assetBundle": {
       "entries": [
         {
           "path": "src/data/glossary.ts",
-          "bytes": 96486,
-          "sha256": "1b6725739408cf6755c5f7c761035c3f42d21522f8ea087a1682dca9e90c53b1"
+          "bytes": 96742,
+          "sha256": "f02e179aa80791b2593df6075a25ed2e4249651a0d8a66280718846d201d2f57"
         }
       ],
-      "digest": "56408fe40b2d58ee2dac4bf598ac0e2fbe51e1d123de046dbe8f4331d4a6e3e3"
+      "digest": "05c7a27c5911c6ea2ab685b33271ee260f36abf1209b745c109573accc508c80"
     },
     "configBundle": {
       "entries": [
@@ -7202,29 +6915,29 @@
         },
         {
           "path": "scripts/lib/resource-metier-evidence.mjs",
-          "bytes": 40267,
-          "sha256": "06ba5313b0b4ed58771be125092bd612179d946338c52a03863e2f9c66818840"
+          "bytes": 41296,
+          "sha256": "529258b0bdacb989908439d6c2f55f189f50f5a8a6207a241dbb769a47d1acf7"
         },
         {
           "path": "scripts/lib/resource-metier-v3.mjs",
-          "bytes": 5604,
-          "sha256": "33631f8fc7a8feefd90f55c71f985dfbfb67c803e5d07fcb8d51553e6788b1f0"
+          "bytes": 5857,
+          "sha256": "b6a68c9211aedb1905c0a7ddca5db2f52e79fb0b54cd916db4d804014abcf5ec"
         }
       ],
-      "digest": "049a37f865c250da3a44665199b84dd8d2e6cbe42b526842976fdb28578c1bcb"
+      "digest": "7df06f3eef82c01b62ae1cf96a0e4c0bb3eb5e760a39c2f2614d5c62d847e007"
     },
     "buildOutput": {
       "entries": [
         {
           "path": "dist/glossaire.html",
-          "bytes": 314587,
-          "sha256": "6ef39c91d75a0467acccea531ce8a05f95f52f51e395bca4f7384f356e072484"
+          "bytes": 314702,
+          "sha256": "316594bd112eb89239a84301e2dcfdf4fe0aa5c7963154d9ad611066b1a558c3"
         }
       ],
-      "digest": "16f6e37cb176756d5fc015265dd485485d780084934030d5ab0353783d9bbe17"
+      "digest": "e3df42eade95eccf8799612418621e0b33e656a08d54e700f3a0365cbfd2c02c"
     },
     "candidateHash": {
-      "value": "ec0f45f52e855be12fb09420b4cdac59208a7e1ee23df269b7a51f122237070c",
+      "value": "c12d7c68d96705c8dedab11f676854239d026f6aeece56429dffa7d539a3c139",
       "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
     },
     "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
@@ -7235,18 +6948,18 @@
       "npx astro build",
       "node scripts/strip-briefs.mjs"
     ],
-    "startedAt": "2026-10-03T23:07:45.160Z",
-    "endedAt": "2026-10-03T23:07:49.337Z",
+    "startedAt": "2026-10-04T01:13:23.089Z",
+    "endedAt": "2026-10-04T01:13:26.455Z",
     "result": "PASS",
-    "sourceBundleDigest": "c858dfb4df85a55ede57e06c48747fa3225247748182db16dfa3456e5fb1ad68",
-    "assetBundleDigest": "56408fe40b2d58ee2dac4bf598ac0e2fbe51e1d123de046dbe8f4331d4a6e3e3",
-    "configBundleDigest": "049a37f865c250da3a44665199b84dd8d2e6cbe42b526842976fdb28578c1bcb",
-    "outputDigest": "16f6e37cb176756d5fc015265dd485485d780084934030d5ab0353783d9bbe17",
+    "sourceBundleDigest": "93df36ac744c453d5c676931a5d21a897d687229dff6a5fc2ce891b2766c625e",
+    "assetBundleDigest": "05c7a27c5911c6ea2ab685b33271ee260f36abf1209b745c109573accc508c80",
+    "configBundleDigest": "7df06f3eef82c01b62ae1cf96a0e4c0bb3eb5e760a39c2f2614d5c62d847e007",
+    "outputDigest": "e3df42eade95eccf8799612418621e0b33e656a08d54e700f3a0365cbfd2c02c",
     "reportRefs": [
       "docs/qa/hub-ressources/freshness-r4-exec.md"
     ],
     "receiptRef": "docs/qa/hub-ressources/metier-fix-c-build-receipt.json",
-    "receiptSha256": "42d66839980dcbbe3b6545b00fe93b7a296072c66720edc8c5808a57c0e34fe3"
+    "receiptSha256": "f0136eafc38e0a19920685fa109a88c2fd15258578229e8440a3957a85c2dbe0"
   },
   "preview": {
     "branch": null,
@@ -7264,8 +6977,8 @@
     "reportRef": null
   },
   "audit": {
-    "candidateHash": "ec0f45f52e855be12fb09420b4cdac59208a7e1ee23df269b7a51f122237070c",
-    "buildOutputDigest": "16f6e37cb176756d5fc015265dd485485d780084934030d5ab0353783d9bbe17",
+    "candidateHash": "c12d7c68d96705c8dedab11f676854239d026f6aeece56429dffa7d539a3c139",
+    "buildOutputDigest": "e3df42eade95eccf8799612418621e0b33e656a08d54e700f3a0365cbfd2c02c",
     "gateReportRefs": [
       "fixture://audit/gates"
     ],
@@ -7277,7 +6990,7 @@
     "p0": [],
     "p1": [],
     "result": "PASS",
-    "auditHash": "0a11cb9c07ced38b033bb13f3e25ad7f2ff27164d4735356f33fe56d78825f77"
+    "auditHash": "5cbe82a2789e831f0481c150e1b7c1a9d622f75afe4e1ecaa6c4b956969faff0"
   },
   "approval": {
     "state": "pending",
@@ -7305,7 +7018,7 @@
   "contradictions": [],
   "limitations": [
     "Candidat v3 non publié ; preview, approbation et release restent futures.",
-    "Contenu paie/social explicitement non attesté : la revue métier IA indépendante contrôle la correspondance affirmation/source/citation, elle ne vaut pas attestation professionnelle.",
+    "Contenu paie/social explicitement non attesté. Revue IA indépendante PENDING : aucun AI_REVIEW_PASS n’est revendiqué.",
     "SERP ND : opportunité SEO non établie et aucun point SEO brut attribué.",
     "Aucune donnée client réelle, aucune surveillance nominative, aucune publication ou cron."
   ]

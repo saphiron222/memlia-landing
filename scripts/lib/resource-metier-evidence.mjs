@@ -10,6 +10,12 @@ const DEFINITIONS_ATTENDUES = 53;
 const UNITES_ATTENDUES = 76;
 
 const SOURCE_SPECS = {
+  'source-cnil-roles-rgpd': {
+    publisher: 'CNIL', title: 'RGPD, article 4 : responsable de traitement et sous-traitant',
+    url: 'https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1',
+    snapshotPath: 'docs/qa/site-copy-b/sources/cnil-roles-rgpd.md', report: 'docs/qa/site-copy-b/recette.md',
+    checkedAt: '2026-10-04T00:59:00Z', level: 'tier-1', provenance: 'primary', official: true,
+  },
   'source-net-dsn-overview': {
     publisher: 'Net-entreprises (GIP-MDS)',
     title: 'DSN-INFO : La déclaration Sociale Nominative (DSN)',
@@ -181,6 +187,13 @@ const SOURCE_SPECS = {
 };
 
 const OFFICIAL = {
+  'roles-rgpd': {
+    sourceId: 'source-cnil-roles-rgpd', type: 'legal-reglementaire',
+    citations: ["détermine les finalités et les moyens du traitement", "qui traite des données à caractère personnel pour le compte du responsable du traitement"],
+    applicability: 'Qualification par traitement des rôles de responsable et de sous-traitant.',
+    regime: 'RGPD, article 4, points 7 et 8.',
+    exceptions: 'La qualification concrète dépend du traitement et des instructions ; elle ne découle pas du titre de cabinet ou de fournisseur.',
+  },
   dsn: {
     sourceId: 'source-net-dsn-overview', type: 'dsn',
     citations: ['La DSN – Déclaration Sociale Nominative – est obligatoire pour toutes les entreprises du secteur privé ainsi qu’à la Fonction publique. Elle remplace à ce jour près de 80 procédures et a vocation à supprimer encore des formalités qui s’appuient sur les données de paie.'],
@@ -274,7 +287,7 @@ const OFFICIAL = {
     citations: ["L' intelligence artificielle dite « générative » désigne les systèmes capables de créer des contenus (texte, code informatique, images, musique, audio, vidéos, etc.). Lorsqu’ils permettent de réaliser un large éventail de tâches, ces systèmes peuvent être qualifiés de systèmes d’IA à usage général. C’est par exemple le cas des systèmes intégrant des grands modèles de langage (en anglais large language models ou LLM)."],
     applicability: "Systèmes capables de créer des contenus, tels que décrits par la CNIL.",
     regime: "Présentation par la CNIL de l’IA générative et des systèmes d’IA à usage général.",
-    exceptions: "La seconde phrase de la définition décrit le caractère non déterministe des sorties ; elle relève de la doctrine Memlia.",
+    exceptions: "La génération ne garantit ni l’originalité ni une sortie différente à chaque exécution ; la définition ne promet aucun résultat particulier.",
   },
   "grand-modele-de-langage": {
     sourceId: "source-cnil-modele-de-langage", type: "information",
@@ -302,7 +315,7 @@ const OFFICIAL = {
     citations: ["Les modèles d’extraction de champs de document sont formés pour extraire des champs étiquetés à partir de documents.", "Extrayez du texte, des structures et des paires clé-valeur."],
     applicability: "Extraction de champs étiquetés, de texte, de structures et de paires clé-valeur à partir de documents.",
     regime: "Documentation Microsoft Learn d’Azure Document Intelligence, description des modèles d’extraction.",
-    exceptions: "Documentation d’un éditeur : l’ordre « après la lecture, jamais avant » et les exemples de champs relèvent de la doctrine Memlia.",
+    exceptions: "Documentation d’un éditeur : les formats et l’enchaînement lecture/extraction dépendent du traitement retenu ; aucun OCR séparé n’est imposé universellement.",
   },
   "declencheur": {
     sourceId: "source-microsoft-power-automate-declencheur", type: "information",

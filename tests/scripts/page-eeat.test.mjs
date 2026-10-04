@@ -13,9 +13,9 @@ const pages = [
   { route: '/automatisation/rapprochement-bancaire', sources: 1, experience: false, modified: '2026-09-20' },
   { route: '/automatisation/notes-de-frais', sources: 1, experience: false, modified: '2026-09-20' },
   { route: '/automatisation/factures-fournisseurs', sources: 1, experience: false, modified: '2026-09-20' },
-  { route: '/automatisation-cabinet-comptable', sources: 1, experience: true, modified: '2026-09-20' },
-  { route: '/methode', sources: 0, experience: true, modified: '2026-09-20' },
-  { route: '/garanties', sources: 1, experience: false, modified: '2026-09-20' },
+  { route: '/automatisation-cabinet-comptable', sources: 1, experience: true, modified: '2026-10-04' },
+  { route: '/methode', sources: 0, experience: true, modified: '2026-10-04' },
+  { route: '/garanties', sources: 1, experience: false, modified: '2026-10-04' },
   { route: '/a-propos', sources: 0, experience: false, modified: '2026-09-21' },
 ];
 
@@ -37,6 +37,7 @@ test('les neuf pages E-E-A-T rendent une attribution vraie, un Person relié et 
     assert.match(html, /publié le <time datetime="2026-09-(?:16|20)"/, `${page.route} : publication visible`);
     assert.match(html, new RegExp(`mis à jour le <time datetime="${page.modified}"`), `${page.route} : modification visible`);
     assert.equal((html.match(/data-primary-source/g) ?? []).length, page.sources, `${page.route} : sources primaires`);
+    assert.equal(html.includes('id="page-evidence-title"'), page.sources > 0, `${page.route} : aucun titre Sources vide`);
     assert.equal(html.includes('data-first-hand-experience'), page.experience, `${page.route} : expérience de première main`);
 
     const graph = graphFor(html);

@@ -36,7 +36,7 @@ export const METHODE = {
       numero: 4,
       titre: 'Faire la recette et livrer.',
       texte:
-        'Vos référents vérifient les cas attendus et les refus, sur vos fichiers. Livraison, maintenance et évolutions sont écrites pour ce périmètre ; le devis dépend de la complexité, jamais des sièges.',
+        'Après les essais fictifs, vos référents vérifient les cas attendus et les refus dans l’environnement autorisé du cabinet, sur les cas et fichiers convenus. Livraison, maintenance et évolutions sont écrites pour ce périmètre ; le devis dépend de la complexité, jamais des sièges.',
       image: '07-livrer',
     },
   ] satisfies readonly Etape[],
