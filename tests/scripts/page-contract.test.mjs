@@ -319,7 +319,7 @@ test('la clause DA refuse une navigation mobile cachée ou des cibles sous 44 px
   }
 });
 
-test('la clause SEO exige l’ouverture de description, l’auteur et les deux dates', () => {
+test('la clause SEO exige l’ouverture de description et l’auteur', () => {
   const { root } = fixture();
   try {
     writeFileSync(join(root, 'dist/alpha.html'), html({
@@ -329,8 +329,23 @@ test('la clause SEO exige l’ouverture de description, l’auteur et les deux d
     const sortie = afficherTemoin(audit(root), 3);
     assert.match(sortie, /description doit ouvrir sur "Description alpha"/);
     assert.match(sortie, /author absent/);
-    assert.match(sortie, /datePublished absente/);
-    assert.match(sortie, /dateModified absente/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('une WebPage sans provenance éditoriale ne requiert pas de dates artificielles', () => {
+  const { root, pages } = fixture();
+  try {
+    writeFileSync(join(root, 'dist/alpha.html'), pages.alpha.replace(/,"datePublished":"[^"]+","dateModified":"[^"]+"/, ''));
+    assert.equal(audit(root).pass, true);
+    const article = auditerContratPages({
+      root, copyVerifier: () => ({ pass: true, errors: [] }), exemptions: [],
+      intentRoutes: new Set(['/alpha', '/source']), intentContracts: intentContracts(),
+      routeContracts: new Map([['/alpha', { schemaTypes: ['Article', 'WebPage'] }]]),
+    });
+    assert.match(article.erreurs.map((error) => error.message).join('\n'), /datePublished absente/);
+    assert.match(article.erreurs.map((error) => error.message).join('\n'), /dateModified absente/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
