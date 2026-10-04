@@ -4,7 +4,9 @@ import { ROI_EXAMPLES, buildRoiReport, roiCsv } from '../../src/lib/roi-automati
 const route = '/outils-comptables-gratuits/calculateur-roi-automatisation';
 const compare = 'Comparer les trois scénarios';
 for (const mode of ['disabled','blocked'] as const) test(`ROI : scripts ${mode}, clic et Entrée ne transmettent ni ne perdent les saisies`, async ({browser,baseURL}) => {
-  const context = await browser.newContext({baseURL,javaScriptEnabled:mode !== 'disabled'});
+  // Native focus on 33 fields triggers CSS smooth scrolling even without scripts.
+  // Test data safety with motion reduced, keeping real fill/click/Enter actions.
+  const context = await browser.newContext({baseURL,javaScriptEnabled:mode !== 'disabled',reducedMotion:'reduce'});
   if (mode === 'blocked') await context.route('**/*',route => route.request().resourceType() === 'script' ? route.abort() : route.continue());
   const page = await context.newPage();
   try {

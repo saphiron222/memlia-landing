@@ -42,3 +42,11 @@ Les deux défauts ont été reproduits avant correction : nouveau test moteur ro
 - Reconstruction complète PASS après synchronisation du lastmod de cette seule route : 125 tests Python et 620 tests de la suite scripts Node ; ajout du test aux montants maximum, puis suite scripts rejouée : 621 PASS, dont 9 tests ROI. Astro check 0 erreur/0 warning, 8 hints préexistants. Les 35 parcours navigateur ROI et outils existants passent, dont les deux modes dégradés, la borne et les six largeurs.
 
 La PR74 reste candidate, pas une publication publique. Retour à la même QA pour vérifier ces corrections ; les constats réglementaires et le périmètre initial sont inchangés. La livraison Cloudflare et les contrôles de production restent à exécuter après son PASS.
+
+## Fiabilisation du parcours sans scripts
+
+Le timeout Linux de la revue est reproduit localement, sans modification du test : deux échecs sur trois répétitions du mode disabled, au clic Comparer, après les 33 saisies. Les trois répétitions scripts bloqués passent. Trace et journal rouges conservés dans `.qa/roi-ci-red.zip`.
+
+Le défilement CSS fluide reste actif sans JavaScript : les changements de focus natifs et le scroll automatique du clic se concurrencent, et Playwright ne trouve pas un bouton stable. Le contexte de ce seul contrôle de confidentialité utilise désormais `reducedMotion: 'reduce'`, ce qui active la règle CSS existante `scroll-behavior: auto`. Aucun clic forcé, timeout accru, retry ni assertion supprimée. Les vrais fill/clic/Entrée, les 33 valeurs, zéro requête, URL inchangée et résultat caché sont conservés. Après correction : vingt parcours (dix de chaque mode) PASS avec traces.
+
+Main intégrant PR75 repris ; modification d’accueil conservée, ajouts ROI conservés et lastmod de l’accueil régénéré depuis le rendu combiné. Les vérifications complètes et le résultat Linux sont à reporter dans le handoff de cette reprise, sans assimiler la preuve locale à une CI verte ni à une publication.
