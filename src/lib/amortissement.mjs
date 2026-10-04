@@ -81,7 +81,7 @@ function linearSchedule(value, start, durationYears) {
       accumulated: roundCents(accumulated + amount),
       closing: Math.max(0, closing),
       rule: `${days}/${denominator}`,
-      formula: `Valeur × ${(annualRate * 100).toFixed(4)} % × ${days}/${denominator}`,
+      formula: `Valeur × ${(annualRate * 100).toFixed(4)} % × ${days}/${denominator}${!isLast && roundCents(raw) > opening ? ' ; dotation plafonnée à la base restante après arrondi' : ''}`,
     });
     accumulated = roundCents(accumulated + amount);
     opening = Math.max(0, closing);

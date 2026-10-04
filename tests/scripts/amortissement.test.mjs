@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { buildDepreciationSchedule } from '../../src/lib/amortissement.mjs';
 
 test('arrondis : aucune dotation négative ni cumul au-delà de la base, y compris deux centimes', () => {
+  const tiny = buildDepreciationSchedule({ value: 0.02, startDate: '2024-01-15', durationYears: 3, method: 'linear' });
+  assert.match(tiny.rows[2].formula, /plafonnée/);
   for (let durationYears = 1; durationYears <= 50; durationYears += 1) {
     for (let month = 1; month <= 12; month += 1) {
       for (const value of [0.01, 0.02, 0.03, 0.07, 1234.56, 1_000_000_000]) {

@@ -36,7 +36,7 @@ Légifrance a refusé les ouvertures du chercheur délégué ; aucune page inacc
 - Huit captures de pages 375/1440 stabilisées avec reduced motion et chargement des images, sans modification des styles pour la preuve. Après correction de la capture prématurée, aucun bloc absent/flouté ni débordement observé.
 - `git diff --check` : PASS.
 
-Logs finaux : `build.log`, `browser.log`, `astro-check.log`, `workbook-recipe.log`.
+Logs finaux bruts dans `execution-logs.zip` : `build.log`, `browser.log`, `astro-check.log`, `workbook-recipe.log`. L’archive conserve les espaces/échappements produits par les outils sans les réécrire.
 
 ## Limites et suite de livraison
 
