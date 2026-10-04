@@ -1,29 +1,25 @@
 # SEO et préparation aux citations IA — Intelligence artificielle et métier comptable : compétences humaines
 
-Verdict : PASS — 94/100, 0 P0 (revue indépendante du 2026-09-21, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
+Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-10-03, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
 | Catégorie | Score |
 | --- | ---: |
-| Qualité du contenu | 28/30 |
-| SEO | 23/25 |
+| Qualité du contenu | 27/30 |
+| SEO | 22/25 |
 | E-E-A-T | 14/15 |
 | Technique | 14/15 |
-| Préparation aux citations IA | 15/15 |
-| Total | 94/100 |
+| Préparation aux citations IA | 14/15 |
+| Total | 91/100 |
 
 ## SEO
 
-- H1, title, description, canonical, OG et maillage sont cohérents avec la requête métier comptable, intelligence artificielle et compétences.
-- Les cinq liens externes inline pointent vers les pages exactes et la bibliographie porte date et portée.
-- Le candidat reste noindex avant scellement, conformément au statut de preview.
+- Canonical conservé, robots index, follow observé dans le HTML local.
 
 ## Préparation aux citations
 
-- La réponse directe, la frontière en trois colonnes et le tableau des sorties forment des blocs autonomes citables.
-- Les citations institutionnelles sont bornées pour éviter de transformer un contexte historique ou prospectif en résultat actuel.
-- La terminologie préparer-valider-décider reste stable et le rejeu fournit une proposition et deux refus nommés.
+- Une proposition et deux refus du jeu fictif, sans taux de performance externe.
 
 ## Réserves mesurées
 
-- Le visuel competences-refus résume les statuts et messages au lieu d’afficher les décisions complètes ; le tableau HTML porte toutefois bit pour bit les trois sorties et décisions de l’oracle.
-- La couverture reste volontairement abstraite, mais son alt et la preuve en trois colonnes lèvent l’ambiguïté sans ajouter de promesse.
+- La prospective Atlas ne prouve aucune évolution d'effectifs ni effet spécifique de l'IA ; le communiqué Apec de 2021 ne décrit pas 2026.
+- La revue du rendu local et de copies vérifiées dans le dépôt n'est ni un scellement, ni une QA/CI de livraison, ni une mesure sur un cabinet réel.

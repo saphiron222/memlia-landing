@@ -25,11 +25,15 @@ import { couleursDuBrief, verifierBriefPalette, verifierParts, SEUILS_PALETTE } 
 import { mesurerPalette } from './mesurer-palette.mjs';
 import {
   BLOG_SKILLS, SEO_SKILLS, CORE_BLOG_SKILLS, CORE_SEO_SKILLS, REVIEW_CRITERIA, CLAIM_TYPES,
-  PUBLICATION_SEAL_PATH, contexteDeCitation, verifierPlafonds, verifySource,
+  PUBLICATION_SEAL_PATH, contexteDeCitation, verifierPlafonds, verifySource, jourRecuperationParis,
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
 import { retirerPreuvesInline } from './lib/blog-proof-figures.mjs';
+import { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
+export { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
+import { reviewBindingErrors, reviewSha256, renderedBodySha256 } from './lib/blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
+import { estReliquatW39, verifierIdentiteW39, lireCadrageW39 } from './lib/blog-w39-framing.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
 
 export const IMAGE_REVIEW_CRITERIA = ['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'];
@@ -95,7 +99,8 @@ const JUSTIFICATIONS_NA = {
 const sha256 = (content) => createHash('sha256').update(content).digest('hex');
 const ecrireJson = (path, value) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`); };
 const lireJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
-export const aujourdhui = () => new Date().toISOString().slice(0, 10);
+export const aujourdhui = () => jourRecuperationParis(new Date().toISOString());
+const ageSource = (date, jour) => (Date.parse(`${jour}T00:00:00Z`) - Date.parse(`${date}T00:00:00Z`)) / 86_400_000;
 
 /** Copie exacte du découpage en unités du pipeline (claims.contentUnits doit le reproduire au caractère près). */
 export function unitesRendues(body) {
@@ -125,7 +130,7 @@ export function chargerRecette(root, slug) {
   return { dossierRecette, recette, corps, revues };
 }
 
-export function construireManifest(recette, statut, jour, revues) {
+export function construireManifest(recette, statut, jour, revues, datesSources = new Map()) {
   const publie = statut === 'publie';
   const approuve = ['go-production', 'publie'].includes(statut);
   return {
@@ -134,17 +139,18 @@ export function construireManifest(recette, statut, jour, revues) {
     publicationDate: recette.date, updatedAt: recette.updatedAt ?? null, topics: recette.topics, keywords: recette.keywords,
     primaryQuery: recette.primaryQuery, secondaryQueries: recette.secondaryQueries, intent: recette.intent, fanOut: recette.fanOut,
     role: { primary: recette.role.primary, secondary: recette.role.secondary ?? [], proof: { level: recette.role.proofLevel, source: 'preuves/role.json', verifiedAt: jour } },
-    businessReview: { required: true, reviewerId: recette.businessReview.reviewerId, role: recette.businessReview.role, status: revues?.business ? 'PASS' : 'FAIL', evidence: 'preuves/business-review.json' },
+    businessReview: { required: true, reviewerId: revues?.business?.reviewerId ?? recette.businessReview.reviewerId, role: recette.businessReview.role, status: revues?.business ? 'PASS' : 'FAIL', evidence: 'preuves/business-review.json' },
     funnel: recette.funnel, cluster: recette.cluster, famille: recette.famille, contentType: recette.contentType, format: recette.format,
     task: recette.task, rankability: recette.rankability, businessRelevance: recette.businessRelevance,
-    proofStatus: 'verifiee', proofRequired: recette.proofRequired, sourcesVerifiedAt: jour,
+    proofStatus: 'verifiee', proofRequired: recette.proofRequired,
+    sourcesVerifiedAt: [...datesSources.values()].sort()[0] ?? jour,
     sources: recette.sources.map((s) => ({
-      id: s.id, publisher: s.publisher, title: s.title, url: s.url, checkedAt: jour,
+      id: s.id, publisher: s.publisher, title: s.title, url: s.url, checkedAt: datesSources.get(s.id) ?? jour,
       level: s.level, provenance: 'primary', official: s.official === true, upstreamUrl: s.url,
       classificationReason: s.classificationReason, method: null,
       classificationEvidence: `preuves/sources/${s.id}.classification.json`, verificationEvidence: `preuves/sources/${s.id}.json`,
     })),
-    author: 'kevin', reviewer: 'marketing', reviewRule: recette.reviewRule, cta: recette.cta,
+    author: 'kevin', reviewer: revues?.editorial?.reviewer ?? 'marketing', reviewRule: recette.reviewRule, cta: recette.cta,
     image: { heroId: recette.image.heroId, alt: recette.image.alt, master: 'preuves/image/master.png', og: 'preuves/image/og.webp', engine: 'image_generate' },
     research: {
       serp: { status: 'PASS', evidence: 'preuves/research-serp.json', checkedAt: jour },
@@ -221,29 +227,43 @@ function autoriteDe(url, publisher) {
   return a && a.publisher.test(normaliser(publisher).replace(/[^a-z0-9]+/g, ' ')) ? a.id : null;
 }
 
+/** Une preuve réseau n'est réutilisable que si ses octets et sa classification restent ceux de la recette. */
+function preuveSourceReutilisable(preuve, source, dossier, slug, jour) {
+  if (!preuve || preuve.version !== 1 || preuve.candidateSlug !== slug || preuve.sourceId !== source.id
+    || preuve.requestedUrl !== source.url || preuve.finalUrl !== source.url || preuve.upstreamUrl !== source.url
+    || preuve.excerpt !== source.excerpt || preuve.level !== source.level || preuve.provenance !== 'primary'
+    || preuve.official !== (source.official === true) || preuve.classificationReason !== source.classificationReason
+    || preuve.method !== null || !Number.isInteger(preuve.httpStatus) || preuve.httpStatus < 200 || preuve.httpStatus >= 300
+    || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.checkedAt ?? '')
+    || !Number.isInteger(ageSource(preuve.checkedAt, jour)) || ageSource(preuve.checkedAt, jour) < 0 || ageSource(preuve.checkedAt, jour) > 7
+    || jourRecuperationParis(preuve.retrievedAt) !== preuve.checkedAt
+    || preuve.contentPath !== `preuves/sources/${source.id}.source.txt`) return false;
+  const copiePath = join(dossier, preuve.contentPath);
+  if (!existsSync(copiePath)) return false;
+  const copie = readFileSync(copiePath, 'utf8');
+  return /^[a-f0-9]{64}$/.test(preuve.contentSha256 ?? '') && sha256(copie) === preuve.contentSha256 && copie.includes(source.excerpt);
+}
+
 /** Vérifie chaque source par le vérificateur du pipeline (copie locale + empreinte), en suivant l'URL finale. */
-export async function verifierSources({ root, slug, recette, dossierRecette, jour, fetcher }) {
+export async function verifierSources({ root, slug, recette, dossierRecette, jour, fetcher, verifierJour }) {
   const dossier = join(root, 'editorial/articles', slug);
   let recetteModifiee = false;
+  const datesSources = new Map();
   for (const source of recette.sources) {
     for (let tentative = 0; tentative < 2; tentative += 1) {
       const evidencePath = join(dossier, `preuves/sources/${source.id}.json`);
-      const existante = existsSync(evidencePath) ? lireJson(evidencePath) : null;
-      const preuveCourante = existante
-        && existante.checkedAt === jour
-        && existante.requestedUrl === source.url
-        && existante.finalUrl === source.url
-        && existante.excerpt === source.excerpt
-        && existante.level === source.level
-        && existante.provenance === 'primary'
-        && existante.official === (source.official === true)
-        && existante.upstreamUrl === source.url
-        && existante.classificationReason === source.classificationReason
-        && existante.method === null;
-      if (preuveCourante) break;
+      let existante = null;
+      if (existsSync(evidencePath)) {
+        try { existante = lireJson(evidencePath); } catch { /* Preuve incomplète : rouvrir la source, sans l'adopter. */ }
+      }
+      if (preuveSourceReutilisable(existante, source, dossier, slug, jour)) {
+        datesSources.set(source.id, existante.checkedAt);
+        break;
+      }
       await verifySource({ root, slug, sourceId: source.id, excerpt: source.excerpt, ...(fetcher ? { fetcher } : {}) });
+      verifierJour?.();
       const preuve = lireJson(evidencePath);
-      if (preuve.finalUrl === source.url) break;
+      if (preuve.finalUrl === source.url) { datesSources.set(source.id, preuve.checkedAt); break; }
       if (tentative === 1) throw new Error(`${source.id} : l'URL finale ${preuve.finalUrl} diverge encore après réécriture.`);
       source.url = preuve.finalUrl;
       recetteModifiee = true;
@@ -255,6 +275,7 @@ export async function verifierSources({ root, slug, recette, dossierRecette, jou
     }
   }
   if (recetteModifiee) ecrireJson(join(dossierRecette, 'recette.json'), recette);
+  return datesSources;
 }
 
 /** Construit le registre des affirmations depuis la recette et les copies locales vérifiées. */
@@ -337,7 +358,7 @@ function evidencesSkills({ manifest, corps, sujet, jour, claims, root }) {
     'blog-factcheck': [`${claims.claims.length} affirmation(s) reliée(s) à ${manifest.sources.length} source(s) vérifiée(s) par copie locale et empreinte ; verdicts SUPPORTED, extraits situés par ligne.`],
     'blog-seo-check': [`Titre ${m.titreLongueur} caractères, onglet ${m.ongletLongueur}, description ${m.descriptionLongueur} ; ${m.liensInternes.length} lien(s) interne(s) : ${m.liensInternes.join(', ')} ; ${m.liensExternes.length} lien(s) externe(s) dans le corps.`],
     'blog-geo': [`${m.commenceParReponseDirecte ? 'Réponse directe en tête' : 'Réponse directe absente en tête'} (${m.motsReponseDirecte} mots au premier paragraphe) ; définitions extractibles dans le corps.`],
-    'blog-audit': [`${manifest.sources.length} sources datées du ${jour}, ${claims.claims.length} claims, aucun H1 dans le corps, ${m.mots} mots.`],
+    'blog-audit': [`${manifest.sources.length} sources récupérées au plus tôt le ${manifest.sourcesVerifiedAt}, ${claims.claims.length} claims revus le ${jour}, aucun H1 dans le corps, ${m.mots} mots.`],
     'blog-cannibalization': [`Requête « ${manifest.primaryQuery} » comparée à ${corpus.length} article(s) du corpus : ${collisions.length} collision(s) de requête primaire.`],
     'seo-content-brief': [`Brief : intention ${manifest.intent}, entonnoir ${manifest.funnel}, fan-out ${manifest.fanOut.join(' ; ')}.`],
     'seo-page': [`Métadonnées : title « ${manifest.tabTitle} », description ${m.descriptionLongueur} caractères, canonical auto-référent émis par le gabarit Article.`],
@@ -478,13 +499,30 @@ export function declarerImage(root, heroId, alt) {
   writeFileSync(path, texte);
 }
 
+function verifierFile(root, slug, date, statut, serie, queue) {
+  const existant = queue.candidates.find((c) => c.slug === slug);
+  const w39 = estReliquatW39(slug);
+  if (w39) verifierIdentiteW39({ slug, serie, date }, existant, date);
+  const actifs = queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)
+    && (c !== existant || (w39 && c.status === 'publie')));
+  if (w39 && existant?.status === 'publie') throw new Error('La Cicatrice W39 est déjà publiée ; aucun nouvel exemplaire ni édition.');
+  if (w39 && date > aujourdhui()) throw new Error('Le cadrage W39 refuse une date future.');
+  if (w39) lireCadrageW39(root, date);
+  if (w39 || !existant || existant.date !== date || existant.serie !== (serie ?? undefined)
+    || (['archive', 'bloque'].includes(existant.status) && !['archive', 'bloque'].includes(statut))) {
+    verifierPlafonds(actifs, date, { serie, slug, root });
+  }
+}
+
 function inscrireFile(root, slug, date, statut, serie = null) {
   const path = join(root, 'editorial/queue.json');
   const queue = lireJson(path);
+  verifierFile(root, slug, date, statut, serie, queue);
   const existant = queue.candidates.find((c) => c.slug === slug);
-  if (existant) { existant.status = statut; existant.date = date; if (serie) existant.serie = serie; else delete existant.serie; }
+  if (existant) {
+    existant.status = statut; existant.date = date; if (serie) existant.serie = serie; else delete existant.serie;
+  }
   else {
-    verifierPlafonds(queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)), date, { serie });
     queue.candidates.push({ slug, date, status: statut, ...(serie ? { serie } : {}) });
   }
   ecrireJson(path, queue);
@@ -509,8 +547,8 @@ const echapperHtml = (texte) => String(texte)
 
 /**
  * Ajoute les preuves visuelles déclarées par la recette sans modifier son corps éditorial.
- * La source et la date restent dans la recette et le manifeste internes : la page publique
- * ne rend que l'image et son alternative accessible, sans légende technique de fabrication.
+ * La source et la date restent traçables dans la recette et le manifeste internes. La page
+ * publique rend seulement une image fixe et responsive, comme les articles de référence.
  * Chaque insertion échoue fermée si le H2 d'ancrage a disparu : une preuve ne doit jamais
  * glisser silencieusement vers une section sans rapport après une réécriture.
  */
@@ -524,7 +562,13 @@ export function injecterPreuvesInline(corps, preuves = []) {
     ids.add(preuve.id);
     if (!preuve.insertBeforeHeading) throw new Error(`Preuve inline ${preuve.id} : insertBeforeHeading manquant.`);
     if (!preuve.alt || [...preuve.alt].length > 125) throw new Error(`Preuve inline ${preuve.id} : alt absent ou supérieur à 125 caractères.`);
-    if (!preuve.source || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')) throw new Error(`Preuve inline ${preuve.id} : source ou date de capture invalide.`);
+    const capture = new Date(`${preuve.capturedAt}T00:00:00Z`);
+    if (!preuve.source?.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')
+      || Number.isNaN(capture.getTime()) || capture.toISOString().slice(0, 10) !== preuve.capturedAt
+      || capture.getTime() > Date.now()) throw new Error(`Preuve inline ${preuve.id} : source ou date de capture invalide.`);
+    if (/recette scellée|Ouvrir la preuve en grand/i.test(preuve.source)) {
+      throw new Error(`Preuve inline ${preuve.id} : source de preuve technique impropre à une légende publique ; corriger la recette avant matérialisation.`);
+    }
     if (preuve.sourceUrl && !/^https:\/\//.test(preuve.sourceUrl)) throw new Error(`Preuve inline ${preuve.id} : sourceUrl doit être une URL HTTPS.`);
     const liste = groupes.get(preuve.insertBeforeHeading) ?? [];
     liste.push(preuve);
@@ -534,10 +578,10 @@ export function injecterPreuvesInline(corps, preuves = []) {
   for (const [titre, groupe] of groupes) {
     const ancre = `\n## ${titre}\n`;
     if (!resultat.includes(ancre)) throw new Error(`Preuves inline : H2 d’ancrage absent « ${titre} ».`);
-    const figures = groupe.map((preuve) => {
-      const imagePath = `/proofs/blog/${preuve.id}.webp`;
-      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`;
-    }).join('\n\n');
+    // Recette de référence (décision Kevin du 03/10/2026) : une seule image 1600 × 900 par
+    // figure, la même sur bureau et sur téléphone. Une variante portrait « -mobile » n'est
+    // jamais servie, même si un tel fichier existe : la figure illustre, elle n'explique pas.
+    const figures = groupe.map((preuve) => `<figure data-blog-proof="${preuve.id}">\n  <img src="/proofs/blog/${preuve.id}.webp" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }
   return resultat;
@@ -576,27 +620,47 @@ export function verifierRegleEcrite(corps, { date }) {
   return erreurs;
 }
 
-export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour = aujourdhui() }) {
+export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour }) {
+  const jourDebut = aujourdhui();
+  jour ??= jourDebut;
+  // Le calendrier matérialisé n'est pas une autorité : comparer au plan recalculé
+  // avant toute écriture, y compris pour les appels programmatiques à materialiser.
+  const planificateur = join(root, 'docs/strategy/site-v3/build-cluster-plan.py');
+  if (existsSync(planificateur)) {
+    const controle = spawnSync('python3', [planificateur, '--slot', slug, jourDebut],
+      { cwd: root, encoding: 'utf8', timeout: 30_000 });
+    if (controle.status !== 0) throw new Error(`Créneau éditorial refusé : ${controle.error?.message || controle.stderr?.trim() || controle.stdout?.trim() || 'contrôle indisponible'}`);
+  }
+  const refuserChangementDeJour = () => {
+    if (aujourdhui() !== jourDebut) throw new Error(`Le jour civil Europe/Paris a changé pendant la matérialisation (${jourDebut} → ${aujourdhui()}) : arrêter, reprendre une nouvelle préparation et obtenir une revue du candidat au jour réel. Ne pas sceller les fichiers partiels.`);
+  };
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
+  if (estReliquatW39(slug)) verifierFile(root, slug, recette.date, statut, recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
+  const recettePath = join(dossierRecette, 'recette.json');
+  let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  let revuesValides = revueErreurs.length ? null : revues;
   const requetes = [recette.primaryQuery, ...(recette.secondaryQueries ?? [])];
   verifierTitreIntentMesure({ root, titre: recette.title, requetes, au: jour, surface: `${slug} : H1` });
   verifierTitreIntentMesure({ root, titre: recette.tabTitle, requetes, au: jour, surface: `${slug} : titre d’onglet` });
   const dossier = join(root, 'editorial/articles', slug);
   mkdirSync(join(dossier, 'preuves/sources'), { recursive: true });
   mkdirSync(join(dossier, 'preuves/skills'), { recursive: true });
-  const manifest = construireManifest(recette, statut, jour, revues);
+  const manifest = construireManifest(recette, statut, jour, revuesValides);
   const manifestPath = join(dossier, 'manifest.json');
   ecrireJson(manifestPath, manifest);
-  await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher });
+  const datesSources = await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher, verifierJour: refuserChangementDeJour });
+  refuserChangementDeJour();
   // Les URL finales ont pu réécrire la recette : le manifeste est reconstruit depuis la recette à jour.
-  const manifestFinal = construireManifest(recette, statut, jour, revues);
+  revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  revuesValides = revueErreurs.length ? null : revues;
+  const manifestFinal = construireManifest(recette, statut, jour, revuesValides, datesSources);
   ecrireJson(manifestPath, manifestFinal);
   const articlePath = join(root, 'src/content/blog', `${slug}.md`);
   mkdirSync(dirname(articlePath), { recursive: true });
-  let corpsPublie = corps;
+  let corpsPublie = corpsSansTitreDuplique(corps, recette.title);
   let erreurPreuveInline = null;
   try {
-    corpsPublie = injecterPreuvesInline(corps, recette.inlineProofs ?? []);
+    corpsPublie = injecterPreuvesInline(corpsPublie, recette.inlineProofs ?? []);
   } catch (error) {
     erreurPreuveInline = error.message;
   }
@@ -614,13 +678,14 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
     ecrireJson(join(dossier, source.classificationEvidence), {
       version: 1, candidateSlug: slug, kind: 'source-classification', status: 'PASS', checkedAt: jour, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash,
       sourceId: source.id, sourceUrl: source.url, finalUrl: preuve.finalUrl, publisher: source.publisher, level: source.level, provenance: source.provenance, official: source.official, upstreamUrl: source.upstreamUrl,
-      classifiedBy: 'kevin', reviewedBy: revues?.sources?.reviewedBy ?? 'marketing',
-      observations: [source.classificationReason, ...(revues?.sources?.observations?.[source.id] ? [revues.sources.observations[source.id]] : [])],
+      classifiedBy: 'kevin', reviewedBy: revuesValides?.sources?.reviewedBy ?? 'marketing',
+      observations: [source.classificationReason, ...(revuesValides?.sources?.observations?.[source.id] ? [revuesValides.sources.observations[source.id]] : [])],
     });
   }
   // Les figures sont des attestations visuelles, pas de nouvelles affirmations éditoriales :
   // unitesRendues les ignore et conserve le registre des phrases scellées inchangé.
   const { erreurs, claims } = construireClaims({ recette, corps: corpsPublie, dossier, sujet, jour });
+  erreurs.push(...revueErreurs);
   if (erreurPreuveInline) erreurs.push(erreurPreuveInline);
   ecrireJson(join(dossier, 'claims.json'), claims);
   erreurs.push(...verifierRegleEcrite(corps, { date: recette.date }));
@@ -628,7 +693,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const { obs, collisions } = evidencesSkills({ manifest: manifestFinal, corps, sujet, jour, claims, root });
   const generee = recette.image.source;
   if (collisions.length) erreurs.push(`Cannibalisation de requête primaire avec : ${collisions.join(', ')}.`);
-  const qualite = revues?.qualite;
+  const qualite = revuesValides?.qualite;
   if (qualite) {
     ecrireJson(join(dossier, 'quality-review.json'), {
       version: 1, candidateSlug: slug, reviewedAt: jour, reviewer: qualite.reviewer ?? 'relecteur-qualite-ia-memlia', rubric: 'blog-analyze-100',
@@ -656,36 +721,38 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   for (const row of [...skills.blog, ...skills.seo]) if (row.status === 'RUN') ecrireJson(join(dossier, row.evidence), artefact(sujet, 'skill', jour, { skill: row.skill, observations: preuvesRecette[row.skill] ?? obs[row.skill] }));
   ecrireJson(join(dossier, 'skills.json'), skills);
 
-  const editorial = revues?.editorial;
+  const editorial = revuesValides?.editorial;
   ecrireJson(join(dossier, 'preuves/review.json'), artefact(sujet, 'editorial-review', jour, {
-    reviewer: 'marketing', status: editorial ? 'PASS' : 'FAIL',
+    reviewer: manifestFinal.reviewer, status: editorial ? 'PASS' : 'FAIL',
     criteria: REVIEW_CRITERIA.map(({ id, weight }) => { const r = editorial?.criteria?.[id]; const result = r?.result ?? 'FAIL'; return { id, result, earned: result === 'PASS' ? weight : 0, observations: r?.observations ?? ['Revue éditoriale non exécutée.'] }; }),
   }));
-  ecrireJson(join(dossier, 'review.json'), { version: 1, reviewer: 'marketing', checkedAt: jour, subject: { slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash }, rubricEvidence: 'preuves/review.json', p0: editorial ? (editorial.p0 ?? []) : ['Revue éditoriale non exécutée'], blocking: !editorial, decision: editorial ? 'pret-preview' : 'corriger' });
+  ecrireJson(join(dossier, 'review.json'), { version: 1, reviewer: manifestFinal.reviewer, checkedAt: jour, subject: { slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash }, rubricEvidence: 'preuves/review.json', p0: editorial ? (editorial.p0 ?? []) : ['Revue éditoriale non exécutée'], blocking: !editorial, decision: editorial ? 'pret-preview' : 'corriger' });
 
-  const business = revues?.business;
+  const business = revuesValides?.business;
   const preuvesSources = new Map(manifestFinal.sources.map((s) => [s.id, lireJson(join(dossier, s.verificationEvidence))]));
   ecrireJson(join(dossier, 'preuves/business-review.json'), artefact(sujet, 'business-review', jour, {
-    status: business ? 'PASS' : 'FAIL', reviewerId: recette.businessReview.reviewerId, role: recette.businessReview.role,
+    status: business ? 'PASS' : 'FAIL', reviewerId: manifestFinal.businessReview.reviewerId, role: recette.businessReview.role,
     claimReviews: claims.claims.flatMap((claim) => claim.sourceIds.map((sourceId) => {
       const verdict = business?.claims?.[claim.id];
       if (business && !verdict) erreurs.push(`Revue métier absente pour ${claim.id}.`);
-      return { id: `review-${claim.id}-${sourceId}`, candidateSlug: slug, articleSha256: sujet.articleHash, claimId: claim.id, claimSha256: sha256(claim.claim), sourceId, sourceContentSha256: preuvesSources.get(sourceId).contentSha256, citationSha256: sha256(claim.sourceExcerpts[sourceId]), reviewerId: recette.businessReview.reviewerId, verdict: verdict?.verdict ?? 'hors_sujet', checkedAt: jour, reasoning: verdict?.reasoning ?? 'Revue métier non exécutée.' };
+      return { id: `review-${claim.id}-${sourceId}`, candidateSlug: slug, articleSha256: sujet.articleHash, claimId: claim.id, claimSha256: sha256(claim.claim), sourceId, sourceContentSha256: preuvesSources.get(sourceId).contentSha256, citationSha256: sha256(claim.sourceExcerpts[sourceId]), reviewerId: manifestFinal.businessReview.reviewerId, verdict: verdict?.verdict ?? 'hors_sujet', checkedAt: jour, reasoning: verdict?.reasoning ?? 'Revue métier non exécutée.' };
     })),
   }));
 
-  erreurs.push(...(await materialiserImage({ root, recette, dossier, sujet, jour, revues, rendreImage })));
+  erreurs.push(...(await materialiserImage({ root, recette, dossier, sujet, jour, revues: revuesValides, rendreImage })));
   declarerImage(root, recette.image.heroId, recette.image.alt);
   const briefStrategie = existsSync(join(root, 'docs/strategy/site-v3/cluster-briefs')) ? readdirSync(join(root, 'docs/strategy/site-v3/cluster-briefs')).find((f) => f.endsWith(`-${slug}.md`)) : null;
   writeFileSync(join(dossier, 'brief.md'), briefStrategie ? readFileSync(join(root, 'docs/strategy/site-v3/cluster-briefs', briefStrategie), 'utf8') : `# Brief — ${recette.title}\n\nRequête primaire : ${recette.primaryQuery}\nTâche : ${recette.task}\n`);
   inscrireFile(root, slug, recette.date, statut, recette.serie ?? null);
   ecrireJson(join(dossierRecette, 'paquet-revue.json'), {
     slug, title: recette.title, primaryQuery: recette.primaryQuery, intent: recette.intent, role: recette.role.primary, format: recette.format, task: recette.task,
+    bodySha256: reviewSha256(corps), recipeSha256: reviewSha256(readFileSync(recettePath)),
     corps, preuvesInline: recette.inlineProofs ?? [], sources: manifestFinal.sources.map((s) => ({ id: s.id, publisher: s.publisher, title: s.title, url: s.url, level: s.level, official: s.official })),
     claims: claims.claims.map((c) => ({ id: c.id, claim: c.claim, type: c.type, sourceId: c.sourceIds[0], citation: c.sourceExcerpts[c.sourceIds[0]], contexte: c.factCheck.sourceResults[0].context.slice(0, 1200) })),
     criteresEditoriaux: REVIEW_CRITERIA, criteresImage: IMAGE_REVIEW_CRITERIA, image: { alt: recette.image.alt, cadre: recette.image.cadre, master: relative(root, join(dossier, 'preuves/image/master.png')) },
-    identites: { auteur: 'kevin', reviewerEditorial: 'marketing', reviewerMetier: recette.businessReview.reviewerId, roleMetier: recette.businessReview.role },
+    identites: { auteur: 'kevin', reviewerEditorial: manifestFinal.reviewer, reviewerMetier: manifestFinal.businessReview.reviewerId, roleMetier: recette.businessReview.role },
   });
+  refuserChangementDeJour();
   return { erreurs, manifest: manifestFinal, sujet, dossier };
 }
 
@@ -705,8 +772,25 @@ function lancer(root, args) {
 }
 
 export async function commande(argv, root = process.cwd()) {
-  const [action, slug] = argv;
+  const [action, slug, htmlPath] = argv;
   if (!slug) throw new Error('Usage : blog-forge <preparer|sceller|publier> <slug>');
+  if (action === 'verifier-creneau-w39') {
+    if (argv.length !== 3 || !estReliquatW39(slug) || htmlPath !== aujourdhui()) {
+      throw new Error('Le préflight W39 exige le slug exact et le jour réel Europe/Paris.');
+    }
+    const { recette } = chargerRecette(root, slug);
+    verifierFile(root, slug, recette.date, 'a-valider', recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
+    console.log('cadrage W39 : OK (ni revue ni publication)');
+    return;
+  }
+  if (action === 'empreinte') {
+    if (!htmlPath) throw new Error('Usage : blog-forge empreinte <slug> <html-rendu>');
+    const { corps } = chargerRecette(root, slug);
+    const renderedSha256 = renderedBodySha256(readFileSync(resolve(root, htmlPath), 'utf8'));
+    if (!renderedSha256) throw new Error('Le rendu HTML ne contient pas de .article-corps.');
+    console.log(JSON.stringify({ slug, bodySha256: reviewSha256(corps), recipeSha256: reviewSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), renderedSha256, notice: 'Empreintes techniques seulement : aucune approbation ou revue générée.' }, null, 2));
+    return;
+  }
   if (action === 'preparer') {
     const { erreurs, dossier } = await materialiser({ root, slug, statut: 'a-valider' });
     console.log(JSON.stringify({ slug, dossier: relative(root, dossier), erreurs, suite: erreurs.length ? 'corriger la recette' : 'produire editorial/recettes/<slug>/revues.json puis sceller' }, null, 2));

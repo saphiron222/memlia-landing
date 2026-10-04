@@ -12,8 +12,8 @@ Node.js 22 ou supérieur. `npm ci`, puis `npx playwright install chromium`.
 - `npm run placeholders` : crée seulement les images manquantes ; ne remplace pas les images M4.
 - `npm run build` : construit quatre pages, génère les sitemaps et retire les briefs de la sortie.
 - `npm run test:proof` : oracle Python standard sur `dist/` ; aucun paquet Python requis.
-- `npm run preview -- --host 127.0.0.1 --port 4321` : servir le build dans un autre terminal.
-- `npm test` : tests Playwright sur ce serveur (ou `QA_URL=https://… npm test`).
+- `npm run preview -- --host 127.0.0.1 --port 4321` : servir manuellement un build pour une revue locale.
+- `npm test` : construit puis sert le worktree sur un port isolé appartenant à Playwright ; `QA_URL=https://… npm test` cible explicitement une preview distante sans lancer de serveur local.
 - `npm run qa:screens` : captures et contrôle des images visibles sur six largeurs.
 - `npm run lighthouse -- http://127.0.0.1:4321/` : quatre scores, seuil 95, échec non masqué.
 - Ajouter `--desktop` pour la mesure desktop. Rapports dans `.lighthouse/` et `.qa/`.

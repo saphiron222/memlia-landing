@@ -1,7 +1,7 @@
 # CLAUDE.md — memlia.fr
 
 Site public de **Memlia** (SASU, Paris 8ᵉ — RCS Paris 108 621 541) : l'IA pour les cabinets d'expertise comptable. Markdown français.
-Dépôt privé `saphiron222/memlia-landing`, poussé sur `main` par Kevin, déployé sur **Cloudflare Pages**.
+Dépôt privé `saphiron222/memlia-landing`, intégré sur `main` sous garde PR, déployé sur **Cloudflare Pages**.
 
 ## Ce que ce dépôt est, et ce qu'il n'est pas
 
@@ -49,9 +49,15 @@ rédigé, en WebP/AVIF ; les captures produit viennent du banc Windows, sur le j
 
 ## Règles non négociables
 
-- **Rien n'est publié sans Kevin.** Tu travailles sur une branche `site/<sujet>`, tu déploies une
-  **prévisualisation** (`npx wrangler pages deploy dist --project-name memlia --branch preview-<sujet>`)
-  et tu donnes l'URL. La production (`--branch main`) et `git push` sont **interdits** : Kevin s'en charge.
+- **Rien n'est publié sans l'autorisation applicable de Kevin.** Tu travailles sur une branche
+  `site/<sujet>` et peux déployer une **prévisualisation**
+  (`npx wrangler pages deploy dist --project-name memlia --branch preview-<sujet>`)
+  lorsque le contrat de la carte le prévoit. Depuis la décision Kevin du 24/09/2026, un agent peut
+  pousser sans nouvelle validation sa propre branche par un `git push` non destructif après contrôle
+  du dépôt, de la branche et du diff, puis vérification du SHA distant et de la CI. Le push forcé,
+  la suppression de branche et toute refspec destructive restent interdits. Cette autorisation ne
+  vaut **pas** fusion, déploiement de production (`--branch main`), publication d'article ou levée
+  d'une revue QA : ces étapes suivent les autorisations et gardes propres à chaque carte.
 - **Le SEO acquis ne régresse pas** : `title`, `description`, canonical, Open Graph, JSON-LD (Organization,
   WebSite, Service, FAQPage), `robots.txt`, sitemap, `llms.txt`, pages légales en `noindex`,
   `lang="fr"`, un seul `h1`. Lighthouse ≥ 95 sur les quatre axes.

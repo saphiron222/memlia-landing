@@ -5549,7 +5549,12 @@
     "demande": {
       "mesureeLe": "2026-09-21",
       "requete": 0,
-      "secondaires": 0,
+      "secondaires": null,
+      "serpFamille": {
+        "mesureeLe": "2026-09-19",
+        "amorce": "former l'équipe à l'IA cabinet comptable",
+        "famille": "formation-ia-competences"
+      },
       "questions": [
         "Quelle IA pour comptable ?",
         "Est-ce que l'IA va remplacer les comptables ?",
@@ -5623,7 +5628,13 @@
     "funnel": "MOFU",
     "format": "faq-knowledge",
     "roleGrappe": "satellite",
-    "datePlanifiee": "2026-09-24",
+    "dateManquee": "2026-09-24",
+    "exceptionAlternanceManquee": {
+      "pole": {
+        "date": "2026-09-24",
+        "raison": "Les sujets prompt ChatGPT (22/09) et logiciel IA (24/09) sont deux décisions éditoriales déjà datées du même pôle ; la semaine 39 n'a pas de créneau ordinaire intermédiaire disponible."
+      }
+    },
     "liensPlanifies": [
       "/blog/ia-cabinet-comptable",
       "/outils-comptables-gratuits",
@@ -5669,7 +5680,7 @@
     "funnel": "MOFU",
     "format": "how-to-guide",
     "roleGrappe": "satellite",
-    "datePlanifiee": "2026-09-22",
+    "dateManquee": "2026-09-22",
     "liensPlanifies": [
       "/blog/ia-cabinet-comptable",
       "/blog/logiciel-ia-comptabilite",
@@ -6465,7 +6476,12 @@
     "sourcesOfficielles": [
       "aucune"
     ],
-    "priorite": 1
+    "priorite": 1,
+    "demande": {
+      "mesureeLe": "2026-09-19",
+      "requete": 3,
+      "secondaires": 0
+    }
   },
   {
     "slug": "choisir-la-premiere-tache-a-automatiser",

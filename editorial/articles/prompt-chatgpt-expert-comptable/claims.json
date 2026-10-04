@@ -1,0 +1,446 @@
+{
+  "version": 1,
+  "candidateSlug": "prompt-chatgpt-expert-comptable",
+  "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-362cf6a40a2a",
+      "text": "Un prompt ChatGPT pour expert-comptable utile part d'une tâche précise : préparer une demande de pièce, avec des données autorisées, une sortie définie et une décision qui reste au cabinet. Le modèle ne vérifie pas le dossier à votre place. Commencez avec un cas fictif, prévoyez les informations manquantes et relisez le brouillon avant tout envoi. Si ce geste revient souvent, écrivez aussi la règle de suivi et d'arrêt.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-bfa5ea127a4b",
+      "text": "Pourquoi un prompt isolé casse à la main",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3b887691e6d0",
+      "text": "Une instruction copiée d'un collaborateur à l'autre ne dit pas où lire l'état de la pièce, si une demande est déjà partie ni quand cesser la relance. La règle de cabinet à écrire est celle du passage de « pièce absente » à « demande proposée », puis de « reçue » à « arrêt » ; le texte du prompt n'en est qu'une étape.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ecf1b00ea2d1",
+      "text": "Exemple : préparer une demande de pièce manquante",
+      "claimIds": []
+    },
+    {
+      "id": "unit-10d609e25193",
+      "text": "Situation fictive : dans un dossier de démonstration, la pièce correspondant à une opération du mois manque. L'objectif est de rédiger un brouillon de demande claire, non de certifier une écriture ni de conclure qu'une dépense est déductible.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ea7907ac24d5",
+      "text": "Voici un prompt de départ sur données fictives. Avant un usage réel, le cabinet vérifie les règles d'usage de l'outil choisi :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5f2b5e8dd006",
+      "text": "> Tu aides à préparer un courriel de demande de pièce. Utilise uniquement les informations fictives suivantes : société « Atelier Fictif », période « avril 2026 », pièce attendue « facture d'achat du matériel » ; la pièce n'est pas encore reçue. Si la pièce attendue ou la période n'est pas renseignée, réponds « arrêt : contexte incomplet » et ne rédige aucun message. Sinon, rédige en français un objet et un message de 80 mots maximum. Demande la facture et, si elle n'est pas disponible, une réponse expliquant pourquoi. N'invente ni montant, ni échéance, ni qualification fiscale. Pour le destinataire non confirmé, marque « à confirmer » sans inventer une adresse. Termine par une liste séparée des points à vérifier par le collaborateur avant envoi. Ne dis pas que le courriel est parti.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0417e25b316e",
+      "text": "Avant d'ouvrir l'outil : les entrées à réunir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-67c2310e67d1",
+      "text": "Pour préparer ce seul message, relevez la période, la pièce attendue, son état dans le suivi et le destinataire pressenti. Vérifiez séparément ce que l'outil autorise à partager ; sinon, travaillez sur le cas fictif ci-dessous. N'envoyez pas un dossier entier pour obtenir une phrase. L'état « pièce manquante » vient du suivi du cabinet, pas du modèle.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-30c1d91a9a12",
+      "text": "La frontière. Le brouillon se prépare à partir de la pièce et de la période renseignées ; l'identité du destinataire, le contenu et l'envoi attendent un contrôle. Le choix du ton et le traitement d'un dossier sensible restent humains.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-772d29273a0f",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | | --- | --- | --- | | Objet et brouillon de demande sur un contexte fictif connu | Pièce, période, destinataire et envoi | Échange avec un client en difficulté ou en litige |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-447fa37bd1de",
+      "text": "La proposition. Nous produisons un brouillon et une liste de points à confirmer. Le collaborateur vérifie les données de son outil, corrige le message et décide de l'envoi ; la proposition n'écrit aucun état de dossier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0631db26eace",
+      "text": "L'arrêt. Le prompt copiable demande de ne pas rédiger si la pièce attendue ou la période manque ; nous n'avons pas testé la réponse de ChatGPT à cette consigne. Le script local refuse ce contexte incomplet et, séparément, une « demande déjà partie » quand cet état lui est fourni par le suivi du cabinet. Le prompt copiable ne reçoit pas cet état et ne peut donc pas détecter une demande antérieure. Avant de le copier, le collaborateur vérifie le suivi et s'abstient de relancer si une demande est déjà partie. Sans destinataire confirmé, le message reste un brouillon et ne part pas.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-29b3fb730a29",
+      "text": "Le jeu d'essai. Trois cas fictifs ont été exécutés par un script éditorial local : une facture manquante nommée, une pièce non renseignée et une demande déjà partie. Le script et son journal d'entrées et sorties accompagnent cette recette. Aucun appel ChatGPT n'a été exécuté.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4232adfe6430",
+      "text": "Nous avons exécuté une règle déterministe sur un jeu fictif, et non le modèle ChatGPT. Le tableau reprend les sorties de ce script local ; il ne prédit pas la réponse d'un fournisseur. Les figures sont des reconstitutions HTML de ces situations fictives, pas des captures de ChatGPT.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fcefdd9b227b",
+      "text": "| Cas joué | Sortie obtenue | Décision | | --- | --- | --- | | Atelier Fictif, avril 2026, facture manquante | Objet « Pièce manquante · avril 2026 » ; brouillon « Bonjour, pouvez-vous nous transmettre la facture d’achat de matériel pour Atelier Fictif, période avril 2026 ? Si elle n’est pas disponible, indiquez-nous pourquoi. Merci. » ; destinataire « à confirmer » | Relecture de la pièce, du destinataire et du ton, puis envoi humain seulement | | Pièce attendue absente du contexte | arret ; motif contexte incomplet ; message absent ; aucun envoi | Demander d'abord quelle pièce manque | | Demande déjà partie (état fourni au script local, pas au prompt copiable) | arret ; motif demande déjà partie ; message absent ; aucun envoi | Vérifier le suivi avant toute nouvelle relance ; ce refus n'a pas été obtenu de ChatGPT |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-29180913e9a7",
+      "text": "Cette démonstration ne dit pas comment ChatGPT répondrait au même prompt. Pour comparer, il faut conserver la réponse brute obtenue avec un cas fictif dans l'environnement choisi par le cabinet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-11322480bb2d",
+      "text": "Le résultat attendu n'est pas un texte « intelligent » à copier sans lecture. Le collaborateur doit vérifier que le destinataire est bien celui autorisé pour le dossier, que la pièce demandée est la bonne, que la période concorde avec l'outil de suivi, que le ton convient à la relation et qu'aucune conclusion comptable ou fiscale non vérifiée n'a été ajoutée. Il valide ou réécrit, puis envoie lui-même.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ccbf5df34b99",
+      "text": "Adapter le prompt sans perdre la règle d'arrêt",
+      "claimIds": []
+    },
+    {
+      "id": "unit-05d73b2b0862",
+      "text": "Pour un autre dossier fictif, remplacez dans une copie du prompt le nom de démonstration, la période et la pièce attendue. Conservez la phrase « si la pièce ou la période manque, ne rédige aucun message », la mention du destinataire à confirmer et la demande de points à vérifier. Le texte copiable plus haut illustre un cas où le suivi indique « pièce non reçue » ; il ne contient pas le champ « demande déjà partie ». Avant de l'utiliser, l'équipe doit donc lire cet état dans le suivi et arrêter elle-même la relance s'il est positif.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-164dc9579836",
+      "text": "Une fois le brouillon produit, la vérification tient sur une fiche : pièce et période correspondent-elles au dossier ; le destinataire est-il confirmé ; une demande antérieure existe-t-elle ; le texte invente-t-il un montant, une échéance ou une conclusion ? Si une réponse manque, le message reste un brouillon. Pour tester réellement ChatGPT plutôt que notre script local, conservez le prompt exact, la réponse brute et le nom de l'environnement autorisé sur les mêmes trois cas fictifs, puis comparez les refus obtenus. Aucun de ces essais fournisseur n'a été effectué pour cet article.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a4b0f3c9570d",
+      "text": "Deux autres consignes à essayer sur des dossiers fictifs",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3f98a8a14efc",
+      "text": "Ces deux consignes sont des pistes illustratives non exécutées, pas une bibliothèque éprouvée ni des sorties mesurées de ChatGPT. Elles concernent deux autres gestes ; avant usage, créez un cas nominal, un cas incomplet et un cas qui doit être refusé, puis conservez les réponses réellement obtenues dans l'environnement autorisé par le cabinet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-090655186e4e",
+      "text": "Au pôle social : préparer une liste de contrôles, pas un bulletin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2c85d704e44e",
+      "text": "> Contexte fictif : pour le dossier « Démo Social », un écart reste à expliquer entre une variable reçue et la variable attendue pour la période. Écris une liste de questions à poser au gestionnaire : quelle variable, quelle période, quelle source et quel justificatif ? Ne calcule aucun salaire, ne confirme aucun bulletin et n'affirme pas que la DSN est prête. Si la période ou la source manque, réponds « contrôle interrompu : contexte absent ». Termine par les informations à vérifier dans les outils de paie par le gestionnaire.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b3bdd96384a2",
+      "text": "Le gestionnaire reprend la liste dans son outil de paie et tranche l'écart. La méthode de contrôle des bulletins avant la DSN traite le geste complet ; un texte généré n'effectue aucun contrôle du bulletin ni de la déclaration.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-22f58e8c287f",
+      "text": "En révision : demander l'origine d'un écart, sans conclure",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b96c837dd53d",
+      "text": "> Contexte fictif : la ligne « achat de matériel » du dossier « Atelier Fictif » n'a pas encore sa facture. Rédige trois questions de recherche pour le collaborateur : où est la pièce, à quelle période appartient-elle et quelle information reste à confirmer ? N'invente ni montant ni écriture. Si aucune pièce n'est identifiable, réponds « arrêt : pièce inconnue » et ne propose pas d'imputation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-56e3217cabcd",
+      "text": "Le collaborateur vérifie la pièce et décide dans son logiciel comptable. Ce patron ne classe pas une dépense et ne mesure pas ChatGPT ; il aide seulement à formuler ce qui manque avant une décision.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-48b223b7f1f6",
+      "text": "Les quatre éléments à conserver quand on adapte ce prompt",
+      "claimIds": []
+    },
+    {
+      "id": "unit-668540d969d0",
+      "text": "1. La tâche bornée. « Prépare une demande de pièce » est vérifiable ; « traite ce dossier » ne dit pas où l'humain reprend. 2. Les données autorisées. Commencez sur un jeu fictif. Avant tout usage de données réelles, le cabinet choisit l'outil et ses règles de confidentialité. La CNIL rappelle que « les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager ». Selon le déploiement, elle recommande aussi d'interdire certaines données confidentielles ou personnelles. Une personne peut être identifiée « à partir du croisement d’un ensemble de données » : remplacer son nom ne suffit pas toujours. 3. Une sortie définie. Objet, message, longueur maximale, champs « à confirmer » et refus d'inventer : le collaborateur sait quoi relire. 4. Une décision qui reste humaine. Le modèle prépare ; le cabinet contrôle la pièce, le destinataire et l'envoi. Un brouillon n'est ni une preuve de réception ni une validation de la tenue.",
+      "claimIds": [
+        "claim-unit-668540d969d0-1",
+        "claim-unit-668540d969d0-2"
+      ]
+    },
+    {
+      "id": "unit-b8490a399bba",
+      "text": "Quand un bon prompt ne suffit plus",
+      "claimIds": []
+    },
+    {
+      "id": "unit-bb5d8d836560",
+      "text": "Si le même geste revient pour des dizaines de dossiers, le temps peut partir dans la recherche de l'état de chaque pièce, la copie du contexte, la comparaison avec la demande précédente et le suivi des réponses. Une instruction bien écrite n'accède pas magiquement à la bonne source, ne sait pas quand relancer et ne maintient pas une règle commune si chacun utilise sa version.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-64eb40305cc2",
+      "text": "La prochaine étape n'est pas forcément d'acheter un nouveau logiciel : identifiez où se trouvent les statuts dans les outils du cabinet, qui décide qu'une pièce est réellement manquante, quand une relance est appropriée et qui la valide. Éprouvez le flux sur des dossiers fictifs, y compris un document reçu tardivement et un destinataire incorrect. On peut alors décider quelle partie est automatisable, avec quel contrôle et dans quel outil existant.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3ea838c700eb",
+      "text": "Pour prolonger l'usage de l'IA générative, l'Ordre des experts-comptables présente des cas d’usage en cabinet, des précautions à prendre et des techniques pour bien « prompter ». La validation humaine garde à la personne le contrôle de la pièce, du destinataire et de l'envoi.",
+      "claimIds": [
+        "claim-unit-3ea838c700eb-1"
+      ]
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d40d629a84c6",
+      "text": "Peut-on coller un dossier client dans un prompt ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0d81566fdfb7",
+      "text": "Pas dans cet exemple : partez du jeu fictif ci-dessus. Avant d'utiliser un dossier réel, faites préciser par le cabinet l'outil retenu et les informations qu'il accepte d'y saisir ; tant que ce point n'est pas tranché, gardez le cas fictif.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f236a04bcd11",
+      "text": "Que faire si la pièce attendue n'est pas connue ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-380ecdd12c3c",
+      "text": "Dans notre script local, une pièce inconnue donne « contexte incomplet » : aucun brouillon n'est produit. Le prompt copiable demande le même arrêt, mais sa réponse n'a pas été testée avec ChatGPT. Le collaborateur recherche la pièce dans son suivi avant de relancer le dossier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-38ff61013403",
+      "text": "Le prompt envoie-t-il le message ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-050dd757dd69",
+      "text": "Non. Il prépare un texte que le collaborateur confronte à la période, au destinataire et à l'état du dossier. La décision d'envoyer et la trace de cet envoi restent dans les outils du cabinet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-df4b311b9454",
+      "text": "Comment comparer deux formulations du prompt ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4ffc2e35fe1a",
+      "text": "Jouez les mêmes cas fictifs, dont une pièce absente, et conservez chaque réponse brute. Comparez les erreurs, les champs à confirmer et la lisibilité pour le collaborateur ; notre tableau ne mesure pas la réponse d'un modèle.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7853d0d4aca6",
+      "text": "Un prompt prépare un brouillon à partir d'un contexte autorisé ; la règle du cabinet décide quand ce brouillon est pertinent et quand il faut s'arrêter. La pièce, le destinataire et l'envoi restent vérifiés par une personne.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-595852246157",
+      "text": "Pour situer ce geste parmi les autres tâches, consultez la carte des tâches du cabinet. Le brouillon de demande n'est qu'une étape de la relance des pièces manquantes : celle-ci exige aussi un état par pièce et une règle d'arrêt. Notre méthode part de cette règle et de ses exceptions. Nous écrivons cette règle dans les mots du cabinet, préparons la demande dans ses outils, la faisons recetter avec son équipe et la maintenons. Le collaborateur garde la décision d'envoi. Confiez-nous cette tâche : rien à envoyer, la description du geste suffit.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-668540d969d0-1",
+      "unitId": "unit-668540d969d0",
+      "claim": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager",
+      "type": "information",
+      "sourceIds": [
+        "cnil-ia-generative"
+      ],
+      "sourceExcerpts": {
+        "cnil-ia-generative": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager"
+      },
+      "checkedAt": "2026-10-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-03",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-ia-generative",
+            "sourceUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "verifiedUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "excerpt": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager",
+            "context": "S’agissant des données fournies en entrée du système (dans le prompt ou invite), les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager.",
+            "contextSha256": "3b3754195c4418f2b7aac609194c1c78b05e6c05b5640544b758a8e9317011cf",
+            "citation": {
+              "text": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager",
+              "sha256": "a546ae3eb06661f25120157eb710c3865f1264cbd0550f6225cb6c6b1c9d8060",
+              "sourceContentSha256": "63f9767046b4d9b962a999b9533d230fc0f6175410a8c83424da6df48740726e",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+                "checkedAt": "2026-09-29",
+                "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 942,
+                  "endLine": 942
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "utilisateurs",
+                "finaux",
+                "devraient",
+                "soumettre",
+                "informations",
+                "autorises",
+                "partager"
+              ],
+              "reasoning": "La citation, relevée à la ligne 942 de la copie locale de CNIL, porte les mêmes entités que le claim (utilisateurs, finaux, devraient, soumettre, informations, autorises, partager) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Recommandation de la FAQ CNIL sur les informations fournies dans une invite, et non obligation réglementaire autonome.",
+            "checkedAt": "2026-10-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-668540d969d0-2",
+      "unitId": "unit-668540d969d0",
+      "claim": "à partir du croisement d’un ensemble de données",
+      "type": "information",
+      "sourceIds": [
+        "cnil-donnee-personnelle"
+      ],
+      "sourceExcerpts": {
+        "cnil-donnee-personnelle": "à partir du croisement d’un ensemble de données (exemple&nbsp;: une femme vivant à telle adresse, née tel jour et membre dans telle association)."
+      },
+      "checkedAt": "2026-10-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-03",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-donnee-personnelle",
+            "sourceUrl": "https://cnil.fr/fr/definition/donnee-personnelle",
+            "verifiedUrl": "https://cnil.fr/fr/definition/donnee-personnelle",
+            "excerpt": "à partir du croisement d’un ensemble de données (exemple&nbsp;: une femme vivant à telle adresse, née tel jour et membre dans telle association).",
+            "context": "à partir du croisement d’un ensemble de données (exemple&nbsp;: une femme vivant à telle adresse, née tel jour et membre dans telle association).",
+            "contextSha256": "ddfba444f96ae235a1461e5eda66fa15be7e87030616939137770cc411e46283",
+            "citation": {
+              "text": "à partir du croisement d’un ensemble de données (exemple&nbsp;: une femme vivant à telle adresse, née tel jour et membre dans telle association).",
+              "sha256": "ddfba444f96ae235a1461e5eda66fa15be7e87030616939137770cc411e46283",
+              "sourceContentSha256": "b610e932fc37be69d66a056c21b2dca1f0262d952c56a3bc9c707e7d2491786d",
+              "coordinates": {
+                "finalUrl": "https://cnil.fr/fr/definition/donnee-personnelle",
+                "checkedAt": "2026-09-29",
+                "title": "Donnée personnelle",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 513,
+                  "endLine": 513
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "partir",
+                "croisement",
+                "ensemble",
+                "donnees"
+              ],
+              "reasoning": "La citation, relevée à la ligne 513 de la copie locale de CNIL, porte les mêmes entités que le claim (partir, croisement, ensemble, donnees) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La définition CNIL donne explicitement l’identification par croisement comme possibilité.",
+            "checkedAt": "2026-10-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-3ea838c700eb-1",
+      "unitId": "unit-3ea838c700eb",
+      "claim": "des cas d’usage en cabinet, des précautions à prendre et des techniques pour bien « prompter »",
+      "type": "information",
+      "sourceIds": [
+        "ordre-ia"
+      ],
+      "sourceExcerpts": {
+        "ordre-ia": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter » et même une charte de l’utilisation de l’IA Générative en cabinet"
+      },
+      "checkedAt": "2026-10-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-03",
+        "sourceResults": [
+          {
+            "sourceId": "ordre-ia",
+            "sourceUrl": "https://www.experts-comptables.fr/travaux-data-et-ia",
+            "verifiedUrl": "https://www.experts-comptables.fr/travaux-data-et-ia",
+            "excerpt": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter » et même une charte de l’utilisation de l’IA Générative en cabinet",
+            "context": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter » et même une charte de l’utilisation de l’IA Générative en cabinet, vous trouverez tout pour débuter ou vous perfectionner dans notre notice !",
+            "contextSha256": "255c03c4bc556c8299055fd95e0efb3f534f0f6b063e16fb76202c82f5d78e66",
+            "citation": {
+              "text": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter » et même une charte de l’utilisation de l’IA Générative en cabinet",
+              "sha256": "3dab1d88021341f7c4c67dbd0a6aba6479f24afe1e27accfa41fb5f24f8bbd3f",
+              "sourceContentSha256": "1b650c10a7f081d705a617a8bddb4ddc6873fb83593b4914e3ad2827ba9c64d2",
+              "coordinates": {
+                "finalUrl": "https://www.experts-comptables.fr/travaux-data-et-ia",
+                "checkedAt": "2026-09-29",
+                "title": "Travaux Data et IA",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 434,
+                  "endLine": 434
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "usage",
+                "cabinet",
+                "precautions",
+                "prendre",
+                "techniques",
+                "bien",
+                "prompter"
+              ],
+              "reasoning": "La citation, relevée à la ligne 434 de la copie locale de Conseil national de l’Ordre des experts-comptables, porte les mêmes entités que le claim (usage, cabinet, precautions, prendre, techniques, bien, prompter) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La page de l’Ordre annonce ces catégories de ressources, sans mesurer un résultat logiciel.",
+            "checkedAt": "2026-10-03"
+          }
+        ]
+      }
+    }
+  ]
+}

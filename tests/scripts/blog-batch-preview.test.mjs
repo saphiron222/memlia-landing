@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
-import { verifyCandidateBatchPreview } from '../../scripts/blog-pipeline.mjs';
+import { verifyCandidateBatchPreview, productionArtifactsErrors, reviewPackage } from '../../scripts/blog-pipeline.mjs';
 import { preparePreview } from '../../scripts/prepare-preview.mjs';
 import { isBlogEntryVisibleForSlugs, parseBlogPreviewSlugs } from '../../src/data/blog-visibility.mjs';
 
@@ -73,4 +73,64 @@ test('vérifie dans le paquet que chaque article lie l’autre et que les deux d
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('la preview tolère le slug voisin mais refuse sa propre URL indexée', () => {
+  const { root, dist, target, gateReports } = fixture();
+  try {
+    preparePreview({ source: dist, target, candidateSlugs: slugs, gateReports });
+    const neighbor = `${slugs[0]}-suite`;
+    writeFileSync(join(target, 'sitemap-0.xml'), `<urlset><url><loc>https://memlia.fr/blog/${neighbor}</loc></url></urlset>`);
+    writeFileSync(join(target, 'blog', 'rss.xml'), `<rss><channel><item><link>https://memlia.fr/blog/${neighbor}</link></item></channel></rss>`);
+    assert.deepEqual(verifyCandidateBatchPreview(slugs, target, previewOrigin), []);
+    writeFileSync(join(target, 'sitemap-0.xml'), `<urlset><url><loc>https://memlia.fr/blog/${slugs[0]}</loc></url></urlset>`);
+    writeFileSync(join(target, 'blog', 'rss.xml'), `<rss><channel><item><link>https://memlia.fr/blog/${slugs[0]}</link></item></channel></rss>`);
+    const errors = verifyCandidateBatchPreview(slugs, target, previewOrigin);
+    assert.ok(errors.some((error) => error.includes('sitemap-0.xml')));
+    assert.ok(errors.some((error) => error.includes('blog/rss.xml')));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('le contrôle de production exige toutes les pages du lot dans le même build', () => {
+  const { root, dist } = fixture();
+  try {
+    assert.ok(productionArtifactsErrors(root, slugs).some((e) => e.includes('sitemap')));
+    writeFileSync(join(dist, 'sitemap-0.xml'), slugs.map((slug) => `<loc>https://memlia.fr/blog/${slug}</loc>`).join(''));
+    writeFileSync(join(dist, 'blog', 'rss.xml'), slugs.map((slug) => `<link>https://memlia.fr/blog/${slug}</link>`).join(''));
+    assert.deepEqual(productionArtifactsErrors(root, slugs), []);
+    rmSync(join(dist, 'blog', `${slugs[1]}.html`));
+    assert.ok(productionArtifactsErrors(root, slugs).some((e) => e.includes(slugs[1])));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('le sitemap et le RSS refusent un slug absent même si un autre slug le prolonge', () => {
+  const { root, dist } = fixture();
+  try {
+    const requested = ['article', 'article-suite'];
+    for (const slug of requested) writeCandidate(dist, slug, 'article-suite');
+    writeFileSync(join(dist, 'sitemap-0.xml'), '<urlset><url><loc>https://memlia.fr/blog/article-suite</loc></url></urlset>');
+    writeFileSync(join(dist, 'blog', 'rss.xml'), '<rss><channel><item><link>https://memlia.fr/blog/article-suite</link></item></channel></rss>');
+    const errors = productionArtifactsErrors(root, requested);
+    assert.ok(errors.some((error) => error.includes('article: dist/sitemap-0.xml')), errors.join('\n'));
+    assert.ok(errors.some((error) => error.includes('article: dist/blog/rss.xml')), errors.join('\n'));
+    assert.equal(errors.some((error) => error.startsWith('article-suite:')), false, errors.join('\n'));
+
+    writeFileSync(join(dist, 'sitemap-0.xml'), '<urlset><url><loc>https://memlia.fr/blog/article</loc></url><url><loc>https://memlia.fr/blog/article-suite</loc></url></urlset>');
+    assert.ok(productionArtifactsErrors(root, requested).some((error) => error.includes('article: dist/blog/rss.xml')));
+    writeFileSync(join(dist, 'blog', 'rss.xml'), '<rss><channel><item><link>https://memlia.fr/blog/article</link></item><item><link>https://memlia.fr/blog/article-suite</link></item></channel></rss>');
+    assert.deepEqual(productionArtifactsErrors(root, requested), []);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('le paquet de revue sollicite un reçu opérateur borné aux octets, non un go humain routinier', () => {
+  const { root } = fixture();
+  try {
+    const dossier = join(root, 'editorial', 'articles', slugs[0]);
+    mkdirSync(dossier, { recursive: true });
+    writeFileSync(join(dossier, 'manifest.json'), '{}');
+    const paquet = readFileSync(reviewPackage(slugs[0], { pass: true, errors: [] }, root), 'utf8');
+    assert.match(paquet, /SHA-256/);
+    assert.match(paquet, /opérateur.*octets/i);
+    assert.doesNotMatch(paquet, /décision explicite de Kevin|go individuel de Kevin/i);
+  } finally { rmSync(root, { recursive: true, force: true }); }
 });

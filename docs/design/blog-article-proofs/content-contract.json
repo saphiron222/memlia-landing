@@ -18,22 +18,22 @@
     "centralText": "Retour après dépôt Jeu d’essai fictif · CRM R-014-A Compte rendu reçu R-014-A Émetteur ORGANISME-A Période 2026-08 Nature Écart à qualifier selon la notice Donnée visée Rubrique fictive X-14 → Action documentée À arbitrer 1 Rattacher le retour au bon dépôt 2 Lire la qualification dans la source 3 Comparer à la preuve P-014-08 4 Conserver le contrôle suivant Aucune gravité, échéance ou correction n’est déduite du seul libellé."
   },
   {
-    "id": "saisie-six-controles",
+    "id": "saisie-controle-piece",
     "article": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "alt": "Six contrôles de saisie dans leur ordre fixe, arrêtés sur un écart de montants fictif.",
-    "source": "Jeu d’essai fictif et règle écrite décrits dans l’article",
+    "alt": "Contrôle fictif de la facture FA-2026-0412 : quatre contrôles concluants, période à qualifier, aucune écriture enregistrée.",
+    "source": "jeu d’essai fictif et règle écrite décrits dans cet article",
     "sourceUrl": null,
-    "capturedAt": "2026-09-20",
-    "centralText": "Lecture d’une pièce fictive Lot TEST-050 · aucune écriture enregistrée Ordre fixe Une étape qui échoue arrête les suivantes. 1 Nature Facture identifiée 2 Émetteur Fournisseur connu 3 Mentions Champs attendus présents 4 Montants Écart détecté 5 Période Non joué 6 Doublon Non joué Refus attendu Aucune correction d’office. La pièce rejoint la file avec le motif « écart de montants »."
+    "capturedAt": "2026-10-03",
+    "centralText": "Contrôle de la pièce FA-2026-0412 Jeu d’essai fictif · lot de mai 2026 Facture reçue le 06/05/2026 Fournisseur Fictif Client : Atelier Fictif FA-2026-0412 Émise le 05/05/2026 Livraison 30/04/2026 Échéance 04/06/2026 Désignation Qté Montant HT Imprimante multifonction 1 450,00 Cartouches d’encre 2 120,00 Total HT 570,00 € TVA 20 % 114,00 € Total TTC 684,00 € Contrôles · ordre fixe ✓ Nature Facture identifiée Concluant ✓ Émetteur Fournisseur du dossier Concluant ✓ Mentions Numéro, date, parties, montants Concluant ✓ Montants HT + TVA = TTC Concluant ! Période Livraison en avril, émission en mai À qualifier · Doublon Après la décision sur la période Non joué Période à qualifier · décision humaine documentée attendue Aucune écriture enregistrée"
   },
   {
-    "id": "saisie-file-anomalies",
+    "id": "saisie-file-anomalies-avril",
     "article": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
-    "alt": "File d’anomalies fictive avec six motifs fermés et un écart de montants à traiter.",
-    "source": "Jeu d’essai fictif et règle écrite décrits dans l’article",
+    "alt": "File d’anomalies fictive d’avril : six pièces, dont un ticket coupé, chacune avec son contrôle échoué et son motif.",
+    "source": "jeu d’essai fictif et règle écrite décrits dans cet article",
     "sourceUrl": null,
-    "capturedAt": "2026-09-20",
-    "centralText": "File d’anomalies Jeu fictif · lot TEST-050 Motifs fermés Chaque refus nomme la règle qui s’est arrêtée. Document non facturé 1 Fournisseur inconnu 6 Pièce incomplète 2 Écart de montants 1 Hors période 3 Doublon probable 1 Cas sélectionné TEST-023 · écart de montants Contrôle HT + TVA ≠ TTC lu Action automatique Aucune Décision attendue Relire la pièce État À traiter Le reliquat se recompte pour ce lot. Il ne classe aucune personne."
+    "capturedAt": "2026-10-03",
+    "centralText": "File d’anomalies · avril 2026 Jeu d’essai fictif · lot d’avril 2026 File unique · relue à 9 h et à 14 h 6 pièces à qualifier Tous les motifs Pièce incomplète Hors période Doublon probable Pièce Reçue le Contrôle échoué Motif Statut TK-2026-0107 Ticket coupé 03/04 Mentions Pièce incomplète À qualifier FA-2026-0371 Facture de mars 04/04 Période Hors période À qualifier FA-2026-0386 Reçue par deux canaux 08/04 Doublon Doublon probable À qualifier FA-2026-0390 Fournisseur jamais vu 09/04 Émetteur Fournisseur inconnu À qualifier FA-2026-0397 Facture d’entretien 11/04 Montants Écart de montants À qualifier DV-2026-0044 Devis transmis 12/04 Nature Document non facturé À qualifier Lot d’avril Ouvert Écritures créées par la file : aucune"
   },
   {
     "id": "social-dictionnaire",
@@ -90,22 +90,22 @@
     "centralText": "Registre des retours Jeu d’essai fictif · vue de pilotage Retour Émetteur Période Statut source Décision Contrôle suivant R-027-A ORGANISME-A 2026-08 à confirmer À arbitrer R-027-B R-031-A ORGANISME-B 2026-08 BAN reçu Ouvert Absent R-044-A ORGANISME-C 2026-08 informatif Expliqué R-044-B Preuve source Référence, jamais copie nominative État interne Séparé du statut du CRM Clôture Sur le résultat suivant"
   },
   {
-    "id": "carte-douze-poles",
+    "id": "carte-inventaire-taches",
     "article": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "alt": "Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert.",
-    "source": "Taxonomie éditoriale versionnée du dépôt",
+    "alt": "Inventaire fictif des tâches d’un cabinet par pôle : fréquence, règle écrite et statut de six familles.",
+    "source": "écran fictif construit sur la taxonomie éditoriale versionnée src/data/familles.ts",
     "sourceUrl": null,
-    "capturedAt": "2026-09-20",
-    "centralText": "Carte du cabinet 12 pôles · 60 familles · source de vérité éditoriale 13 Production comptable 5 Portefeuille et échéances 7 Paie et social 7 Juridique et fiscal 4 Facturation et recouvrement 5 Administration et secrétariat 3 RH et formation 4 Numérique, IT et data 3 Excel et outils existants 4 Méthode et décision humaine 4 Conseil et missions spéciales 1 Audit légal · listé, non ouvert Chaque famille décrit une tâche et sa frontière. La carte ne promet aucune fonction et n’ouvre pas l’audit légal."
+    "capturedAt": "2026-10-03",
+    "centralText": "Inventaire des tâches Jeu d’essai fictif · cabinet de démonstration Relevé de cadrage Carte du cabinet · 12 pôles Tous les pôles Candidates À observer Non ouvert Pôle Famille de tâches Fréquence Règle écrite Statut Production comptable Relance des pièces manquantes Mensuelle Oui Candidate Production comptable Saisie des factures fournisseurs À chaque pièce En cours À observer Paie et social Contrôle des bulletins avant DSN Mensuelle Oui Candidate Juridique et fiscal Préparation des déclarations de TVA Mensuelle Partielle À observer Facturation et recouvrement Relance des honoraires impayés Mensuelle Non Règle à écrire Audit légal Commissariat aux comptes — — Non ouvert Familles relevées 60 Candidates au cadrage 2 Audit légal Listé, non ouvert"
   },
   {
-    "id": "carte-test-regle",
+    "id": "carte-fiche-regle-relance",
     "article": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "alt": "Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables.",
-    "source": "Test de maturité décrit dans l’article sur la carte des tâches",
+    "alt": "Fiche fictive de la règle de relance des pièces : déclencheur, condition, action, exception et validation humaine.",
+    "source": "écran fictif de la règle de relance des pièces décrite dans cet article",
     "sourceUrl": null,
-    "capturedAt": "2026-09-20",
-    "centralText": "Choisir par quelle règle commencer Jeu d’essai fictif Tâche candidate Relance de pièces Déclencheur, condition, action et exception sont écrits sur une page. ✓ Se répète Chaque dossier, chaque période Oui ✓ La règle s’écrit Aucun « ça dépend » non borné Oui ✓ Les exceptions se comptent Illisible, litige, hors période Oui Décision humaine Candidate au cadrage Le test ne lance rien. Le cabinet choisit la première tâche et valide sa frontière. Règle reproductible"
+    "capturedAt": "2026-10-03",
+    "centralText": "Fiche règle · Relance des pièces Jeu d’essai fictif · règle R-01 Règle de cabinet · production comptable Relance des pièces manquantes Brouillon de règle Déclencheur Le 5 du mois, pour chaque dossier en tenue mensuelle Condition Une pièce de la checklist reste « attendue » Action Préparer une relance qui nomme les seules pièces attendues Exception Client en litige, pièce illisible, période close Validation humaine Le collaborateur relit la relance, puis l’envoie Mesure Temps avant et après, sur le même jeu d’essai · à relever Jeu d’essai de la règle Cas courant D-004 · deux pièces attendues Relance préparée Cas limite D-007 · pièce reçue hors période À relire Cas de refus D-009 · client en litige Aucune relance Recette réelle Non commencée Propriétaire Pôle production"
   },
   {
     "id": "cicatrice-questionnaire-vide",
@@ -124,5 +124,95 @@
     "sourceUrl": null,
     "capturedAt": "2026-09-20",
     "centralText": "Relevé de tâche Jeu d’essai fictif · contrôle de complétude Réponses du relevé Tâche Rapprocher l’export et le classeur Renseigné Durée 20 minutes Renseigné Fréquence Champ vide Manquant Source Champ vide Manquant Bloc calculé 2 éléments manquent Fréquence de la tâche Emplacement de la donnée Aucun engagement tant que le relevé est incomplet. Terminer le cadrage"
+  },
+  {
+    "id": "logiciel-grille-demonstration",
+    "article": "logiciel-ia-comptabilite",
+    "alt": "Grille fictive de démonstration : logiciel actuel et deux solutions relevés sur la même pièce nominale.",
+    "source": "écran fictif de la grille de comparaison décrite dans l’article ; aucun éditeur évalué",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-03",
+    "centralText": "Grille de démonstration Jeu d’essai fictif · dossier D-001 · avril 2026 Cas rejoué à l’identique Pièce nominale reçue Pièce nominale Doublon Période ambiguë Donnée absente Relevé Logiciel actuel Solution A Solution B Version montrée Version en place Démonstration v. 4.2 Non communiquée Sortie Proposition à valider Écriture proposée Extraction seule Étapes manuelles Export, puis contrôle Contrôle seul Non montrées Trace après correction Motif conservé Non montrée Non montrée État Vérifié sur le cas À configurer Non vérifié Cas suivant Doublon · même pièce reçue deux fois 1 cas sur 4 relevé"
+  },
+  {
+    "id": "logiciel-file-controle",
+    "article": "logiciel-ia-comptabilite",
+    "alt": "File de contrôle fictive : proposition à valider, doublon probable, période ambiguë et donnée absente, sans écriture.",
+    "source": "écran fictif des cas rejoués dans journal-rejeu.json ; aucun éditeur évalué",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-03",
+    "centralText": "File de contrôle Jeu d’essai fictif · dossier D-001 · avril 2026 Pièces reçues 4 pièces · aucune écriture Pièce Fournisseur Période lue Sortie Suite FA-2026-0321 Fournisseur Fictif avril 2026 Proposition À valider FA-2026-0321 Fournisseur Fictif avril 2026 Doublon probable Revoir FA-2026-0398 Fournisseur Fictif B mars 2026 Période ambiguë Revoir Sans référence Non lu — Donnée absente Arrêt Règle locale Empreinte, période, doublon Dernier passage le 08/04 à 10 h 12 Exception sélectionnée Doublon probable Pièce FA-2026-0321, reçue le 08/04 Déjà reçue Le 03/04, par courriel Écriture Aucune Reprise Comparer les deux pièces À reprendre"
+  },
+  {
+    "id": "prompt-assistant-brouillon",
+    "article": "prompt-chatgpt-expert-comptable",
+    "alt": "Fenêtre d’assistant fictive : consigne du collaborateur et brouillon de demande de facture, non envoyé.",
+    "source": "reconstitution HTML fictive ; scène nominale vérifiable dans journal-rejeu.json, aucun modèle interrogé",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-03",
+    "centralText": "Assistant · demande de pièce Jeu d’essai fictif · Atelier Fictif · avril 2026 Contexte autorisé Société Atelier Fictif Période avril 2026 Pièce attendue Facture d’achat de matériel Suivi Non reçue Destinataire À confirmer Collaborateur Prépare un brouillon de demande de pièce pour Atelier Fictif : facture d’achat de matériel, avril 2026. N’invente ni montant, ni échéance, ni adresse. Assistant · brouillon Objet : Pièce manquante · avril 2026 Bonjour, pouvez-vous nous transmettre la facture d’achat de matériel pour Atelier Fictif, période avril 2026 ? Si elle n’est pas disponible, indiquez-nous pourquoi. Merci. À vérifier avant envoi Pièce Période Destinataire Ton Brouillon · non envoyé Destinataire : à confirmer Écrire une consigne… →"
+  },
+  {
+    "id": "prompt-suivi-demandes",
+    "article": "prompt-chatgpt-expert-comptable",
+    "alt": "Suivi fictif des demandes de pièces : brouillon à relire, relance arrêtée et champ « Pièce attendue » non renseigné.",
+    "source": "reconstitution HTML fictive ; arrêt vérifiable dans journal-rejeu.json, aucun modèle interrogé",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-03",
+    "centralText": "Suivi des demandes de pièces Jeu d’essai fictif · avril 2026 Pièces à obtenir 5 demandes · avril 2026 Toutes À relire Envoyées Reçues Dossier Pièce attendue État Prochaine action D-012 · Atelier Fictif Facture d’achat de matériel Demande proposée Relire le brouillon D-012 · Atelier Fictif Champ non renseigné Arrêt · contexte incomplet Préciser la pièce D-015 · Studio Fictif Relevé bancaire de mars Envoyée le 14/04 Ne pas relancer D-019 · Commerce Fictif Facture de vente n° 118 Reçue le 16/04 Arrêter la relance D-021 · Démo Social Justificatif de variable Absente Préparer la demande Source des états Suivi du cabinet Mis à jour le 16/04 à 9 h 30"
+  },
+  {
+    "id": "competences-tableau-dossier",
+    "article": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+    "alt": "Tableau fictif du dossier D-008 : travaux préparés, propositions à valider et décisions du collaborateur.",
+    "source": "écran fictif construit sur la frontière décrite dans l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-03",
+    "centralText": "Dossier D-008 · clôture d’avril Jeu d’essai fictif · période 2026-04 Préparé 3 Banque · compte 512 Rapprochement bancaire proposé 14 lignes rapprochées, 1 en suspens Prêt Fournisseurs Lettrage proposé 9 écritures, source jointe Prêt TVA · avril 2026 Tableau de TVA préparé Montants repris des journaux Prêt À valider 2 FA-2026-0467 · Fournisseur Fictif Écriture proposée Période et source jointes À valider Pièces attendues Relance préparée 2 pièces nommées, destinataire à confirmer À relire Décision du collaborateur 2 Avoir AV-2026-0031 Exception à arbitrer Facture d’origine introuvable À arbitrer Client · Atelier Fictif Information du client Écart de TVA à expliquer Collaborateur"
+  },
+  {
+    "id": "competences-journal-rejeu",
+    "article": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+    "alt": "Journal fictif du rejeu : une proposition et deux refus motivés, avec le détail du cas à deux interprétations.",
+    "source": "oracle exécutable sur le jeu fictif, rendu dans un cadre HTML",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-03",
+    "centralText": "Journal de rejeu · 21/09/2026 Jeu d’essai fictif · trois entrées Même règle, trois entrées 3 cas rejoués Heure Cas Entrée fictive Sortie 10:42:01 IA-01 Entrée complète, période reconnue 1 interprétation · règle écrite Proposition · PR-001 10:42:01 IA-02 Pièce lisible, deux interprétations 2 interprétations · règle écrite Refus · 2 interprétations 10:42:02 IA-03 Entrée reconnue, règle absente 1 interprétation · aucune règle Refus · règle à écrire Contrôle du rejeu 3 cas sur 3 conformes à l’attendu Règle R-IA · version du 21/09 Ligne sélectionnée · IA-02 Deux interprétations possibles Statut REFUS_AMBIGUITE Proposition Aucune Décision Présenter l’ambiguïté au collaborateur À présenter"
+  },
+  {
+    "id": "surcharge-journal-semaine",
+    "article": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+    "alt": "Journal fictif d’une semaine du pôle production, chaque événement classé en répétition, attente, exception ou décision.",
+    "source": "cadre HTML et jeu fictif décrits dans l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-03",
+    "centralText": "Journal de la semaine · pôle production Jeu d’essai fictif · semaine du 13 avril 3 Répétition 2 Attente 1 Exception 1 Décision Jour Événement Dossier Durée ou attente État Lun 13 Saisie des relevés bancaires D-004 45 min Répétition Lun 13 Préparation des relances de pièces D-011 30 min Répétition Mar 14 Facture d’achat manquante D-012 2 j d’attente Attente Mer 15 Facture datée hors période D-007 20 min Exception Jeu 16 Validation de révision indisponible D-009 1 j d’attente Attente Jeu 16 Saisie des factures récurrentes D-004 40 min Répétition Ven 17 Écart à arbitrer D-009 25 min Décision"
+  },
+  {
+    "id": "surcharge-grille-priorisation",
+    "article": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+    "alt": "Grille fictive de priorisation : fréquence, stabilité de la règle, coût du doute et décision pour cinq tâches.",
+    "source": "cadre HTML et jeu fictif décrits dans l’article",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-03",
+    "centralText": "Grille de priorisation Jeu d’essai fictif · semaine du 13 avril Candidats relevés 5 tâches de la semaine Candidat Fréquence Règle stable Coût du doute Décision Saisie des relevés bancaires Hebdomadaire Oui Faible Écrire d’abord Préparation des relances Mensuelle Oui Faible Écrire d’abord Saisie des factures récurrentes Hebdomadaire Non Faible Règle à clarifier Facture hors période Mensuelle Non Élevé Garder humain Écart à arbitrer Mensuelle Non Élevé Garder humain Premier candidat Règle candidate RC-01 Tâche Saisie des relevés bancaires Arrêt prévu Relevé illisible ou incomplet Suite Faire relire la règle avant de la tester À relire"
+  },
+  {
+    "id": "trois-passes-journal-recette",
+    "article": "tests-verts-et-regle-des-trois-passes",
+    "alt": "Journal de recette fictif : bornes mal lues, total des coûts divergent et exercice agrégé à l’écran, trois arrêts.",
+    "source": "écran fictif des trois cas de journal-rejeu.json ; reconstitution, pas une capture historique",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-03",
+    "centralText": "Journal de recette · simulateur de démonstration Jeu d’essai fictif · trois cas rejoués Recette avant validation 3 arrêts à corriger Passe Cas fictif Attendu Obtenu Statut Suites Bornes de colonnes Z à AB Lecteur de bornes · une lettre AB = 28 AB = 1 Rouge à raison Chaîne de preuve Coûts 40 + 10 + 5 Total après insertion de colonne 55 50 Divergence Écran Dossier D-021 · exercice N Vue du simulateur 12 20 Périmètre à revoir Validation du cabinet En attente Livrable de démonstration · version 2 Cas sélectionné · écran Dossier D-021, exercice N Montant N 12 Montant N−1 8 Total affiché 20, sans filtre d’exercice Suite Corriger le filtre, puis rejouer Validation suspendue"
+  },
+  {
+    "id": "trois-passes-chaine-preuve",
+    "article": "tests-verts-et-regle-des-trois-passes",
+    "alt": "Chaîne de preuve fictive : trois coûts rapprochés de leurs cellules, une référence restée en Z, total 50 pour 55 attendu.",
+    "source": "écran fictif du cas « chaîne » de journal-rejeu.json ; reconstitution, pas une capture historique",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-03",
+    "centralText": "Chaîne de preuve · total des coûts Jeu d’essai fictif · classeur de démonstration Rapprochement entrée → total affiché 1 référence décalée Formules livrées Cellules sources Filtres Poste Attendu Cellule visée Cellule lue Lu État Coût A 40 AA12 AA12 40 Concordant Coût B 10 AA13 AA13 10 Concordant Coût C 5 AA14 Z14 vide Référence décalée Total des coûts 55 AA15 AA15 50 Divergence Colonne insérée avant la colonne Z Attendu calculé hors du classeur Référence sélectionnée Coût C Avant insertion Z14 Après insertion AA14 attendu Formule livrée lit encore Z14 Effet total 50 au lieu de 55 Total refusé"
   }
 ]

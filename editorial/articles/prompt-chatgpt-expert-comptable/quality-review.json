@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "candidateSlug": "prompt-chatgpt-expert-comptable",
+  "reviewedAt": "2026-10-03",
+  "reviewer": "metier:t_303e7c6d",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 91,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 27,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 22,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 14,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 14,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 14,
+      "max": 15
+    }
+  },
+  "evidence": [
+    "27/30 : condition d’arrêt et cas nominal séparés dans le texte, le journal et les deux figures (brouillon non envoyé dans la fenêtre d’assistant, « Arrêt · contexte incomplet » dans le suivi), sans refus attribué à ChatGPT ni interface de marque.",
+    "22/25 : titre, tâche et liens inchangés ; aucun résultat de classement mesuré.",
+    "14/15 : trois copies de sources datées et liées dans la revue antérieure, sans validation fictive de ChatGPT.",
+    "14/15 : deux images 1600 × 900 directes, sans légende ni défilement, qui tiennent dans la colonne à 1280 et 390 px et restent lisibles dans leurs grandes masses ; pas de test de lecteur d’écran ni preuve publique.",
+    "14/15 : refus présenté comme sortie du script local uniquement."
+  ],
+  "reservations": [
+    "Cette revue IA ciblée ne vaut ni scellement ni QA/CI exact-head ni feu vert de publication.",
+    "Aucun appel ChatGPT ou essai de lecteur d’écran effectué ; les deux nouvelles figures déclarent capturedAt 2026-10-03 dans la recette et le contrat interne, sans horodatage autonome de fabrication vérifié lors de cette passe.",
+    "Sources officielles évaluées à partir des copies et reçus du 29/09/2026 ; pas de nouvelle consultation HTTP en direct.",
+    "Le rendu local affiche robots index, sans preuve d'une mise en ligne ou d'une indexation effective."
+  ],
+  "verdict": "AI_REVIEW_PASS sur les deux nouvelles figures 1600 × 900 et leur rendu local relu à 1280 et 390 px, sous réserves de traçabilité de fabrication et de livraison ; ni scellement ni publication.",
+  "subject": {
+    "slug": "prompt-chatgpt-expert-comptable",
+    "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
+    "manifestSha256": "da19b3e5b7b2454f51c3d99f43694f7571ecb08a34d0a7a5abfcf512134e419f"
+  }
+}

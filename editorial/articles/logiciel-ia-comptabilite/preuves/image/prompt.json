@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "logiciel-ia-comptabilite",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "bb2554d5aa5cd76e0239d7388cdaa4310b7710e33589aad117057f73d00c8c42",
+  "manifestSha256": "89608d3394905cf25b630daec8ce1d2f43ff727d66efa1118da8f7901c7ff6dc",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact logiciel-ia-comptabilite."
+  ],
+  "engine": "image_generate",
+  "prompt": "Original Memlia 3D isometric editorial still life, 16:9 cream #fcfbf7 paper background. A LARGE solid matte graphite #231f20 dark ink sorting tray occupying at least 12 percent of frame, and two clearly visible geometric blocks green #27b657 and deep green #1c8a41. Three blank sheets approach the tray: one aligned, one put aside as a duplicate, one isolated for ambiguous period; beside them an empty open verification gate, no check marks. This is a fictional bookkeeping task selection, not a software user interface. Soft studio light upper left, no people, no words, no logos, no numbers, no automatic approval, no red alerts.",
+  "brief": {
+    "sujet": "Pièces reçues et vérification des exceptions avant la décision humaine.",
+    "composition": "Description du rendu : bac sombre, trois feuilles blanches et portique. Le nominal, le doublon et la période ne se distinguent pas sur les feuilles ; la classification est portée par la grille textuelle, pas par l'image.",
+    "style": "Diorama 3D isométrique, matières mates, lumière douce sur fond crème.",
+    "palette": "Fond crème #fcfbf7 dominant ; vert #27b657, vert profond #1c8a41 et graphite #231f20 visibles.",
+    "interdits": "Logo, texte, résultat de comparaison inventé, coche de validation automatique, donnée client.",
+    "alt": "Trois feuilles blanches près d'un bac de tri et d'un portique vide ; aucune issue de contrôle n'est visible"
+  },
+  "reviewCriteria": [
+    "aucun produit attribué",
+    "objet complet après recadrage",
+    "palette mesurée sur dérivés",
+    "sujets fictifs sans donnée",
+    "aucune fonction commerciale prétendue",
+    "variants et OG vérifiés"
+  ]
+}

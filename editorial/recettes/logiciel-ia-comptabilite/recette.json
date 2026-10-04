@@ -1,0 +1,195 @@
+{
+  "slug": "logiciel-ia-comptabilite",
+  "preparationStatus": "NON_PUBLIABLE_attend_revue_independante",
+  "inlineProofs": [
+    {
+      "id": "logiciel-grille-demonstration",
+      "insertBeforeHeading": "Comparer ce qui compte vraiment",
+      "alt": "Grille fictive de démonstration : logiciel actuel et deux solutions relevés sur la même pièce nominale.",
+      "source": "écran fictif de la grille de comparaison décrite dans l’article ; aucun éditeur évalué",
+      "capturedAt": "2026-10-03"
+    },
+    {
+      "id": "logiciel-file-controle",
+      "insertBeforeHeading": "Trois choix possibles, pas un classement de marques",
+      "alt": "File de contrôle fictive : proposition à valider, doublon probable, période ambiguë et donnée absente, sans écriture.",
+      "source": "écran fictif des cas rejoués dans journal-rejeu.json ; aucun éditeur évalué",
+      "capturedAt": "2026-10-03"
+    }
+  ],
+  "title": "Logiciel IA pour la comptabilité : la grille de choix d'un cabinet",
+  "tabTitle": "Logiciel IA comptabilité : grille de choix | Memlia",
+  "summary": "Comparer le parcours entier d'une pièce : réception, exception, reprise, validation et trace. Quatre cas fictifs rejoués, aucun éditeur testé.",
+  "description": "Logiciel IA comptabilité : une grille pour comparer le traitement des pièces et des exceptions, sans confondre démonstration et résultat mesuré.",
+  "date": "2026-09-29",
+  "updatedAt": "2026-10-03",
+  "topics": [
+    "ia",
+    "saisie",
+    "automatisation"
+  ],
+  "keywords": [
+    "logiciel ia comptabilite",
+    "choix logiciel comptable",
+    "exceptions comptables"
+  ],
+  "primaryQuery": "logiciel ia comptabilite",
+  "secondaryQueries": [],
+  "intent": "comparer-approches",
+  "fanOut": [
+    "tâche complète",
+    "exceptions et validation",
+    "trace et maintenance"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "chefs-mission-portefeuille"
+    ],
+    "proofLevel": "indirect",
+    "proofNote": "Backlog W39 : intention logiciel observée en autocomplétion les 20 et 27/09 ; aucun cabinet interrogé pour ce comparatif."
+  },
+  "funnel": "MOFU",
+  "cluster": "numerique-it-data",
+  "famille": "ia-generative-agents",
+  "contentType": "searchable",
+  "format": "faq-knowledge",
+  "task": "Comparer sur une pièce fictive les capacités du logiciel existant et des solutions envisagées, avec reprise humaine.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Quatre cas de tri par règle locale conservés dans cas-executes.json ; aucun éditeur ni intégration commerciale testé.",
+  "reviewRule": "Réviser les conditions des éditeurs et la documentation officielle avant tout classement de produit ; la grille de méthode reste indépendante des marques.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de la tâche, l'automatisons dans vos outils et la recettons avec votre équipe. Vous gardez la décision sur les pièces et les exceptions. Rien à envoyer : décrivez la tâche."
+  },
+  "image": {
+    "heroId": "img-art-logiciel-ia-comptabilite",
+    "alt": "Trois feuilles blanches près d'un bac de tri et d'un portique vide ; aucune issue de contrôle n'est visible",
+    "brief": {
+      "sujet": "Pièces reçues et vérification des exceptions avant la décision humaine.",
+      "composition": "Description du rendu : bac sombre, trois feuilles blanches et portique. Le nominal, le doublon et la période ne se distinguent pas sur les feuilles ; la classification est portée par la grille textuelle, pas par l'image.",
+      "style": "Diorama 3D isométrique, matières mates, lumière douce sur fond crème.",
+      "palette": "Fond crème #fcfbf7 dominant ; vert #27b657, vert profond #1c8a41 et graphite #231f20 visibles.",
+      "interdits": "Logo, texte, résultat de comparaison inventé, coche de validation automatique, donnée client.",
+      "alt": "Trois feuilles blanches près d'un bac de tri et d'un portique vide ; aucune issue de contrôle n'est visible",
+      "reviewCriteria": [
+        "aucun produit attribué",
+        "objet complet après recadrage",
+        "palette mesurée sur dérivés",
+        "sujets fictifs sans donnée",
+        "aucune fonction commerciale prétendue",
+        "variants et OG vérifiés"
+      ],
+      "prompt": "Original Memlia 3D isometric editorial still life, 16:9 cream #fcfbf7 paper background. A LARGE solid matte graphite #231f20 dark ink sorting tray occupying at least 12 percent of frame, and two clearly visible geometric blocks green #27b657 and deep green #1c8a41. Three blank sheets approach the tray: one aligned, one put aside as a duplicate, one isolated for ambiguous period; beside them an empty open verification gate, no check marks. This is a fictional bookkeeping task selection, not a software user interface. Soft studio light upper left, no people, no words, no logos, no numbers, no automatic approval, no red alerts."
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "40f7e51d-8820-4abc-adc0-920b94f8b443",
+      "model": "gpt_image_2_5",
+      "provider": "higgsfield",
+      "generatedAt": "2026-09-27",
+      "credits": 2.75
+    }
+  },
+  "sources": [
+    {
+      "id": "cnil-choix-ia",
+      "publisher": "CNIL",
+      "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+      "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "FAQ de l’autorité française de protection des données, consultée le 28/09/2026.",
+      "excerpt": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté"
+    },
+    {
+      "id": "ordre-outils-ia",
+      "publisher": "Conseil national de l’Ordre des experts-comptables",
+      "title": "Travaux Data et IA",
+      "url": "https://www.experts-comptables.fr/travaux-data-et-ia",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Publication primaire de l’Ordre sur ses ressources, non reconnue comme autorité officielle par la liste fermée du gate.",
+      "excerpt": "le CNOEC vous propose des outils concrets et pratiques pour passer à l’action dès aujourd’hui"
+    },
+    {
+      "id": "service-public-pieces",
+      "publisher": "Service Public",
+      "title": "Quels sont les délais de conservation des documents pour les entreprises ?",
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Fiche officielle de l’administration française sur les documents d’entreprise, consultée le 28/09/2026.",
+      "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale."
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/methode",
+      "/contact"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "moyen",
+    "comparedWith": [
+      "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "/automatisation-cabinet-comptable"
+    ],
+    "decision": "La page de saisie montre six contrôles d’une tâche ; ce guide compare des parcours et des exceptions sans classer les éditeurs ni vendre Memlia comme logiciel."
+  },
+  "serp": {
+    "requete": "logiciel ia comptabilite",
+    "date": "2026-09-28",
+    "acteurs": [
+      "Tool Advisor",
+      "Clotilde",
+      "Digitiz",
+      "Obat"
+    ],
+    "note": "WebSearch du 28/09/2026 : listes de marques et promesses de gain ; pas de banc comparatif produit exécuté ici ni de rang SERP certifié."
+  },
+  "gsc": {
+    "requete": "logiciel ia comptabilite",
+    "date": "2026-09-28",
+    "impressions": 0,
+    "clics": 0,
+    "note": "Nouvelle page non publiée : aucune donnée Search Console attribuable, aucune requête GSC consultée pour cette URL."
+  },
+  "claims": [
+    {
+      "unite": "La CNIL conseille",
+      "claim": "partir de besoins concrets",
+      "type": "information",
+      "sourceId": "cnil-choix-ia",
+      "excerpt": "Il est recommandé de <strong>partir de besoins concrets </strong>pour choisir le système le plus adapté",
+      "explanation": "Conseil de choix d'un système d'IA générative, non obligation réglementaire : la CNIL recommande explicitement de partir de besoins concrets."
+    },
+    {
+      "unite": "L'Ordre des experts-comptables propose",
+      "claim": "des outils concrets et pratiques sur la data et l'IA",
+      "type": "information",
+      "sourceId": "ordre-outils-ia",
+      "excerpt": "le CNOEC vous propose des outils concrets et pratiques pour passer à l’action dès aujourd’hui",
+      "explanation": "Le site de l’Ordre annonce ses propres outils, sans certifier un produit particulier."
+    },
+    {
+      "unite": "Service Public indique",
+      "claim": "une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale",
+      "type": "legal-reglementaire",
+      "sourceId": "service-public-pieces",
+      "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+      "explanation": "Citation exacte de Service Public ; aucune durée spécifique attribuée au logiciel."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "direction-associes"
+  }
+}

@@ -5,6 +5,12 @@
  * des nombres exacts d’actifs. Ici, chaque cadre mesure 1600 × 900, son texte est
  * figé dans content-contract.json, et son WebP reste sous 150 Ko.
  *
+ * Recette de référence (décision Kevin du 03/10/2026) : une figure de corps est UNE
+ * image 1600 × 900, servie telle quelle sur bureau comme sur téléphone, jamais une
+ * variante portrait « -mobile ». Elle montre l’écran d’un outil fictif dans la fenêtre
+ * de référence (pastille, nom de l’écran, « Jeu d’essai fictif · contexte ») : elle
+ * illustre, elle n’explique pas l’article.
+ *
  *   --adopt  fige le texte après revue visuelle et publie les actifs
  *   (sans option) rend et publie contre le contrat existant
  *   --check  refuse toute dérive sans écrire dans public/ ni dans le manifeste
@@ -37,7 +43,8 @@ if (mode === 'check' && process.env.CF_PAGES === '1') {
   const previous = JSON.parse(readFileSync(manifestPath, 'utf8'));
   const currentSources = previous.sources.map(({ path }) => ({ path, sha256: hash(readFileSync(path)) }));
   assert.deepEqual(previous.sources, currentSources, 'Sources ou contrat de rendu périmés');
-  assert.equal(previous.entries.length, contract.length, 'Le manifeste ne couvre pas toutes les preuves');
+  assert.equal(previous.entries.length, contract.length, 'Le manifeste doit couvrir une image et une seule par preuve');
+  assert.ok(previous.entries.every((entry) => !/-mobile\.webp$/.test(entry.target)), 'Aucune variante portrait n’est attendue');
   for (const entry of previous.entries) {
     assert.ok(existsSync(entry.target), `Actif absent : ${entry.target}`);
     assert.equal(hash(readFileSync(entry.target)), entry.sha256, `Actif périmé : ${entry.target}`);
@@ -58,19 +65,43 @@ try {
   const fonts = await page.evaluate(() => [...document.fonts].map((font) => ({ family: font.family, status: font.status })));
   assert.ok(fonts.length >= 3 && fonts.every((font) => font.status === 'loaded'), 'Polices non chargées');
   const ids = await page.locator('.frame').evaluateAll((elements) => elements.map((element) => element.id));
-  assert.equal(ids.length, 14, 'Quatorze preuves sont attendues, deux par article');
+  assert.equal(ids.length, 24, 'Vingt-quatre preuves sont attendues, deux par article');
   assert.deepEqual(ids, contract.map((entry) => entry.id), 'Les cadres ne correspondent pas au contrat');
   assert.ok(contract.every((entry) => entry.article && entry.alt && entry.source && entry.capturedAt), 'Métadonnées de preuve incomplètes');
   assert.ok(contract.every((entry) => /^\d{4}-\d{2}-\d{2}$/.test(entry.capturedAt)
     && !Number.isNaN(Date.parse(`${entry.capturedAt}T00:00:00Z`))), 'Date de capture invalide');
   const articles = Map.groupBy(contract, (entry) => entry.article);
-  assert.equal(articles.size, 7, 'Sept articles distincts sont attendus');
+  assert.equal(articles.size, 12, 'Douze articles distincts sont attendus');
   for (const [article, preuves] of articles) {
     assert.equal(preuves.length, 2, `${article} doit porter exactement deux preuves`);
     const recettePath = `editorial/recettes/${article}/recette.json`;
     assert.ok(existsSync(recettePath), `Recette absente : ${article}`);
     const recette = JSON.parse(readFileSync(recettePath, 'utf8'));
     assert.deepEqual(recette.inlineProofs?.map(({ id }) => id), preuves.map(({ id }) => id), `Recette et contrat divergent : ${article}`);
+  }
+
+  // Recette : chaque cadre est une seule fenêtre de référence dont l’en-tête nomme l’écran
+  // et se déclare jeu d’essai fictif (ou reconstitution).
+  const chromes = await page.locator('.frame').evaluateAll((frames) => frames.map((frame) => {
+    const windows = frame.querySelectorAll(':scope > .window.full');
+    const bar = windows[0]?.querySelector(':scope > header.window-bar');
+    const parts = bar ? [...bar.children] : [];
+    return {
+      id: frame.id,
+      children: [...frame.childNodes].filter((node) => node.nodeType === Node.ELEMENT_NODE
+        || (node.nodeType === Node.TEXT_NODE && node.textContent.trim())).length,
+      windows: windows.length,
+      dot: parts[0]?.classList.contains('dot') ?? false,
+      name: parts[1]?.tagName === 'B' ? parts[1].textContent.trim() : '',
+      context: parts.at(-1)?.tagName === 'SPAN' ? parts.at(-1).textContent.trim() : '',
+    };
+  }));
+  for (const chrome of chromes) {
+    assert.equal(chrome.windows, 1, `Une seule fenêtre attendue : ${chrome.id}`);
+    // Rien à côté de la fenêtre : une explication ajoutée hors de l'écran serait figée par --adopt.
+    assert.equal(chrome.children, 1, `Le cadre ne contient que sa fenêtre : ${chrome.id}`);
+    assert.ok(chrome.dot && chrome.name, `En-tête de fenêtre incomplet : ${chrome.id}`);
+    assert.match(chrome.context, /^(Jeu d’essai fictif|Reconstitution) · \S/, `Provenance fictive absente de l’en-tête : ${chrome.id}`);
   }
 
   await page.addStyleTag({ content: 'body{padding:0}main{display:block}.frame{display:none}.frame[data-render]{display:grid}' });
@@ -145,6 +176,7 @@ try {
   if (mode === 'check') {
     const previous = JSON.parse(readFileSync(manifestPath, 'utf8'));
     assert.deepEqual(previous.sources, manifest.sources, 'Sources ou contrat de rendu périmés');
+    assert.equal(previous.entries.length, candidates.length, 'Manifeste incomplet');
     for (const candidate of candidates) {
       const previousEntry = previous.entries.find((entry) => entry.target === candidate.target);
       assert.ok(previousEntry, `Cible non répertoriée : ${candidate.target}`);

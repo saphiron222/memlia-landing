@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "candidateSlug": "tests-verts-et-regle-des-trois-passes",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "a4d4115948909570dce6df9538143a2cafee3e68400513e7beaf127dabb1d82a",
+  "manifestSha256": "7ba35869a2811f1054ad23328da36e8b14d982fdcc3ce7064aeb1b156bf2ef51",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact tests-verts-et-regle-des-trois-passes."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.5997916666666666,
+      "#27b657": 0.030625,
+      "#1c8a41": 0.06911458333333333,
+      "#231f20": 0.12088541666666666
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Couverture inchangée, relue : trois stations sur un socle graphite — deux tuiles vertes et une sombre, trois cartes chaînées, cadre vide et carte en attente — sans texte, conforme au brief de la recette et à son alt.",
+        "Les deux figures suivent le gabarit des références : fenêtre unique sur fond quadrillé, en-tête à pastille et « Jeu d’essai fictif · … », écran d’outil fictif, palette vert/orange/gris ; sujet, composition, interdits et alt contrôlables."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Couverture sans texte, chiffre, logo, personne ni interface ; aucune nouvelle génération.",
+        "Figures : rendus HTML nets, cadre et fond identiques au pixel près à la référence social-dictionnaire hors zone de contenu, aucun libellé tronqué, aucun logo ni personne, aucun chiffre de résultat."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Les deux en-têtes affichent « Jeu d’essai fictif » (classeur et simulateur de démonstration) ; valeurs identiques à journal-rejeu.json, de nature « reconstitution_fictive_non_historique » (55/50, 26/28/1, 20/12), sans les 137 divergences ni les trois références du récit.",
+        "Recette et contrat interne : sources « reconstitution, pas une capture historique », capturedAt 2026-10-03, sans légende publique."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Couverture : les trois postes distinguent suites, chaîne de preuve et lecture à l’écran, sans simuler une capture historique.",
+        "Figures : chaîne de preuve avec une formule livrée restée en Z et un total 50 pour 55 ; journal des trois passes et de leurs arrêts, comme le tableau rejoué du corps."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Deux WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier w39 ni -mobile référencé ; captures 1280 et 390 px sans débordement.",
+        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents ; héros chargé en eager avec fetchpriority high."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alts de 114 et 121 caractères, identiques dans la source, le HTML construit, la recette et le contrat interne, fidèles aux deux écrans visibles.",
+        "L’alt de couverture (trois postes de vérification pour les suites, la chaîne de preuve et la lecture humaine) correspond à l’image."
+      ]
+    }
+  ]
+}

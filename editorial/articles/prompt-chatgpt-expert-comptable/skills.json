@@ -1,0 +1,503 @@
+{
+  "version": 1,
+  "blog": [
+    {
+      "skill": "blog-strategy",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La stratégie est tenue au niveau du site (docs/strategy/site-v3), pas rejouée pour « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique »."
+    },
+    {
+      "skill": "blog-brand",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La voix et la charte sont fixées par .agents/product-marketing.md ; « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » les applique sans les redéfinir."
+    },
+    {
+      "skill": "blog-persona",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le rôle lecteur de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » vient du hub Ressources et du référentiel des besoins, pas d'une persona nouvelle."
+    },
+    {
+      "skill": "blog-discourse",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune analyse de discours distincte : « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » suit le brief et la revue éditoriale."
+    },
+    {
+      "skill": "blog-google",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le relevé Search Console de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est porté par la preuve GSC du dossier, pas par ce skill."
+    },
+    {
+      "skill": "blog-calendar",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le calendrier est celui de la v3 (docs/strategy/site-v3/CONTENT-CALENDAR.md) ; « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » y occupe un créneau attribué."
+    },
+    {
+      "skill": "blog-cluster",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le cluster de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est fixé par build-cluster-plan.py, source unique du maillage."
+    },
+    {
+      "skill": "blog-taxonomy",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La taxonomie (src/data/familles.ts) est tenue au niveau du site ; « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » y est rattaché par son frontmatter."
+    },
+    {
+      "skill": "blog-brief",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-brief.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "blog-outline",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le plan H2/H3 de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est celui du brief validé ; aucun plan alternatif n'a été produit."
+    },
+    {
+      "skill": "blog-notebooklm",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune synthèse NotebookLM pour « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » : les sources sont lues et citées directement."
+    },
+    {
+      "skill": "blog-write",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-write.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "blog-rewrite",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est une création, pas une réécriture."
+    },
+    {
+      "skill": "blog-factcheck",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-factcheck.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "blog-style",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le style de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est relu dans la grille éditoriale (critère intent-satisfaction), sans passe distincte."
+    },
+    {
+      "skill": "blog-chart",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » ne contient aucun graphique : les tableaux sont en HTML."
+    },
+    {
+      "skill": "blog-image",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-image.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "blog-schema",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le schéma BlogPosting de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est émis par le gabarit Article ; contrôlé par seo-schema."
+    },
+    {
+      "skill": "blog-seo-check",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-seo-check.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "blog-geo",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-geo.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "blog-analyze",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-analyze.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "blog-audit",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-audit.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "blog-cannibalization",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/blog-cannibalization.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "blog-decay",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » vient d'être écrit : aucun déclin à mesurer."
+    },
+    {
+      "skill": "blog-flow",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun prompt FLOW distinct pour « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » : le brief tient le cadrage."
+    },
+    {
+      "skill": "blog-repurpose",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune déclinaison de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » sur un autre canal n'est prévue."
+    },
+    {
+      "skill": "blog-audio",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune version audio de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique »."
+    },
+    {
+      "skill": "blog-multilingual",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est publié en français uniquement."
+    },
+    {
+      "skill": "blog-translate",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune traduction de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique »."
+    },
+    {
+      "skill": "blog-localize",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune localisation de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » : un seul marché, la France."
+    },
+    {
+      "skill": "blog-locale-audit",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun audit de locale pour « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » : site monolingue."
+    }
+  ],
+  "seo": [
+    {
+      "skill": "seo-plan",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le plan SEO est celui du site (docs/strategy/site-v3) ; « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » l'exécute."
+    },
+    {
+      "skill": "seo-google",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le relevé Google de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est porté par les preuves SERP et GSC du dossier."
+    },
+    {
+      "skill": "seo-content-brief",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-content-brief.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "seo-cluster",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le cluster de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est fixé par build-cluster-plan.py."
+    },
+    {
+      "skill": "seo-sxo",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "L'adéquation format/SERP de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est jugée dans le critère serp-format-rankability de la revue."
+    },
+    {
+      "skill": "seo-page",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-page.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "seo-content",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-content.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "seo-technical",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-technical.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "seo-schema",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-schema.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "seo-images",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-images.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "seo-sitemap",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Le sitemap est généré par le build ; « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » y entre à la publication (test:lastmod)."
+    },
+    {
+      "skill": "seo-geo",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "La citabilité de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est vérifiée par blog-geo (réponse directe, définitions)."
+    },
+    {
+      "skill": "seo-flow",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun prompt FLOW distinct pour « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique »."
+    },
+    {
+      "skill": "seo-audit",
+      "applicable": true,
+      "status": "RUN",
+      "result": "PASS",
+      "evidence": "preuves/skills/seo-audit.json",
+      "checkedAt": "2026-10-03",
+      "justification": null
+    },
+    {
+      "skill": "seo-drift",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune baseline de dérive avant la publication de « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique »."
+    },
+    {
+      "skill": "seo-backlinks",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun lien externe entrant à analyser pour « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » avant publication."
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune page comparative : « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » n'oppose aucun éditeur."
+    },
+    {
+      "skill": "seo-local",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune intention locale pour « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » (décision v2 : pas de pages villes)."
+    },
+    {
+      "skill": "seo-maps",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune fiche Maps concernée par « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique »."
+    },
+    {
+      "skill": "seo-hreflang",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Site monolingue : aucun hreflang pour « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique »."
+    },
+    {
+      "skill": "seo-ecommerce",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun produit ni marketplace dans « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique »."
+    },
+    {
+      "skill": "seo-programmatic",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "« Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » est un article rédigé, pas une page programmatique."
+    },
+    {
+      "skill": "seo-dataforseo",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucun crédit DataForSEO engagé pour « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » : volumes ND documentés dans la preuve SERP."
+    },
+    {
+      "skill": "seo-image-gen",
+      "applicable": false,
+      "status": "N/A",
+      "result": null,
+      "evidence": null,
+      "checkedAt": null,
+      "justification": "Aucune génération d'image IA pour « Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique » : cadre de preuve HTML."
+    }
+  ],
+  "contradictions": []
+}

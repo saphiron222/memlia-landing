@@ -1,194 +1,234 @@
 {
+  "subject": {
+    "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+    "bodySha256": "7fbcfeccb739200625ea03f0edc7ad1549c9a230e3a87eaae75862d8794c07d4",
+    "recipeSha256": "cce7b5a5f5eace339063e1bb4a933ca7a4166ee8b392645120fc9393201a2eb0",
+    "renderedSha256": "c7ad3437c1438a95389dab6393700c16d74f4baf9c1f37d88ca436f85c749b11"
+  },
   "editorial": {
+    "reviewer": "qa:t_c9dd7b40",
+    "p0": [],
     "criteria": {
       "intent-satisfaction": {
         "result": "PASS",
         "observations": [
-          "Le H2 « Réponse directe » ouvre le corps par une définition opérationnelle avant tout développement, et l'encart « En bref » reprend la même promesse (« Soixante familles de tâches réparties en douze pôles ») pour le lecteur qui scanne, conforme à l'intent « comprendre » déclaré.",
-          "Le tableau « La carte en un tableau » donne, pôle par pôle, le nombre de familles, les tâches les plus répétitives et ce qui reste toujours humain : la vue d'ensemble qu'un lecteur direction-associes cherche avant de choisir par où commencer, sans avoir à ouvrir les onze sections détaillées.",
-          "La section « Comment lire cette carte ? » explique la grille à trois colonnes (se prépare seul / attend une validation / reste humain) avant de l'appliquer aux onze pôles ouverts, ce qui évite au lecteur de deviner la convention en cours de route.",
-          "Les cinq questions de la FAQ couvrent des objections réelles d'un dirigeant (perte de contrôle, outil unique ou multiple par famille, maturité d'une tâche, suite de la carte), chacune répondue en un paragraphe autonome et complet."
+          "Réponse directe et deux angles morts séparés du test rouge, règle applicable corps.md:5/13/17/23/59."
         ]
       },
       "serp-format-rankability": {
         "result": "PASS",
         "observations": [
-          "Comptage direct sur le rendu : douze tableaux au total, un tableau de synthèse à douze lignes puis onze tableaux de frontière à trois colonnes (thead/tbody), un pour chacun des onze pôles ouverts — contre sept tableaux de frontière sur onze pôles relevés dans la version précédemment revue : l'écart alors noté est comblé.",
-          "Un seul H1, vingt H2 de contenu (plus trois H2 de gabarit — sources, pont de conversion, à lire ensuite — et quatre H2 de pied de page global, vérifiés par comptage de balises), cinq H3 tous imbriqués sous le H2 « Questions fréquentes » : aucun saut de hiérarchie.",
-          "Plusieurs H2 en forme interrogative (« Qu'est-ce qu'une tâche automatisable… ? », « Comment lire cette carte ? », « Que ne contient pas cette carte ? », « Par où commencer ? ») élargissent la correspondance avec des formulations de type People Also Ask.",
-          "BreadcrumbList JSON-LD à trois niveaux (Accueil, Blog, titre de l'article), cohérente avec le fil d'Ariane visible ; URL stable et canonical auto-référent corrects, vérifiés par un parsing programmatique du graphe JSON-LD."
+          "H1/onglet/description et format narratif cohérents ; aucun rang, volume ou réussite SEO revendiqués."
         ]
       },
       "eeat-sources": {
         "result": "PASS",
         "observations": [
-          "Cinq sources exclusivement tier-1 officielles (Service-Public, CNIL deux fois, impots.gouv.fr, Net-entreprises), citées en lien contextuel dans le corps puis reprises datées « 17 septembre 2026 » dans une section « Sources consultées » à cinq entrées.",
-          "Les cinq citations ont été revérifiées cette passe-ci par recherche normalisée (apostrophes typographiques neutralisées) dans les cinq copies locales *.source.txt : correspondance exacte dans les cinq cas, sans régression depuis la précédente revue.",
-          "L'auteur Kevin Kitanga est nommé, lié deux fois à /a-propos#kevin-kitanga (rel=author), décrit par un schéma Person complet (jobTitle « Fondateur de Memlia », description, worksFor) et par une bio de pied d'article cohérente avec ce schéma.",
-          "Organization JSON-LD complet avec SIREN 108621541 et SIRET, adresse postale parisienne, cohérent avec les liens de pied de page vers mentions légales et contact : les signaux de confiance du site entourent bien l'article."
+          "RAW exact et attribution autorisée ; copies/extraits primaires conformes, âges4/4/5jours et portée méthode seulement ; métier frais lu."
         ]
       },
       "information-gain-proof": {
         "result": "PASS",
         "observations": [
-          "Le compte est désormais vérifié à trois niveaux concordants : le tableau « La carte en un tableau » porte douze lignes (13+5+7+7+4+5+3+4+3+4+4+1) qui totalisent exactement 60, recalculé par extraction programmatique des <td>, contre 59 dans la version précédemment revue.",
-          "Ce compte a été comparé directement au référentiel src/data/familles.ts : douze identifiants dans le type PoleId, soixante entrées dans le tableau FAMILLES, et la répartition par pôle (recomptée famille par famille dans le code source) reproduit à l'identique les douze chiffres du tableau de l'article, pôle par pôle.",
-          "Le douzième pôle (« Audit et commissariat aux comptes » dans familles.ts, `active:false` sur sa famille unique ; « Audit légal » dans le tableau de l'article) est traité comme listé-non-ouvert : présent dans le tableau de synthèse mais sans tableau de frontière ni section dédiée, exactement comme l'annonce « Que ne contient pas cette carte ? ».",
-          "« Soixante familles » et « douze pôles » sont désormais alignés sur toutes les surfaces où le chiffre apparaît (meta description, og:description, twitter:description, description JSON-LD, « En bref », « Réponse directe ») ; une recherche exhaustive du mot « onze » sur le rendu entier ne retourne plus aucune occurrence."
+          "Trois cas fictifs réellement exécutés, contre-oracle et mutant rouge ; illustrations distinctes du produit historique."
         ]
       },
       "technical-onpage-seo": {
         "result": "PASS",
         "observations": [
-          "Balise title « Automatisation cabinet comptable : carte des tâches | Memlia » : 60 caractères exactement (calculé), requête primaire en position d'attaque, à la limite haute de la fourchette 40-60 sans marge restante.",
-          "Meta description de 152 caractères (calculé), spécifique et cohérente avec le contenu visible ; le chiffre « soixante familles » qu'elle porte est désormais intégralement vérifiable par la page elle-même (voir information-gain-proof).",
-          "Graphe JSON-LD syntaxiquement valide (parsé programmatiquement) et complet : BlogPosting (wordCount 3702, dates de publication 16/09 et de mise à jour 17/09 cohérentes avec l'affichage), BreadcrumbList, Person, Organization, WebSite.",
-          "Image de couverture en <picture> avec sources avif/webp 768/1200/1600w vérifiées présentes sur disque (public/images et dist/images) par lecture directe des dimensions : master.png 1920x1080, og.webp 1200x630 ; fetchpriority=high et loading=eager sur l'image LCP.",
-          "Le robots « noindex, follow » de ce rendu est confirmé, en lisant Article.astro et Base.astro, comme entièrement conditionné par le même booléen `candidatPreview` que la bannière « Candidat éditorial » : un artefact du harnais de prévisualisation, pas un réglage de production."
+          "Un H1/langfr/canonical/OG/schema conformes, huit clics avec destination exacte et HTTP200, ancres présentes, aucun débordement320/375/768/1440."
         ]
       },
       "ai-citability": {
         "result": "PASS",
         "observations": [
-          "Format réponse directe et encart « En bref » en tout premier bloc de contenu, trois définitions en gras (tâche automatisable, règle de cabinet, frontière d'automatisation) posant une terminologie d'entité stable, réutilisée sans dérive dans les onze sections de pôle.",
-          "Cinq questions-réponses autonomes en FAQ (H3), chacune un paragraphe complet citable indépendamment ; douze tableaux thead/tbody offrent des blocs comparables directement extractibles pour une requête du type « ce qui reste humain dans telle tâche ».",
-          "Le passage le plus probable d'être repris tel quel par un assistant IA (« Réponse directe », « En bref ») porte le chiffre « soixante familles », qui se vérifie maintenant par le tableau de la page elle-même : une reprise verbatim ne propagerait plus un chiffre non prouvé, à la différence de la version précédemment revue."
+          "Frontière/tableaux/cas extractibles et visibles, quinze paragraphes personnels préservés ; aucun score citation inventé."
         ]
       },
       "contextual-conversion": {
         "result": "PASS",
         "observations": [
-          "Voix « nous » cohérente (sept occurrences dans le corps, zéro « je »), aucune des formules défensives interdites par la charte §7bis (« ne remplace pas », « à adapter », « Memlia peut »), zéro occurrence du mot « module », zéro tiret cadratin dans le corps de l'article : vérifié par recherche exhaustive programmatique, pas par lecture partielle.",
-          "L'unique tiret cadratin détecté dans le fichier rendu appartient à la bannière du harnais de prévisualisation (« Candidat éditorial — preview privée, non publiable »), confirmée par le code comme un ajout du gabarit de preview, pas du corps Markdown de l'article.",
-          "Le nouveau lien unique vers /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils est présent dans « Comment lire cette carte ? », sous une ancre descriptive et au moment où l'article explique le choix de travailler dans les outils existants ; la destination existe dans le rendu QA et le lien reste cohérent avec l'intention du pilier.",
-          "La clôture relie en une phrase les trois destinations attendues par la charte (/methode, /automatisation-cabinet-comptable, /garanties), en plus de huit ancres de glossaire distinctes et de quatre articles satellites déjà publiés cités en contexte.",
-          "L'appel de fin porte le libellé « Confier une première tâche », la forme réservée au pilier par §7bis (qui ne traite pas une tâche unique, à la différence des articles satellites qui portent « Confier cette tâche ») ; le texte d'accompagnement dit ce que nous faisons (« nous écrivons… nous l'automatisons… ») et ce que le cabinet garde (« La décision reste à vos équipes »)."
+          "Pilier réciproque et méthode/contact servis ; Confier cette tâche atteint contact au clavier, décision gardée au cabinet."
         ]
       }
-    },
-    "p0": []
+    }
   },
   "business": {
+    "reviewerTaskId": "t_1a9ed93d",
     "claims": {
+      "claim-unit-1dc9c56e18bd-1": {
+        "verdict": "soutient",
+        "reasoning": "CNIL cnil-roles, copie vérifiée 29/09 : qualification des acteurs au cas par cas ; le corps ne fixe pas le rôle du cabinet à partir de l'origine du fichier."
+      },
       "claim-unit-279d5bd8bf20-1": {
         "verdict": "soutient",
-        "reasoning": "La citation est reprise mot pour mot dans sp-conservation.source.txt (correspondance exacte revérifiée par recherche normalisée). L'article n'en tire qu'une conséquence de nommage documentaire (dater et typer la pièce pour permettre une purge propre plus tard), sans changer ni la portée ni la polarité de l'affirmation de Service-Public."
+        "reasoning": "Service-Public F10029, copie vérifiée 29/09 : conservation minimale des documents d'entreprise, durée selon la nature ; aucune durée universelle n'est attribuée."
       },
       "claim-unit-e8439da9f147-1": {
         "verdict": "soutient",
-        "reasoning": "La définition du compte rendu métier retrouvée verbatim dans net-crm.source.txt correspond à l'affirmation de l'article ; seule la mention du sigle « (CRM) » est déplacée sans changer le sens. L'article en déduit que lire un CRM se prépare mais que la décision reste au responsable, ce qu'une définition purement descriptive n'exclut pas."
+        "reasoning": "Net-entreprises, copie vérifiée 29/09 : le CRM est un retour après déclaration en cas d'erreur ou suspicion ; la décision de correction reste au cabinet."
       },
       "claim-unit-ceb5c8df6333-1": {
         "verdict": "soutient",
-        "reasoning": "La fenêtre du 15 au 24 septembre 2026 est vérifiée verbatim dans impots-calendrier.source.txt, sous la carte « TVA régime réel normal d'imposition ». L'article la reprend pour la déclaration mensuelle de TVA sans l'étendre à d'autres régimes, et ajoute que la règle du cabinet se vérifie dossier par dossier : une généralisation de forme (« votre » devient « chaque entreprise »), pas de fond."
+        "reasoning": "Calendrier DGFiP vérifié 29/09 : fenêtre 15–24 septembre 2026 pour dépôt/paiement de la déclaration mensuelle de TVA, date propre à l'espace professionnel ; le texte maintient cette restriction."
       },
-      "claim-unit-f047a1270724-1": {
+      "claim-unit-2614d7101a11-1": {
         "verdict": "soutient",
-        "reasoning": "Le principe de minimisation cité est identique caractère pour caractère à cnil-principes.source.txt. L'article l'illustre par un exemple cohérent avec la source (« un outil qui relance des pièces n'a pas besoin des bulletins de paie »), sans déformer la portée du texte réglementaire d'origine."
+        "reasoning": "Article 5 RGPD reproduit par CNIL, copie vérifiée 29/09 : minimisation des données au regard de la finalité ; le corps ne présente pas ce principe comme seule obligation."
       },
-      "claim-unit-f047a1270724-2": {
+      "claim-unit-2614d7101a11-2": {
         "verdict": "soutient",
-        "reasoning": "La phrase sur l'analyse de conformité et la durée de conservation est identique à cnil-durees.source.txt. L'article en tire que le cabinet, et non l'outil, reste responsable de traitement et doit mener sa propre analyse : une attribution de responsabilité fidèle à la source, sans promettre une conformité que le texte CNIL ne garantit pas."
+        "reasoning": "CNIL cnil-durees, copie vérifiée 29/09 : analyse de conformité par traitement et par responsable ; la purge évoquée est une méthode à cadrer, non une dispense de conservation documentaire."
       }
     }
   },
   "image": {
+    "reviewer": "claude:revue-figures-20261003",
     "criteria": {
       "brief-six-components": {
         "result": "PASS",
         "observations": [
-          "Les six composantes du brief (sujet, composition, style, palette, interdits, alt) se retrouvent toutes dans master.png, observé directement : environ dix îlots (plaques vertes et graphite) reliés par de fins chemins clairs, un jeton vert cylindrique au centre devant une bifurcation à deux flèches divergentes, sur un fond crème neutre."
+          "Couverture inchangée, relue : diorama 3D d’îlots verts et graphite reliés par des chemins, jeton vert devant une bifurcation, sans texte, conforme à son alt.",
+          "Les deux figures suivent le gabarit des références : une fenêtre sur fond quadrillé, en-tête à pastille et « Jeu d’essai fictif · … », écran d’outil, palette vert/orange/gris ; sujet, composition, interdits et alt sont contrôlables."
         ]
       },
       "generation-constraints": {
         "result": "PASS",
         "observations": [
-          "Observation directe de master.png : le calendrier (îlot du haut) montre une grille de cases vides sans aucun chiffre ni lettre, une seule case surlignée en vert ; aucun écran, logo, personnage, visage, alerte rouge ni symbole d'envoi automatique nulle part dans l'image de 1920x1080."
+          "Cadre, fond et bandeau d’en-tête identiques au pixel près à la référence social-dictionnaire hors zone de contenu ; textes nets, aucun libellé tronqué, aucun logo, aucune personne.",
+          "Aucun chiffre de résultat : 60 et 2 sont des comptes de l’inventaire fictif et la mesure de la fiche reste « à relever » ; la couverture ne porte ni texte ni chiffre."
         ]
       },
       "fictive-provenance": {
         "result": "PASS",
         "observations": [
-          "Tous les objets visibles (pièces de monnaie empilées, classeurs, calendrier à grille vierge, engrenages, cubes géométriques, barres de graphique, piles de papier) sont des icônes génériques en matière mate ou translucide, sans document, nom ou chiffre identifiable : rien n'imite une capture d'écran ou une photographie réelle."
+          "Les deux en-têtes affichent « Jeu d’essai fictif » (cabinet de démonstration, règle R-01) ; dossiers D-004, D-007 et D-009 inventés, aucun client ni collaborateur nommé.",
+          "Recette et contrat interne déclarent les sources (taxonomie src/data/familles.ts, règle décrite dans l’article) et capturedAt 2026-10-03, sans légende publique."
         ]
       },
       "recognizable-subject": {
         "result": "PASS",
         "observations": [
-          "Le jeton vert et la bifurcation à deux flèches se lisent immédiatement comme un point de décision sur un chemin parmi d'autres, conforme au brief ; les îlots reliés autour restent cohérents avec une carte administrative une fois associés à l'alt et à la légende de l'article."
+          "L’inventaire reprend la carte du corps (12 pôles, 60 familles, audit légal listé non ouvert) et la fiche montre une règle de relance avec ses cas courant, limite et refus, comme la section méthode."
         ]
       },
       "technical-derivatives": {
         "result": "PASS",
         "observations": [
-          "Vérifié par lecture directe des fichiers (PIL), pas seulement par le JSON déclaratif : master.png mesure 1920x1080 (16:9 exact), og.webp mesure 1200x630, les variantes 768/1200/1600 en avif et webp sont présentes à la fois dans public/images et dist/images avec les dimensions attendues (768x432, 1200x675, 1600x900)."
+          "Les deux WebP servis font 1600 × 900, une seule image pour bureau et téléphone, et correspondent aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile n’est référencé par la page.",
+          "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents ; captures 1280 et 390 px sans débordement."
         ]
       },
       "alt-information": {
         "result": "PASS",
         "observations": [
-          "Le texte alternatif (« Carte des tâches en diorama 3D : îlots reliés par des chemins, jeton vert sur un chemin choisi devant une bifurcation ») compte 117 caractères (calculé), sous la limite de 125, et reste identique entre l'attribut alt de l'image, og:image:alt et la légende ImageObject du JSON-LD."
+          "Alts de 103 et 114 caractères, identiques dans la source, le HTML construit et la recette, décrivant l’inventaire de six familles et la fiche de règle visibles.",
+          "L’alt de couverture correspond à l’image : îlots en diorama, chemins, jeton vert devant une bifurcation."
         ]
       }
     },
     "directionArt": 18,
-    "semanticRelevance": 22
+    "semanticRelevance": 22,
+    "scoreProvenance": "Notes conservées : couverture inchangée, nouvelles figures conformes au gabarit des références ; aucune nouvelle mesure."
   },
   "sources": {
-    "reviewedBy": "relecteur-metier-ia-memlia",
+    "reviewedBy": "metier:t_1a9ed93d",
     "observations": {
-      "sp-conservation": "Service-Public.fr (DILA), éditeur public officiel, domaine service-public.gouv.fr — source tier-1 directement compétente sur les délais de conservation documentaire des entreprises ; citation revérifiée verbatim cette passe-ci.",
-      "cnil-principes": "CNIL (cnil.fr), autorité française de protection des données — source tier-1 sur le principe de minimisation cité pour le pôle numérique ; citation revérifiée verbatim, caractère pour caractère.",
-      "cnil-durees": "CNIL (cnil.fr), même autorité, fiche dédiée aux durées de conservation — source tier-1 ; citation revérifiée verbatim, correctement mobilisée pour situer la responsabilité de l'analyse de conformité au niveau du cabinet et non de l'outil.",
-      "impots-calendrier": "impots.gouv.fr, portail officiel de la DGFiP — source tier-1 par nature périssable (calendrier daté) ; citation revérifiée verbatim et resituée dans son contexte exact (carte « TVA régime réel normal d'imposition »), bornée à septembre 2026.",
-      "net-crm": "Net-entreprises (net-entreprises.fr), portail interadministratif officiel des déclarations sociales — source tier-1 directement compétente sur la définition du compte rendu métier DSN ; citation revérifiée verbatim."
+      "cnil-roles": "Extrait et SHA 0aa8bb40... vérifiés dans la copie datée 29/09, rôle à qualifier selon le traitement.",
+      "sp-conservation": "Extrait et SHA fffbe0ab... vérifiés, durée variable selon le document.",
+      "cnil-principes": "Extrait et SHA 1c73164b... vérifiés, article 5 et minimisation.",
+      "cnil-durees": "Extrait et SHA 392f8e18... vérifiés, durée décidée par analyse de conformité.",
+      "impots-calendrier": "Extrait et SHA 15c908d3... vérifiés, mensuelle septembre 2026, date espace professionnel.",
+      "net-crm": "Extrait et SHA 9a6b8de3... vérifiés, définition CRM."
     }
   },
   "qualite": {
-    "reviewer": "relecteur-qualite-ia-memlia",
-    "score": 97,
+    "reviewer": "metier:t_303e7c6d",
+    "score": 91,
     "p0": [],
     "categories": {
-      "contentQuality": { "score": 28, "max": 30 },
-      "seoOptimization": { "score": 24, "max": 25 },
-      "eeatSignals": { "score": 15, "max": 15 },
-      "technicalElements": { "score": 15, "max": 15 },
-      "aiCitationReadiness": { "score": 15, "max": 15 }
+      "contentQuality": {
+        "score": 27,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 22,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 14,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 14,
+        "max": 15
+      }
     },
     "evidence": [
-      "Le tableau de synthèse totalise désormais exactement 60 familles sur douze pôles (13+5+7+7+4+5+3+4+3+4+4+1, recalculé), et cette répartition pôle par pôle reproduit à l'identique le compte de src/data/familles.ts (douze identifiants PoleId, soixante entrées FAMILLES) : le défaut bloquant de la revue précédente est corrigé et revérifié à la source.",
-      "Onze tableaux de frontière à trois colonnes (se prépare seul / attend une validation / reste humain) couvrent désormais les onze pôles ouverts un par un, contre sept sur onze dans la version précédemment revue ; seul le douzième pôle (audit légal) en est dépourvu, conformément à son statut listé-non-ouvert.",
-      "Les cinq citations de claims ont été revérifiées par recherche littérale normalisée dans les cinq copies locales *.source.txt : correspondance exacte dans les cinq cas, aucune extension de portée ni de polarité.",
-      "Recherche exhaustive sur le rendu entier : zéro occurrence du mot « onze », zéro tiret cadratin dans le corps de l'article (le seul du fichier appartient à la bannière du harnais de preview), zéro occurrence de « module », voix « nous » cohérente (sept occurrences).",
-      "Graphe JSON-LD complet et syntaxiquement valide (parsé programmatiquement) : BlogPosting, BreadcrumbList à trois niveaux, Person avec bio réelle, Organization avec SIREN/SIRET, WebSite.",
-      "Image de couverture vérifiée sur le disque, pas seulement dans image.json : master.png 1920x1080, dérivés 768/1200/1600 en avif/webp et og.webp 1200x630 tous présents dans public/images et dist/images.",
-      "Comptage direct sur le rendu : un seul H1, vingt H2 de contenu, cinq H3 tous dans la FAQ, sans saut de hiérarchie ; douze tableaux thead/tbody au total.",
-      "Le robots noindex de ce rendu est confirmé par lecture du code (Article.astro, Base.astro) comme conditionné par le même booléen `candidatPreview` que la bannière de preview : un artefact du harnais, pas un réglage de production."
+      "27/30 : inventaire fictif de la carte (12 pôles, 60 familles) et fiche fictive de la règle de relance lisibles, sans chiffre de gain ni promesse sur l’audit légal, affiché « Listé, non ouvert ».",
+      "22/25 : intention pilier et liens contextuels maintenus ; pas de résultat SERP mesuré.",
+      "14/15 : six claims vérifiés sur copies datées du 29/09 dans la revue antérieure ; corps et recette inchangés.",
+      "14/15 : deux images 1600 × 900 directes, sans légende ni défilement, qui tiennent dans la colonne dans les captures à 1280 et 390 px et restent lisibles dans leurs grandes masses sur téléphone ; pas de Lighthouse ni de test de production.",
+      "14/15 : définitions et tableau récupérables avec la restriction audit légal."
     ],
     "reservations": [
-      "Aucune mesure Lighthouse/CrUX réelle n'a été exécutée ; les signaux de performance (préchargement des polices, fetchpriority, absence de CSS bloquant) sont lus dans le HTML statique du rendu QA, pas mesurés en conditions réelles.",
-      "La reprise effective de ce contenu par un moteur IA (AI Overviews, ChatGPT, Perplexity) n'est pas mesurable a priori ; seule la citabilité structurelle (format réponse directe, tableaux, FAQ) a été évaluée.",
-      "Le wordCount du JSON-LD (3702) et le temps de lecture affiché (19 min) sont cohérents entre eux, mais un comptage indépendant approximatif sur le seul corps rendu (hors CTA et sources) donne un ordre de grandeur proche sans être identique, faute de chronométrage réel.",
-      "L'ordre des pôles dans le tableau de l'article (…Excel, Conseil, Méthode, Audit) diffère de l'ordre de déclaration dans src/data/familles.ts (…Excel, Méthode, Conseil, Audit) ; les décomptes par pôle concordent malgré tout exactement, donc sans conséquence factuelle.",
-      "La densité de maillage interne (plus d'une quinzaine de liens contextuels dans le corps) dépasse largement la fourchette indicative de 3 à 10 liens du barème, attendu et cohérent pour un format pilier faisant fonction de hub, mais à surveiller si ce gabarit sert un format plus court.",
-      "Le titre de balise est à 60 caractères pile, donc sans marge restante : un allongement lors d'une prochaine évolution éditoriale le ferait sortir de la fourchette recommandée."
+      "Revue IA sur rendu local et sources archivées contrôlées le 29/09 ; pas de nouvelle requête HTTP ni de garantie d'applicabilité à un cabinet précis.",
+      "Le nouveau rendu n'est ni scellé ni validé par la QA/CI de livraison ; indexabilité en production non prouvée."
     ],
     "seo": [
-      "Balise title : 60 caractères pile, requête primaire « automatisation cabinet comptable » en tête exacte — dans la fourchette 40-60 mais sans marge restante pour une évolution future.",
-      "Meta description : 152 caractères, spécifique, et désormais entièrement vérifiable par le contenu de la page (le chiffre « soixante familles » qu'elle porte correspond exactement au tableau).",
-      "Hiérarchie de titres correcte : un H1, vingt H2 de contenu, cinq H3 (FAQ), sans saut de niveau — chiffres obtenus par comptage direct des balises du rendu.",
-      "Cinq liens sortants vers quatre domaines tier-1 officiels distincts (service-public.gouv.fr, cnil.fr deux fois, impots.gouv.fr, net-entreprises.fr), chacun aussi listé et daté dans « Sources consultées ».",
-      "Maillage interne dense typique d'un pilier : /methode, /garanties, /automatisation-cabinet-comptable dans la clôture, huit ancres de glossaire distinctes, quatre articles satellites cités en contexte plus deux en pied d'article.",
-      "URL stable et lisible, canonical auto-référent correct ; robots noindex de ce rendu confirmé comme artefact du harnais de prévisualisation lié au statut de candidat, pas un réglage de production."
+      "Titre, H1 et canonical conservés dans l'HTML reconstruit ; robots index, follow pour le pilier existant."
     ],
     "geo": [
-      "Encart « En bref » puis H2 « Réponse directe » en tout premier bloc de contenu : format idéal pour une reprise par un AI Overview ou un assistant conversationnel, et le chiffre qu'il porte (« soixante familles réparties en douze pôles ») se vérifie maintenant par le reste de la page.",
-      "Trois définitions en gras (tâche automatisable, règle de cabinet, frontière d'automatisation) posent une terminologie d'entité stable, réutilisée sans dérive dans les onze sections de pôle qui suivent.",
-      "Douze tableaux structurés avec thead/tbody, dont onze tableaux de frontière à trois colonnes désormais présents pour chacun des onze pôles ouverts, offrent des blocs autonomes directement citables pour une requête du type « ce qui reste humain dans telle tâche ».",
-      "La section « Que ne contient pas cette carte ? » délimite explicitement le périmètre (pas de chiffre de gain non mesuré, pas d'audit légal documenté, pas de fonction livrée promise), ce qui réduit le risque qu'un moteur IA surinterprète la portée de l'article.",
-      "Cinq questions en H3 dans « Questions fréquentes », réponses autonomes en un paragraphe chacune, sans balisage FAQPage — sans bonus de score selon la grille, donc sans conséquence sur la note.",
-      "Le noindex de ce rendu QA limiterait un crawler IA déclaré s'il persistait en production ; vérifié dans le code comme un artefact du harnais de prévisualisation lié au statut candidat, pas la configuration de production."
+      "Carte illustrative ; aucune statistique de gains ni faculté d'audit légal induite."
     ],
-    "verdict": "97/100 — le défaut bloquant de la revue précédente (soixante familles non vérifiables) est corrigé et revérifié à trois niveaux concordants (tableau du rendu, référentiel de code, section de cadrage), le format pilier est maintenant uniforme sur ses onze pôles ouverts, et aucun nouveau défaut critique n'a été trouvé : publication recommandée."
+    "verdict": "AI_REVIEW_PASS sur les deux nouvelles figures 1600 × 900 et leur rendu local relu à 1280 et 390 px ; ni scellement, ni livraison."
+  },
+  "technicalBindingMaintenance": {
+    "maintainedBy": "claude:recette-images-20261003",
+    "maintainedAt": "2026-10-03",
+    "reason": "Figures de corps remplacées selon la recette de référence (décision Kevin du 03/10/2026) : deux écrans d’outil fictifs 1600 × 900, mêmes ancrages, nouveaux identifiants et alts dans la recette. Corps, sources, affirmations et règles inchangés (bodySha256 identique) ; les constats éditoriaux, métier et qualité sur le texte sont maintenus ; les critères image et les constats qui décrivaient les anciennes figures sont reformulés par la revue indépendante des nouvelles figures.",
+    "figureReview": {
+      "reviewer": "claude:revue-figures-20261003",
+      "reviewedAt": "2026-10-03",
+      "figures": [
+        {
+          "id": "carte-inventaire-taches",
+          "result": "PASS",
+          "constat": "Passe pour une 9e référence : une fenêtre au cadre et au fond identiques aux références, en-tête « Inventaire des tâches » à pastille verte et « Jeu d’essai fictif · cabinet de démonstration », écran d’inventaire (pôle, famille, fréquence, règle écrite, statut) avec pastilles Candidate / À observer / Règle à écrire / Non ouvert et trois compteurs ; un seul titre, ni slogan, ni étapes, ni avertissement. Données cohérentes avec le tableau et la FAQ : 12 pôles, 60 familles (somme du tableau), audit légal « Listé, non ouvert », et les deux candidates (relance des pièces, contrôle des bulletins avant DSN) ont une règle écrite. Aucune marque, personne ni chiffre de gain. Alt corrigé fidèle (103 caractères, « statut de six familles »), identique dans la source, le HTML construit, la recette et le contrat interne. Tient dans la colonne à 1280 et 390 px, grandes masses lisibles sur téléphone."
+        },
+        {
+          "id": "carte-fiche-regle-relance",
+          "result": "PASS",
+          "constat": "Fiche règle au gabarit des références (pastille verte, « Jeu d’essai fictif · règle R-01 », un titre, pastille « Brouillon de règle ») : déclencheur, condition, action, exception, validation humaine (le collaborateur relit puis envoie) et mesure avant/après « à relever », avec un panneau de jeu d’essai cas courant / cas limite / cas de refus et « Recette réelle : Non commencée ». Illustre la méthode de la section (jeu fictif courant, limite et refus ; validation là où l’action engage ; mesure sans chiffre) sans la recopier en phrases, et reste cohérente avec « aucun chiffre de gain » de la section suivante. Dossiers D-004, D-007, D-009 fictifs, aucune personne ni marque. Alt fidèle (114 caractères). Tient dans la colonne à 1280 et 390 px."
+        }
+      ]
+    },
+    "previousSubject": {
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "bodySha256": "7fbcfeccb739200625ea03f0edc7ad1549c9a230e3a87eaae75862d8794c07d4",
+      "recipeSha256": "d76da253720c619935e491e3f826abdd39dab0013c74ff6fa3a2793c58932098",
+      "renderedSha256": "6da420aa2b4fa93b2cac421b7222cdf9b09da5788f5ab565cca7e304b8e0fee7"
+    },
+    "previousMaintenance": {
+      "maintainedBy": "dev:t_30243835",
+      "maintainedAt": "2026-10-03",
+      "reason": "updatedAt de republication uniquement ; avis métier du 03/10 maintenu sur corps, sources, figures et règles inchangés. Ni nouvelle revue ni contrôle public.",
+      "previousSubject": {
+        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "bodySha256": "bd49741fe651f83304118b07268f93430ec3cf7e3c9dfd0a42cb38369e49bc71",
+        "recipeSha256": "e74a3b06cebd86a0c68e8ca806fec4bd6dde53b261b1725c637687dde68a3573",
+        "renderedSha256": "997069bac6660fe1f00287100933648f3795bff8f2550e00fa04455bd20d2652"
+      }
+    }
+  },
+  "provenance": {
+    "qaTask": "t_c9dd7b40",
+    "businessClaimsRetainedFrom": "t_1a9ed93d",
+    "newLinkReviewedBy": "metier:t_3a224b17 (C12)",
+    "scope": "QA du lot et lien Cicatrice ; six verdicts métier historiques conservés sans nouvel avis."
   }
 }

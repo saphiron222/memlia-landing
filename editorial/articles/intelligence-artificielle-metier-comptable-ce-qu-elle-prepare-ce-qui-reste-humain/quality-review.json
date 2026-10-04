@@ -1,19 +1,19 @@
 {
   "version": 1,
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-  "reviewedAt": "2026-09-21",
-  "reviewer": "relecteur-qualite-ia-memlia",
+  "reviewedAt": "2026-10-03",
+  "reviewer": "metier:t_303e7c6d",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 94,
+  "score": 91,
   "p0": 0,
   "categories": {
     "contentQuality": {
-      "score": 28,
+      "score": 27,
       "max": 30
     },
     "seoOptimization": {
-      "score": 23,
+      "score": 22,
       "max": 25
     },
     "eeatSignals": {
@@ -25,25 +25,25 @@
       "max": 15
     },
     "aiCitationReadiness": {
-      "score": 15,
+      "score": 14,
       "max": 15
     }
   },
   "evidence": [
-    "Le HTML rendu compte environ 2 159 mots, un H1 unique, un sommaire, deux tableaux, une couverture et deux preuves fonctionnelles.",
-    "Les trois sorties de l’oracle figurent bit pour bit dans le corps et le rejeu frais passe sur IA-01, IA-02 et IA-03.",
-    "Les cinq claims sont liés inline et retrouvés mot pour mot sur des pages HTTP 200 le 21 septembre 2026.",
-    "La clôture « La règle à retenir » précède « Pour aller plus loin » et le CTA respecte le libellé et la destination de la charte.",
-    "Le canonical, Open Graph, les schémas structurés, le maillage et les dérivés image sont présents sur le candidat exact."
+    "27/30 : frontière opérationnelle, trois cas fictifs et limites de validité explicites.",
+    "22/25 : titres et structure cohérents ; aucun nouveau rang SERP prouvé.",
+    "14/15 : cinq claims contrôlés sur trois copies dans la revue antérieure, dont portée et ancienneté maintenues ; pas de nouvelle requête HTTP.",
+    "14/15 : deux images 1600 × 900 directes et sans légende, qui tiennent dans la colonne à 1280 et 390 px et restent lisibles dans leurs grandes masses ; aucun Lighthouse ni HTML public revalidé.",
+    "14/15 : tableau et visuels citables seulement avec la qualification jeu fictif."
   ],
   "reservations": [
-    "Le visuel competences-refus résume les statuts et messages au lieu d’afficher les décisions complètes ; le tableau HTML porte toutefois bit pour bit les trois sorties et décisions de l’oracle.",
-    "La couverture reste volontairement abstraite, mais son alt et la preuve en trois colonnes lèvent l’ambiguïté sans ajouter de promesse."
+    "La prospective Atlas ne prouve aucune évolution d'effectifs ni effet spécifique de l'IA ; le communiqué Apec de 2021 ne décrit pas 2026.",
+    "La revue du rendu local et de copies vérifiées dans le dépôt n'est ni un scellement, ni une QA/CI de livraison, ni une mesure sur un cabinet réel."
   ],
-  "verdict": "94/100, PASS : sources inline exactes, oracle exécutable et sorties obtenues, clôture requise, frontière opérationnelle concentrée, images conformes et surfaces techniques présentes. Le candidat peut être scellé hors production.",
+  "verdict": "AI_REVIEW_PASS sur le rendu local des deux nouvelles figures 1600 × 900, relu à 1280 et 390 px, et sur les preuves inline ; livrabilité, QA et production restent distinctes.",
   "subject": {
     "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
-    "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
-    "manifestSha256": "d0b176ea64ba9efab023c24f259bb447abe58753dd4153b4ee9409b43a99b9d8"
+    "articleSha256": "84959382a98dd376a036190af0051ce84e8891979acd09171807148d06f6cfd2",
+    "manifestSha256": "6482749bdf0dc83063c201ac4dc28cca3e3dddeaa174312955405cea7505336b"
   }
 }

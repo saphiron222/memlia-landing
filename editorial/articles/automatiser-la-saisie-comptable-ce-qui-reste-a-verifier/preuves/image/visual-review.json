@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-20",
-  "articleSha256": "b53e32e3210a41188f2a6569efe70e2f1070807e9841dd975ebfaf7d176fdc25",
-  "manifestSha256": "7c9318a7b271910bbde80e8bde6a724ba4fef42a1fd48dd87255af9ad005de77",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "49f7120165a90a904be38db9229922d26e230b551de4dce06c2ae1832cbd266a",
+  "manifestSha256": "67a9558ce0aa1d51a8fac8956eb1faa49e952b8330eeaf147c032621cc6582cc",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-la-saisie-comptable-ce-qui-reste-a-verifier."
   ],
@@ -49,42 +49,46 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Le master.png (1920x1080) montre les objets décrits par la composition du brief : pile de feuilles pliées à gauche, portique vert à plan lumineux translucide avec une feuille qui glisse au centre, plateau vert à feuilles alignées et jeton vert, plateau graphite à feuilles de travers et jeton graphite, loupe mate posée près de ce second plateau, sur un bureau isométrique crème."
+        "Couverture et son brief inchangés, relus : pile de feuilles, barre de lecture verte, plateau vert rangé, plateau graphite de côté et loupe, sans texte.",
+        "Les deux figures suivent le gabarit des références : fenêtre unique, en-tête à pastille, « Jeu d’essai fictif · lot de … », écran d’outil, palette et typographie communes."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Cadrage 16:9 exact (1920x1080), diorama 3D isométrique à formes simplifiées, matières mates et translucides, lumière douce venant du haut gauche, palette vert Memlia / vert profond / crème / graphite conforme à prompt.json ; aucun texte, chiffre, logo, personnage, écran ni fausse interface visible sur l'image."
+        "Cadre et fond identiques au pixel près aux références hors zone de contenu ; aucun texte tronqué, aucun logo, aucune personne ; plus d’étapes numérotées ni de slogan.",
+        "Aucun taux de reliquat ni décompte mesuré : la file affiche six pièces d’un lot fictif et aucune écriture ; les montants sont ceux d’une facture fictive."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Les objets représentés (feuilles, portique, plateaux, loupe) sont des formes génériques sans logo, marque ni identifiant réel : rien dans l'image ne se fait passer pour une capture d'un outil existant ni pour un document client réel."
+        "Fournisseur Fictif, Atelier Fictif et pièces numérotées inventées sous en-têtes « Jeu d’essai fictif » ; capturedAt 2026-10-03 dans la recette ; aucune mesure sur cinquante fichiers revendiquée."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Le geste de lecture puis de tri en deux sorties distinctes (plateau vert rangé contre plateau graphite de travers) est lisible sans aucun texte ; la spécificité « comptable » du sujet s'appuie toutefois sur le titre et l'alt plutôt que sur des indices visuels du métier, cohérent avec le style abstrait déjà assumé par les couvertures du site."
+        "Contrôle de pièce : facture de biens aux dates de PERIODE-DATES, six contrôles dans l’ordre fixe, période à qualifier, doublon non joué, aucune écriture ; file : six motifs fermés avec contrôle échoué et date, lot ouvert."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "image.json déclare master 1920x1080 (png), og 1200x630 (webp, crop 1200x630+0+22) et un variant hero-768 en avif/webp 768x432, conformes aux trois tailles demandées ; la page rendue sert bien un og:image 1200x630 avec largeur/hauteur explicites et un srcset 768/1200/1600w pour la couverture."
+        "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L'alt « Saisie comptable en diorama 3D : pile de feuilles, barre de lecture verte, plateau rangé, plateau graphite de côté, loupe » fait 121 caractères (sous la limite de 125) et décrit les objets visibles de l'image plutôt qu'un slogan ou un mot-clé isolé."
+        "Alts de 123 et 115 caractères, identiques dans le HTML construit et la recette, fidèles au contrôle de FA-2026-0412 et à la file d’avril.",
+        "L’alt de couverture correspond à la pile, la barre de lecture, les deux plateaux et la loupe visibles."
       ]
     }
   ]

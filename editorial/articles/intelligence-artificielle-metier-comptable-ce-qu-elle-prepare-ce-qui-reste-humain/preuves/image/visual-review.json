@@ -3,9 +3,9 @@
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-21",
-  "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
-  "manifestSha256": "d0b176ea64ba9efab023c24f259bb447abe58753dd4153b4ee9409b43a99b9d8",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "84959382a98dd376a036190af0051ce84e8891979acd09171807148d06f6cfd2",
+  "manifestSha256": "6482749bdf0dc83063c201ac4dc28cca3e3dddeaa174312955405cea7505336b",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
   ],
@@ -49,48 +49,47 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "La couverture montre trois plateformes reliées : préparation d’entrées, point de contrôle et décision protégée par une main abstraite.",
-        "La composition horizontale, isométrique et mate respecte le sujet, la composition, le style, la palette, les interdits et l’alt du brief."
+        "Couverture inchangée, relue : trois plateaux, formes traversant un bloc translucide, borne de contrôle puis main verte stylisée sur le troisième, sans texte, conforme à son alt de frontière en trois temps.",
+        "Les deux figures sont des écrans HTML fictifs au gabarit des références, distincts de la couverture : tableau de dossier en trois colonnes et journal de rejeu."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "L’inspection indépendante ne montre aucun texte, logo, visage, personnage complet, donnée client, fausse interface ou alerte rouge.",
-        "Le master est horizontal 1920×1080 et la palette mesurée crème, vert, vert profond et graphite dépasse les seuils déclarés."
+        "Cadre et fond identiques au pixel près aux références hors zone de contenu ; textes nets, aucun libellé tronqué, aucun logo, aucune personne ni donnée nominative.",
+        "Les nombres visibles (14 lignes, 9 écritures, 3 cas) sont des données de l’écran fictif ; aucun gain ni effet sur l’emploi."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Aucun nom, dossier, valeur client ou information personnelle n’est visible sur la couverture ni sur les deux preuves inline.",
-        "La preuve des sorties indique explicitement « jeu fictif » et « Oracle exécuté · 3 cas joués »."
+        "En-têtes « Jeu d’essai fictif » ; journal daté du 21/09/2026 conforme au rejeu exécuté sur trois entrées fictives (docs/qa/blog-recrutement-replay.json, trois cas « passed »).",
+        "Dossier D-008, FA-2026-0467, Atelier Fictif et Fournisseur Fictif inventés ; capturedAt 2026-10-03 déclaré dans la recette et le contrat interne, sans légende publique."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Le chemin gauche-droite, le checkpoint central et la main abstraite rendent reconnaissables préparation, validation et décision humaine.",
-        "La pièce arrêtée avant le contrôle matérialise le doute sans suggérer une autonomie ou une action automatique."
+        "Tableau : préparé / à valider / décision du collaborateur, calqué sur les trois colonnes du corps ; journal : une proposition et deux refus motivés, conforme au corps."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Les fichiers contrôlés comprennent le master PNG 1920×1080, l’OG WebP 1200×630, les héros 768×432 AVIF/WebP et les variantes publiques 768/1200/1600 AVIF/WebP.",
-        "Le manifeste des preuves scelle les deux WebP inline à 1600×900 et le test de rendu confirme quatre preuves recrutement conformes."
+        "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L’alt de couverture décrit précisément la frontière entre préparation automatisée, validation et décision humaine.",
-        "Les alts inline décrivent la frontière puis une proposition et deux refus motivés ; ils correspondent aux images inspectées sans annoncer de gain."
+        "Alts de 105 et 110 caractères, identiques dans le HTML construit et la recette, fidèles au tableau D-008 et au journal avec le détail d’IA-02.",
+        "L’alt de couverture (frontière en trois colonnes) correspond aux trois plateaux visibles."
       ]
     }
   ]

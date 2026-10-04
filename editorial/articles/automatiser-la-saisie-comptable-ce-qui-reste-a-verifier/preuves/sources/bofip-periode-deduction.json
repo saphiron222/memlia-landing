@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+  "sourceId": "bofip-periode-deduction",
+  "level": "tier-1",
+  "provenance": "primary",
+  "official": true,
+  "upstreamUrl": "https://bofip.impots.gouv.fr/bofip/1133-PGP.html/identifiant%3DBOI-TVA-DED-40-20-20250108",
+  "classificationReason": "Doctrine fiscale officielle DGFiP ; exemple du §25 limité à la livraison de biens et à ses conditions, pas à toute pièce tardive.",
+  "method": null,
+  "requestedUrl": "https://bofip.impots.gouv.fr/bofip/1133-PGP.html/identifiant%3DBOI-TVA-DED-40-20-20250108",
+  "finalUrl": "https://bofip.impots.gouv.fr/bofip/1133-PGP.html/identifiant%3DBOI-TVA-DED-40-20-20250108",
+  "httpStatus": 200,
+  "checkedAt": "2026-10-03",
+  "retrievedAt": "2026-10-03T09:14:44.356Z",
+  "contentType": "text/html; charset=UTF-8",
+  "contentPath": "preuves/sources/bofip-periode-deduction.source.txt",
+  "contentSha256": "933ff8d3a1a290be207a5b19b8e6343d16ea4d4867cfac8c1b01d9e2dd7c913b",
+  "excerpt": "Dans le cadre d’une livraison de biens meubles corporels à un acquéreur déposant des déclarations de chiffre d’affaires selon une périodicité mensuelle, si l’exigibilité de la taxe est intervenue le 30 avril et que la facture n’a été délivrée à l’acquéreur que le 5 mai, celui-ci est fondé à exercer son droit à déduction en mentionnant la TVA correspondante sur la déclaration mensuelle de chiffre d’affaires qu’il dépose au mois de mai au titre de ses opérations du mois d’avril."
+}

@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "candidateSlug": "logiciel-ia-comptabilite",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "bb2554d5aa5cd76e0239d7388cdaa4310b7710e33589aad117057f73d00c8c42",
+  "manifestSha256": "89608d3394905cf25b630daec8ce1d2f43ff727d66efa1118da8f7901c7ff6dc",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact logiciel-ia-comptabilite."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.7391493055555556,
+      "#27b657": 0.005381944444444444,
+      "#1c8a41": 0.0103125,
+      "#231f20": 0.14206597222222223
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Couverture inchangée, relue : bac de tri graphite à trois compartiments, feuilles blanches, deux cubes verts et portique vide, sans texte, conforme à son alt.",
+        "Les deux figures reprennent le gabarit des références : fenêtre unique, en-tête à pastille, « Jeu d’essai fictif · dossier D-001 · avril 2026 », écran d’outil, palette et typographie communes."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Cadre et fond identiques au pixel près aux références hors zone de contenu ; textes nets, aucun libellé tronqué ; aucun logo ni éditeur, solutions désignées A et B, fournisseurs « Fictif ».",
+        "Aucun résultat mesuré : « 1 cas sur 4 relevé » et « 4 pièces » sont des compteurs de l’écran fictif ; la couverture ne porte ni texte ni marque."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Les deux en-têtes affichent « Jeu d’essai fictif » ; la file reproduit les quatre cas de journal-rejeu.json (D-001, avril, aucune écriture) avec des numéros de pièce propres à l’article, et la grille n’évalue aucun éditeur.",
+        "Recette et contrat interne déclarent des sources fictives et capturedAt 2026-10-03, sans légende publique."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Grille : version montrée, sortie, étapes manuelles, trace après correction et trois états, comme la section de préparation ; file : nominal, doublon, période ambiguë et donnée absente, comme le rejeu du corps."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alts de 103 et 117 caractères, identiques dans le HTML construit et la recette, fidèles à la grille et à la file visibles.",
+        "L’alt de couverture correspond à l’image : trois feuilles, bac de tri, portique vide, aucune issue de contrôle visible."
+      ]
+    }
+  ]
+}

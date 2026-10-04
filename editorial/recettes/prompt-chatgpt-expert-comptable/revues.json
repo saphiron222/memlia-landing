@@ -1,0 +1,215 @@
+{
+  "subject": {
+    "slug": "prompt-chatgpt-expert-comptable",
+    "bodySha256": "588b9ff39b4164e1e748f140b6c9bc12652b7f0a40de1b6a59bad04c3d086548",
+    "recipeSha256": "449236b9b4deb8e5ef737275c8b0e46f247f99b420c70856c9ffd5bf32ac1ec8",
+    "renderedSha256": "ddf888f4a3e4719728dc7b0d522d921523dbfeb7f1c7ae38e6715d7e3270c89a"
+  },
+  "editorial": {
+    "reviewer": "metier:t_303e7c6d",
+    "p0": [],
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "La demande de facture fictive est préparée comme brouillon lorsque la pièce à demander est nommée mais pas reçue ; le champ Pièce attendue vide provoque l'arrêt du script local, pas l'absence du justificatif."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Article borné au prompt de demande de pièce, sans promesse d'un résultat ChatGPT ni classement de fournisseurs ; cette revue ne mesure aucun rang SERP."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Les citations CNIL relatives au partage autorisé et à l'identification par croisement, et la présentation par l'Ordre de ses ressources Data et IA, restent limitées à leur portée ; copies locales et SHA des reçus du 29/09 vérifiés. Aucune source ne prétend valider le comportement de ChatGPT."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Le journal du script local consigne pièce attendue vide, statut arrêt, motif contexte incomplet, message absent et aucun envoi. La figure de suivi et son alt montrent la ligne « Champ non renseigné » en « Arrêt · contexte incomplet » ; la fenêtre d’assistant porte une facture nommée, suivi « Non reçue », et produit seulement un brouillon fictif « non envoyé », destinataire à confirmer."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "HTML construit localement : deux figures data-blog-proof à une seule img WebP 1600 × 900 servie au bureau comme au téléphone, alts concordants, aucune légende ni wrapper défilant ; captures 1280 et 390 px sans débordement. La page locale affiche robots index ; cela ne prouve pas que le brouillon soit publié ou indexé, ni la QA/CI du candidat."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Le texte attribue le refus au script déterministe et dit explicitement qu'aucun essai ChatGPT n'a été réalisé ; l'alt corrigé ne transforme pas la pièce justificative non reçue en raison d'arrêt."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "La décision de vérifier le destinataire puis d'envoyer reste humaine ; aucun courriel n'est présenté comme envoyé."
+        ]
+      }
+    }
+  },
+  "business": {
+    "reviewerTaskId": "t_e511ee7c",
+    "claims": {
+      "claim-unit-668540d969d0-1": {
+        "verdict": "soutient",
+        "reasoning": "FAQ CNIL sur l'entrée dans un système d'IA générative : ne soumettre que des informations autorisées à partager ; recommandation contextualisée, pas autorisation de verser un dossier réel. Copie locale contrôlée SHA 63f9767046b4d9b962a999b9533d230fc0f6175410a8c83424da6df48740726e, reçu du 29/09/2026."
+      },
+      "claim-unit-668540d969d0-2": {
+        "verdict": "soutient",
+        "reasoning": "Définition CNIL : identification possible par croisement ; le texte dit seulement que retirer le nom ne suffit pas toujours. Copie locale contrôlée SHA b610e932fc37be69d66a056c21b2dca1f0262d952c56a3bc9c707e7d2491786d, reçu du 29/09/2026."
+      },
+      "claim-unit-3ea838c700eb-1": {
+        "verdict": "soutient",
+        "reasoning": "La page de l'Ordre présente effectivement des cas d'usage, précautions et techniques de prompt ; aucune certification du prompt fictif ne lui est attribuée. Copie locale contrôlée SHA 1b650c10a7f081d705a617a8bddb4ddc6873fb83593b4914e3ad2827ba9c64d2, reçu du 29/09/2026."
+      }
+    }
+  },
+  "image": {
+    "reviewer": "claude:revue-figures-20261003",
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Couverture inchangée, relue : feuille vierge, plateau sombre, grille fermée devant une enveloppe et deux cubes verts, sans texte, conforme à son alt.",
+          "Les deux figures sont des écrans HTML fictifs au gabarit des références (fenêtre unique, en-tête à pastille, « Jeu d’essai fictif · … ») : une fenêtre d’assistant générique et un suivi de demandes."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Cadre et fond identiques au pixel près aux références hors zone de contenu ; aucune interface ni logo ChatGPT ou OpenAI, fenêtre nommée « Assistant » ; aucun texte tronqué, aucune personne nommée.",
+          "Les chiffres visibles sont des dates, numéros et compteurs fictifs (5 demandes, 14/04, 16/04, n° 118), sans résultat mesuré ni réponse de modèle."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Atelier Fictif, Studio Fictif, Commerce Fictif et Démo Social sous en-têtes « Jeu d’essai fictif » ; le brouillon et l’arrêt reproduisent journal-rejeu.json, aucun modèle interrogé.",
+          "Recette et contrat interne : reconstitutions HTML fictives, capturedAt 2026-10-03, sans légende publique."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Fenêtre d’assistant : facture nommée non reçue, brouillon non envoyé, destinataire à confirmer ; suivi : pièce non renseignée en arrêt, relevé de mars déjà demandé à ne pas relancer, pièce reçue qui arrête la relance."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+          "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Alts de 103 et 116 caractères, identiques dans le HTML construit et la recette : brouillon non envoyé, puis brouillon à relire, relance arrêtée et champ « Pièce attendue » non renseigné.",
+          "L’alt de couverture correspond à l’image : feuille vierge et enveloppe séparées par une grille fermée."
+        ]
+      }
+    },
+    "directionArt": 17,
+    "semanticRelevance": 22,
+    "scoreProvenance": "Notes conservées : couverture inchangée, nouvelles figures conformes au gabarit des références ; aucune nouvelle mesure."
+  },
+  "sources": {
+    "reviewedBy": "metier:t_e511ee7c",
+    "observations": {
+      "cnil-ia-generative": "FAQ CNIL, copie du reçu HTTP 200 daté 29/09/2026, SHA et extrait vérifiés ; recommandations pour l'entrée d'un système d'IA générative seulement.",
+      "cnil-donnee-personnelle": "Définition CNIL, copie du reçu HTTP 200 daté 29/09/2026, SHA et extrait vérifiés ; identification par croisement possible, non systématique.",
+      "ordre-ia": "Publication primaire de l'Ordre, copie du reçu HTTP 200 daté 29/09/2026, SHA et extrait vérifiés ; présentation de ressources, pas approbation du prompt."
+    }
+  },
+  "qualite": {
+    "reviewer": "metier:t_303e7c6d",
+    "score": 91,
+    "p0": [],
+    "categories": {
+      "contentQuality": {
+        "score": 27,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 22,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 14,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 14,
+        "max": 15
+      }
+    },
+    "evidence": [
+      "27/30 : condition d’arrêt et cas nominal séparés dans le texte, le journal et les deux figures (brouillon non envoyé dans la fenêtre d’assistant, « Arrêt · contexte incomplet » dans le suivi), sans refus attribué à ChatGPT ni interface de marque.",
+      "22/25 : titre, tâche et liens inchangés ; aucun résultat de classement mesuré.",
+      "14/15 : trois copies de sources datées et liées dans la revue antérieure, sans validation fictive de ChatGPT.",
+      "14/15 : deux images 1600 × 900 directes, sans légende ni défilement, qui tiennent dans la colonne à 1280 et 390 px et restent lisibles dans leurs grandes masses ; pas de test de lecteur d’écran ni preuve publique.",
+      "14/15 : refus présenté comme sortie du script local uniquement."
+    ],
+    "reservations": [
+      "Cette revue IA ciblée ne vaut ni scellement ni QA/CI exact-head ni feu vert de publication.",
+      "Aucun appel ChatGPT ou essai de lecteur d’écran effectué ; les deux nouvelles figures déclarent capturedAt 2026-10-03 dans la recette et le contrat interne, sans horodatage autonome de fabrication vérifié lors de cette passe.",
+      "Sources officielles évaluées à partir des copies et reçus du 29/09/2026 ; pas de nouvelle consultation HTTP en direct.",
+      "Le rendu local affiche robots index, sans preuve d'une mise en ligne ou d'une indexation effective."
+    ],
+    "seo": [
+      "La revue porte sur la concordance de la preuve et du HTML local ; la matérialisation, le scellement et l'indexabilité publique restent à vérifier."
+    ],
+    "geo": [
+      "Ne jamais attribuer à ChatGPT le refus du script éditorial déterministe."
+    ],
+    "verdict": "AI_REVIEW_PASS sur les deux nouvelles figures 1600 × 900 et leur rendu local relu à 1280 et 390 px, sous réserves de traçabilité de fabrication et de livraison ; ni scellement ni publication."
+  },
+  "technicalBindingMaintenance": {
+    "maintainedBy": "claude:recette-images-20261003",
+    "maintainedAt": "2026-10-03",
+    "reason": "Figures de corps remplacées selon la recette de référence (décision Kevin du 03/10/2026) : deux écrans d’outil fictifs 1600 × 900, mêmes ancrages, nouveaux identifiants et alts dans la recette. Corps, sources, affirmations et règles inchangés (bodySha256 identique) ; les constats éditoriaux, métier et qualité sur le texte sont maintenus ; les critères image et les constats qui décrivaient les anciennes figures sont reformulés par la revue indépendante des nouvelles figures.",
+    "figureReview": {
+      "reviewer": "claude:revue-figures-20261003",
+      "reviewedAt": "2026-10-03",
+      "figures": [
+        {
+          "id": "prompt-assistant-brouillon",
+          "result": "PASS",
+          "constat": "Fenêtre « Assistant » générique admise (pastille orange, aucun logo ni nom de modèle), en-tête « Jeu d’essai fictif · Atelier Fictif · avril 2026 » : contexte autorisé (pièce attendue, suivi « Non reçue », destinataire « À confirmer »), consigne du collaborateur, brouillon identique à la sortie nominale de journal-rejeu.json, points à vérifier (pièce, période, destinataire, ton) et « Brouillon · non envoyé ». Cohérent avec la section (passage de pièce absente à demande proposée, le prompt n’est qu’une étape) et avec la règle : rien ne part, destinataire à confirmer. Ni slogan ni étapes. Alt fidèle (103 caractères). Tient dans la colonne à 1280 et 390 px."
+        },
+        {
+          "id": "prompt-suivi-demandes",
+          "result": "PASS",
+          "constat": "Suivi au gabarit des références (pastille verte, « Jeu d’essai fictif · avril 2026 », titre « 5 demandes · avril 2026 », filtres) : demande proposée à relire, ligne « Champ non renseigné » en « Arrêt · contexte incomplet », relevé bancaire de mars demandé le 14/04 et à ne pas relancer, pièce reçue dont la relance s’arrête, pièce absente à demander. Les états suivent la règle du corps (pièce absente puis demande proposée, reçue puis arrêt, demande déjà partie sans relance) et l’arrêt du journal ; dates vraisemblables (relevé du mois précédent demandé à la mi-avril) ; dossiers « Fictif » et « Démo Social », aucune marque ni personne. Alt fidèle (116 caractères). Tient dans la colonne à 1280 et 390 px."
+        }
+      ]
+    },
+    "previousSubject": {
+      "slug": "prompt-chatgpt-expert-comptable",
+      "bodySha256": "588b9ff39b4164e1e748f140b6c9bc12652b7f0a40de1b6a59bad04c3d086548",
+      "recipeSha256": "e950367e5295c4ca35f3d45d00b9c5973b644df8836be71c4d3015129fc36cad",
+      "renderedSha256": "939c2df525e6e0165cd7eaaef565c33c071e56d7b6b7816c4ff0017d41b30376"
+    },
+    "previousMaintenance": {
+      "maintainedBy": "dev:t_30243835",
+      "maintainedAt": "2026-10-03",
+      "reason": "updatedAt de republication uniquement ; avis métier du 03/10 maintenu sur corps, sources, figures et règles inchangés. Ni nouvelle revue ni contrôle public.",
+      "previousSubject": {
+        "slug": "prompt-chatgpt-expert-comptable",
+        "bodySha256": "588b9ff39b4164e1e748f140b6c9bc12652b7f0a40de1b6a59bad04c3d086548",
+        "recipeSha256": "b1600868b0a1e167f9752b9ddbfbeac6f90eb0d0b6737a6a411ace2ed97f2520",
+        "renderedSha256": "939c2df525e6e0165cd7eaaef565c33c071e56d7b6b7816c4ff0017d41b30376"
+      }
+    }
+  }
+}

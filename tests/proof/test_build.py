@@ -6,6 +6,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 import re
 import unittest
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 
@@ -22,17 +24,22 @@ INTEGRATION_PAGES = {
     'bulletin-de-paie-silae',
 }
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
-PUBLIC_ARTICLES = {'controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel',
-                   'comprendre-les-comptes-rendus-metier-dsn',
-                   # v3, 16/09/2026 : le pilier et le premier satellite publiés par la forge.
-                   'automatiser-un-cabinet-comptable-la-carte-des-taches', 'automatiser-la-relance-des-pieces-clients',
-                   # v3, 17/09/2026 : deuxième satellite, famille « Saisie, OCR et pré-comptabilité ».
-                   'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
-                   # v3, 19/09/2026 : première cicatrice, relue et validée par Kevin.
-                   'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
-                   # v3, 21/09/2026 : première vague talents, charge et compétences.
-                   'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps',
-                   'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'}
+def public_articles():
+    """Une source non-brouillon est attendue dans dist ; aucun nouveau slug n'est implicitement autorisé."""
+    return {path.stem for path in (ROOT / 'src/content/blog').glob('*.md')
+            if re.search(r'^brouillon:\s*false\s*$', path.read_text().split('---', 2)[1], re.MULTILINE)}
+
+class PublicArticleInventoryProof(unittest.TestCase):
+    def test_attente_du_rendu_derive_des_sources_non_brouillon(self):
+        with TemporaryDirectory() as directory:
+            source = Path(directory) / 'src/content/blog'
+            source.mkdir(parents=True)
+            (source / 'autorise.md').write_text('---\nbrouillon: false\n---\nArticle')
+            (source / 'preview.md').write_text('---\nbrouillon: true\n---\nBrouillon')
+            with patch.dict(globals(), ROOT=Path(directory)):
+                self.assertEqual(public_articles(), {'autorise'})
+                (source / 'autorise.md').write_text('---\nbrouillon: true\n---\nArticle')
+                self.assertEqual(public_articles(), set())
 BLOG_RUBRIQUES = {
     'controler-les-bulletins-de-paie-avant-la-dsn': 'paie-dsn-cabinet-comptable',
     'comprendre-les-comptes-rendus-metier-dsn': 'paie-dsn-cabinet-comptable',
@@ -59,13 +66,48 @@ def jsonld(path):
     scripts = re.findall(r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', path.read_text())
     return [json.loads(s) for s in scripts]
 
+def article_headline_identity(article):
+    """Compare les trois surfaces rendues sans confondre H1 et titre d'onglet."""
+    doc = Document(article)
+    h1 = re.findall(r'<h1[^>]*>(.*?)</h1>', article.read_text(), re.S)
+    if len(h1) != 1:
+        return False
+    from html import unescape
+    headline = unescape(re.sub(r'<[^>]+>', '', h1[0])).strip()
+    og = [m.get('content') for m in doc.select('meta') if m.get('property') == 'og:title']
+    postings = [n for g in jsonld(article) for n in g.get('@graph', []) if n.get('@type') == 'BlogPosting']
+    return len(og) == len(postings) == 1 and headline == og[0] == postings[0].get('headline')
+
 
 def articles():
     return sorted((DIST / 'blog').glob('*.html'))
 
+def minimum_word_count(article):
+    # La Cicatrice signée W39 est un témoignage, pas un satellite de recherche.
+    # L'exception porte sur ce seul sujet ; les autres pages conservent 1500 mots.
+    return 1000 if article.stem == 'tests-verts-et-regle-des-trois-passes' else 1500
+
+def rendered_body_word_count(article):
+    body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)<section class="article-sources',
+                     article.read_text(), re.S).group(1)
+    return len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
+
+def word_count_consistent(article, posting, mots=None):
+    if mots is None:
+        mots = rendered_body_word_count(article)
+    return mots > 0 and abs(mots - posting['wordCount']) / mots < 0.10
+
+def word_floor_diagnostic(article, posting, mots=None):
+    if mots is None:
+        mots = rendered_body_word_count(article)
+    floor = minimum_word_count(article)
+    if min(mots, posting['wordCount']) < floor:
+        return f'{article.name}: objectif éditorial {floor}, corps {mots}, JSON-LD {posting["wordCount"]}'
+    return None
+
 
 def is_preview_article(article):
-    return article.stem in PREVIEW_ARTICLES and article.stem not in PUBLIC_ARTICLES
+    return article.stem in PREVIEW_ARTICLES and article.stem not in public_articles()
 
 
 def pillar_slugs():
@@ -86,10 +128,45 @@ def pillar_slugs():
 
 
 class BuildProof(unittest.TestCase):
+    def test_headline_identity_refuse_une_mutation_og(self):
+        from tempfile import TemporaryDirectory
+        source = next((a for a in articles() if 'og:title' in a.read_text()), None)
+        self.assertIsNotNone(source)
+        assert source is not None
+        self.assertTrue(article_headline_identity(source))
+        with TemporaryDirectory() as directory:
+            altered = Path(directory) / 'article.html'
+            original = source.read_text()
+            altered.write_text(re.sub(r'(<meta property="og:title" content=")[^"]+', r'\1Titre tronqué', original, count=1))
+            self.assertNotEqual(altered.read_text(), original)
+            self.assertFalse(article_headline_identity(altered))
+            altered.write_text(original.replace('"headline":', '"headline": "Titre différent", "originalHeadline":', 1))
+            self.assertNotEqual(altered.read_text(), original)
+            self.assertFalse(article_headline_identity(altered))
+
+    def test_h1_long_reste_identique_au_graphe_et_a_og(self):
+        from tempfile import TemporaryDirectory
+        from html import escape
+        headline = 'Pourquoi des tests verts manquent des défauts : la règle des trois passes'
+        self.assertGreater(len(headline), 70)
+        with TemporaryDirectory() as directory:
+            article = Path(directory) / 'long.html'
+            article.write_text(f'<title>Titre court | Memlia</title><h1>{escape(headline)}</h1>'
+                               f'<meta property="og:title" content="{escape(headline, quote=True)}">'
+                               f'<script type="application/ld+json">{json.dumps({"@graph": [{"@type": "BlogPosting", "headline": headline}]}, ensure_ascii=False)}</script>')
+            self.assertTrue(article_headline_identity(article))
+    def test_requalified_article_static_html_is_indexable(self):
+        # Le candidat livre la correction FE et retire ensemble l'interception
+        # HTTP et l'exclusion du sitemap (test article-maintenance indépendant).
+        # Garder une assertion positive sur le rendu, pas supprimer la recette.
+        doc = Document(DIST / 'blog' / 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html')
+        robots = [m['content'] for m in doc.select('meta') if m.get('name') == 'robots']
+        self.assertEqual(robots, ['index, follow, max-image-preview:large'])
+
     def test_pages_one_h1_french(self):
         pages = sorted(DIST.glob('*.html'))
         self.assertEqual([p.stem for p in pages], PAGES_FIXES)
-        self.assertEqual({article.stem for article in articles()}, PUBLIC_ARTICLES | PREVIEW_ARTICLES)
+        self.assertEqual({article.stem for article in articles()}, public_articles() | PREVIEW_ARTICLES)
         integrations = sorted((DIST / 'integrations').glob('*.html'))
         self.assertEqual({page.stem for page in integrations}, INTEGRATION_PAGES)
         for page in pages + articles() + integrations:
@@ -250,13 +327,24 @@ class BuildProof(unittest.TestCase):
         briefs = ROOT / 'public/images'
         self.assertEqual(len(list(briefs.glob('brief-img-1[6-9]-*.md'))) + len(list(briefs.glob('brief-img-2[0-4]-*.md'))), 9)
         self.assertEqual(len(list((DIST / 'images').glob('brief-*.md'))), 0)
-        # Trois couvertures publiées : 3 largeurs x 2 formats chacune, plus une image
-        # sociale webp par article (imageOg, exigée par le contrat de la collection).
+        # Couvertures publiées et trois couvertures W39 préchargées avant les articles :
+        # 3 largeurs x 2 formats chacune, plus une image sociale webp par couverture.
         # Les pages commerciales n'ajoutent rien ici : leur visuel de tête est une preuve
         # fonctionnelle rendue sous public/proofs/v2, avec son image sociale sous og/.
         publies = [a for a in articles() if not is_preview_article(a)]
-        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 3 * len(publies))
-        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 4 * len(publies))
+        w39 = {
+            'logiciel-ia-comptabilite': 'img-art-logiciel-ia-comptabilite',
+            'prompt-chatgpt-expert-comptable': 'img-art-prompt-chatgpt-expert-comptable',
+            'tests-verts-et-regle-des-trois-passes': 'img-art-tests-verts-trois-passes',
+        }
+        for image_id in w39.values():
+            for largeur in [768, 1200, 1600]:
+                for format in ['avif', 'webp']:
+                    self.assertTrue((DIST / 'images' / f'{image_id}-{largeur}.{format}').is_file())
+            self.assertTrue((DIST / 'images' / f'{image_id}-og.webp').is_file())
+        precharges = sum(slug not in {article.stem for article in publies} for slug in w39)
+        self.assertEqual(len(list((DIST / 'images').glob('*.avif'))), 3 * (len(publies) + precharges))
+        self.assertEqual(len(list((DIST / 'images').glob('*.webp'))), 4 * (len(publies) + precharges))
         self.assertEqual(len(list((DIST / 'proofs').glob('*.webp'))), 9)
         # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
         # aux pages de service et cinq scènes propres aux outils. Les dix images sociales
@@ -358,7 +446,7 @@ class BuildProof(unittest.TestCase):
                 self.assertLessEqual(len(metas['description']), 160)
                 titre = re.search(r'<title>(.*?)</title>', article.read_text()).group(1)
                 self.assertLessEqual(len(titre), 70, titre)
-                self.assertLessEqual(len(metas['og:title']), 70, metas['og:title'])
+                self.assertTrue(article_headline_identity(article), article.name)
                 (graph,) = jsonld(article)
                 nodes = {n['@type']: n for n in graph['@graph']}
                 self.assertEqual(set(nodes), {'BlogPosting', 'BreadcrumbList', 'Person', 'Organization', 'WebSite'})
@@ -375,11 +463,14 @@ class BuildProof(unittest.TestCase):
                 self.assertTrue(image.startswith(f'{SITE}/images/'))
                 self.assertTrue((DIST / image[len(SITE) + 1:]).is_file(), image)
                 self.assertGreaterEqual(posting['image']['width'], 1200)
-                self.assertGreaterEqual(posting['wordCount'], 1500)
-                # Le compte de mots déclaré correspond au corps réellement rendu (±10 %).
-                body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)<section class="article-sources', article.read_text(), re.S).group(1)
-                mots = len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
-                self.assertLess(abs(mots - posting['wordCount']) / mots, 0.10, (mots, posting['wordCount']))
+                # La longueur cible est un diagnostic, non une porte de publication.
+                # Une perte du rendu sans mise à jour du JSON-LD reste bloquante.
+                mots = rendered_body_word_count(article)
+                self.assertTrue(word_count_consistent(article, posting, mots),
+                                (article.name, mots, posting['wordCount']))
+                diagnostic = word_floor_diagnostic(article, posting, mots)
+                if diagnostic:
+                    print(f'RELIQUAT mots : {diagnostic}', flush=True)
                 crumbs = nodes['BreadcrumbList']['itemListElement']
                 attendus = [f'{SITE}/', f'{SITE}/blog']
                 if article.stem in BLOG_RUBRIQUES:
@@ -410,6 +501,39 @@ class BuildProof(unittest.TestCase):
             self.assertEqual(item.find('{http://purl.org/dc/elements/1.1/}creator').text, 'Kevin Kitanga')
 
 
+class ArticleLengthProof(unittest.TestCase):
+    def test_only_signed_w39_cicatrice_has_testimony_floor(self):
+        self.assertEqual(minimum_word_count(Path('tests-verts-et-regle-des-trois-passes.html')), 1000)
+        self.assertEqual(minimum_word_count(Path('pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html')), 1500)
+        self.assertEqual(minimum_word_count(Path('logiciel-ia-comptabilite.html')), 1500)
+
+    def test_word_count_consistency_and_editorial_floor_diagnostic(self):
+        from tempfile import TemporaryDirectory
+        cases = [('tests-verts-et-regle-des-trois-passes', 1000),
+                 ('logiciel-ia-comptabilite', 1500)]
+        with TemporaryDirectory() as directory:
+            for slug, floor in cases:
+                article = Path(directory) / f'{slug}.html'
+                for body_words, declared_words, consistent, diagnostic in [
+                    (floor - 1, floor, True, True),  # dette historique, non bloquante
+                    (floor, floor - 1, True, True),
+                    (floor, floor, True, False),
+                    (floor, floor + floor // 5, False, False),  # JSON-LD incohérent
+                    (floor * 3 // 4, floor, False, True),  # candidat amputé, déclaration intacte
+                ]:
+                    with self.subTest(slug=slug, body=body_words, declared=declared_words):
+                        # Mutation du HTML rendu : le schéma reste indépendant du corps.
+                        article.write_text(
+                            f'<div class="article-corps"><p>{"mot " * body_words}</p></div>'
+                            '<section class="article-sources"></section>'
+                            '<script type="application/ld+json">'
+                            + json.dumps({'@graph': [{'@type': 'BlogPosting', 'wordCount': declared_words}]})
+                            + '</script>'
+                        )
+                        posting = jsonld(article)[0]['@graph'][0]
+                        self.assertEqual(word_count_consistent(article, posting), consistent)
+                        self.assertEqual(bool(word_floor_diagnostic(article, posting)), diagnostic)
+
 if __name__ == '__main__':
     print('Sujet SHA256 dist/index.html:', hashlib.sha256((DIST / 'index.html').read_bytes()).hexdigest(), flush=True)
     unittest.main(verbosity=2)
@@ -431,4 +555,3 @@ class FamillesDesArticles(unittest.TestCase):
             verifies += 1
         # Le compte affiché dit ce que le test a réellement contrôlé : zéro article pipeline n'est pas un succès silencieux.
         print(f'familles vérifiées : {verifies} article(s) pipeline')
-

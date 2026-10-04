@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "slug": "tests-verts-et-regle-des-trois-passes",
+  "action": "creation",
+  "editorialStatus": "publie",
+  "title": "Pourquoi des tests verts manquent des défauts : la règle des trois passes",
+  "tabTitle": "Tests verts et défauts invisibles : trois passes | Memlia",
+  "summary": "Deux défauts non vus par les suites vertes, un contrôle qui a rougi à raison : suites, chaîne de preuve et écran sur un jeu fictif distinct du cas historique.",
+  "description": "Pourquoi des tests verts peuvent manquer des défauts : deux angles morts, un test rouge à raison et trois passes pour relire le résultat avec le cabinet.",
+  "publicationDate": "2026-10-02",
+  "updatedAt": null,
+  "topics": [
+    "methode",
+    "automatisation"
+  ],
+  "keywords": [
+    "tests verts défauts",
+    "chaîne de preuve",
+    "recette logiciel cabinet"
+  ],
+  "primaryQuery": "pourquoi des tests verts peuvent manquer des défauts",
+  "secondaryQueries": [],
+  "intent": "diagnostiquer",
+  "fanOut": [
+    "suites vertes",
+    "chaîne de preuve",
+    "lecture à l’écran"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "chefs-mission-portefeuille"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-10-03"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "metier:t_3a224b17",
+    "role": "direction-associes",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "methode-decision-humaine",
+  "famille": "ia-generative-agents",
+  "contentType": "searchable",
+  "format": "thought-leadership",
+  "task": "Faire vérifier une sortie métier malgré des tests verts, en comparant les entrées, la chaîne et le rendu à l’écran.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Source historique privée : memlia-lecons/references/memlia-module2-supervision-sociale.md, paragraphe « Ce que les tests NE voient pas » ; deux défauts hors suites vertes et troisième test rouge. Aucun nom client ni montant historique publié. Rejeu fictif distinct dans cas-executes.json.",
+  "sourcesVerifiedAt": "2026-10-03",
+  "sources": [
+    {
+      "id": "python-doctest",
+      "publisher": "Python Software Foundation",
+      "title": "doctest — Exemples de tests interactifs en Python",
+      "url": "https://docs.python.org/fr/3/library/doctest.html",
+      "checkedAt": "2026-10-03",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://docs.python.org/fr/3/library/doctest.html",
+      "classificationReason": "Documentation primaire du langage sur les tests de régression ; ne prouve aucun incident Memlia.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/python-doctest.classification.json",
+      "verificationEvidence": "preuves/sources/python-doctest.json"
+    },
+    {
+      "id": "python-unittest",
+      "publisher": "Python Software Foundation",
+      "title": "unittest — Unit testing framework",
+      "url": "https://docs.python.org/fr/3/library/unittest.html",
+      "checkedAt": "2026-10-03",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://docs.python.org/fr/3/library/unittest.html",
+      "classificationReason": "Documentation primaire du lanceur de tests ; ne prouve ni défaut réel ni chiffre de Memlia.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/python-unittest.classification.json",
+      "verificationEvidence": "preuves/sources/python-unittest.json"
+    },
+    {
+      "id": "pytest-assert",
+      "publisher": "pytest",
+      "title": "How to write and report assertions in tests",
+      "url": "https://docs.pytest.org/en/stable/how-to/assert.html",
+      "checkedAt": "2026-10-03",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://docs.pytest.org/en/stable/how-to/assert.html",
+      "classificationReason": "Documentation primaire du framework pytest sur les échecs d’assertion, sans lien avec les faits historiques.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/pytest-assert.classification.json",
+      "verificationEvidence": "preuves/sources/pytest-assert.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "qa:t_c9dd7b40",
+  "reviewRule": "Relire à chaque modification de l’expérience attribuée à Kevin ; toute retouche des phrases approuvées exige sa validation du nouveau SHA.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons et testons la règle de votre tâche, la relions aux sorties réellement lues et la recettons avec vos équipes dans vos outils. Le cabinet garde la décision. Rien à envoyer : décrivez la tâche."
+  },
+  "image": {
+    "heroId": "img-art-tests-verts-trois-passes",
+    "alt": "Trois postes de vérification distincts en diorama, pour les suites, la chaîne de preuve et la lecture humaine",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-10-03"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-10-03"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/methode",
+      "/contact"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/methode",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ],
+    "decision": "Le récit signé décrit un défaut réel et une règle de recette ; la page méthode explique une prestation, le pilier cartographie les tâches."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  },
+  "publishedAt": "2026-10-03",
+  "publicationEvidence": "preuves/publication.json"
+}

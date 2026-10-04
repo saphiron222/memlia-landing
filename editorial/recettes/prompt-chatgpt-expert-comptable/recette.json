@@ -1,0 +1,62 @@
+{
+  "slug": "prompt-chatgpt-expert-comptable",
+  "preparationStatus": "NON_PUBLIABLE_attend_revue_independante_et_date_reelle",
+  "title": "Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique",
+  "tabTitle": "Prompt ChatGPT expert comptable : demande de pièce | Memlia",
+  "summary": "Un prompt pour préparer une demande de pièce fictive : contexte autorisé, brouillon, arrêt si la pièce manque, destinataire et envoi validés par une personne.",
+  "description": "Prompt ChatGPT expert comptable : préparer une demande de pièce sur cas fictif, savoir quand s'arrêter et garder la validation humaine.",
+  "date": "2026-09-29",
+  "updatedAt": "2026-10-03",
+  "topics": ["ia", "pieces", "automatisation"],
+  "keywords": ["prompt chatgpt expert comptable", "demande de pièce", "confidentialité des données"],
+  "primaryQuery": "prompt chatgpt expert comptable",
+  "secondaryQueries": [],
+  "intent": "executer",
+  "fanOut": ["demande de pièce fictive", "informations à confirmer", "arrêt et validation de l'envoi"],
+  "role": {"primary": "direction-associes", "secondary": ["collaborateurs-comptables"], "proofLevel": "indirect", "proofNote": "Intention du backlog W39 mesurée par autocomplétion le 20/09 et à nouveau le 27/09 ; aucun entretien de cabinet attribué à cet article."},
+  "funnel": "MOFU",
+  "cluster": "numerique-it-data",
+  "famille": "ia-generative-agents",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Préparer une demande de pièce manquante sans envoyer avant contrôle de la pièce, du destinataire et de la période.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Trois cas fictifs exécutés par rejouer-cas.mjs, entrées et sorties dans journal-rejeu.json ; le refus demande déjà partie est propre au script local alimenté par le suivi et absent du prompt copiable ; deux consignes par pôle illustratives non exécutées ; aucune réponse ChatGPT mesurée.",
+  "reviewRule": "Revoir les conditions d'utilisation de l'outil et les recommandations CNIL avant un usage réel ; réviser le contenu en cas d'évolution de la source.",
+  "cta": {"label": "Confier cette tâche", "destination": "/contact", "outcome": "Nous écrivons votre règle de demande de pièces, l'automatisons dans vos outils et la recettons avec votre équipe. Vous gardez la décision d'envoyer. Rien à envoyer : décrivez simplement la tâche."},
+  "inlineProofs": [
+    { "id": "prompt-assistant-brouillon", "insertBeforeHeading": "Exemple : préparer une demande de pièce manquante", "alt": "Fenêtre d’assistant fictive : consigne du collaborateur et brouillon de demande de facture, non envoyé.", "source": "reconstitution HTML fictive ; scène nominale vérifiable dans journal-rejeu.json, aucun modèle interrogé", "capturedAt": "2026-10-03" },
+    { "id": "prompt-suivi-demandes", "insertBeforeHeading": "Les quatre éléments à conserver quand on adapte ce prompt", "alt": "Suivi fictif des demandes de pièces : brouillon à relire, relance arrêtée et champ « Pièce attendue » non renseigné.", "source": "reconstitution HTML fictive ; arrêt vérifiable dans journal-rejeu.json, aucun modèle interrogé", "capturedAt": "2026-10-03" }
+  ],
+  "image": {
+    "heroId": "img-art-prompt-chatgpt-expert-comptable",
+    "alt": "Feuille vierge et enveloppe séparées par une grille fermée, pour figurer le contrôle humain avant une demande de pièce",
+    "brief": {
+      "sujet": "Brouillon fictif de demande de pièce en attente d'une décision d'envoi.",
+      "composition": "Feuille blanche et enveloppe séparées par une petite grille fermée ; deux blocs verts et une base sombre, sans flèche indiquant l'envoi.",
+      "style": "Diorama 3D isométrique, matières mates, fond crème, lumière douce, aucun écran ni personne.",
+      "palette": "Crème #fcfbf7 dominante ; vert Memlia #27b657, vert profond #1c8a41 et graphite #231f20 visibles.",
+      "interdits": "Texte, logo, client identifiable, interface fictive, flèche d'envoi ou validation automatique.",
+      "alt": "Feuille vierge et enveloppe séparées par une grille fermée, pour figurer le contrôle humain avant une demande de pièce",
+      "reviewCriteria": ["aucun envoi suggéré", "aucune donnée client", "grille de validation visible", "palette mesurée sur dérivés", "texte et logo absents", "dérivés WebP/AVIF et OG vérifiés"],
+      "prompt": "Memlia original 3D editorial still life, 16:9 cream #fcfbf7 paper ground. Three-dimensional LARGE matte graphite #231f20 dark ink tablet occupying at least 12 percent of entire image, contrasted with two green #27b657 and #1c8a41 geometric blocks. An unaddressed white sheet waits before a CLOSED envelope behind a clearly CLOSED gate. No arrows, no check marks, no movement, no sent mail, no interface, no lettering, no people, no client data. Soft isometric studio lighting upper left."
+    },
+    "source": {"path": "image-source.png", "generationId": "ead0e9ec-b5fc-42fb-bc71-74aa88cb9efc", "model": "gpt_image_2_5", "provider": "higgsfield", "generatedAt": "2026-09-27", "credits": 2.75}
+  },
+  "sources": [
+    {"id": "cnil-ia-generative", "publisher": "CNIL", "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative", "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative", "level": "tier-1", "official": true, "classificationReason": "FAQ de l’autorité française de protection des données ; consultation directe le 28/09/2026.", "excerpt": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager"},
+    {"id": "cnil-donnee-personnelle", "publisher": "CNIL", "title": "Donnée personnelle", "url": "https://cnil.fr/fr/definition/donnee-personnelle", "level": "tier-1", "official": true, "classificationReason": "Définition primaire de l’autorité de protection des données ; URL finale vérifiée le 28/09/2026.", "excerpt": "à partir du croisement d’un ensemble de données (exemple&nbsp;: une femme vivant à telle adresse, née tel jour et membre dans telle association)."},
+    {"id": "ordre-ia", "publisher": "Conseil national de l’Ordre des experts-comptables", "title": "Travaux Data et IA", "url": "https://www.experts-comptables.fr/travaux-data-et-ia", "level": "tier-2", "official": false, "classificationReason": "Publication primaire de l’Ordre sur ses propres ressources, vérifiée le 28/09/2026 ; ce domaine n'est pas dans la liste fermée des autorités officielles du gate.", "excerpt": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter » et même une charte de l’utilisation de l’IA Générative en cabinet"}
+  ],
+  "links": {"outgoing": ["/blog/controler-les-bulletins-de-paie-avant-la-dsn", "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches", "/blog/automatiser-la-relance-des-pieces-clients", "/methode", "/contact"], "incoming": ["/blog", "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"]},
+  "cannibalization": {"risk": "moyen", "comparedWith": ["/blog/automatiser-la-relance-des-pieces-clients", "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"], "decision": "Le patron de consigne pour un brouillon diffère de la cadence de relance et de la cartographie des tâches ; requête primaire distincte."},
+  "serp": {"requete": "prompt chatgpt expert comptable", "date": "2026-09-28", "acteurs": ["Karmen", "Extencia", "Welyb", "Cegid"], "note": "WebSearch du 28/09/2026 : listes de prompts et conseils de formulation ; pas de rang Google certifié ni métrique de trafic. Cette page livre un arrêt explicite et un rejeu fictif, sans prétendre tester ChatGPT."},
+  "gsc": {"requete": "prompt chatgpt expert comptable", "date": "2026-09-28", "impressions": 0, "clics": 0, "note": "Nouvelle page non publiée au moment de la recette ; aucune métrique GSC consultée ou attribuée à la page."},
+  "claims": [
+    {"unite": "La CNIL rappelle", "claim": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager", "type": "information", "sourceId": "cnil-ia-generative", "excerpt": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager", "explanation": "Recommandation de la FAQ CNIL sur les informations fournies dans une invite, et non obligation réglementaire autonome."},
+    {"unite": "Une personne peut être identifiée", "claim": "à partir du croisement d’un ensemble de données", "type": "information", "sourceId": "cnil-donnee-personnelle", "excerpt": "à partir du croisement d’un ensemble de données (exemple&nbsp;: une femme vivant à telle adresse, née tel jour et membre dans telle association).", "explanation": "La définition CNIL donne explicitement l’identification par croisement comme possibilité."},
+    {"unite": "l'Ordre des experts-comptables présente", "claim": "des cas d’usage en cabinet, des précautions à prendre et des techniques pour bien « prompter »", "type": "information", "sourceId": "ordre-ia", "excerpt": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter » et même une charte de l’utilisation de l’IA Générative en cabinet", "explanation": "La page de l’Ordre annonce ces catégories de ressources, sans mesurer un résultat logiciel."}
+  ],
+  "businessReview": {"reviewerId": "relecteur-metier-ia-memlia", "role": "direction-associes"}
+}

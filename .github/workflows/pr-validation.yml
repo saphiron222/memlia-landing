@@ -1,0 +1,61 @@
+name: PR validation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-validation-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Repository gates
+    runs-on: ubuntu-latest
+    # The complete deterministic forge/build plus the browser contracts can
+    # exceed 20 minutes on a hosted runner. Keep one finite job and every gate;
+    # do not cancel a progressing test suite before its verdict.
+    timeout-minutes: 30
+    steps:
+      - name: Check out the exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          # The planner reads the integrated publication base, never a draft
+          # feature commit. A shallow PR checkout omits origin/main.
+          fetch-depth: 0
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Check Astro and content
+        run: npm run check
+
+      - name: Exercise the blog forge
+        run: npm run test:blog-pipeline
+
+      - name: Exercise blog frame guards in Chromium
+        run: node --test tests/scripts/blog-proof-frame-render.test.mjs
+
+      - name: Build and run deterministic gates
+        run: npm run build
+        env:
+          CF_PAGES: "1"
+
+      - name: Run browser contracts on Linux
+        run: npm run test
+        env:
+          CF_PAGES: "1"

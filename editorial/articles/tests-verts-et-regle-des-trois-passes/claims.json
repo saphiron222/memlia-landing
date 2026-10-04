@@ -1,0 +1,198 @@
+{
+  "version": 1,
+  "candidateSlug": "tests-verts-et-regle-des-trois-passes",
+  "articleSha256": "a4d4115948909570dce6df9538143a2cafee3e68400513e7beaf127dabb1d82a",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f2ed6077a390",
+      "text": "Des tests verts ne garantissent pas que le collaborateur voit le bon total ni le bon périmètre. Ils confirment seulement les cas qu'ils exercent. Dans une réalisation pour le pôle social, j'ai vu deux défauts échapper aux suites vertes : une référence de coût déplacée, puis un cumul sur plusieurs exercices. Un autre test a rougi à raison. Depuis, je passe par les suites, la chaîne de preuve et l'écran.",
+      "claimIds": [
+        "claim-unit-f2ed6077a390-1"
+      ]
+    },
+    {
+      "id": "unit-1abeb8a9300f",
+      "text": "Les faits de cet épisode sont consignés dans ma note de travail de juillet 2026 ; les sources Python citées en annexe éclairent seulement la méthode des tests, pas ces incidents.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-30d0198adf21",
+      "text": "Première passe : les suites, pour verrouiller les règles connues",
+      "claimIds": []
+    },
+    {
+      "id": "unit-01b59eae9311",
+      "text": "Avant de montrer le résultat, j'écris une règle métier et son contre-exemple. Par exemple : si un dossier est suivi sur plusieurs exercices, le simulateur d'une année ne doit additionner que les lignes de cet exercice. Je teste ensuite les limites : exercice absent, dossier répété, montant nul par construction, changement de périmètre. Les tests que j'écris visent ces invariants au prochain changement ; ils ne démontrent pas que chaque sortie du classeur ou chaque ligne de l'interface est correcte.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-910588a06cdd",
+      "text": "Un test rouge n'est donc pas une gêne à faire disparaître. Dans cette réalisation, un contrôle destiné à vérifier que deux blocs n'empiétaient pas l'un sur l'autre a effectivement échoué après le passage des colonnes au-delà de Z. Le contrôle lui-même lisait une seule lettre pour calculer les bornes. La règle que j'en tire est de réparer cette lecture et de rejouer le scénario, pas de détendre l'assertion. Ce défaut n'a pas échappé à des tests verts : un test a rougi à raison.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-eddbc4369da6",
+      "text": "Deuxième passe : la chaîne de preuve, pour relier l'entrée à la sortie",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f6fd9e178e47",
+      "text": "Je prends une entrée fictive, conserve le résultat attendu calculé séparément et compare chaque étape jusqu'au chiffre affiché. Dans cette réalisation, l'insertion d'une colonne avait déplacé trois références vers le total des coûts. Les suites étaient vertes ; la vérification de la chaîne de preuve a repéré 137 divergences. Le coût concret était de reprendre les références et de refaire les comparaisons ; je n'ai pas de durée mesurée à lui attribuer. Un calcul peut respecter les règles testées dans le code et afficher malgré tout un mauvais total une fois les formules déplacées.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c7242fc101fa",
+      "text": "La question utile n'est pas « le fichier s'ouvre-t-il ? », mais « peut-on remonter de ce total à chacune de ses entrées sans saut ni référence décalée ? ». Sur une sortie tabulaire, contrôlez les formules réellement livrées, les cellules sources et les filtres appliqués. Sur un export, rapprochez le total exporté et le total de l'outil de référence sur un jeu fictif stable.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c2d4a51e7af9",
+      "text": "Troisième passe : l'écran, pour refaire le geste humain",
+      "claimIds": []
+    },
+    {
+      "id": "unit-41cbdbe6dd9f",
+      "text": "J'ouvre la vue réellement utilisée et me demande : quel dossier, quelle année, quel périmètre ce chiffre représente-t-il ? Dans ce même travail, le simulateur affichait pour un dossier un cumul de plusieurs années au lieu de l'année sélectionnée. Les suites n'avaient pas arrêté ce résultat ; la lecture de l'écran, avec un cas connu, a montré l'écart. Reprendre le périmètre du calcul et vérifier à nouveau la vue devenait nécessaire. Sans ce contrôle, un chiffre détaillé peut paraître crédible alors qu'il répond à une autre question.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-59f5e8aefb76",
+      "text": "La recette doit prévoir au moins un scénario où la décision change si le périmètre est mauvais : dossier présent sur deux exercices, exclusion d'une catégorie qui suit une autre grille, année incomplète. Notez à côté du résultat les exclusions et le périmètre retenu. Une capture ne suffit pas : quelqu'un doit expliquer pourquoi le chiffre affiché est celui qu'il utiliserait.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-865c0bc58177",
+      "text": "La frontière. Je fais tester les règles connues et rapprocher les résultats par la chaîne de preuve ; la sortie attend encore une lecture à l'écran. Le cabinet décide si le périmètre affiché convient à son usage.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c5c75a1c0b43",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | | --- | --- | --- | | Contrôles automatisés et rapprochement sur données fictives | Confrontation du total au scénario métier | Acceptation du périmètre et décision d'utiliser le résultat |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-49cdeecffb04",
+      "text": "La proposition. J'ai retenu une règle pour nos livraisons : proposer des contrôles et leurs résultats sans remplacer les saisies du cabinet. Une comparaison rouge nomme la divergence au lieu de corriger silencieusement un chiffre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c74893f8c389",
+      "text": "L'arrêt. J'interromps la recette devant une référence décalée, une année agrégée hors du périmètre ou un contrôle de colonnes erroné, jusqu'au correctif vérifié.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fac06c7279fe",
+      "text": "Le jeu d'essai. J'illustre cette règle avec trois situations fictives rejouées par une règle locale : un coût oublié, deux exercices agrégés et une borne AB tronquée. Les cadres les illustrent ; ni cet exercice ni les cadres ne rejouent le produit historique.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-81d89d2891c6",
+      "text": "| Cas joué | Sortie obtenue | Décision | | --- | --- | --- | | Coûts fictifs 40 + 10 + 5, référence qui omet le dernier poste | Attendu 55, total avec référence décalée 50 : divergence | Revoir les références avant d'accepter le total | | Dossier fictif sur deux exercices, 12 en N et 8 en N−1 | Sans filtre 20, exercice N seul 12 | Corriger le filtre avant d'utiliser le résultat | | Bornes fictives de Z à AB | Z = 26, AB = 28, ancien lecteur mono-lettre de AB = 1 | Lire la colonne entière et rejouer le contrôle |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ec790f21d5d1",
+      "text": "Ces trois lignes sont des sorties d'une règle locale sur jeu fictif ; elles ne reproduisent ni les chiffres ni les captures de la réalisation historique.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3e98367c1cef",
+      "text": "Une fiche de recette que le cabinet peut reprendre",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4b3ddcde997b",
+      "text": "| Passe | À préparer | Question à poser avant validation | | --- | --- | --- | | Suites | Règle, contre-exemple et jeu fictif | Les cas limites et l'échec attendu sont-ils testés ? | | Chaîne de preuve | Entrées et résultat attendu indépendants | Les formules ou transformations du livrable mènent-elles au même total ? | | Écran | Même scénario rejoué dans l'interface | Le libellé, l'année, les exclusions et le montant se comprennent-ils ensemble ? |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-82e0d48e404a",
+      "text": "Ma règle depuis cet épisode : si l'une des trois passes échoue, je consigne le défaut, corrige sa cause et ajoute un test qui aurait détecté sa classe à l'avenir. Je relance les trois passes sur la sortie modifiée. Le bon critère n'est pas un compteur de tests ; c'est une règle que l'équipe peut vérifier et une décision qu'elle peut encore contester.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a1a70ed992f9",
+      "text": "Cette recette s'applique aux tâches de la carte des automatisations du cabinet. Notre méthode inclut un jeu fictif et la validation par les personnes qui utiliseront le résultat. L'IA prépare ; l'humain décide. Si une tâche réclame encore trop de vérifications manuelles, confiez-nous cette tâche : nous regarderons d'abord ce qu'il faut rendre vérifiable dans vos outils existants.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-f2ed6077a390-1",
+      "unitId": "unit-f2ed6077a390",
+      "claim": "Ils confirment seulement les cas qu'ils exercent.",
+      "type": "methode",
+      "sourceIds": [
+        "python-doctest"
+      ],
+      "sourceExcerpts": {
+        "python-doctest": "Réaliser un test de régression en vérifiant que les exemples interactifs provenant d'un fichier de test ou d'un objet de test fonctionnent comme prévu."
+      },
+      "checkedAt": "2026-10-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-03",
+        "sourceResults": [
+          {
+            "sourceId": "python-doctest",
+            "sourceUrl": "https://docs.python.org/fr/3/library/doctest.html",
+            "verifiedUrl": "https://docs.python.org/fr/3/library/doctest.html",
+            "excerpt": "Réaliser un test de régression en vérifiant que les exemples interactifs provenant d'un fichier de test ou d'un objet de test fonctionnent comme prévu.",
+            "context": "Réaliser un test de régression en vérifiant que les exemples interactifs provenant d'un fichier de test ou d'un objet de test fonctionnent comme prévu.",
+            "contextSha256": "7835f15b04f9407c16f59aa93ddaa71fc3cfd161d19f09a429d3cc4fdefec527",
+            "citation": {
+              "text": "Réaliser un test de régression en vérifiant que les exemples interactifs provenant d'un fichier de test ou d'un objet de test fonctionnent comme prévu.",
+              "sha256": "7835f15b04f9407c16f59aa93ddaa71fc3cfd161d19f09a429d3cc4fdefec527",
+              "sourceContentSha256": "39efd9d1012a1e81abc96586cf5ca459f5d32a4557f63e65a942fce10a74880b",
+              "coordinates": {
+                "finalUrl": "https://docs.python.org/fr/3/library/doctest.html",
+                "checkedAt": "2026-10-03",
+                "title": "doctest — Exemples de tests interactifs en Python",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 256,
+                  "endLine": 256
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [],
+              "translationTerms": [
+                {
+                  "claimTerm": "confirment",
+                  "citationTerm": "vérifiant"
+                },
+                {
+                  "claimTerm": "cas",
+                  "citationTerm": "exemples"
+                }
+              ],
+              "reasoning": "La citation, relevée à la ligne 256 de la copie locale de Python Software Foundation, porte les mêmes entités que le claim (confirment→vérifiant, cas→exemples) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La documentation montre que le test de régression vérifie les exemples exécutés, pas tous les scénarios possibles. Elle ne prouve ni l'intention personnelle de Kevin ni les incidents de juillet ; ceux-ci relèvent de sa note interne et de sa validation du texte exact.",
+            "checkedAt": "2026-10-03"
+          }
+        ]
+      }
+    }
+  ]
+}

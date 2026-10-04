@@ -1,177 +1,221 @@
 {
+  "subject": {
+    "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+    "bodySha256": "e27d63abcaf5e173b7f7399bd52129ae1790d61988ff5f6183487a1d2c378288",
+    "recipeSha256": "5678b8ebfbf7f758bb3b585f5bb7b557cdd65f14168793c6ceea80a44ffa79dd",
+    "renderedSha256": "c4495a2a993ea5c346ffe9d54eee497fa27d81ed4faf275ef7e857cfca59a201"
+  },
   "editorial": {
+    "reviewer": "metier:t_303e7c6d",
+    "p0": [],
     "criteria": {
       "intent-satisfaction": {
         "result": "PASS",
         "observations": [
-          "La réponse directe répond immédiatement à la requête en séparant préparation automatisée, validation du collaborateur et décision humaine.",
-          "Le corps couvre les compétences, la règle écrite, les arrêts dans le doute et les responsabilités de la direction sans transformer l’article en catalogue de cas d’usage.",
-          "L’hypothèse de temps réaffecté est explicitement laissée à la recette et à la mesure du périmètre réel."
+          "Le corps oppose règle écrite et décision humaine, puis distingue entrée reconnue, ambiguïté et règle absente sur trois cas fictifs ; aucun effet de l'IA sur l'emploi n'est annoncé comme mesuré."
         ]
       },
       "serp-format-rankability": {
         "result": "PASS",
         "observations": [
-          "Le HTML rendu porte un H1 unique, un sommaire, une progression H2/H3 cohérente, deux tableaux et trois images dont deux preuves fonctionnelles.",
-          "Le titre d’onglet, le H1 et la description traitent tous l’intelligence artificielle, le métier comptable et les compétences humaines.",
-          "Le canonical auto-référent est exact et l’aperçu conserve volontairement robots noindex, follow avant publication."
+          "H1 et onglet gardent l’intention métier/compétences ; les visuels sont un tableau fictif de dossier rangé selon la frontière (préparé, à valider, décision du collaborateur) et un journal des sorties locales du rejeu, pas une liste de produits."
         ]
       },
       "eeat-sources": {
         "result": "PASS",
         "observations": [
-          "Les cinq affirmations externes sont liées inline vers la page exacte et reprises dans une bibliographie datée du 21 septembre 2026.",
-          "Les trois URL ont répondu HTTP 200 le 21 septembre 2026 et les cinq citations OPCO Atlas, Apec et OEC Paris ont été retrouvées mot pour mot dans les pages servies.",
-          "Le texte borne leur portée : Atlas est non daté, qualitatif et prospectif, Apec reste un communiqué de 2021 et le matériau OEC Paris est intersectoriel."
+          "Copies Atlas, Apec et Le Francilien vérifiées contre leurs trois SHA et cinq extraits ; Atlas est qualitatif/non daté, Apec daté de 2021 et le livre blanc repris en 2023 est intersectoriel. Le texte porte ces limites au contact des citations."
         ]
       },
       "information-gain-proof": {
         "result": "PASS",
         "observations": [
-          "L’oracle exécutable rejoue trois cas fictifs et le check retrouve bit pour bit chaque identifiant, statut, message et décision dans corps.md.",
-          "Le tableau « Cas joué | Sortie obtenue | Décision » rapporte PROPOSITION, REFUS_AMBIGUITE et REFUS_REGLE_ABSENTE comme sorties effectivement obtenues.",
-          "Les preuves inline competences-frontiere et competences-refus sont lisibles, non tronquées, fictives et cohérentes avec la frontière et le rejeu ; l’image de refus résume les statuts tandis que le tableau porte les messages et décisions exacts."
+          "Visuel competences-journal-rejeu : IA-01 proposition PR-001, IA-02 refus pour deux interprétations (REFUS_AMBIGUITE, aucune proposition), IA-03 refus règle à écrire ; tableau du corps précise les sorties sans attribution à des dossiers client."
         ]
       },
       "technical-onpage-seo": {
         "result": "PASS",
         "observations": [
-          "Le rendu figé contient un seul H1, le canonical attendu, og:title identique au H1, une image OG et les schémas BlogPosting, Person, Organization, WebSite, WebPage et BreadcrumbList.",
-          "La couverture est chargée eager avec fetchpriority high ; les deux preuves inline sont des WebP 1600×900 chargés en lazy avec des alts descriptifs.",
-          "Le title compte 67 caractères, le H1 68 caractères et le maillage inclut le pilier, l’article frère, /methode, /garanties, /automatisation-cabinet-comptable et deux entrées du glossaire."
+          "HTML construit localement : deux figures data-blog-proof à une seule img WebP 1600 × 900 servie au bureau comme au téléphone, alts descriptifs, sans figcaption ni wrapper défilant ; style width/max-width 100 %, height auto. Les trois colonnes et les trois cas sont lisibles à 1280 px et reconnaissables par leurs pastilles à 390 px ; robots index, follow sur ce HTML local, sans contrôle du site servi."
         ]
       },
       "ai-citability": {
         "result": "PASS",
         "observations": [
-          "La réponse directe, la frontière en trois colonnes et le tableau des trois sorties forment des blocs autonomes et extractibles.",
-          "Les claims externes sont immédiatement reliés à leur source et accompagnés de leurs limites temporelles, sectorielles ou méthodologiques.",
-          "La terminologie préparation, règle écrite, validation, exception, arrêt et décision reste stable sur toute la page."
+          "Le tableau de dossier et le texte renvoient à la frontière préparation/validation/décision ; la prospective Atlas est explicitement distincte d’une projection chiffrée de l’emploi."
         ]
       },
       "contextual-conversion": {
         "result": "PASS",
         "observations": [
-          "La frontière opérationnelle est concentrée dans « La règle écrite » avec les quatre libellés requis et un tableau préparer-valider-rester humain.",
-          "Le corps formule positivement ce que le système prépare et ce que le cabinet décide ; les négations restantes servent les conditions d’arrêt ou bornent précisément la portée des sources.",
-          "Le CTA final emploie « confier cette tâche », pointe vers /contact et décrit écriture, automatisation, recette, décision conservée et absence de fichier à envoyer."
+          "Les renvois vers le pilier, méthode et garanties gardent la validation et la modification de règle sous contrôle du cabinet."
         ]
       }
-    },
-    "p0": []
+    }
   },
   "business": {
+    "reviewerTaskId": "t_1a9ed93d",
     "claims": {
       "claim-unit-098396eb1aa8-1": {
         "verdict": "soutient",
-        "reasoning": "La page OPCO Atlas servie le 21 septembre 2026 contient mot pour mot l’affirmation selon laquelle la transition numérique impacte fortement les métiers des cabinets. Le corps conserve une portée qualitative et n’attribue pas cet effet à l’IA seule."
+        "reasoning": "OPCO Atlas, extrait local vérifié et collecte 28/09 : effet du numérique sur les métiers, non effet mesuré de l'IA ; corps.md:11 maintient la limite."
       },
       "claim-unit-098396eb1aa8-2": {
         "verdict": "soutient",
-        "reasoning": "La même page OPCO Atlas contient exactement l’enjeu de montée en compétences des collaborateurs pour accompagner la numérisation. Le corps ne transforme pas cette formulation qualitative en mesure d’emploi ou de performance."
+        "reasoning": "Atlas associe numérisation et montée en compétences ; aucune estimation de postes n'est déduite dans le texte."
       },
       "claim-unit-d3bd83d68184-1": {
         "verdict": "soutient",
-        "reasoning": "La page Apec servie le 21 septembre 2026 contient mot pour mot la citation sur les tensions de l’emploi cadre. Le corps la rattache au communiqué du 9 décembre 2021 et précise qu’elle ne décrit pas la situation de 2026."
+        "reasoning": "Apec/Ordre situe les tensions de l'emploi cadre au communiqué du 09/12/2021 ; corps.md:13 ne l'étend pas à 2026."
       },
       "claim-unit-d3bd83d68184-2": {
         "verdict": "soutient",
-        "reasoning": "La page OEC Paris servie le 21 septembre 2026 contient exactement la phrase sur l’évolution permanente des métiers et savoir-faire. Le corps la borne à un livre blanc intersectoriel résumé en 2023."
+        "reasoning": "Le Francilien rapporte la phrase sur l'évolution des savoir-faire depuis un travail intersectoriel ; corps.md:13 écarte une statistique spécifique aux cabinets."
       },
       "claim-unit-9e8d17c0c94b-1": {
         "verdict": "soutient",
-        "reasoning": "La page OPCO Atlas servie le 21 septembre 2026 contient exactement la phrase prospective sur l’automatisation future d’une partie des activités. Le corps précise l’absence d’horizon, de proportion et de mesure d’effet sur l’emploi."
+        "reasoning": "Atlas écrit au futur qu'une partie des activités sera automatisée ; corps.md:79 dit prospectif, sans horizon, proportion ni effet sur l'emploi."
       }
     }
   },
   "image": {
+    "reviewer": "claude:revue-figures-20261003",
     "criteria": {
       "brief-six-components": {
         "result": "PASS",
         "observations": [
-          "La couverture montre trois plateformes reliées : préparation d’entrées, point de contrôle et décision protégée par une main abstraite.",
-          "La composition horizontale, isométrique et mate respecte le sujet, la composition, le style, la palette, les interdits et l’alt du brief."
+          "Couverture inchangée, relue : trois plateaux, formes traversant un bloc translucide, borne de contrôle puis main verte stylisée sur le troisième, sans texte, conforme à son alt de frontière en trois temps.",
+          "Les deux figures sont des écrans HTML fictifs au gabarit des références, distincts de la couverture : tableau de dossier en trois colonnes et journal de rejeu."
         ]
       },
       "generation-constraints": {
         "result": "PASS",
         "observations": [
-          "L’inspection indépendante ne montre aucun texte, logo, visage, personnage complet, donnée client, fausse interface ou alerte rouge.",
-          "Le master est horizontal 1920×1080 et la palette mesurée crème, vert, vert profond et graphite dépasse les seuils déclarés."
+          "Cadre et fond identiques au pixel près aux références hors zone de contenu ; textes nets, aucun libellé tronqué, aucun logo, aucune personne ni donnée nominative.",
+          "Les nombres visibles (14 lignes, 9 écritures, 3 cas) sont des données de l’écran fictif ; aucun gain ni effet sur l’emploi."
         ]
       },
       "fictive-provenance": {
         "result": "PASS",
         "observations": [
-          "Aucun nom, dossier, valeur client ou information personnelle n’est visible sur la couverture ni sur les deux preuves inline.",
-          "La preuve des sorties indique explicitement « jeu fictif » et « Oracle exécuté · 3 cas joués »."
+          "En-têtes « Jeu d’essai fictif » ; journal daté du 21/09/2026 conforme au rejeu exécuté sur trois entrées fictives (docs/qa/blog-recrutement-replay.json, trois cas « passed »).",
+          "Dossier D-008, FA-2026-0467, Atelier Fictif et Fournisseur Fictif inventés ; capturedAt 2026-10-03 déclaré dans la recette et le contrat interne, sans légende publique."
         ]
       },
       "recognizable-subject": {
         "result": "PASS",
         "observations": [
-          "Le chemin gauche-droite, le checkpoint central et la main abstraite rendent reconnaissables préparation, validation et décision humaine.",
-          "La pièce arrêtée avant le contrôle matérialise le doute sans suggérer une autonomie ou une action automatique."
+          "Tableau : préparé / à valider / décision du collaborateur, calqué sur les trois colonnes du corps ; journal : une proposition et deux refus motivés, conforme au corps."
         ]
       },
       "technical-derivatives": {
         "result": "PASS",
         "observations": [
-          "Les fichiers contrôlés comprennent le master PNG 1920×1080, l’OG WebP 1200×630, les héros 768×432 AVIF/WebP et les variantes publiques 768/1200/1600 AVIF/WebP.",
-          "Le manifeste des preuves scelle les deux WebP inline à 1600×900 et le test de rendu confirme quatre preuves recrutement conformes."
+          "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+          "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
         ]
       },
       "alt-information": {
         "result": "PASS",
         "observations": [
-          "L’alt de couverture décrit précisément la frontière entre préparation automatisée, validation et décision humaine.",
-          "Les alts inline décrivent la frontière puis une proposition et deux refus motivés ; ils correspondent aux images inspectées sans annoncer de gain."
+          "Alts de 105 et 110 caractères, identiques dans le HTML construit et la recette, fidèles au tableau D-008 et au journal avec le détail d’IA-02.",
+          "L’alt de couverture (frontière en trois colonnes) correspond aux trois plateaux visibles."
         ]
       }
     },
-    "directionArt": 19,
-    "semanticRelevance": 24
+    "directionArt": 18,
+    "semanticRelevance": 23,
+    "scoreProvenance": "Notes conservées : couverture inchangée, nouvelles figures conformes au gabarit des références ; aucune nouvelle mesure."
   },
   "sources": {
-    "reviewedBy": "relecteur-metier-ia-memlia",
+    "reviewedBy": "metier:t_1a9ed93d",
     "observations": {
-      "atlas-branche": "Page de branche OPCO Atlas non datée, retrouvée HTTP 200 le 21 septembre 2026 : trois citations exactes, qualitatives ou prospectives, sans protocole ni mesure d’effet IA ou emploi.",
-      "apec-oec": "Communiqué Apec et Conseil supérieur de l’Ordre du 9 décembre 2021, retrouvé HTTP 200 le 21 septembre 2026 : citation exacte et strictement historique.",
-      "oec-attractivite": "Article OEC Paris du 11 janvier 2023, retrouvé HTTP 200 le 21 septembre 2026 : citation exacte, corpus intersectoriel, aucune étude propre aux cabinets."
+      "atlas-branche": "Copie SHA 463b192f... vérifiée, passage prospectif non daté sur transition numérique, sans causalité propre à l'IA.",
+      "apec-oec": "Copie SHA 47f8be8a... vérifiée, communiqué daté du 09/12/2021, non mesure 2026.",
+      "oec-attractivite": "Copie SHA 540f726e... vérifiée, reprise qualitative intersectorielle publiée en 2023."
     }
   },
   "qualite": {
-    "reviewer": "relecteur-qualite-ia-memlia",
-    "score": 94,
+    "reviewer": "metier:t_303e7c6d",
+    "score": 91,
     "p0": [],
     "categories": {
-      "contentQuality": {"score": 28, "max": 30},
-      "seoOptimization": {"score": 23, "max": 25},
-      "eeatSignals": {"score": 14, "max": 15},
-      "technicalElements": {"score": 14, "max": 15},
-      "aiCitationReadiness": {"score": 15, "max": 15}
+      "contentQuality": {
+        "score": 27,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 22,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 14,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 14,
+        "max": 15
+      }
     },
     "evidence": [
-      "Le HTML rendu compte environ 2 159 mots, un H1 unique, un sommaire, deux tableaux, une couverture et deux preuves fonctionnelles.",
-      "Les trois sorties de l’oracle figurent bit pour bit dans le corps et le rejeu frais passe sur IA-01, IA-02 et IA-03.",
-      "Les cinq claims sont liés inline et retrouvés mot pour mot sur des pages HTTP 200 le 21 septembre 2026.",
-      "La clôture « La règle à retenir » précède « Pour aller plus loin » et le CTA respecte le libellé et la destination de la charte.",
-      "Le canonical, Open Graph, les schémas structurés, le maillage et les dérivés image sont présents sur le candidat exact."
+      "27/30 : frontière opérationnelle, trois cas fictifs et limites de validité explicites.",
+      "22/25 : titres et structure cohérents ; aucun nouveau rang SERP prouvé.",
+      "14/15 : cinq claims contrôlés sur trois copies dans la revue antérieure, dont portée et ancienneté maintenues ; pas de nouvelle requête HTTP.",
+      "14/15 : deux images 1600 × 900 directes et sans légende, qui tiennent dans la colonne à 1280 et 390 px et restent lisibles dans leurs grandes masses ; aucun Lighthouse ni HTML public revalidé.",
+      "14/15 : tableau et visuels citables seulement avec la qualification jeu fictif."
     ],
     "reservations": [
-      "Le visuel competences-refus résume les statuts et messages au lieu d’afficher les décisions complètes ; le tableau HTML porte toutefois bit pour bit les trois sorties et décisions de l’oracle.",
-      "La couverture reste volontairement abstraite, mais son alt et la preuve en trois colonnes lèvent l’ambiguïté sans ajouter de promesse."
+      "La prospective Atlas ne prouve aucune évolution d'effectifs ni effet spécifique de l'IA ; le communiqué Apec de 2021 ne décrit pas 2026.",
+      "La revue du rendu local et de copies vérifiées dans le dépôt n'est ni un scellement, ni une QA/CI de livraison, ni une mesure sur un cabinet réel."
     ],
     "seo": [
-      "H1, title, description, canonical, OG et maillage sont cohérents avec la requête métier comptable, intelligence artificielle et compétences.",
-      "Les cinq liens externes inline pointent vers les pages exactes et la bibliographie porte date et portée.",
-      "Le candidat reste noindex avant scellement, conformément au statut de preview."
+      "Canonical conservé, robots index, follow observé dans le HTML local."
     ],
     "geo": [
-      "La réponse directe, la frontière en trois colonnes et le tableau des sorties forment des blocs autonomes citables.",
-      "Les citations institutionnelles sont bornées pour éviter de transformer un contexte historique ou prospectif en résultat actuel.",
-      "La terminologie préparer-valider-décider reste stable et le rejeu fournit une proposition et deux refus nommés."
+      "Une proposition et deux refus du jeu fictif, sans taux de performance externe."
     ],
-    "verdict": "94/100, PASS : sources inline exactes, oracle exécutable et sorties obtenues, clôture requise, frontière opérationnelle concentrée, images conformes et surfaces techniques présentes. Le candidat peut être scellé hors production."
+    "verdict": "AI_REVIEW_PASS sur le rendu local des deux nouvelles figures 1600 × 900, relu à 1280 et 390 px, et sur les preuves inline ; livrabilité, QA et production restent distinctes."
+  },
+  "technicalBindingMaintenance": {
+    "maintainedBy": "claude:recette-images-20261003",
+    "maintainedAt": "2026-10-03",
+    "reason": "Figures de corps remplacées selon la recette de référence (décision Kevin du 03/10/2026) : deux écrans d’outil fictifs 1600 × 900, mêmes ancrages, nouveaux identifiants et alts dans la recette. Corps, sources, affirmations et règles inchangés (bodySha256 identique) ; les constats éditoriaux, métier et qualité sur le texte sont maintenus ; les critères image et les constats qui décrivaient les anciennes figures sont reformulés par la revue indépendante des nouvelles figures.",
+    "figureReview": {
+      "reviewer": "claude:revue-figures-20261003",
+      "reviewedAt": "2026-10-03",
+      "figures": [
+        {
+          "id": "competences-tableau-dossier",
+          "result": "PASS",
+          "constat": "Tableau de dossier au gabarit des références (pastille verte, « Jeu d’essai fictif · période 2026-04 ») en trois colonnes Préparé / À valider / Décision du collaborateur, qui reprennent la frontière du corps sans la recopier : rapprochement, lettrage et tableau de TVA préparés (« rapprocher » est une action préparatoire du corps) ; écriture proposée sur FA-2026-0467 et relance (destinataire à confirmer) à valider ; avoir sans facture d’origine à arbitrer et information du client gardés par le collaborateur. Cohérent avec « une sortie bien formulée reste une proposition à vérifier » et « informer un client… engage une relation » ; numéro de pièce propre à l’article, aucune personne nommée, aucun gain. Alt fidèle (105 caractères). Tient dans la colonne à 1280 et 390 px. Remarque non bloquante : c’est la vue d’un seul dossier, pas un catalogue ; la mention « aucune liste de tâches » du proofRequired est à lire dans ce sens ou à préciser."
+        },
+        {
+          "id": "competences-journal-rejeu",
+          "result": "PASS",
+          "constat": "Journal au gabarit des références (pastille orange, « Jeu d’essai fictif · trois entrées », titre « 3 cas rejoués ») : IA-01 Proposition · PR-001, IA-02 Refus · 2 interprétations, IA-03 Refus · règle à écrire, et détail d’IA-02 (REFUS_AMBIGUITE, proposition aucune, présenter l’ambiguïté au collaborateur). Conforme au corps et au journal docs/qa/blog-recrutement-replay.json du 21/09/2026, où les trois cas sont « passed » ; « 3 cas sur 3 conformes à l’attendu » rend ce contrôle de justesse de la règle, pas une performance. Aucune personne ni marque. Alt fidèle (110 caractères). Tient dans la colonne à 1280 et 390 px."
+        }
+      ]
+    },
+    "previousSubject": {
+      "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "bodySha256": "e27d63abcaf5e173b7f7399bd52129ae1790d61988ff5f6183487a1d2c378288",
+      "recipeSha256": "9a85ad0acd10785cdb8cae1de53486ece6245013b64328a6f0ca797ae3382a05",
+      "renderedSha256": "a0abc96adfdedf06c2579a24901a59e4c10fa8d1a4093a7e33aa8626d94696f3"
+    },
+    "previousMaintenance": {
+      "maintainedBy": "dev:t_30243835",
+      "maintainedAt": "2026-10-03",
+      "reason": "updatedAt de republication uniquement ; avis métier du 03/10 maintenu sur corps, sources, figures et règles inchangés. Ni nouvelle revue ni contrôle public.",
+      "previousSubject": {
+        "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+        "bodySha256": "e27d63abcaf5e173b7f7399bd52129ae1790d61988ff5f6183487a1d2c378288",
+        "recipeSha256": "986e32e6f64e5f6ae2c5165cac5c675f26efc08e7466023114df8e64fbbcccb6",
+        "renderedSha256": "a0abc96adfdedf06c2579a24901a59e4c10fa8d1a4093a7e33aa8626d94696f3"
+      }
+    }
   }
 }

@@ -9,7 +9,10 @@ import { Agent, fetch as fetchUndici } from 'undici';
 import { parse as parseYaml } from 'yaml';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
 import { retirerPreuvesInline } from './blog-proof-figures.mjs';
+import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
+import { reviewBindingErrors, reviewSha256 } from './blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
+import { estReliquatW39, lireCadrageW39, jourCadrageParis, verifierIdentiteW39 } from './blog-w39-framing.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
   'blog-strategy', 'blog-brand', 'blog-persona', 'blog-discourse', 'blog-google', 'blog-calendar',
@@ -61,6 +64,18 @@ export const CANDIDATS_PAR_JOUR_MAX = 2;
 export const CANDIDATS_PAR_SEMAINE_MAX = 4;
 /** Reçu de publication : le dossier est scellé sur ses octets le jour de la mise en ligne. */
 export const PUBLICATION_SEAL_PATH = 'preuves/publication.json';
+/** La date déclarée est celle du calendrier de publication en Europe/Paris, pas la date UTC du fetch. */
+export function jourRecuperationParis(retrievedAt) {
+  if (typeof retrievedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(retrievedAt)) return null;
+  const instant = Date.parse(retrievedAt);
+  if (!Number.isFinite(instant) || instant > Date.now()) return null;
+  const canonique = new Date(instant).toISOString();
+  if (retrievedAt !== canonique && retrievedAt !== canonique.replace('.000Z', 'Z')) return null;
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(instant).map(({ type, value }) => [type, value]));
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
 /** Semaine ISO 8601 d'une date AAAA-MM-JJ, sous la forme AAAA-Wnn. */
 export function semaineIso(value) {
   const date = new Date(`${value}T00:00:00Z`);
@@ -71,17 +86,23 @@ export function semaineIso(value) {
   return `${date.getUTCFullYear()}-W${String(numero).padStart(2, '0')}`;
 }
 /** Refuse une date qui ferait dépasser la cadence propre à chaque flux éditorial. */
-export function verifierPlafonds(actifs, date, { serie = null } = {}) {
+export function verifierPlafonds(actifs, date, { serie = null, slug = null, root = null, now = new Date() } = {}) {
+  if (estReliquatW39(slug) && !isDate(date)) throw new Error('Cadrage W39 : date invalide.');
   const semaine = semaineIso(date);
   if (serie === 'cicatrices') {
-    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6) {
+    const historique = estReliquatW39(slug) && date >= '2026-09-27' && date <= '2026-09-29';
+    const cadre = estReliquatW39(slug) && !historique ? lireCadrageW39(root, date, now) : null;
+    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !historique && !cadre) {
       throw new Error(`Une cicatrice paraît le samedi ; ${date} n’est pas un samedi.`);
     }
-    if (actifs.some((candidate) => candidate.serie === 'cicatrices' && isDate(candidate.date) && semaineIso(candidate.date) === semaine)) {
-      throw new Error(`Une cicatrice est déjà planifiée la semaine ${semaine} ; le plafond est d’une cicatrice par semaine ISO.`);
+    const semaineControlee = estReliquatW39(slug) ? '2026-W39' : semaine;
+    if (actifs.some((candidate) => (candidate.serie === 'cicatrices' || estReliquatW39(candidate.slug))
+      && (estReliquatW39(candidate.slug) ? '2026-W39' : isDate(candidate.date) ? semaineIso(candidate.date) : null) === semaineControlee)) {
+      throw new Error(`Une cicatrice est déjà planifiée la semaine ${semaineControlee} ; le plafond est d’une cicatrice par semaine ISO.`);
     }
     return;
   }
+  if (estReliquatW39(slug)) throw new Error('Le reliquat W39 ne peut pas devenir un article ordinaire.');
   const ordinaires = actifs.filter((candidate) => candidate.serie !== 'cicatrices');
   if (ordinaires.filter((candidate) => candidate.date === date).length >= CANDIDATS_PAR_JOUR_MAX) {
     throw new Error(`${CANDIDATS_PAR_JOUR_MAX} candidats sont déjà planifiés le ${date} ; le plafond est de ${CANDIDATS_PAR_JOUR_MAX} candidats par jour.`);
@@ -119,14 +140,31 @@ export function validatePublicationSeal(dossier, manifest, subject) {
   }
   return errors;
 }
+
+/** Le relevé au jour de publication ne survit au TTL que si le dossier entier reste scellé. */
+export function dateIntentionScellee(root, slug) {
+  try {
+    const dossier = join(root, 'editorial/articles', slug);
+    const manifestPath = join(dossier, 'manifest.json');
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+    const subject = {
+      slug,
+      articleHash: sha256(readFileSync(join(root, 'src/content/blog', `${slug}.md`))),
+      manifestHash: sha256(readFileSync(manifestPath)),
+    };
+    return validatePublicationSeal(dossier, manifest, subject).length === 0 ? manifest.publishedAt : null;
+  } catch {
+    return null;
+  }
+}
 const RESERVED_SOURCE_HOST = /(?:^|\.)(?:example|invalid|localhost|test)$/i;
 const MAX_SOURCE_BYTES = 2 * 1024 * 1024;
 const MAX_SOURCE_REDIRECTS = 4;
 const MAX_PROTECTED_PREVIEW_EVIDENCE_AGE_DAYS = 7;
 const BUSINESS_CLAIM_VERDICTS = new Set(['soutient', 'soutient_partiellement', 'contredit', 'hors_sujet']);
-const SOURCE_LEVELS = Object.freeze(['tier-1', 'tier-2', 'tier-3', 'tier-4', 'tier-5', 'original-method']);
+const SOURCE_LEVELS = Object.freeze(['tier-1', 'tier-2', 'tier-3', 'tier-4', 'tier-5', 'original-method', 'technical-primary']);
 const SOURCE_PROVENANCE = Object.freeze(['primary', 'secondary', 'echo']);
-const ACCEPTED_SOURCE_LEVELS = new Set(['tier-1', 'tier-2', 'tier-3', 'original-method']);
+const ACCEPTED_SOURCE_LEVELS = new Set(['tier-1', 'tier-2', 'tier-3', 'original-method', 'technical-primary']);
 const OFFICIAL_PRIMARY_CLAIM_TYPES = new Set(['paie', 'social', 'dsn', 'fiscal', 'juridique', 'legal-reglementaire']);
 const OFFICIAL_PRIMARY_SIGNALS = new Set(['paie', 'social', 'dsn', 'fiscal', 'juridique', 'legal-reglementaire', 'rgpd', 'assertion-normative']);
 const DISALLOWED_SOURCE_PLATFORMS = Object.freeze([
@@ -146,6 +184,10 @@ const OFFICIAL_SOURCE_AUTHORITIES = Object.freeze([
   { id: 'impots', host: /(?:^|\.)(?:impots\.gouv\.fr|bofip\.impots\.gouv\.fr)$/i, publisher: /\b(?:impots|bofip|direction generale des finances publiques|dgfip)\b/i },
   { id: 'insee', host: /(?:^|\.)insee\.fr$/i, publisher: /\binsee\b/i },
   { id: 'travail-emploi', host: /(?:^|\.)travail-emploi\.gouv\.fr$/i, publisher: /\b(?:ministere du travail|travail emploi)\b/i },
+]);
+// Documentation du projet, pas autorité publique ni preuve d'une obligation métier.
+const TECHNICAL_PRIMARY_DOCUMENTS = Object.freeze([
+  { id: 'python-doctest', url: 'https://docs.python.org/fr/3/library/doctest.html', publisher: 'python software foundation' },
 ]);
 const IMAGE_REVIEW_CRITERIA = Object.freeze([
   'brief-six-components',
@@ -168,6 +210,7 @@ const SENSITIVE_TEXT_RULES = Object.freeze([
   ['rgpd', /\b(?:rgpd|reglement general sur la protection des donnees|donnees? personnelles?|cnil)\b/],
 ]);
 const NORMATIVE_LANGUAGE = /\b(?:doit|doivent|devra|devront|obligatoire|interdit(?:e|es|s)?|autorise(?:e|es|s)?|exige(?:e|es|s)?|tenu(?:e|es|s)? de|au plus tard|delai(?:s)? de|est due|sont dues)\b/;
+const RGPD_OBLIGATION_LANGUAGE = /\b(?:doit|doivent|devra|devront|obligatoir(?:e|es)|obligation(?:s)?|interdit(?:e|es|s)?|exige(?:e|es|s)?|tenu(?:e|es|s)? de)\b/;
 const NORMATIVE_PARTIES = /\b(?:employeurs?|salaries?|cotisants?|declarants?|contribuables?|assujettis?)\b/;
 const SUPPORT_STOP_WORDS = new Set([
   'alors', 'avec', 'avoir', 'cette', 'comme', 'dans', 'depuis', 'elle', 'elles', 'entre', 'etre',
@@ -273,6 +316,12 @@ function sourceClassification(source, finalUrl, errors, label) {
   const platform = rejectDisallowedSourcePlatform(finalUrl, errors, `${label}.finalUrl`);
 
   const publisher = normalizedPublisher(source?.publisher);
+  const technical = TECHNICAL_PRIMARY_DOCUMENTS.find((document) => {
+    return finalUrl === document.url && publisher === document.publisher;
+  });
+  if (source?.level === 'technical-primary' && !technical) {
+    errors.push(`${label} : documentation primaire technique non reconnue ou incohérence domaine↔éditeur (${hostname}, « ${source?.publisher} »).`);
+  }
   const hostAuthority = OFFICIAL_SOURCE_AUTHORITIES.find((authority) => authority.host.test(hostname));
   const publisherAuthority = OFFICIAL_SOURCE_AUTHORITIES.find((authority) => authority.publisher.test(publisher));
   const coherentAuthority = hostAuthority && hostAuthority.publisher.test(publisher);
@@ -284,7 +333,8 @@ function sourceClassification(source, finalUrl, errors, label) {
   } else if (hostAuthority && !coherentAuthority) {
     errors.push(`${label} : incohérence domaine↔éditeur pour l’autorité ${hostAuthority.id}.`);
   }
-  return { officialAuthority: source?.official === true && Boolean(coherentAuthority) && !platform };
+  return { officialAuthority: source?.official === true && Boolean(coherentAuthority) && !platform,
+    technicalPrimary: source?.level === 'technical-primary' && Boolean(technical) && !platform };
 }
 
 function requireText(errors, value, path, minimum = 1) {
@@ -536,7 +586,7 @@ export function createCandidate({ root = process.cwd(), slug, title, primaryQuer
   const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
   if (!Array.isArray(queue.candidates)) throw new Error('editorial/queue.json doit contenir une liste candidates.');
   const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status));
-  verifierPlafonds(actifs, date);
+  verifierPlafonds(actifs, date, { slug });
   if (queue.candidates.some((candidate) => candidate.slug === slug)) throw new Error(`Le candidat ${slug} existe déjà dans la file.`);
 
   const articlePath = join(absoluteRoot, 'src/content/blog', `${slug}.md`);
@@ -720,6 +770,7 @@ export async function verifySource({ root = process.cwd(), slug, sourceId, excer
     await dispatcher.close();
   }
   if (!body.includes(excerpt)) throw new Error('L’extrait fourni est absent de la réponse ouverte ; aucune preuve n’a été écrite.');
+  const retrievedAt = new Date().toISOString();
   const evidencePath = isSafeRelativePath(dossier, source.verificationEvidence);
   if (!evidencePath) throw new Error('verificationEvidence doit rester dans le dossier éditorial.');
   const contentPath = join(dirname(evidencePath), `${source.id}.source.txt`);
@@ -738,8 +789,8 @@ export async function verifySource({ root = process.cwd(), slug, sourceId, excer
     requestedUrl: source.url,
     finalUrl: response.url || currentUrl.href,
     httpStatus: response.status,
-    checkedAt: source.checkedAt,
-    retrievedAt: new Date().toISOString(),
+    checkedAt: jourRecuperationParis(retrievedAt),
+    retrievedAt,
     contentType: response.headers.get('content-type') ?? 'inconnu',
     contentPath: relative(dossier, contentPath),
     contentSha256: sha256(body),
@@ -808,7 +859,7 @@ function validateSources(manifest, dossier, expected) {
     for (const field of ['level', 'provenance', 'official', 'upstreamUrl', 'classificationReason', 'method']) {
       if (!sameValue(proof[field], source[field])) errors.push(`${label}.${field} ne correspond pas à la classification du manifeste.`);
     }
-    if (!ACCEPTED_SOURCE_LEVELS.has(source.level)) errors.push(`${label} : les sources ${source.level ?? 'sans niveau'} sont refusées ; seuls tier-1, tier-2, tier-3 ou original-method sont admis.`);
+    if (!ACCEPTED_SOURCE_LEVELS.has(source.level)) errors.push(`${label} : les sources ${source.level ?? 'sans niveau'} sont refusées ; seuls tier-1, tier-2, tier-3, original-method ou technical-primary sont admis.`);
     if (source.provenance === 'echo') errors.push(`${label} : une source écho seule est refusée et doit être supprimée ou remplacée par sa source primaire.`);
     if (proof.requestedUrl !== source.url) errors.push(`${label}.requestedUrl n'est pas relié à l'URL du manifeste.`);
     rejectDisallowedSourcePlatform(source.url, errors, `${label}.requestedUrl`);
@@ -823,9 +874,17 @@ function validateSources(manifest, dossier, expected) {
     }
     if (!isPublicHttpsUrl(proof.upstreamUrl)) errors.push(`${label}.upstreamUrl doit tracer une source primaire amont publique.`);
     if (source.provenance === 'primary' && proof.upstreamUrl !== proof.finalUrl) errors.push(`${label}.upstreamUrl doit être l'URL finale vérifiée lorsque provenance vaut primary.`);
+    if (source.level === 'technical-primary') {
+      if (source.official !== false) errors.push(`${label} : official=false est obligatoire pour une source primaire technique.`);
+      if (source.provenance !== 'primary') errors.push(`${label} : provenance primary est obligatoire pour une source primaire technique.`);
+      if (source.url !== proof.finalUrl) errors.push(`${label} : une source primaire technique doit être ouverte directement, sans redirection depuis un domaine tiers.`);
+    }
     if (source.provenance === 'secondary' && proof.upstreamUrl === proof.finalUrl) errors.push(`${label}.upstreamUrl doit nommer une source primaire distincte pour une source secondary.`);
     if (proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
     if (proof.checkedAt !== source.checkedAt) errors.push(`${label}.checkedAt doit être identique à la date de la source.`);
+    if (jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
+      errors.push(`${label}.retrievedAt doit dater l'ouverture réelle, non future, au jour civil Europe/Paris de checkedAt.`);
+    }
     const snapshotPath = isSafeRelativePath(dossier, proof.contentPath);
     if (!snapshotPath || !existsSync(snapshotPath)) {
       errors.push(`${label}.contentPath doit pointer vers une copie locale vérifiée de la source.`);
@@ -864,11 +923,43 @@ function normalizedDetectionText(value) {
   return String(value ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 }
 
-function visibleSourceBlocks(source) {
-  if (!/<(?:html|body|main|article|section|p|div|h[1-6])\b/i.test(source)) return [source.replace(/\s+/g, ' ').trim()];
-  const document = parseHtml(source);
+function visibleSourceBlocks(source, { raw = false } = {}) {
+  if (!/<\/?[a-z][^>]*>|<!--/i.test(source)) return [raw ? source.trim() : source.replace(/\s+/g, ' ').trim()];
+  const document = parseHtml(source, { sourceCodeLocationInfo: raw });
   const ignoredTags = new Set(['head', 'style', 'script', 'noscript', 'template']);
   const blockTags = new Set(['p', 'li', 'blockquote', 'figcaption', 'td', 'th', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
+  // Les offsets gardent NBSP/balises inline à l'identique, mais une tranche
+  // innerHTML complète réintroduirait les descendants ignorés par nodeText.
+  const omittedRanges = [];
+  if (raw) {
+    const collectOmitted = (node) => {
+      if (ignoredTags.has(node.tagName) || node.nodeName === '#comment') {
+        const location = node.sourceCodeLocation;
+        if (location) {
+          omittedRanges.push([location.startOffset, location.endOffset]);
+          return;
+        }
+      }
+      for (const child of node.childNodes ?? []) collectOmitted(child);
+    };
+    collectOmitted(document);
+    omittedRanges.sort((left, right) => left[0] - right[0]);
+  }
+  const visibleRawInnerHTML = (node) => {
+    const location = node.sourceCodeLocation;
+    if (!location?.startTag) return null;
+    const start = location.startTag.endOffset;
+    const end = location.endTag?.startOffset ?? location.endOffset;
+    let cursor = start;
+    const parts = [];
+    for (const [hiddenStart, hiddenEnd] of omittedRanges) {
+      if (hiddenEnd <= cursor || hiddenStart >= end) continue;
+      parts.push(source.slice(cursor, Math.max(cursor, hiddenStart)));
+      cursor = Math.min(end, Math.max(cursor, hiddenEnd));
+    }
+    parts.push(source.slice(cursor, end));
+    return parts.join('').trim();
+  };
   const nodeText = (node, hidden = false) => {
     const ignored = hidden || ignoredTags.has(node.tagName);
     if (ignored) return '';
@@ -879,7 +970,8 @@ function visibleSourceBlocks(source) {
   const visit = (node, hidden = false) => {
     const ignored = hidden || ignoredTags.has(node.tagName);
     if (!ignored && blockTags.has(node.tagName)) {
-      const text = nodeText(node).replace(/\s+/g, ' ').trim();
+      const text = (raw ? visibleRawInnerHTML(node) : null)
+        ?? nodeText(node).replace(/\s+/g, ' ').trim();
       if (text) blocks.push(text);
       return;
     }
@@ -891,8 +983,14 @@ function visibleSourceBlocks(source) {
 }
 
 export function contexteDeCitation(source, excerpt) {
-  const citation = excerpt.replace(/\s+/g, ' ').trim();
-  const visible = visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
+  // Une citation brute (NBSP, <sup>…) doit garder ses octets ET la réserve de sa phrase.
+  const exact = excerpt.trim();
+  const needsRaw = exact !== exact.replace(/\s+/g, ' ') || /<[^>]+>/.test(exact);
+  const rawBlock = needsRaw
+    ? visibleSourceBlocks(source, { raw: true }).find((block) => block.includes(exact))
+    : null;
+  const citation = rawBlock ? exact : excerpt.replace(/\s+/g, ' ').trim();
+  const visible = rawBlock ?? visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
   const position = visible.indexOf(citation);
   if (position < 0) return citation;
   const end = position + citation.length;
@@ -903,7 +1001,8 @@ export function contexteDeCitation(source, excerpt) {
 }
 
 function sourceContainsContext(source, context) {
-  return source.includes(context) || visibleSourceBlocks(source).some((block) => block.includes(context));
+  return visibleSourceBlocks(source, { raw: true }).some((block) => block.includes(context))
+    || visibleSourceBlocks(source).some((block) => block.includes(context));
 }
 
 function sensitiveTextSignals(value) {
@@ -1099,7 +1198,10 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
         errors.push(`claims.contentUnits.${unit?.id ?? 'sans-id'} doit relier au moins une affirmation vérifiée : cette unité contient une matière sensible visible.`);
       }
       const linkedClaims = (claims?.claims ?? []).filter((claim) => unit?.claimIds?.includes(claim?.id));
-      if (!linkedClaims.some((claim) => SENSITIVE_CLAIM_TYPES.has(claim?.type))) {
+      const unitSignals = sensitiveMatter.unitSignals.get(unit.id) ?? [];
+      const rgpdWithoutObligation = unitSignals.length === 1 && unitSignals[0] === 'rgpd'
+        && !RGPD_OBLIGATION_LANGUAGE.test(normalizedDetectionText(unit.text));
+      if (!rgpdWithoutObligation && !linkedClaims.some((claim) => SENSITIVE_CLAIM_TYPES.has(claim?.type))) {
         errors.push(`claims.contentUnits.${unit?.id ?? 'sans-id'} contient une matière sensible visible (${sensitiveMatter.unitSignals.get(unit.id).join(', ')}) mais aucun claim.type sensible canonique.`);
       }
     }
@@ -1118,8 +1220,20 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
       if (!sourceIds.has(sourceId)) errors.push(`${prefix}.sourceIds référence une source absente du manifeste : ${sourceId}.`);
       const verified = verifiedSources.get(sourceId);
       if (!verified) errors.push(`${prefix} référence ${sourceId}, dont la vérification n’est pas prouvée.`);
-      const unitSignals = sensitiveMatter.unitSignals.get(claim?.unitId) ?? [];
-      if (OFFICIAL_PRIMARY_CLAIM_TYPES.has(claim?.type) || unitSignals.some((signal) => OFFICIAL_PRIMARY_SIGNALS.has(signal))) {
+      // Seul un claim methode non normatif peut être borné à son fragment.
+      // Une obligation anaphorique conserve le référent sensible du paragraphe,
+      // même sans employeur/salarié nommé dans la phrase du claim.
+      const claimSignals = sensitiveTextSignals(claim?.claim);
+      const normalizedClaim = normalizedDetectionText(claim?.claim);
+      const scopedMethod = claim?.type === 'methode'
+        && !NORMATIVE_LANGUAGE.test(normalizedClaim)
+        && !RGPD_OBLIGATION_LANGUAGE.test(normalizedClaim);
+      const sourceSignals = scopedMethod ? claimSignals
+        : [...claimSignals, ...(sensitiveMatter.unitSignals.get(claim?.unitId) ?? [])];
+      if (verified?.source?.level === 'technical-primary' && (claim?.type !== 'methode' || verified.deterministicClassification?.technicalPrimary !== true)) {
+        errors.push(`${prefix} : source primaire technique ${sourceId} réservée aux claims methode avec domaine et éditeur vérifiés.`);
+      }
+      if (OFFICIAL_PRIMARY_CLAIM_TYPES.has(claim?.type) || sourceSignals.some((signal) => OFFICIAL_PRIMARY_SIGNALS.has(signal))) {
         const source = verified?.source ?? (manifest?.sources ?? []).find((item) => item.id === sourceId);
         if (!['tier-1', 'tier-2', 'tier-3'].includes(source?.level) || source?.provenance !== 'primary' || source?.official !== true || verified?.deterministicClassification?.officialAuthority !== true) {
           errors.push(`${prefix} de type ${claim.type} exige une source primaire officielle tier-1 à tier-3 ; ${sourceId} ne satisfait pas ce contrat.`);
@@ -1176,10 +1290,9 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
 }
 
 function validateSensitiveFreshness(manifest, claims, review, skills, verifiedSources, dossier, sensitiveMatter, gateMode = 'production') {
-  if (!sensitiveMatter.sensitive) return [];
   const errors = [];
   const reviewDay = review?.checkedAt;
-  const today = new Date().toISOString().slice(0, 10);
+  const today = jourRecuperationParis(new Date().toISOString());
   if (gateMode === 'published-audit') {
     // Audit de conservation borné par validatePublishedAdoption, jamais fact-check frais.
     if (manifest.evidenceVerifiedAt !== reviewDay) errors.push('La date historique du dossier publié doit correspondre à sa revue conservée.');
@@ -1196,11 +1309,20 @@ function validateSensitiveFreshness(manifest, claims, review, skills, verifiedSo
   const requireReviewDay = (value, label) => {
     if (value !== reviewDay) errors.push(`Fraîcheur sensible : ${label} doit être vérifié le jour de la revue éditoriale (${reviewDay ?? 'absent'}), reçu ${value ?? 'absent'}.`);
   };
-  requireReviewDay(gateMode === 'published-audit' ? manifest?.evidenceVerifiedAt : manifest?.sourcesVerifiedAt, 'manifest.sourcesVerifiedAt');
-  for (const source of manifest?.sources ?? []) {
-    requireReviewDay(source?.checkedAt, `source ${source?.id ?? 'sans-id'}.checkedAt`);
-    requireReviewDay(verifiedSources.get(source?.id)?.proof?.checkedAt, `preuve source ${source?.id ?? 'sans-id'}.checkedAt`);
+  const sourceDates = (manifest?.sources ?? []).map((source) => source?.checkedAt);
+  if (gateMode === 'published-audit') {
+    requireReviewDay(manifest?.evidenceVerifiedAt, 'manifest.evidenceVerifiedAt');
+  } else if (manifest?.sourcesVerifiedAt !== [...sourceDates].sort()[0]) {
+    errors.push('Fraîcheur sensible : manifest.sourcesVerifiedAt doit dater la plus ancienne récupération source.');
   }
+  for (const source of manifest?.sources ?? []) {
+    if (gateMode !== 'published-audit') {
+      const age = (Date.parse(`${reviewDay}T00:00:00Z`) - Date.parse(`${source?.checkedAt}T00:00:00Z`)) / 86_400_000;
+      if (!Number.isInteger(age) || age < 0 || age > 7) errors.push(`Fraîcheur sensible : source ${source?.id ?? 'sans-id'} doit dater de 0 à 7 jours avant la revue (${reviewDay ?? 'absent'}).`);
+    }
+    if (verifiedSources.get(source?.id)?.proof?.checkedAt !== source?.checkedAt) errors.push(`Fraîcheur sensible : preuve source ${source?.id ?? 'sans-id'} doit dater de la récupération déclarée.`);
+  }
+  if (!sensitiveMatter.sensitive) return errors;
   for (const claim of Array.isArray(claims?.claims) ? claims.claims : []) {
     requireReviewDay(claim?.checkedAt, `claim ${claim?.id ?? 'sans-id'}.checkedAt`);
     requireReviewDay(claim?.factCheck?.checkedAt, `fact-check ${claim?.id ?? 'sans-id'}.checkedAt`);
@@ -1349,8 +1471,8 @@ async function validateImage(image, dossier, manifest, root, subject) {
   if (expected?.master !== image?.master?.path) errors.push('Le master du manifeste éditorial et celui de image.json doivent être identiques.');
   if (expected?.og !== image?.og?.path) errors.push('L’OG du manifeste éditorial et celui de image.json doivent être identiques.');
   if (image?.score !== 100) errors.push('Le score image doit être recalculé à 100 uniquement lorsque les six critères observables sont PASS.');
-  if (image?.directionArt < 16 || image?.directionArt > 20) errors.push('Le score de direction artistique doit être compris entre 16 et 20.');
-  if (image?.semanticRelevance < 20 || image?.semanticRelevance > 25) errors.push('Le score de pertinence sémantique doit être compris entre 20 et 25.');
+  // Les notes cosmétiques restent facultatives ; les six critères et les P0
+  // ci-dessus/ci-dessous sont les contrôles de fond, sans note inventée.
   if (!Array.isArray(image?.p0) || image.p0.length > 0) errors.push('La revue image doit conclure à zéro P0.');
   if (image?.kevinApproved !== true) errors.push('Le brief et le rendu image doivent être approuvés explicitement par Kevin.');
 
@@ -1653,13 +1775,28 @@ function validateIntentCannibalization(manifest, dossier, root, subject) {
   return errors;
 }
 
-export async function validateDossier({ root = process.cwd(), slug, renderedBlogHtml, gateMode = 'production' }) {
+export async function validateDossier({ root = process.cwd(), slug, renderedBlogHtml, renderedArticleHtml, gateMode = 'production', au }) {
   const absoluteRoot = resolve(root);
   const dossier = join(absoluteRoot, 'editorial/articles', slug);
   const articlePath = join(absoluteRoot, 'src/content/blog', `${slug}.md`);
   const manifestPath = join(dossier, 'manifest.json');
   const errors = [];
   const manifest = readJson(manifestPath, errors, 'manifest.json');
+  if (estReliquatW39(slug) && !['publication-scellee', 'published-audit'].includes(gateMode)) {
+    try {
+      const queue = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/queue.json'), 'utf8'));
+      const current = queue.candidates.find((candidate) => candidate.slug === slug);
+      const recette = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
+      verifierIdentiteW39(recette, current, manifest?.publicationDate);
+      const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status)
+        && (candidate !== current || candidate.status === 'publie'));
+      if (manifest?.publicationDate > jourCadrageParis()) throw new Error('W39 refuse une date future.');
+      lireCadrageW39(absoluteRoot, manifest?.publicationDate);
+      verifierPlafonds(actifs, manifest?.publicationDate, { root: absoluteRoot, slug, serie: recette.serie });
+    } catch (error) {
+      errors.push(`Cadrage W39 : ${error.message}`);
+    }
+  }
   const skills = readJson(join(dossier, 'skills.json'), errors, 'skills.json');
   const claims = readJson(join(dossier, 'claims.json'), errors, 'claims.json');
   const review = readJson(join(dossier, 'review.json'), errors, 'review.json');
@@ -1675,15 +1812,64 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     ...subject,
     articleHash: markdown ? sha256(retirerPreuvesInline(markdown)) : null,
   };
+  const recipeBodyPath = join(absoluteRoot, 'editorial/recettes', slug, 'corps.md');
+  const recipePath = join(absoluteRoot, 'editorial/recettes', slug, 'recette.json');
+  const independentReviewPath = join(absoluteRoot, 'editorial/recettes', slug, 'revues.json');
+  // L'inventaire a déjà identifié un dossier pipeline : retirer sa recette ne peut pas désactiver la liaison des revues.
+  if (!existsSync(recipeBodyPath)) errors.push(`corps.md absent : ${recipeBodyPath}.`);
+  readJson(recipePath, errors, 'recette.json');
+  const independentReview = readJson(independentReviewPath, errors, 'revues.json');
+  // L'identité déclarée par la revue indépendante est l'autorité ; les projections ne peuvent la réattribuer.
+  if (independentReview?.editorial && Object.hasOwn(independentReview.editorial, 'reviewer')) {
+    requireText(errors, independentReview.editorial.reviewer, 'revues.json editorial.reviewer', 2);
+    if (manifest?.reviewer !== independentReview.editorial.reviewer || review?.reviewer !== independentReview.editorial.reviewer) {
+      errors.push('Identité du reviewer éditorial divergente entre revues.json, manifest.json et review.json.');
+    }
+  }
+  if (independentReview?.business && Object.hasOwn(independentReview.business, 'reviewerId')) {
+    requireText(errors, independentReview.business.reviewerId, 'revues.json business.reviewerId', 3);
+    if (manifest?.businessReview?.reviewerId !== independentReview.business.reviewerId) {
+      errors.push('Identité du reviewer métier divergente entre revues.json et manifest.json.');
+    }
+  }
+  if (existsSync(recipeBodyPath)) {
+    const recipeBody = readFileSync(recipeBodyPath, 'utf8').trim();
+    const articleBody = retirerPreuvesInline(markdownBody(markdown));
+    let bodiesMatch = false;
+    try {
+      bodiesMatch = reviewSha256(corpsSansTitreDuplique(recipeBody, manifest?.title)) === reviewSha256(articleBody);
+    } catch { // Un H1 différent du titre signé ne peut pas être ignoré.
+      bodiesMatch = false;
+    }
+    if (!bodiesMatch) errors.push('Recette et article divergent : empreinte du corps non conforme.');
+    const legacyBaselinePath = join(absoluteRoot, 'editorial/legacy-review-baseline.json');
+    const legacyBaseline = manifest?.editorialStatus === 'publie' && !independentReview?.subject
+      ? readJson(legacyBaselinePath, errors, 'inventaire historique de revue') : null;
+    const legacyHashes = legacyBaseline?.version === 1 ? legacyBaseline.articles?.[slug] : null;
+    const legacyRecipeMatches = legacyHashes && existsSync(recipePath) && existsSync(independentReviewPath)
+      && legacyHashes.recipeSha256 === reviewSha256(readFileSync(recipePath))
+      && legacyHashes.reviewSha256 === reviewSha256(readFileSync(independentReviewPath));
+    if (manifest?.editorialStatus === 'publie' && !independentReview?.subject && !legacyRecipeMatches) {
+      errors.push('recette publiée divergente : une republication exige une nouvelle revue indépendante.');
+    }
+    const preservedPublished = manifest?.editorialStatus === 'publie' && !independentReview?.subject
+      && validatePublicationSeal(dossier, manifest, subject).length === 0 && bodiesMatch && legacyRecipeMatches;
+    if (!preservedPublished) {
+      errors.push(...reviewBindingErrors(independentReview, slug, recipeBody, existsSync(recipePath) ? readFileSync(recipePath) : '', renderedArticleHtml));
+    }
+  }
   const sensitiveMatter = detectSensitiveMatter(manifest, claims, markdown);
   if (gateMode === 'published-audit') errors.push(...validatePublishedAdoption(dossier, manifest, subject.articleHash));
-  if (gateMode === 'publication-scellee') errors.push(...validatePublicationSeal(dossier, manifest, subject));
+  const sealErrors = gateMode === 'publication-scellee' ? validatePublicationSeal(dossier, manifest, subject) : [];
+  errors.push(...sealErrors);
   if (manifest) {
     errors.push(...validateCandidate(manifest, { gateMode }));
     const requetes = [manifest.primaryQuery, ...(manifest.secondaryQueries ?? [])];
+    const dateMesure = gateMode === 'publication-scellee' && sealErrors.length === 0
+      ? manifest.publishedAt : (au ?? jourRecuperationParis(new Date().toISOString()));
     for (const [surface, titre] of [['H1', manifest.title], ['titre d’onglet', manifest.tabTitle]]) {
       try {
-        verifierTitreIntentMesure({ root: absoluteRoot, titre, requetes, surface: `${slug} : ${surface}` });
+        verifierTitreIntentMesure({ root: absoluteRoot, titre, requetes, surface: `${slug} : ${surface}`, au: dateMesure });
       } catch (error) {
         errors.push(`Intention SEO : ${error.message}`);
       }

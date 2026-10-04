@@ -388,16 +388,12 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   }
   .nav-mobile-visible {
     display: block;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
     border-bottom: 1px solid var(--ligne-douce);
     background: var(--surface-feuille);
-    scrollbar-width: thin;
   }
   .nav-mobile-visible-liste {
     display: flex;
-    width: max-content;
-    min-width: 100%;
+    flex-wrap: wrap;
     gap: 4px;
   }
   .nav-mobile-visible a {

@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "candidateSlug": "logiciel-ia-comptabilite",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "bb2554d5aa5cd76e0239d7388cdaa4310b7710e33589aad117057f73d00c8c42",
+  "manifestSha256": "89608d3394905cf25b630daec8ce1d2f43ff727d66efa1118da8f7901c7ff6dc",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact logiciel-ia-comptabilite."
+  ],
+  "reviewer": "metier:t_303e7c6d",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Le corps propose un protocole de comparaison sur même jeu fictif avec trois états vérifié/à configurer/non vérifié ; aucun résultat d'essai d'éditeur n'est présenté."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Titre, H1 et description restent centrés sur une grille de choix et non un comparatif commercial mesuré ; la route historique est conservée."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Copies CNIL, Ordre et Service-Public et leurs SHA/extraits vérifiés ; la recommandation CNIL concerne un système d'IA générative, et non tous les logiciels ; Service-Public ne prouve pas l'archivage d'un éditeur."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Deux figures : grille fictive de démonstration (logiciel actuel et solutions A et B anonymes relevés sur la pièce nominale, états vérifié / à configurer / non vérifié) et file de contrôle fictive montrant les quatre sorties de journal-rejeu.json, proposition à valider, doublon probable, période ambiguë et donnée absente, sans écriture. Aucun éditeur nommé ni testé, comme l’indiquent figures et article."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "HTML construit localement : deux figures data-blog-proof à une seule img WebP 1600 × 900 (lazy, async) servie au bureau comme au téléphone, alts présents et identiques à la recette, zéro figcaption et aucun panneau défilant ; CSS width/max-width 100 %, height auto ; captures 1280 et 390 px sans débordement. Robots index, follow sur ce build local uniquement, sans constat de production."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Grille, cas et FAQ ne permettent pas d'inférer une capacité de Dext, Pennylane ni d'un logiciel actuel ; les limites de la règle locale sont répétées."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "Le lien vers méthode et pilier garde le choix et la décision dans le cabinet, sans prétendre avoir livré la configuration illustrée."
+      ]
+    }
+  ]
+}

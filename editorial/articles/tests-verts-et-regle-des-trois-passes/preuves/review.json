@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "candidateSlug": "tests-verts-et-regle-des-trois-passes",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "a4d4115948909570dce6df9538143a2cafee3e68400513e7beaf127dabb1d82a",
+  "manifestSha256": "7ba35869a2811f1054ad23328da36e8b14d982fdcc3ce7064aeb1b156bf2ef51",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact tests-verts-et-regle-des-trois-passes."
+  ],
+  "reviewer": "qa:t_c9dd7b40",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Réponse directe et deux angles morts séparés du test rouge, règle applicable corps.md:5/13/17/23/59."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "H1/onglet/description et format narratif cohérents ; aucun rang, volume ou réussite SEO revendiqués."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "RAW exact et attribution autorisée ; copies/extraits primaires conformes, âges4/4/5jours et portée méthode seulement ; métier frais lu."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Trois cas fictifs réellement exécutés, contre-oracle et mutant rouge ; illustrations distinctes du produit historique."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Un H1/langfr/canonical/OG/schema conformes, huit clics avec destination exacte et HTTP200, ancres présentes, aucun débordement320/375/768/1440."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Frontière/tableaux/cas extractibles et visibles, quinze paragraphes personnels préservés ; aucun score citation inventé."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "Pilier réciproque et méthode/contact servis ; Confier cette tâche atteint contact au clavier, décision gardée au cabinet."
+      ]
+    }
+  ]
+}

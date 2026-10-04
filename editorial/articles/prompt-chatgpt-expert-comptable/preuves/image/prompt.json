@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "prompt-chatgpt-expert-comptable",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
+  "manifestSha256": "da19b3e5b7b2454f51c3d99f43694f7571ecb08a34d0a7a5abfcf512134e419f",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact prompt-chatgpt-expert-comptable."
+  ],
+  "engine": "image_generate",
+  "prompt": "Memlia original 3D editorial still life, 16:9 cream #fcfbf7 paper ground. Three-dimensional LARGE matte graphite #231f20 dark ink tablet occupying at least 12 percent of entire image, contrasted with two green #27b657 and #1c8a41 geometric blocks. An unaddressed white sheet waits before a CLOSED envelope behind a clearly CLOSED gate. No arrows, no check marks, no movement, no sent mail, no interface, no lettering, no people, no client data. Soft isometric studio lighting upper left.",
+  "brief": {
+    "sujet": "Brouillon fictif de demande de pièce en attente d'une décision d'envoi.",
+    "composition": "Feuille blanche et enveloppe séparées par une petite grille fermée ; deux blocs verts et une base sombre, sans flèche indiquant l'envoi.",
+    "style": "Diorama 3D isométrique, matières mates, fond crème, lumière douce, aucun écran ni personne.",
+    "palette": "Crème #fcfbf7 dominante ; vert Memlia #27b657, vert profond #1c8a41 et graphite #231f20 visibles.",
+    "interdits": "Texte, logo, client identifiable, interface fictive, flèche d'envoi ou validation automatique.",
+    "alt": "Feuille vierge et enveloppe séparées par une grille fermée, pour figurer le contrôle humain avant une demande de pièce"
+  },
+  "reviewCriteria": [
+    "aucun envoi suggéré",
+    "aucune donnée client",
+    "grille de validation visible",
+    "palette mesurée sur dérivés",
+    "texte et logo absents",
+    "dérivés WebP/AVIF et OG vérifiés"
+  ]
+}

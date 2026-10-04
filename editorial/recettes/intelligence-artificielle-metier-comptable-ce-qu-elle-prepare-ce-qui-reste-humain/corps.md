@@ -82,6 +82,8 @@ Hypothèse à vérifier sur chaque tâche : si une préparation répétitive est
 
 Pour la direction, cela crée une nouvelle responsabilité. Elle doit décider quelles règles méritent d’être écrites, qui les valide et comment elles sont maintenues. Une automatisation sans propriétaire métier vieillit en silence.
 
+Pour préparer cette décision, prenez une proposition déjà produite sur le jeu fictif et demandez au collaborateur de retrouver l’entrée, la période et la condition qui l’ont déclenchée. Demandez-lui ensuite ce qu’il ferait si la pièce admettait deux lectures, puis qui pourrait modifier la règle après sa recette. Si ces réponses ne sont pas visibles, le travail à transmettre n’est pas seulement le geste de contrôle : c’est aussi la manière de reconnaître une exception et de faire remonter une règle manquante. Le cabinet peut alors désigner qui écrit, qui vérifie et qui autorise sa nouvelle version.
+
 ## Les erreurs à éviter
 
 ### Partir d’un outil

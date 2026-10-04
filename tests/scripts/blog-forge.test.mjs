@@ -1,17 +1,22 @@
 import { test } from 'node:test';
+import { spawnSync } from 'node:child_process';
 import assert from 'node:assert/strict';
-import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { cpSync, existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
-import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH } from '../../scripts/lib/blog-pipeline.mjs';
+import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
+import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const SLUG = 'automatiser-une-tache-de-test';
-const jour = new Date().toISOString().slice(0, 10);
+// Même calendrier que le gate et la forge : un jour UTC peut encore être la veille à Paris (ou inversement).
+const jour = forge.aujourdhui();
+const HTML_RELUT = '<html><body><div class="article-corps lecture"><p>Texte rendu relu.</p></div></body></html>';
 
 const CORPS_REGLE = `## La règle écrite
 
@@ -56,12 +61,12 @@ const PAGE_SOURCE = `<html><head><title>Durées de conservation</title></head>
 </body></html>
 `;
 
-function recette() {
+function recette(date = jour) {
   return {
     slug: SLUG, title: 'Automatiser une tâche de test dans un cabinet', tabTitle: 'Automatiser une tâche de test | Memlia',
     summary: 'Une règle écrite, un jeu fictif et une validation humaine : la méthode de test rejouable dans un cabinet.',
     description: 'Méthode de test pour automatiser une tâche répétitive de cabinet avec une règle écrite, un jeu fictif et une validation humaine.',
-    date: jour, topics: ['methode', 'automatisation'], keywords: ['automatisation cabinet'],
+    date, topics: ['methode', 'automatisation'], keywords: ['automatisation cabinet'],
     primaryQuery: 'automatiser une tâche de test cabinet', secondaryQueries: ['tâche de test cabinet comptable'], intent: 'executer', fanOut: ['quelle règle écrire'],
     role: { primary: 'direction-associes', secondary: [], proofLevel: 'hypothese', proofNote: 'Rôle supposé pour le test.' },
     funnel: 'TOFU', cluster: 'methode-decision-humaine', famille: 'choisir-cadrer', contentType: 'searchable', format: 'how-to-guide',
@@ -80,8 +85,8 @@ function recette() {
     ],
     links: { outgoing: ['/methode', '/blog/article-frere'], incoming: ['/', '/blog'] },
     cannibalization: { risk: 'faible', comparedWith: ['/blog/article-frere'], decision: 'Intentions distinctes après comparaison du corpus.' },
-    serp: { requete: 'automatiser une tâche de test cabinet', date: jour, acteurs: ['aucun'], note: 'Relevé fictif de test.' },
-    gsc: { requete: 'automatiser une tâche de test cabinet', date: jour, impressions: 0, clics: 0, note: 'Propriété lue, aucune impression : nouvel article.' },
+    serp: { requete: 'automatiser une tâche de test cabinet', date, acteurs: ['aucun'], note: 'Relevé fictif de test.' },
+    gsc: { requete: 'automatiser une tâche de test cabinet', date, impressions: 0, clics: 0, note: 'Propriété lue, aucune impression : nouvel article.' },
     claims: [
       { unite: 'Les données personnelles ne peuvent pas être conservées indéfiniment', claim: 'Les données personnelles ne peuvent pas être conservées indéfiniment et une durée de conservation doit être déterminée par le responsable de traitement', type: 'legal-reglementaire', sourceId: 'cnil-durees', excerpt: 'Les données personnelles ne peuvent pas être conservées indéfiniment : une durée de conservation doit être déterminée par le responsable de traitement en fonction de l’objectif ayant conduit à la collecte de ces données.', explanation: 'La CNIL énonce la règle reprise mot pour mot par le claim.' },
     ],
@@ -89,13 +94,14 @@ function recette() {
   };
 }
 
-function revues(claimId) {
+function revues(claimId, root) {
   const criteres = Object.fromEntries(['intent-satisfaction', 'serp-format-rankability', 'eeat-sources', 'information-gain-proof', 'technical-onpage-seo', 'ai-citability', 'contextual-conversion'].map((id) => [id, { result: 'PASS', observations: [`${id} vérifié sur le contenu rendu du candidat de test.`] }]));
   const criteresImage = Object.fromEntries(['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'].map((id) => [id, { result: 'PASS', observations: [`${id} observé dans le rendu du cadre de preuve.`] }]));
   return {
+    subject: { slug: SLUG, bodySha256: createHash('sha256').update(CORPS.trim()).digest('hex'), recipeSha256: createHash('sha256').update(readFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'))).digest('hex'), renderedSha256: renderedBodySha256(HTML_RELUT) },
     editorial: { criteria: criteres, p0: [] },
     business: { claims: { [claimId]: { verdict: 'soutient', reasoning: 'Le reviewer métier a comparé le claim et la citation exacte de la CNIL dans la copie locale.' } } },
-    image: { criteria: criteresImage, directionArt: 18, semanticRelevance: 22 },
+    image: { criteria: criteresImage },
     sources: { reviewedBy: 'relecteur-metier-ia-memlia' },
   };
 }
@@ -104,7 +110,7 @@ const imageFictive = (width, height) => Buffer.from(`<svg xmlns="http://www.w3.o
 const rendreImage = async (html, cible) => { assert.ok(html.includes('Automatiser une tâche de test'), 'le cadre porte le titre'); await sharp(imageFictive(1920, 1080)).png().toFile(cible); };
 const fetcher = async () => new Response(PAGE_SOURCE, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'content-length': String(Buffer.byteLength(PAGE_SOURCE)) } });
 
-function racineDeTest() {
+function racineDeTest(date = jour) {
   const root = mkdtempSync(join(tmpdir(), 'memlia-forge-'));
   mkdirSync(join(root, 'editorial/templates'), { recursive: true });
   mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
@@ -113,8 +119,8 @@ function racineDeTest() {
   mkdirSync(join(root, 'src/data'), { recursive: true });
   mkdirSync(join(root, 'public/fonts'), { recursive: true });
   mkdirSync(join(root, 'docs/strategy/site-v3/mesures'), { recursive: true });
-  writeFileSync(join(root, `docs/strategy/site-v3/mesures/questions-${jour}.json`), JSON.stringify({
-    jour,
+  writeFileSync(join(root, `docs/strategy/site-v3/mesures/questions-${date}.json`), JSON.stringify({
+    jour: date,
     autocompletion: {
       'automatiser une tâche de test cabinet': [],
       'tâche de test cabinet comptable': [],
@@ -128,11 +134,61 @@ function racineDeTest() {
   writeFileSync(join(root, 'src/pages/blog.astro'), '<ul class="blog-liste"></ul>');
   writeFileSync(join(root, 'src/content/blog/article-frere.md'), '---\ntitre: "Article frère de test"\nbrouillon: false\nprimaryQuery: "autre requête"\nintent: comprendre\n---\n\n## Frère\n\nContenu distinct et suffisamment long pour ne pas être confondu avec le candidat de test.\n');
   writeFileSync(join(root, 'editorial/legacy-baseline.json'), JSON.stringify({ version: 1, articles: {} }));
-  writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(recette(), null, 2));
+  writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(recette(date), null, 2));
   writeFileSync(join(root, 'editorial/recettes', SLUG, 'corps.md'), CORPS);
   return root;
 }
 const blogRendu = `<li data-article="${SLUG}"><a href="/blog/${SLUG}"></a></li>`;
+
+test('materialiser appelle le vrai garde : calendrier périmé refusé sans écriture, édition fraîche utilisable', async (t) => {
+  const root = racineDeTest();
+  const RealDate = Date;
+  t.mock.method(globalThis, 'Date', class extends RealDate {
+    constructor(...args) { super(...(args.length ? args : ['2026-09-30T10:00:00Z'])); }
+  });
+  try {
+    const planDir = join(root, 'docs/strategy/site-v3');
+    rmSync(join(root, 'src/content/blog'), { recursive: true });
+    for (const path of ['src/content.config.ts', 'src/data/familles.ts', 'src/content/blog',
+      'docs/strategy/site-v3/mesures', 'docs/strategy/site-v3/backlog-v3.json']) {
+      cpSync(join(RACINE, path), join(root, path), { recursive: true });
+    }
+    const backlogPath = join(planDir, 'backlog-v3.json');
+    const backlog = JSON.parse(readFileSync(backlogPath));
+    const cible = backlog.find((e) => e.slug === 'automatiser-l-entree-en-relation-d-un-nouveau-client');
+    cible.slug = SLUG;
+    writeFileSync(backlogPath, JSON.stringify(backlog));
+    const moteur = join(planDir, 'plan-engine.py');
+    cpSync(join(RACINE, 'docs/strategy/site-v3/build-cluster-plan.py'), moteur);
+    // L'horloge du sous-processus est figée ; le garde lui-même reste le code réel.
+    writeFileSync(join(planDir, 'build-cluster-plan.py'), `import datetime, runpy\nclass FixedDate(datetime.date):\n    @classmethod\n    def today(cls): return cls(2026, 9, 30)\ndatetime.date = FixedDate\nrunpy.run_path(${JSON.stringify(moteur)}, run_name='__main__')\n`);
+    const editer = (day) => {
+      const code = `import importlib.util\ns=importlib.util.spec_from_file_location('plan', ${JSON.stringify(moteur)})\np=importlib.util.module_from_spec(s)\ns.loader.exec_module(p)\nclass FixedDate(p.date):\n    @classmethod\n    def today(cls): return cls(2026, 9, ${day})\np.date=FixedDate\nd=p.construire()\ne, entrants, _=p.verifier(*d)\nassert not e, e\np.ecrire_json(d[0],d[1],d[3],d[4],d[5],entrants)\np.ecrire_calendrier(d[3],d[4],d[1],d[0])\n`;
+      const result = spawnSync('python3', ['-c', code], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+    };
+    const options = { root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage };
+    editer(29);
+    const calendrierPath = join(planDir, 'CONTENT-CALENDAR.md');
+    const avant = readFileSync(calendrierPath);
+    await assert.rejects(materialiser(options), /Créneau éditorial refusé.*calendrier périmé/s);
+    assert.deepEqual(readFileSync(calendrierPath), avant);
+    assert.equal(existsSync(join(root, 'editorial/articles', SLUG)), false);
+    assert.equal(existsSync(join(root, 'src/content/blog', `${SLUG}.md`)), false);
+    editer(30);
+    const r = recette();
+    r.date = '2026-09-30';
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r));
+    writeFileSync(join(planDir, 'mesures/questions-2026-09-30.json'), JSON.stringify({
+      jour: '2026-09-30', autocompletion: Object.fromEntries([r.primaryQuery, ...r.secondaryQueries].map((q) => [q, []])),
+    }));
+    const resultat = await materialiser(options);
+    assert.equal(resultat.manifest.slug, SLUG);
+    assert.ok(existsSync(join(root, 'editorial/articles', SLUG, 'manifest.json')));
+    assert.ok(existsSync(join(root, 'src/content/blog', `${SLUG}.md`)));
+    // Préparer n'est ni sceller ni publier : les autres portes restent distinctes.
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 
 test('semaineIso et les plafonds de cadence : deux par jour, quatre par semaine ISO', () => {
   assert.equal(semaineIso('2026-09-16'), '2026-W38');
@@ -160,6 +216,30 @@ test('les Cicatrices ont leur samedi hebdomadaire en sus des quatre articles ord
   assert.throws(() => verifierPlafonds(avecCicatrice, '2026-09-17'), /4 candidats sont déjà planifiés la semaine 2026-W38/);
 });
 
+test('le rattrapage W39 est limité au slug signé du 27 au 29 septembre sans seconde Cicatrice W39', () => {
+  const slug = 'tests-verts-et-regle-des-trois-passes';
+  verifierPlafonds([], '2026-09-27', { serie: 'cicatrices', slug });
+  verifierPlafonds([], '2026-09-28', { serie: 'cicatrices', slug });
+  verifierPlafonds([], '2026-09-29', { serie: 'cicatrices', slug });
+  verifierPlafonds([], '2026-09-26', { serie: 'cicatrices', slug: 'une-autre-cicatrice' });
+  for (const date of ['2026-10-03', '2026-10-10', '2026-09-30', '2026-10-04']) {
+    assert.throws(() => verifierPlafonds([], date, { serie: 'cicatrices', slug }), /rattrapage W39.*29\/09\/2026/);
+  }
+  verifierPlafonds([], '2026-10-03', { serie: 'cicatrices', slug: 'une-autre-cicatrice' });
+  assert.throws(() => verifierPlafonds([], '2026-09-27', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /paraît le samedi/);
+  assert.throws(() => verifierPlafonds([], '2026-09-29', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /paraît le samedi/);
+  assert.throws(() => verifierPlafonds([{ date: '2026-09-26', serie: 'cicatrices' }], '2026-09-27', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  assert.throws(() => verifierPlafonds([{ date: '2026-09-26', serie: 'cicatrices' }], '2026-09-29', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  assert.throws(() => verifierPlafonds([{ date: '2026-09-27', serie: 'cicatrices', slug }], '2026-09-28', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  const tardive = [{ slug, date: '2026-09-28', serie: 'cicatrices', status: 'pret-preview' }];
+  assert.throws(() => verifierPlafonds(tardive, '2026-09-26', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /déjà planifiée la semaine 2026-W39/);
+  assert.throws(() => verifierPlafonds(tardive, '2026-09-27', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  assert.throws(() => verifierPlafonds(tardive, '2026-09-29', { serie: 'cicatrices', slug }), /déjà planifiée la semaine 2026-W39/);
+  const nouvelle = [{ slug, date: '2026-09-29', serie: 'cicatrices', status: 'pret-preview' }];
+  assert.throws(() => verifierPlafonds(nouvelle, '2026-09-26', { serie: 'cicatrices', slug: 'une-autre-cicatrice' }), /déjà planifiée la semaine 2026-W39/);
+  verifierPlafonds(nouvelle, '2026-10-03', { serie: 'cicatrices', slug: 'une-autre-cicatrice' });
+});
+
 test('le découpage en unités et les jetons suivent le pipeline', () => {
   const unites = unitesRendues('## Titre **gras**\n\nUn [lien](/x) et du `code`.\n\n\nDernier.');
   assert.deepEqual(unites.map((u) => u.text), ['Titre gras', 'Un lien et du code.', 'Dernier.']);
@@ -167,7 +247,7 @@ test('le découpage en unités et les jetons suivent le pipeline', () => {
   assert.deepEqual(jetons('Les données personnelles ne peuvent pas être conservées'), ['donnees', 'personnelles', 'peuvent', 'conservees']);
 });
 
-test('les preuves inline gardent leur traçabilité interne sans légende technique publique', () => {
+test('les nouvelles preuves inline gardent la provenance en recette et rendent une image directe', () => {
   const corps = '## Première section\n\nPhrase scellée.\n\n## Section cible\n\nSuite scellée.\n';
   const rendu = injecterPreuvesInline(corps, [{
     id: 'preuve-fictive',
@@ -180,12 +260,20 @@ test('les preuves inline gardent leur traçabilité interne sans légende techni
   assert.ok(rendu.includes('Suite scellée.'));
   assert.match(rendu, /<figure data-blog-proof="preuve-fictive">/);
   assert.match(rendu, /<img src="\/proofs\/blog\/preuve-fictive\.webp" alt="Une preuve fictive correctement décrite\."/);
-  assert.doesNotMatch(rendu, /Ouvrir la preuve en grand|<figcaption>|Source\s*:|capture du/i);
+  assert.match(rendu, /<figure data-blog-proof="preuve-fictive">\s*<img/);
+  assert.doesNotMatch(rendu, /preuve-defilante|figcaption|Preuve visuelle défilante/);
+  assert.doesNotMatch(rendu, /Ouvrir la preuve en grand/);
   assert.ok(rendu.indexOf('data-blog-proof') < rendu.indexOf('## Section cible'));
   assert.deepEqual(unitesRendues(rendu), unitesRendues(corps), 'une figure sourcée est une preuve visuelle, pas une affirmation éditoriale');
   assert.throws(() => injecterPreuvesInline(corps, [{
     id: 'preuve-fictive', insertBeforeHeading: 'Section absente', alt: 'Preuve fictive.', source: 'jeu fictif', capturedAt: '2026-09-20',
   }]), /H2 d’ancrage absent/);
+  assert.throws(() => injecterPreuvesInline(corps, [{
+    id: 'preuve-fictive', insertBeforeHeading: 'Section cible', alt: 'Preuve fictive.', source: '  ', capturedAt: '2026-09-20',
+  }]), /source ou date de capture invalide/);
+  assert.throws(() => injecterPreuvesInline(corps, [{
+    id: 'preuve-fictive', insertBeforeHeading: 'Section cible', alt: 'Preuve fictive.', source: 'reconstitution fidèle à la recette scellée', capturedAt: '2026-09-20',
+  }]), /source de preuve technique/);
 });
 
 test('le frontmatter reproduit le manifeste champ pour champ', () => {
@@ -196,6 +284,17 @@ test('le frontmatter reproduit le manifeste champ pour champ', () => {
   assert.match(fm, /^statutEditorial: pret-preview$/m);
   const publie = frontmatter(construireManifest(recette(), 'publie', jour, null));
   assert.match(publie, /^brouillon: false$/m);
+});
+
+test('l’autorité blog déléguée ouvre le statut production sans nouvelle saisie de go personnel', () => {
+  const preview = construireManifest(recette(), 'pret-preview', jour, null);
+  const production = construireManifest(recette(), 'go-production', jour, null);
+  assert.equal(preview.kevin.productionApproved, false);
+  assert.equal(production.kevin.productionApproved, true);
+  assert.deepEqual(production.kevin.delegation, preview.kevin.delegation);
+  assert.match(production.kevin.delegation.basis, /sans go/);
+  assert.match(frontmatter(production), /^brouillon: false$/m);
+  assert.equal(production.author, 'kevin'); // attribution du texte, pas identité de l'opérateur
 });
 
 test('la forge refuse un H1 narratif avant de créer le candidat', async () => {
@@ -239,26 +338,395 @@ test('la forge rafraîchit la preuve source quand sa classification change le m�
   }
 });
 
+test('le report conserve les copies vérifiées mais date les claims et les revues du candidat', async (t) => {
+  const root = racineDeTest();
+  const veille = new Date(Date.parse(`${jour}T00:00:00Z`) - 86_400_000).toISOString().slice(0, 10);
+  let appels = 0;
+  const compter = async (...args) => { appels += 1; return fetcher(...args); };
+  try {
+    const mesures = join(root, 'docs/strategy/site-v3/mesures');
+    writeFileSync(join(mesures, `questions-${veille}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, veille));
+    t.mock.timers.enable({ apis: ['Date'], now: Date.parse(`${veille}T12:00:00Z`) });
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour: veille });
+    const dossier = join(root, 'editorial/articles', SLUG);
+    const preuvePath = join(dossier, 'preuves/sources/cnil-durees.json');
+    const preuveAvant = readFileSync(preuvePath, 'utf8');
+    t.mock.timers.setTime(Date.parse(`${jour}T12:00:00Z`));
+    const resultat = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels, 3, 'aucun nouvel appel réseau sur les trois sources');
+    assert.equal(readFileSync(preuvePath, 'utf8'), preuveAvant, 'la date de récupération reste authentique');
+    assert.equal(resultat.manifest.sourcesVerifiedAt, veille);
+    assert.ok(resultat.manifest.sources.every((source) => source.checkedAt === veille));
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'claims.json'))).claims[0].checkedAt, jour);
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'review.json'))).checkedAt, jour);
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'preuves/business-review.json'))).checkedAt, jour);
+    const declassification = JSON.parse(readFileSync(join(dossier, 'preuves/sources/cnil-durees.classification.json')));
+    assert.equal(declassification.checkedAt, jour, 'la classification est revue sur le nouveau candidat');
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(!gate.errors.some((error) => /Fraîcheur sensible/.test(error)), gate.errors.join('\n'));
+  } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
+});
+
+test('une ouverture neuve à 22h UTC porte la date Paris jusque dans le gate', async (t) => {
+  const root = racineDeTest();
+  const candidat = '2026-09-29';
+  const mesures = join(root, 'docs/strategy/site-v3/mesures');
+  writeFileSync(join(mesures, `questions-${candidat}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, candidat));
+  const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+  const contenu = JSON.parse(readFileSync(recettePath));
+  contenu.date = candidat;
+  contenu.serp.date = candidat;
+  contenu.gsc.date = candidat;
+  writeFileSync(recettePath, JSON.stringify(contenu, null, 2));
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse('2026-09-28T22:22:17.185Z') });
+  try {
+    assert.equal(forge.aujourdhui(), '2026-09-29');
+    const resultat = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
+    const preuve = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'preuves/sources/cnil-durees.json')));
+    assert.equal(preuve.retrievedAt, '2026-09-28T22:22:17.185Z');
+    assert.equal(preuve.checkedAt, '2026-09-29');
+    assert.equal(resultat.manifest.sources[0].checkedAt, '2026-09-29');
+    assert.equal(resultat.manifest.sourcesVerifiedAt, '2026-09-29');
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(!gate.errors.some((error) => /retrievedAt.*Europe\/Paris|Fraîcheur sensible/.test(error)), gate.errors.join('\n'));
+  } finally {
+    t.mock.timers.reset();
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('une ouverture qui franchit minuit Paris interrompt la préparation avant les revues et reprend au jour réel', async (t) => {
+  const root = racineDeTest();
+  const veille = '2026-09-28';
+  const candidat = '2026-09-29';
+  const mesures = join(root, 'docs/strategy/site-v3/mesures');
+  writeFileSync(join(mesures, `questions-${veille}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, veille));
+  writeFileSync(join(mesures, `questions-${candidat}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, candidat));
+  const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+  const recetteInitiale = JSON.parse(readFileSync(recettePath));
+  writeFileSync(recettePath, JSON.stringify({ ...recetteInitiale, date: candidat, serp: { ...recetteInitiale.serp, date: candidat }, gsc: { ...recetteInitiale.gsc, date: candidat } }));
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse('2026-09-28T21:59:59.000Z') });
+  let appels = 0;
+  const fetchAuPassage = async (...args) => {
+    appels += 1;
+    t.mock.timers.setTime(Date.parse('2026-09-28T22:00:01.000Z'));
+    return fetcher(...args);
+  };
+  try {
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: fetchAuPassage, rendreImage }),
+      /jour civil Europe\/Paris.*nouvelle préparation.*revue/i,
+    );
+    const dossier = join(root, 'editorial/articles', SLUG);
+    assert.equal(appels, 1);
+    assert.equal(existsSync(join(dossier, 'review.json')), false, 'aucune revue datée de la veille ne doit être émise');
+    assert.equal(existsSync(join(dossier, 'claims.json')), false, 'aucun claim daté de la veille ne doit être émis');
+    const preuve = JSON.parse(readFileSync(join(dossier, 'preuves/sources/cnil-durees.json')));
+    assert.equal(preuve.checkedAt, candidat);
+    assert.equal(preuve.retrievedAt, '2026-09-28T22:00:01.000Z');
+    const resultat = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: fetchAuPassage, rendreImage });
+    assert.equal(appels, 3, 'la source déjà ouverte au nouveau jour conserve sa copie ; deux autres sources sont ouvertes');
+    assert.equal(resultat.manifest.sourcesVerifiedAt, candidat);
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'review.json'))).checkedAt, candidat);
+    assert.equal(JSON.parse(readFileSync(join(dossier, 'claims.json'))).claims[0].checkedAt, candidat);
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(!gate.errors.some((error) => /Fraîcheur sensible|retrievedAt.*Europe\/Paris/.test(error)), gate.errors.join('\n'));
+  } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
+});
+
+test('minuit Paris entre le jour implicite et la garde interrompt sans produire de revue de la veille', async () => {
+  const root = racineDeTest();
+  const veille = '2026-09-28';
+  const mesures = join(root, 'docs/strategy/site-v3/mesures');
+  writeFileSync(join(mesures, `questions-${veille}.json`), readFileSync(join(mesures, `questions-${jour}.json`), 'utf8').replaceAll(jour, veille));
+  const NativeDate = Date;
+  let lectures = 0;
+  try {
+    globalThis.Date = class HorlogeFrontiere extends NativeDate {
+      constructor(...args) {
+        super(...(args.length ? args : [++lectures === 1 ? '2026-09-28T21:59:59Z' : '2026-09-28T22:00:01Z']));
+      }
+      static now() { return NativeDate.parse('2026-09-28T22:00:01Z'); }
+    };
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage }),
+      /jour civil Europe\/Paris.*nouvelle préparation.*revue/i,
+    );
+    assert.ok(lectures >= 2, 'la barrière a réellement vu les deux jours Paris');
+    const dossier = join(root, 'editorial/articles', SLUG);
+    assert.equal(existsSync(join(dossier, 'review.json')), false);
+    assert.equal(existsSync(join(dossier, 'claims.json')), false);
+  } finally {
+    globalThis.Date = NativeDate;
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification', async (t) => {
+  const jour = '2026-09-29';
+  const root = racineDeTest(jour);
+  // La récupération à 22h22 UTC doit être passée, pas future après minuit Paris.
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse(`${jour}T12:00:00Z`) });
+  let appels = 0;
+  const compter = async (...args) => { appels += 1; return fetcher(...args); };
+  const dossier = join(root, 'editorial/articles', SLUG, 'preuves/sources');
+  const preuvePath = join(dossier, 'cnil-durees.json');
+  try {
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    const originale = JSON.parse(readFileSync(preuvePath));
+    const modifierPreuve = (values) => writeFileSync(preuvePath, JSON.stringify({ ...originale, ...values }));
+    const hier = new Date(Date.parse(`${jour}T00:00:00Z`) - 86_400_000).toISOString().slice(0, 10);
+    modifierPreuve({ retrievedAt: `${hier}T22:22:17Z` });
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels, 3, '22h22 UTC la veille est le même jour civil à Paris, pas un second fetch');
+    const borne = new Date(Date.parse(`${jour}T00:00:00Z`) - 7 * 86_400_000).toISOString().slice(0, 10);
+    const avantBorne = new Date(Date.parse(`${jour}T00:00:00Z`) - 8 * 86_400_000).toISOString().slice(0, 10);
+    modifierPreuve({ checkedAt: borne, retrievedAt: `${avantBorne}T00:00:00.000Z` });
+    const gateFalsifie = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(gateFalsifie.errors.some((error) => /retrievedAt.*Europe\/Paris/.test(error)), gateFalsifie.errors.join('\n'));
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels, 4, 'une date UTC antérieure sans correspondance Paris ne prolonge pas la fraîcheur réelle');
+    for (const age of [7, 8, -1]) {
+      const date = new Date(Date.parse(`${jour}T00:00:00Z`) - age * 86_400_000).toISOString().slice(0, 10);
+      modifierPreuve({ checkedAt: date, retrievedAt: `${date}T12:00:00.000Z` });
+      const avant = appels;
+      await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+      assert.equal(appels - avant, age === 7 ? 0 : 1, `âge ${age}`);
+    }
+    for (const values of [{ contentSha256: '0'.repeat(64) }, { httpStatus: 429 }, { excerpt: 'autre extrait' }, { finalUrl: 'https://www.cnil.fr/fr/autre' }, { classificationReason: 'autre classement' }, { retrievedAt: null }]) {
+      modifierPreuve(values);
+      const avant = appels;
+      await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+      assert.equal(appels - avant, 1, JSON.stringify(values));
+    }
+    const copie = join(dossier, 'cnil-durees.source.txt');
+    modifierPreuve({});
+    writeFileSync(copie, 'copie falsifiée');
+    const avant = appels;
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour });
+    assert.equal(appels - avant, 1, 'la copie locale divergente impose une nouvelle lecture');
+    const dates = new Map([[recette().sources[0].id, hier], [recette().sources[1].id, jour], [recette().sources[2].id, jour]]);
+    assert.equal(construireManifest(recette(), 'pret-preview', jour, null, dates).sourcesVerifiedAt, hier, 'la date du manifeste borne la source la plus ancienne');
+    assert.equal(jourRecuperationParis('2026-02-30T12:00:00.000Z'), null, 'le 30 février ne se normalise pas en date de preuve');
+    modifierPreuve({ checkedAt: '2026-03-02', retrievedAt: '2026-02-30T12:00:00.000Z' });
+    const fauxGate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok(fauxGate.errors.some((error) => /retrievedAt.*Europe\/Paris/.test(error)), fauxGate.errors.join('\n'));
+    for (const source of recette().sources.slice(1)) {
+      const path = join(dossier, `${source.id}.json`);
+      writeFileSync(path, JSON.stringify({ ...JSON.parse(readFileSync(path)), checkedAt: '2026-03-02', retrievedAt: '2026-03-02T12:00:00.000Z' }));
+    }
+    const appelsAvantFaux = appels;
+    await forge.verifierSources({ root, slug: SLUG, recette: recette(), dossierRecette: join(root, 'editorial/recettes', SLUG), jour: '2026-03-03', fetcher: compter });
+    assert.equal(appels - appelsAvantFaux, 1, 'une date impossible impose une nouvelle ouverture');
+  } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
+});
+
+test('le cache distingue jour Paris et instant futur aux frontières été/hiver et UTC', async (t) => {
+  const cas = [
+    ['2026-09-28T21:59:59Z', '2026-09-28'],
+    ['2026-09-28T22:00:01Z', '2026-09-29'],
+    ['2026-09-28T23:59:59Z', '2026-09-29'],
+    ['2026-09-29T00:00:01Z', '2026-09-29'],
+    ['2026-01-28T22:59:59Z', '2026-01-28'],
+    ['2026-01-28T23:00:01Z', '2026-01-29'],
+    ['2026-01-28T23:59:59Z', '2026-01-29'],
+    ['2026-01-29T00:00:01Z', '2026-01-29'],
+  ];
+  for (const [instant, jour] of cas) {
+    const root = racineDeTest(jour);
+    t.mock.timers.enable({ apis: ['Date'], now: Date.parse(instant) });
+    let appels = 0;
+    const compter = async (...args) => { appels += 1; return fetcher(...args); };
+    const options = { root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour };
+    try {
+      assert.equal(forge.aujourdhui(), jour, instant);
+      await materialiser(options);
+      const path = join(root, 'editorial/articles', SLUG, 'preuves/sources/cnil-durees.json');
+      const preuve = JSON.parse(readFileSync(path));
+      assert.equal(preuve.checkedAt, jour, instant);
+      assert.equal(preuve.retrievedAt, new Date(instant).toISOString());
+      await materialiser(options);
+      assert.equal(appels, 3, `${instant} : les trois copies passées restent réutilisables`);
+      const futur = new Date(Date.parse(instant) + 1_000).toISOString();
+      writeFileSync(path, JSON.stringify({ ...preuve, retrievedAt: futur }));
+      assert.equal(jourRecuperationParis(futur), null, 'même jour Paris ne signifie pas instant passé');
+      await materialiser(options);
+      assert.equal(appels, 4, `${instant} : une copie future impose une nouvelle lecture`);
+    } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
+  }
+});
+
+test('la réinscription d’un candidat existant ne contourne pas le plafond des Cicatrices', async () => {
+  const root = racineDeTest();
+  try {
+    await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour });
+    const queuePath = join(root, 'editorial/queue.json');
+    const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
+    queue.candidates.push({ slug: 'cicatrice-w39-existante', date: '2026-09-26', serie: 'cicatrices', status: 'a-valider' });
+    writeFileSync(queuePath, JSON.stringify(queue));
+    const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+    const initiale = JSON.parse(readFileSync(recettePath, 'utf8'));
+    writeFileSync(recettePath, JSON.stringify({ ...initiale, date: '2026-09-26', serie: 'cicatrices' }));
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour }),
+      /déjà planifiée la semaine 2026-W39/,
+    );
+    queue.candidates[1] = { slug: 'tests-verts-et-regle-des-trois-passes', date: '2026-09-28', serie: 'cicatrices', status: 'pret-preview' };
+    writeFileSync(queuePath, JSON.stringify(queue));
+    await assert.rejects(
+      materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour }),
+      /déjà planifiée la semaine 2026-W39/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la réactivation d’une Cicatrice archivée ou bloquée recontrôle le plafond W39', async () => {
+  for (const status of ['archive', 'bloque']) {
+    const root = racineDeTest();
+    try {
+      const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+      const initiale = JSON.parse(readFileSync(recettePath, 'utf8'));
+      writeFileSync(recettePath, JSON.stringify({ ...initiale, date: '2026-09-26', serie: 'cicatrices' }));
+      await materialiser({ root, slug: SLUG, statut: status, fetcher, rendreImage, jour });
+      const queuePath = join(root, 'editorial/queue.json');
+      const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
+      queue.candidates.push({ slug: 'tests-verts-et-regle-des-trois-passes', date: '2026-09-28', serie: 'cicatrices', status: 'pret-preview' });
+      writeFileSync(queuePath, JSON.stringify(queue));
+      await assert.rejects(
+        materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage, jour }),
+        /déjà planifiée la semaine 2026-W39/,
+        `réactivation depuis ${status}`,
+      );
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test('le gate compare le corps signé après retrait du seul H1 identique au titre, sans masquer une phrase modifiée', async () => {
+  const root = racineDeTest();
+  const corpsPath = join(root, 'editorial/recettes', SLUG, 'corps.md');
+  const articlePath = join(root, 'src/content/blog', `${SLUG}.md`);
+  try {
+    writeFileSync(corpsPath, `# ${recette().title}\n\n${CORPS}`);
+    const preparation = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour });
+    assert.deepEqual(preparation.erreurs, []);
+    const article = readFileSync(articlePath, 'utf8');
+    assert.ok(!article.includes(`# ${recette().title}\n`), 'le H1 est porté par le frontmatter');
+    const gate = () => validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    const attendu = await gate();
+    assert.equal(attendu.pass, false, 'les revues absentes restent bloquantes');
+    assert.ok(attendu.errors.some((e) => /revues\.json absent/.test(e)), attendu.errors.join('\n'));
+    assert.ok(!attendu.errors.some((e) => /Recette et article divergent/.test(e)), attendu.errors.join('\n'));
+
+    writeFileSync(articlePath, article.replace('La validation reste au cabinet.', 'La validation passe à la machine.'));
+    const phraseModifiee = await gate();
+    assert.ok(phraseModifiee.errors.some((e) => /Recette et article divergent/.test(e)), phraseModifiee.errors.join('\n'));
+
+    writeFileSync(articlePath, article);
+    writeFileSync(corpsPath, `# Titre divergent\n\n${CORPS}`);
+    const titreDivergent = await gate();
+    assert.ok(titreDivergent.errors.some((e) => /Recette et article divergent/.test(e)), titreDivergent.errors.join('\n'));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('la forge produit un dossier que le gate accepte, puis un dossier publié scellé sur ses octets', async () => {
   const root = racineDeTest();
   try {
+    const git = (...args) => {
+      const result = spawnSync('git', ['-C', root, ...args], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+      return result.stdout.trim();
+    };
+    git('init', '--initial-branch=main');
+    git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '--allow-empty', '-m', 'Base sans candidat');
+    git('update-ref', 'refs/remotes/origin/main', git('rev-parse', 'HEAD'));
+    const publicationsIntegrees = () => {
+      const result = spawnSync('python3', ['-B', '-c', `
+import importlib.util, json, sys
+from pathlib import Path
+spec = importlib.util.spec_from_file_location('planner', sys.argv[1])
+p = importlib.util.module_from_spec(spec); spec.loader.exec_module(p)
+p.RACINE = Path(sys.argv[2]); p.BLOG = p.RACINE/'src/content/blog'
+print(json.dumps(p.etat_publie()))
+`, join(RACINE, 'docs/strategy/site-v3/build-cluster-plan.py'), root], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+      return JSON.parse(result.stdout);
+    };
     // 1. Préparation sans revues : le dossier existe, le gate le refuse pour la seule raison des revues.
     const preparation = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
     assert.deepEqual(preparation.erreurs, []);
     const paquet = JSON.parse(readFileSync(join(root, 'editorial/recettes', SLUG, 'paquet-revue.json'), 'utf8'));
     assert.equal(paquet.claims.length, 1);
+    assert.equal(paquet.identites.reviewerMetier, preparation.manifest.businessReview.reviewerId);
     const claimId = paquet.claims[0].id;
     const sansRevue = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
     assert.equal(sansRevue.pass, false);
     assert.ok(sansRevue.errors.every((e) => /revue|review|P0|score|image|visuel|business|pret-preview|blocking|soutient|editorialStatus/i.test(e)), sansRevue.errors.join('\n'));
 
     // 2. Avec les revues : le gate passe en preview protégée.
-    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(claimId), null, 2));
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(claimId, root), null, 2));
     const scellement = await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
     assert.deepEqual(scellement.erreurs, []);
     const preview = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
     assert.deepEqual(preview.errors, []);
     assert.equal(preview.pass, true);
+    const avisPath = join(root, 'editorial/recettes', SLUG, 'revues.json');
+    const avis = JSON.parse(readFileSync(avisPath, 'utf8'));
+    avis.editorial.reviewer = 'qa:t_93191b88';
+    avis.business.reviewerId = 'metier:t_3a224b17';
+    writeFileSync(avisPath, JSON.stringify(avis));
+    await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
+    const candidateDir = join(root, 'editorial/articles', SLUG);
+    assert.equal(JSON.parse(readFileSync(join(candidateDir, 'manifest.json'))).businessReview.reviewerId, avis.business.reviewerId);
+    const businessProof = JSON.parse(readFileSync(join(candidateDir, 'preuves/business-review.json')));
+    assert.equal(businessProof.reviewerId, avis.business.reviewerId);
+    assert.ok(businessProof.claimReviews.every((row) => row.reviewerId === avis.business.reviewerId));
+    const paquetAttribue = JSON.parse(readFileSync(join(root, 'editorial/recettes', SLUG, 'paquet-revue.json')));
+    assert.equal(paquetAttribue.identites.reviewerMetier, avis.business.reviewerId);
+    assert.equal(paquetAttribue.identites.reviewerEditorial, avis.editorial.reviewer);
+    for (const name of ['manifest.json', 'review.json', 'preuves/review.json']) {
+      assert.equal(JSON.parse(readFileSync(join(candidateDir, name))).reviewer, avis.editorial.reviewer, name);
+    }
+    const attributed = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.equal(attributed.pass, true, attributed.errors.join('\n'));
+    writeFileSync(avisPath, JSON.stringify({ ...avis, editorial: { ...avis.editorial, reviewer: 'marketing' } }));
+    const mismatchedSource = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.equal(mismatchedSource.pass, false);
+    assert.match(mismatchedSource.errors.join('\n'), /Identité du reviewer éditorial divergente/);
+    writeFileSync(avisPath, JSON.stringify(avis));
+    const falseAttribution = JSON.parse(readFileSync(join(candidateDir, 'review.json')));
+    falseAttribution.reviewer = 'marketing';
+    writeFileSync(join(candidateDir, 'review.json'), JSON.stringify(falseAttribution));
+    const refused = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.equal(refused.pass, false);
+    assert.match(refused.errors.join('\n'), /review\.reviewer/);
+    writeFileSync(join(candidateDir, 'review.json'), JSON.stringify({ ...falseAttribution, reviewer: avis.editorial.reviewer }));
+    const htmlConforme = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, renderedArticleHtml: HTML_RELUT, gateMode: 'protected-preview' });
+    assert.equal(htmlConforme.pass, true, htmlConforme.errors.join('\n'));
+    const htmlModifie = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, renderedArticleHtml: HTML_RELUT.replace('Texte rendu relu.', 'Texte rendu modifié.'), gateMode: 'protected-preview' });
+    assert.ok(htmlModifie.errors.some((e) => /empreinte du rendu HTML divergente/.test(e)), htmlModifie.errors.join('\n'));
+    const recettePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+    const recetteInitiale = readFileSync(recettePath, 'utf8');
+    writeFileSync(recettePath, JSON.stringify({ ...JSON.parse(recetteInitiale), updatedAt: jour }));
+    const dateModifiee = await materialiser({ root, slug: SLUG, statut: 'go-production', fetcher, rendreImage });
+    assert.ok(dateModifiee.erreurs.some((e) => /empreinte de la recette/.test(e)), dateModifiee.erreurs.join('\n'));
+    writeFileSync(recettePath, recetteInitiale);
+    await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
+    // Une nouvelle version ne peut pas hériter des verdicts de la version précédente.
+    const corpsPath = join(root, 'editorial/recettes', SLUG, 'corps.md');
+    writeFileSync(corpsPath, `${CORPS}\n\nUn nouveau paragraphe de méthode soumis à une revue distincte.`);
+    const mutation = await materialiser({ root, slug: SLUG, statut: 'go-production', fetcher, rendreImage });
+    assert.ok(mutation.erreurs.some((e) => /revues\.json.*empreinte|revue.*corps/i.test(e)), mutation.erreurs.join('\n'));
+    const refuse = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'production' });
+    assert.equal(refuse.pass, false, 'le gate ne se fie pas à la preuve métier réestampillée');
+    assert.ok(refuse.errors.some((e) => /revues\.json.*empreinte|revue.*corps/i.test(e)), refuse.errors.join('\n'));
+    writeFileSync(corpsPath, CORPS);
+    await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
     assert.equal((readFileSync(join(root, 'src/content/blog', `${SLUG}.md`), 'utf8').match(/data-blog-proof=/g) ?? []).length, 2, 'les deux preuves sont dans le candidat exact');
     const images = readFileSync(join(root, 'src/data/images.mjs'), 'utf8');
     assert.ok(images.includes(`'img-art-${SLUG}'`) && images.includes('Trois colonnes'), 'hero déclaré avec son alt');
@@ -269,16 +737,54 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     // 3. Production puis publication scellée : l'audit en mode publication-scellee passe.
     const production = await materialiser({ root, slug: SLUG, statut: 'go-production', fetcher, rendreImage });
     assert.deepEqual(production.erreurs, []);
+    assert.equal(publicationsIntegrees()[SLUG], undefined, 'go-production ne ferme pas le créneau de première publication');
     const prod = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'production' });
     assert.deepEqual(prod.errors, []);
     assert.match(readFileSync(join(root, 'src/content/blog', `${SLUG}.md`), 'utf8'), /^brouillon: false$/m);
     await materialiser({ root, slug: SLUG, statut: 'publie', fetcher, rendreImage });
+    assert.equal(publicationsIntegrees()[SLUG], undefined, 'publie local attend encore son intégration');
     ecrireSceau(root, SLUG);
     const scelle = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
     assert.deepEqual(scelle.errors, []);
     const sceau = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, PUBLICATION_SEAL_PATH), 'utf8'));
     assert.equal(sceau.kind, 'publication-scellee');
     assert.ok(sceau.files.length > 20 && sceau.files.every((f) => /^[a-f0-9]{64}$/.test(f.sha256)));
+
+    writeFileSync(corpsPath, `${CORPS}\n\nUne nouvelle orientation éditoriale non relue.`);
+    const republieSansRevue = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
+    assert.ok(republieSansRevue.errors.some((e) => /empreinte du corps/.test(e)), republieSansRevue.errors.join('\n'));
+    writeFileSync(corpsPath, CORPS);
+
+    const revuesPath = join(root, 'editorial/recettes', SLUG, 'revues.json');
+    const revuesActuelles = readFileSync(revuesPath, 'utf8');
+    const revuesAnciennes = JSON.parse(revuesActuelles);
+    delete revuesAnciennes.subject;
+    writeFileSync(revuesPath, JSON.stringify(revuesAnciennes));
+    writeFileSync(join(root, 'editorial/legacy-review-baseline.json'), JSON.stringify({ version: 1, articles: {
+      [SLUG]: {
+        recipeSha256: createHash('sha256').update(readFileSync(recettePath)).digest('hex'),
+        reviewSha256: createHash('sha256').update(readFileSync(revuesPath)).digest('hex'),
+      },
+    } }));
+    const legacyIntact = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
+    assert.equal(legacyIntact.pass, true, legacyIntact.errors.join('\n'));
+    // Le sceau ne porte pas les fichiers de recette : leur retrait ne doit jamais désactiver la revue.
+    for (const missing of [[corpsPath], [corpsPath, revuesPath], [revuesPath], [recettePath]]) {
+      const originals = missing.map((path) => [path, readFileSync(path)]);
+      try {
+        for (const [path] of originals) rmSync(path);
+        const result = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
+        assert.equal(result.pass, false, `Absence de ${missing.join(', ')} acceptée`);
+        for (const path of missing) assert.ok(result.errors.some((error) => error.includes(path.split('/').at(-1))), result.errors.join('\n'));
+      } finally {
+        for (const [path, bytes] of originals) writeFileSync(path, bytes);
+      }
+    }
+    writeFileSync(recettePath, JSON.stringify({ ...JSON.parse(recetteInitiale), updatedAt: jour }));
+    const legacyModifie = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
+    assert.ok(legacyModifie.errors.some((e) => /recette publiée.*divergente/.test(e)), legacyModifie.errors.join('\n'));
+    writeFileSync(recettePath, recetteInitiale);
+    writeFileSync(revuesPath, revuesActuelles);
 
     // 4. Un octet modifié après publication casse le sceau.
     const claimsPath = join(root, 'editorial/articles', SLUG, 'claims.json');
@@ -328,7 +834,7 @@ test('le contexte d’une source HTML monoligne avec balise inline reste borné 
     assert.ok(!contexte.includes('.carte'));
     assert.ok(contexte.length < 300);
 
-    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(claims.claims[0].id), null, 2));
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(claims.claims[0].id, root), null, 2));
     const scellement = await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher: fetcherMonoligne, rendreImage });
     assert.deepEqual(scellement.erreurs, []);
     const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });

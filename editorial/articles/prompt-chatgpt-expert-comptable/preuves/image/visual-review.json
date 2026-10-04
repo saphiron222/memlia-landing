@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "candidateSlug": "prompt-chatgpt-expert-comptable",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
+  "manifestSha256": "da19b3e5b7b2454f51c3d99f43694f7571ecb08a34d0a7a5abfcf512134e419f",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact prompt-chatgpt-expert-comptable."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.6776041666666667,
+      "#27b657": 0.014895833333333334,
+      "#1c8a41": 0.035729166666666666,
+      "#231f20": 0.07534722222222222
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Couverture inchangée, relue : feuille vierge, plateau sombre, grille fermée devant une enveloppe et deux cubes verts, sans texte, conforme à son alt.",
+        "Les deux figures sont des écrans HTML fictifs au gabarit des références (fenêtre unique, en-tête à pastille, « Jeu d’essai fictif · … ») : une fenêtre d’assistant générique et un suivi de demandes."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Cadre et fond identiques au pixel près aux références hors zone de contenu ; aucune interface ni logo ChatGPT ou OpenAI, fenêtre nommée « Assistant » ; aucun texte tronqué, aucune personne nommée.",
+        "Les chiffres visibles sont des dates, numéros et compteurs fictifs (5 demandes, 14/04, 16/04, n° 118), sans résultat mesuré ni réponse de modèle."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Atelier Fictif, Studio Fictif, Commerce Fictif et Démo Social sous en-têtes « Jeu d’essai fictif » ; le brouillon et l’arrêt reproduisent journal-rejeu.json, aucun modèle interrogé.",
+        "Recette et contrat interne : reconstitutions HTML fictives, capturedAt 2026-10-03, sans légende publique."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Fenêtre d’assistant : facture nommée non reçue, brouillon non envoyé, destinataire à confirmer ; suivi : pièce non renseignée en arrêt, relevé de mars déjà demandé à ne pas relancer, pièce reçue qui arrête la relance."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alts de 103 et 116 caractères, identiques dans le HTML construit et la recette : brouillon non envoyé, puis brouillon à relire, relance arrêtée et champ « Pièce attendue » non renseigné.",
+        "L’alt de couverture correspond à l’image : feuille vierge et enveloppe séparées par une grille fermée."
+      ]
+    }
+  ]
+}

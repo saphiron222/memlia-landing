@@ -3,22 +3,20 @@
   "candidateSlug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
   "kind": "editorial-review",
   "status": "PASS",
-  "checkedAt": "2026-09-21",
-  "articleSha256": "00e86873cda288146ab2188826698927508adad54c7f011787fb638f8fea23d6",
-  "manifestSha256": "d0b176ea64ba9efab023c24f259bb447abe58753dd4153b4ee9409b43a99b9d8",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "84959382a98dd376a036190af0051ce84e8891979acd09171807148d06f6cfd2",
+  "manifestSha256": "6482749bdf0dc83063c201ac4dc28cca3e3dddeaa174312955405cea7505336b",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain."
   ],
-  "reviewer": "marketing",
+  "reviewer": "metier:t_303e7c6d",
   "criteria": [
     {
       "id": "intent-satisfaction",
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "La réponse directe répond immédiatement à la requête en séparant préparation automatisée, validation du collaborateur et décision humaine.",
-        "Le corps couvre les compétences, la règle écrite, les arrêts dans le doute et les responsabilités de la direction sans transformer l’article en catalogue de cas d’usage.",
-        "L’hypothèse de temps réaffecté est explicitement laissée à la recette et à la mesure du périmètre réel."
+        "Le corps oppose règle écrite et décision humaine, puis distingue entrée reconnue, ambiguïté et règle absente sur trois cas fictifs ; aucun effet de l'IA sur l'emploi n'est annoncé comme mesuré."
       ]
     },
     {
@@ -26,9 +24,7 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Le HTML rendu porte un H1 unique, un sommaire, une progression H2/H3 cohérente, deux tableaux et trois images dont deux preuves fonctionnelles.",
-        "Le titre d’onglet, le H1 et la description traitent tous l’intelligence artificielle, le métier comptable et les compétences humaines.",
-        "Le canonical auto-référent est exact et l’aperçu conserve volontairement robots noindex, follow avant publication."
+        "H1 et onglet gardent l’intention métier/compétences ; les visuels sont un tableau fictif de dossier rangé selon la frontière (préparé, à valider, décision du collaborateur) et un journal des sorties locales du rejeu, pas une liste de produits."
       ]
     },
     {
@@ -36,9 +32,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Les cinq affirmations externes sont liées inline vers la page exacte et reprises dans une bibliographie datée du 21 septembre 2026.",
-        "Les trois URL ont répondu HTTP 200 le 21 septembre 2026 et les cinq citations OPCO Atlas, Apec et OEC Paris ont été retrouvées mot pour mot dans les pages servies.",
-        "Le texte borne leur portée : Atlas est non daté, qualitatif et prospectif, Apec reste un communiqué de 2021 et le matériau OEC Paris est intersectoriel."
+        "Copies Atlas, Apec et Le Francilien vérifiées contre leurs trois SHA et cinq extraits ; Atlas est qualitatif/non daté, Apec daté de 2021 et le livre blanc repris en 2023 est intersectoriel. Le texte porte ces limites au contact des citations."
       ]
     },
     {
@@ -46,9 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "L’oracle exécutable rejoue trois cas fictifs et le check retrouve bit pour bit chaque identifiant, statut, message et décision dans corps.md.",
-        "Le tableau « Cas joué | Sortie obtenue | Décision » rapporte PROPOSITION, REFUS_AMBIGUITE et REFUS_REGLE_ABSENTE comme sorties effectivement obtenues.",
-        "Les preuves inline competences-frontiere et competences-refus sont lisibles, non tronquées, fictives et cohérentes avec la frontière et le rejeu ; l’image de refus résume les statuts tandis que le tableau porte les messages et décisions exacts."
+        "Visuel competences-journal-rejeu : IA-01 proposition PR-001, IA-02 refus pour deux interprétations (REFUS_AMBIGUITE, aucune proposition), IA-03 refus règle à écrire ; tableau du corps précise les sorties sans attribution à des dossiers client."
       ]
     },
     {
@@ -56,9 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Le rendu figé contient un seul H1, le canonical attendu, og:title identique au H1, une image OG et les schémas BlogPosting, Person, Organization, WebSite, WebPage et BreadcrumbList.",
-        "La couverture est chargée eager avec fetchpriority high ; les deux preuves inline sont des WebP 1600×900 chargés en lazy avec des alts descriptifs.",
-        "Le title compte 67 caractères, le H1 68 caractères et le maillage inclut le pilier, l’article frère, /methode, /garanties, /automatisation-cabinet-comptable et deux entrées du glossaire."
+        "HTML construit localement : deux figures data-blog-proof à une seule img WebP 1600 × 900 servie au bureau comme au téléphone, alts descriptifs, sans figcaption ni wrapper défilant ; style width/max-width 100 %, height auto. Les trois colonnes et les trois cas sont lisibles à 1280 px et reconnaissables par leurs pastilles à 390 px ; robots index, follow sur ce HTML local, sans contrôle du site servi."
       ]
     },
     {
@@ -66,9 +56,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "La réponse directe, la frontière en trois colonnes et le tableau des trois sorties forment des blocs autonomes et extractibles.",
-        "Les claims externes sont immédiatement reliés à leur source et accompagnés de leurs limites temporelles, sectorielles ou méthodologiques.",
-        "La terminologie préparation, règle écrite, validation, exception, arrêt et décision reste stable sur toute la page."
+        "Le tableau de dossier et le texte renvoient à la frontière préparation/validation/décision ; la prospective Atlas est explicitement distincte d’une projection chiffrée de l’emploi."
       ]
     },
     {
@@ -76,9 +64,7 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "La frontière opérationnelle est concentrée dans « La règle écrite » avec les quatre libellés requis et un tableau préparer-valider-rester humain.",
-        "Le corps formule positivement ce que le système prépare et ce que le cabinet décide ; les négations restantes servent les conditions d’arrêt ou bornent précisément la portée des sources.",
-        "Le CTA final emploie « confier cette tâche », pointe vers /contact et décrit écriture, automatisation, recette, décision conservée et absence de fichier à envoyer."
+        "Les renvois vers le pilier, méthode et garanties gardent la validation et la modification de règle sous contrôle du cabinet."
       ]
     }
   ]

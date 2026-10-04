@@ -1,0 +1,186 @@
+{
+  "slug": "tests-verts-et-regle-des-trois-passes",
+  "preparationStatus": "NON_PUBLIABLE_attend_authentification_metier_du_recit_et_revue",
+  "inlineProofs": [
+    {
+      "id": "trois-passes-journal-recette",
+      "insertBeforeHeading": "Une fiche de recette que le cabinet peut reprendre",
+      "alt": "Journal de recette fictif : bornes mal lues, total des coûts divergent et exercice agrégé à l’écran, trois arrêts.",
+      "source": "écran fictif des trois cas de journal-rejeu.json ; reconstitution, pas une capture historique",
+      "capturedAt": "2026-10-03"
+    },
+    {
+      "id": "trois-passes-chaine-preuve",
+      "insertBeforeHeading": "Troisième passe : l'écran, pour refaire le geste humain",
+      "alt": "Chaîne de preuve fictive : trois coûts rapprochés de leurs cellules, une référence restée en Z, total 50 pour 55 attendu.",
+      "source": "écran fictif du cas « chaîne » de journal-rejeu.json ; reconstitution, pas une capture historique",
+      "capturedAt": "2026-10-03"
+    }
+  ],
+  "title": "Pourquoi des tests verts manquent des défauts : la règle des trois passes",
+  "tabTitle": "Tests verts et défauts invisibles : trois passes | Memlia",
+  "summary": "Deux défauts non vus par les suites vertes, un contrôle qui a rougi à raison : suites, chaîne de preuve et écran sur un jeu fictif distinct du cas historique.",
+  "description": "Pourquoi des tests verts peuvent manquer des défauts : deux angles morts, un test rouge à raison et trois passes pour relire le résultat avec le cabinet.",
+  "date": "2026-10-02",
+  "topics": [
+    "methode",
+    "automatisation"
+  ],
+  "keywords": [
+    "tests verts défauts",
+    "chaîne de preuve",
+    "recette logiciel cabinet"
+  ],
+  "primaryQuery": "pourquoi des tests verts peuvent manquer des défauts",
+  "secondaryQueries": [],
+  "intent": "diagnostiquer",
+  "fanOut": [
+    "suites vertes",
+    "chaîne de preuve",
+    "lecture à l’écran"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "chefs-mission-portefeuille"
+    ],
+    "proofLevel": "indirect",
+    "proofNote": "La note interne sur le pôle social du 25/07/2026 documente les défauts ; les sources publiques de méthodologie ne prouvent pas ce vécu. Kevin a relu et validé sous son nom le corps exact SHA256 76ffb89670b44fa9acecc86b709546f3044b10e8bf3e9288a1b0e9e0fa5e5e3b le 29/09 (commentaire kanban 3997), y compris les deux légendes corrigées. La signature ne s'étend pas à une modification ultérieure du corps ; revue indépendante du rendu et des sources encore requise."
+  },
+  "funnel": "MOFU",
+  "cluster": "methode-decision-humaine",
+  "famille": "ia-generative-agents",
+  "contentType": "searchable",
+  "format": "thought-leadership",
+  "serie": "cicatrices",
+  "task": "Faire vérifier une sortie métier malgré des tests verts, en comparant les entrées, la chaîne et le rendu à l’écran.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Source historique privée : memlia-lecons/references/memlia-module2-supervision-sociale.md, paragraphe « Ce que les tests NE voient pas » ; deux défauts hors suites vertes et troisième test rouge. Aucun nom client ni montant historique publié. Rejeu fictif distinct dans cas-executes.json.",
+  "reviewRule": "Relire à chaque modification de l’expérience attribuée à Kevin ; toute retouche des phrases approuvées exige sa validation du nouveau SHA.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons et testons la règle de votre tâche, la relions aux sorties réellement lues et la recettons avec vos équipes dans vos outils. Le cabinet garde la décision. Rien à envoyer : décrivez la tâche."
+  },
+  "image": {
+    "heroId": "img-art-tests-verts-trois-passes",
+    "alt": "Trois postes de vérification distincts en diorama, pour les suites, la chaîne de preuve et la lecture humaine",
+    "brief": {
+      "sujet": "Trois passes complémentaires pour vérifier une sortie métier.",
+      "composition": "Trois stations distinctes sans chiffres lisibles, fond crème et pièces vertes et graphite.",
+      "style": "Diorama 3D isométrique, matières mates, éclairage doux.",
+      "palette": "Crème #fcfbf7 dominante, vert #27b657, vert profond #1c8a41 et graphite #231f20 visibles.",
+      "interdits": "Aucun dossier client, montant réel, validation implicite ou interface fictive.",
+      "alt": "Trois postes de vérification distincts en diorama, pour les suites, la chaîne de preuve et la lecture humaine",
+      "reviewCriteria": [
+        "trois stations lisibles",
+        "aucune donnée réelle",
+        "palette dérivés mesurée",
+        "pas de texte",
+        "récit historique non représenté comme capture",
+        "variants et OG vérifiés"
+      ],
+      "prompt": "Original Memlia 3D isometric editorial cover, wide 16:9, cream #fcfbf7 paper ground. Three clearly separate verification stations for a cabinet automation: TEST station has two green tiles and one dark failed tile; PROOF station has a chain of linked blank paper cards; SCREEN station has only an empty neutral frame and a waiting blank card. A LARGE matte graphite #231f20 rectangular plinth spans the three stations and covers 10 percent of the image; green #27b657 and deep green #1c8a41 blocks are visibly large and distinct on the plinth. No checkmarks, no numbers, no letters, no person, no logo, no UI screenshot, no automatic approval. Geometric tactile shapes, studio light top left, soft shadows."
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "7999952b-f11a-4eb2-9f6e-5098418b2ff6",
+      "model": "gpt_image_2_5",
+      "provider": "higgsfield",
+      "generatedAt": "2026-09-27",
+      "credits": 2.75
+    }
+  },
+  "sources": [
+    {
+      "id": "python-doctest",
+      "publisher": "Python Software Foundation",
+      "title": "doctest — Exemples de tests interactifs en Python",
+      "url": "https://docs.python.org/fr/3/library/doctest.html",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Documentation primaire du langage sur les tests de régression ; ne prouve aucun incident Memlia.",
+      "excerpt": "Réaliser un test de régression en vérifiant que les exemples interactifs provenant d'un fichier de test ou d'un objet de test fonctionnent comme prévu."
+    },
+    {
+      "id": "python-unittest",
+      "publisher": "Python Software Foundation",
+      "title": "unittest — Unit testing framework",
+      "url": "https://docs.python.org/fr/3/library/unittest.html",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Documentation primaire du lanceur de tests ; ne prouve ni défaut réel ni chiffre de Memlia.",
+      "excerpt": "est un composant qui orchestre l'exécution des tests et fournit le résultat pour l'utilisateur"
+    },
+    {
+      "id": "pytest-assert",
+      "publisher": "pytest",
+      "title": "How to write and report assertions in tests",
+      "url": "https://docs.pytest.org/en/stable/how-to/assert.html",
+      "level": "tier-2",
+      "official": false,
+      "classificationReason": "Documentation primaire du framework pytest sur les échecs d’assertion, sans lien avec les faits historiques.",
+      "excerpt": "you will see the return value of the function call:"
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/methode",
+      "/contact"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/methode",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ],
+    "decision": "Le récit signé décrit un défaut réel et une règle de recette ; la page méthode explique une prestation, le pilier cartographie les tâches."
+  },
+  "serp": {
+    "requete": "pourquoi des tests verts peuvent manquer des défauts",
+    "date": "2026-09-28",
+    "acteurs": [
+      "Splunk",
+      "Shift Op Solutions"
+    ],
+    "note": "WebSearch méthodologique du 28/09/2026 ; autocomplétion ciblée du 27/09 vide mais réellement mesurée. Aucun rang ni volume revendiqué."
+  },
+  "gsc": {
+    "requete": "pourquoi des tests verts peuvent manquer des défauts",
+    "date": "2026-09-28",
+    "impressions": 0,
+    "clics": 0,
+    "note": "Nouvelle URL absente de Search Console avant publication ; aucune impression attribuée."
+  },
+  "claims": [
+    {
+      "unite": "Ils confirment seulement les cas qu'ils exercent.",
+      "claim": "Ils confirment seulement les cas qu'ils exercent.",
+      "type": "methode",
+      "sourceId": "python-doctest",
+      "excerpt": "Réaliser un test de régression en vérifiant que les exemples interactifs provenant d'un fichier de test ou d'un objet de test fonctionnent comme prévu.",
+      "translationTerms": [
+        {
+          "claimTerm": "confirment",
+          "citationTerm": "vérifiant"
+        },
+        {
+          "claimTerm": "cas",
+          "citationTerm": "exemples"
+        }
+      ],
+      "explanation": "La documentation montre que le test de régression vérifie les exemples exécutés, pas tous les scénarios possibles. Elle ne prouve ni l'intention personnelle de Kevin ni les incidents de juillet ; ceux-ci relèvent de sa note interne et de sa validation du texte exact."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "direction-associes"
+  }
+}

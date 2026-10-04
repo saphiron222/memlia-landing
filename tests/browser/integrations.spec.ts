@@ -71,9 +71,9 @@ test('les dix pages gardent leurs repères accessibles essentiels', async ({ pag
   }
 });
 
-test('sans JavaScript, le contenu, la preuve et le retour au moyeu restent servis', async ({ browser }) => {
+test('sans JavaScript, le contenu, la preuve et le retour au moyeu restent servis', async ({ browser, baseURL }) => {
   const context = await browser.newContext({
-    baseURL: process.env.QA_URL ?? 'http://127.0.0.1:4321',
+    baseURL,
     javaScriptEnabled: false,
     viewport: { width: 375, height: 812 },
   });

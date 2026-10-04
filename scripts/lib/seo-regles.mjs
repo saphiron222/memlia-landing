@@ -239,13 +239,13 @@ export function extraireQuestionsSerp(resultat) {
 }
 
 /**
- * C2 — une requête primaire mesurée à zéro suggestion d'autocomplétion est un angle que personne ne tape.
+ * C2 — zéro suggestion sur la requête primaire testée ne prouve ni zéro demande, ni zéro audience.
  * Une requête absente des mesures n'a pas été mesurée (instrument en panne) : aucune alerte, jamais un zéro supposé.
  */
 export function alertesDemande(registre, autocompletion) {
   return (registre?.articles ?? [])
     .filter((a) => Object.prototype.hasOwnProperty.call(autocompletion ?? {}, a.requete) && (autocompletion[a.requete] ?? []).length === 0)
-    .map((a) => `requête primaire sans demande mesurée à l’autocomplétion : « ${a.requete} » (${a.slug}) — recaler le titre ou l’angle (voir questions.mjs)`);
+    .map((a) => `aucune suggestion relevée pour la requête primaire testée : « ${a.requete} » (${a.slug}) — ne conclure ni au volume, ni à la demande, ni à l’audience ; revoir la formulation ou l’angle (voir questions.mjs)`);
 }
 
 const normaliserPage = (page) => String(page ?? '').replace(/\/$/, '') || String(page ?? '');

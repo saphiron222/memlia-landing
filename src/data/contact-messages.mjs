@@ -10,6 +10,7 @@ export const MESSAGES_CONTACT = Object.freeze({
   consentement: 'Cochez la case pour que nous puissions vous répondre.',
   'trop-de-messages': 'Plusieurs messages viennent de partir depuis cette connexion. Réessayez dans une heure, ou écrivez-nous par courriel.',
   'trop-long': 'Le message dépasse la taille acceptée. Raccourcissez-le, ou écrivez-nous par courriel.',
+  verification: 'La vérification anti-abus a échoué ou expiré. Recommencez-la avant l’envoi, ou écrivez-nous par courriel.',
   illisible: 'Le navigateur a envoyé un formulaire que nous ne savons pas lire. Rechargez la page et réessayez.',
   indisponible: 'Le formulaire est indisponible pour le moment. Écrivez-nous par courriel.',
 });

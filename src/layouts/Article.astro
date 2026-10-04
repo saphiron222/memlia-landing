@@ -4,7 +4,7 @@ import Picture from '@/components/Picture.astro';
 import Picto from '@/components/Picto.astro';
 import Button from '@/components/Button.astro';
 import ArticleJsonLd from '@/components/ArticleJsonLd.astro';
-import { SITE, CTA, OG_IMAGE } from '@/data/site.mjs';
+import { SITE, CTA, OG_IMAGE, PAGES_NOINDEX } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { rubriquePourArticle } from '@/data/blog-rubriques.mjs';
 import { lienCommercialPourArticle } from '@/data/blog-commercial-links.mjs';
@@ -86,7 +86,7 @@ const articleCta = {
 const lienCommercial = lienCommercialPourArticle(entree.id);
 ---
 
-<Base titre={data.titreOnglet ?? `${data.titre} | Memlia`} titreSocial={data.titre} description={description} chemin={chemin} noindex={candidatPreview} ogType="article" socialImage={socialImage} base="/">
+<Base titre={data.titreOnglet ?? `${data.titre} | Memlia`} titreSocial={data.titre} description={description} chemin={chemin} noindex={candidatPreview || PAGES_NOINDEX.includes(chemin)} ogType="article" socialImage={socialImage} base="/">
   <Fragment slot="head">
     <meta property="article:published_time" content={isoComplet(data.datePublication)} />
     <meta property="article:modified_time" content={isoComplet(dateMiseAJour)} />
@@ -275,6 +275,11 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
   .article-corps :global(th), .article-corps :global(td) { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--ligne-douce); }
   .article-corps :global(th) { font-weight: 600; color: var(--texte-fort); border-bottom-color: var(--ligne-forte); }
   .article-corps :global(figure) { margin: 1.8em 0; }
+  .article-corps :global(.preuve-defilante) { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); }
+  .article-corps :global(.preuve-defilante:focus-visible) { outline: 3px solid var(--accent-texte); outline-offset: 3px; }
+  /* Conserver les 1600 pixels natifs du cadre pour lire ses petits libellés. */
+  .article-corps :global(.preuve-defilante img) { display: block; width: 1600px; max-width: none; height: auto; }
+  .article-corps :global(figure[data-blog-proof] > img) { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); }
   .article-corps :global(figure svg) { width: 100%; height: auto; display: block; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-page); }
   .article-corps :global(figcaption) { margin-top: 8px; font-size: var(--t-sm); color: var(--texte-2); }
   .article-corps :global(code) { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; background: var(--surface-hover); padding: 0.1em 0.35em; border-radius: 4px; }
@@ -285,7 +290,7 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
   .article-sources ol { padding-left: 1.3em; list-style: decimal; font-size: var(--t-sm); color: var(--texte-2); display: grid; gap: 6px; }
   .article-sources a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
   .article-pont {
-    display: grid; gap: 12px; justify-items: start; margin-top: 48px; padding: 32px 24px;
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; justify-items: start; margin-top: 48px; padding: 32px 24px;
     border: 1px solid var(--ligne); border-radius: var(--r-carte); background: rgba(255, 254, 251, 0.92); box-shadow: var(--ombre-xs);
   }
   .article-pont h2 { font-size: var(--t-3xl); max-width: 24ch; }
@@ -293,7 +298,12 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
   /* Le lien vers la méthode était une ligne nue en fin de page, sans style ni marge, là où
      l'attention est la plus faible. Il devient l'action secondaire du bloc d'appel, au moment
      où la décision se pose, sur le motif déjà employé par la sortie de la page blog. */
-  .article-pont-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 4px; }
+  .article-pont-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 4px; min-width: 0; max-width: 100%; }
+  /* Les libellés restent entiers : retour à la ligne, pas de crop ni de police réduite. */
+  .article-pont-actions :global(.btn) {
+    max-width: 100%; min-width: 0; white-space: normal; height: auto; min-height: var(--bouton-h);
+    padding-top: 8px; padding-bottom: 8px; line-height: 1.3; text-align: center; overflow-wrap: anywhere;
+  }
   .article-auteur { display: flex; gap: 16px; align-items: flex-start; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--ligne-douce); }
   .auteur-initiale {
     display: grid; place-items: center; flex: 0 0 auto; width: 48px; height: 48px; border-radius: 12px;

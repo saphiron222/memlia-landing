@@ -35,6 +35,18 @@ export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
     href: '/automatisation/paie',
     label: 'Voir la prise en charge autour de la paie',
   }),
+  'logiciel-ia-comptabilite': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir le service d’automatisation sur mesure',
+  }),
+  'prompt-chatgpt-expert-comptable': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir comment automatiser une règle de cabinet',
+  }),
+  'tests-verts-et-regle-des-trois-passes': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir le service d’automatisation et sa recette',
+  }),
   'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils': Object.freeze({
     href: '/automatisation-cabinet-comptable',
     label: 'Voir le service d’automatisation',

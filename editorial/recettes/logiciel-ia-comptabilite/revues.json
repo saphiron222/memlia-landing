@@ -1,0 +1,213 @@
+{
+  "subject": {
+    "slug": "logiciel-ia-comptabilite",
+    "bodySha256": "81f6827dbace394c2292b9006b3593a9b1861830c3dd2b21ca7124d27bd058bf",
+    "recipeSha256": "f23cdee00527d841e6fbec8e40c16c812435d8411ef4e32a1b0e5d7abbd14dcc",
+    "renderedSha256": "46002a0d68fe783dd4a980fd35147f78809c5bda1453e971a1f114be6aa24447"
+  },
+  "editorial": {
+    "reviewer": "metier:t_303e7c6d",
+    "p0": [],
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Le corps propose un protocole de comparaison sur même jeu fictif avec trois états vérifié/à configurer/non vérifié ; aucun résultat d'essai d'éditeur n'est présenté."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Titre, H1 et description restent centrés sur une grille de choix et non un comparatif commercial mesuré ; la route historique est conservée."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Copies CNIL, Ordre et Service-Public et leurs SHA/extraits vérifiés ; la recommandation CNIL concerne un système d'IA générative, et non tous les logiciels ; Service-Public ne prouve pas l'archivage d'un éditeur."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Deux figures : grille fictive de démonstration (logiciel actuel et solutions A et B anonymes relevés sur la pièce nominale, états vérifié / à configurer / non vérifié) et file de contrôle fictive montrant les quatre sorties de journal-rejeu.json, proposition à valider, doublon probable, période ambiguë et donnée absente, sans écriture. Aucun éditeur nommé ni testé, comme l’indiquent figures et article."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "HTML construit localement : deux figures data-blog-proof à une seule img WebP 1600 × 900 (lazy, async) servie au bureau comme au téléphone, alts présents et identiques à la recette, zéro figcaption et aucun panneau défilant ; CSS width/max-width 100 %, height auto ; captures 1280 et 390 px sans débordement. Robots index, follow sur ce build local uniquement, sans constat de production."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Grille, cas et FAQ ne permettent pas d'inférer une capacité de Dext, Pennylane ni d'un logiciel actuel ; les limites de la règle locale sont répétées."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "Le lien vers méthode et pilier garde le choix et la décision dans le cabinet, sans prétendre avoir livré la configuration illustrée."
+        ]
+      }
+    }
+  },
+  "business": {
+    "reviewerTaskId": "t_1a9ed93d",
+    "claims": {
+      "claim-unit-5d8def65a991-1": {
+        "verdict": "soutient",
+        "reasoning": "CNIL, FAQ IA générative, copie vérifiée 29/09 : recommande de partir de besoins concrets pour choisir un système d'IA générative. corps.md:103 préserve ce champ et le caractère de conseil, non obligation générale."
+      },
+      "claim-unit-d18a00bf00fb-1": {
+        "verdict": "soutient",
+        "reasoning": "L'Ordre annonce ses propres ressources data et IA dans la copie vérifiée 29/09 ; corps.md:105 ne prétend pas qu'il a certifié un éditeur."
+      },
+      "claim-unit-d1a753e6d63c-1": {
+        "verdict": "soutient",
+        "reasoning": "Service-Public F10029, copie vérifiée 29/09 : conservation minimale des documents d'entreprise selon leur nature ; corps.md:107 et 138 en excluent explicitement une garantie d'archivage logiciel."
+      }
+    }
+  },
+  "image": {
+    "reviewer": "claude:revue-figures-20261003",
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Couverture inchangée, relue : bac de tri graphite à trois compartiments, feuilles blanches, deux cubes verts et portique vide, sans texte, conforme à son alt.",
+          "Les deux figures reprennent le gabarit des références : fenêtre unique, en-tête à pastille, « Jeu d’essai fictif · dossier D-001 · avril 2026 », écran d’outil, palette et typographie communes."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Cadre et fond identiques au pixel près aux références hors zone de contenu ; textes nets, aucun libellé tronqué ; aucun logo ni éditeur, solutions désignées A et B, fournisseurs « Fictif ».",
+          "Aucun résultat mesuré : « 1 cas sur 4 relevé » et « 4 pièces » sont des compteurs de l’écran fictif ; la couverture ne porte ni texte ni marque."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Les deux en-têtes affichent « Jeu d’essai fictif » ; la file reproduit les quatre cas de journal-rejeu.json (D-001, avril, aucune écriture) avec des numéros de pièce propres à l’article, et la grille n’évalue aucun éditeur.",
+          "Recette et contrat interne déclarent des sources fictives et capturedAt 2026-10-03, sans légende publique."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Grille : version montrée, sortie, étapes manuelles, trace après correction et trois états, comme la section de préparation ; file : nominal, doublon, période ambiguë et donnée absente, comme le rejeu du corps."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "WebP 1600 × 900 servis seuls au bureau et au téléphone, identiques aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile référencé ; captures 1280 et 390 px sans débordement.",
+          "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Alts de 103 et 117 caractères, identiques dans le HTML construit et la recette, fidèles à la grille et à la file visibles.",
+          "L’alt de couverture correspond à l’image : trois feuilles, bac de tri, portique vide, aucune issue de contrôle visible."
+        ]
+      }
+    },
+    "directionArt": 17,
+    "semanticRelevance": 21,
+    "scoreProvenance": "Notes conservées : couverture inchangée, nouvelles figures conformes au gabarit des références ; aucune nouvelle mesure."
+  },
+  "sources": {
+    "reviewedBy": "metier:t_1a9ed93d",
+    "observations": {
+      "cnil-choix-ia": "Extrait HTML et copie SHA 63f97670... vérifiés, conseil pour IA générative uniquement.",
+      "ordre-outils-ia": "Copie SHA 1b650c10... vérifiée, ressources propres de l'Ordre, pas certificat produit.",
+      "service-public-pieces": "Copie SHA 5096184c... vérifiée, conservation documentaire et durée selon la nature."
+    }
+  },
+  "qualite": {
+    "reviewer": "metier:t_303e7c6d",
+    "score": 91,
+    "p0": [],
+    "categories": {
+      "contentQuality": {
+        "score": 27,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 22,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 14,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 14,
+        "max": 15
+      }
+    },
+    "evidence": [
+      "27/30 : protocole de comparaison à faire chez le vendeur ; quatre cas de règle locale, tous visibles dans la file de contrôle fictive (proposition, doublon probable, période ambiguë, donnée absente), sans écriture.",
+      "22/25 : grille de choix et maillage cohérents, sans classement ni performance commerciale mesurés.",
+      "14/15 : trois claims déjà confrontés aux copies, contexte CNIL limité à l'IA générative ; aucune nouvelle consultation HTTP.",
+      "14/15 : deux images 1600 × 900 directes, sans légende ni défilement, qui tiennent dans la colonne à 1280 et 390 px et restent lisibles dans leurs grandes masses sur téléphone ; aucune mesure Lighthouse ou de production.",
+      "14/15 : tableaux citables seulement avec la mention qu'aucun éditeur n'a été évalué."
+    ],
+    "reservations": [
+      "Le contrat interne déclare capturedAt 2026-10-03 pour les deux nouvelles figures, sans horodatage autonome de fabrication ; les captures à 1280 et 390 px relues ici attestent leur rendu, non leur date de création.",
+      "Robots index dans le build local ; QA/CI, scellement et contenu HTML effectivement servi après intégration restent à prouver."
+    ],
+    "seo": [
+      "Titre/canonical cohérents dans le rendu local ; robots index, follow pour l'article déjà publié."
+    ],
+    "geo": [
+      "Ne pas attribuer les sorties de l'oracle à un éditeur."
+    ],
+    "verdict": "AI_REVIEW_PASS sur les deux nouvelles figures 1600 × 900 et leur rendu local relu à 1280 et 390 px, sous réserve de la traçabilité de fabrication ; ni scellement ni publication."
+  },
+  "technicalBindingMaintenance": {
+    "maintainedBy": "claude:recette-images-20261003",
+    "maintainedAt": "2026-10-03",
+    "reason": "Figures de corps remplacées selon la recette de référence (décision Kevin du 03/10/2026) : deux écrans d’outil fictifs 1600 × 900, mêmes ancrages, nouveaux identifiants et alts dans la recette. Corps, sources, affirmations et règles inchangés (bodySha256 identique) ; les constats éditoriaux, métier et qualité sur le texte sont maintenus ; les critères image et les constats qui décrivaient les anciennes figures sont reformulés par la revue indépendante des nouvelles figures.",
+    "figureReview": {
+      "reviewer": "claude:revue-figures-20261003",
+      "reviewedAt": "2026-10-03",
+      "figures": [
+        {
+          "id": "logiciel-grille-demonstration",
+          "result": "PASS",
+          "constat": "Grille au gabarit des références (pastille verte, « Jeu d’essai fictif · dossier D-001 · avril 2026 », un titre « Pièce nominale reçue », onglets des quatre cas) : relevé version montrée / sortie / étapes manuelles / trace après correction pour le logiciel actuel et deux solutions anonymes A et B, avec les trois états du corps (vérifié sur le cas, à configurer, non vérifié) et « Non montrée » plutôt qu’« absent ». Suit exactement la consigne de la section et « y compris le logiciel déjà utilisé » ; aucun éditeur nommé, aucun logo ; « 1 cas sur 4 relevé » est un compteur d’avancement, pas un résultat. Alt fidèle (103 caractères). Tient dans la colonne à 1280 et 390 px."
+        },
+        {
+          "id": "logiciel-file-controle",
+          "result": "PASS",
+          "constat": "File de contrôle au gabarit des références (pastille orange, « Jeu d’essai fictif · dossier D-001 · avril 2026 », titre « 4 pièces · aucune écriture ») : FA-2026-0321 en proposition à valider puis en doublon probable, FA-2026-0398 en période ambiguë (mars lu pour avril), pièce sans référence en arrêt pour donnée absente, puis le détail du doublon sélectionné (FA-2026-0321 reçue le 08/04, déjà reçue le 03/04, écriture aucune, reprise « Comparer les deux pièces »). Les quatre sorties concordent avec journal-rejeu.json et les tables du corps (aucune écriture, doublon à comparer et non à supprimer) ; numéros de pièce propres à l’article, fournisseurs « Fictif », aucune marque ni personne. Alt fidèle (117 caractères). Tient dans la colonne à 1280 et 390 px."
+        }
+      ]
+    },
+    "previousSubject": {
+      "slug": "logiciel-ia-comptabilite",
+      "bodySha256": "81f6827dbace394c2292b9006b3593a9b1861830c3dd2b21ca7124d27bd058bf",
+      "recipeSha256": "ab11a2afa75d574a21cb15f86f2884209d3914f876459a906eaebc00a91f4c1f",
+      "renderedSha256": "4f07160929357c98d49b15b7864f9d66776c6e42501a1264cd2b99a63ab99275"
+    },
+    "previousMaintenance": {
+      "maintainedBy": "dev:t_30243835",
+      "maintainedAt": "2026-10-03",
+      "reason": "updatedAt de republication uniquement ; avis métier du 03/10 maintenu sur corps, sources, figures et règles inchangés. Ni nouvelle revue ni contrôle public.",
+      "previousSubject": {
+        "slug": "logiciel-ia-comptabilite",
+        "bodySha256": "81f6827dbace394c2292b9006b3593a9b1861830c3dd2b21ca7124d27bd058bf",
+        "recipeSha256": "90e1ab2c79b42f1e0a6c3b58126637089035653d0b3a1849d94050158edf6b8e",
+        "renderedSha256": "4f07160929357c98d49b15b7864f9d66776c6e42501a1264cd2b99a63ab99275"
+      }
+    }
+  }
+}
