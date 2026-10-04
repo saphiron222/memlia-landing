@@ -45,8 +45,8 @@ export const OUTILS: readonly OutilDefinition[] = [
     categorie: 'ecrire',
     statut: 'disponible',
     h1: 'Générateur de prompt pour expert-comptable',
-    title: 'Générateur de prompt expert-comptable gratuit | Memlia',
-    description: 'Générateur de prompt pour expert-comptable gratuit : assemblez les entrées autorisées, le format, la validation et les arrêts. Éditez, copiez ou exportez localement.',
+    title: 'Générateur de prompt pour expert-comptable | Memlia',
+    description: 'Décrivez une tâche abstraite du cabinet et préparez un prompt structuré, avec validation humaine, conditions d’arrêt et exemples fictifs.',
     promesse: { entree: 'Tâche abstraite et contraintes choisies', resultat: 'Prompt éditable, frontière et cas fictifs à rejouer' },
     limites: [
       'Cet outil assemble des blocs écrits dans le navigateur ; il n’appelle aucun modèle et ne fournit aucune réponse comptable.',
@@ -56,6 +56,7 @@ export const OUTILS: readonly OutilDefinition[] = [
     ],
     mentionLocale: 'Vos choix et votre prompt restent dans ce navigateur, sans envoi ni stockage. Recharger la page les efface. La copie et le fichier texte sont produits seulement à votre demande.',
     proof: 'v2/29-outil-prompt',
+    zoneLarge: true,
     source: {
       nom: 'CNIL — Questions-réponses sur l’utilisation d’un système d’IA générative',
       url: 'https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative',

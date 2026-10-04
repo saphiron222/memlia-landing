@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "revue": "metier-review-r5",
+  "reaffirmeLe": "2026-10-04T20:12:30.909Z",
+  "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
+  "registreSha256": "50b93a7552426b36cf85338fe0df5d2b3e43013b58f1ed16b6b1276c538c9458",
+  "declarationRef": "docs/qa/outils-prompt/chrome/declaration.json",
+  "declarationSha256": "95f169e3a1b88866fd27160db47b368a88bf8d07456e2089b956a9bc9f811449",
+  "ancreRef": "docs/qa/outils-prompt/chrome/sujet-ancre.json",
+  "ancreSha256": "4d834480e566df093f121f5a4165f606f96e82de58c23ccf8bfefebc1a03c605",
+  "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
+  "surfaces": {
+    "T": {
+      "action": "réaffirmée",
+      "sujetAncre": "85f2f69f3c02c4fa60fe0b226be637b2f61c961e919b8e85311e9d79e3ec5603",
+      "sujetReaffirme": "5d3d157be8a911c2a0b406da73747910557e843a81ca35e471698cc5a91da43d",
+      "feuillesEcartees": 1,
+      "feuillesParChamp": {
+        "buildOutputDigest.buildOutputDigest": 1
+      },
+      "justifications": {
+        "buildOutputDigest": "Ajout du générateur de prompt au footer : main sérialisé identique au témoin intégré ; affirmations, copies et 27 verdicts conservés."
+      },
+      "affirmationsRenduesVerifiees": 77,
+      "verdictsConserves": 27,
+      "candidateHash": "a0ce55b9470a0d0c3ef901607c5082d1afda6f72c7cee65fded9c4b0db5cfc35",
+      "auditHash": "33117fceb5af35ec3e9614e3fb8fb1097f719d5b75c65ca3115b733bab4be66a",
+      "manifestSha256": "af2107a048d73001dd65446b6b0982ed0f98f028ad27e8a221e02f82aa8377c6",
+      "preuveRef": "docs/qa/site-copy-b/preuve-glossaire-metier.json",
+      "preuveSha256": "be15ef38b5181d4957fba23ab7c412e4a464d5b924d0282939588d76b91d1774"
+    }
+  }
+}

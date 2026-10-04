@@ -87,7 +87,7 @@ test('refus accessibles et aucune édition écrasée sans confirmation', async (
   await expect(editor).toHaveValue(edited);
 });
 test('toutes les amorces, choix configurables et effacement explicite', async ({ page }) => {
-  for (const seed of ['Demande de pièces', 'Synthèse de notes', 'Checklist de contrôle', 'Transmission interne']) {
+  for (const seed of ['Demande de pièces', 'Synthèse de notes', 'Checklist de contrôle', 'Tri d’écarts']) {
     await page.goto(ROUTE);
     await page.getByRole('button', { name: seed, exact: true }).click();
     await page.getByLabel('Format attendu').selectOption('tableau');
@@ -107,7 +107,7 @@ test('toutes les amorces, choix configurables et effacement explicite', async ({
   await expect(page.getByLabel('Description abstraite de la tâche')).toHaveValue('');
 });
 test('maillage, médias propres, canonical et sitemap', async ({ page }) => {
-  for (const route of ['/outils-comptables-gratuits', '/methode']) {
+  for (const route of ['/outils-comptables-gratuits', '/methode', '/automatisation-cabinet-comptable']) {
     await page.goto(route); await expect(page.locator(`main a[href="${ROUTE}"]`)).toBeVisible();
   }
   const response = await page.goto(ROUTE); expect(response?.status()).toBe(200);

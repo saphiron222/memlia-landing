@@ -16,10 +16,10 @@ const choices = [
     <div class="actions">{AMORCES.map((seed) => <button class="btn btn-contour" type="button" data-seed={seed.task}>{seed.label}</button>)}</div>
   </div>
   <form class="prompt-form" data-own-telemetry novalidate autocomplete="off">
-    <h2 id="outil-calcul">Votre consigne, dans vos mots</h2>
+    <h2>Votre consigne, dans vos mots</h2>
     <p class="hint" id="prompt-privacy">Décrivez seulement un geste abstrait : aucun nom, identifiant, montant, contenu de pièce ni fichier. Le filtre repère quelques signaux explicites ; il ne détecte pas tous les noms et n’anonymise rien.</p>
     {choices.map((choice) => <label>{choice.label}<select name={choice.name} required><option value="">Choisir…</option>{choice.options.map((option) => <option value={option.id}>{option.label}</option>)}</select></label>)}
-    <label>Description abstraite de la tâche<textarea name="description" minlength="20" maxlength="300" rows="4" required aria-describedby="prompt-privacy" placeholder="Préparer une demande générique de pièces manquantes."></textarea></label>
+    <label>Description abstraite de la tâche<textarea name="description" minlength="20" maxlength="800" rows="4" required aria-describedby="prompt-privacy" placeholder="Préparer une demande générique de pièces manquantes."></textarea></label>
     <label class="confirmation"><input type="checkbox" name="confirmed" required />Je confirme que cette description ne contient aucune donnée réelle.</label>
     <div class="actions">
       <button class="btn btn-principal" type="submit">Assembler le prompt</button>
@@ -30,7 +30,8 @@ const choices = [
   <section class="result" data-output hidden aria-labelledby="prompt-result-title">
     <h2 id="prompt-result-title" tabindex="-1">Prompt à relire et à adapter</h2>
     <p>Assemblage de blocs écrits, pas une réponse d’IA. Ce prompt ne garantit ni la qualité d’une réponse future, ni la confidentialité de l’outil où vous le collerez. Avant tout usage réel, le cabinet choisit l’outil et les données qu’il autorise.</p>
-    <label>Prompt éditable<textarea data-editor rows="18" maxlength="12000" spellcheck="false" aria-describedby="prompt-check-help"></textarea></label>
+    <label>Prompt éditable<textarea data-editor rows="18" maxlength="12000" spellcheck="false" aria-describedby="prompt-check-help prompt-editor-help"></textarea></label>
+    <p class="hint" id="prompt-editor-help">Le champ défile pour lire les sept blocs. Vous pouvez l’agrandir avec sa poignée inférieure ; la copie et le fichier contiennent le texte complet.</p>
     <div class="check">
       <h3>Contrôle des contraintes</h3>
       <p id="prompt-check-help">Contrôle structurel local, après chaque édition : rubriques remplies, gardes inchangés, quelques signaux sensibles. Il ne comprend pas le sens, ne vérifie aucune règle comptable et ne certifie pas un prompt sûr.</p>
@@ -49,6 +50,18 @@ const choices = [
     <ul data-cases></ul>
   </section>
   <p class="status" data-status aria-live="polite"></p>
+  <section class="check" aria-labelledby="prompt-example-title">
+    <h2 id="prompt-example-title">D’une demande vague à une consigne à relire</h2>
+    <p>Avant : « Préparer une demande de pièces ». Après : un brouillon court à partir d’une liste fictive, des questions si une pièce manque, une relecture par le collaborateur et aucun envoi automatique. L’amorce « Demande de pièces » permet de produire cette consigne ; elle ne produit pas de réponse comptable.</p>
+    <h3>Comment essayer le prompt ?</h3>
+    <p>Chargez une amorce, choisissez les entrées et la sortie, puis assemblez. Relisez les sept blocs et le validateur ; copiez le texte dans l’outil autorisé par votre cabinet. Rejouez séparément le cas complet, le point manquant et les consignes contradictoires. Comparez ce que l’outil répond aux attentes affichées avant d’envisager un usage réel.</p>
+    <h3>Le générateur utilise-t-il ChatGPT ?</h3>
+    <p>Non. Nous assemblons des blocs écrits dans votre navigateur, gratuitement et sans inscription. Aucun modèle ne répond à votre description.</p>
+    <h3>Une structure complète rend-elle le prompt fiable ?</h3>
+    <p>Non. Le contrôle repère des rubriques, un validateur explicite et quelques signaux sensibles, pas le sens de chaque phrase. Une consigne contradictoire peut lui échapper : le cabinet relit le texte et vérifie les réponses du modèle choisi.</p>
+    <h3>Que deviennent mes éditions si je change les choix ?</h3>
+    <p>Le texte reste dans l’éditeur. Copie et export attendent le nouvel assemblage ; remplacer un texte édité demande votre confirmation. Si le presse-papiers est indisponible, sélectionnez le texte et utilisez votre raccourci de copie, ou exportez un fichier UTF-8.</p>
+  </section>
 </div>
 <script>
   import { AMORCES, assemblePrompt, checkPrompt } from '@/lib/prompt-comptable.mjs';
@@ -62,6 +75,7 @@ const choices = [
     const copy = root.querySelector<HTMLButtonElement>('[data-copy]')!;
     const download = root.querySelector<HTMLButtonElement>('[data-download]')!;
     let generated = '';
+    let stale = false;
     let generations = 0;
     const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
     const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', { detail: { action, outil: 'generateur-prompt-expert-comptable' } }));
@@ -78,8 +92,9 @@ const choices = [
         const li = document.createElement('li'); li.textContent = `${item.ok ? 'Présent' : 'À corriger'} : ${item.label}`; return li;
       }));
       root.querySelector('[data-check-status]')!.textContent = result.ok ? 'Structure complète. Le fond reste à relire par une personne.' : 'Contraintes manquantes ou signal sensible : copie et export bloqués. Votre texte est conservé.';
-      copy.disabled = download.disabled = !result.ok;
-      return result.ok;
+      if (stale) root.querySelector('[data-check-status]')!.textContent = 'Choix modifiés : le texte est conservé, mais copie et export attendent un nouvel assemblage.';
+      copy.disabled = download.disabled = stale || !result.ok;
+      return !stale && result.ok;
     };
     const hasContent = () => editor.value.length > 0 || Boolean(field('description').value);
     root.querySelectorAll<HTMLButtonElement>('[data-seed]').forEach((button) => button.addEventListener('click', () => {
@@ -93,7 +108,12 @@ const choices = [
       field('description').focus();
       status.textContent = 'Amorce chargée. Confirmez la description puis assemblez ; tout prompt existant reste inchangé.';
     }));
-    form.addEventListener('input', () => { clearError(); if (editor.value) status.textContent = 'Choix modifiés. Le prompt précédent est conservé ; assemblez pour le remplacer.'; });
+    const invalidate = () => {
+      clearError();
+      if (editor.value) { stale = true; control(); status.textContent = 'Choix modifiés. Le prompt précédent est conservé ; assemblez pour le remplacer.'; }
+    };
+    form.addEventListener('input', invalidate);
+    form.addEventListener('change', invalidate);
     form.addEventListener('submit', (event) => {
       event.preventDefault(); clearError();
       const result = assemblePrompt({ ...Object.fromEntries(new FormData(form)), confirmed: (field('confirmed') as HTMLInputElement).checked });
@@ -104,6 +124,7 @@ const choices = [
       }
       if (editor.value && editor.value !== generated && !window.confirm('Remplacer votre prompt édité par une nouvelle génération ? Copiez-le auparavant si vous souhaitez le garder.')) { status.textContent = 'Génération annulée. Votre texte est conservé.'; emit('annulation'); return; }
       editor.value = generated = result.text;
+      stale = false;
       editor.scrollTop = 0;
       root.querySelector('[data-boundary]')!.replaceChildren(...result.boundary.map((row) => {
         const div = document.createElement('div'); const dt = document.createElement('dt'); const dd = document.createElement('dd'); dt.textContent = row.label; dd.textContent = row.value; div.append(dt, dd); return div;
@@ -119,13 +140,13 @@ const choices = [
     editor.addEventListener('input', () => { control(); status.textContent = 'Édition conservée ; contrôle structurel actualisé.'; });
     root.querySelector('[data-clear]')!.addEventListener('click', () => {
       if (hasContent() && !window.confirm('Effacer les choix et le prompt dans ce navigateur ?')) return;
-      form.reset(); editor.value = generated = ''; output.hidden = true; clearError(); status.textContent = 'Choix et prompt effacés.'; field('task').focus();
+      form.reset(); editor.value = generated = ''; stale = false; output.hidden = true; clearError(); status.textContent = 'Choix et prompt effacés.'; field('task').focus();
       emit('effacer');
     });
     copy.addEventListener('click', async () => {
       if (!control()) return;
       try { await navigator.clipboard.writeText(editor.value); status.textContent = 'Prompt copié.'; emit('copie'); }
-      catch { status.textContent = 'Copie bloquée par le navigateur. Sélectionnez le texte ou exportez-le.'; }
+      catch { editor.focus(); editor.select(); status.textContent = 'Copie bloquée par le navigateur. Le texte est sélectionné : utilisez le raccourci de copie ou exportez-le.'; }
     });
     download.addEventListener('click', () => {
       if (!control()) return;

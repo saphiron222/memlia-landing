@@ -3,7 +3,7 @@ export const TASKS = [
   { id: 'pieces', label: 'Demande de pièces', prepare: 'Préparer un brouillon générique de demande de pièces manquantes.', human: 'Choisir les pièces réellement nécessaires et décider de l’envoi.' },
   { id: 'synthese', label: 'Synthèse de notes', prepare: 'Organiser des notes fictives en synthèse et questions ouvertes.', human: 'Interpréter le dossier et décider des suites.' },
   { id: 'controle', label: 'Checklist de contrôle', prepare: 'Transformer une procédure fictive en checklist de points à vérifier.', human: 'Définir la règle de contrôle et conclure sur le dossier.' },
-  { id: 'transmission', label: 'Transmission interne', prepare: 'Préparer une note de transmission générique avec les points ouverts.', human: 'Attribuer les responsabilités et décider de la reprise.' },
+  { id: 'ecarts', label: 'Tri d’écarts', prepare: 'Organiser une liste fictive d’écarts en points à examiner et questions ouvertes.', human: 'Interpréter les écarts et décider des corrections nécessaires.' },
 ];
 export const INPUTS = [
   { id: 'liste', label: 'Liste fictive de pièces ou de points attendus' },
@@ -45,7 +45,7 @@ function suspicious(text) {
   return /(?:ignor\w*.*(?:regles|consignes)|(?:valid\w*|envoy\w*|depos\w*|corrig\w*).*(?:automati\w*|sans validation)|(?:calcul\w*|determin\w*).*(?:tva|impot|cotisation|paie))/u.test(normalize(text));
 }
 export function validateDescription(raw) {
-  if (typeof raw !== 'string' || raw.trim().length < 20 || raw.length > 300 || /[\r\n]/u.test(raw)) return { ok: false, error: 'Décrivez un geste abstrait en une phrase de 20 à 300 caractères.' };
+  if (typeof raw !== 'string' || raw.trim().length < 20 || raw.length > 800 || /[\r\n]/u.test(raw)) return { ok: false, error: 'Décrivez un geste abstrait en une phrase de 20 à 800 caractères.' };
   if (suspicious(raw)) return { ok: false, error: 'Retirez chiffres, identifiants, coordonnées, liens et demandes de décision automatique. Décrivez seulement une préparation.' };
   return { ok: true };
 }
@@ -91,6 +91,8 @@ export function checkPrompt(text) {
     return { label, ok: matches.length === 1 && matches[0][2].trim().length >= 20 };
   });
   items.push({ label: 'Gardes de préparation et de validation inchangés', ok: GUARDS.every((guard) => text.split('\n').includes(guard)) });
+  const frontier = blocks.find((block) => block[1] === 'Frontière')?.[2] ?? '';
+  items.push({ label: 'Validateur explicite dans la frontière', ok: VALIDATORS.some((validator) => frontier.includes(`Relire le fond et la forme avec : ${validator.label}.`)) });
   items.push({ label: 'Taille et signaux explicites de données sensibles', ok: text.length > 0 && text.length <= 12000 && !suspicious(text) });
   return { ok: items.every((item) => item.ok), items };
 }
