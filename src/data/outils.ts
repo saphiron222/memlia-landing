@@ -37,6 +37,28 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'verificateur-fec-local', categorie: 'verifier', statut: 'disponible',
+    h1: 'Vérificateur FEC gratuit et local',
+    title: 'Vérificateur FEC gratuit et local | Memlia',
+    description: 'Contrôlez localement la structure d’un FEC et trouvez les lignes en anomalie, avec règles expliquées et rapport exportable non certifiant.',
+    promesse: { entree: 'FEC texte commercial, 18 colonnes Débit/Crédit, 20 Mo maximum', resultat: 'Anomalies par ligne, colonne et règle ; rapports complets aux formats CSV et JSON' },
+    limites: [
+      'Contrôle de structure non certifiant : aucune conclusion comptable ou fiscale, aucun fichier corrigé.',
+      'Équilibre, exhaustivité, chronologie, nom du fichier et conformité de l’encodage ne sont pas évalués.',
+      'XML, BNC/BA, Montant/Sens et colonnes supplémentaires restent hors périmètre, sans être déclarés invalides ; au-delà de 20 Mo, le fichier n’est pas lu.',
+    ],
+    mentionLocale: 'Votre fichier et son rapport sont traités dans un Worker de ce navigateur, sans envoi ni stockage persistant. L’original reste inchangé. Effacer retire la sélection et le rapport de la page.',
+    proof: 'v2/29-outil-fec',
+    source: {
+      nom: 'DGFiP — Test Compta Demat',
+      url: 'https://www.economie.gouv.fr/dgfip/outil-de-test-des-fichiers-des-ecritures-comptables-fec',
+      extrait: 'La DGFiP propose Test Compta Demat pour examiner la structure d’un FEC et localiser les anomalies. Notre contrôle technique borné ne remplace pas cet outil officiel.',
+      verifieeLe: '4 octobre 2026',
+      complement: { nom: 'BOFiP — Format du fichier des écritures comptables', url: 'https://bofip.impots.gouv.fr/bofip/9028-PGP.html', extrait: 'Les précisions de format distinguent les champs requis et ceux à blanc si non utilisés. Aucun jugement fiscal n’est automatisé ici.' },
+    },
+    pageService: '/automatisation-cabinet-comptable', cta: '/contact',
+  },
+  {
     slug: 'calculateur-marge-commerciale',
     categorie: 'calculer',
     statut: 'disponible',
