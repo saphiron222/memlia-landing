@@ -25,6 +25,69 @@ def construire_et_verifier():
 
 
 class EditorialCadenceProof(unittest.TestCase):
+    def test_reservation_hors_jours_automatiques_traverse_le_preflight(self):
+        jour = date(2026, 10, 4)
+        slug = 'automatiser-l-entree-en-relation-d-un-nouveau-client'
+        planifier = PLAN.planifier
+
+        def reserver(entries, published):
+            if slug not in published:
+                next(e for e in entries if e['slug'] == slug)['datePlanifiee'] = jour.isoformat()
+            planifier(entries, published, aujourd_hui=jour)
+
+        class JourFige(date):
+            @classmethod
+            def today(cls):
+                return jour
+
+        with patch.object(PLAN, 'date', JourFige), patch.object(PLAN, 'planifier', side_effect=reserver):
+            donnees, erreurs, entrants, _ = construire_et_verifier()
+            self.assertEqual(erreurs, [])
+            cible = next(e for e in donnees[4] if e['slug'] == slug)
+            self.assertEqual((cible['date'], cible['statut']), (jour.isoformat(), 'planned'))
+            for e in [donnees[3]] + donnees[4]:
+                if e['statut'] == 'planned' and not e.get('datePlanifiee') and not e.get('serie'):
+                    self.assertIn(date.fromisoformat(e['date']).weekday(), PLAN.JOURS_DE_PUBLICATION)
+            with TemporaryDirectory() as dossier, patch.object(PLAN, 'ICI', Path(dossier)):
+                PLAN.ecrire_json(donnees[0], donnees[1], donnees[3], donnees[4], donnees[5], entrants)
+                PLAN.ecrire_calendrier(donnees[3], donnees[4], donnees[1], donnees[0])
+                with patch.object(Path, 'write_text', side_effect=AssertionError('le préflight écrit')):
+                    PLAN.verifier_creneau(slug, jour, donnees)
+            mutant = deepcopy(donnees)
+            next(e for e in mutant[4] if e['slug'] == slug).pop('datePlanifiee')
+            erreurs, _, _ = PLAN.verifier(*mutant)
+            self.assertTrue(any('hors lundi-jeudi' in erreur for erreur in erreurs), erreurs)
+            # Une publication intégrée conserve sa date, même sans réservation dans le backlog.
+            publies = deepcopy(donnees[2])
+            publies[slug] = dict(date=jour.isoformat(), titre=cible['titre'],
+                                requete=cible['requete'], famille=cible['famille'], format=cible['format'])
+            with patch.object(PLAN, 'etat_publie', return_value=publies):
+                _, erreurs, _, _ = construire_et_verifier()
+                self.assertEqual(erreurs, [])
+
+    def test_reservations_hors_jours_automatiques_gardent_les_plafonds(self):
+        for jour in (date(2026, 10, 2), date(2026, 10, 3), date(2026, 10, 4)):
+            for compte, date_publiee, accepte in ((1, jour.isoformat(), True),
+                                                  (2, jour.isoformat(), False),
+                                                  (3, '2026-09-30', True),
+                                                  (4, '2026-09-30', False)):
+                with self.subTest(jour=jour, compte=compte, date_publiee=date_publiee):
+                    entrees = [dict(slug='reserve', famille='f', pole='a', format='how-to-guide',
+                                    priorite=1, rang_famille=0, datePlanifiee=jour.isoformat())]
+                    publies = {f'publie-{i}': {'date': date_publiee if date_publiee == jour.isoformat()
+                                             else ('2026-09-30', '2026-10-01')[i // 2]}
+                               for i in range(compte)}
+                    if accepte:
+                        PLAN.planifier(entrees, publies, aujourd_hui=jour)
+                        self.assertEqual((entrees[0]['date'], entrees[0]['statut']),
+                                         (jour.isoformat(), 'planned'))
+                    elif date_publiee == jour.isoformat():
+                        PLAN.planifier(entrees, publies, aujourd_hui=jour)
+                        self.assertEqual(entrees[0]['statut'], 'a-replanifier')
+                    else:
+                        with self.assertRaisesRegex(SystemExit, 'au-delà de la cadence'):
+                            PLAN.planifier(entrees, publies, aujourd_hui=jour)
+
     def etats_publication_w39(self):
         # Rejouer les deux côtés de l'intégration, même après fusion sur main.
         publies = PLAN.etat_publie()

@@ -300,7 +300,7 @@ def alterner(entrees):
 
 
 def planifier(entrees, publies, aujourd_hui=None):
-    """Planifie 4 articles ordinaires lun-jeu et 1 cicatrice le samedi, par semaine ISO."""
+    """Réserve les dates explicites, puis planifie les ordinaires lun-jeu et les cicatrices le samedi."""
     aujourd_hui = aujourd_hui or date.today()
     par_jour, par_semaine = Counter(), Counter()
     if any(p['date'] == DATE_RATTRAPAGE and slug not in RATTRAPAGE_W39 for slug, p in publies.items()):
@@ -372,8 +372,8 @@ def planifier(entrees, publies, aujourd_hui=None):
             continue
         if candidat < aujourd_hui:
             raise SystemExit(f"date planifiée échue : {e['slug']} ({valeur}) ; replanifier sans antidater")
-        if candidat < PREMIER_JOUR or candidat.weekday() not in JOURS_DE_PUBLICATION:
-            raise SystemExit(f"date planifiée hors fenêtre lundi-jeudi : {e['slug']} ({valeur})")
+        if candidat < PREMIER_JOUR:
+            raise SystemExit(f"date planifiée avant le début du calendrier : {e['slug']} ({valeur})")
 
         if par_jour[candidat] >= PAR_JOUR_MAX or par_semaine[semaine_iso(candidat)] >= PAR_SEMAINE_MAX:
             raise SystemExit(f"date planifiée au-delà de la cadence : {e['slug']} ({valeur})")
@@ -584,7 +584,11 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
             reel = date.fromisoformat(e['date'])
             par_jour_reel[reel] += 1
             par_semaine_reelle[semaine_iso(reel)] += 1
-        if slot >= PREMIER_JOUR and slot.weekday() not in JOURS_DE_PUBLICATION and e.get('statut') != 'a-replanifier':
+        # Les jours habituels régissent le seul ordonnancement automatique, pas
+        # une réservation explicite concordante ni une publication intégrée.
+        if (slot >= PREMIER_JOUR and slot.weekday() not in JOURS_DE_PUBLICATION
+                and e.get('statut') not in ('a-replanifier', 'published')
+                and e.get('datePlanifiee') != e['date']):
             erreurs.append(f"article ordinaire hors lundi-jeudi : {e['slug']} ({e['date']})")
     if any(n > PAR_JOUR_MAX for n in par_jour.values()):
         erreurs.append('plus de deux articles le même jour')
