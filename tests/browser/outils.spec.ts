@@ -373,6 +373,10 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     } else if (outil.slug === 'verificateur-fec-local') {
       await page.getByRole('button', { name: 'Analyser l’exemple fictif' }).click();
       await expect(page.locator('[data-summary]')).toContainText('1 anomalie');
+    } else if (outil.slug === 'generateur-charte-ia-cabinet') {
+      await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
+      await page.getByRole('button', { name: 'Préparer la charte', exact: true }).click();
+      await expect(page.locator('[data-editor]')).toHaveValue(/Relance de pièces/);
     } else {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');
