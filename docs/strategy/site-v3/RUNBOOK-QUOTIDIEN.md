@@ -155,6 +155,25 @@ pour 12 articles : photographie vérifiée, ni plafond ni taille imposée aux lo
 La procédure d'inventaire ci-dessous issue de PR60, les modes local/Pages, les clauses de
 réservation PR57 et l'intégration IA sont conservés ; le constat PR54 ci-dessus reste historique.
 
+### Objectifs éditoriaux et preuves requises au scellement
+
+Trois sources vérifiables et deux pages entrantes distinctes sont des objectifs
+éditoriaux, pas des conditions numériques de preview, de scellement ou de build
+public (constitution du 03/10, §4). Le manifeste garde des listes explicites
+`sources` et `links.incoming` ; chaque source présente est intégralement contrôlée,
+même sous l'objectif : identité, URL publique, dates, provenance/classification,
+reçu réseau, copie locale et intégrité. Les claims restent reliés aux citations
+vérifiées et la matière sensible à sa revue métier. Un tableau vide n'autorise
+jamais une affirmation sans la preuve que le gate exige pour elle.
+
+Chaque entrant déclaré doit réellement pointer vers l'article : `/blog` est
+vérifié dans le rendu Astro, les autres pages dans le corpus. Ne pas déclarer
+un entrant projeté comme acquis ni ajouter de source de remplissage. La revue
+normale apprécie la suffisance du fond ; les améliorations de quantité rejoignent
+la maintenance après publication, sans nouvelle revue de fond pour cette seule
+réparation. Les contrôles critiques de sources, claims, liens, rendu, revue,
+fraîcheur, intégrité et plafonds de publication restent inchangés.
+
 ### Couverture exhaustive Blog et SEO, automatique à chaque rédaction (décision Kevin du 03/10/2026)
 
 Cette règle s'applique à toute nouvelle rédaction, réécriture et republication, sans rappel de Kevin. Elle remplace la sélection usuelle de sous-skills décrite ci-dessous ; lire une liste ou recopier un ancien PASS n'est pas exécuter les contrôles.
