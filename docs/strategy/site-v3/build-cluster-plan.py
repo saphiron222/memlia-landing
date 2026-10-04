@@ -193,7 +193,9 @@ def verifier_alternance(entrees):
                 erreurs.append(f"alternance {champ} rompue : {precedent['slug']} -> {e['slug']}")
     for index, e in enumerate(ordinaires):
         for champ in e.get('exceptionAlternance', {}):
-            if index == 0 or e.get('statut') == 'published' or ordinaires[index - 1][champ] != e[champ]:
+            # Une exception utilisée à la réservation reste la trace de la rupture
+            # après publication ; le statut ne la rend pas soudain superflue.
+            if index == 0 or ordinaires[index - 1][champ] != e[champ]:
                 erreurs.append(f"exception {champ} non utilisée : {e['slug']}")
     return erreurs
 
