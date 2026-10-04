@@ -370,6 +370,10 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByLabel('Durée d’utilisation').fill('5');
       await page.getByRole('button', { name: 'Calculer le plan' }).click();
       await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
+    } else if (outil.slug === 'calculateur-roi-automatisation') {
+      await page.getByRole('button', { name: 'Charger trois exemples fictifs' }).click();
+      await page.getByRole('button', { name: 'Comparer les trois scénarios' }).click();
+      await expect(page.locator('[data-results]')).toContainText('266,67');
     } else if (outil.slug === 'verificateur-fec-local') {
       await page.getByRole('button', { name: 'Analyser l’exemple fictif' }).click();
       await expect(page.locator('[data-summary]')).toContainText('1 anomalie');
