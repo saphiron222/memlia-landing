@@ -88,6 +88,18 @@ Conserver le `head` comme `BASE_SHA` jusqu'à la fin. Après maintenance, `--pha
 
 ## 2. Lire le créneau du jour
 
+Les quatre briefs IA du 03/10 étendent l'inventaire initial, sans publier ni réserver
+eux-mêmes : `utiliser-chatgpt-cabinet-comptable`, `verifier-reponse-ia-comptabilite`
+et `automatiser-avec-ia-sans-changer-logiciel` dans `ia-generative-agents` ;
+`ia-comptabilite-confidentialite-donnees` dans `rgpd-secret-securite`.
+Le planificateur ajoute une place par slug mandaté réellement inscrit dans sa
+famille. Il conserve les angles initiaux, refuse les ajouts non mandatés et les
+familles divergentes ; unicité des requêtes, mesures, maillage et quotas restent
+contrôlés. Inscrire le sujet, ses mesures et sa réservation dans le backlog,
+puis régénérer les dérivés. Une succession de même pôle/format peut nécessiter
+`exceptionAlternance` datée et motivée sur le seul champ effectivement en conflit,
+selon la règle existante ; le brief ne crée pas d'exception implicite.
+
 Réservation mandatée d'un article ordinaire (constitution du 03/10, décision du
 29/09) : `datePlanifiee` dans le backlog peut fixer la date réelle, y compris
 vendredi, samedi ou dimanche. Ce champ existant est la décision éditoriale ; une
@@ -160,6 +172,15 @@ Le corps (1 800 à 2 500 mots pour un satellite, 3 000 à 4 000 pour un pilier, 
 L'objectif éditorial est **deux figures de preuve** en plus de la couverture, montrant les artefacts utiles à la compréhension sur un jeu d'essai fictif. Depuis la décision Kevin du 29/09, ce nombre n'est pas une porte universelle : une preuve requise manquante ou mensongère est critique, un quota non atteint sans défaut réel est un objectif d'amélioration. La recette déclare les figures retenues dans `inlineProofs` : `id`, H2 d'ancrage `insertBeforeHeading`, `alt`, `source`, éventuelle `sourceUrl` officielle et `capturedAt`. La forge les injecte avant le H2 exact sans modifier les phrases de `corps.md` ; un ancrage disparu, un alt absent, une date invalide ou une URL non HTTPS ferme la matérialisation.
 
 La source visuelle vit dans `docs/design/blog-article-proofs/` (`index.html`, `styles.css`, `content-contract.json`). Elle forme une série distincte, parce que les renderers de l'accueil et du site v2 scellent des nombres exacts d'actifs. Chaque cadre mesure 1600 × 900, charge les polices locales, refuse le texte tronqué ou masqué et produit un WebP inférieur à 150 Ko. Après contrôle visuel du rendu :
+
+L'inventaire de cette série blog vient du contrat, non d'un total figé de 24
+cadres ou 12 articles. Ajouter les cadres et les entrées de contrat des nouveaux
+articles avec leurs recettes concordantes ; le renderer conserve deux preuves
+par article de cette série, identifiants uniques, provenance et contrôle de
+chaque écran. Ne modifier ni les écrans ni le texte ni les recettes historiques
+pour accueillir le nouvel article. Un rendu doit laisser leurs WebP identiques ;
+le manifeste inclut aussi le programme de rendu courant. Les autres séries de
+preuves historiques gardent leurs propres inventaires et contrats.
 
 ```bash
 node scripts/render-blog-article-proofs.mjs --adopt  # fige le texte et publie le lot après revue
