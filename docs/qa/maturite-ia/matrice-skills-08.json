@@ -1,0 +1,461 @@
+{
+  "outil": "08",
+  "route": "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+  "scope": "Preuves locales d’implémentation ; QA indépendante et production non effectuées.",
+  "counts": {
+    "Exécuté ciblé local": 30,
+    "N/A motivé": 22,
+    "Différé après publication": 9,
+    "N/A instrument": 3
+  },
+  "cells": [
+    {
+      "skill": "blog",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-analyze",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-audit",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-brand",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-brief",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-calendar",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-cannibalization",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-chart",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Pas graphique ni score : états textuels, quinze réponses et justifications sémantiques ; scène fictive vérifiée par moteur et renderer."
+    },
+    {
+      "skill": "blog-cluster",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-decay",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Différé après publication",
+      "evidence": "ND : visibilité/indexation/liens et séries J+7/J+28 non collectés. À constater par la livraison ; aucune performance ni citation inventée."
+    },
+    {
+      "skill": "blog-discourse",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-factcheck",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-flow",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-geo",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-google",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Différé après publication",
+      "evidence": "ND : visibilité/indexation/liens et séries J+7/J+28 non collectés. À constater par la livraison ; aucune performance ni citation inventée."
+    },
+    {
+      "skill": "blog-image",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-locale-audit",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-localize",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-multilingual",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-outline",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-persona",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-repurpose",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-rewrite",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-schema",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-seo-check",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-strategy",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-style",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-taxonomy",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-translate",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-write",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "seo",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-audit",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-backlinks",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Différé après publication",
+      "evidence": "ND : visibilité/indexation/liens et séries J+7/J+28 non collectés. À constater par la livraison ; aucune performance ni citation inventée."
+    },
+    {
+      "skill": "seo-cluster",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "seo-content",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-content-brief",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-dataforseo",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A instrument",
+      "evidence": "Aucun fournisseur payant appelé : alternative locale réelle par Playwright 14 tests, sitemap et Lighthouse mobile/desktop ; pas audit vendor revendiqué."
+    },
+    {
+      "skill": "seo-drift",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Différé après publication",
+      "evidence": "ND : visibilité/indexation/liens et séries J+7/J+28 non collectés. À constater par la livraison ; aucune performance ni citation inventée."
+    },
+    {
+      "skill": "seo-ecommerce",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "seo-firecrawl",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A instrument",
+      "evidence": "Aucun fournisseur payant appelé : alternative locale réelle par Playwright 14 tests, sitemap et Lighthouse mobile/desktop ; pas audit vendor revendiqué."
+    },
+    {
+      "skill": "seo-flow",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-geo",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-google",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Différé après publication",
+      "evidence": "ND : visibilité/indexation/liens et séries J+7/J+28 non collectés. À constater par la livraison ; aucune performance ni citation inventée."
+    },
+    {
+      "skill": "seo-hreflang",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "seo-image-gen",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "seo-images",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-local",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "seo-maps",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "seo-page",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-plan",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-programmatic",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-schema",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-sitemap",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-sxo",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "seo-technical",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "memlia-blog-strategie",
+      "cadrage": "E",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Exécuté ciblé local",
+      "evidence": "rapport.md ; tests/browser/maturite-ia.spec.ts (14 PASS), tests/scripts/maturite-ia.test.mjs (7 PASS), build 124 Python/613 Node PASS. Application au rendu de cet outil, pas commande générique intégrale ni score SEO théorique."
+    },
+    {
+      "skill": "blog-audio",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "blog-notebooklm",
+      "cadrage": "N",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A motivé",
+      "evidence": "Périmètre outil français local : aucun article, traduction, média généré, catalogue marchand ou distribution. Motif original conservé dans la source de cadrage."
+    },
+    {
+      "skill": "seo-ahrefs",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Différé après publication",
+      "evidence": "ND : visibilité/indexation/liens et séries J+7/J+28 non collectés. À constater par la livraison ; aucune performance ni citation inventée."
+    },
+    {
+      "skill": "seo-bing",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Différé après publication",
+      "evidence": "ND : visibilité/indexation/liens et séries J+7/J+28 non collectés. À constater par la livraison ; aucune performance ni citation inventée."
+    },
+    {
+      "skill": "seo-profound",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Différé après publication",
+      "evidence": "ND : visibilité/indexation/liens et séries J+7/J+28 non collectés. À constater par la livraison ; aucune performance ni citation inventée."
+    },
+    {
+      "skill": "seo-seranking",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "Différé après publication",
+      "evidence": "ND : visibilité/indexation/liens et séries J+7/J+28 non collectés. À constater par la livraison ; aucune performance ni citation inventée."
+    },
+    {
+      "skill": "seo-unlighthouse",
+      "cadrage": "D",
+      "source": "matrice-skills.json colonne 08, branche strategy/outils-ia-t_6c7dba9d",
+      "status": "N/A instrument",
+      "evidence": "Aucun fournisseur payant appelé : alternative locale réelle par Playwright 14 tests, sitemap et Lighthouse mobile/desktop ; pas audit vendor revendiqué."
+    }
+  ]
+}
