@@ -12,9 +12,15 @@ const slug = 'tests-verts-et-regle-des-trois-passes';
 function fixture(t) {
   const root = mkdtempSync(join(tmpdir(), 'w39-slot-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
-  for (const path of ['scripts', 'package.json', 'src/content.config.ts', 'src/data/familles.ts', 'src/content/blog',
-    'docs/strategy/site-v3/backlog-v3.json', 'docs/strategy/site-v3/mesures', 'docs/strategy/site-v3/w39-cadrage-operateur.json']) {
+  for (const path of ['scripts', 'package.json', 'src/content.config.ts', 'src/data/familles.ts',
+    'docs/strategy/site-v3/mesures', 'docs/strategy/site-v3/w39-cadrage-operateur.json']) {
     cpSync(join(repo, path), join(root, path), { recursive: true });
+  }
+  cpSync(join(repo, 'tests/fixtures/editorial-w39-backlog.json'), join(root, 'docs/strategy/site-v3/backlog-v3.json'));
+  mkdirSync(join(root, 'src/content/blog'), { recursive: true });
+  const publiesW39 = JSON.parse(readFileSync(join(repo, 'tests/fixtures/editorial-w39-published.json')));
+  for (const id of Object.keys(publiesW39)) {
+    cpSync(join(repo, 'src/content/blog', `${id}.md`), join(root, 'src/content/blog', `${id}.md`));
   }
   symlinkSync(join(repo, 'node_modules'), join(root, 'node_modules'), 'dir');
   // La publication réelle du lot ne doit pas devenir un doublon dans la fixture vierge.

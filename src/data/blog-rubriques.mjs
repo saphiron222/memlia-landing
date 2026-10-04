@@ -64,6 +64,10 @@ export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
     date: '2026-09-21',
     raison: 'Article transversal sur les compétences, la préparation et la décision humaine : il ne correspond pas à une chaîne de tâches propre aux deux rubriques existantes.',
   }),
+  'utiliser-chatgpt-cabinet-comptable': Object.freeze({
+    date: '2026-10-04',
+    raison: 'Guide transversal de sélection d’un premier usage IA : il ne décrit ni une étape Paie et DSN ni une étape Saisie et pièces. La famille IA existante porte son rattachement sans créer une rubrique artificielle.',
+  }),
   'prompt-chatgpt-expert-comptable': Object.freeze({
     date: '2026-09-28',
     raison: 'Guide transversal sur l’usage prudent d’un prompt ChatGPT en cabinet : la demande de pièce est un exemple fictif, pas une étape de la chaîne Saisie et pièces ni du cycle Paie et DSN.',
