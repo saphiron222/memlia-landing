@@ -16,10 +16,10 @@ jobs:
   verify:
     name: Repository gates
     runs-on: ubuntu-latest
-    # The complete deterministic forge/build plus the browser contracts can
-    # exceed 20 minutes on a hosted runner. Keep one finite job and every gate;
-    # do not cancel a progressing test suite before its verdict.
-    timeout-minutes: 30
+    # Two runs exhausted 30 minutes while Chromium was still progressing.
+    # Include the Playwright webServer rebuild and hosted-runner variance;
+    # keep a finite budget without dropping or parallelizing any gate.
+    timeout-minutes: 60
     steps:
       - name: Check out the exact candidate
         uses: actions/checkout@v4
