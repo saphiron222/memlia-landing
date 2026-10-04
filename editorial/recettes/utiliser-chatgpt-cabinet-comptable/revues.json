@@ -1,0 +1,143 @@
+{
+  "subject": {
+    "slug": "utiliser-chatgpt-cabinet-comptable",
+    "bodySha256": "894857efd545eebcdfd7cc71827c0f823bd75fc7b72edaaa0e1d60e4c55dda69",
+    "recipeSha256": "553f3d792ae93689c96ba642ae93dc2ee34642b99e849bbdc894c8d0487a1a00",
+    "renderedSha256": "0ffc1c0980acf96f1ae53d4cd88a4859f3b9cafd04453117b829c9a3db6e084a"
+  },
+  "reviewedAt": "2026-10-04",
+  "reviewerTaskId": "t_a0226944",
+  "verdict": "PASS AVEC RÉSERVES",
+  "editorial": {
+    "reviewer": "metier:t_a0226944",
+    "p0": [],
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": ["La fiche de douze champs et le critère aucun ajout/aucune réserve perdue permettent de sélectionner un premier geste. Le titre annonce ce choix, non une rédaction ChatGPT déjà évaluée ; corps lignes 9, 84 et 99 explicites."]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": ["Guide de sélection distinct du patron de prompt et de la grille logiciel liés dans le corps ; réponse directe, trois candidats et cinq FAQ répondent au brief. Aucun rang, volume ni succès SEO n'est démontré par cette revue."]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": ["CNIL et Ordre ouverts en direct pendant cette revue : HTTP 200, deux citations retrouvées avec contexte. La FAQ CNIL affiche le 18 juillet 2024 ; le livret en extranet de l'Ordre n'est pas utilisé ni présenté comme lu."]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": ["Rejeu indépendant des quatre cas du script candidat : ESSAI_SELECTIONNE, HORS_PERIMETRE, CONTEXTE_ABSENT et ENVOI_NON_AUTORISE, envoi false partout. L'écriture du journal auteur a été neutralisée, pas la règle ni ses assertions. Trois cas additionnels confirment geste non prévu et contexte blanc ; aucune reformulation produite.", "La règle écrite comporte frontière à trois colonnes, proposition, arrêt et jeu fictif. Les figures montrent une fiche de sélection et une file locale, avec modèle Aucun et reformulation Aucune, sans interface de marque ni faux résultat fournisseur."]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": ["Contrat natif ciblé vert, un H1, canonical du candidat, auteur Kevin Kitanga et cinq types JSON-LD. Navigateur local rejoué à 1280 et 390 px : deux WebP chargés, aucun débordement de page, erreur JavaScript ou ressource HTTP en échec. Preview noindex, follow : pas de preuve d'indexabilité publique.", "À 390 px, les quatre tableaux HTML en 14 px défilent horizontalement sur eux-mêmes ; déplacement réel vérifié jusqu'à la dernière colonne. Les figures 356 × 201 px sont des aperçus dont les petits libellés ne se lisent pas confortablement ; les tableaux et paragraphes HTML portent l'information détaillée."]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": ["Définitions et réponse directe extractibles dans le HTML initial ; quatre tableaux avec thead. Le paragraphe après le rejeu dit expressément que E-01 sélectionne un essai futur et ne prouve ni qualité ChatGPT ni temps gagné."]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": ["Voix nous/vous, mécanique répétitive dans les outils existants, décision au cabinet, liens pilier/méthode/automatisation et bouton Confier cette tâche vers contact. Aucun gain chiffré, donnée client ou fonction fournisseur mesurée inventés ; réserves de preuve utiles, non un retrait de la promesse commerciale."]
+      }
+    }
+  },
+  "business": {
+    "reviewer": "relecteur-metier-ia-memlia",
+    "reviewerTaskId": "t_a0226944",
+    "role": "direction-associes",
+    "claims": {
+      "claim-unit-02af313242b9-1": {
+        "verdict": "soutient",
+        "reasoning": "La page publique primaire Travaux Data et IA du CNOEC présente exactement des cas d'usage, précautions et techniques pour bien prompter. Citation vérifiée dans la copie locale ligne 434 et en direct HTTP 200 le 04/10/2026 ; elle soutient la présentation des ressources, pas l'efficacité de la fiche Memlia ni le contenu du livret non consulté. Date de publication de la page non disponible."
+      },
+      "claim-unit-6a7a27b37223-1": {
+        "verdict": "soutient",
+        "reasoning": "FAQ CNIL datée 18 juillet 2024 : la phrase porte sur les informations fournies en entrée du système et figure exactement dans la copie ligne 942 et la réponse HTTP 200 de cette revue. Le contexte poursuit avec les informations confidentielles et les secrets ; le guide n'autorise aucun dossier réel et refuse d'assimiler retrait du nom et partage autorisé. Recommandation de l'autorité, ni certification RGPD ni obligation fiscale nouvelle."
+      }
+    }
+  },
+  "image": {
+    "reviewer": "metier:t_a0226944",
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": ["Master inspecté : trois plateaux vert profond, vert vif et graphite, piles de fiches vierges, fond crème et rendu 3D mat. Alt descriptif concordant ; aucun signe explicite ne permet d'attester une sélection, ce que le brief reconnaît."]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": ["Couverture sans texte, logo, personnage ni interface. Mesure palette relue : crème 0,804635, vert vif 0,009913, vert profond 0,043854, graphite 0,047812 ; seuils déclarés satisfaits, pas dominance verte prétendue."]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": ["Recette rattache la génération Higgsfield à son identifiant. Les figures sont des reconstitutions HTML marquées Jeu d'essai fictif, règle locale, Modèle interrogé Aucun et Reformulation générée Aucune. Le rejeu indépendant retrouve leurs quatre statuts ; aucune donnée réelle identifiée."]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": ["Fiche E-01/D-012 reconnaissable et file E-01 à E-04 concordantes avec le journal. Brouillon à relire est un libellé d'orientation, pas un texte généré : cartouches et corps explicitent cette limite. Ne pas réutiliser l'image isolée pour attester un résultat ChatGPT."]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": ["Dimensions décodées : master 1920 × 1080, OG 1200 × 630, dérivé AVIF 768 × 432, deux figures WebP 1600 × 900. Images chargées aux deux largeurs, sans troncature dans les masters. Miniatures mobiles non adaptées à une lecture fine ; détail disponible en HTML."]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": ["Alts du rendu identiques à la recette : fiche fictive avec critère et responsable, file des quatre états. L'alt de couverture décrit trois plateaux et fiches vierges, sans prétendre une preuve de sélection ou une capture réelle ChatGPT."]
+      }
+    },
+    "directionArt": 17,
+    "semanticRelevance": 22
+  },
+  "sources": {
+    "reviewedBy": "metier:t_a0226944",
+    "observations": {
+      "cnil-ia-generative": "CNIL, cnil.fr, tier-1 : FAQ de l'autorité française datée 18/07/2024, copie et reçu du 04/10/2026 vérifiés, puis citation revérifiée en direct ; portée informations autorisées en entrée, pas homologation de l'outil.",
+      "ordre-ia": "Conseil national de l'Ordre des experts-comptables, experts-comptables.fr, tier-2 dans la convention interne : source institutionnelle primaire vérifiée en direct, présentation publique seulement, date de publication non affichée. official false traduit la liste fermée du gate, pas une négation de l'autorité de l'Ordre."
+    }
+  },
+  "qualite": {
+    "reviewer": "metier:t_a0226944",
+    "score": 91,
+    "p0": [],
+    "categories": {
+      "contentQuality": {"score": 27, "max": 30},
+      "seoOptimization": {"score": 22, "max": 25},
+      "eeatSignals": {"score": 15, "max": 15},
+      "technicalElements": {"score": 12, "max": 15},
+      "aiCitationReadiness": {"score": 15, "max": 15}
+    },
+    "evidence": [
+      "27/30 contenu : fiche de douze champs utile et cas incomplet exploitable ; preuve de classement réelle mais aucune qualité de brouillon éprouvée. La sélection est distinguée de l'essai de rédaction.",
+      "22/25 SEO : titres/meta alignés au choix du premier usage, six liens contextuels, URL stable ; entrants depuis les articles frères non démontrés, deux sources pertinentes plutôt qu'un quota artificiel de liens.",
+      "15/15 E-E-A-T : auteur et bio explicites sans qualification d'expert-comptable, deux citations directes primaires fidèles, protocole local et limites visibles, contact et méthode liés.",
+      "12/15 technique : schémas de base complets, alt/WebP et chargement vérifiés ; petits textes des figures illisibles à taille mobile, tableaux détaillés défilants en 14 px. LCP et accessibilité clavier/lecteur d'écran non mesurés.",
+      "15/15 préparation aux citations : réponse initiale autonome, définitions, tableaux thead, preuves locales bornées et refus d'attribuer leurs résultats au modèle ; score de structure, pas probabilité de citation. Preview noindex volontaire, accessibilité publique à vérifier après livraison.",
+      "Couverture : 63 lignes distinctes, 56 entrées du catalogue plus sept skills du pack explicitement recensés dans le diagnostic ; aucune omission ni référence absente, fichiers de skills conformes aux versions déclarées. États : 33 execute, 25 N/A, deux partiel, un indisponible et deux a-executer ; pas 63 workflows exécutés.",
+      "Captures viewport complémentaires : tableau de rejeu intégralement visible au bureau et dernières colonnes lisibles au téléphone après déplacement réel ; le recouvrement du tableau dans la capture pleine page provient du positionnement de la navigation à l'instant de capture, pas d'un contenu perdu."
+    ],
+    "reservations": [
+      "Les deux figures sont des aperçus : leurs petits libellés ne sont pas confortablement lisibles à 390 px. Le contenu déterminant et l'absence d'appel modèle restent lisibles dans les tableaux/paragraphes HTML ; ne pas déclarer les images entièrement lisibles sur mobile.",
+      "Aucun ChatGPT interrogé, aucun brouillon généré ni qualité rédactionnelle/gain mesurés. Le script accepte un contexte textuel non vide sans contrôler objectif, lecteur ou les douze champs : la fiche complète et sa validation restent humaines.",
+      "Lighthouse/LCP, navigation clavier des tableaux, lecteur d'écran, classement, backlinks, citations IA et conversions non mesurés ; pas certification d'accessibilité ou de conformité RGPD.",
+      "Cette revue porte uniquement sur le candidat local. Scellement, CI, fusion, canonical public, HTTP/RSS/sitemap et mise à jour des deux phases futures de la matrice restent à marketing ; aucun PASS de publication anticipé.",
+      "Le terme Brouillon à relire dans la file peut se lire isolément comme une production ; le cartouche Reformulation générée Aucune et le texte de portée lèvent la réserve dans l'article complet. Ne pas diffuser cette figure recadrée sans ses limites."
+    ],
+    "seo": [
+      "Un H1 et hiérarchie H2/H3 cohérente, titre d'onglet et description reflètent le choix d'un premier usage.",
+      "Canonical cible présent ; preview noindex, follow volontaire, aucune indexation publique inférée.",
+      "Six liens internes contextuels dans le corps ; arrivées de pilier/articles frères restent maintenance ultérieure.",
+      "JSON-LD BlogPosting, BreadcrumbList, Person, Organization et WebSite décodés ; auteur sans titre professionnel usurpé.",
+      "Aucune performance GSC de cette URL ni position locale démontrée ; zéros de recette déclarés sans métrique créditée."
+    ],
+    "geo": [
+      "Réponse directe et définitions autonomes limitent la confusion entre usage préparatoire et décision professionnelle.",
+      "Deux citations primaires soutiennent seulement les ressources annoncées et le partage autorisé.",
+      "Les quatre sorties proviennent du sélecteur déterministe ; ne jamais les attribuer au comportement de ChatGPT.",
+      "Tableaux HTML avec thead conservés, contenu disponible sans génération côté client ; détail non réduit aux images.",
+      "Aucune mesure de citation par un moteur IA ; cet avis ne prédit pas visibilité ni recommandation."
+    ],
+    "verdict": "PASS AVEC RÉSERVES : candidat local fidèle à ses sources et à sa preuve de sélection, 91/100 et aucun P0 ; les figures mobiles restent des aperçus et la livraison publique n'est pas encore vérifiée."
+  },
+  "verificationArtifacts": ["revue-verification.json", "revue-complements.json", "revue-mobile.json", "revue-rendu-1280.png", "revue-rendu-390.png", "revue-table-1280.png", "revue-table-390.png"],
+  "requiredCorrections": []
+}

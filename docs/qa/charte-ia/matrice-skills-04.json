@@ -1,0 +1,462 @@
+{
+  "scope": "Outil 04 seulement ; contrôle local, publication non exécutée. Catalogue exhaustif du cadrage relu par colonne ; méthodes réutilisées sans relancer des outils SaaS inutiles.",
+  "parent": "t_6c7dba9d / strategy/outils-ia-t_6c7dba9d",
+  "count": 64,
+  "statuses": {
+    "exécuté local": 29,
+    "N/A motivé": 22,
+    "différé publication / mesure": 9,
+    "N/A instrument, alternative exécutée": 3,
+    "exécuté avec réserve partagée": 1
+  },
+  "skills": [
+    {
+      "skill": "blog",
+      "reason": "Orchestration des compétences adaptées à des pages outils, pas production automatique d’articles.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-analyze",
+      "reason": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-audit",
+      "reason": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-brand",
+      "reason": "Audience et voix existent déjà dans la charte, sans nouvel entretien marketing.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-brief",
+      "reason": "Méthode de brief transposable au type outil ; la page future ne peut être auditée.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-calendar",
+      "reason": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-cannibalization",
+      "reason": "Comparaison locale des titres/intents et des routes existantes disponible.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-chart",
+      "reason": "Aucune statistique externe à visualiser ; une sortie calculée reste spécifique au questionnaire/calculateur.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-cluster",
+      "reason": "Architecture des dix feuilles et du hub analysable depuis le dépôt.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-decay",
+      "reason": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles.",
+      "parent_status": "applicable différé implémentation",
+      "status": "différé publication / mesure",
+      "proof": "URL non publiée : baseline, GSC, citations et backlinks ND ; J+7/J+28 à relever après publication, pas de trafic inventé."
+    },
+    {
+      "skill": "blog-discourse",
+      "reason": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-factcheck",
+      "reason": "Contrôle de provenance des affirmations de cadrage et des mesures historiques, non vérification réglementaire finale.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "CNOEC Travaux Data et IA et CNIL recommandations du 18/07/2024 rouvertes ; clauses originales d’organisation et exclusions, pas de nouvelle conclusion fiscale/juridique."
+    },
+    {
+      "skill": "blog-flow",
+      "reason": "Find puis objectif Win applicables sur corpus local ; aucune nouvelle mesure de marché revendiquée.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-geo",
+      "reason": "Clarté de l’entité, utilité et fidélité des promesses sont cadrables.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-google",
+      "reason": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles.",
+      "parent_status": "applicable différé implémentation",
+      "status": "différé publication / mesure",
+      "proof": "URL non publiée : baseline, GSC, citations et backlinks ND ; J+7/J+28 à relever après publication, pas de trafic inventé."
+    },
+    {
+      "skill": "blog-image",
+      "reason": "Aucune génération de visuel utile à ces dix fonctions ; 06 produit du texte professionnel, non des images.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-locale-audit",
+      "reason": "France et français uniquement, aucune variante linguistique/régionale demandée.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-localize",
+      "reason": "France et français uniquement, aucune variante linguistique/régionale demandée.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-multilingual",
+      "reason": "France et français uniquement, aucune variante linguistique/régionale demandée.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-outline",
+      "reason": "Méthode de brief transposable au type outil ; la page future ne peut être auditée.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-persona",
+      "reason": "Audience et voix existent déjà dans la charte, sans nouvel entretien marketing.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-repurpose",
+      "reason": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-rewrite",
+      "reason": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-schema",
+      "reason": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-seo-check",
+      "reason": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages.",
+      "parent_status": "applicable différé implémentation",
+      "status": "exécuté local",
+      "proof": "check-rendered-page.mjs : HTTP, métas, H1/OG/headline, schema, maillage, sitemap, copie et exports. Tests navigateur 3 PASS / six largeurs. Lighthouse desktop/mobile : 100/100/100/92 ; audit robots bloqué par CSP, robots validé hors page. Pas de score SEO éditorial inventé."
+    },
+    {
+      "skill": "blog-strategy",
+      "reason": "Architecture des dix feuilles et du hub analysable depuis le dépôt.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-style",
+      "reason": "Audience et voix existent déjà dans la charte, sans nouvel entretien marketing.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-taxonomy",
+      "reason": "Taxonomie outil différente de la taxonomie blog, constat de seulement Calculer/Vérifier dans le registre.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-translate",
+      "reason": "France et français uniquement, aucune variante linguistique/régionale demandée.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-write",
+      "reason": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "seo",
+      "reason": "Orchestration des compétences adaptées à des pages outils, pas production automatique d’articles.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "seo-audit",
+      "reason": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages.",
+      "parent_status": "applicable différé implémentation",
+      "status": "exécuté local",
+      "proof": "check-rendered-page.mjs : HTTP, métas, H1/OG/headline, schema, maillage, sitemap, copie et exports. Tests navigateur 3 PASS / six largeurs. Lighthouse desktop/mobile : 100/100/100/92 ; audit robots bloqué par CSP, robots validé hors page. Pas de score SEO éditorial inventé."
+    },
+    {
+      "skill": "seo-backlinks",
+      "reason": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles.",
+      "parent_status": "applicable différé implémentation",
+      "status": "différé publication / mesure",
+      "proof": "URL non publiée : baseline, GSC, citations et backlinks ND ; J+7/J+28 à relever après publication, pas de trafic inventé."
+    },
+    {
+      "skill": "seo-cluster",
+      "reason": "Architecture des dix feuilles et du hub analysable depuis le dépôt.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "reason": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "seo-content",
+      "reason": "Clarté de l’entité, utilité et fidélité des promesses sont cadrables.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "seo-content-brief",
+      "reason": "Méthode de brief transposable au type outil ; la page future ne peut être auditée.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "seo-dataforseo",
+      "reason": "Enrichissement/crawl externe non nécessaire à l’examen local, aucune dépense ni collecte live autorisée implicitement.",
+      "parent_status": "applicable différé implémentation",
+      "status": "N/A instrument, alternative exécutée",
+      "proof": "Connecteur non exposé dans le catalogue Hermes de cette session, aucun achat. Crawl et export réels par check-rendered-page.mjs, Lighthouse local et contrat de page du build."
+    },
+    {
+      "skill": "seo-drift",
+      "reason": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles.",
+      "parent_status": "applicable différé implémentation",
+      "status": "différé publication / mesure",
+      "proof": "URL non publiée : baseline, GSC, citations et backlinks ND ; J+7/J+28 à relever après publication, pas de trafic inventé."
+    },
+    {
+      "skill": "seo-ecommerce",
+      "reason": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "seo-firecrawl",
+      "reason": "Enrichissement/crawl externe non nécessaire à l’examen local, aucune dépense ni collecte live autorisée implicitement.",
+      "parent_status": "applicable différé implémentation",
+      "status": "N/A instrument, alternative exécutée",
+      "proof": "Connecteur non exposé dans le catalogue Hermes de cette session, aucun achat. Crawl et export réels par check-rendered-page.mjs, Lighthouse local et contrat de page du build."
+    },
+    {
+      "skill": "seo-flow",
+      "reason": "Find puis objectif Win applicables sur corpus local ; aucune nouvelle mesure de marché revendiquée.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "seo-geo",
+      "reason": "Clarté de l’entité, utilité et fidélité des promesses sont cadrables.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "seo-google",
+      "reason": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles.",
+      "parent_status": "applicable différé implémentation",
+      "status": "différé publication / mesure",
+      "proof": "URL non publiée : baseline, GSC, citations et backlinks ND ; J+7/J+28 à relever après publication, pas de trafic inventé."
+    },
+    {
+      "skill": "seo-hreflang",
+      "reason": "France et français uniquement, aucune variante linguistique/régionale demandée.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "seo-image-gen",
+      "reason": "Aucune génération de visuel utile à ces dix fonctions ; 06 produit du texte professionnel, non des images.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "seo-images",
+      "reason": "Assets OG et éventuelles captures à vérifier sur le candidat, pas encore produits.",
+      "parent_status": "applicable différé implémentation",
+      "status": "exécuté avec réserve partagée",
+      "proof": "Scène et OG dédiés HTML→WebP, renderer --check, dimensions et poids contrôlés, alt et CLS dans page-report.json. Hero lazy hérité du gabarit ; priorité relève du lot A, pas modifiée ici."
+    },
+    {
+      "skill": "seo-local",
+      "reason": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "seo-maps",
+      "reason": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "seo-page",
+      "reason": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages.",
+      "parent_status": "applicable différé implémentation",
+      "status": "exécuté local",
+      "proof": "check-rendered-page.mjs : HTTP, métas, H1/OG/headline, schema, maillage, sitemap, copie et exports. Tests navigateur 3 PASS / six largeurs. Lighthouse desktop/mobile : 100/100/100/92 ; audit robots bloqué par CSP, robots validé hors page. Pas de score SEO éditorial inventé."
+    },
+    {
+      "skill": "seo-plan",
+      "reason": "Architecture des dix feuilles et du hub analysable depuis le dépôt.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "seo-programmatic",
+      "reason": "Moteur partagé nécessaire pour 01/02/07, garde anti-pages dupliquées pertinent même à petit lot.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "seo-schema",
+      "reason": "Contrat de génération existant inspecté en source ; prescriptions possibles sans test de futurs rendus.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "seo-sitemap",
+      "reason": "Contrat de génération existant inspecté en source ; prescriptions possibles sans test de futurs rendus.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "seo-sxo",
+      "reason": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages.",
+      "parent_status": "applicable différé implémentation",
+      "status": "exécuté local",
+      "proof": "check-rendered-page.mjs : HTTP, métas, H1/OG/headline, schema, maillage, sitemap, copie et exports. Tests navigateur 3 PASS / six largeurs. Lighthouse desktop/mobile : 100/100/100/92 ; audit robots bloqué par CSP, robots validé hors page. Pas de score SEO éditorial inventé."
+    },
+    {
+      "skill": "seo-technical",
+      "reason": "Contrat de génération existant inspecté en source ; prescriptions possibles sans test de futurs rendus.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "memlia-blog-strategie",
+      "reason": "Pointeur vers le dépôt et contrat des namespaces explicitement pertinents.",
+      "parent_status": "applicable exécuté cadrage",
+      "status": "exécuté local",
+      "proof": "Brief 04 appliqué au moteur charte-ia.mjs et au composant CharteIa.astro ; 6 tests unitaires, 3 tests navigateur, build et contrat de page PASS. Voir RAPPORT.md pour limites et preuves par groupe."
+    },
+    {
+      "skill": "blog-audio",
+      "reason": "Extension installée hors catalogue exposé ; aucune narration, audio ou podcast demandé pour les pages outils.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "blog-notebooklm",
+      "reason": "Extension installée hors catalogue exposé ; aucun notebook fourni ni besoin d’envoyer le corpus à un service externe.",
+      "parent_status": "N/A motivé",
+      "status": "N/A motivé",
+      "proof": "Périmètre inchangé : outil français local, pas article/campagne/traduction."
+    },
+    {
+      "skill": "seo-ahrefs",
+      "reason": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication.",
+      "parent_status": "applicable différé implémentation",
+      "status": "différé publication / mesure",
+      "proof": "URL non publiée : baseline, GSC, citations et backlinks ND ; J+7/J+28 à relever après publication, pas de trafic inventé."
+    },
+    {
+      "skill": "seo-bing",
+      "reason": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication.",
+      "parent_status": "applicable différé implémentation",
+      "status": "différé publication / mesure",
+      "proof": "URL non publiée : baseline, GSC, citations et backlinks ND ; J+7/J+28 à relever après publication, pas de trafic inventé."
+    },
+    {
+      "skill": "seo-profound",
+      "reason": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication.",
+      "parent_status": "applicable différé implémentation",
+      "status": "différé publication / mesure",
+      "proof": "URL non publiée : baseline, GSC, citations et backlinks ND ; J+7/J+28 à relever après publication, pas de trafic inventé."
+    },
+    {
+      "skill": "seo-seranking",
+      "reason": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication.",
+      "parent_status": "applicable différé implémentation",
+      "status": "différé publication / mesure",
+      "proof": "URL non publiée : baseline, GSC, citations et backlinks ND ; J+7/J+28 à relever après publication, pas de trafic inventé."
+    },
+    {
+      "skill": "seo-unlighthouse",
+      "reason": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication.",
+      "parent_status": "applicable différé implémentation",
+      "status": "N/A instrument, alternative exécutée",
+      "proof": "Connecteur non exposé dans le catalogue Hermes de cette session, aucun achat. Crawl et export réels par check-rendered-page.mjs, Lighthouse local et contrat de page du build."
+    }
+  ]
+}

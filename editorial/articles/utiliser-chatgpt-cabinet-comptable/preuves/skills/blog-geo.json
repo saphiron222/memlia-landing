@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "candidateSlug": "utiliser-chatgpt-cabinet-comptable",
+  "kind": "skill",
+  "status": "PASS",
+  "checkedAt": "2026-10-04",
+  "articleSha256": "aacb87994efdb05a07a10d3111fee64e1e75f13333991a04c0f1867c297a8879",
+  "manifestSha256": "b966961df5bd07c332c3c841f864e7c2c736c7548cf66196400ba872211df915",
+  "observations": [
+    "Réponse directe en tête (62 mots au premier paragraphe) ; définitions extractibles dans le corps.",
+    "Réponse directe et définitions autonomes limitent la confusion entre usage préparatoire et décision professionnelle.",
+    "Deux citations primaires soutiennent seulement les ressources annoncées et le partage autorisé.",
+    "Les quatre sorties proviennent du sélecteur déterministe ; ne jamais les attribuer au comportement de ChatGPT.",
+    "Tableaux HTML avec thead conservés, contenu disponible sans génération côté client ; détail non réduit aux images.",
+    "Aucune mesure de citation par un moteur IA ; cet avis ne prédit pas visibilité ni recommandation."
+  ],
+  "skill": "blog-geo"
+}

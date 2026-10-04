@@ -42,6 +42,11 @@ test('le renderer adopte les quatre nouveaux articles depuis leur contrat sans r
   const extended = structuredClone(contract);
   for (const article of ['utiliser-chatgpt-cabinet-comptable', 'verifier-reponse-ia-comptabilite',
     'ia-comptabilite-confidentialite-donnees', 'automatiser-avec-ia-sans-changer-logiciel']) {
+    const existantes = extended.filter((entry) => entry.article === article);
+    if (existantes.length) {
+      assert.equal(existantes.length, 2, `${article} : paire intégrée incomplète`);
+      continue;
+    }
     const preuves = contract.slice(0, 2).map((entry, index) => {
       const id = `${article}-${index + 1}`;
       const frame = frameFor(dom, entry.id);

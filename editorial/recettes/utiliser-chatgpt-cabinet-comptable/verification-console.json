@@ -1,0 +1,228 @@
+{
+  "contract": {
+    "pass": true,
+    "articles": 1,
+    "exemptions": [
+      {
+        "slug": "utiliser-chatgpt-cabinet-comptable",
+        "clause": 4,
+        "date": "2026-10-04",
+        "raison": "Guide transversal de sélection d’un premier usage IA : il ne décrit ni une étape Paie et DSN ni une étape Saisie et pièces. La famille IA existante porte son rattachement sans créer une rubrique artificielle."
+      }
+    ],
+    "erreurs": []
+  },
+  "h1": 1,
+  "author": true,
+  "canonical": true,
+  "figures": 2,
+  "schemas": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable#article",
+          "headline": "Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile",
+          "description": "Utiliser ChatGPT cabinet comptable : choisissez une tâche préparatoire, écrivez ses limites et testez un premier usage sur un dossier fictif.",
+          "url": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable"
+          },
+          "datePublished": "2026-10-04T00:00:00.000Z",
+          "dateModified": "2026-10-04T00:00:00.000Z",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://memlia.fr/images/img-art-utiliser-chatgpt-cabinet-comptable-og.webp",
+            "width": 1200,
+            "height": 630,
+            "caption": "Trois plateaux de tâches et des fiches vierges dans un diorama vert, graphite et crème"
+          },
+          "thumbnailUrl": "https://memlia.fr/images/img-art-utiliser-chatgpt-cabinet-comptable-og.webp",
+          "articleSection": [
+            "IA",
+            "Automatisation"
+          ],
+          "keywords": [
+            "utiliser ChatGPT cabinet comptable",
+            "cas usage ChatGPT expert comptable",
+            "IA générative cabinet comptable"
+          ],
+          "wordCount": 2029
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://memlia.fr/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile",
+              "item": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+          "name": "Kevin Kitanga",
+          "jobTitle": "Fondateur de Memlia",
+          "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+          "url": "https://memlia.fr/a-propos",
+          "worksFor": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "url": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "present": true,
+      "target": true
+    },
+    {
+      "url": "/blog/prompt-chatgpt-expert-comptable",
+      "present": true,
+      "target": true
+    },
+    {
+      "url": "/blog/logiciel-ia-comptabilite",
+      "present": true,
+      "target": true
+    },
+    {
+      "url": "/methode",
+      "present": true,
+      "target": true
+    },
+    {
+      "url": "/glossaire#validation-humaine",
+      "present": true,
+      "target": true
+    },
+    {
+      "url": "/automatisation-cabinet-comptable",
+      "present": true,
+      "target": true
+    }
+  ],
+  "browser": [
+    {
+      "width": 1280,
+      "overflow": false,
+      "proofs": [
+        {
+          "src": "/proofs/blog/usage-fiche-selection.webp",
+          "loaded": true,
+          "width": 656,
+          "height": 369.875
+        },
+        {
+          "src": "/proofs/blog/usage-file-essais.webp",
+          "loaded": true,
+          "width": 656,
+          "height": 369.875
+        }
+      ],
+      "toc": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "proofs": [
+        {
+          "src": "/proofs/blog/usage-fiche-selection.webp",
+          "loaded": true,
+          "width": 356,
+          "height": 201.125
+        },
+        {
+          "src": "/proofs/blog/usage-file-essais.webp",
+          "loaded": true,
+          "width": 356,
+          "height": 201.125
+        }
+      ],
+      "toc": true,
+      "errors": []
+    }
+  ]
+}

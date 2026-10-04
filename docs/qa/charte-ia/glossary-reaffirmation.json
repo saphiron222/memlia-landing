@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "revue": "metier-review-r5",
+  "reaffirmeLe": "2026-10-04T00:12:09.734Z",
+  "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
+  "registreSha256": "b17b334f876b6ce725511ece62379dc36a87620aefcb145778a4a2a27e27aa10",
+  "declarationRef": "docs/qa/hub-ressources/metier-review-r5/reaffirmation-declaration.json",
+  "declarationSha256": "b4f2208576ddb9672c312ce3601b5c59015ead6dd86cd420013be01a3937a4c5",
+  "ancreRef": "docs/qa/charte-ia/glossary-sujet-ancre.json",
+  "ancreSha256": "6f2cd4e6871335d561b73a4cd5f2e50c4622558e4a481c93f28010ac07dec10c",
+  "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
+  "surfaces": {
+    "T": {
+      "action": "réaffirmée",
+      "sujetAncre": "69c38874d155643cbd40dbe9f25ee2f306f67760d5d0b7bf1b72203b1e029702",
+      "sujetReaffirme": "426e24e8fd229094afc8e2164c200861552963144c35e65c147a9abf68688da3",
+      "feuillesEcartees": 1,
+      "feuillesParChamp": {
+        "buildOutputDigest.buildOutputDigest": 1
+      },
+      "justifications": {
+        "buildOutputDigest": "Le contrat de page universel ajoute au HTML rendu de /glossaire le schéma WebPage et le chrome de navigation accessible, sans modifier sa matière éditoriale. Le script revérifie que chacune des affirmations revues par R5 est encore rendue mot pour mot dans ce HTML."
+      },
+      "affirmationsRenduesVerifiees": 77,
+      "verdictsConserves": 27,
+      "candidateHash": "506ef453986d2c2212c23391db07a9dd87f460b56f7d5abd456ff437573e0746",
+      "auditHash": "0d3bfb45bb9b5c70e7b82c9c85f457ad22039fdd5a8708c9d5531f654b998926",
+      "manifestSha256": "154d23e79404e73f7cd5961bc9d4c3ce67b413cb5c96ea40c547c936f0b45ed4",
+      "preuveRef": "docs/qa/hub-ressources/metier-review-r5/preuve-glossaire.json",
+      "preuveSha256": "d833e5ff0c39227169d48f1a08e338d47395eeb47954e4177d60b1c85425d7eb"
+    }
+  }
+}

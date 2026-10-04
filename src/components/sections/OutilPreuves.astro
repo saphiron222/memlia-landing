@@ -26,7 +26,7 @@ const { source, mentionLocale, refus } = Astro.props;
         <p>{refus}</p>
       </article>
       <article class="outil-preuve rv" data-official-source>
-        <h3>Source officielle</h3>
+        <h3>{source.titre ?? 'Source officielle'}</h3>
         <p>{source.extrait}</p>
         <p class="outil-source-meta">
           <a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.nom}</a>

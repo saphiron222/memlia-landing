@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "candidateSlug": "utiliser-chatgpt-cabinet-comptable",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-04",
+  "articleSha256": "aacb87994efdb05a07a10d3111fee64e1e75f13333991a04c0f1867c297a8879",
+  "manifestSha256": "b966961df5bd07c332c3c841f864e7c2c736c7548cf66196400ba872211df915",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact utiliser-chatgpt-cabinet-comptable."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "touche"
+      },
+      {
+        "hex": "#231f20",
+        "role": "touche"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.8046354166666667,
+      "#27b657": 0.009913194444444445,
+      "#1c8a41": 0.043854166666666666,
+      "#231f20": 0.0478125
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Master inspecté : trois plateaux vert profond, vert vif et graphite, piles de fiches vierges, fond crème et rendu 3D mat. Alt descriptif concordant ; aucun signe explicite ne permet d'attester une sélection, ce que le brief reconnaît."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Couverture sans texte, logo, personnage ni interface. Mesure palette relue : crème 0,804635, vert vif 0,009913, vert profond 0,043854, graphite 0,047812 ; seuils déclarés satisfaits, pas dominance verte prétendue."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Recette rattache la génération Higgsfield à son identifiant. Les figures sont des reconstitutions HTML marquées Jeu d'essai fictif, règle locale, Modèle interrogé Aucun et Reformulation générée Aucune. Le rejeu indépendant retrouve leurs quatre statuts ; aucune donnée réelle identifiée."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Fiche E-01/D-012 reconnaissable et file E-01 à E-04 concordantes avec le journal. Brouillon à relire est un libellé d'orientation, pas un texte généré : cartouches et corps explicitent cette limite. Ne pas réutiliser l'image isolée pour attester un résultat ChatGPT."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Dimensions décodées : master 1920 × 1080, OG 1200 × 630, dérivé AVIF 768 × 432, deux figures WebP 1600 × 900. Images chargées aux deux largeurs, sans troncature dans les masters. Miniatures mobiles non adaptées à une lecture fine ; détail disponible en HTML."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alts du rendu identiques à la recette : fiche fictive avec critère et responsable, file des quatre états. L'alt de couverture décrit trois plateaux et fiches vierges, sans prétendre une preuve de sélection ou une capture réelle ChatGPT."
+      ]
+    }
+  ]
+}

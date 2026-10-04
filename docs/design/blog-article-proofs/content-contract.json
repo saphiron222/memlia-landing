@@ -214,5 +214,23 @@
     "sourceUrl": null,
     "capturedAt": "2026-10-03",
     "centralText": "Chaîne de preuve · total des coûts Jeu d’essai fictif · classeur de démonstration Rapprochement entrée → total affiché 1 référence décalée Formules livrées Cellules sources Filtres Poste Attendu Cellule visée Cellule lue Lu État Coût A 40 AA12 AA12 40 Concordant Coût B 10 AA13 AA13 10 Concordant Coût C 5 AA14 Z14 vide Référence décalée Total des coûts 55 AA15 AA15 50 Divergence Colonne insérée avant la colonne Z Attendu calculé hors du classeur Référence sélectionnée Coût C Avant insertion Z14 Après insertion AA14 attendu Formule livrée lit encore Z14 Effet total 50 au lieu de 55 Total refusé"
+  },
+  {
+    "id": "usage-fiche-selection",
+    "article": "utiliser-chatgpt-cabinet-comptable",
+    "alt": "Fiche fictive E-01 : reformulation, note D-012, critère de contrôle et responsable de l’essai.",
+    "source": "reconstitution HTML fictive de la fiche de sélection ; aucun modèle interrogé",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-04",
+    "centralText": "Fiche de sélection Jeu d’essai fictif · E-01 · D-012 Usage candidat Reformuler une note Essai sélectionné Note source D-012 : réunion jeudi ; liste de questions à préparer. Geste Reformulation Sortie attendue Brouillon court à relire Acceptation Aucun fait ajouté ; aucune réserve perdue Contexte absent Contexte à préciser Décision demandée Hors périmètre Trace de l’essai Entrée · consigne · sortie · correction · décision Responsable de l’essai Chef de mission Destination Brouillon Envoi Non autorisé Modèle interrogé Aucun Suite Essai de rédaction À éprouver"
+  },
+  {
+    "id": "usage-file-essais",
+    "article": "utiliser-chatgpt-cabinet-comptable",
+    "alt": "File fictive des quatre essais : sélection, hors périmètre, contexte absent et envoi non autorisé.",
+    "source": "reconstitution HTML fictive des sorties de journal-rejeu.json ; règle locale déterministe",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-04",
+    "centralText": "File des essais Jeu d’essai fictif · règle locale · 4 octobre 2026 Sélection des demandes Quatre cas exécutés Tous À préciser Hors périmètre Cas Demande Statut obtenu Sortie Envoi E-01 Reformuler · D-012 ESSAI_SELECTIONNE Brouillon à relire false E-02 Décision fiscale HORS_PERIMETRE Aucune préparation false E-03 Reformuler · contexte vide CONTEXTE_ABSENT Contexte à préciser false E-04 Reformuler et envoyer ENVOI_NON_AUTORISE Brouillon à relire false Règle Déterministe locale Modèle interrogé Aucun Reformulation générée Aucune"
   }
 ]

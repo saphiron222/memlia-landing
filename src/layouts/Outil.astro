@@ -62,7 +62,7 @@ const graph = {
       ]}
     />
     <OutilPromesse entree={outil.promesse.entree} resultat={outil.promesse.resultat} />
-    <OutilZone mentionLocale={outil.mentionLocale} limites={outil.limites} suspension={outil.suspension}>
+    <OutilZone mentionLocale={outil.mentionLocale} limites={outil.limites} suspension={outil.suspension} large={outil.zoneLarge}>
       {outil.statut !== 'suspendu' && <slot />}
     </OutilZone>
     <OutilPreuves source={outil.source} mentionLocale={outil.mentionLocale} refus={outil.limites.at(-1) ?? outil.limites[0]} />

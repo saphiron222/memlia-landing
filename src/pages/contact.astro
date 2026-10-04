@@ -193,6 +193,8 @@ const appel = {
     }
   };
   accordOrigine?.addEventListener('change', actualiserOrigine);
+  // Le formulaire est utilisable avant le téléchargement du script : relire le choix déjà saisi.
+  actualiserOrigine();
   if (formulaire && etat) {
     formulaire.addEventListener('submit', async (evenement) => {
       if (!formulaire.checkValidity()) return; // Le navigateur signale lui-même le champ manquant.

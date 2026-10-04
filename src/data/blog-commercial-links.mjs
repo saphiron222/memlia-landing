@@ -3,6 +3,10 @@
  * cette table relie chaque intention informationnelle à une seule page commerciale.
  */
 export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
+  'utiliser-chatgpt-cabinet-comptable': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir comment automatiser une tâche préparatoire',
+  }),
   'automatiser-la-relance-des-pieces-clients': Object.freeze({
     href: '/automatisation-cabinet-comptable',
     label: 'Voir le service d’automatisation',
