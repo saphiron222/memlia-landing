@@ -2,11 +2,11 @@
 
 ## Périmètre
 
-Candidat depuis origin/main après PR53. Corrections strictement bornées au lot B de CORRECTIONS.md (audit t_2caf75a7). Aucun corps d’article historique ou Cicatrice, aucun guide individuel, aucune route, aucun asset ni CSS modifié. Le contact garde ses champs, son transport, son stockage et ses durées.
+Candidat depuis origin/main après PR53. Corrections strictement bornées au lot B de CORRECTIONS.md (audit t_2caf75a7). Aucun corps d’article historique ou Cicatrice, aucun guide individuel, aucune route, aucun asset ni CSS modifié. Après le FAIL métier, le contact ajoute l’accord facultatif de provenance ; transport, schéma de stockage et durées restent inchangés.
 
 - Garanties : comparaison et délais non démontrés retirés, formulations demandées reprises. La politique couvre le site ; les flux du service sont documentés par mission.
 - Accueil / méthode / service / garanties : essais fictifs, puis recette dans l’environnement autorisé sur cas et fichiers convenus. Formats, accès et cas couverts bornent la règle ; validation et exceptions restent humaines. Audit légal listé, non ouvert.
-- Contact : invitation par tâche récurrente, cas courant et exception. Notice alignée sur les deux finalités déjà réalisées.
+- Contact : invitation par tâche récurrente, cas courant et exception. Réponse sur intérêt légitime ; provenance sur consentement distinct facultatif, non précoché.
 - Glossaire : relance préparée, envoi validé ; pré-comptabilité avec propositions, sans écriture validée ; qualification RGPD par traitement ; modèle local distinct de l’absence de flux ; reliquat comparable sans preuve de fiabilité ; extraction sans OCR séparé obligatoire ; génération sans nouveauté garantie.
 - Rubriques : ordre des articleIds, pas tri de dates ; orientation par geste.
 - Intégrations : neuf liens conservés, quatre produits exacts (4 comptabilité Sage, 2 paie Sage, 1 Cegid, 2 mySilae).
@@ -14,9 +14,11 @@ Candidat depuis origin/main après PR53. Corrections strictement bornées au lot
 
 ## Contact : constat du code
 
-src/pages/contact.astro : le script copie uniquement le pathname du referrer de même origine dans origine ; absence de referrer ou de JavaScript laisse le champ vide. La case consentement est unique, obligatoire et non précochée. Il n’existe pas de consentement facultatif distinct pour la provenance : la nouvelle notice énonce les deux finalités de cette même case, sans inventer une option.
-functions/api/contact.js : valider refuse l’absence de consentement, borne et nettoie origine ; l’écriture D1 contient le chemin sans query ni fragment. Aucun envoi automatique au visiteur. Notification facultative limitée au numéro et à l’heure ; pas de PII dans la notification. Vérification uniquement sur code et données fictives en tests, aucun message réel envoyé.
-La politique existante décrit déjà cette provenance pour comprendre quelle page amène une demande. Pas de changement de base légale ni de conservation.
+src/pages/contact.astro : la case historique consentement confirme désormais la lecture de la politique, et ne recueille aucun accord de provenance. La case consentement_origine est distincte, facultative et non précochée. Le script ne copie le pathname interne qu’après son accord et le vide au refus, puis vérifie à nouveau le choix avant envoi. L’absence de referrer ou de JavaScript laisse le champ vide.
+functions/api/contact.js : la validation serveur ne conserve origine que pour consentement_origine=true (JSON) ou 'on' (formulaire). Toute autre valeur, même accompagnée d’un chemin forgé, produit NULL en base sans refuser le message. Le nettoyage du chemin et les protections anti-abus restent inchangés. Aucun envoi automatique au visiteur ; notification limitée au numéro et à l’heure. Tests sur données fictives et dépendances réseau interceptées, aucun message réel envoyé.
+Politique : réponse/sécurité sur intérêt légitime, provenance sur consentement spécifique. Le chemin associé au message est une donnée personnelle, conservée au plus douze mois. Retrait par contact en ligne ou courriel : supprimer manuellement le champ origine du message concerné après identification de la demande, sans effacer le message nécessaire à la réponse. Ne pas réutiliser les provenances historiques comme si un accord distinct avait été obtenu : cette correction ne valide pas rétroactivement la collecte précédente.
+La règle serveur, sa version livrée, le formulaire versionné et recu_le documentent les conditions de collecte des nouvelles origines. Aucun accès à la base réelle ni changement des messages historiques durant la recette. La revue métier doit confirmer ce dispositif et le mode de retrait avant publication.
+Sources primaires relues le 04/10/2026 : https://www.cnil.fr/fr/les-bases-legales/consentement (libre, spécifique, éclairé, univoque, retrait et preuve) ; https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2 (articles 6 et 7).
 
 ## Vérification des sources
 

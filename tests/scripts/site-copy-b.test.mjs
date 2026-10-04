@@ -28,10 +28,18 @@ test('garanties : ni comparaison ni délai, politique bornée au site', () => {
   assert.doesNotMatch(text, /plus souvent que d’autres|quelques minutes|des mois plus tard/);
 });
 
-test('contact : la notice expose les deux finalités réellement transportées', () => {
+test('contact : finalités séparées, provenance facultative et base identifiée', () => {
   const text = source('src/pages/contact.astro');
   assert.ok(text.includes('comprendre la page du site à l’origine de ma demande'));
   assert.ok(text.includes('un cas courant et une exception'));
+  assert.match(text, /id="consentement_origine" name="consentement_origine" type="checkbox" \/>/);
+  assert.ok(text.includes('sur la base de son intérêt légitime'));
+  assert.ok(text.includes('Je peux envoyer mon message sans cet accord'));
+  const politique = source('src/pages/politique-de-confidentialite.astro');
+  assert.ok(politique.includes('constitue une donnée personnelle'));
+  assert.ok(politique.includes('article 6, paragraphe 1, a du RGPD'));
+  assert.ok(politique.includes('article 6, paragraphe 1, f du RGPD'));
+  assert.doesNotMatch(politique, /elle ne dit rien de vous/);
   assert.doesNotMatch(text, /Elles ne servent à rien d’autre|celle qui agace le plus/);
 });
 
