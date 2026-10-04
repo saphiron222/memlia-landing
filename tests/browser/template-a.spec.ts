@@ -57,8 +57,9 @@ test('dates : aucun repli inventé ; les dates éditoriales explicites restent c
   await page.goto('/methode');
   const nodes = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) => scripts.flatMap((script) => JSON.parse(script.textContent ?? '{}')['@graph'] ?? []));
   const node = nodes.find((item) => item['@type'] === 'WebPage');
-  await expect(page.locator(`[data-page-byline] time[datetime="${node.datePublished}"]`)).toHaveCount(1);
-  await expect(page.locator(`[data-page-byline] time[datetime="${node.dateModified}"]`)).toHaveCount(1);
+  expect(node).toBeTruthy();
+  // Décision de Kevin du 04/10/2026 : pas de signature ni de dates visibles hors du blog.
+  await expect(page.locator('[data-page-byline]')).toHaveCount(0);
   // Les preuves sous la ligne de flottaison ne deviennent pas prioritaires.
   await expect(page.locator('main img[loading="lazy"]').first()).toHaveAttribute('loading', 'lazy');
 });
