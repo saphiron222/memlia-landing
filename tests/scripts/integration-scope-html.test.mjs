@@ -20,7 +20,8 @@ for (const slug of slugs) {
     assert.match(html, new RegExp(`<link rel="canonical" href="https://memlia.fr/integrations/${slug}"`));
     assert.equal([...html.matchAll(/<h1\b/g)].length, 1);
     assert.match(html, new RegExp(`/proofs/integrations/${slug}\\.webp`));
-    assert.match(html, /datetime="2026-10-04"/);
+    assert.match(html, /data-primary-source/);
+    assert.doesNotMatch(visible, /consultée le|vérifiée le/i);
     assert.match(visible, /Cas illustratifs sur données fictives/);
     assert.match(visible, /aucun essai dans le logiciel éditeur/);
     assert.match(visible, /État attendu/);
