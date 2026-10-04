@@ -58,6 +58,15 @@ def creneau(e):
 GABARIT_PAR_FORMAT = {'pillar-page': 'ultimate-guide', 'how-to-guide': 'how-to', 'faq-knowledge': 'explainer', 'listicle-checklist': 'listicle', 'tutorial': 'how-to', 'resource-template': 'landing-page', 'thought-leadership': 'essai'}
 MOTS_PAR_FORMAT = {'pillar-page': 3200, 'how-to-guide': 1500, 'faq-knowledge': 1300, 'listicle-checklist': 1400, 'tutorial': 1500, 'resource-template': 1200, 'thought-leadership': 1400}
 
+# Intentions distinctes mandatées le 03/10 ; inscription et mesures restent au backlog.
+# Ce registre étend le stock de base, jamais les quotas ou l'autorité de publication.
+BRIEFS_IA_MANDATES = {
+    'utiliser-chatgpt-cabinet-comptable': 'ia-generative-agents',
+    'verifier-reponse-ia-comptabilite': 'ia-generative-agents',
+    'ia-comptabilite-confidentialite-donnees': 'rgpd-secret-securite',
+    'automatiser-avec-ia-sans-changer-logiciel': 'ia-generative-agents',
+}
+
 
 def enum_du_schema(nom):
     texte = SCHEMA.read_text(encoding='utf-8')
@@ -493,6 +502,8 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         erreurs.append('requêtes primaires en double (cannibalisation)')
     roles_ok, formats_ok, intents_ok, funnels_ok = enum_du_schema('rolePrincipal'), enum_du_schema('format'), enum_du_schema('intent'), enum_du_schema('funnel')
     for e in tous:
+        if e['slug'] in BRIEFS_IA_MANDATES and e['famille'] != BRIEFS_IA_MANDATES[e['slug']]:
+            erreurs.append(f"famille du brief mandaté divergente : {e['slug']}")
         f = familles.get(e['famille'])
         if not f:
             erreurs.append(f"famille hors taxonomie : {e['famille']} ({e['slug']})")
@@ -511,9 +522,10 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         # La série « Cicatrices » (charte §7 ter) prend un créneau mais n'est pas un angle de famille :
         # elle vise la marque, pas une requête, et n'entre donc pas dans le compte des quatre.
         angles = [e for e in membres if not e.get('historique') and not e.get('serie')]
-        # La grappe IA est bornée aux trois pages arbitrées le 20/09/2026 : preuve ChatGPT,
-        # catégorie logicielle puis hub. Les déclinaisons outil × pôle/rôle restent des sections.
-        attendu = 3 if fid in {pilier['famille'], 'ia-generative-agents'} else 4
+        # Conserver le stock initial ; chaque intention mandatée effectivement inscrite
+        # dans sa famille ajoute une place, sans permettre un angle arbitraire.
+        attendu = (3 if fid in {pilier['famille'], 'ia-generative-agents'} else 4) + sum(
+            BRIEFS_IA_MANDATES.get(e['slug']) == fid for e in angles)
         if len(angles) != attendu:
             erreurs.append(f'{fid} : {len(angles)} angles au lieu de {attendu}')
     for slug in publies:
