@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/pseudonymisation/index.html",
+      "sha256": "8266bbf5c6608c260522ed7b00910d1c86c040dcddbe14672611b88b4b73b039"
+    },
+    {
+      "path": "docs/design/pseudonymisation/styles.css",
+      "sha256": "fecb252ffc59b38ab614901d40895d6f0a62889134d5068898ebbedcb0cb29a2"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/pseudonymisation/content-contract.json",
+      "sha256": "487d9b412f656a8e0d1d1d445363935af06c02bdbf51678c96ec35e3b405f005"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "bd1b150d4c592dc102923f14e961271f5fbfa6bd2a1b9a336e1a5b468bf99699"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/pseudonymisation/index.html#outil-pseudonymisation",
+      "target": "public/proofs/v2/29-outil-pseudonymisation.webp",
+      "bytes": 40128,
+      "sha256": "341c9c1a49b66b944c8f4b9555bff944f41563635b2e6512a41294f83ce03379"
+    },
+    {
+      "source": "docs/design/pseudonymisation/index.html#outil-pseudonymisation",
+      "target": "public/proofs/v2/og/29-outil-pseudonymisation.webp",
+      "bytes": 27518,
+      "sha256": "4ee2d6098f6897ef4b4e462850491ae57470eb18ad2ca56e595c3f8949648ca3"
+    }
+  ]
+}

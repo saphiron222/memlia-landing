@@ -1,0 +1,21 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import Pseudonymiseur from '@/components/outils/Pseudonymiseur.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('preparer-pseudonymiser-fichier-csv-fec');
+---
+<Outil outil={outil}>
+  <Pseudonymiseur />
+  <section class="lecture" aria-labelledby="pseudo-source">
+    <h2 id="pseudo-source">Pseudonymisation : ce que la CNIL distingue</h2>
+    <p>La <a href="https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles">CNIL</a> rappelle : « L’anonymisation ne doit pas être confondue avec la pseudonymisation ». Remplacer des noms par des alias ne rend pas une copie irréversible : les dates, les montants, les champs libres ou une information extérieure peuvent permettre de retrouver une personne.</p>
+    <h3>Qui prépare, qui décide ?</h3>
+    <p>Cette page lit une copie et prépare les transformations que vous choisissez. Vous relisez les colonnes, les en-têtes et les risques sur tout le fichier, pas seulement cinq lignes. Le cabinet décide ensuite si la copie doit être utilisée, pour quelle tâche et dans quel environnement autorisé.</p>
+    <h3>Le mapping est-il nécessaire ?</h3>
+    <p>Non. Les alias sont cohérents pour les valeurs égales d’une colonne dans la session. Le mapping est un téléchargement distinct, disponible seulement après votre choix explicite. Il contient les valeurs originales : ne le joignez jamais à la copie que vous cherchez à minimiser.</p>
+    <h3>Pourquoi ne pas appeler cette copie un FEC ?</h3>
+    <p>Des colonnes ont pu disparaître, des valeurs devenir des alias et les cellules à risque de formule être préfixées par une apostrophe. Ce CSV sert à une tâche de travail limitée, jamais à un dépôt fiscal. Conservez votre original dans son environnement habituel.</p>
+    <p>Pour une préparation qui revient à chaque dossier, notre <a href="/methode">méthode de règle écrite et de recette</a> permet de définir les champs utiles, les arrêts et la validation avant d’automatiser dans vos outils.</p>
+  </section>
+</Outil>
+<style>.lecture { display:grid; gap:16px; padding-top:32px; margin-top:32px; border-top:1px solid var(--ligne); } .lecture h2 { font-size:var(--t-3xl); } .lecture h3 { font-size:var(--t-2xl); } .lecture p { color:var(--texte-2); }</style>

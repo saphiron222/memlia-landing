@@ -20,9 +20,12 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const mode = process.argv.includes('--check') ? 'check' : process.argv.includes('--adopt') ? 'adopt' : 'render';
-const source = 'docs/design/site-v2-proofs';
+const option = (name, fallback) => process.argv.find((arg) => arg.startsWith(`--${name}=`))?.split('=').slice(1).join('=') ?? fallback;
+const source = option('source', 'docs/design/site-v2-proofs');
 const contractPath = `${source}/content-contract.json`;
-const manifestPath = 'docs/qa/site-v2/proofs-manifest.json';
+const manifestPath = option('manifest', 'docs/qa/site-v2/proofs-manifest.json');
+const startIndex = Number(option('start', '1'));
+assert.ok(Number.isInteger(startIndex) && startIndex > 0, 'Index de départ invalide');
 const output = `.qa/annotations/v2-${mode}`;
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 mkdirSync(output, { recursive: true });
@@ -90,7 +93,7 @@ try {
     assert.deepEqual(measured.hidden, [], `Texte masqué : ${id}`);
     if (mode !== 'adopt') assert.equal(measured.text, contract[index].centralText, `Contenu divergent : ${id}`);
     adopted.push({ id, centralText: measured.text });
-    const name = `${String(index + 1).padStart(2, '0')}-${id}`;
+    const name = `${String(index + startIndex).padStart(2, '0')}-${id}`;
     const png = await element.screenshot({ animations: 'disabled', path: `${output}/${name}.png` });
     const webp = await sharp(png).webp({ quality: 90, effort: 6 }).toBuffer();
     assert.ok(webp.length < 150_000, `Preuve trop lourde : ${name} (${webp.length} octets)`);
