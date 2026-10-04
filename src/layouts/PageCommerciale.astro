@@ -2,7 +2,6 @@
 import Base from '@/layouts/Base.astro';
 import Button from '@/components/Button.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
-import PageAttribution from '@/components/PageAttribution.astro';
 import PageEvidence from '@/components/PageEvidence.astro';
 import { CTA, SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
@@ -97,7 +96,7 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
         <span class="pastille">{eyebrow}</span>
         <h1 id="page-titre" class="page-h1">{page.h1}</h1>
         <p class="page-chapeau">{page.chapeau}</p>
-        {eeat && <PageAttribution eeat={eeat} />}
+        {/* Pas de signature ni de dates d’article hors du blog (décision de Kevin du 04/10/2026). */}
         <div class="page-actions">
           <Button href={actionPrincipale.href} variante="principal" picto="fleche">{actionPrincipale.libelle}</Button>
           {secondaireCourriel && <Fragment set:html={`<!--email_off-->`} />}

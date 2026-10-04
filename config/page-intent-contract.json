@@ -3,6 +3,7 @@
   "measuredAt": "2026-09-20",
   "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
   "pages": {
+    "/outils-comptables-gratuits/verificateur-fec-local": { "query": "vérificateur fec gratuit", "descriptionLead": "Contrôlez localement la structure", "source": "Brief 05 vague 3 ; sonde Google au cadrage, aucune promesse de volume" },
     "/": { "query": "automatisation IA cabinet comptable", "descriptionLead": "Votre cabinet" },
     "/a-propos": { "query": "marque / preuve d’identité", "descriptionLead": "À propos de Memlia" },
     "/automatisation-cabinet-comptable": { "query": "automatisation cabinet comptable", "descriptionLead": "Toute tâche répétitive" },
@@ -22,7 +23,7 @@
     "/contact": { "query": "navigation transactionnelle de marque", "descriptionLead": "Décrivez la tâche" },
     "/garanties": { "query": "preuve et réduction du risque", "descriptionLead": "Garanties Memlia" },
     "/glossaire": { "query": "glossaire comptable", "descriptionLead": "Glossaire comptable" },
-    "/integrations": { "query": "guides par environnement comptable", "descriptionLead": "Des repères factuels" },
+    "/integrations": { "query": "guides par environnement comptable", "descriptionLead": "Trouvez les repères de contrôle" },
     "/integrations/rapprochement-bancaire-sage": { "query": "rapprochement bancaire sage", "descriptionLead": "Cadrez un rapprochement bancaire Sage 100" },
     "/integrations/lettrage-sage": { "query": "lettrage sage", "descriptionLead": "Cadrez le lettrage Sage 100" },
     "/integrations/dsn-sage": { "query": "dsn sage", "descriptionLead": "Cadrez les contrôles d’une DSN Sage" },

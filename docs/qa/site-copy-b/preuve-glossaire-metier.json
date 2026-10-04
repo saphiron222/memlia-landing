@@ -1,0 +1,325 @@
+{
+  "required": true,
+  "reviewerType": "ai-agent",
+  "reviewerProfile": "metier",
+  "reviewerId": "t_4caa8d82",
+  "reviewerRole": "reviewer-metier-memlia",
+  "distinctFrom": [
+    "author",
+    "editorialReviewer",
+    "sourceClassifier"
+  ],
+  "reviewedCandidateHash": "6a3d2c314a14f722d9167e9215d1352c72f09f9214d3b5ed63eb8eeb110df53a",
+  "status": "AI_REVIEW_PASS",
+  "claimSourceVerdicts": [
+    {
+      "claimId": "claim-t-dsn",
+      "sourceId": "source-net-dsn-overview",
+      "citationIds": [
+        "citation-t-dsn-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "6501b347460ffc6f155702f53fe317b17d1df81cd10c8eebc8cec2448ee7d684",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source net-entreprises.fr rouverte par curl (HTTP 200) le 16 septembre 2026 ; la citation sur le caractère obligatoire de la DSN et son rôle de remplacement de formalités liées à la paie y figure mot pour mot une fois balises et espaces retirés. L'affirmation généralise « près de 80 procédures » en « des formalités », ce qui reste dans le sens de la source sans introduire de chiffre susceptible de devenir obsolète."
+    },
+    {
+      "claimId": "claim-t-dsn-val",
+      "sourceId": "source-net-dsn-val",
+      "citationIds": [
+        "citation-t-dsn-val-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "71bca3f5dfae80e21cdfeaf73b27ca81d4e9b71327a85c9896f48c78770fc316",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200). La phrase sur DSN-Val, le cahier technique et le journal de maintenance de la norme (JMN) est retrouvée mot pour mot dans la page vivante et dans la copie locale. L'affirmation ne dit pas plus que la source."
+    },
+    {
+      "claimId": "claim-t-compte-rendu-metier-dsn",
+      "sourceId": "source-net-crm",
+      "citationIds": [
+        "citation-t-compte-rendu-metier-dsn-1",
+        "citation-t-compte-rendu-metier-dsn-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "1ef720db9371a1c605fd9a5ec653f50f19e9caab6e3856a473228d33fabd7775",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; les deux citations (nature du compte rendu métier, et confirmation de qualité ou signalement d'anomalies) sont retrouvées mot pour mot. L'affirmation synthétise fidèlement les deux passages sans en durcir le sens."
+    },
+    {
+      "claimId": "claim-t-annule-et-remplace-dsn",
+      "sourceId": "source-net-annule",
+      "citationIds": [
+        "citation-t-annule-et-remplace-dsn-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source inaccessible à curl (HTTP 401, net-entreprises.custhelp.com refuse la requête anonyme) ; jugement fondé sur la copie datée du 16 septembre 2026 au matin, dont le SHA-256 correspond exactement à celui enregistré dans le manifeste et au fichier réel (shasum vérifié). La citation y figure mot pour mot. L'affirmation reste générique (« la fenêtre autorisée pour ce type de déclaration ») sans reprendre la date-limite chiffrée « 5 ou 15 du mois suivant » propre à la DSN mensuelle, ce qui évite toute généralisation abusive aux signalements d'événement — traités séparément par le claim de confusion courante ci-dessous."
+    },
+    {
+      "claimId": "claim-t-donnee-personnelle",
+      "sourceId": "source-cnil-donnee",
+      "citationIds": [
+        "citation-t-donnee-personnelle-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "b40a155d3aba77d6b8c6a92391edaeab5861fe3b74327e564c90d0ec9cdf5a6e",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; la définition de la donnée personnelle est retrouvée mot pour mot. L'affirmation reprend fidèlement cette définition et y intègre la distinction directe/indirecte énoncée par la phrase suivante de la même page."
+    },
+    {
+      "claimId": "claim-t-minimisation-des-donnees",
+      "sourceId": "source-cnil-rgpd",
+      "citationIds": [
+        "citation-t-minimisation-des-donnees-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fed6712016214922b4eb8c294bb96b7b9bc7a88b9943dccb6ea368b8f414a3ee",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200). Sur la page vivante, le mot « minimisation » est enveloppé dans une infobulle HTML (bouton + span de glossaire) ; une fois les balises retirées, le texte cité (« adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités... ») est retrouvé caractère pour caractère. L'affirmation paraphrase fidèlement ce principe sans l'étendre."
+    },
+    {
+      "claimId": "claim-t-anonymisation",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-anonymisation-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T21:06:16+01:00",
+      "reasoning": "Rejugement après correction : `src/data/glossary.ts` a été modifié et les deux manifestes rescellés (`npm run resource:seal-surfaces`) ; le texte du claim est désormais « Traitement visant à rendre impossible, en pratique, l'identification d'une personne par quelque moyen que ce soit et de manière irréversible » (nouveau sha256 08d753e86e5bb8c8389ce478536f0fe9e92f381c65586b4431a1c47c20a54918, vérifié dans le manifeste courant). La citation, le sourceContentSha256 et le fichier de copie locale sont inchangés (fc641877..., diff confirmé nul sur les 26 autres claims sensibles du glossaire). Copie locale : le SHA-256 recalculé du fichier (`shasum -a 256 docs/qa/hub-ressources/metier-fix-a-sources/cnil-anonymisation.txt`) redonne fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d et la citation « ...par quelque moyen que ce soit et de manière irréversible » y est présente mot pour mot. Page vivante : rouverte par curl (HTTP 200) le 16 septembre 2026 en soirée, la même citation y est retrouvée mot pour mot après retrait des balises et des espaces. Fond : le claim reprend désormais exactement le standard de la source (« quelque moyen que ce soit »), sans plus le reformuler en un critère de moyens raisonnables absent de cette page CNIL. La nuance précédemment relevée est résolue. Verdict soutient, sans réserve."
+    },
+    {
+      "claimId": "claim-t-pseudonymisation",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-pseudonymisation-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; la définition de la pseudonymisation est retrouvée mot pour mot sur la page vivante et dans la copie locale. L'affirmation la reprend fidèlement, sans extension."
+    },
+    {
+      "claimId": "claim-t-recouvrement-amiable",
+      "sourceId": "source-service-public-recouvrement",
+      "citationIds": [
+        "citation-t-recouvrement-amiable-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "2c0a4012d8c3750f8054d7b17ee2f18b924670156119edc6752d6a4f3ce1274e",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; la citation sur la relance puis la mise en demeure est retrouvée mot pour mot. L'affirmation ne dit pas plus que la source."
+    },
+    {
+      "claimId": "claim-t-systeme-d-ia",
+      "sourceId": "source-eurlex-ai-act",
+      "citationIds": [
+        "citation-t-systeme-d-ia-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "c8084dc4b489ebbe3d100ef3d5982e7a01dfe4ecd6326671e6cac268d3695230",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source EUR-Lex rouverte par curl (HTTP 200, page de 1,3 Mo) ; la définition de l'article 3, point 1, du règlement (UE) 2024/1689 est retrouvée mot pour mot. L'affirmation omet la fin de la phrase (« pour des objectifs explicites ou implicites » et « qui peuvent influencer les environnements physiques ou virtuels ») mais n'affirme rien de plus que ce qui est repris ; l'omission ne change pas le sens de ce qui est cité."
+    },
+    {
+      "claimId": "claim-t-sous-traitant-rgpd",
+      "sourceId": "source-cnil-sous-traitant",
+      "citationIds": [
+        "citation-t-sous-traitant-rgpd-1",
+        "citation-t-sous-traitant-rgpd-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "9a887425be3a8666586d4a858a6632f17f1237d8a1c9f7d779b4fa02b963532d",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; les deux citations (définition du sous-traitant, obligations à inscrire au contrat) sont retrouvées mot pour mot. L'affirmation les combine fidèlement sans en durcir le sens."
+    },
+    {
+      "claimId": "claim-t-prelevement-sepa-et-rejet",
+      "sourceId": "source-banque-france-sepa",
+      "citationIds": [
+        "citation-t-prelevement-sepa-et-rejet-1",
+        "citation-t-prelevement-sepa-et-rejet-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "9c1cf92a313b863a22150a51948729a1becdbef1f77e75f6e91d3cdcc03058ea",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source Banque de France rouverte par curl (HTTP 200) ; les deux citations (consentement matérialisé par un mandat de prélèvement, notification motivée du rejet par la banque) sont retrouvées mot pour mot. La troisième phrase de l'affirmation (« un rejet n'est pas un impayé définitif : il appelle une nouvelle présentation ou un contact avec le client ») n'a pas d'équivalent dans cette FAQ ; applicability.exceptions du manifeste l'identifie explicitement comme doctrine Memlia et non comme un fait attribué à la Banque de France, ce qui évite toute usurpation d'autorité. Verdict soutient pour ce qui est effectivement attribué à la source ; réserve consignée sur le mélange, dans une même affirmation sensible de type juridique, d'un fait sourcé et d'une doctrine non sourcée."
+    },
+    {
+      "claimId": "claim-t-honoraires-mensualises-et-actes-hors-forfait",
+      "sourceId": "source-legifrance-deontologie-honoraires",
+      "citationIds": [
+        "citation-t-honoraires-mensualises-et-actes-hors-forfait-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "3857e998191e3e1c32d1f852b3195e33476a4524dc2cf87affe29980ee8bba3b",
+      "checkedAt": "2026-09-16T21:09:13+01:00",
+      "reasoning": "Rejugement après re-scellement : seul l'en-tête de la copie locale a changé (`docs/qa/hub-ressources/glossaire-vague-1-sources/legifrance-deontologie-honoraires.txt` porte désormais l'heure réelle de la capture Chrome au décalage machine, « 2026-09-16T20:36:00+01:00 (heure machine, à la minute) », au lieu d'une heure précédente) ; ce seul octet d'en-tête change le SHA-256 du fichier. `shasum -a 256` recalculé sur le fichier donne 3857e998191e3e1c32d1f852b3195e33476a4524dc2cf87affe29980ee8bba3b, identique au `contentSha256` désormais dans le manifeste et au `sourceContentSha256` de la citation : cohérence confirmée. Le passage cité (« Les honoraires sont fixés librement entre le client et les experts-comptables... ») est inchangé caractère pour caractère dans cette copie, et le claim (`sha256` 9a8929b79653f2fc686d7ddb784234d9f0d6f161b0b4787b8dd4248b1590978d, inchangé) comme la citation (texte inchangé) n'ont pas bougé. Source toujours inaccessible à curl (HTTP 403, défi anti-robot Cloudflare) ; aucune raison de penser que ce comportement a changé, la copie datée reste le fondement du jugement. Fond inchangé : la phrase sur les honoraires fixés librement correspond toujours au texte réel de l'article 158 du décret n° 2012-432 ; la phrase sur la mensualisation et les actes hors forfait reste hors du périmètre de cet article, comme le déclare `applicability.exceptions`. Verdict soutient, inchangé ; réserve sur le mélange fait sourcé / doctrine toujours consignée."
+    },
+    {
+      "claimId": "claim-t-annule-et-remplace-dsn-commonConfusion",
+      "sourceId": "source-net-annule",
+      "citationIds": [
+        "citation-t-annule-et-remplace-dsn-commonConfusion-1",
+        "citation-t-annule-et-remplace-dsn-commonConfusion-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "87925c6a6e6ca214f488ffedf54ac95ccdfe8749936cbaaed0c48e5fece9b49e",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source inaccessible à curl (HTTP 401) ; jugement sur la copie du matin, SHA-256 conforme. Les deux citations (délai de la DSN mensuelle, absence de délai pour un signalement d'événement) y figurent mot pour mot. L'affirmation généralise correctement le contraste entre les deux régimes sans rien y ajouter."
+    },
+    {
+      "claimId": "claim-t-donnee-personnelle-context",
+      "sourceId": "source-cnil-donnee",
+      "citationIds": [
+        "citation-t-donnee-personnelle-context-1",
+        "citation-t-donnee-personnelle-context-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "b40a155d3aba77d6b8c6a92391edaeab5861fe3b74327e564c90d0ec9cdf5a6e",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200). La première citation est retrouvée mot pour mot. La seconde, sur les exemples d'identification directe et indirecte, est présente verbatim dans la copie locale, mais tronque la phrase réelle de la page vivante : celle-ci énumère d'autres exemples (numéro de sécurité sociale, adresse postale ou courriel...) après « plaque d'immatriculation », avant sa vraie fin de phrase, alors que la citation referme par une parenthèse et un point qui ne se trouvent pas à cet endroit dans la page actuelle. Réserve consignée sur la fidélité de cet extrait (troncature sans marque d'ellipse). Sans conséquence sur le verdict : l'affirmation ne revendique que la distinction générale directe/indirecte, pleinement soutenue quelle que soit la longueur réelle de la liste d'exemples de la CNIL."
+    },
+    {
+      "claimId": "claim-t-donnee-personnelle-exampleFictitious",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-donnee-personnelle-exampleFictitious-1",
+        "citation-t-donnee-personnelle-exampleFictitious-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; les deux citations sont retrouvées mot pour mot (à la capitalisation d'amorce près pour la seconde, qui poursuit sur la page vivante une phrase commençant plus haut par « ... : les données concernées conservent donc... », citée ici avec un « Les » capitalisé en tête d'extrait — aucun autre écart de caractère). L'exemple du tableau de correspondance est une illustration standard et fidèle du principe énoncé : des données pseudonymisées restent personnelles si une table séparée permet de retrouver la personne."
+    },
+    {
+      "claimId": "claim-t-donnee-personnelle-commonConfusion",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-donnee-personnelle-commonConfusion-1",
+        "citation-t-donnee-personnelle-commonConfusion-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Mêmes citations et même constat de capitalisation d'amorce que pour claim-t-donnee-personnelle-exampleFictitious. L'affirmation, nuancée par « ne suffit pas toujours » (et non « jamais »), reste dans le sens de la source."
+    },
+    {
+      "claimId": "claim-t-minimisation-des-donnees-commonConfusion",
+      "sourceId": "source-cnil-rgpd",
+      "citationIds": [
+        "citation-t-minimisation-des-donnees-commonConfusion-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fed6712016214922b4eb8c294bb96b7b9bc7a88b9943dccb6ea368b8f414a3ee",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; même citation que pour le claim principal de minimisation, retrouvée mot pour mot une fois l'infobulle HTML neutralisée. L'exemple de la colonne de tableur exclue est une application directe, non une extension, du principe de minimisation cité."
+    },
+    {
+      "claimId": "claim-t-anonymisation-commonConfusion",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-anonymisation-commonConfusion-1",
+        "citation-t-anonymisation-commonConfusion-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200). La première citation (définition de la pseudonymisation) est retrouvée mot pour mot. La seconde (« conservent donc un caractère personnel... ») est retrouvée à l'identique, capitalisation d'amorce mise à part (la source poursuit une phrase antérieure avec un « les » minuscule ; la citation capitalise « Les » pour ouvrir l'extrait, sans autre écart). L'affirmation reprend fidèlement la réversibilité de la pseudonymisation par opposition à l'anonymisation, sans reprendre le point nuancé du claim-t-anonymisation ci-dessus."
+    },
+    {
+      "claimId": "claim-t-pseudonymisation-context",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-pseudonymisation-context-1",
+        "citation-t-pseudonymisation-context-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Mêmes citations et même constat de capitalisation d'amorce que ci-dessus. L'affirmation (remplacer un nom par un identifiant limite l'exposition directe mais ne suffit pas si la personne reste retrouvable) est une reformulation fidèle, non une extension."
+    },
+    {
+      "claimId": "claim-t-pseudonymisation-commonConfusion",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-pseudonymisation-commonConfusion-1",
+        "citation-t-pseudonymisation-commonConfusion-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Mêmes citations. L'affirmation (la pseudonymisation n'est ni une anonymisation ni une sortie du RGPD) est le corollaire direct des deux phrases citées (réversibilité, persistance du caractère personnel)."
+    },
+    {
+      "claimId": "claim-t-recouvrement-amiable-commonConfusion-sequence",
+      "sourceId": "source-service-public-recouvrement",
+      "citationIds": [
+        "citation-t-recouvrement-amiable-commonConfusion-sequence-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "2c0a4012d8c3750f8054d7b17ee2f18b924670156119edc6752d6a4f3ce1274e",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; citation identique à celle du claim principal, retrouvée mot pour mot. L'affirmation sur la séquence relance puis mise en demeure ne dit rien de plus que la source."
+    },
+    {
+      "claimId": "claim-t-systeme-d-ia-context",
+      "sourceId": "source-eurlex-ai-act",
+      "citationIds": [
+        "citation-t-systeme-d-ia-context-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "c8084dc4b489ebbe3d100ef3d5982e7a01dfe4ecd6326671e6cac268d3695230",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; la citation, tirée du considérant 12 du règlement (UE) 2024/1689, est retrouvée mot pour mot. L'affirmation applique ce considérant au contexte d'un cabinet évaluant un outil promu comme « IA » ; applicability précise qu'un considérant éclaire la définition sans créer d'obligation propre et que la qualification concrète reste un examen au cas par cas, ce qui borne correctement la portée de l'affirmation."
+    },
+    {
+      "claimId": "claim-t-systeme-d-ia-commonConfusion",
+      "sourceId": "source-eurlex-ai-act",
+      "citationIds": [
+        "citation-t-systeme-d-ia-commonConfusion-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "c8084dc4b489ebbe3d100ef3d5982e7a01dfe4ecd6326671e6cac268d3695230",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Même citation, même constat. L'affirmation restitue fidèlement la distinction du considérant 12 entre système d'IA et automatisation fondée sur des règles définies uniquement par des personnes physiques."
+    },
+    {
+      "claimId": "claim-t-sous-traitant-rgpd-context",
+      "sourceId": "source-cnil-roles-rgpd",
+      "citationIds": [
+        "citation-t-sous-traitant-rgpd-context-1",
+        "citation-t-sous-traitant-rgpd-context-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "e0087456bdeba9c77f7fb4f5647a44037de911996e53e25697ddfa3518bf7a5a",
+      "checkedAt": "2026-10-04T02:49:45.632Z",
+      "reasoning": "CNIL, texte RGPD chapitre I, article 4 points 7 et 8, relu le 04/10/2026 : le responsable détermine les finalités et moyens, le sous-traitant traite pour son compte. Chapitre IV, article 28 paragraphes 3 a et 10 : instructions documentées et responsabilité si le prestataire détermine les finalités et moyens. La formulation impose une qualification par traitement et ne présume pas le rôle de tout cabinet ; le contrat encadre le cas effectivement sous-traité."
+    },
+    {
+      "claimId": "claim-t-sous-traitant-rgpd-commonConfusion",
+      "sourceId": "source-cnil-roles-rgpd",
+      "citationIds": [
+        "citation-t-sous-traitant-rgpd-commonConfusion-1",
+        "citation-t-sous-traitant-rgpd-commonConfusion-2"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "e0087456bdeba9c77f7fb4f5647a44037de911996e53e25697ddfa3518bf7a5a",
+      "checkedAt": "2026-10-04T02:49:45.632Z",
+      "reasoning": "CNIL, texte RGPD chapitre I, article 4 points 7 et 8, relu le 04/10/2026 : le rôle dépend des finalités, moyens et du traitement pour compte, pas du titre professionnel ni de la seule réception de données. La formulation reste générale et ne qualifie aucun prestataire réel ; article 28 paragraphe 10 confirme la distinction en cas de détermination des finalités et moyens par le prestataire."
+    },
+    {
+      "claimId": "claim-t-jeu-d-essai-fictif-commonConfusion",
+      "sourceId": "source-cnil-anonymisation",
+      "citationIds": [
+        "citation-t-jeu-d-essai-fictif-commonConfusion-1"
+      ],
+      "verdict": "soutient",
+      "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
+      "checkedAt": "2026-09-16T21:00:59+01:00",
+      "reasoning": "Source rouverte par curl (HTTP 200) ; la citation (définition de l'anonymisation) est retrouvée mot pour mot. La distinction avec un jeu d'essai fictif, qui n'a jamais correspondu à une personne réelle, découle logiquement de cette définition, qui suppose un traitement appliqué à des données réelles ; applicability précise que le caractère inventé du jeu d'essai est une convention Memlia, non une notion CNIL."
+    }
+  ]
+}

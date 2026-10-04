@@ -1,7 +1,7 @@
 ---
 import { CHARTER_NOTICE } from '@/lib/charte-ia.mjs';
 ---
-<div class="charte" data-charter id="outil-calcul">
+<div class="charte" data-charter>
   <form data-charter-form novalidate autocomplete="off">
     <h2>Préparer une charte de travail</h2>
     <p>Décrivez des rôles et des outils, pas des personnes ou des dossiers. Cette trame organise des usages sans données clients ; elle ne donne aucune autorisation pour un dossier réel.</p>
@@ -44,6 +44,10 @@ import { CHARTER_NOTICE } from '@/lib/charte-ia.mjs';
     <ul data-checklist></ul>
     <p>Relisez aussi vos modifications et faites documenter l’adoption par le cabinet.</p>
     <div class="charte-actions"><button type="button" class="btn btn-contour" data-copy data-export data-outil-action="copie">Copier la charte</button><button type="button" class="btn btn-contour" data-md data-export data-outil-action="telechargement">Exporter .md</button><button type="button" class="btn btn-contour" data-txt data-export data-outil-action="telechargement">Exporter .txt</button><button type="button" class="btn btn-contour" data-print-button data-export>Imprimer</button></div>
+    <div data-copy-fallback hidden>
+      <label for="charte-copy">Document complet à copier manuellement</label>
+      <textarea id="charte-copy" data-copy-document readonly rows="12"></textarea>
+    </div>
   </section>
   <button type="button" class="btn btn-contour" data-clear>Tout effacer</button>
   <pre data-print hidden></pre>
@@ -67,12 +71,16 @@ import { CHARTER_NOTICE } from '@/lib/charte-ia.mjs';
     const status = root.querySelector<HTMLElement>('[data-status]')!;
     const error = root.querySelector<HTMLElement>('[data-error]')!;
     const printable = root.querySelector<HTMLElement>('[data-print]')!;
+    const fallback = root.querySelector<HTMLElement>('[data-copy-fallback]')!;
+    const copyDocument = root.querySelector<HTMLTextAreaElement>('[data-copy-document]')!;
     const exports = root.querySelectorAll<HTMLButtonElement>('[data-export]');
     let generated = '';
-    const updatePrint = () => { printable.textContent = charterDocument(editor.value); };
+    const clearFallback = () => { fallback.hidden = true; copyDocument.value = ''; };
+    const updatePrint = () => { printable.textContent = charterDocument(editor.value); clearFallback(); };
     const enableExports = (enabled: boolean) => exports.forEach(button => { button.disabled = !enabled; });
     const confirmReplacement = () => !editor.value || editor.value === generated || confirm('Remplacer vos clauses modifiées par une nouvelle trame ? Exportez-les d’abord pour les conserver.');
     form.addEventListener('input', () => {
+      clearFallback();
       if (generated) { enableExports(false); status.textContent = 'Questionnaire modifié : l’aperçu précédent est conservé. Préparez à nouveau la charte avant export.'; }
     });
     editor.addEventListener('input', updatePrint);
@@ -103,6 +111,7 @@ import { CHARTER_NOTICE } from '@/lib/charte-ia.mjs';
         if (!confirm('Remplacer le questionnaire par un exemple fictif ? Les clauses de l’aperçu restent conservées.')) return;
       }
       form.reset();
+      clearFallback();
       for (const value of ['relance', 'synthese']) form.querySelector<HTMLInputElement>(`[value="${value}"]`)!.checked = true;
       for (const [name, value] of Object.entries({ donnees: 'fictives', validation: 'chaque-resultat', frequence: 'mensuelle', validateur: 'Responsable de pôle', outils: 'Environnement de démonstration', formation: 'Atelier sur cas fictif', revision: '2026-12-01' })) {
         (form.elements.namedItem(name) as HTMLInputElement).value = value;
@@ -113,12 +122,17 @@ import { CHARTER_NOTICE } from '@/lib/charte-ia.mjs';
     root.querySelector('[data-clear]')!.addEventListener('click', () => {
       if (!confirm('Effacer le questionnaire et toutes vos clauses ? Cette action ne peut pas être annulée.')) return;
       form.reset(); editor.value = ''; generated = ''; printable.textContent = ''; output.hidden = true; error.hidden = true;
+      clearFallback();
       form.querySelectorAll('[aria-invalid]').forEach(field => field.removeAttribute('aria-invalid'));
       enableExports(false); status.textContent = 'Saisies et aperçu effacés.';
     });
     root.querySelector('[data-copy]')!.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(charterDocument(editor.value)); status.textContent = 'Charte copiée, avec sa mention non officielle.'; }
-      catch { status.textContent = 'Copie bloquée : sélectionnez les clauses et conservez la mention non officielle dans votre document.'; editor.focus(); editor.select(); }
+      try { await navigator.clipboard.writeText(charterDocument(editor.value)); clearFallback(); status.textContent = 'Charte copiée, avec sa mention non officielle.'; }
+      catch {
+        copyDocument.value = charterDocument(editor.value); fallback.hidden = false;
+        status.textContent = 'Copie bloquée : le document complet est sélectionné ci-dessous. Copiez-le manuellement avec son titre et sa mention non officielle.';
+        copyDocument.focus(); copyDocument.select();
+      }
     });
     const download = (extension: string) => {
       const url = URL.createObjectURL(new Blob([charterDocument(editor.value)], { type: 'text/plain;charset=utf-8' }));

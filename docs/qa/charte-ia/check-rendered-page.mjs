@@ -35,6 +35,7 @@ try {
   }
   await page.getByRole('link', { name: 'Utiliser l’outil', exact: true }).click();
   assert.equal(await page.locator('#outil-calcul').count(), 1);
+  assert.equal(await page.locator('#outil-calcul [data-charter]').count(), 1);
   await page.getByRole('button', { name: 'Charger un exemple fictif', exact: true }).click();
   await page.getByRole('button', { name: 'Préparer la charte', exact: true }).click();
   await page.getByRole('button', { name: 'Copier la charte', exact: true }).click();

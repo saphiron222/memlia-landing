@@ -30,7 +30,6 @@ const { source, mentionLocale, refus } = Astro.props;
         <p>{source.extrait}</p>
         <p class="outil-source-meta">
           <a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.nom}</a>
-          <span>Vérifiée le {source.verifieeLe}.</span>
         </p>
         {source.complement && (
           <p class="outil-source-complement">

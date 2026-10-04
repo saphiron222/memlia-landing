@@ -1,13 +1,13 @@
 ---
 import { PROOFS, type ProofId } from '@/data/proofs';
-interface Props { id: ProofId; }
-const { id } = Astro.props;
+interface Props { id: ProofId; priority?: boolean; }
+const { id, priority = false } = Astro.props;
 const proof = PROOFS[id];
 if (!proof) throw new Error(`Preuve inconnue : ${id}`);
 const source = `/proofs/${id}.webp`;
 ---
 <figure class="functional-proof" data-proof={id}>
-  <img src={source} alt={proof.alt} width="1600" height="900" loading="lazy" decoding="async" />
+  <img src={source} alt={proof.alt} width="1600" height="900" loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : undefined} decoding="async" />
 </figure>
 <style>
   .functional-proof { margin: 0; min-width: 0; background: var(--surface-page); overflow: hidden; }

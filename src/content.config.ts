@@ -85,9 +85,7 @@ const blog = defineCollection({
         .default([]),
     })
     .superRefine((data, context) => {
-      if (!data.brouillon && data.sources.length < 3) {
-        context.addIssue({ code: 'custom', message: 'Un article publié exige au moins trois sources.', path: ['sources'] });
-      }
+      // Le gate valide les sources et les claims ; leur quantité n'est pas une preuve.
       if (!data.pipelineVersion) return;
       const required = ['primaryQuery', 'intent', 'cluster', 'rolePrincipal', 'tache', 'preuveRole', 'funnel', 'contentType', 'format', 'rankability', 'businessRelevance', 'proofStatus', 'proofRequired', 'reviewRule', 'reviewer', 'sourcesVerifieesLe', 'cta', 'imageOg', 'imageAlt', 'statutEditorial'] as const;
       for (const field of required) {

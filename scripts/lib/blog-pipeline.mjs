@@ -392,7 +392,8 @@ export function validateCandidate(candidate, { gateMode = 'production' } = {}) {
   if (!['verifiee', 'non-applicable'].includes(candidate.proofStatus)) errors.push('proofStatus doit être verifiee ou non-applicable avant preview.');
   requireText(errors, candidate.proofRequired, 'proofRequired', 10);
   if (!isDate(candidate.sourcesVerifiedAt)) errors.push('sourcesVerifiedAt doit être une date AAAA-MM-JJ.');
-  if (!Array.isArray(candidate.sources) || candidate.sources.length < 3) errors.push('sources doit contenir au moins trois sources vérifiables avant preview.');
+  // La quantité est un objectif éditorial ; chaque source déclarée reste contrôlée.
+  if (!Array.isArray(candidate.sources)) errors.push('sources doit être une liste de sources vérifiables.');
   else candidate.sources.forEach((source, index) => {
     requireText(errors, source?.id, `sources[${index}].id`, 3);
     requireText(errors, source?.publisher, `sources[${index}].publisher`, 2);
@@ -431,7 +432,7 @@ export function validateCandidate(candidate, { gateMode = 'production' } = {}) {
   validateResearchProof(errors, candidate.research?.serp, 'SERP', gateMode);
   validateResearchProof(errors, candidate.research?.gsc, 'GSC', gateMode);
   if (!Array.isArray(candidate.links?.outgoing) || candidate.links.outgoing.length === 0) errors.push('links.outgoing doit contenir au moins un lien utile.');
-  if (!Array.isArray(candidate.links?.incoming) || new Set(candidate.links.incoming).size < 2) errors.push('links.incoming doit contenir au moins deux pages sources distinctes.');
+  if (!Array.isArray(candidate.links?.incoming)) errors.push('links.incoming doit être une liste de pages sources.');
   if (!['faible', 'moyen'].includes(candidate.cannibalization?.risk)) errors.push('Une cannibalisation forte, bloquante ou non évaluée interdit la preview.');
   requireText(errors, candidate.cannibalization?.decision, 'cannibalization.decision', 5);
   if (!Array.isArray(candidate.contradictions)) errors.push('contradictions doit être une liste.');

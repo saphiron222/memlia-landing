@@ -25,6 +25,69 @@ def construire_et_verifier():
 
 
 class EditorialCadenceProof(unittest.TestCase):
+    def test_reservation_hors_jours_automatiques_traverse_le_preflight(self):
+        jour = date(2026, 10, 4)
+        slug = 'automatiser-l-entree-en-relation-d-un-nouveau-client'
+        planifier = PLAN.planifier
+
+        def reserver(entries, published):
+            if slug not in published:
+                next(e for e in entries if e['slug'] == slug)['datePlanifiee'] = jour.isoformat()
+            planifier(entries, published, aujourd_hui=jour)
+
+        class JourFige(date):
+            @classmethod
+            def today(cls):
+                return jour
+
+        with patch.object(PLAN, 'date', JourFige), patch.object(PLAN, 'planifier', side_effect=reserver):
+            donnees, erreurs, entrants, _ = construire_et_verifier()
+            self.assertEqual(erreurs, [])
+            cible = next(e for e in donnees[4] if e['slug'] == slug)
+            self.assertEqual((cible['date'], cible['statut']), (jour.isoformat(), 'planned'))
+            for e in [donnees[3]] + donnees[4]:
+                if e['statut'] == 'planned' and not e.get('datePlanifiee') and not e.get('serie'):
+                    self.assertIn(date.fromisoformat(e['date']).weekday(), PLAN.JOURS_DE_PUBLICATION)
+            with TemporaryDirectory() as dossier, patch.object(PLAN, 'ICI', Path(dossier)):
+                PLAN.ecrire_json(donnees[0], donnees[1], donnees[3], donnees[4], donnees[5], entrants)
+                PLAN.ecrire_calendrier(donnees[3], donnees[4], donnees[1], donnees[0])
+                with patch.object(Path, 'write_text', side_effect=AssertionError('le préflight écrit')):
+                    PLAN.verifier_creneau(slug, jour, donnees)
+            mutant = deepcopy(donnees)
+            next(e for e in mutant[4] if e['slug'] == slug).pop('datePlanifiee')
+            erreurs, _, _ = PLAN.verifier(*mutant)
+            self.assertTrue(any('hors lundi-jeudi' in erreur for erreur in erreurs), erreurs)
+            # Une publication intégrée conserve sa date, même sans réservation dans le backlog.
+            publies = deepcopy(donnees[2])
+            publies[slug] = dict(date=jour.isoformat(), titre=cible['titre'],
+                                requete=cible['requete'], famille=cible['famille'], format=cible['format'])
+            with patch.object(PLAN, 'etat_publie', return_value=publies):
+                _, erreurs, _, _ = construire_et_verifier()
+                self.assertEqual(erreurs, [])
+
+    def test_reservations_hors_jours_automatiques_gardent_les_plafonds(self):
+        for jour in (date(2026, 10, 2), date(2026, 10, 3), date(2026, 10, 4)):
+            for compte, date_publiee, accepte in ((1, jour.isoformat(), True),
+                                                  (2, jour.isoformat(), False),
+                                                  (3, '2026-09-30', True),
+                                                  (4, '2026-09-30', False)):
+                with self.subTest(jour=jour, compte=compte, date_publiee=date_publiee):
+                    entrees = [dict(slug='reserve', famille='f', pole='a', format='how-to-guide',
+                                    priorite=1, rang_famille=0, datePlanifiee=jour.isoformat())]
+                    publies = {f'publie-{i}': {'date': date_publiee if date_publiee == jour.isoformat()
+                                             else ('2026-09-30', '2026-10-01')[i // 2]}
+                               for i in range(compte)}
+                    if accepte:
+                        PLAN.planifier(entrees, publies, aujourd_hui=jour)
+                        self.assertEqual((entrees[0]['date'], entrees[0]['statut']),
+                                         (jour.isoformat(), 'planned'))
+                    elif date_publiee == jour.isoformat():
+                        PLAN.planifier(entrees, publies, aujourd_hui=jour)
+                        self.assertEqual(entrees[0]['statut'], 'a-replanifier')
+                    else:
+                        with self.assertRaisesRegex(SystemExit, 'au-delà de la cadence'):
+                            PLAN.planifier(entrees, publies, aujourd_hui=jour)
+
     def etats_publication_w39(self):
         # Rejouer les deux côtés de l'intégration, même après fusion sur main.
         publies = PLAN.etat_publie()
@@ -555,6 +618,41 @@ class EditorialCadenceProof(unittest.TestCase):
                     PLAN.planifier(entries, {}, aujourd_hui=date(2026, 9, 28))
                 self.assertEqual(entries[1]['date'], '2026-09-29')
                 self.assertEqual(PLAN.verifier_alternance(entries), [])
+
+    def test_exceptions_utilisees_survivent_a_la_publication(self):
+        entries = [dict(slug=str(i), famille='f', pole='a', format='how-to-guide',
+                        priorite=1, rang_famille=i) for i in range(2)]
+        entries[1]['datePlanifiee'] = '2026-10-04'
+        entries[1]['exceptionAlternance'] = {
+            champ: {'date': '2026-10-04', 'raison': 'continuité éditoriale mandatée'}
+            for champ in ('pole', 'format')}
+        publies = {'0': {'date': '2026-10-01'}}
+        PLAN.planifier(entries, publies, aujourd_hui=date(2026, 10, 4))
+        reservation = deepcopy(entries[1]['exceptionAlternance'])
+        publies['1'] = {'date': '2026-10-04'}
+        PLAN.planifier(entries, publies, aujourd_hui=date(2026, 10, 4))
+        self.assertEqual(PLAN.verifier_alternance(entries), [])
+        self.assertEqual(entries[1]['exceptionAlternance'], reservation)
+        self.assertEqual(entries[1]['statut'], 'published')
+
+    def test_exceptions_archivees_restent_datees_motivees_et_utilisees(self):
+        entries = [dict(slug=str(i), date=f'2026-10-0{i + 1}', statut='published',
+                        pole='a', format='how-to-guide') for i in range(2)]
+        for champ in ('pole', 'format'):
+            entries[1]['exceptionAlternance'] = {
+                champ: {'date': entries[1]['date'], 'raison': 'continuité mandatée'}}
+            for mutation in ('date', 'raison', 'non-utilisee', 'premier'):
+                with self.subTest(champ=champ, mutation=mutation):
+                    mutant = deepcopy(entries)
+                    if mutation == 'date':
+                        mutant[1]['exceptionAlternance'][champ]['date'] = '2026-10-03'
+                    elif mutation == 'raison':
+                        mutant[1]['exceptionAlternance'][champ]['raison'] = ' '
+                    elif mutation == 'non-utilisee':
+                        mutant[0][champ] = 'autre'
+                    else:
+                        mutant = mutant[1:]
+                    self.assertTrue(PLAN.verifier_alternance(mutant))
 
     def test_exception_invalide_ne_passe_pas(self):
         for exception in ({'pole': {'raison': 'preuve'}},

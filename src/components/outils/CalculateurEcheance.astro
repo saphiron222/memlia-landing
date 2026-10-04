@@ -1,10 +1,12 @@
 <form class="outil-form" data-due-form novalidate>
-  <label>Règle générale
+  <p class="hint">Entre professionnels : 30 jours sans délai convenu ; 60 jours date de facture ou 45 jours fin de mois seulement si ce délai est convenu. Pour 45 jours fin de mois, le contrat doit préciser le délai et la méthode, sans abus manifeste. Ces plafonds ne remplacent pas un délai contractuel plus court.</p>
+  <p class="hint">Hors périmètre : délais sectoriels ou dérogatoires, factures périodiques, marchés publics, export et points de départ particuliers outre-mer. Vérifiez le contrat avant de choisir.</p>
+  <label>Délai applicable ou convenu
     <select name="rule" required>
       <option value="">Choisir une règle</option>
       <option value="default30">30 jours après réception ou exécution</option>
-      <option value="invoice60">60 jours date de facture</option>
-      <option value="eom45">45 jours fin de mois</option>
+      <option value="invoice60">60 jours date de facture, si convenus</option>
+      <option value="eom45">45 jours fin de mois, si convenus</option>
     </select>
   </label>
   <div class="fields two">
@@ -20,7 +22,7 @@
     <label><input type="radio" name="convention" value="add45ThenEom" /> Ajouter 45 jours, puis aller à la fin du mois</label>
     <label><input type="radio" name="convention" value="eomThenAdd45" /> Aller à la fin du mois de facturation, puis ajouter 45 jours</label>
   </fieldset>
-  <label class="check"><input type="checkbox" name="generalCase" /> Je confirme qu’il s’agit d’un cas général, sans règle sectorielle ni accord particulier.</label>
+  <label class="check"><input type="checkbox" name="generalCase" /> Je confirme que le délai choisi s’applique à cette facture et qu’aucun des cas exclus ci-dessus ne s’applique.</label>
   <button class="btn btn-principal" type="submit">Calculer l’échéance</button>
   <p class="error" id="echeance-erreur" data-error role="alert" aria-live="assertive" hidden></p>
   <section class="result" data-output aria-live="polite" hidden>

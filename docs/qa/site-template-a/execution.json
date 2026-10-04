@@ -1,0 +1,748 @@
+{
+  "recordedAt": "2026-10-03T23:17:14.622Z",
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "python": "118",
+    "scripts": "546"
+  },
+  "browser": {
+    "command": "QA_URL=http://127.0.0.1:43721 npx playwright test",
+    "exitCode": 0,
+    "result": "198 passed (3.7m)"
+  },
+  "widths": [
+    {
+      "width": 320,
+      "document": 320,
+      "nav": [
+        {
+          "text": "Tâches",
+          "rect": {
+            "x": 16,
+            "y": 57,
+            "width": 63.1875,
+            "height": 44,
+            "top": 57,
+            "right": 79.1875,
+            "bottom": 101,
+            "left": 16
+          }
+        },
+        {
+          "text": "Méthode",
+          "rect": {
+            "x": 83.1875,
+            "y": 57,
+            "width": 75.234375,
+            "height": 44,
+            "top": 57,
+            "right": 158.421875,
+            "bottom": 101,
+            "left": 83.1875
+          }
+        },
+        {
+          "text": "Contrôle humain",
+          "rect": {
+            "x": 162.421875,
+            "y": 57,
+            "width": 123.5625,
+            "height": 44,
+            "top": 57,
+            "right": 285.984375,
+            "bottom": 101,
+            "left": 162.421875
+          }
+        },
+        {
+          "text": "Questions",
+          "rect": {
+            "x": 16,
+            "y": 105,
+            "width": 82.65625,
+            "height": 44,
+            "top": 105,
+            "right": 98.65625,
+            "bottom": 149,
+            "left": 16
+          }
+        }
+      ],
+      "hero": [
+        {
+          "loading": "eager",
+          "priority": "high"
+        }
+      ],
+      "anchorCount": 1,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#page",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "headline": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "inLanguage": "fr-FR",
+              "mainEntity": {
+                "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              }
+            },
+            {
+              "@type": "WebApplication",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Any",
+              "browserRequirements": "JavaScript activé dans un navigateur récent",
+              "isAccessibleForFree": true
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Outils comptables gratuits",
+                  "item": "https://memlia.fr/outils-comptables-gratuits"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Calculateur de marge commerciale",
+                  "item": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "document": 375,
+      "nav": [
+        {
+          "text": "Tâches",
+          "rect": {
+            "x": 16,
+            "y": 57,
+            "width": 63.1875,
+            "height": 44,
+            "top": 57,
+            "right": 79.1875,
+            "bottom": 101,
+            "left": 16
+          }
+        },
+        {
+          "text": "Méthode",
+          "rect": {
+            "x": 83.1875,
+            "y": 57,
+            "width": 75.234375,
+            "height": 44,
+            "top": 57,
+            "right": 158.421875,
+            "bottom": 101,
+            "left": 83.1875
+          }
+        },
+        {
+          "text": "Contrôle humain",
+          "rect": {
+            "x": 162.421875,
+            "y": 57,
+            "width": 123.5625,
+            "height": 44,
+            "top": 57,
+            "right": 285.984375,
+            "bottom": 101,
+            "left": 162.421875
+          }
+        },
+        {
+          "text": "Questions",
+          "rect": {
+            "x": 16,
+            "y": 105,
+            "width": 82.640625,
+            "height": 44,
+            "top": 105,
+            "right": 98.640625,
+            "bottom": 149,
+            "left": 16
+          }
+        }
+      ],
+      "hero": [
+        {
+          "loading": "eager",
+          "priority": "high"
+        }
+      ],
+      "anchorCount": 1,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#page",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "headline": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "inLanguage": "fr-FR",
+              "mainEntity": {
+                "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              }
+            },
+            {
+              "@type": "WebApplication",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Any",
+              "browserRequirements": "JavaScript activé dans un navigateur récent",
+              "isAccessibleForFree": true
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Outils comptables gratuits",
+                  "item": "https://memlia.fr/outils-comptables-gratuits"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Calculateur de marge commerciale",
+                  "item": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "document": 768,
+      "nav": [
+        {
+          "text": "Tâches",
+          "rect": {
+            "x": 16,
+            "y": 57,
+            "width": 63.15625,
+            "height": 44,
+            "top": 57,
+            "right": 79.15625,
+            "bottom": 101,
+            "left": 16
+          }
+        },
+        {
+          "text": "Méthode",
+          "rect": {
+            "x": 83.15625,
+            "y": 57,
+            "width": 75.203125,
+            "height": 44,
+            "top": 57,
+            "right": 158.359375,
+            "bottom": 101,
+            "left": 83.15625
+          }
+        },
+        {
+          "text": "Contrôle humain",
+          "rect": {
+            "x": 162.359375,
+            "y": 57,
+            "width": 123.484375,
+            "height": 44,
+            "top": 57,
+            "right": 285.84375,
+            "bottom": 101,
+            "left": 162.359375
+          }
+        },
+        {
+          "text": "Questions",
+          "rect": {
+            "x": 289.84375,
+            "y": 57,
+            "width": 82.59375,
+            "height": 44,
+            "top": 57,
+            "right": 372.4375,
+            "bottom": 101,
+            "left": 289.84375
+          }
+        }
+      ],
+      "hero": [
+        {
+          "loading": "eager",
+          "priority": "high"
+        }
+      ],
+      "anchorCount": 1,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#page",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "headline": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "inLanguage": "fr-FR",
+              "mainEntity": {
+                "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              }
+            },
+            {
+              "@type": "WebApplication",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Any",
+              "browserRequirements": "JavaScript activé dans un navigateur récent",
+              "isAccessibleForFree": true
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Outils comptables gratuits",
+                  "item": "https://memlia.fr/outils-comptables-gratuits"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Calculateur de marge commerciale",
+                  "item": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "document": 1024,
+      "nav": [
+        {
+          "text": "Tâches",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "text": "Méthode",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "text": "Contrôle humain",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "text": "Questions",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "hero": [
+        {
+          "loading": "eager",
+          "priority": "high"
+        }
+      ],
+      "anchorCount": 1,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#page",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "headline": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "inLanguage": "fr-FR",
+              "mainEntity": {
+                "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              }
+            },
+            {
+              "@type": "WebApplication",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Any",
+              "browserRequirements": "JavaScript activé dans un navigateur récent",
+              "isAccessibleForFree": true
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Outils comptables gratuits",
+                  "item": "https://memlia.fr/outils-comptables-gratuits"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Calculateur de marge commerciale",
+                  "item": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "document": 1440,
+      "nav": [
+        {
+          "text": "Tâches",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "text": "Méthode",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "text": "Contrôle humain",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "text": "Questions",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "hero": [
+        {
+          "loading": "eager",
+          "priority": "high"
+        }
+      ],
+      "anchorCount": 1,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#page",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "headline": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "inLanguage": "fr-FR",
+              "mainEntity": {
+                "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              }
+            },
+            {
+              "@type": "WebApplication",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Any",
+              "browserRequirements": "JavaScript activé dans un navigateur récent",
+              "isAccessibleForFree": true
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Outils comptables gratuits",
+                  "item": "https://memlia.fr/outils-comptables-gratuits"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Calculateur de marge commerciale",
+                  "item": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "document": 1920,
+      "nav": [
+        {
+          "text": "Tâches",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "text": "Méthode",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "text": "Contrôle humain",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "text": "Questions",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "hero": [
+        {
+          "loading": "eager",
+          "priority": "high"
+        }
+      ],
+      "anchorCount": 1,
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#page",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "headline": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "inLanguage": "fr-FR",
+              "mainEntity": {
+                "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              }
+            },
+            {
+              "@type": "WebApplication",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application",
+              "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+              "name": "Calculateur de marge commerciale",
+              "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Any",
+              "browserRequirements": "JavaScript activé dans un navigateur récent",
+              "isAccessibleForFree": true
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Outils comptables gratuits",
+                  "item": "https://memlia.fr/outils-comptables-gratuits"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Calculateur de marge commerciale",
+                  "item": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

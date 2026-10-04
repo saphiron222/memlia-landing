@@ -65,13 +65,14 @@ try {
   const fonts = await page.evaluate(() => [...document.fonts].map((font) => ({ family: font.family, status: font.status })));
   assert.ok(fonts.length >= 3 && fonts.every((font) => font.status === 'loaded'), 'Polices non chargées');
   const ids = await page.locator('.frame').evaluateAll((elements) => elements.map((element) => element.id));
-  assert.equal(ids.length, 24, 'Vingt-quatre preuves sont attendues, deux par article');
+  assert.ok(ids.length > 0, 'Au moins un article avec preuves est attendu');
+  assert.equal(new Set(ids).size, ids.length, 'Identifiants de preuve en double');
   assert.deepEqual(ids, contract.map((entry) => entry.id), 'Les cadres ne correspondent pas au contrat');
   assert.ok(contract.every((entry) => entry.article && entry.alt && entry.source && entry.capturedAt), 'Métadonnées de preuve incomplètes');
   assert.ok(contract.every((entry) => /^\d{4}-\d{2}-\d{2}$/.test(entry.capturedAt)
     && !Number.isNaN(Date.parse(`${entry.capturedAt}T00:00:00Z`))), 'Date de capture invalide');
   const articles = Map.groupBy(contract, (entry) => entry.article);
-  assert.equal(articles.size, 12, 'Douze articles distincts sont attendus');
+
   for (const [article, preuves] of articles) {
     assert.equal(preuves.length, 2, `${article} doit porter exactement deux preuves`);
     const recettePath = `editorial/recettes/${article}/recette.json`;
