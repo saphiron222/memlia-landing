@@ -50,6 +50,9 @@ jobs:
       - name: Exercise blog frame guards in Chromium
         run: node --test tests/scripts/blog-proof-frame-render.test.mjs
 
+      - name: Exercise historical proof replay and rejection guards
+        run: node --test tests/scripts/historical-proof-render.test.mjs
+
       - name: Build and run deterministic gates
         run: npm run build
         env:
