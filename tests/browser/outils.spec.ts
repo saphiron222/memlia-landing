@@ -459,7 +459,7 @@ test('témoin : le garde détecte toute requête après armement, puis exige zé
   expect(requests).toEqual([]);
 });
 
-test('outil vers contact : origine attribuée sans envoi avant validation volontaire', async ({ page }) => {
+test('outil vers contact : origine attribuée après accord distinct, sans envoi avant validation volontaire', async ({ page }) => {
   const apiRequests: string[] = [];
   await page.route('**/api/contact', async (route) => {
     if (route.request().method() === 'GET') {
@@ -477,6 +477,10 @@ test('outil vers contact : origine attribuée sans envoi avant validation volont
   await page.goto(TEMOIN);
   await page.locator('[data-tool-links] a[href="/contact"]').click();
   await expect(page).toHaveURL(/\/contact$/);
+  await expect(page.locator('#origine')).toHaveValue('');
+  await expect(page.locator('#consentement_origine')).not.toBeChecked();
+  expect(apiRequests).toEqual([]);
+  await page.check('#consentement_origine');
   await expect(page.locator('#origine')).toHaveValue(TEMOIN);
   expect(apiRequests).toEqual([]);
 
