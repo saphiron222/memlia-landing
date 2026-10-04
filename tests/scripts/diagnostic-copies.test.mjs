@@ -25,6 +25,31 @@ test('article absent du sitemap rejeté', () => {
 });
 
 const source = live.find((row) => row.url === pages[0].url);
+test('URL seulement dans un commentaire XML rejetée', () => {
+  const loc = `<loc>${source.url}</loc>`;
+  const altered = sitemap.replace(loc, `<loc>https://memlia.fr/absent</loc><!--${loc}-->`);
+  assert.notEqual(altered, sitemap);
+  assert.throws(() => check(live, pages, read, altered), /absent du sitemap/);
+});
+test('URL hors de url/loc rejetée', () => {
+  const loc = `<loc>${source.url}</loc>`;
+  const altered = sitemap.replace(loc, `<loc>https://memlia.fr/absent</loc><extra>${loc}</extra>`);
+  assert.throws(() => check(live, pages, read, altered), /absent du sitemap/);
+});
+for (const omitted of [false, true]) test(`collecte 503 sans copie, résumé ${omitted ? 'omis' : 'conservé'} : rejetée`, () => {
+  const rows = structuredClone(live);
+  const failed = rows.find((row) => row.url === source.url);
+  failed.status = 503;
+  delete failed.source_file;
+  const summary = structuredClone(pages).filter((page) => !omitted || page.url !== source.url);
+  if (omitted) for (const page of summary) page.bodyIncoming = page.bodyIncoming.filter((url) => url !== source.url);
+  assert.throws(() => check(rows, summary), /Collecte HTTP/);
+});
+test('collecte 200 sans copie rejetée même si omise du résumé', () => {
+  const rows = structuredClone(live);
+  delete rows.find((row) => row.url === source.url).source_file;
+  assert.throws(() => check(rows, pages.slice(1)), /Copie absente/);
+});
 const html = read(source.source_file).toString();
 const mutations = [
   ['ensemble des métadonnées absent', '<html><head><meta name="robots" content="noindex"></head><body>aucun article</body></html>'],

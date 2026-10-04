@@ -36,15 +36,30 @@ const text = (node) => node.nodeName === '#text' ? node.value :
   ['script', 'style', 'template', 'noscript'].includes(node.tagName) ? '' : (node.childNodes ?? []).map(text).join(' ');
 const hasClass = (node, name) => (attr(node, 'class') ?? '').split(/\s+/).includes(name);
 
+export function lireSitemap(sitemap) {
+  // ElementTree ignore les commentaires et ne lit que url/loc dans le namespace sitemap.
+  return new Set(JSON.parse(execFileSync('python3', ['-c',
+    "import sys,json,xml.etree.ElementTree as ET; r=ET.fromstring(sys.stdin.read()); ns='{http://www.sitemaps.org/schemas/sitemap/0.9}'; assert r.tag==ns+'urlset', 'Racine sitemap invalide'; print(json.dumps([(e.text or '').strip() for e in r.findall(ns+'url/'+ns+'loc')]))",
+  ], { input: sitemap, encoding: 'utf8' })));
+}
+
 export function verifierCopies(live, pages, readCopy, sitemap) {
-  const sources = live.filter((row) => row.source_file && row.url.includes('/blog/'));
+  // Une collecte échouée fait toujours partie de la population à vérifier.
+  const sources = live.filter((row) => /^\/blog\/[^/]+\/?$/.test(new URL(row.url).pathname));
   const uniqueUrls = (rows, label) => {
     assert(rows.length > 0, `${label} vide`);
     const urls = rows.map((row) => row.url);
     assert.equal(new Set(urls).size, urls.length, `${label} : URL en doublon`);
     return urls.sort();
   };
-  assert.deepEqual(uniqueUrls(pages, 'Résumé'), uniqueUrls(sources, 'Snapshot'), 'Population résumé/snapshot différente');
+  const sourceUrls = uniqueUrls(sources, 'Snapshot');
+  for (const source of sources) {
+    assert.equal(source.status, 200, `Collecte HTTP : ${source.url}`);
+    assert.equal(typeof source.source_file, 'string', `Copie absente : ${source.url}`);
+    assert(source.source_file.trim(), `Copie absente : ${source.url}`);
+  }
+  assert.deepEqual(uniqueUrls(pages, 'Résumé'), sourceUrls, 'Population résumé/snapshot différente');
+  const sitemapUrls = lireSitemap(sitemap);
   const extracted = pages.map((page) => {
     const source = sources.find((row) => row.url === page.url);
     assert.equal(source.status, 200, page.url);
@@ -79,7 +94,7 @@ export function verifierCopies(live, pages, readCopy, sitemap) {
     assert.equal(articles[0].url, page.url);
     assert.equal(articles[0].headline, h1[0]);
     assert(entities.some((s) => s['@type'] === 'Person' && s.name === 'Kevin Kitanga'), `Person HTML : ${page.url}`);
-    assert(sitemap.includes(`<loc>${page.url}</loc>`), `Article absent du sitemap : ${page.url}`);
+    assert(sitemapUrls.has(page.url), `Article absent du sitemap : ${page.url}`);
     const bodyNodes = all(bodies[0]);
     const proofs = bodyNodes.filter((n) => n.tagName === 'figure' && attr(n, 'data-blog-proof') !== undefined).length;
     assert.equal(page.proofs, proofs);
@@ -127,7 +142,8 @@ function main() {
   const index = readFileSync(join(base, 'live/sitemap-index.xml'), 'utf8');
   assert(index.includes('https://memlia.fr/sitemap-0.xml'));
   const liveChecks = verifierCopies(live, pages, (path) => readFileSync(join(base, path)), sitemap);
-  const sitemapChecks = pages.map((page) => ({ url: page.url, present: sitemap.includes(`<loc>${page.url}</loc>`) }));
+  const sitemapUrls = lireSitemap(sitemap);
+  const sitemapChecks = pages.map((page) => ({ url: page.url, present: sitemapUrls.has(page.url) }));
   assert.deepEqual(serp.recherches.map((r) => r.slug).sort(), [...matrix.slugs].sort());
   assert.equal(serp.recherches.length, 4);
   for (const row of serp.recherches) assert.equal(row.resultats.length, 5);
