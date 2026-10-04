@@ -37,8 +37,10 @@ Saisie et navigation mobile ; [qualification et limites](QUALIFICATION-SOCLES-20
 La mesure « 14 URL au sitemap, 14 indexées » est le dernier relevé du **18/09**, non le compte
 actuel. Ne pas en déduire l'indexation des routes nouvelles : compter le sitemap construit et
 mesurer Search Console séparément. Les 12 fichiers d'article scellés de `src/content/blog/`
-comprennent le pilier, dix ordinaires (dont les deux IA publiés le 29/09) et la Cicatrice
-`tests-verts-et-regle-des-trois-passes`. `blog:audit` contrôle les douze dossiers et leurs sceaux ;
+comprennent le pilier, neuf ordinaires (dont les deux IA publiés le 29/09) et deux Cicatrices,
+`pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils` et
+`tests-verts-et-regle-des-trois-passes`, selon le champ `serie` des recettes versionnées.
+`blog:audit` contrôle les douze dossiers et leurs sceaux ;
 ce compte de fichiers ne prouve ni indexation ni réponse effectivement servie.
 **Incident FE, historique clos côté sources :** le candidat du 28/09 suspendait Saisie
 (hors sitemap, HTML noindex et fonction Pages prévue en 503). La republication intégrée
