@@ -18,7 +18,7 @@ Maillage contrôlé par le navigateur : hub outils, méthode, service automatisa
 
 Essais non qualifiants conservés : preview Cloudflare Idle non servi (timeouts) ; première sonde pages.dev refusant noindex, corrigée uniquement dans le probe de livraison pour distinguer déploiement et domaine, puis PASS. Aucun échec effacé ou transformé en preuve publique.
 
-## Réserve Lighthouse — seuil quatre axes non acquis
+## Réserve Lighthouse initiale — historique avant PR79
 
 Scores publics bruts, ordre performance/accessibilité/bonnes pratiques/SEO :
 
@@ -32,10 +32,27 @@ Aucune modification de CSP, aucune autorisation de beacon et aucun changement gl
 
 La matrice conserve les cellules historiques d'implémentation ; l'objet publication est le constat actuel et remplace leur liste historique des travaux publics à faire.
 
+## Levée technique constatée après PR79
+
+PR79 fusionnée le 4 octobre 2026 à 20:19:17 CEST, après Repository gates SUCCESS du candidat 6b1efa0c (run 37221659027) et relecture de main/ascendance. Commit livré : 7c9412e536d5b219b0fcdf3179100d652aed5323 ; déploiement https://e40e1ed6.memlia.pages.dev. L’API Cloudflare interrogée par Wrangler confirme la production réussie : son statut est une date relative, rendu uniquement pour latest_stage.status=success avec ended_on. Le check GitHub Cloudflare reste temporairement in_progress : cette latence n’est pas présentée comme un SUCCESS GitHub.
+
+La recette finale compte 13 parcours PASS par origine, après activation du correctif, avec exports/copie complets, borne, ND, refus sans perte, scripts désactivés/bloqués et les six largeurs. Captures 375/1440 conservées et inspectées. Les 16 requêtes d’indexabilité/médias et 26 sondes HTTP additionnelles passent : GET200 sans query/no-cache, beacon absent, CSP intacte, no-transform, anciens ETag/date/Range donnant200 complet, HEAD vide et politique concordante. Domaine indexable ; noindex pages.dev conservé. Accueil/contact/charte préservés, sitemap et maillage présents.
+
+Lighthouse 13.4.1, Chrome for Testing154.0.8037.92, rapports LHR bruts non retouchés et fichiers compagnons :
+
+- Mobile à 20:25:56 CEST : 96 / 100 / 100 / 100.
+- Desktop à 20:26:08 CEST : 100 / 100 / 100 / 100.
+- Méthode explicite : --robots-crawler, GET réel hors document pour le seul artefact RobotsTxt ; audit natif et poids inchangés, robots-txt score=1. Le vérificateur contrôle les fractions brutes >=0,95, pas seulement leur affichage arrondi.
+- Comparaison native desktop à 20:27:12 CEST : 100 / 100 / 100 / 92 ; robots-txt score=0, collecte bloquée par CSP. Cet échec demeure dans l’archive ; il n’est ni effacé ni substitué. Le mode natif ne satisfait pas le seuil.
+
+Le critère public >=95 est acquis selon la méthode qualifiée explicitement prévue par la carte, et non en mode de collecte natif. La CSP, la confidentialité, les calculs et les réglages globaux Cloudflare n’ont pas changé. Mesure mobile prématurée à 20:20:32 CEST : 96/100/92/100, pendant l’ancienne production ; conservée comme non qualifiante. Trafic/positions/backlinks et suivi J+7/J+28 restent ND.
+
+Build local final PASS (126 Python/634 Node) ; Astro 0 erreur/0 warning/8 hints. Risque distinct : npm audit signale devalue et http-cache-semantics HIGH, fast-uri MODERATE. Qualification/correction routée à dev sur t_b19b2c1c, aucune mise à jour opportuniste du lock dans cette livraison.
+
 ## Retour arrière
 
-Revenir par une PR de revert du commit de fusion PR74, avec CI verte puis Cloudflare SUCCESS et recette sur domaine. Préserver PR55/75/76/77 et éviter réécriture d'historique. La PR documentaire de constat est distincte de la livraison fonctionnelle et peut être révoquée séparément si un constat devient erroné. Aucun rollback réalisé : calculs, confidentialité et exports publics PASS.
+Revenir par une PR de revert du correctif PR79, avec CI verte puis Cloudflare SUCCESS et recette sur domaine. Préserver le produit PR74, PR55/75/76/77/78 et éviter réécriture d'historique. La PR documentaire de constat est distincte de la livraison fonctionnelle et peut être révoquée séparément si un constat devient erroné. Aucun rollback réalisé : calculs, confidentialité et exports publics PASS.
 
 ## Preuves
 
-Rapports bruts Lighthouse, JSON des deux recettes navigateur, preuves HTTP, exports réellement téléchargés, captures et logs CI sont joints à la carte t_8873d9b2 dans l'archive de livraison. Publication documentaire à suivre via la PR release/roi-publication-t_8873d9b2 ; ne pas confondre création de cette PR et fusion après CI.
+Rapports bruts Lighthouse et companions, JSON des deux recettes navigateur, preuves HTTP, exports réellement téléchargés, captures et logs CI sont conservés dans l’archive finale remise par la carte t_8873d9b2 à t_8193141f. PR78 est intégrée ; ce constat final est porté par la branche release/roi-final-t_8873d9b2, puis fusion après CI sans seconde QA de fond ou des preuves dérivées.
