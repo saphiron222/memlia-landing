@@ -19,8 +19,8 @@ export const ADDITIONAL_UNITS = [
   // vague 1 (2026-09-16) : les champs qui affirment une portée juridique portent leur propre preuve
   ['systeme-d-ia', 'context', 'systeme-d-ia-regles'],
   ['systeme-d-ia', 'commonConfusion', 'systeme-d-ia-regles'],
-  ['sous-traitant-rgpd', 'context', 'sous-traitant-rgpd'],
-  ['sous-traitant-rgpd', 'commonConfusion', 'sous-traitant-rgpd'],
+  ['sous-traitant-rgpd', 'context', 'roles-rgpd'],
+  ['sous-traitant-rgpd', 'commonConfusion', 'roles-rgpd'],
   ['jeu-d-essai-fictif', 'commonConfusion', 'jeu-d-essai-fictif-anonymisation'],
   // vague 2 (2026-09-19) : les confusions qui s’appuient sur la source portent leur propre citation
   ['agent-ia', 'commonConfusion', 'agent-ia-environnement'],
@@ -77,6 +77,9 @@ export function expandV3Evidence({ root, glossary, entries, sources, official, c
     if (!spec && !text.startsWith('Convention Memlia :')) throw new Error(`Convention non bornée : ${id}`);
     entries.push({ ...base, id: `T-EXTRA-${id}`, unitId: `unit-t-${id}`, claimId: `claim-t-${id}`, text,
       contentLocator: `${slug}:${field}`, sourceId: spec?.sourceId ?? 'source-glossary-memlia',
+      checkedAt: sources[spec?.sourceId ?? 'source-glossary-memlia'].checkedAt > checkedAt
+        ? sources[spec?.sourceId ?? 'source-glossary-memlia'].checkedAt : checkedAt,
+      validAsOf: sources[spec?.sourceId ?? 'source-glossary-memlia'].checkedAt.slice(0, 10),
       type: spec?.type ?? 'methode-memlia',
       applicability: spec?.applicability ?? 'Convention interne Memlia appliquée au suivi du cabinet décrit.',
       regime: spec?.regime ?? 'Doctrine Memlia, sans portée réglementaire autonome.',

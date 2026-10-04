@@ -7,13 +7,15 @@ const { eeat } = Astro.props;
 ---
 
 {(eeat.sources.length > 0 || eeat.experience) && (
-  <section class="page-evidence" aria-labelledby="page-evidence-title" data-source-section>
+  <section class="page-evidence" aria-labelledby={eeat.sources.length > 0 ? 'page-evidence-title' : undefined} aria-label={eeat.sources.length > 0 ? undefined : 'Expérience de première main'} data-source-section>
     <div class="page-evidence-inner">
+      {eeat.sources.length > 0 && (
       <div class="page-evidence-head">
         <p class="page-evidence-kicker">Références publiques</p>
         <h2 id="page-evidence-title">Sources</h2>
         <p>Les liens ci-dessous portent les repères publics cités dans la page. Leur portée est résumée au même endroit.</p>
       </div>
+      )}
 
       {eeat.sources.length > 0 && (
         <ul class="page-evidence-list" aria-label="Sources primaires">
