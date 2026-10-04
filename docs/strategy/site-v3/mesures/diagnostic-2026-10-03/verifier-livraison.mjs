@@ -30,6 +30,69 @@ export function verifierCouverture(matrix, catalogueNames, packNames) {
   return { union: expected.size, uniques: entries.size, omissions: [] };
 }
 
+const attr = (node, key) => node.attrs?.find((a) => a.name === key)?.value;
+const all = (node) => [node, ...(node.childNodes ?? []).flatMap(all)];
+const text = (node) => node.nodeName === '#text' ? node.value :
+  ['script', 'style', 'template', 'noscript'].includes(node.tagName) ? '' : (node.childNodes ?? []).map(text).join(' ');
+const hasClass = (node, name) => (attr(node, 'class') ?? '').split(/\s+/).includes(name);
+
+export function verifierCopies(live, pages, readCopy, sitemap) {
+  const sources = live.filter((row) => row.source_file && row.url.includes('/blog/'));
+  const uniqueUrls = (rows, label) => {
+    assert(rows.length > 0, `${label} vide`);
+    const urls = rows.map((row) => row.url);
+    assert.equal(new Set(urls).size, urls.length, `${label} : URL en doublon`);
+    return urls.sort();
+  };
+  assert.deepEqual(uniqueUrls(pages, 'Résumé'), uniqueUrls(sources, 'Snapshot'), 'Population résumé/snapshot différente');
+  const extracted = pages.map((page) => {
+    const source = sources.find((row) => row.url === page.url);
+    assert.equal(source.status, 200, page.url);
+    assert.equal(page.status, source.status, page.url);
+    const raw = readCopy(source.source_file);
+    assert.equal(createHash('sha256').update(raw).digest('hex'), source.sha256, `Copie modifiée : ${page.url}`);
+    const nodes = all(parse(raw.toString()));
+    const canonicals = nodes.filter((n) => n.tagName === 'link' && (attr(n, 'rel') ?? '').split(/\s+/).includes('canonical')).map((n) => attr(n, 'href'));
+    assert.deepEqual(canonicals, [page.url], `Canonical HTML : ${page.url}`);
+    assert.equal(page.canonical, canonicals[0]);
+    const h1 = nodes.filter((n) => n.tagName === 'h1').map((n) => text(n).trim());
+    assert.equal(h1.length, 1, `H1 HTML : ${page.url}`);
+    assert(h1[0], `H1 vide : ${page.url}`);
+    assert.deepEqual(page.h1, h1);
+    const robots = nodes.filter((n) => n.tagName === 'meta' && /^(robots|googlebot)$/i.test(attr(n, 'name') ?? '')).map((n) => attr(n, 'content') ?? '');
+    assert(robots.length && robots.every((r) => !/\b(noindex|none)\b/i.test(r)) && robots.some((r) => /\bindex\b/i.test(r)), `Robots HTML : ${page.url}`);
+    assert.equal(page.robots, robots[0]);
+    const bodies = nodes.filter((n) => hasClass(n, 'article-corps'));
+    assert.equal(bodies.length, 1, `Corps HTML : ${page.url}`);
+    const bodyText = text(bodies[0]).trim();
+    assert(bodyText, `Corps vide : ${page.url}`);
+    assert.equal(page.bodyPresent, true);
+    assert.equal(page.bodyWords, bodyText.split(/\s+/).length);
+    const hasSommaire = nodes.some((n) => hasClass(n, 'article-sommaire') || (n.tagName === 'nav' && /sommaire/i.test(attr(n, 'aria-label') ?? '')));
+    assert(hasSommaire && page.hasSommaire, `Sommaire HTML : ${page.url}`);
+    assert(text(nodes[0]).includes('Kevin Kitanga') && page.author, `Auteur HTML : ${page.url}`);
+    const schema = nodes.filter((n) => n.tagName === 'script' && attr(n, 'type') === 'application/ld+json').map((n) => JSON.parse((n.childNodes ?? []).map((c) => c.value ?? '').join('')));
+    assert.deepEqual(schema, source.schema, `Schema copie/snapshot : ${page.url}`);
+    const entities = schema.flatMap((s) => s['@graph'] || [s]);
+    const articles = entities.filter((s) => s['@type'] === 'BlogPosting');
+    assert.equal(articles.length, 1, `BlogPosting HTML : ${page.url}`);
+    assert.equal(articles[0].url, page.url);
+    assert.equal(articles[0].headline, h1[0]);
+    assert(entities.some((s) => s['@type'] === 'Person' && s.name === 'Kevin Kitanga'), `Person HTML : ${page.url}`);
+    assert(sitemap.includes(`<loc>${page.url}</loc>`), `Article absent du sitemap : ${page.url}`);
+    const bodyNodes = all(bodies[0]);
+    const proofs = bodyNodes.filter((n) => n.tagName === 'figure' && attr(n, 'data-blog-proof') !== undefined).length;
+    assert.equal(page.proofs, proofs);
+    return { page, proofs, internal: bodyNodes.filter((n) => n.tagName === 'a').map((n) => attr(n, 'href')).filter((href) => href?.startsWith('/')) };
+  });
+  return extracted.map(({ page, proofs }) => {
+    const incoming = extracted.filter((row) => row.internal.includes(new URL(page.url).pathname)).map((row) => row.page.url);
+    assert(incoming.length > 0, `Liens entrants HTML : ${page.url}`);
+    assert.deepEqual([...page.bodyIncoming].sort(), incoming.sort(), `Liens entrants résumé/HTML : ${page.url}`);
+    return { url: page.url, body: true, canonical: true, schemaIdentity: true, proofs, incoming: incoming.length };
+  });
+}
+
 function main() {
   const matrixPath = resolve(process.argv[2] || join(base, 'couverture-livraison.json'));
   const cataloguePath = resolve(process.argv[3] || join(base, 'catalogue-hermes.json'));
@@ -56,31 +119,14 @@ function main() {
   const blogRows = currentPage.rows.filter((row) => row.page.includes('/blog/'));
   const live = file('live-audit.json');
   const pages = file('onpage-summary.json');
-  const liveChecks = pages.map((page) => {
-    assert.equal(page.status, 200, page.url);
-    assert.equal(page.canonical, page.url, page.url);
-    assert.equal(page.h1.length, 1, page.url);
-    assert(!/noindex/i.test(page.robots) && /index/i.test(page.robots), page.url);
-    assert(page.bodyPresent && page.bodyWords > 0, page.url);
-    assert(page.hasSommaire && page.author, page.url);
-    assert(page.bodyIncoming.length > 0, page.url);
-    const source = live.find((row) => row.url === page.url);
-    const raw = readFileSync(join(base, source.source_file));
-    assert.equal(createHash('sha256').update(raw).digest('hex'), source.sha256, `Copie modifiée : ${page.url}`);
-    const nodes = source.schema.flatMap((s) => s['@graph'] || [s]);
-    const article = nodes.find((s) => s['@type'] === 'BlogPosting');
-    assert.equal(article.url, page.url);
-    assert.equal(article.headline, page.h1[0]);
-    assert(nodes.some((s) => s['@type'] === 'Person' && s.name === 'Kevin Kitanga'));
-    parse(raw.toString());
-    return { url: page.url, body: true, canonical: true, schemaIdentity: true, proofs: page.proofs, incoming: page.bodyIncoming.length };
-  });
+
   const serp = file('serp-2026-10-03.json');
   const xmlPaths = ['live/sitemap-index.xml', 'live/sitemap-0.xml', 'live/blog-rss.xml'].map((path) => join(base, path));
   execFileSync('xmllint', ['--noout', ...xmlPaths]);
   const sitemap = readFileSync(join(base, 'live/sitemap-0.xml'), 'utf8');
   const index = readFileSync(join(base, 'live/sitemap-index.xml'), 'utf8');
   assert(index.includes('https://memlia.fr/sitemap-0.xml'));
+  const liveChecks = verifierCopies(live, pages, (path) => readFileSync(join(base, path)), sitemap);
   const sitemapChecks = pages.map((page) => ({ url: page.url, present: sitemap.includes(`<loc>${page.url}</loc>`) }));
   assert.deepEqual(serp.recherches.map((r) => r.slug).sort(), [...matrix.slugs].sort());
   assert.equal(serp.recherches.length, 4);

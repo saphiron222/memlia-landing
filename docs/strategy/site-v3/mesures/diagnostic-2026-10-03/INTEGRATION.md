@@ -29,6 +29,8 @@ Prérequis : Node compatible avec package.json, dépendance parse5 et `xmllint` 
 
 Le contrôle rejoue l'union catalogue/pack/pipeline, les preuves, les exports GSC conservés, les métadonnées de douze copies HTML, trois XML et quatre mutations (omission, doublon, exécution sans preuve, motif vide). Il ne contacte pas les services de mesure et ne certifie ni la vérité métier, ni la lisibilité mobile, ni la production actuelle.
 
+Le vérificateur rapproche la population complète du résumé et du snapshot (vide, omission et doublon refusés), exige chaque article dans le sitemap et extrait canonical, H1, robots, corps, sommaire, auteur, schémas et liens entrants des copies HTML. Il compare ces propriétés aux résumés conservés, sans se fier à leur seule déclaration. Les tests `node --test tests/scripts/diagnostic-copies.test.mjs` couvrent ces refus et six altérations HTML avec condensat recalculé ; ils sont aussi joués par le build ordinaire, sans pack Hermes ni réseau.
+
 `collect-live.py` et `analyze-live.mjs` sont des scripts historiques de collecte/analyse ; ils écrivent dans ce dossier. `finaliser-couverture.mjs` reconstruit la matrice du lot historique. Ne pas les relancer dans le dossier conservé pour dater artificiellement une mesure ; les copier avec leur contexte dans un dossier de mesure neuf si leur réutilisation devient nécessaire. Le finaliseur n'est pas un garde de la forge ni un modèle d'états pour les futurs articles.
 
 ## Conservation indépendante du scratch
