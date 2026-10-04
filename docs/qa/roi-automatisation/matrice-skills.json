@@ -1,5 +1,17 @@
 {
-  "scope": "Colonne 09 uniquement : candidat local, pas preuve de production",
+  "scope": "Colonne 09 : QA de fond acquise et publication PR74 constatée le 04/10/2026 ; réserves Lighthouse publiques conservées, seuil quatre axes non acquis",
+  "publication": {
+    "date": "2026-10-04",
+    "task": "t_8873d9b2",
+    "report": "publication-2026-10-04.md",
+    "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-roi-automatisation",
+    "deployment": "https://d6810551.memlia.pages.dev",
+    "browser": "13 parcours domaine et 13 parcours déploiement PASS",
+    "lighthouse_mobile": { "performance": 96, "accessibility": 100, "best_practices": 92, "seo": 92 },
+    "lighthouse_desktop": { "performance": 100, "accessibility": 100, "best_practices": 92, "seo": 92 },
+    "reserve": "Beacon Cloudflare injecté bloqué par CSP ; audit Lighthouse robots échoue sur CSP alors que GET public no-cache HTTP200 et robots/indexabilité PASS. Aucun score corrigé ni CSP affaiblie.",
+    "traffic": "ND", "positions": "ND", "backlinks": "ND"
+  },
   "source": "strategy/outils-ia-t_6c7dba9d/docs/strategy/site-v3/outils-ia-vague-3/matrice-skills.json",
   "cells": [
     {
