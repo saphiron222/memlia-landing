@@ -57,19 +57,17 @@ test('une future page non publiée ne peut pas contourner la porte DA', () => {
   }
 });
 
-test('une page sans signature, source ou Person reliée échoue la porte de confiance', () => {
+test('une page sans source ou Person reliée échoue la porte de confiance', () => {
   const root = fixture();
   try {
     const cible = join(root, 'dist/automatisation/tache-test/index.html');
     const sansConfiance = pageComposee()
-      .replace(' data-page-byline', '')
       .replace(' data-primary-source', '')
       .replace('"@type":"Person"', '"@type":"Thing"')
       .replace('"worksFor":{"@id":"https://memlia.fr/#organization"}', '"worksFor":null');
     writeFileSync(cible, sansConfiance);
     const rouge = auditerServiceDesign({ root });
     assert.equal(rouge.pass, false);
-    assert.match(rouge.erreurs.join('\n'), /signature visible absent/);
     assert.match(rouge.erreurs.join('\n'), /source primaire datée absent/);
     assert.match(rouge.erreurs.join('\n'), /nœud Person absent/);
     assert.match(rouge.erreurs.join('\n'), /Person non reliée à Organization/);

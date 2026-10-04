@@ -162,6 +162,17 @@ class PositioningProof(unittest.TestCase):
         self.assertNotIn('offers', service)
         self.assertNotIn('featureList', service)
 
+    def test_written_rule_automation_is_bounded_in_daily_passage(self):
+        html = (DIST / 'index.html').read_text()
+        match = re.search(r'<p[^>]*class="daily-note texte-2"[^>]*>(.*?)</p>', html, re.S)
+        self.assertIsNotNone(match)
+        assert match is not None
+        passage = match.group(1)
+        text = ' '.join(' '.join(Text(passage).parts).split())
+        self.assertEqual(text, 'Écrire la règle, c’est notre métier. Une règle écrite appartient au cabinet. '
+                         'Nous en automatisons la part répétitive lorsque les formats, les accès et les cas couverts le permettent.')
+        self.assertNotIn('une règle écrite s’automatise', html)
+
     def test_illustrations_are_not_product_cards(self):
         html = (DIST / 'index.html').read_text()
         usages = re.search(r'<section[^>]*id="usages"[\s\S]*?</section>', html).group()

@@ -1,0 +1,457 @@
+{
+  "coverage": {
+    "expected": 63,
+    "actual": 63,
+    "missing": [],
+    "extra": [],
+    "changedSkills": []
+  },
+  "receipts": [
+    {
+      "id": "cnil-ia-generative",
+      "status": 200,
+      "retrievedAt": "2026-10-04T03:09:52.631Z",
+      "valid": true
+    },
+    {
+      "id": "ordre-ia",
+      "status": 200,
+      "retrievedAt": "2026-10-04T03:09:52.816Z",
+      "valid": true
+    }
+  ],
+  "images": [
+    {
+      "path": "editorial/articles/utiliser-chatgpt-cabinet-comptable/preuves/image/master.png",
+      "width": 1920,
+      "height": 1080,
+      "format": "png"
+    },
+    {
+      "path": "editorial/articles/utiliser-chatgpt-cabinet-comptable/preuves/image/og.webp",
+      "width": 1200,
+      "height": 630,
+      "format": "webp"
+    },
+    {
+      "path": "editorial/articles/utiliser-chatgpt-cabinet-comptable/preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "heif"
+    },
+    {
+      "path": "public/proofs/blog/usage-fiche-selection.webp",
+      "width": 1600,
+      "height": 900,
+      "format": "webp"
+    },
+    {
+      "path": "public/proofs/blog/usage-file-essais.webp",
+      "width": 1600,
+      "height": 900,
+      "format": "webp"
+    }
+  ],
+  "sources": [
+    {
+      "id": "cnil-ia-generative",
+      "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "status": 200,
+      "quotePresent": true,
+      "context": "bles à l’utilisation de ces systèmes). S’agissant des données fournies en entrée du système (dans le prompt ou invite), les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager. Par exemple, ne jamais partager d’informations confidentielles telles que des données personnelles, des données de l’entreprise ou de l’administration (en particulier lorsqu’elles sont couvertes par un secret comme le ",
+      "cnilDate": true
+    },
+    {
+      "id": "ordre-ia",
+      "url": "https://www.experts-comptables.fr/travaux-data-et-ia",
+      "status": 200,
+      "quotePresent": true,
+      "context": "matique ou non, utilisateur débutant, novice ou assidu des solutions d’IA Génératives, ce fascicule est fait pour vous. Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter » et même une charte de l’utilisation de l’IA Générative en cabinet, vous trouverez tout pour débuter ou vous perfectionner dans notre notice ! COMMENT UTILISER CHATGPT ? (Ce lien s'ouvre dans une nouvelle fenêtre) Enfin,",
+      "cnilDate": null
+    }
+  ],
+  "replay": {
+    "executeAt": "2026-10-04T03:20:39.008Z",
+    "nature": "Règle déterministe locale de sélection, aucun modèle interrogé, aucune reformulation générée",
+    "resultats": [
+      {
+        "entree": {
+          "id": "E-01",
+          "geste": "reformuler",
+          "contexte": "D-012 : réunion jeudi ; liste de questions à préparer.",
+          "demandeEnvoi": false,
+          "attendu": "ESSAI_SELECTIONNE"
+        },
+        "obtenu": {
+          "statut": "ESSAI_SELECTIONNE",
+          "sortie": "Reformulation en brouillon à relire",
+          "envoi": false
+        }
+      },
+      {
+        "entree": {
+          "id": "E-02",
+          "geste": "decision-fiscale",
+          "contexte": "Dossier entièrement fictif",
+          "demandeEnvoi": false,
+          "attendu": "HORS_PERIMETRE"
+        },
+        "obtenu": {
+          "statut": "HORS_PERIMETRE",
+          "sortie": "Aucune préparation",
+          "envoi": false
+        }
+      },
+      {
+        "entree": {
+          "id": "E-03",
+          "geste": "reformuler",
+          "contexte": "",
+          "demandeEnvoi": false,
+          "attendu": "CONTEXTE_ABSENT"
+        },
+        "obtenu": {
+          "statut": "CONTEXTE_ABSENT",
+          "sortie": "Contexte à préciser",
+          "envoi": false
+        }
+      },
+      {
+        "entree": {
+          "id": "E-04",
+          "geste": "reformuler",
+          "contexte": "D-012 : réunion jeudi ; liste de questions à préparer.",
+          "demandeEnvoi": true,
+          "attendu": "ENVOI_NON_AUTORISE"
+        },
+        "obtenu": {
+          "statut": "ENVOI_NON_AUTORISE",
+          "sortie": "Reformulation en brouillon à relire",
+          "envoi": false
+        }
+      }
+    ]
+  },
+  "additionalCases": [
+    {
+      "entree": {
+        "geste": "resumer",
+        "contexte": "Document fictif"
+      },
+      "obtenu": {
+        "statut": "GESTE_NON_PREVU",
+        "sortie": "Fiche à préciser",
+        "envoi": false
+      }
+    },
+    {
+      "entree": {
+        "geste": "reformuler",
+        "contexte": "  "
+      },
+      "obtenu": {
+        "statut": "CONTEXTE_ABSENT",
+        "sortie": "Contexte à préciser",
+        "envoi": false
+      }
+    },
+    {
+      "entree": {
+        "geste": "decision-sociale",
+        "contexte": "Cas fictif"
+      },
+      "obtenu": {
+        "statut": "GESTE_NON_PREVU",
+        "sortie": "Fiche à préciser",
+        "envoi": false
+      }
+    }
+  ],
+  "browser": [
+    {
+      "width": 1280,
+      "overflow": false,
+      "h1": 1,
+      "title": "Utiliser ChatGPT cabinet comptable : premier usage | Memlia",
+      "description": "Utiliser ChatGPT cabinet comptable : choisissez une tâche préparatoire, écrivez ses limites et testez un premier usage sur un dossier fictif.",
+      "canonical": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable",
+      "robots": "noindex, follow",
+      "headings": [
+        {
+          "tag": "H2",
+          "text": "Réponse directe"
+        },
+        {
+          "tag": "H2",
+          "text": "Choisir un premier usage, plutôt qu’une liste de possibilités"
+        },
+        {
+          "tag": "H2",
+          "text": "Pourquoi l’essai se perd quand la règle reste dans une tête"
+        },
+        {
+          "tag": "H2",
+          "text": "Avant de commencer"
+        },
+        {
+          "tag": "H2",
+          "text": "Une fiche copiable pour choisir votre essai"
+        },
+        {
+          "tag": "H2",
+          "text": "Faire deux essais avant de généraliser"
+        },
+        {
+          "tag": "H3",
+          "text": "Essai nominal : l’entrée est complète"
+        },
+        {
+          "tag": "H3",
+          "text": "Essai incomplet : le contexte est absent"
+        },
+        {
+          "tag": "H2",
+          "text": "La règle écrite"
+        },
+        {
+          "tag": "H2",
+          "text": "Rejoué sur le jeu fictif"
+        },
+        {
+          "tag": "H2",
+          "text": "Garder un usage ponctuel ou préparer une automatisation"
+        },
+        {
+          "tag": "H2",
+          "text": "Les erreurs fréquentes"
+        },
+        {
+          "tag": "H2",
+          "text": "Questions fréquentes"
+        },
+        {
+          "tag": "H3",
+          "text": "Quelle première tâche choisir pour utiliser ChatGPT au cabinet ?"
+        },
+        {
+          "tag": "H3",
+          "text": "Faut-il commencer par acheter un nouvel outil ?"
+        },
+        {
+          "tag": "H3",
+          "text": "Peut-on tester avec un vrai dossier pour gagner du temps ?"
+        },
+        {
+          "tag": "H3",
+          "text": "Que faire si le brouillon contient un ajout ?"
+        },
+        {
+          "tag": "H3",
+          "text": "Quand arrêter un premier essai ?"
+        },
+        {
+          "tag": "H2",
+          "text": "La règle à retenir"
+        },
+        {
+          "tag": "H2",
+          "text": "Pour aller plus loin"
+        }
+      ],
+      "proofs": [
+        {
+          "src": "/proofs/blog/usage-fiche-selection.webp",
+          "alt": "Fiche fictive E-01 : reformulation, note D-012, critère de contrôle et responsable de l’essai.",
+          "loaded": true,
+          "width": 656,
+          "height": 369.875
+        },
+        {
+          "src": "/proofs/blog/usage-file-essais.webp",
+          "alt": "File fictive des quatre essais : sélection, hors périmètre, contexte absent et envoi non autorisé.",
+          "loaded": true,
+          "width": 656,
+          "height": 369.875
+        }
+      ],
+      "toc": true,
+      "errors": [],
+      "failed": [],
+      "tables": [
+        {
+          "thead": true,
+          "rows": 4,
+          "overflow": false
+        },
+        {
+          "thead": true,
+          "rows": 13,
+          "overflow": false
+        },
+        {
+          "thead": true,
+          "rows": 4,
+          "overflow": false
+        },
+        {
+          "thead": true,
+          "rows": 5,
+          "overflow": false
+        }
+      ],
+      "schemaTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "h1": 1,
+      "title": "Utiliser ChatGPT cabinet comptable : premier usage | Memlia",
+      "description": "Utiliser ChatGPT cabinet comptable : choisissez une tâche préparatoire, écrivez ses limites et testez un premier usage sur un dossier fictif.",
+      "canonical": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable",
+      "robots": "noindex, follow",
+      "headings": [
+        {
+          "tag": "H2",
+          "text": "Réponse directe"
+        },
+        {
+          "tag": "H2",
+          "text": "Choisir un premier usage, plutôt qu’une liste de possibilités"
+        },
+        {
+          "tag": "H2",
+          "text": "Pourquoi l’essai se perd quand la règle reste dans une tête"
+        },
+        {
+          "tag": "H2",
+          "text": "Avant de commencer"
+        },
+        {
+          "tag": "H2",
+          "text": "Une fiche copiable pour choisir votre essai"
+        },
+        {
+          "tag": "H2",
+          "text": "Faire deux essais avant de généraliser"
+        },
+        {
+          "tag": "H3",
+          "text": "Essai nominal : l’entrée est complète"
+        },
+        {
+          "tag": "H3",
+          "text": "Essai incomplet : le contexte est absent"
+        },
+        {
+          "tag": "H2",
+          "text": "La règle écrite"
+        },
+        {
+          "tag": "H2",
+          "text": "Rejoué sur le jeu fictif"
+        },
+        {
+          "tag": "H2",
+          "text": "Garder un usage ponctuel ou préparer une automatisation"
+        },
+        {
+          "tag": "H2",
+          "text": "Les erreurs fréquentes"
+        },
+        {
+          "tag": "H2",
+          "text": "Questions fréquentes"
+        },
+        {
+          "tag": "H3",
+          "text": "Quelle première tâche choisir pour utiliser ChatGPT au cabinet ?"
+        },
+        {
+          "tag": "H3",
+          "text": "Faut-il commencer par acheter un nouvel outil ?"
+        },
+        {
+          "tag": "H3",
+          "text": "Peut-on tester avec un vrai dossier pour gagner du temps ?"
+        },
+        {
+          "tag": "H3",
+          "text": "Que faire si le brouillon contient un ajout ?"
+        },
+        {
+          "tag": "H3",
+          "text": "Quand arrêter un premier essai ?"
+        },
+        {
+          "tag": "H2",
+          "text": "La règle à retenir"
+        },
+        {
+          "tag": "H2",
+          "text": "Pour aller plus loin"
+        }
+      ],
+      "proofs": [
+        {
+          "src": "/proofs/blog/usage-fiche-selection.webp",
+          "alt": "Fiche fictive E-01 : reformulation, note D-012, critère de contrôle et responsable de l’essai.",
+          "loaded": true,
+          "width": 356,
+          "height": 201.125
+        },
+        {
+          "src": "/proofs/blog/usage-file-essais.webp",
+          "alt": "File fictive des quatre essais : sélection, hors périmètre, contexte absent et envoi non autorisé.",
+          "loaded": true,
+          "width": 356,
+          "height": 201.125
+        }
+      ],
+      "toc": true,
+      "errors": [],
+      "failed": [],
+      "tables": [
+        {
+          "thead": true,
+          "rows": 4,
+          "overflow": true
+        },
+        {
+          "thead": true,
+          "rows": 13,
+          "overflow": true
+        },
+        {
+          "thead": true,
+          "rows": 4,
+          "overflow": true
+        },
+        {
+          "thead": true,
+          "rows": 5,
+          "overflow": true
+        }
+      ],
+      "schemaTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    }
+  ],
+  "matrixStates": {
+    "execute": 33,
+    "a-executer": 2,
+    "N/A": 25,
+    "partiel": 2,
+    "indisponible": 1
+  }
+}

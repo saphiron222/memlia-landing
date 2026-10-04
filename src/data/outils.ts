@@ -6,6 +6,7 @@ export const OUTIL_CATEGORIES = [
   { id: 'calculer', label: 'Calculer' },
   { id: 'verifier', label: 'Vérifier' },
   { id: 'preparer', label: 'Préparer' },
+  { id: 'ecrire', label: 'Écrire' },
 ] as const;
 
 export type OutilCategory = (typeof OUTIL_CATEGORIES)[number]['id'];
@@ -22,9 +23,11 @@ export interface OutilDefinition {
   promesse: { entree: string; resultat: string };
   limites: readonly string[];
   mentionLocale: string;
+  zoneLarge?: boolean;
   suspension?: { motif: string; date: string };
   proof?: ProofId;
   source: {
+    titre?: string;
     nom: string;
     url: string;
     extrait: string;
@@ -59,6 +62,77 @@ export const OUTILS: readonly OutilDefinition[] = [
     pageService: '/methode', cta: '/contact',
   },
   {
+
+    slug: 'calculateur-roi-automatisation', categorie: 'calculer', statut: 'disponible',
+    h1: 'Calculateur de ROI d’automatisation comptable',
+    title: 'Calculateur de ROI d’automatisation comptable | Memlia',
+    description: 'Comparez des scénarios d’automatisation avec vos volumes, temps, coûts et hypothèses, en séparant capacité libérée et économies de trésorerie.',
+    promesse: { entree: 'Trois scénarios de volumes, temps, adoption, coûts et dépenses évitables', resultat: 'Capacité, trésorerie, ROI cash et récupération ; hypothèses et calculs exportables en CSV ou JSON' },
+    limites: [
+      'Hypothèses constantes et mois continus : aucun gain garanti, aucune prévision ou tarification Memlia.',
+      'La capacité valorisée ne devient jamais automatiquement du cash. E inconnu laisse le ROI et la trésorerie ND.',
+      'Une entrée négative, ambiguë ou hors borne bloque le calcul sans effacer vos hypothèses ; un temps net négatif reste affiché.',
+    ],
+    mentionLocale: 'Vos hypothèses, calculs, copies et exports restent dans ce navigateur, sans envoi ni stockage persistant. Effacer retire les hypothèses et les résultats de la page.',
+    proof: 'v2/30-outil-roi',
+    zoneLarge: true,
+    source: { titre: 'Formules documentées', nom: 'Conventions de calcul détaillées sur cette page', url: '#roi-formules', extrait: 'Le temps, les coûts et les dépenses réellement évitables sont des hypothèses indépendantes. Les formules visibles définissent le calcul, pas un taux de gain attendu.', verifieeLe: '4 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
+    slug: 'generateur-charte-ia-cabinet',
+    categorie: 'ecrire',
+    statut: 'disponible',
+    h1: 'Générateur de charte IA du cabinet',
+    title: 'Générateur de charte IA du cabinet | Memlia',
+    description: 'Préparez une trame de charte IA adaptée aux usages du cabinet, avec responsabilités, données autorisées et validation humaine.',
+    promesse: { entree: 'Usages, données sans dossiers clients, rôles et contrôles', resultat: 'Trame éditable, arbitrages visibles et export Markdown ou texte' },
+    limites: [
+      'Cette trame originale est non officielle : elle ne remplace pas les ressources de l’Ordre et ne certifie aucune conformité.',
+      'Elle organise uniquement des usages sans données personnelles ni clients. Un dossier réel nécessite un cadrage distinct.',
+      'Un rôle non décidé reste à compléter ; le cabinet relit les clauses, vérifie les outils et documente l’adoption.',
+      'L’envoi de fichiers clients à une IA publique est contradictoire avec ce périmètre et bloque la génération sans effacer les clauses.',
+    ],
+    mentionLocale: 'Le questionnaire, les clauses éditées, la copie et les exports sont traités dans votre navigateur. Ils ne sont ni envoyés ni enregistrés par cet outil ; fermez la page pour effacer les saisies ou exportez-les pour les conserver.',
+    proof: 'v2/01-outil-charte-ia',
+    source: {
+      nom: 'CNOEC — Travaux Data et IA',
+      url: 'https://www.experts-comptables.fr/travaux-data-et-ia',
+      extrait: 'L’Ordre propose un livret avec des cas d’usage, des précautions et une charte d’utilisation de l’IA générative en cabinet. Notre outil compose une trame distincte à partir de vos choix, sans reproduire ce modèle.',
+      verifieeLe: '4 octobre 2026',
+      complement: {
+        nom: 'CNIL — Comment déployer une IA générative ? (18 juillet 2024)',
+        url: 'https://cnil.fr/fr/comment-deployer-une-ia-generative-la-cnil-apporte-de-premieres-precisions',
+        extrait: 'La CNIL recommande d’identifier les usages, de les encadrer, d’examiner le déploiement et la réutilisation des données, de former les utilisateurs et d’organiser la gouvernance.',
+      },
+    },
+    pageService: '/methode',
+    cta: '/contact',
+
+  },
+  {
+    slug: 'verificateur-fec-local', categorie: 'verifier', statut: 'disponible',
+    h1: 'Vérificateur FEC gratuit et local',
+    title: 'Vérificateur FEC gratuit et local | Memlia',
+    description: 'Contrôlez localement la structure d’un FEC et trouvez les lignes en anomalie, avec règles expliquées et rapport exportable non certifiant.',
+    promesse: { entree: 'FEC texte commercial, 18 colonnes Débit/Crédit, 20 Mo maximum', resultat: 'Anomalies par ligne, colonne et règle ; rapports complets aux formats CSV et JSON' },
+    limites: [
+      'Contrôle de structure non certifiant : aucune conclusion comptable ou fiscale, aucun fichier corrigé.',
+      'Équilibre, exhaustivité, chronologie, nom du fichier et conformité de l’encodage ne sont pas évalués.',
+      'XML, BNC/BA, Montant/Sens et colonnes supplémentaires restent hors périmètre, sans être déclarés invalides ; au-delà de 20 Mo, le fichier n’est pas lu.',
+    ],
+    mentionLocale: 'Votre fichier et son rapport sont traités dans un Worker de ce navigateur, sans envoi ni stockage persistant. L’original reste inchangé. Effacer retire la sélection et le rapport de la page.',
+    proof: 'v2/29-outil-fec',
+    source: {
+      nom: 'DGFiP — Test Compta Demat',
+      url: 'https://www.economie.gouv.fr/dgfip/outil-de-test-des-fichiers-des-ecritures-comptables-fec',
+      extrait: 'La DGFiP propose Test Compta Demat pour examiner la structure d’un FEC et localiser les anomalies. Notre contrôle technique borné ne remplace pas cet outil officiel.',
+      verifieeLe: '4 octobre 2026',
+      complement: { nom: 'BOFiP — Format du fichier des écritures comptables', url: 'https://bofip.impots.gouv.fr/bofip/9028-PGP.html', extrait: 'Les précisions de format distinguent les champs requis et ceux à blanc si non utilisés. Aucun jugement fiscal n’est automatisé ici.' },
+    },
+    pageService: '/automatisation-cabinet-comptable', cta: '/contact',
+  },
+  {
     slug: 'calculateur-marge-commerciale',
     categorie: 'calculer',
     statut: 'disponible',
@@ -78,6 +152,11 @@ export const OUTILS: readonly OutilDefinition[] = [
       url: 'https://www.insee.fr/fr/metadonnees/definition/c1774',
       extrait: 'L’Insee définit la marge commerciale comme la différence entre le montant hors taxes des ventes de marchandises et le coût d’achat hors taxes des marchandises vendues.',
       verifieeLe: '20 septembre 2026',
+      complement: {
+        nom: 'Bpifrance Création — Taux de marque',
+        url: 'https://bpifrance-creation.fr/taux-marque',
+        extrait: 'Le taux de marque rapporte la marge au prix de vente HT ; le taux de marge la rapporte au coût. Ici, ce coût est le prix d’achat HT saisi, hors frais et variation de stocks.',
+      },
     },
     pageService: '/automatisation-cabinet-comptable',
     cta: '/contact',
@@ -91,7 +170,7 @@ export const OUTILS: readonly OutilDefinition[] = [
     description: 'Calculez une date d’échéance selon l’un des délais généraux documentés, avec le point de départ, la convention et chaque étape visibles.',
     promesse: { entree: 'Date, délai général et convention choisie', resultat: 'Date d’échéance et trace calendaire' },
     limites: [
-      'Ce calcul ne couvre pas les délais sectoriels, les marchés publics, les factures périodiques ni un accord particulier.',
+      'Ce calcul ne couvre pas les délais sectoriels ou dérogatoires, les marchés publics, les factures périodiques, l’export ni les points de départ particuliers outre-mer. Un délai contractuel plus court reste à appliquer.',
       'Il ne conclut pas à la conformité d’un contrat ou d’une facture et ne remplace pas leur lecture.',
       'Il refuse le calcul lorsque le point de départ manque ou que la convention « 45 jours fin de mois » n’est pas choisie explicitement.',
     ],
@@ -117,11 +196,11 @@ export const OUTILS: readonly OutilDefinition[] = [
     statut: 'disponible',
     h1: 'Calculateur d’amortissement comptable',
     title: 'Calculateur d’amortissement comptable | Memlia',
-    description: 'Calculez un plan d’amortissement linéaire ou dégressif, avec le prorata, la valeur nette et la trace de chaque dotation.',
-    promesse: { entree: 'Valeur, date de mise en service, durée et méthode', resultat: 'Plan annuel, prorata, dotations, cumul et valeur nette' },
+    description: 'Calculez un plan d’amortissement linéaire comptable depuis la mise en service ou dégressif fiscal depuis l’acquisition, avec prorata et trace des dotations.',
+    promesse: { entree: 'Valeur amortissable, date de mise en service ou d’acquisition, durée et méthode', resultat: 'Plan annuel, prorata, dotations, cumul et valeur nette' },
     limites: [
-      'Le mode linéaire applique la convention affichée : prorata au jour exact et clôture au 31 décembre. Il ne choisit pas la durée à la place du cabinet.',
-      'Le mode dégressif reproduit le calcul général de l’article 39 A du CGI sur un exercice civil, mais ne décide ni de l’éligibilité du bien, ni d’un régime particulier.',
+      'Le linéaire comptable commence au début de consommation des avantages économiques, généralement à la mise en service. Le prorata en jours réels et la clôture au 31 décembre sont les conventions de cette simulation, pas une règle fiscale universelle.',
+      'Le dégressif fiscal couvre uniquement les acquisitions ou achèvements depuis le 01/01/2010 et commence au premier jour de ce mois, avec l’option de passage au quotient résiduel. Le cabinet vérifie l’éligibilité au régime général de l’article 39 A du CGI ; les régimes historiques et particuliers sont exclus.',
       'Le calcul ne traite ni valeur résiduelle, ni cession, ni exercice décalé, ni composant séparé ; une entrée vide, incohérente ou hors bornes bloque le plan.',
     ],
     mentionLocale: 'La valeur, la date, la durée et le plan restent dans ce navigateur. Ils ne sont ni envoyés, ni enregistrés, ni réutilisés.',
@@ -129,12 +208,12 @@ export const OUTILS: readonly OutilDefinition[] = [
     source: {
       nom: 'Autorité des normes comptables - Plan comptable général, version au 1er janvier 2026',
       url: 'https://www.anc.gouv.fr/plan-comptable-general-0',
-      extrait: 'L’article 214-13 relie le mode d’amortissement au rythme de consommation des avantages économiques attendus et retient le mode linéaire à défaut de mode mieux adapté.',
+      extrait: 'Les articles 214-12 et 214-13 fixent le début de l’amortissement à la consommation des avantages économiques, généralement à la mise en service, et retiennent le linéaire à défaut de mode mieux adapté.',
       verifieeLe: '20 septembre 2026',
       complement: {
-        nom: 'Légifrance - Code général des impôts, article 39 A',
-        url: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291',
-        extrait: 'L’article 39 A fixe les coefficients du dégressif à 1,25 pour trois ou quatre ans, 1,75 pour cinq ou six ans et 2,25 au-delà de six ans.',
+        nom: 'DGFiP — BOFiP, modalités de calcul de l’amortissement dégressif',
+        url: 'https://bofip.impots.gouv.fr/bofip/4699-PGP.html',
+        extrait: 'Les § 120 et 150 donnent les coefficients généraux applicables depuis le 01/01/2010 ; le § 160 distingue le régime majoré de 2008–2009, non calculé ici. Les § 190 à 220 précisent le prorata depuis le mois d’acquisition. Les § 250 et 260 décrivent l’option de passage au quotient résiduel et l’année d’acquisition entière.',
       },
     },
     pageService: '/automatisation-cabinet-comptable',
@@ -146,14 +225,14 @@ export const OUTILS: readonly OutilDefinition[] = [
     statut: 'disponible',
     h1: 'Modèle de rapprochement bancaire Excel gratuit',
     title: 'Modèle de rapprochement bancaire Excel gratuit | Memlia',
-    description: 'Modèle de rapprochement bancaire Excel gratuit : préparez un contrôle fictif de soldes et téléchargez un CSV sans importer de relevé.',
-    promesse: { entree: 'Période, soldes et éléments de rapprochement fictifs', resultat: 'Contrôle des soldes et modèle CSV ouvrable dans Excel' },
+    description: 'Modèle de rapprochement bancaire Excel gratuit : téléchargez le .xlsx sans compte, avec exemple fictif, feuille à remplir, formules et écarts visibles.',
+    promesse: { entree: 'Période, soldes et éléments de rapprochement', resultat: 'Classeur .xlsx réutilisable et contrôle fictif exportable en CSV' },
     limites: [
-      'Le téléchargement est un fichier CSV UTF-8 séparé par des points-virgules, pas un fichier .xlsx.',
-      'Ce modèle ne passe aucune écriture et ne valide aucun rapprochement à la place du collaborateur.',
-      'Il refuse une période inversée, un montant illisible, un élément inexpliqué ou des soldes ajustés qui ne concordent pas.',
+      'Le classeur contient un exemple fictif, une feuille à remplir et une notice des signes. Le calcul en ligne et son CSV restent disponibles pour les données fictives.',
+      'Ce contrôle de soldes n’apparie pas les lignes, ne passe aucune écriture et ne valide aucun rapprochement à la place du collaborateur.',
+      'Une période inversée ou un montant illisible bloque le calcul en ligne. Un écart ou un élément inexpliqué reste visible et exportable avec l’état NON VALIDÉ.',
     ],
-    mentionLocale: 'Aucun relevé n’est importé. Les montants fictifs sont calculés dans ce navigateur ; le fichier est créé localement puis son adresse temporaire est révoquée.',
+    mentionLocale: 'Aucun relevé n’est importé. Le classeur vierge se télécharge sans inscription puis se remplit localement, sans macro ni connexion externe. Les montants fictifs du calcul en ligne restent dans ce navigateur ; son CSV est créé localement.',
     proof: 'v2/27-outil-rapprochement',
     source: {
       nom: 'Autorité des normes comptables — Plan comptable général, version au 1er janvier 2026',

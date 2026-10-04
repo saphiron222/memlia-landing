@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "slug": "utiliser-chatgpt-cabinet-comptable",
+  "action": "creation",
+  "editorialStatus": "publie",
+  "title": "Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile",
+  "tabTitle": "Utiliser ChatGPT cabinet comptable : premier usage | Memlia",
+  "summary": "Une fiche copiable pour choisir un geste préparatoire, définir sa sortie et ses refus, puis décider si cet usage mérite un essai sur un dossier fictif.",
+  "description": "Utiliser ChatGPT cabinet comptable : choisissez une tâche préparatoire, écrivez ses limites et testez un premier usage sur un dossier fictif.",
+  "publicationDate": "2026-10-04",
+  "updatedAt": null,
+  "topics": [
+    "ia",
+    "automatisation"
+  ],
+  "keywords": [
+    "utiliser ChatGPT cabinet comptable",
+    "cas usage ChatGPT expert comptable",
+    "IA générative cabinet comptable"
+  ],
+  "primaryQuery": "utiliser ChatGPT cabinet comptable",
+  "secondaryQueries": [
+    "cas usage ChatGPT expert comptable",
+    "IA générative cabinet comptable"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "sélection premier usage",
+    "fiche copiable",
+    "essai incomplet"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "collaborateurs-comptables"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-10-04"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "direction-associes",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "numerique-it-data",
+  "famille": "ia-generative-agents",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Choisir un premier usage préparatoire dont la sortie peut être contrôlée avant utilisation.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Quatre cas déterministes de sélection réellement exécutés, sans modèle interrogé ; fiche et file fictives, aucune reformulation générée.",
+  "sourcesVerifiedAt": "2026-10-04",
+  "sources": [
+    {
+      "id": "cnil-ia-generative",
+      "publisher": "CNIL",
+      "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+      "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "checkedAt": "2026-10-04",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "classificationReason": "FAQ de l’autorité française de protection des données ; consultation directe le 04/10/2026.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/cnil-ia-generative.classification.json",
+      "verificationEvidence": "preuves/sources/cnil-ia-generative.json"
+    },
+    {
+      "id": "ordre-ia",
+      "publisher": "Conseil national de l’Ordre des experts-comptables",
+      "title": "Travaux Data et IA",
+      "url": "https://www.experts-comptables.fr/travaux-data-et-ia",
+      "checkedAt": "2026-10-04",
+      "level": "tier-2",
+      "provenance": "primary",
+      "official": false,
+      "upstreamUrl": "https://www.experts-comptables.fr/travaux-data-et-ia",
+      "classificationReason": "Publication primaire de l’Ordre sur ses propres ressources, vérifiée le 04/10/2026 ; ce domaine n'est pas dans la liste fermée des autorités officielles du gate.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/ordre-ia.classification.json",
+      "verificationEvidence": "preuves/sources/ordre-ia.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "metier:t_a0226944",
+  "reviewRule": "Revoir les conditions d'utilisation de l'outil et les recommandations CNIL avant un usage réel ; réviser le contenu en cas d'évolution de la source.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de votre tâche préparatoire, l’automatisons dans vos outils et la faisons recetter par votre équipe. Vous gardez le jugement et la décision d’utiliser le brouillon. Rien à envoyer : la description suffit."
+  },
+  "image": {
+    "heroId": "img-art-utiliser-chatgpt-cabinet-comptable",
+    "alt": "Trois plateaux de tâches et des fiches vierges dans un diorama vert, graphite et crème",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-10-04"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-10-04"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/prompt-chatgpt-expert-comptable",
+      "/blog/logiciel-ia-comptabilite",
+      "/methode",
+      "/glossaire#validation-humaine",
+      "/automatisation-cabinet-comptable"
+    ],
+    "incoming": [
+      "/blog"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/prompt-chatgpt-expert-comptable",
+      "/blog/logiciel-ia-comptabilite"
+    ],
+    "decision": "Choisir UN essai, distinct de la consigne et du choix logiciel ; pas nouvelle liste de prompts."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  },
+  "publishedAt": "2026-10-04",
+  "publicationEvidence": "preuves/publication.json"
+}

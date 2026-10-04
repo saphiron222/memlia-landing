@@ -20,13 +20,16 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const mode = process.argv.includes('--check') ? 'check' : process.argv.includes('--adopt') ? 'adopt' : 'render';
+const fec = process.argv.includes('--series=fec');
+const roi = process.argv.includes('--series=roi');
+assert.ok(!(fec && roi), 'Choisir une seule série');
 const option = (name, fallback) => process.argv.find((arg) => arg.startsWith(`--${name}=`))?.split('=').slice(1).join('=') ?? fallback;
-const source = option('source', 'docs/design/site-v2-proofs');
+const source = option('source', roi ? 'docs/design/roi-automatisation-proof' : fec ? 'docs/design/fec-local-proof' : 'docs/design/site-v2-proofs');
 const contractPath = `${source}/content-contract.json`;
-const manifestPath = option('manifest', 'docs/qa/site-v2/proofs-manifest.json');
-const startIndex = Number(option('start', '1'));
+const manifestPath = option('manifest', roi ? 'docs/qa/roi-automatisation/proofs-manifest.json' : fec ? 'docs/qa/fec-local/proofs-manifest.json' : 'docs/qa/site-v2/proofs-manifest.json');
+const startIndex = Number(option('start', roi ? '30' : fec ? '29' : '1'));
 assert.ok(Number.isInteger(startIndex) && startIndex > 0, 'Index de départ invalide');
-const output = `.qa/annotations/v2-${mode}`;
+const output = `.qa/annotations/${roi ? 'roi' : fec ? 'fec' : 'v2'}-${mode}`;
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 mkdirSync(output, { recursive: true });
 
@@ -131,7 +134,7 @@ try {
     console.log(`check : ${candidates.length} preuves v2 conformes à leur manifeste.`);
   } else {
     mkdirSync('public/proofs/v2/og', { recursive: true });
-    mkdirSync('docs/qa/site-v2', { recursive: true });
+    mkdirSync(roi ? 'docs/qa/roi-automatisation' : fec ? 'docs/qa/fec-local' : 'docs/qa/site-v2', { recursive: true });
     for (const candidate of candidates) writeFileSync(candidate.target, candidate.bytes);
     writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
     console.log(`${mode} : ${candidates.length} preuves v2 publiées dans public/proofs/v2, manifeste ${manifestPath}.`);

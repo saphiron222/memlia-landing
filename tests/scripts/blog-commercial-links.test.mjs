@@ -20,9 +20,9 @@ const pontsW39 = new Map([
   ['tests-verts-et-regle-des-trois-passes', { href: '/automatisation-cabinet-comptable', label: 'Voir le service d’automatisation et sa recette' }],
 ]);
 
-function verifierCardinalite(articlesPublies) {
+function verifierCardinalite(articlesPublies, liens = LIENS_COMMERCIAUX_BLOG) {
   const slugsAttendus = new Set([...articlesPublies.map(({ slug }) => slug), ...pontsW39.keys()]);
-  assert.equal(Object.keys(LIENS_COMMERCIAUX_BLOG).length, slugsAttendus.size);
+  assert.deepEqual(Object.keys(liens).sort(), [...slugsAttendus].sort());
 }
 
 test('chaque article publié reçoit un pont commercial explicite après le corps éditorial', () => {
@@ -36,12 +36,15 @@ test('chaque article publié reçoit un pont commercial explicite après le corp
 });
 
 test('le passage de 9 à 12 articles publiés ne double-compte pas les trois ponts W39', () => {
-  const articlesHistoriques = articles.filter(({ slug }) => !pontsW39.has(slug));
+  const publiesW39 = JSON.parse(readFileSync(join(ROOT, 'tests/fixtures/editorial-w39-published.json'), 'utf8'));
+  const inventaireW39 = Object.keys(publiesW39).map((slug) => ({ type: 'blog', slug }));
+  const liensW39 = Object.fromEntries(inventaireW39.map(({ slug }) => [slug, LIENS_COMMERCIAUX_BLOG[slug]]));
+  const articlesHistoriques = inventaireW39.filter(({ slug }) => !pontsW39.has(slug));
   assert.equal(articlesHistoriques.length, 9);
-  verifierCardinalite(articlesHistoriques);
+  verifierCardinalite(articlesHistoriques, liensW39);
   const articlesPublies = [...articlesHistoriques, ...[...pontsW39.keys()].map((slug) => ({ type: 'blog', slug }))];
   assert.equal(articlesPublies.length, 12);
-  verifierCardinalite(articlesPublies);
+  verifierCardinalite(articlesPublies, liensW39);
   for (const { slug } of articlesPublies) {
     assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, slug), `${slug} : pont explicite absent après publication`);
   }
