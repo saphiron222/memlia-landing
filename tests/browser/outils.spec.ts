@@ -3,7 +3,7 @@ import { OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
 
 const HUB = '/outils-comptables-gratuits';
 const TEMOIN = `${HUB}/temoin-calcul-local`;
-const H1_HUB = 'Outils comptables gratuits : calculer et vérifier';
+const H1_HUB = 'Outils comptables gratuits : calculer, vérifier et préparer';
 const H1_TEMOIN = 'Témoin de calcul local';
 
 async function graphFrom(page: Page) {
@@ -11,13 +11,16 @@ async function graphFrom(page: Page) {
   return payloads.map((text) => JSON.parse(text)).find((payload) => Array.isArray(payload['@graph']))?.['@graph'] ?? [];
 }
 
-test('hub : quatre outils disponibles et schéma de collection', async ({ page }) => {
+test('hub : tous les outils disponibles et schéma de collection', async ({ page }) => {
   const response = await page.goto(HUB);
   expect(response?.status()).toBe(200);
   await expect(page.locator('main h1')).toHaveText(H1_HUB);
   await expect(page.locator('main h1')).toHaveCount(1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${HUB}`);
-  await expect(page.locator('[data-outil-card]')).toHaveCount(4);
+  await expect(page.locator('[data-outil-card]')).toHaveCount(OUTILS_DISPONIBLES.length);
+  for (const outil of OUTILS_DISPONIBLES) {
+    await expect(page.locator(`[data-outil-card] a[href="${outilPath(outil)}"]`)).toHaveCount(1);
+  }
   await expect(page.locator('[data-empty-category]')).toHaveCount(0);
   await expect(page.locator('[data-tool-media]')).toHaveCount(1);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', '/proofs/v2/og/24-outils-hub.webp');
@@ -29,7 +32,7 @@ test('hub : quatre outils disponibles et schéma de collection', async ({ page }
     'CollectionPage', 'ItemList', 'BreadcrumbList',
   ]);
   expect(graph.find((node: { '@type': string }) => node['@type'] === 'CollectionPage').headline).toBe(H1_HUB);
-  expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(4);
+  expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(OUTILS_DISPONIBLES.length);
 });
 
 test('footer : le hub et les outils publiés sont générés, le témoin reste absent', async ({ page }) => {
@@ -340,11 +343,18 @@ test('maillage entrant : trois contextes rendus par outil, dont le hub et une re
   }
 });
 
-test('outils publiés : zéro requête et zéro stockage après armement', async ({ page }) => {
+test('outils publiés : zéro requête de contenu et zéro stockage après armement', async ({ page }) => {
   for (const outil of OUTILS_DISPONIBLES) {
     const requests: string[] = [];
     let armed = false;
-    const listener = (request: { method(): string; url(): string }) => { if (armed) requests.push(`${request.method()} ${request.url()}`); };
+    const listener = (request: { method(): string; url(): string; postData(): string | null }) => {
+      if (!armed) return;
+      const url = new URL(request.url());
+      // Seul le chargement du code Worker local est permis, pas une requête de données.
+      const workerAsset = outil.slug === 'preparer-pseudonymiser-fichier-csv-fec' && request.method() === 'GET' && request.postData() === null &&
+        url.origin === new URL(page.url()).origin && !url.search && /^\/_astro\/pseudonymisation\.worker-[\w-]+\.js$/.test(url.pathname);
+      if (!workerAsset) requests.push(`${request.method()} ${request.url()}`);
+    };
     page.on('request', listener);
     await page.goto(outilPath(outil));
     await page.evaluate(() => document.fonts.ready);
@@ -367,6 +377,11 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByLabel('Durée d’utilisation').fill('5');
       await page.getByRole('button', { name: 'Calculer le plan' }).click();
       await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
+    } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
+      await page.locator('[data-example]').click();
+      await expect(page.locator('[data-selection]')).toBeVisible();
+      await page.locator('[data-preview]').click();
+      await expect(page.locator('[data-after]')).toContainText('C1_000001');
     } else {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');
