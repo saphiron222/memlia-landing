@@ -166,11 +166,11 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
       </div>
 
       <section class="article-sources" aria-labelledby="sources-titre">
-        <h2 id="sources-titre">Sources consultées</h2>
+        <h2 id="sources-titre">Sources</h2>
         <ol>
           {data.sources.map((s) => (
             <li>
-              {s.editeur}, <a href={s.url} rel="noopener">{s.titre}</a>, consulté le <time datetime={iso(s.consulte)}>{formatDate(s.consulte)}</time>.
+              {s.editeur}, <a href={s.url} rel="noopener">{s.titre}</a>.
             </li>
           ))}
         </ol>
