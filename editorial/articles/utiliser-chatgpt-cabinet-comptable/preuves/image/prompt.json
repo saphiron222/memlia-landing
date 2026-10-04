@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "utiliser-chatgpt-cabinet-comptable",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-04",
+  "articleSha256": "aacb87994efdb05a07a10d3111fee64e1e75f13333991a04c0f1867c297a8879",
+  "manifestSha256": "b966961df5bd07c332c3c841f864e7c2c736c7548cf66196400ba872211df915",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact utiliser-chatgpt-cabinet-comptable."
+  ],
+  "engine": "image_generate",
+  "prompt": "Isometric matte 3D cream #fcfbf7 background, three task trays one selected, green #27b657, deep green #1c8a41, LARGE graphite #231f20 base, blank cards no text no people no logo no interface",
+  "brief": {
+    "sujet": "Choisir un premier geste préparatoire parmi trois candidats.",
+    "composition": "Trois plateaux et fiches vierges sur un socle sombre ; aucune sélection visuellement attestée.",
+    "style": "Diorama 3D isométrique mat, lumière douce, fond papier crème.",
+    "palette": "Crème #fcfbf7 dominante ; vert #27b657, vert profond #1c8a41 et graphite #231f20 en touches.",
+    "interdits": "Texte, chiffres, logo, personnage, donnée client, fausse interface, envoi automatique.",
+    "alt": "Trois plateaux de tâches et des fiches vierges dans un diorama vert, graphite et crème"
+  },
+  "reviewCriteria": [
+    "palette mesurée",
+    "texte absent",
+    "aucun personnage",
+    "aucune interface",
+    "trois plateaux visibles",
+    "dérivés adaptés"
+  ]
+}

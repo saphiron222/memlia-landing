@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "candidateSlug": "utiliser-chatgpt-cabinet-comptable",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-04",
+  "articleSha256": "aacb87994efdb05a07a10d3111fee64e1e75f13333991a04c0f1867c297a8879",
+  "manifestSha256": "b966961df5bd07c332c3c841f864e7c2c736c7548cf66196400ba872211df915",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact utiliser-chatgpt-cabinet-comptable."
+  ],
+  "reviewerId": "relecteur-metier-ia-memlia",
+  "role": "direction-associes",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-02af313242b9-1-ordre-ia",
+      "candidateSlug": "utiliser-chatgpt-cabinet-comptable",
+      "articleSha256": "aacb87994efdb05a07a10d3111fee64e1e75f13333991a04c0f1867c297a8879",
+      "claimId": "claim-unit-02af313242b9-1",
+      "claimSha256": "9dbe637234793cc584de9e418102439a447f115cb978df6c88234ec66edb6718",
+      "sourceId": "ordre-ia",
+      "sourceContentSha256": "1b650c10a7f081d705a617a8bddb4ddc6873fb83593b4914e3ad2827ba9c64d2",
+      "citationSha256": "9dbe637234793cc584de9e418102439a447f115cb978df6c88234ec66edb6718",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-04",
+      "reasoning": "La page publique primaire Travaux Data et IA du CNOEC présente exactement des cas d'usage, précautions et techniques pour bien prompter. Citation vérifiée dans la copie locale ligne 434 et en direct HTTP 200 le 04/10/2026 ; elle soutient la présentation des ressources, pas l'efficacité de la fiche Memlia ni le contenu du livret non consulté. Date de publication de la page non disponible."
+    },
+    {
+      "id": "review-claim-unit-6a7a27b37223-1-cnil-ia-generative",
+      "candidateSlug": "utiliser-chatgpt-cabinet-comptable",
+      "articleSha256": "aacb87994efdb05a07a10d3111fee64e1e75f13333991a04c0f1867c297a8879",
+      "claimId": "claim-unit-6a7a27b37223-1",
+      "claimSha256": "a546ae3eb06661f25120157eb710c3865f1264cbd0550f6225cb6c6b1c9d8060",
+      "sourceId": "cnil-ia-generative",
+      "sourceContentSha256": "feede37d3706833dfa4cb252229ea85928daf54f7551646564bbb853e4bf5d52",
+      "citationSha256": "a546ae3eb06661f25120157eb710c3865f1264cbd0550f6225cb6c6b1c9d8060",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-04",
+      "reasoning": "FAQ CNIL datée 18 juillet 2024 : la phrase porte sur les informations fournies en entrée du système et figure exactement dans la copie ligne 942 et la réponse HTTP 200 de cette revue. Le contexte poursuit avec les informations confidentielles et les secrets ; le guide n'autorise aucun dossier réel et refuse d'assimiler retrait du nom et partage autorisé. Recommandation de l'autorité, ni certification RGPD ni obligation fiscale nouvelle."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "candidateSlug": "utiliser-chatgpt-cabinet-comptable",
+  "reviewedAt": "2026-10-04",
+  "reviewer": "metier:t_a0226944",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 91,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 27,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 22,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 15,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 12,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 15,
+      "max": 15
+    }
+  },
+  "evidence": [
+    "27/30 contenu : fiche de douze champs utile et cas incomplet exploitable ; preuve de classement réelle mais aucune qualité de brouillon éprouvée. La sélection est distinguée de l'essai de rédaction.",
+    "22/25 SEO : titres/meta alignés au choix du premier usage, six liens contextuels, URL stable ; entrants depuis les articles frères non démontrés, deux sources pertinentes plutôt qu'un quota artificiel de liens.",
+    "15/15 E-E-A-T : auteur et bio explicites sans qualification d'expert-comptable, deux citations directes primaires fidèles, protocole local et limites visibles, contact et méthode liés.",
+    "12/15 technique : schémas de base complets, alt/WebP et chargement vérifiés ; petits textes des figures illisibles à taille mobile, tableaux détaillés défilants en 14 px. LCP et accessibilité clavier/lecteur d'écran non mesurés.",
+    "15/15 préparation aux citations : réponse initiale autonome, définitions, tableaux thead, preuves locales bornées et refus d'attribuer leurs résultats au modèle ; score de structure, pas probabilité de citation. Preview noindex volontaire, accessibilité publique à vérifier après livraison.",
+    "Couverture : 63 lignes distinctes, 56 entrées du catalogue plus sept skills du pack explicitement recensés dans le diagnostic ; aucune omission ni référence absente, fichiers de skills conformes aux versions déclarées. États : 33 execute, 25 N/A, deux partiel, un indisponible et deux a-executer ; pas 63 workflows exécutés.",
+    "Captures viewport complémentaires : tableau de rejeu intégralement visible au bureau et dernières colonnes lisibles au téléphone après déplacement réel ; le recouvrement du tableau dans la capture pleine page provient du positionnement de la navigation à l'instant de capture, pas d'un contenu perdu."
+  ],
+  "reservations": [
+    "Les deux figures sont des aperçus : leurs petits libellés ne sont pas confortablement lisibles à 390 px. Le contenu déterminant et l'absence d'appel modèle restent lisibles dans les tableaux/paragraphes HTML ; ne pas déclarer les images entièrement lisibles sur mobile.",
+    "Aucun ChatGPT interrogé, aucun brouillon généré ni qualité rédactionnelle/gain mesurés. Le script accepte un contexte textuel non vide sans contrôler objectif, lecteur ou les douze champs : la fiche complète et sa validation restent humaines.",
+    "Lighthouse/LCP, navigation clavier des tableaux, lecteur d'écran, classement, backlinks, citations IA et conversions non mesurés ; pas certification d'accessibilité ou de conformité RGPD.",
+    "Cette revue porte uniquement sur le candidat local. Scellement, CI, fusion, canonical public, HTTP/RSS/sitemap et mise à jour des deux phases futures de la matrice restent à marketing ; aucun PASS de publication anticipé.",
+    "Le terme Brouillon à relire dans la file peut se lire isolément comme une production ; le cartouche Reformulation générée Aucune et le texte de portée lèvent la réserve dans l'article complet. Ne pas diffuser cette figure recadrée sans ses limites."
+  ],
+  "verdict": "PASS AVEC RÉSERVES : candidat local fidèle à ses sources et à sa preuve de sélection, 91/100 et aucun P0 ; les figures mobiles restent des aperçus et la livraison publique n'est pas encore vérifiée.",
+  "subject": {
+    "slug": "utiliser-chatgpt-cabinet-comptable",
+    "articleSha256": "aacb87994efdb05a07a10d3111fee64e1e75f13333991a04c0f1867c297a8879",
+    "manifestSha256": "b966961df5bd07c332c3c841f864e7c2c736c7548cf66196400ba872211df915"
+  }
+}

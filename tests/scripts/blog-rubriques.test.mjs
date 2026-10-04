@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import {
   ARTICLES_HORS_RUBRIQUE,
   BLOG_RUBRIQUES,
@@ -30,12 +31,15 @@ const entree = (id, date = '2026-09-20') => ({
   data: { datePublication: new Date(`${date}T00:00:00.000Z`), titre: id, resume: `Résumé substantiel de ${id}` },
 });
 
-test('le contrat central porte deux rubriques, cinq articles rattachés et sept exclusions motivées', () => {
+test('le contrat central conserve les rubriques historiques et motive chaque exclusion du stock vivant', () => {
   assert.equal(BLOG_RUBRIQUES.length, 2);
   const attaches = BLOG_RUBRIQUES.flatMap((rubrique) => rubrique.articleIds);
   assert.deepEqual([...attaches].sort(), [...ATTACHES].sort());
   assert.equal(new Set(attaches).size, 5);
-  assert.deepEqual(Object.keys(ARTICLES_HORS_RUBRIQUE).sort(), [...HORS_RUBRIQUE].sort());
+  for (const id of HORS_RUBRIQUE) assert.ok(Object.hasOwn(ARTICLES_HORS_RUBRIQUE, id));
+  const registre = JSON.parse(readFileSync(new URL('../../docs/strategy/site-v3/mesures/registre-requetes.json', import.meta.url), 'utf8'));
+  const publies = registre.articles.filter(({ type }) => type === 'blog').map(({ slug }) => slug);
+  assert.deepEqual([...attaches, ...Object.keys(ARTICLES_HORS_RUBRIQUE)].sort(), publies.sort());
   assert.ok(Object.values(ARTICLES_HORS_RUBRIQUE).every(({ date, raison }) => /^\d{4}-\d{2}-\d{2}$/.test(date) && raison.length >= 50));
   assert.ok(BLOG_RUBRIQUES.every((rubrique) => rubrique.chemin === `/blog/rubrique/${rubrique.slug}`));
 });
