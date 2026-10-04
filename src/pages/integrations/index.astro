@@ -8,20 +8,20 @@ import { SITE } from '@/data/site.mjs';
 const chemin = '/integrations';
 const url = `${SITE.url}${chemin}`;
 const auteur = auteurPar('kevin');
-const vendors = ['Sage', 'Cegid', 'Silae'] as const;
+const products = ['Sage 100 Comptabilité', 'Sage 100 Paie & RH', 'Cegid Loop', 'mySilae'] as const;
 const page = {
   chemin,
   titre: 'Guides par environnement comptable | Memlia',
-  description: 'Des repères factuels par logiciel et par tâche, reliés aux moyeux de service Memlia et limités aux requêtes dont la demande a été mesurée.',
+  description: 'Trouvez les repères de contrôle pour Sage 100 Comptabilité, Sage 100 Paie & RH, Cegid Loop ou mySilae, puis cadrez la tâche à automatiser.',
   h1: 'Guides par environnement comptable',
-  chapeau: 'Une tâche se décrit avec les mots du cabinet, puis se rattache à l’environnement qui la porte. Neuf guides montrent les menus, les champs, le geste préparé et le cas qui doit s’arrêter.',
+  chapeau: 'Choisissez votre produit, puis le geste à contrôler : saisie, lettrage, rapprochement, clôture, bulletin ou DSN. Neuf guides donnent des repères de cadrage et distinguent la préparation de la validation du cabinet.',
   ariane: 'Guides par environnement',
   secondaire: { libelle: 'Comprendre le service Memlia', href: '/automatisation-cabinet-comptable' },
 };
 const noeuds = [
   {
     '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: page.h1, headline: page.h1,
-    description: page.description, datePublished: '2026-09-20', dateModified: '2026-09-21', inLanguage: SITE.langue,
+    description: page.description, datePublished: '2026-09-20', dateModified: '2026-10-04', inLanguage: SITE.langue,
     author: { '@id': `${SITE.url}${identiteAuteur(auteur)}` }, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': `${url}#items` },
   },
   {
@@ -46,27 +46,27 @@ const noeuds = [
 >
   <section class="pv" aria-labelledby="publication">
     <div class="pv-tete rv">
-      <h2 id="publication">Mesurer, publier peu, puis entretenir</h2>
-      <p class="texte-2 lecture">Nous ouvrons un guide quand la demande est mesurée et que l’environnement apporte un repère propre. Une page sans signal est consolidée vers son moyeu de service au lieu de rester comme contenu maigre.</p>
+      <h2 id="publication">Partir du produit, choisir le geste</h2>
+      <p class="texte-2 lecture">Un guide vous aide à préparer les contrôles d’une tâche dans votre environnement. Avant toute automatisation, nous vérifions avec vous les formats, les accès et les cas couverts.</p>
     </div>
     <div class="pv-bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
       <ol class="pv-bande-liste rv-groupe">
-        <li class="pv-cellule rv"><h3>Demande mesurée</h3><p>La première vague retient neuf couples tâche–logiciel dont la formulation revient réellement.</p></li>
-        <li class="pv-cellule rv"><h3>Repère propre</h3><p>Chaque guide porte un chemin, des champs, un piège et une source propres à l’environnement.</p></li>
+        <li class="pv-cellule rv"><h3>Votre produit</h3><p>Repérez le produit utilisé par votre équipe : la comptabilité et la paie ont des contrôles distincts.</p></li>
+        <li class="pv-cellule rv"><h3>Votre tâche</h3><p>Choisissez le geste qui revient et les informations nécessaires pour préparer son contrôle.</p></li>
         <li class="pv-cellule rv"><h3>Frontière de décision</h3><p>Chaque guide sépare la préparation, la validation de l’équipe et le cas d’arrêt.</p></li>
-        <li class="pv-cellule rv"><h3>Entretien prévu</h3><p>Le signal d’indexation et la source sont relus ; une page sans utilité n’est pas conservée par inertie.</p></li>
+        <li class="pv-cellule rv"><h3>Votre environnement</h3><p>La version, les formats et les accès du cabinet sont vérifiés au cadrage, puis la règle est éprouvée avant la recette.</p></li>
       </ol>
     </div>
   </section>
 
-  {vendors.map((vendor) => {
-    const integrations = INTEGRATIONS_INDEXABLES.filter((integration) => integration.vendor === vendor);
+  {products.map((product, index) => {
+    const integrations = INTEGRATIONS_INDEXABLES.filter((integration) => integration.product === product);
     return (
-      <section class="pv" aria-labelledby={`vendor-${vendor.toLowerCase()}`}>
+      <section class="pv" aria-labelledby={`product-${index}`}>
         <div class="pv-tete rv">
-          <p class="texte-2">{vendor}</p>
-          <h2 id={`vendor-${vendor.toLowerCase()}`}>{integrations[0].product}</h2>
+          <p class="texte-2">{integrations[0].vendor}</p>
+          <h2 id={`product-${index}`}>{product}</h2>
           <p class="texte-2 lecture">{integrations.length} {integrations.length > 1 ? 'guides documentés' : 'guide documenté'}, chacun relié à la tâche correspondante et à sa limite de validation.</p>
         </div>
         <IntegrationCards integrations={integrations} />

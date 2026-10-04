@@ -17,7 +17,7 @@ export const BLOG_RUBRIQUES = Object.freeze([
     description: 'Paie et DSN en cabinet comptable : contrôler les bulletins, lire les retours DSN et suivre le pôle social avec la règle écrite du cabinet.',
     chapeau: 'Le cycle social ne s’arrête ni au calcul du bulletin ni au dépôt de la DSN. Cette rubrique relie les contrôles avant transmission, la lecture des retours métier et le suivi des dossiers, avec une frontière claire entre ce qui se prépare, ce qui attend une validation et ce qui reste au pôle social.',
     roleTitre: 'Une chaîne de contrôle, trois décisions distinctes',
-    role: 'Le hub donne le chemin d’ensemble sans réduire ces tâches à une checklist unique. Le contrôle du bulletin prépare un fichier vérifié, les comptes rendus métier expliquent ce qui revient après le dépôt, et le suivi de production situe chaque dossier dans le cycle. Chaque article garde sa requête et son geste propres ; la rubrique montre seulement comment les enchaîner sans confondre contrôle technique, interprétation métier et pilotage.',
+    role: 'Choisissez le geste selon le moment du cycle : avant le dépôt, contrôler les bulletins ; après le dépôt, lire les comptes rendus métier ; pour le pilotage, suivre la production sociale. Chaque article distingue la préparation, la validation du pôle social et les cas qui demandent une décision.',
     articleIds: Object.freeze([
       'controler-les-bulletins-de-paie-avant-la-dsn',
       'comprendre-les-comptes-rendus-metier-dsn',
@@ -35,7 +35,7 @@ export const BLOG_RUBRIQUES = Object.freeze([
     description: 'Gestion des pièces comptables : organiser les pièces manquantes puis vérifier les écritures proposées sous le contrôle du cabinet.',
     chapeau: 'Une pièce absente bloque la production ; une pièce lue trop vite déplace le risque dans la saisie. Cette rubrique suit la même matière de la collecte à la proposition d’écriture, en séparant la relance, la complétude, l’extraction et les contrôles que le cabinet garde.',
     roleTitre: 'De la pièce attendue à l’écriture proposée',
-    role: 'Le premier article écrit la règle qui détermine quelles pièces manquent, quand préparer une relance et quand cesser. Le second commence lorsque la pièce est là : il distingue les champs extraits, les contrôles déterministes et les anomalies qui attendent une personne. Le hub relie ces deux moments sans viser la requête propre à la saisie automatisée.',
+    role: 'Choisissez le geste selon l’état de la pièce : absente, préparer la relance, sa cadence et son arrêt ; reçue, passer les six contrôles après la saisie proposée. L’envoi de la relance et la validation des écritures restent au cabinet.',
     articleIds: Object.freeze([
       'automatiser-la-relance-des-pieces-clients',
       'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
@@ -105,8 +105,7 @@ export function construireRubriques(entrees, { minimum = 2 } = {}) {
   return BLOG_RUBRIQUES.map((rubrique) => {
     const articles = rubrique.articleIds
       .map((articleId) => visibles.get(articleId))
-      .filter(Boolean)
-      .sort((a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime());
+      .filter(Boolean);
     if (articles.length < minimum) {
       throw new Error(`[blog-rubriques] ${rubrique.slug} : ${articles.length} article visible, minimum ${minimum}`);
     }

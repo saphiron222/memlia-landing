@@ -1,0 +1,114 @@
+[
+  {
+    "id": "ia-generative",
+    "changes": {
+      "definition": {
+        "before": "L’intelligence artificielle dite générative désigne les systèmes capables de créer des contenus — texte, code informatique, images, son ou vidéo — à partir d’une consigne, plutôt que de retrouver un contenu déjà existant. Le résultat produit est nouveau à chaque exécution, même pour une consigne proche d’une exécution précédente.",
+        "after": "L’intelligence artificielle dite générative désigne les systèmes capables de produire des contenus — texte, code informatique, images, son ou vidéo — à partir d’une consigne. Ils peuvent aussi résumer, corriger ou traduire des contenus existants. Le résultat est généré, mais pas nécessairement inédit ni différent à chaque exécution."
+      },
+      "commonConfusion": {
+        "before": "L’IA générative est parfois confondue avec un moteur de recherche : le moteur de recherche retrouve un contenu qui existe déjà quelque part, l’IA générative produit un contenu qui n’existait pas avant la demande.",
+        "after": "Un moteur de recherche retrouve des contenus ; un système génératif produit une sortie, éventuellement à partir de contenus retrouvés. Cette sortie peut reprendre une formulation existante et doit être vérifiée."
+      }
+    }
+  },
+  {
+    "id": "reconnaissance-optique-de-caracteres",
+    "changes": {
+      "context": {
+        "before": "Un cabinet la rencontre en amont de toute saisie automatisée de factures ou de notes de frais : un document scanné doit d’abord passer par l’OCR avant que ses champs puissent être identifiés. La qualité du scan conditionne directement la qualité du texte obtenu.",
+        "after": "Un cabinet l’utilise pour lire une facture scannée ou une photo de justificatif. La qualité de l’image conditionne celle du texte obtenu. Un document contenant déjà du texte exploitable ou des données structurées ne nécessite pas forcément cette étape."
+      }
+    }
+  },
+  {
+    "id": "extraction-de-donnees",
+    "changes": {
+      "definition": {
+        "before": "L’extraction de données est l’étape qui repère, dans le texte obtenu après lecture d’un document, les champs qui ont un sens métier — fournisseur, montant, taux de TVA, date d’échéance — pour les rendre exploitables par un traitement. Elle intervient après la lecture du document, jamais avant.",
+        "after": "L’extraction de données repère les champs utiles — fournisseur, montant, taux de TVA, date d’échéance — dans un document ou un flux pour les rendre exploitables. Elle peut partir d’une image, d’un texte natif ou de données structurées, sans passage obligatoire par un OCR séparé."
+      },
+      "context": {
+        "before": "Un cabinet s’en sert juste après la reconnaissance de caractères, pour transformer un texte brut en informations classées prêtes à être contrôlées. Une extraction erronée sur un seul champ suffit à fausser tout le traitement qui suit.",
+        "after": "Un cabinet transforme ainsi les informations reçues en champs prêts à contrôler. Selon le format, la lecture et l’extraction sont séparées ou intégrées dans le même traitement. Une erreur sur un champ peut fausser la suite."
+      },
+      "commonConfusion": {
+        "before": "L’extraction de données est parfois confondue avec l’OCR elle-même : l’OCR restitue du texte sans savoir ce qu’il représente, l’extraction attribue ensuite chaque portion de texte à un champ précis.",
+        "after": "L’OCR reconnaît des caractères dans une image ; l’extraction identifie les champs utiles. Les deux peuvent être combinés, mais l’extraction peut aussi utiliser du texte natif ou un flux structuré."
+      }
+    }
+  },
+  {
+    "id": "sous-traitant-rgpd",
+    "changes": {
+      "context": {
+        "before": "Un cabinet, responsable du traitement de ses dossiers clients, qualifie chaque éditeur logiciel ou hébergeur qui traite ces données pour son compte : un outil d’IA hébergé par un tiers relève souvent de ce statut. Cette qualification impose d’inscrire dans le contrat les obligations du sous-traitant concernant les données personnelles.",
+        "after": "Les rôles se qualifient pour chaque traitement d’après les finalités, les moyens et les instructions : le cabinet n’est pas présumé responsable de traitement pour tous ses fichiers. Un prestataire qui traite des données pour le compte du responsable et selon ses instructions peut être sous-traitant ; les obligations correspondantes sont alors inscrites au contrat."
+      },
+      "exampleFictitious": {
+        "before": "Pour un cabinet fictif, un éditeur de messagerie hébergé à l’étranger qui traite les courriels professionnels est qualifié de sous-traitant ; un contrat fictif décrit alors la nature du traitement, sa durée et les garanties apportées.",
+        "after": "Dans un cas fictif, un cabinet détermine les finalités et les moyens de sa messagerie interne. Un hébergeur traite les messages pour son compte et selon ses instructions : ce traitement est encadré par un contrat de sous-traitance."
+      },
+      "commonConfusion": {
+        "before": "Un sous-traitant au sens du RGPD est parfois confondu avec un simple fournisseur ; un fournisseur qui ne touche jamais aux données personnelles n’a pas ce statut, tandis qu’un éditeur d’IA qui héberge des données de dossiers en a un.",
+        "after": "Le titre de fournisseur, d’éditeur ou de cabinet ne suffit pas à fixer un rôle RGPD. Recevoir des données ne fait pas automatiquement d’un organisme un sous-traitant : il faut examiner le traitement et qui en détermine les finalités et les moyens."
+      }
+    }
+  },
+  {
+    "id": "pre-comptabilite",
+    "changes": {
+      "definition": {
+        "before": "La pré-comptabilité regroupe les tâches qui précèdent l’écriture comptable proprement dite : collecter les pièces, les trier par nature et par période, vérifier qu’elles sont lisibles et complètes, puis les préparer pour la saisie. Elle s’arrête avant l’imputation sur un compte, qui relève de la tenue comptable.",
+        "after": "La pré-comptabilité regroupe ici la collecte et le tri des pièces, leur lecture, l’extraction des champs et la préparation de propositions comptables, sans imputation définitive ni écriture validée. Les propositions sont présentées au cabinet pour contrôle."
+      },
+      "commonConfusion": {
+        "before": "La pré-comptabilité est parfois confondue avec la tenue comptable elle-même ; elle s’arrête au tri et à la vérification des pièces, avant toute décision d’imputation sur un compte du plan comptable.",
+        "after": "Une proposition d’imputation ou d’écriture n’est pas une écriture validée. La pré-comptabilité prépare le contrôle ; elle ne remplace pas la tenue comptable ni sa validation."
+      },
+      "automationBoundary": {
+        "before": "Trier des pièces reçues par type et signaler celles qui sont illisibles ou incomplètes est automatisable une fois la nomenclature du cabinet définie. Décider de l’imputation comptable d’une pièce reste un acte professionnel réservé au collaborateur ou à l’expert-comptable.",
+        "after": "Collecter, extraire, préparer une proposition selon la règle du cabinet et signaler les pièces incertaines est automatisable. Décider de l’imputation définitive et valider l’écriture restent au cabinet."
+      }
+    }
+  },
+  {
+    "id": "relance-de-pieces",
+    "changes": {
+      "context": {
+        "before": "Un cabinet l’engage dès qu’une pièce attendue manque pour avancer un dossier, avec un ton et une cadence différents d’une relance d’impayé. Elle cesse automatiquement dès que la complétude du dossier est atteinte.",
+        "after": "Un cabinet prépare la relance dès qu’une pièce attendue manque, selon une cadence convenue. La préparation s’arrête lorsque la pièce attendue est reçue et lisible ; l’envoi reste soumis à validation humaine."
+      },
+      "exampleFictitious": {
+        "before": "Pour un dossier fictif, un premier message rappelle la pièce manquante à sept jours, un second à quatorze jours avec le collaborateur en copie. La relance s’arrête dès réception d’un relevé bancaire lisible pour la période concernée.",
+        "after": "Pour un dossier fictif, un brouillon à sept jours puis un autre à quatorze jours sont proposés selon la cadence d’essai. Chaque envoi attend une validation ; la réception d’un relevé lisible arrête la préparation suivante."
+      },
+      "automationBoundary": {
+        "before": "Envoyer un rappel selon une cadence fixée et l’arrêter à réception de la pièce est automatisable. Décider du contenu d’une relance sensible ou d’y déroger pour un client particulier reste une décision humaine.",
+        "after": "Identifier les pièces manquantes, préparer le rappel selon la cadence et arrêter sa préparation à réception est automatisable. L’envoi attend une validation humaine ; le cabinet décide du contenu et des dérogations."
+      }
+    }
+  },
+  {
+    "id": "reliquat-d-exceptions",
+    "changes": {
+      "context": {
+        "before": "Un cabinet le regarde avant d’étendre une automatisation : un reliquat stable indique une règle qui tient, un reliquat qui enfle signale une règle devenue fausse ou une source qui a changé de forme.",
+        "after": "Un cabinet le suit sur des données et un périmètre comparables. Un reliquat stable n’est pas une preuve de fiabilité : les résultats préparés, les motifs d’arrêt et les cas limites restent à contrôler. Une hausse appelle l’examen des entrées et de la règle, sans conclure à sa cause par le seul compteur."
+      }
+    }
+  },
+  {
+    "id": "modele-local",
+    "changes": {
+      "definition": {
+        "before": "Un modèle local s’exécute sur une machine contrôlée par le cabinet : les documents soumis ne quittent pas son parc et aucun prestataire ne les reçoit. C’est le mode de déploiement, et non le pays d’hébergement, qui détermine qui peut lire les données.",
+        "after": "Un modèle local s’exécute sur une machine contrôlée par le cabinet. Ce lieu d’exécution ne garantit pas l’absence de connexions : l’application peut utiliser des connecteurs, une télémétrie ou des services distants. Les flux et les accès doivent être vérifiés pour le déploiement retenu."
+      },
+      "automationBoundary": {
+        "before": "Exécuter le traitement sans connexion sortante et le prouver est automatisable. Décider quelles pièces peuvent être soumises, et à quel mode de déploiement, reste une décision du cabinet.",
+        "after": "Les contrôles réseau peuvent vérifier les flux prévus dans un environnement donné. Autoriser les accès, choisir les pièces soumises et accepter le mode de déploiement restent des décisions du cabinet."
+      }
+    }
+  }
+]

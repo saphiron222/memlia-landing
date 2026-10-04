@@ -209,7 +209,11 @@ les étapes dépendent, ou fenêtre métier), distincte pour le pôle et pour le
 ni de requête mesurée, ni de revue, ni du plafond. **État du candidat au 28/09** :
 `build-cluster-plan.py` vérifie l'alternance pôle/format sur les ordinaires non figés,
 préserve les dates publiées et les réservations futures `datePlanifiee`, et n'accepte qu'une exception datée et motivée
-pour le champ effectivement en conflit (`exceptionAlternance.pole` ou `.format`). Le stock
+pour le champ effectivement en conflit (`exceptionAlternance.pole` ou `.format`). Une exception
+utilisée à la réservation est conservée après publication comme trace de cette rupture :
+sa date, sa raison et le conflit avec l'ordinaire précédent restent vérifiés. Le statut
+publié ne rend pas cette exception superflue, y compris dans une copie de build sans Git.
+Cette trace n'autorise ni publication ni modification d'une archive. Le stock
 peut différer un angle prioritaire sans changer sa mesure. Le contrôle `--check` et ses
 tests positifs et négatifs s'appliquent au candidat ; seule son intégration autorisée
 permettra de le dire effectif sur `origin/main`. Au 28/09, les créneaux du 22 et du 24/09

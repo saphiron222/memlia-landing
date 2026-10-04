@@ -92,13 +92,13 @@ export const SERVICE_EEAT = {
 
 export const COMMERCIAL_EEAT = {
   '/automatisation-cabinet-comptable': {
-    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-09-20', sources: [sources.principesRgpd], experience: cicatriceCadrage,
+    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-04', sources: [sources.principesRgpd], experience: cicatriceCadrage,
   },
   '/methode': {
-    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-09-20', sources: [], experience: cicatriceCadrage,
+    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-04', sources: [], experience: cicatriceCadrage,
   },
   '/garanties': {
-    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-09-20', sources: [sources.controleSalaries],
+    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-04', sources: [sources.controleSalaries],
   },
   '/a-propos': {
     auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-09-21', sources: [],
