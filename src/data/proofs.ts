@@ -3,13 +3,18 @@ export const PROOFS = {
   'v2/01-outil-prompt-ia': { title: 'Du compte rendu aux actions à relire', alt: 'Consigne fictive pour une réunion : public équipe projet, format tableau action, responsable, délai, et arrêt si une information manque.', detail: 'La consigne locale demande des actions traçables au compte rendu fictif. Le responsable absent reste une question ; la personne valide avant usage. Aucun modèle n’a produit de réponse.' },
   'v2/29-outil-pseudonymisation': { title: 'Les noms changent, le risque reste visible', alt: 'Avant et après fictifs : Alice devient C1_000001, le libellé est supprimé, le montant rare 9876 reste conservé et le risque de réidentification est signalé.', detail: 'La copie supprime le libellé et remplace les noms par des alias cohérents. Les dates et montants conservés restent des quasi-identifiants ; la décision de partage appartient au cabinet.' },
 
+
+  'v2/30-outil-maturite': { title: 'Clarifier avant d’élargir les usages', alt: 'Synthèse fictive : données à démarrer, validation incomplète, règle en essai ; définir les données autorisées puis clarifier la relecture et écrire une règle.', detail: 'La scène reprend un exemple fictif calculable : trois réponses données non commencées, trois réponses validation inconnues et trois réponses règles en essai. Les actions suivent cet ordre et citent les réponses.' },
+
   'v2/29-outil-prompt': { title: 'Une consigne préparée, la décision au cabinet', alt: 'Consigne fictive de demande de pièces : entrées permises, brouillon à relire, validation humaine et arrêt sur une information manquante.', detail: 'Le générateur assemble des blocs écrits, sans appel de modèle. Le cas complet prépare un brouillon ; une information absente ou contradictoire doit arrêter le travail dans le futur outil autorisé.' },
+
 
 
   'v2/30-outil-roi': { title: 'Capacité et trésorerie ne se confondent pas', alt: 'Deux scénarios fictifs : 6,67 heures et 1,60 heure de capacité mensuelle ; maintenance 50 euros par mois actif ; net cash 800 euros et moins 500 euros sur douze mois.', detail: 'Le premier scénario reprend l’oracle du calculateur. Le second réduit automatisation et adoption, ajoute deux mois de délai et diminue les dépenses évitables. Aucun résultat n’est une promesse de gain.' },
 
 
   'v2/01-outil-charte-ia': { title: 'Des usages aux clauses et aux arbitrages', alt: 'Scène fictive : relance de pièces et synthèse sur données fictives vers trois clauses à relire, responsable des usages à compléter et prochaine relecture au 1er décembre 2026.', detail: 'L’exemple local retient deux usages, un contrôle de chaque résultat et une relecture mensuelle. Le rôle responsable manquant reste visible ; aucune adoption ni conformité n’est présumée.' },
+
 
 
   'v2/29-outil-fec': { title: 'La date impossible est localisée', alt: 'FEC fictif : date impossible 20260230 ligne 4, colonne EcritureDate ; règle date, retour au logiciel source, original inchangé.', detail: 'Trois lignes fictives sont examinées. La troisième ligne de données, ligne 4 du fichier, présente une date impossible. Le rapport localise et explique sans corriger le FEC.' },

@@ -265,6 +265,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/generateur-prompt-expert-comptable',
                      f'{SITE}/outils-comptables-gratuits/generateur-prompt-ia-gratuit',
                      f'{SITE}/outils-comptables-gratuits/verificateur-fec-local',
+                     f'{SITE}/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec',
                      f'{SITE}/outils-comptables-gratuits/calculateur-roi-automatisation',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
@@ -404,6 +405,7 @@ class BuildProof(unittest.TestCase):
                 '01-outil-charte-ia.webp',
                 '01-outil-prompt-ia.webp',
                 '29-outil-fec.webp',
+                '30-outil-maturite.webp',
                 '29-outil-pseudonymisation.webp',
                 '30-outil-roi.webp',
             ]),

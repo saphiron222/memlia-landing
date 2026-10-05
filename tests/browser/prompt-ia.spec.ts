@@ -93,5 +93,9 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) test(`reflow, clavier et 
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
   await page.getByLabel('Prompt éditable').focus(); await page.keyboard.press('Tab'); await expect(page.getByRole('button', { name: 'Copier le prompt', exact: true })).toBeFocused();
   const targets = await page.locator('[data-generic-prompt] button').evaluateAll((buttons) => buttons.map((button) => button.getBoundingClientRect().height)); for (const height of targets) expect(height).toBeGreaterThanOrEqual(44);
-  if ([375,1440].includes(width)) { await page.evaluate(() => document.fonts.ready); await page.screenshot({ path: `.qa/prompt-ia-${width}.png`, fullPage: true }); }
+  if ([375,1440].includes(width)) {
+    await page.evaluate(() => { window.scrollTo(0, 0); document.querySelector<HTMLTextAreaElement>('[data-editor]')!.scrollTop = 0; });
+    await page.evaluate(() => document.fonts.ready);
+    await page.screenshot({ path: `.qa/prompt-ia-${width}.png`, fullPage: true });
+  }
 });

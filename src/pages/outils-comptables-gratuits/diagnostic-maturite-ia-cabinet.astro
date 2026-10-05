@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import DiagnosticMaturite from '@/components/outils/DiagnosticMaturite.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('diagnostic-maturite-ia-cabinet');
+---
+<Outil outil={outil}><DiagnosticMaturite /></Outil>
