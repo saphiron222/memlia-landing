@@ -1,0 +1,518 @@
+{
+  "tool": "07",
+  "scope": "Implémentation locale, pas production",
+  "rows": [
+    {
+      "skill": "blog",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Limiter le routage aux compétences de cadrage et conserver les tâches de rendu après construction.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-analyze",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "evidence": "Motif du cadrage inchangé : Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-audit",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "evidence": "Motif du cadrage inchangé : Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-brand",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Reprendre France, vouvoiement, nous, gestes concrets ; aucun profil de voix inventé ni BRAND.md concurrent.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-brief",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Transmettre intention, gain concret, plan, entrées/sorties et limites propres à chaque outil ; aucun volume ou score concurrent inventé.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-calendar",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "evidence": "Motif du cadrage inchangé : Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-cannibalization",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Distinguer fabriquer un prompt, choisir un exemple, vérifier sa structure ; conserver dix routes et mailler sans canonical croisé.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-chart",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Pas de chart décoratif ; si 08/09 retiennent une visualisation, validation graphique différée selon les cellules concernées.",
+      "evidence": "Motif du cadrage inchangé : Aucune statistique externe à visualiser ; une sortie calculée reste spécifique au questionnaire/calculateur. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-cluster",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Réutiliser le hub et les ressources exactes ; ne pas générer des dizaines de variantes ni nouveaux articles.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-decay",
+      "cadrage": "D",
+      "status": "ND observation externe",
+      "contract": "Prévoir baseline après mise en ligne et accès aux instruments ; déclin exige périodes comparables, pas un âge de page.",
+      "evidence": "Pas de métrique externe ou compte fournisseur testé ; observation après mise en ligne à exécuter. Aucun appel payant.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-discourse",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "evidence": "Motif du cadrage inchangé : Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-factcheck",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Marquer historiques les relevés du 20/09 et inconnus les volumes ; retirer les anciennes exclusions désormais annulées.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-flow",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Séparer evidence/assumptions, tâche utilisateur et passage vers /contact ; ne pas envoyer le contenu utilisateur dans des événements.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-geo",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Résumé statique extractible, exemple fictif, méthode et limites ; aucun score de fiabilité/citation ni identité professionnelle inventée.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-google",
+      "cadrage": "D",
+      "status": "ND observation externe",
+      "contract": "Prévoir baseline après mise en ligne et accès aux instruments ; déclin exige périodes comparables, pas un âge de page.",
+      "evidence": "Pas de métrique externe ou compte fournisseur testé ; observation après mise en ligne à exécuter. Aucun appel payant.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-image",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas utiliser de budget image ni fabriquer une capture comme preuve.",
+      "evidence": "Motif du cadrage inchangé : Aucune génération de visuel utile à ces dix fonctions ; 06 produit du texte professionnel, non des images. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-locale-audit",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de traduction, hreflang ni contrôle de parité multilingue.",
+      "evidence": "Motif du cadrage inchangé : France et français uniquement, aucune variante linguistique/régionale demandée. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-localize",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de traduction, hreflang ni contrôle de parité multilingue.",
+      "evidence": "Motif du cadrage inchangé : France et français uniquement, aucune variante linguistique/régionale demandée. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-multilingual",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de traduction, hreflang ni contrôle de parité multilingue.",
+      "evidence": "Motif du cadrage inchangé : France et français uniquement, aucune variante linguistique/régionale demandée. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-outline",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Transmettre intention, gain concret, plan, entrées/sorties et limites propres à chaque outil ; aucun volume ou score concurrent inventé.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-persona",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Reprendre France, vouvoiement, nous, gestes concrets ; aucun profil de voix inventé ni BRAND.md concurrent.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-repurpose",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "evidence": "Motif du cadrage inchangé : Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-rewrite",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "evidence": "Motif du cadrage inchangé : Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-schema",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "evidence": "Motif du cadrage inchangé : Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-seo-check",
+      "cadrage": "D",
+      "status": "exécuté local ciblé",
+      "contract": "Après implementation : contrôler H1/meta/canonical/JSON-LD/DOM, fonction interactive réelle et liens ; aucune note maintenant.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-strategy",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Réutiliser le hub et les ressources exactes ; ne pas générer des dizaines de variantes ni nouveaux articles.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-style",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Reprendre France, vouvoiement, nous, gestes concrets ; aucun profil de voix inventé ni BRAND.md concurrent.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-taxonomy",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Étendre les catégories selon les gestes effectifs, sans pages d’étiquettes ou nouvelle taxonomie de blog.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-translate",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de traduction, hreflang ni contrôle de parité multilingue.",
+      "evidence": "Motif du cadrage inchangé : France et français uniquement, aucune variante linguistique/régionale demandée. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-write",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "evidence": "Motif du cadrage inchangé : Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Limiter le routage aux compétences de cadrage et conserver les tâches de rendu après construction.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-audit",
+      "cadrage": "D",
+      "status": "exécuté local ciblé",
+      "contract": "Après implementation : contrôler H1/meta/canonical/JSON-LD/DOM, fonction interactive réelle et liens ; aucune note maintenant.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-backlinks",
+      "cadrage": "D",
+      "status": "ND observation externe",
+      "contract": "Prévoir baseline après mise en ligne et accès aux instruments ; déclin exige périodes comparables, pas un âge de page.",
+      "evidence": "Pas de métrique externe ou compte fournisseur testé ; observation après mise en ligne à exécuter. Aucun appel payant.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-cluster",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Réutiliser le hub et les ressources exactes ; ne pas générer des dizaines de variantes ni nouveaux articles.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent.",
+      "evidence": "Motif du cadrage inchangé : Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-content",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Résumé statique extractible, exemple fictif, méthode et limites ; aucun score de fiabilité/citation ni identité professionnelle inventée.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-content-brief",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Transmettre intention, gain concret, plan, entrées/sorties et limites propres à chaque outil ; aucun volume ou score concurrent inventé. Registre SEO : type outil absent du validateur ; ajout du registre ne crée pas une route Astro.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-dataforseo",
+      "cadrage": "D",
+      "status": "ND observation externe",
+      "contract": "Remesurer si utile à implementation via porte de coût ; corpus historique conservé sans le transformer en SERP actuelle.",
+      "evidence": "Pas de métrique externe ou compte fournisseur testé ; observation après mise en ligne à exécuter. Aucun appel payant.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-drift",
+      "cadrage": "D",
+      "status": "ND observation externe",
+      "contract": "Prévoir baseline après mise en ligne et accès aux instruments ; déclin exige périodes comparables, pas un âge de page.",
+      "evidence": "Pas de métrique externe ou compte fournisseur testé ; observation après mise en ligne à exécuter. Aucun appel payant.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-ecommerce",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent.",
+      "evidence": "Motif du cadrage inchangé : Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-firecrawl",
+      "cadrage": "D",
+      "status": "instrument local alternatif",
+      "contract": "Remesurer si utile à implementation via porte de coût ; corpus historique conservé sans le transformer en SERP actuelle.",
+      "evidence": "Audit DOM local scripts/audit-verificateur-prompt.mjs ; Lighthouse mobile/desktop, pas de résultat fournisseur revendiqué.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-flow",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Séparer evidence/assumptions, tâche utilisateur et passage vers /contact ; ne pas envoyer le contenu utilisateur dans des événements.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-geo",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Résumé statique extractible, exemple fictif, méthode et limites ; aucun score de fiabilité/citation ni identité professionnelle inventée.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-google",
+      "cadrage": "D",
+      "status": "ND observation externe",
+      "contract": "Prévoir baseline après mise en ligne et accès aux instruments ; déclin exige périodes comparables, pas un âge de page.",
+      "evidence": "Pas de métrique externe ou compte fournisseur testé ; observation après mise en ligne à exécuter. Aucun appel payant.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-hreflang",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas créer de traduction, hreflang ni contrôle de parité multilingue.",
+      "evidence": "Motif du cadrage inchangé : France et français uniquement, aucune variante linguistique/régionale demandée. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-image-gen",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas utiliser de budget image ni fabriquer une capture comme preuve.",
+      "evidence": "Motif du cadrage inchangé : Aucune génération de visuel utile à ces dix fonctions ; 06 produit du texte professionnel, non des images. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-images",
+      "cadrage": "D",
+      "status": "exécuté local ciblé",
+      "contract": "Après implementation : dimensions, alt utile, formats, CLS, pas de lazy sur LCP ; aucune image illustrative nécessaire à un outil texte.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-local",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent.",
+      "evidence": "Motif du cadrage inchangé : Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-maps",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent.",
+      "evidence": "Motif du cadrage inchangé : Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-page",
+      "cadrage": "D",
+      "status": "exécuté local ciblé",
+      "contract": "Après implementation : contrôler H1/meta/canonical/JSON-LD/DOM, fonction interactive réelle et liens ; aucune note maintenant.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-plan",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Réutiliser le hub et les ressources exactes ; ne pas générer des dizaines de variantes ni nouveaux articles. Registre SEO : type outil absent du validateur ; ajout du registre ne crée pas une route Astro.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-programmatic",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Partager le moteur, pas le contenu ; filtres bibliothèque sans pages indexées par combinaison ; une intention propre par feuille.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-schema",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "WebPage/BreadcrumbList et types véridiques, canonical propre, parité statut/lastmod/sitemap ; tests finaux différés. Réutiliser WebPage/WebApplication/BreadcrumbList du layout ; aucun rating ; bibliothèque à modéliser selon contenu réel.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-sitemap",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "WebPage/BreadcrumbList et types véridiques, canonical propre, parité statut/lastmod/sitemap ; tests finaux différés.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-sxo",
+      "cadrage": "D",
+      "status": "exécuté local ciblé",
+      "contract": "Après implementation : contrôler H1/meta/canonical/JSON-LD/DOM, fonction interactive réelle et liens ; aucune note maintenant.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-technical",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "WebPage/BreadcrumbList et types véridiques, canonical propre, parité statut/lastmod/sitemap ; tests finaux différés. Registre SEO : type outil absent du validateur ; ajout du registre ne crée pas une route Astro.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "memlia-blog-strategie",
+      "cadrage": "E",
+      "status": "exécuté local ciblé",
+      "contract": "Pas de création de calendrier/article ni double revue marketing ; une QA qualifiée code ou contenu sensible sur candidat exact. Registre SEO : type outil absent du validateur ; ajout du registre ne crée pas une route Astro.",
+      "evidence": "Application ciblée du contrat au produit : rapport.md, audit DOM, tests moteur/navigateur et build. Pas une exécution intégrale de commande fournisseur.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-audio",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Ne pas produire de TTS ni appeler un fournisseur audio.",
+      "evidence": "Motif du cadrage inchangé : Extension installée hors catalogue exposé ; aucune narration, audio ou podcast demandé pour les pages outils. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "blog-notebooklm",
+      "cadrage": "N",
+      "status": "N/A motivé",
+      "contract": "Lire les sources locales et primaires directement ; aucune authentification ou import NotebookLM.",
+      "evidence": "Motif du cadrage inchangé : Extension installée hors catalogue exposé ; aucun notebook fourni ni besoin d’envoyer le corpus à un service externe. Outil 07 : Détecter des blocs absents et contraintes incohérentes ; jamais mesurer fiabilité de réponse.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-ahrefs",
+      "cadrage": "D",
+      "status": "ND observation externe",
+      "contract": "Choisir seulement l’instrument utile au candidat réel, vérifier disponibilité/credentials/coût ; pas de résultat vendor fabriqué ni soumission avant publication.",
+      "evidence": "Pas de métrique externe ou compte fournisseur testé ; observation après mise en ligne à exécuter. Aucun appel payant.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-bing",
+      "cadrage": "D",
+      "status": "ND observation externe",
+      "contract": "Choisir seulement l’instrument utile au candidat réel, vérifier disponibilité/credentials/coût ; pas de résultat vendor fabriqué ni soumission avant publication.",
+      "evidence": "Pas de métrique externe ou compte fournisseur testé ; observation après mise en ligne à exécuter. Aucun appel payant.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-profound",
+      "cadrage": "D",
+      "status": "ND observation externe",
+      "contract": "Choisir seulement l’instrument utile au candidat réel, vérifier disponibilité/credentials/coût ; pas de résultat vendor fabriqué ni soumission avant publication.",
+      "evidence": "Pas de métrique externe ou compte fournisseur testé ; observation après mise en ligne à exécuter. Aucun appel payant.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-seranking",
+      "cadrage": "D",
+      "status": "ND observation externe",
+      "contract": "Choisir seulement l’instrument utile au candidat réel, vérifier disponibilité/credentials/coût ; pas de résultat vendor fabriqué ni soumission avant publication.",
+      "evidence": "Pas de métrique externe ou compte fournisseur testé ; observation après mise en ligne à exécuter. Aucun appel payant.",
+      "publication": "à rejouer après QA et intégration"
+    },
+    {
+      "skill": "seo-unlighthouse",
+      "cadrage": "D",
+      "status": "instrument local alternatif",
+      "contract": "Choisir seulement l’instrument utile au candidat réel, vérifier disponibilité/credentials/coût ; pas de résultat vendor fabriqué ni soumission avant publication.",
+      "evidence": "Audit DOM local scripts/audit-verificateur-prompt.mjs ; Lighthouse mobile/desktop, pas de résultat fournisseur revendiqué.",
+      "publication": "à rejouer après QA et intégration"
+    }
+  ]
+}
