@@ -32,8 +32,8 @@ Aucune règle fiscale/juridique nouvelle : source de la rubrique = méthode orig
 
 L’ajout du lien au footer change tous les HTML non éditoriaux : lastmod synchronisé et revue glossaire conservée. Le rescellage a d’abord remis la campagne de revue à une date historique, ce qui faisait échouer deux verdicts récents. La date réelle déjà présente sur main a été rétablie, sans nouveau verdict ni nouvelle revue ; `reaffirmer` et audit QA PASS. Le fond et les sources du glossaire ne changent pas. Une réparation du script de rescellage est transmise séparément, pas incluse dans cette fonctionnalité.
 
-## Reste à livrer en aval
+## Publication constatée le 05/10/2026
 
-Une seule revue indépendante QA, comparaison aux voisins historiques, focus/clavier/impression et mesures finales. Puis fusion après CI verte, Cloudflare SUCCESS et parcours réels sur URL publique (sans query string, Cache-Control no-cache), export/copie, six largeurs, canonical/sitemap/hub/footer et trois entrants. Rapporter URL, déploiement et observations ; mettre à jour registre de publication et matrice. À ce stade aucune production ni approbation indépendante n’est affirmée.
+La revue indépendante unique t_873665dd est PASS ; PR73 fusionnée après Repository gates SUCCESS. Cloudflare 7e11e252 build/deploy SUCCESS au commit 818320af ; URL publique et URL de déploiement éprouvées avec 22 parcours chacune et 20 GET sans query string avec Cache-Control no-cache. Export/copie/reprise/refus, six largeurs, impression complète, absence de réseau/stockage pendant les interactions et SEO/maillage PASS. Rapport de livraison : `livraison/rapport-production.md`. Les chiffres locaux ci-dessus restent historiques ; aucune indexation réelle, performance commerciale ni mesure J+7/J+28 n’est déduite de cette publication.
 
 Retour arrière de la fonctionnalité : revert du commit livré, puis build et déploiement vérifiés ; ne pas retirer isolément une route en laissant ses liens entrants.
