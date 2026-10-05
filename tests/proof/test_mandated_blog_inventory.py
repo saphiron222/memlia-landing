@@ -20,6 +20,47 @@ BRIEFS = {
 
 
 class MandatedInventory(unittest.TestCase):
+    def setUp(self):
+        # Oracle du stock du 03/10, avec dates synthétiques futures : pas le mandat
+        # de livraison du 05/10, exercé séparément par test_ia_catchup.py.
+        # Le lot entier est synthétique ici, même après sa publication réelle ;
+        # ses dates et quotas W40 sont exercés par test_ia_catchup.py. La lecture
+        # réelle précède le patch : la garde origin/main reste exécutée.
+        stock = PLAN.construire()
+        archives = stock[2]
+        entrees = {e['slug']: e for e in [stock[3]] + stock[4]}
+        for slug, archive in PLAN.etat_publie().items():
+            self.assertEqual(entrees[slug]['date'], archive['date'])
+            self.assertEqual(entrees[slug]['statut'], 'published')
+        for slug in BRIEFS:
+            archives.pop(slug, None)
+        publication = patch.object(PLAN, 'etat_publie', return_value=archives)
+        publication.start()
+        self.addCleanup(publication.stop)
+        precedent = max((e for e in [stock[3]] + stock[4]
+                         if not e.get('serie') and e['slug'] not in BRIEFS), key=lambda e: e['date'])
+        jour = date.fromisoformat(precedent['date']) + timedelta(days=7)
+        for e in stock[4]:
+            if e['slug'] in BRIEFS:
+                self.reserver(e, precedent, jour)
+                precedent = e
+                jour += timedelta(days=7)
+        source = patch.object(PLAN, 'construire', side_effect=lambda: deepcopy(stock))
+        source.start()
+        self.addCleanup(source.stop)
+        cadrage = patch.object(PLAN, 'lire_rattrapage_ia', return_value=None)
+        cadrage.start()
+        self.addCleanup(cadrage.stop)
+
+    def reserver(self, e, precedent, jour):
+        for champ in ('datePlanifiee', 'dateManquee', 'exceptionAlternance', 'date'):
+            e.pop(champ, None)
+        e.update(date=jour.isoformat(), datePlanifiee=jour.isoformat(), statut='planned')
+        exceptions = {champ: {'date': e['date'], 'raison': 'Intention distincte du brief mandaté'}
+                      for champ in ('pole', 'format') if e[champ] == precedent[champ]}
+        if exceptions:
+            e['exceptionAlternance'] = exceptions
+
     def verifier_stock(self, ajouts):
         donnees = PLAN.construire()
         poles, familles, publies, pilier, satellites, liens, par_famille = donnees
@@ -37,15 +78,10 @@ class MandatedInventory(unittest.TestCase):
                     par_famille[famille].append(existant)
                 continue
             e = deepcopy(modele)
-            for champ in ('datePlanifiee', 'dateManquee', 'exceptionAlternance', 'date'):
-                e.pop(champ, None)
             e.update(slug=slug, famille=famille, pole=familles[famille]['pole'],
                      requete=slug.replace('-', ' '), titre=slug.replace('-', ' ').capitalize(),
-                     priorite=3, date=jour.isoformat(), datePlanifiee=jour.isoformat(), statut='planned')
-            exceptions = {champ: {'date': e['date'], 'raison': 'Intention distincte du brief mandaté'}
-                          for champ in ('pole', 'format') if e[champ] == precedent[champ]}
-            if exceptions:
-                e['exceptionAlternance'] = exceptions
+                     priorite=3)
+            self.reserver(e, precedent, jour)
             satellites.append(e)
             par_famille[famille].append(e)
             for cible in [pilier] + par_famille[famille][:2]:

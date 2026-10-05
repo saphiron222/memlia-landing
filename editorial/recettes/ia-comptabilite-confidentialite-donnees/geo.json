@@ -1,0 +1,340 @@
+{
+  "calibrated_probability": false,
+  "engine_filter": "all",
+  "engines": {
+    "ai_overview": {
+      "factors": {
+        "article_schema": {
+          "max_points": 15,
+          "points": 15,
+          "signal": {
+            "has_blogposting_or_article": true,
+            "has_breadcrumblist": true,
+            "has_organization": true,
+            "has_person": true,
+            "schema_count": 14
+          }
+        },
+        "crawlability": {
+          "max_points": 10,
+          "points": 0,
+          "signal": {
+            "has_robots_restriction": true
+          }
+        },
+        "purpose_and_entity_clarity": {
+          "max_points": 20,
+          "points": 16,
+          "signal": {
+            "entity_definitions": 0,
+            "has_title": true,
+            "hierarchy_clean": true,
+            "purpose_statement": true
+          }
+        },
+        "reader_usefulness": {
+          "max_points": 20,
+          "points": 8,
+          "signal": {
+            "examples": 0,
+            "self_contained_sections": 1,
+            "useful_structures": 78
+          }
+        },
+        "relevant_media": {
+          "max_points": 10,
+          "points": 10,
+          "signal": {
+            "images_without_alt": 0,
+            "media_count": 12
+          }
+        },
+        "source_fidelity": {
+          "max_points": 25,
+          "points": 20,
+          "signal": {
+            "inline_citations": 5,
+            "sourced_statistics": 0,
+            "unsourced_statistics": 0
+          }
+        }
+      },
+      "readiness_score": 69,
+      "score": 69,
+      "weight": 0.4
+    },
+    "chatgpt": {
+      "factors": {
+        "crawlability": {
+          "max_points": 10,
+          "points": 0,
+          "signal": {
+            "has_robots_restriction": true
+          }
+        },
+        "entity_definitions": {
+          "max_points": 15,
+          "points": 0,
+          "signal": {
+            "entity_definitions": 0
+          }
+        },
+        "extractable_lists_tables": {
+          "max_points": 10,
+          "points": 10,
+          "signal": {
+            "list_items": 130,
+            "table_count": 29
+          }
+        },
+        "purpose_clarity": {
+          "max_points": 20,
+          "points": 20,
+          "signal": {
+            "has_title": true,
+            "hierarchy_clean": true,
+            "purpose_statement": true
+          }
+        },
+        "reader_utility": {
+          "max_points": 20,
+          "points": 7,
+          "signal": {
+            "examples": 0,
+            "self_contained_sections": 1
+          }
+        },
+        "source_fidelity": {
+          "max_points": 25,
+          "points": 25,
+          "signal": {
+            "inline_citations": 5,
+            "unsourced_statistics": 0
+          }
+        }
+      },
+      "readiness_score": 62,
+      "score": 62,
+      "weight": 0.25
+    },
+    "perplexity": {
+      "factors": {
+        "citation_diversity": {
+          "max_points": 10,
+          "points": 6,
+          "signal": {
+            "unique_sources": 2
+          }
+        },
+        "reader_usefulness": {
+          "max_points": 10,
+          "points": 8,
+          "signal": {
+            "evidence_backed_sections": 3,
+            "examples": 0
+          }
+        },
+        "source_authority": {
+          "max_points": 25,
+          "points": 0,
+          "signal": {
+            "tier_1_sources": 0,
+            "tier_2_sources": 0
+          }
+        },
+        "source_citations": {
+          "max_points": 30,
+          "points": 30,
+          "signal": {
+            "inline_citations": 5,
+            "parenthetical_citations": 0,
+            "total_citations": 5
+          }
+        },
+        "sourced_statistics": {
+          "max_points": 25,
+          "points": 15,
+          "signal": {
+            "sourced_statistics": 0,
+            "unsourced_statistics": 0
+          }
+        }
+      },
+      "readiness_score": 59,
+      "score": 59,
+      "weight": 0.35
+    }
+  },
+  "factors": {
+    "ai_overview": {
+      "article_schema": {
+        "max_points": 15,
+        "points": 15,
+        "signal": {
+          "has_blogposting_or_article": true,
+          "has_breadcrumblist": true,
+          "has_organization": true,
+          "has_person": true,
+          "schema_count": 14
+        }
+      },
+      "crawlability": {
+        "max_points": 10,
+        "points": 0,
+        "signal": {
+          "has_robots_restriction": true
+        }
+      },
+      "purpose_and_entity_clarity": {
+        "max_points": 20,
+        "points": 16,
+        "signal": {
+          "entity_definitions": 0,
+          "has_title": true,
+          "hierarchy_clean": true,
+          "purpose_statement": true
+        }
+      },
+      "reader_usefulness": {
+        "max_points": 20,
+        "points": 8,
+        "signal": {
+          "examples": 0,
+          "self_contained_sections": 1,
+          "useful_structures": 78
+        }
+      },
+      "relevant_media": {
+        "max_points": 10,
+        "points": 10,
+        "signal": {
+          "images_without_alt": 0,
+          "media_count": 12
+        }
+      },
+      "source_fidelity": {
+        "max_points": 25,
+        "points": 20,
+        "signal": {
+          "inline_citations": 5,
+          "sourced_statistics": 0,
+          "unsourced_statistics": 0
+        }
+      }
+    },
+    "chatgpt": {
+      "crawlability": {
+        "max_points": 10,
+        "points": 0,
+        "signal": {
+          "has_robots_restriction": true
+        }
+      },
+      "entity_definitions": {
+        "max_points": 15,
+        "points": 0,
+        "signal": {
+          "entity_definitions": 0
+        }
+      },
+      "extractable_lists_tables": {
+        "max_points": 10,
+        "points": 10,
+        "signal": {
+          "list_items": 130,
+          "table_count": 29
+        }
+      },
+      "purpose_clarity": {
+        "max_points": 20,
+        "points": 20,
+        "signal": {
+          "has_title": true,
+          "hierarchy_clean": true,
+          "purpose_statement": true
+        }
+      },
+      "reader_utility": {
+        "max_points": 20,
+        "points": 7,
+        "signal": {
+          "examples": 0,
+          "self_contained_sections": 1
+        }
+      },
+      "source_fidelity": {
+        "max_points": 25,
+        "points": 25,
+        "signal": {
+          "inline_citations": 5,
+          "unsourced_statistics": 0
+        }
+      }
+    },
+    "perplexity": {
+      "citation_diversity": {
+        "max_points": 10,
+        "points": 6,
+        "signal": {
+          "unique_sources": 2
+        }
+      },
+      "reader_usefulness": {
+        "max_points": 10,
+        "points": 8,
+        "signal": {
+          "evidence_backed_sections": 3,
+          "examples": 0
+        }
+      },
+      "source_authority": {
+        "max_points": 25,
+        "points": 0,
+        "signal": {
+          "tier_1_sources": 0,
+          "tier_2_sources": 0
+        }
+      },
+      "source_citations": {
+        "max_points": 30,
+        "points": 30,
+        "signal": {
+          "inline_citations": 5,
+          "parenthetical_citations": 0,
+          "total_citations": 5
+        }
+      },
+      "sourced_statistics": {
+        "max_points": 25,
+        "points": 15,
+        "signal": {
+          "sourced_statistics": 0,
+          "unsourced_statistics": 0
+        }
+      }
+    }
+  },
+  "file": ".qa/render-ia-comptabilite-confidentialite-donnees/blog/ia-comptabilite-confidentialite-donnees.html",
+  "methodology": "internal_ai_citation_readiness_heuristic",
+  "model_weights": {
+    "ai_overview": 0.4,
+    "chatgpt": 0.25,
+    "perplexity": 0.35
+  },
+  "overall": 64,
+  "overall_probability": 64,
+  "recommendations": [
+    {
+      "estimated_impact": 14,
+      "recommendation": "Support material claims with sufficient relevant, authoritative sources; use source count and diversity only when the topic requires them."
+    },
+    {
+      "estimated_impact": 11,
+      "recommendation": "Make important sections self-contained and support their reusable claims with primary sources or transparent original evidence."
+    },
+    {
+      "estimated_impact": 5,
+      "recommendation": "Clarify the page purpose, use stable entity names, and make the heading hierarchy match the reader's task."
+    }
+  ]
+}

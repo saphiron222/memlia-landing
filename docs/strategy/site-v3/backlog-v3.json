@@ -6204,35 +6204,33 @@
     }
   },
   {
-    "slug": "automatiser-sans-changer-de-logiciel",
-    "titre": "Automatiser sans changer de logiciel",
-    "requete": "automatiser cabinet comptable sans changer de logiciel",
+    "slug": "automatiser-avec-ia-sans-changer-logiciel",
+    "titre": "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils",
+    "requete": "automatiser IA sans changer logiciel",
     "secondaires": [
-      "complément Excel Office.js cabinet comptable",
-      "connecteur ou export import cabinet comptable"
+      "automatisation IA outils existants cabinet comptable",
+      "prompt ou automatisation cabinet",
+      "automatiser avec l'IA sans changer de logiciel"
     ],
-    "famille": "complements-excel",
+    "famille": "ia-generative-agents",
     "role": "direction-associes",
     "intent": "executer",
     "funnel": "MOFU",
     "format": "how-to-guide",
-    "preuve": "les trois voies (export/import, complément, connecteur) rejouées sur un classeur fictif",
+    "preuve": "Fiche du passage, huit états fictifs rejoués localement sans modèle ni connexion éditeur",
     "sourcesOfficielles": [
-      "aucune"
+      "CNIL"
     ],
     "priorite": 3,
+    "datePlanifiee": "2026-10-05",
+    "exceptionAlternance": {
+      "pole": {"date": "2026-10-05", "raison": "Lot IA mandaté par Kevin, brief final §4 du 03/10 ; passage entre outils distinct du contrôle de réponse du même jour."},
+      "format": {"date": "2026-10-05", "raison": "How-to-guide retenu pour livrer la fiche de passage copiable ; mandat du 03/10."}
+    },
     "demande": {
-      "mesureeLe": "2026-09-19",
-      "requete": 0,
-      "secondaires": 0,
-      "questions": [
-        "Quel est le meilleur logiciel d'automatisation de la saisie comptable ?",
-        "Quel est le meilleur logiciel d'automatisation ?",
-        "Est-il possible de changer de logiciel comptable en cours d'année ?",
-        "Est-ce que l'IA va remplacer les comptables ?"
-      ],
-      "intention": null,
-      "apercuIa": true
+      "mesureeLe": "2026-10-05",
+      "statut": "SERP-Hermes-sans-volume",
+      "preuve": "BRIEFS-QUATRE-ARTICLES.md §4, recherche publique du 05/10 et autocompletion propre à la recette ; ancienne intention 08 réconciliée sur ce seul slug."
     }
   },
   {
@@ -7745,5 +7743,16 @@
     "priorite": 3,
     "datePlanifiee": "2026-10-05",
     "demande": {"mesureeLe": "2026-10-04", "statut": "SERP-Hermes-sans-volume", "preuve": "BRIEFS-QUATRE-ARTICLES.md §2 et contrôles propres à la recette"}
+  },
+  {
+    "slug":"ia-comptabilite-confidentialite-donnees",
+    "titre":"IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+    "requete":"IA cabinet comptable confidentialité données",
+    "secondaires":["ChatGPT données clients cabinet comptable","données autorisées IA générative","IA comptabilité et confidentialité"],
+    "famille":"rgpd-secret-securite","role":"direction-associes","intent":"executer","funnel":"MOFU","format":"how-to-guide",
+    "preuve":"Fiche d’entrée et quatre qualifications fictives routées localement sans modèle ; pas d’anonymisation certifiée",
+    "sourcesOfficielles":["CNIL"],"priorite":3,"datePlanifiee":"2026-10-05",
+    "exceptionAlternance":{"format":{"date":"2026-10-05","raison":"Continuité IA mandatée ; fiche de données distincte de la checklist de sortie malgré le même format."},"pole":{"date":"2026-10-05","raison":"Préparation des entrées après vérification des sorties dans le lot IA demandé, intentions distinctes."}},
+    "demande":{"mesureeLe":"2026-10-05","statut":"SERP-Hermes-sans-volume","preuve":"Brief §3 et recherche publique propre au candidat"}
   }
 ]

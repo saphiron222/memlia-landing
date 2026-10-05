@@ -21,13 +21,42 @@
 
 
 
+      "slug": "bibliotheque-prompts-comptables", "type": "outil",
+      "url": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+      "requete": "bibliothèque prompts comptables",
+      "secondaires": ["modèles prompts comptables", "prompt relance pièces comptable"],
+      "famille": "ia-generative-agents", "format": "web-application", "publieLe": "2026-10-05",
+      "titreOnglet": "Bibliothèque de prompts comptables | Memlia",
+      "source": "Publication constatée le 05/10/2026 — PR86, Cloudflare 9d38b8f9-46d8-488e-b3cc-68c832f72e7d build/deploy SUCCESS ; 40 Chromium domaine et 40 déploiement, six largeurs ; 116 GET no-cache sans query. Rapport docs/qa/bibliotheque-prompts/publication-2026-10-05.md ; carte t_2508910f. Lighthouse public mobile 94/100/92/100, desktop 100/100/92/100 ; réserves documentées. Trafic, indexation moteur, citations, conversions et J+7/J+28 ND."
+    },
+    {
 
+
+
+      "slug": "verificateur-prompt-ia",
+      "type": "outil",
+      "url": "https://memlia.fr/outils-comptables-gratuits/verificateur-prompt-ia",
+      "requete": "vérificateur prompt ia",
+      "secondaires": [
+        "analyser structure prompt ia",
+        "contraintes manquantes prompt"
+      ],
+      "famille": "ia-generative-agents",
+      "format": "web-application",
+      "publieLe": "2026-10-05",
+      "titreOnglet": "Vérificateur de prompt IA | Memlia",
+      "source": "Publication constatée le 05/10/2026 — PR87, Cloudflare canonique 3b009652-f275-4c2c-8e2e-90117b40c9f9 build/deploy SUCCESS ; 17 Chromium domaine + 17 déploiement, six largeurs ; 96 GET sans query avec Cache-Control no-cache. Rapport docs/qa/verificateur-prompt/publication-2026-10-05.md ; carte t_8eb8bbeb. Trafic, indexation moteur, citations, conversions, Lighthouse public et J+7/J+28 ND."
+    },
+    {
 
       "slug": "diagnostic-maturite-ia-cabinet",
       "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
       "requete": "diagnostic maturité ia cabinet comptable",
-      "secondaires": ["pratiques ia cabinet comptable", "auto-évaluation ia cabinet"],
+      "secondaires": [
+        "pratiques ia cabinet comptable",
+        "auto-évaluation ia cabinet"
+      ],
       "famille": "pratiques-ia-cabinet",
       "format": "web-application",
       "publieLe": "2026-10-05",
@@ -50,7 +79,6 @@
       "publieLe": null,
       "titreOnglet": "Générateur de prompt pour expert-comptable | Memlia",
       "source": "Brief 01 vague 3 ; candidat PR51 non publié. Trafic, indexation, usages et conversion ND avant publication et collecte."
-
     },
     {
       "slug": "preparer-pseudonymiser-fichier-csv-fec",
@@ -107,7 +135,6 @@
       "publieLe": "2026-10-04",
       "titreOnglet": "Générateur de charte IA du cabinet | Memlia",
       "source": "Publication constatée le 04/10/2026 — PR55, Cloudflare SUCCESS, exports et parcours publics PASS ; carte t_250a564c"
-
     },
     {
       "slug": "verificateur-fec-local",
@@ -396,6 +423,38 @@
       "format": "how-to-guide",
       "publieLe": "2026-10-05",
       "titreOnglet": "Vérifier réponse IA comptabilité : checklist | Memlia",
+      "source": "frontmatter",
+      "type": "blog"
+    },
+    {
+      "slug": "ia-comptabilite-confidentialite-donnees",
+      "url": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees",
+      "requete": "IA cabinet comptable confidentialité données",
+      "secondaires": [
+        "ChatGPT données clients cabinet comptable",
+        "données autorisées IA générative",
+        "IA comptabilité et confidentialité"
+      ],
+      "famille": "rgpd-secret-securite",
+      "format": "how-to-guide",
+      "publieLe": "2026-10-05",
+      "titreOnglet": "IA comptabilité et confidentialité : les données | Memlia",
+      "source": "frontmatter",
+      "type": "blog"
+    },
+    {
+      "slug": "automatiser-avec-ia-sans-changer-logiciel",
+      "url": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel",
+      "requete": "automatiser IA sans changer logiciel",
+      "secondaires": [
+        "automatisation IA outils existants cabinet comptable",
+        "prompt ou automatisation cabinet",
+        "automatiser avec l'IA sans changer de logiciel"
+      ],
+      "famille": "ia-generative-agents",
+      "format": "how-to-guide",
+      "publieLe": "2026-10-05",
+      "titreOnglet": "Automatiser IA sans changer de logiciel : méthode | Memlia",
       "source": "frontmatter",
       "type": "blog"
     }

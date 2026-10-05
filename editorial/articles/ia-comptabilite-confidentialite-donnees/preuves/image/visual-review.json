@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "c2896b598118bf0b26becac307c561f6c1f174c7089cd3029e115306b8a66a30",
+  "manifestSha256": "56d0bec7fb44858ba33b76ac1e6bcb1b1af9c735e7ae3715fdc082e695ffcbc4",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact ia-comptabilite-confidentialite-donnees."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "touche"
+      },
+      {
+        "hex": "#231f20",
+        "role": "touche"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.6406770833333333,
+      "#27b657": 0.009722222222222222,
+      "#1c8a41": 0.030815972222222224,
+      "#231f20": 0.24524305555555556
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Six composantes du brief/prompt relues puis master regardé : deux bacs séparés à rebords verts, plaque verte vierge entre eux et grande plaque graphite au premier plan. Alt descriptif cohérent, rendu isométrique mat et ombres douces. L'image est métaphorique, pas une preuve de sécurité."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Aucun texte, chiffre, logo, personne ou interface visible sur le master. Mesure native palette PASS, sans écart : crème 0,6406770833333333, vert vif 0,009722222222222222, vert profond 0,030815972222222224 et graphite 0,24524305555555556 ; seuils et rôles présents. L'ancienne grille FAIL signifie revue encore non exécutée, pas échec de cette palette."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Trace de génération Higgsfield 4b0c4c03-4ff7-4de4-a3d5-63f15b9d446f, source image-source-2.png et master concordant au generation.json. Les figures sont des reconstitutions HTML explicitement Jeu d'essai fictif, protocole local, qualification humaine, programme routage seulement et modèle aucun ; elles ne simulent pas un fournisseur testé."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Fiche C-01 : relevé/facture manquants, disponibilité du relevé à confirmer, ENV-FICTIF, préparation à relire et transmission false. Registre : quatre états conformes au rejeu et quatre false. Fenêtres d'outil fictif sans marque réelle, ni schéma d'étapes, ni slogan ; données concrètes correspondant à la tâche. Non déclaré est une qualification de démonstration, pas une détection d'absence."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Décodage sharp réel : master 1920×1080, OG 1200×630, six dérivés 768/1200/1600 WebP/AVIF. Les deux figures 1600×900 pèsent 33242 et 31004 octets. Renderer --check : 30 cadres conformes. Navigateur : couverture AVIF eager/high et figures WebP lazy chargées aux deux largeurs.",
+        "À 390 px, les figures de 354 px sont des aperçus dont les petits libellés ne sont pas confortablement lisibles ; les informations déterminantes sont dans les paragraphes et tableaux HTML à trois colonnes effectivement défilables. Pas de validation globale d'accessibilité ni mesure LCP."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alts du HTML cohérents à la recette : fiche fictive C-01 à relire sans transmission ; registre fictif de quatre états. La couverture décrit deux plateaux séparés par une carte, sans faire croire à une preuve de conformité. Les alternatives n'attribuent pas la qualification humaine à un détecteur IA."
+      ]
+    }
+  ]
+}

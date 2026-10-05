@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "c2896b598118bf0b26becac307c561f6c1f174c7089cd3029e115306b8a66a30",
+  "manifestSha256": "56d0bec7fb44858ba33b76ac1e6bcb1b1af9c735e7ae3715fdc082e695ffcbc4",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact ia-comptabilite-confidentialite-donnees."
+  ],
+  "engine": "image_generate",
+  "prompt": "Isometric matte 3D editorial diorama. Two separated blank cream trays with a blank access card between. IMPORTANT: a VERY LARGE flat pure dark graphite #231f20 rectangular platform occupying 20 percent of the image; a large flat solid deep green #1c8a41 card occupying 10 percent of the image; bright green #27b657 tray accents. Keep exact dark colors, not grey and not pale. Background paper cream #fcfbf7. Soft upper left light. No text no numbers no logos no people no interface.",
+  "brief": {
+    "sujet": "Préparer séparément les données et leur autorisation.",
+    "composition": "Deux plateaux séparés et une carte d’accès vierge entre eux, plaque graphite au premier plan.",
+    "style": "Diorama 3D isométrique mat, lumière douce du haut gauche, fond crème papier.",
+    "palette": "Crème #fcfbf7 dominante ; vert #27b657, vert profond #1c8a41 et graphite #231f20 en touches.",
+    "interdits": "Texte, chiffres, logo, personnage, donnée client, fausse interface, envoi automatique.",
+    "alt": "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème"
+  },
+  "reviewCriteria": [
+    "palette mesurée",
+    "texte absent",
+    "aucun personnage",
+    "aucune interface",
+    "deux plateaux séparés",
+    "dérivés adaptés"
+  ]
+}

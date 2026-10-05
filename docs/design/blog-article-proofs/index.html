@@ -283,6 +283,58 @@
       </div>
     </article>
   </section>
+
+  <section class="frame" id="confidentialite-fiche" aria-label="Fiche fictive de préparation des entrées">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Fiche de préparation</b><span>Jeu d’essai fictif · C-01 · contexte inventé</span></header>
+      <div class="record-layout">
+        <section><div class="record-head"><div><small>Préparer trois questions</small><h2>Contexte minimal</h2></div><span class="pill green">À relire</span></div>
+          <dl class="fields"><div><dt>Finalité</dt><dd>Trois questions internes</dd></div><div><dt>Entrée retenue</dt><dd>Relevé et facture manquants</dd></div><div><dt>Réserve conservée</dt><dd>Disponibilité du relevé à confirmer</dd></div><div><dt>Champs exclus</dt><dd>Identité · contact · lieu · fichier</dd></div><div><dt>Environnement</dt><dd>ENV-FICTIF · protocole local</dd></div><div><dt>Qualification préalable</dt><dd>Déclarée pour la démonstration</dd></div></dl>
+        </section>
+        <aside class="side-panel"><small>État du protocole</small><h3>C-01</h3><dl><div><dt>Données</dt><dd>Fictives</dd></div><div><dt>Sortie</dt><dd>Préparation prête</dd></div><div><dt>Identifiant inutile</dt><dd>Non déclaré</dd></div><div><dt>Reconstructible</dt><dd>Non déclaré</dd></div><div><dt>Transmission</dt><dd>false</dd></div><div><dt>Modèle</dt><dd>Aucun</dd></div></dl><span class="pill amber">Lecture attendue</span></aside>
+      </div>
+    </article>
+  </section>
+  <section class="frame" id="confidentialite-registre" aria-label="Registre fictif des états de préparation">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Registre des entrées</b><span>Jeu d’essai fictif · quatre qualifications préalables</span></header>
+      <div class="screen"><div class="toolbar"><div><small>Protocole local</small><b>Préparations et motifs</b></div><div class="tabs"><span class="on">Tous</span><span>À revoir</span></div></div>
+        <div class="data-table" style="--cols:.45fr 1.15fr 1.3fr .7fr"><div class="table-head"><span>Cas</span><span>Entrée déclarée</span><span>État obtenu</span><span>Transmission</span></div>
+          <div class="pick"><span>C-01</span><span>Contexte minimal fictif</span><span><em class="pill green">Préparation prête</em></span><span>false</span></div>
+          <div><span>C-02</span><span>Identifiant inutile présent</span><span><em class="pill amber">Retirer identifiant</em></span><span>false</span></div>
+          <div class="off"><span>C-03</span><span>Environnement non confirmé</span><span><em class="pill amber">Environnement inconnu</em></span><span>false</span></div>
+          <div class="sel"><span>C-04</span><span>Contexte reconstructible</span><span><em class="pill grey">Arbitrage humain</em></span><span>false</span></div>
+        </div><div class="stat-row"><div><small>Qualification</small><b>Humaine préalable</b></div><div><small>Programme</small><b>Routage seulement</b></div><div><small>Modèle interrogé</small><b>Aucun</b></div></div>
+      </div>
+    </article>
+  </section>
+  <section class="frame" id="passage-registre" aria-label="Registre fictif du passage entre outils">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Registre du passage</b><span>Jeu d’essai fictif · demande de pièces · septembre 2026</span></header>
+      <div class="screen"><div class="toolbar"><div><small>Préparation locale</small><b>Entrées et sorties</b></div><div class="tabs"><span class="on">Tous</span><span>Proposition</span><span>Refus</span></div></div>
+        <div class="data-table" style="--cols:.6fr 1fr 1.3fr .8fr"><div class="table-head"><span>Dossier</span><span>Entrée</span><span>Sortie</span><span>État</span></div>
+          <div class="pick"><span>F-012 · v1</span><span>relevé A, facture B</span><span>P-F-012-v1</span><span><em class="pill green">PROPOSITION</em></span></div>
+          <div class="off"><span>F-013</span><span>Déjà traité</span><span>DEJA_TRAITE</span><span><em class="pill grey">REFUS</em></span></div>
+          <div><span>F-014</span><span>Liste absente</span><span>ENTREE_ABSENTE</span><span><em class="pill amber">REFUS</em></span></div>
+          <div class="sel"><span>F-015</span><span>Saisie humaine</span><span>SAISIE_PROTEGEE</span><span><em class="pill amber">REFUS</em></span></div>
+        </div><div class="stat-row"><div><small>Proposition F-012</small><b>Pièces attendues : relevé A, facture B.</b></div><div><small>Envoi</small><b>Aucun</b></div></div>
+      </div>
+    </article>
+  </section>
+  <section class="frame" id="passage-reprises" aria-label="Journal fictif des reprises du passage">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Journal des reprises</b><span>Jeu d’essai fictif · règle locale séquentielle</span></header>
+      <div class="screen"><div class="toolbar"><div><small>Reprise du travail</small><b>Propositions et décisions</b></div><div class="tabs"><span class="on">Tous</span><span>Réutiliser</span><span>Refus</span></div></div>
+        <div class="data-table" style="--cols:.65fr 1.1fr 1.25fr .85fr"><div class="table-head"><span>Cas</span><span>État constaté</span><span>Sortie</span><span>Décision</span></div>
+          <div class="pick"><span>F-012 · v1</span><span>Même entrée</span><span>P-F-012-v1</span><span><em class="pill green">REUTILISER</em></span></div>
+          <div class="sel"><span>F-012 · v2</span><span>Version changée</span><span>VERSION_CHANGEE</span><span><em class="pill amber">REFUS</em></span></div>
+          <div><span>F-016</span><span>État inconnu</span><span>ETAT_INCONNU</span><span><em class="pill amber">REFUS</em></span></div>
+          <div class="off"><span>F-012 · v1</span><span>Accord sur P-F-012-v0</span><span>VALIDATION_PERIMEE</span><span><em class="pill grey">REFUS</em></span></div>
+        </div><div class="stat-row"><div><small>Saisie F-015 conservée</small><b>Texte corrigé par le collaborateur</b></div><div><small>Connexion éditeur</small><b>Aucune</b></div></div>
+
+      </div>
+    </article>
+  </section>
 </main>
 </body>
 </html>

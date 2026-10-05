@@ -48,6 +48,10 @@ export const BLOG_RUBRIQUES = Object.freeze([
  * datée et motivée : le garde du contrat blog peut ainsi la rendre visible sans liste parallèle.
  */
 export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
+  'automatiser-avec-ia-sans-changer-logiciel': Object.freeze({
+    date: '2026-10-05',
+    raison: 'Fiche transversale du passage entre outils et de sa reprise ; la demande de pièces est un cas fictif, pas une nouvelle étape réservée à Saisie et pièces. Famille IA existante, sans nouvelle rubrique artificielle.',
+  }),
   'automatiser-un-cabinet-comptable-la-carte-des-taches': Object.freeze({
     date: '2026-09-20',
     raison: 'Article de référence transversal : il relie les familles de tâches de tout le cabinet et ne doit pas être réduit à la paie, à la DSN, à la saisie ou aux pièces.',
@@ -71,6 +75,10 @@ export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
   'verifier-reponse-ia-comptabilite': Object.freeze({
     date: '2026-10-04',
     raison: 'Checklist transversale de contrôle des affirmations IA, distincte des chaînes Paie et DSN et Saisie et pièces ; rattachement à la famille IA sans nouvelle rubrique mince.',
+  }),
+  'ia-comptabilite-confidentialite-donnees': Object.freeze({
+    date: '2026-10-05',
+    raison: 'Fiche transversale de préparation et autorisation des entrées IA ; famille RGPD, secret et sécurité, sans correspondre aux chaînes Paie et DSN ou Saisie et pièces.',
   }),
   'prompt-chatgpt-expert-comptable': Object.freeze({
     date: '2026-09-28',

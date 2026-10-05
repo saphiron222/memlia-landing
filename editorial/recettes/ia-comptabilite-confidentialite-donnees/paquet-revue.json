@@ -1,0 +1,120 @@
+{
+  "slug": "ia-comptabilite-confidentialite-donnees",
+  "title": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+  "primaryQuery": "IA cabinet comptable confidentialité données",
+  "intent": "executer",
+  "role": "direction-associes",
+  "format": "how-to-guide",
+  "task": "Préparer et qualifier les données d’entrée avant toute transmission à une IA au cabinet.",
+  "bodySha256": "6444a6d6c45879e2476998b0d12fdd038838ef2b08a228fccd44edb3ca5f6582",
+  "recipeSha256": "3efe5aba23ac2710d772d326971380719f377ae874d1354a047c25adf2d88c29",
+  "corps": "## Réponse directe\n\nAvant de transmettre des données à une IA au cabinet comptable, choisissez le geste, limitez son contexte et vérifiez l’environnement autorisé. Un nom remplacé ne suffit pas à rendre un dossier anonyme. Pour un premier essai, utilisez un contexte entièrement fictif. La fiche ci-dessous sépare les données utiles, celles à retirer et les conditions encore inconnues : une inconnue bloque la transmission, pas la préparation du travail.\n\n## Quelles données sont personnelles, confidentielles ou fictives ?\n\n**Une donnée personnelle** concerne une personne physique que l’on peut identifier. La [CNIL définit la donnée personnelle](https://www.cnil.fr/fr/definition/donnee-personnelle) ainsi : « Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable. » L’identification peut venir d’un nom, mais aussi d’un croisement de détails. Un intitulé de fonction rare, une date et un lieu peuvent compter autant qu’une adresse courriel.\n\n**Une information confidentielle** est une information dont l’accès ou la diffusion est limité dans le contexte du cabinet. Cette catégorie de travail dépasse les seules données personnelles : un projet d’acquisition, un tarif négocié ou une note interne peuvent appeler une protection même sans nom de personne. Ne concluez donc pas « transmissible » depuis la seule absence de donnée personnelle.\n\n**Un contexte fictif** est un exemple inventé pour éprouver une tâche, sans reprendre un dossier existant. Il conserve la difficulté du geste : une réserve, un champ manquant, une demande hors périmètre. Il ne conserve ni identité ni détail rare d’un client. Inventer « DOSSIER-A » à la place d’un nom réel tout en gardant le reste du dossier est une autre opération.\n\n**La pseudonymisation** remplace notamment des identifiants directs par des identifiants indirects. Dans sa page [sur l’anonymisation](https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles), la CNIL précise : « L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation. » Un alias est donc une précaution possible, pas un feu vert pour envoyer un fichier.\n\n## Pourquoi la préparation casse au copier-coller\n\nLe collaborateur veut préparer une question ou reformuler une note. Le document ouvert contient pourtant beaucoup plus : signature, coordonnées, annotations, pièces jointes ou détails d’un autre dossier. Le copier-coller transforme un petit besoin de rédaction en transmission d’un contexte entier.\n\nLa règle souvent gardée dans une seule tête ressemble à ceci : « Pour cette tâche, dans cet outil, je peux utiliser ces champs, mais pas ceux-là. » Sans trace écrite, un collègue voit l’abonnement de l’outil, pas la décision sur les données. Nous écrivons cette distinction pour qu’elle reste au cabinet et puisse être relue quand le geste, le compte ou la configuration change.\n\nCe guide répond à la préparation des entrées. Pour écrire ensuite la consigne, utilisez notre [patron de prompt ChatGPT pour expert-comptable](/blog/prompt-chatgpt-expert-comptable). Pour choisir le type d’environnement, la [grille de choix d’un logiciel IA](/blog/logiciel-ia-comptabilite) traite une autre décision. Aucun des deux choix ne remplace la fiche propre à votre tâche.\n\n## Avant de commencer\n\nChoisissez un geste précis, par exemple reformuler une note interne en trois questions à relire. N’ouvrez pas un dossier complet pour décider seulement ensuite de ce qui sera utile.\n\nPréparez quatre éléments :\n\n- la sortie attendue et sa destination : un brouillon interne, pas un message envoyé ;\n- les champs strictement utiles à cette sortie ;\n- le nom du service, le type de compte et l’espace de travail réellement utilisés ;\n- la personne qui peut décider de l’usage et retrouver les conditions vérifiées.\n\nPour découvrir un usage, partez d’un exemple inventé de zéro. Pour un traitement réel, la qualification des données, les obligations du cabinet, le cadre applicable et les conditions du prestataire se déterminent avec les responsables compétents. Une fiche remplie ne vaut pas certification.\n\n## La fiche d’autorisation d’entrée à copier\n\nCette fiche est une convention de travail Memlia. Remplissez-la pour un geste, pas pour « utiliser l’IA » en général. « À vérifier » est un état utile : il rend visible ce qui empêche de transmettre.\n\n| Champ | Question à remplir | Exemple entièrement fictif |\n|---|---|---|\n| Finalité | Quelle préparation précise ? | Transformer une note inventée en trois questions |\n| Sortie | Où sera-t-elle relue ? | Brouillon interne, sans envoi |\n| Entrée minimale | Quels éléments changent la réponse ? | Deux pièces manquantes et une réserve |\n| Classe des données | Public, personnel, confidentiel, fictif ? Plusieurs réponses possibles | Entièrement fictif |\n| Champs exclus | Qu’est-ce qui n’aide pas le geste ? | Identité, contact, lieu, montant réel, pièce jointe |\n| Environnement | Service, offre, compte, espace exacts ? | ENV-FICTIF, protocole local de démonstration |\n| Accès et partage | Qui peut lire entrée, sortie et historique ? | Aucun compte fournisseur utilisé dans l’essai |\n| Réutilisation | Les données servent-elles à d’autres usages ? | Aucun appel réseau dans l’essai |\n| Conservation | Que devient entrée, historique, fichier et sortie ? | Fichiers du jeu d’essai conservés localement |\n| Décision | Qui autorise ce périmètre, avec quelle trace ? | Qualification préalable écrite pour l’essai |\n| Réexamen | Quel changement remet la décision en question ? | Entrée réelle, autre environnement ou autre finalité |\n\nDans votre fiche réelle, remplacez les valeurs de démonstration par des réponses vérifiables. N’utilisez pas ENV-FICTIF comme nom d’un service approuvé. Une réponse valable pour un brouillon inventé ne couvre pas un fichier client.\n\n## Réduire le contexte sans prétendre anonymiser\n\nCommencez par la sortie : « préparer trois questions ». Demandez pour chaque détail : si je le retire, est-ce que la question change ? Si non, retirez-le du contexte proposé. Conservez la réserve qui influence le sens ; éliminez l’identité qui n’influence que la personnalisation.\n\nVoici le contexte entièrement fictif retenu pour notre essai :\n\n> Préparer trois questions internes à relire. Deux pièces sont manquantes : un relevé et une facture. La disponibilité du relevé reste à confirmer. Ne pas inventer une date, un destinataire ni une décision. Aucune pièce jointe.\n\nLe contexte ne vient pas d’un dossier client. Il donne au lecteur un objet à essayer, mais aucune réponse d’un modèle n’est présentée comme obtenue. Le programme local ci-dessous ne reformule pas ce texte : il route les états de préparation déjà qualifiés pour la démonstration.\n\nUn contexte issu d’un dossier réel appelle un examen différent. Le retrait du nom ne permet pas de conclure que les autres détails sont sans risque. La CNIL indique, à propos de données pseudonymisées : « les données concernées conservent donc un caractère personnel. » Cette [distinction entre anonymisation et pseudonymisation](https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles) explique pourquoi notre fiche garde un état « À arbitrer » lorsque l’information est reconstructible.\n\n## Vérifier l’environnement, pas l’étiquette commerciale\n\nUn compte « pro », un mode privé ou un bouton d’historique ne répondent pas à toutes les questions. Identifiez l’offre exacte, puis ouvrez ses conditions et la documentation du réglage réellement utilisé. Notez la version du document et le périmètre auquel la réponse s’applique.\n\nVoici les points à faire expliciter pour l’usage envisagé :\n\n| Point | Réponse à retrouver | Si elle manque |\n|---|---|---|\n| Réutilisation | Usage des entrées, fichiers et sorties, réglage effectif | Transmission en attente |\n| Conservation | Historique, fichiers, suppression et éventuelles exceptions | Transmission en attente |\n| Accès | Membres, administrateurs, liens de partage, intervenants du service | Partage en attente |\n| Traitement | Prestataires impliqués, lieux et cadre des éventuels transferts | Examen compétent nécessaire |\n| Contrat | Engagements correspondant à l’offre et au traitement envisagés | Ne pas déduire une autorisation de l’abonnement |\n\nNous ne comparons pas ici les conditions d’un fournisseur particulier : aucun compte fournisseur n’est utilisé dans le jeu d’essai. Cette liste porte des questions, pas des réponses contractuelles. L’absence d’entraînement sur les entrées, lorsqu’elle est établie pour une offre, ne répond pas à elle seule aux questions de conservation, d’accès ou de confidentialité.\n\nVérifiez aussi les chemins indirects : connecteur, recherche dans un dossier partagé, pièce jointe, lien public de conversation. Le périmètre examiné inclut ce qui est effectivement rendu accessible, pas seulement le texte visible dans la consigne. Retrouvez notre [méthode de préparation et de recette](/methode) pour distinguer entrée, proposition et validation.\n\n## La règle écrite\n\n**La frontière.** La mécanique de préparation reste distincte de l’autorisation d’un traitement réel.\n\n| Se prépare seul | Attend une validation | Reste humain |\n|---|---|---|\n| Fiche de champs et contexte fictif ; routage des états saisis | Contexte minimal proposé et environnement documenté | Qualification des données, cadre applicable et autorisation de l’usage réel |\n\n**La proposition.** Nous préparons une fiche et une sortie d’état. Le responsable qualifie les champs et le contexte ; le collaborateur relit ce qui serait transmis. Une saisie humaine n’est pas écrasée par le programme. Dans notre démonstration, aucun fichier n’est envoyé et aucun modèle n’est interrogé.\n\n**L’arrêt.** La transmission reste bloquée si l’environnement n’est pas confirmé, si un identifiant inutile est déclaré présent, si une possibilité de reconstruction est signalée ou si la qualification préalable manque. Un champ supprimé appelle une nouvelle lecture de l’ensemble ; le programme ne relance pas automatiquement un envoi.\n\n**Le jeu d’essai.** Nous rejouons quatre dossiers entièrement fictifs : contexte minimal qualifié, identifiant inutile ajouté, environnement inconnu, contexte déclaré reconstructible. Les qualifications sont des entrées humaines du protocole. Le script vérifie leurs états, pas la présence sémantique d’une donnée dans un texte libre.\n\n## Rejoué sur le jeu fictif\n\nLe rejeu local applique une règle déterministe, c’est-à-dire une règle à conditions fixes. Chaque ligne ci-dessous vient du journal réellement produit par le script. Il ne s’agit ni d’une réponse ChatGPT ni d’un test de conformité.\n\n| Cas joué | Sortie obtenue | Décision |\n|---|---|---|\n| C-01 : contexte minimal fictif, qualification préalable et environnement de démonstration confirmés | PREPARATION_PRETE | Contexte à relire ; transmission false |\n| C-02 : identifiant inutile déclaré ajouté au cas C-01 | RETIRER_IDENTIFIANT | Retirer puis réexaminer ; transmission false |\n| C-03 : environnement non confirmé | ENVIRONNEMENT_INCONNU | Documenter l’environnement ; transmission false |\n| C-04 : contexte déclaré reconstructible | ARBITRAGE_HUMAIN | Réexaminer les détails ; transmission false |\n\n« Préparation prête » décrit l’état du protocole fictif, pas une permission d’utiliser un dossier réel. Le programme ne détecte pas les personnes, ne calcule pas un risque de réidentification et ne prouve pas l’anonymisation. Les figures reproduisent les entrées déclarées et ces sorties locales.\n\n## Les erreurs fréquentes\n\n- **Remplacer un nom et garder tout le dossier.** Reprenez l’utilité de chaque détail et la possibilité de croisement.\n- **Autoriser un outil sans nommer le compte.** Retrouvez l’offre et l’espace réellement utilisés, avec leurs réglages.\n- **Confondre absence d’entraînement et absence de conservation.** Documentez ces deux questions séparément.\n- **Joindre le fichier complet à une demande courte.** Préparez d’abord un contexte minimal ; vérifiez le fichier et ses contenus indirects avant toute autorisation.\n- **Laisser la sortie changer de destination.** Un brouillon interne relu n’est pas un message externe autorisé.\n\nAprès la préparation des entrées, gardez un contrôle de la sortie. Notre [checklist de vérification d’une réponse IA](/blog/verifier-reponse-ia-comptabilite) traite la source, le contexte, les ajouts et les réserves. La qualité d’une réponse ne valide pas rétroactivement ce qui a été transmis.\n\n## Questions fréquentes\n\n### Puis-je transmettre un dossier si j’ai retiré les noms ?\n\nPas sur ce seul critère. Les détails restants peuvent permettre une identification indirecte ou contenir une information confidentielle. Reprenez la qualification de l’entrée et l’autorisation de l’environnement avant de transmettre.\n\n### Pseudonymisé veut-il dire anonyme ?\n\nNon. Les citations CNIL ci-dessus distinguent les deux opérations et rappellent que les données pseudonymisées conservent leur caractère personnel. Notre fiche ne remplace pas cette qualification par un voyant automatique.\n\n### Un mode privé suffit-il pour utiliser des données clients ?\n\nUn réglage répond à un périmètre précis. Vérifiez ce qu’il change pour la réutilisation, la conservation, l’accès et le partage dans l’offre exacte ; n’en déduisez pas une autorisation générale. Si une réponse manque, le contexte reste en attente.\n\n### Que faire si je n’arrive pas à confirmer les conditions ?\n\nGardez l’essai entièrement fictif et faites documenter l’usage envisagé par le responsable compétent. Vous pouvez préparer la fiche et la consigne sans transmettre le dossier. Le manque d’information devient un motif visible, pas une hypothèse silencieuse.\n\n### Le programme peut-il autoriser automatiquement l’entrée ?\n\nLe script montré ici route des qualifications saisies. Il n’analyse pas un dossier et ne décide pas du cadre applicable. Une règle de routage peut aider à ne pas oublier un arrêt ; elle ne remplace pas la décision sur les données.\n\n## La règle à retenir\n\nChoisissez les données depuis le geste attendu, puis documentez l’environnement et la décision avant toute transmission. Un cas fictif permet d’éprouver la mécanique sans faire passer un alias pour une anonymisation.\n\n## Pour aller plus loin\n\nLa préparation des entrées fait partie des [tâches à automatiser au cabinet](/blog/automatiser-un-cabinet-comptable-la-carte-des-taches), mais son autorisation reste une décision distincte. Nous prenons en charge la mécanique : écrire la fiche dans vos mots, préparer les contextes, faire remonter les conditions inconnues et éprouver les exceptions dans vos outils. Vous gardez la qualification des données et la décision d’usage, avec une [validation humaine](/glossaire#validation-humaine) située au bon endroit et les engagements décrits dans nos [garanties](/garanties).",
+  "preuvesInline": [
+    {
+      "id": "confidentialite-fiche",
+      "insertBeforeHeading": "Réduire le contexte sans prétendre anonymiser",
+      "alt": "Fiche fictive C-01 : finalité, champs minimaux, environnement local et préparation à relire sans transmission.",
+      "source": "Reconstitution HTML fictive de la fiche et du journal-rejeu.json ; qualifications déclarées pour le protocole local",
+      "capturedAt": "2026-10-05"
+    },
+    {
+      "id": "confidentialite-registre",
+      "insertBeforeHeading": "Les erreurs fréquentes",
+      "alt": "Registre fictif C-01 à C-04 : préparation prête, identifiant à retirer, environnement inconnu, arbitrage humain.",
+      "source": "Reconstitution HTML fictive des quatre sorties du journal-rejeu.json ; aucun détecteur ni fournisseur utilisé",
+      "capturedAt": "2026-10-05"
+    }
+  ],
+  "sources": [
+    {
+      "id": "cnil-personnelle",
+      "publisher": "CNIL",
+      "title": "Donnée personnelle",
+      "url": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+      "level": "tier-1",
+      "official": true
+    },
+    {
+      "id": "cnil-anonymisation",
+      "publisher": "CNIL",
+      "title": "L’anonymisation de données personnelles",
+      "url": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
+      "level": "tier-1",
+      "official": true
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-4e0217dd52ad-1",
+      "claim": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-personnelle",
+      "citation": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+      "contexte": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable."
+    },
+    {
+      "id": "claim-unit-24d0a97c54b2-1",
+      "claim": "L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-anonymisation",
+      "citation": "L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
+      "contexte": "L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation."
+    },
+    {
+      "id": "claim-unit-b0c8adba036a-1",
+      "claim": "les données concernées conservent donc un caractère personnel.",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-anonymisation",
+      "citation": "les données concernées conservent donc un caractère personnel.",
+      "contexte": "En pratique, il est toutefois bien souvent possible de retrouver l’identité de ceux-ci grâce à des données tierces : les données concernées conservent donc un caractère personnel."
+    }
+  ],
+  "criteresEditoriaux": [
+    {
+      "id": "intent-satisfaction",
+      "weight": 20
+    },
+    {
+      "id": "serp-format-rankability",
+      "weight": 15
+    },
+    {
+      "id": "eeat-sources",
+      "weight": 20
+    },
+    {
+      "id": "information-gain-proof",
+      "weight": 20
+    },
+    {
+      "id": "technical-onpage-seo",
+      "weight": 10
+    },
+    {
+      "id": "ai-citability",
+      "weight": 10
+    },
+    {
+      "id": "contextual-conversion",
+      "weight": 5
+    }
+  ],
+  "criteresImage": [
+    "brief-six-components",
+    "generation-constraints",
+    "fictive-provenance",
+    "recognizable-subject",
+    "technical-derivatives",
+    "alt-information"
+  ],
+  "image": {
+    "alt": "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème",
+    "master": "editorial/articles/ia-comptabilite-confidentialite-donnees/preuves/image/master.png"
+  },
+  "identites": {
+    "auteur": "kevin",
+    "reviewerEditorial": "metier",
+    "reviewerMetier": "metier:t_6446d285",
+    "roleMetier": "direction-associes"
+  }
+}

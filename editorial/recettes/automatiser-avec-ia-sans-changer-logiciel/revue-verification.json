@@ -1,0 +1,1425 @@
+{
+  "reviewerTaskId": "t_003f2bb5",
+  "checkedAt": "2026-10-05T10:32:50.372Z",
+  "subject": {
+    "slug": "automatiser-avec-ia-sans-changer-logiciel",
+    "bodySha256": "9c46fa888bde573501dd83a3e5c9cb38935f54313afe01bbd3785fb5d706ab12",
+    "recipeSha256": "f3dfabeacc75f7f612b56c2b4a24352582dbaad46edf140cb0cec8be28cbbc56",
+    "renderedSha256": "d7a19bbfbc3178fed3867dbe6e11755d801759e17a9925e06f90b1acf27a9a25"
+  },
+  "originalJournalPreserved": true,
+  "replay": [
+    {
+      "cas": "préparation",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": null,
+      "approval": null,
+      "output": {
+        "statut": "PROPOSITION",
+        "motif": "P-F-012-v1",
+        "proposition": {
+          "id": "P-F-012-v1",
+          "cle": "F-012|2026-09|demande-pieces",
+          "version": "v1",
+          "signature": "[\"relevé A\",\"facture B\"]",
+          "texte": "Pièces attendues : relevé A, facture B."
+        },
+        "saisie": null
+      }
+    },
+    {
+      "cas": "traité",
+      "input": {
+        "id": "F-013",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "traite",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": null,
+      "approval": null,
+      "output": {
+        "statut": "REFUS",
+        "motif": "DEJA_TRAITE",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "entrée absente",
+      "input": {
+        "id": "F-014",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": null,
+        "saisie": null
+      },
+      "previous": null,
+      "approval": null,
+      "output": {
+        "statut": "REFUS",
+        "motif": "ENTREE_ABSENTE",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "saisie humaine",
+      "input": {
+        "id": "F-015",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": "Texte corrigé par le collaborateur"
+      },
+      "previous": null,
+      "approval": null,
+      "output": {
+        "statut": "REFUS",
+        "motif": "SAISIE_PROTEGEE",
+        "proposition": null,
+        "saisie": "Texte corrigé par le collaborateur"
+      }
+    },
+    {
+      "cas": "reprise",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": {
+        "id": "P-F-012-v1",
+        "cle": "F-012|2026-09|demande-pieces",
+        "version": "v1",
+        "signature": "[\"relevé A\",\"facture B\"]",
+        "texte": "Pièces attendues : relevé A, facture B."
+      },
+      "approval": null,
+      "output": {
+        "statut": "REUTILISER",
+        "motif": "P-F-012-v1",
+        "proposition": {
+          "id": "P-F-012-v1",
+          "cle": "F-012|2026-09|demande-pieces",
+          "version": "v1",
+          "signature": "[\"relevé A\",\"facture B\"]",
+          "texte": "Pièces attendues : relevé A, facture B."
+        },
+        "saisie": null
+      }
+    },
+    {
+      "cas": "version modifiée",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": "v2",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": {
+        "id": "P-F-012-v1",
+        "cle": "F-012|2026-09|demande-pieces",
+        "version": "v1",
+        "signature": "[\"relevé A\",\"facture B\"]",
+        "texte": "Pièces attendues : relevé A, facture B."
+      },
+      "approval": null,
+      "output": {
+        "statut": "REFUS",
+        "motif": "VERSION_CHANGEE",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "état inconnu",
+      "input": {
+        "id": "F-016",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "inconnu",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": null,
+      "approval": null,
+      "output": {
+        "statut": "REFUS",
+        "motif": "ETAT_INCONNU",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "accord ancien",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": {
+        "id": "P-F-012-v1",
+        "cle": "F-012|2026-09|demande-pieces",
+        "version": "v1",
+        "signature": "[\"relevé A\",\"facture B\"]",
+        "texte": "Pièces attendues : relevé A, facture B."
+      },
+      "approval": "P-F-012-v0",
+      "output": {
+        "statut": "REFUS",
+        "motif": "VALIDATION_PERIMEE",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "contenu modifié même version",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          "pièce C"
+        ],
+        "saisie": null
+      },
+      "previous": {
+        "id": "P-F-012-v1",
+        "cle": "F-012|2026-09|demande-pieces",
+        "version": "v1",
+        "signature": "[\"relevé A\",\"facture B\"]",
+        "texte": "Pièces attendues : relevé A, facture B."
+      },
+      "approval": null,
+      "output": {
+        "statut": "REFUS",
+        "motif": "VERSION_CHANGEE",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "période changée avec proposition précédente",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-10",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": {
+        "id": "P-F-012-v1",
+        "cle": "F-012|2026-09|demande-pieces",
+        "version": "v1",
+        "signature": "[\"relevé A\",\"facture B\"]",
+        "texte": "Pièces attendues : relevé A, facture B."
+      },
+      "approval": null,
+      "output": {
+        "statut": "REFUS",
+        "motif": "VERSION_CHANGEE",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "pièce vide",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          " "
+        ],
+        "saisie": null
+      },
+      "previous": null,
+      "approval": null,
+      "output": {
+        "statut": "REFUS",
+        "motif": "ENTREE_ABSENTE",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "version absente",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": null,
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": null,
+      "approval": null,
+      "output": {
+        "statut": "REFUS",
+        "motif": "ENTREE_ABSENTE",
+        "proposition": null,
+        "saisie": null
+      }
+    }
+  ],
+  "contract": {
+    "pass": true,
+    "articles": 1,
+    "exemptions": [
+      {
+        "slug": "automatiser-avec-ia-sans-changer-logiciel",
+        "clause": 4,
+        "date": "2026-10-05",
+        "raison": "Fiche transversale du passage entre outils et de sa reprise ; la demande de pièces est un cas fictif, pas une nouvelle étape réservée à Saisie et pièces. Famille IA existante, sans nouvelle rubrique artificielle."
+      }
+    ],
+    "erreurs": []
+  },
+  "views": [
+    {
+      "width": 1280,
+      "overflow": false,
+      "lang": "fr",
+      "h1": [
+        "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils"
+      ],
+      "canonical": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel",
+      "robots": "noindex, follow",
+      "title": "Automatiser IA sans changer de logiciel : méthode | Memlia",
+      "description": "Automatiser avec l'IA sans changer de logiciel : reliez entrée, proposition, validation et suivi, puis testez les reprises sur un jeu fictif.",
+      "og": "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils",
+      "author": "Kevin Kitanga",
+      "schema": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel#article",
+          "headline": "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils",
+          "description": "Automatiser avec l'IA sans changer de logiciel : reliez entrée, proposition, validation et suivi, puis testez les reprises sur un jeu fictif.",
+          "url": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel"
+          },
+          "datePublished": "2026-10-05T00:00:00.000Z",
+          "dateModified": "2026-10-05T00:00:00.000Z",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://memlia.fr/images/img-art-automatiser-avec-ia-sans-changer-logiciel-og.webp",
+            "width": 1200,
+            "height": 630,
+            "caption": "Deux plans de travail verts reliés par un cadre, sur des supports graphite et un fond crème"
+          },
+          "thumbnailUrl": "https://memlia.fr/images/img-art-automatiser-avec-ia-sans-changer-logiciel-og.webp",
+          "articleSection": [
+            "IA",
+            "Automatisation"
+          ],
+          "keywords": [
+            "automatiser IA sans changer logiciel",
+            "automatisation IA outils existants cabinet comptable",
+            "prompt ou automatisation cabinet"
+          ],
+          "wordCount": 2390
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://memlia.fr/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils",
+              "item": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+          "name": "Kevin Kitanga",
+          "jobTitle": "Fondateur de Memlia",
+          "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+          "url": "https://memlia.fr/a-propos",
+          "worksFor": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ],
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Réponse directe",
+          "id": "reponse-directe"
+        },
+        {
+          "level": "H2",
+          "text": "Un prompt prépare une réponse ; un passage suit un état",
+          "id": "un-prompt-prepare-une-reponse-un-passage-suit-un-etat"
+        },
+        {
+          "level": "H2",
+          "text": "Pourquoi le passage casse à la main",
+          "id": "pourquoi-le-passage-casse-a-la-main"
+        },
+        {
+          "level": "H2",
+          "text": "Avant de commencer : décrire un seul geste",
+          "id": "avant-de-commencer-decrire-un-seul-geste"
+        },
+        {
+          "level": "H2",
+          "text": "La fiche de passage à copier",
+          "id": "la-fiche-de-passage-a-copier"
+        },
+        {
+          "level": "H2",
+          "text": "Vérifier le format et l’accès réellement disponibles",
+          "id": "verifier-le-format-et-l-acces-reellement-disponibles"
+        },
+        {
+          "level": "H2",
+          "text": "La règle écrite",
+          "id": "la-regle-ecrite"
+        },
+        {
+          "level": "H2",
+          "text": "Rejoué sur le jeu fictif",
+          "id": "rejoue-sur-le-jeu-fictif"
+        },
+        {
+          "level": "H2",
+          "text": "Reprendre et revenir en arrière sans perdre une décision",
+          "id": "reprendre-et-revenir-en-arriere-sans-perdre-une-decision"
+        },
+        {
+          "level": "H2",
+          "text": "Quand garder la tâche manuelle",
+          "id": "quand-garder-la-tache-manuelle"
+        },
+        {
+          "level": "H2",
+          "text": "Les erreurs fréquentes",
+          "id": "les-erreurs-frequentes"
+        },
+        {
+          "level": "H2",
+          "text": "Questions fréquentes",
+          "id": "questions-frequentes"
+        },
+        {
+          "level": "H3",
+          "text": "Faut-il changer de logiciel pour utiliser l’IA ?",
+          "id": "faut-il-changer-de-logiciel-pour-utiliser-l-ia"
+        },
+        {
+          "level": "H3",
+          "text": "L’IA doit-elle piloter tout le passage ?",
+          "id": "l-ia-doit-elle-piloter-tout-le-passage"
+        },
+        {
+          "level": "H3",
+          "text": "Que faire si deux personnes traitent le même dossier ?",
+          "id": "que-faire-si-deux-personnes-traitent-le-meme-dossier"
+        },
+        {
+          "level": "H3",
+          "text": "Un export suffit-il à automatiser ?",
+          "id": "un-export-suffit-il-a-automatiser"
+        },
+        {
+          "level": "H3",
+          "text": "Comment savoir si la tâche est prête ?",
+          "id": "comment-savoir-si-la-tache-est-prete"
+        },
+        {
+          "level": "H2",
+          "text": "La règle à retenir",
+          "id": "la-regle-a-retenir"
+        },
+        {
+          "level": "H2",
+          "text": "Pour aller plus loin",
+          "id": "pour-aller-plus-loin"
+        }
+      ],
+      "links": [
+        "/blog/prompt-chatgpt-expert-comptable",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/blog/utiliser-chatgpt-cabinet-comptable",
+        "/blog/logiciel-ia-comptabilite",
+        "/blog/verifier-reponse-ia-comptabilite",
+        "/glossaire#validation-humaine",
+        "/methode",
+        "/automatisation-cabinet-comptable"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "Champ",
+            "Exemple fictif rempli",
+            "Question à résoudre chez vous"
+          ],
+          "rows": [
+            [
+              "Geste",
+              "Préparer une demande de pièces",
+              "Quel résultat complet attend le collaborateur ?"
+            ],
+            [
+              "Source de vérité",
+              "Suivi local F-012, version v1",
+              "Où lit-on l’état courant avant chaque reprise ?"
+            ],
+            [
+              "Déclencheur",
+              "Demande explicite de préparation",
+              "Qui lance le passage, à quel moment ?"
+            ],
+            [
+              "Clé de travail",
+              "F-012 + période 2026-09 + demande-pieces",
+              "Comment reconnaît-on le même travail ?"
+            ],
+            [
+              "Entrée minimale",
+              "Identifiant fictif, période, état, version, liste des pièces",
+              "Quels champs suffisent au geste ?"
+            ],
+            [
+              "Condition",
+              "État à préparer, liste renseignée, aucune saisie humaine",
+              "Quand est-il possible de préparer ?"
+            ],
+            [
+              "Proposition",
+              "P-F-012-v1, texte de demande en brouillon",
+              "Où la sortie reste-t-elle distincte de la saisie ?"
+            ],
+            [
+              "Validation",
+              "Relecture par le responsable du dossier",
+              "Qui décide de garder ou de corriger ?"
+            ],
+            [
+              "Destination",
+              "Zone de brouillon, puis suivi tenu par le collaborateur",
+              "Quel emplacement est réellement accessible ?"
+            ],
+            [
+              "Exception",
+              "Version changée, pièce absente, dossier déjà traité",
+              "Quel motif suspend la préparation ?"
+            ],
+            [
+              "Trace",
+              "Identifiant de proposition, version d’entrée, résultat",
+              "Quelle preuve permet de comprendre la reprise ?"
+            ],
+            [
+              "Fin du passage",
+              "Décision saisie, état constaté dans le suivi",
+              "Comment sait-on que le geste a abouti ?"
+            ],
+            [
+              "Reprise",
+              "Lire l’état ; réutiliser le même brouillon si rien n’a changé",
+              "Comment éviter une seconde proposition inutile ?"
+            ],
+            [
+              "Retour arrière",
+              "Écarter le brouillon, reprendre la tâche à la main",
+              "Que peut-on retirer sans toucher aux saisies ?"
+            ],
+            [
+              "Propriétaire de la règle",
+              "Référent de la tâche, remplaçant désigné",
+              "Qui traite un nouveau motif d’exception ?"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Voie envisagée",
+            "Essai concret à demander",
+            "Motif de maintien manuel"
+          ],
+          "rows": [
+            [
+              "Export puis import",
+              "Export fictif lu, colonnes reconnues, aperçu du résultat avant import",
+              "Champ ambigu, doublon ou destination non contrôlée"
+            ],
+            [
+              "API, accès programmé à un outil",
+              "Lecture de l’objet fictif, droits constatés, résultat et erreur observés",
+              "Accès absent, écriture trop large ou retour inexploitable"
+            ],
+            [
+              "Préparation à côté de l’outil",
+              "Brouillon distinct, reprise manuelle et état final vérifié",
+              "La copie crée plus de travail que le geste initial"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Se prépare seul",
+            "Attend une validation",
+            "Reste humain"
+          ],
+          "rows": [
+            [
+              "Lire l’état, vérifier les champs, produire ou retrouver le brouillon",
+              "Texte proposé et version d’entrée encore courante",
+              "Juger le besoin, modifier le texte, saisir la décision et envoyer"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Cas joué",
+            "Sortie obtenue",
+            "Décision"
+          ],
+          "rows": [
+            [
+              "F-012, v1, deux pièces attendues",
+              "PROPOSITION / P-F-012-v1",
+              "Relire « Pièces attendues : relevé A, facture B. »"
+            ],
+            [
+              "F-013 déjà traité",
+              "REFUS / DEJA_TRAITE",
+              "Ne pas préparer une nouvelle demande"
+            ],
+            [
+              "F-014 sans liste de pièces",
+              "REFUS / ENTREE_ABSENTE",
+              "Renseigner l’entrée avant reprise"
+            ],
+            [
+              "F-015 avec « Texte corrigé par le collaborateur »",
+              "REFUS / SAISIE_PROTEGEE",
+              "Garder cette saisie inchangée"
+            ],
+            [
+              "Reprise de F-012, v1, même entrée",
+              "REUTILISER / P-F-012-v1",
+              "Retrouver la proposition existante"
+            ],
+            [
+              "F-012 passé à v2 après préparation",
+              "REFUS / VERSION_CHANGEE",
+              "Écarter l’ancienne proposition du passage courant"
+            ],
+            [
+              "F-016 avec état inconnu",
+              "REFUS / ETAT_INCONNU",
+              "Faire qualifier l’état"
+            ],
+            [
+              "Accord sur P-F-012-v0, alors que P-F-012-v1 est courant",
+              "REFUS / VALIDATION_PERIMEE",
+              "Relire la proposition courante"
+            ]
+          ]
+        }
+      ],
+      "text": "Réponse directe\n\nPour automatiser avec l’IA sans changer de logiciel, commencez par un passage précis entre deux outils : quelle entrée lire, quelle proposition préparer, qui la valide et où constater la suite. Écrivez aussi ce qui arrive lors d’une reprise ou d’une modification humaine. La fiche ci-dessous permet de cadrer ce passage avant de choisir un accès technique, avec un essai fictif qui ne touche aucune saisie.\n\nUn prompt prépare une réponse ; un passage suit un état\n\nUn passage entre outils est le transfert organisé d’une information d’un point de travail à un autre, avec une condition d’entrée et un résultat observable. Exemple : une liste de pièces manquantes devient un brouillon de demande, puis une décision inscrite dans le suivi. Ce n’est pas la migration de tout le dossier.\n\nUne source de vérité est l’emplacement désigné pour constater l’état courant. Si la liste de pièces est tenue dans un suivi partagé, le texte d’une conversation ne devient pas une nouvelle liste de référence. Une proposition est une sortie préparée et encore modifiable ; une saisie est une information que le collaborateur a enregistrée et que la préparation ne réécrit pas.\n\nLe prompt pour expert-comptable aide à préparer une sortie ponctuelle. Ici, la question change : comment éviter de refaire une demande déjà traitée, de travailler sur une ancienne liste ou de perdre la décision au retour dans le suivi ? Un état explicite permet de reprendre au bon endroit. Une conversation seule n’apporte pas cette organisation.\n\nL’IA intervient si une partie de la préparation demande de reformuler ou de synthétiser. La détection d’un identifiant déjà traité, la lecture d’un état ou le contrôle d’une version restent des règles explicites. Inutile de demander au modèle de deviner si un dossier a déjà été pris en charge.\n\nPourquoi le passage casse à la main\n\nLe collaborateur ouvre le suivi, vérifie les pièces, prépare un texte ailleurs, le corrige, puis retourne inscrire la suite. Entre ces gestes, une pièce arrive ou une autre personne traite le dossier. Le brouillon reste plausible, mais il ne correspond plus à l’état courant.\n\nLa règle implicite tient souvent dans une phrase : « Je vérifie une dernière fois avant de reprendre ce que j’avais préparé. » Celui qui connaît le dossier sait où regarder, ce qu’il avait déjà changé et ce qu’il ne faut pas refaire. Si ce savoir reste dans sa tête, la reprise par un collègue devient une enquête.\n\nL’objet à automatiser est ce passage entier, pas seulement la rédaction du message. La carte des tâches du cabinet sert à choisir la famille de travail ; la fiche suivante descend au niveau d’une entrée, d’une proposition et d’un résultat vérifiable.\n\nAvant de commencer : décrire un seul geste\n\nChoisissez un geste que l’équipe sait aujourd’hui terminer à la main. Conservez un exemple entièrement fictif du point de départ et du point d’arrivée. Le premier essai peut porter sur une demande de pièces préparée à partir d’un suivi, sans aucun envoi.\n\nRéunissez ces éléments :\n\nl’emplacement qui indique l’état courant du dossier ;\nles champs utiles à la préparation, avec un exemple de valeur ;\nla personne chargée de relire et de décider ;\nl’endroit où elle saisit sa décision ;\nle signe observable que le geste est terminé ;\nun cas incomplet et un cas déjà traité.\n\nSi la tâche n’est pas encore claire, commencez par choisir un premier usage ChatGPT. Si le besoin est surtout de choisir un fournisseur, utilisez plutôt la grille de choix d’un logiciel IA en comptabilité. Ce guide ne classe pas les éditeurs et ne suppose aucun accès disponible dans votre logiciel.\n\nLa fiche de passage à copier\n\nVoici une fiche remplie pour une démonstration de demande de pièces. Remplacez les valeurs fictives, mais gardez les questions. Elle peut vivre dans un document partagé ; aucun compte supplémentaire n’est nécessaire pour écrire la règle.\n\nChamp\tExemple fictif rempli\tQuestion à résoudre chez vous\nGeste\tPréparer une demande de pièces\tQuel résultat complet attend le collaborateur ?\nSource de vérité\tSuivi local F-012, version v1\tOù lit-on l’état courant avant chaque reprise ?\nDéclencheur\tDemande explicite de préparation\tQui lance le passage, à quel moment ?\nClé de travail\tF-012 + période 2026-09 + demande-pieces\tComment reconnaît-on le même travail ?\nEntrée minimale\tIdentifiant fictif, période, état, version, liste des pièces\tQuels champs suffisent au geste ?\nCondition\tÉtat à préparer, liste renseignée, aucune saisie humaine\tQuand est-il possible de préparer ?\nProposition\tP-F-012-v1, texte de demande en brouillon\tOù la sortie reste-t-elle distincte de la saisie ?\nValidation\tRelecture par le responsable du dossier\tQui décide de garder ou de corriger ?\nDestination\tZone de brouillon, puis suivi tenu par le collaborateur\tQuel emplacement est réellement accessible ?\nException\tVersion changée, pièce absente, dossier déjà traité\tQuel motif suspend la préparation ?\nTrace\tIdentifiant de proposition, version d’entrée, résultat\tQuelle preuve permet de comprendre la reprise ?\nFin du passage\tDécision saisie, état constaté dans le suivi\tComment sait-on que le geste a abouti ?\nReprise\tLire l’état ; réutiliser le même brouillon si rien n’a changé\tComment éviter une seconde proposition inutile ?\nRetour arrière\tÉcarter le brouillon, reprendre la tâche à la main\tQue peut-on retirer sans toucher aux saisies ?\nPropriétaire de la règle\tRéférent de la tâche, remplaçant désigné\tQui traite un nouveau motif d’exception ?\n\nLa clé de travail identifie le geste, pas le texte. Deux brouillons formulés différemment peuvent concerner la même demande. La version décrit l’entrée utilisée : une proposition préparée sur v1 ne devient pas valide pour v2 simplement parce qu’elle paraît bien écrite.\n\nGardez aussi l’identifiant de la proposition relue. Dire « validé » sans préciser quelle proposition a été lue laisse une ambiguïté dès qu’une nouvelle sortie existe. La trace sert à retrouver une décision, pas à classer les collaborateurs selon leur cadence.\n\nVérifier le format et l’accès réellement disponibles\n\nAvant de construire, demandez un essai sur le geste retenu. Un accès en lecture ne prouve pas un accès en écriture. Une liste de connecteurs ne prouve pas que votre version, vos droits et votre format sont couverts.\n\nVoie envisagée\tEssai concret à demander\tMotif de maintien manuel\nExport puis import\tExport fictif lu, colonnes reconnues, aperçu du résultat avant import\tChamp ambigu, doublon ou destination non contrôlée\nAPI, accès programmé à un outil\tLecture de l’objet fictif, droits constatés, résultat et erreur observés\tAccès absent, écriture trop large ou retour inexploitable\nPréparation à côté de l’outil\tBrouillon distinct, reprise manuelle et état final vérifié\tLa copie crée plus de travail que le geste initial\n\nCe tableau décrit des essais à mener, pas des intégrations testées ici. Aucune connexion à une messagerie ou à un logiciel comptable n’est utilisée dans notre démonstration. Si le format de destination est inconnu, le résultat reste une proposition à relire hors de cette destination.\n\nDistinguez le contrôle de passage de la qualité du texte. La FAQ de la CNIL indique : « Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles » (CNIL, questions-réponses sur l’IA générative). Un statut de préparation réussi ne certifie donc pas le contenu proposé. La checklist de vérification d’une réponse IA traite cette relecture.\n\nLa règle écrite\n\nLa frontière. Pour le passage fictif de demande de pièces, les responsabilités se lisent ainsi :\n\nSe prépare seul\tAttend une validation\tReste humain\nLire l’état, vérifier les champs, produire ou retrouver le brouillon\tTexte proposé et version d’entrée encore courante\tJuger le besoin, modifier le texte, saisir la décision et envoyer\n\nLa proposition. Nous séparons P-F-012-v1 de la zone de saisie humaine. La préparation produit un brouillon identifié ; une reprise identique retrouve ce brouillon au lieu d’en fabriquer un second. Le cabinet garde son suivi et les modifications du collaborateur. La validation humaine porte sur une proposition identifiée, pas sur un dossier abstrait.\n\nL’arrêt. Dans cette règle, la préparation cesse si un champ est absent, si l’état est inconnu, si le dossier est déjà traité, si une saisie humaine existe ou si la version a changé depuis la proposition. Chaque refus nomme son motif. Une nouvelle version exige une nouvelle préparation explicitement demandée ; elle n’efface pas la proposition précédente.\n\nLe jeu d’essai. Le jeu d’essai fictif est un ensemble d’entrées inventées pour vérifier la règle avant un vrai dossier. Nous avons exécuté huit cas locaux : préparation, déjà traité, entrée absente, saisie protégée, reprise identique, version changée, état inconnu et accord sur une ancienne proposition. Le script teste les états et la séparation des zones, pas une IA ni un logiciel éditeur.\n\nRejoué sur le jeu fictif\n\nLes sorties ci-dessous proviennent du rejeu local de cette règle. Le texte de démonstration est construit à partir d’une liste fictive ; ce ne sont pas des réponses obtenues de ChatGPT. Aucun modèle n’a été interrogé, aucun message envoyé et aucune écriture métier créée.\n\nCas joué\tSortie obtenue\tDécision\nF-012, v1, deux pièces attendues\tPROPOSITION / P-F-012-v1\tRelire « Pièces attendues : relevé A, facture B. »\nF-013 déjà traité\tREFUS / DEJA_TRAITE\tNe pas préparer une nouvelle demande\nF-014 sans liste de pièces\tREFUS / ENTREE_ABSENTE\tRenseigner l’entrée avant reprise\nF-015 avec « Texte corrigé par le collaborateur »\tREFUS / SAISIE_PROTEGEE\tGarder cette saisie inchangée\nReprise de F-012, v1, même entrée\tREUTILISER / P-F-012-v1\tRetrouver la proposition existante\nF-012 passé à v2 après préparation\tREFUS / VERSION_CHANGEE\tÉcarter l’ancienne proposition du passage courant\nF-016 avec état inconnu\tREFUS / ETAT_INCONNU\tFaire qualifier l’état\nAccord sur P-F-012-v0, alors que P-F-012-v1 est courant\tREFUS / VALIDATION_PERIMEE\tRelire la proposition courante\n\nDans le premier cas, le brouillon contient exactement les deux éléments de la liste d’entrée. Cela prouve la construction déterministe de ce texte de démonstration, pas la fiabilité d’une reformulation générée. Dans le quatrième, la saisie reste identique après l’appel. Dans le cinquième, l’identifiant reste P-F-012-v1 : la reprise n’ajoute pas une seconde proposition.\n\nReprendre et revenir en arrière sans perdre une décision\n\nUne reprise commence par relire la source de vérité. Si l’état est traité, le passage est clos. Si une saisie humaine est présente, la préparation laisse la place au collaborateur. Si l’entrée n’a pas changé et qu’une proposition existe, elle retrouve cette sortie. Si la version a changé, elle présente le motif plutôt que de réutiliser un brouillon périmé.\n\nLe retour arrière porte sur ce que la préparation possède : son brouillon, son état d’essai et son journal. Il ne signifie pas effacer une décision humaine. Si un message a déjà été envoyé ou une écriture enregistrée dans un autre outil, la suite se traite dans cet outil avec son responsable ; ce guide ne démontre aucune annulation de ces actions.\n\nTestez cette séparation avant d’automatiser une destination. Faites modifier le texte par un collaborateur dans le cas fictif, puis relancez la préparation. Si elle écrase sa modification, le passage n’est pas prêt. Faites aussi rejouer le même identifiant deux fois : un second lancement ne devrait pas être une seconde action.\n\nQuand garder la tâche manuelle\n\nGardez le geste manuel lorsque ses règles changent à chaque dossier, lorsque la source de vérité n’est pas identifiée ou lorsque la destination ne permet pas de constater le résultat. Un prompt ponctuel peut rester utile à la rédaction, même si le passage ne se prête pas encore à une automatisation.\n\nPour évaluer l’intérêt, observez le geste complet : lecture, préparation, relecture, exceptions, saisie finale et reprise. Notez les opérations répétées et celles qui demandent réellement du jugement. Un texte obtenu rapidement n’est pas un gain si le collaborateur passe ensuite plus de temps à rétablir les pièces manquantes ou à retrouver la version.\n\nAvant un engagement, précisez ce qui sera maintenu : format des entrées, accès, règle, cas d’essai, destination et traitement d’une panne. Un changement d’accès ou de colonne peut justifier de suspendre la préparation. Le coût dépend de ces contraintes ; aucun prix ni délai fictif ne permet de trancher pour votre tâche.\n\nLes erreurs fréquentes\nPrendre une réponse pour un état. Un message « terminé » ne prouve pas que le suivi de référence a changé.\nConfondre reprise et nouveau lancement. Sans clé de travail, le même geste peut produire deux demandes.\nValider une ancienne version. L’accord porte sur la proposition relue et sur son entrée, pas sur toutes les sorties futures.\nMélanger proposition et saisie. Si elles occupent la même zone, une nouvelle préparation peut détruire le travail humain.\nChoisir une connexion avant la règle. Un accès technique ne résout ni les exceptions ni le propriétaire du passage.\nQuestions fréquentes\nFaut-il changer de logiciel pour utiliser l’IA ?\n\nPas pour écrire cette fiche ni pour tester une préparation séparée. Le choix technique vient ensuite, à partir des accès et formats réellement disponibles. Garder le logiciel ne signifie pas que toute connexion est possible.\n\nL’IA doit-elle piloter tout le passage ?\n\nNon. Les identifiants, états, versions et conditions de reprise peuvent être contrôlés par des règles déterministes. Réservez l’IA au geste de préparation qui en a besoin, avec une sortie relue.\n\nQue faire si deux personnes traitent le même dossier ?\n\nDésignez un suivi de référence et vérifiez l’état au moment de la décision. Une réalisation technique devra éprouver les accès concurrents et empêcher une double action ; notre rejeu local séquentiel ne teste pas cette concurrence. Sans cette preuve, conservez une décision et une saisie manuelles.\n\nUn export suffit-il à automatiser ?\n\nIl peut suffire à préparer un brouillon séparé. Il ne prouve ni l’import correct dans la destination ni la fraîcheur de l’état au moment de la reprise. Testez les deux extrémités du passage sur le même cas fictif.\n\nComment savoir si la tâche est prête ?\n\nUn collègue peut remplir la fiche, rejouer le cas courant, nommer les refus et retrouver le résultat sans demander à l’auteur ce qu’il avait en tête. L’équipe peut alors recetter la réalisation : vérifier, sur les cas convenus, qu’elle fait bien le geste décrit.\n\nLa règle à retenir\n\nAutomatiser dans l’existant commence par écrire le passage et sa reprise, pas par choisir une connexion. La proposition se régénère ; la saisie humaine se conserve.\n\nPour aller plus loin\n\nNous prenons en charge la mécanique de ce passage : observer le geste, écrire ses états et ses exceptions, vérifier les accès, construire la préparation dans vos outils et la faire recetter par votre équipe. Vous gardez le jugement et la décision sur le dossier. Notre méthode décrit ce travail ; le service d’automatisation des tâches du cabinet en précise le périmètre.",
+      "cta": [
+        "Parlons de votre tâche",
+        " Parlons de votre tâche ",
+        "Confier cette tâche",
+        "Confier une première tâche"
+      ],
+      "linksVerified": [
+        {
+          "href": "/blog/prompt-chatgpt-expert-comptable",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/blog/utiliser-chatgpt-cabinet-comptable",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/blog/logiciel-ia-comptabilite",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/blog/verifier-reponse-ia-comptabilite",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/glossaire#validation-humaine",
+          "status": 200,
+          "anchorFound": true
+        },
+        {
+          "href": "/methode",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/automatisation-cabinet-comptable",
+          "status": 200,
+          "anchorFound": null
+        }
+      ],
+      "tablesScroll": [
+        {
+          "needsScroll": false,
+          "fontSize": "14px"
+        },
+        {
+          "needsScroll": false,
+          "fontSize": "14px"
+        },
+        {
+          "needsScroll": false,
+          "fontSize": "14px"
+        },
+        {
+          "needsScroll": false,
+          "fontSize": "14px"
+        }
+      ],
+      "figures": [
+        {
+          "src": "/proofs/blog/passage-registre.webp",
+          "alt": "Registre fictif F-012 à F-015 : proposition, déjà traité, entrée absente et saisie protégée.",
+          "width": 1600,
+          "height": 900,
+          "displayWidth": 656
+        },
+        {
+          "src": "/proofs/blog/passage-reprises.webp",
+          "alt": "Journal fictif des reprises : même proposition, version changée, état inconnu et accord périmé.",
+          "width": 1600,
+          "height": 900,
+          "displayWidth": 656
+        }
+      ],
+      "errors": [],
+      "failed": []
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "lang": "fr",
+      "h1": [
+        "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils"
+      ],
+      "canonical": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel",
+      "robots": "noindex, follow",
+      "title": "Automatiser IA sans changer de logiciel : méthode | Memlia",
+      "description": "Automatiser avec l'IA sans changer de logiciel : reliez entrée, proposition, validation et suivi, puis testez les reprises sur un jeu fictif.",
+      "og": "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils",
+      "author": "Kevin Kitanga",
+      "schema": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel#article",
+          "headline": "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils",
+          "description": "Automatiser avec l'IA sans changer de logiciel : reliez entrée, proposition, validation et suivi, puis testez les reprises sur un jeu fictif.",
+          "url": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel"
+          },
+          "datePublished": "2026-10-05T00:00:00.000Z",
+          "dateModified": "2026-10-05T00:00:00.000Z",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://memlia.fr/images/img-art-automatiser-avec-ia-sans-changer-logiciel-og.webp",
+            "width": 1200,
+            "height": 630,
+            "caption": "Deux plans de travail verts reliés par un cadre, sur des supports graphite et un fond crème"
+          },
+          "thumbnailUrl": "https://memlia.fr/images/img-art-automatiser-avec-ia-sans-changer-logiciel-og.webp",
+          "articleSection": [
+            "IA",
+            "Automatisation"
+          ],
+          "keywords": [
+            "automatiser IA sans changer logiciel",
+            "automatisation IA outils existants cabinet comptable",
+            "prompt ou automatisation cabinet"
+          ],
+          "wordCount": 2390
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://memlia.fr/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils",
+              "item": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+          "name": "Kevin Kitanga",
+          "jobTitle": "Fondateur de Memlia",
+          "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+          "url": "https://memlia.fr/a-propos",
+          "worksFor": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ],
+      "headings": [
+        {
+          "level": "H2",
+          "text": "Réponse directe",
+          "id": "reponse-directe"
+        },
+        {
+          "level": "H2",
+          "text": "Un prompt prépare une réponse ; un passage suit un état",
+          "id": "un-prompt-prepare-une-reponse-un-passage-suit-un-etat"
+        },
+        {
+          "level": "H2",
+          "text": "Pourquoi le passage casse à la main",
+          "id": "pourquoi-le-passage-casse-a-la-main"
+        },
+        {
+          "level": "H2",
+          "text": "Avant de commencer : décrire un seul geste",
+          "id": "avant-de-commencer-decrire-un-seul-geste"
+        },
+        {
+          "level": "H2",
+          "text": "La fiche de passage à copier",
+          "id": "la-fiche-de-passage-a-copier"
+        },
+        {
+          "level": "H2",
+          "text": "Vérifier le format et l’accès réellement disponibles",
+          "id": "verifier-le-format-et-l-acces-reellement-disponibles"
+        },
+        {
+          "level": "H2",
+          "text": "La règle écrite",
+          "id": "la-regle-ecrite"
+        },
+        {
+          "level": "H2",
+          "text": "Rejoué sur le jeu fictif",
+          "id": "rejoue-sur-le-jeu-fictif"
+        },
+        {
+          "level": "H2",
+          "text": "Reprendre et revenir en arrière sans perdre une décision",
+          "id": "reprendre-et-revenir-en-arriere-sans-perdre-une-decision"
+        },
+        {
+          "level": "H2",
+          "text": "Quand garder la tâche manuelle",
+          "id": "quand-garder-la-tache-manuelle"
+        },
+        {
+          "level": "H2",
+          "text": "Les erreurs fréquentes",
+          "id": "les-erreurs-frequentes"
+        },
+        {
+          "level": "H2",
+          "text": "Questions fréquentes",
+          "id": "questions-frequentes"
+        },
+        {
+          "level": "H3",
+          "text": "Faut-il changer de logiciel pour utiliser l’IA ?",
+          "id": "faut-il-changer-de-logiciel-pour-utiliser-l-ia"
+        },
+        {
+          "level": "H3",
+          "text": "L’IA doit-elle piloter tout le passage ?",
+          "id": "l-ia-doit-elle-piloter-tout-le-passage"
+        },
+        {
+          "level": "H3",
+          "text": "Que faire si deux personnes traitent le même dossier ?",
+          "id": "que-faire-si-deux-personnes-traitent-le-meme-dossier"
+        },
+        {
+          "level": "H3",
+          "text": "Un export suffit-il à automatiser ?",
+          "id": "un-export-suffit-il-a-automatiser"
+        },
+        {
+          "level": "H3",
+          "text": "Comment savoir si la tâche est prête ?",
+          "id": "comment-savoir-si-la-tache-est-prete"
+        },
+        {
+          "level": "H2",
+          "text": "La règle à retenir",
+          "id": "la-regle-a-retenir"
+        },
+        {
+          "level": "H2",
+          "text": "Pour aller plus loin",
+          "id": "pour-aller-plus-loin"
+        }
+      ],
+      "links": [
+        "/blog/prompt-chatgpt-expert-comptable",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/blog/utiliser-chatgpt-cabinet-comptable",
+        "/blog/logiciel-ia-comptabilite",
+        "/blog/verifier-reponse-ia-comptabilite",
+        "/glossaire#validation-humaine",
+        "/methode",
+        "/automatisation-cabinet-comptable"
+      ],
+      "tables": [
+        {
+          "headers": [
+            "Champ",
+            "Exemple fictif rempli",
+            "Question à résoudre chez vous"
+          ],
+          "rows": [
+            [
+              "Geste",
+              "Préparer une demande de pièces",
+              "Quel résultat complet attend le collaborateur ?"
+            ],
+            [
+              "Source de vérité",
+              "Suivi local F-012, version v1",
+              "Où lit-on l’état courant avant chaque reprise ?"
+            ],
+            [
+              "Déclencheur",
+              "Demande explicite de préparation",
+              "Qui lance le passage, à quel moment ?"
+            ],
+            [
+              "Clé de travail",
+              "F-012 + période 2026-09 + demande-pieces",
+              "Comment reconnaît-on le même travail ?"
+            ],
+            [
+              "Entrée minimale",
+              "Identifiant fictif, période, état, version, liste des pièces",
+              "Quels champs suffisent au geste ?"
+            ],
+            [
+              "Condition",
+              "État à préparer, liste renseignée, aucune saisie humaine",
+              "Quand est-il possible de préparer ?"
+            ],
+            [
+              "Proposition",
+              "P-F-012-v1, texte de demande en brouillon",
+              "Où la sortie reste-t-elle distincte de la saisie ?"
+            ],
+            [
+              "Validation",
+              "Relecture par le responsable du dossier",
+              "Qui décide de garder ou de corriger ?"
+            ],
+            [
+              "Destination",
+              "Zone de brouillon, puis suivi tenu par le collaborateur",
+              "Quel emplacement est réellement accessible ?"
+            ],
+            [
+              "Exception",
+              "Version changée, pièce absente, dossier déjà traité",
+              "Quel motif suspend la préparation ?"
+            ],
+            [
+              "Trace",
+              "Identifiant de proposition, version d’entrée, résultat",
+              "Quelle preuve permet de comprendre la reprise ?"
+            ],
+            [
+              "Fin du passage",
+              "Décision saisie, état constaté dans le suivi",
+              "Comment sait-on que le geste a abouti ?"
+            ],
+            [
+              "Reprise",
+              "Lire l’état ; réutiliser le même brouillon si rien n’a changé",
+              "Comment éviter une seconde proposition inutile ?"
+            ],
+            [
+              "Retour arrière",
+              "Écarter le brouillon, reprendre la tâche à la main",
+              "Que peut-on retirer sans toucher aux saisies ?"
+            ],
+            [
+              "Propriétaire de la règle",
+              "Référent de la tâche, remplaçant désigné",
+              "Qui traite un nouveau motif d’exception ?"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Voie envisagée",
+            "Essai concret à demander",
+            "Motif de maintien manuel"
+          ],
+          "rows": [
+            [
+              "Export puis import",
+              "Export fictif lu, colonnes reconnues, aperçu du résultat avant import",
+              "Champ ambigu, doublon ou destination non contrôlée"
+            ],
+            [
+              "API, accès programmé à un outil",
+              "Lecture de l’objet fictif, droits constatés, résultat et erreur observés",
+              "Accès absent, écriture trop large ou retour inexploitable"
+            ],
+            [
+              "Préparation à côté de l’outil",
+              "Brouillon distinct, reprise manuelle et état final vérifié",
+              "La copie crée plus de travail que le geste initial"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Se prépare seul",
+            "Attend une validation",
+            "Reste humain"
+          ],
+          "rows": [
+            [
+              "Lire l’état, vérifier les champs, produire ou retrouver le brouillon",
+              "Texte proposé et version d’entrée encore courante",
+              "Juger le besoin, modifier le texte, saisir la décision et envoyer"
+            ]
+          ]
+        },
+        {
+          "headers": [
+            "Cas joué",
+            "Sortie obtenue",
+            "Décision"
+          ],
+          "rows": [
+            [
+              "F-012, v1, deux pièces attendues",
+              "PROPOSITION / P-F-012-v1",
+              "Relire « Pièces attendues : relevé A, facture B. »"
+            ],
+            [
+              "F-013 déjà traité",
+              "REFUS / DEJA_TRAITE",
+              "Ne pas préparer une nouvelle demande"
+            ],
+            [
+              "F-014 sans liste de pièces",
+              "REFUS / ENTREE_ABSENTE",
+              "Renseigner l’entrée avant reprise"
+            ],
+            [
+              "F-015 avec « Texte corrigé par le collaborateur »",
+              "REFUS / SAISIE_PROTEGEE",
+              "Garder cette saisie inchangée"
+            ],
+            [
+              "Reprise de F-012, v1, même entrée",
+              "REUTILISER / P-F-012-v1",
+              "Retrouver la proposition existante"
+            ],
+            [
+              "F-012 passé à v2 après préparation",
+              "REFUS / VERSION_CHANGEE",
+              "Écarter l’ancienne proposition du passage courant"
+            ],
+            [
+              "F-016 avec état inconnu",
+              "REFUS / ETAT_INCONNU",
+              "Faire qualifier l’état"
+            ],
+            [
+              "Accord sur P-F-012-v0, alors que P-F-012-v1 est courant",
+              "REFUS / VALIDATION_PERIMEE",
+              "Relire la proposition courante"
+            ]
+          ]
+        }
+      ],
+      "text": "Réponse directe\n\nPour automatiser avec l’IA sans changer de logiciel, commencez par un passage précis entre deux outils : quelle entrée lire, quelle proposition préparer, qui la valide et où constater la suite. Écrivez aussi ce qui arrive lors d’une reprise ou d’une modification humaine. La fiche ci-dessous permet de cadrer ce passage avant de choisir un accès technique, avec un essai fictif qui ne touche aucune saisie.\n\nUn prompt prépare une réponse ; un passage suit un état\n\nUn passage entre outils est le transfert organisé d’une information d’un point de travail à un autre, avec une condition d’entrée et un résultat observable. Exemple : une liste de pièces manquantes devient un brouillon de demande, puis une décision inscrite dans le suivi. Ce n’est pas la migration de tout le dossier.\n\nUne source de vérité est l’emplacement désigné pour constater l’état courant. Si la liste de pièces est tenue dans un suivi partagé, le texte d’une conversation ne devient pas une nouvelle liste de référence. Une proposition est une sortie préparée et encore modifiable ; une saisie est une information que le collaborateur a enregistrée et que la préparation ne réécrit pas.\n\nLe prompt pour expert-comptable aide à préparer une sortie ponctuelle. Ici, la question change : comment éviter de refaire une demande déjà traitée, de travailler sur une ancienne liste ou de perdre la décision au retour dans le suivi ? Un état explicite permet de reprendre au bon endroit. Une conversation seule n’apporte pas cette organisation.\n\nL’IA intervient si une partie de la préparation demande de reformuler ou de synthétiser. La détection d’un identifiant déjà traité, la lecture d’un état ou le contrôle d’une version restent des règles explicites. Inutile de demander au modèle de deviner si un dossier a déjà été pris en charge.\n\nPourquoi le passage casse à la main\n\nLe collaborateur ouvre le suivi, vérifie les pièces, prépare un texte ailleurs, le corrige, puis retourne inscrire la suite. Entre ces gestes, une pièce arrive ou une autre personne traite le dossier. Le brouillon reste plausible, mais il ne correspond plus à l’état courant.\n\nLa règle implicite tient souvent dans une phrase : « Je vérifie une dernière fois avant de reprendre ce que j’avais préparé. » Celui qui connaît le dossier sait où regarder, ce qu’il avait déjà changé et ce qu’il ne faut pas refaire. Si ce savoir reste dans sa tête, la reprise par un collègue devient une enquête.\n\nL’objet à automatiser est ce passage entier, pas seulement la rédaction du message. La carte des tâches du cabinet sert à choisir la famille de travail ; la fiche suivante descend au niveau d’une entrée, d’une proposition et d’un résultat vérifiable.\n\nAvant de commencer : décrire un seul geste\n\nChoisissez un geste que l’équipe sait aujourd’hui terminer à la main. Conservez un exemple entièrement fictif du point de départ et du point d’arrivée. Le premier essai peut porter sur une demande de pièces préparée à partir d’un suivi, sans aucun envoi.\n\nRéunissez ces éléments :\n\nl’emplacement qui indique l’état courant du dossier ;\nles champs utiles à la préparation, avec un exemple de valeur ;\nla personne chargée de relire et de décider ;\nl’endroit où elle saisit sa décision ;\nle signe observable que le geste est terminé ;\nun cas incomplet et un cas déjà traité.\n\nSi la tâche n’est pas encore claire, commencez par choisir un premier usage ChatGPT. Si le besoin est surtout de choisir un fournisseur, utilisez plutôt la grille de choix d’un logiciel IA en comptabilité. Ce guide ne classe pas les éditeurs et ne suppose aucun accès disponible dans votre logiciel.\n\nLa fiche de passage à copier\n\nVoici une fiche remplie pour une démonstration de demande de pièces. Remplacez les valeurs fictives, mais gardez les questions. Elle peut vivre dans un document partagé ; aucun compte supplémentaire n’est nécessaire pour écrire la règle.\n\nChamp\tExemple fictif rempli\tQuestion à résoudre chez vous\nGeste\tPréparer une demande de pièces\tQuel résultat complet attend le collaborateur ?\nSource de vérité\tSuivi local F-012, version v1\tOù lit-on l’état courant avant chaque reprise ?\nDéclencheur\tDemande explicite de préparation\tQui lance le passage, à quel moment ?\nClé de travail\tF-012 + période 2026-09 + demande-pieces\tComment reconnaît-on le même travail ?\nEntrée minimale\tIdentifiant fictif, période, état, version, liste des pièces\tQuels champs suffisent au geste ?\nCondition\tÉtat à préparer, liste renseignée, aucune saisie humaine\tQuand est-il possible de préparer ?\nProposition\tP-F-012-v1, texte de demande en brouillon\tOù la sortie reste-t-elle distincte de la saisie ?\nValidation\tRelecture par le responsable du dossier\tQui décide de garder ou de corriger ?\nDestination\tZone de brouillon, puis suivi tenu par le collaborateur\tQuel emplacement est réellement accessible ?\nException\tVersion changée, pièce absente, dossier déjà traité\tQuel motif suspend la préparation ?\nTrace\tIdentifiant de proposition, version d’entrée, résultat\tQuelle preuve permet de comprendre la reprise ?\nFin du passage\tDécision saisie, état constaté dans le suivi\tComment sait-on que le geste a abouti ?\nReprise\tLire l’état ; réutiliser le même brouillon si rien n’a changé\tComment éviter une seconde proposition inutile ?\nRetour arrière\tÉcarter le brouillon, reprendre la tâche à la main\tQue peut-on retirer sans toucher aux saisies ?\nPropriétaire de la règle\tRéférent de la tâche, remplaçant désigné\tQui traite un nouveau motif d’exception ?\n\nLa clé de travail identifie le geste, pas le texte. Deux brouillons formulés différemment peuvent concerner la même demande. La version décrit l’entrée utilisée : une proposition préparée sur v1 ne devient pas valide pour v2 simplement parce qu’elle paraît bien écrite.\n\nGardez aussi l’identifiant de la proposition relue. Dire « validé » sans préciser quelle proposition a été lue laisse une ambiguïté dès qu’une nouvelle sortie existe. La trace sert à retrouver une décision, pas à classer les collaborateurs selon leur cadence.\n\nVérifier le format et l’accès réellement disponibles\n\nAvant de construire, demandez un essai sur le geste retenu. Un accès en lecture ne prouve pas un accès en écriture. Une liste de connecteurs ne prouve pas que votre version, vos droits et votre format sont couverts.\n\nVoie envisagée\tEssai concret à demander\tMotif de maintien manuel\nExport puis import\tExport fictif lu, colonnes reconnues, aperçu du résultat avant import\tChamp ambigu, doublon ou destination non contrôlée\nAPI, accès programmé à un outil\tLecture de l’objet fictif, droits constatés, résultat et erreur observés\tAccès absent, écriture trop large ou retour inexploitable\nPréparation à côté de l’outil\tBrouillon distinct, reprise manuelle et état final vérifié\tLa copie crée plus de travail que le geste initial\n\nCe tableau décrit des essais à mener, pas des intégrations testées ici. Aucune connexion à une messagerie ou à un logiciel comptable n’est utilisée dans notre démonstration. Si le format de destination est inconnu, le résultat reste une proposition à relire hors de cette destination.\n\nDistinguez le contrôle de passage de la qualité du texte. La FAQ de la CNIL indique : « Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles » (CNIL, questions-réponses sur l’IA générative). Un statut de préparation réussi ne certifie donc pas le contenu proposé. La checklist de vérification d’une réponse IA traite cette relecture.\n\nLa règle écrite\n\nLa frontière. Pour le passage fictif de demande de pièces, les responsabilités se lisent ainsi :\n\nSe prépare seul\tAttend une validation\tReste humain\nLire l’état, vérifier les champs, produire ou retrouver le brouillon\tTexte proposé et version d’entrée encore courante\tJuger le besoin, modifier le texte, saisir la décision et envoyer\n\nLa proposition. Nous séparons P-F-012-v1 de la zone de saisie humaine. La préparation produit un brouillon identifié ; une reprise identique retrouve ce brouillon au lieu d’en fabriquer un second. Le cabinet garde son suivi et les modifications du collaborateur. La validation humaine porte sur une proposition identifiée, pas sur un dossier abstrait.\n\nL’arrêt. Dans cette règle, la préparation cesse si un champ est absent, si l’état est inconnu, si le dossier est déjà traité, si une saisie humaine existe ou si la version a changé depuis la proposition. Chaque refus nomme son motif. Une nouvelle version exige une nouvelle préparation explicitement demandée ; elle n’efface pas la proposition précédente.\n\nLe jeu d’essai. Le jeu d’essai fictif est un ensemble d’entrées inventées pour vérifier la règle avant un vrai dossier. Nous avons exécuté huit cas locaux : préparation, déjà traité, entrée absente, saisie protégée, reprise identique, version changée, état inconnu et accord sur une ancienne proposition. Le script teste les états et la séparation des zones, pas une IA ni un logiciel éditeur.\n\nRejoué sur le jeu fictif\n\nLes sorties ci-dessous proviennent du rejeu local de cette règle. Le texte de démonstration est construit à partir d’une liste fictive ; ce ne sont pas des réponses obtenues de ChatGPT. Aucun modèle n’a été interrogé, aucun message envoyé et aucune écriture métier créée.\n\nCas joué\tSortie obtenue\tDécision\nF-012, v1, deux pièces attendues\tPROPOSITION / P-F-012-v1\tRelire « Pièces attendues : relevé A, facture B. »\nF-013 déjà traité\tREFUS / DEJA_TRAITE\tNe pas préparer une nouvelle demande\nF-014 sans liste de pièces\tREFUS / ENTREE_ABSENTE\tRenseigner l’entrée avant reprise\nF-015 avec « Texte corrigé par le collaborateur »\tREFUS / SAISIE_PROTEGEE\tGarder cette saisie inchangée\nReprise de F-012, v1, même entrée\tREUTILISER / P-F-012-v1\tRetrouver la proposition existante\nF-012 passé à v2 après préparation\tREFUS / VERSION_CHANGEE\tÉcarter l’ancienne proposition du passage courant\nF-016 avec état inconnu\tREFUS / ETAT_INCONNU\tFaire qualifier l’état\nAccord sur P-F-012-v0, alors que P-F-012-v1 est courant\tREFUS / VALIDATION_PERIMEE\tRelire la proposition courante\n\nDans le premier cas, le brouillon contient exactement les deux éléments de la liste d’entrée. Cela prouve la construction déterministe de ce texte de démonstration, pas la fiabilité d’une reformulation générée. Dans le quatrième, la saisie reste identique après l’appel. Dans le cinquième, l’identifiant reste P-F-012-v1 : la reprise n’ajoute pas une seconde proposition.\n\nReprendre et revenir en arrière sans perdre une décision\n\nUne reprise commence par relire la source de vérité. Si l’état est traité, le passage est clos. Si une saisie humaine est présente, la préparation laisse la place au collaborateur. Si l’entrée n’a pas changé et qu’une proposition existe, elle retrouve cette sortie. Si la version a changé, elle présente le motif plutôt que de réutiliser un brouillon périmé.\n\nLe retour arrière porte sur ce que la préparation possède : son brouillon, son état d’essai et son journal. Il ne signifie pas effacer une décision humaine. Si un message a déjà été envoyé ou une écriture enregistrée dans un autre outil, la suite se traite dans cet outil avec son responsable ; ce guide ne démontre aucune annulation de ces actions.\n\nTestez cette séparation avant d’automatiser une destination. Faites modifier le texte par un collaborateur dans le cas fictif, puis relancez la préparation. Si elle écrase sa modification, le passage n’est pas prêt. Faites aussi rejouer le même identifiant deux fois : un second lancement ne devrait pas être une seconde action.\n\nQuand garder la tâche manuelle\n\nGardez le geste manuel lorsque ses règles changent à chaque dossier, lorsque la source de vérité n’est pas identifiée ou lorsque la destination ne permet pas de constater le résultat. Un prompt ponctuel peut rester utile à la rédaction, même si le passage ne se prête pas encore à une automatisation.\n\nPour évaluer l’intérêt, observez le geste complet : lecture, préparation, relecture, exceptions, saisie finale et reprise. Notez les opérations répétées et celles qui demandent réellement du jugement. Un texte obtenu rapidement n’est pas un gain si le collaborateur passe ensuite plus de temps à rétablir les pièces manquantes ou à retrouver la version.\n\nAvant un engagement, précisez ce qui sera maintenu : format des entrées, accès, règle, cas d’essai, destination et traitement d’une panne. Un changement d’accès ou de colonne peut justifier de suspendre la préparation. Le coût dépend de ces contraintes ; aucun prix ni délai fictif ne permet de trancher pour votre tâche.\n\nLes erreurs fréquentes\nPrendre une réponse pour un état. Un message « terminé » ne prouve pas que le suivi de référence a changé.\nConfondre reprise et nouveau lancement. Sans clé de travail, le même geste peut produire deux demandes.\nValider une ancienne version. L’accord porte sur la proposition relue et sur son entrée, pas sur toutes les sorties futures.\nMélanger proposition et saisie. Si elles occupent la même zone, une nouvelle préparation peut détruire le travail humain.\nChoisir une connexion avant la règle. Un accès technique ne résout ni les exceptions ni le propriétaire du passage.\nQuestions fréquentes\nFaut-il changer de logiciel pour utiliser l’IA ?\n\nPas pour écrire cette fiche ni pour tester une préparation séparée. Le choix technique vient ensuite, à partir des accès et formats réellement disponibles. Garder le logiciel ne signifie pas que toute connexion est possible.\n\nL’IA doit-elle piloter tout le passage ?\n\nNon. Les identifiants, états, versions et conditions de reprise peuvent être contrôlés par des règles déterministes. Réservez l’IA au geste de préparation qui en a besoin, avec une sortie relue.\n\nQue faire si deux personnes traitent le même dossier ?\n\nDésignez un suivi de référence et vérifiez l’état au moment de la décision. Une réalisation technique devra éprouver les accès concurrents et empêcher une double action ; notre rejeu local séquentiel ne teste pas cette concurrence. Sans cette preuve, conservez une décision et une saisie manuelles.\n\nUn export suffit-il à automatiser ?\n\nIl peut suffire à préparer un brouillon séparé. Il ne prouve ni l’import correct dans la destination ni la fraîcheur de l’état au moment de la reprise. Testez les deux extrémités du passage sur le même cas fictif.\n\nComment savoir si la tâche est prête ?\n\nUn collègue peut remplir la fiche, rejouer le cas courant, nommer les refus et retrouver le résultat sans demander à l’auteur ce qu’il avait en tête. L’équipe peut alors recetter la réalisation : vérifier, sur les cas convenus, qu’elle fait bien le geste décrit.\n\nLa règle à retenir\n\nAutomatiser dans l’existant commence par écrire le passage et sa reprise, pas par choisir une connexion. La proposition se régénère ; la saisie humaine se conserve.\n\nPour aller plus loin\n\nNous prenons en charge la mécanique de ce passage : observer le geste, écrire ses états et ses exceptions, vérifier les accès, construire la préparation dans vos outils et la faire recetter par votre équipe. Vous gardez le jugement et la décision sur le dossier. Notre méthode décrit ce travail ; le service d’automatisation des tâches du cabinet en précise le périmètre.",
+      "cta": [
+        "Parlons de votre tâche",
+        " Parlons de votre tâche ",
+        "Confier cette tâche",
+        "Confier une première tâche"
+      ],
+      "linksVerified": [
+        {
+          "href": "/blog/prompt-chatgpt-expert-comptable",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/blog/utiliser-chatgpt-cabinet-comptable",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/blog/logiciel-ia-comptabilite",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/blog/verifier-reponse-ia-comptabilite",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/glossaire#validation-humaine",
+          "status": 200,
+          "anchorFound": true
+        },
+        {
+          "href": "/methode",
+          "status": 200,
+          "anchorFound": null
+        },
+        {
+          "href": "/automatisation-cabinet-comptable",
+          "status": 200,
+          "anchorFound": null
+        }
+      ],
+      "tablesScroll": [
+        {
+          "needsScroll": true,
+          "initial": 0,
+          "left": 120,
+          "max": 120,
+          "lastCellVisible": true,
+          "tabindex": null,
+          "fontSize": "14px"
+        },
+        {
+          "needsScroll": true,
+          "initial": 0,
+          "left": 120,
+          "max": 120,
+          "lastCellVisible": true,
+          "tabindex": null,
+          "fontSize": "14px"
+        },
+        {
+          "needsScroll": true,
+          "initial": 0,
+          "left": 120,
+          "max": 120,
+          "lastCellVisible": true,
+          "tabindex": null,
+          "fontSize": "14px"
+        },
+        {
+          "needsScroll": true,
+          "initial": 0,
+          "left": 120,
+          "max": 120,
+          "lastCellVisible": true,
+          "tabindex": null,
+          "fontSize": "14px"
+        }
+      ],
+      "figures": [
+        {
+          "src": "/proofs/blog/passage-registre.webp",
+          "alt": "Registre fictif F-012 à F-015 : proposition, déjà traité, entrée absente et saisie protégée.",
+          "width": 1600,
+          "height": 900,
+          "displayWidth": 356
+        },
+        {
+          "src": "/proofs/blog/passage-reprises.webp",
+          "alt": "Journal fictif des reprises : même proposition, version changée, état inconnu et accord périmé.",
+          "width": 1600,
+          "height": 900,
+          "displayWidth": 356
+        }
+      ],
+      "errors": [],
+      "failed": []
+    }
+  ],
+  "images": [
+    {
+      "path": "public/proofs/blog/passage-registre.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 29154
+    },
+    {
+      "path": "public/proofs/blog/passage-reprises.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 30876
+    },
+    {
+      "path": "public/images/img-art-automatiser-avec-ia-sans-changer-logiciel-768.webp",
+      "width": 768,
+      "height": 432,
+      "bytes": 9872
+    },
+    {
+      "path": "public/images/img-art-automatiser-avec-ia-sans-changer-logiciel-768.avif",
+      "width": 768,
+      "height": 432,
+      "bytes": 6453
+    },
+    {
+      "path": "public/images/img-art-automatiser-avec-ia-sans-changer-logiciel-1200.webp",
+      "width": 1200,
+      "height": 675,
+      "bytes": 17072
+    },
+    {
+      "path": "public/images/img-art-automatiser-avec-ia-sans-changer-logiciel-1200.avif",
+      "width": 1200,
+      "height": 675,
+      "bytes": 10296
+    },
+    {
+      "path": "public/images/img-art-automatiser-avec-ia-sans-changer-logiciel-1600.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 24532
+    },
+    {
+      "path": "public/images/img-art-automatiser-avec-ia-sans-changer-logiciel-1600.avif",
+      "width": 1600,
+      "height": 900,
+      "bytes": 14278
+    }
+  ],
+  "source": {
+    "requestedUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+    "finalUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+    "status": 200,
+    "checkedAt": "2026-10-05T10:32:50.304Z",
+    "citationFound": true,
+    "sha256": "236849940e6dc67b9355382594f01542803df9a09d7dd51927b0f5769a1f7c84"
+  }
+}

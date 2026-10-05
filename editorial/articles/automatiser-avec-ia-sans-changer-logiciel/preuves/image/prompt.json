@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-avec-ia-sans-changer-logiciel",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "1ad37eb8139c10cc1278ade8acf47cc1783eb878b4d89b32ebd442ccc84c8351",
+  "manifestSha256": "dd8d551a84e69cfe66e8d65500d0b2d1a5b54e27e27d1525c046809263963b0d",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact automatiser-avec-ia-sans-changer-logiciel."
+  ],
+  "engine": "image_generate",
+  "prompt": "Isometric matte 3D diorama, two worktables on LARGE graphite #231f20 bases linked by a tray holding a blank sheet. IMPORTANT: LARGE flat brightly lit SATURATED emerald GREEN #27b657 desktops and tray occupying 25 percent of the image, with separate deep green #1c8a41 feet. Dominant almost white paper cream #fcfbf7 background. Soft upper left light, translucent accents, no text no numbers no logos no people no interface. Exact bright green #27b657, NOT muted olive or dark teal.",
+  "brief": {
+    "sujet": "Le passage d'une proposition entre deux plans de travail.",
+    "composition": "Deux plans de travail reliés par un plateau portant une feuille vierge, bases graphite.",
+    "style": "Diorama 3D isométrique mat, accents translucides, lumière douce du haut gauche.",
+    "palette": "Crème #fcfbf7 dominante ; vert #27b657, vert profond #1c8a41 et graphite #231f20 en touches.",
+    "interdits": "Texte, chiffres, logo, personnage, donnée client, fausse interface, envoi automatique.",
+    "alt": "Deux plans de travail verts reliés par un cadre, sur des supports graphite et un fond crème"
+  },
+  "reviewCriteria": [
+    "deux plans et une proposition",
+    "palette mesurée",
+    "aucun texte",
+    "aucune interface",
+    "aucun personnage",
+    "dérivés adaptés"
+  ]
+}
