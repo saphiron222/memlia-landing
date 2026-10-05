@@ -21,6 +21,7 @@ for (const gaps of [1, 2]) for (const state of ['closed', 'mixed', 'open']) {
       (node as HTMLDetailsElement).open = state === 'open' || (state === 'mixed' && index % 2 === 0);
     }), state);
     const before = await details.evaluateAll(nodes => nodes.map(node => (node as HTMLDetailsElement).open));
+    await expect(page.locator('.nav-barre')).toBeVisible();
     const report = await page.locator('#diagnostic-report').inputValue();
     const expected = await page.locator('[data-result] .print-evidence li, [data-priorities] > li > p').allTextContents();
     await expect(page.locator('[data-summary] .print-evidence li')).toHaveCount(15);
@@ -49,9 +50,15 @@ for (const gaps of [1, 2]) for (const state of ['closed', 'mixed', 'open']) {
       }
       const text = normalize(pages.join(' '));
       for (const line of expected) expect(text).toContain(normalize(line));
+      expect(text).toContain('Inconnues à clarifier');
+      expect(text).toContain('Trois prochaines actions proposées');
       expect(collisions, `${position}: collisions du PDF`).toEqual([]);
       await loading.destroy();
     }
+    await page.emulateMedia({ media: 'print' });
+    await expect(page.locator('.nav-barre')).toBeHidden();
+    await page.emulateMedia({ media: 'screen' });
+    await expect(page.locator('.nav-barre')).toBeVisible();
     expect(await details.evaluateAll(nodes => nodes.map(node => (node as HTMLDetailsElement).open))).toEqual(before);
     expect(await page.locator('#diagnostic-report').inputValue()).toBe(report);
     for (const copy of await page.locator('[data-result] .print-evidence').all()) await expect(copy).toBeHidden();
