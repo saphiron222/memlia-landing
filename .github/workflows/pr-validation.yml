@@ -15,9 +15,11 @@ concurrency:
 jobs:
   verify:
     name: Repository gates
-    runs-on: ubuntu-latest
+    # Self-hosted runner on Kevin's Mac, registered to this repository only:
+    # the hosted ubuntu runner exhausted the monthly Actions minutes.
+    runs-on: [self-hosted, macOS, ARM64, memlia-mac]
     # The complete deterministic forge/build plus the browser contracts can
-    # exceed 20 minutes on a hosted runner. Keep one finite job and every gate;
+    # exceed 20 minutes. Keep one finite job and every gate;
     # do not cancel a progressing test suite before its verdict.
     timeout-minutes: 30
     steps:
@@ -39,7 +41,7 @@ jobs:
         run: npm ci
 
       - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
 
       - name: Check Astro and content
         run: npm run check
@@ -55,7 +57,7 @@ jobs:
         env:
           CF_PAGES: "1"
 
-      - name: Run browser contracts on Linux
+      - name: Run browser contracts
         run: npm run test
         env:
           CF_PAGES: "1"
