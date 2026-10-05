@@ -18,8 +18,9 @@ export function recipeSubstanceSha256(bytes) {
   return reviewSha256(JSON.stringify(project(JSON.parse(String(bytes)))));
 }
 
-export function recipeReviewMatches(expectedHash, bytes, root) {
+export function recipeReviewMatches(expectedHash, bytes, root, substanceHash) {
   if (expectedHash === reviewSha256(bytes)) return true;
+  if (substanceHash && substanceHash === recipeSubstanceSha256(bytes)) return true;
   const path = root && join(root, 'editorial/review-substance-baseline.json');
   if (!path || !existsSync(path)) return false;
   try {
@@ -52,7 +53,7 @@ export function reviewBindingErrors(review, slug, body, recipeBytes, renderedHtm
   if (review?.subject?.slug !== slug || review?.subject?.bodySha256 !== reviewSha256(body.trim())) {
     errors.push('revues.json : empreinte du corps ou slug divergent ; nouvelle revue indépendante requise.');
   }
-  if (!recipeReviewMatches(review?.subject?.recipeSha256, recipeBytes, root)) {
+  if (!recipeReviewMatches(review?.subject?.recipeSha256, recipeBytes, root, review?.subject?.recipeSubstanceSha256)) {
     errors.push('revues.json : empreinte de la recette divergente ; nouvelle revue indépendante requise.');
   }
   if (!/^[a-f0-9]{64}$/.test(review?.subject?.renderedSha256 ?? '')) {

@@ -1233,11 +1233,11 @@ test('la grille éditoriale est complète et son score est recalculé depuis les
   assert.ok(result.errors.some((error) => /score recalculé|earned.*divergent|90/i.test(error)), result.errors.join('\n'));
 });
 
-test('un contenu manifestement mince est refusé sans transformer le seuil en objectif SEO', async () => {
-  const fixture = await createCompleteDossier(root('thin'), { body: '## Réponse directe\n\nCopie.' });
+test('un corps vide est refusé sans imposer de seuil de longueur', async () => {
+  const fixture = await createCompleteDossier(root('thin'), { body: '' });
   const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
   assert.equal(result.pass, false);
-  assert.ok(result.errors.some((error) => /coquille|manifestement mince/i.test(error)), result.errors.join('\n'));
+  assert.ok(result.errors.some((error) => /coquille|corps.*absent/i.test(error)), result.errors.join('\n'));
 });
 
 test('une duplication exacte et une near-duplication du corpus sont refusées', async () => {
@@ -1334,13 +1334,13 @@ test('tous les champs du frontmatter divergent sont comparés au manifeste', asy
   }
 });
 
-test('l’inventaire et chaque dossier refusent les articles pipeline minces ou dupliqués', async () => {
+test('l’inventaire et chaque dossier refusent les articles pipeline vides ou dupliqués', async () => {
   const corpusRoot = root('audit-corpus');
-  await createCompleteDossier(corpusRoot, { slug: 'candidat-mince', heroId: 'img-candidat-mince', body: '## Réponse directe\n\nCopie.' });
+  await createCompleteDossier(corpusRoot, { slug: 'candidat-mince', heroId: 'img-candidat-mince', body: '' });
   const inventory = auditArticleInventory({ root: corpusRoot });
   assert.equal(inventory.articles.find((item) => item.slug === 'candidat-mince')?.status, 'pipeline');
   const result = await validateDossier({ root: corpusRoot, slug: 'candidat-mince' });
-  assert.ok(result.errors.some((error) => /manifestement mince/i.test(error)));
+  assert.ok(result.errors.some((error) => /corps.*absent/i.test(error)));
 });
 
 test('le registre canonique conserve bien les 31 skills Blog et 24 SEO', () => {

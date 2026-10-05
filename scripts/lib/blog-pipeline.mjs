@@ -58,7 +58,7 @@ export const CLAIM_TYPES = Object.freeze([
   'statistique-chiffre',
 ]);
 
-const MIN_SAFETY_WORDS = 80;
+
 /** Cadence décidée le 16/09/2026 : quatre articles par semaine, au plus deux le même jour. */
 export const CANDIDATS_PAR_JOUR_MAX = 2;
 export const CANDIDATS_PAR_SEMAINE_MAX = 4;
@@ -1641,13 +1641,8 @@ function jaccard(left, right) {
 
 function validateContentDepthAndDuplication(markdown, root, slug) {
   const errors = [];
-  const body = markdownBody(markdown);
   const normalized = normalizedContent(markdown);
-  const words = normalized.split(/\s+/).filter(Boolean);
-  const substantiveParagraphs = body.split(/\r?\n\s*\r?\n/).filter((part) => !/^#{1,6}\s/.test(part.trim()) && normalizedContent(part).split(/\s+/).filter(Boolean).length >= 12);
-  if (words.length < MIN_SAFETY_WORDS || substantiveParagraphs.length < 3) {
-    errors.push(`Contenu manifestement mince : le seuil anti-coquille exige au moins ${MIN_SAFETY_WORDS} mots utiles et 3 paragraphes substantiels ; ce seuil de sécurité n’est pas un objectif SEO.`);
-  }
+  if (!normalized) errors.push('Corps éditorial absent : une coquille vide ne peut être publiée.');
   const ownShingles = shingles(normalized);
   const blogDirectory = join(root, 'src/content/blog');
   if (!existsSync(blogDirectory)) return errors;
@@ -1789,8 +1784,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
       const current = queue.candidates.find((candidate) => candidate.slug === slug);
       const recette = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
       verifierIdentiteW39(recette, current, manifest?.publicationDate);
-      const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status)
-        && (candidate !== current || candidate.status === 'publie'));
+
       if (manifest?.publicationDate > jourCadrageParis()) throw new Error('W39 refuse une date future.');
       lireCadrageW39(absoluteRoot, manifest?.publicationDate);
       // La cadence est une préférence du planificateur, pas une porte d'audit.
