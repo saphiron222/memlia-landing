@@ -15,9 +15,10 @@ concurrency:
 jobs:
   verify:
     name: Repository gates
-    runs-on: ubuntu-latest
+    # Preserve main's repository-specific runner (hosted minutes exhausted).
+    runs-on: [self-hosted, macOS, ARM64, memlia-mac]
     # Two runs exhausted 30 minutes while Chromium was still progressing.
-    # Include the Playwright webServer rebuild and hosted-runner variance;
+    # Include the Playwright webServer rebuild and runner variance;
     # keep a finite budget without dropping or parallelizing any gate.
     timeout-minutes: 60
     steps:
@@ -39,7 +40,7 @@ jobs:
         run: npm ci
 
       - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
 
       - name: Check Astro and content
         run: npm run check
@@ -55,7 +56,7 @@ jobs:
         env:
           CF_PAGES: "1"
 
-      - name: Run browser contracts on Linux
+      - name: Run browser contracts
         run: npm run test
         env:
           CF_PAGES: "1"

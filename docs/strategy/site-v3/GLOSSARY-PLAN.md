@@ -108,20 +108,21 @@ n'ajoute **aucune affirmation de type sensible** n'a pas besoin de R6 : la revue
 que les affirmations sensibles n'ont pas bougé d'un octet. C'est la voie prise le 19/09/2026 pour la
 vague 2, et la raison pour laquelle ses quatre termes réglementaires sont restés dehors.
 
-Entre deux vagues, quand le chrome du site change sans que la matière bouge, on ne rescelle pas : on
-**réaffirme** (`node scripts/reaffirm-resource-review.mjs reaffirmer`), qui compare le sujet courant
+Entre deux vagues, quand le chrome du site change sans que la matière bouge, on rescelle les surfaces
+(`npm run resource:seal-surfaces`), puis on **réaffirme** (`node scripts/reaffirm-resource-review.mjs reaffirmer`), qui compare le sujet courant
 à l'ancre feuille par feuille, refuse tout écart non déclaré, revérifie que chaque affirmation est
 encore rendue et chaque copie de source intacte, puis re-épingle. La revue en vigueur est
 `metier-review-r5`.
 
 ## 5. Le piège, écrit pour ne pas être refait
 
-**Ne jamais rejouer `resource:seal-surfaces` après un scellement de revue.** Le scellement des
-surfaces réinitialise sans condition les listes de défauts et le blocage : relancé après coup, il
-efface le bloc de revue que le scellement venait d'écrire, **silencieusement**. Le dossier repart en
-attente sans que rien ne rougisse. C'est un défaut connu du script, relevé lors du scellement R2 et
-consigné dans `docs/qa/hub-ressources/metier-r2-seal.md` ; tant qu'il n'est pas corrigé, l'ordre du
-§4 est contraignant : sceller d'abord, faire relire ensuite, ancrer enfin.
+`resource:seal-surfaces` conserve désormais la revue existante non PENDING, ses verdicts, sa
+date de campagne (`sensitiveMatter.checkedAt`) et les défauts P0/P1/blocage. Il ne revient pas
+à la date initiale du 16/09 : un verdict ajouté à une campagne ultérieure reste antérieur
+à celle-ci. Une date manquante reste manquante, donc refusée par le validateur. Le défaut de
+perte silencieuse relevé dans `docs/qa/hub-ressources/metier-r2-seal.md` est corrigé ; les
+empreintes de revue ne sont toutefois pas actualisées par le scellement. La réaffirmation
+reste nécessaire après un changement de chrome ; une matière sensible modifiée exige sa revue.
 
 Second piège, du même genre : une réaffirmation n'est pas un rescellement. Rescellier en effaçant la
 revue serait la perte silencieuse ; re-épingler automatiquement serait pire, une revue qui suit

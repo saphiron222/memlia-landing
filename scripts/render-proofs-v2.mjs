@@ -23,9 +23,12 @@ const mode = process.argv.includes('--check') ? 'check' : process.argv.includes(
 const fec = process.argv.includes('--series=fec');
 const roi = process.argv.includes('--series=roi');
 assert.ok(!(fec && roi), 'Choisir une seule série');
-const source = roi ? 'docs/design/roi-automatisation-proof' : fec ? 'docs/design/fec-local-proof' : 'docs/design/site-v2-proofs';
+const option = (name, fallback) => process.argv.find((arg) => arg.startsWith(`--${name}=`))?.split('=').slice(1).join('=') ?? fallback;
+const source = option('source', roi ? 'docs/design/roi-automatisation-proof' : fec ? 'docs/design/fec-local-proof' : 'docs/design/site-v2-proofs');
 const contractPath = `${source}/content-contract.json`;
-const manifestPath = roi ? 'docs/qa/roi-automatisation/proofs-manifest.json' : fec ? 'docs/qa/fec-local/proofs-manifest.json' : 'docs/qa/site-v2/proofs-manifest.json';
+const manifestPath = option('manifest', roi ? 'docs/qa/roi-automatisation/proofs-manifest.json' : fec ? 'docs/qa/fec-local/proofs-manifest.json' : 'docs/qa/site-v2/proofs-manifest.json');
+const startIndex = Number(option('start', roi ? '30' : fec ? '29' : '1'));
+assert.ok(Number.isInteger(startIndex) && startIndex > 0, 'Index de départ invalide');
 const output = `.qa/annotations/${roi ? 'roi' : fec ? 'fec' : 'v2'}-${mode}`;
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 mkdirSync(output, { recursive: true });
@@ -93,7 +96,7 @@ try {
     assert.deepEqual(measured.hidden, [], `Texte masqué : ${id}`);
     if (mode !== 'adopt') assert.equal(measured.text, contract[index].centralText, `Contenu divergent : ${id}`);
     adopted.push({ id, centralText: measured.text });
-    const name = `${String(index + (roi ? 30 : fec ? 29 : 1)).padStart(2, '0')}-${id}`;
+    const name = `${String(index + startIndex).padStart(2, '0')}-${id}`;
     const png = await element.screenshot({ animations: 'disabled', path: `${output}/${name}.png` });
     const webp = await sharp(png).webp({ quality: 90, effort: 6 }).toBuffer();
     assert.ok(webp.length < 150_000, `Preuve trop lourde : ${name} (${webp.length} octets)`);
