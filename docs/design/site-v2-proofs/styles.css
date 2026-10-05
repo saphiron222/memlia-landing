@@ -3,6 +3,10 @@
    compositions de plus. Les fontes et les variables viennent de la feuille d'origine. */
 @import url('../m4-r1-functional-proofs/styles.css');
 
+/* Consigne : les libellés de contrainte occupent une vraie colonne, pas une cellule d’icône. */
+.prompt-proof .scope-col li{grid-template-columns:110px 1fr;padding:22px 18px;font-size:19px}
+.prompt-proof .scope-col li span:first-child{font-weight:600;color:var(--green-dark)}
+
 /* Copie à gauche sans numéro d'étape : ces scènes ne sont pas une séquence. */
 .side-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:72px;align-items:center;padding:24px 40px}
 .side-layout.reverse{grid-template-columns:1.28fr .72fr}

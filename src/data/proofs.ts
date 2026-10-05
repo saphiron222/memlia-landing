@@ -2,6 +2,9 @@
 export const PROOFS = {
   'v2/29-outil-pseudonymisation': { title: 'Les noms changent, le risque reste visible', alt: 'Avant et après fictifs : Alice devient C1_000001, le libellé est supprimé, le montant rare 9876 reste conservé et le risque de réidentification est signalé.', detail: 'La copie supprime le libellé et remplace les noms par des alias cohérents. Les dates et montants conservés restent des quasi-identifiants ; la décision de partage appartient au cabinet.' },
 
+  'v2/29-outil-prompt': { title: 'Une consigne préparée, la décision au cabinet', alt: 'Consigne fictive de demande de pièces : entrées permises, brouillon à relire, validation humaine et arrêt sur une information manquante.', detail: 'Le générateur assemble des blocs écrits, sans appel de modèle. Le cas complet prépare un brouillon ; une information absente ou contradictoire doit arrêter le travail dans le futur outil autorisé.' },
+
+
   'v2/30-outil-roi': { title: 'Capacité et trésorerie ne se confondent pas', alt: 'Deux scénarios fictifs : 6,67 heures et 1,60 heure de capacité mensuelle ; maintenance 50 euros par mois actif ; net cash 800 euros et moins 500 euros sur douze mois.', detail: 'Le premier scénario reprend l’oracle du calculateur. Le second réduit automatisation et adoption, ajoute deux mois de délai et diminue les dépenses évitables. Aucun résultat n’est une promesse de gain.' },
 
 
@@ -9,6 +12,7 @@ export const PROOFS = {
 
 
   'v2/29-outil-fec': { title: 'La date impossible est localisée', alt: 'FEC fictif : date impossible 20260230 ligne 4, colonne EcritureDate ; règle date, retour au logiciel source, original inchangé.', detail: 'Trois lignes fictives sont examinées. La troisième ligne de données, ligne 4 du fichier, présente une date impossible. Le rapport localise et explique sans corriger le FEC.' },
+
 
   '01-flux': { title: 'De l’information à la décision', alt: 'Flux fictif : une information entrante passe par les règles du cabinet, une exception est isolée puis soumise à validation humaine.', detail: 'L’information entre dans un périmètre défini. La règle du cabinet prépare une proposition. Un champ requis absent isole le cas concerné : la validation reste bloquée tant que la vérification humaine n’a pas eu lieu.' },
   '02-repetition': { title: 'Une préparation, pas quatre ressaisies', alt: 'Quatre gestes manuels regroupés en une préparation : 47 propositions à relire et un cas fictif à vérifier.', detail: 'Sur 48 éléments fictifs analysés, 47 propositions sont prêtes à être relues et un cas reste à vérifier. Le total inclut l’exception : rien n’est écarté silencieusement et aucun résultat n’est appliqué automatiquement.' },

@@ -373,11 +373,19 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByLabel('Durée d’utilisation').fill('5');
       await page.getByRole('button', { name: 'Calculer le plan' }).click();
       await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
+
+    } else if (outil.slug === 'generateur-prompt-expert-comptable') {
+      await page.getByRole('button', { name: 'Demande de pièces', exact: true }).click();
+      await page.getByLabel(/Je confirme que cette description/).check();
+      await page.getByRole('button', { name: 'Assembler le prompt' }).click();
+      await expect(page.locator('[data-output]')).toBeVisible();
+
     } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
       await page.locator('[data-example]').click();
       await expect(page.locator('[data-selection]')).toBeVisible();
       await page.locator('[data-preview]').click();
       await expect(page.locator('[data-after]')).toContainText('C1_000001');
+
     } else if (outil.slug === 'calculateur-roi-automatisation') {
       await page.getByRole('button', { name: 'Charger trois exemples fictifs' }).click();
       await page.getByRole('button', { name: 'Comparer les trois scénarios' }).click();
@@ -389,6 +397,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
       await page.getByRole('button', { name: 'Préparer la charte', exact: true }).click();
       await expect(page.locator('[data-editor]')).toHaveValue(/Relance de pièces/);
+
     } else {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');

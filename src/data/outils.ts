@@ -63,6 +63,34 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
 
+    slug: 'generateur-prompt-expert-comptable',
+    categorie: 'ecrire',
+    statut: 'disponible',
+    h1: 'Générateur de prompt pour expert-comptable',
+    title: 'Générateur de prompt pour expert-comptable | Memlia',
+    description: 'Décrivez une tâche abstraite du cabinet et préparez un prompt structuré, avec validation humaine, conditions d’arrêt et exemples fictifs.',
+    promesse: { entree: 'Tâche abstraite et contraintes choisies', resultat: 'Prompt éditable, frontière et cas fictifs à rejouer' },
+    limites: [
+      'Cet outil assemble des blocs écrits dans le navigateur ; il n’appelle aucun modèle et ne fournit aucune réponse comptable.',
+      'Le contrôle porte sur la structure et quelques signaux explicites. Il ne comprend pas le sens, ne détecte pas tous les noms et ne garantit ni sécurité, ni conformité, ni anonymisation.',
+      'Le cabinet choisit un outil autorisé avant de réutiliser un prompt. Aucun fichier ni contenu de pièce ne doit être saisi ici.',
+      'Une description hors bornes, un signal sensible ou une demande de décision automatique est refusé. Un prompt édité incomplet reste conservé, mais sa copie et son export sont bloqués.',
+    ],
+    mentionLocale: 'Vos choix et votre prompt restent dans ce navigateur, sans envoi ni stockage. Recharger la page les efface. La copie et le fichier texte sont produits seulement à votre demande.',
+    proof: 'v2/29-outil-prompt',
+    zoneLarge: true,
+    source: {
+      nom: 'CNIL — Questions-réponses sur l’utilisation d’un système d’IA générative',
+      url: 'https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative',
+      extrait: 'La CNIL recommande de définir les usages autorisés et les données qui peuvent être partagées. Cette source éclaire la précaution de saisie ; elle ne certifie pas ce générateur.',
+      verifieeLe: '3 octobre 2026',
+    },
+    articleExact: '/blog/prompt-chatgpt-expert-comptable',
+    pageService: '/methode',
+    cta: '/contact',
+  },
+  {
+
     slug: 'calculateur-roi-automatisation', categorie: 'calculer', statut: 'disponible',
     h1: 'Calculateur de ROI d’automatisation comptable',
     title: 'Calculateur de ROI d’automatisation comptable | Memlia',
@@ -131,6 +159,7 @@ export const OUTILS: readonly OutilDefinition[] = [
       complement: { nom: 'BOFiP — Format du fichier des écritures comptables', url: 'https://bofip.impots.gouv.fr/bofip/9028-PGP.html', extrait: 'Les précisions de format distinguent les champs requis et ceux à blanc si non utilisés. Aucun jugement fiscal n’est automatisé ici.' },
     },
     pageService: '/automatisation-cabinet-comptable', cta: '/contact',
+
   },
   {
     slug: 'calculateur-marge-commerciale',

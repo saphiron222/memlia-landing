@@ -1,0 +1,63 @@
+
+Running 2 tests using 1 worker
+
+  ✘  1 tests/browser/prompt-reprise.spec.ts:9:1 › choix modifiés : sortie conservée mais copie bloquée jusqu’à nouvel assemblage (6.4s)
+  ✘  2 tests/browser/prompt-reprise.spec.ts:22:1 › copie refusée : sélection du texte édité sans perte (614ms)
+
+
+  1) tests/browser/prompt-reprise.spec.ts:9:1 › choix modifiés : sortie conservée mais copie bloquée jusqu’à nouvel assemblage 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator:  getByRole('button', { name: 'Copier le prompt', exact: true })
+    Expected: disabled
+    Received: enabled
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Copier le prompt', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Copier le prompt', exact: true })
+        14 × locator resolved to <button data-copy="" type="button" class="btn btn-contour" data-astro-cid-ppu6akd2="">Copier le prompt</button>
+           - unexpected value "enabled"
+
+
+      13 |   await page.getByLabel('Format attendu').selectOption('tableau');
+      14 |   await expect(editor).toHaveValue(before);
+    > 15 |   await expect(page.getByRole('button', { name: 'Copier le prompt', exact: true })).toBeDisabled();
+         |                                                                                     ^
+      16 |   await editor.fill(before + '\nCommentaire abstrait conservé.');
+      17 |   await expect(page.getByRole('button', { name: 'Exporter en texte (.txt)' })).toBeDisabled();
+      18 |   page.once('dialog', dialog => dialog.accept());
+        at /Users/kevinkitanga/.hermes/kanban/workspaces/t_371a73be/site/tests/browser/prompt-reprise.spec.ts:15:85
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .qa/test-results/prompt-reprise-choix-modif-8bbd8-e-jusqu’à-nouvel-assemblage/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .qa/test-results/prompt-reprise-choix-modif-8bbd8-e-jusqu’à-nouvel-assemblage/error-context.md
+
+  2) tests/browser/prompt-reprise.spec.ts:22:1 › copie refusée : sélection du texte édité sans perte 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 0
+    Received: 1576
+
+      25 |   await page.getByRole('button', { name: 'Copier le prompt', exact: true }).click();
+      26 |   const selection = await page.locator('[data-editor]').evaluate((element: HTMLTextAreaElement) => ({ start: element.selectionStart, end: element.selectionEnd, size: element.value.length }));
+    > 27 |   expect(selection.start).toBe(0); expect(selection.end).toBe(selection.size);
+         |                           ^
+      28 |   await expect(page.locator('[data-editor]')).toBeFocused();
+      29 | });
+      30 |
+        at /Users/kevinkitanga/.hermes/kanban/workspaces/t_371a73be/site/tests/browser/prompt-reprise.spec.ts:27:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .qa/test-results/prompt-reprise-copie-refus-80dc1-n-du-texte-édité-sans-perte/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .qa/test-results/prompt-reprise-copie-refus-80dc1-n-du-texte-édité-sans-perte/error-context.md
+
+  2 failed
+    tests/browser/prompt-reprise.spec.ts:9:1 › choix modifiés : sortie conservée mais copie bloquée jusqu’à nouvel assemblage 
+    tests/browser/prompt-reprise.spec.ts:22:1 › copie refusée : sélection du texte édité sans perte 
