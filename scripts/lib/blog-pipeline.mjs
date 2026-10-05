@@ -13,6 +13,7 @@ import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
 import { reviewBindingErrors, reviewSha256 } from './blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
 import { estReliquatW39, lireCadrageW39, jourCadrageParis, verifierIdentiteW39 } from './blog-w39-framing.mjs';
+import { estRattrapageIA, lireRattrapageIA, verifierDateRattrapageIA, semaineEditorialeIA, plafondJourIA } from './blog-ia-catchup.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
   'blog-strategy', 'blog-brand', 'blog-persona', 'blog-discourse', 'blog-google', 'blog-calendar',
@@ -87,6 +88,7 @@ export function semaineIso(value) {
 }
 /** Refuse une date qui ferait dépasser la cadence propre à chaque flux éditorial. */
 export function verifierPlafonds(actifs, date, { serie = null, slug = null, root = null, now = new Date() } = {}) {
+  if (estRattrapageIA(slug) && serie === 'cicatrices') throw new Error('Rattrapage IA : série ordinaire requise.');
   if (estReliquatW39(slug) && !isDate(date)) throw new Error('Cadrage W39 : date invalide.');
   const semaine = semaineIso(date);
   if (serie === 'cicatrices') {
@@ -104,10 +106,19 @@ export function verifierPlafonds(actifs, date, { serie = null, slug = null, root
   }
   if (estReliquatW39(slug)) throw new Error('Le reliquat W39 ne peut pas devenir un article ordinaire.');
   const ordinaires = actifs.filter((candidate) => candidate.serie !== 'cicatrices');
-  if (ordinaires.filter((candidate) => candidate.date === date).length >= CANDIDATS_PAR_JOUR_MAX) {
-    throw new Error(`${CANDIDATS_PAR_JOUR_MAX} candidats sont déjà planifiés le ${date} ; le plafond est de ${CANDIDATS_PAR_JOUR_MAX} candidats par jour.`);
+  const rule = lireRattrapageIA(root);
+  if (estRattrapageIA(slug) && root && !rule) throw new Error('Rattrapage IA : règle requise.');
+  verifierDateRattrapageIA(rule, slug, date, serie);
+  for (const candidate of ordinaires) verifierDateRattrapageIA(rule, candidate.slug, candidate.date, candidate.serie);
+  const plafondJour = plafondJourIA(rule, slug, date, ordinaires, CANDIDATS_PAR_JOUR_MAX);
+  if (ordinaires.filter((candidate) => candidate.date === date).length >= plafondJour) {
+    throw new Error(`${plafondJour} candidats sont déjà planifiés le ${date} ; le plafond est de ${plafondJour} candidats par jour.`);
   }
-  if (ordinaires.filter((candidate) => isDate(candidate.date) && semaineIso(candidate.date) === semaine).length >= CANDIDATS_PAR_SEMAINE_MAX) {
+  const semaineEditoriale = semaineEditorialeIA(rule, slug, date, semaine);
+  const dansLot = rule?.publications[slug] === date;
+  if (ordinaires.filter((candidate) => isDate(candidate.date)
+    && (rule?.publications[candidate.slug] === candidate.date) === dansLot
+    && semaineEditorialeIA(rule, candidate.slug, candidate.date, semaineIso(candidate.date)) === semaineEditoriale).length >= CANDIDATS_PAR_SEMAINE_MAX) {
     throw new Error(`${CANDIDATS_PAR_SEMAINE_MAX} candidats sont déjà planifiés la semaine ${semaine} ; le plafond est de ${CANDIDATS_PAR_SEMAINE_MAX} candidats par semaine.`);
   }
 }
@@ -587,7 +598,7 @@ export function createCandidate({ root = process.cwd(), slug, title, primaryQuer
   const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
   if (!Array.isArray(queue.candidates)) throw new Error('editorial/queue.json doit contenir une liste candidates.');
   const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status));
-  verifierPlafonds(actifs, date, { slug });
+  verifierPlafonds(actifs, date, { slug, root: absoluteRoot });
   if (queue.candidates.some((candidate) => candidate.slug === slug)) throw new Error(`Le candidat ${slug} existe déjà dans la file.`);
 
   const articlePath = join(absoluteRoot, 'src/content/blog', `${slug}.md`);
