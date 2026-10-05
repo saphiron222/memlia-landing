@@ -3,7 +3,7 @@
   "sources": [
     {
       "path": "docs/design/blog-article-proofs/index.html",
-      "sha256": "d3936b3f46bf3e88dc907fceacd8afca2e0e574d1ad818f4b210c0ebe44c5c19"
+      "sha256": "1e26d5f4fa42aff833f341541e1c506c9c1d01facab5e296eff1ca67baafc92e"
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
-      "sha256": "9d85d8cdf9a80e532c68a31c2f238bf85aa458fef0577d9df6692467506930a3"
+      "sha256": "64cf0ade4320c253168fd35e18db3417fc716658e9397fd15ead73289d42b457"
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
@@ -187,6 +187,18 @@
       "target": "public/proofs/blog/verification-fiche-reserve.webp",
       "bytes": 33938,
       "sha256": "0de9f3041fdd2601fee9b348276fd4dc59bb380a37896f6f8b7d046d5fb5ecdc"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#confidentialite-fiche",
+      "target": "public/proofs/blog/confidentialite-fiche.webp",
+      "bytes": 33242,
+      "sha256": "10b63c419bb8563dc58c42ce1553877b684e5339621c7df0f756a4312200e03f"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#confidentialite-registre",
+      "target": "public/proofs/blog/confidentialite-registre.webp",
+      "bytes": 31004,
+      "sha256": "3287d3e6884476d98bc887b2c1dd7cfa21367600041840f259338f9ec86d8540"
     }
   ]
 }

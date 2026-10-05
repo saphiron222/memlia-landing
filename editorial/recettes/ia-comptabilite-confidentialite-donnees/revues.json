@@ -1,0 +1,197 @@
+{
+  "subject": {
+    "slug": "ia-comptabilite-confidentialite-donnees",
+    "bodySha256": "6444a6d6c45879e2476998b0d12fdd038838ef2b08a228fccd44edb3ca5f6582",
+    "recipeSha256": "3efe5aba23ac2710d772d326971380719f377ae874d1354a047c25adf2d88c29",
+    "renderedSha256": "ed34033213e07b7d520fa7072732a6495fcefa7e3c22c9ef347cd76239389a5b"
+  },
+  "reviewedAt": "2026-10-05",
+  "reviewerTaskId": "t_6446d285",
+  "reviewerProfile": "metier",
+  "verdict": "PASS",
+  "scope": "Revue indépendante unique par metier:t_6446d285 du candidat local, de ses implications données personnelles/confidentialité, de son utilité et de son rendu. Les cinq grilles sont les volets d'un même avis, sans personne ni revue supplémentaire. Auteur kevin distinct. L'identifiant qualifié du volet business et le nom de profil du volet editorial désignent le même reviewer réel, pas deux personnes fictives. Aucun fournisseur approuvé, traitement réel autorisé, conformité RGPD certifiée ou publication vérifiée par cet avis.",
+  "editorial": {
+    "reviewer": "metier",
+    "reviewerProfile": "metier",
+    "reviewerTaskId": "t_6446d285",
+    "p0": [],
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "corps.md:23-82 : fiche de onze champs copiables, contexte entièrement inventé et cinq questions d'environnement. Finalité, destination du brouillon, entrée minimale, exclusions, compte/espace, accès, réutilisation, conservation, décideur et réexamen donnent au dirigeant une préparation concrète. Le guide n'est pas une procédure exhaustive d'autorisation RGPD ; corps.md:34 et 88-96 réserve cadre applicable et décision aux responsables compétents."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Brief §3 et HTML : geste de préparation des entrées, distinct du patron de consigne, du choix de logiciel et du contrôle d'une sortie. Les trois articles frères sont reliés au bon endroit. AUDIT-EDITORIAL documente une recherche Hermes et quatre autocomplétions vides ; aucun classement Google, volume nul ou performance de cette URL n'est acquis."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Deux sources primaires CNIL : copies natives intègres et trois citations présentes dans le texte visible ; pages réouvertes par web_extract pendant cette revue. Anonymisation datée 19/05/2020 ; définition sans date éditoriale visible. Les contextes correspondent bien aux personnes physiques et aux données pseudonymisées, sans attribution d'une autorisation de transmettre à la CNIL.",
+          "Auteur Kevin Kitanga, bio Fondateur de Memlia et jeux fictifs explicites dans le rendu. Ni titre d'expert-comptable humain, ni cas client, ni expérience fournisseur ou statistique non démontrée identifiés."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Lecture indépendante puis exécution du script original en VM avec seule écriture de journal interceptée : quatre sorties et transmission false concordent au journal auteur. Qualification absente donne QUALIFICATION_ABSENTE. Le contexte, la réserve de disponibilité du relevé et les questions proposées sont des exemples inventés, non des sorties obtenues d'un modèle.",
+          "corps.md:86-111 porte frontière trois colonnes, proposition distincte des saisies, conditions d'arrêt et quatre cas concrets. PREPARATION_PRETE est explicitement l'état du protocole fictif à relire, pas l'autorisation d'un fichier réel. Le script ne détecte aucun identifiant ou risque sémantique. Sa validation incomplète des entrées est une limite de démonstration documentée dans les notes, pas une fiabilité de produit accordée."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "HTML réellement chargé depuis un serveur local de revue dans Chromium 1280 et 390 : lang fr, un H1, onglet/description/canonical conformes à la recette, auteur et cinq types JSON-LD, sept liens internes résolus et ancre validation-humaine présente. Métas OG et Twitter concordantes. Aucune erreur JS ou ressource HTTP en échec ; aucun débordement horizontal global.",
+          "Quatre tableaux à trois colonnes et en-têtes : 11 champs, 5 points environnement, frontière et 4 cas. À 390 px les tableaux eux-mêmes défilent réellement de 120 px jusqu'à la troisième colonne ; les colonnes ne sont pas supprimées. Le noindex, follow et témoin privé sont ceux de la preview. Contrat natif vert sur 15 articles dont ce candidat."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Réponse directe, définitions, fiche, états et cinq FAQ présents dans le HTML initial. Le public/personnel/confidentiel n'est pas traité comme des catégories exclusives. Les alts et le texte différencient le routage de l'analyse des personnes. Aucune citation par un moteur IA, accès crawler public ou indexation de ce candidat noindex n'est démontré."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "Voix nous/vous, savoir-faire de qualification rendu traçable, mécanique prise en charge dans les outils existants et jugement laissé au cabinet. Clôture et CTA Confier cette tâche vers /contact, méthode et garanties reliées. Pas de gain chiffré, anonymisation automatique ou service logiciel autonome promis. Le titre est une formulation de méthode, pas une garantie que la fiche rend toute transmission sûre ; la réponse directe conserve cette distinction."
+        ]
+      }
+    }
+  },
+  "business": {
+    "reviewer": "metier",
+    "reviewerId": "metier:t_6446d285",
+    "reviewerTaskId": "t_6446d285",
+    "reviewerProfile": "metier",
+    "role": "direction-associes",
+    "scope": "Volet RGPD/confidentialité de la même revue unique ; citations et inférences environnantes éprouvées. Le guide reste une préparation, pas un audit de licéité d'un usage réel.",
+    "claims": {
+      "claim-unit-4e0217dd52ad-1": {
+        "verdict": "soutient",
+        "reasoning": "CNIL Donnée personnelle, copie native ligne 500 et ouverture web de la revue : citation exacte visible. Les lignes 502-513 expliquent identification directe/indirecte et croisement. Le corps conserve personne physique identifiée ou identifiable et n'assimile pas toute information d'entreprise à une donnée personnelle. Applicable à la distinction exposée, sans population ou période étrangère à la définition."
+      },
+      "claim-unit-24d0a97c54b2-1": {
+        "verdict": "soutient",
+        "reasoning": "CNIL L'anonymisation de données personnelles, 19/05/2020, copie native lignes 739-745 et ouverture web pendant la revue : remplacement des identifiants directs par alias, identification possible grâce aux données tierces puis réversibilité. La citation exacte soutient la distinction ; le corps conclut seulement qu'un alias ne vaut pas feu vert pour envoyer. Il n'impose pas d'obligation générale d'anonymisation et ne certifie aucun dossier anonyme."
+      },
+      "claim-unit-b0c8adba036a-1": {
+        "verdict": "soutient",
+        "reasoning": "Même source CNIL, ligne 743 : le sujet les données concernées est explicitement celui de la pseudonymisation et le paragraphe mentionne les données tierces. corps.md:66 réintroduit à propos de données pseudonymisées avant la citation. Le contexte est donc conservé : ni généralisation aux données entièrement fictives, ni thèse qu'un retrait partiel rend automatiquement anonyme. Le renvoi à l'arbitrage humain est une règle de travail, non une obligation CNIL présentée comme telle."
+      }
+    },
+    "interpretations": [
+      "Informations confidentielles et personnelles peuvent se recouper mais ne se confondent pas : la fiche accepte plusieurs catégories et ne déduit pas transmissible de l'absence de nom.",
+      "La réduction du contexte n'est pas une anonymisation ; l'absence d'entraînement n'épuise pas accès, conservation, réutilisation ni contrats. La liste pose des questions et ne donne aucune réponse d'offre non vérifiée.",
+      "L'autorisation interne n'est pas assimilée à une base légale ou une certification. Le cadre applicable à un traitement réel reste à déterminer ; l'avis ne valide pas ce traitement."
+    ]
+  },
+  "image": {
+    "reviewer": "metier:t_6446d285",
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Six composantes du brief/prompt relues puis master regardé : deux bacs séparés à rebords verts, plaque verte vierge entre eux et grande plaque graphite au premier plan. Alt descriptif cohérent, rendu isométrique mat et ombres douces. L'image est métaphorique, pas une preuve de sécurité."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Aucun texte, chiffre, logo, personne ou interface visible sur le master. Mesure native palette PASS, sans écart : crème 0,6406770833333333, vert vif 0,009722222222222222, vert profond 0,030815972222222224 et graphite 0,24524305555555556 ; seuils et rôles présents. L'ancienne grille FAIL signifie revue encore non exécutée, pas échec de cette palette."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Trace de génération Higgsfield 4b0c4c03-4ff7-4de4-a3d5-63f15b9d446f, source image-source-2.png et master concordant au generation.json. Les figures sont des reconstitutions HTML explicitement Jeu d'essai fictif, protocole local, qualification humaine, programme routage seulement et modèle aucun ; elles ne simulent pas un fournisseur testé."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Fiche C-01 : relevé/facture manquants, disponibilité du relevé à confirmer, ENV-FICTIF, préparation à relire et transmission false. Registre : quatre états conformes au rejeu et quatre false. Fenêtres d'outil fictif sans marque réelle, ni schéma d'étapes, ni slogan ; données concrètes correspondant à la tâche. Non déclaré est une qualification de démonstration, pas une détection d'absence."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Décodage sharp réel : master 1920×1080, OG 1200×630, six dérivés 768/1200/1600 WebP/AVIF. Les deux figures 1600×900 pèsent 33242 et 31004 octets. Renderer --check : 30 cadres conformes. Navigateur : couverture AVIF eager/high et figures WebP lazy chargées aux deux largeurs.",
+          "À 390 px, les figures de 354 px sont des aperçus dont les petits libellés ne sont pas confortablement lisibles ; les informations déterminantes sont dans les paragraphes et tableaux HTML à trois colonnes effectivement défilables. Pas de validation globale d'accessibilité ni mesure LCP."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Alts du HTML cohérents à la recette : fiche fictive C-01 à relire sans transmission ; registre fictif de quatre états. La couverture décrit deux plateaux séparés par une carte, sans faire croire à une preuve de conformité. Les alternatives n'attribuent pas la qualification humaine à un détecteur IA."
+        ]
+      }
+    }
+  },
+  "sources": {
+    "reviewedBy": "metier:t_6446d285",
+    "observations": {
+      "cnil-personnelle": "Primaire officielle tier-1, domaine/titre/canonical concordants, reçu auteur HTTP 200 du 05/10/2026 09:10:55Z ; copie native intégrité vérifiée. Texte visible ligne 500 puis croisement lignes 502-516 lus. Page réouverte avec web_extract le 05/10 pendant cette revue ; mêmes définition et contexte. Date éditoriale/version numérotée non affichées : ne pas inventer une date de publication. Suffisante pour la définition, pas pour l'autorisation d'un prestataire.",
+      "cnil-anonymisation": "Primaire officielle tier-1, publication affichée 19 mai 2020, reçu auteur HTTP 200 du 05/10/2026 09:10:55Z ; copie native intégrité vérifiée. Lignes 732-830 lues : réversibilité et caractère personnel à la ligne 743, trois critères et veille en contexte. Page réouverte par web_extract pendant la revue, citations identiques. Le corps n'utilise ni les règles CRPA de diffusion publique, ni une obligation générale d'anonymiser, ni les passages sur anonymisation comme permission d'une transmission client. Pas de fournisseur ni document contractuel vérifié, honnêtement hors démonstration."
+    }
+  },
+  "qualite": {
+    "reviewer": "metier:t_6446d285",
+    "score": 90,
+    "p0": [],
+    "categories": {
+      "contentQuality": { "score": 27, "max": 30 },
+      "seoOptimization": { "score": 23, "max": 25 },
+      "eeatSignals": { "score": 15, "max": 15 },
+      "technicalElements": { "score": 12, "max": 15 },
+      "aiCitationReadiness": { "score": 13, "max": 15 }
+    },
+    "evidence": [
+      "27/30 contenu : fiche immédiatement copiable et tâche distincte, réponses aux pièges alias/offre pro/entraînement/partage. Démonstration volontairement étroite ; aucun essai de réduction effective d'un dossier réel ni sortie de modèle. Les mises en garde se répètent un peu mais restent liées aux confusions concrètes du sujet sensible.",
+      "23/25 SEO : titre, onglet, description, headings et sept liens cohérents, sources officielles utiles sans troisième source artificielle. Seul entrant /blog projeté ; pas de maillage bidirectionnel acquis dans les frères scellés. L'intention ne donne pas un rang ou une performance mesurée.",
+      "15/15 E-E-A-T : auteur et bio honnêtes, trois citations CNIL exactes et contexte conservé, convention Memlia explicitement distincte du cadre applicable, méthode fictive et preuves de rejeu traçables. Pas d'affirmation sensible de conformité fournisseur cachée derrière ces citations.",
+      "12/15 technique : baseline schema, médias optimisés/alt/lazy, quatre tableaux, OG/Twitter et navigateur 1280/390 réels. Figures de corps peu lisibles sur téléphone mais information HTML consultable ; troisième colonne réellement accessible par défilement de 120 px. Aucun Lighthouse/LCP ni audit lecteur d'écran.",
+      "13/15 citations IA : contenu autonome/extractible, sources exactes et originalité traçable ; aucun point d'accès public ou crawling du candidat preview noindex accordé, aucune citation par moteur IA observée.",
+      "Couverture contrôlée indépendamment : 63 compétences uniques, union registre/catalogue concordante, 65 fichiers chargés correspondent aux versions tracées, pointeurs et chemins de preuves résolus. États auteur recomptés : 29 execute, 2 partiel, 28 N/A, 3 indisponible et 1 a-executer. Les N/A local/ecommerce/international/audio/campagne/variantes restent adaptés au guide national écrit. Ce n'est pas 63 workflows entièrement exécutés.",
+      "Les deux jugements partiels blog-analyze/blog-factcheck sont fournis par cette revue. La publication, sitemap, baselines de dérive et éventuelle soumission IndexNow restent à marketing ; le N/A candidat des extensions et de seo-drift ne dispense pas des obligations de la phase de livraison. Certains motifs/commandes/limites du checkpoint restent anciens (pas de corps/HTML ni rédaction) alors que les constats finaux décrivent bien le candidat ; harmonisation documentaire recommandée sans nouvelle revue du fond.",
+      "Exécution indépendante : script de revue exit 0, copies sources intègres, cas déterministes rejoués et quatre transmissions false ; contrôle champs absents bornant le protocole. npm run check 0 erreur, 0 warning, 9 hints préexistants ; 20 tests contrat/intention PASS ; renderer 30 cadres PASS ; contrat sur HTML preview 15 articles vert ; git diff --check vert. Ni build public complet ni CI distante exécutés par le reviewer."
+    ],
+    "reservations": [
+      "Limite fonctionnelle : supprimer identifiantInutile ou reconstructible dans les entrées du script donne PREPARATION_PRETE ; qualification absente et environnement absent donnent respectivement QUALIFICATION_ABSENTE et ENVIRONNEMENT_INCONNU. Le protocole teste quatre objets déjà qualifiés, et toutes les transmissions restent false. Ne pas le réutiliser comme garde de production sans validation stricte du schéma et traitement explicite des inconnues.",
+      "La fiche prépare un examen ; elle ne documente pas entièrement bases légales, rôles responsable/sous-traitant, obligations professionnelles, catégories particulières ou analyse d'impact d'un traitement réel. Le corps conserve ce cadre au responsable compétent et ne revendique aucune conformité. Un usage réel demeure non évalué et non autorisé par cet avis.",
+      "Le titre sans perdre leur confidentialité se lit comme l'objectif du geste, pas une garantie de résultat. Les limites explicites de la réponse directe, du protocole et de la décision humaine doivent être conservées ; ne pas isoler ce titre comme promesse commerciale de conformité.",
+      "Deux figures mobiles sont des aperçus ; leurs détails sont dans le texte et les tableaux. Éviter d'en faire la seule source d'information ou une preuve d'analyse sémantique.",
+      "Pas de volume/rang/citation IA/backlink/LCP/conversion attesté. Ni offre fournisseur testée ni donnée client utilisée. Pas de traitement réel ou de localisation d'hébergement validés.",
+      "Candidat local non publié. Scellement, build public, CI, deployment et vérification memlia.fr/canonical/blog/RSS/sitemap/llms/neuf médias restent à marketing. Liens/date/changement de preuve technique seuls ne déclenchent pas une seconde revue de fond."
+    ],
+    "seo": [
+      "Un H1, treize H2 du corps et cinq FAQ H3 ; sommaire correspondant, métadonnées et cinq types JSON-LD présents.",
+      "Sept destinations internes présentes et chemins/ancre résolus dans le build de preview ; /blog seul entrant déclaré, pas d'entrants frères inventés.",
+      "Quatre tableaux à en-têtes et deux figures directes ; contrôle Chromium local aux deux largeurs sans erreur ni débordement global.",
+      "Autocomplétions vides stockées et recherche Hermes documentée ; aucune donnée Google fraîche propre au candidat ou indexation accordée."
+    ],
+    "geo": [
+      "Définitions autonomes et réponse directe ; méthode, exemples inventés et citations officielles distincts.",
+      "Trois claims soutenus par deux pages CNIL ; aucun transfert de leur autorité vers une certification du protocole.",
+      "Contexte minimal et états accessibles en HTML initial, sans dépendre des détails des images.",
+      "Noindex de preview et absence de crawling public constatés comme limites ; score interne, pas probabilité de citation."
+    ],
+    "verdict": "PASS : préparation des entrées utile et correctement bornée, trois claims soutenus, 90/100 qualité et aucun P0. Aucune correction bloquante. Notes de démonstration, lisibilité mobile et phase de publication non vérifiée conservées."
+  },
+  "figureReview": {
+    "reference": "docs/strategy/site-v3/RUNBOOK-QUOTIDIEN.md:209-237, même famille de fenêtres d'outil fictif",
+    "confidentialite-fiche": { "outil": true, "donneesFictivesConcretesSansMarque": true, "autonomieImageEtTexte": true, "sansSchemaSloganAvertissement": true, "coherenceAvecReferences": true },
+    "confidentialite-registre": { "outil": true, "donneesFictivesConcretesSansMarque": true, "autonomieImageEtTexte": true, "sansSchemaSloganAvertissement": true, "coherenceAvecReferences": true }
+  },
+  "verificationArtifacts": [ "revue-verifier.mjs", "revue-verification.json", "revue-html-lu.txt", "revue-capture-1280.png", "revue-capture-390.png" ],
+  "requiredCorrections": [],
+  "nonBlockingNotes": [
+    { "id": "N1", "location": "rejouer-cas.mjs:9-14", "finding": "Champs de risque absents tolérés dans le routage ; pas un schéma validé.", "impact": "Limite de réutilisation comme contrôle réel, sans transmission dans la démonstration.", "recommendation": "Conserver sa portée fictive ; toute future implémentation doit exiger des booléens présents et une inconnue explicite." },
+    { "id": "N2", "location": "couverture-candidat.json:32-78 et motifs de blog/blog-analyze/blog-brief", "finding": "Certaines limites/commandes/motifs restent ceux du checkpoint sans corps, tandis que les constats finaux et preuves sont à jour.", "impact": "Ambiguïté de lecture documentaire, pas preuve d'une omission de fond.", "recommendation": "Lors de la finalisation de phase, harmoniser ces mentions, passer les deux jugements avec la preuve de cette revue et exécuter la livraison réelle ; ne pas transformer tous les N/A en contrôles exécutés." },
+    { "id": "N3", "location": "Figures de corps à 390 px", "finding": "Détails peu lisibles dans les aperçus fixes.", "impact": "Aucune perte déterminante car fiches, états et décisions sont aussi dans le HTML.", "recommendation": "Conserver ces équivalents textuels et la méthode image unique ; ne pas prétendre à un PASS global d'accessibilité." }
+  ]
+}

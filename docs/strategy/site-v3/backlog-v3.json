@@ -7745,5 +7745,16 @@
     "priorite": 3,
     "datePlanifiee": "2026-10-05",
     "demande": {"mesureeLe": "2026-10-04", "statut": "SERP-Hermes-sans-volume", "preuve": "BRIEFS-QUATRE-ARTICLES.md §2 et contrôles propres à la recette"}
+  },
+  {
+    "slug":"ia-comptabilite-confidentialite-donnees",
+    "titre":"IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+    "requete":"IA cabinet comptable confidentialité données",
+    "secondaires":["ChatGPT données clients cabinet comptable","données autorisées IA générative","IA comptabilité et confidentialité"],
+    "famille":"rgpd-secret-securite","role":"direction-associes","intent":"executer","funnel":"MOFU","format":"how-to-guide",
+    "preuve":"Fiche d’entrée et quatre qualifications fictives routées localement sans modèle ; pas d’anonymisation certifiée",
+    "sourcesOfficielles":["CNIL"],"priorite":3,"datePlanifiee":"2026-10-05",
+    "exceptionAlternance":{"format":{"date":"2026-10-05","raison":"Continuité IA mandatée ; fiche de données distincte de la checklist de sortie malgré le même format."},"pole":{"date":"2026-10-05","raison":"Préparation des entrées après vérification des sorties dans le lot IA demandé, intentions distinctes."}},
+    "demande":{"mesureeLe":"2026-10-05","statut":"SERP-Hermes-sans-volume","preuve":"Brief §3 et recherche publique propre au candidat"}
   }
 ]
