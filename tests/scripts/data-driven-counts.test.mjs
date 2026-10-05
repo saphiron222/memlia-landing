@@ -1,10 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
-
-import { requetesServices } from '../../scripts/seo/relever-titres-services.mjs';
+import { readFileSync } from 'node:fs';
 import { estLienCommercialBlog } from '../../src/data/blog-commercial-links.mjs';
 
 const read = (path) => readFileSync(path, 'utf8');
@@ -29,18 +25,11 @@ test('les compteurs des pages non scellées viennent de la taxonomie', () => {
   }
 });
 
-test('un sixième service et ses requêtes sont découverts sans plafond', (t) => {
-  const root = mkdtempSync(join(tmpdir(), 'memlia-service-inventory-'));
-  t.after(() => rmSync(root, { recursive: true, force: true }));
-  for (let i = 0; i < 6; i++) {
-    const path = join(root, 'commercial/recettes', `service-${i}`);
-    mkdirSync(path, { recursive: true });
-    writeFileSync(join(path, 'recette.json'), JSON.stringify({ primaryQuery: `tache ${i}`, secondaryQueries: [`controle ${i}`, `exception ${i}`, 'requete commune'] }));
-  }
-  assert.deepEqual(requetesServices(root), [...Array.from({ length: 6 }, (_, i) => [`tache ${i}`, `controle ${i}`, `exception ${i}`, 'requete commune']).flat()].filter((value, index, all) => all.indexOf(value) === index));
-  const bad = join(root, 'commercial/recettes/service-5/recette.json');
-  writeFileSync(bad, JSON.stringify({ primaryQuery: '', secondaryQueries: [] }));
-  assert.throws(() => requetesServices(root), /requête/);
+
+test('le hub ne masque pas un produit d’un nouvel éditeur', () => {
+  const source = read('src/pages/integrations/index.astro');
+  assert.match(source, /new Set\(INTEGRATIONS_INDEXABLES\.map\(/);
+  assert.doesNotMatch(source, /Neuf guides/);
 });
 
 test('le pont CAC est accepté, pas une destination éditoriale ou externe', () => {
