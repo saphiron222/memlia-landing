@@ -17,9 +17,9 @@ jobs:
     name: Repository gates
     runs-on: ubuntu-latest
     # The complete deterministic forge/build plus the browser contracts can
-    # exceed 20 minutes on a hosted runner. Keep one finite job and every gate;
-    # do not cancel a progressing test suite before its verdict.
-    timeout-minutes: 30
+    # exceed 30 minutes on a hosted runner (PR73 reached 300 browser passes
+    # before cancellation). Keep every gate and a finite 45-minute deadline.
+    timeout-minutes: 45
     steps:
       - name: Check out the exact candidate
         uses: actions/checkout@v4
