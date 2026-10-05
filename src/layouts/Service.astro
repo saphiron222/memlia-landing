@@ -7,7 +7,7 @@ import AppelFinal from '@/components/sections/AppelFinal.astro';
 import PageEvidence from '@/components/PageEvidence.astro';
 import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { SITE } from '@/data/site.mjs';
-import { organizationNode } from '@/data/schema.mjs';
+import { organizationNode, DEFAULT_AUDIENCE_TYPE } from '@/data/schema.mjs';
 import { serviceDesignFor } from '@/data/service-design';
 import { auteurPar, identiteAuteur, noeudAuteur } from '@/data/auteurs';
 import { eeatService } from '@/data/page-eeat';
@@ -58,7 +58,7 @@ const graph = {
       url,
       areaServed: 'FR',
       provider: { '@id': `${SITE.url}/#organization` },
-      audience: { '@type': 'Audience', audienceType: "Cabinets d'expertise comptable" },
+      audience: { '@type': 'Audience', audienceType: data.audienceType ?? DEFAULT_AUDIENCE_TYPE },
     },
     {
       '@type': 'BreadcrumbList',

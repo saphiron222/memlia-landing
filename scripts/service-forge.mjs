@@ -208,6 +208,9 @@ export function verifierRecetteService({ root, recipe, body, review, today = tod
   if (!DATE_RE.test(recipe?.verifiedAt ?? '') || recipe.verifiedAt > today) errors.push('verifiedAt doit être une date non future au format AAAA-MM-JJ.');
   verifyTitleMeasurement(root, recipe, today, errors);
   verifyCommercialAudience(recipe, errors);
+  if (recipe.audienceType !== undefined && (typeof recipe.audienceType !== 'string' || recipe.audienceType.trim().length < 3)) {
+    errors.push('audienceType doit décrire le public avec au moins trois caractères.');
+  }
 
   const normalizedBody = typographicApostrophe(body);
   let previous = -1;
@@ -280,7 +283,7 @@ description: ${value(recipe.description)}
 hero: ${value(recipe.hero)}
 primaryQuery: ${value(recipe.primaryQuery)}
 secondaryQueries: ${list(recipe.secondaryQueries)}
-audience:
+${recipe.audienceType === undefined ? '' : `audienceType: ${value(recipe.audienceType.trim())}\n`}audience:
   mode: ${value(recipe.audience.mode)}
   qualifier: ${recipe.audience.qualifier === null ? 'null' : value(recipe.audience.qualifier)}
   reason: ${value(recipe.audience.reason)}
@@ -366,6 +369,7 @@ export function materialiserService({ root = process.cwd(), slug, status = 'a-va
     primaryQuery: recipe.primaryQuery,
     secondaryQueries: recipe.secondaryQueries,
     audience: recipe.audience,
+    ...(recipe.audienceType === undefined ? {} : { audienceType: recipe.audienceType.trim() }),
     family: recipe.family,
     verifiedAt: recipe.verifiedAt,
     cta: recipe.cta,
