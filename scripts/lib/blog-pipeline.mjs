@@ -1196,7 +1196,11 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
     if (!actualUnits.some((actual) => actual.id === unit?.id && actual.text === unit?.text)) errors.push(`claims.contentUnits.${unit?.id ?? 'sans-id'} ne correspond à aucune unité du rendu.`);
     if (sensitiveMatter.claimRequiredUnitIds.has(unit?.id)) {
       if (!Array.isArray(unit?.claimIds) || unit.claimIds.length === 0) {
-        errors.push(`claims.contentUnits.${unit?.id ?? 'sans-id'} doit relier au moins une affirmation vérifiée : cette unité contient une matière sensible visible.`);
+        const text = actualUnits.find((actual) => actual.id === unit.id).text;
+        const excerpt = text.length > 160 ? `${text.slice(0, 160)}…` : text;
+        const signals = [...(sensitiveMatter.unitSignals.get(unit.id) ?? [])];
+        if (NORMATIVE_LANGUAGE.test(normalizedDetectionText(text))) signals.push('verbe normatif');
+        errors.push(`claims.contentUnits.${unit?.id ?? 'sans-id'} doit relier au moins une affirmation vérifiée : cette unité contient une matière sensible visible. Phrase : « ${excerpt} ». Signaux détectés : ${signals.join(', ')}. Si la phrase n'énonce pas de règle, reformulez-la sans ces mots (constitution §6) ; sinon reliez une affirmation sourcée.`);
       }
       const linkedClaims = (claims?.claims ?? []).filter((claim) => unit?.claimIds?.includes(claim?.id));
       const unitSignals = sensitiveMatter.unitSignals.get(unit.id) ?? [];
