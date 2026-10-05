@@ -1,6 +1,20 @@
 {
   "tool": "07",
-  "scope": "Implémentation locale, pas production",
+  "scope": "Implémentation et publication constatée le 05/10/2026 ; rows conserve la matrice historique d’implémentation, publication_result porte le rejeu de livraison sans prétendre exécuter tous les skills fournisseurs.",
+  "publication_result": {
+    "url": "https://memlia.fr/outils-comptables-gratuits/verificateur-prompt-ia",
+    "deployment_id": "3b009652-f275-4c2c-8e2e-90117b40c9f9",
+    "commit_sha": "fb066aa7f5cf084af0eb31d9e3d0110c48d998f4",
+    "cloudflare_administrative_api": "canonical, production, build et deploy SUCCESS, relus 2026-10-05T16:31:03.396Z",
+    "qa": "PASS parent t_0f294618 conservé ; aucune seconde revue du fond",
+    "browser_domain": "17 PASS",
+    "browser_deployment": "17 PASS",
+    "widths": [320, 375, 768, 1024, 1440, 1920],
+    "http_surfaces": "96 GET HTTP200 sans query avec Cache-Control no-cache ; canonical, sitemap, hub, footer, médias, entrants hub/01/methode et destinations",
+    "applicable_contracts": "Rejeu DOM, liens, médias et fonction ; cadrage/contenu métier revus conservés. Motifs N/A inchangés. Instruments alternatifs limités aux contrôles effectivement exécutés.",
+    "external_metrics": "ND : trafic, impressions, clics, indexation moteur, citations, conversions, backlinks, J+7/J+28, Lighthouse public",
+    "report": "publication-2026-10-05.md"
+  },
   "rows": [
     {
       "skill": "blog",
