@@ -1,0 +1,129 @@
+---
+import { GENERIC_TASKS, GENERIC_FORMATS } from '@/lib/prompt-ia.mjs';
+const choices = [
+  { name: 'task', label: 'Tâche texte', options: GENERIC_TASKS },
+  { name: 'tone', label: 'Ton', options: [{id:'clair',label:'Clair et direct'}, {id:'formel',label:'Formel et sobre'}, {id:'pedagogique',label:'Pédagogique'}] },
+  { name: 'input', label: 'Données autorisées', options: [{id:'notes',label:'Notes fictives'}, {id:'liste',label:'Liste et catégories fictives'}, {id:'trame',label:'Trame abstraite validée'}] },
+  { name: 'format', label: 'Format de la future réponse', options: GENERIC_FORMATS },
+  { name: 'stop', label: 'Arrêt si une information manque', options: [{id:'demander',label:'Arrêter et demander'}, {id:'signaler',label:'Arrêter et signaler'}] },
+];
+---
+<div class="prompt-tool" data-generic-prompt>
+  <noscript><p>Activez JavaScript pour assembler une consigne localement. Aucun modèle d’IA n’est appelé.</p></noscript>
+  <section aria-labelledby="generic-examples">
+    <h2 id="generic-examples">Une consigne texte professionnelle</h2>
+    <p>Choisissez un exemple fictif pour rédiger, résumer, classer ou préparer une réunion. Nous assemblons des blocs déterministes dans votre navigateur, pas une réponse d’IA.</p>
+    <div class="actions">{GENERIC_TASKS.map((task) => <button class="btn btn-contour" type="button" data-seed={task.id}>{task.label}</button>)}</div>
+  </section>
+  <form data-own-telemetry novalidate autocomplete="off">
+    <h2>Construire la consigne</h2>
+    <p id="generic-privacy" class="hint">Décrivez un objectif abstrait, sans nom, coordonnée, contenu de document ni donnée réelle. Le filtre repère quelques signaux explicites et contradictions, pas tous les noms ni le sens de toutes les phrases ; il n’anonymise rien. Texte seulement : aucun prompt image ou vidéo.</p>
+    {choices.map((choice) => <label>{choice.label}<select name={choice.name} required><option value="">Choisir…</option>{choice.options.map((option) => <option value={option.id}>{option.label}</option>)}</select></label>)}
+    <label>Objectif abstrait (20 à 1 500 caractères)<textarea name="description" rows="4" maxlength="1500" required aria-describedby="generic-privacy"></textarea></label>
+    <label>Public de la consigne<input name="public" maxlength="120" required /></label>
+    <label>Contexte abstrait<textarea name="context" rows="3" maxlength="500" required></textarea></label>
+    <label>Contraintes supplémentaires (facultatif)<textarea name="constraints" rows="3" maxlength="500"></textarea></label>
+    <label class="confirmation"><input type="checkbox" name="confirmed" />Je confirme une description abstraite et des exemples fictifs, sans donnée réelle.</label>
+    <div class="actions"><button class="btn btn-principal" type="submit">Assembler le prompt</button><button class="btn btn-contour" type="button" data-clear>Effacer</button></div>
+    <p id="generic-error" data-error class="error" role="alert" hidden></p>
+  </form>
+  <section class="result" aria-labelledby="generic-result" data-output hidden>
+    <h2 id="generic-result" tabindex="-1">Votre consigne à relire</h2>
+    <p>Le format choisi décrit la future réponse du modèle, pas une réponse déjà produite. Relisez les critères et rejouez le jeu d’essai dans votre outil autorisé.</p>
+    <label>Prompt éditable<textarea data-editor rows="20" maxlength="16000" spellcheck="false" aria-describedby="generic-editor-help"></textarea></label>
+    <p id="generic-editor-help" class="hint">La copie et le texte exporté reprennent exactement cette édition. Le fichier JSON contient la version du moteur et ce même prompt dans le champ « prompt », pas une réponse d’IA. Le champ défile et peut être agrandi.</p>
+    <div class="actions"><button class="btn btn-contour" type="button" data-copy>Copier le prompt</button><button class="btn btn-contour" type="button" data-txt>Exporter en texte (.txt)</button><button class="btn btn-contour" type="button" data-json>Exporter en JSON (.json)</button></div>
+  </section>
+  <p data-status aria-live="polite"></p>
+  <section class="check" aria-labelledby="generic-preview-title">
+    <h2 id="generic-preview-title">Prévisualisation au fil des choix</h2>
+    <p>La prévisualisation ne remplace jamais votre édition. Confirmez le formulaire puis assemblez pour la reprendre dans l’éditeur.</p>
+    <pre data-preview aria-live="off">Choisissez un exemple ou renseignez les champs pour prévisualiser la consigne.</pre>
+  </section>
+  <section class="check">
+    <h2>Formats et contraintes</h2>
+    <p>Le texte sépare synthèse, propositions et questions. Le tableau demande action, responsable, délai et point à vérifier. Le JSON fournit un schéma syntaxiquement valide, des clés obligatoires et des valeurs null pour les informations absentes. Le futur modèle peut malgré cela produire une réponse invalide : vous la vérifiez.</p>
+    <h2>Tester et réviser</h2>
+    <p>Exemple réunion : « Préparer les actions du compte rendu fictif ». La consigne précise le public équipe projet, demande responsable et délai et s’arrête si une information requise manque. Essayez séparément un compte rendu complet, un responsable absent et deux délais contradictoires ; comparez aux attentes du bloc Jeu d’essai fictif.</p>
+    <h3>Est-ce vraiment gratuit et sans inscription ?</h3><p>Oui. Les quatre exemples, l’édition, la copie et les deux exports sont utilisables sans compte.</p>
+    <h3>Est-ce une IA qui répond ?</h3><p>Non. Le moteur local versionné assemble des blocs écrits. Il ne comprend pas l’ensemble du sens et ne garantit ni la qualité d’une future réponse ni la confidentialité du service où vous collerez la consigne.</p>
+    <h3>Que deviennent mes modifications ?</h3><p>Changer les choix conserve le prompt édité et ses exports. Un nouvel assemblage demande confirmation avant de remplacer une édition. Recharger efface l’état ; aucun stockage n’est utilisé.</p>
+    <p>Pour une tâche de cabinet, utilisez le <a href="/outils-comptables-gratuits/generateur-prompt-expert-comptable">générateur de prompt pour expert-comptable</a>. Pour passer de cette consigne à une tâche répétitive prise entière, découvrez <a href="/methode">notre méthode d’écriture et d’essai</a>.</p>
+  </section>
+</div>
+<script>
+  import { GENERIC_SEEDS, assembleGenericPrompt, PROMPT_ENGINE_VERSION } from '@/lib/prompt-ia.mjs';
+  const root = document.querySelector<HTMLElement>('[data-generic-prompt]');
+  if (root) {
+    const form = root.querySelector<HTMLFormElement>('form')!;
+    const editor = root.querySelector<HTMLTextAreaElement>('[data-editor]')!;
+    const status = root.querySelector<HTMLElement>('[data-status]')!;
+    const error = root.querySelector<HTMLElement>('[data-error]')!;
+    const output = root.querySelector<HTMLElement>('[data-output]')!;
+    const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+    const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', { detail: { action, outil: 'generateur-prompt-ia-gratuit' } }));
+    let generated = '';
+    let generations = 0;
+    const config = () => ({ ...Object.fromEntries(new FormData(form)), confirmed: (field('confirmed') as HTMLInputElement).checked });
+    const clearError = () => { error.hidden = true; form.querySelectorAll('[aria-invalid]').forEach((el) => { el.removeAttribute('aria-invalid'); el.removeAttribute('aria-describedby'); if ((el as HTMLInputElement).name === 'description') el.setAttribute('aria-describedby', 'generic-privacy'); }); };
+    const preview = () => {
+      clearError();
+      const result = assembleGenericPrompt(config());
+      root.querySelector('[data-preview]')!.textContent = result.ok ? result.text : `À compléter : ${result.error}`;
+      if (editor.value) status.textContent = 'Choix modifiés : votre édition et ses exports restent inchangés. Assemblez pour proposer une nouvelle consigne.';
+    };
+    form.addEventListener('input', preview);
+    form.addEventListener('change', preview);
+    root.querySelectorAll<HTMLButtonElement>('[data-seed]').forEach((button) => button.addEventListener('click', () => {
+      if ((field('description').value || editor.value) && !window.confirm('Remplacer les choix par cet exemple ? Votre prompt édité reste conservé.')) return;
+      const seed = GENERIC_SEEDS.find((item) => item.task === button.dataset.seed)!;
+      for (const [name, value] of Object.entries(seed)) field(name).value = value;
+      (field('confirmed') as HTMLInputElement).checked = false;
+      preview(); emit('exemple'); field('description').focus(); status.textContent = 'Exemple fictif chargé. Confirmez les données pour prévisualiser et assembler.';
+    }));
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); clearError();
+      const result = assembleGenericPrompt(config());
+      if (!result.ok) { error.textContent = result.error; error.hidden = false; const input = field(result.field); input.setAttribute('aria-invalid', 'true'); input.setAttribute('aria-describedby', 'generic-error generic-privacy'); input.focus(); emit('erreur'); return; }
+      if (editor.value && editor.value !== generated && !window.confirm('Remplacer votre prompt édité ? Copiez ou exportez votre édition pour la garder.')) { status.textContent = 'Assemblage annulé. Votre édition est conservée.'; emit('annulation'); return; }
+      editor.value = generated = result.text; editor.scrollTop = 0; output.hidden = false;
+      root.querySelector('[data-preview]')!.textContent = result.text;
+      updateActions(); status.textContent = 'Prompt assemblé localement. Aucun modèle d’IA appelé.'; emit('reussite'); if (++generations > 1) emit('recalcul'); root.querySelector<HTMLElement>('#generic-result')!.focus();
+    });
+    const updateActions = () => root.querySelectorAll<HTMLButtonElement>('[data-copy],[data-txt],[data-json]').forEach((button) => { button.disabled = !editor.value.trim(); });
+    editor.addEventListener('input', () => { updateActions(); status.textContent = 'Édition conservée. Relisez le fond, les contraintes et le schéma avant usage.'; });
+    root.querySelector('[data-copy]')!.addEventListener('click', async () => {
+      if (!editor.value.trim()) return;
+      try { await navigator.clipboard.writeText(editor.value); status.textContent = 'Prompt copié.'; emit('copie'); }
+      catch { editor.focus(); editor.select(); status.textContent = 'Presse-papiers indisponible : texte sélectionné, utilisez votre raccourci de copie ou l’export.'; }
+    });
+    for (const type of ['txt', 'json']) root.querySelector(`[data-${type}]`)!.addEventListener('click', () => {
+      if (!editor.value.trim()) return;
+      const text = type === 'json' ? JSON.stringify({ version: PROMPT_ENGINE_VERSION, prompt: editor.value }, null, 2) : editor.value;
+      const url = URL.createObjectURL(new Blob([text], { type: type === 'json' ? 'application/json;charset=utf-8' : 'text/plain;charset=utf-8' }));
+      try { const link = document.createElement('a'); link.href = url; link.download = `prompt-ia.${type}`; link.click(); status.textContent = 'Votre édition complète a été exportée.'; emit('export'); }
+      finally { setTimeout(() => URL.revokeObjectURL(url), 0); }
+    });
+    root.querySelector('[data-clear]')!.addEventListener('click', () => {
+      if ((field('description').value || editor.value) && !window.confirm('Effacer les choix et le prompt de cette page ?')) return;
+      form.reset(); editor.value = generated = ''; output.hidden = true; preview(); status.textContent = 'Choix et prompt effacés.'; field('task').focus(); emit('effacer');
+    });
+  }
+</script>
+<style>
+  .prompt-tool,form,section,label { display:grid; gap:16px; min-width:0; }
+  .prompt-tool h2 { font-size:var(--t-2xl); } .prompt-tool h3 { font-size:var(--t-xl); }
+  .prompt-tool p { color:var(--texte-2); }
+  form,.result { padding-top:24px; border-top:1px solid var(--ligne); }
+  label { color:var(--texte-fort); font-weight:600; gap:8px; }
+  textarea,select,input:not([type=checkbox]) { width:100%; min-width:0; min-height:48px; padding:12px; border:1px solid var(--texte-2); border-radius:var(--r-bouton); color:var(--texte-fort); background:var(--surface-feuille); font:inherit; }
+  textarea { resize:vertical; line-height:1.6; } [data-editor] { font-weight:400; }
+  .confirmation { display:flex; align-items:flex-start; gap:12px; font-size:var(--t-sm); }
+  .confirmation input { width:20px; height:20px; flex-shrink:0; margin-top:2px; accent-color:var(--accent-appui); }
+  .actions { display:flex; flex-wrap:wrap; gap:12px; } .actions .btn { min-height:44px; white-space:normal; text-align:left; }
+  .hint { font-size:var(--t-sm); font-weight:400; }
+  .error { padding:12px; border-left:3px solid var(--rouge); background:var(--rouge-voile); color:var(--rouge); }
+  .check { padding:16px; border:1px solid var(--ligne); border-radius:var(--r-boite); background:var(--surface-page); }
+  pre { white-space:pre-wrap; overflow-wrap:anywhere; max-height:420px; overflow:auto; font:inherit; font-size:var(--t-sm); padding:12px; background:var(--surface-feuille); border:1px solid var(--ligne); }
+  [hidden] { display:none !important; }
+</style>
