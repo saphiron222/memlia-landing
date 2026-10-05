@@ -1,0 +1,921 @@
+{
+  "config": {
+    "argv": [
+      "/Users/kevinkitanga/.hermes/node/bin/node",
+      "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/node_modules/.bin/playwright",
+      "test",
+      "tests/browser/maturite-ia.spec.ts",
+      "tests/browser/maturite-ia-print.spec.ts"
+    ],
+    "configFile": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/playwright.config.ts",
+    "rootDir": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/tests/browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/tests/browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".qa/playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "maturite-ia-print.spec.ts",
+      "file": "maturite-ia-print.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "PDF A4 sans collision : 1 dimensions à traiter, détails closed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11992,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:36:48.154Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "button.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-3070f-ns-à-traiter-détails-closed/attachments/button-pdf-3e8465da62fb908f59b220ac2468bbdb3281abd1.pdf"
+                    },
+                    {
+                      "name": "top.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-3070f-ns-à-traiter-détails-closed/attachments/top-pdf-68518b39a03f689e0ab4d88728123988c1904cbc.pdf"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "83f326297db67ad236c4-ddff4efe304b17206a95",
+          "file": "maturite-ia-print.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "PDF A4 sans collision : 1 dimensions à traiter, détails mixed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7115,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:04.470Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "button.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-364c2-ons-à-traiter-détails-mixed/attachments/button-pdf-f6c3824108644867ef03f12abf6705ed300cbf42.pdf"
+                    },
+                    {
+                      "name": "top.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-364c2-ons-à-traiter-détails-mixed/attachments/top-pdf-fa1623fc70434fa5141d6df12d3073673d88d46e.pdf"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "83f326297db67ad236c4-021ccb22d250d378f1b3",
+          "file": "maturite-ia-print.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "PDF A4 sans collision : 1 dimensions à traiter, détails open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5725,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:11.594Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "button.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-e80d6-ions-à-traiter-détails-open/attachments/button-pdf-7c771a6aaae810078fd96c5cef47e366fafc9577.pdf"
+                    },
+                    {
+                      "name": "top.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-e80d6-ions-à-traiter-détails-open/attachments/top-pdf-9e2ed463accb2512ea5d07d2f2f66dd86eae1554.pdf"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "83f326297db67ad236c4-213a2ab737391606fbc8",
+          "file": "maturite-ia-print.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "PDF A4 sans collision : 2 dimensions à traiter, détails closed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4303,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:17.328Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "button.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-9b048-ns-à-traiter-détails-closed/attachments/button-pdf-8562971d9ea352f7e37f44efe4774321fd6bf5de.pdf"
+                    },
+                    {
+                      "name": "top.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-9b048-ns-à-traiter-détails-closed/attachments/top-pdf-92fb8c8f0b7129dda403f22fd12ee629ff3554b9.pdf"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "83f326297db67ad236c4-50477ef4b7297d724d04",
+          "file": "maturite-ia-print.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "PDF A4 sans collision : 2 dimensions à traiter, détails mixed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4553,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:21.642Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "button.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-12c54-ons-à-traiter-détails-mixed/attachments/button-pdf-9e28d693040238d5b103f0e0e6895779a2de453a.pdf"
+                    },
+                    {
+                      "name": "top.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-12c54-ons-à-traiter-détails-mixed/attachments/top-pdf-ad26bc34142392efcabd03e2bfb32bbe12417a80.pdf"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "83f326297db67ad236c4-6e25948bab97027ffa23",
+          "file": "maturite-ia-print.spec.ts",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "title": "PDF A4 sans collision : 2 dimensions à traiter, détails open",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4481,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:26.204Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "button.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-57d10-ions-à-traiter-détails-open/attachments/button-pdf-8c78ccce65ab7a3be93990d5167c550fded4646c.pdf"
+                    },
+                    {
+                      "name": "top.pdf",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-print-PDF-A4-s-57d10-ions-à-traiter-détails-open/attachments/top-pdf-e4b52765db607a98622cfd2613ee9a25b583ebb9.pdf"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "83f326297db67ad236c4-e52e67fd1423f7e76863",
+          "file": "maturite-ia-print.spec.ts",
+          "line": 8,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "maturite-ia.spec.ts",
+      "file": "maturite-ia.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "impression exhaustive avec détails fermés, sans changer leur état écran",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2521,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:30.709Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "rapport imprimé",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-impression-exh-ea2f9-ans-changer-leur-état-écran/attachments/rapport-imprimé-ec2fa61c9114a50a84bfd0f9b2d9858621b26cf1.pdf"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-218dbbeade37779048a6",
+          "file": "maturite-ia.spec.ts",
+          "line": 4,
+          "column": 36
+        },
+        {
+          "title": "impression exhaustive avec détails mixtes, sans changer leur état écran",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2448,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:33.238Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "rapport imprimé",
+                      "contentType": "application/pdf",
+                      "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_0edf65c0/repo/.qa/test-results/maturite-ia-impression-exh-fe6fd-ans-changer-leur-état-écran/attachments/rapport-imprimé-ac37cd8300205510f8e6f0d1ab8ae97f40040b37.pdf"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-1be022b970c350532006",
+          "file": "maturite-ia.spec.ts",
+          "line": 4,
+          "column": 36
+        },
+        {
+          "title": "inconnues : cinq incomplets, rapport et export exhaustif sans mail",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1560,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:35.693Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-115814ca88153588732b",
+          "file": "maturite-ia.spec.ts",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "précédent/suivant conserve les réponses, synthèse et reprise actualisées",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4616,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:37.262Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-9ff3ba9d827d5d552e0f",
+          "file": "maturite-ia.spec.ts",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "exemple justifie données avant expansion, remplacement annulé et reset explicite",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1931,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:41.890Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-f83b46f32acb992844d4",
+          "file": "maturite-ia.spec.ts",
+          "line": 60,
+          "column": 1
+        },
+        {
+          "title": "quinze formalisées : suivi des exceptions sans certification",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4447,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:43.834Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-60d898310e841d034d7d",
+          "file": "maturite-ia.spec.ts",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "copie réussie et refus offrent le même rapport sélectionnable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1832,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:48.294Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-6f6273e692cdbec5ba02",
+          "file": "maturite-ia.spec.ts",
+          "line": 82,
+          "column": 1
+        },
+        {
+          "title": "interaction sans réseau ni stockage et événements sans réponses",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1636,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:50.137Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-4ae1f6275d7831319e44",
+          "file": "maturite-ia.spec.ts",
+          "line": 92,
+          "column": 1
+        },
+        {
+          "title": "sans JavaScript : questions, méthode et limites accessibles",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1863,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:51.781Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-0eb956a3bdd94b8ad7fd",
+          "file": "maturite-ia.spec.ts",
+          "line": 105,
+          "column": 1
+        },
+        {
+          "title": "reflow et parcours à 320px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:53.654Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-570f2d0019ca90499e2b",
+          "file": "maturite-ia.spec.ts",
+          "line": 112,
+          "column": 51
+        },
+        {
+          "title": "reflow et parcours à 375px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16763,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:37:55.057Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-6a7ae0c5499f95b5290f",
+          "file": "maturite-ia.spec.ts",
+          "line": 112,
+          "column": 51
+        },
+        {
+          "title": "reflow et parcours à 768px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1881,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:38:11.831Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-2a8d81d8b2d96bfadff8",
+          "file": "maturite-ia.spec.ts",
+          "line": 112,
+          "column": 51
+        },
+        {
+          "title": "reflow et parcours à 1024px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2217,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:38:13.728Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-7524ac3ad35fde8a8c9f",
+          "file": "maturite-ia.spec.ts",
+          "line": 112,
+          "column": 51
+        },
+        {
+          "title": "reflow et parcours à 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15840,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:38:15.981Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-089b53d179adca9eaa96",
+          "file": "maturite-ia.spec.ts",
+          "line": 112,
+          "column": 51
+        },
+        {
+          "title": "reflow et parcours à 1920px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2038,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:38:31.847Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-36551f33993db09695d4",
+          "file": "maturite-ia.spec.ts",
+          "line": 112,
+          "column": 51
+        },
+        {
+          "title": "SEO canonical schema sitemap hub footer et entrants contextuels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2638,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T09:38:33.937Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0374ba92be3a384a8fe1-5cc1d1f6ef80ade2d85b",
+          "file": "maturite-ia.spec.ts",
+          "line": 127,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-05T09:36:34.349Z",
+    "duration": 122640.08499999999,
+    "expected": 22,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
