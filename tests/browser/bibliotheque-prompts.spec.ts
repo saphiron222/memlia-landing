@@ -28,19 +28,18 @@ test('filtres combinés, recherche vide, effacement sans nouvelle URL', async ({
   await expect(page.locator('[data-model]:visible')).toHaveCount(12);
   expect(new URL(page.url()).search).toBe('');
 });
-test('les douze copies et exports sont exactement les prompts affichés, sans réseau', async ({ page }) => {
+for (const m of MODELS) test(`copie et export exacts sans réseau : ${m.id}`, async ({ page }) => {
+  // Une page par fiche : Chromium bloque une rafale de plus de dix téléchargements.
   await page.addInitScript(() => Object.defineProperty(navigator, 'clipboard', { value: { writeText: async (text: string) => { (window as any).__copy = text; } } }));
   await page.goto(ROUTE); await page.waitForLoadState('networkidle');
   const requests: string[] = []; page.on('request', r => requests.push(r.url()));
-  for (const m of MODELS) {
-    const card = page.locator(`[data-model="${m.id}"]`);
-    await card.getByRole('button', { name: 'Copier le modèle' }).click();
-    await expect.poll(() => page.evaluate(() => (window as any).__copy)).toBe(modelPrompt(m));
-    const promise = page.waitForEvent('download');
-    await card.getByRole('button', { name: 'Exporter en texte' }).click();
-    const dl = await promise; expect(dl.suggestedFilename()).toBe(`prompt-${m.id}.txt`);
-    expect(await readFile((await dl.path())!, 'utf8')).toBe(modelPrompt(m));
-  }
+  const card = page.locator(`[data-model="${m.id}"]`);
+  await card.getByRole('button', { name: 'Copier le modèle' }).click();
+  await expect.poll(() => page.evaluate(() => (window as any).__copy)).toBe(modelPrompt(m));
+  const promise = page.waitForEvent('download');
+  await card.getByRole('button', { name: 'Exporter en texte' }).click();
+  const dl = await promise; expect(dl.suggestedFilename()).toBe(`prompt-${m.id}.txt`);
+  expect(await readFile((await dl.path())!, 'utf8')).toBe(modelPrompt(m));
   expect(requests).toEqual([]);
   expect(await page.evaluate(() => ({ local: localStorage.length, session: sessionStorage.length }))).toEqual({ local: 0, session: 0 });
 });
