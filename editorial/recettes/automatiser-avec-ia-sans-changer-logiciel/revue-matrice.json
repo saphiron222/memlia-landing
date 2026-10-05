@@ -1,0 +1,66 @@
+{
+  "reviewerTaskId": "t_003f2bb5",
+  "cataloguePackUnion": 63,
+  "matrixCount": 63,
+  "distinct": 63,
+  "missing": [],
+  "extra": [],
+  "states": {
+    "execute": 18,
+    "a-executer": 4,
+    "N/A": 26,
+    "partiel": 15
+  },
+  "issues": [],
+  "sourceIntegrity": true,
+  "lectureVersions": 63,
+  "future": [
+    "blog-analyze",
+    "seo-bing",
+    "seo-drift",
+    "seo-sitemap"
+  ],
+  "plannerMutations": [
+    {
+      "case": "ancien angle réintroduit",
+      "errors": [
+        "complements-excel : 4 angles au lieu de 3",
+        "plus de deux articles le même jour",
+        "plus de quatre articles la même semaine",
+        "jour réel : plus de deux articles publiés ou planifiés",
+        "semaine réelle : plus de quatre articles publiés ou planifiés",
+        "moins de trois liens entrants : automatiser-sans-changer-de-logiciel (0)"
+      ]
+    },
+    {
+      "case": "brief déplacé dans mauvaise famille",
+      "errors": [
+        "famille du brief mandaté divergente : automatiser-avec-ia-sans-changer-logiciel",
+        "complements-excel : 4 angles au lieu de 3"
+      ]
+    },
+    {
+      "case": "angle IA arbitraire ajouté",
+      "errors": [
+        "ia-generative-agents : 7 angles au lieu de 6",
+        "plus de deux articles le même jour",
+        "plus de quatre articles la même semaine",
+        "jour réel : plus de deux articles publiés ou planifiés",
+        "semaine réelle : plus de quatre articles publiés ou planifiés",
+        "moins de trois liens entrants : nouvel-angle-arbitraire (0)"
+      ]
+    },
+    {
+      "case": "slug et requête dupliqués",
+      "errors": [
+        "slugs en double",
+        "requêtes primaires en double (cannibalisation)",
+        "plus de deux articles le même jour",
+        "plus de quatre articles la même semaine",
+        "jour réel : plus de deux articles publiés ou planifiés",
+        "semaine réelle : plus de quatre articles publiés ou planifiés"
+      ]
+    }
+  ],
+  "plannerMutationScope": "Fixture non Git explicite, aucune certification de fraîcheur du checkout réel ; origin/main avancé pendant la revue."
+}

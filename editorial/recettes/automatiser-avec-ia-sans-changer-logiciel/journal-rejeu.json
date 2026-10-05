@@ -1,0 +1,213 @@
+{
+  "executedAt": "2026-10-05T09:43:59.425Z",
+  "modeleInterroge": null,
+  "connexionEditeur": null,
+  "envoi": false,
+  "ecritureMetier": false,
+  "cases": [
+    {
+      "cas": "nominal",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": null,
+      "approval": null,
+      "sortie": {
+        "statut": "PROPOSITION",
+        "motif": "P-F-012-v1",
+        "proposition": {
+          "id": "P-F-012-v1",
+          "cle": "F-012|2026-09|demande-pieces",
+          "version": "v1",
+          "signature": "[\"relevé A\",\"facture B\"]",
+          "texte": "Pièces attendues : relevé A, facture B."
+        },
+        "saisie": null
+      }
+    },
+    {
+      "cas": "traite",
+      "input": {
+        "id": "F-013",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "traite",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": null,
+      "approval": null,
+      "sortie": {
+        "statut": "REFUS",
+        "motif": "DEJA_TRAITE",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "absent",
+      "input": {
+        "id": "F-014",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": null,
+        "saisie": null
+      },
+      "previous": null,
+      "approval": null,
+      "sortie": {
+        "statut": "REFUS",
+        "motif": "ENTREE_ABSENTE",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "saisie",
+      "input": {
+        "id": "F-015",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": "Texte corrigé par le collaborateur"
+      },
+      "previous": null,
+      "approval": null,
+      "sortie": {
+        "statut": "REFUS",
+        "motif": "SAISIE_PROTEGEE",
+        "proposition": null,
+        "saisie": "Texte corrigé par le collaborateur"
+      }
+    },
+    {
+      "cas": "reprise",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": {
+        "id": "P-F-012-v1",
+        "cle": "F-012|2026-09|demande-pieces",
+        "version": "v1",
+        "signature": "[\"relevé A\",\"facture B\"]",
+        "texte": "Pièces attendues : relevé A, facture B."
+      },
+      "approval": null,
+      "sortie": {
+        "statut": "REUTILISER",
+        "motif": "P-F-012-v1",
+        "proposition": {
+          "id": "P-F-012-v1",
+          "cle": "F-012|2026-09|demande-pieces",
+          "version": "v1",
+          "signature": "[\"relevé A\",\"facture B\"]",
+          "texte": "Pièces attendues : relevé A, facture B."
+        },
+        "saisie": null
+      }
+    },
+    {
+      "cas": "version",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": "v2",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": {
+        "id": "P-F-012-v1",
+        "cle": "F-012|2026-09|demande-pieces",
+        "version": "v1",
+        "signature": "[\"relevé A\",\"facture B\"]",
+        "texte": "Pièces attendues : relevé A, facture B."
+      },
+      "approval": null,
+      "sortie": {
+        "statut": "REFUS",
+        "motif": "VERSION_CHANGEE",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "etat",
+      "input": {
+        "id": "F-016",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "inconnu",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": null,
+      "approval": null,
+      "sortie": {
+        "statut": "REFUS",
+        "motif": "ETAT_INCONNU",
+        "proposition": null,
+        "saisie": null
+      }
+    },
+    {
+      "cas": "accord-ancien",
+      "input": {
+        "id": "F-012",
+        "periode": "2026-09",
+        "version": "v1",
+        "etat": "a_preparer",
+        "pieces": [
+          "relevé A",
+          "facture B"
+        ],
+        "saisie": null
+      },
+      "previous": {
+        "id": "P-F-012-v1",
+        "cle": "F-012|2026-09|demande-pieces",
+        "version": "v1",
+        "signature": "[\"relevé A\",\"facture B\"]",
+        "texte": "Pièces attendues : relevé A, facture B."
+      },
+      "approval": "P-F-012-v0",
+      "sortie": {
+        "statut": "REFUS",
+        "motif": "VALIDATION_PERIMEE",
+        "proposition": null,
+        "saisie": null
+      }
+    }
+  ],
+  "additionalMutation": "contenu modifié à version identique : VERSION_CHANGEE"
+}

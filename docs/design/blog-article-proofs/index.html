@@ -283,6 +283,7 @@
       </div>
     </article>
   </section>
+
   <section class="frame" id="confidentialite-fiche" aria-label="Fiche fictive de préparation des entrées">
     <article class="window full">
       <header class="window-bar"><span class="dot amber"></span><b>Fiche de préparation</b><span>Jeu d’essai fictif · C-01 · contexte inventé</span></header>
@@ -304,6 +305,33 @@
           <div class="off"><span>C-03</span><span>Environnement non confirmé</span><span><em class="pill amber">Environnement inconnu</em></span><span>false</span></div>
           <div class="sel"><span>C-04</span><span>Contexte reconstructible</span><span><em class="pill grey">Arbitrage humain</em></span><span>false</span></div>
         </div><div class="stat-row"><div><small>Qualification</small><b>Humaine préalable</b></div><div><small>Programme</small><b>Routage seulement</b></div><div><small>Modèle interrogé</small><b>Aucun</b></div></div>
+      </div>
+    </article>
+  </section>
+  <section class="frame" id="passage-registre" aria-label="Registre fictif du passage entre outils">
+    <article class="window full">
+      <header class="window-bar"><span class="dot green"></span><b>Registre du passage</b><span>Jeu d’essai fictif · demande de pièces · septembre 2026</span></header>
+      <div class="screen"><div class="toolbar"><div><small>Préparation locale</small><b>Entrées et sorties</b></div><div class="tabs"><span class="on">Tous</span><span>Proposition</span><span>Refus</span></div></div>
+        <div class="data-table" style="--cols:.6fr 1fr 1.3fr .8fr"><div class="table-head"><span>Dossier</span><span>Entrée</span><span>Sortie</span><span>État</span></div>
+          <div class="pick"><span>F-012 · v1</span><span>relevé A, facture B</span><span>P-F-012-v1</span><span><em class="pill green">PROPOSITION</em></span></div>
+          <div class="off"><span>F-013</span><span>Déjà traité</span><span>DEJA_TRAITE</span><span><em class="pill grey">REFUS</em></span></div>
+          <div><span>F-014</span><span>Liste absente</span><span>ENTREE_ABSENTE</span><span><em class="pill amber">REFUS</em></span></div>
+          <div class="sel"><span>F-015</span><span>Saisie humaine</span><span>SAISIE_PROTEGEE</span><span><em class="pill amber">REFUS</em></span></div>
+        </div><div class="stat-row"><div><small>Proposition F-012</small><b>Pièces attendues : relevé A, facture B.</b></div><div><small>Envoi</small><b>Aucun</b></div></div>
+      </div>
+    </article>
+  </section>
+  <section class="frame" id="passage-reprises" aria-label="Journal fictif des reprises du passage">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Journal des reprises</b><span>Jeu d’essai fictif · règle locale séquentielle</span></header>
+      <div class="screen"><div class="toolbar"><div><small>Reprise du travail</small><b>Propositions et décisions</b></div><div class="tabs"><span class="on">Tous</span><span>Réutiliser</span><span>Refus</span></div></div>
+        <div class="data-table" style="--cols:.65fr 1.1fr 1.25fr .85fr"><div class="table-head"><span>Cas</span><span>État constaté</span><span>Sortie</span><span>Décision</span></div>
+          <div class="pick"><span>F-012 · v1</span><span>Même entrée</span><span>P-F-012-v1</span><span><em class="pill green">REUTILISER</em></span></div>
+          <div class="sel"><span>F-012 · v2</span><span>Version changée</span><span>VERSION_CHANGEE</span><span><em class="pill amber">REFUS</em></span></div>
+          <div><span>F-016</span><span>État inconnu</span><span>ETAT_INCONNU</span><span><em class="pill amber">REFUS</em></span></div>
+          <div class="off"><span>F-012 · v1</span><span>Accord sur P-F-012-v0</span><span>VALIDATION_PERIMEE</span><span><em class="pill grey">REFUS</em></span></div>
+        </div><div class="stat-row"><div><small>Saisie F-015 conservée</small><b>Texte corrigé par le collaborateur</b></div><div><small>Connexion éditeur</small><b>Aucune</b></div></div>
+
       </div>
     </article>
   </section>
