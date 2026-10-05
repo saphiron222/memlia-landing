@@ -20,6 +20,13 @@ BRIEFS = {
 
 
 class MandatedInventory(unittest.TestCase):
+    def setUp(self):
+        # Oracle du stock du 03/10, avec dates synthétiques futures : pas le mandat
+        # de livraison du 05/10, exercé séparément par test_ia_catchup.py.
+        cadrage = patch.object(PLAN, 'lire_rattrapage_ia', return_value=None)
+        cadrage.start()
+        self.addCleanup(cadrage.stop)
+
     def verifier_stock(self, ajouts):
         donnees = PLAN.construire()
         poles, familles, publies, pilier, satellites, liens, par_famille = donnees

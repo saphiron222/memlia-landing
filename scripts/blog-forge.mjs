@@ -28,6 +28,7 @@ import {
   PUBLICATION_SEAL_PATH, contexteDeCitation, verifierPlafonds, verifySource, jourRecuperationParis,
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
+import { estRattrapageIA } from './lib/blog-ia-catchup.mjs';
 import { retirerPreuvesInline } from './lib/blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 export { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
@@ -508,7 +509,7 @@ function verifierFile(root, slug, date, statut, serie, queue) {
   if (w39 && existant?.status === 'publie') throw new Error('La Cicatrice W39 est déjà publiée ; aucun nouvel exemplaire ni édition.');
   if (w39 && date > aujourdhui()) throw new Error('Le cadrage W39 refuse une date future.');
   if (w39) lireCadrageW39(root, date);
-  if (w39 || !existant || existant.date !== date || existant.serie !== (serie ?? undefined)
+  if (w39 || estRattrapageIA(slug) || !existant || existant.date !== date || existant.serie !== (serie ?? undefined)
     || (['archive', 'bloque'].includes(existant.status) && !['archive', 'bloque'].includes(statut))) {
     verifierPlafonds(actifs, date, { serie, slug, root });
   }
@@ -635,7 +636,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
     if (aujourdhui() !== jourDebut) throw new Error(`Le jour civil Europe/Paris a changé pendant la matérialisation (${jourDebut} → ${aujourdhui()}) : arrêter, reprendre une nouvelle préparation et obtenir une revue du candidat au jour réel. Ne pas sceller les fichiers partiels.`);
   };
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
-  if (estReliquatW39(slug)) verifierFile(root, slug, recette.date, statut, recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
+  if (estReliquatW39(slug) || estRattrapageIA(slug)) verifierFile(root, slug, recette.date, statut, recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
   const recettePath = join(dossierRecette, 'recette.json');
   let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
   let revuesValides = revueErreurs.length ? null : revues;

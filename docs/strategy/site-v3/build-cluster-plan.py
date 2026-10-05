@@ -33,6 +33,43 @@ FAMILLE_HISTORIQUE = {
 
 PAR_JOUR_MAX = 2
 PAR_SEMAINE_MAX = 4
+REGLE_IA = 'docs/strategy/site-v3/rattrapage-ia-2026-10-05.json'
+
+
+def lire_rattrapage_ia():
+    if not (RACINE / REGLE_IA).exists():
+        return None
+    controle = subprocess.run(['node', str(RACINE / 'scripts/lib/blog-ia-catchup.mjs'), str(RACINE)],
+                              capture_output=True, text=True, timeout=10, check=False)
+    if controle.returncode:
+        raise SystemExit(controle.stderr.strip() or 'rattrapage IA illisible')
+    return json.loads(controle.stdout)
+
+
+def semaine_editoriale_ia(regle, slug, jour):
+    if regle and regle['publications'].get(slug) == jour:
+        annee, semaine = regle['semaineEditoriale'].split('-W')
+        return int(annee), int(semaine)
+    return semaine_iso(date.fromisoformat(jour))
+
+
+def plafond_jour_ia(regle, slug, jour, actifs):
+    if (regle and jour == '2026-10-05' and regle['publications'].get(slug) == jour
+            and all(regle['publications'].get(e['slug']) == jour for e in actifs if e['date'] == jour)):
+        return regle['maximumParJour']
+    return PAR_JOUR_MAX
+
+
+def cle_quota_ia(regle, slug, jour):
+    semaine = semaine_editoriale_ia(regle, slug, jour)
+    # Le lot est distinct du rattrapage W39 déjà compté aux dates réelles en W40.
+    return ('rattrapage-ia', *semaine) if regle and regle['publications'].get(slug) == jour else semaine
+
+
+def verifier_date_ia(regle, slug, jour, serie=None):
+    if regle and slug in regle['publications'] and (regle['publications'][slug] != jour or serie == 'cicatrices'):
+        raise SystemExit(f'rattrapage IA hors slug/date/série mandatés : {slug} ({jour})')
+
 JOURS_DE_PUBLICATION = (0, 1, 2, 3)  # lundi à jeudi ; la semaine 38 (deux articles le 16/09) se complète le jeudi 17/09
 PREMIER_JOUR = date(2026, 9, 17)
 RATTRAPAGE_W39 = {'prompt-chatgpt-expert-comptable': '2026-09-22', 'logiciel-ia-comptabilite': '2026-09-24', 'tests-verts-et-regle-des-trois-passes': '2026-09-26'}
@@ -313,6 +350,15 @@ def alterner(entrees):
 def planifier(entrees, publies, aujourd_hui=None):
     """Réserve les dates explicites, puis planifie les ordinaires lun-jeu et les cicatrices le samedi."""
     aujourd_hui = aujourd_hui or date.today()
+    regle_ia = lire_rattrapage_ia()
+    for slug, p in publies.items():
+        verifier_date_ia(regle_ia, slug, p['date'])
+    for e in entrees:
+        if regle_ia and e['slug'] in regle_ia['publications']:
+            valeur = e.get('datePlanifiee', regle_ia['publications'][e['slug']])
+            verifier_date_ia(regle_ia, e['slug'], valeur, e.get('serie'))
+            if e['slug'] not in publies:
+                e['datePlanifiee'] = valeur
     par_jour, par_semaine = Counter(), Counter()
     if any(p['date'] == DATE_RATTRAPAGE and slug not in RATTRAPAGE_W39 for slug, p in publies.items()):
         raise SystemExit('rattrapage W39 réservé aux trois sujets désignés')
@@ -326,7 +372,7 @@ def planifier(entrees, publies, aujourd_hui=None):
         if p['date']:
             d = date.fromisoformat(RATTRAPAGE_W39.get(slug, p['date']) if p['date'] in DATES_RATTRAPAGE else p['date'])
             par_jour[d] += 1
-            par_semaine[semaine_iso(d)] += 1
+            par_semaine[cle_quota_ia(regle_ia, slug, d.isoformat())] += 1
             # La trace W39 ne libère pas la capacité du jour réellement publié.
             if d.isoformat() != p['date']:
                 reel = date.fromisoformat(p['date'])
@@ -375,7 +421,11 @@ def planifier(entrees, publies, aujourd_hui=None):
         if not valeur or e.get('serie') == 'cicatrices' or e['slug'] in publies:
             continue
         candidat = date.fromisoformat(valeur)
-        if par_jour[candidat] >= PAR_JOUR_MAX and sum(p['date'] == valeur for slug, p in publies.items() if slug not in slugs_cicatrices) >= PAR_JOUR_MAX:
+        actifs = [{'slug': slug, 'date': p['date']} for slug, p in publies.items() if slug not in slugs_cicatrices]
+        actifs += [x for x in entrees if x.get('statut') == 'planned' and x.get('serie') != 'cicatrices']
+        plafond = plafond_jour_ia(regle_ia, e['slug'], valeur, actifs)
+        semaine = cle_quota_ia(regle_ia, e['slug'], valeur)
+        if par_jour[candidat] >= plafond and sum(p['date'] == valeur for slug, p in publies.items() if slug not in slugs_cicatrices) >= plafond:
             # Créneau supplanté par les publications réelles ; conserver la décision
             # datée, sans la transformer en promesse ni déplacer la date du backlog.
             e['date'] = valeur
@@ -386,12 +436,12 @@ def planifier(entrees, publies, aujourd_hui=None):
         if candidat < PREMIER_JOUR:
             raise SystemExit(f"date planifiée avant le début du calendrier : {e['slug']} ({valeur})")
 
-        if par_jour[candidat] >= PAR_JOUR_MAX or par_semaine[semaine_iso(candidat)] >= PAR_SEMAINE_MAX:
+        if par_jour[candidat] >= plafond or par_semaine[semaine] >= PAR_SEMAINE_MAX:
             raise SystemExit(f"date planifiée au-delà de la cadence : {e['slug']} ({valeur})")
         e['date'] = valeur
         e['statut'] = 'planned'
         par_jour[candidat] += 1
-        par_semaine[semaine_iso(candidat)] += 1
+        par_semaine[semaine] += 1
 
     jour = max(PREMIER_JOUR, aujourd_hui)
     for e in entrees:
@@ -495,7 +545,10 @@ def construire():
 
 def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     erreurs = []
+    regle_ia = lire_rattrapage_ia()
     tous = [pilier] + satellites
+    for e in tous:
+        verifier_date_ia(regle_ia, e['slug'], e['date'], e.get('serie'))
     slugs = [e['slug'] for e in tous]
     if len(slugs) != len(set(slugs)):
         erreurs.append('slugs en double')
@@ -586,6 +639,7 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     cicatrices = [e for e in tous if e.get('serie') == 'cicatrices']
     par_jour, par_semaine, par_jour_reel, par_semaine_reelle = Counter(), Counter(), Counter(), Counter()
     for e in ordinaires:
+
         if e['date'] == DATE_RATTRAPAGE and e.get('statut') == 'published' and e['slug'] not in RATTRAPAGE_W39:
             erreurs.append(f"rattrapage W39 hors périmètre : {e['slug']}")
         if e.get('datePlanifiee') and creneau(e) != e['datePlanifiee']:
@@ -593,22 +647,25 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         slot = date.fromisoformat(creneau(e))
         if e.get('statut') != 'a-replanifier':
             par_jour[slot] += 1
-            par_semaine[semaine_iso(slot)] += 1
+            par_semaine[cle_quota_ia(regle_ia, e['slug'], slot.isoformat())] += 1
         if e.get('statut') in ('published', 'planned'):
             reel = date.fromisoformat(e['date'])
             par_jour_reel[reel] += 1
-            par_semaine_reelle[semaine_iso(reel)] += 1
+            if not regle_ia or regle_ia['publications'].get(e['slug']) != e['date']:
+                par_semaine_reelle[semaine_iso(reel)] += 1
         # Les jours habituels régissent le seul ordonnancement automatique, pas
         # une réservation explicite concordante ni une publication intégrée.
         if (slot >= PREMIER_JOUR and slot.weekday() not in JOURS_DE_PUBLICATION
                 and e.get('statut') not in ('a-replanifier', 'published')
                 and e.get('datePlanifiee') != e['date']):
             erreurs.append(f"article ordinaire hors lundi-jeudi : {e['slug']} ({e['date']})")
-    if any(n > PAR_JOUR_MAX for n in par_jour.values()):
+    if any(n > plafond_jour_ia(regle_ia, e['slug'], d.isoformat(), ordinaires) for d, n in par_jour.items()
+           for e in ordinaires if date.fromisoformat(creneau(e)) == d):
         erreurs.append('plus de deux articles le même jour')
     if any(n > PAR_SEMAINE_MAX for n in par_semaine.values()):
         erreurs.append('plus de quatre articles la même semaine')
-    if any(n > PAR_JOUR_MAX for n in par_jour_reel.values()):
+    if any(n > plafond_jour_ia(regle_ia, e['slug'], d.isoformat(), ordinaires) for d, n in par_jour_reel.items()
+           for e in ordinaires if e['date'] == d.isoformat()):
         erreurs.append('jour réel : plus de deux articles publiés ou planifiés')
     if any(n > PAR_SEMAINE_MAX for n in par_semaine_reelle.values()):
         erreurs.append('semaine réelle : plus de quatre articles publiés ou planifiés')
@@ -653,6 +710,7 @@ def construire_json(poles, familles, pilier, satellites, liens, entrants):
         'version': 2, 'date': date.today().isoformat(), 'seed': 'automatisation cabinet comptable',
         'methode': f"backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), {len({e['famille'] for e in satellites})} familles et {len(clusters)} pôles actifs dans ce plan (12 pôles dans la taxonomie) ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec requête primaire à zéro le 21/09 (titres-intent), secondaires non mesurées et questions identiques à la SERP par famille du 19/09 (questions) ; les trois articles historiques synthétiques et la série restent hors gate",
         'pillar': {'title': pilier['titre'], 'keyword': pilier['requete'], 'volume': 10, 'template': pilier['gabarit'], 'wordCount': pilier['mots'], 'url': pilier['url'], 'slug': pilier['slug'], 'family': pilier['famille'], 'status': pilier['statut'], 'date': pilier['date']},
+        'rattrapageIA': lire_rattrapage_ia(),
         'clusters': clusters,
         'links': [{'from': l['de'], 'to': l['vers'], 'type': l['type'], 'anchor': l['ancre']} for l in liens],
         'meta': {'totalPosts': len(satellites), 'plannedPosts': sum(1 for e in satellites if e['statut'] == 'planned'), 'publishedPosts': sum(1 for e in satellites if e['statut'] == 'published'), 'totalClusters': len(clusters), 'totalFamilies': len({e['famille'] for e in satellites}), 'totalLinks': len(liens), 'estimatedWords': pilier['mots'] + sum(e['mots'] for e in satellites)},
@@ -689,6 +747,7 @@ def construire_calendrier(pilier, satellites, familles, poles, jour=None):
     L = ['# Calendrier éditorial v3 — quatre articles et une Cicatrice par semaine', '',
          f"Généré le {jour.strftime('%d/%m/%Y')} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
          '## Règles', '',
+
          "- Les priorités 1 → 3 restent celles du backlog (1 : la requête primaire a des suggestions d'autocomplétion Google, sauf l'angle IA publié conservé en P1 : primaire à zéro le 21/09 dans `titres-intent-2026-09-21.json`, secondaires non mesurées, questions de la SERP par famille du 19/09 dans `questions-2026-09-19.json` ; 2 : seule une requête secondaire en a ; 3 : aucune suggestion relevée sur les formulations testées — relevé `scripts/seo/questions.mjs`). --check contrôle aussi les P1 publiées du backlog sans réécrire les publications ; les trois historiques synthétiques et la série sont hors gate. Ce signal ne permet de conclure ni au volume de recherche, ni à la demande, ni à l’audience ; une formulation non mesurée ne vaut pas zéro suggestion. Ces priorités guident l'ordre des candidats compatibles avec l'alternance ; l'équilibre du stock de formats peut différer une priorité 1 sans changer sa mesure ni son angle.",
          '- Les créneaux ordinaires non figés alternent pôle et format entre deux articles successifs ; les dates publiées et `datePlanifiee` ne bougent jamais. Si un conflit daté est inévitable, `exceptionAlternance` dans le backlog désigne séparément `pole` ou `format`, chacun avec `date` (YYYY-MM-DD) et `raison` non vide ; seul le champ effectivement en conflit à cette date est dispensé. La série factuelle Cicatrices ne peut pas porter cette exception.',
          '- Chaque famille active conserve ses quatre angles (méthode, contrôle ou checklist, exceptions et refus, définition) ; leur ordre de sortie dépend des contraintes de calendrier et du stock disponible.',
@@ -696,6 +755,7 @@ def construire_calendrier(pilier, satellites, familles, poles, jour=None):
          '- Le pilier reçoit un lien à chaque publication (republication scellée par la forge).', '',
          '- Une Cicatrice factuelle peut paraître le samedi, au plus une par semaine ISO, en sus du plafond des quatre articles ordinaires ; sans faits signés ni recette, le créneau reste vide. `manque` désigne une date échue conservée en trace, pas une publication.', '',
          '- Les anciennes réservations ordinaires manquées restent dans `dateManquee` du backlog ; leur date proposée au statut `a-replanifier` n’est pas actionnable. Une décision humaine fixe une nouvelle `datePlanifiee`, soumise aux portes de qualité et au quota du jour réel.', '',
+         '- Rattrapage IA : `rattrapage-ia-2026-10-05.json` rattache quatre sujets à 2026-W40, avec dates réelles 04/10 et 05/10. Le 05/10 accepte trois articles uniquement de ce lot. Ils ne consomment pas les quatre nouveaux sujets W41 ; le jour réel reste occupé. Les autres quotas et Cicatrices restent inchangés.', '',
          '## Volume', '', f"- {len(satellites)} satellites + 1 pilier ; {sum(1 for e in satellites if e['statut'] == 'published')} satellite(s) publié(s) dans le registre au {date.today().strftime('%d/%m/%Y')} ; dernier créneau planifié : {tous[-1]['date']}.", '',
          '## Semaine par semaine', '']
     par_sem = defaultdict(list)
