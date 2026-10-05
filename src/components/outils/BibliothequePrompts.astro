@@ -86,8 +86,12 @@ import { MODELS, POLES, MODEL_FORMATS, modelPrompt, GENERATOR_PATH } from '@/lib
       });
       card.querySelector('[data-export]')!.addEventListener('click', () => {
         const url = URL.createObjectURL(new Blob([text.value], { type: 'text/plain;charset=utf-8' }));
-        try { const link = document.createElement('a'); link.href = url; link.download = `prompt-${card.dataset.model}.txt`; link.click(); status.textContent = 'Fichier texte complet préparé.'; emit('export'); }
-        finally { setTimeout(() => URL.revokeObjectURL(url), 0); }
+        const link = document.createElement('a');
+        link.href = url; link.download = `prompt-${card.dataset.model}.txt`;
+        document.body.append(link);
+        try { link.click(); status.textContent = 'Fichier texte complet préparé.'; emit('export'); }
+        // Laisser le navigateur consommer le Blob avant de libérer sa référence.
+        finally { setTimeout(() => { link.remove(); URL.revokeObjectURL(url); }, 1000); }
       });
       card.querySelector('[data-adapt]')!.addEventListener('click', (e) => {
         e.preventDefault();

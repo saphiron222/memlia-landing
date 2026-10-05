@@ -32,6 +32,12 @@ Scène propre HTML figée docs/design/bibliotheque-prompts-proof : filtre relati
 
 ## Suite et risques restants
 
+### Reprise après la première CI
+
+La CI initiale de PR86 a trouvé deux échecs sur 320 parcours : export intermittent et garde réseau générique dirigeant la bibliothèque vers le formulaire de rapprochement. Le second est reproduit localement ; le premier est reproduit de manière déterministe en différant de 100 ms la consommation du lien Blob (téléchargement annulé avant correction). Le lien d’export est maintenant attaché au document et libéré après une seconde ; un test contrôle le fichier exact et le nettoyage. Le garde commun exerce les filtres de la bibliothèque sans aucune requête ni stockage, au lieu du formulaire d’un autre outil.
+
+Reprise réellement exécutée : huit tests Node ciblés PASS ; npm run check code 0 ; npm run build code 0 après synchronisation lastmod de la seule bibliothèque ; 46 parcours Chromium bibliothèque/générateur/garde commun PASS, dont le nouveau test d’export différé. Rejeu sur le serveur Astro local hérité de la première tentative à http://127.0.0.1:43781, après reconstruction de dist ; démarrage initial du second serveur refusé car le premier était encore actif, sans contournement du verrou. Les logs de reprise et les preuves rouges sont joints à l’archive. Les résultats Lighthouse et l’audit SEO précédents restent des mesures locales, non des preuves de publication.
+
 Une QA indépendante code/contenu technique non normatif ; ne pas ajouter une file métier. Puis CI verte, fusion, Cloudflare SUCCESS, GET public no-cache sans query, canonical/sitemap/hub/footer/médias et trois entrants contrôlés, parcours et exports rejoués réellement en production ; actualiser publieLe uniquement après constat. Aucun scénario public exécuté dans cette phase.
 
 Observations de trafic, positions, citations IA, backlinks, conversions et CWV terrain ND ; organiser J+7/J+28 après lancement. Aucun SaaS payant ni campagne externe. npm ci signale trois vulnérabilités préexistantes (une modérée, deux hautes), non modifiées.

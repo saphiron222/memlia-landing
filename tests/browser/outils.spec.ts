@@ -380,6 +380,15 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByRole('button', { name: 'Assembler le prompt' }).click();
       await expect(page.locator('[data-output]')).toBeVisible();
 
+    } else if (outil.slug === 'bibliotheque-prompts-comptables') {
+      await page.getByLabel('Pôle', { exact: true }).selectOption('relation-client');
+      await page.getByLabel('Format attendu', { exact: true }).selectOption('mail');
+      await expect(page.locator('[data-model]:visible')).toHaveCount(3);
+      await page.getByLabel('Rechercher un modèle').fill('relance');
+      await expect(page.locator('[data-model]:visible')).toHaveCount(1);
+      await page.getByRole('button', { name: 'Effacer les filtres' }).click();
+      await expect(page.locator('[data-model]:visible')).toHaveCount(12);
+
     } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
       await page.locator('[data-example]').click();
       await expect(page.locator('[data-selection]')).toBeVisible();

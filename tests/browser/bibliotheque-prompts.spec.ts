@@ -44,6 +44,30 @@ test('les douze copies et exports sont exactement les prompts affichés, sans r�
   expect(requests).toEqual([]);
   expect(await page.evaluate(() => ({ local: localStorage.length, session: sessionStorage.length }))).toEqual({ local: 0, session: 0 });
 });
+test('export : navigation différée et nettoyage après consommation du Blob', async ({ page }) => {
+  await page.addInitScript(() => {
+    const click = HTMLAnchorElement.prototype.click;
+    const revoke = URL.revokeObjectURL;
+    (window as any).__revoked = [];
+    HTMLAnchorElement.prototype.click = function () {
+      if (this.download && this.href.startsWith('blob:')) {
+        // Reproduire un navigateur qui consomme le lien dans une tâche ultérieure.
+        setTimeout(() => click.call(this), 100);
+      } else click.call(this);
+    };
+    URL.revokeObjectURL = url => {
+      (window as any).__revoked.push(url);
+      revoke.call(URL, url);
+    };
+  });
+  await page.goto(ROUTE);
+  const download = page.waitForEvent('download');
+  await page.locator('[data-model="relance-pieces"] [data-export]').click();
+  const file = await download;
+  expect(await readFile((await file.path())!, 'utf8')).toBe(modelPrompt(MODELS[0]));
+  await expect.poll(() => page.evaluate(() => (window as any).__revoked.length)).toBe(1);
+  await expect(page.locator('a[download][href^="blob:"]')).toHaveCount(0);
+});
 test('copie refusée : texte complet sélectionné, aucune perte', async ({ page }) => {
   await page.addInitScript(() => Object.defineProperty(navigator, 'clipboard', { value: { writeText: async () => { throw new Error('denied'); } } }));
   await page.goto(ROUTE); const card = page.locator('[data-model="relance-pieces"]');
