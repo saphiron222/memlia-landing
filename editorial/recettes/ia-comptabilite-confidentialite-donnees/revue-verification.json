@@ -1,0 +1,2462 @@
+{
+  "reviewer": "metier:t_6446d285",
+  "executedAt": "2026-10-05T09:47:24.037Z",
+  "htmlPath": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_afe116b0/site/.qa/render-ia-comptabilite-confidentialite-donnees/blog/ia-comptabilite-confidentialite-donnees.html",
+  "checks": [
+    {
+      "name": "rejeu",
+      "evidence": {
+        "resultats": [
+          {
+            "entree": {
+              "id": "C-01",
+              "qualification": true,
+              "environnement": true,
+              "identifiantInutile": false,
+              "reconstructible": false,
+              "attendu": "PREPARATION_PRETE"
+            },
+            "sortie": "PREPARATION_PRETE",
+            "transmission": false
+          },
+          {
+            "entree": {
+              "id": "C-02",
+              "qualification": true,
+              "environnement": true,
+              "identifiantInutile": true,
+              "reconstructible": false,
+              "attendu": "RETIRER_IDENTIFIANT"
+            },
+            "sortie": "RETIRER_IDENTIFIANT",
+            "transmission": false
+          },
+          {
+            "entree": {
+              "id": "C-03",
+              "qualification": true,
+              "environnement": false,
+              "identifiantInutile": false,
+              "reconstructible": false,
+              "attendu": "ENVIRONNEMENT_INCONNU"
+            },
+            "sortie": "ENVIRONNEMENT_INCONNU",
+            "transmission": false
+          },
+          {
+            "entree": {
+              "id": "C-04",
+              "qualification": true,
+              "environnement": true,
+              "identifiantInutile": false,
+              "reconstructible": true,
+              "attendu": "ARBITRAGE_HUMAIN"
+            },
+            "sortie": "ARBITRAGE_HUMAIN",
+            "transmission": false
+          }
+        ],
+        "qualificationAbsente": "QUALIFICATION_ABSENTE",
+        "champsAbsents": {
+          "qualification": "QUALIFICATION_ABSENTE",
+          "environnement": "ENVIRONNEMENT_INCONNU",
+          "identifiantInutile": "PREPARATION_PRETE",
+          "reconstructible": "PREPARATION_PRETE"
+        },
+        "scope": "Le script ne valide pas tous les types/présences. Démonstration bornée aux qualifications booléennes fournies ; aucun outil réel, aucune transmission."
+      }
+    },
+    {
+      "name": "couverture",
+      "evidence": {
+        "uniqueSkills": 63,
+        "lectures": 65,
+        "states": {
+          "execute": 29,
+          "partiel": 2,
+          "N/A": 28,
+          "indisponible": 3,
+          "a-executer": 1
+        },
+        "rows": [
+          {
+            "skill": "blog",
+            "phase": "orchestration",
+            "etat": "execute",
+            "motif": "Orchestration nécessaire du brief aux preuves ; aucun dossier candidat constaté.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "blog-analyze",
+            "phase": "controle-qualite-et-revue-normale",
+            "etat": "partiel",
+            "motif": "Pas de corps/HTML ni score propre au candidat.",
+            "constat": "Sources/claims préparés et analyse technique exécutée ; jugement indépendant encore à exécuter sur carte metier."
+          },
+          {
+            "skill": "blog-audio",
+            "phase": "decision-perimetre",
+            "etat": "N/A",
+            "motif": "Guide français écrit ; narration, podcast et génération TTS non mandatés.",
+            "constat": "Aucun besoin audio du brief §3."
+          },
+          {
+            "skill": "blog-audit",
+            "phase": "existant-et-maillage",
+            "etat": "execute",
+            "motif": "Analyse du corpus et de l'orphelinage nécessaire avant insertion, sans audit global neuf imposé.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "blog-brand",
+            "phase": "positionnement-et-charte",
+            "etat": "execute",
+            "motif": "Vérifier la voix et les limites de promesse sur le vrai corps reste nécessaire.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "blog-brief",
+            "phase": "brief",
+            "etat": "execute",
+            "motif": "Brief §3 lu, pas application complète aux formulations mesurées et à une recette.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "blog-calendar",
+            "phase": "reservation",
+            "etat": "execute",
+            "motif": "Une réservation réelle doit être vérifiée ; le brief n'en tient pas lieu.",
+            "constat": "Réservation explicite réelle 05/10 ; build-cluster-plan.py et --slot verts, plafonds conservés."
+          },
+          {
+            "skill": "blog-cannibalization",
+            "phase": "intentions-et-existant",
+            "etat": "execute",
+            "motif": "Même domaine IA que prompt/logiciel ; distinguer réellement leurs intentions.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "blog-chart",
+            "phase": "decision-medias",
+            "etat": "N/A",
+            "motif": "Fiche décisionnelle et contexte fictif, sans série statistique comparable à visualiser.",
+            "constat": "Les deux figures demandées sont des écrans fictifs, pas graphiques de gains."
+          },
+          {
+            "skill": "blog-cluster",
+            "phase": "architecture-et-interliens",
+            "etat": "execute",
+            "motif": "Insérer ce satellite dans l'architecture existante ; pas nouveau cluster à générer.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "blog-decay",
+            "phase": "decision-maintenance",
+            "etat": "N/A",
+            "motif": "Nouvelle page sans deux périodes historiques comparables propres au slug.",
+            "constat": "Le déclin QoQ ne peut être calculé ; maintenance future sur changement CNIL/fournisseur."
+          },
+          {
+            "skill": "blog-discourse",
+            "phase": "decision-recherche",
+            "etat": "N/A",
+            "motif": "Guide documentaire evergreen ; pas étude d'engagement/sentiment des trente derniers jours demandée.",
+            "constat": "Brief cite des discussions sans revendiquer leurs métriques, et exclut Apify."
+          },
+          {
+            "skill": "blog-factcheck",
+            "phase": "sources-et-claims",
+            "etat": "partiel",
+            "motif": "Assertions données personnelles, pseudonymisation, RGPD/secret et conditions fournisseur demandent preuves exactes.",
+            "constat": "Sources/claims préparés et analyse technique exécutée ; jugement indépendant encore à exécuter sur carte metier."
+          },
+          {
+            "skill": "blog-flow",
+            "phase": "decision-prompts",
+            "etat": "N/A",
+            "motif": "Brief et workflow Memlia imposent déjà le geste ; activation séparée de prompts FLOW ou sync non nécessaire.",
+            "constat": "Les disciplines de provenance restent applicables dans factcheck/brief, sans prétendre avoir lancé FLOW."
+          },
+          {
+            "skill": "blog-geo",
+            "phase": "citabilite-et-render",
+            "etat": "execute",
+            "motif": "Clarté des entités, réponses bornées, sources et extractibilité doivent être jugées sur texte/HTML réel.",
+            "constat": "Structure extractible, réponse directe et définitions ; ai_citation_score exécuté sur HTML, heuristique pas visibilité IA mesurée."
+          },
+          {
+            "skill": "blog-google",
+            "phase": "mesure-recherche-et-apres-publication",
+            "etat": "indisponible",
+            "motif": "Aucune donnée propre à cette page rattachable avant candidature ; credentials non vérifiés et wrapper Google non exécuté.",
+            "constat": "Impressions, clics, rang, conversion et CWV propres au slug inconnus. Le doctor SEO échoue, pas preuve d'absence de credentials Blog."
+          },
+          {
+            "skill": "blog-image",
+            "phase": "medias",
+            "etat": "execute",
+            "motif": "Couverture et figures de la fiche doivent être produites et inspectées réellement.",
+            "constat": "Deux générations ; première rejetée par palette ; seconde mesurée et regardée, deux figures HTML figées et contrôlées."
+          },
+          {
+            "skill": "blog-locale-audit",
+            "phase": "decision-langues",
+            "etat": "N/A",
+            "motif": "Aucune traduction ou série multilingue prévue par le brief français.",
+            "constat": "Pas de matrice de parité entre locales à auditer."
+          },
+          {
+            "skill": "blog-localize",
+            "phase": "decision-langues",
+            "etat": "N/A",
+            "motif": "Article original français pour cabinets français, pas adaptation d'une traduction vers un autre marché.",
+            "constat": "La juridiction/source adaptée reste à vérifier dans factcheck, non substituée par une table de localisation."
+          },
+          {
+            "skill": "blog-multilingual",
+            "phase": "decision-langues",
+            "etat": "N/A",
+            "motif": "Une seule langue mandatée ; pas pipeline write/translate/hreflang.",
+            "constat": "Pas de locales additionnelles ni fichiers internationaux nécessaires."
+          },
+          {
+            "skill": "blog-notebooklm",
+            "phase": "decision-recherche",
+            "etat": "N/A",
+            "motif": "Lecture directe de sources publiques ; aucun notebook utilisateur fourni ou requis.",
+            "constat": "Une réponse NotebookLM ne remplacerait pas la source primaire ni la revue métier."
+          },
+          {
+            "skill": "blog-outline",
+            "phase": "plan",
+            "etat": "execute",
+            "motif": "Plan §3 lu mais pas transcrit/contrôlé contre un corps candidat et ses preuves.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "blog-persona",
+            "phase": "voix",
+            "etat": "execute",
+            "motif": "Évaluer voix nous/vous et compréhension du dirigeant/référent sécurité sur le texte final.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "blog-repurpose",
+            "phase": "decision-distribution",
+            "etat": "N/A",
+            "motif": "Aucune adaptation sociale, email, vidéo ou diffusion externe autorisée dans ce mandat.",
+            "constat": "L'arrêt LinkedIn/mail est conservé."
+          },
+          {
+            "skill": "blog-rewrite",
+            "phase": "decision-redaction",
+            "etat": "N/A",
+            "motif": "Nouveau guide, pas réécriture ou mise à jour d'un ancien article ; corrections futures de l'auteur relèvent de son candidat.",
+            "constat": "Aucun texte existant cible observé à réécrire."
+          },
+          {
+            "skill": "blog-schema",
+            "phase": "html-structure",
+            "etat": "execute",
+            "motif": "Vérifier les entités exactes et leur cohérence visible dans le HTML construit.",
+            "constat": "HTML réellement construit : métadonnées, schema, figures, liens et navigateur contrôlés. Alternative native au runtime SEO indisponible, portée candidat uniquement."
+          },
+          {
+            "skill": "blog-seo-check",
+            "phase": "seo-onpage",
+            "etat": "execute",
+            "motif": "Titres, description, canonical, liens et médias restent à contrôler sur HTML réel.",
+            "constat": "HTML réellement construit : métadonnées, schema, figures, liens et navigateur contrôlés. Alternative native au runtime SEO indisponible, portée candidat uniquement."
+          },
+          {
+            "skill": "blog-strategy",
+            "phase": "positionnement",
+            "etat": "execute",
+            "motif": "Confronter le guide aux voisins et à la valeur propre sans refaire la stratégie du site.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "blog-style",
+            "phase": "style-et-charge-cognitive",
+            "etat": "execute",
+            "motif": "Charte et charge cognitive du guide sensible doivent être vérifiées après rédaction.",
+            "constat": "cognitive_load.py réellement exécuté : Healthy, 5,2, zéro surcharge ; analyseur heuristique français."
+          },
+          {
+            "skill": "blog-taxonomy",
+            "phase": "famille-et-metadonnees",
+            "etat": "execute",
+            "motif": "Vérifier classement source/famille et mots-clés sur la recette future.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "blog-translate",
+            "phase": "decision-langues",
+            "etat": "N/A",
+            "motif": "Original français uniquement ; aucune cible --to demandée.",
+            "constat": "Pas de conversion linguistique à effectuer."
+          },
+          {
+            "skill": "blog-write",
+            "phase": "redaction-et-rejeu",
+            "etat": "execute",
+            "motif": "Aucun corps observé ; rédaction strictement hors de cette délégation.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "seo",
+            "phase": "orchestration-seo",
+            "etat": "execute",
+            "motif": "Racine nécessaire pour conventions/outillage ; runtime SEO non prêt, page non construite.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "seo-audit",
+            "phase": "synthese-technique-ciblee",
+            "etat": "execute",
+            "motif": "Coordonner contrôles techniques applicables et limites pour cette page, pas crawler 500 URLs.",
+            "constat": "HTML réellement construit : métadonnées, schema, figures, liens et navigateur contrôlés. Alternative native au runtime SEO indisponible, portée candidat uniquement."
+          },
+          {
+            "skill": "seo-backlinks",
+            "phase": "mesure-post-publication",
+            "etat": "indisponible",
+            "motif": "Pas de profil de liens externes propre à la nouvelle URL, ni liste de backlinks vérifiés fournie.",
+            "constat": "Entrants internes du brief ne sont pas backlinks acquis ; Common Crawl domaine seul ne suffit pas à scorer."
+          },
+          {
+            "skill": "seo-cluster",
+            "phase": "intentions-serp-et-maillage",
+            "etat": "execute",
+            "motif": "Contrôler intent et frontières du satellite ; aucune similarité SERP mesurée ici.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "seo-competitor-pages",
+            "phase": "decision-format",
+            "etat": "N/A",
+            "motif": "Pas comparaison X vs Y, alternatives ou classement d'éditeurs ; guide sur conditions d'entrée.",
+            "constat": "Conditions d'un environnement précis doivent être sourcées, pas tableau commercial concurrentiel."
+          },
+          {
+            "skill": "seo-content",
+            "phase": "qualite-eeat",
+            "etat": "execute",
+            "motif": "Who/How/Why et confiance importants sur matière données ; aucun texte final à juger.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "seo-content-brief",
+            "phase": "brief-seo",
+            "etat": "execute",
+            "motif": "Confronter informations du brief aux sources/intentions et au site réel ; pas reprise des scores concurrents absents.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "seo-dataforseo",
+            "phase": "decision-fournisseur-donnees",
+            "etat": "N/A",
+            "motif": "Achats de données/métriques premium non requis pour ce guide ; recherche publique et mesures natives suffisent au mandat.",
+            "constat": "Outils DataForSEO décrits dans cette session, sans appel ni preuve d'auth/budget ; les deux variantes du pack divergent."
+          },
+          {
+            "skill": "seo-drift",
+            "phase": "decision-maintenance",
+            "etat": "N/A",
+            "motif": "Nouvelle page sans baseline servi antérieur ; pas comparaison avant/après demandée.",
+            "constat": "Une baseline 404 serait un état d'erreur, pas baseline connue bonne."
+          },
+          {
+            "skill": "seo-ecommerce",
+            "phase": "decision-surface",
+            "etat": "N/A",
+            "motif": "Guide cabinet, sans vente produit, marketplace, Merchant Center ou UCP.",
+            "constat": "Pas Product/Offer, rating client ou feed à certifier."
+          },
+          {
+            "skill": "seo-flow",
+            "phase": "decision-prompts",
+            "etat": "N/A",
+            "motif": "Brief Memlia et contrôles ciblés déjà définis ; activation/sync FLOW supplémentaire inutile pour cette candidature.",
+            "constat": "Pas lecture de tous prompts FLOW ni analyse Leverage/Local revendiquée."
+          },
+          {
+            "skill": "seo-geo",
+            "phase": "citabilite-et-accessibilite",
+            "etat": "execute",
+            "motif": "Contrôler contenu autonome et crawl/render ; pas de page ou robots candidat observés.",
+            "constat": "Structure extractible, réponse directe et définitions ; ai_citation_score exécuté sur HTML, heuristique pas visibilité IA mesurée."
+          },
+          {
+            "skill": "seo-google",
+            "phase": "mesure-recherche-et-apres-publication",
+            "etat": "indisponible",
+            "motif": "Runtime canonique doctor exit 3 ; credentials non testés et aucune preuve de surface nouvelle disponible.",
+            "constat": "Pas GSC/GA4/CWV propre au slug ; disponibilité d'API gen-AI UI non présumée, pas métriques Google inventées."
+          },
+          {
+            "skill": "seo-hreflang",
+            "phase": "decision-langues",
+            "etat": "N/A",
+            "motif": "Une seule version française ; aucun ensemble d'alternates multilingue/multirégional.",
+            "constat": "L'attribut lang français reste à contrôler par seo-page, pas un motif de créer hreflang."
+          },
+          {
+            "skill": "seo-image-gen",
+            "phase": "decision-provider-image",
+            "etat": "N/A",
+            "motif": "Pipeline Gemini/banana non choisi : brief Memlia prescrit Higgsfield pour couverture et HTML canonique pour figures.",
+            "constat": "Deux versions lues, conventions et fallbacks divergents ; aucune disponibilité Gemini affirmée."
+          },
+          {
+            "skill": "seo-images",
+            "phase": "medias-et-render",
+            "etat": "execute",
+            "motif": "Alt, poids, dimensions, responsive, LCP et figures 1600x900 doivent être contrôlés sur vrais actifs.",
+            "constat": "HTML réellement construit : métadonnées, schema, figures, liens et navigateur contrôlés. Alternative native au runtime SEO indisponible, portée candidat uniquement."
+          },
+          {
+            "skill": "seo-local",
+            "phase": "decision-intent",
+            "etat": "N/A",
+            "motif": "Guide documentaire national sans intention near-me, adresse locale ou GBP.",
+            "constat": "Avoir des lecteurs cabinets ne transforme pas le guide en landing locale."
+          },
+          {
+            "skill": "seo-maps",
+            "phase": "decision-intent",
+            "etat": "N/A",
+            "motif": "Aucun établissement/rayon/geo-grid à analyser pour l'autorisation d'entrée de données.",
+            "constat": "SEO GEO citation != géolocalisation Maps."
+          },
+          {
+            "skill": "seo-page",
+            "phase": "onpage-html-et-surface-servie",
+            "etat": "execute",
+            "motif": "Pas HTML construit/servi propre au candidat ; runtime SEO non prêt.",
+            "constat": "HTML réellement construit : métadonnées, schema, figures, liens et navigateur contrôlés. Alternative native au runtime SEO indisponible, portée candidat uniquement."
+          },
+          {
+            "skill": "seo-plan",
+            "phase": "integration-strategie",
+            "etat": "execute",
+            "motif": "Réconcilier la nouvelle page avec plan source et KPI existants, sans lancer nouveau projet SEO annuel.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "seo-programmatic",
+            "phase": "decision-volume",
+            "etat": "N/A",
+            "motif": "Un guide original et fiche copiables, pas pages produites en masse depuis des enregistrements.",
+            "constat": "Le renderer canonique ne rend pas l'article programmatic SEO."
+          },
+          {
+            "skill": "seo-schema",
+            "phase": "schema-html",
+            "etat": "execute",
+            "motif": "Valider syntaxe JSON-LD, @graph, auteur/date/URL et contenu visible du candidat.",
+            "constat": "HTML réellement construit : métadonnées, schema, figures, liens et navigateur contrôlés. Alternative native au runtime SEO indisponible, portée candidat uniquement."
+          },
+          {
+            "skill": "seo-sitemap",
+            "phase": "publication-technique",
+            "etat": "a-executer",
+            "motif": "Contrôler inclusion réelle sitemap/RSS/index blog après intégration, statut 200 et canonical.",
+            "constat": "Publication réelle non faite : contrôle sitemap/baseline différé à reprise après revue."
+          },
+          {
+            "skill": "seo-sxo",
+            "phase": "intent-et-utilite",
+            "etat": "execute",
+            "motif": "Vérifier que le format et la fiche répondent au besoin sécurité, pas une comparaison logiciel.",
+            "constat": "Audit propre à cette intention, corps et recette appliqués ; contrôles techniques reliés au HTML. Pas de métrique Google attribuée."
+          },
+          {
+            "skill": "seo-technical",
+            "phase": "render-mobile-et-indexabilite",
+            "etat": "execute",
+            "motif": "Responsive, contenu visible, liens, robots/canonical et statut HTTP doivent être contrôlés.",
+            "constat": "HTML réellement construit : métadonnées, schema, figures, liens et navigateur contrôlés. Alternative native au runtime SEO indisponible, portée candidat uniquement."
+          },
+          {
+            "skill": "seo-ahrefs",
+            "phase": "decision-provider",
+            "etat": "N/A",
+            "motif": "Données API Ahrefs premium/redondantes non requises pour l'article ; aucun achat ni compte nouveau mandaté.",
+            "constat": "Fichier disponible hors catalogue ; connexion/token non inspectés, pas absence d'installation affirmée."
+          },
+          {
+            "skill": "seo-bing",
+            "phase": "decision-indexation-provider",
+            "etat": "N/A",
+            "motif": "Soumission IndexNow/comparaison liens Bing non demandées pour cet inventaire ; non-Google optionnel après publication.",
+            "constat": "Extension lue hors catalogue, pas preuve d'index Bing/Copilot ni de credentials."
+          },
+          {
+            "skill": "seo-firecrawl",
+            "phase": "decision-provider-crawl",
+            "etat": "N/A",
+            "motif": "Candidat Astro statique et sources exactes accessibles par outils Hermes/natifs ; crawl tiers payant global non requis.",
+            "constat": "Le besoin rendu/liens reste couvert ailleurs ; aucune connexion Firecrawl testée."
+          },
+          {
+            "skill": "seo-profound",
+            "phase": "decision-monitoring-provider",
+            "etat": "N/A",
+            "motif": "Monitoring continu de citations de marque non mandaté, pas requis pour rédiger ce guide nouveau.",
+            "constat": "Extension hors catalogue ; aucune série temporelle ou clé vérifiée."
+          },
+          {
+            "skill": "seo-seranking",
+            "phase": "decision-monitoring-provider",
+            "etat": "N/A",
+            "motif": "Share-of-voice multiengine et alternative premium SERP/backlinks non requis pour ce mandat.",
+            "constat": "Extension hors catalogue ; aucun échantillon/configuration de prompts collecté."
+          },
+          {
+            "skill": "seo-unlighthouse",
+            "phase": "decision-outil-labo",
+            "etat": "N/A",
+            "motif": "Audit Lighthouse multipage entier non nécessaire à une fiche nouvelle ; contrôles page/browser natifs et CWV distincts suffisent au périmètre.",
+            "constat": "Extension hors catalogue ; Node/package Unlighthouse non testés, pas indisponibilité supposée."
+          }
+        ],
+        "scope": "Cohérence et existence contrôlées ; ni nouvelle lecture intégrale de 65 skills ni 63 workflows exécutés."
+      }
+    },
+    {
+      "name": "source-cnil-personnelle",
+      "evidence": {
+        "httpStatusAuthor": 200,
+        "retrievedAtAuthor": "2026-10-05T09:10:55.456Z",
+        "nativeIntegrity": true,
+        "exactCitationsPresent": true
+      }
+    },
+    {
+      "name": "source-cnil-anonymisation",
+      "evidence": {
+        "httpStatusAuthor": 200,
+        "retrievedAtAuthor": "2026-10-05T09:10:55.691Z",
+        "nativeIntegrity": true,
+        "exactCitationsPresent": true
+      }
+    },
+    {
+      "name": "image-dimension",
+      "evidence": {
+        "path": "editorial/articles/ia-comptabilite-confidentialite-donnees/preuves/image/master.png",
+        "width": 1920,
+        "height": 1080,
+        "format": "png",
+        "bytes": 1635427
+      }
+    },
+    {
+      "name": "image-dimension",
+      "evidence": {
+        "path": "editorial/articles/ia-comptabilite-confidentialite-donnees/preuves/image/og.webp",
+        "width": 1200,
+        "height": 630,
+        "format": "webp",
+        "bytes": 23132
+      }
+    },
+    {
+      "name": "image-dimension",
+      "evidence": {
+        "path": "public/images/img-art-ia-comptabilite-confidentialite-donnees-768.webp",
+        "width": 768,
+        "height": 432,
+        "format": "webp",
+        "bytes": 9710
+      }
+    },
+    {
+      "name": "image-dimension",
+      "evidence": {
+        "path": "public/images/img-art-ia-comptabilite-confidentialite-donnees-768.avif",
+        "width": 768,
+        "height": 432,
+        "format": "heif",
+        "bytes": 5858
+      }
+    },
+    {
+      "name": "image-dimension",
+      "evidence": {
+        "path": "public/images/img-art-ia-comptabilite-confidentialite-donnees-1200.webp",
+        "width": 1200,
+        "height": 675,
+        "format": "webp",
+        "bytes": 17354
+      }
+    },
+    {
+      "name": "image-dimension",
+      "evidence": {
+        "path": "public/images/img-art-ia-comptabilite-confidentialite-donnees-1200.avif",
+        "width": 1200,
+        "height": 675,
+        "format": "heif",
+        "bytes": 9705
+      }
+    },
+    {
+      "name": "image-dimension",
+      "evidence": {
+        "path": "public/images/img-art-ia-comptabilite-confidentialite-donnees-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 24742
+      }
+    },
+    {
+      "name": "image-dimension",
+      "evidence": {
+        "path": "public/images/img-art-ia-comptabilite-confidentialite-donnees-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "heif",
+        "bytes": 12971
+      }
+    },
+    {
+      "name": "image-dimension",
+      "evidence": {
+        "path": "public/proofs/blog/confidentialite-fiche.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 33242
+      }
+    },
+    {
+      "name": "image-dimension",
+      "evidence": {
+        "path": "public/proofs/blog/confidentialite-registre.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 31004
+      }
+    },
+    {
+      "name": "palette",
+      "evidence": {
+        "epinglee": [
+          {
+            "hex": "#fcfbf7",
+            "role": "dominante"
+          },
+          {
+            "hex": "#27b657",
+            "role": "presente"
+          },
+          {
+            "hex": "#1c8a41",
+            "role": "touche"
+          },
+          {
+            "hex": "#231f20",
+            "role": "touche"
+          }
+        ],
+        "tolerance": 45,
+        "pixelsMesures": 57600,
+        "parts": {
+          "#fcfbf7": 0.6406770833333333,
+          "#27b657": 0.009722222222222222,
+          "#1c8a41": 0.030815972222222224,
+          "#231f20": 0.24524305555555556
+        },
+        "seuils": {
+          "dominante": 0.1,
+          "touche": 0.005,
+          "presente": 0.005
+        },
+        "statut": "PASS",
+        "ecarts": []
+      }
+    },
+    {
+      "name": "navigateur-1280",
+      "evidence": {
+        "tables": [
+          {
+            "headers": [
+              "Champ",
+              "Question à remplir",
+              "Exemple entièrement fictif"
+            ],
+            "rows": 12,
+            "tableWidth": 656,
+            "parentWidth": 656,
+            "scrollMax": 0,
+            "scrolled": 0,
+            "selfScrollMax": 0,
+            "selfScrolled": 0,
+            "font": "14px",
+            "cells": [
+              {
+                "text": "Champ",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Question à remplir",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Exemple entièrement fictif",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Finalité",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Quelle préparation précise ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Transformer une note inventée en trois questions",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Sortie",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Où sera-t-elle relue ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Brouillon interne, sans envoi",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Entrée minimale",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Quels éléments changent la réponse ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Deux pièces manquantes et une réserve",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Classe des données",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Public, personnel, confidentiel, fictif ? Plusieurs réponses possibles",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Entièrement fictif",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Champs exclus",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Qu’est-ce qui n’aide pas le geste ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Identité, contact, lieu, montant réel, pièce jointe",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Environnement",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Service, offre, compte, espace exacts ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "ENV-FICTIF, protocole local de démonstration",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Accès et partage",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Qui peut lire entrée, sortie et historique ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Aucun compte fournisseur utilisé dans l’essai",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Réutilisation",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Les données servent-elles à d’autres usages ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Aucun appel réseau dans l’essai",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Conservation",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Que devient entrée, historique, fichier et sortie ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Fichiers du jeu d’essai conservés localement",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Décision",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Qui autorise ce périmètre, avec quelle trace ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Qualification préalable écrite pour l’essai",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              },
+              {
+                "text": "Réexamen",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 134.59375
+              },
+              {
+                "text": "Quel changement remet la décision en question ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 309.3125
+              },
+              {
+                "text": "Entrée réelle, autre environnement ou autre finalité",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.09375
+              }
+            ]
+          },
+          {
+            "headers": [
+              "Point",
+              "Réponse à retrouver",
+              "Si elle manque"
+            ],
+            "rows": 6,
+            "tableWidth": 656,
+            "parentWidth": 656,
+            "scrollMax": 0,
+            "scrolled": 0,
+            "selfScrollMax": 0,
+            "selfScrolled": 0,
+            "font": "14px",
+            "cells": [
+              {
+                "text": "Point",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Réponse à retrouver",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 317.46875
+              },
+              {
+                "text": "Si elle manque",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.53125
+              },
+              {
+                "text": "Réutilisation",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Usage des entrées, fichiers et sorties, réglage effectif",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 317.46875
+              },
+              {
+                "text": "Transmission en attente",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.53125
+              },
+              {
+                "text": "Conservation",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Historique, fichiers, suppression et éventuelles exceptions",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 317.46875
+              },
+              {
+                "text": "Transmission en attente",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.53125
+              },
+              {
+                "text": "Accès",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Membres, administrateurs, liens de partage, intervenants du service",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 317.46875
+              },
+              {
+                "text": "Partage en attente",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.53125
+              },
+              {
+                "text": "Traitement",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Prestataires impliqués, lieux et cadre des éventuels transferts",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 317.46875
+              },
+              {
+                "text": "Examen compétent nécessaire",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.53125
+              },
+              {
+                "text": "Contrat",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Engagements correspondant à l’offre et au traitement envisagés",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 317.46875
+              },
+              {
+                "text": "Ne pas déduire une autorisation de l’abonnement",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 212.53125
+              }
+            ]
+          },
+          {
+            "headers": [
+              "Se prépare seul",
+              "Attend une validation",
+              "Reste humain"
+            ],
+            "rows": 2,
+            "tableWidth": 656,
+            "parentWidth": 656,
+            "scrollMax": 0,
+            "scrolled": 0,
+            "selfScrollMax": 0,
+            "selfScrolled": 0,
+            "font": "14px",
+            "cells": [
+              {
+                "text": "Se prépare seul",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 187.5625
+              },
+              {
+                "text": "Attend une validation",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 258.828125
+              },
+              {
+                "text": "Reste humain",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 209.609375
+              },
+              {
+                "text": "Fiche de champs et contexte fictif ; routage des états saisis",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 187.5625
+              },
+              {
+                "text": "Contexte minimal proposé et environnement documenté",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 258.828125
+              },
+              {
+                "text": "Qualification des données, cadre applicable et autorisation de l’usage réel",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 209.609375
+              }
+            ]
+          },
+          {
+            "headers": [
+              "Cas joué",
+              "Sortie obtenue",
+              "Décision"
+            ],
+            "rows": 5,
+            "tableWidth": 656,
+            "parentWidth": 656,
+            "scrollMax": 0,
+            "scrolled": 0,
+            "selfScrollMax": 0,
+            "selfScrolled": 0,
+            "font": "14px",
+            "cells": [
+              {
+                "text": "Cas joué",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 255.34375
+              },
+              {
+                "text": "Sortie obtenue",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Décision",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 176.65625
+              },
+              {
+                "text": "C-01 : contexte minimal fictif, qualification préalable et environnement de démonstration confirmés",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 255.34375
+              },
+              {
+                "text": "PREPARATION_PRETE",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Contexte à relire ; transmission false",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 176.65625
+              },
+              {
+                "text": "C-02 : identifiant inutile déclaré ajouté au cas C-01",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 255.34375
+              },
+              {
+                "text": "RETIRER_IDENTIFIANT",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Retirer puis réexaminer ; transmission false",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 176.65625
+              },
+              {
+                "text": "C-03 : environnement non confirmé",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 255.34375
+              },
+              {
+                "text": "ENVIRONNEMENT_INCONNU",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Documenter l’environnement ; transmission false",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 176.65625
+              },
+              {
+                "text": "C-04 : contexte déclaré reconstructible",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 255.34375
+              },
+              {
+                "text": "ARBITRAGE_HUMAIN",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Réexaminer les détails ; transmission false",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 176.65625
+              }
+            ]
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:50027/images/img-art-ia-comptabilite-confidentialite-donnees-768.avif",
+            "alt": "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème",
+            "width": 654,
+            "naturalWidth": 719,
+            "naturalHeight": 404,
+            "loading": "eager",
+            "priority": "high"
+          },
+          {
+            "src": "http://127.0.0.1:50027/proofs/blog/confidentialite-fiche.webp",
+            "alt": "Fiche fictive C-01 : finalité, champs minimaux, environnement local et préparation à relire sans transmission.",
+            "width": 654,
+            "naturalWidth": 1600,
+            "naturalHeight": 900,
+            "loading": "lazy",
+            "priority": "auto"
+          },
+          {
+            "src": "http://127.0.0.1:50027/proofs/blog/confidentialite-registre.webp",
+            "alt": "Registre fictif C-01 à C-04 : préparation prête, identifiant à retirer, environnement inconnu, arbitrage humain.",
+            "width": 654,
+            "naturalWidth": 1600,
+            "naturalHeight": 900,
+            "loading": "lazy",
+            "priority": "auto"
+          }
+        ],
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité"
+          },
+          {
+            "tag": "H2",
+            "text": "Dans cet article"
+          },
+          {
+            "tag": "H2",
+            "text": "Réponse directe"
+          },
+          {
+            "tag": "H2",
+            "text": "Quelles données sont personnelles, confidentielles ou fictives ?"
+          },
+          {
+            "tag": "H2",
+            "text": "Pourquoi la préparation casse au copier-coller"
+          },
+          {
+            "tag": "H2",
+            "text": "Avant de commencer"
+          },
+          {
+            "tag": "H2",
+            "text": "La fiche d’autorisation d’entrée à copier"
+          },
+          {
+            "tag": "H2",
+            "text": "Réduire le contexte sans prétendre anonymiser"
+          },
+          {
+            "tag": "H2",
+            "text": "Vérifier l’environnement, pas l’étiquette commerciale"
+          },
+          {
+            "tag": "H2",
+            "text": "La règle écrite"
+          },
+          {
+            "tag": "H2",
+            "text": "Rejoué sur le jeu fictif"
+          },
+          {
+            "tag": "H2",
+            "text": "Les erreurs fréquentes"
+          },
+          {
+            "tag": "H2",
+            "text": "Questions fréquentes"
+          },
+          {
+            "tag": "H3",
+            "text": "Puis-je transmettre un dossier si j’ai retiré les noms ?"
+          },
+          {
+            "tag": "H3",
+            "text": "Pseudonymisé veut-il dire anonyme ?"
+          },
+          {
+            "tag": "H3",
+            "text": "Un mode privé suffit-il pour utiliser des données clients ?"
+          },
+          {
+            "tag": "H3",
+            "text": "Que faire si je n’arrive pas à confirmer les conditions ?"
+          },
+          {
+            "tag": "H3",
+            "text": "Le programme peut-il autoriser automatiquement l’entrée ?"
+          },
+          {
+            "tag": "H2",
+            "text": "La règle à retenir"
+          },
+          {
+            "tag": "H2",
+            "text": "Pour aller plus loin"
+          },
+          {
+            "tag": "H2",
+            "text": "Sources"
+          },
+          {
+            "tag": "H2",
+            "text": "Cette tâche vit encore dans la tête de vos collaborateurs ?"
+          },
+          {
+            "tag": "H2",
+            "text": "À lire ensuite"
+          }
+        ],
+        "schemas": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "BlogPosting",
+                "@id": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees#article",
+                "headline": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+                "description": "IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet.",
+                "url": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees",
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees"
+                },
+                "datePublished": "2026-10-05T00:00:00.000Z",
+                "dateModified": "2026-10-05T00:00:00.000Z",
+                "inLanguage": "fr-FR",
+                "isPartOf": {
+                  "@id": "https://memlia.fr/#website"
+                },
+                "author": {
+                  "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+                },
+                "publisher": {
+                  "@id": "https://memlia.fr/#organization"
+                },
+                "image": {
+                  "@type": "ImageObject",
+                  "url": "https://memlia.fr/images/img-art-ia-comptabilite-confidentialite-donnees-og.webp",
+                  "width": 1200,
+                  "height": 630,
+                  "caption": "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème"
+                },
+                "thumbnailUrl": "https://memlia.fr/images/img-art-ia-comptabilite-confidentialite-donnees-og.webp",
+                "articleSection": [
+                  "IA",
+                  "Automatisation"
+                ],
+                "keywords": [
+                  "IA cabinet comptable confidentialité données",
+                  "ChatGPT données clients cabinet comptable"
+                ],
+                "wordCount": 2032
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees#breadcrumb",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://memlia.fr/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://memlia.fr/blog"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+                    "item": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees"
+                  }
+                ]
+              },
+              {
+                "@type": "Person",
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+                "name": "Kevin Kitanga",
+                "jobTitle": "Fondateur de Memlia",
+                "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+                "url": "https://memlia.fr/a-propos",
+                "worksFor": {
+                  "@id": "https://memlia.fr/#organization"
+                }
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://memlia.fr/#organization",
+                "name": "Memlia",
+                "legalName": "MEMLIA",
+                "url": "https://memlia.fr/",
+                "logo": "https://memlia.fr/apple-touch-icon.png",
+                "email": "contact@memlia.fr",
+                "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+                "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+                  "postalCode": "75008",
+                  "addressLocality": "Paris",
+                  "addressCountry": "FR"
+                },
+                "identifier": [
+                  {
+                    "@type": "PropertyValue",
+                    "propertyID": "SIREN",
+                    "value": "108621541"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "propertyID": "SIRET",
+                    "value": "10862154100011"
+                  }
+                ],
+                "sameAs": [
+                  "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+                  "https://www.pappers.fr/entreprise/memlia-108621541",
+                  "https://www.societe.com/societe/memlia-108621541.html"
+                ],
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "email": "contact@memlia.fr",
+                  "contactType": "customer support",
+                  "areaServed": "FR",
+                  "availableLanguage": "French"
+                }
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://memlia.fr/#website",
+                "url": "https://memlia.fr/",
+                "name": "Memlia",
+                "inLanguage": "fr-FR",
+                "publisher": {
+                  "@id": "https://memlia.fr/#organization"
+                }
+              }
+            ]
+          }
+        ],
+        "errors": [],
+        "meta": [
+          {
+            "name": null,
+            "content": ""
+          },
+          {
+            "name": "viewport",
+            "content": "width=device-width, initial-scale=1"
+          },
+          {
+            "name": "description",
+            "content": "IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet."
+          },
+          {
+            "name": "author",
+            "content": "Kevin Kitanga"
+          },
+          {
+            "name": "robots",
+            "content": "noindex, follow"
+          },
+          {
+            "name": "theme-color",
+            "content": "#fffefb"
+          },
+          {
+            "name": "og:type",
+            "content": "article"
+          },
+          {
+            "name": "og:site_name",
+            "content": "Memlia"
+          },
+          {
+            "name": "og:locale",
+            "content": "fr_FR"
+          },
+          {
+            "name": "og:url",
+            "content": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees"
+          },
+          {
+            "name": "og:title",
+            "content": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité"
+          },
+          {
+            "name": "og:description",
+            "content": "IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet."
+          },
+          {
+            "name": "og:image",
+            "content": "https://memlia.fr/images/img-art-ia-comptabilite-confidentialite-donnees-og.webp"
+          },
+          {
+            "name": "og:image:width",
+            "content": "1200"
+          },
+          {
+            "name": "og:image:height",
+            "content": "630"
+          },
+          {
+            "name": "og:image:alt",
+            "content": "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème"
+          },
+          {
+            "name": "twitter:card",
+            "content": "summary_large_image"
+          },
+          {
+            "name": "twitter:title",
+            "content": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité"
+          },
+          {
+            "name": "twitter:description",
+            "content": "IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet."
+          },
+          {
+            "name": "twitter:image",
+            "content": "https://memlia.fr/images/img-art-ia-comptabilite-confidentialite-donnees-og.webp"
+          },
+          {
+            "name": "article:published_time",
+            "content": "2026-10-05T00:00:00.000Z"
+          },
+          {
+            "name": "article:modified_time",
+            "content": "2026-10-05T00:00:00.000Z"
+          },
+          {
+            "name": "article:author",
+            "content": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          {
+            "name": "article:tag",
+            "content": "IA"
+          },
+          {
+            "name": "article:tag",
+            "content": "Automatisation"
+          }
+        ]
+      }
+    },
+    {
+      "name": "navigateur-390",
+      "evidence": {
+        "tables": [
+          {
+            "headers": [
+              "Champ",
+              "Question à remplir",
+              "Exemple entièrement fictif"
+            ],
+            "rows": 12,
+            "tableWidth": 356,
+            "parentWidth": 356,
+            "scrollMax": 0,
+            "scrolled": 0,
+            "selfScrollMax": 120,
+            "selfScrolled": 120,
+            "font": "14px",
+            "cells": [
+              {
+                "text": "Champ",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Question à remplir",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Exemple entièrement fictif",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Finalité",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Quelle préparation précise ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Transformer une note inventée en trois questions",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Sortie",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Où sera-t-elle relue ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Brouillon interne, sans envoi",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Entrée minimale",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Quels éléments changent la réponse ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Deux pièces manquantes et une réserve",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Classe des données",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Public, personnel, confidentiel, fictif ? Plusieurs réponses possibles",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Entièrement fictif",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Champs exclus",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Qu’est-ce qui n’aide pas le geste ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Identité, contact, lieu, montant réel, pièce jointe",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Environnement",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Service, offre, compte, espace exacts ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "ENV-FICTIF, protocole local de démonstration",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Accès et partage",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Qui peut lire entrée, sortie et historique ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Aucun compte fournisseur utilisé dans l’essai",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Réutilisation",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Les données servent-elles à d’autres usages ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Aucun appel réseau dans l’essai",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Conservation",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Que devient entrée, historique, fichier et sortie ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Fichiers du jeu d’essai conservés localement",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Décision",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Qui autorise ce périmètre, avec quelle trace ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Qualification préalable écrite pour l’essai",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Réexamen",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Quel changement remet la décision en question ?",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Entrée réelle, autre environnement ou autre finalité",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              }
+            ]
+          },
+          {
+            "headers": [
+              "Point",
+              "Réponse à retrouver",
+              "Si elle manque"
+            ],
+            "rows": 6,
+            "tableWidth": 356,
+            "parentWidth": 356,
+            "scrollMax": 0,
+            "scrolled": 0,
+            "selfScrollMax": 120,
+            "selfScrolled": 120,
+            "font": "14px",
+            "cells": [
+              {
+                "text": "Point",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Réponse à retrouver",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Si elle manque",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Réutilisation",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Usage des entrées, fichiers et sorties, réglage effectif",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Transmission en attente",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Conservation",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Historique, fichiers, suppression et éventuelles exceptions",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Transmission en attente",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Accès",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Membres, administrateurs, liens de partage, intervenants du service",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Partage en attente",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Traitement",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Prestataires impliqués, lieux et cadre des éventuels transferts",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Examen compétent nécessaire",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Contrat",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Engagements correspondant à l’offre et au traitement envisagés",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Ne pas déduire une autorisation de l’abonnement",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              }
+            ]
+          },
+          {
+            "headers": [
+              "Se prépare seul",
+              "Attend une validation",
+              "Reste humain"
+            ],
+            "rows": 2,
+            "tableWidth": 356,
+            "parentWidth": 356,
+            "scrollMax": 0,
+            "scrolled": 0,
+            "selfScrollMax": 120,
+            "selfScrolled": 120,
+            "font": "14px",
+            "cells": [
+              {
+                "text": "Se prépare seul",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Attend une validation",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Reste humain",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Fiche de champs et contexte fictif ; routage des états saisis",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Contexte minimal proposé et environnement documenté",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Qualification des données, cadre applicable et autorisation de l’usage réel",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              }
+            ]
+          },
+          {
+            "headers": [
+              "Cas joué",
+              "Sortie obtenue",
+              "Décision"
+            ],
+            "rows": 5,
+            "tableWidth": 356,
+            "parentWidth": 356,
+            "scrollMax": 0,
+            "scrolled": 0,
+            "selfScrollMax": 120,
+            "selfScrolled": 120,
+            "font": "14px",
+            "cells": [
+              {
+                "text": "Cas joué",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "Sortie obtenue",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Décision",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "C-01 : contexte minimal fictif, qualification préalable et environnement de démonstration confirmés",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "PREPARATION_PRETE",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Contexte à relire ; transmission false",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "C-02 : identifiant inutile déclaré ajouté au cas C-01",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "RETIRER_IDENTIFIANT",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Retirer puis réexaminer ; transmission false",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "C-03 : environnement non confirmé",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "ENVIRONNEMENT_INCONNU",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Documenter l’environnement ; transmission false",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "C-04 : contexte déclaré reconstructible",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              },
+              {
+                "text": "ARBITRAGE_HUMAIN",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 224
+              },
+              {
+                "text": "Réexaminer les détails ; transmission false",
+                "display": "table-cell",
+                "visibility": "visible",
+                "width": 126
+              }
+            ]
+          }
+        ],
+        "images": [
+          {
+            "src": "http://127.0.0.1:50027/images/img-art-ia-comptabilite-confidentialite-donnees-768.avif",
+            "alt": "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème",
+            "width": 354,
+            "naturalWidth": 390,
+            "naturalHeight": 219,
+            "loading": "eager",
+            "priority": "high"
+          },
+          {
+            "src": "http://127.0.0.1:50027/proofs/blog/confidentialite-fiche.webp",
+            "alt": "Fiche fictive C-01 : finalité, champs minimaux, environnement local et préparation à relire sans transmission.",
+            "width": 354,
+            "naturalWidth": 1600,
+            "naturalHeight": 900,
+            "loading": "lazy",
+            "priority": "auto"
+          },
+          {
+            "src": "http://127.0.0.1:50027/proofs/blog/confidentialite-registre.webp",
+            "alt": "Registre fictif C-01 à C-04 : préparation prête, identifiant à retirer, environnement inconnu, arbitrage humain.",
+            "width": 354,
+            "naturalWidth": 1600,
+            "naturalHeight": 900,
+            "loading": "lazy",
+            "priority": "auto"
+          }
+        ],
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité"
+          },
+          {
+            "tag": "H2",
+            "text": "Dans cet article"
+          },
+          {
+            "tag": "H2",
+            "text": "Réponse directe"
+          },
+          {
+            "tag": "H2",
+            "text": "Quelles données sont personnelles, confidentielles ou fictives ?"
+          },
+          {
+            "tag": "H2",
+            "text": "Pourquoi la préparation casse au copier-coller"
+          },
+          {
+            "tag": "H2",
+            "text": "Avant de commencer"
+          },
+          {
+            "tag": "H2",
+            "text": "La fiche d’autorisation d’entrée à copier"
+          },
+          {
+            "tag": "H2",
+            "text": "Réduire le contexte sans prétendre anonymiser"
+          },
+          {
+            "tag": "H2",
+            "text": "Vérifier l’environnement, pas l’étiquette commerciale"
+          },
+          {
+            "tag": "H2",
+            "text": "La règle écrite"
+          },
+          {
+            "tag": "H2",
+            "text": "Rejoué sur le jeu fictif"
+          },
+          {
+            "tag": "H2",
+            "text": "Les erreurs fréquentes"
+          },
+          {
+            "tag": "H2",
+            "text": "Questions fréquentes"
+          },
+          {
+            "tag": "H3",
+            "text": "Puis-je transmettre un dossier si j’ai retiré les noms ?"
+          },
+          {
+            "tag": "H3",
+            "text": "Pseudonymisé veut-il dire anonyme ?"
+          },
+          {
+            "tag": "H3",
+            "text": "Un mode privé suffit-il pour utiliser des données clients ?"
+          },
+          {
+            "tag": "H3",
+            "text": "Que faire si je n’arrive pas à confirmer les conditions ?"
+          },
+          {
+            "tag": "H3",
+            "text": "Le programme peut-il autoriser automatiquement l’entrée ?"
+          },
+          {
+            "tag": "H2",
+            "text": "La règle à retenir"
+          },
+          {
+            "tag": "H2",
+            "text": "Pour aller plus loin"
+          },
+          {
+            "tag": "H2",
+            "text": "Sources"
+          },
+          {
+            "tag": "H2",
+            "text": "Cette tâche vit encore dans la tête de vos collaborateurs ?"
+          },
+          {
+            "tag": "H2",
+            "text": "À lire ensuite"
+          }
+        ],
+        "schemas": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "BlogPosting",
+                "@id": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees#article",
+                "headline": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+                "description": "IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet.",
+                "url": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees",
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees"
+                },
+                "datePublished": "2026-10-05T00:00:00.000Z",
+                "dateModified": "2026-10-05T00:00:00.000Z",
+                "inLanguage": "fr-FR",
+                "isPartOf": {
+                  "@id": "https://memlia.fr/#website"
+                },
+                "author": {
+                  "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+                },
+                "publisher": {
+                  "@id": "https://memlia.fr/#organization"
+                },
+                "image": {
+                  "@type": "ImageObject",
+                  "url": "https://memlia.fr/images/img-art-ia-comptabilite-confidentialite-donnees-og.webp",
+                  "width": 1200,
+                  "height": 630,
+                  "caption": "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème"
+                },
+                "thumbnailUrl": "https://memlia.fr/images/img-art-ia-comptabilite-confidentialite-donnees-og.webp",
+                "articleSection": [
+                  "IA",
+                  "Automatisation"
+                ],
+                "keywords": [
+                  "IA cabinet comptable confidentialité données",
+                  "ChatGPT données clients cabinet comptable"
+                ],
+                "wordCount": 2032
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees#breadcrumb",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://memlia.fr/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://memlia.fr/blog"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+                    "item": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees"
+                  }
+                ]
+              },
+              {
+                "@type": "Person",
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+                "name": "Kevin Kitanga",
+                "jobTitle": "Fondateur de Memlia",
+                "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+                "url": "https://memlia.fr/a-propos",
+                "worksFor": {
+                  "@id": "https://memlia.fr/#organization"
+                }
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://memlia.fr/#organization",
+                "name": "Memlia",
+                "legalName": "MEMLIA",
+                "url": "https://memlia.fr/",
+                "logo": "https://memlia.fr/apple-touch-icon.png",
+                "email": "contact@memlia.fr",
+                "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+                "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+                  "postalCode": "75008",
+                  "addressLocality": "Paris",
+                  "addressCountry": "FR"
+                },
+                "identifier": [
+                  {
+                    "@type": "PropertyValue",
+                    "propertyID": "SIREN",
+                    "value": "108621541"
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    "propertyID": "SIRET",
+                    "value": "10862154100011"
+                  }
+                ],
+                "sameAs": [
+                  "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+                  "https://www.pappers.fr/entreprise/memlia-108621541",
+                  "https://www.societe.com/societe/memlia-108621541.html"
+                ],
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "email": "contact@memlia.fr",
+                  "contactType": "customer support",
+                  "areaServed": "FR",
+                  "availableLanguage": "French"
+                }
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://memlia.fr/#website",
+                "url": "https://memlia.fr/",
+                "name": "Memlia",
+                "inLanguage": "fr-FR",
+                "publisher": {
+                  "@id": "https://memlia.fr/#organization"
+                }
+              }
+            ]
+          }
+        ],
+        "errors": [],
+        "meta": [
+          {
+            "name": null,
+            "content": ""
+          },
+          {
+            "name": "viewport",
+            "content": "width=device-width, initial-scale=1"
+          },
+          {
+            "name": "description",
+            "content": "IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet."
+          },
+          {
+            "name": "author",
+            "content": "Kevin Kitanga"
+          },
+          {
+            "name": "robots",
+            "content": "noindex, follow"
+          },
+          {
+            "name": "theme-color",
+            "content": "#fffefb"
+          },
+          {
+            "name": "og:type",
+            "content": "article"
+          },
+          {
+            "name": "og:site_name",
+            "content": "Memlia"
+          },
+          {
+            "name": "og:locale",
+            "content": "fr_FR"
+          },
+          {
+            "name": "og:url",
+            "content": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees"
+          },
+          {
+            "name": "og:title",
+            "content": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité"
+          },
+          {
+            "name": "og:description",
+            "content": "IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet."
+          },
+          {
+            "name": "og:image",
+            "content": "https://memlia.fr/images/img-art-ia-comptabilite-confidentialite-donnees-og.webp"
+          },
+          {
+            "name": "og:image:width",
+            "content": "1200"
+          },
+          {
+            "name": "og:image:height",
+            "content": "630"
+          },
+          {
+            "name": "og:image:alt",
+            "content": "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème"
+          },
+          {
+            "name": "twitter:card",
+            "content": "summary_large_image"
+          },
+          {
+            "name": "twitter:title",
+            "content": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité"
+          },
+          {
+            "name": "twitter:description",
+            "content": "IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet."
+          },
+          {
+            "name": "twitter:image",
+            "content": "https://memlia.fr/images/img-art-ia-comptabilite-confidentialite-donnees-og.webp"
+          },
+          {
+            "name": "article:published_time",
+            "content": "2026-10-05T00:00:00.000Z"
+          },
+          {
+            "name": "article:modified_time",
+            "content": "2026-10-05T00:00:00.000Z"
+          },
+          {
+            "name": "article:author",
+            "content": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          {
+            "name": "article:tag",
+            "content": "IA"
+          },
+          {
+            "name": "article:tag",
+            "content": "Automatisation"
+          }
+        ]
+      }
+    },
+    {
+      "name": "revue-json-binding",
+      "evidence": {
+        "exactSubject": true,
+        "completeGrids": true,
+        "scoreVerified": 90
+      }
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "kind": "publication-scellee",
+  "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+  "articleSha256": "a2a0d0e2d3e3aa93341a3ed6282f3910bdc999e7f32e3fd610aeaea029c7adcc",
+  "manifestSha256": "56d0bec7fb44858ba33b76ac1e6bcb1b1af9c735e7ae3715fdc082e695ffcbc4",
+  "publishedAt": "2026-10-05",
+  "sealedAt": "2026-10-05T10:40:17.344Z",
+  "files": [
+    {
+      "path": "brief.md",
+      "bytes": 267,
+      "sha256": "4cf9960e3f523a8b7914bb5cdd181c7e95aa83dacbf48b4b17e2b2bedf0f2bff"
+    },
+    {
+      "path": "claims.json",
+      "bytes": 28716,
+      "sha256": "573bc949218471fc45032dcd9f97b593c3b2983a0e5801147185fa0809909650"
+    },
+    {
+      "path": "image.json",
+      "bytes": 1417,
+      "sha256": "92eedcda365939c9055f13877481aade515c7bec4f364920a1700673f2738702"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 5939,
+      "sha256": "56d0bec7fb44858ba33b76ac1e6bcb1b1af9c735e7ae3715fdc082e695ffcbc4"
+    },
+    {
+      "path": "preuves/business-review.json",
+      "bytes": 4106,
+      "sha256": "f17d195942dcca1de2c8fdd01a02e496c3f80ff44c65f671328d0b010a3f260c"
+    },
+    {
+      "path": "preuves/image/cadre.sha256",
+      "bytes": 65,
+      "sha256": "fdff88ac42a1e0946277385b5d5a2e9a8440441b5c633b581dff40becd9e4629"
+    },
+    {
+      "path": "preuves/image/generation.json",
+      "bytes": 865,
+      "sha256": "83056463f82101cb4b41ad974019e319dec3b131d031595dff7eb2ee17ce4e39"
+    },
+    {
+      "path": "preuves/image/hero-768.avif",
+      "bytes": 5858,
+      "sha256": "5d91c3497c5f63abf3491b82ae210d5c9448c1781dcf8a0ac85b524f0af33daf"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "bytes": 9710,
+      "sha256": "39f6b9f7238cdaba740515c6471312ec9b846b68c90f716103f2fab81108f365"
+    },
+    {
+      "path": "preuves/image/master.png",
+      "bytes": 1635427,
+      "sha256": "f73919ec922909709a251daecc04e6317004961976a56e5c3bf88b3259abc519"
+    },
+    {
+      "path": "preuves/image/og.webp",
+      "bytes": 23132,
+      "sha256": "8d16b08a53fe67c8ae7da064939ee398f934f1c8b1b22e025074f456169a6174"
+    },
+    {
+      "path": "preuves/image/prompt.json",
+      "bytes": 1788,
+      "sha256": "81fcb28e0b1279996f058a82b72b39a1c5660b824a7ec2889bf432f23356f33d"
+    },
+    {
+      "path": "preuves/image/visual-review.json",
+      "bytes": 4165,
+      "sha256": "82e665673a810520c5a826c758f8262fed4de1cca93f176f10401074e10dd1ab"
+    },
+    {
+      "path": "preuves/research-gsc.json",
+      "bytes": 765,
+      "sha256": "dc885b8861693f66a3e9fe559e0852a30f6efaa781c4a0caf1225e0cc8d94dcd"
+    },
+    {
+      "path": "preuves/research-serp.json",
+      "bytes": 824,
+      "sha256": "af0a90391c3830b16d2fb015cf7827a8cffae524349e92292e7a95e30a14e9a5"
+    },
+    {
+      "path": "preuves/review.json",
+      "bytes": 5280,
+      "sha256": "1e250e1276559c2e6278678461633273e9dae163b02cda6af82992c4afe86b99"
+    },
+    {
+      "path": "preuves/role.json",
+      "bytes": 455,
+      "sha256": "0f713f7a518cef76c5190e38a9a3b05ffbbcad6aa8aefbf1bc604b515f55c6d5"
+    },
+    {
+      "path": "preuves/skills/blog-analyze.json",
+      "bytes": 568,
+      "sha256": "22b390301a46890c705730dfabeb99ccdce7dc953fe4334b11a359aca032ce7d"
+    },
+    {
+      "path": "preuves/skills/blog-audit.json",
+      "bytes": 497,
+      "sha256": "5154d557f135ec1bf9fd53ac3df86107726d9658647989d29cc80c99089ef999"
+    },
+    {
+      "path": "preuves/skills/blog-brief.json",
+      "bytes": 626,
+      "sha256": "86bc1fb82c04ad426fe76aaf6a11652bcc64e2614d1318f93f55d0422adda5ea"
+    },
+    {
+      "path": "preuves/skills/blog-cannibalization.json",
+      "bytes": 528,
+      "sha256": "ecad84e95901de989ebdca0569c75a800a437516ae19ad4d9f4060a1e9c6dfb7"
+    },
+    {
+      "path": "preuves/skills/blog-factcheck.json",
+      "bytes": 521,
+      "sha256": "07ea7e216ce73aca1ea767c33e00db103b66b4d81091fdf775d279a97ffef549"
+    },
+    {
+      "path": "preuves/skills/blog-geo.json",
+      "bytes": 949,
+      "sha256": "4972c79b9c91f1489bfd10dd6f16e587ae941dba97f758f25c2eac7f3c3e0624"
+    },
+    {
+      "path": "preuves/skills/blog-image.json",
+      "bytes": 534,
+      "sha256": "a47d40003b18147004164adc604e73e4b36fc4ce6e3493a6cbd4641114e2c926"
+    },
+    {
+      "path": "preuves/skills/blog-seo-check.json",
+      "bytes": 1293,
+      "sha256": "28face9aec6da69073b9650258151c7daa2269214e19f5e19575db919db80c1a"
+    },
+    {
+      "path": "preuves/skills/blog-write.json",
+      "bytes": 445,
+      "sha256": "339f28f6dd36ed268af1ec6ef68a59e6e7d68da4b64904498a68f13c90e41a56"
+    },
+    {
+      "path": "preuves/skills/seo-audit.json",
+      "bytes": 469,
+      "sha256": "d3d74e881fc77f20aeb1fa1796a7becee79ae5d5552d487afc047f9e7fba352e"
+    },
+    {
+      "path": "preuves/skills/seo-content-brief.json",
+      "bytes": 511,
+      "sha256": "e7789540b3bc585269832896eaaa64e3d8b8eddee47e8be67b19cca01d407ba3"
+    },
+    {
+      "path": "preuves/skills/seo-content.json",
+      "bytes": 495,
+      "sha256": "7d9f535a013b439ed23fe216ee9553cb1f303b55e9d4b7e2be269dadee1d00d5"
+    },
+    {
+      "path": "preuves/skills/seo-images.json",
+      "bytes": 543,
+      "sha256": "9c636831dfb1fd27ae0a29dc1cff5045acc8a76d982318982bfac4ed24da3ba5"
+    },
+    {
+      "path": "preuves/skills/seo-page.json",
+      "bytes": 553,
+      "sha256": "4f68403437207997db3cc9c536b9644fb96275fb21534c55567ab1f5e6a60910"
+    },
+    {
+      "path": "preuves/skills/seo-schema.json",
+      "bytes": 488,
+      "sha256": "0179160f82111eefb62b23fbcbbde7dcab11aa64232dc9140be363bd9b449ad6"
+    },
+    {
+      "path": "preuves/skills/seo-technical.json",
+      "bytes": 540,
+      "sha256": "6d5ad070a5a01a2ff69cbf08c39785d61c9cd98e68169e44323efa365f8b1b72"
+    },
+    {
+      "path": "preuves/sources/cnil-anonymisation.classification.json",
+      "bytes": 1557,
+      "sha256": "ad8ebe10c3bd7f3cae53e6b26d76c5c6ccfbcb20d9ee6e68d355469e1479c9f9"
+    },
+    {
+      "path": "preuves/sources/cnil-anonymisation.json",
+      "bytes": 1022,
+      "sha256": "2d02270c67dcbc4fb0fe63f08a5892f1b5ef83ff9ff7dcca9825a9bfdf6daf29"
+    },
+    {
+      "path": "preuves/sources/cnil-anonymisation.source.txt",
+      "bytes": 108435,
+      "sha256": "4e1084c927f84820d486b8318eea7f360f15348f8a08913f5e142ed2b3609123"
+    },
+    {
+      "path": "preuves/sources/cnil-personnelle.classification.json",
+      "bytes": 1344,
+      "sha256": "3854aa95f17b7b6e0e8c89c37639a85119e8605a3a61936d8a93590e5cd6f895"
+    },
+    {
+      "path": "preuves/sources/cnil-personnelle.json",
+      "bytes": 956,
+      "sha256": "c4559ec59f88208b05a248f2e402de9def0d21165a703ecbff5637bb08f00998"
+    },
+    {
+      "path": "preuves/sources/cnil-personnelle.source.txt",
+      "bytes": 76634,
+      "sha256": "11182d7db099683c74476efe0d9502e65cf2af0cd04579eda972250c4ddb3698"
+    },
+    {
+      "path": "quality-review.json",
+      "bytes": 5866,
+      "sha256": "237ccb88abd98afbeed1f5ec0e7f7d527ae7cfd26dc204ce4e0b9991865df17c"
+    },
+    {
+      "path": "review.json",
+      "bytes": 431,
+      "sha256": "1e75c6d9705fc9efd6771dc7314ba22a4ee1e6b351bed7fc9191183f15564e7d"
+    },
+    {
+      "path": "seo-geo-review.md",
+      "bytes": 3309,
+      "sha256": "bc7a0bf56f74b82276467eb4bbe5747f430bacee3d4681171ccfc8bbbb54902b"
+    },
+    {
+      "path": "skills.json",
+      "bytes": 17225,
+      "sha256": "6a6b9888897f9cf84b2eac787b3ac1b7423f8e71090fc3fab9202e93dac82ee6"
+    }
+  ]
+}

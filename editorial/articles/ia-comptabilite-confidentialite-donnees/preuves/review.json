@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "c2896b598118bf0b26becac307c561f6c1f174c7089cd3029e115306b8a66a30",
+  "manifestSha256": "56d0bec7fb44858ba33b76ac1e6bcb1b1af9c735e7ae3715fdc082e695ffcbc4",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact ia-comptabilite-confidentialite-donnees."
+  ],
+  "reviewer": "metier",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "corps.md:23-82 : fiche de onze champs copiables, contexte entièrement inventé et cinq questions d'environnement. Finalité, destination du brouillon, entrée minimale, exclusions, compte/espace, accès, réutilisation, conservation, décideur et réexamen donnent au dirigeant une préparation concrète. Le guide n'est pas une procédure exhaustive d'autorisation RGPD ; corps.md:34 et 88-96 réserve cadre applicable et décision aux responsables compétents."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Brief §3 et HTML : geste de préparation des entrées, distinct du patron de consigne, du choix de logiciel et du contrôle d'une sortie. Les trois articles frères sont reliés au bon endroit. AUDIT-EDITORIAL documente une recherche Hermes et quatre autocomplétions vides ; aucun classement Google, volume nul ou performance de cette URL n'est acquis."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Deux sources primaires CNIL : copies natives intègres et trois citations présentes dans le texte visible ; pages réouvertes par web_extract pendant cette revue. Anonymisation datée 19/05/2020 ; définition sans date éditoriale visible. Les contextes correspondent bien aux personnes physiques et aux données pseudonymisées, sans attribution d'une autorisation de transmettre à la CNIL.",
+        "Auteur Kevin Kitanga, bio Fondateur de Memlia et jeux fictifs explicites dans le rendu. Ni titre d'expert-comptable humain, ni cas client, ni expérience fournisseur ou statistique non démontrée identifiés."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Lecture indépendante puis exécution du script original en VM avec seule écriture de journal interceptée : quatre sorties et transmission false concordent au journal auteur. Qualification absente donne QUALIFICATION_ABSENTE. Le contexte, la réserve de disponibilité du relevé et les questions proposées sont des exemples inventés, non des sorties obtenues d'un modèle.",
+        "corps.md:86-111 porte frontière trois colonnes, proposition distincte des saisies, conditions d'arrêt et quatre cas concrets. PREPARATION_PRETE est explicitement l'état du protocole fictif à relire, pas l'autorisation d'un fichier réel. Le script ne détecte aucun identifiant ou risque sémantique. Sa validation incomplète des entrées est une limite de démonstration documentée dans les notes, pas une fiabilité de produit accordée."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "HTML réellement chargé depuis un serveur local de revue dans Chromium 1280 et 390 : lang fr, un H1, onglet/description/canonical conformes à la recette, auteur et cinq types JSON-LD, sept liens internes résolus et ancre validation-humaine présente. Métas OG et Twitter concordantes. Aucune erreur JS ou ressource HTTP en échec ; aucun débordement horizontal global.",
+        "Quatre tableaux à trois colonnes et en-têtes : 11 champs, 5 points environnement, frontière et 4 cas. À 390 px les tableaux eux-mêmes défilent réellement de 120 px jusqu'à la troisième colonne ; les colonnes ne sont pas supprimées. Le noindex, follow et témoin privé sont ceux de la preview. Contrat natif vert sur 15 articles dont ce candidat."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Réponse directe, définitions, fiche, états et cinq FAQ présents dans le HTML initial. Le public/personnel/confidentiel n'est pas traité comme des catégories exclusives. Les alts et le texte différencient le routage de l'analyse des personnes. Aucune citation par un moteur IA, accès crawler public ou indexation de ce candidat noindex n'est démontré."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "Voix nous/vous, savoir-faire de qualification rendu traçable, mécanique prise en charge dans les outils existants et jugement laissé au cabinet. Clôture et CTA Confier cette tâche vers /contact, méthode et garanties reliées. Pas de gain chiffré, anonymisation automatique ou service logiciel autonome promis. Le titre est une formulation de méthode, pas une garantie que la fiche rend toute transmission sûre ; la réponse directe conserve cette distinction."
+      ]
+    }
+  ]
+}

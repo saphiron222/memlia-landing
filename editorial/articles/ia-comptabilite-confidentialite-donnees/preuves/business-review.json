@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "c2896b598118bf0b26becac307c561f6c1f174c7089cd3029e115306b8a66a30",
+  "manifestSha256": "56d0bec7fb44858ba33b76ac1e6bcb1b1af9c735e7ae3715fdc082e695ffcbc4",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact ia-comptabilite-confidentialite-donnees."
+  ],
+  "reviewerId": "metier:t_6446d285",
+  "role": "direction-associes",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-4e0217dd52ad-1-cnil-personnelle",
+      "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+      "articleSha256": "c2896b598118bf0b26becac307c561f6c1f174c7089cd3029e115306b8a66a30",
+      "claimId": "claim-unit-4e0217dd52ad-1",
+      "claimSha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
+      "sourceId": "cnil-personnelle",
+      "sourceContentSha256": "11182d7db099683c74476efe0d9502e65cf2af0cd04579eda972250c4ddb3698",
+      "citationSha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
+      "reviewerId": "metier:t_6446d285",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-05",
+      "reasoning": "CNIL Donnée personnelle, copie native ligne 500 et ouverture web de la revue : citation exacte visible. Les lignes 502-513 expliquent identification directe/indirecte et croisement. Le corps conserve personne physique identifiée ou identifiable et n'assimile pas toute information d'entreprise à une donnée personnelle. Applicable à la distinction exposée, sans population ou période étrangère à la définition."
+    },
+    {
+      "id": "review-claim-unit-24d0a97c54b2-1-cnil-anonymisation",
+      "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+      "articleSha256": "c2896b598118bf0b26becac307c561f6c1f174c7089cd3029e115306b8a66a30",
+      "claimId": "claim-unit-24d0a97c54b2-1",
+      "claimSha256": "16e803595d66919fea3b6357f5cf7d4bb5b731444b6ca67076dacd1a8288f1f2",
+      "sourceId": "cnil-anonymisation",
+      "sourceContentSha256": "4e1084c927f84820d486b8318eea7f360f15348f8a08913f5e142ed2b3609123",
+      "citationSha256": "16e803595d66919fea3b6357f5cf7d4bb5b731444b6ca67076dacd1a8288f1f2",
+      "reviewerId": "metier:t_6446d285",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-05",
+      "reasoning": "CNIL L'anonymisation de données personnelles, 19/05/2020, copie native lignes 739-745 et ouverture web pendant la revue : remplacement des identifiants directs par alias, identification possible grâce aux données tierces puis réversibilité. La citation exacte soutient la distinction ; le corps conclut seulement qu'un alias ne vaut pas feu vert pour envoyer. Il n'impose pas d'obligation générale d'anonymisation et ne certifie aucun dossier anonyme."
+    },
+    {
+      "id": "review-claim-unit-b0c8adba036a-1-cnil-anonymisation",
+      "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+      "articleSha256": "c2896b598118bf0b26becac307c561f6c1f174c7089cd3029e115306b8a66a30",
+      "claimId": "claim-unit-b0c8adba036a-1",
+      "claimSha256": "4a40a1bfc869cf1f095c7c47c1b3ba0222d210422ad3db9862ba665e8f0edce8",
+      "sourceId": "cnil-anonymisation",
+      "sourceContentSha256": "4e1084c927f84820d486b8318eea7f360f15348f8a08913f5e142ed2b3609123",
+      "citationSha256": "4a40a1bfc869cf1f095c7c47c1b3ba0222d210422ad3db9862ba665e8f0edce8",
+      "reviewerId": "metier:t_6446d285",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-05",
+      "reasoning": "Même source CNIL, ligne 743 : le sujet les données concernées est explicitement celui de la pseudonymisation et le paragraphe mentionne les données tierces. corps.md:66 réintroduit à propos de données pseudonymisées avant la citation. Le contexte est donc conservé : ni généralisation aux données entièrement fictives, ni thèse qu'un retrait partiel rend automatiquement anonyme. Le renvoi à l'arbitrage humain est une règle de travail, non une obligation CNIL présentée comme telle."
+    }
+  ]
+}

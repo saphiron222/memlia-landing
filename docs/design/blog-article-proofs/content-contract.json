@@ -250,5 +250,23 @@
     "sourceUrl": null,
     "capturedAt": "2026-10-04",
     "centralText": "Fiche affirmation et source Jeu d’essai fictif · V-04 · NOTE-A-v1 Contrôle de la phrase Réserve omise CORRIGER Brouillon écrit pour l’essai La réunion est confirmée jeudi. Passage de NOTE-A-v1 Réunion jeudi, sous réserve de confirmation. Comparaison humaine La réserve de confirmation est perdue. Texte proposé à relire Réunion jeudi, sous réserve de confirmation. Motif du routage RESERVE_OMISE Destination Brouillon interne à relire État de la vérification V-04 Document Fictif Qualification Humaine Règle locale Routage seulement Modèle interrogé Aucun Saisie Aucune Correction à relire"
+  },
+  {
+    "id": "confidentialite-fiche",
+    "article": "ia-comptabilite-confidentialite-donnees",
+    "alt": "Fiche fictive C-01 : finalité, champs minimaux, environnement local et préparation à relire sans transmission.",
+    "source": "Reconstitution HTML fictive de la fiche et du journal-rejeu.json ; qualifications déclarées pour le protocole local",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-05",
+    "centralText": "Fiche de préparation Jeu d’essai fictif · C-01 · contexte inventé Préparer trois questions Contexte minimal À relire Finalité Trois questions internes Entrée retenue Relevé et facture manquants Réserve conservée Disponibilité du relevé à confirmer Champs exclus Identité · contact · lieu · fichier Environnement ENV-FICTIF · protocole local Qualification préalable Déclarée pour la démonstration État du protocole C-01 Données Fictives Sortie Préparation prête Identifiant inutile Non déclaré Reconstructible Non déclaré Transmission false Modèle Aucun Lecture attendue"
+  },
+  {
+    "id": "confidentialite-registre",
+    "article": "ia-comptabilite-confidentialite-donnees",
+    "alt": "Registre fictif C-01 à C-04 : préparation prête, identifiant à retirer, environnement inconnu, arbitrage humain.",
+    "source": "Reconstitution HTML fictive des quatre sorties du journal-rejeu.json ; aucun détecteur ni fournisseur utilisé",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-05",
+    "centralText": "Registre des entrées Jeu d’essai fictif · quatre qualifications préalables Protocole local Préparations et motifs Tous À revoir Cas Entrée déclarée État obtenu Transmission C-01 Contexte minimal fictif Préparation prête false C-02 Identifiant inutile présent Retirer identifiant false C-03 Environnement non confirmé Environnement inconnu false C-04 Contexte reconstructible Arbitrage humain false Qualification Humaine préalable Programme Routage seulement Modèle interrogé Aucun"
   }
 ]

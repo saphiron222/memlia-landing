@@ -3,6 +3,10 @@
  * cette table relie chaque intention informationnelle à une seule page commerciale.
  */
 export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
+  'ia-comptabilite-confidentialite-donnees': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir comment automatiser la préparation des entrées',
+  }),
   'verifier-reponse-ia-comptabilite': Object.freeze({
     href: '/automatisation-cabinet-comptable',
     label: 'Voir comment automatiser la préparation du contrôle',
