@@ -8,7 +8,7 @@ const rules = [
  { positive: /(?:relire.*(?:avec|par)|(?:responsable|collaborateur|expert.comptable|humain|personne).*(?:relit|valide|verifie)|(?:soumettre|faire relire|faire valider).*(?:responsable|collaborateur|humain|personne)|validation humaine (?:requise|obligatoire)|attend une validation)/, hint: /\b(?:validation|validateur|relire|relit|valide|responsable|humain)\b/, correction: 'Validation humaine : [nommer le rôle qui relit et décide avant toute utilisation]. Aucun envoi ni décision automatique.' },
  { positive: /(?:(?:si|sur|lorsque|en cas|condition).*(?:manque|absen|contradic|hors.regle|illisible).*(?:arret|stop|demander)|(?:arret|stop).*(?:si|sur|lorsque|en cas).*(?:manque|absen|contradic|hors.regle|illisible))/, hint: /\b(?:arret|arreter|stop|manque|absente?|contradiction)\b/, correction: 'Arrêt : si une information requise manque, si deux consignes se contredisent ou si le cas sort de la règle, arrêter et demander une précision humaine.' },
 ];
-const denial = /\b(?:aucun\w*|sans|ignor\w*|supprim\w*|omettre|(?:ne\b|n').*\b(?:pas|jamais|rien|plus)|pas de|non\s+(?:necessaire|requis\w*|obligatoire)|inutile|facultati\w*)\b/;
+const denial = /\b(?:aucun\w*|sans|ignor\w*|supprim\w*|omettre|(?:ne\b|n').*\b(?:pas|jamais|rien|plus|ni)|pas (?:de|besoin)|ou pas|non\s+(?:necessaire|requis\w*|obligatoire)|inutile|facultati\w*|optionnel\w*)\b/;
 export const EXAMPLE_PROMPT = 'Préparer un brouillon de demande de pièces. À partir de la liste fictive fournie. Répondre sous forme de liste commentée. Le collaborateur relit avant utilisation.';
 export const TRIAL_CASES = [
  'Cas complet : fournir tous les éléments fictifs attendus ; obtenir une proposition à relire.',

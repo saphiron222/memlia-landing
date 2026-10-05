@@ -3,12 +3,12 @@ import { TRIAL_CASES } from '@/lib/verificateur-prompt.mjs';
 ---
 <div class="verifier" data-prompt-verifier>
   <noscript>Activez JavaScript pour analyser localement la structure de votre consigne.</noscript>
-  <form novalidate autocomplete="off">
+  <form data-own-telemetry novalidate autocomplete="off">
     <h2>Contrôler une consigne existante</h2>
     <p id="verifier-help">Collez une consigne abstraite, de 1 à 10 000 caractères, pas une pièce client. Aucun modèle appelé, aucun envoi ni stockage. Le filtre ne repère pas tous les noms et ne réalise aucune anonymisation.</p>
     <label for="verifier-input">Votre consigne originale</label>
     <textarea id="verifier-input" name="prompt" rows="8" maxlength="10000" aria-describedby="verifier-help verifier-error"></textarea>
-    <label class="confirmation"><input name="confirmed" type="checkbox" />Je confirme que la consigne ne contient aucune donnée réelle.</label>
+    <label class="confirmation"><input name="confirmed" type="checkbox" aria-describedby="verifier-error" />Je confirme que la consigne ne contient aucune donnée réelle.</label>
     <div class="actions"><button class="btn btn-principal" type="submit">Analyser la structure</button><button class="btn btn-contour" type="button" data-example>Charger l’exemple fictif</button><button class="btn btn-contour" type="button" data-clear>Effacer</button></div>
     <p class="error" id="verifier-error" data-error role="alert" hidden></p>
   </form>
@@ -50,8 +50,10 @@ import { TRIAL_CASES } from '@/lib/verificateur-prompt.mjs';
     let suggestion = '';
     let stale = false;
     const actions = [...root.querySelectorAll<HTMLButtonElement>('[data-copy-original],[data-copy-edited],[data-export]')];
-    const fail = (message: string) => { error.textContent = message; error.hidden = false; input.setAttribute('aria-invalid', 'true'); input.focus(); };
-    const clearError = () => { error.hidden = true; input.removeAttribute('aria-invalid'); };
+    let analyses = 0;
+    const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', { detail: { action, outil: 'verificateur-prompt-ia' } }));
+    const fail = (message: string, field: HTMLInputElement | HTMLTextAreaElement) => { error.textContent = message; error.hidden = false; field.setAttribute('aria-invalid', 'true'); field.focus(); };
+    const clearError = () => { error.hidden = true; input.removeAttribute('aria-invalid'); confirmed.removeAttribute('aria-invalid'); };
     const valid = () => {
       if (!analysis?.ok || stale) { status.textContent = 'Consigne modifiée : relancez l’analyse. Vos versions sont conservées.'; return false; }
       const check = validatePromptInput(edited.value, confirmed.checked, 15000);
@@ -62,7 +64,7 @@ import { TRIAL_CASES } from '@/lib/verificateur-prompt.mjs';
     form.addEventListener('submit', event => {
       event.preventDefault(); clearError();
       const next = analysePrompt(input.value, confirmed.checked);
-      if (!next.ok) { fail(next.error); return; }
+      if (!next.ok) { fail(next.error, confirmed.checked ? input : confirmed); emit('erreur'); return; }
       if (edited.value && edited.value !== suggestion && !window.confirm('Remplacer votre proposition éditée par une nouvelle suggestion ?')) { status.textContent = 'Analyse annulée ; vos versions restent conservées.'; return; }
       analysis = next; original.value = input.value; edited.value = suggestion = proposeCorrection(input.value, next); stale = false;
       root.querySelector('[data-findings]')!.replaceChildren(...next.items.map(item => {
@@ -74,6 +76,7 @@ import { TRIAL_CASES } from '@/lib/verificateur-prompt.mjs';
       }));
       root.querySelector('[data-warnings]')!.textContent = next.warnings.join(' ');
       actions.forEach(b => b.disabled = false); result.hidden = false; status.textContent = 'Analyse locale terminée. Le sens et les réponses restent à vérifier humainement.'; root.querySelector<HTMLElement>('#verifier-result')!.focus();
+      analyses += 1; emit('reussite'); if (analyses > 1) emit('recalcul');
     });
     root.querySelector('[data-example]')!.addEventListener('click', () => {
       if (input.value && !window.confirm('Remplacer la consigne saisie par l’exemple fictif ? Les éditions restent conservées.')) return;
@@ -86,7 +89,7 @@ import { TRIAL_CASES } from '@/lib/verificateur-prompt.mjs';
     edited.addEventListener('input', () => { status.textContent = 'Édition conservée. Les constats restent ceux de l’original ; le rapport reflétera cette édition.'; });
     const copy = async (area: HTMLTextAreaElement) => {
       if (!valid()) return;
-      try { await navigator.clipboard.writeText(area.value); status.textContent = 'Version copiée.'; }
+      try { await navigator.clipboard.writeText(area.value); status.textContent = 'Version copiée.'; emit('copie'); }
       catch { area.focus(); area.select(); status.textContent = 'Texte sélectionné : utilisez votre raccourci de copie ou exportez le rapport.'; }
     };
     root.querySelector('[data-copy-original]')!.addEventListener('click', () => copy(original));
@@ -96,7 +99,7 @@ import { TRIAL_CASES } from '@/lib/verificateur-prompt.mjs';
       const choice = root.querySelector<HTMLInputElement>('input[name="version"]:checked')!.value;
       const report = exportPromptReport(original.value, edited.value, analysis, choice);
       const url = URL.createObjectURL(new Blob([report], { type: 'text/plain;charset=utf-8' }));
-      try { const a = document.createElement('a'); a.href = url; a.download = 'rapport-structure-prompt.txt'; a.click(); status.textContent = 'Rapport exporté avec les deux versions et votre choix.'; }
+      try { const a = document.createElement('a'); a.href = url; a.download = 'rapport-structure-prompt.txt'; a.click(); status.textContent = 'Rapport exporté avec les deux versions et votre choix.'; emit('export'); }
       finally { setTimeout(() => URL.revokeObjectURL(url), 0); }
     });
   }
