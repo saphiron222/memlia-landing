@@ -834,6 +834,29 @@ test('une matière sensible cohérente et vérifiée aujourd’hui conserve le c
   assert.equal(result.pass, true);
 });
 
+test('le refus sensible nomme la convention, les signaux et la reformulation sans changer la garde', async () => {
+  const witness = 'Les quatre décisions sont une convention de travail, pas des catégories réglementaires. Leur sens doit rester stable pour permettre à toute l’équipe de relire les décisions et de comparer les résultats.';
+  const fixture = await createCompleteDossier(root('sensitive-message'), {
+    body: `${DEFAULT_BODY}\n\n${witness}`,
+  });
+  const claimsPath = join(fixture.dossier, 'claims.json');
+  const claims = readJson(claimsPath);
+  const unit = claims.contentUnits.find((item) => item.text === witness);
+  assert.ok(unit);
+  unit.claimIds = [];
+  writeJson(claimsPath, claims);
+
+  const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+  assert.equal(result.pass, false);
+  const error = result.errors.find((item) => item.startsWith(`claims.contentUnits.${unit.id} doit relier au moins une affirmation vérifiée`));
+  assert.ok(error, result.errors.join('\n'));
+  assert.ok(error.includes(`« ${witness.slice(0, 160)}… »`), error);
+  assert.ok(!error.includes(witness), error);
+  assert.ok(error.includes('legal-reglementaire'), error);
+  assert.ok(error.includes('verbe normatif'), error);
+  assert.ok(error.includes("Si la phrase n'énonce pas de règle, reformulez-la sans ces mots (constitution §6) ; sinon reliez une affirmation sourcée."), error);
+});
+
 test('une recommandation CNIL sourcée reste information, une obligation RGPD exige un type sensible', async () => {
   const cases = [
     ['conseil-partage', 'La CNIL conseille : les utilisateurs ne devraient soumettre que des informations qu’ils sont autorisés à partager.', false],

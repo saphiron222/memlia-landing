@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+  "articleSha256": "c2896b598118bf0b26becac307c561f6c1f174c7089cd3029e115306b8a66a30",
+  "manifestSha256": "56d0bec7fb44858ba33b76ac1e6bcb1b1af9c735e7ae3715fdc082e695ffcbc4",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème",
+  "score": 100,
+  "directionArt": null,
+  "semanticRelevance": null,
+  "p0": [],
+  "kevinApproved": true,
+  "palette": {
+    "statut": "PASS",
+    "parts": {
+      "#fcfbf7": 0.6406770833333333,
+      "#27b657": 0.009722222222222222,
+      "#1c8a41": 0.030815972222222224,
+      "#231f20": 0.24524305555555556
+    },
+    "ecarts": []
+  }
+}

@@ -5,7 +5,11 @@ export const OUTILS_HUB_PATH = '/outils-comptables-gratuits' as const;
 export const OUTIL_CATEGORIES = [
   { id: 'calculer', label: 'Calculer' },
   { id: 'verifier', label: 'Vérifier' },
+
+  { id: 'se-situer', label: 'Se situer' },
+
   { id: 'preparer', label: 'Préparer' },
+
   { id: 'ecrire', label: 'Écrire' },
 ] as const;
 
@@ -78,6 +82,22 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
 
+
+    slug: 'diagnostic-maturite-ia-cabinet', categorie: 'se-situer', statut: 'disponible',
+    h1: 'Diagnostic de maturité IA du cabinet',
+    title: 'Diagnostic de maturité IA du cabinet | Memlia',
+    description: 'Situez les pratiques IA de votre cabinet et choisissez une prochaine action à partir de vos réponses, sans inscription ni classement des équipes.',
+    promesse: { entree: 'Quinze réponses facultatives sur cinq dimensions des pratiques du cabinet', resultat: 'Synthèse complète, inconnues et trois actions justifiées ; rapport Markdown et impression' },
+    limites: ['Méthode Memlia déclarative : pas audit normatif, note globale ni classement individuel.', 'Aucun gain déduit des réponses ; les pratiques déclarées ne sont pas vérifiées.', 'Une réponse inconnue reste inconnue : elle demande clarification, pas un jugement défavorable.'],
+    mentionLocale: 'Vos réponses et votre rapport restent dans ce navigateur, sans envoi ni stockage persistant. Fermer la page les efface. Copie, impression et export sont volontaires ; aucune adresse e-mail n’est demandée.',
+    proof: 'v2/30-outil-maturite',
+    source: { nom: 'Méthode Memlia — écrire et éprouver la règle', url: '/methode', extrait: 'Cette rubrique déclarative originale organise les réponses en usages, règles, données, validation et mesure. Elle aide à choisir une prochaine tâche, sans norme ni comparaison à d’autres cabinets.', verifieeLe: '4 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
+
+
+
     slug: 'generateur-prompt-expert-comptable',
     categorie: 'ecrire',
     statut: 'disponible',
@@ -105,6 +125,7 @@ export const OUTILS: readonly OutilDefinition[] = [
     cta: '/contact',
   },
   {
+
 
     slug: 'calculateur-roi-automatisation', categorie: 'calculer', statut: 'disponible',
     h1: 'Calculateur de ROI d’automatisation comptable',
@@ -154,6 +175,7 @@ export const OUTILS: readonly OutilDefinition[] = [
 
   },
   {
+
     slug: 'verificateur-fec-local', categorie: 'verifier', statut: 'disponible',
     h1: 'Vérificateur FEC gratuit et local',
     title: 'Vérificateur FEC gratuit et local | Memlia',

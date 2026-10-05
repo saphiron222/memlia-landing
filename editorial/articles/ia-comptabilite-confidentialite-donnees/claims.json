@@ -1,0 +1,494 @@
+{
+  "version": 1,
+  "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+  "articleSha256": "c2896b598118bf0b26becac307c561f6c1f174c7089cd3029e115306b8a66a30",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-45d5d0a45c49",
+      "text": "Avant de transmettre des données à une IA au cabinet comptable, choisissez le geste, limitez son contexte et vérifiez l’environnement autorisé. Un nom remplacé ne suffit pas à rendre un dossier anonyme. Pour un premier essai, utilisez un contexte entièrement fictif. La fiche ci-dessous sépare les données utiles, celles à retirer et les conditions encore inconnues : une inconnue bloque la transmission, pas la préparation du travail.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9d9afa88d0b7",
+      "text": "Quelles données sont personnelles, confidentielles ou fictives ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4e0217dd52ad",
+      "text": "Une donnée personnelle concerne une personne physique que l’on peut identifier. La CNIL définit la donnée personnelle ainsi : « Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable. » L’identification peut venir d’un nom, mais aussi d’un croisement de détails. Un intitulé de fonction rare, une date et un lieu peuvent compter autant qu’une adresse courriel.",
+      "claimIds": [
+        "claim-unit-4e0217dd52ad-1"
+      ]
+    },
+    {
+      "id": "unit-7416aeda84eb",
+      "text": "Une information confidentielle est une information dont l’accès ou la diffusion est limité dans le contexte du cabinet. Cette catégorie de travail dépasse les seules données personnelles : un projet d’acquisition, un tarif négocié ou une note interne peuvent appeler une protection même sans nom de personne. Ne concluez donc pas « transmissible » depuis la seule absence de donnée personnelle.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-857849d92722",
+      "text": "Un contexte fictif est un exemple inventé pour éprouver une tâche, sans reprendre un dossier existant. Il conserve la difficulté du geste : une réserve, un champ manquant, une demande hors périmètre. Il ne conserve ni identité ni détail rare d’un client. Inventer « DOSSIER-A » à la place d’un nom réel tout en gardant le reste du dossier est une autre opération.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-24d0a97c54b2",
+      "text": "La pseudonymisation remplace notamment des identifiants directs par des identifiants indirects. Dans sa page sur l’anonymisation, la CNIL précise : « L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation. » Un alias est donc une précaution possible, pas un feu vert pour envoyer un fichier.",
+      "claimIds": [
+        "claim-unit-24d0a97c54b2-1"
+      ]
+    },
+    {
+      "id": "unit-e5c2848e404f",
+      "text": "Pourquoi la préparation casse au copier-coller",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d8323db25fe6",
+      "text": "Le collaborateur veut préparer une question ou reformuler une note. Le document ouvert contient pourtant beaucoup plus : signature, coordonnées, annotations, pièces jointes ou détails d’un autre dossier. Le copier-coller transforme un petit besoin de rédaction en transmission d’un contexte entier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2953c8ecda08",
+      "text": "La règle souvent gardée dans une seule tête ressemble à ceci : « Pour cette tâche, dans cet outil, je peux utiliser ces champs, mais pas ceux-là. » Sans trace écrite, un collègue voit l’abonnement de l’outil, pas la décision sur les données. Nous écrivons cette distinction pour qu’elle reste au cabinet et puisse être relue quand le geste, le compte ou la configuration change.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6b319d687284",
+      "text": "Ce guide répond à la préparation des entrées. Pour écrire ensuite la consigne, utilisez notre patron de prompt ChatGPT pour expert-comptable. Pour choisir le type d’environnement, la grille de choix d’un logiciel IA traite une autre décision. Aucun des deux choix ne remplace la fiche propre à votre tâche.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-11a1dd1ac7fc",
+      "text": "Avant de commencer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0732e624392d",
+      "text": "Choisissez un geste précis, par exemple reformuler une note interne en trois questions à relire. N’ouvrez pas un dossier complet pour décider seulement ensuite de ce qui sera utile.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4cb2d447af64",
+      "text": "Préparez quatre éléments :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ca1958b75ff9",
+      "text": "- la sortie attendue et sa destination : un brouillon interne, pas un message envoyé ; - les champs strictement utiles à cette sortie ; - le nom du service, le type de compte et l’espace de travail réellement utilisés ; - la personne qui peut décider de l’usage et retrouver les conditions vérifiées.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-abd8b8b0b883",
+      "text": "Pour découvrir un usage, partez d’un exemple inventé de zéro. Pour un traitement réel, la qualification des données, les obligations du cabinet, le cadre applicable et les conditions du prestataire se déterminent avec les responsables compétents. Une fiche remplie ne vaut pas certification.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6cdc4d18115e",
+      "text": "La fiche d’autorisation d’entrée à copier",
+      "claimIds": []
+    },
+    {
+      "id": "unit-18b613968026",
+      "text": "Cette fiche est une convention de travail Memlia. Remplissez-la pour un geste, pas pour « utiliser l’IA » en général. « À vérifier » est un état utile : il rend visible ce qui empêche de transmettre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-738656787e94",
+      "text": "| Champ | Question à remplir | Exemple entièrement fictif | |---|---|---| | Finalité | Quelle préparation précise ? | Transformer une note inventée en trois questions | | Sortie | Où sera-t-elle relue ? | Brouillon interne, sans envoi | | Entrée minimale | Quels éléments changent la réponse ? | Deux pièces manquantes et une réserve | | Classe des données | Public, personnel, confidentiel, fictif ? Plusieurs réponses possibles | Entièrement fictif | | Champs exclus | Qu’est-ce qui n’aide pas le geste ? | Identité, contact, lieu, montant réel, pièce jointe | | Environnement | Service, offre, compte, espace exacts ? | ENV-FICTIF, protocole local de démonstration | | Accès et partage | Qui peut lire entrée, sortie et historique ? | Aucun compte fournisseur utilisé dans l’essai | | Réutilisation | Les données servent-elles à d’autres usages ? | Aucun appel réseau dans l’essai | | Conservation | Que devient entrée, historique, fichier et sortie ? | Fichiers du jeu d’essai conservés localement | | Décision | Qui autorise ce périmètre, avec quelle trace ? | Qualification préalable écrite pour l’essai | | Réexamen | Quel changement remet la décision en question ? | Entrée réelle, autre environnement ou autre finalité |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6475bcc23a95",
+      "text": "Dans votre fiche réelle, remplacez les valeurs de démonstration par des réponses vérifiables. N’utilisez pas ENV-FICTIF comme nom d’un service approuvé. Une réponse valable pour un brouillon inventé ne couvre pas un fichier client.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8f4fe98bacc1",
+      "text": "Réduire le contexte sans prétendre anonymiser",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ea1a38588f2a",
+      "text": "Commencez par la sortie : « préparer trois questions ». Demandez pour chaque détail : si je le retire, est-ce que la question change ? Si non, retirez-le du contexte proposé. Conservez la réserve qui influence le sens ; éliminez l’identité qui n’influence que la personnalisation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-103302bcf33f",
+      "text": "Voici le contexte entièrement fictif retenu pour notre essai :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7dc42db73ab2",
+      "text": "> Préparer trois questions internes à relire. Deux pièces sont manquantes : un relevé et une facture. La disponibilité du relevé reste à confirmer. Ne pas inventer une date, un destinataire ni une décision. Aucune pièce jointe.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-18608ebed873",
+      "text": "Le contexte ne vient pas d’un dossier client. Il donne au lecteur un objet à essayer, mais aucune réponse d’un modèle n’est présentée comme obtenue. Le programme local ci-dessous ne reformule pas ce texte : il route les états de préparation déjà qualifiés pour la démonstration.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b0c8adba036a",
+      "text": "Un contexte issu d’un dossier réel appelle un examen différent. Le retrait du nom ne permet pas de conclure que les autres détails sont sans risque. La CNIL indique, à propos de données pseudonymisées : « les données concernées conservent donc un caractère personnel. » Cette distinction entre anonymisation et pseudonymisation explique pourquoi notre fiche garde un état « À arbitrer » lorsque l’information est reconstructible.",
+      "claimIds": [
+        "claim-unit-b0c8adba036a-1"
+      ]
+    },
+    {
+      "id": "unit-cfb05c052243",
+      "text": "Vérifier l’environnement, pas l’étiquette commerciale",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c69f90853eac",
+      "text": "Un compte « pro », un mode privé ou un bouton d’historique ne répondent pas à toutes les questions. Identifiez l’offre exacte, puis ouvrez ses conditions et la documentation du réglage réellement utilisé. Notez la version du document et le périmètre auquel la réponse s’applique.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3b435eccbb76",
+      "text": "Voici les points à faire expliciter pour l’usage envisagé :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-055be3001fae",
+      "text": "| Point | Réponse à retrouver | Si elle manque | |---|---|---| | Réutilisation | Usage des entrées, fichiers et sorties, réglage effectif | Transmission en attente | | Conservation | Historique, fichiers, suppression et éventuelles exceptions | Transmission en attente | | Accès | Membres, administrateurs, liens de partage, intervenants du service | Partage en attente | | Traitement | Prestataires impliqués, lieux et cadre des éventuels transferts | Examen compétent nécessaire | | Contrat | Engagements correspondant à l’offre et au traitement envisagés | Ne pas déduire une autorisation de l’abonnement |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f7c72ece19ca",
+      "text": "Nous ne comparons pas ici les conditions d’un fournisseur particulier : aucun compte fournisseur n’est utilisé dans le jeu d’essai. Cette liste porte des questions, pas des réponses contractuelles. L’absence d’entraînement sur les entrées, lorsqu’elle est établie pour une offre, ne répond pas à elle seule aux questions de conservation, d’accès ou de confidentialité.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d7174f6b982e",
+      "text": "Vérifiez aussi les chemins indirects : connecteur, recherche dans un dossier partagé, pièce jointe, lien public de conversation. Le périmètre examiné inclut ce qui est effectivement rendu accessible, pas seulement le texte visible dans la consigne. Retrouvez notre méthode de préparation et de recette pour distinguer entrée, proposition et validation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fc4b2150ce83",
+      "text": "La frontière. La mécanique de préparation reste distincte de l’autorisation d’un traitement réel.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e5d8ed49bee8",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Fiche de champs et contexte fictif ; routage des états saisis | Contexte minimal proposé et environnement documenté | Qualification des données, cadre applicable et autorisation de l’usage réel |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fee7d7de5af3",
+      "text": "La proposition. Nous préparons une fiche et une sortie d’état. Le responsable qualifie les champs et le contexte ; le collaborateur relit ce qui serait transmis. Une saisie humaine n’est pas écrasée par le programme. Dans notre démonstration, aucun fichier n’est envoyé et aucun modèle n’est interrogé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4477bcfefb8d",
+      "text": "L’arrêt. La transmission reste bloquée si l’environnement n’est pas confirmé, si un identifiant inutile est déclaré présent, si une possibilité de reconstruction est signalée ou si la qualification préalable manque. Un champ supprimé appelle une nouvelle lecture de l’ensemble ; le programme ne relance pas automatiquement un envoi.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-795f9ef5aca6",
+      "text": "Le jeu d’essai. Nous rejouons quatre dossiers entièrement fictifs : contexte minimal qualifié, identifiant inutile ajouté, environnement inconnu, contexte déclaré reconstructible. Les qualifications sont des entrées humaines du protocole. Le script vérifie leurs états, pas la présence sémantique d’une donnée dans un texte libre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-13c76979ed08",
+      "text": "Le rejeu local applique une règle déterministe, c’est-à-dire une règle à conditions fixes. Chaque ligne ci-dessous vient du journal réellement produit par le script. Il ne s’agit ni d’une réponse ChatGPT ni d’un test de conformité.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6367588dbeaf",
+      "text": "| Cas joué | Sortie obtenue | Décision | |---|---|---| | C-01 : contexte minimal fictif, qualification préalable et environnement de démonstration confirmés | PREPARATIONPRETE | Contexte à relire ; transmission false | | C-02 : identifiant inutile déclaré ajouté au cas C-01 | RETIRERIDENTIFIANT | Retirer puis réexaminer ; transmission false | | C-03 : environnement non confirmé | ENVIRONNEMENTINCONNU | Documenter l’environnement ; transmission false | | C-04 : contexte déclaré reconstructible | ARBITRAGEHUMAIN | Réexaminer les détails ; transmission false |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e4aafc0fdf8e",
+      "text": "« Préparation prête » décrit l’état du protocole fictif, pas une permission d’utiliser un dossier réel. Le programme ne détecte pas les personnes, ne calcule pas un risque de réidentification et ne prouve pas l’anonymisation. Les figures reproduisent les entrées déclarées et ces sorties locales.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5f23419bd669",
+      "text": "Les erreurs fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e4126d3d001b",
+      "text": "- Remplacer un nom et garder tout le dossier. Reprenez l’utilité de chaque détail et la possibilité de croisement. - Autoriser un outil sans nommer le compte. Retrouvez l’offre et l’espace réellement utilisés, avec leurs réglages. - Confondre absence d’entraînement et absence de conservation. Documentez ces deux questions séparément. - Joindre le fichier complet à une demande courte. Préparez d’abord un contexte minimal ; vérifiez le fichier et ses contenus indirects avant toute autorisation. - Laisser la sortie changer de destination. Un brouillon interne relu n’est pas un message externe autorisé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c2eea8728315",
+      "text": "Après la préparation des entrées, gardez un contrôle de la sortie. Notre checklist de vérification d’une réponse IA traite la source, le contexte, les ajouts et les réserves. La qualité d’une réponse ne valide pas rétroactivement ce qui a été transmis.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-992fcb55f297",
+      "text": "Puis-je transmettre un dossier si j’ai retiré les noms ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-44e625780036",
+      "text": "Pas sur ce seul critère. Les détails restants peuvent permettre une identification indirecte ou contenir une information confidentielle. Reprenez la qualification de l’entrée et l’autorisation de l’environnement avant de transmettre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c7c38f76ef0",
+      "text": "Pseudonymisé veut-il dire anonyme ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c021222d6695",
+      "text": "Non. Les citations CNIL ci-dessus distinguent les deux opérations et rappellent que les données pseudonymisées conservent leur caractère personnel. Notre fiche ne remplace pas cette qualification par un voyant automatique.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4f5d3122a4f4",
+      "text": "Un mode privé suffit-il pour utiliser des données clients ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-450a43c5f3bb",
+      "text": "Un réglage répond à un périmètre précis. Vérifiez ce qu’il change pour la réutilisation, la conservation, l’accès et le partage dans l’offre exacte ; n’en déduisez pas une autorisation générale. Si une réponse manque, le contexte reste en attente.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d14970b76e03",
+      "text": "Que faire si je n’arrive pas à confirmer les conditions ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d40c8a2bf324",
+      "text": "Gardez l’essai entièrement fictif et faites documenter l’usage envisagé par le responsable compétent. Vous pouvez préparer la fiche et la consigne sans transmettre le dossier. Le manque d’information devient un motif visible, pas une hypothèse silencieuse.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a425878d41a5",
+      "text": "Le programme peut-il autoriser automatiquement l’entrée ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-04ff357c89dc",
+      "text": "Le script montré ici route des qualifications saisies. Il n’analyse pas un dossier et ne décide pas du cadre applicable. Une règle de routage peut aider à ne pas oublier un arrêt ; elle ne remplace pas la décision sur les données.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5dd507b9fd17",
+      "text": "Choisissez les données depuis le geste attendu, puis documentez l’environnement et la décision avant toute transmission. Un cas fictif permet d’éprouver la mécanique sans faire passer un alias pour une anonymisation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-319b26063b2f",
+      "text": "La préparation des entrées fait partie des tâches à automatiser au cabinet, mais son autorisation reste une décision distincte. Nous prenons en charge la mécanique : écrire la fiche dans vos mots, préparer les contextes, faire remonter les conditions inconnues et éprouver les exceptions dans vos outils. Vous gardez la qualification des données et la décision d’usage, avec une validation humaine située au bon endroit et les engagements décrits dans nos garanties.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-4e0217dd52ad-1",
+      "unitId": "unit-4e0217dd52ad",
+      "claim": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-personnelle"
+      ],
+      "sourceExcerpts": {
+        "cnil-personnelle": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable."
+      },
+      "checkedAt": "2026-10-05",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-05",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-personnelle",
+            "sourceUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+            "verifiedUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+            "excerpt": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+            "context": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+            "contextSha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
+            "citation": {
+              "text": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+              "sha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
+              "sourceContentSha256": "11182d7db099683c74476efe0d9502e65cf2af0cd04579eda972250c4ddb3698",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+                "checkedAt": "2026-10-05",
+                "title": "Donnée personnelle",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 7,
+                  "endLine": 7
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "donnee",
+                "personnelle",
+                "information",
+                "rapportant",
+                "personne",
+                "physique",
+                "identifiee",
+                "identifiable"
+              ],
+              "reasoning": "La citation, relevée à la ligne 7 de la copie locale de CNIL, porte les mêmes entités que le claim (donnee, personnelle, information, rapportant, personne, physique, identifiee, identifiable) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Définition officielle citée exactement, sans réduire l’identification au seul nom.",
+            "checkedAt": "2026-10-05"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-24d0a97c54b2-1",
+      "unitId": "unit-24d0a97c54b2",
+      "claim": "L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-anonymisation"
+      ],
+      "sourceExcerpts": {
+        "cnil-anonymisation": "L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation."
+      },
+      "checkedAt": "2026-10-05",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-05",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-anonymisation",
+            "sourceUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
+            "verifiedUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
+            "excerpt": "L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
+            "context": "L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
+            "contextSha256": "16e803595d66919fea3b6357f5cf7d4bb5b731444b6ca67076dacd1a8288f1f2",
+            "citation": {
+              "text": "L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.",
+              "sha256": "16e803595d66919fea3b6357f5cf7d4bb5b731444b6ca67076dacd1a8288f1f2",
+              "sourceContentSha256": "4e1084c927f84820d486b8318eea7f360f15348f8a08913f5e142ed2b3609123",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
+                "checkedAt": "2026-10-05",
+                "title": "L’anonymisation de données personnelles",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 743,
+                  "endLine": 743
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "operation",
+                "pseudonymisation",
+                "egalement",
+                "reversible",
+                "contrairement",
+                "anonymisation"
+              ],
+              "reasoning": "La citation, relevée à la ligne 743 de la copie locale de CNIL, porte les mêmes entités que le claim (operation, pseudonymisation, egalement, reversible, contrairement, anonymisation) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Distinction exacte CNIL conservée ; aucun dossier annoncé anonyme.",
+            "checkedAt": "2026-10-05"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-b0c8adba036a-1",
+      "unitId": "unit-b0c8adba036a",
+      "claim": "les données concernées conservent donc un caractère personnel.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-anonymisation"
+      ],
+      "sourceExcerpts": {
+        "cnil-anonymisation": "les données concernées conservent donc un caractère personnel."
+      },
+      "checkedAt": "2026-10-05",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-05",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-anonymisation",
+            "sourceUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
+            "verifiedUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
+            "excerpt": "les données concernées conservent donc un caractère personnel.",
+            "context": "En pratique, il est toutefois bien souvent possible de retrouver l’identité de ceux-ci grâce à des données tierces : les données concernées conservent donc un caractère personnel.",
+            "contextSha256": "aaa478bef5551a0fabd42030633d7e6a7c52ab8a3417e2ab3e481b226a320144",
+            "citation": {
+              "text": "les données concernées conservent donc un caractère personnel.",
+              "sha256": "4a40a1bfc869cf1f095c7c47c1b3ba0222d210422ad3db9862ba665e8f0edce8",
+              "sourceContentSha256": "4e1084c927f84820d486b8318eea7f360f15348f8a08913f5e142ed2b3609123",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
+                "checkedAt": "2026-10-05",
+                "title": "L’anonymisation de données personnelles",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 743,
+                  "endLine": 743
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "donnees",
+                "concernees",
+                "conservent",
+                "donc",
+                "caractere",
+                "personnel"
+              ],
+              "reasoning": "La citation, relevée à la ligne 743 de la copie locale de CNIL, porte les mêmes entités que le claim (donnees, concernees, conservent, donc, caractere, personnel) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation bornée aux données pseudonymisées, pas aux données entièrement fictives.",
+            "checkedAt": "2026-10-05"
+          }
+        ]
+      }
+    }
+  ]
+}

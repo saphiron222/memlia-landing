@@ -1,6 +1,6 @@
 # Calendrier éditorial v3 — quatre articles et une Cicatrice par semaine
 
-Généré le 04/10/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).
+Généré le 05/10/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).
 
 ## Règles
 
@@ -14,9 +14,11 @@ Généré le 04/10/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 
 - Les anciennes réservations ordinaires manquées restent dans `dateManquee` du backlog ; leur date proposée au statut `a-replanifier` n’est pas actionnable. Une décision humaine fixe une nouvelle `datePlanifiee`, soumise aux portes de qualité et au quota du jour réel.
 
+- Rattrapage IA : `rattrapage-ia-2026-10-05.json` rattache quatre sujets à 2026-W40, avec dates réelles 04/10 et 05/10. Le 05/10 accepte trois articles uniquement de ce lot. Ils ne consomment pas les quatre nouveaux sujets W41 ; le jour réel reste occupé. Les autres quotas et Cicatrices restent inchangés.
+
 ## Volume
 
-- 246 satellites + 1 pilier ; 11 satellite(s) publié(s) dans le registre au 04/10/2026 ; dernier créneau planifié : 2027-11-03.
+- 248 satellites + 1 pilier ; 14 satellite(s) publié(s) dans le registre au 05/10/2026 ; dernier créneau planifié : 2027-11-03.
 
 ## Semaine par semaine
 
@@ -55,13 +57,15 @@ Généré le 04/10/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-09-29 | [Prompt ChatGPT expert comptable : écrire des consignes qui tiennent sur les dossiers](/blog/prompt-chatgpt-expert-comptable) | IA générative et agents | Numérique, IT et data | how-to-guide | 1 | published |
 | 2026-10-02 | [Pourquoi des tests verts manquent des défauts : la règle des trois passes](/blog/tests-verts-et-regle-des-trois-passes) | IA générative et agents | Numérique, IT et data | thought-leadership | 1 | published |
 | 2026-10-03 | [Pourquoi une installation logicielle échoue en cabinet : le test qui a tranché](/blog/l-outil-qui-ne-se-chargeait-jamais) | Connecteurs, imports et synchronisation | Numérique, IT et data | thought-leadership | 3 | manque |
-| 2026-10-04 | [Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile](/blog/utiliser-chatgpt-cabinet-comptable) | IA générative et agents | Numérique, IT et data | how-to-guide | 3 | planned |
+| 2026-10-04 | [Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile](/blog/utiliser-chatgpt-cabinet-comptable) | IA générative et agents | Numérique, IT et data | how-to-guide | 3 | published |
 
 ### Semaine 2026-W41
 
 | Date | Article | Famille | Pôle | Format | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-05 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | Entrée en relation et onboarding client | Administration et secrétariat | listicle-checklist | 1 | planned |
+| 2026-10-05 | [IA en cabinet comptable : préparer les données sans perdre leur confidentialité](/blog/ia-comptabilite-confidentialite-donnees) | RGPD, secret professionnel et sécurité | Numérique, IT et data | how-to-guide | 3 | published |
+| 2026-10-05 | [Vérifier une réponse IA en comptabilité : une checklist avant utilisation](/blog/verifier-reponse-ia-comptabilite) | IA générative et agents | Numérique, IT et data | how-to-guide | 3 | published |
+| 2026-10-06 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | Entrée en relation et onboarding client | Administration et secrétariat | listicle-checklist | 1 | planned |
 | 2026-10-06 | [Rapprochement bancaire automatisé : les écarts à remonter](/blog/rapprochement-bancaire-automatise-les-ecarts-a-remonter) | Relevés bancaires et rapprochement | Production comptable | how-to-guide | 1 | planned |
 | 2026-10-07 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | DSN et comptes rendus métier | Paie et social | listicle-checklist | 1 | planned |
 | 2026-10-08 | [Calendrier fiscal d'un cabinet comptable : suivre les échéances d'un portefeuille](/blog/suivre-les-echeances-fiscales-d-un-portefeuille) | Calendrier et échéances fiscales du portefeuille | Portefeuille et échéances | how-to-guide | 1 | planned |

@@ -1,0 +1,41 @@
+{
+ "slug":"ia-comptabilite-confidentialite-donnees",
+ "title":"IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+ "tabTitle":"IA comptabilité et confidentialité : les données | Memlia",
+ "summary":"Une fiche pour classer les entrées, réduire le contexte et rendre visibles les conditions inconnues avant toute transmission à une IA.",
+ "description":"IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet.",
+ "date":"2026-10-05",
+ "topics":["ia","automatisation"],
+ "keywords":["IA cabinet comptable confidentialité données","ChatGPT données clients cabinet comptable"],
+ "primaryQuery":"IA cabinet comptable confidentialité données",
+ "secondaryQueries":["ChatGPT données clients cabinet comptable","données autorisées IA générative","IA comptabilité et confidentialité"],
+ "intent":"executer","fanOut":["classe des données","entrée minimale","environnement et autorisation"],
+ "role":{"primary":"direction-associes","secondary":["collaborateurs-comptables"],"proofLevel":"indirect","proofNote":"Brief §3 et SERP Hermes du 05/10 ; aucune performance ni volume revendiqué."},
+ "funnel":"MOFU","cluster":"numerique-it-data","famille":"rgpd-secret-securite","contentType":"searchable","format":"how-to-guide",
+ "task":"Préparer et qualifier les données d’entrée avant toute transmission à une IA au cabinet.",
+ "rankability":"plausible","businessRelevance":"directe",
+ "proofRequired":"Fiche complète et quatre routages fictifs réellement exécutés, qualifications humaines préalables, aucun modèle ni détecteur interrogé.",
+ "reviewRule":"Réexaminer lorsque les recommandations CNIL, la finalité, les conditions ou la configuration changent.",
+ "cta":{"label":"Confier cette tâche","destination":"/contact","outcome":"Nous écrivons la règle de préparation des entrées, automatisons sa mécanique dans vos outils et la faisons recetter par votre équipe. Vous gardez la qualification des données et la décision d’usage. Rien à envoyer : la description suffit."},
+ "inlineProofs":[
+  {"id":"confidentialite-fiche","insertBeforeHeading":"Réduire le contexte sans prétendre anonymiser","alt":"Fiche fictive C-01 : finalité, champs minimaux, environnement local et préparation à relire sans transmission.","source":"Reconstitution HTML fictive de la fiche et du journal-rejeu.json ; qualifications déclarées pour le protocole local","capturedAt":"2026-10-05"},
+  {"id":"confidentialite-registre","insertBeforeHeading":"Les erreurs fréquentes","alt":"Registre fictif C-01 à C-04 : préparation prête, identifiant à retirer, environnement inconnu, arbitrage humain.","source":"Reconstitution HTML fictive des quatre sorties du journal-rejeu.json ; aucun détecteur ni fournisseur utilisé","capturedAt":"2026-10-05"}
+ ],
+ "image":{"heroId":"img-art-ia-comptabilite-confidentialite-donnees","alt":"Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème",
+  "brief":{"sujet":"Préparer séparément les données et leur autorisation.","composition":"Deux plateaux séparés et une carte d’accès vierge entre eux, plaque graphite au premier plan.","style":"Diorama 3D isométrique mat, lumière douce du haut gauche, fond crème papier.","palette":"Crème #fcfbf7 dominante ; vert #27b657, vert profond #1c8a41 et graphite #231f20 en touches.","interdits":"Texte, chiffres, logo, personnage, donnée client, fausse interface, envoi automatique.","alt":"Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème","prompt":"Isometric matte 3D editorial diorama. Two separated blank cream trays with a blank access card between. IMPORTANT: a VERY LARGE flat pure dark graphite #231f20 rectangular platform occupying 20 percent of the image; a large flat solid deep green #1c8a41 card occupying 10 percent of the image; bright green #27b657 tray accents. Keep exact dark colors, not grey and not pale. Background paper cream #fcfbf7. Soft upper left light. No text no numbers no logos no people no interface.","reviewCriteria":["palette mesurée","texte absent","aucun personnage","aucune interface","deux plateaux séparés","dérivés adaptés"]},
+  "source":{"path":"image-source-2.png","generationId":"4b0c4c03-4ff7-4de4-a3d5-63f15b9d446f","model":"gpt_image_2_5","provider":"higgsfield","generatedAt":"2026-10-05","credits":2.75}},
+ "sources":[
+  {"id":"cnil-personnelle","publisher":"CNIL","title":"Donnée personnelle","url":"https://www.cnil.fr/fr/definition/donnee-personnelle","level":"tier-1","official":true,"classificationReason":"Autorité de protection des données, définition officielle des données personnelles.","excerpt":"Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable."},
+  {"id":"cnil-anonymisation","publisher":"CNIL","title":"L’anonymisation de données personnelles","url":"https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles","level":"tier-1","official":true,"classificationReason":"Autorité officielle ; distinctions anonymisation et pseudonymisation, publication du 19 mai 2020.","excerpt":"L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation."}
+ ],
+ "links":{"outgoing":["/blog/prompt-chatgpt-expert-comptable","/blog/logiciel-ia-comptabilite","/blog/verifier-reponse-ia-comptabilite","/blog/automatiser-un-cabinet-comptable-la-carte-des-taches","/methode","/garanties","/glossaire#validation-humaine"],"incoming":["/blog"]},
+ "cannibalization":{"risk":"faible","comparedWith":["/blog/prompt-chatgpt-expert-comptable","/blog/logiciel-ia-comptabilite","/garanties"],"decision":"Fiche de préparation et d’autorisation des entrées, distincte de la consigne, du choix de solution et des engagements Memlia."},
+ "serp":{"requete":"IA cabinet comptable confidentialité données","date":"2026-10-05","acteurs":["France Num","Mister IA","Axiocap","Compta Online","WEKA"],"note":"Recherche Hermes française réellement ouverte ; références anciennes de concurrents non reprises. Pas Google localisé ni volume."},
+ "gsc":{"requete":"IA cabinet comptable confidentialité données","date":"2026-10-05","impressions":0,"clics":0,"note":"URL nouvelle non publiée, aucune performance attribuable. Diagnostic GSC parent daté du 03/10, pas nouvelle interrogation."},
+ "claims":[
+  {"unite":"Une donnée personnelle","claim":"Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.","type":"legal-reglementaire","sourceId":"cnil-personnelle","excerpt":"Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.","explanation":"Définition officielle citée exactement, sans réduire l’identification au seul nom."},
+  {"unite":"La pseudonymisation","claim":"L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.","type":"legal-reglementaire","sourceId":"cnil-anonymisation","excerpt":"L’opération de pseudonymisation est également réversible, contrairement à l’anonymisation.","explanation":"Distinction exacte CNIL conservée ; aucun dossier annoncé anonyme."},
+  {"unite":"Un contexte issu","claim":"les données concernées conservent donc un caractère personnel.","type":"legal-reglementaire","sourceId":"cnil-anonymisation","excerpt":"les données concernées conservent donc un caractère personnel.","explanation":"Citation bornée aux données pseudonymisées, pas aux données entièrement fictives."}
+ ],
+ "businessReview":{"reviewerId":"relecteur-metier-ia-memlia","role":"direction-associes"}
+}

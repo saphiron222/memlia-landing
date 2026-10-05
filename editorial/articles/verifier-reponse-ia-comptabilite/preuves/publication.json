@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "kind": "publication-scellee",
+  "candidateSlug": "verifier-reponse-ia-comptabilite",
+  "articleSha256": "09c125549707252f4a147b94a841c84026d5d5af26884575fd526b3c57488bd0",
+  "manifestSha256": "23990afd99d4ebaab4075a2276c4bad97d248fed1e4fb04edc4e184e7f924b4e",
+  "publishedAt": "2026-10-05",
+  "sealedAt": "2026-10-05T08:03:29.846Z",
+  "files": [
+    {
+      "path": "brief.md",
+      "bytes": 250,
+      "sha256": "ce550336c4512a8f9cc21c81dd324793ff3bac3ebe14daecd39796719856d2c8"
+    },
+    {
+      "path": "claims.json",
+      "bytes": 29079,
+      "sha256": "bc609f309cc898bd4e7cf896c923df4654c3c1111bdf526215533bd55639aaf4"
+    },
+    {
+      "path": "image.json",
+      "bytes": 1414,
+      "sha256": "c0927e7eb4600bdb0c0a3fbfb12ca83de3070d1979f58ae9f6b6f229557115ec"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 5395,
+      "sha256": "23990afd99d4ebaab4075a2276c4bad97d248fed1e4fb04edc4e184e7f924b4e"
+    },
+    {
+      "path": "preuves/business-review.json",
+      "bytes": 2735,
+      "sha256": "4ed8caf7d4b3cd08e33b4ed8a72154f85d021fcb7a89d2d158d23ab3ee2f0f44"
+    },
+    {
+      "path": "preuves/image/cadre.sha256",
+      "bytes": 65,
+      "sha256": "37973d45c2a5549a17b17c35ba199dc76842db4fa640f46741cd85cf63af825b"
+    },
+    {
+      "path": "preuves/image/generation.json",
+      "bytes": 849,
+      "sha256": "802eecff8c929d840e444edc24805dc424108e787f78976fbaaa5f7b2405d643"
+    },
+    {
+      "path": "preuves/image/hero-768.avif",
+      "bytes": 4913,
+      "sha256": "a89e8593ad0f22b5c71d0f346199f3162955e922e3da45cd7f19df2e0ba56fa4"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "bytes": 6802,
+      "sha256": "414f778866abe340f42ddc82aa45e7441f97ccc643ef1c71a65e5d7dea4db541"
+    },
+    {
+      "path": "preuves/image/master.png",
+      "bytes": 1760204,
+      "sha256": "0722c7afbf41a5c3547eb6ce4dcf08b8fd06cfd99d085ff7bf7511d5e568d1fd"
+    },
+    {
+      "path": "preuves/image/og.webp",
+      "bytes": 16560,
+      "sha256": "ef5b27ca986bfb430a429abee4ed5ceee910a02820982b0038179edf88f88904"
+    },
+    {
+      "path": "preuves/image/prompt.json",
+      "bytes": 1560,
+      "sha256": "7d4c318eab0c234954ff0edabc497b28b62d9dc7927f84e364a186a23e4995b1"
+    },
+    {
+      "path": "preuves/image/visual-review.json",
+      "bytes": 4066,
+      "sha256": "9c8e9481834421aa2ee9be465a692548226f1fafbed63d40c7e9e640a6b05577"
+    },
+    {
+      "path": "preuves/research-gsc.json",
+      "bytes": 745,
+      "sha256": "55280bff630faf2f510b9189712c4caef6ee50c0560b9fc0f09e77b7fcea4348"
+    },
+    {
+      "path": "preuves/research-serp.json",
+      "bytes": 903,
+      "sha256": "9c7f2be08073ca3fb9d6c9d57cf084bc060d10c77678f91ecaaac61f6cd2ff9d"
+    },
+    {
+      "path": "preuves/review.json",
+      "bytes": 4824,
+      "sha256": "482dd1fac1c5488297756dda9708b2f94f6823790dee9176af538d003d75caef"
+    },
+    {
+      "path": "preuves/role.json",
+      "bytes": 476,
+      "sha256": "925cda1abb0472e00cd5ff4659658fa72a3f4157fe990a9228a999c4d6677c2c"
+    },
+    {
+      "path": "preuves/skills/blog-analyze.json",
+      "bytes": 561,
+      "sha256": "f9395337e9c1a71cd69f9253153fa613f8e30c166f87ae0da116c40bbeb85d94"
+    },
+    {
+      "path": "preuves/skills/blog-audit.json",
+      "bytes": 490,
+      "sha256": "054731bcce8ac2c6fe406868ccf7f4d7b14fa216b703ee2f0c787c860a170e11"
+    },
+    {
+      "path": "preuves/skills/blog-brief.json",
+      "bytes": 615,
+      "sha256": "971864dc09d3f7c907c1e300260084eba1977aff651d5a2c9f3d6e895f51ff98"
+    },
+    {
+      "path": "preuves/skills/blog-cannibalization.json",
+      "bytes": 510,
+      "sha256": "49e8f5638754f97282c334ce32a0787bde7d187c537e82ba37779002aa635830"
+    },
+    {
+      "path": "preuves/skills/blog-factcheck.json",
+      "bytes": 514,
+      "sha256": "c523c462e6a3e9b3c817bad2a2608e6a656510193f114672444d16befd611bca"
+    },
+    {
+      "path": "preuves/skills/blog-geo.json",
+      "bytes": 979,
+      "sha256": "3e6829b25ca611445a2c5fcd669981f788ca62b4f1c14038994bdf9e627c55ef"
+    },
+    {
+      "path": "preuves/skills/blog-image.json",
+      "bytes": 527,
+      "sha256": "68ba52afcf0e2ffa27bdb6fa0ea0972ab580682ea6c1bed3b769f61ed4ee6a58"
+    },
+    {
+      "path": "preuves/skills/blog-seo-check.json",
+      "bytes": 1259,
+      "sha256": "12a5e8ba537162c14c29ac2efdfb73998880763cb5e643bf2aaa6c01bca818f4"
+    },
+    {
+      "path": "preuves/skills/blog-write.json",
+      "bytes": 438,
+      "sha256": "b2be91510ef660a7073fa33914a33d8c476430bd1f84acba5ab7fb3684aac1f8"
+    },
+    {
+      "path": "preuves/skills/seo-audit.json",
+      "bytes": 462,
+      "sha256": "6192af17ecebdf7bab2b25078cc17235835a2db2d52f41e328e46addb31afc11"
+    },
+    {
+      "path": "preuves/skills/seo-content-brief.json",
+      "bytes": 502,
+      "sha256": "da834f4960cfe4e8c41bb2080aaa0a945bcf39df08b776d9730b9ba3e588a384"
+    },
+    {
+      "path": "preuves/skills/seo-content.json",
+      "bytes": 488,
+      "sha256": "cfcf9d795f84d38210d42271ef04e3ee854dfc163ddeb272082c805294782ee7"
+    },
+    {
+      "path": "preuves/skills/seo-images.json",
+      "bytes": 529,
+      "sha256": "2ee03bc1c3f5a76703c7cfed37d6990ab765413f0afef6b88054a728703dd404"
+    },
+    {
+      "path": "preuves/skills/seo-page.json",
+      "bytes": 542,
+      "sha256": "73018501de0b26a2f0071e4eef00498f31f2b65c361748dd0a0a2666668a21ca"
+    },
+    {
+      "path": "preuves/skills/seo-schema.json",
+      "bytes": 481,
+      "sha256": "92fcaef017233099854bae0696240811b8826990516100a9bdc59354f7a36a42"
+    },
+    {
+      "path": "preuves/skills/seo-technical.json",
+      "bytes": 526,
+      "sha256": "6daf7519153d3021c0ede1f61933dd71687a68cbb0800ca041750ffcf78d4345"
+    },
+    {
+      "path": "preuves/sources/cnil-hallucinations.classification.json",
+      "bytes": 1417,
+      "sha256": "d96777283a586b85fef5e3ef5b7901e696c91d68210552f5ac11bf781defbc1c"
+    },
+    {
+      "path": "preuves/sources/cnil-hallucinations.json",
+      "bytes": 1102,
+      "sha256": "fbd7453e5dafb91bd86285252717c567eb52897cbc8f75c58fd65a86c8126860"
+    },
+    {
+      "path": "preuves/sources/cnil-hallucinations.source.txt",
+      "bytes": 137084,
+      "sha256": "edf84c196d4400cb025d7c1de0c6fd5c2d96b5ed20a3e238219ac3208fc71f69"
+    },
+    {
+      "path": "quality-review.json",
+      "bytes": 5060,
+      "sha256": "01b27bdea4431202ddb43fc19bb5f3193088beece35395e9b3aeb0155f25927d"
+    },
+    {
+      "path": "review.json",
+      "bytes": 420,
+      "sha256": "17d374dac1e83f8225ef8dd4597c8be9a07ed4ce76a65459c684240f6c1ef6fe"
+    },
+    {
+      "path": "seo-geo-review.md",
+      "bytes": 2794,
+      "sha256": "33954744e9667eb02b61fdeeb30e316d8feeeb55948370c756d568c530124952"
+    },
+    {
+      "path": "skills.json",
+      "bytes": 16991,
+      "sha256": "30a1913a8d2d4276399ca8c0b0d04eb40508f1c1be8a6c1e9ea5bdf9dced2c94"
+    }
+  ]
+}

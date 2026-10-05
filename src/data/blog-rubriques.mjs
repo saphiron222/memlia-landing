@@ -68,6 +68,14 @@ export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
     date: '2026-10-04',
     raison: 'Guide transversal de sélection d’un premier usage IA : il ne décrit ni une étape Paie et DSN ni une étape Saisie et pièces. La famille IA existante porte son rattachement sans créer une rubrique artificielle.',
   }),
+  'verifier-reponse-ia-comptabilite': Object.freeze({
+    date: '2026-10-04',
+    raison: 'Checklist transversale de contrôle des affirmations IA, distincte des chaînes Paie et DSN et Saisie et pièces ; rattachement à la famille IA sans nouvelle rubrique mince.',
+  }),
+  'ia-comptabilite-confidentialite-donnees': Object.freeze({
+    date: '2026-10-05',
+    raison: 'Fiche transversale de préparation et autorisation des entrées IA ; famille RGPD, secret et sécurité, sans correspondre aux chaînes Paie et DSN ou Saisie et pièces.',
+  }),
   'prompt-chatgpt-expert-comptable': Object.freeze({
     date: '2026-09-28',
     raison: 'Guide transversal sur l’usage prudent d’un prompt ChatGPT en cabinet : la demande de pièce est un exemple fictif, pas une étape de la chaîne Saisie et pièces ni du cycle Paie et DSN.',

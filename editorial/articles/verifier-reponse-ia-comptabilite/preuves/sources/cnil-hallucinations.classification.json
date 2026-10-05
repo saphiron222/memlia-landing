@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "candidateSlug": "verifier-reponse-ia-comptabilite",
+  "kind": "source-classification",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+  "manifestSha256": "23990afd99d4ebaab4075a2276c4bad97d248fed1e4fb04edc4e184e7f924b4e",
+  "sourceId": "cnil-hallucinations",
+  "sourceUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+  "finalUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+  "publisher": "CNIL",
+  "level": "tier-1",
+  "provenance": "primary",
+  "official": true,
+  "upstreamUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+  "classifiedBy": "kevin",
+  "reviewedBy": "qa:t_2352a08b",
+  "observations": [
+    "Autorité de protection des données ; FAQ, explication des risques, pas nouveau conseil réglementaire.",
+    "Source primaire officielle tier-1 ; titre et domaine concordants, date affichée 18/07/2024. Reçu réseau du 04/10/2026 HTTP 200 et copie intègre relus ; ouverture QA du 05/10 Europe/Paris HTTP 200, deux citations présentes. Section 2 et contexte lus. Suffisante pour les deux claims d'information du candidat ; ne prouve pas les résultats de son routage ni la conformité d'un usage réel."
+  ]
+}

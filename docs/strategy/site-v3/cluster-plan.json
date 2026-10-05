@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "date": "2026-10-04",
+  "date": "2026-10-05",
   "seed": "automatisation cabinet comptable",
   "methode": "backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 59 familles et 11 pôles actifs dans ce plan (12 pôles dans la taxonomie) ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec requête primaire à zéro le 21/09 (titres-intent), secondaires non mesurées et questions identiques à la SERP par famille du 19/09 (questions) ; les trois articles historiques synthétiques et la série restent hors gate",
   "pillar": {
@@ -14,6 +14,19 @@
     "family": "choisir-cadrer",
     "status": "published",
     "date": "2026-09-16"
+  },
+  "rattrapageIA": {
+    "version": 1,
+    "decisionLe": "2026-10-05T12:08:00+02:00",
+    "carteSource": "t_f9e51486",
+    "semaineEditoriale": "2026-W40",
+    "maximumParJour": 3,
+    "publications": {
+      "utiliser-chatgpt-cabinet-comptable": "2026-10-04",
+      "verifier-reponse-ia-comptabilite": "2026-10-05",
+      "ia-comptabilite-confidentialite-donnees": "2026-10-05",
+      "automatiser-avec-ia-sans-changer-logiciel": "2026-10-05"
+    }
   },
   "clusters": [
     {
@@ -4207,7 +4220,7 @@
           "intent": "executer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-05",
+          "date": "2026-10-06",
           "missedDate": null,
           "secondaryKeywords": [
             "pièces d'entrée en relation cabinet comptable",
@@ -5080,7 +5093,34 @@
           "officialSources": [
             "CNIL"
           ],
-          "status": "planned",
+          "status": "published",
+          "incomingLinks": 3
+        },
+        {
+          "title": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+          "keyword": "vérifier réponse IA comptabilité",
+          "volume": null,
+          "template": "how-to",
+          "format": "how-to-guide",
+          "wordCount": 1500,
+          "url": "/blog/verifier-reponse-ia-comptabilite",
+          "slug": "verifier-reponse-ia-comptabilite",
+          "family": "ia-generative-agents",
+          "role": "collaborateurs-comptables",
+          "intent": "executer",
+          "funnel": "MOFU",
+          "priority": 3,
+          "date": "2026-10-05",
+          "missedDate": null,
+          "secondaryKeywords": [
+            "hallucinations ChatGPT comptabilité",
+            "vérifier sources ChatGPT"
+          ],
+          "proof": "Checklist affirmation/source/périmètre/décision et cinq cas fictifs exécutés localement sans modèle interrogé",
+          "officialSources": [
+            "CNIL"
+          ],
+          "status": "published",
           "incomingLinks": 3
         },
         {
@@ -5211,6 +5251,34 @@
             "cnil.fr"
           ],
           "status": "planned",
+          "incomingLinks": 3
+        },
+        {
+          "title": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+          "keyword": "IA cabinet comptable confidentialité données",
+          "volume": null,
+          "template": "how-to",
+          "format": "how-to-guide",
+          "wordCount": 1500,
+          "url": "/blog/ia-comptabilite-confidentialite-donnees",
+          "slug": "ia-comptabilite-confidentialite-donnees",
+          "family": "rgpd-secret-securite",
+          "role": "direction-associes",
+          "intent": "executer",
+          "funnel": "MOFU",
+          "priority": 3,
+          "date": "2026-10-05",
+          "missedDate": null,
+          "secondaryKeywords": [
+            "ChatGPT données clients cabinet comptable",
+            "données autorisées IA générative",
+            "IA comptabilité et confidentialité"
+          ],
+          "proof": "Fiche d’entrée et quatre qualifications fictives routées localement sans modèle ; pas d’anonymisation certifiée",
+          "officialSources": [
+            "CNIL"
+          ],
+          "status": "published",
           "incomingLinks": 3
         },
         {
@@ -6942,6 +7010,42 @@
       "to": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
       "type": "pilier",
       "anchor": "Automatiser la saisie comptable : ce qui reste à vérifier"
+    },
+    {
+      "from": "utiliser-chatgpt-cabinet-comptable",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "utiliser-chatgpt-cabinet-comptable",
+      "type": "pilier",
+      "anchor": "Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile"
+    },
+    {
+      "from": "verifier-reponse-ia-comptabilite",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "verifier-reponse-ia-comptabilite",
+      "type": "pilier",
+      "anchor": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation"
+    },
+    {
+      "from": "ia-comptabilite-confidentialite-donnees",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "ia-comptabilite-confidentialite-donnees",
+      "type": "pilier",
+      "anchor": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité"
     },
     {
       "from": "pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
@@ -9560,18 +9664,6 @@
       "anchor": "Qu'est-ce qu'une synthèse de rémunération, et à qui sert-elle ?"
     },
     {
-      "from": "utiliser-chatgpt-cabinet-comptable",
-      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "type": "pilier",
-      "anchor": "automatiser une tâche du cabinet"
-    },
-    {
-      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "to": "utiliser-chatgpt-cabinet-comptable",
-      "type": "pilier",
-      "anchor": "Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile"
-    },
-    {
       "from": "rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel",
       "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
       "type": "pilier",
@@ -9807,9 +9899,15 @@
     },
     {
       "from": "prompt-chatgpt-expert-comptable",
-      "to": "tests-verts-et-regle-des-trois-passes",
+      "to": "verifier-reponse-ia-comptabilite",
       "type": "famille",
-      "anchor": "pourquoi des tests verts peuvent manquer des défauts"
+      "anchor": "vérifier réponse IA comptabilité"
+    },
+    {
+      "from": "utiliser-chatgpt-cabinet-comptable",
+      "to": "verifier-reponse-ia-comptabilite",
+      "type": "famille",
+      "anchor": "vérifier réponse IA comptabilité"
     },
     {
       "from": "utiliser-chatgpt-cabinet-comptable",
@@ -9818,7 +9916,13 @@
       "anchor": "pourquoi des tests verts peuvent manquer des défauts"
     },
     {
-      "from": "utiliser-chatgpt-cabinet-comptable",
+      "from": "verifier-reponse-ia-comptabilite",
+      "to": "tests-verts-et-regle-des-trois-passes",
+      "type": "famille",
+      "anchor": "pourquoi des tests verts peuvent manquer des défauts"
+    },
+    {
+      "from": "verifier-reponse-ia-comptabilite",
       "to": "ia-cabinet-comptable",
       "type": "famille",
       "anchor": "ia cabinet comptable"
@@ -10208,6 +10312,66 @@
       "anchor": "checklist contrôle saisie comptable automatisée"
     },
     {
+      "from": "automatiser-sans-exposer-le-secret-professionnel-du-cabinet",
+      "to": "checklist-rgpd-avant-de-brancher-un-outil-d-ia-sur-des-donnees-clients",
+      "type": "famille",
+      "anchor": "checklist RGPD outil IA cabinet comptable"
+    },
+    {
+      "from": "automatiser-sans-exposer-le-secret-professionnel-du-cabinet",
+      "to": "les-donnees-qu-un-cabinet-ne-doit-jamais-transmettre-a-un-outil-d-ia-grand-public",
+      "type": "famille",
+      "anchor": "donnée client IA grand public interdiction cabinet comptable"
+    },
+    {
+      "from": "checklist-rgpd-avant-de-brancher-un-outil-d-ia-sur-des-donnees-clients",
+      "to": "les-donnees-qu-un-cabinet-ne-doit-jamais-transmettre-a-un-outil-d-ia-grand-public",
+      "type": "famille",
+      "anchor": "donnée client IA grand public interdiction cabinet comptable"
+    },
+    {
+      "from": "checklist-rgpd-avant-de-brancher-un-outil-d-ia-sur-des-donnees-clients",
+      "to": "rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel",
+      "type": "famille",
+      "anchor": "IA RGPD cabinet expertise comptable"
+    },
+    {
+      "from": "les-donnees-qu-un-cabinet-ne-doit-jamais-transmettre-a-un-outil-d-ia-grand-public",
+      "to": "rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel",
+      "type": "famille",
+      "anchor": "IA RGPD cabinet expertise comptable"
+    },
+    {
+      "from": "les-donnees-qu-un-cabinet-ne-doit-jamais-transmettre-a-un-outil-d-ia-grand-public",
+      "to": "ia-comptabilite-confidentialite-donnees",
+      "type": "famille",
+      "anchor": "IA cabinet comptable confidentialité données"
+    },
+    {
+      "from": "rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel",
+      "to": "ia-comptabilite-confidentialite-donnees",
+      "type": "famille",
+      "anchor": "IA cabinet comptable confidentialité données"
+    },
+    {
+      "from": "rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel",
+      "to": "automatiser-sans-exposer-le-secret-professionnel-du-cabinet",
+      "type": "famille",
+      "anchor": "secret professionnel automatisation cabinet comptable"
+    },
+    {
+      "from": "ia-comptabilite-confidentialite-donnees",
+      "to": "automatiser-sans-exposer-le-secret-professionnel-du-cabinet",
+      "type": "famille",
+      "anchor": "secret professionnel automatisation cabinet comptable"
+    },
+    {
+      "from": "ia-comptabilite-confidentialite-donnees",
+      "to": "checklist-rgpd-avant-de-brancher-un-outil-d-ia-sur-des-donnees-clients",
+      "type": "famille",
+      "anchor": "checklist RGPD outil IA cabinet comptable"
+    },
+    {
       "from": "choisir-la-premiere-tache-a-automatiser",
       "to": "les-signaux-qui-disent-qu-une-tache-n-est-pas-prete-a-etre-automatisee",
       "type": "famille",
@@ -12210,54 +12374,6 @@
       "to": "checklist-de-controle-d-une-synthese-de-remuneration-avant-remise",
       "type": "famille",
       "anchor": "checklist synthèse de rémunération salarié contrôle"
-    },
-    {
-      "from": "automatiser-sans-exposer-le-secret-professionnel-du-cabinet",
-      "to": "checklist-rgpd-avant-de-brancher-un-outil-d-ia-sur-des-donnees-clients",
-      "type": "famille",
-      "anchor": "checklist RGPD outil IA cabinet comptable"
-    },
-    {
-      "from": "automatiser-sans-exposer-le-secret-professionnel-du-cabinet",
-      "to": "les-donnees-qu-un-cabinet-ne-doit-jamais-transmettre-a-un-outil-d-ia-grand-public",
-      "type": "famille",
-      "anchor": "donnée client IA grand public interdiction cabinet comptable"
-    },
-    {
-      "from": "checklist-rgpd-avant-de-brancher-un-outil-d-ia-sur-des-donnees-clients",
-      "to": "les-donnees-qu-un-cabinet-ne-doit-jamais-transmettre-a-un-outil-d-ia-grand-public",
-      "type": "famille",
-      "anchor": "donnée client IA grand public interdiction cabinet comptable"
-    },
-    {
-      "from": "checklist-rgpd-avant-de-brancher-un-outil-d-ia-sur-des-donnees-clients",
-      "to": "rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel",
-      "type": "famille",
-      "anchor": "IA RGPD cabinet expertise comptable"
-    },
-    {
-      "from": "les-donnees-qu-un-cabinet-ne-doit-jamais-transmettre-a-un-outil-d-ia-grand-public",
-      "to": "rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel",
-      "type": "famille",
-      "anchor": "IA RGPD cabinet expertise comptable"
-    },
-    {
-      "from": "les-donnees-qu-un-cabinet-ne-doit-jamais-transmettre-a-un-outil-d-ia-grand-public",
-      "to": "automatiser-sans-exposer-le-secret-professionnel-du-cabinet",
-      "type": "famille",
-      "anchor": "secret professionnel automatisation cabinet comptable"
-    },
-    {
-      "from": "rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel",
-      "to": "automatiser-sans-exposer-le-secret-professionnel-du-cabinet",
-      "type": "famille",
-      "anchor": "secret professionnel automatisation cabinet comptable"
-    },
-    {
-      "from": "rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel",
-      "to": "checklist-rgpd-avant-de-brancher-un-outil-d-ia-sur-des-donnees-clients",
-      "type": "famille",
-      "anchor": "checklist RGPD outil IA cabinet comptable"
     },
     {
       "from": "automatiser-les-echanges-entre-logiciels-par-connecteur-ou-par-fichier",
@@ -12729,12 +12845,12 @@
     }
   ],
   "meta": {
-    "totalPosts": 246,
-    "plannedPosts": 233,
-    "publishedPosts": 11,
+    "totalPosts": 248,
+    "plannedPosts": 232,
+    "publishedPosts": 14,
     "totalClusters": 11,
     "totalFamilies": 59,
-    "totalLinks": 984,
-    "estimatedWords": 355800
+    "totalLinks": 992,
+    "estimatedWords": 358800
   }
 }
