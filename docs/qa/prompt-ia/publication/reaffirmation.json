@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "revue": "metier-review-r5",
+  "reaffirmeLe": "2026-10-05T19:19:25.856Z",
+  "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
+  "registreSha256": "f13ee2ce9f7ddd3a7106505c928017fe658a4c5e990c62a930b149cccd770818",
+  "declarationRef": "docs/qa/prompt-ia/publication/declaration.json",
+  "declarationSha256": "624e28f5c3a6c813e69638f3a4044eb6d240af95dfa2b1436faf981ace6c88bf",
+  "ancreRef": "docs/qa/prompt-ia/publication/sujet-ancre.json",
+  "ancreSha256": "e5615c10bfbaec3eb48044024ae58bb6613ec9adab91eae4ae1839838af44068",
+  "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
+  "surfaces": {
+    "T": {
+      "action": "réaffirmée",
+      "sujetAncre": "a53700a895d6c574583f9ea5241fbae907fa24681fbee4ce254917a42d2d5f11",
+      "sujetReaffirme": "e96c4713988103dd936b2a6977bc292873d93f9a04588760aa3456a3184f5c56",
+      "feuillesEcartees": 1,
+      "feuillesParChamp": {
+        "buildOutputDigest.buildOutputDigest": 1
+      },
+      "justifications": {
+        "buildOutputDigest": "Ajout du générateur IA texte au footer : main sérialisé identique au témoin intégré ; affirmations, copies et 27 verdicts conservés."
+      },
+      "affirmationsRenduesVerifiees": 77,
+      "verdictsConserves": 27,
+      "candidateHash": "52f74b5a0a523906841f91e8dbe66e6328e59c28006e12ab68ac0b607fca68ee",
+      "auditHash": "48df2d21635f2b6ca2df15322fb7219264d896022ec3b88db81d67a111a1219b",
+      "manifestSha256": "ac73bf03cdc6253c8b878958c82a5039a4413c48c4dc3554f7bed8d987d3359e",
+      "preuveRef": "docs/qa/site-copy-b/preuve-glossaire-metier.json",
+      "preuveSha256": "6dcfda0658c6b9c0c75d8310fad051cc2656db75d8bdf43bcddd01ef5a200573"
+    }
+  }
+}

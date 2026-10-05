@@ -71,7 +71,7 @@ test('fallback presse-papiers, reload efface et aucun texte dans URL', async ({ 
   expect(new URL(page.url()).search).toBe(''); await page.reload(); await expect(page.getByLabel('Prompt éditable')).toHaveValue('');
 });
 test('SEO, trois entrants, footer, médias et sitemap', async ({ page }) => {
-  for (const route of ['/outils-comptables-gratuits', '/methode', '/outils-comptables-gratuits/generateur-prompt-expert-comptable']) {
+  for (const route of ['/outils-comptables-gratuits', '/methode', '/outils-comptables-gratuits/generateur-prompt-expert-comptable', '/outils-comptables-gratuits/verificateur-prompt-ia']) {
     await page.goto(route); await expect(page.locator(`main a[href="${ROUTE}"]`).first()).toBeVisible();
   }
   const response = await page.goto(ROUTE); expect(response?.status()).toBe(200);
