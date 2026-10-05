@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { tmpdir } from 'node:os';
 import { verifierPlafonds } from '../../scripts/lib/blog-pipeline.mjs';
 
 const root = resolve(import.meta.dirname, '../..');
@@ -32,7 +33,7 @@ test('le lot ne consomme pas les quatre nouveaux sujets W41, mais conserve le qu
 });
 
 test('règle absente ou élargie : refus du lot, pas ouverture de cadence', () => {
-  const tmp = mkdtempSync(join(process.env.TMPDIR, 'catchup-test-'));
+  const tmp = mkdtempSync(join(process.env.TMPDIR || tmpdir(), 'catchup-test-'));
   try {
     assert.throws(() => verifierPlafonds(actifs, '2026-10-05', { root: tmp, slug }));
     const rule = JSON.parse(readFileSync(join(root, path)));
