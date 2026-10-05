@@ -34,7 +34,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
+          # No `cache: npm`: ~/.npm already persists on the self-hosted runner,
+          # and uploading it to the GitHub cache only slowed every run.
 
       - name: Install locked dependencies
         run: npm ci
