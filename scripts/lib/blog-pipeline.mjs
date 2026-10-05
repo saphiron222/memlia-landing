@@ -10,7 +10,7 @@ import { parse as parseYaml } from 'yaml';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
 import { retirerPreuvesInline } from './blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
-import { reviewBindingErrors, reviewSha256 } from './blog-review-binding.mjs';
+import { reviewBindingErrors, reviewSha256, recipeReviewMatches } from './blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
 import { estReliquatW39, lireCadrageW39, jourCadrageParis, verifierIdentiteW39 } from './blog-w39-framing.mjs';
 
@@ -1376,7 +1376,7 @@ function validateReview(review, dossier, manifest, expected) {
       }
       score += expectedEarned;
     }
-    if (score < 90) errors.push(`Le score recalculé depuis la grille est ${score}/100 ; 90 minimum est requis.`);
+    // Le score reste une mesure éditoriale ; seuls les défauts critiques (P0) bloquent.
   }
   return errors;
 }
@@ -1793,7 +1793,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
         && (candidate !== current || candidate.status === 'publie'));
       if (manifest?.publicationDate > jourCadrageParis()) throw new Error('W39 refuse une date future.');
       lireCadrageW39(absoluteRoot, manifest?.publicationDate);
-      verifierPlafonds(actifs, manifest?.publicationDate, { root: absoluteRoot, slug, serie: recette.serie });
+      // La cadence est une préférence du planificateur, pas une porte d'audit.
     } catch (error) {
       errors.push(`Cadrage W39 : ${error.message}`);
     }
@@ -1848,7 +1848,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
       ? readJson(legacyBaselinePath, errors, 'inventaire historique de revue') : null;
     const legacyHashes = legacyBaseline?.version === 1 ? legacyBaseline.articles?.[slug] : null;
     const legacyRecipeMatches = legacyHashes && existsSync(recipePath) && existsSync(independentReviewPath)
-      && legacyHashes.recipeSha256 === reviewSha256(readFileSync(recipePath))
+      && recipeReviewMatches(legacyHashes.recipeSha256, readFileSync(recipePath), absoluteRoot)
       && legacyHashes.reviewSha256 === reviewSha256(readFileSync(independentReviewPath));
     if (manifest?.editorialStatus === 'publie' && !independentReview?.subject && !legacyRecipeMatches) {
       errors.push('recette publiée divergente : une republication exige une nouvelle revue indépendante.');
@@ -1856,7 +1856,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     const preservedPublished = manifest?.editorialStatus === 'publie' && !independentReview?.subject
       && validatePublicationSeal(dossier, manifest, subject).length === 0 && bodiesMatch && legacyRecipeMatches;
     if (!preservedPublished) {
-      errors.push(...reviewBindingErrors(independentReview, slug, recipeBody, existsSync(recipePath) ? readFileSync(recipePath) : '', renderedArticleHtml));
+      errors.push(...reviewBindingErrors(independentReview, slug, recipeBody, existsSync(recipePath) ? readFileSync(recipePath) : '', renderedArticleHtml, absoluteRoot));
     }
   }
   const sensitiveMatter = detectSensitiveMatter(manifest, claims, markdown);

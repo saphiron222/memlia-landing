@@ -637,7 +637,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
   if (estReliquatW39(slug)) verifierFile(root, slug, recette.date, statut, recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
   const recettePath = join(dossierRecette, 'recette.json');
-  let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath), undefined, root) : [];
   let revuesValides = revueErreurs.length ? null : revues;
   const requetes = [recette.primaryQuery, ...(recette.secondaryQueries ?? [])];
   verifierTitreIntentMesure({ root, titre: recette.title, requetes, au: jour, surface: `${slug} : H1` });
@@ -651,7 +651,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const datesSources = await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher, verifierJour: refuserChangementDeJour });
   refuserChangementDeJour();
   // Les URL finales ont pu réécrire la recette : le manifeste est reconstruit depuis la recette à jour.
-  revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath), undefined, root) : [];
   revuesValides = revueErreurs.length ? null : revues;
   const manifestFinal = construireManifest(recette, statut, jour, revuesValides, datesSources);
   ecrireJson(manifestPath, manifestFinal);

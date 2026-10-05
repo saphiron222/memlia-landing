@@ -49,15 +49,15 @@ rédigé, en WebP/AVIF ; les captures produit viennent du banc Windows, sur le j
 
 ## Règles non négociables
 
-- **Rien n'est publié sans l'autorisation applicable de Kevin.** Tu travailles sur une branche
-  `site/<sujet>` et peux déployer une **prévisualisation**
-  (`npx wrangler pages deploy dist --project-name memlia --branch preview-<sujet>`)
-  lorsque le contrat de la carte le prévoit. Depuis la décision Kevin du 24/09/2026, un agent peut
-  pousser sans nouvelle validation sa propre branche par un `git push` non destructif après contrôle
-  du dépôt, de la branche et du diff, puis vérification du SHA distant et de la CI. Le push forcé,
-  la suppression de branche et toute refspec destructive restent interdits. Cette autorisation ne
-  vaut **pas** fusion, déploiement de production (`--branch main`), publication d'article ou levée
-  d'une revue QA : ces étapes suivent les autorisations et gardes propres à chaque carte.
+- **Livraison (constitution Hermes du 03/10/2026, `~/hermes/AGENTS.md` §5).** Tu travailles sur une
+  branche `site/<sujet>` et la pousses librement : `git push` non destructif, après contrôle du dépôt, de
+  la branche et du diff, puis vérification du SHA distant et de la CI. La fusion sur `main` suit dès que la
+  CI est verte et qu'**une** revue indépendante est PASS (QA pour le code, `metier` pour le contenu
+  réglementé) ; une correction du même candidat repasse la même revue. Le blog se publie seul : `main` →
+  Cloudflare Pages, jamais par un déploiement manuel de production (`--branch main`). Une
+  **prévisualisation** reste possible (`npx wrangler pages deploy dist --project-name memlia --branch
+  preview-<sujet>`). Le push forcé, la suppression de branche distante et toute refspec destructive restent
+  interdits. Kevin n'est sollicité que pour les quatre cas de la constitution (§1) ; le reste, tu le tranches.
 - **Le SEO acquis ne régresse pas** : `title`, `description`, canonical, Open Graph, JSON-LD (Organization,
   WebSite, Service, FAQPage), `robots.txt`, sitemap, `llms.txt`, pages légales en `noindex`,
   `lang="fr"`, un seul `h1`. Lighthouse ≥ 95 sur les quatre axes.
