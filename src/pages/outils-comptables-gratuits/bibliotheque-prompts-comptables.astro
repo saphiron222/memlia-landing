@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import BibliothequePrompts from '@/components/outils/BibliothequePrompts.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('bibliotheque-prompts-comptables');
+---
+<Outil outil={outil}><BibliothequePrompts /></Outil>

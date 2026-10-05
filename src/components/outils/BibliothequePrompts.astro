@@ -1,0 +1,121 @@
+---
+import { MODELS, POLES, MODEL_FORMATS, modelPrompt, GENERATOR_PATH } from '@/lib/bibliotheque-prompts.mjs';
+---
+<div class="catalogue" data-library>
+  <section aria-labelledby="library-title">
+    <h2 id="library-title">Trouver un modèle</h2>
+    <p>Douze points de départ pour préparer un travail du cabinet. Les exemples sont fictifs ; leurs sorties attendues sont rédigées, pas obtenues d’une IA. Aucun modèle n’est appelé ici.</p>
+    <noscript><p>Les douze fiches et leurs prompts restent lisibles ci-dessous. Activez JavaScript pour filtrer, copier, exporter ou préparer une reprise dans le générateur.</p></noscript>
+    <form class="filters" data-filters hidden autocomplete="off" data-own-telemetry>
+      <div><label for="library-pole">Pôle</label><select id="library-pole" name="pole"><option value="">Tous les pôles</option>{POLES.map(p => <option value={p.id}>{p.label}</option>)}</select></div>
+      <div><label for="library-format">Format attendu</label><select id="library-format" name="format"><option value="">Tous les formats</option>{MODEL_FORMATS.map(f => <option value={f.id}>{f.label}</option>)}</select></div>
+      <div><label for="library-task">Tâche</label><select id="library-task" name="task"><option value="">Toutes les tâches</option>{MODELS.map(m => <option value={m.id}>{m.title}</option>)}</select></div>
+      <label>Rechercher un modèle<input name="query" type="search" maxlength="200" placeholder="Relance, contrôle, note…" /></label>
+      <button type="reset" class="btn btn-contour">Effacer les filtres</button>
+    </form>
+    <p data-count role="status">12 modèles disponibles.</p>
+    <p data-empty hidden>Aucun modèle ne correspond. Effacez les filtres ou utilisez un terme plus général ; vos fiches restent disponibles.</p>
+  </section>
+  <div class="cards">
+    {MODELS.map(m => <article class="model" data-model={m.id} aria-labelledby={`title-${m.id}`}>
+      <p class="meta">{POLES.find(p => p.id === m.pole)?.label} · {MODEL_FORMATS.find(f => f.id === m.format)?.label}</p>
+      <h3 id={`title-${m.id}`}>{m.title}</h3>
+      <p>{m.context}</p>
+      <dl>
+        <div><dt>Entrées permises</dt><dd>{m.input}</dd></div>
+        <div><dt>Résultat à préparer</dt><dd>{m.output}</dd></div>
+        <div><dt>Se prépare seul</dt><dd>{m.description}</dd></div>
+        <div><dt>Attend une validation</dt><dd>Le collaborateur relit le fond et la forme de la proposition.</dd></div>
+        <div><dt>Reste humain</dt><dd>{m.human}</dd></div>
+        <div><dt>Arrêt dans le doute</dt><dd>{m.stop}</dd></div>
+      </dl>
+      <details><summary>Lire le prompt complet et son exemple fictif</summary>
+        <h4>Entrée fictive</h4><p>{m.exampleIn}</p>
+        <h4>Sortie attendue rédigée</h4><p>{m.exampleOut}</p>
+        <label>Prompt complet : {m.title}<textarea readonly rows="12" spellcheck="false" data-text>{modelPrompt(m)}</textarea></label>
+      </details>
+      <div class="actions" data-actions hidden>
+        <button type="button" class="btn btn-contour" data-copy>Copier le modèle</button>
+        <button type="button" class="btn btn-contour" data-export>Exporter en texte</button>
+        <a class="btn btn-contour" href={GENERATOR_PATH} data-adapt>Adapter dans le générateur</a>
+      </div>
+      <p data-card-status aria-live="polite"></p>
+    </article>)}
+  </div>
+  <section class="suite" aria-labelledby="library-adapt">
+    <h2 id="library-adapt">Adapter une consigne, pas décider à sa place</h2>
+    <p>La bibliothèque sélectionne un point de départ. Le <a href={GENERATOR_PATH}>générateur de prompt pour expert-comptable</a> assemble une consigne selon vos choix. « Adapter » transmet seulement l’identifiant public de la fiche dans le stockage temporaire de cet onglet, puis le consomme à l’arrivée ; aucun texte saisi ne circule. Si le stockage est indisponible, copiez ou exportez le modèle avant d’ouvrir le générateur.</p>
+    <p>La reprise conserve le modèle complet tant que ses choix restent inchangés. Modifier ses contraintes produit ensuite les blocs génériques du générateur : relisez la consigne avant de la réutiliser.</p>
+    <h3>Comment essayer le modèle ?</h3>
+    <p>Relisez sa frontière, choisissez un outil autorisé par le cabinet puis rejouez l’entrée fictive. Comparez la réponse à la sortie attendue ; vérifiez aussi une information absente et une contradiction. Les exemples ne constituent ni une validation comptable ni un résultat déjà exécuté par une IA.</p>
+    <h3>Puis-je utiliser des données de dossier ?</h3>
+    <p>Non sur cette page : la recherche sert à trouver un geste, pas à saisir des données clients. Les modèles n’envoient aucun message, ne déposent rien et ne choisissent aucune correction comptable ou fiscale.</p>
+    <h3>Faut-il un compte ?</h3>
+    <p>Non. Lecture, copie, export et adaptation sont accessibles sans inscription. Un échec du presse-papiers sélectionne le texte complet pour une copie manuelle.</p>
+    <h3>D’où viennent les modèles ?</h3>
+    <p>Nous avons rédigé ce corpus original pour expliciter le geste, ses entrées, sa validation et son arrêt. La ressource <a href="https://www.experts-comptables.fr/travaux-data-et-ia" rel="noopener noreferrer">CNOEC : travaux Data et IA</a> présente les usages de l’IA en cabinet ; elle ne valide pas ces modèles. Pour la méthode, consultez <a href="/blog/prompt-chatgpt-expert-comptable">écrire un prompt pour un cabinet comptable</a>.</p>
+  </section>
+</div>
+<script>
+  import { filterModels, TRANSFER_KEY, GENERATOR_PATH } from '@/lib/bibliotheque-prompts.mjs';
+  const root = document.querySelector<HTMLElement>('[data-library]');
+  if (root) {
+    const form = root.querySelector<HTMLFormElement>('[data-filters]')!;
+    form.hidden = false;
+    root.querySelectorAll<HTMLElement>('[data-actions]').forEach(el => el.hidden = false);
+    const filter = () => {
+      const ids = new Set(filterModels(Object.fromEntries(new FormData(form))).map(m => m.id));
+      root.querySelectorAll<HTMLElement>('[data-model]').forEach(el => el.hidden = !ids.has(el.dataset.model!));
+      root.querySelector('[data-count]')!.textContent = `${ids.size} modèle${ids.size > 1 ? 's' : ''} disponible${ids.size > 1 ? 's' : ''}.`;
+      root.querySelector<HTMLElement>('[data-empty]')!.hidden = ids.size !== 0;
+    };
+    form.addEventListener('submit', e => e.preventDefault());
+    form.addEventListener('input', filter); form.addEventListener('change', filter);
+    form.addEventListener('reset', (event) => {
+      event.preventDefault();
+      form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('input,select').forEach(field => field.value = '');
+      filter();
+    });
+    root.querySelectorAll<HTMLElement>('[data-model]').forEach(card => {
+      const text = card.querySelector<HTMLTextAreaElement>('[data-text]')!;
+      const status = card.querySelector<HTMLElement>('[data-card-status]')!;
+      const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', { detail: { action, outil: 'bibliotheque-prompts-comptables' } }));
+      card.querySelector('[data-copy]')!.addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(text.value); status.textContent = 'Modèle complet copié.'; emit('copie'); }
+        catch { card.querySelector('details')!.open = true; text.focus(); text.select(); status.textContent = 'Copie indisponible. Le prompt complet est sélectionné : utilisez votre raccourci de copie ou exportez-le.'; }
+      });
+      card.querySelector('[data-export]')!.addEventListener('click', () => {
+        const url = URL.createObjectURL(new Blob([text.value], { type: 'text/plain;charset=utf-8' }));
+        const link = document.createElement('a');
+        link.href = url; link.download = `prompt-${card.dataset.model}.txt`;
+        document.body.append(link);
+        try { link.click(); status.textContent = 'Fichier texte complet préparé.'; emit('export'); }
+        // Laisser le navigateur consommer le Blob avant de libérer sa référence.
+        finally { setTimeout(() => { link.remove(); URL.revokeObjectURL(url); }, 1000); }
+      });
+      card.querySelector('[data-adapt]')!.addEventListener('click', (e) => {
+        e.preventDefault();
+        try { sessionStorage.setItem(TRANSFER_KEY, JSON.stringify({ version: 1, id: card.dataset.model })); emit('reprise'); window.location.assign(GENERATOR_PATH); }
+        catch { status.textContent = 'Stockage temporaire indisponible. Copiez ou exportez ce modèle, puis ouvrez le générateur depuis le lien ci-dessous.'; }
+      });
+    });
+  }
+</script>
+<style>
+  .catalogue,.catalogue section,.model,details,dl { display:grid; gap:16px; min-width:0; }
+  .catalogue h2 { font-size:var(--t-2xl); } .catalogue h3 { font-size:var(--t-xl); }
+  p,dd { color:var(--texte-2); } .meta { font-size:var(--t-sm); color:var(--accent-texte); }
+  .filters { display:grid; gap:16px; margin-block:24px; }
+  .filters > div { display:grid; gap:8px; min-width:0; }
+  label { display:grid; gap:8px; font-weight:600; color:var(--texte-fort); min-width:0; }
+  input,select,textarea { width:100%; min-width:0; min-height:48px; padding:12px; border:1px solid var(--texte-2); border-radius:var(--r-bouton); background:var(--surface-feuille); color:var(--texte-fort); font:inherit; }
+  textarea { resize:vertical; font-weight:400; line-height:1.6; }
+  .cards { display:grid; gap:24px; } .model { padding:24px; border:1px solid var(--ligne); border-radius:var(--r-carte); background:var(--surface-page); }
+  dt { font-weight:600; } dd { margin:4px 0 0; } dl div { border-top:1px solid var(--ligne-douce); padding-top:12px; }
+  summary { cursor:pointer; min-height:44px; padding-block:12px; font-weight:600; color:var(--texte-fort); }
+  details[open] { display:block; } details[open] > :not(summary) { margin-top:16px; }
+  .actions { display:flex; flex-wrap:wrap; gap:12px; } .btn { min-height:44px; white-space:normal; text-align:left; }
+  .suite { border-top:1px solid var(--ligne); padding-top:24px; }
+  [hidden] { display:none !important; }
+  @media(min-width:768px) { .filters { grid-template-columns:repeat(2,minmax(0,1fr)); } .cards { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+</style>

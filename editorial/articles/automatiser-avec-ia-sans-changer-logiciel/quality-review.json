@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-avec-ia-sans-changer-logiciel",
+  "reviewedAt": "2026-10-05",
+  "reviewer": "qa:t_003f2bb5",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 92,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 28,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 24,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 15,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 12,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 13,
+      "max": 15
+    }
+  },
+  "evidence": [
+    "28/30 contenu : couverture 7, lisibilité 6, originalité 4, structure 4, engagement 4, clarté 3. Fiche immédiatement utilisable, cas refusés et limites précis. Densité des quinze champs et des identifiants demande une lecture de travail ; démonstration déterministe transparente mais limitée, non banc IA ou éditeur.",
+    "24/25 SEO : hiérarchie 5, titre 4, cohérence du sujet 4, maillage 3, URL 3, méta 3, source externe 2. Huit liens utiles et une source primaire suffisante pour le seul claim ; entrants des frères encore projetés, seul /blog est déclaré. Aucun rang ni volume crédité, aucun remplissage de sources pour un quota.",
+    "15/15 E-E-A-T : attribution 4, fidélité source 4, confiance/transparence 4, méthode/proof 3. Auteur et bio clairs, contexte CNIL lu, données fictives et limites honnêtes, contact/méthode reliés ; aucune expérience réelle inventée.",
+    "12/15 technique : schema 4, médias 3, tableaux/listes 2, vitesse 0, mobile 1, OG/social 2. Rendu local et neuf médias conformes, zéro erreur ; aucune mesure LCP ou Lighthouse, figures mobiles seulement des aperçus. Le vrai défilement des quatre tables est maintenant démontré ; pas audit global d'accessibilité.",
+    "13/15 préparation aux citations : appuis 4, intention 3, entités 3, structure extractible 3, accessibilité crawler public 0. Contenu initial autonome et sources attribuées ; preview privée noindex, aucune indexation ou citation IA observée.",
+    "Matrice indépendante : union actuelle catalogue/pack/template de 63 noms, 63 lectures/versions conformes, zéro omission/doublon, preuves résolues. Checkpoint auteur : 18 execute, 15 partiel, 26 N/A motivées et 4 a-executer. Ce ne sont pas 63 workflows complets ; les limites partielles ne sont pas transformées en full audit PASS.",
+    "blog-analyze est réalisé par cette revue. seo-bing, seo-drift et seo-sitemap restent à compléter à la publication et au suivi sur des preuves réelles ; le checkpoint auteur reste intact. Les N/A international/local/maps/ecommerce/audio/NotebookLM/programmatic/réutilisation hors blog sont adaptés au mandat national monolingue sans création de nouvelle surface.",
+    "61/61 tests Node contrat/intention/titres/forge/cadres/renderer verts ; npm run check : 0 erreur, 0 warning, 9 hints préexistants. Build Astro de preview et renderer 30 figures verts : 28 historiques + 2 nouveaux, pas 30 historiques + 2 comme écrit dans HANDOFF.md. Le build public natif complet n'est pas déclaré PASS : le candidat est préparé, non scellé, et la base Git doit être actualisée.",
+    "revues.json consommé par materialiser puis validateDossier dans un bac QA explicitement non Git : aucune erreur, gate natif pass:true et total des cinq catégories 92 confirmé. Ce test assure le format exploitable de la revue ; il ne remplace pas le refus de fraîcheur du checkout réel et n'a ni scellé ni modifié le candidat.",
+    "Diff du planificateur : soustraction d'une seule place complements-excel à l'inscription du slug mandaté ; aucun quota ou registre d'autorité changé. Quatre mutations natives en fixture source-only refusent retour de l'ancien angle, famille divergente, ajout IA arbitraire et doublon slug/requête. La fixture ne remplace ni origin/main frais ni le créneau réel.",
+    "La preuve de défilement auteur avait un faux positif : son script part du parent de la table et manque le scroll de la table elle-même. La revue indépendante a commencé par reproduire ce défaut de harnais, puis vérifié le tableau proprement : quatre scrolls 120 px et dernières cellules visibles. Aucun code candidat modifié par QA."
+  ],
+  "reservations": [
+    "Couverture symbolique : cadre ouvert obtenu, pas plateau portant une feuille demandé. Prompt réel et alt fidèle conservés ; pas une preuve fonctionnelle.",
+    "Petits libellés des figures non confortablement lisibles à 390 px ; tableaux HTML lisibles à 14 px et dernières colonnes exposées par vrai défilement. Aucun PASS global clavier/lecteur d'écran ou performance.",
+    "Démo locale séquentielle, aucun modèle, connexion éditeur, envoi ou écriture métier ; aucune protection concurrente, transaction, persistance ou annulation d'action externe éprouvée. Ne pas vendre ce script comme réalisation de production.",
+    "origin/main avancé pendant la revue vers 57279fde sans intégration à HEAD 818320af : le garde réel refuse désormais --check/--slot. Marketing doit intégrer la base fraîche, préserver les ajouts des articles indépendants et régénérer le calendrier avant toute matérialisation ; QA n'a ni modifié les références ni levé le refus.",
+    "Candidat local non committé, non poussé, non intégré et non déployé. Scellement, build public complet, CI, fusion et HTTP/article/blog/RSS/sitemap/llms/neuf médias restent au propriétaire marketing. Le noindex privé n'est pas une preuve d'indexabilité finale.",
+    "Direction Kevin du 05/10 à 12:08 : rattrapage éditorial antérieur, date réelle conservée ; ne pas recompter ces articles comme nouveaux sujets de la semaine. La capacité codée pourra nécessiter réconciliation par marketing, sans antidate ni contournement."
+  ],
+  "verdict": "PASS AVEC RÉSERVES : fond non réglementé et réalisation locale conformes, 92/100, aucun P0 et aucune correction éditoriale bloquante. Réserves de composition/lisibilité et étapes techniques de livraison conservées ; aucune publication finale approuvée comme déjà vérifiée.",
+  "subject": {
+    "slug": "automatiser-avec-ia-sans-changer-logiciel",
+    "articleSha256": "1ad37eb8139c10cc1278ade8acf47cc1783eb878b4d89b32ebd442ccc84c8351",
+    "manifestSha256": "dd8d551a84e69cfe66e8d65500d0b2d1a5b54e27e27d1525c046809263963b0d"
+  }
+}

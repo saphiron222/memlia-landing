@@ -65,13 +65,13 @@ const graph = {
     <OutilZone mentionLocale={outil.mentionLocale} limites={outil.limites} suspension={outil.suspension} large={outil.zoneLarge}>
       {outil.statut !== 'suspendu' && <slot />}
     </OutilZone>
-    <OutilPreuves source={outil.source} mentionLocale={outil.mentionLocale} refus={outil.limites.at(-1) ?? outil.limites[0]} assemblage={outil.categorie === 'ecrire'} />
+    <OutilPreuves source={outil.source} mentionLocale={outil.mentionLocale} refus={outil.limites.at(-1) ?? outil.limites[0]} assemblage={outil.categorie === 'ecrire' || outil.categorie === 'explorer'} />
     <OutilGaranties />
     <OutilFaq mentionLocale={outil.mentionLocale} />
     <OutilSuite outil={outil} />
     <AppelFinal
       id="outil-confier"
-      titre={outil.categorie === 'ecrire' ? 'Une consigne écrite est le départ, pas la tâche entière.' : 'La règle de votre cabinet ne tient pas dans un calculateur.'}
+      titre={outil.categorie === 'ecrire' || outil.categorie === 'explorer' ? 'Une consigne écrite est le départ, pas la tâche entière.' : 'La règle de votre cabinet ne tient pas dans un calculateur.'}
       texte="Nous observons la tâche complète, nous écrivons sa règle et ses limites, puis nous l’automatisons dans vos outils. Votre équipe garde la validation."
       points={[
         'Le geste : ce qui revient et dans quel outil.',

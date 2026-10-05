@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/bibliotheque-prompts-proof/index.html",
+      "sha256": "c6f9d8747b0a374d653ee2b110e3e35f4dbfb1f6049b04a818460a83e183a64f"
+    },
+    {
+      "path": "docs/design/bibliotheque-prompts-proof/styles.css",
+      "sha256": "3983c010ecf1e9162f26ecdf6f8f9d3ffa303602cad3888fbacf1bccbcc259b1"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/bibliotheque-prompts-proof/content-contract.json",
+      "sha256": "ef6bbd197364dd3cc45f1cef06b14e4194ea65d781d25370505de5a5df4edacc"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "f0887b4eb77ab5cae6eab8283d8d3d51bec614a47293603b96932bf86895f142"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/bibliotheque-prompts-proof/index.html#outil-bibliotheque",
+      "target": "public/proofs/v2/31-outil-bibliotheque.webp",
+      "bytes": 49858,
+      "sha256": "e5879a2a46ff7eb2182d325a47e962f137afa38f435bc82a24b525133373207d"
+    },
+    {
+      "source": "docs/design/bibliotheque-prompts-proof/index.html#outil-bibliotheque",
+      "target": "public/proofs/v2/og/31-outil-bibliotheque.webp",
+      "bytes": 32862,
+      "sha256": "992a36bf01548a9c308b4796eefdc7fb0717be6333d9b9ba7131f6284481430d"
+    }
+  ]
+}

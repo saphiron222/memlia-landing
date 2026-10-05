@@ -1,0 +1,38 @@
+{
+  "slug": "automatiser-avec-ia-sans-changer-logiciel",
+  "title": "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils",
+  "tabTitle": "Automatiser IA sans changer de logiciel : méthode | Memlia",
+  "summary": "Une fiche de passage complète pour garder vos outils : entrée, proposition, validation, suivi, refus et reprise testés sur un jeu fictif.",
+  "description": "Automatiser avec l'IA sans changer de logiciel : reliez entrée, proposition, validation et suivi, puis testez les reprises sur un jeu fictif.",
+  "date": "2026-10-05",
+  "topics": ["ia", "automatisation"],
+  "keywords": ["automatiser IA sans changer logiciel", "automatisation IA outils existants cabinet comptable", "prompt ou automatisation cabinet"],
+  "primaryQuery": "automatiser IA sans changer logiciel",
+  "secondaryQueries": ["automatisation IA outils existants cabinet comptable", "prompt ou automatisation cabinet", "automatiser avec l'IA sans changer de logiciel"],
+  "intent": "executer",
+  "fanOut": ["fiche du passage", "reprise et doublons", "proposition et saisie"],
+  "role": {"primary": "direction-associes", "secondary": ["collaborateurs-comptables"], "proofLevel": "indirect", "proofNote": "Brief final §4 du 03/10, recherche Hermes du 05/10 et relevé de formulations ; aucun volume ni performance revendiqué."},
+  "funnel": "MOFU", "cluster": "numerique-it-data", "famille": "ia-generative-agents", "contentType": "searchable", "format": "how-to-guide",
+  "task": "Définir et éprouver un passage de préparation entre les outils existants sans toucher aux saisies humaines.",
+  "rankability": "plausible", "businessRelevance": "directe",
+  "proofRequired": "Huit cas d'état fictifs exécutés localement, sans modèle ni connexion éditeur ; fiche complète et deux registres visuels fidèles au rejeu.",
+  "reviewRule": "Revoir à changement de format, d'accès ou de règle ; lire les requêtes après une fenêtre finale de 28 jours sans inférer de gain causal.",
+  "cta": {"label": "Confier cette tâche", "destination": "/contact", "outcome": "Nous écrivons votre passage, construisons sa préparation dans vos outils et la faisons recetter par votre équipe. Vous gardez les saisies et la décision sur le dossier. Rien à envoyer : la description suffit."},
+  "inlineProofs": [
+    {"id": "passage-registre", "insertBeforeHeading": "La règle écrite", "alt": "Registre fictif F-012 à F-015 : proposition, déjà traité, entrée absente et saisie protégée.", "source": "Reconstitution HTML fictive des quatre premiers résultats du script local rejouer-cas.mjs ; aucune connexion éditeur", "capturedAt": "2026-10-05"},
+    {"id": "passage-reprises", "insertBeforeHeading": "Reprendre et revenir en arrière sans perdre une décision", "alt": "Journal fictif des reprises : même proposition, version changée, état inconnu et accord périmé.", "source": "Reconstitution HTML fictive des quatre derniers résultats de journal-rejeu.json ; règle locale séquentielle sans modèle", "capturedAt": "2026-10-05"}
+  ],
+  "image": {
+    "heroId": "img-art-automatiser-avec-ia-sans-changer-logiciel",
+    "alt": "Deux plans de travail verts reliés par un cadre, sur des supports graphite et un fond crème",
+    "brief": {"sujet": "Le passage d'une proposition entre deux plans de travail.", "composition": "Deux plans de travail reliés par un plateau portant une feuille vierge, bases graphite.", "style": "Diorama 3D isométrique mat, accents translucides, lumière douce du haut gauche.", "palette": "Crème #fcfbf7 dominante ; vert #27b657, vert profond #1c8a41 et graphite #231f20 en touches.", "interdits": "Texte, chiffres, logo, personnage, donnée client, fausse interface, envoi automatique.", "alt": "Deux plans de travail et un plateau de proposition en diorama vert, graphite et crème", "prompt": "Isometric matte 3D diorama, two worktables on LARGE graphite #231f20 bases linked by a tray holding a blank sheet. IMPORTANT: LARGE flat brightly lit SATURATED emerald GREEN #27b657 desktops and tray occupying 25 percent of the image, with separate deep green #1c8a41 feet. Dominant almost white paper cream #fcfbf7 background. Soft upper left light, translucent accents, no text no numbers no logos no people no interface. Exact bright green #27b657, NOT muted olive or dark teal.", "reviewCriteria": ["deux plans et une proposition", "palette mesurée", "aucun texte", "aucune interface", "aucun personnage", "dérivés adaptés"]},
+    "source": {"path": "image-source.png", "generationId": "a9483a37-fbde-4220-827f-07357df9f4d1", "model": "gpt_image_2_5", "provider": "higgsfield", "generatedAt": "2026-10-05", "credits": 2.75}
+  },
+  "sources": [{"id": "cnil-risques", "publisher": "CNIL", "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative", "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative", "level": "tier-1", "official": true, "classificationReason": "Autorité primaire ; explication du risque de sortie plausible, aucune affirmation nouvelle RGPD ou fiscale.", "excerpt": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles"}],
+  "links": {"outgoing": ["/blog/prompt-chatgpt-expert-comptable", "/blog/logiciel-ia-comptabilite", "/blog/utiliser-chatgpt-cabinet-comptable", "/blog/verifier-reponse-ia-comptabilite", "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches", "/methode", "/automatisation-cabinet-comptable", "/glossaire#validation-humaine"], "incoming": ["/blog"]},
+  "cannibalization": {"risk": "faible", "comparedWith": ["/blog/prompt-chatgpt-expert-comptable", "/blog/logiciel-ia-comptabilite", "/methode", "/blog/utiliser-chatgpt-cabinet-comptable"], "decision": "Une fiche de passage et de reprise, pas une consigne, un comparatif ni la présentation de mission. Réconciliation du brief historique 08 sur un seul slug."},
+  "serp": {"requete": "automatiser IA outils existants cabinet comptable sans changer logiciel", "date": "2026-10-05", "acteurs": ["DAF Mag", "GenieFactory", "Bankeo", "Aixter", "Welyb"], "note": "Résultats Hermes, pas Google localisé ni volume. GenieFactory ouvert, format commercial avec compatibilités et gains non repris ; fiche de passage et huit cas de reprise apportent un objet distinct."},
+  "gsc": {"requete": "automatiser IA sans changer logiciel", "date": "2026-10-05", "impressions": 0, "clics": 0, "note": "Page nouvelle, aucun crédit métrique revendiqué. Diagnostic GSC site du 03/10 conservé daté ; pas nouvelle interrogation ni zéro de trafic mesuré."},
+  "claims": [{"unite": "Distinguez le contrôle de passage", "claim": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles", "type": "information", "sourceId": "cnil-risques", "excerpt": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles", "explanation": "Citation exacte du risque, aucune estimation de taux d'erreur ni conseil réglementaire."}],
+  "businessReview": {"reviewerId": "relecteur-metier-ia-memlia", "role": "direction-associes"}
+}

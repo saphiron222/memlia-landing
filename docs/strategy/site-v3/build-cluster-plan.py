@@ -581,6 +581,11 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         # dans sa famille ajoute une place, sans permettre un angle arbitraire.
         attendu = (3 if fid in {pilier['famille'], 'ia-generative-agents'} else 4) + sum(
             BRIEFS_IA_MANDATES.get(e['slug']) == fid for e in angles)
+        # Le brief IA 4 concrétise l'ancien angle 08, sur une seule URL.
+        # Son déplacement retire une place du stock initial, sans nouvel angle de remplacement.
+        if fid == 'complements-excel' and any(
+                e['slug'] == 'automatiser-avec-ia-sans-changer-logiciel' for e in tous):
+            attendu -= 1
         if len(angles) != attendu:
             erreurs.append(f'{fid} : {len(angles)} angles au lieu de {attendu}')
     for slug in publies:

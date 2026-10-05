@@ -13,6 +13,7 @@ const choices = [
   <div class="library">
     <h2>Bibliothèque d’amorces</h2>
     <p>Choisissez une préparation. Chaque amorce remplit les contraintes ; vous pouvez ensuite les adapter.</p>
+    <p>Pour choisir une tâche déjà détaillée, parcourez la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables" target="_blank" rel="noopener noreferrer">bibliothèque de prompts comptables (nouvel onglet)</a> : douze modèles avec leurs entrées et exemples fictifs. Vos choix et votre prompt restent dans cet onglet ; l’adaptation du modèle se fait dans le nouvel onglet, sans remplacer votre travail.</p>
     <div class="actions">{AMORCES.map((seed) => <button class="btn btn-contour" type="button" data-seed={seed.task}>{seed.label}</button>)}</div>
   </div>
   <form class="prompt-form" data-own-telemetry novalidate autocomplete="off">
@@ -51,6 +52,7 @@ const choices = [
   </section>
   <p class="status" data-status aria-live="polite"></p>
   <section class="check" aria-labelledby="prompt-example-title">
+    <p>Vous avez déjà une consigne ? Le <a href="/outils-comptables-gratuits/verificateur-prompt-ia">vérificateur de prompt IA analyse sa structure</a> et explique les points à compléter, sans remplacer votre original.</p>
     <h2 id="prompt-example-title">D’une demande vague à une consigne à relire</h2>
     <p>Avant : « Préparer une demande de pièces ». Après : un brouillon court à partir d’une liste fictive, des questions si une pièce manque, une relecture par le collaborateur et aucun envoi automatique. L’amorce « Demande de pièces » permet de produire cette consigne ; elle ne produit pas de réponse comptable.</p>
     <h3>Comment essayer le prompt ?</h3>
@@ -65,6 +67,7 @@ const choices = [
 </div>
 <script>
   import { AMORCES, assemblePrompt, checkPrompt } from '@/lib/prompt-comptable.mjs';
+  import { parseTransfer, TRANSFER_KEY, modelPrompt } from '@/lib/bibliotheque-prompts.mjs';
   const root = document.querySelector<HTMLElement>('[data-prompt-tool]');
   if (root) {
     const form = root.querySelector<HTMLFormElement>('form')!;
@@ -77,6 +80,7 @@ const choices = [
     let generated = '';
     let stale = false;
     let generations = 0;
+    let transferredModel: ReturnType<typeof parseTransfer> = null;
     const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
     const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', { detail: { action, outil: 'generateur-prompt-expert-comptable' } }));
     const clearError = () => {
@@ -96,10 +100,34 @@ const choices = [
       copy.disabled = download.disabled = stale || !result.ok;
       return !stale && result.ok;
     };
-    const hasContent = () => editor.value.length > 0 || Boolean(field('description').value);
+    const hasContent = () => editor.value.length > 0
+      || ['task', 'input', 'format', 'validator', 'stop', 'description'].some(name => Boolean(field(name).value))
+      || (field('confirmed') as HTMLInputElement).checked;
+    const resumeModel = () => {
+      let model: ReturnType<typeof parseTransfer> = null;
+      try {
+        const raw = sessionStorage.getItem(TRANSFER_KEY);
+        if (!raw) return;
+        model = parseTransfer(raw);
+        sessionStorage.removeItem(TRANSFER_KEY);
+      } catch { status.textContent = 'Reprise indisponible. Choisissez une amorce ou copiez le modèle depuis la bibliothèque.'; return; }
+      if (!model) { status.textContent = 'Amorce inconnue ou périmée. Vos choix restent inchangés.'; return; }
+      if (hasContent() && !window.confirm('Charger le modèle de la bibliothèque dans les choix ? Votre prompt édité sera conservé.')) {
+        status.textContent = 'Reprise annulée. Vos choix et votre texte sont conservés.'; return;
+      }
+      transferredModel = model;
+      for (const name of ['task', 'input', 'format', 'validator', 'stop', 'description'] as const) field(name).value = model.seed[name];
+      (field('confirmed') as HTMLInputElement).checked = false;
+      form.dispatchEvent(new Event('input', { bubbles: true }));
+      status.textContent = `Modèle « ${model.title} » chargé. Confirmez puis assemblez ; le prompt existant reste inchangé.`;
+      field('description').focus();
+    };
+    window.addEventListener('pageshow', resumeModel);
+    resumeModel();
     root.querySelectorAll<HTMLButtonElement>('[data-seed]').forEach((button) => button.addEventListener('click', () => {
       if (hasContent() && !window.confirm('Remplacer les choix du formulaire par cette amorce ? Votre prompt édité sera conservé.')) return;
       const seed = AMORCES.find((entry) => entry.task === button.dataset.seed)!;
+      transferredModel = null;
       for (const name of ['task', 'input', 'format', 'validator', 'stop', 'description'] as const) field(name).value = seed[name];
       (field('confirmed') as HTMLInputElement).checked = false;
       clearError();
@@ -123,7 +151,8 @@ const choices = [
         const input = field(result.field); input.setAttribute('aria-invalid', 'true'); input.setAttribute('aria-describedby', 'prompt-error prompt-privacy'); input.focus(); return;
       }
       if (editor.value && editor.value !== generated && !window.confirm('Remplacer votre prompt édité par une nouvelle génération ? Copiez-le auparavant si vous souhaitez le garder.')) { status.textContent = 'Génération annulée. Votre texte est conservé.'; emit('annulation'); return; }
-      editor.value = generated = result.text;
+      const keepsModel = transferredModel && Object.entries(transferredModel.seed).every(([name, value]) => field(name).value === value);
+      editor.value = generated = keepsModel ? modelPrompt(transferredModel!) : result.text;
       stale = false;
       editor.scrollTop = 0;
       root.querySelector('[data-boundary]')!.replaceChildren(...result.boundary.map((row) => {
@@ -133,6 +162,7 @@ const choices = [
         const li = document.createElement('li'); li.textContent = `${row.label} : ${row.input} Attendu : ${row.expected}`; return li;
       }));
       output.hidden = false; control(); status.textContent = 'Prompt assemblé localement. Aucun appel d’IA effectué.';
+      if (transferredModel) status.textContent = keepsModel ? 'Modèle complet de la bibliothèque repris. Aucun appel d’IA effectué.' : 'Contraintes du modèle modifiées : blocs génériques assemblés. Relisez et adaptez le texte ; les détails de la fiche ne sont pas repris.';
       emit('reussite');
       if (++generations > 1) emit('recalcul');
       root.querySelector<HTMLElement>('#prompt-result-title')!.focus();
@@ -140,7 +170,7 @@ const choices = [
     editor.addEventListener('input', () => { control(); status.textContent = 'Édition conservée ; contrôle structurel actualisé.'; });
     root.querySelector('[data-clear]')!.addEventListener('click', () => {
       if (hasContent() && !window.confirm('Effacer les choix et le prompt dans ce navigateur ?')) return;
-      form.reset(); editor.value = generated = ''; stale = false; output.hidden = true; clearError(); status.textContent = 'Choix et prompt effacés.'; field('task').focus();
+      form.reset(); editor.value = generated = ''; transferredModel = null; stale = false; output.hidden = true; clearError(); status.textContent = 'Choix et prompt effacés.'; field('task').focus();
       emit('effacer');
     });
     copy.addEventListener('click', async () => {
@@ -151,8 +181,12 @@ const choices = [
     download.addEventListener('click', () => {
       if (!control()) return;
       const url = URL.createObjectURL(new Blob([editor.value], { type: 'text/plain;charset=utf-8' }));
-      try { const link = document.createElement('a'); link.href = url; link.download = 'prompt-expert-comptable.txt'; link.click(); emit('export'); }
-      finally { setTimeout(() => URL.revokeObjectURL(url), 0); }
+      const link = document.createElement('a');
+      link.href = url; link.download = 'prompt-expert-comptable.txt';
+      document.body.append(link);
+      try { link.click(); emit('export'); }
+      // Même durée que la bibliothèque : laisser consommer le Blob avant nettoyage.
+      finally { setTimeout(() => { link.remove(); URL.revokeObjectURL(url); }, 1000); }
     });
   }
 </script>

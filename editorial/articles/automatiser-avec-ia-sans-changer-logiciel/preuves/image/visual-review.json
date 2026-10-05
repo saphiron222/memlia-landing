@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-avec-ia-sans-changer-logiciel",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "1ad37eb8139c10cc1278ade8acf47cc1783eb878b4d89b32ebd442ccc84c8351",
+  "manifestSha256": "dd8d551a84e69cfe66e8d65500d0b2d1a5b54e27e27d1525c046809263963b0d",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact automatiser-avec-ia-sans-changer-logiciel."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "touche"
+      },
+      {
+        "hex": "#231f20",
+        "role": "touche"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.6755034722222222,
+      "#27b657": 0.1344965277777778,
+      "#1c8a41": 0.016822916666666667,
+      "#231f20": 0.09100694444444445
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Six composantes et prompt réel présents dans recette.json et prompt.json. Master et dérivé 1600 inspectés : deux plans verts sur supports graphite reliés par un cadre ouvert. Le plateau portant une feuille demandé n'est pas obtenu ; réserve de composition conservée, sans prétendre que la couverture montre une proposition ou une fonction testée. Cette variation symbolique n'empêche pas la compréhension du sujet."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Aucun texte, chiffre, logo, personne, interface ou signe d'envoi automatique dans le master. Palette re-mesurée sur le master par l'instrument natif : crème 0.6755034722222222, vert 0.1344965277777778, vert profond 0.016822916666666667, graphite 0.09100694444444445 ; valeurs concordantes avec visual-review.json et seuils du brief conformes."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Trace Higgsfield completed a9483a37-fbde-4220-827f-07357df9f4d1, prompt et source réels conservés. Deux résultats de génération distincts et coût déclaré 2.75 chacun, pas de génération par QA. Les figures sont des reconstitutions HTML fictives et nommées telles dans l'écran et la recette ; aucune capture de logiciel ou d'une session IA réelle revendiquée."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "passage-registre reprend les quatre premiers cas : F-012 proposition, F-013 déjà traité, F-014 liste absente, F-015 saisie protégée. passage-reprises reprend réutilisation, version changée, état inconnu et accord périmé ; saisie conservée et connexion Aucune concordent avec le rejeu.",
+        "Grille RECETTE.md : cinq réponses oui pour chacune des figures, comparées à crm-registre.webp. Fenêtres, données fictives concrètes, statuts et absence de marque, slogan, avertissement ou schéma commenté conformes ; l'article porte le détail textuel indépendamment des images."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Dimensions et formats décodés : master 1920x1080, OG 1200x630, dérivés 768/1200/1600 AVIF et WebP. Figures 1600x900, 29154 et 30876 octets ; aucune variante mobile. Renderer natif --check rejoué sur 30 figures ; le diff ajoute uniquement les deux nouveaux cadres et conserve les entrées historiques du manifeste.",
+        "Figures servies identiques aux deux largeurs, 356 px de large sur téléphone : aperçus, petits libellés non confortablement lisibles. Les données essentielles restent dans les paragraphes et tableaux HTML, avec dernières colonnes réellement vérifiées ; ni portrait artificiel ni zoom prétendu."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alt public de couverture fidèle au cadre ouvert obtenu, non à la feuille absente du prompt. Alts des deux figures décrivent exactement les dossiers, états et reprises fictifs, sans attribuer une détection à l'IA ; les mêmes alternatives sont servies aux deux largeurs."
+      ]
+    }
+  ]
+}

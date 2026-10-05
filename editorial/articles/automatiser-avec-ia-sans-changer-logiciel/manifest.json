@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "slug": "automatiser-avec-ia-sans-changer-logiciel",
+  "action": "creation",
+  "editorialStatus": "publie",
+  "title": "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils",
+  "tabTitle": "Automatiser IA sans changer de logiciel : méthode | Memlia",
+  "summary": "Une fiche de passage complète pour garder vos outils : entrée, proposition, validation, suivi, refus et reprise testés sur un jeu fictif.",
+  "description": "Automatiser avec l'IA sans changer de logiciel : reliez entrée, proposition, validation et suivi, puis testez les reprises sur un jeu fictif.",
+  "publicationDate": "2026-10-05",
+  "updatedAt": null,
+  "topics": [
+    "ia",
+    "automatisation"
+  ],
+  "keywords": [
+    "automatiser IA sans changer logiciel",
+    "automatisation IA outils existants cabinet comptable",
+    "prompt ou automatisation cabinet"
+  ],
+  "primaryQuery": "automatiser IA sans changer logiciel",
+  "secondaryQueries": [
+    "automatisation IA outils existants cabinet comptable",
+    "prompt ou automatisation cabinet",
+    "automatiser avec l'IA sans changer de logiciel"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "fiche du passage",
+    "reprise et doublons",
+    "proposition et saisie"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "collaborateurs-comptables"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-10-05"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "qa:t_003f2bb5",
+    "role": "direction-associes",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "numerique-it-data",
+  "famille": "ia-generative-agents",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Définir et éprouver un passage de préparation entre les outils existants sans toucher aux saisies humaines.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Huit cas d'état fictifs exécutés localement, sans modèle ni connexion éditeur ; fiche complète et deux registres visuels fidèles au rejeu.",
+  "sourcesVerifiedAt": "2026-10-05",
+  "sources": [
+    {
+      "id": "cnil-risques",
+      "publisher": "CNIL",
+      "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+      "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "checkedAt": "2026-10-05",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "classificationReason": "Autorité primaire ; explication du risque de sortie plausible, aucune affirmation nouvelle RGPD ou fiscale.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/cnil-risques.classification.json",
+      "verificationEvidence": "preuves/sources/cnil-risques.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "qa",
+  "reviewRule": "Revoir à changement de format, d'accès ou de règle ; lire les requêtes après une fenêtre finale de 28 jours sans inférer de gain causal.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons votre passage, construisons sa préparation dans vos outils et la faisons recetter par votre équipe. Vous gardez les saisies et la décision sur le dossier. Rien à envoyer : la description suffit."
+  },
+  "image": {
+    "heroId": "img-art-automatiser-avec-ia-sans-changer-logiciel",
+    "alt": "Deux plans de travail verts reliés par un cadre, sur des supports graphite et un fond crème",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-10-05"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-10-05"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/prompt-chatgpt-expert-comptable",
+      "/blog/logiciel-ia-comptabilite",
+      "/blog/utiliser-chatgpt-cabinet-comptable",
+      "/blog/verifier-reponse-ia-comptabilite",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/methode",
+      "/automatisation-cabinet-comptable",
+      "/glossaire#validation-humaine"
+    ],
+    "incoming": [
+      "/blog"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/prompt-chatgpt-expert-comptable",
+      "/blog/logiciel-ia-comptabilite",
+      "/methode",
+      "/blog/utiliser-chatgpt-cabinet-comptable"
+    ],
+    "decision": "Une fiche de passage et de reprise, pas une consigne, un comparatif ni la présentation de mission. Réconciliation du brief historique 08 sur un seul slug."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  },
+  "publishedAt": "2026-10-05",
+  "publicationEvidence": "preuves/publication.json"
+}

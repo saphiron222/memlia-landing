@@ -374,11 +374,35 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByRole('button', { name: 'Calculer le plan' }).click();
       await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
 
+    } else if (outil.slug === 'generateur-prompt-ia-gratuit') {
+      await page.getByRole('button', { name: 'Préparer une réunion', exact: true }).click();
+      await page.getByLabel(/Je confirme une description/).check();
+      await page.getByRole('button', { name: 'Assembler le prompt' }).click();
+      await expect(page.locator('[data-editor]')).toHaveValue(/action \/ responsable \/ délai/);
+      await page.getByLabel('Format de la future réponse').selectOption('json');
+      await expect(page.locator('[data-preview]')).toContainText('"additionalProperties": false');
+      const downloading = page.waitForEvent('download');
+      await page.getByRole('button', { name: 'Exporter en JSON (.json)', exact: true }).click();
+      await downloading;
+    } else if (outil.slug === 'verificateur-prompt-ia') {
+      await page.getByRole('button', { name: 'Charger l’exemple fictif', exact: true }).click();
+      await page.getByLabel(/Je confirme que la consigne/).check();
+      await page.getByRole('button', { name: 'Analyser la structure', exact: true }).click();
+      await expect(page.locator('[data-findings]')).toContainText('Arrêt : manquant');
     } else if (outil.slug === 'generateur-prompt-expert-comptable') {
       await page.getByRole('button', { name: 'Demande de pièces', exact: true }).click();
       await page.getByLabel(/Je confirme que cette description/).check();
       await page.getByRole('button', { name: 'Assembler le prompt' }).click();
       await expect(page.locator('[data-output]')).toBeVisible();
+
+    } else if (outil.slug === 'bibliotheque-prompts-comptables') {
+      await page.getByLabel('Pôle', { exact: true }).selectOption('relation-client');
+      await page.getByLabel('Format attendu', { exact: true }).selectOption('mail');
+      await expect(page.locator('[data-model]:visible')).toHaveCount(3);
+      await page.getByLabel('Rechercher un modèle').fill('relance');
+      await expect(page.locator('[data-model]:visible')).toHaveCount(1);
+      await page.getByRole('button', { name: 'Effacer les filtres' }).click();
+      await expect(page.locator('[data-model]:visible')).toHaveCount(12);
 
     } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
       await page.locator('[data-example]').click();
