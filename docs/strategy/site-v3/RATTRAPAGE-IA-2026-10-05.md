@@ -40,6 +40,10 @@ Résultat de `preparer` : `erreurs: []`. Cinq mutations natives refusées : ajou
 
 ## Reprise après intégration technique
 
+### Fixture portable sur Cloudflare
+
+Le runner Cloudflare ne définit pas nécessairement `TMPDIR`. La fixture des refus du lot utilisait cette variable directement dans `join`, ce qui arrêtait le test avec `ERR_INVALID_ARG_TYPE` avant les assertions métier. Elle conserve désormais `TMPDIR` lorsqu'il est renseigné, sinon utilise `tmpdir()` de `node:os`, comme les fixtures voisines. `blog-ia-catchup-portability.test.mjs` rejoue les trois tests natifs dans des processus isolés avec et sans cette variable ; les refus de règle absente ou élargie restent inchangés. Cette réparation de test ne modifie ni le mandat ni le contenu éditorial.
+
 ### Oracle de stock indépendant
 
 `tests/proof/test_mandated_blog_inventory.py` vérifie le stock de briefs avec des dates synthétiques futures, pas les réservations du mandat W40. Il construit d'abord le plan réel avec la garde `origin/main` et contrôle les dates/statuts de toutes les publications intégrées. Dans sa seule fixture, il remplace ensuite le lot IA par des réservations futures espacées d'une semaine, tout en conservant ses entrées, familles, liens et déplacements d'angle. Le mandat est désactivé seulement après cette séparation. Ainsi une vraie réservation saturée du candidat ne peut plus être confondue avec un ajout futur ; la publication ultérieure du quatrième sujet ne réintroduit pas trois archives W40 dans un calendrier ordinaire synthétique.
