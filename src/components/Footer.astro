@@ -6,7 +6,9 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
 import { INTEGRATIONS_HUB_PATH, INTEGRATIONS_INDEXABLES, integrationPath } from '@/data/integrations';
 
-/** Pied de page (spec §4.14) : colonnes générées, ligne © en --texte-2, emblème « M » en filigrane. */
+/** Pied de page (spec §4.14) : colonnes générées, ligne © en --texte-2, emblème « M » en filigrane.
+ *  Les colonnes grandissent avec chaque outil et chaque guide publiés (tous doivent rester liés ici) :
+ *  la mise en page absorbe cette croissance (outils sur plusieurs colonnes, rubriques repliables sur mobile). */
 interface Props {
   blogActif: boolean;
   rubriques: Array<{ libelle: string; chemin: string }>;
@@ -29,36 +31,38 @@ const integrations = INTEGRATIONS_INDEXABLES.map((integration) => ({
   href: integrationPath(integration),
 }));
 
-const colonnes = [
-  {
-    titre: 'Comprendre',
-    liens: [
-      ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
-      ...rubriques.map((rubrique) => ({ libelle: rubrique.libelle, href: rubrique.chemin })),
-      { libelle: 'Glossaire', href: '/glossaire' },
-      { libelle: 'Guides par environnement', href: INTEGRATIONS_HUB_PATH },
-      { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
-    ],
-  },
-  {
-    titre: 'Environnements',
-    liens: integrations,
-  },
-  {
-    titre: 'Outils gratuits',
-    liens: [
-      { libelle: 'Tous les outils comptables gratuits', href: OUTILS_HUB_PATH },
-      ...outils,
-    ],
-  },
-  {
-    titre: 'L’entreprise',
-    liens: [
-      { libelle: 'À propos', href: PAGES_V2.apropos.chemin },
-      { libelle: 'Nos garanties', href: PAGES_V2.garanties.chemin },
-      { libelle: 'Confier une première tâche', href: PAGES_V2.contact.chemin },
-    ],
-  },
+const automatise = {
+  titre: 'Ce qu’on automatise',
+  liens: [{ libelle: 'Automatisation pour cabinet comptable', href: PAGES_V2.service.chemin }, ...services],
+};
+const comprendre = {
+  titre: 'Comprendre',
+  liens: [
+    ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
+    ...rubriques.map((rubrique) => ({ libelle: rubrique.libelle, href: rubrique.chemin })),
+    { libelle: 'Glossaire', href: '/glossaire' },
+    { libelle: 'Guides par environnement', href: INTEGRATIONS_HUB_PATH },
+    { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
+  ],
+};
+const entreprise = {
+  titre: 'L’entreprise',
+  liens: [
+    { libelle: 'À propos', href: PAGES_V2.apropos.chemin },
+    { libelle: 'Nos garanties', href: PAGES_V2.garanties.chemin },
+    { libelle: 'Confier une première tâche', href: PAGES_V2.contact.chemin },
+  ],
+};
+const environnements = { titre: 'Environnements', liens: integrations };
+const outilsGratuits = {
+  titre: 'Outils gratuits',
+  liens: [{ libelle: 'Tous les outils comptables gratuits', href: OUTILS_HUB_PATH }, ...outils],
+};
+const blocs = [
+  { groupes: [automatise], classe: '' },
+  { groupes: [comprendre, entreprise], classe: '' },
+  { groupes: [environnements], classe: '' },
+  { groupes: [outilsGratuits], classe: 'pied-large' },
 ];
 ---
 
@@ -70,23 +74,18 @@ const colonnes = [
     </svg>
 
     <div class="pied-colonnes">
-      <div class="pied-col">
-        <h2 class="pied-titre">Ce qu’on automatise</h2>
-        <ul class="pied-liste">
-          <li><a class="pied-lien" href={PAGES_V2.service.chemin}>Automatisation pour cabinet comptable</a></li>
-          {services.map((service) => (
-            <li><a class="pied-lien" href={service.href}>{service.libelle}</a></li>
+      {blocs.map((bloc) => (
+        <div class:list={['pied-bloc', bloc.classe]}>
+          {bloc.groupes.map((c) => (
+            <div class="pied-col" data-pied-col>
+              <h2 class="pied-titre">{c.titre}</h2>
+              <ul class="pied-liste">
+                {c.liens.map((l) => (
+                  <li><a class="pied-lien" href={l.href}>{l.libelle}</a></li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
-      </div>
-      {colonnes.map((c) => (
-        <div class="pied-col">
-          <h2 class="pied-titre">{c.titre}</h2>
-          <ul class="pied-liste">
-            {c.liens.map((l) => (
-              <li><a class="pied-lien" href={l.href}>{l.libelle}</a></li>
-            ))}
-          </ul>
         </div>
       ))}
     </div>
@@ -105,10 +104,53 @@ const colonnes = [
   </div>
 </footer>
 
+<script>
+  /* Rubriques repliables sous 48rem (motif accordéon WAI-ARIA). Le HTML servi reste un titre suivi
+     de sa liste : sans JavaScript, tout est affiché. Le bouton n'existe que sur mobile ; au-delà,
+     le titre redevient un simple texte (un bouton inerte serait encore annoncé comme bouton).
+     La requête est l'exact complément du `min-width: 48rem` du CSS : aucun écart au zoom. */
+  const MOBILE = window.matchMedia('not all and (min-width: 48rem)');
+  type Rubrique = { titre: Element; texte: string; bouton: HTMLButtonElement; colonne: HTMLElement };
+  const rubriques: Rubrique[] = [];
+  document.querySelectorAll<HTMLElement>('[data-pied-col]').forEach((colonne, index) => {
+    const titre = colonne.querySelector('.pied-titre');
+    const liste = colonne.querySelector<HTMLElement>('.pied-liste');
+    if (!titre || !liste) return;
+    liste.id ||= `pied-liste-${index}`;
+    const texte = titre.textContent ?? '';
+    const bouton = document.createElement('button');
+    bouton.type = 'button';
+    bouton.className = 'pied-bascule';
+    bouton.setAttribute('aria-controls', liste.id);
+    bouton.textContent = texte;
+    bouton.addEventListener('click', () => {
+      const ouvert = bouton.getAttribute('aria-expanded') === 'true';
+      bouton.setAttribute('aria-expanded', String(!ouvert));
+      colonne.classList.toggle('est-replie', ouvert);
+    });
+    rubriques.push({ titre, texte, bouton, colonne });
+  });
+
+  const appliquer = () => {
+    for (const { titre, texte, bouton, colonne } of rubriques) {
+      if (MOBILE.matches) {
+        bouton.setAttribute('aria-expanded', 'false');
+        titre.replaceChildren(bouton);
+        colonne.classList.add('est-replie');
+      } else {
+        titre.textContent = texte;
+        colonne.classList.remove('est-replie');
+      }
+    }
+  };
+  appliquer();
+  MOBILE.addEventListener('change', appliquer);
+</script>
+
 <style>
   .pied {
     position: relative;
-    padding: 96px 0 56px;
+    padding: 40px 0 32px;
     background: var(--surface-feuille);
     border-top: 1px solid var(--ligne-douce);
     overflow: hidden;
@@ -119,11 +161,16 @@ const colonnes = [
   .pied-embleme {
     display: none;
   }
+  /* Mobile : une rubrique par ligne, séparées par un filet ; la liste se replie (script). */
   .pied-colonnes {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px 32px;
     position: relative;
+  }
+  .pied-bloc {
+    display: contents;
+  }
+  .pied-col {
+    border-bottom: 1px solid var(--ligne-douce);
   }
   .pied-titre {
     font-family: var(--police-corps), 'Hanken Fallback';
@@ -131,16 +178,46 @@ const colonnes = [
     font-weight: 600;
     letter-spacing: 0;
     color: var(--texte-fort);
+    padding: 12px 0;
+  }
+  .pied-col :global(.pied-bascule) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 44px;
+    margin: -12px 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  .pied-col :global(.pied-bascule)::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    margin-right: 4px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform var(--duree-1);
+  }
+  .pied-col :global(.pied-bascule[aria-expanded='true'])::after {
+    transform: translateY(2px) rotate(225deg);
   }
   .pied-liste {
     display: grid;
-    gap: 2px;
-    margin-top: 12px;
+    padding-bottom: 12px;
+  }
+  .est-replie .pied-liste {
+    display: none;
   }
   .pied-lien {
-    /* Mesuré à 18 px de haut et 14 px de texte sur mobile : lisible de justesse, et
-       pointable seulement grâce à l'espacement. Le pas du bandeau ne revient qu'en
-       grand écran, où le pointeur est précis. */
+    /* Sur mobile, 40 px de haut pour rester pointable au doigt. Le pas serré ne revient
+       qu'en grand écran, où le pointeur est précis. */
     display: inline-flex;
     align-items: center;
     min-height: 40px;
@@ -148,26 +225,23 @@ const colonnes = [
     color: var(--texte-2);
     transition: color var(--duree-1);
   }
-  .pied-lien-chip {
-    display: inline-flex;
-  }
   .pied-bas {
     position: relative;
     display: grid;
-    gap: 24px;
-    padding-top: 96px;
+    gap: 12px;
+    padding-top: 28px;
   }
   .pied-marque {
     display: grid;
-    gap: 10px;
+    gap: 8px;
   }
   .pied-tagline {
     font-family: var(--police-display), 'Fraunces Fallback';
     font-style: italic;
     font-weight: 400;
-    font-size: var(--t-lg);
+    font-size: 1.0625rem;
     color: var(--texte);
-    max-width: 32ch;
+    max-width: 40ch;
   }
   .pied-legal {
     display: flex;
@@ -181,8 +255,6 @@ const colonnes = [
     display: inline-flex;
     align-items: center;
     min-height: 40px;
-  }
-  .pied-legal a {
     color: var(--texte-2);
   }
   @media (hover: hover) {
@@ -191,35 +263,75 @@ const colonnes = [
       color: var(--texte-fort);
     }
   }
+  /* Tablette et plus : colonnes ouvertes, titres en texte simple (le script retire le bouton). */
   @media (min-width: 48rem) {
+    .pied {
+      padding: 64px 0 40px;
+    }
+    .pied-colonnes {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 40px 32px;
+    }
+    .pied-bloc {
+      display: grid;
+      align-content: start;
+      gap: 28px;
+    }
+    .pied-large {
+      grid-column: 1 / -1;
+    }
+    .pied-col {
+      border-bottom: 0;
+    }
+    .pied-titre {
+      padding: 0;
+    }
+    .pied-liste {
+      margin-top: 10px;
+      padding-bottom: 0;
+    }
+    .pied-large .pied-liste {
+      display: block;
+      columns: 3;
+      column-gap: 32px;
+    }
+    .pied-large .pied-liste li {
+      break-inside: avoid;
+    }
     .pied-bas {
       grid-template-columns: 1fr auto;
       align-items: end;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--ligne-douce);
     }
   }
   @media (min-width: 64rem) {
+    .pied {
+      padding: 72px 0 40px;
+    }
+    .pied-colonnes {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 32px;
+    }
+    .pied-large {
+      grid-column: span 2;
+    }
+    .pied-large .pied-liste {
+      columns: 2;
+    }
     .pied-lien,
     .pied-legal {
       font-size: var(--t-sm);
     }
     .pied-lien {
+      display: inline-block;
       min-height: 0;
+      padding: 4px 0;
+      line-height: 1.4;
     }
     .pied-legal a {
       min-height: 0;
-    }
-    .pied-liste {
-      gap: 10px;
-    }
-    .pied {
-      padding: 144px 0 56px;
-    }
-    .pied-colonnes {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 48px 32px;
-    }
-    .pied-bas {
-      padding-top: 128px;
     }
     .pied-legal {
       gap: 32px;
@@ -227,10 +339,10 @@ const colonnes = [
     .pied-embleme {
       display: block;
       position: absolute;
-      left: 48%;
-      top: -40px;
-      width: 640px;
-      height: 640px;
+      left: 50%;
+      top: -24px;
+      width: 440px;
+      height: 440px;
       transform: translateX(-50%);
       fill: var(--surface-hover);
       pointer-events: none;
