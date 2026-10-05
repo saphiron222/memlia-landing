@@ -1,0 +1,60 @@
+{
+  "slug": "verifier-reponse-ia-comptabilite",
+  "title": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+  "tabTitle": "Vérifier réponse IA comptabilité : checklist | Memlia",
+  "summary": "Une checklist complète pour relier chaque affirmation à sa source et à son périmètre, corriger les ajouts et garder la trace de la décision.",
+  "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+  "date": "2026-10-05",
+  "topics": ["ia", "automatisation"],
+  "keywords": ["vérifier réponse IA comptabilité", "hallucinations ChatGPT comptabilité", "vérifier sources ChatGPT"],
+  "primaryQuery": "vérifier réponse IA comptabilité",
+  "secondaryQueries": ["hallucinations ChatGPT comptabilité", "vérifier sources ChatGPT", "vérifier une réponse IA en comptabilité"],
+  "intent": "executer",
+  "fanOut": ["affirmation et source", "périmètre et réserves", "quatre décisions"],
+  "role": {"primary": "collaborateurs-comptables", "secondary": ["direction-associes"], "proofLevel": "indirect", "proofNote": "Brief final §2, recherche publique et autocomplétion du 04/10 ; aucune performance ni volume certifié."},
+  "funnel": "MOFU",
+  "cluster": "numerique-it-data",
+  "famille": "ia-generative-agents",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Vérifier chaque affirmation d'un brouillon IA avant de l'utiliser dans un dossier de travail.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Cinq qualifications humaines fictives routées réellement sans modèle ; aucun détecteur sémantique revendiqué ; registre et fiche de contrôle.",
+  "reviewRule": "Réviser à évolution des sources, du contrôle décrit ou de sa destination ; examiner les requêtes après accumulation de données finales.",
+  "cta": {"label": "Confier cette tâche", "destination": "/contact", "outcome": "Nous écrivons la règle de votre contrôle, automatisons sa mécanique dans vos outils et la faisons recetter par votre équipe. Vous gardez la lecture du fond et la décision sur le dossier. Rien à envoyer : la description suffit."},
+  "inlineProofs": [
+    {"id": "verification-registre", "insertBeforeHeading": "Garder la trace sans confondre brouillon et saisie", "alt": "Registre fictif V-01 à V-05 : affirmation, source, qualification préalable et décision de routage.", "source": "Reconstitution HTML fictive des cinq résultats de journal-rejeu.json ; routage local de qualifications humaines", "capturedAt": "2026-10-04"},
+    {"id": "verification-fiche-reserve", "insertBeforeHeading": "La règle écrite", "alt": "Fiche fictive V-04 : réunion confirmée comparée à la réserve de NOTE-A-v1, décision CORRIGER.", "source": "Reconstitution HTML fictive de NOTE-A-v1 et V-04 ; comparaison humaine, pas détection automatique", "capturedAt": "2026-10-04"}
+  ],
+  "image": {
+    "heroId": "img-art-verifier-reponse-ia-comptabilite",
+    "alt": "Une feuille vierge et trois points de vérification dans un diorama vert, graphite et crème",
+    "brief": {
+      "sujet": "Vérifier une feuille avant son utilisation.",
+      "composition": "Une feuille vierge verticale devant trois blocs de contrôle sur un socle graphite.",
+      "style": "Diorama 3D isométrique mat, lumière douce du haut gauche, fond crème papier.",
+      "palette": "Crème #fcfbf7 dominante ; vert #27b657, vert profond #1c8a41 et graphite #231f20 en touches.",
+      "interdits": "Texte, chiffres, logo, personnage, donnée client, fausse interface, envoi automatique.",
+      "alt": "Une feuille vierge et trois points de vérification dans un diorama vert, graphite et crème",
+      "prompt": "Isometric matte 3D paper cream #fcfbf7 background, one blank cream sheet standing in front of three small green #27b657 and deep green #1c8a41 checkpoint blocks, on a LARGE graphite #231f20 base, soft upper left light, translucent accents, no text no numbers no logos no people no interface",
+      "reviewCriteria": ["palette mesurée", "texte absent", "aucun personnage", "aucune interface", "une feuille et trois blocs", "dérivés adaptés"]
+    },
+    "source": {"path": "image-source.png", "generationId": "d04ce7ff-c463-4eca-83bc-08a626ffe5ff", "model": "gpt_image_2_5", "provider": "higgsfield", "generatedAt": "2026-10-04", "credits": 2.75}
+  },
+  "sources": [
+    {"id": "cnil-hallucinations", "publisher": "CNIL", "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative", "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative", "level": "tier-1", "official": true, "classificationReason": "Autorité de protection des données ; FAQ, explication des risques, pas nouveau conseil réglementaire.", "excerpt": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles"}
+  ],
+  "links": {
+    "outgoing": ["/blog/prompt-chatgpt-expert-comptable", "/blog/logiciel-ia-comptabilite", "/blog/utiliser-chatgpt-cabinet-comptable", "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches", "/methode", "/garanties", "/glossaire#validation-humaine"],
+    "incoming": ["/blog"]
+  },
+  "cannibalization": {"risk": "faible", "comparedWith": ["/blog/prompt-chatgpt-expert-comptable", "/blog/logiciel-ia-comptabilite", "/blog/utiliser-chatgpt-cabinet-comptable"], "decision": "Contrôle de sortie et checklist, distincts de la consigne, du choix fournisseur et de la sélection d'usage."},
+  "serp": {"requete": "vérifier réponse IA comptabilité", "date": "2026-10-04", "acteurs": ["OpenAI Help", "Université de l’Alberta", "GPTZero", "CNIL", "Google Cloud"], "note": "Recherche Hermes large retourne surtout anglais ; reprise francophone et sources primaires. Pas Google localisé ni volume ; diagnostic parent RFC/confiance conservé daté."},
+  "gsc": {"requete": "vérifier réponse IA comptabilité", "date": "2026-10-04", "impressions": 0, "clics": 0, "note": "Page nouvelle non publiée, aucune performance attribuable. GSC site parent du 03/10 conservé, pas nouvelle interrogation."},
+  "claims": [
+    {"unite": "Une hallucination", "claim": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles", "type": "information", "sourceId": "cnil-hallucinations", "excerpt": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles", "explanation": "Explication de risque de la FAQ, sans taux d’erreur ni affirmation fiscale."},
+    {"unite": "La FAQ de la CNIL", "claim": "Une confiance excessive dans les résultats produits par un système d'IA générative sans une vérification appropriée peut donc conduire à des décisions erronées ou à des conclusions incorrectes.", "type": "information", "sourceId": "cnil-hallucinations", "excerpt": "Une confiance excessive dans les résultats produits par un système d'IA générative sans une vérification appropriée peut donc conduire à des décisions erronées ou à des conclusions incorrectes.", "explanation": "Citation exacte de la FAQ sur le risque de confiance excessive, sans quantification."}
+  ],
+  "businessReview": {"reviewerId": "relecteur-metier-ia-memlia", "role": "collaborateurs-comptables"}
+}

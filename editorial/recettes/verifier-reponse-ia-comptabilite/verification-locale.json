@@ -1,0 +1,404 @@
+{
+  "checkedAt": "2026-10-05T07:48:36.705Z",
+  "contract": {
+    "pass": true,
+    "articles": 1,
+    "exemptions": [
+      {
+        "slug": "verifier-reponse-ia-comptabilite",
+        "clause": 4,
+        "date": "2026-10-04",
+        "raison": "Checklist transversale de contrôle des affirmations IA, distincte des chaînes Paie et DSN et Saisie et pièces ; rattachement à la famille IA sans nouvelle rubrique mince."
+      }
+    ],
+    "erreurs": []
+  },
+  "browser": [
+    {
+      "width": 1280,
+      "overflow": false,
+      "h1": 1,
+      "canonical": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+      "title": "Vérifier réponse IA comptabilité : checklist | Memlia",
+      "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+      "images": [
+        {
+          "src": "/proofs/blog/verification-fiche-reserve.webp",
+          "naturalWidth": 1600,
+          "alt": "Fiche fictive V-04 : réunion confirmée comparée à la réserve de NOTE-A-v1, décision CORRIGER."
+        },
+        {
+          "src": "/proofs/blog/verification-registre.webp",
+          "naturalWidth": 1600,
+          "alt": "Registre fictif V-01 à V-05 : affirmation, source, qualification préalable et décision de routage."
+        }
+      ],
+      "links": [
+        "/blog/prompt-chatgpt-expert-comptable",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/blog/utiliser-chatgpt-cabinet-comptable",
+        "/glossaire#validation-humaine",
+        "/blog/logiciel-ia-comptabilite",
+        "/methode",
+        "/garanties"
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite#article",
+              "headline": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+              "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+              "url": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite"
+              },
+              "datePublished": "2026-10-05T00:00:00.000Z",
+              "dateModified": "2026-10-05T00:00:00.000Z",
+              "inLanguage": "fr-FR",
+              "isPartOf": {
+                "@id": "https://memlia.fr/#website"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              },
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              },
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://memlia.fr/images/img-art-verifier-reponse-ia-comptabilite-og.webp",
+                "width": 1200,
+                "height": 630,
+                "caption": "Une feuille vierge et trois points de vérification dans un diorama vert, graphite et crème"
+              },
+              "thumbnailUrl": "https://memlia.fr/images/img-art-verifier-reponse-ia-comptabilite-og.webp",
+              "articleSection": [
+                "IA",
+                "Automatisation"
+              ],
+              "keywords": [
+                "vérifier réponse IA comptabilité",
+                "hallucinations ChatGPT comptabilité",
+                "vérifier sources ChatGPT"
+              ],
+              "wordCount": 2418
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://memlia.fr/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+                  "item": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite"
+                }
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+              "name": "Kevin Kitanga",
+              "jobTitle": "Fondateur de Memlia",
+              "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+              "url": "https://memlia.fr/a-propos",
+              "worksFor": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://memlia.fr/#organization",
+              "name": "Memlia",
+              "legalName": "MEMLIA",
+              "url": "https://memlia.fr/",
+              "logo": "https://memlia.fr/apple-touch-icon.png",
+              "email": "contact@memlia.fr",
+              "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+              "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+                "postalCode": "75008",
+                "addressLocality": "Paris",
+                "addressCountry": "FR"
+              },
+              "identifier": [
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIREN",
+                  "value": "108621541"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIRET",
+                  "value": "10862154100011"
+                }
+              ],
+              "sameAs": [
+                "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+                "https://www.pappers.fr/entreprise/memlia-108621541",
+                "https://www.societe.com/societe/memlia-108621541.html"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "contact@memlia.fr",
+                "contactType": "customer support",
+                "areaServed": "FR",
+                "availableLanguage": "French"
+              }
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://memlia.fr/#website",
+              "url": "https://memlia.fr/",
+              "name": "Memlia",
+              "inLanguage": "fr-FR",
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "rows": 6,
+          "cols": 3,
+          "scrollParent": false
+        },
+        {
+          "rows": 15,
+          "cols": 2,
+          "scrollParent": false
+        },
+        {
+          "rows": 5,
+          "cols": 3,
+          "scrollParent": false
+        },
+        {
+          "rows": 2,
+          "cols": 3,
+          "scrollParent": false
+        },
+        {
+          "rows": 6,
+          "cols": 3,
+          "scrollParent": false
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "h1": 1,
+      "canonical": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+      "title": "Vérifier réponse IA comptabilité : checklist | Memlia",
+      "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+      "images": [
+        {
+          "src": "/proofs/blog/verification-fiche-reserve.webp",
+          "naturalWidth": 1600,
+          "alt": "Fiche fictive V-04 : réunion confirmée comparée à la réserve de NOTE-A-v1, décision CORRIGER."
+        },
+        {
+          "src": "/proofs/blog/verification-registre.webp",
+          "naturalWidth": 1600,
+          "alt": "Registre fictif V-01 à V-05 : affirmation, source, qualification préalable et décision de routage."
+        }
+      ],
+      "links": [
+        "/blog/prompt-chatgpt-expert-comptable",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/blog/utiliser-chatgpt-cabinet-comptable",
+        "/glossaire#validation-humaine",
+        "/blog/logiciel-ia-comptabilite",
+        "/methode",
+        "/garanties"
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite#article",
+              "headline": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+              "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+              "url": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite"
+              },
+              "datePublished": "2026-10-05T00:00:00.000Z",
+              "dateModified": "2026-10-05T00:00:00.000Z",
+              "inLanguage": "fr-FR",
+              "isPartOf": {
+                "@id": "https://memlia.fr/#website"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              },
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              },
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://memlia.fr/images/img-art-verifier-reponse-ia-comptabilite-og.webp",
+                "width": 1200,
+                "height": 630,
+                "caption": "Une feuille vierge et trois points de vérification dans un diorama vert, graphite et crème"
+              },
+              "thumbnailUrl": "https://memlia.fr/images/img-art-verifier-reponse-ia-comptabilite-og.webp",
+              "articleSection": [
+                "IA",
+                "Automatisation"
+              ],
+              "keywords": [
+                "vérifier réponse IA comptabilité",
+                "hallucinations ChatGPT comptabilité",
+                "vérifier sources ChatGPT"
+              ],
+              "wordCount": 2418
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://memlia.fr/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+                  "item": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite"
+                }
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+              "name": "Kevin Kitanga",
+              "jobTitle": "Fondateur de Memlia",
+              "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+              "url": "https://memlia.fr/a-propos",
+              "worksFor": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://memlia.fr/#organization",
+              "name": "Memlia",
+              "legalName": "MEMLIA",
+              "url": "https://memlia.fr/",
+              "logo": "https://memlia.fr/apple-touch-icon.png",
+              "email": "contact@memlia.fr",
+              "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+              "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+                "postalCode": "75008",
+                "addressLocality": "Paris",
+                "addressCountry": "FR"
+              },
+              "identifier": [
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIREN",
+                  "value": "108621541"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIRET",
+                  "value": "10862154100011"
+                }
+              ],
+              "sameAs": [
+                "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+                "https://www.pappers.fr/entreprise/memlia-108621541",
+                "https://www.societe.com/societe/memlia-108621541.html"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "contact@memlia.fr",
+                "contactType": "customer support",
+                "areaServed": "FR",
+                "availableLanguage": "French"
+              }
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://memlia.fr/#website",
+              "url": "https://memlia.fr/",
+              "name": "Memlia",
+              "inLanguage": "fr-FR",
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "rows": 6,
+          "cols": 3,
+          "scrollParent": false
+        },
+        {
+          "rows": 15,
+          "cols": 2,
+          "scrollParent": false
+        },
+        {
+          "rows": 5,
+          "cols": 3,
+          "scrollParent": false
+        },
+        {
+          "rows": 2,
+          "cols": 3,
+          "scrollParent": false
+        },
+        {
+          "rows": 6,
+          "cols": 3,
+          "scrollParent": false
+        }
+      ],
+      "errors": [],
+      "failures": []
+    }
+  ]
+}

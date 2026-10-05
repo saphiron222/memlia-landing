@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "verifier-reponse-ia-comptabilite",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+  "manifestSha256": "23990afd99d4ebaab4075a2276c4bad97d248fed1e4fb04edc4e184e7f924b4e",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact verifier-reponse-ia-comptabilite."
+  ],
+  "engine": "image_generate",
+  "prompt": "Isometric matte 3D paper cream #fcfbf7 background, one blank cream sheet standing in front of three small green #27b657 and deep green #1c8a41 checkpoint blocks, on a LARGE graphite #231f20 base, soft upper left light, translucent accents, no text no numbers no logos no people no interface",
+  "brief": {
+    "sujet": "Vérifier une feuille avant son utilisation.",
+    "composition": "Une feuille vierge verticale devant trois blocs de contrôle sur un socle graphite.",
+    "style": "Diorama 3D isométrique mat, lumière douce du haut gauche, fond crème papier.",
+    "palette": "Crème #fcfbf7 dominante ; vert #27b657, vert profond #1c8a41 et graphite #231f20 en touches.",
+    "interdits": "Texte, chiffres, logo, personnage, donnée client, fausse interface, envoi automatique.",
+    "alt": "Une feuille vierge et trois points de vérification dans un diorama vert, graphite et crème"
+  },
+  "reviewCriteria": [
+    "palette mesurée",
+    "texte absent",
+    "aucun personnage",
+    "aucune interface",
+    "une feuille et trois blocs",
+    "dérivés adaptés"
+  ]
+}

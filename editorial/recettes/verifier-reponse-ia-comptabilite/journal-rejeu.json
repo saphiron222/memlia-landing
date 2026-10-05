@@ -1,0 +1,69 @@
+{
+  "executedAt": "2026-10-05T07:47:25.489Z",
+  "modeleInterroge": null,
+  "nature": "Routage déterministe de qualifications préalables humaines, pas analyse automatique du texte",
+  "documents": {
+    "NOTE-A-v1": "D-012 : préparer la liste des pièces à demander. Réunion jeudi, sous réserve de confirmation.",
+    "NOTE-B-v1": "D-012 : réunion jeudi.",
+    "NOTE-B-v2": "D-012 : réunion vendredi. Cette note ne précise pas si elle remplace NOTE-B-v1."
+  },
+  "cases": [
+    {
+      "id": "V-01",
+      "affirmation": "Préparer la liste des pièces à demander.",
+      "source": "NOTE-A-v1",
+      "qualification": "fidele",
+      "decision": "GARDER",
+      "motif": "FIDELE_AU_DOCUMENT",
+      "saisie": false
+    },
+    {
+      "id": "V-02",
+      "affirmation": "Le retour est attendu le 12 octobre.",
+      "source": "NOTE-A-v1",
+      "qualification": "ajout",
+      "decision": "CORRIGER",
+      "motif": "DATE_NON_ETAYEE",
+      "saisie": false
+    },
+    {
+      "id": "V-03",
+      "affirmation": "La procédure prévoit une validation unique.",
+      "source": null,
+      "qualification": "introuvable",
+      "decision": "RECHERCHER",
+      "motif": "SOURCE_INTROUVABLE",
+      "saisie": false
+    },
+    {
+      "id": "V-04",
+      "affirmation": "La réunion est confirmée jeudi.",
+      "source": "NOTE-A-v1",
+      "qualification": "reserve_omise",
+      "decision": "CORRIGER",
+      "motif": "RESERVE_OMISE",
+      "saisie": false
+    },
+    {
+      "id": "V-05",
+      "affirmation": "La réunion a lieu jeudi.",
+      "source": [
+        "NOTE-B-v1",
+        "NOTE-B-v2"
+      ],
+      "qualification": "contradiction",
+      "decision": "ECARTER",
+      "motif": "ARBITRAGE_HUMAIN",
+      "saisie": false
+    }
+  ],
+  "calcul": {
+    "entrees": [
+      125,
+      75
+    ],
+    "total": 200,
+    "unite": "unités fictives",
+    "regle": "Addition indépendante de tout modèle, sans règle fiscale"
+  }
+}
