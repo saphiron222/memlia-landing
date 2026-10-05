@@ -374,6 +374,16 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByRole('button', { name: 'Calculer le plan' }).click();
       await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
 
+    } else if (outil.slug === 'generateur-prompt-ia-gratuit') {
+      await page.getByRole('button', { name: 'Préparer une réunion', exact: true }).click();
+      await page.getByLabel(/Je confirme une description/).check();
+      await page.getByRole('button', { name: 'Assembler le prompt' }).click();
+      await expect(page.locator('[data-editor]')).toHaveValue(/action \/ responsable \/ délai/);
+      await page.getByLabel('Format de la future réponse').selectOption('json');
+      await expect(page.locator('[data-preview]')).toContainText('"additionalProperties": false');
+      const downloading = page.waitForEvent('download');
+      await page.getByRole('button', { name: 'Exporter en JSON (.json)', exact: true }).click();
+      await downloading;
     } else if (outil.slug === 'generateur-prompt-expert-comptable') {
       await page.getByRole('button', { name: 'Demande de pièces', exact: true }).click();
       await page.getByLabel(/Je confirme que cette description/).check();
