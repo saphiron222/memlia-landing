@@ -1,0 +1,1067 @@
+{
+  "schema_version": 1,
+  "tool_id": "02",
+  "date_observation": "2026-10-05T04:04:38.185312+00:00",
+  "scope": "Audit local ciblé en lecture seule de dist existant et sources, aucune exécution build/navigateur/Lighthouse/tests et aucun Git. Seuls rapports QA écrits.",
+  "target": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+  "artifact": {
+    "path": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_cb184759/repo/dist/outils-comptables-gratuits/bibliotheque-prompts-comptables.html",
+    "bytes": 148820,
+    "sha256": "897fa85fe5da1e078b2c455d266f293118a426e31180734926a21f729c3c5f0a"
+  },
+  "checks": [
+    {
+      "id": "meta",
+      "statut": "PASS_LOCAL",
+      "observation": {
+        "title": "Bibliothèque de prompts comptables | Memlia",
+        "title_length": 43,
+        "description": "Choisissez un modèle de prompt comptable par tâche, consultez son exemple fictif, puis copiez-le ou adaptez-le sans inscription.",
+        "description_length": 128,
+        "h1": [
+          "Bibliothèque de prompts comptables"
+        ],
+        "og_title": "Bibliothèque de prompts comptables",
+        "headline": "Bibliothèque de prompts comptables",
+        "conforme_brief": true
+      },
+      "preuve": [
+        "dist/outils-comptables-gratuits/bibliotheque-prompts-comptables.html",
+        "src/data/outils.ts:45-58"
+      ],
+      "a_collecter": "Largeur de snippet et éventuelle réécriture Google non observées ; ne pas appliquer des seuils de skills blog contre le brief outil explicite."
+    },
+    {
+      "id": "canonical",
+      "statut": "PASS_LOCAL",
+      "observation": {
+        "canonical": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+        "og_url": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+        "sans_query_sans_slash_final": true
+      },
+      "preuve": [
+        "dist/outils-comptables-gratuits/bibliotheque-prompts-comptables.html"
+      ],
+      "a_collecter": "GET de production, redirections et canonical sélectionné par moteurs ND."
+    },
+    {
+      "id": "robots",
+      "statut": "PASS_LOCAL",
+      "observation": {
+        "meta": "index, follow, max-image-preview:large",
+        "html_lang": "fr",
+        "robots_default": "Allow: /",
+        "robots_recherche_ia": "OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-SearchBot autorisés dans fichier local"
+      },
+      "preuve": [
+        "dist/outils-comptables-gratuits/bibliotheque-prompts-comptables.html",
+        "dist/robots.txt"
+      ],
+      "a_collecter": "Le candidat dist est indexable ; cela ne prouve ni lancement public ni indexation effective."
+    },
+    {
+      "id": "schema",
+      "statut": "PASS_LOCAL",
+      "observation": {
+        "json_parseable": true,
+        "types": [
+          "WebPage",
+          "WebApplication",
+          "BreadcrumbList"
+        ],
+        "graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables#page",
+            "url": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+            "name": "Bibliothèque de prompts comptables",
+            "headline": "Bibliothèque de prompts comptables",
+            "description": "Choisissez un modèle de prompt comptable par tâche, consultez son exemple fictif, puis copiez-le ou adaptez-le sans inscription.",
+            "inLanguage": "fr-FR",
+            "mainEntity": {
+              "@id": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables#application"
+            },
+            "author": {
+              "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+            }
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables#application",
+            "url": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+            "name": "Bibliothèque de prompts comptables",
+            "description": "Choisissez un modèle de prompt comptable par tâche, consultez son exemple fictif, puis copiez-le ou adaptez-le sans inscription.",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "JavaScript activé dans un navigateur récent",
+            "isAccessibleForFree": true
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Accueil",
+                "item": "https://memlia.fr/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Outils comptables gratuits",
+                "item": "https://memlia.fr/outils-comptables-gratuits"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Bibliothèque de prompts comptables",
+                "item": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables"
+              }
+            ]
+          }
+        ],
+        "article_blogposting_rating_absents": true
+      },
+      "preuve": [
+        "dist/outils-comptables-gratuits/bibliotheque-prompts-comptables.html",
+        "src/layouts/Outil.astro:23-44"
+      ],
+      "a_collecter": "Validation Schema.org/Rich Results externe ND ; CollectionPage/ItemList facultatifs, non exigés et absents."
+    },
+    {
+      "id": "catalogue_statique",
+      "statut": "PASS_LOCAL",
+      "observation": {
+        "cards_count": 12,
+        "unique_ids": 12,
+        "readonly_textareas": 12,
+        "parity_source_fields": [
+          {
+            "id": "relance-pieces",
+            "title": "Relance de pièces",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "accuse-reception",
+            "title": "Accusé de réception",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "liste-pieces",
+            "title": "Liste des pièces attendues",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "tri-exceptions",
+            "title": "Tri des exceptions",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "synthese-suivi",
+            "title": "Synthèse du suivi",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "reformulation-note",
+            "title": "Reformulation d’une note",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "ordre-du-jour",
+            "title": "Ordre du jour",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "compte-rendu",
+            "title": "Compte rendu",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "checklist-transmission",
+            "title": "Checklist de transmission",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "tableau-controles",
+            "title": "Tableau de contrôles",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "synthese-ecarts",
+            "title": "Synthèse des écarts fictifs",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          },
+          {
+            "id": "fiche-regle",
+            "title": "Fiche de règle",
+            "all_fields_in_static_card": true,
+            "fields": [
+              "context",
+              "input",
+              "output",
+              "human",
+              "stop",
+              "exampleIn",
+              "exampleOut"
+            ]
+          }
+        ],
+        "details_note": "Prompts et jeux fictifs présents dans HTML ; details repliés à ouvrir, pas injectés par JS."
+      },
+      "preuve": [
+        "dist/outils-comptables-gratuits/bibliotheque-prompts-comptables.html",
+        "src/lib/bibliotheque-prompts.mjs:8-133",
+        "src/components/outils/BibliothequePrompts.astro:19-43"
+      ],
+      "a_collecter": "Interaction sans JS en navigateur et exactitude des copies/exports : attendre log final parent tests/browser/bibliotheque-prompts.spec.ts, ne pas confondre présence statique et test interaction."
+    },
+    {
+      "id": "titres",
+      "statut": "PASS_LOCAL",
+      "observation": {
+        "headings": [
+          {
+            "niveau": 1,
+            "texte": "Bibliothèque de prompts comptables"
+          },
+          {
+            "niveau": 2,
+            "texte": "Entrée et résultat attendus"
+          },
+          {
+            "niveau": 2,
+            "texte": "Utiliser l’outil"
+          },
+          {
+            "niveau": 2,
+            "texte": "Trouver un modèle"
+          },
+          {
+            "niveau": 3,
+            "texte": "Relance de pièces"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Accusé de réception"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Liste des pièces attendues"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Tri des exceptions"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Synthèse du suivi"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Reformulation d’une note"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Ordre du jour"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Compte rendu"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Checklist de transmission"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Tableau de contrôles"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Synthèse des écarts fictifs"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 3,
+            "texte": "Fiche de règle"
+          },
+          {
+            "niveau": 4,
+            "texte": "Entrée fictive"
+          },
+          {
+            "niveau": 4,
+            "texte": "Sortie attendue rédigée"
+          },
+          {
+            "niveau": 2,
+            "texte": "Adapter une consigne, pas décider à sa place"
+          },
+          {
+            "niveau": 3,
+            "texte": "Comment essayer le modèle ?"
+          },
+          {
+            "niveau": 3,
+            "texte": "Puis-je utiliser des données de dossier ?"
+          },
+          {
+            "niveau": 3,
+            "texte": "Faut-il un compte ?"
+          },
+          {
+            "niveau": 3,
+            "texte": "D’où viennent les modèles ?"
+          },
+          {
+            "niveau": 2,
+            "texte": "Ce qui reste dans votre navigateur"
+          },
+          {
+            "niveau": 2,
+            "texte": "Ce que cette page ne fait pas"
+          },
+          {
+            "niveau": 2,
+            "texte": "Le calcul, sa source et son refus sont visibles."
+          },
+          {
+            "niveau": 3,
+            "texte": "Calcul local"
+          },
+          {
+            "niveau": 3,
+            "texte": "Arrêt explicite"
+          },
+          {
+            "niveau": 3,
+            "texte": "Un corpus original de préparation"
+          },
+          {
+            "niveau": 2,
+            "texte": "Trois garanties vérifiables avant de saisir une valeur."
+          },
+          {
+            "niveau": 3,
+            "texte": "Sans compte ni adresse e-mail"
+          },
+          {
+            "niveau": 3,
+            "texte": "Aucune connexion sortante"
+          },
+          {
+            "niveau": 3,
+            "texte": "Les limites avant le résultat"
+          },
+          {
+            "niveau": 2,
+            "texte": "Avant d’utiliser l’outil."
+          },
+          {
+            "niveau": 2,
+            "texte": "Choisissez la suite qui vous est utile."
+          },
+          {
+            "niveau": 3,
+            "texte": "Une tâche se répète dans votre cabinet ?"
+          },
+          {
+            "niveau": 2,
+            "texte": "La règle de votre cabinet ne tient pas dans un calculateur."
+          },
+          {
+            "niveau": 2,
+            "texte": "Ce qu’on automatise"
+          },
+          {
+            "niveau": 2,
+            "texte": "Comprendre"
+          },
+          {
+            "niveau": 2,
+            "texte": "Environnements"
+          },
+          {
+            "niveau": 2,
+            "texte": "Outils gratuits"
+          },
+          {
+            "niveau": 2,
+            "texte": "L’entreprise"
+          }
+        ],
+        "unique_h1": true,
+        "aucun_saut_montant": true
+      },
+      "preuve": [
+        "dist/outils-comptables-gratuits/bibliotheque-prompts-comptables.html"
+      ],
+      "a_collecter": "H4 légitimes sous les H3 des fiches ; ne pas imposer la formule H1-H2-H3-only d’un gabarit article."
+    },
+    {
+      "id": "maillage",
+      "statut": "PASS_LOCAL",
+      "observation": {
+        "entrants": [
+          {
+            "route": "/outils-comptables-gratuits",
+            "liens": [
+              {
+                "ancre": "Utiliser sans compte →",
+                "footer": false
+              },
+              {
+                "ancre": "Bibliothèque de prompts comptables",
+                "footer": true
+              }
+            ]
+          },
+          {
+            "route": "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+            "liens": [
+              {
+                "ancre": "bibliothèque de prompts comptables",
+                "footer": false
+              },
+              {
+                "ancre": "Bibliothèque de prompts comptables",
+                "footer": true
+              }
+            ]
+          },
+          {
+            "route": "/methode",
+            "liens": [
+              {
+                "ancre": "bibliothèque de prompts comptables",
+                "footer": false
+              },
+              {
+                "ancre": "Bibliothèque de prompts comptables",
+                "footer": true
+              }
+            ]
+          },
+          {
+            "route": "/blog/prompt-chatgpt-expert-comptable",
+            "liens": [
+              {
+                "ancre": "Bibliothèque de prompts comptables",
+                "footer": true
+              }
+            ]
+          }
+        ],
+        "trois_sources_contextuelles": [
+          "/outils-comptables-gratuits",
+          "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+          "/methode"
+        ],
+        "sortants_requis": {
+          "/outils-comptables-gratuits": true,
+          "/methode": true,
+          "/contact": true,
+          "/blog/prompt-chatgpt-expert-comptable": true,
+          "/outils-comptables-gratuits/generateur-prompt-expert-comptable": true
+        },
+        "local_links": [
+          {
+            "href": "/",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/#methode",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/#preuves",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/#questions",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/#usages",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/a-propos",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/automatisation-cabinet-comptable",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/automatisation/factures-fournisseurs",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/automatisation/notes-de-frais",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/automatisation/paie",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/automatisation/rapprochement-bancaire",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/automatisation/saisie-comptable",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/blog",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/blog/prompt-chatgpt-expert-comptable",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/blog/rubrique/gestion-pieces-comptables",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/blog/rubrique/paie-dsn-cabinet-comptable",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/contact",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/garanties",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/glossaire",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/integrations",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/integrations/bulletin-de-paie-sage",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/integrations/bulletin-de-paie-silae",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/integrations/cloture-sage",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/integrations/dsn-sage",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/integrations/dsn-silae",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/integrations/lettrage-cegid",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/integrations/lettrage-sage",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/integrations/rapprochement-bancaire-sage",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/integrations/saisie-comptable-sage",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/mentions-legales",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/methode",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits/calculateur-amortissement-comptable",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits/calculateur-date-echeance-facture",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits/calculateur-marge-commerciale",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits/calculateur-roi-automatisation",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits/generateur-charte-ia-cabinet",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/outils-comptables-gratuits/verificateur-fec-local",
+            "local_file_exists": true,
+            "fragment_exists": true
+          },
+          {
+            "href": "/politique-de-confidentialite",
+            "local_file_exists": true,
+            "fragment_exists": true
+          }
+        ]
+      },
+      "preuve": [
+        "dist/outils-comptables-gratuits/bibliotheque-prompts-comptables.html",
+        "dist/methode.html",
+        "dist/outils-comptables-gratuits.html",
+        "dist/outils-comptables-gratuits/generateur-prompt-expert-comptable.html"
+      ],
+      "a_collecter": "Remplacement de l’entrant blog scellé par /methode documenté par délégation parent ; le blog garde seulement l’entrant footer. Disponibilité HTTP publique des liens ND ; ces contrôles vérifient les fichiers, pas des statuts HTTP."
+    },
+    {
+      "id": "sitemap",
+      "statut": "PARTIEL_LOCAL",
+      "observation": {
+        "fichiers": [
+          {
+            "path": "dist/sitemap-0.xml",
+            "root_type": "urlset",
+            "cible": [
+              {
+                "loc": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+                "lastmod": "2026-10-05T03:38:50.143Z",
+                "changefreq": "monthly",
+                "priority": "0.6"
+              }
+            ],
+            "index_targets": []
+          },
+          {
+            "path": "dist/sitemap-index.xml",
+            "root_type": "sitemapindex",
+            "cible": [],
+            "index_targets": [
+              "https://memlia.fr/sitemap-0.xml"
+            ]
+          },
+          {
+            "path": "dist/sitemap.xml",
+            "root_type": "sitemapindex",
+            "cible": [],
+            "index_targets": [
+              "https://memlia.fr/sitemap-0.xml"
+            ]
+          }
+        ],
+        "robots_declare": "https://memlia.fr/sitemap.xml",
+        "lastmod_cible": "2026-10-05T03:38:50.143Z",
+        "query_variants": []
+      },
+      "preuve": [
+        "dist/sitemap.xml",
+        "dist/sitemap-index.xml",
+        "dist/sitemap-0.xml",
+        "dist/robots.txt"
+      ],
+      "a_collecter": "URL présente une fois dans urlset, chaîne sitemap.xml → sitemap-0.xml valide localement. Rattacher lastmod au changement significatif réel avant livraison : ici format observé, vérité chronologique non prouvée ; priority/changefreq informatifs ignorables."
+    },
+    {
+      "id": "medias",
+      "statut": "PASS_LOCAL",
+      "observation": {
+        "files": [
+          {
+            "path": "public/proofs/v2/31-outil-bibliotheque.webp",
+            "bytes": 49858,
+            "sha256": "e5879a2a46ff7eb2182d325a47e962f137afa38f435bc82a24b525133373207d",
+            "dist_identical": true,
+            "width": 1600,
+            "height": 900
+          },
+          {
+            "path": "public/proofs/v2/og/31-outil-bibliotheque.webp",
+            "bytes": 32862,
+            "sha256": "992a36bf01548a9c308b4796eefdc7fb0717be6333d9b9ba7131f6284481430d",
+            "dist_identical": true,
+            "width": 1200,
+            "height": 630
+          }
+        ],
+        "html_images": [
+          {
+            "src": "/proofs/v2/31-outil-bibliotheque.webp",
+            "alt": "Filtre relation client et mail, fiche de relance : relevé fictif reçu, justificatif fictif attendu, brouillon à relire et pièce nécessaire à confirmer.",
+            "width": "1600",
+            "height": "900",
+            "loading": "eager",
+            "fetchpriority": "high",
+            "decoding": "async",
+            "data-astro-cid-bp6cf2zg": null
+          }
+        ],
+        "lazy_method": "none",
+        "hero_eager_fetchpriority_high": true,
+        "source_picture_count": 0,
+        "srcset_present": false
+      },
+      "preuve": [
+        "public/proofs/v2/31-outil-bibliotheque.webp",
+        "public/proofs/v2/og/31-outil-bibliotheque.webp",
+        "docs/qa/bibliotheque-prompts/proofs-manifest.json"
+      ],
+      "a_collecter": "Dimensions confirmées par sips, octets public/dist comparés, hero sous 150 Ko. Absence de srcset : observation non bloquante pour ce fichier léger ; CLS/LCP et lisibilité visuelle par ce sous-agent ND. Parent rapporte contrôle vision, non rejoué ici."
+    },
+    {
+      "id": "social_image_absolute",
+      "statut": "OBSERVATION",
+      "observation": {
+        "og_image": "/proofs/v2/og/31-outil-bibliotheque.webp",
+        "twitter_image": "/proofs/v2/og/31-outil-bibliotheque.webp",
+        "relative": true,
+        "exists_in_dist": true
+      },
+      "preuve": [
+        "dist/outils-comptables-gratuits/bibliotheque-prompts-comptables.html",
+        "src/layouts/Outil.astro:18-21"
+      ],
+      "a_collecter": "Recommandation ciblée au parent : URL absolue https://memlia.fr/proofs/v2/og/31-outil-bibliotheque.webp pour OG/Twitter. Aucun consommateur social testé ; ne pas déclarer partage cassé."
+    },
+    {
+      "id": "url_et_traitement",
+      "statut": "PARTIEL_SOURCE",
+      "observation": {
+        "filters_form_hidden_initially": true,
+        "submit_preventDefault": true,
+        "url_api_absent": true,
+        "session_payload": "{version: 1, id: card.dataset.model}",
+        "transfer_key": "memlia:prompt-model:v1",
+        "remove_on_receiver": true,
+        "payload_allowlist": true,
+        "telemetry_payload": "action, outil uniquement dans component",
+        "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; worker-src 'self'; font-src 'self'; form-action 'self'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
+      },
+      "preuve": [
+        "src/components/outils/BibliothequePrompts.astro:59-96",
+        "src/components/outils/GenerateurPrompt.astro:104-122",
+        "src/lib/bibliotheque-prompts.mjs:140-145",
+        "src/data/outils.ts:55"
+      ],
+      "a_collecter": "Fuite URL/réseau, refus presse-papiers/stockage et consommation de reprise doivent être confirmés dans logs parent. Lecture de source ne prouve pas exécution runtime."
+    },
+    {
+      "id": "texte_gabarit",
+      "statut": "OBSERVATION",
+      "observation": {
+        "exemples": [
+          "La règle de votre cabinet ne tient pas dans un calculateur.",
+          "Le calcul, sa source et son refus sont visibles."
+        ]
+      },
+      "preuve": [
+        "dist/outils-comptables-gratuits/bibliotheque-prompts-comptables.html",
+        "src/layouts/Outil.astro:74"
+      ],
+      "a_collecter": "Formulations communes orientées calcul sur un outil de sélection : proposer ajustement ciblé futur, sans bloquer SEO ni modifier code partagé ici."
+    },
+    {
+      "id": "source_editoriale",
+      "statut": "PARTIEL_SOURCE",
+      "observation": {
+        "url": "https://www.experts-comptables.fr/travaux-data-et-ia",
+        "claim": "L’Ordre présente des usages de l’IA en cabinet ; ne valide pas ces modèles.",
+        "corpus_original_et_sorties_redigees": true,
+        "norme_reglementaire_produite": false,
+        "verification_parent": "Source ouverte aujourd’hui selon contexte de délégation, non récupérée par ce sous-agent."
+      },
+      "preuve": [
+        "src/data/outils.ts:57",
+        "src/components/outils/BibliothequePrompts.astro:55-56",
+        "src/lib/bibliotheque-prompts.mjs:7"
+      ],
+      "a_collecter": "Conserver extraction/date/log de la vérification CNOEC faite par parent ; pas de score de factcheck indépendant ici."
+    }
+  ],
+  "vendor_instrumentation": {
+    "instrument_local": "Python stdlib HTMLParser, ElementTree, comparaison corpus/HTML et fichiers, sips pour dimensions",
+    "substitution_limitee": "Remplace seulement extraction on-page et existence locale de fichiers (Firecrawl/DataForSEO on-page). Ne remplace ni crawl HTTP/public, ni SERP, backlinks, GSC/Bing, Profound/SE Ranking, CWV ou tests navigateur. Aucune disponibilité de compte vendor déduite.",
+    "cost": "Aucun appel payant ni installation."
+  },
+  "tests_references": {
+    "scripts": "tests/scripts/bibliotheque-prompts.test.mjs",
+    "browser": "tests/browser/bibliotheque-prompts.spec.ts",
+    "etat": "Sources de scénarios lues, exécution non faite ici. Logs finaux en consolidation parent : résultats ND dans ce rapport.",
+    "renderer_manifest": "docs/qa/bibliotheque-prompts/proofs-manifest.json"
+  },
+  "publication": {
+    "http_canonical": "ND",
+    "deploiement": "ND",
+    "indexation_google_bing": "ND",
+    "positions": "ND",
+    "visibilite_ia": "ND",
+    "citations": "ND",
+    "trafic": "ND",
+    "conversions": "ND",
+    "cwv_field": "ND",
+    "lighthouse": "ND — parent consolide, pas de rejeu ici"
+  },
+  "global_status": "PARTIEL_LOCAL — contrôles statiques vérifiés, finition publique et tests runtime non attestés."
+}

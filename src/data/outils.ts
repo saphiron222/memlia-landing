@@ -3,6 +3,7 @@ import type { ProofId } from './proofs';
 export const OUTILS_HUB_PATH = '/outils-comptables-gratuits' as const;
 
 export const OUTIL_CATEGORIES = [
+  { id: 'explorer', label: 'Explorer' },
   { id: 'calculer', label: 'Calculer' },
   { id: 'verifier', label: 'Vérifier' },
   { id: 'preparer', label: 'Préparer' },
@@ -40,6 +41,22 @@ export interface OutilDefinition {
 }
 
 export const OUTILS: readonly OutilDefinition[] = [
+  {
+    slug: 'bibliotheque-prompts-comptables', categorie: 'explorer', statut: 'disponible',
+    h1: 'Bibliothèque de prompts comptables',
+    title: 'Bibliothèque de prompts comptables | Memlia',
+    description: 'Choisissez un modèle de prompt comptable par tâche, consultez son exemple fictif, puis copiez-le ou adaptez-le sans inscription.',
+    promesse: { entree: 'Pôle, tâche, format et recherche locale', resultat: 'Douze modèles complets, exemples fictifs, copie, export et adaptation' },
+    limites: [
+      'Corpus original de consignes et de sorties attendues rédigées : aucune réponse de modèle d’IA ni validation comptable.',
+      'La bibliothèque sélectionne un modèle ; le générateur permet d’adapter ses contraintes. Le cabinet choisit l’outil autorisé et relit chaque résultat.',
+      'Aucun envoi, dépôt ni décision fiscale n’est exécuté. Une recherche sans correspondance laisse un état vide explicite et les filtres peuvent être effacés.',
+    ],
+    mentionLocale: 'Les filtres, la copie et l’export restent dans ce navigateur, sans envoi de contenu. La recherche sert à décrire un geste, jamais un dossier client. Adapter transmet seulement l’identifiant public de la fiche via le stockage temporaire de cet onglet ; il est retiré à l’arrivée dans le générateur. Aucun texte saisi n’est enregistré.',
+    proof: 'v2/31-outil-bibliotheque', zoneLarge: true,
+    source: { titre: 'Un corpus original de préparation', nom: 'CNOEC — Travaux Data et IA', url: 'https://www.experts-comptables.fr/travaux-data-et-ia', extrait: 'L’Ordre présente des usages de l’IA en cabinet. Nos modèles sont rédigés séparément ; cette ressource ne les valide pas.', verifieeLe: '5 octobre 2026' },
+    articleExact: '/blog/prompt-chatgpt-expert-comptable', pageService: '/methode', cta: '/contact',
+  },
   {
     slug: 'preparer-pseudonymiser-fichier-csv-fec', categorie: 'preparer', statut: 'disponible',
     h1: 'Préparer et pseudonymiser un fichier comptable avant IA',

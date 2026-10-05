@@ -13,6 +13,7 @@ const choices = [
   <div class="library">
     <h2>Bibliothèque d’amorces</h2>
     <p>Choisissez une préparation. Chaque amorce remplit les contraintes ; vous pouvez ensuite les adapter.</p>
+    <p>Pour choisir une tâche déjà détaillée, parcourez la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables">bibliothèque de prompts comptables</a> : douze modèles avec leurs entrées et exemples fictifs.</p>
     <div class="actions">{AMORCES.map((seed) => <button class="btn btn-contour" type="button" data-seed={seed.task}>{seed.label}</button>)}</div>
   </div>
   <form class="prompt-form" data-own-telemetry novalidate autocomplete="off">
@@ -65,6 +66,7 @@ const choices = [
 </div>
 <script>
   import { AMORCES, assemblePrompt, checkPrompt } from '@/lib/prompt-comptable.mjs';
+  import { parseTransfer, TRANSFER_KEY, modelPrompt } from '@/lib/bibliotheque-prompts.mjs';
   const root = document.querySelector<HTMLElement>('[data-prompt-tool]');
   if (root) {
     const form = root.querySelector<HTMLFormElement>('form')!;
@@ -77,6 +79,7 @@ const choices = [
     let generated = '';
     let stale = false;
     let generations = 0;
+    let transferredModel: ReturnType<typeof parseTransfer> = null;
     const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
     const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', { detail: { action, outil: 'generateur-prompt-expert-comptable' } }));
     const clearError = () => {
@@ -97,9 +100,31 @@ const choices = [
       return !stale && result.ok;
     };
     const hasContent = () => editor.value.length > 0 || Boolean(field('description').value);
+    const resumeModel = () => {
+      let model: ReturnType<typeof parseTransfer> = null;
+      try {
+        const raw = sessionStorage.getItem(TRANSFER_KEY);
+        if (!raw) return;
+        model = parseTransfer(raw);
+        sessionStorage.removeItem(TRANSFER_KEY);
+      } catch { status.textContent = 'Reprise indisponible. Choisissez une amorce ou copiez le modèle depuis la bibliothèque.'; return; }
+      if (!model) { status.textContent = 'Amorce inconnue ou périmée. Vos choix restent inchangés.'; return; }
+      if (hasContent() && !window.confirm('Charger le modèle de la bibliothèque dans les choix ? Votre prompt édité sera conservé.')) {
+        status.textContent = 'Reprise annulée. Vos choix et votre texte sont conservés.'; return;
+      }
+      transferredModel = model;
+      for (const name of ['task', 'input', 'format', 'validator', 'stop', 'description'] as const) field(name).value = model.seed[name];
+      (field('confirmed') as HTMLInputElement).checked = false;
+      form.dispatchEvent(new Event('input', { bubbles: true }));
+      status.textContent = `Modèle « ${model.title} » chargé. Confirmez puis assemblez ; le prompt existant reste inchangé.`;
+      field('description').focus();
+    };
+    window.addEventListener('pageshow', resumeModel);
+    resumeModel();
     root.querySelectorAll<HTMLButtonElement>('[data-seed]').forEach((button) => button.addEventListener('click', () => {
       if (hasContent() && !window.confirm('Remplacer les choix du formulaire par cette amorce ? Votre prompt édité sera conservé.')) return;
       const seed = AMORCES.find((entry) => entry.task === button.dataset.seed)!;
+      transferredModel = null;
       for (const name of ['task', 'input', 'format', 'validator', 'stop', 'description'] as const) field(name).value = seed[name];
       (field('confirmed') as HTMLInputElement).checked = false;
       clearError();
@@ -123,7 +148,8 @@ const choices = [
         const input = field(result.field); input.setAttribute('aria-invalid', 'true'); input.setAttribute('aria-describedby', 'prompt-error prompt-privacy'); input.focus(); return;
       }
       if (editor.value && editor.value !== generated && !window.confirm('Remplacer votre prompt édité par une nouvelle génération ? Copiez-le auparavant si vous souhaitez le garder.')) { status.textContent = 'Génération annulée. Votre texte est conservé.'; emit('annulation'); return; }
-      editor.value = generated = result.text;
+      const keepsModel = transferredModel && Object.entries(transferredModel.seed).every(([name, value]) => field(name).value === value);
+      editor.value = generated = keepsModel ? modelPrompt(transferredModel!) : result.text;
       stale = false;
       editor.scrollTop = 0;
       root.querySelector('[data-boundary]')!.replaceChildren(...result.boundary.map((row) => {
@@ -133,6 +159,7 @@ const choices = [
         const li = document.createElement('li'); li.textContent = `${row.label} : ${row.input} Attendu : ${row.expected}`; return li;
       }));
       output.hidden = false; control(); status.textContent = 'Prompt assemblé localement. Aucun appel d’IA effectué.';
+      if (transferredModel) status.textContent = keepsModel ? 'Modèle complet de la bibliothèque repris. Aucun appel d’IA effectué.' : 'Contraintes du modèle modifiées : blocs génériques assemblés. Relisez et adaptez le texte ; les détails de la fiche ne sont pas repris.';
       emit('reussite');
       if (++generations > 1) emit('recalcul');
       root.querySelector<HTMLElement>('#prompt-result-title')!.focus();
@@ -140,7 +167,7 @@ const choices = [
     editor.addEventListener('input', () => { control(); status.textContent = 'Édition conservée ; contrôle structurel actualisé.'; });
     root.querySelector('[data-clear]')!.addEventListener('click', () => {
       if (hasContent() && !window.confirm('Effacer les choix et le prompt dans ce navigateur ?')) return;
-      form.reset(); editor.value = generated = ''; stale = false; output.hidden = true; clearError(); status.textContent = 'Choix et prompt effacés.'; field('task').focus();
+      form.reset(); editor.value = generated = ''; transferredModel = null; stale = false; output.hidden = true; clearError(); status.textContent = 'Choix et prompt effacés.'; field('task').focus();
       emit('effacer');
     });
     copy.addEventListener('click', async () => {
