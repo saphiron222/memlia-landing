@@ -12,7 +12,7 @@ export function recipeSubstanceSha256(bytes) {
     if (Array.isArray(value)) return value.map(project);
     if (value && typeof value === 'object') return Object.fromEntries(Object.keys(value).sort()
       .filter((key) => !logistics.has(key)).map((key) => [key, project(value[key])]));
-    if (typeof value === 'string' && /^https?:\/\//.test(value)) return '__reference_url__';
+    if (typeof value === 'string' && /^(?:https?:\/\/|\/)/.test(value)) return '__reference_url__';
     return value;
   };
   return reviewSha256(JSON.stringify(project(JSON.parse(String(bytes)))));

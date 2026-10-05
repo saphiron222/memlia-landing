@@ -14,6 +14,7 @@ test('les dates techniques, liens HTTPS et empreintes ne changent pas le fond de
   const after = JSON.stringify({ title: 'Titre relu', source: { url: 'https://example.org/source-finale', checkedAt: '2026-10-05', sha256: 'nouvelle', excerpt: 'Texte exact relu' } });
   assert.equal(recipeSubstanceSha256(before), recipeSubstanceSha256(after));
   assert.equal(recipeReviewMatches(hash(before), after, undefined, recipeSubstanceSha256(before)), true);
+  assert.equal(recipeSubstanceSha256('{"links":{"outgoing":["/blog/ancien"]}}'), recipeSubstanceSha256('{"links":{"outgoing":["/blog/nouveau"]}}'));
   assert.notEqual(recipeSubstanceSha256(before), recipeSubstanceSha256(after.replace('Texte exact relu', 'Affirmation divergente')));
 });
 
