@@ -1,0 +1,194 @@
+{
+  "subject": {
+    "slug": "automatiser-avec-ia-sans-changer-logiciel",
+    "bodySha256": "9c46fa888bde573501dd83a3e5c9cb38935f54313afe01bbd3785fb5d706ab12",
+    "recipeSha256": "f3dfabeacc75f7f612b56c2b4a24352582dbaad46edf140cb0cec8be28cbbc56",
+    "renderedSha256": "d7a19bbfbc3178fed3867dbe6e11755d801759e17a9925e06f90b1acf27a9a25"
+  },
+  "reviewedAt": "2026-10-05",
+  "reviewerTaskId": "t_003f2bb5",
+  "reviewerProfile": "qa",
+  "verdict": "PASS AVEC RÉSERVES",
+  "scope": "Une seule revue indépendante QA du fond non réglementé, du rendu local, des sources, du rejeu, de la matrice Blog/SEO et du déplacement du brief historique 08. Les volets editorial/business/image/sources/qualite désignent cette même revue, pas plusieurs personnes. Les identifiants qa et qa:t_003f2bb5 sont deux représentations techniques de ce seul reviewer. Aucun avis métier réglementaire, scellement du candidat, push, intégration ou publication par QA.",
+  "editorial": {
+    "reviewer": "qa",
+    "reviewerTaskId": "t_003f2bb5",
+    "p0": [],
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "corps.md:38-62 livre quinze champs remplis et copiables, incluant entrée minimale, déclencheur, clé, source de vérité, proposition, validation, destination, trace, fin, reprise, retour arrière et propriétaire. Les questions disent ce qui reste à constater chez le lecteur, sans lui promettre un accès technique.",
+          "La réponse directe décrit comment cadrer un passage dans l'existant. Les sections accès, maintien manuel, coûts et maintenance répondent au brief §4 ; ce n'est ni un nouveau manuel imposé ni un classement de logiciels."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Comparaison indépendante des ouvertures prompt-chatgpt-expert-comptable, logiciel-ia-comptabilite, utiliser-chatgpt-cabinet-comptable et verifier-reponse-ia-comptabilite : consigne, choix, premier essai et contrôle de sortie restent distincts de l'état et de la reprise traités ici. Le pilier et /methode ne sont pas remplacés.",
+          "L'ancien angle automatiser-sans-changer-de-logiciel est remplacé dans le backlog, sans deuxième page. Les quatre reçus d'autocomplétion sont réussis mais vides ; recherche Hermes déclarée, aucun volume, rang Google France ou résultat SEO actuel attribué au candidat."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "CNIL, FAQ affichant le 18 juillet 2024 : copie native et reçu du 05/10 intègres, contexte de la section sur les limitations lu, puis ouverture directe QA HTTP 200 avec la citation retrouvée. La phrase porte sur une sortie inexacte mais plausible ; elle ne devient ni un taux d'erreur ni une obligation fiscale, sociale ou RGPD.",
+          "Auteur Kevin Kitanga et Person/bio présents dans le rendu. Aucun titre d'expert-comptable, cas client, témoignage, gain mesuré ou expérience personnelle inventée identifié ; les données F-012 à F-016 sont explicitement fictives."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Programme original exécuté byte-identique dans un bac QA, journal auteur conservé intact. Huit sorties retrouvées et comparées à l'oracle indépendant de la fiche ; quatre sondes supplémentaires refusent contenu changé à version identique, période changée avec ancienne proposition, pièce vide et version absente. Entrées et proposition précédente inchangées, saisie F-015 conservée, reprise retrouvant le même objet de proposition.",
+          "Brouillon nominal exactement construit à partir de relevé A et facture B. corps.md:78-107 présente les quatre parties de la règle écrite et les résultats réellement produits. Ce rejeu déterministe n'interroge aucun modèle, n'écrit aucun état métier, n'envoie rien et ne teste pas la concurrence ni une intégration éditeur ; le corps et la FAQ le disent."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Build Astro de preview reconstruit par QA dans .qa/revue-automatiser-avec-ia-sans-changer-logiciel ; contrat natif ciblé PASS. Chromium 1280 et 390 px : lang fr, un H1, canonical cible, OG égal H1, auteur Kevin Kitanga, cinq types JSON-LD, huit destinations contextuelles HTTP 200 et ancre validation-humaine présente, zéro erreur JS/réseau et zéro débordement de page.",
+          "Quatre tableaux HTML à en-têtes, fiche de quinze lignes et huit lignes de rejeu. À 390 px, les quatre tables défilent réellement de 120 px ; dernière cellule intégralement accessible après défilement. Le harnais auteur examinait seulement les parents, pas le tableau lui-même : son constat de défilement n'était pas probant ; le rejeu QA corrigé et les captures à droite apportent cette preuve. Aucun PASS global clavier/lecteur d'écran ou Lighthouse.",
+          "Planificateur --check et --slot natifs verts au début. Pendant la revue, origin/main partagé a avancé de 818320af à 57279fde, PR89 ; le garde réel refuse ensuite la base non intégrée. Les quatre mutations du changement de stock sont vérifiées dans une fixture explicitement non Git, sans certifier la fraîcheur du checkout réel. Marketing doit intégrer main et régénérer avant scellement/publication ; aucune levée de ce refus par QA."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Réponse directe, définitions, fiche, frontière et résultats présents dans le HTML initial. Source, règles déterministes et rôle éventuel de l'IA sont séparés ; l'article reste compréhensible sans les deux figures. Les limites de reprise, de retour arrière et d'accès concurrent évitent d'assimiler le script à une réalisation de production.",
+          "Le noindex, follow est celui de la preview privée. Aucun crawler public, index Google, citation IA, robots final ou performance de cette URL n'est déclaré vérifié."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "corps.md:155-161 et CTA : mécanique prise en charge dans les outils existants, validation et saisies conservées au cabinet, Confier cette tâche vers /contact, rien à envoyer. Voix nous/vous et vocabulaire concret ; aucun gain chiffré, prix fictif, compatibilité universelle ou autonomie annoncée.",
+          "Les limites de la démonstration portent sur des risques différents : états, génération du texte, accès et concurrence. Elles ne masquent pas la réponse derrière un avertissement réglementaire ni une promesse de conformité."
+        ]
+      }
+    }
+  },
+  "business": {
+    "reviewer": "qa",
+    "reviewerId": "qa:t_003f2bb5",
+    "reviewerTaskId": "t_003f2bb5",
+    "reviewerProfile": "qa",
+    "role": "direction-associes",
+    "scope": "Volet source informationnelle de cette même revue QA ; ne remplace aucune revue metier et ne certifie aucune conformité RGPD.",
+    "claims": {
+      "claim-unit-f449b1ec8ef4-1": {
+        "verdict": "soutient",
+        "reasoning": "Copie CNIL native, ligne 770, contexte de la section sur les limitations, date affichée 18/07/2024 et ouverture HTTP 200 par QA le 05/10 : l'extrait exact décrit la possibilité d'une sortie inexacte paraissant plausible. L'article conserve peuvent et en déduit seulement qu'un statut de préparation ne certifie pas le texte. Ni fréquence, ni performance éditeur, ni obligation professionnelle nouvelle ne sont ajoutées."
+      }
+    }
+  },
+  "image": {
+    "reviewer": "qa:t_003f2bb5",
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Six composantes et prompt réel présents dans recette.json et prompt.json. Master et dérivé 1600 inspectés : deux plans verts sur supports graphite reliés par un cadre ouvert. Le plateau portant une feuille demandé n'est pas obtenu ; réserve de composition conservée, sans prétendre que la couverture montre une proposition ou une fonction testée. Cette variation symbolique n'empêche pas la compréhension du sujet."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Aucun texte, chiffre, logo, personne, interface ou signe d'envoi automatique dans le master. Palette re-mesurée sur le master par l'instrument natif : crème 0.6755034722222222, vert 0.1344965277777778, vert profond 0.016822916666666667, graphite 0.09100694444444445 ; valeurs concordantes avec visual-review.json et seuils du brief conformes."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Trace Higgsfield completed a9483a37-fbde-4220-827f-07357df9f4d1, prompt et source réels conservés. Deux résultats de génération distincts et coût déclaré 2.75 chacun, pas de génération par QA. Les figures sont des reconstitutions HTML fictives et nommées telles dans l'écran et la recette ; aucune capture de logiciel ou d'une session IA réelle revendiquée."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "passage-registre reprend les quatre premiers cas : F-012 proposition, F-013 déjà traité, F-014 liste absente, F-015 saisie protégée. passage-reprises reprend réutilisation, version changée, état inconnu et accord périmé ; saisie conservée et connexion Aucune concordent avec le rejeu.",
+          "Grille RECETTE.md : cinq réponses oui pour chacune des figures, comparées à crm-registre.webp. Fenêtres, données fictives concrètes, statuts et absence de marque, slogan, avertissement ou schéma commenté conformes ; l'article porte le détail textuel indépendamment des images."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Dimensions et formats décodés : master 1920x1080, OG 1200x630, dérivés 768/1200/1600 AVIF et WebP. Figures 1600x900, 29154 et 30876 octets ; aucune variante mobile. Renderer natif --check rejoué sur 30 figures ; le diff ajoute uniquement les deux nouveaux cadres et conserve les entrées historiques du manifeste.",
+          "Figures servies identiques aux deux largeurs, 356 px de large sur téléphone : aperçus, petits libellés non confortablement lisibles. Les données essentielles restent dans les paragraphes et tableaux HTML, avec dernières colonnes réellement vérifiées ; ni portrait artificiel ni zoom prétendu."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Alt public de couverture fidèle au cadre ouvert obtenu, non à la feuille absente du prompt. Alts des deux figures décrivent exactement les dossiers, états et reprises fictifs, sans attribuer une détection à l'IA ; les mêmes alternatives sont servies aux deux largeurs."
+        ]
+      }
+    }
+  },
+  "sources": {
+    "reviewedBy": "qa:t_003f2bb5",
+    "observations": {
+      "cnil-risques": "Source primaire officielle tier-1, titre/domaine/URL concordants et date affichée 18/07/2024. Reçu et copie du 05/10 intègres, citation exacte et contexte lus ; nouvelle ouverture directe QA HTTP 200 sauvegardée dans revue-source-cnil.html. Suffisante pour le seul claim externe du candidat, pas pour certifier une intégration, une sortie générée ou une conformité réglementaire. Les autres assertions sont conventions de méthode ou sorties du rejeu fictif vérifiées séparément."
+    }
+  },
+  "qualite": {
+    "reviewer": "qa:t_003f2bb5",
+    "score": 92,
+    "p0": [],
+    "categories": {
+      "contentQuality": {"score": 28, "max": 30},
+      "seoOptimization": {"score": 24, "max": 25},
+      "eeatSignals": {"score": 15, "max": 15},
+      "technicalElements": {"score": 12, "max": 15},
+      "aiCitationReadiness": {"score": 13, "max": 15}
+    },
+    "evidence": [
+      "28/30 contenu : couverture 7, lisibilité 6, originalité 4, structure 4, engagement 4, clarté 3. Fiche immédiatement utilisable, cas refusés et limites précis. Densité des quinze champs et des identifiants demande une lecture de travail ; démonstration déterministe transparente mais limitée, non banc IA ou éditeur.",
+      "24/25 SEO : hiérarchie 5, titre 4, cohérence du sujet 4, maillage 3, URL 3, méta 3, source externe 2. Huit liens utiles et une source primaire suffisante pour le seul claim ; entrants des frères encore projetés, seul /blog est déclaré. Aucun rang ni volume crédité, aucun remplissage de sources pour un quota.",
+      "15/15 E-E-A-T : attribution 4, fidélité source 4, confiance/transparence 4, méthode/proof 3. Auteur et bio clairs, contexte CNIL lu, données fictives et limites honnêtes, contact/méthode reliés ; aucune expérience réelle inventée.",
+      "12/15 technique : schema 4, médias 3, tableaux/listes 2, vitesse 0, mobile 1, OG/social 2. Rendu local et neuf médias conformes, zéro erreur ; aucune mesure LCP ou Lighthouse, figures mobiles seulement des aperçus. Le vrai défilement des quatre tables est maintenant démontré ; pas audit global d'accessibilité.",
+      "13/15 préparation aux citations : appuis 4, intention 3, entités 3, structure extractible 3, accessibilité crawler public 0. Contenu initial autonome et sources attribuées ; preview privée noindex, aucune indexation ou citation IA observée.",
+      "Matrice indépendante : union actuelle catalogue/pack/template de 63 noms, 63 lectures/versions conformes, zéro omission/doublon, preuves résolues. Checkpoint auteur : 18 execute, 15 partiel, 26 N/A motivées et 4 a-executer. Ce ne sont pas 63 workflows complets ; les limites partielles ne sont pas transformées en full audit PASS.",
+      "blog-analyze est réalisé par cette revue. seo-bing, seo-drift et seo-sitemap restent à compléter à la publication et au suivi sur des preuves réelles ; le checkpoint auteur reste intact. Les N/A international/local/maps/ecommerce/audio/NotebookLM/programmatic/réutilisation hors blog sont adaptés au mandat national monolingue sans création de nouvelle surface.",
+      "61/61 tests Node contrat/intention/titres/forge/cadres/renderer verts ; npm run check : 0 erreur, 0 warning, 9 hints préexistants. Build Astro de preview et renderer 30 figures verts : 28 historiques + 2 nouveaux, pas 30 historiques + 2 comme écrit dans HANDOFF.md. Le build public natif complet n'est pas déclaré PASS : le candidat est préparé, non scellé, et la base Git doit être actualisée.",
+      "revues.json consommé par materialiser puis validateDossier dans un bac QA explicitement non Git : aucune erreur, gate natif pass:true et total des cinq catégories 92 confirmé. Ce test assure le format exploitable de la revue ; il ne remplace pas le refus de fraîcheur du checkout réel et n'a ni scellé ni modifié le candidat.",
+      "Diff du planificateur : soustraction d'une seule place complements-excel à l'inscription du slug mandaté ; aucun quota ou registre d'autorité changé. Quatre mutations natives en fixture source-only refusent retour de l'ancien angle, famille divergente, ajout IA arbitraire et doublon slug/requête. La fixture ne remplace ni origin/main frais ni le créneau réel.",
+      "La preuve de défilement auteur avait un faux positif : son script part du parent de la table et manque le scroll de la table elle-même. La revue indépendante a commencé par reproduire ce défaut de harnais, puis vérifié le tableau proprement : quatre scrolls 120 px et dernières cellules visibles. Aucun code candidat modifié par QA."
+    ],
+    "reservations": [
+      "Couverture symbolique : cadre ouvert obtenu, pas plateau portant une feuille demandé. Prompt réel et alt fidèle conservés ; pas une preuve fonctionnelle.",
+      "Petits libellés des figures non confortablement lisibles à 390 px ; tableaux HTML lisibles à 14 px et dernières colonnes exposées par vrai défilement. Aucun PASS global clavier/lecteur d'écran ou performance.",
+      "Démo locale séquentielle, aucun modèle, connexion éditeur, envoi ou écriture métier ; aucune protection concurrente, transaction, persistance ou annulation d'action externe éprouvée. Ne pas vendre ce script comme réalisation de production.",
+      "origin/main avancé pendant la revue vers 57279fde sans intégration à HEAD 818320af : le garde réel refuse désormais --check/--slot. Marketing doit intégrer la base fraîche, préserver les ajouts des articles indépendants et régénérer le calendrier avant toute matérialisation ; QA n'a ni modifié les références ni levé le refus.",
+      "Candidat local non committé, non poussé, non intégré et non déployé. Scellement, build public complet, CI, fusion et HTTP/article/blog/RSS/sitemap/llms/neuf médias restent au propriétaire marketing. Le noindex privé n'est pas une preuve d'indexabilité finale.",
+      "Direction Kevin du 05/10 à 12:08 : rattrapage éditorial antérieur, date réelle conservée ; ne pas recompter ces articles comme nouveaux sujets de la semaine. La capacité codée pourra nécessiter réconciliation par marketing, sans antidate ni contournement."
+    ],
+    "seo": [
+      "Un H1, quatorze H2, cinq questions H3, sommaire natif et titre/meta cohérents avec la fiche de passage.",
+      "Canonical cible, cinq types JSON-LD, auteur, OG et huit liens contextuels contrôlés sur preview ; ancre validation-humaine retrouvée.",
+      "Quatre reçus d'autocomplétion réellement vides, diagnostic GSC du 03/10 conservé sans nouvelle mesure ni performance de cette URL.",
+      "Maillage entrant de frères à améliorer après publication ; aucune page ou backlink projeté présenté comme acquis."
+    ],
+    "geo": [
+      "Réponse directe et définitions autonomes, source de vérité/proposition/saisie clairement séparées.",
+      "Fiche et quatre tableaux extractibles dans le HTML initial, résultats de rejeu attribués à un programme déterministe.",
+      "La source CNIL soutient seulement le risque de plausibilité ; les cas et protections ont le rejeu comme preuve indépendante.",
+      "Aucune citation IA, accessibilité publique ou indexation du candidat mesurée ; score interne, ni facteur Google ni probabilité de citation."
+    ],
+    "verdict": "PASS AVEC RÉSERVES : fond non réglementé et réalisation locale conformes, 92/100, aucun P0 et aucune correction éditoriale bloquante. Réserves de composition/lisibilité et étapes techniques de livraison conservées ; aucune publication finale approuvée comme déjà vérifiée."
+  },
+  "figureReview": {
+    "reference": "docs/design/blog-article-proofs/RECETTE.md:70-78 et public/proofs/blog/crm-registre.webp",
+    "passage-registre": {"outil": true, "donneesFictivesConcretesSansMarque": true, "autonomieImageEtTexte": true, "sansSchemaSloganAvertissement": true, "coherenceAvecReferences": true},
+    "passage-reprises": {"outil": true, "donneesFictivesConcretesSansMarque": true, "autonomieImageEtTexte": true, "sansSchemaSloganAvertissement": true, "coherenceAvecReferences": true}
+  },
+  "verificationArtifacts": [
+    "revue-verifier.mjs", "revue-verification.json", "revue-verification.log", "revue-source-cnil.html", "revue-matrice.py", "revue-matrice.json", "revue-palette.json", "revue-tests.log", "revue-check.log", "revue-build.log", "revue-renderer.log", "revue-haut-1280.png", "revue-haut-390.png", "revue-table-390-0.png", "revue-table-390-1.png", "revue-table-390-2.png", "revue-table-390-3.png", "revue-figure-1280-0.png", "revue-figure-1280-1.png", "revue-figure-390-0.png", "revue-figure-390-1.png", "revue-forge.mjs", "revue-forge.json"
+  ],
+  "requiredCorrections": [],
+  "requiredDeliveryActions": [
+    "Intégrer origin/main frais dans la branche auteur et régénérer les dérivés ; rejouer --check et --slot au jour réel, sans lever le refus de base non intégrée.",
+    "Consommer cette revue dans la forge, sceller puis exécuter le build public natif complet et la CI ; préserver les ajouts des articles indépendants dans les hotspots.",
+    "Publier sur la carte marketing existante et vérifier le contenu exact servi, canonical/auteur/robots/JSON-LD, blog/RSS/sitemap/llms et les neuf médias aux deux largeurs.",
+    "Documenter le bilan du rattrapage avec date réelle et semaine éditoriale distinctes ; compléter les compétences de publication/suivi sur des preuves effectives."
+  ]
+}

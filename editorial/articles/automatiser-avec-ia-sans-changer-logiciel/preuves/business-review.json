@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-avec-ia-sans-changer-logiciel",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "1ad37eb8139c10cc1278ade8acf47cc1783eb878b4d89b32ebd442ccc84c8351",
+  "manifestSha256": "dd8d551a84e69cfe66e8d65500d0b2d1a5b54e27e27d1525c046809263963b0d",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact automatiser-avec-ia-sans-changer-logiciel."
+  ],
+  "reviewerId": "qa:t_003f2bb5",
+  "role": "direction-associes",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-f449b1ec8ef4-1-cnil-risques",
+      "candidateSlug": "automatiser-avec-ia-sans-changer-logiciel",
+      "articleSha256": "1ad37eb8139c10cc1278ade8acf47cc1783eb878b4d89b32ebd442ccc84c8351",
+      "claimId": "claim-unit-f449b1ec8ef4-1",
+      "claimSha256": "3139805c8b462e0e003cb468b75daca2068d40e2a4f07a9ccaed5430a16576cc",
+      "sourceId": "cnil-risques",
+      "sourceContentSha256": "75976e27d1ed71b1c1063a36114c72bc73827c694b2a2acd4001deceed36df3b",
+      "citationSha256": "3139805c8b462e0e003cb468b75daca2068d40e2a4f07a9ccaed5430a16576cc",
+      "reviewerId": "qa:t_003f2bb5",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-05",
+      "reasoning": "Copie CNIL native, ligne 770, contexte de la section sur les limitations, date affichée 18/07/2024 et ouverture HTTP 200 par QA le 05/10 : l'extrait exact décrit la possibilité d'une sortie inexacte paraissant plausible. L'article conserve peuvent et en déduit seulement qu'un statut de préparation ne certifie pas le texte. Ni fréquence, ni performance éditeur, ni obligation professionnelle nouvelle ne sont ajoutées."
+    }
+  ]
+}
