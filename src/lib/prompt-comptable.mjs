@@ -1,4 +1,6 @@
 // Assemblage déterministe. Aucun appel de modèle ; le contrôle ne juge pas le sens.
+export const PROMPT_SCHEMA_VERSION = 1;
+export const PROMPT_STRUCTURE = ['Objectif', 'Entrées', 'Sortie', 'Validation humaine', 'Arrêt'];
 export const TASKS = [
   { id: 'pieces', label: 'Demande de pièces', prepare: 'Préparer un brouillon générique de demande de pièces manquantes.', human: 'Choisir les pièces réellement nécessaires et décider de l’envoi.' },
   { id: 'synthese', label: 'Synthèse de notes', prepare: 'Organiser des notes fictives en synthèse et questions ouvertes.', human: 'Interpréter le dossier et décider des suites.' },

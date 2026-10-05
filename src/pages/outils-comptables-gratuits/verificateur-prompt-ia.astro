@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import VerificateurPrompt from '@/components/outils/VerificateurPrompt.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('verificateur-prompt-ia');
+---
+<Outil outil={outil}><VerificateurPrompt /></Outil>

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/verificateur-prompt-proof/index.html",
+      "sha256": "777165a03dce294bb42574ea51df70fa47493079582ea7676f7bc88f068012aa"
+    },
+    {
+      "path": "docs/design/verificateur-prompt-proof/styles.css",
+      "sha256": "3ce54c82e844968c155321d57c0ec2ebdcf6c9a556f04950e5c39d4c8948e9d4"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/verificateur-prompt-proof/content-contract.json",
+      "sha256": "88f5db65227b381a28d56c9812405a9bd1686f8af349f1e41e97b0ab08b2737b"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "f0887b4eb77ab5cae6eab8283d8d3d51bec614a47293603b96932bf86895f142"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/verificateur-prompt-proof/index.html#outil-verificateur-prompt",
+      "target": "public/proofs/v2/31-outil-verificateur-prompt.webp",
+      "bytes": 48188,
+      "sha256": "26cb96667f7189678565aed476c42206b9adbcb8703cd2f5e2937a7d7337c5de"
+    },
+    {
+      "source": "docs/design/verificateur-prompt-proof/index.html#outil-verificateur-prompt",
+      "target": "public/proofs/v2/og/31-outil-verificateur-prompt.webp",
+      "bytes": 32214,
+      "sha256": "5f5b324b3079f9adc1234d2afe11db4eebc22d23b62da540e9e4952b846edb57"
+    }
+  ]
+}

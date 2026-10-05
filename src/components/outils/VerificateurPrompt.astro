@@ -1,0 +1,120 @@
+---
+import { TRIAL_CASES } from '@/lib/verificateur-prompt.mjs';
+---
+<div class="verifier" data-prompt-verifier>
+  <noscript>Activez JavaScript pour analyser localement la structure de votre consigne.</noscript>
+  <form data-own-telemetry novalidate autocomplete="off">
+    <h2>Contrôler une consigne existante</h2>
+    <p id="verifier-help">Collez une consigne abstraite, de 1 à 10 000 caractères, pas une pièce client. Aucun modèle appelé, aucun envoi ni stockage. Le filtre ne repère pas tous les noms et ne réalise aucune anonymisation.</p>
+    <label for="verifier-input">Votre consigne originale</label>
+    <textarea id="verifier-input" name="prompt" rows="8" maxlength="10000" aria-describedby="verifier-help verifier-error"></textarea>
+    <label class="confirmation"><input name="confirmed" type="checkbox" aria-describedby="verifier-error" />Je confirme que la consigne ne contient aucune donnée réelle.</label>
+    <div class="actions"><button class="btn btn-principal" type="submit">Analyser la structure</button><button class="btn btn-contour" type="button" data-example>Charger l’exemple fictif</button><button class="btn btn-contour" type="button" data-clear>Effacer</button></div>
+    <p class="error" id="verifier-error" data-error role="alert" hidden></p>
+  </form>
+  <section data-result hidden aria-labelledby="verifier-result">
+    <h2 id="verifier-result" tabindex="-1">Constats expliqués sur l’original</h2>
+    <p>Détecté : une formulation est reconnue. Manquant : aucune formulation reconnue. À examiner : mention ambiguë, négation ou conflit possible. Aucun de ces états ne juge la fiabilité d’une réponse d’IA.</p>
+    <ul data-findings></ul><p data-warnings></p>
+    <h3>Avant / après : original conservé, proposition éditable</h3>
+    <label for="verifier-original">Original de la dernière analyse (lecture seule)</label><textarea id="verifier-original" data-original readonly rows="7"></textarea>
+    <label for="verifier-edited">Proposition à compléter et à relire</label><textarea id="verifier-edited" data-edited rows="12" maxlength="15000" aria-describedby="verifier-editor-help"></textarea>
+    <p id="verifier-editor-help">Les ajouts sont des pistes, pas une correction du sens. Les constats ci-dessus restent ceux de l’original. Vos éditions ne sont jamais remplacées sans confirmation. Les champs défilent ; copies et rapport contiennent le texte complet.</p>
+    <fieldset><legend>Version incluse comme choix dans le rapport</legend><label><input type="radio" name="version" value="original" checked />Original</label><label><input type="radio" name="version" value="proposition" />Proposition éditée</label></fieldset>
+    <div class="actions"><button type="button" class="btn btn-contour" data-copy-original>Copier l’original</button><button type="button" class="btn btn-contour" data-copy-edited>Copier la proposition</button><button type="button" class="btn btn-contour" data-export>Exporter le rapport (.txt)</button></div>
+    <h3>Cas d’essai fictifs à rejouer</h3><p>Utilisez votre outil autorisé. Ces attentes ne sont pas des réponses déjà obtenues.</p><ul>{TRIAL_CASES.map(c => <li>{c}</li>)}</ul>
+  </section>
+  <p data-status role="status" aria-live="polite"></p>
+  <section id="verifier-methode">
+    <h2>Ce que le contrôle ne mesure pas</h2>
+    <p>Nous cherchons des formulations françaises d’objectif, d’entrées, de sortie, de validation humaine et d’arrêt. Une contrainte reformulée peut échapper au contrôle ; une phrase repérée peut être incohérente ailleurs. Nous ne calculons aucun score de fiabilité, ne testons aucun modèle et ne certifions ni conformité ni sécurité.</p>
+    <h3>Que corriger après le rapport ?</h3><p>Exemple fictif : « Préparer un brouillon à partir d’une liste fictive, le collaborateur relit » ne précise pas l’arrêt. Ajout proposé : « Si une information requise manque, arrêter et demander une précision ». L’original reste visible ; vous décidez de conserver ou de modifier cet ajout.</p>
+    <h3>Comment repartir d’une préparation comptable ?</h3><p>Le <a href="/outils-comptables-gratuits/generateur-prompt-expert-comptable">générateur de prompt pour expert-comptable</a> permet de choisir une amorce de demande de pièces ou de synthèse. Le lien ouvre son catalogue public, sans transférer votre texte ni modifier une saisie existante.</p>
+    <h3>Une négation est-elle une validation ?</h3><p>Non. « Aucune validation » reste à examiner. Même « ne jamais envoyer sans validation humaine » demande de vérifier qui relit et ce qui attend cette relecture. L’analyse n’interprète pas automatiquement la portée des négations.</p>
+    <h3>Où va ma consigne ?</h3><p>Elle reste en mémoire dans cette page. Recharger l’efface ; les copies et fichiers téléchargés restent sur votre appareil. Sans presse-papiers, le texte est sélectionné pour une copie manuelle.</p>
+  </section>
+</div>
+<script>
+  import { analysePrompt, validatePromptInput, EXAMPLE_PROMPT, proposeCorrection, exportPromptReport } from '@/lib/verificateur-prompt.mjs';
+  const root = document.querySelector<HTMLElement>('[data-prompt-verifier]');
+  if (root) {
+    const form = root.querySelector<HTMLFormElement>('form')!;
+    const input = root.querySelector<HTMLTextAreaElement>('#verifier-input')!;
+    const confirmed = form.elements.namedItem('confirmed') as HTMLInputElement;
+    const original = root.querySelector<HTMLTextAreaElement>('[data-original]')!;
+    const edited = root.querySelector<HTMLTextAreaElement>('[data-edited]')!;
+    const result = root.querySelector<HTMLElement>('[data-result]')!;
+    const error = root.querySelector<HTMLElement>('[data-error]')!;
+    const status = root.querySelector<HTMLElement>('[data-status]')!;
+    let analysis: ReturnType<typeof analysePrompt> | undefined;
+    let suggestion = '';
+    let stale = false;
+    const actions = [...root.querySelectorAll<HTMLButtonElement>('[data-copy-original],[data-copy-edited],[data-export]')];
+    let analyses = 0;
+    const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', { detail: { action, outil: 'verificateur-prompt-ia' } }));
+    const fail = (message: string, field: HTMLInputElement | HTMLTextAreaElement) => { error.textContent = message; error.hidden = false; field.setAttribute('aria-invalid', 'true'); field.focus(); };
+    const clearError = () => { error.hidden = true; input.removeAttribute('aria-invalid'); confirmed.removeAttribute('aria-invalid'); };
+    const valid = () => {
+      if (!analysis?.ok || stale) { status.textContent = 'Consigne modifiée : relancez l’analyse. Vos versions sont conservées.'; return false; }
+      const check = validatePromptInput(edited.value, confirmed.checked, 15000);
+      if (!check.ok) { status.textContent = check.error; edited.focus(); return false; }
+      return true;
+    };
+    form.addEventListener('input', () => { clearError(); if (analysis?.ok) { stale = true; actions.forEach(b => b.disabled = true); status.textContent = 'Consigne modifiée : analyse précédente conservée, copie et rapport attendent une nouvelle analyse.'; } });
+    form.addEventListener('submit', event => {
+      event.preventDefault(); clearError();
+      const next = analysePrompt(input.value, confirmed.checked);
+      if (!next.ok) { fail(next.error, confirmed.checked ? input : confirmed); emit('erreur'); return; }
+      if (edited.value && edited.value !== suggestion && !window.confirm('Remplacer votre proposition éditée par une nouvelle suggestion ?')) { status.textContent = 'Analyse annulée ; vos versions restent conservées.'; return; }
+      analysis = next; original.value = input.value; edited.value = suggestion = proposeCorrection(input.value, next); stale = false;
+      root.querySelector('[data-findings]')!.replaceChildren(...next.items.map(item => {
+        const li = document.createElement('li'); const heading = document.createElement('h3'); heading.textContent = `${item.label} : ${item.state}`;
+        const excerpt = document.createElement('blockquote'); excerpt.textContent = item.excerpt || 'Aucun extrait reconnu.';
+        const reason = document.createElement('p'); reason.textContent = item.reason;
+        const correction = document.createElement('p'); correction.textContent = `Piste : ${item.correction}`;
+        li.append(heading, excerpt, reason, correction); return li;
+      }));
+      root.querySelector('[data-warnings]')!.textContent = next.warnings.join(' ');
+      actions.forEach(b => b.disabled = false); result.hidden = false; status.textContent = 'Analyse locale terminée. Le sens et les réponses restent à vérifier humainement.'; root.querySelector<HTMLElement>('#verifier-result')!.focus();
+      analyses += 1; emit('reussite'); if (analyses > 1) emit('recalcul');
+    });
+    root.querySelector('[data-example]')!.addEventListener('click', () => {
+      if (input.value && !window.confirm('Remplacer la consigne saisie par l’exemple fictif ? Les éditions restent conservées.')) return;
+      input.value = EXAMPLE_PROMPT; confirmed.checked = false; form.dispatchEvent(new Event('input')); input.focus(); status.textContent = 'Exemple chargé : confirmez puis analysez. Aucun arrêt n’est précisé dans cet exemple.';
+    });
+    root.querySelector('[data-clear]')!.addEventListener('click', () => {
+      if ((input.value || edited.value) && !window.confirm('Effacer la consigne, les constats et la proposition ?')) return;
+      form.reset(); original.value = edited.value = suggestion = ''; analysis = undefined; stale = false; result.hidden = true; clearError(); status.textContent = 'Saisies et résultat effacés.'; input.focus();
+    });
+    edited.addEventListener('input', () => { status.textContent = 'Édition conservée. Les constats restent ceux de l’original ; le rapport reflétera cette édition.'; });
+    const copy = async (area: HTMLTextAreaElement) => {
+      if (!valid()) return;
+      try { await navigator.clipboard.writeText(area.value); status.textContent = 'Version copiée.'; emit('copie'); }
+      catch { area.focus(); area.select(); status.textContent = 'Texte sélectionné : utilisez votre raccourci de copie ou exportez le rapport.'; }
+    };
+    root.querySelector('[data-copy-original]')!.addEventListener('click', () => copy(original));
+    root.querySelector('[data-copy-edited]')!.addEventListener('click', () => copy(edited));
+    root.querySelector('[data-export]')!.addEventListener('click', () => {
+      if (!valid()) return;
+      const choice = root.querySelector<HTMLInputElement>('input[name="version"]:checked')!.value;
+      const report = exportPromptReport(original.value, edited.value, analysis, choice);
+      const url = URL.createObjectURL(new Blob([report], { type: 'text/plain;charset=utf-8' }));
+      try { const a = document.createElement('a'); a.href = url; a.download = 'rapport-structure-prompt.txt'; a.click(); status.textContent = 'Rapport exporté avec les deux versions et votre choix.'; emit('export'); }
+      finally { setTimeout(() => URL.revokeObjectURL(url), 0); }
+    });
+  }
+</script>
+<style>
+ .verifier,form,section { display:grid; gap:16px; min-width:0; }
+ h2 { font-size:var(--t-2xl); } h3 { font-size:var(--t-xl); }
+ p,blockquote { color:var(--texte-2); } label,legend { font-weight:600; color:var(--texte-fort); }
+ textarea { width:100%; min-width:0; padding:12px; min-height:48px; border:1px solid var(--texte-2); border-radius:var(--r-bouton); font:inherit; line-height:1.6; color:var(--texte-fort); background:var(--surface-feuille); resize:vertical; }
+ .confirmation,fieldset label { display:flex; gap:12px; align-items:center; min-height:44px; }
+ input { width:20px; height:20px; flex-shrink:0; }
+ .actions { display:flex; flex-wrap:wrap; gap:12px; } .btn { min-height:44px; white-space:normal; }
+ section { padding-top:24px; border-top:1px solid var(--ligne); }
+ ul { display:grid; gap:16px; padding-left:20px; } li,blockquote { overflow-wrap:anywhere; } blockquote { margin:12px 0; padding:12px; border-left:3px solid var(--ligne-forte); }
+ fieldset { border:1px solid var(--ligne); padding:16px; min-width:0; }
+ .error { color:var(--rouge); padding:12px; border-left:3px solid var(--rouge); }
+ [hidden] { display:none!important; }
+</style>

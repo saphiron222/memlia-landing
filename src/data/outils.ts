@@ -45,6 +45,21 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'verificateur-prompt-ia', categorie: 'verifier', statut: 'disponible',
+    h1: 'Vérificateur de prompt IA', title: 'Vérificateur de prompt IA | Memlia',
+    description: 'Repérez les contraintes absentes d’un prompt IA et préparez des corrections expliquées, sans confondre structure et fiabilité des réponses.',
+    promesse: { entree: 'Consigne abstraite existante, 10 000 caractères maximum', resultat: 'Constats expliqués, original conservé, proposition éditable et rapport complet' },
+    limites: [
+      'Analyse heuristique française locale, sans modèle ni score de fiabilité : une formulation détectée reste à relire.',
+      'Les négations et ambiguïtés restent à examiner. La proposition ajoute des pistes ; elle ne résout pas le sens ni les contradictions à votre place.',
+      'Une consigne vide, trop longue, non confirmée ou avec une coordonnée explicite est refusée sans effacer vos versions. Le filtre ne détecte pas tous les noms.',
+    ],
+    mentionLocale: 'La consigne, la proposition, les constats, la copie et le rapport restent dans ce navigateur, sans envoi ni stockage. Recharger efface la page ; les copies et fichiers téléchargés restent sur votre appareil.',
+    proof: 'v2/31-outil-verificateur-prompt', zoneLarge: true,
+    source: { nom: 'Méthode structurelle Memlia', url: '#verifier-methode', extrait: 'Cinq contraintes et des formulations françaises explicites, avec doute affiché. Aucun test de réponse de modèle ni certification.', verifieeLe: '5 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
     slug: 'preparer-pseudonymiser-fichier-csv-fec', categorie: 'preparer', statut: 'disponible',
     h1: 'Préparer et pseudonymiser un fichier comptable avant IA',
     title: 'Préparer et pseudonymiser un fichier comptable avant IA | Memlia',
