@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { createResourceFixture } from '../tests/scripts/resource-fixture.mjs';
 import { loadMetierEvidence } from './lib/resource-metier-evidence.mjs';
+import { carryResourceReview } from './lib/resource-review-carry.mjs';
 
 const root = process.cwd();
 const checkedAt = '2026-09-16T20:24:14+01:00'; // Date du corpus officiel, pas une date d’effet.
@@ -15,8 +16,8 @@ const checkedAt = '2026-09-16T20:24:14+01:00'; // Date du corpus officiel, pas u
 // glossaire (docs/qa/hub-ressources/glossaire-vague-1-sources) ont été prises au même moment.
 // Le matin du 16/09, deux formulations avaient changé depuis le 14/09 (licéité d’un dispositif de
 // contrôle, identification d’une personne physique) ; les citations suivent la page courante.
-// Heure de la revue métier en vigueur (R5) : le validateur exige que chaque verdict, chaque claim et
-// chaque copie de source soient antérieurs ou égaux à cet instant, et du même jour.
+// Date initiale pour un dossier sans revue reportée. Une revue existante conserve sa propre
+// campagne : les verdicts historiques ne sont ni redatés ni rejugés par le scellement.
 const revueCheckedAt = '2026-09-16T21:09:13+01:00';
 const buildCommand = 'npm run build:site'; // Chaîne complète, jouée hors scellement (voir la vérification plus bas).
 const publicEnv = { ...process.env };
@@ -119,16 +120,7 @@ function createManifest(adapter) {
   let revueReportee = null;
   if (existsSync(join(root, manifestPath))) {
     const precedent = JSON.parse(readFileSync(join(root, manifestPath), 'utf8'));
-    const revue = precedent?.claimsEvidence?.sensitiveMatter?.businessReview;
-    if (revue && typeof revue.status === 'string' && revue.status !== 'PENDING') {
-      revueReportee = {
-        revue: structuredClone(revue),
-        checkedAt: precedent.claimsEvidence.sensitiveMatter.checkedAt,
-        p0: [...(precedent.quality?.p0 ?? [])],
-        p1: [...(precedent.quality?.p1 ?? [])],
-        blocking: precedent.quality?.blocking ?? false,
-      };
-    }
+    revueReportee = carryResourceReview(precedent);
   }
   const sourcePath = isHub ? 'src/pages/ressources.astro' : 'src/data/glossary.ts';
   const outputPath = isHub ? 'dist/ressources.html' : 'dist/glossaire.html';
@@ -252,7 +244,7 @@ function createManifest(adapter) {
   manifest.claimsEvidence.sensitiveMatter = {
     detected: true,
     signals: [...new Set(surfaceEntries.filter((entry) => ['dsn', 'legal-reglementaire'].includes(entry.type)).map((entry) => entry.type))],
-    checkedAt: revueReportee?.checkedAt ?? revueCheckedAt,
+    checkedAt: revueReportee ? revueReportee.checkedAt : revueCheckedAt,
     businessReview: revueReportee ? revueReportee.revue : {
       required: true, reviewerId: null, reviewerType: null, reviewerProfile: null, reviewerRole: null,
       distinctFrom: ['author', 'editorialReviewer', 'sourceClassifier'], reviewedCandidateHash: null,
