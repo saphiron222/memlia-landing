@@ -268,5 +268,23 @@
     "sourceUrl": null,
     "capturedAt": "2026-10-05",
     "centralText": "Registre des entrées Jeu d’essai fictif · quatre qualifications préalables Protocole local Préparations et motifs Tous À revoir Cas Entrée déclarée État obtenu Transmission C-01 Contexte minimal fictif Préparation prête false C-02 Identifiant inutile présent Retirer identifiant false C-03 Environnement non confirmé Environnement inconnu false C-04 Contexte reconstructible Arbitrage humain false Qualification Humaine préalable Programme Routage seulement Modèle interrogé Aucun"
+  },
+  {
+    "id": "passage-registre",
+    "article": "automatiser-avec-ia-sans-changer-logiciel",
+    "alt": "Registre fictif F-012 à F-015 : proposition, déjà traité, entrée absente et saisie protégée.",
+    "source": "Reconstitution HTML fictive des quatre premiers résultats du script local rejouer-cas.mjs ; aucune connexion éditeur",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-05",
+    "centralText": "Registre du passage Jeu d’essai fictif · demande de pièces · septembre 2026 Préparation locale Entrées et sorties Tous Proposition Refus Dossier Entrée Sortie État F-012 · v1 relevé A, facture B P-F-012-v1 PROPOSITION F-013 Déjà traité DEJA_TRAITE REFUS F-014 Liste absente ENTREE_ABSENTE REFUS F-015 Saisie humaine SAISIE_PROTEGEE REFUS Proposition F-012 Pièces attendues : relevé A, facture B. Envoi Aucun"
+  },
+  {
+    "id": "passage-reprises",
+    "article": "automatiser-avec-ia-sans-changer-logiciel",
+    "alt": "Journal fictif des reprises : même proposition, version changée, état inconnu et accord périmé.",
+    "source": "Reconstitution HTML fictive des quatre derniers résultats de journal-rejeu.json ; règle locale séquentielle sans modèle",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-05",
+    "centralText": "Journal des reprises Jeu d’essai fictif · règle locale séquentielle Reprise du travail Propositions et décisions Tous Réutiliser Refus Cas État constaté Sortie Décision F-012 · v1 Même entrée P-F-012-v1 REUTILISER F-012 · v2 Version changée VERSION_CHANGEE REFUS F-016 État inconnu ETAT_INCONNU REFUS F-012 · v1 Accord sur P-F-012-v0 VALIDATION_PERIMEE REFUS Saisie F-015 conservée Texte corrigé par le collaborateur Connexion éditeur Aucune"
   }
 ]

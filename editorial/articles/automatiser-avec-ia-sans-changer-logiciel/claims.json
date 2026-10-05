@@ -1,0 +1,377 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-avec-ia-sans-changer-logiciel",
+  "articleSha256": "1ad37eb8139c10cc1278ade8acf47cc1783eb878b4d89b32ebd442ccc84c8351",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7ebadf1abfa6",
+      "text": "Pour automatiser avec l'IA sans changer de logiciel, commencez par un passage précis entre deux outils : quelle entrée lire, quelle proposition préparer, qui la valide et où constater la suite. Écrivez aussi ce qui arrive lors d'une reprise ou d'une modification humaine. La fiche ci-dessous permet de cadrer ce passage avant de choisir un accès technique, avec un essai fictif qui ne touche aucune saisie.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d87b614a746c",
+      "text": "Un prompt prépare une réponse ; un passage suit un état",
+      "claimIds": []
+    },
+    {
+      "id": "unit-389f1655f265",
+      "text": "Un passage entre outils est le transfert organisé d'une information d'un point de travail à un autre, avec une condition d'entrée et un résultat observable. Exemple : une liste de pièces manquantes devient un brouillon de demande, puis une décision inscrite dans le suivi. Ce n'est pas la migration de tout le dossier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-272a16f3b0e2",
+      "text": "Une source de vérité est l'emplacement désigné pour constater l'état courant. Si la liste de pièces est tenue dans un suivi partagé, le texte d'une conversation ne devient pas une nouvelle liste de référence. Une proposition est une sortie préparée et encore modifiable ; une saisie est une information que le collaborateur a enregistrée et que la préparation ne réécrit pas.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-cbf4f34f099c",
+      "text": "Le prompt pour expert-comptable aide à préparer une sortie ponctuelle. Ici, la question change : comment éviter de refaire une demande déjà traitée, de travailler sur une ancienne liste ou de perdre la décision au retour dans le suivi ? Un état explicite permet de reprendre au bon endroit. Une conversation seule n'apporte pas cette organisation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-77bf02fef9b5",
+      "text": "L'IA intervient si une partie de la préparation demande de reformuler ou de synthétiser. La détection d'un identifiant déjà traité, la lecture d'un état ou le contrôle d'une version restent des règles explicites. Inutile de demander au modèle de deviner si un dossier a déjà été pris en charge.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-55bc5a8fac57",
+      "text": "Pourquoi le passage casse à la main",
+      "claimIds": []
+    },
+    {
+      "id": "unit-01e1ef12538c",
+      "text": "Le collaborateur ouvre le suivi, vérifie les pièces, prépare un texte ailleurs, le corrige, puis retourne inscrire la suite. Entre ces gestes, une pièce arrive ou une autre personne traite le dossier. Le brouillon reste plausible, mais il ne correspond plus à l'état courant.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-572fcb22129c",
+      "text": "La règle implicite tient souvent dans une phrase : « Je vérifie une dernière fois avant de reprendre ce que j'avais préparé. » Celui qui connaît le dossier sait où regarder, ce qu'il avait déjà changé et ce qu'il ne faut pas refaire. Si ce savoir reste dans sa tête, la reprise par un collègue devient une enquête.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d029ec721b43",
+      "text": "L'objet à automatiser est ce passage entier, pas seulement la rédaction du message. La carte des tâches du cabinet sert à choisir la famille de travail ; la fiche suivante descend au niveau d'une entrée, d'une proposition et d'un résultat vérifiable.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6a1abb7ff3c9",
+      "text": "Avant de commencer : décrire un seul geste",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5a74240963bb",
+      "text": "Choisissez un geste que l'équipe sait aujourd'hui terminer à la main. Conservez un exemple entièrement fictif du point de départ et du point d'arrivée. Le premier essai peut porter sur une demande de pièces préparée à partir d'un suivi, sans aucun envoi.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1cb7e50f0ea1",
+      "text": "Réunissez ces éléments :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4f7b87b4e652",
+      "text": "- l'emplacement qui indique l'état courant du dossier ; - les champs utiles à la préparation, avec un exemple de valeur ; - la personne chargée de relire et de décider ; - l'endroit où elle saisit sa décision ; - le signe observable que le geste est terminé ; - un cas incomplet et un cas déjà traité.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-db837cf385d3",
+      "text": "Si la tâche n'est pas encore claire, commencez par choisir un premier usage ChatGPT. Si le besoin est surtout de choisir un fournisseur, utilisez plutôt la grille de choix d'un logiciel IA en comptabilité. Ce guide ne classe pas les éditeurs et ne suppose aucun accès disponible dans votre logiciel.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f6d32b0b0b66",
+      "text": "La fiche de passage à copier",
+      "claimIds": []
+    },
+    {
+      "id": "unit-37677727beeb",
+      "text": "Voici une fiche remplie pour une démonstration de demande de pièces. Remplacez les valeurs fictives, mais gardez les questions. Elle peut vivre dans un document partagé ; aucun compte supplémentaire n'est nécessaire pour écrire la règle.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-47cadb783702",
+      "text": "| Champ | Exemple fictif rempli | Question à résoudre chez vous | |---|---|---| | Geste | Préparer une demande de pièces | Quel résultat complet attend le collaborateur ? | | Source de vérité | Suivi local F-012, version v1 | Où lit-on l'état courant avant chaque reprise ? | | Déclencheur | Demande explicite de préparation | Qui lance le passage, à quel moment ? | | Clé de travail | F-012 + période 2026-09 + demande-pieces | Comment reconnaît-on le même travail ? | | Entrée minimale | Identifiant fictif, période, état, version, liste des pièces | Quels champs suffisent au geste ? | | Condition | État à préparer, liste renseignée, aucune saisie humaine | Quand est-il possible de préparer ? | | Proposition | P-F-012-v1, texte de demande en brouillon | Où la sortie reste-t-elle distincte de la saisie ? | | Validation | Relecture par le responsable du dossier | Qui décide de garder ou de corriger ? | | Destination | Zone de brouillon, puis suivi tenu par le collaborateur | Quel emplacement est réellement accessible ? | | Exception | Version changée, pièce absente, dossier déjà traité | Quel motif suspend la préparation ? | | Trace | Identifiant de proposition, version d'entrée, résultat | Quelle preuve permet de comprendre la reprise ? | | Fin du passage | Décision saisie, état constaté dans le suivi | Comment sait-on que le geste a abouti ? | | Reprise | Lire l'état ; réutiliser le même brouillon si rien n'a changé | Comment éviter une seconde proposition inutile ? | | Retour arrière | Écarter le brouillon, reprendre la tâche à la main | Que peut-on retirer sans toucher aux saisies ? | | Propriétaire de la règle | Référent de la tâche, remplaçant désigné | Qui traite un nouveau motif d'exception ? |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-55591d296dfd",
+      "text": "La clé de travail identifie le geste, pas le texte. Deux brouillons formulés différemment peuvent concerner la même demande. La version décrit l'entrée utilisée : une proposition préparée sur v1 ne devient pas valide pour v2 simplement parce qu'elle paraît bien écrite.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d0a9c63f898f",
+      "text": "Gardez aussi l'identifiant de la proposition relue. Dire « validé » sans préciser quelle proposition a été lue laisse une ambiguïté dès qu'une nouvelle sortie existe. La trace sert à retrouver une décision, pas à classer les collaborateurs selon leur cadence.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9730f11fcdf8",
+      "text": "Vérifier le format et l'accès réellement disponibles",
+      "claimIds": []
+    },
+    {
+      "id": "unit-888b76ca9e25",
+      "text": "Avant de construire, demandez un essai sur le geste retenu. Un accès en lecture ne prouve pas un accès en écriture. Une liste de connecteurs ne prouve pas que votre version, vos droits et votre format sont couverts.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1d37f75a634f",
+      "text": "| Voie envisagée | Essai concret à demander | Motif de maintien manuel | |---|---|---| | Export puis import | Export fictif lu, colonnes reconnues, aperçu du résultat avant import | Champ ambigu, doublon ou destination non contrôlée | | API, accès programmé à un outil | Lecture de l'objet fictif, droits constatés, résultat et erreur observés | Accès absent, écriture trop large ou retour inexploitable | | Préparation à côté de l'outil | Brouillon distinct, reprise manuelle et état final vérifié | La copie crée plus de travail que le geste initial |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-18d3c8044112",
+      "text": "Ce tableau décrit des essais à mener, pas des intégrations testées ici. Aucune connexion à une messagerie ou à un logiciel comptable n'est utilisée dans notre démonstration. Si le format de destination est inconnu, le résultat reste une proposition à relire hors de cette destination.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f449b1ec8ef4",
+      "text": "Distinguez le contrôle de passage de la qualité du texte. La FAQ de la CNIL indique : « Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles » (CNIL, questions-réponses sur l'IA générative). Un statut de préparation réussi ne certifie donc pas le contenu proposé. La checklist de vérification d'une réponse IA traite cette relecture.",
+      "claimIds": [
+        "claim-unit-f449b1ec8ef4-1"
+      ]
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-492ff6fc1c7c",
+      "text": "La frontière. Pour le passage fictif de demande de pièces, les responsabilités se lisent ainsi :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-292cec7d4071",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Lire l'état, vérifier les champs, produire ou retrouver le brouillon | Texte proposé et version d'entrée encore courante | Juger le besoin, modifier le texte, saisir la décision et envoyer |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0dddb3d85dfe",
+      "text": "La proposition. Nous séparons P-F-012-v1 de la zone de saisie humaine. La préparation produit un brouillon identifié ; une reprise identique retrouve ce brouillon au lieu d'en fabriquer un second. Le cabinet garde son suivi et les modifications du collaborateur. La validation humaine porte sur une proposition identifiée, pas sur un dossier abstrait.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e175339f970e",
+      "text": "L'arrêt. Dans cette règle, la préparation cesse si un champ est absent, si l'état est inconnu, si le dossier est déjà traité, si une saisie humaine existe ou si la version a changé depuis la proposition. Chaque refus nomme son motif. Une nouvelle version exige une nouvelle préparation explicitement demandée ; elle n'efface pas la proposition précédente.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-756b9ea0c0ef",
+      "text": "Le jeu d'essai. Le jeu d'essai fictif est un ensemble d'entrées inventées pour vérifier la règle avant un vrai dossier. Nous avons exécuté huit cas locaux : préparation, déjà traité, entrée absente, saisie protégée, reprise identique, version changée, état inconnu et accord sur une ancienne proposition. Le script teste les états et la séparation des zones, pas une IA ni un logiciel éditeur.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b52cf309f4a6",
+      "text": "Les sorties ci-dessous proviennent du rejeu local de cette règle. Le texte de démonstration est construit à partir d'une liste fictive ; ce ne sont pas des réponses obtenues de ChatGPT. Aucun modèle n'a été interrogé, aucun message envoyé et aucune écriture métier créée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6bc4f0e3269c",
+      "text": "| Cas joué | Sortie obtenue | Décision | |---|---|---| | F-012, v1, deux pièces attendues | PROPOSITION / P-F-012-v1 | Relire « Pièces attendues : relevé A, facture B. » | | F-013 déjà traité | REFUS / DEJATRAITE | Ne pas préparer une nouvelle demande | | F-014 sans liste de pièces | REFUS / ENTREEABSENTE | Renseigner l'entrée avant reprise | | F-015 avec « Texte corrigé par le collaborateur » | REFUS / SAISIEPROTEGEE | Garder cette saisie inchangée | | Reprise de F-012, v1, même entrée | REUTILISER / P-F-012-v1 | Retrouver la proposition existante | | F-012 passé à v2 après préparation | REFUS / VERSIONCHANGEE | Écarter l'ancienne proposition du passage courant | | F-016 avec état inconnu | REFUS / ETATINCONNU | Faire qualifier l'état | | Accord sur P-F-012-v0, alors que P-F-012-v1 est courant | REFUS / VALIDATIONPERIMEE | Relire la proposition courante |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d6f9e47df4ec",
+      "text": "Dans le premier cas, le brouillon contient exactement les deux éléments de la liste d'entrée. Cela prouve la construction déterministe de ce texte de démonstration, pas la fiabilité d'une reformulation générée. Dans le quatrième, la saisie reste identique après l'appel. Dans le cinquième, l'identifiant reste P-F-012-v1 : la reprise n'ajoute pas une seconde proposition.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2dbb31891687",
+      "text": "Reprendre et revenir en arrière sans perdre une décision",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2455dc601438",
+      "text": "Une reprise commence par relire la source de vérité. Si l'état est traité, le passage est clos. Si une saisie humaine est présente, la préparation laisse la place au collaborateur. Si l'entrée n'a pas changé et qu'une proposition existe, elle retrouve cette sortie. Si la version a changé, elle présente le motif plutôt que de réutiliser un brouillon périmé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1e52bfc6c239",
+      "text": "Le retour arrière porte sur ce que la préparation possède : son brouillon, son état d'essai et son journal. Il ne signifie pas effacer une décision humaine. Si un message a déjà été envoyé ou une écriture enregistrée dans un autre outil, la suite se traite dans cet outil avec son responsable ; ce guide ne démontre aucune annulation de ces actions.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c03900444d2b",
+      "text": "Testez cette séparation avant d'automatiser une destination. Faites modifier le texte par un collaborateur dans le cas fictif, puis relancez la préparation. Si elle écrase sa modification, le passage n'est pas prêt. Faites aussi rejouer le même identifiant deux fois : un second lancement ne devrait pas être une seconde action.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-32a2ee019694",
+      "text": "Quand garder la tâche manuelle",
+      "claimIds": []
+    },
+    {
+      "id": "unit-33fe9781b214",
+      "text": "Gardez le geste manuel lorsque ses règles changent à chaque dossier, lorsque la source de vérité n'est pas identifiée ou lorsque la destination ne permet pas de constater le résultat. Un prompt ponctuel peut rester utile à la rédaction, même si le passage ne se prête pas encore à une automatisation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6f67523e01e3",
+      "text": "Pour évaluer l'intérêt, observez le geste complet : lecture, préparation, relecture, exceptions, saisie finale et reprise. Notez les opérations répétées et celles qui demandent réellement du jugement. Un texte obtenu rapidement n'est pas un gain si le collaborateur passe ensuite plus de temps à rétablir les pièces manquantes ou à retrouver la version.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5064e58d89e0",
+      "text": "Avant un engagement, précisez ce qui sera maintenu : format des entrées, accès, règle, cas d'essai, destination et traitement d'une panne. Un changement d'accès ou de colonne peut justifier de suspendre la préparation. Le coût dépend de ces contraintes ; aucun prix ni délai fictif ne permet de trancher pour votre tâche.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5f23419bd669",
+      "text": "Les erreurs fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-36bcfb42035b",
+      "text": "- Prendre une réponse pour un état. Un message « terminé » ne prouve pas que le suivi de référence a changé. - Confondre reprise et nouveau lancement. Sans clé de travail, le même geste peut produire deux demandes. - Valider une ancienne version. L'accord porte sur la proposition relue et sur son entrée, pas sur toutes les sorties futures. - Mélanger proposition et saisie. Si elles occupent la même zone, une nouvelle préparation peut détruire le travail humain. - Choisir une connexion avant la règle. Un accès technique ne résout ni les exceptions ni le propriétaire du passage.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4cbb7609d18d",
+      "text": "Faut-il changer de logiciel pour utiliser l'IA ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-993a261b1c20",
+      "text": "Pas pour écrire cette fiche ni pour tester une préparation séparée. Le choix technique vient ensuite, à partir des accès et formats réellement disponibles. Garder le logiciel ne signifie pas que toute connexion est possible.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-19367aad27df",
+      "text": "L'IA doit-elle piloter tout le passage ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5e0b66dcc01e",
+      "text": "Non. Les identifiants, états, versions et conditions de reprise peuvent être contrôlés par des règles déterministes. Réservez l'IA au geste de préparation qui en a besoin, avec une sortie relue.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-34287ee0b1d2",
+      "text": "Que faire si deux personnes traitent le même dossier ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b2b1980978b3",
+      "text": "Désignez un suivi de référence et vérifiez l'état au moment de la décision. Une réalisation technique devra éprouver les accès concurrents et empêcher une double action ; notre rejeu local séquentiel ne teste pas cette concurrence. Sans cette preuve, conservez une décision et une saisie manuelles.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3429c955c830",
+      "text": "Un export suffit-il à automatiser ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ecb850622443",
+      "text": "Il peut suffire à préparer un brouillon séparé. Il ne prouve ni l'import correct dans la destination ni la fraîcheur de l'état au moment de la reprise. Testez les deux extrémités du passage sur le même cas fictif.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-169b7c41b2e2",
+      "text": "Comment savoir si la tâche est prête ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-89ccc78abee4",
+      "text": "Un collègue peut remplir la fiche, rejouer le cas courant, nommer les refus et retrouver le résultat sans demander à l'auteur ce qu'il avait en tête. L'équipe peut alors recetter la réalisation : vérifier, sur les cas convenus, qu'elle fait bien le geste décrit.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-19458687cc27",
+      "text": "Automatiser dans l'existant commence par écrire le passage et sa reprise, pas par choisir une connexion. La proposition se régénère ; la saisie humaine se conserve.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2fb86753000c",
+      "text": "Nous prenons en charge la mécanique de ce passage : observer le geste, écrire ses états et ses exceptions, vérifier les accès, construire la préparation dans vos outils et la faire recetter par votre équipe. Vous gardez le jugement et la décision sur le dossier. Notre méthode décrit ce travail ; le service d'automatisation des tâches du cabinet en précise le périmètre.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-f449b1ec8ef4-1",
+      "unitId": "unit-f449b1ec8ef4",
+      "claim": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles",
+      "type": "information",
+      "sourceIds": [
+        "cnil-risques"
+      ],
+      "sourceExcerpts": {
+        "cnil-risques": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles"
+      },
+      "checkedAt": "2026-10-05",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-05",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-risques",
+            "sourceUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "verifiedUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "excerpt": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles",
+            "context": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles (on parle alors souvent d’hallucinations).",
+            "contextSha256": "65e29b5a3272a7a630e4d18353aeb425a0ede8f15a09072e61f589c26ca1a7bf",
+            "citation": {
+              "text": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles",
+              "sha256": "3139805c8b462e0e003cb468b75daca2068d40e2a4f07a9ccaed5430a16576cc",
+              "sourceContentSha256": "75976e27d1ed71b1c1063a36114c72bc73827c694b2a2acd4001deceed36df3b",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+                "checkedAt": "2026-10-05",
+                "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 770,
+                  "endLine": 770
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "systemes",
+                "peuvent",
+                "generer",
+                "resultats",
+                "inexacts",
+                "pourtant",
+                "paraitre",
+                "plausibles"
+              ],
+              "reasoning": "La citation, relevée à la ligne 770 de la copie locale de CNIL, porte les mêmes entités que le claim (systemes, peuvent, generer, resultats, inexacts, pourtant, paraitre, plausibles) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation exacte du risque, aucune estimation de taux d'erreur ni conseil réglementaire.",
+            "checkedAt": "2026-10-05"
+          }
+        ]
+      }
+    }
+  ]
+}
