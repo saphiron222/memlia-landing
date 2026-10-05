@@ -1,7 +1,9 @@
 ---
 import Picto from '@/components/Picto.astro';
 import ProofRow from '@/components/ProofRow.astro';
-import { GARANTIES } from '@/data/garanties';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['garanties']; }
+const { contenu = contenuDe('ec').garanties } = Astro.props;
 
 /**
  * S3 — Grille de garanties (spec §4.9), à la place des logos clients.
@@ -10,11 +12,11 @@ import { GARANTIES } from '@/data/garanties';
 ---
 
 <section id="garanties" class="garanties" aria-labelledby="garanties-titre">
-  <div class="garanties-media"><ProofRow id="09-garanties">
+  <div class="garanties-media"><ProofRow id={contenu.image}>
   <div class="garanties-tete">
     <div class="garanties-phrase">
-      <h2 id="garanties-titre" class="garanties-h2">Nos engagements, écrits avant de développer.</h2>
-      <a class="btn btn-lien" href="#questions">Lire les réponses <Picto nom="fleche" taille={14} /></a>
+      <h2 id="garanties-titre" class="garanties-h2">{contenu.titre}</h2>
+      <a class="btn btn-lien" href="#questions">{contenu.invitation} <Picto nom="fleche" taille={14} /></a>
     </div>
     <span class="garanties-sep" aria-hidden="true"></span>
 
@@ -22,7 +24,7 @@ import { GARANTIES } from '@/data/garanties';
 
   <div class="garanties-proof-list">
   <ul class="garanties-grille rv" data-garanties>
-    {GARANTIES.map((g) => (
+    {contenu.liens.map((g) => (
       <li class="garantie">
         <a href={g.href} class="garantie-lien">
           <Picto nom={g.picto} taille={24} class="garantie-picto" />
