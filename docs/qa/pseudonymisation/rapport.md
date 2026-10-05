@@ -1,4 +1,4 @@
-# Outil 10 — candidat local vérifié, production à constater
+# Outil 10 — publication et correctif public constatés le 05/10/2026
 
 Route : `/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec`.
 Branche : `feat/pseudonymiser-t_163dc43d`, base distante main fraîche au démarrage.
@@ -43,7 +43,23 @@ L’ajout du footer généré change réellement le HTML des pages existantes : 
 
 H1/OG identiques, description unique, canonical absolu propre ; WebPage + WebApplication + BreadcrumbList. Entrée type outil et catégorie Préparer. Hub/footer proviennent de la collection. Trois entrants contextuels du candidat : hub, garanties, méthode. Remplacement décidé de l’entrant vérificateur FEC par méthode, car le frère n’est pas encore livré sur main ; pas de lien vers 404. Le frère pourra pointer ici à sa propre livraison. Sortants hub/méthode/contact existants. Sitemap et contrats de requête contrôlés par build.
 
-## Transmission
+## Publication et levée de réserve publiques — 05/10/2026
+
+La publication initiale PR62 a été constatée par t_6136db60 : main `3535c1bab48ca7a6026fa0ee652fbfac6a9e5ac3`, Cloudflare `532fed42-ecc6-49c6-8b93-a2c3fa46671e` SUCCESS, 33 parcours domaine et 10 déploiement PASS, 18 GET no-cache et 36 exports réels. Sa réserve publique était le beacon Cloudflare refusé par CSP : mobile 97/100/92/100, desktop 100/100/92/100 avec collecte robots HTTP distincte. Les résultats locaux ci-dessus restent l’historique, pas les résultats de production.
+
+Le correctif [PR99](https://github.com/saphiron222/memlia-landing/pull/99) a été fusionné après Repository gates SUCCESS (run 37349025798) et la seule QA technique parente t_3a4ad04e PASS. Main `0473e1662acf24ffb630e6399e82f0afec83b44f` ; Cloudflare Pages `68abbf2c-2740-4af4-9a41-26ed871ed271` SUCCESS confirmé par le check GitHub 111971538823. URL de déploiement : https://68abbf2c.memlia.pages.dev ; URL canonique : https://memlia.fr/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec. Aucun déploiement manuel, aucun changement de compte ou de réglage global.
+
+Après ce succès :
+
+- `DELIVERY_URL` sur domaine et déploiement : 8 + 8 tests HTTP PASS, GET/HEAD et requêtes conditionnelles/Range, CSP inchangée, `no-transform`, aucun ETag/Last-Modified, corps complet sans beacon.
+- `QA_URL` sur domaine puis déploiement : 10 + 10 parcours `tests/browser/pseudonymisation.spec.ts` PASS ; imports, refus, préservation de l’import, Worker, aperçu, exports relus, reset, réseau/stockage, rendu aux six largeurs 320/375/768/1024/1440/1920.
+- Sonde complémentaire : 18 + 18 téléchargements CSV/rapport/mapping déclenchés réellement au clavier et relus, aux six largeurs sur les deux hôtes. Aucune erreur console/page, aucune requête beacon ni POST/payload dans les parcours observés. Ce contrôle ne vaut pas certification de confidentialité.
+- Build main local : 134 tests Python et 698 tests scripts PASS, 8 tests HTTP ignorés faute de `DELIVERY_URL` dans le build (rejoués séparément ci-dessus) ; Astro : 0 erreur, 0 warning, 9 hints préexistants.
+- Lighthouse public 13.4.1 : mobile **96/100/100/100**, desktop **100/100/100/100**, ordre performance/accessibilité/bonnes pratiques/SEO. Mesures du 05/10/2026 à 21:07 UTC avec `scripts/lighthouse.mjs --robots-crawler`, puis `--desktop`. Quatre axes ≥95 acquis sur ces mesures. Collecte robots HTTP hors document, audit Lighthouse natif inchangé, CSP non relâchée. LHR bruts et companions collector conservés sans retouche ; ce score ne prétend pas être celui du collecteur robots natif bloqué par CSP.
+
+Preuves : archive `outil10-publication-preuves.zip` remise sur t_5abc28b0, avec checks GitHub, logs HTTP/navigateur/build, captures, 36 exports et LHR/companions bruts. Le registre porte `publieLe: 2026-10-05` à partir du constat initial et du correctif. GSC, positions, backlinks, citations et J+7/J+28 restent ND faute de mesures réelles. La revue antérieure du fond et la QA technique unique sont conservées ; aucune nouvelle revue pour ces dates/liens/constats.
+
+## Transmission initiale (historique)
 
 Cette livraison d’implémentation ne prétend pas être en production. Une seule revue indépendante QA, puis publication et rejeu public constituent les cartes suivantes. Après intégration, recréer les preuves de chrome sur main courant (hotspots : registre outils/proofs/requêtes, tests/proof/test_build.py, renderer et preuves du glossaire). Ne pas imposer une seconde revue pour une date, un lien ou une preuve de chrome.
 
