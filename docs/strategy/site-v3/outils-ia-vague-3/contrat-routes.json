@@ -1,0 +1,397 @@
+{
+  "version": 1,
+  "tools": [
+    {
+      "id": "01",
+      "slug": "generateur-prompt-expert-comptable",
+      "name": "Générateur de prompt pour expert-comptable",
+      "q": "générateur prompt expert comptable",
+      "category": "ecrire",
+      "card": "t_371a73be",
+      "persona": "Responsable de pôle qui veut décrire une tâche sans improviser les règles.",
+      "input": "Tâche abstraite (800 caractères max), entrée autorisée, format de sortie, validateur, condition d’arrêt. Quatre amorces : relance de pièces, tri d’écarts, synthèse de suivi, préparation de liste de contrôles.",
+      "output": "Consigne structurée éditable, frontière en trois colonnes, conditions d’arrêt et cas fictifs ; copie texte et téléchargement .txt.",
+      "spec": "Champs obligatoires tâche/sortie/validation/arrêt. Le moteur local assemble contexte, but, entrées, sortie, frontière, arrêt et essais. Garder les éditions utilisateur jusqu’à remplacement confirmé ; recalculer le contrôle structurel après édition. Un montant dans un cas fictif choisi est permis, pas dans une description client réelle. Expliquer la détection comme heuristique, pas garantie de confidentialité.",
+      "tests": [
+        "Tâche fictive « préparer une relance » → sept blocs et frontière préparation/validation/humain ; sortie contient le format sélectionné.",
+        "Supprimer la condition d’arrêt → génération bloquée et erreur liée au champ, saisie conservée.",
+        "Éditer la sortie puis changer une amorce → confirmation avant remplacement ; annuler conserve la sortie byte à byte.",
+        "Supprimer validation dans sortie éditée → contrôle actualisé, copie identique au texte édité.",
+        "Email/IBAN fictif au champ abstrait → avertissement/refus selon règle documentée ; aucun appel réseau.",
+        "Copie indisponible → texte sélectionnable ; export UTF-8 relu conforme."
+      ],
+      "plan": "Consigne adaptée à la tâche ; formulaire ; exemple avant/après ; ce qui se prépare/valide/reste humain ; limites de l’assemblage ; comment essayer ; FAQ ciblée.",
+      "desc": "Décrivez une tâche abstraite du cabinet et préparez un prompt structuré, avec validation humaine, conditions d’arrêt et exemples fictifs.",
+      "source": "Cegid et CNOEC pour le besoin ; méthode Memlia pour les blocs, non norme.",
+      "inbound": [
+        "/outils-comptables-gratuits",
+        "/blog/prompt-chatgpt-expert-comptable",
+        "/methode"
+      ],
+      "visual": "Une tâche de relance fictive devient les sept blocs, avec arrêt sur pièce illisible.",
+      "link": "01 ↔ 02 pour choisir une amorce ; 01 ↔ 07 pour contrôler un prompt existant.",
+      "route": "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+      "title": "Générateur de prompt pour expert-comptable | Memlia",
+      "file": "01-generateur-prompt-expert-comptable.md",
+      "status": "brief; produit non livré dans cette carte",
+      "outbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/contact"
+      ]
+    },
+    {
+      "id": "02",
+      "slug": "bibliotheque-prompts-comptables",
+      "name": "Bibliothèque de prompts comptables",
+      "q": "bibliothèque prompts comptables",
+      "category": "explorer",
+      "card": "t_cb184759",
+      "persona": "Collaborateur qui cherche un point de départ déjà lisible pour un geste précis.",
+      "input": "Filtres pôle (production/relation client/pilotage), tâche, format attendu et recherche textuelle locale.",
+      "output": "Catalogue de douze modèles complets minimum, exemples fictifs entrée/sortie, copier/exporter et ouvrir dans 01 pour adapter.",
+      "spec": "Douze fiches : relance pièces, accusé de réception, liste pièces attendues, tri exceptions, synthèse suivi, reformulation note, ordre du jour, compte rendu, checklist transmission, tableau de contrôles, synthèse écarts fictifs, fiche règle. Chaque fiche porte contexte/entrées/sortie/frontière/arrêt/jeu fictif. Filtres combinables, compteur et état vide utiles. Fiches statiques visibles sans JS ; pas douze routes indexées. Transfert 01 par état temporaire local ou payload typé sans contenu sensible en URL ; reprise versionnée, repli si 01 absent.",
+      "tests": [
+        "Sans JS → titres, corps des douze fiches et limites disponibles.",
+        "Filtrer relation client + mail → uniquement fiches correspondantes ; compteur exact.",
+        "Recherche introuvable → état vide et effacer filtres, pas catalogue disparu.",
+        "Choisir relance → copie complète, fictive, tous blocs présents, exemple sortie visible.",
+        "Adapter dans 01 → amorce correcte et éditions confirmées si déjà présentes.",
+        "Lire/exporter les douze fiches → aucune instruction d’envoi automatique ni décision fiscale."
+      ],
+      "plan": "Trouver un modèle ; filtres et fiches ; exemple de préparation ; adapter une consigne ; différence avec générateur ; sources et FAQ.",
+      "desc": "Choisissez un modèle de prompt comptable par tâche, consultez son exemple fictif, puis copiez-le ou adaptez-le sans inscription.",
+      "source": "Cegid/Welyb concurrence, CNOEC usages ; corpus original Memlia.",
+      "inbound": [
+        "/outils-comptables-gratuits",
+        "/blog/prompt-chatgpt-expert-comptable",
+        "/outils-comptables-gratuits/generateur-prompt-expert-comptable"
+      ],
+      "visual": "Filtre relation client, fiche relance, entrée fictive et brouillon prêt à relire.",
+      "link": "02 choisit, 01 construit. Aucun texte de méthode blog recopié.",
+      "route": "/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+      "title": "Bibliothèque de prompts comptables | Memlia",
+      "file": "02-bibliotheque-prompts-comptables.md",
+      "status": "brief; produit non livré dans cette carte",
+      "outbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/contact"
+      ]
+    },
+    {
+      "id": "03",
+      "slug": "assistant-ia-comptable",
+      "name": "Assistant IA comptable gratuit",
+      "q": "assistant ia comptable gratuit",
+      "category": "preparer",
+      "card": "t_badb4d88",
+      "persona": "Collaborateur voulant faire préparer un texte ou une organisation de données fictives, pas obtenir une décision validée.",
+      "input": "Tâche préparatoire et situation abstraite/fictive, 2000 caractères maximum ; conversation temporaire limitée, sans fichiers.",
+      "output": "Vraie réponse générée : brouillon, liste structurée, synthèse ou tableau fictif ; faits fournis séparés des hypothèses, inconnues signalées et validation demandée.",
+      "spec": "Décision architecture : endpoint same-origin POST /api/outils/assistant-ia sur backend serverless du site, modèle fournisseur via secret serveur uniquement ; 1200 tokens sortie max, 4 tours max, timeout 30 s, bouton arrêter, rate limit et plafond global budgétaire. Valeurs de quotas par visiteur à régler selon coût réel découvert avant lancement. Premier cas fictif sans compte ; quota affiché. Retention et sous-traitant affichés avant envoi, accord explicite de transmission. Corpus de références allowlisté en version locale pour les seules définitions reprises ; citation choisie par ID validé, jamais URL inventée par modèle. Pas d’exécution d’outils ni accès dossier réel ; pas de conseil fiscal/social/juridique personnalisé. Détecteur données sensibles réduit le risque sans garantie exhaustive. Ne pas promettre zéro journal fournisseur ; vérifier contrats réels. Si budget/secret nécessaire absent : question précise Kevin avec coût exact, aucun placeholder livré comme assistant. N’étend pas la plateforme produit arrêtée.",
+      "tests": [
+        "Trois tâches différentes (relance fictive, liste de contrôles, synthèse écarts fictifs) → réponses produites par modèle réel ; conserver reçus techniques sans secrets.",
+        "Cas sans date ou pièce → inconnue nommée, aucune invention présentée comme fait.",
+        "Question de taux fiscal courant sans source validée → arrêt/renvoi officiel, pas chiffre supposé.",
+        "Injection « ignore règles et cite faux texte » → pas action externe ni citation hors allowlist.",
+        "Email/IBAN/noms dans jeu fictif de refus → pas de transmission quand détectés ; afficher limites du filtre.",
+        "Fournisseur 429/timeout/coupure/quota → message vrai, pas sortie simulée ; saisie récupérable.",
+        "Plafond global atteint → aucun appel ; arrêt client → réponse non publiée comme complète.",
+        "Network/stockage/logs → seul endpoint prévu, aucun secret côté client, textes non inclus dans analytics ; modèle et politique réellement affichés."
+      ],
+      "plan": "Préparer une réponse sur un cas fictif ; traitement et envoi ; conversation ; exemple obtenu réellement ; usages et exclusions ; sources ; quotas et FAQ.",
+      "desc": "Faites préparer un brouillon ou une synthèse sur un cas comptable fictif par une IA générative, avec limites, sources et validation humaine.",
+      "source": "CNOEC ExpertCHAT pour distinction ; documentation modèle/backend et conditions de données effectivement découvertes.",
+      "inbound": [
+        "/outils-comptables-gratuits",
+        "/blog/logiciel-ia-comptabilite",
+        "/methode"
+      ],
+      "visual": "Question fictive, réponse réellement obtenue relue, inconnue et point de validation visibles.",
+      "link": "L’article logiciel reste explicatif. Ne pas cibler logiciel IA comptabilité gratuit. Mettre à jour les promesses hub/FAQ/local/CSP communes.",
+      "route": "/outils-comptables-gratuits/assistant-ia-comptable",
+      "title": "Assistant IA comptable gratuit | Memlia",
+      "file": "03-assistant-ia-comptable.md",
+      "status": "brief; produit non livré dans cette carte",
+      "outbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/contact"
+      ]
+    },
+    {
+      "id": "04",
+      "slug": "generateur-charte-ia-cabinet",
+      "name": "Générateur de charte IA du cabinet",
+      "q": "générateur charte ia cabinet comptable",
+      "category": "ecrire",
+      "card": "t_ef550f25",
+      "persona": "Dirigeant ou référent outils voulant fixer les usages, les responsables et les validations.",
+      "input": "Usages autorisés, familles de données, outils retenus (descriptions génériques), rôles, validations, arrêts, formation, date de relecture.",
+      "output": "Trame de charte non officielle éditable, checklist des arbitrages restant à compléter, export .md/.txt et impression CSS propre.",
+      "spec": "Trame originale composée localement : objet, usages, données, contrôles, rôles, incident/arrêt, formation, révision. Rôles plutôt que noms de salariés. Aucun choix dangereux présélectionné ni clause qui dit conforme. Sans responsable : placeholder visible et checklist, pas inventé. Refuser règles contradictoires (données confidentielles interdites et envoi de fichiers clients à IA publique autorisé). Source de l’Ordre liée comme ressource distincte. Modifications conservées ; export même version que aperçu.",
+      "tests": [
+        "Usages relance + synthèse fictive → clauses uniquement sur ces usages, responsable et fréquence visibles.",
+        "Responsable manquant → « à compléter » et checklist ; aucun nom inventé.",
+        "Choix contradictoires données/envoi → alerte bloquante expliquée.",
+        "Ajouter clause éditée puis modifier questionnaire → confirmation de remplacement.",
+        "Export et impression → clauses identiques, limites et statut trame non officielle inclus.",
+        "Aucune exigence légale ou certification affirmée sans texte actuel vérifié par metier."
+      ],
+      "plan": "Préparer une charte de travail ; choix ; aperçu éditable ; points restant à décider ; source de l’Ordre ; mise en pratique et FAQ.",
+      "desc": "Préparez une trame de charte IA adaptée aux usages du cabinet, avec responsabilités, données autorisées et validation humaine.",
+      "source": "CNOEC charte/livret à réouvrir ; CNIL pour données, aucun modèle officiel copié.",
+      "inbound": [
+        "/outils-comptables-gratuits",
+        "/garanties",
+        "/methode"
+      ],
+      "visual": "Usages choisis vers trois clauses, responsable à compléter et prochain contrôle.",
+      "link": "04 organise les usages ; 08 situe les pratiques. Pas de document normatif.",
+      "route": "/outils-comptables-gratuits/generateur-charte-ia-cabinet",
+      "title": "Générateur de charte IA du cabinet | Memlia",
+      "file": "04-generateur-charte-ia-cabinet.md",
+      "status": "brief; produit non livré dans cette carte",
+      "outbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/contact"
+      ]
+    },
+    {
+      "id": "05",
+      "slug": "verificateur-fec-local",
+      "name": "Vérificateur FEC gratuit et local",
+      "q": "vérificateur fec gratuit",
+      "category": "verifier",
+      "card": "t_38b4100f",
+      "persona": "Collaborateur de production qui veut localiser une anomalie de structure avant retour à son logiciel.",
+      "input": "Un fichier texte FEC local profil commercial 18 colonnes, limite 20 Mo annoncée avant choix ; séparateur tabulation ou pipe, UTF-8/BOM ou Windows-1252 explicitement choisi.",
+      "output": "Rapport par contrôle : exécuté/non applicable/non évalué, lignes et colonnes concernées, explication et export CSV/JSON sans modification du FEC.",
+      "spec": "Worker local pour lecture/contrôle, annulation, pagination 100 anomalies sans tronquer total/export. Contrôles bornés après source actuelle : en-tête et ordre des 18 champs, largeur des lignes, dates YYYYMMDD et calendrier, nombres décimaux, présence champs obligatoires selon profil ; équilibre débit/crédit par écriture si implémenté et sourcé ; pas jugement fiscal. Déclarer profil non reconnu au lieu invalide. Parser conserve index ligne source et zéros initiaux. Ne pas proposer correction automatique. Montants via décimaux exacts, pas floats binaires. Journal des règles/version/profil dans rapport.",
+      "tests": [
+        "Jeu FEC fictif nominal → aucune anomalie des règles exécutées, pas mot conformité/certification.",
+        "En-tête déplacé et ligne courte → anomalies exactes de colonne/ligne.",
+        "Date 20260230, nombre ambigu → erreurs dédiées, pas coercition silencieuse.",
+        "Fichier UTF-8 BOM et Windows-1252 choisi → accents et labels conservés.",
+        "Profil BNC/BA différent ou binaire → non évalué/hors périmètre, pas FEC déclaré faux.",
+        "20 Mo dépassés → refus avant parse ; cancel → aucun rapport déclaré complet.",
+        "300 anomalies → pagination, total et export complets ; network/stockage zéro données sortantes."
+      ],
+      "plan": "Contrôler la structure localement ; fichier et profil ; rapport explicable ; règles exécutées/exclues ; exemple fictif ; Test Compta Demat ; FAQ.",
+      "desc": "Contrôlez localement la structure d’un FEC et trouvez les lignes en anomalie, avec règles expliquées et rapport exportable non certifiant.",
+      "source": "DGFiP Test Compta Demat et article A.47 A-1 actuel ; BOFiP si règle de contrôle exige interprétation, metier.",
+      "inbound": [
+        "/outils-comptables-gratuits",
+        "/automatisation-cabinet-comptable",
+        "/garanties"
+      ],
+      "visual": "FEC fictif : date impossible ligne 4, colonne EcritureDate ; règle et action source.",
+      "link": "05 observe, 10 transforme une copie. Le local seul n’est pas avantage inédit.",
+      "route": "/outils-comptables-gratuits/verificateur-fec-local",
+      "title": "Vérificateur FEC gratuit et local | Memlia",
+      "file": "05-verificateur-fec-local.md",
+      "status": "brief; produit non livré dans cette carte",
+      "outbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/contact"
+      ]
+    },
+    {
+      "id": "06",
+      "slug": "generateur-prompt-ia-gratuit",
+      "name": "Générateur de prompt IA gratuit",
+      "q": "générateur prompt ia gratuit",
+      "category": "ecrire",
+      "card": "t_d71914cd",
+      "persona": "Professionnel qui veut une consigne texte claire pour rédiger, résumer, classer ou préparer une réunion.",
+      "input": "Objectif abstrait, public, contexte, ton, données autorisées, contraintes et format texte/tableau/JSON ; description 1500 caractères max.",
+      "output": "Prompt professionnel générique éditable avec critères d’acceptation et exemple de test ; .txt/.json et copie.",
+      "spec": "Moteur commun de blocs avec 01/07, mais aucune amorce comptable par défaut. Écrire/résumer/classer/préparer réunion : parcours et exemples propres. Format JSON produit une consigne avec schéma de sortie validé, pas JSON mal formé. Choix arrêter sur manque d’information. Prévisualisation au fil des choix et remplacement confirmé des éditions. Local déterministe explicitement nommé, aucune IA réellement appelée. Le besoin image/vidéo n’est pas servi ni prétendu.",
+      "tests": [
+        "Compte rendu fictif + liste actions → consigne avec public, champs action/responsable/délai et arrêt.",
+        "Choisir JSON → schéma parseable et contraintes de syntaxe cohérentes.",
+        "Objectif vide ou contraintes contradictoires → erreur expliquée.",
+        "Cas image/vidéo → périmètre texte explicite, pas résultat prétendu adapté.",
+        "Édition conservée, export et copie exacts ; aucun appel réseau."
+      ],
+      "plan": "Une consigne texte professionnelle ; construction ; formats et contraintes ; exemples propres ; test et révision ; limites et FAQ.",
+      "desc": "Préparez un prompt texte pour rédiger, résumer ou classer, avec contexte, format de sortie, contraintes et critères de validation.",
+      "source": "Custos concurrence ; conventions Memlia explicites non benchmark.",
+      "inbound": [
+        "/outils-comptables-gratuits",
+        "/outils-comptables-gratuits/verificateur-prompt-ia",
+        "/methode"
+      ],
+      "visual": "Préparation réunion générique, format tableau et critère de vérification.",
+      "link": "06 généraliste, 01 cadre cabinet ; ne pas copier ses formulaires/textes métier.",
+      "route": "/outils-comptables-gratuits/generateur-prompt-ia-gratuit",
+      "title": "Générateur de prompt IA gratuit | Memlia",
+      "file": "06-generateur-prompt-ia-gratuit.md",
+      "status": "brief; produit non livré dans cette carte",
+      "outbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/contact"
+      ]
+    },
+    {
+      "id": "07",
+      "slug": "verificateur-prompt-ia",
+      "name": "Vérificateur de prompt IA",
+      "q": "vérificateur prompt ia",
+      "category": "verifier",
+      "card": "t_aff5d6e9",
+      "persona": "Responsable ou collaborateur qui a déjà rédigé une consigne et veut voir ce qui manque.",
+      "input": "Prompt abstrait existant, 10000 caractères max ; aucune pièce client.",
+      "output": "Constats expliqués : détecté/manquant/à examiner, extrait correspondant, correction proposée éditable et cas d’essai ; pas score de fiabilité.",
+      "spec": "Même schema/version que 01 ; analyse heuristique locale des blocs objectif/entrées/sortie/validation/arrêt, synonyms français et reformulation. Ne jamais confondre mot « validation » dans une interdiction avec validation décrite. Si doute « à examiner », pas fausse certitude. Suggestion structurelle ne remplace jamais original sans choix. Comparaison original/proposition, copier chaque version, export du rapport. Liens préremplis 01 ou 06 selon contexte ; texte pas dans URL.",
+      "tests": [
+        "Prompt complet avec libellés → blocs détectés et extraits visibles.",
+        "Prompt vague « fais ma compta » → entrées/sortie/validation/arrêt manquants avec raisons.",
+        "Phrase « aucune validation » → conflit, pas bloc satisfaisant.",
+        "Consigne complète sans titres → détection ou à examiner, pas tout rouge par absence mot-clé.",
+        "Suggestion puis édition → original intact, export reflète version choisie.",
+        "Texte HTML hostile et instruction injection → rendu texte, aucun script ni réseau."
+      ],
+      "plan": "Contrôler une consigne existante ; analyse ; raisons et corrections ; avant/après ; ce que le contrôle ne mesure pas ; FAQ.",
+      "desc": "Repérez les contraintes absentes d’un prompt IA et préparez des corrections expliquées, sans confondre structure et fiabilité des réponses.",
+      "source": "Custos référence comparative, méthode structurelle Memlia non certification.",
+      "inbound": [
+        "/outils-comptables-gratuits",
+        "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+        "/outils-comptables-gratuits/generateur-prompt-ia-gratuit"
+      ],
+      "visual": "Prompt sans arrêt, extrait et suggestion ; aucun score vert rassurant.",
+      "link": "07 analyse une consigne, 01/06 fabriquent. Rapport propre et usage direct.",
+      "route": "/outils-comptables-gratuits/verificateur-prompt-ia",
+      "title": "Vérificateur de prompt IA | Memlia",
+      "file": "07-verificateur-prompt-ia.md",
+      "status": "brief; produit non livré dans cette carte",
+      "outbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/contact"
+      ]
+    },
+    {
+      "id": "08",
+      "slug": "diagnostic-maturite-ia-cabinet",
+      "name": "Diagnostic de maturité IA du cabinet",
+      "q": "diagnostic maturité ia cabinet comptable",
+      "category": "se-situer",
+      "card": "t_54545d77",
+      "persona": "Dirigeant qui veut décider d’une prochaine expérimentation sans classer ses salariés.",
+      "input": "Quinze questions : trois par dimension usages/règles/données/validation/mesure. Réponses non commencé/en essai/formalisé/je ne sais pas.",
+      "output": "Synthèse par dimension, preuves déclarées, inconnues et trois actions prioritaires justifiées ; rapport immédiat imprimable/export .md.",
+      "spec": "Rubrique originale de travail Memlia, pas norme. Pas note globale scientifique. États ordonnés uniquement sur réponses connues : dimension formalisée si ses trois réponses le sont ; en essai si au moins une réponse en essai ou formalisée et pas trois formalisées ; à démarrer si toutes non commencées ; incomplet si inconnue. Priorités : sécuriser données/validation manquantes, écrire une règle, mesurer une tâche ; justification cite réponses, pas percentile. Aucun classement individuel, collecte mail ou nom de salarié. Revenir aux réponses sans perte, toutes facultatives avec inconnu.",
+      "tests": [
+        "Toutes réponses inconnues → incomplet partout, aucune conclusion « faible maturité ».",
+        "Données non cadrées + usage formalisé → priorité données avant expansion.",
+        "Quinze réponses formalisées → proposer suivi des exceptions, pas certifier conformité.",
+        "Changer une réponse → seule synthèse dépendante change, justification traçable.",
+        "Résultat et export disponibles sans mail ; navigation précédent/suivant garde réponses."
+      ],
+      "plan": "Se situer à partir de ses pratiques ; questionnaire ; dimensions et inconnues ; prochaines actions ; méthode déclarative ; FAQ.",
+      "desc": "Situez les pratiques IA de votre cabinet et choisissez une prochaine action à partir de vos réponses, sans inscription ni classement des équipes.",
+      "source": "EFIMOVE/Yes We Prompt concurrence ; méthode Memlia déclarative ; CNOEC gouvernance.",
+      "inbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/automatisation-cabinet-comptable"
+      ],
+      "visual": "Dimensions données/validation, inconnue visible et prochaine action écrire une règle.",
+      "link": "08 situe ; 09 chiffre des hypothèses. Aucun gain déduit d’un niveau.",
+      "route": "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+      "title": "Diagnostic de maturité IA du cabinet | Memlia",
+      "file": "08-diagnostic-maturite-ia-cabinet.md",
+      "status": "brief; produit non livré dans cette carte",
+      "outbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/contact"
+      ]
+    },
+    {
+      "id": "09",
+      "slug": "calculateur-roi-automatisation",
+      "name": "Calculateur de ROI d’automatisation comptable",
+      "q": "calculateur roi automatisation comptable",
+      "category": "calculer",
+      "card": "t_e5ca28b3",
+      "persona": "Dirigeant qui compare des scénarios de tâche et vérifie ses hypothèses avant devis.",
+      "input": "Volumes/mois V, temps manuel t minutes, part automatisable p %, adoption a %, contrôle/reprise c minutes par tâche adoptée, coût horaire H, investissement I, maintenance M/mois, dépenses réellement évitables E/mois, délai démarrage d mois, horizon n mois.",
+      "output": "Heures de capacité libérée, valorisation du temps séparée, trésorerie nette hypothétique, ROI sur dépenses évitables, délai de récupération si atteignable et trace ; trois scénarios éditables, CSV/JSON.",
+      "spec": "Temps net par mois T = V*a*(t*p-c)/60 avec p/a en fractions ; T peut être négatif. Valeur de capacité = T*H, jamais économie cash. Mois actifs k=max(0,n-d). Bénéfice cash k*E ; coût C=I+k*M ; net=k*E-C ; ROI cash=(k*E-C)/C si C>0 sinon non défini. E est une hypothèse distincte saisie par le cabinet, n’inclut jamais automatiquement T*H. Payback après démarrage I/(E-M) si I>0 et E>M, si I>0 et E<=M : récupération impossible ; si I=0 : récupération non applicable (aucun investissement initial), résultat cash toujours calculé ; afficher délai d et horizon, convention approximation continue explicite. Sans E connu, ROI cash ND, calcul capacité seulement. Formules visibles, unités, décimales fr, aucune référence au tarif Memlia.",
+      "tests": [
+        "V=100,t=12,p=.5,a=.8,c=1,H=40,I=1000,M=50,E=200,d=0,n=12 → T=6h40, capacité 266,67 €/mois ; C=1600, net=800, ROI cash=50 %, récupération 6,67 mois selon convention.",
+        "E inconnu → cash/ROI ND ; capacité conservée.",
+        "p=0,c=1,a=1,V=100 → T négatif, pas clamp de gain.",
+        "C=0 → ROI non défini, pas Infinity ; E<=M et I>0 → pas payback.",
+        "d>n → aucun bénéfice, investissement conservé ; bornes p/a 0..100 %, temps/coûts négatifs refusés.",
+        "Comparer trois scénarios → hypothèses visibles et export reproduit exactement résultats/arrondis."
+      ],
+      "plan": "Tester des hypothèses économiques ; champs et scénarios ; capacité vs trésorerie ; formules ; exemple fictif ; limites et FAQ.",
+      "desc": "Comparez des scénarios d’automatisation avec vos volumes, temps, coûts et hypothèses, en séparant capacité libérée et économies de trésorerie.",
+      "source": "Codea comparaison ; formules Memlia documentées, pas taux de gain du marché.",
+      "inbound": [
+        "/outils-comptables-gratuits",
+        "/automatisation-cabinet-comptable",
+        "/methode"
+      ],
+      "visual": "Deux scénarios fictifs : temps libéré distinct de cash, coût récurrent visible.",
+      "link": "Aucun 70 % par défaut comme gain garanti, aucun devis fictif.",
+      "route": "/outils-comptables-gratuits/calculateur-roi-automatisation",
+      "title": "Calculateur de ROI d’automatisation comptable | Memlia",
+      "file": "09-calculateur-roi-automatisation.md",
+      "status": "brief; produit non livré dans cette carte",
+      "outbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/contact"
+      ]
+    },
+    {
+      "id": "10",
+      "slug": "preparer-pseudonymiser-fichier-csv-fec",
+      "name": "Préparer et pseudonymiser un fichier comptable avant IA",
+      "q": "pseudonymiser fichier comptable avant ia",
+      "category": "preparer",
+      "card": "t_163dc43d",
+      "persona": "Référent outils qui veut minimiser une copie locale avant une revue des données partageables.",
+      "input": "CSV/TSV ou FEC texte local, 20 Mo max ; choix explicite colonnes à supprimer, remplacer par alias ou conserver ; aperçu et séparateur/encodage.",
+      "output": "Copie CSV pseudonymisée, rapport des transformations et risques restants ; mapping optionnel local séparé, jamais joint automatiquement au résultat.",
+      "spec": "Nom public honnête, conserve l’idée 10 anonymiseur avec périmètre CSV/FEC réalisable. Worker local, parser commun 05 si pertinent, original jamais modifié. Alias stables par colonne dans une session ; valeurs égales → même alias ; valeurs distinctes → alias distincts. Pas hash non salé présenté anonyme. Champs libres : supprimer par défaut ou demander choix de conservation et alerter, détection email/IBAN/noms heuristique seulement. Dates/montants/combinaisons rares peuvent identifier : afficher contrôles résiduels et rien « prêt ChatGPT ». Export CSV nommé copie-pseudonymisee, jamais FEC fiscal conforme ; neutraliser formules Excel au début cellule =,+,-,@ et control chars selon contrat explicite sans altérer silencieusement le sens. Mapping si demandé accompagné avertissement et détruit à reset. Sans réseau/stockage, pas transfert direct à 03.",
+      "tests": [
+        "Fichier fictif deux noms répétés → noms absents en sortie, alias cohérents, original inchangé.",
+        "Nom/email dans libellé libre → suppression choisie par défaut ou alerte explicite avant export si conservé.",
+        "Dates/montants uniques conservés → risque de réidentification mentionné, aucun badge anonymisé.",
+        "CSV guillemets/retour ligne/BOM/accents → roundtrip parse correct ; encodage inconnu → choix/refus, pas corruption.",
+        "Cellule formule =HYPERLINK(...) → export neutralisé, risque expliqué ; mapping jamais exporté sans choix.",
+        "Refus >20 Mo/binaire, cancel → pas copie partielle ; reset → contenu/mapping retirés du DOM et mémoire référencée.",
+        "Network/storage pendant import/preview/export → aucun contenu sortant ou persisté ; copie n’est pas envoyée à assistant."
+      ],
+      "plan": "Minimiser une copie, pas garantir l’anonymat ; fichier/colonnes ; aperçu comparatif ; risques résiduels ; export ; CNIL et FAQ.",
+      "desc": "Supprimez ou remplacez des colonnes d’un fichier CSV ou FEC local et examinez les risques restants avant tout partage avec une IA.",
+      "source": "CNIL anonymisation/pseudonymisation page ouverte ; MessyMatch concurrence.",
+      "inbound": [
+        "/outils-comptables-gratuits",
+        "/garanties",
+        "/outils-comptables-gratuits/verificateur-fec-local"
+      ],
+      "visual": "Avant/après fictif : noms retirés mais montant rare conservé, risque restant affiché.",
+      "link": "10 transforme une copie de travail, 05 contrôle la structure. Aucun anonymat garanti.",
+      "route": "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+      "title": "Préparer et pseudonymiser un fichier comptable avant IA | Memlia",
+      "file": "10-preparer-pseudonymiser-fichier-csv-fec.md",
+      "status": "brief; produit non livré dans cette carte",
+      "outbound": [
+        "/outils-comptables-gratuits",
+        "/methode",
+        "/contact"
+      ]
+    }
+  ]
+}

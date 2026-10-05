@@ -373,11 +373,19 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByLabel('Durée d’utilisation').fill('5');
       await page.getByRole('button', { name: 'Calculer le plan' }).click();
       await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
+
+    } else if (outil.slug === 'generateur-prompt-expert-comptable') {
+      await page.getByRole('button', { name: 'Demande de pièces', exact: true }).click();
+      await page.getByLabel(/Je confirme que cette description/).check();
+      await page.getByRole('button', { name: 'Assembler le prompt' }).click();
+      await expect(page.locator('[data-output]')).toBeVisible();
+
     } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
       await page.locator('[data-example]').click();
       await expect(page.locator('[data-selection]')).toBeVisible();
       await page.locator('[data-preview]').click();
       await expect(page.locator('[data-after]')).toContainText('C1_000001');
+
     } else if (outil.slug === 'calculateur-roi-automatisation') {
       await page.getByRole('button', { name: 'Charger trois exemples fictifs' }).click();
       await page.getByRole('button', { name: 'Comparer les trois scénarios' }).click();
