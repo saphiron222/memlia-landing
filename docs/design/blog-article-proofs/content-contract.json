@@ -232,5 +232,23 @@
     "sourceUrl": null,
     "capturedAt": "2026-10-04",
     "centralText": "File des essais Jeu d’essai fictif · règle locale · 4 octobre 2026 Sélection des demandes Quatre cas exécutés Tous À préciser Hors périmètre Cas Demande Statut obtenu Sortie Envoi E-01 Reformuler · D-012 ESSAI_SELECTIONNE Brouillon à relire false E-02 Décision fiscale HORS_PERIMETRE Aucune préparation false E-03 Reformuler · contexte vide CONTEXTE_ABSENT Contexte à préciser false E-04 Reformuler et envoyer ENVOI_NON_AUTORISE Brouillon à relire false Règle Déterministe locale Modèle interrogé Aucun Reformulation générée Aucune"
+  },
+  {
+    "id": "verification-registre",
+    "article": "verifier-reponse-ia-comptabilite",
+    "alt": "Registre fictif V-01 à V-05 : affirmation, source, qualification préalable et décision de routage.",
+    "source": "Reconstitution HTML fictive des cinq résultats de journal-rejeu.json ; routage local de qualifications humaines",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-04",
+    "centralText": "Registre de vérification Jeu d’essai fictif · D-012 · cinq qualifications humaines Brouillon de démonstration Affirmations et décisions Tous À corriger À rechercher Cas Affirmation Source Qualification Décision V-01 Préparer la liste des pièces NOTE-A-v1 Fidèle au document GARDER V-02 Retour le 12 octobre NOTE-A-v1 Date non étayée CORRIGER V-03 Validation unique Introuvable Source introuvable RECHERCHER V-04 Réunion confirmée jeudi NOTE-A-v1 Réserve omise CORRIGER V-05 Réunion jeudi NOTE-B-v1 / v2 Arbitrage humain ECARTER Programme local Routage des états Modèle interrogé Aucun Saisie Aucune"
+  },
+  {
+    "id": "verification-fiche-reserve",
+    "article": "verifier-reponse-ia-comptabilite",
+    "alt": "Fiche fictive V-04 : réunion confirmée comparée à la réserve de NOTE-A-v1, décision CORRIGER.",
+    "source": "Reconstitution HTML fictive de NOTE-A-v1 et V-04 ; comparaison humaine, pas détection automatique",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-04",
+    "centralText": "Fiche affirmation et source Jeu d’essai fictif · V-04 · NOTE-A-v1 Contrôle de la phrase Réserve omise CORRIGER Brouillon écrit pour l’essai La réunion est confirmée jeudi. Passage de NOTE-A-v1 Réunion jeudi, sous réserve de confirmation. Comparaison humaine La réserve de confirmation est perdue. Texte proposé à relire Réunion jeudi, sous réserve de confirmation. Motif du routage RESERVE_OMISE Destination Brouillon interne à relire État de la vérification V-04 Document Fictif Qualification Humaine Règle locale Routage seulement Modèle interrogé Aucun Saisie Aucune Correction à relire"
   }
 ]

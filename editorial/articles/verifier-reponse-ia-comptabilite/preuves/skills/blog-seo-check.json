@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "candidateSlug": "verifier-reponse-ia-comptabilite",
+  "kind": "skill",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+  "manifestSha256": "23990afd99d4ebaab4075a2276c4bad97d248fed1e4fb04edc4e184e7f924b4e",
+  "observations": [
+    "Titre 73 caractères, onglet 53, description 146 ; 7 lien(s) interne(s) : /blog/prompt-chatgpt-expert-comptable, /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /blog/utiliser-chatgpt-cabinet-comptable, /glossaire#validation-humaine, /blog/logiciel-ia-comptabilite, /methode, /garanties ; 2 lien(s) externe(s) dans le corps.",
+    "Un H1, quinze H2, cinq questions H3 et sommaire du gabarit ; sujet = vérifier un brouillon avant utilisation.",
+    "Canonical cible et cinq types JSON-LD décodés ; noindex de preview explicite, aucun contrôle d'une URL publique du candidat.",
+    "Sept liens internes du corps et ancre du glossaire vérifiés dans le rendu local. /blog et entrants de frères restent à constater après publication.",
+    "Autocomplétions réellement stockées mais vides, GSC parent daté sans nouvelle interrogation ni performance de cette URL."
+  ],
+  "skill": "blog-seo-check"
+}

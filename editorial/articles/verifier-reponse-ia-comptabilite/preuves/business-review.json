@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "candidateSlug": "verifier-reponse-ia-comptabilite",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+  "manifestSha256": "23990afd99d4ebaab4075a2276c4bad97d248fed1e4fb04edc4e184e7f924b4e",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact verifier-reponse-ia-comptabilite."
+  ],
+  "reviewerId": "qa:t_2352a08b",
+  "role": "collaborateurs-comptables",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-8f1af07a1121-1-cnil-hallucinations",
+      "candidateSlug": "verifier-reponse-ia-comptabilite",
+      "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+      "claimId": "claim-unit-8f1af07a1121-1",
+      "claimSha256": "3139805c8b462e0e003cb468b75daca2068d40e2a4f07a9ccaed5430a16576cc",
+      "sourceId": "cnil-hallucinations",
+      "sourceContentSha256": "edf84c196d4400cb025d7c1de0c6fd5c2d96b5ed20a3e238219ac3208fc71f69",
+      "citationSha256": "3139805c8b462e0e003cb468b75daca2068d40e2a4f07a9ccaed5430a16576cc",
+      "reviewerId": "qa:t_2352a08b",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-05",
+      "reasoning": "CNIL, FAQ du 18/07/2024, section 2 ; extrait exact dans la copie native ligne 770 et dans la réponse HTTP 200 ouverte par QA. Le paragraphe parle des limitations des modèles génératifs et nomme les hallucinations. Le corps conserve la modalité peuvent et refuse d'en tirer un taux d'erreur propre au cabinet. Cette explication informationnelle n'est pas une règle fiscale ou RGPD."
+    },
+    {
+      "id": "review-claim-unit-08e68f32393c-1-cnil-hallucinations",
+      "candidateSlug": "verifier-reponse-ia-comptabilite",
+      "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+      "claimId": "claim-unit-08e68f32393c-1",
+      "claimSha256": "0f19763a399c32ab28eb9ccda3cc7cea2b2b2d7f821aba1980eebc6fee204306",
+      "sourceId": "cnil-hallucinations",
+      "sourceContentSha256": "edf84c196d4400cb025d7c1de0c6fd5c2d96b5ed20a3e238219ac3208fc71f69",
+      "citationSha256": "0f19763a399c32ab28eb9ccda3cc7cea2b2b2d7f821aba1980eebc6fee204306",
+      "reviewerId": "qa:t_2352a08b",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-05",
+      "reasoning": "Même FAQ CNIL, section 2, copie native ligne 772 et ouverture HTTP 200 de QA : la citation porte bien sur le risque de décisions ou conclusions erronées lorsque la confiance remplace une vérification appropriée. Le corps l'utilise pour justifier la lecture des appuis, non pour certifier l'efficacité de sa checklist ou imposer une obligation professionnelle nouvelle."
+    }
+  ]
+}

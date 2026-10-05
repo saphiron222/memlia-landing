@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "candidateSlug": "verifier-reponse-ia-comptabilite",
+  "kind": "skill",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+  "manifestSha256": "23990afd99d4ebaab4075a2276c4bad97d248fed1e4fb04edc4e184e7f924b4e",
+  "observations": [
+    "Réponse directe en tête (69 mots au premier paragraphe) ; définitions extractibles dans le corps.",
+    "Réponse directe et définitions autonomes, conventions de décision explicites, périmètre et réserve conservés.",
+    "Deux citations CNIL soutiennent seulement l'explication des risques ; les notes et calculs fictifs ont une autre preuve, le rejeu.",
+    "Cinq tableaux avec en-têtes et détail textuel initial ; figures non indispensables à la compréhension.",
+    "Aucune mesure de citation, accès public ou recommandation de moteur IA ; le score est une heuristique éditoriale interne."
+  ],
+  "skill": "blog-geo"
+}

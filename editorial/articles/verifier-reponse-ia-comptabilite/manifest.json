@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "slug": "verifier-reponse-ia-comptabilite",
+  "action": "creation",
+  "editorialStatus": "publie",
+  "title": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+  "tabTitle": "Vérifier réponse IA comptabilité : checklist | Memlia",
+  "summary": "Une checklist complète pour relier chaque affirmation à sa source et à son périmètre, corriger les ajouts et garder la trace de la décision.",
+  "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+  "publicationDate": "2026-10-05",
+  "updatedAt": null,
+  "topics": [
+    "ia",
+    "automatisation"
+  ],
+  "keywords": [
+    "vérifier réponse IA comptabilité",
+    "hallucinations ChatGPT comptabilité",
+    "vérifier sources ChatGPT"
+  ],
+  "primaryQuery": "vérifier réponse IA comptabilité",
+  "secondaryQueries": [
+    "hallucinations ChatGPT comptabilité",
+    "vérifier sources ChatGPT",
+    "vérifier une réponse IA en comptabilité"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "affirmation et source",
+    "périmètre et réserves",
+    "quatre décisions"
+  ],
+  "role": {
+    "primary": "collaborateurs-comptables",
+    "secondary": [
+      "direction-associes"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-10-05"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "qa:t_2352a08b",
+    "role": "collaborateurs-comptables",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "numerique-it-data",
+  "famille": "ia-generative-agents",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Vérifier chaque affirmation d'un brouillon IA avant de l'utiliser dans un dossier de travail.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Cinq qualifications humaines fictives routées réellement sans modèle ; aucun détecteur sémantique revendiqué ; registre et fiche de contrôle.",
+  "sourcesVerifiedAt": "2026-10-04",
+  "sources": [
+    {
+      "id": "cnil-hallucinations",
+      "publisher": "CNIL",
+      "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+      "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "checkedAt": "2026-10-04",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "classificationReason": "Autorité de protection des données ; FAQ, explication des risques, pas nouveau conseil réglementaire.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/cnil-hallucinations.classification.json",
+      "verificationEvidence": "preuves/sources/cnil-hallucinations.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "qa",
+  "reviewRule": "Réviser à évolution des sources, du contrôle décrit ou de sa destination ; examiner les requêtes après accumulation de données finales.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de votre contrôle, automatisons sa mécanique dans vos outils et la faisons recetter par votre équipe. Vous gardez la lecture du fond et la décision sur le dossier. Rien à envoyer : la description suffit."
+  },
+  "image": {
+    "heroId": "img-art-verifier-reponse-ia-comptabilite",
+    "alt": "Une feuille vierge et trois points de vérification dans un diorama vert, graphite et crème",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-10-05"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-10-05"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/prompt-chatgpt-expert-comptable",
+      "/blog/logiciel-ia-comptabilite",
+      "/blog/utiliser-chatgpt-cabinet-comptable",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/methode",
+      "/garanties",
+      "/glossaire#validation-humaine"
+    ],
+    "incoming": [
+      "/blog"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/prompt-chatgpt-expert-comptable",
+      "/blog/logiciel-ia-comptabilite",
+      "/blog/utiliser-chatgpt-cabinet-comptable"
+    ],
+    "decision": "Contrôle de sortie et checklist, distincts de la consigne, du choix fournisseur et de la sélection d'usage."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  },
+  "publishedAt": "2026-10-05",
+  "publicationEvidence": "preuves/publication.json"
+}

@@ -176,6 +176,13 @@ export const IMAGES = {
     alt: "Trois plateaux de tâches et des fiches vierges dans un diorama vert, graphite et crème",
     generee: true,
   },
+  'img-art-verifier-reponse-ia-comptabilite': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Une feuille vierge et trois points de vérification dans un diorama vert, graphite et crème",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -183,6 +190,7 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-verifier-reponse-ia-comptabilite',
   'img-art-utiliser-chatgpt-cabinet-comptable',
   'img-art-tests-verts-trois-passes',
   'img-art-logiciel-ia-comptabilite',

@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "candidateSlug": "verifier-reponse-ia-comptabilite",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+  "manifestSha256": "23990afd99d4ebaab4075a2276c4bad97d248fed1e4fb04edc4e184e7f924b4e",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact verifier-reponse-ia-comptabilite."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "touche"
+      },
+      {
+        "hex": "#231f20",
+        "role": "touche"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "parts": {
+      "#fcfbf7": 0.7218576388888889,
+      "#27b657": 0.012881944444444444,
+      "#1c8a41": 0.032274305555555556,
+      "#231f20": 0.050277777777777775
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "statut": "PASS",
+    "ecarts": []
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Six composantes présentes dans recette.json ; couverture 1600 inspectée : une feuille crème vierge devant trois blocs verts, socle graphite, rendu 3D mat et éclairage doux. Alt cohérent. Les blocs évoquent une vérification mais ne montrent pas un contrôle réel exécuté."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Aucun texte, chiffre, logo, personnage ou interface dans la couverture. Palette du manifeste : crème dominante 0,7218576388888889 ; vert vif 0,012881944444444444, profond 0,032274305555555556 et graphite 0,050277777777777775 en touches. Mesure interne PASS sans prétendre une dominance verte."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Trace Higgsfield du job d04ce7ff-c463-4eca-83bc-08a626ffe5ff complété et source du 04/10/2026 conservées. Les deux figures sont des reconstitutions HTML, marquées Jeu d'essai fictif, qualifications humaines, modèle Aucun et saisie Aucune ; elles ne sont pas des captures d'un produit ou d'une session ChatGPT."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Registre V-01 à V-05 concordant avec les décisions du rejeu ; fiche V-04 compare la phrase confirmée à NOTE-A-v1 et rétablit la réserve dans un texte à relire. Grille RECETTE.md : oui aux cinq questions pour chacune des figures. Écrans d'outil concrets et fictifs, sans marque tierce, slogan, avertissement ni schéma d'étapes ; même famille visuelle que la référence crm-registre inspectée."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Dimensions décodées par sharp : master 1920 × 1080, OG 1200 × 630, dérivés 768/1200/1600 en WebP et AVIF. Figures 1600 × 900, respectivement 38268 et 33938 octets, sans variante mobile. Renderer --check rejoué : 28 cadres conformes. Ajouts des deux cadres/contrats uniquement ; aucune suppression ou modification d'une figure historique identifiée.",
+        "À 390 px, les figures de 356 px de large sont des aperçus : leurs petits libellés ne sont pas confortablement lisibles. Le détail déterminant est disponible dans les tableaux et paragraphes HTML, dont le déplacement horizontal réel a été vérifié."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Les alts du HTML reprennent la recette : registre fictif de qualifications et routage ; fiche fictive V-04 avec réserve omise et CORRIGER. Ils décrivent les écrans, sans attribuer une détection à une IA. L'alt de couverture décrit la feuille et trois points de vérification, pas une preuve métier."
+      ]
+    }
+  ]
+}
