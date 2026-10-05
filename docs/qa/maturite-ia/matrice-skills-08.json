@@ -1,7 +1,16 @@
 {
   "outil": "08",
   "route": "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
-  "scope": "Preuves locales d’implémentation ; QA indépendante et production non effectuées.",
+  "scope": "Preuves historiques locales conservées ; QA unique PASS t_873665dd et publication constatée le 05/10/2026 par t_0edf65c0. Les cellules locales ne deviennent pas des audits fournisseurs ni des résultats de visibilité.",
+  "production": {
+    "rapport": "livraison/rapport-production.md",
+    "url": "https://memlia.fr/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+    "deployment": "https://7e11e252.memlia.pages.dev",
+    "status": "Cloudflare build/deploy SUCCESS ; 22 parcours domaine et 22 déploiement PASS ; 20 GET sans cache PASS",
+    "largeurs": [320, 375, 768, 1024, 1440, 1920],
+    "seo": "Canonical, WebApplication sans AggregateRating, sitemap, hub/footer et liens méthode/service/hub constatés ; robots HTTP 200 séparément, CSP connect-src none préservée.",
+    "mesures": {"GSC": "ND", "backlinks": "ND", "J+7": "ND", "J+28": "ND"}
+  },
   "counts": {
     "Exécuté ciblé local": 30,
     "N/A motivé": 22,

@@ -1,0 +1,283 @@
+{
+  "observed_at": "2026-10-05T09:36:20.975926+00:00",
+  "deployment": {
+    "id": "7e11e252-d0a4-4892-aa5b-39674682c991",
+    "environment": "production",
+    "url": "https://7e11e252.memlia.pages.dev",
+    "created_on": "2026-10-05T09:17:52.969623Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": "2026-10-05T09:23:16.521954Z",
+      "ended_on": "2026-10-05T09:23:29.24216Z",
+      "status": "success"
+    },
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-05T09:17:53.104485Z",
+        "ended_on": "2026-10-05T09:17:53.106734Z",
+        "status": "success"
+      },
+      {
+        "name": "initialize",
+        "started_on": "2026-10-05T09:17:53.106734Z",
+        "ended_on": "2026-10-05T09:17:55.12701Z",
+        "status": "success"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": "2026-10-05T09:17:55.12701Z",
+        "ended_on": "2026-10-05T09:18:07.352115Z",
+        "status": "success"
+      },
+      {
+        "name": "build",
+        "started_on": "2026-10-05T09:18:07.352115Z",
+        "ended_on": "2026-10-05T09:23:16.521954Z",
+        "status": "success"
+      },
+      {
+        "name": "deploy",
+        "started_on": "2026-10-05T09:23:16.521954Z",
+        "ended_on": "2026-10-05T09:23:29.24216Z",
+        "status": "success"
+      }
+    ],
+    "deployment_trigger": {
+      "type": "github:push",
+      "metadata": {
+        "branch": "main",
+        "commit_hash": "818320af2aeef3aec192ce8377e8826ac82d6fba",
+        "commit_message": "Merge pull request #73 from saphiron222/feat/diagnostic-ia-t_54545d77\n\nDiagnostic d\u00e9claratif de maturit\u00e9 IA du cabinet",
+        "commit_dirty": false
+      }
+    }
+  },
+  "http": [
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 92542,
+      "content_type": "text/html; charset=utf-8",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+      "robots_header": null
+    },
+    {
+      "url": "https://memlia.fr/robots.txt",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 2619,
+      "content_type": "text/plain; charset=utf-8",
+      "csp": null,
+      "robots_header": null
+    },
+    {
+      "url": "https://memlia.fr/sitemap-0.xml",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 9187,
+      "content_type": "application/xml",
+      "csp": null,
+      "robots_header": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 59487,
+      "content_type": "text/html; charset=utf-8",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+      "robots_header": null
+    },
+    {
+      "url": "https://memlia.fr/methode",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 68091,
+      "content_type": "text/html; charset=utf-8",
+      "csp": null,
+      "robots_header": null
+    },
+    {
+      "url": "https://memlia.fr/automatisation-cabinet-comptable",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 79461,
+      "content_type": "text/html; charset=utf-8",
+      "csp": null,
+      "robots_header": null
+    },
+    {
+      "url": "https://memlia.fr/proofs/v2/30-outil-maturite.webp",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 55286,
+      "content_type": "image/webp",
+      "csp": null,
+      "robots_header": null
+    },
+    {
+      "url": "https://memlia.fr/proofs/v2/og/30-outil-maturite.webp",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 36494,
+      "content_type": "image/webp",
+      "csp": null,
+      "robots_header": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 88948,
+      "content_type": "text/html; charset=utf-8",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+      "robots_header": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 87914,
+      "content_type": "text/html; charset=utf-8",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+      "robots_header": null
+    },
+    {
+      "url": "https://7e11e252.memlia.pages.dev/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 92175,
+      "content_type": "text/html; charset=utf-8",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+      "robots_header": "noindex"
+    },
+    {
+      "url": "https://7e11e252.memlia.pages.dev/robots.txt",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 2619,
+      "content_type": "text/plain; charset=utf-8",
+      "csp": null,
+      "robots_header": "noindex"
+    },
+    {
+      "url": "https://7e11e252.memlia.pages.dev/sitemap-0.xml",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 9187,
+      "content_type": "application/xml",
+      "csp": null,
+      "robots_header": "noindex"
+    },
+    {
+      "url": "https://7e11e252.memlia.pages.dev/outils-comptables-gratuits",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 59120,
+      "content_type": "text/html; charset=utf-8",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+      "robots_header": "noindex"
+    },
+    {
+      "url": "https://7e11e252.memlia.pages.dev/methode",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 67724,
+      "content_type": "text/html; charset=utf-8",
+      "csp": null,
+      "robots_header": "noindex"
+    },
+    {
+      "url": "https://7e11e252.memlia.pages.dev/automatisation-cabinet-comptable",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 79094,
+      "content_type": "text/html; charset=utf-8",
+      "csp": null,
+      "robots_header": "noindex"
+    },
+    {
+      "url": "https://7e11e252.memlia.pages.dev/proofs/v2/30-outil-maturite.webp",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 55286,
+      "content_type": "image/webp",
+      "csp": null,
+      "robots_header": "noindex"
+    },
+    {
+      "url": "https://7e11e252.memlia.pages.dev/proofs/v2/og/30-outil-maturite.webp",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 36494,
+      "content_type": "image/webp",
+      "csp": null,
+      "robots_header": "noindex"
+    },
+    {
+      "url": "https://7e11e252.memlia.pages.dev/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 88581,
+      "content_type": "text/html; charset=utf-8",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+      "robots_header": "noindex"
+    },
+    {
+      "url": "https://7e11e252.memlia.pages.dev/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+      "request_headers": {
+        "Cache-Control": "no-cache"
+      },
+      "status": 200,
+      "bytes": 87547,
+      "content_type": "text/html; charset=utf-8",
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+      "robots_header": "noindex"
+    }
+  ],
+  "public_indexability": "HTTP/indexability signals checked, actual indexing ND",
+  "gsc": "ND",
+  "backlinks": "ND",
+  "J+7": "ND",
+  "J+28": "ND"
+}
