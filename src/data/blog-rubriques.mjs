@@ -1,5 +1,5 @@
 /**
- * Taxonomie éditoriale du blog : deux rubriques réelles, et seulement elles.
+ * Taxonomie éditoriale du blog : rubriques substantielles déclarées dans les données.
  *
  * Le rattachement vit ici pour que le hub, le fil d’Ariane, l’étiquette d’article et le pied de
  * page lisent la même décision. Les articles restent une collection Astro ; cette table ne

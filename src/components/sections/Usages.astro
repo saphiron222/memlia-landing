@@ -1,6 +1,7 @@
 ---
 
 import Picto, { type NomPicto } from '@/components/Picto.astro';
+import { FAMILLES, POLES } from '@/data/familles';
 const pictos: NomPicto[] = ['feuilles', 'bouclier', 'limites', 'flux', 'main'];
 
 const examples = [
@@ -14,7 +15,7 @@ const examples = [
 <section id="usages" class="uses" aria-labelledby="uses-title">
   <div class="uses-heading">
     <h2 id="uses-title">Toute tâche répétitive a une règle. Nous l’écrivons.</h2>
-    <p class="texte-2 lecture">De la collecte des pièces aux retours DSN, de la saisie au reporting : soixante familles de tâches, douze pôles, et pour chacune la frontière entre ce qui se prépare seul et ce qui se décide. Commencez par celle qui revient le plus.</p>
+    <p class="texte-2 lecture">De la collecte des pièces aux retours DSN, de la saisie au reporting : {FAMILLES.length} familles de tâches, {Object.keys(POLES).length} pôles, et pour chacune la frontière entre ce qui se prépare seul et ce qui se décide. Commencez par celle qui revient le plus.</p>
   </div>
   <div class="uses-grid">
     {examples.map((example, i) => (

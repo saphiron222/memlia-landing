@@ -1,4 +1,4 @@
-"""Oracle indépendant sur dist : aucun import du code Astro ou du manifeste produit."""
+"""Oracle indépendant sur dist : attentes issues des sources, aucun import du rendu Astro."""
 import hashlib
 import json
 import os
@@ -10,6 +10,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
+from source_inventory import source_export
 
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / 'dist'
@@ -24,6 +25,24 @@ INTEGRATION_PAGES = {
     'bulletin-de-paie-silae',
 }
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
+def fixed_pages():
+    """Pages racine Astro et index de collections : mêmes routes plates que le build."""
+    pages = {path.stem for path in (ROOT / 'src/pages').glob('*.astro')}
+    pages.update(path.parent.name for path in (ROOT / 'src/pages').glob('*/index.astro'))
+    return pages
+
+
+def integration_pages():
+    return [entry['slug'] for entry in source_export(ROOT, 'src/data/integrations.ts', 'INTEGRATIONS_INDEXABLES')]
+
+
+def assert_v2_proof_inventory(proof):
+    data = source_export(ROOT, 'src/data/proofs.ts', 'PROOFS')
+    expected = {f'{key.removeprefix("v2/")}.webp' for key in data if key.startswith('v2/')}
+    proof.assertGreaterEqual(len(expected), 37)
+    proof.assertEqual({path.name for path in (DIST / 'proofs/v2').glob('*.webp')}, expected)
+
+
 def public_articles():
     """Une source non-brouillon est attendue dans dist ; aucun nouveau slug n'est implicitement autorisé."""
     return {path.stem for path in (ROOT / 'src/content/blog').glob('*.md')
@@ -40,13 +59,9 @@ class PublicArticleInventoryProof(unittest.TestCase):
                 self.assertEqual(public_articles(), {'autorise'})
                 (source / 'autorise.md').write_text('---\nbrouillon: true\n---\nArticle')
                 self.assertEqual(public_articles(), set())
-BLOG_RUBRIQUES = {
-    'controler-les-bulletins-de-paie-avant-la-dsn': 'paie-dsn-cabinet-comptable',
-    'comprendre-les-comptes-rendus-metier-dsn': 'paie-dsn-cabinet-comptable',
-    'suivre-la-production-sociale-dans-excel': 'paie-dsn-cabinet-comptable',
-    'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier': 'gestion-pieces-comptables',
-    'automatiser-la-relance-des-pieces-clients': 'gestion-pieces-comptables',
-}
+BLOG_RUBRIQUES = {article: entry['slug']
+                 for entry in source_export(ROOT, 'src/data/blog-rubriques.mjs', 'BLOG_RUBRIQUES')
+                 for article in entry['articleIds']}
 
 
 class Document(HTMLParser):
@@ -164,6 +179,63 @@ def pillar_slugs():
     return trouves
 
 
+class SourceInventoryRegression(unittest.TestCase):
+    def test_page_fictive_et_integration_ajoutees_sont_attendues(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'src/pages/integrations').mkdir(parents=True)
+            (root / 'src/data').mkdir(parents=True)
+            (root / 'src/content/blog').mkdir(parents=True)
+            dist = root / 'dist'
+            (dist / 'integrations').mkdir(parents=True)
+            pages = sorted(set(PAGES_FIXES) | {'page-fictive'})
+            integrations = INTEGRATION_PAGES | {'integration-fictive'}
+            for slug in pages:
+                source = root / 'src/pages' / ('integrations/index.astro' if slug == 'integrations' else f'{slug}.astro')
+                source.write_text('---\n---\n<h1>Page</h1>')
+                (dist / f'{slug}.html').write_text('<html lang="fr"><h1>Page</h1></html>')
+            (root / 'src/data/integrations.ts').write_text(
+                'export const INTEGRATIONS_INDEXABLES = ' + json.dumps([{'slug': slug} for slug in sorted(integrations)]) + ';')
+            for slug in integrations:
+                (dist / 'integrations' / f'{slug}.html').write_text('<html lang="fr"><h1>Guide</h1></html>')
+            proof = BuildProof('test_pages_one_h1_french')
+            with patch.dict(globals(), ROOT=root, DIST=dist, PREVIEW_ARTICLES=set()):
+                proof.test_pages_one_h1_french()
+                (dist / 'page-fictive.html').rename(dist / 'intrus.html')
+                with self.assertRaises(AssertionError):
+                    proof.test_pages_one_h1_french()
+                (dist / 'intrus.html').rename(dist / 'page-fictive.html')
+                (dist / 'integrations/integration-fictive.html').rename(dist / 'integrations/intrus.html')
+                with self.assertRaises(AssertionError):
+                    proof.test_pages_one_h1_french()
+
+    def test_preuve_ajoutee_et_substitution_a_compte_constant(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'src/data').mkdir(parents=True)
+            dist = root / 'dist/proofs/v2'
+            dist.mkdir(parents=True)
+            names = {f'{number:02}-fictif.webp' for number in range(38)}
+            (root / 'src/data/proofs.ts').write_text(
+                'export const PROOFS = ' + json.dumps({f'v2/{Path(name).stem}': {} for name in names}) + ';')
+            for name in names:
+                (dist / name).write_bytes(b'preuve fictive')
+            with patch.dict(globals(), ROOT=root, DIST=root / 'dist'):
+                assert_v2_proof_inventory(self)
+                (dist / sorted(names)[0]).rename(dist / 'intrus.webp')
+                with self.assertRaises(AssertionError):
+                    assert_v2_proof_inventory(self)
+                # Des sources et un rendu amputés ensemble ne réduisent pas le plancher.
+                reduced = sorted(names)[2:]
+                for path in dist.glob('*.webp'):
+                    if path.name not in reduced:
+                        path.unlink()
+                (root / 'src/data/proofs.ts').write_text(
+                    'export const PROOFS = ' + json.dumps({f'v2/{Path(name).stem}': {} for name in reduced}) + ';')
+                with self.assertRaises(AssertionError):
+                    assert_v2_proof_inventory(self)
+
+
 class BuildProof(unittest.TestCase):
     def test_headline_identity_refuse_une_mutation_og(self):
         from tempfile import TemporaryDirectory
@@ -202,10 +274,17 @@ class BuildProof(unittest.TestCase):
 
     def test_pages_one_h1_french(self):
         pages = sorted(DIST.glob('*.html'))
-        self.assertEqual([p.stem for p in pages], PAGES_FIXES)
+        expected_pages = fixed_pages()
+        self.assertGreaterEqual(len(expected_pages), len(PAGES_FIXES))
+        self.assertTrue(set(PAGES_FIXES) <= expected_pages, 'pages historiques perdues')
+        self.assertEqual({p.stem for p in pages}, expected_pages)
         self.assertEqual({article.stem for article in articles()}, public_articles() | PREVIEW_ARTICLES)
         integrations = sorted((DIST / 'integrations').glob('*.html'))
-        self.assertEqual({page.stem for page in integrations}, INTEGRATION_PAGES)
+        expected_integrations = integration_pages()
+        self.assertGreaterEqual(len(expected_integrations), len(INTEGRATION_PAGES))
+        self.assertEqual(len(expected_integrations), len(set(expected_integrations)), 'slugs sources dupliqués')
+        self.assertTrue(INTEGRATION_PAGES <= set(expected_integrations), 'intégrations historiques perdues')
+        self.assertEqual({page.stem for page in integrations}, set(expected_integrations))
         for page in pages + articles() + integrations:
             doc = Document(page)
             self.assertEqual(len(doc.select('h1')), 1, page.name)
@@ -254,10 +333,8 @@ class BuildProof(unittest.TestCase):
         for service in (ROOT / 'src/content/services').glob('*.md'):
             if re.search(r'^status:\s*publie\s*$', service.read_text(), re.MULTILINE):
                 services_publies.add(f'{SITE}/automatisation/{service.stem}')
-        attendues = {f'{SITE}/', f'{SITE}/blog', f'{SITE}/glossaire',
-                     f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
-                     f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/integrations',
-                     f'{SITE}/outils-comptables-gratuits',
+        attendues = {f'{SITE}/' if slug == 'index' else f'{SITE}/{slug}'
+                     for slug in fixed_pages() - {'404', 'mentions-legales', 'politique-de-confidentialite'}} | {
                      f'{SITE}/outils-comptables-gratuits/bibliotheque-prompts-comptables',
                      f'{SITE}/outils-comptables-gratuits/generateur-charte-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
@@ -273,7 +350,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
-                         f'{SITE}/integrations/{slug}' for slug in INTEGRATION_PAGES
+                         f'{SITE}/integrations/{slug}' for slug in integration_pages()
                      } | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
@@ -395,25 +472,23 @@ class BuildProof(unittest.TestCase):
         # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
         # aux pages de service et cinq scènes propres aux outils. Les dix images sociales
         # correspondantes restent sous og/.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 37)
-        self.assertEqual(
-            sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')),
-            sorted([
-                '14-hero-service.webp', '15-hero-methode.webp', '16-hero-garanties.webp',
-                '17-hero-apropos.webp', '18-hero-contact.webp', '24-outils-hub.webp',
-                '25-outil-marge.webp', '26-outil-echeance.webp', '27-outil-rapprochement.webp',
-                '28-outil-amortissement.webp',
-                '29-outil-prompt.webp',
-                '31-outil-verificateur-prompt.webp',
-                '01-outil-charte-ia.webp',
-                '01-outil-prompt-ia.webp',
-                '29-outil-fec.webp',
-                '30-outil-maturite.webp',
-                '29-outil-pseudonymisation.webp',
-                '30-outil-roi.webp',
-                '31-outil-bibliotheque.webp',
-            ]),
-        )
+        assert_v2_proof_inventory(self)
+        og_sources = {p.name for p in (ROOT / 'public/proofs/v2/og').glob('*.webp')}
+        self.assertGreaterEqual(len(og_sources), 19)
+        historiques = {
+            '14-hero-service.webp', '15-hero-methode.webp', '16-hero-garanties.webp',
+            '17-hero-apropos.webp', '18-hero-contact.webp', '24-outils-hub.webp',
+            '25-outil-marge.webp', '26-outil-echeance.webp', '27-outil-rapprochement.webp',
+            '28-outil-amortissement.webp', '29-outil-prompt.webp', '31-outil-verificateur-prompt.webp',
+            '01-outil-charte-ia.webp', '01-outil-prompt-ia.webp', '29-outil-fec.webp',
+            '30-outil-maturite.webp', '29-outil-pseudonymisation.webp', '30-outil-roi.webp',
+            '31-outil-bibliotheque.webp',
+        }
+        self.assertTrue(historiques <= og_sources, 'images sociales historiques perdues')
+        self.assertEqual({p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')}, og_sources)
+        for name in og_sources:
+            self.assertEqual((DIST / 'proofs/v2/og' / name).read_bytes(),
+                             (ROOT / 'public/proofs/v2/og' / name).read_bytes())
 
     def test_five_generic_examples_no_product_statuses(self):
         html = (DIST / 'index.html').read_text()

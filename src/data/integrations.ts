@@ -1,7 +1,7 @@
 export const INTEGRATIONS_HUB_PATH = '/integrations' as const;
 
 export type IntegrationStatus = 'forte' | 'moyenne' | 'refusee';
-export type IntegrationVendor = 'Sage' | 'Cegid' | 'Silae' | 'Pennylane' | 'Quadra';
+export type IntegrationVendor = string;
 export type ServicePath =
   | '/automatisation-cabinet-comptable'
   | '/automatisation/paie'
@@ -75,7 +75,7 @@ export interface IntegrationReplayCase {
 export interface IntegrationDefinition {
   slug: string;
   task: string;
-  vendor: 'Sage' | 'Cegid' | 'Silae';
+  vendor: IntegrationVendor;
   product: string;
   primaryQuery: string;
   suggestions: number;
