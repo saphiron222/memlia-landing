@@ -45,8 +45,11 @@ const comprendre = {
     { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
   ],
 };
+// Seule rubrique jamais repliée : elle porte l'appel « Confier une première tâche », qui doit rester
+// visible sur mobile (tests/browser/indexable-page-contract.spec.ts).
 const entreprise = {
   titre: 'L’entreprise',
+  fixe: true,
   liens: [
     { libelle: 'À propos', href: PAGES_V2.apropos.chemin },
     { libelle: 'Nos garanties', href: PAGES_V2.garanties.chemin },
@@ -77,7 +80,7 @@ const blocs = [
       {blocs.map((bloc) => (
         <div class:list={['pied-bloc', bloc.classe]}>
           {bloc.groupes.map((c) => (
-            <div class="pied-col" data-pied-col>
+            <div class:list={['pied-col', { 'pied-col-fixe': 'fixe' in c }]} data-pied-col={'fixe' in c ? undefined : ''}>
               <h2 class="pied-titre">{c.titre}</h2>
               <ul class="pied-liste">
                 {c.liens.map((l) => (
@@ -171,6 +174,11 @@ const blocs = [
   }
   .pied-col {
     border-bottom: 1px solid var(--ligne-douce);
+  }
+  /* « L'entreprise » reste ouverte et passe après les rubriques repliables. */
+  .pied-col-fixe {
+    order: 1;
+    border-bottom: 0;
   }
   .pied-titre {
     font-family: var(--police-corps), 'Hanken Fallback';
@@ -282,6 +290,9 @@ const blocs = [
     }
     .pied-col {
       border-bottom: 0;
+    }
+    .pied-col-fixe {
+      order: 0;
     }
     .pied-titre {
       padding: 0;
