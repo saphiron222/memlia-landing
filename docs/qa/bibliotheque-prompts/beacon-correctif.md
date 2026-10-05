@@ -16,7 +16,7 @@ Hotspot : `public/_headers` et `tests/scripts/roi-delivery-headers.test.mjs` ég
 - Build complet PASS : 134 tests Python et 686 tests scripts dans la suite principale, sans échec. Astro check : 0 erreur, 0 warning, 9 hints.
 - Runtime Wrangler Pages réel : huit requêtes GET/HEAD simples et avec validateurs/Range, sur la bibliothèque compilée et une fixture contenant deux beacons injectés. HTTP200 complet, anciens validateurs retirés, HEAD sans corps, CSP maintenue. HTMLRewriter réel retire les deux beacons et conserve les trois scripts témoins (local, autre domaine, inline).
 - 24 parcours navigateur bibliothèque PASS sur le runtime Pages, six largeurs incluses. Premier passage pendant le rebuild : 23/24, timeout du scénario stockage ; scénario PASS sur production inchangée et les 24 PASS après stabilisation de l’artefact. Pas de défaut produit établi ni de modification du test.
-- Fixture Wrangler : date de compatibilité explicitement fixée à `2026-04-28`, celle du projet ; le défaut par défaut du Wrangler global visait une date plus récente que son workerd. Pas de changement de dépendance ni de configuration du site.
+- Fixture Wrangler : date de compatibilité explicitement fixée à `2026-06-23`, celle du projet ; le défaut par défaut du Wrangler global visait une date plus récente que son workerd. Pas de changement de dépendance ni de configuration du site.
 
 ## Lighthouse réel et réserves
 
