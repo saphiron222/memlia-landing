@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-avec-ia-sans-changer-logiciel",
+  "articleSha256": "1ad37eb8139c10cc1278ade8acf47cc1783eb878b4d89b32ebd442ccc84c8351",
+  "manifestSha256": "dd8d551a84e69cfe66e8d65500d0b2d1a5b54e27e27d1525c046809263963b0d",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Deux plans de travail verts reliés par un cadre, sur des supports graphite et un fond crème",
+  "score": 100,
+  "directionArt": null,
+  "semanticRelevance": null,
+  "p0": [],
+  "kevinApproved": true,
+  "palette": {
+    "statut": "PASS",
+    "parts": {
+      "#fcfbf7": 0.6755034722222222,
+      "#27b657": 0.1344965277777778,
+      "#1c8a41": 0.016822916666666667,
+      "#231f20": 0.09100694444444445
+    },
+    "ecarts": []
+  }
+}

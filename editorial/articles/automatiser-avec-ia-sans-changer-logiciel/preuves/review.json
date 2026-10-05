@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-avec-ia-sans-changer-logiciel",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "1ad37eb8139c10cc1278ade8acf47cc1783eb878b4d89b32ebd442ccc84c8351",
+  "manifestSha256": "dd8d551a84e69cfe66e8d65500d0b2d1a5b54e27e27d1525c046809263963b0d",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact automatiser-avec-ia-sans-changer-logiciel."
+  ],
+  "reviewer": "qa",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "corps.md:38-62 livre quinze champs remplis et copiables, incluant entrée minimale, déclencheur, clé, source de vérité, proposition, validation, destination, trace, fin, reprise, retour arrière et propriétaire. Les questions disent ce qui reste à constater chez le lecteur, sans lui promettre un accès technique.",
+        "La réponse directe décrit comment cadrer un passage dans l'existant. Les sections accès, maintien manuel, coûts et maintenance répondent au brief §4 ; ce n'est ni un nouveau manuel imposé ni un classement de logiciels."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Comparaison indépendante des ouvertures prompt-chatgpt-expert-comptable, logiciel-ia-comptabilite, utiliser-chatgpt-cabinet-comptable et verifier-reponse-ia-comptabilite : consigne, choix, premier essai et contrôle de sortie restent distincts de l'état et de la reprise traités ici. Le pilier et /methode ne sont pas remplacés.",
+        "L'ancien angle automatiser-sans-changer-de-logiciel est remplacé dans le backlog, sans deuxième page. Les quatre reçus d'autocomplétion sont réussis mais vides ; recherche Hermes déclarée, aucun volume, rang Google France ou résultat SEO actuel attribué au candidat."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "CNIL, FAQ affichant le 18 juillet 2024 : copie native et reçu du 05/10 intègres, contexte de la section sur les limitations lu, puis ouverture directe QA HTTP 200 avec la citation retrouvée. La phrase porte sur une sortie inexacte mais plausible ; elle ne devient ni un taux d'erreur ni une obligation fiscale, sociale ou RGPD.",
+        "Auteur Kevin Kitanga et Person/bio présents dans le rendu. Aucun titre d'expert-comptable, cas client, témoignage, gain mesuré ou expérience personnelle inventée identifié ; les données F-012 à F-016 sont explicitement fictives."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Programme original exécuté byte-identique dans un bac QA, journal auteur conservé intact. Huit sorties retrouvées et comparées à l'oracle indépendant de la fiche ; quatre sondes supplémentaires refusent contenu changé à version identique, période changée avec ancienne proposition, pièce vide et version absente. Entrées et proposition précédente inchangées, saisie F-015 conservée, reprise retrouvant le même objet de proposition.",
+        "Brouillon nominal exactement construit à partir de relevé A et facture B. corps.md:78-107 présente les quatre parties de la règle écrite et les résultats réellement produits. Ce rejeu déterministe n'interroge aucun modèle, n'écrit aucun état métier, n'envoie rien et ne teste pas la concurrence ni une intégration éditeur ; le corps et la FAQ le disent."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Build Astro de preview reconstruit par QA dans .qa/revue-automatiser-avec-ia-sans-changer-logiciel ; contrat natif ciblé PASS. Chromium 1280 et 390 px : lang fr, un H1, canonical cible, OG égal H1, auteur Kevin Kitanga, cinq types JSON-LD, huit destinations contextuelles HTTP 200 et ancre validation-humaine présente, zéro erreur JS/réseau et zéro débordement de page.",
+        "Quatre tableaux HTML à en-têtes, fiche de quinze lignes et huit lignes de rejeu. À 390 px, les quatre tables défilent réellement de 120 px ; dernière cellule intégralement accessible après défilement. Le harnais auteur examinait seulement les parents, pas le tableau lui-même : son constat de défilement n'était pas probant ; le rejeu QA corrigé et les captures à droite apportent cette preuve. Aucun PASS global clavier/lecteur d'écran ou Lighthouse.",
+        "Planificateur --check et --slot natifs verts au début. Pendant la revue, origin/main partagé a avancé de 818320af à 57279fde, PR89 ; le garde réel refuse ensuite la base non intégrée. Les quatre mutations du changement de stock sont vérifiées dans une fixture explicitement non Git, sans certifier la fraîcheur du checkout réel. Marketing doit intégrer main et régénérer avant scellement/publication ; aucune levée de ce refus par QA."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Réponse directe, définitions, fiche, frontière et résultats présents dans le HTML initial. Source, règles déterministes et rôle éventuel de l'IA sont séparés ; l'article reste compréhensible sans les deux figures. Les limites de reprise, de retour arrière et d'accès concurrent évitent d'assimiler le script à une réalisation de production.",
+        "Le noindex, follow est celui de la preview privée. Aucun crawler public, index Google, citation IA, robots final ou performance de cette URL n'est déclaré vérifié."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "corps.md:155-161 et CTA : mécanique prise en charge dans les outils existants, validation et saisies conservées au cabinet, Confier cette tâche vers /contact, rien à envoyer. Voix nous/vous et vocabulaire concret ; aucun gain chiffré, prix fictif, compatibilité universelle ou autonomie annoncée.",
+        "Les limites de la démonstration portent sur des risques différents : états, génération du texte, accès et concurrence. Elles ne masquent pas la réponse derrière un avertissement réglementaire ni une promesse de conformité."
+      ]
+    }
+  ]
+}

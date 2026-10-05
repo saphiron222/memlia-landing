@@ -48,6 +48,10 @@ export const BLOG_RUBRIQUES = Object.freeze([
  * datée et motivée : le garde du contrat blog peut ainsi la rendre visible sans liste parallèle.
  */
 export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
+  'automatiser-avec-ia-sans-changer-logiciel': Object.freeze({
+    date: '2026-10-05',
+    raison: 'Fiche transversale du passage entre outils et de sa reprise ; la demande de pièces est un cas fictif, pas une nouvelle étape réservée à Saisie et pièces. Famille IA existante, sans nouvelle rubrique artificielle.',
+  }),
   'automatiser-un-cabinet-comptable-la-carte-des-taches': Object.freeze({
     date: '2026-09-20',
     raison: 'Article de référence transversal : il relie les familles de tâches de tout le cabinet et ne doit pas être réduit à la paie, à la DSN, à la saisie ou aux pièces.',

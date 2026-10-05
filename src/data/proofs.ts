@@ -1,6 +1,10 @@
 /** Matrice M4-R1 : références fonctionnelles fictives, jamais des captures produit. */
 export const PROOFS = {
+
   'v2/31-outil-bibliotheque': { title: 'Choisir une relance, lire avant d’envoyer', alt: 'Filtre relation client et mail, fiche de relance : relevé fictif reçu, justificatif fictif attendu, brouillon à relire et pièce nécessaire à confirmer.', detail: 'La fiche sélectionne un prompt complet et montre une sortie attendue rédigée. Aucun modèle d’IA n’a répondu ; le collaborateur choisit le destinataire et décide de l’envoi.' },
+
+  'v2/31-outil-verificateur-prompt': { title: 'L’arrêt absent reste visible', alt: 'Consigne fictive de demande de pièces : validation par le collaborateur repérée, arrêt manquant, ajout proposé sur une information requise absente.', detail: 'Le vérificateur repère les formulations et explique le point manquant. L’ajout est une proposition à relire ; l’original reste conservé et aucun score de fiabilité n’est donné.' },
+
   'v2/29-outil-pseudonymisation': { title: 'Les noms changent, le risque reste visible', alt: 'Avant et après fictifs : Alice devient C1_000001, le libellé est supprimé, le montant rare 9876 reste conservé et le risque de réidentification est signalé.', detail: 'La copie supprime le libellé et remplace les noms par des alias cohérents. Les dates et montants conservés restent des quasi-identifiants ; la décision de partage appartient au cabinet.' },
 
 
