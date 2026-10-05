@@ -32,7 +32,7 @@ import { estRattrapageIA } from './lib/blog-ia-catchup.mjs';
 import { retirerPreuvesInline } from './lib/blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 export { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
-import { reviewBindingErrors, reviewSha256, renderedBodySha256 } from './lib/blog-review-binding.mjs';
+import { reviewBindingErrors, reviewSha256, renderedBodySha256, recipeSubstanceSha256 } from './lib/blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { estReliquatW39, verifierIdentiteW39, lireCadrageW39 } from './lib/blog-w39-framing.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
@@ -638,7 +638,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
   if (estReliquatW39(slug) || estRattrapageIA(slug)) verifierFile(root, slug, recette.date, statut, recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
   const recettePath = join(dossierRecette, 'recette.json');
-  let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath), undefined, root) : [];
   let revuesValides = revueErreurs.length ? null : revues;
   const requetes = [recette.primaryQuery, ...(recette.secondaryQueries ?? [])];
   verifierTitreIntentMesure({ root, titre: recette.title, requetes, au: jour, surface: `${slug} : H1` });
@@ -652,7 +652,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const datesSources = await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher, verifierJour: refuserChangementDeJour });
   refuserChangementDeJour();
   // Les URL finales ont pu réécrire la recette : le manifeste est reconstruit depuis la recette à jour.
-  revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath), undefined, root) : [];
   revuesValides = revueErreurs.length ? null : revues;
   const manifestFinal = construireManifest(recette, statut, jour, revuesValides, datesSources);
   ecrireJson(manifestPath, manifestFinal);
@@ -698,13 +698,13 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   if (qualite) {
     ecrireJson(join(dossier, 'quality-review.json'), {
       version: 1, candidateSlug: slug, reviewedAt: jour, reviewer: qualite.reviewer ?? 'relecteur-qualite-ia-memlia', rubric: 'blog-analyze-100',
-      status: qualite.score >= 90 && (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL', score: qualite.score, p0: (qualite.p0 ?? []).length,
+      status: (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL', score: qualite.score, p0: (qualite.p0 ?? []).length,
       categories: qualite.categories, evidence: qualite.evidence ?? [], reservations: qualite.reservations ?? [], verdict: qualite.verdict ?? '',
       subject: { slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash },
     });
     const cats = qualite.categories ?? {};
     const ligneCat = (id, libelle) => `| ${libelle} | ${cats[id]?.score ?? '—'}/${cats[id]?.max ?? '—'} |`;
-    writeFileSync(join(dossier, 'seo-geo-review.md'), `# SEO et préparation aux citations IA — ${recette.title}\n\nVerdict : ${qualite.score >= 90 && (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL'} — ${qualite.score}/100, ${(qualite.p0 ?? []).length} P0 (revue indépendante du ${jour}, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).\n\n| Catégorie | Score |\n| --- | ---: |\n${ligneCat('contentQuality', 'Qualité du contenu')}\n${ligneCat('seoOptimization', 'SEO')}\n${ligneCat('eeatSignals', 'E-E-A-T')}\n${ligneCat('technicalElements', 'Technique')}\n${ligneCat('aiCitationReadiness', 'Préparation aux citations IA')}\n| Total | ${qualite.score}/100 |\n\n## SEO\n\n${(qualite.seo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Préparation aux citations\n\n${(qualite.geo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Réserves mesurées\n\n${(qualite.reservations ?? []).map((x) => `- ${x}`).join('\n')}\n`);
+    writeFileSync(join(dossier, 'seo-geo-review.md'), `# SEO et préparation aux citations IA — ${recette.title}\n\nVerdict : ${(qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL'} — ${qualite.score}/100, ${(qualite.p0 ?? []).length} P0 (revue indépendante du ${jour}, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).\n\n| Catégorie | Score |\n| --- | ---: |\n${ligneCat('contentQuality', 'Qualité du contenu')}\n${ligneCat('seoOptimization', 'SEO')}\n${ligneCat('eeatSignals', 'E-E-A-T')}\n${ligneCat('technicalElements', 'Technique')}\n${ligneCat('aiCitationReadiness', 'Préparation aux citations IA')}\n| Total | ${qualite.score}/100 |\n\n## SEO\n\n${(qualite.seo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Préparation aux citations\n\n${(qualite.geo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Réserves mesurées\n\n${(qualite.reservations ?? []).map((x) => `- ${x}`).join('\n')}\n`);
   }
   const preuvesRecette = recette.preuvesSkills ?? {};
   if (qualite) {
@@ -789,7 +789,7 @@ export async function commande(argv, root = process.cwd()) {
     const { corps } = chargerRecette(root, slug);
     const renderedSha256 = renderedBodySha256(readFileSync(resolve(root, htmlPath), 'utf8'));
     if (!renderedSha256) throw new Error('Le rendu HTML ne contient pas de .article-corps.');
-    console.log(JSON.stringify({ slug, bodySha256: reviewSha256(corps), recipeSha256: reviewSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), renderedSha256, notice: 'Empreintes techniques seulement : aucune approbation ou revue générée.' }, null, 2));
+    console.log(JSON.stringify({ slug, bodySha256: reviewSha256(corps), recipeSha256: reviewSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), recipeSubstanceSha256: recipeSubstanceSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), renderedSha256, notice: 'Empreintes techniques seulement : aucune approbation ou revue générée.' }, null, 2));
     return;
   }
   if (action === 'preparer') {

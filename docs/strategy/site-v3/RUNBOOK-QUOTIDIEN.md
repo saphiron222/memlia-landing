@@ -4,6 +4,35 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 
 ## 0. Rails non négociables
 
+### Règle courante de livraison et de revue (constitution du 03/10)
+
+Cette règle remplace les prescriptions historiques contraires des sections ci-dessous.
+Le push de branche est libre ; la fusion suit une CI verte et une seule revue PASS
+(QA pour le code, métier pour le contenu réglementé). `main` publie le blog via
+Cloudflare Pages, sans go individuel ni déploiement manuel de production.
+
+Une date de recette, un horodatage, un lien ou une empreinte technique ne demandent
+pas de nouvelle revue du fond. Les verdicts et identités historiques ne sont jamais
+réécrits. Le garde compare le fond de la recette : dates techniques, références URL
+et empreintes en sont exclus ; titre, affirmations, extraits, périmètre et preuve
+restent contrôlés. Pour les avis historiques, `editorial/review-substance-baseline.json`
+inventorie les recettes dont les octets concordent avec leur revue existante ou
+leur inventaire historique. Cet inventaire technique ne crée aucun PASS.
+Pour les nouvelles revues, conserver aussi `recipeSubstanceSha256` fourni par
+`blog-forge.mjs empreinte`, avec les autres champs `subject`.
+
+Le créneau et la cadence sont des préférences du planificateur, pas des motifs de
+refus de l'audit. Le nombre de mots et les scores SEO/qualité sont des conseils,
+sans seuil bloquant. Un P0 réel, une source mensongère, une donnée client, un corps
+absent, un changement du fond non relu ou une preuve incohérente restent refusés.
+Le changement d'une référence impose de vérifier sa cohérence technique, pas de
+fabriquer un nouvel avis métier. Un changement du texte ou d'une figure n'est pas
+assimilé automatiquement à une simple modification logistique.
+
+Rejeu : `node --test tests/scripts/blog-constitution.test.mjs`, puis
+`npm run blog:audit` et `npm run build`. Le test change uniquement la date de
+recette, conserve la revue intacte, puis vérifie qu'un titre divergent est refusé.
+
 - **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`. Chaque exécution utilise un worktree isolé, une branche neuve `site/blog-<sujet>` à la base fraîche de `main`, puis une PR. Le clone dédié du cron ne sert que de source propre synchronisée par `forge_checkout_gate.py` ; il ne reçoit aucune écriture éditoriale. D'autres workers peuvent tourner en parallèle. Seule la fusion contrôlée sur `main` déclenche la publication Cloudflare ; jamais de push direct sur `main`.
 - **Cadence** : au plus 2 articles ordinaires par jour et 4 par semaine ISO ; planification automatique du lundi au jeudi, réservation explicite possible à la date réelle hors de ces jours (§2), puis exactement 1 Cicatrice le samedi en sus (`verifierPlafonds`). Le vendredi reste normalement un jour de maintenance (§6). La décision du 29/09 distingue le retard seul des portes de sûreté : le reliquat déjà mandaté W39 n'exige pas une nouvelle signature Kevin à chaque jour de retard. Son seul cadrage opérateur courant est décrit ci-dessous ; aucun second slug ou second exemplaire W39 n'en découle. Le dossier éditorial et la production restent soumis à leurs gardes distincts.
 

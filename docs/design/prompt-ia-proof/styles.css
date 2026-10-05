@@ -1,0 +1,10 @@
+@import url('../m4-r1-functional-proofs/styles.css');
+.prompt-scene { display:grid; grid-template-columns:.8fr 1.2fr; gap:48px; align-items:center; padding:32px; }
+.prompt-scene .window { min-height:600px; }
+.prompt-scene .window-bar { font:600 30px Fraunces, Georgia, serif; height:80px; }
+.choices { display:grid; gap:16px; padding:32px; font-size:24px; }
+.choices p { margin:0; border-bottom:1px solid var(--line-soft); padding:16px 0; }
+.clauses { display:grid; gap:20px; padding:28px 32px; font-size:22px; }
+.clauses > div { border-bottom:1px solid var(--line-soft); padding-bottom:12px; }
+.clauses p { margin:8px 0 0; color:var(--muted); line-height:1.4; }
+.clauses .pending { border-left:3px solid var(--amber); background:var(--amber-pale); padding:16px; font-size:20px; }

@@ -1,4 +1,10 @@
 // Assemblage déterministe. Aucun appel de modèle ; le contrôle ne juge pas le sens.
+export const PROMPT_ENGINE_VERSION = 1;
+// Socle neutre partagé ; les rubriques et amorces restent propres à chaque usage.
+export function composePromptBlocks(sections, contents) {
+  if (sections.length !== contents.length) throw new Error('Chaque rubrique doit avoir un contenu.');
+  return sections.map((section, index) => `## ${section}\n${contents[index]}`).join('\n\n');
+}
 export const PROMPT_SCHEMA_VERSION = 1;
 export const PROMPT_STRUCTURE = ['Objectif', 'Entrées', 'Sortie', 'Validation humaine', 'Arrêt'];
 export const TASKS = [
@@ -83,7 +89,7 @@ export function assemblePrompt(config) {
     `Condition choisie : ${selected.stop.label}. Dans tous les cas, arrêter aussi sur une absence, une contradiction ou un cas hors règle ; nommer le motif et demander une validation humaine.\n${GUARDS[1]}`,
     cases.map((row) => `${row.label} : ${row.input}\nAttendu : ${row.expected}`).join('\n'),
   ];
-  return { ok: true, text: SECTIONS.map((section, index) => `## ${section}\n${contents[index]}`).join('\n\n'), boundary, cases };
+  return { ok: true, text: composePromptBlocks(SECTIONS, contents), boundary, cases };
 }
 export function checkPrompt(text) {
   if (typeof text !== 'string') text = '';

@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import GenerateurPromptIa from '@/components/outils/GenerateurPromptIa.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('generateur-prompt-ia-gratuit');
+---
+<Outil outil={outil}><GenerateurPromptIa /></Outil>
