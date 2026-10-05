@@ -40,6 +40,12 @@ Résultat de `preparer` : `erreurs: []`. Cinq mutations natives refusées : ajou
 
 ## Reprise après intégration technique
 
+### Oracle de stock indépendant
+
+`tests/proof/test_mandated_blog_inventory.py` vérifie le stock de briefs avec des dates synthétiques futures, pas les réservations du mandat W40. Il construit d'abord le plan réel avec la garde `origin/main` et contrôle les dates/statuts de toutes les publications intégrées. Dans sa seule fixture, il remplace ensuite le lot IA par des réservations futures espacées d'une semaine, tout en conservant ses entrées, familles, liens et déplacements d'angle. Le mandat est désactivé seulement après cette séparation. Ainsi une vraie réservation saturée du candidat ne peut plus être confondue avec un ajout futur ; la publication ultérieure du quatrième sujet ne réintroduit pas trois archives W40 dans un calendrier ordinaire synthétique.
+
+Les assertions d'unicité, d'idempotence, de familles et de dates historiques sont conservées ; angle arbitraire, mauvaise famille et doublon restent des témoins négatifs. Les dates publiques réelles, plafonds W40 et cadence ordinaire sont toujours exercés séparément par `test_ia_catchup.py` et les tests natifs de cadence. Aucun planificateur, mandat, article ni règle de publication n'est modifié par cette réparation de fixture.
+
 QA intègre la PR technique après son unique revue et la CI verte. Marketing intègre ensuite main dans sa propre branche, en conservant son déplacement d'angle 08 et sa revue éditoriale t_003f2bb5. La PR technique n'emporte ni le texte candidat, ni sa publication, ni une nouvelle revue du fond.
 
 Point de reprise réellement rencontré : le relevé `mesures/titres-intent-2026-10-05.json` de main contient les requêtes confidentialité, mais la restauration du stash auteur n'avait pas remis les quatre requêtes du passage. Pour le rejeu isolé, ces quatre mesures originales ont été réunies avec les mesures existantes depuis `editorial/recettes/automatiser-avec-ia-sans-changer-logiciel/autocompletion.json`. Ne pas écraser les mesures confidentialité, inventer un relevé ou annoncer une nouvelle mesure.
