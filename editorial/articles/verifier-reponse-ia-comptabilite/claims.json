@@ -1,0 +1,477 @@
+{
+  "version": 1,
+  "candidateSlug": "verifier-reponse-ia-comptabilite",
+  "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-046b775e8216",
+      "text": "Pour vérifier une réponse IA en comptabilité, séparez ses affirmations, ouvrez les sources exactes, contrôlez leur périmètre et recalculez les nombres hors du modèle. Attribuez ensuite une décision à chaque ligne : garder, corriger, rechercher ou écarter. Une réponse fluide, une URL présente ou un second avis de ChatGPT ne suffisent pas. La checklist ci-dessous permet de garder un brouillon utile sans transformer une phrase plausible en fait établi.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a3808859a1ab",
+      "text": "Ce que vous vérifiez, exactement",
+      "claimIds": []
+    },
+    {
+      "id": "unit-155a12e05dae",
+      "text": "Une affirmation vérifiable est une phrase dont vous pouvez comparer le contenu à une pièce, une source ou un calcul indépendant. « La réunion est jeudi » en est une ; « voici une formulation plus claire » décrit plutôt un geste de rédaction.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8f1af07a1121",
+      "text": "Une hallucination d’IA est une sortie incorrecte ou trompeuse présentée comme une information. Dans sa FAQ sur l’IA générative, la CNIL explique : « Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles ». Ce constat ne donne pas un taux d’erreur pour votre cabinet.",
+      "claimIds": [
+        "claim-unit-8f1af07a1121-1"
+      ]
+    },
+    {
+      "id": "unit-13a57ce7a83c",
+      "text": "Le périmètre de la source est l’ensemble des conditions dans lesquelles son information s’applique : période, version, situation visée et réserves. Une phrase exacte peut être inutilisable si elle concerne un autre cas.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-50e8361b8a4d",
+      "text": "Le guide sur les prompts pour expert-comptable aide à écrire la consigne. Ici, nous contrôlons ce qui en sort. La même grille convient à un résumé, une liste de questions ou un message préparatoire, quel que soit l’outil qui a produit le brouillon.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4bffedc35e1e",
+      "text": "Pourquoi la vérification casse à la main",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2661d8e4dad5",
+      "text": "Un collaborateur relit le texte, reconnaît le sujet et corrige deux tournures. Il connaît aussi les réserves du dossier, mais elles ne sont pas dans le brouillon. Le lecteur suivant voit une phrase nette et suppose que tout a été contrôlé. La fluidité du texte a remplacé la trace du contrôle.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-211140534f67",
+      "text": "La règle que le cabinet applique souvent sans l’avoir écrite est simple : aucune affirmation utile à une décision ne passe du brouillon au dossier sans un appui retrouvé et un contexte vérifié. Quand cette règle reste dans une seule tête, personne ne sait distinguer une correction de style d’une validation du fond.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2bfb10573300",
+      "text": "Ce geste appartient aux tâches de contrôle de la carte des tâches du cabinet. Il gagne à être nommé avant de chercher à automatiser sa mécanique. L’objectif n’est pas de tout relire indistinctement, mais de savoir quelle phrase attend encore une preuve.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-11a1dd1ac7fc",
+      "text": "Avant de commencer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2a36db4e39f1",
+      "text": "Préparez le brouillon original, la consigne qui l’a produit, les documents autorisés pour cet usage et l’endroit où noter vos décisions. Conservez une version du texte avant correction : une phrase supprimée ne doit pas disparaître du raisonnement qui a conduit à la supprimer.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e16bedaa7e81",
+      "text": "Pour le premier essai, prenez un contexte entièrement fictif. Le dossier D-012 utilisé plus bas n’existe pas ; ses notes ont été écrites pour la démonstration. Vous pourrez ainsi éprouver le contrôle sans partager une pièce réelle.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-60cf39a23615",
+      "text": "Choisissez aussi la destination : texte interne, question à poser, message à relire ou préparation d’une saisie. « Garder » une phrase pour préparer une question ne signifie pas l’autoriser à produire une écriture. Le guide pour choisir un premier usage ChatGPT aide à fixer ce résultat avant l’essai.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fc590ed4fa38",
+      "text": "1. Découper le brouillon en éléments contrôlables",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9fc68cac4b2e",
+      "text": "Ne vérifiez pas un paragraphe entier avec un seul oui. Isolez les dates, montants, noms de documents, règles annoncées et conclusions. Une phrase peut contenir une information fidèle et une précision ajoutée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-813a5c4c1877",
+      "text": "Dans « La réunion est confirmée jeudi, avec un retour attendu le 12 octobre », il y a au moins trois éléments : le jour, la confirmation et la date de retour. Le document peut soutenir le premier sans soutenir les deux autres. Donnez un identifiant à chaque élément pour éviter qu’une correction masque les autres.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-571f27e1cd99",
+      "text": "| Élément du brouillon | Contrôle à faire | Ce qui ne suffit pas | |---|---|---| | Reformulation d’une note | Comparer le sens et les réserves à la note | Trouver le texte plus élégant | | Date ou délai annoncé | Retrouver la mention et sa condition | Reconnaître une date habituelle | | Nombre ou total | Retrouver les entrées puis recalculer | Relire le nombre sans les entrées | | Règle ou référence | Ouvrir le document exact et son périmètre | Une référence avec un titre crédible | | Conclusion | Relier chaque prémisse à son appui | Le ton assuré de la réponse |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e16ee5269dcc",
+      "text": "Demander au modèle « es-tu certain ? » peut produire un nouveau texte à contrôler. Cela ne remplace pas la comparaison. Notez la question utile qu’il suggère, sans prendre son assurance pour une validation indépendante.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-74773940fb91",
+      "text": "2. Retrouver la source et lire autour de la citation",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c3cf84c91816",
+      "text": "Ouvrez la page ou la pièce, pas seulement le lien affiché. Vérifiez qu’elle contient réellement le passage annoncé. Une page d’accueil, un titre proche ou un document d’une autre période ne constituent pas l’appui attendu.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-08e68f32393c",
+      "text": "La FAQ de la CNIL précise : « Une confiance excessive dans les résultats produits par un système d'IA générative sans une vérification appropriée peut donc conduire à des décisions erronées ou à des conclusions incorrectes. » Le lien permet de retrouver l’appui ; sa présence ne valide pas le brouillon.",
+      "claimIds": [
+        "claim-unit-08e68f32393c-1"
+      ]
+    },
+    {
+      "id": "unit-aa7f948c27bb",
+      "text": "Lisez le paragraphe précédent et le suivant. Cherchez notamment une réserve, une exception, une condition d’entrée ou une limite de champ. Relevez la date du document lorsqu’elle est affichée et sa version si plusieurs versions existent. Une date de publication n’est pas, à elle seule, une date d’application.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a58ff722ef7c",
+      "text": "Pour une règle professionnelle, cherchez l’autorité compétente et le texte adapté au cas plutôt qu’un résumé trouvé au hasard. Si la source est inaccessible, classez la ligne « rechercher ». Son absence ne démontre pas que l’affirmation est fausse ; elle empêche de la retenir comme étayée pour l’usage prévu.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f02d3bf942c7",
+      "text": "Deux documents peuvent se contredire sans que l’un soit manifestement faux. Ils peuvent viser des périodes ou des situations différentes. Relevez cette différence. Si elle ne suffit pas à choisir, gardez le conflit visible et confiez l’arbitrage au responsable du dossier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e61fb571c07d",
+      "text": "3. Recalculer les nombres sans réutiliser la réponse",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1e1c729e5f8c",
+      "text": "Partez des valeurs d’entrée retrouvées, pas du total proposé. Notez l’unité, la période et le calcul. Une addition exacte ne répare pas une pièce manquante, un doublon ou un montant appartenant à une autre période.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a531950e721e",
+      "text": "Dans notre exemple sans règle fiscale, deux valeurs fictives de 125 et 75 unités donnent 200 unités. Cette addition a été exécutée hors de tout modèle. Elle vérifie seulement l’opération sur ces deux entrées, pas leur pertinence pour un dossier réel.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a34517eec1e5",
+      "text": "Pour un calcul dépendant d’une règle métier, séparez donc deux décisions : le calcul est-il reproduit correctement ? La règle et les entrées conviennent-elles au cas ? La seconde n’est pas acquise parce que la première est verte. Si la réponse ne fournit pas assez d’éléments pour refaire l’opération, recherchez les entrées avant de reprendre le nombre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c0df813f6553",
+      "text": "La checklist à copier dans votre dossier de travail",
+      "claimIds": []
+    },
+    {
+      "id": "unit-419888fd7ec4",
+      "text": "Copiez cette fiche dans votre outil habituel. Elle reste utile sans inscription ni outil supplémentaire. Une ligne correspond à une affirmation, pas à une réponse entière.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e0c22f519a10",
+      "text": "| Champ | À renseigner | |---|---| | Identifiant de contrôle | V-01, V-02… | | Usage prévu | Question interne, brouillon de message, préparation à relire… | | Version du brouillon | Référence permettant de retrouver le texte contrôlé | | Affirmation exacte | Phrase ou fragment, sans le réécrire pendant l’examen | | Nature | Reformulation, fait, calcul, règle ou conclusion | | Source ouverte | Document précis et passage ; URL seulement si elle mène à cet appui | | Version et période | Ce que la source indique, ou « non précisé » | | Conditions et réserves | Ce qui limite la portée de la phrase | | Comparaison | Fidèle, ajout, réserve omise, appui absent ou contradiction | | Calcul indépendant | Entrées, opération, unité et résultat, si nécessaire | | Décision et motif | Garder, corriger, rechercher ou écarter ; raison précise | | Texte retenu | Version corrigée, ou aucune phrase retenue | | Responsable et date | Personne qui a contrôlé et date de sa décision | | Destination autorisée | Où ce texte peut aller après le contrôle |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c9810dfd9260",
+      "text": "Les quatre décisions sont une convention de travail propre au cabinet. Gardez-leur le même sens d'un dossier à l'autre, pour que la personne qui reprend comprenne la suite.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1f53437bf76d",
+      "text": "| Décision | Quand l’utiliser | Suite concrète | |---|---|---| | Garder | Le passage retrouvé soutient la phrase dans ce contexte | Conserver dans le brouillon pour l’usage défini | | Corriger | Un appui existe, mais une précision ou une réserve a été déformée | Écrire la correction puis la comparer à nouveau | | Rechercher | L’appui ou le contexte n’est pas retrouvé | Identifier la recherche nécessaire, sans reprendre la phrase comme un fait | | Écarter | La phrase ne convient pas à l’usage, ou un conflit reste à arbitrer | Retirer de la version utilisable et conserver le motif |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9fe028eb8c77",
+      "text": "Une correction n’est pas automatiquement validée. Remplacer « confirmé » par « prévu » peut encore oublier « sous réserve de confirmation ». Comparez donc la phrase retenue au même passage avant de fermer la ligne.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d39e08e60799",
+      "text": "La frontière. Nous séparons le rangement des preuves, la validation du brouillon et le jugement sur le dossier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7fd9b6a0cadb",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Classer les lignes et présenter les appuis déjà renseignés | Retenir une phrase corrigée pour une destination définie | Lire le sens, qualifier la source et arbitrer une contradiction |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7533dad73e2f",
+      "text": "La proposition. Nous préparons un registre reliant affirmation, document, réserve et décision. Le collaborateur renseigne la comparaison et valide le texte retenu. Le cabinet conserve le brouillon initial, la version corrigée et la trace qui les relie.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c7069a3ccf05",
+      "text": "L’arrêt. La ligne ne devient pas utilisable si l’appui reste introuvable, si le périmètre est inconnu ou si deux documents laissent un conflit ouvert. La proposition reste séparée des saisies du cabinet. Aucun statut technique ne tranche le fond à la place du lecteur.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ac21e1a7276a",
+      "text": "Le jeu d’essai. Nous avons exécuté cinq cas sur des notes entièrement fictives : phrase fidèle, date ajoutée, source introuvable, réserve omise et contradiction. Aucun modèle n’a été interrogé. Le programme reçoit une qualification préalable faite pour chaque cas et la route vers la décision prévue ; il ne détecte pas automatiquement une erreur dans un texte.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a784dd36cb4a",
+      "text": "La note NOTE-A-v1 contient : « D-012 : préparer la liste des pièces à demander. Réunion jeudi, sous réserve de confirmation. » Les phrases ci-dessous sont des brouillons de démonstration écrits pour l’essai, pas des réponses obtenues de ChatGPT.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c06e6950b15f",
+      "text": "| Cas joué | Sortie obtenue | Décision | |---|---|---| | V-01 : « Préparer la liste des pièces à demander. » ; passage fidèle à NOTE-A-v1 | GARDER / FIDELEAUDOCUMENT | Conserver cette phrase dans le brouillon | | V-02 : « Le retour est attendu le 12 octobre. » ; date absente de NOTE-A-v1 | CORRIGER / DATENONETAYEE | Retirer la date ajoutée, puis contrôler la correction | | V-03 : « La procédure prévoit une validation unique. » ; document non retrouvé dans le jeu | RECHERCHER / SOURCEINTROUVABLE | Chercher l’appui avant de reprendre cette phrase | | V-04 : « La réunion est confirmée jeudi. » ; réserve de NOTE-A-v1 perdue | CORRIGER / RESERVEOMISE | Rétablir « jeudi, sous réserve de confirmation » | | V-05 : réunion jeudi dans NOTE-B-v1, vendredi dans NOTE-B-v2, sans remplacement explicite | ECARTER / ARBITRAGEHUMAIN | Retirer la conclusion utilisable en attendant le choix humain |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1bd61a9276ad",
+      "text": "Le rejeu produit ces statuts et aucune saisie. Il éprouve la correspondance entre une qualification et sa suite, pas la capacité d’une IA à reconnaître les cinq défauts. La lecture des notes fournit ici la qualification ; dans un usage réel, ce travail reste celui du contrôleur.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fe20c03b4f27",
+      "text": "Garder la trace sans confondre brouillon et saisie",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9b403c7967c2",
+      "text": "Conservez le passage source utile et le motif de décision dans le dossier de travail autorisé. L’objectif est de pouvoir comprendre la vérification sans rejouer toute la conversation. Évitez de multiplier les copies de pièces lorsque la référence au document en place suffit.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1871a5152816",
+      "text": "Marquez la version utilisable et sa destination. Un texte relu pour préparer une question interne n’est pas validé pour envoyer une réponse à un client ou enregistrer une écriture. La validation humaine porte sur un objet précis et un usage précis, pas sur une confiance générale dans le fournisseur.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a8532c9d4870",
+      "text": "Pour choisir un environnement, la grille de choix d’un logiciel IA en comptabilité examine notamment les sorties, exceptions et traces. Ce guide ne crée pas un détecteur d’hallucinations : un classement automatique peut faciliter le rangement, mais il ne certifie pas le sens d’une phrase.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5f23419bd669",
+      "text": "Les erreurs fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-16f92b00c36b",
+      "text": "- Vérifier le lien, pas le contenu. Une URL qui répond peut conduire à une page sans rapport avec l’affirmation. - Garder la phrase et perdre la réserve. Un résumé court conserve parfois le sujet tout en changeant sa portée. - Confondre calcul et choix des entrées. Un total juste peut porter sur le mauvais ensemble. - Demander à la même réponse de se certifier. La nouvelle explication reste un élément à contrôler. - Fermer une contradiction avec la source la plus récente. La récence ne prouve pas que les deux documents ont le même champ. - Valider tout le brouillon d’un seul geste. Une ligne étayée ne rend pas les autres utilisables.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c3f7c37aee73",
+      "text": "Que faire si ChatGPT ne donne aucune source ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e6b0bf0b3837",
+      "text": "Partez de l’affirmation et recherchez son appui indépendamment. Si vous ne le retrouvez pas, la ligne reste « rechercher ». Pour une simple reformulation, le document fourni peut être la source : comparez le sens, les conditions et les ajouts.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c4297be508bc",
+      "text": "Une citation entre guillemets suffit-elle ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f6f8dcbfe969",
+      "text": "Non. Retrouvez les mots dans le document et lisez leur contexte. Une citation peut être exacte mais concerner un autre cas, ou perdre une exception située dans le paragraphe suivant.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0bb400faf781",
+      "text": "Que faire si deux sources donnent des réponses différentes ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-732f6b623747",
+      "text": "Comparez d’abord leur période, leur version et leur situation visée. Si le désaccord reste ouvert, écartez la conclusion du brouillon utilisable et notez l’arbitrage nécessaire. Ne choisissez pas depuis le seul ton du texte.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-98a0e9b1278f",
+      "text": "Une réponse sans marque d’incertitude est-elle plus fiable ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8c0efba08e48",
+      "text": "Le ton ne fournit pas la preuve attendue. Appliquez les mêmes contrôles à une réponse assurée et à une réponse prudente. Ce sont les appuis retrouvés et le périmètre qui permettent de décider.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a63200e5aac7",
+      "text": "Peut-on automatiser toute cette checklist ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0655289bf75d",
+      "text": "Le rangement, la présentation des lignes et le suivi de leur état peuvent faire partie d’une règle écrite. L’essai présenté ici route des qualifications renseignées ; il ne lit pas les documents à votre place. Commencez par définir ce que le lecteur valide et les conflits qui bloquent la reprise du texte.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4646bb5d94d5",
+      "text": "Une réponse utile est un brouillon dont chaque affirmation importante a un appui retrouvé, un périmètre et une décision. Une source absente ou un conflit ouvert reste visible jusqu’à sa résolution, au lieu de disparaître dans une phrase fluide.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f3651bbc806b",
+      "text": "Nous prenons en charge la mécanique répétitive de votre contrôle : écrire les états dans les mots du cabinet, relier les propositions aux preuves et présenter les exceptions dans vos outils. Notre méthode décrit l’observation, le jeu d’essai et la recette par votre équipe ; nos garanties fixent la séparation entre propositions et saisies. Vous gardez la lecture du fond et la décision sur le dossier.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-8f1af07a1121-1",
+      "unitId": "unit-8f1af07a1121",
+      "claim": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles",
+      "type": "information",
+      "sourceIds": [
+        "cnil-hallucinations"
+      ],
+      "sourceExcerpts": {
+        "cnil-hallucinations": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles"
+      },
+      "checkedAt": "2026-10-05",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-05",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-hallucinations",
+            "sourceUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "verifiedUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "excerpt": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles",
+            "context": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles (on parle alors souvent d’hallucinations).",
+            "contextSha256": "65e29b5a3272a7a630e4d18353aeb425a0ede8f15a09072e61f589c26ca1a7bf",
+            "citation": {
+              "text": "Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles",
+              "sha256": "3139805c8b462e0e003cb468b75daca2068d40e2a4f07a9ccaed5430a16576cc",
+              "sourceContentSha256": "edf84c196d4400cb025d7c1de0c6fd5c2d96b5ed20a3e238219ac3208fc71f69",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+                "checkedAt": "2026-10-04",
+                "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 770,
+                  "endLine": 770
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "systemes",
+                "peuvent",
+                "generer",
+                "resultats",
+                "inexacts",
+                "pourtant",
+                "paraitre",
+                "plausibles"
+              ],
+              "reasoning": "La citation, relevée à la ligne 770 de la copie locale de CNIL, porte les mêmes entités que le claim (systemes, peuvent, generer, resultats, inexacts, pourtant, paraitre, plausibles) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Explication de risque de la FAQ, sans taux d’erreur ni affirmation fiscale.",
+            "checkedAt": "2026-10-05"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-08e68f32393c-1",
+      "unitId": "unit-08e68f32393c",
+      "claim": "Une confiance excessive dans les résultats produits par un système d'IA générative sans une vérification appropriée peut donc conduire à des décisions erronées ou à des conclusions incorrectes.",
+      "type": "information",
+      "sourceIds": [
+        "cnil-hallucinations"
+      ],
+      "sourceExcerpts": {
+        "cnil-hallucinations": "Une confiance excessive dans les résultats produits par un système d'IA générative sans une vérification appropriée peut donc conduire à des décisions erronées ou à des conclusions incorrectes."
+      },
+      "checkedAt": "2026-10-05",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-05",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-hallucinations",
+            "sourceUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "verifiedUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+            "excerpt": "Une confiance excessive dans les résultats produits par un système d'IA générative sans une vérification appropriée peut donc conduire à des décisions erronées ou à des conclusions incorrectes.",
+            "context": "Une confiance excessive dans les résultats produits par un système d'IA générative sans une vérification appropriée peut donc conduire à des décisions erronées ou à des conclusions incorrectes.",
+            "contextSha256": "0f19763a399c32ab28eb9ccda3cc7cea2b2b2d7f821aba1980eebc6fee204306",
+            "citation": {
+              "text": "Une confiance excessive dans les résultats produits par un système d'IA générative sans une vérification appropriée peut donc conduire à des décisions erronées ou à des conclusions incorrectes.",
+              "sha256": "0f19763a399c32ab28eb9ccda3cc7cea2b2b2d7f821aba1980eebc6fee204306",
+              "sourceContentSha256": "edf84c196d4400cb025d7c1de0c6fd5c2d96b5ed20a3e238219ac3208fc71f69",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+                "checkedAt": "2026-10-04",
+                "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 772,
+                  "endLine": 772
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "confiance",
+                "excessive",
+                "resultats",
+                "produits",
+                "systeme",
+                "generative",
+                "verification",
+                "appropriee",
+                "peut",
+                "donc",
+                "conduire",
+                "decisions",
+                "erronees",
+                "conclusions",
+                "incorrectes"
+              ],
+              "reasoning": "La citation, relevée à la ligne 772 de la copie locale de CNIL, porte les mêmes entités que le claim (confiance, excessive, resultats, produits, systeme, generative, verification, appropriee, peut, donc, conduire, decisions, erronees, conclusions, incorrectes) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation exacte de la FAQ sur le risque de confiance excessive, sans quantification.",
+            "checkedAt": "2026-10-05"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "sources": [
     {
       "path": "docs/design/blog-article-proofs/index.html",
-      "sha256": "e35e402a2ce0141ead38f3c4686bcb6a6e1f5144e68db1bb860531cb4e04a4ab"
+      "sha256": "d3936b3f46bf3e88dc907fceacd8afca2e0e574d1ad818f4b210c0ebe44c5c19"
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
-      "sha256": "1e78e45130ce226a92ff196ec31544b02c40a5a9330dac7819015d6784d7c636"
+      "sha256": "9d85d8cdf9a80e532c68a31c2f238bf85aa458fef0577d9df6692467506930a3"
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
@@ -175,6 +175,18 @@
       "target": "public/proofs/blog/usage-file-essais.webp",
       "bytes": 35020,
       "sha256": "190524d823101a20cc3f8a55908aed8299b94c8675f4c2794564c3519569f495"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#verification-registre",
+      "target": "public/proofs/blog/verification-registre.webp",
+      "bytes": 38268,
+      "sha256": "07eaaa441686f08a97db1f1937b2a0f9c5662864aa8fd07fa4583dd7076d0ef3"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#verification-fiche-reserve",
+      "target": "public/proofs/blog/verification-fiche-reserve.webp",
+      "bytes": 33938,
+      "sha256": "0de9f3041fdd2601fee9b348276fd4dc59bb380a37896f6f8b7d046d5fb5ecdc"
     }
   ]
 }
