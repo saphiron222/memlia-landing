@@ -44,3 +44,11 @@ La deuxième CI conserve un seul échec : la rafale d’exports s’arrête au o
 Observations de trafic, positions, citations IA, backlinks, conversions et CWV terrain ND ; organiser J+7/J+28 après lancement. Aucun SaaS payant ni campagne externe. npm ci signale trois vulnérabilités préexistantes (une modérée, deux hautes), non modifiées.
 
 Hotspots : src/data/outils.ts, pages-lastmod.json, registre-requetes.json, Outil.astro et manifeste glossaire/footer ; synchroniser main avant fusion et conserver matière/verdicts des revues existantes.
+
+### Levée ciblée des trois défauts QA (t_963eec76)
+
+R1 : le lien du générateur ouvre désormais la bibliothèque dans un nouvel onglet explicitement annoncé, isolé par `noopener noreferrer`. L’adaptation s’effectue dans cet autre onglet : le document, les choix et l’export d’origine restent intacts dans le premier. Aucun texte libre n’est persisté ; seul l’identifiant public temporaire de modèle circule comme auparavant. Cette navigation ne dépend pas du cache de retour du navigateur.
+
+R2 : la garde commune inclut les cinq listes, la description, la confirmation et l’éditeur ; le refus conserve le formulaire, l’acceptation charge uniquement les choix du modèle. R3 : le générateur applique le même maintien du lien Blob attaché au document que la bibliothèque, puis retire le lien et révoque l’URL après une seconde.
+
+Les trois sondes indépendantes QA ont été rejouées rouges avant correction. `tests/browser/prompt-qa-reprise.spec.ts` couvre le parcours réel à deux onglets avec export du texte original et stockage vide, chacun des sept champs seul avec refus/acceptation, puis le fichier adapté exact après consommation différée de 100 ms et son nettoyage. R1 change seulement son trajet pour suivre le nouveau lien ; R2/R3 restent rejouables tels quels. Matière et 27 verdicts du glossaire inchangés ; aucune publication ni levée de QA revendiquée par cette correction.

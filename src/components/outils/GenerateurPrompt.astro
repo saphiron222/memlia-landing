@@ -13,7 +13,7 @@ const choices = [
   <div class="library">
     <h2>Bibliothèque d’amorces</h2>
     <p>Choisissez une préparation. Chaque amorce remplit les contraintes ; vous pouvez ensuite les adapter.</p>
-    <p>Pour choisir une tâche déjà détaillée, parcourez la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables">bibliothèque de prompts comptables</a> : douze modèles avec leurs entrées et exemples fictifs.</p>
+    <p>Pour choisir une tâche déjà détaillée, parcourez la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables" target="_blank" rel="noopener noreferrer">bibliothèque de prompts comptables (nouvel onglet)</a> : douze modèles avec leurs entrées et exemples fictifs. Vos choix et votre prompt restent dans cet onglet ; l’adaptation du modèle se fait dans le nouvel onglet, sans remplacer votre travail.</p>
     <div class="actions">{AMORCES.map((seed) => <button class="btn btn-contour" type="button" data-seed={seed.task}>{seed.label}</button>)}</div>
   </div>
   <form class="prompt-form" data-own-telemetry novalidate autocomplete="off">
@@ -99,7 +99,9 @@ const choices = [
       copy.disabled = download.disabled = stale || !result.ok;
       return !stale && result.ok;
     };
-    const hasContent = () => editor.value.length > 0 || Boolean(field('description').value);
+    const hasContent = () => editor.value.length > 0
+      || ['task', 'input', 'format', 'validator', 'stop', 'description'].some(name => Boolean(field(name).value))
+      || (field('confirmed') as HTMLInputElement).checked;
     const resumeModel = () => {
       let model: ReturnType<typeof parseTransfer> = null;
       try {
@@ -178,8 +180,12 @@ const choices = [
     download.addEventListener('click', () => {
       if (!control()) return;
       const url = URL.createObjectURL(new Blob([editor.value], { type: 'text/plain;charset=utf-8' }));
-      try { const link = document.createElement('a'); link.href = url; link.download = 'prompt-expert-comptable.txt'; link.click(); emit('export'); }
-      finally { setTimeout(() => URL.revokeObjectURL(url), 0); }
+      const link = document.createElement('a');
+      link.href = url; link.download = 'prompt-expert-comptable.txt';
+      document.body.append(link);
+      try { link.click(); emit('export'); }
+      // Même durée que la bibliothèque : laisser consommer le Blob avant nettoyage.
+      finally { setTimeout(() => { link.remove(); URL.revokeObjectURL(url); }, 1000); }
     });
   }
 </script>
