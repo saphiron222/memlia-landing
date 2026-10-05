@@ -1,0 +1,583 @@
+{
+  "outil": "01",
+  "route": "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+  "scope": "64 compétences, couverture complète de cette phase ; aucune production ni mesure GSC inventée. Définitions intégrales et cadrage conservés dans docs/strategy/site-v3/outils-ia-vague-3/matrice-skills.json.",
+  "rows": [
+    {
+      "skill": "blog",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Orchestration des compétences adaptées à des pages outils, pas production automatique d’articles. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Limiter le routage aux compétences de cadrage et conserver les tâches de rendu après construction.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-analyze",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "statut": "N/A motivé",
+      "preuve": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-audit",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "statut": "N/A motivé",
+      "preuve": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-brand",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Audience et voix existent déjà dans la charte, sans nouvel entretien marketing. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Reprendre France, vouvoiement, nous, gestes concrets ; aucun profil de voix inventé ni BRAND.md concurrent.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-brief",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Méthode de brief transposable au type outil ; la page future ne peut être auditée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Transmettre intention, gain concret, plan, entrées/sorties et limites propres à chaque outil ; aucun volume ou score concurrent inventé.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-calendar",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "statut": "N/A motivé",
+      "preuve": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-cannibalization",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Comparaison locale des titres/intents et des routes existantes disponible. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Distinguer fabriquer un prompt, choisir un exemple, vérifier sa structure ; conserver dix routes et mailler sans canonical croisé.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-chart",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Aucune statistique externe à visualiser ; une sortie calculée reste spécifique au questionnaire/calculateur. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Pas de chart décoratif ; si 08/09 retiennent une visualisation, validation graphique différée selon les cellules concernées.",
+      "statut": "N/A motivé",
+      "preuve": "Aucune statistique externe à visualiser ; une sortie calculée reste spécifique au questionnaire/calculateur. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-cluster",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Architecture des dix feuilles et du hub analysable depuis le dépôt. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Réutiliser le hub et les ressources exactes ; ne pas générer des dizaines de variantes ni nouveaux articles.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-decay",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Prévoir baseline après mise en ligne et accès aux instruments ; déclin exige périodes comparables, pas un âge de page.",
+      "statut": "Couverture cadrée ; observation publique différée",
+      "preuve": "Aucune série de cette URL encore publiée : visibilité, citations, backlinks et conversion ND. Registre type outil / publieLe null. Livraison t_6d974686 doit constater HTTP/robots/indexation et établir baseline puis J+7/J+28 ; aucun déclin déduit d’un âge de page.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-discourse",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "statut": "N/A motivé",
+      "preuve": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-factcheck",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Contrôle de provenance des affirmations de cadrage et des mesures historiques, non vérification réglementaire finale. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Marquer historiques les relevés du 20/09 et inconnus les volumes ; retirer les anciennes exclusions désormais annulées.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-flow",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Find puis objectif Win applicables sur corpus local ; aucune nouvelle mesure de marché revendiquée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Séparer evidence/assumptions, tâche utilisateur et passage vers /contact ; ne pas envoyer le contenu utilisateur dans des événements.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-geo",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Clarté de l’entité, utilité et fidélité des promesses sont cadrables. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Résumé statique extractible, exemple fictif, méthode et limites ; aucun score de fiabilité/citation ni identité professionnelle inventée.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-google",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Prévoir baseline après mise en ligne et accès aux instruments ; déclin exige périodes comparables, pas un âge de page.",
+      "statut": "Couverture cadrée ; observation publique différée",
+      "preuve": "Aucune série de cette URL encore publiée : visibilité, citations, backlinks et conversion ND. Registre type outil / publieLe null. Livraison t_6d974686 doit constater HTTP/robots/indexation et établir baseline puis J+7/J+28 ; aucun déclin déduit d’un âge de page.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-image",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Aucune génération de visuel utile à ces dix fonctions ; 06 produit du texte professionnel, non des images. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas utiliser de budget image ni fabriquer une capture comme preuve.",
+      "statut": "N/A motivé",
+      "preuve": "Aucune génération de visuel utile à ces dix fonctions ; 06 produit du texte professionnel, non des images. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-locale-audit",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de traduction, hreflang ni contrôle de parité multilingue.",
+      "statut": "N/A motivé",
+      "preuve": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-localize",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de traduction, hreflang ni contrôle de parité multilingue.",
+      "statut": "N/A motivé",
+      "preuve": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-multilingual",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de traduction, hreflang ni contrôle de parité multilingue.",
+      "statut": "N/A motivé",
+      "preuve": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-outline",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Méthode de brief transposable au type outil ; la page future ne peut être auditée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Transmettre intention, gain concret, plan, entrées/sorties et limites propres à chaque outil ; aucun volume ou score concurrent inventé.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-persona",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Audience et voix existent déjà dans la charte, sans nouvel entretien marketing. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Reprendre France, vouvoiement, nous, gestes concrets ; aucun profil de voix inventé ni BRAND.md concurrent.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-repurpose",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "statut": "N/A motivé",
+      "preuve": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-rewrite",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "statut": "N/A motivé",
+      "preuve": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-schema",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "statut": "N/A motivé",
+      "preuve": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-seo-check",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Après implementation : contrôler H1/meta/canonical/JSON-LD/DOM, fonction interactive réelle et liens ; aucune note maintenant.",
+      "statut": "Exécuté sur candidat local",
+      "preuve": "build.log : contrats H1/meta/OG/schema/lastmod/sitemap ; browser.log : maillage trois entrants + footer + média + CSP, clavier six largeurs et zéro réseau/stockage après chargement. renderer.log : 40 actifs conformes. lighthouse-*.json : quatre axes >=95, audit robots natif avec collecte HTTP séparée. Pas certificat WCAG ni constat production.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-strategy",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Architecture des dix feuilles et du hub analysable depuis le dépôt. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Réutiliser le hub et les ressources exactes ; ne pas générer des dizaines de variantes ni nouveaux articles.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-style",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Audience et voix existent déjà dans la charte, sans nouvel entretien marketing. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Reprendre France, vouvoiement, nous, gestes concrets ; aucun profil de voix inventé ni BRAND.md concurrent.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-taxonomy",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Taxonomie outil différente de la taxonomie blog, constat de seulement Calculer/Vérifier dans le registre. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Étendre les catégories selon les gestes effectifs, sans pages d’étiquettes ou nouvelle taxonomie de blog.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-translate",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de traduction, hreflang ni contrôle de parité multilingue.",
+      "statut": "N/A motivé",
+      "preuve": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-write",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé.",
+      "statut": "N/A motivé",
+      "preuve": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Orchestration des compétences adaptées à des pages outils, pas production automatique d’articles. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Limiter le routage aux compétences de cadrage et conserver les tâches de rendu après construction.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-audit",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Après implementation : contrôler H1/meta/canonical/JSON-LD/DOM, fonction interactive réelle et liens ; aucune note maintenant.",
+      "statut": "Exécuté sur candidat local",
+      "preuve": "build.log : contrats H1/meta/OG/schema/lastmod/sitemap ; browser.log : maillage trois entrants + footer + média + CSP, clavier six largeurs et zéro réseau/stockage après chargement. renderer.log : 40 actifs conformes. lighthouse-*.json : quatre axes >=95, audit robots natif avec collecte HTTP séparée. Pas certificat WCAG ni constat production.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-backlinks",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Prévoir baseline après mise en ligne et accès aux instruments ; déclin exige périodes comparables, pas un âge de page.",
+      "statut": "Couverture cadrée ; observation publique différée",
+      "preuve": "Aucune série de cette URL encore publiée : visibilité, citations, backlinks et conversion ND. Registre type outil / publieLe null. Livraison t_6d974686 doit constater HTTP/robots/indexation et établir baseline puis J+7/J+28 ; aucun déclin déduit d’un âge de page.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-cluster",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Architecture des dix feuilles et du hub analysable depuis le dépôt. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Réutiliser le hub et les ressources exactes ; ne pas générer des dizaines de variantes ni nouveaux articles.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent.",
+      "statut": "N/A motivé",
+      "preuve": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-content",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Clarté de l’entité, utilité et fidélité des promesses sont cadrables. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Résumé statique extractible, exemple fictif, méthode et limites ; aucun score de fiabilité/citation ni identité professionnelle inventée.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-content-brief",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Méthode de brief transposable au type outil ; la page future ne peut être auditée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Transmettre intention, gain concret, plan, entrées/sorties et limites propres à chaque outil ; aucun volume ou score concurrent inventé. Registre SEO : type outil absent du validateur ; ajout du registre ne crée pas une route Astro.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-dataforseo",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Enrichissement/crawl externe non nécessaire à l’examen local, aucune dépense ni collecte live autorisée implicitement. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Remesurer si utile à implementation via porte de coût ; corpus historique conservé sans le transformer en SERP actuelle.",
+      "statut": "N/A instrument ; méthode appliquée autrement",
+      "preuve": "Pas de besoin de compte SaaS, crawl distant payant ni achat pour vérifier cette seule route nouvelle. Alternative réellement exécutée : tests sur HTML construit, Playwright Chromium, Lighthouse avec audit robots natif et collecte HTTP hors document. Aucun rapport fournisseur revendiqué. Sources et mesure autocomplete du cadrage conservées, pas présentées comme SERP actuelle.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-drift",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Prévoir baseline après mise en ligne et accès aux instruments ; déclin exige périodes comparables, pas un âge de page.",
+      "statut": "Couverture cadrée ; observation publique différée",
+      "preuve": "Aucune série de cette URL encore publiée : visibilité, citations, backlinks et conversion ND. Registre type outil / publieLe null. Livraison t_6d974686 doit constater HTTP/robots/indexation et établir baseline puis J+7/J+28 ; aucun déclin déduit d’un âge de page.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-ecommerce",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent.",
+      "statut": "N/A motivé",
+      "preuve": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-firecrawl",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Enrichissement/crawl externe non nécessaire à l’examen local, aucune dépense ni collecte live autorisée implicitement. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Remesurer si utile à implementation via porte de coût ; corpus historique conservé sans le transformer en SERP actuelle.",
+      "statut": "N/A instrument ; méthode appliquée autrement",
+      "preuve": "Pas de besoin de compte SaaS, crawl distant payant ni achat pour vérifier cette seule route nouvelle. Alternative réellement exécutée : tests sur HTML construit, Playwright Chromium, Lighthouse avec audit robots natif et collecte HTTP hors document. Aucun rapport fournisseur revendiqué. Sources et mesure autocomplete du cadrage conservées, pas présentées comme SERP actuelle.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-flow",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Find puis objectif Win applicables sur corpus local ; aucune nouvelle mesure de marché revendiquée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Séparer evidence/assumptions, tâche utilisateur et passage vers /contact ; ne pas envoyer le contenu utilisateur dans des événements.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-geo",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Clarté de l’entité, utilité et fidélité des promesses sont cadrables. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Résumé statique extractible, exemple fictif, méthode et limites ; aucun score de fiabilité/citation ni identité professionnelle inventée.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-google",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Prévoir baseline après mise en ligne et accès aux instruments ; déclin exige périodes comparables, pas un âge de page.",
+      "statut": "Couverture cadrée ; observation publique différée",
+      "preuve": "Aucune série de cette URL encore publiée : visibilité, citations, backlinks et conversion ND. Registre type outil / publieLe null. Livraison t_6d974686 doit constater HTTP/robots/indexation et établir baseline puis J+7/J+28 ; aucun déclin déduit d’un âge de page.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-hreflang",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas créer de traduction, hreflang ni contrôle de parité multilingue.",
+      "statut": "N/A motivé",
+      "preuve": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-image-gen",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Aucune génération de visuel utile à ces dix fonctions ; 06 produit du texte professionnel, non des images. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas utiliser de budget image ni fabriquer une capture comme preuve.",
+      "statut": "N/A motivé",
+      "preuve": "Aucune génération de visuel utile à ces dix fonctions ; 06 produit du texte professionnel, non des images. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-images",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Assets OG et éventuelles captures à vérifier sur le candidat, pas encore produits. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Après implementation : dimensions, alt utile, formats, CLS, pas de lazy sur LCP ; aucune image illustrative nécessaire à un outil texte.",
+      "statut": "Exécuté sur candidat local",
+      "preuve": "build.log : contrats H1/meta/OG/schema/lastmod/sitemap ; browser.log : maillage trois entrants + footer + média + CSP, clavier six largeurs et zéro réseau/stockage après chargement. renderer.log : 40 actifs conformes. lighthouse-*.json : quatre axes >=95, audit robots natif avec collecte HTTP séparée. Pas certificat WCAG ni constat production.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-local",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent.",
+      "statut": "N/A motivé",
+      "preuve": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-maps",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent.",
+      "statut": "N/A motivé",
+      "preuve": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-page",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Après implementation : contrôler H1/meta/canonical/JSON-LD/DOM, fonction interactive réelle et liens ; aucune note maintenant.",
+      "statut": "Exécuté sur candidat local",
+      "preuve": "build.log : contrats H1/meta/OG/schema/lastmod/sitemap ; browser.log : maillage trois entrants + footer + média + CSP, clavier six largeurs et zéro réseau/stockage après chargement. renderer.log : 40 actifs conformes. lighthouse-*.json : quatre axes >=95, audit robots natif avec collecte HTTP séparée. Pas certificat WCAG ni constat production.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-plan",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Architecture des dix feuilles et du hub analysable depuis le dépôt. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Réutiliser le hub et les ressources exactes ; ne pas générer des dizaines de variantes ni nouveaux articles. Registre SEO : type outil absent du validateur ; ajout du registre ne crée pas une route Astro.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-programmatic",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Moteur partagé nécessaire pour 01/02/07, garde anti-pages dupliquées pertinent même à petit lot. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Partager le moteur, pas le contenu ; filtres bibliothèque sans pages indexées par combinaison ; une intention propre par feuille.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-schema",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Contrat de génération existant inspecté en source ; prescriptions possibles sans test de futurs rendus. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "WebPage/BreadcrumbList et types véridiques, canonical propre, parité statut/lastmod/sitemap ; tests finaux différés. Réutiliser WebPage/WebApplication/BreadcrumbList du layout ; aucun rating ; bibliothèque à modéliser selon contenu réel.",
+      "statut": "Exécuté sur candidat local",
+      "preuve": "build.log : contrats H1/meta/OG/schema/lastmod/sitemap ; browser.log : maillage trois entrants + footer + média + CSP, clavier six largeurs et zéro réseau/stockage après chargement. renderer.log : 40 actifs conformes. lighthouse-*.json : quatre axes >=95, audit robots natif avec collecte HTTP séparée. Pas certificat WCAG ni constat production.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-sitemap",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Contrat de génération existant inspecté en source ; prescriptions possibles sans test de futurs rendus. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "WebPage/BreadcrumbList et types véridiques, canonical propre, parité statut/lastmod/sitemap ; tests finaux différés.",
+      "statut": "Exécuté sur candidat local",
+      "preuve": "build.log : contrats H1/meta/OG/schema/lastmod/sitemap ; browser.log : maillage trois entrants + footer + média + CSP, clavier six largeurs et zéro réseau/stockage après chargement. renderer.log : 40 actifs conformes. lighthouse-*.json : quatre axes >=95, audit robots natif avec collecte HTTP séparée. Pas certificat WCAG ni constat production.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-sxo",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Après implementation : contrôler H1/meta/canonical/JSON-LD/DOM, fonction interactive réelle et liens ; aucune note maintenant.",
+      "statut": "Exécuté sur candidat local",
+      "preuve": "build.log : contrats H1/meta/OG/schema/lastmod/sitemap ; browser.log : maillage trois entrants + footer + média + CSP, clavier six largeurs et zéro réseau/stockage après chargement. renderer.log : 40 actifs conformes. lighthouse-*.json : quatre axes >=95, audit robots natif avec collecte HTTP séparée. Pas certificat WCAG ni constat production.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-technical",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Contrat de génération existant inspecté en source ; prescriptions possibles sans test de futurs rendus. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "WebPage/BreadcrumbList et types véridiques, canonical propre, parité statut/lastmod/sitemap ; tests finaux différés. Registre SEO : type outil absent du validateur ; ajout du registre ne crée pas une route Astro.",
+      "statut": "Exécuté sur candidat local",
+      "preuve": "build.log : contrats H1/meta/OG/schema/lastmod/sitemap ; browser.log : maillage trois entrants + footer + média + CSP, clavier six largeurs et zéro réseau/stockage après chargement. renderer.log : 40 actifs conformes. lighthouse-*.json : quatre axes >=95, audit robots natif avec collecte HTTP séparée. Pas certificat WCAG ni constat production.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "memlia-blog-strategie",
+      "cadrage": "applicable exécuté cadrage",
+      "motif_cadrage": "Pointeur vers le dépôt et contrat des namespaces explicitement pertinents. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Pas de création de calendrier/article ni double revue marketing ; une QA qualifiée code ou contenu sensible sur candidat exact. Registre SEO : type outil absent du validateur ; ajout du registre ne crée pas une route Astro.",
+      "statut": "Application ciblée vérifiée sur candidat",
+      "preuve": "Brief 01/CONTRAT-COMMUN réconciliés : primaire générateur prompt expert comptable distinct du guide ChatGPT ; sept blocs, quatre amorces, exemple statique, essais fictifs non simulés avec IA, frontières et CTA après valeur. Charte nous/vous, catégorie Écrire ; source CNIL relue et conservée dans source-cnil.md. Registre typé outil avec date de publication inconnue ; corps/FAQ visibles dans HTML et tests navigateur. Application ciblée, pas exécution intégrale d’une commande blog.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-audio",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Extension installée hors catalogue exposé ; aucune narration, audio ou podcast demandé pour les pages outils. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Ne pas produire de TTS ni appeler un fournisseur audio.",
+      "statut": "N/A motivé",
+      "preuve": "Extension installée hors catalogue exposé ; aucune narration, audio ou podcast demandé pour les pages outils. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "blog-notebooklm",
+      "cadrage": "N/A motivé",
+      "motif_cadrage": "Extension installée hors catalogue exposé ; aucun notebook fourni ni besoin d’envoyer le corpus à un service externe. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Lire les sources locales et primaires directement ; aucune authentification ou import NotebookLM.",
+      "statut": "N/A motivé",
+      "preuve": "Extension installée hors catalogue exposé ; aucun notebook fourni ni besoin d’envoyer le corpus à un service externe. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-ahrefs",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Choisir seulement l’instrument utile au candidat réel, vérifier disponibilité/credentials/coût ; pas de résultat vendor fabriqué ni soumission avant publication.",
+      "statut": "N/A instrument ; méthode appliquée autrement",
+      "preuve": "Pas de besoin de compte SaaS, crawl distant payant ni achat pour vérifier cette seule route nouvelle. Alternative réellement exécutée : tests sur HTML construit, Playwright Chromium, Lighthouse avec audit robots natif et collecte HTTP hors document. Aucun rapport fournisseur revendiqué. Sources et mesure autocomplete du cadrage conservées, pas présentées comme SERP actuelle.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-bing",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Choisir seulement l’instrument utile au candidat réel, vérifier disponibilité/credentials/coût ; pas de résultat vendor fabriqué ni soumission avant publication.",
+      "statut": "Couverture cadrée ; observation publique différée",
+      "preuve": "Aucune série de cette URL encore publiée : visibilité, citations, backlinks et conversion ND. Registre type outil / publieLe null. Livraison t_6d974686 doit constater HTTP/robots/indexation et établir baseline puis J+7/J+28 ; aucun déclin déduit d’un âge de page.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-profound",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Choisir seulement l’instrument utile au candidat réel, vérifier disponibilité/credentials/coût ; pas de résultat vendor fabriqué ni soumission avant publication.",
+      "statut": "Couverture cadrée ; observation publique différée",
+      "preuve": "Aucune série de cette URL encore publiée : visibilité, citations, backlinks et conversion ND. Registre type outil / publieLe null. Livraison t_6d974686 doit constater HTTP/robots/indexation et établir baseline puis J+7/J+28 ; aucun déclin déduit d’un âge de page.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-seranking",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Choisir seulement l’instrument utile au candidat réel, vérifier disponibilité/credentials/coût ; pas de résultat vendor fabriqué ni soumission avant publication.",
+      "statut": "N/A instrument ; méthode appliquée autrement",
+      "preuve": "Pas de besoin de compte SaaS, crawl distant payant ni achat pour vérifier cette seule route nouvelle. Alternative réellement exécutée : tests sur HTML construit, Playwright Chromium, Lighthouse avec audit robots natif et collecte HTTP hors document. Aucun rapport fournisseur revendiqué. Sources et mesure autocomplete du cadrage conservées, pas présentées comme SERP actuelle.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    },
+    {
+      "skill": "seo-unlighthouse",
+      "cadrage": "applicable différé implémentation",
+      "motif_cadrage": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication. Outil 01 : Fabriquer une consigne depuis la tâche abstraite, non choisir une liste ni produire une réponse comptable.",
+      "application": "Choisir seulement l’instrument utile au candidat réel, vérifier disponibilité/credentials/coût ; pas de résultat vendor fabriqué ni soumission avant publication.",
+      "statut": "N/A instrument ; méthode appliquée autrement",
+      "preuve": "Pas de besoin de compte SaaS, crawl distant payant ni achat pour vérifier cette seule route nouvelle. Alternative réellement exécutée : tests sur HTML construit, Playwright Chromium, Lighthouse avec audit robots natif et collecte HTTP hors document. Aucun rapport fournisseur revendiqué. Sources et mesure autocomplete du cadrage conservées, pas présentées comme SERP actuelle.",
+      "publication": "À constater par t_6d974686 après QA unique t_b3f1ff96 ; N/A et ND ne deviennent pas PASS par publication."
+    }
+  ]
+}

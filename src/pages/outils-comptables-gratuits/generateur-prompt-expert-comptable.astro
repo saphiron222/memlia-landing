@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import GenerateurPrompt from '@/components/outils/GenerateurPrompt.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('generateur-prompt-expert-comptable');
+---
+<Outil outil={outil}><GenerateurPrompt /></Outil>

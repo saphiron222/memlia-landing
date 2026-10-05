@@ -1,0 +1,1063 @@
+{
+  "checkedAt": "2026-10-04T22:50:54.700Z",
+  "reviewerTaskId": "t_2352a08b",
+  "subject": {
+    "slug": "verifier-reponse-ia-comptabilite",
+    "bodySha256": "84ee6249769b345b3a2bd1b8dab1cfad969cb464ac5309b0ad9b9d3633198530",
+    "recipeSha256": "43980413b0d4d4a0444ed08c4ccd31a5a96267256073276f92cec560bf1479be",
+    "renderedSha256": "de74cde0283f8b420da397a8c30d5d6a993ead25149ed42bd6be8a9fc392b6c7"
+  },
+  "contract": {
+    "pass": true,
+    "articles": 1,
+    "exemptions": [
+      {
+        "slug": "verifier-reponse-ia-comptabilite",
+        "clause": 4,
+        "date": "2026-10-04",
+        "raison": "Checklist transversale de contrôle des affirmations IA, distincte des chaînes Paie et DSN et Saisie et pièces ; rattachement à la famille IA sans nouvelle rubrique mince."
+      }
+    ],
+    "erreurs": []
+  },
+  "coverage": {
+    "total": 63,
+    "counts": {
+      "execute": 31,
+      "a-executer": 4,
+      "N/A": 25,
+      "partiel": 2,
+      "indisponible": 1
+    },
+    "registries": {
+      "blog": 31,
+      "seo": 24,
+      "extensions": [
+        "blog",
+        "seo",
+        "seo-ahrefs",
+        "seo-bing",
+        "seo-firecrawl",
+        "seo-profound",
+        "seo-seranking",
+        "seo-unlighthouse"
+      ]
+    },
+    "catalogueCount": 56,
+    "readsVerified": 63,
+    "allEvidenceResolved": true,
+    "parentCounts": {
+      "union_racines_et_sous_skills": 63,
+      "racines": 2,
+      "sous_skills_blog": 31,
+      "sous_skills_seo": 30,
+      "catalogue_blog_seo": 56,
+      "pipeline_blog": 31,
+      "pipeline_seo": 24,
+      "templates_structurels_blog": 12
+    }
+  },
+  "replay": {
+    "executedAt": "2026-10-04T22:50:46.454Z",
+    "modeleInterroge": null,
+    "nature": "Routage déterministe de qualifications préalables humaines, pas analyse automatique du texte",
+    "documents": {
+      "NOTE-A-v1": "D-012 : préparer la liste des pièces à demander. Réunion jeudi, sous réserve de confirmation.",
+      "NOTE-B-v1": "D-012 : réunion jeudi.",
+      "NOTE-B-v2": "D-012 : réunion vendredi. Cette note ne précise pas si elle remplace NOTE-B-v1."
+    },
+    "cases": [
+      {
+        "id": "V-01",
+        "affirmation": "Préparer la liste des pièces à demander.",
+        "source": "NOTE-A-v1",
+        "qualification": "fidele",
+        "decision": "GARDER",
+        "motif": "FIDELE_AU_DOCUMENT",
+        "saisie": false
+      },
+      {
+        "id": "V-02",
+        "affirmation": "Le retour est attendu le 12 octobre.",
+        "source": "NOTE-A-v1",
+        "qualification": "ajout",
+        "decision": "CORRIGER",
+        "motif": "DATE_NON_ETAYEE",
+        "saisie": false
+      },
+      {
+        "id": "V-03",
+        "affirmation": "La procédure prévoit une validation unique.",
+        "source": null,
+        "qualification": "introuvable",
+        "decision": "RECHERCHER",
+        "motif": "SOURCE_INTROUVABLE",
+        "saisie": false
+      },
+      {
+        "id": "V-04",
+        "affirmation": "La réunion est confirmée jeudi.",
+        "source": "NOTE-A-v1",
+        "qualification": "reserve_omise",
+        "decision": "CORRIGER",
+        "motif": "RESERVE_OMISE",
+        "saisie": false
+      },
+      {
+        "id": "V-05",
+        "affirmation": "La réunion a lieu jeudi.",
+        "source": [
+          "NOTE-B-v1",
+          "NOTE-B-v2"
+        ],
+        "qualification": "contradiction",
+        "decision": "ECARTER",
+        "motif": "ARBITRAGE_HUMAIN",
+        "saisie": false
+      }
+    ],
+    "calcul": {
+      "entrees": [
+        125,
+        75
+      ],
+      "total": 200,
+      "unite": "unités fictives",
+      "regle": "Addition indépendante de tout modèle, sans règle fiscale"
+    },
+    "additionalUnknownQualifications": 7
+  },
+  "source": {
+    "httpStatus": 200,
+    "checkedAt": "2026-10-04",
+    "contentIntegrity": true,
+    "claimsFound": 2,
+    "live": {
+      "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "httpStatus": 200,
+      "claimsFound": 2,
+      "displayedDate": "18 juillet 2024",
+      "artifact": "revue-source-cnil.html"
+    }
+  },
+  "images": [
+    {
+      "path": "public/proofs/blog/verification-registre.webp",
+      "width": 1600,
+      "height": 900,
+      "format": "webp",
+      "bytes": 38268
+    },
+    {
+      "path": "public/proofs/blog/verification-fiche-reserve.webp",
+      "width": 1600,
+      "height": 900,
+      "format": "webp",
+      "bytes": 33938
+    },
+    {
+      "path": "editorial/articles/verifier-reponse-ia-comptabilite/preuves/image/master.png",
+      "width": 1920,
+      "height": 1080,
+      "format": "png",
+      "bytes": 1760204
+    },
+    {
+      "path": "public/images/img-art-verifier-reponse-ia-comptabilite-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp",
+      "bytes": 6802
+    },
+    {
+      "path": "public/images/img-art-verifier-reponse-ia-comptabilite-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "heif",
+      "bytes": 4913
+    },
+    {
+      "path": "public/images/img-art-verifier-reponse-ia-comptabilite-1200.webp",
+      "width": 1200,
+      "height": 675,
+      "format": "webp",
+      "bytes": 11906
+    },
+    {
+      "path": "public/images/img-art-verifier-reponse-ia-comptabilite-1200.avif",
+      "width": 1200,
+      "height": 675,
+      "format": "heif",
+      "bytes": 7821
+    },
+    {
+      "path": "public/images/img-art-verifier-reponse-ia-comptabilite-1600.webp",
+      "width": 1600,
+      "height": 900,
+      "format": "webp",
+      "bytes": 16982
+    },
+    {
+      "path": "public/images/img-art-verifier-reponse-ia-comptabilite-1600.avif",
+      "width": 1600,
+      "height": 900,
+      "format": "heif",
+      "bytes": 10850
+    },
+    {
+      "path": "public/images/img-art-verifier-reponse-ia-comptabilite-og.webp",
+      "width": 1200,
+      "height": 630,
+      "format": "webp",
+      "bytes": 11974
+    }
+  ],
+  "browser": [
+    {
+      "width": 1280,
+      "overflow": false,
+      "lang": "fr",
+      "h1": [
+        "Vérifier une réponse IA en comptabilité : une checklist avant utilisation"
+      ],
+      "h2": [
+        "Réponse directe",
+        "Ce que vous vérifiez, exactement",
+        "Pourquoi la vérification casse à la main",
+        "Avant de commencer",
+        "1. Découper le brouillon en éléments contrôlables",
+        "2. Retrouver la source et lire autour de la citation",
+        "3. Recalculer les nombres sans réutiliser la réponse",
+        "La checklist à copier dans votre dossier de travail",
+        "La règle écrite",
+        "Rejoué sur le jeu fictif",
+        "Garder la trace sans confondre brouillon et saisie",
+        "Les erreurs fréquentes",
+        "Questions fréquentes",
+        "La règle à retenir",
+        "Pour aller plus loin"
+      ],
+      "robots": "noindex, follow",
+      "canonical": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+      "title": "Vérifier réponse IA comptabilité : checklist | Memlia",
+      "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+      "ogTitle": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+      "author": "Kevin Kitanga",
+      "schema": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite#article",
+          "headline": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+          "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+          "url": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite"
+          },
+          "datePublished": "2026-10-04T00:00:00.000Z",
+          "dateModified": "2026-10-04T00:00:00.000Z",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://memlia.fr/images/img-art-verifier-reponse-ia-comptabilite-og.webp",
+            "width": 1200,
+            "height": 630,
+            "caption": "Une feuille vierge et trois points de vérification dans un diorama vert, graphite et crème"
+          },
+          "thumbnailUrl": "https://memlia.fr/images/img-art-verifier-reponse-ia-comptabilite-og.webp",
+          "articleSection": [
+            "IA",
+            "Automatisation"
+          ],
+          "keywords": [
+            "vérifier réponse IA comptabilité",
+            "hallucinations ChatGPT comptabilité",
+            "vérifier sources ChatGPT"
+          ],
+          "wordCount": 2417
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://memlia.fr/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+              "item": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+          "name": "Kevin Kitanga",
+          "jobTitle": "Fondateur de Memlia",
+          "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+          "url": "https://memlia.fr/a-propos",
+          "worksFor": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "/proofs/blog/verification-fiche-reserve.webp",
+          "naturalWidth": 1600,
+          "naturalHeight": 900,
+          "alt": "Fiche fictive V-04 : réunion confirmée comparée à la réserve de NOTE-A-v1, décision CORRIGER.",
+          "renderedWidth": 656
+        },
+        {
+          "src": "/proofs/blog/verification-registre.webp",
+          "naturalWidth": 1600,
+          "naturalHeight": 900,
+          "alt": "Registre fictif V-01 à V-05 : affirmation, source, qualification préalable et décision de routage.",
+          "renderedWidth": 656
+        }
+      ],
+      "links": [
+        "/blog/prompt-chatgpt-expert-comptable",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/blog/utiliser-chatgpt-cabinet-comptable",
+        "/glossaire#validation-humaine",
+        "/blog/logiciel-ia-comptabilite",
+        "/methode",
+        "/garanties"
+      ],
+      "text": "Réponse directe\n\nPour vérifier une réponse IA en comptabilité, séparez ses affirmations, ouvrez les sources exactes, contrôlez leur périmètre et recalculez les nombres hors du modèle. Attribuez ensuite une décision à chaque ligne : garder, corriger, rechercher ou écarter. Une réponse fluide, une URL présente ou un second avis de ChatGPT ne suffisent pas. La checklist ci-dessous permet de garder un brouillon utile sans transformer une phrase plausible en fait établi.\n\nCe que vous vérifiez, exactement\n\nUne affirmation vérifiable est une phrase dont vous pouvez comparer le contenu à une pièce, une source ou un calcul indépendant. « La réunion est jeudi » en est une ; « voici une formulation plus claire » décrit plutôt un geste de rédaction.\n\nUne hallucination d’IA est une sortie incorrecte ou trompeuse présentée comme une information. Dans sa FAQ sur l’IA générative, la CNIL explique : « Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles ». Ce constat ne donne pas un taux d’erreur pour votre cabinet.\n\nLe périmètre de la source est l’ensemble des conditions dans lesquelles son information s’applique : période, version, situation visée et réserves. Une phrase exacte peut être inutilisable si elle concerne un autre cas.\n\nLe guide sur les prompts pour expert-comptable aide à écrire la consigne. Ici, nous contrôlons ce qui en sort. La même grille convient à un résumé, une liste de questions ou un message préparatoire, quel que soit l’outil qui a produit le brouillon.\n\nPourquoi la vérification casse à la main\n\nUn collaborateur relit le texte, reconnaît le sujet et corrige deux tournures. Il connaît aussi les réserves du dossier, mais elles ne sont pas dans le brouillon. Le lecteur suivant voit une phrase nette et suppose que tout a été contrôlé. La fluidité du texte a remplacé la trace du contrôle.\n\nLa règle que le cabinet applique souvent sans l’avoir écrite est simple : aucune affirmation utile à une décision ne passe du brouillon au dossier sans un appui retrouvé et un contexte vérifié. Quand cette règle reste dans une seule tête, personne ne sait distinguer une correction de style d’une validation du fond.\n\nCe geste appartient aux tâches de contrôle de la carte des tâches du cabinet. Il gagne à être nommé avant de chercher à automatiser sa mécanique. L’objectif n’est pas de tout relire indistinctement, mais de savoir quelle phrase attend encore une preuve.\n\nAvant de commencer\n\nPréparez le brouillon original, la consigne qui l’a produit, les documents autorisés pour cet usage et l’endroit où noter vos décisions. Conservez une version du texte avant correction : une phrase supprimée ne doit pas disparaître du raisonnement qui a conduit à la supprimer.\n\nPour le premier essai, prenez un contexte entièrement fictif. Le dossier D-012 utilisé plus bas n’existe pas ; ses notes ont été écrites pour la démonstration. Vous pourrez ainsi éprouver le contrôle sans partager une pièce réelle.\n\nChoisissez aussi la destination : texte interne, question à poser, message à relire ou préparation d’une saisie. « Garder » une phrase pour préparer une question ne signifie pas l’autoriser à produire une écriture. Le guide pour choisir un premier usage ChatGPT aide à fixer ce résultat avant l’essai.\n\n1. Découper le brouillon en éléments contrôlables\n\nNe vérifiez pas un paragraphe entier avec un seul oui. Isolez les dates, montants, noms de documents, règles annoncées et conclusions. Une phrase peut contenir une information fidèle et une précision ajoutée.\n\nDans « La réunion est confirmée jeudi, avec un retour attendu le 12 octobre », il y a au moins trois éléments : le jour, la confirmation et la date de retour. Le document peut soutenir le premier sans soutenir les deux autres. Donnez un identifiant à chaque élément pour éviter qu’une correction masque les autres.\n\nÉlément du brouillon\tContrôle à faire\tCe qui ne suffit pas\nReformulation d’une note\tComparer le sens et les réserves à la note\tTrouver le texte plus élégant\nDate ou délai annoncé\tRetrouver la mention et sa condition\tReconnaître une date habituelle\nNombre ou total\tRetrouver les entrées puis recalculer\tRelire le nombre sans les entrées\nRègle ou référence\tOuvrir le document exact et son périmètre\tUne référence avec un titre crédible\nConclusion\tRelier chaque prémisse à son appui\tLe ton assuré de la réponse\n\nDemander au modèle « es-tu certain ? » peut produire un nouveau texte à contrôler. Cela ne remplace pas la comparaison. Notez la question utile qu’il suggère, sans prendre son assurance pour une validation indépendante.\n\n2. Retrouver la source et lire autour de la citation\n\nOuvrez la page ou la pièce, pas seulement le lien affiché. Vérifiez qu’elle contient réellement le passage annoncé. Une page d’accueil, un titre proche ou un document d’une autre période ne constituent pas l’appui attendu.\n\nLa FAQ de la CNIL précise : « Une confiance excessive dans les résultats produits par un système d’IA générative sans une vérification appropriée peut donc conduire à des décisions erronées ou à des conclusions incorrectes. » Le lien permet de retrouver l’appui ; sa présence ne valide pas le brouillon.\n\nLisez le paragraphe précédent et le suivant. Cherchez notamment une réserve, une exception, une condition d’entrée ou une limite de champ. Relevez la date du document lorsqu’elle est affichée et sa version si plusieurs versions existent. Une date de publication n’est pas, à elle seule, une date d’application.\n\nPour une règle professionnelle, cherchez l’autorité compétente et le texte adapté au cas plutôt qu’un résumé trouvé au hasard. Si la source est inaccessible, classez la ligne « rechercher ». Son absence ne démontre pas que l’affirmation est fausse ; elle empêche de la retenir comme étayée pour l’usage prévu.\n\nDeux documents peuvent se contredire sans que l’un soit manifestement faux. Ils peuvent viser des périodes ou des situations différentes. Relevez cette différence. Si elle ne suffit pas à choisir, gardez le conflit visible et confiez l’arbitrage au responsable du dossier.\n\n3. Recalculer les nombres sans réutiliser la réponse\n\nPartez des valeurs d’entrée retrouvées, pas du total proposé. Notez l’unité, la période et le calcul. Une addition exacte ne répare pas une pièce manquante, un doublon ou un montant appartenant à une autre période.\n\nDans notre exemple sans règle fiscale, deux valeurs fictives de 125 et 75 unités donnent 200 unités. Cette addition a été exécutée hors de tout modèle. Elle vérifie seulement l’opération sur ces deux entrées, pas leur pertinence pour un dossier réel.\n\nPour un calcul dépendant d’une règle métier, séparez donc deux décisions : le calcul est-il reproduit correctement ? La règle et les entrées conviennent-elles au cas ? La seconde n’est pas acquise parce que la première est verte. Si la réponse ne fournit pas assez d’éléments pour refaire l’opération, recherchez les entrées avant de reprendre le nombre.\n\nLa checklist à copier dans votre dossier de travail\n\nCopiez cette fiche dans votre outil habituel. Elle reste utile sans inscription ni outil supplémentaire. Une ligne correspond à une affirmation, pas à une réponse entière.\n\nChamp\tÀ renseigner\nIdentifiant de contrôle\tV-01, V-02…\nUsage prévu\tQuestion interne, brouillon de message, préparation à relire…\nVersion du brouillon\tRéférence permettant de retrouver le texte contrôlé\nAffirmation exacte\tPhrase ou fragment, sans le réécrire pendant l’examen\nNature\tReformulation, fait, calcul, règle ou conclusion\nSource ouverte\tDocument précis et passage ; URL seulement si elle mène à cet appui\nVersion et période\tCe que la source indique, ou « non précisé »\nConditions et réserves\tCe qui limite la portée de la phrase\nComparaison\tFidèle, ajout, réserve omise, appui absent ou contradiction\nCalcul indépendant\tEntrées, opération, unité et résultat, si nécessaire\nDécision et motif\tGarder, corriger, rechercher ou écarter ; raison précise\nTexte retenu\tVersion corrigée, ou aucune phrase retenue\nResponsable et date\tPersonne qui a contrôlé et date de sa décision\nDestination autorisée\tOù ce texte peut aller après le contrôle\n\nLes quatre décisions sont une convention de travail, pas des catégories réglementaires. Leur sens doit rester stable pour que la personne qui reprend le dossier comprenne la suite.\n\nDécision\tQuand l’utiliser\tSuite concrète\nGarder\tLe passage retrouvé soutient la phrase dans ce contexte\tConserver dans le brouillon pour l’usage défini\nCorriger\tUn appui existe, mais une précision ou une réserve a été déformée\tÉcrire la correction puis la comparer à nouveau\nRechercher\tL’appui ou le contexte n’est pas retrouvé\tIdentifier la recherche nécessaire, sans reprendre la phrase comme un fait\nÉcarter\tLa phrase ne convient pas à l’usage, ou un conflit reste à arbitrer\tRetirer de la version utilisable et conserver le motif\n\nUne correction n’est pas automatiquement validée. Remplacer « confirmé » par « prévu » peut encore oublier « sous réserve de confirmation ». Comparez donc la phrase retenue au même passage avant de fermer la ligne.\n\nLa règle écrite\n\nLa frontière. Nous séparons le rangement des preuves, la validation du brouillon et le jugement sur le dossier.\n\nSe prépare seul\tAttend une validation\tReste humain\nClasser les lignes et présenter les appuis déjà renseignés\tRetenir une phrase corrigée pour une destination définie\tLire le sens, qualifier la source et arbitrer une contradiction\n\nLa proposition. Nous préparons un registre reliant affirmation, document, réserve et décision. Le collaborateur renseigne la comparaison et valide le texte retenu. Le cabinet conserve le brouillon initial, la version corrigée et la trace qui les relie.\n\nL’arrêt. La ligne ne devient pas utilisable si l’appui reste introuvable, si le périmètre est inconnu ou si deux documents laissent un conflit ouvert. La proposition reste séparée des saisies du cabinet. Aucun statut technique ne tranche le fond à la place du lecteur.\n\nLe jeu d’essai. Nous avons exécuté cinq cas sur des notes entièrement fictives : phrase fidèle, date ajoutée, source introuvable, réserve omise et contradiction. Aucun modèle n’a été interrogé. Le programme reçoit une qualification préalable faite pour chaque cas et la route vers la décision prévue ; il ne détecte pas automatiquement une erreur dans un texte.\n\nRejoué sur le jeu fictif\n\nLa note NOTE-A-v1 contient : « D-012 : préparer la liste des pièces à demander. Réunion jeudi, sous réserve de confirmation. » Les phrases ci-dessous sont des brouillons de démonstration écrits pour l’essai, pas des réponses obtenues de ChatGPT.\n\nCas joué\tSortie obtenue\tDécision\nV-01 : « Préparer la liste des pièces à demander. » ; passage fidèle à NOTE-A-v1\tGARDER / FIDELE_AU_DOCUMENT\tConserver cette phrase dans le brouillon\nV-02 : « Le retour est attendu le 12 octobre. » ; date absente de NOTE-A-v1\tCORRIGER / DATE_NON_ETAYEE\tRetirer la date ajoutée, puis contrôler la correction\nV-03 : « La procédure prévoit une validation unique. » ; document non retrouvé dans le jeu\tRECHERCHER / SOURCE_INTROUVABLE\tChercher l’appui avant de reprendre cette phrase\nV-04 : « La réunion est confirmée jeudi. » ; réserve de NOTE-A-v1 perdue\tCORRIGER / RESERVE_OMISE\tRétablir « jeudi, sous réserve de confirmation »\nV-05 : réunion jeudi dans NOTE-B-v1, vendredi dans NOTE-B-v2, sans remplacement explicite\tECARTER / ARBITRAGE_HUMAIN\tRetirer la conclusion utilisable en attendant le choix humain\n\nLe rejeu produit ces statuts et aucune saisie. Il éprouve la correspondance entre une qualification et sa suite, pas la capacité d’une IA à reconnaître les cinq défauts. La lecture des notes fournit ici la qualification ; dans un usage réel, ce travail reste celui du contrôleur.\n\nGarder la trace sans confondre brouillon et saisie\n\nConservez le passage source utile et le motif de décision dans le dossier de travail autorisé. L’objectif est de pouvoir comprendre la vérification sans rejouer toute la conversation. Évitez de multiplier les copies de pièces lorsque la référence au document en place suffit.\n\nMarquez la version utilisable et sa destination. Un texte relu pour préparer une question interne n’est pas validé pour envoyer une réponse à un client ou enregistrer une écriture. La validation humaine porte sur un objet précis et un usage précis, pas sur une confiance générale dans le fournisseur.\n\nPour choisir un environnement, la grille de choix d’un logiciel IA en comptabilité examine notamment les sorties, exceptions et traces. Ce guide ne crée pas un détecteur d’hallucinations : un classement automatique peut faciliter le rangement, mais il ne certifie pas le sens d’une phrase.\n\nLes erreurs fréquentes\nVérifier le lien, pas le contenu. Une URL qui répond peut conduire à une page sans rapport avec l’affirmation.\nGarder la phrase et perdre la réserve. Un résumé court conserve parfois le sujet tout en changeant sa portée.\nConfondre calcul et choix des entrées. Un total juste peut porter sur le mauvais ensemble.\nDemander à la même réponse de se certifier. La nouvelle explication reste un élément à contrôler.\nFermer une contradiction avec la source la plus récente. La récence ne prouve pas que les deux documents ont le même champ.\nValider tout le brouillon d’un seul geste. Une ligne étayée ne rend pas les autres utilisables.\nQuestions fréquentes\nQue faire si ChatGPT ne donne aucune source ?\n\nPartez de l’affirmation et recherchez son appui indépendamment. Si vous ne le retrouvez pas, la ligne reste « rechercher ». Pour une simple reformulation, le document fourni peut être la source : comparez le sens, les conditions et les ajouts.\n\nUne citation entre guillemets suffit-elle ?\n\nNon. Retrouvez les mots dans le document et lisez leur contexte. Une citation peut être exacte mais concerner un autre cas, ou perdre une exception située dans le paragraphe suivant.\n\nQue faire si deux sources donnent des réponses différentes ?\n\nComparez d’abord leur période, leur version et leur situation visée. Si le désaccord reste ouvert, écartez la conclusion du brouillon utilisable et notez l’arbitrage nécessaire. Ne choisissez pas depuis le seul ton du texte.\n\nUne réponse sans marque d’incertitude est-elle plus fiable ?\n\nLe ton ne fournit pas la preuve attendue. Appliquez les mêmes contrôles à une réponse assurée et à une réponse prudente. Ce sont les appuis retrouvés et le périmètre qui permettent de décider.\n\nPeut-on automatiser toute cette checklist ?\n\nLe rangement, la présentation des lignes et le suivi de leur état peuvent faire partie d’une règle écrite. L’essai présenté ici route des qualifications renseignées ; il ne lit pas les documents à votre place. Commencez par définir ce que le lecteur valide et les conflits qui bloquent la reprise du texte.\n\nLa règle à retenir\n\nUne réponse utile est un brouillon dont chaque affirmation importante a un appui retrouvé, un périmètre et une décision. Une source absente ou un conflit ouvert reste visible jusqu’à sa résolution, au lieu de disparaître dans une phrase fluide.\n\nPour aller plus loin\n\nNous prenons en charge la mécanique répétitive de votre contrôle : écrire les états dans les mots du cabinet, relier les propositions aux preuves et présenter les exceptions dans vos outils. Notre méthode décrit l’observation, le jeu d’essai et la recette par votre équipe ; nos garanties fixent la séparation entre propositions et saisies. Vous gardez la lecture du fond et la décision sur le dossier.",
+      "tables": [
+        {
+          "headers": [
+            "Élément du brouillon",
+            "Contrôle à faire",
+            "Ce qui ne suffit pas"
+          ],
+          "rows": [
+            [
+              "Reformulation d’une note",
+              "Comparer le sens et les réserves à la note",
+              "Trouver le texte plus élégant"
+            ],
+            [
+              "Date ou délai annoncé",
+              "Retrouver la mention et sa condition",
+              "Reconnaître une date habituelle"
+            ],
+            [
+              "Nombre ou total",
+              "Retrouver les entrées puis recalculer",
+              "Relire le nombre sans les entrées"
+            ],
+            [
+              "Règle ou référence",
+              "Ouvrir le document exact et son périmètre",
+              "Une référence avec un titre crédible"
+            ],
+            [
+              "Conclusion",
+              "Relier chaque prémisse à son appui",
+              "Le ton assuré de la réponse"
+            ]
+          ],
+          "fontSize": "14px",
+          "scrollWidth": 656,
+          "clientWidth": 656
+        },
+        {
+          "headers": [
+            "Champ",
+            "À renseigner"
+          ],
+          "rows": [
+            [
+              "Identifiant de contrôle",
+              "V-01, V-02…"
+            ],
+            [
+              "Usage prévu",
+              "Question interne, brouillon de message, préparation à relire…"
+            ],
+            [
+              "Version du brouillon",
+              "Référence permettant de retrouver le texte contrôlé"
+            ],
+            [
+              "Affirmation exacte",
+              "Phrase ou fragment, sans le réécrire pendant l’examen"
+            ],
+            [
+              "Nature",
+              "Reformulation, fait, calcul, règle ou conclusion"
+            ],
+            [
+              "Source ouverte",
+              "Document précis et passage ; URL seulement si elle mène à cet appui"
+            ],
+            [
+              "Version et période",
+              "Ce que la source indique, ou « non précisé »"
+            ],
+            [
+              "Conditions et réserves",
+              "Ce qui limite la portée de la phrase"
+            ],
+            [
+              "Comparaison",
+              "Fidèle, ajout, réserve omise, appui absent ou contradiction"
+            ],
+            [
+              "Calcul indépendant",
+              "Entrées, opération, unité et résultat, si nécessaire"
+            ],
+            [
+              "Décision et motif",
+              "Garder, corriger, rechercher ou écarter ; raison précise"
+            ],
+            [
+              "Texte retenu",
+              "Version corrigée, ou aucune phrase retenue"
+            ],
+            [
+              "Responsable et date",
+              "Personne qui a contrôlé et date de sa décision"
+            ],
+            [
+              "Destination autorisée",
+              "Où ce texte peut aller après le contrôle"
+            ]
+          ],
+          "fontSize": "14px",
+          "scrollWidth": 656,
+          "clientWidth": 656
+        },
+        {
+          "headers": [
+            "Décision",
+            "Quand l’utiliser",
+            "Suite concrète"
+          ],
+          "rows": [
+            [
+              "Garder",
+              "Le passage retrouvé soutient la phrase dans ce contexte",
+              "Conserver dans le brouillon pour l’usage défini"
+            ],
+            [
+              "Corriger",
+              "Un appui existe, mais une précision ou une réserve a été déformée",
+              "Écrire la correction puis la comparer à nouveau"
+            ],
+            [
+              "Rechercher",
+              "L’appui ou le contexte n’est pas retrouvé",
+              "Identifier la recherche nécessaire, sans reprendre la phrase comme un fait"
+            ],
+            [
+              "Écarter",
+              "La phrase ne convient pas à l’usage, ou un conflit reste à arbitrer",
+              "Retirer de la version utilisable et conserver le motif"
+            ]
+          ],
+          "fontSize": "14px",
+          "scrollWidth": 656,
+          "clientWidth": 656
+        },
+        {
+          "headers": [
+            "Se prépare seul",
+            "Attend une validation",
+            "Reste humain"
+          ],
+          "rows": [
+            [
+              "Classer les lignes et présenter les appuis déjà renseignés",
+              "Retenir une phrase corrigée pour une destination définie",
+              "Lire le sens, qualifier la source et arbitrer une contradiction"
+            ]
+          ],
+          "fontSize": "14px",
+          "scrollWidth": 656,
+          "clientWidth": 656
+        },
+        {
+          "headers": [
+            "Cas joué",
+            "Sortie obtenue",
+            "Décision"
+          ],
+          "rows": [
+            [
+              "V-01 : « Préparer la liste des pièces à demander. » ; passage fidèle à NOTE-A-v1",
+              "GARDER / FIDELE_AU_DOCUMENT",
+              "Conserver cette phrase dans le brouillon"
+            ],
+            [
+              "V-02 : « Le retour est attendu le 12 octobre. » ; date absente de NOTE-A-v1",
+              "CORRIGER / DATE_NON_ETAYEE",
+              "Retirer la date ajoutée, puis contrôler la correction"
+            ],
+            [
+              "V-03 : « La procédure prévoit une validation unique. » ; document non retrouvé dans le jeu",
+              "RECHERCHER / SOURCE_INTROUVABLE",
+              "Chercher l’appui avant de reprendre cette phrase"
+            ],
+            [
+              "V-04 : « La réunion est confirmée jeudi. » ; réserve de NOTE-A-v1 perdue",
+              "CORRIGER / RESERVE_OMISE",
+              "Rétablir « jeudi, sous réserve de confirmation »"
+            ],
+            [
+              "V-05 : réunion jeudi dans NOTE-B-v1, vendredi dans NOTE-B-v2, sans remplacement explicite",
+              "ECARTER / ARBITRAGE_HUMAIN",
+              "Retirer la conclusion utilisable en attendant le choix humain"
+            ]
+          ],
+          "fontSize": "14px",
+          "scrollWidth": 656,
+          "clientWidth": 656
+        }
+      ],
+      "movements": [
+        {
+          "tag": "TABLE",
+          "scrollLeft": 0,
+          "max": 0,
+          "overflowX": "auto",
+          "lastCell": "Le ton assuré de la réponse",
+          "lastCellInHorizontalViewport": true
+        },
+        {
+          "tag": "TABLE",
+          "scrollLeft": 0,
+          "max": 0,
+          "overflowX": "auto",
+          "lastCell": "Où ce texte peut aller après le contrôle",
+          "lastCellInHorizontalViewport": true
+        },
+        {
+          "tag": "TABLE",
+          "scrollLeft": 0,
+          "max": 0,
+          "overflowX": "auto",
+          "lastCell": "Retirer de la version utilisable et conserver le motif",
+          "lastCellInHorizontalViewport": true
+        },
+        {
+          "tag": "TABLE",
+          "scrollLeft": 0,
+          "max": 0,
+          "overflowX": "auto",
+          "lastCell": "Lire le sens, qualifier la source et arbitrer une contradiction",
+          "lastCellInHorizontalViewport": true
+        },
+        {
+          "tag": "TABLE",
+          "scrollLeft": 0,
+          "max": 0,
+          "overflowX": "auto",
+          "lastCell": "Retirer la conclusion utilisable en attendant le choix humain",
+          "lastCellInHorizontalViewport": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "lang": "fr",
+      "h1": [
+        "Vérifier une réponse IA en comptabilité : une checklist avant utilisation"
+      ],
+      "h2": [
+        "Réponse directe",
+        "Ce que vous vérifiez, exactement",
+        "Pourquoi la vérification casse à la main",
+        "Avant de commencer",
+        "1. Découper le brouillon en éléments contrôlables",
+        "2. Retrouver la source et lire autour de la citation",
+        "3. Recalculer les nombres sans réutiliser la réponse",
+        "La checklist à copier dans votre dossier de travail",
+        "La règle écrite",
+        "Rejoué sur le jeu fictif",
+        "Garder la trace sans confondre brouillon et saisie",
+        "Les erreurs fréquentes",
+        "Questions fréquentes",
+        "La règle à retenir",
+        "Pour aller plus loin"
+      ],
+      "robots": "noindex, follow",
+      "canonical": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+      "title": "Vérifier réponse IA comptabilité : checklist | Memlia",
+      "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+      "ogTitle": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+      "author": "Kevin Kitanga",
+      "schema": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite#article",
+          "headline": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+          "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+          "url": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite"
+          },
+          "datePublished": "2026-10-04T00:00:00.000Z",
+          "dateModified": "2026-10-04T00:00:00.000Z",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://memlia.fr/images/img-art-verifier-reponse-ia-comptabilite-og.webp",
+            "width": 1200,
+            "height": 630,
+            "caption": "Une feuille vierge et trois points de vérification dans un diorama vert, graphite et crème"
+          },
+          "thumbnailUrl": "https://memlia.fr/images/img-art-verifier-reponse-ia-comptabilite-og.webp",
+          "articleSection": [
+            "IA",
+            "Automatisation"
+          ],
+          "keywords": [
+            "vérifier réponse IA comptabilité",
+            "hallucinations ChatGPT comptabilité",
+            "vérifier sources ChatGPT"
+          ],
+          "wordCount": 2417
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://memlia.fr/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+              "item": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+          "name": "Kevin Kitanga",
+          "jobTitle": "Fondateur de Memlia",
+          "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+          "url": "https://memlia.fr/a-propos",
+          "worksFor": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "/proofs/blog/verification-fiche-reserve.webp",
+          "naturalWidth": 1600,
+          "naturalHeight": 900,
+          "alt": "Fiche fictive V-04 : réunion confirmée comparée à la réserve de NOTE-A-v1, décision CORRIGER.",
+          "renderedWidth": 356
+        },
+        {
+          "src": "/proofs/blog/verification-registre.webp",
+          "naturalWidth": 1600,
+          "naturalHeight": 900,
+          "alt": "Registre fictif V-01 à V-05 : affirmation, source, qualification préalable et décision de routage.",
+          "renderedWidth": 356
+        }
+      ],
+      "links": [
+        "/blog/prompt-chatgpt-expert-comptable",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/blog/utiliser-chatgpt-cabinet-comptable",
+        "/glossaire#validation-humaine",
+        "/blog/logiciel-ia-comptabilite",
+        "/methode",
+        "/garanties"
+      ],
+      "text": "Réponse directe\n\nPour vérifier une réponse IA en comptabilité, séparez ses affirmations, ouvrez les sources exactes, contrôlez leur périmètre et recalculez les nombres hors du modèle. Attribuez ensuite une décision à chaque ligne : garder, corriger, rechercher ou écarter. Une réponse fluide, une URL présente ou un second avis de ChatGPT ne suffisent pas. La checklist ci-dessous permet de garder un brouillon utile sans transformer une phrase plausible en fait établi.\n\nCe que vous vérifiez, exactement\n\nUne affirmation vérifiable est une phrase dont vous pouvez comparer le contenu à une pièce, une source ou un calcul indépendant. « La réunion est jeudi » en est une ; « voici une formulation plus claire » décrit plutôt un geste de rédaction.\n\nUne hallucination d’IA est une sortie incorrecte ou trompeuse présentée comme une information. Dans sa FAQ sur l’IA générative, la CNIL explique : « Ces systèmes peuvent générer des résultats inexacts qui peuvent, pourtant, paraître plausibles ». Ce constat ne donne pas un taux d’erreur pour votre cabinet.\n\nLe périmètre de la source est l’ensemble des conditions dans lesquelles son information s’applique : période, version, situation visée et réserves. Une phrase exacte peut être inutilisable si elle concerne un autre cas.\n\nLe guide sur les prompts pour expert-comptable aide à écrire la consigne. Ici, nous contrôlons ce qui en sort. La même grille convient à un résumé, une liste de questions ou un message préparatoire, quel que soit l’outil qui a produit le brouillon.\n\nPourquoi la vérification casse à la main\n\nUn collaborateur relit le texte, reconnaît le sujet et corrige deux tournures. Il connaît aussi les réserves du dossier, mais elles ne sont pas dans le brouillon. Le lecteur suivant voit une phrase nette et suppose que tout a été contrôlé. La fluidité du texte a remplacé la trace du contrôle.\n\nLa règle que le cabinet applique souvent sans l’avoir écrite est simple : aucune affirmation utile à une décision ne passe du brouillon au dossier sans un appui retrouvé et un contexte vérifié. Quand cette règle reste dans une seule tête, personne ne sait distinguer une correction de style d’une validation du fond.\n\nCe geste appartient aux tâches de contrôle de la carte des tâches du cabinet. Il gagne à être nommé avant de chercher à automatiser sa mécanique. L’objectif n’est pas de tout relire indistinctement, mais de savoir quelle phrase attend encore une preuve.\n\nAvant de commencer\n\nPréparez le brouillon original, la consigne qui l’a produit, les documents autorisés pour cet usage et l’endroit où noter vos décisions. Conservez une version du texte avant correction : une phrase supprimée ne doit pas disparaître du raisonnement qui a conduit à la supprimer.\n\nPour le premier essai, prenez un contexte entièrement fictif. Le dossier D-012 utilisé plus bas n’existe pas ; ses notes ont été écrites pour la démonstration. Vous pourrez ainsi éprouver le contrôle sans partager une pièce réelle.\n\nChoisissez aussi la destination : texte interne, question à poser, message à relire ou préparation d’une saisie. « Garder » une phrase pour préparer une question ne signifie pas l’autoriser à produire une écriture. Le guide pour choisir un premier usage ChatGPT aide à fixer ce résultat avant l’essai.\n\n1. Découper le brouillon en éléments contrôlables\n\nNe vérifiez pas un paragraphe entier avec un seul oui. Isolez les dates, montants, noms de documents, règles annoncées et conclusions. Une phrase peut contenir une information fidèle et une précision ajoutée.\n\nDans « La réunion est confirmée jeudi, avec un retour attendu le 12 octobre », il y a au moins trois éléments : le jour, la confirmation et la date de retour. Le document peut soutenir le premier sans soutenir les deux autres. Donnez un identifiant à chaque élément pour éviter qu’une correction masque les autres.\n\nÉlément du brouillon\tContrôle à faire\tCe qui ne suffit pas\nReformulation d’une note\tComparer le sens et les réserves à la note\tTrouver le texte plus élégant\nDate ou délai annoncé\tRetrouver la mention et sa condition\tReconnaître une date habituelle\nNombre ou total\tRetrouver les entrées puis recalculer\tRelire le nombre sans les entrées\nRègle ou référence\tOuvrir le document exact et son périmètre\tUne référence avec un titre crédible\nConclusion\tRelier chaque prémisse à son appui\tLe ton assuré de la réponse\n\nDemander au modèle « es-tu certain ? » peut produire un nouveau texte à contrôler. Cela ne remplace pas la comparaison. Notez la question utile qu’il suggère, sans prendre son assurance pour une validation indépendante.\n\n2. Retrouver la source et lire autour de la citation\n\nOuvrez la page ou la pièce, pas seulement le lien affiché. Vérifiez qu’elle contient réellement le passage annoncé. Une page d’accueil, un titre proche ou un document d’une autre période ne constituent pas l’appui attendu.\n\nLa FAQ de la CNIL précise : « Une confiance excessive dans les résultats produits par un système d’IA générative sans une vérification appropriée peut donc conduire à des décisions erronées ou à des conclusions incorrectes. » Le lien permet de retrouver l’appui ; sa présence ne valide pas le brouillon.\n\nLisez le paragraphe précédent et le suivant. Cherchez notamment une réserve, une exception, une condition d’entrée ou une limite de champ. Relevez la date du document lorsqu’elle est affichée et sa version si plusieurs versions existent. Une date de publication n’est pas, à elle seule, une date d’application.\n\nPour une règle professionnelle, cherchez l’autorité compétente et le texte adapté au cas plutôt qu’un résumé trouvé au hasard. Si la source est inaccessible, classez la ligne « rechercher ». Son absence ne démontre pas que l’affirmation est fausse ; elle empêche de la retenir comme étayée pour l’usage prévu.\n\nDeux documents peuvent se contredire sans que l’un soit manifestement faux. Ils peuvent viser des périodes ou des situations différentes. Relevez cette différence. Si elle ne suffit pas à choisir, gardez le conflit visible et confiez l’arbitrage au responsable du dossier.\n\n3. Recalculer les nombres sans réutiliser la réponse\n\nPartez des valeurs d’entrée retrouvées, pas du total proposé. Notez l’unité, la période et le calcul. Une addition exacte ne répare pas une pièce manquante, un doublon ou un montant appartenant à une autre période.\n\nDans notre exemple sans règle fiscale, deux valeurs fictives de 125 et 75 unités donnent 200 unités. Cette addition a été exécutée hors de tout modèle. Elle vérifie seulement l’opération sur ces deux entrées, pas leur pertinence pour un dossier réel.\n\nPour un calcul dépendant d’une règle métier, séparez donc deux décisions : le calcul est-il reproduit correctement ? La règle et les entrées conviennent-elles au cas ? La seconde n’est pas acquise parce que la première est verte. Si la réponse ne fournit pas assez d’éléments pour refaire l’opération, recherchez les entrées avant de reprendre le nombre.\n\nLa checklist à copier dans votre dossier de travail\n\nCopiez cette fiche dans votre outil habituel. Elle reste utile sans inscription ni outil supplémentaire. Une ligne correspond à une affirmation, pas à une réponse entière.\n\nChamp\tÀ renseigner\nIdentifiant de contrôle\tV-01, V-02…\nUsage prévu\tQuestion interne, brouillon de message, préparation à relire…\nVersion du brouillon\tRéférence permettant de retrouver le texte contrôlé\nAffirmation exacte\tPhrase ou fragment, sans le réécrire pendant l’examen\nNature\tReformulation, fait, calcul, règle ou conclusion\nSource ouverte\tDocument précis et passage ; URL seulement si elle mène à cet appui\nVersion et période\tCe que la source indique, ou « non précisé »\nConditions et réserves\tCe qui limite la portée de la phrase\nComparaison\tFidèle, ajout, réserve omise, appui absent ou contradiction\nCalcul indépendant\tEntrées, opération, unité et résultat, si nécessaire\nDécision et motif\tGarder, corriger, rechercher ou écarter ; raison précise\nTexte retenu\tVersion corrigée, ou aucune phrase retenue\nResponsable et date\tPersonne qui a contrôlé et date de sa décision\nDestination autorisée\tOù ce texte peut aller après le contrôle\n\nLes quatre décisions sont une convention de travail, pas des catégories réglementaires. Leur sens doit rester stable pour que la personne qui reprend le dossier comprenne la suite.\n\nDécision\tQuand l’utiliser\tSuite concrète\nGarder\tLe passage retrouvé soutient la phrase dans ce contexte\tConserver dans le brouillon pour l’usage défini\nCorriger\tUn appui existe, mais une précision ou une réserve a été déformée\tÉcrire la correction puis la comparer à nouveau\nRechercher\tL’appui ou le contexte n’est pas retrouvé\tIdentifier la recherche nécessaire, sans reprendre la phrase comme un fait\nÉcarter\tLa phrase ne convient pas à l’usage, ou un conflit reste à arbitrer\tRetirer de la version utilisable et conserver le motif\n\nUne correction n’est pas automatiquement validée. Remplacer « confirmé » par « prévu » peut encore oublier « sous réserve de confirmation ». Comparez donc la phrase retenue au même passage avant de fermer la ligne.\n\nLa règle écrite\n\nLa frontière. Nous séparons le rangement des preuves, la validation du brouillon et le jugement sur le dossier.\n\nSe prépare seul\tAttend une validation\tReste humain\nClasser les lignes et présenter les appuis déjà renseignés\tRetenir une phrase corrigée pour une destination définie\tLire le sens, qualifier la source et arbitrer une contradiction\n\nLa proposition. Nous préparons un registre reliant affirmation, document, réserve et décision. Le collaborateur renseigne la comparaison et valide le texte retenu. Le cabinet conserve le brouillon initial, la version corrigée et la trace qui les relie.\n\nL’arrêt. La ligne ne devient pas utilisable si l’appui reste introuvable, si le périmètre est inconnu ou si deux documents laissent un conflit ouvert. La proposition reste séparée des saisies du cabinet. Aucun statut technique ne tranche le fond à la place du lecteur.\n\nLe jeu d’essai. Nous avons exécuté cinq cas sur des notes entièrement fictives : phrase fidèle, date ajoutée, source introuvable, réserve omise et contradiction. Aucun modèle n’a été interrogé. Le programme reçoit une qualification préalable faite pour chaque cas et la route vers la décision prévue ; il ne détecte pas automatiquement une erreur dans un texte.\n\nRejoué sur le jeu fictif\n\nLa note NOTE-A-v1 contient : « D-012 : préparer la liste des pièces à demander. Réunion jeudi, sous réserve de confirmation. » Les phrases ci-dessous sont des brouillons de démonstration écrits pour l’essai, pas des réponses obtenues de ChatGPT.\n\nCas joué\tSortie obtenue\tDécision\nV-01 : « Préparer la liste des pièces à demander. » ; passage fidèle à NOTE-A-v1\tGARDER / FIDELE_AU_DOCUMENT\tConserver cette phrase dans le brouillon\nV-02 : « Le retour est attendu le 12 octobre. » ; date absente de NOTE-A-v1\tCORRIGER / DATE_NON_ETAYEE\tRetirer la date ajoutée, puis contrôler la correction\nV-03 : « La procédure prévoit une validation unique. » ; document non retrouvé dans le jeu\tRECHERCHER / SOURCE_INTROUVABLE\tChercher l’appui avant de reprendre cette phrase\nV-04 : « La réunion est confirmée jeudi. » ; réserve de NOTE-A-v1 perdue\tCORRIGER / RESERVE_OMISE\tRétablir « jeudi, sous réserve de confirmation »\nV-05 : réunion jeudi dans NOTE-B-v1, vendredi dans NOTE-B-v2, sans remplacement explicite\tECARTER / ARBITRAGE_HUMAIN\tRetirer la conclusion utilisable en attendant le choix humain\n\nLe rejeu produit ces statuts et aucune saisie. Il éprouve la correspondance entre une qualification et sa suite, pas la capacité d’une IA à reconnaître les cinq défauts. La lecture des notes fournit ici la qualification ; dans un usage réel, ce travail reste celui du contrôleur.\n\nGarder la trace sans confondre brouillon et saisie\n\nConservez le passage source utile et le motif de décision dans le dossier de travail autorisé. L’objectif est de pouvoir comprendre la vérification sans rejouer toute la conversation. Évitez de multiplier les copies de pièces lorsque la référence au document en place suffit.\n\nMarquez la version utilisable et sa destination. Un texte relu pour préparer une question interne n’est pas validé pour envoyer une réponse à un client ou enregistrer une écriture. La validation humaine porte sur un objet précis et un usage précis, pas sur une confiance générale dans le fournisseur.\n\nPour choisir un environnement, la grille de choix d’un logiciel IA en comptabilité examine notamment les sorties, exceptions et traces. Ce guide ne crée pas un détecteur d’hallucinations : un classement automatique peut faciliter le rangement, mais il ne certifie pas le sens d’une phrase.\n\nLes erreurs fréquentes\nVérifier le lien, pas le contenu. Une URL qui répond peut conduire à une page sans rapport avec l’affirmation.\nGarder la phrase et perdre la réserve. Un résumé court conserve parfois le sujet tout en changeant sa portée.\nConfondre calcul et choix des entrées. Un total juste peut porter sur le mauvais ensemble.\nDemander à la même réponse de se certifier. La nouvelle explication reste un élément à contrôler.\nFermer une contradiction avec la source la plus récente. La récence ne prouve pas que les deux documents ont le même champ.\nValider tout le brouillon d’un seul geste. Une ligne étayée ne rend pas les autres utilisables.\nQuestions fréquentes\nQue faire si ChatGPT ne donne aucune source ?\n\nPartez de l’affirmation et recherchez son appui indépendamment. Si vous ne le retrouvez pas, la ligne reste « rechercher ». Pour une simple reformulation, le document fourni peut être la source : comparez le sens, les conditions et les ajouts.\n\nUne citation entre guillemets suffit-elle ?\n\nNon. Retrouvez les mots dans le document et lisez leur contexte. Une citation peut être exacte mais concerner un autre cas, ou perdre une exception située dans le paragraphe suivant.\n\nQue faire si deux sources donnent des réponses différentes ?\n\nComparez d’abord leur période, leur version et leur situation visée. Si le désaccord reste ouvert, écartez la conclusion du brouillon utilisable et notez l’arbitrage nécessaire. Ne choisissez pas depuis le seul ton du texte.\n\nUne réponse sans marque d’incertitude est-elle plus fiable ?\n\nLe ton ne fournit pas la preuve attendue. Appliquez les mêmes contrôles à une réponse assurée et à une réponse prudente. Ce sont les appuis retrouvés et le périmètre qui permettent de décider.\n\nPeut-on automatiser toute cette checklist ?\n\nLe rangement, la présentation des lignes et le suivi de leur état peuvent faire partie d’une règle écrite. L’essai présenté ici route des qualifications renseignées ; il ne lit pas les documents à votre place. Commencez par définir ce que le lecteur valide et les conflits qui bloquent la reprise du texte.\n\nLa règle à retenir\n\nUne réponse utile est un brouillon dont chaque affirmation importante a un appui retrouvé, un périmètre et une décision. Une source absente ou un conflit ouvert reste visible jusqu’à sa résolution, au lieu de disparaître dans une phrase fluide.\n\nPour aller plus loin\n\nNous prenons en charge la mécanique répétitive de votre contrôle : écrire les états dans les mots du cabinet, relier les propositions aux preuves et présenter les exceptions dans vos outils. Notre méthode décrit l’observation, le jeu d’essai et la recette par votre équipe ; nos garanties fixent la séparation entre propositions et saisies. Vous gardez la lecture du fond et la décision sur le dossier.",
+      "tables": [
+        {
+          "headers": [
+            "Élément du brouillon",
+            "Contrôle à faire",
+            "Ce qui ne suffit pas"
+          ],
+          "rows": [
+            [
+              "Reformulation d’une note",
+              "Comparer le sens et les réserves à la note",
+              "Trouver le texte plus élégant"
+            ],
+            [
+              "Date ou délai annoncé",
+              "Retrouver la mention et sa condition",
+              "Reconnaître une date habituelle"
+            ],
+            [
+              "Nombre ou total",
+              "Retrouver les entrées puis recalculer",
+              "Relire le nombre sans les entrées"
+            ],
+            [
+              "Règle ou référence",
+              "Ouvrir le document exact et son périmètre",
+              "Une référence avec un titre crédible"
+            ],
+            [
+              "Conclusion",
+              "Relier chaque prémisse à son appui",
+              "Le ton assuré de la réponse"
+            ]
+          ],
+          "fontSize": "14px",
+          "scrollWidth": 356,
+          "clientWidth": 356
+        },
+        {
+          "headers": [
+            "Champ",
+            "À renseigner"
+          ],
+          "rows": [
+            [
+              "Identifiant de contrôle",
+              "V-01, V-02…"
+            ],
+            [
+              "Usage prévu",
+              "Question interne, brouillon de message, préparation à relire…"
+            ],
+            [
+              "Version du brouillon",
+              "Référence permettant de retrouver le texte contrôlé"
+            ],
+            [
+              "Affirmation exacte",
+              "Phrase ou fragment, sans le réécrire pendant l’examen"
+            ],
+            [
+              "Nature",
+              "Reformulation, fait, calcul, règle ou conclusion"
+            ],
+            [
+              "Source ouverte",
+              "Document précis et passage ; URL seulement si elle mène à cet appui"
+            ],
+            [
+              "Version et période",
+              "Ce que la source indique, ou « non précisé »"
+            ],
+            [
+              "Conditions et réserves",
+              "Ce qui limite la portée de la phrase"
+            ],
+            [
+              "Comparaison",
+              "Fidèle, ajout, réserve omise, appui absent ou contradiction"
+            ],
+            [
+              "Calcul indépendant",
+              "Entrées, opération, unité et résultat, si nécessaire"
+            ],
+            [
+              "Décision et motif",
+              "Garder, corriger, rechercher ou écarter ; raison précise"
+            ],
+            [
+              "Texte retenu",
+              "Version corrigée, ou aucune phrase retenue"
+            ],
+            [
+              "Responsable et date",
+              "Personne qui a contrôlé et date de sa décision"
+            ],
+            [
+              "Destination autorisée",
+              "Où ce texte peut aller après le contrôle"
+            ]
+          ],
+          "fontSize": "14px",
+          "scrollWidth": 356,
+          "clientWidth": 356
+        },
+        {
+          "headers": [
+            "Décision",
+            "Quand l’utiliser",
+            "Suite concrète"
+          ],
+          "rows": [
+            [
+              "Garder",
+              "Le passage retrouvé soutient la phrase dans ce contexte",
+              "Conserver dans le brouillon pour l’usage défini"
+            ],
+            [
+              "Corriger",
+              "Un appui existe, mais une précision ou une réserve a été déformée",
+              "Écrire la correction puis la comparer à nouveau"
+            ],
+            [
+              "Rechercher",
+              "L’appui ou le contexte n’est pas retrouvé",
+              "Identifier la recherche nécessaire, sans reprendre la phrase comme un fait"
+            ],
+            [
+              "Écarter",
+              "La phrase ne convient pas à l’usage, ou un conflit reste à arbitrer",
+              "Retirer de la version utilisable et conserver le motif"
+            ]
+          ],
+          "fontSize": "14px",
+          "scrollWidth": 356,
+          "clientWidth": 356
+        },
+        {
+          "headers": [
+            "Se prépare seul",
+            "Attend une validation",
+            "Reste humain"
+          ],
+          "rows": [
+            [
+              "Classer les lignes et présenter les appuis déjà renseignés",
+              "Retenir une phrase corrigée pour une destination définie",
+              "Lire le sens, qualifier la source et arbitrer une contradiction"
+            ]
+          ],
+          "fontSize": "14px",
+          "scrollWidth": 356,
+          "clientWidth": 356
+        },
+        {
+          "headers": [
+            "Cas joué",
+            "Sortie obtenue",
+            "Décision"
+          ],
+          "rows": [
+            [
+              "V-01 : « Préparer la liste des pièces à demander. » ; passage fidèle à NOTE-A-v1",
+              "GARDER / FIDELE_AU_DOCUMENT",
+              "Conserver cette phrase dans le brouillon"
+            ],
+            [
+              "V-02 : « Le retour est attendu le 12 octobre. » ; date absente de NOTE-A-v1",
+              "CORRIGER / DATE_NON_ETAYEE",
+              "Retirer la date ajoutée, puis contrôler la correction"
+            ],
+            [
+              "V-03 : « La procédure prévoit une validation unique. » ; document non retrouvé dans le jeu",
+              "RECHERCHER / SOURCE_INTROUVABLE",
+              "Chercher l’appui avant de reprendre cette phrase"
+            ],
+            [
+              "V-04 : « La réunion est confirmée jeudi. » ; réserve de NOTE-A-v1 perdue",
+              "CORRIGER / RESERVE_OMISE",
+              "Rétablir « jeudi, sous réserve de confirmation »"
+            ],
+            [
+              "V-05 : réunion jeudi dans NOTE-B-v1, vendredi dans NOTE-B-v2, sans remplacement explicite",
+              "ECARTER / ARBITRAGE_HUMAIN",
+              "Retirer la conclusion utilisable en attendant le choix humain"
+            ]
+          ],
+          "fontSize": "14px",
+          "scrollWidth": 356,
+          "clientWidth": 356
+        }
+      ],
+      "movements": [
+        {
+          "tag": "TABLE",
+          "scrollLeft": 120,
+          "max": 120,
+          "overflowX": "auto",
+          "lastCell": "Le ton assuré de la réponse",
+          "lastCellInHorizontalViewport": true
+        },
+        {
+          "tag": "TABLE",
+          "scrollLeft": 0,
+          "max": 0,
+          "overflowX": "auto",
+          "lastCell": "Où ce texte peut aller après le contrôle",
+          "lastCellInHorizontalViewport": true
+        },
+        {
+          "tag": "TABLE",
+          "scrollLeft": 120,
+          "max": 120,
+          "overflowX": "auto",
+          "lastCell": "Retirer de la version utilisable et conserver le motif",
+          "lastCellInHorizontalViewport": true
+        },
+        {
+          "tag": "TABLE",
+          "scrollLeft": 120,
+          "max": 120,
+          "overflowX": "auto",
+          "lastCell": "Lire le sens, qualifier la source et arbitrer une contradiction",
+          "lastCellInHorizontalViewport": true
+        },
+        {
+          "tag": "TABLE",
+          "scrollLeft": 120,
+          "max": 120,
+          "overflowX": "auto",
+          "lastCell": "Retirer la conclusion utilisable en attendant le choix humain",
+          "lastCellInHorizontalViewport": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    }
+  ]
+}

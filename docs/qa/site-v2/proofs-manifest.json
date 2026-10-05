@@ -3,11 +3,11 @@
   "sources": [
     {
       "path": "docs/design/site-v2-proofs/index.html",
-      "sha256": "89e872ec8dab16e820a5a51cfb76d4e413162952d06ca365366cf7d54723d5da"
+      "sha256": "0bce226de87b71334ea1d65e0fb135089230724d2d403e23df5308a6565bf260"
     },
     {
       "path": "docs/design/site-v2-proofs/styles.css",
-      "sha256": "8d1756b1b9c4dda46beba50da94568de786864e6513a6082860e73de92bb755d"
+      "sha256": "69331f1199ff686cd1307f3a4eca75a714c4a45d62cb1aff080af2ced0b51f07"
     },
     {
       "path": "docs/design/m4-r1-functional-proofs/styles.css",
@@ -15,7 +15,7 @@
     },
     {
       "path": "docs/design/site-v2-proofs/content-contract.json",
-      "sha256": "0226389484a1b0ac8dd2f4bbcdf0db8825768f4c796b0b85915fd8650ac8f3b9"
+      "sha256": "30a22d5ddfcd9c72d46d227951d7f3a4a3c0362b8bbf265f89e4c821056fcc42"
     },
     {
       "path": "scripts/render-proofs-v2.mjs",
@@ -251,6 +251,18 @@
       "target": "public/proofs/v2/og/28-outil-amortissement.webp",
       "bytes": 19946,
       "sha256": "dc04a324c8853c15021c7b454bb9cada6e1c737d676ccc6cfded90691e0f33f7"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outil-prompt",
+      "target": "public/proofs/v2/29-outil-prompt.webp",
+      "bytes": 34336,
+      "sha256": "df27a0851082da7937116e95c6e15d2d3c490c353e9729d055382335a3032fee"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#outil-prompt",
+      "target": "public/proofs/v2/og/29-outil-prompt.webp",
+      "bytes": 22196,
+      "sha256": "a64355d38f72fb18c42490b08747b89cd89a0eb024019770e89066f4974a24f1"
     }
   ]
 }

@@ -1,0 +1,6 @@
+[
+  {
+    "id": "outil-pseudonymisation",
+    "centralText": "Choix des colonnes → copie de travail Original inchangé Nom Libellé Montant Alice Contact email 9876 Alice Facture 10 Bob Facture 20 Nom : alias Libellé : supprimer Date et montant : conserver Copie transformée Nom Montant C1_000001 9876 C1_000001 10 C1_000002 20 Valeurs égales → même alias Mapping séparé sur demande CSV local, non fiscal Risque restant à examiner Le montant rare 9876 et les dates conservées peuvent permettre une réidentification."
+  }
+]

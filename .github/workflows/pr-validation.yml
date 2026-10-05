@@ -15,11 +15,12 @@ concurrency:
 jobs:
   verify:
     name: Repository gates
-    runs-on: ubuntu-latest
-    # The complete deterministic forge/build plus the browser contracts can
-    # exceed 20 minutes on a hosted runner. Keep one finite job and every gate;
-    # do not cancel a progressing test suite before its verdict.
-    timeout-minutes: 30
+    # Preserve main's repository-specific runner (hosted minutes exhausted).
+    runs-on: [self-hosted, macOS, ARM64, memlia-mac]
+    # Two runs exhausted 30 minutes while Chromium was still progressing.
+    # Include the Playwright webServer rebuild and runner variance;
+    # keep a finite budget without dropping or parallelizing any gate.
+    timeout-minutes: 60
     steps:
       - name: Check out the exact candidate
         uses: actions/checkout@v4
@@ -33,13 +34,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
+          # No `cache: npm`: ~/.npm already persists on the self-hosted runner,
+          # and uploading it to the GitHub cache only slowed every run.
 
       - name: Install locked dependencies
         run: npm ci
 
       - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
 
       - name: Check Astro and content
         run: npm run check
@@ -55,7 +57,7 @@ jobs:
         env:
           CF_PAGES: "1"
 
-      - name: Run browser contracts on Linux
+      - name: Run browser contracts
         run: npm run test
         env:
           CF_PAGES: "1"

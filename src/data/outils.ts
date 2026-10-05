@@ -5,6 +5,11 @@ export const OUTILS_HUB_PATH = '/outils-comptables-gratuits' as const;
 export const OUTIL_CATEGORIES = [
   { id: 'calculer', label: 'Calculer' },
   { id: 'verifier', label: 'Vérifier' },
+
+  { id: 'se-situer', label: 'Se situer' },
+
+  { id: 'preparer', label: 'Préparer' },
+
   { id: 'ecrire', label: 'Écrire' },
 ] as const;
 
@@ -40,6 +45,72 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'preparer-pseudonymiser-fichier-csv-fec', categorie: 'preparer', statut: 'disponible',
+    h1: 'Préparer et pseudonymiser un fichier comptable avant IA',
+    title: 'Préparer et pseudonymiser un fichier comptable avant IA | Memlia',
+    description: 'Supprimez ou remplacez des colonnes d’un fichier CSV ou FEC local et examinez les risques restants avant tout partage avec une IA.',
+    promesse: { entree: 'Copie CSV, TSV ou FEC texte et choix par colonne', resultat: 'Aperçu, copie CSV, rapport des risques et mapping séparé optionnel' },
+    limites: [
+      'Les alias ne garantissent pas l’anonymat : champs libres, dates, montants et combinaisons rares peuvent permettre une réidentification.',
+      'La copie transformée n’est pas un FEC fiscalement valide. Le cabinet garde la décision de partage ; rien n’est transmis à une IA.',
+      'L’import refuse un fichier supérieur à 20 Mo, binaire, illisible, sans en-têtes uniques ou de structure irrégulière ; les autres limites sont affichées au formulaire.',
+    ],
+    mentionLocale: 'La lecture, l’aperçu et les exports se font dans ce navigateur, sans envoi ni stockage du contenu. L’original n’est jamais modifié. Réinitialiser termine le Worker et retire le contenu et le mapping de la page ; les fichiers que vous avez téléchargés restent sur votre appareil.',
+    proof: 'v2/29-outil-pseudonymisation',
+    source: {
+      nom: 'CNIL — L’anonymisation de données personnelles',
+      url: 'https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles',
+      extrait: 'La CNIL distingue les alias de l’anonymisation irréversible : une pseudonymisation peut être réversible et les données peuvent conserver un caractère personnel.',
+      verifieeLe: '4 octobre 2026',
+    },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
+
+
+    slug: 'diagnostic-maturite-ia-cabinet', categorie: 'se-situer', statut: 'disponible',
+    h1: 'Diagnostic de maturité IA du cabinet',
+    title: 'Diagnostic de maturité IA du cabinet | Memlia',
+    description: 'Situez les pratiques IA de votre cabinet et choisissez une prochaine action à partir de vos réponses, sans inscription ni classement des équipes.',
+    promesse: { entree: 'Quinze réponses facultatives sur cinq dimensions des pratiques du cabinet', resultat: 'Synthèse complète, inconnues et trois actions justifiées ; rapport Markdown et impression' },
+    limites: ['Méthode Memlia déclarative : pas audit normatif, note globale ni classement individuel.', 'Aucun gain déduit des réponses ; les pratiques déclarées ne sont pas vérifiées.', 'Une réponse inconnue reste inconnue : elle demande clarification, pas un jugement défavorable.'],
+    mentionLocale: 'Vos réponses et votre rapport restent dans ce navigateur, sans envoi ni stockage persistant. Fermer la page les efface. Copie, impression et export sont volontaires ; aucune adresse e-mail n’est demandée.',
+    proof: 'v2/30-outil-maturite',
+    source: { nom: 'Méthode Memlia — écrire et éprouver la règle', url: '/methode', extrait: 'Cette rubrique déclarative originale organise les réponses en usages, règles, données, validation et mesure. Elle aide à choisir une prochaine tâche, sans norme ni comparaison à d’autres cabinets.', verifieeLe: '4 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
+
+
+
+    slug: 'generateur-prompt-expert-comptable',
+    categorie: 'ecrire',
+    statut: 'disponible',
+    h1: 'Générateur de prompt pour expert-comptable',
+    title: 'Générateur de prompt pour expert-comptable | Memlia',
+    description: 'Décrivez une tâche abstraite du cabinet et préparez un prompt structuré, avec validation humaine, conditions d’arrêt et exemples fictifs.',
+    promesse: { entree: 'Tâche abstraite et contraintes choisies', resultat: 'Prompt éditable, frontière et cas fictifs à rejouer' },
+    limites: [
+      'Cet outil assemble des blocs écrits dans le navigateur ; il n’appelle aucun modèle et ne fournit aucune réponse comptable.',
+      'Le contrôle porte sur la structure et quelques signaux explicites. Il ne comprend pas le sens, ne détecte pas tous les noms et ne garantit ni sécurité, ni conformité, ni anonymisation.',
+      'Le cabinet choisit un outil autorisé avant de réutiliser un prompt. Aucun fichier ni contenu de pièce ne doit être saisi ici.',
+      'Une description hors bornes, un signal sensible ou une demande de décision automatique est refusé. Un prompt édité incomplet reste conservé, mais sa copie et son export sont bloqués.',
+    ],
+    mentionLocale: 'Vos choix et votre prompt restent dans ce navigateur, sans envoi ni stockage. Recharger la page les efface. La copie et le fichier texte sont produits seulement à votre demande.',
+    proof: 'v2/29-outil-prompt',
+    zoneLarge: true,
+    source: {
+      nom: 'CNIL — Questions-réponses sur l’utilisation d’un système d’IA générative',
+      url: 'https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative',
+      extrait: 'La CNIL recommande de définir les usages autorisés et les données qui peuvent être partagées. Cette source éclaire la précaution de saisie ; elle ne certifie pas ce générateur.',
+      verifieeLe: '3 octobre 2026',
+    },
+    articleExact: '/blog/prompt-chatgpt-expert-comptable',
+    pageService: '/methode',
+    cta: '/contact',
+  },
+  {
+
 
     slug: 'calculateur-roi-automatisation', categorie: 'calculer', statut: 'disponible',
     h1: 'Calculateur de ROI d’automatisation comptable',
@@ -89,6 +160,7 @@ export const OUTILS: readonly OutilDefinition[] = [
 
   },
   {
+
     slug: 'verificateur-fec-local', categorie: 'verifier', statut: 'disponible',
     h1: 'Vérificateur FEC gratuit et local',
     title: 'Vérificateur FEC gratuit et local | Memlia',
@@ -109,6 +181,7 @@ export const OUTILS: readonly OutilDefinition[] = [
       complement: { nom: 'BOFiP — Format du fichier des écritures comptables', url: 'https://bofip.impots.gouv.fr/bofip/9028-PGP.html', extrait: 'Les précisions de format distinguent les champs requis et ceux à blanc si non utilisés. Aucun jugement fiscal n’est automatisé ici.' },
     },
     pageService: '/automatisation-cabinet-comptable', cta: '/contact',
+
   },
   {
     slug: 'calculateur-marge-commerciale',

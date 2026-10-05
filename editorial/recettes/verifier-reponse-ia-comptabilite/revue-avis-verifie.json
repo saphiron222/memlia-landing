@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-10-04T23:01:06.737Z",
+  "reviewerTaskId": "t_2352a08b",
+  "canonicalSubjectVerified": true,
+  "gridsComplete": true,
+  "scoreVerified": 91,
+  "max": 100,
+  "claimsReviewed": 2,
+  "sameSingleQaReview": true,
+  "articleRecipeBodyUnchanged": true,
+  "currentStatus": "a-valider, brouillon:true",
+  "html": {
+    "h2": 15,
+    "h3": 5,
+    "tables": 5,
+    "heroNotLazy": true,
+    "ogTwitterPresent": true
+  },
+  "tests": [
+    {
+      "path": ".qa/tests-t_2352a08b.log",
+      "tests": 54,
+      "pass": 54,
+      "fail": 0
+    },
+    {
+      "path": ".qa/titres-t_2352a08b.log",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0
+    }
+  ],
+  "totalTests": 58,
+  "astro": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 9
+  },
+  "future": [
+    "scellement",
+    "build public",
+    "CI",
+    "fusion",
+    "déploiement",
+    "preuve de production"
+  ]
+}

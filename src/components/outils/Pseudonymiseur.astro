@@ -1,0 +1,64 @@
+---
+---
+<div data-pseudo>
+  <h2>Minimiser une copie, pas garantir l’anonymat</h2>
+  <p>Choisissez ce qui est utile à la tâche. Supprimez le reste. Aucun fichier source n’est modifié ; la copie n’est ni un FEC fiscalement valide, ni une autorisation de partager des données avec une IA.</p>
+  <form>
+    <label for="pseudo-file">Fichier CSV, TSV ou FEC texte local</label>
+    <input id="pseudo-file" type="file" accept=".csv,.tsv,.txt,.fec" aria-describedby="pseudo-help pseudo-error" />
+    <p data-file-name>Fichier choisi : aucun.</p>
+    <p id="pseudo-help">20 Mo maximum, 100 000 lignes, 128 colonnes, 65 536 caractères par cellule. Première ligne : en-têtes uniques. Choisissez le séparateur et l’encodage avant l’import.</p>
+    <div class="options">
+      <div><label for="pseudo-separator">Séparateur</label><select id="pseudo-separator"><option value=";">Point-virgule</option><option value="tab">Tabulation (TSV / FEC)</option><option value="|">Barre verticale</option><option value=",">Virgule</option></select></div>
+      <div><label for="pseudo-encoding">Encodage</label><select id="pseudo-encoding"><option value="utf-8">UTF-8 (lecture stricte)</option><option value="windows-1252">Windows-1252 (choix explicite)</option></select></div>
+    </div>
+    <div class="actions"><button type="submit" class="btn btn-principal">Importer une copie</button><button type="button" data-example data-outil-action="exemple" class="btn btn-contour">Essayer le fichier fictif</button><button type="button" data-cancel hidden class="btn btn-contour">Annuler l’import</button><button type="button" data-reset data-outil-action="reset" class="btn btn-contour">Tout réinitialiser</button></div>
+    <p id="pseudo-error" data-error role="alert" hidden tabindex="-1"></p>
+  </form>
+  <p data-status role="status" aria-live="polite">Aucun fichier importé.</p>
+  <section data-selection hidden aria-labelledby="pseudo-columns">
+    <h3 id="pseudo-columns">Choisir les colonnes</h3>
+    <p>Champs libres et colonnes inconnues supprimés par défaut. Les identifiants reconnus sont remplacés par alias. Vous pouvez changer chaque choix. Un alias remplace une cellule entière, pas un nom à l’intérieur d’un libellé.</p>
+    <div data-columns class="columns"></div>
+    <p>Sur écran étroit, faites défiler chaque tableau horizontalement pour relire toutes les colonnes. Au clavier : placez le focus sur le tableau puis utilisez les flèches.</p>
+    <button type="button" data-preview class="btn btn-principal">Préparer l’aperçu et les risques</button>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Aperçu original, cinq premières lignes"><table data-before></table></div>
+  </section>
+  <section data-result hidden aria-labelledby="pseudo-result">
+    <h3 id="pseudo-result">Copie de travail : aperçu et risques restants</h3>
+    <p>L’aperçu montre au plus cinq lignes. Le rapport et les exports couvrent toutes les lignes importées. Rien n’est envoyé à un assistant.</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Aperçu transformé, cinq premières lignes"><table data-after></table></div>
+    <h4>Transformations appliquées</h4><ul data-transformations></ul>
+    <h4>Risques résiduels à examiner</h4><ul data-risks></ul>
+    <p data-neutralization></p>
+    <p>Export CSV UTF-8 avec BOM, séparateur point-virgule. Une apostrophe est ajoutée devant les cellules commençant par =, +, -, @ (même après des espaces) ou une tabulation / un retour ligne. Cela neutralise les formules de tableur et transforme notamment les montants négatifs en texte. Les en-têtes sont aussi neutralisés. La copie n’a pas vocation à être réimportée comme fichier comptable.</p>
+    <label class="check"><input type="checkbox" data-reviewed /> J’ai relu les choix, les risques et la convention d’export. La décision de partage reste au cabinet.</label>
+    <div class="actions"><button type="button" data-export="csv" data-outil-action="export" disabled class="btn btn-principal">Exporter la copie CSV</button><button type="button" data-export="report" disabled class="btn btn-contour">Exporter le rapport</button></div>
+    <label class="check"><input type="checkbox" data-mapping /> Je souhaite un mapping séparé contenant les valeurs originales, à protéger et à ne pas joindre à la copie.</label>
+    <button type="button" data-export="mapping" disabled class="btn btn-contour">Exporter le mapping séparé</button>
+  </section>
+  <noscript>JavaScript est nécessaire au traitement local. Aucun fichier n’est transmis par ce formulaire.</noscript>
+</div>
+<script>
+  import { initPseudonymisation } from '../../lib/pseudonymisation-ui.mjs';
+  initPseudonymisation();
+</script>
+<style>
+  [data-pseudo], form, section { display:grid; gap:16px; min-width:0; }
+  h2 { font-size:var(--t-3xl); } h3 { font-size:var(--t-2xl); } h4 { font-size:var(--t-lg); }
+  p, li { color:var(--texte-2); overflow-wrap:anywhere; }
+  label { display:block; font-weight:600; margin-bottom:8px; overflow-wrap:anywhere; }
+  input[type=file], select, .columns :global(select) { width:100%; max-width:100%; min-height:44px; padding:12px; border:1px solid var(--ligne-forte); border-radius:var(--r-bouton); background:var(--surface-feuille); color:var(--texte); font:inherit; }
+  .options { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:16px; }
+  .actions { display:flex; flex-wrap:wrap; gap:12px; } button { white-space:normal; min-height:44px; }
+  button:disabled { opacity:.55; cursor:not-allowed; }
+  .check { display:flex; align-items:flex-start; gap:12px; font-weight:400; } .check input { flex-shrink:0; width:24px; height:24px; }
+  .columns { display:grid; gap:16px; } .columns :global(label) { overflow-wrap:anywhere; }
+  .table-scroll { max-width:100%; overflow:auto; border:1px solid var(--ligne); border-radius:var(--r-cadre); }
+  table { width:100%; border-collapse:collapse; font-size:var(--t-sm); }
+  table :global(th), table :global(td) { padding:12px; border-bottom:1px solid var(--ligne-douce); text-align:left; min-width:120px; max-width:280px; overflow-wrap:anywhere; white-space:pre-wrap; }
+  table :global(caption) { padding:12px; text-align:left; font-weight:600; }
+  ul { padding-left:20px; display:grid; gap:12px; }
+  [data-error] { color:var(--texte); border-left:3px solid var(--texte); padding:12px; }
+  [hidden] { display:none!important; }
+</style>

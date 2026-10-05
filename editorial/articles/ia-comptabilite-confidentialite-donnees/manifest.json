@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "slug": "ia-comptabilite-confidentialite-donnees",
+  "action": "creation",
+  "editorialStatus": "publie",
+  "title": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+  "tabTitle": "IA comptabilité et confidentialité : les données | Memlia",
+  "summary": "Une fiche pour classer les entrées, réduire le contexte et rendre visibles les conditions inconnues avant toute transmission à une IA.",
+  "description": "IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet.",
+  "publicationDate": "2026-10-05",
+  "updatedAt": null,
+  "topics": [
+    "ia",
+    "automatisation"
+  ],
+  "keywords": [
+    "IA cabinet comptable confidentialité données",
+    "ChatGPT données clients cabinet comptable"
+  ],
+  "primaryQuery": "IA cabinet comptable confidentialité données",
+  "secondaryQueries": [
+    "ChatGPT données clients cabinet comptable",
+    "données autorisées IA générative",
+    "IA comptabilité et confidentialité"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "classe des données",
+    "entrée minimale",
+    "environnement et autorisation"
+  ],
+  "role": {
+    "primary": "direction-associes",
+    "secondary": [
+      "collaborateurs-comptables"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-10-05"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "metier:t_6446d285",
+    "role": "direction-associes",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "numerique-it-data",
+  "famille": "rgpd-secret-securite",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Préparer et qualifier les données d’entrée avant toute transmission à une IA au cabinet.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Fiche complète et quatre routages fictifs réellement exécutés, qualifications humaines préalables, aucun modèle ni détecteur interrogé.",
+  "sourcesVerifiedAt": "2026-10-05",
+  "sources": [
+    {
+      "id": "cnil-personnelle",
+      "publisher": "CNIL",
+      "title": "Donnée personnelle",
+      "url": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+      "checkedAt": "2026-10-05",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+      "classificationReason": "Autorité de protection des données, définition officielle des données personnelles.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/cnil-personnelle.classification.json",
+      "verificationEvidence": "preuves/sources/cnil-personnelle.json"
+    },
+    {
+      "id": "cnil-anonymisation",
+      "publisher": "CNIL",
+      "title": "L’anonymisation de données personnelles",
+      "url": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
+      "checkedAt": "2026-10-05",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles",
+      "classificationReason": "Autorité officielle ; distinctions anonymisation et pseudonymisation, publication du 19 mai 2020.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/cnil-anonymisation.classification.json",
+      "verificationEvidence": "preuves/sources/cnil-anonymisation.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "metier",
+  "reviewRule": "Réexaminer lorsque les recommandations CNIL, la finalité, les conditions ou la configuration changent.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de préparation des entrées, automatisons sa mécanique dans vos outils et la faisons recetter par votre équipe. Vous gardez la qualification des données et la décision d’usage. Rien à envoyer : la description suffit."
+  },
+  "image": {
+    "heroId": "img-art-ia-comptabilite-confidentialite-donnees",
+    "alt": "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-10-05"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-10-05"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/prompt-chatgpt-expert-comptable",
+      "/blog/logiciel-ia-comptabilite",
+      "/blog/verifier-reponse-ia-comptabilite",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/methode",
+      "/garanties",
+      "/glossaire#validation-humaine"
+    ],
+    "incoming": [
+      "/blog"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/prompt-chatgpt-expert-comptable",
+      "/blog/logiciel-ia-comptabilite",
+      "/garanties"
+    ],
+    "decision": "Fiche de préparation et d’autorisation des entrées, distincte de la consigne, du choix de solution et des engagements Memlia."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  },
+  "publishedAt": "2026-10-05",
+  "publicationEvidence": "preuves/publication.json"
+}
