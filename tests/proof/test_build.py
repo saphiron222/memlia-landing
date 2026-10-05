@@ -393,7 +393,7 @@ class BuildProof(unittest.TestCase):
         # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
         # aux pages de service et cinq scènes propres aux outils. Les dix images sociales
         # correspondantes restent sous og/.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 34)
+        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 35)
         self.assertEqual(
             sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')),
             sorted([

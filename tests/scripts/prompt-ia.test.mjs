@@ -1,5 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import Ajv from 'ajv';
 import { assembleGenericPrompt, GENERIC_SEEDS } from '../../src/lib/prompt-ia.mjs';
 import { PROMPT_ENGINE_VERSION, composePromptBlocks, assemblePrompt, AMORCES } from '../../src/lib/prompt-comptable.mjs';
 const config = { ...GENERIC_SEEDS[3], confirmed: true };
@@ -21,6 +24,17 @@ test('schéma JSON syntaxiquement valide et vérifiable', () => {
   assert.equal(schema.type, 'object');
   assert.deepEqual(schema.properties.actions.items.required, ['action', 'responsable', 'delai']);
   assert.match(result.text, /sans Markdown/);
+  const validate = new Ajv().compile(schema);
+  assert.ok(validate({ synthese: 'Atelier fictif', actions: [{ action: 'Relire les notes', responsable: null, delai: null }], questions: ['Qui valide ?'] }));
+  assert.equal(validate({ synthese: 'Atelier fictif', actions: [{ action: 'Relire' }], questions: [] }), false);
+});
+test('sources et actifs de la scène propre correspondent au manifeste', () => {
+  const manifest = JSON.parse(readFileSync('docs/qa/prompt-ia/proofs-manifest.json', 'utf8'));
+  for (const entry of [...manifest.sources, ...manifest.entries]) {
+    const bytes = readFileSync(entry.path ?? entry.target);
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), entry.sha256);
+    if (entry.target) assert.ok(bytes.length < 150000);
+  }
 });
 test('chaque tâche et format est propre et déterministe', () => {
   for (const seed of GENERIC_SEEDS) for (const format of ['texte', 'tableau', 'json']) {
