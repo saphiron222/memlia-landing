@@ -4733,7 +4733,7 @@
           "editorialReviewer",
           "sourceClassifier"
         ],
-        "reviewedCandidateHash": "ae77ee19feceb9306a33f4aa27600b820216adfcba02ab4292ec7c6367863b8c",
+        "reviewedCandidateHash": "98fe1064c4093482023d8f93a0de7664fd4b7b8c6b85880b4a721474f69e8728",
         "status": "AI_REVIEW_PASS",
         "claimSourceVerdicts": [
           {
@@ -5047,7 +5047,7 @@
           }
         ],
         "evidenceRef": "docs/qa/site-copy-b/preuve-glossaire-metier.json",
-        "evidenceSha256": "b1dbfa7e113d8769daeed0a7c9994c271efb354d8c247f4321fb6db440694000"
+        "evidenceSha256": "8035b953edd58a810fb3697fd5abe3af95746a4b260b6e3b17e62bd52370206c"
       }
     }
   },
@@ -7247,7 +7247,7 @@
       "digest": "a21b696e1057f20b174cae4c7c3f8df3d27d331a814ea66ec41d3060b178fa42"
     },
     "candidateHash": {
-      "value": "9f182ce42e01a126b3fb7146925abfacebbd0ace6413f70cecf28b95f210a1cc",
+      "value": "10e5ec7c44f6fe697b20683854507e5e85e3947733eeea693c9469fdb56c046c",
       "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
     },
     "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
@@ -7287,7 +7287,7 @@
     "reportRef": null
   },
   "audit": {
-    "candidateHash": "9f182ce42e01a126b3fb7146925abfacebbd0ace6413f70cecf28b95f210a1cc",
+    "candidateHash": "10e5ec7c44f6fe697b20683854507e5e85e3947733eeea693c9469fdb56c046c",
     "buildOutputDigest": "a21b696e1057f20b174cae4c7c3f8df3d27d331a814ea66ec41d3060b178fa42",
     "gateReportRefs": [
       "fixture://audit/gates"
@@ -7300,7 +7300,7 @@
     "p0": [],
     "p1": [],
     "result": "PASS",
-    "auditHash": "0a455f484811e899922d999253fe655d2df4b169da71d74dd780b4c1c7490665"
+    "auditHash": "d6bfcdc1a704d076e8c26245b9279d4e3374e09e22c0298037532a092b46a278"
   },
   "approval": {
     "state": "pending",
