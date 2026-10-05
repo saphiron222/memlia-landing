@@ -34,9 +34,12 @@ try {
         await page.goto(url, { waitUntil: 'networkidle' });
         await page.evaluate(async () => {
           await document.fonts.ready;
+          for (const image of document.images) image.loading = 'eager';
           document.querySelectorAll('video').forEach(video => { video.pause(); video.currentTime = 0; });
           for (let y = 0; y < document.body.scrollHeight; y += 700) { window.scrollTo(0, y); await new Promise(done => setTimeout(done, 20)); }
+          await Promise.all(Array.from(document.images, image => image.decode()));
           window.scrollTo(0, 0);
+          await new Promise(done => requestAnimationFrame(() => requestAnimationFrame(done)));
         });
         const image = await page.screenshot({ path: resolve(output, `${index === 0 ? 'before' : 'after'}-${width}.png`), fullPage: true, animations: 'disabled' });
         images.push(await sharp(image).raw().toBuffer({ resolveWithObject: true }));

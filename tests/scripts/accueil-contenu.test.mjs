@@ -17,5 +17,3 @@ test('le contenu EC compose les sources FAQ, méthode et garanties existantes', 
   const source = readFileSync('src/data/accueil/ec.ts', 'utf8');
   for (const name of ['FAQ', 'METHODE', 'GARANTIES']) assert.match(source, new RegExp(name));
 });
-
-
