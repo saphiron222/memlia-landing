@@ -41,6 +41,23 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'generateur-prompt-ia-gratuit', categorie: 'ecrire', statut: 'disponible',
+    h1: 'Générateur de prompt IA gratuit',
+    title: 'Générateur de prompt IA gratuit | Memlia',
+    description: 'Préparez un prompt texte pour rédiger, résumer ou classer, avec contexte, format de sortie, contraintes et critères de validation.',
+    promesse: { entree: 'Objectif abstrait, public, contexte, ton et contraintes', resultat: 'Consigne texte éditable, copiable et exportable en texte ou JSON' },
+    limites: [
+      'Assemblage local déterministe de blocs écrits : aucun modèle d’IA n’est appelé. Le format décrit la future réponse, pas un résultat déjà obtenu.',
+      'Le besoin image ou vidéo n’est pas servi. Le filtre repère quelques signaux explicites et contradictions, pas le sens complet ni tous les noms ; il n’anonymise rien.',
+      'La personne relit la consigne, vérifie les réponses et choisit un outil autorisé avant usage. Une édition peut rendre le schéma ou les contraintes incohérents.',
+      'Objectif vide, hors bornes ou contradiction explicite avec l’arrêt : refus expliqué, saisies et édition conservées.',
+    ],
+    mentionLocale: 'Vos choix et votre prompt restent dans ce navigateur, sans envoi ni stockage. Recharger les efface. La copie et les exports sont produits à votre demande et reprennent votre édition.',
+    proof: 'v2/01-outil-prompt-ia', zoneLarge: true,
+    source: { nom: 'Méthode Memlia — écrire et éprouver une règle', url: '/methode', extrait: 'Notre convention : préciser le but, les entrées, le résultat, les limites et les cas d’arrêt, puis rejouer des exemples fictifs. Ce n’est pas un benchmark de modèles.', verifieeLe: '5 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
     slug: 'preparer-pseudonymiser-fichier-csv-fec', categorie: 'preparer', statut: 'disponible',
     h1: 'Préparer et pseudonymiser un fichier comptable avant IA',
     title: 'Préparer et pseudonymiser un fichier comptable avant IA | Memlia',
