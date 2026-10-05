@@ -1,5 +1,6 @@
 /** Matrice M4-R1 : références fonctionnelles fictives, jamais des captures produit. */
 export const PROOFS = {
+  'v2/01-outil-prompt-ia': { title: 'Du compte rendu aux actions à relire', alt: 'Consigne fictive pour une réunion : public équipe projet, format tableau action, responsable, délai, et arrêt si une information manque.', detail: 'La consigne locale demande des actions traçables au compte rendu fictif. Le responsable absent reste une question ; la personne valide avant usage. Aucun modèle n’a produit de réponse.' },
 
   'v2/31-outil-bibliotheque': { title: 'Choisir une relance, lire avant d’envoyer', alt: 'Filtre relation client et mail, fiche de relance : relevé fictif reçu, justificatif fictif attendu, brouillon à relire et pièce nécessaire à confirmer.', detail: 'La fiche sélectionne un prompt complet et montre une sortie attendue rédigée. Aucun modèle d’IA n’a répondu ; le collaborateur choisit le destinataire et décide de l’envoi.' },
 

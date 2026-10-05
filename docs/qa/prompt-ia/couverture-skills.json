@@ -1,0 +1,658 @@
+{
+  "outil": "06",
+  "scope": "Implémentation et vrais contrôles locaux, pas publication ni intégralité des instruments tiers",
+  "rows": [
+    {
+      "skill": "blog",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Orchestration des compétences adaptées à des pages outils, pas production automatique d’articles. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-analyze",
+      "cadrage": "N/A motivé",
+      "motif": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé."
+    },
+    {
+      "skill": "blog-audit",
+      "cadrage": "N/A motivé",
+      "motif": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé."
+    },
+    {
+      "skill": "blog-brand",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Audience et voix existent déjà dans la charte, sans nouvel entretien marketing. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-brief",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Méthode de brief transposable au type outil ; la page future ne peut être auditée. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-calendar",
+      "cadrage": "N/A motivé",
+      "motif": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé."
+    },
+    {
+      "skill": "blog-cannibalization",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Comparaison locale des titres/intents et des routes existantes disponible. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-chart",
+      "cadrage": "N/A motivé",
+      "motif": "Aucune statistique externe à visualiser ; une sortie calculée reste spécifique au questionnaire/calculateur. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Pas de chart décoratif ; si 08/09 retiennent une visualisation, validation graphique différée selon les cellules concernées."
+    },
+    {
+      "skill": "blog-cluster",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Architecture des dix feuilles et du hub analysable depuis le dépôt. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-decay",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "ND — suivi après publication",
+      "preuve": "Aucune URL nouvelle publique ni séries temporelles propres à 06 ; impressions, backlinks, citations et conversions non mesurés.",
+      "reste": "Baseline J+7/J+28 dans la phase publication, sans chiffres inventés."
+    },
+    {
+      "skill": "blog-discourse",
+      "cadrage": "N/A motivé",
+      "motif": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé."
+    },
+    {
+      "skill": "blog-factcheck",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Contrôle de provenance des affirmations de cadrage et des mesures historiques, non vérification réglementaire finale. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-flow",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Find puis objectif Win applicables sur corpus local ; aucune nouvelle mesure de marché revendiquée. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-geo",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Clarté de l’entité, utilité et fidélité des promesses sont cadrables. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-google",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "ND — suivi après publication",
+      "preuve": "Aucune URL nouvelle publique ni séries temporelles propres à 06 ; impressions, backlinks, citations et conversions non mesurés.",
+      "reste": "Baseline J+7/J+28 dans la phase publication, sans chiffres inventés."
+    },
+    {
+      "skill": "blog-image",
+      "cadrage": "N/A motivé",
+      "motif": "Aucune génération de visuel utile à ces dix fonctions ; 06 produit du texte professionnel, non des images. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas utiliser de budget image ni fabriquer une capture comme preuve."
+    },
+    {
+      "skill": "blog-locale-audit",
+      "cadrage": "N/A motivé",
+      "motif": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de traduction, hreflang ni contrôle de parité multilingue."
+    },
+    {
+      "skill": "blog-localize",
+      "cadrage": "N/A motivé",
+      "motif": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de traduction, hreflang ni contrôle de parité multilingue."
+    },
+    {
+      "skill": "blog-multilingual",
+      "cadrage": "N/A motivé",
+      "motif": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de traduction, hreflang ni contrôle de parité multilingue."
+    },
+    {
+      "skill": "blog-outline",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Méthode de brief transposable au type outil ; la page future ne peut être auditée. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-persona",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Audience et voix existent déjà dans la charte, sans nouvel entretien marketing. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-repurpose",
+      "cadrage": "N/A motivé",
+      "motif": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé."
+    },
+    {
+      "skill": "blog-rewrite",
+      "cadrage": "N/A motivé",
+      "motif": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé."
+    },
+    {
+      "skill": "blog-schema",
+      "cadrage": "N/A motivé",
+      "motif": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé."
+    },
+    {
+      "skill": "blog-seo-check",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Exécuté local — production à rejouer",
+      "preuve": "Contrôles DOM/SEO/JSON-LD/maillage sur vrai rendu et parcours Chromium, 6 largeurs ; copies/exports, refus et confidentialité locaux réels.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts"
+      ],
+      "reste": "Rejeu HTTP et navigateur sans query sur production après QA."
+    },
+    {
+      "skill": "blog-strategy",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Architecture des dix feuilles et du hub analysable depuis le dépôt. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-style",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Audience et voix existent déjà dans la charte, sans nouvel entretien marketing. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-taxonomy",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Taxonomie outil différente de la taxonomie blog, constat de seulement Calculer/Vérifier dans le registre. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-translate",
+      "cadrage": "N/A motivé",
+      "motif": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de traduction, hreflang ni contrôle de parité multilingue."
+    },
+    {
+      "skill": "blog-write",
+      "cadrage": "N/A motivé",
+      "motif": "Le mandat produit dix pages outils, aucun article, audit intégral du blog, calendrier, actualité sociale ou campagne de distribution. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de livrable blog pour remplir une grille ; rouvrir seulement si un article compagnon est réellement commandé."
+    },
+    {
+      "skill": "seo",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Orchestration des compétences adaptées à des pages outils, pas production automatique d’articles. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "seo-audit",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Exécuté local — production à rejouer",
+      "preuve": "Contrôles DOM/SEO/JSON-LD/maillage sur vrai rendu et parcours Chromium, 6 largeurs ; copies/exports, refus et confidentialité locaux réels.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts"
+      ],
+      "reste": "Rejeu HTTP et navigateur sans query sur production après QA."
+    },
+    {
+      "skill": "seo-backlinks",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "ND — suivi après publication",
+      "preuve": "Aucune URL nouvelle publique ni séries temporelles propres à 06 ; impressions, backlinks, citations et conversions non mesurés.",
+      "reste": "Baseline J+7/J+28 dans la phase publication, sans chiffres inventés."
+    },
+    {
+      "skill": "seo-cluster",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Architecture des dix feuilles et du hub analysable depuis le dépôt. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "cadrage": "N/A motivé",
+      "motif": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent."
+    },
+    {
+      "skill": "seo-content",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Clarté de l’entité, utilité et fidélité des promesses sont cadrables. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "seo-content-brief",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Méthode de brief transposable au type outil ; la page future ne peut être auditée. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "seo-dataforseo",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Enrichissement/crawl externe non nécessaire à l’examen local, aucune dépense ni collecte live autorisée implicitement. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Instrument non utilisé — preuve alternative locale",
+      "preuve": "Aucun achat ni soumission externe. Crawl statique parse5 et test navigateur SEO exécutés, registre primaire unique.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts",
+        "docs/qa/prompt-ia/rapport.md"
+      ]
+    },
+    {
+      "skill": "seo-drift",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "ND — suivi après publication",
+      "preuve": "Aucune URL nouvelle publique ni séries temporelles propres à 06 ; impressions, backlinks, citations et conversions non mesurés.",
+      "reste": "Baseline J+7/J+28 dans la phase publication, sans chiffres inventés."
+    },
+    {
+      "skill": "seo-ecommerce",
+      "cadrage": "N/A motivé",
+      "motif": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent."
+    },
+    {
+      "skill": "seo-firecrawl",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Enrichissement/crawl externe non nécessaire à l’examen local, aucune dépense ni collecte live autorisée implicitement. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Instrument non utilisé — preuve alternative locale",
+      "preuve": "Aucun achat ni soumission externe. Crawl statique parse5 et test navigateur SEO exécutés, registre primaire unique.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts",
+        "docs/qa/prompt-ia/rapport.md"
+      ]
+    },
+    {
+      "skill": "seo-flow",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Find puis objectif Win applicables sur corpus local ; aucune nouvelle mesure de marché revendiquée. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "seo-geo",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Clarté de l’entité, utilité et fidélité des promesses sont cadrables. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "seo-google",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Mesures de performance, déclin, dérive et backlinks propres aux dix URL non publiées indisponibles. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "ND — suivi après publication",
+      "preuve": "Aucune URL nouvelle publique ni séries temporelles propres à 06 ; impressions, backlinks, citations et conversions non mesurés.",
+      "reste": "Baseline J+7/J+28 dans la phase publication, sans chiffres inventés."
+    },
+    {
+      "skill": "seo-hreflang",
+      "cadrage": "N/A motivé",
+      "motif": "France et français uniquement, aucune variante linguistique/régionale demandée. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas créer de traduction, hreflang ni contrôle de parité multilingue."
+    },
+    {
+      "skill": "seo-image-gen",
+      "cadrage": "N/A motivé",
+      "motif": "Aucune génération de visuel utile à ces dix fonctions ; 06 produit du texte professionnel, non des images. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas utiliser de budget image ni fabriquer une capture comme preuve."
+    },
+    {
+      "skill": "seo-images",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Assets OG et éventuelles captures à vérifier sur le candidat, pas encore produits. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Exécuté local",
+      "preuve": "Renderer existant --source/--manifest/--start : scène 1600×900, OG 1200×630, polices chargées, aucune coupe, WebP <150 Ko, --check PASS, inspection visuelle.",
+      "references": [
+        "docs/qa/prompt-ia/proofs-manifest.json"
+      ]
+    },
+    {
+      "skill": "seo-local",
+      "cadrage": "N/A motivé",
+      "motif": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent."
+    },
+    {
+      "skill": "seo-maps",
+      "cadrage": "N/A motivé",
+      "motif": "Outils gratuits sans catalogue marchand, boutique, villes, GBP ni page comparatif X contre Y. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Aucune fiche produit marchande, schema LocalBusiness, geo-grid ou page alternative de concurrent."
+    },
+    {
+      "skill": "seo-page",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Exécuté local — production à rejouer",
+      "preuve": "Contrôles DOM/SEO/JSON-LD/maillage sur vrai rendu et parcours Chromium, 6 largeurs ; copies/exports, refus et confidentialité locaux réels.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts"
+      ],
+      "reste": "Rejeu HTTP et navigateur sans query sur production après QA."
+    },
+    {
+      "skill": "seo-plan",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Architecture des dix feuilles et du hub analysable depuis le dépôt. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "seo-programmatic",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Moteur partagé nécessaire pour 01/02/07, garde anti-pages dupliquées pertinent même à petit lot. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "seo-schema",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Contrat de génération existant inspecté en source ; prescriptions possibles sans test de futurs rendus. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Exécuté local — production à rejouer",
+      "preuve": "Contrôles DOM/SEO/JSON-LD/maillage sur vrai rendu et parcours Chromium, 6 largeurs ; copies/exports, refus et confidentialité locaux réels.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts"
+      ],
+      "reste": "Rejeu HTTP et navigateur sans query sur production après QA."
+    },
+    {
+      "skill": "seo-sitemap",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Contrat de génération existant inspecté en source ; prescriptions possibles sans test de futurs rendus. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Exécuté local — production à rejouer",
+      "preuve": "Contrôles DOM/SEO/JSON-LD/maillage sur vrai rendu et parcours Chromium, 6 largeurs ; copies/exports, refus et confidentialité locaux réels.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts"
+      ],
+      "reste": "Rejeu HTTP et navigateur sans query sur production après QA."
+    },
+    {
+      "skill": "seo-sxo",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Audit et persona scoring du rendu effectif impossibles avant construction des dix pages. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Exécuté local — production à rejouer",
+      "preuve": "Contrôles DOM/SEO/JSON-LD/maillage sur vrai rendu et parcours Chromium, 6 largeurs ; copies/exports, refus et confidentialité locaux réels.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts"
+      ],
+      "reste": "Rejeu HTTP et navigateur sans query sur production après QA."
+    },
+    {
+      "skill": "seo-technical",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Contrat de génération existant inspecté en source ; prescriptions possibles sans test de futurs rendus. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Exécuté local — production à rejouer",
+      "preuve": "Contrôles DOM/SEO/JSON-LD/maillage sur vrai rendu et parcours Chromium, 6 largeurs ; copies/exports, refus et confidentialité locaux réels.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts"
+      ],
+      "reste": "Rejeu HTTP et navigateur sans query sur production après QA."
+    },
+    {
+      "skill": "memlia-blog-strategie",
+      "cadrage": "applicable exécuté cadrage",
+      "motif": "Pointeur vers le dépôt et contrat des namespaces explicitement pertinents. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Appliqué au produit rendu",
+      "preuve": "Corps statique propre au professionnel : 4 besoins, texte/tableau/JSON, critères et cas fictifs ; aucun article nouveau, canonical distinct et primaire outil unique. Aucune promesse image/vidéo ni appel de modèle ; événements limités à action/outil.",
+      "references": [
+        "src/components/outils/GenerateurPromptIa.astro",
+        "src/lib/prompt-ia.mjs",
+        "tests/scripts/prompt-ia.test.mjs",
+        "docs/qa/prompt-ia/verifier-candidat.mjs"
+      ]
+    },
+    {
+      "skill": "blog-audio",
+      "cadrage": "N/A motivé",
+      "motif": "Extension installée hors catalogue exposé ; aucune narration, audio ou podcast demandé pour les pages outils. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Ne pas produire de TTS ni appeler un fournisseur audio."
+    },
+    {
+      "skill": "blog-notebooklm",
+      "cadrage": "N/A motivé",
+      "motif": "Extension installée hors catalogue exposé ; aucun notebook fourni ni besoin d’envoyer le corpus à un service externe. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "N/A motivé",
+      "preuve": "Périmètre outil local texte inchangé ; Lire les sources locales et primaires directement ; aucune authentification ou import NotebookLM."
+    },
+    {
+      "skill": "seo-ahrefs",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Instrument non utilisé — preuve alternative locale",
+      "preuve": "Aucun achat ni soumission externe. Crawl statique parse5 et test navigateur SEO exécutés, registre primaire unique.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts",
+        "docs/qa/prompt-ia/rapport.md"
+      ]
+    },
+    {
+      "skill": "seo-bing",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Instrument non utilisé — preuve alternative locale",
+      "preuve": "Aucun achat ni soumission externe. Crawl statique parse5 et test navigateur SEO exécutés, registre primaire unique.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts",
+        "docs/qa/prompt-ia/rapport.md"
+      ]
+    },
+    {
+      "skill": "seo-profound",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "ND — suivi après publication",
+      "preuve": "Aucune URL nouvelle publique ni séries temporelles propres à 06 ; impressions, backlinks, citations et conversions non mesurés.",
+      "reste": "Baseline J+7/J+28 dans la phase publication, sans chiffres inventés."
+    },
+    {
+      "skill": "seo-seranking",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Instrument non utilisé — preuve alternative locale",
+      "preuve": "Aucun achat ni soumission externe. Crawl statique parse5 et test navigateur SEO exécutés, registre primaire unique.",
+      "references": [
+        "docs/qa/prompt-ia/verifier-candidat.mjs",
+        "tests/browser/prompt-ia.spec.ts",
+        "docs/qa/prompt-ia/rapport.md"
+      ]
+    },
+    {
+      "skill": "seo-unlighthouse",
+      "cadrage": "applicable différé implémentation",
+      "motif": "Extensions installées hors catalogue exposé ; visibilité, indexation, backlinks ou audit du vrai rendu à mesurer après implementation/publication. Outil 06 : Créer une consigne de travail professionnel générique ; exclure intention image/vidéo.",
+      "statut": "Instrument remplacé — mesure réelle",
+      "preuve": "Lighthouse local brut desktop 100/100/100/100 ; premier mobile 91/100/100/100 (TBT 320ms), deuxième 67/100/100/100 pendant exécutions concurrentes. Aucun score estimé ; réserve mobile à confirmer et traiter au candidat final.",
+      "references": [
+        "docs/qa/prompt-ia/rapport.md"
+      ]
+    }
+  ]
+}
