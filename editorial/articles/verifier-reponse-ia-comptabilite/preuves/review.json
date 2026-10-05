@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "candidateSlug": "verifier-reponse-ia-comptabilite",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+  "manifestSha256": "23990afd99d4ebaab4075a2276c4bad97d248fed1e4fb04edc4e184e7f924b4e",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact verifier-reponse-ia-comptabilite."
+  ],
+  "reviewer": "qa",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "corps.md:67-97 livre quatorze champs copiables et quatre décisions avec suites concrètes ; version initiale, conditions/réserves, texte retenu et destination autorisée sont présents. Les corrections sont comparées à nouveau, pas automatiquement validées. La réponse directe distingue appui, périmètre et calcul indépendant."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Guide de contrôle d'une sortie, distinct de la préparation du prompt, du choix de logiciel et de la sélection d'un premier usage. Les liens vers ces trois articles et le pilier correspondent au geste décrit. Les quatre listes d'autocomplétion sont vides : ni volume nul, ni position Google, ni performance de cette URL ne sont démontrés."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "CNIL, FAQ affichant le 18 juillet 2024 : copie native intègre et deux extraits retrouvés, puis ouverture directe HTTP 200 pendant le rejeu QA. Lecture du contexte de la section 2 : les deux citations portent bien sur plausibilité d'une sortie inexacte et confiance excessive sans vérification. Aucune portée fiscale, sociale ou de conformité RGPD ajoutée. Google Cloud absent des sources et claims finaux.",
+        "Auteur Kevin Kitanga et bio de fondateur dans le HTML ; aucun titre d'expert-comptable ni vécu réel inventé identifié. Les notes D-012 sont explicitement fictives."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Rejeu du programme candidat sans réécriture de son journal : cinq couples décision/motif retrouvés, plus sept qualifications absentes ou inconnues donnant RECHERCHER / QUALIFICATION_ABSENTE. NOTE-A-v1 contient la réserve mais pas le 12 octobre ; NOTE-B-v2 ne déclare pas remplacer v1. Comparaison humaine indépendante des cinq phrases à ces notes concordante.",
+        "Addition des entrées fictives exécutée hors modèle et total vérifié. Aucun modèle interrogé, analyse de texte, saisie ou performance fournisseur dans le script. corps.md:111-125 décrit exactement un routage de qualifications humaines ; le programme ne valide pas lui-même la qualification ni une phrase corrigée."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Contrat natif ciblé vert ; navigateur Chromium local à 1280 et 390 px : lang fr, un H1, canonical cible, auteur, titre/description et cinq types JSON-LD. Sept liens contextuels et ancre validation-humaine résolus dans le build de preview. Zéro erreur JavaScript, ressource HTTP en échec ou débordement horizontal de page.",
+        "Cinq tableaux HTML avec en-têtes ; checklist de quatorze lignes, quatre décisions et cinq cas présents. À 390 px, quatre tableaux défilent effectivement de 120 px jusqu'à leur dernière cellule ; la checklist tient sans ce déplacement. Police 14 px. Les deux figures chargent le même WebP 1600 × 900 aux deux largeurs. Le noindex, follow est celui de la preview, pas un état public validé."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Réponse initiale autonome, définitions, conventions de décision et réserves présentes dans le HTML initial, sans dépendre des images. La FAQ ne transforme pas le routage en détecteur d'hallucinations. La vérification porte sur la structure extractible locale, pas sur une citation par un moteur IA ou sur son accès au futur article public."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "Voix nous/vous, service de mécanique répétitive dans les outils du cabinet, lecture et décision conservées au cabinet. Clôture et CTA Confier cette tâche vers /contact cohérents ; liens méthode et garanties présents. Ni gain chiffré, ni contrôle sémantique automatique, ni fonction de fournisseur annoncée comme éprouvée."
+      ]
+    }
+  ]
+}

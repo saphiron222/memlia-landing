@@ -5,6 +5,7 @@
   ],
   "articles": [
     {
+
       "slug": "bibliotheque-prompts-comptables", "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
       "requete": "bibliothèque prompts comptables",
@@ -15,11 +16,31 @@
     },
     {
 
+
+      "slug": "diagnostic-maturite-ia-cabinet",
+      "type": "outil",
+      "url": "https://memlia.fr/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+      "requete": "diagnostic maturité ia cabinet comptable",
+      "secondaires": [
+        "pratiques ia cabinet comptable",
+        "auto-évaluation ia cabinet"
+      ],
+      "famille": "pratiques-ia-cabinet",
+      "format": "web-application",
+      "publieLe": "2026-10-05",
+      "titreOnglet": "Diagnostic de maturité IA du cabinet | Memlia",
+      "source": "Publication constatée le 05/10/2026 — PR73, Cloudflare 7e11e252 SUCCESS, 22 parcours domaine et 22 déploiement PASS, 20 GET sans query string avec Cache-Control no-cache ; carte t_0edf65c0. Lighthouse public brut desktop 100/100/92/92 : réserve CSP/analytics Cloudflare, seuil quatre axes non acquis. GSC, backlinks, J+7/J+28 ND."
+    },
+    {
+
       "slug": "generateur-prompt-expert-comptable",
       "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/generateur-prompt-expert-comptable",
       "requete": "générateur prompt expert comptable",
-      "secondaires": ["générateur prompt comptable gratuit", "consigne ia cabinet comptable"],
+      "secondaires": [
+        "générateur prompt comptable gratuit",
+        "consigne ia cabinet comptable"
+      ],
       "famille": "ia-generative-agents",
       "format": "web-application",
       "publieLe": null,
@@ -31,32 +52,38 @@
       "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
       "requete": "pseudonymiser fichier comptable avant ia",
-      "secondaires": ["minimiser fichier CSV avant IA", "pseudonymisation FEC locale"],
+      "secondaires": [
+        "minimiser fichier CSV avant IA",
+        "pseudonymisation FEC locale"
+      ],
       "famille": "outils-comptables",
       "publieLe": null,
       "source": "brief vague 3 outil 10 ; publication à constater"
-
     },
     {
       "slug": "utiliser-chatgpt-cabinet-comptable",
       "type": "blog",
       "url": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable",
       "requete": "utiliser ChatGPT cabinet comptable",
-      "secondaires": ["cas usage ChatGPT expert comptable", "IA générative cabinet comptable"],
+      "secondaires": [
+        "cas usage ChatGPT expert comptable",
+        "IA générative cabinet comptable"
+      ],
       "famille": "ia-generative-agents",
       "format": "how-to-guide",
       "publieLe": "2026-10-04",
       "titreOnglet": "Utiliser ChatGPT cabinet comptable : premier usage | Memlia",
       "source": "Candidat du brief IA §1 ; autocomplétion fr/fr du 04/10 et diagnostic du 03/10. Publication à vérifier après déploiement ; aucun volume ni rang revendiqué."
-
     },
     {
-
       "slug": "calculateur-roi-automatisation",
       "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-roi-automatisation",
       "requete": "calculateur roi automatisation comptable",
-      "secondaires": ["capacité libérée automatisation", "roi cash automatisation cabinet"],
+      "secondaires": [
+        "capacité libérée automatisation",
+        "roi cash automatisation cabinet"
+      ],
       "famille": "hypotheses-roi-automatisation",
       "format": "web-application",
       "publieLe": "2026-10-04",
@@ -67,7 +94,10 @@
       "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/generateur-charte-ia-cabinet",
       "requete": "générateur charte ia cabinet comptable",
-      "secondaires": ["charte ia cabinet comptable", "modèle charte intelligence artificielle cabinet"],
+      "secondaires": [
+        "charte ia cabinet comptable",
+        "modèle charte intelligence artificielle cabinet"
+      ],
       "famille": "ia-generative-agents",
       "publieLe": "2026-10-04",
       "titreOnglet": "Générateur de charte IA du cabinet | Memlia",
@@ -78,12 +108,14 @@
       "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/verificateur-fec-local",
       "requete": "vérificateur fec gratuit",
-      "secondaires": ["contrôle structure fec local", "anomalies fichier écritures comptables"],
+      "secondaires": [
+        "contrôle structure fec local",
+        "anomalies fichier écritures comptables"
+      ],
       "famille": "controle-structure-fec",
       "format": "web-application",
       "publieLe": "2026-10-04",
       "source": "Publication constatée le 04/10/2026 — PR59, Cloudflare SUCCESS, parcours publics PASS ; carte t_38b4100f"
-
     },
     {
       "slug": "automatiser-la-relance-des-pieces-clients",
@@ -342,6 +374,38 @@
       "format": "thought-leadership",
       "publieLe": "2026-10-02",
       "titreOnglet": "Tests verts et défauts invisibles : trois passes | Memlia",
+      "source": "frontmatter",
+      "type": "blog"
+    },
+    {
+      "slug": "verifier-reponse-ia-comptabilite",
+      "url": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+      "requete": "vérifier réponse IA comptabilité",
+      "secondaires": [
+        "hallucinations ChatGPT comptabilité",
+        "vérifier sources ChatGPT",
+        "vérifier une réponse IA en comptabilité"
+      ],
+      "famille": "ia-generative-agents",
+      "format": "how-to-guide",
+      "publieLe": "2026-10-05",
+      "titreOnglet": "Vérifier réponse IA comptabilité : checklist | Memlia",
+      "source": "frontmatter",
+      "type": "blog"
+    },
+    {
+      "slug": "ia-comptabilite-confidentialite-donnees",
+      "url": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees",
+      "requete": "IA cabinet comptable confidentialité données",
+      "secondaires": [
+        "ChatGPT données clients cabinet comptable",
+        "données autorisées IA générative",
+        "IA comptabilité et confidentialité"
+      ],
+      "famille": "rgpd-secret-securite",
+      "format": "how-to-guide",
+      "publieLe": "2026-10-05",
+      "titreOnglet": "IA comptabilité et confidentialité : les données | Memlia",
       "source": "frontmatter",
       "type": "blog"
     }

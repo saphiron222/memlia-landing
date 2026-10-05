@@ -11,7 +11,7 @@ const sourceRoot = resolve(import.meta.dirname, '../..');
 // Fixture scellée isolée : le vrai candidat peut être en republication go-production.
 const root = mkdtempSync(join(process.env.TMPDIR || tmpdir(), 'blog-intent-fixture-'));
 const slug = 'prompt-chatgpt-expert-comptable';
-for (const path of ['editorial', 'src', 'docs', 'public', 'dist']) {
+for (const path of ['editorial', 'src', 'docs', 'public', 'dist', 'scripts/lib/blog-ia-catchup.mjs']) {
   cpSync(join(sourceRoot, path), join(root, path), { recursive: true });
 }
 const fixture = await materialiser({ root, slug, statut: 'publie' });

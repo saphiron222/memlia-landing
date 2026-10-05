@@ -1,6 +1,6 @@
 # Plan de cluster v3 — « automatisation cabinet comptable »
 
-Généré le 2026-10-04 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 246 satellites (11 publiés, 233 planifiés) en 59 familles et 11 pôles, 984 liens, 355800 mots estimés.
+Généré le 2026-10-05 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 248 satellites (14 publiés, 232 planifiés) en 59 familles et 11 pôles, 992 liens, 358800 mots estimés.
 
 ## Méthode
 
@@ -440,7 +440,7 @@ Collecter les pièces d’entrée, poser les jalons, préparer ce qui attend la 
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-05 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | onboarding client cabinet comptable | listicle-checklist | administratif-secretariat | 1 | planned |
+| 2026-10-06 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | onboarding client cabinet comptable | listicle-checklist | administratif-secretariat | 1 | planned |
 | 2027-05-04 | [Automatiser la collecte des pièces d'entrée en relation](/blog/automatiser-la-collecte-des-pieces-d-entree-en-relation) | pièces entrée en relation client cabinet comptable | how-to-guide | administratif-secretariat | 3 | planned |
 | 2027-08-26 | [Les jalons d'un onboarding client qui attendent toujours la signature](/blog/les-jalons-d-un-onboarding-client-qui-attendent-toujours-la-signature) | onboarding client cabinet comptable signature lettre de mission | how-to-guide | administratif-secretariat | 3 | planned |
 | 2027-07-14 | [Qu'est-ce que l'entrée en relation avec un nouveau client, au cabinet ?](/blog/qu-est-ce-que-l-entree-en-relation-avec-un-nouveau-client-au-cabinet) | définition entrée en relation client cabinet comptable | faq-knowledge | administratif-secretariat | 3 | planned |
@@ -524,7 +524,8 @@ Ce que l’IA prépare, ce qu’elle ne décide pas ; agents, assistants, modèl
 | 2026-09-29 | [IA cabinet comptable : ce qu’elle prépare, ce que vous décidez](/blog/ia-cabinet-comptable) | ia cabinet comptable | pillar-page | direction-associes | 1 | a-replanifier |
 | 2026-09-29 | [Logiciel IA comptabilité : comparer l’outil à la tâche du cabinet](/blog/logiciel-ia-comptabilite) | logiciel ia comptabilite | faq-knowledge | direction-associes | 1 | published |
 | 2026-09-29 | [Prompt ChatGPT expert comptable : écrire des consignes qui tiennent sur les dossiers](/blog/prompt-chatgpt-expert-comptable) | prompt chatgpt expert comptable | how-to-guide | direction-associes | 1 | published |
-| 2026-10-04 | [Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile](/blog/utiliser-chatgpt-cabinet-comptable) | utiliser ChatGPT cabinet comptable | how-to-guide | direction-associes | 3 | planned |
+| 2026-10-04 | [Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile](/blog/utiliser-chatgpt-cabinet-comptable) | utiliser ChatGPT cabinet comptable | how-to-guide | direction-associes | 3 | published |
+| 2026-10-05 | [Vérifier une réponse IA en comptabilité : une checklist avant utilisation](/blog/verifier-reponse-ia-comptabilite) | vérifier réponse IA comptabilité | how-to-guide | collaborateurs-comptables | 3 | published |
 | 2026-10-02 | [Pourquoi des tests verts manquent des défauts : la règle des trois passes](/blog/tests-verts-et-regle-des-trois-passes) | pourquoi des tests verts peuvent manquer des défauts | thought-leadership | direction-associes | 1 | published |
 
 ### RGPD, secret professionnel et sécurité (`rgpd-secret-securite`)
@@ -537,6 +538,7 @@ Données, sous-traitance, hébergement, accès : le cadre de toute automatisatio
 | 2027-08-02 | [La checklist RGPD avant de brancher un outil d'IA sur des données clients](/blog/checklist-rgpd-avant-de-brancher-un-outil-d-ia-sur-des-donnees-clients) | checklist RGPD outil IA cabinet comptable | listicle-checklist | numerique-it-data | 3 | planned |
 | 2027-09-21 | [Les données qu'un cabinet ne transmet jamais à un outil d'IA grand public](/blog/les-donnees-qu-un-cabinet-ne-doit-jamais-transmettre-a-un-outil-d-ia-grand-public) | donnée client IA grand public interdiction cabinet comptable | how-to-guide | numerique-it-data | 3 | planned |
 | 2027-08-25 | [RGPD et IA au cabinet : sous-traitance et secret professionnel](/blog/rgpd-et-ia-au-cabinet-sous-traitance-et-secret-professionnel) | IA RGPD cabinet expertise comptable | faq-knowledge | numerique-it-data | 3 | planned |
+| 2026-10-05 | [IA en cabinet comptable : préparer les données sans perdre leur confidentialité](/blog/ia-comptabilite-confidentialite-donnees) | IA cabinet comptable confidentialité données | how-to-guide | direction-associes | 3 | published |
 
 ### Connecteurs, imports et synchronisation (`integration-connecteurs`)
 

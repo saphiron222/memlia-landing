@@ -3,7 +3,7 @@
   "sources": [
     {
       "path": "docs/design/blog-article-proofs/index.html",
-      "sha256": "e35e402a2ce0141ead38f3c4686bcb6a6e1f5144e68db1bb860531cb4e04a4ab"
+      "sha256": "1e26d5f4fa42aff833f341541e1c506c9c1d01facab5e296eff1ca67baafc92e"
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
-      "sha256": "1e78e45130ce226a92ff196ec31544b02c40a5a9330dac7819015d6784d7c636"
+      "sha256": "64cf0ade4320c253168fd35e18db3417fc716658e9397fd15ead73289d42b457"
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
@@ -175,6 +175,30 @@
       "target": "public/proofs/blog/usage-file-essais.webp",
       "bytes": 35020,
       "sha256": "190524d823101a20cc3f8a55908aed8299b94c8675f4c2794564c3519569f495"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#verification-registre",
+      "target": "public/proofs/blog/verification-registre.webp",
+      "bytes": 38268,
+      "sha256": "07eaaa441686f08a97db1f1937b2a0f9c5662864aa8fd07fa4583dd7076d0ef3"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#verification-fiche-reserve",
+      "target": "public/proofs/blog/verification-fiche-reserve.webp",
+      "bytes": 33938,
+      "sha256": "0de9f3041fdd2601fee9b348276fd4dc59bb380a37896f6f8b7d046d5fb5ecdc"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#confidentialite-fiche",
+      "target": "public/proofs/blog/confidentialite-fiche.webp",
+      "bytes": 33242,
+      "sha256": "10b63c419bb8563dc58c42ce1553877b684e5339621c7df0f756a4312200e03f"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#confidentialite-registre",
+      "target": "public/proofs/blog/confidentialite-registre.webp",
+      "bytes": 31004,
+      "sha256": "3287d3e6884476d98bc887b2c1dd7cfa21367600041840f259338f9ec86d8540"
     }
   ]
 }

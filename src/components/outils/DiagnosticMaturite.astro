@@ -1,0 +1,130 @@
+---
+import { DIMENSIONS, OPTIONS } from '@/lib/maturite-ia.mjs';
+---
+<div class="diagnostic" data-diagnostic>
+  <header><h2>Se situer à partir de ses pratiques</h2><p>Quinze questions, cinq dimensions. Répondez pour le cabinet, sans nom de salarié. « Formalisé » signifie que la pratique est écrite et utilisée ; « En essai », qu’elle est testée mais pas encore stabilisée. Toutes les réponses sont facultatives.</p></header>
+  <noscript><p>Activez JavaScript pour obtenir la synthèse et l’export local. Vous pouvez lire les quinze questions et la méthode sans JavaScript.</p></noscript>
+  <form data-async-tool>
+    <p data-step aria-live="polite">Cinq dimensions à parcourir</p>
+    {DIMENSIONS.map((d, index) => <fieldset data-dimension={index}>
+      <legend>{d.label}</legend>
+      {d.questions.map(q => <div class="question"><label for={q.id}>{q.text}</label><select id={q.id} name={q.id}>{OPTIONS.map(o => <option value={o.value}>{o.label}</option>)}</select></div>)}
+    </fieldset>)}
+    <div class="actions"><button type="button" data-prev hidden>Précédent</button><button type="button" data-next hidden>Suivant</button><button type="submit">Voir ma synthèse</button></div>
+    <div class="actions"><button type="button" data-example>Essayer un exemple fictif</button><button type="button" data-reset>Réinitialiser</button></div>
+    <p data-message role="status"></p>
+  </form>
+  <section data-result hidden aria-labelledby="diagnostic-result-title">
+    <h2 id="diagnostic-result-title" tabindex="-1">Votre synthèse déclarative</h2>
+    <p>Vos réponses décrivent des pratiques, pas une conformité ni la performance des équipes. Les inconnues restent visibles.</p>
+    <div data-summary></div>
+    <h3>Inconnues à clarifier</h3><ul data-unknowns></ul>
+    <h3>Trois prochaines actions proposées</h3><ol data-priorities></ol>
+    <div class="actions"><button type="button" data-edit>Revenir aux réponses</button><button type="button" data-copy>Copier le rapport</button><button type="button" data-export>Exporter en Markdown</button><button type="button" data-print>Imprimer</button></div>
+    <label for="diagnostic-report">Rapport complet sélectionnable, identique à la copie et à l’export</label><textarea id="diagnostic-report" readonly rows="12"></textarea>
+  </section>
+  <section aria-labelledby="diagnostic-method"><h3 id="diagnostic-method">Méthode Memlia déclarative</h3>
+    <p>Cette rubrique originale de travail ne fournit pas de note globale. Une dimension est « Incomplet » dès qu’une réponse est inconnue ; « Formalisé » si les trois réponses le sont ; « À démarrer » si les trois sont non commencées ; « En essai » dans les autres cas connus.</p>
+    <p>L’ordre de travail proposé est : données, validation, règle, mesure, usage. Nous retenons jusqu’à trois dimensions non formalisées et citons les réponses qui justifient chaque action. Une inconnue demande d’abord clarification. Nous complétons jusqu’à trois actions par le suivi des dimensions formalisées, sans doublon : exceptions de validation, relecture des règles puis comparaison des observations de mesure.</p>
+    <p>La synthèse aide à décrire une prochaine tâche. Vous gardez la décision et la vérification des pratiques. <a href="/methode">Voir comment nous écrivons et éprouvons la règle d’une tâche.</a></p>
+    <details><summary>Que faire si je ne connais pas une pratique ?</summary><p>Gardez « Je ne sais pas ». La dimension sera incomplète, sans être assimilée à une faible maturité. Clarifiez cette pratique avec l’équipe avant de décider.</p></details>
+    <details><summary>Un état formalisé permet-il d’élargir les usages ?</summary><p>Pas à lui seul. Il décrit vos réponses, sans vérifier les documents ni les pratiques. Rejouez les exceptions et faites décider le cabinet.</p></details>
+  </section>
+</div>
+<script>
+  import { DIMENSIONS, diagnose, reportMarkdown, STATES, answerLabel } from '@/lib/maturite-ia.mjs';
+  const root = document.querySelector<HTMLElement>('[data-diagnostic]');
+  if (root) {
+    const form = root.querySelector('form')!;
+    const fields = [...form.querySelectorAll<HTMLFieldSetElement>('fieldset')];
+    const result = root.querySelector<HTMLElement>('[data-result]')!;
+    const report = root.querySelector<HTMLTextAreaElement>('#diagnostic-report')!;
+    const message = root.querySelector<HTMLElement>('[data-message]')!;
+    const prev = root.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = root.querySelector<HTMLButtonElement>('[data-next]')!;
+    let step = 0;
+    const emit = (action: string) => window.dispatchEvent(new CustomEvent('memlia:outil', { detail: { action, outil: 'diagnostic-maturite-ia-cabinet' } }));
+    const showStep = () => {
+      fields.forEach((field, index) => field.hidden = index !== step);
+      prev.hidden = step === 0; next.hidden = step === fields.length - 1;
+      root.querySelector('[data-step]')!.textContent = `Dimension ${step + 1} sur 5 : ${DIMENSIONS[step].label}`;
+    };
+    const values = () => Object.fromEntries(new FormData(form).entries());
+    const list = (parent: Element, lines: string[]) => { parent.replaceChildren(...lines.map(text => { const li = document.createElement('li'); li.textContent = text; return li; })); };
+    // Hors des details : Chromium masque leur contenu fermé dans le PDF.
+    // Une copie réservée à l’impression conserve les ouvertures choisies à l’écran.
+    const printEvidence = (ul: HTMLUListElement) => {
+      const copy = ul.cloneNode(true) as HTMLUListElement;
+      copy.className = 'print-evidence';
+      return copy;
+    };
+    const render = () => {
+      const current = diagnose(values());
+      const summary = root.querySelector('[data-summary]')!; summary.replaceChildren();
+      for (const d of current.dimensions) {
+        const section = document.createElement('section'); const title = document.createElement('h3');
+        title.textContent = `${d.label} : ${STATES[d.state]}`;
+        const ul = document.createElement('ul'); list(ul, d.answers.map(q => `${q.text} ${answerLabel(q.value)}`));
+        const details = document.createElement('details'); const toggle = document.createElement('summary');
+        toggle.textContent = 'Voir les trois réponses déclarées'; details.append(toggle, ul);
+        section.append(title, details, printEvidence(ul)); summary.append(section);
+      }
+      list(root.querySelector('[data-unknowns]')!, current.unknowns.length ? current.unknowns.map(q => q.text) : ['Aucune réponse inconnue.']);
+      const priorities = root.querySelector('[data-priorities]')!; priorities.replaceChildren();
+      for (const p of current.priorities) {
+        const li = document.createElement('li'); const text = document.createElement('p'); text.textContent = p.action;
+        const ul = document.createElement('ul'); list(ul, p.evidence.map(q => `Justification : ${q.text} ${answerLabel(q.value)}`));
+        const details = document.createElement('details'); const toggle = document.createElement('summary');
+        toggle.textContent = 'Pourquoi cette action ?'; details.append(toggle, ul);
+        li.append(text, details, printEvidence(ul)); priorities.append(li);
+      }
+      report.value = reportMarkdown(current); result.hidden = false;
+    };
+    form.addEventListener('submit', e => { e.preventDefault(); render(); message.textContent = 'Synthèse complète disponible, sans adresse e-mail.'; root.querySelector<HTMLElement>('#diagnostic-result-title')!.focus(); emit('reussite'); });
+    form.addEventListener('change', () => { if (!result.hidden) { render(); message.textContent = 'Synthèse actualisée à partir de vos réponses.'; } });
+    prev.addEventListener('click', () => { step--; showStep(); fields[step].querySelector('select')!.focus(); });
+    next.addEventListener('click', () => { step++; showStep(); fields[step].querySelector('select')!.focus(); });
+    root.querySelector('[data-edit]')!.addEventListener('click', () => { showStep(); fields[step].querySelector('select')!.focus(); });
+    root.querySelector('[data-reset]')!.addEventListener('click', () => {
+      if (!window.confirm('Effacer toutes les réponses et le rapport ?')) return;
+      form.reset(); result.hidden = true; report.value = ''; step = 0; showStep(); message.textContent = 'Réponses et rapport effacés.'; emit('reinitialisation');
+    });
+    root.querySelector('[data-example]')!.addEventListener('click', () => {
+      if ([...form.querySelectorAll('select')].some(s => s.value !== 'inconnu') && !window.confirm('Remplacer vos réponses par l’exemple fictif ?')) return;
+      for (const s of form.querySelectorAll('select')) s.value = s.name.startsWith('usages_') ? 'formalise' : s.name.startsWith('donnees_') ? 'non-commence' : s.name.startsWith('regles_') ? 'en-essai' : 'inconnu';
+      step = 0; showStep(); render(); message.textContent = 'Exemple fictif : usages formalisés, données à cadrer, validation et mesure inconnues.'; emit('exemple');
+    });
+    root.querySelector('[data-copy]')!.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(report.value); message.textContent = 'Rapport copié.'; emit('copie'); }
+      catch { report.focus(); report.select(); message.textContent = 'Copie indisponible : sélectionnez le rapport complet et copiez-le manuellement.'; }
+    });
+    root.querySelector('[data-export]')!.addEventListener('click', () => {
+      const url = URL.createObjectURL(new Blob([report.value], { type: 'text/markdown;charset=utf-8' }));
+      const a = document.createElement('a'); a.href = url; a.download = 'diagnostic-maturite-ia-cabinet.md'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); message.textContent = 'Rapport Markdown téléchargé.'; emit('export');
+    });
+    root.querySelector('[data-print]')!.addEventListener('click', () => window.print());
+    showStep();
+  }
+</script>
+<style>
+  .diagnostic, form, [data-result], fieldset, .question { display: grid; gap: 24px; min-width: 0; }
+  .diagnostic header, .diagnostic section { display: grid; gap: 16px; }
+  .diagnostic h2 { font-size: var(--t-3xl); } .diagnostic h3, legend { font-size: var(--t-xl); font-weight: 600; }
+  fieldset { border: 1px solid var(--ligne); border-radius: var(--r-cadre); padding: 20px; }
+  label { font-weight: 600; } select, textarea { width: 100%; min-width: 0; padding: 12px; border: 1px solid var(--ligne); background: var(--surface-page); color: var(--texte); font: inherit; border-radius: var(--r-ecran); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; } button { min-height: 44px; padding: 12px 16px; border: 1px solid var(--ligne); border-radius: var(--r-ecran); background: var(--surface-page); color: var(--texte); font: inherit; cursor: pointer; }
+  button[type=submit] { background: var(--accent-appui); color: var(--surface-page); } .diagnostic ul, .diagnostic ol { padding-left: 24px; list-style: revert; } li { margin-block: 8px; overflow-wrap: anywhere; }
+  details summary { cursor: pointer; padding-block: 12px; min-height: 44px; }
+  [hidden] { display: none !important; }
+  :global([data-result] .print-evidence) { display: none; }
+  @media print {
+    form, .actions, textarea, label[for=diagnostic-report], :global([data-result] details) { display: none; }
+    /* Le flux bloc se fragmente sans les collisions de lignes de la grille Chromium. */
+    .diagnostic, .diagnostic header, .diagnostic section { display: block; }
+    [data-result]:not([hidden]) { display: block; }
+    :global([data-result] .print-evidence) { display: block; }
+    .diagnostic header, .diagnostic section, :global([data-summary] > section) { margin-block: 24px; }
+    .diagnostic h2, .diagnostic h3, :global([data-summary] h3) { margin-block: 16px 8px; break-after: avoid; }
+    :global([data-summary] > section), :global([data-priorities] > li), :global([data-result] .print-evidence li) { break-inside: avoid; }
+  }
+</style>

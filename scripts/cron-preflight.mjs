@@ -3,6 +3,8 @@
 import { existsSync, realpathSync, readFileSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { lireRattrapageIA, verifierDateRattrapageIA, semaineEditorialeIA, plafondJourIA } from './lib/blog-ia-catchup.mjs';
+import { semaineIso } from './lib/blog-pipeline.mjs';
 
 const required = ['RUNBOOK-QUOTIDIEN.md'];
 const args = process.argv.slice(2);
@@ -60,6 +62,8 @@ try {
   cicatrices.add('tests-verts-et-regle-des-trois-passes'); // W39 published replaces the old backlog slug.
   const realDays = new Map();
   const realWeeks = new Map();
+  const ruleIA = lireRattrapageIA(root);
+  const actifs = posts.filter((post) => ['published', 'planned'].includes(post?.status) && !cicatrices.has(post.slug));
   const overdue = [];
   if (phase === 'maintenance') report.maintenanceRequired = overdue;
   for (const post of posts) {
@@ -77,15 +81,18 @@ try {
     }
     if ((post?.status === 'published' || post?.status === 'planned') && !cicatrices.has(post.slug)) {
       const day = post.date;
-      const parsed = new Date(`${day}T12:00:00Z`);
-      const monday = new Date(parsed);
-      monday.setUTCDate(parsed.getUTCDate() - (parsed.getUTCDay() + 6) % 7);
-      const week = monday.toISOString().slice(0, 10);
+      verifierDateRattrapageIA(ruleIA, post.slug, day);
+      const semaine = semaineEditorialeIA(ruleIA, post.slug, day, semaineIso(day));
+      const week = ruleIA?.publications[post.slug] === day ? `lot-ia-${semaine}` : semaine;
       realDays.set(day, (realDays.get(day) ?? 0) + 1);
       realWeeks.set(week, (realWeeks.get(week) ?? 0) + 1);
     }
   }
-  for (const [day, count] of realDays) if (count > 2) errors.push(`jour réel ${day} : plus de deux articles publiés ou planned (${count})`);
+  for (const [day, count] of realDays) {
+    if (actifs.some((post) => post.date === day && count > plafondJourIA(ruleIA, post.slug, day, actifs, 2))) {
+      errors.push(`jour réel ${day} : plus de deux articles publiés ou planned hors rattrapage IA (${count})`);
+    }
+  }
   for (const [week, count] of realWeeks) if (count > 4) errors.push(`semaine réelle ${week} : plus de quatre articles publiés ou planned (${count})`);
   const statusBySlug = new Map(posts.map((post) => [post.slug, post.status]));
   for (const entry of backlog) {

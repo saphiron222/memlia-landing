@@ -1,0 +1,57 @@
+{
+  "fictif": true,
+  "modeleInterroge": false,
+  "analyseSemantique": false,
+  "qualification": "humaine préalable déclarée",
+  "executeAt": "2026-10-05T09:10:26.273Z",
+  "resultats": [
+    {
+      "entree": {
+        "id": "C-01",
+        "qualification": true,
+        "environnement": true,
+        "identifiantInutile": false,
+        "reconstructible": false,
+        "attendu": "PREPARATION_PRETE"
+      },
+      "sortie": "PREPARATION_PRETE",
+      "transmission": false
+    },
+    {
+      "entree": {
+        "id": "C-02",
+        "qualification": true,
+        "environnement": true,
+        "identifiantInutile": true,
+        "reconstructible": false,
+        "attendu": "RETIRER_IDENTIFIANT"
+      },
+      "sortie": "RETIRER_IDENTIFIANT",
+      "transmission": false
+    },
+    {
+      "entree": {
+        "id": "C-03",
+        "qualification": true,
+        "environnement": false,
+        "identifiantInutile": false,
+        "reconstructible": false,
+        "attendu": "ENVIRONNEMENT_INCONNU"
+      },
+      "sortie": "ENVIRONNEMENT_INCONNU",
+      "transmission": false
+    },
+    {
+      "entree": {
+        "id": "C-04",
+        "qualification": true,
+        "environnement": true,
+        "identifiantInutile": false,
+        "reconstructible": true,
+        "attendu": "ARBITRAGE_HUMAIN"
+      },
+      "sortie": "ARBITRAGE_HUMAIN",
+      "transmission": false
+    }
+  ]
+}

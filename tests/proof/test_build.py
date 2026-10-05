@@ -265,6 +265,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/calculateur-amortissement-comptable',
                      f'{SITE}/outils-comptables-gratuits/generateur-prompt-expert-comptable',
                      f'{SITE}/outils-comptables-gratuits/verificateur-fec-local',
+                     f'{SITE}/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec',
                      f'{SITE}/outils-comptables-gratuits/calculateur-roi-automatisation',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
@@ -392,7 +393,7 @@ class BuildProof(unittest.TestCase):
         # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
         # aux pages de service et cinq scènes propres aux outils. Les dix images sociales
         # correspondantes restent sous og/.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 34)
+        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 35)
         self.assertEqual(
             sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')),
             sorted([
@@ -403,6 +404,7 @@ class BuildProof(unittest.TestCase):
                 '29-outil-prompt.webp',
                 '01-outil-charte-ia.webp',
                 '29-outil-fec.webp',
+                '30-outil-maturite.webp',
                 '29-outil-pseudonymisation.webp',
                 '30-outil-roi.webp',
                 '31-outil-bibliotheque.webp',
