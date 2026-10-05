@@ -117,5 +117,14 @@ import { DIMENSIONS, OPTIONS } from '@/lib/maturite-ia.mjs';
   details summary { cursor: pointer; padding-block: 12px; min-height: 44px; }
   [hidden] { display: none !important; }
   :global([data-result] .print-evidence) { display: none; }
-  @media print { form, .actions, textarea, label[for=diagnostic-report], :global([data-result] details) { display: none; } [data-result] { display: grid !important; } :global([data-result] .print-evidence) { display: block; } }
+  @media print {
+    form, .actions, textarea, label[for=diagnostic-report], :global([data-result] details) { display: none; }
+    /* Le flux bloc se fragmente sans les collisions de lignes de la grille Chromium. */
+    .diagnostic, .diagnostic header, .diagnostic section { display: block; }
+    [data-result]:not([hidden]) { display: block; }
+    :global([data-result] .print-evidence) { display: block; }
+    .diagnostic header, .diagnostic section, :global([data-summary] > section) { margin-block: 24px; }
+    .diagnostic h2, .diagnostic h3, :global([data-summary] h3) { margin-block: 16px 8px; break-after: avoid; }
+    :global([data-summary] > section), :global([data-priorities] > li), :global([data-result] .print-evidence li) { break-inside: avoid; }
+  }
 </style>
