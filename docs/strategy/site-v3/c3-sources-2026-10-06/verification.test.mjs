@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 
-const root = new URL('../../', import.meta.url);
+const root = new URL('../../../../', import.meta.url);
 const read = path => readFileSync(new URL(path, root), 'utf8');
 const json = path => JSON.parse(read(path));
 const prefix = 'docs/strategy/site-v3/c3-sources-2026-10-06/';

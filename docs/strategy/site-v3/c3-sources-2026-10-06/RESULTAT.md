@@ -38,7 +38,7 @@ L'URL publique reste inchangée dans cette livraison : changer cette seule réf�
 
 ## Vérifications exécutées
 
-- Test `node --test tests/scripts/c3-source-recheck.test.mjs` : échec observé avant dossier de preuves, puis PASS. Il vérifie les cinq IDs, leurs extraits dans les copies, les empreintes, la cohérence recette/manifeste et le maintien des limites dans le registre.
+- Test `node --test docs/strategy/site-v3/c3-sources-2026-10-06/verification.test.mjs` : échec observé avant dossier de preuves, puis PASS. Il vérifie les cinq IDs, leurs extraits dans les copies, les empreintes, la cohérence recette/manifeste et le maintien des limites dans le registre. Ce contrôle ponctuel vit avec le relevé et n'est pas incorporé à la suite permanente : une maintenance future peut légitimement renouveler ces recettes ou fermer les tâches sans réécrire la preuve historique.
 - `npm run build` : code de sortie 0, journal réel conservé dans le workspace de la carte.
 - Contrôle HTTP en production des quatre articles : PASS, quatre HTTP 200, canonical attendu, absence de noindex, cinq affirmations et leurs liens sources présents dans `main`. Résultat dans `production.json` ; captures HTML brutes dans `.qa/c3-production/` du worktree.
 - Aucun changement public, aucune republication ou preuve native nouvelle revendiqués.
