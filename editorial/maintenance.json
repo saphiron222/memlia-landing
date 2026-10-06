@@ -76,6 +76,102 @@
       "misAJourLe": "2026-09-17",
       "traiteLe": "2026-09-17",
       "commit": "e651bb1"
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-la-relance-des-pieces-clients-1",
+      "slug": "automatiser-la-relance-des-pieces-clients",
+      "type": "reverifier-source",
+      "cle": "sp-conservation",
+      "motif": "la source https://entreprendre.service-public.gouv.fr/vosdroits/F10029 ne répond plus (Connect Timeout Error (attempted address: entreprendre.service-public.gouv.fr:443, timeout: 10000ms)) : remplacer ou retirer la citation, puis republier",
+      "mesure": {
+        "valeur": "Connect Timeout Error (attempted address: entreprendre.service-public.gouv.fr:443, timeout: 10000ms)",
+        "instrument": "ouverture de la source avec l’UA du vérificateur",
+        "date": "2026-10-06"
+      },
+      "gravite": "haute",
+      "cron": "manuel",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-la-saisie-comptable-ce-qui-reste-a-verifier-1",
+      "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "type": "reverifier-source",
+      "cle": "sp-conservation-pieces",
+      "motif": "la source https://entreprendre.service-public.gouv.fr/vosdroits/F10029 ne répond plus (Connect Timeout Error (attempted address: entreprendre.service-public.gouv.fr:443, timeout: 10000ms)) : remplacer ou retirer la citation, puis republier",
+      "mesure": {
+        "valeur": "Connect Timeout Error (attempted address: entreprendre.service-public.gouv.fr:443, timeout: 10000ms)",
+        "instrument": "ouverture de la source avec l’UA du vérificateur",
+        "date": "2026-10-06"
+      },
+      "gravite": "haute",
+      "cron": "manuel",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-un-cabinet-comptable-la-carte-des-taches-1",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "reverifier-source",
+      "cle": "sp-conservation",
+      "motif": "la source https://entreprendre.service-public.gouv.fr/vosdroits/F10029 ne répond plus (Connect Timeout Error (attempted address: entreprendre.service-public.gouv.fr:443, timeout: 10000ms)) : remplacer ou retirer la citation, puis republier",
+      "mesure": {
+        "valeur": "Connect Timeout Error (attempted address: entreprendre.service-public.gouv.fr:443, timeout: 10000ms)",
+        "instrument": "ouverture de la source avec l’UA du vérificateur",
+        "date": "2026-10-06"
+      },
+      "gravite": "haute",
+      "cron": "manuel",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-un-cabinet-comptable-la-carte-des-taches-2",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "reverifier-source",
+      "cle": "impots-calendrier",
+      "motif": "la citation exacte n'est plus dans https://www.impots.gouv.fr/professionnel/calendrier-fiscal : relire la source, corriger l'extrait ou l'affirmation, puis republier",
+      "mesure": {
+        "valeur": "extrait absent",
+        "instrument": "ouverture de la source avec l’UA du vérificateur",
+        "date": "2026-10-06"
+      },
+      "gravite": "haute",
+      "cron": "manuel",
+      "statut": "ecarte",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": "2026-10-06",
+      "commit": null,
+      "motifEcart": "Citation historique de septembre soutenue mot pour mot par le calendrier officiel daté /2026-09 ouvert HTTP 200 le 06/10 ; la route courante présente octobre. Fond conservé, preuve docs/strategy/site-v3/c3-sources-2026-10-06/verification.json."
+    },
+    {
+      "id": "2026-10-06-reverifier-source-logiciel-ia-comptabilite-1",
+      "slug": "logiciel-ia-comptabilite",
+      "type": "reverifier-source",
+      "cle": "service-public-pieces",
+      "motif": "la source https://entreprendre.service-public.gouv.fr/vosdroits/F10029 ne répond plus (Connect Timeout Error (attempted address: entreprendre.service-public.gouv.fr:443, timeout: 10000ms)) : remplacer ou retirer la citation, puis republier",
+      "mesure": {
+        "valeur": "Connect Timeout Error (attempted address: entreprendre.service-public.gouv.fr:443, timeout: 10000ms)",
+        "instrument": "ouverture de la source avec l’UA du vérificateur",
+        "date": "2026-10-06"
+      },
+      "gravite": "haute",
+      "cron": "manuel",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
     }
   ]
 }
