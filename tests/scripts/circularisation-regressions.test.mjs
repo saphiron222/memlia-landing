@@ -6,6 +6,7 @@ for(const patch of [{referenceDate:'2026-06-30'},{currency:'USD'},{requestedAmou
  let s=c.reconcileResponse(c.demoSession(),'001');
  const original=structuredClone(s.tiers[0]);
  s=c.updateTier(s,'001',{...patch,note:'Correction conservée'});
+ assert.equal(s.tiers[0].responses[0].comparable,false);
  assert.equal(c.compareResponse(s.tiers[0]).evaluated,false);
  assert.throws(()=>c.reconcileResponse(s,'001'));
  assert.deepEqual(s.tiers[0].history.find(h=>h.type==='response-added').details,original.history.find(h=>h.type==='response-added').details);
@@ -33,4 +34,21 @@ for(const count of [25000,100000]) test(`R2 ${count} tiers and complete work rou
  assert.throws(()=>c.importSessionFiles([files[0].text,...files.map(f=>f.text)]),/partie|dupli/i);
  assert.throws(()=>c.importSessionFiles(files.map(f=>f.text),{current:s}),/confirm/i);
  assert.deepEqual(c.importSessionFiles(files.map(f=>f.text),{current:s,replaceConfirmed:true}),s);
+});
+
+test('R2 large letter history, escaped unicode, mixed parts and pre-read refusal',async()=>{
+ const s=c.demoSession();s.tiers=s.tiers.slice(0,1);
+ const template=s.tiers[0].letters[0];
+ s.tiers[0].letters=Array.from({length:400},(_,i)=>({...template,version:i+1,text:'😀\u0001"\\'.repeat(10000)}));
+ const files=c.exportSessionFiles(s);
+ assert.ok(files.length>1);
+ assert.ok(files.every(f=>Buffer.byteLength(f.text)<=c.MAX_BYTES));
+ assert.deepEqual(c.importSessionFiles(files.map(f=>f.text)),s);
+ const mixed=JSON.parse(files[0].text);mixed.bundleId='different-backup';
+ assert.throws(()=>c.importSessionFiles([JSON.stringify(mixed),...files.slice(1).map(f=>f.text)]),/mélangées/);
+ const {executeWorkerRequest}=await import('../../src/lib/circularisation-worker.mjs');
+ let read=false;
+ await assert.rejects(executeWorkerRequest({operation:'resume',files:[{size:c.MAX_BYTES+1,text:()=>{read=true;return '{}';}}]}),/20 Mo/);
+ assert.equal(read,false);
+ assert.deepEqual(await executeWorkerRequest({operation:'resume',files:files.map(f=>({size:Buffer.byteLength(f.text),text:async()=>f.text}))}),s);
 });

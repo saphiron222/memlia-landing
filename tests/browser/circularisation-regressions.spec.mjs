@@ -17,14 +17,14 @@ for(const replacement of ['reset','demo','resume']) test(`R3 cleans detail on ${
  await expect(page.locator('[data-circ-letter-text]')).not.toContainText('Client fictif A');
  for(const id of ['return','note','response-comment','response-date','response-amount','sent'])await expect(page.locator('#circ-'+id)).toHaveValue('');
  await expect(page.locator('[data-circ-letter-download]')).toBeDisabled();await expect(page.locator('[data-circ-letter-copy]')).toBeDisabled();
- const downloads=[];page.on('download',d=>downloads.push(d));
- await page.evaluate(()=>document.querySelector('[data-circ-letter-download]').dispatchEvent(new Event('click')));
- expect(downloads).toEqual([]);
+ const calls=await page.evaluate(()=>{let downloads=0,copies=0;URL.createObjectURL=()=>{downloads++;return 'blob:forbidden';};Object.defineProperty(navigator,'clipboard',{value:{writeText:async()=>{copies++;}},configurable:true});for(const name of ['download','copy'])document.querySelector('[data-circ-letter-'+name+']').dispatchEvent(new Event('click'));return {downloads,copies};});
+ expect(calls).toEqual({downloads:0,copies:0});
 });
 for(const [field,value] of [['referenceDate','2026-06-30'],['currency','USD'],['requestedAmount','110']])test(`R1 browser correction ${field}`,async({page})=>{
  await page.goto(route);await page.locator('[data-circ-demo]').click();await page.getByRole('button',{name:'Ouvrir 001',exact:true}).click();
  await page.locator('[data-circ-reconcile]').click();
  await page.locator('#circ-'+field).fill(value);await page.locator('[data-circ-save]').click();
+ await expect(page.locator('[name="comparable"]')).not.toBeChecked();
  await expect(page.locator('[data-circ-reconcile]')).toBeDisabled();await expect(page.locator('[data-circ-table]')).toContainText('Non évalué');
  await page.getByText('Ajouter une réponse ou un refus (historique conservé)',{exact:true}).click();
  await page.locator('#circ-response-date').fill('2026-07-01');await page.locator('#circ-response-amount').fill('120');await page.locator('#circ-response-currency').fill(field==='currency'?'USD':'EUR');await page.locator('[name="comparable"]').check();await page.locator('[data-circ-response] button').click();
