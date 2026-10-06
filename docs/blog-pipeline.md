@@ -38,6 +38,8 @@ Pour `editorialStatus: publie`, `blog:audit`, le contrat HTML du build et le tes
 
 Limite : les fichiers de relevé résident hors du reçu de publication ; le sceau garantit les octets de l'article et de son dossier, pas ceux du relevé historique. Modifier un relevé ancien peut modifier le résultat de ce contrôle sans casser le sceau. La preuve d'autocomplétion elle-même devra être liée cryptographiquement au reçu lors d'une évolution du format de publication, sans retoucher rétroactivement les articles publics.
 
+Le test `blog-intent-preservation.test.mjs` matérialise sa copie isolée au 3 octobre 2026, date historique de la recette couverte par le relevé du 28 septembre. Cette date explicite évite que la préparation de la fixture dépende du jour de la machine. Il vérifie également le refus d'une nouvelle matérialisation après expiration de tous les relevés ; aucune mesure publique n'est rafraîchie et les contrôles de fraîcheur de production restent inchangés.
+
 ```bash
 npm run blog:audit
 npm run blog:gate -- <slug>

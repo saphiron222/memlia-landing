@@ -14,9 +14,12 @@ const slug = 'prompt-chatgpt-expert-comptable';
 for (const path of ['editorial', 'src', 'docs', 'public', 'dist', 'scripts/lib/blog-ia-catchup.mjs']) {
   cpSync(join(sourceRoot, path), join(root, path), { recursive: true });
 }
-const fixture = await materialiser({ root, slug, statut: 'publie' });
+// Rejouer la recette à sa date historique, où son relevé du 28/09 est frais.
+// Ne pas emprunter le jour réel ni rafraîchir les mesures publiques pour un test.
+const jourFixture = '2026-10-03';
+const fixture = await materialiser({ root, slug, statut: 'publie', jour: jourFixture });
 assert.deepEqual(fixture.erreurs, [], 'La fixture doit être réellement matérialisée.');
-ecrireSceau(root, slug);
+ecrireSceau(root, slug, jourFixture);
 test.after(() => rmSync(root, { recursive: true, force: true }));
 const dernierReleve = readdirSync(join(root, 'docs/strategy/site-v3/mesures'))
   .filter((nom) => /^(questions|titres-intent)-\d{4}-\d{2}-\d{2}\.json$/.test(nom))
@@ -24,6 +27,14 @@ const dernierReleve = readdirSync(join(root, 'docs/strategy/site-v3/mesures'))
   .sort().at(-1);
 const au = new Date(Date.parse(`${dernierReleve}T00:00:00Z`) + 9 * 86_400_000).toISOString().slice(0, 10);
 const renderedBlogHtml = `<li data-article="${slug}"><a href="/blog/${slug}">Article</a></li>`;
+
+test('la fixture historique est datée sans autoriser une nouvelle matérialisation tardive', async () => {
+  assert.equal(fixture.manifest.publishedAt, jourFixture);
+  await assert.rejects(
+    materialiser({ root, slug, statut: 'publie', jour: au }),
+    /aucun relevé d’autocomplétion frais/,
+  );
+});
 
 // Le build:site exerce le contrat HTML ; blog:audit exerce également le dossier scellé.
 test('la vieillesse du relevé seule ne refuse pas un article public scellé', async () => {
