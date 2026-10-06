@@ -4,7 +4,8 @@ export function initializeSignification(WorkerClass){
  const $=s=>root.querySelector(s),$$=s=>[...root.querySelectorAll(s)];
  const form=$('[data-sig-form]'),meta=$('[data-sig-meta]');let session=m.createSession(),editing='',dirty=false,page=0,parsed=null,rows=null,importPage=0,worker=null,cancelJob=null,urls=[];
  // Load the self-hosted worker with page assets, before any scenario is processed.
- let resident=new WorkerClass();
+ const resident=new WorkerClass();let jobId=0;
+ const hasContent=()=>session.scenarios.length||dirty||parsed||['missionRef','preparer','reviewer'].some(k=>meta.elements[k].value!=='');
  const node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
  const status=text=>$('[data-sig-status]').textContent=text;
  const error=text=>{const el=$('[data-sig-error]');el.textContent=text;el.hidden=!text;};
@@ -46,20 +47,23 @@ export function initializeSignification(WorkerClass){
  }
  function invalidatePreview(){rows=null;importPage=0;$('[data-sig-import-valid]').checked=false;renderPreview();}
  function clearImport(){parsed=null;invalidatePreview();$('[data-sig-mapping]').replaceChildren();$('[data-sig-csv]').reset();$('[data-sig-restore]').reset();}
- function run(data,done){
-  if(worker){error('Un traitement est déjà en cours.');return;}clearDownloads();error('');status('Traitement local en cours…');worker=resident;render();
+ function run(data,done,replaceDownloads=true){
+  if(worker){error('Un traitement est déjà en cours.');return;}if(replaceDownloads)clearDownloads();error('');status('Traitement local en cours…');worker=resident;render();
+  const id=++jobId;
   const finish=()=>{worker.onmessage=null;worker.onerror=null;worker=null;cancelJob=null;render();};
-  cancelJob=()=>{worker.terminate();resident=new WorkerClass();finish();status('Traitement annulé, aucune sortie partielle. La session précédente est conservée.');};
-  worker.onmessage=({data:reply})=>{finish();if(!reply.ok){error(reply.error);status('Traitement refusé, session conservée.');return;}guard(()=>done(reply.result));};
-  worker.onerror=()=>{finish();error('Traitement local interrompu : aucune nouvelle donnée appliquée.');};worker.postMessage(data);
+  // Keep the preloaded worker resident. Cancellation discards this job's result;
+  // a queued job must never receive the cancelled job's asynchronous reply.
+  cancelJob=()=>{finish();status('Traitement annulé, aucune sortie partielle. La session précédente est conservée.');};
+  worker.onmessage=({data:reply})=>{if(reply.jobId!==id)return;finish();if(!reply.ok){error(reply.error);status('Traitement refusé, session conservée.');return;}guard(()=>done(reply.result));};
+  worker.onerror=()=>{finish();error('Traitement local interrompu : aucune nouvelle donnée appliquée.');};worker.postMessage({...data,jobId:id});
  }
  function syncMeta(){session=m.updateMetadata(session,Object.fromEntries(['missionRef','preparer','reviewer'].map(k=>[k,meta.elements[k].value])));clearDownloads();}
  form.addEventListener('input',markDirty);form.addEventListener('change',markDirty);
  form.onsubmit=e=>{e.preventDefault();guard(()=>{const r=values();session=editing?m.updateScenario(session,editing,Object.fromEntries(Object.entries(r).filter(([k])=>k!=='id'))):m.addScenario(session,r);editing=r.id;form.elements.id.readOnly=true;dirty=false;$('[data-sig-dirty]').hidden=true;clearDownloads();fieldErrors(m.calculate(r).errors);render();status(m.calculate(r).errors.length?'Scénario conservé en brouillon : paramètres à corriger.':'Calcul enregistré. Choix et justification restent à valider.');});};
  meta.addEventListener('input',()=>guard(syncMeta));meta.onsubmit=e=>e.preventDefault();
  $('[data-sig-new]').onclick=()=>{if(dirty&&!confirm('Abandonner les modifications non enregistrées du formulaire ?'))return;newEditor();status('Nouveau scénario : aucun taux prérempli.');};
- $('[data-sig-demo]').onclick=()=>{if((session.scenarios.length||dirty)&&!confirm('Remplacer la session par le jeu fictif ? Sauvegardez votre JSON avant remplacement.'))return;session=m.demoSession();page=0;clearDownloads();clearImport();meta.reset();loadEditor(session.scenarios[0]);status('Deux scénarios fictifs, aucun retenu. Les taux sont des données d’essai.');};
- $('[data-sig-reset]').onclick=()=>{if((session.scenarios.length||dirty||parsed)&&!confirm('Effacer les saisies, scénarios et sorties de cette session ? Les fichiers téléchargés restent sur votre appareil.'))return;cancelJob?.();session=m.createSession();page=0;clearDownloads();clearImport();meta.reset();newEditor();error('');status('Session effacée.');};
+ $('[data-sig-demo]').onclick=()=>{if(hasContent()&&!confirm('Remplacer la session par le jeu fictif ? Sauvegardez votre JSON avant remplacement.'))return;session=m.demoSession();page=0;clearDownloads();clearImport();meta.reset();loadEditor(session.scenarios[0]);status('Deux scénarios fictifs, aucun retenu. Les taux sont des données d’essai.');};
+ $('[data-sig-reset]').onclick=()=>{if(hasContent()&&!confirm('Effacer les saisies, scénarios et sorties de cette session ? Les fichiers téléchargés restent sur votre appareil.'))return;cancelJob?.();session=m.createSession();page=0;clearDownloads();clearImport();meta.reset();newEditor();error('');status('Session effacée.');};
  $('[data-sig-cancel]').onclick=()=>cancelJob?.();
  $('[data-sig-prev]').onclick=()=>{page--;render();};$('[data-sig-next]').onclick=()=>{page++;render();};
  $('[data-sig-import-prev]').onclick=()=>{importPage--;renderPreview();};$('[data-sig-import-next]').onclick=()=>{importPage++;renderPreview();};
@@ -68,9 +72,9 @@ export function initializeSignification(WorkerClass){
  $('[data-sig-preview]').onclick=()=>guard(()=>{const mapping=Object.fromEntries($$('[data-mapping]').map(el=>[el.dataset.mapping,el.value===''?-1:Number(el.value)]));invalidatePreview();run({action:'map',parsed,mapping},result=>{rows=result;renderPreview();status('Aperçu prêt ; confirmer l’ajout reste une action explicite.');});});
  $('[data-sig-import-valid]').onchange=render;
  $('[data-sig-import-confirm]').onclick=()=>{if(!rows||dirty||!$('[data-sig-import-valid]').checked)return;run({action:'append',session,rows},result=>{session=result;clearImport();render();status('Tous les scénarios importés ont été ajoutés, sans choix automatique.');});};
- $('[data-sig-restore]').onsubmit=e=>{e.preventDefault();const files=[...$('#sig-json').files];if(!files.length)return;run({action:'restore',files},result=>{if((session.scenarios.length||dirty)&&!confirm('Remplacer la session présente par la sauvegarde vérifiée ?')){status('Reprise non appliquée, session présente conservée.');return;}session=result;page=0;clearImport();for(const k of ['missionRef','preparer','reviewer'])meta.elements[k].value=session.metadata[k];newEditor();render();status('Sauvegarde reprise : saisies et états conservés. Le choix reste une déclaration utilisateur.');});};
+ $('[data-sig-restore]').onsubmit=e=>{e.preventDefault();const files=[...$('#sig-json').files];if(!files.length)return;run({action:'restore',files},result=>{if(hasContent()&&!confirm('Remplacer la session présente par la sauvegarde vérifiée ?')){status('Reprise non appliquée, session présente conservée.');return;}session=result;page=0;clearDownloads();clearImport();for(const k of ['missionRef','preparer','reviewer'])meta.elements[k].value=session.metadata[k];newEditor();render();status('Sauvegarde reprise : saisies et états conservés. Le choix reste une déclaration utilisateur.');},false);};
  function download(format,final=false){if(dirty){error('Enregistrez les modifications avant export.');return;}run({action:'export',session,format,final},parts=>{const area=$('[data-sig-downloads]');for(const part of parts){const url=URL.createObjectURL(new Blob([part.content],{type:format==='json'?'application/json;charset=utf-8':format==='csv'?'text/csv;charset=utf-8':'text/html;charset=utf-8'}));urls.push(url);const a=node('a',`Télécharger ${part.filename}`);a.href=url;a.download=part.filename;a.className='btn btn-contour';area.append(a);}if(parts.length===1)area.querySelector('a').click();status(`${parts.length} fichier(s) préparé(s) : ${parts.length>1?'téléchargez toutes les parties pour reprendre.':m.dossierState(session)+'.'}`);});}
  $$('[data-sig-export]').forEach(b=>b.onclick=()=>download(b.dataset.sigExport));$('[data-sig-final]').onclick=()=>download('html',true);
- window.addEventListener('beforeunload',e=>{if(session.scenarios.length||dirty){e.preventDefault();e.returnValue='';}});
+ window.addEventListener('beforeunload',e=>{if(hasContent()){e.preventDefault();e.returnValue='';}});
  newEditor();renderPreview();
 }

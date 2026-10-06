@@ -13,6 +13,6 @@ self.onmessage=async({data})=>{
    if(data.format==='json')result=m.exportParts(data.session);
    else result=[{filename:`seuil-signification.${data.format}`,content:data.format==='csv'?m.exportCsv(data.session):m.exportReport(data.session,data.final)}];
   }else throw new Error('Action inconnue.');
-  self.postMessage({ok:true,result});
- }catch(e){self.postMessage({ok:false,error:e.message});}
+  self.postMessage({jobId:data.jobId,ok:true,result});
+ }catch(e){self.postMessage({jobId:data.jobId,ok:false,error:e.message});}
 };

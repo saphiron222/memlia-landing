@@ -61,10 +61,10 @@ test('table mobile défilable au clavier, actions utilisables et focus visible',
  await click(page,'Retenir 001');await expect(page.locator('[data-sig-summary]')).toContainText('CHOIX UTILISATEUR');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
 });
-for(const width of [320,375,768,1024,1440,1920])test(`rendu et confidentialité ${width}`,async({page})=>{
+for(const width of [320,375,768,1024,1440,1920])test(`rendu et confidentialité ${width}`,async({page,context})=>{
  await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(route);await page.evaluate(()=>document.fonts.ready);
- const requests=[];page.on('request',r=>requests.push(r));await click(page,'Charger l’exemple fictif');await click(page,'Retenir 001');await fill(page,{justification:'Texte de contrôle privé'});await save(page);await download(page,'[data-sig-export="json"]');
- expect(requests.every(r=>r.method()==='GET'&&r.url().startsWith(new URL(page.url()).origin)&&!r.url().includes('Texte'))).toBeTruthy();
+ await page.waitForLoadState('networkidle');const requests=[];context.on('request',r=>requests.push(`${r.method()} ${r.url()}`));await click(page,'Charger l’exemple fictif');await click(page,'Retenir 001');await fill(page,{justification:'Texte de contrôle privé'});await save(page);await download(page,'[data-sig-export="json"]');
+ expect(requests).toEqual([]);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();expect(errors).toEqual([]);
  expect(await page.evaluate(async()=>({local:localStorage.length,session:sessionStorage.length,cookies:document.cookie,idb:await indexedDB.databases(),cache:await caches.keys()}))).toEqual({local:0,session:0,cookies:'',idb:[],cache:[]});
  await expect(page.locator('h1')).toHaveText('Seuil de signification en audit : calcul et justification');await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://memlia.fr'+route);await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content',await page.locator('h1').innerText());await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content',/connect-src 'none'/);
