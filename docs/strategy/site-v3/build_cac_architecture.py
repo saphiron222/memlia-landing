@@ -99,7 +99,7 @@ def resolve(source=None, backlog=None, families=None):
                       'angle': e.get('angle'), 'measure': evidence(e['requete']),
                       'terrain': decisions[e['famille']]['terrain'], 'purpose': e['preuve']})
     for p in source['pages']:
-        reused = p['state'] == 'existant-reutilise'
+        reused = p['state'] in ('existant-reutilise', 'construite-en-revue', 'publiee')
         if p['family'] not in active:
             errors.append('planned page in inactive family: ' + p['id'])
         if reused and existing.get(p['url'], {}).get('query') != p['query']:
