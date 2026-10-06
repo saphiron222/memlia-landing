@@ -57,6 +57,8 @@ async function hasRenderedFocus(region: Locator) {
 test('attente clavier observe aussi le scroll du document derrière une cible fixe', async ({ page }) => {
   await page.setContent('<style>html { scroll-behavior:smooth }</style><button style="position:fixed;top:0">Cible fixe</button><div style="height:12000px"></div>');
   await page.keyboard.press('Tab');
+  // Do not let the fixture's initial native focus scroll cancel its own probe.
+  await waitForTabScroll(page);
   await page.evaluate(() => window.scrollTo({ top: 6000, behavior: 'smooth' }));
   await waitForTabScroll(page);
   expect(await page.evaluate(() => window.scrollY)).toBe(6000);
