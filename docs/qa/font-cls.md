@@ -37,3 +37,7 @@ Le script lance un Chrome neuf par mesure, trois runs séquentiels par route, Li
 Le serveur local rapide ne reproduit pas les CLS > 0,1 du relevé public d’origine. Aucun gain Lighthouse local de CLS n’est donc revendiqué : la preuve de correction est la régression à polices retardées, avec composition finale inchangée. Les petites différences LCP ne démontrent pas un effet causal.
 
 Pour les mesures publiques, employer le même script avec `https://memlia.fr` avant/après livraison ; confirmer d’abord que la CSS publique contient les tokens corrigés. Les rapports publics doivent être distingués des rapports locaux. Aucune donnée terrain CrUX, RUM ou INP n’est collectée ici ; aucune reprise du chantier Web Analytics.
+
+Avant livraison, trois runs publics par route ont été collectés avec ce même Lighthouse 13.4.1 : glossaire CLS médian 0,1048776 / LCP 3082,38274 ms ; bulletin Silae CLS 0 / LCP 2955,18104 ms ; saisie Sage CLS 0 / LCP 2165,74777 ms. Le dépassement public du glossaire est donc reproduit, pas ceux des deux intégrations dans cette reprise. Le relevé après livraison relève du passage QA/publication et ne doit pas être déduit de la mesure locale.
+
+Les registres générés sont rafraîchis par `npm run regen:generated` : dates/rendus du sitemap, manifeste du glossaire et réaffirmation de sa revue métier inchangée. Ce rafraîchissement ne constitue pas une nouvelle revue de fond. En cas de conflit sur ces fichiers, régénérer plutôt que fusionner leurs valeurs à la main.

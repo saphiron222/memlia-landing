@@ -22,8 +22,10 @@ for (const route of routes) {
       const anchor = page.locator(route === '/glossaire' ? '.alphabet' : '.page-chapeau');
       const before = await anchor.boundingBox();
       const families = await page.locator('h1').evaluate(el => getComputedStyle(el).fontFamily);
+      expect(families.indexOf('Fraunces Fallback')).toBeGreaterThanOrEqual(0);
       expect(families.indexOf('Fraunces Fallback')).toBeLessThan(families.indexOf('Georgia'));
       const bodyFamilies = await page.locator('body').evaluate(el => getComputedStyle(el).fontFamily);
+      expect(bodyFamilies.indexOf('Hanken Fallback')).toBeGreaterThanOrEqual(0);
       expect(bodyFamilies.indexOf('Hanken Fallback')).toBeLessThan(bodyFamilies.indexOf('system-ui'));
       // Screenshots otherwise wait for document.fonts.ready and deadlock the gate.
       process.env.PW_TEST_SCREENSHOT_NO_FONTS_READY = '1';
