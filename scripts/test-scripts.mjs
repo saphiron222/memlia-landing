@@ -17,6 +17,7 @@ import { join } from 'node:path';
 
 const DOSSIER = 'tests/scripts';
 const SANS_NAVIGATEUR = {
+  'historical-proof-render.test.mjs': 'lance Chromium : rejoué dans la CI avec une fixture isolée par hôte, hors chaîne de build',
   'blog-proof-frame-render.test.mjs': 'lance Chromium : joué par node --test tests/scripts/blog-proof-frame-render.test.mjs, hors chaîne de build',
   'blog-candidate-render.test.mjs': 'lance Chromium (Playwright) : joué par npm run test:blog-pipeline:render, hors chaîne de build',
   'blog-title-intent.test.mjs': 'joué explicitement par npm run test:blog-title-intent juste après le rendu Astro',

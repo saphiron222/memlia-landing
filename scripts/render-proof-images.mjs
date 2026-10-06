@@ -13,6 +13,10 @@ const output = `.qa/annotations/${check ? 'recheck' : 'render'}`;
 const contract = JSON.parse(readFileSync(`${source}/content-contract.json`, 'utf8'));
 const manifestPath = 'docs/qa/m4-r4/media-manifest.json';
 const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+assert.equal(contract.length, 9, 'Contrat incomplet : neuf preuves requises');
+assert.equal(new Set(contract.map(frame => frame.id)).size, 9, 'Preuve dupliquée dans le contrat');
+assert.equal(new Set(manifest.entries.map(entry => entry.target)).size, manifest.entries.length, 'Cible dupliquée dans le manifeste');
+const derivatives = manifest.entries.filter(entry => entry.derivative && entry.source.startsWith('public/proofs/'));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const records = [];
 const candidates = [];
@@ -111,21 +115,23 @@ try {
       clipped: measured.clipped, pngSha256: hash(png), webpSha256: hash(webp), bytes: webp.length });
   }
   assert.equal(new Set(records.map(r => r.webpSha256)).size, 9);
-  // Les deux couvertures de blog proviennent des mêmes preuves : ne pas conserver d'annotations dérivées.
-  for (const entry of manifest.entries.filter(e => e.derivative && e.source.startsWith('public/proofs/'))) {
+  // Les couvertures ont leur propre chaîne ; rejouer seulement les dérivés encore déclarés de ces preuves.
+  for (const entry of derivatives) {
     const input = candidates.find(c => c.target === entry.source);
     assert.ok(input, `Source de dérivé inconnue : ${entry.source}`);
     const [, width, format] = entry.target.match(/-(\d+)\.(avif|webp)$/);
     const bytes = await sharp(input.bytes).resize(Number(width)).toFormat(format, { quality: 85 }).toBuffer();
     candidates.push({ target: entry.target, source: entry.source, bytes });
   }
-  assert.equal(candidates.length, 21);
+  assert.equal(candidates.length, contract.length + derivatives.length);
   for (const candidate of candidates) {
     const entry = manifest.entries.find(e => e.target === candidate.target);
     assert.ok(entry, `Cible non répertoriée : ${candidate.target}`);
     if (check) {
+      assert.equal(entry.source, candidate.source, `Source divergente : ${candidate.target}`);
       assert.equal(hash(readFileSync(candidate.target)), hash(candidate.bytes), `Actif périmé : ${candidate.target}`);
       assert.equal(entry.sha256, hash(candidate.bytes), `Manifeste périmé : ${candidate.target}`);
+      assert.equal(entry.bytes, candidate.bytes.length, `Taille périmée : ${candidate.target}`);
     }
   }
   // Publication seulement après le rendu, la validation et l'encodage de tout le lot.
