@@ -32,6 +32,49 @@ test('un relevé de la nuit Paris reste frais sans emprunter le jour UTC précé
   }
 });
 
+function dossierDeMesures(t, prefixe) {
+  const root = mkdtempSync(join(tmpdir(), prefixe));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const dossier = join(root, 'docs/strategy/site-v3/mesures');
+  mkdirSync(dossier, { recursive: true });
+  return { root, dossier };
+}
+
+test('le relevé de demande du lundi compte comme mesure, pas ses pannes, et vieillit comme les autres', (t) => {
+  const { root, dossier } = dossierDeMesures(t, 'memlia-intent-demande-');
+  writeFileSync(join(dossier, 'semaine-2026-W41-demande.json'), JSON.stringify({
+    date: '2026-10-06',
+    autocompletion: {
+      mesuree: { 'prompt chatgpt expert comptable': ['prompt chatgpt expert comptable'], 'requete sans suggestion': [] },
+      pannes: [{ requete: 'requete en panne', erreur: 'HTTP 429' }],
+    },
+  }));
+  // L'instantané d'intégrité de la même semaine n'est pas un relevé d'autocomplétion.
+  writeFileSync(join(dossier, 'semaine-2026-W41-integrite.json'), JSON.stringify({ date: '2026-10-06' }));
+  const mesure = chargerAutocompletionMesuree(root, { au: '2026-10-07' });
+  assert.deepEqual(mesure.fichiers, ['semaine-2026-W41-demande.json']);
+  assert.ok(Object.hasOwn(mesure.autocompletion, 'prompt chatgpt expert comptable'));
+  assert.ok(Object.hasOwn(mesure.autocompletion, 'requete sans suggestion'));
+  assert.equal(Object.hasOwn(mesure.autocompletion, 'requete en panne'), false);
+  assert.equal(mesure.mesureParRequete['prompt chatgpt expert comptable'].date, '2026-10-06');
+  assert.throws(() => chargerAutocompletionMesuree(root, { au: '2026-10-15' }), /aucun relevé d’autocomplétion frais/);
+});
+
+test('la mesure la plus récente gagne, qu’elle vienne de la forge ou du relevé de demande', (t) => {
+  const { root, dossier } = dossierDeMesures(t, 'memlia-intent-recent-');
+  writeFileSync(join(dossier, 'titres-intent-2026-10-05.json'), JSON.stringify({ autocompletion: { 'lettrage sage': ['ancienne'] } }));
+  writeFileSync(join(dossier, 'semaine-2026-W41-demande.json'), JSON.stringify({ date: '2026-10-06', autocompletion: { mesuree: { 'lettrage sage': ['lundi'] }, pannes: [] } }));
+  writeFileSync(join(dossier, 'titres-intent-2026-10-07.json'), JSON.stringify({ autocompletion: { 'lettrage sage': ['forge du jour'] } }));
+  assert.deepEqual(chargerAutocompletionMesuree(root, { au: '2026-10-06' }).autocompletion['lettrage sage'], ['lundi']);
+  assert.deepEqual(chargerAutocompletionMesuree(root, { au: '2026-10-07' }).autocompletion['lettrage sage'], ['forge du jour']);
+});
+
+test('un relevé de demande sans date lisible arrête la lecture au lieu d’être ignoré', (t) => {
+  const { root, dossier } = dossierDeMesures(t, 'memlia-intent-sans-date-');
+  writeFileSync(join(dossier, 'semaine-2026-W42-demande.json'), JSON.stringify({ autocompletion: { mesuree: {}, pannes: [] } }));
+  assert.throws(() => chargerAutocompletionMesuree(root, { au: '2026-10-14' }), /relevé de demande sans date valide/);
+});
+
 function frontmatter(path) {
   const source = readFileSync(path, 'utf8');
   const bloc = source.match(/^---\n([\s\S]*?)\n---/);
