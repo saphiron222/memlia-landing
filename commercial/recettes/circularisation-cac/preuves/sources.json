@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "sources": [
+    {
+      "id": "NEP505",
+      "url": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+      "snapshot": "preuves/nep505-source.html",
+      "version": "Arrêté 28/12/2023, JO 31/12/2023, A.821-76",
+      "excerpts": [
+        {
+          "paragraph": "03",
+          "exact": "La demande de confirmation des tiers consiste à obtenir de la part d’un tiers une déclaration directement adressée au commissaire aux comptes concernant une ou plusieurs informations."
+        },
+        {
+          "paragraph": "09",
+          "exact": "Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction et de l’envoi de ces demandes, ainsi que de la réception des réponses."
+        },
+        {
+          "paragraph": "13",
+          "exact": "Lorsque le commissaire aux comptes n’obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d’audit alternatives permettant de collecter les éléments qu’il estime nécessaires pour vérifier les assertions faisant l’objet du contrôle."
+        }
+      ],
+      "consultedAt": "2026-10-06T03:30:06.825Z",
+      "authority": "H2A",
+      "method": "Page officielle ouverte avec web_extract puis HTML téléchargé par curl ; extraits confrontés au texte HTML via parse5."
+    },
+    {
+      "id": "NEP315",
+      "url": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+      "snapshot": "preuves/nep315-source.html",
+      "version": "Arrêté 13/11/2024, JO 19/11/2024, A.821-72",
+      "excerpts": [
+        {
+          "paragraph": "14",
+          "exact": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes."
+        },
+        {
+          "paragraph": "46",
+          "exact": "la manière dont les outils fonctionnent"
+        },
+        {
+          "paragraph": "46",
+          "exact": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils"
+        },
+        {
+          "paragraph": "48 d)",
+          "exact": "Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46."
+        }
+      ],
+      "consultedAt": "2026-10-06T03:30:06.839Z",
+      "authority": "H2A",
+      "method": "Page officielle ouverte avec web_extract puis HTML téléchargé par curl ; extraits confrontés au texte HTML via parse5."
+    }
+  ]
+}

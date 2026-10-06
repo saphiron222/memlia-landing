@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "reviewer": "metier",
+  "reviewedAt": "2026-10-06",
+  "observations": [
+    "Portée : revue indépendante du candidat de service écrit par marketing et de ses huit états fictifs de suivi ; ce PASS ne valide ni lettres, ni envoi/réception réels, ni intégration, ni diligence d’audit ni conformité d’un dossier.",
+    "Sources : les sept extraits de sources.json ont été confrontés aux deux HTML H2A et aux pages officielles rouvertes le 06/10/2026. NEP 505 : arrêté du 28/12/2023, JO du 31/12/2023, A.821-76 ; NEP 315 : arrêté du 13/11/2024, JO du 19/11/2024, A.821-72, applicable aux exercices ouverts à compter de sa publication.",
+    "NEP 505 : le corps conserve explicitement au CAC la sélection, la rédaction, l’envoi et la réception, ainsi que l’appréciation des réponses. Le circuit de réponse directe est un critère d’acceptation ; un retour simulé ne prouve pas ce circuit.",
+    "Exceptions : non-réponse distincte d’un accord, procédures alternatives au §13 et suites aux §§14–15 laissées au CAC ; opposition de la direction suspendue pour examen selon les §§10–12, sans contournement automatique du refus.",
+    "Rejeu exécuté : node commercial/recettes/circularisation-cac/preuves/rejouer.mjs --check termine avec le code 0 et PASS pour 8 cas. Les attendus et obtenus correspondent au JSON sauvegardé ; tous conservent envoi=false, procedureAlternative=null et conclusion=null.",
+    "Limites techniques : les validations et constats sont des entrées fictives. Les pièces sont des références, non des fichiers lus ; le commentaire est préservé par la fonction, sans preuve de persistance dans un outil réel. Le corps déclare cette simulation et réserve les essais opérationnels à la tâche confiée.",
+    "Fiche outil : support de livraison Memlia explicitement distinct d’un modèle obligatoire ou homologué NEP 315 ; les §§14,46 et48 d) ne remplacent pas l’appréciation de l’outil et de son usage par le CAC.",
+    "Secret et indépendance : flux, accès, traitements tiers et conservation sont à définir avant un mandat ; aucune localité, absence de transfert ou garantie RGPD inventée. Les missions et responsabilités d’un cabinet mixte restent séparées, avec appréciation de l’indépendance par le CAC.",
+    "Charte v5 fournie : service et tâche prise en charge, nous/vous, frontière en trois colonnes, règle écrite en quatre parties, jeu fictif, prix à la complexité et CTA /contact cohérents. Les catégories de tiers sont des variantes d’une campagne ; aucun gain, compatibilité éditeur, agrément ou résultat réglementaire non démontré n’est revendiqué.",
+    "Aucun défaut matériel bloquant dans la portée examinée ; LCB-FT et durabilité hors champ. La grille complète, les preuves et les inconnues opérationnelles sont consignées dans preuves/revue-metier.md. Ni candidat ni charte modifiés ; aucune action kanban, aucun scellement, publication ou commit."
+  ]
+}

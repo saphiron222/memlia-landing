@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-06",
+  "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+  "origine": "docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json",
+  "autocompletion": {
+    "automatiser circularisation": [],
+    "circularisation commissaire aux comptes": [
+      "circularisation commissaire aux comptes",
+      "obligation circularisation commissaire aux comptes",
+      "lettre de circularisation commissaire aux comptes",
+      "demande de circularisation commissaire aux comptes"
+    ],
+    "réponse circularisation fournisseurs": [
+      "reponse circularisation fournisseurs"
+    ],
+    "procédures alternatives circularisation": [
+      "procédure alternative circularisation fournisseur",
+      "procédure alternative circularisation client"
+    ]
+  },
+  "mesures": [
+    {
+      "requete": "automatiser circularisation",
+      "famille": "accueil-cac",
+      "typeCandidat": "service",
+      "pageCandidate": "https://memlia.fr/commissaires-aux-comptes",
+      "mesureLe": "2026-10-05T22:17:28.981Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "marche": {
+        "hl": "fr",
+        "gl": "fr"
+      },
+      "ok": true,
+      "suggestions": [],
+      "erreur": null,
+      "volumeMensuel": null,
+      "statut": "candidate-non-publiee",
+      "nombreSuggestions": 0,
+      "familleCandidate": "cac-accueil-cac",
+      "intention": "informationnelle-pratique",
+      "decision": "candidate provisoire à arbitrer par C3, non publiée",
+      "niveauPreuve": "autocomplétion observée, aucun volume quantifié"
+    },
+    {
+      "requete": "circularisation commissaire aux comptes",
+      "famille": "circularisation",
+      "typeCandidat": "guide",
+      "pageCandidate": "https://memlia.fr/blog/circularisation",
+      "mesureLe": "2026-10-05T22:16:51.911Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "marche": {
+        "hl": "fr",
+        "gl": "fr"
+      },
+      "ok": true,
+      "suggestions": [
+        "circularisation commissaire aux comptes",
+        "obligation circularisation commissaire aux comptes",
+        "lettre de circularisation commissaire aux comptes",
+        "demande de circularisation commissaire aux comptes"
+      ],
+      "erreur": null,
+      "volumeMensuel": null,
+      "statut": "candidate-non-publiee",
+      "nombreSuggestions": 4,
+      "familleCandidate": "cac-circularisation",
+      "intention": "informationnelle-pratique",
+      "decision": "candidate provisoire à arbitrer par C3, non publiée",
+      "niveauPreuve": "autocomplétion observée, aucun volume quantifié"
+    },
+    {
+      "requete": "réponse circularisation fournisseurs",
+      "famille": "circularisation",
+      "typeCandidat": "guide",
+      "pageCandidate": "https://memlia.fr/blog/circularisation",
+      "mesureLe": "2026-10-05T22:16:52.535Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "marche": {
+        "hl": "fr",
+        "gl": "fr"
+      },
+      "ok": true,
+      "suggestions": [
+        "reponse circularisation fournisseurs"
+      ],
+      "erreur": null,
+      "volumeMensuel": null,
+      "statut": "candidate-non-publiee",
+      "nombreSuggestions": 1,
+      "familleCandidate": "cac-circularisation",
+      "intention": "informationnelle-pratique",
+      "decision": "candidate provisoire à arbitrer par C3, non publiée",
+      "niveauPreuve": "autocomplétion observée, aucun volume quantifié"
+    },
+    {
+      "requete": "procédures alternatives circularisation",
+      "famille": "circularisation-alternatives",
+      "typeCandidat": "guide",
+      "pageCandidate": "https://memlia.fr/blog/circularisation-alternatives",
+      "mesureLe": "2026-10-05T22:16:53.124Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "marche": {
+        "hl": "fr",
+        "gl": "fr"
+      },
+      "ok": true,
+      "suggestions": [
+        "procédure alternative circularisation fournisseur",
+        "procédure alternative circularisation client"
+      ],
+      "erreur": null,
+      "volumeMensuel": null,
+      "statut": "candidate-non-publiee",
+      "nombreSuggestions": 2,
+      "familleCandidate": "cac-circularisation-alternatives",
+      "intention": "informationnelle-pratique",
+      "decision": "candidate provisoire à arbitrer par C3, non publiée",
+      "niveauPreuve": "autocomplétion observée, aucun volume quantifié"
+    }
+  ]
+}

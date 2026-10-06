@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "circularisation-cac",
+  "path": "/automatisation/circularisation-cac",
+  "title": "Automatiser la circularisation : préparer et suivre vos demandes",
+  "tabTitle": "Automatiser la circularisation dans vos outils | Memlia",
+  "ogTitle": "Automatiser la circularisation : préparer et suivre vos demandes",
+  "description": "Automatiser la circularisation : préparez demandes, retours et écarts dans vos outils. Le CAC garde la sélection et les suites. Confiez la mécanique.",
+  "hero": "Nous préparons vos demandes de confirmation des tiers et leur suivi dans les outils du cabinet. Les brouillons reprennent votre sélection ; le journal distingue réception, rapprochement et écart à examiner. Chaque envoi attend une validation sous maîtrise du CAC. Vous gardez le choix des tiers, l’appréciation des réponses et les suites à donner aux absences de réponse.",
+  "primaryQuery": "automatiser circularisation",
+  "secondaryQueries": ["circularisation commissaire aux comptes", "réponse circularisation fournisseurs", "procédures alternatives circularisation"],
+  "audience": {
+    "mode": "exception",
+    "qualifier": null,
+    "reason": "Requête de geste retenue par C2 et ARCHITECTURE-CAC malgré zéro suggestion, sans volume revendiqué. La tâche circularisation est contextualisée pour les CAC dès le héros ; conserver son propriétaire commercial distinct des modèles gratuits et articles de méthode."
+  },
+  "intent": "evaluer-service",
+  "family": "cac-confirmations-audit",
+  "verifiedAt": "2026-10-06",
+  "author": "marketing",
+  "cta": {"label": "Confier une première tâche", "destination": "/contact"},
+  "schema": {
+    "headline": "Automatiser la circularisation : préparer et suivre vos demandes",
+    "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
+  },
+  "proof": {"replayedAt": "2026-10-06", "evidencePath": "preuves/rejeu.json"},
+  "incomingLinks": [
+    {"url": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches", "sourcePath": "src/content/blog/automatiser-un-cabinet-cac-la-carte-des-taches.md", "anchor": "Automatiser la circularisation"},
+    {"url": "/blog/cac-circularisation-campagne", "sourcePath": "src/content/blog/cac-circularisation-campagne.md", "anchor": "Automatiser la circularisation"},
+    {"url": "/blog/cac-circularisation-reponse-rapprochement", "sourcePath": "src/content/blog/cac-circularisation-reponse-rapprochement.md", "anchor": "Automatiser la circularisation"}
+  ]
+}
