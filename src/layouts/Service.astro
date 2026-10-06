@@ -5,7 +5,6 @@ import ServiceBody from '@/components/sections/ServiceBody.astro';
 import ServiceCouverture from '@/components/sections/ServiceCouverture.astro';
 import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
-import PageEvidence from '@/components/PageEvidence.astro';
 import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
@@ -103,7 +102,6 @@ const graph = {
       </ServiceBody>
       <RelatedIntegrations servicePath={chemin} />
       <ServicePrinciples />
-      <PageEvidence eeat={eeat} />
       <AppelFinal
         id="confier"
         titre="Décrivez le geste qui revient."

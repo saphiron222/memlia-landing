@@ -3,7 +3,6 @@ import Base from '@/layouts/Base.astro';
 import ProofDetail from '@/components/ProofDetail.astro';
 import Button from '@/components/Button.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
-import PageEvidence from '@/components/PageEvidence.astro';
 import { CTA, SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 import { PROOFS, type ProofId } from '@/data/proofs';
@@ -38,6 +37,8 @@ interface Props {
   /** Appel final propre à la page ; sinon celui de l'accueil. */
   appel?: { titre?: string; texte?: string; points?: string[]; action?: { libelle: string; href: string }; secondaire?: { libelle: string; href: string } };
 }
+// Décision de Kevin du 06/10/2026 : aucune section « Sources » ni « Expérience de première main » sur le site.
+// Une source se cite par un lien sur un mot ou un chiffre du texte ; les données E-E-A-T ne servent plus qu'au JSON-LD.
 const { page, eyebrow, hero, noeuds = [], appel = {} } = Astro.props;
 /**
  * L'appel à l'action mène partout à /contact. Sur /contact lui-même il pointerait la
@@ -115,7 +116,6 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
 
     <slot />
 
-    {eeat && <PageEvidence eeat={eeat} />}
     <AppelFinal id="suite" {...appel} />
   </div>
 </Base>
@@ -144,12 +144,16 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
 
   /* ---- Rythme : 96 px, 128 px en grand écran, comme chaque section de l'accueil. ---- */
   .page-v2 :global(.pv) { padding: 96px var(--marge-page) 0; }
+  /* Chaque section compte sur l'espace haut de la suivante ; la dernière ne touche pas ce qui vient après (preuves ou appel final). */
+  .page-v2 :global(.pv:not(:has(~ .pv))) { padding-bottom: 96px; }
   .page-v2 :global(.pv-tete) { display: grid; gap: 16px; max-width: 780px; }
   .page-v2 :global(.pv-tete p) { margin: 0; }
   .page-v2 :global(.pv-copy) { display: grid; gap: 20px; max-width: 800px; }
   .page-v2 :global(.pv-copy p) { margin: 0; }
   .page-v2 :global(.pv-copy h2) { font-size: var(--t-4xl); }
   .page-v2 :global(.pv-copy strong) { color: var(--texte-fort); font-weight: 600; }
+  /* Un lien dans un paragraphe se voit : c'est là que vivent les sources et les renvois (Kevin, 06/10/2026). */
+  .page-v2 :global(.pv p a) { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
 
   /* Rangée preuve inversée : illustration à gauche, comme les étapes impaires de l'accueil. */
   @media (min-width: 64rem) {
@@ -218,5 +222,6 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
   }
   @media (min-width: 64rem) {
     .page-v2 :global(.pv) { padding: 128px var(--marge-page-lg) 0; }
+    .page-v2 :global(.pv:not(:has(~ .pv))) { padding-bottom: 128px; }
   }
 </style>

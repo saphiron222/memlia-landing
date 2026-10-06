@@ -88,8 +88,12 @@ Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête 
 
 ### Sources publiques, contrôles internes
 
-Sur toutes les pages publiques (guides, blog, glossaire, outils et pages légales), citer les sources
-utiles sous une forme éditoriale compacte : éditeur, titre et lien. Ne pas afficher les dates de
+Décision de Kevin du 06/10/2026 : aucune section « Sources », « Source » ni « Expérience de première
+main » sur le site. Une source se cite par un lien posé sur le mot ou le chiffre qu'elle établit, dans
+le paragraphe même. Le lien porte le texte de la phrase, jamais « source » ni « ici ».
+
+Sur toutes les pages publiques (guides, blog, glossaire, outils et pages légales), citer ainsi les
+sources utiles, dans le texte. Ne pas afficher les dates de
 consultation/vérification, les lignes administratives « source vérifiée »/« sources consultées »
 ni les mentions de capture datée. Les preuves, citations et dates de contrôle restent dans les
 données et dossiers internes ; leurs verdicts ne changent pas pour un retrait de présentation.
