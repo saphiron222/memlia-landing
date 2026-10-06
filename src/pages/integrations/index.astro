@@ -8,13 +8,13 @@ import { SITE } from '@/data/site.mjs';
 const chemin = '/integrations';
 const url = `${SITE.url}${chemin}`;
 const auteur = auteurPar('kevin');
-const products = ['Sage 100 Comptabilité', 'Sage 100 Paie & RH', 'Cegid Loop', 'mySilae'] as const;
+const products = [...new Set(INTEGRATIONS_INDEXABLES.map((integration) => integration.product))];
 const page = {
   chemin,
   titre: 'Guides par environnement comptable | Memlia',
   description: 'Trouvez les repères de contrôle pour Sage 100 Comptabilité, Sage 100 Paie & RH, Cegid Loop ou mySilae, puis cadrez la tâche à automatiser.',
   h1: 'Guides par environnement comptable',
-  chapeau: 'Choisissez votre produit, puis le geste à contrôler : saisie, lettrage, rapprochement, clôture, bulletin ou DSN. Neuf guides donnent des repères de cadrage et distinguent la préparation de la validation du cabinet.',
+  chapeau: `Choisissez votre produit, puis le geste à contrôler : saisie, lettrage, rapprochement, clôture, bulletin ou DSN. ${INTEGRATIONS_INDEXABLES.length === 9 ? 'Neuf' : INTEGRATIONS_INDEXABLES.length} guides donnent des repères de cadrage et distinguent la préparation de la validation du cabinet.`,
   ariane: 'Guides par environnement',
   secondaire: { libelle: 'Comprendre le service Memlia', href: '/automatisation-cabinet-comptable' },
 };

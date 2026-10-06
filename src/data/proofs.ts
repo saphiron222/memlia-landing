@@ -1,5 +1,7 @@
 /** Matrice M4-R1 : références fonctionnelles fictives, jamais des captures produit. */
-export const PROOFS = {
+import generatedProofs from './guide-proofs.generated.json';
+
+const HISTORICAL_PROOFS = {
   'v2/40-outil-circularisation': { title: 'Un retour n’est pas encore un rapprochement', alt: 'Trois tiers fictifs : client 001, réponse reçue de 120 EUR pour 100 EUR demandés et écart +20 ; fournisseur 002 sans réponse ; banque 003 refusant, relance suspendue.', detail: 'La scène reprend le jeu fictif de l’outil : le retour du client n’est pas encore rapproché, la non-réponse reste non évaluée et le refus suspend la relance. Aucun envoi n’est réalisé.' },
   'v2/01-outil-prompt-ia': { title: 'Du compte rendu aux actions à relire', alt: 'Consigne fictive pour une réunion : public équipe projet, format tableau action, responsable, délai, et arrêt si une information manque.', detail: 'La consigne locale demande des actions traçables au compte rendu fictif. Le responsable absent reste une question ; la personne valide avant usage. Aucun modèle n’a produit de réponse.' },
 
@@ -79,4 +81,8 @@ export const PROOFS = {
   'integrations/dsn-silae': { title: 'Le retour DSN Silae est classé', alt: 'Préparation DSN Silae fictive : retours classés, anomalie métier présentée au gestionnaire avant toute action.', detail: 'La règle rapproche le retour du dossier. Elle ne corrige ni ne redépose la déclaration.' },
   'integrations/bulletin-de-paie-silae': { title: 'Le bulletin Silae est contrôlé', alt: 'Contrôle fictif de bulletins Silae : variable habituelle préparée et deux exceptions soumises au pôle social.', detail: 'Une variable absente ou une variation hors seuil attend la décision du pôle social.' },
 } as const;
+export const PROOFS: typeof HISTORICAL_PROOFS & Record<string, { title: string; alt: string; detail: string }> = {
+  ...HISTORICAL_PROOFS,
+  ...generatedProofs,
+};
 export type ProofId = keyof typeof PROOFS;
