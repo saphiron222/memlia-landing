@@ -1,0 +1,373 @@
+{
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-10-06",
+  "scope": "Convention proposée sur jeu fictif Atlas ; aucune intégration client ni restauration physique testée.",
+  "cases": [
+    {
+      "name": "reference-absente",
+      "input": {
+        "pieces": [
+          {
+            "id": "P-01",
+            "ref": "B-01",
+            "sheet": "F-01"
+          }
+        ],
+        "requested": [
+          "B-99"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "expected": {
+        "proposals": [],
+        "exceptions": [
+          "reference-absente:B-99"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "actual": {
+        "proposals": [],
+        "exceptions": [
+          "reference-absente:B-99"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "status": "PASS",
+      "humanContributionsPreserved": true
+    },
+    {
+      "name": "doublon",
+      "input": {
+        "pieces": [
+          {
+            "id": "P-01",
+            "ref": "B-01",
+            "sheet": "F-01"
+          },
+          {
+            "id": "P-02",
+            "ref": "B-01",
+            "sheet": "F-01"
+          }
+        ],
+        "requested": [
+          "B-01"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "expected": {
+        "proposals": [],
+        "exceptions": [
+          "doublon:B-01"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "actual": {
+        "proposals": [],
+        "exceptions": [
+          "doublon:B-01"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "status": "PASS",
+      "humanContributionsPreserved": true
+    },
+    {
+      "name": "orpheline",
+      "input": {
+        "pieces": [
+          {
+            "id": "P-03",
+            "ref": "C-01",
+            "sheet": null
+          }
+        ],
+        "requested": [
+          "C-01"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "expected": {
+        "proposals": [],
+        "exceptions": [
+          "orpheline:P-03"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "actual": {
+        "proposals": [],
+        "exceptions": [
+          "orpheline:P-03"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "status": "PASS",
+      "humanContributionsPreserved": true
+    },
+    {
+      "name": "contributions-concurrentes",
+      "input": {
+        "pieces": [],
+        "requested": [],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          },
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "Justificatif demandé",
+            "author": "auditeur-fictif-B",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "expected": {
+        "proposals": [],
+        "exceptions": [
+          "conflit:F-01:commentaire:validation-requise"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          },
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "Justificatif demandé",
+            "author": "auditeur-fictif-B",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "actual": {
+        "proposals": [],
+        "exceptions": [
+          "conflit:F-01:commentaire:validation-requise"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          },
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "Justificatif demandé",
+            "author": "auditeur-fictif-B",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "status": "PASS",
+      "humanContributionsPreserved": true
+    },
+    {
+      "name": "renvoi-unique",
+      "input": {
+        "pieces": [
+          {
+            "id": "P-01",
+            "ref": "B-01",
+            "sheet": "F-01"
+          }
+        ],
+        "requested": [
+          "B-01"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "expected": {
+        "proposals": [
+          {
+            "ref": "B-01",
+            "piece": "P-01",
+            "sheet": "F-01",
+            "status": "attend-validation"
+          }
+        ],
+        "exceptions": [],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "actual": {
+        "proposals": [
+          {
+            "ref": "B-01",
+            "piece": "P-01",
+            "sheet": "F-01",
+            "status": "attend-validation"
+          }
+        ],
+        "exceptions": [],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "status": "PASS",
+      "humanContributionsPreserved": true
+    },
+    {
+      "name": "dossier-verrouille",
+      "input": {
+        "locked": true,
+        "pieces": [
+          {
+            "id": "P-01",
+            "ref": "B-01",
+            "sheet": "F-01"
+          }
+        ],
+        "requested": [
+          "B-01"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "expected": {
+        "proposals": [],
+        "exceptions": [
+          "dossier-verrouille"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "actual": {
+        "proposals": [],
+        "exceptions": [
+          "dossier-verrouille"
+        ],
+        "contributions": [
+          {
+            "sheet": "F-01",
+            "field": "commentaire",
+            "value": "À justifier",
+            "author": "auditeur-fictif-A",
+            "date": "2026-10-06"
+          }
+        ]
+      },
+      "status": "PASS",
+      "humanContributionsPreserved": true
+    }
+  ]
+}

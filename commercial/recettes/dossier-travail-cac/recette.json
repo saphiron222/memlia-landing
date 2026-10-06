@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "dossier-travail-cac",
+  "path": "/automatisation/dossier-travail-cac",
+  "title": "Automatiser l’assemblage du dossier d’audit : préserver les contributions",
+  "tabTitle": "Automatiser l’assemblage du dossier d’audit | Memlia",
+  "ogTitle": "Automatiser l’assemblage du dossier d’audit : préserver les contributions",
+  "description": "Confiez l’index et les renvois de votre dossier d’audit : pièces repérées, conflits soumis à validation, contributions conservées. Décrivez votre tâche.",
+  "hero": "Nous prenons en charge l’index et les renvois de votre dossier de travail dans les outils de votre cabinet. Chaque proposition relie une pièce identifiée à sa feuille source. Une référence absente, un doublon ou deux contributions incompatibles restent à examiner. Vos collaborateurs conservent leurs saisies, leurs conclusions et la revue des travaux. La règle s’écrit avant la construction et se teste sur un jeu fictif.",
+  "primaryQuery": "automatiser assemblage dossier audit",
+  "secondaryQueries": [],
+  "audience": {
+    "mode": "exception",
+    "qualifier": null,
+    "reason": "L’architecture CAC réserve cette formulation commerciale à l’assemblage maintenu du dossier d’audit. La réponse d’autocomplétion est vide, sans volume revendiqué ; le héros et le corps visent explicitement l’équipe de commissariat aux comptes, sans concurrencer les feuilles maîtresses gratuites ni le guide de référencement."
+  },
+  "intent": "evaluer-service",
+  "family": "cac-dossier-de-travail",
+  "verifiedAt": "2026-10-06",
+  "author": "marketing",
+  "cta": { "label": "Confier une première tâche", "destination": "/contact" },
+  "schema": {
+    "headline": "Automatiser l’assemblage du dossier d’audit : préserver les contributions",
+    "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
+  },
+  "proof": { "replayedAt": "2026-10-06", "evidencePath": "preuves/rejeu.json" },
+  "incomingLinks": [
+    { "url": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches", "sourcePath": "src/content/blog/automatiser-un-cabinet-cac-la-carte-des-taches.md", "anchor": "Automatiser l’assemblage du dossier d’audit" },
+    { "url": "/blog/cac-referencement-dossier", "sourcePath": "src/content/blog/cac-referencement-dossier.md", "anchor": "Automatiser l’assemblage du dossier d’audit" },
+    { "url": "/blog/cac-contributions-dossier-preservation", "sourcePath": "src/content/blog/cac-contributions-dossier-preservation.md", "anchor": "Automatiser l’assemblage du dossier d’audit" }
+  ]
+}
