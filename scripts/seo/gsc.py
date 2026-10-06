@@ -18,6 +18,8 @@ import os
 import re
 import sys
 
+from gsc_sitemaps import PROPRIETE, sitemap_status
+
 SKILL_SCRIPTS = os.path.expanduser('~/.claude/skills/seo/scripts')
 sys.path.insert(0, SKILL_SCRIPTS)
 
@@ -26,7 +28,6 @@ from googleapiclient.discovery import build  # noqa: E402
 from gsc_inspect import batch_inspect  # noqa: E402
 from gsc_query import query_search_analytics  # noqa: E402
 
-PROPRIETE = 'sc-domain:memlia.fr'
 SCOPE_LECTURE = ['https://www.googleapis.com/auth/webmasters.readonly']
 DATE_ISO = re.compile(r'^\d{4}-\d{2}-\d{2}$')
 DIMENSIONS_VALIDES = {'page', 'query', 'date', 'device', 'country', 'searchAppearance'}
@@ -42,20 +43,7 @@ def service_search_console():
 def sitemaps():
     service = service_search_console()
     reponse = service.sitemaps().list(siteUrl=PROPRIETE).execute()
-    lignes = []
-    for sm in reponse.get('sitemap', []):
-        contenus = sm.get('contents', [])
-        lignes.append({
-            'path': sm.get('path'),
-            'last_submitted': sm.get('lastSubmitted'),
-            'last_downloaded': sm.get('lastDownloaded'),
-            'is_pending': bool(sm.get('isPending', False)),
-            'is_index': bool(sm.get('isSitemapsIndex', False)),
-            'errors': int(sm.get('errors', 0) or 0),
-            'warnings': int(sm.get('warnings', 0) or 0),
-            'submitted': sum(int(c.get('submitted', 0) or 0) for c in contenus),
-            'indexed_declared': sum(int(c.get('indexed', 0) or 0) for c in contenus),
-        })
+    lignes = [sitemap_status(sm) for sm in reponse.get('sitemap', [])]
     return {'propriete': PROPRIETE, 'sitemaps': lignes}
 
 
