@@ -21,7 +21,7 @@ import { METHODE } from '@/data/methode';
           <h3 class="etape-h3">{e.titre}</h3>
           <p class="texte-2">{e.texte}</p>
           </div>
-          <ProofMedia id={e.image as ProofId} />
+          <ProofMedia id={e.image as ProofId} enlarge />
           </div>
         </li>
       ))}
@@ -113,7 +113,7 @@ import { METHODE } from '@/data/methode';
     .method-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
     .step-copy { padding: 32px 48px 32px 0; }
     .etape:nth-child(odd) .step-copy { grid-column: 2; grid-row: 1; padding: 32px 0 32px 48px; }
-    .etape:nth-child(odd) :global(.functional-proof) { grid-column: 1; grid-row: 1; }
+    .etape:nth-child(odd) :global(.proof-media) { grid-column: 1; grid-row: 1; }
   }
   @media (min-width: 64rem) {
     .etape { max-width: 100%; }

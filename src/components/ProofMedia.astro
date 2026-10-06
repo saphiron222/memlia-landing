@@ -1,15 +1,20 @@
 ---
 import { PROOFS, type ProofId } from '@/data/proofs';
-interface Props { id: ProofId; priority?: boolean; }
-const { id, priority = false } = Astro.props;
+import ProofDetail from '@/components/ProofDetail.astro';
+interface Props { id: ProofId; priority?: boolean; enlarge?: boolean; }
+const { id, priority = false, enlarge = false } = Astro.props;
 const proof = PROOFS[id];
 if (!proof) throw new Error(`Preuve inconnue : ${id}`);
 const source = `/proofs/${id}.webp`;
 ---
-<figure class="functional-proof" data-proof={id}>
-  <img src={source} alt={proof.alt} width="1600" height="900" loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : undefined} decoding="async" />
-</figure>
+<div class="proof-media">
+  <figure class="functional-proof" data-proof={id}>
+    <img src={source} alt={proof.alt} width="1600" height="900" loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : undefined} decoding="async" />
+  </figure>
+  {enlarge && <ProofDetail id={id} />}
+</div>
 <style>
+  .proof-media { min-width: 0; }
   .functional-proof { margin: 0; min-width: 0; background: var(--surface-page); overflow: hidden; }
   img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
 </style>

@@ -1,5 +1,5 @@
 ---
-import ProofMedia from '@/components/ProofMedia.astro';
+
 import { PROOFS, type ProofId } from '@/data/proofs';
 
 interface Props {
@@ -12,11 +12,7 @@ const media = PROOFS[proof];
 
 <section class="service-body" data-service-section="body" data-service-sections aria-label="Périmètre de la mission">
   <div class="service-body-grid conteneur">
-    <aside class="service-body-proof rv" data-service-media aria-labelledby="service-proof-title">
-      <div class="service-body-frame coins">
-        <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-        <ProofMedia id={proof} />
-      </div>
+    <aside class="service-body-proof rv" aria-labelledby="service-proof-title">
       <div class="service-body-proof-copy">
         <span class="eyebrow">preuve fonctionnelle fictive</span>
         <h2 id="service-proof-title">{media.title}</h2>
@@ -46,18 +42,7 @@ const media = PROOFS[proof];
     gap: 24px;
     min-width: 0;
   }
-  .service-body-frame {
-    padding: 12px;
-    border: 1px solid var(--ligne);
-    border-radius: var(--r-cadre);
-    background: var(--surface-page);
-    box-shadow: var(--ombre-xs);
-  }
-  .service-body-frame :global(figure) {
-    overflow: hidden;
-    border: 1px solid var(--ligne-douce);
-    border-radius: var(--r-ecran);
-  }
+
   .service-body-proof-copy {
     display: grid;
     gap: 12px;
