@@ -1,234 +1,94 @@
 {
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "bodySha256": "7fbcfeccb739200625ea03f0edc7ad1549c9a230e3a87eaae75862d8794c07d4",
-    "recipeSha256": "cce7b5a5f5eace339063e1bb4a933ca7a4166ee8b392645120fc9393201a2eb0",
-    "renderedSha256": "c7ad3437c1438a95389dab6393700c16d74f4baf9c1f37d88ca436f85c749b11"
+    "bodySha256": "3846993327d57db4b6c8f0b939b91206f1f3aff160167390cf3d47d8db241c9a",
+    "recipeSha256": "9c7cbfbefa53bcd5945af16cdd80c02b31337f2b078b095567644b23d71d535f",
+    "recipeSubstanceSha256": "246a4cf9fcc1249a4f84851d6799f0f99bfe20dc6e2dac199752d0886adc6f09",
+    "renderedSha256": "fab7b59b9aff581fc2cb149c623f247bab2988d8f245f1656ab2df8321ce201e"
   },
   "editorial": {
-    "reviewer": "qa:t_c9dd7b40",
+    "reviewer": "qa:doctrine-b2-independent",
     "p0": [],
     "criteria": {
-      "intent-satisfaction": {
-        "result": "PASS",
-        "observations": [
-          "Réponse directe et deux angles morts séparés du test rouge, règle applicable corps.md:5/13/17/23/59."
-        ]
-      },
-      "serp-format-rankability": {
-        "result": "PASS",
-        "observations": [
-          "H1/onglet/description et format narratif cohérents ; aucun rang, volume ou réussite SEO revendiqués."
-        ]
-      },
-      "eeat-sources": {
-        "result": "PASS",
-        "observations": [
-          "RAW exact et attribution autorisée ; copies/extraits primaires conformes, âges4/4/5jours et portée méthode seulement ; métier frais lu."
-        ]
-      },
-      "information-gain-proof": {
-        "result": "PASS",
-        "observations": [
-          "Trois cas fictifs réellement exécutés, contre-oracle et mutant rouge ; illustrations distinctes du produit historique."
-        ]
-      },
-      "technical-onpage-seo": {
-        "result": "PASS",
-        "observations": [
-          "Un H1/langfr/canonical/OG/schema conformes, huit clics avec destination exacte et HTTP200, ancres présentes, aucun débordement320/375/768/1440."
-        ]
-      },
-      "ai-citability": {
-        "result": "PASS",
-        "observations": [
-          "Frontière/tableaux/cas extractibles et visibles, quinze paragraphes personnels préservés ; aucun score citation inventé."
-        ]
-      },
-      "contextual-conversion": {
-        "result": "PASS",
-        "observations": [
-          "Pilier réciproque et méthode/contact servis ; Confier cette tâche atteint contact au clavier, décision gardée au cabinet."
-        ]
-      }
+      "intent-satisfaction": {"result": "PASS", "observations": ["Pilier : réponse directe, définitions, carte par pôle et frontières maintenues. Le nouveau repère CAC nomme trois préparations concrètes et réserve sélection des travaux, appréciation et opinion au commissaire aux comptes (corps.md:36,158)."]},
+      "serp-format-rankability": {"result": "PASS", "observations": ["Intention comprendre et format pillar-page conservés ; titre/onglet/description cohérents. Le candidat B2 ne change pas la stratégie de requête et n'ajoute aucun résultat SEO revendiqué. Aucune nouvelle recherche SERP effectuée ni position validée."]},
+      "eeat-sources": {"result": "PASS", "observations": ["Les six affirmations officielles inchangées ont été relues contre les copies locales du 29/09/2026 et leurs SHA-256. Le périmètre CAC ajouté est une offre de préparation, pas une affirmation de conformité NEP ou une délégation d'opinion."]},
+      "information-gain-proof": {"result": "PASS", "observations": ["Le tableau distingue le repère transversal EC des familles CAC ; inventaire fictif mis à jour, règle de relance fictive maintenue. Les illustrations ne prouvent ni un outil livré ni une performance mesurée."]},
+      "technical-onpage-seo": {"result": "PASS", "observations": ["HTML candidat ouvert dans le navigateur puis servi localement en HTTP 200 : un H1, canonical exact, dates publication 16/09 et mise à jour 06/10, BlogPosting cohérent. Preview noindex, follow normale ; aucun lien ajouté vers une route CAC inexistante ; ancres internes présentes. Pas de débordement à la largeur observée de 1280 px. Pas de validation mobile, CI ou production dans cette revue."]},
+      "ai-citability": {"result": "PASS", "observations": ["Définitions et tableaux lisibles dans le DOM. La restriction CAC est explicite dans le tableau et le paragraphe de limitation ; les huit familles CAC actives ne sont pas ajoutées au compte EC."]},
+      "contextual-conversion": {"result": "PASS", "observations": ["Appel du pilier Confier une première tâche vers /contact conservé ; clôture méthode/service/garanties et décision humaine maintenues. La page service et llms.txt décrivent les mêmes demandes, réponses et comparaisons, sans promesse d'audit autonome."]}
     }
   },
   "business": {
-    "reviewerTaskId": "t_1a9ed93d",
+    "reviewerTaskId": "relecteur-metier-ia:doctrine-b2-independent",
     "claims": {
-      "claim-unit-1dc9c56e18bd-1": {
-        "verdict": "soutient",
-        "reasoning": "CNIL cnil-roles, copie vérifiée 29/09 : qualification des acteurs au cas par cas ; le corps ne fixe pas le rôle du cabinet à partir de l'origine du fichier."
-      },
-      "claim-unit-279d5bd8bf20-1": {
-        "verdict": "soutient",
-        "reasoning": "Service-Public F10029, copie vérifiée 29/09 : conservation minimale des documents d'entreprise, durée selon la nature ; aucune durée universelle n'est attribuée."
-      },
-      "claim-unit-e8439da9f147-1": {
-        "verdict": "soutient",
-        "reasoning": "Net-entreprises, copie vérifiée 29/09 : le CRM est un retour après déclaration en cas d'erreur ou suspicion ; la décision de correction reste au cabinet."
-      },
-      "claim-unit-ceb5c8df6333-1": {
-        "verdict": "soutient",
-        "reasoning": "Calendrier DGFiP vérifié 29/09 : fenêtre 15–24 septembre 2026 pour dépôt/paiement de la déclaration mensuelle de TVA, date propre à l'espace professionnel ; le texte maintient cette restriction."
-      },
-      "claim-unit-2614d7101a11-1": {
-        "verdict": "soutient",
-        "reasoning": "Article 5 RGPD reproduit par CNIL, copie vérifiée 29/09 : minimisation des données au regard de la finalité ; le corps ne présente pas ce principe comme seule obligation."
-      },
-      "claim-unit-2614d7101a11-2": {
-        "verdict": "soutient",
-        "reasoning": "CNIL cnil-durees, copie vérifiée 29/09 : analyse de conformité par traitement et par responsable ; la purge évoquée est une méthode à cadrer, non une dispense de conservation documentaire."
-      }
+      "claim-unit-1dc9c56e18bd-1": {"verdict": "soutient", "reasoning": "CNIL cnil-roles.source.txt:732-734 : qualification au cas par cas selon les faits, non choix contractuel. corps.md:118 conserve cette portée et ne déduit pas le rôle du fichier client. Copie et SHA-256 contrôlés."},
+      "claim-unit-279d5bd8bf20-1": {"verdict": "soutient", "reasoning": "Service-Public sp-conservation.source.txt:307 : conservation minimale, délai variable selon nature et obligations. corps.md:48 ne fixe aucune durée universelle. Copie et SHA-256 contrôlés."},
+      "claim-unit-e8439da9f147-1": {"verdict": "soutient", "reasoning": "Net-entreprises net-crm.source.txt:156 : définition du retour CRM après réception de déclaration en cas d'erreur ou suspicion. corps.md:71 conserve la décision de correction au responsable. Copie et SHA-256 contrôlés."},
+      "claim-unit-ceb5c8df6333-1": {"verdict": "soutient", "reasoning": "DGFiP impots-calendrier.source.txt:642 : TVA mensuelle de septembre 2026, entre les 15 et 24, date dans l'espace professionnel. corps.md:80 borne explicitement le mois et la date propre à l'entreprise, sans généralisation à octobre. Copie et SHA-256 contrôlés."},
+      "claim-unit-2614d7101a11-1": {"verdict": "soutient", "reasoning": "CNIL cnil-principes.source.txt:528-533, article 5 : données adéquates, pertinentes, limitées à la finalité. corps.md:120 indique parmi d'autres obligations RGPD. Copie et SHA-256 contrôlés."},
+      "claim-unit-2614d7101a11-2": {"verdict": "soutient", "reasoning": "CNIL cnil-durees.source.txt:774-776 : durée issue de l'analyse de conformité du responsable pour son traitement. corps.md:120 ne dispense pas des obligations de conservation documentaire rappelées ligne 48. Copie et SHA-256 contrôlés."}
     }
   },
   "image": {
-    "reviewer": "claude:revue-figures-20261003",
+    "reviewer": "qa:doctrine-b2-independent",
     "criteria": {
-      "brief-six-components": {
-        "result": "PASS",
-        "observations": [
-          "Couverture inchangée, relue : diorama 3D d’îlots verts et graphite reliés par des chemins, jeton vert devant une bifurcation, sans texte, conforme à son alt.",
-          "Les deux figures suivent le gabarit des références : une fenêtre sur fond quadrillé, en-tête à pastille et « Jeu d’essai fictif · … », écran d’outil, palette vert/orange/gris ; sujet, composition, interdits et alt sont contrôlables."
-        ]
-      },
-      "generation-constraints": {
-        "result": "PASS",
-        "observations": [
-          "Cadre, fond et bandeau d’en-tête identiques au pixel près à la référence social-dictionnaire hors zone de contenu ; textes nets, aucun libellé tronqué, aucun logo, aucune personne.",
-          "Aucun chiffre de résultat : 60 et 2 sont des comptes de l’inventaire fictif et la mesure de la fiche reste « à relever » ; la couverture ne porte ni texte ni chiffre."
-        ]
-      },
-      "fictive-provenance": {
-        "result": "PASS",
-        "observations": [
-          "Les deux en-têtes affichent « Jeu d’essai fictif » (cabinet de démonstration, règle R-01) ; dossiers D-004, D-007 et D-009 inventés, aucun client ni collaborateur nommé.",
-          "Recette et contrat interne déclarent les sources (taxonomie src/data/familles.ts, règle décrite dans l’article) et capturedAt 2026-10-03, sans légende publique."
-        ]
-      },
-      "recognizable-subject": {
-        "result": "PASS",
-        "observations": [
-          "L’inventaire reprend la carte du corps (12 pôles, 60 familles, audit légal listé non ouvert) et la fiche montre une règle de relance avec ses cas courant, limite et refus, comme la section méthode."
-        ]
-      },
-      "technical-derivatives": {
-        "result": "PASS",
-        "observations": [
-          "Les deux WebP servis font 1600 × 900, une seule image pour bureau et téléphone, et correspondent aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile n’est référencé par la page.",
-          "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents ; captures 1280 et 390 px sans débordement."
-        ]
-      },
-      "alt-information": {
-        "result": "PASS",
-        "observations": [
-          "Alts de 103 et 114 caractères, identiques dans la source, le HTML construit et la recette, décrivant l’inventaire de six familles et la fiche de règle visibles.",
-          "L’alt de couverture correspond à l’image : îlots en diorama, chemins, jeton vert devant une bifurcation."
-        ]
-      }
+      "brief-six-components": {"result": "PASS", "observations": ["Brief de couverture dans recette.json relu et couverture 1600 visuellement inspectée : îlots reliés en diorama, jeton et bifurcation, palette vert/crème/graphite, sans texte. Inventaire au gabarit RECETTE ; fiche de relance également inspectée."]},
+      "generation-constraints": {"result": "PASS", "observations": ["Fenêtre d'inventaire, fond quadrillé, données et badges nets, aucun logo, personne, slogan ou étapes commentées. Les compteurs 60 et 2 décrivent l'inventaire fictif, pas un gain. Couverture sans texte ni donnée réelle."]},
+      "fictive-provenance": {"result": "PASS", "observations": ["En-tête Jeu d'essai fictif · cabinet de démonstration ; fiche Jeu d'essai fictif · règle R-01 et dossiers D-004/D-007/D-009. Pas de témoignage ou de résultat réel induit."]},
+      "recognizable-subject": {"result": "PASS", "observations": ["Inventaire : Carte EC · 12 pôles, Repères EC 60, demandes de documents par mission, règle À cadrer et statut Carte CAC. Le renvoi distinct n'est plus Non ouvert et n'ajoute pas huit familles aux repères EC. La fiche montre la proposition et l'envoi par le collaborateur."]},
+      "technical-derivatives": {"result": "PASS", "observations": ["sips : inventaire et fiche 1600 × 900 ; inventaire 43014 octets. Couverture WebP 768×432, 1200×675, 1600×900 et OG 1200×630 présentes. HTML : attributs 1600×900, sources uniques sans -mobile. Inventaire réellement chargé en 1600×900 via HTTP local et confiné à la colonne à 1280 px ; téléphone non rejoué."]},
+      "alt-information": {"result": "PASS", "observations": ["Alt de l'inventaire décrit six familles, fréquence, règle et statut ; correspond au visuel et au HTML. Alt fiche fidèle à la règle fictive ; alt couverture fidèle aux îlots, chemins, jeton et bifurcation. Aucune légende technique publique ajoutée."]}
     },
     "directionArt": 18,
     "semanticRelevance": 22,
-    "scoreProvenance": "Notes conservées : couverture inchangée, nouvelles figures conformes au gabarit des références ; aucune nouvelle mesure."
+    "scoreProvenance": "Appréciations qualitatives du relecteur B2 sur les images effectivement inspectées ; pas des mesures de performance ou de production."
   },
   "sources": {
-    "reviewedBy": "metier:t_1a9ed93d",
+    "reviewedBy": "relecteur-metier-ia:doctrine-b2-independent",
     "observations": {
-      "cnil-roles": "Extrait et SHA 0aa8bb40... vérifiés dans la copie datée 29/09, rôle à qualifier selon le traitement.",
-      "sp-conservation": "Extrait et SHA fffbe0ab... vérifiés, durée variable selon le document.",
-      "cnil-principes": "Extrait et SHA 1c73164b... vérifiés, article 5 et minimisation.",
-      "cnil-durees": "Extrait et SHA 392f8e18... vérifiés, durée décidée par analyse de conformité.",
-      "impots-calendrier": "Extrait et SHA 15c908d3... vérifiés, mensuelle septembre 2026, date espace professionnel.",
-      "net-crm": "Extrait et SHA 9a6b8de3... vérifiés, définition CRM."
+      "cnil-roles": "Copie du 29/09, passage 732-734, SHA-256 0aa8bb40f50528952782ebbf7cd9515e5e2a33b17bc2b4a0c862b75bec98ce11 conforme au metadata.",
+      "sp-conservation": "Copie du 29/09, passage 307, SHA-256 fffbe0ab21c00944167fe668fe08deca5ef83ceac9dc697d7f61d67cedd332b1 conforme au metadata.",
+      "cnil-principes": "Copie du 29/09, passage 528-533, SHA-256 1c73164bc14a3174abe3737f4551cdab68ee530893619a286ad9f60bf8259c7b conforme au metadata.",
+      "cnil-durees": "Copie du 29/09, passage 774-776, SHA-256 392f8e1800d89961a4286ff0542eb2fc8e5b046bfcd250118ad78e2b0c2dde74 conforme au metadata.",
+      "impots-calendrier": "Copie du 29/09, passage 642, SHA-256 15c908d3ce9a54af55fd1c9cdc96d0d1b477eb2e4f1968471322a3a189c4bc7b conforme au metadata.",
+      "net-crm": "Copie du 29/09, passage 156, SHA-256 9a6b8de31b36259329bdf8c110680cee10c1127166e1c47c22801f09ebbb653f conforme au metadata."
     }
   },
   "qualite": {
-    "reviewer": "metier:t_303e7c6d",
+    "reviewer": "qa:doctrine-b2-independent",
     "score": 91,
     "p0": [],
     "categories": {
-      "contentQuality": {
-        "score": 27,
-        "max": 30
-      },
-      "seoOptimization": {
-        "score": 22,
-        "max": 25
-      },
-      "eeatSignals": {
-        "score": 14,
-        "max": 15
-      },
-      "technicalElements": {
-        "score": 14,
-        "max": 15
-      },
-      "aiCitationReadiness": {
-        "score": 14,
-        "max": 15
-      }
+      "contentQuality": {"score": 27, "max": 30},
+      "seoOptimization": {"score": 22, "max": 25},
+      "eeatSignals": {"score": 14, "max": 15},
+      "technicalElements": {"score": 14, "max": 15},
+      "aiCitationReadiness": {"score": 14, "max": 15}
     },
     "evidence": [
-      "27/30 : inventaire fictif de la carte (12 pôles, 60 familles) et fiche fictive de la règle de relance lisibles, sans chiffre de gain ni promesse sur l’audit légal, affiché « Listé, non ouvert ».",
-      "22/25 : intention pilier et liens contextuels maintenus ; pas de résultat SERP mesuré.",
-      "14/15 : six claims vérifiés sur copies datées du 29/09 dans la revue antérieure ; corps et recette inchangés.",
-      "14/15 : deux images 1600 × 900 directes, sans légende ni défilement, qui tiennent dans la colonne dans les captures à 1280 et 390 px et restent lisibles dans leurs grandes masses sur téléphone ; pas de Lighthouse ni de test de production.",
-      "14/15 : définitions et tableau récupérables avec la restriction audit légal."
+      "27/30 : carte et frontières concrètes ; ouverture CAC strictement mécanique et opinion réservée. Le compte historique EC inclut un repère transversal explicite, non huit tâches CAC.",
+      "22/25 : métadonnées et intention du pilier maintenues ; aucune nouvelle étude SERP, position ou performance revendiquée.",
+      "14/15 : six affirmations relues contre les copies officielles et empreintes du paquet ; pas de conformité CAC/NEP inventée.",
+      "14/15 : rendu HTML réellement consulté, inventaire chargé et inspecté à 1280 px, formats et ancres vérifiés ; pas de QA mobile ou CI exacte dans ce mandat.",
+      "14/15 : définitions, tableaux et limite de l'opinion extractibles ; llms.txt maintient la même frontière."
     ],
     "reservations": [
-      "Revue IA sur rendu local et sources archivées contrôlées le 29/09 ; pas de nouvelle requête HTTP ni de garantie d'applicabilité à un cabinet précis.",
-      "Le nouveau rendu n'est ni scellé ni validé par la QA/CI de livraison ; indexabilité en production non prouvée."
+      "Revue IA indépendante unique ; posture lecteur métier distincte de l'auteur Kevin, sans se présenter comme un CAC humain ou une seconde personne réelle.",
+      "Copies officielles contrôlées le 29/09, relues localement pour B2 ; aucune nouvelle consultation HTTP des administrations.",
+      "PASS de revue de candidat uniquement : ni scellement, ni approbation de CI, ni publication, ni contrôle de production.",
+      "Charte réellement présente v4 : clause historique audit non ouvert dépassée par le mandat B2 ; mise à jour constitutionnelle B1 hors de cette revue."
     ],
-    "seo": [
-      "Titre, H1 et canonical conservés dans l'HTML reconstruit ; robots index, follow pour le pilier existant."
-    ],
-    "geo": [
-      "Carte illustrative ; aucune statistique de gains ni faculté d'audit légal induite."
-    ],
-    "verdict": "AI_REVIEW_PASS sur les deux nouvelles figures 1600 × 900 et leur rendu local relu à 1280 et 390 px ; ni scellement, ni livraison."
-  },
-  "technicalBindingMaintenance": {
-    "maintainedBy": "claude:recette-images-20261003",
-    "maintainedAt": "2026-10-03",
-    "reason": "Figures de corps remplacées selon la recette de référence (décision Kevin du 03/10/2026) : deux écrans d’outil fictifs 1600 × 900, mêmes ancrages, nouveaux identifiants et alts dans la recette. Corps, sources, affirmations et règles inchangés (bodySha256 identique) ; les constats éditoriaux, métier et qualité sur le texte sont maintenus ; les critères image et les constats qui décrivaient les anciennes figures sont reformulés par la revue indépendante des nouvelles figures.",
-    "figureReview": {
-      "reviewer": "claude:revue-figures-20261003",
-      "reviewedAt": "2026-10-03",
-      "figures": [
-        {
-          "id": "carte-inventaire-taches",
-          "result": "PASS",
-          "constat": "Passe pour une 9e référence : une fenêtre au cadre et au fond identiques aux références, en-tête « Inventaire des tâches » à pastille verte et « Jeu d’essai fictif · cabinet de démonstration », écran d’inventaire (pôle, famille, fréquence, règle écrite, statut) avec pastilles Candidate / À observer / Règle à écrire / Non ouvert et trois compteurs ; un seul titre, ni slogan, ni étapes, ni avertissement. Données cohérentes avec le tableau et la FAQ : 12 pôles, 60 familles (somme du tableau), audit légal « Listé, non ouvert », et les deux candidates (relance des pièces, contrôle des bulletins avant DSN) ont une règle écrite. Aucune marque, personne ni chiffre de gain. Alt corrigé fidèle (103 caractères, « statut de six familles »), identique dans la source, le HTML construit, la recette et le contrat interne. Tient dans la colonne à 1280 et 390 px, grandes masses lisibles sur téléphone."
-        },
-        {
-          "id": "carte-fiche-regle-relance",
-          "result": "PASS",
-          "constat": "Fiche règle au gabarit des références (pastille verte, « Jeu d’essai fictif · règle R-01 », un titre, pastille « Brouillon de règle ») : déclencheur, condition, action, exception, validation humaine (le collaborateur relit puis envoie) et mesure avant/après « à relever », avec un panneau de jeu d’essai cas courant / cas limite / cas de refus et « Recette réelle : Non commencée ». Illustre la méthode de la section (jeu fictif courant, limite et refus ; validation là où l’action engage ; mesure sans chiffre) sans la recopier en phrases, et reste cohérente avec « aucun chiffre de gain » de la section suivante. Dossiers D-004, D-007, D-009 fictifs, aucune personne ni marque. Alt fidèle (114 caractères). Tient dans la colonne à 1280 et 390 px."
-        }
-      ]
-    },
-    "previousSubject": {
-      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "bodySha256": "7fbcfeccb739200625ea03f0edc7ad1549c9a230e3a87eaae75862d8794c07d4",
-      "recipeSha256": "d76da253720c619935e491e3f826abdd39dab0013c74ff6fa3a2793c58932098",
-      "renderedSha256": "6da420aa2b4fa93b2cac421b7222cdf9b09da5788f5ab565cca7e304b8e0fee7"
-    },
-    "previousMaintenance": {
-      "maintainedBy": "dev:t_30243835",
-      "maintainedAt": "2026-10-03",
-      "reason": "updatedAt de republication uniquement ; avis métier du 03/10 maintenu sur corps, sources, figures et règles inchangés. Ni nouvelle revue ni contrôle public.",
-      "previousSubject": {
-        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-        "bodySha256": "bd49741fe651f83304118b07268f93430ec3cf7e3c9dfd0a42cb38369e49bc71",
-        "recipeSha256": "e74a3b06cebd86a0c68e8ca806fec4bd6dde53b261b1725c637687dde68a3573",
-        "renderedSha256": "997069bac6660fe1f00287100933648f3795bff8f2550e00fa04455bd20d2652"
-      }
-    }
+    "seo": ["Preview noindex, follow ; publication initiale conservée et republication datée du 06/10. Canonical et headline cohérents ; aucune nouvelle route CAC liée."],
+    "geo": ["La préparation de documents et de comparaisons ne vaut ni sélection des travaux, ni appréciation probante, ni opinion, ni conformité NEP garantie."],
+    "verdict": "PASS du candidat doctrinal B2 et de sa figure d'inventaire ; grille complète réévaluée, limites explicites, aucune publication autorisée par ce fichier."
   },
   "provenance": {
-    "qaTask": "t_c9dd7b40",
-    "businessClaimsRetainedFrom": "t_1a9ed93d",
-    "newLinkReviewedBy": "metier:t_3a224b17 (C12)",
-    "scope": "QA du lot et lien Cicatrice ; six verdicts métier historiques conservés sans nouvel avis."
+    "reviewedAt": "2026-10-06",
+    "reviewer": "qa:doctrine-b2-independent",
+    "businessReader": "relecteur-metier-ia:doctrine-b2-independent",
+    "scope": "Une seule revue indépendante B2 ; diff doctrinal, recette/corps/paquet, HTML local, six copies officielles, trois visuels et référence social-dictionnaire inspectés. Anciens constats étrangers au pilier remplacés, pas de PASS recopié sur des tests non exécutés.",
+    "fingerprintCommand": "node scripts/blog-forge.mjs empreinte automatiser-un-cabinet-comptable-la-carte-des-taches .qa/doctrine-render/blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html",
+    "report": "docs/qa/doctrine-cac/REVUE.md"
   }
 }
