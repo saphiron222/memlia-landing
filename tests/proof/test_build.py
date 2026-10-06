@@ -349,6 +349,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec',
                      f'{SITE}/outils-comptables-gratuits/calculateur-roi-automatisation',
+                     f'{SITE}/outils-comptables-gratuits/bareme-heures-cac',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
@@ -486,6 +487,7 @@ class BuildProof(unittest.TestCase):
             '30-outil-maturite.webp', '29-outil-pseudonymisation.webp', '30-outil-roi.webp',
             '31-outil-bibliotheque.webp',
             '40-outil-circularisation.webp', '41-outil-signification.webp',
+            '43-outil-bareme-cac.webp',
         }
         self.assertTrue(historiques <= og_sources, 'images sociales historiques perdues')
         self.assertEqual({p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')}, og_sources)
