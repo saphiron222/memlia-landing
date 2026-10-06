@@ -19,8 +19,10 @@ test('une troisième rubrique fictive rejoint le contrat sans retoucher ses test
 test('les compteurs des pages non scellées viennent de la taxonomie', () => {
   for (const path of ['src/components/sections/Usages.astro', 'src/pages/methode.astro', 'src/pages/automatisation-cabinet-comptable.astro']) {
     const source = read(path);
-    assert.match(source, /FAMILLES/);
-    assert.match(source, /POLES/);
+    assert.match(source, /famillesDeLaProfession\('ec'\)/);
+    assert.match(source, /new Set\(familles\.map\(\(\{ pole \}\) => pole\)\)\.size/);
+    assert.match(source, /\$?\{familles\.length\}/);
+    assert.match(source, /\$?\{nombrePoles\}/);
     assert.doesNotMatch(source, /soixante familles|douze pôles/);
   }
 });

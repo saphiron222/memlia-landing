@@ -3,6 +3,8 @@
   "measuredAt": "2026-09-20",
   "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
   "pages": {
+    "/outils-comptables-gratuits/seuil-signification-audit": { "query": "seuil de signification audit calcul", "descriptionLead": "Calculez les seuils de signification", "measuredAt": "2026-10-06", "source": "Fiche F2 CAC et C2, deux suggestions ; outil de calcul sur paramètres distinct du futur article de justification et des seuils de nomination. Aucun volume revendiqué." },
+    "/outils-comptables-gratuits/suivi-circularisation": { "query": "modèle suivi circularisation excel", "descriptionLead": "Préparez vos lettres de confirmation", "measuredAt": "2026-10-06", "source": "Fiche F2 CAC : autocomplétion valide sans suggestion, aucune promesse de trafic ; suivi et reprise distincts du service." },
     "/outils-comptables-gratuits/generateur-prompt-ia-gratuit": { "query": "générateur prompt ia gratuit", "descriptionLead": "Préparez un prompt texte", "source": "Brief 06 vague 3 ; intention professionnelle générique distincte du générateur cabinet et du blog, aucun volume revendiqué" },
 
     "/outils-comptables-gratuits/bibliotheque-prompts-comptables": { "query": "bibliothèque prompts comptables", "descriptionLead": "Choisissez un modèle de prompt comptable", "measuredAt": "2026-10-05", "source": "Brief 02 vague 3 ; sélection de modèles distincte du générateur et du guide. Sonde dans docs/qa/bibliotheque-prompts/demande-autocomplete.json ; aucun volume revendiqué." },
@@ -23,7 +25,7 @@
 
     "/": { "query": "automatisation IA cabinet comptable", "descriptionLead": "Votre cabinet" },
     "/a-propos": { "query": "marque / preuve d’identité", "descriptionLead": "À propos de Memlia" },
-    "/automatisation-cabinet-comptable": { "query": "automatisation cabinet comptable", "descriptionLead": "Toute tâche répétitive" },
+    "/automatisation-cabinet-comptable": { "query": "automatisation tâches répétitives cabinet comptable", "descriptionLead": "Toute tâche répétitive" },
     "/automatisation/factures-fournisseurs": { "query": "factures fournisseurs des dossiers clients", "descriptionLead": "Factures fournisseurs des dossiers clients" },
     "/automatisation/notes-de-frais": { "query": "notes de frais des clients en cabinet", "descriptionLead": "Notes de frais des clients en cabinet" },
     "/automatisation/paie": { "query": "automatisation paie pôle social", "descriptionLead": "Automatisation paie pôle social" },

@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { integrationInventory, assertIntegrationCoverage, assertScope } from './integration-inventory.mjs';
 
 const source = readFileSync('src/data/integrations.ts', 'utf8');
-const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
+const compiled = ts.transpileModule(source.replace("import generatedGuides from './guides.generated.json';", `const generatedGuides = ${readFileSync('src/data/guides.generated.json', 'utf8')};`), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
 const { INTEGRATIONS, INTEGRATION_CANDIDATES } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
 const extra = { ...structuredClone(INTEGRATIONS[0]), slug: 'guide-fictif-nouveau', vendor: 'Éditeur fictif', task: 'geste fictif', primaryQuery: 'geste fictif nouveau', source: { ...INTEGRATIONS[0].source, checkedAt: '2026-11-12' } };
 const candidate = { task: extra.task, vendor: extra.vendor, suggestions: extra.suggestions, status: 'forte' };

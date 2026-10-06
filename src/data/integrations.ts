@@ -1,8 +1,10 @@
+import generatedGuides from './guides.generated.json';
+
 export const INTEGRATIONS_HUB_PATH = '/integrations' as const;
 
 export type IntegrationStatus = 'forte' | 'moyenne' | 'refusee';
 export type IntegrationVendor = string;
-export type ServicePath =
+export type ServicePath = `/automatisation/${string}`
   | '/automatisation-cabinet-comptable'
   | '/automatisation/paie'
   | '/automatisation/rapprochement-bancaire'
@@ -99,7 +101,7 @@ export interface IntegrationDefinition {
   tool?: { href: string; label: string };
 }
 
-export const INTEGRATIONS: readonly IntegrationDefinition[] = [
+export const INTEGRATIONS_HISTORIQUES: readonly IntegrationDefinition[] = [
   {
     slug: 'rapprochement-bancaire-sage',
     task: 'rapprochement bancaire',
@@ -516,6 +518,11 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
     },
   },
 ] as const;
+
+export const INTEGRATIONS: readonly IntegrationDefinition[] = [
+  ...INTEGRATIONS_HISTORIQUES,
+  ...(generatedGuides as IntegrationDefinition[]),
+];
 
 export const INTEGRATIONS_INDEXABLES = INTEGRATIONS;
 

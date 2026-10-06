@@ -9,7 +9,7 @@ const root = process.cwd();
 const source = readFileSync(join(root, 'src/data/integrations.ts'), 'utf8');
 const dist = join(root, 'dist');
 
-const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
+const compiled = ts.transpileModule(source.replace("import generatedGuides from './guides.generated.json';", `const generatedGuides = ${readFileSync(join(root, 'src/data/guides.generated.json'), 'utf8')};`), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
 const { INTEGRATIONS, INTEGRATION_CANDIDATES: candidates } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
 const { slugs, primaryQueries, mappings } = integrationInventory(INTEGRATIONS, candidates);
 

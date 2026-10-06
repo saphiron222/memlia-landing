@@ -7,7 +7,9 @@ import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { serviceNode, SERVICE_ID } from '@/data/schema.mjs';
-import { FAMILLES, POLES } from '@/data/familles';
+import { famillesDeLaProfession } from '@/data/familles';
+const familles = famillesDeLaProfession('ec');
+const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
 
 const page = PAGES_V2.service;
 const url = `${SITE.url}${page.chemin}`;
@@ -26,7 +28,7 @@ const requis: { picto: NomPicto; titre: string; texte: string }[] = [
 ];
 const renvois = [
   { texte: 'Choisir une prochaine action à partir des pratiques déclarées, sans classement des équipes.', libelle: 'Situer les pratiques IA du cabinet', href: '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet' },
-  { texte: `La carte des tâches automatisables d’un cabinet : ${Object.keys(POLES).length} pôles, ${FAMILLES.length} familles, une frontière par tâche.`, libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
+  { texte: `La carte des tâches automatisables d’un cabinet : ${nombrePoles} pôles, ${familles.length} familles pour l’expertise comptable, une frontière par tâche.`, libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
   { texte: 'Contrôler les bulletins de paie avant la DSN : une liste de contrôles à rejouer chaque mois.', libelle: 'Lire les contrôles avant la DSN', href: '/blog/controler-les-bulletins-de-paie-avant-la-dsn' },
   { texte: 'Suivre la production sociale dans Excel sans surveiller les personnes.', libelle: 'Lire le suivi de production sociale', href: '/blog/suivre-la-production-sociale-dans-excel' },
   { texte: 'Après une saisie automatisée, six contrôles restent à faire : lesquels, et pourquoi.', libelle: 'Lire les contrôles après la saisie', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' },
@@ -113,7 +115,7 @@ const appel = {
   <section class="pv" aria-labelledby="perimetre">
     <div class="pv-tete rv">
       <h2 id="perimetre">Ce que nous savons écrire</h2>
-      <p class="texte-2 lecture">Production comptable, paie et social, portefeuille et échéances, facturation et recouvrement, juridique et fiscal, administratif, ressources humaines, données et outils : {FAMILLES.length} familles de tâches, {Object.keys(POLES).length} pôles, une frontière par tâche. L’audit légal est listé dans la carte, mais n’est pas ouvert à la prise en charge. Une règle écrite se construit en automatisation après vérification des accès, des formats et des cas couverts. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
+      <p class="texte-2 lecture">Production comptable, paie et social, portefeuille et échéances, facturation et recouvrement, juridique et fiscal, administratif, ressources humaines, données et outils : une frontière par tâche. Pour le commissariat aux comptes, nous préparons aussi les demandes de documents, le suivi des réponses et les comparaisons entre exercices. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion. Une règle écrite se construit en automatisation après vérification des accès, des formats et des cas couverts. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
       <p class="texte-2 lecture">Dans le pôle social, vous pouvez <a href="/automatisation/paie">confier un geste répétitif autour de la paie</a> tout en laissant chaque correction et chaque décision aux gestionnaires.</p>
       <p class="texte-2 lecture">Avant de cadrer une tâche, comparez vos volumes, le contrôle restant et les dépenses réellement évitables avec le <a href="/outils-comptables-gratuits/calculateur-roi-automatisation">calculateur de ROI d’automatisation comptable</a>. La capacité libérée reste distincte des économies de trésorerie.</p>
       <p class="texte-2 lecture">Pour vérifier une formule précise avant de la transposer à une règle de cabinet, le <a href="/outils-comptables-gratuits/calculateur-marge-commerciale">calculateur de marge commerciale</a> rejoue sur deux montants HT fictifs la marge, le taux de marge et le taux de marque, sans produire de conseil de prix.</p>

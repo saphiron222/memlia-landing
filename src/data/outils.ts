@@ -46,6 +46,45 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'seuil-signification-audit', categorie: 'calculer', statut: 'disponible',
+    h1: 'Seuil de signification en audit : calcul et justification',
+    title: 'Seuil de signification audit : calcul motivé | Memlia',
+    description: 'Calculez les seuils de signification et de planification avec vos propres paramètres. Comparez les scénarios et exportez leur justification.',
+    promesse: { entree: 'Base, période, source, taux et justification choisis par le CAC', resultat: 'Calcul exact, scénarios comparés, choix explicite et dossier reprenable' },
+    limites: [
+      'Aucune base ni fourchette de taux recommandée. Appréciation du caractère significatif et adéquation des seuils réservées au CAC.',
+      'Ce calcul ne concerne pas les seuils légaux de nomination. Les contrôles arithmétiques ne démontrent pas le respect d’une norme d’audit.',
+      'Une justification ou un choix absent laisse un brouillon ; modifier les paramètres d’un choix exige de le reprendre.',
+      'Base nulle ou négative, taux absent ou hors borne, planification supérieure au seuil : calcul à corriger, export final arrêté. CSV et JSON : 20 Mo par fichier, 100 000 scénarios maximum.',
+    ],
+    mentionLocale: 'Saisies, calculs, copies et exports restent en mémoire dans cet onglet, sans envoi ni stockage persistant. Sauvegardez le JSON avant fermeture ; effacer retire les scénarios et les sorties de la page.',
+    proof: 'v2/41-outil-signification', zoneLarge: true,
+    source: {
+      nom: 'H2A — NEP-320, caractère significatif lors de la planification et de la réalisation d’un audit',
+      url: 'https://h2a-france.org/normes/application-de-la-notion-de-caractere-significatif-lors-de-la-planification-et-de-la-realisation-dun-audit/',
+      extrait: 'Les paragraphes 17 et 20 réservent le choix des critères et la détermination de la planification au jugement professionnel. Le paragraphe 24 décrit leur documentation. Notre calcul sur paramètres ne vaut pas appréciation de leur adéquation.',
+      verifieeLe: '6 octobre 2026',
+    },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
+    slug: 'suivi-circularisation', categorie: 'preparer', statut: 'disponible',
+    h1: 'Modèle de suivi de circularisation Excel : lettres et retours',
+    title: 'Suivi de circularisation : lettres et retours | Memlia',
+    description: 'Préparez vos lettres de confirmation, suivez les retours et rapprochez les écarts localement. Exportez le tableau de suivi pour votre dossier.',
+    promesse: { entree: 'Tiers sélectionnés, dates, devises et retours renseignés', resultat: 'Lettres originales, suivi CSV et dossier JSON reprenable' },
+    limites: [
+      'Aucun envoi, réception ou authentification de réponse. Le CAC maîtrise la sélection, les courriers et les suites.',
+      'Écart exact seulement à devise identique et base déclarée comparable. Une absence de réponse n’est jamais un écart zéro.',
+      'Refus et désaccord suspendent les propositions de relance ; les procédures alternatives restent à décider par le CAC.',
+      'CSV et JSON limités à 20 Mo ; 100 000 tiers maximum. Un doublon, une date incohérente ou une reprise invalide est refusé sans correction silencieuse.',
+    ],
+    mentionLocale: 'Session uniquement en mémoire, sans envoi ni stockage persistant. Sauvegardez le JSON avant fermeture pour reprendre vos lettres, versions et notes. Aucun enregistrement automatique.',
+    proof: 'v2/40-outil-circularisation', zoneLarge: true,
+    source: { nom: 'CNCC — NEP-505, demandes de confirmation des tiers', url: 'https://doc.cncc.fr/docs/nep-505-demandes-de-confirmation', extrait: 'Le §9 réserve au commissaire aux comptes la maîtrise de la sélection, de la rédaction, de l’envoi et de la réception. Notre outil prépare et documente ; il n’exécute pas ces échanges.', verifieeLe: '6 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
     slug: 'generateur-prompt-ia-gratuit', categorie: 'ecrire', statut: 'disponible',
     h1: 'Générateur de prompt IA gratuit',
     title: 'Générateur de prompt IA gratuit | Memlia',

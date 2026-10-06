@@ -5,7 +5,7 @@ import ts from 'typescript';
 import { assertScope } from './integration-inventory.mjs';
 
 const read = (path) => readFileSync(path, 'utf8');
-const compiled = ts.transpileModule(read('src/data/integrations.ts'), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
+const compiled = ts.transpileModule(read('src/data/integrations.ts').replace("import generatedGuides from './guides.generated.json';", `const generatedGuides = ${read('src/data/guides.generated.json')};`), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
 const { INTEGRATIONS } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
 const guide = read('src/pages/integrations/[slug].astro');
 const get = (slug) => INTEGRATIONS.find((entry) => entry.slug === slug);

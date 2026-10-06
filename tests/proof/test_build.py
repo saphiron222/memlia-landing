@@ -335,6 +335,8 @@ class BuildProof(unittest.TestCase):
                 services_publies.add(f'{SITE}/automatisation/{service.stem}')
         attendues = {f'{SITE}/' if slug == 'index' else f'{SITE}/{slug}'
                      for slug in fixed_pages() - {'404', 'mentions-legales', 'politique-de-confidentialite'}} | {
+                     f'{SITE}/outils-comptables-gratuits/seuil-signification-audit',
+                     f'{SITE}/outils-comptables-gratuits/suivi-circularisation',
                      f'{SITE}/outils-comptables-gratuits/bibliotheque-prompts-comptables',
                      f'{SITE}/outils-comptables-gratuits/generateur-charte-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
@@ -483,6 +485,7 @@ class BuildProof(unittest.TestCase):
             '01-outil-charte-ia.webp', '01-outil-prompt-ia.webp', '29-outil-fec.webp',
             '30-outil-maturite.webp', '29-outil-pseudonymisation.webp', '30-outil-roi.webp',
             '31-outil-bibliotheque.webp',
+            '40-outil-circularisation.webp', '41-outil-signification.webp',
         }
         self.assertTrue(historiques <= og_sources, 'images sociales historiques perdues')
         self.assertEqual({p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')}, og_sources)
