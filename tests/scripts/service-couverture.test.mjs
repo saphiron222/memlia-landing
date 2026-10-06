@@ -21,7 +21,8 @@ const INTERDITS = [
   /\bcompléments?\s+(?:Excel|Memlia)\b/i,
   /\b(?:notre|Memlia est un|le service est un)\s+logiciel\b/i,
   /suivi.social|supervision.sociale|bulletins.dsn|synth.se.salaires|flux.compta|conseil.fiscal/i,
-  /\b(?:revue métier|fact-check|non attesté)\b/i,
+  // Bornes Unicode : `\b` ne voit pas la fin de « attesté » (lettre accentuée).
+  /(?<![\p{L}\p{N}_])(?:revue métier|fact-check|non attesté)(?![\p{L}\p{N}_])/iu,
 ];
 /** Une date AAAA-MM-JJ qui existe au calendrier (le 31 février ne passe pas). */
 const dateReelle = (iso) => DATE.test(iso) && new Date(`${iso}T00:00:00Z`).toISOString().slice(0, 10) === iso;

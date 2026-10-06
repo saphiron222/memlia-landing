@@ -39,7 +39,7 @@ export const COUVERTURE_SERVICES = Object.freeze({
       },
       {
         outil: 'Dext',
-        geste: 'extrait les données des factures et des reçus vers la saisie',
+        geste: 'extrait les données des factures et des reçus, puis affecte les comptes selon vos règles fournisseurs',
         source: { url: 'https://dext.com/fr/cabinet/produits/saisie-comptable', libelle: 'Dext, la saisie comptable pour les cabinets', consulteLe: LU_LE },
       },
     ],
