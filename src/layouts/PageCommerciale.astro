@@ -1,5 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
+import ProofDetail from '@/components/ProofDetail.astro';
 import Button from '@/components/Button.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
 import PageEvidence from '@/components/PageEvidence.astro';
@@ -107,6 +108,7 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
       <div class="page-cadre">
         <div class="page-verre">
           <img src={heroSrc} alt={preuve.alt} width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" class="page-ecran" data-proof={hero} />
+          {page.chemin === '/integrations/dsn-silae' && <ProofDetail id={hero} />}
         </div>
       </div>
     </section>
