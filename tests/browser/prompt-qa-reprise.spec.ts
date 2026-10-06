@@ -8,6 +8,10 @@ async function assemble(page: import('@playwright/test').Page) {
   await page.locator('button[type=submit]').click();
 }
 test('R1 : navigation réelle isolée, original édité conservé sans stockage', async ({ page }) => {
+  // Ce parcours ouvre un second onglet : la suite complète a mesuré 29,8 s
+  // localement et atteint les 30 s en CI pendant son ouverture. Garder toutes
+  // les assertions, avec un budget propre à ce parcours multi-onglets.
+  test.setTimeout(90_000);
   await page.goto(gen); await page.locator('[data-seed="pieces"]').click(); await assemble(page);
   const edited = (await page.locator('[data-editor]').inputValue()) + '\nNote abstraite à conserver.';
   await page.locator('[data-editor]').fill(edited);
