@@ -117,8 +117,8 @@ def taxonomie():
     texte = TAXONOMIE.read_text(encoding='utf-8')
     poles = {m.group(1): {'libelle': m.group(2), 'couleur': m.group(3)} for m in re.finditer(r"'([a-z-]+)': \{ libelle: '([^']+)', couleur: '(#[0-9a-f]{6})' \}", texte)}
     familles = {}
-    for m in re.finditer(r"f\('([a-z0-9-]+)', '([^']+)', '([a-z-]+)', '([^']*)'(?:, (false|true))?\)", texte):
-        familles[m.group(1)] = {'id': m.group(1), 'libelle': m.group(2), 'pole': m.group(3), 'description': m.group(4), 'active': m.group(5) != 'false', 'rang': len(familles)}
+    for m in re.finditer(r"f\('([a-z0-9-]+)', '([^']+)', '([a-z-]+)', '([^']*)'(?:, (false|true))?(?:, '(ec|cac)')?\)", texte):
+        familles[m.group(1)] = {'id': m.group(1), 'libelle': m.group(2), 'pole': m.group(3), 'description': m.group(4), 'active': m.group(5) != 'false', 'profession': m.group(6) or 'ec', 'rang': len(familles)}
     if not poles or not familles:
         raise SystemExit('taxonomie illisible')
     return poles, familles
@@ -308,8 +308,18 @@ def alterner(entrees):
             raise SystemExit('alternance : recherche épuisée (stock ou exceptions à revoir)')
         if i == len(dates):
             return []
-        # Les dates fixes restantes peuvent séparer une majorité du stock libre ;
-        # ne pas élaguer sur les seuls disponibles (borne fausse avec une date intercalée).
+        # Bound the complete remaining stock, including fixed slots. This does
+        # not change quotas, priority or acceptance: it only avoids branches
+        # that cannot alternate after adding a profession's editorial stock.
+        restant = disponibles + [e for position, e in fixes.items() if position >= i]
+        for champ in ('pole', 'format'):
+            if any(e.get('statut') == 'published' or champ in e.get('exceptionAlternance', {}) for e in restant):
+                continue
+            effectifs = Counter(e[champ] for e in restant)
+            n = len(restant)
+            if any(nombre > (n // 2 if precedent and precedent[champ] == valeur else (n + 1) // 2)
+                   for valeur, nombre in effectifs.items()):
+                return None
         jour = dates[i]
         if i in fixes:
             e = fixes[i]
@@ -518,6 +528,9 @@ def construire():
     satellites.sort(key=lambda e: (0 if e['slug'] in publies else 1, e['priorite'], e['rang_famille'], familles[e['famille']]['rang']))
     for e in [pilier] + satellites:
         e['pole'] = familles[e['famille']]['pole']
+        e['profession'] = e.get('profession', 'ec')
+        if e['profession'] != familles[e['famille']]['profession']:
+            raise SystemExit(f"profession divergente de la famille : {e['slug']}")
     planifier([pilier] + satellites, publies)
     for e in [pilier] + satellites:
         e['pole'] = familles[e['famille']]['pole']
@@ -525,14 +538,16 @@ def construire():
         e['gabarit'] = GABARIT_PAR_FORMAT[e['format']]
         e['mots'] = MOTS_PAR_FORMAT[e['format']]
     liens = []
+    pilier_cac = next((e for e in satellites if e.get('architectureRole') == 'pillar' and e['profession'] == 'cac'), None)
     for e in satellites:
-        liens.append({'de': e['slug'], 'vers': pilier['slug'], 'type': 'pilier', 'ancre': 'automatiser une tâche du cabinet'})
-        liens.append({'de': pilier['slug'], 'vers': e['slug'], 'type': 'pilier', 'ancre': e['titre']})
+        hub = pilier_cac if pilier_cac is not None and e['profession'] == 'cac' and e is not pilier_cac else pilier
+        liens.append({'de': e['slug'], 'vers': hub['slug'], 'type': 'pilier', 'ancre': 'automatiser une tâche du cabinet'})
+        liens.append({'de': hub['slug'], 'vers': e['slug'], 'type': 'pilier', 'ancre': e['titre']})
     par_famille = defaultdict(list)
     for e in satellites:
         par_famille[e['famille']].append(e)
     for membres in par_famille.values():
-        ordre = sorted(membres, key=lambda e: e['rang_famille'])
+        ordre = sorted((e for e in membres if not e.get('architectureRole')), key=lambda e: e['rang_famille'])
         k = len(ordre)
         for i, e in enumerate(ordre):
             for d in (1, 2):
@@ -569,14 +584,17 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
                 erreurs.append(f"{champ} hors schéma : {e[champ]} ({e['slug']})")
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', e['slug']) or not (10 <= len(e['titre']) <= 90):
             erreurs.append(f"slug ou titre non conforme : {e['slug']}")
-    actives = {fid for fid, f in familles.items() if f['active']}
+    professions = {e.get('profession', 'ec') for e in tous}
+    # EC-only historical plans remain valid. The live CAC contract separately
+    # requires every active CAC family, including when all CAC rows are removed.
+    actives = {fid for fid, f in familles.items() if f['active'] and f['profession'] in professions}
     manquantes = actives - set(par_famille)
     if manquantes:
         erreurs.append(f'familles actives sans angle : {sorted(manquantes)}')
     for fid, membres in par_famille.items():
         # La série « Cicatrices » (charte §7 ter) prend un créneau mais n'est pas un angle de famille :
         # elle vise la marque, pas une requête, et n'entre donc pas dans le compte des quatre.
-        angles = [e for e in membres if not e.get('historique') and not e.get('serie')]
+        angles = [e for e in membres if not e.get('historique') and not e.get('serie') and not e.get('architectureRole')]
         # Conserver le stock initial ; chaque intention mandatée effectivement inscrite
         # dans sa famille ajoute une place, sans permettre un angle arbitraire.
         attendu = (3 if fid in {pilier['famille'], 'ia-generative-agents'} else 4) + sum(
@@ -709,11 +727,11 @@ def construire_json(poles, familles, pilier, satellites, liens, entrants):
         if not posts:
             continue
         clusters.append({'id': pid, 'name': pole['libelle'], 'color': pole['couleur'], 'families': sorted({e['famille'] for e in posts}, key=lambda f: familles[f]['rang']), 'posts': [
-            {'title': e['titre'], 'keyword': e['requete'], 'volume': None, 'template': e['gabarit'], 'format': e['format'], 'wordCount': e['mots'], 'url': e['url'], 'slug': e['slug'], 'family': e['famille'], 'role': e['role'], 'intent': e['intent'], 'funnel': e['funnel'], 'priority': e['priorite'], 'date': e['date'], 'missedDate': e.get('dateManquee'), 'secondaryKeywords': e['secondaires'], 'proof': e['preuve'], 'officialSources': e['sourcesOfficielles'], 'status': e['statut'], 'incomingLinks': entrants[e['slug']]}
+            {'title': e['titre'], 'keyword': e['requete'], 'profession': e['profession'], 'architectureRole': e.get('architectureRole'), 'volume': None, 'template': e['gabarit'], 'format': e['format'], 'wordCount': e['mots'], 'url': e['url'], 'slug': e['slug'], 'family': e['famille'], 'role': e['role'], 'intent': e['intent'], 'funnel': e['funnel'], 'priority': e['priorite'], 'date': e['date'], 'missedDate': e.get('dateManquee'), 'secondaryKeywords': e['secondaires'], 'proof': e['preuve'], 'officialSources': e['sourcesOfficielles'], 'status': e['statut'], 'incomingLinks': entrants[e['slug']]}
             for e in sorted(posts, key=lambda e: (familles[e['famille']]['rang'], e['rang_famille']))]})
     data = {
         'version': 2, 'date': date.today().isoformat(), 'seed': 'automatisation cabinet comptable',
-        'methode': f"backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), {len({e['famille'] for e in satellites})} familles et {len(clusters)} pôles actifs dans ce plan (12 pôles dans la taxonomie) ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec requête primaire à zéro le 21/09 (titres-intent), secondaires non mesurées et questions identiques à la SERP par famille du 19/09 (questions) ; les trois articles historiques synthétiques et la série restent hors gate",
+        'methode': f"backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), {len({e['famille'] for e in satellites})} familles et {len(clusters)} pôles actifs dans ce plan (12 pôles dans la taxonomie EC historique, 5 pôles CAC dont durabilité inactive) ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec requête primaire à zéro le 21/09 (titres-intent), secondaires non mesurées et questions identiques à la SERP par famille du 19/09 (questions) ; les trois articles historiques synthétiques et la série restent hors gate",
         'pillar': {'title': pilier['titre'], 'keyword': pilier['requete'], 'volume': 10, 'template': pilier['gabarit'], 'wordCount': pilier['mots'], 'url': pilier['url'], 'slug': pilier['slug'], 'family': pilier['famille'], 'status': pilier['statut'], 'date': pilier['date']},
         'rattrapageIA': lire_rattrapage_ia(),
         'clusters': clusters,
@@ -733,7 +751,7 @@ def ecrire_md(data, familles):
     L = ['# Plan de cluster v3 — « automatisation cabinet comptable »', '',
          f"Généré le {data['date']} par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). {data['meta']['totalPosts']} satellites ({data['meta']['publishedPosts']} publiés, {data['meta']['plannedPosts']} planifiés) en {data['meta']['totalFamilies']} familles et {data['meta']['totalClusters']} pôles, {data['meta']['totalLinks']} liens, {data['meta']['estimatedWords']} mots estimés.", '',
          '## Méthode', '', data['methode'] + '.', '',
-         'Recouvrement SERP entre familles (relevés WebSearch des 10/09 et 16/09/2026) : au plus deux domaines partagés, jamais quatre ; chaque famille est donc un cluster distinct, interlié par le pilier, et les quatre angles d’une même famille se lient entre eux.', '',
+         'Arbitrages EC historiques : relevés WebSearch des 10/09 et 16/09/2026. CAC : voir cac/ARCHITECTURE-CAC.md ; aucun chevauchement top10 Google France mesuré ni extrapolé. Les liens sont projetés, pas des liens publiés.', '',
          '## Pilier', '', f"- **{data['pillar']['title']}** — `{data['pillar']['url']}` — « {data['pillar']['keyword']} » — {data['pillar']['status']} ({data['pillar']['date']}).", '']
     for c in data['clusters']:
         L += [f"## {c['name']} (`{c['id']}`)", '']
@@ -851,12 +869,18 @@ if __name__ == '__main__':
                          (poles, familles, publies, pilier, satellites, liens, par_famille))
         print('créneau : OK')
         sys.exit(0)
+    # CAC is an internal intent contract, not a new public route registry.
+    if (ICI / 'cac/page-intent-plan.json').exists():
+        subprocess.run([sys.executable, str(ICI / 'build_cac_architecture.py'),
+                        '--check' if '--check' in sys.argv else '--validate'], check=True)
     # Le contrôle valide le plan en mémoire ; seule la régénération explicite date les dérivés.
     if '--check' not in sys.argv:
         data = ecrire_json(poles, familles, pilier, satellites, liens, entrants)
         ecrire_md(data, familles)
         ecrire_calendrier(pilier, satellites, familles, poles)
         ecrire_html(data)
+        if (ICI / 'cac/page-intent-plan.json').exists():
+            subprocess.run([sys.executable, str(ICI / 'build_cac_architecture.py')], check=True)
     print(f"cluster-plan : {len(satellites)} satellites ({sum(e['statut'] == 'published' for e in satellites)} publiés), {len({e['famille'] for e in satellites})} familles, {len({e['pole'] for e in satellites})} pôles, {len(liens)} liens ; entrants min = {min(entrants[e['slug']] for e in satellites)} ; semaines planifiées = {len(par_semaine)} ; dernier créneau = {max(e['date'] for e in satellites)}")
     for e in erreurs:
         print('ERREUR :', e)

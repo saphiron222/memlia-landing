@@ -241,7 +241,7 @@
         "date": "2026-10-06"
       },
       "gravite": "haute",
-      "cron": "C3",
+      "cron": "manuel",
       "statut": "a-faire",
       "creeLe": "2026-10-06",
       "misAJourLe": "2026-10-06",
@@ -260,7 +260,7 @@
         "date": "2026-10-06"
       },
       "gravite": "haute",
-      "cron": "C3",
+      "cron": "manuel",
       "statut": "a-faire",
       "creeLe": "2026-10-06",
       "misAJourLe": "2026-10-06",
@@ -279,7 +279,7 @@
         "date": "2026-10-06"
       },
       "gravite": "haute",
-      "cron": "C3",
+      "cron": "manuel",
       "statut": "a-faire",
       "creeLe": "2026-10-06",
       "misAJourLe": "2026-10-06",
@@ -298,12 +298,13 @@
         "date": "2026-10-06"
       },
       "gravite": "haute",
-      "cron": "C3",
-      "statut": "a-faire",
+      "cron": "manuel",
+      "statut": "ecarte",
       "creeLe": "2026-10-06",
       "misAJourLe": "2026-10-06",
-      "traiteLe": null,
-      "commit": null
+      "traiteLe": "2026-10-06",
+      "commit": null,
+      "motifEcart": "Citation historique de septembre soutenue mot pour mot par le calendrier officiel daté /2026-09 ouvert HTTP 200 le 06/10 ; la route courante présente octobre. Fond conservé, preuve docs/strategy/site-v3/c3-sources-2026-10-06/verification.json."
     },
     {
       "id": "2026-10-06-reverifier-source-logiciel-ia-comptabilite-1",
@@ -317,7 +318,7 @@
         "date": "2026-10-06"
       },
       "gravite": "haute",
-      "cron": "C3",
+      "cron": "manuel",
       "statut": "a-faire",
       "creeLe": "2026-10-06",
       "misAJourLe": "2026-10-06",
