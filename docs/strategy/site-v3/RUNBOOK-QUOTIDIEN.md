@@ -44,10 +44,19 @@ identité recette/file, jour réel, reçu exact, RAW signé et quota sont ceux d
 Une publication déjà présente dans les sources ou la file reste un refus, pas une republication.
 
 **État publié et brouillon de republication sont distincts.** Dans un vrai checkout
-Git, le planificateur lit une seule base `origin/main`, intégrée à HEAD, pour
+Git, le planificateur lit une seule base de publication pour
 reconnaître un article antérieurement non-brouillon dont la forge prépare maintenant
 la nouvelle version en `brouillon:true`. Il conserve les métadonnées de cette base
 pour le calendrier, sans modifier le candidat ni le considérer comme revu ou servi.
+Cette base est la pointe d'`origin/main` quand HEAD l'intègre. Sinon (06/10), c'est la
+fourche du candidat avec main, à condition que le candidat ne touche à aucune entrée du
+calendrier (`CHEMINS_CALENDRIER` : articles, familles, schéma, backlog, plan, calendrier,
+règle IA ; commité, indexé, modifié ou non suivi). Une PR du calendrier en retard est
+refusée avec le chemin en cause : intégrer `origin/main` puis relancer. Une PR hors
+calendrier n'échoue donc plus parce qu'une autre PR a été fusionnée. Contrepartie : deux
+PR en retard qui modifient les mêmes fichiers générés (pied de page, `pages-lastmod.json`,
+sceau du glossaire) peuvent être vertes chacune sur sa fourche. Avant de fusionner la
+seconde, intégrer main et lancer `npm run regen:generated`.
 Une date historique changée, une base absente/non intégrée ou une référence qui
 change pendant la lecture arrêtent ce contrôle. Un nouveau brouillon ou un commit
 de branche seul ne créent pas de publication antérieure. Le préflight doit toujours
