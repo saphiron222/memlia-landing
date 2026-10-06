@@ -4431,7 +4431,7 @@
       "query": "modèle suivi circularisation excel",
       "type": "outil",
       "family": "cac-confirmations-audit",
-      "state": "retenue-non-publiee",
+      "state": "construite-en-revue",
       "contextFrom": [
         "cac-circularisation-campagne",
         "cac-circularisation-reponse-rapprochement"
@@ -4440,10 +4440,9 @@
       "owner": "/outils-comptables-gratuits/suivi-circularisation",
       "profession": "cac",
       "measure": {
-        "state": "non-mesuree",
-        "source": null,
+        "state": "proprietaire-existant",
+        "source": "config/page-intent-contract.json",
         "query": "modèle suivi circularisation excel",
-        "suggestions": null,
         "volumeMensuel": null
       },
       "terrain": [
