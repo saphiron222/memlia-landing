@@ -3,9 +3,11 @@
 
 /contact
   Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'self' https://challenges.cloudflare.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self' data: https://challenges.cloudflare.com; object-src 'none'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
 
 /outils-comptables-gratuits
   Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
 
 /outils-comptables-gratuits/*
   Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
@@ -17,4 +19,31 @@
   Cache-Control: public, max-age=0, must-revalidate, no-transform
 
 /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/calculateur-marge-commerciale
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/calculateur-amortissement-comptable
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/generateur-charte-ia-cabinet
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/calculateur-date-echeance-facture
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/verificateur-fec-local
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/verificateur-prompt-ia
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/generateur-prompt-expert-comptable
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet
   Cache-Control: public, max-age=0, must-revalidate, no-transform
