@@ -65,7 +65,8 @@ test('article : en-tête, fil d’Ariane, schéma, sources et retour à la liste
   const couverture = await page.locator('.article-couverture img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0);
   expect(couverture).toBe(true);
   await expect(page.locator('.article-corps h2').first()).toBeVisible();
-  await expect(page.locator('.article-sources li')).not.toHaveCount(0);
+  // Décision de Kevin du 06/10/2026 : les sources se citent dans le texte (une section ne reste que pour les sources pas encore citées).
+  expect(await page.locator('.article-corps a[href^="https://"], .article-sources li').count()).toBeGreaterThan(0);
   await expect(page.locator('.article-pont .btn-principal')).toHaveCount(1);
   const report = await page.evaluate(() => {
     const graph = JSON.parse(document.querySelector('script[type="application/ld+json"]')!.textContent!);
