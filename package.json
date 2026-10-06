@@ -6,7 +6,8 @@
   "description": "Site memlia.fr — Astro, Cloudflare Pages",
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa",
+    "build": "npm run test:query-ownership && npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa",
+    "test:query-ownership": "node scripts/verify-query-ownership.mjs && node --test tests/scripts/query-ownership.test.mjs",
     "build:site": "astro build && npm run test:blog-contract && npm run test:service-design && node scripts/strip-briefs.mjs && node scripts/render-public-source-text.mjs && node scripts/verify-public-source-labels.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:integration-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts",
     "preview": "astro preview",
     "preview:prepare": "node scripts/prepare-preview.mjs",
