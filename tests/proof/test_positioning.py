@@ -2,8 +2,10 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from html import unescape
+from functools import lru_cache
 import json
 import re
+import subprocess
 import unittest
 
 DIST = Path(__file__).resolve().parents[2] / 'dist'
@@ -14,22 +16,16 @@ PRODUCT_WORDS = re.compile(r'\bmodules?\b|\bcompléments?\s+(?:Excel|Memlia)\b',
 # Toute autre mention au singulier exige une revue explicite, pas une heuristique permissive.
 GENERIC_DEFINITIONS = {'Un module est une unité logicielle.'}
 
-# Exceptions syntaxiques fermées : ne jamais ignorer le script ou les options entières.
-WORKER_CONSTRUCTOR = re.compile(
-    r'\bnew\s+Worker\s*\((?:[^(){};]|\([^(){};]*\))*?,\s*(?P<options>\{[^{};]*\})\s*\)'
-)
-WORKER_TYPE = re.compile(r'''(?P<prefix>[{,]\s*(?:type|"type"|'type')\s*:\s*)(?P<quote>["'])module(?P=quote)(?=\s*[,}])''')
-WORKER_ERROR = re.compile(r'''\bnew\s+Error\s*\(\s*(?P<quote>["'])Module Worker indisponible(?P=quote)\s*\)''')
-
-
+@lru_cache(maxsize=256)
 def without_worker_technical_terms(source):
-    def worker_options(match):
-        options = WORKER_TYPE.sub(r'\g<prefix>"worker-kind"', match['options'])
-        start = match.start('options') - match.start()
-        end = match.end('options') - match.start()
-        return match[0][:start] + options + match[0][end:]
-
-    return WORKER_ERROR.sub('new Error("Worker indisponible")', WORKER_CONSTRUCTOR.sub(worker_options, source))
+    if not PRODUCT_WORDS.search(source):
+        return source
+    # Le parseur déjà utilisé par Astro distingue code, chaînes, templates et regex.
+    # Une panne du parseur échoue le contrôle plutôt que d'exempter du texte.
+    return subprocess.run(
+        ['node', str(Path(__file__).with_name('worker-technical-terms.mjs'))],
+        input=source, text=True, capture_output=True, check=True, timeout=30,
+    ).stdout
 
 
 class PublicText(HTMLParser):
@@ -182,6 +178,16 @@ class PositioningProof(unittest.TestCase):
 
     def test_guard_keeps_catalogue_checks_next_to_technical_workers(self):
         worker = 'new Worker(workerUrl,{type:"module"});'
+        # Du code apparent dans une chaîne n'est jamais une option ou un diagnostic.
+        for source in [
+            'document.title = "new Error(\'Module Worker indisponible\')";',
+            "document.title = `Découvrez notre new Worker(url, {type: 'module'})`;",
+            'new Worker(url, {type: \'classic\', name: "Notre offre, type:\'module\', comptable"});',
+        ]:
+            for suffix in ('.js', '.mjs', '.html', '.htm', '.svg'):
+                with self.subTest(source=source, suffix=suffix):
+                    surface = f'<script>{source}</script>' if suffix in {'.html', '.htm', '.svg'} else source
+                    self.assertTrue(catalogue_violations(surface, suffix))
         for source, suffix in [
             (worker + 'document.title="Notre module comptable";', '.js'),
             (worker + 'const offre="Modules Memlia";', '.mjs'),
