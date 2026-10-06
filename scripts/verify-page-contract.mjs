@@ -150,6 +150,7 @@ function pageSnapshot(route, path) {
   const headings = [];
   const descriptions = [];
   const ogTitles = [];
+  const ogImages = [];
   const canonicals = [];
   const hrefs = [];
   const footerHrefs = [];
@@ -163,6 +164,7 @@ function pageSnapshot(route, path) {
     if (node.nodeName === 'meta' && attr(node, 'name') === 'description') descriptions.push(normalizedText(attr(node, 'content')));
     if (node.nodeName === 'meta' && attr(node, 'name') === 'robots') robots = normalizedText(attr(node, 'content'));
     if (node.nodeName === 'meta' && attr(node, 'property') === 'og:title') ogTitles.push(normalizedText(attr(node, 'content')));
+    if (node.nodeName === 'meta' && attr(node, 'property') === 'og:image') ogImages.push(attr(node, 'content'));
     if (node.nodeName === 'link' && (attr(node, 'rel') ?? '').split(/\s+/).includes('canonical')) canonicals.push(attr(node, 'href'));
     if (node.nodeName === 'a') {
       const href = normalizeRoute(attr(node, 'href'));
@@ -189,7 +191,7 @@ function pageSnapshot(route, path) {
   const jsonLd = collectJsonLd(document);
   const schema = collectSchema(jsonLd);
   return {
-    route, path, document, main, h1s: headings, title, descriptions, ogTitles, canonicals, hrefs, footerHrefs,
+    route, path, document, main, h1s: headings, title, descriptions, ogTitles, ogImages, canonicals, hrefs, footerHrefs,
     media: [...new Set(media.filter((item) => item.startsWith('/')))], robots, jsonLd, schema,
   };
 }
@@ -494,6 +496,14 @@ export function auditerContratPages({
 
     const h1 = page.h1s[0];
     const indexable = !page.robots.toLowerCase().includes('noindex');
+    if (indexable) {
+      let validImage = false;
+      try {
+        const image = new URL(page.ogImages[0]);
+        validImage = image.origin === 'https://memlia.fr' && !image.username && !image.password;
+      } catch { /* Une URL relative ou absente ne forme pas une image sociale publique. */ }
+      if (page.ogImages.length !== 1 || !validImage) erreurs.push(error(page.route, 3, 'une og:image absolue unique sur https://memlia.fr est requise pour toute page indexable'));
+    }
     if (routeContract?.indexing === 'noindex' && indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige noindex'));
     if (routeContract?.indexing === 'index' && !indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige une page indexable'));
     const measuredIntentRequired = routeContract?.measuredIntentRequired ?? true;
