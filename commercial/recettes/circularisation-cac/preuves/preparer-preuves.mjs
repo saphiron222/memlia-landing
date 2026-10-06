@@ -13,7 +13,12 @@ const entries = [recipe.primaryQuery, ...recipe.secondaryQueries].map(query => {
   return entry;
 });
 const output = { date: '2026-10-06', instrument: measures.instrument, origine: 'docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json', autocompletion: Object.fromEntries(entries.map(e => [e.requete, e.suggestions])), mesures: entries };
-writeFileSync(`${root}/docs/strategy/site-v3/mesures/titres-intent-2026-10-06.json`, JSON.stringify(output, null, 2)+'\n');
+const measurePath = `${root}/docs/strategy/site-v3/mesures/titres-intent-2026-10-06.json`;
+const existing = JSON.parse(readFileSync(measurePath, 'utf8'));
+existing.autocompletion = { ...existing.autocompletion, ...output.autocompletion };
+existing.mesures = [...(existing.mesures ?? []).filter(e => !entries.some(n => n.requete === e.requete)), ...entries];
+existing.origineCAC = output.origine;
+writeFileSync(measurePath, JSON.stringify(existing, null, 2)+'\n');
 function text(node) { return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(text).join(' '); }
 const compact = t => t.replace(/\s+/g, ' ').trim();
 const sources = [
@@ -40,6 +45,8 @@ for (const source of sources) {
  source.authority = 'H2A';
  source.method = 'Page officielle ouverte avec web_extract puis HTML téléchargé par curl ; extraits confrontés au texte HTML via parse5.';
 }
-writeFileSync(`${dir}sources.json`, JSON.stringify({ status: 'PASS', sources }, null, 2)+'\n');
+const savedSources = JSON.parse(readFileSync(`${dir}sources.json`, 'utf8'));
+savedSources.sources = [...savedSources.sources.filter(s => !sources.some(n => n.id === s.id)), ...sources];
+writeFileSync(`${dir}sources.json`, JSON.stringify(savedSources, null, 2)+'\n');
 console.log('PASS : 4 mesures C2 reprises sans nouvelle recherche ; 7 extraits exacts vérifiés sur deux HTML officiels.');
 console.log('Longueurs métadonnées :', recipe.tabTitle.length, recipe.description.length);

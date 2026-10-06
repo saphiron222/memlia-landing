@@ -3,11 +3,11 @@
   "type": "service",
   "slug": "circularisation-cac",
   "path": "/automatisation/circularisation-cac",
-  "title": "Automatiser la circularisation : préparer et suivre vos demandes",
+  "title": "Automatiser la circularisation : sélectionner les tiers et documenter les écarts",
   "tabTitle": "Automatiser la circularisation dans vos outils | Memlia",
-  "ogTitle": "Automatiser la circularisation : préparer et suivre vos demandes",
-  "description": "Automatiser la circularisation : préparez demandes, retours et écarts dans vos outils. Le CAC garde la sélection et les suites. Confiez la mécanique.",
-  "hero": "Nous préparons vos demandes de confirmation des tiers et leur suivi dans les outils du cabinet. Les brouillons reprennent votre sélection ; le journal distingue réception, rapprochement et écart à examiner. Chaque envoi attend une validation sous maîtrise du CAC. Vous gardez le choix des tiers, l’appréciation des réponses et les suites à donner aux absences de réponse.",
+  "ogTitle": "Automatiser la circularisation : sélectionner les tiers et documenter les écarts",
+  "description": "Automatiser la circularisation : proposez les tiers selon votre règle et documentez les écarts. Le CAC valide la sélection. Confiez la mécanique.",
+  "hero": "Votre plateforme gère déjà les demandes, les envois et les relances. Nous préparons ce qui reste dans vos outils : une proposition de tiers selon la règle du cabinet, sa feuille de couverture et les pièces à examiner pour les écarts ou les non-réponses. Le CAC valide la sélection et choisit les procédures et les suites ; aucun envoi ni conclusion ne part de cette préparation.",
   "primaryQuery": "automatiser circularisation",
   "secondaryQueries": ["circularisation commissaire aux comptes", "réponse circularisation fournisseurs", "procédures alternatives circularisation"],
   "audience": {
@@ -21,7 +21,7 @@
   "author": "marketing",
   "cta": {"label": "Confier une première tâche", "destination": "/contact"},
   "schema": {
-    "headline": "Automatiser la circularisation : préparer et suivre vos demandes",
+    "headline": "Automatiser la circularisation : sélectionner les tiers et documenter les écarts",
     "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
   },
   "proof": {"replayedAt": "2026-10-06", "evidencePath": "preuves/rejeu.json"},

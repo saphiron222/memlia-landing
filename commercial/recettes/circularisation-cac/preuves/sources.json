@@ -50,6 +50,81 @@
       "consultedAt": "2026-10-06T03:30:06.839Z",
       "authority": "H2A",
       "method": "Page officielle ouverte avec web_extract puis HTML téléchargé par curl ; extraits confrontés au texte HTML via parse5."
+    },
+    {
+      "id": "NEP530",
+      "url": "https://h2a-france.org/normes/selection-des-elements-a-controler/",
+      "version": "Arrêté 13/11/2024, JO 19/11/2024, A.821-78",
+      "snapshot": "preuves/nep530-source.html",
+      "consultedAt": "2026-10-06T20:45:27.170Z",
+      "authority": "H2A",
+      "excerpts": [
+        {
+          "paragraph": "04",
+          "exact": "Lors de la conception des procédures d’audit à mettre en œuvre, le commissaire aux comptes détermine, sur la base de son jugement professionnel, les méthodes appropriées de sélection des éléments à contrôler."
+        }
+      ],
+      "method": "Téléchargement HTTP officiel et comparaison exacte du texte HTML via parse5 ; aucune fonction éditeur testée."
+    },
+    {
+      "id": "NEP911",
+      "url": "https://h2a-france.org/normes/mission-du-commissaire-aux-comptes-nomme-pour-trois-exercices-prevue-a-larticle-l-823-12-1-du-code-de-commerce/",
+      "version": "Arrêté 24/07/2026, JO 26/07/2026, A.821-94",
+      "snapshot": "preuves/nep911-source.html",
+      "consultedAt": "2026-10-06T20:45:27.304Z",
+      "authority": "H2A",
+      "excerpts": [
+        {
+          "paragraph": "24",
+          "exact": "Lorsque le commissaire aux comptes intervient plusieurs semaines après la clôture de l’exercice, il peut estimer pertinent de contrôler les créances clients par les encaissements intervenus sur la période subséquente et les dettes fournisseurs par rapport aux factures reçues ou aux règlements effectués postérieurement à la clôture."
+        }
+      ],
+      "method": "Téléchargement HTTP officiel et comparaison exacte du texte HTML via parse5 ; aucune fonction éditeur testée."
+    },
+    {
+      "id": "NEP912",
+      "url": "https://h2a-france.org/normes/mission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises/",
+      "version": "Arrêté 24/07/2026, JO 26/07/2026, A.821-94",
+      "snapshot": "preuves/nep912-source.html",
+      "consultedAt": "2026-10-06T20:45:27.403Z",
+      "authority": "H2A",
+      "excerpts": [
+        {
+          "paragraph": "23",
+          "exact": "Lorsque le commissaire aux comptes intervient plusieurs semaines après la clôture de l’exercice, il peut estimer pertinent de contrôler les créances clients par les encaissements intervenus sur la période subséquente et les dettes fournisseurs par rapport aux factures reçues ou aux règlements effectués postérieurement à la clôture."
+        }
+      ],
+      "method": "Téléchargement HTTP officiel et comparaison exacte du texte HTML via parse5 ; aucune fonction éditeur testée."
+    },
+    {
+      "id": "CIRCIT",
+      "url": "https://www.circit.io/fr/platform/confirm",
+      "version": "Déclaration éditeur consultée le 06/10/2026, non testée",
+      "snapshot": "preuves/circit-source.html",
+      "consultedAt": "2026-10-06T20:45:27.695Z",
+      "authority": "éditeur",
+      "excerpts": [
+        {
+          "paragraph": "Confirmations de comptes clients/fournisseurs",
+          "exact": "Téléchargez les soldes, faites correspondre les réponses aux documents de travail et signalez automatiquement les exceptions pour examen."
+        }
+      ],
+      "method": "Téléchargement HTTP officiel et comparaison exacte du texte HTML via parse5 ; aucune fonction éditeur testée."
+    },
+    {
+      "id": "ECIRCU",
+      "url": "https://www.gestonline.com/blog/circularisation-audit",
+      "version": "Déclaration éditeur consultée le 06/10/2026, non testée",
+      "snapshot": "preuves/ecircu-source.html",
+      "consultedAt": "2026-10-06T20:45:28.146Z",
+      "authority": "éditeur",
+      "excerpts": [
+        {
+          "paragraph": "Dématérialiser sa circularisation",
+          "exact": "Le processus devient donc beaucoup plus fluide pour sélectionner les tiers à circulariser, relancer automatiquement, centraliser les justificatifs et assurer le suivi des réponses."
+        }
+      ],
+      "method": "Téléchargement HTTP officiel et comparaison exacte du texte HTML via parse5 ; aucune fonction éditeur testée."
     }
   ]
 }
