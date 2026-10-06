@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "kind": "service-candidat-scelle",
+  "slug": "dossier-travail-cac",
+  "sealedAt": "2026-10-06T03:58:22.159Z",
+  "files": {
+    "page": {
+      "path": "src/content/services/dossier-travail-cac.md",
+      "bytes": 10710,
+      "sha256": "812c614682a284c2d5ed8637c11fa0a55cefd1f8f8c58f42dbd21ee3c1aac57f"
+    },
+    "manifest": {
+      "path": "commercial/services/dossier-travail-cac/manifest.json",
+      "bytes": 2930,
+      "sha256": "84e4b685cf819b5af91ee2165ce5f949ba001b53459f9a295929c9af932187bc"
+    },
+    "recipe": {
+      "path": "commercial/recettes/dossier-travail-cac/recette.json",
+      "bytes": 2630,
+      "sha256": "7ebc66e8fe61a1717ad6b9f80da53e681864f84ab0dd52290af8450a301c4259"
+    },
+    "body": {
+      "path": "commercial/recettes/dossier-travail-cac/corps.md",
+      "bytes": 8852,
+      "sha256": "8d13b8f18ef97bcd8bce4b3d86fea86c6aadcc94d9af4bd64a66fe73be122905"
+    },
+    "review": {
+      "path": "commercial/recettes/dossier-travail-cac/revues.json",
+      "bytes": 1322,
+      "sha256": "613f877acdf41b265a85a398f9ff853f157d0fb2fbb33a3d1b49dba53ebf85d1"
+    }
+  }
+}
