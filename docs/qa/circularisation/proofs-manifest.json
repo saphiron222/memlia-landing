@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/circularisation-proof/index.html",
+      "sha256": "9684b0234fcf3ffe671d12e2ddc70061c74b5782ab957bdd3f12bd6a9927b417"
+    },
+    {
+      "path": "docs/design/circularisation-proof/styles.css",
+      "sha256": "6742d45a3c479925d5a8813bca0a27df4a492779fc944efee07f57d83d6fc33d"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/circularisation-proof/content-contract.json",
+      "sha256": "58e2b7ed1a5d7cbb0c63d7eabb0c53795a8733f2a8de1be7a2bbf24a9a09ddc1"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "173d710b9f62eaed6d1cd61384535f2479826e140c43c930e1e2b2c61ef377e1"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/circularisation-proof/index.html#outil-circularisation",
+      "target": "public/proofs/v2/40-outil-circularisation.webp",
+      "bytes": 43494,
+      "sha256": "d189a4a2cc9e88dd4b8f960e1e32503e740b57a6d03a445d9d4b3e359c846e14"
+    },
+    {
+      "source": "docs/design/circularisation-proof/index.html#outil-circularisation",
+      "target": "public/proofs/v2/og/40-outil-circularisation.webp",
+      "bytes": 29350,
+      "sha256": "61a14a38c13f17ad8ce482418cca5f2aded994d97d9785b32728aa1e9302283f"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ interface Props { contenu?: ContenuAccueil['integration']; }
 const { contenu = contenuDe('ec').integration } = Astro.props;
 ---
 <section id="integration" class="integration" aria-labelledby="integration-title">
-  <ProofRow id={contenu.image}>
+  <ProofRow id={contenu.image} enlarge>
   <div class="integration-copy rv">
     <h2 id="integration-title">{contenu.titre}</h2>
     <p class="texte-2">{contenu.texte}</p>

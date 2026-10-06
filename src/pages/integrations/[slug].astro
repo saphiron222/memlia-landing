@@ -7,6 +7,8 @@ import { auteurPar, identiteAuteur } from '@/data/auteurs';
 import { INTEGRATIONS_INDEXABLES, integrationPath, type IntegrationDefinition } from '@/data/integrations';
 import { SITE } from '@/data/site.mjs';
 import { PROOFS, type ProofId } from '@/data/proofs';
+import { createHash } from 'node:crypto';
+import generatedGuides from '@/data/guides.generated.json';
 
 export function getStaticPaths() {
   return INTEGRATIONS_INDEXABLES.map((integration) => ({ params: { slug: integration.slug }, props: { integration } }));
@@ -15,6 +17,8 @@ interface Props { integration: IntegrationDefinition; }
 const { integration } = Astro.props;
 const chemin = integrationPath(integration);
 const hero = `integrations/${integration.slug}` as ProofId;
+const generatedIdentity = (generatedGuides as IntegrationDefinition[]).some(guide => guide.slug === integration.slug)
+  ? createHash('sha256').update(JSON.stringify(integration)).digest('hex') : null;
 if (!(hero in PROOFS)) throw new Error(`Preuve absente pour ${integration.slug}`);
 const url = `${SITE.url}${chemin}`;
 const auteur = auteurPar(integration.auteur);
@@ -26,7 +30,7 @@ const page = {
   h1: integration.h1,
   chapeau: integration.intro,
   ariane: `${integration.vendor} · ${integration.task}`,
-  secondaire: { libelle: 'Voir les neuf guides', href: '/integrations' },
+  secondaire: { libelle: INTEGRATIONS_INDEXABLES.length === 9 ? 'Voir les neuf guides' : 'Voir les guides', href: '/integrations' },
 };
 const noeuds = [
   {
@@ -66,6 +70,7 @@ const source = {
     ],
   }}
 >
+  {generatedIdentity ? <template data-guide-sha256={generatedIdentity}></template> : ' '}
   <section class="pv" aria-labelledby="repere-editeur">
     <div class="pv-tete rv">
       <h2 id="repere-editeur">Les repères et les champs que la règle doit connaître</h2>
@@ -121,7 +126,7 @@ const source = {
     <Renvois items={[
       { texte: 'Le service correspondant décrit la tâche sans la réduire à un éditeur.', libelle: integration.service.label, href: integration.service.href },
       ...(integration.tool ? [{ texte: 'L’outil local contrôle des soldes fictifs et exporte un CSV ; il ne réalise pas l’appariement des mouvements.', libelle: integration.tool.label, href: integration.tool.href }] : []),
-      { texte: 'Choisissez un autre produit et le geste à contrôler.', libelle: 'Voir les neuf guides par environnement', href: '/integrations' },
+      { texte: 'Choisissez un autre produit et le geste à contrôler.', libelle: INTEGRATIONS_INDEXABLES.length === 9 ? 'Voir les neuf guides par environnement' : 'Voir les guides par environnement', href: '/integrations' },
     ]} colonnes={2} />
   </section>
 </PageCommerciale>

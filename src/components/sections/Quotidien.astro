@@ -6,7 +6,7 @@ const { contenu = contenuDe('ec').quotidien } = Astro.props;
 /** Le problème quotidien, sans métrique client ni témoignage inventé. */
 ---
 <section class="daily" aria-labelledby="daily-title">
-  <ProofRow id={contenu.image}>
+  <ProofRow id={contenu.image} enlarge>
   <div class="daily-intro rv">
     <h2 id="daily-title">{contenu.titre}</h2>
     <p class="texte-2 lecture">{contenu.texte}</p>

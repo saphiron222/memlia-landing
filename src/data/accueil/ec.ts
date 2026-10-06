@@ -2,7 +2,11 @@ import { PAGES_V2 } from '../pages-v2.mjs';
 import { FAQ } from '../faq';
 import { GARANTIES } from '../garanties';
 import { METHODE } from '../methode';
+import { famillesDeLaProfession } from '../familles';
 import type { ContenuAccueil } from './types';
+
+const familles = famillesDeLaProfession('ec');
+const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
 
 /** Copie EC extraite sans changement ; les sources partagées restent les mêmes. */
 export const CONTENU_EC: ContenuAccueil = {
@@ -59,7 +63,7 @@ export const CONTENU_EC: ContenuAccueil = {
   },
   usages: {
     titre: "Toute tâche répétitive a une règle. Nous l’écrivons.",
-    texte: "De la collecte des pièces aux retours DSN, de la saisie au reporting : soixante familles de tâches, douze pôles, et pour chacune la frontière entre ce qui se prépare seul et ce qui se décide. Commencez par celle qui revient le plus.",
+    texte: `De la collecte des pièces aux retours DSN, de la saisie au reporting : ${familles.length} familles de tâches, ${nombrePoles} pôles pour l’expertise comptable, et pour chacune la frontière entre ce qui se prépare seul et ce qui se décide. Commencez par celle qui revient le plus.`,
     exemples: [
   { id: 'collect', title: 'Collecter et préparer', text: 'Rassembler les pièces et les informations attendues depuis les sources convenues, et signaler ce qui manque avant le traitement.' },
   { id: 'check', title: 'Contrôler et signaler', text: 'Appliquer les règles du cabinet, isoler les écarts et présenter les cas à revoir, avec la raison du signalement.' },

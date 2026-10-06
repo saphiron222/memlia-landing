@@ -258,6 +258,8 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
                      f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/integrations',
                      f'{SITE}/outils-comptables-gratuits',
+                     f'{SITE}/outils-comptables-gratuits/seuil-signification-audit',
+                     f'{SITE}/outils-comptables-gratuits/suivi-circularisation',
                      f'{SITE}/outils-comptables-gratuits/bibliotheque-prompts-comptables',
                      f'{SITE}/outils-comptables-gratuits/generateur-charte-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
@@ -270,6 +272,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec',
                      f'{SITE}/outils-comptables-gratuits/calculateur-roi-automatisation',
+                     f'{SITE}/outils-comptables-gratuits/bareme-heures-cac',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
@@ -395,7 +398,9 @@ class BuildProof(unittest.TestCase):
         # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
         # aux pages de service et cinq scènes propres aux outils. Les dix images sociales
         # correspondantes restent sous og/.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 37)
+        preuves = re.findall(r"'v2/([^']+)':", (ROOT / 'src/data/proofs.ts').read_text())
+        self.assertEqual({p.name for p in (DIST / 'proofs/v2').glob('*.webp')},
+                         {f'{preuve}.webp' for preuve in preuves})
         self.assertEqual(
             sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')),
             sorted([
@@ -412,6 +417,9 @@ class BuildProof(unittest.TestCase):
                 '29-outil-pseudonymisation.webp',
                 '30-outil-roi.webp',
                 '31-outil-bibliotheque.webp',
+                '40-outil-circularisation.webp',
+                '43-outil-bareme-cac.webp',
+                '41-outil-signification.webp',
             ]),
         )
 

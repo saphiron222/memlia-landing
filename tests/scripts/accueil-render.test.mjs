@@ -12,9 +12,9 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin construit sur main avant l’extraction (e612e1a3), toutes les données/CSS incluses.
+// Témoin reconstruit sur main (e6f31468) à l’intégration : H3 et compteurs dynamiques inclus.
 test('le HTML complet de / conserve tous les octets du témoin EC avant extraction', () => {
-  const expected = 'dbf9410855f31dde7e15471911fd44d7b0f151f4735549919c9e9f803827e90e';
+  const expected = '121366773c7a216908e6be6feac0387d556507e0e54cca297a0a01758713572c';
   assert.equal(createHash('sha256').update(readFileSync('dist/index.html')).digest('hex'), expected);
 });
 
@@ -35,8 +35,16 @@ test('un vrai build Astro rend les onze sections avec le contenu fourni', { time
     for (const name of Object.keys(sections)) {
       const defaultNode = find(document, `default-${name}`);
       const explicitNode = find(document, `explicit-${name}`);
-      // Astro émet le script partagé une fois, à la première instance seulement.
-      const content = node => node.childNodes.filter(child => child.tagName !== 'script').map(serializeOuter).join('');
+      // Astro émet les scripts partagés une fois, y compris dans les preuves imbriquées.
+      const content = node => {
+        const copy = parse(serializeOuter(node));
+        const removeScripts = parent => {
+          parent.childNodes = (parent.childNodes ?? []).filter(child => child.tagName !== 'script');
+          parent.childNodes.forEach(removeScripts);
+        };
+        removeScripts(copy);
+        return find(copy, node.attrs.find(a => a.name === 'id').value).childNodes.map(serializeOuter).join('');
+      };
       assert.equal(content(defaultNode), content(explicitNode), `${name} : défaut = EC explicite`);
       const custom = content(find(document, `custom-${name}`));
       assert.ok(custom.includes(`Texte fictif de contrôle ${name}`), name);

@@ -1,5 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
+import { readFile } from 'node:fs/promises';
+import { INPUT_FIELDS } from '../../src/lib/signification.mjs';
 
 const HUB = '/outils-comptables-gratuits';
 const TEMOIN = `${HUB}/temoin-calcul-local`;
@@ -23,7 +25,8 @@ test('hub : outils disponibles et schéma de collection', async ({ page }) => {
     await expect(page.locator(`[data-outil-card] a[href="${outilPath(outil)}"]`)).toHaveCount(1);
   }
   await expect(page.locator('[data-tool-media]')).toHaveCount(1);
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', '/proofs/v2/og/24-outils-hub.webp');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/24-outils-hub.webp');
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/24-outils-hub.webp');
   await expect(page.locator(`a[href="${TEMOIN}"]`)).toHaveCount(0);
 
 
@@ -299,7 +302,8 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
     await expect(page.locator(`[data-official-source] a[href="${outil.source.url}"]`)).toHaveCount(1);
     await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toBeVisible();
     await expect(page.locator(`[data-proof="${outil.proof}"] img`)).toBeVisible();
-    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `/proofs/v2/og/${outil.proof?.slice(3)}.webp`);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `https://memlia.fr/proofs/v2/og/${outil.proof?.slice(3)}.webp`);
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', `https://memlia.fr/proofs/v2/og/${outil.proof?.slice(3)}.webp`);
     await expect(page.locator('[data-tool-section]')).toHaveCount(8);
     await expect(page.locator('[data-tool-section="garanties"]')).toBeVisible();
     await expect(page.locator('[data-tool-section="faq"] details')).toHaveCount(2);
@@ -346,12 +350,12 @@ test('maillage entrant : trois contextes rendus par outil, dont le hub et une re
   }
 });
 
-test('outils publiés : zéro requête et zéro stockage après armement', async ({ page }) => {
+test('outils publiés : zéro requête et zéro stockage après armement', async ({ page, context }) => {
   for (const outil of OUTILS_DISPONIBLES) {
     const requests: string[] = [];
     let armed = false;
     const listener = (request: { method(): string; url(): string }) => { if (armed) requests.push(`${request.method()} ${request.url()}`); };
-    page.on('request', listener);
+    context.on('request', listener);
     await page.goto(outilPath(outil));
     await page.evaluate(() => document.fonts.ready);
     await page.waitForLoadState('networkidle');
@@ -427,6 +431,63 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
       await page.getByRole('button', { name: 'Préparer la charte', exact: true }).click();
       await expect(page.locator('[data-editor]')).toHaveValue(/Relance de pièces/);
+    } else if (outil.slug === 'suivi-circularisation') {
+      await page.getByText('Importer un CSV : mapping, aperçu et sélection', { exact: true }).click();
+      await page.locator('#circ-csv').setInputFiles({
+        name: 'fictif.csv', mimeType: 'text/csv',
+        buffer: Buffer.from('id;category;recipient;contact;referenceDate;currency;requestedAmount;confirmationType\n0007;client;Tiers fictif;Contact fictif;2026-01-01;EUR;100;open'),
+      });
+      await page.getByRole('button', { name: 'Lire le CSV', exact: true }).click();
+      await expect(page.locator('[data-circ-mapping] select')).toHaveCount(10);
+      for (const field of ['id', 'category', 'recipient', 'contact', 'referenceDate', 'currency', 'requestedAmount', 'confirmationType']) {
+        await page.locator(`[data-circ-mapping] select[name="${field}"]`).selectOption(field);
+      }
+      await page.getByRole('button', { name: 'Voir l’aperçu mappé', exact: true }).click();
+      await expect(page.locator('[data-circ-import-summary]')).toContainText('1 lignes au total');
+      await page.locator('[data-circ-preview-rows] input').check();
+      await page.locator('#circ-import-valid').check();
+      await page.getByRole('button', { name: 'Ajouter la sélection validée', exact: true }).click();
+      await expect(page.locator('[data-circ-summary]')).toContainText('1 tiers');
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-circ-export="json"]').click();
+      await downloading;
+    } else if (outil.slug === 'bareme-heures-cac') {
+      await page.locator('[data-demo]').click();
+      await expect(page.locator('[data-result]')).toContainText('20 à 35');
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-export="json"]').click();
+      await downloading;
+    } else if (outil.slug === 'seuil-signification-audit') {
+      await page.getByText('Importer des scénarios CSV', { exact: true }).click();
+      await page.locator('#sig-csv').setInputFiles({
+        name: 'fictif.csv', mimeType: 'text/csv',
+        buffer: Buffer.from(INPUT_FIELDS.join(';') + '\n0007;Scénario fictif;CA;1000000;1;2026;Balance;Motif;rate;70'),
+      });
+      await page.getByRole('button', { name: 'Lire le CSV', exact: true }).click();
+      await expect(page.locator('[data-mapping]')).toHaveCount(10);
+      for (let i = 0; i < INPUT_FIELDS.length; i++) {
+        await page.locator(`[data-mapping="${INPUT_FIELDS[i]}"]`).selectOption(String(i));
+      }
+      await page.locator('[data-sig-preview]').click();
+      await expect(page.locator('[data-sig-import-summary]')).toContainText('1 lignes');
+      await page.locator('[data-sig-import-valid]').check();
+      await page.locator('[data-sig-import-confirm]').click();
+      await expect(page.locator('[data-sig-table]')).toContainText('10000.00');
+      await page.getByRole('button', { name: 'Retenir 0007', exact: true }).click();
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-sig-export="json"]').click();
+      const raw = await readFile((await (await downloading).path())!, 'utf8');
+      expect(JSON.parse(raw).retainedId).toBe('0007');
+      page.once('dialog', dialog => dialog.accept());
+      await page.locator('[data-sig-reset]').click();
+      await expect(page.locator('[data-sig-summary]')).toContainText('0 scénario');
+      await page.getByText('Reprendre une sauvegarde JSON', { exact: true }).click();
+      await page.locator('#sig-json').setInputFiles({name: 'reprise.json', mimeType: 'application/json', buffer: Buffer.from(raw)});
+      await page.locator('[data-sig-restore] button').click();
+      await expect(page.locator('[data-sig-summary]')).toContainText('Retenu : 0007');
+      const exporting = page.waitForEvent('download');
+      await page.locator('[data-sig-export="json"]').click();
+      expect(JSON.parse(await readFile((await (await exporting).path())!, 'utf8'))).toEqual(JSON.parse(raw));
     } else if (outil.slug === 'modele-rapprochement-bancaire-excel-gratuit') {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');
@@ -449,8 +510,13 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
       const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/pseudonymisation\\.worker-[a-zA-Z0-9_-]+\\.js$`);
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
+    } else if (outil.slug === 'suivi-circularisation') {
+      const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/circularisation-worker-[a-zA-Z0-9_-]+\\.js$`);
+      // Parsing, preview and validated selection each create their own local Worker.
+      expect(requests).toHaveLength(3);
+      expect(requests.filter(request => !asset.test(request))).toEqual([]);
     } else expect(requests).toEqual([]);
-    page.off('request', listener);
+    context.off('request', listener);
   }
 });
 

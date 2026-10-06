@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "taches": [
+    {
+      "id": "2026-09-17-inserer-lien-comprendre-les-comptes-rendus-metier-dsn-1",
+      "slug": "comprendre-les-comptes-rendus-metier-dsn",
+      "type": "inserer-lien",
+      "cle": "lien-vers-pilier",
+      "motif": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches : ajouter le lien dans le corps, là où la carte des tâches est nommée, par republication scellée",
+      "mesure": {
+        "valeur": "absent",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-09-17"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "fait",
+      "creeLe": "2026-09-17",
+      "misAJourLe": "2026-09-17",
+      "traiteLe": "2026-09-17",
+      "commit": "e651bb1"
+    },
+    {
+      "id": "2026-09-17-inserer-lien-controler-les-bulletins-de-paie-avant-la-dsn-1",
+      "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+      "type": "inserer-lien",
+      "cle": "lien-vers-pilier",
+      "motif": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches : ajouter le lien dans le corps, là où la carte des tâches est nommée, par republication scellée",
+      "mesure": {
+        "valeur": "absent",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-09-17"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "fait",
+      "creeLe": "2026-09-17",
+      "misAJourLe": "2026-09-17",
+      "traiteLe": "2026-09-17",
+      "commit": "e651bb1"
+    },
+    {
+      "id": "2026-09-17-inserer-lien-suivre-la-production-sociale-dans-excel-1",
+      "slug": "suivre-la-production-sociale-dans-excel",
+      "type": "inserer-lien",
+      "cle": "lien-vers-pilier",
+      "motif": "ne lie pas le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches : ajouter le lien dans le corps, là où la carte des tâches est nommée, par republication scellée",
+      "mesure": {
+        "valeur": "absent",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-09-17"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "fait",
+      "creeLe": "2026-09-17",
+      "misAJourLe": "2026-09-17",
+      "traiteLe": "2026-09-17",
+      "commit": "e651bb1"
+    },
+    {
+      "id": "2026-09-17-reverifier-source-controler-les-bulletins-de-paie-avant-la-dsn-1",
+      "slug": "controler-les-bulletins-de-paie-avant-la-dsn",
+      "type": "reverifier-source",
+      "cle": "service-public-dsn",
+      "motif": "la citation exacte n'est plus dans https://entreprendre.service-public.gouv.fr/vosdroits/F34059 : relire la source, corriger l'extrait ou l'affirmation, puis republier",
+      "mesure": {
+        "valeur": "extrait absent",
+        "instrument": "ouverture de la source avec l’UA du vérificateur",
+        "date": "2026-09-17"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "fait",
+      "creeLe": "2026-09-17",
+      "misAJourLe": "2026-09-17",
+      "traiteLe": "2026-09-17",
+      "commit": "e651bb1"
+    },
+    {
+      "id": "2026-10-06-recaler-titre-prompt-chatgpt-expert-comptable-1",
+      "slug": "prompt-chatgpt-expert-comptable",
+      "type": "recaler-titre",
+      "cle": "chatgpt expert comptable",
+      "motif": "« chatgpt expert comptable » en position 12.2 avec 5 impressions sur 7 jours : titre ou introduction à recaler sur la requête",
+      "mesure": {
+        "valeur": "position 12.2, 5 impressions",
+        "instrument": "Search Console, 7 jours",
+        "date": "2026-10-06"
+      },
+      "gravite": "moyenne",
+      "cron": "C2",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    }
+  ]
+}

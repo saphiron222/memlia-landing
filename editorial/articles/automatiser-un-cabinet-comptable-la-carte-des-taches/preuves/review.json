@@ -3,20 +3,20 @@
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "kind": "editorial-review",
   "status": "PASS",
-  "checkedAt": "2026-10-03",
-  "articleSha256": "78060c52295ff76473df782c4c7133b2ac5dcefa02aada10251c51cf7cf7e91f",
-  "manifestSha256": "848959d4da94995271ddd442da89d33fdd0c0112b695b214c40c763b5bddb317",
+  "checkedAt": "2026-10-06",
+  "articleSha256": "0c19171ed756df0c3eaae72793c46b9dc92946511d922137ee1706c4230fe84e",
+  "manifestSha256": "42dfab20dc34646bad51b398d42e7f8d98abc4bd93a7d69be447257c587608e9",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
-  "reviewer": "qa:t_c9dd7b40",
+  "reviewer": "qa:doctrine-b2-independent",
   "criteria": [
     {
       "id": "intent-satisfaction",
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Réponse directe et deux angles morts séparés du test rouge, règle applicable corps.md:5/13/17/23/59."
+        "Pilier : réponse directe, définitions, carte par pôle et frontières maintenues. Le nouveau repère CAC nomme trois préparations concrètes et réserve sélection des travaux, appréciation et opinion au commissaire aux comptes (corps.md:36,158)."
       ]
     },
     {
@@ -24,7 +24,7 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "H1/onglet/description et format narratif cohérents ; aucun rang, volume ou réussite SEO revendiqués."
+        "Intention comprendre et format pillar-page conservés ; titre/onglet/description cohérents. Le candidat B2 ne change pas la stratégie de requête et n'ajoute aucun résultat SEO revendiqué. Aucune nouvelle recherche SERP effectuée ni position validée."
       ]
     },
     {
@@ -32,7 +32,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "RAW exact et attribution autorisée ; copies/extraits primaires conformes, âges4/4/5jours et portée méthode seulement ; métier frais lu."
+        "Les six affirmations officielles inchangées ont été relues contre les copies locales du 29/09/2026 et leurs SHA-256. Le périmètre CAC ajouté est une offre de préparation, pas une affirmation de conformité NEP ou une délégation d'opinion."
       ]
     },
     {
@@ -40,7 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Trois cas fictifs réellement exécutés, contre-oracle et mutant rouge ; illustrations distinctes du produit historique."
+        "Le tableau distingue le repère transversal EC des familles CAC ; inventaire fictif mis à jour, règle de relance fictive maintenue. Les illustrations ne prouvent ni un outil livré ni une performance mesurée."
       ]
     },
     {
@@ -48,7 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Un H1/langfr/canonical/OG/schema conformes, huit clics avec destination exacte et HTTP200, ancres présentes, aucun débordement320/375/768/1440."
+        "HTML candidat ouvert dans le navigateur puis servi localement en HTTP 200 : un H1, canonical exact, dates publication 16/09 et mise à jour 06/10, BlogPosting cohérent. Preview noindex, follow normale ; aucun lien ajouté vers une route CAC inexistante ; ancres internes présentes. Pas de débordement à la largeur observée de 1280 px. Pas de validation mobile, CI ou production dans cette revue."
       ]
     },
     {
@@ -56,7 +56,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Frontière/tableaux/cas extractibles et visibles, quinze paragraphes personnels préservés ; aucun score citation inventé."
+        "Définitions et tableaux lisibles dans le DOM. La restriction CAC est explicite dans le tableau et le paragraphe de limitation ; les huit familles CAC actives ne sont pas ajoutées au compte EC."
       ]
     },
     {
@@ -64,7 +64,7 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "Pilier réciproque et méthode/contact servis ; Confier cette tâche atteint contact au clavier, décision gardée au cabinet."
+        "Appel du pilier Confier une première tâche vers /contact conservé ; clôture méthode/service/garanties et décision humaine maintenues. La page service et llms.txt décrivent les mêmes demandes, réponses et comparaisons, sans promesse d'audit autonome."
       ]
     }
   ]
