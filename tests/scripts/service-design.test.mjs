@@ -33,11 +33,23 @@ test('une page à plat échoue, une page composée passe', () => {
     const rouge = auditerServiceDesign({ root });
     assert.equal(rouge.pass, false);
     assert.match(rouge.erreurs.join('\n'), /gabarit de direction artistique absent/);
-    assert.match(rouge.erreurs.join('\n'), /0 média\(s\), 2 requis/);
+    assert.match(rouge.erreurs.join('\n'), /0 média\(s\), 1 requis/);
 
-    writeFileSync(cible, pageComposee());
+    writeFileSync(cible, pageComposee().replace('<div data-service-media><figure data-proof="v2/service-tache-test"></figure></div>', ''));
     const vert = auditerServiceDesign({ root });
     assert.deepEqual(vert, { pass: true, services: 1, erreurs: [] });
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('deux occurrences du même cadre sont refusées', () => {
+  const root = fixture();
+  try {
+    writeFileSync(join(root, 'dist/automatisation/tache-test/index.html'), pageComposee());
+    const rouge = auditerServiceDesign({ root });
+    assert.equal(rouge.pass, false);
+    assert.match(rouge.erreurs.join('\n'), /cadre répété/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import SuiviCircularisation from '@/components/outils/SuiviCircularisation.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('suivi-circularisation');
+---
+<Outil outil={outil}><SuiviCircularisation /></Outil>
