@@ -8,9 +8,9 @@ async function assemble(page: import('@playwright/test').Page) {
   await page.locator('button[type=submit]').click();
 }
 test('R1 : navigation réelle isolée, original édité conservé sans stockage', async ({ page }) => {
-  // Ce parcours ouvre un second onglet : la suite complète a mesuré 29,8 s
-  // localement et atteint les 30 s en CI pendant son ouverture. Garder toutes
-  // les assertions, avec un budget propre à ce parcours multi-onglets.
+  // Revenir explicitement dans chaque onglet comme le ferait le visiteur.
+  // Le prédicat URL suit la navigation côté navigateur, sans demander au
+  // renderer de l'onglet en arrière-plan d'évaluer le matcher DOM.
   test.setTimeout(90_000);
   await page.goto(gen); await page.locator('[data-seed="pieces"]').click(); await assemble(page);
   const edited = (await page.locator('[data-editor]').inputValue()) + '\nNote abstraite à conserver.';
@@ -18,16 +18,23 @@ test('R1 : navigation réelle isolée, original édité conservé sans stockage'
   const before = await page.locator('form').evaluate((f: HTMLFormElement) => Object.fromEntries(new FormData(f)));
   const popup = page.waitForEvent('popup');
   await page.locator(`a[href="${lib}"]`).first().click();
-  const other = await popup; await expect(other).toHaveURL(new RegExp(lib + '$'));
+  const other = await popup;
+  await other.bringToFront();
+  await expect(other).toHaveURL(url => url.pathname === lib && !url.search && !url.hash);
   expect(await other.evaluate(() => window.opener === null)).toBe(true);
   await other.locator('[data-model="compte-rendu"] [data-adapt]').click();
-  await expect(other).toHaveURL(new RegExp(gen + '$')); await assemble(other);
+  await expect(other).toHaveURL(url => url.pathname === gen && !url.search && !url.hash); await assemble(other);
   await expect(other.locator('[data-editor]')).toHaveValue(modelPrompt(MODELS.find(m => m.id === 'compte-rendu')!));
-  await expect(page).toHaveURL(new RegExp(gen + '$'));
+  await page.bringToFront();
+  await expect(page).toHaveURL(url => url.pathname === gen && !url.search && !url.hash);
   await expect(page.locator('[data-editor]')).toHaveValue(edited);
   expect(await page.locator('form').evaluate((f: HTMLFormElement) => Object.fromEntries(new FormData(f)))).toEqual(before);
-  for (const tab of [page, other]) expect(await tab.evaluate(() => ({ local: localStorage.length, session: sessionStorage.length }))).toEqual({ local: 0, session: 0 });
+  for (const tab of [page, other]) {
+    await tab.bringToFront();
+    expect(await tab.evaluate(() => ({ local: localStorage.length, session: sessionStorage.length }))).toEqual({ local: 0, session: 0 });
+  }
   await other.close();
+  await page.bringToFront();
   const downloaded = page.waitForEvent('download'); await page.locator('[data-download]').click();
   expect(await readFile((await (await downloaded).path())!, 'utf8')).toBe(edited);
 });
