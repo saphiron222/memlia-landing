@@ -4,19 +4,33 @@ import routes from './table-keyboard.routes.json' with { type: 'json' };
 
 const require = createRequire(import.meta.url);
 async function waitForTabScroll(page: Page) {
-  await expect.poll(() => page.evaluate(async () => {
+  const settled = await page.evaluate(async () => {
     const active = document.activeElement;
-    // WebKit can traverse the document itself between keyboard targets.
-    if (!active || active === document.body) return true;
-    const box = active.getBoundingClientRect();
-    // An intermediate target can intersect before native smooth scrolling
-    // starts. Only settle its movement here: links inside a horizontally
-    // scrolled table need not intersect. The region oracle below enforces
-    // viewport intersection and rendered visibility for the tested focus.
-    await new Promise(resolve => setTimeout(resolve, 250));
-    const settled = active.getBoundingClientRect();
-    return active === document.activeElement && Math.abs(settled.top - box.top) < 0.5 && Math.abs(settled.left - box.left) < 0.5;
-  }), { timeout: 15_000 }).toBe(true);
+    const ancestors: Element[] = [];
+    for (let el = active; el; el = el.parentElement) ancestors.push(el);
+    const position = () => {
+      const box = active?.getBoundingClientRect();
+      return [window.scrollX, window.scrollY, box?.top ?? 0, box?.left ?? 0,
+        ...ancestors.flatMap(el => [el.scrollLeft, el.scrollTop])];
+    };
+    const start = performance.now();
+    let lastMovement = start;
+    let previous = position();
+    // A fixed/sticky target can stand still while its document keeps moving.
+    // Observe the viewport and nested scroll containers over consecutive frames,
+    // including the delayed start of a native keyboard smooth scroll.
+    while (performance.now() - start < 15_000) {
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      const next = position();
+      if (next.some((value, index) => Math.abs(value - previous[index]) >= 0.5)) lastMovement = performance.now();
+      previous = next;
+      if (performance.now() - start >= 750 && performance.now() - lastMovement >= 350) {
+        return active === document.activeElement;
+      }
+    }
+    return false;
+  });
+  expect(settled, 'Défilement natif du viewport et des ancêtres terminé avant la touche suivante').toBe(true);
 }
 async function hasRenderedFocus(region: Locator) {
   return region.evaluate(async el => {
@@ -40,6 +54,14 @@ async function hasRenderedFocus(region: Locator) {
   });
 }
 
+test('attente clavier observe aussi le scroll du document derrière une cible fixe', async ({ page }) => {
+  await page.setContent('<style>html { scroll-behavior:smooth }</style><button style="position:fixed;top:0">Cible fixe</button><div style="height:12000px"></div>');
+  await page.keyboard.press('Tab');
+  await page.evaluate(() => window.scrollTo({ top: 6000, behavior: 'smooth' }));
+  await waitForTabScroll(page);
+  expect(await page.evaluate(() => window.scrollY)).toBe(6000);
+});
+
 for (const hiddenBy of ['opacity', 'viewport']) {
   test(`oracle de focus refuse ${hiddenBy}`, async ({ page }) => {
     await page.setContent(`<div style="${hiddenBy === 'opacity' ? 'opacity:0' : 'position:absolute;top:2000px'}"><div tabindex="0" style="outline:3px solid green;width:200px;height:100px">Tableau</div></div>`);
@@ -54,7 +76,7 @@ for (const hiddenBy of ['opacity', 'viewport']) {
 for (const width of [320, 375, 1440]) {
   for (const route of routes) {
     test(`${width}px ${route}: tableaux accessibles au clavier`, async ({ page }, testInfo) => {
-      test.setTimeout(120_000);
+      test.setTimeout(180_000);
       await page.setViewportSize({ width, height: 900 });
       expect((await page.goto(route))?.status()).toBe(200);
       await page.evaluate(() => document.fonts.ready);
@@ -102,7 +124,13 @@ for (const width of [320, 375, 1440]) {
         await waitForTabScroll(page);
         await page.keyboard.press('Shift+Tab');
         await expect(region).toBeFocused();
+        await waitForTabScroll(page);
         await expect.poll(() => hasRenderedFocus(region), { timeout: 15_000 }).toBe('visible');
+        await testInfo.attach(`table-${i + 1}-return.json`, { body: JSON.stringify(await region.evaluate(el => {
+          const box = el.getBoundingClientRect();
+          return { scrollY, x: box.x, y: box.y, width: box.width, height: box.height, viewport: { width: innerWidth, height: innerHeight } };
+        })), contentType: 'application/json' });
+        if (i === 0) await page.screenshot({ path: testInfo.outputPath('table-return.png') });
         await page.keyboard.press('Tab');
         await waitForTabScroll(page);
       }
