@@ -18,15 +18,22 @@ for (const entry of GLOSSARY_ENTRIES) {
 const letters = [...byLetter.keys()];
 // Décision de Kevin du 06/10/2026 : pas de bloc « Sources ». L'organisme externe qui établit la définition est cité
 // entre parenthèses à sa fin, son nom portant le lien ; les renvois internes restent dans « Pour aller plus loin ».
+// Chaque source externe garde son lien : un second document du même éditeur se nomme par son libellé court.
 const citations = (sourceIds: string[]) => {
-  const vus = new Set<string>();
+  const editeurs = new Set<string>();
+  const urls = new Set<string>();
   return sourceIds.flatMap((sourceId) => {
     const source = GLOSSARY_SOURCES[sourceId];
     if (!source) throw new Error(`Source inconnue : ${sourceId}`);
-    const nom = source.publisher.split(' — ')[0];
-    if (source.publisher === 'Memlia' || vus.has(nom)) return [];
-    vus.add(nom);
-    return [{ nom, url: source.url, titre: source.title }];
+    if (source.publisher === 'Memlia' || urls.has(source.url)) return [];
+    urls.add(source.url);
+    const editeur = source.publisher.split(' — ')[0];
+    if (!editeurs.has(editeur)) {
+      editeurs.add(editeur);
+      return [{ nom: editeur, url: source.url, titre: source.title }];
+    }
+    if (!source.libelleCourt) throw new Error(`Second document ${editeur} sans libellé court : ${sourceId}`);
+    return [{ nom: source.libelleCourt, url: source.url, titre: source.title }];
   });
 };
 const graph = {

@@ -7,7 +7,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     for (const [route, phrases] of [
       ['/garanties', ['Une donnée absente, une pièce illisible ou un cas hors règle arrête la préparation', 'Votre équipe décide de la suite.', 'Les flux du service sont documentés par mission']],
       ['/contact', ['un cas courant et une exception', 'comprendre la page du site à l’origine de ma demande']],
-      ['/automatisation-cabinet-comptable', ['Pour le commissariat aux comptes, nous préparons aussi', 'Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion.', 'l’environnement autorisé du cabinet']],
+      ['/automatisation-cabinet-comptable', ['La sélection des tiers à circulariser', 'Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion.', 'l’environnement autorisé du cabinet']],
       ['/methode', ['l’environnement autorisé du cabinet']],
       ['/', ['Collecter, comparer, préparer', 'l’environnement autorisé du cabinet']],
     ] as const) {

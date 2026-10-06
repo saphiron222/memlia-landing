@@ -4,6 +4,8 @@ export interface GlossarySource {
   title: string;
   url: string;
   checkedAt: string;
+  /** Nom du lien quand l'entrée cite déjà le même éditeur : « (CNIL, article 4 du RGPD) ». */
+  libelleCourt?: string;
 }
 
 export interface GlossaryLink {
@@ -39,6 +41,7 @@ export const GLOSSARY_SOURCES: Record<string, GlossarySource> = {
   'cnil-roles-rgpd': {
     id: 'cnil-roles-rgpd', publisher: 'CNIL',
     title: 'RGPD, article 4 : responsable de traitement et sous-traitant', url: 'https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1', checkedAt: '2026-10-04',
+    libelleCourt: 'article 4 du RGPD',
   },
   'net-dsn-overview': {
     id: 'net-dsn-overview', publisher: 'Net-entreprises',
@@ -59,6 +62,7 @@ export const GLOSSARY_SOURCES: Record<string, GlossarySource> = {
   'net-fiabilisation': {
     id: 'net-fiabilisation', publisher: 'Net-entreprises',
     title: 'La fiabilisation des données de la DSN', url: 'https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/', checkedAt: '2026-09-14',
+    libelleCourt: 'fiabilisation de la DSN',
   },
   'cnil-donnee': {
     id: 'cnil-donnee', publisher: 'CNIL',
