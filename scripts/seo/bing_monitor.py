@@ -60,8 +60,10 @@ class Bing:
             raise RuntimeError(f'{method}: HTTP {exc.code}') from None
         except Exception:
             raise RuntimeError(f'{method}: échec réseau/JSON') from None
-        if 'd' not in data or 'ErrorCode' in data:
+        if not isinstance(data, dict) or 'd' not in data or 'ErrorCode' in data:
             raise RuntimeError(f'{method}: réponse API invalide')
+        if write and data['d'] is not None:
+            raise RuntimeError(f'{method}: réponse de soumission invalide')
         return data['d']
 
 
@@ -117,7 +119,9 @@ def submit(client, current, state, persist, today):
         state.setdefault('history', []).append(record)
         persist(state)
         try:
-            client.call('SubmitUrlBatch', urlList=urls)
+            response = client.call('SubmitUrlBatch', urlList=urls)
+            if response is not None:
+                raise RuntimeError('SubmitUrlBatch: réponse de soumission invalide')
         except Exception:
             record['status'] = 'ambiguous_or_failed'
             persist(state)
@@ -192,6 +196,11 @@ def main():
             data = json.loads(prefix.with_suffix('.json').read_text())
             available = sum(row['api_status'] == 'ok' for row in data['urls'])
             print(f'Relevé Bing : {len(current)} URL ; UrlInfo exploitable {available}/{len(current)}. Indexation par URL ND. Rapport : {prefix.with_suffix(".md")}')
+            for method, source in data['sources'].items():
+                if source['status'] == 'error':
+                    print(f"Bing source perdue : {method} — {source['error']}", file=sys.stderr)
+            if all(source['status'] == 'error' for source in data['sources'].values()) and not any(row['api_status'] in ('ok', 'empty') for row in data['urls']):
+                raise RuntimeError('NON_MESURE : panne totale des mesures Bing ; traces conservées')
         else:
             path = args.output / 'submission-state.json'
             state = json.loads(path.read_text()) if path.exists() else {}

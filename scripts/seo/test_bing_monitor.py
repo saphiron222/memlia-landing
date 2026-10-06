@@ -1,4 +1,6 @@
 import copy
+import contextlib
+import io
 import importlib.util
 import json
 from pathlib import Path
@@ -70,5 +72,39 @@ class Tests(unittest.TestCase):
     def test_malformed_success_rejected(self):
         with patch.object(bing,'fetch',return_value=b'{"ErrorCode":2}'):
             with self.assertRaises(RuntimeError): bing.Bing('secret').call('GetFeeds')
+
+    def test_submit_null_success(self):
+        with patch.object(bing, 'fetch', return_value=b'{"d":null}'):
+            self.assertIsNone(bing.Bing('secret').call('SubmitUrlBatch', urlList=['a']))
+
+    def test_submit_invalid_responses_keep_pending(self):
+        for raw in (b'{"d":{"ErrorCode":2}}', b'{"d":false}', b'{"d":[]}', b'{"d":"ok"}', b'{}', b'null'):
+            with self.subTest(raw=raw):
+                state = {}
+                def transport(url, body=None):
+                    return raw if body else b'{"d":{"DailyQuota":100,"MonthlyQuota":2600}}'
+                with patch.object(bing, 'fetch', side_effect=transport), self.assertRaises(RuntimeError):
+                    bing.submit(bing.Bing('secret'), {'a':None}, state, lambda _:None, 'day')
+                self.assertEqual(bing.pending({'a':None}, state), ['a'])
+                self.assertEqual(state['daily']['day'], 1)
+                self.assertEqual(state['history'][-1]['status'], 'ambiguous_or_failed')
+
+    def test_weekly_outage_and_partial_degradation(self):
+        class Outage:
+            def __init__(self, healthy): self.healthy = healthy
+            def call(self, method, **kwargs):
+                if method == self.healthy: return [] if method == 'GetFeeds' else None
+                raise RuntimeError(method + ': échec réseau/JSON')
+        for healthy in (None, 'GetFeeds', 'GetUrlInfo'):
+            with self.subTest(healthy=healthy), tempfile.TemporaryDirectory() as td:
+                stderr = io.StringIO()
+                with patch.object(bing, 'sitemap', return_value={'a':None}), patch.object(bing, 'credential', return_value='secret'), patch.object(bing, 'Bing', return_value=Outage(healthy)), patch('sys.argv', ['bing', 'weekly', '--output', td]), contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(stderr):
+                    if healthy is None:
+                        with self.assertRaisesRegex(RuntimeError, 'NON_MESURE'): bing.main()
+                    else:
+                        bing.main()
+                self.assertIn('Bing source perdue', stderr.getvalue())
+                self.assertNotIn('secret', stderr.getvalue())
+                self.assertEqual(len(list(Path(td).glob('bing-*.json'))), 1)
 
 if __name__ == '__main__': unittest.main()
