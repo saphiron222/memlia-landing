@@ -125,8 +125,8 @@ export const FAMILLES: readonly Famille[] = [
   f('tresorerie-previsionnelle', 'Trésorerie prévisionnelle', 'conseil-missions', 'Projeter la trésorerie d’un client depuis les échéances connues, signaler les tensions.'),
   f('financement-aides', 'Financement et aides', 'conseil-missions', 'Constituer les dossiers de financement et d’aides à partir du dossier permanent.'),
   f('evaluation-transmission', 'Évaluation et transmission', 'conseil-missions', 'Préparer les éléments chiffrés d’une évaluation ou d’une transmission.'),
-  // Audit et commissariat aux comptes : listé, pas ouvert.
-  f('audit-legal', 'Audit légal', 'audit-cac', 'Aucun besoin documenté, aucun module : famille listée, non ouverte.', false),
+  // Identifiant historique EC conservé ; les tâches sont détaillées dans les familles CAC.
+  f('audit-legal', 'Audit légal', 'audit-cac', 'Les tâches de commissariat aux comptes sont détaillées dans les familles CAC : préparation mécanique, appréciation et opinion humaines.', false),
   // CAC : ouverture éditoriale interne C1 + C2, pas autorisation de publication.
   f('cac-fec-reception', 'Réception du FEC', 'certification', 'Constater la réception et les défauts du fichier avant les travaux, sans conclure sur les comptes.', true, 'cac'),
   f('cac-demandes-documents', 'Demandes de documents', 'certification', 'Préparer la liste par cycle, suivre les manquants et proposer les relances au chef de mission.', true, 'cac'),
