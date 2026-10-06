@@ -42,7 +42,7 @@ const graph = {
   <div class="feuille outils-feuille">
     <OutilHero
       title={h1}
-      description="Chaque outil publié ici annonce ses entrées, son résultat et ses limites. Les valeurs restent dans votre navigateur ; devant un cas hors règle, l’outil refuse de produire un résultat."
+      description="Sans compte, chaque outil publié ici annonce ses entrées, son résultat et ses limites. Les valeurs restent dans votre navigateur ; devant un cas hors règle, l’outil refuse de produire un résultat."
       proof="v2/24-outils-hub"
       titleId="outils-titre"
       eyebrow="Règles visibles, calculs locaux"
@@ -62,7 +62,7 @@ const graph = {
                   <div><dt>Entrée</dt><dd>{outil.promesse.entree}</dd></div>
                   <div><dt>Résultat</dt><dd>{outil.promesse.resultat}</dd></div>
                 </dl>
-                <a class="outil-carte-action" href={outilPath(outil)}>Utiliser sans compte <span aria-hidden="true">→</span></a>
+                <a class="outil-carte-action" href={outilPath(outil)}>{outil.libelleAction} <span aria-hidden="true">→</span></a>
               </li>
             ))}
           </ul>

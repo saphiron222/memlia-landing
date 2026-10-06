@@ -64,6 +64,8 @@ const appel = {
             <p class="pv-etape-numero">Étape {i + 1}</p>
             <h2>{e.titre}</h2>
             {e.paragraphes.map((p, j) => (<p class={j === 0 ? undefined : 'texte-2'}>{p}</p>))}
+            {e.id === 'eprouver' && <p class="texte-2">Avant l’essai, vous pouvez <a href="/blog/logiciel-ia-comptabilite">comparer le parcours complet d’un outil IA</a> : entrée, résultat, exception et reprise.</p>}
+            {e.id === 'valider' && <p class="texte-2">Pour relier les tests au résultat visible, voyez comment <a href="/blog/tests-verts-et-regle-des-trois-passes">recetter le parcours en trois passes</a>.</p>}
           </div>
           <ProofMedia id={e.image} />
         </li>

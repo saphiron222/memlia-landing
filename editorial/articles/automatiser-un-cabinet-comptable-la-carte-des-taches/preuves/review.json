@@ -3,20 +3,21 @@
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "kind": "editorial-review",
   "status": "PASS",
-  "checkedAt": "2026-10-06",
-  "articleSha256": "0c19171ed756df0c3eaae72793c46b9dc92946511d922137ee1706c4230fe84e",
-  "manifestSha256": "42dfab20dc34646bad51b398d42e7f8d98abc4bd93a7d69be447257c587608e9",
+  "checkedAt": "2026-10-07",
+  "articleSha256": "58424e8ea216b892911f5263a8a4ee52e312868a34002f41430831ede1283171",
+  "manifestSha256": "d4db5b3071a3d2309b4039cc827fb577f38c5a100691a451527e967684a3ba78",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
-  "reviewer": "qa:doctrine-b2-independent",
+  "reviewer": "qa:h4-independent-hermes",
   "criteria": [
     {
       "id": "intent-satisfaction",
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Pilier : réponse directe, définitions, carte par pôle et frontières maintenues. Le nouveau repère CAC nomme trois préparations concrètes et réserve sélection des travaux, appréciation et opinion au commissaire aux comptes (corps.md:36,158)."
+        "Pilier : réponse directe, définitions, carte par pôle et frontières maintenues. Le nouveau repère CAC nomme trois préparations concrètes et réserve sélection des travaux, appréciation et opinion au commissaire aux comptes (corps.md:36,158).",
+        "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4."
       ]
     },
     {
@@ -24,7 +25,8 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Intention comprendre et format pillar-page conservés ; titre/onglet/description cohérents. Le candidat B2 ne change pas la stratégie de requête et n'ajoute aucun résultat SEO revendiqué. Aucune nouvelle recherche SERP effectuée ni position validée."
+        "Intention comprendre et format pillar-page conservés ; titre/onglet/description cohérents. Le candidat B2 ne change pas la stratégie de requête et n'ajoute aucun résultat SEO revendiqué. Aucune nouvelle recherche SERP effectuée ni position validée.",
+        "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4."
       ]
     },
     {
@@ -32,7 +34,8 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Les six affirmations officielles inchangées ont été relues contre les copies locales du 29/09/2026 et leurs SHA-256. Le périmètre CAC ajouté est une offre de préparation, pas une affirmation de conformité NEP ou une délégation d'opinion."
+        "Les six affirmations officielles inchangées ont été relues contre les copies locales du 29/09/2026 et leurs SHA-256. Le périmètre CAC ajouté est une offre de préparation, pas une affirmation de conformité NEP ou une délégation d'opinion.",
+        "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4."
       ]
     },
     {
@@ -40,7 +43,8 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le tableau distingue le repère transversal EC des familles CAC ; inventaire fictif mis à jour, règle de relance fictive maintenue. Les illustrations ne prouvent ni un outil livré ni une performance mesurée."
+        "Le tableau distingue le repère transversal EC des familles CAC ; inventaire fictif mis à jour, règle de relance fictive maintenue. Les illustrations ne prouvent ni un outil livré ni une performance mesurée.",
+        "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4."
       ]
     },
     {
@@ -48,7 +52,9 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "HTML candidat ouvert dans le navigateur puis servi localement en HTTP 200 : un H1, canonical exact, dates publication 16/09 et mise à jour 06/10, BlogPosting cohérent. Preview noindex, follow normale ; aucun lien ajouté vers une route CAC inexistante ; ancres internes présentes. Pas de débordement à la largeur observée de 1280 px. Pas de validation mobile, CI ou production dans cette revue."
+        "HTML candidat ouvert dans le navigateur puis servi localement en HTTP 200 : un H1, canonical exact, dates publication 16/09 et mise à jour 06/10, BlogPosting cohérent. Preview noindex, follow normale ; aucun lien ajouté vers une route CAC inexistante ; ancres internes présentes. Pas de débordement à la largeur observée de 1280 px. Pas de validation mobile, CI ou production dans cette revue.",
+        "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4.",
+        "H4 exécuté : preview Astro 64 pages, 10 tests ciblés PASS ; 33 destinations locales HTTP 200, fragment rapprochement-bancaire présent, 48 contrôles de largeur sur huit routes sans overflow ; captures hub 1440/375 inspectées. Preview du pilier noindex, follow ; pas de CI générale ni de production."
       ]
     },
     {
@@ -56,7 +62,8 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Définitions et tableaux lisibles dans le DOM. La restriction CAC est explicite dans le tableau et le paragraphe de limitation ; les huit familles CAC actives ne sont pas ajoutées au compte EC."
+        "Définitions et tableaux lisibles dans le DOM. La restriction CAC est explicite dans le tableau et le paragraphe de limitation ; les huit familles CAC actives ne sont pas ajoutées au compte EC.",
+        "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4."
       ]
     },
     {
@@ -64,7 +71,9 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "Appel du pilier Confier une première tâche vers /contact conservé ; clôture méthode/service/garanties et décision humaine maintenues. La page service et llms.txt décrivent les mêmes demandes, réponses et comparaisons, sans promesse d'audit autonome."
+        "Appel du pilier Confier une première tâche vers /contact conservé ; clôture méthode/service/garanties et décision humaine maintenues. La page service et llms.txt décrivent les mêmes demandes, réponses et comparaisons, sans promesse d'audit autonome.",
+        "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4.",
+        "H4 : huit entrants contextuels dans main, quatre satellites dans le corps du pilier ; 16 cartes disponibles ont une action visible distincte issue de libelleAction, sans changement de promesse. Le vérificateur précise consigne versus réponse."
       ]
     }
   ]
