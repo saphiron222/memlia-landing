@@ -122,6 +122,8 @@ p.verifier_creneau(sys.argv[3], date(2026, 10, 2), ({}, {}, p.etat_publie(), {},
 function avancerMain(root, slug) {
   git(root, 'switch', 'main');
   writeFileSync(join(root, 'src/content/blog', `${slug}.md`), article('2026-10-03', false, 'Publié après la fourche'));
+  // Brouillon chez le candidat, publié sur main après la fourche : lu à la pointe, il apparaîtrait.
+  writeFileSync(join(root, 'src/content/blog/brouillon-main.md'), article('2026-10-02', false));
   git(root, 'add', '--', 'src');
   git(root, 'commit', '-m', 'Publication fusionnée après la fourche');
   const tip = git(root, 'rev-parse', 'HEAD');
@@ -146,25 +148,26 @@ test('une PR en retard sur main qui ne touche pas au calendrier lit la publicati
 });
 
 test('une PR en retard sur main qui touche au calendrier doit intégrer main', () => {
-  for (const changer of [
-    (root) => writeFileSync(join(root, 'src/content/blog/nouveau.md'), article('2026-10-05', true)),
-    (root) => {
+  const changeurs = {
+    'nouvel article': (root) => writeFileSync(join(root, 'src/content/blog/nouveau.md'), article('2026-10-05', true)),
+    'backlog': (root) => {
       mkdirSync(join(root, 'docs/strategy/site-v3'), { recursive: true });
       writeFileSync(join(root, 'docs/strategy/site-v3/backlog-v3.json'), '[]\n');
     },
-  ]) {
-    for (const commit of [true, false]) {
+    'article suivi modifié': (root) => writeFileSync(join(root, 'src/content/blog/pilier.md'), article('2026-09-21', false, 'Titre modifié')),
+    'article suivi supprimé': (root) => rmSync(join(root, 'src/content/blog/pilier.md')),
+  };
+  for (const [nom, changer] of Object.entries(changeurs)) {
+    for (const mode of ['commit', 'index', 'arbre']) {
       const { root } = fixture();
       try {
         avancerMain(root, 'publie-apres-fourche');
         changer(root);
-        if (commit) {
-          git(root, 'add', '-A');
-          git(root, 'commit', '-m', 'Changement du calendrier sur une base en retard');
-        }
+        if (mode !== 'arbre') git(root, 'add', '-A');
+        if (mode === 'commit') git(root, 'commit', '-m', 'Changement du calendrier sur une base en retard');
         const result = state(root);
-        assert.notEqual(result.status, 0, 'un candidat du calendrier en retard doit être refusé');
-        assert.match(result.stderr, /non intégrée au candidat/);
+        assert.notEqual(result.status, 0, `${nom} (${mode}) : un candidat du calendrier en retard doit être refusé`);
+        assert.match(result.stderr, /non intégrée au candidat : le calendrier est modifié/);
       } finally { rmSync(root, { recursive: true, force: true }); }
     }
   }

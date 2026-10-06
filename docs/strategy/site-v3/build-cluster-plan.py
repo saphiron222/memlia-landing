@@ -183,7 +183,9 @@ def base_de_publication(pointe):
     modifies = git_publication('diff', '--name-only', fourche, '--', *CHEMINS_CALENDRIER).strip()
     nouveaux = git_publication('ls-files', '--others', '--exclude-standard', '--', *CHEMINS_CALENDRIER).strip()
     if modifies or nouveaux:
-        raise SystemExit('base de publication origin/main illisible ou non intégrée au candidat')
+        chemin = (modifies or nouveaux).splitlines()[0]
+        raise SystemExit('base de publication origin/main non intégrée au candidat : le calendrier est modifié '
+                         f'({chemin}), intégrer origin/main')
     return fourche
 
 
