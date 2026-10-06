@@ -14,6 +14,8 @@ Pour un serveur déjà construit, fournir `QA_URL`. Pour contrôler le site publ
 
 Les résultats JSON sont dans `.qa/table-keyboard.json`. Chaque cas conserve une capture `table-focus.png` dans `.qa/table-results`. Les tests Chromium font également partie de `npm run test`, sans retirer de contrôle existant.
 
+Avant toute assertion de focus visible et toute capture, l'oracle attend une intersection d'au moins 24 pixels dans chaque axe avec le viewport, une opacité cumulée des ancêtres d'au moins 0,99, leur visibilité et la stabilisation de la position sur deux frames. Il utilise uniquement Tab : aucun focus forcé ni CSS de production neutralisé. Deux fixtures négatives (ancêtre transparent et tableau hors viewport) empêchent de valider le seul style calculé du contour.
+
 ## Recette manuelle publique
 
 1. Ouvrir une route de la liste dans Chromium puis Safari, aux trois largeurs.
