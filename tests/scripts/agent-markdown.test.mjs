@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import MarkdownIt from 'markdown-it';
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
@@ -13,7 +14,7 @@ test('conserve le contenu principal, les liens absolus, les listes, le code et l
   assert.match(md, /# Titre & sens/);
   assert.match(md, /Limite utile/);
   assert.match(md, /\[la source\]\(https:\/\/memlia.fr\/source#preuve\)/);
-  assert.match(md, /3\. Étape\n  - Sous-étape/);
+  assert.match(md, /3\. Étape\n\n   - Sous-étape/);
   assert.match(md, /\| Règle \| Limite \|\n\| --- \| --- \|\n\| A \\\| B \| Une<br>Deux \|/);
   assert.match(md, /```\na\nb\n```/);
   assert.doesNotMatch(md, /Menu|Sommaire|Secret|Décor|INTERNE|Formulaire|Pied|Titre SEO/);
@@ -50,4 +51,35 @@ test('génère uniquement les routes sitemap, après nettoyage des sources, de f
 
 test('refuse un HTML sans main plutôt que de publier la navigation', () => {
   assert.throws(() => pageMarkdown('<html><body>Menu</body></html>', 'https://memlia.fr/'), /main/);
+});
+
+const markdownParser = new MarkdownIt();
+test('le lien de repli sans JavaScript reste un lien Markdown, pas du HTML brut', () => {
+  const md = pageMarkdown('<main><h1>Vidéo</h1><noscript><p><a href="/video.mp4">Télécharger la vidéo</a></p></noscript></main>', 'https://memlia.fr/');
+  const links = markdownParser.parse(md, {}).flatMap(token => token.children ?? []).filter(token => token.type === 'link_open');
+  assert.equal(links.length, 1);
+  assert.equal(links[0].attrGet('href'), 'https://memlia.fr/video.mp4');
+  assert.doesNotMatch(md, /<a|<p/);
+});
+test('R1 : un parseur indépendant retrouve le code littéral en prose et tableaux', () => {
+  const values = ['proposition_a_valider', '[S21.G00]', 'C:\\dossier\\paie', '`champ`', 'a``b', 'a|b'];
+  const codes = values.map(value => `<code>${value}</code>`).join(' ');
+  const md = pageMarkdown(`<main><h1>Code</h1><p>${codes}</p><table><tr><th>Champ</th></tr><tr><td>${codes}</td></tr></table></main>`, 'https://memlia.fr/test');
+  const parsed = markdownParser.parse(md, {}).flatMap(token => token.children ?? []);
+  assert.deepEqual(parsed.filter(token => token.type === 'code_inline').map(token => token.content), [...values, ...values]);
+});
+
+test('R2 : cartes liées et listes multiparagraphes conservent titres, libellés et items', () => {
+  const md = pageMarkdown('<main><h1>Guide</h1><a href="/outil"><h3>Outil utile</h3><p>Une règle précise.</p></a><ol><li><h3>Étape une</h3><p>Premier paragraphe.</p><p>Suite de la première étape.</p><ul><li>Sous-étape</li></ul></li><li><h3>Étape deux</h3><p>Second paragraphe.</p></li><li><h3>Étape trois</h3><p>Dernier paragraphe.</p></li></ol></main>', 'https://memlia.fr/test');
+  const tokens = markdownParser.parse(md, {});
+  assert.deepEqual(tokens.filter(token => token.type === 'heading_open').map(token => token.tag), ['h1', 'h3', 'h3', 'h3', 'h3']);
+  const links = tokens.flatMap(token => token.children ?? []).filter(token => token.type === 'link_open');
+  assert.equal(links.length, 1);
+  assert.equal(links[0].attrGet('href'), 'https://memlia.fr/outil');
+  assert.match(markdownParser.render(md), /<a href="https:\/\/memlia.fr\/outil">Outil utile Une règle précise\.<\/a>/);
+  const items = tokens.filter(token => token.type === 'list_item_open');
+  assert.equal(items.length, 4);
+  assert.equal(items.filter(token => token.level === 1).length, 3);
+  const continuation = tokens.find(token => token.type === 'inline' && token.content === 'Suite de la première étape.');
+  assert.equal(continuation.level, 3);
 });

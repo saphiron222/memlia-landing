@@ -13,10 +13,11 @@ function find(node, tag) {
   for (const child of children(node)) { const found = find(child, tag); if (found) return found; }
 }
 const escapeText = text => text.replace(/\\/g, '\\\\').replace(/([*_[\]`])/g, '\\$1');
+const rawText = node => node.nodeName === '#text' ? node.value : children(node).map(rawText).join('');
 
 /** Le HTML final est la seule source : pas de lecture du corpus interne scellé. */
 export function pageMarkdown(html, url) {
-  const main = find(parse(html), 'main');
+  const main = find(parse(html, { scriptingEnabled: false }), 'main');
   if (!main) throw new Error(`${url} : main absent`);
   function render(node, depth = 0) {
     if (node.nodeName === '#text') return escapeText(node.value.replace(/\s+/g, ' '));
@@ -30,18 +31,30 @@ export function pageMarkdown(html, url) {
       const href = attr(node, 'href');
       if (!href || !text) return text;
       const target = new URL(href, url);
-      return ['https:', 'http:', 'mailto:', 'tel:'].includes(target.protocol) ? `[${text}](${target.href.replace(/\(/g, '%28').replace(/\)/g, '%29')})` : text;
+      if (!['https:', 'http:', 'mailto:', 'tel:'].includes(target.protocol)) return text;
+      const destination = target.href.replace(/\(/g, '%28').replace(/\)/g, '%29');
+      // Une ancre HTML peut englober une carte, mais un lien Markdown est inline.
+      // Conserver les titres comme blocs et le libellé complet comme un seul lien.
+      if (text.includes('\n\n')) {
+        const headings = [];
+        function collectHeadings(child) {
+          if (/^h[1-6]$/.test(child.tagName ?? '')) headings.push(render(child, depth).trim());
+          else for (const descendant of children(child)) collectHeadings(descendant);
+        }
+        collectHeadings(node);
+        return `\n\n${headings.length ? `${headings.join('\n\n')}\n\n` : ''}[${text.replace(/(^|\n)#{1,6} /g, '$1').replace(/\s+/g, ' ').trim()}](${destination})\n\n`;
+      }
+      return `[${text}](${destination})`;
     }
     if (tag === 'strong' || tag === 'b') return `**${body()}**`;
     if (tag === 'em' || tag === 'i') return `*${body()}*`;
     if (tag === 'pre') {
-      const raw = node => node.nodeName === '#text' ? node.value : children(node).map(raw).join('');
-      const text = raw(node).trimEnd();
+      const text = rawText(node).trimEnd();
       const fence = '`'.repeat(Math.max(3, ...[...text.matchAll(/`+/g)].map(m => m[0].length + 1)));
       return `\n\n${fence}\n${text}\n${fence}\n\n`;
     }
     if (tag === 'code') {
-      const text = body();
+      const text = rawText(node).replace(/\s+/g, ' ');
       const fence = '`'.repeat(Math.max(1, ...[...text.matchAll(/`+/g)].map(m => m[0].length + 1)));
       return `${fence} ${text} ${fence}`;
     }
@@ -49,9 +62,11 @@ export function pageMarkdown(html, url) {
       let index = Number(attr(node, 'start') ?? 1);
       const items = children(node).filter(n => n.tagName === 'li').map(li => {
         const value = children(li).map(child => render(child, depth + 1)).join('').trim();
-        return `${'  '.repeat(depth)}${tag === 'ol' ? `${index++}.` : '-'} ${value}`;
+        const marker = tag === 'ol' ? `${index++}. ` : '- ';
+        const lines = value.split('\n');
+        return `${marker}${lines[0]}${lines.slice(1).map(line => `\n${line ? ' '.repeat(marker.length) + line : ''}`).join('')}`;
       });
-      return `\n${items.join('\n')}\n`;
+      return `\n\n${items.join('\n\n')}\n\n`;
     }
     if (tag === 'table') {
       const rows = [];
