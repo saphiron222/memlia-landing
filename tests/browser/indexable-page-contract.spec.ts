@@ -5,7 +5,7 @@ const routes = [
   '/blog',
   '/glossaire',
   '/outils-comptables-gratuits',
-  '/outils-comptables-gratuits/calculateur-date-echeance-facture',
+  // L’échéance suspendue a son contrat noindex et sa recette six largeurs dans outils.spec.ts.
   '/outils-comptables-gratuits/calculateur-marge-commerciale',
   '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit',
 ] as const;

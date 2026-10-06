@@ -9,9 +9,11 @@ import typedSitemaps from './scripts/lib/sitemaps.mjs';
 
 import { SITE, PAGES_NOINDEX } from './src/data/site.mjs';
 import { BLOG, lireArticlesPublies } from './src/data/blog.mjs';
+import { OUTILS_HUB_PATH, OUTILS_DISPONIBLES, outilPath } from './src/data/outils.ts';
 import { parseBlogPreviewSlugs } from './src/data/blog-visibility.mjs';
 
 const BLOG_PREVIEW_SLUGS = new Set(parseBlogPreviewSlugs(process.env.BLOG_PREVIEW_SLUGS ?? process.env.BLOG_PREVIEW_SLUG));
+const OUTILS_INDEXABLES = new Set(OUTILS_DISPONIBLES.map(outilPath));
 
 /**
  * Une page de service préparée existe dans le rendu pour la preview, mais reste `noindex` et
@@ -66,6 +68,7 @@ export default defineConfig({
       filter: (page) => {
         const path = new URL(page).pathname.replace(/\/$/, '') || '/';
         if (PAGES_NOINDEX.includes(path)) return false;
+        if (path.startsWith(`${OUTILS_HUB_PATH}/`) && !OUTILS_INDEXABLES.has(path)) return false;
         if (BLOG_PREVIEW_SLUGS.has(path.slice(`${BLOG.chemin}/`.length))) return false;
         if (path.startsWith('/automatisation/') && !SERVICES_PUBLIES.has(path)) return false;
 
