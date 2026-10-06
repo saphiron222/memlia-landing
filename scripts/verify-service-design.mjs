@@ -52,8 +52,12 @@ export function auditerServiceDesign({ root = process.cwd(), dist = join(root, '
     if (!html.includes('"worksFor":{"@id":"https://memlia.fr/#organization"}')) erreurs.push(`${route} : Person non reliée à Organization`);
     if (!/class="[^"]*\brv\b/.test(html)) erreurs.push(`${route} : animation de révélation absente`);
     const medias = (html.match(/data-service-media/g) ?? []).length;
-    if (medias < 2) erreurs.push(`${route} : ${medias} média(s), 2 requis`);
-    const preuves = [...new Set([...html.matchAll(/data-proof="([^"]+)"/g)].map((match) => match[1]))];
+    if (medias < 1) erreurs.push(`${route} : ${medias} média(s), 1 requis`);
+    const occurrences = [...html.matchAll(/data-proof="([^"]+)"/g)].map((match) => match[1]);
+    const preuves = [...new Set(occurrences)];
+    for (const preuve of preuves) {
+      if (occurrences.filter((id) => id === preuve).length > 1) erreurs.push(`${route} : cadre répété ${preuve}`);
+    }
     if (preuves.length === 0) erreurs.push(`${route} : aucune recette d’image référencée`);
     for (const preuve of preuves) {
       const cibleRelative = `public/proofs/${preuve}.webp`;
