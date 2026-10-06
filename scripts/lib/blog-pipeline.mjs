@@ -60,9 +60,12 @@ export const CLAIM_TYPES = Object.freeze([
 ]);
 
 
-/** Cadence décidée le 16/09/2026 : quatre articles par semaine, au plus deux le même jour. */
-export const CANDIDATS_PAR_JOUR_MAX = 2;
-export const CANDIDATS_PAR_SEMAINE_MAX = 4;
+/** Décision du 05/10 appliquée le 06/10 ; les rejeux historiques restent bornés. */
+export const CANDIDATS_PAR_JOUR_MAX = 3;
+export const CANDIDATS_PAR_SEMAINE_MAX = 15;
+export const DEBUT_CADENCE_15 = '2026-10-06';
+export const plafondJourOrdinaire = (date) => date >= DEBUT_CADENCE_15 ? CANDIDATS_PAR_JOUR_MAX : 2;
+export const plafondSemaineOrdinaire = (semaine) => semaine >= '2026-W41' ? CANDIDATS_PAR_SEMAINE_MAX : 4;
 /** Reçu de publication : le dossier est scellé sur ses octets le jour de la mise en ligne. */
 export const PUBLICATION_SEAL_PATH = 'preuves/publication.json';
 /** La date déclarée est celle du calendrier de publication en Europe/Paris, pas la date UTC du fetch. */
@@ -105,21 +108,25 @@ export function verifierPlafonds(actifs, date, { serie = null, slug = null, root
     return;
   }
   if (estReliquatW39(slug)) throw new Error('Le reliquat W39 ne peut pas devenir un article ordinaire.');
+  if (date >= DEBUT_CADENCE_15 && [0, 6].includes(new Date(`${date}T00:00:00Z`).getUTCDay())) {
+    throw new Error(`Un article ordinaire paraît du lundi-vendredi : ${date}.`);
+  }
   const ordinaires = actifs.filter((candidate) => candidate.serie !== 'cicatrices');
   const rule = lireRattrapageIA(root);
   if (estRattrapageIA(slug) && root && !rule) throw new Error('Rattrapage IA : règle requise.');
   verifierDateRattrapageIA(rule, slug, date, serie);
   for (const candidate of ordinaires) verifierDateRattrapageIA(rule, candidate.slug, candidate.date, candidate.serie);
-  const plafondJour = plafondJourIA(rule, slug, date, ordinaires, CANDIDATS_PAR_JOUR_MAX);
+  const plafondJour = plafondJourIA(rule, slug, date, ordinaires, plafondJourOrdinaire(date));
   if (ordinaires.filter((candidate) => candidate.date === date).length >= plafondJour) {
     throw new Error(`${plafondJour} candidats sont déjà planifiés le ${date} ; le plafond est de ${plafondJour} candidats par jour.`);
   }
   const semaineEditoriale = semaineEditorialeIA(rule, slug, date, semaine);
   const dansLot = rule?.publications[slug] === date;
+  const plafondSemaine = plafondSemaineOrdinaire(semaineEditoriale);
   if (ordinaires.filter((candidate) => isDate(candidate.date)
     && (rule?.publications[candidate.slug] === candidate.date) === dansLot
-    && semaineEditorialeIA(rule, candidate.slug, candidate.date, semaineIso(candidate.date)) === semaineEditoriale).length >= CANDIDATS_PAR_SEMAINE_MAX) {
-    throw new Error(`${CANDIDATS_PAR_SEMAINE_MAX} candidats sont déjà planifiés la semaine ${semaine} ; le plafond est de ${CANDIDATS_PAR_SEMAINE_MAX} candidats par semaine.`);
+    && semaineEditorialeIA(rule, candidate.slug, candidate.date, semaineIso(candidate.date)) === semaineEditoriale).length >= plafondSemaine) {
+    throw new Error(`${plafondSemaine} candidats sont déjà planifiés la semaine ${semaine} ; le plafond est de ${plafondSemaine} candidats par semaine.`);
   }
 }
 /**

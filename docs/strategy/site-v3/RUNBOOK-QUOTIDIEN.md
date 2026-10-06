@@ -1,6 +1,6 @@
 # Mode opératoire quotidien — la forge éditoriale de memlia.fr
 
-Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au samedi à 9 h (heure locale), sur ce Mac, dans une session Hermes neuve avec le profil GPT configuré. Autorisations de Kevin : quatre articles ordinaires par semaine (16/09/2026), puis une Cicatrice chaque samedi en plus (19/09/2026). Chaque exécution part de zéro : ce document est la seule mémoire de la procédure. Lire aussi `README.md` et `IMPLEMENTATION-ROADMAP.md` de ce dossier avant d'agir.
+Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au samedi à 9 h (heure locale), sur ce Mac, dans une session Hermes neuve avec le profil GPT configuré. Décision de Kevin du 05/10, appliquée le 06/10/2026 : au plus quinze articles ordinaires par semaine ISO, trois par jour du lundi au vendredi, EC et CAC confondus ; une Cicatrice le samedi en plus, inchangée. Cette règle remplace les mentions historiques de deux/jour, quatre/semaine et vendredi de maintenance seule ci-dessous. Produire chaque ligne `planned` du jour dans son ordre de calendrier, avec les mêmes portes de qualité et une revue par livraison. Aucun ordinaire nouveau le week-end, même avec `datePlanifiee` ; les publications et exceptions historiques restent inchangées. Chaque exécution part de zéro : ce document est la mémoire de la procédure. Lire aussi `README.md` et `IMPLEMENTATION-ROADMAP.md` avant d'agir.
 
 ## 0. Rails non négociables
 
@@ -131,10 +131,10 @@ selon la règle existante ; le brief ne crée pas d'exception implicite.
 
 Réservation mandatée d'un article ordinaire (constitution du 03/10, décision du
 29/09) : `datePlanifiee` dans le backlog peut fixer la date réelle, y compris
-vendredi, samedi ou dimanche. Ce champ existant est la décision éditoriale ; une
+vendredi. Depuis D9, samedi et dimanche sont refusés pour les ordinaires. Ce champ est la décision éditoriale ; une
 recette, un brief ou une ligne de dérivé seuls ne réservent pas de créneau. Les
-jours lundi-jeudi restent ceux de la planification automatique, non une porte de
-sûreté. Les plafonds restent 2 ordinaires par jour et 4 par semaine ISO, en
+jours lundi-vendredi régissent la planification automatique et les nouvelles réservations.
+Les plafonds sont 3 ordinaires par jour et 15 par semaine ISO, en
 comptant les publications réelles et les réservations. Une date échue reste
 refusée ; un jour saturé par les publications devient `a-replanifier`. Marketing
 réserve le backlog et régénère les dérivés, puis passe le préflight natif
@@ -160,7 +160,7 @@ node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-selecti
 
 Ce contrôle ne remplace pas `--slot` dans la forge : date Paris fraîche, reconstruction complète depuis les sources et authenticité du récit restent obligatoires. Aucun article disponible après maintenance : consigner le fait, conserver le worktree pour examen, arrêter sans fabrication ni publication. Le reliquat W39 reste sur ses cartes existantes. Le prompt versionné `FORGE-CRON-PROMPT.md` doit être installé sur le seul cron marketing `e4eaaf20655f`, en conservant son état paused ; sa réactivation appartient à la reprise éditoriale après intégration et revue.
 
-Chaque ligne de la date du jour au statut `planned` est un article à produire (une, parfois deux du lundi au jeudi ; une seule Cicatrice le samedi). Son slug donne l'entrée complète dans `docs/strategy/site-v3/backlog-v3.json` : titre, requête primaire, requêtes secondaires, famille, rôle, intention, entonnoir, format, preuve attendue, autorités à citer. Aucune ligne un jour ordinaire : aller au §6. Aucune ligne un samedi : ne pas inventer de récit ; consigner le stock vide dans `JOURNAL.md` et ouvrir une carte de réapprovisionnement depuis les leçons et faits mesurés.
+Chaque ligne de la date du jour au statut `planned` est un article à produire (au plus trois du lundi au vendredi ; une seule Cicatrice le samedi). Son slug donne l'entrée complète dans `docs/strategy/site-v3/backlog-v3.json` : titre, requête primaire, requêtes secondaires, famille, rôle, intention, entonnoir, format, preuve attendue, autorités à citer. Aucune ligne un jour ordinaire : aller au §6. Aucune ligne un samedi : ne pas inventer de récit ; consigner le stock vide dans `JOURNAL.md` et ouvrir une carte de réapprovisionnement depuis les leçons et faits mesurés.
 
 ## 3. Écrire la recette (la recette éditoriale Memlia, héritée de l'article 3)
 
