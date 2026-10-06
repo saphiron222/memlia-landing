@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "revue-analytique-cac",
+  "path": "/automatisation/revue-analytique-cac",
+  "title": "Automatisation revue analytique : des variations à examiner par le CAC",
+  "tabTitle": "Automatisation revue analytique pour les CAC | Memlia",
+  "ogTitle": "Automatisation revue analytique : des variations à examiner par le CAC",
+  "description": "Confiez les comparaisons récurrentes de votre revue analytique : variations traçables, exceptions explicites et conclusions gardées par le CAC.",
+  "hero": "Nous prenons en charge la préparation récurrente de vos comparaisons : sources repérées, périodes rapprochées, variations calculées et points à examiner dans vos outils. Vos règles de lecture sont écrites, éprouvées et maintenues. Un compte nouveau, une base nulle ou un changement de signe reste visible. Le commissaire aux comptes choisit les paramètres, apprécie les explications et établit ses conclusions.",
+  "primaryQuery": "automatisation revue analytique",
+  "secondaryQueries": [],
+  "audience": {
+    "mode": "exception",
+    "qualifier": null,
+    "reason": "La requête commerciale mesurée n'a pas de qualificatif CAC mais désigne ici une préparation récurrente pour la certification des comptes. Le H1, le titre d'onglet et le corps précisent le lecteur CAC ; les intentions de classeur Excel et d'exemple pédagogique restent aux pages distinctes de l'architecture CAC. Zéro suggestion ne démontre aucun volume de recherche."
+  },
+  "intent": "evaluer-service",
+  "family": "cac-revue-analytique",
+  "verifiedAt": "2026-10-06",
+  "author": "marketing",
+  "cta": {"label": "Confier une première tâche", "destination": "/contact"},
+  "schema": {
+    "headline": "Automatisation revue analytique : des variations à examiner par le CAC",
+    "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]
+  },
+  "proof": {"replayedAt": "2026-10-06", "evidencePath": "preuves/rejeu.json"},
+  "incomingLinks": [
+    {"url": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches", "sourcePath": "src/content/blog/automatiser-un-cabinet-cac-la-carte-des-taches.md", "anchor": "Automatiser la revue analytique"},
+    {"url": "/blog/cac-revue-analytique-exemple", "sourcePath": "src/content/blog/cac-revue-analytique-exemple.md", "anchor": "Automatiser la revue analytique"},
+    {"url": "/blog/cac-variations-zero-nouveaux-comptes", "sourcePath": "src/content/blog/cac-variations-zero-nouveaux-comptes.md", "anchor": "Automatiser la revue analytique"}
+  ]
+}
