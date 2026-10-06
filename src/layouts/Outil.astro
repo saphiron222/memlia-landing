@@ -16,7 +16,7 @@ const { outil } = Astro.props;
 const path = outilPath(outil);
 const url = `${SITE.url}${path}`;
 const socialImage = outil.proof ? {
-  url: `/proofs/v2/og/${outil.proof.slice(3)}.webp`, width: 1200, height: 630,
+  url: `${SITE.url}/proofs/v2/og/${outil.proof.slice(3)}.webp`, width: 1200, height: 630,
   alt: `Aperçu fictif — ${outil.h1}`,
 } : undefined;
 const csp = "default-src 'self'; base-uri 'self'; connect-src 'none'; worker-src 'self'; font-src 'self'; form-action 'self'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'";
