@@ -26,7 +26,7 @@ const page = {
   h1: integration.h1,
   chapeau: integration.intro,
   ariane: `${integration.vendor} · ${integration.task}`,
-  secondaire: { libelle: 'Voir les neuf guides', href: '/integrations' },
+  secondaire: { libelle: INTEGRATIONS_INDEXABLES.length === 9 ? 'Voir les neuf guides' : 'Voir les guides', href: '/integrations' },
 };
 const noeuds = [
   {
@@ -121,7 +121,7 @@ const source = {
     <Renvois items={[
       { texte: 'Le service correspondant décrit la tâche sans la réduire à un éditeur.', libelle: integration.service.label, href: integration.service.href },
       ...(integration.tool ? [{ texte: 'L’outil local contrôle des soldes fictifs et exporte un CSV ; il ne réalise pas l’appariement des mouvements.', libelle: integration.tool.label, href: integration.tool.href }] : []),
-      { texte: 'Choisissez un autre produit et le geste à contrôler.', libelle: 'Voir les neuf guides par environnement', href: '/integrations' },
+      { texte: 'Choisissez un autre produit et le geste à contrôler.', libelle: INTEGRATIONS_INDEXABLES.length === 9 ? 'Voir les neuf guides par environnement' : 'Voir les guides par environnement', href: '/integrations' },
     ]} colonnes={2} />
   </section>
 </PageCommerciale>

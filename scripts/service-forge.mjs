@@ -689,6 +689,10 @@ export function auditerServices({ root = process.cwd(), today = todayIso() } = {
 }
 
 export async function commande(argv, root = process.cwd()) {
+  if (argv[0] === '--guide') {
+    const { commandeGuide } = await import('./lib/guide-forge.mjs');
+    return commandeGuide(argv.slice(1), root);
+  }
   const [action, slug, declarationPath] = argv;
   let result;
   if (action === 'auditer') result = auditerServices({ root });
