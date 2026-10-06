@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-10-03",
-  "articleSha256": "78060c52295ff76473df782c4c7133b2ac5dcefa02aada10251c51cf7cf7e91f",
-  "manifestSha256": "848959d4da94995271ddd442da89d33fdd0c0112b695b214c40c763b5bddb317",
+  "checkedAt": "2026-10-06",
+  "articleSha256": "0c19171ed756df0c3eaae72793c46b9dc92946511d922137ee1706c4230fe84e",
+  "manifestSha256": "42dfab20dc34646bad51b398d42e7f8d98abc4bd93a7d69be447257c587608e9",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -49,47 +49,42 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Couverture inchangée, relue : diorama 3D d’îlots verts et graphite reliés par des chemins, jeton vert devant une bifurcation, sans texte, conforme à son alt.",
-        "Les deux figures suivent le gabarit des références : une fenêtre sur fond quadrillé, en-tête à pastille et « Jeu d’essai fictif · … », écran d’outil, palette vert/orange/gris ; sujet, composition, interdits et alt sont contrôlables."
+        "Brief de couverture dans recette.json relu et couverture 1600 visuellement inspectée : îlots reliés en diorama, jeton et bifurcation, palette vert/crème/graphite, sans texte. Inventaire au gabarit RECETTE ; fiche de relance également inspectée."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Cadre, fond et bandeau d’en-tête identiques au pixel près à la référence social-dictionnaire hors zone de contenu ; textes nets, aucun libellé tronqué, aucun logo, aucune personne.",
-        "Aucun chiffre de résultat : 60 et 2 sont des comptes de l’inventaire fictif et la mesure de la fiche reste « à relever » ; la couverture ne porte ni texte ni chiffre."
+        "Fenêtre d'inventaire, fond quadrillé, données et badges nets, aucun logo, personne, slogan ou étapes commentées. Les compteurs 60 et 2 décrivent l'inventaire fictif, pas un gain. Couverture sans texte ni donnée réelle."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Les deux en-têtes affichent « Jeu d’essai fictif » (cabinet de démonstration, règle R-01) ; dossiers D-004, D-007 et D-009 inventés, aucun client ni collaborateur nommé.",
-        "Recette et contrat interne déclarent les sources (taxonomie src/data/familles.ts, règle décrite dans l’article) et capturedAt 2026-10-03, sans légende publique."
+        "En-tête Jeu d'essai fictif · cabinet de démonstration ; fiche Jeu d'essai fictif · règle R-01 et dossiers D-004/D-007/D-009. Pas de témoignage ou de résultat réel induit."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "L’inventaire reprend la carte du corps (12 pôles, 60 familles, audit légal listé non ouvert) et la fiche montre une règle de relance avec ses cas courant, limite et refus, comme la section méthode."
+        "Inventaire : Carte EC · 12 pôles, Repères EC 60, demandes de documents par mission, règle À cadrer et statut Carte CAC. Le renvoi distinct n'est plus Non ouvert et n'ajoute pas huit familles aux repères EC. La fiche montre la proposition et l'envoi par le collaborateur."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Les deux WebP servis font 1600 × 900, une seule image pour bureau et téléphone, et correspondent aux PNG relus (écart moyen inférieur à 1/255) ; plus aucun fichier -mobile n’est référencé par la page.",
-        "Couverture : dérivés 1600, 1200 et 768 px et OG 1200 × 630 présents ; captures 1280 et 390 px sans débordement."
+        "sips : inventaire et fiche 1600 × 900 ; inventaire 43014 octets. Couverture WebP 768×432, 1200×675, 1600×900 et OG 1200×630 présentes. HTML : attributs 1600×900, sources uniques sans -mobile. Inventaire réellement chargé en 1600×900 via HTTP local et confiné à la colonne à 1280 px ; téléphone non rejoué."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Alts de 103 et 114 caractères, identiques dans la source, le HTML construit et la recette, décrivant l’inventaire de six familles et la fiche de règle visibles.",
-        "L’alt de couverture correspond à l’image : îlots en diorama, chemins, jeton vert devant une bifurcation."
+        "Alt de l'inventaire décrit six familles, fréquence, règle et statut ; correspond au visuel et au HTML. Alt fiche fidèle à la règle fictive ; alt couverture fidèle aux îlots, chemins, jeton et bifurcation. Aucune légende technique publique ajoutée."
       ]
     }
   ]

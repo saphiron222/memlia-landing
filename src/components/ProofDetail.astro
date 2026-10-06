@@ -1,0 +1,70 @@
+---
+import { PROOFS, type ProofId } from '@/data/proofs';
+interface Props { id: ProofId; }
+const { id } = Astro.props;
+const proof = PROOFS[id];
+const source = `/proofs/${id}.webp`;
+const name = `proof-detail-${id.replaceAll('/', '-')}`;
+---
+<div class="proof-detail" data-proof-detail>
+  <a href={source} aria-haspopup="dialog" aria-controls={name} data-proof-open>Agrandir la preuve</a>
+  <dialog id={name} aria-label={proof.title} aria-describedby={`${name}-summary`}>
+    <header>
+      <h2>{proof.title}</h2>
+      <button type="button" data-proof-close autofocus>Fermer la preuve</button>
+    </header>
+    <p id={`${name}-summary`} data-proof-summary>{proof.detail}</p>
+    <p class="proof-help">Cadre fictif à sa taille native. Faites défiler pour lire les cellules.</p>
+    <div class="proof-native" tabindex="0" role="region" aria-label={`Preuve détaillée : ${proof.title}, défilement horizontal et vertical`}>
+      <template><img data-src={source} alt={proof.alt} width="1600" height="900" decoding="async" /></template>
+    </div>
+  </dialog>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-proof-detail]').forEach((detail) => {
+    const trigger = detail.querySelector<HTMLAnchorElement>('[data-proof-open]')!;
+    const dialog = detail.querySelector<HTMLDialogElement>('dialog')!;
+    const close = detail.querySelector<HTMLButtonElement>('[data-proof-close]')!;
+    const region = detail.querySelector<HTMLElement>('.proof-native')!;
+    const template = detail.querySelector<HTMLTemplateElement>('template')!;
+    const image = template.content.querySelector<HTMLImageElement>('img')!;
+    trigger.addEventListener('click', (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      image.src = image.dataset.src!;
+      region.append(image);
+      dialog.showModal();
+    });
+    close.addEventListener('click', () => dialog.close());
+    region.addEventListener('keydown', (event) => {
+      const steps: Record<string, [number, number]> = { ArrowLeft: [-64, 0], ArrowRight: [64, 0], ArrowUp: [0, -64], ArrowDown: [0, 64] };
+      const step = steps[event.key];
+      if (!step || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+      event.preventDefault();
+      region.scrollBy({ left: step[0], top: step[1], behavior: 'instant' });
+    });
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key !== 'Tab') return;
+      if ((!event.shiftKey && document.activeElement === region) || (event.shiftKey && document.activeElement === close)) {
+        event.preventDefault();
+        (event.shiftKey ? region : close).focus();
+      }
+    });
+    dialog.addEventListener('close', () => trigger.focus({ preventScroll: true }));
+  });
+</script>
+<style>
+  .proof-detail { padding: var(--marge-page); background: var(--surface-feuille); }
+  a, button { display: inline-flex; align-items: center; min-height: var(--bouton-h); padding: 6px var(--bouton-px); border: 1px solid var(--ligne-forte); border-radius: var(--r-bouton); color: var(--accent-texte); background: var(--surface-feuille); font: inherit; font-size: var(--t-sm); cursor: pointer; }
+  a { text-decoration: underline; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible, .proof-native:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  dialog { width: calc(100% - 2 * var(--marge-page)); max-width: var(--conteneur-lg); max-height: calc(100dvh - 2 * var(--marge-page)); margin: auto; padding: var(--marge-page); border: 1px solid var(--ligne-forte); border-radius: var(--r-boite); background: var(--surface-feuille); color: var(--texte); overflow: auto; }
+  dialog::backdrop { background: var(--encre-68); }
+  header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--bouton-px); }
+  h2 { font-size: var(--t-2xl); }
+  p { margin-block: var(--marge-page); font-size: var(--t-sm); }
+  .proof-help { color: var(--texte-2); }
+  .proof-native { overflow: auto; max-height: 60dvh; border: 1px solid var(--ligne); }
+  .proof-native img { display: block; width: 1600px !important; min-width: 1600px; max-width: none !important; height: 900px !important; object-fit: contain; }
+  @media (hover: hover) { a:hover, button:hover { background: var(--surface-hover); } }
+</style>

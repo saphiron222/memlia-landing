@@ -4431,7 +4431,7 @@
       "query": "modèle suivi circularisation excel",
       "type": "outil",
       "family": "cac-confirmations-audit",
-      "state": "retenue-non-publiee",
+      "state": "construite-en-revue",
       "contextFrom": [
         "cac-circularisation-campagne",
         "cac-circularisation-reponse-rapprochement"
@@ -4440,10 +4440,9 @@
       "owner": "/outils-comptables-gratuits/suivi-circularisation",
       "profession": "cac",
       "measure": {
-        "state": "non-mesuree",
-        "source": null,
+        "state": "proprietaire-existant",
+        "source": "config/page-intent-contract.json",
         "query": "modèle suivi circularisation excel",
-        "suggestions": null,
         "volumeMensuel": null
       },
       "terrain": [
@@ -4510,7 +4509,7 @@
       "query": "seuil de signification audit calcul",
       "type": "outil",
       "family": "cac-revue-analytique",
-      "state": "retenue-non-publiee",
+      "state": "construite-en-revue",
       "contextFrom": [
         "cac-seuil-signification-justification",
         "cac-revue-analytique-exemple"
@@ -4519,12 +4518,9 @@
       "owner": "/outils-comptables-gratuits/seuil-signification-audit",
       "profession": "cac",
       "measure": {
-        "state": "mesuree",
-        "source": "docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json",
+        "state": "proprietaire-existant",
+        "source": "config/page-intent-contract.json",
         "query": "seuil de signification audit calcul",
-        "measuredAt": "2026-10-05T22:16:53.771Z",
-        "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
-        "suggestions": 2,
         "volumeMensuel": null
       },
       "terrain": [

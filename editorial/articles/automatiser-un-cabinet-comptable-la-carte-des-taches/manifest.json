@@ -8,7 +8,7 @@
   "summary": "Soixante familles de tâches réparties en douze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel.",
   "description": "Automatisation cabinet comptable : une carte pour choisir une tâche, écrire sa règle et fixer ce qui se prépare, se valide ou reste humain.",
   "publicationDate": "2026-09-16",
-  "updatedAt": "2026-10-02",
+  "updatedAt": "2026-10-06",
   "topics": [
     "automatisation",
     "methode",
@@ -42,7 +42,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-10-03"
+      "verifiedAt": "2026-10-06"
     }
   },
   "businessReview": {
@@ -61,7 +61,7 @@
   "rankability": "plausible",
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
-  "proofRequired": "Douze pôles et soixante familles listés depuis src/data/familles.ts ; pour chacun des onze pôles ouverts, un tableau se-prépare-seul / attend-une-validation / reste-humain ; le douzième (audit légal) listé et non ouvert ; six affirmations sourcées sur des pages officielles ouvertes le jour de la publication.",
+  "proofRequired": "Carte des familles de l’expertise comptable depuis src/data/familles.ts ; une frontière en trois colonnes par pôle ; un repère transversal vers les familles CAC, sans confondre préparation et opinion ; six affirmations sourcées sur des pages officielles ouvertes le jour de la publication.",
   "sourcesVerifiedAt": "2026-09-29",
   "sources": [
     {
@@ -156,7 +156,7 @@
     }
   ],
   "author": "kevin",
-  "reviewer": "qa:t_c9dd7b40",
+  "reviewer": "qa:doctrine-b2-independent",
   "reviewRule": "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données.",
   "cta": {
     "label": "Confier une première tâche",
@@ -174,12 +174,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-10-03"
+      "checkedAt": "2026-10-06"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-10-03"
+      "checkedAt": "2026-10-06"
     }
   },
   "links": {
@@ -222,6 +222,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-10-03",
+  "publishedAt": "2026-10-06",
   "publicationEvidence": "preuves/publication.json"
 }

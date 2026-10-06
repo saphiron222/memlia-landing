@@ -18,7 +18,8 @@ for (const width of [320, 375, 768, 1280, 1440]) {
       const row = figure.closest('[data-proof-row]');
       const copy = row?.querySelector('[data-proof-copy]');
       const rect = (element: Element | null | undefined) => element?.getBoundingClientRect().toJSON() ?? null;
-      return { id: figure.getAttribute('data-proof'), image: rect(img), row: rect(row), copy: rect(copy),
+      const detail = figure.parentElement?.querySelector('[data-proof-detail]');
+      return { id: figure.getAttribute('data-proof'), image: rect(img), row: rect(row), copy: rect(copy), detail: rect(detail),
         fit: getComputedStyle(img).objectFit, natural: [img.naturalWidth, img.naturalHeight],
         interactive: !!figure.closest('a, button, [role="button"], [tabindex]'),
         focusable: img.tabIndex >= 0 || figure.querySelectorAll('a,button,[tabindex]').length > 0 };
@@ -43,7 +44,8 @@ for (const width of [320, 375, 768, 1280, 1440]) {
           expect.soft(item.copy.bottom).toBeGreaterThan(item.image.y);
           if (!['04-observer', '05-cadrer', '06-eprouver', '07-livrer'].includes(item.id!)) {
             expect.soft(item.row.height).toBeGreaterThanOrEqual(370);
-            expect.soft(item.row.height).toBeLessThanOrEqual(430);
+            // L’accès au détail s’ajoute au cadre canonique sans réduire son image.
+            expect.soft(item.row.height - (item.detail?.height ?? 0)).toBeLessThanOrEqual(430);
           }
         }
       } else if (item.row && item.copy) {
