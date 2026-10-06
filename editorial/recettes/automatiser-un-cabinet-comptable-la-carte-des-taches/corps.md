@@ -33,7 +33,7 @@ Un dernier repère avant de lire : rien ici ne suppose de changer de logiciel. L
 | Excel et outils existants | 3 | classeurs de suivi, règles greffées, exports | la propriété de la règle |
 | Conseil et missions spéciales | 4 | prévisionnel, trésorerie, financement, évaluation | l’hypothèse et le conseil |
 | Méthode et décision humaine | 4 | choisir, écrire la règle, recetter, mesurer | tout ce qui précède |
-| Audit légal | 1 | commissariat aux comptes : famille listée, aucune tâche ouverte | tout |
+| Audit légal | 1 repère transversal | demandes de documents, suivi des réponses, comparaisons entre exercices ; familles détaillées dans la carte CAC | la sélection des travaux, leur appréciation et l’opinion |
 
 ## Production comptable : de la pièce reçue au bilan livré
 
@@ -155,7 +155,7 @@ Pour vérifier une sortie malgré des tests verts, voyez [la règle des trois pa
 
 ## Que ne contient pas cette carte ?
 
-Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Elle ne documente pas l’audit légal et le commissariat aux comptes : ce douzième pôle et sa famille unique sont listés, aucune tâche n’y est ouverte. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.
+Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Le commissariat aux comptes possède ses propres familles : cette carte conserve un repère transversal, sans les ajouter aux familles de l’expertise comptable. Nous y préparons les demandes de documents, le suivi des réponses et les comparaisons entre exercices. La sélection des travaux, leur appréciation et l’opinion restent au commissaire aux comptes. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.
 
 ## Les erreurs à éviter quand on automatise un cabinet
 
