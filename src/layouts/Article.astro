@@ -1,5 +1,6 @@
 ---
 import Base from './Base.astro';
+import ScrollableTables from '@/components/ScrollableTables.astro';
 import Picture from '@/components/Picture.astro';
 import Picto from '@/components/Picto.astro';
 import Button from '@/components/Button.astro';
@@ -162,7 +163,7 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
       <Picture id={image} sizes="(min-width: 48rem) 720px, 100vw" loading="eager" fetchpriority="high" class="article-couverture" />
 
       <div class="article-corps lecture">
-        <slot />
+        <ScrollableTables><slot /></ScrollableTables>
       </div>
 
       <section class="article-sources" aria-labelledby="sources-titre">
@@ -269,7 +270,8 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
     color: var(--texte-2); font-family: var(--police-display), 'Fraunces Fallback'; font-style: italic; font-weight: 400;
   }
   /* Un tableau à trois colonnes dépasse 320 px : il défile dans sa colonne au lieu d'élargir la page. */
-  .article-corps :global(table) { display: block; width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.2em 0 1.6em; font-size: var(--t-sm); }
+  .article-corps :global([data-table-scroll]) { margin: 1.2em 0 1.6em; }
+  .article-corps :global(table) { width: 100%; border-collapse: collapse; font-size: var(--t-sm); }
   .article-corps :global(th), .article-corps :global(td) { min-width: 9em; }
   .article-corps :global(th:nth-child(2)), .article-corps :global(td:nth-child(2)) { min-width: 16em; }
   .article-corps :global(th), .article-corps :global(td) { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--ligne-douce); }

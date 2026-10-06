@@ -1,0 +1,22 @@
+---
+import { rendreTableauxAccessibles } from '@/lib/table-scroll.mjs';
+const html = rendreTableauxAccessibles(await Astro.slots.render('default'));
+---
+<Fragment set:html={html} />
+<script>
+  // WebKit does not reliably scroll a focused region with horizontal arrows.
+  // Leave links, modifiers, vertical scrolling and Tab to their native behavior.
+  document.querySelectorAll<HTMLElement>('[data-table-scroll]').forEach((region) => {
+    region.addEventListener('keydown', (event) => {
+      if (event.target !== region || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey
+        || !['ArrowLeft', 'ArrowRight'].includes(event.key)
+        || region.scrollWidth <= region.clientWidth) return;
+      event.preventDefault();
+      region.scrollBy({ left: event.key === 'ArrowRight' ? 80 : -80, behavior: 'instant' });
+    });
+  });
+</script>
+<style is:global>
+  [data-table-scroll] { max-width: 100%; overflow-x: auto; }
+  [data-table-scroll]:focus-visible { outline: 3px solid var(--accent-texte); outline-offset: 3px; }
+</style>

@@ -1,5 +1,6 @@
 ---
 import ProofMedia from '@/components/ProofMedia.astro';
+import ScrollableTables from '@/components/ScrollableTables.astro';
 import { PROOFS, type ProofId } from '@/data/proofs';
 
 interface Props {
@@ -25,7 +26,7 @@ const media = PROOFS[proof];
     </aside>
 
     <div class="service-body-copy lecture rv">
-      <slot />
+      <ScrollableTables><slot /></ScrollableTables>
     </div>
   </div>
 </section>
@@ -113,22 +114,16 @@ const media = PROOFS[proof];
     color: var(--texte-fort);
     font-weight: 600;
   }
-  .service-body-copy :global(table) {
-    display: block;
-    width: 100%;
-    max-width: 100%;
+  .service-body-copy :global([data-table-scroll]) {
     margin: 28px 0 0;
-    overflow-x: auto;
+  }
+  .service-body-copy :global(table) {
+    width: 100%;
+    min-width: 560px;
     border-top: 1px solid var(--ligne);
     border-bottom: 1px solid var(--ligne);
     border-collapse: collapse;
     font-size: var(--t-sm);
-  }
-  .service-body-copy :global(thead),
-  .service-body-copy :global(tbody) {
-    display: table;
-    min-width: 560px;
-    width: 100%;
     table-layout: fixed;
   }
   .service-body-copy :global(th),
