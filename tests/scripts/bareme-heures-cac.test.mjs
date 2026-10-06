@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import { calculate, example, EXCLUSIONS, restore, save, csv, report } from '../../src/lib/bareme-heures-cac.mjs';
 const bounds = [[305000,20,35],[760000,30,50],[1525000,40,60],[3050000,50,80],[7622000,70,120],[15245000,100,200],[45735000,180,360],[122000000,300,700]];
 const withBase = v => ({...example(), balance:v, operating:'0', financial:'0'});
@@ -43,4 +44,17 @@ test('reprise, safe CSV, inert HTML',()=>{
  assert.ok(csv(input).startsWith('\ufeff'));assert.ok(csv(input).includes("'=HYPERLINK"));
  assert.ok(!report(input).includes('<script>'));assert.ok(report(input).includes('&lt;script&gt;'));
  assert.throws(()=>restore(encoded.replace('bareme-heures-cac-1','future')));assert.throws(()=>restore('{"version":"bareme-heures-cac-1","input":{}}'));assert.throws(()=>restore('x'.repeat(20000001)));
+});
+test('official transcript, proof fixture and export provenance',()=>{
+ const source=readFileSync(new URL('../../docs/strategy/site-v3/cac/outils/sources/D821-188.md',import.meta.url),'utf8');
+ for(const [bound,min,max] of bounds) {
+  assert.ok(source.includes(String(bound).replace(/\B(?=(\d{3})+(?!\d))/g,' ')));
+  assert.ok(source.includes(`${min} à ${max} heures`));
+ }
+ const html=readFileSync(new URL('../../docs/design/bareme-cac-proof/index.html',import.meta.url),'utf8');
+ assert.match(html,/<section class="frame"[^>]+aria-label=/);
+ assert.doesNotMatch(html,/logo|Memlia|partenariat|2026-10|mise à jour/i);
+ for(const value of ['100 000 €','150 000 €','10 000 €','260 000 €','20 à 35 h','42 h'])assert.ok(html.includes(value));
+ const backup=JSON.parse(save(example()));assert.ok(backup.generatedAt);assert.ok(backup.checks.length);assert.deepEqual(backup.result.range,[20,35]);
+ const modified={...backup,result:{range:[1,999]}};assert.deepEqual(calculate(restore(JSON.stringify(modified))).range,[20,35]);
 });

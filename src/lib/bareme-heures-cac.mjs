@@ -2,6 +2,7 @@
 export const VERSION = 'bareme-heures-cac-1';
 export const GRID_VERSION = 'D821-188-2024-02-01';
 export const UPDATED = '2026-10-06';
+export const CHECKS = ['Décimaux exacts', 'Unité EUR', 'Questionnaire complet', 'Bornes', 'Plafond d’alerte', 'Version de reprise', 'Exports sécurisés'];
 export const SOURCE = 'https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000048874384/2026-10-06';
 export const GRID = [[305000,20,35],[760000,30,50],[1525000,40,60],[3050000,50,80],[7622000,70,120],[15245000,100,200],[45735000,180,360],[122000000,300,700]];
 export const EXCLUSIONS = [
@@ -71,18 +72,22 @@ export function calculate(input) {
   if(index<7 && base===BigInt(GRID[index][0])*100n) {status='boundary';reason='Borne commune : le texte juxtapose deux lignes sans préciser l’affectation. Aucune fourchette applicable choisie automatiquement.';candidates=[GRID[index],GRID[index+1]];index=null;}
   else range=GRID[index].slice(1);
  }
- return {base:decimal(base),status,reason,range,index,candidates,budget:input.budget,alertHours:status==='evaluated'?alertHours:null};
+ const lower=index===null?null:index===0?0:GRID[index-1][0];
+ const upper=index===null?null:GRID[index][0];
+ return {base:decimal(base),status,reason,range,index,lower,upper,candidates,budget:input.budget,alertHours:status==='evaluated'?alertHours:null};
 }
-export function save(input) {calculate(input);return JSON.stringify({version:VERSION,gridVersion:GRID_VERSION,input},null,2);}
+export function save(input) {const result=calculate(input);return JSON.stringify({version:VERSION,gridVersion:GRID_VERSION,generatedAt:new Date().toISOString(),method:METHOD,limits:LIMITS,source:SOURCE,checks:CHECKS,result,input},null,2);}
 export function restore(raw) {
  if(typeof raw!=='string' || new TextEncoder().encode(raw).length>20000000) fail('Reprise : maximum 20 Mo.');
  const data=JSON.parse(raw);
- if(!data || data.version!==VERSION || data.gridVersion!==GRID_VERSION || Object.keys(data).sort().join(',')!=='gridVersion,input,version') fail('Version ou structure de reprise inconnue.');
+ if(!data || data.version!==VERSION || data.gridVersion!==GRID_VERSION || Object.keys(data).sort().join(',')!=='checks,generatedAt,gridVersion,input,limits,method,result,source,version') fail('Version ou structure de reprise inconnue.');
+ if(typeof data.generatedAt!=='string' || !Number.isFinite(Date.parse(data.generatedAt)) || data.method!==METHOD || data.limits!==LIMITS || data.source!==SOURCE) fail('Métadonnées de reprise incohérentes.');
+ // Saved results never acquire authority: they are recomputed from retained inputs.
  calculate(data.input);return data.input;
 }
 const entries = input => {
  const r=calculate(input);
- return [['Version outil',VERSION],['Version grille',GRID_VERSION],['Généré le',new Date().toISOString()],['Méthode',METHOD],['Limites',LIMITS],['Source',SOURCE],...Object.entries(input).filter(([k])=>k!=='exclusions').map(([k,v])=>[k,String(v)]),...EXCLUSIONS.map(x=>[x.label,input.exclusions[x.id]]),['Base EUR',r.base],['État',r.status],['Raison',r.reason],['Heures de référence',r.range?.join(' à ')??'Non évaluées'],['Programme après alerte',r.alertHours??'Non évalué'],['Budget saisi distinct',r.budget||'Non renseigné'],['Contrôles','Décimaux, unité, questionnaire, bornes, version, alerte et exports sécurisés']];
+ return [['Version outil',VERSION],['Version grille',GRID_VERSION],['Généré le',new Date().toISOString()],['Méthode',METHOD],['Limites',LIMITS],['Source',SOURCE],...Object.entries(input).filter(([k])=>k!=='exclusions').map(([k,v])=>[k,String(v)]),...EXCLUSIONS.map(x=>[x.label,input.exclusions[x.id]]),['Base EUR',r.base],['État',r.status],['Raison',r.reason],['Comparaison aux bornes',r.range?`${r.lower} ${r.index===0?'≤':'<'} ${r.base} ≤ ${r.upper}`:'Non évaluée'],['Lignes adjacentes',r.candidates.map(row=>row.join(' / ')).join(' ; ')],['Heures de référence',r.range?.join(' à ')??'Non évaluées'],['Programme après alerte',r.alertHours??'Non évalué'],['Budget saisi distinct',r.budget||'Non renseigné'],['Contrôles','Décimaux, unité, questionnaire, bornes, version, alerte et exports sécurisés']];
 };
 export function csv(input) {
  const cell = v => {const raw=/^[\s]*[=+@-]/.test(v)?"'"+v:v;return '"'+raw.replaceAll('"','""')+'"';};
