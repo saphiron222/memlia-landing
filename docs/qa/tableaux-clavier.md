@@ -12,7 +12,7 @@ Pour un serveur déjà construit, fournir `QA_URL`. Pour contrôler le site publ
 
     QA_URL=https://memlia.fr npx playwright test --config=playwright.tables.config.ts
 
-Les résultats JSON sont dans `.qa/table-keyboard.json`. Chaque cas conserve une capture `table-focus.png` dans `.qa/test-results`. Les tests Chromium font également partie de `npm run test`, sans retirer de contrôle existant.
+Les résultats JSON sont dans `.qa/table-keyboard.json`. Chaque cas conserve une capture `table-focus.png` dans `.qa/table-results`. Les tests Chromium font également partie de `npm run test`, sans retirer de contrôle existant.
 
 ## Recette manuelle publique
 

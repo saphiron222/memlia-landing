@@ -43,7 +43,7 @@ for (const width of [320, 375, 1440]) {
           await page.keyboard.press('ArrowLeft');
           await expect.poll(() => region.evaluate(el => el.scrollLeft)).toBeLessThan(max);
         }
-        if (i === 0) await region.screenshot({ path: testInfo.outputPath('table-focus.png') });
+        if (i === 0) await page.screenshot({ path: testInfo.outputPath('table-focus.png') });
         await page.keyboard.press('Tab');
         await expect(region).not.toBeFocused();
         await page.keyboard.press('Shift+Tab');

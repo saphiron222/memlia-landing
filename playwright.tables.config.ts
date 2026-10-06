@@ -3,6 +3,7 @@ import config from './playwright.config';
 export default defineConfig({
   ...config,
   testMatch: 'table-keyboard.spec.ts',
+  outputDir: '.qa/table-results',
   use: { ...config.use, channel: undefined },
   projects: [
     { name: 'chromium', use: { browserName: 'chromium' } },
