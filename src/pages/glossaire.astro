@@ -16,6 +16,19 @@ for (const entry of GLOSSARY_ENTRIES) {
   byLetter.set(letter, [...(byLetter.get(letter) ?? []), entry]);
 }
 const letters = [...byLetter.keys()];
+// Décision de Kevin du 06/10/2026 : pas de bloc « Sources ». L'organisme externe qui établit la définition est cité
+// entre parenthèses à sa fin, son nom portant le lien ; les renvois internes restent dans « Pour aller plus loin ».
+const citations = (sourceIds: string[]) => {
+  const vus = new Set<string>();
+  return sourceIds.flatMap((sourceId) => {
+    const source = GLOSSARY_SOURCES[sourceId];
+    if (!source) throw new Error(`Source inconnue : ${sourceId}`);
+    const nom = source.publisher.split(' — ')[0];
+    if (source.publisher === 'Memlia' || vus.has(nom)) return [];
+    vus.add(nom);
+    return [{ nom, url: source.url, titre: source.title }];
+  });
+};
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -93,7 +106,12 @@ const graph = {
               >
                 <dt><a href={`#${entry.anchor}`}>{entry.term}</a></dt>
                 <dd>
-                  <p class="definition">{entry.definition}</p>
+                  {(() => {
+                    const cites = citations(entry.sourceIds);
+                    return cites.length === 0
+                      ? <p class="definition">{entry.definition}</p>
+                      : <p class="definition">{entry.definition} ({cites.map((cite, index) => <>{index > 0 && ', '}<a href={cite.url} rel={cite.url.startsWith('http') ? 'noopener noreferrer' : undefined} title={cite.titre}>{cite.nom}</a></>)})</p>;
+                  })()}
                   <p class="contexte">{entry.context}</p>
                   <div class="entree-details">
                     <p><strong>Confusion fréquente</strong>{entry.commonConfusion}</p>
@@ -117,16 +135,6 @@ const graph = {
                         {entry.internalLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
                       </ul>
                     </div>
-                  </div>
-                  <div class="entree-sources">
-                    <strong>Sources</strong>
-                    <ul>
-                      {entry.sourceIds.map((sourceId) => {
-                        const source = GLOSSARY_SOURCES[sourceId];
-                        if (!source) throw new Error(`Source inconnue : ${sourceId}`);
-                        return <li><a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.publisher}, {source.title}</a></li>;
-                      })}
-                    </ul>
                   </div>
                 </dd>
               </div>
@@ -181,14 +189,12 @@ const graph = {
   .contexte { color: var(--texte-2); }
   .entree-details { display: grid; gap: 12px; padding-left: 16px; border-left: 3px solid var(--accent-appui); }
   .entree-details p { display: grid; gap: 2px; }
-  .entree-details strong, .entree-liens strong, .entree-sources > strong { font-size: var(--t-sm); color: var(--texte-fort); }
+  .entree-details strong, .entree-liens strong { font-size: var(--t-sm); color: var(--texte-fort); }
   .entree-liens { display: grid; gap: 8px; font-size: var(--t-sm); }
   .entree-liens > div { display: grid; gap: 2px; }
   .liens-liste { display: flex; flex-wrap: wrap; gap: 2px 16px; }
   .liens-liste li { display: flex; align-items: center; min-height: 44px; }
-  .entree-liens a, .entree-sources a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
-  .entree-sources { display: grid; gap: 4px; font-size: var(--t-sm); color: var(--texte-2); }
-  .entree-sources ul { display: grid; gap: 3px; }
+  .entree-liens a, .definition a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
   .glossaire-sortie { display: grid; justify-items: start; gap: 12px; max-width: 720px; margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--ligne-forte); }
   .glossaire-sortie h2 { font-size: var(--t-3xl); max-width: 24ch; }
   .glossaire-sortie p { max-width: 60ch; }

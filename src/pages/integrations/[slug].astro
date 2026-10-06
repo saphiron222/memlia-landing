@@ -1,7 +1,6 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
 import IntegrationReplay from '@/components/sections/IntegrationReplay.astro';
-import SourceEvidence from '@/components/sections/SourceEvidence.astro';
 import Renvois from '@/components/Renvois.astro';
 import { auteurPar, identiteAuteur } from '@/data/auteurs';
 import { INTEGRATIONS_INDEXABLES, integrationPath, type IntegrationDefinition } from '@/data/integrations';
@@ -46,12 +45,15 @@ const noeuds = [
   },
   { '@type': 'Person', '@id': authorUrl, name: auteur.nom, url: authorUrl, jobTitle: auteur.role, worksFor: { '@id': `${SITE.url}/#organization` } },
 ];
-const source = {
-  editeur: integration.vendor,
-  titre: integration.source.title,
-  url: integration.source.url,
-  preuve: integration.source.fact,
-  consulteLe: integration.source.checkedAt,
+// Décision de Kevin du 06/10/2026 : pas de section « Source ». Le lien vers le document de l'éditeur se pose sur
+// le mot qui le désigne dans le paragraphe de portée (« la fiche », « la note Sage », « référence publique »…).
+const MOT_DU_DOCUMENT = /(la note Sage|la fiche|fiche|référence publique|page commerciale|présentation commerciale)/i;
+const trouve = integration.documentScope.match(MOT_DU_DOCUMENT) ?? integration.documentScope.match(new RegExp(integration.product.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+if (!trouve || trouve.index === undefined) throw new Error(`${integration.slug} : aucun mot du paragraphe de portée ne peut porter le lien vers la source`);
+const portee = {
+  avant: integration.documentScope.slice(0, trouve.index),
+  lien: trouve[0],
+  apres: integration.documentScope.slice(trouve.index + trouve[0].length),
 };
 ---
 
@@ -74,7 +76,7 @@ const source = {
   <section class="pv" aria-labelledby="repere-editeur">
     <div class="pv-tete rv">
       <h2 id="repere-editeur">Les repères et les champs que la règle doit connaître</h2>
-      <p class="texte-2 lecture">{integration.documentScope}</p>
+      <p class="texte-2 lecture">{portee.avant}<a href={integration.source.url} rel="noopener noreferrer" title={integration.source.title}>{portee.lien}</a>{portee.apres}</p>
       <p class="texte-2 lecture">{integration.officialPath}</p>
     </div>
     <ul class="pv-cartes rv-groupe">
@@ -108,14 +110,6 @@ const source = {
       <p class="texte-2 lecture">Ces trois cas décrivent les sorties attendues de la règle proposée, pas des résultats exécutés. Le visuel est une simulation locale de présentation ; aucun essai dans le logiciel éditeur n’est rapporté ici. La recette vérifie ensuite ces attentes dans l’environnement autorisé du cabinet.</p>
     </div>
     <IntegrationReplay integration={integration} />
-  </section>
-
-  <section class="pv" aria-labelledby="source">
-    <div class="pv-tete rv">
-      <h2 id="source">Source</h2>
-      <p class="texte-2 lecture">La portée de cette référence et les règles proposées par le cabinet sont distinguées ci-dessous.</p>
-    </div>
-    <SourceEvidence source={source} />
   </section>
 
   <section class="pv" aria-labelledby="maillage">

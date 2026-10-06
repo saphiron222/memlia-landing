@@ -79,7 +79,14 @@ class GlossaryProof(unittest.TestCase):
         self.assertEqual(self.html.count('data-example-fictitious='), 53)
         self.assertEqual(self.html.count('data-common-confusion='), 53)
         self.assertEqual(self.html.count('data-automation-boundary='), 53)
-        self.assertEqual(self.html.count('class="entree-sources"'), 53)
+        # Décision de Kevin du 06/10/2026 : pas de bloc « Sources » ; l'organisme externe est cité par un lien
+        # en fin de définition. Les seules sources internes (méthode, articles Memlia) restent des renvois.
+        self.assertNotIn('entree-sources', self.html)
+        definitions = re.findall(r'<p class="definition"[^>]*>(.*?)</p>', self.html, re.S)
+        self.assertEqual(len(definitions), 53)
+        cites = [definition for definition in definitions if 'href="https://' in definition]
+        # 22 entrées ne s'appuient que sur la méthode ou un article Memlia : rien d'externe à citer.
+        self.assertEqual(len(cites), 31)
         # Le lecteur voit les sources, jamais notre chaîne éditoriale : ni encart de statut,
         # ni date de relecture, ni marqueur de revue — pas même dans les attributs du HTML.
         self.assertNotIn('data-business-reviewer', self.html)
