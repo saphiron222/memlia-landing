@@ -46,6 +46,14 @@ BLOG_RUBRIQUES = {
     'suivre-la-production-sociale-dans-excel': 'paie-dsn-cabinet-comptable',
     'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier': 'gestion-pieces-comptables',
     'automatiser-la-relance-des-pieces-clients': 'gestion-pieces-comptables',
+    'utiliser-chatgpt-cabinet-comptable': 'ia-cabinet-comptable',
+    'logiciel-ia-comptabilite': 'ia-cabinet-comptable',
+    'prompt-chatgpt-expert-comptable': 'ia-cabinet-comptable',
+    'ia-comptabilite-confidentialite-donnees': 'ia-cabinet-comptable',
+    'verifier-reponse-ia-comptabilite': 'ia-cabinet-comptable',
+    'automatiser-avec-ia-sans-changer-logiciel': 'ia-cabinet-comptable',
+    'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain': 'ia-cabinet-comptable',
+    'tests-verts-et-regle-des-trois-passes': 'ia-cabinet-comptable',
 }
 
 
