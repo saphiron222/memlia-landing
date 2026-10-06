@@ -106,7 +106,7 @@ export function updateTier(session,id,patch) {
   for(const f of inputFields) if(Object.hasOwn(patch,f)) t[f]=patch[f]; validateBase(t);
   const invalidated=[];
   if(['requestedAmount','currency','referenceDate'].some(f=>Object.hasOwn(patch,f) && patch[f]!==before[f])) {
-   for(const r of t.responses) if(r.reconciled) {invalidated.push({id:r.id,reconciledAt:r.reconciledAt}); r.reconciled=false; r.reconciledAt='';}
+   for(const r of t.responses) {if(r.reconciled) invalidated.push({id:r.id,reconciledAt:r.reconciledAt}); r.comparable=false; r.reconciled=false; r.reconciledAt='';}
    if(t.status==='reconciled') t.status='received';
   }
   if(Object.hasOwn(patch,'sentDate')) {
@@ -228,6 +228,30 @@ function validateSession(s) {
  return s;
 }
 export function exportSession(session) {validateSession(session); return JSON.stringify({...session,dossier:dossierMetadata(session)},null,2);}
+/** Lossless versioned parts: every downloaded JSON stays below the file limit,
+ * independently of the number/size of notes and historic letter versions. */
+export function exportSessionFiles(session) {
+ const json=exportSession(session);
+ if(new TextEncoder().encode(json).byteLength<=MAX_BYTES) return [{name:'suivi-circularisation.json',text:json}];
+ const bundleId=crypto.randomUUID(), chunks=[];
+ for(let offset=0;offset<json.length;) {
+  let length=Math.min(8_000_000,json.length-offset), data;
+  do {data=json.slice(offset,offset+length); if(new TextEncoder().encode(JSON.stringify({data})).byteLength<=MAX_BYTES-1024) break; length=Math.floor(length/2);} while(length);
+  chunks.push(data); offset+=length;
+ }
+ return chunks.map((data,index)=>({name:`suivi-circularisation-${bundleId}-partie-${index+1}-sur-${chunks.length}.json`,text:JSON.stringify({schema:'memlia.circularisation.parts',schemaVersion:1,bundleId,index,total:chunks.length,data})}));
+}
+export function importSessionFiles(files,options={}) {
+ if(!Array.isArray(files)||!files.length) fail('Choisissez toutes les parties JSON.');
+ files.forEach(textSize);
+ if(files.length===1 && JSON.parse(files[0])?.schema!=='memlia.circularisation.parts') return importSession(files[0],options);
+ const parts=files.map(json=>{rejectDuplicateKeys(json); const part=JSON.parse(json); keys(part,['schema','schemaVersion','bundleId','index','total','data']);
+  if(part.schema!=='memlia.circularisation.parts'||part.schemaVersion!==1||typeof part.bundleId!=='string'||!part.bundleId||!Number.isSafeInteger(part.index)||!Number.isSafeInteger(part.total)||part.total<1||part.index<0||part.index>=part.total||typeof part.data!=='string') fail('Partie JSON invalide.'); return part;});
+ const first=parts[0];
+ if(parts.length!==first.total) fail('Sauvegarde incomplète : choisissez toutes les parties JSON.');
+ if(parts.some(p=>p.bundleId!==first.bundleId||p.total!==first.total)||new Set(parts.map(p=>p.index)).size!==parts.length) fail('Parties mélangées ou dupliquées.');
+ return parseSession(parts.sort((a,b)=>a.index-b.index).map(p=>p.data).join(''),options);
+}
 /** Reject duplicate object keys before JSON.parse can silently discard an earlier value. */
 function rejectDuplicateKeys(json) {
  const stack=[]; const tokens=/"(?:[^"\\]|\\.)*"|[{}\[\]:,]/g; let match;
@@ -244,7 +268,10 @@ function rejectDuplicateKeys(json) {
 }
 /** No implicit merge. Passing current always requires replaceConfirmed:true. */
 export function importSession(json,{current=null,replaceConfirmed=false}={}) {
- textSize(json); if(current!==null && replaceConfirmed!==true) fail('Confirmez le remplacement de la session avant reprise.'); rejectDuplicateKeys(json);
+ textSize(json); return parseSession(json,{current,replaceConfirmed});
+}
+function parseSession(json,{current=null,replaceConfirmed=false}={}) {
+ if(current!==null && replaceConfirmed!==true) fail('Confirmez le remplacement de la session avant reprise.'); rejectDuplicateKeys(json);
  let parsed; try {parsed=JSON.parse(json,(key,value)=>{if(['__proto__','constructor','prototype'].includes(key)) fail('Clé JSON interdite.'); return value;});} catch(error) {fail('JSON invalide : '+error.message);}
  if(Object.hasOwn(parsed,'dossier')) {
   keys(parsed.dossier,['method','version','generatedAt','controls','limits','parameters','missionRef','preparer','reviewer']);

@@ -4,12 +4,13 @@
  * returns {promise, cancel}. Cancel resolves {complete:false,cancelled:true,data:null}.
  * No partial parsed rows or session can be exported as a completed result.
  */
-import {MAX_BYTES,parseCsv,decodeCsv,previewCsv,importCsv,importSession} from './circularisation.mjs';
+import {MAX_BYTES,parseCsv,decodeCsv,previewCsv,importCsv,importSessionFiles} from './circularisation.mjs';
 export async function executeWorkerRequest(request) {
  if(!request || !['parse','preview','import','resume'].includes(request.operation)) throw new Error('Opération Worker inconnue.');
  if(request.operation==='resume') {
-  if(!request.file || request.file.size>MAX_BYTES) throw new Error('JSON absent ou supérieur à 20 Mo.');
-  return importSession(await request.file.text());
+  const files=request.files??(request.file?[request.file]:[]);
+  if(!files.length || files.some(file=>file.size>MAX_BYTES)) throw new Error('JSON absent ou supérieur à 20 Mo par fichier.');
+  return importSessionFiles(await Promise.all(files.map(file=>file.text())));
  }
  let parsed;
  if(request.file) {

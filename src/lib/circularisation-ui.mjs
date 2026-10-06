@@ -1,4 +1,4 @@
-import {createSession,addTier,updateTier,addResponse,generateLetter,compareResponse,reconcileResponse,reminderEligible,exportSession,importSession,exportCsv,printReport,demoSession,MAX_BYTES,updateParameters} from './circularisation.mjs';
+import {createSession,addTier,updateTier,addResponse,generateLetter,compareResponse,reconcileResponse,reminderEligible,exportSessionFiles,exportCsv,printReport,demoSession,MAX_BYTES,updateParameters} from './circularisation.mjs';
 import {startCsvWorkerJob} from './circularisation-worker.mjs';
 const STATES={draft:'Brouillon',prepared:'Préparée',sent:'Envoi renseigné',received:'Réponse reçue',reconciled:'Réponse rapprochée','non-response':'Non-réponse',disagreement:'Désaccord',refusal:'Refus',escalated:'Transmis au CAC pour suite'};
 const MAPPING={id:'Identifiant tiers',category:'Catégorie',recipient:'Destinataire',contact:'Contact',missionRef:'Référence mission',referenceDate:'Date de référence',currency:'Devise',requestedAmount:'Solde demandé',confirmationType:'Type (open/closed)',note:'Note'};
@@ -13,6 +13,7 @@ export function initializeCircularisation(WorkerClass){
  const download=(text,name,type)=>{const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
  const node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
  function render(){
+  $('[data-circ-export-parts]').replaceChildren();
   $('[data-circ-summary]').textContent=`${session.tiers.length} tiers · ${session.tiers.filter(t=>t.selected).length} sélectionnés`;
   page=Math.min(page,Math.max(0,Math.ceil(session.tiers.length/20)-1));const body=$('[data-circ-table] tbody');body.replaceChildren();
   for(const t of session.tiers.slice(page*20,page*20+20)){
@@ -25,7 +26,7 @@ export function initializeCircularisation(WorkerClass){
  }
  function reminder(){const t=tier();if(!t)return;const r=reminderEligible(t,{delayDays:Number($('#circ-delay').value),asOf:$('#circ-asof').value});$('[data-circ-reminder]').textContent=`${r.eligible?'Relance proposée (jamais envoyée)':'Relance suspendue ou non éligible'} : ${r.reason}${r.dueDate?' · échéance indicative '+r.dueDate:''}`;}
  function renderDetail(){
-  const t=tier();$('[data-circ-detail]').hidden=!t;if(!t)return;
+  const t=tier();$('[data-circ-detail]').hidden=!t;if(!t){clearDetail();return;}
   $('#circ-detail-title').textContent=`${t.id} — ${t.recipient}`;$('[data-circ-detail-summary]').textContent=`${STATES[t.status]} · ${t.responses.length} réponses · ${t.letters.length} versions de lettre`;
   $('#circ-sent').value=t.sentDate;$('#circ-sent').disabled=Boolean(t.sentDate);$('[data-circ-send] button').disabled=Boolean(t.sentDate);
   const c=compareResponse(t);$('[data-circ-reconcile]').disabled=!c.evaluated||t.responses.at(-1)?.reconciled;
@@ -33,27 +34,40 @@ export function initializeCircularisation(WorkerClass){
   const history=$('[data-circ-history]');history.replaceChildren();for(const n of t.notes)history.append(node('p',`Note ${n.id} · ${n.at} : ${n.text}`));for(const r of t.responses)history.append(node('p',`Retour ${r.id} · ${r.date} · ${r.reference} · ${r.kind} · ${r.amount||'montant absent'} ${r.currency} · ${r.reconciled?'rapproché':'non rapproché'} : ${r.comment}`));const events=node('details');events.append(node('summary',`Journal complet (${t.history.length} événements)`),node('pre',JSON.stringify(t.history,null,2)));history.append(events);reminder();
  }
  function showLetter(){const l=tier()?.letters.find(l=>String(l.version)===$('#circ-letter-version').value);$('[data-circ-letter-text]').textContent=l?.text??'Aucune lettre préparée.';$('[data-circ-letter-copy]').disabled=!l;$('[data-circ-letter-download]').disabled=!l;}
+ function currentLetter(){return tier()?.letters.find(l=>String(l.version)===$('#circ-letter-version').value);}
+ function clearDetail(){
+  for(const selector of ['[data-circ-letter]','[data-circ-send]','[data-circ-response]','[data-circ-note]'])$(selector).reset();
+  $('#circ-detail-title').textContent='Détail du tiers';
+  for(const selector of ['[data-circ-detail-summary]','[data-circ-reminder]','[data-circ-history]','[data-circ-letter-text]','#circ-letter-version'])$(selector).replaceChildren();
+  $('#circ-sent').disabled=false;$('[data-circ-send] button').disabled=false;
+  $('[data-circ-reconcile]').disabled=true;showLetter();
+ }
  function newTier(){editing=null;$('[data-circ-tier]').reset();$('#circ-id').readOnly=false;$('[data-circ-save]').textContent='Ajouter le tiers';}
- function open(id){active=id;editing=id;const t=tier(),form=$('[data-circ-tier]');for(const [name,value]of Object.entries(t)){const field=form.elements.namedItem(name);if(!field)continue;if(name==='selected')field.checked=value;else field.value=value;}$('#circ-id').readOnly=true;$('[data-circ-save]').textContent='Enregistrer la correction';$('#circ-return').value='';$('#circ-letter-valid').checked=false;$('#circ-amount-valid').checked=false;$('#circ-response-currency').value=t.currency;$('#circ-letter-version').value='';renderDetail();$('#circ-detail-title').focus();}
- bind('[data-circ-tier]','submit',()=>{const form=$('[data-circ-tier]'),input=Object.fromEntries(new FormData(form));input.selected=form.elements.namedItem('selected').checked;if(editing){delete input.id;session=updateTier(session,editing,input);}else{session=addTier(session,input);active=input.id;}render();announce('Tiers enregistré ; vos versions et notes sont conservées.');});
+ function open(id){clearDetail();active=id;editing=id;const t=tier(),form=$('[data-circ-tier]');for(const [name,value]of Object.entries(t)){const field=form.elements.namedItem(name);if(!field)continue;if(name==='selected')field.checked=value;else field.value=value;}$('#circ-id').readOnly=true;$('[data-circ-save]').textContent='Enregistrer la correction';$('#circ-return').value='';$('#circ-letter-valid').checked=false;$('#circ-amount-valid').checked=false;$('#circ-response-currency').value=t.currency;$('#circ-letter-version').value='';renderDetail();$('#circ-detail-title').focus();}
+ bind('[data-circ-tier]','submit',()=>{const form=$('[data-circ-tier]'),input=Object.fromEntries(new FormData(form));input.selected=form.elements.namedItem('selected').checked;if(editing){delete input.id;session=updateTier(session,editing,input);$('[data-circ-response]').elements.namedItem('comparable').checked=false;}else{session=addTier(session,input);active=input.id;}render();announce('Tiers enregistré ; vos versions et notes sont conservées.');});
  bind('[data-circ-new]','click',newTier);
  bind('[data-circ-meta]','submit',()=>{session={...session,metadata:Object.fromEntries(new FormData($('[data-circ-meta]'))),updatedAt:new Date().toISOString()};render();announce('Mentions enregistrées sans attribution de validation.');});
- bind('[data-circ-demo]','click',()=>{if(session.tiers.length&&!confirm('Remplacer la session par l’exemple fictif ? Sauvegardez le JSON au préalable.'))return;job?.cancel();session=demoSession();active=null;newTier();render();announce('Exemple fictif chargé, aucun envoi réalisé.');});
+ bind('[data-circ-demo]','click',()=>{if(session.tiers.length&&!confirm('Remplacer la session par l’exemple fictif ? Sauvegardez le JSON au préalable.'))return;job?.cancel();session=demoSession();active=null;newTier();clearImport();render();announce('Exemple fictif chargé, aucun envoi réalisé.');});
  bind('[data-circ-reset]','click',()=>{if(!confirm('Effacer définitivement cette session en mémoire ? Sauvegardez le JSON au préalable.'))return;job?.cancel();session=createSession();active=null;newTier();clearImport();render();announce('Session effacée. Les fichiers téléchargés restent sur votre appareil.');});
  bind('[data-circ-prev]','click',()=>{page--;render();});bind('[data-circ-next]','click',()=>{page++;render();});
  const saveParameters=()=>{session=updateParameters(session,{reminderDelayDays:Number($('#circ-delay').value),reminderAsOf:$('#circ-asof').value});reminder();};
  bind('#circ-delay','change',saveParameters);bind('#circ-asof','change',saveParameters);
  bind('[data-circ-letter]','submit',()=>{const r=generateLetter(session,active,{returnContact:$('#circ-return').value,validated:$('#circ-letter-valid').checked,amountValidated:$('#circ-amount-valid').checked});session=r.session;$('#circ-letter-version').value='';render();$('#circ-letter-valid').checked=false;$('#circ-amount-valid').checked=false;announce('Lettre préparée, jamais envoyée.');});
  bind('#circ-letter-version','change',showLetter);
- bind('[data-circ-letter-copy]','click',async()=>{try{await navigator.clipboard.writeText($('[data-circ-letter-text]').textContent);announce('Lettre copiée. Aucun envoi effectué.');}catch(e){fail(e);}});
- bind('[data-circ-letter-download]','click',()=>download($('[data-circ-letter-text]').textContent,'lettre-circularisation.txt','text/plain;charset=utf-8'));
+ bind('[data-circ-letter-copy]','click',async()=>{const l=currentLetter();if(!l)return;try{await navigator.clipboard.writeText(l.text);announce('Lettre copiée. Aucun envoi effectué.');}catch(e){fail(e);}});
+ bind('[data-circ-letter-download]','click',()=>{const l=currentLetter();if(l)download(l.text,'lettre-circularisation.txt','text/plain;charset=utf-8');});
  bind('[data-circ-send]','submit',()=>{session=updateTier(session,active,{sentDate:$('#circ-sent').value});render();announce('Envoi renseigné par vous ; rien n’a été expédié par cet outil.');});
- bind('[data-circ-response]','submit',()=>{const form=$('[data-circ-response]'),input=Object.fromEntries(new FormData(form));input.comparable=form.elements.namedItem('comparable').checked;session=addResponse(session,active,input);render();announce('Retour ajouté à l’historique, sans rapprochement présumé.');});
+ bind('[data-circ-response]','submit',()=>{const form=$('[data-circ-response]'),input=Object.fromEntries(new FormData(form));input.comparable=form.elements.namedItem('comparable').checked;session=addResponse(session,active,input);form.elements.namedItem('comparable').checked=false;render();announce('Retour ajouté à l’historique, sans rapprochement présumé.');});
  bind('[data-circ-reconcile]','click',()=>{session=reconcileResponse(session,active);render();announce('Rapprochement validé par vous, sans conclusion d’audit.');});
  root.querySelectorAll('[data-circ-state]').forEach(button=>button.addEventListener('click',()=>run(()=>{session=updateTier(session,active,{status:button.dataset.circState});render();})));
  bind('[data-circ-note]','submit',()=>{session=updateTier(session,active,{note:$('#circ-note').value});$('#circ-note').value='';render();announce('Note ajoutée, précédentes conservées.');});
- root.querySelectorAll('[data-circ-export]').forEach(button=>button.addEventListener('click',()=>run(()=>{const format=button.dataset.circExport;const text=format==='json'?exportSession(session):format==='csv'?exportCsv(session):printReport(session);download(text,`suivi-circularisation.${format}`,format==='json'?'application/json':format==='csv'?'text/csv;charset=utf-8':'text/html;charset=utf-8');announce(format==='html'?'Rapport HTML téléchargé : ouvrez-le pour imprimer.':'Export complet téléchargé.');})));
- bind('[data-circ-reimport]','submit',async()=>{try{const file=$('#circ-json').files[0];if(!file)throw new Error('Choisissez un JSON.');if(file.size>MAX_BYTES)throw new Error('JSON supérieur à 20 Mo, refus avant lecture.');const candidate=await execute({operation:'resume',file});if(!candidate)return;if(session.tiers.length&&!confirm('Remplacer la session actuelle par ce JSON ? Sauvegardez votre session avant de confirmer.'))return;session=candidate;active=null;newTier();clearImport();render();announce('Session reprise avec notes, lettres et historique.');}catch(e){fail(e);}});
+ root.querySelectorAll('[data-circ-export]').forEach(button=>button.addEventListener('click',()=>run(()=>{const format=button.dataset.circExport;if(format==='json'){
+  const files=exportSessionFiles(session),container=$('[data-circ-export-parts]');container.replaceChildren();
+  if(files.length===1){download(files[0].text,files[0].name,'application/json');announce('Export complet téléchargé.');}
+  else {files.forEach((file,index)=>{const b=node('button',`Télécharger la partie ${index+1} sur ${files.length}`);b.type='button';b.className='btn btn-contour';b.addEventListener('click',()=>{download(file.text,file.name,'application/json');b.textContent=`Partie ${index+1} sur ${files.length} téléchargée (télécharger à nouveau)`;});container.append(b);});announce(`Sauvegarde en ${files.length} parties : téléchargez chaque partie, puis sélectionnez-les ensemble à la reprise. Aucun historique supprimé.`);}
+  return;
+ }const text=format==='csv'?exportCsv(session):printReport(session);download(text,`suivi-circularisation.${format}`,format==='csv'?'text/csv;charset=utf-8':'text/html;charset=utf-8');announce(format==='html'?'Rapport HTML téléchargé : ouvrez-le pour imprimer.':'Export complet téléchargé.');})));
+ bind('[data-circ-reimport]','submit',async()=>{try{const files=[...$('#circ-json').files];if(!files.length)throw new Error('Choisissez un JSON ou toutes ses parties.');if(files.some(file=>file.size>MAX_BYTES))throw new Error('JSON supérieur à 20 Mo par fichier, refus avant lecture.');const candidate=await execute({operation:'resume',files});if(!candidate)return;if(session.tiers.length&&!confirm('Remplacer la session actuelle par ce JSON ? Sauvegardez votre session avant de confirmer.'))return;session=candidate;active=null;newTier();clearImport();render();announce('Session reprise avec notes, lettres et historique.');}catch(e){fail(e);}});
  function clearImport(){sourceFile=null;parsed=null;preview=null;offset=0;selectedRows.clear();$('#circ-csv').value='';$('#circ-json').value='';$('[data-circ-mapping]').replaceChildren();$('[data-circ-preview-rows]').replaceChildren();$('[data-circ-import-summary]').textContent='';$('[data-circ-preview]').disabled=true;$('[data-circ-import-confirm]').disabled=true;$('#circ-import-valid').checked=false;}
  const disabledBefore=new Map();
  function busy(value){

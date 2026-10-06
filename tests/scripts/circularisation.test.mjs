@@ -100,6 +100,8 @@ test('correction after reconciliation retains original validation in history and
  assert.equal(s.tiers[0].status,'received'); assert.equal(s.tiers[0].responses[0].reconciled,false);
  assert.equal(s.tiers[0].history.find(e=>e.type==='response-reconciled').details.comparison.difference,'20');
  assert.deepEqual(c.importSession(c.exportSession(s)),s);
+ assert.throws(()=>c.reconcileResponse(s,'001'),/comparable/i);
+ s=c.addResponse(s,'001',{date:'2026-01-12',amount:'120',currency:'EUR',comparable:true});
  s=c.reconcileResponse(s,'001'); assert.equal(c.compareResponse(s.tiers[0]).difference,'10');
  assert.equal(s.tiers[0].history.filter(e=>e.type==='response-reconciled').length,2);
 });
