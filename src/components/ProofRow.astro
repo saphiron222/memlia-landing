@@ -1,12 +1,12 @@
 ---
 import ProofMedia from '@/components/ProofMedia.astro';
 import type { ProofId } from '@/data/proofs';
-interface Props { id: ProofId; enlarge?: boolean; }
-const { id, enlarge = false } = Astro.props;
+interface Props { id: ProofId; }
+const { id } = Astro.props;
 ---
 <div class="proof-row" data-proof-row>
   <div class="proof-copy" data-proof-copy><slot /></div>
-  <ProofMedia id={id} enlarge={enlarge} />
+  <ProofMedia id={id} />
 </div>
 <style>
   .proof-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 32px; border-top: 1px solid var(--ligne); }

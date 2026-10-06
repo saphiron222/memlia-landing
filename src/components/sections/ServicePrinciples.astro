@@ -26,15 +26,17 @@ const principes = [
       <span class="eyebrow">La même frontière, à chaque mission</span>
       <h2 id="service-principles-title">L’IA prépare. L’humain décide.</h2>
     </div>
-    <ul class="service-principles-grid rv-groupe">
-      {principes.map((principe) => (
-        <li class="service-principle rv">
-          <span class="service-principle-icon" aria-hidden="true"><Picto nom={principe.picto} taille={24} /></span>
-          <h3>{principe.titre}</h3>
-          <p>{principe.texte}</p>
-        </li>
-      ))}
-    </ul>
+    <div class="bande">
+      <ul class="cartes rv-groupe">
+        {principes.map((principe) => (
+          <li class="cellule rv">
+            <span class="carte-icone" aria-hidden="true"><Picto nom={principe.picto} taille={24} /></span>
+            <h3 class="carte-titre">{principe.titre}</h3>
+            <p class="carte-texte">{principe.texte}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -56,53 +58,7 @@ const principes = [
     max-width: 18ch;
     font-size: var(--t-5xl);
   }
-  .service-principles-grid {
-    display: grid;
-    gap: 1px;
-    border-top: 1px solid var(--ligne);
-    border-bottom: 1px solid var(--ligne);
-    background: var(--ligne);
-  }
-  .service-principle {
-    display: grid;
-    align-content: start;
-    gap: 12px;
-    padding: 32px 24px 40px;
-    background: var(--surface-feuille);
-  }
-  .service-principle-icon {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 8px;
-    border: 1px solid var(--ligne-douce);
-    border-radius: var(--r-boite);
-    color: var(--accent-texte);
-    background: var(--surface-page);
-    transition: color var(--duree-4) var(--courbe-standard), border-color var(--duree-4) var(--courbe-standard);
-  }
-  .service-principle h3 {
-    font-size: var(--t-2xl);
-  }
-  .service-principle p {
-    max-width: 38ch;
-    color: var(--texte-2);
-  }
-  @media (hover: hover) {
-    .service-principle:hover .service-principle-icon {
-      color: var(--texte-fort);
-      border-color: var(--accent-appui);
-    }
-  }
-  @media (min-width: 48rem) {
-    .service-principles-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .service-principle {
-      padding: 40px 32px 48px;
-    }
-  }
+  /* Les trois principes sont les cellules de la bande du site (`.bande`, global.css). */
   @media (min-width: 64rem) {
     .service-principles {
       padding: 128px 0;

@@ -34,7 +34,7 @@ const appel = {
       {grille.map((g) => (
         <li class="garantie">
           <a class="garantie-lien" href={g.href}>
-            <span class="garantie-picto" aria-hidden="true"><Picto nom={g.picto} taille={24} /></span>
+            <span class="carte-icone garantie-picto" aria-hidden="true"><Picto nom={g.picto} taille={24} /></span>
             <span class="garantie-libelle">{g.libelle}</span>
             <span class="garantie-fleche" aria-hidden="true"><Picto nom="chevron" taille={14} /></span>
           </a>
@@ -109,38 +109,14 @@ const appel = {
       <p class="texte-2 lecture">Quatre choses que vous n’entendrez pas de notre part, parce que rien ne les soutiendrait. Ce que nous écrivons à la place, sur une tâche réelle : <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>.</p>
       <p class="texte-2 lecture">Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</p>
     </div>
-    <div class="pv-bande coins">
+    <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
-        <li class="pv-cellule rv"><h3>Aucune conformité</h3><p>Nous ne délivrons pas d’attestation, ni en paie, ni en droit social, ni au titre du règlement européen sur les données.</p></li>
-        <li class="pv-cellule rv"><h3>Aucun branchement universel</h3><p>Nous vérifions les formats et les accès de vos outils avant de nous engager. Si la connexion n’est pas possible, nous le disons.</p></li>
-        <li class="pv-cellule rv"><h3>Aucun pourcentage inventé</h3><p>Nous ne vous promettons pas de gagner tant d’heures ou tant de pourcents : aucune mesure ne le soutiendrait. Nous livrons une tâche qui tourne, et vous la mesurez chez vous.</p></li>
-        <li class="pv-cellule rv"><h3>Aucune illustration trompeuse</h3><p>Les exemples que nous publions sont fictifs et le disent. Aucun n’est une capture d’un dossier réel ni un résultat client.</p></li>
+      <ul class="cartes rv-groupe">
+        <li class="cellule rv"><h3 class="carte-titre">Aucune conformité</h3><p class="carte-texte">Nous ne délivrons pas d’attestation, ni en paie, ni en droit social, ni au titre du règlement européen sur les données.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Aucun branchement universel</h3><p class="carte-texte">Nous vérifions les formats et les accès de vos outils avant de nous engager. Si la connexion n’est pas possible, nous le disons.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Aucun pourcentage inventé</h3><p class="carte-texte">Nous ne vous promettons pas de gagner tant d’heures ou tant de pourcents : aucune mesure ne le soutiendrait. Nous livrons une tâche qui tourne, et vous la mesurez chez vous.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Aucune illustration trompeuse</h3><p class="carte-texte">Les exemples que nous publions sont fictifs et le disent. Aucun n’est une capture d’un dossier réel ni un résultat client.</p></li>
       </ul>
     </div>
   </section>
 </PageCommerciale>
-
-<style>
-  /* La grille des six garanties, telle qu'elle existe sur l'accueil (Garanties.astro),
-     dont chaque cellule mène ici à sa section plutôt qu'à la FAQ. */
-  .garanties-grille { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--ligne-douce); border-top: 1px solid var(--ligne-douce); border-bottom: 1px solid var(--ligne-douce); }
-  .garantie { position: relative; background: var(--surface-feuille); min-height: 96px; overflow: hidden; }
-  .garantie-lien { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 100%; min-height: 96px; padding: 12px 8px 16px; text-align: center; color: var(--texte-2); transition: color var(--duree-4) var(--courbe-standard); }
-  .garantie-picto { color: var(--picto-repos); transition: color var(--duree-4) var(--courbe-standard); }
-  .garantie-libelle { font-size: 0.8125rem; font-weight: 500; line-height: 1.3; text-wrap: balance; }
-  .garantie-fleche { position: absolute; right: 10px; bottom: 8px; opacity: 0; transform: translateY(12px); color: var(--accent-texte); transition: opacity var(--duree-3) var(--courbe-standard), transform var(--duree-3) var(--courbe-standard); }
-  .garantie-lien:focus-visible { outline-offset: -3px; border-radius: 0; }
-  .garantie-lien:focus-visible, .garantie-lien:focus-visible .garantie-picto { color: var(--texte-fort); }
-  .garantie-lien:focus-visible .garantie-fleche { opacity: 1; transform: none; }
-  .garantie::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%); transform: translateX(-100%); pointer-events: none; }
-  :global(html.js) .garanties-grille.in .garantie::after { animation: garantie-balayage 1.5s var(--courbe-standard) both; animation-delay: calc(var(--i, 0) * 150ms); }
-  .garantie:nth-child(2) { --i: 1; } .garantie:nth-child(3) { --i: 2; } .garantie:nth-child(4) { --i: 3; } .garantie:nth-child(5) { --i: 4; } .garantie:nth-child(6) { --i: 5; }
-  @keyframes garantie-balayage { to { transform: translateX(100%); } }
-  @media (hover: hover) {
-    .garantie-lien:hover, .garantie-lien:hover .garantie-picto { color: var(--texte-fort); }
-    .garantie-lien:hover .garantie-fleche { opacity: 1; transform: none; }
-  }
-  @media (min-width: 40rem) { .garantie, .garantie-lien { min-height: 128px; } }
-  @media (prefers-reduced-motion: reduce) { .garantie::after { animation: none !important; } }
-</style>

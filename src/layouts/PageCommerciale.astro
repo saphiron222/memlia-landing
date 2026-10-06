@@ -1,6 +1,5 @@
 ---
 import Base from '@/layouts/Base.astro';
-import ProofDetail from '@/components/ProofDetail.astro';
 import Button from '@/components/Button.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
 import { CTA, SITE } from '@/data/site.mjs';
@@ -14,9 +13,10 @@ import { eeatCommercial } from '@/data/page-eeat';
  * hero centré sous une pastille, une preuve fonctionnelle plein cadre dans le même cadre de
  * verre que la vidéo de l'accueil, puis les sections de la page, puis le même appel final.
  *
- * Les motifs partagés par les cinq pages (rangée preuve, bande à filets, grille de cartes,
- * étapes alternées, renvois) vivent ici, sous `.page-v2`, pour qu'aucune page n'en garde
- * une copie qui dériverait.
+ * Les motifs partagés par les cinq pages (rangée preuve, étapes alternées) vivent ici, sous
+ * `.page-v2`, pour qu'aucune page n'en garde une copie qui dériverait. Les cartes, leurs
+ * grilles et les bandes à cellules sont celles de tout le site (`.cartes`, `.carte`, `.bande`,
+ * global.css) : un seul dessin, défini une fois.
  */
 interface Props {
   page: {
@@ -109,7 +109,6 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
       <div class="page-cadre">
         <div class="page-verre">
           <img src={heroSrc} alt={preuve.alt} width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" class="page-ecran" data-proof={hero} />
-          {page.chemin === '/integrations/dsn-silae' && <ProofDetail id={hero} />}
         </div>
       </div>
     </section>
@@ -162,39 +161,11 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
     .page-v2 :global(.pv-inverse .proof-copy) { padding-right: 0; padding-left: 48px; }
   }
 
-  /* Bande à filets : cellules crème séparées d'un filet, sans bordure par cellule. */
-  .page-v2 :global(.pv-bande) { margin-top: 40px; }
-  .page-v2 :global(.pv-bande-liste) {
-    display: grid; grid-template-columns: 1fr; gap: 1px; margin: 0; padding: 0; list-style: none;
-    background: var(--ligne-douce); border-top: 1px solid var(--ligne); border-bottom: 1px solid var(--ligne);
-  }
-  .page-v2 :global(.pv-cellule) { display: grid; gap: 12px; align-content: start; padding: 40px 24px 48px; background: var(--surface-feuille); }
-  .page-v2 :global(.pv-cellule h3) { font-size: var(--t-2xl); max-width: 22ch; }
-  .page-v2 :global(.pv-cellule p) { margin: 0; color: var(--texte-2); max-width: 44ch; }
-  @media (min-width: 48rem) {
-    .page-v2 :global(.pv-bande-liste) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .page-v2 :global(.pv-bande-liste[data-colonnes='3'] .pv-cellule:last-child) { grid-column: 1 / -1; }
-    .page-v2 :global(.pv-cellule) { padding: 48px 32px 64px; }
-  }
-  @media (min-width: 64rem) {
-    .page-v2 :global(.pv-bande-liste[data-colonnes='3']) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .page-v2 :global(.pv-bande-liste[data-colonnes='3'] .pv-cellule:last-child) { grid-column: auto; }
-    .page-v2 :global(.pv-cellule) { padding: 64px 48px; }
-  }
-
-  /* Grille de cartes : le motif des usages de l'accueil, marque picto puis texte. */
-  .page-v2 :global(.pv-cartes) { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin: 40px 0 0; padding: 0; list-style: none; }
-  .page-v2 :global(.pv-carte) { min-width: 0; padding: 28px; border-radius: var(--r-carte); background: var(--surface-page); }
-  .page-v2 :global(.pv-carte-marque) { display: grid; place-items: center; width: 48px; height: 48px; color: var(--picto-repos); border-radius: var(--r-pastille); background: var(--surface-feuille); }
-  .page-v2 :global(.pv-carte-corps) { display: grid; gap: 12px; margin-top: 20px; }
-  .page-v2 :global(.pv-carte h3) { font-size: var(--t-2xl); line-height: 1.2; }
-  .page-v2 :global(.pv-carte p) { margin: 0; max-width: 52ch; color: var(--texte-2); }
-  @media (min-width: 48rem) {
-    .page-v2 :global(.pv-cartes) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-    .page-v2 :global(.pv-carte) { padding: 40px; }
-    .page-v2 :global(.pv-cartes[data-vedette] .pv-carte:first-child) { grid-column: 1 / -1; display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 32px; }
-    .page-v2 :global(.pv-cartes[data-vedette] .pv-carte:first-child .pv-carte-corps) { margin-top: 0; }
-  }
+  /* Cartes et bandes des pages : le dessin commun de global.css, posé à 40 px sous l'en-tête. */
+  .page-v2 :global(.pv .bande),
+  .page-v2 :global(.pv > .cartes) { margin-top: 40px; }
+  .page-v2 :global(.pv > .cartes + .pv-tete),
+  .page-v2 :global(.pv > .cartes + p) { margin-top: 32px; }
 
   /* Étapes alternées : copie et illustration, comme la méthode de l'accueil. */
   .page-v2 :global(.pv-etapes) { display: grid; gap: 56px; margin: 40px 0 0; padding: 0; list-style: none; }
@@ -211,15 +182,6 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
     .page-v2 :global(.pv-etape:nth-child(odd) .functional-proof) { grid-column: 1; grid-row: 1; }
   }
 
-  /* Renvois : les cartes bordées du bloc « Par où commencer » de l'accueil. */
-  .page-v2 :global(.pv-renvois) { display: grid; gap: 16px; margin: 40px 0 0; padding: 0; list-style: none; }
-  .page-v2 :global(.pv-renvoi) { display: grid; gap: 10px; padding: 24px; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-feuille); }
-  .page-v2 :global(.pv-renvoi p) { margin: 0; color: var(--texte); max-width: 44ch; }
-  .page-v2 :global(.pv-renvoi a) { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--accent-texte); }
-  @media (min-width: 48rem) {
-    .page-v2 :global(.pv-renvois) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-    .page-v2 :global(.pv-renvois[data-colonnes='3']) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  }
   @media (min-width: 64rem) {
     .page-v2 :global(.pv) { padding: 128px var(--marge-page-lg) 0; }
     .page-v2 :global(.pv:not(:has(~ .pv))) { padding-bottom: 128px; }

@@ -18,8 +18,9 @@ for (const width of [320, 375, 768, 1280, 1440]) {
       const row = figure.closest('[data-proof-row]');
       const copy = row?.querySelector('[data-proof-copy]');
       const rect = (element: Element | null | undefined) => element?.getBoundingClientRect().toJSON() ?? null;
-      const detail = figure.parentElement?.querySelector('[data-proof-detail]');
-      return { id: figure.getAttribute('data-proof'), image: rect(img), row: rect(row), copy: rect(copy), detail: rect(detail),
+      // Aucune version agrandie à côté du cadre (Kevin, 07/10/2026) : le cadre seul fait la rangée.
+      const enlarge = row?.querySelectorAll('[data-proof-detail], dialog, a[href^="/proofs/"]').length ?? 0;
+      return { id: figure.getAttribute('data-proof'), image: rect(img), row: rect(row), copy: rect(copy), enlarge,
         fit: getComputedStyle(img).objectFit, natural: [img.naturalWidth, img.naturalHeight],
         interactive: !!figure.closest('a, button, [role="button"], [tabindex]'),
         focusable: img.tabIndex >= 0 || figure.querySelectorAll('a,button,[tabindex]').length > 0 };
@@ -30,6 +31,7 @@ for (const width of [320, 375, 768, 1280, 1440]) {
       expect.soft(item.fit).toBe('contain');
       expect.soft(item.interactive).toBe(false);
       expect.soft(item.focusable).toBe(false);
+      expect.soft(item.enlarge, item.id!).toBe(0);
       expect.soft(item.image.x).toBeGreaterThanOrEqual(0);
       expect.soft(item.image.right).toBeLessThanOrEqual(width);
       expect.soft(item.image.width / item.image.height).toBeCloseTo(16 / 9, 2);
@@ -44,8 +46,7 @@ for (const width of [320, 375, 768, 1280, 1440]) {
           expect.soft(item.copy.bottom).toBeGreaterThan(item.image.y);
           if (!['04-observer', '05-cadrer', '06-eprouver', '07-livrer'].includes(item.id!)) {
             expect.soft(item.row.height).toBeGreaterThanOrEqual(370);
-            // L’accès au détail s’ajoute au cadre canonique sans réduire son image.
-            expect.soft(item.row.height - (item.detail?.height ?? 0)).toBeLessThanOrEqual(430);
+            expect.soft(item.row.height).toBeLessThanOrEqual(430);
           }
         }
       } else if (item.row && item.copy) {

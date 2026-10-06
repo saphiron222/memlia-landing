@@ -27,11 +27,13 @@ const services = [
 <section class="orientation" aria-labelledby="orientation-titre">
   <div class="conteneur">
     <h2 id="orientation-titre" class="orientation-titre">Par où commencer</h2>
-    <ul class="orientation-liste">
+    <ul class="cartes">
       {destinations.map((d) => (
-        <li class="orientation-item">
-          <p class="orientation-texte">{d.texte}</p>
-          <a class="orientation-lien" href={d.href}>{d.libelle}</a>
+        <li class="carte">
+          <div class="carte-corps">
+            <p class="carte-texte">{d.texte}</p>
+            <a class="carte-action carte-lien" href={d.href}>{d.libelle}</a>
+          </div>
         </li>
       ))}
     </ul>
@@ -54,29 +56,7 @@ const services = [
     color: var(--texte-fort);
     margin-bottom: 24px;
   }
-  .orientation-liste {
-    display: grid;
-    gap: 16px;
-  }
-  .orientation-item {
-    display: grid;
-    gap: 10px;
-    padding: 24px;
-    border: 1px solid var(--ligne-douce);
-    border-radius: var(--r-boite);
-    background: var(--surface-feuille);
-  }
-  .orientation-texte {
-    color: var(--texte);
-    max-width: 44ch;
-  }
-  .orientation-lien {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    font-weight: 600;
-    color: var(--accent-texte);
-  }
+  /* Les quatre destinations sont des cartes du site (global.css), cliquables en entier. */
   .orientation-services {
     display: grid;
     gap: 14px;
@@ -88,15 +68,6 @@ const services = [
   .orientation-services ul { display: flex; flex-wrap: wrap; gap: 8px 20px; }
   .orientation-services a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-texte); font-weight: 600; text-underline-offset: 3px; }
   @media (hover: hover) {
-    .orientation-lien:hover {
-      color: var(--texte-fort);
-    }
     .orientation-services a:hover { color: var(--texte-fort); text-decoration: underline; }
-  }
-  @media (min-width: 48rem) {
-    .orientation-liste {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
   }
 </style>

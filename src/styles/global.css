@@ -511,6 +511,360 @@ ol {
   outline-offset: -1px;
 }
 
+/* ---------- Cartes et bandes (Kevin, 07/10/2026) ---------- */
+/*
+ * Un seul dessin de carte pour tout le site, défini ici et nulle part ailleurs : une fiche
+ * blanche posée sur la feuille, bord de 1 px visible, rayon et marges constants, pictogramme,
+ * titre et texte traités de la même façon. Une carte qui mène quelque part est cliquable en
+ * entier : son lien `.carte-lien` s'étend sur la carte (ou la carte est elle-même le lien), et
+ * toutes partagent le même survol et le même focus.
+ *
+ * La grille `.cartes` ne laisse aucune carte orpheline : une colonne en mobile ; au-delà, deux
+ * colonnes, ou trois quand le nombre de cartes est un multiple de trois et que la place le
+ * permet ; sur deux colonnes, un nombre impair étend la dernière carte sur toute la largeur.
+ * La grille mesure sa propre largeur (requête de conteneur) : la règle vaut aussi dans une
+ * colonne étroite (article, catégorie d'outils, couverture d'un service).
+ *
+ * La bande `.bande` garde la pleine largeur : les cellules d'une même fiche, séparées par le
+ * filet du bord des cartes, avec les mêmes marges et la même typographie.
+ */
+.cartes {
+  --ecart: var(--cartes-ecart);
+  container-type: inline-size;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ecart);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cartes > * {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+@media (min-width: 48rem) {
+  .cartes {
+    --ecart: var(--cartes-ecart-lg);
+  }
+}
+@container (min-width: 36rem) {
+  .cartes > * {
+    flex-basis: calc((100% - var(--ecart)) / 2);
+  }
+  .cartes > :last-child:nth-child(odd) {
+    flex-basis: 100%;
+  }
+  /* Élargie, la carte pose son pictogramme ou son image à côté du texte (carte directe ou
+     carte-lien dans son élément de liste). */
+  .cartes > .carte:last-child:nth-child(odd),
+  .cartes > :last-child:nth-child(odd) > .carte {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--carte-marge-lg);
+  }
+  .cartes > .carte:last-child:nth-child(odd) > .carte-media,
+  .cartes > :last-child:nth-child(odd) > .carte > .carte-media {
+    flex: 0 0 calc(50% - var(--carte-marge-lg));
+  }
+}
+@container (min-width: 56rem) {
+  .cartes:has(> :last-child:nth-child(3n)) > * {
+    flex-basis: calc((100% - 2 * var(--ecart)) / 3);
+  }
+  .cartes:has(> :last-child:nth-child(3n)) > .carte:last-child,
+  .cartes:has(> :last-child:nth-child(3n)) > :last-child > .carte {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  .cartes:has(> :last-child:nth-child(3n)) > .carte:last-child > .carte-media,
+  .cartes:has(> :last-child:nth-child(3n)) > :last-child > .carte > .carte-media {
+    flex: none;
+  }
+}
+
+.carte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  padding: var(--carte-marge);
+  border: 1px solid var(--carte-bord);
+  border-radius: var(--carte-rayon);
+  background: var(--carte-fond);
+  box-shadow: var(--carte-ombre);
+  color: var(--texte);
+}
+.cellule {
+  display: flex;
+  flex-direction: column;
+  gap: var(--carte-ecart);
+  min-width: 0;
+  padding: var(--carte-marge);
+  background: var(--carte-fond);
+}
+/*
+ * Les sous-éléments ne valent qu'à l'intérieur d'une carte ou d'une cellule de bande : le blog,
+ * laissé tel quel, garde ses propres classes scopées `.carte-titre`, `.carte-texte`,
+ * `.carte-meta`, sans rien hériter d'ici. `:where()` n'ajoute aucune spécificité.
+ */
+:where(.carte) .carte-corps {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--carte-ecart);
+  min-width: 0;
+}
+:where(.carte, .cellule, .garantie) .carte-icone {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: var(--carte-icone);
+  height: var(--carte-icone);
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-pastille);
+  background: var(--surface-page);
+  color: var(--accent-texte);
+}
+:where(.carte, .cellule, .garantie) .carte-icone svg {
+  width: 24px;
+  height: 24px;
+}
+:where(.carte) .carte-media {
+  display: block;
+  flex: none;
+  overflow: hidden;
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-boite);
+  background: var(--surface-page);
+}
+:where(.carte) .carte-media img {
+  width: 100%;
+}
+:where(.carte, .cellule) .carte-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 0;
+  font-size: var(--t-sm);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--texte-2);
+}
+:where(.carte, .cellule) .carte-titre {
+  margin: 0;
+  font-family: var(--police-display), 'Fraunces Fallback';
+  font-size: var(--t-2xl);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--texte-fort);
+  text-wrap: balance;
+}
+:where(.carte, .cellule) .carte-texte {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--texte-2);
+  text-wrap: pretty;
+}
+:where(.carte) .carte-action {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+  min-height: 44px;
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--accent-texte);
+}
+:where(.carte) .carte-action svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  transition: transform var(--duree-2) var(--courbe-standard);
+}
+/* Le lien de la carte la couvre en entier, bord compris. */
+:where(.carte) .carte-lien::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: 1;
+  border-radius: var(--carte-rayon);
+}
+.carte:has(.carte-lien),
+a.carte {
+  transition:
+    border-color var(--duree-2) var(--courbe-standard),
+    box-shadow var(--duree-2) var(--courbe-standard),
+    translate var(--duree-1) var(--courbe-standard);
+}
+.js .carte.rv {
+  transition:
+    opacity 600ms var(--courbe-expo),
+    transform 600ms var(--courbe-expo),
+    border-color var(--duree-2) var(--courbe-standard),
+    box-shadow var(--duree-2) var(--courbe-standard),
+    translate var(--duree-1) var(--courbe-standard);
+}
+@media (hover: hover) {
+  .carte:has(.carte-lien):hover,
+  a.carte:hover {
+    border-color: var(--carte-bord-survol);
+    box-shadow: var(--carte-ombre-survol);
+  }
+  .carte:has(.carte-lien):hover .carte-action svg,
+  a.carte:hover .carte-action svg {
+    transform: translateX(2px);
+  }
+}
+/* Appui : la fiche s'enfonce d'un pixel et reprend son ombre posée (retour tactile). */
+.carte:has(.carte-lien):active,
+a.carte:active {
+  translate: 0 1px;
+  box-shadow: var(--carte-ombre);
+}
+a.carte:focus-visible {
+  outline: 2.5px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: var(--carte-rayon);
+}
+@supports selector(:has(*)) {
+  .carte-lien:focus-visible {
+    outline: none;
+  }
+  .carte:has(.carte-lien:focus-visible) {
+    outline: 2.5px solid var(--focus);
+    outline-offset: 3px;
+  }
+}
+
+.bande {
+  position: relative;
+  border-block: 1px solid var(--carte-bord);
+}
+.bande > .cartes {
+  --ecart: 1px;
+  background: var(--carte-bord);
+}
+.cellule .carte-icone {
+  margin-bottom: 8px;
+}
+@media (min-width: 48rem) {
+  .carte,
+  .cellule {
+    padding: var(--carte-marge-lg);
+  }
+}
+
+/* Les six garanties : une bande de liens à trois colonnes, sur l'accueil et sur /garanties. */
+.garanties-grille {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--carte-bord);
+  border-block: 1px solid var(--carte-bord);
+}
+.garantie {
+  position: relative;
+  min-height: 96px;
+  overflow: hidden;
+  background: var(--carte-fond);
+}
+.garantie-lien {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 100%;
+  min-height: 96px;
+  padding: 12px 8px 16px;
+  text-align: center;
+  color: var(--texte-2);
+  transition:
+    color var(--duree-4) var(--courbe-standard),
+    box-shadow var(--duree-2) var(--courbe-standard);
+}
+.garantie-picto {
+  transition: border-color var(--duree-2) var(--courbe-standard);
+}
+.garantie-libelle {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.garantie-fleche {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  opacity: 0;
+  transform: translateY(12px);
+  color: var(--accent-texte);
+  transition:
+    opacity var(--duree-3) var(--courbe-standard),
+    transform var(--duree-3) var(--courbe-standard);
+}
+.garantie-lien:focus-visible {
+  outline-offset: -3px;
+  border-radius: 0;
+}
+.garantie-lien:focus-visible {
+  color: var(--texte-fort);
+}
+.garantie-lien:focus-visible .garantie-fleche {
+  opacity: 1;
+  transform: none;
+}
+/* Un seul balayage à l'entrée dans le viewport, jamais en boucle (§4.9). */
+.garantie::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+.js .garanties-grille.in .garantie::after {
+  animation: garantie-balayage 1.5s var(--courbe-standard) both;
+  animation-delay: calc(var(--i, 0) * 150ms);
+}
+.garantie:nth-child(2) { --i: 1; }
+.garantie:nth-child(3) { --i: 2; }
+.garantie:nth-child(4) { --i: 3; }
+.garantie:nth-child(5) { --i: 4; }
+.garantie:nth-child(6) { --i: 5; }
+@keyframes garantie-balayage {
+  to {
+    transform: translateX(100%);
+  }
+}
+@media (hover: hover) {
+  .garantie-lien:hover {
+    color: var(--texte-fort);
+    box-shadow: inset 0 0 0 1px var(--carte-bord-survol);
+  }
+  .garantie-lien:hover .garantie-picto {
+    border-color: var(--carte-bord-survol);
+  }
+  .garantie-lien:hover .garantie-fleche {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (min-width: 40rem) {
+  .garantie,
+  .garantie-lien {
+    min-height: 128px;
+  }
+}
+
 /* ---------- Motion (§5) ---------- */
 /* Apparitions au défilement : visibles sans JS ; la classe `js` est posée à l'hydratation. */
 .js .rv {
@@ -524,11 +878,15 @@ ol {
   opacity: 1;
   transform: none;
 }
-.js .rv-groupe > .rv:nth-child(2) { transition-delay: 80ms; }
-.js .rv-groupe > .rv:nth-child(3) { transition-delay: 160ms; }
-.js .rv-groupe > .rv:nth-child(4) { transition-delay: 240ms; }
-.js .rv-groupe > .rv:nth-child(5) { transition-delay: 320ms; }
-.js .rv-groupe > .rv:nth-child(6) { transition-delay: 400ms; }
+.js .rv-groupe > .rv:nth-child(2) { --rv-delai: 80ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(3) { --rv-delai: 160ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(4) { --rv-delai: 240ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(5) { --rv-delai: 320ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(6) { --rv-delai: 400ms; transition-delay: var(--rv-delai); }
+/* Le décalage d'apparition ne retarde que l'entrée d'une carte, jamais son survol. */
+.js .rv-groupe > .carte.rv {
+  transition-delay: var(--rv-delai, 0ms), var(--rv-delai, 0ms), 0ms, 0ms, 0ms;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -546,6 +904,9 @@ ol {
     opacity: 1;
     transform: none;
   }
+  .garantie::after {
+    animation: none !important;
+  }
 }
 
 @media (forced-colors: active) {
@@ -553,5 +914,15 @@ ol {
   .chip .chip-icone,
   .pastille {
     border: 1px solid CanvasText;
+  }
+  /* Les filets des bandes sont un fond : en couleurs forcées, ils restent visibles. */
+  .bande > .cartes,
+  .garanties-grille {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+  .bande > .cartes > *,
+  .garanties-grille > * {
+    forced-color-adjust: auto;
   }
 }

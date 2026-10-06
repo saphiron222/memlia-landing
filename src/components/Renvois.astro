@@ -1,21 +1,22 @@
 ---
 /**
- * Renvois de fin de page : une phrase, un lien, en deux ou trois colonnes. Le motif est partagé
- * par les pages commerciales ; il vit ici pour qu'aucune page n'en garde une copie qui dériverait.
- * Les styles `.pv-renvois` / `.pv-renvoi` sont ceux de la coque PageCommerciale.
+ * Renvois de fin de page : une phrase, un lien. Chaque renvoi est une carte du site (`.carte`,
+ * global.css), cliquable en entier ; la grille `.cartes` choisit seule ses colonnes selon le
+ * nombre de renvois, sans carte orpheline.
  */
 interface Props {
   items: { texte: string; libelle: string; href: string }[];
-  colonnes?: 2 | 3;
 }
-const { items, colonnes = 3 } = Astro.props;
+const { items } = Astro.props;
 ---
 
-<ul class="pv-renvois rv-groupe" data-colonnes={String(colonnes)}>
+<ul class="cartes rv-groupe">
   {items.map((r) => (
-    <li class="pv-renvoi rv">
-      <p>{r.texte}</p>
-      <a href={r.href}>{r.libelle}</a>
+    <li class="carte rv">
+      <div class="carte-corps">
+        <p class="carte-texte">{r.texte}</p>
+        <a class="carte-action carte-lien" href={r.href}>{r.libelle}</a>
+      </div>
     </li>
   ))}
 </ul>

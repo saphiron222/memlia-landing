@@ -79,9 +79,9 @@ const portee = {
       <p class="texte-2 lecture">{portee.avant}<a href={integration.source.url} rel="noopener noreferrer" title={integration.source.title}>{portee.lien}</a>{portee.apres}</p>
       <p class="texte-2 lecture">{integration.officialPath}</p>
     </div>
-    <ul class="pv-cartes rv-groupe">
+    <ul class="cartes rv-groupe">
       {integration.fields.map((field) => (
-        <li class="pv-carte rv"><div class="pv-carte-corps"><h3>{field.label}</h3><p>{field.control}</p></div></li>
+        <li class="carte rv"><div class="carte-corps"><h3 class="carte-titre">{field.label}</h3><p class="carte-texte">{field.control}</p></div></li>
       ))}
     </ul>
     <div class="pv-tete rv">
@@ -94,12 +94,12 @@ const portee = {
       <h2 id="regle-ecrite">La règle écrite</h2>
       <p class="texte-2 lecture">{integration.writtenRule}</p>
     </div>
-    <div class="pv-bande coins">
+    <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ol class="pv-bande-liste rv-groupe" data-colonnes="3">
-        <li class="pv-cellule rv"><h3>Préparé</h3><p>{integration.boundary.prepared}</p></li>
-        <li class="pv-cellule rv"><h3>À valider</h3><p>{integration.boundary.validation}</p></li>
-        <li class="pv-cellule rv"><h3>Reste humain</h3><p>{integration.boundary.human}</p></li>
+      <ol class="cartes rv-groupe">
+        <li class="cellule rv"><h3 class="carte-titre">Préparé</h3><p class="carte-texte">{integration.boundary.prepared}</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">À valider</h3><p class="carte-texte">{integration.boundary.validation}</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Reste humain</h3><p class="carte-texte">{integration.boundary.human}</p></li>
       </ol>
     </div>
   </section>
@@ -121,6 +121,6 @@ const portee = {
       { texte: 'Le service correspondant décrit la tâche sans la réduire à un éditeur.', libelle: integration.service.label, href: integration.service.href },
       ...(integration.tool ? [{ texte: 'L’outil local contrôle des soldes fictifs et exporte un CSV ; il ne réalise pas l’appariement des mouvements.', libelle: integration.tool.label, href: integration.tool.href }] : []),
       { texte: 'Choisissez un autre produit et le geste à contrôler.', libelle: INTEGRATIONS_INDEXABLES.length === 9 ? 'Voir les neuf guides par environnement' : 'Voir les guides par environnement', href: '/integrations' },
-    ]} colonnes={2} />
+    ]} />
   </section>
 </PageCommerciale>

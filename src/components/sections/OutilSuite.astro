@@ -39,19 +39,24 @@ const destination = destinations[outil.pageService];
 
     <nav class="outil-parcours" data-tool-links aria-label="Pour continuer">
       <div class="outil-suite-secondaires">
-        <a class="outil-suite-lien" href={OUTILS_HUB_PATH}>
-          <span class="outil-suite-etape">Explorer</span>
-          <strong>Tous les outils comptables gratuits</strong>
-          <span class="outil-suite-description">Retrouver les autres calculs et modèles utilisables sans compte.</span>
-          <Picto nom="fleche" taille={18} class="outil-suite-fleche" />
-        </a>
-
-        <a class="outil-suite-lien" href={outil.pageService}>
-          <span class="outil-suite-etape">Comprendre</span>
-          <strong>{destination.libelle}</strong>
-          <span class="outil-suite-description">{destination.description}</span>
-          <Picto nom="fleche" taille={18} class="outil-suite-fleche" />
-        </a>
+        <div class="cartes">
+          <a class="carte" href={OUTILS_HUB_PATH}>
+            <span class="carte-corps">
+              <span class="carte-meta">Explorer</span>
+              <strong class="carte-titre">Tous les outils comptables gratuits</strong>
+              <span class="carte-texte">Retrouver les autres calculs et modèles utilisables sans compte.</span>
+              <span class="carte-action" aria-hidden="true"><Picto nom="fleche" taille={18} /></span>
+            </span>
+          </a>
+          <a class="carte" href={outil.pageService}>
+            <span class="carte-corps">
+              <span class="carte-meta">Comprendre</span>
+              <strong class="carte-titre">{destination.libelle}</strong>
+              <span class="carte-texte">{destination.description}</span>
+              <span class="carte-action" aria-hidden="true"><Picto nom="fleche" taille={18} /></span>
+            </span>
+          </a>
+        </div>
 
         {outil.articleExact && (
           <a class="outil-suite-ressource" href={outil.articleExact}>
@@ -109,49 +114,9 @@ const destination = destinations[outil.pageService];
     border-top: 1px solid var(--ligne-forte);
     padding-top: 24px;
   }
+  /* Les deux suites sont des cartes du site (global.css), chacune lien en entier. */
   .outil-suite-secondaires {
     min-width: 0;
-    border-top: 1px solid var(--ligne-douce);
-  }
-  .outil-suite-lien {
-    position: relative;
-    display: grid;
-    min-height: 148px;
-    gap: 8px;
-    padding: 24px 48px 24px 0;
-    border-bottom: 1px solid var(--ligne-douce);
-    transition:
-      color var(--duree-1) var(--courbe-standard),
-      background-color var(--duree-1) var(--courbe-standard),
-      padding-left var(--duree-1) var(--courbe-standard);
-  }
-  .outil-suite-lien strong {
-    color: var(--texte-fort);
-    font-size: var(--t-xl);
-    line-height: 1.25;
-    text-wrap: balance;
-  }
-  .outil-suite-description {
-    max-width: 58ch;
-    color: var(--texte-2);
-    line-height: 1.5;
-    text-wrap: pretty;
-  }
-  .outil-suite-fleche {
-    position: absolute;
-    top: 50%;
-    right: 8px;
-    color: var(--accent-texte);
-    transform: translateY(-50%);
-    transition: transform var(--duree-1) var(--courbe-standard);
-  }
-  .outil-suite-lien:hover {
-    padding-left: 12px;
-    background: var(--surface-hover);
-  }
-  .outil-suite-lien:hover .outil-suite-fleche,
-  .outil-suite-lien:focus-visible .outil-suite-fleche {
-    transform: translate(4px, -50%);
   }
   .outil-suite-ressource {
     display: inline-flex;
@@ -170,10 +135,10 @@ const destination = destinations[outil.pageService];
     gap: 16px;
     order: -1;
     padding: clamp(24px, 6vw, 40px);
-    border: 1px solid var(--ligne);
-    border-radius: var(--r-cadre);
+    border: 1px solid var(--carte-bord);
+    border-radius: var(--carte-rayon);
     background: var(--accent-voile);
-    box-shadow: var(--ombre-xs);
+    box-shadow: var(--carte-ombre);
   }
   .outil-suite-principale h3 {
     font-size: var(--t-3xl);
@@ -201,12 +166,6 @@ const destination = destinations[outil.pageService];
     .outil-suite-principale {
       order: initial;
       min-height: 332px;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .outil-suite-lien,
-    .outil-suite-fleche {
-      transition: none;
     }
   }
 </style>

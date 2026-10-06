@@ -52,6 +52,7 @@
   --bouton-sombre-bord: #141112;
   --bouton-sombre-hover: #37322f;
   --bouton-principal-hover: #34c264;
+  --surface-elevee: var(--blanc); /* ce qui se pose sur la feuille : cartes, cellules de bande */
 
   /* ---- Typographie ---- */
   --police-display: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
@@ -94,6 +95,9 @@
   --ombre-ornement: 0 3px 5px rgba(35, 31, 32, 0.05), 0 1px 2px rgba(35, 31, 32, 0.05),
     0 0.5px 0.5px rgba(35, 31, 32, 0.07);
   --ombre-panneau: 0 10px 15px -3px rgba(35, 31, 32, 0.1), 0 4px 6px -4px rgba(35, 31, 32, 0.1);
+  /* Élévation d'une fiche : posée (repos), levée (survol). Ombre diffuse teintée encre. */
+  --ombre-posee: 0 1px 2px rgba(35, 31, 32, 0.04), 0 8px 20px -10px rgba(35, 31, 32, 0.16);
+  --ombre-levee: 0 2px 4px rgba(35, 31, 32, 0.05), 0 14px 28px -12px rgba(35, 31, 32, 0.22);
 
   /* ---- Motion ---- */
   --duree-1: 150ms;
@@ -128,4 +132,19 @@
   --ornement: 20px;
   --ornement-sm: 10px;
   --nav-h: 56px;
+  /* Carte (Kevin, 07/10/2026) : une fiche blanche posée sur la feuille, bord visible,
+     identique partout ; la bande en reprend la surface, les marges et le filet.
+     Bord 1,4:1 sur crème ; texte --texte-fort 16:1, --texte-2 5,7:1 sur la fiche. */
+  --carte-fond: var(--surface-elevee);
+  --carte-bord: var(--ligne-forte);
+  --carte-bord-survol: var(--accent-appui);
+  --carte-ombre: var(--ombre-posee);
+  --carte-ombre-survol: var(--ombre-levee);
+  --carte-rayon: var(--r-carte);
+  --carte-marge: 24px;
+  --carte-marge-lg: 32px;
+  --carte-ecart: 12px;
+  --carte-icone: 40px;
+  --cartes-ecart: 16px;
+  --cartes-ecart-lg: 24px;
 }

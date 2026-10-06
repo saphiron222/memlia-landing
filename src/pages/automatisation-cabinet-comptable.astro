@@ -75,13 +75,13 @@ const appel = {
       <h2 id="prepare">La règle écrite, de la frontière au jeu d’essai</h2>
       <p class="texte-2 lecture">Nous transformons le savoir-faire du cabinet en une règle relisible, puis en automatisation dans vos outils. Quatre parties ne changent jamais.</p>
     </div>
-    <div class="pv-bande coins">
+    <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="pv-bande-liste rv-groupe">
-        <li class="pv-cellule rv"><h3>La frontière</h3><p>Trois colonnes fixent ce qui se prépare seul, ce qui attend une validation et ce qui reste humain.</p></li>
-        <li class="pv-cellule rv"><h3>La proposition</h3><p>L’automatisation prépare le résultat et le présente. Ce que le cabinet saisit ne se touche jamais.</p></li>
-        <li class="pv-cellule rv"><h3>L’arrêt</h3><p>Une donnée manque, le cas sort de la règle ou deux lectures restent possibles : le traitement s’arrête et nomme le doute.</p></li>
-        <li class="pv-cellule rv"><h3>Le jeu d’essai</h3><p>Les cas qui doivent aboutir et ceux qui doivent échouer sont rejoués sur des données fictives avant la recette.</p></li>
+      <ul class="cartes rv-groupe">
+        <li class="cellule rv"><h3 class="carte-titre">La frontière</h3><p class="carte-texte">Trois colonnes fixent ce qui se prépare seul, ce qui attend une validation et ce qui reste humain.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">La proposition</h3><p class="carte-texte">L’automatisation prépare le résultat et le présente. Ce que le cabinet saisit ne se touche jamais.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">L’arrêt</h3><p class="carte-texte">Une donnée manque, le cas sort de la règle ou deux lectures restent possibles : le traitement s’arrête et nomme le doute.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Le jeu d’essai</h3><p class="carte-texte">Les cas qui doivent aboutir et ceux qui doivent échouer sont rejoués sur des données fictives avant la recette.</p></li>
       </ul>
     </div>
   </section>
@@ -106,11 +106,11 @@ const appel = {
         <p class="texte-2">Cette qualification est un travail, pas une formalité. Elle décide si la tâche est automatisable, et à quel coût.</p>
       </div>
     </ProofRow>
-    <ul class="pv-cartes rv-groupe" data-vedette>
+    <ul class="cartes rv-groupe">
       {requis.map((r) => (
-        <li class="pv-carte rv">
-          <div class="pv-carte-marque" aria-hidden="true"><Picto nom={r.picto} taille={24} /></div>
-          <div class="pv-carte-corps"><h3>{r.titre}</h3><p>{r.texte}</p></div>
+        <li class="carte rv">
+          <span class="carte-icone" aria-hidden="true"><Picto nom={r.picto} taille={24} /></span>
+          <div class="carte-corps"><h3 class="carte-titre">{r.titre}</h3><p class="carte-texte">{r.texte}</p></div>
         </li>
       ))}
     </ul>
@@ -144,11 +144,14 @@ const appel = {
     <p class="texte-2 lecture perimetre-paie rv">Dans le pôle social, vous pouvez <a href="/automatisation/paie">confier un geste répétitif autour de la paie</a> tout en laissant chaque correction et chaque décision aux gestionnaires.</p>
     <div class="perimetre-outils rv">
       <h3>Avant de confier une tâche, cinq outils gratuits</h3>
-      <ul>
+      <ul class="cartes">
         {outils.map((outil) => (
-          <li>
-            <a href={outil.href}>{outil.libelle}</a>
-            <span>{outil.texte}</span>
+          <li class="carte">
+            <div class="carte-corps">
+              <a class="carte-titre carte-lien" href={outil.href}>{outil.libelle}</a>
+              <span class="carte-texte">{outil.texte}</span>
+              <span class="carte-action" aria-hidden="true"><Picto nom="fleche" taille={14} /></span>
+            </div>
           </li>
         ))}
       </ul>
@@ -181,7 +184,7 @@ const appel = {
       <h2 id="avant">Pour aller plus loin</h2>
       <p class="texte-2">La carte des tâches, nos méthodes publiées, un retour d’expérience et nos engagements.</p>
     </div>
-    <Renvois items={renvois} colonnes={2} />
+    <Renvois items={renvois} />
   </section>
 </PageCommerciale>
 
@@ -192,17 +195,10 @@ const appel = {
   .perimetre-pole dt { color: var(--texte-fort); font-weight: 600; }
   .perimetre-pole dd { margin: 0; max-width: 62ch; color: var(--texte-2); }
   .perimetre-paie { margin: 24px 0 0; }
-  .perimetre-outils { display: grid; gap: 20px; margin-top: 56px; }
+  /* Les cinq outils sont des cartes du site (global.css) : la grille place la cinquième en pleine largeur. */
+  .perimetre-outils { display: grid; gap: 24px; margin-top: 56px; }
   .perimetre-outils h3 { font-size: var(--t-2xl); }
-  .perimetre-outils ul { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin: 0; padding: 0; list-style: none; }
-  .perimetre-outils li { display: grid; gap: 4px; align-content: start; }
-  .perimetre-outils a { color: var(--accent-texte); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
-  .perimetre-outils span { color: var(--texte-2); font-size: var(--t-sm); }
   @media (min-width: 48rem) {
     .perimetre-pole { grid-template-columns: 15rem minmax(0, 1fr); gap: 32px; align-items: baseline; }
-    .perimetre-outils ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
-  }
-  @media (min-width: 64rem) {
-    .perimetre-outils ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
 </style>

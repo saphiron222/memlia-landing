@@ -1,4 +1,5 @@
 ---
+import Picto from '@/components/Picto.astro';
 import { couvertureDe } from '@/data/couverture-logiciels.mjs';
 
 /*
@@ -25,18 +26,21 @@ const couverture = couvertureDe(slug);
         <p>Si votre outil fait déjà ce geste, nous ne le refaisons pas. Nous partons de ce qu’il laisse.</p>
       </div>
       <div class="service-couverture-grid">
-        <ul class="service-couverture-outils rv-groupe">
+        <ul class="cartes service-couverture-outils rv-groupe">
           {couverture.dejaFait.map((geste) => (
-            <li class="rv">
-              <p><a href={geste.source.url} rel="noopener noreferrer" title={geste.source.libelle}>{geste.outil}</a> {geste.geste}.</p>
+            <li class="carte rv">
+              <p class="carte-texte"><a href={geste.source.url} rel="noopener noreferrer" title={geste.source.libelle}>{geste.outil}</a> {geste.geste}.</p>
             </li>
           ))}
         </ul>
-        <div class="service-couverture-reste rv">
-          <h3>Ce qui reste à la main, et que nous prenons</h3>
-          <ul>
-            {couverture.reste.map((ligne) => <li>{ligne}</li>)}
-          </ul>
+        <div class="carte service-couverture-reste rv">
+          <span class="carte-icone" aria-hidden="true"><Picto nom="main" taille={24} /></span>
+          <div class="carte-corps">
+            <h3 class="carte-titre">Ce qui reste à la main, et que nous prenons</h3>
+            <ul class="carte-texte">
+              {couverture.reste.map((ligne) => <li>{ligne}</li>)}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -65,29 +69,14 @@ const couverture = couvertureDe(slug);
     display: grid;
     gap: 32px;
   }
-  .service-couverture-outils {
-    display: grid;
-    gap: 16px;
-  }
-  .service-couverture-outils li {
-    display: grid;
-    gap: 4px;
-    padding-left: 16px;
-    border-left: 2px solid var(--ligne);
-  }
+  /* Ce que fait déjà chaque logiciel : une carte du site par éditeur (global.css). */
   .service-couverture-outils a {
     color: var(--accent-texte);
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .service-couverture-reste {
-    display: grid;
-    gap: 12px;
-    padding: 24px;
-    border-left: 3px solid var(--accent-appui);
-    background: var(--accent-voile);
-  }
+  /* Ce qui reste à la main : une carte du site elle aussi, à côté de celles des logiciels. */
   .service-couverture-reste ul {
     display: grid;
     gap: 8px;

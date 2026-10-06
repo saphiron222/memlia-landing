@@ -17,10 +17,14 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect(cards).toHaveCount(5);
     const boxes = await cards.evaluateAll(elements => elements.map(el => el.getBoundingClientRect().toJSON()));
     if (width >= 768) {
-      expect(boxes[0].width).toBeGreaterThan(boxes[1].width * 1.9);
-      expect(boxes[1].y).toBe(boxes[2].y);
-      expect(boxes[3].y).toBe(boxes[4].y);
-      expect(boxes[2].x).toBeGreaterThanOrEqual(boxes[1].right);
+      // Règle de grille du site (Kevin, 07/10/2026) : cinq cartes sur deux colonnes, la
+      // cinquième s'étend sur toute la largeur ; aucune carte orpheline.
+      expect(boxes[0].y).toBe(boxes[1].y);
+      expect(boxes[2].y).toBe(boxes[3].y);
+      expect(boxes[1].x).toBeGreaterThanOrEqual(boxes[0].right);
+      expect(boxes[3].x).toBeGreaterThanOrEqual(boxes[2].right);
+      expect(boxes[4].y).toBeGreaterThanOrEqual(boxes[2].bottom);
+      expect(boxes[4].width).toBeGreaterThan(boxes[0].width * 1.9);
     } else {
       for (let i = 1; i < boxes.length; i++) expect(boxes[i].y).toBeGreaterThanOrEqual(boxes[i - 1].bottom);
     }
@@ -36,9 +40,8 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       const m = await step.evaluate(el => {
         const copy = el.querySelector('[data-proof-copy]')!;
         const img = el.querySelector('img')!;
-        const detail = el.querySelector('[data-proof-detail]')!;
         return { copy: copy.getBoundingClientRect().toJSON(), image: img.getBoundingClientRect().toJSON(),
-          detailHeight: detail.getBoundingClientRect().height,
+          enlarge: el.querySelectorAll('[data-proof-detail], dialog, a[href^="/proofs/"]').length,
           natural: [img.naturalWidth, img.naturalHeight], alt: img.alt,
           copyFirst: !!(copy.compareDocumentPosition(img) & Node.DOCUMENT_POSITION_FOLLOWING),
           interactive: !!img.closest('a,button,[tabindex],[role="button"]') };
@@ -46,11 +49,13 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       measurements.push(m);
       expect(m.copyFirst).toBe(true);
       expect(m.interactive).toBe(false);
+      // Aucune version agrandie de l'illustration (Kevin, 07/10/2026).
+      expect(m.enlarge).toBe(0);
       expect(m.alt.length).toBeGreaterThan(20);
       expect(m.natural).toEqual([1600, 900]);
       if (width >= 1024) {
         expect(m.image.width).toBeCloseTo(m.copy.width, 0);
-        expect(Math.abs((m.image.y + (m.image.height + m.detailHeight) / 2) - (m.copy.y + m.copy.height / 2))).toBeLessThan(2);
+        expect(Math.abs((m.image.y + m.image.height / 2) - (m.copy.y + m.copy.height / 2))).toBeLessThan(2);
         if (i % 2 === 0) expect(m.image.right).toBeLessThanOrEqual(m.copy.x + 1);
         else expect(m.copy.right).toBeLessThanOrEqual(m.image.x + 1);
       } else expect(m.copy.bottom).toBeLessThanOrEqual(m.image.y);
