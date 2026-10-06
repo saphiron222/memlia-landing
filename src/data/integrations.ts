@@ -1,4 +1,4 @@
-import generatedGuides from './guides.generated.json';
+import generatedGuides from './guides.generated.json' with { type: 'json' };
 
 export const INTEGRATIONS_HUB_PATH = '/integrations' as const;
 

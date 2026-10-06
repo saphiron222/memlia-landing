@@ -16,7 +16,7 @@ def source_export(root: Path, relative_path: str, export_name: str):
         'const ts = createRequire(process.argv[3])("typescript"); '
         'const url = process.argv[1]; '
         'const text = readFileSync(new URL(url), "utf8").replace('
-        '/import (\\w+) from [\'\"](\\.\\/[^\'\"]+\\.json)[\'\"];?/g, '
+        '/import (\\w+) from [\'\"](\\.\\/[^\'\"]+\\.json)[\'\"](?: with \\{[^}]+\\})?;?/g, '
         '(_, name, path) => "const " + name + " = " + readFileSync(new URL(path, url), "utf8") + ";"); '
         'const compiled = ts.transpileModule(text, { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText; '
         'const source = await import("data:text/javascript;base64," + Buffer.from(compiled).toString("base64")); '
