@@ -70,7 +70,7 @@ const source = {
     ],
   }}
 >
-  {generatedIdentity && <template data-guide-sha256={generatedIdentity}></template>}
+  {generatedIdentity ? <template data-guide-sha256={generatedIdentity}></template> : ' '}
   <section class="pv" aria-labelledby="repere-editeur">
     <div class="pv-tete rv">
       <h2 id="repere-editeur">Les repères et les champs que la règle doit connaître</h2>
