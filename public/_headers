@@ -12,3 +12,8 @@
 
 /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec
   Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+# Les AVIF restent accessibles au navigateur, mais hors index des moteurs.
+# WebP et PNG restent indexables pour la recherche d’images.
+/*.avif
+  X-Robots-Tag: noindex
