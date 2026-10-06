@@ -451,6 +451,12 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       const downloading = page.waitForEvent('download');
       await page.locator('[data-circ-export="json"]').click();
       await downloading;
+    } else if (outil.slug === 'bareme-heures-cac') {
+      await page.locator('[data-demo]').click();
+      await expect(page.locator('[data-result]')).toContainText('20 à 35');
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-export="json"]').click();
+      await downloading;
     } else if (outil.slug === 'seuil-signification-audit') {
       await page.getByText('Importer des scénarios CSV', { exact: true }).click();
       await page.locator('#sig-csv').setInputFiles({
