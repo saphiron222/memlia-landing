@@ -21,7 +21,10 @@ const INTERDITS = [
   /\bcompléments?\s+(?:Excel|Memlia)\b/i,
   /\b(?:notre|Memlia est un|le service est un)\s+logiciel\b/i,
   /suivi.social|supervision.sociale|bulletins.dsn|synth.se.salaires|flux.compta|conseil.fiscal/i,
+  /\b(?:revue métier|fact-check|non attesté)\b/i,
 ];
+/** Une date AAAA-MM-JJ qui existe au calendrier (le 31 février ne passe pas). */
+const dateReelle = (iso) => DATE.test(iso) && new Date(`${iso}T00:00:00Z`).toISOString().slice(0, 10) === iso;
 
 const pages = existsSync(SERVICES)
   ? readdirSync(SERVICES).filter((nom) => nom.endsWith('.md')).map((nom) => nom.replace(/\.md$/, '')).sort()
@@ -45,7 +48,7 @@ test('chaque geste déjà outillé porte un éditeur, une source https et une da
       assert.ok(geste.outil.trim() && geste.geste.trim(), `${slug} : geste incomplet`);
       assert.match(geste.source.url, /^https:\/\/[^\s]+$/, `${slug} : source non https (${geste.outil})`);
       assert.ok(geste.source.libelle.trim().split(/\s+/).length <= 12, `${slug} : libellé de source de plus de 12 mots`);
-      assert.match(geste.source.consulteLe, DATE, `${slug} : date de lecture illisible (${geste.outil})`);
+      assert.ok(dateReelle(geste.source.consulteLe), `${slug} : date de lecture illisible ou impossible (${geste.outil})`);
       assert.ok(geste.source.consulteLe <= aujourdHui, `${slug} : date de lecture future (${geste.outil})`);
     }
   }

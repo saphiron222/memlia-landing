@@ -44,16 +44,15 @@ export const COUVERTURE_SERVICES = Object.freeze({
       },
     ],
     reste: [
-      'les pièces que votre outil n’impute pas, ou qu’il impute contre l’usage du dossier ;',
-      'les factures atypiques et les doublons sans numéro ;',
-      'la règle d’imputation propre à chaque dossier, qui vit aujourd’hui dans la tête du collaborateur.',
+      'les pièces que votre outil ne sait pas lire ou ne sait pas imputer ;',
+      'les factures atypiques et les doublons sans numéro, chacun présenté avec son motif.',
     ],
   },
   'factures-fournisseurs': {
     dejaFait: [
       {
         outil: 'Dext',
-        geste: 'lit les factures d’achat et en extrait montants, dates et TVA',
+        geste: 'extrait les données des factures d’achat',
         source: { url: 'https://dext.com/fr/cabinet/produits/saisie-comptable', libelle: 'Dext, la saisie comptable pour les cabinets', consulteLe: LU_LE },
       },
       {
@@ -63,7 +62,7 @@ export const COUVERTURE_SERVICES = Object.freeze({
       },
       {
         outil: 'Cegid Conciliator',
-        geste: 'reconnaît les pièces reçues avant leur comptabilisation',
+        geste: 'contrôle chaque facture reçue et génère les écritures',
         source: { url: 'https://www.shine.fr/experts-comptables/cegid-conciliator/', libelle: 'Cegid, Conciliator', consulteLe: LU_LE },
       },
     ],
@@ -82,12 +81,12 @@ export const COUVERTURE_SERVICES = Object.freeze({
       },
       {
         outil: 'Tiime',
-        geste: 'rapproche seul un mouvement et une pièce de même montant à moins de 31 jours',
+        geste: 'rapproche automatiquement les transactions bancaires',
         source: { url: 'https://www.tiime.fr/ec/pre-compta', libelle: 'Tiime, la pré-comptabilité pour les cabinets', consulteLe: LU_LE },
       },
       {
         outil: 'Dext',
-        geste: 'rapproche une transaction d’une ou de plusieurs factures',
+        geste: 'propose la facture qui correspond à une transaction bancaire',
         source: { url: 'https://help.dext.com/fr/articles/215760-rapprocher-une-transaction-avec-une-ou-plusieurs-factures-dans-dext-cabinets', libelle: 'Dext, rapprocher une transaction', consulteLe: LU_LE },
       },
       {
@@ -99,7 +98,7 @@ export const COUVERTURE_SERVICES = Object.freeze({
     reste: [
       'les lignes que votre outil ne reconnaît pas ;',
       'les paiements groupés, qui admettent plusieurs combinaisons ;',
-      'les frais non identifiés et les mouvements sans pièce, chacun avec son motif.',
+      'les frais non identifiés, chacun avec son motif.',
     ],
   },
   'notes-de-frais': {
@@ -142,7 +141,7 @@ export const COUVERTURE_SERVICES = Object.freeze({
     reste: [
       'les variables envoyées par e-mail, dans le tableur du client ou par téléphone ;',
       'les questions à poser au client avant de lancer la paie ;',
-      'les retours DSN du portefeuille, triés par date limite, avec la correction préparée.',
+      'les retours DSN du portefeuille, quand votre outil ne les trie pas par date limite : une fiche par retour, la correction préparée.',
     ],
   },
 });

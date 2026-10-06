@@ -6,31 +6,6 @@ Ouvrir huit familles sur les gestes C1 et les réponses C2 : certification et pr
 
 Sources : [terrain C1](TERRAIN-CAC.md), [demande C2](DEMANDE-CAC.md), [mesures par requête](mesures/autocomplete-cac-2026-10-06.json). Aucun volume mensuel ni chevauchement du top10 Google n’a été mesuré.
 
-## Règle de couverture (06/10/2026) — prime sur les tableaux ci-dessous
-
-Au premier rendez-vous CAC, le cabinet travaillait sur Acropole Expert CAC. Ce que nous montrions, son outil le faisait déjà : réception du FEC, collecte des pièces par AUDITdrive, modèles de rapport, ossature du dossier, déclaration d’activité, archivage. Sa réponse : « je le fais déjà ». La seule tâche qu’il attendait, la sélection des tiers à circulariser, n’est automatisée par aucune suite ni plateforme.
-
-La vérification porte sur six suites (Acropole Expert CAC, Auditsoft, RevisAudit, DreamAudit, Caseware, PackAUDIT) et quatre plateformes (e-Circu, Auditsoft Anywhere, Circit, Confirmation). Preuves datées : chantier `cac-site-niveau-superieur`, `sorties/couverture-logiciels-2026-10-06/` (coffre Memlia).
-
-Aucune page, aucun outil ni aucun support ne présente comme un gain un geste que la suite d’audit du cabinet fait déjà.
-
-- **En retrait, sans page service** : `cac-fec-reception`, `cac-demandes-documents`, `cac-revue-analytique`, `cac-rapport-certification`, `cac-revue-ecritures`, `cac-dossier-de-travail`. Ce sont les gestes que les suites couvrent. Leurs articles de méthode restent possibles ; ils citent alors ce que font les suites.
-- **Recadrée** : `cac-confirmations-audit` porte la sélection des tiers selon la règle du cabinet. La règle combine les plus gros soldes, les plus gros mouvements et une part aléatoire tirée avec une graine conservée. Elle s’arrête à une couverture ou à un nombre de comptes, en deux passes (30/09 puis clôture). La famille porte aussi la feuille des écarts et les procédures alternatives (NEP 505 ; NEP 911 § 24 et NEP 912 § 23 révisées le 24/07/2026). Les lettres, l’envoi et les relances restent aux plateformes.
-- **Recadrée** : `cac-suivi-mandats` porte l’échéancier des mandats et le barème d’heures, pas la déclaration d’activité, déjà pré-remplie par les suites via Aglaé.
-- **À ouvrir, ce sont les vrais manques** :
-  - les fichiers du client rapprochés de la balance : DSN avec 421, 431, 641, 645 ; immobilisations avec 2x, 28x, 68x ; inventaire avec 3x ;
-  - les conventions réglementées et les vérifications spécifiques (NEP 9510) ;
-  - les factures électroniques exploitées à la clôture, en perspective : FAQ CNCC v3, Q44, Q45, Q47 et Q50.
-- **Services** : `circularisation-cac` est recentrée sur la sélection et les écarts. `revue-analytique-cac` et `dossier-travail-cac` sont suspendues.
-- **Outils** :
-  - Gardés : `suivi-circularisation`, `seuil-signification-audit` et `bareme-heures-cac`.
-  - À construire en priorité : la sélection des tiers à circulariser, qui part d’une balance et produit une sélection documentée.
-  - Suspendus jusqu’à requalification : `revue-analytique-excel` et `feuilles-maitresses-audit`.
-- **`/commissaires-aux-comptes`** :
-  - Ses trois écrans deviennent la sélection des tiers, les écarts et procédures alternatives, et les fichiers du client rapprochés de la balance.
-  - Un bandeau dit ce que la suite du cabinet fait déjà.
-  - Le contrôle du FEC à réception et les procédures analytiques ne sont plus des écrans.
-
 ## Contrat et périmètre
 
 `page-intent-plan.json` fixe les propriétaires futurs ; `pages-maillage.json` résout les requêtes, preuves et liens. `config/page-intent-contract.json.pages` reste réservé aux pages réellement rendues : chaque publication y promeut son contrat. Cette architecture ne publie aucune nouvelle route ni aucun contenu réglementaire. Les formulations non mesurées seront sondées avant fabrication ; les faits seront sourcés puis relus par métier.
