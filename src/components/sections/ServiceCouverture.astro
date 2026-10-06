@@ -1,0 +1,110 @@
+---
+import { couvertureDe } from '@/data/couverture-logiciels.mjs';
+
+/*
+ * Sous le héros d'une page service : ce que le logiciel du cabinet fait déjà, sources datées,
+ * puis ce qui reste à la main. Une tâche que l'outil du cabinet couvre ne se présente jamais
+ * comme un gain (règle du 06/10/2026, src/data/couverture-logiciels.mjs).
+ */
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const couverture = couvertureDe(slug);
+const dateLue = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' });
+---
+
+{couverture && (
+  <section class="service-couverture" data-service-section="couverture" aria-labelledby="service-couverture-title">
+    <div class="conteneur service-couverture-inner">
+      <div class="service-couverture-heading rv">
+        <span class="eyebrow">Avant de nous confier cette tâche</span>
+        <h2 id="service-couverture-title">Ce que votre logiciel fait déjà</h2>
+        <p>Si votre outil fait déjà ce geste, nous ne le refaisons pas. Nous partons de ce qu’il laisse.</p>
+      </div>
+      <div class="service-couverture-grid">
+        <ul class="service-couverture-outils rv-groupe">
+          {couverture.dejaFait.map((geste) => (
+            <li class="rv">
+              <p><strong>{geste.outil}</strong> {geste.geste}.</p>
+              <p class="service-couverture-source">
+                <a href={geste.source.url} rel="noopener noreferrer">{geste.source.libelle}</a>, lu le {dateLue(geste.source.consulteLe)}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <div class="service-couverture-reste rv">
+          <h3>Ce qui reste à la main, et que nous prenons</h3>
+          <ul>
+            {couverture.reste.map((ligne) => <li>{ligne}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .service-couverture {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--ligne);
+    background: var(--surface-page);
+  }
+  .service-couverture-inner {
+    display: grid;
+    gap: 40px;
+  }
+  .service-couverture-heading {
+    display: grid;
+    gap: 12px;
+    max-width: 62ch;
+  }
+  .service-couverture-heading h2 {
+    font-size: var(--t-4xl);
+  }
+  .service-couverture-grid {
+    display: grid;
+    gap: 32px;
+  }
+  .service-couverture-outils {
+    display: grid;
+    gap: 16px;
+  }
+  .service-couverture-outils li {
+    display: grid;
+    gap: 4px;
+    padding-left: 16px;
+    border-left: 2px solid var(--ligne);
+  }
+  .service-couverture-source {
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+  }
+  .service-couverture-source a {
+    color: var(--accent-texte);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .service-couverture-reste {
+    display: grid;
+    gap: 12px;
+    padding: 24px;
+    border-left: 3px solid var(--accent-appui);
+    background: var(--accent-voile);
+  }
+  .service-couverture-reste ul {
+    display: grid;
+    gap: 8px;
+    padding-left: 20px;
+    list-style: disc;
+  }
+  @media (min-width: 900px) {
+    .service-couverture-grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+</style>
