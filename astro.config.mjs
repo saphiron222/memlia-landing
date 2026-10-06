@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import ancresTitres from './src/lib/ancres-titres.mjs';
+import typedSitemaps from './scripts/lib/sitemaps.mjs';
 
 
 import { SITE, PAGES_NOINDEX } from './src/data/site.mjs';
@@ -75,5 +76,6 @@ export default defineConfig({
         priority: item.url === `${SITE.url}/` ? 1.0 : LASTMOD_BLOG.has(item.url) ? 0.7 : 0.6,
       }),
     }),
+    typedSitemaps(),
   ],
 });

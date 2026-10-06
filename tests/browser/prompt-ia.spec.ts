@@ -85,7 +85,7 @@ test('SEO, trois entrants, footer, médias et sitemap', async ({ page }) => {
   const schemas = await page.locator('script[type="application/ld+json"]').allTextContents();
   const nodes = schemas.flatMap((text) => JSON.parse(text)['@graph'] ?? []); expect(nodes.map((node) => node['@type'])).toEqual(expect.arrayContaining(['WebPage', 'WebApplication', 'BreadcrumbList']));
   expect(nodes.map((node) => node['@type'])).not.toContain('BlogPosting');
-  expect(await (await page.request.get('/sitemap-0.xml')).text()).toContain(`https://memlia.fr${ROUTE}`);
+  expect(await (await page.request.get('/sitemap-outils.xml')).text()).toContain(`https://memlia.fr${ROUTE}`);
   for (const path of ['/proofs/v2/01-outil-prompt-ia.webp', '/proofs/v2/og/01-outil-prompt-ia.webp']) expect((await page.request.get(path)).status()).toBe(200);
 });
 for (const width of [320, 375, 768, 1024, 1440, 1920]) test(`reflow, clavier et cibles à ${width}px`, async ({ page }) => {

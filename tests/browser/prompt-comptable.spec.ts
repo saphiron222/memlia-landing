@@ -117,7 +117,7 @@ test('maillage, médias propres, canonical et sitemap', async ({ page }) => {
   await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/29-outil-prompt.webp');
   await expect(page.locator('[data-proof="v2/29-outil-prompt"] img')).toBeVisible();
   await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content', /connect-src 'none'/);
-  const sitemap = await page.request.get('/sitemap-0.xml'); expect(await sitemap.text()).toContain(`https://memlia.fr${ROUTE}`);
+  const sitemap = await page.request.get('/sitemap-outils.xml'); expect(await sitemap.text()).toContain(`https://memlia.fr${ROUTE}`);
 });
 for (const width of [320, 375, 768, 1024, 1440, 1920]) test(`clavier et aucun débordement à ${width}px`, async ({ page }) => {
   await page.setViewportSize({ width, height: 900 });
