@@ -231,7 +231,7 @@ Voir [la méthode]`);
     assert.equal(posting.image.height, 630);
     assert.equal(posting.thumbnailUrl, ogUrl);
 
-    for (const xmlPath of ['sitemap-0.xml', 'blog/rss.xml']) {
+    for (const xmlPath of ['sitemap-blog.xml', 'blog/rss.xml']) {
       const xml = readFileSync(join(preview, xmlPath), 'utf8');
       assert.ok(!xml.includes(`/blog/${slug}`), `${xmlPath} expose le brouillon preview`);
     }
@@ -242,7 +242,7 @@ Voir [la méthode]`);
 
     const served = await servePreview(preview);
     server = served.server;
-    for (const route of ['/', '/blog', `/blog/${slug}`, '/sitemap-0.xml', '/blog/rss.xml', `/images/${heroId}-og.webp`]) {
+    for (const route of ['/', '/blog', `/blog/${slug}`, '/sitemap-blog.xml', '/blog/rss.xml', `/images/${heroId}-og.webp`]) {
       const response = await fetch(`${served.origin}${route}`);
       assert.equal(response.status, 200, `${route} ne répond pas 200`);
       assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow', `${route} sans X-Robots-Tag`);
@@ -283,7 +283,7 @@ Voir [la méthode]`);
     });
     assert.equal(publicBuild.status, 0, `${publicBuild.error?.message ?? ''}\n${publicBuild.stdout ?? ''}\n${publicBuild.stderr ?? ''}`);
     assert.ok(existsSync(pagePath(publicRender, `/blog/${slug}`)));
-    assert.ok(readFileSync(join(publicRender, 'sitemap-0.xml'), 'utf8').includes(`/blog/${slug}`));
+    assert.ok(readFileSync(join(publicRender, 'sitemap-blog.xml'), 'utf8').includes(`/blog/${slug}`));
   } finally {
     if (browser) await browser.close();
     if (server) await new Promise((resolveClose) => server.close(resolveClose));

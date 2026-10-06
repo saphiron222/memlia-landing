@@ -14,7 +14,7 @@ assert.ok(!html.includes('noindex'));
 const graph=nodes.filter(n=>n.tagName==='script'&&attr(n,'type')==='application/ld+json').flatMap(n=>JSON.parse(text(n))['@graph']??[]);
 for(const type of ['WebPage','WebApplication','BreadcrumbList'])assert.ok(graph.some(n=>n['@type']===type));
 assert.ok(!graph.some(n=>['Article','BlogPosting','AggregateRating'].includes(n['@type'])));
-assert.ok(readFileSync('dist/sitemap-0.xml','utf8').includes('https://memlia.fr'+route));
+assert.ok(readFileSync('dist/sitemap-outils.xml','utf8').includes('https://memlia.fr'+route));
 for(const source of ['/outils-comptables-gratuits','/outils-comptables-gratuits/generateur-prompt-expert-comptable','/methode']) assert.ok(readFileSync(`dist${source}.html`,'utf8').includes(`href="${route}"`),source);
 for(const img of nodes.filter(n=>n.tagName==='img')) { assert.ok(attr(img,'alt')); assert.ok(attr(img,'width')); assert.ok(attr(img,'height')); const src=attr(img,'src'); if(src?.startsWith('/'))assert.ok(existsSync('dist'+src)); }
 const localLinks=nodes.filter(n=>n.tagName==='a').map(n=>attr(n,'href')).filter(h=>h?.startsWith('/'));
