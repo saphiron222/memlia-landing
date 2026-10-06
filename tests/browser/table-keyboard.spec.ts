@@ -4,13 +4,19 @@ import routes from './table-keyboard.routes.json' with { type: 'json' };
 
 const require = createRequire(import.meta.url);
 async function waitForTabScroll(page: Page) {
-  await expect.poll(() => page.evaluate(() => {
+  await expect.poll(() => page.evaluate(async () => {
     const active = document.activeElement;
     // WebKit can traverse the document itself between keyboard targets.
     if (!active || active === document.body) return true;
     const box = active.getBoundingClientRect();
-    return box.bottom > 0 && box.top < innerHeight && box.right > 0 && box.left < innerWidth;
-  })).toBe(true);
+    // An intermediate target can intersect before native smooth scrolling
+    // starts. Only settle its movement here: links inside a horizontally
+    // scrolled table need not intersect. The region oracle below enforces
+    // viewport intersection and rendered visibility for the tested focus.
+    await new Promise(resolve => setTimeout(resolve, 250));
+    const settled = active.getBoundingClientRect();
+    return active === document.activeElement && Math.abs(settled.top - box.top) < 0.5 && Math.abs(settled.left - box.left) < 0.5;
+  }), { timeout: 15_000 }).toBe(true);
 }
 async function hasRenderedFocus(region: Locator) {
   return region.evaluate(async el => {
@@ -28,7 +34,7 @@ async function hasRenderedFocus(region: Locator) {
         Math.min(box.bottom, innerHeight) - Math.max(box.top, 0) < 24) return `offscreen: ${box.x},${box.y},${box.width},${box.height}`;
     // Tab triggers smooth scrolling/reveal animations. Observe their end rather
     // than overriding production CSS or moving focus with the test API.
-    await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+    await new Promise<void>(resolve => setTimeout(resolve, 250));
     const settled = el.getBoundingClientRect();
     return Math.abs(settled.top - box.top) < 0.5 && Math.abs(settled.left - box.left) < 0.5 ? 'visible' : 'moving';
   });
@@ -48,7 +54,7 @@ for (const hiddenBy of ['opacity', 'viewport']) {
 for (const width of [320, 375, 1440]) {
   for (const route of routes) {
     test(`${width}px ${route}: tableaux accessibles au clavier`, async ({ page }, testInfo) => {
-      test.setTimeout(60_000);
+      test.setTimeout(120_000);
       await page.setViewportSize({ width, height: 900 });
       expect((await page.goto(route))?.status()).toBe(200);
       await page.evaluate(() => document.fonts.ready);
