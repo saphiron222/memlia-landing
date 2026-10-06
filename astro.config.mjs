@@ -54,6 +54,9 @@ export default defineConfig({
   // `file` : `mentions-legales.html` servi par Cloudflare Pages à `/mentions-legales`
   // (clean URLs), donc canonical extensionless sans saut de redirection.
   build: { format: 'file', inlineStylesheets: 'always' },
+  // Les petits scripts traités par Astro sont sinon réinjectés inline (< 4 Ko),
+  // incompatibles avec script-src 'self' sur /contact. Conserver les autres actifs.
+  vite: { build: { assetsInlineLimit: (filePath) => filePath.endsWith('.js') ? false : undefined } },
   compressHTML: true,
   // Processeur Markdown d'Astro 7 : les ancres des titres d'articles sont posées en ASCII
   // avant le plugin d'identifiants d'Astro, qui conserve un `id` déjà présent.
