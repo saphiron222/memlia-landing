@@ -52,6 +52,15 @@ test('100 000 lignes : Worker annulable, pas de résultat partiel et plafond exp
  await page.evaluate(()=>{document.querySelector('[data-sig-csv]').requestSubmit();document.querySelector('[data-sig-cancel]').click();});await expect(page.locator('[data-sig-status]')).toContainText('annulé');await expect(page.locator('[data-sig-summary]')).toContainText('2 scénario');await expect(page.locator('[data-mapping]')).toHaveCount(0);
  await click(page,'Lire le CSV');await expect(page.locator('[data-mapping]')).toHaveCount(10);for(let i=0;i<INPUT_FIELDS.length;i++)await page.locator(`[data-mapping="${INPUT_FIELDS[i]}"]`).selectOption(String(i));await click(page,'Voir l’aperçu mappé');await expect(page.locator('[data-sig-import-summary]')).toContainText('100000 lignes');await page.locator('[data-sig-import-valid]').check();await click(page,'Ajouter les scénarios importés');await expect(page.locator('[data-sig-error]')).toContainText('100 000');await expect(page.locator('[data-sig-summary]')).toContainText('2 scénario');
 });
+test('table mobile défilable au clavier, actions utilisables et focus visible',async({page})=>{
+ await page.setViewportSize({width:320,height:900});await page.goto(route);await click(page,'Charger l’exemple fictif');
+ const scroll=page.locator('[aria-label="Scénarios défilables horizontalement"]');
+ await scroll.evaluate(e=>e.scrollLeft=0);await scroll.focus();await page.keyboard.press('ArrowRight');
+ await expect.poll(()=>scroll.evaluate(e=>e.scrollLeft)).toBeGreaterThan(0);
+ expect(await scroll.evaluate(e=>getComputedStyle(e).outlineStyle)).not.toBe('none');
+ await click(page,'Retenir 001');await expect(page.locator('[data-sig-summary]')).toContainText('CHOIX UTILISATEUR');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+});
 for(const width of [320,375,768,1024,1440,1920])test(`rendu et confidentialité ${width}`,async({page})=>{
  await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(route);await page.evaluate(()=>document.fonts.ready);
  const requests=[];page.on('request',r=>requests.push(r));await click(page,'Charger l’exemple fictif');await click(page,'Retenir 001');await fill(page,{justification:'Texte de contrôle privé'});await save(page);await download(page,'[data-sig-export="json"]');

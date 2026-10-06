@@ -71,3 +71,17 @@ test('exports multipart repris sans pertes, manquants/mélangés refusés',()=>{
  const other=m.exportParts(session({justification:'y'.repeat(6000)}),1000);
  assert.throws(()=>m.importParts([parts[0].content,...other.slice(1).map(p=>p.content)]));
 });
+test('bornes de texte et retour aux anciennes entrées : reprise sans attribution de choix',()=>{
+ let s=m.retainScenario(session({justification:'x'.repeat(65536)}),'001');
+ assert.deepEqual(m.importSession(m.exportJson(s)),s);
+ s=m.updateScenario(s,'001',{base:'2'});s=m.updateScenario(s,'001',{base:'1000000'});
+ assert.equal(s.retainedId,'');assert.deepEqual(m.importSession(m.exportJson(s)),s);
+ assert.equal(m.calculate(input({base:'0',rate:''})).errors.length,2);
+});
+test('100 000 scénarios : export intégral, multipart ≤20 Mo, reprise intégrale et borne',()=>{
+ const rows=Array.from({length:100000},(_,i)=>input({id:String(i).padStart(6,'0')}));
+ const s=m.appendImport(m.createSession(),rows);assert.throws(()=>m.addScenario(s,input({id:'excess'})),/100 000/);
+ const parts=m.exportParts(s);assert.ok(parts.length>1);for(const p of parts)assert.ok(Buffer.byteLength(p.content)<=m.MAX_BYTES);
+ const restored=m.importParts(parts.map(p=>p.content));assert.deepEqual(restored,s);
+ const csv=m.exportCsv(s);assert.ok(csv.includes('099999'));assert.equal(csv.split('\r\n').length,100002);
+});

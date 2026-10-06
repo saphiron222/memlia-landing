@@ -28,7 +28,10 @@ export function emptyScenario(){return Object.fromEntries(INPUT_FIELDS.map(k=>[k
 function validateInputs(x){keys(x,INPUT_FIELDS);for(const k of INPUT_FIELDS)text(x[k],k);if(!x.id.trim())fail('Identifiant non vide requis.');if(!['none','rate','amount'].includes(x.planningMode))fail('Mode de planification inconnu.');}
 export function calculate(s){
  const errors=[];let sig=null,plan=null;
- try {const b=positive(s.base,'Base'),r=positive(s.rate,'Signification',true);sig=multiply(b,r);}catch(e){errors.push(e.message);}
+ let b=null,r=null;
+ try {b=positive(s.base,'Base');}catch(e){errors.push(e.message);}
+ try {r=positive(s.rate,'Signification',true);}catch(e){errors.push(e.message);}
+ if(b&&r)sig=multiply(b,r);
  if(!['none','rate','amount'].includes(s.planningMode))errors.push('Choisissez un mode de planification.');
  else if(s.planningMode!=='none')try{const p=positive(s.planning,'Planification',s.planningMode==='rate');if(sig){plan=s.planningMode==='rate'?multiply(sig,p):p;if(greater(plan,sig))fail('Planification supérieure au seuil exact de signification : incohérence à résoudre.');}}catch(e){errors.push(e.message);}
  return {signification:sig?cents(sig):null,planning:plan?cents(plan):null,errors};
