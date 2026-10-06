@@ -25,7 +25,8 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
       if (route === '/methode') {
         await expect(page.locator('#page-evidence-title')).toHaveCount(0);
-        await expect(page.locator('[data-first-hand-experience]')).toHaveCount(1);
+        // Décision de Kevin du 06/10/2026 : plus de section « Expérience de première main » sur les pages commerciales.
+        await expect(page.locator('[data-first-hand-experience]')).toHaveCount(0);
       }
     }
   });
