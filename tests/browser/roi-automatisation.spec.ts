@@ -115,8 +115,8 @@ test('ROI : SEO, média propre, sitemap, hub/footer et entrants', async ({page,r
   await page.setViewportSize({width:1440,height:900});
   const zone = await page.locator('.outil-calcul').boundingBox();
   expect(zone?.width).toBeGreaterThan(1000);
-  expect((await request.get('/sitemap-0.xml')).status()).toBe(200);
-  expect(await (await request.get('/sitemap-0.xml')).text()).toContain(`https://memlia.fr${route}`);
+  expect((await request.get('/sitemap-outils.xml')).status()).toBe(200);
+  expect(await (await request.get('/sitemap-outils.xml')).text()).toContain(`https://memlia.fr${route}`);
   for (const source of ['/outils-comptables-gratuits','/automatisation-cabinet-comptable','/methode']) {
     await page.goto(source); expect(await page.locator(`main a[href="${route}"]`).count()).toBeGreaterThan(0);
     await expect(page.locator(`footer a[href="${route}"]`)).toHaveCount(1);
