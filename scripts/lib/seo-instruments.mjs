@@ -255,9 +255,19 @@ export async function chercherPage(url, { ua = UA_NAVIGATEUR, timeoutMs = 25_000
   }
 }
 
-export async function sitemapProduction({ url = `${ORIGINE}/sitemap-0.xml` } = {}) {
+export async function sitemapProduction({ url = `${ORIGINE}/sitemap.xml` } = {}) {
   const r = await chercherPage(url, { timeoutMs: 20_000 });
-  return { ok: r.ok, urls: r.ok ? extraireLiensSitemap(r.corps) : [], status: r.status, erreur: r.erreur };
+  if (!r.ok || !/<sitemapindex(?:\s|>)/.test(r.corps)) {
+    return { ok: r.ok, urls: r.ok ? extraireLiensSitemap(r.corps) : [], status: r.status, erreur: r.erreur };
+  }
+  const urls = [];
+  for (const child of extraireLiensSitemap(r.corps)) {
+    if (new URL(child).origin !== new URL(url).origin) return { ok: false, urls: [], status: 0, erreur: 'Sitemap enfant hors origine.' };
+    const page = await chercherPage(child, { timeoutMs: 20_000 });
+    if (!page.ok) return { ok: false, urls: [], status: page.status, erreur: page.erreur };
+    urls.push(...extraireLiensSitemap(page.corps));
+  }
+  return { ok: true, urls, status: r.status, erreur: null };
 }
 
 export async function pagesProduction(urls, { concurrence = 4, ua = UA_NAVIGATEUR } = {}) {
