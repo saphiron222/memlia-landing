@@ -343,6 +343,34 @@ Si la recette n'existe pas, ne l'invente pas : une cicatrice est un fait vécu, 
 
 ## 5. Publier, prouver, pousser
 
+### Régénérer après un conflit ou un changement du chrome
+
+`npm run regen:generated` construit d'abord le site sans exiger des fichiers générés déjà
+à jour, synchronise `pages-lastmod.json`, rescelle le glossaire (avec reconstruction du
+rendu après la synchronisation), réaffirme la revue métier existante, puis contrôle
+le registre et exécute l'audit QA Ressources. Chaque échec arrête la chaîne ; cette
+commande ne remplace pas `npm run build` ni la revue QA de la PR.
+
+Après `git fetch origin` puis `git merge origin/main`, si seuls les fichiers générés
+ci-dessous sont en conflit, prendre **la version de main**, jamais assembler leurs
+empreintes à la main (`--theirs` signifie main uniquement dans ce merge, pas dans un rebase) :
+
+```bash
+git restore --source=origin/main --staged --worktree -- src/data/pages-lastmod.json editorial/resources/glossaire/manifest.json docs/qa/site-copy-b/preuve-glossaire-metier.json docs/qa/hub-ressources/metier-review-r5/reaffirmation.json docs/qa/hub-ressources/metier-fix-c-register.json docs/qa/hub-ressources/metier-fix-c-build-receipt.json
+npm run regen:generated
+npm run build
+git diff --check
+git add -- src/data/pages-lastmod.json editorial/resources/glossaire/manifest.json docs/qa/site-copy-b/preuve-glossaire-metier.json docs/qa/hub-ressources/metier-review-r5/reaffirmation.json docs/qa/hub-ressources/metier-fix-c-register.json docs/qa/hub-ressources/metier-fix-c-build-receipt.json
+```
+
+Résoudre séparément les conflits de sources avant de régénérer. Cette recette vaut pour
+les données dérivées d'un changement de navigation ou de pied de page ; si la branche
+change les affirmations, les sources ou la revue du glossaire, préserver ces changements
+et suivre le circuit métier, pas cette sélection de main. Ne pas modifier l'ancre ni
+élargir sa déclaration pour faire passer un refus. Examiner le diff final : la revue,
+ses verdicts et sa date restent conservés ; seul leur scellement suit le rendu. Terminer
+le merge une fois tous les conflits résolus et les contrôles verts.
+
 Pour un lot de rattrapage, la séquence détaillée et les conditions de réconciliation sont dans `docs/blog-pipeline.md` § « Lot de rattrapage ». Appliquer ces étapes à **tous** les candidats dans une branche isolée, jamais `publier` le premier alors que les autres restent brouillons. Sous l'autorité blog-only du 25/09, tracer le reçu de l'opérateur réel lié aux octets scellés ; aucun nouveau go personnel de Kevin n'est demandé ni fabriqué. Un texte signé refusé par une porte éditoriale reste inchangé et bloque le lot. Ordre avant commit :
 
 ```bash
@@ -351,8 +379,7 @@ node scripts/seo/forge-seo.mjs registre reconcilier --date 2026-09-29 # uniqueme
 npm run blog:production-check -- <slug-1> <slug-2> <slug-3>
 node scripts/blog-forge.mjs publier <slug-1> # répéter pour chaque slug du lot, puis le pilier si modifié et revu
 node scripts/seo/forge-seo.mjs registre reconcilier --date 2026-09-29
-npm run lastmod:sync && npm run build
-npm run resource:seal-surfaces && node scripts/reaffirm-resource-review.mjs reaffirmer   # la surface Ressources scellée est le glossaire seul (la page /ressources est retirée depuis le 16/09/2026 au soir) ; à rejouer dès que le HTML du glossaire ou le chrome du site change
+npm run regen:generated
 ```
 
 Si `publier` ou le build échoue, relever la cause et arrêter sans retirer de porte : vérifier les frontmatters non-brouillons de tout le lot, les entrées anticipées du registre et leurs provenances, `llms.txt`, le ledger lastmod et les sceaux Ressources. Ne jamais modifier `PUBLIC_ARTICLES` (inventaire dynamique) ni réécrire le corps signé pour obtenir un build vert. Rejouer la séquence et la QA sur les octets finaux avant livraison. Ensuite :
