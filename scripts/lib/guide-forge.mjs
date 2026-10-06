@@ -19,7 +19,7 @@ const recipePath = (slug) => `guides/recettes/${slug}/recette.json`;
 const statePath = (slug, name) => `guides/etats/${slug}/${name}.json`;
 const assetPath = (slug) => `public/proofs/integrations/${slug}.webp`;
 const rendererPath = 'scripts/render-guide-proof.mjs';
-const rendererHash = () => sha(readFileSync(new URL('../render-guide-proof.mjs', import.meta.url)));
+const rendererHash = () => sha(Buffer.concat(['../render-guide-proof.mjs', '../../public/fonts/hanken-400.woff2', '../../public/fonts/fraunces-600.woff2'].map(path => readFileSync(new URL(path, import.meta.url)))));
 
 // Le corpus TS reste en place. Aucune écriture ni nouvelle définition ne vient
 // de ce chargement : les imports de collection sont remplacés par une liste vide.
@@ -99,7 +99,7 @@ function verifyState(root, slug) {
   const manifest = read(root, statePath(slug, 'manifest'));
   const recipe = load(root, slug);
   const errors = verifierRecetteGuide({ root, recipe });
-  const expectedPaths = [recipePath(slug), assetPath(slug), ...(recipe.mode === 'nouveau' ? [measurement(root, recipe), `guides/etats/${slug}/preuve.svg`] : [])].sort();
+  const expectedPaths = [recipePath(slug), assetPath(slug), ...(recipe.mode === 'nouveau' ? [measurement(root, recipe), `guides/etats/${slug}/preuve.html`] : [])].sort();
   if (!equal(Object.keys(manifest.files ?? {}).sort(), expectedPaths)) errors.push('Inventaire des preuves incomplet ou inattendu.');
   if (manifest.version !== 1 || manifest.mode !== recipe.mode || manifest.slug !== slug || !['prepare','scelle','publie'].includes(manifest.status) || manifest.candidateSha256 !== sha(readFileSync(join(root, recipePath(slug))))) errors.push('Manifest/candidat périmé.');
   for (const [path, hash] of Object.entries(manifest.files ?? {})) {
@@ -127,7 +127,7 @@ function verifyState(root, slug) {
     if (manifest.status === 'publie') {
       const receiptBytes = readFileSync(join(root, publicationPath));
       const receipt = JSON.parse(receiptBytes);
-      if (sha(receiptBytes) !== seal.publicationSha256 || receipt.candidateSha256 !== manifest.candidateSha256 || receipt.httpStatus !== 200 || receipt.canonical !== `https://memlia.fr/integrations/${slug}` || receipt.h1 !== recipe.integration.h1 || receipt.indexable !== true || receipt.robotsAllowed !== true || !/^[a-f0-9]{64}$/.test(receipt.robotsSha256 ?? '') || !/^[a-f0-9]{64}$/.test(receipt.htmlSha256 ?? '') || !receipt.observedAt) errors.push('Reçu de publication modifié ou invalide.');
+      if (sha(receiptBytes) !== seal.publicationSha256 || receipt.candidateSha256 !== manifest.candidateSha256 || receipt.integrationSha256 !== sha(JSON.stringify(recipe.integration)) || receipt.proofSha256 !== manifest.files[assetPath(slug)] || receipt.httpStatus !== 200 || receipt.canonical !== `https://memlia.fr/integrations/${slug}` || receipt.h1 !== recipe.integration.h1 || receipt.indexable !== true || receipt.robotsAllowed !== true || !/^[a-f0-9]{64}$/.test(receipt.robotsSha256 ?? '') || !/^[a-f0-9]{64}$/.test(receipt.htmlSha256 ?? '') || !receipt.observedAt) errors.push('Reçu de publication modifié ou invalide.');
     } else if (existsSync(join(root, publicationPath)) || seal.publicationSha256) errors.push('Publication incohérente avec la transition.');
   }
   return { errors, manifest, recipe };
@@ -202,7 +202,7 @@ function robotsAllow(body, path) {
   });
 }
 function nodes(root) { return [root, ...(root.childNodes ?? []).flatMap(nodes), ...(root.content ? nodes(root.content) : [])]; }
-function text(node) { return node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(text).join(''); }
+function text(node) { return ['script', 'style', 'template'].includes(node.tagName) ? '' : node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(text).join(' '); }
 export async function publierGuide({ root = process.cwd(), slug, fetchImpl = fetch }) {
   try {
     const { errors, manifest, recipe } = verifyState(root, slug);
@@ -219,12 +219,24 @@ export async function publierGuide({ root = process.cwd(), slug, fetchImpl = fet
     const robots = all.filter(n => n.tagName === 'meta' && ['robots','googlebot','bingbot'].includes((attr(n, 'name') ?? '').toLowerCase())).map(n => attr(n, 'content')).join(' ') + ' ' + (response.headers.get('x-robots-tag') ?? '');
     const indexable = !/\b(noindex|none)\b/i.test(robots);
     if (canonicals.length !== 1 || attr(canonicals[0], 'href') !== url || h1s.length !== 1 || text(h1s[0]).trim() !== recipe.integration.h1 || !indexable) return fail(['Canonical, H1 unique ou indexabilité non conformes.']);
+    const d = recipe.integration;
+    const integrationSha256 = sha(JSON.stringify(d));
+    const identities = all.filter(n => attr(n, 'data-guide-sha256') !== undefined);
+    if (recipe.mode === 'nouveau' && (identities.length !== 1 || attr(identities[0], 'data-guide-sha256') !== integrationSha256)) return fail(['Identité du guide servi absente ou divergente.']);
+    const body = norm(text(all.find(n => n.tagName === 'body') ?? {}));
+    const expected = [d.intro, d.documentScope, d.officialPath, d.knownTrap, d.writtenRule, ...d.fields.flatMap(f => [f.label, f.control]), ...Object.values(d.boundary), ...d.replay.flatMap(Object.values), d.source.title, d.source.fact];
+    if (expected.some(value => !body.includes(norm(value))) || !all.some(n => n.tagName === 'a' && attr(n, 'href') === d.source.url)) return fail(['Corps du guide servi différent du candidat relu.']);
+    const proofUrl = `/proofs/integrations/${slug}.webp`;
+    if (!all.some(n => n.tagName === 'img' && [proofUrl, `https://memlia.fr${proofUrl}`].includes(attr(n, 'src')))) return fail(['Preuve attendue absente de la page servie.']);
+    const proofResponse = await fetchImpl(`https://memlia.fr${proofUrl}`, { redirect: 'manual', signal: AbortSignal.timeout(20000) });
+    const proofSha256 = sha(Buffer.from(await proofResponse.arrayBuffer()));
+    if (proofResponse.status !== 200 || proofSha256 !== manifest.files[assetPath(slug)]) return fail(['Preuve servie absente ou altérée.']);
     const robotsResponse = await fetchImpl('https://memlia.fr/robots.txt', { redirect: 'manual', signal: AbortSignal.timeout(20000) });
     const robotsBody = await robotsResponse.text();
     if (robotsResponse.status !== 200 || !robotsAllow(robotsBody, `/integrations/${slug}`)) return fail(['robots.txt absent ou bloquant le guide.']);
     const terminal = verifyState(root, slug);
     if (terminal.errors.length || !equal(terminal.manifest, manifest)) return fail([...terminal.errors, 'Candidat modifié pendant le constat réseau.']);
-    const receipt = { version: 1, slug, candidateSha256: manifest.candidateSha256, observedAt: new Date().toISOString(), url, httpStatus: response.status, canonical: url, h1: text(h1s[0]).trim(), indexable, robotsAllowed: true, robotsSha256: sha(robotsBody), htmlSha256: sha(html) };
+    const receipt = { version: 1, slug, candidateSha256: manifest.candidateSha256, integrationSha256, proofSha256, observedAt: new Date().toISOString(), url, httpStatus: response.status, canonical: url, h1: text(h1s[0]).trim(), indexable, robotsAllowed: true, robotsSha256: sha(robotsBody), htmlSha256: sha(html) };
     write(root, statePath(slug, 'publication'), receipt);
     const seal = read(root, statePath(slug, 'scellement'));
     seal.publicationSha256 = sha(readFileSync(join(root, statePath(slug, 'publication'))));

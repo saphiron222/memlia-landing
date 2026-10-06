@@ -69,7 +69,7 @@
     "guide:sceller": "node scripts/service-forge.mjs --guide sceller",
     "guide:publier": "node scripts/service-forge.mjs --guide publier",
     "guide:audit": "node scripts/service-forge.mjs --guide audit",
-    "test:guide-forge": "node --test tests/scripts/guide-forge.test.mjs",
+    "test:guide-forge": "node --test tests/scripts/guide-forge.test.mjs tests/scripts/guide-proof-layout.test.mjs",
     "test:guide-render": "node --test tests/scripts/guide-forge-render.test.mjs"
   },
   "engines": {

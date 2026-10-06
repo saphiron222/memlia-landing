@@ -5,7 +5,7 @@ import { dirname, join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { preparerGuide, scellerGuide, auditerGuides } from '../../scripts/lib/guide-forge.mjs';
+import { preparerGuide, scellerGuide, publierGuide, auditerGuides } from '../../scripts/lib/guide-forge.mjs';
 
 const project = resolve(import.meta.dirname, '../..');
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -43,4 +43,11 @@ test('un guide scellé produit réellement sa page, son média, ses liens hub et
   }
   assert.ok(readFileSync(join(root, 'dist/integrations.html'), 'utf8').includes(d.product), 'nouveau produit réellement listé au hub');
   assert.ok(readFileSync(join(root, `dist/proofs/integrations/${d.slug}.webp`)).length > 1000);
+  const publication = await publierGuide({ root, slug: d.slug, fetchImpl: async url => {
+    const path = new URL(url).pathname;
+    if (path === '/robots.txt') return new Response('User-agent: *\nAllow: /\n');
+    return new Response(readFileSync(join(root, 'dist', path.slice(1) + (path.endsWith('.webp') ? '' : '.html'))));
+  } });
+  assert.equal(publication.pass, true, publication.errors?.join('\n'));
+  assert.equal(auditerGuides({ root }).pass, true);
 });

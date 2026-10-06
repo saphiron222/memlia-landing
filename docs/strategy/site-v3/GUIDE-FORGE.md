@@ -29,7 +29,7 @@ Le seuil est six suggestions distinctes après normalisation. Cinq, une liste ab
 
 ## Préparer, relire, sceller
 
-1. `npm run guide:preparer -- <slug>` valide puis rend une simulation documentaire propre au guide. SVG et WebP 1600×900 (moins de 150 Ko) sont produits à partir des cas ; les textes trop longs sont refusés plutôt que tronqués. Ce n'est pas un essai dans le logiciel éditeur. Le candidat préparé n'est pas ajouté au site.
+1. `npm run guide:preparer -- <slug>` valide puis rend une simulation documentaire propre au guide. HTML autonome et WebP 1600×900 (moins de 150 Ko) sont produits à partir des cas dans Chromium (`npx playwright install chromium`). Fraunces et Hanken auto-hébergées sont embarquées ; le rendu mesure chaque rectangle de texte après chargement des polices, autorise le retour à la ligne des mots larges et refuse tout débordement avant écriture. Entrée, règle, sortie/cause et décision restent au centre ; la portée documentaire reste dans l'alt et la page, pas dans l'image. Ce n'est pas un essai dans le logiciel éditeur. Le candidat préparé n'est pas ajouté au site.
 2. Examiner le rendu, les sources officielles, la règle, les limites et la demande. L'autre profil rédige `revue.json` dans le dossier recette : `kind` conforme à `reviewKind`, `status: "PASS"`, `reviewer`, `reviewedAt`, `candidateSha256` (empreinte du fichier recette), `observations` non vides. Le relecteur est distinct de `author` et de l'auteur public. Une revue métier remplace la QA du contenu réglementé, elle ne s'y ajoute pas.
 3. `npm run guide:sceller -- <slug>` vérifie la revue puis ajoute le guide et les métadonnées de son illustration aux collections. Le guide est maintenant constructible ; pas de déploiement déclenché par cette commande.
 4. Effectuer les contrôles du dépôt, `npm run regen:generated` si nécessaire, livrer la PR avec CI verte et la revue requise, puis fusionner selon la procédure du dépôt. La forge d'infrastructure est revue en QA ; chaque future recette a sa propre revue de contenu.
@@ -38,7 +38,7 @@ La préparation et le scellement répétés sont idempotents. Une recette ou un 
 
 ## Publication constatée et audit
 
-Après déploiement sur `memlia.fr`, `npm run guide:publier -- <slug>` constate HTTP 200 sans redirection, canonical auto-référent, H1 unique attendu, absence de noindex HTTP/HTML et autorisation par robots.txt. Il vérifie à nouveau le candidat après les appels réseau puis écrit le reçu et passe à `publie`. Une panne, une mutation ou une divergence laisse l'état scellé sans reçu. Cette commande constate une publication, elle ne fusionne ni ne déploie.
+Après déploiement sur `memlia.fr`, `npm run guide:publier -- <slug>` constate HTTP 200 sans redirection, canonical auto-référent, H1 unique attendu, absence de noindex HTTP/HTML et autorisation par robots.txt. Pour un nouveau guide, Astro expose l'identité de sa définition construite ; la forge la compare à la définition relue. Elle contrôle aussi les textes attendus dans le corps (hors scripts/styles/templates), le lien de source et l'image attendue, puis télécharge le WebP et vérifie ses octets contre la preuve scellée. Les pages historiques n'ont pas de marqueur ajouté, afin de conserver leur HTML ; leurs textes et leur WebP sont contrôlés de la même manière. Il vérifie à nouveau le candidat après les appels réseau puis écrit le reçu et passe à `publie`. Une page vide, un ancien corps, une preuve divergente, une panne ou une mutation laisse l'état scellé sans reçu. Cette commande constate une publication, elle ne fusionne ni ne déploie.
 
 `npm run guide:audit` réconcilie états, recettes, sceaux, preuves et collections ; il s'exécute avant Astro dans `build:site`, donc dans `npm run build`. Un fichier manquant ou altéré échoue fermé. Aucun nouvel actif n'est régénéré pendant le build Cloudflare.
 
@@ -46,8 +46,9 @@ Après déploiement sur `memlia.fr`, `npm run guide:publier -- <slug>` constate 
 
 `npm run guide:preparer -- rapprochement-bancaire-sage` rejoue la recette existante sans toucher au corpus ni au WebP. L'exception de demande historique exige le corpus intégralement identique et la grille `PSEO-INTEGRATIONS.md` datée du 20 septembre 2026 ; elle n'ouvre aucune nouvelle URL. Son état préparé est livré pour vérifier ce contrat en continu. Il ne prétend pas disposer d'une nouvelle revue ou d'un nouveau constat de publication.
 
-- `npm run test:guide-forge` : seuil 5/6, preuve manquante/fictive, revue, mutations, idempotence et publication ; réponses servies simulées uniquement dans les tests.
-- `npm run test:guide-render` : forge un candidat isolé, lance Astro et vérifie page, illustration, canonical et liens hub/moyeu.
+- `npm run test:guide-forge` : seuil 5/6, preuve manquante/fictive, revue, mutations, idempotence, publication et géométrie/composition des images (dont 74 W/49 W) ; réponses servies simulées uniquement dans les tests.
+- `npm run test:guide-render` : forge un candidat isolé, lance Astro et vérifie page, illustration, canonical, liens hub/moyeu et constat de publication de la page réellement construite.
+- Ces trois fichiers de test utilisent Chromium : ils sont exécutés explicitement dans la CI Repository gates, pas dans le build Cloudflare sans navigateur. L'audit des états et des actifs scellés reste obligatoire dans chaque build ; le sceau du rendu couvre aussi les deux fichiers de polices embarqués.
 - Les neuf guides historiques et le hub restent identiques en HTML lors de cette livraison.
 
 La réouverture des campagnes EC/CAC décidée dans le programme du 5 octobre ne dispense jamais du seuil des six suggestions. Les recettes et suivis J+7/J+28 des futures publications sont portés par les cartes de fabrique ; cette livraison ouvre l'outil, pas une vague de pages.

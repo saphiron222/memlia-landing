@@ -30,8 +30,36 @@ function fixture(t, count = 6) {
   return { root, recipe, dir, slug: recipe.integration.slug };
 }
 const review = (f) => json(f.root, `${f.dir}/revue.json`, { kind: 'qa', status: 'PASS', reviewer: 'qa-independant', reviewedAt: '2026-10-06', candidateSha256: sha(readFileSync(join(f.root, f.dir, 'recette.json'))), observations: ['Frontière et simulation relues.'] });
-const served = (recipe) => async (url) => url.endsWith('/robots.txt') ? new Response('User-agent: *\nAllow: /\n', { status: 200 }) : response(recipe);
-const response = (recipe, options = {}) => new Response(`<html><head><link rel="canonical" href="https://memlia.fr/integrations/${recipe.integration.slug}"></head><body><h1>${recipe.integration.h1}</h1></body></html>`, { status: 200, headers: { 'content-type': 'text/html', ...options.headers } });
+const served = (recipe, root) => async (url) => url.endsWith('.webp') ? new Response(readFileSync(join(root, `public/proofs/integrations/${recipe.integration.slug}.webp`))) : url.endsWith('/robots.txt') ? new Response('User-agent: *\nAllow: /\n', { status: 200 }) : response(recipe);
+const response = (recipe, options = {}) => {
+  const d = recipe.integration;
+  const copy = [d.intro, d.documentScope, d.officialPath, d.knownTrap, d.writtenRule, ...d.fields.flatMap(f => [f.label, f.control]), ...Object.values(d.boundary), ...d.replay.flatMap(Object.values), d.source.title, d.source.fact].join(' ');
+  const escape = s => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
+  return new Response(`<html><head><link rel="canonical" href="https://memlia.fr/integrations/${d.slug}"></head><body><h1>${d.h1}</h1><template data-guide-sha256="${sha(JSON.stringify(d))}"></template><p>${escape(copy)}</p><a href="${d.source.url}">source</a><img src="/proofs/integrations/${d.slug}.webp"></body></html>`, { status: 200, headers: { 'content-type': 'text/html', ...options.headers } });
+};
+
+test('page vide, ancien corps, identité absente/divergente et preuve absente/altérée refusés sans reçu', async (t) => {
+  const f = fixture(t); await preparerGuide(f); review(f); await scellerGuide(f);
+  const good = await response(f.recipe).text();
+  const alterations = [
+    () => `<link rel="canonical" href="https://memlia.fr/integrations/${f.slug}"><h1>${f.recipe.integration.h1}</h1>`,
+    html => html.replace(/<p>.*?<\/p>/, '<p>ancien corps</p>'),
+    html => html.replace(/<template.*?<\/template>/, ''),
+    html => html.replace(/data-guide-sha256="[^"]+"/, 'data-guide-sha256="autre"'),
+    html => html.replace(/<img[^>]+>/, ''),
+  ];
+  for (const alter of alterations) {
+    const fetchImpl = async url => url.endsWith(`/integrations/${f.slug}`) ? new Response(alter(good)) : served(f.recipe, f.root)(url);
+    assert.equal((await publierGuide({ ...f, fetchImpl })).pass, false);
+    assert.equal(read(f.root, `guides/etats/${f.slug}/manifest.json`).status, 'scelle');
+    assert.equal(existsSync(join(f.root, `guides/etats/${f.slug}/publication.json`)), false);
+  }
+  for (const proofResponse of [new Response('absent', { status: 404 }), new Response('autre image')]) {
+    const fetchImpl = async url => url.endsWith('.webp') ? proofResponse : served(f.recipe, f.root)(url);
+    assert.equal((await publierGuide({ ...f, fetchImpl })).pass, false);
+    assert.equal(existsSync(join(f.root, `guides/etats/${f.slug}/publication.json`)), false);
+  }
+});
 
 test('données absentes, entiers seuls et données fictives refusés', async (t) => {
   const f = fixture(t);
@@ -84,7 +112,7 @@ test('mutations recette, preuve, rendu, sceau et collection font échouer audit/
     const path = target === '@asset' ? `public/proofs/integrations/${f.slug}.webp` : target === '@seal' ? `guides/etats/${f.slug}/scellement.json` : target === '@collection' ? 'src/data/guides.generated.json' : `${f.dir}/${target}`;
     writeFileSync(join(f.root, path), Buffer.concat([readFileSync(join(f.root, path)), Buffer.from(target === '@asset' ? 'mutation' : '\n ')]));
     assert.equal(auditerGuides({ root: f.root }).pass, false, target);
-    assert.equal((await publierGuide({ ...f, fetchImpl: served(f.recipe) })).pass, false, target);
+    assert.equal((await publierGuide({ ...f, fetchImpl: served(f.recipe, f.root) })).pass, false, target);
   }
 });
 
@@ -94,14 +122,14 @@ test('publication constate HTTP, canonical, H1 et indexabilité avant transition
     assert.equal((await publierGuide({ ...f, fetchImpl })).pass, false);
     assert.equal(read(f.root, `guides/etats/${f.slug}/manifest.json`).status, 'scelle');
   }
-  assert.equal((await publierGuide({ ...f, fetchImpl: served(f.recipe) })).pass, true);
+  assert.equal((await publierGuide({ ...f, fetchImpl: served(f.recipe, f.root) })).pass, true);
   assert.equal(read(f.root, `guides/etats/${f.slug}/manifest.json`).status, 'publie');
   assert.equal(auditerGuides({ root: f.root }).pass, true);
 });
 
 test('robots.txt bloquant le guide, même HTTP 200 et meta index, refuse publication', async (t) => {
   const f = fixture(t); await preparerGuide(f); review(f); await scellerGuide(f);
-  const fetchImpl = async url => url.endsWith('/robots.txt') ? new Response('User-agent: *\nDisallow: /integrations/\n') : response(f.recipe);
+  const fetchImpl = async url => url.endsWith('/robots.txt') ? new Response('User-agent: *\nDisallow: /integrations/\n') : served(f.recipe, f.root)(url);
   assert.equal((await publierGuide({ ...f, fetchImpl })).pass, false);
   assert.equal(read(f.root, `guides/etats/${f.slug}/manifest.json`).status, 'scelle');
 });
@@ -115,7 +143,7 @@ test('inventaire du candidat et métadonnées du sceau ne peuvent pas être ampu
 
 test('rejeu idempotent et publié immuable ; reçu de publication scellé', async (t) => {
   const f = fixture(t); await preparerGuide(f); review(f); await scellerGuide(f);
-  await publierGuide({ ...f, fetchImpl: served(f.recipe) });
+  await publierGuide({ ...f, fetchImpl: served(f.recipe, f.root) });
   const before = readFileSync(join(f.root, `guides/etats/${f.slug}/scellement.json`));
   assert.equal((await preparerGuide(f)).pass, true); assert.equal((await scellerGuide(f)).pass, true);
   assert.equal((await publierGuide({ ...f, fetchImpl: () => { throw Error('doit être idempotent'); } })).pass, true);
@@ -135,7 +163,7 @@ test('une mutation pendant la requête réseau refuse la publication sans reçu'
       json(f.root, `${f.dir}/recette.json`, f.recipe);
       return new Response('User-agent: *\nAllow: /\n');
     }
-    return response(f.recipe);
+    return served(f.recipe, f.root)(url);
   };
   assert.equal((await publierGuide({ ...f, fetchImpl })).pass, false);
   assert.equal(existsSync(join(f.root, `guides/etats/${f.slug}/publication.json`)), false);

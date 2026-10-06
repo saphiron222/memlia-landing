@@ -7,6 +7,8 @@ import { auteurPar, identiteAuteur } from '@/data/auteurs';
 import { INTEGRATIONS_INDEXABLES, integrationPath, type IntegrationDefinition } from '@/data/integrations';
 import { SITE } from '@/data/site.mjs';
 import { PROOFS, type ProofId } from '@/data/proofs';
+import { createHash } from 'node:crypto';
+import generatedGuides from '@/data/guides.generated.json';
 
 export function getStaticPaths() {
   return INTEGRATIONS_INDEXABLES.map((integration) => ({ params: { slug: integration.slug }, props: { integration } }));
@@ -15,6 +17,8 @@ interface Props { integration: IntegrationDefinition; }
 const { integration } = Astro.props;
 const chemin = integrationPath(integration);
 const hero = `integrations/${integration.slug}` as ProofId;
+const generatedIdentity = (generatedGuides as IntegrationDefinition[]).some(guide => guide.slug === integration.slug)
+  ? createHash('sha256').update(JSON.stringify(integration)).digest('hex') : null;
 if (!(hero in PROOFS)) throw new Error(`Preuve absente pour ${integration.slug}`);
 const url = `${SITE.url}${chemin}`;
 const auteur = auteurPar(integration.auteur);
@@ -66,6 +70,7 @@ const source = {
     ],
   }}
 >
+  {generatedIdentity && <template data-guide-sha256={generatedIdentity}></template>}
   <section class="pv" aria-labelledby="repere-editeur">
     <div class="pv-tete rv">
       <h2 id="repere-editeur">Les repères et les champs que la règle doit connaître</h2>
