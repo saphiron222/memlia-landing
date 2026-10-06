@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-06T02:39:13.633Z",
+  "citations": [
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-la-relance-des-pieces-clients-1",
+      "slug": "automatiser-la-relance-des-pieces-clients",
+      "sourceId": "sp-conservation",
+      "requestedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "evidenceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+      "evidence": "service-public-extraction.json",
+      "evidenceSha256": "2eddc6f104ab3e7e3392bae1982f73976e0f78db527b5fb4620b6e0d957ee77f",
+      "transport": "web_extract",
+      "httpStatus": null,
+      "localVerifierStatus": "FAIL",
+      "decision": "conserver-avec-limite-transport",
+      "limit": "Lecture distante retrouvant la citation, mais sans réponse HTTP brute ni garantie de fraîcheur amont. La forge locale puis curl (45 s, ancienne adresse 25 s et IPv4 20 s) restent en timeout. Preuve native non renouvelée ; tâche a-faire maintenue, aucune page réputée disparue."
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-la-saisie-comptable-ce-qui-reste-a-verifier-1",
+      "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "sourceId": "sp-conservation-pieces",
+      "requestedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "evidenceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "excerpt": "documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés",
+      "evidence": "service-public-extraction.json",
+      "evidenceSha256": "2eddc6f104ab3e7e3392bae1982f73976e0f78db527b5fb4620b6e0d957ee77f",
+      "transport": "web_extract",
+      "httpStatus": null,
+      "localVerifierStatus": "FAIL",
+      "decision": "conserver-avec-limite-transport",
+      "limit": "Lecture distante retrouvant la citation, mais sans réponse HTTP brute ni garantie de fraîcheur amont. La forge locale puis curl (45 s, ancienne adresse 25 s et IPv4 20 s) restent en timeout. Preuve native non renouvelée ; tâche a-faire maintenue, aucune page réputée disparue."
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-un-cabinet-comptable-la-carte-des-taches-1",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "sourceId": "sp-conservation",
+      "requestedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "evidenceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+      "evidence": "service-public-extraction.json",
+      "evidenceSha256": "2eddc6f104ab3e7e3392bae1982f73976e0f78db527b5fb4620b6e0d957ee77f",
+      "transport": "web_extract",
+      "httpStatus": null,
+      "localVerifierStatus": "FAIL",
+      "decision": "conserver-avec-limite-transport",
+      "limit": "Lecture distante retrouvant la citation, mais sans réponse HTTP brute ni garantie de fraîcheur amont. La forge locale puis curl (45 s, ancienne adresse 25 s et IPv4 20 s) restent en timeout. Preuve native non renouvelée ; tâche a-faire maintenue, aucune page réputée disparue."
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-un-cabinet-comptable-la-carte-des-taches-2",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "sourceId": "impots-calendrier",
+      "requestedUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+      "evidenceUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal/2026-09",
+      "excerpt": "Entre les 15 et 24 septembre 2026, dépôt et paiement de la déclaration mensuelle de TVA à la date figurant dans votre espace professionnel.",
+      "evidence": "calendrier-2026-09.html",
+      "evidenceSha256": "b8099015d8289529a05582a4829329cad507ad5d5689f1b72267cd09e4b30186",
+      "transport": "curl-UA-forge",
+      "httpStatus": 200,
+      "localVerifierStatus": "FAIL",
+      "decision": "conserver-citation-historique",
+      "limit": "La route générique est glissante et présente octobre ; la citation parle explicitement de septembre. Aucun changement du fond ni du lien public dans cette livraison."
+    },
+    {
+      "id": "2026-10-06-reverifier-source-logiciel-ia-comptabilite-1",
+      "slug": "logiciel-ia-comptabilite",
+      "sourceId": "service-public-pieces",
+      "requestedUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "evidenceUrl": "https://entreprendre.service-public.gouv.fr/vosdroits/F10029",
+      "excerpt": "Une entreprise doit conserver tout document émis ou reçu dans l'exercice de son activité pendant une durée minimale.",
+      "evidence": "service-public-extraction.json",
+      "evidenceSha256": "2eddc6f104ab3e7e3392bae1982f73976e0f78db527b5fb4620b6e0d957ee77f",
+      "transport": "web_extract",
+      "httpStatus": null,
+      "localVerifierStatus": "FAIL",
+      "decision": "conserver-avec-limite-transport",
+      "limit": "Lecture distante retrouvant la citation, mais sans réponse HTTP brute ni garantie de fraîcheur amont. La forge locale puis curl (45 s, ancienne adresse 25 s et IPv4 20 s) restent en timeout. Preuve native non renouvelée ; tâche a-faire maintenue, aucune page réputée disparue."
+    }
+  ],
+  "publicContentChanged": false,
+  "nativeEvidenceRenewed": false
+}
