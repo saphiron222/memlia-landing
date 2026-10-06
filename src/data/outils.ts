@@ -266,7 +266,11 @@ export const OUTILS: readonly OutilDefinition[] = [
   {
     slug: 'calculateur-date-echeance-facture',
     categorie: 'calculer',
-    statut: 'disponible',
+    statut: 'suspendu',
+    suspension: {
+      motif: 'La règle n’est plus vérifiable dans une source officielle après trois lectures réseau.',
+      date: '2026-10-06',
+    },
     h1: 'Calculateur de date d’échéance de facture',
     title: 'Calculateur de date d’échéance de facture | Memlia',
     description: 'Calculez une date d’échéance selon l’un des délais généraux documentés, avec le point de départ, la convention et chaque étape visibles.',

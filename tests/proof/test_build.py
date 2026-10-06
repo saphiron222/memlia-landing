@@ -261,7 +261,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/bibliotheque-prompts-comptables',
                      f'{SITE}/outils-comptables-gratuits/generateur-charte-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
-                     f'{SITE}/outils-comptables-gratuits/calculateur-date-echeance-facture',
+
                      f'{SITE}/outils-comptables-gratuits/calculateur-amortissement-comptable',
                      f'{SITE}/outils-comptables-gratuits/generateur-prompt-expert-comptable',
                      f'{SITE}/outils-comptables-gratuits/generateur-prompt-ia-gratuit',
@@ -278,6 +278,7 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
         self.assertNotIn(f'{SITE}/outils-comptables-gratuits/temoin-calcul-local', pages)
+        self.assertNotIn(f'{SITE}/outils-comptables-gratuits/calculateur-date-echeance-facture', pages)
         # lastmod d'un article publié = dateModified de son schéma (une seule source : le frontmatter).
         for article in published_articles:
             posting = next(n for g in jsonld(article) for n in g['@graph'] if n['@type'] == 'BlogPosting')
@@ -316,7 +317,7 @@ class BuildProof(unittest.TestCase):
     def test_outils_disponibles_ont_trois_liens_entrants_contextuels(self):
         outils = {
             '/outils-comptables-gratuits/calculateur-marge-commerciale',
-            '/outils-comptables-gratuits/calculateur-date-echeance-facture',
+
             '/outils-comptables-gratuits/calculateur-amortissement-comptable',
             '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit',
         }

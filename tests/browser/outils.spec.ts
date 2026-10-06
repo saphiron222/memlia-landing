@@ -97,7 +97,27 @@ test('marge : exemple, copie, export, effacement et événements de mesure', asy
   ]);
 });
 
+test('échéance suspendue : retrait du hub, noindex, motif daté et calcul indisponible', async ({ page }) => {
+  const path = `${HUB}/calculateur-date-echeance-facture`;
+  await page.goto(HUB);
+  await expect(page.locator(`a[href="${path}"]`)).toHaveCount(0);
+  const graph = await graphFrom(page);
+  expect(JSON.stringify(graph)).not.toContain(path);
+  const response = await page.goto(path);
+  expect(response?.status()).toBe(200);
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, follow');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${path}`);
+  await expect(page.getByRole('heading', { name: 'Calcul suspendu', exact: true })).toBeVisible();
+  await expect(page.getByRole('status')).toContainText('La règle n’est plus vérifiable dans une source officielle après trois lectures réseau.');
+  await expect(page.getByRole('status')).toContainText('2026-10-06');
+  await expect(page.getByRole('status')).toContainText('Cela ne signifie pas qu’un changement de droit a été établi.');
+  await expect(page.locator('main form')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Calculer l’échéance' })).toHaveCount(0);
+  await expect(page.locator('[data-result]')).toHaveCount(0);
+});
+
 test('échéance : les deux conventions divergent et l’absence de convention est refusée', async ({ page, context }) => {
+  test.skip(!OUTILS_DISPONIBLES.some((outil) => outil.slug === 'calculateur-date-echeance-facture'), 'Calcul suspendu : les formules restent couvertes par les tests unitaires.');
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto(`${HUB}/calculateur-date-echeance-facture`);
   await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
@@ -331,7 +351,7 @@ test('outils et services : les entrées respectent la préférence de mouvement 
 test('maillage entrant : trois contextes rendus par outil, dont le hub et une ressource exacte', async ({ page }) => {
   const referrers = new Map<string, string[]>([
     [`${HUB}/calculateur-marge-commerciale`, [HUB, '/methode', '/automatisation-cabinet-comptable']],
-    [`${HUB}/calculateur-date-echeance-facture`, [HUB, '/methode', '/automatisation/factures-fournisseurs']],
+
     [`${HUB}/calculateur-amortissement-comptable`, [HUB, '/methode', '/automatisation-cabinet-comptable']],
     [`${HUB}/modele-rapprochement-bancaire-excel-gratuit`, [HUB, '/methode', '/automatisation/rapprochement-bancaire']],
   ]);
@@ -598,7 +618,7 @@ test('outil vers contact : origine attribuée après accord distinct, sans envoi
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
   test(`hub, outils et témoin sans débordement à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
-    for (const route of [HUB, TEMOIN, ...OUTILS_DISPONIBLES.map(outilPath)]) {
+    for (const route of [HUB, TEMOIN, `${HUB}/calculateur-date-echeance-facture`, ...OUTILS_DISPONIBLES.map(outilPath)]) {
       const response = await page.goto(route);
       expect(response?.status()).toBe(200);
       await page.evaluate(() => document.fonts.ready);
