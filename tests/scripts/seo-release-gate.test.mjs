@@ -23,27 +23,47 @@ const evidence = () => ({
   privateRepository: true,
 });
 
-test('SEO gate accepts green CI and independent QA PASS without an operator receipt', () => {
+function authorizedEvidence() {
   const p = evidence();
+  p.receipt = { verified: true, repo: 'saphiron222/memlia-landing', scope: 'seo-measures',
+    decision: 'AUTHORIZE', channel: 'telegram', pr: 12, pr_head: head, main_sha: base,
+    qa_task: p.qa.task.id, authorization_task: 't_release123' };
+  return p;
+}
+
+test('SEO gate rejects self-declared dev authorization without a gateway receipt', () => {
+  assert.equal(evaluateSeoRelease(evidence()).pass, false);
+  assert.equal(evaluateSeoRelease({ ...evidence(), authorization: { runs: [{ metadata: {
+    decision: 'AUTHORIZE', author: 'Kevin' } }] } }).pass, false);
+});
+
+test('SEO gate accepts a verified receipt and does not confer blog permission', () => {
+  const p = authorizedEvidence();
   assert.equal(evaluateSeoRelease(p).pass, true);
   p.changedPaths = [{ filename: 'src/content/blog/example.md', status: 'added' }];
   assert.equal(evaluateSeoRelease(p).pass, false);
 });
 
-test('SEO gate refuses a public repository', () => {
-  const p = evidence();
+test('SEO gate refuses unverified, foreign or public-repository decisions', () => {
+  const p = authorizedEvidence();
   assert.equal(evaluateSeoRelease({ ...p, privateRepository: false }).pass, false);
+  p.receipt.verified = false;
+  assert.equal(evaluateSeoRelease(p).pass, false);
+  p.receipt.verified = true;
+  p.receipt.repo = 'other/repo';
+  assert.equal(evaluateSeoRelease(p).pass, false);
 });
 
 for (const [name, mutate] of [
-  ['dev self-review', p => { p.qa.task.assignee = 'dev'; }],
-  ['QA FAIL', p => { p.qa.runs[0].metadata.verdict = 'FAIL'; }],
-  ['QA on another PR', p => { p.qa.runs[0].metadata.pr = 3; }],
-  ['QA on another head', p => { p.qa.runs[0].metadata.pr_head = base; }],
-  ['stale base', p => { p.pr.baseRefOid = head; }],
-  ['missing Repository gates', p => { p.checks.check_runs[0].name = 'other'; }],
-  ['pending CI', p => { p.checks.check_runs[0].status = 'in_progress'; }],
-  ['CI on another head', p => { p.checks.check_runs[0].head_sha = base; }],
+  ['missing authorization', p => { delete p.receipt; }],
+  ['blog authorization', p => { p.receipt.scope = 'blog'; }],
+  ['other PR authorization', p => { p.receipt.pr = 3; }],
+  ['stale authorization', p => { p.receipt.main_sha = head; }],
+  ['non-independent authorization', p => { p.receipt.authorization_task = p.qa.task.id; }],
+  ['other channel', p => { p.receipt.channel = 'cli'; }],
+  ['refusal', p => { p.receipt.decision = 'REFUSE'; }],
+  ['changed QA', p => { p.receipt.qa_task = 't_other'; }],
+  ['changed head in receipt', p => { p.receipt.pr_head = base; }],
   ['stale head', p => { p.pr.headRefOid = base; }],
   ['moved main', p => { p.remoteMain = head; }],
   ['draft', p => { p.pr.isDraft = true; }],
@@ -61,7 +81,7 @@ for (const [name, mutate] of [
   ['traversal', p => { p.changedPaths.push('docs/strategy/site-v3/mesures/../RUNBOOK-SEO.md'); }],
   ['empty diff', p => { p.changedPaths = []; }],
 ]) test(`SEO release refuses ${name}`, () => {
-  const p = evidence();
+  const p = authorizedEvidence();
   mutate(p);
   assert.equal(evaluateSeoRelease(p).pass, false);
 });
@@ -74,7 +94,7 @@ test('read-only CLI refuses unavailable evidence without publishing', () => {
     for (const name of ['gh', 'hermes', 'git'])
       writeFileSync(path.join(bin, name), '#!/bin/sh\nexit 99\n', { mode: 0o755 });
     const result = spawnSync(process.execPath, [new URL('../../scripts/seo-release-gate.mjs', import.meta.url).pathname,
-      '--pr', '12', '--qa-task', 't_aa',
+      '--pr', '12', '--qa-task', 't_aa', '--authorization-task', 't_bb',
       '--expected-head', head, '--expected-main', base],
     { cwd: dir, encoding: 'utf8', env: { ...process.env, PATH: `${bin}:${process.env.PATH}` } });
     assert.equal(result.status, 2);
