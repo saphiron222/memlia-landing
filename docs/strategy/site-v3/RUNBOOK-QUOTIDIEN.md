@@ -4,6 +4,15 @@ Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au sa
 
 ## 0. Rails non négociables
 
+### Copies de textes LEGI/JORF
+
+La voie A4 `dila-copy` accepte une collecte réelle de 0 à 7 jours civils Paris,
+avec texte exact, provenance et version conservés. Elle ne simule ni HTTP 2xx
+ni ouverture de page Légifrance. Le lien public et la revue métier restent
+inchangés. Voir [SOURCES-DILA.md](SOURCES-DILA.md) pour l'export et les contrats
+du blog, du glossaire/Ressources et des services. Une collecte récente ne
+garantit pas une consolidation récente ; ne jamais redater un export local.
+
 ### Règle courante de livraison et de revue (constitution du 03/10)
 
 Cette règle remplace les prescriptions historiques contraires des sections ci-dessous.
