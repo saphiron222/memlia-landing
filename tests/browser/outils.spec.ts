@@ -427,6 +427,26 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
       await page.getByRole('button', { name: 'Préparer la charte', exact: true }).click();
       await expect(page.locator('[data-editor]')).toHaveValue(/Relance de pièces/);
+    } else if (outil.slug === 'suivi-circularisation') {
+      await page.getByText('Importer un CSV : mapping, aperçu et sélection', { exact: true }).click();
+      await page.locator('#circ-csv').setInputFiles({
+        name: 'fictif.csv', mimeType: 'text/csv',
+        buffer: Buffer.from('id;category;recipient;contact;referenceDate;currency;requestedAmount;confirmationType\n0007;client;Tiers fictif;Contact fictif;2026-01-01;EUR;100;open'),
+      });
+      await page.getByRole('button', { name: 'Lire le CSV', exact: true }).click();
+      await expect(page.locator('[data-circ-mapping] select')).toHaveCount(10);
+      for (const field of ['id', 'category', 'recipient', 'contact', 'referenceDate', 'currency', 'requestedAmount', 'confirmationType']) {
+        await page.locator(`[data-circ-mapping] select[name="${field}"]`).selectOption(field);
+      }
+      await page.getByRole('button', { name: 'Voir l’aperçu mappé', exact: true }).click();
+      await expect(page.locator('[data-circ-import-summary]')).toContainText('1 lignes au total');
+      await page.locator('[data-circ-preview-rows] input').check();
+      await page.locator('#circ-import-valid').check();
+      await page.getByRole('button', { name: 'Ajouter la sélection validée', exact: true }).click();
+      await expect(page.locator('[data-circ-summary]')).toContainText('1 tiers');
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-circ-export="json"]').click();
+      await downloading;
     } else if (outil.slug === 'modele-rapprochement-bancaire-excel-gratuit') {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');
@@ -448,6 +468,11 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
     } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
       const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/pseudonymisation\\.worker-[a-zA-Z0-9_-]+\\.js$`);
+      expect(requests.filter(request => !asset.test(request))).toEqual([]);
+    } else if (outil.slug === 'suivi-circularisation') {
+      const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/circularisation-worker-[a-zA-Z0-9_-]+\\.js$`);
+      // Parsing, preview and validated selection each create their own local Worker.
+      expect(requests).toHaveLength(3);
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
     } else expect(requests).toEqual([]);
     page.off('request', listener);
