@@ -81,7 +81,13 @@ class IntegratedMediaProof(unittest.TestCase):
         for figure in figures:
             self.assertRegex(figure.strip(), r'^<img\b[^>]+>$')
             self.assertNotRegex(figure, r'\s(?:tabindex|role|on\w+)\s*=')
-        self.assertNotRegex(html, r'<dialog\b|role="dialog"|proof-zoom')
+        dialogs = re.findall(r'<dialog\b[^>]*aria-label="[^"]+"[^>]*>(.*?)</dialog>', html, re.S)
+        self.assertEqual(len(dialogs), 9)
+        for dialog in dialogs:
+            self.assertIn('data-proof-summary', dialog)
+            self.assertIn('Fermer la preuve', dialog)
+            self.assertIn('role="region"', dialog)
+            self.assertRegex(dialog, r'<img\b[^>]*data-src="/proofs/[^\"]+"')
 
     def test_nine_functional_proofs_replace_all_legacy_images(self):
         doc = Document(DIST / 'index.html')
