@@ -46,6 +46,23 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'suivi-circularisation', categorie: 'preparer', statut: 'disponible',
+    h1: 'Modèle de suivi de circularisation Excel : lettres et retours',
+    title: 'Suivi de circularisation : lettres et retours | Memlia',
+    description: 'Préparez vos lettres de confirmation, suivez les retours et rapprochez les écarts localement. Exportez le tableau de suivi pour votre dossier.',
+    promesse: { entree: 'Tiers sélectionnés, dates, devises et retours renseignés', resultat: 'Lettres originales, suivi CSV et dossier JSON reprenable' },
+    limites: [
+      'Aucun envoi, réception ou authentification de réponse. Le CAC maîtrise la sélection, les courriers et les suites.',
+      'Écart exact seulement à devise identique et base déclarée comparable. Une absence de réponse n’est jamais un écart zéro.',
+      'Refus et désaccord suspendent les propositions de relance ; les procédures alternatives restent à décider par le CAC.',
+      'CSV et JSON limités à 20 Mo ; 100 000 tiers maximum. Un doublon, une date incohérente ou une reprise invalide est refusé sans correction silencieuse.',
+    ],
+    mentionLocale: 'Session uniquement en mémoire, sans envoi ni stockage persistant. Sauvegardez le JSON avant fermeture pour reprendre vos lettres, versions et notes. Aucun enregistrement automatique.',
+    proof: 'v2/40-outil-circularisation', zoneLarge: true,
+    source: { nom: 'CNCC — NEP-505, demandes de confirmation des tiers', url: 'https://doc.cncc.fr/docs/nep-505-demandes-de-confirmation', extrait: 'Le §9 réserve au commissaire aux comptes la maîtrise de la sélection, de la rédaction, de l’envoi et de la réception. Notre outil prépare et documente ; il n’exécute pas ces échanges.', verifieeLe: '6 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
     slug: 'generateur-prompt-ia-gratuit', categorie: 'ecrire', statut: 'disponible',
     h1: 'Générateur de prompt IA gratuit',
     title: 'Générateur de prompt IA gratuit | Memlia',

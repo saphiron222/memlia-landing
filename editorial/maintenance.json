@@ -78,6 +78,158 @@
       "commit": "e651bb1"
     },
     {
+      "id": "2026-10-06-inserer-lien-cabinet-comptable-surcharge-de-travail-ou-passe-le-temps-1",
+      "slug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "type": "inserer-lien",
+      "cle": "liens-entrants",
+      "motif": "2 lien(s) entrant(s) sur 3 attendus : ajouter un lien dans le corps d'un article voisin, avec une ancre parlante",
+      "mesure": {
+        "valeur": "2",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-10-06"
+      },
+      "gravite": "moyenne",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-inserer-lien-intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain-1",
+      "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "type": "inserer-lien",
+      "cle": "liens-entrants",
+      "motif": "2 lien(s) entrant(s) sur 3 attendus : ajouter un lien dans le corps d'un article voisin, avec une ancre parlante",
+      "mesure": {
+        "valeur": "2",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-10-06"
+      },
+      "gravite": "moyenne",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-inserer-lien-tests-verts-et-regle-des-trois-passes-1",
+      "slug": "tests-verts-et-regle-des-trois-passes",
+      "type": "inserer-lien",
+      "cle": "liens-entrants",
+      "motif": "2 lien(s) entrant(s) sur 3 attendus : ajouter un lien dans le corps d'un article voisin, avec une ancre parlante",
+      "mesure": {
+        "valeur": "2",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-10-06"
+      },
+      "gravite": "moyenne",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-inserer-lien-automatiser-un-cabinet-comptable-la-carte-des-taches-1",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "inserer-lien",
+      "cle": "lien-vers-cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "motif": "le pilier ne lie pas /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps : ajouter le lien là où sa famille est nommée",
+      "mesure": {
+        "valeur": "absent",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-10-06"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-inserer-lien-automatiser-un-cabinet-comptable-la-carte-des-taches-2",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "inserer-lien",
+      "cle": "lien-vers-intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "motif": "le pilier ne lie pas /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain : ajouter le lien là où sa famille est nommée",
+      "mesure": {
+        "valeur": "absent",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-10-06"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-inserer-lien-automatiser-un-cabinet-comptable-la-carte-des-taches-3",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "inserer-lien",
+      "cle": "lien-vers-utiliser-chatgpt-cabinet-comptable",
+      "motif": "le pilier ne lie pas /blog/utiliser-chatgpt-cabinet-comptable : ajouter le lien là où sa famille est nommée",
+      "mesure": {
+        "valeur": "absent",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-10-06"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-inserer-lien-automatiser-un-cabinet-comptable-la-carte-des-taches-4",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "inserer-lien",
+      "cle": "lien-vers-verifier-reponse-ia-comptabilite",
+      "motif": "le pilier ne lie pas /blog/verifier-reponse-ia-comptabilite : ajouter le lien là où sa famille est nommée",
+      "mesure": {
+        "valeur": "absent",
+        "instrument": "HTML servi, liens dans main",
+        "date": "2026-10-06"
+      },
+      "gravite": "haute",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-varier-ancre-automatiser-un-cabinet-comptable-la-carte-des-taches-1",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "varier-ancre",
+      "cle": "ancre-vers-glossaire",
+      "motif": "l'ancre « rapprochement bancaire » mène ici à /glossaire et ailleurs à /automatisation/rapprochement-bancaire : choisir des mots propres à cette destination",
+      "mesure": {
+        "valeur": "rapprochement bancaire",
+        "instrument": "HTML servi, ancres dans main",
+        "date": "2026-10-06"
+      },
+      "gravite": "moyenne",
+      "cron": "C3",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
       "id": "2026-10-06-reverifier-source-automatiser-la-relance-des-pieces-clients-1",
       "slug": "automatiser-la-relance-des-pieces-clients",
       "type": "reverifier-source",
@@ -167,6 +319,25 @@
       },
       "gravite": "haute",
       "cron": "manuel",
+      "statut": "a-faire",
+      "creeLe": "2026-10-06",
+      "misAJourLe": "2026-10-06",
+      "traiteLe": null,
+      "commit": null
+    },
+    {
+      "id": "2026-10-06-recaler-titre-prompt-chatgpt-expert-comptable-1",
+      "slug": "prompt-chatgpt-expert-comptable",
+      "type": "recaler-titre",
+      "cle": "chatgpt expert comptable",
+      "motif": "« chatgpt expert comptable » en position 12.2 avec 5 impressions sur 7 jours : titre ou introduction à recaler sur la requête",
+      "mesure": {
+        "valeur": "position 12.2, 5 impressions",
+        "instrument": "Search Console, 7 jours",
+        "date": "2026-10-06"
+      },
+      "gravite": "moyenne",
+      "cron": "C2",
       "statut": "a-faire",
       "creeLe": "2026-10-06",
       "misAJourLe": "2026-10-06",
