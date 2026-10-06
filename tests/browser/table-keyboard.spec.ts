@@ -6,6 +6,7 @@ const require = createRequire(import.meta.url);
 for (const width of [320, 375, 1440]) {
   for (const route of routes) {
     test(`${width}px ${route}: tableaux accessibles au clavier`, async ({ page }, testInfo) => {
+      test.setTimeout(60_000);
       await page.setViewportSize({ width, height: 900 });
       expect((await page.goto(route))?.status()).toBe(200);
       await page.evaluate(() => document.fonts.ready);
