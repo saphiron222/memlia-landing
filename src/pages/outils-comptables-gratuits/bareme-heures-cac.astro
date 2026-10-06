@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import BaremeHeuresCac from '@/components/outils/BaremeHeuresCac.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('bareme-heures-cac');
+---
+<Outil outil={outil}><BaremeHeuresCac /></Outil>
