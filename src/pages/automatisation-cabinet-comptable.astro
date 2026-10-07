@@ -7,8 +7,12 @@ import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { serviceNode, SERVICE_ID } from '@/data/schema.mjs';
+import { eeatCommercial } from '@/data/page-eeat';
 
 const page = PAGES_V2.service;
+// La source de la page se cite sur ses mots, dans « Le jeu d’essai » (décision de Kevin du 06/10/2026).
+const [sourceRgpd] = eeatCommercial('/automatisation-cabinet-comptable')?.sources ?? [];
+if (!sourceRgpd) throw new Error('Source CNIL du hub absente de page-eeat');
 const url = `${SITE.url}${page.chemin}`;
 const noeuds = [
   {
@@ -45,11 +49,11 @@ const poles = [
   { nom: 'Commissariat aux comptes', reste: 'La sélection des tiers à circulariser, les écarts de confirmation, les fichiers du client rapprochés de la balance. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion.' },
 ];
 const outils = [
-  { href: '/outils-comptables-gratuits/calculateur-roi-automatisation', libelle: 'Calculateur de ROI d’automatisation comptable', texte: 'Volumes, contrôle restant et dépenses vraiment évitables.' },
-  { href: '/outils-comptables-gratuits/verificateur-fec-local', libelle: 'Vérificateur FEC local', texte: 'Un rapport par ligne, colonne et règle, sans corriger le fichier.' },
-  { href: '/outils-comptables-gratuits/generateur-prompt-expert-comptable', libelle: 'Générateur de prompt pour expert-comptable', texte: 'Entrées, format, validation et arrêt d’une consigne.' },
+  { href: '/outils-comptables-gratuits/calculateur-roi-automatisation', libelle: 'Calculateur de ROI d’automatisation comptable', texte: 'Volumes, contrôle restant et dépenses vraiment évitables. La capacité libérée reste distincte des économies de trésorerie.' },
+  { href: '/outils-comptables-gratuits/verificateur-fec-local', libelle: 'Vérificateur FEC local', texte: 'Un rapport par ligne, colonne et règle, sans corriger ni certifier le fichier.' },
+  { href: '/outils-comptables-gratuits/generateur-prompt-expert-comptable', libelle: 'Générateur de prompt pour expert-comptable', texte: 'Entrées, format, validation et arrêt d’une consigne. Il aide à décrire le geste ; il ne réalise pas la tâche à la place du cabinet.' },
   { href: '/outils-comptables-gratuits/calculateur-amortissement-comptable', libelle: 'Calculateur d’amortissement comptable', texte: 'Base, prorata, dotation et valeur nette par exercice.' },
-  { href: '/outils-comptables-gratuits/calculateur-marge-commerciale', libelle: 'Calculateur de marge commerciale', texte: 'Marge, taux de marge et taux de marque sur deux montants.' },
+  { href: '/outils-comptables-gratuits/calculateur-marge-commerciale', libelle: 'Calculateur de marge commerciale', texte: 'Marge, taux de marge et taux de marque sur deux montants HT fictifs, sans produire de conseil de prix.' },
 ];
 const appel = {
   titre: 'Décrivez le geste qui revient.',
@@ -79,7 +83,7 @@ const appel = {
       <li class="ligne"><h3 class="ligne-libelle">La frontière</h3><p class="ligne-texte">Trois colonnes fixent ce qui se prépare seul, ce qui attend une validation et ce qui reste humain.</p></li>
       <li class="ligne"><h3 class="ligne-libelle">La proposition</h3><p class="ligne-texte">L’automatisation prépare le résultat et le présente. Ce que le cabinet saisit ne se touche jamais.</p></li>
       <li class="ligne"><h3 class="ligne-libelle">L’arrêt</h3><p class="ligne-texte">Une donnée manque, le cas sort de la règle ou deux lectures restent possibles : le traitement s’arrête et nomme le doute.</p></li>
-      <li class="ligne"><h3 class="ligne-libelle">Le jeu d’essai</h3><p class="ligne-texte">Les cas qui doivent aboutir et ceux qui doivent échouer sont rejoués sur des données fictives avant la recette.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">Le jeu d’essai</h3><p class="ligne-texte">Les cas qui doivent aboutir et ceux qui doivent échouer sont rejoués sur <a href={sourceRgpd.url} rel="noopener noreferrer" title={`${sourceRgpd.editeur} — ${sourceRgpd.titre}`}>{sourceRgpd.mot}</a> avant la recette.</p></li>
     </ul>
   </section>
 

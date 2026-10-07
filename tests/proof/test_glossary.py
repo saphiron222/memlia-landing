@@ -84,9 +84,20 @@ class GlossaryProof(unittest.TestCase):
         self.assertNotIn('entree-sources', self.html)
         definitions = re.findall(r'<p class="definition"[^>]*>(.*?)</p>', self.html, re.S)
         self.assertEqual(len(definitions), 53)
-        cites = [definition for definition in definitions if 'href="https://' in definition]
+        entrees = re.findall(
+            r'<div class="glossaire-entree" id="([a-z0-9-]+)".*?<p class="definition"[^>]*>(.*?)</p>\s*<p class="contexte"[^>]*>(.*?)</p>',
+            self.html, re.S)
+        self.assertEqual(len(entrees), 53)
+        cites = [ident for ident, definition, contexte in entrees if 'href="https://' in definition + contexte]
         # 22 entrées ne s'appuient que sur la méthode ou un article Memlia : rien d'externe à citer.
         self.assertEqual(len(cites), 31)
+        # Une définition écrite par Memlia n'est pas celle de l'organisme cité : sa citation se pose en fin de
+        # contexte, jamais en fin de définition (revue de #166, 07/10/2026).
+        maison = set(re.findall(r"id: '([a-z0-9-]+)'[^\n]*nature: 'Éditoriale Memlia'", (ROOT / 'src/data/glossary.ts').read_text()))
+        self.assertEqual(len(maison), 20)
+        for ident, definition, _ in entrees:
+            if ident in maison:
+                self.assertNotIn('href="https://', definition, ident)
         # Le lecteur voit les sources, jamais notre chaîne éditoriale : ni encart de statut,
         # ni date de relecture, ni marqueur de revue — pas même dans les attributs du HTML.
         self.assertNotIn('data-business-reviewer', self.html)

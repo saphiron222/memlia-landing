@@ -625,17 +625,6 @@ ol {
   width: 24px;
   height: 24px;
 }
-:where(.carte) .carte-media {
-  display: block;
-  flex: none;
-  overflow: hidden;
-  border: 1px solid var(--ligne);
-  border-radius: var(--r-boite);
-  background: var(--surface-page);
-}
-:where(.carte) .carte-media img {
-  width: 100%;
-}
 :where(.carte, .cellule) .carte-meta {
   display: flex;
   flex-wrap: wrap;
@@ -825,9 +814,15 @@ a.carte:focus-visible {
 .surtitre::first-letter {
   text-transform: uppercase;
 }
-/* Dans un titre, un mot composé ne se coupe pas à son trait d'union (Insecable.astro). */
+/* Dans un titre, un mot composé ne se coupe pas à son trait d'union (Insecable.astro). Sous 360 px, il
+   peut se couper : « expert-comptable » dépasse sinon la colonne d'un écran de 320 px. */
 .insecable {
   white-space: nowrap;
+}
+@media (max-width: 22.4375rem) {
+  .insecable {
+    white-space: normal;
+  }
 }
 /* Une phrase de portée ou de limite, sous la forme qu'elle borne. */
 .mention {

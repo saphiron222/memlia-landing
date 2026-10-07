@@ -18,7 +18,9 @@ const noeuds = [{
  * de page : la forme « étapes » (global.css), numérotée par son surtitre, une maquette encadrée par
  * étape, deux étapes par rangée dès 64 rem.
  */
-const etapes: { id: string; titre: string; image: ProofId; paragraphes: string[] }[] = [
+// Un paragraphe peut porter un lien sur ses propres mots (décision de Kevin du 06/10/2026 : la source se cite dans le texte).
+type Paragraphe = string | { avant: string; lien: { texte: string; href: string }; apres: string };
+const etapes: { id: string; titre: string; image: ProofId; paragraphes: Paragraphe[] }[] = [
   { id: 'observer', titre: 'Observer', image: '04-observer', paragraphes: [
     'Nous regardons le geste tel qu’il se fait, pas tel qu’il devrait se faire.',
     'Quels fichiers arrivent, dans quel ordre, avec quelles irrégularités. Où la personne hésite. Ce qu’elle vérifie machinalement sans l’avoir jamais écrit. Combien de fois par mois le cas « normal » n’est pas le cas normal.',
@@ -27,7 +29,11 @@ const etapes: { id: string; titre: string; image: ProofId; paragraphes: string[]
   { id: 'cadrer', titre: 'Cadrer', image: 'v2/04-perimetre', paragraphes: [
     'Nous écrivons la règle avec vous, dans le vocabulaire du cabinet. Les accès, les formats et les cas couverts sont vérifiés avant de construire.',
     'Ce document dit trois choses : ce qui doit se produire, ce qui constitue une exception, et ce qui doit faire arrêter le traitement. Il fixe aussi le périmètre — ce que l’automatisation touche, et ce qu’elle ne touchera jamais.',
-    'C’est ici que la plupart des projets se jouent. Une règle qu’on ne sait pas énoncer ne s’automatise pas : elle se discute d’abord. Si le cadrage révèle que la tâche n’est pas automatisable en l’état, nous le disons à ce moment, pas après le développement.',
+    {
+      avant: 'C’est ici que la plupart des projets se jouent. Une règle qu’on ne sait pas énoncer ne s’automatise pas : elle se discute d’abord. Si ',
+      lien: { texte: 'le cadrage', href: '/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils' },
+      apres: ' révèle que la tâche n’est pas automatisable en l’état, nous le disons à ce moment, pas après le développement.',
+    },
   ] },
   { id: 'eprouver', titre: 'Éprouver', image: 'v2/05-refus-attendu', paragraphes: [
     'Nous construisons un jeu d’essai entièrement fictif, qui ressemble à vos fichiers sans en être.',
@@ -67,7 +73,9 @@ const appel = {
           <div class="etape-copie rv">
             <p class="surtitre">Étape {i + 1}</p>
             <h3>{e.titre}</h3>
-            {e.paragraphes.map((p, j) => (<p class={j === 0 ? undefined : 'texte-2'}>{p}</p>))}
+            {e.paragraphes.map((p, j) => (
+              <p class={j === 0 ? undefined : 'texte-2'}>{typeof p === 'string' ? p : <>{p.avant}<a href={p.lien.href}>{p.lien.texte}</a>{p.apres}</>}</p>
+            ))}
           </div>
           <ProofMedia id={e.image} cadre />
         </li>

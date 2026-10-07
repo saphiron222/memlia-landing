@@ -55,3 +55,22 @@ test('les neuf pages hors blog gardent un Person relié, sans signature, dates v
     assert.equal(pageNode?.dateModified, page.modified, `${page.route} : dateModified réelle`);
   }
 });
+
+// Oracle indépendant de page-eeat.ts : chaque source publique est un lien posé sur ces mots-là du texte rendu.
+const citations = [
+  { route: '/automatisation/paie', url: 'https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/', mot: 'tout dépôt' },
+  { route: '/automatisation/saisie-comptable', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F31808', mot: 'les champs' },
+  { route: '/automatisation/rapprochement-bancaire', url: 'https://www.anc.gouv.fr/plan-comptable-general-0', mot: 'des écritures' },
+  { route: '/automatisation/notes-de-frais', url: 'https://www.service-public.fr/particuliers/vosdroits/F19846', mot: 'un justificatif' },
+  { route: '/automatisation-cabinet-comptable', url: 'https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2', mot: 'des données fictives' },
+  { route: '/garanties', url: 'https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees', mot: 'une mesure individuelle continue' },
+  { route: '/methode', url: '/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils', mot: 'le cadrage' },
+];
+
+test('chaque source se cite par un lien sur un mot du texte de sa page', () => {
+  for (const { route, url, mot } of citations) {
+    const main = htmlFor(route).split('<main')[1]?.split('</main>')[0] ?? '';
+    const liens = [...main.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([^<]*)<\/a>/g)];
+    assert.ok(liens.some(([, href, texte]) => href === url && texte === mot), `${route} : « ${mot} » porte ${url}`);
+  }
+});

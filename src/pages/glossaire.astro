@@ -36,6 +36,18 @@ const citations = (sourceIds: string[]) => {
     return [{ nom: source.libelleCourt, url: source.url, titre: source.title }];
   });
 };
+// Les sources Memlia (méthode, articles) sont des renvois internes : elles rejoignent « Pour aller plus loin », sans
+// doublon avec les renvois déjà écrits (revue de #166, 07/10/2026).
+const liensInternes = (entry: (typeof GLOSSARY_ENTRIES)[number]) => {
+  const memlia = entry.sourceIds
+    .map((sourceId) => GLOSSARY_SOURCES[sourceId])
+    .filter((source) => source?.publisher === 'Memlia')
+    .map((source) => ({ label: source.title, href: source.url }));
+  return [...entry.internalLinks, ...memlia.filter((lien) => !entry.internalLinks.some((existant) => existant.href === lien.href))];
+};
+// Une définition écrite par Memlia (« Dans ce glossaire, Memlia appelle… ») n'est pas celle de l'organisme cité :
+// sa citation se pose en fin de contexte, là où l'organisme étaye un fait, et non en fin de définition.
+const definitionMaison = (entry: (typeof GLOSSARY_ENTRIES)[number]) => entry.nature === 'Éditoriale Memlia';
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -115,11 +127,15 @@ const graph = {
                 <dd>
                   {(() => {
                     const cites = citations(entry.sourceIds);
-                    return cites.length === 0
-                      ? <p class="definition">{entry.definition}</p>
-                      : <p class="definition">{entry.definition} ({cites.map((cite, index) => <>{index > 0 && ', '}<a href={cite.url} rel={cite.url.startsWith('http') ? 'noopener noreferrer' : undefined} title={cite.titre}>{cite.nom}</a></>)})</p>;
+                    const parentheses = cites.length === 0 ? null : <> ({cites.map((cite, index) => <>{index > 0 && ', '}<a href={cite.url} rel={cite.url.startsWith('http') ? 'noopener noreferrer' : undefined} title={cite.titre}>{cite.nom}</a></>)})</>;
+                    const maison = definitionMaison(entry);
+                    return (
+                      <>
+                        <p class="definition">{entry.definition}{!maison && parentheses}</p>
+                        <p class="contexte">{entry.context}{maison && parentheses}</p>
+                      </>
+                    );
                   })()}
-                  <p class="contexte">{entry.context}</p>
                   <div class="entree-details">
                     <p><strong>Confusion fréquente</strong>{entry.commonConfusion}</p>
                     <p><strong>Exemple avec données fictives</strong>{entry.exampleFictitious}</p>
@@ -139,7 +155,7 @@ const graph = {
                     <div>
                       <strong>Pour aller plus loin</strong>
                       <ul class="liens-liste">
-                        {entry.internalLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+                        {liensInternes(entry).map((link) => <li><a href={link.href}>{link.label}</a></li>)}
                       </ul>
                     </div>
                   </div>
@@ -205,7 +221,7 @@ const graph = {
   .entree-liens > div { display: grid; gap: 2px; }
   .liens-liste { display: flex; flex-wrap: wrap; gap: 2px 16px; }
   .liens-liste li { display: flex; align-items: center; min-height: 44px; }
-  .entree-liens a, .definition a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+  .entree-liens a, .definition a, .contexte a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
   @media (hover: hover) {
     .alphabet a:hover, .recherche-effacer:hover { background: var(--surface-hover); }
   }
