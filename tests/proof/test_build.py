@@ -258,6 +258,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
                      f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/integrations',
                      f'{SITE}/outils-comptables-gratuits',
+                     f'{SITE}/outils-comptables-gratuits/checklist-pieces-comptables',
                      f'{SITE}/outils-comptables-gratuits/seuil-signification-audit',
                      f'{SITE}/outils-comptables-gratuits/suivi-circularisation',
                      f'{SITE}/outils-comptables-gratuits/bibliotheque-prompts-comptables',
@@ -420,6 +421,7 @@ class BuildProof(unittest.TestCase):
                 '40-outil-circularisation.webp',
                 '43-outil-bareme-cac.webp',
                 '41-outil-signification.webp',
+                '44-outil-checklist-pieces.webp',
             ]),
         )
 
