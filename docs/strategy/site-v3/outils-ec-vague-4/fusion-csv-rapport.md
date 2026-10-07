@@ -37,4 +37,12 @@ Hotspots : registre outils, intent contract, registre requêtes et paragraphes m
 
 La revue indépendante unique appartient à t_d8afa665. La publication et les contrôles publics définitifs (dont Lighthouse sur domaine indexable, robots public et dates J+7/J+28) appartiennent à t_4d6b063b. La prévisualisation n’atteste ni indexation ni usage réel. Aucune métrique de succès/export ajoutée au réseau.
 
-PR159 ouverte. CI distante Repository gates encore en file sur mac-kevin au dernier contrôle : ne pas conclure au PASS CI, ne pas publier avant conclusion verte puis QA. La construction et les preuves locales sont achevées ; l’attente de CI est découpée pour ne pas prolonger une session de développement. Journaux bruts livrés en `.txt` (les `.log` sont ignorés par le dépôt).
+PR159 ouverte. Le premier passage CI a conclu FAILURE : 549 contrats navigateur PASS, un échec car le scénario réseau du nouveau slug manquait dans le contrat commun. Aucun transfert de données n’est démontré par cette exception.
+
+## Reprise du contrat réseau commun
+
+L’échec a été reproduit localement avant correction : « Scénario réseau à définir pour l’outil fusionner-fichiers-csv ». Le scénario ajouté dans `tests/browser/outils.spec.ts` importe deux fichiers fictifs après armement du garde, confirme le mapping et la provenance, consolide trois lignes, vérifie les exports CSV et rapport JSON complets puis réinitialise. Le garde n’autorise que deux GET du script statique local `fusion-csv.worker-*.js`, sans paramètres ; toute autre requête reste un échec. Les assertions localStorage/sessionStorage/IndexedDB restent inchangées ; le parcours dédié conserve aussi ses sentinelles d’écriture.
+
+Test ciblé : 1 PASS après correction. Suite commune outils et suite fusion CSV complète sur le build local conservé : 35 PASS, dont les six largeurs. Journal brut : `docs/qa/fusion-csv/reprise-reseau-tests.txt`. Aucun changement du code produit ni du build. Les captures initiales sont conservées, sans remplacement par les captures de répétition.
+
+La conclusion distante du nouveau passage reste à obtenir avant de libérer QA ; aucun PASS CI ni publication revendiqué ici. La revue et la publication restent sur leurs cartes existantes. Journaux bruts livrés en `.txt` (les `.log` sont ignorés par le dépôt).
