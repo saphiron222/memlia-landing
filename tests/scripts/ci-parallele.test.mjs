@@ -33,6 +33,14 @@ test('« Repository gates » échoue si une seule porte n’a pas réussi, même
   for (const nom of autres) assert.match(script, new RegExp(`needs\\.${nom}\\.result \\}\\}" = success`), nom);
 });
 
+// `continue-on-error` donnerait `success` à une porte en échec : l'agrégat la croirait réussie.
+test('aucune porte ni étape ne tolère son propre échec', () => {
+  for (const [nom, job] of jobs) {
+    assert.equal(job['continue-on-error'], undefined, nom);
+    for (const etape of job.steps ?? []) assert.equal(etape['continue-on-error'], undefined, `${nom} : ${etape.name}`);
+  }
+});
+
 test('chaque job tourne sur un runner GitHub, jamais sur une machine auto-hébergée', () => {
   for (const [nom, job] of jobs) assert.equal(job['runs-on'], 'ubuntu-latest', nom);
 });

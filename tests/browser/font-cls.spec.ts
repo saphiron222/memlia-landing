@@ -1,9 +1,17 @@
 import { test, expect } from '@playwright/test';
 
-// Les replis à métriques ajustées reposent sur Georgia et Arial locaux (docs/qa/font-cls.md). Sur un OS qui ne les a
-// pas (Linux du banc CI, Android), ils ne se chargent pas : ce test n'y prouverait rien. Il est sauté en le disant,
-// et reprend seul dès qu'un repli ajusté existe sur l'OS du banc.
-async function replisAjustesDisponibles(page: import('@playwright/test').Page) {
+// Les replis à métriques ajustées reposent sur Georgia et Arial locaux (docs/qa/font-cls.md). On sonde l'OS du banc
+// avec des faces indépendantes du site : là où ces polices existent, le repli du site doit se charger et tenir la page
+// en place ; là où elles manquent (Linux du banc CI, Android), seules les mesures de saut dépendent de l'OS et sont
+// annoncées comme non vérifiées. Ticket : .scratch/polices-repli/issues/01-replis-linux-android.md.
+async function osAvecGeorgiaEtArial(page: import('@playwright/test').Page) {
+  return page.evaluate(async () => {
+    const locales = ['Georgia Bold', 'Georgia Italic', 'Georgia Bold Italic', 'Arial', 'Arial Bold'];
+    const sondes = locales.map((nom, i) => new FontFace(`sonde-os-${i}`, `local("${nom}")`).load().then(() => true, () => false));
+    return (await Promise.all(sondes)).every(Boolean);
+  });
+}
+async function replisDuSiteCharges(page: import('@playwright/test').Page) {
   return page.evaluate(async () => {
     const polices = ['600 16px "Fraunces Fallback"', '400 16px "Hanken Fallback"'];
     const chargees = await Promise.all(polices.map((police) => document.fonts.load(police).then((faces) => faces.length > 0, () => false)));
@@ -29,7 +37,9 @@ for (const route of routes) {
       const gate = new Promise<void>(resolve => { release = resolve; });
       await page.route('**/fonts/*.woff2', async request => { await gate; await request.continue(); });
       await page.goto(route, { waitUntil: 'domcontentloaded' });
-      test.skip(!(await replisAjustesDisponibles(page)), 'Georgia/Arial absents : replis à métriques ajustées indisponibles sur cet OS');
+      const osCompatible = await osAvecGeorgiaEtArial(page);
+      // Là où l'OS a Georgia et Arial, une face de repli supprimée ou mal écrite échoue ici au lieu d'être ignorée.
+      if (osCompatible) expect(await replisDuSiteCharges(page), 'replis à métriques ajustées du site chargés').toBe(true);
       await page.waitForTimeout(1500);
       const anchor = page.locator(route === '/glossaire' ? '.alphabet' : '.page-chapeau');
       const before = await anchor.boundingBox();
@@ -55,8 +65,12 @@ for (const route of routes) {
         if (shift.time - previous > 1000 || shift.time - start > 5000) { sum = 0; start = shift.time; }
         sum += shift.value; previous = shift.time; cls = Math.max(cls, sum);
       }
-      expect(cls).toBeLessThanOrEqual(0.1);
-      expect(Math.abs(after!.y - before!.y), 'index/chapeau stays in place during font swap').toBeLessThanOrEqual(2);
+      if (osCompatible) {
+        expect(cls).toBeLessThanOrEqual(0.1);
+        expect(Math.abs(after!.y - before!.y), 'index/chapeau stays in place during font swap').toBeLessThanOrEqual(2);
+      } else {
+        testInfo.annotations.push({ type: 'non vérifié', description: `Georgia/Arial absents de cet OS : CLS ${cls.toFixed(3)} et décalage ${Math.abs(after!.y - before!.y).toFixed(1)} px relevés sans seuil (ticket polices-repli 01)` });
+      }
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
       await expect(page.locator('h1')).toBeVisible();
       if (route === '/glossaire') {
