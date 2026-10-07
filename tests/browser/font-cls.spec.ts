@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 
 // Chaque famille de repli à métriques ajustées du site et les polices de l'OS qu'elle attend (une liste par variante
-// acceptée ; docs/qa/font-cls.md). On sonde l'OS du banc avec des faces indépendantes du site : là où il a les polices
-// d'un repli, ce repli doit se charger. Si l'OS a un repli serif et un repli sans, la page doit tenir en place ; sinon
-// seules les mesures de saut, qui dépendent de l'OS, sont relevées sans seuil et annoncées « non vérifié ».
+// acceptée ; docs/qa/font-cls.md). La sonde de l'OS, indépendante du site, sert au diagnostic et à exiger que chaque
+// repli dont l'OS a les polices se charge ; elle n'exempte jamais la géométrie : CLS et déplacement restent bloquants
+// sur tous les OS.
 const REPLIS = [
   { famille: 'Fraunces Fallback', genre: 'serif', variantes: [['Georgia Bold', 'Georgia Italic', 'Georgia Bold Italic']] },
   { famille: 'Fraunces Fallback Noto', genre: 'serif', variantes: [['Noto Serif Bold', 'Noto Serif Italic', 'Noto Serif Bold Italic']] },
@@ -44,9 +44,9 @@ for (const route of routes) {
       await page.route('**/fonts/*.woff2', async request => { await gate; await request.continue(); });
       await page.goto(route, { waitUntil: 'domcontentloaded' });
       const replis = await etatDesReplis(page);
+      testInfo.annotations.push({ type: 'polices OS', description: `replis disponibles : ${replis.filter((r) => r.os).map((r) => r.famille).join(', ') || 'aucun'} ; seuils géométriques toujours bloquants` });
       // Là où l'OS a les polices d'un repli, une face supprimée ou mal écrite échoue ici au lieu d'être ignorée.
       for (const repli of replis) if (repli.os) expect(repli.site, `${repli.famille} chargé`).toBe(true);
-      const osCompatible = ['serif', 'sans'].every((genre) => replis.some((repli) => repli.genre === genre && repli.os));
       await page.waitForTimeout(1500);
       const anchor = page.locator(route === '/glossaire' ? '.alphabet' : '.page-chapeau');
       const before = await anchor.boundingBox();
@@ -77,12 +77,8 @@ for (const route of routes) {
         if (shift.time - previous > 1000 || shift.time - start > 5000) { sum = 0; start = shift.time; }
         sum += shift.value; previous = shift.time; cls = Math.max(cls, sum);
       }
-      if (osCompatible) {
-        expect(cls).toBeLessThanOrEqual(0.1);
-        expect(Math.abs(after!.y - before!.y), 'index/chapeau stays in place during font swap').toBeLessThanOrEqual(2);
-      } else {
-        testInfo.annotations.push({ type: 'non vérifié', description: `aucun repli serif et sans ajusté sur cet OS : CLS ${cls.toFixed(3)} et décalage ${Math.abs(after!.y - before!.y).toFixed(1)} px relevés sans seuil (ticket polices-repli 01)` });
-      }
+      expect(cls).toBeLessThanOrEqual(0.1);
+      expect(Math.abs(after!.y - before!.y), 'index/chapeau stays in place during font swap').toBeLessThanOrEqual(2);
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
       await expect(page.locator('h1')).toBeVisible();
       if (route === '/glossaire') {

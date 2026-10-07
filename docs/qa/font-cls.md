@@ -28,10 +28,11 @@ Vérification par simulation sur macOS, sur les 3 routes en 320, 375, 412 et 144
 - Sans ces replis, le scénario Android déplace l'index de 32,6 à 36,7 px.
 
 Le test sonde l'OS du banc avec des faces indépendantes du site (une liste de polices par repli).
-- Là où l'OS a les polices d'un repli, ce repli doit se charger : une face cassée échoue.
-- Si l'OS a un repli serif et un repli sans, toutes les assertions jouent, CLS et décalage compris. C'est le cas du banc Linux de la CI (Liberation).
-- Sinon, seules ces deux mesures sont relevées sans seuil et annoncées « non vérifié ».
+- Là où l'OS a les polices d'un repli, chacune de ses faces doit se charger : une face cassée échoue.
+- La sonde ne sert qu'au diagnostic, annoté dans le rapport. Elle n'exempte jamais les douze cas des seuils CLS ≤ 0,1 et déplacement ≤ 2 px, sur aucun OS : un OS sans aucun repli ajusté fait échouer la CI. Le banc Linux de la CI les tient grâce à Liberation.
 - Ticket : `.scratch/polices-repli/issues/01-replis-linux-android.md`.
+
+La régression unitaire `node --test tests/scripts/font-cls-contract.test.mjs` exécute les vrais callbacks Playwright avec des valeurs injectées : CLS 0,8 ou déplacement 100 px doivent être rejetés avec et sans polices OS ; les limites 0,1 et 2 px restent acceptées. Elle est découverte par `npm run test:scripts` dans la porte de build. Ce banc ne mesure aucune page et ne remplace pas les treize cas Chromium sur Ubuntu dans Repository gates. Les mesures historiques ci-dessous restent celles de leur banc macOS, pas une preuve Linux.
 
 ## Régression navigateur
 
