@@ -17,14 +17,14 @@ ${fonts()}
 *{box-sizing:border-box}body{margin:0;color:#231f20;font-family:Hanken,sans-serif}
 main{width:1600px;height:900px;padding:54px 64px;background:#fffefb;border:1px solid #c8c4bb}
 header{border-bottom:1px solid #dedbd4;padding-bottom:24px}p,h2{margin:0;overflow-wrap:anywhere}
-.context{font-size:22px;color:#1c8a41;margin-bottom:12px}h2{font-family:Fraunces,serif;font-size:40px;line-height:1.4}
+h2{font-family:Fraunces,serif;font-size:40px;line-height:1.4}
 .head,.row{display:grid;grid-template-columns:1fr 1fr 1.2fr .42fr;gap:28px}
 .head{margin-top:28px;padding:0 22px 16px;font-size:16px;color:#625d5f}
 .row{padding:26px 22px;border-top:1px solid #dedbd4;font-size:23px;line-height:1.35;align-items:start}
 .row:last-child{border-bottom:1px solid #dedbd4}.row>*{min-width:0}.row p{font-weight:400}
 .state{font-size:18px;line-height:1.3;padding:8px 10px;border-radius:16px;text-align:center}
 .success{background:#eaf8ef;color:#1c8a41}.warning{background:#fff4d9;color:#71500a}.blocked{background:#f9e7e3;color:#7b3226}
-</style></head><body><main><header><p class="context">${escape(d.product)}</p><h2>${escape(d.task)}</h2></header>
+</style></head><body><main><header><h2>${escape(d.task)}</h2></header>
 <div class="head"><span>Entrée lue</span><span>Règle appliquée</span><span>Sortie / cause</span><span>Décision</span></div>
 ${d.replay.map(c => `<article class="row"><p>${escape(c.input)}</p><p>${escape(c.rule)}</p><p>${escape(c.detail)}</p><p class="state ${states[c.outcome]}">${escape(c.outcome)}</p></article>`).join('')}
 </main></body></html>`;
