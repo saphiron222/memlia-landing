@@ -25,6 +25,12 @@ export function historicalAccueil(html, generatedGuides) {
     let ancestor = item;
     while (ancestor && ancestor.tagName !== 'footer') ancestor = ancestor.parentNode;
     assert.ok(ancestor, `${guide.slug}: lien dans le footer`);
+    // Comparer la source entière : parse5 déduplique les attributs HTML.
+    // Le scope est celui du Footer du témoin historique, pas un joker Astro.
+    const label = link.childNodes[0].value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+    const fragment = html.slice(item.sourceCodeLocation.startOffset, item.sourceCodeLocation.endOffset);
+    const expected = scope => `<li${scope}><a class="pied-lien" href="/integrations/${guide.slug}"${scope}>${label}</a></li>`;
+    assert.ok([expected(''), expected(' data-astro-cid-jo6i4kqk')].includes(fragment), `${guide.slug}: fragment footer intégral`);
     removals.push(item.sourceCodeLocation);
   }
   for (const { startOffset, endOffset } of removals.sort((a, b) => b.startOffset - a.startOffset)) {
