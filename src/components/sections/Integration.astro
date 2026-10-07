@@ -1,18 +1,19 @@
 ---
 import ProofRow from '@/components/ProofRow.astro';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['integration']; }
+const { contenu = contenuDe('ec').integration } = Astro.props;
 ---
 <section id="integration" class="integration" aria-labelledby="integration-title">
-  <ProofRow id="08-integration" enlarge>
+  <ProofRow id={contenu.image} enlarge>
   <div class="integration-copy rv">
-    <h2 id="integration-title">Vos outils restent le point de départ.</h2>
-    <p class="texte-2">Aucune plateforme à adopter. L’automatisation se greffe sur ce que votre cabinet utilise déjà : logiciel métier, exports, messagerie, dossier partagé, classeur.</p>
-    <p class="texte-2">Nous vérifions les formats et les accès avant de nous engager, et nous vous disons ce qui se branche et ce qui ne se branche pas.</p>
+    <h2 id="integration-title">{contenu.titre}</h2>
+    <p class="texte-2">{contenu.texte}</p>
+    <p class="texte-2">{contenu.limites}</p>
   </div>
   </ProofRow>
     <ul class="integration-rules">
-      <li><strong>Conserver ce qui fonctionne.</strong> Ne pas remplacer un outil uniquement pour introduire l’automatisation.</li>
-      <li><strong>Relier le nécessaire.</strong> Définir les sources, droits et traitements avant de développer.</li>
-      <li><strong>Prévoir l’évolution.</strong> Analyser les changements de règle ou d’outil avant toute adaptation.</li>
+      {contenu.regles.map((r, i) => <Fragment>{i > 0 && ' '}<li><strong>{r.titre}</strong> {r.texte}</li></Fragment>)}
     </ul>
 
 </section>

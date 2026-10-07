@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: cac-confirmations-audit
 verifiedAt: 2026-10-06
-status: pret-preview
+status: publie
 candidateFingerprint: "da14625d86e566d5b9328a02336a1980129b10d145b89a1308a532d0fc793df2"
 cta:
   label: "Confier une première tâche"
