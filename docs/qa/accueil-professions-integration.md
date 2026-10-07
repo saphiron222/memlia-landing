@@ -11,3 +11,14 @@ Vérification réelle : deux builds Astro séparés (main avant extraction et ca
 - Build complet : code 1, panne indépendante dans `tests/scripts/blog-intent-preservation.test.mjs:17` (fixture matérialisée au jour réel après expiration du relevé). Une reprise ciblée confirme la panne.
 
 La réparation est déjà prise en charge par t_f0ec22d6 / PR152. Ne pas dupliquer son correctif ; récupérer main après sa livraison, régénérer les dérivés, rejouer le build puis obtenir CI verte avant fusion de PR113. Aucune fusion ou publication D1 revendiquée ici.
+
+## Reprise après PR152
+
+Main `819f64614f5dc58e700229362d0d3b5f162b4ec6` intégré sans conflit de sources ; seuls les six dérivés listés au runbook ont été repris depuis main puis régénérés. Les sources de couverture logiciels et les réparations de fixture/popup de main sont conservées.
+
+- `npm run regen:generated`, `npm run build` et `npm run check` : codes 0.
+- Tests accueil ciblés : 5 PASS, y compris HTML complet identique au témoin EC et compteurs dynamiques.
+- `git diff --check` : code 0.
+- Revue indépendante initiale conservée ; aucune modification de copy ni nouvelle route CAC.
+
+La fusion reste conditionnée à la CI verte du candidat poussé ; le constat de production est fourni dans le handoff de livraison.
