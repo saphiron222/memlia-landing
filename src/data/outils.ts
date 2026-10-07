@@ -46,6 +46,23 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'bareme-heures-cac', categorie: 'calculer', statut: 'disponible',
+    h1: 'Barème d’heures du commissaire aux comptes : calcul et limites',
+    title: 'Barème heures commissaire aux comptes | Memlia',
+    description: 'Calculez la base et la tranche du barème d’heures CAC, vérifiez les exclusions et exportez les hypothèses. Distinguez barème et budget de mission.',
+    promesse: { entree: 'Bilan, produits hors TVA, période et champ d’application déclaré', resultat: 'Base décomposée, référence expliquée, budget distinct et dossier reprenable' },
+    limites: [
+      'Référence d’heures, jamais un tarif ni une appréciation de la suffisance des diligences.',
+      'Une exclusion, une réponse inconnue, une dérogation ou une borne commune suspend la fourchette applicable.',
+      'Comptes consolidés, audit petite entreprise, durabilité et autres missions non évalués par cet outil.',
+      'Montants en euros au centime ; pas de conversion implicite de k€. Le CAC valide le programme, les hypothèses et les démarches.',
+    ],
+    mentionLocale: 'Saisies et calculs dans cet onglet, sans envoi ni stockage persistant. Téléchargez le JSON pour reprendre votre travail. Aucun enregistrement automatique.',
+    proof: 'v2/43-outil-bareme-cac', zoneLarge: true,
+    source: { nom: 'Légifrance — Code de commerce, D.821-188 à R.821-194', url: 'https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000048874384/2026-10-06', extrait: 'Base, grille et champ d’application distingués du programme de travail, du budget saisi et de toute rémunération.', verifieeLe: '6 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
     slug: 'seuil-signification-audit', categorie: 'calculer', statut: 'disponible',
     h1: 'Seuil de signification en audit : calcul et justification',
     title: 'Seuil de signification audit : calcul motivé | Memlia',
