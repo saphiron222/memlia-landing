@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync, mkdtempSync, cpSync, writeFileSync, rmSync } from 'node:fs';
+import { readFileSync, mkdtempSync, cpSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { validateDossier } from '../../scripts/lib/blog-pipeline.mjs';
@@ -15,32 +15,33 @@ const slug = 'prompt-chatgpt-expert-comptable';
 for (const path of ['editorial', 'src', 'docs', 'public', 'dist', 'scripts/lib/blog-ia-catchup.mjs']) {
   cpSync(join(sourceRoot, path), join(root, path), { recursive: true });
 }
-test.after(() => rmSync(root, { recursive: true, force: true }));
-
-// La fixture éprouve la conservation d'un article scellé, pas la fraîcheur des relevés du dépôt : celle-ci revient au
-// relevé de demande du lundi. Elle reçoit donc, au jour de sa matérialisation, la dernière mesure réelle des requêtes
-// de l'article, recopiée et signalée comme telle. Sans cela, ce test expirait huit jours après chaque relevé (07/10/2026).
-const historique = (jour) => chargerAutocompletionMesuree(root, { au: jour, ageMaxJours: Number.MAX_SAFE_INTEGER });
-const jourParis = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-const recette = JSON.parse(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
-const connues = historique(jourParis).autocompletion;
-const mesurees = [recette.primaryQuery, ...(recette.secondaryQueries ?? [])].filter((requete) => Object.hasOwn(connues, requete));
-assert.ok(mesurees.length > 0, `${slug} : aucune requête jamais mesurée, la fixture n'a pas de mesure réelle à recopier`);
-const releveDuJour = join(root, 'docs/strategy/site-v3/mesures', `titres-intent-${jourParis}.json`);
-const existant = existsSync(releveDuJour) ? JSON.parse(readFileSync(releveDuJour, 'utf8')) : {};
-writeFileSync(releveDuJour, `${JSON.stringify({
-  ...existant,
-  instrument: existant.instrument ?? 'fixture de test : dernière mesure réelle recopiée',
-  autocompletion: { ...existant.autocompletion, ...Object.fromEntries(mesurees.map((requete) => [requete, connues[requete]])) },
-}, null, 2)}\n`);
-
-const fixture = await materialiser({ root, slug, statut: 'publie' });
+// Date historique de cette fixture, cohérente avec ses preuves et son relevé.
+// Ne pas utiliser le jour d'exécution pour reconstruire une publication passée.
+const jourFixture = '2026-10-03';
+const fixture = await materialiser({ root, slug, statut: 'publie', jour: jourFixture });
 assert.deepEqual(fixture.erreurs, [], 'La fixture doit être réellement matérialisée.');
 ecrireSceau(root, slug);
-// Le relevé le plus récent, toutes sources confondues : neuf jours plus tard, plus aucun n'est frais.
-const dernierReleve = Object.values(historique(jourParis).mesureParRequete).map(({ date }) => date).sort().at(-1);
+test.after(() => rmSync(root, { recursive: true, force: true }));
+// Le dernier relevé, toutes sources confondues (forge et relevé de demande du lundi) : neuf jours plus tard,
+// plus aucun n'est frais, quel que soit le fichier qui l'a apporté.
+const toutesMesures = chargerAutocompletionMesuree(root, { au: '9999-12-31', ageMaxJours: Number.MAX_SAFE_INTEGER });
+const dernierReleve = Object.values(toutesMesures.mesureParRequete).map(({ date }) => date).sort().at(-1);
 const au = new Date(Date.parse(`${dernierReleve}T00:00:00Z`) + 9 * 86_400_000).toISOString().slice(0, 10);
 const renderedBlogHtml = `<li data-article="${slug}"><a href="/blog/${slug}">Article</a></li>`;
+
+test('la fixture historique se matérialise même après expiration des relevés', async (t) => {
+  const isolated = mkdtempSync(join(process.env.TMPDIR || tmpdir(), 'blog-intent-expired-'));
+  t.after(() => rmSync(isolated, { recursive: true, force: true }));
+  cpSync(root, isolated, { recursive: true });
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse(`${au}T12:00:00Z`) });
+  const fixtureExpiree = await materialiser({ root: isolated, slug, statut: 'publie', jour: jourFixture });
+  assert.deepEqual(fixtureExpiree.erreurs, [], 'La reconstruction historique reste indépendante du jour réel.');
+  ecrireSceau(isolated, slug);
+  const historique = await validateDossier({ root: isolated, slug, gateMode: 'publication-scellee', renderedBlogHtml, au });
+  assert.equal(historique.pass, true, historique.errors.join('\n'));
+  const candidat = await validateDossier({ root: isolated, slug, gateMode: 'protected-preview', renderedBlogHtml, au });
+  assert.ok(candidat.errors.some((erreur) => erreur.includes('aucun relevé d’autocomplétion frais')), candidat.errors.join('\n'));
+});
 
 // Le build:site exerce le contrat HTML ; blog:audit exerce également le dossier scellé.
 test('la vieillesse du relevé seule ne refuse pas un article public scellé', async () => {
