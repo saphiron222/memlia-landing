@@ -20,6 +20,23 @@ const LU_LE = '2026-10-06';
 
 /** @type {Readonly<Record<string, Couverture>>} */
 export const COUVERTURE_SERVICES = Object.freeze({
+  'facture-electronique': {
+    dejaFait: [
+      { outil: 'Pennylane', geste: 'invite les clients en masse, recueille les mandats, suit leur inscription et permet les relances', source: { url: 'https://www.pennylane.com/fr/expert-comptable/pdp', libelle: 'Pennylane, plateforme agréée pour les cabinets', consulteLe: LU_LE } },
+      { outil: 'ACD', geste: 'suit les mandats et inscriptions dans i-Suite Expert et permet les campagnes de mandats en lot', source: { url: 'https://www.acd-groupe.fr/facture-electronique/', libelle: 'ACD, facture électronique', consulteLe: LU_LE } },
+      { outil: 'Inqom', geste: 'suit les inscriptions à sa plateforme agréée depuis le portefeuille', source: { url: 'https://help.inqom.com/fr/suivre-les-inscriptions-%C3%A0-la-plateforme-agr%C3%A9%C3%A9e', libelle: 'Inqom, suivre les inscriptions à la plateforme agréée', consulteLe: LU_LE } },
+      { outil: 'fulll', geste: 'propose une plateforme agréée et son suivi de facturation électronique', source: { url: 'https://www.fulll.fr/facturation-electronique', libelle: 'fulll, facturation électronique', consulteLe: LU_LE } },
+      { outil: 'Cegid Loop et Quadra Plus', geste: 'intègrent la plateforme agréée de Shine ; le suivi précis du portefeuille se vérifie selon l’offre', source: { url: 'https://www.shine.fr/experts-comptables/produits/cegid-loop', libelle: 'Shine, plateforme intégrée à Cegid Loop', consulteLe: LU_LE } },
+      { outil: 'MyU', geste: 'intègre sa plateforme agréée ; le détail des fonctions de bascule se vérifie dans l’offre utilisée', source: { url: 'https://support.myunisoft.fr/facture-%C3%A9lectronique-et-pa-myunisoft', libelle: 'MyU, facture électronique et plateforme agréée', consulteLe: LU_LE } },
+      { outil: 'Tiime', geste: 'donne au cabinet accès aux flux de ses clients ; le suivi de bascule se vérifie dans l’offre utilisée', source: { url: 'https://www.tiime.fr/ec/', libelle: 'Tiime, offre cabinets', consulteLe: LU_LE } },
+    ],
+    reste: [
+      'les clients sur une autre plateforme agréée, seulement si le cabinet les suit encore hors de son outil ;',
+      'les appels à passer selon la règle du cabinet et les informations confirmées du dossier ;',
+      'les relances rédigées hors des campagnes déjà utilisées, à valider avant envoi ;',
+      'un accompagnement de transition jusqu’au 01/09/2027, à réévaluer si les éditeurs couvrent le besoin.',
+    ],
+  },
   'saisie-comptable': {
     dejaFait: [
       {

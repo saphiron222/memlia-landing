@@ -2,6 +2,10 @@
   "measuredAt": "2026-10-05T22:10:29.423Z",
   "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
   "autocompletion": {
+    "automatisation flux facture électronique cabinet comptable": [],
+    "suivi statuts facture électronique cabinet comptable": [],
+    "réception facture électronique cabinet comptable automatisation": [],
+    "facturation électronique cabinet comptable": ["facturation électronique cabinet comptable", "facturation electronique expert comptable", "facturation electronique ordre expert comptable", "plateforme facturation electronique expert comptable", "formation facture electronique expert comptable"],
     "factures fournisseurs des dossiers clients": [],
     "automatisation factures fournisseurs": [
       "automatisation factures fournisseurs"
@@ -50,6 +54,10 @@
     ]
   },
   "provenance": {
+    "automatisation flux facture électronique cabinet comptable": { "capturedAt": "2026-10-06", "source": "commercial/recettes/facture-electronique/preuves/demande.json", "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle" },
+    "suivi statuts facture électronique cabinet comptable": { "capturedAt": "2026-10-06", "source": "commercial/recettes/facture-electronique/preuves/demande.json", "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle" },
+    "réception facture électronique cabinet comptable automatisation": { "capturedAt": "2026-10-06", "source": "commercial/recettes/facture-electronique/preuves/demande.json", "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle" },
+    "facturation électronique cabinet comptable": { "capturedAt": "2026-10-06", "source": "commercial/recettes/facture-electronique/preuves/demande.json", "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle" },
     "factures fournisseurs des dossiers clients": {
       "capturedAt": "2026-10-05T22:10:29.777Z",
       "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=factures%20fournisseurs%20des%20dossiers%20clients",

@@ -83,6 +83,15 @@ const cicatriceCadrage: ExperiencePremiereMain = {
 };
 
 export const SERVICE_EEAT = {
+  'facture-electronique': {
+    auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
+    sources: [{
+      editeur: 'DGFiP', titre: 'Je passe à la facturation électronique',
+      url: 'https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique',
+      consulteLe: '2026-10-06',
+      preuve: 'Le calendrier lié fixe l’émission des PME au 1er septembre 2027. La préparation des appels reste un choix d’organisation du cabinet, pas un statut de conformité.',
+    }],
+  },
   paie: { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.dsnVal] },
   'saisie-comptable': { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.mentionsFacture] },
   'rapprochement-bancaire': { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.planComptable] },
