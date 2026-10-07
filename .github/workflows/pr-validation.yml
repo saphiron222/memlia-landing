@@ -20,7 +20,8 @@ jobs:
     # Two runs exhausted 30 minutes while Chromium was still progressing.
     # Include the Playwright webServer rebuild and runner variance;
     # keep a finite budget without dropping or parallelizing any gate.
-    timeout-minutes: 60
+    # A build may wait up to 45 minutes for another worktree on this machine.
+    timeout-minutes: 105
     steps:
       - name: Check out the exact candidate
         uses: actions/checkout@v4

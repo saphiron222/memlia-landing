@@ -5,7 +5,7 @@ assets publics dans `public/`, sortie déployable uniquement dans `dist/`.
 
 ## Installer et vérifier
 
-Node.js 22 ou supérieur. `npm ci`, puis `npx playwright install chromium`.
+Node.js 22 ou supérieur et Python 3 (bibliothèque standard uniquement). `npm ci`, puis `npx playwright install chromium`.
 
 - `npm run dev` : serveur de développement.
 - `npm run check` : typage Astro/TypeScript.
@@ -19,6 +19,32 @@ Node.js 22 ou supérieur. `npm ci`, puis `npx playwright install chromium`.
 - Ajouter `--desktop` pour la mesure desktop. Rapports dans `.lighthouse/` et `.qa/`.
 
 ## Prévisualisation Cloudflare Pages
+
+### Un seul build par machine
+
+`npm run build` prend un verrou système avant les audits et le conserve jusqu'à la fin
+des portes déterministes. Agents, worktrees et runner CI Mac utilisent tous le fichier
+`/Users/Shared/memlia-landing-build.lock`, indépendant du dépôt et de `TMPDIR`.
+Les suivants annoncent leur attente ; après 45 minutes ils échouent (code 75), sans lancer
+leur build. Le runner doit laisser ce temps d'attente dans son budget de job.
+
+Une sortie normale, une erreur ou SIGINT/SIGTERM/SIGHUP ferme le verrou. Les signaux sont
+transmis au groupe du build ; les processus qui refusent l'arrêt sont tués après cinq secondes.
+Le noyau reprend un verrou orphelin quand ses derniers descripteurs sont fermés : si le
+superviseur meurt brutalement mais son enfant tourne encore, ce dernier conserve le verrou.
+Le fichier persiste et contient les PID à titre diagnostic : ne jamais le supprimer, même
+s'il semble ancien, car un nouvel inode permettrait deux builds concurrents.
+
+Sur un runner hébergé hors Mac, `MEMLIA_BUILD_LOCK=0 npm run build` désactive le verrou
+(cette désactivation est refusée sur macOS). Ailleurs, le fichier par défaut est dans le
+répertoire temporaire système. La CI Mac ne définit pas cette variable.
+`npm run build:locked` est l'implémentation interne ; agents et CI doivent appeler `npm run build`,
+pas cette étape ni `astro build` directement. Les checkouts antérieurs à ce changement ne
+participent pas au verrou et doivent être actualisés avant de construire.
+
+Rejeu sans Astro : `node --test tests/scripts/build-lock.test.mjs` (aussi inclus dans
+`npm run test:scripts`). Les options `--lock-file` et `--wait-seconds` du lanceur servent aux
+tests isolés ; ne pas changer le chemin commun dans la CI ou les worktrees du Mac.
 
 Le projet live s’appelle **memlia**, pas `memlia-landing` (vérifié avec Wrangler).
 Après build : `npx wrangler pages deploy dist --project-name memlia --branch preview-astro-m3 --commit-dirty=true`.
