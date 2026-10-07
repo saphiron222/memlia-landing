@@ -81,6 +81,7 @@ Aucune autre valeur de marge de section. Le héros garde 40 → 64 px en haut ; 
 | **Étapes** `.etapes` | Une suite ordonnée, numérotée par son surtitre, une maquette par étape. | Des points sans ordre. |
 | **Document** | Un texte long à intertitres (page service) : colonne de lecture, intertitres de 32 px espacés de 64 px sans filet, tableaux du texte ; une note collante à gauche dès 1 024 px. | Une page de sections. |
 | **Questions** | Questions et réponses, accordéon natif. | — |
+| **Formulaire** | Les champs sur un plateau (bord, rayon de carte) ; le titre est celui de la section ; à côté dès 1 024 px, ce qu'il faut préparer, en lignes empilées. | Un texte à lire. |
 | **Mention** `.mention` | Une phrase de portée ou de limite, sous la forme qu'elle borne : 14 px, `--texte-2`, sans filet. | Un message principal. |
 
 Ce qui disparaît : la carte non cliquable, la phrase ouverte par un mot en gras pour faire une
@@ -166,3 +167,14 @@ Points ouverts pour la phase 2 :
   chacune change (lignes, bande bord à bord, liste) et rompt la répétition ; à revoir si la page
   paraît encore monotone.
 - Les preuves illisibles à 375 px (§ 7).
+
+## 10. Phase 2 : les autres pages
+
+| Page | Avant | Après |
+|---|---|---|
+| Hub | règle en bande ; qualification en cartes non cliquables ; outils en cartes ; quinconce | lignes (règle, qualification, pôles) ; outils en liste de liens ; rangées alignées |
+| Services | héros à coins ; logiciel en cartes non cliquables ; document à filets | héros partagé, cadre unique ; lignes ; document sans filets ; principes en bande |
+| Garanties | six tuiles centrées ; rangées en quinconce | liste de six liens ; rangées alignées ; bande de 4 |
+| Méthode | étapes en quinconce, titres de section à chaque étape | étapes deux par deux, surtitre « Étape n », h3, maquettes encadrées |
+| À propos | rangées en quinconce | rangées alignées ; en-têtes du système ; bande de 2 |
+| Contact | titre dans le plateau du formulaire ; pastilles grises ; astuce sous filet | en-tête de section, plateau, lignes à pictogramme, mention |

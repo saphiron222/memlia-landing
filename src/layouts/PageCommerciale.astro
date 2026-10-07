@@ -150,27 +150,12 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
   .page-v2 :global(.pv-copy) { display: grid; gap: var(--tete-ecart); max-width: 46rem; }
   .page-v2 :global(.pv-copy p) { margin: 0; }
   .page-v2 :global(.pv-copy h2) { font-size: var(--titre-section); }
-  .page-v2 :global(.pv-copy strong) { color: var(--texte-fort); font-weight: 600; }
+  .page-v2 :global(.pv strong) { color: var(--texte-fort); font-weight: 600; }
   /* La bande va bord à bord de la feuille, seule forme à le faire. */
   .page-v2 :global(.pv > .bande) { margin-inline: calc(-1 * var(--marge-page)); }
   /* Un lien dans un paragraphe se voit : c'est là que vivent les sources et les renvois (Kevin, 06/10/2026). */
   .page-v2 :global(.pv p a) { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
 
-
-  /* Étapes alternées : copie et illustration, comme la méthode de l'accueil. */
-  .page-v2 :global(.pv-etapes) { display: grid; gap: 56px; margin: 40px 0 0; padding: 0; list-style: none; }
-  .page-v2 :global(.pv-etape) { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: center; }
-  .page-v2 :global(.pv-etape-copy) { display: grid; gap: 16px; min-width: 0; }
-  .page-v2 :global(.pv-etape-copy p) { margin: 0; }
-  .page-v2 :global(.pv-etape-numero) { color: var(--accent-texte); font-weight: 600; }
-  .page-v2 :global(.pv-etape h2) { font-size: var(--t-3xl); }
-  @media (min-width: 64rem) {
-    .page-v2 :global(.pv-etapes) { gap: 80px; }
-    .page-v2 :global(.pv-etape) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
-    .page-v2 :global(.pv-etape-copy) { padding: 32px 48px 32px 0; }
-    .page-v2 :global(.pv-etape:nth-child(odd) .pv-etape-copy) { grid-column: 2; grid-row: 1; padding: 32px 0 32px 48px; }
-    .page-v2 :global(.pv-etape:nth-child(odd) .functional-proof) { grid-column: 1; grid-row: 1; }
-  }
 
   @media (min-width: 64rem) {
     .page-v2 :global(.pv) { padding-inline: var(--marge-page-lg); }

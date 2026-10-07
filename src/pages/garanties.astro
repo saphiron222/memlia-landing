@@ -12,7 +12,10 @@ const noeuds = [{
   '@type': 'WebPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
   inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, about: { '@id': SERVICE_ID },
 }];
-/** La grille de l'accueil, dont chaque cellule mène ici à la section qui la tient. */
+/**
+ * Les six garanties de l'accueil, chacune menant ici à la section qui la tient. Système de page :
+ * des destinations nommées par leur libellé, donc une liste de liens (pictogramme, libellé, flèche).
+ */
 const grille: { picto: NomPicto; libelle: string; href: string }[] = [
   { picto: 'main', libelle: 'L’IA prépare, l’humain décide', href: '#arret' },
   { picto: 'fictif', libelle: 'Aucune donnée client dans les essais', href: '#donnees' },
@@ -30,17 +33,19 @@ const appel = {
 
 <PageCommerciale page={page} noeuds={noeuds} eyebrow="Nos engagements" hero="v2/16-hero-garanties" appel={appel}>
   <section class="pv" aria-label="Les six garanties">
-    <ul class="garanties-grille rv" data-garanties>
-      {grille.map((g) => (
-        <li class="garantie">
-          <a class="garantie-lien" href={g.href}>
-            <span class="carte-icone garantie-picto" aria-hidden="true"><Picto nom={g.picto} taille={24} /></span>
-            <span class="garantie-libelle">{g.libelle}</span>
-            <span class="garantie-fleche" aria-hidden="true"><Picto nom="chevron" taille={14} /></span>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div class="liens-bloc">
+      <ul class="liens rv" data-garanties>
+        {grille.map((g) => (
+          <li>
+            <a class="lien-rangee" href={g.href}>
+              <Picto nom={g.picto} taille={20} />
+              <span class="lien-libelle">{g.libelle}</span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
 
   <section class="pv" id="arret" aria-labelledby="arret-titre">
@@ -55,7 +60,7 @@ const appel = {
     </ProofRow>
   </section>
 
-  <section class="pv pv-inverse" id="donnees" aria-labelledby="donnees-titre">
+  <section class="pv" id="donnees" aria-labelledby="donnees-titre">
     <ProofRow id="v2/08-fichiers-en-place">
       <div class="pv-copy rv">
         <h2 id="donnees-titre">Vos fichiers restent chez vous</h2>
@@ -81,7 +86,7 @@ const appel = {
     </ProofRow>
   </section>
 
-  <section class="pv pv-inverse" id="recette" aria-labelledby="recette-titre">
+  <section class="pv" id="recette" aria-labelledby="recette-titre">
     <ProofRow id="06-eprouver">
       <div class="pv-copy rv">
         <h2 id="recette-titre">La recette éprouve les refus autant que les résultats</h2>
@@ -104,10 +109,10 @@ const appel = {
   </section>
 
   <section class="pv" id="refus" aria-labelledby="refus-titre">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="refus-titre">Ce que nous ne promettons pas</h2>
-      <p class="texte-2 lecture">Quatre choses que vous n’entendrez pas de notre part, parce que rien ne les soutiendrait. Ce que nous écrivons à la place, sur une tâche réelle : <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>.</p>
-      <p class="texte-2 lecture">Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</p>
+      <p>Quatre choses que vous n’entendrez pas de notre part, parce que rien ne les soutiendrait. Ce que nous écrivons à la place, sur une tâche réelle : <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>.</p>
+      <p>Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</p>
     </div>
     <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>

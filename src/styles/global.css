@@ -609,7 +609,7 @@ ol {
   gap: var(--carte-ecart);
   min-width: 0;
 }
-:where(.carte, .cellule, .garantie) .carte-icone {
+:where(.carte, .cellule) .carte-icone {
   display: grid;
   place-items: center;
   flex: none;
@@ -620,7 +620,7 @@ ol {
   background: var(--surface-page);
   color: var(--accent-texte);
 }
-:where(.carte, .cellule, .garantie) .carte-icone svg {
+:where(.carte, .cellule) .carte-icone svg {
   width: 24px;
   height: 24px;
 }
@@ -1051,114 +1051,6 @@ h3.liens-titre {
   }
 }
 
-/* Les six garanties : une bande de liens à trois colonnes, sur /garanties (phase 2 : liste de
-   liens, comme sur l'accueil). */
-.garanties-grille {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  background: var(--carte-bord);
-  border-block: 1px solid var(--carte-bord);
-}
-.garantie {
-  position: relative;
-  min-height: 96px;
-  overflow: hidden;
-  background: var(--carte-fond);
-}
-.garantie-lien {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  height: 100%;
-  min-height: 96px;
-  padding: 12px 8px 16px;
-  text-align: center;
-  color: var(--texte-2);
-  transition:
-    color var(--duree-4) var(--courbe-standard),
-    box-shadow var(--duree-2) var(--courbe-standard);
-}
-.garantie-picto {
-  transition: border-color var(--duree-2) var(--courbe-standard);
-}
-.garantie-libelle {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  line-height: 1.3;
-  text-wrap: balance;
-}
-.garantie-fleche {
-  position: absolute;
-  right: 10px;
-  bottom: 8px;
-  opacity: 0;
-  transform: translateY(12px);
-  color: var(--accent-texte);
-  transition:
-    opacity var(--duree-3) var(--courbe-standard),
-    transform var(--duree-3) var(--courbe-standard);
-}
-.garantie-lien:focus-visible {
-  outline-offset: -3px;
-  border-radius: 0;
-}
-.garantie-lien:focus-visible {
-  color: var(--texte-fort);
-}
-.garantie-lien:focus-visible .garantie-fleche {
-  opacity: 1;
-  transform: none;
-}
-/* Un seul balayage à l'entrée dans le viewport, jamais en boucle (§4.9). */
-.garantie::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
-  transform: translateX(-100%);
-  pointer-events: none;
-}
-.js .garanties-grille.in .garantie::after {
-  animation: garantie-balayage 1.5s var(--courbe-standard) both;
-  animation-delay: calc(var(--i, 0) * 150ms);
-}
-.garantie:nth-child(2) { --i: 1; }
-.garantie:nth-child(3) { --i: 2; }
-.garantie:nth-child(4) { --i: 3; }
-.garantie:nth-child(5) { --i: 4; }
-.garantie:nth-child(6) { --i: 5; }
-@keyframes garantie-balayage {
-  to {
-    transform: translateX(100%);
-  }
-}
-@media (hover: hover) {
-  .garantie-lien:hover {
-    color: var(--texte-fort);
-    box-shadow: inset 0 0 0 1px var(--carte-bord-survol);
-  }
-  .garantie-lien:hover .garantie-picto {
-    border-color: var(--carte-bord-survol);
-  }
-  .garantie-lien:hover .garantie-fleche {
-    opacity: 1;
-    transform: none;
-  }
-}
-@media (min-width: 40rem) {
-  .garantie,
-  .garantie-lien {
-    min-height: 128px;
-  }
-}
-
 /* ---------- Motion (§5) ---------- */
 /* Apparitions au défilement : visibles sans JS ; la classe `js` est posée à l'hydratation. */
 .js .rv {
@@ -1198,9 +1090,6 @@ h3.liens-titre {
     opacity: 1;
     transform: none;
   }
-  .garantie::after {
-    animation: none !important;
-  }
 }
 
 @media (forced-colors: active) {
@@ -1210,13 +1099,11 @@ h3.liens-titre {
     border: 1px solid CanvasText;
   }
   /* Les filets des bandes sont un fond : en couleurs forcées, ils restent visibles. */
-  .bande > .cartes,
-  .garanties-grille {
+  .bande > .cartes {
     forced-color-adjust: none;
     background: CanvasText;
   }
-  .bande > .cartes > *,
-  .garanties-grille > * {
+  .bande > .cartes > * {
     forced-color-adjust: auto;
   }
 }
