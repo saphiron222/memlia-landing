@@ -7,6 +7,7 @@ import { parse as parseHtml } from 'parse5';
 import sharp from 'sharp';
 import { Agent, fetch as fetchUndici } from 'undici';
 import { parse as parseYaml } from 'yaml';
+import { readDilaCopy } from './dila-source-copy.mjs';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
 import { retirerPreuvesInline } from './blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
@@ -742,6 +743,24 @@ export async function verifySource({ root = process.cwd(), slug, sourceId, excer
   const source = (manifest.sources ?? []).find((item) => item.id === sourceId);
   if (!source) throw new Error(`Source inconnue pour ${slug} : ${sourceId}.`);
   if (!hasText(excerpt, 12)) throw new Error('Un extrait exact d’au moins 12 caractères est requis pour relier la source.');
+  if (source.dilaCopyPath !== undefined) {
+    const copy = readDilaCopy({ root: dossier, path: source.dilaCopyPath, url: source.url, excerpt });
+    const evidencePath = isSafeRelativePath(dossier, source.verificationEvidence);
+    if (!evidencePath) throw new Error('verificationEvidence doit rester dans le dossier éditorial.');
+    const contentPath = join(dirname(evidencePath), `${source.id}.source.txt`);
+    mkdirSync(dirname(evidencePath), { recursive: true });
+    writeFileSync(contentPath, copy.text);
+    writeJsonAtomic(evidencePath, {
+      version: 1, candidateSlug: slug, sourceId: source.id,
+      ...Object.fromEntries(['level', 'provenance', 'official', 'upstreamUrl', 'classificationReason', 'method'].map((key) => [key, source[key]])),
+      requestedUrl: source.url, finalUrl: copy.url, httpStatus: null, accessMode: 'dila-copy',
+      checkedAt: copy.checkedAt, retrievedAt: copy.retrievedAt, contentType: 'text/plain',
+      contentPath: relative(dossier, contentPath), contentSha256: copy.textSha256, excerpt,
+      dilaCopyPath: source.dilaCopyPath, dilaCopySha256: copy.copySha256,
+      legalVersion: { id: copy.id, version: copy.version, date: copy.versionDate, warning: copy.warning },
+    });
+    return { sourceId, evidence: relative(absoluteRoot, evidencePath), content: relative(absoluteRoot, contentPath) };
+  }
   const approvedAddresses = new Map();
   const remember = ({ url, addresses }) => {
     approvedAddresses.set(url.hostname.replace(/^\[|\]$/g, ''), addresses);
@@ -843,7 +862,7 @@ function validateSubjectEvidence(errors, evidence, expected, label, expectedKind
   }
 }
 
-function validateSources(manifest, dossier, expected) {
+function validateSources(manifest, dossier, expected, preserveSealed = false) {
   const errors = [];
   const verified = new Map();
   for (const [index, source] of (manifest?.sources ?? []).entries()) {
@@ -892,9 +911,17 @@ function validateSources(manifest, dossier, expected) {
       if (source.url !== proof.finalUrl) errors.push(`${label} : une source primaire technique doit être ouverte directement, sans redirection depuis un domaine tiers.`);
     }
     if (source.provenance === 'secondary' && proof.upstreamUrl === proof.finalUrl) errors.push(`${label}.upstreamUrl doit nommer une source primaire distincte pour une source secondary.`);
-    if (proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
+    if (source.dilaCopyPath !== undefined || proof.accessMode === 'dila-copy') {
+      try {
+        if (proof.accessMode !== 'dila-copy' || proof.httpStatus !== null || proof.dilaCopyPath !== source.dilaCopyPath || !/^[a-f0-9]{64}$/.test(proof.dilaCopySha256 ?? '')) throw new Error('Mode DILA et copie divergents, sans réponse HTTP.');
+        const copy = readDilaCopy({ root: dossier, path: source.dilaCopyPath, url: source.url, excerpt: proof.excerpt, expectedSha256: proof.dilaCopySha256,
+          ...(preserveSealed ? { asOf: proof.retrievedAt } : {}) });
+        if (proof.retrievedAt !== copy.retrievedAt || proof.checkedAt !== copy.checkedAt || proof.contentSha256 !== copy.textSha256
+          || !sameValue(proof.legalVersion, { id: copy.id, version: copy.version, date: copy.versionDate, warning: copy.warning })) throw new Error('Copie DILA : collecte, texte ou version divergents.');
+      } catch (error) { errors.push(`${label} : ${error.message}`); }
+    } else if (!Number.isInteger(proof.httpStatus) || proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
     if (proof.checkedAt !== source.checkedAt) errors.push(`${label}.checkedAt doit être identique à la date de la source.`);
-    if (jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
+    if (proof.accessMode !== 'dila-copy' && jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
       errors.push(`${label}.retrievedAt doit dater l'ouverture réelle, non future, au jour civil Europe/Paris de checkedAt.`);
     }
     const snapshotPath = isSafeRelativePath(dossier, proof.contentPath);
@@ -1887,7 +1914,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   }
   if (skills) errors.push(...validateSkillsManifest(skills));
   if (skills && manifest && claims) errors.push(...validateRequiredSkills(skills, sensitiveMatter));
-  const sources = manifest ? validateSources(manifest, dossier, evidenceSubject) : { errors: [], verified: new Map() };
+  const sources = manifest ? validateSources(manifest, dossier, evidenceSubject, gateMode === 'publication-scellee' && sealErrors.length === 0) : { errors: [], verified: new Map() };
   errors.push(...sources.errors);
   if (claims) errors.push(...validateClaims(claims, markdown, manifest, sources.verified, evidenceSubject, sensitiveMatter));
   if (review && manifest) errors.push(...validateReview(review, dossier, manifest, evidenceSubject));
