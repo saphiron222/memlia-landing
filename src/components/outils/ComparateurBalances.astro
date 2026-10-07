@@ -1,0 +1,48 @@
+---
+const periods = [{key:'previous',title:'N−1'},{key:'current',title:'N'}];
+---
+<div data-balances>
+  <h2>Deux exports, des variations à expliquer</h2>
+  <p>Alignez les comptes texte, choisissez vos seuils et retrouvez toutes les lignes sources. Les comptes absents valent zéro uniquement pour ce calcul. Une liste à examiner n’est pas un jugement de risque.</p>
+  <form data-async-tool novalidate>
+    <p id="balance-help">Deux CSV avec en-têtes, 10 Mo (10 000 000 octets) et 20 000 lignes au total. Montants sans séparateur de milliers, au plus deux décimales. Choisissez l’encodage et le séparateur avant lecture. Ni FEC ni conversion de devise.</p>
+    <div class="periods">{periods.map(({key,title})=><fieldset><legend>Balance {title}</legend>
+      <label for={`file-${key}`}>Fichier CSV {title}</label><input id={`file-${key}`} type="file" accept=".csv,.txt" aria-describedby="balance-help balance-error" />
+      <label for={`encoding-${key}`}>Encodage {title}</label><select id={`encoding-${key}`}><option value="utf-8">UTF-8 strict</option><option value="windows-1252">Windows-1252</option></select>
+      <button type="button" data-read={key} class="btn btn-contour">Lire {title}</button>
+      <p data-filename={key}>Aucun fichier lu.</p>
+      <label for={`csv-${key}`}>Contenu CSV {title} (éditable)</label><textarea id={`csv-${key}`} rows="5" aria-describedby="balance-help balance-error"></textarea>
+      <label for={`delimiter-${key}`}>Séparateur {title}</label><select id={`delimiter-${key}`}><option value=";">Point-virgule</option><option value=",">Virgule</option><option value="\t">Tabulation</option><option value="|">Barre verticale</option></select>
+      <label for={`mode-${key}`}>Convention des montants {title}</label><select id={`mode-${key}`}><option value="balance">Solde signé : positif débiteur, négatif créditeur</option><option value="debit-credit">Deux colonnes : solde = débit − crédit</option></select>
+      <p>Mapping explicite : les numéros désignent les colonnes de gauche à droite, à partir de 1. Relisez l’en-tête dans le contenu CSV ; aucune colonne n’est devinée.</p>
+      <div class="mapping">{[{field:'account',label:'Compte',value:1},{field:'label',label:'Libellé',value:2},{field:'balance',label:'Solde signé',value:3},{field:'debit',label:'Débit',value:3},{field:'credit',label:'Crédit',value:4}].map(({field,label,value})=><div data-map-field={field}><label for={`map-${key}-${field}`}>{label} {title}</label><select id={`map-${key}-${field}`}>{Array.from({length:128},(_,i)=><option value={i} selected={i===value-1}>Colonne {i+1}</option>)}</select></div>)}</div>
+      <label class="check"><input id={`aggregate-${key}`} type="checkbox" /> J’autorise l’agrégation des doublons de compte {title}, avec provenance et alerte de libellés divergents.</label>
+      <div class="mapping"><div><label for={`${key}-start`}>Début {title}</label><input id={`${key}-start`} type="date" aria-describedby="balance-error" /></div><div><label for={`${key}-end`}>Fin {title}</label><input id={`${key}-end`} type="date" aria-describedby="balance-error" /></div></div>
+    </fieldset>)}</div>
+    <fieldset><legend>Vos critères de comparaison</legend>
+      <label for="currency">Devise déclarée (code ou libellé)</label><input id="currency" type="text" maxlength="40" aria-describedby="balance-error" />
+      <label class="check"><input id="same-currency" type="checkbox" /> Je confirme que les deux balances sont dans cette même devise, sans conversion.</label>
+      <label class="check"><input id="comparable" type="checkbox" /> J’ai vérifié le périmètre et les périodes ; je confirme leur comparabilité pour cette lecture. Une différence de durée reste signalée.</label>
+      <div class="mapping"><div><label for="absolute-threshold">Seuil absolu, dans votre devise</label><input id="absolute-threshold" type="text" inputmode="decimal" aria-describedby="threshold-help balance-error" /></div><div><label for="relative-threshold">Seuil relatif (%)</label><input id="relative-threshold" type="text" inputmode="decimal" aria-describedby="threshold-help balance-error" /></div></div>
+      <p id="threshold-help">Renseignez au moins un seuil non négatif. À examiner si |delta| ≥ seuil absolu OU |variation| ≥ seuil relatif. Aucun seuil professionnel proposé. Référence zéro : pourcentage non calculable, seul le seuil absolu peut sélectionner ce compte.</p>
+    </fieldset>
+    <div class="actions"><button type="submit" class="btn btn-principal">Comparer les balances</button><button type="button" data-example class="btn btn-contour">Charger les deux CSV fictifs</button><button type="button" data-cancel hidden class="btn btn-contour">Annuler le traitement</button><button type="button" data-reset class="btn btn-contour">Tout effacer</button></div>
+    <p id="balance-error" data-error role="alert" hidden tabindex="-1"></p>
+  </form>
+  <p data-status role="status" aria-live="polite">Aucune comparaison. Les saisies restent seulement dans cet onglet.</p>
+  <section data-result hidden aria-labelledby="balance-result" tabindex="-1">
+    <h3 id="balance-result">Comparaison préparée, à relire</h3>
+    <p data-summary></p><p data-totals></p><p data-conventions></p><ul data-warnings></ul>
+    <label class="check"><input type="checkbox" data-filter /> Afficher seulement les comptes à examiner selon mes seuils</label>
+    <p>50 comptes par page ; totaux, copie et export portent sur tous les comptes, même avec le filtre actif. Faites défiler le tableau horizontalement ; au clavier, donnez-lui le focus puis utilisez les flèches.</p>
+    <div class="table-scroll" data-table-region tabindex="0" role="region" aria-label="Comptes comparés et provenance"><table data-table><caption>Soldes dans la devise déclarée ; lignes des CSV d’origine</caption><thead><tr>{['Compte','Libellé','N−1','N','Delta','Variation','Statut','À examiner','Lignes N−1','Lignes N'].map(text=><th scope="col">{text}</th>)}</tr></thead><tbody></tbody></table></div>
+    <div class="actions"><button type="button" data-prev class="btn btn-contour">Page précédente</button><p data-page role="status"></p><button type="button" data-next class="btn btn-contour">Page suivante</button></div>
+    <p>Rapport CSV UTF-8 versionné : montants exacts en centimes, formules de calcul, périodes, seuils, devise, confirmations, sources et libellés d’origine. Copie et export neutralisent les textes à risque de formule avec une apostrophe ; HTML conservé comme texte. Vos originaux restent inchangés. Ce rapport n’est pas une balance à réimporter en comptabilité.</p>
+    <div class="actions"><button type="button" data-export class="btn btn-principal">Exporter le rapport CSV complet</button><button type="button" data-copy class="btn btn-contour">Copier le rapport complet</button></div>
+  </section>
+  <noscript>JavaScript est nécessaire pour calculer localement. Aucun formulaire ne transmet de fichier.</noscript>
+</div>
+<script>import { initComparateurBalances } from '../../lib/outils/comparateur-balances-ui'; initComparateurBalances();</script>
+<style>
+  [data-balances],form,section,fieldset{display:grid;gap:16px;min-width:0}h2{font-size:var(--t-3xl)}h3{font-size:var(--t-2xl)}p,li{color:var(--texte-2);overflow-wrap:anywhere}fieldset{padding:24px;border:1px solid var(--ligne);border-radius:var(--r-cadre)}legend{font-weight:600;padding:0 8px}label{display:block;font-weight:600;overflow-wrap:anywhere}input:not([type=checkbox]),select,textarea{width:100%;min-width:0;max-width:100%;min-height:44px;padding:12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);background:var(--surface-feuille);color:var(--texte);font:inherit}textarea{resize:vertical;font-size:var(--t-sm)}.periods,.mapping{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}.mapping{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}.actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}button{min-height:44px;white-space:normal}button:disabled{opacity:.55;cursor:not-allowed}.check{display:flex;align-items:flex-start;gap:12px;font-weight:400}.check input{width:24px;height:24px;flex-shrink:0}.table-scroll{max-width:100%;overflow:auto;border:1px solid var(--ligne);border-radius:var(--r-cadre)}table{border-collapse:collapse;width:100%;font-size:var(--t-sm)}th,table :global(td){padding:12px;border-bottom:1px solid var(--ligne-douce);text-align:left;min-width:100px;max-width:240px;overflow-wrap:anywhere;white-space:pre-wrap}caption{padding:12px;text-align:left;font-weight:600}ul{padding-left:20px}[data-error]{border-left:3px solid var(--texte);padding:12px}[hidden]{display:none!important}@media(max-width:375px){fieldset{padding:12px}}
+</style>

@@ -46,6 +46,23 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'comparateur-balances-comptables', categorie: 'verifier', statut: 'disponible',
+    h1: 'Comparateur de balances comptables N et N−1',
+    title: 'Comparateur de balances comptables N et N−1 | Memlia',
+    description: 'Comparez deux balances CSV, retrouvez les comptes nouveaux et les variations avec conventions visibles et rapport exportable. Calcul local.',
+    promesse: { entree: 'Deux balances CSV, mapping, périodes, même devise et seuils choisis', resultat: 'Comptes alignés, variations exactes, nouveaux et disparus, rapport complet avec provenance' },
+    limites: [
+      'Solde = débit − crédit ou solde signé selon votre convention confirmée. Aucun jugement de risque ni de signification.',
+      'Delta = N − N−1 ; pourcentage = 100 × delta / |N−1|. Référence zéro : non calculable, jamais infini.',
+      'Agrégation seulement sur confirmation. Les différences de durée et de libellés restent visibles ; le cabinet confirme la comparabilité.',
+      'Deux CSV, 10 Mo et 20 000 lignes au total ; montants ambigus refusés. Pas de FEC, de conversion de devise ou de correction comptable.',
+    ],
+    mentionLocale: 'Lecture, saisies et calculs restent dans cet onglet sans envoi ni stockage persistant. Copiez ou exportez le rapport complet avant fermeture ; conservez les CSV sources pour recalculer.',
+    zoneLarge: true, proof: 'v2/45-outil-balances',
+    source: { titre: 'Convention de comparaison', nom: 'Méthode Memlia — écrire la règle de comparaison', url: '/methode', extrait: 'Aligner les numéros texte, calculer sur centimes exacts, documenter le mapping, les périodes et les confirmations. La liste à examiner suit vos seuils, sans conclure sur un risque.', verifieeLe: '7 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
     slug: 'bareme-heures-cac', categorie: 'calculer', statut: 'disponible',
     h1: 'Barème d’heures du commissaire aux comptes : calcul et limites',
     title: 'Barème heures commissaire aux comptes | Memlia',

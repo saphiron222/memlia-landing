@@ -1,0 +1,351 @@
+
+> memlia-landing@2.0.0 regen:generated
+> npx astro build && npm run lastmod:sync && npm run resource:seal-surfaces && node scripts/reaffirm-resource-review.mjs reaffirmer && node scripts/sync-lastmod.mjs --check && npm run resource:audit:qa
+
+07:58:54 [content] Syncing content
+07:58:54 [content] Synced content
+07:58:54 [types] Generated 350ms
+07:58:54 [build] output: "static"
+07:58:54 [build] mode: "static"
+07:58:54 [build] directory: /Users/kevinkitanga/.hermes/kanban/workspaces/t_df9b50a0/repo/dist/
+07:58:54 [build] Collecting build info...
+07:58:54 [build] ✓ Completed in 380ms.
+07:58:54 [build] Building static entrypoints...
+07:58:54 [vite] ✓ built in 313ms
+07:58:55 [vite] ✓ built in 195ms
+07:58:55 [build] Rearranging server assets...
+
+ generating static routes 
+07:58:55   ├─ /404.html (+11ms) 
+07:58:55   ├─ /a-propos.html (+4ms) 
+07:58:55   ├─ /automatisation/factures-fournisseurs.html (+10ms) 
+07:58:55   ├─ /automatisation/notes-de-frais.html (+4ms) 
+07:58:55   ├─ /automatisation/paie.html (+4ms) 
+07:58:55   ├─ /automatisation/rapprochement-bancaire.html (+3ms) 
+07:58:55   ├─ /automatisation/saisie-comptable.html (+4ms) 
+07:58:55   ├─ /automatisation-cabinet-comptable.html (+4ms) 
+07:58:55   ├─ /blog/rss.xml (+31ms) 
+07:58:55   ├─ /blog/rubrique/paie-dsn-cabinet-comptable.html (+5ms) 
+07:58:55   ├─ /blog/rubrique/gestion-pieces-comptables.html (+2ms) 
+07:58:55   ├─ /blog/automatiser-avec-ia-sans-changer-logiciel.html (+5ms) 
+07:58:55   ├─ /blog/ia-comptabilite-confidentialite-donnees.html (+5ms) 
+07:58:55   ├─ /blog/verifier-reponse-ia-comptabilite.html (+4ms) 
+07:58:55   ├─ /blog/utiliser-chatgpt-cabinet-comptable.html (+4ms) 
+07:58:55   ├─ /blog/tests-verts-et-regle-des-trois-passes.html (+2ms) 
+07:58:55   ├─ /blog/logiciel-ia-comptabilite.html (+4ms) 
+07:58:55   ├─ /blog/prompt-chatgpt-expert-comptable.html (+3ms) 
+07:58:55   ├─ /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps.html (+3ms) 
+07:58:55   ├─ /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain.html (+3ms) 
+07:58:55   ├─ /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html (+2ms) 
+07:58:55   ├─ /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html (+4ms) 
+07:58:55   ├─ /blog/automatiser-la-relance-des-pieces-clients.html (+3ms) 
+07:58:55   ├─ /blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html (+4ms) 
+07:58:55   ├─ /blog/comprendre-les-comptes-rendus-metier-dsn.html (+4ms) 
+07:58:55   ├─ /blog/controler-les-bulletins-de-paie-avant-la-dsn.html (+4ms) 
+07:58:55   ├─ /blog/suivre-la-production-sociale-dans-excel.html (+3ms) 
+07:58:55   ├─ /blog.html (+9ms) 
+07:58:55   ├─ /contact/erreur.html (+2ms) 
+07:58:55   ├─ /contact/merci.html (+1ms) 
+07:58:55   ├─ /contact.html (+2ms) 
+07:58:55   ├─ /garanties.html (+2ms) 
+07:58:55   ├─ /glossaire.html (+6ms) 
+07:58:55   ├─ /integrations/rapprochement-bancaire-sage.html (+2ms) 
+07:58:55   ├─ /integrations/lettrage-sage.html (+1ms) 
+07:58:55   ├─ /integrations/dsn-sage.html (+1ms) 
+07:58:55   ├─ /integrations/bulletin-de-paie-sage.html (+1ms) 
+07:58:55   ├─ /integrations/saisie-comptable-sage.html (+1ms) 
+07:58:55   ├─ /integrations/cloture-sage.html (+1ms) 
+07:58:55   ├─ /integrations/lettrage-cegid.html (+1ms) 
+07:58:55   ├─ /integrations/dsn-silae.html (+1ms) 
+07:58:55   ├─ /integrations/bulletin-de-paie-silae.html (+2ms) 
+07:58:55   ├─ /integrations.html (+2ms) 
+07:58:55   ├─ /mentions-legales.html (+2ms) 
+07:58:55   ├─ /methode.html (+3ms) 
+07:58:55   ├─ /outils-comptables-gratuits/bareme-heures-cac.html (+6ms) 
+07:58:55   ├─ /outils-comptables-gratuits/bibliotheque-prompts-comptables.html (+5ms) 
+07:58:55   ├─ /outils-comptables-gratuits/calculateur-amortissement-comptable.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/calculateur-date-echeance-facture.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/calculateur-marge-commerciale.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/calculateur-roi-automatisation.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/comparateur-balances-comptables.html (+4ms) 
+07:58:55   ├─ /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/generateur-charte-ia-cabinet.html (+3ms) 
+07:58:55   ├─ /outils-comptables-gratuits/generateur-prompt-expert-comptable.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/generateur-prompt-ia-gratuit.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/seuil-signification-audit.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/suivi-circularisation.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/temoin-calcul-local.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/verificateur-fec-local.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits/verificateur-prompt-ia.html (+2ms) 
+07:58:55   ├─ /outils-comptables-gratuits.html (+2ms) 
+07:58:55   ├─ /politique-de-confidentialite.html (+1ms) 
+07:58:55   ├─ /index.html (+5ms) 
+07:58:55 ✓ Completed in 288ms.
+
+07:58:55 [build] ✓ Completed in 836ms.
+07:58:55 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+07:58:55 [build] 65 page(s) built in 1.25s
+07:58:55 [build] Complete!
+
+> memlia-landing@2.0.0 lastmod:sync
+> node scripts/sync-lastmod.mjs
+
+41 page(s) au registre ; 1 datée(s) du 2026-10-07T05:58:55.650Z : /outils-comptables-gratuits/comparateur-balances-comptables.
+
+> memlia-landing@2.0.0 resource:seal-surfaces
+> node scripts/seal-resource-surfaces.mjs
+
+07:58:57 [content] Syncing content
+07:58:57 [content] Synced content
+07:58:57 [types] Generated 402ms
+07:58:57 [build] output: "static"
+07:58:57 [build] mode: "static"
+07:58:57 [build] directory: /Users/kevinkitanga/.hermes/kanban/workspaces/t_df9b50a0/repo/dist/
+07:58:57 [build] Collecting build info...
+07:58:57 [build] ✓ Completed in 438ms.
+07:58:57 [build] Building static entrypoints...
+07:58:57 [vite] ✓ built in 281ms
+07:58:57 [vite] ✓ built in 139ms
+07:58:57 [build] Rearranging server assets...
+
+ generating static routes 
+07:58:57   ├─ /404.html (+11ms) 
+07:58:57   ├─ /a-propos.html (+4ms) 
+07:58:57   ├─ /automatisation/factures-fournisseurs.html (+10ms) 
+07:58:57   ├─ /automatisation/notes-de-frais.html (+4ms) 
+07:58:57   ├─ /automatisation/paie.html (+4ms) 
+07:58:57   ├─ /automatisation/rapprochement-bancaire.html (+3ms) 
+07:58:57   ├─ /automatisation/saisie-comptable.html (+4ms) 
+07:58:57   ├─ /automatisation-cabinet-comptable.html (+4ms) 
+07:58:57   ├─ /blog/rss.xml (+18ms) 
+07:58:57   ├─ /blog/rubrique/paie-dsn-cabinet-comptable.html (+5ms) 
+07:58:57   ├─ /blog/rubrique/gestion-pieces-comptables.html (+2ms) 
+07:58:57   ├─ /blog/automatiser-avec-ia-sans-changer-logiciel.html (+5ms) 
+07:58:57   ├─ /blog/ia-comptabilite-confidentialite-donnees.html (+5ms) 
+07:58:57   ├─ /blog/verifier-reponse-ia-comptabilite.html (+3ms) 
+07:58:57   ├─ /blog/utiliser-chatgpt-cabinet-comptable.html (+4ms) 
+07:58:57   ├─ /blog/tests-verts-et-regle-des-trois-passes.html (+2ms) 
+07:58:57   ├─ /blog/logiciel-ia-comptabilite.html (+7ms) 
+07:58:57   ├─ /blog/prompt-chatgpt-expert-comptable.html (+3ms) 
+07:58:57   ├─ /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps.html (+3ms) 
+07:58:57   ├─ /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain.html (+3ms) 
+07:58:57   ├─ /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html (+3ms) 
+07:58:57   ├─ /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html (+5ms) 
+07:58:57   ├─ /blog/automatiser-la-relance-des-pieces-clients.html (+3ms) 
+07:58:57   ├─ /blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html (+5ms) 
+07:58:57   ├─ /blog/comprendre-les-comptes-rendus-metier-dsn.html (+4ms) 
+07:58:57   ├─ /blog/controler-les-bulletins-de-paie-avant-la-dsn.html (+4ms) 
+07:58:57   ├─ /blog/suivre-la-production-sociale-dans-excel.html (+3ms) 
+07:58:57   ├─ /blog.html (+8ms) 
+07:58:57   ├─ /contact/erreur.html (+1ms) 
+07:58:57   ├─ /contact/merci.html (+1ms) 
+07:58:57   ├─ /contact.html (+2ms) 
+07:58:57   ├─ /garanties.html (+2ms) 
+07:58:57   ├─ /glossaire.html (+4ms) 
+07:58:57   ├─ /integrations/rapprochement-bancaire-sage.html (+2ms) 
+07:58:57   ├─ /integrations/lettrage-sage.html (+1ms) 
+07:58:57   ├─ /integrations/dsn-sage.html (+1ms) 
+07:58:57   ├─ /integrations/bulletin-de-paie-sage.html (+1ms) 
+07:58:57   ├─ /integrations/saisie-comptable-sage.html (+1ms) 
+07:58:57   ├─ /integrations/cloture-sage.html (+1ms) 
+07:58:57   ├─ /integrations/lettrage-cegid.html (+1ms) 
+07:58:57   ├─ /integrations/dsn-silae.html (+1ms) 
+07:58:57   ├─ /integrations/bulletin-de-paie-silae.html (+1ms) 
+07:58:57   ├─ /integrations.html (+2ms) 
+07:58:57   ├─ /mentions-legales.html (+1ms) 
+07:58:57   ├─ /methode.html (+3ms) 
+07:58:57   ├─ /outils-comptables-gratuits/bareme-heures-cac.html (+6ms) 
+07:58:57   ├─ /outils-comptables-gratuits/bibliotheque-prompts-comptables.html (+4ms) 
+07:58:57   ├─ /outils-comptables-gratuits/calculateur-amortissement-comptable.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/calculateur-date-echeance-facture.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/calculateur-marge-commerciale.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/calculateur-roi-automatisation.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/comparateur-balances-comptables.html (+4ms) 
+07:58:57   ├─ /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/generateur-charte-ia-cabinet.html (+3ms) 
+07:58:57   ├─ /outils-comptables-gratuits/generateur-prompt-expert-comptable.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/generateur-prompt-ia-gratuit.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/seuil-signification-audit.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/suivi-circularisation.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/temoin-calcul-local.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/verificateur-fec-local.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits/verificateur-prompt-ia.html (+2ms) 
+07:58:57   ├─ /outils-comptables-gratuits.html (+2ms) 
+07:58:57   ├─ /politique-de-confidentialite.html (+1ms) 
+07:58:57   ├─ /index.html (+5ms) 
+07:58:57 ✓ Completed in 260ms.
+
+07:58:57 [build] ✓ Completed in 724ms.
+07:58:57 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+07:58:57 [build] 65 page(s) built in 1.21s
+07:58:57 [build] Complete!
+[strip-briefs] 0 asset(s) R7 exclu(s) de dist/media/r7/.
+[strip-briefs] 0 asset(s) R8 exclu(s) de dist/media/r8/.
+[strip-briefs] 20 brief(s) retiré(s) de dist/images/.
+[strip-briefs] 78 ancien(s) asset(s) exclu(s), 112 attendu(s), 0 manquant(s).
+[strip-briefs] 0 artefact(s) de poste de travail retiré(s) de dist.
+07:58:59 [content] Syncing content
+07:58:59 [content] Synced content
+07:58:59 [types] Generated 345ms
+07:58:59 [build] output: "static"
+07:58:59 [build] mode: "static"
+07:58:59 [build] directory: /Users/kevinkitanga/.hermes/kanban/workspaces/t_df9b50a0/repo/dist/
+07:58:59 [build] Collecting build info...
+07:58:59 [build] ✓ Completed in 376ms.
+07:58:59 [build] Building static entrypoints...
+07:58:59 [vite] ✓ built in 276ms
+07:58:59 [vite] ✓ built in 136ms
+07:58:59 [build] Rearranging server assets...
+
+ generating static routes 
+07:58:59   ├─ /404.html (+10ms) 
+07:58:59   ├─ /a-propos.html (+4ms) 
+07:58:59   ├─ /automatisation/factures-fournisseurs.html (+10ms) 
+07:58:59   ├─ /automatisation/notes-de-frais.html (+4ms) 
+07:58:59   ├─ /automatisation/paie.html (+4ms) 
+07:58:59   ├─ /automatisation/rapprochement-bancaire.html (+3ms) 
+07:58:59   ├─ /automatisation/saisie-comptable.html (+4ms) 
+07:58:59   ├─ /automatisation-cabinet-comptable.html (+4ms) 
+07:58:59   ├─ /blog/rss.xml (+21ms) 
+07:58:59   ├─ /blog/rubrique/paie-dsn-cabinet-comptable.html (+5ms) 
+07:58:59   ├─ /blog/rubrique/gestion-pieces-comptables.html (+2ms) 
+07:58:59   ├─ /blog/automatiser-avec-ia-sans-changer-logiciel.html (+5ms) 
+07:58:59   ├─ /blog/ia-comptabilite-confidentialite-donnees.html (+5ms) 
+07:58:59   ├─ /blog/verifier-reponse-ia-comptabilite.html (+3ms) 
+07:58:59   ├─ /blog/utiliser-chatgpt-cabinet-comptable.html (+3ms) 
+07:58:59   ├─ /blog/tests-verts-et-regle-des-trois-passes.html (+3ms) 
+07:58:59   ├─ /blog/logiciel-ia-comptabilite.html (+5ms) 
+07:58:59   ├─ /blog/prompt-chatgpt-expert-comptable.html (+3ms) 
+07:58:59   ├─ /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps.html (+3ms) 
+07:58:59   ├─ /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain.html (+3ms) 
+07:58:59   ├─ /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html (+2ms) 
+07:58:59   ├─ /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html (+4ms) 
+07:58:59   ├─ /blog/automatiser-la-relance-des-pieces-clients.html (+3ms) 
+07:58:59   ├─ /blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html (+4ms) 
+07:58:59   ├─ /blog/comprendre-les-comptes-rendus-metier-dsn.html (+5ms) 
+07:58:59   ├─ /blog/controler-les-bulletins-de-paie-avant-la-dsn.html (+5ms) 
+07:58:59   ├─ /blog/suivre-la-production-sociale-dans-excel.html (+3ms) 
+07:58:59   ├─ /blog.html (+9ms) 
+07:58:59   ├─ /contact/erreur.html (+1ms) 
+07:58:59   ├─ /contact/merci.html (+1ms) 
+07:58:59   ├─ /contact.html (+2ms) 
+07:58:59   ├─ /garanties.html (+2ms) 
+07:58:59   ├─ /glossaire.html (+4ms) 
+07:58:59   ├─ /integrations/rapprochement-bancaire-sage.html (+2ms) 
+07:58:59   ├─ /integrations/lettrage-sage.html (+1ms) 
+07:58:59   ├─ /integrations/dsn-sage.html (+1ms) 
+07:58:59   ├─ /integrations/bulletin-de-paie-sage.html (+1ms) 
+07:58:59   ├─ /integrations/saisie-comptable-sage.html (+1ms) 
+07:58:59   ├─ /integrations/cloture-sage.html (+1ms) 
+07:58:59   ├─ /integrations/lettrage-cegid.html (+1ms) 
+07:58:59   ├─ /integrations/dsn-silae.html (+1ms) 
+07:58:59   ├─ /integrations/bulletin-de-paie-silae.html (+1ms) 
+07:58:59   ├─ /integrations.html (+2ms) 
+07:58:59   ├─ /mentions-legales.html (+1ms) 
+07:58:59   ├─ /methode.html (+3ms) 
+07:58:59   ├─ /outils-comptables-gratuits/bareme-heures-cac.html (+6ms) 
+07:58:59   ├─ /outils-comptables-gratuits/bibliotheque-prompts-comptables.html (+4ms) 
+07:58:59   ├─ /outils-comptables-gratuits/calculateur-amortissement-comptable.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/calculateur-date-echeance-facture.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/calculateur-marge-commerciale.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/calculateur-roi-automatisation.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/comparateur-balances-comptables.html (+4ms) 
+07:58:59   ├─ /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/generateur-charte-ia-cabinet.html (+3ms) 
+07:58:59   ├─ /outils-comptables-gratuits/generateur-prompt-expert-comptable.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/generateur-prompt-ia-gratuit.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/seuil-signification-audit.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/suivi-circularisation.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/temoin-calcul-local.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/verificateur-fec-local.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits/verificateur-prompt-ia.html (+2ms) 
+07:58:59   ├─ /outils-comptables-gratuits.html (+1ms) 
+07:58:59   ├─ /politique-de-confidentialite.html (+1ms) 
+07:58:59   ├─ /index.html (+4ms) 
+07:58:59 ✓ Completed in 259ms.
+
+07:58:59 [build] ✓ Completed in 713ms.
+07:58:59 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+07:58:59 [build] 65 page(s) built in 1.13s
+07:58:59 [build] Complete!
+[strip-briefs] 0 asset(s) R7 exclu(s) de dist/media/r7/.
+[strip-briefs] 0 asset(s) R8 exclu(s) de dist/media/r8/.
+[strip-briefs] 20 brief(s) retiré(s) de dist/images/.
+[strip-briefs] 78 ancien(s) asset(s) exclu(s), 112 attendu(s), 0 manquant(s).
+[strip-briefs] 0 artefact(s) de poste de travail retiré(s) de dist.
+Manifeste T v3 rescellé depuis dist (la surface H, page Ressources, est retirée depuis le 16/09/2026) ; revue métier reportée : T=AI_REVIEW_PASS. Contenu non attesté.
+T : revue réaffirmée sur d969c63c9c9f9f9c28afac7b28ed9789ff6f0537cd1ddd25c336ddbf82f5b8d1 (707 feuille(s) déclarée(s) : assetBundleDigest.assetBundleDigest, buildOutputDigest.buildOutputDigest, candidate.fanOut, claimsEvidence.sourceContentSha256, claimsEvidence.sha256, claimsEvidence.text, claimsEvidence.checkedAt, claimsEvidence.claimIds, claimsEvidence.finalUrl, claimsEvidence.id, claimsEvidence.locator, claimsEvidence.sourceId, claimsEvidence.title, claimsEvidence.citations, claimsEvidence.exceptions, claimsEvidence.population, claimsEvidence.regime, claimsEvidence.sourceIds, claimsEvidence.validAsOf, claimsEvidence.citationIds, claimsEvidence.type, claimsEvidence.unitId, claimsEvidence.claims, claimsEvidence.renderedUnitInventory, claimsEvidence.contentSha256, claimsEvidence.sources, configBundleDigest.configBundleDigest, formatContract.anchorPolicy, formatContract.requiredOutputs, links.comparedCanonicalPaths, links.incoming, policyBaseline.decisions, skills.checkedAt, sourceBundleDigest.sourceBundleDigest).
+Rapport écrit dans docs/qa/hub-ressources/metier-review-r5/reaffirmation.json.
+check : 41 page(s), registre à jour.
+
+> memlia-landing@2.0.0 resource:audit:qa
+> node scripts/resource-pipeline.mjs audit --phase qa
+
+{
+  "generatedAt": "2026-10-07T05:59:00.672Z",
+  "pass": true,
+  "phase": "qa",
+  "result": "PASS",
+  "candidateValidated": true,
+  "scope": "manifestes et surfaces H/T du build rapprochés",
+  "counts": {
+    "discovered": 1,
+    "passed": 1,
+    "failed": 0,
+    "byAdapter": {
+      "H": 0,
+      "A": 0,
+      "T": 1,
+      "G": 0,
+      "M": 0,
+      "invalid": 0
+    },
+    "surfaces": {
+      "discovered": 1,
+      "linked": 1,
+      "unlinked": 0
+    }
+  },
+  "surfaces": [
+    {
+      "formatAdapter": "T",
+      "canonicalPath": "/glossaire",
+      "outputPath": "dist/glossaire.html",
+      "bytes": 316192,
+      "sha256": "ccd7d5de8a63fe5e09b66b5333315b6eeee5b48b5dd9c148c322599685e3d6a9",
+      "manifestPaths": [
+        "editorial/resources/glossaire/manifest.json"
+      ],
+      "relationErrors": []
+    }
+  ],
+  "unlinkedSurfaces": [],
+  "errors": [],
+  "manifests": [
+    {
+      "path": "editorial/resources/glossaire/manifest.json",
+      "pass": true,
+      "phase": "qa",
+      "formatAdapter": "T",
+      "counts": {
+        "blogSkills": 31,
+        "seoSkills": 24,
+        "coreSkills": 19,
+        "gates": 7,
+        "renderedUnits": 76,
+        "claims": 77,
+        "citations": 90,
+        "sources": 28,
+        "sensitiveVerdictsReportes": 25
+      },
+      "errors": []
+    }
+  ],
+  "report": ".qa/resources/staged-gates/qa-audit.json"
+}
