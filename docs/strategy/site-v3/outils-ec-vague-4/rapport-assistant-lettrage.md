@@ -30,4 +30,8 @@ Hotspots signalés : src/data/outils.ts, config/page-intent-contract.json, src/d
 
 ## Livraison
 
+Reprise du 07/10 : intégration non destructive de main et résolution des conflits de données dérivées par les commandes du dépôt ; sondes Google des deux branches conservées ensemble. Le conflit de fusion empêchait GitHub de déclencher le workflow du candidat précédent. PR160 est désormais fusionnable et Repository gates est créé (run 37569286064), mais encore en file sur le runner partagé. Aucun succès CI distant revendiqué.
+
+Vérifications rejouées après intégration : régénération PASS, 16 tests moteur/livraison PASS et Astro check PASS ; build complet PASS après relance en processus suivi (la première tentative a été interrompue par le plafond du terminal). Sur la prévisualisation existante de l’outil inchangé : 11 parcours Chromium PASS, sortie 0, et 8 contrôles HTTP PASS sans SKIP. Le premier rejeu navigateur avait terminé ses 11 assertions mais dépassé son délai de sortie ; seul le second rejeu terminé sert de preuve. La prévisualisation reste celle de l’outil avant intégration de main, pas une preuve de déploiement du nouveau commit de fusion. Pas de fusion vers main ni publication.
+
 PR code et rapports sur branche `site/assistant-lettrage-local`. Revue QA unique : enfant t_365b8154 ; publication et recette memlia.fr : enfant t_ed656739. Pas de fusion ou publication dans cette phase. Publication : vérifier CI, QA, surface réelle sans query avec no-cache et créer suivis J+7/J+28 depuis la date réelle ; mettre `publieLe` dans le registre seulement alors.
