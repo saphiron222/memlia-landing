@@ -18,11 +18,78 @@ SITE = 'https://memlia.fr'
 PAGES_FIXES = ['404', 'a-propos', 'automatisation-cabinet-comptable', 'blog', 'contact', 'garanties',
                'glossaire', 'index', 'integrations', 'mentions-legales', 'methode', 'outils-comptables-gratuits',
                'politique-de-confidentialite']
-INTEGRATION_PAGES = {
-    'rapprochement-bancaire-sage', 'lettrage-sage', 'dsn-sage', 'bulletin-de-paie-sage',
-    'saisie-comptable-sage', 'cloture-sage', 'lettrage-cegid', 'dsn-silae',
-    'bulletin-de-paie-silae',
-}
+def public_integrations():
+    """Inventaire source, indépendant du rendu et de l'audit de la forge.
+
+    Le corpus historique est déclaré dans son tableau TS ; chaque ajout généré
+    doit correspondre à une recette, ses preuves et une revue encore scellées.
+    L'audit de la forge conserve la validation métier et celle du renderer.
+    """
+    source = (ROOT / 'src/data/integrations.ts').read_text(encoding='utf-8')
+    historical = re.search(r'export const INTEGRATIONS_HISTORIQUES\s*:[^=]+?=\s*\[(.*?)\n\];', source, re.S)
+    assert historical is not None, 'Tableau historique absent ou illisible'
+    old = re.findall(r"\bslug:\s*'([a-z0-9]+(?:-[a-z0-9]+)*)'", historical.group(1))
+    assert old and len(old) == len(set(old)), 'Slugs historiques absents ou dupliqués'
+
+    def read(path):
+        try:
+            return json.loads((ROOT / path).read_text(encoding='utf-8'))
+        except (OSError, ValueError) as error:
+            raise AssertionError(f'Provenance guide illisible : {path}') from error
+
+    def digest(path):
+        target = (ROOT / path).resolve()
+        assert target.is_relative_to(ROOT.resolve()), f'Preuve hors dépôt : {path}'
+        try:
+            return hashlib.sha256(target.read_bytes()).hexdigest()
+        except OSError as error:
+            raise AssertionError(f'Preuve guide absente : {path}') from error
+
+    entries = read('src/data/guides.generated.json')
+    proofs = read('src/data/guide-proofs.generated.json')
+    assert isinstance(entries, list) and isinstance(proofs, dict), 'Collections guides invalides'
+    slugs = set(old)
+    generated = set()
+    for entry in entries:
+        slug = entry.get('slug')
+        assert isinstance(slug, str) and re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug), 'Slug généré invalide'
+        assert slug not in slugs, f'Guide dupliqué ou historique écrasé : {slug}'
+        recipe_path = f'guides/recettes/{slug}/recette.json'
+        state = f'guides/etats/{slug}'
+        recipe = read(recipe_path)
+        manifest = read(f'{state}/manifest.json')
+        seal_path = f'{state}/scellement.json'
+        seal = read(seal_path)
+        review_path = f'guides/recettes/{slug}/revue.json'
+        review = read(review_path)
+        assert recipe.get('version') == 1 and recipe.get('type') == 'guide' and recipe.get('mode') == 'nouveau', slug
+        assert recipe.get('integration') == entry, f'Collection différente de la recette : {slug}'
+        assert manifest.get('version') == 1 and manifest.get('mode') == 'nouveau' and manifest.get('slug') == slug, slug
+        assert manifest.get('status') in ('scelle', 'publie'), f'Guide sans sceau : {slug}'
+        assert seal.get('version') == 1 and isinstance(manifest.get('proof'), dict), slug
+        assert re.fullmatch(r'[a-f0-9]{64}', manifest.get('rendererSha256', '')), f'Renderer non identifié : {slug}'
+        assert manifest.get('candidateSha256') == digest(recipe_path), f'Recette modifiée : {slug}'
+        assert manifest.get('sealSha256') == digest(seal_path), f'Sceau modifié : {slug}'
+        for key in ('slug', 'candidateSha256', 'files', 'rendererSha256', 'proof'):
+            assert seal.get(key) == manifest.get(key), f'Sceau divergent ({key}) : {slug}'
+        assert seal.get('reviewSha256') == digest(review_path), f'Revue modifiée : {slug}'
+        assert review.get('status') == 'PASS' and review.get('kind') == recipe.get('reviewKind', 'qa'), slug
+        assert review.get('candidateSha256') == manifest['candidateSha256'], slug
+        assert review.get('reviewer') and review['reviewer'] not in (recipe.get('author'), entry.get('auteur')), slug
+        evidence = recipe.get('demand', {}).get('evidencePath', '')
+        assert re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9._-]*\.json', evidence), f'Provenance invalide : {slug}'
+        evidence_path = f'guides/recettes/{slug}/{evidence}'
+        assert recipe['demand'].get('sha256') == digest(evidence_path), f'Demande modifiée : {slug}'
+        files = manifest.get('files', {})
+        assert set(files) == {recipe_path, evidence_path, f'{state}/preuve.html', f'public/proofs/integrations/{slug}.webp'}, f'Inventaire de preuves divergent : {slug}'
+        for path, expected in files.items():
+            assert digest(path) == expected, f'Preuve modifiée : {path}'
+        assert proofs.get(f'integrations/{slug}') == manifest.get('proof'), f'Métadonnées divergentes : {slug}'
+        generated.add(f'integrations/{slug}')
+        slugs.add(slug)
+    assert set(proofs) == generated, 'Métadonnées de preuve orphelines'
+    return slugs
+
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
 def public_articles():
     """Une source non-brouillon est attendue dans dist ; aucun nouveau slug n'est implicitement autorisé."""
@@ -205,7 +272,7 @@ class BuildProof(unittest.TestCase):
         self.assertEqual([p.stem for p in pages], PAGES_FIXES)
         self.assertEqual({article.stem for article in articles()}, public_articles() | PREVIEW_ARTICLES)
         integrations = sorted((DIST / 'integrations').glob('*.html'))
-        self.assertEqual({page.stem for page in integrations}, INTEGRATION_PAGES)
+        self.assertEqual({page.stem for page in integrations}, public_integrations())
         for page in pages + articles() + integrations:
             doc = Document(page)
             self.assertEqual(len(doc.select('h1')), 1, page.name)
@@ -276,7 +343,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
-                         f'{SITE}/integrations/{slug}' for slug in INTEGRATION_PAGES
+                         f'{SITE}/integrations/{slug}' for slug in public_integrations()
                      } | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
