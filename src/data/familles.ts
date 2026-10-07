@@ -9,13 +9,21 @@
  * Source de vérité unique : lue par le schéma du blog, par le hub Ressources, par le plan de
  * cluster (docs/strategy/site-v3/build-cluster-plan.py) et par les tests.
  */
+export const PROFESSIONS = ['ec', 'cac'] as const;
+export type Profession = (typeof PROFESSIONS)[number];
+export const PROFESSION_PAR_DEFAUT: Profession = 'ec';
+export const estProfession = (valeur: unknown): valeur is Profession =>
+  typeof valeur === 'string' && (PROFESSIONS as readonly string[]).includes(valeur);
+
 export type PoleId =
   | 'production-comptable' | 'portefeuille-echeances' | 'paie-social' | 'juridique-fiscal'
   | 'facturation-recouvrement' | 'administratif-secretariat' | 'rh-formation' | 'numerique-it-data'
-  | 'excel-outils-existants' | 'methode-decision-humaine' | 'conseil-missions' | 'audit-cac';
+  | 'excel-outils-existants' | 'methode-decision-humaine' | 'conseil-missions' | 'audit-cac'
+  | 'certification' | 'interventions-legales' | 'sacc' | 'durabilite' | 'administration';
 
 export interface Famille {
   id: string;
+  profession: Profession;
   libelle: string;
   pole: PoleId;
   /** Ce que la famille recouvre, en une phrase : sert de chapeau dans le pilier et le hub. */
@@ -37,9 +45,14 @@ export const POLES: Record<PoleId, { libelle: string; couleur: string }> = {
   'methode-decision-humaine': { libelle: 'Méthode et décision humaine', couleur: '#27b657' },
   'conseil-missions': { libelle: 'Conseil et missions spéciales', couleur: '#0f766e' },
   'audit-cac': { libelle: 'Audit et commissariat aux comptes', couleur: '#78716c' },
+  'certification': { libelle: 'Certification des comptes', couleur: '#0e7490' },
+  'interventions-legales': { libelle: 'Interventions légales', couleur: '#6d28d9' },
+  'sacc': { libelle: 'Services autres que la certification', couleur: '#0f766e' },
+  'durabilite': { libelle: 'Durabilité (conditionnelle)', couleur: '#78716c' },
+  'administration': { libelle: 'Administration et direction CAC', couleur: '#b5651d' },
 };
 
-const f = (id: string, libelle: string, pole: PoleId, description: string, active = true): Famille => ({ id, libelle, pole, description, active });
+const f = (id: string, libelle: string, pole: PoleId, description: string, active = true, profession: Profession = PROFESSION_PAR_DEFAUT): Famille => ({ id, libelle, pole, description, active, profession });
 
 export const FAMILLES: readonly Famille[] = [
   // Production comptable : de la pièce reçue au bilan livré.
@@ -112,11 +125,38 @@ export const FAMILLES: readonly Famille[] = [
   f('tresorerie-previsionnelle', 'Trésorerie prévisionnelle', 'conseil-missions', 'Projeter la trésorerie d’un client depuis les échéances connues, signaler les tensions.'),
   f('financement-aides', 'Financement et aides', 'conseil-missions', 'Constituer les dossiers de financement et d’aides à partir du dossier permanent.'),
   f('evaluation-transmission', 'Évaluation et transmission', 'conseil-missions', 'Préparer les éléments chiffrés d’une évaluation ou d’une transmission.'),
-  // Audit et commissariat aux comptes : listé, pas ouvert.
-  f('audit-legal', 'Audit légal', 'audit-cac', 'Aucun besoin documenté, aucun module : famille listée, non ouverte.', false),
+  // Identifiant historique EC conservé ; les tâches sont détaillées dans les familles CAC.
+  f('audit-legal', 'Audit légal', 'audit-cac', 'Les tâches de commissariat aux comptes sont détaillées dans les familles CAC : préparation mécanique, appréciation et opinion humaines.', false),
+  // CAC : ouverture éditoriale interne C1 + C2, pas autorisation de publication.
+  f('cac-fec-reception', 'Réception du FEC', 'certification', 'Constater la réception et les défauts du fichier avant les travaux, sans conclure sur les comptes.', true, 'cac'),
+  f('cac-demandes-documents', 'Demandes de documents', 'certification', 'Préparer la liste par cycle, suivre les manquants et proposer les relances au chef de mission.', true, 'cac'),
+  f('cac-revue-analytique', 'Revue analytique', 'certification', 'Comparer les exercices et préparer les variations à expliquer, sans décider de leur portée.', true, 'cac'),
+  f('cac-rapport-certification', 'Synthèse et lettre d’affirmation', 'certification', 'Reporter les observations dans un projet et suivre la lettre, en laissant opinion et signature au CAC.', true, 'cac'),
+  f('cac-confirmations-audit', 'Confirmations de tiers', 'certification', 'Préparer les demandes, suivre les réponses et rapprocher les écarts, sélection et conclusion humaines.', true, 'cac'),
+  f('cac-revue-ecritures', 'Sélection des écritures', 'certification', 'Rejouer les critères écrits du cabinet et présenter chaque écriture avec la raison du signal.', true, 'cac'),
+  f('cac-dossier-de-travail', 'Dossier de travail', 'certification', 'Assembler les feuilles par cycle, indexer les justificatifs et préserver les contributions.', true, 'cac'),
+  f('cac-rapport-apports-fusion', 'Apports et fusion', 'interventions-legales', 'Préparer les données du traité et les renvois du rapport ; demande praticien non étayée en C2.', false, 'cac'),
+  f('cac-rapport-reduction-capital', 'Réduction de capital', 'interventions-legales', 'Préparer le projet et ses pièces ; demande propre non mesurée.', false, 'cac'),
+  f('cac-rapport-suppression-dps', 'Suppression du DPS', 'interventions-legales', 'Distinguer les versions et destinataires du rapport ; demande propre non mesurée.', false, 'cac'),
+  f('cac-rapport-transformation', 'Transformation', 'interventions-legales', 'Assembler les pièces et préparer le rapport ; demande propre non mesurée.', false, 'cac'),
+  f('cac-attestation-remunerations', 'Attestation des rémunérations', 'interventions-legales', 'Préparer la concordance avec les comptes ; demande propre non mesurée.', false, 'cac'),
+  f('cac-attestations-chiffres', 'Attestations de chiffres', 'sacc', 'Rapprocher les chiffres et leurs pièces dans le contexte du demandeur ; demande propre non mesurée.', false, 'cac'),
+  f('cac-procedures-convenues', 'Procédures convenues', 'sacc', 'Préparer les constats factuels selon les procédures convenues ; demande propre non mesurée.', false, 'cac'),
+  f('cac-audit-contractuel', 'Audit contractuel', 'sacc', 'Préparer les travaux dans un périmètre explicitement demandé ; demande propre non mesurée.', false, 'cac'),
+  f('cac-attestation-depenses-subventionnees', 'Dépenses subventionnées', 'sacc', 'Relier les dépenses aux justificatifs et au compte rendu ; demande propre non mesurée.', false, 'cac'),
+  f('cac-durabilite-indicateurs', 'Indicateurs de durabilité', 'durabilite', 'Conditionnelle : relier les indicateurs aux pièces ; marché CAC non validé.', false, 'cac'),
+  f('cac-processus-informations-publiees', 'Choix des informations publiées', 'durabilite', 'Conditionnelle : documenter les informations retenues ; marché CAC non validé.', false, 'cac'),
+  f('cac-informations-taxinomie', 'Informations de taxinomie', 'durabilite', 'Conditionnelle : préparer les concordances ; marché CAC non validé.', false, 'cac'),
+  f('cac-suivi-mandats', 'Mandats et préparation du déclaratif', 'administration', 'Tenir les repères du mandat et préparer les données déclaratives, sans dépôt automatique.', true, 'cac'),
+  f('cac-relance-honoraires', 'Relance des honoraires', 'administration', 'Préparer les relances ; terrain proxy EC et demande CAC non étayée.', false, 'cac'),
+  f('cac-acceptation-mandats', 'Acceptation et maintien', 'administration', 'Assembler les éléments pour la décision du signataire ; C2 réglementaire trop indirect pour ouvrir.', false, 'cac'),
+  f('cac-planification-missions', 'Planification des missions', 'administration', 'Préparer les affectations par mission ; demande propre non mesurée.', false, 'cac'),
+  f('cac-declarations-de-la-profession', 'Déclarations professionnelles', 'administration', 'Geste traité dans la famille mandats, pas de cluster autonome ni de dépôt promis.', false, 'cac'),
+  f('cac-heures-realisees', 'Heures et budgets', 'administration', 'Comparer les temps déjà saisis ; barème distinct du réalisé, demande propre non mesurée.', false, 'cac'),
 ];
 
 export const IDS_FAMILLES = FAMILLES.map((famille) => famille.id) as [string, ...string[]];
 export const IDS_POLES = Object.keys(POLES) as [PoleId, ...PoleId[]];
 export const familleParId = (id: string): Famille | undefined => FAMILLES.find((famille) => famille.id === id);
 export const famillesDuPole = (pole: PoleId): Famille[] => FAMILLES.filter((famille) => famille.pole === pole);
+export const famillesDeLaProfession = (profession: Profession = PROFESSION_PAR_DEFAUT): Famille[] => FAMILLES.filter((famille) => famille.profession === profession);
