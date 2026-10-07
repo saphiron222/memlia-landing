@@ -12,6 +12,8 @@ La recherche cachée du glossaire conserve sa grille avant activation JavaScript
 
 Hypothèse de plateforme : Georgia/Arial locaux disponibles (banc Chromium macOS, également polices usuelles Windows). Sinon les familles génériques restent disponibles ; les mesures de ce banc ne prouvent pas le CLS sur tous les OS.
 
+Depuis le 08/10/2026, la CI tourne sur Linux (ubuntu-latest), sans Georgia ni Arial : les replis ajustés ne s'y chargent pas, l'index descend à 320–412 px, et le test de régression le constate (8 cas sur 12). Le test vérifie donc d'abord que les replis se chargent et se saute en le disant sinon. Défaut réel pour les visiteurs Linux et Android, suivi à part : leur donner des replis à métriques ajustées (Liberation Sans/Arimo, compatibles Arial ; Roboto ; Noto Serif) ; le test reprendra alors seul sur le banc Linux.
+
 ## Régression navigateur
 
 `npx playwright test tests/browser/font-cls.spec.ts`
