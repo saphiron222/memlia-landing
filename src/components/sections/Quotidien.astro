@@ -1,20 +1,21 @@
 ---
 import ProofRow from '@/components/ProofRow.astro';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['quotidien']; }
+const { contenu = contenuDe('ec').quotidien } = Astro.props;
 /** Le problème quotidien, sans métrique client ni témoignage inventé. */
 ---
 <section class="daily" aria-labelledby="daily-title">
-  <ProofRow id="02-repetition" enlarge>
+  <ProofRow id={contenu.image} enlarge>
   <div class="daily-intro rv">
-    <h2 id="daily-title">Le savoir-faire est là. Il n’est écrit nulle part.</h2>
-    <p class="texte-2 lecture">Quelle pièce réclamer, quel écart vérifier avant le bulletin, quel retour DSN mérite un appel : vos collaborateurs connaissent la règle et la rejouent à la main, chaque mois, entre deux dossiers qui demandent du jugement. Le jour où l’un d’eux part, la règle part avec lui.</p>
+    <h2 id="daily-title">{contenu.titre}</h2>
+    <p class="texte-2 lecture">{contenu.texte}</p>
   </div>
   </ProofRow>
   <dl class="daily-list rv">
-    <div><dt>Répéter</dt><dd>Les mêmes contrôles et manipulations à chaque cycle, par les personnes les plus difficiles à recruter.</dd></div>
-    <div><dt>Reconstituer</dt><dd>L’information dispersée entre logiciels, fichiers et messages, réassemblée de mémoire.</dd></div>
-    <div><dt>Sécuriser</dt><dd>Les cas particuliers à repérer parmi les traitements courants, sans liste écrite.</dd></div>
+    {contenu.points.map((p, i) => <Fragment>{i > 0 && ' '}<div><dt>{p.titre}</dt><dd>{p.texte}</dd></div></Fragment>)}
   </dl>
-  <p class="daily-note texte-2">Écrire la règle, c’est notre métier. Une règle écrite appartient au cabinet. Nous en automatisons la part répétitive lorsque les formats, les accès et les cas couverts le permettent.</p>
+  <p class="daily-note texte-2">{contenu.note}</p>
 
 </section>
 <style>

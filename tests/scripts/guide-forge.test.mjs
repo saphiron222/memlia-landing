@@ -11,12 +11,14 @@ const sha = (s) => createHash('sha256').update(s).digest('hex');
 const json = (root, path, data) => { mkdirSync(dirname(join(root, path)), { recursive: true }); writeFileSync(join(root, path), JSON.stringify(data, null, 2) + '\n'); };
 const read = (root, path) => JSON.parse(readFileSync(join(root, path)));
 const historical = read(process.cwd(), 'guides/recettes/rapprochement-bancaire-sage/recette.json');
-function fixture(t, count = 6) {
+function fixture(t, count = 6, source = process.cwd()) {
   const root = mkdtempSync(join(tmpdir(), 'guide-forge-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
-  for (const path of ['src/data/integrations.ts', 'src/data/guides.generated.json', 'src/data/guide-proofs.generated.json']) {
-    mkdirSync(dirname(join(root, path)), { recursive: true }); copyFileSync(path, join(root, path));
-  }
+  mkdirSync(join(root, 'src/data'), { recursive: true });
+  copyFileSync(join(source, 'src/data/integrations.ts'), join(root, 'src/data/integrations.ts'));
+  // Le corpus public a ses propres recettes et sceaux : ne pas importer ses entrées seules.
+  json(root, 'src/data/guides.generated.json', []);
+  json(root, 'src/data/guide-proofs.generated.json', {});
   const recipe = structuredClone(historical);
   recipe.mode = 'nouveau'; recipe.author = 'auteur-test';
   recipe.integration.slug = 'controle-test-sage'; recipe.integration.primaryQuery = 'controle test sage';
@@ -237,20 +239,53 @@ test('nouvel éditeur, moyeu publié et revue métier sont acceptés', async (t)
   assert.equal((await scellerGuide(f)).pass, true);
 });
 
-test('recette historique datée rejouée sans modifier données ni preuve existante', async (t) => {
-  const f = fixture(t); const slug = historical.integration.slug;
+test('fixture synthétique indépendante d’un corpus source non vide', (t) => {
+  const source = mkdtempSync(join(tmpdir(), 'guide-source-'));
+  t.after(() => rmSync(source, { recursive: true, force: true }));
+  mkdirSync(join(source, 'src/data'), { recursive: true });
+  copyFileSync('src/data/integrations.ts', join(source, 'src/data/integrations.ts'));
+  json(source, 'src/data/guides.generated.json', [{ slug: 'guide-source' }]);
+  json(source, 'src/data/guide-proofs.generated.json', { 'integrations/guide-source': { source: 'source.webp' } });
+  const f = fixture(t, 6, source);
+  assert.deepEqual(read(f.root, 'src/data/guides.generated.json'), []);
+  assert.deepEqual(read(f.root, 'src/data/guide-proofs.generated.json'), {});
+  assert.equal(auditerGuides({ root: f.root }).pass, true);
+  assert.deepEqual(read(source, 'src/data/guides.generated.json'), [{ slug: 'guide-source' }]);
+  assert.deepEqual(read(source, 'src/data/guide-proofs.generated.json'), { 'integrations/guide-source': { source: 'source.webp' } });
+});
+
+test('audit refuse toujours les entrées générées orphelines', (t) => {
+  const f = fixture(t);
+  json(f.root, 'src/data/guides.generated.json', [{ slug: 'guide-orphelin' }]);
+  json(f.root, 'src/data/guide-proofs.generated.json', { 'integrations/guide-orphelin': {} });
+  const result = auditerGuides({ root: f.root });
+  assert.equal(result.pass, false);
+  assert.ok(result.errors.some(e => e.includes('Guide généré sans sceau : guide-orphelin')));
+});
+
+test('recette historique datée rejouée sans modifier un corpus déjà scellé ni sa preuve', async (t) => {
+  const f = fixture(t);
+  assert.equal((await preparerGuide(f)).pass, true); review(f);
+  assert.equal((await scellerGuide(f)).pass, true);
+  const preservedPaths = ['src/data/integrations.ts', 'src/data/guides.generated.json', 'src/data/guide-proofs.generated.json', `public/proofs/integrations/${f.slug}.webp`, `guides/etats/${f.slug}/manifest.json`, `guides/etats/${f.slug}/scellement.json`];
+  const corpusBefore = preservedPaths.map(path => readFileSync(join(f.root, path)));
+  const recipe = structuredClone(historical); const slug = recipe.integration.slug;
   const dir = `guides/recettes/${slug}`;
-  json(f.root, `${dir}/recette.json`, historical);
+  json(f.root, `${dir}/recette.json`, recipe);
   const asset = `public/proofs/integrations/${slug}.webp`;
   mkdirSync(dirname(join(f.root, asset)), { recursive: true }); copyFileSync(asset, join(f.root, asset));
   const before = readFileSync(join(f.root, asset));
   assert.equal((await preparerGuide({ root: f.root, slug })).pass, true);
   assert.deepEqual(readFileSync(join(f.root, asset)), before);
-  assert.deepEqual(read(f.root, 'src/data/guides.generated.json'), []);
   json(f.root, 'docs/qa/historique.json', { target: asset });
   mkdirSync(join(f.root, 'dist/integrations'), { recursive: true });
   writeFileSync(join(f.root, `dist/integrations/${slug}.html`), `<main id="main"><h1>Contrôle</h1><img src="/${asset.slice(7)}"></main>`);
   assert.deepEqual(auditerContratPages({ root: f.root }).erreurs.filter(e => e.clause === 2), [], 'provenance historique légitime conservée');
-  historical.integration.intro += ' falsification'; json(f.root, `${dir}/recette.json`, historical);
+  assert.equal((await preparerGuide({ root: f.root, slug })).idempotent, true);
+  for (const [i, path] of preservedPaths.entries()) assert.deepEqual(readFileSync(join(f.root, path)), corpusBefore[i], path);
+  assert.equal(auditerGuides({ root: f.root }).pass, true);
+  recipe.integration.intro += ' falsification'; json(f.root, `${dir}/recette.json`, recipe);
   assert.equal((await preparerGuide({ root: f.root, slug })).pass, false);
+  for (const [i, path] of preservedPaths.entries()) assert.deepEqual(readFileSync(join(f.root, path)), corpusBefore[i], path);
+  assert.deepEqual(readFileSync(join(f.root, asset)), before);
 });
