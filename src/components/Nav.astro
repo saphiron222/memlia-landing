@@ -241,6 +241,13 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     pointer-events: none;
     transition: opacity var(--duree-1) ease-out, transform var(--duree-1) ease-out;
   }
+  /* Relier le bouton au panneau sans changer leur espacement visuel. */
+  .nav-sous-menu::before {
+    content: '';
+    position: absolute;
+    inset: -7px 0 auto;
+    height: 7px;
+  }
   /* Le bouton ouvre le panneau au clavier ; fermé, ses liens sortent du Tab. */
   .nav-groupe[data-ouvert] .nav-sous-menu {
     opacity: 1;
@@ -524,18 +531,24 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     window.addEventListener('pagehide', () => closeMenu(false));
   }
 
-  // Le groupe « Ressources » : le survol et le focus le révèlent en CSS ; le clic, Échap et
-  // le clic hors du groupe tiennent l'état annoncé (aria-expanded) et l'ouverture sans souris.
+  // Le survol ouvre ; le premier clic confirme cette ouverture, les suivants basculent.
+  // Le clavier, Échap et le clic extérieur conservent le même état annoncé.
   const groupes = [...document.querySelectorAll<HTMLElement>('[data-groupe]')];
   for (const groupe of groupes) {
     const bouton = groupe.querySelector<HTMLButtonElement>('[data-groupe-bouton]');
     if (!bouton) continue;
+    let survolSeul = false;
     const ouvrir = (etat: boolean) => {
+      survolSeul = false;
       groupe.toggleAttribute('data-ouvert', etat);
       bouton.setAttribute('aria-expanded', String(etat));
     };
-    bouton.addEventListener('click', () => ouvrir(!groupe.hasAttribute('data-ouvert')));
-    groupe.addEventListener('mouseenter', () => ouvrir(true));
+    bouton.addEventListener('click', (e) => ouvrir((e.detail > 0 && survolSeul) || !groupe.hasAttribute('data-ouvert')));
+    groupe.addEventListener('mouseenter', () => {
+      if (groupe.hasAttribute('data-ouvert')) return;
+      ouvrir(true);
+      survolSeul = true;
+    });
     groupe.addEventListener('mouseleave', () => { if (!groupe.contains(document.activeElement)) ouvrir(false); });
     groupe.addEventListener('focusout', (e) => { if (!groupe.contains(e.relatedTarget as Node | null)) ouvrir(false); });
     groupe.addEventListener('keydown', (e) => {
