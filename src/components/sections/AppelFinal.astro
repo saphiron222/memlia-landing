@@ -3,6 +3,7 @@ import Button from '@/components/Button.astro';
 import Picto from '@/components/Picto.astro';
 
 import { CTA } from '@/data/site.mjs';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
 
 /**
  * S8 — Appel final (spec §4.13 ; copy validée section 7). Un seul bouton principal,
@@ -14,6 +15,7 @@ import { CTA } from '@/data/site.mjs';
  * un seul composant pour que l'appel final ait partout la même forme.
  */
 interface Props {
+  contenu?: ContenuAccueil['appelFinal'];
   id?: string;
   titre?: string;
   texte?: string;
@@ -22,14 +24,11 @@ interface Props {
   secondaire?: { libelle: string; href: string };
 }
 const {
+  contenu = contenuDe('ec').appelFinal,
   id = 'evaluer',
-  titre = 'Quelle tâche vos collaborateurs refont-ils encore à la main ?',
-  texte = 'Décrivez-la en trois phrases. Nous vous disons si elle se cadre, ce qu’il faudrait pour la prendre en charge, et à quel prix. Vous n’avez rien à nous envoyer : la description suffit.',
-  points = [
-    'La tâche : ce que quelqu’un refait chaque mois, et avec quels outils.',
-    'Le périmètre : sources, exceptions, cas de refus.',
-    'Le devis : à la complexité, jamais au nombre de postes.',
-  ],
+  titre = contenu.titre,
+  texte = contenu.texte,
+  points = contenu.points,
   action = CTA.principal,
   secondaire,
 } = Astro.props;
