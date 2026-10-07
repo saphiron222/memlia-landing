@@ -1,1 +1,87 @@
-[]
+[
+  {
+    "slug": "export-fec-ebp",
+    "task": "export FEC",
+    "vendor": "EBP",
+    "product": "EBP Comptabilité",
+    "primaryQuery": "export fec ebp",
+    "suggestions": 7,
+    "modifiers": [
+      "export fec provisoire ebp",
+      "extraction fec ebp",
+      "export fichier fec ebp compta"
+    ],
+    "h1": "Export FEC EBP : choisir le bon export et contrôler son périmètre",
+    "tabTitle": "Export FEC EBP : destination et périmètre | Memlia",
+    "description": "Préparez un export FEC EBP en distinguant comptable et administration fiscale, puis contrôlez exercice, période, régime, codage et pièces jointes avant validation.",
+    "intro": "Dans EBP Comptabilité, choisissez d’abord le destinataire : l’export Provisoire au format FEC est destiné au comptable ; l’export comptabilité informatisé FEC est destiné à l’administration fiscale. Ouvrez Déclaratif, puis Fichier des écritures comptables. Avant d’exporter, vérifiez l’exercice, la période, le régime, le codage et les pièces jointes. Nous préparons ces contrôles ; vous confirmez les paramètres et réalisez l’export dans EBP.",
+    "datePublication": "2026-10-07",
+    "dateMiseAJour": "2026-10-07",
+    "auteur": "kevin",
+    "service": {
+      "href": "/automatisation/saisie-comptable",
+      "label": "Voir le moyeu saisie comptable"
+    },
+    "officialPath": "Déclaratif → Fichier des écritures comptables → choisir le type d’export selon le destinataire → contrôler les paramètres → Exporter.",
+    "documentScope": "La fiche EBP porte sur EBP Comptabilité, pas sur EBP Bâtiment ou Gestion Commerciale. Elle distingue les deux exports et leurs paramètres ; l’option de documents liés aux écritures est annoncée depuis les versions 2024. Vérifiez votre édition et les options visibles avant de suivre ce parcours. Nos cas fictifs préparent une demande d’export : ils ne constituent ni un essai dans EBP ni une validation fiscale du fichier.",
+    "fields": [
+      {
+        "label": "destinataire",
+        "control": "Identifier le comptable ou l’administration fiscale avant de choisir l’export. Une destination inconnue arrête la préparation ; un export provisoire ne se substitue pas au parcours destiné à l’administration."
+      },
+      {
+        "label": "exercice et période",
+        "control": "Comparer l’exercice sélectionné et les dates de début et de fin à la demande du destinataire. Dans notre règle, une période hors de l’exercice ou différente de la demande arrête la préparation."
+      },
+      {
+        "label": "régime",
+        "control": "Relever le régime affiché et le faire confirmer à partir des paramètres du dossier. Ne pas le déduire du nom du fichier ou du destinataire."
+      },
+      {
+        "label": "codage du fichier",
+        "control": "Relever le codage proposé et vérifier celui attendu par le destinataire. Un choix non confirmé reste à valider ; nous n’inventons pas de valeur par défaut."
+      },
+      {
+        "label": "pièces jointes",
+        "control": "Décider si les documents liés doivent être inclus et vérifier la disponibilité de l’option. EBP annonce cette option depuis 2024 : les noms reposent sur PieceRef pour le provisoire, sur EcritureNum pour l’export définitif."
+      },
+      {
+        "label": "emplacement et nom du fichier",
+        "control": "Choisir un dossier de sortie distinct des fichiers déjà reçus. La fiche EBP demande de conserver le nom généré ; nous ne renommons ni ne remplaçons silencieusement un fichier existant."
+      }
+    ],
+    "knownTrap": "Un fichier au format FEC ne dit pas à lui seul quel export a été choisi. La destination précède le contrôle des paramètres. La présence de pièces jointes et un contrôle structurel ne prouvent pas la conformité fiscale ; une période partielle demandée par le comptable ne doit pas être reprise automatiquement pour une autre destination.",
+    "writtenRule": "Préparer une fiche de paramètres seulement si le destinataire est connu et si la période correspond à la demande dans l’exercice retenu. Le régime doit être identifié. Un codage ou un choix de pièces jointes non confirmé reste à valider ; une destination absente ou un périmètre incohérent arrête la préparation. La proposition ne modifie aucun paramètre dans EBP et ne lance aucun export.",
+    "boundary": {
+      "prepared": "Comparer la demande aux paramètres relevés et préparer une fiche de contrôle sans modifier le dossier, ses écritures ou ses fichiers.",
+      "validation": "Confirmer le type d’export, l’exercice, la période, le régime, le codage, les pièces jointes et le dossier de sortie avant toute action.",
+      "human": "Décider de la transmission, réaliser l’export dans EBP et apprécier la portée fiscale du fichier ; conserver les fichiers reçus et les choix déjà saisis."
+    },
+    "replay": [
+      {
+        "input": "Comptable ; exercice 2025 ; période 01/01–31/12/2025 ; régime et codage confirmés ; sans pièces",
+        "rule": "Destination et paramètres concordent avec la demande",
+        "outcome": "Préparé",
+        "detail": "Fiche pour export provisoire proposée ; lancement et transmission restent humains."
+      },
+      {
+        "input": "Administration ; exercice et période 2025 confirmés ; régime identifié ; codage ou pièces à confirmer",
+        "rule": "Choix de codage ou de documents encore ouvert",
+        "outcome": "À valider",
+        "detail": "Parcours administration repéré ; choix non déduit, aucun export lancé."
+      },
+      {
+        "input": "Destination inconnue ; exercice 2025 ; période demandée jusqu’au 31/01/2026, hors exercice",
+        "rule": "Destination absente et période incompatible",
+        "outcome": "Arrêt",
+        "detail": "Demander le destinataire et corriger le périmètre ; aucun paramètre remplacé."
+      }
+    ],
+    "source": {
+      "title": "EBP — Générer un fichier FEC avec ou sans pièces jointes dans EBP Comptabilité",
+      "url": "https://support.ebp.com/hc/fr/articles/360009858758",
+      "checkedAt": "2026-10-07",
+      "fact": "L’aide distingue « L’export Provisoire au format FEC » pour le comptable et « L’export comptabilité informatisé FEC » pour l’administration fiscale. Elle décrit Déclaratif → Fichier des écritures comptables, exercice, période, régime et codage, la conservation du nom généré et les documents liés depuis 2024 (PieceRef ou EcritureNum selon l’export). Nos critères de préparation sont une règle proposée au cabinet, pas une garantie fiscale."
+    }
+  }
+]
