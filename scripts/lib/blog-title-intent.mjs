@@ -93,6 +93,9 @@ function releveDuFichier(dossier, nom, { au, ageMaxJours }) {
     throw new Error(`relevé de demande illisible : ${nom} (${erreur.message})`);
   }
   if (!estDictionnaire(releve) || !DATE_ISO.test(String(releve.date ?? ''))) throw new Error(`relevé de demande sans date valide : ${nom}`);
+  // Un relevé du lundi dont toutes les mesures ont échoué ne mesure rien : ce n'est pas un relevé frais.
+  const mesuree = releve.autocompletion?.mesuree;
+  if (estDictionnaire(mesuree) && Object.keys(mesuree).length === 0) return [];
   return [{ nom, date: releve.date, mesures: () => {
     if (!estDictionnaire(releve.autocompletion?.mesuree)) throw new Error(`relevé de demande sans autocomplétion mesurée : ${nom}`);
     return releve.autocompletion.mesuree;

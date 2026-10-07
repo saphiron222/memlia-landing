@@ -85,6 +85,13 @@ test('une mesure du lundi datée après le jour lu est ignorée, comme toute mes
   assert.deepEqual(mesure.fichiers, ['titres-intent-2026-10-05.json']);
 });
 
+test('un relevé du lundi entièrement en pannes n’est pas un relevé frais', (t) => {
+  const { root, dossier } = dossierDeMesures(t, 'memlia-intent-pannes-');
+  writeFileSync(join(dossier, 'titres-intent-2026-09-28.json'), JSON.stringify({ autocompletion: { 'lettrage sage': [] } }));
+  writeFileSync(join(dossier, 'semaine-2026-W41-demande.json'), JSON.stringify({ date: '2026-10-06', autocompletion: { mesuree: {}, pannes: [{ requete: 'lettrage sage', erreur: 'HTTP 429' }] } }));
+  assert.throws(() => chargerAutocompletionMesuree(root, { au: '2026-10-07' }), /aucun relevé d’autocomplétion frais/);
+});
+
 test('le préfiltre ouvre une semaine tant que son dimanche est dans la fenêtre', (t) => {
   const { root, dossier } = dossierDeMesures(t, 'memlia-intent-borne-');
   writeFileSync(join(dossier, 'semaine-2026-W41-demande.json'), JSON.stringify({ date: '2026-10-11', autocompletion: { mesuree: { 'lettrage sage': ['dimanche'] }, pannes: [] } }));
