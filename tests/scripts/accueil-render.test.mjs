@@ -14,8 +14,9 @@ function find(node, id) {
 
 // Témoin reconstruit à la fusion de l’extraction (#113) dans le système de page (#166) : le HTML de /
 // est celui de #166 avant fusion (b96656d5), octet pour octet, H3 et compteurs dynamiques inclus.
+// Puis révélation avant l'écran (07/10/2026) : seuls le CSS de révélation et l'empreinte du script changent.
 test('le HTML complet de / conserve tous les octets du témoin EC avant extraction', () => {
-  const expected = '030e03b602953c85d7c0715b1aec360e74f2d158041247ccf0b61843ee08876f';
+  const expected = '7b851e519f89f87577dc8fab469b814f8e5c27da9345886225a00a7524f081a6';
   assert.equal(createHash('sha256').update(readFileSync('dist/index.html')).digest('hex'), expected);
 });
 
