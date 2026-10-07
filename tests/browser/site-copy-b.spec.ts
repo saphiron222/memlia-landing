@@ -48,6 +48,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     for (const [route, slugs] of [
       ['paie-dsn-cabinet-comptable', ['controler-les-bulletins-de-paie-avant-la-dsn', 'comprendre-les-comptes-rendus-metier-dsn', 'suivre-la-production-sociale-dans-excel']],
       ['gestion-pieces-comptables', ['automatiser-la-relance-des-pieces-clients', 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier']],
+      ['ia-cabinet-comptable', ['utiliser-chatgpt-cabinet-comptable', 'logiciel-ia-comptabilite', 'prompt-chatgpt-expert-comptable', 'ia-comptabilite-confidentialite-donnees', 'verifier-reponse-ia-comptabilite', 'automatiser-avec-ia-sans-changer-logiciel', 'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain', 'tests-verts-et-regle-des-trois-passes']],
     ] as const) {
       await page.goto(`/blog/rubrique/${route}`);
       const links = await page.locator('[data-rubrique-article] h3 a').evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')));
