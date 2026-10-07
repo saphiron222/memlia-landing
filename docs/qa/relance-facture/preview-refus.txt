@@ -1,0 +1,10 @@
+
+ ⛅️ wrangler 4.101.0
+────────────────────
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mFailed to automatically retrieve account IDs for the logged in user.[0m
+
+  You may have incorrect permissions on your API token, or your authentication may have expired. Try running `wrangler login` to re-authenticate. You can also skip this account check by adding an `account_id` in your Wrangler configuration file, or by setting the value of CLOUDFLARE_ACCOUNT_ID
+
+
+🪵  Logs were written to "/Users/kevinkitanga/Library/Preferences/.wrangler/logs/wrangler-2026-10-07_00-13-02_539.log"

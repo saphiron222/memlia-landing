@@ -24,6 +24,15 @@
   ],
   "articles": [
     {
+      "slug": "generateur-relance-facture-impayee", "type": "outil",
+      "url": "https://memlia.fr/outils-comptables-gratuits/generateur-relance-facture-impayee",
+      "requete": "générateur relance facture impayée",
+      "secondaires": ["mail relance facture impayée", "modèle relance facture impayée"],
+      "famille": "facturation-recouvrement", "format": "web-application", "publieLe": null,
+      "titreOnglet": "Générateur de relance de facture impayée | Memlia",
+      "source": "Brief 01 outils EC vague 4 et docs/qa/relance-facture/demande-autocomplete.json ; vraie sonde : primaire sans suggestion, mail relance facture impayée avec dix suggestions. Convention de préparation, aucune règle juridique. Candidat non publié : indexation, trafic et conversions ND."
+    },
+    {
 
       "slug": "generateur-prompt-ia-gratuit",
       "type": "outil",
