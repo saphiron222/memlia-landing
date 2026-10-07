@@ -39,7 +39,8 @@ fabriquer un nouvel avis métier. Un changement du texte ou d'une figure n'est p
 assimilé automatiquement à une simple modification logistique.
 
 Rejeu : `node --test tests/scripts/blog-constitution.test.mjs`, puis
-`npm run blog:audit` et `npm run build`. Le test change uniquement la date de
+`npm run blog:audit` ; la construction complète est faite par la CI GitHub
+(« Repository gates »), pas sur le Mac. Le test change uniquement la date de
 recette, conserve la revue intacte, puis vérifie qu'un titre divergent est refusé.
 
 - **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`. Chaque exécution utilise un worktree isolé, une branche neuve `site/blog-<sujet>` à la base fraîche de `main`, puis une PR. Le clone dédié du cron ne sert que de source propre synchronisée par `forge_checkout_gate.py` ; il ne reçoit aucune écriture éditoriale. D'autres workers peuvent tourner en parallèle. Seule la fusion contrôlée sur `main` déclenche la publication Cloudflare ; jamais de push direct sur `main`.
